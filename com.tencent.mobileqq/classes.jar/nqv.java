@@ -1,21 +1,31 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnBufferingUpdateListener;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnBufferingUpdateListener;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.MediaPlayerWrapper;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
 public class nqv
-  implements MediaPlayer.OnBufferingUpdateListener
 {
-  public nqv(MediaPlayerWrapper paramMediaPlayerWrapper, IMediaPlayer.OnBufferingUpdateListener paramOnBufferingUpdateListener) {}
+  public nqv(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString, long paramLong) {}
   
-  public void onBufferingUpdate(MediaPlayer paramMediaPlayer, int paramInt)
+  @QQPermissionDenied(1)
+  public void denied()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnBufferingUpdateListener.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperMediaPlayerWrapper, paramInt);
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+  }
+  
+  @QQPermissionGrant(1)
+  public void grant()
+  {
+    SosoInterface.a(new nrb(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, 0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long));
+    if (QLog.isColorLevel()) {
+      QLog.d("PAjs.location", 2, "SosoInterface.startLocation");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nqv
  * JD-Core Version:    0.7.0.1
  */

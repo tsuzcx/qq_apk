@@ -1,25 +1,33 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver.4.1;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aifu
-  implements Runnable
+public class aifu
+  extends avvd
 {
-  public aifu(String paramString1, String paramString2) {}
+  aifu(aiez paramaiez) {}
   
-  public void run()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
   {
-    try
+    if ((paramBoolean1) && (paramBoolean2))
     {
-      Intent localIntent = new Intent();
-      localIntent.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
-      localIntent.putExtra("reporting_tag", this.a);
-      localIntent.putExtra("reporting_detail", this.b);
-      localIntent.putExtra("reporting_count", 1);
-      localIntent.putExtra("is_runtime", 0);
-      BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
+      if (QLog.isColorLevel()) {
+        QLog.d("MainActivity", 2, "inform onGetQZoneFeedCountFin");
+      }
+      if ((this.a.a != null) && (this.a.a.app != null)) {}
+    }
+    else
+    {
       return;
     }
-    catch (Exception localException) {}
+    QQAppInterface localQQAppInterface = this.a.a.app;
+    if ((GuardManager.a != null) && (!GuardManager.a.a())) {
+      ThreadManager.post(new MainAssistObserver.4.1(this, localQQAppInterface), 8, null, false);
+    }
+    this.a.g();
   }
 }
 

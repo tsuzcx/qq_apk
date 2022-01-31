@@ -1,50 +1,81 @@
-import android.content.Intent;
-import android.os.Bundle;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.remote.logic.RemoteHandleManager;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
 public class xoc
-  implements ActionSheet.OnButtonClickListener
+  extends BaseAdapter
 {
-  public xoc(EditLocalVideoActivity paramEditLocalVideoActivity, Bundle paramBundle) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<xoe> jdField_a_of_type_JavaUtilList = new ArrayList();
+  @Nullable
+  private xoe jdField_a_of_type_Xoe;
   
-  public void OnClick(View paramView, int paramInt)
+  public xoc(Context paramContext)
   {
-    EditLocalVideoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).dismiss();
-    new StringBuilder().append(EditLocalVideoActivity.g()).append("mix_").append(System.currentTimeMillis()).append(".mp4").toString();
-    this.jdField_a_of_type_AndroidOsBundle.putString("param.videoPath", EditLocalVideoActivity.h());
-    if (EditLocalVideoActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity) == 0) {
-      RemoteHandleManager.a().a("cmd.publishVideoMood", this.jdField_a_of_type_AndroidOsBundle, false);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  @Nullable
+  public xoe a()
+  {
+    return this.jdField_a_of_type_Xoe;
+  }
+  
+  public void a(List<xoe> paramList)
+  {
+    if (paramList == null)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+  }
+  
+  public void a(@Nullable xoe paramxoe)
+  {
+    this.jdField_a_of_type_Xoe = paramxoe;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561587, null);
+      paramView = new xod(paramViewGroup);
+      paramViewGroup.setTag(paramView);
     }
     for (;;)
     {
-      if (EditLocalVideoActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity) == 0) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity.setResult(-1);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity.finish();
-      return;
-      if (EditLocalVideoActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity) == 1)
-      {
-        paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity.getIntent());
-        paramView.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-        String str = paramView.getStringExtra("PhotoConst.PLUGIN_APK");
-        boolean bool = paramView.getBooleanExtra("DirectBackToQzone", false);
-        if (("qzone_plugin.apk".equals(str)) && (bool))
-        {
-          paramView.setFlags(603979776);
-          QZoneHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, "", paramView, -1);
-        }
-      }
+      paramView.a((xoe)this.jdField_a_of_type_JavaUtilList.get(paramInt), this.jdField_a_of_type_Xoe);
+      return paramView.a;
+      paramView = (xod)paramView.getTag();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xoc
  * JD-Core Version:    0.7.0.1
  */

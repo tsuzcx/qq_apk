@@ -1,42 +1,28 @@
-import android.text.Spanned;
-import android.text.method.NumberKeyListener;
-import com.tencent.widget.TCWNumberPicker;
+import org.xmlpull.v1.XmlSerializer;
 
-public class amdx
-  extends NumberKeyListener
+final class amdx
+  extends azwv
 {
-  private amdx(TCWNumberPicker paramTCWNumberPicker) {}
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  amdx(String paramString)
   {
-    CharSequence localCharSequence2 = super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
-    CharSequence localCharSequence1 = localCharSequence2;
-    if (localCharSequence2 == null) {
-      localCharSequence1 = paramCharSequence.subSequence(paramInt1, paramInt2);
-    }
-    paramCharSequence = String.valueOf(paramSpanned.subSequence(0, paramInt3)) + localCharSequence1 + paramSpanned.subSequence(paramInt4, paramSpanned.length());
-    if ("".equals(paramCharSequence)) {
-      localCharSequence1 = paramCharSequence;
-    }
-    while (TCWNumberPicker.a(this.a, paramCharSequence) <= TCWNumberPicker.b(this.a)) {
-      return localCharSequence1;
-    }
-    return "";
+    super(paramString);
   }
   
-  protected char[] getAcceptedChars()
+  public void a(XmlSerializer paramXmlSerializer)
   {
-    return TCWNumberPicker.a();
-  }
-  
-  public int getInputType()
-  {
-    return 2;
+    paramXmlSerializer.startTag(null, "picture");
+    if (this.S == null) {}
+    for (String str = "";; str = this.S)
+    {
+      paramXmlSerializer.attribute(null, "cover", str);
+      paramXmlSerializer.endTag(null, "picture");
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amdx
  * JD-Core Version:    0.7.0.1
  */

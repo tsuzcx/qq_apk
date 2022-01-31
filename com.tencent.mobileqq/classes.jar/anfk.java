@@ -1,15 +1,18 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ARRelationShip;
 
-public class anfk
-  implements Runnable
+public final class anfk
+  implements Parcelable.Creator<ARRelationShip>
 {
-  public anfk(TroopHomeworkHelper.UploadFileTask paramUploadFileTask) {}
-  
-  public void run()
+  public ARRelationShip a(Parcel paramParcel)
   {
-    QQToast.a(BaseApplicationImpl.getApplication(), "上传的语音、图片、视频数量达到了今日上限。", 0).a();
+    return new ARRelationShip(paramParcel);
+  }
+  
+  public ARRelationShip[] a(int paramInt)
+  {
+    return new ARRelationShip[paramInt];
   }
 }
 

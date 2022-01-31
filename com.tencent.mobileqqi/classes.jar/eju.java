@@ -1,32 +1,35 @@
-import com.tencent.mobileqq.activity.contact.newfriend.RecommendListView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import java.util.List;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
 
 public class eju
-  implements Runnable
+  implements View.OnKeyListener, TextView.OnEditorActionListener
 {
-  public eju(RecommendListView paramRecommendListView) {}
+  private eju(MessageSearchDialog paramMessageSearchDialog) {}
   
-  public void run()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    for (;;)
+    if (paramInt == 3)
     {
-      synchronized (RecommendListView.a(this.a))
-      {
-        if (!RecommendListView.a(this.a)) {
-          return;
-        }
-        Object localObject1 = (PhoneContactManager)this.a.a.getManager(10);
-        if (localObject1 != null)
-        {
-          localObject1 = ((PhoneContactManager)localObject1).d();
-          this.a.a.runOnUiThread(new ejv(this, (List)localObject1));
-          return;
-        }
-      }
-      Object localObject3 = null;
+      MessageSearchDialog.a(this.a);
+      return true;
     }
+    return false;
+  }
+  
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if ((paramKeyEvent.getKeyCode() == 66) || (paramKeyEvent.getKeyCode() == 84))
+    {
+      if (paramKeyEvent.getAction() == 1) {
+        MessageSearchDialog.a(this.a);
+      }
+      return true;
+    }
+    return false;
   }
 }
 

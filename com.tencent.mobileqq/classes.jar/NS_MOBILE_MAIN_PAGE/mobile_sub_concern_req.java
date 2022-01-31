@@ -9,9 +9,9 @@ import java.util.Map;
 public final class mobile_sub_concern_req
   extends JceStruct
 {
-  static Map cache_map_ext = new HashMap();
+  static Map<Integer, String> cache_map_ext = new HashMap();
   public int isconcern;
-  public Map map_ext;
+  public Map<Integer, String> map_ext;
   public long objuin;
   public int source;
   
@@ -22,7 +22,7 @@ public final class mobile_sub_concern_req
   
   public mobile_sub_concern_req() {}
   
-  public mobile_sub_concern_req(long paramLong, int paramInt1, int paramInt2, Map paramMap)
+  public mobile_sub_concern_req(long paramLong, int paramInt1, int paramInt2, Map<Integer, String> paramMap)
   {
     this.objuin = paramLong;
     this.isconcern = paramInt1;

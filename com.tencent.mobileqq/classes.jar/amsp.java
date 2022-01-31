@@ -1,15 +1,29 @@
-import cooperation.qzone.QzoneGiftFullScreenActionManager;
-import cooperation.qzone.QzoneGiftFullScreenActionManager.MagicfaceCloseListener;
-import cooperation.qzone.QzoneGiftFullScreenViewController;
+import com.tencent.qphone.base.util.QLog;
 
-public class amsp
-  implements QzoneGiftFullScreenActionManager.MagicfaceCloseListener
+public abstract class amsp
+  implements alpg
 {
-  public amsp(QzoneGiftFullScreenViewController paramQzoneGiftFullScreenViewController, QzoneGiftFullScreenActionManager paramQzoneGiftFullScreenActionManager) {}
+  public abstract void a(anau paramanau);
   
-  public void a()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("ARLBSObserver", 2, "type=" + paramInt + ", isSuccess=" + paramBoolean);
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    try
+    {
+      a((anau)paramObject);
+      return;
+    }
+    catch (Exception paramObject)
+    {
+      a(new anau());
+    }
   }
 }
 

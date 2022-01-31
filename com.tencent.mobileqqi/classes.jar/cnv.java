@@ -1,35 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.DiscussionHandler;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihInput;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class cnv
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public cnv(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public cnv(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramDialogInterface = DiscussionInfoCardActivity.a(this.a).getInputValue();
-    if ((paramDialogInterface != null) && (!paramDialogInterface.equals("")) && (!paramDialogInterface.equals(DiscussionInfoCardActivity.b(this.a))))
-    {
-      if (NetworkUtil.e(this.a))
-      {
-        DiscussionInfoCardActivity.a(this.a).a(Long.valueOf(DiscussionInfoCardActivity.a(this.a)).longValue(), paramDialogInterface);
-        DiscussionInfoCardActivity.a(this.a).setRightText(paramDialogInterface);
-        this.a.a(this.a.getString(2131561664));
-        DiscussionInfoCardActivity.a(this.a).show();
-      }
-    }
-    else {
-      return;
-    }
-    this.a.a(2130837947, this.a.getString(2131562488));
+    this.a.c = false;
+    this.a.finish();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

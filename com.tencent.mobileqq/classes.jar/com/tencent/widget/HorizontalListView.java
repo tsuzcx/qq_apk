@@ -1,13 +1,5 @@
 package com.tencent.widget;
 
-import amby;
-import ambz;
-import amca;
-import amcb;
-import amcc;
-import amcd;
-import amce;
-import amcf;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -36,7 +28,13 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListAdapter;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import bhxp;
+import bhxq;
+import bhxr;
+import bhxs;
+import bhxt;
+import bhxu;
+import bhzg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -44,68 +42,80 @@ import java.util.List;
 import java.util.Queue;
 
 public class HorizontalListView
-  extends AdapterView
+  extends AdapterView<ListAdapter>
 {
-  public static final boolean a;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private amcb jdField_a_of_type_Amcb;
-  private amce jdField_a_of_type_Amce;
-  amcf jdField_a_of_type_Amcf;
-  private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private ContextMenu.ContextMenuInfo jdField_a_of_type_AndroidViewContextMenu$ContextMenuInfo;
-  private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  private View jdField_a_of_type_AndroidViewView;
-  public ListAdapter a;
-  private HorizontalListView.OnItemScrollEventListener jdField_a_of_type_ComTencentWidgetHorizontalListView$OnItemScrollEventListener;
-  private HorizontalListView.OnScrollLinstener jdField_a_of_type_ComTencentWidgetHorizontalListView$OnScrollLinstener;
-  private HorizontalListView.OnScrollStateChangedListener jdField_a_of_type_ComTencentWidgetHorizontalListView$OnScrollStateChangedListener;
-  private HorizontalListView.RecycleListener jdField_a_of_type_ComTencentWidgetHorizontalListView$RecycleListener;
-  private HorizontalListView.RunningOutOfDataListener jdField_a_of_type_ComTencentWidgetHorizontalListView$RunningOutOfDataListener;
-  public OverScroller a;
-  private Integer jdField_a_of_type_JavaLangInteger;
-  public Runnable a;
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
-  private int jdField_b_of_type_Int;
-  private Rect jdField_b_of_type_AndroidGraphicsRect;
-  private Runnable jdField_b_of_type_JavaLangRunnable;
-  public boolean b;
-  private int jdField_c_of_type_Int = -1;
-  private Runnable jdField_c_of_type_JavaLangRunnable;
-  public boolean c;
-  public int d;
-  private Runnable d;
-  public boolean d;
-  public int e;
-  private Runnable jdField_e_of_type_JavaLangRunnable = new amby(this);
-  private boolean jdField_e_of_type_Boolean;
-  protected int f;
-  private boolean f;
-  public int g;
-  private boolean g;
-  public int h;
-  public int i = 2147483647;
-  public int j;
-  public int k;
-  public int l;
-  public int m;
-  protected int n = 4097;
-  public int o;
-  public int p = -1;
-  private int q;
-  private int r;
-  private int s;
-  private int t;
-  private int u;
-  private int v;
-  private int w;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = false;
-  }
+  private static final String BUNDLE_ID_CURRENT_X = "BUNDLE_ID_CURRENT_X";
+  private static final String BUNDLE_ID_PARENT_STATE = "BUNDLE_ID_PARENT_STATE";
+  public static final boolean DEBUG = false;
+  protected static final int INSERT_AT_END_OF_LIST = -1;
+  protected static final int INSERT_AT_START_OF_LIST = 0;
+  private static final int INVALID_POINTER = -1;
+  public static final String TAG = "HorizontalListView";
+  public static final int TAG_VIEW_TYPE = 2131690192;
+  static final int TOUCH_MODE_DONE_WAITING = 2;
+  static final int TOUCH_MODE_DOWN = 0;
+  static final int TOUCH_MODE_FLING = 4;
+  static final int TOUCH_MODE_OVERFLING = 6;
+  static final int TOUCH_MODE_OVERSCROLL = 5;
+  static final int TOUCH_MODE_REST = -1;
+  static final int TOUCH_MODE_SCROLL = 3;
+  static final int TOUCH_MODE_TAP = 1;
+  public int MIN_SPACE = 50;
+  protected boolean isFromRightToLeft;
+  private int mActivePointerId = -1;
+  protected ListAdapter mAdapter;
+  private DataSetObserver mAdapterDataObserver;
+  private ContextMenu.ContextMenuInfo mContextMenuInfo;
+  protected int mCurrentScrollState = 4097;
+  protected int mCurrentX;
+  public int mCurrentlySelectedAdapterIndex;
+  public boolean mDataChanged;
+  private Runnable mDelayedLayout = new HorizontalListView.1(this);
+  protected int mDisplayOffset;
+  private Drawable mDivider;
+  protected int mDividerWidth;
+  private Runnable mFlingRunnable;
+  private boolean mHasNotifiedRunningLowOnData;
+  private int mHeight;
+  private int mHeightMeasureSpec;
+  private boolean mIsBeingDragged;
+  private int mLastAccessibilityScrollEventFromIndex;
+  private int mLastAccessibilityScrollEventToIndex;
+  private float mLastMotionX;
+  protected int mLeftViewAdapterIndex;
+  protected int mMaxX = 2147483647;
+  private int mMaximumVelocity;
+  protected int mMinX;
+  private int mMinimumVelocity;
+  private int mMotionPosition;
+  private int mMotionX;
+  private int mMotionY;
+  protected int mNextX;
+  private bhxq mOnItemScrollEventListener;
+  private bhxr mOnScrollLinstener;
+  private bhxs mOnScrollStateChangedListener;
+  private HorizontalListView.CheckForLongPress mPendingCheckForLongPress;
+  private Runnable mPendingCheckForTap;
+  private HorizontalListView.PerformClick mPerformClick;
+  Runnable mPositionScrollAfterLayout;
+  HorizontalListView.PositionScroller mPositionScroller;
+  private Rect mRect = new Rect();
+  private bhxt mRecycleListener;
+  private List<Queue<View>> mRemovedViewsCache = new ArrayList();
+  private Integer mRestoreX;
+  protected int mRightViewAdapterIndex;
+  private bhxu mRunningOutOfDataListener;
+  private int mRunningOutOfDataThreshold;
+  protected bhzg mScroller;
+  protected boolean mStayDisplayOffsetZero;
+  private Rect mTouchFrame;
+  int mTouchMode = -1;
+  private Runnable mTouchModeReset;
+  protected int mTouchSlop;
+  private boolean mTransTouchState2Parent;
+  private VelocityTracker mVelocityTracker;
+  private View mViewBeingTouched;
+  private int mWidth;
   
   public HorizontalListView(Context paramContext)
   {
@@ -120,97 +130,87 @@ public class HorizontalListView
   public HorizontalListView(Context paramContext, AttributeSet paramAttributeSet, boolean paramBoolean)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_d_of_type_Int = 50;
     if (Build.VERSION.SDK_INT >= 9) {
       setOverScrollMode(0);
     }
-    b(paramBoolean);
+    initView(paramBoolean);
     ViewCompat.setImportantForAccessibility(this, 1);
   }
   
-  private int a()
+  public HorizontalListView(Context paramContext, boolean paramBoolean)
   {
-    return getHeight() - getPaddingTop() - getPaddingBottom();
+    this(paramContext, null, paramBoolean);
   }
   
-  private int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private void checkSpringback()
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetListAdapter;
-    if (localObject == null) {
-      paramInt1 = getPaddingLeft() + getPaddingRight();
+    if (DEBUG) {
+      log("checkSpringback", new Object[] { Integer.valueOf(this.mTouchMode) });
     }
-    int i1;
-    int i3;
-    label87:
-    do
+    if (this.mFlingRunnable == null) {
+      this.mFlingRunnable = new HorizontalListView.3(this);
+    }
+    removeCallbacks(this.mFlingRunnable);
+    getHandler().post(this.mFlingRunnable);
+  }
+  
+  private void determineIfLowOnData()
+  {
+    if ((this.mRunningOutOfDataListener != null) && (this.mAdapter != null) && (this.mAdapter.getCount() - (this.mRightViewAdapterIndex + 1) < this.mRunningOutOfDataThreshold) && (!this.mHasNotifiedRunningLowOnData))
     {
-      return paramInt1;
-      int i4 = getPaddingLeft() + getPaddingRight();
-      if ((this.jdField_f_of_type_Int <= 0) || (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
-        break;
-      }
-      i1 = this.jdField_f_of_type_Int;
-      paramInt4 = i4;
-      i3 = paramInt1;
-      int i2 = paramInt2;
-      if (paramInt2 == -1)
-      {
-        i2 = ((ListAdapter)localObject).getCount() - 1;
-        i3 = paramInt1;
-        paramInt4 = i4;
-      }
-      if (i3 > i2) {
-        break label193;
-      }
-      localObject = c(i3);
-      if (localObject == null) {
-        break label170;
-      }
-      a((View)localObject);
-      paramInt1 = paramInt4;
-      if (i3 > 0) {
-        paramInt1 = paramInt4 + i1;
-      }
-      paramInt2 = paramInt1 + ((View)localObject).getMeasuredWidth();
-      a(i3, (View)localObject);
-      paramInt1 = paramInt3;
-    } while (paramInt2 > paramInt3);
-    paramInt1 = paramInt2;
-    for (;;)
-    {
-      i3 += 1;
-      paramInt4 = paramInt1;
-      break label87;
-      i1 = 0;
-      break;
-      label170:
-      paramInt1 = paramInt4;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("HorizontalListView", 2, "measureWidthOfChildren obtainView is null");
-        paramInt1 = paramInt4;
-      }
+      this.mHasNotifiedRunningLowOnData = true;
+      this.mRunningOutOfDataListener.a();
     }
-    label193:
-    return paramInt4;
   }
   
-  private View a(int paramInt, boolean paramBoolean)
+  private void drawDivider(Canvas paramCanvas, Rect paramRect)
   {
-    View localView1 = a(paramInt);
-    setTag(2131362520, Boolean.valueOf(paramBoolean));
-    View localView2 = this.jdField_a_of_type_AndroidWidgetListAdapter.getView(paramInt, localView1, this);
-    b(localView2, paramInt);
-    if ((localView1 != null) && (localView2 != localView1)) {
-      a(paramInt, localView1);
+    if (this.mDivider != null)
+    {
+      this.mDivider.setBounds(paramRect);
+      this.mDivider.draw(paramCanvas);
     }
-    if (localView2 != null) {
-      c(localView2, paramInt);
-    }
-    return localView2;
   }
   
-  private ViewGroup.LayoutParams a(View paramView)
+  private void drawDividers(Canvas paramCanvas)
+  {
+    int j = getChildCount();
+    Rect localRect = this.mRect;
+    this.mRect.top = getPaddingTop();
+    this.mRect.bottom = (this.mRect.top + getRenderHeight());
+    int i = 0;
+    while (i < j)
+    {
+      if ((i != j - 1) || (!isLastItemInAdapter(this.mRightViewAdapterIndex)))
+      {
+        View localView = getChildAt(i);
+        localRect.left = localView.getRight();
+        localRect.right = (localView.getRight() + this.mDividerWidth);
+        if (localRect.left < getPaddingLeft()) {
+          localRect.left = getPaddingLeft();
+        }
+        if (localRect.right > getWidth() - getPaddingRight()) {
+          localRect.right = (getWidth() - getPaddingRight());
+        }
+        drawDivider(paramCanvas, localRect);
+        if ((i == 0) && (localView.getLeft() > getPaddingLeft()))
+        {
+          localRect.left = getPaddingLeft();
+          localRect.right = localView.getLeft();
+          drawDivider(paramCanvas, localRect);
+        }
+      }
+      i += 1;
+    }
+  }
+  
+  private void endDrag()
+  {
+    this.mIsBeingDragged = false;
+    recycleVelocityTracker();
+  }
+  
+  private ViewGroup.LayoutParams getLayoutParams(View paramView)
   {
     ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
     paramView = localLayoutParams;
@@ -220,184 +220,33 @@ public class HorizontalListView
     return paramView;
   }
   
-  private void a()
+  private int getRenderHeight()
   {
-    int i1 = getFirstVisiblePosition();
-    int i2 = getLastVisiblePosition();
-    while ((i1 >= 0) && (i1 <= i2))
-    {
-      View localView = b(i1);
-      if (localView != null)
-      {
-        if (this.jdField_a_of_type_ComTencentWidgetHorizontalListView$RecycleListener != null) {
-          this.jdField_a_of_type_ComTencentWidgetHorizontalListView$RecycleListener.a(localView);
-        }
-        a(i1, localView);
-      }
-      i1 += 1;
-    }
+    return getHeight() - getPaddingTop() - getPaddingBottom();
   }
   
-  private void a(float paramFloat, int paramInt)
+  private int getRenderWidth()
   {
-    int i3 = this.i;
-    int i4 = this.j;
-    int i1 = getOverScrollMode();
-    int i7;
-    int i5;
-    int i6;
-    int i2;
-    if ((i1 == 0) || ((i1 == 1) && (i3 > 0)))
-    {
-      i1 = 1;
-      i7 = getScrollX() + this.h;
-      i5 = this.h;
-      i6 = i7 + paramInt;
-      if (i7 >= i4)
-      {
-        i2 = paramInt;
-        if (i7 <= i3) {}
-      }
-      else
-      {
-        i2 = b(paramInt, i3);
-      }
-      if ((i1 == 0) || ((i6 >= i4) && (i6 <= i3))) {
-        break label204;
-      }
-      if (i6 >= i4) {
-        break label190;
-      }
-      paramInt = i6 - getScrollX() - i4;
-      label118:
-      i1 = getWidth();
-      i2 = this.jdField_d_of_type_Int;
-      overScrollBy(paramInt, 0, getScrollX(), 0, 0, 0, i1 - i2, 0, true);
-      label149:
-      if (i6 >= i4) {
-        break label231;
-      }
-      this.h = i4;
-    }
-    for (;;)
-    {
-      if (i5 != this.h)
-      {
-        c();
-        requestLayout();
-      }
-      this.jdField_a_of_type_Float = paramFloat;
-      return;
-      i1 = 0;
-      break;
-      label190:
-      paramInt = i6 - getScrollX() - i3;
-      break label118;
-      label204:
-      if (i7 != i5) {
-        scrollTo(0, 0);
-      }
-      this.h += i2;
-      break label149;
-      label231:
-      if (i6 > i3) {
-        this.h = i3;
-      }
-    }
+    return getWidth() - getPaddingLeft() - getPaddingRight();
   }
   
-  private void a(Canvas paramCanvas)
-  {
-    int i2 = getChildCount();
-    Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
-    this.jdField_a_of_type_AndroidGraphicsRect.top = getPaddingTop();
-    this.jdField_a_of_type_AndroidGraphicsRect.bottom = (this.jdField_a_of_type_AndroidGraphicsRect.top + a());
-    int i1 = 0;
-    while (i1 < i2)
-    {
-      if ((i1 != i2 - 1) || (!a(this.l)))
-      {
-        View localView = getChildAt(i1);
-        localRect.left = localView.getRight();
-        localRect.right = (localView.getRight() + this.jdField_f_of_type_Int);
-        if (localRect.left < getPaddingLeft()) {
-          localRect.left = getPaddingLeft();
-        }
-        if (localRect.right > getWidth() - getPaddingRight()) {
-          localRect.right = (getWidth() - getPaddingRight());
-        }
-        a(paramCanvas, localRect);
-        if ((i1 == 0) && (localView.getLeft() > getPaddingLeft()))
-        {
-          localRect.left = getPaddingLeft();
-          localRect.right = localView.getLeft();
-          a(paramCanvas, localRect);
-        }
-      }
-      i1 += 1;
-    }
-  }
-  
-  private void a(Canvas paramCanvas, Rect paramRect)
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramRect);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    }
-  }
-  
-  private void a(MotionEvent paramMotionEvent)
-  {
-    int i1 = (paramMotionEvent.getAction() & 0xFF00) >> 8;
-    if (paramMotionEvent.getPointerId(i1) == this.jdField_c_of_type_Int) {
-      if (i1 != 0) {
-        break label83;
-      }
-    }
-    label83:
-    for (i1 = 1;; i1 = 0)
-    {
-      this.jdField_a_of_type_Float = paramMotionEvent.getX(i1);
-      this.jdField_c_of_type_Int = paramMotionEvent.getPointerId(i1);
-      if (this.jdField_a_of_type_AndroidViewVelocityTracker != null) {
-        this.jdField_a_of_type_AndroidViewVelocityTracker.clear();
-      }
-      this.t = ((int)paramMotionEvent.getX(i1));
-      this.u = ((int)paramMotionEvent.getY(i1));
-      return;
-    }
-  }
-  
-  private void a(View paramView)
-  {
-    ViewGroup.LayoutParams localLayoutParams = a(paramView);
-    int i2 = ViewGroup.getChildMeasureSpec(this.jdField_b_of_type_Int, getPaddingTop() + getPaddingBottom(), localLayoutParams.height);
-    if (localLayoutParams.width > 0) {}
-    for (int i1 = View.MeasureSpec.makeMeasureSpec(localLayoutParams.width, 1073741824);; i1 = View.MeasureSpec.makeMeasureSpec(0, 0))
-    {
-      paramView.measure(i1, i2);
-      return;
-    }
-  }
-  
-  private boolean a(int paramInt1, int paramInt2)
+  private boolean inChild(int paramInt1, int paramInt2)
   {
     if (getChildCount() > 0)
     {
-      int i1 = getScrollX();
+      int i = getScrollX();
       View localView1;
-      if (this.jdField_d_of_type_Boolean)
+      if (this.isFromRightToLeft)
       {
         localView1 = getChildAt(getChildCount() - 1);
-        if (!this.jdField_d_of_type_Boolean) {
+        if (!this.isFromRightToLeft) {
           break label97;
         }
       }
       label97:
       for (View localView2 = getChildAt(0);; localView2 = getChildAt(getChildCount() - 1))
       {
-        if ((paramInt1 < localView1.getLeft() - i1) || (paramInt2 < localView1.getTop()) || (paramInt1 >= localView2.getRight() - i1) || (paramInt2 >= localView2.getBottom())) {
+        if ((paramInt1 < localView1.getLeft() - i) || (paramInt2 < localView1.getTop()) || (paramInt1 >= localView2.getRight() - i) || (paramInt2 >= localView2.getBottom())) {
           break label112;
         }
         return true;
@@ -410,72 +259,46 @@ public class HorizontalListView
     return false;
   }
   
-  private int b()
+  private void initOrResetVelocityTracker()
   {
-    return getWidth() - getPaddingLeft() - getPaddingRight();
-  }
-  
-  private int b(int paramInt1, int paramInt2)
-  {
-    int i2 = getScrollX();
-    int i1 = i2;
-    if (getScrollX() > 0)
+    if (this.mVelocityTracker == null)
     {
-      i1 = i2;
-      if (getScrollX() > paramInt2) {
-        i1 = getScrollX() - paramInt2;
-      }
+      this.mVelocityTracker = VelocityTracker.obtain();
+      return;
     }
-    paramInt2 = getWidth();
-    if (paramInt1 * i1 < 0) {}
-    while (paramInt2 == 0) {
-      return paramInt1;
-    }
-    return (paramInt2 - Math.abs(i1)) * paramInt1 / paramInt2 / 2;
+    this.mVelocityTracker.clear();
   }
   
-  private void b()
+  private void initVelocityTrackerIfNotExists()
   {
-    int i2 = getChildCount();
-    int i1 = 0;
-    while (i1 < i2)
-    {
-      a(getChildAt(i1));
-      i1 += 1;
+    if (this.mVelocityTracker == null) {
+      this.mVelocityTracker = VelocityTracker.obtain();
     }
   }
   
-  private void b(int paramInt)
+  private void initializeRecycledViewCache(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    int i1 = 0;
-    while (i1 < paramInt)
+    this.mRemovedViewsCache.clear();
+    int i = 0;
+    while (i < paramInt)
     {
-      this.jdField_a_of_type_JavaUtilList.add(new LinkedList());
-      i1 += 1;
+      this.mRemovedViewsCache.add(new LinkedList());
+      i += 1;
     }
   }
   
-  private void b(View paramView)
+  private boolean isItemViewTypeValid(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidViewView != paramView)
-    {
-      c();
-      this.jdField_a_of_type_AndroidViewView = paramView;
-    }
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setPressed(true);
-    }
-    setPressed(true);
+    return (paramInt >= 0) && (paramInt < this.mRemovedViewsCache.size());
   }
   
-  private void b(View paramView, int paramInt)
+  private void markViewType(View paramView, int paramInt)
   {
     try
     {
-      paramInt = this.jdField_a_of_type_AndroidWidgetListAdapter.getItemViewType(paramInt);
-      if ((paramView != null) && (b(paramInt))) {
-        paramView.setTag(2131433004, Integer.valueOf(paramInt));
+      paramInt = this.mAdapter.getItemViewType(paramInt);
+      if ((paramView != null) && (isItemViewTypeValid(paramInt))) {
+        paramView.setTag(2131690192, Integer.valueOf(paramInt));
       }
       return;
     }
@@ -489,37 +312,263 @@ public class HorizontalListView
     }
   }
   
-  private boolean b(int paramInt)
+  private void measureChild(View paramView)
   {
-    return (paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size());
+    ViewGroup.LayoutParams localLayoutParams = getLayoutParams(paramView);
+    int j = ViewGroup.getChildMeasureSpec(this.mHeightMeasureSpec, getPaddingTop() + getPaddingBottom(), localLayoutParams.height);
+    if (localLayoutParams.width > 0) {}
+    for (int i = View.MeasureSpec.makeMeasureSpec(localLayoutParams.width, 1073741824);; i = View.MeasureSpec.makeMeasureSpec(0, 0))
+    {
+      paramView.measure(i, j);
+      return;
+    }
   }
   
-  private View c(int paramInt)
+  private int measureWidthOfChildren(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    View localView1 = a(paramInt);
-    setTag(2131362520, Boolean.valueOf(true));
-    View localView2 = this.jdField_a_of_type_AndroidWidgetListAdapter.getView(paramInt, localView1, this);
-    b(localView2, paramInt);
+    Object localObject = this.mAdapter;
+    if (localObject == null) {
+      paramInt1 = getPaddingLeft() + getPaddingRight();
+    }
+    int i;
+    int k;
+    label87:
+    do
+    {
+      return paramInt1;
+      int m = getPaddingLeft() + getPaddingRight();
+      if ((this.mDividerWidth <= 0) || (this.mDivider == null)) {
+        break;
+      }
+      i = this.mDividerWidth;
+      paramInt4 = m;
+      k = paramInt1;
+      int j = paramInt2;
+      if (paramInt2 == -1)
+      {
+        j = ((ListAdapter)localObject).getCount() - 1;
+        k = paramInt1;
+        paramInt4 = m;
+      }
+      if (k > j) {
+        break label194;
+      }
+      localObject = obtainView(k);
+      if (localObject == null) {
+        break label170;
+      }
+      measureChild((View)localObject);
+      paramInt1 = paramInt4;
+      if (k > 0) {
+        paramInt1 = paramInt4 + i;
+      }
+      paramInt2 = paramInt1 + ((View)localObject).getMeasuredWidth();
+      recycleView(k, (View)localObject);
+      paramInt1 = paramInt3;
+    } while (paramInt2 > paramInt3);
+    paramInt1 = paramInt2;
+    for (;;)
+    {
+      k += 1;
+      paramInt4 = paramInt1;
+      break label87;
+      i = 0;
+      break;
+      label170:
+      paramInt1 = paramInt4;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("HorizontalListView", 2, "measureWidthOfChildren obtainView is null");
+        paramInt1 = paramInt4;
+      }
+    }
+    label194:
+    return paramInt4;
+  }
+  
+  private View obtainView(int paramInt)
+  {
+    View localView1 = getRecycledView(paramInt);
+    setTag(2131367750, Boolean.valueOf(true));
+    View localView2 = this.mAdapter.getView(paramInt, localView1, this);
+    markViewType(localView2, paramInt);
     if ((localView1 != null) && (localView2 != localView1)) {
-      a(paramInt, localView1);
+      recycleView(paramInt, localView1);
     }
     if (localView2 != null) {
-      c(localView2, paramInt);
+      setItemViewLayoutParams(localView2, paramInt);
     }
     return localView2;
   }
   
-  private void c()
+  private View obtainView(int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null)
-    {
-      this.jdField_a_of_type_AndroidViewView.setPressed(false);
-      this.jdField_a_of_type_AndroidViewView = null;
+    View localView1 = getRecycledView(paramInt);
+    setTag(2131367750, Boolean.valueOf(paramBoolean));
+    View localView2 = this.mAdapter.getView(paramInt, localView1, this);
+    markViewType(localView2, paramInt);
+    if ((localView1 != null) && (localView2 != localView1)) {
+      recycleView(paramInt, localView1);
     }
-    setPressed(false);
+    if (localView2 != null) {
+      setItemViewLayoutParams(localView2, paramInt);
+    }
+    return localView2;
   }
   
-  private void c(View paramView, int paramInt)
+  private void onSecondaryPointerUp(MotionEvent paramMotionEvent)
+  {
+    int i = (paramMotionEvent.getAction() & 0xFF00) >> 8;
+    if (paramMotionEvent.getPointerId(i) == this.mActivePointerId) {
+      if (i != 0) {
+        break label83;
+      }
+    }
+    label83:
+    for (i = 1;; i = 0)
+    {
+      this.mLastMotionX = paramMotionEvent.getX(i);
+      this.mActivePointerId = paramMotionEvent.getPointerId(i);
+      if (this.mVelocityTracker != null) {
+        this.mVelocityTracker.clear();
+      }
+      this.mMotionX = ((int)paramMotionEvent.getX(i));
+      this.mMotionY = ((int)paramMotionEvent.getY(i));
+      return;
+    }
+  }
+  
+  private void onSizeChange()
+  {
+    setLayoutDirection(this.isFromRightToLeft);
+  }
+  
+  private void reMeasureChilds()
+  {
+    int j = getChildCount();
+    int i = 0;
+    while (i < j)
+    {
+      measureChild(getChildAt(i));
+      i += 1;
+    }
+  }
+  
+  private void recycleBeforeRemoveAll()
+  {
+    int i = getFirstVisiblePosition();
+    int j = getLastVisiblePosition();
+    while ((i >= 0) && (i <= j))
+    {
+      View localView = getChild(i);
+      if (localView != null)
+      {
+        if (this.mRecycleListener != null) {
+          this.mRecycleListener.a(localView);
+        }
+        recycleView(i, localView);
+      }
+      i += 1;
+    }
+  }
+  
+  private void recycleVelocityTracker()
+  {
+    if (this.mVelocityTracker != null)
+    {
+      this.mVelocityTracker.recycle();
+      this.mVelocityTracker = null;
+    }
+  }
+  
+  private int reviseOverScrollByTouch(int paramInt1, int paramInt2)
+  {
+    int j = getScrollX();
+    int i = j;
+    if (getScrollX() > 0)
+    {
+      i = j;
+      if (getScrollX() > paramInt2) {
+        i = getScrollX() - paramInt2;
+      }
+    }
+    paramInt2 = getWidth();
+    if (paramInt1 * i < 0) {}
+    while (paramInt2 == 0) {
+      return paramInt1;
+    }
+    return (paramInt2 - Math.abs(i)) * paramInt1 / paramInt2 / 2;
+  }
+  
+  private void scrollIfNeeded(float paramFloat, int paramInt)
+  {
+    int k = this.mMaxX;
+    int m = this.mMinX;
+    int i = getOverScrollMode();
+    int i2;
+    int n;
+    int i1;
+    int j;
+    if ((i == 0) || ((i == 1) && (k > 0)))
+    {
+      i = 1;
+      i2 = getScrollX() + this.mNextX;
+      n = this.mNextX;
+      i1 = i2 + paramInt;
+      if (i2 >= m)
+      {
+        j = paramInt;
+        if (i2 <= k) {}
+      }
+      else
+      {
+        j = reviseOverScrollByTouch(paramInt, k);
+      }
+      if ((i == 0) || ((i1 >= m) && (i1 <= k))) {
+        break label204;
+      }
+      if (i1 >= m) {
+        break label190;
+      }
+      paramInt = i1 - getScrollX() - m;
+      label118:
+      i = getWidth();
+      j = this.MIN_SPACE;
+      overScrollBy(paramInt, 0, getScrollX(), 0, 0, 0, i - j, 0, true);
+      label149:
+      if (i1 >= m) {
+        break label231;
+      }
+      this.mNextX = m;
+    }
+    for (;;)
+    {
+      if (n != this.mNextX)
+      {
+        unpressTouchedView();
+        requestLayout();
+      }
+      this.mLastMotionX = paramFloat;
+      return;
+      i = 0;
+      break;
+      label190:
+      paramInt = i1 - getScrollX() - k;
+      break label118;
+      label204:
+      if (i2 != n) {
+        scrollTo(0, 0);
+      }
+      this.mNextX += j;
+      break label149;
+      label231:
+      if (i1 > k) {
+        this.mNextX = k;
+      }
+    }
+  }
+  
+  private void setItemViewLayoutParams(View paramView, int paramInt)
   {
     ViewGroup.LayoutParams localLayoutParams2 = paramView.getLayoutParams();
     ViewGroup.LayoutParams localLayoutParams1;
@@ -537,774 +586,231 @@ public class HorizontalListView
     }
   }
   
-  private void d()
+  private void unpressTouchedView()
   {
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker == null)
+    if (this.mViewBeingTouched != null)
     {
-      this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
-      return;
+      this.mViewBeingTouched.setPressed(false);
+      this.mViewBeingTouched = null;
     }
-    this.jdField_a_of_type_AndroidViewVelocityTracker.clear();
+    setPressed(false);
   }
   
-  private void e()
+  private void updateTouchedView(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-      this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
-    }
-  }
-  
-  private void f()
-  {
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker != null)
+    if (this.mViewBeingTouched != paramView)
     {
-      this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
-      this.jdField_a_of_type_AndroidViewVelocityTracker = null;
+      unpressTouchedView();
+      this.mViewBeingTouched = paramView;
     }
-  }
-  
-  private void g()
-  {
-    if (jdField_a_of_type_Boolean) {
-      a("checkSpringback", new Object[] { Integer.valueOf(this.p) });
+    if (this.mViewBeingTouched != null) {
+      this.mViewBeingTouched.setPressed(true);
     }
-    if (this.jdField_d_of_type_JavaLangRunnable == null) {
-      this.jdField_d_of_type_JavaLangRunnable = new amca(this);
-    }
-    removeCallbacks(this.jdField_d_of_type_JavaLangRunnable);
-    getHandler().post(this.jdField_d_of_type_JavaLangRunnable);
+    setPressed(true);
   }
   
-  private void h()
+  protected void addAndMeasureChild(View paramView, int paramInt)
   {
-    this.jdField_f_of_type_Boolean = false;
-    f();
+    addViewInLayout(paramView, paramInt, getLayoutParams(paramView), true);
+    measureChild(paramView);
   }
   
-  private void i()
+  protected boolean checkScrollToChild()
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetHorizontalListView$RunningOutOfDataListener != null) && (this.jdField_a_of_type_AndroidWidgetListAdapter != null) && (this.jdField_a_of_type_AndroidWidgetListAdapter.getCount() - (this.l + 1) < this.jdField_a_of_type_Int) && (!this.jdField_e_of_type_Boolean))
-    {
-      this.jdField_e_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentWidgetHorizontalListView$RunningOutOfDataListener.a();
-    }
-  }
-  
-  public float a()
-  {
-    return 0.005F;
-  }
-  
-  public int a(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int a(int paramInt1, int paramInt2)
-  {
-    Object localObject2 = this.jdField_b_of_type_AndroidGraphicsRect;
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
-    {
-      this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
-      localObject1 = this.jdField_b_of_type_AndroidGraphicsRect;
-    }
-    int i1 = getChildCount() - 1;
-    while (i1 >= 0)
-    {
-      localObject2 = getChildAt(i1);
-      if (((View)localObject2).getVisibility() == 0)
-      {
-        ((View)localObject2).getHitRect((Rect)localObject1);
-        if (((Rect)localObject1).contains(paramInt1, paramInt2)) {
-          return getFirstVisiblePosition() + i1;
-        }
-      }
-      i1 -= 1;
-    }
-    return -1;
-  }
-  
-  ContextMenu.ContextMenuInfo a(View paramView, int paramInt, long paramLong)
-  {
-    return new AdapterView.AdapterContextMenuInfo(paramView, paramInt, paramLong);
-  }
-  
-  protected View a(int paramInt)
-  {
-    int i1 = -1;
-    try
-    {
-      paramInt = this.jdField_a_of_type_AndroidWidgetListAdapter.getItemViewType(paramInt);
-      if (b(paramInt)) {
-        return (View)((Queue)this.jdField_a_of_type_JavaUtilList.get(paramInt)).poll();
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-        paramInt = i1;
-      }
-    }
-    return null;
-  }
-  
-  public ListAdapter a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_g_of_type_Int = paramInt;
-  }
-  
-  protected void a(int paramInt1, int paramInt2)
-  {
-    int i1 = paramInt1;
-    View localView;
-    if (this.jdField_d_of_type_Boolean)
-    {
-      if ((paramInt1 + paramInt2 + this.jdField_f_of_type_Int < getWidth()) && (this.l >= 1))
-      {
-        this.l -= 1;
-        localView = this.jdField_a_of_type_AndroidWidgetListAdapter.getView(this.l, a(this.l), this);
-        a(localView, 0);
-        label82:
-        int i2;
-        if (this.l == 0)
-        {
-          i1 = 0;
-          i1 = paramInt1 + (i1 + localView.getMeasuredWidth());
-          i2 = this.jdField_e_of_type_Int;
-          if (getWidth() - (i1 + paramInt2) != 0) {
-            break label136;
-          }
-        }
-        label136:
-        for (paramInt1 = localView.getMeasuredWidth();; paramInt1 = this.jdField_f_of_type_Int + localView.getMeasuredWidth())
-        {
-          this.jdField_e_of_type_Int = (i2 - paramInt1);
-          paramInt1 = i1;
-          break;
-          i1 = this.jdField_f_of_type_Int;
-          break label82;
-        }
-      }
-    }
-    else {
-      while ((i1 + paramInt2 + this.jdField_f_of_type_Int < getWidth()) && (this.l + 1 < this.jdField_a_of_type_AndroidWidgetListAdapter.getCount()))
-      {
-        this.l += 1;
-        if (this.k < 0) {
-          this.k = this.l;
-        }
-        localView = a(this.l, false);
-        if (localView == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("HorizontalListView", 2, "fillListRight obtainView is null");
-          }
-        }
-        else
-        {
-          a(localView, -1);
-          if (this.l == 0) {}
-          for (paramInt1 = 0;; paramInt1 = this.jdField_f_of_type_Int)
-          {
-            paramInt1 = i1 + (paramInt1 + localView.getMeasuredWidth());
-            i();
-            i1 = paramInt1;
-            if (!jdField_a_of_type_Boolean) {
-              break;
-            }
-            a("fillListRight", new Object[] { "mRightViewAdapterIndex", Integer.valueOf(this.l) });
-            i1 = paramInt1;
-            break;
-          }
-        }
-      }
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.jdField_a_of_type_Amcf == null) {
-      this.jdField_a_of_type_Amcf = new amcf(this);
-    }
-    this.jdField_a_of_type_Amcf.a(paramInt1, paramInt2, paramInt3);
-  }
-  
-  protected void a(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    if (((paramBoolean) || (paramInt1 + paramInt2 - this.jdField_f_of_type_Int > 0)) && (this.k + 1 < this.jdField_a_of_type_AndroidWidgetListAdapter.getCount()))
-    {
-      this.k += 1;
-      if (this.l < 0) {
-        this.l = this.k;
-      }
-      View localView = this.jdField_a_of_type_AndroidWidgetListAdapter.getView(this.k, a(this.k), this);
-      a(localView, -1);
-      if (this.k == 0) {}
-      for (int i1 = getWidth() - localView.getMeasuredWidth();; i1 = -(localView.getMeasuredWidth() + i1))
-      {
-        paramInt1 += i1;
-        paramBoolean = false;
-        break;
-        i1 = this.jdField_f_of_type_Int;
-      }
-    }
-  }
-  
-  protected void a(int paramInt, View paramView)
-  {
-    try
-    {
-      Object localObject = paramView.getTag(2131433004);
-      if ((localObject instanceof Integer))
-      {
-        i1 = ((Integer)localObject).intValue();
-        i2 = i1;
-      }
-    }
-    catch (Throwable localThrowable1)
-    {
-      for (;;)
-      {
-        try
-        {
-          if (!b(i1)) {
-            i2 = this.jdField_a_of_type_AndroidWidgetListAdapter.getItemViewType(paramInt);
-          }
-          if (b(i2))
-          {
-            ((Queue)this.jdField_a_of_type_JavaUtilList.get(i2)).offer(paramView);
-            if (this.jdField_a_of_type_ComTencentWidgetHorizontalListView$RecycleListener != null) {
-              this.jdField_a_of_type_ComTencentWidgetHorizontalListView$RecycleListener.b(paramView);
-            }
-          }
-          return;
-        }
-        catch (Throwable localThrowable2)
-        {
-          int i2;
-          continue;
-        }
-        localThrowable1 = localThrowable1;
-        int i1 = -1;
-        localThrowable1.printStackTrace();
-        i2 = i1;
-        continue;
-        i1 = -1;
-      }
-    }
-  }
-  
-  protected void a(View paramView, int paramInt)
-  {
-    addViewInLayout(paramView, paramInt, a(paramView), true);
-    a(paramView);
-  }
-  
-  public void a(String paramString, Object... paramVarArgs)
-  {
-    int i1 = 0;
-    if ((jdField_a_of_type_Boolean) && (QLog.isDevelopLevel()))
-    {
-      StringBuilder localStringBuilder = new StringBuilder(200);
-      localStringBuilder.setLength(0);
-      localStringBuilder.append(paramString);
-      localStringBuilder.append(", mDisplayOffset = ").append(this.jdField_e_of_type_Int);
-      localStringBuilder.append(", mMaxX = ").append(this.i);
-      localStringBuilder.append(", mMinX = ").append(this.j);
-      localStringBuilder.append(", mCurrentX = ").append(this.jdField_g_of_type_Int);
-      localStringBuilder.append(", mNextX = ").append(this.h);
-      localStringBuilder.append(", mScrollX = ").append(getScrollX());
-      localStringBuilder.append(", mLeftViewAdapterIndex= ").append(this.k);
-      localStringBuilder.append(", mRightViewAdapterIndex = ").append(this.l);
-      if ((paramVarArgs != null) && (paramVarArgs.length > 0))
-      {
-        int i2 = paramVarArgs.length;
-        while (i1 < i2)
-        {
-          paramString = paramVarArgs[i1];
-          localStringBuilder.append(",").append(paramString);
-          i1 += 1;
-        }
-      }
-      QLog.i("HorizontalListView", 4, localStringBuilder.toString());
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      a();
-    }
-    b(this.jdField_d_of_type_Boolean);
-    removeAllViewsInLayout();
-    requestLayout();
-  }
-  
-  public boolean a()
-  {
-    if (!this.jdField_c_of_type_Boolean) {}
-    int i1;
+    if (!this.mStayDisplayOffsetZero) {}
+    int i;
     do
     {
       View localView;
       do
       {
         return false;
-        if (!this.jdField_d_of_type_Boolean) {
-          if (Math.abs(this.jdField_g_of_type_Int - this.i) < this.o) {
-            i1 = 1;
+        if (!this.isFromRightToLeft) {
+          if (Math.abs(this.mCurrentX - this.mMaxX) < this.mTouchSlop) {
+            i = 1;
           }
         }
-        while (i1 != 0)
+        while (i != 0)
         {
-          i1 = this.i;
-          this.jdField_g_of_type_Int = i1;
-          this.h = i1;
+          i = this.mMaxX;
+          this.mCurrentX = i;
+          this.mNextX = i;
           invalidate();
           return false;
-          i1 = 0;
+          i = 0;
           continue;
-          if (Math.abs(this.jdField_g_of_type_Int - this.j) < this.o) {
-            i1 = 1;
+          if (Math.abs(this.mCurrentX - this.mMinX) < this.mTouchSlop) {
+            i = 1;
           } else {
-            i1 = 0;
+            i = 0;
           }
         }
-        if (this.o + this.jdField_e_of_type_Int >= 0)
+        if (this.mTouchSlop + this.mDisplayOffset >= 0)
         {
-          this.h += this.jdField_e_of_type_Int;
+          this.mNextX += this.mDisplayOffset;
           invalidate();
           return false;
         }
         localView = getChildAt(0);
       } while (localView == null);
-      i1 = this.h;
-      int i2 = this.jdField_e_of_type_Int + i1;
-      int i3 = localView.getMeasuredWidth();
-      i1 = i2;
-      if (this.jdField_e_of_type_Int <= -(i3 / 2 + 0.5D)) {
-        i1 = i2 + i3;
+      i = this.mNextX;
+      int j = this.mDisplayOffset + i;
+      int k = localView.getMeasuredWidth();
+      i = j;
+      if (this.mDisplayOffset <= -(k / 2 + 0.5D)) {
+        i = j + k;
       }
-    } while (!this.jdField_a_of_type_ComTencentWidgetOverScroller.a(this.h + getScrollX(), 0, i1, i1, 0, 0));
-    if (jdField_a_of_type_Boolean) {
-      a("checkScrollToChild", new Object[] { Integer.valueOf(this.p), Integer.valueOf(i1) });
+    } while (!this.mScroller.a(this.mNextX + getScrollX(), 0, i, i, 0, 0));
+    if (DEBUG) {
+      log("checkScrollToChild", new Object[] { Integer.valueOf(this.mTouchMode), Integer.valueOf(i) });
     }
     invalidate();
     return true;
   }
   
-  protected boolean a(int paramInt)
-  {
-    return paramInt == this.jdField_a_of_type_AndroidWidgetListAdapter.getCount() - 1;
-  }
-  
-  public boolean a(View paramView, int paramInt, long paramLong)
-  {
-    AdapterView.OnItemLongClickListener localOnItemLongClickListener = getOnItemLongClickListener();
-    if (localOnItemLongClickListener != null) {}
-    for (boolean bool1 = localOnItemLongClickListener.onItemLongClick(this, paramView, paramInt, paramLong);; bool1 = false)
-    {
-      boolean bool2 = bool1;
-      if (!bool1)
-      {
-        this.jdField_a_of_type_AndroidViewContextMenu$ContextMenuInfo = a(paramView, paramInt, paramLong);
-        bool2 = super.showContextMenuForChild(this);
-      }
-      if (bool2) {
-        performHapticFeedback(0);
-      }
-      return bool2;
-    }
-  }
-  
-  protected View b()
-  {
-    if (this.jdField_d_of_type_Boolean) {
-      return getChildAt(getChildCount() - 1);
-    }
-    return getChildAt(0);
-  }
-  
-  public View b(int paramInt)
-  {
-    if ((paramInt >= this.k) && (paramInt <= this.l)) {
-      return getChildAt(paramInt - this.k);
-    }
-    return null;
-  }
-  
-  protected void b(int paramInt1, int paramInt2)
-  {
-    while ((paramInt1 + paramInt2 - this.jdField_f_of_type_Int > 0) && (this.k >= 1))
-    {
-      this.k -= 1;
-      View localView = a(this.k, false);
-      if (localView == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("HorizontalListView", 2, "fillListLeft obtainView is null");
-        }
-      }
-      else
-      {
-        a(localView, 0);
-        int i1;
-        label83:
-        int i2;
-        if (this.k == 0)
-        {
-          i1 = localView.getMeasuredWidth();
-          i1 = paramInt1 - i1;
-          i2 = this.jdField_e_of_type_Int;
-          if (i1 + paramInt2 != 0) {
-            break label167;
-          }
-        }
-        label167:
-        for (paramInt1 = localView.getMeasuredWidth();; paramInt1 = this.jdField_f_of_type_Int + localView.getMeasuredWidth())
-        {
-          this.jdField_e_of_type_Int = (i2 - paramInt1);
-          paramInt1 = i1;
-          if (!jdField_a_of_type_Boolean) {
-            break;
-          }
-          a("fillListLeft", new Object[] { "mLeftViewAdapterIndex", Integer.valueOf(this.k) });
-          paramInt1 = i1;
-          break;
-          i1 = this.jdField_f_of_type_Int + localView.getMeasuredWidth();
-          break label83;
-        }
-      }
-    }
-  }
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.jdField_a_of_type_Amcf == null) {
-      this.jdField_a_of_type_Amcf = new amcf(this);
-    }
-    this.jdField_a_of_type_Amcf.b(paramInt1, paramInt2, paramInt3);
-  }
-  
-  @TargetApi(9)
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentWidgetOverScroller = new OverScroller(getContext());
-    this.jdField_a_of_type_ComTencentWidgetOverScroller.a(a());
-    ViewConfiguration localViewConfiguration = ViewConfiguration.get(getContext());
-    this.o = localViewConfiguration.getScaledTouchSlop();
-    this.q = localViewConfiguration.getScaledMinimumFlingVelocity();
-    this.r = localViewConfiguration.getScaledMaximumFlingVelocity();
-    setLayoutDirection(paramBoolean);
-    this.jdField_g_of_type_Int = 0;
-    this.h = this.jdField_g_of_type_Int;
-    this.k = -1;
-    this.l = -1;
-    this.jdField_e_of_type_Int = 0;
-    setFocusable(true);
-    setDescendantFocusability(262144);
-    setWillNotDraw(false);
-    this.p = -1;
-    g(4097);
-    this.jdField_a_of_type_AndroidDatabaseDataSetObserver = new amcd(this);
-  }
-  
-  int c(int paramInt)
-  {
-    int i1 = getChildCount();
-    if (i1 > 0)
-    {
-      i1 -= 1;
-      while (i1 >= 0)
-      {
-        if (paramInt >= getChildAt(i1).getLeft()) {
-          return i1 + getFirstVisiblePosition();
-        }
-        i1 -= 1;
-      }
-    }
-    return -1;
-  }
-  
-  protected View c()
-  {
-    if (this.jdField_d_of_type_Boolean) {
-      return getChildAt(0);
-    }
-    return getChildAt(getChildCount() - 1);
-  }
-  
-  protected void c(int paramInt)
-  {
-    int i3 = 0;
-    int i2 = 0;
-    if (this.jdField_d_of_type_Boolean)
-    {
-      localView = b();
-      boolean bool;
-      if (localView != null)
-      {
-        i1 = localView.getLeft();
-        bool = false;
-      }
-      for (;;)
-      {
-        a(i1, paramInt, bool);
-        localView = c();
-        i1 = i2;
-        if (localView != null) {
-          i1 = localView.getRight();
-        }
-        a(i1, paramInt);
-        return;
-        bool = true;
-        i1 = 0;
-      }
-    }
-    View localView = c();
-    if (localView != null) {}
-    for (int i1 = localView.getRight();; i1 = 0)
-    {
-      a(i1, paramInt);
-      localView = b();
-      i1 = i3;
-      if (localView != null) {
-        i1 = localView.getLeft();
-      }
-      b(i1, paramInt);
-      return;
-    }
-  }
-  
-  public void c(int paramInt1, int paramInt2)
-  {
-    this.p = 4;
-    g(4099);
-    int i1 = this.jdField_g_of_type_Int;
-    if (this.jdField_a_of_type_ComTencentWidgetOverScroller.a())
-    {
-      i1 = getScrollX();
-      i1 = this.h + i1;
-    }
-    this.jdField_a_of_type_ComTencentWidgetOverScroller.a(i1, 0, -paramInt1, 0, paramInt2);
-    this.jdField_a_of_type_Float = 0.0F;
-    f();
-    ViewCompat.postInvalidateOnAnimation(this);
-  }
-  
-  public boolean c()
-  {
-    return (this.jdField_g_of_type_Boolean) && ((getParent() instanceof View));
-  }
-  
   public void computeScroll()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetOverScroller.b())
+    if (this.mScroller.b())
     {
-      i1 = getScrollX();
-      int i3 = this.h + i1;
-      int i4 = this.jdField_a_of_type_ComTencentWidgetOverScroller.a();
-      int i5 = this.h;
-      if (jdField_a_of_type_Boolean) {
-        a("computeScroll", new Object[] { "MOVING", Integer.valueOf(i3), Integer.valueOf(i4) });
+      i = getScrollX();
+      int k = this.mNextX + i;
+      int m = this.mScroller.a();
+      int n = this.mNextX;
+      if (DEBUG) {
+        log("computeScroll", new Object[] { "MOVING", Integer.valueOf(k), Integer.valueOf(m) });
       }
-      int i6;
-      int i8;
-      int i2;
-      if (i3 != i4)
+      int i1;
+      int i3;
+      int j;
+      if (k != m)
       {
-        i6 = this.i;
-        int i7 = this.j;
-        i1 = getOverScrollMode();
-        if ((i1 == 0) || ((i1 == 1) && (i6 > 0)))
+        i1 = this.mMaxX;
+        int i2 = this.mMinX;
+        i = getOverScrollMode();
+        if ((i == 0) || ((i == 1) && (i1 > 0)))
         {
-          i1 = 1;
-          if ((i1 == 0) || ((i4 >= i7) && (i4 <= i6))) {
+          i = 1;
+          if ((i == 0) || ((m >= i2) && (m <= i1))) {
             break label316;
           }
-          i8 = getWidth() - this.jdField_d_of_type_Int;
-          i2 = 0;
-          if ((i4 >= i7) || (i4 >= -i8) || (i4 >= i3)) {
+          i3 = getWidth() - this.MIN_SPACE;
+          j = 0;
+          if ((m >= i2) || (m >= -i3) || (m >= k)) {
             break label255;
           }
-          i1 = 1;
+          i = 1;
           label168:
-          if (i1 == 0) {
+          if (i == 0) {
             break label289;
           }
-          this.jdField_a_of_type_ComTencentWidgetOverScroller.a();
-          this.jdField_a_of_type_ComTencentWidgetOverScroller.a(getScrollX() + this.h, getScrollY(), this.h, this.h, 0, 0);
+          this.mScroller.a();
+          this.mScroller.a(getScrollX() + this.mNextX, getScrollY(), this.mNextX, this.mNextX, 0, 0);
           label210:
-          if (i4 >= i7) {
+          if (m >= i2) {
             break label344;
           }
-          this.h = i7;
+          this.mNextX = i2;
         }
       }
       for (;;)
       {
-        if (i5 != this.h)
+        if (n != this.mNextX)
         {
-          c();
+          unpressTouchedView();
           requestLayout();
         }
         awakenScrollBars();
         postInvalidate();
         return;
-        i1 = 0;
+        i = 0;
         break;
         label255:
-        i1 = i2;
-        if (i6 == 2147483647) {
+        i = j;
+        if (i1 == 2147483647) {
           break label168;
         }
-        i1 = i2;
-        if (i4 <= i6 + i8) {
+        i = j;
+        if (m <= i1 + i3) {
           break label168;
         }
-        i1 = i2;
-        if (i4 <= i3) {
+        i = j;
+        if (m <= k) {
           break label168;
         }
-        i1 = 1;
+        i = 1;
         break label168;
         label289:
-        overScrollBy(i4 - i3, 0, getScrollX(), getScrollY(), 0, 0, i8, 0, false);
+        overScrollBy(m - k, 0, getScrollX(), getScrollY(), 0, 0, i3, 0, false);
         break label210;
         label316:
-        if (i3 != i5) {
+        if (k != n) {
           scrollTo(0, 0);
         }
-        this.h += i4 - i3;
+        this.mNextX += m - k;
         break label210;
         label344:
-        if (i4 > i6)
+        if (m > i1)
         {
-          this.h = i6;
+          this.mNextX = i1;
           continue;
-          if (Math.abs(getScrollX()) < this.o)
+          if (Math.abs(getScrollX()) < this.mTouchSlop)
           {
-            this.h = i3;
+            this.mNextX = k;
             scrollTo(0, 0);
           }
           else
           {
-            g();
+            checkSpringback();
           }
         }
       }
     }
-    int i1 = getScrollX();
-    if ((this.n == 4099) || ((this.n == 4097) && (this.i == this.h) && (i1 != 0))) {}
+    int i = getScrollX();
+    if ((this.mCurrentScrollState == 4099) || ((this.mCurrentScrollState == 4097) && (this.mMaxX == this.mNextX) && (i != 0))) {}
     for (boolean bool = true;; bool = false)
     {
-      if ((jdField_a_of_type_Boolean) && (QLog.isDevelopLevel())) {
-        a("computeScroll", new Object[] { "over", Integer.valueOf(this.n), Boolean.valueOf(bool) });
+      if ((DEBUG) && (QLog.isDevelopLevel())) {
+        log("computeScroll", new Object[] { "over", Integer.valueOf(this.mCurrentScrollState), Boolean.valueOf(bool) });
       }
       if (!bool) {
         break;
       }
-      this.p = -1;
-      if (Math.abs(i1) >= this.o) {
+      this.mTouchMode = -1;
+      if (Math.abs(i) >= this.mTouchSlop) {
         break label526;
       }
       scrollTo(0, 0);
-      g(4097);
+      setCurrentScrollState(4097);
       return;
     }
     label526:
-    g();
+    checkSpringback();
   }
   
-  public int d()
+  ContextMenu.ContextMenuInfo createContextMenuInfo(View paramView, int paramInt, long paramLong)
   {
-    return this.jdField_g_of_type_Int;
+    return new AdapterView.AdapterContextMenuInfo(paramView, paramInt, paramLong);
   }
   
-  protected void d(int paramInt)
-  {
-    int i2;
-    int i1;
-    if (this.jdField_d_of_type_Boolean)
-    {
-      localView = c();
-      if ((localView != null) && (localView.getLeft() + paramInt >= getWidth()))
-      {
-        i2 = this.jdField_e_of_type_Int;
-        if (a(this.l)) {}
-        for (i1 = localView.getMeasuredWidth();; i1 = this.jdField_f_of_type_Int + localView.getMeasuredWidth())
-        {
-          this.jdField_e_of_type_Int = (i1 + i2);
-          a(this.l, localView);
-          removeViewInLayout(localView);
-          this.l += 1;
-          localView = c();
-          break;
-        }
-      }
-      for (localView = b(); (localView != null) && (localView.getRight() + paramInt <= 0); localView = b())
-      {
-        a(this.k, localView);
-        removeViewInLayout(localView);
-        this.k -= 1;
-      }
-    }
-    View localView = b();
-    if ((localView != null) && (localView.getRight() + paramInt <= 0))
-    {
-      i2 = this.jdField_e_of_type_Int;
-      if (a(this.k)) {}
-      for (i1 = localView.getMeasuredWidth();; i1 = this.jdField_f_of_type_Int + localView.getMeasuredWidth())
-      {
-        this.jdField_e_of_type_Int = (i1 + i2);
-        a(this.k, localView);
-        removeViewInLayout(localView);
-        if (this.jdField_a_of_type_ComTencentWidgetHorizontalListView$OnItemScrollEventListener != null) {
-          this.jdField_a_of_type_ComTencentWidgetHorizontalListView$OnItemScrollEventListener.a(this.k, true);
-        }
-        this.k += 1;
-        localView = b();
-        break;
-      }
-    }
-    for (localView = c(); (localView != null) && (localView.getLeft() + paramInt >= getWidth()); localView = c())
-    {
-      a(this.l, localView);
-      removeViewInLayout(localView);
-      if (this.jdField_a_of_type_ComTencentWidgetHorizontalListView$OnItemScrollEventListener != null) {
-        this.jdField_a_of_type_ComTencentWidgetHorizontalListView$OnItemScrollEventListener.a(this.l, false);
-      }
-      this.l -= 1;
-    }
-  }
-  
-  protected boolean d()
+  protected boolean determineBorderMaxX()
   {
     View localView;
-    int i1;
-    int i2;
-    if (this.jdField_d_of_type_Boolean)
+    int i;
+    int j;
+    if (this.isFromRightToLeft)
     {
-      if (a(this.k))
+      if (isLastItemInAdapter(this.mLeftViewAdapterIndex))
       {
-        localView = b();
+        localView = getLeftmostChild();
         if (localView != null)
         {
-          i1 = this.j;
-          i2 = this.jdField_g_of_type_Int;
-          this.j = (localView.getLeft() - getPaddingLeft() + i2);
-          if (this.j > 0) {
-            this.j = -2147483648;
+          i = this.mMinX;
+          j = this.mCurrentX;
+          this.mMinX = (localView.getLeft() - getPaddingLeft() + j);
+          if (this.mMinX > 0) {
+            this.mMinX = -2147483648;
           }
-          if (this.j == i1) {}
+          if (this.mMinX == i) {}
         }
       }
     }
@@ -1312,25 +818,25 @@ public class HorizontalListView
       do
       {
         return true;
-        if (!a(this.l)) {
+        if (!isLastItemInAdapter(this.mRightViewAdapterIndex)) {
           break;
         }
-        localView = c();
+        localView = getRightmostChild();
         if (localView == null) {
           break;
         }
-        i1 = this.i;
-        i2 = this.jdField_g_of_type_Int;
-        this.i = (localView.getRight() - getPaddingLeft() + i2 - b());
-        if (this.i < 0) {
-          this.i = 0;
+        i = this.mMaxX;
+        j = this.mCurrentX;
+        this.mMaxX = (localView.getRight() - getPaddingLeft() + j - getRenderWidth());
+        if (this.mMaxX < 0) {
+          this.mMaxX = 0;
         }
-      } while (this.i != i1);
+      } while (this.mMaxX != i);
     }
     return false;
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     try
     {
@@ -1342,131 +848,260 @@ public class HorizontalListView
   
   protected void dispatchSetPressed(boolean paramBoolean) {}
   
-  protected void e(int paramInt)
+  protected void fillList(int paramInt)
   {
-    int i3 = 0;
-    int i2 = 0;
-    int i4 = getChildCount();
-    if (i4 > 0)
+    int k = 0;
+    int j = 0;
+    if (this.isFromRightToLeft)
     {
-      if (jdField_a_of_type_Boolean) {
-        a("positionChildren", new Object[] { Integer.valueOf(this.jdField_e_of_type_Int), Integer.valueOf(paramInt), Integer.valueOf(this.jdField_e_of_type_Int + paramInt) });
-      }
-      View localView;
-      if (this.jdField_d_of_type_Boolean)
+      localView = getLeftmostChild();
+      boolean bool;
+      if (localView != null)
       {
-        this.jdField_e_of_type_Int -= paramInt;
-        i1 = getWidth() - this.jdField_e_of_type_Int;
-        paramInt = i2;
-        while (paramInt < i4)
-        {
-          localView = getChildAt(paramInt);
-          i2 = getPaddingRight() + i1;
-          i3 = localView.getMeasuredWidth();
-          int i5 = getPaddingTop();
-          localView.layout(i2 - i3, i5, i2, localView.getMeasuredHeight() + i5);
-          i1 -= localView.getMeasuredWidth() + this.jdField_f_of_type_Int;
-          paramInt += 1;
+        i = localView.getLeft();
+        bool = false;
+      }
+      for (;;)
+      {
+        fillListLeft(i, paramInt, bool);
+        localView = getRightmostChild();
+        i = j;
+        if (localView != null) {
+          i = localView.getRight();
+        }
+        fillListRight(i, paramInt);
+        return;
+        bool = true;
+        i = 0;
+      }
+    }
+    View localView = getRightmostChild();
+    if (localView != null) {}
+    for (int i = localView.getRight();; i = 0)
+    {
+      fillListRight(i, paramInt);
+      localView = getLeftmostChild();
+      i = k;
+      if (localView != null) {
+        i = localView.getLeft();
+      }
+      fillListLeft(i, paramInt);
+      return;
+    }
+  }
+  
+  protected void fillListLeft(int paramInt1, int paramInt2)
+  {
+    while ((paramInt1 + paramInt2 - this.mDividerWidth > 0) && (this.mLeftViewAdapterIndex >= 1))
+    {
+      this.mLeftViewAdapterIndex -= 1;
+      View localView = obtainView(this.mLeftViewAdapterIndex, false);
+      if (localView == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("HorizontalListView", 2, "fillListLeft obtainView is null");
         }
       }
-      if (this.k == 0) {
-        this.j = (this.jdField_e_of_type_Int + this.jdField_g_of_type_Int);
-      }
-      this.jdField_e_of_type_Int += paramInt;
-      int i1 = this.jdField_e_of_type_Int;
-      paramInt = i3;
-      while (paramInt < i4)
+      else
       {
-        localView = getChildAt(paramInt);
-        i2 = getPaddingLeft() + i1;
-        i3 = getPaddingTop();
-        localView.layout(i2, i3, localView.getMeasuredWidth() + i2, localView.getMeasuredHeight() + i3);
-        i1 += localView.getMeasuredWidth() + this.jdField_f_of_type_Int;
-        paramInt += 1;
+        addAndMeasureChild(localView, 0);
+        int i;
+        label83:
+        int j;
+        if (this.mLeftViewAdapterIndex == 0)
+        {
+          i = localView.getMeasuredWidth();
+          i = paramInt1 - i;
+          j = this.mDisplayOffset;
+          if (i + paramInt2 != 0) {
+            break label167;
+          }
+        }
+        label167:
+        for (paramInt1 = localView.getMeasuredWidth();; paramInt1 = this.mDividerWidth + localView.getMeasuredWidth())
+        {
+          this.mDisplayOffset = (j - paramInt1);
+          paramInt1 = i;
+          if (!DEBUG) {
+            break;
+          }
+          log("fillListLeft", new Object[] { "mLeftViewAdapterIndex", Integer.valueOf(this.mLeftViewAdapterIndex) });
+          paramInt1 = i;
+          break;
+          i = this.mDividerWidth + localView.getMeasuredWidth();
+          break label83;
+        }
       }
     }
   }
   
-  public void f(int paramInt)
+  protected void fillListLeft(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    this.p = 6;
-    g(4099);
+    if (((paramBoolean) || (paramInt1 + paramInt2 - this.mDividerWidth > 0)) && (this.mLeftViewAdapterIndex + 1 < this.mAdapter.getCount()))
+    {
+      this.mLeftViewAdapterIndex += 1;
+      if (this.mRightViewAdapterIndex < 0) {
+        this.mRightViewAdapterIndex = this.mLeftViewAdapterIndex;
+      }
+      View localView = this.mAdapter.getView(this.mLeftViewAdapterIndex, getRecycledView(this.mLeftViewAdapterIndex), this);
+      addAndMeasureChild(localView, -1);
+      if (this.mLeftViewAdapterIndex == 0) {}
+      for (int i = getWidth() - localView.getMeasuredWidth();; i = -(localView.getMeasuredWidth() + i))
+      {
+        paramInt1 += i;
+        paramBoolean = false;
+        break;
+        i = this.mDividerWidth;
+      }
+    }
+  }
+  
+  protected void fillListRight(int paramInt1, int paramInt2)
+  {
+    int i = paramInt1;
+    View localView;
+    if (this.isFromRightToLeft)
+    {
+      if ((paramInt1 + paramInt2 + this.mDividerWidth < getWidth()) && (this.mRightViewAdapterIndex >= 1))
+      {
+        this.mRightViewAdapterIndex -= 1;
+        localView = this.mAdapter.getView(this.mRightViewAdapterIndex, getRecycledView(this.mRightViewAdapterIndex), this);
+        addAndMeasureChild(localView, 0);
+        label82:
+        int j;
+        if (this.mRightViewAdapterIndex == 0)
+        {
+          i = 0;
+          i = paramInt1 + (i + localView.getMeasuredWidth());
+          j = this.mDisplayOffset;
+          if (getWidth() - (i + paramInt2) != 0) {
+            break label136;
+          }
+        }
+        label136:
+        for (paramInt1 = localView.getMeasuredWidth();; paramInt1 = this.mDividerWidth + localView.getMeasuredWidth())
+        {
+          this.mDisplayOffset = (j - paramInt1);
+          paramInt1 = i;
+          break;
+          i = this.mDividerWidth;
+          break label82;
+        }
+      }
+    }
+    else {
+      while ((i + paramInt2 + this.mDividerWidth < getWidth()) && (this.mRightViewAdapterIndex + 1 < this.mAdapter.getCount()))
+      {
+        this.mRightViewAdapterIndex += 1;
+        if (this.mLeftViewAdapterIndex < 0) {
+          this.mLeftViewAdapterIndex = this.mRightViewAdapterIndex;
+        }
+        localView = obtainView(this.mRightViewAdapterIndex, false);
+        if (localView == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("HorizontalListView", 2, "fillListRight obtainView is null");
+          }
+        }
+        else
+        {
+          addAndMeasureChild(localView, -1);
+          if (this.mRightViewAdapterIndex == 0) {}
+          for (paramInt1 = 0;; paramInt1 = this.mDividerWidth)
+          {
+            paramInt1 = i + (paramInt1 + localView.getMeasuredWidth());
+            determineIfLowOnData();
+            i = paramInt1;
+            if (!DEBUG) {
+              break;
+            }
+            log("fillListRight", new Object[] { "mRightViewAdapterIndex", Integer.valueOf(this.mRightViewAdapterIndex) });
+            i = paramInt1;
+            break;
+          }
+        }
+      }
+    }
+  }
+  
+  int findMotionColumn(int paramInt)
+  {
+    int i = getChildCount();
+    if (i > 0)
+    {
+      i -= 1;
+      while (i >= 0)
+      {
+        if (paramInt >= getChildAt(i).getLeft()) {
+          return i + getFirstVisiblePosition();
+        }
+        i -= 1;
+      }
+    }
+    return -1;
+  }
+  
+  public void fling(int paramInt)
+  {
+    this.mTouchMode = 6;
+    setCurrentScrollState(4099);
     if (getChildCount() > 0)
     {
-      this.jdField_a_of_type_ComTencentWidgetOverScroller.a(this.h + getScrollX(), 0, a(paramInt), 0, this.j, this.i, 0, 0, Math.max(0, getWidth() / 2), 0);
+      this.mScroller.a(this.mNextX + getScrollX(), 0, getFlingVelocity(paramInt), 0, this.mMinX, this.mMaxX, 0, 0, Math.max(0, getWidth() / 2), 0);
       requestLayout();
     }
   }
   
-  public void g(int paramInt)
+  public ListAdapter getAdapter()
   {
-    int i1 = paramInt;
-    if (this.jdField_c_of_type_Boolean)
-    {
-      i1 = paramInt;
-      if (this.n != paramInt)
-      {
-        i1 = paramInt;
-        if (paramInt == 4097) {
-          switch (this.n)
-          {
-          default: 
-            i1 = paramInt;
-          }
-        }
-      }
+    return this.mAdapter;
+  }
+  
+  public View getChild(int paramInt)
+  {
+    if ((paramInt >= this.mLeftViewAdapterIndex) && (paramInt <= this.mRightViewAdapterIndex)) {
+      return getChildAt(paramInt - this.mLeftViewAdapterIndex);
     }
-    for (;;)
-    {
-      if ((this.n != i1) && (this.jdField_a_of_type_ComTencentWidgetHorizontalListView$OnScrollStateChangedListener != null)) {
-        this.jdField_a_of_type_ComTencentWidgetHorizontalListView$OnScrollStateChangedListener.a(i1);
-      }
-      this.n = i1;
-      return;
-      i1 = paramInt;
-      if (a())
-      {
-        paramInt = 4099;
-        i1 = paramInt;
-        if (jdField_a_of_type_Boolean)
-        {
-          a("setCurrentScrollState", new Object[] { "SCROLL_STATE_TOUCH_SCROLL" });
-          i1 = paramInt;
-          continue;
-          i1 = paramInt;
-          if (a())
-          {
-            i1 = paramInt;
-            if (jdField_a_of_type_Boolean)
-            {
-              a("setCurrentScrollState", new Object[] { "SCROLL_STATE_FLING" });
-              i1 = paramInt;
-            }
-          }
-        }
-      }
-    }
+    return null;
   }
   
   protected ContextMenu.ContextMenuInfo getContextMenuInfo()
   {
-    return this.jdField_a_of_type_AndroidViewContextMenu$ContextMenuInfo;
+    return this.mContextMenuInfo;
+  }
+  
+  public int getCurrentX()
+  {
+    return this.mCurrentX;
   }
   
   public int getFirstVisiblePosition()
   {
-    if (this.jdField_d_of_type_Boolean) {
-      return this.l;
+    if (this.isFromRightToLeft) {
+      return this.mRightViewAdapterIndex;
     }
-    return this.k;
+    return this.mLeftViewAdapterIndex;
+  }
+  
+  protected int getFlingVelocity(int paramInt)
+  {
+    return paramInt;
   }
   
   public int getLastVisiblePosition()
   {
-    if (this.jdField_d_of_type_Boolean) {
-      return this.k;
+    if (this.isFromRightToLeft) {
+      return this.mLeftViewAdapterIndex;
     }
-    return this.l;
+    return this.mRightViewAdapterIndex;
+  }
+  
+  protected View getLeftmostChild()
+  {
+    if (this.isFromRightToLeft) {
+      return getChildAt(getChildCount() - 1);
+    }
+    return getChildAt(0);
   }
   
   @TargetApi(9)
@@ -1478,17 +1113,120 @@ public class HorizontalListView
     return 0;
   }
   
-  public View getSelectedView()
+  protected View getRecycledView(int paramInt)
   {
-    return b(this.m);
+    int i = -1;
+    try
+    {
+      paramInt = this.mAdapter.getItemViewType(paramInt);
+      if (isItemViewTypeValid(paramInt)) {
+        return (View)((Queue)this.mRemovedViewsCache.get(paramInt)).poll();
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+        paramInt = i;
+      }
+    }
+    return null;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected View getRightmostChild()
+  {
+    if (this.isFromRightToLeft) {
+      return getChildAt(0);
+    }
+    return getChildAt(getChildCount() - 1);
+  }
+  
+  protected float getScrollerFriction()
+  {
+    return 0.005F;
+  }
+  
+  public View getSelectedView()
+  {
+    return getChild(this.mCurrentlySelectedAdapterIndex);
+  }
+  
+  @TargetApi(9)
+  protected void initView()
+  {
+    initView(false);
+  }
+  
+  @TargetApi(9)
+  protected void initView(boolean paramBoolean)
+  {
+    this.mScroller = new bhzg(getContext());
+    this.mScroller.a(getScrollerFriction());
+    ViewConfiguration localViewConfiguration = ViewConfiguration.get(getContext());
+    this.mTouchSlop = localViewConfiguration.getScaledTouchSlop();
+    this.mMinimumVelocity = localViewConfiguration.getScaledMinimumFlingVelocity();
+    this.mMaximumVelocity = localViewConfiguration.getScaledMaximumFlingVelocity();
+    setLayoutDirection(paramBoolean);
+    this.mCurrentX = 0;
+    this.mNextX = this.mCurrentX;
+    this.mLeftViewAdapterIndex = -1;
+    this.mRightViewAdapterIndex = -1;
+    this.mDisplayOffset = 0;
+    setFocusable(true);
+    setDescendantFocusability(262144);
+    setWillNotDraw(false);
+    this.mTouchMode = -1;
+    setCurrentScrollState(4097);
+    this.mAdapterDataObserver = new bhxp(this);
+  }
+  
+  protected boolean isLastItemInAdapter(int paramInt)
+  {
+    return paramInt == this.mAdapter.getCount() - 1;
+  }
+  
+  public void log(String paramString, Object... paramVarArgs)
+  {
+    int i = 0;
+    if ((DEBUG) && (QLog.isDevelopLevel()))
+    {
+      StringBuilder localStringBuilder = new StringBuilder(200);
+      localStringBuilder.setLength(0);
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", mDisplayOffset = ").append(this.mDisplayOffset);
+      localStringBuilder.append(", mMaxX = ").append(this.mMaxX);
+      localStringBuilder.append(", mMinX = ").append(this.mMinX);
+      localStringBuilder.append(", mCurrentX = ").append(this.mCurrentX);
+      localStringBuilder.append(", mNextX = ").append(this.mNextX);
+      localStringBuilder.append(", mScrollX = ").append(getScrollX());
+      localStringBuilder.append(", mLeftViewAdapterIndex= ").append(this.mLeftViewAdapterIndex);
+      localStringBuilder.append(", mRightViewAdapterIndex = ").append(this.mRightViewAdapterIndex);
+      if ((paramVarArgs != null) && (paramVarArgs.length > 0))
+      {
+        int j = paramVarArgs.length;
+        while (i < j)
+        {
+          paramString = paramVarArgs[i];
+          localStringBuilder.append(",").append(paramString);
+          i += 1;
+        }
+      }
+      QLog.i("HorizontalListView", 4, localStringBuilder.toString());
+    }
+  }
+  
+  public boolean needTtransTouchStateToParen()
+  {
+    return (this.mTransTouchState2Parent) && ((getParent() instanceof View));
+  }
+  
+  protected void onDraw(Canvas paramCanvas)
   {
     try
     {
       super.onDraw(paramCanvas);
-      a(paramCanvas);
+      drawDividers(paramCanvas);
       return;
     }
     catch (Exception paramCanvas) {}
@@ -1504,14 +1242,14 @@ public class HorizontalListView
       if (getFirstVisiblePosition() > 0) {
         paramAccessibilityNodeInfo.addAction(8192);
       }
-      if (this.jdField_a_of_type_AndroidWidgetListAdapter != null) {
+      if (this.mAdapter != null) {
         break label63;
       }
     }
     label63:
-    for (int i1 = 0;; i1 = this.jdField_a_of_type_AndroidWidgetListAdapter.getCount())
+    for (int i = 0;; i = this.mAdapter.getCount())
     {
-      if (getLastVisiblePosition() < i1 - 1) {
+      if (getLastVisiblePosition() < i - 1) {
         paramAccessibilityNodeInfo.addAction(4096);
       }
       return;
@@ -1521,20 +1259,17 @@ public class HorizontalListView
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool2 = false;
-    if ((getContext() instanceof NearbyPeopleProfileActivity)) {
-      ((NearbyPeopleProfileActivity)getContext()).a(false);
-    }
-    int i1 = paramMotionEvent.getAction();
-    if ((i1 == 2) && (this.jdField_f_of_type_Boolean)) {
+    int i = paramMotionEvent.getAction();
+    if ((i == 2) && (this.mIsBeingDragged)) {
       return true;
     }
-    switch (i1 & 0xFF)
+    switch (i & 0xFF)
     {
     }
     for (;;)
     {
       boolean bool1;
-      if (!this.jdField_f_of_type_Boolean)
+      if (!this.mIsBeingDragged)
       {
         bool1 = bool2;
         if (!super.onInterceptTouchEvent(paramMotionEvent)) {}
@@ -1544,57 +1279,57 @@ public class HorizontalListView
         bool1 = true;
       }
       return bool1;
-      i1 = this.jdField_c_of_type_Int;
-      if (i1 != -1)
+      i = this.mActivePointerId;
+      if (i != -1)
       {
-        float f1 = paramMotionEvent.getX(paramMotionEvent.findPointerIndex(i1));
-        if ((int)Math.abs(f1 - this.jdField_a_of_type_Float) > this.o)
+        float f = paramMotionEvent.getX(paramMotionEvent.findPointerIndex(i));
+        if ((int)Math.abs(f - this.mLastMotionX) > this.mTouchSlop)
         {
-          this.jdField_f_of_type_Boolean = true;
-          this.jdField_a_of_type_Float = f1;
-          e();
-          this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
+          this.mIsBeingDragged = true;
+          this.mLastMotionX = f;
+          initVelocityTrackerIfNotExists();
+          this.mVelocityTracker.addMovement(paramMotionEvent);
           ViewParent localViewParent = getParent();
           if (localViewParent != null)
           {
             localViewParent.requestDisallowInterceptTouchEvent(true);
             continue;
-            f1 = paramMotionEvent.getX();
-            if (!a((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
+            f = paramMotionEvent.getX();
+            if (!inChild((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
             {
-              this.jdField_f_of_type_Boolean = false;
-              f();
+              this.mIsBeingDragged = false;
+              recycleVelocityTracker();
             }
             else
             {
-              this.jdField_a_of_type_Float = f1;
-              this.jdField_c_of_type_Int = paramMotionEvent.getPointerId(0);
-              d();
-              this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-              if (!this.jdField_a_of_type_ComTencentWidgetOverScroller.a()) {}
+              this.mLastMotionX = f;
+              this.mActivePointerId = paramMotionEvent.getPointerId(0);
+              initOrResetVelocityTracker();
+              this.mVelocityTracker.addMovement(paramMotionEvent);
+              if (!this.mScroller.a()) {}
               for (bool1 = true;; bool1 = false)
               {
-                this.jdField_f_of_type_Boolean = bool1;
-                g(4097);
+                this.mIsBeingDragged = bool1;
+                setCurrentScrollState(4097);
                 break;
               }
-              this.jdField_f_of_type_Boolean = false;
-              this.jdField_c_of_type_Int = -1;
-              f();
-              if (this.jdField_a_of_type_ComTencentWidgetOverScroller.a(getScrollX() + this.h, getScrollY(), this.h, this.h, 0, 0))
+              this.mIsBeingDragged = false;
+              this.mActivePointerId = -1;
+              recycleVelocityTracker();
+              if (this.mScroller.a(getScrollX() + this.mNextX, getScrollY(), this.mNextX, this.mNextX, 0, 0))
               {
-                this.p = 6;
-                g(4099);
+                this.mTouchMode = 6;
+                setCurrentScrollState(4099);
                 invalidate();
               }
               for (;;)
               {
-                c();
+                unpressTouchedView();
                 break;
-                this.p = -1;
-                g(4097);
+                this.mTouchMode = -1;
+                setCurrentScrollState(4097);
               }
-              a(paramMotionEvent);
+              onSecondaryPointerUp(paramMotionEvent);
             }
           }
         }
@@ -1603,128 +1338,133 @@ public class HorizontalListView
   }
   
   @SuppressLint({"WrongCall"})
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_AndroidWidgetListAdapter == null) {}
+    if (this.mAdapter == null) {}
     do
     {
       return;
       invalidate();
-      int i1;
-      if (this.jdField_b_of_type_Boolean)
+      int i;
+      if (this.mDataChanged)
       {
-        a();
-        i1 = this.jdField_g_of_type_Int;
-        b(this.jdField_d_of_type_Boolean);
+        recycleBeforeRemoveAll();
+        i = this.mCurrentX;
+        initView(this.isFromRightToLeft);
         removeAllViewsInLayout();
-        this.h = i1;
-        this.jdField_b_of_type_Boolean = false;
-        if (this.jdField_a_of_type_JavaLangRunnable != null)
+        this.mNextX = i;
+        this.mDataChanged = false;
+        if (this.mPositionScrollAfterLayout != null)
         {
-          post(this.jdField_a_of_type_JavaLangRunnable);
-          this.jdField_a_of_type_JavaLangRunnable = null;
+          post(this.mPositionScrollAfterLayout);
+          this.mPositionScrollAfterLayout = null;
         }
       }
-      if (this.jdField_a_of_type_JavaLangInteger != null)
+      if (this.mRestoreX != null)
       {
-        this.h = this.jdField_a_of_type_JavaLangInteger.intValue();
-        this.jdField_a_of_type_JavaLangInteger = null;
+        this.mNextX = this.mRestoreX.intValue();
+        this.mRestoreX = null;
       }
-      if (this.h < this.j) {
-        this.h = this.j;
+      if (this.mNextX < this.mMinX) {
+        this.mNextX = this.mMinX;
       }
       for (;;)
       {
-        b();
-        i1 = this.jdField_g_of_type_Int - this.h;
-        d(i1);
-        c(i1);
-        e(i1);
-        this.jdField_g_of_type_Int = this.h;
-        if (this.jdField_a_of_type_ComTencentWidgetHorizontalListView$OnScrollLinstener != null) {
-          this.jdField_a_of_type_ComTencentWidgetHorizontalListView$OnScrollLinstener.a();
+        reMeasureChilds();
+        i = this.mCurrentX - this.mNextX;
+        removeNonVisibleChildren(i);
+        fillList(i);
+        positionChildren(i);
+        this.mCurrentX = this.mNextX;
+        if (this.mOnScrollLinstener != null) {
+          this.mOnScrollLinstener.a();
         }
-        if (!d()) {
+        if (!determineBorderMaxX()) {
           break;
         }
         onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
         return;
-        if (this.h > this.i) {
-          this.h = this.i;
+        if (this.mNextX > this.mMaxX) {
+          this.mNextX = this.mMaxX;
         }
       }
-      View localView = c();
-      if ((localView != null) && (localView.getRight() + this.jdField_f_of_type_Int < b()) && (this.l < this.jdField_a_of_type_AndroidWidgetListAdapter.getCount() - 1))
+      View localView = getRightmostChild();
+      if ((localView != null) && (localView.getRight() + this.mDividerWidth < getRenderWidth()) && (this.mRightViewAdapterIndex < this.mAdapter.getCount() - 1))
       {
         onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
         return;
       }
-    } while (this.jdField_a_of_type_ComTencentWidgetOverScroller.a());
-    ViewCompat.postOnAnimation(this, this.jdField_e_of_type_JavaLangRunnable);
+    } while (this.mScroller.a());
+    ViewCompat.postOnAnimation(this, this.mDelayedLayout);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    int i4 = View.MeasureSpec.getMode(paramInt1);
-    int i5 = View.MeasureSpec.getMode(paramInt2);
-    int i2 = View.MeasureSpec.getSize(paramInt1);
-    int i3 = View.MeasureSpec.getSize(paramInt2);
-    int i1;
-    if (this.jdField_a_of_type_AndroidWidgetListAdapter == null)
+    int m = View.MeasureSpec.getMode(paramInt1);
+    int n = View.MeasureSpec.getMode(paramInt2);
+    int j = View.MeasureSpec.getSize(paramInt1);
+    int k = View.MeasureSpec.getSize(paramInt2);
+    int i;
+    if (this.mAdapter == null)
     {
-      i1 = 0;
-      if ((i1 <= 0) || ((i5 != 0) && (i5 != -2147483648) && (i4 != 0))) {
-        break label199;
+      i = 0;
+      if ((i <= 0) || ((n != 0) && (n != -2147483648) && (m != 0))) {
+        break label243;
       }
-      View localView = c(0);
+      View localView = obtainView(0);
       if (localView == null) {
-        break label184;
+        break label228;
       }
       measureChild(localView, paramInt1, paramInt2);
       paramInt1 = localView.getMeasuredWidth();
-      i1 = localView.getMeasuredHeight();
-      a(0, localView);
+      i = localView.getMeasuredHeight();
+      recycleView(0, localView);
       label100:
-      if ((i5 != 0) && (i5 != -2147483648)) {
-        break label206;
+      if ((n != 0) && (n != -2147483648)) {
+        break label250;
       }
-      paramInt2 = getPaddingTop() + getPaddingBottom() + i1 + getVerticalFadingEdgeLength() * 2;
-      this.jdField_b_of_type_Int = View.MeasureSpec.makeMeasureSpec(paramInt2, i5);
+      paramInt2 = getPaddingTop() + getPaddingBottom() + i + getVerticalFadingEdgeLength() * 2;
+      this.mHeightMeasureSpec = View.MeasureSpec.makeMeasureSpec(paramInt2, n);
       label142:
-      if (i4 != 0) {
-        break label217;
+      if (m != 0) {
+        break label261;
       }
       paramInt1 = getPaddingLeft() + getPaddingRight() + paramInt1 + getVerticalScrollbarWidth();
     }
     for (;;)
     {
       setMeasuredDimension(paramInt1, paramInt2);
+      if (((this.mWidth != 0) && (this.mWidth != paramInt1)) || ((this.mHeight != 0) && (this.mHeight != paramInt2))) {
+        onSizeChange();
+      }
+      this.mWidth = paramInt1;
+      this.mHeight = paramInt2;
       return;
-      i1 = this.jdField_a_of_type_AndroidWidgetListAdapter.getCount();
+      i = this.mAdapter.getCount();
       break;
-      label184:
+      label228:
       if (QLog.isColorLevel()) {
         QLog.i("HorizontalListView", 2, "onMeasure obtainView is null");
       }
-      label199:
-      i1 = 0;
+      label243:
+      i = 0;
       paramInt1 = 0;
       break label100;
-      label206:
-      this.jdField_b_of_type_Int = paramInt2;
-      paramInt2 = i3;
+      label250:
+      this.mHeightMeasureSpec = paramInt2;
+      paramInt2 = k;
       break label142;
-      label217:
-      paramInt1 = i2;
-      if (i4 == -2147483648) {
-        paramInt1 = a(0, -1, i2, -1);
+      label261:
+      paramInt1 = j;
+      if (m == -2147483648) {
+        paramInt1 = measureWidthOfChildren(0, -1, j, -1);
       }
     }
   }
   
-  public void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
+  protected void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
     super.scrollTo(paramInt1, paramInt2);
     awakenScrollBars();
@@ -1735,7 +1475,7 @@ public class HorizontalListView
     if ((paramParcelable instanceof Bundle))
     {
       paramParcelable = (Bundle)paramParcelable;
-      this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramParcelable.getInt("BUNDLE_ID_CURRENT_X"));
+      this.mRestoreX = Integer.valueOf(paramParcelable.getInt("BUNDLE_ID_CURRENT_X"));
       super.onRestoreInstanceState(paramParcelable.getParcelable("BUNDLE_ID_PARENT_STATE"));
     }
   }
@@ -1744,20 +1484,20 @@ public class HorizontalListView
   {
     Bundle localBundle = new Bundle();
     localBundle.putParcelable("BUNDLE_ID_PARENT_STATE", super.onSaveInstanceState());
-    localBundle.putInt("BUNDLE_ID_CURRENT_X", this.jdField_g_of_type_Int);
+    localBundle.putInt("BUNDLE_ID_CURRENT_X", this.mCurrentX);
     return localBundle;
   }
   
   @TargetApi(8)
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    e();
-    this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
+    initVelocityTrackerIfNotExists();
+    this.mVelocityTracker.addMovement(paramMotionEvent);
     switch (paramMotionEvent.getAction() & 0xFF)
     {
     }
     label107:
-    int i1;
+    int i;
     label403:
     label434:
     label753:
@@ -1768,7 +1508,7 @@ public class HorizontalListView
       do
       {
         Object localObject;
-        int i2;
+        int j;
         do
         {
           do
@@ -1777,18 +1517,18 @@ public class HorizontalListView
             if (getChildCount() == 0) {
               return false;
             }
-            if (this.p == 6)
+            if (this.mTouchMode == 6)
             {
-              this.p = 5;
-              this.t = ((int)paramMotionEvent.getX());
-              this.u = ((int)paramMotionEvent.getY());
-              if (this.jdField_a_of_type_ComTencentWidgetOverScroller.a()) {
+              this.mTouchMode = 5;
+              this.mMotionX = ((int)paramMotionEvent.getX());
+              this.mMotionY = ((int)paramMotionEvent.getY());
+              if (this.mScroller.a()) {
                 break label434;
               }
             }
             for (boolean bool = true;; bool = false)
             {
-              this.jdField_f_of_type_Boolean = bool;
+              this.mIsBeingDragged = bool;
               if (bool)
               {
                 localObject = getParent();
@@ -1796,132 +1536,132 @@ public class HorizontalListView
                   ((ViewParent)localObject).requestDisallowInterceptTouchEvent(true);
                 }
               }
-              if (!this.jdField_a_of_type_ComTencentWidgetOverScroller.a()) {
-                this.jdField_a_of_type_ComTencentWidgetOverScroller.a();
+              if (!this.mScroller.a()) {
+                this.mScroller.a();
               }
-              this.jdField_a_of_type_Float = paramMotionEvent.getX();
-              this.jdField_c_of_type_Int = paramMotionEvent.getPointerId(0);
-              g(4097);
-              if (!jdField_a_of_type_Boolean) {
+              this.mLastMotionX = paramMotionEvent.getX();
+              this.mActivePointerId = paramMotionEvent.getPointerId(0);
+              setCurrentScrollState(4097);
+              if (!DEBUG) {
                 break;
               }
-              a("onTouchEvent", new Object[] { "DOWN", Boolean.valueOf(this.jdField_f_of_type_Boolean) });
+              log("onTouchEvent", new Object[] { "DOWN", Boolean.valueOf(this.mIsBeingDragged) });
               return true;
-              if (c())
+              if (needTtransTouchStateToParen())
               {
-                this.p = 0;
-                if (this.jdField_b_of_type_JavaLangRunnable == null) {
-                  this.jdField_b_of_type_JavaLangRunnable = new amcc(this);
+                this.mTouchMode = 0;
+                if (this.mPendingCheckForTap == null) {
+                  this.mPendingCheckForTap = new HorizontalListView.CheckForTap(this);
                 }
-                postDelayed(this.jdField_b_of_type_JavaLangRunnable, ViewConfiguration.getTapTimeout());
-                this.s = getFirstVisiblePosition();
-                this.t = ((int)paramMotionEvent.getX());
-                this.u = ((int)paramMotionEvent.getY());
+                postDelayed(this.mPendingCheckForTap, ViewConfiguration.getTapTimeout());
+                this.mMotionPosition = getFirstVisiblePosition();
+                this.mMotionX = ((int)paramMotionEvent.getX());
+                this.mMotionY = ((int)paramMotionEvent.getY());
                 break label107;
               }
-              i2 = a((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
-              i1 = i2;
-              if (!this.jdField_b_of_type_Boolean)
+              j = pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
+              i = j;
+              if (!this.mDataChanged)
               {
-                if ((this.p == 4) || (i2 < 0) || (!a().isEnabled(i2))) {
+                if ((this.mTouchMode == 4) || (j < 0) || (!getAdapter().isEnabled(j))) {
                   break label403;
                 }
-                this.p = 0;
-                if (this.jdField_b_of_type_JavaLangRunnable == null) {
-                  this.jdField_b_of_type_JavaLangRunnable = new amcc(this);
+                this.mTouchMode = 0;
+                if (this.mPendingCheckForTap == null) {
+                  this.mPendingCheckForTap = new HorizontalListView.CheckForTap(this);
                 }
-                postDelayed(this.jdField_b_of_type_JavaLangRunnable, ViewConfiguration.getTapTimeout());
-                i1 = i2;
+                postDelayed(this.mPendingCheckForTap, ViewConfiguration.getTapTimeout());
+                i = j;
               }
               for (;;)
               {
-                this.s = i1;
+                this.mMotionPosition = i;
                 break;
-                i1 = i2;
-                if (this.p == 4)
+                i = j;
+                if (this.mTouchMode == 4)
                 {
-                  this.p = 3;
-                  i1 = c((int)paramMotionEvent.getX());
+                  this.mTouchMode = 3;
+                  i = findMotionColumn((int)paramMotionEvent.getX());
                 }
               }
             }
-            i1 = paramMotionEvent.findPointerIndex(this.jdField_c_of_type_Int);
-          } while (i1 == -1);
-          f1 = paramMotionEvent.getX(i1);
-          i2 = (int)(this.jdField_a_of_type_Float - f1);
-          i1 = i2;
-          if (!this.jdField_f_of_type_Boolean)
+            i = paramMotionEvent.findPointerIndex(this.mActivePointerId);
+          } while (i == -1);
+          f1 = paramMotionEvent.getX(i);
+          j = (int)(this.mLastMotionX - f1);
+          i = j;
+          if (!this.mIsBeingDragged)
           {
-            i1 = i2;
-            if (Math.abs(i2) > this.o)
+            i = j;
+            if (Math.abs(j) > this.mTouchSlop)
             {
               paramMotionEvent = getParent();
               if (paramMotionEvent != null) {
                 paramMotionEvent.requestDisallowInterceptTouchEvent(true);
               }
-              this.jdField_f_of_type_Boolean = true;
-              if (i2 <= 0) {
+              this.mIsBeingDragged = true;
+              if (j <= 0) {
                 break;
               }
-              i1 = i2 - this.o;
+              i = j - this.mTouchSlop;
             }
           }
-        } while (!this.jdField_f_of_type_Boolean);
-        switch (this.p)
+        } while (!this.mIsBeingDragged);
+        switch (this.mTouchMode)
         {
         }
         for (;;)
         {
-          g(4098);
-          a(f1, i1);
+          setCurrentScrollState(4098);
+          scrollIfNeeded(f1, i);
           return true;
-          i1 = i2 + this.o;
+          i = j + this.mTouchSlop;
           break;
           paramMotionEvent = getHandler();
           if (paramMotionEvent != null) {
-            paramMotionEvent.removeCallbacks(this.jdField_a_of_type_Amcb);
+            paramMotionEvent.removeCallbacks(this.mPendingCheckForLongPress);
           }
-          if (this.jdField_c_of_type_JavaLangRunnable != null) {
-            removeCallbacks(this.jdField_c_of_type_JavaLangRunnable);
+          if (this.mTouchModeReset != null) {
+            removeCallbacks(this.mTouchModeReset);
           }
-          c();
+          unpressTouchedView();
           if (getScrollX() != 0)
           {
-            this.p = 5;
+            this.mTouchMode = 5;
           }
           else
           {
-            this.p = 3;
+            this.mTouchMode = 3;
             continue;
             if (getScrollX() != 0) {
-              this.p = 5;
+              this.mTouchMode = 5;
             } else {
-              this.p = 3;
+              this.mTouchMode = 3;
             }
           }
         }
-        if ((this.jdField_f_of_type_Boolean) || (Math.abs(getScrollX()) > this.o))
+        if ((this.mIsBeingDragged) || (Math.abs(getScrollX()) > this.mTouchSlop))
         {
-          localObject = this.jdField_a_of_type_AndroidViewVelocityTracker;
-          ((VelocityTracker)localObject).computeCurrentVelocity(1000, this.r);
+          localObject = this.mVelocityTracker;
+          ((VelocityTracker)localObject).computeCurrentVelocity(1000, this.mMaximumVelocity);
           if (Build.VERSION.SDK_INT >= 8)
           {
-            f1 = ((VelocityTracker)localObject).getXVelocity(this.jdField_c_of_type_Int);
-            i1 = (int)f1;
+            f1 = ((VelocityTracker)localObject).getXVelocity(this.mActivePointerId);
+            i = (int)f1;
             if (getChildCount() <= 0) {
               break label969;
             }
-            if (Math.abs(i1) <= this.q) {
+            if (Math.abs(i) <= this.mMinimumVelocity) {
               break label906;
             }
-            f(-i1);
-            this.jdField_c_of_type_Int = -1;
-            h();
+            fling(-i);
+            this.mActivePointerId = -1;
+            endDrag();
           }
         }
         else
         {
-          switch (this.p)
+          switch (this.mTouchMode)
           {
           }
         }
@@ -1931,192 +1671,192 @@ public class HorizontalListView
           invalidate();
           paramMotionEvent = getHandler();
           if (paramMotionEvent != null) {
-            paramMotionEvent.removeCallbacks(this.jdField_a_of_type_Amcb);
+            paramMotionEvent.removeCallbacks(this.mPendingCheckForLongPress);
           }
-          if (!jdField_a_of_type_Boolean) {
+          if (!DEBUG) {
             break;
           }
-          a("onTouchEvent", new Object[] { "UP", Integer.valueOf(this.p) });
+          log("onTouchEvent", new Object[] { "UP", Integer.valueOf(this.mTouchMode) });
           return true;
           f1 = ((VelocityTracker)localObject).getXVelocity();
           break label753;
-          if (this.jdField_a_of_type_ComTencentWidgetOverScroller.a(getScrollX() + this.h, getScrollY(), this.h, this.h, 0, 0))
+          if (this.mScroller.a(getScrollX() + this.mNextX, getScrollY(), this.mNextX, this.mNextX, 0, 0))
           {
-            this.p = 6;
-            g(4099);
+            this.mTouchMode = 6;
+            setCurrentScrollState(4099);
             invalidate();
             break label783;
           }
-          g(4097);
+          setCurrentScrollState(4097);
           break label783;
-          g(4097);
+          setCurrentScrollState(4097);
           break label783;
-          i2 = this.s;
-          localObject = getChildAt(i2 - getFirstVisiblePosition());
+          j = this.mMotionPosition;
+          localObject = getChildAt(j - getFirstVisiblePosition());
           f1 = paramMotionEvent.getX();
-          amce localamce;
+          HorizontalListView.PerformClick localPerformClick;
           if ((f1 > getPaddingLeft()) && (f1 < getWidth() - getPaddingRight()))
           {
-            i1 = 1;
-            if (this.jdField_a_of_type_Amce == null) {
-              this.jdField_a_of_type_Amce = new amce(this, null);
+            i = 1;
+            if (this.mPerformClick == null) {
+              this.mPerformClick = new HorizontalListView.PerformClick(this, null);
             }
-            localamce = this.jdField_a_of_type_Amce;
-            localamce.jdField_a_of_type_Int = i2;
-            localamce.a();
-            if ((localObject == null) || (((View)localObject).hasFocusable()) || (i1 == 0)) {
+            localPerformClick = this.mPerformClick;
+            localPerformClick.a = j;
+            localPerformClick.a();
+            if ((localObject == null) || (((View)localObject).hasFocusable()) || (i == 0)) {
               break label1311;
             }
-            if (this.p != 0)
+            if (this.mTouchMode != 0)
             {
-              c();
-              if (this.jdField_c_of_type_JavaLangRunnable != null) {
-                removeCallbacks(this.jdField_c_of_type_JavaLangRunnable);
+              unpressTouchedView();
+              if (this.mTouchModeReset != null) {
+                removeCallbacks(this.mTouchModeReset);
               }
             }
-            if ((this.p != 0) && (this.p != 1)) {
+            if ((this.mTouchMode != 0) && (this.mTouchMode != 1)) {
               break label1277;
             }
             Handler localHandler = getHandler();
             if (localHandler != null)
             {
-              if (this.p != 0) {
+              if (this.mTouchMode != 0) {
                 break label1253;
               }
-              paramMotionEvent = this.jdField_b_of_type_JavaLangRunnable;
+              paramMotionEvent = this.mPendingCheckForTap;
               localHandler.removeCallbacks(paramMotionEvent);
             }
-            if ((this.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_AndroidWidgetListAdapter.isEnabled(i2))) {
+            if ((this.mDataChanged) || (!this.mAdapter.isEnabled(j))) {
               break label1270;
             }
-            this.p = 1;
-            if (!c()) {
+            this.mTouchMode = 1;
+            if (!needTtransTouchStateToParen()) {
               break label1261;
             }
-            b((View)getParent());
+            updateTouchedView((View)getParent());
           }
           for (;;)
           {
-            if (this.jdField_c_of_type_JavaLangRunnable != null) {
-              removeCallbacks(this.jdField_c_of_type_JavaLangRunnable);
+            if (this.mTouchModeReset != null) {
+              removeCallbacks(this.mTouchModeReset);
             }
-            this.jdField_c_of_type_JavaLangRunnable = new ambz(this, localamce);
-            postDelayed(this.jdField_c_of_type_JavaLangRunnable, ViewConfiguration.getPressedStateDuration());
+            this.mTouchModeReset = new HorizontalListView.2(this, localPerformClick);
+            postDelayed(this.mTouchModeReset, ViewConfiguration.getPressedStateDuration());
             return true;
-            i1 = 0;
+            i = 0;
             break;
-            paramMotionEvent = this.jdField_a_of_type_Amcb;
+            paramMotionEvent = this.mPendingCheckForLongPress;
             break label1152;
-            b((View)localObject);
+            updateTouchedView((View)localObject);
           }
-          this.p = -1;
+          this.mTouchMode = -1;
           return true;
-          if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidWidgetListAdapter.isEnabled(i2))) {
-            localamce.run();
+          if ((!this.mDataChanged) && (this.mAdapter.isEnabled(j))) {
+            localPerformClick.run();
           }
           for (;;)
           {
-            this.p = -1;
+            this.mTouchMode = -1;
             break;
-            localamce.run();
+            localPerformClick.run();
           }
-          this.p = -1;
+          this.mTouchMode = -1;
           continue;
-          this.p = -1;
+          this.mTouchMode = -1;
         }
-        c();
-        if ((this.jdField_f_of_type_Boolean) && (getChildCount() > 0))
+        unpressTouchedView();
+        if ((this.mIsBeingDragged) && (getChildCount() > 0))
         {
-          if (!this.jdField_a_of_type_ComTencentWidgetOverScroller.a(getScrollX() + this.h, getScrollY(), this.h, this.h, 0, 0)) {
+          if (!this.mScroller.a(getScrollX() + this.mNextX, getScrollY(), this.mNextX, this.mNextX, 0, 0)) {
             break label1501;
           }
-          this.p = 6;
-          g(4099);
+          this.mTouchMode = 6;
+          setCurrentScrollState(4099);
           invalidate();
         }
         for (;;)
         {
-          this.jdField_c_of_type_Int = -1;
-          h();
-          switch (this.p)
+          this.mActivePointerId = -1;
+          endDrag();
+          switch (this.mTouchMode)
           {
           default: 
-            this.p = -1;
-            c();
+            this.mTouchMode = -1;
+            unpressTouchedView();
             paramMotionEvent = getHandler();
             if (paramMotionEvent != null) {
-              paramMotionEvent.removeCallbacks(this.jdField_a_of_type_Amcb);
+              paramMotionEvent.removeCallbacks(this.mPendingCheckForLongPress);
             }
             break;
           }
-          if (!jdField_a_of_type_Boolean) {
+          if (!DEBUG) {
             break;
           }
-          a("onTouchEvent", new Object[] { "CANCEL", Integer.valueOf(this.p) });
+          log("onTouchEvent", new Object[] { "CANCEL", Integer.valueOf(this.mTouchMode) });
           return true;
-          g(4097);
+          setCurrentScrollState(4097);
         }
-        i1 = (paramMotionEvent.getAction() & 0xFF00) >> 8;
-        float f1 = paramMotionEvent.getX(i1);
-        float f2 = paramMotionEvent.getY(i1);
-        this.jdField_a_of_type_Float = f1;
-        this.jdField_c_of_type_Int = paramMotionEvent.getPointerId(i1);
-        this.t = ((int)f1);
-        this.u = ((int)f2);
-        i1 = a((int)f1, (int)f2);
-      } while (i1 < 0);
-      this.s = i1;
+        i = (paramMotionEvent.getAction() & 0xFF00) >> 8;
+        float f1 = paramMotionEvent.getX(i);
+        float f2 = paramMotionEvent.getY(i);
+        this.mLastMotionX = f1;
+        this.mActivePointerId = paramMotionEvent.getPointerId(i);
+        this.mMotionX = ((int)f1);
+        this.mMotionY = ((int)f2);
+        i = pointToPosition((int)f1, (int)f2);
+      } while (i < 0);
+      this.mMotionPosition = i;
       return true;
-      a(paramMotionEvent);
-      i1 = paramMotionEvent.findPointerIndex(this.jdField_c_of_type_Int);
-      if ((i1 < paramMotionEvent.getPointerCount()) && (-1 != i1)) {
-        this.jdField_a_of_type_Float = paramMotionEvent.getX(i1);
+      onSecondaryPointerUp(paramMotionEvent);
+      i = paramMotionEvent.findPointerIndex(this.mActivePointerId);
+      if ((i < paramMotionEvent.getPointerCount()) && (-1 != i)) {
+        this.mLastMotionX = paramMotionEvent.getX(i);
       }
-      i1 = a(this.t, this.u);
-    } while (i1 < 0);
+      i = pointToPosition(this.mMotionX, this.mMotionY);
+    } while (i < 0);
     label783:
     label969:
     label1253:
     label1261:
-    this.s = i1;
+    this.mMotionPosition = i;
     label906:
     label1311:
     label1501:
     return true;
   }
   
-  public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
+  protected boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
   {
-    int i3 = getOverScrollMode();
-    int i1;
-    int i2;
+    int k = getOverScrollMode();
+    int i;
+    int j;
     if (computeHorizontalScrollRange() > computeHorizontalScrollExtent())
     {
-      i1 = 1;
+      i = 1;
       if (computeVerticalScrollRange() <= computeVerticalScrollExtent()) {
         break label176;
       }
-      i2 = 1;
+      j = 1;
       label34:
-      if ((i3 != 0) && ((i3 != 1) || (i1 == 0))) {
+      if ((k != 0) && ((k != 1) || (i == 0))) {
         break label182;
       }
-      i1 = 1;
+      i = 1;
       label53:
-      if ((i3 != 0) && ((i3 != 1) || (i2 == 0))) {
+      if ((k != 0) && ((k != 1) || (j == 0))) {
         break label188;
       }
-      i2 = 1;
+      j = 1;
       label72:
       paramInt3 += paramInt1;
-      if (i1 == 0) {
+      if (i == 0) {
         paramInt7 = 0;
       }
       paramInt4 += paramInt2;
-      if (i2 == 0) {
+      if (j == 0) {
         paramInt8 = 0;
       }
-      i1 = -paramInt7;
+      i = -paramInt7;
       if (paramInt7 != 2147483647) {
         break label194;
       }
@@ -2146,16 +1886,16 @@ public class HorizontalListView
         if ((paramBoolean) || (bool))
         {
           return true;
-          i1 = 0;
+          i = 0;
           break;
           label176:
-          i2 = 0;
+          j = 0;
           break label34;
           label182:
-          i1 = 0;
+          i = 0;
           break label53;
           label188:
-          i2 = 0;
+          j = 0;
           break label72;
           label194:
           paramInt1 = paramInt7 + paramInt5;
@@ -2164,11 +1904,11 @@ public class HorizontalListView
           paramInt2 = paramInt8 + paramInt6;
           break label128;
           label212:
-          if (paramInt3 >= i1) {
+          if (paramInt3 >= i) {
             break label251;
           }
           paramBoolean = true;
-          paramInt1 = i1;
+          paramInt1 = i;
           break label136;
           if (paramInt4 >= paramInt5) {
             break label245;
@@ -2193,74 +1933,294 @@ public class HorizontalListView
     if (super.performAccessibilityAction(paramInt, paramBundle)) {
       return true;
     }
-    if (this.jdField_a_of_type_AndroidWidgetListAdapter == null) {}
-    for (int i1 = 0;; i1 = this.jdField_a_of_type_AndroidWidgetListAdapter.getCount()) {
+    if (this.mAdapter == null) {}
+    for (int i = 0;; i = this.mAdapter.getCount()) {
       switch (paramInt)
       {
       default: 
         return false;
       }
     }
-    int i2;
-    if ((isEnabled()) && (getLastVisiblePosition() < i1 - 1))
+    int j;
+    if ((isEnabled()) && (getLastVisiblePosition() < i - 1))
     {
       paramInt = getWidth();
-      i1 = getPaddingLeft();
-      i2 = getPaddingRight();
-      a(this.jdField_a_of_type_Float, paramInt - i1 - i2);
+      i = getPaddingLeft();
+      j = getPaddingRight();
+      scrollIfNeeded(this.mLastMotionX, paramInt - i - j);
       return true;
     }
     return false;
     if ((isEnabled()) && (getFirstVisiblePosition() > 0))
     {
       paramInt = getWidth();
-      i1 = getPaddingLeft();
-      i2 = getPaddingRight();
-      a(this.jdField_a_of_type_Float, -(paramInt - i1 - i2));
+      i = getPaddingLeft();
+      j = getPaddingRight();
+      scrollIfNeeded(this.mLastMotionX, -(paramInt - i - j));
       return true;
     }
     return false;
   }
   
+  boolean performLongPress(View paramView, int paramInt, long paramLong)
+  {
+    AdapterView.OnItemLongClickListener localOnItemLongClickListener = getOnItemLongClickListener();
+    if (localOnItemLongClickListener != null) {}
+    for (boolean bool1 = localOnItemLongClickListener.onItemLongClick(this, paramView, paramInt, paramLong);; bool1 = false)
+    {
+      boolean bool2 = bool1;
+      if (!bool1)
+      {
+        this.mContextMenuInfo = createContextMenuInfo(paramView, paramInt, paramLong);
+        bool2 = super.showContextMenuForChild(this);
+      }
+      if (bool2) {
+        performHapticFeedback(0);
+      }
+      return bool2;
+    }
+  }
+  
+  public int pointToPosition(int paramInt1, int paramInt2)
+  {
+    Object localObject2 = this.mTouchFrame;
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      this.mTouchFrame = new Rect();
+      localObject1 = this.mTouchFrame;
+    }
+    int i = getChildCount() - 1;
+    while (i >= 0)
+    {
+      localObject2 = getChildAt(i);
+      if (((View)localObject2).getVisibility() == 0)
+      {
+        ((View)localObject2).getHitRect((Rect)localObject1);
+        if (((Rect)localObject1).contains(paramInt1, paramInt2)) {
+          return getFirstVisiblePosition() + i;
+        }
+      }
+      i -= 1;
+    }
+    return -1;
+  }
+  
+  protected void positionChildren(int paramInt)
+  {
+    int k = 0;
+    int j = 0;
+    int m = getChildCount();
+    if (m > 0)
+    {
+      if (DEBUG) {
+        log("positionChildren", new Object[] { Integer.valueOf(this.mDisplayOffset), Integer.valueOf(paramInt), Integer.valueOf(this.mDisplayOffset + paramInt) });
+      }
+      View localView;
+      if (this.isFromRightToLeft)
+      {
+        this.mDisplayOffset -= paramInt;
+        i = getWidth() - this.mDisplayOffset;
+        paramInt = j;
+        while (paramInt < m)
+        {
+          localView = getChildAt(paramInt);
+          j = getPaddingRight() + i;
+          k = localView.getMeasuredWidth();
+          int n = getPaddingTop();
+          localView.layout(j - k, n, j, localView.getMeasuredHeight() + n);
+          i -= localView.getMeasuredWidth() + this.mDividerWidth;
+          paramInt += 1;
+        }
+      }
+      if (this.mLeftViewAdapterIndex == 0) {
+        this.mMinX = (this.mDisplayOffset + this.mCurrentX);
+      }
+      this.mDisplayOffset += paramInt;
+      int i = this.mDisplayOffset;
+      paramInt = k;
+      while (paramInt < m)
+      {
+        localView = getChildAt(paramInt);
+        j = getPaddingLeft() + i;
+        k = getPaddingTop();
+        localView.layout(j, k, localView.getMeasuredWidth() + j, localView.getMeasuredHeight() + k);
+        i += localView.getMeasuredWidth() + this.mDividerWidth;
+        paramInt += 1;
+      }
+    }
+  }
+  
+  protected void recycleView(int paramInt, View paramView)
+  {
+    try
+    {
+      Object localObject = paramView.getTag(2131690192);
+      if ((localObject instanceof Integer))
+      {
+        i = ((Integer)localObject).intValue();
+        j = i;
+      }
+    }
+    catch (Throwable localThrowable1)
+    {
+      for (;;)
+      {
+        try
+        {
+          if (!isItemViewTypeValid(i)) {
+            j = this.mAdapter.getItemViewType(paramInt);
+          }
+          if (isItemViewTypeValid(j))
+          {
+            ((Queue)this.mRemovedViewsCache.get(j)).offer(paramView);
+            if (this.mRecycleListener != null) {
+              this.mRecycleListener.b(paramView);
+            }
+          }
+          return;
+        }
+        catch (Throwable localThrowable2)
+        {
+          int j;
+          continue;
+        }
+        localThrowable1 = localThrowable1;
+        int i = -1;
+        localThrowable1.printStackTrace();
+        j = i;
+        continue;
+        i = -1;
+      }
+    }
+  }
+  
+  protected void removeNonVisibleChildren(int paramInt)
+  {
+    int j;
+    int i;
+    if (this.isFromRightToLeft)
+    {
+      localView = getRightmostChild();
+      if ((localView != null) && (localView.getLeft() + paramInt >= getWidth()))
+      {
+        j = this.mDisplayOffset;
+        if (isLastItemInAdapter(this.mRightViewAdapterIndex)) {}
+        for (i = localView.getMeasuredWidth();; i = this.mDividerWidth + localView.getMeasuredWidth())
+        {
+          this.mDisplayOffset = (i + j);
+          recycleView(this.mRightViewAdapterIndex, localView);
+          removeViewInLayout(localView);
+          this.mRightViewAdapterIndex += 1;
+          localView = getRightmostChild();
+          break;
+        }
+      }
+      for (localView = getLeftmostChild(); (localView != null) && (localView.getRight() + paramInt <= 0); localView = getLeftmostChild())
+      {
+        recycleView(this.mLeftViewAdapterIndex, localView);
+        removeViewInLayout(localView);
+        this.mLeftViewAdapterIndex -= 1;
+      }
+    }
+    View localView = getLeftmostChild();
+    if ((localView != null) && (localView.getRight() + paramInt <= 0))
+    {
+      j = this.mDisplayOffset;
+      if (isLastItemInAdapter(this.mLeftViewAdapterIndex)) {}
+      for (i = localView.getMeasuredWidth();; i = this.mDividerWidth + localView.getMeasuredWidth())
+      {
+        this.mDisplayOffset = (i + j);
+        recycleView(this.mLeftViewAdapterIndex, localView);
+        removeViewInLayout(localView);
+        if (this.mOnItemScrollEventListener != null) {
+          this.mOnItemScrollEventListener.a(this.mLeftViewAdapterIndex, true);
+        }
+        this.mLeftViewAdapterIndex += 1;
+        localView = getLeftmostChild();
+        break;
+      }
+    }
+    for (localView = getRightmostChild(); (localView != null) && (localView.getLeft() + paramInt >= getWidth()); localView = getRightmostChild())
+    {
+      recycleView(this.mRightViewAdapterIndex, localView);
+      removeViewInLayout(localView);
+      if (this.mOnItemScrollEventListener != null) {
+        this.mOnItemScrollEventListener.a(this.mRightViewAdapterIndex, false);
+      }
+      this.mRightViewAdapterIndex -= 1;
+    }
+  }
+  
   public void requestDisallowInterceptTouchEvent(boolean paramBoolean)
   {
     if (paramBoolean) {
-      f();
+      recycleVelocityTracker();
     }
     super.requestDisallowInterceptTouchEvent(paramBoolean);
+  }
+  
+  public void reset(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      recycleBeforeRemoveAll();
+    }
+    initView(this.isFromRightToLeft);
+    removeAllViewsInLayout();
+    requestLayout();
+  }
+  
+  public void resetCurrentX(int paramInt)
+  {
+    this.mCurrentX = paramInt;
+  }
+  
+  public int scrollBy2(int paramInt)
+  {
+    int i = this.mNextX + paramInt;
+    if (i < 0) {
+      return -1;
+    }
+    if (i > this.mMaxX) {
+      return 1;
+    }
+    this.mScroller.a(this.mNextX, 0, paramInt, 0, 20);
+    setCurrentScrollState(4098);
+    requestLayout();
+    return 0;
   }
   
   public void sendAccessibilityEvent(int paramInt)
   {
     if (paramInt == 4096)
     {
-      int i1 = getFirstVisiblePosition();
-      int i2 = getLastVisiblePosition();
-      if ((this.v == i1) && (this.w == i2)) {
+      int i = getFirstVisiblePosition();
+      int j = getLastVisiblePosition();
+      if ((this.mLastAccessibilityScrollEventFromIndex == i) && (this.mLastAccessibilityScrollEventToIndex == j)) {
         return;
       }
-      this.v = i1;
-      this.w = i2;
+      this.mLastAccessibilityScrollEventFromIndex = i;
+      this.mLastAccessibilityScrollEventToIndex = j;
     }
     super.sendAccessibilityEvent(paramInt);
   }
   
   public void setAdapter(ListAdapter paramListAdapter)
   {
-    if (this.jdField_a_of_type_AndroidWidgetListAdapter != null) {}
+    if (this.mAdapter != null) {}
     try
     {
-      this.jdField_a_of_type_AndroidWidgetListAdapter.unregisterDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
+      this.mAdapter.unregisterDataSetObserver(this.mAdapterDataObserver);
       if (paramListAdapter != null)
       {
-        this.jdField_e_of_type_Boolean = false;
-        this.jdField_a_of_type_AndroidWidgetListAdapter = paramListAdapter;
-        this.jdField_a_of_type_AndroidWidgetListAdapter.registerDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
+        this.mHasNotifiedRunningLowOnData = false;
+        this.mAdapter = paramListAdapter;
+        this.mAdapter.registerDataSetObserver(this.mAdapterDataObserver);
       }
-      if (this.jdField_a_of_type_AndroidWidgetListAdapter != null) {
-        b(this.jdField_a_of_type_AndroidWidgetListAdapter.getViewTypeCount());
+      if (this.mAdapter != null) {
+        initializeRecycledViewCache(this.mAdapter.getViewTypeCount());
       }
-      a(false);
+      reset(false);
       return;
     }
     catch (Throwable localThrowable)
@@ -2272,9 +2232,59 @@ public class HorizontalListView
     }
   }
   
+  protected void setCurrentScrollState(int paramInt)
+  {
+    int i = paramInt;
+    if (this.mStayDisplayOffsetZero)
+    {
+      i = paramInt;
+      if (this.mCurrentScrollState != paramInt)
+      {
+        i = paramInt;
+        if (paramInt == 4097) {
+          switch (this.mCurrentScrollState)
+          {
+          default: 
+            i = paramInt;
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      if ((this.mCurrentScrollState != i) && (this.mOnScrollStateChangedListener != null)) {
+        this.mOnScrollStateChangedListener.onScrollStateChanged(i);
+      }
+      this.mCurrentScrollState = i;
+      return;
+      i = paramInt;
+      if (checkScrollToChild())
+      {
+        paramInt = 4099;
+        i = paramInt;
+        if (DEBUG)
+        {
+          log("setCurrentScrollState", new Object[] { "SCROLL_STATE_TOUCH_SCROLL" });
+          i = paramInt;
+          continue;
+          i = paramInt;
+          if (checkScrollToChild())
+          {
+            i = paramInt;
+            if (DEBUG)
+            {
+              log("setCurrentScrollState", new Object[] { "SCROLL_STATE_FLING" });
+              i = paramInt;
+            }
+          }
+        }
+      }
+    }
+  }
+  
   public void setDivider(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.mDivider = paramDrawable;
     if (paramDrawable != null)
     {
       setDividerWidth(paramDrawable.getIntrinsicWidth());
@@ -2285,37 +2295,37 @@ public class HorizontalListView
   
   public void setDividerWidth(int paramInt)
   {
-    this.jdField_f_of_type_Int = paramInt;
+    this.mDividerWidth = paramInt;
     requestLayout();
     invalidate();
   }
   
   public void setLayoutDirection(boolean paramBoolean)
   {
-    this.jdField_d_of_type_Boolean = paramBoolean;
+    this.isFromRightToLeft = paramBoolean;
     if (paramBoolean)
     {
-      this.i = 0;
-      this.j = -2147483648;
+      this.mMaxX = 0;
+      this.mMinX = -2147483648;
       return;
     }
-    this.i = 2147483647;
-    this.j = 0;
+    this.mMaxX = 2147483647;
+    this.mMinX = 0;
   }
   
-  public void setOnItemScollEventListener(HorizontalListView.OnItemScrollEventListener paramOnItemScrollEventListener)
+  public void setOnItemScollEventListener(bhxq parambhxq)
   {
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView$OnItemScrollEventListener = paramOnItemScrollEventListener;
+    this.mOnItemScrollEventListener = parambhxq;
   }
   
-  public void setOnScrollListener(HorizontalListView.OnScrollLinstener paramOnScrollLinstener)
+  public void setOnScrollListener(bhxr parambhxr)
   {
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView$OnScrollLinstener = paramOnScrollLinstener;
+    this.mOnScrollLinstener = parambhxr;
   }
   
-  public void setOnScrollStateChangedListener(HorizontalListView.OnScrollStateChangedListener paramOnScrollStateChangedListener)
+  public void setOnScrollStateChangedListener(bhxs parambhxs)
   {
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView$OnScrollStateChangedListener = paramOnScrollStateChangedListener;
+    this.mOnScrollStateChangedListener = parambhxs;
   }
   
   @TargetApi(9)
@@ -2326,40 +2336,88 @@ public class HorizontalListView
     }
   }
   
-  public void setRecycleListener(HorizontalListView.RecycleListener paramRecycleListener)
+  public void setRecycleListener(bhxt parambhxt)
   {
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView$RecycleListener = paramRecycleListener;
+    this.mRecycleListener = parambhxt;
   }
   
   public void setRestoreX(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramInt);
+    this.mRestoreX = Integer.valueOf(paramInt);
   }
   
-  public void setRunningOutOfDataListener(HorizontalListView.RunningOutOfDataListener paramRunningOutOfDataListener, int paramInt)
+  public void setRunningOutOfDataListener(bhxu parambhxu, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView$RunningOutOfDataListener = paramRunningOutOfDataListener;
-    this.jdField_a_of_type_Int = paramInt;
+    this.mRunningOutOfDataListener = parambhxu;
+    this.mRunningOutOfDataThreshold = paramInt;
   }
   
   public void setSelection(int paramInt)
   {
-    this.m = paramInt;
+    this.mCurrentlySelectedAdapterIndex = paramInt;
   }
   
   public void setStayDisplayOffsetZero(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.mStayDisplayOffsetZero = paramBoolean;
   }
   
   public void setTransTouchStateToParent(boolean paramBoolean)
   {
-    this.jdField_g_of_type_Boolean = paramBoolean;
+    this.mTransTouchState2Parent = paramBoolean;
+  }
+  
+  public void smoothScrollBy(int paramInt1, int paramInt2)
+  {
+    this.mTouchMode = 4;
+    setCurrentScrollState(4099);
+    int i = this.mCurrentX;
+    if (this.mScroller.a())
+    {
+      i = getScrollX();
+      i = this.mNextX + i;
+    }
+    this.mScroller.a(i, 0, -paramInt1, 0, paramInt2);
+    this.mLastMotionX = 0.0F;
+    recycleVelocityTracker();
+    ViewCompat.postInvalidateOnAnimation(this);
+  }
+  
+  public void smoothScrollToPosition(int paramInt)
+  {
+    if (this.mPositionScroller == null) {
+      this.mPositionScroller = new HorizontalListView.PositionScroller(this);
+    }
+    this.mPositionScroller.a(paramInt);
+  }
+  
+  public void smoothScrollToPosition(int paramInt1, int paramInt2)
+  {
+    if (this.mPositionScroller == null) {
+      this.mPositionScroller = new HorizontalListView.PositionScroller(this);
+    }
+    this.mPositionScroller.a(paramInt1, paramInt2);
+  }
+  
+  public void smoothScrollToPosition(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.mPositionScroller == null) {
+      this.mPositionScroller = new HorizontalListView.PositionScroller(this);
+    }
+    this.mPositionScroller.a(paramInt1, paramInt2, paramInt3);
+  }
+  
+  public void smoothScrollToPositionFromLeftOrRight(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.mPositionScroller == null) {
+      this.mPositionScroller = new HorizontalListView.PositionScroller(this);
+    }
+    this.mPositionScroller.b(paramInt1, paramInt2, paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.HorizontalListView
  * JD-Core Version:    0.7.0.1
  */

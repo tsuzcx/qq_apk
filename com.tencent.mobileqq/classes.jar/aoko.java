@@ -1,17 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-
-public class aoko
-  implements DialogInterface.OnClickListener
+public final class aoko
 {
-  public aoko(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  @Deprecated
+  public int a;
+  public String a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  aoko(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoko
  * JD-Core Version:    0.7.0.1
  */

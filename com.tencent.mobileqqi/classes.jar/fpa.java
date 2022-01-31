@@ -1,36 +1,13 @@
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Vector;
+import com.tencent.mobileqq.emoticonview.HorizonEmoticonTabs;
 
 public class fpa
   implements Runnable
 {
-  public fpa(ProxyManager paramProxyManager) {}
+  public fpa(HorizonEmoticonTabs paramHorizonEmoticonTabs) {}
   
   public void run()
   {
-    ProxyManager.a(this.a, System.currentTimeMillis());
-    while (!this.a.jdField_a_of_type_Boolean) {
-      synchronized (this.a.jdField_a_of_type_JavaUtilVector)
-      {
-        try
-        {
-          this.a.jdField_a_of_type_JavaUtilVector.wait(10000L);
-          if ((!this.a.jdField_a_of_type_JavaUtilVector.isEmpty()) && (ProxyManager.a(this.a))) {
-            this.a.c();
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.w("Q.msg.MsgProxy", 2, "writeRunable Exception:" + localException);
-            }
-          }
-        }
-      }
-    }
+    HorizonEmoticonTabs.a(this.a);
   }
 }
 

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SubMsgType0xc6$AccountExceptionAlertBody
-  extends MessageMicro
+  extends MessageMicro<AccountExceptionAlertBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 48, 56 }, new String[] { "str_title", "str_content", "str_left_button_text", "str_right_button_text", "str_right_button_link", "uint32_left_button_id", "uint32_right_button_id" }, new Object[] { "", "", "", "", "", Integer.valueOf(0), Integer.valueOf(0) }, AccountExceptionAlertBody.class);
   public final PBStringField str_content = PBField.initString("");

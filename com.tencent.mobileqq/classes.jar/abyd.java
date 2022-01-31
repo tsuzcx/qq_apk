@@ -1,58 +1,101 @@
-import com.tencent.mobileqq.doutu.DoutuManager;
-import com.tencent.mobileqq.doutu.DuiButtonImageView;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Context;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import org.json.JSONObject;
 
-public class abyd
-  extends DownloadListener
+class abyd
+  implements AdapterView.OnItemClickListener
 {
-  public abyd(DoutuManager paramDoutuManager, String paramString1, String paramString2, String paramString3) {}
+  abyd(abyc paramabyc, int paramInt, abwu paramabwu) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    boolean bool;
+    paramAdapterView = paramView.getTag();
+    if (paramAdapterView == null) {
+      return;
+    }
+    this.jdField_a_of_type_Abyc.a.dismiss();
+    long l = paramLong;
+    label92:
+    int j;
     int i;
-    if (paramDownloadTask.a() == 3)
+    switch (((bdmy)paramAdapterView).a.action)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DoutuManager", 2, "checkAndDownloadRes : [onDone] download finished " + this.jdField_a_of_type_JavaLangString);
+    default: 
+      l = paramLong;
+    case 4: 
+    case 5: 
+    case 6: 
+    case 7: 
+    case 8: 
+      j = (int)l;
+      if ((l == 2L) || (l == 3L)) {
+        if (!WXShareHelper.a().a()) {
+          i = 2131721491;
+        }
       }
-      paramDownloadTask = DoutuManager.a(this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuManager, this.b);
-      if (this.c.equalsIgnoreCase(paramDownloadTask))
-      {
-        DoutuManager.a(this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuManager, this.b);
-        DoutuManager.a(this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuManager, DoutuManager.jdField_a_of_type_JavaLangString + "doutuResInfo", this.c);
-        SharedPreUtils.e(BaseApplication.getContext(), false);
-        DuiButtonImageView.a();
-        bool = true;
-        i = 0;
-      }
+      break;
     }
     for (;;)
     {
-      paramDownloadTask = new HashMap();
-      paramDownloadTask.put("param_FailCode", String.valueOf(i));
-      StatisticCollector.a(BaseApplication.getContext()).a(null, "doutuResDownload", bool, 0L, 0L, paramDownloadTask, "");
-      DoutuManager.jdField_a_of_type_Boolean = false;
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("DoutuManager", 2, "[onDone] checkMd5 failed: " + this.b);
+      for (;;)
+      {
+        if (i != -1)
+        {
+          paramAdapterView = BaseApplicationImpl.getContext();
+          QQToast.a(paramAdapterView, paramAdapterView.getString(i), 0).b(this.jdField_a_of_type_Int);
+          return;
+          l = 0L;
+          break label92;
+          l = 1L;
+          break label92;
+          l = 3L;
+          break label92;
+          l = 2L;
+          break label92;
+          l = 4L;
+          break label92;
+          if (WXShareHelper.a().b()) {
+            break label316;
+          }
+          i = 2131721492;
+          continue;
+        }
+        paramAdapterView = new JSONObject();
+        try
+        {
+          paramAdapterView.put("selectChanel", j);
+          acab.a(this.jdField_a_of_type_Abwu, paramAdapterView);
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.i("DoraemonApi.ShareModule", 2, "onItemClick.chooseChannel: " + paramInt + "," + l);
+          return;
+        }
+        catch (Exception paramAdapterView)
+        {
+          for (;;)
+          {
+            paramView = paramAdapterView.getMessage();
+            QLog.e("DoraemonApi.ShareModule", 1, "put channel failed!");
+            abwu localabwu = this.jdField_a_of_type_Abwu;
+            paramAdapterView = paramView;
+            if (paramView == null) {
+              paramAdapterView = "";
+            }
+            acab.a(localabwu, -1, paramAdapterView);
+          }
+        }
       }
-      i = 80704;
-      FileUtils.d(this.b);
-      bool = false;
-      continue;
-      if (QLog.isColorLevel()) {
-        QLog.d("DoutuManager", 2, "checkAndDownloadRes : [onDone] downloadFile failed: " + paramDownloadTask.b + " code=" + paramDownloadTask.a);
-      }
-      i = paramDownloadTask.a;
-      bool = false;
+      label316:
+      i = -1;
     }
   }
 }

@@ -8,6 +8,7 @@ public final class SSummaryCardSetReq
   extends JceStruct
 {
   static int cache_cmd = 0;
+  static cardDiyComplicatedInfo cache_stDiyComplicated = new cardDiyComplicatedInfo();
   static cardDiyTextInfo cache_stDiyText = new cardDiyTextInfo();
   public long bgid;
   public long cardid;
@@ -15,6 +16,7 @@ public final class SSummaryCardSetReq
   public long color;
   public String extInfo = "";
   public long platform;
+  public cardDiyComplicatedInfo stDiyComplicated;
   public cardDiyTextInfo stDiyText;
   public long styleid;
   public long uin;
@@ -23,7 +25,7 @@ public final class SSummaryCardSetReq
   
   public SSummaryCardSetReq() {}
   
-  public SSummaryCardSetReq(int paramInt, long paramLong1, long paramLong2, String paramString1, long paramLong3, long paramLong4, long paramLong5, String paramString2, long paramLong6, cardDiyTextInfo paramcardDiyTextInfo, String paramString3)
+  public SSummaryCardSetReq(int paramInt, long paramLong1, long paramLong2, String paramString1, long paramLong3, long paramLong4, long paramLong5, String paramString2, long paramLong6, cardDiyTextInfo paramcardDiyTextInfo, String paramString3, cardDiyComplicatedInfo paramcardDiyComplicatedInfo)
   {
     this.cmd = paramInt;
     this.uin = paramLong1;
@@ -36,6 +38,7 @@ public final class SSummaryCardSetReq
     this.color = paramLong6;
     this.stDiyText = paramcardDiyTextInfo;
     this.extInfo = paramString3;
+    this.stDiyComplicated = paramcardDiyComplicatedInfo;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -51,6 +54,7 @@ public final class SSummaryCardSetReq
     this.color = paramJceInputStream.read(this.color, 8, false);
     this.stDiyText = ((cardDiyTextInfo)paramJceInputStream.read(cache_stDiyText, 9, false));
     this.extInfo = paramJceInputStream.readString(10, false);
+    this.stDiyComplicated = ((cardDiyComplicatedInfo)paramJceInputStream.read(cache_stDiyComplicated, 11, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -73,6 +77,9 @@ public final class SSummaryCardSetReq
     }
     if (this.extInfo != null) {
       paramJceOutputStream.write(this.extInfo, 10);
+    }
+    if (this.stDiyComplicated != null) {
+      paramJceOutputStream.write(this.stDiyComplicated, 11);
     }
   }
 }

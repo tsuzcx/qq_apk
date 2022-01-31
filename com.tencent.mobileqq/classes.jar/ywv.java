@@ -1,28 +1,16 @@
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import com.tencent.biz.troopplugin.PluginJumpManager;
 
-public final class ywv
-  implements Runnable
+public class ywv
 {
-  public ywv(ChatMessage paramChatMessage) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void run()
-  {
-    Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if (localObject != null)
-    {
-      localObject = (QQMessageFacade)((AppRuntime)localObject).getManager(19);
-      if (localObject != null) {
-        ((QQMessageFacade)localObject).a(this.a.frienduin, this.a.istroop, this.a.uniseq, "extStr", this.a.extStr);
-      }
-    }
-  }
+  public ywv(PluginJumpManager paramPluginJumpManager) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ywv
  * JD-Core Version:    0.7.0.1
  */

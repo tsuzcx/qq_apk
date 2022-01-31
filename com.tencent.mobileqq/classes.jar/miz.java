@@ -1,26 +1,20 @@
-import android.support.v4.view.MotionEventCompat;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview.NaviMaskTouchListener;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
 
 public class miz
-  implements View.OnTouchListener
+  implements aclm
 {
-  public miz(ReadInJoyNavigationGridview paramReadInJoyNavigationGridview) {}
+  public miz(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt1, int paramInt2)
   {
-    if ((MotionEventCompat.getActionMasked(paramMotionEvent) == 0) && (ReadInJoyNavigationGridview.a(this.a) != null)) {
-      ReadInJoyNavigationGridview.a(this.a).a();
-    }
-    return true;
+    this.a.h = paramInt1;
+    this.a.i = paramInt2;
+    this.a.d(10);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     miz
  * JD-Core Version:    0.7.0.1
  */

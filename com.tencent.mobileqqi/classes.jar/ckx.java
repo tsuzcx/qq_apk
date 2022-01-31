@@ -1,23 +1,17 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.TroopQZoneUploadAlbumObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.EmosmDetailActivity;
 
 public class ckx
-  extends TroopQZoneUploadAlbumObserver
+  implements View.OnClickListener
 {
-  public ckx(Conversation paramConversation) {}
+  public ckx(EmosmDetailActivity paramEmosmDetailActivity) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
-  {
-    if (!(paramObject instanceof String)) {
-      return;
-    }
-    paramObject = (String)paramObject;
-    this.a.a(8, paramObject, -2147483648);
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ckx
  * JD-Core Version:    0.7.0.1
  */

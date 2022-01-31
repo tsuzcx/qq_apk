@@ -1,21 +1,24 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Handler;
 
-public class xpt
-  implements Runnable
+class xpt
+  extends alwx
 {
-  public xpt(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  xpt(xpr paramxpr) {}
   
-  public void run()
+  public void a(boolean paramBoolean, long paramLong, alwy paramalwy)
   {
-    QQToast.a(BaseApplicationImpl.getApplication(), "录制出现异常，请重试", 1).a();
-    this.a.finish();
+    paramalwy = this.a.a;
+    if (paramBoolean) {}
+    for (int i = 4;; i = 5)
+    {
+      paramalwy.sendEmptyMessage(i);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xpt
  * JD-Core Version:    0.7.0.1
  */

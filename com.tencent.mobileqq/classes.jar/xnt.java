@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import android.app.Activity;
+import android.os.Handler;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import java.util.List;
 
-class xnt
-  implements Runnable
+public class xnt
+  extends xnq
 {
-  xnt(xns paramxns) {}
-  
-  public void run()
-  {
-    EditLocalVideoActivity.b(this.a.a, false);
-  }
+  public int a;
+  public Activity a;
+  public Handler a;
+  public String a;
+  public List<SlideItemInfo> a;
+  public xnu a;
+  public int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xnt
  * JD-Core Version:    0.7.0.1
  */

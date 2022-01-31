@@ -1,14 +1,35 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.ad.tangram.log.AdLogAdapter;
+import com.tencent.qphone.base.util.QLog;
 
-class aamg
-  implements Runnable
+public final class aamg
+  implements AdLogAdapter
 {
-  aamg(aamf paramaamf, int paramInt) {}
-  
-  public void run()
+  public void d(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    ThreadManager.getUIHandler().post(new aamh(this));
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2, paramThrowable);
+    }
+  }
+  
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(paramString1, 2, paramString2, paramThrowable);
+    }
+  }
+  
+  public void i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2, paramThrowable);
+    }
+  }
+  
+  public void w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2, paramThrowable);
+    }
   }
 }
 

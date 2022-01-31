@@ -8,20 +8,20 @@ import java.util.ArrayList;
 public final class RespSearch
   extends JceStruct
 {
-  static ArrayList cache_vRecords;
+  static ArrayList<SearchInfo> cache_vRecords;
   static byte[] cache_vSecureSig;
-  static ArrayList cache_vvRespServices;
-  public ArrayList vRecords;
+  static ArrayList<byte[]> cache_vvRespServices;
+  public ArrayList<SearchInfo> vRecords;
   public byte[] vSecureSig;
-  public ArrayList vvRespServices;
+  public ArrayList<byte[]> vvRespServices;
   
   public RespSearch() {}
   
-  public RespSearch(ArrayList paramArrayList1, byte[] paramArrayOfByte, ArrayList paramArrayList2)
+  public RespSearch(ArrayList<SearchInfo> paramArrayList, byte[] paramArrayOfByte, ArrayList<byte[]> paramArrayList1)
   {
-    this.vRecords = paramArrayList1;
+    this.vRecords = paramArrayList;
     this.vSecureSig = paramArrayOfByte;
-    this.vvRespServices = paramArrayList2;
+    this.vvRespServices = paramArrayList1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)

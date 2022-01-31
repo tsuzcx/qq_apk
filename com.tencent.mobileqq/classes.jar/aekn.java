@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
-import java.util.TimerTask;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class aekn
-  extends TimerTask
+  implements DialogInterface.OnClickListener
 {
-  public aekn(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin) {}
+  public aekn(UpgradeActivity paramUpgradeActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MusicGeneWebViewPlugin.a(this.a);
+    azqs.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, amqd.b(), String.valueOf(0), amqe.a(), "0");
+    this.a.a();
   }
 }
 

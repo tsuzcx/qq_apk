@@ -1,30 +1,37 @@
 package com.tencent.av.business.manager.pendant;
 
-import com.tencent.av.business.manager.EffectConfigBase.ItemBase;
+import ljo;
 
 public class PendantItem
-  extends EffectConfigBase.ItemBase
+  extends ljo
 {
+  public static final int Category_BeautyMakeup = 3;
   public static final int Category_Face = 0;
   public static final int Category_FaceAndGesture = 2;
   public static final int Category_Gesture = 1;
   private int category;
   private String desc;
+  public Object extraParam;
   private String filtername;
   private String gestureType;
   private String gestureWording;
   private String iconurl;
   private String id;
   private boolean isshow = true;
+  private int kind;
   private String md5;
   private String name = "";
   private int platform;
   private boolean predownload;
-  private boolean renderfirst = true;
   private String resurl;
   private int type;
   private boolean usable;
   private int voiceid;
+  
+  public static boolean isBeautyMakeup(int paramInt)
+  {
+    return paramInt == 3;
+  }
   
   public static boolean isFace(int paramInt)
   {
@@ -34,6 +41,21 @@ public class PendantItem
   public static boolean isGesture(int paramInt)
   {
     return (paramInt == 2) || (paramInt == 1);
+  }
+  
+  public static boolean isOnlySupportNewFilter(int paramInt)
+  {
+    return 21 == paramInt;
+  }
+  
+  public static boolean isOnlySupportOldFilter(int paramInt)
+  {
+    return 22 == paramInt;
+  }
+  
+  public static boolean isPanorama(int paramInt)
+  {
+    return 7 == paramInt;
   }
   
   public int getCategory()
@@ -71,6 +93,11 @@ public class PendantItem
     return this.id;
   }
   
+  public int getKind()
+  {
+    return this.kind;
+  }
+  
   public String getMd5()
   {
     return this.md5;
@@ -84,11 +111,6 @@ public class PendantItem
   public int getPlatform()
   {
     return this.platform;
-  }
-  
-  public boolean getRenderFirst()
-  {
-    return this.renderfirst;
   }
   
   public String getResurl()
@@ -128,7 +150,7 @@ public class PendantItem
   
   public String toString()
   {
-    return "id[" + this.id + "], name[" + this.name + "], type[" + this.type + "], category[" + this.category + "], gestureType[" + this.gestureType + "]";
+    return "id[" + this.id + "], name[" + this.name + "], type[" + this.type + "], category[" + this.category + "], gestureType[" + this.gestureType + "], kind[" + this.kind + "], isDownloading[" + this.isDownloading + "], extraParam[" + this.extraParam + "]";
   }
 }
 

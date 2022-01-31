@@ -1,20 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import com.tribe.async.dispatch.IEventReceiver;
 
-public class wtc
-  implements DialogInterface.OnClickListener
-{
-  public wtc(BaseActivityView paramBaseActivityView) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.f();
-  }
-}
+public abstract interface wtc
+  extends IEventReceiver
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wtc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,21 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
 
 public class mit
-  implements Runnable
+  implements View.OnClickListener
 {
-  public mit(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  public mit(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.a == 40677) {
-      PublicAccountReportUtils.a(null, "CliOper", "", "", "0X8009295", "0X8009295", 0, 0, ReadInJoyHelper.a(), "", "", ReadInJoyUtils.a(this.a.a), false);
-    }
-    for (;;)
-    {
-      if (this.a.a == 56) {
-        PublicAccountReportUtils.a(null, "", "0X8007413", "0X8007413", 0, 0, "", "0", "", VideoReporter.a(this.a.a, null), false);
-      }
-      return;
-      PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80066F9", "0X80066F9", 0, 0, ReadInJoyHelper.a(), "", "", ReadInJoyUtils.a(this.a.a), false);
-    }
+    azqs.b(null, "P_CliOper", "Grp_qiqiqun", "", "show_middle", "Clk_video", 0, 0, this.a.b, "", "", "");
+    this.a.d(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mit
  * JD-Core Version:    0.7.0.1
  */

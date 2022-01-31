@@ -1,57 +1,80 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.MarkFaceMessage;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.CallSuper;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.views.RoundBorderImageView;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import java.util.List;
 
 public class vbo
-  implements View.OnClickListener
+  extends uuh<uyg>
 {
-  public vbo(MarketFaceItemBuilder paramMarketFaceItemBuilder, int paramInt, String paramString1, String paramString2, MarkFaceMessage paramMarkFaceMessage, MarketFaceItemBuilder.Holder paramHolder) {}
+  private Drawable a;
+  public StoryMsgNodeFrameLayout a;
   
-  public void onClick(View paramView)
+  public vbo(ViewGroup paramViewGroup, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MarketFaceItemBuilder", 2, "rewordTxt has been clicked! type = " + this.jdField_a_of_type_Int + " content = " + this.jdField_a_of_type_JavaLangString + " jumpUrl = " + this.b);
+    super(paramViewGroup, paramInt);
+    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout = ((StoryMsgNodeFrameLayout)this.itemView);
+  }
+  
+  @CallSuper
+  public void a(uyg paramuyg)
+  {
+    super.a(paramuyg);
+    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setTag(paramuyg.jdField_a_of_type_JavaLangString);
+    b(paramuyg);
+  }
+  
+  protected void b(String paramString)
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a().getResources().getDrawable(2130846162);
     }
-    String str1;
-    String str2;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage.showIpProduct)
-    {
-      paramView = "1";
-      if (!TextUtils.isEmpty(this.b))
-      {
-        localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.b, QQBrowserActivity.class);
-        ((Intent)localObject).putExtra("hide_operation_bar", true);
-        VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.b, this.b, -1L, (Intent)localObject, false, -1);
-        str1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.a.c();
-        str2 = MarketFaceItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a != null) {
-          break label200;
-        }
-      }
+    xsm.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView, paramString, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.b, this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.jdField_a_of_type_Int, "msg_tab_thumb");
+  }
+  
+  protected void b(uyg paramuyg)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setDisplayState(0);
+    if ((paramuyg.jdField_a_of_type_JavaUtilList != null) && (!paramuyg.jdField_a_of_type_JavaUtilList.isEmpty())) {
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a(paramuyg.jdField_a_of_type_JavaUtilList.size(), paramuyg.jdField_a_of_type_JavaUtilList.size() - paramuyg.b);
     }
-    label200:
-    for (Object localObject = "";; localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.a.epId)
+    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a(paramuyg);
+  }
+  
+  protected void c(String paramString)
+  {
+    Drawable localDrawable = a().getResources().getDrawable(2130846162);
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mMemoryCacheKeySuffix = "msg_tab_thumb";
+    localURLDrawableOptions.mPlayGifImage = true;
+    localURLDrawableOptions.mGifRoundCorner = xsm.a(a(), 3.0F);
+    localURLDrawableOptions.mRequestHeight = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.jdField_a_of_type_Int;
+    localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.b;
+    localURLDrawableOptions.mLoadingDrawable = localDrawable;
+    localURLDrawableOptions.mFailedDrawable = localDrawable;
+    paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+    paramString.setURLDrawableListener(new vbp(this));
+    if ((paramString.getStatus() == 1) && (paramString.getCurrDrawable() != null)) {}
+    for (;;)
     {
-      VasWebviewUtil.reportCommercialDrainage(str1, "ep_mall", "yinliu_xiaoweiba_click", "AIO", 1, 0, 1, str2, (String)localObject, this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage.copywritingContent, paramView, "", "", "", 0, 0, 0, 0);
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setImageDrawable(paramString);
       return;
-      paramView = "";
-      break;
+      if ((paramString.getStatus() == 3) || (paramString.getStatus() == 2)) {
+        paramString.restartDownload();
+      } else {
+        paramString.startDownload();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vbo
  * JD-Core Version:    0.7.0.1
  */

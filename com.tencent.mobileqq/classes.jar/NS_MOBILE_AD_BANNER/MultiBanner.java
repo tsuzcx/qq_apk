@@ -8,15 +8,16 @@ import java.util.ArrayList;
 public final class MultiBanner
   extends JceStruct
 {
-  static ArrayList cache_recomUinList = new ArrayList();
+  static ArrayList<Long> cache_recomUinList = new ArrayList();
   public boolean bNeedPiecewise = true;
+  public boolean bNeedSpread;
   public String coverurl = "";
   public long createtime;
   public boolean from_now;
   public String jmpUrl = "";
   public int livetype;
   public int num;
-  public ArrayList recomUinList;
+  public ArrayList<Long> recomUinList;
   public String roomid = "";
   public String schemaurl = "";
   public String strNicks = "";
@@ -32,7 +33,7 @@ public final class MultiBanner
   
   public MultiBanner() {}
   
-  public MultiBanner(String paramString1, long paramLong1, String paramString2, long paramLong2, String paramString3, int paramInt1, String paramString4, String paramString5, String paramString6, boolean paramBoolean1, String paramString7, ArrayList paramArrayList, int paramInt2, int paramInt3, boolean paramBoolean2)
+  public MultiBanner(String paramString1, long paramLong1, String paramString2, long paramLong2, String paramString3, int paramInt1, String paramString4, String paramString5, String paramString6, boolean paramBoolean1, String paramString7, ArrayList<Long> paramArrayList, int paramInt2, int paramInt3, boolean paramBoolean2, boolean paramBoolean3)
   {
     this.strNicks = paramString1;
     this.uUin = paramLong1;
@@ -49,6 +50,7 @@ public final class MultiBanner
     this.styleType = paramInt2;
     this.livetype = paramInt3;
     this.bNeedPiecewise = paramBoolean2;
+    this.bNeedSpread = paramBoolean3;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -68,6 +70,7 @@ public final class MultiBanner
     this.styleType = paramJceInputStream.read(this.styleType, 12, false);
     this.livetype = paramJceInputStream.read(this.livetype, 13, false);
     this.bNeedPiecewise = paramJceInputStream.read(this.bNeedPiecewise, 14, false);
+    this.bNeedSpread = paramJceInputStream.read(this.bNeedSpread, 15, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -103,11 +106,12 @@ public final class MultiBanner
     paramJceOutputStream.write(this.styleType, 12);
     paramJceOutputStream.write(this.livetype, 13);
     paramJceOutputStream.write(this.bNeedPiecewise, 14);
+    paramJceOutputStream.write(this.bNeedSpread, 15);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_AD_BANNER.MultiBanner
  * JD-Core Version:    0.7.0.1
  */

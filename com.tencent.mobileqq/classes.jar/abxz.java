@@ -1,28 +1,35 @@
-import android.view.View;
-import android.widget.ProgressBar;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.mobileqq.doutu.DoutuEmotionAdapter;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class abxz
-  implements URLDrawableDownListener
+abstract class abxz
+  extends ampt
 {
-  public abxz(DoutuEmotionAdapter paramDoutuEmotionAdapter) {}
+  long jdField_a_of_type_Long;
+  abwu jdField_a_of_type_Abwu;
+  boolean jdField_a_of_type_Boolean;
+  long b;
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public abxz(abwu paramabwu, int paramInt, long paramLong)
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof ProgressBar))) {
-      ((ProgressBar)paramView).setVisibility(4);
+    super(paramInt, true, true, paramLong, true, false, "Doraemon");
+    this.jdField_a_of_type_Abwu = paramabwu;
+    this.b = 10000L;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void onConsecutiveFailure(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DoraemonOpenAPI.sensor.location", 2, "onConsecutiveFailure: errCode=" + paramInt1 + ", failCount=" + paramInt2);
     }
+    if ((paramInt2 * 2000 < this.b) || (!this.jdField_a_of_type_Boolean)) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    acab.a(this.jdField_a_of_type_Abwu, paramInt1, "error " + paramInt1);
+    Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    SosoInterface.b(this);
   }
 }
 

@@ -1,24 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.device.file.DevVideoMsgProcessor;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.DeviceMsgChatPie;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorListenerAdapter;
 
-public class vsb
-  implements DialogInterface.OnClickListener
+final class vsb
+  extends AnimatorListenerAdapter
 {
-  public vsb(DeviceMsgChatPie paramDeviceMsgChatPie) {}
+  vsb(Animator.AnimatorListener paramAnimatorListener) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    paramDialogInterface.dismiss();
-    DevVideoMsgProcessor.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.f);
-    this.a.f = "";
+    super.onAnimationCancel(paramAnimator);
+    this.a.onAnimationCancel(paramAnimator);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    wxe.b("Q.qqstory.playernew.AnimationUtils", "doExitAnimation, onAnimationEnd");
+    this.a.onAnimationEnd(paramAnimator);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+    this.a.onAnimationStart(paramAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vsb
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_group$ReqLikeVideo
-  extends MessageMicro
+  extends MessageMicro<ReqLikeVideo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field operation = PBField.initUInt32(0);
@@ -24,7 +24,7 @@ public final class qqstory_group$ReqLikeVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_group.ReqLikeVideo
  * JD-Core Version:    0.7.0.1
  */

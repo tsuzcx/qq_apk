@@ -1,38 +1,98 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgQueueView;
-import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgQueueView.DrawItem;
-import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class upg
-  extends AnimatorListenerAdapter
+class upg
+  implements xtk
 {
-  public upg(GoldMsgQueueView paramGoldMsgQueueView, boolean paramBoolean1, GoldMsgQueueView.DrawItem paramDrawItem, boolean paramBoolean2) {}
+  private final int jdField_a_of_type_Int;
+  private final Object jdField_a_of_type_JavaLangObject;
+  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public upg(Object paramObject, AtomicInteger paramAtomicInteger, int paramInt)
   {
-    super.onAnimationEnd(paramAnimator);
-    if (this.b)
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = paramAtomicInteger;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onFailure(String paramString)
+  {
+    wxe.d(upd.a, "FFMPEGResponseCallback onFailure() mTaskType = " + this.jdField_a_of_type_Int + " message = " + paramString);
+  }
+  
+  public void onFinish(boolean paramBoolean)
+  {
+    int j = 0;
+    int k = 0;
+    int m = 0;
+    int i = 0;
+    wxe.d(upd.a, "FFMPEGResponseCallback onFinish() mTaskType = " + this.jdField_a_of_type_Int + " isSuccess = " + paramBoolean);
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      GoldMsgQueueView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgQueueView).remove(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgQueueView$DrawItem);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgQueueView$DrawItem.drawable != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgQueueView$DrawItem.drawable.setCallback(null);
+      this.jdField_a_of_type_JavaLangObject.notify();
+      switch (this.jdField_a_of_type_Int)
+      {
+      case 1: 
+        wxe.e(upd.a, "Undefined task type mTaskType = " + this.jdField_a_of_type_Int);
+        throw new RuntimeException("Undefined task in FFMPEGResponseCallback");
       }
+    }
+    AtomicInteger localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+    if (paramBoolean)
+    {
+      label152:
+      localAtomicInteger.set(i);
+      for (;;)
+      {
+        label158:
+        return;
+        localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+        if (!paramBoolean) {
+          break;
+        }
+        i = j;
+        label174:
+        localAtomicInteger.set(i);
+      }
+      localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+      if (!paramBoolean) {
+        break label248;
+      }
+    }
+    label248:
+    for (i = k;; i = 945001)
+    {
+      localAtomicInteger.set(i);
+      break label158;
+      localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+      if (paramBoolean) {}
+      for (i = m;; i = 944004)
+      {
+        localAtomicInteger.set(i);
+        break;
+      }
+      break;
+      i = 943004;
+      break label152;
+      i = 942004;
+      break label174;
     }
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void onProgress(String paramString) {}
+  
+  public void onStart()
   {
-    super.onAnimationStart(paramAnimator);
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgQueueView$DrawItem.isUseToShowNum = true;
-    }
+    wxe.c(upd.a, "onStart() mTaskType = " + this.jdField_a_of_type_Int);
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    wxe.c(upd.a, "FFMPEGResponseCallback onSuccess() mTaskType = " + this.jdField_a_of_type_Int + " message = " + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     upg
  * JD-Core Version:    0.7.0.1
  */

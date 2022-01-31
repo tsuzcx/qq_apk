@@ -1,20 +1,29 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRenderDriver;
-import com.tencent.mobileqq.apollo.task.ApolloActionHelper;
+import android.view.View;
 
-public class ymd
-  implements Runnable
+class ymd
+  implements bhuk
 {
-  public ymd(ApolloRenderDriver paramApolloRenderDriver) {}
+  ymd(ymb paramymb, String paramString1, String paramString2, ymm paramymm, bhuf parambhuf) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.a.a(ApolloActionHelper.a());
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      do
+      {
+        return;
+      } while (yxv.a("subScribe_delete_draft"));
+      this.jdField_a_of_type_Ymb.a(this.jdField_a_of_type_JavaLangString, this.b, new yme(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ymd
  * JD-Core Version:    0.7.0.1
  */

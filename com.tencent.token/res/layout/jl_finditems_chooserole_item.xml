@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="80.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:gravity="center_vertical" android:id="@id/role_name" android:layout_width="fill_parent" android:layout_height="80.0dip" android:layout_marginLeft="10.0dip" style="@style/text_view" />
-    <ImageView android:background="@drawable/list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
-</LinearLayout>

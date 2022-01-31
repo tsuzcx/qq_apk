@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/aas" android:background="@color/vy" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.base.MMLoadMoreListView android:id="@id/ecy" android:background="@color/vy" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/mn" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ecz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="15.0dip" android:textColor="@color/ef" android:gravity="center" android:id="@id/ed0" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="@string/d_v" android:layout_weight="0.5" />
+        <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="0.5" />
+    </LinearLayout>
+</RelativeLayout>

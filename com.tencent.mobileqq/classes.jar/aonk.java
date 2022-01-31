@@ -1,67 +1,75 @@
-import android.os.Message;
-import android.view.Surface;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.tracker.SimpleStickerTracker2;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.tracker.TrackingDecoderListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
 public class aonk
-  implements TrackingDecoderListener
+  extends aokh<aonj>
 {
-  public aonk(SimpleStickerTracker2 paramSimpleStickerTracker2) {}
-  
-  public Surface a()
+  public int a()
   {
-    return null;
+    return 453;
   }
   
-  public void a()
+  @NonNull
+  public aonj a(int paramInt)
   {
-    SimpleStickerTracker2.a(this.a, System.currentTimeMillis());
-    if (SimpleStickerTracker2.a(this.a) != null)
+    return new aonj();
+  }
+  
+  @Nullable
+  public aonj a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
     {
-      Message localMessage = SimpleStickerTracker2.a(this.a).obtainMessage(1);
-      SimpleStickerTracker2.a(this.a).sendMessage(localMessage);
+      aonj localaonj = aonj.a(paramArrayOfaoko[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("DonDisturbProcessor", 0, "onParsed don disturb" + paramArrayOfaoko[0].a);
+      }
+      return localaonj;
     }
+    return new aonj();
   }
   
-  public void a(int paramInt, Throwable paramThrowable)
+  public Class<aonj> a()
   {
+    return aonj.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aonj paramaonj)
+  {
+    bdne.a(BaseApplicationImpl.getContext(), "open_don_disturb", BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramaonj.a());
     if (QLog.isColorLevel()) {
-      QLog.d("SimpleStickerTracker2", 2, "SimpleStickerTracker2 onDecodeError errorCode =" + paramInt);
+      QLog.d("DonDisturbProcessor", 0, "onUpdate don disturb" + paramaonj);
     }
-    paramThrowable.printStackTrace();
   }
   
-  public void a(long paramLong) {}
-  
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void a(byte[] paramArrayOfByte, long paramLong)
+  public boolean a()
   {
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {
-      SimpleStickerTracker2.a(this.a, paramArrayOfByte, paramLong);
-    }
+    return true;
   }
   
-  public void b()
+  public int b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("SimpleStickerTracker2", 2, "onDecodeFinish ");
-    }
-    if (SimpleStickerTracker2.a(this.a) != null)
-    {
-      Message localMessage = SimpleStickerTracker2.a(this.a).obtainMessage(3);
-      SimpleStickerTracker2.a(this.a).sendMessage(localMessage);
-    }
+    return 0;
   }
   
-  public void c() {}
+  public boolean b()
+  {
+    return false;
+  }
   
-  public void d() {}
+  public boolean c()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aonk
  * JD-Core Version:    0.7.0.1
  */

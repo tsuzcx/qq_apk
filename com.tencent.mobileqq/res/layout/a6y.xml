@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/a6s" />
+    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/hx4" android:visibility="visible" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="7.5dip" android:layout_marginRight="-1.0dip" android:layout_marginBottom="7.5dip" android:src="@drawable/f_h" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="14.0sp" android:textColor="@drawable/zv" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/hwv" android:layout_width="fill_parent" android:layout_height="34.0dip" android:layout_marginLeft="11.0dip" android:layout_marginTop="7.5dip" android:layout_marginBottom="7.5dip" android:text="@string/pvs" android:lines="1" android:includeFontPadding="false" android:layout_toLeftOf="@id/fao" android:layout_toRightOf="@id/hx4" android:layout_centerVertical="true" />
+    <View android:background="#ffe2e3e4" android:layout_width="fill_parent" android:layout_height="@dimen/asx" android:layout_below="@id/hwv" />
+</RelativeLayout>

@@ -1,66 +1,42 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.av.gaudio.GAudioNotifyCenter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Context;
+import com.tencent.biz.common.download.OfflineDownloader;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.biz.common.offline.HtmlOffline;
+import com.tencent.biz.common.util.LoadedBack;
+import com.tencent.qphone.base.util.QLog;
 
-public class bhm
-  extends Handler
+public final class bhm
+  implements AsyncBack
 {
-  public bhm(GAudioNotifyCenter paramGAudioNotifyCenter) {}
+  public bhm(long paramLong, Context paramContext, String paramString, LoadedBack paramLoadedBack) {}
   
-  public bhm(GAudioNotifyCenter paramGAudioNotifyCenter, Looper paramLooper)
+  public void a(int paramInt)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_ComTencentBizCommonUtilLoadedBack.b(paramInt);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(String paramString, int paramInt)
   {
-    if (!this.a.c()) {
-      return;
+    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    if (QLog.isColorLevel()) {
+      QLog.i("HtmlCheckUpdate", 2, "js call downloadUpdate callback:" + paramInt + ", time:" + l);
     }
-    Intent localIntent;
-    switch (paramMessage.what)
+    if (paramInt == 0)
     {
-    case 10006: 
-    case 10007: 
-    case 10008: 
-    case 10009: 
-    default: 
-      return;
-    case 10002: 
-      this.a.a();
-      return;
-    case 10003: 
-      localIntent = new Intent("tencent.video.q2v.MultiVideo");
-      localIntent.putExtra("type", 26);
-      localIntent.putExtra("discussId", ((Long)paramMessage.obj).longValue());
-      localIntent.putExtra("memberUin", this.a.a.a());
-      this.a.a.a().sendBroadcast(localIntent);
-      return;
-    case 10004: 
-      paramMessage = (Object[])paramMessage.obj;
-      localIntent = new Intent("tencent.video.q2v.MultiVideo");
-      localIntent.putExtra("type", 24);
-      localIntent.putExtra("discussId", ((Long)paramMessage[0]).longValue());
-      localIntent.putExtra("cmdUin", (String)paramMessage[1]);
-      localIntent.putExtra("uins", (String[])paramMessage[2]);
-      this.a.a.a().sendBroadcast(localIntent);
-      return;
-    case 10005: 
-      paramMessage = (Object[])paramMessage.obj;
-      localIntent = new Intent("tencent.video.q2v.MultiVideo");
-      localIntent.putExtra("type", 31);
-      localIntent.putExtra("discussId", ((Long)paramMessage[0]).longValue());
-      localIntent.putExtra("cmdUin", (String)paramMessage[1]);
-      localIntent.putExtra("uins", (String[])paramMessage[2]);
-      this.a.a.a().sendBroadcast(localIntent);
-      return;
+      HtmlOffline.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+      if (HtmlOffline.a(this.jdField_a_of_type_JavaLangString)) {
+        this.jdField_a_of_type_ComTencentBizCommonUtilLoadedBack.a(0);
+      }
     }
-    boolean bool = ((Boolean)paramMessage.obj).booleanValue();
-    this.a.c(bool);
+    for (;;)
+    {
+      HtmlOffline.b(this.jdField_a_of_type_JavaLangString);
+      HtmlOffline.a(this.jdField_a_of_type_JavaLangString, paramInt, l, OfflineDownloader.a(this.jdField_a_of_type_AndroidContentContext));
+      return;
+      this.jdField_a_of_type_ComTencentBizCommonUtilLoadedBack.a(6);
+      continue;
+      this.jdField_a_of_type_ComTencentBizCommonUtilLoadedBack.a(2);
+    }
   }
 }
 

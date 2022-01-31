@@ -1,35 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.language.SelectLanguageActivity;
 
 public class ehm
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public ehm(AIOImageListScene paramAIOImageListScene, int paramInt) {}
+  public ehm(SelectLanguageActivity paramSelectLanguageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1)
-    {
-      if (this.jdField_a_of_type_Int != 0) {
-        break label47;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a(new Integer[] { Integer.valueOf(0), Integer.valueOf(1) });
-    }
-    for (;;)
-    {
-      AIOImageListScene.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene, null);
-      return;
-      label47:
-      if (this.jdField_a_of_type_Int == 1) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a(new Integer[] { Integer.valueOf(0), Integer.valueOf(2) });
-      }
-    }
+    SelectLanguageActivity.a(this.a, 8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ehm
  * JD-Core Version:    0.7.0.1
  */

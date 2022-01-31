@@ -1,29 +1,27 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import java.util.Map;
 
-public class yms
-  implements Runnable
+class yms
+  implements ynq
 {
-  public yms(ApolloSurfaceView paramApolloSurfaceView, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int[] paramArrayOfInt1, int[] paramArrayOfInt2) {}
+  yms(ymq paramymq, afkf paramafkf) {}
   
-  public void run()
+  public void a(String paramString, long paramLong1, long paramLong2)
   {
-    try
+    Long localLong = (Long)ymq.b(this.jdField_a_of_type_Ymq).get(Integer.valueOf(this.jdField_a_of_type_Afkf.b));
+    if ((localLong != null) && (localLong.longValue() > paramLong2) && (paramLong1 != localLong.longValue()) && (Math.abs(paramLong1 - localLong.longValue()) > 100L))
     {
-      ApolloSurfaceView.nativeTouchInput(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender().getSavaWrapper().a, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt);
+      this.jdField_a_of_type_Afkf.a.setText((CharSequence)ymq.c(this.jdField_a_of_type_Ymq).get(Integer.valueOf(this.jdField_a_of_type_Afkf.b)));
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ApolloSurfaceView", 1, "send touch event err e=" + localThrowable.toString());
-    }
+    ymq.b(this.jdField_a_of_type_Ymq).put(Integer.valueOf(this.jdField_a_of_type_Afkf.b), Long.valueOf(paramLong2));
+    ymq.c(this.jdField_a_of_type_Ymq).put(Integer.valueOf(this.jdField_a_of_type_Afkf.b), paramString);
+    this.jdField_a_of_type_Afkf.a.setText(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yms
  * JD-Core Version:    0.7.0.1
  */

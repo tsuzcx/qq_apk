@@ -1,18 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.MayKnowManActivity;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class dbn
-  implements DialogInterface.OnCancelListener
+  implements Runnable
 {
-  public dbn(MayKnowManActivity paramMayKnowManActivity) {}
+  public dbn(QQBrowserActivity paramQQBrowserActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.a = null;
-    if (!this.a.isFinishing()) {
-      this.a.finish();
-    }
+    QLog.doReportLogSelf(AppSetting.a, "FeedbackReport", "");
   }
 }
 

@@ -1,20 +1,32 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
 
-public class tsu
-  implements View.OnClickListener
+class tsu
+  implements bhuk
 {
-  public tsu(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  tsu(tss paramtss, bhuf parambhuf) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    SoundAndVibrateActivity.a(this.a);
+    if (!yxv.a("showMoreActionSheetClick")) {
+      switch (paramInt)
+      {
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      tss.d(this.jdField_a_of_type_Tss);
+      continue;
+      PublicFragmentActivity.a(this.jdField_a_of_type_Tss.a(), TempMsgSettingFragment.class);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tsu
  * JD-Core Version:    0.7.0.1
  */

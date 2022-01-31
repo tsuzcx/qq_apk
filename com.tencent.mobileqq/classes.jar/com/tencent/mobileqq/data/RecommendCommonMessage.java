@@ -1,16 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import abvf;
-import abvg;
-import abvh;
+import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByActionCallback;
-import com.tencent.mobileqq.service.message.MessageConstants;
+import com.tencent.mobileqq.ark.ArkRecommendLogic;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -27,11 +20,11 @@ public class RecommendCommonMessage
   private static final String TAG = "Ark";
   public String arkServerExtraInfo;
   public String arkServerMsgId;
-  private ArrayList atIndex = new ArrayList();
+  private ArrayList<Integer> atIndex = new ArrayList();
   public boolean atInfoParsed;
-  private ArrayList atLength = new ArrayList();
+  private ArrayList<Integer> atLength = new ArrayList();
   public boolean isFromArkServer;
-  public ArrayList mContextList = new ArrayList();
+  public ArrayList<RecommendCommonMessage.ArkContextInfo> mContextList = new ArrayList();
   public int mContextMatchType;
   public int mEchoType;
   public boolean mHasReportShowIcon;
@@ -42,119 +35,6 @@ public class RecommendCommonMessage
   public boolean mIsMsgParsedByAi;
   public boolean mIsShow;
   public RecommendCommonMessage.ArkMsgAppInfo mOldAppInfo = new RecommendCommonMessage.ArkMsgAppInfo();
-  
-  public static boolean getAppInfosByContext(RecommendCommonMessage.ArkContextInfo paramArkContextInfo, RecommendCommonMessage.IGetAppInfosByContextCallback paramIGetAppInfosByContextCallback)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    if (localQQAppInterface == null) {
-      return false;
-    }
-    Object localObject1 = paramArkContextInfo.context;
-    String[] arrayOfString = ((String)localObject1).split("\\.");
-    if (arrayOfString.length != 2)
-    {
-      ArkAppCenter.b("Ark", String.format("RecommendCommonMessage getAppInfosByContext split contextName failed. contextName: %s", new Object[] { localObject1 }));
-      return false;
-    }
-    ArrayList localArrayList = new ArrayList();
-    localObject1 = paramArkContextInfo.semantic.keySet().iterator();
-    while (((Iterator)localObject1).hasNext()) {
-      localArrayList.add((String)((Iterator)localObject1).next());
-    }
-    Object localObject3;
-    Object localObject2;
-    try
-    {
-      localObject1 = new JSONObject();
-      localObject3 = new JSONObject();
-      Iterator localIterator = paramArkContextInfo.semantic.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        ((JSONObject)localObject3).put(str, paramArkContextInfo.semantic.get(str));
-        continue;
-        localObject3 = paramArkContextInfo.keyword;
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      localObject2 = "";
-    }
-    for (;;)
-    {
-      boolean bool = paramArkContextInfo.equalInputText;
-      paramArkContextInfo = (ArkAppCenter)localQQAppInterface.getManager(120);
-      localObject2 = new abvf((String)localObject3, bool, (String)localObject2);
-      paramArkContextInfo.a().a(arrayOfString[0], arrayOfString[1], 1, localArrayList, null, paramIGetAppInfosByContextCallback, (ArkLocalAppMgr.IGetAppPathByActionCallback)localObject2);
-      return true;
-      ((JSONObject)localObject2).put(paramArkContextInfo.context, localObject3);
-      localObject2 = ((JSONObject)localObject2).toString();
-    }
-  }
-  
-  public static boolean getAppInfosByContextList(ArrayList paramArrayList, RecommendCommonMessage.IGetAppInfosByContextListCallback paramIGetAppInfosByContextListCallback)
-  {
-    boolean bool2 = true;
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    boolean bool1;
-    if (localQQAppInterface == null) {
-      bool1 = false;
-    }
-    Iterator localIterator1;
-    do
-    {
-      return bool1;
-      if (paramIGetAppInfosByContextListCallback == null) {
-        return false;
-      }
-      paramIGetAppInfosByContextListCallback.mCount = paramArrayList.size();
-      paramIGetAppInfosByContextListCallback.mAppList = new ArrayList();
-      localIterator1 = paramArrayList.iterator();
-      bool1 = bool2;
-    } while (!localIterator1.hasNext());
-    Object localObject1 = (RecommendCommonMessage.ArkContextInfo)localIterator1.next();
-    paramArrayList = ((RecommendCommonMessage.ArkContextInfo)localObject1).context;
-    String[] arrayOfString = paramArrayList.split("\\.");
-    if (arrayOfString.length != 2)
-    {
-      ArkAppCenter.b("Ark", String.format("RecommendCommonMessage getAppInfosByContext split contextName failed. contextName: %s", new Object[] { paramArrayList }));
-      paramIGetAppInfosByContextListCallback.mCount -= 1;
-      return false;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramArrayList = ((RecommendCommonMessage.ArkContextInfo)localObject1).semantic.keySet().iterator();
-    while (paramArrayList.hasNext()) {
-      localArrayList.add((String)paramArrayList.next());
-    }
-    Object localObject2;
-    try
-    {
-      paramArrayList = new JSONObject();
-      localObject2 = new JSONObject();
-      Iterator localIterator2 = ((RecommendCommonMessage.ArkContextInfo)localObject1).semantic.keySet().iterator();
-      while (localIterator2.hasNext())
-      {
-        String str = (String)localIterator2.next();
-        ((JSONObject)localObject2).put(str, ((RecommendCommonMessage.ArkContextInfo)localObject1).semantic.get(str));
-        continue;
-        localObject2 = ((RecommendCommonMessage.ArkContextInfo)localObject1).keyword;
-      }
-    }
-    catch (JSONException paramArrayList)
-    {
-      paramArrayList = "";
-    }
-    for (;;)
-    {
-      bool1 = ((RecommendCommonMessage.ArkContextInfo)localObject1).equalInputText;
-      localObject1 = (ArkAppCenter)localQQAppInterface.getManager(120);
-      paramArrayList = new abvg((String)localObject2, bool1, paramArrayList);
-      ((ArkAppCenter)localObject1).a().a(arrayOfString[0], arrayOfString[1], 1, localArrayList, null, paramIGetAppInfosByContextListCallback, paramArrayList);
-      break;
-      paramArrayList.put(((RecommendCommonMessage.ArkContextInfo)localObject1).context, localObject2);
-      paramArrayList = paramArrayList.toString();
-    }
-  }
   
   public void addAtInfo(int paramInt1, int paramInt2)
   {
@@ -175,17 +55,6 @@ public class RecommendCommonMessage
     for (;;)
     {
       return;
-      boolean bool1;
-      if (isArkAtBabyQMsg())
-      {
-        localObject1 = getExtInfoFromExtStr("ark_ai_message_parsed");
-        if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).equals("1"))) {}
-        for (bool1 = true;; bool1 = false)
-        {
-          this.mIsMsgParsedByAi = bool1;
-          return;
-        }
-      }
       this.mOldAppInfo.appName = getExtInfoFromExtStr("ark_ai_message_name");
       this.mOldAppInfo.appView = getExtInfoFromExtStr("ark_ai_message_view");
       this.mOldAppInfo.appVer = getExtInfoFromExtStr("ark_ai_message_ver");
@@ -198,7 +67,7 @@ public class RecommendCommonMessage
         localObject1 = new JSONObject((String)localObject1);
         JSONArray localJSONArray = ((JSONObject)localObject1).getJSONArray("data");
         i = 0;
-        label159:
+        label113:
         if (i < localJSONArray.length())
         {
           localArkContextInfo = new RecommendCommonMessage.ArkContextInfo();
@@ -209,7 +78,6 @@ public class RecommendCommonMessage
           if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).equals("1")))
           {
             bool1 = true;
-            label244:
             localArkContextInfo.equalInputText = bool1;
             localArkContextInfo.contextMatchType = localJSONObject.optInt("contextMatchType");
             localJSONObject = (JSONObject)localJSONObject.get("sematic");
@@ -235,14 +103,14 @@ public class RecommendCommonMessage
         for (;;)
         {
           if (TextUtils.isEmpty(this.mOldAppInfo.appName)) {
-            break label596;
+            break label538;
           }
           bool1 = true;
           this.mIsMsgParsedByAi = bool1;
           if (!this.mIsMsgParsedByAi)
           {
             if (this.mContextList.size() <= 0) {
-              break label601;
+              break label543;
             }
             bool1 = true;
             this.mIsMsgParsedByAi = bool1;
@@ -252,16 +120,16 @@ public class RecommendCommonMessage
           }
           String str1 = getExtInfoFromExtStr("ark_ai_message_parsed");
           if ((TextUtils.isEmpty(str1)) || (!str1.equals("1"))) {
-            break label606;
+            break label548;
           }
           bool1 = bool2;
           this.mIsMsgParsedByAi = bool1;
           return;
           bool1 = false;
-          break label244;
+          break label195;
           this.mContextList.add(localArkContextInfo);
           i += 1;
-          break label159;
+          break label113;
           this.mIsShow = str1.optBoolean("show");
           this.mHasReportShowIcon = str1.optBoolean("reportIcon");
           this.mHasReportShowUnderline = str1.optBoolean("reportUnderline");
@@ -272,19 +140,21 @@ public class RecommendCommonMessage
       }
       catch (Exception localException)
       {
+        label538:
+        label543:
+        label548:
         for (;;)
         {
+          boolean bool1;
+          label195:
           if (QLog.isColorLevel())
           {
             QLog.d("Ark", 2, "RecommendCommonMessage doParse exception=" + localException);
             continue;
-            label596:
             bool1 = false;
             continue;
-            label601:
             bool1 = false;
             continue;
-            label606:
             bool1 = false;
           }
         }
@@ -320,11 +190,6 @@ public class RecommendCommonMessage
     return (this.mContextList.size() > 0) || (!TextUtils.isEmpty(this.mOldAppInfo.appName));
   }
   
-  public boolean isArkAtBabyQMsg()
-  {
-    return "1".equals(getExtInfoFromExtStr(MessageConstants.d));
-  }
-  
   public int isIncludedByAt(int paramInt1, int paramInt2)
   {
     int j = 0;
@@ -348,7 +213,7 @@ public class RecommendCommonMessage
     return -1;
   }
   
-  public void saveRecommendMsg(WeakReference paramWeakReference, int paramInt, boolean paramBoolean)
+  public void saveRecommendMsg(WeakReference<QQAppInterface> paramWeakReference, int paramInt, boolean paramBoolean)
   {
     Object localObject;
     if (paramBoolean) {
@@ -361,7 +226,7 @@ public class RecommendCommonMessage
     for (;;)
     {
       if ((paramWeakReference != null) && (paramWeakReference.get() != null)) {
-        break label455;
+        break label444;
       }
       return;
       localObject = "0";
@@ -424,13 +289,13 @@ public class RecommendCommonMessage
         QLog.d("Ark", 2, "RecommendCommonMessage saveRecommendMsg exception=" + localException);
       }
     }
-    label455:
-    ThreadManager.post(new abvh(this, paramWeakReference), 8, null, false);
+    label444:
+    ArkRecommendLogic.a().post(new RecommendCommonMessage.1(this, paramWeakReference));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.RecommendCommonMessage
  * JD-Core Version:    0.7.0.1
  */

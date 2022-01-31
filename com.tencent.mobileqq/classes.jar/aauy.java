@@ -1,22 +1,14 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import java.io.File;
-import java.io.FileFilter;
-
-public final class aauy
-  implements FileFilter
+public abstract interface aauy
 {
-  public boolean accept(File paramFile)
-  {
-    if (!paramFile.isDirectory()) {}
-    while (!ArkLocalAppMgr.a(paramFile.getName())) {
-      return false;
-    }
-    return true;
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void c(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aauy
  * JD-Core Version:    0.7.0.1
  */

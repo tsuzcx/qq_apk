@@ -1,28 +1,17 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.activity.contact.newfriend.CloneFriendPushHelper;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public class vtb
-  implements Runnable
+class vtb
+  implements beei
 {
-  public vtb(FriendChatPie paramFriendChatPie) {}
+  vtb(vta paramvta) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    if (CloneFriendPushHelper.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))
-    {
-      FriendChatPie.c(this.a, true);
-      CloneFriendPushHelper.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "", "", "0X8008072", "0X8008072", 0, 0, "", "", "", "");
-      return;
-    }
-    FriendChatPie.c(this.a, false);
+    wxe.a("PromoteWidgetController", "preloadSonicSession() doStartProcess=%b", Boolean.valueOf(paramBoolean));
+    this.a.a = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vtb
  * JD-Core Version:    0.7.0.1
  */

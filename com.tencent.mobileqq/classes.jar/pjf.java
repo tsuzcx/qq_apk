@@ -1,30 +1,37 @@
-import android.text.TextUtils;
-import com.squareup.okhttp.Response;
-import com.tencent.component.network.DownloaderFactory;
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.DownloadResult.Content;
-import com.tencent.component.network.downloader.handler.ContentHandler;
-import com.tencent.component.network.utils.StringUtil;
-import org.apache.http.HttpResponse;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class pjf
-  implements ContentHandler
+class pjf
+  implements View.OnClickListener
 {
-  public pjf(DownloaderFactory paramDownloaderFactory) {}
+  pjf(pja parampja, ArticleInfo paramArticleInfo) {}
   
-  public boolean a(DownloadResult paramDownloadResult, HttpResponse paramHttpResponse, Response paramResponse)
+  public void onClick(View paramView)
   {
-    paramDownloadResult = paramDownloadResult.getContent().type;
-    if (TextUtils.isEmpty(paramDownloadResult)) {}
-    while (!StringUtil.a(paramDownloadResult, "image")) {
-      return false;
+    int i = 0;
+    nxu.a(pja.a(this.jdField_a_of_type_Pja), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoName, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoType, 1);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.hasChannelInfo()) {
+      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId;
     }
-    return true;
+    try
+    {
+      paramView = new JSONObject();
+      paramView.put("feeds_channel_entrance", i);
+      nrt.a(null, "CliOper", "", "", "0X8006DF3", "0X8006DF3", 0, 0, "", "", "", paramView.toString(), false);
+      return;
+    }
+    catch (JSONException paramView)
+    {
+      paramView.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pjf
  * JD-Core Version:    0.7.0.1
  */

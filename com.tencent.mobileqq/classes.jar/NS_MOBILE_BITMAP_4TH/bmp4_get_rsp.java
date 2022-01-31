@@ -9,9 +9,9 @@ import java.util.Map;
 public final class bmp4_get_rsp
   extends JceStruct
 {
-  static Map cache_map_rsp = new HashMap();
+  static Map<Long, bmp4_values> cache_map_rsp = new HashMap();
   public String errmsg = "";
-  public Map map_rsp;
+  public Map<Long, bmp4_values> map_rsp;
   public int retCode;
   
   static
@@ -22,7 +22,7 @@ public final class bmp4_get_rsp
   
   public bmp4_get_rsp() {}
   
-  public bmp4_get_rsp(int paramInt, String paramString, Map paramMap)
+  public bmp4_get_rsp(int paramInt, String paramString, Map<Long, bmp4_values> paramMap)
   {
     this.retCode = paramInt;
     this.errmsg = paramString;

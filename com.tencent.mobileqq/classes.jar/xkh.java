@@ -1,20 +1,35 @@
-import com.tencent.mobileqq.activity.bless.BlessManager;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class xkh
-  implements Runnable
 {
-  public xkh(RecentAdapter paramRecentAdapter) {}
-  
-  public void run()
+  public static xkl a(Context paramContext, String paramString)
   {
-    ((BlessManager)this.a.a.getManager(137)).b(true);
+    paramContext = xkl.a(paramContext);
+    if (paramContext != null)
+    {
+      paramContext = paramContext.iterator();
+      while (paramContext.hasNext())
+      {
+        xkl localxkl = (xkl)paramContext.next();
+        if (TextUtils.equals(paramString, localxkl.a)) {
+          return localxkl;
+        }
+      }
+    }
+    return null;
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    return !TextUtils.isEmpty(bdea.a(paramContext, "qqstory_savedMusicList"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xkh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,36 @@
-import com.tencent.mobileqq.text.QQText.EmoticonSpan;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.etrump.mixlayout.ETFont;
+import com.etrump.mixlayout.ETTextView;
 
-public class d
+class d
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public char a;
-  public int a;
-  public QQText.EmoticonSpan a;
-  public boolean a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
+  d(c paramc) {}
   
-  public String toString()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return "FounderColorModel{type=" + this.jdField_a_of_type_Int + ", charAt=" + this.jdField_a_of_type_Char + ", width=" + this.b + ", height=" + this.c + ", left=" + this.d + ", top=" + this.e + ", lineIndex=" + this.f + ", isMissingWord=" + this.jdField_a_of_type_Boolean + '}';
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (i >= this.a.i[0])
+    {
+      this.a.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+      this.a.e = 0;
+      this.a.jdField_a_of_type_ComEtrumpMixlayoutETFont.mShouldDisplayAnimation = false;
+      c.a(this.a).invalidate();
+      if (c.a(this.a).mAnimationListener != null) {
+        c.a(this.a).mAnimationListener.a(c.a(this.a).mMessage, this.a.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId);
+      }
+    }
+    while (i <= this.a.e) {
+      return;
+    }
+    this.a.e = i;
+    c.a(this.a).invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     d
  * JD-Core Version:    0.7.0.1
  */

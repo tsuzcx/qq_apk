@@ -1,22 +1,25 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
-import java.util.List;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class cyn
-  implements Runnable
+public class cyn
+  implements View.OnClickListener
 {
-  cyn(cym paramcym, List paramList) {}
+  public cyn(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (LebaListMgrActivity.a(this.jdField_a_of_type_Cym.a) != null) {
-      LebaListMgrActivity.a(this.jdField_a_of_type_Cym.a).a(this.jdField_a_of_type_JavaUtilList);
-    }
+    paramView = new Intent(this.a, TroopAssisSettingActivity.class);
+    this.a.startActivity(paramView);
+    ReportController.b(this.a.b, "CliOper", "", "", "Setting_tab", "Clk_msginfor_grp", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cyn
  * JD-Core Version:    0.7.0.1
  */

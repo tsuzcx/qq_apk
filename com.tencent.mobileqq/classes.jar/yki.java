@@ -1,32 +1,30 @@
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.data.ApolloPandora;
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import com.tencent.biz.subscribe.network.GetSubscribeFeedDetailRequest;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
 
 public class yki
-  implements Runnable
+  extends yka
 {
-  public yki(ApolloManager paramApolloManager, String paramString) {}
+  private CertifiedAccountMeta.StFeed a;
   
-  public void run()
+  public yki(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    ApolloPandora localApolloPandora = this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a(this.jdField_a_of_type_JavaLangString, true);
-    if (localApolloPandora != null)
-    {
-      localApolloPandora.hadStolen = 1;
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a(localApolloPandora);
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloManager", 2, "setCapsuleHadStolenAsync uin had Stolen");
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("ApolloManager", 2, "setCapsuleHadStolenAsync local not save apolloPandora");
+    this.a = paramStFeed;
+  }
+  
+  public void a() {}
+  
+  public void a(ykg paramykg)
+  {
+    GetSubscribeFeedDetailRequest localGetSubscribeFeedDetailRequest = new GetSubscribeFeedDetailRequest(this.a, null);
+    paramykg = new ykj(this, paramykg);
+    localGetSubscribeFeedDetailRequest.setEnableCache(false);
+    VSNetworkHelper.a().a(localGetSubscribeFeedDetailRequest, paramykg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yki
  * JD-Core Version:    0.7.0.1
  */

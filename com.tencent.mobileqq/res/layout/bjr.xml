@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:id="@id/rlCommenTitle" android:background="@drawable/qq_title_immersive_bar" android:padding="0.0px" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" tencent:skintype="title_bg_bar"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <View android:id="@id/jp9" android:background="@color/a7q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
+    <FrameLayout android:gravity="center_vertical" android:id="@id/cc1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ViewStub android:layout_gravity="center" android:id="@id/ase" android:layout="@layout/bhn" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:id="@id/asq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="@dimen/title_bar_height">
+                <cooperation.qzone.widget.ExtendButton android:textSize="13.0sp" android:textColor="@color/skin_title_segment_item_color" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/afu" android:layout_width="@dimen/ayg" android:layout_height="29.0dip" android:text="@null" android:layout_centerVertical="true" />
+                <View android:id="@id/kmo" android:background="#ff00cafc" android:visibility="gone" android:layout_width="41.0dip" android:layout_height="4.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="@dimen/title_bar_height">
+                <cooperation.qzone.widget.ExtendButton android:textSize="13.0sp" android:textColor="@color/skin_title_segment_item_color" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/afv" android:layout_width="@dimen/ayg" android:layout_height="29.0dip" android:text="@null" android:layout_centerVertical="true" />
+                <View android:id="@id/kmx" android:background="#ff00cafc" android:visibility="gone" android:layout_width="41.0dip" android:layout_height="4.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+        </LinearLayout>
+        <View android:layout_gravity="right" android:id="@id/iam" android:background="@drawable/g0f" android:visibility="gone" android:layout_width="9.0dip" android:layout_height="9.0dip" android:layout_marginTop="11.0dip" android:layout_marginRight="1.0dip" />
+        <TextView android:ellipsize="end" android:gravity="center" android:layout_gravity="center" android:id="@id/ivTitleName" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:maxWidth="@dimen/b3w" android:text="@null" android:singleLine="true" style="@style/TitleText" />
+    </FrameLayout>
+    <ViewStub android:id="@id/ivTitleprogress" android:layout="@layout/bs5" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginRight="3.0dip" android:layout_toLeftOf="@id/cc1" android:layout_centerVertical="true" />
+    <TextView android:gravity="center" android:id="@id/ivTitleBtnLeft" android:background="@drawable/b5b" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="8.0dip" android:maxWidth="80.0dip" android:minWidth="55.0dip" android:text="@null" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
+    <TextView android:gravity="center" android:id="@id/ivTitleBtnLeftButton" android:background="@drawable/b6u" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:maxWidth="96.0dip" android:minWidth="52.0dip" android:text="@null" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
+    <TextView android:gravity="center" android:id="@id/ivTitleBtnRightText" android:background="@drawable/b6u" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:maxWidth="100.0dip" android:minWidth="52.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
+    <LinearLayout android:gravity="center" android:id="@id/dsj" android:background="@drawable/b6u" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <ImageView android:gravity="center" android:id="@id/dsr" android:layout_width="44.0dip" android:layout_height="wrap_content" android:src="@drawable/skin_qzone_camer_icon" android:scaleType="center" />
+    </LinearLayout>
+    <ViewStub android:id="@id/dso" android:layout="@layout/bs6" android:layout_width="44.0dip" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_toLeftOf="@id/dsj" android:layout_centerVertical="true" />
+    <ViewStub android:id="@id/dt5" android:layout="@layout/bs_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-32.0dip" android:layout_marginTop="2.0dip" android:layout_alignLeft="@id/dsj" android:layout_alignParentTop="@id/dsj" />
+    <ViewStub android:id="@id/dt3" android:layout="@layout/bry" android:layout_width="44.0dip" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_toLeftOf="@id/dsj" android:layout_centerVertical="true" />
+</RelativeLayout>

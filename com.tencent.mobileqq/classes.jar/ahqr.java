@@ -1,33 +1,47 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.search.ContentRecommendModel;
-import com.tencent.mobileqq.search.ContentRecommendModel.ContentRecommendListAdapter;
-import com.tencent.mobileqq.search.model.ContentRecommendDataModel.ContentRecommendItem;
-import com.tencent.mobileqq.search.util.SearchUtils;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
 
 public class ahqr
-  implements View.OnClickListener
+  extends RecyclerView.OnScrollListener
 {
-  public ahqr(ContentRecommendModel.ContentRecommendListAdapter paramContentRecommendListAdapter, ahqs paramahqs) {}
+  public ahqr(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
   
-  public void onClick(View paramView)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Ahqs.a.h))
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    this.a.jdField_a_of_type_Int = paramInt;
+    if (paramInt == 0)
     {
-      SearchUtils.a("home_page", "clk_rec_content", new String[] { this.jdField_a_of_type_Ahqs.a.a, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqSearchContentRecommendModel$ContentRecommendListAdapter.a.jdField_a_of_type_Int) });
-      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqSearchContentRecommendModel$ContentRecommendListAdapter.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramView.putExtra("url", this.jdField_a_of_type_Ahqs.a.h);
-      this.jdField_a_of_type_ComTencentMobileqqSearchContentRecommendModel$ContentRecommendListAdapter.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      paramRecyclerView = paramRecyclerView.getLayoutManager();
+      if ((paramRecyclerView instanceof LinearLayoutManager)) {
+        ((LinearLayoutManager)paramRecyclerView).findLastVisibleItemPosition();
+      }
     }
+    if (this.a.jdField_a_of_type_Bdbb != null)
+    {
+      if (paramInt == 0) {
+        break label73;
+      }
+      this.a.jdField_a_of_type_Bdbb.a();
+      this.a.jdField_a_of_type_Bdbb.c();
+    }
+    label73:
+    while (!this.a.jdField_a_of_type_Bdbb.a()) {
+      return;
+    }
+    this.a.jdField_a_of_type_Bdbb.b();
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahqr
  * JD-Core Version:    0.7.0.1
  */

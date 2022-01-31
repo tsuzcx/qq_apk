@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class im_receipt$MsgInfo
-  extends MessageMicro
+  extends MessageMicro<MsgInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32 }, new String[] { "uint64_from_uin", "uint64_to_uin", "uint32_msg_seq", "uint32_msg_random" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0) }, MsgInfo.class);
   public final PBUInt32Field uint32_msg_random = PBField.initUInt32(0);

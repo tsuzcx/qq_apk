@@ -1,16 +1,35 @@
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class yaq
-  extends FriendListObserver
+class yaq
+  extends BroadcastReceiver
 {
-  public yaq(SelectMemberActivity paramSelectMemberActivity) {}
+  yaq(yap paramyap) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString) {}
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("PreCallUpToolProc", 2, String.format("onReceive action=%s", new Object[] { paramContext }));
+    }
+    if (("com.tencent.mobileqq.armap.ACTION_START_THREAD_COMPLETED".equals(paramContext)) && (TextUtils.equals(paramIntent.getStringExtra("from"), yap.a(this.a))))
+    {
+      if (yap.a(this.a) != null) {
+        yap.a(this.a).removeMessages(108);
+      }
+      if (yap.a(this.a) != null) {
+        yap.a(this.a).a();
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yaq
  * JD-Core Version:    0.7.0.1
  */

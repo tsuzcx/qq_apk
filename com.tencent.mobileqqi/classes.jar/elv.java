@@ -1,21 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
-import com.tencent.mobileqq.app.BizTroopObserver;
+import android.view.View;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class elv
-  extends BizTroopObserver
+  implements ActionSheet.OnButtonClickListener
 {
-  public elv(TroopView paramTroopView) {}
+  public elv(SettingActivity2 paramSettingActivity2, ActionSheet paramActionSheet) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramInt2 == 0) {
-      this.a.a();
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    if (paramInt == 0)
+    {
+      if (!NetworkUtil.e(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.b(2131562488);
+      }
     }
-    while (TextUtils.isEmpty(paramString2)) {
+    else {
       return;
     }
-    this.a.a(paramString2);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.setResult(2);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.finish();
   }
 }
 

@@ -1,35 +1,18 @@
-import com.tencent.mobileqq.activity.RecentLoginDevActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.activity.SplashActivity;
 
 public class dkf
   implements Runnable
 {
-  public dkf(RecentLoginDevActivity paramRecentLoginDevActivity) {}
+  public dkf(SplashActivity paramSplashActivity, int paramInt) {}
   
   public void run()
   {
-    try
-    {
-      if ((RecentLoginDevActivity.a(this.a) == null) && (!this.a.isFinishing())) {
-        RecentLoginDevActivity.a(this.a, new QQProgressDialog(this.a.a(), this.a.d()));
-      }
-      if ((RecentLoginDevActivity.a(this.a) != null) && (!RecentLoginDevActivity.a(this.a).isShowing())) {
-        RecentLoginDevActivity.a(this.a).show();
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    SplashActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dkf
  * JD-Core Version:    0.7.0.1
  */

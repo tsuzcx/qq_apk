@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/lj" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/ll">
+        <EditText android:id="@id/crl" android:layout_width="100.0dip" android:layout_marginRight="10.0dip" android:hint="logId" android:inputType="number" style="@style/lb" />
+        <Button android:id="@id/m1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="confirm" />
+        <Button android:id="@id/crm" android:layout_marginRight="10.0dip" android:text="select log" style="@style/ny" />
+        <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/crn" android:layout_width="100.0dip" android:layout_height="@dimen/nl" app:on_color="@color/a6i" app:off_color="#ff999999" app:slide_color="#ff76fef3" app:on_text="on" app:off_text="off" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/ll">
+        <TextView android:textSize="@dimen/m2" android:id="@id/cro" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <ListView android:id="@id/crp" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="@dimen/ll" android:divider="@color/a6i" android:dividerHeight="1.0dip" />
+</LinearLayout>

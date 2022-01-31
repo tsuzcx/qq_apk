@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class oidb_0x6c3$UserLoginSession
-  extends MessageMicro
+  extends MessageMicro<UserLoginSession>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_accesstoken = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -24,7 +24,7 @@ public final class oidb_0x6c3$UserLoginSession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x6c3.oidb_0x6c3.UserLoginSession
  * JD-Core Version:    0.7.0.1
  */

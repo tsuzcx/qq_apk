@@ -1,99 +1,60 @@
-import android.os.Bundle;
-import appoint.define.appoint_define.PublisherInfo;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.mobileqq.data.StrangerInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
-import com.tencent.mobileqq.nearpeople.mytab.NearbyMyTabCard;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x66b.Oidb_0x66b.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class afji
-  extends ProtoUtils.TroopProtocolObserver
+  extends afiz
 {
-  public afji(NearbyProfileFragment paramNearbyProfileFragment) {}
+  private long c;
+  private long d;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public afji(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    if (paramInt == 0)
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+  }
+  
+  public View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, aetk paramaetk)
+  {
+    if (paramChatMessage.istroop == 1038)
     {
-      paramBundle = new oidb_sso.OIDBSSOPkg();
-      try
+      long l = System.currentTimeMillis();
+      if ((this.c != paramChatMessage.msgUid) || (l - this.d > 1000L))
       {
-        paramArrayOfByte = (oidb_sso.OIDBSSOPkg)paramBundle.mergeFrom((byte[])paramArrayOfByte);
-        if (paramArrayOfByte != null)
+        this.c = paramChatMessage.msgUid;
+        this.d = l;
+        if ((paramChatMessage instanceof MessageForArkApp))
         {
-          paramInt = paramArrayOfByte.uint32_result.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("NearbyProfileFragment", 2, "handle_oidb_0x66b_0|oidb_sso.OIDBSSOPkg.result " + paramInt);
-          }
-        }
-        paramBundle = new Oidb_0x66b.RspBody();
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        try
-        {
-          paramBundle.mergeFrom(paramArrayOfByte.bytes_bodybuffer.get().toByteArray());
-          paramArrayOfByte = new NearbyMyTabCard();
-          if (!paramBundle.rpt_msg_vistor_info.has()) {
-            break label307;
-          }
-          paramArrayOfByte.visitors.clear();
-          paramBundle = paramBundle.rpt_msg_vistor_info.get().iterator();
-          while (paramBundle.hasNext())
+          MessageForArkApp localMessageForArkApp = (MessageForArkApp)paramChatMessage;
+          if (localMessageForArkApp.ark_app_message != null)
           {
-            Object localObject = (appoint_define.PublisherInfo)paramBundle.next();
-            if (localObject != null)
-            {
-              localObject = StrangerInfo.convertFrom((appoint_define.PublisherInfo)localObject);
-              if (localObject != null) {
-                paramArrayOfByte.visitors.add(localObject);
-              }
+            this.d = System.currentTimeMillis();
+            MiniProgramLpReportDC04239.reportByQQ("message", "message_aio", "expo", "com.tencent.miniapp", localMessageForArkApp.ark_app_message.appView, "", "");
+            if (QLog.isColorLevel()) {
+              QLog.d("xiaoyong", 2, "ArkAppPublicAccountItemBuilder report");
             }
           }
-          paramArrayOfByte = paramArrayOfByte;
-          if (QLog.isColorLevel()) {
-            QLog.d("NearbyProfileFragment", 2, "handle_oidb_0x66b_0|oidb_sso parseFrom byte " + paramArrayOfByte.toString());
-          }
-          paramArrayOfByte = paramBundle;
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("NearbyProfileFragment", 2, "handle_oidb_0x66b_0|oidb_sso parseFrom byte " + paramArrayOfByte.toString());
-          }
         }
       }
     }
-    else
-    {
-      return;
+    paramView = super.a(paramInt1, paramInt2, paramChatMessage, paramView, paramViewGroup, paramaetk);
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && ("3046055438".equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))) {
+      nud.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage, paramView);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyProfileFragment", 2, "handleGetNearbyMyTab visitor info is: " + paramArrayOfByte.visitors.toString());
-    }
-    for (;;)
-    {
-      NearbyProfileFragment.a(this.a, paramArrayOfByte.visitors);
-      return;
-      label307:
-      if (QLog.isColorLevel()) {
-        QLog.i("NearbyProfileFragment", 2, "handleGetNearbyMyTay has no visitor info.");
-      }
-    }
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afji
  * JD-Core Version:    0.7.0.1
  */

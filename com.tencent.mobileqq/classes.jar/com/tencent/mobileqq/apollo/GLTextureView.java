@@ -1,5 +1,15 @@
 package com.tencent.mobileqq.apollo;
 
+import akqn;
+import akqp;
+import akqq;
+import akqr;
+import akqs;
+import akqt;
+import akqu;
+import akqw;
+import akqx;
+import akqz;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -12,19 +22,11 @@ import android.util.Log;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Method;
 import mqq.os.MqqHandler;
-import ynh;
-import yni;
-import ynj;
-import ynl;
-import ynm;
-import ynn;
-import ynp;
-import ynq;
-import yns;
 
 @TargetApi(14)
 public class GLTextureView
@@ -44,24 +46,27 @@ public class GLTextureView
   public static final int RENDERMODE_WHEN_DIRTY = 0;
   private static final String TAG = "GLTextureView";
   private static int sGLESVersion;
-  private static final ynq sGLThreadManager = new ynq(null);
+  private static final akqw sGLThreadManager = new akqw(null);
   private static int sThreadName;
+  private boolean mCreateContextFailed;
   private int mDebugFlags;
+  private boolean mDestroyOnAsync;
   private boolean mDetached;
-  private GLTextureView.EGLConfigChooser mEGLConfigChooser;
+  protected boolean mDisableCreateRenderThread;
+  private akqs mEGLConfigChooser;
   private int mEGLContextClientVersion;
-  private GLTextureView.EGLContextFactory mEGLContextFactory;
-  private GLTextureView.EGLWindowSurfaceFactory mEGLWindowSurfaceFactory;
-  private Runnable mForceSetAlphaTask = new yni(this);
-  protected ynp mGLThread;
-  private GLTextureView.GLWrapper mGLWrapper;
+  private akqt mEGLContextFactory;
+  private akqu mEGLWindowSurfaceFactory;
+  private Runnable mForceSetAlphaTask = new GLTextureView.3(this);
+  protected GLTextureView.GLThread mGLThread;
+  private akqx mGLWrapper;
   private boolean mPreserveEGLContextOnPause;
   private GLSurfaceView.Renderer mRenderer;
   private boolean mSurfaceHadDraw;
   int mSurfaceHeight = 0;
   private boolean mSurfaceTextureAvailable;
   int mSurfaceWidth = 0;
-  private final WeakReference mThisWeakRef = new WeakReference(this);
+  private final WeakReference<GLTextureView> mThisWeakRef = new WeakReference(this);
   
   public GLTextureView(Context paramContext)
   {
@@ -112,7 +117,7 @@ public class GLTextureView
   {
     sGLESVersion = getInt(getContext(), "ro.opengles.version", 0).intValue();
     setSurfaceTextureListener(this);
-    addOnLayoutChangeListener(new ynh(this));
+    addOnLayoutChangeListener(new akqn(this));
     setViewAlpha(0.0F);
   }
   
@@ -132,7 +137,7 @@ public class GLTextureView
     if ((this.mSurfaceTextureAvailable) && (this.mSurfaceHadDraw))
     {
       if (Looper.myLooper() != Looper.getMainLooper()) {
-        ThreadManager.getUIHandler().post(new ynj(this));
+        ThreadManager.getUIHandler().post(new GLTextureView.4(this));
       }
     }
     else {
@@ -171,24 +176,54 @@ public class GLTextureView
     return this.mGLThread.a();
   }
   
+  public String getRenderThreadName()
+  {
+    return "GLTexture_";
+  }
+  
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if ((this.mDetached) && (this.mRenderer != null)) {
+    int i;
+    if ((this.mDetached) && (this.mRenderer != null))
+    {
       if (this.mGLThread == null) {
-        break label74;
+        break label196;
+      }
+      i = this.mGLThread.a();
+      if ((this instanceof ApolloTextureView)) {
+        if (((ApolloTextureView)this).mIsReAttach)
+        {
+          if ((this.mRenderer instanceof ApolloRender))
+          {
+            ((ApolloRender)this.mRenderer).queueDestroy();
+            QLog.e("GLTextureView", 1, "onAttachedToWindow re_attach GLThread need destroy");
+          }
+        }
+        else {
+          QLog.i("GLTextureView", 1, "onAttachedToWindow re_attach but new GLThread");
+        }
       }
     }
-    label74:
-    for (int i = this.mGLThread.a();; i = 1)
+    for (;;)
     {
-      this.mGLThread = new ynp(this.mThisWeakRef);
-      if (i != 1) {
-        this.mGLThread.a(i);
+      if (!this.mDisableCreateRenderThread)
+      {
+        this.mGLThread = new GLTextureView.GLThread(this.mThisWeakRef, getRenderThreadName());
+        this.mGLThread.setName(this.mGLThread.getName() + "_" + this.mGLThread.getId());
+        if (i != 1) {
+          this.mGLThread.a(i);
+        }
+        this.mGLThread.start();
       }
-      this.mGLThread.start();
-      this.mDetached = false;
-      return;
+      for (;;)
+      {
+        this.mDetached = false;
+        return;
+        QLog.e("GLTextureView", 1, "onAttachedToWindow mDisableCreateRenderThread true");
+      }
+      label196:
+      i = 1;
     }
   }
   
@@ -272,20 +307,25 @@ public class GLTextureView
     this.mDebugFlags = paramInt;
   }
   
-  public void setEGLConfigChooser(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public void setDestroyOnAsync(boolean paramBoolean)
   {
-    setEGLConfigChooser(new ynl(this, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6));
+    this.mDestroyOnAsync = paramBoolean;
   }
   
-  public void setEGLConfigChooser(GLTextureView.EGLConfigChooser paramEGLConfigChooser)
+  public void setEGLConfigChooser(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  {
+    setEGLConfigChooser(new akqp(this, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6));
+  }
+  
+  public void setEGLConfigChooser(akqs paramakqs)
   {
     checkRenderThreadState();
-    this.mEGLConfigChooser = paramEGLConfigChooser;
+    this.mEGLConfigChooser = paramakqs;
   }
   
   public void setEGLConfigChooser(boolean paramBoolean)
   {
-    setEGLConfigChooser(new yns(this, paramBoolean));
+    setEGLConfigChooser(new akqz(this, paramBoolean));
   }
   
   public void setEGLContextClientVersion(int paramInt)
@@ -294,21 +334,21 @@ public class GLTextureView
     this.mEGLContextClientVersion = paramInt;
   }
   
-  public void setEGLContextFactory(GLTextureView.EGLContextFactory paramEGLContextFactory)
+  public void setEGLContextFactory(akqt paramakqt)
   {
     checkRenderThreadState();
-    this.mEGLContextFactory = paramEGLContextFactory;
+    this.mEGLContextFactory = paramakqt;
   }
   
-  public void setEGLWindowSurfaceFactory(GLTextureView.EGLWindowSurfaceFactory paramEGLWindowSurfaceFactory)
+  public void setEGLWindowSurfaceFactory(akqu paramakqu)
   {
     checkRenderThreadState();
-    this.mEGLWindowSurfaceFactory = paramEGLWindowSurfaceFactory;
+    this.mEGLWindowSurfaceFactory = paramakqu;
   }
   
-  public void setGLWrapper(GLTextureView.GLWrapper paramGLWrapper)
+  public void setGLWrapper(akqx paramakqx)
   {
-    this.mGLWrapper = paramGLWrapper;
+    this.mGLWrapper = paramakqx;
   }
   
   public void setPreserveEGLContextOnPause(boolean paramBoolean)
@@ -325,16 +365,17 @@ public class GLTextureView
   {
     checkRenderThreadState();
     if (this.mEGLConfigChooser == null) {
-      this.mEGLConfigChooser = new yns(this, true);
+      this.mEGLConfigChooser = new akqz(this, true);
     }
     if (this.mEGLContextFactory == null) {
-      this.mEGLContextFactory = new ynm(this, null);
+      this.mEGLContextFactory = new akqq(this, null);
     }
     if (this.mEGLWindowSurfaceFactory == null) {
-      this.mEGLWindowSurfaceFactory = new ynn(null);
+      this.mEGLWindowSurfaceFactory = new akqr(null);
     }
     this.mRenderer = paramRenderer;
-    this.mGLThread = new ynp(this.mThisWeakRef);
+    this.mGLThread = new GLTextureView.GLThread(this.mThisWeakRef, getRenderThreadName());
+    this.mGLThread.setName(this.mGLThread.getName() + "_" + this.mGLThread.getId());
     this.mGLThread.start();
   }
   
@@ -364,12 +405,18 @@ public class GLTextureView
   
   public void surfaceDestroyed(SurfaceTexture paramSurfaceTexture)
   {
+    if (this.mDestroyOnAsync)
+    {
+      GLTextureView.GLThread.a(this.mGLThread, false);
+      ThreadManagerV2.postImmediately(new GLTextureView.2(this), null, false);
+      return;
+    }
     this.mGLThread.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.GLTextureView
  * JD-Core Version:    0.7.0.1
  */

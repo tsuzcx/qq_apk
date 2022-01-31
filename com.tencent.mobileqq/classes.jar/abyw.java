@@ -1,40 +1,97 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
-import com.tencent.mobileqq.earlydownload.handler.PokeResHandler;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.os.Bundle;
+import android.util.LruCache;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
+import com.tencent.mobileqq.Doraemon.impl.webview.VerifyUrlJobSegment;
+import com.tencent.mobileqq.Doraemon.impl.webview.VerifyUrlJobSegment.UrlNotauthorizedError;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
+import tencent.im.oidb.oidb_0xb60.CheckUrlRsp;
+import tencent.im.oidb.oidb_0xb60.RspBody;
 
 public class abyw
-  implements Runnable
+  extends nac
 {
-  public abyw(PokeResHandler paramPokeResHandler, String paramString1, String paramString2) {}
+  public abyw(VerifyUrlJobSegment paramVerifyUrlJobSegment, auef paramauef, String paramString) {}
   
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    try
-    {
-      String str = this.jdField_a_of_type_JavaLangString + "/poke";
-      FileUtils.a(str, false);
-      FileUtils.a(this.b, str, false);
-      PokeItemHelper.b(this.jdField_a_of_type_JavaLangString + "/poke/");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("DoraemonOpenAPI.jobVerifyUrl", 2, "onResult type=" + this.jdField_a_of_type_Auef.jdField_a_of_type_Int + ", appid=" + this.jdField_a_of_type_Auef.jdField_a_of_type_JavaLangString + ", url=" + this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewVerifyUrlJobSegment.jdField_a_of_type_JavaLangString + ", code=" + paramInt);
     }
-    catch (IOException localIOException)
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      for (;;)
+      VerifyUrlJobSegment.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewVerifyUrlJobSegment, new AppInfoError(7, "jobVerifyUrl req error " + paramInt));
+      if ((QLog.isColorLevel()) && (paramArrayOfByte == null)) {
+        break label444;
+      }
+    }
+    for (;;)
+    {
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("PokeResHandler_1228", 2, localIOException.toString());
+        paramBundle = ((oidb_0xb60.RspBody)new oidb_0xb60.RspBody().mergeFrom(paramArrayOfByte)).wording.get();
+        StringBuilder localStringBuilder = new StringBuilder().append("req error code=").append(paramInt);
+        if (paramArrayOfByte == null)
+        {
+          paramArrayOfByte = ", data=null";
+          QLog.i("DoraemonOpenAPI.jobVerifyUrl", 2, paramArrayOfByte);
+          return;
         }
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        paramBundle = "";
+        continue;
+        paramArrayOfByte = ", msg=" + paramBundle;
+        continue;
+      }
+      paramBundle = new oidb_0xb60.RspBody();
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (paramBundle.check_url_rsp.has()) {
+          break label313;
+        }
+        VerifyUrlJobSegment.b(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewVerifyUrlJobSegment, new AppInfoError(7, "jobVerifyUrl rsp invalid"));
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("DoraemonOpenAPI.jobVerifyUrl", 2, "rsp invalid");
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        VerifyUrlJobSegment.d(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewVerifyUrlJobSegment, new AppInfoError(7, "jobVerifyUrl parse rsp error"));
+      }
+      if (QLog.isColorLevel())
+      {
+        QLog.i("DoraemonOpenAPI.jobVerifyUrl", 2, "parse rsp error", paramArrayOfByte);
+        return;
+        label313:
+        if (QLog.isColorLevel()) {
+          QLog.d("DoraemonOpenAPI.jobVerifyUrl", 2, "receive is_auth:" + paramBundle.check_url_rsp.is_authed.get() + ", duration:" + paramBundle.check_url_rsp.next_req_duration.get());
+        }
+        if (paramBundle.check_url_rsp.is_authed.get())
+        {
+          VerifyUrlJobSegment.jdField_a_of_type_AndroidUtilLruCache.put(this.jdField_a_of_type_JavaLangString, Long.valueOf(NetConnInfoCenter.getServerTimeMillis() + paramBundle.check_url_rsp.next_req_duration.get() * 1000L));
+          VerifyUrlJobSegment.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewVerifyUrlJobSegment, this.jdField_a_of_type_Auef);
+          return;
+        }
+        VerifyUrlJobSegment.c(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewVerifyUrlJobSegment, new VerifyUrlJobSegment.UrlNotauthorizedError());
+        return;
+        label444:
+        paramBundle = "";
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abyw
  * JD-Core Version:    0.7.0.1
  */

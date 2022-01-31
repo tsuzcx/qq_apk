@@ -1,37 +1,29 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-class shg
-  implements Runnable
+final class shg
+  extends psx
 {
-  shg(she paramshe, boolean paramBoolean) {}
-  
-  public void run()
+  shg(int paramInt1, int paramInt2, int paramInt3, String paramString, ArticleInfo paramArticleInfo)
   {
-    Conversation.a(this.jdField_a_of_type_She.a, 800L);
-    PullRefreshHeader localPullRefreshHeader;
-    if (this.jdField_a_of_type_She.a.a != null)
+    super(paramInt1, paramInt2, paramInt3);
+  }
+  
+  public void onClick(@NonNull View paramView)
+  {
+    ors.a(paramView.getContext(), this.jdField_a_of_type_JavaLangString, null);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.isPGCShortContent()))
     {
-      localPullRefreshHeader = this.jdField_a_of_type_She.a.a;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label66;
-      }
-    }
-    label66:
-    for (int i = 0;; i = 2)
-    {
-      localPullRefreshHeader.a(i);
-      if (QLog.isColorLevel()) {
-        QLog.d("AutoMonitor", 2, "ConversationTab[onRefleshRecentListFinished_ui]");
-      }
-      return;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.click_area = 11;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.click_jump_target = pqd.a(this.jdField_a_of_type_JavaLangString, "-1");
+      ors.b(paramView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     shg
  * JD-Core Version:    0.7.0.1
  */

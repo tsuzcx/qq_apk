@@ -1,20 +1,36 @@
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class wtt
-  implements Runnable
+public class wtt
+  extends QQUIEventReceiver<MystoryListView, uot>
 {
-  wtt(wts paramwts) {}
-  
-  public void run()
+  public wtt(@NonNull MystoryListView paramMystoryListView)
   {
-    this.a.a.a.g();
-    this.a.a.a.f = true;
+    super(paramMystoryListView);
+  }
+  
+  public void a(@NonNull MystoryListView paramMystoryListView, @NonNull uot paramuot)
+  {
+    paramMystoryListView.q();
+    paramuot = (wub)paramMystoryListView.a("FeedSegment");
+    if (paramuot != null) {
+      paramuot.j();
+    }
+    paramMystoryListView = (wvq)paramMystoryListView.a("NewMyStorySegment");
+    if (paramMystoryListView != null) {
+      paramMystoryListView.a(false);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uot.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wtt
  * JD-Core Version:    0.7.0.1
  */

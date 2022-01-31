@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class nearby_troop_hot$HotQunReq
-  extends MessageMicro
+  extends MessageMicro<HotQunReq>
 {
   public static final int GPS_FIELD_NUMBER = 4;
   public static final int PAGE_NUM_FIELD_NUMBER = 1;
@@ -18,7 +18,7 @@ public final class nearby_troop_hot$HotQunReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.nearby_troop_hot.nearby_troop_hot.HotQunReq
  * JD-Core Version:    0.7.0.1
  */

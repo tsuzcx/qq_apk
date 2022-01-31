@@ -3,29 +3,29 @@ package com.tencent.mobileqq.app.automator.step;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
+import aufx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.model.QZoneManager;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 
 public class NotifyQZoneServer
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
-    if (!this.a.b.isBackground_Pause)
+    if (!this.a.app.isBackground_Pause)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("NotifyQZoneServer", 2, "isBackground_Pause:" + this.a.b.isBackground_Pause);
+        QLog.d("NotifyQZoneServer", 2, "isBackground_Pause:" + this.a.app.isBackground_Pause);
       }
       return super.a();
     }
     int i = QzoneConfig.getInstance().getConfig("QZoneSetting", "ClientOnlineColdTime", 300);
     Object localObject2 = BaseApplicationImpl.getApplication().getSharedPreferences("QZoneOnLineServlet", 0);
-    Object localObject1 = this.a.c();
+    Object localObject1 = this.a.getCurrentAccountUin();
     long l1 = ((SharedPreferences)localObject2).getLong("lastReqTime" + (String)localObject1, 0L);
     long l2 = System.currentTimeMillis();
     long l3 = l2 - l1;
@@ -46,9 +46,9 @@ public class NotifyQZoneServer
     }
     for (;;)
     {
-      localObject1 = (QZoneManager)this.a.b.getManager(9);
+      localObject1 = (aufx)this.a.app.getManager(10);
       if (localObject1 != null) {
-        ((QZoneManager)localObject1).a();
+        ((aufx)localObject1).a();
       }
       return super.a();
       label328:

@@ -1,26 +1,27 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.10.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.10.1.1.1;
+import com.tencent.viola.core.ViolaEnvironment;
 
-class sqw
-  implements ValueAnimator.AnimatorUpdateListener
+public class sqw
+  implements bdav
 {
-  sqw(sqv paramsqv, View paramView1, View paramView2, View paramView3, View paramView4, View paramView5) {}
+  public sqw(ViolaBaseView.10.1 param1) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onInfo(long paramLong, double paramDouble)
   {
-    float f1 = ((Float)paramValueAnimator.getAnimatedValue("txtAlpha")).floatValue();
-    float f2 = ((Float)paramValueAnimator.getAnimatedValue("redAlpha")).floatValue();
-    this.jdField_a_of_type_AndroidViewView.setAlpha(f1);
-    this.b.setAlpha(f2);
-    this.c.setAlpha(f2);
-    this.d.setAlpha(1.0F);
-    this.e.setAlpha(1.0F);
+    if (ViolaBaseView.a(this.a.a.a) == 0.0D)
+    {
+      ViolaBaseView.a(this.a.a.a, paramDouble);
+      ViolaBaseView.a(this.a.a.a).addReportData(ViolaEnvironment.KEY_FRAME_PAGE, String.format("%.2f", new Object[] { Double.valueOf(ViolaBaseView.a(this.a.a.a)) }));
+    }
+    new Handler().postDelayed(new ViolaBaseView.10.1.1.1(this), 500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sqw
  * JD-Core Version:    0.7.0.1
  */

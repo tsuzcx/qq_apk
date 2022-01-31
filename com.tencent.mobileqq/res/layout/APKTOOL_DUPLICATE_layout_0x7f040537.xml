@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c6" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.XListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a02" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:scrollingCache="false" android:cacheColorHint="@android:color/transparent" android:divider="@null" android:dividerHeight="0.0dip" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a1a03" />
-    <LinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a03" android:paddingLeft="12.0dip" android:paddingTop="7.0dip" android:paddingRight="12.0dip" android:paddingBottom="7.0dip" android:layout_width="fill_parent" android:layout_height="54.0dip" android:layout_alignParentBottom="true">
-        <Button android:enabled="false" android:textSize="18.0dip" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a04" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="背诵选中段落" android:singleLine="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01e6" />
-    </LinearLayout>
-</RelativeLayout>

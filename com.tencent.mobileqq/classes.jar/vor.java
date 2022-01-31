@@ -1,20 +1,10 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOFilePicData;
-import com.tencent.mobileqq.activity.aio.photo.AIOPhotoListAdapter;
-import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider;
-
-public class vor
-  implements Runnable
+public abstract interface vor
 {
-  public vor(AIOPhotoListAdapter paramAIOPhotoListAdapter, AIOFilePicData paramAIOFilePicData) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOPhotoListAdapter.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFilePicData.g, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFilePicData.f, 16);
-  }
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vor
  * JD-Core Version:    0.7.0.1
  */

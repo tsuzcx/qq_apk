@@ -1,52 +1,79 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsIPCClient;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsIPCClient.Observer;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
 public class mvr
-  implements VideoFeedsIPCClient.Observer
 {
-  public mvr(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin, QQProgressDialog paramQQProgressDialog, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7) {}
+  Context jdField_a_of_type_AndroidContentContext;
+  Handler jdField_a_of_type_AndroidOsHandler;
+  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener;
+  Animation jdField_a_of_type_AndroidViewAnimationAnimation;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public boolean a;
+  Animation.AnimationListener jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener;
+  Animation jdField_b_of_type_AndroidViewAnimationAnimation;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  Animation jdField_c_of_type_AndroidViewAnimationAnimation;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
   
-  public void a(String paramString, Bundle paramBundle)
+  public void a()
   {
-    int i;
-    if ("CMD_CAMERA_CAPTURE_SO_DOWNLOAD".equals(paramString))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      i = paramBundle.getInt("VALUE_CAMERA_CAPTURE_SO_DOWNLOAD_STATUS");
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.pubaccount.video.cameracapture", 2, "showUGCVideoRecordPage VideoFeedsIPCClient.callback downloadResult=" + i);
-      }
+    c();
+    e();
+    this.jdField_a_of_type_AndroidWidgetImageView = null;
+    this.jdField_b_of_type_AndroidWidgetImageView = null;
+    this.jdField_c_of_type_AndroidWidgetImageView = null;
+    this.jdField_a_of_type_AndroidViewAnimationAnimation = null;
+    this.jdField_b_of_type_AndroidViewAnimationAnimation = null;
+    this.jdField_c_of_type_AndroidViewAnimationAnimation = null;
+    this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = null;
+    this.jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener = null;
+    this.jdField_a_of_type_AndroidOsHandler = null;
+    this.jdField_a_of_type_AndroidContentContext = null;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
     }
-    switch (i)
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
-    default: 
-      return;
-    case 3: 
-      QQToast.a(BaseApplicationImpl.getContext(), 2131432978, 0).a();
-      return;
-    case 1: 
-      boolean bool = this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsIPCClient.a("CMD_CAMERA_CAPTURE_CHECK_SO_READY", null).getBoolean("VALUE_CAMERA_CAPTURE_IS_SO_READY");
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.pubaccount.video.cameracapture", 2, "showUGCVideoRecordPage() isSoReady:" + bool);
-      }
-      PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.d, this.e, this.f, this.g);
-      return;
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
     }
-    DialogUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.jdField_a_of_type_AndroidAppActivity, 230).setMessage("短视频插件下载完成，需要重启QQ生效").setNegativeButton(2131433015, new DialogUtil.DialogOnClickAdapter()).setPositiveButton(2131433016, new mvs(this)).show();
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    if ((this.jdField_b_of_type_AndroidWidgetImageView != null) && (this.jdField_c_of_type_AndroidWidgetImageView != null)) {
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
+    }
+  }
+  
+  public void e()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(10);
+    if ((this.jdField_b_of_type_AndroidWidgetImageView != null) && (this.jdField_c_of_type_AndroidWidgetImageView != null))
+    {
+      this.jdField_b_of_type_AndroidWidgetImageView.clearAnimation();
+      this.jdField_c_of_type_AndroidWidgetImageView.clearAnimation();
+      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mvr
  * JD-Core Version:    0.7.0.1
  */

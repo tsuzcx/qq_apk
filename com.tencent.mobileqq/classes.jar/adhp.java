@@ -1,21 +1,26 @@
-import com.dataline.core.DirectForwarder;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 
-class adhp
-  implements FMDialogUtil.FMDialogInterface
+public class adhp
+  implements Animation.AnimationListener
 {
-  adhp(adho paramadho) {}
+  public adhp(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    DirectForwarder.b(this.a.a, 0);
+    LoginInfoActivity.b(this.a).setVisibility(4);
+    LoginInfoActivity.b(this.a).clearAnimation();
   }
   
-  public void b() {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adhp
  * JD-Core Version:    0.7.0.1
  */

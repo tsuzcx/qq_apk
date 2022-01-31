@@ -42,14 +42,14 @@ import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.ExpandableListView;
 import com.tencent.widget.TraceUtils;
-import fcd;
-import fce;
-import fcf;
-import fcg;
-import fch;
-import fci;
-import fcj;
-import fck;
+import exp;
+import exq;
+import exr;
+import exs;
+import ext;
+import exu;
+import exv;
+import exw;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -60,7 +60,7 @@ public class BuddyListAdapter
   extends BaseFacePreloadExpandableListAdapter
   implements View.OnClickListener, View.OnLongClickListener
 {
-  private static final fcj jdField_a_of_type_Fcj = new fcj(null);
+  private static final exv jdField_a_of_type_Exv = new exv(null);
   private static final String jdField_a_of_type_JavaLangString = "BuddyListAdapter";
   private static final int jdField_b_of_type_Int = 2;
   private static final int c = 0;
@@ -84,13 +84,13 @@ public class BuddyListAdapter
   public BuddyListAdapter(Context paramContext, QQAppInterface paramQQAppInterface, ExpandableListView paramExpandableListView, View.OnClickListener paramOnClickListener)
   {
     super(paramContext, paramQQAppInterface, paramExpandableListView);
-    this.b = new fcf(this);
+    this.b = new exr(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager = ((StatusManager)paramQQAppInterface.getManager(13));
     this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130838691);
-    paramExpandableListView.post(new fcd(this));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130838693);
+    paramExpandableListView.post(new exp(this));
     this.e = ((int)DisplayUtils.a(this.jdField_a_of_type_AndroidContentContext, 12.0F));
     this.f = ((int)DisplayUtils.a(this.jdField_a_of_type_AndroidContentContext, 9.0F));
     if ((Build.MODEL.equals("Lenovo A366t")) && (Build.VERSION.SDK_INT == 10)) {}
@@ -126,23 +126,23 @@ public class BuddyListAdapter
     label216:
     Object localObject3;
     Object localObject2;
-    if ((paramView == null) || ((paramView.getTag() instanceof fck)))
+    if ((paramView == null) || ((paramView.getTag() instanceof exw)))
     {
       paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903145, paramViewGroup, false);
-      localObject1 = new fcg();
-      ((fcg)localObject1).jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131230940));
-      ((fcg)localObject1).d = ((TextView)paramViewGroup.findViewById(2131231395));
-      ((fcg)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131231398));
-      ((fcg)localObject1).e = ((TextView)paramViewGroup.findViewById(2131231396));
-      ((fcg)localObject1).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131231397));
+      localObject1 = new exs();
+      ((exs)localObject1).jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131230940));
+      ((exs)localObject1).d = ((TextView)paramViewGroup.findViewById(2131231395));
+      ((exs)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131231398));
+      ((exs)localObject1).e = ((TextView)paramViewGroup.findViewById(2131231396));
+      ((exs)localObject1).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131231397));
       if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
         paramViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       }
       paramViewGroup.setTag(localObject1);
       paramView = getChild(paramInt1, paramInt2);
       localFriends = (Friends)paramView;
-      ((fcg)localObject1).jdField_a_of_type_JavaLangObject = paramView;
-      ((fcg)localObject1).jdField_a_of_type_JavaLangString = localFriends.uin;
+      ((exs)localObject1).jdField_a_of_type_JavaLangObject = paramView;
+      ((exs)localObject1).jdField_a_of_type_JavaLangString = localFriends.uin;
       a((FacePreloadBaseAdapter.ViewHolder)localObject1, null);
       if (!AppConstants.P.equals(localFriends.uin)) {
         break label524;
@@ -157,8 +157,8 @@ public class BuddyListAdapter
       }
       paramInt2 = 2131562533;
       localObject3 = paramView.getString(paramInt2);
-      ((fcg)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText("[" + (String)localObject3 + "]");
-      localObject2 = ((fcg)localObject1).jdField_c_of_type_AndroidWidgetImageView;
+      ((exs)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText("[" + (String)localObject3 + "]");
+      localObject2 = ((exs)localObject1).jdField_c_of_type_AndroidWidgetImageView;
       if (paramInt1 == 0) {
         break label518;
       }
@@ -168,14 +168,14 @@ public class BuddyListAdapter
     {
       ((ImageView)localObject2).setImageDrawable(paramView);
       localObject2 = new SpannableString(this.jdField_a_of_type_AndroidContentContext.getString(2131558529));
-      ((fcg)localObject1).e.setText((CharSequence)localObject2);
-      ((fcg)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      ((fcg)localObject1).d.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131362070));
+      ((exs)localObject1).e.setText((CharSequence)localObject2);
+      ((exs)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      ((exs)localObject1).d.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131362080));
       paramView = (View)localObject3;
       localObject3 = ContactUtils.a(localFriends);
-      ((fcg)localObject1).d.setText((CharSequence)localObject3);
-      ((fcg)localObject1).e.setVisibility(0);
-      ((fcg)localObject1).jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new fce(this, localFriends));
+      ((exs)localObject1).d.setText((CharSequence)localObject3);
+      ((exs)localObject1).e.setVisibility(0);
+      ((exs)localObject1).jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new exq(this, localFriends));
       localObject1 = new StringBuilder((String)localObject3);
       ((StringBuilder)localObject1).append("，").append(paramView).append("，");
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
@@ -184,8 +184,8 @@ public class BuddyListAdapter
       ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidContentContext.getString(2131559168));
       paramViewGroup.setContentDescription((CharSequence)localObject1);
       return paramViewGroup;
-      localObject1 = (fcg)paramView.getTag();
-      ((fcg)localObject1).d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+      localObject1 = (exs)paramView.getTag();
+      ((exs)localObject1).d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
       paramViewGroup = paramView;
       break;
       label506:
@@ -209,15 +209,15 @@ public class BuddyListAdapter
       {
         paramInt1 = 1;
         label635:
-        localObject3 = ((fcg)localObject1).jdField_c_of_type_AndroidWidgetImageView;
+        localObject3 = ((exs)localObject1).jdField_c_of_type_AndroidWidgetImageView;
         if (paramInt1 == 0) {
           break label851;
         }
         localObject2 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
         ((ImageView)localObject3).setImageDrawable((Drawable)localObject2);
-        ((fcg)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText("[" + paramView + "]");
-        localObject2 = a(localFriends, (fcg)localObject1);
-        ((fcg)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        ((exs)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText("[" + paramView + "]");
+        localObject2 = a(localFriends, (exs)localObject1);
+        ((exs)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
         if (paramInt1 == 0)
         {
           paramInt1 = localFriends.netTypeIconId;
@@ -235,9 +235,9 @@ public class BuddyListAdapter
     label857:
     for (paramInt1 = localFriends.netTypeIconIdIphoneOrWphoneNoWifi;; paramInt1 = localFriends.netTypeIconId)
     {
-      ((fcg)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      ((fcg)localObject1).d.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131362070));
-      ((fcg)localObject1).d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+      ((exs)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      ((exs)localObject1).d.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131362080));
+      ((exs)localObject1).d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
       break;
       paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131561688);
       break label623;
@@ -254,7 +254,7 @@ public class BuddyListAdapter
   
   private void a(List paramList)
   {
-    Collections.sort(paramList, jdField_a_of_type_Fcj);
+    Collections.sort(paramList, jdField_a_of_type_Exv);
   }
   
   private boolean a()
@@ -265,16 +265,16 @@ public class BuddyListAdapter
   
   private View b(int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
   {
-    if ((paramView == null) || ((paramView.getTag() instanceof fcg)))
+    if ((paramView == null) || ((paramView.getTag() instanceof exs)))
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903321, paramViewGroup, false);
-      paramViewGroup = new fck();
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903323, paramViewGroup, false);
+      paramViewGroup = new exw();
       paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131230940));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232077));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232080));
       paramViewGroup.d = ((TextView)paramView.findViewById(2131231395));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232075));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232074));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131232076));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232078));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232077));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131232079));
       paramViewGroup.e = ((TextView)paramView.findViewById(2131231396));
       paramView.setTag(paramViewGroup);
       if (this.jdField_a_of_type_AndroidViewView$OnClickListener == null) {
@@ -289,7 +289,7 @@ public class BuddyListAdapter
       PublicAccountInfo localPublicAccountInfo = (PublicAccountInfo)localObject;
       paramViewGroup.jdField_a_of_type_JavaLangObject = localObject;
       paramViewGroup.jdField_a_of_type_JavaLangString = Long.toString(localPublicAccountInfo.uin);
-      paramViewGroup.d.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131362070));
+      paramViewGroup.d.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131362080));
       if (PublicAccountInfo.isLooker(localPublicAccountInfo))
       {
         paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -301,7 +301,7 @@ public class BuddyListAdapter
         paramViewGroup.e.setVisibility(8);
         paramView.setContentDescription(paramViewGroup.d.getText());
         return paramView;
-        paramViewGroup = (fck)paramView.getTag();
+        paramViewGroup = (exw)paramView.getTag();
         paramViewGroup.d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
       }
       else
@@ -313,7 +313,7 @@ public class BuddyListAdapter
         if (localPublicAccountInfo.certifiedGrade > 0L)
         {
           paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838179);
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838181);
         }
         for (;;)
         {
@@ -335,11 +335,11 @@ public class BuddyListAdapter
     while (i < j)
     {
       Object localObject = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildAt(i).getTag();
-      if ((localObject != null) && ((localObject instanceof fcg)))
+      if ((localObject != null) && ((localObject instanceof exs)))
       {
-        localObject = (fcg)localObject;
-        if ((TextUtils.isEmpty(((fcg)localObject).e.getText().toString())) && ((((fcg)localObject).jdField_a_of_type_JavaLangObject instanceof Friends))) {
-          a((Friends)((fcg)localObject).jdField_a_of_type_JavaLangObject, (fcg)localObject);
+        localObject = (exs)localObject;
+        if ((TextUtils.isEmpty(((exs)localObject).e.getText().toString())) && ((((exs)localObject).jdField_a_of_type_JavaLangObject instanceof Friends))) {
+          a((Friends)((exs)localObject).jdField_a_of_type_JavaLangObject, (exs)localObject);
         }
       }
       i += 1;
@@ -457,7 +457,7 @@ public class BuddyListAdapter
           {
             if (((Iterator)localObject4).hasNext())
             {
-              ((ArrayList)localObject1).add(new fch((Friends)((Iterator)localObject4).next(), -1));
+              ((ArrayList)localObject1).add(new ext((Friends)((Iterator)localObject4).next(), -1));
               continue;
               if (QLog.isColorLevel()) {
                 QLog.d("BuddyListAdapter", 2, "FriendManager is null");
@@ -497,7 +497,7 @@ public class BuddyListAdapter
           ((List)localObject2).clear();
           localObject1 = ((ArrayList)localObject1).iterator();
           while (((Iterator)localObject1).hasNext()) {
-            ((List)localObject2).add(((fch)((Iterator)localObject1).next()).a);
+            ((List)localObject2).add(((ext)((Iterator)localObject1).next()).a);
           }
           localObject1 = ((List)localObject2).iterator();
           i = 0;
@@ -529,7 +529,7 @@ public class BuddyListAdapter
     return 2130903141;
   }
   
-  SpannableString a(Friends paramFriends, fcg paramfcg)
+  SpannableString a(Friends paramFriends, exs paramexs)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager == null) {
       return null;
@@ -546,29 +546,29 @@ public class BuddyListAdapter
       localObject = new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), (Bitmap)localObject);
       int i = this.e;
       ((Drawable)localObject).setBounds(0, 0, Math.round(((Drawable)localObject).getIntrinsicWidth() * 1.0F / ((Drawable)localObject).getIntrinsicHeight() * i), i);
-      paramfcg.e.setCompoundDrawables((Drawable)localObject, null, null, null);
+      paramexs.e.setCompoundDrawables((Drawable)localObject, null, null, null);
     }
     for (;;)
     {
       paramFriends = paramFriends.a(null);
-      paramfcg.e.setText(paramFriends);
+      paramexs.e.setText(paramFriends);
       return paramFriends;
       bool = false;
       break;
       label138:
-      paramfcg.e.setCompoundDrawables(null, null, null, null);
+      paramexs.e.setCompoundDrawables(null, null, null, null);
     }
   }
   
   public void a(View paramView, int paramInt)
   {
-    Object localObject = (fci)paramView.getTag();
+    Object localObject = (exu)paramView.getTag();
     if (localObject == null)
     {
-      localObject = new fci();
+      localObject = new exu();
       paramView.findViewById(2131231388).setVisibility(0);
-      ((fci)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231389));
-      ((fci)localObject).b = ((TextView)paramView.findViewById(2131231390));
+      ((exu)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231389));
+      ((exu)localObject).b = ((TextView)paramView.findViewById(2131231390));
       paramView.setTag(localObject);
     }
     for (paramView = (View)localObject;; paramView = (View)localObject)
@@ -721,7 +721,7 @@ public class BuddyListAdapter
     Groups localGroups;
     if (paramView != null)
     {
-      paramViewGroup = (fci)paramView.getTag();
+      paramViewGroup = (exu)paramView.getTag();
       localGroups = (Groups)getGroup(paramInt);
       paramViewGroup.jdField_a_of_type_Int = paramInt;
       LocaleString.a(localGroups.group_name, paramViewGroup.jdField_a_of_type_AndroidWidgetTextView);
@@ -746,7 +746,7 @@ public class BuddyListAdapter
       paramView.setOnLongClickListener(this);
       return paramView;
       paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903141, paramViewGroup, false);
-      paramViewGroup = new fci();
+      paramViewGroup = new exu();
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231389));
       paramViewGroup.b = ((TextView)paramView.findViewById(2131231390));
       paramView.setTag(paramViewGroup);
@@ -787,7 +787,7 @@ public class BuddyListAdapter
   
   public void onClick(View paramView)
   {
-    paramView = (fci)paramView.getTag();
+    paramView = (exu)paramView.getTag();
     if (this.jdField_a_of_type_ComTencentWidgetExpandableListView.e(paramView.jdField_a_of_type_Int))
     {
       this.jdField_a_of_type_ComTencentWidgetExpandableListView.d(paramView.jdField_a_of_type_Int);

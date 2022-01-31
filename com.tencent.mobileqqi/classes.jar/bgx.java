@@ -1,26 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.biz.PoiMapActivity;
 
 public class bgx
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public bgx(VideoAppInterface paramVideoAppInterface) {}
+  public bgx(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ((paramIntent != null) && ("com.tencent.process.exit".equals(paramIntent.getAction())))
-    {
-      paramContext = paramIntent.getExtras().getStringArrayList("procNameList");
-      paramIntent = paramIntent.getExtras().getString("verify");
-      if ((this.a.a(paramIntent, paramContext)) && (this.a.a(paramContext)) && ((this.a.a == null) || (this.a.a.a().a()))) {
-        this.a.e();
-      }
+    this.jdField_a_of_type_AndroidAppDialog.cancel();
+    String str = this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getText().toString();
+    paramView = str;
+    if (str == null) {
+      paramView = "";
     }
+    this.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "click_sch_cancel", paramView, "", "");
   }
 }
 

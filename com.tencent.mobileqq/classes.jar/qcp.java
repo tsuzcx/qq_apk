@@ -1,23 +1,20 @@
-import android.bluetooth.BluetoothAdapter.LeScanCallback;
-import android.bluetooth.BluetoothDevice;
-import com.tencent.device.qfind.QFindBLEScanMgr;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentNoteCard;
 
 public class qcp
-  implements BluetoothAdapter.LeScanCallback
+  implements View.OnClickListener
 {
-  public qcp(QFindBLEScanMgr paramQFindBLEScanMgr) {}
+  public qcp(ComponentContentNoteCard paramComponentContentNoteCard) {}
   
-  public void onLeScan(BluetoothDevice paramBluetoothDevice, int paramInt, byte[] paramArrayOfByte)
+  public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.post(new qcq(this, paramBluetoothDevice, paramArrayOfByte));
-    }
+    ComponentContentNoteCard.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qcp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.redtouch.RedTouch;
 
-public final class aetm
-  implements Parcelable.Creator
+public class aetm
 {
-  public Comments.Comment a(Parcel paramParcel)
-  {
-    return new Comments.Comment(paramParcel);
-  }
-  
-  public Comments.Comment[] a(int paramInt)
-  {
-    return new Comments.Comment[paramInt];
-  }
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public RedTouch a;
+  public String a;
+  public boolean a;
+  public int b;
+  public ImageView b;
+  public String b;
+  public String c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aetm
  * JD-Core Version:    0.7.0.1
  */

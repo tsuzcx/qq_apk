@@ -1,36 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportHandler;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.mobileqq.teamwork.TeamWorkHttpUtils;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.phone.CountryActivity;
 
 public class aimg
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public aimg(TeamWorkFileImportHandler paramTeamWorkFileImportHandler, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  public aimg(CountryActivity paramCountryActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportHandler.b == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.c))) {}
-    boolean bool;
-    do
+    if (!this.a.isFinishing())
     {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportHandler.a(TeamWorkHttpUtils.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.c), this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo));
-      localObject = TeamWorkHttpUtils.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.c, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportHandler.b.getCurrentAccountUin());
-      bool = false;
-      if (localObject != null) {
-        bool = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportHandler.b((String)localObject, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      }
-    } while ((bool) || (TeamWorkFileImportHandler.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportHandler) == null));
-    Object localObject = TeamWorkFileImportHandler.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportHandler).obtainMessage(8002);
-    ((Message)localObject).obj = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo;
-    TeamWorkFileImportHandler.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportHandler).sendMessage((Message)localObject);
+      this.a.jdField_a_of_type_Aimm.show();
+      this.a.b.setAnimation(null);
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

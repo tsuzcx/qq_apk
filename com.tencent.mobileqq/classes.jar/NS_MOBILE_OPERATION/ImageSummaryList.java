@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class ImageSummaryList
   extends JceStruct
 {
-  static ArrayList cache_vecImageSummary;
-  public ArrayList vecImageSummary;
+  static ArrayList<ImageSummary> cache_vecImageSummary;
+  public ArrayList<ImageSummary> vecImageSummary;
   
   public ImageSummaryList() {}
   
-  public ImageSummaryList(ArrayList paramArrayList)
+  public ImageSummaryList(ArrayList<ImageSummary> paramArrayList)
   {
     this.vecImageSummary = paramArrayList;
   }
@@ -38,7 +38,7 @@ public final class ImageSummaryList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_OPERATION.ImageSummaryList
  * JD-Core Version:    0.7.0.1
  */

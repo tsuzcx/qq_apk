@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.widget.FrameLayout;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class RedPointView
   protected Context a;
   protected Handler a;
   protected View a;
-  protected List a;
+  protected List<BusinessInfoCheckUpdate.RedTypeInfo> a;
   protected boolean a;
   protected int b;
   protected int c;
@@ -70,7 +71,7 @@ public class RedPointView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.redtouch.RedPointView
  * JD-Core Version:    0.7.0.1
  */

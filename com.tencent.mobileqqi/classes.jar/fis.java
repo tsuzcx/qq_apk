@@ -1,31 +1,33 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.message.AccostMessageProcessor;
+import java.util.ArrayList;
 
 public class fis
-  extends Handler
 {
-  public fis(MessageHandler paramMessageHandler, Looper paramLooper)
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList a;
+  public byte[] a;
+  public long b;
+  public String b;
+  public long c;
+  public long d;
+  public long e;
+  
+  public fis(AccostMessageProcessor paramAccostMessageProcessor, long paramLong1, int paramInt, long paramLong2, long paramLong3, ArrayList paramArrayList, String paramString)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramLong2;
+    this.c = paramLong3;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void handleMessage(Message paramMessage)
+  public fis(AccostMessageProcessor paramAccostMessageProcessor, long paramLong, ArrayList paramArrayList)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      paramMessage = paramMessage.getData();
-    } while ((paramMessage == null) || (!paramMessage.containsKey("update_unread_uin")) || (!paramMessage.containsKey("update_unread_time")));
-    this.a.a.a().a(paramMessage.getString("update_unread_uin"), paramMessage.getInt("update_unread_type", 0), paramMessage.getLong("update_unread_time"));
-    MessageHandler.a(this.a, 2002, true, null);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
 }
 

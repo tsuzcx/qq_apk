@@ -1,46 +1,93 @@
-import android.content.Context;
-import android.text.Selection;
-import android.text.Spannable;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Toast;
-import com.tencent.mobileqq.widget.ContainerView.SelectableTextView;
+import android.annotation.SuppressLint;
+import android.os.Build.VERSION;
+import com.tencent.open.appcommon.AppViewBaseActivity;
+import com.tencent.open.appcommon.js.OpenJsBridge;
+import com.tencent.open.base.LogUtility;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
+import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.export.external.interfaces.QuotaUpdater;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
+import java.lang.ref.WeakReference;
 
+@SuppressLint({"NewApi"})
 public class hkg
-  implements View.OnLongClickListener
+  extends WebChromeClient
 {
-  public hkg(ContainerView.SelectableTextView paramSelectableTextView) {}
+  WeakReference jdField_a_of_type_JavaLangRefWeakReference = null;
   
-  public boolean onLongClick(View paramView)
+  public hkg(AppViewBaseActivity paramAppViewBaseActivity1, AppViewBaseActivity paramAppViewBaseActivity2)
   {
-    if (this.a.getSelectionEnd() - this.a.getSelectionStart() > 0)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppViewBaseActivity2);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    LogUtility.c("WebConsole", paramString1 + " --From line " + paramInt + " of " + paramString2);
+    if (Build.VERSION.SDK_INT == 7) {}
+    try
     {
-      this.a.onTextContextMenuItem(16908321);
-      Toast.makeText(this.a.getContext(), this.a.getContext().getString(2131559338), 0).show();
+      paramString2 = (AppViewBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if ((paramString2 != null) && (!paramString2.isFinishing())) {
+        paramString2.b(paramString1);
+      }
+      return;
     }
-    for (;;)
-    {
-      return true;
+    catch (Exception paramString1) {}
+  }
+  
+  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
+  {
+    if (LogUtility.a()) {
+      LogUtility.c("WebConsole", paramConsoleMessage.message() + " -- From line " + paramConsoleMessage.lineNumber() + " of " + paramConsoleMessage.sourceId());
+    }
+    if (Build.VERSION.SDK_INT > 7) {
       try
       {
-        Selection.setSelection((Spannable)this.a.getText(), Math.max(ContainerView.SelectableTextView.a(this.a) - 50, 0), Math.min(ContainerView.SelectableTextView.a(this.a) + 50, this.a.getText().length()));
-        this.a.onTextContextMenuItem(16908328);
-        ((InputMethodManager)this.a.getContext().getSystemService("input_method")).hideSoftInputFromWindow(this.a.getWindowToken(), 0);
-      }
-      catch (Exception paramView)
-      {
-        for (;;)
+        AppViewBaseActivity localAppViewBaseActivity = (AppViewBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if ((localAppViewBaseActivity != null) && (!localAppViewBaseActivity.isFinishing()))
         {
-          Selection.setSelection((Spannable)this.a.getText(), ContainerView.SelectableTextView.a(this.a), ContainerView.SelectableTextView.a(this.a));
+          if (paramConsoleMessage == null) {}
+          for (paramConsoleMessage = "";; paramConsoleMessage = paramConsoleMessage.message())
+          {
+            localAppViewBaseActivity.b(paramConsoleMessage);
+            break;
+          }
         }
+        return true;
+      }
+      catch (Exception paramConsoleMessage) {}
+    }
+  }
+  
+  public void onExceededDatabaseQuota(String paramString1, String paramString2, long paramLong1, long paramLong2, long paramLong3, QuotaUpdater paramQuotaUpdater)
+  {
+    paramQuotaUpdater.updateQuota(2L * paramLong2);
+  }
+  
+  public boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
+  {
+    try
+    {
+      paramString1 = (AppViewBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if ((paramString1 != null) && (!paramString1.isFinishing()) && (paramString1.a.a(paramWebView, paramString2)))
+      {
+        paramJsResult.cancel();
+        return true;
       }
     }
+    catch (Exception paramWebView) {}
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hkg
  * JD-Core Version:    0.7.0.1
  */

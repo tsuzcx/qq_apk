@@ -1,55 +1,81 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileTransferObserver;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerCallback;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class acwh
-  extends FileTransferObserver
+  implements aufy<List<EmoticonPackage>>
 {
-  public acwh(FileVideoManager.VideoControl paramVideoControl, FileManagerEntity paramFileManagerEntity, QQAppInterface paramQQAppInterface, FileVideoManager.FileVideoManagerCallback paramFileVideoManagerCallback) {}
+  public acwh(EmosmActivity paramEmosmActivity) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, long paramLong2)
+  public void a(List<EmoticonPackage> paramList)
   {
-    QLog.i("FileVideoManager<FileAssistant>", 2, "[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "],[getOnlinePlay Url]  ID[" + paramLong2 + "] OnDiscDownloadInfo");
-    if (paramLong1 == -100001L) {}
-    while ((paramString3 == null) || (paramString3.length() == 0))
+    this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+    if (this.a.jdField_a_of_type_Apoy != null) {
+      this.a.jdField_a_of_type_Apoy.a();
+    }
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      paramLong2 = 9360L;
-      if (paramLong1 == 0L) {
-        paramLong2 = 9048L;
+      EmoticonPackage localEmoticonPackage;
+      if (this.a.b == 1)
+      {
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          localEmoticonPackage = (EmoticonPackage)paramList.next();
+          if ((3 != localEmoticonPackage.jobType) && (1 != localEmoticonPackage.jobType) && (5 != localEmoticonPackage.jobType)) {
+            this.a.jdField_a_of_type_JavaUtilArrayList.add(localEmoticonPackage);
+          }
+        }
       }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerCallback.a((int)paramLong2, BaseApplication.getContext().getResources().getString(2131428602));
+      if (this.a.b == 2)
+      {
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          localEmoticonPackage = (EmoticonPackage)paramList.next();
+          if ((3 == localEmoticonPackage.jobType) || (5 == localEmoticonPackage.jobType)) {
+            this.a.jdField_a_of_type_JavaUtilArrayList.add(localEmoticonPackage);
+          }
+        }
+      }
+    }
+    if (this.a.b == 1)
+    {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.findHeaderViewPosition(this.a.jdField_a_of_type_AndroidViewView) == -1) {
+        this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.addHeaderView(this.a.jdField_a_of_type_AndroidViewView);
+      }
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.a.d();
+      if (this.a.b != 2) {
+        break label344;
+      }
+      this.a.setTitle(2131692094);
+    }
+    for (;;)
+    {
+      if (this.a.jdField_a_of_type_Apoy != null) {
+        this.a.jdField_a_of_type_Apoy.notifyDataSetChanged();
+      }
       return;
-      if ((paramLong1 == -25081L) || (paramLong1 == -6101L) || (paramLong1 == -7003L))
+      if (this.a.jdField_a_of_type_JavaUtilArrayList.isEmpty())
       {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 16;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerCallback.a((int)paramLong1, BaseApplication.getContext().getResources().getString(2131428190));
-        return;
+        this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        break;
       }
-      if (!paramBoolean)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerCallback.a((int)9045L, BaseApplication.getContext().getResources().getString(2131428602));
-        return;
-      }
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.removeHeaderView(this.a.jdField_a_of_type_AndroidViewView);
+      break;
+      label344:
+      this.a.setTitle(2131692341);
     }
-    paramString1 = "http://" + paramString3 + ":" + String.valueOf(paramInt1) + "/ftn_handler/" + paramString4;
-    if (QLog.isDevelopLevel()) {
-      QLog.d("FileVideoManager<FileAssistant>", 1, paramString1);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.c = paramString5;
-    FileVideoManager.VideoControl.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerCallback.a(paramString1, paramString5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acwh
  * JD-Core Version:    0.7.0.1
  */

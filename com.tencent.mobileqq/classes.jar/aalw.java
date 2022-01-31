@@ -1,17 +1,24 @@
-import com.tencent.mobileqq.arcard.ARCardHeadIconManager;
+import android.view.View;
+import com.tencent.ad.tangram.ark.AdArkAdapter.Callback;
+import com.tencent.ark.ArkViewImplement.InputCallback;
 
-public class aalw
+class aalw
+  implements ArkViewImplement.InputCallback
 {
-  public long a;
-  public String a;
-  public boolean a;
+  aalw(aalt paramaalt, AdArkAdapter.Callback paramCallback) {}
   
-  public aalw(ARCardHeadIconManager paramARCardHeadIconManager)
+  public void onFocusChanged(View paramView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = null;
+    if (this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback != null) {
+      this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback.onFocusChanged(paramView, paramBoolean);
+    }
   }
+  
+  public void onHideMenu(View paramView) {}
+  
+  public void onSelectChanged(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  
+  public void onShowMenu(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
 }
 
 

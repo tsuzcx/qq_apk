@@ -1,31 +1,31 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
 
-class acfx
-  implements AbsListView.OnScrollListener
+public class acfx
+  extends amdg
 {
-  acfx(acfw paramacfw) {}
+  public acfx(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  protected void a(boolean paramBoolean, bade parambade)
   {
-    if (paramInt == 0)
-    {
-      URLDrawable.resume();
-      if (this.a.jdField_a_of_type_Acfv.jdField_a_of_type_Int == 1) {
-        EmotionPanelViewPagerAdapter.a(this.a.jdField_a_of_type_Acfv.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter, this.a.jdField_a_of_type_JavaUtilList, this.a.jdField_a_of_type_Acfv.jdField_a_of_type_ComTencentWidgetListView);
-      }
-      return;
-    }
-    URLDrawable.pause();
+    this.a.e();
+    AssociatedAccountManageActivity.b(this.a);
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  protected void b(boolean paramBoolean, bade parambade)
+  {
+    this.a.e();
+    AssociatedAccountManageActivity.b(this.a);
+  }
+  
+  protected void c(boolean paramBoolean, bade parambade)
+  {
+    this.a.e();
+    AssociatedAccountManageActivity.b(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acfx
  * JD-Core Version:    0.7.0.1
  */

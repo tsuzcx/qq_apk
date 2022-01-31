@@ -1,29 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.profile.vote.VoteHelper;
-import java.util.ArrayList;
-
 public class uii
-  implements Runnable
+  extends uij
 {
-  public uii(VisitorsActivity paramVisitorsActivity) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
   
-  public void run()
+  public uii(int paramInt)
   {
-    ArrayList localArrayList1 = this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(2, 7);
-    ArrayList localArrayList2 = this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(3, 7);
-    if (!this.a.isFinishing())
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a();
-      this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(5, 0, 0, new Object[] { localArrayList1, localArrayList2 }).sendToTarget();
-    }
+    super(paramInt);
+    this.g = 6;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uii
  * JD-Core Version:    0.7.0.1
  */

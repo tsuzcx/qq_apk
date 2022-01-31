@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.app.utils.MessagePkgUtils;
+import alud;
+import amrf;
 
 public class MessageForTroopFile
   extends ChatMessage
@@ -16,6 +17,7 @@ public class MessageForTroopFile
   public String fileName;
   public long fileSize;
   public int height;
+  public boolean isPause;
   public long lastTime;
   public String sha1;
   public String url;
@@ -26,7 +28,7 @@ public class MessageForTroopFile
   {
     try
     {
-      TroopFileData localTroopFileData = (TroopFileData)MessagePkgUtils.a(this.msgData);
+      TroopFileData localTroopFileData = (TroopFileData)amrf.a(this.msgData);
       if (localTroopFileData != null)
       {
         this.url = localTroopFileData.fileUrl;
@@ -44,7 +46,7 @@ public class MessageForTroopFile
         this.height = localTroopFileData.height;
         this.duration = localTroopFileData.duration;
       }
-      this.msg = "[群文件]";
+      this.msg = alud.a(2131706964);
       return;
     }
     catch (Exception localException)
@@ -59,7 +61,7 @@ public class MessageForTroopFile
   
   public String getSummaryMsg()
   {
-    return "[文件]" + this.fileName;
+    return alud.a(2131707013) + this.fileName;
   }
   
   public boolean isSupportReply()
@@ -67,12 +69,12 @@ public class MessageForTroopFile
     return true;
   }
   
-  protected void postRead()
+  public void postRead()
   {
     parse();
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     serial();
   }
@@ -96,7 +98,7 @@ public class MessageForTroopFile
     localTroopFileData.duration = this.duration;
     try
     {
-      this.msgData = MessagePkgUtils.a(localTroopFileData);
+      this.msgData = amrf.a(localTroopFileData);
       return;
     }
     catch (Exception localException)
@@ -107,7 +109,7 @@ public class MessageForTroopFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTroopFile
  * JD-Core Version:    0.7.0.1
  */

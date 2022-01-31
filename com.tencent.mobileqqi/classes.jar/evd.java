@@ -1,23 +1,14 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.mobileqq.activity.selectmember.RenMaiQuanTeamListInnerFrame;
-import com.tencent.mobileqq.data.CircleGroup;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.media.SoundPool;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
 class evd
-  implements View.OnClickListener
+  implements Runnable
 {
-  evd(evc paramevc, CircleGroup paramCircleGroup) {}
+  evd(evc paramevc) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new Bundle();
-    paramView.putInt("group_uin", this.jdField_a_of_type_ComTencentMobileqqDataCircleGroup.groupId);
-    paramView.putString("group_name", this.jdField_a_of_type_ComTencentMobileqqDataCircleGroup.groupName);
-    this.jdField_a_of_type_Evc.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a(7, paramView);
-    ReportController.b(this.jdField_a_of_type_Evc.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Network_circle", "Mutichat_circle_grp", 0, 0, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataCircleGroup.groupId), "", "", "");
+    VoipDialInterfaceActivity.a(this.a.a).play(VoipDialInterfaceActivity.d(this.a.a), 1.0F, 1.0F, 0, 0, 1.0F);
   }
 }
 

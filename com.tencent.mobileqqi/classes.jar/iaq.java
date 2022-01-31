@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.ExpandableListConnector.GroupMetadata;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qlink.QQProxyForQlink;
+import cooperation.qlink.QlinkDialogActivity;
 
-public final class iaq
-  implements Parcelable.Creator
+public class iaq
+  implements DialogInterface.OnClickListener
 {
-  public ExpandableListConnector.GroupMetadata a(Parcel paramParcel)
-  {
-    return ExpandableListConnector.GroupMetadata.a(paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readLong());
-  }
+  public iaq(QlinkDialogActivity paramQlinkDialogActivity, String paramString) {}
   
-  public ExpandableListConnector.GroupMetadata[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new ExpandableListConnector.GroupMetadata[paramInt];
+    this.jdField_a_of_type_CooperationQlinkQlinkDialogActivity.a = true;
+    this.jdField_a_of_type_CooperationQlinkQlinkDialogActivity.b.a().a(this.jdField_a_of_type_JavaLangString, true);
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_CooperationQlinkQlinkDialogActivity.finish();
   }
 }
 

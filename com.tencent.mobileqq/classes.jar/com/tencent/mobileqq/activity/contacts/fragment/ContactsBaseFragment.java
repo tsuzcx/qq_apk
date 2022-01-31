@@ -1,54 +1,62 @@
 package com.tencent.mobileqq.activity.contacts.fragment;
 
+import ahsw;
+import ahsx;
+import ahsy;
+import ahvc;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.graphics.Rect;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import bhtv;
 import com.tencent.image.ApngImage;
-import com.tencent.mobileqq.activity.contacts.view.HeaderScrollHelper.ScrollableContainer;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import wmz;
 
 public abstract class ContactsBaseFragment
   extends Fragment
-  implements HeaderScrollHelper.ScrollableContainer, AbsListView.OnScrollListener
+  implements ahvc, bhtv
 {
+  public static Rect a;
   private int a;
-  protected View a;
-  protected ContactsBaseFragment.FragmentLifeListener a;
-  public ContactsBaseFragment.RefreshDataListener a;
+  protected ahsx a;
+  public ahsy a;
   public BaseActivity a;
   public QQAppInterface a;
   public boolean a;
+  private int b;
+  protected View b;
   public boolean b;
   
-  public abstract int a();
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
   
   public View a()
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    return this.jdField_b_of_type_AndroidViewView;
   }
   
   protected abstract View a(LayoutInflater paramLayoutInflater, Bundle paramBundle);
   
   public abstract void a();
   
-  public void a(ContactsBaseFragment.FragmentLifeListener paramFragmentLifeListener)
+  public void a(ahsx paramahsx)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsFragmentContactsBaseFragment$FragmentLifeListener = paramFragmentLifeListener;
+    this.jdField_a_of_type_Ahsx = paramahsx;
   }
   
-  public void a(ContactsBaseFragment.RefreshDataListener paramRefreshDataListener)
+  public void a(ahsy paramahsy)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsFragmentContactsBaseFragment$RefreshDataListener = paramRefreshDataListener;
+    this.jdField_a_of_type_Ahsy = paramahsy;
   }
   
   public void a(BaseActivity paramBaseActivity)
@@ -62,34 +70,31 @@ public abstract class ContactsBaseFragment
     d();
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramAbsListView == null) {}
-    do
-    {
-      return;
-      if (paramInt != 0) {
-        ApngImage.pauseByTag(3);
-      }
-    } while (paramInt != 0);
-    ApngImage.playByTag(3);
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
   public abstract void a(boolean paramBoolean);
   
-  public abstract void b();
+  public abstract void as_();
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
   
   public abstract void b(boolean paramBoolean);
   
   public abstract void c();
   
-  public void c(boolean paramBoolean)
+  protected abstract void d();
+  
+  public void d(int paramInt)
   {
-    this.b = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
     this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    if (this.jdField_b_of_type_AndroidViewView != null)
     {
       if (paramBoolean) {
         a(true);
@@ -101,23 +106,26 @@ public abstract class ContactsBaseFragment
     b(true);
   }
   
-  protected abstract void d();
-  
-  public void d(boolean paramBoolean) {}
-  
   protected abstract void e();
   
-  public void f()
+  public void e(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void e(boolean paramBoolean) {}
+  
+  public void f() {}
+  
+  public void g()
   {
     e();
   }
   
-  public void g() {}
-  
   public void onAttach(Activity paramActivity)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Contacts.BaseFragment", 2, "pos:" + a() + " onAttach");
+      QLog.d("Contacts.BaseFragment", 2, "pos:" + b() + " onAttach");
     }
     super.onAttach(paramActivity);
   }
@@ -125,24 +133,23 @@ public abstract class ContactsBaseFragment
   public void onCreate(Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Contacts.BaseFragment", 2, "pos:" + a() + " onCreate");
+      QLog.d("Contacts.BaseFragment", 2, "pos:" + b() + " onCreate");
     }
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Int = a();
   }
   
   @TargetApi(16)
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Contacts.BaseFragment", 2, "pos:" + a() + " onCreateView");
+      QLog.d("Contacts.BaseFragment", 2, "pos:" + b() + " onCreateView");
     }
-    this.jdField_a_of_type_AndroidViewView = a(paramLayoutInflater, paramBundle);
+    this.jdField_b_of_type_AndroidViewView = a(paramLayoutInflater, paramBundle);
     paramLayoutInflater = a();
     if ((paramLayoutInflater != null) && (Build.VERSION.SDK_INT >= 14)) {
-      paramLayoutInflater.setAccessibilityDelegate(new wmz(this));
+      paramLayoutInflater.setAccessibilityDelegate(new ahsw(this));
     }
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Boolean))
+    if ((this.jdField_b_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Boolean))
     {
       if (QLog.isColorLevel()) {
         QLog.d("Contacts.BaseFragment", 2, "onCreateView->doOnResume");
@@ -150,26 +157,26 @@ public abstract class ContactsBaseFragment
       this.jdField_a_of_type_Boolean = false;
       a(true);
     }
-    return this.jdField_a_of_type_AndroidViewView;
+    return this.jdField_b_of_type_AndroidViewView;
   }
   
   public void onDestroy()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Contacts.BaseFragment", 2, "pos:" + a() + " onDestroy");
+      QLog.d("Contacts.BaseFragment", 2, "pos:" + b() + " onDestroy");
     }
     super.onDestroy();
-    this.jdField_a_of_type_AndroidViewView = null;
+    this.jdField_b_of_type_AndroidViewView = null;
     this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsFragmentContactsBaseFragment$FragmentLifeListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsFragmentContactsBaseFragment$FragmentLifeListener.d(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Ahsx != null) {
+      this.jdField_a_of_type_Ahsx.d(this.jdField_a_of_type_Int);
     }
   }
   
   public void onDestroyView()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Contacts.BaseFragment", 2, "pos:" + a() + " onDestroyView");
+      QLog.d("Contacts.BaseFragment", 2, "pos:" + b() + " onDestroyView");
     }
     super.onDestroyView();
   }
@@ -177,14 +184,29 @@ public abstract class ContactsBaseFragment
   public void onDetach()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Contacts.BaseFragment", 2, "pos:" + a() + " onDetach");
+      QLog.d("Contacts.BaseFragment", 2, "pos:" + b() + " onDetach");
     }
     super.onDetach();
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramAbsListView == null) {}
+    do
+    {
+      return;
+      if (paramInt != 0) {
+        ApngImage.pauseByTag(3);
+      }
+    } while (paramInt != 0);
+    ApngImage.playByTag(3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class TroopTips0x857$MessageBoxInfo
-  extends MessageMicro
+  extends MessageMicro<MessageBoxInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField opt_bytes_button = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -24,7 +24,7 @@ public final class TroopTips0x857$MessageBoxInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x857.TroopTips0x857.MessageBoxInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -18,9 +18,9 @@ public abstract interface IUploadEnv
   
   public abstract String getProviderName();
   
-  public abstract int getSocketCount();
+  public abstract String getSDKPrivatePath(String paramString);
   
-  public abstract int getUploadVersion();
+  public abstract int getSocketCount();
   
   public abstract boolean isAvailable();
   
@@ -30,13 +30,11 @@ public abstract interface IUploadEnv
   
   public abstract boolean isWifi();
   
-  public abstract boolean loadLibrary(String paramString);
-  
   public abstract void registerNetworkStateObserver(UploadConfiguration.NetworkStateObserver paramNetworkStateObserver);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.upload.uinterface.IUploadEnv
  * JD-Core Version:    0.7.0.1
  */

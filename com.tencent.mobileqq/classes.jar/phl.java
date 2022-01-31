@@ -1,22 +1,25 @@
-import com.tencent.component.media.image.PoolParams;
-import com.tencent.component.media.image.PoolParams.BucketParams;
+import com.tencent.biz.pubaccount.readinjoy.struct.WeiShiVideoArticleInfo;
+import java.util.Comparator;
 
-public class phl
-  implements PoolParams
+class phl
+  implements Comparator<WeiShiVideoArticleInfo>
 {
-  public PoolParams.BucketParams getBucketParams(int paramInt)
-  {
-    return new PoolParams.BucketParams(1, 1);
-  }
+  phl(phk paramphk) {}
   
-  public int getBucketPoolSize()
+  public int a(WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo1, WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo2)
   {
+    if (paramWeiShiVideoArticleInfo1.recommendSeq == paramWeiShiVideoArticleInfo2.recommendSeq) {
+      return 0;
+    }
+    if (paramWeiShiVideoArticleInfo1.recommendSeq > paramWeiShiVideoArticleInfo2.recommendSeq) {
+      return -1;
+    }
     return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     phl
  * JD-Core Version:    0.7.0.1
  */

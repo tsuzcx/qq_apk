@@ -1,31 +1,25 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 import android.widget.TextView;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment.2.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class aiyc
-  extends ClickableSpan
+  implements View.OnClickListener
 {
-  public aiyc(TroopBarPublishActivity paramTroopBarPublishActivity, int paramInt) {}
+  public aiyc(LingHbFragment paramLingHbFragment) {}
   
   public void onClick(View paramView)
   {
-    TroopBarPublishUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity, 2002, this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.t);
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b.getVisibility() == 0)) {}
-    for (int i = 2;; i = 1)
+    if ((paramView instanceof TextView))
     {
-      ReportController.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_add_topic", i, 0, "", "", "", "");
-      return;
+      paramView = ((TextView)paramView).getText().toString();
+      QLog.i("LingHbFragment", 2, "choice: " + paramView);
+      this.a.c.setText(paramView);
+      this.a.a.post(new LingHbFragment.2.1(this));
     }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(this.jdField_a_of_type_Int);
-    paramTextPaint.setUnderlineText(false);
   }
 }
 

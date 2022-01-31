@@ -1,101 +1,27 @@
-import android.os.IBinder;
-import android.os.Parcel;
-import android.os.RemoteException;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.VerifyCreditCardIdentityActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.PrivacyDeclareHelper;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ehv
-  implements IAIOImageProviderCallBack
+  implements DialogInterface.OnClickListener
 {
-  private IBinder a;
+  public ehv(MainAssistObserver paramMainAssistObserver) {}
   
-  public ehv(IBinder paramIBinder)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramIBinder;
-  }
-  
-  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack");
-      localParcel.writeLong(paramLong1);
-      localParcel.writeInt(paramInt1);
-      localParcel.writeInt(paramInt2);
-      localParcel.writeInt(paramInt3);
-      localParcel.writeLong(paramLong2);
-      this.a.transact(3, localParcel, null, 1);
-      return;
+    Intent localIntent = new Intent(this.a.a, VerifyCreditCardIdentityActivity.class);
+    localIntent.putExtra("reqType", 4);
+    localIntent.putExtra("title", this.a.a.getString(2131561842));
+    localIntent.putExtra("uin", this.a.a.b.a());
+    this.a.a.startActivityForResult(localIntent.putExtra("url", PrivacyDeclareHelper.a(this.a.a)), 2000);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    catch (RemoteException localRemoteException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("IAIOImageProviderCallBack", 2, localRemoteException.getMessage(), localRemoteException);
-      }
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack");
-      localParcel.writeLong(paramLong);
-      localParcel.writeInt(paramInt1);
-      localParcel.writeInt(paramInt2);
-      localParcel.writeInt(paramInt3);
-      localParcel.writeString(paramString);
-      this.a.transact(1, localParcel, null, 1);
-      return;
-    }
-    catch (RemoteException paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("IAIOImageProviderCallBack", 2, paramString.getMessage(), paramString);
-      }
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public void a(AIOImageData[] paramArrayOfAIOImageData, int paramInt)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack");
-      localParcel.writeTypedArray(paramArrayOfAIOImageData, 0);
-      localParcel.writeInt(paramInt);
-      this.a.transact(2, localParcel, null, 1);
-      return;
-    }
-    catch (RemoteException paramArrayOfAIOImageData)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("IAIOImageProviderCallBack", 2, paramArrayOfAIOImageData.getMessage(), paramArrayOfAIOImageData);
-      }
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
   }
 }
 

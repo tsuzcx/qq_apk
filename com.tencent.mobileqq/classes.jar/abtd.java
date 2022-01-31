@@ -1,25 +1,13 @@
-import com.tencent.mobileqq.app.HotchatSCMng;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
 
-public class abtd
-  implements Runnable
+public abstract interface abtd
 {
-  public abtd(ConfigServlet paramConfigServlet, ConfigurationService.Config paramConfig) {}
-  
-  public void run()
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqConfigSplashlogoConfigServlet.getAppRuntime();
-    boolean bool = ((HotchatSCMng)localQQAppInterface.getManager(122)).a(this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config);
-    SharedPreUtils.a(localQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.version.get(), bool);
-  }
+  public abstract boolean a(String paramString, int paramInt1, int paramInt2, abts paramabts, ArrayList<MessageRecord> paramArrayList, MessageRecord paramMessageRecord, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abtd
  * JD-Core Version:    0.7.0.1
  */

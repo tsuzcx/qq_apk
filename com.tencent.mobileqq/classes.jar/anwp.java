@@ -1,25 +1,39 @@
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnPreparedListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import android.graphics.Rect;
+import java.util.Arrays;
 
 public class anwp
-  implements IMediaPlayer.OnPreparedListener
 {
-  public anwp(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
+  public int a;
+  public Rect a;
+  public anwi a;
+  public String a;
+  public boolean a;
+  public String[] a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c = 50;
+  public int d = -1;
+  public int e = 1;
   
-  public void a_(IMediaPlayer paramIMediaPlayer)
+  public anwp()
   {
-    SLog.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "video prrepared completed!");
-    LocalVideoSelectActivity.a(this.a).b();
-    LocalVideoSelectActivity.a(this.a).postDelayed(new anwq(this), 300L);
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[0];
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public String toString()
+  {
+    return "CommonAttrs [key=" + this.jdField_b_of_type_JavaLangString + ", mRect=" + this.jdField_a_of_type_AndroidGraphicsRect + ", count=" + this.jdField_a_of_type_Int + ", duration=" + this.c + ", align=" + this.d + ", mBigImgPath=" + this.jdField_a_of_type_JavaLangString + ", repeatCount=" + this.jdField_b_of_type_Int + ", mAnimationPath=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anwp
  * JD-Core Version:    0.7.0.1
  */

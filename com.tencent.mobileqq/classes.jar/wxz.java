@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity.QueryPhotoTask;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
 
-public class wxz
-  implements Runnable
+public final class wxz
+  implements Parcelable.Creator<EditLocalGifSource>
 {
-  public wxz(PhotoListActivity.QueryPhotoTask paramQueryPhotoTask) {}
-  
-  public void run()
+  public EditLocalGifSource a(Parcel paramParcel)
   {
-    this.a.a.c();
+    return new EditLocalGifSource(paramParcel);
+  }
+  
+  public EditLocalGifSource[] a(int paramInt)
+  {
+    return new EditLocalGifSource[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wxz
  * JD-Core Version:    0.7.0.1
  */

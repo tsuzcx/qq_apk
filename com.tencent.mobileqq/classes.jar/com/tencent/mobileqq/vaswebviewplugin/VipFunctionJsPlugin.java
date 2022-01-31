@@ -2,13 +2,13 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import apmh;
+import apml;
+import begz;
 import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
-import com.tencent.mobileqq.emosm.DataFactory;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebSettings;
 import java.util.Map;
@@ -24,7 +24,7 @@ public class VipFunctionJsPlugin
   public static final String Method_report643 = "reportToClientTo643";
   public static final String Tag = "QQVIPFunctionJsPlugin";
   private volatile String mCurrentURL;
-  private Set mUrlFilter;
+  private Set<String> mUrlFilter;
   private volatile String mUserAgent;
   
   public VipFunctionJsPlugin()
@@ -43,7 +43,7 @@ public class VipFunctionJsPlugin
     localBundle.putInt("fromeType", paramInt1);
     localBundle.putInt("result", paramInt2);
     localBundle.putStringArray("reserves", paramArrayOfString);
-    sendRemoteReq(DataFactory.a("QQVIPFunctionReport643", "callback", this.mOnRemoteResp.key, localBundle), false, false);
+    sendRemoteReq(apml.a("QQVIPFunctionReport643", "callback", this.mOnRemoteResp.key, localBundle), false, false);
   }
   
   private void reportToClientTo644(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String[] paramArrayOfString)
@@ -62,7 +62,7 @@ public class VipFunctionJsPlugin
     callJs(paramString1, new String[] { paramString2 });
   }
   
-  protected boolean excuteEvent(String paramString, long paramLong, Map paramMap)
+  protected boolean excuteEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
     if (paramLong == 8589934593L)
     {
@@ -75,7 +75,7 @@ public class VipFunctionJsPlugin
     return super.excuteEvent(paramString, paramLong, paramMap);
   }
   
-  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if (QLog.isColorLevel()) {
       QLog.d("QQVIPFunctionJsPlugin", 2, "handleJsRequest, url=" + paramString1);
@@ -253,7 +253,7 @@ public class VipFunctionJsPlugin
     }
   }
   
-  protected void onWebViewCreated(CustomWebView paramCustomWebView)
+  public void onWebViewCreated(CustomWebView paramCustomWebView)
   {
     super.onWebViewCreated(paramCustomWebView);
     if (paramCustomWebView != null) {
@@ -263,7 +263,7 @@ public class VipFunctionJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VipFunctionJsPlugin
  * JD-Core Version:    0.7.0.1
  */

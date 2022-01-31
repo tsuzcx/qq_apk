@@ -1,15 +1,15 @@
 package Wallet;
 
+import bdgk;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import java.util.ArrayList;
 
 public final class JudgeDownloadReq
   extends JceStruct
 {
-  static ArrayList cache_vecResInfo = new ArrayList();
+  static ArrayList<ResInfo> cache_vecResInfo = new ArrayList();
   public float fMaxCPUFreq;
   public float fMinCPUFreq;
   public int iActId = 1001;
@@ -21,7 +21,7 @@ public final class JudgeDownloadReq
   public long iUin;
   public String sPhoneType = "";
   public String sQQVersion = "";
-  public ArrayList vecResInfo;
+  public ArrayList<ResInfo> vecResInfo;
   
   static
   {
@@ -29,17 +29,17 @@ public final class JudgeDownloadReq
     cache_vecResInfo.add(localResInfo);
   }
   
-  public static JudgeDownloadReq createReq(ArrayList paramArrayList, long paramLong, int paramInt)
+  public static JudgeDownloadReq createReq(ArrayList<ResInfo> paramArrayList, long paramLong, int paramInt)
   {
     JudgeDownloadReq localJudgeDownloadReq = new JudgeDownloadReq();
     localJudgeDownloadReq.iUin = paramLong;
     localJudgeDownloadReq.vecResInfo = paramArrayList;
-    localJudgeDownloadReq.sPhoneType = DeviceInfoUtil.j();
-    localJudgeDownloadReq.sQQVersion = DeviceInfoUtil.d();
-    localJudgeDownloadReq.fMinCPUFreq = ((float)DeviceInfoUtil.a());
-    localJudgeDownloadReq.fMinCPUFreq = ((float)DeviceInfoUtil.b());
-    localJudgeDownloadReq.iCores = DeviceInfoUtil.b();
-    localJudgeDownloadReq.iMemory = (DeviceInfoUtil.e() / 1024L);
+    localJudgeDownloadReq.sPhoneType = bdgk.i();
+    localJudgeDownloadReq.sQQVersion = bdgk.c();
+    localJudgeDownloadReq.fMinCPUFreq = ((float)bdgk.a());
+    localJudgeDownloadReq.fMaxCPUFreq = ((float)bdgk.b());
+    localJudgeDownloadReq.iCores = bdgk.b();
+    localJudgeDownloadReq.iMemory = (bdgk.d() / 1024L);
     localJudgeDownloadReq.iRetryTimes = paramInt;
     return localJudgeDownloadReq;
   }

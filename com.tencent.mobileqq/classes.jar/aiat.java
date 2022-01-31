@@ -1,42 +1,29 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.ReadyResource;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceReadyFilter;
-import java.util.List;
+import android.support.v4.app.FragmentActivity;
 
 public class aiat
-  implements Animation.AnimationListener
+  extends aiac
 {
-  public aiat(DanceReadyFilter paramDanceReadyFilter) {}
+  public static final int[] a = { 2131690787 };
+  public static final int[] b = { 2131364161 };
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public aiat(FragmentActivity paramFragmentActivity)
   {
-    if (DanceReadyFilter.a(this.a) > 0)
-    {
-      DanceReadyFilter.e(this.a).a((String)DanceReadyFilter.a(this.a).a.a.get(DanceReadyFilter.a(this.a) - 1));
-      if (DanceReadyFilter.c(this.a) != null)
-      {
-        DanceReadyFilter.c(this.a).setStartOffset(300L);
-        DanceReadyFilter.e(this.a).e();
-        DanceReadyFilter.e(this.a).a(DanceReadyFilter.c(this.a));
-      }
-      return;
-    }
-    DanceReadyFilter.e(this.a).h_(false);
+    super(paramFragmentActivity);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  protected int[] a()
   {
-    DanceReadyFilter.c(this.a);
+    return b;
+  }
+  
+  protected int[] b()
+  {
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiat
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,23 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.qphone.base.util.BaseApplication;
+import java.util.List;
 
 public class uiw
-  implements Runnable
+  extends uit
 {
-  public uiw(ActivateFriendActivity paramActivateFriendActivity) {}
-  
-  public void run()
+  public uiw(ujx paramujx)
   {
-    int i = this.a.app.a().b();
-    Object localObject2 = this.a.app.getApp().getString(2131433297);
-    Object localObject1 = localObject2;
-    if (i > 0)
-    {
-      localObject2 = new StringBuilder().append((String)localObject2).append("(");
-      if (i <= 99) {
-        break label88;
-      }
-    }
-    label88:
-    for (localObject1 = "99+";; localObject1 = Integer.valueOf(i))
-    {
-      localObject1 = localObject1 + ")";
-      ActivateFriendActivity.a(this.a).setText((CharSequence)localObject1);
-      return;
-    }
+    super(paramujx.a);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = ("Q.qqstory.recommendAlbum.logic_OneDayAlbumFilter " + paramujx.c);
+    ujz localujz = new ujz();
+    localujz.a(paramujx);
+    a(localujz);
   }
+  
+  protected void c(List<uiz> paramList) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uiw
  * JD-Core Version:    0.7.0.1
  */

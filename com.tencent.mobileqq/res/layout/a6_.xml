@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/ddn" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <com.tencent.biz.pubaccount.readinjoy.view.KanDianRoundCornerTextView android:textSize="10.0sp" android:textColor="#ffffffff" android:layout_gravity="bottom|center|right" android:id="@id/bae" android:paddingLeft="2.5dip" android:paddingRight="3.0dip" android:layout_width="wrap_content" android:layout_height="15.0dip" android:layout_marginRight="4.0dip" android:layout_marginBottom="4.0dip" />
+        <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="right" android:id="@id/fo" android:background="@drawable/y5" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="12.0dip" android:drawableLeft="@drawable/dmh" android:drawablePadding="2.0dip" />
+    </FrameLayout>
+</merge>

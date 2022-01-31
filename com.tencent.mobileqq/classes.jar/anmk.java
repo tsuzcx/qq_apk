@@ -1,24 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.capture.music.humrecognition.HumUtils;
-import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.wordsegment.WordSegment.ILogCallback;
 
-public class anmk
-  implements View.OnClickListener
+final class anmk
+  implements WordSegment.ILogCallback
 {
-  public anmk(HummingActivity paramHummingActivity) {}
-  
-  public void onClick(View paramView)
+  public void OnLog(String paramString1, String paramString2)
   {
-    if (HumUtils.b()) {
-      return;
-    }
-    HummingActivity.a(this.a);
+    ArkAppCenter.c("ArkApp.Dict.WordSegment." + paramString1, String.format("%s", new Object[] { paramString2 }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmk
  * JD-Core Version:    0.7.0.1
  */

@@ -5,20 +5,20 @@ import android.os.FileObserver;
 public class MediaScannerFileObserver
   extends FileObserver
 {
-  private MediaScanner jdField_a_of_type_ComTencentMobileqqActivityPhotoMediaScanner;
-  private final String jdField_a_of_type_JavaLangString = "MediaScannerFileObserver";
-  private String b;
+  private final String TAG = "MediaScannerFileObserver";
+  private String mFolderPath = null;
+  private MediaScanner mMediaScanner = null;
   
   public MediaScannerFileObserver(MediaScanner paramMediaScanner, String paramString)
   {
     super(paramString);
-    this.b = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoMediaScanner = paramMediaScanner;
+    this.mFolderPath = paramString;
+    this.mMediaScanner = paramMediaScanner;
   }
   
   public void onEvent(int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoMediaScanner == null) {}
+    if (this.mMediaScanner == null) {}
     do
     {
       return;
@@ -28,12 +28,12 @@ public class MediaScannerFileObserver
         return;
       }
     } while ((paramString == null) || (!paramString.endsWith(".mp4")));
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoMediaScanner.a(paramInt, this.b, paramString);
+    this.mMediaScanner.handleFileObserverEvent(paramInt, this.mFolderPath, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.MediaScannerFileObserver
  * JD-Core Version:    0.7.0.1
  */

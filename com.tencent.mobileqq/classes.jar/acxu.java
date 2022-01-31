@@ -1,23 +1,23 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.widget.TipsBar;
 
 public class acxu
-  extends acxm
+  implements View.OnClickListener
 {
-  public acxu(OnlineFileSessionWorker paramOnlineFileSessionWorker)
-  {
-    super(paramOnlineFileSessionWorker);
-    this.a = true;
-    this.b = true;
-  }
+  public acxu(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  protected String a()
+  public void onClick(View paramView)
   {
-    return "StateEnd";
+    if ((this.a.a != null) && (this.a.a.getVisibility() == 0)) {
+      this.a.a.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acxu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,40 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipUploadRusult.StoryVideoExtRsp;
-import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipUploadRusult.UploadPicExtInfo;
-import com.tencent.mobileqq.arcard.ARRelationShipFileUpload.ARRelationShipFileUploadCallBack;
-import com.tencent.mobileqq.arcard.ARVideoPreviewActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-
-class aand
-  implements ARRelationShipFileUpload.ARRelationShipFileUploadCallBack
+public final class aand
 {
-  aand(aanc paramaanc) {}
+  private int a = -2147483648;
   
-  public void a(int paramInt)
+  public aand(int paramInt)
   {
-    this.a.a.a(2, paramInt);
+    this.a = paramInt;
   }
   
-  public void a(String paramString)
+  public int a()
   {
-    ARVideoPreviewActivity.a(this.a.a).post(new aane(this));
+    return this.a;
   }
   
-  public void a(String paramString, ARRelationShipUploadRusult.StoryVideoExtRsp paramStoryVideoExtRsp)
+  public String a()
   {
-    paramString = paramStoryVideoExtRsp.bytes_cdn_url.get().toStringUtf8();
-    this.a.a.a(2, paramString);
+    switch (a())
+    {
+    default: 
+      return null;
+    case 0: 
+      return "Success";
+    case 1: 
+      return "Internal Error";
+    case 2: 
+      return "Ad was re-loaded too frequently";
+    case 3: 
+      return "Network Error";
+    case 4: 
+      return "Invalid Request";
+    case 5: 
+      return "No Fill";
+    case 6: 
+      return "Server Error";
+    }
+    return "Display Format Mismatch";
   }
-  
-  public void a(String paramString, ARRelationShipUploadRusult.UploadPicExtInfo paramUploadPicExtInfo) {}
 }
 
 

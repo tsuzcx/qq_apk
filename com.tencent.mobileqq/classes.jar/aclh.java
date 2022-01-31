@@ -1,26 +1,27 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendAnim;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aclh
-  implements Animation.AnimationListener
+public final class aclh
+  implements DialogInterface.OnClickListener
 {
-  public aclh(Face2FaceAddFriendAnim paramFace2FaceAddFriendAnim, int paramInt, boolean paramBoolean) {}
+  public aclh(aclo paramaclo, acln paramacln) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendAnim.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendAnim.b;
-    ((Face2FaceAddFriendActivity)this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendAnim.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    if (this.jdField_a_of_type_Aclo.a) {
+      azqs.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "2", "", "", "");
+    }
+    if (this.jdField_a_of_type_Acln != null) {
+      this.jdField_a_of_type_Acln.a();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aclh
  * JD-Core Version:    0.7.0.1
  */

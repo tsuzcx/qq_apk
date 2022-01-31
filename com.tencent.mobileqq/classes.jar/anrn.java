@@ -1,56 +1,48 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.reactive.SimpleObserver;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicSave;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
-import dov.com.tencent.biz.qqstory.takevideo.publish.GenerateContext;
-import dov.com.tencent.biz.qqstory.takevideo.publish.GeneratePicArgs;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class anrn
-  extends SimpleObserver
+class anrn
 {
-  public anrn(EditPicSave paramEditPicSave) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d = anrm.a();
   
-  public void a(GenerateContext paramGenerateContext)
+  public anrn()
   {
-    super.onNext(paramGenerateContext);
-    this.a.a(40);
-    paramGenerateContext = paramGenerateContext.a.b;
-    SLog.b("EditPicSave", "picPath = " + paramGenerateContext);
-    if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity() != null)
+    this.jdField_a_of_type_JavaLangString = "android";
+  }
+  
+  public String toString()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      ThreadManager.post(new anro(this, paramGenerateContext), 5, this.a.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener, true);
-      this.a.jdField_a_of_type_Int = 40;
-      this.a.jdField_a_of_type_Boolean = false;
-      this.a.b = 10;
-      this.a.c();
+      localJSONObject.put("os", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("app", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("url", this.jdField_c_of_type_JavaLangString);
+      localJSONObject.put("result", this.jdField_a_of_type_Int);
+      localJSONObject.put("scene", this.jdField_b_of_type_Int);
+      localJSONObject.put("type", this.jdField_c_of_type_Int);
+      localJSONObject.put("ver", this.d);
+      return localJSONObject.toString();
     }
-  }
-  
-  public void onCancel()
-  {
-    super.onCancel();
-    SLog.d("EditPicSave", "saveVideo cancel !");
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
-    this.a.d();
-    QQToast.a(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(), "取消保存", 0).a();
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    SLog.e("EditPicSave", "saveVideo error ：" + paramError);
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
-    QQToast.a(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(), 1, "保存失败，请重试 : " + paramError, 0).a();
-    this.a.d();
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("ArkApp.ArkSecurityReporter", 1, "ArkSafe.report exception=", localJSONException);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anrn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,40 @@
 package com.tencent.mobileqq.msf.core;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+
 class z
-  implements Runnable
+  extends BroadcastReceiver
 {
-  z(x paramx, MsfCore paramMsfCore) {}
+  z(y paramy) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    x.a(this.b, this.a);
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("android.intent.action.SCREEN_ON")) {
+      y.a(this.a, true);
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (paramContext.equals("android.intent.action.SCREEN_OFF"))
+        {
+          y.a(this.a, false);
+          return;
+        }
+      } while (!paramContext.equals("android.net.wifi.SCAN_RESULTS"));
+      try
+      {
+        y.a(this.a);
+        return;
+      }
+      catch (Throwable paramContext) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("QQWiFiScanManager", 2, "onReceive, SCAN_RESULTS_AVAILABLE_ACTION", paramContext);
   }
 }
 

@@ -1,20 +1,17 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
 public class aisw
-  implements View.OnTouchListener
+  extends aira
 {
-  public aisw(TribeVideoPreviewFragment paramTribeVideoPreviewFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public aisw(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.getActivity().finish();
-    }
-    return true;
+    super(paramNewPhotoListActivity);
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
   }
 }
 

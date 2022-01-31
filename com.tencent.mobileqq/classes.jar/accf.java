@@ -1,35 +1,44 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.profile.like.PraiseManager;
-import com.tencent.mobileqq.profile.like.PraiseManager.OnPraiseSetCallback;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.qphone.base.util.QLog;
 
-class accf
-  implements PraiseManager.OnPraiseSetCallback
+public class accf
+  extends ndm
 {
-  accf(acbg paramacbg) {}
+  public accf(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void a(int paramInt1, int paramInt2, String paramString, Bundle paramBundle)
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    MessengerService localMessengerService = (MessengerService)this.a.a.get();
-    if (localMessengerService != null)
+    if ((this.a.isFinishing()) || (this.a.jdField_a_of_type_Boolean)) {}
+    do
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("id", paramInt2);
-      localBundle.putInt("code", paramInt1);
-      localBundle.putString("url", paramString);
-      paramBundle.putBundle("response", localBundle);
-      localMessengerService.a(paramBundle);
-      if ((paramInt1 == 0) && (MessengerService.e(localMessengerService) != null) && ((MessengerService.f(localMessengerService) instanceof QQAppInterface))) {
-        ((PraiseManager)((QQAppInterface)MessengerService.g(localMessengerService)).getManager(208)).a(paramInt2, true, "from_praise_mall");
+      return;
+      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
       }
-    }
+      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("qqBaseActivity", 2, "openIdObserver success");
+        }
+        if (!paramOpenID.openID.equals(AddFriendLogicActivity.jdField_a_of_type_JavaLangString))
+        {
+          AddFriendLogicActivity.a(this.a, true);
+          this.a.a();
+          return;
+        }
+        AddFriendLogicActivity.a(this.a);
+        return;
+      }
+      AddFriendLogicActivity.a(this.a);
+    } while (!QLog.isColorLevel());
+    QLog.d("qqBaseActivity", 2, "openIdObserver fail");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     accf
  * JD-Core Version:    0.7.0.1
  */

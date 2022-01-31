@@ -1,98 +1,144 @@
-import android.content.Context;
-import android.os.Message;
-import android.text.TextUtils;
+import WEISHI_USER_GROWTH.WEISHI.stMetaFeed;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.apollo.view.ApolloLinearLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import com.tencent.mobileqq.vas.VasExtensionObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.os.MqqHandler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import java.util.ArrayList;
+import java.util.List;
 
 public class yxw
-  extends VasExtensionObserver
+  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  public yxw(ApolloLinearLayout paramApolloLinearLayout) {}
+  private final BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private List<yxz> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private zbu jdField_a_of_type_Zbu;
+  private boolean jdField_a_of_type_Boolean;
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public yxw(BaseActivity paramBaseActivity)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {}
-    label587:
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+  }
+  
+  private void a(RecyclerView.ViewHolder paramViewHolder, WEISHI.stMetaFeed paramstMetaFeed, int paramInt)
+  {
+    paramViewHolder = (yxy)paramViewHolder;
+    paramstMetaFeed = paramstMetaFeed.material_thumburl.get();
+    a(paramViewHolder.a, paramstMetaFeed);
+  }
+  
+  private void a(ImageView paramImageView, String paramString)
+  {
+    paramString = xsj.a(paramString);
+    if (!paramString.equals(paramImageView.getTag())) {
+      xsm.a(paramImageView, paramString, 68, 90, 4, xsm.b, "QQStoryMemory");
+    }
+  }
+  
+  public void a(List<WEISHI.stMetaFeed> paramList, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    int i;
+    yxz localyxz;
+    int j;
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      i = 3;
+      if (paramBoolean)
+      {
+        i = 2;
+        localyxz = new yxz(null, 100);
+        this.jdField_a_of_type_JavaUtilList.add(localyxz);
+      }
+      j = paramList.size();
+      if (j >= i) {
+        break label133;
+      }
+      i = j;
+    }
+    label133:
     for (;;)
     {
-      return;
-      Object localObject = new ApolloActionData();
-      paramObject = (HashMap)paramObject;
-      String str = (String)paramObject.get("optFrom");
-      if ((!TextUtils.isEmpty(str)) && ("actionPanel".equals(str)))
+      j = 0;
+      while (j < i)
       {
-        int i = Integer.parseInt((String)paramObject.get("id"));
-        ((ApolloActionData)localObject).actionId = i;
-        localObject = this.a.a((ApolloActionData)localObject);
-        if (localObject != null)
-        {
-          ((ImageView)((View)localObject).findViewById(2131363188)).setVisibility(8);
-          ((View)localObject).setClickable(true);
-          if (this.a.b.incrementAndGet() == this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())
-          {
-            this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-            this.a.b.set(0);
-            this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqVasVasExtensionObserver);
-          }
-          if (paramBoolean)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ApolloLinearLayout", 2, "action auth success actionid=" + i);
-            }
-            paramObject.put("APOLLO_POP_TYPE", "toast");
-            paramObject.put("tips", this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext.getString(2131438185));
-            ((VasExtensionHandler)this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 128, "obtained action");
-          }
-          for (;;)
-          {
-            if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
-              break label587;
-            }
-            localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
-            if (localObject == null) {
-              break;
-            }
-            VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "activity_alert_show", ApolloUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, new String[] { "" + i, "0" });
-            localObject = ((MqqHandler)localObject).obtainMessage(45);
-            ((Message)localObject).obj = paramObject;
-            ((Message)localObject).sendToTarget();
-            return;
-            if (QLog.isColorLevel()) {
-              QLog.d("ApolloLinearLayout", 2, "action auth fail actionid=" + i);
-            }
-            paramObject.put("APOLLO_POP_TYPE", "dialog");
-            paramObject.put("feeType", String.valueOf(6));
-            paramObject.put("title", "活动专属动作");
-            if (TextUtils.isEmpty((String)paramObject.get("content"))) {
-              paramObject.put("content", "赶快去参加活动");
-            }
-            paramObject.put("rightString", "立即参加");
-            paramObject.put("isActionBack", "true");
-            paramObject.put("actionId", "" + i);
-          }
+        localyxz = new yxz((WEISHI.stMetaFeed)paramList.get(j), 101);
+        this.jdField_a_of_type_JavaUtilList.add(localyxz);
+        j += 1;
+      }
+      notifyDataSetChanged();
+      return;
+    }
+  }
+  
+  public void a(zbu paramzbu)
+  {
+    this.jdField_a_of_type_Zbu = paramzbu;
+  }
+  
+  public int getItemCount()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    {
+      if (this.jdField_a_of_type_JavaUtilList.size() > 3) {
+        return 3;
+      }
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    return ((yxz)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Int;
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    paramInt = paramViewHolder.getAdapterPosition();
+    yxz localyxz = (yxz)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    int i = localyxz.jdField_a_of_type_Int;
+    WEISHI.stMetaFeed localstMetaFeed = localyxz.jdField_a_of_type_WEISHI_USER_GROWTHWEISHI$stMetaFeed;
+    switch (i)
+    {
+    }
+    for (;;)
+    {
+      paramViewHolder.itemView.setOnClickListener(new yxx(this, localyxz));
+      return;
+      if (i == 101)
+      {
+        a(paramViewHolder, localstMetaFeed, paramInt);
+        continue;
+        if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
+          ((yxy)paramViewHolder).a.setImageResource(2130849697);
+        } else {
+          ((yxy)paramViewHolder).a.setImageResource(2130845480);
         }
       }
     }
   }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    LayoutInflater localLayoutInflater = LayoutInflater.from(paramViewGroup.getContext());
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    }
+    return new yxy(localLayoutInflater.inflate(2131561231, paramViewGroup, false));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yxw
  * JD-Core Version:    0.7.0.1
  */

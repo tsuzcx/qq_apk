@@ -1,20 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SubAccountMessageActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-public class drw
-  implements DialogInterface.OnClickListener
+class drw
+  implements Runnable
 {
-  public drw(SubAccountMessageActivity paramSubAccountMessageActivity) {}
+  drw(drv paramdrv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface = new Intent(this.a, SubLoginActivity.class);
-    this.a.startActivity(paramDialogInterface);
-    this.a.f();
-    this.a.finish();
+    if (this.a.jdField_a_of_type_AndroidViewView == null) {
+      return;
+    }
+    RelativeLayout.LayoutParams localLayoutParams;
+    switch (this.a.jdField_a_of_type_Int)
+    {
+    default: 
+      return;
+    case 0: 
+      localLayoutParams = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      localLayoutParams.leftMargin += (int)(this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a * 34.0F);
+      this.a.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+      this.a.jdField_a_of_type_AndroidViewView.setTag("right");
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+      return;
+      localLayoutParams = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      localLayoutParams.leftMargin -= (int)(this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a * 34.0F);
+      this.a.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+      this.a.jdField_a_of_type_AndroidViewView.setTag("left");
+      continue;
+      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130839715);
+      continue;
+      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130839714);
+      continue;
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      continue;
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    }
   }
 }
 

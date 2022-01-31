@@ -1,39 +1,31 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.item.PLNewsItemBuilder;
-import com.tencent.mobileqq.data.MessageForPLNews;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.database.MemoryInfoEntry;
 
 public class vcj
-  implements View.OnClickListener
 {
-  public vcj(PLNewsItemBuilder paramPLNewsItemBuilder, MessageForPLNews paramMessageForPLNews, String paramString) {}
+  public int a;
+  public long a;
+  public String a;
   
-  public void onClick(View paramView)
+  public vcj(vcg paramvcg, String paramString)
   {
-    paramView = (vck)paramView.getTag();
-    if (paramView == null) {
-      return;
+    this.jdField_a_of_type_JavaLangString = "";
+    paramvcg = ((uvn)uwa.a(19)).a(paramString);
+    if (paramvcg != null) {
+      a(paramvcg);
     }
-    paramView = new ProfileActivity.AllInOne(paramView.jdField_a_of_type_JavaLangString, 1);
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPLNewsItemBuilder.a, PersonalityLabelGalleryActivity.class);
-    localIntent.putExtra("personality_label_allinone", paramView);
-    localIntent.putExtra("fromType", 2);
-    localIntent.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqDataMessageForPLNews.frienduin);
-    localIntent.putExtra("nickname", this.jdField_a_of_type_JavaLangString);
-    if (!(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPLNewsItemBuilder.a instanceof Activity)) {
-      localIntent.addFlags(268435456);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPLNewsItemBuilder.a.startActivity(localIntent);
+  }
+  
+  public void a(@NonNull MemoryInfoEntry paramMemoryInfoEntry)
+  {
+    this.jdField_a_of_type_Long = paramMemoryInfoEntry.seq;
+    this.jdField_a_of_type_JavaLangString = paramMemoryInfoEntry.cookie;
+    this.jdField_a_of_type_Int = paramMemoryInfoEntry.timeZone;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vcj
  * JD-Core Version:    0.7.0.1
  */

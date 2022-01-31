@@ -1,16 +1,4 @@
-import com.tencent.mobileqq.activity.phone.PhoneMatchView;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-
-public class eqh
-  implements Runnable
-{
-  public eqh(PhoneMatchView paramPhoneMatchView) {}
-  
-  public void run()
-  {
-    this.a.a.e();
-  }
-}
+public class eqh {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar

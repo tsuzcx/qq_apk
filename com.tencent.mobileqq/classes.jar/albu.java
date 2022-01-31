@@ -1,35 +1,43 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.open.agent.FriendChooser;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class albu
-  implements View.OnTouchListener
+public final class albu
+  implements EIPCResultCallback
 {
-  float jdField_a_of_type_Float = 0.0F;
-  float b = 0.0F;
+  public albu(alkp paramalkp) {}
   
-  public albu(FriendChooser paramFriendChooser) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 0)
+    CmShowRenderView.a(true);
+    paramEIPCResult = paramEIPCResult.data;
+    if (paramEIPCResult == null)
     {
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.b = paramMotionEvent.getRawY();
+      this.a.a(1);
+      QLog.i("CmShow_CmShowRenderView", 1, "initSdk resp == null");
+      return;
     }
-    while ((i != 2) || ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float <= 10.0F) && (paramMotionEvent.getRawY() - this.b <= 10.0F))) {
-      return false;
+    aliu.au = paramEIPCResult.getString("sApolloBaseScriptId");
+    aknx.q = paramEIPCResult.getBoolean("sDisableCreateRenderThread");
+    aliu.av = aliu.a + "/script/" + aliu.au + "/";
+    if (alko.a()) {
+      this.a.a(0);
     }
-    this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    for (;;)
+    {
+      QLog.i("CmShow_CmShowRenderView", 1, "initSdk");
+      return;
+      alko.b(this.a);
+      alko.a(this.a);
+      alko.a("sdk");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     albu
  * JD-Core Version:    0.7.0.1
  */

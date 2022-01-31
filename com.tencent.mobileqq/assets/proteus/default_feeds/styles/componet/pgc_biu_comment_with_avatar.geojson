@@ -1,0 +1,50 @@
+{
+  "view_type": "container",
+  "view_id":"id_pgc_biu_comment_with_avatar",
+  "layout_type": "layout_relative",
+  "margin_top": "16",
+  "margin_left": "12",
+  "margin_bottom": "10",
+  "height": {
+    "type": "wrap_content"
+  },
+  "width": {
+    "type": "wrap_content"
+  },
+  "subviews": [
+    {
+      "view_type": "ReadInJoyCommentView",
+      "view_id": "id_article_comment",
+      "attributes": {
+        "setArticleModel:": "-1",
+        "setPreBlankNum:": "7",
+        "setPreAccountUin:": "$pre_account_uin"
+      },
+      "height": {
+        "type": "wrap_content"
+      },
+      "width": {
+        "type": "relative",
+        "value": "351"
+      }
+    },
+    {
+      "view_type": "ReadInJoyAvatarView",
+      "view_id": "id_info_avator",
+      "event_type": "cmd_avatar_click",
+      "margin_top": "-4",
+      "height": {
+        "type": "absolutely",
+        "value": "30"
+      },
+      "width": {
+        "type": "absolutely",
+        "value": "30"
+      },
+      "attributes": {
+        "setArticleModel:": "$article_model",
+        "loadAvatarByUin:": "$info_avator_uin"
+      }
+    }
+  ]
+}

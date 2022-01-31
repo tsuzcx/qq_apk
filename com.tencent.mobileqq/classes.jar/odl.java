@@ -1,25 +1,58 @@
-import com.tencent.biz.qqstory.takevideo.EditPicSave;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.EditVideoUi;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class odl
-  implements Runnable
+public class odl
 {
-  odl(odk paramodk) {}
-  
-  public void run()
+  public static JSONObject a(JSONObject paramJSONObject, AdData paramAdData)
   {
-    this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
-    this.a.a.jdField_a_of_type_Boolean = true;
-    this.a.a.a(100);
-    this.a.a.h();
-    QQToast.a(this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(), 2, "已保存到系统相册", 0).a();
+    try
+    {
+      paramJSONObject.put("style_ID", "ReadInjoy_ad_banner_pk_cell");
+      if (paramAdData.U != null) {
+        oee.a(paramJSONObject, paramAdData.a);
+      }
+      if (!TextUtils.isEmpty(paramAdData.j))
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("text", paramAdData.j);
+        paramJSONObject.put("id_tv_title", localObject);
+      }
+      if (!TextUtils.isEmpty(paramAdData.l))
+      {
+        localObject = swu.a(paramAdData.l, 4);
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("image_url", ((URL)localObject).toString());
+        paramJSONObject.put("id_ad_banner_bottom_imge", localJSONObject);
+      }
+      Object localObject = new JSONObject();
+      if (!TextUtils.isEmpty(paramAdData.L))
+      {
+        ((JSONObject)localObject).put("text", paramAdData.L);
+        paramJSONObject.put("id_ad_dislike_button", localObject);
+      }
+      if (!TextUtils.isEmpty(paramAdData.q))
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("text", paramAdData.q);
+        paramJSONObject.put("id_tv_author", localObject);
+      }
+    }
+    catch (JSONException paramAdData)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ReadInjoy_ad_banner_pk_cell", 2, "JSONException = " + paramAdData.getMessage());
+    }
+    return paramJSONObject;
+    return paramJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     odl
  * JD-Core Version:    0.7.0.1
  */

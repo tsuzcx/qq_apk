@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class mobileqq_mp$GetMessageConfigurationResponse
-  extends MessageMicro
+  extends MessageMicro<GetMessageConfigurationResponse>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16 }, new String[] { "ret_info", "type" }, new Object[] { null, Integer.valueOf(0) }, GetMessageConfigurationResponse.class);
   public mobileqq_mp.RetInfo ret_info = new mobileqq_mp.RetInfo();
@@ -14,7 +14,7 @@ public final class mobileqq_mp$GetMessageConfigurationResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mp.mobileqq_mp.GetMessageConfigurationResponse
  * JD-Core Version:    0.7.0.1
  */

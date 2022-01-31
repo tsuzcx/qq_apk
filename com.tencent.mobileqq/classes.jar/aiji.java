@@ -1,14 +1,13 @@
-import android.view.View;
-import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.RecentDynamicAvatarView;
+import com.tencent.widget.SingleLineTextView;
 
 public class aiji
 {
-  public View a;
-  public ViewGroup a;
-  public View b;
-  public ViewGroup b;
-  public View c;
-  public View d;
+  public DragTextView a;
+  public RecentDynamicAvatarView a;
+  public SingleLineTextView a;
+  public SingleLineTextView b;
 }
 
 

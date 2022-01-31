@@ -1,22 +1,27 @@
-import com.tencent.biz.qqstory.takevideo.doodle.layer.LineLayer;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class ojp
-  implements Runnable
+class ojp
+  implements ViewBase.OnClickListener
 {
-  public ojp(DoodleLayout paramDoodleLayout, LineLayer paramLineLayer, int paramInt, int[] paramArrayOfInt) {}
+  ojp(ojn paramojn) {}
   
-  public void run()
+  public void onClick(ViewBase paramViewBase)
   {
-    ((PersonalityOperator)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerLineLayer.a.a(102)).b(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ArrayOfInt[0] = 1;
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramViewBase.getEventAttachedData());
+    QLog.d("CommentProteusUtil", 2, "comment media url : " + paramViewBase.getEventAttachedData());
+    bcgq.a(this.a.jdField_a_of_type_Omg.a(), 0, localArrayList, true, "", 1888);
+    if (this.a.jdField_a_of_type_Omg.a() != null) {
+      this.a.jdField_a_of_type_Omg.a().f(this.a.jdField_a_of_type_Omt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ojp
  * JD-Core Version:    0.7.0.1
  */

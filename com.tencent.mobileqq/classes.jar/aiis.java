@@ -1,51 +1,104 @@
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.view.animation.DecelerateInterpolator;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout12;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class aiis
-  implements View.OnTouchListener
 {
-  public aiis(StructMsgItemLayout12 paramStructMsgItemLayout12, View paramView) {}
+  private static final aiis jdField_a_of_type_Aiis = new aiis();
+  private Map<String, List<WeakReference<aiip>>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  private int a(List<WeakReference<aiip>> paramList, aiip paramaiip)
   {
-    switch (paramMotionEvent.getAction())
+    if ((paramList != null) && (paramList.size() > 0))
     {
+      paramList = paramList.iterator();
+      int i = 0;
+      while (paramList.hasNext())
+      {
+        aiip localaiip = (aiip)((WeakReference)paramList.next()).get();
+        if ((localaiip != null) && (localaiip == paramaiip)) {
+          return i;
+        }
+        i += 1;
+      }
     }
+    return -1;
+  }
+  
+  public static aiis a()
+  {
+    return jdField_a_of_type_Aiis;
+  }
+  
+  public void a(int paramInt, String paramString, aiip paramaiip)
+  {
+    try
+    {
+      String str = abti.a(paramString, paramInt);
+      List localList = (List)this.jdField_a_of_type_JavaUtilMap.get(str);
+      paramString = localList;
+      if (localList == null)
+      {
+        paramString = new ArrayList(2);
+        this.jdField_a_of_type_JavaUtilMap.put(str, paramString);
+      }
+      if (a(paramString, paramaiip) < 0) {
+        paramString.add(new WeakReference(paramaiip));
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public boolean a(int paramInt, String paramString)
+  {
     for (;;)
     {
-      return false;
-      if (!this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout12.b)
+      try
       {
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout12.b = true;
-        ObjectAnimator localObjectAnimator = (ObjectAnimator)paramView.getTag(2131362147);
-        paramMotionEvent = localObjectAnimator;
-        if (localObjectAnimator == null)
+        paramString = abti.a(paramString, paramInt);
+        paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+        if ((paramString != null) && (paramString.size() > 0))
         {
-          if (QLog.isColorLevel()) {
-            QLog.i("StructMsgItemLayout12", 2, "animator is null");
+          paramString = paramString.iterator();
+          if (paramString.hasNext())
+          {
+            if ((aiip)((WeakReference)paramString.next()).get() == null) {
+              continue;
+            }
+            bool = true;
+            if (QLog.isColorLevel()) {
+              QLog.d(aike.a, 2, "hasOtherInstance -->" + bool);
+            }
+            return bool;
           }
-          paramMotionEvent = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidViewView, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scaleX", new float[] { 0.9F }), PropertyValuesHolder.ofFloat("scaleY", new float[] { 0.95F }) });
-          paramMotionEvent.setInterpolator(new DecelerateInterpolator(2.0F));
-          paramMotionEvent.setDuration(100L);
-          paramView.setTag(2131362147, paramMotionEvent);
         }
-        paramMotionEvent.start();
       }
-      return true;
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout12.a.onClick(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout12.b = false;
-      paramView = (ObjectAnimator)paramView.getTag(2131362147);
-      if (paramView != null) {
-        paramView.reverse();
-      }
+      finally {}
+      boolean bool = false;
     }
+  }
+  
+  public void b(int paramInt, String paramString, aiip paramaiip)
+  {
+    try
+    {
+      paramString = abti.a(paramString, paramInt);
+      paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      if ((paramString != null) && (paramString.size() > 0) && (paramaiip != null))
+      {
+        paramInt = a(paramString, paramaiip);
+        if (paramInt >= 0) {
+          paramString.remove(paramInt);
+        }
+      }
+      return;
+    }
+    finally {}
   }
 }
 

@@ -6,14 +6,14 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class CouponProto$MarkBusinessFavourUpdateResp
-  extends MessageMicro
+  extends MessageMicro<MarkBusinessFavourUpdateResp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8 }, new String[] { "retcode" }, new Object[] { Integer.valueOf(0) }, MarkBusinessFavourUpdateResp.class);
   public final PBUInt32Field retcode = PBField.initUInt32(0);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.protofile.coupon.CouponProto.MarkBusinessFavourUpdateResp
  * JD-Core Version:    0.7.0.1
  */

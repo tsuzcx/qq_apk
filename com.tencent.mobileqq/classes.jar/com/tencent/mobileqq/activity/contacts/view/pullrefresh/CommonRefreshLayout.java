@@ -1,7 +1,17 @@
 package com.tencent.mobileqq.activity.contacts.view.pullrefresh;
 
+import ahvp;
+import ahvq;
+import ahvr;
+import ahvs;
+import ahvt;
+import ahvv;
+import ahvx;
+import ahvy;
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
 import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -11,31 +21,31 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import com.tencent.mobileqq.R.styleable;
-import woq;
-import wor;
-import wos;
-import wot;
+import com.tencent.widget.ListView;
 
 public class CommonRefreshLayout
   extends ViewGroup
-  implements AutoScroller.ScrollerCallback
+  implements ahvp
 {
   private float jdField_a_of_type_Float = 0.5F;
   private int jdField_a_of_type_Int = 200;
+  private ahvr jdField_a_of_type_Ahvr;
+  ahvs jdField_a_of_type_Ahvs = new ahvq(this);
+  private ahvv jdField_a_of_type_Ahvv;
   private View jdField_a_of_type_AndroidViewView;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private AutoScroller jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller;
-  private OnRefreshListener jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshOnRefreshListener;
-  wos jdField_a_of_type_Wos = new wor(this);
+  ListView jdField_a_of_type_ComTencentWidgetListView;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int = 200;
-  private View jdField_b_of_type_AndroidViewView;
   private boolean jdField_b_of_type_Boolean;
   private float jdField_c_of_type_Float;
   private int jdField_c_of_type_Int = 300;
   private boolean jdField_c_of_type_Boolean = true;
   private float jdField_d_of_type_Float;
   private int jdField_d_of_type_Int = 500;
+  private boolean jdField_d_of_type_Boolean;
   private float jdField_e_of_type_Float;
   private int jdField_e_of_type_Int = 500;
   private float jdField_f_of_type_Float;
@@ -46,6 +56,7 @@ public class CommonRefreshLayout
   private int i;
   private int j;
   private int k = 0;
+  private int l;
   
   public CommonRefreshLayout(Context paramContext)
   {
@@ -68,10 +79,10 @@ public class CommonRefreshLayout
         int n = paramAttributeSet.getIndexCount();
         paramInt = m;
         if (paramInt >= n) {
-          break label310;
+          break label313;
         }
         m = paramAttributeSet.getIndex(paramInt);
-        if (m == 0) {
+        if (m == 10) {
           setRefreshEnabled(paramAttributeSet.getBoolean(m, true));
         } else if (m == 2) {
           this.jdField_a_of_type_Float = paramAttributeSet.getFloat(m, 0.5F);
@@ -81,42 +92,43 @@ public class CommonRefreshLayout
       {
         paramAttributeSet.recycle();
       }
-      if (m == 5)
+      if (m == 11)
       {
         this.jdField_c_of_type_Float = paramAttributeSet.getDimensionPixelOffset(m, 0);
       }
-      else if (m == 3)
+      else if (m == 12)
       {
         this.jdField_b_of_type_Float = paramAttributeSet.getDimensionPixelOffset(m, 0);
       }
-      else if (m == 7)
+      else if (m == 16)
       {
         this.jdField_a_of_type_Int = paramAttributeSet.getInt(m, 200);
       }
-      else if (m == 8)
+      else if (m == 14)
       {
         this.jdField_b_of_type_Int = paramAttributeSet.getInt(m, 200);
       }
-      else if (m == 9)
+      else if (m == 8)
       {
         setRefreshCompleteDelayDuration(paramAttributeSet.getInt(m, 300));
       }
-      else if (m == 10)
+      else if (m == 9)
       {
         this.jdField_d_of_type_Int = paramAttributeSet.getInt(m, 500);
       }
-      else if (m == 11)
+      else if (m == 1)
       {
         this.jdField_e_of_type_Int = paramAttributeSet.getInt(m, 500);
-        break label346;
-        label310:
+        break label362;
+        label313:
         paramAttributeSet.recycle();
         this.j = ViewConfiguration.get(paramContext).getScaledTouchSlop();
         this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller = new AutoScroller(this);
         this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller.a(this);
+        this.l = getResources().getDimensionPixelOffset(2131298665);
         return;
       }
-      label346:
+      label362:
       paramInt += 1;
     }
   }
@@ -185,43 +197,15 @@ public class CommonRefreshLayout
         f1 = this.jdField_c_of_type_Float - this.i;
       }
     }
-    if (wot.c(this.k)) {
-      this.jdField_a_of_type_Wos.a(this.i, false, false);
+    if (ahvt.c(this.k))
+    {
+      int m = this.i;
+      if (c()) {
+        m = this.i - ((int)this.jdField_b_of_type_Float - this.l);
+      }
+      this.jdField_a_of_type_Ahvs.a(m, false, false);
     }
     c(f1);
-  }
-  
-  private boolean b()
-  {
-    return (this.jdField_c_of_type_Boolean) && (!ViewUtils.a(this.jdField_b_of_type_AndroidViewView)) && (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Float > 0.0F);
-  }
-  
-  private void c()
-  {
-    int n = getPaddingLeft();
-    int m = getPaddingTop();
-    if (this.jdField_b_of_type_AndroidViewView == null) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_AndroidViewView != null)
-      {
-        localView = this.jdField_a_of_type_AndroidViewView;
-        localMarginLayoutParams = (ViewGroup.MarginLayoutParams)localView.getLayoutParams();
-        i1 = localMarginLayoutParams.leftMargin + n;
-        int i2 = localMarginLayoutParams.topMargin + m - this.jdField_g_of_type_Int + this.h;
-        localView.layout(i1, i2, localView.getMeasuredWidth() + i1, localView.getMeasuredHeight() + i2);
-      }
-    } while (this.jdField_b_of_type_AndroidViewView == null);
-    View localView = this.jdField_b_of_type_AndroidViewView;
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)localView.getLayoutParams();
-    int i1 = n + localMarginLayoutParams.leftMargin;
-    n = localMarginLayoutParams.topMargin + m + this.i;
-    m = n;
-    if (n < 0) {
-      m = 0;
-    }
-    localView.layout(i1, m, localView.getMeasuredWidth() + i1, localView.getMeasuredHeight() + m);
   }
   
   private void c(float paramFloat)
@@ -230,144 +214,226 @@ public class CommonRefreshLayout
       return;
     }
     this.i = ((int)(this.i + paramFloat));
-    if (wot.c(this.k)) {
+    if ((ahvt.c(this.k)) || (ahvt.f(this.k))) {
       this.h = this.i;
     }
-    d();
+    g();
     requestLayout();
     invalidate();
   }
   
-  private void d()
+  private boolean d()
   {
-    int m = getPaddingTop();
-    if (this.jdField_b_of_type_AndroidViewView == null) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_AndroidViewView != null)
-      {
-        localView = this.jdField_a_of_type_AndroidViewView;
-        localView.setTop(((ViewGroup.MarginLayoutParams)localView.getLayoutParams()).topMargin + m - this.jdField_g_of_type_Int + this.h);
-      }
-    } while (this.jdField_b_of_type_AndroidViewView == null);
-    View localView = this.jdField_b_of_type_AndroidViewView;
-    int n = ((ViewGroup.MarginLayoutParams)localView.getLayoutParams()).topMargin + m + this.i;
-    m = n;
-    if (n < 0) {
-      m = 0;
-    }
-    localView.setTop(m);
-  }
-  
-  private void e()
-  {
-    if (wot.b(this.k))
-    {
-      this.i = ((int)(this.jdField_b_of_type_Float + 0.5F));
-      this.h = this.i;
-      d();
-      requestLayout();
-      invalidate();
-    }
-    while (!wot.a(this.k)) {
-      return;
-    }
-    this.i = 0;
-    this.h = 0;
-    d();
-    requestLayout();
-    invalidate();
+    return (this.jdField_c_of_type_Boolean) && (!ahvy.a(this.jdField_a_of_type_AndroidViewView)) && (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Float > 0.0F);
   }
   
   private void f()
   {
-    if (wot.d(this.k)) {
-      h();
+    int n = getPaddingLeft();
+    int m = getPaddingTop();
+    if (this.jdField_a_of_type_AndroidViewView == null) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_AndroidViewViewGroup != null)
+      {
+        localObject = this.jdField_a_of_type_AndroidViewViewGroup;
+        localMarginLayoutParams = (ViewGroup.MarginLayoutParams)((View)localObject).getLayoutParams();
+        i1 = localMarginLayoutParams.leftMargin + n;
+        int i2 = localMarginLayoutParams.topMargin + m - this.jdField_g_of_type_Int + this.h;
+        ((View)localObject).layout(i1, i2, ((View)localObject).getMeasuredWidth() + i1, ((View)localObject).getMeasuredHeight() + i2);
+      }
+    } while (this.jdField_a_of_type_AndroidViewView == null);
+    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)((View)localObject).getLayoutParams();
+    int i1 = n + localMarginLayoutParams.leftMargin;
+    n = localMarginLayoutParams.topMargin + m + this.i;
+    m = n;
+    if (n < 0) {
+      m = 0;
+    }
+    ((View)localObject).layout(i1, m, ((View)localObject).getMeasuredWidth() + i1, ((View)localObject).getMeasuredHeight() + m);
+  }
+  
+  private void g()
+  {
+    int m = getPaddingTop();
+    if (this.jdField_a_of_type_AndroidViewView == null) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_AndroidViewViewGroup != null)
+      {
+        localObject = this.jdField_a_of_type_AndroidViewViewGroup;
+        ((View)localObject).setTop(((ViewGroup.MarginLayoutParams)((View)localObject).getLayoutParams()).topMargin + m - this.jdField_g_of_type_Int + this.h);
+      }
+    } while (this.jdField_a_of_type_AndroidViewView == null);
+    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    int n = ((ViewGroup.MarginLayoutParams)((View)localObject).getLayoutParams()).topMargin + m + this.i;
+    m = n;
+    if (n < 0) {
+      m = 0;
+    }
+    ((View)localObject).setTop(m);
+  }
+  
+  private void h()
+  {
+    if (ahvt.b(this.k))
+    {
+      this.i = ((int)(this.jdField_b_of_type_Float + 0.5F));
+      this.h = this.i;
+      g();
+      requestLayout();
+      invalidate();
     }
     do
     {
       return;
-      if (wot.e(this.k))
+      if (ahvt.a(this.k))
       {
-        this.jdField_a_of_type_Wos.b();
-        i();
+        this.i = 0;
+        this.h = 0;
+        g();
+        requestLayout();
+        invalidate();
         return;
       }
-    } while (!wot.b(this.k));
-    b();
+    } while (!ahvt.h(this.k));
+    this.i = ((int)(this.jdField_b_of_type_Float + 0.5F) - this.l);
+    this.h = this.i;
+    g();
+    requestLayout();
+    invalidate();
   }
   
-  private void g()
+  private void i()
+  {
+    if (ahvt.d(this.k)) {
+      if (c()) {
+        c();
+      }
+    }
+    do
+    {
+      return;
+      k();
+      return;
+      if (ahvt.e(this.k))
+      {
+        this.jdField_a_of_type_Ahvs.b();
+        l();
+        return;
+      }
+      if (ahvt.b(this.k))
+      {
+        b();
+        return;
+      }
+      if ((ahvt.j(this.k)) || (ahvt.k(this.k)))
+      {
+        c();
+        return;
+      }
+    } while ((!ahvt.l(this.k)) && (!ahvt.i(this.k)));
+    d();
+  }
+  
+  private void j()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller.a()) {
       this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller.a((int)(this.jdField_b_of_type_Float + 0.5F), this.jdField_e_of_type_Int);
     }
   }
   
-  private void h()
+  private void k()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller.a()) {
       this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller.a(-this.h, this.jdField_a_of_type_Int);
     }
   }
   
-  private void i()
+  private void l()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller.a()) {
       this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller.a(this.jdField_g_of_type_Int - this.h, this.jdField_b_of_type_Int);
     }
   }
   
+  public int a()
+  {
+    return this.jdField_g_of_type_Int;
+  }
+  
   public void a()
   {
-    if (wot.e(this.k))
+    if (ahvt.e(this.k))
     {
       a(-3);
-      e();
-      this.jdField_a_of_type_Wos.c();
+      h();
+      this.jdField_a_of_type_Ahvs.c();
     }
     do
     {
       return;
-      if (wot.b(this.k))
+      if (ahvt.b(this.k))
       {
-        a(0);
-        e();
-        this.jdField_a_of_type_Wos.d();
-        return;
+        if (c()) {
+          a(1);
+        }
+        for (;;)
+        {
+          h();
+          this.jdField_a_of_type_Ahvs.d();
+          return;
+          a(0);
+        }
       }
-      if (wot.d(this.k))
+      if (ahvt.d(this.k))
       {
         if (this.jdField_b_of_type_Boolean)
         {
           this.jdField_b_of_type_Boolean = false;
           a(-3);
-          e();
-          this.jdField_a_of_type_Wos.c();
+          h();
+          this.jdField_a_of_type_Ahvs.c();
           return;
         }
-        a(0);
-        e();
-        this.jdField_a_of_type_Wos.d();
+        if (c()) {
+          a(1);
+        }
+        for (;;)
+        {
+          h();
+          this.jdField_a_of_type_Ahvs.d();
+          return;
+          a(0);
+        }
+      }
+      if ((ahvt.j(this.k)) || (ahvt.k(this.k)))
+      {
+        a(1);
+        h();
         return;
       }
-    } while (!wot.a(this.k));
+    } while ((!ahvt.l(this.k)) && (!ahvt.i(this.k)));
+    a(0);
+    h();
   }
   
   public void a(float paramFloat)
   {
-    if (wot.d(this.k)) {
-      this.jdField_a_of_type_Wos.a(this.i, false, true);
+    if (ahvt.d(this.k)) {
+      this.jdField_a_of_type_Ahvs.a(this.i, false, true);
     }
     for (;;)
     {
       c(paramFloat);
       return;
-      if (wot.e(this.k)) {
-        this.jdField_a_of_type_Wos.a(this.i, false, true);
-      } else if (wot.b(this.k)) {
-        this.jdField_a_of_type_Wos.a(this.i, true, true);
+      if (ahvt.e(this.k)) {
+        this.jdField_a_of_type_Ahvs.a(this.i, false, true);
+      } else if (ahvt.b(this.k)) {
+        this.jdField_a_of_type_Ahvs.a(this.i, true, true);
       }
     }
   }
@@ -380,20 +446,63 @@ public class CommonRefreshLayout
   public void b()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller.a()) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller.a(-this.h, this.jdField_d_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller.a(-this.l, this.jdField_d_of_type_Int);
     }
+  }
+  
+  public boolean b()
+  {
+    return ahvt.c(this.k);
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller.a()) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller.a((int)(this.jdField_b_of_type_Float + 0.5F) - this.l - this.i, this.jdField_d_of_type_Int);
+    }
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_d_of_type_Boolean;
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller.a()) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller.a(-this.i, this.jdField_d_of_type_Int);
+    }
+  }
+  
+  protected void dispatchDraw(Canvas paramCanvas)
+  {
+    if (this.jdField_a_of_type_Ahvr != null) {
+      this.jdField_a_of_type_Ahvr.onFlingScrollHeader(this.k, -this.i);
+    }
+    super.dispatchDraw(paramCanvas);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    if (this.jdField_a_of_type_Ahvr != null) {
+      this.jdField_a_of_type_Ahvr.onTouchMoving(this, -this.i, paramMotionEvent);
+    }
     switch (paramMotionEvent.getAction())
     {
     }
     for (;;)
     {
       return super.dispatchTouchEvent(paramMotionEvent);
-      f();
+      i();
     }
+  }
+  
+  public void e()
+  {
+    a(0);
+    h();
+    this.jdField_a_of_type_Ahvs.d();
+    this.jdField_b_of_type_Float = 0.0F;
   }
   
   protected ViewGroup.LayoutParams generateDefaultLayoutParams()
@@ -422,83 +531,89 @@ public class CommonRefreshLayout
       if ((m <= 0) || (m >= 4)) {
         break;
       }
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131362382);
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131362381);
-    } while ((this.jdField_b_of_type_AndroidViewView == null) || (this.jdField_a_of_type_AndroidViewView == null) || (!(this.jdField_a_of_type_AndroidViewView instanceof SwipeTrigger)));
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131377308));
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131377309);
+    } while ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_AndroidViewViewGroup == null) || (!(this.jdField_a_of_type_AndroidViewViewGroup instanceof ahvx)));
+    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
     return;
     throw new IllegalStateException("Children num must equal or less than 3");
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool = true;
-    int i1 = 0;
-    switch (MotionEventCompat.getActionMasked(paramMotionEvent))
+    boolean bool2 = true;
+    int i2 = 0;
+    int n = MotionEventCompat.getActionMasked(paramMotionEvent);
+    if (this.jdField_a_of_type_ComTencentWidgetListView != null) {}
+    for (int m = this.jdField_a_of_type_ComTencentWidgetListView.getListViewScrollY();; m = 0)
     {
-    }
-    for (;;)
-    {
-      bool = super.onInterceptTouchEvent(paramMotionEvent);
-      label47:
-      float f1;
-      do
+      switch (n)
       {
-        return bool;
+      }
+      for (;;)
+      {
+        boolean bool1 = super.onInterceptTouchEvent(paramMotionEvent);
+        label67:
+        return bool1;
         this.jdField_f_of_type_Int = MotionEventCompat.getPointerId(paramMotionEvent, 0);
-        f1 = b(paramMotionEvent, this.jdField_f_of_type_Int);
+        float f1 = b(paramMotionEvent, this.jdField_f_of_type_Int);
         this.jdField_d_of_type_Float = f1;
         this.jdField_f_of_type_Float = f1;
         f1 = a(paramMotionEvent, this.jdField_f_of_type_Int);
         this.jdField_e_of_type_Float = f1;
         this.jdField_g_of_type_Float = f1;
-        if ((wot.d(this.k)) || (wot.e(this.k))) {
+        if ((ahvt.d(this.k)) || (ahvt.e(this.k))) {
           this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller.a();
         }
-      } while (wot.d(this.k));
-      if (wot.e(this.k))
-      {
-        return true;
-        if (this.jdField_f_of_type_Int == -1) {
-          return false;
-        }
-        f1 = b(paramMotionEvent, this.jdField_f_of_type_Int);
-        float f2 = a(paramMotionEvent, this.jdField_f_of_type_Int);
-        float f3 = this.jdField_d_of_type_Float;
-        float f4 = f2 - this.jdField_e_of_type_Float;
-        this.jdField_f_of_type_Float = f1;
-        this.jdField_g_of_type_Float = f2;
-        if ((Math.abs(f1 - f3) < Math.abs(f4)) && (Math.abs(f4) > this.j)) {}
-        for (int m = 1;; m = 0)
+        if (((ahvt.d(this.k)) || (ahvt.e(this.k))) && (m == 0))
         {
-          int n = i1;
-          if (f4 > 0.0F)
-          {
-            n = i1;
-            if (b()) {
-              n = 1;
-            }
-          }
-          if (m == 0) {
-            break;
-          }
-          if (n != 0) {
-            break label47;
-          }
-          if (!wot.b(this.k)) {
-            break;
-          }
           return true;
+          if (this.jdField_f_of_type_Int == -1) {
+            return false;
+          }
+          f1 = b(paramMotionEvent, this.jdField_f_of_type_Int);
+          float f2 = a(paramMotionEvent, this.jdField_f_of_type_Int);
+          float f3 = this.jdField_d_of_type_Float;
+          float f4 = f2 - this.jdField_e_of_type_Float;
+          this.jdField_f_of_type_Float = f1;
+          this.jdField_g_of_type_Float = f2;
+          if ((Math.abs(f1 - f3) < Math.abs(f4)) && (Math.abs(f4) > this.j)) {}
+          for (n = 1;; n = 0)
+          {
+            int i1 = i2;
+            if (f4 > 0.0F)
+            {
+              i1 = i2;
+              if (d()) {
+                i1 = 1;
+              }
+            }
+            if ((m != 0) || (n == 0)) {
+              break;
+            }
+            bool1 = bool2;
+            if (i1 != 0) {
+              break label67;
+            }
+            bool1 = bool2;
+            if (ahvt.b(this.k)) {
+              break label67;
+            }
+            if (!ahvt.f(this.k)) {
+              break;
+            }
+            return true;
+          }
+          this.jdField_f_of_type_Int = -1;
         }
-        this.jdField_f_of_type_Int = -1;
       }
     }
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    c();
-    if (this.jdField_a_of_type_AndroidViewView != null) {}
+    f();
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {}
     for (paramBoolean = true;; paramBoolean = false)
     {
       this.jdField_a_of_type_Boolean = paramBoolean;
@@ -509,20 +624,20 @@ public class CommonRefreshLayout
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null)
     {
-      View localView = this.jdField_a_of_type_AndroidViewView;
-      measureChildWithMargins(localView, paramInt1, 0, paramInt2, 0);
-      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)localView.getLayoutParams();
-      int m = localView.getMeasuredHeight();
+      ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
+      measureChildWithMargins(localViewGroup, paramInt1, 0, paramInt2, 0);
+      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)localViewGroup.getLayoutParams();
+      int m = localViewGroup.getMeasuredHeight();
       int n = localMarginLayoutParams.topMargin;
       this.jdField_g_of_type_Int = (localMarginLayoutParams.bottomMargin + (m + n));
       if (this.jdField_b_of_type_Float < this.jdField_g_of_type_Int) {
         this.jdField_b_of_type_Float = this.jdField_g_of_type_Int;
       }
     }
-    if (this.jdField_b_of_type_AndroidViewView != null) {
-      measureChildWithMargins(this.jdField_b_of_type_AndroidViewView, paramInt1, 0, paramInt2, 0);
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      measureChildWithMargins(this.jdField_a_of_type_AndroidViewView, paramInt1, 0, paramInt2, 0);
     }
   }
   
@@ -536,6 +651,7 @@ public class CommonRefreshLayout
     {
       bool = super.onTouchEvent(paramMotionEvent);
       float f4;
+      label252:
       do
       {
         return bool;
@@ -550,25 +666,64 @@ public class CommonRefreshLayout
         if ((Math.abs(f3) >= Math.abs(f4)) && (Math.abs(f3) > this.j)) {
           return false;
         }
-        if ((wot.a(this.k)) && (f4 > 0.0F) && (b()))
+        if ((ahvt.a(this.k)) && (this.jdField_a_of_type_Ahvr != null) && (f4 > 0.0F))
         {
-          this.jdField_a_of_type_Wos.a();
+          a(3);
+          if (this.jdField_a_of_type_AndroidViewViewGroup.getVisibility() != 0) {
+            this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+          }
+        }
+        if (ahvt.g(this.k))
+        {
+          if (f4 >= 0.0F) {
+            break;
+          }
+          a(2);
+          b(f4);
+        }
+        if ((ahvt.h(this.k)) || (ahvt.i(this.k)))
+        {
+          if (f4 >= 0.0F) {
+            break label419;
+          }
+          a(2);
+          b(f4);
+        }
+        if (((ahvt.a(this.k)) || (ahvt.h(this.k))) && (f4 > 0.0F) && (d()))
+        {
+          this.jdField_a_of_type_Ahvs.a();
           a(-1);
         }
-      } while (!wot.c(this.k));
-      if ((wot.d(this.k)) || (wot.e(this.k)))
-      {
-        if (this.i < this.jdField_b_of_type_Float) {
-          break label238;
+      } while (!ahvt.c(this.k));
+      if ((ahvt.d(this.k)) || (ahvt.e(this.k))) {
+        if (this.i >= this.jdField_b_of_type_Float) {
+          a(-2);
         }
-        a(-2);
       }
       for (;;)
       {
         b(f4);
         return true;
-        label238:
+        if (this.i >= this.jdField_b_of_type_Float)
+        {
+          a(4);
+          break;
+        }
+        if (this.i >= (this.jdField_b_of_type_Float - this.l) / 2.0F)
+        {
+          a(5);
+          break;
+        }
+        a(3);
+        break;
+        label419:
+        a(1);
+        break label252;
         a(-1);
+        continue;
+        if ((f4 < 0.0F) && (this.jdField_a_of_type_Ahvr != null)) {
+          a(2);
+        }
       }
       int m = MotionEventCompat.getPointerId(paramMotionEvent, MotionEventCompat.getActionIndex(paramMotionEvent));
       if (m != -1) {
@@ -588,9 +743,14 @@ public class CommonRefreshLayout
     }
   }
   
-  public void setOnRefreshListener(OnRefreshListener paramOnRefreshListener)
+  public void setMiniAppScrollListener(ahvr paramahvr)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshOnRefreshListener = paramOnRefreshListener;
+    this.jdField_a_of_type_Ahvr = paramahvr;
+  }
+  
+  public void setOnRefreshListener(ahvv paramahvv)
+  {
+    this.jdField_a_of_type_Ahvv = paramahvv;
   }
   
   public void setRefreshCompleteDelayDuration(int paramInt)
@@ -605,7 +765,7 @@ public class CommonRefreshLayout
   
   public void setRefreshing(boolean paramBoolean)
   {
-    if ((!a()) || (this.jdField_a_of_type_AndroidViewView == null)) {}
+    if ((!a()) || (this.jdField_a_of_type_AndroidViewViewGroup == null)) {}
     do
     {
       do
@@ -615,18 +775,28 @@ public class CommonRefreshLayout
         if (!paramBoolean) {
           break;
         }
-      } while (!wot.a(this.k));
+      } while (!ahvt.a(this.k));
       a(-1);
-      g();
+      j();
       return;
-    } while (!wot.b(this.k));
-    this.jdField_a_of_type_Wos.d();
-    postDelayed(new woq(this), this.jdField_c_of_type_Int);
+    } while (!ahvt.b(this.k));
+    this.jdField_a_of_type_Ahvs.d();
+    postDelayed(new CommonRefreshLayout.1(this), this.jdField_c_of_type_Int);
+  }
+  
+  public void setShowMiniAppPanel(boolean paramBoolean)
+  {
+    this.jdField_d_of_type_Boolean = paramBoolean;
+  }
+  
+  public void setTargetListView(ListView paramListView)
+  {
+    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout
  * JD-Core Version:    0.7.0.1
  */

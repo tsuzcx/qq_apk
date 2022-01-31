@@ -1,39 +1,41 @@
-import com.tencent.biz.qqstory.network.handler.ReportEvilToXinanHandler;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.lebasearch.Utils;
 
-public class nfv
-  implements Runnable
+public final class nfv
+  implements DialogInterface.OnClickListener
 {
-  public nfv(ReportEvilToXinanHandler paramReportEvilToXinanHandler, String paramString) {}
+  public nfv(int paramInt, alpg paramalpg, Context paramContext, yqz paramyqz, long paramLong) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
+    switch (paramInt)
     {
-      i = new JSONObject(this.jdField_a_of_type_JavaLangString).getInt("rtn_code");
-      if (i == 0)
+    default: 
+      return;
+    case 1: 
+      if (this.jdField_a_of_type_Int == 1)
       {
-        QQToast.a(BaseApplication.getContext(), "举报成功，客服人员将尽快处理", 0).a();
+        this.jdField_a_of_type_Alpg.onUpdate(17, false, null);
+        paramDialogInterface.dismiss();
         return;
       }
+      Utils.sendPluginSetMessage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Yqz, this.jdField_a_of_type_Alpg, this.jdField_a_of_type_Long, false);
+      return;
     }
-    catch (JSONException localJSONException)
+    if (this.jdField_a_of_type_Int == 1)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-        int i = -1;
-      }
-      QQToast.a(BaseApplication.getContext(), "举报失败，请稍后重试", 0).a();
+      Utils.sendPluginSetMessage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Yqz, this.jdField_a_of_type_Alpg, this.jdField_a_of_type_Long, true);
+      return;
     }
+    this.jdField_a_of_type_Alpg.onUpdate(17, false, null);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nfv
  * JD-Core Version:    0.7.0.1
  */

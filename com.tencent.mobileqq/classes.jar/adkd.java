@@ -1,23 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class adkd
   implements DialogInterface.OnClickListener
 {
-  public adkd(ForwardBaseOption paramForwardBaseOption) {}
+  public adkd(NotificationActivity paramNotificationActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case -2: 
-      this.a.k();
-      return;
-    }
-    this.a.l();
+    this.a.finish();
   }
 }
 

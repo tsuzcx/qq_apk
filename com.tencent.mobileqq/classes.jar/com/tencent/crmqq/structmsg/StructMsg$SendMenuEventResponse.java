@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class StructMsg$SendMenuEventResponse
-  extends MessageMicro
+  extends MessageMicro<SendMenuEventResponse>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16 }, new String[] { "ret_info", "seqno" }, new Object[] { null, Integer.valueOf(0) }, SendMenuEventResponse.class);
   public StructMsg.RetInfo ret_info = new StructMsg.RetInfo();
@@ -14,7 +14,7 @@ public final class StructMsg$SendMenuEventResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.crmqq.structmsg.StructMsg.SendMenuEventResponse
  * JD-Core Version:    0.7.0.1
  */

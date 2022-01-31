@@ -1,25 +1,24 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.QQWalletMsgItemBuilder;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletRedPkgUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class vdy
-  implements View.OnClickListener
+  implements urr<vdz, vea>
 {
-  public vdy(QQWalletMsgItemBuilder paramQQWalletMsgItemBuilder) {}
-  
-  public void onClick(View paramView)
+  public void a(String paramString)
   {
-    paramView = (String)paramView.getTag();
-    if (!TextUtils.isEmpty(paramView)) {
-      QWalletRedPkgUtils.b(this.a.a, paramView);
-    }
+    paramString = new vdz(this, paramString);
+    urp.a().a(paramString, this);
+  }
+  
+  public void a(@NonNull vdz paramvdz, @Nullable vea paramvea, @NonNull ErrorMessage paramErrorMessage)
+  {
+    new veb(paramErrorMessage, paramvdz.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vdy
  * JD-Core Version:    0.7.0.1
  */

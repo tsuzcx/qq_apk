@@ -9,13 +9,13 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 
 public final class ilive_feeds_source$CollectFeedsDataReq
-  extends MessageMicro
+  extends MessageMicro<CollectFeedsDataReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBEnumField client_type = PBField.initEnum(1);
   public final PBBytesField feeds_id = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBEnumField feeds_source = PBField.initEnum(1);
-  public final PBRepeatField feeds_topic = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> feeds_topic = PBField.initRepeat(PBBytesField.__repeatHelper__);
   
   static
   {
@@ -26,7 +26,7 @@ public final class ilive_feeds_source$CollectFeedsDataReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_source.CollectFeedsDataReq
  * JD-Core Version:    0.7.0.1
  */

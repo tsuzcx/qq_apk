@@ -1,100 +1,43 @@
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.open.base.http.AvatarUpdateService;
-import com.tencent.open.base.http.AvatarUpdateService.AvatarUpdateTask;
-import com.tencent.open.base.http.HttpImageDownloadAsyncTask;
-import com.tencent.open.base.http.HttpImageDownloadAsyncTask.TaskCompleteCallback;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.util.HashMap;
-import org.apache.http.HttpResponse;
-import org.apache.http.ParseException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
-public class alfm
-  implements Runnable
+class alfm
+  implements akqj
 {
-  public alfm(AvatarUpdateService paramAvatarUpdateService, String paramString1, String paramString2, String paramString3, String paramString4, Context paramContext, HttpImageDownloadAsyncTask.TaskCompleteCallback paramTaskCompleteCallback) {}
+  alfm(alfe paramalfe, int paramInt, String paramString, AppInterface paramAppInterface, File paramFile) {}
   
-  public void run()
+  public void a(boolean paramBoolean, akqi paramakqi)
   {
-    Object localObject1 = new DefaultHttpClient();
-    label346:
-    try
+    paramakqi = akqa.a().a(8, this.jdField_a_of_type_Int);
+    Object localObject = new StringBuilder().append("downloadApolloRes onCheckFinish success:").append(paramBoolean).append(" downloadItem:");
+    if (paramakqi == null) {}
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      ??? = new HttpGet(MsfSdkUtils.insertMtype("yingyongbao", this.jdField_a_of_type_JavaLangString));
-      ((HttpGet)???).addHeader("Cookie", this.b);
-      localObject1 = EntityUtils.toString(((HttpClient)localObject1).execute((HttpUriRequest)???).getEntity(), "utf-8");
-      if (TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("AvatarUpdateService", 1, "-->updateAvatar--jsonp is empty");
-        }
+      QLog.i("ApolloPluginRscLoader", 1, paramBoolean);
+      localObject = alfe.a(this.jdField_a_of_type_JavaLangString);
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        break;
       }
-      else
-      {
-        i = ((String)localObject1).indexOf('{');
-        j = ((String)localObject1).lastIndexOf('}');
-        if ((i < 0) || (i > j) || (j < 0))
-        {
-          if (!QLog.isColorLevel()) {
-            break label346;
-          }
-          QLog.e("AvatarUpdateService", 1, "-->updateAvatar--can not find json string");
-        }
-      }
+      QLog.e("ApolloPluginRscLoader", 1, "getApolloRsc error callbackId is null resourceUrl:" + this.jdField_a_of_type_JavaLangString);
+      return;
     }
-    catch (JSONException localJSONException)
+    if (paramakqi == null)
     {
-      int i;
-      int j;
-      if (QLog.isColorLevel())
-      {
-        QLog.e("AvatarUpdateService", 1, "-->updateAvatar--parse json failed");
-        return;
-        String str = new JSONObject(localJSONException.substring(i, j + 1)).getString(this.c);
-        if (TextUtils.isEmpty(str))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("AvatarUpdateService", 1, "-->updateAvatar--image url is empty");
-          }
-        }
-        else
-        {
-          ??? = this.jdField_a_of_type_ComTencentOpenBaseHttpAvatarUpdateService.jdField_a_of_type_AndroidContentSharedPreferences.getString(this.c, "");
-          if ((!FileUtil.a(this.d)) || (!str.equals(???)))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("AvatarUpdateService", 2, "-->updateAvatar--avatar not exist or need update, will download new avatar");
-            }
-            synchronized (this.jdField_a_of_type_ComTencentOpenBaseHttpAvatarUpdateService.jdField_a_of_type_JavaUtilHashMap)
-            {
-              if (!this.jdField_a_of_type_ComTencentOpenBaseHttpAvatarUpdateService.jdField_a_of_type_JavaUtilHashMap.containsKey(this.c))
-              {
-                this.jdField_a_of_type_ComTencentOpenBaseHttpAvatarUpdateService.jdField_a_of_type_JavaUtilHashMap.put(this.c, new AvatarUpdateService.AvatarUpdateTask(this.jdField_a_of_type_ComTencentOpenBaseHttpAvatarUpdateService, this.jdField_a_of_type_AndroidContentContext, this.c, this.d, str, this.jdField_a_of_type_ComTencentOpenBaseHttpHttpImageDownloadAsyncTask$TaskCompleteCallback));
-                new HttpImageDownloadAsyncTask(this.c, str, null, "GET", this.jdField_a_of_type_ComTencentOpenBaseHttpAvatarUpdateService).execute(new Void[0]);
-              }
-              return;
-            }
-          }
-        }
-      }
+      this.jdField_a_of_type_Alfe.a((String)localObject, 2, this.jdField_a_of_type_Int + " json里无此id");
+      return;
     }
-    catch (ParseException localParseException) {}catch (IndexOutOfBoundsException localIndexOutOfBoundsException) {}catch (IOException localIOException) {}
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramakqi);
+    akqc.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "", new alfn(this, (String)localObject), localArrayList, false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alfm
  * JD-Core Version:    0.7.0.1
  */

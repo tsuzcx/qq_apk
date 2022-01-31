@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import org.json.JSONObject;
 
-class yas
-  implements Runnable
+public abstract interface yas
 {
-  yas(yar paramyar) {}
+  public abstract JSONObject a();
   
-  public void run()
-  {
-    if (!this.a.a.isFinishing()) {
-      this.a.a.finish();
-    }
-  }
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yas
  * JD-Core Version:    0.7.0.1
  */

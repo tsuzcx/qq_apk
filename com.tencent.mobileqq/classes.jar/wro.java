@@ -1,37 +1,63 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
-import com.tencent.mobileqq.activity.messagesearch.SearchHistoryAdapter;
+import android.widget.ImageView;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.ListIterator;
+import java.util.Map.Entry;
+import java.util.WeakHashMap;
 
 public class wro
-  implements TextWatcher
 {
-  public wro(MessageSearchDialog paramMessageSearchDialog) {}
+  private LinkedHashMap<xve, WeakReference<ImageView>> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap(10, 0.75F, true);
+  private WeakHashMap<ImageView, xve> jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
   
-  public void afterTextChanged(Editable paramEditable)
+  public int a()
   {
-    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    if (this.a.b) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter.a(paramEditable);
-    }
-    this.a.b = true;
-    if (paramEditable.length() == 0)
-    {
-      this.a.findViewById(2131368323).setVisibility(8);
-      return;
-    }
-    this.a.findViewById(2131368323).setVisibility(0);
+    return this.jdField_a_of_type_JavaUtilLinkedHashMap.size();
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public ListIterator<Map.Entry<xve, WeakReference<ImageView>>> a()
+  {
+    return new ArrayList(this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet()).listIterator(this.jdField_a_of_type_JavaUtilLinkedHashMap.size());
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public xve a(ImageView paramImageView)
+  {
+    paramImageView = (xve)this.jdField_a_of_type_JavaUtilWeakHashMap.remove(paramImageView);
+    if (paramImageView != null) {
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramImageView);
+    }
+    return paramImageView;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilWeakHashMap.clear();
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+  }
+  
+  public void a(ImageView paramImageView, xve paramxve)
+  {
+    xve localxve = (xve)this.jdField_a_of_type_JavaUtilWeakHashMap.put(paramImageView, paramxve);
+    if (localxve != null) {
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(localxve);
+    }
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramxve, new WeakReference(paramImageView));
+  }
+  
+  public void a(xve paramxve)
+  {
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramxve);
+  }
+  
+  public xve b(ImageView paramImageView)
+  {
+    return (xve)this.jdField_a_of_type_JavaUtilWeakHashMap.get(paramImageView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wro
  * JD-Core Version:    0.7.0.1
  */

@@ -4,15 +4,15 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-final class a
+class a
   implements View.OnClickListener
 {
   a(AbnormalLoginActivity paramAbnormalLoginActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
     paramView = new Intent(this.a, ModifyQQPwdActivity.class);
-    pv.a().a(this.a, paramView, pv.b);
+    pg.a().a(this.a, paramView, pg.b);
   }
 }
 

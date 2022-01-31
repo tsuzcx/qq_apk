@@ -1,15 +1,16 @@
-import android.os.Build.VERSION;
-import android.view.View;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
 
-public final class ajza
-  implements Runnable
+public class ajza
+  extends Handler
 {
-  public ajza(View paramView) {}
+  public ajza(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (Build.VERSION.SDK_INT >= 14) {
-      this.a.sendAccessibilityEvent(128);
+    switch (paramMessage.what)
+    {
     }
   }
 }

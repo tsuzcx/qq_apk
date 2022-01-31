@@ -1,24 +1,73 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.voip.VoipAddressBookView;
-import com.tencent.mobileqq.activity.voip.VoipPhoneNumber;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.List;
+import QQService.EVIPSPEC;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.utils.ContactUtils;
+import java.util.Comparator;
 
 public class exv
-  implements DialogInterface.OnClickListener
+  implements Comparator
 {
-  public exv(VoipAddressBookView paramVoipAddressBookView, PhoneContact paramPhoneContact) {}
+  public static final int a = -1;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(ext paramext)
   {
-    VoipAddressBookView.a(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipAddressBookView, (VoipPhoneNumber)this.jdField_a_of_type_ComTencentMobileqqDataPhoneContact.allPhoneNumber.get(paramInt));
-    paramDialogInterface.dismiss();
+    if (paramext.jdField_a_of_type_Int != -1) {
+      return paramext.jdField_a_of_type_Int;
+    }
+    Friends localFriends = paramext.jdField_a_of_type_ComTencentMobileqqDataFriends;
+    int k = ContactUtils.a(localFriends.status, localFriends.detalStatusFlag, localFriends.isMqqOnLine, localFriends.sqqOnLineState, localFriends.iTermType);
+    int j;
+    int i;
+    if ((k != 6) && (k != 0))
+    {
+      j = 65536;
+      if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
+        break label148;
+      }
+      i = 4096;
+      switch (k)
+      {
+      case 5: 
+      case 6: 
+      default: 
+        label79:
+        i = j | i | (int)localFriends.getLastLoginType();
+      }
+    }
+    for (;;)
+    {
+      paramext.jdField_a_of_type_Int = i;
+      return i;
+      j = 131072;
+      break;
+      label148:
+      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))
+      {
+        i = 8192;
+        break label79;
+      }
+      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ))
+      {
+        i = 12288;
+        break label79;
+      }
+      i = 16384;
+      break label79;
+      i = j | i | 0x1;
+      continue;
+      i = j | i | 0x2;
+      continue;
+      i = j | i | 0x3;
+    }
+  }
+  
+  public int a(ext paramext1, ext paramext2)
+  {
+    return a(paramext1) - a(paramext2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     exv
  * JD-Core Version:    0.7.0.1
  */

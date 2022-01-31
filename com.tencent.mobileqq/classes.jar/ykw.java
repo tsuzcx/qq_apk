@@ -1,27 +1,36 @@
-import com.tencent.mobileqq.apollo.ApolloPushManager;
-import com.tencent.mobileqq.apollo.ApolloPushManager.OnActionPushListener;
-import com.tencent.mobileqq.data.ApolloActionPush;
-import mqq.util.WeakReference;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.FrameLayout;
 
-public class ykw
-  implements Runnable
+class ykw
+  implements Animator.AnimatorListener
 {
-  public ykw(ApolloPushManager paramApolloPushManager, int paramInt, ApolloActionPush paramApolloActionPush) {}
+  ykw(ykt paramykt) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (ApolloPushManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloPushManager) != null)
+    ykt.a(this.a, null);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (ykt.a(this.a) != null) {
+      ykt.a(this.a).a(3);
+    }
+    if (ykt.a(this.a) != null)
     {
-      ApolloPushManager.OnActionPushListener localOnActionPushListener = (ApolloPushManager.OnActionPushListener)ApolloPushManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloPushManager).get();
-      if (localOnActionPushListener != null) {
-        localOnActionPushListener.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPush);
-      }
+      ykt.a(this.a).setAlpha(0.0F);
+      ykt.a(this.a, null);
     }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ykw
  * JD-Core Version:    0.7.0.1
  */

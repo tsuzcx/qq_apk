@@ -1,19 +1,40 @@
-import com.tencent.mobileqq.nearby.now.send.uploader.ImageUploader;
-import com.tencent.mobileqq.nearby.now.send.uploader.ImageUploader.OnResultListener;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils.VoicePrintView;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class aevv
-  implements Runnable
+  extends AsyncTask<String, Void, Bitmap>
 {
-  public aevv(ImageUploader paramImageUploader, ImageUploader.OnResultListener paramOnResultListener, int paramInt, String paramString) {}
+  public aevv(VoicePrintUtils.VoicePrintView paramVoicePrintView) {}
   
-  public void run()
+  protected Bitmap a(String... paramVarArgs)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageUploader$OnResultListener.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    paramVarArgs = paramVarArgs[0];
+    if (BaseApplicationImpl.sImageCache.get(paramVarArgs) == null)
+    {
+      Bitmap localBitmap = BubbleManager.a(paramVarArgs, this.a.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("VoicePrintUtils.DecodePngTask", 2, "decode " + paramVarArgs + "in background.");
+      }
+      BaseApplicationImpl.sImageCache.put(paramVarArgs, localBitmap);
+    }
+    return null;
+  }
+  
+  protected void a(Bitmap paramBitmap)
+  {
+    VoicePrintUtils.VoicePrintView.a(this.a);
+    this.a.setImageDrawable(VoicePrintUtils.VoicePrintView.a(this.a));
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aevv
  * JD-Core Version:    0.7.0.1
  */

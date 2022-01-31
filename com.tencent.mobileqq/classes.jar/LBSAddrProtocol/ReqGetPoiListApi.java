@@ -9,17 +9,17 @@ public final class ReqGetPoiListApi
   extends JceStruct
 {
   static byte[] cache_vLBSKeyData;
-  static ArrayList cache_vTypes;
+  static ArrayList<Integer> cache_vTypes;
   public int iBeginPos;
   public int iRadius = 100;
   public int iReqNum = 10;
   public int iSortMethod = 1;
   public byte[] vLBSKeyData;
-  public ArrayList vTypes;
+  public ArrayList<Integer> vTypes;
   
   public ReqGetPoiListApi() {}
   
-  public ReqGetPoiListApi(byte[] paramArrayOfByte, ArrayList paramArrayList, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public ReqGetPoiListApi(byte[] paramArrayOfByte, ArrayList<Integer> paramArrayList, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     this.vLBSKeyData = paramArrayOfByte;
     this.vTypes = paramArrayList;

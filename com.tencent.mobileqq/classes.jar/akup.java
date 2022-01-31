@@ -1,26 +1,19 @@
-import android.os.Handler;
-import com.tencent.mobileqq.widget.ImageViewTouchBase;
-
 public class akup
-  implements Runnable
 {
-  public akup(ImageViewTouchBase paramImageViewTouchBase, float paramFloat1, long paramLong, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void run()
+  public akup(String paramString1, String paramString2, String paramString3)
   {
-    long l = System.currentTimeMillis();
-    float f1 = Math.min(this.jdField_a_of_type_Float, (float)(l - this.jdField_a_of_type_Long));
-    float f2 = this.b;
-    float f3 = this.c;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageViewTouchBase.zoomTo(f2 + f3 * f1, this.d, this.e);
-    if (f1 < this.jdField_a_of_type_Float) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetImageViewTouchBase.mHandler.post(this);
-    }
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akup
  * JD-Core Version:    0.7.0.1
  */

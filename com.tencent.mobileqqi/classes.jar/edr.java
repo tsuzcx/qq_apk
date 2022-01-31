@@ -1,40 +1,22 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.FrameAnimationActor;
-import com.tencent.mobileqq.activity.aio.item.FrameAnimationActor.Listener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class edr
-  implements Runnable
+  implements View.OnClickListener
 {
-  public edr(FrameAnimationActor paramFrameAnimationActor) {}
+  public edr(SearchResultDialog paramSearchResultDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_AndroidViewView == null) {}
-    do
-    {
-      return;
-      if ((this.a.jdField_a_of_type_Int == 0) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFrameAnimationActor$Listener != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFrameAnimationActor$Listener.a();
-      }
-      if (this.a.jdField_a_of_type_Int < this.a.jdField_a_of_type_ArrayOfInt.length) {
-        break;
-      }
-      this.a.jdField_a_of_type_AndroidViewView.setBackgroundResource(this.a.jdField_a_of_type_ArrayOfInt[this.a.b]);
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFrameAnimationActor$Listener == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFrameAnimationActor$Listener.b();
-    return;
-    this.a.jdField_a_of_type_AndroidViewView.setBackgroundResource(this.a.jdField_a_of_type_ArrayOfInt[this.a.jdField_a_of_type_Int]);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFrameAnimationActor$Listener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFrameAnimationActor$Listener.a(this.a.jdField_a_of_type_Int);
-    }
-    this.a.jdField_a_of_type_AndroidViewView.postDelayed(FrameAnimationActor.a(this.a), this.a.c);
-    FrameAnimationActor localFrameAnimationActor = this.a;
-    localFrameAnimationActor.jdField_a_of_type_Int += 1;
+    int i = ((Integer)paramView.getTag(-1)).intValue();
+    SearchResultDialog.a(this.a).a(SearchResultDialog.b(this.a), paramView, i, 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     edr
  * JD-Core Version:    0.7.0.1
  */

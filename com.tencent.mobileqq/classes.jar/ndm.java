@@ -1,49 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.model.StoryManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.VidToVideoInfoPuller;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.qphone.base.util.QLog;
 
 public class ndm
-  extends SimpleJob
+  extends alwx
 {
-  public ndm(VidToVideoInfoPuller paramVidToVideoInfoPuller) {}
+  protected void a(boolean paramBoolean, OpenID paramOpenID) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramJobContext = ((StoryManager)SuperManager.a(5)).e(QQStoryContext.a().b());
-    if (paramJobContext != null)
+    switch (paramInt)
     {
-      paramVarArgs = paramJobContext.iterator();
-      while (paramVarArgs.hasNext())
-      {
-        StoryVideoItem localStoryVideoItem = (StoryVideoItem)paramVarArgs.next();
-        if ((!localStoryVideoItem.isUploadFail()) && (!localStoryVideoItem.isUploadSuc())) {
-          paramVarArgs.remove();
-        }
-      }
+    default: 
+      return;
     }
-    Collections.sort(paramJobContext, new ndn(this));
-    paramVarArgs = new ArrayList();
-    paramJobContext = paramJobContext.iterator();
-    while (paramJobContext.hasNext()) {
-      paramVarArgs.add(((StoryVideoItem)paramJobContext.next()).mVid);
-    }
-    this.a.a(paramVarArgs);
-    return null;
+    QLog.d("openid", 2, "isSuccess=" + paramBoolean + ",data=" + paramObject);
+    a(paramBoolean, (OpenID)paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ndm
  * JD-Core Version:    0.7.0.1
  */

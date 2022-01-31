@@ -1,38 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.telephony.TelephonyManager;
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class ajhp
-  extends BroadcastReceiver
+class ajhp
+  implements View.OnClickListener
 {
-  public ajhp(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  ajhp(ajgb paramajgb) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (SubmitHomeWorkFragment.a(this.a) != null)
+    if ((this.a.c != null) && ("1600000104".equals(this.a.c.trim())))
     {
-      paramContext = paramIntent.getAction();
-      if (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
-        break label51;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("SubmitHomeWorkFragment", 2, "receive action_recv_video_request");
-      }
-      SubmitHomeWorkFragment.a(this.a).b(102);
-    }
-    label51:
-    while (!"android.intent.action.PHONE_STATE".equals(paramContext)) {
+      this.a.k();
       return;
     }
-    if ((((TelephonyManager)this.a.getActivity().getSystemService("phone")).getCallState() == 1) && (QLog.isColorLevel())) {
-      QLog.d("SubmitHomeWorkFragment", 2, "receive action_phone_state_changed|call_state_ringing");
-    }
-    SubmitHomeWorkFragment.a(this.a).b(102);
+    paramView = new Intent(ajgb.a(this.a), QRLoginMgrActivity.class);
+    paramView.putExtra("qrlogin_position", this.a.b);
+    paramView.putExtra("qrlogin_appid", this.a.a);
+    ajgb.a(this.a).startActivity(paramView);
   }
 }
 

@@ -1,42 +1,70 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.arengine.ARMarkerResourceManager;
-import com.tencent.mobileqq.ar.arengine.ARMarkerResourceManager.ARMarkerResourceCallback;
-import com.tencent.mobileqq.ar.arengine.ARResourceManagerTools.ARResourceCallback;
+import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.gamecenter.media.GameCenterVideoViewController;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aahr
-  implements ARResourceManagerTools.ARResourceCallback
 {
-  public aahr(ARMarkerResourceManager paramARMarkerResourceManager, ARMarkerResourceManager.ARMarkerResourceCallback paramARMarkerResourceCallback, ArCloudConfigInfo paramArCloudConfigInfo) {}
+  public int a;
+  public FrameLayout a;
+  public GameCenterVideoViewController a;
+  public String a;
+  public Map<Integer, View> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
   
-  public void a()
+  public aahr(GameCenterVideoViewController paramGameCenterVideoViewController, FrameLayout paramFrameLayout, Map<Integer, View> paramMap)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback.q();
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController = paramGameCenterVideoViewController;
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = paramFrameLayout;
+    this.jdField_a_of_type_JavaUtilMap = paramMap;
+  }
+  
+  public String a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("id", this.jdField_a_of_type_Int);
+      localJSONObject.put("x", this.jdField_c_of_type_Int);
+      localJSONObject.put("y", this.jdField_b_of_type_Int);
+      localJSONObject.put("vid", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("url", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("streamType", this.d);
+      localJSONObject.put("protocol", this.jdField_c_of_type_JavaLangString);
+      localJSONObject.put("mute", this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.b());
+      localJSONObject.put("total", this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.b());
+      localJSONObject.put("current", this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.a());
+      localJSONObject.put("autoPlay", this.jdField_b_of_type_Boolean);
+      localJSONObject.put("isFullScreen", this.jdField_c_of_type_Boolean);
+      return localJSONObject.toString();
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback.b(paramInt);
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback != null) {}
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback.c(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aahr
  * JD-Core Version:    0.7.0.1
  */

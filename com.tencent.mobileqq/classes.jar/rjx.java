@@ -1,32 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-
 public class rjx
-  implements DialogInterface.OnClickListener
 {
-  public rjx(AddRequestActivity paramAddRequestActivity) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public rjx(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    if (NetworkUtil.d(BaseApplication.getContext()))
-    {
-      long l = Long.valueOf(this.a.app.getCurrentAccountUin()).longValue();
-      this.a.showDialog(2);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(l, Long.valueOf(this.a.jdField_a_of_type_JavaLangString).longValue(), 1);
-      return;
-    }
-    QQToast.a(this.a, 2131434811, 0).b(this.a.getTitleBarHeight());
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rjx
  * JD-Core Version:    0.7.0.1
  */

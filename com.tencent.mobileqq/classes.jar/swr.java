@@ -1,46 +1,54 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.TroopRedpoint.TroopRedTouchManager;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.struct.LebaViewItem;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.util.ProfileParams;
+import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
 
-public class swr
-  implements View.OnClickListener
+public final class swr
 {
-  public swr(Leba paramLeba) {}
+  private ProfileParams a = new ProfileParams(null);
   
-  public void onClick(View paramView)
+  public ProfileParams a()
   {
-    try
-    {
-      int i = ((Integer)paramView.getTag(-1)).intValue();
-      if (i > -1)
-      {
-        LebaViewItem localLebaViewItem = (LebaViewItem)this.a.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter.getItem(i);
-        if ((localLebaViewItem != null) && (localLebaViewItem.a != null) && (localLebaViewItem.a.uiResId == 3050L)) {
-          StoryReportor.a("dynamic", "clk_story", 0, ((TroopRedTouchManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(69)).c(), new String[0]);
-        }
-      }
-    }
-    catch (NullPointerException localNullPointerException)
-    {
-      for (;;)
-      {
-        QLog.w("Q.lebatab.leba", 2, "" + localNullPointerException);
-      }
-    }
-    this.a.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener.a(this.a.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView, paramView, ((Integer)paramView.getTag(-1)).intValue(), 0L);
+    return this.a;
+  }
+  
+  public swr a(int paramInt)
+  {
+    this.a.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public swr a(ProfileParams.CurLoginUsr paramCurLoginUsr)
+  {
+    this.a.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams$CurLoginUsr = paramCurLoginUsr;
+    return this;
+  }
+  
+  public swr a(String paramString)
+  {
+    this.a.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public swr b(String paramString)
+  {
+    this.a.b = paramString;
+    return this;
+  }
+  
+  public swr c(String paramString)
+  {
+    this.a.c = paramString;
+    return this;
+  }
+  
+  public swr d(String paramString)
+  {
+    this.a.d = paramString;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     swr
  * JD-Core Version:    0.7.0.1
  */

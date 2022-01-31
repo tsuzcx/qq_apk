@@ -1,39 +1,16 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
 
-class urk
-  implements Runnable
+public class urk
 {
-  urk(urj paramurj, Drawable paramDrawable) {}
-  
-  public void run()
+  public static boolean a(QQStoryAutoPlayView paramQQStoryAutoPlayView, MotionEvent paramMotionEvent)
   {
-    QLog.d("DoodleMsgLayout", 2, "setDoodleContent start update drawable:" + this.jdField_a_of_type_Urj.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Urj.jdField_a_of_type_Int != DoodleMsgLayout.a(this.jdField_a_of_type_Urj.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout)) {
-      return;
-    }
-    if (DoodleMsgLayout.b(this.jdField_a_of_type_Urj.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout) != null) {
-      DoodleMsgLayout.b(this.jdField_a_of_type_Urj.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout).setImageDrawable(null);
-    }
-    if (DoodleMsgLayout.c(this.jdField_a_of_type_Urj.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout) != null) {
-      DoodleMsgLayout.c(this.jdField_a_of_type_Urj.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout).setImageDrawable(null);
-    }
-    if (DoodleMsgLayout.a(this.jdField_a_of_type_Urj.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout) != null) {
-      DoodleMsgLayout.a(this.jdField_a_of_type_Urj.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    }
-    DoodleMsgLayout.a(this.jdField_a_of_type_Urj.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout, 0);
-    if (DoodleMsgLayout.a(this.jdField_a_of_type_Urj.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout) != null) {
-      this.jdField_a_of_type_Urj.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a(DoodleMsgLayout.a(this.jdField_a_of_type_Urj.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout).a());
-    }
-    QLog.d("DoodleMsgLayout", 2, "setDoodleContent finish update drawable:" + this.jdField_a_of_type_Urj.jdField_a_of_type_Int);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     urk
  * JD-Core Version:    0.7.0.1
  */

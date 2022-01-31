@@ -1,22 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class eit
-  implements View.OnClickListener
+class eit
+  implements DialogInterface.OnDismissListener
 {
-  public eit(SearchResultDialog paramSearchResultDialog) {}
+  eit(ein paramein) {}
   
-  public void onClick(View paramView)
-  {
-    int i = ((Integer)paramView.getTag(-1)).intValue();
-    SearchResultDialog.a(this.a).a(SearchResultDialog.b(this.a), paramView, i, 0L);
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eit
  * JD-Core Version:    0.7.0.1
  */

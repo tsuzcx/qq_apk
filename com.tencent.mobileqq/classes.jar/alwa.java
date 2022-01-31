@@ -1,20 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qqconnect.wtlogin.Login;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.List;
 
 public class alwa
-  implements DialogInterface.OnDismissListener
+  implements alpf
 {
-  public alwa(Login paramLogin) {}
+  private List<String> a = new ArrayList();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public List<String> a(AppInterface paramAppInterface)
   {
-    Login.a(this.a, false);
+    if (((paramAppInterface instanceof QQAppInterface)) && (!this.a.isEmpty())) {
+      return this.a;
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    if (this.a.isEmpty()) {
+      this.a.add("100066");
+    }
+  }
+  
+  public void b()
+  {
+    if (!this.a.isEmpty()) {
+      this.a.remove("100066");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alwa
  * JD-Core Version:    0.7.0.1
  */

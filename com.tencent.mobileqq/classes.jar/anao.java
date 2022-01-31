@@ -1,56 +1,64 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.GifAntishakeModule;
-import cooperation.qzone.vision.PhotoUtil;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.concurrent.CountDownLatch;
+import com.tencent.common.app.AppInterface;
 
-public class anao
-  implements Runnable
+class anao
+  implements anbg
 {
-  public anao(GifAntishakeModule paramGifAntishakeModule, int paramInt1, int paramInt2, int paramInt3, ArrayList paramArrayList, Bitmap paramBitmap, int paramInt4, int paramInt5, String[] paramArrayOfString, CountDownLatch paramCountDownLatch) {}
+  anao(anam paramanam, anbr paramanbr) {}
   
-  public void run()
+  public void a(int paramInt, anbq paramanbq, long paramLong)
   {
-    try
+    if (anam.a(this.jdField_a_of_type_Anam)) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneVision", 2, "frame: " + this.jdField_a_of_type_Int + ", startAntishake at " + System.currentTimeMillis());
-      }
-      Bitmap localBitmap1 = Bitmap.createBitmap(this.b, this.c, Bitmap.Config.RGB_565);
-      Bitmap localBitmap2 = (Bitmap)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
-      PhotoUtil.getAntiShakeBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, localBitmap2, localBitmap1);
-      localBitmap2 = Bitmap.createBitmap(localBitmap1, this.d, this.e, localBitmap1.getWidth() - this.d * 2, localBitmap1.getHeight() - this.e * 2);
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneVision", 2, "frame: " + this.jdField_a_of_type_Int + ", endAntishake and startSave at " + System.currentTimeMillis());
-      }
-      String str = PhotoUtils.a(GifAntishakeModule.a(this.jdField_a_of_type_CooperationQzoneUtilGifAntishakeModule), ".IMG" + this.jdField_a_of_type_Int, ".jpg");
-      ImageUtil.a(localBitmap2, new File(str));
-      if (!localBitmap1.isRecycled()) {
-        localBitmap1.recycle();
-      }
-      if (!localBitmap2.isRecycled()) {
-        localBitmap2.recycle();
-      }
-      this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int] = str;
-      GifAntishakeModule.b();
-      GifAntishakeModule.a(this.jdField_a_of_type_CooperationQzoneUtilGifAntishakeModule, GifAntishakeModule.c());
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneVision", 2, "frame: " + this.jdField_a_of_type_Int + ", endSave at " + System.currentTimeMillis());
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      do
       {
-        localThrowable.printStackTrace();
-      }
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+        return;
+      } while (paramInt != anbf.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Anam.h = paramLong;
+      anam localanam = this.jdField_a_of_type_Anam;
+      localanam.i += this.jdField_a_of_type_Anam.h;
+      this.jdField_a_of_type_Anbr.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Anam.jdField_a_of_type_Amzy.a();
+      this.jdField_a_of_type_Anbr.jdField_a_of_type_Anbq = paramanbq;
+      this.jdField_a_of_type_Anbr.jdField_a_of_type_Int = this.jdField_a_of_type_Anam.d;
+      this.jdField_a_of_type_Anbr.jdField_b_of_type_Int = this.jdField_a_of_type_Anam.e;
+      this.jdField_a_of_type_Anbr.jdField_a_of_type_Long = this.jdField_a_of_type_Anam.jdField_a_of_type_Long;
+      this.jdField_a_of_type_Anbr.jdField_c_of_type_Int = this.jdField_a_of_type_Anam.f;
+      this.jdField_a_of_type_Anbr.jdField_b_of_type_JavaLangString = Integer.toString(this.jdField_a_of_type_Anam.jdField_a_of_type_ComTencentCommonAppAppInterface.getAppid());
+      this.jdField_a_of_type_Anbr.jdField_b_of_type_Long = Long.parseLong(this.jdField_a_of_type_Anam.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+      this.jdField_a_of_type_Anbr.jdField_c_of_type_Long = System.currentTimeMillis();
+      anam.a(this.jdField_a_of_type_Anam, this.jdField_a_of_type_Anbr);
+    } while (anam.a(this.jdField_a_of_type_Anam) == null);
+    anam.a(this.jdField_a_of_type_Anam).c();
+  }
+  
+  public void a(anbi paramanbi)
+  {
+    this.jdField_a_of_type_Anbr.jdField_a_of_type_Anbi = paramanbi;
+  }
+  
+  public void a(anbj paramanbj)
+  {
+    this.jdField_a_of_type_Anbr.jdField_a_of_type_Anbj = paramanbj;
+  }
+  
+  public void a(anbk paramanbk)
+  {
+    this.jdField_a_of_type_Anbr.jdField_a_of_type_Anbk = paramanbk;
+  }
+  
+  public void a(anbl paramanbl)
+  {
+    this.jdField_a_of_type_Anbr.jdField_a_of_type_Anbl = paramanbl;
+  }
+  
+  public void a(anbs paramanbs)
+  {
+    this.jdField_a_of_type_Anbr.jdField_a_of_type_Anbs = paramanbs;
+  }
+  
+  public void b(anbj paramanbj)
+  {
+    this.jdField_a_of_type_Anbr.jdField_b_of_type_Anbj = paramanbj;
   }
 }
 

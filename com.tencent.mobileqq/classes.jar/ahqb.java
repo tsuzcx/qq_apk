@@ -1,15 +1,27 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForScribble;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import mqq.os.MqqHandler;
 
-public final class ahqb
-  implements Runnable
+public class ahqb
+  extends MqqHandler
 {
-  public ahqb(QQAppInterface paramQQAppInterface, MessageForScribble paramMessageForScribble) {}
+  public ahqb(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.uniseq);
+    switch (paramMessage.what)
+    {
+    case 1013: 
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (TroopSuspiciousFragment.a(this.a) == null);
+      TroopSuspiciousFragment.a(this.a).notifyDataSetChanged();
+      return;
+    }
+    this.a.a();
   }
 }
 

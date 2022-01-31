@@ -1,22 +1,11 @@
-import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-import dov.com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
-
-public class anjx
-  implements Runnable
+public abstract interface anjx
+  extends anjv
 {
-  public anjx(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
-  
-  public void run()
-  {
-    CapturePtvTemplateManager.a().a();
-    CaptureReportUtil.h();
-    this.a.A();
-  }
+  public abstract void a(boolean paramBoolean, double paramDouble1, double paramDouble2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anjx
  * JD-Core Version:    0.7.0.1
  */

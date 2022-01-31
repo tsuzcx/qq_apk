@@ -1,29 +1,14 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.utils.P2VEffectLoader;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.utils.P2VEffectLoader.P2VEffectDownloadListener;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import cooperation.qzone.QZoneVideoDownloadActivity;
+import com.tencent.mobileqq.ar.ARGlobalConfigService;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
 
-class amsl
-  implements P2VEffectLoader.P2VEffectDownloadListener
+public class amsl
+  extends amzn
 {
-  amsl(amsk paramamsk) {}
+  public amsl(ARGlobalConfigService paramARGlobalConfigService) {}
   
-  public void a(boolean paramBoolean)
+  public ARScanStarFaceConfigInfo a()
   {
-    VideoEnvironment.a("QZoneVideoDownloadActivity", "P2VEffectLoader - downLoadP2VJarModule - loadState:" + paramBoolean, null);
-    if (paramBoolean)
-    {
-      P2VEffectLoader.a(this.a.a.getApplicationContext());
-      Intent localIntent = this.a.a.getIntent();
-      localIntent.setClass(this.a.a.getApplicationContext(), QzDynamicVideoPreviewActivity.class);
-      this.a.a.startActivity(localIntent);
-      this.a.a.overridePendingTransition(2131034134, 2131034135);
-      this.a.a.finish();
-      return;
-    }
-    VideoEnvironment.a("QZoneVideoDownloadActivity", "P2VEffectLoader - downLoadP2VJarModule - loadFailed", null);
+    return this.a.a.a();
   }
 }
 

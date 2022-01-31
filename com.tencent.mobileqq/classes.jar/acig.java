@@ -1,21 +1,26 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
+import android.text.Editable;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.widget.XEditTextEx;
 
 public class acig
-  extends RecyclerView.ItemDecoration
+  implements agle
 {
-  private final int jdField_a_of_type_Int = AIOUtils.a(3.0F, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment.getResources());
+  public acig(BaseChatPie paramBaseChatPie) {}
   
-  private acig(ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public boolean a(PhotoListPanel paramPhotoListPanel)
   {
-    paramRect.right = this.jdField_a_of_type_Int;
+    return false;
+  }
+  
+  public boolean b(PhotoListPanel paramPhotoListPanel)
+  {
+    if (this.a.K) {}
+    while ((this.a.o()) || (this.a.a == null) || (this.a.a.getText() == null) || (this.a.a.getText().length() <= 0)) {
+      return false;
+    }
+    this.a.as();
+    return true;
   }
 }
 

@@ -1,104 +1,49 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.TypedValue;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.widget.Scroller;
-import com.tencent.mobileqq.activity.fling.TopContentLayout;
-import com.tencent.mobileqq.activity.fling.TopContentLayout.OnOutScreenListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class wpq
-  extends GestureDetector.SimpleOnGestureListener
+class wpq
+  implements urr<vga, vgb>
 {
-  private float jdField_a_of_type_Float;
+  wpq(wpp paramwpp, JobContext paramJobContext, AtomicBoolean paramAtomicBoolean, Integer paramInteger) {}
   
-  public wpq(TopContentLayout paramTopContentLayout, Context paramContext)
+  public void a(@NonNull vga paramvga, @Nullable vgb paramvgb, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_Float = TypedValue.applyDimension(1, 50.0F, paramContext.getResources().getDisplayMetrics());
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    int i;
-    int j;
-    if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout))
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout, false);
-      i = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getWidth();
-      j = Math.abs((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX());
-      if (paramFloat1 <= 0.0F) {
-        break label96;
-      }
-      i -= j;
+      wxe.d("Q.qqstory.home.data.HomeFeedListPageLoader", "feedId pull segment cancel on net respond");
+      return;
     }
-    for (;;)
+    if ((paramErrorMessage.isFail()) || (paramvgb == null))
     {
-      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).startScroll((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX(), 0, i, 0, 350);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.invalidate();
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-      label96:
-      i = -j;
+      wxe.a("Q.qqstory.home.data.HomeFeedListPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
+      wpp.a(this.jdField_a_of_type_Wpp, paramErrorMessage);
+      return;
     }
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    float f1;
-    if (!TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout))
+    wpp.a(this.jdField_a_of_type_Wpp);
+    wpp.a(this.jdField_a_of_type_Wpp).a(paramvgb.jdField_a_of_type_JavaUtilList, paramvgb.jdField_a_of_type_JavaLangString, paramvgb.jdField_a_of_type_Boolean);
+    ((woy)uwa.a(11)).a(paramvgb.jdField_a_of_type_JavaUtilList);
+    boolean bool = wpp.a(paramvgb, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
+    wxe.d("Q.qqstory.home.data.HomeFeedListPageLoader", "today is end:%b, loop count:%d, last date has fail:%b", new Object[] { Boolean.valueOf(paramvgb.b), Integer.valueOf(wpp.b(this.jdField_a_of_type_Wpp)), Boolean.valueOf(bool) });
+    if ((!paramvgb.jdField_a_of_type_Boolean) && (wpp.b(this.jdField_a_of_type_Wpp) < 10) && ((!paramvgb.b) || (bool)))
     {
-      f1 = Math.abs(paramFloat2 / paramFloat1);
-      float f2 = Math.abs(paramMotionEvent1.getX() - paramMotionEvent2.getX());
-      if ((paramFloat1 < 0.0F) && (f1 < 0.5F) && (f2 > this.jdField_a_of_type_Float))
-      {
-        TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout, true);
-        if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout) != null) {
-          TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).startDrag();
-        }
-        return true;
-      }
-      f1 = paramFloat1;
-      return super.onScroll(paramMotionEvent1, paramMotionEvent2, f1, paramFloat2);
+      wxe.d("Q.qqstory.home.data.HomeFeedListPageLoader", "feedId list not end, pull more");
+      paramvga.b = wpp.a(this.jdField_a_of_type_Wpp).a();
+      urp.a().a(paramvga, this);
+      return;
     }
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewWidth();
-    int j = Math.abs((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX());
-    if ((paramFloat1 < 0.0F) && (j < i)) {
-      if (Math.abs(paramFloat1) > i - j) {
-        paramFloat1 = i - j;
-      }
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(false)) {
+      wpp.a(this.jdField_a_of_type_Wpp).c();
     }
-    for (;;)
-    {
-      f1 = paramFloat1;
-      if (Math.abs(paramFloat1) <= 0.0F) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.movingViewTransBy((int)paramFloat1, 0.0F);
-      f1 = paramFloat1;
-      if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout) == null) {
-        break;
-      }
-      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).outing((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX(), 0, this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout);
-      f1 = paramFloat1;
-      break;
-      paramFloat1 = -paramFloat1;
-      continue;
-      if ((paramFloat1 > 0.0F) && (j > 0))
-      {
-        if (Math.abs(paramFloat1) > j) {
-          paramFloat1 = -j;
-        } else {
-          paramFloat1 = -paramFloat1;
-        }
-      }
-      else {
-        paramFloat1 = 0.0F;
-      }
-    }
+    paramvga = wpp.a(this.jdField_a_of_type_Wpp).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
+    wpp.a(this.jdField_a_of_type_Wpp, paramvga);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wpq
  * JD-Core Version:    0.7.0.1
  */

@@ -2,13 +2,13 @@ package com.tencent.mobileqq.dinifly.model.content;
 
 public enum GradientType
 {
-  Linear,  Radial;
+  LINEAR,  RADIAL;
   
   private GradientType() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.model.content.GradientType
  * JD-Core Version:    0.7.0.1
  */

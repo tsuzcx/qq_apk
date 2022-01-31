@@ -1,22 +1,30 @@
-import android.text.format.Time;
-import com.tencent.mobileqq.testassister.ShareAppLogHelper;
-import java.io.File;
-import java.io.FilenameFilter;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.activity.phone.SettingActivity2.3;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ainm
-  implements FilenameFilter
+  extends awhw
 {
-  public ainm(ShareAppLogHelper paramShareAppLogHelper) {}
+  public ainm(SettingActivity2.3 param3) {}
   
-  public boolean accept(File paramFile, String paramString)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    if ((!paramString.endsWith(".log")) && (!paramString.endsWith(".zip")) && (!paramString.endsWith(".qlog"))) {}
-    do
+    if (this.a.this$0.c != null)
     {
-      return false;
-      paramFile = ShareAppLogHelper.a(this.a, paramString);
-    } while ((paramFile == null) || (paramFile.toMillis(false) < ShareAppLogHelper.a(this.a).toMillis(false)) || (paramFile.toMillis(false) > ShareAppLogHelper.b(this.a).toMillis(false)));
-    return true;
+      this.a.this$0.app.unRegistObserver(this.a.this$0.c);
+      this.a.this$0.c = null;
+    }
+    this.a.this$0.b();
+    if (paramBoolean)
+    {
+      if (this.a.this$0.c != null)
+      {
+        this.a.this$0.app.unRegistObserver(this.a.this$0.c);
+        this.a.this$0.c = null;
+      }
+      this.a.this$0.a();
+      this.a.this$0.setResult(-1);
+    }
   }
 }
 

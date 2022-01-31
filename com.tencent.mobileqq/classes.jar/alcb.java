@@ -1,25 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.GroupListOpenFrame;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView.PlayActionConfig;
 
-public class alcb
-  implements View.OnTouchListener
+public final class alcb
+  implements Parcelable.Creator<CmShowRenderView.PlayActionConfig>
 {
-  public alcb(GroupListOpenFrame paramGroupListOpenFrame) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public CmShowRenderView.PlayActionConfig a(Parcel paramParcel)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.a.c();
-    }
-    return true;
+    return new CmShowRenderView.PlayActionConfig(paramParcel);
+  }
+  
+  public CmShowRenderView.PlayActionConfig[] a(int paramInt)
+  {
+    return new CmShowRenderView.PlayActionConfig[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alcb
  * JD-Core Version:    0.7.0.1
  */

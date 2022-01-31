@@ -1,11 +1,11 @@
 package cooperation.qzone.report.lp;
 
 import android.os.Build;
-import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import bjdl;
+import bjdm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QUA;
 import cooperation.qzone.util.NetworkState;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -54,12 +54,12 @@ public class LpReportInfo_DC01691
       this.networkType = 1;
       return;
     }
-    if (this.networkType == 3)
+    if (this.networkType == 2)
     {
       this.networkType = 2;
       return;
     }
-    if (this.networkType == 2)
+    if (this.networkType == 3)
     {
       this.networkType = 3;
       return;
@@ -67,6 +67,11 @@ public class LpReportInfo_DC01691
     if (this.networkType == 4)
     {
       this.networkType = 4;
+      return;
+    }
+    if (this.networkType == 5)
+    {
+      this.networkType = 5;
       return;
     }
     this.networkType = 9;
@@ -77,10 +82,10 @@ public class LpReportInfo_DC01691
     return "DC01691:" + this.actionType + "," + this.subactionType + "," + this.reserves;
   }
   
-  public Map toMap()
+  public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("qua", QUA.a());
+    localHashMap.put("qua", bjdm.a());
     localHashMap.put("uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
     localHashMap.put("to_uin", String.valueOf(this.toUin));
     localHashMap.put("network_type", String.valueOf(this.networkType));
@@ -95,56 +100,49 @@ public class LpReportInfo_DC01691
     LpReportUtils.safePut(localHashMap, "feedsid", this.feedsid);
     localHashMap.put("feeds_type", String.valueOf(this.feedsType));
     localHashMap.put("mobile_type", Build.MODEL);
-    if (TextUtils.isEmpty(deviceId)) {}
-    try
+    if (TextUtils.isEmpty(deviceId)) {
+      deviceId = bjdl.a().a();
+    }
+    if (!TextUtils.isEmpty(deviceId)) {
+      localHashMap.put("imei", deviceId);
+    }
+    LpReportUtils.safePut(localHashMap, "uin_lbs_x", this.longitude);
+    LpReportUtils.safePut(localHashMap, "uin_lbs_y", this.latitude);
+    for (;;)
     {
-      deviceId = ((TelephonyManager)BaseApplicationImpl.getApplication().getSystemService("phone")).getDeviceId();
-      label238:
-      if (!TextUtils.isEmpty(deviceId)) {
-        localHashMap.put("imei", deviceId);
-      }
-      LpReportUtils.safePut(localHashMap, "uin_lbs_x", this.longitude);
-      LpReportUtils.safePut(localHashMap, "uin_lbs_y", this.latitude);
-      for (;;)
+      try
       {
-        try
+        if (!TextUtils.isEmpty(this.extraInfo))
         {
-          if (!TextUtils.isEmpty(this.extraInfo))
+          JSONObject localJSONObject1 = new JSONObject(this.extraInfo);
+          if (localJSONObject1.length() > 0)
           {
-            JSONObject localJSONObject1 = new JSONObject(this.extraInfo);
-            if (localJSONObject1.length() > 0)
+            Iterator localIterator = localJSONObject1.keys();
+            if (localIterator.hasNext())
             {
-              Iterator localIterator = localJSONObject1.keys();
-              if (localIterator.hasNext())
-              {
-                String str1 = (String)localIterator.next();
-                String str2 = localJSONObject1.getString(str1);
-                if (TextUtils.isEmpty(str2)) {
-                  continue;
-                }
-                localHashMap.put(str1, str2);
+              String str1 = (String)localIterator.next();
+              String str2 = localJSONObject1.getString(str1);
+              if (TextUtils.isEmpty(str2)) {
                 continue;
               }
+              localHashMap.put(str1, str2);
+              continue;
             }
-            return localHashMap;
           }
+          return localHashMap;
         }
-        catch (Exception localException1)
-        {
-          QLog.e(TAG, 1, localException1, new Object[0]);
-        }
-        JSONObject localJSONObject2 = new JSONObject();
       }
-    }
-    catch (Exception localException2)
-    {
-      break label238;
+      catch (Exception localException)
+      {
+        QLog.e(TAG, 1, localException, new Object[0]);
+      }
+      JSONObject localJSONObject2 = new JSONObject();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_DC01691
  * JD-Core Version:    0.7.0.1
  */

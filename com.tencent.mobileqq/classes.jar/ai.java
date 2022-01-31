@@ -1,25 +1,21 @@
+import android.os.AsyncTask;
 import com.dataline.activities.LiteActivity;
-import com.dataline.util.DatalineSessionAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.DatalineMessageManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 
-class ai
-  implements Runnable
+public class ai
+  implements arrh
 {
-  ai(ab paramab, int paramInt) {}
+  public ai(LiteActivity paramLiteActivity, AsyncTask paramAsyncTask, int paramInt) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_Ab.a.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.notifyDataSetChanged();
-    LiteActivity.a(this.jdField_a_of_type_Ab.a.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.jdField_a_of_type_Ab.a.jdField_a_of_type_ComTencentWidgetXListView);
-    LiteActivity.a(this.jdField_a_of_type_Ab.a.jdField_a_of_type_ComTencentWidgetXListView);
-    this.jdField_a_of_type_Ab.a.app.a().a(this.jdField_a_of_type_Int).e();
+    this.jdField_a_of_type_AndroidOsAsyncTask.execute(new Integer[] { Integer.valueOf(this.jdField_a_of_type_Int) });
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ai
  * JD-Core Version:    0.7.0.1
  */

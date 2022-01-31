@@ -1,23 +1,23 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopGagActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StTagInfo;
 
 class txi
-  implements Runnable
+  implements View.OnClickListener
 {
-  txi(txh paramtxh, Handler paramHandler) {}
+  txi(txh paramtxh, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StTagInfo paramStTagInfo) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ArrayList localArrayList = ((TroopGagMgr)this.jdField_a_of_type_Txh.a.app.getManager(47)).a(this.jdField_a_of_type_Txh.a.a, false);
-    this.jdField_a_of_type_AndroidOsHandler.post(new txj(this, localArrayList));
+    tzw.a(16, 2, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, 2, 0);
+    tqs.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagId.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagName.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     txi
  * JD-Core Version:    0.7.0.1
  */

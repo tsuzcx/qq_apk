@@ -6,17 +6,17 @@ import android.os.ResultReceiver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import bdgm;
+import bdjz;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import kgk;
-import kgl;
-import kgm;
+import mvd;
+import mve;
+import mvf;
 
 public class PopupDialogQQSide
   extends PublicBaseFragment
 {
-  public QQCustomDialog a = null;
+  public bdjz a = null;
   
   void a()
   {
@@ -29,35 +29,43 @@ public class PopupDialogQQSide
   
   void b()
   {
-    Object localObject = (Bundle)getArguments().getParcelable("request");
-    int m = ((Bundle)localObject).getInt("type", 230);
-    String str1 = ((Bundle)localObject).getString("titleText");
-    String str2 = ((Bundle)localObject).getString("contentText");
-    int k = ((Bundle)localObject).getInt("leftBtnText", 0);
-    int j = ((Bundle)localObject).getInt("rightBtnText", 0);
-    localObject = (ResultReceiver)((Bundle)localObject).getParcelable("resultReceiver");
+    Object localObject1 = (Bundle)getArguments().getParcelable("request");
+    int k = ((Bundle)localObject1).getInt("type", 230);
+    String str1 = ((Bundle)localObject1).getString("titleText");
+    String str2 = ((Bundle)localObject1).getString("contentText");
+    int i = ((Bundle)localObject1).getInt("leftBtnText", 0);
+    int j = ((Bundle)localObject1).getInt("rightBtnText", 0);
+    Object localObject2 = (ResultReceiver)((Bundle)localObject1).getParcelable("resultReceiver");
+    boolean bool1 = ((Bundle)localObject1).getBoolean("leftBtnVisiable", true);
+    boolean bool2 = ((Bundle)localObject1).getBoolean("rightBtnVisiable", true);
     a();
-    localObject = new kgk(this, null);
-    kgl localkgl = new kgl(this, null);
-    int i = k;
-    if (k == 0) {
-      i = 2131428674;
-    }
-    if (j == 0) {
-      j = 2131428674;
+    localObject1 = new mvd(this, (ResultReceiver)localObject2);
+    localObject2 = new mve(this, (ResultReceiver)localObject2);
+    if (i == 0) {
+      i = 2131721336;
     }
     for (;;)
     {
-      QQCustomDialog localQQCustomDialog = DialogUtil.a(getActivity(), m);
-      localQQCustomDialog.setMessage(str2);
-      localQQCustomDialog.setTitle(str1);
-      localQQCustomDialog.setNegativeButton(i, (DialogInterface.OnClickListener)localObject);
-      localQQCustomDialog.setPositiveButton(j, localkgl);
-      localQQCustomDialog.setOnDismissListener(new kgm(this));
-      localQQCustomDialog.setCancelable(true);
-      localQQCustomDialog.show();
-      this.a = localQQCustomDialog;
-      return;
+      if (j == 0) {
+        j = 2131721336;
+      }
+      for (;;)
+      {
+        bdjz localbdjz = bdgm.a(getActivity(), k);
+        localbdjz.setMessage(str2);
+        localbdjz.setTitle(str1);
+        if (bool1) {
+          localbdjz.setNegativeButton(i, (DialogInterface.OnClickListener)localObject1);
+        }
+        if (bool2) {
+          localbdjz.setPositiveButton(j, (DialogInterface.OnClickListener)localObject2);
+        }
+        localbdjz.setOnDismissListener(new mvf(this));
+        localbdjz.setCancelable(true);
+        localbdjz.show();
+        this.a = localbdjz;
+        return;
+      }
     }
   }
   

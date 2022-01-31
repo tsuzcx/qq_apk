@@ -1,28 +1,14 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
 public class ajoy
-  implements Runnable
+  implements bhum
 {
-  public ajoy(TroopFileTransferManager paramTroopFileTransferManager) {}
+  public ajoy(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void run()
+  public void onDismiss()
   {
-    for (;;)
-    {
-      synchronized (this.a)
-      {
-        if (this.a.e == 0L) {
-          return;
-        }
-        if (SystemClock.uptimeMillis() > this.a.e + 10000L)
-        {
-          this.a.e = 0L;
-          this.a.a();
-          return;
-        }
-      }
-    }
+    String str = "[Actvity]" + getClass().getSimpleName() + " QQCustomDialog click :" + alud.a(2131704036);
+    bjgs.a().c(str);
   }
 }
 

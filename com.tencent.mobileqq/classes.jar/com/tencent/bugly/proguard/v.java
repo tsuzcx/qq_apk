@@ -82,7 +82,7 @@ public final class v
     return paramString;
   }
   
-  private void a(an paraman, boolean paramBoolean, int paramInt1, String paramString, int paramInt2)
+  private void a(aq paramaq, boolean paramBoolean, int paramInt1, String paramString, int paramInt2)
   {
     String str;
     switch (this.d)
@@ -104,10 +104,10 @@ public final class v
         this.i.a(l1 + l2 + l3, this.t);
       }
       if (this.k != null) {
-        this.k.a(this.d, paraman, this.q, this.r, paramBoolean, paramString);
+        this.k.a(this.d, paramaq, this.q, this.r, paramBoolean, paramString);
       }
       if (this.l != null) {
-        this.l.a(this.d, paraman, this.q, this.r, paramBoolean, paramString);
+        this.l.a(this.d, paramaq, this.q, this.r, paramBoolean, paramString);
       }
       return;
       str = "crash";
@@ -121,29 +121,29 @@ public final class v
     }
   }
   
-  private static boolean a(an paraman, com.tencent.bugly.crashreport.common.info.a parama, com.tencent.bugly.crashreport.common.strategy.a parama1)
+  private static boolean a(aq paramaq, com.tencent.bugly.crashreport.common.info.a parama, com.tencent.bugly.crashreport.common.strategy.a parama1)
   {
-    if (paraman == null)
+    if (paramaq == null)
     {
       x.d("resp == null!", new Object[0]);
       return false;
     }
-    if (paraman.a != 0)
+    if (paramaq.a != 0)
     {
-      x.e("resp result error %d", new Object[] { Byte.valueOf(paraman.a) });
+      x.e("resp result error %d", new Object[] { Byte.valueOf(paramaq.a) });
       return false;
     }
     try
     {
-      if ((!z.a(paraman.d)) && (!com.tencent.bugly.crashreport.common.info.a.b().h().equals(paraman.d)))
+      if ((!z.a(paramaq.d)) && (!com.tencent.bugly.crashreport.common.info.a.b().h().equals(paramaq.d)))
       {
-        p.a().a(com.tencent.bugly.crashreport.common.strategy.a.a, "key_ip", paraman.d.getBytes("UTF-8"), null, true);
-        parama.d(paraman.d);
+        p.a().a(com.tencent.bugly.crashreport.common.strategy.a.a, "gateway", paramaq.d.getBytes("UTF-8"), null, true);
+        parama.d(paramaq.d);
       }
-      if ((!z.a(paraman.f)) && (!com.tencent.bugly.crashreport.common.info.a.b().i().equals(paraman.f)))
+      if ((!z.a(paramaq.f)) && (!com.tencent.bugly.crashreport.common.info.a.b().i().equals(paramaq.f)))
       {
-        p.a().a(com.tencent.bugly.crashreport.common.strategy.a.a, "key_imei", paraman.f.getBytes("UTF-8"), null, true);
-        parama.e(paraman.f);
+        p.a().a(com.tencent.bugly.crashreport.common.strategy.a.a, "device", paramaq.f.getBytes("UTF-8"), null, true);
+        parama.e(paramaq.f);
       }
     }
     catch (Throwable localThrowable)
@@ -152,20 +152,20 @@ public final class v
       {
         x.a(localThrowable);
       }
-      parama = (ap)a.a(paraman.c, ap.class);
+      parama = (as)a.a(paramaq.c, as.class);
       if (parama != null) {
         break label254;
       }
-      x.e("[Upload] Failed to decode strategy from server. Response cmd: %d", new Object[] { Integer.valueOf(paraman.b) });
+      x.e("[Upload] Failed to decode strategy from server. Response cmd: %d", new Object[] { Integer.valueOf(paramaq.b) });
       return false;
       label254:
       parama1.a(parama);
     }
-    parama.k = paraman.e;
-    if (paraman.b == 510) {
-      if (paraman.c == null)
+    parama.l = paramaq.e;
+    if (paramaq.b == 510) {
+      if (paramaq.c == null)
       {
-        x.e("[Upload] Strategy data is null. Response cmd: %d", new Object[] { Integer.valueOf(paraman.b) });
+        x.e("[Upload] Strategy data is null. Response cmd: %d", new Object[] { Integer.valueOf(paramaq.b) });
         return false;
       }
     }
@@ -191,7 +191,7 @@ public final class v
       this.q = 0L;
       this.r = 0L;
       byte[] arrayOfByte = this.e;
-      if (b.f(this.c) == null)
+      if (b.c(this.c) == null)
       {
         a(null, false, 0, "network is not available", 0);
         return;
@@ -205,19 +205,12 @@ public final class v
     catch (Throwable localThrowable1)
     {
       if (x.a(localThrowable1)) {
-        break label1744;
+        break label1651;
       }
     }
     localThrowable1.printStackTrace();
     return;
     label82:
-    long l1 = this.i.a(this.t);
-    if (localThrowable1.length + l1 >= 2097152L)
-    {
-      x.e("[Upload] Upload too much data, try next time: %d/%d", new Object[] { Long.valueOf(l1), Long.valueOf(2097152L) });
-      a(null, false, 0, "over net consume: " + 2048L + "K", 0);
-      return;
-    }
     x.c("[Upload] Run upload task with cmd: %d", new Object[] { Integer.valueOf(this.d) });
     if ((this.c == null) || (this.f == null) || (this.g == null) || (this.h == null))
     {
@@ -234,7 +227,7 @@ public final class v
     HashMap localHashMap = new HashMap();
     localHashMap.put("prodId", this.f.e());
     localHashMap.put("bundleId", this.f.c);
-    localHashMap.put("appVer", this.f.l);
+    localHashMap.put("appVer", this.f.m);
     if (this.o != null) {
       localHashMap.putAll(this.o);
     }
@@ -243,9 +236,8 @@ public final class v
     {
       localHashMap.put("cmd", Integer.toString(this.d));
       localHashMap.put("platformId", Byte.toString((byte)1));
-      this.f.getClass();
-      localHashMap.put("sdkVer", "2.7.4");
-      localHashMap.put("strategylastUpdateTime", Long.toString(((StrategyBean)localObject2).o));
+      localHashMap.put("sdkVer", this.f.g);
+      localHashMap.put("strategylastUpdateTime", Long.toString(((StrategyBean)localObject2).p));
       if (!this.i.a(localHashMap))
       {
         a(null, false, 0, "failed to add security info to HTTP headers", 0);
@@ -280,7 +272,7 @@ public final class v
     {
       int i4 = i1 + 1;
       if (i1 >= this.a) {
-        break label1725;
+        break label1632;
       }
       localObject2 = localObject1;
       if (i4 > 1)
@@ -296,7 +288,7 @@ public final class v
       }
       x.c("[Upload] Send %d bytes", new Object[] { Integer.valueOf(localObject4.length) });
       if (!this.s) {
-        break label1737;
+        break label1644;
       }
       localObject1 = a((String)localObject2);
       x.c("[Upload] Upload to %s with cmd %d (pid=%d | tid=%d).", new Object[] { localObject1, Integer.valueOf(this.d), Integer.valueOf(Process.myPid()), Integer.valueOf(Process.myTid()) });
@@ -312,7 +304,7 @@ public final class v
         localObject5 = this.h.a;
         i2 = i3;
         if (!this.s) {
-          break label1415;
+          break label1322;
         }
         if ((localObject5 == null) || (((Map)localObject5).size() == 0))
         {
@@ -373,14 +365,14 @@ public final class v
           x.c("[Upload] Status from server is %d (pid=%d | tid=%d).", new Object[] { Integer.valueOf(i1), Integer.valueOf(Process.myPid()), Integer.valueOf(Process.myTid()) });
           i2 = i1;
           if (i1 == 0) {
-            break label1415;
+            break label1322;
           }
           if (i1 != 2) {
             break;
           }
           if (this.q + this.r > 0L)
           {
-            l1 = this.i.a(this.t);
+            long l1 = this.i.a(this.t);
             long l2 = this.q;
             long l3 = this.r;
             this.i.a(l1 + l2 + l3, this.t);
@@ -400,7 +392,7 @@ public final class v
     }
     a(null, false, 1, "status of server is " + i1, i1);
     return;
-    label1415:
+    label1322:
     x.c("[Upload] Received %d bytes", new Object[] { Integer.valueOf(localThrowable2.length) });
     Object localObject3;
     if (this.s)
@@ -439,28 +431,28 @@ public final class v
         return;
       }
       if (this.s) {
-        this.i.a(i2, (an)localObject1);
+        this.i.a(i2, (aq)localObject1);
       }
-      i2 = ((an)localObject1).b;
-      if (((an)localObject1).c == null) {}
-      for (i1 = 0;; i1 = ((an)localObject1).c.length)
+      i2 = ((aq)localObject1).b;
+      if (((aq)localObject1).c == null) {}
+      for (i1 = 0;; i1 = ((aq)localObject1).c.length)
       {
         x.c("[Upload] Response cmd is: %d, length of sBuffer is: %d", new Object[] { Integer.valueOf(i2), Integer.valueOf(i1) });
-        if (a((an)localObject1, this.f, this.g)) {
+        if (a((aq)localObject1, this.f, this.g)) {
           break;
         }
-        a((an)localObject1, false, 2, "failed to process response package", 0);
+        a((aq)localObject1, false, 2, "failed to process response package", 0);
         return;
       }
-      a((an)localObject1, true, 2, "successfully uploaded", 0);
+      a((aq)localObject1, true, 2, "successfully uploaded", 0);
       return;
-      label1725:
+      label1632:
       a(null, false, i2, "failed after many attempts", 0);
       return;
-      label1737:
+      label1644:
       localObject1 = localObject3;
       break;
-      label1744:
+      label1651:
       return;
       localObject1 = localObject3;
     }

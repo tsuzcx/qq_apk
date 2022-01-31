@@ -1,729 +1,245 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.media.AudioManager;
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import android.net.Uri;
+import KQQ.ReqItem;
+import KQQ.RespItem;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.Process;
-import android.os.SystemClock;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.pb.getpreload.PreloadInfoCheckUpdate.AppBehavior;
+import com.tencent.pb.getpreload.PreloadInfoCheckUpdate.ControlReqHead;
+import com.tencent.pb.getpreload.PreloadInfoCheckUpdate.ControlRspHead;
+import com.tencent.pb.getpreload.PreloadInfoCheckUpdate.PreloadInfoReq;
+import com.tencent.pb.getpreload.PreloadInfoCheckUpdate.PreloadInfoRsp;
+import com.tencent.pb.getpreload.PreloadInfoCheckUpdate.PreloadResult;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.AudioDeviceInterface;
-import com.tencent.sharp.jni.TraeAudioManager;
-import com.tencent.sharp.jni.TraeAudioManager.DeviceConfigManager;
-import com.tencent.sharp.jni.TraeAudioSessionHost;
-import com.tencent.sharp.jni.TraeMediaPlayer;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 public class alyu
-  extends Thread
+  implements azal
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = -1L;
-  AudioManager.OnAudioFocusChangeListener jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = null;
-  Handler jdField_a_of_type_AndroidOsHandler = null;
-  TraeAudioManager jdField_a_of_type_ComTencentSharpJniTraeAudioManager = null;
-  TraeMediaPlayer jdField_a_of_type_ComTencentSharpJniTraeMediaPlayer = null;
-  String jdField_a_of_type_JavaLangString = "";
-  boolean jdField_a_of_type_Boolean = false;
-  final boolean[] jdField_a_of_type_ArrayOfBoolean = { false };
-  int jdField_b_of_type_Int = 0;
-  long jdField_b_of_type_Long = -1L;
-  String jdField_b_of_type_JavaLangString = "";
-  int jdField_c_of_type_Int = 0;
-  String jdField_c_of_type_JavaLangString = "";
-  String d = "";
+  QQAppInterface a;
   
-  public alyu(TraeAudioManager arg1, TraeAudioManager paramTraeAudioManager2)
+  public alyu(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager = paramTraeAudioManager2;
-    long l = SystemClock.elapsedRealtime();
+    this.a = paramQQAppInterface;
+  }
+  
+  private boolean a(azbi paramazbi, String paramString)
+  {
+    if (paramazbi == null) {}
+    while (paramazbi.a(paramString) == -1) {
+      return false;
+    }
+    return true;
+  }
+  
+  public int a()
+  {
+    return 3;
+  }
+  
+  public ReqItem a(int paramInt)
+  {
+    ReqItem localReqItem = null;
     if (QLog.isColorLevel()) {
-      QLog.e("TRAE", 2, "TraeAudioManagerLooper start...");
+      QLog.d("PreloadInfoCheckUpdateItem", 2, "getCheckUpdateItemData");
     }
-    start();
-    synchronized (this.jdField_a_of_type_ArrayOfBoolean)
-    {
-      int i = this.jdField_a_of_type_ArrayOfBoolean[0];
-      if (i != 0) {}
+    Object localObject1 = BaseApplicationImpl.getApplication().getSharedPreferences("web_process_preload_file", 4);
+    paramInt = ((SharedPreferences)localObject1).getInt("key_check_update_interval" + this.a.getCurrentAccountUin(), 259200);
+    int i = ((SharedPreferences)localObject1).getInt("key_last_check_update_timestamp" + this.a.getCurrentAccountUin(), 0);
+    int j = (int)(System.currentTimeMillis() / 1000L);
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadInfoCheckUpdateItem", 2, "getPreloadInfo:lastCheckTime=" + i + ",nowSystemTime=" + j);
     }
-    try
+    if ((j - i > paramInt) || (j < i))
     {
-      this.jdField_a_of_type_ArrayOfBoolean.wait();
-      label152:
       if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, "  start used:" + (SystemClock.elapsedRealtime() - l) + "ms");
+        QLog.d("PreloadInfoCheckUpdateItem", 2, "getPreloadInfo:start send check update new info update time.");
       }
-      return;
-      paramTraeAudioManager2 = finally;
-      throw paramTraeAudioManager2;
-    }
-    catch (InterruptedException paramTraeAudioManager2)
-    {
-      break label152;
-    }
-  }
-  
-  int a()
-  {
-    AudioDeviceInterface.LogTraceEntry(" activeMode:" + this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int);
-    if (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, " am==null!!");
-      }
-    }
-    do
-    {
-      return -1;
-      if (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int == 1) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("TRAE", 2, " not ACTIVE_RING!!");
-    return -1;
-    this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int = 0;
-    if (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_b_of_type_Int != -1) {
-      this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.a(this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_b_of_type_Int);
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("PARAM_SESSIONID", Long.valueOf(this.jdField_b_of_type_Long));
-    localHashMap.put("PARAM_OPERATION", this.d);
-    Intent localIntent = new Intent();
-    this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.a(localIntent, localHashMap, 6);
-    AudioDeviceInterface.LogTraceExit();
-    return 0;
-  }
-  
-  int a(int paramInt)
-  {
-    if (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext == null) {
-      return -1;
-    }
-    Intent localIntent = new Intent();
-    localIntent.setAction("com.tencent.sharp.ACTION_TRAEAUDIOMANAGER_NOTIFY");
-    localIntent.putExtra("PARAM_OPERATION", "NOTIFY_STREAMTYPE_UPDATE");
-    localIntent.putExtra("EXTRA_DATA_STREAMTYPE", paramInt);
-    try
-    {
-      this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext.sendBroadcast(localIntent);
-      return 0;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      ((SharedPreferences)localObject1).edit().putInt("key_last_check_update_timestamp" + this.a.getCurrentAccountUin(), (int)(System.currentTimeMillis() / 1000L)).commit();
+      localReqItem = new ReqItem();
+      localReqItem.eServiceID = 123;
+      Object localObject2 = new PreloadInfoCheckUpdate.PreloadInfoReq();
+      Object localObject3 = new PreloadInfoCheckUpdate.ControlReqHead();
+      ((PreloadInfoCheckUpdate.ControlReqHead)localObject3).protocol_ver.set(1);
+      ((PreloadInfoCheckUpdate.ControlReqHead)localObject3).client_plat_id.set(109);
+      ((PreloadInfoCheckUpdate.ControlReqHead)localObject3).client_ver.set("8.3.5");
+      ((PreloadInfoCheckUpdate.ControlReqHead)localObject3).os_ver.set(Build.VERSION.SDK);
+      ((PreloadInfoCheckUpdate.ControlReqHead)localObject3).uin.set(this.a.getLongAccountUin());
+      ((PreloadInfoCheckUpdate.ControlReqHead)localObject3).mem.set((int)bdgk.d() / 1048576);
+      ((PreloadInfoCheckUpdate.ControlReqHead)localObject3).ext1.set("nothing");
+      ((PreloadInfoCheckUpdate.PreloadInfoReq)localObject2).head.set((MessageMicro)localObject3);
+      Object localObject4 = bdnf.a((SharedPreferences)localObject1, "key_web_plugin_list" + this.a.getCurrentAccountUin(), null);
+      if ((localObject4 != null) && (!((Set)localObject4).isEmpty()))
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("TRAE", 2, "InternalNotifyStreamTypeUpdate e = " + localException);
+        localObject3 = (azbi)this.a.getManager(12);
+        localObject4 = ((Set)localObject4).iterator();
+        if (((Iterator)localObject4).hasNext())
+        {
+          String str = (String)((Iterator)localObject4).next();
+          PreloadInfoCheckUpdate.AppBehavior localAppBehavior = new PreloadInfoCheckUpdate.AppBehavior();
+          localAppBehavior.appid.set(Integer.parseInt(str));
+          localAppBehavior.click_num.set(((SharedPreferences)localObject1).getInt("key_web_plugin_click_num" + str + this.a.getCurrentAccountUin(), 0));
+          localAppBehavior.click_red_num.set(((SharedPreferences)localObject1).getInt("key_web_plugin_click_red_num" + str + this.a.getCurrentAccountUin(), 0));
+          PBInt32Field localPBInt32Field = localAppBehavior.red_state;
+          if (a((azbi)localObject3, str)) {}
+          for (paramInt = 2;; paramInt = 1)
+          {
+            localPBInt32Field.set(paramInt);
+            ((PreloadInfoCheckUpdate.PreloadInfoReq)localObject2).app_behavior.add(localAppBehavior);
+            break;
+          }
+        }
+      }
+      localObject1 = ((PreloadInfoCheckUpdate.PreloadInfoReq)localObject2).toByteArray();
+      paramInt = localObject1.length;
+      i = paramInt + 4;
+      localObject2 = new byte[i];
+      System.arraycopy(bdas.b(i), 0, localObject2, 0, 4);
+      System.arraycopy(localObject1, 0, localObject2, 4, paramInt);
+      localReqItem.vecParam = ((byte[])localObject2);
+    }
+    return localReqItem;
+  }
+  
+  public void a(RespItem paramRespItem)
+  {
+    if (paramRespItem != null)
+    {
+      i = paramRespItem.cResult;
+      localObject1 = paramRespItem.vecUpdate;
+      if (QLog.isColorLevel()) {
+        QLog.d("PreloadInfoCheckUpdateItem", 2, "handleCheckUpdateItemData result=" + i + ",dataLen=" + localObject1.length);
+      }
+      if (i == 2) {
+        try
+        {
+          if (localObject1.length > 4)
+          {
+            i = (int)bdqa.a((byte[])localObject1, 0);
+            paramRespItem = new byte[i - 4];
+            bdqa.a(paramRespItem, 0, (byte[])localObject1, 4, i - 4);
+            localObject1 = new PreloadInfoCheckUpdate.PreloadInfoRsp();
+            ((PreloadInfoCheckUpdate.PreloadInfoRsp)localObject1).mergeFrom(paramRespItem);
+            if (localObject1 != null)
+            {
+              paramRespItem = (PreloadInfoCheckUpdate.ControlRspHead)((PreloadInfoCheckUpdate.PreloadInfoRsp)localObject1).head.get();
+              if (paramRespItem != null)
+              {
+                i = paramRespItem.code.get();
+                if (QLog.isColorLevel()) {
+                  QLog.d("PreloadInfoCheckUpdateItem", 2, "PreloadInfoCheckUpdateItem preloadInfoRsp data code=" + i);
+                }
+                if (i != 0) {
+                  break label1188;
+                }
+                paramRespItem = BaseApplicationImpl.getApplication().getSharedPreferences("web_process_preload_file", 4).edit();
+                paramRespItem.putInt("key_preload_strategy" + this.a.getCurrentAccountUin(), ((PreloadInfoCheckUpdate.PreloadInfoRsp)localObject1).preload_switch.get());
+                if (QLog.isColorLevel()) {
+                  QLog.d("PreloadInfoCheckUpdateItem", 2, "preload_switch=" + ((PreloadInfoCheckUpdate.PreloadInfoRsp)localObject1).preload_switch.get());
+                }
+                paramRespItem.putBoolean("key_preload_flag" + this.a.getCurrentAccountUin(), ((PreloadInfoCheckUpdate.PreloadInfoRsp)localObject1).preload.get());
+                if (QLog.isColorLevel()) {
+                  QLog.d("PreloadInfoCheckUpdateItem", 2, "preload=" + ((PreloadInfoCheckUpdate.PreloadInfoRsp)localObject1).preload.get());
+                }
+                paramRespItem.putInt("key_check_update_interval" + this.a.getCurrentAccountUin(), ((PreloadInfoCheckUpdate.PreloadInfoRsp)localObject1).interval.get());
+                if (QLog.isColorLevel()) {
+                  QLog.d("PreloadInfoCheckUpdateItem", 2, "interval=" + ((PreloadInfoCheckUpdate.PreloadInfoRsp)localObject1).interval.get());
+                }
+                localObject3 = ((PreloadInfoCheckUpdate.PreloadInfoRsp)localObject1).applist.get();
+                if ((localObject3 == null) || (((List)localObject3).isEmpty())) {
+                  break label651;
+                }
+                localObject2 = new HashSet();
+                localObject3 = ((List)localObject3).iterator();
+                while (((Iterator)localObject3).hasNext())
+                {
+                  str = (String)((Iterator)localObject3).next();
+                  ((Set)localObject2).add(str);
+                  paramRespItem.putInt("key_web_plugin_click_num" + str + this.a.getCurrentAccountUin(), 0);
+                  paramRespItem.putInt("key_web_plugin_click_red_num" + str + this.a.getCurrentAccountUin(), 0);
+                }
+              }
+            }
+          }
+          return;
+        }
+        catch (Exception paramRespItem)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("PreloadInfoCheckUpdateItem", 2, "PreloadInfoCheckUpdateItem Exception msg=" + paramRespItem.getMessage());
+          }
+          paramRespItem.printStackTrace();
         }
       }
     }
-  }
-  
-  public int a(int paramInt, HashMap paramHashMap)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler == null)
-    {
-      StringBuilder localStringBuilder = new StringBuilder().append(" fail mMsgHandler==null _enabled:");
-      if (this.jdField_a_of_type_Boolean) {}
-      for (paramHashMap = "Y";; paramHashMap = "N")
-      {
-        AudioDeviceInterface.LogTraceEntry(paramHashMap + " activeMode:" + this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int + " msg:" + paramInt);
-        return -1;
-      }
-    }
-    paramHashMap = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, paramInt, paramHashMap);
-    if (this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramHashMap)) {}
-    for (paramInt = 0;; paramInt = -1) {
-      return paramInt;
-    }
-  }
-  
-  int a(HashMap paramHashMap)
-  {
-    Intent localIntent = new Intent();
-    Object localObject = this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.a();
-    ArrayList localArrayList = (ArrayList)((HashMap)localObject).get("EXTRA_DATA_AVAILABLEDEVICE_LIST");
-    String str = (String)((HashMap)localObject).get("EXTRA_DATA_CONNECTEDDEVICE");
-    localObject = (String)((HashMap)localObject).get("EXTRA_DATA_PREV_CONNECTEDDEVICE");
-    localIntent.putExtra("EXTRA_DATA_AVAILABLEDEVICE_LIST", (String[])localArrayList.toArray(new String[0]));
-    localIntent.putExtra("EXTRA_DATA_CONNECTEDDEVICE", str);
-    localIntent.putExtra("EXTRA_DATA_PREV_CONNECTEDDEVICE", (String)localObject);
-    localIntent.putExtra("EXTRA_DATA_IF_HAS_BLUETOOTH_THIS_IS_NAME", this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.a());
-    this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.a(localIntent, paramHashMap, 0);
-    return 0;
-  }
-  
-  int a(boolean paramBoolean)
-  {
-    if (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext == null) {
-      return -1;
-    }
-    Intent localIntent = new Intent();
-    localIntent.setAction("com.tencent.sharp.ACTION_TRAEAUDIOMANAGER_NOTIFY");
-    localIntent.putExtra("PARAM_OPERATION", "NOTIFY_SERVICE_STATE");
-    localIntent.putExtra("NOTIFY_SERVICE_STATE_DATE", paramBoolean);
-    this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext.sendBroadcast(localIntent);
-    return 0;
-  }
-  
-  public void a()
-  {
-    AudioDeviceInterface.LogTraceEntry("");
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      return;
-    }
-    long l = SystemClock.elapsedRealtime();
-    this.jdField_a_of_type_AndroidOsHandler.getLooper().quit();
-    synchronized (this.jdField_a_of_type_ArrayOfBoolean)
-    {
-      int i = this.jdField_a_of_type_ArrayOfBoolean[0];
-      if (i != 1) {}
-    }
-    try
-    {
-      this.jdField_a_of_type_ArrayOfBoolean.wait(10000L);
-      label58:
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, "  quit used:" + (SystemClock.elapsedRealtime() - l) + "ms");
-      }
-      this.jdField_a_of_type_AndroidOsHandler = null;
-      AudioDeviceInterface.LogTraceExit();
-      return;
-      localObject = finally;
-      throw localObject;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      break label58;
-    }
-  }
-  
-  @TargetApi(8)
-  void a(int paramInt)
-  {
-    if (Build.VERSION.SDK_INT <= 8) {}
-    do
+    label651:
+    label1188:
+    while (!QLog.isColorLevel())
     {
       do
       {
         do
         {
-          return;
-        } while (this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener != null);
-        this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new alyx(this);
-      } while (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager == null);
-      int i = this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager.requestAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener, paramInt, 1);
-      if ((i != 1) && (QLog.isColorLevel())) {
-        QLog.e("TRAE", 2, "request audio focus fail. " + i + " mode:" + this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager.getMode());
-      }
-      this.jdField_c_of_type_Int = paramInt;
-    } while (!QLog.isColorLevel());
-    QLog.w("TRAE", 2, "-------requestAudioFocus _focusSteamType:" + this.jdField_c_of_type_Int);
-  }
-  
-  void a(HashMap paramHashMap)
-  {
-    String str = (String)paramHashMap.get("EXTRA_DATA_DEVICECONFIG");
-    StringBuilder localStringBuilder = new StringBuilder().append(" _enabled:");
-    if (this.jdField_a_of_type_Boolean)
-    {
-      localObject = "Y";
-      AudioDeviceInterface.LogTraceEntry((String)localObject + " activeMode:" + this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int + " cfg:" + str);
-      if ((str != null) && (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext != null)) {
-        break label94;
-      }
-    }
-    label94:
-    while ((str.length() <= 0) || ((this.jdField_a_of_type_Boolean) && (this.jdField_c_of_type_JavaLangString.equals(str))) || (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int != 0))
-    {
-      return;
-      localObject = "N";
-      break;
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      b();
-    }
-    d();
-    Object localObject = (AudioManager)this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext.getSystemService("audio");
-    this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.a();
-    this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.a(str);
-    this.jdField_c_of_type_JavaLangString = str;
-    if (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager != null) {
-      this.jdField_a_of_type_Int = this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager.getMode();
-    }
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_ComTencentSharpJniTraeMediaPlayer == null) {
-      this.jdField_a_of_type_ComTencentSharpJniTraeMediaPlayer = new TraeMediaPlayer(this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext, new alyv(this));
-    }
-    paramHashMap = (String)paramHashMap.get("EXTRA_DATA_CONNECTDEVICENAMEWHENSERVICEON");
-    this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.a(paramHashMap);
-    a(this.jdField_a_of_type_Boolean);
-    AudioDeviceInterface.LogTraceExit();
-  }
-  
-  int b()
-  {
-    AudioDeviceInterface.LogTraceEntry(" activeMode:" + this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int + " _preRingMode:" + this.jdField_b_of_type_Int);
-    if (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, " interruptRing am==null!!");
-      }
-    }
-    do
-    {
-      return -1;
-      if (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int == 2) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("TRAE", 2, " not ACTIVE_RING!!");
-    return -1;
-    this.jdField_a_of_type_ComTencentSharpJniTraeMediaPlayer.a("interruptRing");
-    g();
-    this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int = 0;
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("PARAM_SESSIONID", Long.valueOf(this.jdField_a_of_type_Long));
-    localHashMap.put("PARAM_OPERATION", this.jdField_a_of_type_JavaLangString);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("PARAM_RING_USERDATA_STRING", this.jdField_b_of_type_JavaLangString);
-    this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.a(localIntent, localHashMap, 4);
-    AudioDeviceInterface.LogTraceExit();
-    return 0;
-  }
-  
-  int b(HashMap paramHashMap)
-  {
-    AudioDeviceInterface.LogTraceEntry(" activeMode:" + this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int);
-    if (paramHashMap == null) {
-      return -1;
-    }
-    if (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, " InternalVoicecallPreprocess am==null!!");
-      }
-      return -1;
-    }
-    if (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int == 1)
-    {
-      localObject = new Intent();
-      this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.a((Intent)localObject, paramHashMap, 2);
-      return -1;
-    }
-    this.jdField_b_of_type_Long = ((Long)paramHashMap.get("PARAM_SESSIONID")).longValue();
-    this.d = ((String)paramHashMap.get("PARAM_OPERATION"));
-    this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_b_of_type_JavaLangString = "DEVICE_NONE";
-    this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_b_of_type_Int = this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager.getMode();
-    Object localObject = (Integer)paramHashMap.get("PARAM_MODEPOLICY");
-    if (localObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, " params.get(PARAM_MODEPOLICY)==null!!");
-      }
-      this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.d = -1;
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, "  _modePolicy:" + this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.d);
-      }
-      localObject = (Integer)paramHashMap.get("PARAM_STREAMTYPE");
-      if (localObject != null) {
-        break label375;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, " params.get(PARAM_STREAMTYPE)==null!!");
-      }
-      this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_c_of_type_Int = 0;
-      label271:
-      if ((!TraeAudioManager.a(this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.d)) || (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int == 2) || (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager == null)) {
-        break label405;
-      }
-      if (!this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.d().equals("DEVICE_SPEAKERPHONE")) {
-        break label389;
-      }
-      this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.a(0);
-      a(3);
-    }
-    for (;;)
-    {
-      localObject = new Intent();
-      this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.a((Intent)localObject, paramHashMap, 0);
-      AudioDeviceInterface.LogTraceExit();
-      return 0;
-      this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.d = ((Integer)localObject).intValue();
-      break;
-      label375:
-      this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_c_of_type_Int = ((Integer)localObject).intValue();
-      break label271;
-      label389:
-      this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.a(3);
-      a(0);
-      continue;
-      label405:
-      this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.a(TraeAudioManager.c(this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.d));
-      a(this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_c_of_type_Int);
-    }
-  }
-  
-  void b()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append(" _enabled:");
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = "Y";; str = "N")
-    {
-      AudioDeviceInterface.LogTraceEntry(str + " activeMode:" + this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_Boolean) {
-        break;
-      }
-      return;
-    }
-    if (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int == 1) {
-      a();
-    }
-    for (;;)
-    {
-      if (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Alzc != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("TRAE", 2, "_switchThread:" + this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Alzc.a());
-        }
-        this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Alzc.f();
-        this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Alzc = null;
-      }
-      if (this.jdField_a_of_type_ComTencentSharpJniTraeMediaPlayer != null) {
-        this.jdField_a_of_type_ComTencentSharpJniTraeMediaPlayer.a("stopService");
-      }
-      this.jdField_a_of_type_ComTencentSharpJniTraeMediaPlayer = null;
-      this.jdField_a_of_type_Boolean = false;
-      a(this.jdField_a_of_type_Boolean);
-      if ((this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager != null) && (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext != null)) {}
-      try
-      {
-        this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.a(0);
-        QLog.w("TRAE", 2, "NeedForceVolumeType: -1");
-        TraeAudioManager.a(this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager, -1);
-        label233:
-        e();
-        AudioDeviceInterface.LogTraceExit();
-        return;
-        if (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int != 2) {
-          continue;
-        }
-        b();
-      }
-      catch (Exception localException)
-      {
-        break label233;
-      }
-    }
-  }
-  
-  int c(HashMap paramHashMap)
-  {
-    AudioDeviceInterface.LogTraceEntry(" activeMode:" + this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int);
-    if (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, " InternalVoicecallPostprocess am==null!!");
-      }
-      return -1;
-    }
-    if (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int != 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, " not ACTIVE_VOICECALL!!");
-      }
-      localIntent = new Intent();
-      this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.a(localIntent, paramHashMap, 3);
-      return -1;
-    }
-    this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int = 0;
-    g();
-    Intent localIntent = new Intent();
-    this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.a(localIntent, paramHashMap, 0);
-    AudioDeviceInterface.LogTraceExit();
-    return 0;
-  }
-  
-  void c()
-  {
-    AudioDeviceInterface.LogTraceEntry("");
-    try
-    {
-      this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_ComTencentSharpJniTraeAudioSessionHost = new TraeAudioSessionHost();
-      this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager = new TraeAudioManager.DeviceConfigManager(this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager);
-      TraeAudioManager.e = Process.myPid();
-      this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext.getSystemService("audio"));
-      this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Alyt = this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.a(this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager);
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.HEADSET_PLUG");
-      localIntentFilter.addAction("android.media.AUDIO_BECOMING_NOISY");
-      this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Alyt.b(localIntentFilter);
-      localIntentFilter.addAction("com.tencent.av.sharp.ACTION_TRAEAUDIOMANAGER_REQUEST");
-      localIntentFilter.addAction("com.tencent.sharp.ACTION_TRAEAUDIOMANAGER_REQUEST");
-      this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager, localIntentFilter);
-      AudioDeviceInterface.LogTraceExit();
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("TRAE", 2, "======7");
-        }
-      }
-    }
-  }
-  
-  int d(HashMap paramHashMap)
-  {
-    boolean bool1 = true;
-    AudioDeviceInterface.LogTraceEntry(" activeMode:" + this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int);
-    if (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, " InternalStartRing am==null!!");
-      }
-      return -1;
-    }
-    if (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int == 2) {
-      b();
-    }
-    String str1 = "";
-    for (;;)
-    {
-      try
-      {
-        if (paramHashMap.containsKey("PARAM_From")) {
-          str1 = "" + paramHashMap.get("PARAM_From");
-        }
-        str1 = str1 + "_InternalStartRing";
-        this.jdField_a_of_type_Long = ((Long)paramHashMap.get("PARAM_SESSIONID")).longValue();
-        this.jdField_a_of_type_JavaLangString = ((String)paramHashMap.get("PARAM_OPERATION"));
-        this.jdField_b_of_type_JavaLangString = ((String)paramHashMap.get("PARAM_RING_USERDATA_STRING"));
-        int i = ((Integer)paramHashMap.get("PARAM_RING_DATASOURCE")).intValue();
-        if (QLog.isColorLevel()) {
-          QLog.w("TRAE", 2, "  dataSource:" + i);
-        }
-        int j = ((Integer)paramHashMap.get("PARAM_RING_RSID")).intValue();
-        Uri localUri = (Uri)paramHashMap.get("PARAM_RING_URI");
-        String str2 = (String)paramHashMap.get("PARAM_RING_FILEPATH");
-        boolean bool2 = ((Boolean)paramHashMap.get("PARAM_RING_LOOP")).booleanValue();
-        int k = ((Integer)paramHashMap.get("PARAM_RING_LOOPCOUNT")).intValue();
-        boolean bool3 = ((Boolean)paramHashMap.get("PARAM_RING_MODE")).booleanValue();
-        if (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int != 1) {
-          this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int = 2;
-        }
-        Intent localIntent = new Intent();
-        localIntent.putExtra("PARAM_RING_USERDATA_STRING", this.jdField_b_of_type_JavaLangString);
-        this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.a(localIntent, paramHashMap, 0);
-        this.jdField_b_of_type_Int = this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager.getMode();
-        paramHashMap = this.jdField_a_of_type_ComTencentSharpJniTraeMediaPlayer;
-        if (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int == 1)
-        {
-          paramHashMap.a(str1, i, j, localUri, str2, bool2, k, bool3, bool1, this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_c_of_type_Int);
+          int i;
+          Object localObject1;
+          Object localObject3;
+          String str;
+          Object localObject2 = ((Set)localObject2).toArray();
+          bdnf.a(paramRespItem, "key_web_plugin_list" + this.a.getCurrentAccountUin(), (Object[])localObject2);
+          paramRespItem.putInt("key_red_ram" + this.a.getCurrentAccountUin(), ((PreloadInfoCheckUpdate.PreloadInfoRsp)localObject1).red_ram.get());
           if (QLog.isColorLevel()) {
-            QLog.w("TRAE", 2, " _ringUserdata:" + this.jdField_b_of_type_JavaLangString + " DurationMS:" + this.jdField_a_of_type_ComTencentSharpJniTraeMediaPlayer.b());
+            QLog.d("PreloadInfoCheckUpdateItem", 2, "red_ram=" + ((PreloadInfoCheckUpdate.PreloadInfoRsp)localObject1).red_ram.get());
           }
-          if (!this.jdField_a_of_type_ComTencentSharpJniTraeMediaPlayer.a()) {
-            a(this.jdField_a_of_type_ComTencentSharpJniTraeMediaPlayer.a());
+          paramRespItem.putInt("key_click_ram" + this.a.getCurrentAccountUin(), ((PreloadInfoCheckUpdate.PreloadInfoRsp)localObject1).click_ram.get());
+          if (QLog.isColorLevel()) {
+            QLog.d("PreloadInfoCheckUpdateItem", 2, "click_ram=" + ((PreloadInfoCheckUpdate.PreloadInfoRsp)localObject1).click_ram.get());
           }
-          a(this.jdField_a_of_type_ComTencentSharpJniTraeMediaPlayer.a());
-          AudioDeviceInterface.LogTraceExit();
-          return 0;
-        }
-      }
-      catch (Exception paramHashMap)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TRAE", 2, " startRing err params");
-        }
-        return -1;
-      }
-      bool1 = false;
-    }
-  }
-  
-  void d()
-  {
-    try
-    {
-      this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext.getSystemService("audio"));
-      if (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Alyt == null) {
-        this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Alyt = this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.a(this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager);
-      }
-      this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager);
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.HEADSET_PLUG");
-      localIntentFilter.addAction("android.media.AUDIO_BECOMING_NOISY");
-      this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Alyt.b(localIntentFilter);
-      localIntentFilter.addAction("com.tencent.av.sharp.ACTION_TRAEAUDIOMANAGER_REQUEST");
-      localIntentFilter.addAction("com.tencent.sharp.ACTION_TRAEAUDIOMANAGER_REQUEST");
-      this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager, localIntentFilter);
+          localObject2 = ((PreloadInfoCheckUpdate.PreloadInfoRsp)localObject1).preload_result.get();
+          if ((localObject2 != null) && (!((List)localObject2).isEmpty()))
+          {
+            localObject1 = BaseApplicationImpl.getApplication().getSharedPreferences("ppp_profile", 4).edit();
+            localObject2 = ((List)localObject2).iterator();
+            while (((Iterator)localObject2).hasNext())
+            {
+              localObject3 = (PreloadInfoCheckUpdate.PreloadResult)((Iterator)localObject2).next();
+              i = ((PreloadInfoCheckUpdate.PreloadResult)localObject3).appid.get();
+              ((SharedPreferences.Editor)localObject1).putInt(i + "preload_switch" + this.a.getCurrentAccountUin(), ((PreloadInfoCheckUpdate.PreloadResult)localObject3).preload_switch.get());
+              ((SharedPreferences.Editor)localObject1).putBoolean(i + "preload" + this.a.getCurrentAccountUin(), ((PreloadInfoCheckUpdate.PreloadResult)localObject3).preload.get());
+              ((SharedPreferences.Editor)localObject1).putBoolean(i + "preload_data" + this.a.getCurrentAccountUin(), ((PreloadInfoCheckUpdate.PreloadResult)localObject3).preload_data.get());
+              ((SharedPreferences.Editor)localObject1).putInt(i + "mem_limit" + this.a.getCurrentAccountUin(), ((PreloadInfoCheckUpdate.PreloadResult)localObject3).mem_limit.get());
+              ((SharedPreferences.Editor)localObject1).putString(i + "ext1" + this.a.getCurrentAccountUin(), ((PreloadInfoCheckUpdate.PreloadResult)localObject3).ext1.get());
+            }
+          }
+          paramRespItem.putInt("key_last_check_update_timestamp" + this.a.getCurrentAccountUin(), (int)(System.currentTimeMillis() / 1000L));
+          paramRespItem.commit();
+          paramRespItem = (WebProcessManager)this.a.getManager(13);
+        } while (paramRespItem == null);
+        paramRespItem.a();
+        paramRespItem.b();
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.d("PreloadInfoCheckUpdateItem", 2, "PreloadInfoCheckUpdateItem preloadInfoRsp erro msg=" + paramRespItem.err_msg.get());
       return;
     }
-    catch (Exception localException) {}
-  }
-  
-  int e(HashMap paramHashMap)
-  {
-    AudioDeviceInterface.LogTraceEntry(" activeMode:" + this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int + " _preRingMode:" + this.jdField_b_of_type_Int);
-    if ((this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager == null) || (this.jdField_a_of_type_ComTencentSharpJniTraeMediaPlayer == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, " InternalStopRing am==null!!");
-      }
-      return -1;
-    }
-    String str = "";
-    Object localObject = str;
-    if (paramHashMap != null)
-    {
-      localObject = str;
-      if (paramHashMap.containsKey("PARAM_From")) {
-        localObject = "" + paramHashMap.get("PARAM_From");
-      }
-    }
-    localObject = (String)localObject + "_InternalStopRing";
-    this.jdField_a_of_type_ComTencentSharpJniTraeMediaPlayer.a((String)localObject);
-    if ((!this.jdField_a_of_type_ComTencentSharpJniTraeMediaPlayer.a()) && (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int == 2))
-    {
-      g();
-      this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int = 0;
-    }
-    localObject = new Intent();
-    ((Intent)localObject).putExtra("PARAM_RING_USERDATA_STRING", this.jdField_b_of_type_JavaLangString);
-    this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.a((Intent)localObject, paramHashMap, 0);
-    AudioDeviceInterface.LogTraceExit();
-    return 0;
-  }
-  
-  void e()
-  {
-    try
-    {
-      if (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Alyt != null) {
-        this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Alyt.a();
-      }
-      this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Alyt = null;
-      if (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext != null)
-      {
-        this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager);
-        IntentFilter localIntentFilter = new IntentFilter();
-        localIntentFilter.addAction("com.tencent.av.sharp.ACTION_TRAEAUDIOMANAGER_REQUEST");
-        localIntentFilter.addAction("com.tencent.sharp.ACTION_TRAEAUDIOMANAGER_REQUEST");
-        this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager, localIntentFilter);
-      }
-      return;
-    }
-    catch (Exception localException) {}
-  }
-  
-  int f(HashMap paramHashMap)
-  {
-    AudioDeviceInterface.LogTraceEntry(" activeMode:" + this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int + " _preRingMode:" + this.jdField_b_of_type_Int);
-    if (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, " InternalStopRing am==null!!");
-      }
-      return -1;
-    }
-    if (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Int == 2) {}
-    for (int i = this.jdField_a_of_type_ComTencentSharpJniTraeMediaPlayer.a();; i = this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_c_of_type_Int)
-    {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("EXTRA_DATA_STREAMTYPE", i);
-      this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.a(localIntent, paramHashMap, 0);
-      AudioDeviceInterface.LogTraceExit();
-      return 0;
-    }
-  }
-  
-  void f()
-  {
-    AudioDeviceInterface.LogTraceEntry("");
-    try
-    {
-      b();
-      if (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Alyt != null) {
-        this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Alyt.a();
-      }
-      this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_Alyt = null;
-      if (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext != null)
-      {
-        this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager);
-        this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext = null;
-      }
-      if (this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager != null) {
-        this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.a();
-      }
-      this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager = null;
-      label97:
-      AudioDeviceInterface.LogTraceExit();
-    }
-    catch (Exception localException)
-    {
-      break label97;
-    }
-  }
-  
-  @TargetApi(8)
-  void g()
-  {
-    if (Build.VERSION.SDK_INT <= 8) {}
-    while ((this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager == null) || (this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener == null)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.w("TRAE", 2, "-------abandonAudioFocus _focusSteamType:" + this.jdField_c_of_type_Int);
-    }
-    this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener);
-    this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = null;
-  }
-  
-  void h()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("PARAM_SESSIONID", Long.valueOf(this.jdField_a_of_type_Long));
-    localHashMap.put("PARAM_OPERATION", "NOTIFY_RING_COMPLETION");
-    Intent localIntent = new Intent();
-    localIntent.putExtra("PARAM_RING_USERDATA_STRING", this.jdField_b_of_type_JavaLangString);
-    this.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.a(localIntent, localHashMap, 0);
-  }
-  
-  public void run()
-  {
-    AudioDeviceInterface.LogTraceEntry("");
-    Looper.prepare();
-    this.jdField_a_of_type_AndroidOsHandler = new alyw(this);
-    c();
-    synchronized (this.jdField_a_of_type_ArrayOfBoolean)
-    {
-      this.jdField_a_of_type_ArrayOfBoolean[0] = true;
-      this.jdField_a_of_type_ArrayOfBoolean.notify();
-      Looper.loop();
-      f();
-    }
-    synchronized (this.jdField_a_of_type_ArrayOfBoolean)
-    {
-      this.jdField_a_of_type_ArrayOfBoolean[0] = false;
-      this.jdField_a_of_type_ArrayOfBoolean.notify();
-      AudioDeviceInterface.LogTraceExit();
-      return;
-      localObject1 = finally;
-      throw localObject1;
-    }
+    QLog.d("PreloadInfoCheckUpdateItem", 2, "PreloadInfoCheckUpdateItem handleCheckUpdateItemData respitem is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alyu
  * JD-Core Version:    0.7.0.1
  */

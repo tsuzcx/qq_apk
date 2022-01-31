@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class Submsgtype0x71$ReportAppInfo
-  extends MessageMicro
+  extends MessageMicro<ReportAppInfo>
 {
   public static final int INT32_APPSET_FIELD_NUMBER = 8;
   public static final int INT32_ICON_FLAG_FIELD_NUMBER = 11;

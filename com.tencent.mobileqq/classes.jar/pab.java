@@ -1,52 +1,24 @@
 import android.view.View;
-import com.tencent.biz.ui.IPullRefreshHeader;
-import com.tencent.biz.ui.RefreshView;
-import com.tencent.widget.ListView;
-import com.tencent.widget.OverScrollViewListener;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import java.util.ArrayList;
 
-public class pab
-  implements OverScrollViewListener
+class pab
+  implements View.OnClickListener
 {
-  public pab(RefreshView paramRefreshView) {}
+  pab(paa parampaa) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_Int == 2)
-    {
-      this.a.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.Y_();
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.c(0L);
-  }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    if (this.a.jdField_a_of_type_Int != 2)
-    {
-      RefreshView.a(this.a, false);
-      this.a.b(RefreshView.a(this.a));
-      this.a.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.a(0L);
-      this.a.jdField_a_of_type_Int = 2;
-      RefreshView.a(this.a);
-    }
-    return false;
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    if (this.a.jdField_a_of_type_Int != 2) {
-      this.a.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.b(0L);
-    }
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView)
-  {
-    this.a.b();
+    int i = ((Integer)paramView.getTag()).intValue();
+    this.a.a.a(paramView, i);
+    opn.a(this.a.a.getActivity(), "0X8009A71", this.a.a.a(), ((ozz)this.a.a.a.get(i)).a.mChannelCoverId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pab
  * JD-Core Version:    0.7.0.1
  */

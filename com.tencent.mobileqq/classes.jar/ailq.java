@@ -1,25 +1,17 @@
-import android.media.MediaPlayer;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
-class ailq
-  implements Runnable
+public class ailq
+  implements DialogInterface.OnClickListener
 {
-  ailq(ailp paramailp) {}
+  public ailq(BindNumberActivity paramBindNumberActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      if (this.a.a.a != null) {
-        this.a.a.a.start();
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("VideoSprite", 2, "onCompletion: " + QLog.getStackTraceString(localException));
+    if (this.a.a != null) {
+      this.a.a.setText("");
     }
   }
 }

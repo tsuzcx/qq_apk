@@ -11,44 +11,44 @@ import android.widget.TextView;
 import com.tencent.mobileqq.data.TroopBarAbsDataEntity;
 import com.tencent.mobileqq.data.TroopBarPageEntity;
 import com.tencent.mobileqq.troop.utils.TroopBarUtils;
-import gzt;
+import gvm;
 
 public class TroopBarPostLayoutRelativeGroup
   extends TroopBarPostAbsLayout
   implements View.OnClickListener
 {
-  protected static final int a = 2130903450;
+  protected static final int a = 2130903452;
   protected static final String a = "本部落的群(%d)";
   
   public View a(Activity paramActivity, LayoutInflater paramLayoutInflater, View paramView, TroopBarAbsDataEntity paramTroopBarAbsDataEntity)
   {
     if (paramView == null)
     {
-      paramView = paramLayoutInflater.inflate(2130903450, null);
-      paramLayoutInflater = (gzt)a(paramView);
+      paramView = paramLayoutInflater.inflate(2130903452, null);
+      paramLayoutInflater = (gvm)a(paramView);
       paramView.setTag(paramLayoutInflater);
     }
     for (;;)
     {
       TextView localTextView = paramLayoutInflater.a;
       Object localObject = paramActivity.getResources();
-      Drawable localDrawable = ((Resources)localObject).getDrawable(2130838437);
-      localObject = ((Resources)localObject).getDrawable(2130838438);
+      Drawable localDrawable = ((Resources)localObject).getDrawable(2130838439);
+      localObject = ((Resources)localObject).getDrawable(2130838440);
       paramTroopBarAbsDataEntity = (TroopBarPageEntity)paramTroopBarAbsDataEntity;
       localTextView.setText(String.format("本部落的群(%d)", new Object[] { Integer.valueOf(paramTroopBarAbsDataEntity.group_count) }));
       paramLayoutInflater.a.setTag(2131230860, paramTroopBarAbsDataEntity);
       localTextView.setCompoundDrawablesWithIntrinsicBounds(localDrawable, null, (Drawable)localObject, null);
       localTextView.setTextAppearance(paramActivity, 2131624121);
       localTextView.setOnClickListener(this);
-      localTextView.setBackgroundDrawable(paramActivity.getResources().getDrawable(2130838510));
+      localTextView.setBackgroundDrawable(paramActivity.getResources().getDrawable(2130838512));
       return paramView;
-      paramLayoutInflater = (gzt)paramView.getTag();
+      paramLayoutInflater = (gvm)paramView.getTag();
     }
   }
   
   public TroopBarPostAbsLayout.AbsItemViewHolder a(View paramView)
   {
-    return new gzt(this, paramView);
+    return new gvm(this, paramView);
   }
   
   public void onClick(View paramView)

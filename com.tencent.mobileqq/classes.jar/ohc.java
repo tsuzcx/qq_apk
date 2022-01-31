@@ -1,40 +1,18 @@
-import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView.JustLogPlayProgressListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class ohc
-  extends NeoVideoFilterPlayView.JustLogPlayProgressListener
+  implements ViewBase.IBuilder
 {
-  public ohc(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
-  
-  public void a()
+  public ViewBase build(VafContext paramVafContext)
   {
-    super.a();
-    this.a.l();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    super.a(paramInt1, paramInt2);
-  }
-  
-  public void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DanceMachineQQBrowserActivity", 2, "onPlayFrame");
-    }
-    super.a(paramLong);
-    try
-    {
-      this.a.a(1000L * paramLong);
-      return;
-    }
-    catch (InterruptedException localInterruptedException) {}
+    return new ogy(paramVafContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ohc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,44 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.GeneralClickHandler;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.history.tendoc.TenDocMessageResultAdapter;
 import com.tencent.qphone.base.util.QLog;
 
-public class aiib
-  implements Runnable
+class aiib
+  implements TextWatcher
 {
-  public aiib(StructMsgForGeneralShare.GeneralClickHandler paramGeneralClickHandler, Bundle paramBundle) {}
+  private String jdField_a_of_type_JavaLangString = "";
   
-  public void run()
+  aiib(aihy paramaihy) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    if ((this.jdField_a_of_type_AndroidOsBundle.containsKey("msgSeq")) && (this.jdField_a_of_type_AndroidOsBundle.containsKey("uin")) && (this.jdField_a_of_type_AndroidOsBundle.containsKey("sessionType")))
+    paramEditable = paramEditable.toString().trim();
+    if (TextUtils.isEmpty(paramEditable))
     {
-      l = this.jdField_a_of_type_AndroidOsBundle.getLong("msgSeq");
-      localObject = this.jdField_a_of_type_AndroidOsBundle.getString("uin");
-      i = this.jdField_a_of_type_AndroidOsBundle.getInt("sessionType");
-      localQQMessageFacade = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare$GeneralClickHandler.a.a();
-      localObject = localQQMessageFacade.a((String)localObject, i, l);
-      ((MessageRecord)localObject).saveExtInfoToExtStr("receipt_msg_is_read", "1");
-      localQQMessageFacade.a(((MessageRecord)localObject).frienduin, ((MessageRecord)localObject).istroop, ((MessageRecord)localObject).uniseq, "extLong", Integer.valueOf(((MessageRecord)localObject).extLong));
-      localQQMessageFacade.a(((MessageRecord)localObject).frienduin, ((MessageRecord)localObject).istroop, ((MessageRecord)localObject).uniseq, "extStr", ((MessageRecord)localObject).extStr);
+      this.jdField_a_of_type_JavaLangString = "";
+      aihy.a(this.jdField_a_of_type_Aihy).a();
+      aihy.a(this.jdField_a_of_type_Aihy).setVisibility(8);
+      aihy.a(this.jdField_a_of_type_Aihy).setVisibility(8);
+      aihy.a(this.jdField_a_of_type_Aihy).setVisibility(8);
     }
-    while (!QLog.isColorLevel())
-    {
-      long l;
-      Object localObject;
-      int i;
-      QQMessageFacade localQQMessageFacade;
+    while (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramEditable)) {
       return;
     }
-    QLog.w(StructMsgForGeneralShare.access$000(), 2, "set receipt msg read missing param");
+    if (QLog.isColorLevel()) {
+      QLog.i("TenDocMessageSearchDialog", 2, "afterTextChanged, mLastKeyword = " + this.jdField_a_of_type_JavaLangString + ",lastKeyWord:" + paramEditable);
+    }
+    this.jdField_a_of_type_JavaLangString = paramEditable;
+    aihy.a(this.jdField_a_of_type_Aihy).setVisibility(0);
+    this.jdField_a_of_type_Aihy.a();
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

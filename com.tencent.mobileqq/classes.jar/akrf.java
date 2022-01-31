@@ -1,59 +1,68 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.net.Uri;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.webso.HttpResponsePackage;
-import com.tencent.mobileqq.webview.webso.SHA1Util;
-import com.tencent.mobileqq.webview.webso.WebSoService;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
-import com.tencent.mobileqq.webview.webso.WebSoUtils;
-import mqq.app.AppRuntime;
+import android.view.ViewGroup;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.apollo.SettingMeApolloViewController;
+import com.tencent.mobileqq.apollo.SettingMeApolloViewController.5.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class akrf
-  implements Runnable
+  implements albl
 {
-  public akrf(WebSoService paramWebSoService, HttpResponsePackage paramHttpResponsePackage, Uri paramUri, String paramString, WebSoService.WebSoState paramWebSoState) {}
+  public akrf(SettingMeApolloViewController paramSettingMeApolloViewController) {}
   
-  public void run()
+  public void a()
   {
-    long l = System.currentTimeMillis();
-    Object localObject2 = "";
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoHttpResponsePackage != null)
+    if (this.a.jdField_a_of_type_Akti == null) {}
+    Object localObject;
+    ViewGroup localViewGroup;
+    do
     {
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoHttpResponsePackage.d != null)
+      do
       {
-        WebSoUtils.a(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoHttpResponsePackage.d.getBytes(), WebSoUtils.b(this.jdField_a_of_type_AndroidNetUri));
-        localObject1 = SHA1Util.a(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoHttpResponsePackage.d);
-      }
+        do
+        {
+          return;
+          localObject = (QQSettingMe)SettingMeApolloViewController.a(this.a).get();
+        } while (localObject == null);
+        localObject = ((QQSettingMe)localObject).a();
+      } while (localObject == null);
+      localViewGroup = (ViewGroup)SettingMeApolloViewController.b(this.a).get();
+    } while ((localViewGroup == null) || (this.a.jdField_a_of_type_Akti.a(SettingMeApolloViewController.a(this.a), this.a.jdField_a_of_type_Int, (AppInterface)localObject, localViewGroup.getContext()) != 0));
+    this.a.jdField_a_of_type_Akti.a(SettingMeApolloViewController.a(this.a), localViewGroup.getContext(), (QQAppInterface)localObject, this.a.jdField_a_of_type_Int);
+  }
+  
+  public void a(int paramInt1, int paramInt2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SettingMeApolloViewController", 2, new Object[] { "[onApolloClick] ", "apolloStatus:", Integer.valueOf(paramInt1), ",clickPart:", Integer.valueOf(paramInt2), ",apolloId:", paramString });
     }
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_AndroidNetUri != null))
+    Object localObject = (QQSettingMe)SettingMeApolloViewController.a(this.a).get();
+    if (localObject == null) {}
+    ViewGroup localViewGroup;
+    do
     {
-      localObject2 = WebSoService.a().edit();
-      String str1 = String.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
-      String str2 = WebSoUtils.a(this.jdField_a_of_type_AndroidNetUri);
-      ((SharedPreferences.Editor)localObject2).putString("eTag_" + str1 + str2, this.jdField_a_of_type_JavaLangString);
-      ((SharedPreferences.Editor)localObject2).putString("htmlSha1_" + str1 + str2, (String)localObject1);
-      if (Build.VERSION.SDK_INT >= 9) {
-        break label217;
-      }
-      ((SharedPreferences.Editor)localObject2).commit();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.a.d = ((int)(System.currentTimeMillis() - l));
-      return;
-      label217:
-      ((SharedPreferences.Editor)localObject2).apply();
-    }
+      do
+      {
+        return;
+        localObject = ((QQSettingMe)localObject).a();
+      } while (localObject == null);
+      localViewGroup = (ViewGroup)SettingMeApolloViewController.b(this.a).get();
+    } while ((localViewGroup == null) || (paramInt1 == 0));
+    ThreadManager.getUIHandler().post(new SettingMeApolloViewController.5.1(this, paramInt2, localViewGroup, (QQAppInterface)localObject, paramString));
+  }
+  
+  public void b()
+  {
+    this.a.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akrf
  * JD-Core Version:    0.7.0.1
  */

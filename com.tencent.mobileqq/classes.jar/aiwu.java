@@ -1,23 +1,16 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import java.util.List;
 
-public class aiwu
-  implements Animation.AnimationListener
+final class aiwu
+  implements DialogInterface.OnClickListener
 {
-  public aiwu(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  aiwu(Activity paramActivity, List paramList1, List paramList2) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.b == null) {
-      return;
-    }
-    this.a.b.post(new aiwv(this));
+    aiwp.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaUtilList, this.b);
   }
 }
 

@@ -1,35 +1,59 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.app.Activity;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.lang.ref.WeakReference;
 
-public final class xlg
-  implements Runnable
+public class xlg
+  extends xlo<xlb, xlb>
 {
-  public xlg(QQAppInterface paramQQAppInterface, int paramInt) {}
+  private int a;
+  public WeakReference<Activity> a;
   
-  public void run()
+  public xlg(@NonNull Activity paramActivity, int paramInt)
   {
-    String str = "0X80067EA";
-    ServiceAccountFolderManager localServiceAccountFolderManager = ServiceAccountFolderManager.a();
-    int i = localServiceAccountFolderManager.b();
-    int j = localServiceAccountFolderManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (j == 1) {
-      str = "0X80067E8";
-    }
-    for (;;)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  protected void a(JobContext paramJobContext, xlb paramxlb)
+  {
+    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localActivity == null)
     {
-      long l = localServiceAccountFolderManager.a();
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01160", "Pb_account_lifeservice", "", str, str, 0, 0, "" + l, "" + j, "" + i, String.valueOf(this.jdField_a_of_type_Int + 1));
+      wxe.e("Q.qqstory.publish.edit.GeneratePicThumbSegment", "ChangePicArgToVideoArgSegment, activity is null");
+      super.notifyError(new ErrorMessage(-1, "ChangePicArgToVideoArgSegment error"));
       return;
-      if (j == 2) {
-        str = "0X80067E9";
+    }
+    Object localObject = paramxlb.jdField_a_of_type_Xlf.jdField_a_of_type_JavaLangString;
+    paramJobContext = (JobContext)localObject;
+    if (!paramxlb.jdField_a_of_type_Xlf.jdField_b_of_type_Boolean)
+    {
+      paramJobContext = (JobContext)localObject;
+      if (paramxlb.jdField_a_of_type_Xlf.jdField_a_of_type_Boolean) {
+        paramJobContext = paramxlb.jdField_a_of_type_Xlf.jdField_b_of_type_JavaLangString;
       }
+    }
+    localObject = new BitmapFactory.Options();
+    ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
+    BitmapFactory.decodeFile(paramJobContext, (BitmapFactory.Options)localObject);
+    int i = ((BitmapFactory.Options)localObject).outWidth;
+    int j = ((BitmapFactory.Options)localObject).outHeight;
+    if (this.jdField_a_of_type_Int == 5) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramxlb.jdField_a_of_type_Xlh = new xlh(localActivity, i, j, paramJobContext, 0.0F, bool, 0, 0.0D, 0.0D, null, false);
+      paramxlb.jdField_a_of_type_JavaLangString = paramJobContext;
+      super.notifyResult(paramxlb);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xlg
  * JD-Core Version:    0.7.0.1
  */

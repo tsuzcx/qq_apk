@@ -1,29 +1,25 @@
-import android.util.Log;
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.FMRecentFileActivity;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.RecentFileAdapter.ItemHolder;
 
-public class frm
-  implements Runnable
+class frm
+  implements DialogInterface.OnClickListener
 {
-  public frm(ContactSyncManager paramContactSyncManager) {}
+  frm(frl paramfrl, RecentFileAdapter.ItemHolder paramItemHolder) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      this.a.a();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ContactSync.Manager", 2, "onQQContactRefreshed | syncAllContacts exception = " + Log.getStackTraceString(localThrowable));
-    }
+    this.jdField_a_of_type_Frl.a.b.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter$ItemHolder.a.nSessionId);
+    FMRecentFileActivity.a(this.jdField_a_of_type_Frl.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     frm
  * JD-Core Version:    0.7.0.1
  */

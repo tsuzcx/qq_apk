@@ -9,9 +9,9 @@ import java.util.Map;
 public final class get_album_req
   extends JceStruct
 {
-  static Map cache_busi_param = new HashMap();
+  static Map<Integer, String> cache_busi_param = new HashMap();
   public String albumid = "";
-  public Map busi_param;
+  public Map<Integer, String> busi_param;
   public boolean is_from_public_url;
   public boolean is_get_url_key;
   public long owner_uin;
@@ -25,7 +25,7 @@ public final class get_album_req
   
   public get_album_req() {}
   
-  public get_album_req(String paramString1, int paramInt, Map paramMap, long paramLong, boolean paramBoolean1, String paramString2, boolean paramBoolean2)
+  public get_album_req(String paramString1, int paramInt, Map<Integer, String> paramMap, long paramLong, boolean paramBoolean1, String paramString2, boolean paramBoolean2)
   {
     this.albumid = paramString1;
     this.type = paramInt;

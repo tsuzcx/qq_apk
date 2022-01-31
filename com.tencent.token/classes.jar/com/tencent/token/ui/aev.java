@@ -1,17 +1,17 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.af;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.token.utils.w;
 
-final class aev
-  implements View.OnClickListener
+class aev
+  implements DialogInterface.OnClickListener
 {
-  aev(UtilsMbInfoActivity paramUtilsMbInfoActivity) {}
+  aev(aeu paramaeu) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    af.a().e(0L, this.a.mHandler);
+    w.a(this.a.a, this.a.a.getString(2131230866), this.a.a.getString(2131231515));
   }
 }
 

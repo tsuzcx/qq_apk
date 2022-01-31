@@ -6,11 +6,11 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class submsgtype0x67$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   public static final int RPT_MSG_GRPINFO_FIELD_NUMBER = 1;
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "rpt_msg_grpinfo" }, new Object[] { null }, MsgBody.class);
-  public final PBRepeatMessageField rpt_msg_grpinfo = PBField.initRepeatMessage(submsgtype0x67.GroupInfo.class);
+  public final PBRepeatMessageField<submsgtype0x67.GroupInfo> rpt_msg_grpinfo = PBField.initRepeatMessage(submsgtype0x67.GroupInfo.class);
 }
 
 

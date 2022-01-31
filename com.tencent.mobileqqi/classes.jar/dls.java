@@ -1,27 +1,55 @@
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import com.tencent.mobileqq.activity.SubAccountMessageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantImpl;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class dls
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public dls(RegisterPhoneNumActivity paramRegisterPhoneNumActivity, String paramString) {}
+  public dls(SubAccountMessageActivity paramSubAccountMessageActivity, ActionSheet paramActionSheet, boolean paramBoolean) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.c(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity, 230, null, null, 2131561746, 2131561875, null, null);
-    localQQCustomDialog.setMessage(this.jdField_a_of_type_JavaLangString);
-    localQQCustomDialog.setDividerGone();
-    dlt localdlt = new dlt(this);
-    dlu localdlu = new dlu(this);
-    localQQCustomDialog.setPositiveButton(2131561875, localdlt);
-    localQQCustomDialog.setNegativeButton(2131561746, localdlu);
-    localQQCustomDialog.show();
+    boolean bool = true;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+      paramView = SubAccountAssistantImpl.a();
+      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity.b;
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        paramView.a(localQQAppInterface, bool);
+        localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity.b;
+        if (this.jdField_a_of_type_Boolean) {
+          break label112;
+        }
+      }
+      for (paramView = "1";; paramView = "0")
+      {
+        ReportController.b(localQQAppInterface, "CliOper", "", "", "Bind_account", "Top_bind_account", 0, 0, paramView, "", "", "");
+        return;
+        bool = false;
+        break;
+      }
+    case 1: 
+      label112:
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+      SubAccountMessageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity, true, false);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+    SubAccountMessageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity, false, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dls
  * JD-Core Version:    0.7.0.1
  */

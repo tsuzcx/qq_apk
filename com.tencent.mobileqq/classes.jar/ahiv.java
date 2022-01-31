@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleLayout;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import com.tencent.mobileqq.activity.contacts.view.SimpleCheckableSlidingIndicator;
 
 public class ahiv
-  implements Runnable
+  implements ahvh
 {
-  public ahiv(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public ahiv(TroopView paramTroopView) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if ((EffectsCameraCaptureFragment.a(this.a) != null) && (EffectsCameraCaptureFragment.a(this.a).a())) {
-      EffectsCameraCaptureFragment.a(this.a).a();
+    if (paramInt == SimpleCheckableSlidingIndicator.a) {
+      TroopView.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahiv
  * JD-Core Version:    0.7.0.1
  */

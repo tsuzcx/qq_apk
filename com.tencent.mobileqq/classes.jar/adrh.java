@@ -1,34 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout.InnerOnClickListener;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout.PresenceInterface;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class adrh
-  implements HotVideoMongoliaRelativeLayout.InnerOnClickListener
+  extends BroadcastReceiver
 {
-  public adrh(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout) {}
+  public adrh(QQMapActivity paramQQMapActivity) {}
   
-  public void a(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    com.tencent.mobileqq.hotpic.HotPicPageView.b = true;
-    if ((this.a.jdField_a_of_type_Int == 2) && (this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout$PresenceInterface != null))
+    if ((paramIntent.getAction().equals("android.intent.action.SCREEN_OFF")) && (!this.a.p) && (!this.a.q) && (GesturePWDUtils.getGesturePWDState(this.a, this.a.k) == 2) && (GesturePWDUtils.getGesturePWDMode(this.a, this.a.k) == 21))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout$PresenceInterface.a(0, paramView);
-      return;
-    }
-    if ((this.a.jdField_a_of_type_Int == 3) && (this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout$PresenceInterface != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout$PresenceInterface.a(4, paramView);
-    }
-    for (;;)
-    {
-      QLog.d("HotVideoRelativeLayout", 2, "click base view");
-      return;
-      if ((this.a.jdField_a_of_type_Int == 4) && (this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout$PresenceInterface != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout$PresenceInterface.a(1, paramView);
-      } else if ((this.a.jdField_a_of_type_Int == 6) && (this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout$PresenceInterface != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout$PresenceInterface.a(2, paramView);
+      if (QLog.isColorLevel()) {
+        QLog.d("qqbaseactivity", 2, "qqmapactivity.start lock. receive lock.");
       }
+      paramContext = new Intent(this.a, GesturePWDUnlockActivity.class);
+      QQMapActivity.a(this.a, paramContext);
+      this.a.q = true;
     }
   }
 }

@@ -1,25 +1,17 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.RegisterBaseActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.StrangerManageActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class dkx
-  implements Runnable
+  implements View.OnClickListener
 {
-  public dkx(RegisterBaseActivity paramRegisterBaseActivity) {}
+  public dkx(StrangerManageActivity paramStrangerManageActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      if ((this.a.a != null) && (this.a.a.isShowing())) {
-        this.a.a.dismiss();
-      }
-      this.a.a = null;
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    this.a.b(true);
+    ReportController.b(this.a.b, "CliOper", "", "", "Setting_tab", "Manage_stranger_edit", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.ttpic.filter;
 
+import com.tencent.aekit.openrender.UniformParam.IntParam;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.filter.BaseFilter;
-import com.tencent.filter.Frame;
-import com.tencent.filter.Param.IntParam;
-import com.tencent.ttpic.util.VideoFilterUtil;
 
 public class SegmentMonitorFilter
   extends BaseFilter
@@ -18,28 +18,28 @@ public class SegmentMonitorFilter
   
   private void initParams()
   {
-    addParam(new Param.IntParam("segSlow", 0));
+    addParam(new UniformParam.IntParam("segSlow", 0));
   }
   
-  public void ApplyGLSLFilter()
+  public void apply()
   {
-    super.ApplyGLSLFilter();
+    super.apply();
     setPositions(new float[] { -1.0F, -1.0F, -1.0F, -0.25F, -0.25F, -0.25F, -0.25F, -1.0F });
   }
   
   public Frame updateAndRender(int paramInt, Frame paramFrame)
   {
-    addParam(new Param.IntParam("segSlow", paramInt));
-    VideoFilterUtil.setBlendMode(true);
+    addParam(new UniformParam.IntParam("segSlow", paramInt));
+    GlUtil.setBlendMode(true);
     OnDrawFrameGLSL();
     renderTexture(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
-    VideoFilterUtil.setBlendMode(false);
+    GlUtil.setBlendMode(false);
     return paramFrame;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.filter.SegmentMonitorFilter
  * JD-Core Version:    0.7.0.1
  */

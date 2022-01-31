@@ -1,39 +1,18 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
-import com.tencent.token.ax;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.fo;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.utils.w;
 
-final class tr
-  implements DialogInterface.OnClickListener
+class tr
+  implements View.OnClickListener
 {
-  tr(OpreateMsgActivity paramOpreateMsgActivity) {}
+  tr(RealNameActivity paramRealNameActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = ax.a().e();
-    if ((this.a.mIsSelectAll) && (paramDialogInterface != null))
-    {
-      OpreateMsgActivity.access$200(this.a).a(paramDialogInterface.mUin);
-      this.a.hideListEdit();
-      if (OpreateMsgActivity.access$200(this.a).g() > 0) {
-        break label102;
-      }
-      this.a.mAdapter.a(null);
-      this.a.mTitleButton.setVisibility(4);
-    }
-    for (;;)
-    {
-      this.a.mAdapter.a(false);
-      return;
-      OpreateMsgActivity.access$200(this.a).f();
-      break;
-      label102:
-      this.a.mTitleButton.setVisibility(0);
-    }
+    w.a(this.a, this.a.getString(2131231661), this.a.getResources().getString(2131231359));
   }
 }
 

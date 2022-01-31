@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class im_msg_head$LoginSig
-  extends MessageMicro
+  extends MessageMicro<LoginSig>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_sig = PBField.initBytes(ByteStringMicro.EMPTY);

@@ -1,72 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.ApolloTicker;
-import java.lang.ref.WeakReference;
-import java.util.TimerTask;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.widget.ImageView;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 
 public class ync
-  extends TimerTask
+  implements ymw
 {
-  private final long jdField_a_of_type_Long;
-  private final WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private ynd jdField_a_of_type_Ynd;
-  private yne jdField_a_of_type_Yne;
-  private final long b;
+  public ync(VideoPlayerView paramVideoPlayerView) {}
   
-  public ync(ApolloTicker paramApolloTicker, View paramView, long paramLong1, long paramLong2)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-  }
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    Object localObject;
-    do
+    if ((VideoPlayerView.a(this.a) != null) && (!paramBoolean) && (this.a.e != null) && (this.a.e.getVisibility() == 0))
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              localObject = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-            } while (localObject == null);
-            if (!(localObject instanceof ApolloSurfaceView)) {
-              break;
-            }
-            localObject = (ApolloSurfaceView)localObject;
-          } while ((((ApolloSurfaceView)localObject).mIsDestroy == null) || (((ApolloSurfaceView)localObject).mIsDestroy.get()));
-          if (this.jdField_a_of_type_Ynd == null) {
-            this.jdField_a_of_type_Ynd = new ynd(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker, (ApolloSurfaceView)localObject, this.jdField_a_of_type_Long, this.b);
-          }
-          if (((ApolloSurfaceView)localObject).mRenderMode == 0)
-          {
-            ((ApolloSurfaceView)localObject).queueEvent(this.jdField_a_of_type_Ynd);
-            return;
-          }
-        } while (((ApolloSurfaceView)localObject).mRenderMode != 1);
-        this.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker.pauseTicker(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker.ticker);
-        return;
-      } while (!(localObject instanceof ApolloTextureView));
-      localObject = (ApolloTextureView)localObject;
-    } while ((((ApolloTextureView)localObject).mIsDestroy == null) || (((ApolloTextureView)localObject).mIsDestroy.get()));
-    if (this.jdField_a_of_type_Yne == null) {
-      this.jdField_a_of_type_Yne = new yne(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker, (ApolloTextureView)localObject, this.jdField_a_of_type_Long, this.b);
+      this.a.e.setVisibility(8);
+      VideoPlayerView.a(this.a, "");
     }
-    ((ApolloTextureView)localObject).queueEvent(this.jdField_a_of_type_Yne);
+    if (VideoPlayerView.a(this.a) != null) {
+      VideoPlayerView.a(this.a).a(paramBoolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ync
  * JD-Core Version:    0.7.0.1
  */

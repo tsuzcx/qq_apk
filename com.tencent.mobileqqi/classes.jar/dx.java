@@ -1,24 +1,27 @@
-import com.dataline.mpfile.MpfileFileListDownloader;
-import com.dataline.mpfile.MpfileFileListDownloader.MpFileHttpDownloadListener;
+import com.dataline.mpfile.LiteMpFileMainActivity;
+import com.dataline.mpfile.MpFileDataReportCenter;
+import com.dataline.mpfile.MpFileDataReportCenter.MPFWorkType;
+import com.dataline.mpfile.MpfileDataCenter;
+import com.dataline.mpfile.MpfileDataReportInfo;
+import com.dataline.util.DBNetworkUtil;
 
-public final class dx
+public class dx
   implements Runnable
 {
-  public dx(String paramString, MpfileFileListDownloader.MpFileHttpDownloadListener paramMpFileHttpDownloadListener, int paramInt) {}
+  public dx(LiteMpFileMainActivity paramLiteMpFileMainActivity) {}
   
   public void run()
   {
-    String str = MpfileFileListDownloader.a(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_ComDatalineMpfileMpfileFileListDownloader$MpFileHttpDownloadListener != null)
-    {
-      if ((str != null) && (str.length() > 0)) {
-        this.jdField_a_of_type_ComDatalineMpfileMpfileFileListDownloader$MpFileHttpDownloadListener.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, str);
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_ComDatalineMpfileMpfileFileListDownloader$MpFileHttpDownloadListener.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    MpfileDataReportInfo localMpfileDataReportInfo = new MpfileDataReportInfo();
+    localMpfileDataReportInfo.jdField_a_of_type_Int = MpFileDataReportCenter.MPFWorkType.connection.ordinal();
+    localMpfileDataReportInfo.jdField_a_of_type_JavaLangString = MpfileDataCenter.k;
+    localMpfileDataReportInfo.jdField_b_of_type_JavaLangString = DBNetworkUtil.a();
+    localMpfileDataReportInfo.d = MpfileDataCenter.E;
+    localMpfileDataReportInfo.jdField_b_of_type_Long = LiteMpFileMainActivity.b(this.a);
+    localMpfileDataReportInfo.c = LiteMpFileMainActivity.c(this.a);
+    localMpfileDataReportInfo.jdField_b_of_type_Int = 2;
+    MpFileDataReportCenter.a(this.a.b, localMpfileDataReportInfo);
+    this.a.a(MpfileDataCenter.v);
   }
 }
 

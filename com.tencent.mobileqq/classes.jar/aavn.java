@@ -1,20 +1,27 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.gdtad.views.videoimax.TransitionContext;
 
 public class aavn
-  extends ArkAppCGI.ArkAppCGICallback
+  extends AnimatorListenerAdapter
 {
-  public aavn(ArkLocalAppMgr paramArkLocalAppMgr) {}
+  public aavn(TransitionContext paramTransitionContext) {}
   
-  public void a(boolean paramBoolean, byte[] paramArrayOfByte, Object paramObject)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    ThreadManager.post(new aavo(this, paramBoolean, paramArrayOfByte, paramObject), 5, null, true);
+    super.onAnimationCancel(paramAnimator);
+    this.a.a();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aavn
  * JD-Core Version:    0.7.0.1
  */

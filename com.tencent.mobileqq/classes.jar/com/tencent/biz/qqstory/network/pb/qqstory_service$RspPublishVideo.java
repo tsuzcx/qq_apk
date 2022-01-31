@@ -10,13 +10,13 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_service$RspPublishVideo
-  extends MessageMicro
+  extends MessageMicro<RspPublishVideo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field create_time = PBField.initUInt64(0L);
   public final PBUInt32Field date = PBField.initUInt32(0);
   public final PBBytesField feed_id = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField group_feed_list = PBField.initRepeatMessage(qqstory_group.GroupFeed.class);
+  public final PBRepeatMessageField<qqstory_group.GroupFeed> group_feed_list = PBField.initRepeatMessage(qqstory_group.GroupFeed.class);
   public qqstory_struct.ErrorInfo result = new qqstory_struct.ErrorInfo();
   public final PBBytesField story_id = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField vid = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -32,7 +32,7 @@ public final class qqstory_service$RspPublishVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspPublishVideo
  * JD-Core Version:    0.7.0.1
  */

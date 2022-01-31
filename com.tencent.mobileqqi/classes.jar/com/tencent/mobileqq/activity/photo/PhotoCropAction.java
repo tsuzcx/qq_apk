@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.photo;
 
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
-import erd;
+import emp;
 
 public class PhotoCropAction
 {
@@ -26,7 +26,7 @@ public class PhotoCropAction
         i += 1;
       }
       localActionSheet.d(2131561746);
-      localActionSheet.a(new erd(this, localActionSheet));
+      localActionSheet.a(new emp(this, localActionSheet));
       localActionSheet.show();
     }
   }

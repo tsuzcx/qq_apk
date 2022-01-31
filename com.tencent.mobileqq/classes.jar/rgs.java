@@ -1,50 +1,27 @@
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
-import com.tencent.util.Pair;
-import java.util.ArrayList;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
 public class rgs
-  extends MessageObserver
+  extends RecyclerView.OnScrollListener
 {
-  public rgs(AccountManageActivity paramAccountManageActivity) {}
+  public rgs(VideoFeedsRecyclerView paramVideoFeedsRecyclerView) {}
   
-  public void a(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (this.a.isFinishing()) {}
-    SubAccountControll localSubAccountControll;
-    do
+    if (paramInt == 0)
     {
-      for (;;)
-      {
-        return;
-        AccountManageActivity.a(this.a, false);
-        localSubAccountControll = (SubAccountControll)this.a.app.getManager(61);
-        if (paramSubAccountBackProtocData.a != 1) {
-          break;
-        }
-        if ((this.a.isResume()) && (SubAccountControll.a(this.a.app, "sub.uin.all")))
-        {
-          paramString = localSubAccountControll.a("sub.uin.all");
-          int j = paramString.size();
-          int i = 0;
-          while (i < j)
-          {
-            paramSubAccountBackProtocData = (Pair)paramString.get(i);
-            localSubAccountControll.a(this.a.app, this.a, paramSubAccountBackProtocData, new rgt(this, localSubAccountControll, paramSubAccountBackProtocData));
-            i += 1;
-          }
-        }
-      }
-    } while (!this.a.isResume());
-    localSubAccountControll.a(paramString, 1, true);
+      VideoFeedsRecyclerView.a(this.a, false);
+      return;
+    }
+    VideoFeedsRecyclerView.a(this.a, true);
   }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rgs
  * JD-Core Version:    0.7.0.1
  */

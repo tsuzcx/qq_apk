@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class FavoriteCKVData$KandianFavoriteItem
-  extends MessageMicro
+  extends MessageMicro<KandianFavoriteItem>
 {
   public static final int Link = 2;
   public static final int Valid = 1;
@@ -18,7 +18,7 @@ public final class FavoriteCKVData$KandianFavoriteItem
   public FavoriteCKVData.Author msg_author = new FavoriteCKVData.Author();
   public FavoriteCKVData.KandianFavoriteBizData msg_favorite_ext_info = new FavoriteCKVData.KandianFavoriteBizData();
   public FavoriteCKVData.FavoriteSummary msg_favorite_summary = new FavoriteCKVData.FavoriteSummary();
-  public final PBRepeatField rpt_bytes_cid = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> rpt_bytes_cid = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBUInt32Field uint32_status = PBField.initUInt32(0);
   public final PBUInt32Field uint32_type = PBField.initUInt32(0);
   public final PBUInt64Field uint64_create_time = PBField.initUInt64(0L);
@@ -34,7 +34,7 @@ public final class FavoriteCKVData$KandianFavoriteItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.FavoriteCKVData.KandianFavoriteItem
  * JD-Core Version:    0.7.0.1
  */

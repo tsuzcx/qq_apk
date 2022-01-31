@@ -1,32 +1,42 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
+import java.util.List;
 
-public class aoeb
-  extends Property
+class aoeb
+  implements View.OnClickListener
 {
-  public aoeb(GroundDrawable paramGroundDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  aoeb(aoea paramaoea, HistoryFormItem paramHistoryFormItem) {}
   
-  public Integer a(GroundDrawable paramGroundDrawable)
+  public void onClick(View paramView)
   {
-    if (paramGroundDrawable != null) {
-      return Integer.valueOf(GroundDrawable.d(paramGroundDrawable));
+    ColorNote localColorNote = (ColorNote)aoea.a(this.jdField_a_of_type_Aoea).get(this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a());
+    Bundle localBundle = new Bundle();
+    if (aoea.a(this.jdField_a_of_type_Aoea) == 17104896) {
+      if ((localColorNote.getServiceType() == 16908288) || (localColorNote.getServiceType() == 16908290)) {
+        localBundle.putBoolean("isFromFavourite", true);
+      }
     }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(GroundDrawable paramGroundDrawable, Integer paramInteger)
-  {
-    if (paramGroundDrawable != null) {
-      GroundDrawable.d(paramGroundDrawable, paramInteger.intValue());
+    for (;;)
+    {
+      aobw.a(paramView.getContext(), localColorNote, localBundle);
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseSectionAdapter", 0, "getAllViews#onClick: index: " + this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a());
+      }
+      azqs.b(null, "dc00898", "", "", "0X800AA7F", "0X800AA7F", aocr.b(aoea.a(this.jdField_a_of_type_Aoea)), 0, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a() + 1), "", "", "");
+      return;
+      if (aoea.a(this.jdField_a_of_type_Aoea) == 16908289) {
+        localBundle.putBoolean("history_note", true);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoeb
  * JD-Core Version:    0.7.0.1
  */

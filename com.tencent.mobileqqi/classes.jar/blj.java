@@ -1,17 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.av.ui.VideoLayerUI;
+import android.os.Bundle;
+import com.tencent.biz.qrcode.CodeMaskManager;
+import com.tencent.biz.qrcode.CodeMaskManager.Callback;
 
-public class blj
-  implements DialogInterface.OnDismissListener
+class blj
+  implements Runnable
 {
-  public blj(VideoLayerUI paramVideoLayerUI) {}
+  blj(bli parambli, Bundle paramBundle) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.k();
-    if (this.a.k) {
-      this.a.n();
+    if (this.jdField_a_of_type_Bli.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.a) {
+      return;
+    }
+    if (this.jdField_a_of_type_AndroidOsBundle == null) {
+      this.jdField_a_of_type_Bli.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$Callback.a(CodeMaskManager.a(this.jdField_a_of_type_Bli.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager));
+    }
+    for (;;)
+    {
+      CodeMaskManager.a(this.jdField_a_of_type_Bli.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager);
+      return;
+      this.jdField_a_of_type_Bli.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$Callback.a((Bundle)this.jdField_a_of_type_AndroidOsBundle.clone());
     }
   }
 }

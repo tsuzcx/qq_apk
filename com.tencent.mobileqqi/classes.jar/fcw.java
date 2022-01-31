@@ -1,13 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.adapter.ForwardTroopListAdapter;
-
 public class fcw
-  implements View.OnClickListener
 {
-  public fcw(ForwardTroopListAdapter paramForwardTroopListAdapter) {}
-  
-  public void onClick(View paramView) {}
+  public int a;
+  public String a;
+  public boolean a;
 }
 
 

@@ -1,45 +1,66 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
 public class acje
+  implements View.OnKeyListener, TextView.OnEditorActionListener
 {
-  private List jdField_a_of_type_JavaUtilList = new ArrayList(20);
+  private acje(BaseChatPie paramBaseChatPie) {}
   
-  private acje(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
-  
-  public void a()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-      b();
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramString);
-    if (this.jdField_a_of_type_JavaUtilList.size() >= 20) {
-      b();
-    }
-  }
-  
-  void b()
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    if (paramInt == 4)
     {
-      if (i != 0) {
-        localStringBuffer.append("|");
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "IME_ACTION_SEND");
       }
-      localStringBuffer.append((String)this.jdField_a_of_type_JavaUtilList.get(i));
-      i += 1;
+      this.a.as();
+      return true;
     }
-    if (ExtendFriendSquareFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment) != null) {
-      ReportController.b(ExtendFriendSquareFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment), "dc00898", "", "", "0X8009324", "0X8009324", 0, 0, "", "", localStringBuffer.toString(), "");
+    return false;
+  }
+  
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (paramKeyEvent.getKeyCode() == 66)
+    {
+      if (paramKeyEvent.getAction() == 1)
+      {
+        paramView = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
+        if (QLog.isColorLevel()) {
+          QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, " sendOnEnterEnabled = " + this.a.m);
+        }
+        if ((this.a.m) && (paramView.length() > 0)) {
+          this.a.c();
+        }
+      }
+      if (this.a.m) {
+        return true;
+      }
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
+    else if ((paramKeyEvent.getKeyCode() == 67) && (paramKeyEvent.getAction() == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "on delete, start: " + this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart() + ", end: " + this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionEnd() + ", span: " + this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131373121));
+      }
+      if ((this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart() == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionEnd() == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131373121) != null))
+      {
+        paramView = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getCompoundDrawables();
+        this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setCompoundDrawables(paramView[0], null, paramView[2], paramView[3]);
+        this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(2131373121, null);
+        this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(0);
+        this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo = null;
+        this.a.b(2);
+        azqs.b(null, "dc00898", "", "", "0X800A9AC", "0X800A9AC", 0, 1, "", "", "", "");
+        return true;
+      }
+    }
+    return false;
   }
 }
 

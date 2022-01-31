@@ -1,26 +1,31 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import com.tencent.biz.webviewplugin.PubAccountUIPlugin;
-import com.tencent.image.URLImageView;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
 
 public class pck
-  implements Animation.AnimationListener
+  implements TVK_IMediaPlayer.OnSeekCompleteListener
 {
-  public pck(PubAccountUIPlugin paramPubAccountUIPlugin, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
+  public pck(VideoView paramVideoView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
+    try
+    {
+      if (VideoView.a(this.a) != null) {
+        VideoView.a(this.a).start();
+      }
+      if (VideoView.a(this.a) != null) {
+        this.a.a.postDelayed(this.a, 500L);
+      }
+      return;
+    }
+    finally {}
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pck
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,22 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.jsp.TroopApiPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.widget.Toast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.SendMultiPictureHelper.6.1;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 
 public class adwy
-  implements TroopMemberApiClient.Callback
+  implements INetEventHandler
 {
-  public adwy(TroopApiPlugin paramTroopApiPlugin) {}
+  adwy(adws paramadws) {}
   
-  public void a(Bundle paramBundle)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    int i = paramBundle.getInt("state", 0);
-    int j = paramBundle.getInt("percentage", 0);
-    long l = paramBundle.getLong("errCode", 0L);
-    try
+    if (!paramBoolean)
     {
-      paramBundle = new JSONObject();
-      paramBundle.put("state", i);
-      paramBundle.put("percentage", j);
-      paramBundle.put("errCode", l);
-      this.a.callJs(this.a.e, new String[] { paramBundle.toString() });
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("TroopApiPlugin", 2, "huanjiDownload exp", paramBundle);
-      }
-      this.a.callJs(this.a.e, new String[] { "{\"errCode\":-10,\"message\":\"request fail\"}" });
+      Toast.makeText(BaseApplicationImpl.getApplication(), this.a.a.getString(2131694778), 1).show();
+      SendMultiPictureHelper.6.1 local1 = new SendMultiPictureHelper.6.1(this);
+      new Handler().postDelayed(local1, 3000L);
     }
   }
 }

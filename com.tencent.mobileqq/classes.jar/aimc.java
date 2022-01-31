@@ -1,49 +1,98 @@
-import com.tencent.mobileqq.teamwork.NoSSLv3SocketFactory;
-import com.tencent.mobileqq.teamwork.NoSSLv3SocketFactory.DelegateSSLSocket;
-import com.tencent.qphone.base.util.QLog;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.mobileqq.data.PhoneContact;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import javax.net.ssl.SSLSocket;
 
 public class aimc
-  extends NoSSLv3SocketFactory.DelegateSSLSocket
+  extends besd
 {
-  private aimc(NoSSLv3SocketFactory paramNoSSLv3SocketFactory, SSLSocket paramSSLSocket)
+  private aimc(ContactListView paramContactListView) {}
+  
+  public int a()
   {
-    super(paramNoSSLv3SocketFactory, paramSSLSocket);
+    return 2131559422;
   }
   
-  public void setEnabledProtocols(String[] paramArrayOfString)
+  public void a(View paramView, int paramInt)
   {
-    String[] arrayOfString = paramArrayOfString;
-    if (paramArrayOfString != null)
+    if ((this.a.a == null) || (this.a.a.isEmpty()) || (paramInt < 0) || (paramInt >= this.a.a.size())) {}
+    PhoneContact localPhoneContact1;
+    do
     {
-      arrayOfString = paramArrayOfString;
-      if (paramArrayOfString.length == 1)
+      return;
+      PhoneContact localPhoneContact2 = (PhoneContact)this.a.a.get(paramInt);
+      localPhoneContact1 = localPhoneContact2;
+      if (localPhoneContact2 == null)
       {
-        arrayOfString = paramArrayOfString;
-        if ("SSLv3".equals(paramArrayOfString[0]))
-        {
-          paramArrayOfString = new ArrayList(Arrays.asList(this.a.getEnabledProtocols()));
-          if (paramArrayOfString.size() <= 1) {
-            break label101;
-          }
-          paramArrayOfString.remove("SSLv3");
-          QLog.i("setEnabledProtocols", 1, "Removed SSLv3 from enabled protocols");
+        localPhoneContact1 = localPhoneContact2;
+        if (paramInt + 1 < this.a.a.size()) {
+          localPhoneContact1 = (PhoneContact)this.a.a.get(paramInt + 1);
         }
       }
+    } while (localPhoneContact1 == null);
+    ((TextView)paramView).setText(localPhoneContact1.pinyinFirst);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return getItemViewType(paramInt) == 1;
+  }
+  
+  public int getCount()
+  {
+    if (this.a.a != null) {
+      return this.a.a.size();
     }
-    for (;;)
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if ((this.a.a == null) || (this.a.a.isEmpty())) {}
+    while (this.a.a.get(paramInt) == null) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (getItemViewType(paramInt) == 1)
     {
-      arrayOfString = (String[])paramArrayOfString.toArray(new String[paramArrayOfString.size()]);
-      if (arrayOfString != null) {
-        super.setEnabledProtocols(arrayOfString);
+      View localView = paramView;
+      if (paramView == null) {
+        localView = LayoutInflater.from(this.a.getContext()).inflate(a(), paramViewGroup, false);
       }
-      return;
-      label101:
-      QLog.i("setEnabledProtocols", 1, "SSL stuck with protocol available for " + String.valueOf(paramArrayOfString));
+      a(localView, paramInt);
+      return localView;
     }
+    paramViewGroup = paramView;
+    if (paramView == null)
+    {
+      paramViewGroup = this.a.a();
+      paramViewGroup.setOnClickListener(this.a);
+    }
+    paramView = (PhoneContact)this.a.a.get(paramInt);
+    this.a.a(paramViewGroup, paramView, false);
+    return paramViewGroup;
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 2;
   }
 }
 

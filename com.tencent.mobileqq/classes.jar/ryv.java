@@ -1,23 +1,19 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.widget.Toast;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
 public class ryv
-  implements DialogInterface.OnClickListener
+  implements qfu
 {
-  public ryv(ChatHistory paramChatHistory) {}
+  public ryv(FastWebActivity paramFastWebActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString)
   {
-    this.a.a.setEnabled(true);
-    this.a.c.dismiss();
+    srt.a(this.a, paramString, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ryv
  * JD-Core Version:    0.7.0.1
  */

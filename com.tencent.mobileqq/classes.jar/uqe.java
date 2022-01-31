@@ -1,19 +1,13 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
 
-public class uqe
-  implements Runnable
+public abstract interface uqe
 {
-  public uqe(PressToChangeVoicePanel paramPressToChangeVoicePanel) {}
-  
-  public void run()
-  {
-    PressToChangeVoicePanel.a(this.a).sendAccessibilityEvent(128);
-  }
+  public abstract void a(BasePublishTask paramBasePublishTask, ErrorMessage paramErrorMessage);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uqe
  * JD-Core Version:    0.7.0.1
  */

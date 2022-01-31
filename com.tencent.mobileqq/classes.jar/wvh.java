@@ -1,25 +1,21 @@
-import com.tencent.mobileqq.activity.phone.PhoneMatchView;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
 
-public class wvh
-  implements Runnable
+class wvh
+  implements wvm
 {
-  public wvh(PhoneMatchView paramPhoneMatchView) {}
+  wvh(wvg paramwvg, ImageView paramImageView) {}
   
-  public void run()
+  public void a(Drawable paramDrawable)
   {
-    int i = this.a.a.c();
-    if ((i == 2) || (i == 3))
-    {
-      this.a.a.h();
-      return;
+    if (paramDrawable != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
     }
-    this.a.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wvh
  * JD-Core Version:    0.7.0.1
  */

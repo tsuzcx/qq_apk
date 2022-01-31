@@ -1,33 +1,22 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.video.IMediaPlayer.OnPlayStateListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 
-public class yex
-  implements IMediaPlayer.OnPlayStateListener
+class yex
+  implements View.OnClickListener
 {
-  public yex(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  yex(yew paramyew) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1)
-    {
-      this.a.a.setVisibility(8);
-      this.a.b.setImageResource(2130843336);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPreviewActivity", 2, "changePlayState, playState => " + this.a.a(paramInt));
-      }
-      return;
-      this.a.b.setImageResource(2130843335);
+    if ((!yxv.a("SUB_ENTER_FLOAT_MODE")) && (yew.a(this.a) != null)) {
+      yew.a(this.a).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yex
  * JD-Core Version:    0.7.0.1
  */

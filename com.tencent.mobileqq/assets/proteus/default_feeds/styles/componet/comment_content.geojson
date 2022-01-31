@@ -1,0 +1,17 @@
+{
+    "view_type": "ReadInJoyUsersCommentView",
+    "view_id":"id_comment_content",
+    "event_type":"cmd_users_comment_click",
+    "height": {
+        "type": "wrap_content"
+    },
+    "width": {
+        "type": "relative",
+        "value": "375"
+    },
+    "attributes": {
+        "setCommentContent:": "-1",
+        "setCommentAllLink:": "-1",
+        "setArticleModel:":"-1"
+    }
+}

@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.filemanager.fileviewer.model.DeviceFileModel;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnTransEventListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
 
-class adda
-  implements Runnable
+public class adda
+  implements View.OnClickListener
 {
-  adda(adcz paramadcz) {}
+  public adda(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.f();
-    }
+    PublicFragmentActivity.a(this.a.getActivity(), QQSettingAutoDownloadAndSaveFragment.class);
+    azqs.b(null, "CliOper", "", "", "0X800A2DB", "0X800A2DB", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adda
  * JD-Core Version:    0.7.0.1
  */

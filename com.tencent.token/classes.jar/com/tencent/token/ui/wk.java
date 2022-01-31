@@ -1,21 +1,17 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.token.cw;
 
-final class wk
-  implements View.OnClickListener
+class wk
+  implements DialogInterface.OnClickListener
 {
-  wk(RealNameStep0VerifyMobileActivity paramRealNameStep0VerifyMobileActivity) {}
+  wk(wi paramwi) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = new Intent(this.a, RealNameFindActivity.class);
-    paramView.putExtra("source_id", RealNameStep0VerifyMobileActivity.access$300(this.a));
-    paramView.putExtra("real_uin", RealNameStep0VerifyMobileActivity.access$100(this.a));
-    paramView.putExtra("ish5zzb", this.a.ish5zzb);
-    this.a.startActivity(paramView);
+    cw.a().a(RealNameStep0VerifyMobileUpActivity.access$200(this.a.a));
   }
 }
 

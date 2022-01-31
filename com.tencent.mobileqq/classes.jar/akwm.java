@@ -1,93 +1,114 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.BlockingQueue;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONObject;
 
 public class akwm
-  extends Handler
+  implements akwx
 {
-  private long a = 0L;
+  private akxn a;
   
-  private akwm(Looper paramLooper)
+  public akwm(akxn paramakxn)
   {
-    super(paramLooper);
+    this.a = paramakxn;
   }
   
-  private void a(long paramLong)
+  public int a()
+  {
+    if (this.a == null) {
+      return 0;
+    }
+    return this.a.b;
+  }
+  
+  public int a(int paramInt)
+  {
+    return 0;
+  }
+  
+  public int a(akrx paramakrx, int paramInt1, int paramInt2, String paramString, long paramLong, int paramInt3, float paramFloat)
+  {
+    return 0;
+  }
+  
+  public int a(AppInterface paramAppInterface)
+  {
+    return 0;
+  }
+  
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QQToast", 2, "scheduleNextToast to " + paramLong);
+      QLog.d("CmAudioManager", 2, "pause all music");
     }
-    removeMessages(1);
-    sendEmptyMessageDelayed(1, paramLong);
-  }
-  
-  private void a(akwl paramakwl)
-  {
-    long l2 = 0L;
-    paramakwl = paramakwl.a();
-    long l1;
-    int i;
-    if (paramakwl != null)
-    {
-      paramakwl.a();
-      if (QQToast.a(paramakwl) == 0)
+    if (akwn.a != null) {
+      synchronized (akwn.a)
       {
-        l1 = 2000L;
-        this.a = (System.currentTimeMillis() + l1);
-        i = 1;
-      }
-    }
-    for (;;)
-    {
-      if (!QQToast.a().isEmpty())
-      {
-        if (i != 0) {
-          l2 = 100L + l1;
+        Iterator localIterator = akwn.a.iterator();
+        while (localIterator.hasNext())
+        {
+          akwn localakwn = (akwn)localIterator.next();
+          if ((localakwn != null) && (localakwn.b() == a())) {
+            localakwn.b(new JSONObject());
+          }
         }
-        a(l2);
       }
-      return;
-      l1 = 3500L;
-      break;
-      i = 0;
-      l1 = 0L;
     }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(int paramInt, AppInterface paramAppInterface) {}
+  
+  public void a(int paramInt, String paramString) {}
+  
+  public int b(int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    }
-    long l;
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQToast", 2, "MSG_SHOW_TOAST received");
-      }
-      l = System.currentTimeMillis();
-      if (l <= this.a + 100L) {
-        break;
-      }
-      paramMessage = (akwl)QQToast.a().poll();
-      if (paramMessage != null)
-      {
-        a(paramMessage);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("QQToast", 2, "MSG_SHOW_TOAST but no message to show");
-    return;
-    a(this.a - l + 100L);
+    return 0;
   }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmAudioManager", 2, "resume all music");
+    }
+  }
+  
+  public void b(int paramInt, String paramString) {}
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmAudioManager", 2, "destroy all music");
+    }
+    if (akwn.a != null) {
+      synchronized (akwn.a)
+      {
+        Iterator localIterator = akwn.a.iterator();
+        while (localIterator.hasNext())
+        {
+          akwn localakwn = (akwn)localIterator.next();
+          if ((localakwn != null) && (localakwn.b() == a()))
+          {
+            localakwn.a();
+            localIterator.remove();
+          }
+        }
+      }
+    }
+    if (this.a != null)
+    {
+      this.a.a();
+      this.a = null;
+    }
+  }
+  
+  public void c(int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akwm
  * JD-Core Version:    0.7.0.1
  */

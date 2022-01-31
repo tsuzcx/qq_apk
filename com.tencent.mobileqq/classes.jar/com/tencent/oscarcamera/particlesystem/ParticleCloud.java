@@ -2,6 +2,10 @@ package com.tencent.oscarcamera.particlesystem;
 
 import android.text.TextUtils;
 import android.util.Pair;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
+import com.tencent.ttpic.util.GsonUtils;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.DoubleBuffer;
@@ -11,7 +15,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import org.json.JSONObject;
 
 public class ParticleCloud
 {
@@ -33,7 +36,7 @@ public class ParticleCloud
   private ParticleSystem mSystem;
   Attribute[] mVarAttributes;
   private long[] mVarExpressions;
-  private int[] param_offsets;
+  private int[] paramOffsets;
   
   public ParticleCloud(ParticleSystem paramParticleSystem)
   {
@@ -88,7 +91,8 @@ public class ParticleCloud
       if (i > 0)
       {
         this.mQuota += i;
-        this.mLastQuotaTime += i / this.mEmitRate;
+        paramDouble = this.mLastQuotaTime;
+        this.mLastQuotaTime = (i / this.mEmitRate + paramDouble);
       }
     }
   }
@@ -106,39 +110,39 @@ public class ParticleCloud
     }
   }
   
-  private double doubleValue(JSONObject paramJSONObject, String paramString)
+  private double doubleValue(JsonObject paramJsonObject, String paramString)
   {
-    paramJSONObject = paramJSONObject.opt(paramString);
-    if ((paramJSONObject != null) && ((paramJSONObject instanceof Number))) {
-      return ((Number)paramJSONObject).doubleValue();
+    paramJsonObject = paramJsonObject.get(paramString);
+    if (((paramJsonObject instanceof JsonPrimitive)) && (((JsonPrimitive)paramJsonObject).isNumber())) {
+      return paramJsonObject.getAsNumber().doubleValue();
     }
     return 0.0D;
   }
   
-  static ParticleCloud fromJson(ParticleSystem paramParticleSystem, JSONObject paramJSONObject)
+  static ParticleCloud fromJson(ParticleSystem paramParticleSystem, JsonObject paramJsonObject)
   {
     paramParticleSystem = new ParticleCloud(paramParticleSystem);
     for (;;)
     {
-      Object localObject1;
-      Object localObject2;
+      Object localObject;
+      JsonElement localJsonElement;
       try
       {
-        paramParticleSystem.mName = ((String)paramJSONObject.get("name"));
-        Iterator localIterator = paramJSONObject.keys();
+        paramParticleSystem.mName = paramJsonObject.get("name").getAsString();
+        Iterator localIterator = paramJsonObject.keySet().iterator();
         if (!localIterator.hasNext()) {
           break;
         }
-        localObject1 = (String)localIterator.next();
-        localObject2 = paramJSONObject.get((String)localObject1);
-        if (((localObject2 instanceof Number)) || ((localObject2 instanceof String)))
+        localObject = (String)localIterator.next();
+        localJsonElement = paramJsonObject.get((String)localObject);
+        if (((localJsonElement instanceof Number)) || ((localJsonElement instanceof String)))
         {
-          localObject1 = createAttr((String)localObject1, localObject2);
-          paramParticleSystem.mAttrs.put(((Attribute)localObject1).mName, localObject1);
+          localObject = createAttr((String)localObject, localJsonElement);
+          paramParticleSystem.mAttrs.put(((Attribute)localObject).mName, localObject);
           continue;
         }
-        if (!(localObject2 instanceof JSONObject)) {
-          break label128;
+        if (!(localJsonElement instanceof JsonObject)) {
+          break label133;
         }
       }
       catch (Exception paramParticleSystem)
@@ -146,12 +150,12 @@ public class ParticleCloud
         paramParticleSystem.printStackTrace();
         return null;
       }
-      if (TextUtils.equals((CharSequence)localObject1, "sprite")) {
-        paramParticleSystem.initSprite((JSONObject)localObject2);
+      if (TextUtils.equals((CharSequence)localObject, "sprite")) {
+        paramParticleSystem.initSprite((JsonObject)localJsonElement);
       } else {
-        label128:
-        if (((localObject2 instanceof JSONObject)) && (TextUtils.equals((CharSequence)localObject1, "audio"))) {
-          paramParticleSystem.mSprite.audioPath = ((JSONObject)localObject2).getString("path");
+        label133:
+        if (((localJsonElement instanceof JsonObject)) && (TextUtils.equals((CharSequence)localObject, "audio"))) {
+          paramParticleSystem.mSprite.audioPath = GsonUtils.getStringUnsafe((JsonObject)localJsonElement, "path");
         }
       }
     }
@@ -178,20 +182,21 @@ public class ParticleCloud
     advanceParticle(paramParticle, paramDouble);
   }
   
-  private void initSprite(JSONObject paramJSONObject)
+  private void initSprite(JsonObject paramJsonObject)
   {
-    this.mSprite.path = paramJSONObject.optString("path");
-    this.mSprite.frameCount = ((int)doubleValue(paramJSONObject, "frameCount"));
-    this.mSprite.width = ((int)doubleValue(paramJSONObject, "width"));
-    this.mSprite.height = ((int)doubleValue(paramJSONObject, "height"));
-    this.mSprite.blendMode = ((int)doubleValue(paramJSONObject, "blendMode"));
-    this.mSprite.animated = ((int)doubleValue(paramJSONObject, "animated"));
-    this.mSprite.looped = ((int)doubleValue(paramJSONObject, "looped"));
-    this.mSprite.frameDuration = doubleValue(paramJSONObject, "frameDuration");
+    this.mSprite.path = GsonUtils.optString(paramJsonObject, "path");
+    this.mSprite.frameCount = ((int)doubleValue(paramJsonObject, "frameCount"));
+    this.mSprite.width = ((int)doubleValue(paramJsonObject, "width"));
+    this.mSprite.height = ((int)doubleValue(paramJsonObject, "height"));
+    this.mSprite.blendMode = ((int)doubleValue(paramJsonObject, "blendMode"));
+    this.mSprite.animated = ((int)doubleValue(paramJsonObject, "animated"));
+    this.mSprite.looped = ((int)doubleValue(paramJsonObject, "looped"));
+    this.mSprite.frameDuration = doubleValue(paramJsonObject, "frameDuration");
   }
   
   private void optimized()
   {
+    int i = 0;
     this.mMaxCount = (((Attribute)this.mAttrs.get("particleCountMax")).value());
     this.mEmitRate = (((Attribute)this.mAttrs.get("emissionRate")).value());
     this.mAttrExpressions = new long[10];
@@ -228,7 +233,6 @@ public class ParticleCloud
     }
     this.mVarExpressions = new long[localArrayList.size()];
     this.mVarAttributes = new Attribute[localArrayList.size()];
-    int i = 0;
     int j = localArrayList.size();
     while (i < j)
     {
@@ -236,7 +240,7 @@ public class ParticleCloud
       this.mVarAttributes[i] = ((Attribute)localArrayList.get(i));
       i += 1;
     }
-    this.param_offsets = new int[(int)((Attribute)this.mAttrs.get("particleCountMax")).value() * 11];
+    this.paramOffsets = new int[(int)((Attribute)this.mAttrs.get("particleCountMax")).value() * 11];
   }
   
   public void createCache()
@@ -273,11 +277,13 @@ public class ParticleCloud
     ParticleExpressionBundle localParticleExpressionBundle = new ParticleExpressionBundle();
     Object localObject1 = this.mParticles.next;
     Object localObject2 = this.mParticles;
-    while (localObject1 != null) {
+    while (localObject1 != null)
+    {
+      Particle localParticle;
       if ((localObject1.a[2] > 0.0D) && (localObject1.a[2] + ((Particle)localObject1).birth <= paramDouble))
       {
         ((Particle)localObject2).next = ((Particle)localObject1).next;
-        Particle localParticle = ((Particle)localObject1).next;
+        localParticle = ((Particle)localObject1).next;
         this.mSystem.putUnlocked((Particle)localObject1);
         localObject1 = this.mParticles;
         ((Particle)localObject1).total -= 1;
@@ -286,9 +292,10 @@ public class ParticleCloud
       else
       {
         advanceParticle((Particle)localObject1, paramDouble);
-        this.mSystem.mParamsPool[(localObject1.param_offset + 10)] = (paramDouble - ((Particle)localObject1).birth);
+        this.mSystem.mParamsPool[(localObject1.paramOffset + 10)] = (paramDouble - ((Particle)localObject1).birth);
+        localParticle = ((Particle)localObject1).next;
         localObject2 = localObject1;
-        localObject1 = ((Particle)localObject1).next;
+        localObject1 = localParticle;
       }
     }
     computeQuota(paramDouble);
@@ -300,7 +307,7 @@ public class ParticleCloud
       {
         localObject1 = this.mSystem.advanceObtainUnlocked();
         initParticle((Particle)localObject1, paramDouble);
-        this.mSystem.mParamsPool[(localObject1.param_offset + 10)] = (paramDouble - ((Particle)localObject1).birth);
+        this.mSystem.mParamsPool[(localObject1.paramOffset + 10)] = (paramDouble - ((Particle)localObject1).birth);
         ((Particle)localObject1).next = this.mParticles.next;
         this.mParticles.next = ((Particle)localObject1);
         localObject1 = this.mParticles;
@@ -313,13 +320,13 @@ public class ParticleCloud
     int j = this.mParticles.total;
     while (i < j)
     {
-      this.param_offsets[i] = ((Particle)localObject1).param_offset;
+      this.paramOffsets[i] = ((Particle)localObject1).paramOffset;
       localObject1 = ((Particle)localObject1).next;
       i += 1;
     }
     localParticleExpressionBundle.expressions = this.mVarExpressions;
-    localParticleExpressionBundle.param_line = this.mParticles.total;
-    localParticleExpressionBundle.param_offsets = this.param_offsets;
+    localParticleExpressionBundle.paramLine = this.mParticles.total;
+    localParticleExpressionBundle.paramOffsets = this.paramOffsets;
     return new Pair(this.mParticles, localParticleExpressionBundle);
   }
   
@@ -330,7 +337,7 @@ public class ParticleCloud
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.oscarcamera.particlesystem.ParticleCloud
  * JD-Core Version:    0.7.0.1
  */

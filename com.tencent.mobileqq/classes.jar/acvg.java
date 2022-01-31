@@ -1,39 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.EditActivity;
 
-class acvg
-  implements Runnable
+public class acvg
+  implements View.OnClickListener
 {
-  acvg(acve paramacve) {}
+  public acvg(EditActivity paramEditActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      if (this.a.a.jdField_a_of_type_JavaIoOutputStream == null) {
-        this.a.a.jdField_a_of_type_JavaIoOutputStream = new FileOutputStream(this.a.a.d, true);
-      }
-      if (this.a.a.b == 1) {
-        this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.a.c, 2002);
-      }
-      this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
-      this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 2;
-      FileManagerRSWorker.a(this.a.a, this.a.a.jdField_a_of_type_Long, this.a.a.h);
-      return;
-    }
-    catch (FileNotFoundException localFileNotFoundException)
-    {
-      localFileNotFoundException.printStackTrace();
-    }
+    EditActivity.a(this.a).setVisibility(4);
+    EditActivity.a(this.a).setImageResource(2130847428);
+    EditActivity.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acvg
  * JD-Core Version:    0.7.0.1
  */

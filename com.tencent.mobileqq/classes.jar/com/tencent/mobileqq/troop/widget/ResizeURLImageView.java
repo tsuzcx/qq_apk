@@ -5,8 +5,8 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
+import bdoo;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.utils.ViewUtils;
 
 public class ResizeURLImageView
   extends URLImageView
@@ -19,7 +19,7 @@ public class ResizeURLImageView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     if (getContext().getResources().getConfiguration().orientation == 1) {}
-    for (paramInt1 = ViewUtils.a() - getPaddingLeft() - getPaddingRight();; paramInt1 = ViewUtils.c() - getPaddingTop() - getPaddingBottom())
+    for (paramInt1 = bdoo.a() - getPaddingLeft() - getPaddingRight();; paramInt1 = bdoo.b() - getPaddingTop() - getPaddingBottom())
     {
       paramInt1 = View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824);
       super.onMeasure(paramInt1, paramInt1);
@@ -29,7 +29,7 @@ public class ResizeURLImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.ResizeURLImageView
  * JD-Core Version:    0.7.0.1
  */

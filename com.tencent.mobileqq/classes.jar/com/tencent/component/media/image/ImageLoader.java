@@ -3,16 +3,16 @@ package com.tencent.component.media.image;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Looper;
+import android.text.TextUtils;
 import com.tencent.component.media.annotation.Public;
 import com.tencent.component.media.utils.BaseHandler;
 import java.io.File;
-import pgm;
 
 public class ImageLoader
 {
   public static final String AVATAR_URL_PREFIX = "avatar://";
-  private static ImageLoader jdField_a_of_type_ComTencentComponentMediaImageImageLoader;
-  private BaseHandler jdField_a_of_type_ComTencentComponentMediaUtilsBaseHandler = new BaseHandler(Looper.getMainLooper());
+  private static ImageLoader sInstance;
+  private BaseHandler mMainHandler = new BaseHandler(Looper.getMainLooper());
   
   public ImageLoader()
   {
@@ -22,13 +22,13 @@ public class ImageLoader
   @Public
   public static ImageLoader getInstance()
   {
-    if (jdField_a_of_type_ComTencentComponentMediaImageImageLoader == null) {}
+    if (sInstance == null) {}
     try
     {
-      if (jdField_a_of_type_ComTencentComponentMediaImageImageLoader == null) {
-        jdField_a_of_type_ComTencentComponentMediaImageImageLoader = new ImageLoader();
+      if (sInstance == null) {
+        sInstance = new ImageLoader();
       }
-      return jdField_a_of_type_ComTencentComponentMediaImageImageLoader;
+      return sInstance;
     }
     finally {}
   }
@@ -36,13 +36,13 @@ public class ImageLoader
   @Public
   public static ImageLoader getInstance(Context paramContext)
   {
-    if (jdField_a_of_type_ComTencentComponentMediaImageImageLoader == null) {}
+    if (sInstance == null) {}
     try
     {
-      if (jdField_a_of_type_ComTencentComponentMediaImageImageLoader == null) {
-        jdField_a_of_type_ComTencentComponentMediaImageImageLoader = new ImageLoader();
+      if (sInstance == null) {
+        sInstance = new ImageLoader();
       }
-      return jdField_a_of_type_ComTencentComponentMediaImageImageLoader;
+      return sInstance;
     }
     finally {}
   }
@@ -75,14 +75,47 @@ public class ImageLoader
     ImageManager.getInstance().clear(paramBoolean);
   }
   
+  public void downloadImage(ImageUrl paramImageUrl, String paramString, ImageLoader.ImageDownloadListener paramImageDownloadListener, ImageLoader.Options paramOptions)
+  {
+    if (paramImageUrl != null)
+    {
+      ImageManager.getInstance().getImage(paramImageUrl, null, paramOptions, (byte)2, paramImageDownloadListener);
+      return;
+    }
+    downloadImage(paramString, paramImageDownloadListener, paramOptions);
+  }
+  
   public void downloadImage(String paramString, ImageLoader.ImageDownloadListener paramImageDownloadListener, ImageLoader.Options paramOptions)
   {
     ImageManager.getInstance().getImage(paramString, null, paramOptions, (byte)2, paramImageDownloadListener);
   }
   
+  public Drawable downloadImageOnly(ImageUrl paramImageUrl, String paramString, ImageLoader.ImageDownloadListener paramImageDownloadListener, ImageLoader.Options paramOptions)
+  {
+    if (paramImageUrl != null) {
+      return ImageManager.getInstance().getImage(paramImageUrl, null, paramOptions, (byte)3, paramImageDownloadListener);
+    }
+    return downloadImageOnly(paramString, paramImageDownloadListener, paramOptions);
+  }
+  
   public Drawable downloadImageOnly(String paramString, ImageLoader.ImageDownloadListener paramImageDownloadListener, ImageLoader.Options paramOptions)
   {
     return ImageManager.getInstance().getImage(paramString, null, paramOptions, (byte)3, paramImageDownloadListener);
+  }
+  
+  public Drawable downloadImageOnly(String paramString, ImageLoader.ImageLoadListener paramImageLoadListener, ImageLoader.ImageDownloadListener paramImageDownloadListener, ImageLoader.Options paramOptions)
+  {
+    return ImageManager.getInstance().getImage(paramString, paramImageLoadListener, paramOptions, (byte)3, paramImageDownloadListener);
+  }
+  
+  public void downloadImageOnly(ImageUrl paramImageUrl, String paramString, ImageLoader.ImageDownloadListener paramImageDownloadListener)
+  {
+    if (paramImageUrl != null)
+    {
+      ImageManager.getInstance().getImage(paramImageUrl, null, null, (byte)3, paramImageDownloadListener);
+      return;
+    }
+    downloadImageOnly(paramString, paramImageDownloadListener);
   }
   
   public void downloadImageOnly(String paramString, ImageLoader.ImageDownloadListener paramImageDownloadListener)
@@ -110,6 +143,24 @@ public class ImageLoader
   
   @Deprecated
   @Public
+  public Drawable loadImage(ImageUrl paramImageUrl, String paramString, ImageLoader.ImageLoadListener paramImageLoadListener, ImageLoader.Options paramOptions)
+  {
+    if (paramImageUrl != null) {
+      return ImageManager.getInstance().getImage(paramImageUrl, paramImageLoadListener, paramOptions, (byte)2, null);
+    }
+    return loadImage(paramString, paramImageLoadListener, paramOptions);
+  }
+  
+  public Drawable loadImage(ImageUrl paramImageUrl, String paramString, ImageLoader.Options paramOptions)
+  {
+    if (paramImageUrl != null) {
+      return ImageManager.getInstance().getImage(paramImageUrl, null, paramOptions, (byte)0, null);
+    }
+    return loadImage(paramString, paramOptions);
+  }
+  
+  @Deprecated
+  @Public
   public Drawable loadImage(String paramString, ImageLoader.ImageLoadListener paramImageLoadListener)
   {
     return loadImage(paramString, paramImageLoadListener, null);
@@ -128,6 +179,28 @@ public class ImageLoader
     return ImageManager.getInstance().getImage(paramString, null, paramOptions, (byte)0, null);
   }
   
+  public void loadImageAsync(ImageUrl paramImageUrl, String paramString, ImageLoader.ImageLoadListener paramImageLoadListener, ImageLoader.Options paramOptions)
+  {
+    if ((paramImageUrl != null) && (!TextUtils.isEmpty(paramImageUrl.url))) {}
+    for (Drawable localDrawable = ImageManager.getInstance().getImage(paramImageUrl, paramImageLoadListener, paramOptions, (byte)2, null);; localDrawable = ImageManager.getInstance().getImage(paramString, paramImageLoadListener, paramOptions, (byte)2, null))
+    {
+      if ((localDrawable != null) && (paramImageLoadListener != null))
+      {
+        if ((paramOptions == null) || (!paramOptions.useMainThread)) {
+          break;
+        }
+        this.mMainHandler.post(new ImageLoader.1(this, paramImageUrl, paramImageLoadListener, localDrawable, paramOptions, paramString));
+      }
+      return;
+    }
+    if (paramImageUrl != null)
+    {
+      paramImageLoadListener.onImageLoaded(paramImageUrl.url, localDrawable, paramOptions);
+      return;
+    }
+    paramImageLoadListener.onImageLoaded(paramString, localDrawable, paramOptions);
+  }
+  
   @Public
   public void loadImageAsync(String paramString, ImageLoader.ImageLoadListener paramImageLoadListener)
   {
@@ -137,22 +210,28 @@ public class ImageLoader
   @Public
   public void loadImageAsync(String paramString, ImageLoader.ImageLoadListener paramImageLoadListener, ImageLoader.Options paramOptions)
   {
-    Drawable localDrawable = ImageManager.getInstance().getImage(paramString, paramImageLoadListener, paramOptions, (byte)2, null);
-    if ((localDrawable != null) && (paramImageLoadListener != null))
-    {
-      if ((paramOptions != null) && (paramOptions.useMainThread)) {
-        this.jdField_a_of_type_ComTencentComponentMediaUtilsBaseHandler.post(new pgm(this, paramImageLoadListener, paramString, localDrawable, paramOptions));
-      }
+    loadImageAsync(null, paramString, paramImageLoadListener, paramOptions);
+  }
+  
+  public Drawable loadImageDownloadOnly(ImageUrl paramImageUrl, String paramString, ImageLoader.ImageLoadListener paramImageLoadListener, ImageLoader.Options paramOptions)
+  {
+    if (paramImageUrl != null) {
+      return ImageManager.getInstance().getImage(paramImageUrl, paramImageLoadListener, paramOptions, (byte)3, null);
     }
-    else {
-      return;
-    }
-    paramImageLoadListener.onImageLoaded(paramString, localDrawable, paramOptions);
+    return loadImageDownloadOnly(paramString, paramImageLoadListener, paramOptions);
   }
   
   public Drawable loadImageDownloadOnly(String paramString, ImageLoader.ImageLoadListener paramImageLoadListener, ImageLoader.Options paramOptions)
   {
     return ImageManager.getInstance().getImage(paramString, paramImageLoadListener, paramOptions, (byte)3, null);
+  }
+  
+  public Drawable loadImageSync(ImageUrl paramImageUrl, String paramString, ImageLoader.ImageLoadListener paramImageLoadListener, ImageLoader.Options paramOptions)
+  {
+    if (paramImageUrl != null) {
+      return ImageManager.getInstance().getImage(paramImageUrl, paramImageLoadListener, paramOptions, (byte)1, null);
+    }
+    return loadImageSync(paramString, paramImageLoadListener, paramOptions);
   }
   
   public Drawable loadImageSync(String paramString)
@@ -182,7 +261,7 @@ public class ImageLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.image.ImageLoader
  * JD-Core Version:    0.7.0.1
  */

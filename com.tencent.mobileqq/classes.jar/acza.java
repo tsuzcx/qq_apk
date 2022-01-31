@@ -1,34 +1,32 @@
-import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager;
-import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager.ThumbTask;
-import java.util.LinkedHashMap;
-import java.util.List;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class acza
-  implements Runnable
+  extends awhw
 {
-  public acza(ThumbDownloadManager paramThumbDownloadManager) {}
+  public acza(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean)
   {
-    if (ThumbDownloadManager.a(this.a).size() >= 8) {}
-    while (ThumbDownloadManager.a(this.a).size() == 0) {
+    this.a.A();
+    if (paramBoolean) {
       return;
     }
-    ThumbDownloadManager.ThumbTask localThumbTask = (ThumbDownloadManager.ThumbTask)ThumbDownloadManager.a(this.a).get(0);
-    if (localThumbTask == null)
-    {
-      ThumbDownloadManager.a(this.a).remove(0);
-      ThumbDownloadManager.a(this.a);
-      return;
+    QQToast.a(this.a, 1, alud.a(2131705314), 1000).a();
+  }
+  
+  protected void b(boolean paramBoolean, int paramInt)
+  {
+    super.b(paramBoolean, paramInt);
+    if ((this.a.n) && (paramBoolean)) {
+      this.a.a(0L, null, null, false);
     }
-    ThumbDownloadManager.a(this.a).remove(localThumbTask);
-    ThumbDownloadManager.a(this.a, localThumbTask);
-    ThumbDownloadManager.b(this.a, localThumbTask);
+    this.a.n = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acza
  * JD-Core Version:    0.7.0.1
  */

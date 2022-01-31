@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0xa8d$Cmd0xa8dJoinPublicGroupRspBody
-  extends MessageMicro
+  extends MessageMicro<Cmd0xa8dJoinPublicGroupRspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_GroupName = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -30,7 +30,7 @@ public final class oidb_0xa8d$Cmd0xa8dJoinPublicGroupRspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xa8d.oidb_0xa8d.Cmd0xa8dJoinPublicGroupRspBody
  * JD-Core Version:    0.7.0.1
  */

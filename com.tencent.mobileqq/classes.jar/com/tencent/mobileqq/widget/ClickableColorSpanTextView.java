@@ -8,11 +8,12 @@ import android.util.StateSet;
 import android.view.MotionEvent;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
+import benw;
 
 public class ClickableColorSpanTextView
   extends TextView
 {
-  private ClickableColorSpanTextView.SpanClickListener jdField_a_of_type_ComTencentMobileqqWidgetClickableColorSpanTextView$SpanClickListener;
+  private benw jdField_a_of_type_Benw;
   private StatableSpanTextView.StatableForegroundColorSpan jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan;
   private StatableSpanTextView.StatableForegroundColorSpan[] jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan;
   
@@ -101,8 +102,8 @@ public class ClickableColorSpanTextView
           }
           if (this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan != null)
           {
-            if ((this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan == localStatableForegroundColorSpan) && (this.jdField_a_of_type_ComTencentMobileqqWidgetClickableColorSpanTextView$SpanClickListener != null)) {
-              this.jdField_a_of_type_ComTencentMobileqqWidgetClickableColorSpanTextView$SpanClickListener.a(this, this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan);
+            if ((this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan == localStatableForegroundColorSpan) && (this.jdField_a_of_type_Benw != null)) {
+              this.jdField_a_of_type_Benw.a(this, this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan);
             }
             this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan.a(StateSet.WILD_CARD);
             this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan = null;
@@ -115,9 +116,9 @@ public class ClickableColorSpanTextView
     }
   }
   
-  public void setSpanClickListener(ClickableColorSpanTextView.SpanClickListener paramSpanClickListener)
+  public void setSpanClickListener(benw parambenw)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClickableColorSpanTextView$SpanClickListener = paramSpanClickListener;
+    this.jdField_a_of_type_Benw = parambenw;
   }
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
@@ -138,7 +139,7 @@ public class ClickableColorSpanTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ClickableColorSpanTextView
  * JD-Core Version:    0.7.0.1
  */

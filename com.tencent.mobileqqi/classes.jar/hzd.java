@@ -1,59 +1,20 @@
-import android.media.AudioManager;
-import com.tencent.sharp.jni.TraeAudioManager;
+import java.lang.ref.ReferenceQueue;
+import java.lang.ref.WeakReference;
 
 public class hzd
-  extends hzg
+  extends WeakReference
 {
-  public hzd(TraeAudioManager paramTraeAudioManager)
-  {
-    super(paramTraeAudioManager);
-  }
+  public Object a;
   
-  public String a()
+  public hzd(Object paramObject1, Object paramObject2, ReferenceQueue paramReferenceQueue)
   {
-    return "DEVICE_EARPHONE";
+    super(paramObject2, paramReferenceQueue);
+    this.a = paramObject1;
   }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.b(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext, false);
-    e();
-    int i = 0;
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Boolean == true)
-      {
-        if (this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager.isSpeakerphoneOn()) {
-          this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.b(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext, false);
-        }
-        long l;
-        if (i < 5) {
-          l = 1000L;
-        }
-        try
-        {
-          for (;;)
-          {
-            Thread.sleep(l);
-            label72:
-            i += 1;
-            break;
-            l = 4000L;
-          }
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          break label72;
-        }
-      }
-    }
-  }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hzd
  * JD-Core Version:    0.7.0.1
  */

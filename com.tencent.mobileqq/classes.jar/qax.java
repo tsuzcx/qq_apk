@@ -1,18 +1,22 @@
-import com.tencent.device.msg.activities.DeviceTipActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class qax
-  implements Runnable
+class qax
+  implements View.OnClickListener
 {
-  public qax(DeviceTipActivity paramDeviceTipActivity) {}
+  qax(qaw paramqaw) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    DeviceTipActivity.a(this.a);
+    paramView = this.a.jdField_a_of_type_Rqj.a();
+    if (paramView != null) {
+      paramView.a(null, ((pgd)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qax
  * JD-Core Version:    0.7.0.1
  */

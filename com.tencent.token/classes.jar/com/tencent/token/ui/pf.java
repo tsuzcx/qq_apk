@@ -1,16 +1,16 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class pf
-  implements DialogInterface.OnClickListener
+class pf
+  implements View.OnClickListener
 {
-  pf(LogoActivity paramLogoActivity) {}
+  pf(pe parampe) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    LogoActivity.access$000(this.a);
+    this.a.a.cancelRequest();
   }
 }
 

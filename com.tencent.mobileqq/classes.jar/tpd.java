@@ -1,23 +1,25 @@
-import android.app.Dialog;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.RegisterBaseActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
 public class tpd
-  implements Runnable
+  extends Handler
 {
-  public tpd(RegisterBaseActivity paramRegisterBaseActivity, int paramInt) {}
+  public tpd(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a = new Dialog(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity, 2131624516);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a.setContentView(2130968595);
-    ((TextView)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a.findViewById(2131362776)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.getString(this.jdField_a_of_type_Int));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a.show();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    PublicAccountImageCollectionMainActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tpd
  * JD-Core Version:    0.7.0.1
  */

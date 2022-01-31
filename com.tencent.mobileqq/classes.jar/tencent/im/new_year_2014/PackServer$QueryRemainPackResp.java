@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class PackServer$QueryRemainPackResp
-  extends MessageMicro
+  extends MessageMicro<QueryRemainPackResp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "promotion_id", "pack_count", "interval_time" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, QueryRemainPackResp.class);
   public final PBUInt32Field interval_time = PBField.initUInt32(0);
@@ -15,7 +15,7 @@ public final class PackServer$QueryRemainPackResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.new_year_2014.PackServer.QueryRemainPackResp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
 
-class aeqd
-  implements Runnable
+public class aeqd
+  implements amep
 {
-  aeqd(aeqb paramaeqb, boolean paramBoolean, int paramInt, ArrayList paramArrayList) {}
+  public aeqd(BaseBubbleBuilder paramBaseBubbleBuilder, Intent paramIntent) {}
   
-  public void run()
+  public void a(Object paramObject)
   {
-    this.jdField_a_of_type_Aeqb.a.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList);
+    if ((paramObject instanceof String))
+    {
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("troop_uin", (String)paramObject);
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("cSpecialFlag", 0);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.a.startActivity(this.jdField_a_of_type_AndroidContentIntent);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeqd
  * JD-Core Version:    0.7.0.1
  */

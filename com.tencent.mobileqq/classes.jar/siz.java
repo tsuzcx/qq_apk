@@ -1,28 +1,28 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.managers.LoadingStateManager;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
+import java.util.List;
 
-public class siz
-  implements Handler.Callback
+class siz
+  extends bhry
 {
-  public siz(Conversation paramConversation) {}
+  siz(six paramsix) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    LoadingStateManager.a().a(paramMessage.what);
-    if (paramMessage.what == 4)
+    super.onAnimationEnd(paramAnimation);
+    if (siw.a(this.a.a) != null)
     {
-      this.a.a(1134013, 0L, false);
-      return true;
+      paramAnimation = new ArrayList();
+      paramAnimation.add(siw.a(this.a.a));
+      siw.a(this.a.a).a(paramAnimation, siw.a(this.a.a));
+      QQToast.a(this.a.a.a, 2, 2131718902, 0).a();
     }
-    this.a.d(true);
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     siz
  * JD-Core Version:    0.7.0.1
  */

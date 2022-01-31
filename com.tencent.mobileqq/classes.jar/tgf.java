@@ -1,25 +1,33 @@
-import com.tencent.mobileqq.activity.PortraitImageview;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import java.util.List;
 
-public class tgf
-  implements Runnable
+class tgf
+  implements Animator.AnimatorListener
 {
-  public tgf(PortraitImageview paramPortraitImageview, float paramFloat1, long paramLong, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5) {}
+  tgf(tge paramtge, DiniFlyAnimationView paramDiniFlyAnimationView) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    long l = System.currentTimeMillis();
-    float f1 = Math.min(this.jdField_a_of_type_Float, (float)(l - this.jdField_a_of_type_Long));
-    float f2 = this.b;
-    float f3 = this.c;
-    this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a(f2 + f3 * f1, this.d, this.e);
-    if (f1 < this.jdField_a_of_type_Float) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.post(this);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.removeAnimatorListener(this);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    tge.a(this.jdField_a_of_type_Tge).removeView(this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.removeAnimatorListener(this);
+    tge.a(this.jdField_a_of_type_Tge).remove(this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tgf
  * JD-Core Version:    0.7.0.1
  */

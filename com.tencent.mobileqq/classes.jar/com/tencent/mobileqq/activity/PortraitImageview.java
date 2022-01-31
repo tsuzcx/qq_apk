@@ -1,5 +1,8 @@
 package com.tencent.mobileqq.activity;
 
+import adnp;
+import adnq;
+import adnr;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
@@ -17,11 +20,6 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import com.tencent.mobileqq.activity.photo.RegionView;
-import tgd;
-import tge;
-import tgf;
-import tgg;
-import tgh;
 
 @SuppressLint({"NewApi"})
 public class PortraitImageview
@@ -31,13 +29,13 @@ public class PortraitImageview
   private double jdField_a_of_type_Double;
   float jdField_a_of_type_Float;
   int jdField_a_of_type_Int;
+  public adnq a;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   public ScaleGestureDetector a;
-  public PortraitImageview.OnImageTouchedListener a;
   RegionView jdField_a_of_type_ComTencentMobileqqActivityPhotoRegionView;
   public Runnable a;
   private float[] jdField_a_of_type_ArrayOfFloat = new float[9];
@@ -109,9 +107,9 @@ public class PortraitImageview
     this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_c_of_type_JavaLangRunnable = new tgd(this);
-    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(paramContext, new tgh(this));
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new tgg(this, null));
+    this.jdField_c_of_type_JavaLangRunnable = new PortraitImageview.1(this);
+    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(paramContext, new adnr(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new adnp(this, null));
     if (Build.VERSION.SDK_INT >= 11) {
       setLayerType(2, null);
     }
@@ -151,6 +149,12 @@ public class PortraitImageview
   public float a()
   {
     return a(this.jdField_b_of_type_AndroidGraphicsMatrix);
+  }
+  
+  float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    paramFloat1 = paramFloat1 / paramFloat4 - 1.0F;
+    return (paramFloat1 * (paramFloat1 * paramFloat1) + 1.0F) * paramFloat3 + paramFloat2;
   }
   
   protected float a(Matrix paramMatrix)
@@ -224,7 +228,7 @@ public class PortraitImageview
   {
     paramFloat1 = (paramFloat1 - a()) / paramFloat4;
     float f1 = a();
-    post(new tgf(this, paramFloat4, System.currentTimeMillis(), f1, paramFloat1, paramFloat2, paramFloat3));
+    post(new PortraitImageview.3(this, paramFloat4, System.currentTimeMillis(), f1, paramFloat1, paramFloat2, paramFloat3));
   }
   
   public float b()
@@ -414,7 +418,7 @@ public class PortraitImageview
     }
     if (getWidth() <= 0)
     {
-      this.jdField_b_of_type_JavaLangRunnable = new tge(this, paramBitmap);
+      this.jdField_b_of_type_JavaLangRunnable = new PortraitImageview.2(this, paramBitmap);
       return;
     }
     if (paramBitmap != null) {
@@ -447,9 +451,9 @@ public class PortraitImageview
     }
   }
   
-  public void setOnImageTouchedListener(PortraitImageview.OnImageTouchedListener paramOnImageTouchedListener)
+  public void setOnImageTouchedListener(adnq paramadnq)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview$OnImageTouchedListener = paramOnImageTouchedListener;
+    this.jdField_a_of_type_Adnq = paramadnq;
   }
   
   public void setRegionView(RegionView paramRegionView)
@@ -481,7 +485,7 @@ public class PortraitImageview
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PortraitImageview
  * JD-Core Version:    0.7.0.1
  */

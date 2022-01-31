@@ -1,33 +1,14 @@
-import com.tencent.mobileqq.ar.ScanEntranceDPC;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.view.MotionEvent;
 
-public class aghc
-  implements Runnable
+public abstract interface aghc
 {
-  public aghc(ScanTorchActivity paramScanTorchActivity, int paramInt) {}
+  public abstract boolean a(MotionEvent paramMotionEvent);
   
-  public void run()
-  {
-    if (!ScanTorchActivity.h(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity)) {
-      if (this.jdField_a_of_type_Int > ScanEntranceDPC.a().c) {
-        break label54;
-      }
-    }
-    label54:
-    for (boolean bool = true;; bool = false)
-    {
-      if (ScanTorchActivity.g(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity) != bool)
-      {
-        ScanTorchActivity.o(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, bool);
-        ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, false);
-      }
-      return;
-    }
-  }
+  public abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aghc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,14 @@
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.app.CardObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class cal
-  extends CardObserver
+public final class cal
+  implements DialogInterface.OnClickListener
 {
-  public cal(AddRequestActivity paramAddRequestActivity) {}
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (!AddRequestActivity.a(this.a).equals(paramString)) {
-      return;
-    }
-    if (paramBoolean)
-    {
-      this.a.a(2130837958, this.a.getString(2131562776));
-      return;
-    }
-    this.a.a(2130837947, this.a.getString(2131562773));
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     cal
  * JD-Core Version:    0.7.0.1
  */

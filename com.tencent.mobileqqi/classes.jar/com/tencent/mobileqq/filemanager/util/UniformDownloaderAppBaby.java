@@ -7,7 +7,7 @@ import com.tencent.mobileqq.statistics.StatisticAssist;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import gda;
+import fyo;
 import mqq.app.MobileQQ;
 
 public class UniformDownloaderAppBaby
@@ -65,7 +65,7 @@ public class UniformDownloaderAppBaby
   
   private int i()
   {
-    int i = UniformDownloaderAppBabySdk.a().a(this.jdField_c_of_type_Long, this.jdField_c_of_type_JavaLangString, this.b, new gda(this));
+    int i = UniformDownloaderAppBabySdk.a().a(this.jdField_c_of_type_Long, this.jdField_c_of_type_JavaLangString, this.b, new fyo(this));
     if (i == 0) {
       a(true);
     }

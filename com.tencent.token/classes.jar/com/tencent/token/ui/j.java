@@ -1,17 +1,22 @@
 package com.tencent.token.ui;
 
-final class j
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+
+class j
+  implements Animation.AnimationListener
 {
-  public float a;
-  public float b;
-  public float c;
+  j(i parami, ImageView paramImageView) {}
   
-  public j(float paramFloat1, float paramFloat2, float paramFloat3)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
+    this.a.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

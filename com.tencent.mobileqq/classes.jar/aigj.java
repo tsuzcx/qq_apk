@@ -1,75 +1,49 @@
-import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.text.ClipboardManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.qphone.base.util.QLog;
 
-public class aigj
+class aigj
+  implements View.OnClickListener
 {
-  public float a;
-  public int a;
-  public long a;
-  public volatile aigl a;
-  public volatile String a;
-  public AbstractUnifiedMonitor.ThreadMonitorCallback a;
-  public boolean a;
-  public float b;
-  public int b;
-  public volatile long b;
-  public volatile boolean b;
-  public float c;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public int e = 5;
-  public int f = 300;
-  public int g = 0;
-  public int h = 0;
-  int i = 0;
+  aigj(aigf paramaigf) {}
   
-  public aigj()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = 100;
-    this.jdField_b_of_type_Int = 10;
-    this.jdField_a_of_type_Float = 0.001F;
-    this.jdField_b_of_type_Float = 0.1F;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 500;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_c_of_type_Float = 1.0F;
-  }
-  
-  public aigj(float paramFloat1, int paramInt1, int paramInt2, float paramFloat2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Int = 100;
-    this.jdField_b_of_type_Int = 10;
-    this.jdField_a_of_type_Float = 0.001F;
-    this.jdField_b_of_type_Float = 0.1F;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 500;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_c_of_type_Float = 1.0F;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.i = paramInt4;
-    this.jdField_d_of_type_Boolean = paramBoolean;
+    int i = paramView.getId();
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "onClick, id = " + i);
+    }
+    switch (i)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (this.a.jdField_a_of_type_Aihj == null);
+      ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.a.jdField_a_of_type_Aihj.a.msg);
+      return;
+    } while ((this.a.jdField_a_of_type_Aihj == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg == null) || (!(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg instanceof AbsShareMsg)));
+    paramView = (AbsShareMsg)this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg;
+    Intent localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, ForwardRecentActivity.class);
+    localIntent.putExtra("forward_type", -3);
+    localIntent.putExtra("stuctmsg_bytes", paramView.getBytes());
+    localIntent.putExtra("is_need_show_sources", false);
+    aryv.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, localIntent, 21);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aigj
  * JD-Core Version:    0.7.0.1
  */

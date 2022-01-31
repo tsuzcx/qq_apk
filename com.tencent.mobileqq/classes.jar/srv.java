@@ -1,25 +1,36 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.widgets.LimitWordCountEditText;
 
 public class srv
-  implements Animation.AnimationListener
+  implements TextWatcher
 {
-  public srv(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public srv(LimitWordCountEditText paramLimitWordCountEditText) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.f = false;
-    this.a.finish();
+    if (paramCharSequence == null)
+    {
+      if (LimitWordCountEditText.a(this.a) != null) {
+        LimitWordCountEditText.a(this.a).a(0);
+      }
+      LimitWordCountEditText.a(this.a).setText(LimitWordCountEditText.a(this.a));
+      return;
+    }
+    if (LimitWordCountEditText.a(this.a) != null) {
+      LimitWordCountEditText.a(this.a).a(paramCharSequence.length());
+    }
+    LimitWordCountEditText.a(this.a).setText(String.valueOf(LimitWordCountEditText.a(this.a) - paramCharSequence.length()));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     srv
  * JD-Core Version:    0.7.0.1
  */

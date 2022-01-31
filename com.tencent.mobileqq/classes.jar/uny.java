@@ -1,69 +1,56 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.File;
 
 public class uny
-  extends Drawable
+  implements unn
 {
-  public int a;
-  public Bitmap a;
-  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-  Rect jdField_a_of_type_AndroidGraphicsRect;
-  boolean jdField_a_of_type_Boolean;
+  private String a = "SimplePreloadListener";
   
-  public void a(Bitmap paramBitmap, int paramInt)
+  public uny(String paramString)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, paramInt, paramBitmap.getHeight());
+    this.a = paramString;
   }
   
-  public void draw(Canvas paramCanvas)
+  public void a(String paramString, int paramInt1, int paramInt2, unj paramunj) {}
+  
+  public void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, unj paramunj)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      QLog.e("VoicePrintView", 1, "onDraw(), bmp==null");
-    }
-    int i;
-    do
+    if ((paramInt1 == 1) && (paramErrorMessage.errorCode == 14))
     {
+      wxe.b(this.a, "download ignore because no mask pic url");
       return;
-      i = 0;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        i = paramCanvas.save();
-        paramCanvas.scale(-1.0F, 1.0F, this.jdField_a_of_type_Int / 2.0F, getBounds().exactCenterY());
-      }
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
-    } while (!this.jdField_a_of_type_Boolean);
-    paramCanvas.restoreToCount(i);
+    }
+    wxe.d(this.a, "download error! vid = %s , fileType = %d , error = %s", new Object[] { paramString, Integer.valueOf(paramInt1), paramErrorMessage });
   }
   
-  public int getOpacity()
+  public void a(String paramString, int paramInt1, File paramFile, int paramInt2, unj paramunj)
   {
-    return -3;
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
-    {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
-      super.invalidateSelf();
+    paramString = ((uvx)uwa.a(5)).a(paramString);
+    if (paramString != null) {
+      unk.a(paramString, paramFile.getAbsolutePath(), paramInt1);
     }
   }
   
-  public void setColorFilter(ColorFilter paramColorFilter)
+  public void a(String paramString, int paramInt, unj paramunj) {}
+  
+  public void b(String paramString, int paramInt1, File paramFile, int paramInt2, unj paramunj)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
-    super.invalidateSelf();
+    wxe.a(this.a, "download success! vid = %s , fileType = %s , file path = %s", paramString, ulg.a(paramInt1), paramFile.getAbsolutePath());
+    paramString = ((uvx)uwa.a(5)).a(paramString);
+    if (paramString != null) {
+      unk.a(paramString, paramFile.getAbsolutePath(), paramInt1, wxj.a(BaseApplicationImpl.getContext()));
+    }
+  }
+  
+  public void b(String paramString, int paramInt, unj paramunj)
+  {
+    wxe.a(this.a, "onPause! vid = %s , fileType = %d ", paramString, Integer.valueOf(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uny
  * JD-Core Version:    0.7.0.1
  */

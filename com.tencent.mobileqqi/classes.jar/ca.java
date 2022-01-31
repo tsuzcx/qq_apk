@@ -1,13 +1,16 @@
-import com.dataline.activities.LiteMutiPicViewerActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.dataline.activities.LiteAdvanceActivity;
 
-class ca
-  implements Runnable
+public class ca
+  implements CompoundButton.OnCheckedChangeListener
 {
-  ca(bx parambx) {}
+  public ca(LiteAdvanceActivity paramLiteAdvanceActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    LiteMutiPicViewerActivity.a(this.a.a);
+    LiteAdvanceActivity.a(this.a, paramBoolean);
+    LiteAdvanceActivity.a(this.a, LiteAdvanceActivity.a(this.a));
   }
 }
 

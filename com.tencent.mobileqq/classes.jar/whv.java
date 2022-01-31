@@ -1,60 +1,79 @@
-import android.content.res.Resources;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tencent.qphone.base.util.QLog;
 
 public class whv
-  implements TextWatcher
+  extends wlc
+  implements wri
 {
-  public whv(ClassificationSearchActivity paramClassificationSearchActivity) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public whv(Context paramContext, Activity paramActivity, int paramInt1, int paramInt2)
   {
-    String str = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    paramEditable = this.a.jdField_a_of_type_AndroidWidgetImageButton;
-    if (str.equals("")) {}
-    for (int i = 8;; i = 0)
-    {
-      paramEditable.setVisibility(i);
-      if (this.a.f != ClassificationSearchActivity.c) {
-        break;
-      }
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.getResources().getString(2131433015));
-      if (AppSetting.b) {
-        this.a.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.a.jdField_a_of_type_AndroidWidgetButton.getText().toString());
-      }
-      if ((str.equals("")) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment != null))
-      {
-        if ((this.a.f != ClassificationSearchActivity.jdField_a_of_type_Int) && (this.a.f != ClassificationSearchActivity.d)) {
-          break label219;
-        }
-        ClassificationSearchActivity.a(this.a);
-      }
-      return;
-    }
-    Button localButton = this.a.jdField_a_of_type_AndroidWidgetButton;
-    if (!str.equals("")) {}
-    for (paramEditable = this.a.getResources().getString(2131433958);; paramEditable = this.a.getResources().getString(2131433015))
-    {
-      localButton.setText(paramEditable);
-      break;
-    }
-    label219:
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
+    super(paramContext, paramActivity, paramInt1, paramInt2);
+    super.a(this);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public static void a(Activity paramActivity, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem)
+  {
+    StringBuilder localStringBuilder1 = null;
+    StringBuilder localStringBuilder2;
+    if ((paramVideoListFeedItem != null) && (paramStoryVideoItem != null))
+    {
+      localStringBuilder2 = new StringBuilder();
+      if (paramStoryVideoItem.mTimeZoneOffsetMillis != 2147483647L)
+      {
+        localStringBuilder2.append(xsm.a(paramStoryVideoItem.mCreateTime, paramStoryVideoItem.mTimeZoneOffsetMillis));
+        paramStoryVideoItem = localStringBuilder2;
+        paramVideoListFeedItem = localStringBuilder1;
+        if (localStringBuilder2.length() > 0)
+        {
+          paramVideoListFeedItem = new Intent();
+          paramVideoListFeedItem.putExtra("at_video_text", localStringBuilder2.toString());
+          paramStoryVideoItem = localStringBuilder2;
+        }
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder1 = new StringBuilder().append("set result ok. At video text is:");
+        if (paramStoryVideoItem != null) {
+          break label146;
+        }
+      }
+      label146:
+      for (paramStoryVideoItem = "";; paramStoryVideoItem = paramStoryVideoItem.toString())
+      {
+        QLog.d("Q.qqstory.detail.FeedItemThumbAdapter", 2, paramStoryVideoItem);
+        paramActivity.setResult(-1, paramVideoListFeedItem);
+        return;
+        localStringBuilder2.append(xsm.b(paramStoryVideoItem.mCreateTime));
+        break;
+      }
+      paramStoryVideoItem = null;
+      paramVideoListFeedItem = localStringBuilder1;
+    }
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void a(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt)
+  {
+    if (xsm.b()) {
+      return;
+    }
+    a(this.a, paramVideoListFeedItem, paramStoryVideoItem);
+    wxj.a("home_page", "choose_video", 0, 0, new String[0]);
+    this.a.finish();
+  }
+  
+  public void b(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     whv
  * JD-Core Version:    0.7.0.1
  */

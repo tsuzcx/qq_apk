@@ -1,21 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.Comparator;
 
 public class wir
-  implements View.OnClickListener
+  implements Comparator<CommentEntry>
 {
-  public wir(SearchBaseActivity paramSearchBaseActivity) {}
+  public wir(wiq paramwiq) {}
   
-  public void onClick(View paramView)
+  public int a(CommentEntry paramCommentEntry1, CommentEntry paramCommentEntry2)
   {
-    this.a.setResult(1);
-    this.a.finish();
+    if ((paramCommentEntry1.status == 0) && (paramCommentEntry2.status == 0)) {
+      if (paramCommentEntry1.replyTime >= paramCommentEntry2.replyTime) {}
+    }
+    while ((paramCommentEntry1.status == 0) && (paramCommentEntry2.status != 0))
+    {
+      return -1;
+      if (paramCommentEntry1.replyTime > paramCommentEntry2.replyTime) {
+        return 1;
+      }
+      return 0;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wir
  * JD-Core Version:    0.7.0.1
  */

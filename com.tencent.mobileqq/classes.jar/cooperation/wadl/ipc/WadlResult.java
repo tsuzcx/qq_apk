@@ -3,12 +3,13 @@ package cooperation.wadl.ipc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import angu;
+import bfsk;
+import bkiy;
 
 public class WadlResult
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new angu();
+  public static final Parcelable.Creator<WadlResult> CREATOR = new bkiy();
   public int a;
   public long a;
   public WadlParams a;
@@ -42,6 +43,20 @@ public class WadlResult
     }
   }
   
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_CooperationWadlIpcWadlParams != null) {}
+    for (String str = this.jdField_a_of_type_CooperationWadlIpcWadlParams.j;; str = "")
+    {
+      this.jdField_b_of_type_Int = bfsk.a(this.jdField_b_of_type_Int, str, this.jdField_b_of_type_JavaLangString);
+      if (this.jdField_b_of_type_Int != 0) {
+        break;
+      }
+      return false;
+    }
+    return true;
+  }
+  
   public int describeContents()
   {
     return 0;
@@ -67,7 +82,7 @@ public class WadlResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.wadl.ipc.WadlResult
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,44 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
-import com.tencent.mobileqq.avatar.dynamicavatar.VasFaceManager;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import java.util.HashMap;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
-public class agrh
-  implements Runnable
+class agrh
+  implements View.OnTouchListener
 {
-  public agrh(ProfileHeaderView paramProfileHeaderView, ProfileActivity.AllInOne paramAllInOne, int paramInt, String paramString) {}
+  agrh(agqq paramagqq) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Object localObject = (ImageView)this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_JavaUtilHashMap.get("map_key_face");
-    if ((localObject instanceof DynamicAvatarView))
+    boolean bool = false;
+    int i = paramMotionEvent.getAction();
+    paramView = this.a.jdField_a_of_type_Bemq.a();
+    if (i == 0)
     {
-      ((DynamicAvatarView)localObject).setFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, 200, true, true, true, false, 3);
-      localObject = (View)this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_JavaUtilHashMap.get("map_key_face_stoke");
-      if (localObject != null) {
-        ((View)localObject).setVisibility(VasFaceManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+      this.a.m.setText(alud.a(2131705530));
+      this.a.m.setTextColor(this.a.r);
+      this.a.jdField_a_of_type_Auxp.b();
+      if (paramView != null) {
+        paramView.a(true);
       }
-      return;
+      azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_wolf", "", "in_game", "wolf_talk", 0, 0, "", "", "", "");
+      bool = true;
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false);
+    while ((i != 3) && (i != 1)) {
+      return bool;
+    }
+    this.a.m.setText(alud.a(2131705469));
+    this.a.m.setTextColor(this.a.q);
+    this.a.jdField_a_of_type_Auxp.c();
+    if (paramView != null) {
+      paramView.a(false);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agrh
  * JD-Core Version:    0.7.0.1
  */

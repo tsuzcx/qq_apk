@@ -1,27 +1,36 @@
-import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
-import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager.OnResourceDownloadListener;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class ahjx
-  implements CaptureVideoFilterManager.OnResourceDownloadListener
+public class ahjx
 {
-  ahjx(ahjw paramahjw) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void a(boolean paramBoolean)
+  public boolean a()
   {
-    if (paramBoolean)
+    return this.jdField_a_of_type_Int != 1;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if ((paramObject instanceof ahjx))
     {
-      this.a.a.a(CaptureVideoFilterManager.a().a());
-      if (QLog.isColorLevel()) {
-        QLog.d("CameraCaptureFragment", 2, "EffectsCameraCaptureFragment onResourceDownload");
-      }
+      paramObject = (ahjx)paramObject;
+      return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
     }
+    return super.equals(paramObject);
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "Face2FaceFriendInfo uin:" + this.jdField_a_of_type_JavaLangString + " nick:" + this.b + " type:" + this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahjx
  * JD-Core Version:    0.7.0.1
  */

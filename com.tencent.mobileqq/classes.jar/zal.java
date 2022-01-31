@@ -1,31 +1,52 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.ScreenShot;
-import com.tencent.mobileqq.app.ShakeListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class zal
-  extends ShakeListener
+class zal
+  implements xtk
 {
-  public void a()
+  zal(zak paramzak, zam paramzam, zan paramzan) {}
+  
+  public void onFailure(String paramString)
   {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if (localBaseActivity == null)
+    if (this.jdField_a_of_type_Zam != null)
     {
-      ScreenShot.a("MyShakeListener - top activity is null");
-      return;
+      this.jdField_a_of_type_Zan.a(943004);
+      this.jdField_a_of_type_Zan.a(paramString);
+      this.jdField_a_of_type_Zam.b(this.jdField_a_of_type_Zan);
     }
-    if (!localBaseActivity.mCurrentActivityShakeFlag)
-    {
-      ScreenShot.a("MyShakeListener - shake flag is false");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.videostory.capture", 2, "picToVideo failure");
     }
-    ThreadManager.getSubThreadHandler().post(new zam(this, localBaseActivity));
+  }
+  
+  public void onFinish(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.videostory.capture", 2, "picToVideo finish");
+    }
+  }
+  
+  public void onProgress(String paramString) {}
+  
+  public void onStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.videostory.capture", 2, "picToVideo start");
+    }
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    if (this.jdField_a_of_type_Zam != null) {
+      this.jdField_a_of_type_Zam.a(this.jdField_a_of_type_Zan);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.videostory.capture", 2, "picToVideo sucess");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zal
  * JD-Core Version:    0.7.0.1
  */

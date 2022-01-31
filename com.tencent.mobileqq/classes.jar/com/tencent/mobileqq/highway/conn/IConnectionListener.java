@@ -10,11 +10,11 @@ public abstract interface IConnectionListener
   
   public abstract void onDisConnect(int paramInt, IConnection paramIConnection);
   
-  public abstract void onRecvInvalidData(EndPoint paramEndPoint);
+  public abstract void onRecvInvalidData(EndPoint paramEndPoint, IConnection paramIConnection);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.highway.conn.IConnectionListener
  * JD-Core Version:    0.7.0.1
  */

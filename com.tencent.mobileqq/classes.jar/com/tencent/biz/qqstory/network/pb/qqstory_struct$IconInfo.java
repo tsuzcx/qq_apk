@@ -9,12 +9,12 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_struct$IconInfo
-  extends MessageMicro
+  extends MessageMicro<IconInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field err_code = PBField.initUInt32(0);
   public final PBBytesField union_id = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField usr_icon_list = PBField.initRepeatMessage(qqstory_struct.UsrIcon.class);
+  public final PBRepeatMessageField<qqstory_struct.UsrIcon> usr_icon_list = PBField.initRepeatMessage(qqstory_struct.UsrIcon.class);
   
   static
   {
@@ -24,7 +24,7 @@ public final class qqstory_struct$IconInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.IconInfo
  * JD-Core Version:    0.7.0.1
  */

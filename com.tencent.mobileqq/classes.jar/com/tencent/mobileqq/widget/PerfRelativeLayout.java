@@ -4,13 +4,13 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-import com.tencent.mobileqq.fpsreport.OnDrawCompleteListener;
+import asfa;
 import com.tencent.qphone.base.util.QLog;
 
 public class PerfRelativeLayout
   extends RelativeLayout
 {
-  private OnDrawCompleteListener a;
+  private asfa a;
   
   public PerfRelativeLayout(Context paramContext)
   {
@@ -49,14 +49,14 @@ public class PerfRelativeLayout
     }
   }
   
-  public void setOnDrawCompleteListener(OnDrawCompleteListener paramOnDrawCompleteListener)
+  public void setOnDrawCompleteListener(asfa paramasfa)
   {
-    this.a = paramOnDrawCompleteListener;
+    this.a = paramasfa;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PerfRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

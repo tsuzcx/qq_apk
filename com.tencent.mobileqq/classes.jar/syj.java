@@ -1,52 +1,119 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter.CornerListItemHolder;
-import com.tencent.mobileqq.config.struct.LebaViewItem;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
-import com.tencent.mobileqq.fpsreport.FPSXListView;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-class syj
-  implements Runnable
+final class syj
+  implements BusinessObserver
 {
-  syj(syi paramsyi, String paramString, Bitmap paramBitmap, boolean paramBoolean) {}
+  syj(alzr paramalzr, String paramString, boolean paramBoolean, Context paramContext, AppInterface paramAppInterface, int paramInt) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Syi.a.a == null) {}
-    Object localObject;
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
+    }
+    if (!paramBoolean)
+    {
+      if (this.jdField_a_of_type_Alzr != null) {
+        this.jdField_a_of_type_Alzr.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+      }
+      if (this.jdField_a_of_type_Boolean) {
+        syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695729);
+      }
+    }
+    label366:
     do
     {
       do
       {
-        return;
-        int j = this.jdField_a_of_type_Syi.a.a.getChildCount();
-        int i = 0;
-        if (i < j)
+        do
         {
-          localObject = this.jdField_a_of_type_Syi.a.a.getChildAt(i);
-          LebaListViewAdapter.CornerListItemHolder localCornerListItemHolder = (LebaListViewAdapter.CornerListItemHolder)((View)localObject).getTag();
-          if ((localCornerListItemHolder == null) || (localCornerListItemHolder.a == null) || (localCornerListItemHolder.a.a == null) || (!this.jdField_a_of_type_JavaLangString.equals(localCornerListItemHolder.a.a.strPkgName))) {}
-          for (;;)
+          do
           {
-            i += 1;
-            break;
-            localObject = (ImageView)((View)localObject).findViewById(2131364331);
-            if ((localObject != null) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null)) {
-              ((ImageView)localObject).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+            do
+            {
+              do
+              {
+                return;
+                if (!paramBoolean) {
+                  break label404;
+                }
+                try
+                {
+                  paramBundle = paramBundle.getByteArray("data");
+                  if (paramBundle == null) {
+                    break label366;
+                  }
+                  mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
+                  localFollowResponse.mergeFrom(paramBundle);
+                  paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+                  if (QLog.isColorLevel()) {
+                    QLog.d("PublicAccountUtil", 2, "followUin, retCode=" + paramInt);
+                  }
+                  if (paramInt != 0) {
+                    break;
+                  }
+                  if (this.jdField_a_of_type_Alzr != null) {
+                    this.jdField_a_of_type_Alzr.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
+                  }
+                  syb.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+                  return;
+                }
+                catch (Exception paramBundle)
+                {
+                  if (this.jdField_a_of_type_Alzr != null) {
+                    this.jdField_a_of_type_Alzr.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+                  }
+                }
+              } while (!this.jdField_a_of_type_Boolean);
+              syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695729);
+              return;
+              if (paramInt != 58) {
+                break;
+              }
+              if (this.jdField_a_of_type_Alzr != null) {
+                this.jdField_a_of_type_Alzr.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+              }
+            } while (!this.jdField_a_of_type_Boolean);
+            syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695726);
+            return;
+            if (paramInt != 65) {
+              break;
             }
+            if (this.jdField_a_of_type_Alzr != null) {
+              this.jdField_a_of_type_Alzr.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+            }
+          } while (!this.jdField_a_of_type_Boolean);
+          syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695699);
+          return;
+          if (this.jdField_a_of_type_Alzr != null) {
+            this.jdField_a_of_type_Alzr.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
           }
+        } while (!this.jdField_a_of_type_Boolean);
+        syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695729);
+        return;
+        if (this.jdField_a_of_type_Alzr != null) {
+          this.jdField_a_of_type_Alzr.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
         }
-      } while (this.jdField_a_of_type_Boolean);
-      localObject = this.jdField_a_of_type_Syi.a.a.findViewWithTag(this.jdField_a_of_type_JavaLangString);
-    } while ((localObject == null) || (!(localObject instanceof ImageView)) || (this.jdField_a_of_type_AndroidGraphicsBitmap == null));
-    ((ImageView)localObject).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      } while (!this.jdField_a_of_type_Boolean);
+      syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695729);
+      return;
+      if (this.jdField_a_of_type_Alzr != null) {
+        this.jdField_a_of_type_Alzr.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+      }
+    } while (!this.jdField_a_of_type_Boolean);
+    label404:
+    syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695729);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     syj
  * JD-Core Version:    0.7.0.1
  */

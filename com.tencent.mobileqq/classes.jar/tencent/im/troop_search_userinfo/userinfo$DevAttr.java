@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class userinfo$DevAttr
-  extends MessageMicro
+  extends MessageMicro<DevAttr>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26 }, new String[] { "str_imei", "str_imsi", "str_phonenum" }, new Object[] { "", "", "" }, DevAttr.class);
   public final PBStringField str_imei = PBField.initString("");
@@ -15,7 +15,7 @@ public final class userinfo$DevAttr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.troop_search_userinfo.userinfo.DevAttr
  * JD-Core Version:    0.7.0.1
  */

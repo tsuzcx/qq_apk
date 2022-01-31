@@ -1,27 +1,27 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import java.util.Comparator;
 
-public class uiq
-  extends ClickableSpan
+final class uiq
+  implements Comparator<uiz>
 {
-  public uiq(ActivateFriendActivity paramActivateFriendActivity) {}
-  
-  public void onClick(View paramView)
+  public int a(uiz paramuiz1, uiz paramuiz2)
   {
-    this.a.b();
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(Color.rgb(0, 165, 224));
+    if (paramuiz1.a() > paramuiz2.a()) {}
+    do
+    {
+      return 1;
+      if (paramuiz1.a() < paramuiz2.a()) {
+        return -1;
+      }
+      if (paramuiz1.d() == paramuiz2.d()) {
+        return 0;
+      }
+    } while (paramuiz1.d() < paramuiz2.d());
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uiq
  * JD-Core Version:    0.7.0.1
  */

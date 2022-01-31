@@ -1,40 +1,50 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.downloadnew.DownloadConstants;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.TMG.sdk.AVCallback;
+import com.tencent.TMG.utils.SoUtil;
+import com.tencent.qphone.base.util.QLog;
 
 class algz
-  implements DialogInterface.OnClickListener
+  implements AVCallback
 {
-  algz(algx paramalgx) {}
+  algz(algt paramalgt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onComplete(int paramInt, String paramString)
   {
-    try
+    if (paramInt == 0)
     {
-      paramDialogInterface.dismiss();
-      label6:
-      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.a);
-      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.i);
-      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.e);
-      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.h);
-      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.k);
-      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(DownloadConstants.x, true);
-      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_Int, bool);
-      this.a.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(10, paramDialogInterface);
-      return;
+      QLog.e("AVEngineWalper", 1, "AVCallback make connection successfully!!!");
+      if (!this.a.a())
+      {
+        bdhb.d(alhk.a() + "libqav_graphics.so", alhk.a() + "libtmg_graphics.so");
+        boolean bool = SoUtil.loadSo("tmg_graphics");
+        QLog.e("AVEngineWalper", 1, "first check failed, rename bLoad = " + bool);
+        if (!this.a.a())
+        {
+          QLog.e("AVEngineWalper", 1, "Second check failed, stop engine~~~");
+          algt.a(this.a, false);
+          this.a.a();
+          paramInt = 1;
+        }
+      }
     }
-    catch (Exception paramDialogInterface)
+    for (;;)
     {
-      break label6;
+      if (this.a.a != null) {
+        this.a.a.a(paramInt, paramString);
+      }
+      return;
+      algt.a(this.a, true);
+      QLog.e("AVEngineWalper", 1, "start successfully second try~~~~");
+      continue;
+      algt.a(this.a, true);
+      QLog.e("AVEngineWalper", 1, "start successfully~~~~");
+      continue;
+      QLog.e("AVEngineWalper", 1, "AVCallback result=" + paramInt + ", errorInfo=" + paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     algz
  * JD-Core Version:    0.7.0.1
  */

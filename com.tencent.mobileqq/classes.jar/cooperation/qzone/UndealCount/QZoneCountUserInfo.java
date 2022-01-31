@@ -2,21 +2,27 @@ package cooperation.qzone.UndealCount;
 
 import NS_QMALL_COVER.PassiveFeedsPush;
 import NS_QMALL_COVER.QzmallCustomBubbleSkin;
-import amtp;
+import NS_UNDEAL_COUNT.feed_info;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import cooperation.qzone.util.JceUtils;
+import bjhb;
+import bjuf;
+import com.qq.taf.jce.JceInputStream;
+import java.util.ArrayList;
 
 public class QZoneCountUserInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amtp();
+  public static final Parcelable.Creator<QZoneCountUserInfo> CREATOR = new bjhb();
   public byte a;
   public int a;
   public long a;
   public PassiveFeedsPush a;
+  public String a;
+  public ArrayList<feed_info> a;
   public int b;
   
   public QZoneCountUserInfo() {}
@@ -27,7 +33,33 @@ public class QZoneCountUserInfo
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.b = paramParcel.readInt();
     this.jdField_a_of_type_Byte = paramParcel.readByte();
-    this.jdField_a_of_type_NS_QMALL_COVERPassiveFeedsPush = ((PassiveFeedsPush)JceUtils.a(PassiveFeedsPush.class, paramParcel.createByteArray()));
+    this.jdField_a_of_type_NS_QMALL_COVERPassiveFeedsPush = ((PassiveFeedsPush)bjuf.a(PassiveFeedsPush.class, paramParcel.createByteArray()));
+    this.jdField_a_of_type_JavaUtilArrayList = a(paramParcel);
+    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+  }
+  
+  @NonNull
+  private ArrayList<feed_info> a(Parcel paramParcel)
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new feed_info());
+    try
+    {
+      paramParcel = paramParcel.createByteArray();
+      if ((paramParcel != null) && (paramParcel.length != 0))
+      {
+        paramParcel = new JceInputStream(paramParcel);
+        paramParcel.setServerEncoding("utf8");
+        paramParcel = (ArrayList)paramParcel.read(localArrayList, 0, false);
+        return paramParcel;
+      }
+    }
+    catch (Exception paramParcel)
+    {
+      paramParcel.printStackTrace();
+      return null;
+    }
+    return null;
   }
   
   public int describeContents()
@@ -66,21 +98,33 @@ public class QZoneCountUserInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    Object localObject2 = null;
     paramParcel.writeLong(this.jdField_a_of_type_Long);
     paramParcel.writeInt(this.jdField_a_of_type_Int);
     paramParcel.writeInt(this.b);
     paramParcel.writeByte(this.jdField_a_of_type_Byte);
-    if (this.jdField_a_of_type_NS_QMALL_COVERPassiveFeedsPush == null) {}
-    for (byte[] arrayOfByte = null;; arrayOfByte = JceUtils.a(this.jdField_a_of_type_NS_QMALL_COVERPassiveFeedsPush))
+    if (this.jdField_a_of_type_NS_QMALL_COVERPassiveFeedsPush == null)
     {
-      paramParcel.writeByteArray(arrayOfByte);
+      localObject1 = null;
+      paramParcel.writeByteArray((byte[])localObject1);
+      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+        break label84;
+      }
+    }
+    label84:
+    for (Object localObject1 = localObject2;; localObject1 = bjuf.a(this.jdField_a_of_type_JavaUtilArrayList))
+    {
+      paramParcel.writeByteArray((byte[])localObject1);
+      paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
       return;
+      localObject1 = bjuf.a(this.jdField_a_of_type_NS_QMALL_COVERPassiveFeedsPush);
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.UndealCount.QZoneCountUserInfo
  * JD-Core Version:    0.7.0.1
  */

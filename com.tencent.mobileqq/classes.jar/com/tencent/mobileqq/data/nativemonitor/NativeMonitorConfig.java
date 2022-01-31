@@ -1,15 +1,29 @@
 package com.tencent.mobileqq.data.nativemonitor;
 
+import atgw;
+
 public class NativeMonitorConfig
 {
+  @atgw(a="androidVersionBlackList")
   private String androidVersionBlackList;
+  @atgw(a="countLimted")
   private long countLimted = 1000L;
+  @atgw(a="memoryLimited")
   private long memoryLimited = 5242880L;
+  @atgw(a="nativeMonitorOpened")
   private int nativeMonitorOpened;
+  @atgw(a="processBlackList")
   private String processBlackList;
+  @atgw(a="soHook")
+  public int soHook;
+  @atgw(a="soWhiteList")
   private String soWhiteList;
+  @atgw(a="switchFlag")
   private long switchFlag;
+  @atgw(a="timeLimited")
   private long timeLimited = 1000000L;
+  @atgw(a="tmChance")
+  private long tmChance;
   
   public String getAndroidVersionBlackList()
   {
@@ -51,6 +65,11 @@ public class NativeMonitorConfig
     return this.timeLimited;
   }
   
+  public long getTmChance()
+  {
+    return this.tmChance;
+  }
+  
   public void setCountLimitedDefault()
   {
     this.countLimted = 1000L;
@@ -66,6 +85,11 @@ public class NativeMonitorConfig
     this.timeLimited = 1000000L;
   }
   
+  public void setTmChance(long paramLong)
+  {
+    this.tmChance = paramLong;
+  }
+  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -77,6 +101,7 @@ public class NativeMonitorConfig
     localStringBuilder.append("|countLimited:").append(this.countLimted);
     localStringBuilder.append("|memoryLimited:").append(this.memoryLimited);
     localStringBuilder.append("|processBlackList:").append(this.processBlackList);
+    localStringBuilder.append("|tmChance:").append(this.tmChance);
     return localStringBuilder.toString();
   }
   
@@ -90,11 +115,12 @@ public class NativeMonitorConfig
     this.memoryLimited = paramNativeMonitorConfig.getMemoryLimited();
     this.androidVersionBlackList = paramNativeMonitorConfig.getAndroidVersionBlackList();
     this.processBlackList = paramNativeMonitorConfig.getProcessBlackList();
+    this.tmChance = paramNativeMonitorConfig.getTmChance();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.nativemonitor.NativeMonitorConfig
  * JD-Core Version:    0.7.0.1
  */

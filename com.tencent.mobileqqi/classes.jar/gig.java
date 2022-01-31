@@ -1,26 +1,25 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.mobileqq.pic.PicFowardInfo;
-import com.tencent.mobileqq.pic.PicUploadInfo;
-import com.tencent.mobileqq.pic.UiCallBack;
+import com.tencent.mobileqq.search.ISearchable;
+import java.util.Comparator;
 
-public abstract interface gig
+public final class gig
+  implements Comparator
 {
-  public abstract MessageRecord a(PicFowardInfo paramPicFowardInfo);
-  
-  public abstract MessageRecord a(PicUploadInfo paramPicUploadInfo);
-  
-  public abstract void a(CompressInfo paramCompressInfo);
-  
-  public abstract void a(PicFowardInfo paramPicFowardInfo);
-  
-  public abstract void a(PicUploadInfo paramPicUploadInfo);
-  
-  public abstract void a(UiCallBack paramUiCallBack);
+  public int a(ISearchable paramISearchable1, ISearchable paramISearchable2)
+  {
+    long l1 = paramISearchable1.a();
+    long l2 = paramISearchable2.a();
+    if (l1 < l2) {
+      return 1;
+    }
+    if (l1 > l2) {
+      return -1;
+    }
+    return 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gig
  * JD-Core Version:    0.7.0.1
  */

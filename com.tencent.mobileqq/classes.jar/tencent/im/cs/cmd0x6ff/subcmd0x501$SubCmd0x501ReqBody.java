@@ -10,11 +10,11 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class subcmd0x501$SubCmd0x501ReqBody
-  extends MessageMicro
+  extends MessageMicro<SubCmd0x501ReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_login_sig_ticket = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField rpt_uint32_service_types = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
+  public final PBRepeatField<Integer> rpt_uint32_service_types = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
   public final PBUInt32Field uint32_appid = PBField.initUInt32(0);
   public final PBUInt32Field uint32_bid = PBField.initUInt32(0);
   public final PBUInt32Field uint32_idc_id = PBField.initUInt32(0);
@@ -30,7 +30,7 @@ public final class subcmd0x501$SubCmd0x501ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.cmd0x6ff.subcmd0x501.SubCmd0x501ReqBody
  * JD-Core Version:    0.7.0.1
  */

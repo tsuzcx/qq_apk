@@ -3,26 +3,30 @@ package com.tencent.token.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.ax;
-import com.tencent.token.p;
+import com.tencent.token.ch;
+import com.tencent.token.do;
+import com.tmsdk.TMSDKContext;
 
-final class r
+class r
   implements View.OnClickListener
 {
   r(AccountPageActivity paramAccountPageActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    if (ax.a().e() == null)
-    {
+    if (do.a().e() == null) {
       this.a.showNoAccountTipDialog(this.a, 6, 0);
-      return;
     }
-    p.a().a(System.currentTimeMillis(), 5);
-    paramView = new Intent(this.a, LoginMsgActivity.class);
-    paramView.putExtra("skey", AccountPageActivity.access$1500(this.a));
-    this.a.startActivity(paramView);
-    AccountPageActivity.mNeedShowIpcMsg = false;
+    for (;;)
+    {
+      TMSDKContext.saveActionData(1150059);
+      return;
+      ch.a().a(System.currentTimeMillis(), 5);
+      paramView = new Intent(this.a, LoginMsgActivity.class);
+      paramView.putExtra("skey", AccountPageActivity.access$2000(this.a));
+      this.a.startActivity(paramView);
+      AccountPageActivity.mNeedShowIpcMsg = false;
+    }
   }
 }
 

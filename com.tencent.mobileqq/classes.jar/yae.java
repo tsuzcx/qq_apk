@@ -1,21 +1,49 @@
-import com.tencent.av.utils.TroopMemberUtil;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
 
 public class yae
-  implements Runnable
+  implements zha
 {
-  public yae(SelectMemberActivity paramSelectMemberActivity, String paramString) {}
+  public yae(ScannerActivity paramScannerActivity) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.app, "dc00899", "invite_friend", "", "friend_list", this.jdField_a_of_type_JavaLangString, 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.c, TroopMemberUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.app.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.c) + "", "", "");
+    if (this.a.isFinishing()) {
+      return;
+    }
+    this.a.a.d = false;
+    ScannerActivity.a(this.a).setVisibility(8);
+    bdjz localbdjz = bdgm.a(this.a, 230);
+    if (paramInt == 2) {
+      localbdjz.setMessage(2131719395);
+    }
+    for (;;)
+    {
+      yaf localyaf = new yaf(this);
+      localbdjz.setPositiveButton(2131694953, localyaf);
+      localbdjz.setOnCancelListener(localyaf);
+      localbdjz.show();
+      return;
+      localbdjz.setMessage(2131719404);
+    }
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2)
+  {
+    if (this.a.isFinishing()) {
+      return;
+    }
+    this.a.a.d = false;
+    String str = "QR_CODE";
+    if (ScannerActivity.a(this.a) != null) {
+      str = ScannerActivity.a(this.a).a();
+    }
+    ScannerActivity.a(this.a, paramInt1, str, paramString, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yae
  * JD-Core Version:    0.7.0.1
  */

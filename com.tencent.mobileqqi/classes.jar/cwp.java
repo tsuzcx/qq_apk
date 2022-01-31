@@ -1,25 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.HornListActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.MyPublishedHornActivity;
+import com.tencent.mobileqq.app.NearHornHandler;
 import com.tencent.mobileqq.data.HornDetail;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.maproam.Utils;
 
-class cwp
+public class cwp
   implements View.OnClickListener
 {
-  cwp(cwo paramcwo, HornDetail paramHornDetail) {}
+  public cwp(MyPublishedHornActivity paramMyPublishedHornActivity) {}
   
   public void onClick(View paramView)
   {
-    ReportController.b(this.jdField_a_of_type_Cwo.a.b, "P_CliOper", "Svip", "", "Vip_nearby", "Vip_nearby_enterProfileCard", 0, 0, "", "", "", "");
-    paramView = new ProfileActivity.AllInOne(this.jdField_a_of_type_ComTencentMobileqqDataHornDetail.uin, 41);
-    paramView.g = this.jdField_a_of_type_ComTencentMobileqqDataHornDetail.nickName;
-    paramView.a = this.jdField_a_of_type_ComTencentMobileqqDataHornDetail.seg;
-    paramView.e = 4;
-    paramView.f = 5;
-    ProfileActivity.a(this.jdField_a_of_type_Cwo.a, paramView);
+    this.a.a.b(this.a.b.hornKey, this.a.e);
+    Utils.a();
   }
 }
 

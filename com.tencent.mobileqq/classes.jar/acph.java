@@ -1,30 +1,46 @@
-import android.content.Context;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class acph
-  implements View.OnLongClickListener
+  implements bhuk
 {
-  public acph(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  public acph(ChatSettingForTroop paramChatSettingForTroop, bhuf parambhuf) {}
   
-  public boolean onLongClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramView == null) || (QfileBaseCloudFileTabView.b(this.a))) {
-      return false;
+    switch (paramInt)
+    {
+    default: 
+      return;
     }
-    paramView.setSelected(true);
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131362740, paramView.getContext().getString(2131434041));
-    this.a.a = BubbleContextMenu.a(paramView, localQQCustomMenu, new acpi(this, paramView), new acpj(this, paramView));
-    return true;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Beub == null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Beub = new beub(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
+    }
+    paramView = (amdu)this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.a(20);
+    if ((bdin.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.getApp().getApplicationContext())) && (paramView != null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Beub.b(0, 2131692290, 0);
+      paramView.k(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+    }
+    for (;;)
+    {
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app, "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Bhuf.cancel();
+      return;
+      if (paramView != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Beub.b(2, 2131694831, 1500);
+      } else {
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Beub.b(2, 2131692289, 1500);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acph
  * JD-Core Version:    0.7.0.1
  */

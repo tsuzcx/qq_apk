@@ -1,51 +1,203 @@
 package com.tencent.mobileqq.vas;
 
-import akie;
-import akif;
-import akig;
+import alof;
 import android.text.TextUtils;
-import android.util.SparseArray;
+import bdhb;
+import bdtn;
+import bdug;
+import bdul;
+import bdwi;
+import bdws;
+import bdzf;
+import com.google.gson.stream.JsonReader;
+import com.tencent.biz.flatbuffers.FlatBuffersParser;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.Map;
+import java.io.FileReader;
+import java.lang.ref.WeakReference;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 import org.json.JSONObject;
 
 public class VasQuickUpdateManager
   implements Manager
 {
-  public static final String a;
-  SparseArray jdField_a_of_type_AndroidUtilSparseArray;
-  public QQAppInterface a;
-  VasExtensionObserver jdField_a_of_type_ComTencentMobileqqVasVasExtensionObserver = new akie(this);
-  private VasQuickUpdateEngine.QuickUpdateBusinessCallback jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateEngine$QuickUpdateBusinessCallback = new akif(this);
-  private VasQuickUpdateEngine.QuickUpdateListener jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateEngine$QuickUpdateListener = new akig(this);
-  public VasQuickUpdateEngine a;
-  public AtomicBoolean a;
-  AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = AppConstants.aJ + ".vas_quickupdate_test/";
-  }
+  public static final long BID_BUBBLE = 2L;
+  public static final long BID_CHATBG = 8L;
+  public static final long BID_COLOR_NICK = 27L;
+  public static final long BID_COLOR_SCREEN = 22L;
+  public static final long BID_COMIC = 100L;
+  public static final long BID_DEFAULT_CARD = 33L;
+  public static final long BID_EMOTICON = 1L;
+  public static final long BID_FACE = 23L;
+  public static final long BID_FLASH_CHAT = 1002L;
+  public static final long BID_FONT = 5L;
+  public static final long BID_JSON = 1000L;
+  public static final long BID_PENDANT = 4L;
+  public static final long BID_POKE = 21L;
+  public static final long BID_PRAISE = 20L;
+  public static final long BID_PROFILE_CARD = 15L;
+  public static final long BID_QUICKUPDATE_TEST = 1999L;
+  public static final long BID_REDPACKET = 16L;
+  public static final long BID_SIGNATURE_STICKER = 9L;
+  public static final long BID_SINGLE_PIC = 1003L;
+  public static final long BID_SONIC_TEMPLATE_UPDATE = 1001L;
+  public static final long BID_STICKER_GUIDE_MATERIAL = 1004L;
+  public static final long BID_TROOP_ENTER_EFFECT = 25L;
+  public static final String QUICKUPDATE_TEST_DIR = bdzf.a(alof.aX + ".vas_quickupdate_test/");
+  public static final String SCID_APNG_SO = "libAPNG_813";
+  public static final String SCID_AVATARIN_PENDANT_JSON = "avatarInPendant_json";
+  public static final String SCID_BLESS_VOICECHANGE = "blessVoiceList.json";
+  public static final String SCID_BUBBLE_PASTER_PREFIX = "bubble.paster.";
+  public static final String SCID_BUBBLE_PREFIX = "bubble.android.";
+  public static final String SCID_CARD_PREFIX = "card.";
+  public static final String SCID_CHANGEVOICE = "changeVoice_json";
+  public static final String SCID_CHATBG_PREFIX = "chatbg.";
+  public static final String SCID_COLORFONT_SO = "libColorFont_818";
+  public static final String SCID_COLOR_NICK_PREFIX = "groupnickitem.";
+  public static final String SCID_COLOR_SCREEN_PREFIX = "colorScreen.android.";
+  public static final String SCID_COMIC_CONFIG = "vipComic_config_v2.json";
+  public static final String SCID_COMIC_NAV_CONFIG = "vipComic_nav_config.json";
+  public static final String SCID_COMIC_NAV_ICON = "vipComic_nav_tabIcon.zip";
+  public static final String SCID_COMIC_PLAYER_SO = "libqgplayer_765";
+  public static final String SCID_DEFAULT_CARD_CFG_PREFIX = "profileitem.";
+  public static final String SCID_DEFAULT_FONT = "defaultFont_775";
+  public static final String SCID_DIY_CARD_CONFIG = "card.diyFontConfig.json";
+  public static final String SCID_DIY_CARD_FONT_PREFIX = "font.diycard.android.";
+  public static final String SCID_EMOJI_KEYWORD = "keywordList_2.json";
+  public static final String SCID_EMOTICON_RECOMMEND_EFFECT = "emotionRecommendEffect";
+  public static final String SCID_ENTER_EFFECT_CONFIG = "groupeffect_config.json";
+  public static final String SCID_ENTER_EFFECT_VIP_ICONS = "enterEffectVipIcons";
+  public static final String SCID_FACE_PREFIX = "face.";
+  public static final String SCID_FLASH_CHAT_PREFIX = "flashchat.";
+  public static final String SCID_FLATBUFFERS = "libFlatBuffersParser";
+  public static final String SCID_FONT_EFFECT = "magicFontConfig.json";
+  public static final String SCID_FONT_FZ_PREFIX = "font.fzfont.android.";
+  public static final String SCID_FONT_PREFIX = "font.main.android.";
+  public static final String SCID_FUNCDEV_WEBVIEW = "VASBiz_FuncDev_webview.json";
+  public static final String SCID_H5_MAGIC_ZIP = "bqmall.android.h5magic.";
+  public static final String SCID_HIBOOM_CONFIG_PREFIX = "font.hiFontQQ.json.";
+  public static final String SCID_HIBOOM_FONT_PREFIX = "font.hifont.android.";
+  public static final String SCID_HIBOOM_TAG = "font.hiFontQQ.tags";
+  public static final String SCID_HYFONT_SO = "libVipFont_808";
+  public static final String SCID_KANDIAN_RECOMMENT_EMOTICON = "watch_focus.json";
+  public static final String SCID_MAGIC_FACE_ENTRY_CONFIG = "emoji_app_vip_emoji_aio_android_config.json";
+  public static final String SCID_PENDANT_FONT_PREFIX = "faceAddon.stickerFont.android.";
+  public static final String SCID_PENDANT_MARKET_CONFIG = "pendant_market_json.android.v2";
+  public static final String SCID_PENDANT_PASTER_PREFIX = "faceAddon.sticker.";
+  public static final String SCID_PENDANT_PREFIX = "pendant.";
+  public static final String SCID_PERSONAL_CONFIG = "vip_personal_card.json";
+  public static final String SCID_POKE_EFFECT_LIST = "poke.effectList";
+  public static final String SCID_POKE_EFFECT_PREFIX = "poke.item.res.";
+  public static final String SCID_POKE_PANEL_PREFIX = "poke.item.effect.";
+  public static final String SCID_PRAISE_CONFIG = "praise.config.json";
+  public static final String SCID_PRAISE_PREFIX = "praise.android.";
+  public static final String SCID_QUICKUPDATE_TEST_JSON = "scupdate.test.signgle.json";
+  public static final String SCID_QUICKUPDATE_TEST_MULTI = "scupdate.test.multi.zip";
+  public static final String SCID_QUICKUPDATE_TEST_PRECONFIG = "scupdate.test.2087.cfg";
+  public static final String SCID_QUICKUPDATE_TEST_PREFIX = "scupdate.test.";
+  public static final String SCID_QUICKUPDATE_TEST_SINGLE = "scupdate.test.single.zip";
+  public static final String SCID_REDPACKET_300CHAR = "iRedPacket_v3.char300.json";
+  public static final String SCID_REDPACKET_CONFIG = "iRedPacket_v3.json";
+  public static final String SCID_REDPACKET_FONT_ZIP = "iRedPacket_v3.font.zip";
+  public static final String SCID_REDPACKET_PACKETS_ZIP = "luckyMoney.item.";
+  public static final String SCID_REDPACKET_SPECIAL_ZIP = "iRedPacket_v3.specialChar.zip";
+  public static final String SCID_SIGNATURE_STICKER_PREFIX = "signature.sticker.";
+  public static final String SCID_SIGNATURE_TEMPLATE_CONFIG_PREFIX = "signature.item.";
+  public static final String SCID_SONIC_FILE_DISCARD = "sonicTemplateUpdate.json";
+  public static final String SCID_STICKER_MATERIAL = "emojiStickerGuideZip_v2";
+  public static final String SCID_SYSTEM_EMOJI_WHITE_LIST = "emoji.systemEmojiWhiteList.json";
+  public static final String SCID_THEME_DIY_BG = "diytheme.json";
+  public static final String SCID_THEME_DIY_STYLE = "diytheme.style.json";
+  public static final String SCID_TROOP_ENTER_EFFECT_PREFIX = "groupeffect_item_";
+  public static final String SCID_URL_CONFIGURABLE = "vipData_individuation_url.android.json";
+  public static final String SCID_VAS_MONITOR_BLACKLIST = "monitorAppid";
+  public static final String SCID_WEBVIEW_TITLE_CONFIG = "vipData_app_webviewNavStyle.json";
+  public static final String SCID_WZRY_TEMPLATE = "cardWZ.zip";
+  public static final String SP_QUICK_UPDATE_PREFIX = "quick_update_";
+  private static final String TAG = "VasQuickUpdateManager";
+  public QQAppInterface app;
+  ConcurrentHashMap<Integer, VasQuickUpdateManager.CallBacker> callBackers = new ConcurrentHashMap();
+  private bdwi defaultCallback = new VasQuickUpdateManager.2(this);
+  VasQuickUpdateEngine mEngine;
+  AtomicInteger mKey = new AtomicInteger(0);
+  bdul mQuickUpdateObserver = new VasQuickUpdateManager.1(this);
   
   public VasQuickUpdateManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    a();
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqVasVasExtensionObserver);
+    this.app = paramQQAppInterface;
+    initEngine();
+    paramQQAppInterface.addObserver(this.mQuickUpdateObserver);
   }
   
-  public static File a(AppRuntime paramAppRuntime, long paramLong, String paramString1, String paramString2, boolean paramBoolean, VasQuickUpdateManager.CallBacker paramCallBacker)
+  /* Error */
+  public static void cleanCache()
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: invokestatic 376	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   6: astore_0
+    //   7: aload_0
+    //   8: ifnull +20 -> 28
+    //   11: ldc 165
+    //   13: invokestatic 380	com/tencent/mobileqq/vas/VasQuickUpdateManager:deleteJSON	(Ljava/lang/String;)V
+    //   16: aload_0
+    //   17: invokestatic 385	com/tencent/mobileqq/theme/ThemeCleaner:a	(Landroid/content/Context;)V
+    //   20: aload_0
+    //   21: invokestatic 388	bdws:a	(Landroid/content/Context;)V
+    //   24: ldc 2
+    //   26: monitorexit
+    //   27: return
+    //   28: ldc_w 288
+    //   31: iconst_1
+    //   32: ldc_w 390
+    //   35: invokestatic 396	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   38: goto -14 -> 24
+    //   41: astore_0
+    //   42: ldc 2
+    //   44: monitorexit
+    //   45: aload_0
+    //   46: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   6	15	0	localBaseApplication	com.tencent.qphone.base.util.BaseApplication
+    //   41	5	0	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   3	7	41	finally
+    //   11	24	41	finally
+    //   28	38	41	finally
+  }
+  
+  public static void deleteJSON(String paramString)
+  {
+    try
+    {
+      paramString = new File(BaseApplicationImpl.getApplication().getFilesDir() + File.separator + paramString);
+      if (paramString.exists()) {
+        paramString.delete();
+      }
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public static File getFileFromLocal(AppRuntime paramAppRuntime, long paramLong, String paramString1, String paramString2, boolean paramBoolean, VasQuickUpdateManager.CallBacker paramCallBacker)
   {
     String str = paramString2;
     if (TextUtils.isEmpty(paramString2))
@@ -65,14 +217,14 @@ public class VasQuickUpdateManager
     if (!localFile.exists())
     {
       if (!paramBoolean) {
-        break label404;
+        break label379;
       }
       if (paramAppRuntime == null) {
-        break label238;
+        break label249;
       }
-      paramString2 = paramAppRuntime.getManager(183);
+      paramString2 = paramAppRuntime.getManager(184);
       if ((paramString2 != null) && ((paramString2 instanceof VasQuickUpdateManager))) {
-        break label244;
+        break label255;
       }
       QLog.e("VasQuickUpdateManager", 1, "getFileFromLocal, Err0, bid=" + paramLong + ",scid:" + paramString1 + ", mgr:" + paramString2 + ", app=" + paramAppRuntime + ", filePaht=" + str);
       paramString2 = null;
@@ -80,39 +232,31 @@ public class VasQuickUpdateManager
     for (;;)
     {
       return paramString2;
-      label238:
+      label249:
       paramString2 = null;
       break;
-      label244:
+      label255:
       paramString2 = (VasQuickUpdateManager)paramString2;
-      if (!paramString2.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        paramString2.a();
-      }
-      paramString2.a(paramCallBacker);
-      if (3L == paramLong)
-      {
-        paramString2.a(paramLong, paramString1, "getFileFromLocal_theme");
-        paramString2 = null;
-      }
-      else if (16L == paramLong)
+      paramString2.addCallBacker(paramCallBacker);
+      if (16L == paramLong)
       {
         paramAppRuntime = "getFileFromLocal_redPacket";
         if (("iRedPacket_v3.json".equals(paramString1)) || ("iRedPacket_v3.char300.json".equals(paramString1)) || ("iRedPacket_v3.font.zip".equals(paramString1)) || ("iRedPacket_v3.specialChar.zip".equals(paramString1))) {
           paramAppRuntime = "silent_download.redbag" + paramString1;
         }
-        paramString2.a(paramLong, paramString1, paramAppRuntime);
+        paramString2.downloadItem(paramLong, paramString1, paramAppRuntime);
         paramString2 = null;
       }
       else
       {
-        paramString2.a(paramLong, paramString1, "getFileFromLocal_" + paramLong);
-        label404:
+        paramString2.downloadItem(paramLong, paramString1, "getFileFromLocal_" + paramLong);
+        label379:
         paramString2 = null;
       }
     }
   }
   
-  public static JSONObject a(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean, VasQuickUpdateManager.CallBacker paramCallBacker)
+  public static JSONObject getJSONFromLocal(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean, VasQuickUpdateManager.CallBacker paramCallBacker)
   {
     if (paramAppRuntime == null)
     {
@@ -123,7 +267,7 @@ public class VasQuickUpdateManager
     if (((File)localObject).exists()) {
       try
       {
-        JSONObject localJSONObject = new JSONObject(FileUtils.a((File)localObject));
+        JSONObject localJSONObject = new JSONObject(bdhb.a((File)localObject));
         return localJSONObject;
       }
       catch (Throwable localThrowable)
@@ -136,365 +280,197 @@ public class VasQuickUpdateManager
     }
     if (paramBoolean)
     {
-      localObject = paramAppRuntime.getManager(183);
+      localObject = paramAppRuntime.getManager(184);
       if ((localObject == null) || (!(localObject instanceof VasQuickUpdateManager)))
       {
         QLog.e("VasQuickUpdateManager", 1, "getJSONFromLocal, manager == null; scid:" + paramString + ", mgr:" + localObject + ", app=" + paramAppRuntime);
         return null;
       }
       paramAppRuntime = (VasQuickUpdateManager)localObject;
-      if (!paramAppRuntime.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        paramAppRuntime.a();
-      }
       if (QLog.isColorLevel()) {
         QLog.d("VasQuickUpdateManager", 2, "getJSONFromLocal addCallBacker:" + paramString);
       }
-      paramAppRuntime.a(paramCallBacker);
-      paramAppRuntime.a(1000L, paramString, "getJSONFromLocal");
+      paramAppRuntime.addCallBacker(paramCallBacker);
+      paramAppRuntime.downloadItem(1000L, paramString, "getJSONFromLocal");
     }
     return null;
   }
   
-  public static void a(String paramString)
+  public static JsonReader getJSONFromLocalByStreamRead(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean, VasQuickUpdateManager.CallBacker paramCallBacker)
   {
-    try
+    if (paramAppRuntime == null)
     {
-      paramString = new File(BaseApplicationImpl.getApplication().getFilesDir() + File.separator + paramString);
-      if (paramString.exists()) {
-        paramString.delete();
+      QLog.e("VasQuickUpdateManager", 1, "getJSONFromLocalByStreamRead, app == null; scid:" + paramString + ", app=" + paramAppRuntime);
+      return null;
+    }
+    Object localObject = new File(paramAppRuntime.getApplication().getFilesDir() + File.separator + paramString);
+    if (((File)localObject).exists()) {
+      try
+      {
+        JsonReader localJsonReader = new JsonReader(new FileReader((File)localObject));
+        return localJsonReader;
       }
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public static void b()
-  {
-    try
-    {
-      a("VASBiz_FuncDev_webview.json");
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a()
-  {
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateEngine = VasQuickUpdateEngine.getInstance();
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      if ((this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateEngine.mUpdateManagerInstance != 0L) && (this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateEngine.hasRegistered.get())) {
-        this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateEngine.nativeupdateAllItem(this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateEngine.mUpdateManagerInstance);
+      catch (Throwable localThrowable)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("VasQuickUpdateManager", 2, "getJSONFromLocalByStreamRead error,json_name:" + paramString, localThrowable);
+        }
+        ((File)localObject).delete();
       }
-      this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateEngine.mDefaultCallback = this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateEngine$QuickUpdateBusinessCallback;
-      this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateEngine.mDefaultListener = this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateEngine$QuickUpdateListener;
-      this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateEngine.mExtensionHandler = ((VasExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71));
-      return;
     }
-    finally {}
+    if (paramBoolean)
+    {
+      localObject = paramAppRuntime.getManager(184);
+      if ((localObject == null) || (!(localObject instanceof VasQuickUpdateManager)))
+      {
+        QLog.e("VasQuickUpdateManager", 1, "getJSONFromLocalByStreamRead, manager == null; scid:" + paramString + ", mgr:" + localObject + ", app=" + paramAppRuntime);
+        return null;
+      }
+      paramAppRuntime = (VasQuickUpdateManager)localObject;
+      if (QLog.isColorLevel()) {
+        QLog.d("VasQuickUpdateManager", 2, "getJSONFromLocalByStreamRead addCallBacker:" + paramString);
+      }
+      paramAppRuntime.addCallBacker(paramCallBacker);
+      paramAppRuntime.downloadItem(1000L, paramString, "getJSONFromLocal");
+    }
+    return null;
   }
   
-  public void a(long paramLong, String paramString)
+  private void initEngine()
+  {
+    if (FlatBuffersParser.c()) {}
+    do
+    {
+      return;
+      QLog.e("VasQuickUpdateManager", 1, "initEngine: " + this);
+      this.mEngine = VasQuickUpdateEngine.getInstance();
+      bdws.a(this.defaultCallback);
+      this.mEngine.mWeakHandler = new WeakReference((bdug)this.app.a(71));
+    } while ((this.mEngine.mUpdateManagerInstance == 0L) || (!this.mEngine.engineReady.get()));
+    this.mEngine.nativeupdateAllItem(this.mEngine.mUpdateManagerInstance);
+  }
+  
+  public void addCallBacker(VasQuickUpdateManager.CallBacker paramCallBacker)
+  {
+    if (paramCallBacker == null) {}
+    while (this.callBackers.containsValue(paramCallBacker)) {
+      return;
+    }
+    int i = this.mKey.addAndGet(1);
+    this.callBackers.put(Integer.valueOf(i), paramCallBacker);
+    paramCallBacker.key = i;
+  }
+  
+  public void addWeakCallback(VasQuickUpdateManager.CallBacker paramCallBacker)
+  {
+    Object localObject = this.callBackers.values().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      VasQuickUpdateManager.CallBacker localCallBacker = (VasQuickUpdateManager.CallBacker)((Iterator)localObject).next();
+      if (((localCallBacker instanceof VasQuickUpdateManager.WeakCallbacker)) && (((VasQuickUpdateManager.WeakCallbacker)localCallBacker).isWrapOf(paramCallBacker))) {
+        return;
+      }
+    }
+    localObject = new VasQuickUpdateManager.WeakCallbacker(paramCallBacker);
+    addCallBacker((VasQuickUpdateManager.CallBacker)localObject);
+    paramCallBacker.key = ((VasQuickUpdateManager.WeakCallbacker)localObject).key;
+  }
+  
+  public void callBackToAll(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      QLog.e("VasQuickUpdateManager", 2, "callBackToAll Error bid = " + paramLong + ", cfgScid=" + paramString2 + ",scid = " + paramString1 + ", from = " + paramString3 + ", errorCode = " + paramInt1);
+    }
+    for (;;)
+    {
+      return;
+      Iterator localIterator = this.callBackers.values().iterator();
+      while (localIterator.hasNext()) {
+        ((VasQuickUpdateManager.CallBacker)localIterator.next()).callback(paramLong, paramString1, paramString2, paramString3, paramInt1, paramInt2, this);
+      }
+    }
+  }
+  
+  public void cancelDwonloadItem(long paramLong, String paramString)
   {
     if (QLog.isColorLevel()) {
       QLog.d("VasQuickUpdateManager", 2, "cancelDwonloadItem bid = " + paramLong + " scid = " + paramString);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateEngine != null) {
-      this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateEngine.cancelDwonloadItem(paramLong, paramString);
+    if (this.mEngine != null) {
+      this.mEngine.cancelDwonloadItem(paramLong, paramString);
     }
   }
   
-  public void a(long paramLong, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasQuickUpdateManager", 2, "downloadItem bid = " + paramLong + " scid = " + paramString1 + " from = " + paramString2);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateEngine != null) {
-      this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateEngine.downloadItem(paramLong, paramString1, paramString2);
-    }
-  }
-  
-  /* Error */
-  public void a(long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_3
-    //   3: invokestatic 91	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   6: ifeq +53 -> 59
-    //   9: ldc 113
-    //   11: iconst_2
-    //   12: new 20	java/lang/StringBuilder
-    //   15: dup
-    //   16: invokespecial 23	java/lang/StringBuilder:<init>	()V
-    //   19: ldc_w 281
-    //   22: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: lload_1
-    //   26: invokevirtual 118	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   29: ldc_w 283
-    //   32: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: aload 4
-    //   37: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   40: ldc_w 285
-    //   43: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   46: aload_3
-    //   47: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   50: invokevirtual 38	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   53: invokestatic 130	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   56: aload_0
-    //   57: monitorexit
-    //   58: return
-    //   59: aload_0
-    //   60: getfield 287	com/tencent/mobileqq/vas/VasQuickUpdateManager:jdField_a_of_type_AndroidUtilSparseArray	Landroid/util/SparseArray;
-    //   63: ifnull -7 -> 56
-    //   66: aload_0
-    //   67: getfield 287	com/tencent/mobileqq/vas/VasQuickUpdateManager:jdField_a_of_type_AndroidUtilSparseArray	Landroid/util/SparseArray;
-    //   70: invokevirtual 293	android/util/SparseArray:clone	()Landroid/util/SparseArray;
-    //   73: astore 12
-    //   75: aload 12
-    //   77: invokevirtual 297	android/util/SparseArray:size	()I
-    //   80: istore 10
-    //   82: iconst_0
-    //   83: istore 9
-    //   85: iload 9
-    //   87: iload 10
-    //   89: if_icmpge -33 -> 56
-    //   92: aload 12
-    //   94: iload 9
-    //   96: invokevirtual 301	android/util/SparseArray:valueAt	(I)Ljava/lang/Object;
-    //   99: astore 11
-    //   101: aload 11
-    //   103: instanceof 303
-    //   106: ifeq +37 -> 143
-    //   109: aload 11
-    //   111: checkcast 303	com/tencent/mobileqq/vas/VasQuickUpdateManager$CallBacker
-    //   114: astore 11
-    //   116: aload 11
-    //   118: ifnull +16 -> 134
-    //   121: aload 11
-    //   123: lload_1
-    //   124: aload_3
-    //   125: aload 4
-    //   127: lload 5
-    //   129: lload 7
-    //   131: invokevirtual 306	com/tencent/mobileqq/vas/VasQuickUpdateManager$CallBacker:onProgress	(JLjava/lang/String;Ljava/lang/String;JJ)V
-    //   134: iload 9
-    //   136: iconst_1
-    //   137: iadd
-    //   138: istore 9
-    //   140: goto -55 -> 85
-    //   143: aconst_null
-    //   144: astore 11
-    //   146: goto -30 -> 116
-    //   149: astore_3
-    //   150: aload_0
-    //   151: monitorexit
-    //   152: aload_3
-    //   153: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	154	0	this	VasQuickUpdateManager
-    //   0	154	1	paramLong1	long
-    //   0	154	3	paramString1	String
-    //   0	154	4	paramString2	String
-    //   0	154	5	paramLong2	long
-    //   0	154	7	paramLong3	long
-    //   83	56	9	i	int
-    //   80	10	10	j	int
-    //   99	46	11	localObject	Object
-    //   73	20	12	localSparseArray	SparseArray
-    // Exception table:
-    //   from	to	target	type
-    //   2	56	149	finally
-    //   59	82	149	finally
-    //   92	116	149	finally
-    //   121	134	149	finally
-  }
-  
-  /* Error */
-  public void a(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_3
-    //   3: invokestatic 91	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   6: ifeq +75 -> 81
-    //   9: ldc 113
-    //   11: iconst_2
-    //   12: new 20	java/lang/StringBuilder
-    //   15: dup
-    //   16: invokespecial 23	java/lang/StringBuilder:<init>	()V
-    //   19: ldc_w 281
-    //   22: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: lload_1
-    //   26: invokevirtual 118	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   29: ldc_w 283
-    //   32: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: aload 4
-    //   37: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   40: ldc_w 285
-    //   43: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   46: aload_3
-    //   47: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   50: ldc_w 309
-    //   53: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   56: aload 5
-    //   58: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   61: ldc_w 311
-    //   64: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: iload 6
-    //   69: invokevirtual 314	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   72: invokevirtual 38	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   75: invokestatic 130	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   78: aload_0
-    //   79: monitorexit
-    //   80: return
-    //   81: aload_0
-    //   82: getfield 287	com/tencent/mobileqq/vas/VasQuickUpdateManager:jdField_a_of_type_AndroidUtilSparseArray	Landroid/util/SparseArray;
-    //   85: ifnull -7 -> 78
-    //   88: aload_0
-    //   89: getfield 287	com/tencent/mobileqq/vas/VasQuickUpdateManager:jdField_a_of_type_AndroidUtilSparseArray	Landroid/util/SparseArray;
-    //   92: invokevirtual 293	android/util/SparseArray:clone	()Landroid/util/SparseArray;
-    //   95: astore 11
-    //   97: aload 11
-    //   99: invokevirtual 297	android/util/SparseArray:size	()I
-    //   102: istore 9
-    //   104: iconst_0
-    //   105: istore 8
-    //   107: iload 8
-    //   109: iload 9
-    //   111: if_icmpge -33 -> 78
-    //   114: aload 11
-    //   116: iload 8
-    //   118: invokevirtual 301	android/util/SparseArray:valueAt	(I)Ljava/lang/Object;
-    //   121: astore 10
-    //   123: aload 10
-    //   125: instanceof 303
-    //   128: ifeq +40 -> 168
-    //   131: aload 10
-    //   133: checkcast 303	com/tencent/mobileqq/vas/VasQuickUpdateManager$CallBacker
-    //   136: astore 10
-    //   138: aload 10
-    //   140: ifnull +19 -> 159
-    //   143: aload 10
-    //   145: lload_1
-    //   146: aload_3
-    //   147: aload 4
-    //   149: aload 5
-    //   151: iload 6
-    //   153: iload 7
-    //   155: aload_0
-    //   156: invokevirtual 318	com/tencent/mobileqq/vas/VasQuickUpdateManager$CallBacker:callback	(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;IILcom/tencent/mobileqq/vas/VasQuickUpdateManager;)V
-    //   159: iload 8
-    //   161: iconst_1
-    //   162: iadd
-    //   163: istore 8
-    //   165: goto -58 -> 107
-    //   168: aconst_null
-    //   169: astore 10
-    //   171: goto -33 -> 138
-    //   174: astore_3
-    //   175: aload_0
-    //   176: monitorexit
-    //   177: aload_3
-    //   178: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	179	0	this	VasQuickUpdateManager
-    //   0	179	1	paramLong	long
-    //   0	179	3	paramString1	String
-    //   0	179	4	paramString2	String
-    //   0	179	5	paramString3	String
-    //   0	179	6	paramInt1	int
-    //   0	179	7	paramInt2	int
-    //   105	59	8	i	int
-    //   102	10	9	j	int
-    //   121	49	10	localObject	Object
-    //   95	20	11	localSparseArray	SparseArray
-    // Exception table:
-    //   from	to	target	type
-    //   2	78	174	finally
-    //   81	104	174	finally
-    //   114	138	174	finally
-    //   143	159	174	finally
-  }
-  
-  public void a(long paramLong, String paramString1, String[] paramArrayOfString, String paramString2)
+  public void downloadGatherItem(long paramLong, String paramString1, String[] paramArrayOfString, String paramString2)
   {
     if (QLog.isColorLevel()) {
       QLog.d("VasQuickUpdateManager", 2, "downloadGatherItem bid = " + paramLong + " scid = " + paramString1 + " scidList = " + TextUtils.join(",", paramArrayOfString) + " from = " + paramString2);
     }
-    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VasQuickUpdateManager", 2, "downloadGatherItem engine not ready, initEngine");
-      }
-      a();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateEngine != null) {
-      this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateEngine.downloadGatherItem(paramLong, paramString1, paramArrayOfString, paramString2);
+    if (this.mEngine != null) {
+      this.mEngine.downloadGatherItem(paramLong, paramString1, paramArrayOfString, paramString2);
     }
   }
   
-  public void a(VasQuickUpdateManager.CallBacker paramCallBacker)
+  public void downloadItem(long paramLong, String paramString1, String paramString2)
   {
-    if (paramCallBacker == null) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
-          this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-        }
-        if (this.jdField_a_of_type_AndroidUtilSparseArray.indexOfValue(paramCallBacker) >= 0) {
-          continue;
-        }
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1), paramCallBacker);
-        paramCallBacker.key = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-      }
-      finally {}
+    if (QLog.isColorLevel()) {
+      QLog.d("VasQuickUpdateManager", 2, "downloadItem bid = " + paramLong + " scid = " + paramString1 + " from = " + paramString2);
     }
-  }
-  
-  public void b(VasQuickUpdateManager.CallBacker paramCallBacker)
-  {
-    if ((this.jdField_a_of_type_AndroidUtilSparseArray == null) || (paramCallBacker == null)) {
-      return;
+    if (this.mEngine != null) {
+      this.mEngine.downloadItem(paramLong, paramString1, paramString2);
     }
-    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramCallBacker.key);
   }
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqVasVasExtensionObserver);
-    if (this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateEngine != null)
+    QLog.e("VasQuickUpdateManager", 1, "onDestroy: " + this);
+    this.app.removeObserver(this.mQuickUpdateObserver);
+    if (this.mEngine != null) {
+      bdws.b(this.defaultCallback);
+    }
+    this.callBackers.clear();
+  }
+  
+  public void onProgressToAll(long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      QLog.e("VasQuickUpdateManager", 2, "callBackToAll Error bid = " + paramLong1 + ", cfgScid=" + paramString2 + ",scid = " + paramString1);
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateEngine.mExtensionHandler = null;
-      this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateEngine.mUpdateListenerList.clear();
-      this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateEngine.mBusinessCallbackList.clear();
-      this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateEngine.mDefaultCallback = null;
-      this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateEngine.mDefaultListener = null;
+      return;
+      Iterator localIterator = this.callBackers.values().iterator();
+      while (localIterator.hasNext()) {
+        ((VasQuickUpdateManager.CallBacker)localIterator.next()).onProgress(paramLong1, paramString1, paramString2, paramLong2, paramLong3);
+      }
     }
-    if (this.jdField_a_of_type_AndroidUtilSparseArray != null) {
-      this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+  }
+  
+  public void queryItemVersion(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2, long paramLong, bdtn parambdtn)
+  {
+    if (this.mEngine != null)
+    {
+      parambdtn = new VasQuickUpdateManager.TimeoutWrapper(parambdtn, paramBoolean2, null);
+      if (paramLong > 0L) {
+        ThreadManager.getSubThreadHandler().postDelayed(parambdtn, paramLong);
+      }
+      this.mEngine.queryItemVersion(paramInt, paramString, paramBoolean1, parambdtn);
+      return;
     }
+    parambdtn.a(2, "", "");
+  }
+  
+  public void removeCallBacker(VasQuickUpdateManager.CallBacker paramCallBacker)
+  {
+    if (paramCallBacker == null) {
+      return;
+    }
+    this.callBackers.remove(Integer.valueOf(paramCallBacker.key));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasQuickUpdateManager
  * JD-Core Version:    0.7.0.1
  */

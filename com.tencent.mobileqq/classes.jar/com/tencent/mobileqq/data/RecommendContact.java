@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import awge;
+import awhs;
 
 public class RecommendContact
-  extends Entity
+  extends awge
 {
   public String contactName;
   public boolean isRead;
-  @unique
+  @awhs
   public String key;
   public String mobileCode;
   public String mobileNo;
@@ -32,7 +32,7 @@ public class RecommendContact
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.RecommendContact
  * JD-Core Version:    0.7.0.1
  */

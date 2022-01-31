@@ -1,21 +1,27 @@
-import android.content.res.Resources;
-import com.tencent.litetransfersdk.ProtocolHelper;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGuideView;
 
 public class rdk
-  implements Runnable
+  extends AnimatorListenerAdapter
 {
-  public rdk(ProtocolHelper paramProtocolHelper, String paramString) {}
+  private rdk(VideoFeedsGuideView paramVideoFeedsGuideView) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    FMToastUtil.a("'" + this.jdField_a_of_type_JavaLangString + "'" + BaseApplication.getContext().getResources().getString(2131427516));
+    super.onAnimationCancel(paramAnimator);
+    VideoFeedsGuideView.a(this.a, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    VideoFeedsGuideView.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rdk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,18 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class aciy
-  extends RecyclerView.AdapterDataObserver
+  implements DialogInterface.OnClickListener
 {
-  public aciy(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
+  public aciy(BaseChatPie paramBaseChatPie) {}
   
-  public void onChanged()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (ExtendFriendSquareFragment.a(this.a).a() == 0)
-    {
-      ExtendFriendSquareFragment.a(this.a).removeItemDecoration(ExtendFriendSquareFragment.a(this.a));
-      return;
+    if ((this.a.b != null) && (this.a.b.isShowing())) {
+      this.a.b.dismiss();
     }
-    ExtendFriendSquareFragment.a(this.a).removeItemDecoration(ExtendFriendSquareFragment.a(this.a));
-    ExtendFriendSquareFragment.a(this.a).addItemDecoration(ExtendFriendSquareFragment.a(this.a));
   }
 }
 

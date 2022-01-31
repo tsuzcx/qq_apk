@@ -1,23 +1,18 @@
-import android.text.TextUtils;
+import android.content.Context;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
-import com.tencent.mobileqq.structmsg.AbsStructMsgElement;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 
-public class aihr
-  implements View.OnLongClickListener
+class aihr
+  implements View.OnTouchListener
 {
-  public aihr(StructMsgForGeneralShare paramStructMsgForGeneralShare, OnLongClickAndTouchListener paramOnLongClickAndTouchListener) {}
+  aihr(aihl paramaihl) {}
   
-  public boolean onLongClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    StructMsgForGeneralShare.clickedItemIndex = 0;
-    AbsStructMsgElement localAbsStructMsgElement = (AbsStructMsgElement)paramView.getTag();
-    if (!TextUtils.isEmpty(localAbsStructMsgElement.s)) {
-      StructMsgForGeneralShare.clickedItemIndex = Integer.valueOf(localAbsStructMsgElement.s).intValue();
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener.onLongClick(paramView);
+    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

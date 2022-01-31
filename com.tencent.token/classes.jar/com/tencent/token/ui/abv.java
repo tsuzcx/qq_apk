@@ -1,14 +1,33 @@
 package com.tencent.token.ui;
 
-final class abv
-  implements Runnable
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.do;
+import com.tmsdk.TMSDKContext;
+
+class abv
+  implements View.OnClickListener
 {
-  abv(StartPwdGestureModifyActivity paramStartPwdGestureModifyActivity) {}
+  abv(UtilsActivity paramUtilsActivity) {}
   
-  public final void run()
+  public void onClick(View paramView)
   {
-    this.a.setResult(259);
-    this.a.finish();
+    TMSDKContext.saveActionData(1150068);
+    paramView = this.a.getResources().getString(2131231345);
+    QQUser localQQUser = do.a().e();
+    if (localQQUser == null) {
+      paramView = this.a.getResources().getString(2131231480);
+    }
+    for (;;)
+    {
+      this.a.showUserDialogWithCancel(2130968781, paramView, new abw(this, localQQUser), new abx(this), null);
+      return;
+      if (!localQQUser.mIsBinded) {
+        paramView = this.a.getResources().getString(2131231658);
+      }
+    }
   }
 }
 

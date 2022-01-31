@@ -1,14 +1,12 @@
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class aklq
-  implements Runnable
 {
-  public aklq(WebAccelerateHelper paramWebAccelerateHelper) {}
-  
-  public void run()
-  {
-    this.a.getWebViewFeatureParams();
-  }
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public TextView b;
 }
 
 

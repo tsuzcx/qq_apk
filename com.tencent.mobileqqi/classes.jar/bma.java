@@ -1,44 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.utils.PhoneStatusMonitor;
-import com.tencent.av.utils.PhoneStatusMonitor.PhoneStatusListener;
-import com.tencent.av.utils.PhoneStatusTools;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
 public class bma
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public bma(PhoneStatusMonitor paramPhoneStatusMonitor) {}
+  public bma(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramIntent.getAction().equals("android.intent.action.NEW_OUTGOING_CALL")) {
-      if (QLog.isColorLevel()) {
-        QLog.d("PhoneStatusMonitor", 2, "onReceive NEW_OUTGOING_CALL");
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.d("PhoneStatusMonitor", 2, "onReceive PHONE_STATE");
-          }
-          if ((!this.a.jdField_a_of_type_Boolean) || (PhoneStatusTools.e(this.a.jdField_a_of_type_AndroidContentContext))) {
-            break;
-          }
-          this.a.jdField_a_of_type_Boolean = false;
-        } while (this.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener == null);
-        this.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener.a(false);
-        return;
-      } while ((this.a.jdField_a_of_type_Boolean) || (!PhoneStatusTools.e(this.a.jdField_a_of_type_AndroidContentContext)));
-      this.a.jdField_a_of_type_Boolean = true;
-    } while (this.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener == null);
-    this.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener.a(true);
+    this.a.finish();
   }
 }
 

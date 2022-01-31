@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/detail_back" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textStyle="bold" android:gravity="center" android:id="@id/freeze_dialog_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:text="@string/contact_protect_download_wifi_notify_title" style="@style/text_view_middle_18" />
+    <TextView android:textSize="16.0sp" android:textColor="#ff888888" android:layout_gravity="center_horizontal" android:id="@id/freeze_dialog_detail" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="17.0dip" android:layout_marginTop="7.0dip" android:layout_marginRight="17.0dip" android:layout_marginBottom="30.0dip" android:text="@string/contact_protect_download_wifi_notify_subtitle" />
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="15.0dip" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="45.0dip">
+        <TextView android:textSize="@dimen/text_size_16" android:textColor="@color/in_checking_black" android:gravity="center" android:layout_gravity="center" android:id="@id/tv_qqpim_cancel" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/contact_protect_download_wifi_notify_cancel" android:layout_weight="1.0" />
+        <View android:background="@color/common_list_divider" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+        <TextView android:textSize="@dimen/text_size_16" android:textColor="@color/text_blue" android:gravity="center" android:layout_gravity="center" android:id="@id/tv_qqpim_confirm" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/contact_protect_download_wifi_notify_download" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

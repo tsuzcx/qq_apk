@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Submsgtype0x3b$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   public static final int UINT32_MEMBER_LEVEL_CHANGED_FIELD_NUMBER = 4;
   public static final int UINT32_OFFICEMODE_FIELD_NUMBER = 5;

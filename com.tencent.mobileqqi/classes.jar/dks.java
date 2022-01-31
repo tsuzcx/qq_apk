@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import com.tencent.mobileqq.data.Stranger;
+import java.util.Comparator;
 
-public class dks
-  implements DialogInterface.OnClickListener
+public final class dks
+  implements Comparator
 {
-  public dks(RegisterActivity paramRegisterActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(Stranger paramStranger1, Stranger paramStranger2)
   {
-    paramDialogInterface.dismiss();
+    if (paramStranger1.loginId > paramStranger2.loginId) {
+      return 1;
+    }
+    if (paramStranger1.loginId < paramStranger2.loginId) {
+      return -1;
+    }
+    return 0;
   }
 }
 

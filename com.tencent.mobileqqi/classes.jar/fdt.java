@@ -1,37 +1,29 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 
 public class fdt
-  extends BroadcastReceiver
+  extends SendMessageHandler.SendMessageRunnable
 {
-  private fdt(BaseActivity paramBaseActivity) {}
+  public fdt(MessageHandler paramMessageHandler, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
-    {
-      if ((this.a.d_ != 0) || (!this.a.p) || (this.a.b == null) || (GesturePWDUtils.getGesturePWDState(this.a.a(), this.a.b.a()) != 2) || (GesturePWDUtils.getGesturePWDMode(this.a.a(), this.a.b.a()) != 21) || ((this.a.a() instanceof GesturePWDUnlockActivity)) || ((this.a.a() instanceof LoginActivity)) || (GesturePWDUtils.getGestureLocking(this.a.a()))) {
-        break label176;
-      }
-      this.a.B();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.MessageHandler", 2, "<ReadReport><S>_Group_gprUin:" + this.jdField_a_of_type_Long + " lastReadSeq:" + this.b + " reqSeq:" + this.c);
     }
-    for (;;)
-    {
-      BaseActivity.r = false;
-      if (QLog.isDevelopLevel()) {
-        QLog.d("qqBaseActivity", 4, "onReceive broadcastreceiver.action=" + paramIntent.getAction());
-      }
-      return;
-      label176:
-      this.a.c_();
-    }
+    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a("MessageSvc.GroupMsgReadConfirm");
+    localToServiceMsg.extraData.putLong("groupuin", this.jdField_a_of_type_Long);
+    localToServiceMsg.extraData.putLong("lastReadSeq", this.b);
+    localToServiceMsg.extraData.putLong("timeOut", this.e);
+    localToServiceMsg.extraData.putLong("startTime", this.d);
+    localToServiceMsg.extraData.putInt("retryIndex", this.jdField_a_of_type_Int);
+    localToServiceMsg.extraData.putLong("msgSeq", this.c);
+    localToServiceMsg.setEnableFastResend(true);
+    localToServiceMsg.setTimeout(this.e);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(localToServiceMsg);
   }
 }
 

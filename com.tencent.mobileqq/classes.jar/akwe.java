@@ -1,34 +1,29 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mapsdk.raster.model.GeoPoint;
-import com.tencent.mobileqq.widget.QQMapView;
-import com.tencent.mobileqq.widget.QQMapView.QQMapViewObserver;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class akwe
-  extends Handler
+final class akwe
+  implements BusinessObserver
 {
-  public akwe(QQMapView paramQQMapView) {}
-  
-  public void handleMessage(Message paramMessage)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    GeoPoint localGeoPoint;
-    if ((paramMessage != null) && (paramMessage.obj != null) && (this.a.a != null)) {
-      localGeoPoint = (GeoPoint)paramMessage.obj;
-    }
-    switch (paramMessage.arg1)
+    try
     {
-    default: 
-      return;
-    case 0: 
-      this.a.a.a(localGeoPoint);
+      paramInt = paramBundle.getInt("extra_result_code");
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameUtil", 1, new Object[] { "[reportGameEvent] retCode=", Integer.valueOf(paramInt) });
+      }
       return;
     }
-    this.a.a.b(localGeoPoint);
+    catch (Exception paramBundle)
+    {
+      QLog.e("cmgame_process.CmGameUtil", 1, "[reportGameEvent] onReceive, exception=", paramBundle);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akwe
  * JD-Core Version:    0.7.0.1
  */

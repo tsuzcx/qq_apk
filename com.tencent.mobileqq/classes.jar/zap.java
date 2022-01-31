@@ -1,78 +1,69 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity2;
-import com.tencent.mobileqq.app.ScreenShot;
-import com.tencent.mobileqq.app.ShakeListener;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.util.ReflectionUtil;
-import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
-import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.opengl.GLES20;
+import java.nio.Buffer;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
 public class zap
-  extends ShakeListener
 {
-  public void a()
+  public static int a(int paramInt1, int paramInt2)
   {
-    int i = Build.VERSION.SDK_INT;
-    Object localObject = BaseApplicationImpl.sApplication;
-    boolean bool1;
-    if (i > 10)
+    int[] arrayOfInt = new int[1];
+    GLES20.glGenTextures(1, arrayOfInt, 0);
+    GLES20.glBindTexture(3553, arrayOfInt[0]);
+    GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
+    GLES20.glTexParameterf(3553, 10241, 9729.0F);
+    GLES20.glTexParameterf(3553, 10240, 9729.0F);
+    GLES20.glTexParameteri(3553, 10242, 33071);
+    GLES20.glTexParameteri(3553, 10243, 33071);
+    return arrayOfInt[0];
+  }
+  
+  public static Bitmap a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    try
     {
-      i = 4;
-      localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("screen_shot", i).getString("currentactivity", null);
-      if ((BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2 != null) && (BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.getClass().getName().equals(localObject)))
-      {
-        bool1 = SettingCloneUtil.readValue(BaseApplicationImpl.sApplication, null, BaseApplicationImpl.sApplication.getString(2131433581), "qqsetting_screenshot_key", false);
-        boolean bool2 = ReflectionUtil.a(BaseApplication.getContext());
-        if ((bool1) && (bool2))
-        {
-          if (BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.jdField_a_of_type_ComTencentMobileqqAppScreenShot == null)
-          {
-            if (!BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.R) {
-              break label164;
-            }
-            localObject = BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.getApplicationContext();
-            label118:
-            BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.jdField_a_of_type_ComTencentMobileqqAppScreenShot = new ScreenShot((Context)localObject, BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.getWindow());
-          }
-          bool1 = BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.jdField_a_of_type_ComTencentMobileqqAppScreenShot.b();
-          if (!bool1) {
-            break label172;
-          }
-          ScreenShot.a("BaseActivity2 is showing");
-        }
-      }
+      localBitmap = Bitmap.createBitmap(paramInt2, paramInt3, Bitmap.Config.ARGB_8888);
+      Object localObject;
+      localOutOfMemoryError1.printStackTrace();
     }
-    for (;;)
+    catch (OutOfMemoryError localOutOfMemoryError1)
     {
-      return;
-      i = 0;
-      break;
-      label164:
-      localObject = BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2;
-      break label118;
-      label172:
-      if (!BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.jdField_a_of_type_ComTencentMobileqqAppScreenShot.c()) {
-        BaseActivity2.a(BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2);
-      }
-      while (QLog.isColorLevel())
+      try
       {
-        QLog.d("BaseActivity", 2, "snapshot activate " + bool1);
-        return;
-        if ((!MobileIssueSettings.g) && (Build.VERSION.SDK_INT < 11)) {
-          KapalaiAdapterUtil.a().a(BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.getWindow());
-        }
+        localObject = new int[1];
+        GLES20.glGenFramebuffers(1, (int[])localObject, 0);
+        GLES20.glBindFramebuffer(36160, localObject[0]);
+        GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt1, 0);
+        localObject = ByteBuffer.allocateDirect(paramInt2 * paramInt3 * 4);
+        ((ByteBuffer)localObject).order(ByteOrder.LITTLE_ENDIAN);
+        GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, (Buffer)localObject);
+        ((ByteBuffer)localObject).rewind();
+        localBitmap.copyPixelsFromBuffer((Buffer)localObject);
+        GLES20.glBindFramebuffer(36160, 0);
+        return localBitmap;
       }
+      catch (OutOfMemoryError localOutOfMemoryError2)
+      {
+        Bitmap localBitmap;
+        break label95;
+      }
+      localOutOfMemoryError1 = localOutOfMemoryError1;
+      localBitmap = null;
     }
+    label95:
+    return localBitmap;
+  }
+  
+  public static void a(int paramInt)
+  {
+    GLES20.glDeleteTextures(1, new int[] { paramInt }, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zap
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,10 @@
-import android.os.Handler;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.view.View;
 
-class akjd
-  implements TVK_SDKMgr.InstallListener
+public abstract interface akjd
 {
-  akjd(akjc paramakjc) {}
+  public abstract void a(View paramView);
   
-  public void onInstallProgress(float paramFloat)
-  {
-    this.a.a.c = ((int)(100.0F * paramFloat));
-    this.a.a.b.sendEmptyMessage(2);
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    this.a.a.d = paramInt;
-    this.a.a.b.sendEmptyMessage(1);
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    this.a.a.b.sendEmptyMessage(0);
-  }
+  public abstract boolean a(String paramString, int paramInt);
 }
 
 

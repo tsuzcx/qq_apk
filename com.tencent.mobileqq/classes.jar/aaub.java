@@ -1,42 +1,21 @@
-import com.tencent.ark.ark;
-import com.tencent.mobileqq.ark.ArkAiAppCenter;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.gdtad.views.form.framework.GdtFormTableView;
+import com.tencent.gdtad.views.form.framework.GdtFormTableView.1.1;
 
-public final class aaub
-  implements Runnable
+public class aaub
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public void run()
+  public aaub(GdtFormTableView paramGdtFormTableView) {}
+  
+  public void onGlobalLayout()
   {
-    for (;;)
-    {
-      try
-      {
-        if ("open".equals(ArkAiAppCenter.b()))
-        {
-          bool = true;
-          ark.SetArkHttpsSwitch(bool);
-          if (bool)
-          {
-            ArkAppCenter.b("SetArkHttpsSwitch", "ArkHttpsSwitch is Opened ");
-            return;
-          }
-          ArkAppCenter.b("SetArkHttpsSwitch", "ArkHttpsSwitch is Closed ");
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.w("ArkApp", 1, "SetArkHttpsSwitch is failed and message=" + localException.getMessage());
-        return;
-      }
-      boolean bool = false;
-    }
+    this.a.a(-1);
+    this.a.post(new GdtFormTableView.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaub
  * JD-Core Version:    0.7.0.1
  */

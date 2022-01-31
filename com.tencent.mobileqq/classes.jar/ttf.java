@@ -1,22 +1,13 @@
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import feedcloud.FeedCloudMeta.StFeed;
 
 public class ttf
 {
   public int a;
-  public String a;
-  public boolean a;
-  
-  public ttf(SoundAndVibrateActivity paramSoundAndVibrateActivity, int paramInt, String paramString, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public FeedCloudMeta.StFeed a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ttf
  * JD-Core Version:    0.7.0.1
  */

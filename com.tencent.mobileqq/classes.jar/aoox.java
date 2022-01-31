@@ -1,65 +1,78 @@
-import com.tencent.biz.common.util.ZipUtils;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
 
-class aoox
-  implements INetEngine.INetEngineListener
+public class aoox
+  extends aokh<aoow>
 {
-  aoox(aoow paramaoow) {}
-  
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
-  
-  public void a(NetResp paramNetResp)
+  public int a()
   {
-    int j = 0;
+    return 578;
+  }
+  
+  @NonNull
+  public aoow a(int paramInt)
+  {
+    return new aoow();
+  }
+  
+  @Nullable
+  public aoow a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null))
+    {
+      aoow localaoow = aoow.a(paramArrayOfaoko[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("OnlineStatusConfProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
+      }
+      return localaoow;
+    }
     if (QLog.isColorLevel()) {
-      QLog.i("QIMPtvTemplateManager", 2, "onResp url: " + this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl + " resultcode: " + paramNetResp.c);
+      QLog.d("OnlineStatusConfProcessor", 2, "onParsed is null");
     }
-    this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.a(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
-    if (this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable) {}
-    try
-    {
-      ZipUtils.a(new File(QIMPtvTemplateManager.jdField_a_of_type_JavaIoFile, this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name), QIMPtvTemplateManager.jdField_a_of_type_JavaLangString);
-      paramNetResp = this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.a(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
-      PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo;
-      if (paramNetResp.size() > 0)
-      {
-        i = ((Integer)paramNetResp.get(0)).intValue();
-        localPtvTemplateInfo.type = i;
-        localPtvTemplateInfo = this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo;
-        i = j;
-        if (paramNetResp.size() > 1) {
-          i = ((Integer)paramNetResp.get(1)).intValue();
-        }
-        localPtvTemplateInfo.color = i;
-        return;
-      }
+    return null;
+  }
+  
+  public Class<aoow> a()
+  {
+    return aoow.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("OnlineStatusConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
     }
-    catch (IOException paramNetResp)
-    {
-      for (;;)
-      {
-        int i;
-        if (QLog.isColorLevel())
-        {
-          paramNetResp.printStackTrace();
-          continue;
-          i = 0;
-        }
-      }
+  }
+  
+  public void a(aoow paramaoow)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("OnlineStatusConfProcessor", 2, "onUpdate " + paramaoow.toString());
     }
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("OnlineStatusConfProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoox
  * JD-Core Version:    0.7.0.1
  */

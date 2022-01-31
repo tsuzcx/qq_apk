@@ -1,21 +1,27 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoHallowenUpload;
-import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoHallowenUpload.Listener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.bigbrother.JumpConfirmFragment;
+import com.tencent.mobileqq.haoliyou.JefsClass;
 
 public class anvq
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public anvq(EditWebVideoHallowenUpload paramEditWebVideoHallowenUpload) {}
+  public anvq(JumpConfirmFragment paramJumpConfirmFragment) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (EditWebVideoHallowenUpload.a(this.a) != null) {
-      EditWebVideoHallowenUpload.a(this.a).a();
+    JefsClass.getInstance().b(JumpConfirmFragment.a(this.a), JumpConfirmFragment.a(this.a), JumpConfirmFragment.b(this.a));
+    if (JumpConfirmFragment.b(this.a) == null) {}
+    for (paramDialogInterface = "";; paramDialogInterface = JumpConfirmFragment.b(this.a))
+    {
+      azqs.b(null, "dc00898", "", "", "0X8009C5A", "0X8009C5A", 0, 0, "1", "", paramDialogInterface, "");
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anvq
  * JD-Core Version:    0.7.0.1
  */

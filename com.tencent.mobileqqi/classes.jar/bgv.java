@@ -1,36 +1,19 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.utils.QAVNotification;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.RelativeLayout;
+import com.tencent.biz.PoiMapActivity;
 
-public class bgv
-  extends Thread
+class bgv
+  implements Runnable
 {
-  public bgv(VideoAppInterface paramVideoAppInterface) {}
+  bgv(bgu parambgu) {}
   
   public void run()
   {
-    try
-    {
-      Thread.sleep(1600L);
-      QAVNotification localQAVNotification = QAVNotification.a(null);
-      if (localQAVNotification != null) {
-        localQAVNotification.d();
-      }
-      this.a.g();
-      if (QLog.isColorLevel()) {
-        QLog.d(VideoAppInterface.a, 2, "force exit video process ...");
-      }
-      System.exit(0);
-      return;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
-        System.exit(0);
-      }
-    }
+    this.a.jdField_a_of_type_ComTencentBizPoiMapActivity.b = false;
+    this.a.jdField_a_of_type_ComTencentBizPoiMapActivity.a.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_ComTencentBizPoiMapActivity.getWindow().peekDecorView().getWindowToken(), 0);
   }
 }
 

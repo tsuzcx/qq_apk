@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class UniteGrayTip$HightlightParam
-  extends MessageMicro
+  extends MessageMicro<HightlightParam>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50, 56, 66, 74 }, new String[] { "start", "end", "uin", "needUpdateNick", "actionType", "icon", "textColor", "mMsgActionData", "mMsg_A_ActionData" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), "", "" }, HightlightParam.class);
   public final PBUInt32Field actionType = PBField.initUInt32(0);
@@ -23,7 +23,7 @@ public final class UniteGrayTip$HightlightParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     localpb.uniteGrayTip.UniteGrayTip.HightlightParam
  * JD-Core Version:    0.7.0.1
  */

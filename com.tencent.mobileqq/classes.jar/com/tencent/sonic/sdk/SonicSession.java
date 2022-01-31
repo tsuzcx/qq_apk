@@ -9,12 +9,9 @@ import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import com.tencent.sonic.sdk.download.SonicDownloadCache;
-import com.tencent.sonic.sdk.download.SonicDownloadEngine;
 import java.io.File;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -25,10 +22,18 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONObject;
 
-public abstract class SonicSession
+public class SonicSession
   implements Handler.Callback
 {
   public static final String CHROME_FILE_THREAD = "Chrome_FileThread";
+  private static final int CLIENT_CORE_MSG_BEGIN = 4;
+  private static final int CLIENT_CORE_MSG_CONNECTION_ERROR = 9;
+  private static final int CLIENT_CORE_MSG_DATA_UPDATE = 7;
+  private static final int CLIENT_CORE_MSG_END = 11;
+  private static final int CLIENT_CORE_MSG_FIRST_LOAD = 6;
+  private static final int CLIENT_CORE_MSG_PRE_LOAD = 5;
+  private static final int CLIENT_CORE_MSG_SERVICE_UNAVAILABLE = 10;
+  private static final int CLIENT_CORE_MSG_TEMPLATE_CHANGE = 8;
   protected static final int CLIENT_MSG_NOTIFY_RESULT = 1;
   protected static final int CLIENT_MSG_ON_WEB_READY = 2;
   protected static final int COMMON_MSG_BEGIN = 0;
@@ -37,10 +42,14 @@ public abstract class SonicSession
   protected static final int FILE_THREAD_MSG_BEGIN = 0;
   protected static final int FILE_THREAD_SAVE_CACHE_ON_SERVER_CLOSE = 1;
   protected static final int FILE_THREAD_SAVE_CACHE_ON_SESSION_FINISHED = 2;
+  private static final int FIRST_LOAD_NO_DATA = 1;
+  private static final int FIRST_LOAD_WITH_DATA = 2;
   public static final String OFFLINE_MODE_FALSE = "false";
   public static final String OFFLINE_MODE_HTTP = "http";
   public static final String OFFLINE_MODE_STORE = "store";
   public static final String OFFLINE_MODE_TRUE = "true";
+  private static final int PRE_LOAD_NO_CACHE = 1;
+  private static final int PRE_LOAD_WITH_CACHE = 2;
   protected static final int RESOURCE_INTERCEPT_STATE_IN_FILE_THREAD = 1;
   protected static final int RESOURCE_INTERCEPT_STATE_IN_OTHER_THREAD = 2;
   protected static final int RESOURCE_INTERCEPT_STATE_NONE = 0;
@@ -57,6 +66,7 @@ public abstract class SonicSession
   public static final int STATE_READY = 2;
   public static final int STATE_RUNNING = 1;
   public static final String TAG = "SonicSdk_SonicSession";
+  private static final int TEMPLATE_CHANGE_REFRESH = 1;
   public static final String WEB_RESPONSE_CODE = "code";
   public static final String WEB_RESPONSE_DATA = "result";
   public static final String WEB_RESPONSE_EXTRA = "extra";
@@ -82,21 +92,22 @@ public abstract class SonicSession
   private long lastDateUpdateTime;
   private boolean lastIsRedPointPreload;
   protected final Handler mainHandler = new Handler(Looper.getMainLooper(), this);
+  private Message pendingClientCoreMessage;
   protected String pendingDiffData = "";
   protected volatile InputStream pendingWebResourceStream;
   protected List<String> preloadLinks;
-  protected volatile SonicDownloadEngine resourceDownloaderEngine;
   protected final AtomicInteger resourceInterceptState = new AtomicInteger(0);
   public final long sId;
   protected volatile SonicServer server;
-  protected final CopyOnWriteArrayList<WeakReference<SonicSessionCallback>> sessionCallbackList = new CopyOnWriteArrayList();
   protected volatile SonicSessionClient sessionClient;
   protected final AtomicInteger sessionState = new AtomicInteger(0);
   protected int srcResultCode = -1;
   public String srcUrl;
-  protected final CopyOnWriteArrayList<WeakReference<Callback>> stateChangedCallbackList = new CopyOnWriteArrayList();
+  protected final CopyOnWriteArrayList<WeakReference<SonicSession.Callback>> stateChangedCallbackList = new CopyOnWriteArrayList();
   protected SonicSessionStatistics statistics = new SonicSessionStatistics();
   protected final AtomicBoolean wasInterceptInvoked = new AtomicBoolean(false);
+  private final AtomicBoolean wasLoadDataInvoked = new AtomicBoolean(false);
+  private final AtomicBoolean wasLoadUrlInvoked = new AtomicBoolean(false);
   private final AtomicBoolean wasNotified = new AtomicBoolean(false);
   protected final AtomicBoolean wasOnPageFinishInvoked = new AtomicBoolean(false);
   
@@ -112,24 +123,7 @@ public abstract class SonicSession
     this.currUrl = this.srcUrl;
     this.createdTime = System.currentTimeMillis();
     this.isRedPointPreload = isRedPointPreload();
-    this.fileHandler = new Handler(SonicEngine.getInstance().getRuntime().getFileThreadLooper(), new Handler.Callback()
-    {
-      public boolean handleMessage(Message paramAnonymousMessage)
-      {
-        switch (paramAnonymousMessage.what)
-        {
-        default: 
-          return false;
-        case 1: 
-          paramAnonymousMessage = (SonicServer)paramAnonymousMessage.obj;
-          SonicSession.this.saveSonicCacheOnServerClose(paramAnonymousMessage);
-          return true;
-        }
-        paramAnonymousMessage = (String)paramAnonymousMessage.obj;
-        SonicSession.this.doSaveSonicCache(SonicSession.this.server, paramAnonymousMessage);
-        return true;
-      }
-    });
+    this.fileHandler = new Handler(SonicEngine.getInstance().getRuntime().getFileThreadLooper(), new SonicSession.1(this));
     if (SonicEngine.getInstance().getConfig().GET_COOKIE_WHEN_SESSION_CREATE)
     {
       paramSonicSessionConfig = SonicEngine.getInstance().getRuntime().getCookie(this.srcUrl);
@@ -144,17 +138,7 @@ public abstract class SonicSession
   
   private void checkAndClearCacheData()
   {
-    SonicEngine.getInstance().getRuntime().postTaskToThread(new Runnable()
-    {
-      public void run()
-      {
-        if (SonicUtils.shouldClearCache(SonicEngine.getInstance().getConfig().SONIC_CACHE_CHECK_TIME_INTERVAL))
-        {
-          SonicEngine.getInstance().trimSonicCache();
-          SonicUtils.saveClearCacheTime(System.currentTimeMillis());
-        }
-      }
-    }, 50L);
+    SonicEngine.getInstance().getRuntime().postTaskToThread(new SonicSession.7(this), 50L);
   }
   
   @Nullable
@@ -181,21 +165,168 @@ public abstract class SonicSession
     return new SonicDataHelper.SessionData();
   }
   
-  private void handleFlow_PreloadSubResource()
+  private void handleClientCoreMessage_ConnectionError(Message paramMessage)
   {
-    if ((this.preloadLinks == null) || (this.preloadLinks.isEmpty())) {
+    if (this.wasLoadUrlInvoked.compareAndSet(false, true))
+    {
+      if (SonicUtils.shouldLog(4)) {
+        SonicUtils.log("SonicSdk_SonicSession", 4, "handleClientCoreMessage_ConnectionError: load src url.");
+      }
+      this.sessionClient.loadUrl(this.srcUrl, null);
+    }
+  }
+  
+  private void handleClientCoreMessage_DataUpdate(Message paramMessage)
+  {
+    boolean bool = true;
+    String str = (String)paramMessage.obj;
+    paramMessage = paramMessage.getData().getString("_diff_data_");
+    if (this.wasLoadDataInvoked.get())
+    {
+      this.pendingDiffData = paramMessage;
+      if (!TextUtils.isEmpty(paramMessage))
+      {
+        SonicUtils.log("SonicSdk_SonicSession", 4, "handleClientCoreMessage_DataUpdate:try to notify web callback.");
+        setResult(200, 200, true);
+        return;
+      }
+      SonicUtils.log("SonicSdk_SonicSession", 4, "handleClientCoreMessage_DataUpdate:diffData is null, cache-offline = store , do not refresh.");
+      setResult(200, 304, true);
       return;
     }
-    SonicEngine.getInstance().getRuntime().postTaskToThread(new Runnable()
+    if (!TextUtils.isEmpty(str))
     {
-      public void run()
+      paramMessage = new StringBuilder().append("handleClientCoreMessage_DataUpdate:oh yeah data update hit 304, now clear pending data ->");
+      if (this.pendingDiffData != null) {}
+      for (;;)
       {
-        if (SonicSession.this.resourceDownloaderEngine == null) {
-          SonicSession.this.resourceDownloaderEngine = new SonicDownloadEngine(SonicDownloadCache.getSubResourceCache());
-        }
-        SonicSession.this.resourceDownloaderEngine.addSubResourcePreloadTask(SonicSession.this.preloadLinks);
+        SonicUtils.log("SonicSdk_SonicSession", 4, bool + ".");
+        this.pendingDiffData = null;
+        this.sessionClient.loadDataWithBaseUrlAndHeader(this.srcUrl, str, "text/html", getCharsetFromHeaders(), this.srcUrl, getHeaders());
+        setResult(200, 304, false);
+        return;
+        bool = false;
       }
-    }, 0L);
+    }
+    SonicUtils.log("SonicSdk_SonicSession", 6, "handleClientCoreMessage_DataUpdate error:call load url.");
+    this.sessionClient.loadUrl(this.srcUrl, null);
+    setResult(200, 1000, false);
+  }
+  
+  private void handleClientCoreMessage_FirstLoad(Message paramMessage)
+  {
+    switch (paramMessage.arg1)
+    {
+    default: 
+      return;
+    case 1: 
+      if (this.wasInterceptInvoked.get())
+      {
+        SonicUtils.log("SonicSdk_SonicSession", 4, "session(" + this.sId + ") handleClientCoreMessage_FirstLoad:FIRST_LOAD_NO_DATA.");
+        setResult(1000, 1000, true);
+        return;
+      }
+      SonicUtils.log("SonicSdk_SonicSession", 6, "session(" + this.sId + ") handleClientCoreMessage_FirstLoad:url was not invoked.");
+      return;
+    }
+    if (this.wasLoadUrlInvoked.compareAndSet(false, true))
+    {
+      SonicUtils.log("SonicSdk_SonicSession", 4, "session(" + this.sId + ") handleClientCoreMessage_FirstLoad:oh yeah, first load hit 304.");
+      this.sessionClient.loadDataWithBaseUrlAndHeader(this.srcUrl, (String)paramMessage.obj, "text/html", getCharsetFromHeaders(), this.srcUrl, getHeaders());
+      setResult(1000, 304, false);
+      return;
+    }
+    SonicUtils.log("SonicSdk_SonicSession", 4, "session(" + this.sId + ") FIRST_LOAD_WITH_DATA load url was invoked.");
+    setResult(1000, 1000, true);
+  }
+  
+  private void handleClientCoreMessage_PreLoad(Message paramMessage)
+  {
+    switch (paramMessage.arg1)
+    {
+    default: 
+      return;
+    case 1: 
+      if (this.wasLoadUrlInvoked.compareAndSet(false, true))
+      {
+        SonicUtils.log("SonicSdk_SonicSession", 4, "session(" + this.sId + ") handleClientCoreMessage_PreLoad:PRE_LOAD_NO_CACHE load url.");
+        this.currUrl = SonicUtils.addSonicUrlParam(this.srcUrl, "_preload", "1");
+        this.sessionClient.loadUrl(this.currUrl, null);
+        return;
+      }
+      SonicUtils.log("SonicSdk_SonicSession", 6, "session(" + this.sId + ") handleClientCoreMessage_PreLoad:wasLoadUrlInvoked = true.");
+      return;
+    }
+    if (this.wasLoadDataInvoked.compareAndSet(false, true))
+    {
+      SonicUtils.log("SonicSdk_SonicSession", 4, "session(" + this.sId + ") handleClientCoreMessage_PreLoad:PRE_LOAD_WITH_CACHE load data.");
+      paramMessage = SonicUtils.addTagInfo((String)paramMessage.obj, String.valueOf(System.currentTimeMillis()), null);
+      this.sessionClient.loadDataWithBaseUrlAndHeader(this.srcUrl, paramMessage, "text/html", SonicUtils.DEFAULT_CHARSET, this.srcUrl, getCacheHeaders());
+      return;
+    }
+    SonicUtils.log("SonicSdk_SonicSession", 6, "session(" + this.sId + ") handleClientCoreMessage_PreLoad:wasLoadDataInvoked = true.");
+  }
+  
+  private void handleClientCoreMessage_ServiceUnavailable(Message paramMessage)
+  {
+    if (this.wasLoadUrlInvoked.compareAndSet(false, true))
+    {
+      if (SonicUtils.shouldLog(4)) {
+        SonicUtils.log("SonicSdk_SonicSession", 4, "handleClientCoreMessage_ServiceUnavailable:load src url.");
+      }
+      this.sessionClient.loadUrl(this.srcUrl, null);
+    }
+  }
+  
+  private void handleClientCoreMessage_TemplateChange(Message paramMessage)
+  {
+    SonicUtils.log("SonicSdk_SonicSession", 4, "handleClientCoreMessage_TemplateChange wasLoadDataInvoked = " + this.wasLoadDataInvoked.get() + ",msg arg1 = " + paramMessage.arg1);
+    boolean bool;
+    if (this.wasLoadDataInvoked.get()) {
+      if (1 == paramMessage.arg1) {
+        if (TextUtils.isEmpty((String)paramMessage.obj))
+        {
+          paramMessage = new StringBuilder().append("handleClientCoreMessage_TemplateChange:load url with preload=2, webCallback is null? ->");
+          if (this.diffDataCallback != null)
+          {
+            bool = true;
+            SonicUtils.log("SonicSdk_SonicSession", 4, bool);
+            this.currUrl = SonicUtils.addSonicUrlParam(this.srcUrl, "_preload", "2");
+            this.sessionClient.loadUrl(this.currUrl, null);
+            label141:
+            setResult(2000, 2000, false);
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      this.diffDataCallback = null;
+      this.mainHandler.removeMessages(2);
+      return;
+      bool = false;
+      break;
+      SonicUtils.log("SonicSdk_SonicSession", 4, "handleClientCoreMessage_TemplateChange:load data.");
+      paramMessage = SonicUtils.addTagInfo((String)paramMessage.obj, String.valueOf(System.currentTimeMillis()), String.valueOf(System.currentTimeMillis()));
+      this.sessionClient.loadDataWithBaseUrlAndHeader(this.srcUrl, paramMessage, "text/html", getCharsetFromHeaders(), this.srcUrl, getHeaders());
+      break label141;
+      SonicUtils.log("SonicSdk_SonicSession", 4, "handleClientCoreMessage_TemplateChange:not refresh.");
+      setResult(2000, 304, true);
+      continue;
+      SonicUtils.log("SonicSdk_SonicSession", 4, "handleClientCoreMessage_TemplateChange:oh yeah template change hit 304.");
+      if ((paramMessage.obj instanceof String))
+      {
+        paramMessage = SonicUtils.addTagInfo((String)paramMessage.obj, String.valueOf(System.currentTimeMillis()), null);
+        this.sessionClient.loadDataWithBaseUrlAndHeader(this.srcUrl, paramMessage, "text/html", getCharsetFromHeaders(), this.srcUrl, getHeaders());
+        setResult(2000, 304, false);
+      }
+      else
+      {
+        SonicUtils.log("SonicSdk_SonicSession", 6, "handleClientCoreMessage_TemplateChange error:call load url.");
+        this.sessionClient.loadUrl(this.srcUrl, null);
+        setResult(2000, 1000, false);
+      }
+    }
   }
   
   private boolean isRedPointPreload()
@@ -234,15 +365,7 @@ public abstract class SonicSession
         break label325;
       }
       if ((paramBoolean) && (!TextUtils.isEmpty(this.config.USE_SONIC_CACHE_IN_BAD_NETWORK_TOAST))) {
-        ((SonicRuntime)localObject).postTaskToMainThread(new Runnable()
-        {
-          public void run()
-          {
-            if ((SonicSession.this.clientIsReady.get()) && (!SonicSession.this.isDestroyedOrWaitingForDestroy())) {
-              this.val$runtime.showToast(SonicSession.this.config.USE_SONIC_CACHE_IN_BAD_NETWORK_TOAST, 1);
-            }
-          }
-        }, 1500L);
+        ((SonicRuntime)localObject).postTaskToMainThread(new SonicSession.3(this, (SonicRuntime)localObject), 1500L);
       }
       SonicUtils.log("SonicSdk_SonicSession", 6, "session(" + this.sId + ") runSonicFlow error:network is not valid!");
     }
@@ -303,12 +426,7 @@ public abstract class SonicSession
     }
   }
   
-  public boolean addSessionCallback(SonicSessionCallback paramSonicSessionCallback)
-  {
-    return this.sessionCallbackList.add(new WeakReference(paramSonicSessionCallback));
-  }
-  
-  protected boolean addSessionStateChangedCallback(Callback paramCallback)
+  protected boolean addSessionStateChangedCallback(SonicSession.Callback paramCallback)
   {
     return this.stateChangedCallbackList.add(new WeakReference(paramCallback));
   }
@@ -335,7 +453,12 @@ public abstract class SonicSession
     return true;
   }
   
-  protected void clearSessionData() {}
+  protected void clearSessionData()
+  {
+    if (this.pendingClientCoreMessage != null) {
+      this.pendingClientCoreMessage = null;
+    }
+  }
   
   protected Intent createConnectionIntent(SonicDataHelper.SessionData paramSessionData)
   {
@@ -344,11 +467,31 @@ public abstract class SonicSession
     SonicUtils.log("SonicSdk_SonicSession", 4, String.format("Session (%s) send sonic request, etag=(%s), templateTag=(%s)", new Object[] { this.id, paramSessionData.eTag, paramSessionData.templateTag }));
     localIntent.putExtra("eTag", paramSessionData.eTag);
     localIntent.putExtra("template-tag", paramSessionData.templateTag);
-    String str = SonicEngine.getInstance().getRuntime().getHostDirectAddress(this.srcUrl);
-    if (!TextUtils.isEmpty(str))
+    Object localObject = SonicEngine.getInstance().getRuntime().getHostDirectAddress(this.srcUrl);
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      localIntent.putExtra("dns-prefetch-address", str);
+      localIntent.putExtra("dns-prefetch-address", (String)localObject);
       this.statistics.isDirectAddress = true;
+    }
+    if (this.config.SUPPORT_SONIC_CHUNK_DATA)
+    {
+      long l = System.currentTimeMillis();
+      localObject = SonicChunkDataHelper.getChunkDataList(paramSessionData.sessionId, paramSessionData.eTag);
+      if (((List)localObject).size() > 0)
+      {
+        SonicChunkDataHelper.ChunkData localChunkData = (SonicChunkDataHelper.ChunkData)((List)localObject).get(0);
+        StringBuilder localStringBuilder = new StringBuilder(256);
+        localStringBuilder.append(localChunkData.toHeader());
+        int i = 1;
+        while (i < ((List)localObject).size())
+        {
+          localChunkData = (SonicChunkDataHelper.ChunkData)((List)localObject).get(i);
+          localStringBuilder.append(";").append(localChunkData.toHeader());
+          i += 1;
+        }
+        localIntent.putExtra("X-sonic-chunk", localStringBuilder.toString());
+        SonicUtils.log("SonicSdk_SonicSession", 4, String.format("Session (%s) send sonic request with chunk hash, etag=(%s), cost=(%d)", new Object[] { this.id, paramSessionData.eTag, Long.valueOf(System.currentTimeMillis() - l) }));
+      }
     }
     if (paramSessionData.isRedPointPreload == 1)
     {
@@ -356,28 +499,28 @@ public abstract class SonicSession
       this.lastDateUpdateTime = paramSessionData.templateUpdateTime;
       paramSessionData = SonicEngine.getInstance().getRuntime();
       if (SonicEngine.getInstance().getConfig().GET_COOKIE_WHEN_SESSION_CREATE) {
-        break label229;
+        break label416;
       }
-      str = paramSessionData.getCookie(this.srcUrl);
-      if (!TextUtils.isEmpty(str)) {
-        localIntent.putExtra("Cookie", str);
+      localObject = paramSessionData.getCookie(this.srcUrl);
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        localIntent.putExtra("Cookie", (String)localObject);
       }
-      label180:
+      label365:
       paramSessionData = paramSessionData.getUserAgent();
       if (TextUtils.isEmpty(paramSessionData)) {
-        break label250;
+        break label438;
       }
     }
-    label229:
-    label250:
-    for (paramSessionData = paramSessionData + " Sonic/2.0.0";; paramSessionData = "Sonic/2.0.0")
+    label416:
+    label438:
+    for (paramSessionData = paramSessionData + " Sonic/3.0.2";; paramSessionData = "Sonic/3.0.2")
     {
       localIntent.putExtra("User-Agent", paramSessionData);
       return localIntent;
       bool = false;
       break;
       localIntent.putExtra("Cookie", this.intent.getStringExtra("Cookie"));
-      break label180;
+      break label365;
     }
   }
   
@@ -394,54 +537,41 @@ public abstract class SonicSession
       if (this.sessionClient != null) {
         this.sessionClient = null;
       }
-      if (this.pendingWebResourceStream != null) {}
-      try
-      {
-        this.pendingWebResourceStream.close();
-        this.pendingWebResourceStream = null;
-        if (this.pendingDiffData != null) {
-          this.pendingDiffData = null;
-        }
-        clearSessionData();
-        checkAndClearCacheData();
-        if ((paramBoolean) || (canDestroy()))
-        {
-          this.sessionState.set(3);
-          SonicSessionCallback localSonicSessionCallback;
-          SonicUtils.log("SonicSdk_SonicSession", 4, "session(" + this.sId + ") final destroy, force=" + paramBoolean + ".");
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        synchronized (this.sessionState)
-        {
-          this.sessionState.notify();
-          if ((this.server != null) && (!paramBoolean))
-          {
-            this.server.disconnect();
-            this.server = null;
-          }
-          notifyStateChange(i, 3, null);
-          this.mainHandler.removeMessages(3);
-          this.stateChangedCallbackList.clear();
-          this.isWaitingForDestroy.set(false);
-          ??? = this.sessionCallbackList.iterator();
-          while (((Iterator)???).hasNext())
-          {
-            localSonicSessionCallback = (SonicSessionCallback)((WeakReference)((Iterator)???).next()).get();
-            if (localSonicSessionCallback != null)
-            {
-              localSonicSessionCallback.onSessionDestroy();
-              continue;
-              localThrowable = localThrowable;
-              SonicUtils.log("SonicSdk_SonicSession", 6, "pendingWebResourceStream.close error:" + localThrowable.getMessage());
-            }
-          }
-        }
-      }
+      if (this.pendingWebResourceStream == null) {}
     }
-    while (!this.isWaitingForDestroy.compareAndSet(false, true)) {
-      return;
+    try
+    {
+      this.pendingWebResourceStream.close();
+      this.pendingWebResourceStream = null;
+      if (this.pendingDiffData != null) {
+        this.pendingDiffData = null;
+      }
+      clearSessionData();
+      checkAndClearCacheData();
+      if ((paramBoolean) || (canDestroy())) {
+        this.sessionState.set(3);
+      }
+      while (!this.isWaitingForDestroy.compareAndSet(false, true)) {}
+    }
+    catch (Throwable localThrowable)
+    {
+      synchronized (this.sessionState)
+      {
+        this.sessionState.notify();
+        if ((this.server != null) && (!paramBoolean))
+        {
+          this.server.disconnect();
+          this.server = null;
+        }
+        notifyStateChange(i, 3, null);
+        this.mainHandler.removeMessages(3);
+        this.stateChangedCallbackList.clear();
+        this.isWaitingForDestroy.set(false);
+        SonicUtils.log("SonicSdk_SonicSession", 4, "session(" + this.sId + ") final destroy, force=" + paramBoolean + ".");
+        return;
+        localThrowable = localThrowable;
+        SonicUtils.log("SonicSdk_SonicSession", 6, "pendingWebResourceStream.close error:" + localThrowable.getMessage());
+      }
     }
     this.mainHandler.sendEmptyMessageDelayed(3, 6000L);
     SonicUtils.log("SonicSdk_SonicSession", 4, "session(" + this.sId + ") waiting for destroy, current state =" + i + ".");
@@ -467,18 +597,13 @@ public abstract class SonicSession
       str2 = paramSonicServer.getResponseHeaderField("eTag");
       String str5 = paramSonicServer.getResponseHeaderField("template-tag");
       paramSonicServer = paramSonicServer.getResponseHeaderFields();
-      Iterator localIterator = this.sessionCallbackList.iterator();
-      while (localIterator.hasNext())
-      {
-        SonicSessionCallback localSonicSessionCallback = (SonicSessionCallback)((WeakReference)localIterator.next()).get();
-        if (localSonicSessionCallback != null) {
-          localSonicSessionCallback.onSessionSaveCache(paramString, str3, str4);
-        }
-      }
       if (SonicUtils.saveSessionFiles(this.id, paramString, str3, str4, paramSonicServer))
       {
         long l2 = new File(SonicFileUtils.getSonicHtmlPath(this.id)).length();
         SonicUtils.saveSonicData(this.id, str2, str5, str1, l2, this.isRedPointPreload, paramSonicServer);
+        if (this.config.SUPPORT_SONIC_CHUNK_DATA) {
+          SonicChunkDataHelper.saveChunkData(this.id, str2, str4);
+        }
       }
     }
     for (;;)
@@ -505,19 +630,13 @@ public abstract class SonicSession
   
   public String getCharsetFromHeaders(Map<String, String> paramMap)
   {
-    String str2 = SonicUtils.DEFAULT_CHARSET;
-    String str3 = "Content-Type".toLowerCase();
-    String str1 = str2;
-    if (paramMap != null)
+    String str1 = SonicUtils.DEFAULT_CHARSET;
+    String str2 = "Content-Type".toLowerCase();
+    if ((paramMap != null) && (paramMap.containsKey(str2)))
     {
-      str1 = str2;
-      if (paramMap.containsKey(str3))
-      {
-        paramMap = (String)paramMap.get(str3);
-        str1 = str2;
-        if (!TextUtils.isEmpty(paramMap)) {
-          str1 = SonicUtils.getCharset(paramMap);
-        }
+      paramMap = (String)paramMap.get(str2);
+      if (!TextUtils.isEmpty(paramMap)) {
+        return SonicUtils.getCharset(paramMap);
       }
     }
     return str1;
@@ -564,86 +683,59 @@ public abstract class SonicSession
       if (SonicUtils.shouldLog(3)) {
         SonicUtils.log("SonicSdk_SonicSession", 3, "session(" + this.sId + ") won't send any request in " + (paramSessionData.expiredTime - this.statistics.connectionFlowStartTime) + ".ms");
       }
-      paramSessionData = this.sessionCallbackList.iterator();
-    }
-    int i;
-    long l1;
-    while (paramSessionData.hasNext())
-    {
-      localObject = (SonicSessionCallback)((WeakReference)paramSessionData.next()).get();
-      if (localObject != null)
-      {
-        ((SonicSessionCallback)localObject).onSessionHitCache();
-        continue;
-        this.server = new SonicServer(this, createConnectionIntent(paramSessionData));
-        int j = this.server.connect();
-        i = j;
-        if (j == 0)
-        {
-          j = this.server.getResponseCode();
-          l1 = System.currentTimeMillis();
-          paramSessionData = this.server.getResponseHeaderFields();
-          if (SonicUtils.shouldLog(3)) {
-            SonicUtils.log("SonicSdk_SonicSession", 3, "session(" + this.sId + ") connection get header fields cost = " + (System.currentTimeMillis() - l1) + " ms.");
-          }
-          l1 = System.currentTimeMillis();
-          setCookiesFromHeaders(paramSessionData, shouldSetCookieAsynchronous());
-          i = j;
-          if (SonicUtils.shouldLog(3))
-          {
-            SonicUtils.log("SonicSdk_SonicSession", 3, "session(" + this.sId + ") connection set cookies cost = " + (System.currentTimeMillis() - l1) + " ms.");
-            i = j;
-          }
-        }
-        SonicUtils.log("SonicSdk_SonicSession", 4, "session(" + this.sId + ") handleFlow_Connection: respCode = " + i + ", cost " + (System.currentTimeMillis() - this.statistics.connectionFlowStartTime) + " ms.");
-        if (!isDestroyedOrWaitingForDestroy()) {
-          break label447;
-        }
-        SonicUtils.log("SonicSdk_SonicSession", 6, "session(" + this.sId + ") handleFlow_Connection error: destroy before server response!");
-      }
-    }
-    for (;;)
-    {
       return;
-      label447:
-      paramSessionData = this.server.getResponseHeaderField("sonic-link");
-      if (!TextUtils.isEmpty(paramSessionData))
+    }
+    this.server = new SonicServer(this, createConnectionIntent(paramSessionData));
+    int j = this.server.connect();
+    int i = j;
+    long l1;
+    if (j == 0)
+    {
+      j = this.server.getResponseCode();
+      l1 = System.currentTimeMillis();
+      paramSessionData = this.server.getResponseHeaderFields();
+      if (SonicUtils.shouldLog(3)) {
+        SonicUtils.log("SonicSdk_SonicSession", 3, "session(" + this.sId + ") connection get header fields cost = " + (System.currentTimeMillis() - l1) + " ms.");
+      }
+      l1 = System.currentTimeMillis();
+      setCookiesFromHeaders(paramSessionData, shouldSetCookieAsynchronous());
+      i = j;
+      if (SonicUtils.shouldLog(3))
       {
-        this.preloadLinks = Arrays.asList(paramSessionData.split(";"));
-        handleFlow_PreloadSubResource();
+        SonicUtils.log("SonicSdk_SonicSession", 3, "session(" + this.sId + ") connection set cookies cost = " + (System.currentTimeMillis() - l1) + " ms.");
+        i = j;
       }
-      if (304 == i)
-      {
-        SonicUtils.log("SonicSdk_SonicSession", 4, "session(" + this.sId + ") handleFlow_Connection: Server response is not modified.");
-        handleFlow_NotModified();
-        return;
-      }
-      if (200 != i)
-      {
-        handleFlow_HttpError(i);
-        SonicEngine.getInstance().getRuntime().notifyError(this.sessionClient, this.srcUrl, i);
-        SonicUtils.log("SonicSdk_SonicSession", 6, "session(" + this.sId + ") handleFlow_Connection error: response code(" + i + ") is not OK!");
-        return;
-      }
-      paramSessionData = this.server.getResponseHeaderField("cache-offline");
-      SonicUtils.log("SonicSdk_SonicSession", 4, "session(" + this.sId + ") handleFlow_Connection: cacheOffline is " + paramSessionData + ".");
-      if (!"http".equalsIgnoreCase(paramSessionData)) {
-        break;
-      }
+    }
+    SonicUtils.log("SonicSdk_SonicSession", 4, "session(" + this.sId + ") handleFlow_Connection: respCode = " + i + ", cost " + (System.currentTimeMillis() - this.statistics.connectionFlowStartTime) + " ms.");
+    if (isDestroyedOrWaitingForDestroy())
+    {
+      SonicUtils.log("SonicSdk_SonicSession", 6, "session(" + this.sId + ") handleFlow_Connection error: destroy before server response!");
+      return;
+    }
+    if (304 == i)
+    {
+      SonicUtils.log("SonicSdk_SonicSession", 4, "session(" + this.sId + ") handleFlow_Connection: Server response is not modified.");
+      handleFlow_NotModified();
+      return;
+    }
+    if (200 != i)
+    {
+      handleFlow_HttpError(i);
+      SonicEngine.getInstance().getRuntime().notifyError(this.sessionClient, this.srcUrl, i);
+      SonicUtils.log("SonicSdk_SonicSession", 6, "session(" + this.sId + ") handleFlow_Connection error: response code(" + i + ") is not OK!");
+      return;
+    }
+    paramSessionData = this.server.getResponseHeaderField("cache-offline");
+    SonicUtils.log("SonicSdk_SonicSession", 4, "session(" + this.sId + ") handleFlow_Connection: cacheOffline is " + paramSessionData + ".");
+    if ("http".equalsIgnoreCase(paramSessionData))
+    {
       if (paramBoolean) {
         handleFlow_ServiceUnavailable();
       }
       l1 = System.currentTimeMillis();
       long l2 = SonicEngine.getInstance().getConfig().SONIC_UNAVAILABLE_TIME;
       SonicDataHelper.setSonicUnavailableTime(this.id, l1 + l2);
-      paramSessionData = this.sessionCallbackList.iterator();
-      while (paramSessionData.hasNext())
-      {
-        localObject = (SonicSessionCallback)((WeakReference)paramSessionData.next()).get();
-        if (localObject != null) {
-          ((SonicSessionCallback)localObject).onSessionUnAvailable();
-        }
-      }
+      return;
     }
     if (!paramBoolean)
     {
@@ -657,14 +749,14 @@ public abstract class SonicSession
       return;
     }
     paramSessionData = this.server.getResponseHeaderField("eTag");
-    Object localObject = this.server.getResponseHeaderField("template-change");
-    if ((TextUtils.isEmpty(paramSessionData)) || (TextUtils.isEmpty((CharSequence)localObject)))
+    String str = this.server.getResponseHeaderField("template-change");
+    if ((TextUtils.isEmpty(paramSessionData)) || (TextUtils.isEmpty(str)))
     {
-      SonicUtils.log("SonicSdk_SonicSession", 6, "session(" + this.sId + ") handleFlow_Connection error: eTag is ( " + paramSessionData + " ) , templateChange is ( " + (String)localObject + " )!");
+      SonicUtils.log("SonicSdk_SonicSession", 6, "session(" + this.sId + ") handleFlow_Connection error: eTag is ( " + paramSessionData + " ) , templateChange is ( " + str + " )!");
       SonicUtils.removeSessionCache(this.id);
       return;
     }
-    if (("false".equals(localObject)) || ("0".equals(localObject)))
+    if (("false".equals(str)) || ("0".equals(str)))
     {
       handleFlow_DataUpdate(this.server.getUpdatedData());
       return;
@@ -672,33 +764,252 @@ public abstract class SonicSession
     handleFlow_TemplateChange(this.server.getResponseData(this.clientIsReload.get()));
   }
   
-  protected abstract void handleFlow_DataUpdate(String paramString);
-  
-  protected abstract void handleFlow_FirstLoad();
-  
-  protected abstract void handleFlow_HttpError(int paramInt);
-  
-  protected abstract void handleFlow_LoadLocalCache(String paramString);
-  
-  protected void handleFlow_NotModified()
+  protected void handleFlow_DataUpdate(String paramString)
   {
-    Object localObject = this.mainHandler.obtainMessage(1);
-    ((Message)localObject).arg1 = 304;
-    ((Message)localObject).arg2 = 304;
-    this.mainHandler.sendMessage((Message)localObject);
-    localObject = this.sessionCallbackList.iterator();
-    while (((Iterator)localObject).hasNext())
+    SonicUtils.log("SonicSdk_SonicSession", 4, "session(" + this.sId + ") handleFlow_DataUpdate: start.");
+    String str1 = null;
+    String str2;
+    String str3;
+    Object localObject;
+    JSONObject localJSONObject1;
+    String str5;
+    for (;;)
     {
-      SonicSessionCallback localSonicSessionCallback = (SonicSessionCallback)((WeakReference)((Iterator)localObject).next()).get();
-      if (localSonicSessionCallback != null) {
-        localSonicSessionCallback.onSessionHitCache();
+      try
+      {
+        if (TextUtils.isEmpty(paramString))
+        {
+          paramString = this.server.getResponseData(true);
+          if (TextUtils.isEmpty(paramString)) {
+            SonicUtils.log("SonicSdk_SonicSession", 6, "handleFlow_DataUpdate:getResponseData error.");
+          }
+        }
+        else
+        {
+          str1 = this.server.getResponseData(false);
+          continue;
+        }
+        str2 = this.server.getResponseHeaderField("eTag");
+        str3 = this.server.getResponseHeaderField("template-tag");
+        String str4 = this.server.getResponseHeaderField("cache-offline");
+        l1 = System.currentTimeMillis();
+        localObject = new JSONObject(paramString);
+        localJSONObject1 = ((JSONObject)localObject).optJSONObject("data");
+        str5 = ((JSONObject)localObject).optString("html-sha1");
+        JSONObject localJSONObject2 = SonicUtils.getDiffData(this.id, localJSONObject1);
+        localObject = new Bundle();
+        if (localJSONObject2 != null)
+        {
+          ((Bundle)localObject).putString("_diff_data_", localJSONObject2.toString());
+          if (SonicUtils.shouldLog(3)) {
+            SonicUtils.log("SonicSdk_SonicSession", 3, "handleFlow_DataUpdate:getDiffData cost " + (System.currentTimeMillis() - l1) + " ms.");
+          }
+          int i = 0;
+          if (this.wasLoadDataInvoked.get())
+          {
+            if (SonicUtils.shouldLog(4)) {
+              SonicUtils.log("SonicSdk_SonicSession", 4, "handleFlow_DataUpdate:loadData was invoked, quick notify web data update.");
+            }
+            Message localMessage = this.mainHandler.obtainMessage(7);
+            if (!"store".equals(str4)) {
+              localMessage.setData((Bundle)localObject);
+            }
+            this.mainHandler.sendMessage(localMessage);
+            i = 1;
+          }
+          l1 = System.currentTimeMillis();
+          localObject = str1;
+          if (TextUtils.isEmpty(str1)) {
+            localObject = SonicUtils.buildHtml(this.id, localJSONObject1, str5, paramString.length(), this.config.SUPPORT_SONIC_CHUNK_DATA);
+          }
+          if (SonicUtils.shouldLog(3)) {
+            SonicUtils.log("SonicSdk_SonicSession", 3, "handleFlow_DataUpdate:buildHtml cost " + (System.currentTimeMillis() - l1) + " ms.");
+          }
+          if (TextUtils.isEmpty((CharSequence)localObject)) {
+            SonicEngine.getInstance().getRuntime().notifyError(this.sessionClient, this.srcUrl, -1008);
+          }
+          if (i == 0)
+          {
+            this.mainHandler.removeMessages(5);
+            paramString = this.mainHandler.obtainMessage(7);
+            paramString.obj = localObject;
+            this.mainHandler.sendMessage(paramString);
+          }
+          if ((localJSONObject2 != null) && (localObject != null) && (SonicUtils.needSaveData(this.config.SUPPORT_CACHE_CONTROL, str4, this.server.getResponseHeaderFields()))) {
+            break;
+          }
+          SonicUtils.log("SonicSdk_SonicSession", 4, "session(" + this.sId + ") handleFlow_DataUpdate: clean session cache.");
+          SonicUtils.removeSessionCache(this.id);
+          return;
+        }
       }
+      catch (Throwable paramString)
+      {
+        SonicUtils.log("SonicSdk_SonicSession", 6, "session(" + this.sId + ") handleFlow_DataUpdate error:" + paramString.getMessage());
+        return;
+      }
+      SonicUtils.log("SonicSdk_SonicSession", 6, "handleFlow_DataUpdate:getDiffData error.");
+      SonicEngine.getInstance().getRuntime().notifyError(this.sessionClient, this.srcUrl, -1006);
+    }
+    switchState(1, 2, true);
+    Thread.yield();
+    long l1 = System.currentTimeMillis();
+    paramString = this.server.getResponseHeaderFields();
+    if (SonicUtils.saveSessionFiles(this.id, (String)localObject, null, localJSONObject1.toString(), paramString))
+    {
+      long l2 = new File(SonicFileUtils.getSonicHtmlPath(this.id)).length();
+      SonicUtils.saveSonicData(this.id, str2, str3, str5, l2, false, paramString);
+      if (this.config.SUPPORT_SONIC_CHUNK_DATA) {
+        SonicChunkDataHelper.saveChunkData(this.id, str2, localJSONObject1.toString());
+      }
+      SonicUtils.log("SonicSdk_SonicSession", 4, "session(" + this.sId + ") handleFlow_DataUpdate: finish save session cache, cost " + (System.currentTimeMillis() - l1) + " ms.");
+      return;
+    }
+    SonicUtils.log("SonicSdk_SonicSession", 6, "session(" + this.sId + ") handleFlow_DataUpdate: save session files fail.");
+    SonicEngine.getInstance().getRuntime().notifyError(this.sessionClient, this.srcUrl, -1004);
+  }
+  
+  protected void handleFlow_FirstLoad()
+  {
+    boolean bool = false;
+    this.pendingWebResourceStream = this.server.getResponseStream(this.wasInterceptInvoked);
+    if (this.pendingWebResourceStream == null)
+    {
+      SonicUtils.log("SonicSdk_SonicSession", 6, "session(" + this.sId + ") handleFlow_FirstLoad error:server.getResponseStream is null!");
+      return;
+    }
+    String str = this.server.getResponseData(false);
+    if (!TextUtils.isEmpty(str)) {
+      bool = true;
+    }
+    SonicUtils.log("SonicSdk_SonicSession", 4, "session(" + this.sId + ") handleFlow_FirstLoad:hasCompletionData=" + bool + ".");
+    this.mainHandler.removeMessages(5);
+    Object localObject = this.mainHandler.obtainMessage(6);
+    ((Message)localObject).obj = str;
+    if (bool) {}
+    for (int i = 2;; i = 1)
+    {
+      ((Message)localObject).arg1 = i;
+      this.mainHandler.sendMessage((Message)localObject);
+      localObject = this.server.getResponseHeaderField("cache-offline");
+      if (!SonicUtils.needSaveData(this.config.SUPPORT_CACHE_CONTROL, (String)localObject, this.server.getResponseHeaderFields())) {
+        break label248;
+      }
+      if ((!bool) || (this.wasLoadUrlInvoked.get()) || (this.wasInterceptInvoked.get())) {
+        break;
+      }
+      switchState(1, 2, true);
+      postTaskToSaveSonicCache(str);
+      return;
+    }
+    label248:
+    SonicUtils.log("SonicSdk_SonicSession", 4, "session(" + this.sId + ") handleFlow_FirstLoad:offline->" + (String)localObject + " , so do not need cache to file.");
+  }
+  
+  protected void handleFlow_HttpError(int paramInt)
+  {
+    if (this.config.RELOAD_IN_BAD_NETWORK)
+    {
+      this.mainHandler.removeMessages(5);
+      Message localMessage = this.mainHandler.obtainMessage(9);
+      localMessage.arg1 = paramInt;
+      this.mainHandler.sendMessage(localMessage);
     }
   }
   
-  protected abstract void handleFlow_ServiceUnavailable();
+  protected void handleFlow_LoadLocalCache(String paramString)
+  {
+    Message localMessage = this.mainHandler.obtainMessage(5);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      localMessage.arg1 = 2;
+      localMessage.obj = paramString;
+    }
+    for (;;)
+    {
+      this.mainHandler.sendMessage(localMessage);
+      return;
+      SonicUtils.log("SonicSdk_SonicSession", 4, "session(" + this.sId + ") runSonicFlow has no cache, do first load flow.");
+      localMessage.arg1 = 1;
+    }
+  }
   
-  protected abstract void handleFlow_TemplateChange(String paramString);
+  protected void handleFlow_NotModified()
+  {
+    Message localMessage = this.mainHandler.obtainMessage(1);
+    localMessage.arg1 = 304;
+    localMessage.arg2 = 304;
+    this.mainHandler.sendMessage(localMessage);
+  }
+  
+  protected void handleFlow_ServiceUnavailable()
+  {
+    this.mainHandler.removeMessages(5);
+    Message localMessage = this.mainHandler.obtainMessage(10);
+    this.mainHandler.sendMessage(localMessage);
+  }
+  
+  protected void handleFlow_TemplateChange(String paramString)
+  {
+    for (;;)
+    {
+      try
+      {
+        SonicUtils.log("SonicSdk_SonicSession", 4, "handleFlow_TemplateChange.");
+        long l = System.currentTimeMillis();
+        String str = paramString;
+        if (TextUtils.isEmpty(paramString))
+        {
+          this.pendingWebResourceStream = this.server.getResponseStream(this.wasOnPageFinishInvoked);
+          if (this.pendingWebResourceStream == null)
+          {
+            SonicUtils.log("SonicSdk_SonicSession", 6, "session(" + this.sId + ") handleFlow_TemplateChange error:server.getResponseStream = null!");
+            return;
+          }
+          str = this.server.getResponseData(this.clientIsReload.get());
+        }
+        paramString = this.server.getResponseHeaderField("cache-offline");
+        if (!this.clientIsReload.get())
+        {
+          this.mainHandler.removeMessages(5);
+          localMessage = this.mainHandler.obtainMessage(8);
+          localMessage.obj = str;
+          if (!"store".equals(paramString)) {
+            localMessage.arg1 = 1;
+          }
+          this.mainHandler.sendMessage(localMessage);
+          if (SonicUtils.shouldLog(3)) {
+            SonicUtils.log("SonicSdk_SonicSession", 3, "session(" + this.sId + ") read byte stream cost " + (System.currentTimeMillis() - l) + " ms, wasInterceptInvoked: " + this.wasInterceptInvoked.get());
+          }
+          if (!SonicUtils.needSaveData(this.config.SUPPORT_CACHE_CONTROL, paramString, this.server.getResponseHeaderFields())) {
+            break;
+          }
+          switchState(1, 2, true);
+          if (TextUtils.isEmpty(str)) {
+            return;
+          }
+          postTaskToSaveSonicCache(str);
+          return;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        SonicUtils.log("SonicSdk_SonicSession", 3, "session(" + this.sId + ") handleFlow_TemplateChange error:" + paramString.getMessage());
+        return;
+      }
+      Message localMessage = this.mainHandler.obtainMessage(1);
+      localMessage.arg1 = 2000;
+      localMessage.arg2 = 2000;
+      this.mainHandler.sendMessage(localMessage);
+    }
+    if ("false".equals(paramString))
+    {
+      SonicUtils.removeSessionCache(this.id);
+      SonicUtils.log("SonicSdk_SonicSession", 4, "handleClientCoreMessage_TemplateChange:offline mode is 'false', so clean cache.");
+      return;
+    }
+    SonicUtils.log("SonicSdk_SonicSession", 4, "session(" + this.sId + ") handleFlow_TemplateChange:offline->" + paramString + " , so do not need cache to file.");
+  }
   
   public boolean handleMessage(Message paramMessage)
   {
@@ -716,7 +1027,42 @@ public abstract class SonicSession
     if (SonicUtils.shouldLog(3)) {
       SonicUtils.log("SonicSdk_SonicSession", 3, "session(" + this.sId + ") handleMessage: msg what = " + paramMessage.what + ".");
     }
-    return false;
+    if ((4 < paramMessage.what) && (paramMessage.what < 11) && (!this.clientIsReady.get()))
+    {
+      this.pendingClientCoreMessage = Message.obtain(paramMessage);
+      SonicUtils.log("SonicSdk_SonicSession", 4, "session(" + this.sId + ") handleMessage: client not ready, core msg = " + paramMessage.what + ".");
+      return true;
+    }
+    switch (paramMessage.what)
+    {
+    case 3: 
+    case 4: 
+    default: 
+      if (SonicUtils.shouldLog(3)) {
+        SonicUtils.log("SonicSdk_SonicSession", 3, "session(" + this.sId + ") can not  recognize refresh type: " + paramMessage.what);
+      }
+      return false;
+    case 5: 
+      handleClientCoreMessage_PreLoad(paramMessage);
+    }
+    for (;;)
+    {
+      return true;
+      handleClientCoreMessage_FirstLoad(paramMessage);
+      continue;
+      handleClientCoreMessage_ConnectionError(paramMessage);
+      continue;
+      handleClientCoreMessage_ServiceUnavailable(paramMessage);
+      continue;
+      handleClientCoreMessage_DataUpdate(paramMessage);
+      continue;
+      handleClientCoreMessage_TemplateChange(paramMessage);
+      continue;
+      setResult(paramMessage.arg1, paramMessage.arg2, true);
+      continue;
+      this.diffDataCallback = ((SonicDiffDataCallback)paramMessage.obj);
+      setResult(this.srcResultCode, this.finalResultCode, true);
+    }
   }
   
   public boolean isDestroyedOrWaitingForDestroy()
@@ -763,7 +1109,7 @@ public abstract class SonicSession
     Iterator localIterator = this.stateChangedCallbackList.iterator();
     while (localIterator.hasNext())
     {
-      Callback localCallback = (Callback)((WeakReference)localIterator.next()).get();
+      SonicSession.Callback localCallback = (SonicSession.Callback)((WeakReference)localIterator.next()).get();
       if (localCallback != null) {
         localCallback.onSessionStateChange(this, paramInt1, paramInt2, paramBundle);
       }
@@ -783,42 +1129,109 @@ public abstract class SonicSession
   
   public boolean onClientReady()
   {
+    boolean bool = false;
+    if (this.clientIsReady.compareAndSet(false, true))
+    {
+      Object localObject = new StringBuilder().append("session(").append(this.sId).append(") onClientReady: have pending client core message ? -> ");
+      if (this.pendingClientCoreMessage != null) {
+        bool = true;
+      }
+      SonicUtils.log("SonicSdk_SonicSession", 4, bool + ".");
+      if (this.pendingClientCoreMessage != null)
+      {
+        localObject = this.pendingClientCoreMessage;
+        this.pendingClientCoreMessage = null;
+        handleMessage((Message)localObject);
+      }
+      while (this.sessionState.get() != 0) {
+        return true;
+      }
+      start();
+      return true;
+    }
     return false;
   }
   
   public final Object onClientRequestResource(String paramString)
   {
-    String str = Thread.currentThread().getName();
-    if ("Chrome_FileThread".equals(str))
+    if ("Chrome_FileThread".equals(Thread.currentThread().getName()))
     {
       this.resourceInterceptState.set(1);
       if (!isMatchCurrentUrl(paramString)) {
-        break label98;
+        break label57;
       }
-      paramString = onRequestResource(paramString);
     }
-    for (;;)
+    label57:
+    for (paramString = onRequestResource(paramString);; paramString = null)
     {
       this.resourceInterceptState.set(0);
       return paramString;
       this.resourceInterceptState.set(2);
-      if (!SonicUtils.shouldLog(3)) {
-        break;
-      }
-      SonicUtils.log("SonicSdk_SonicSession", 3, "onClientRequestResource called in " + str + ".");
       break;
-      label98:
-      if (this.resourceDownloaderEngine != null) {
-        paramString = this.resourceDownloaderEngine.onRequestSubResource(paramString, this);
-      } else {
-        paramString = null;
-      }
     }
   }
   
-  protected Object onRequestResource(String paramString)
+  protected Object onRequestResource(String arg1)
   {
-    return null;
+    boolean bool = true;
+    if ((this.wasInterceptInvoked.get()) || (!isMatchCurrentUrl(???))) {
+      return null;
+    }
+    if (!this.wasInterceptInvoked.compareAndSet(false, true))
+    {
+      SonicUtils.log("SonicSdk_SonicSession", 6, "session(" + this.sId + ")  onClientRequestResource error:Intercept was already invoked, url = " + ???);
+      return null;
+    }
+    if (SonicUtils.shouldLog(3)) {
+      SonicUtils.log("SonicSdk_SonicSession", 3, "session(" + this.sId + ")  onClientRequestResource:url = " + ???);
+    }
+    long l = System.currentTimeMillis();
+    if (this.sessionState.get() == 1) {}
+    for (;;)
+    {
+      synchronized (this.sessionState)
+      {
+        try
+        {
+          if (this.sessionState.get() == 1)
+          {
+            SonicUtils.log("SonicSdk_SonicSession", 4, "session(" + this.sId + ") now wait for pendingWebResourceStream!");
+            this.sessionState.wait(30000L);
+          }
+          ??? = new StringBuilder().append("session(").append(this.sId).append(") have pending stream? -> ");
+          if (this.pendingWebResourceStream == null) {
+            break label430;
+          }
+          SonicUtils.log("SonicSdk_SonicSession", 4, bool + ", cost " + (System.currentTimeMillis() - l) + "ms.");
+          if (this.pendingWebResourceStream == null) {
+            break;
+          }
+          if (isDestroyedOrWaitingForDestroy()) {
+            break label435;
+          }
+          ??? = SonicUtils.getMime(this.srcUrl);
+          ??? = SonicEngine.getInstance().getRuntime().createWebResourceResponse(???, getCharsetFromHeaders(), this.pendingWebResourceStream, getHeaders());
+          this.pendingWebResourceStream = null;
+          return ???;
+        }
+        catch (Throwable localThrowable)
+        {
+          SonicUtils.log("SonicSdk_SonicSession", 6, "session(" + this.sId + ") wait for pendingWebResourceStream failed" + localThrowable.getMessage());
+          continue;
+        }
+      }
+      if (SonicUtils.shouldLog(3))
+      {
+        SonicUtils.log("SonicSdk_SonicSession", 3, "session(" + this.sId + ") is not in running state: " + this.sessionState);
+        continue;
+        label430:
+        bool = false;
+        continue;
+        label435:
+        SonicUtils.log("SonicSdk_SonicSession", 6, "session(" + this.sId + ") onClientRequestResource error: session is destroyed!");
+        ??? = null;
+      }
+    }
   }
   
   public void onServerClosed(SonicServer paramSonicServer, boolean paramBoolean)
@@ -862,7 +1275,22 @@ public abstract class SonicSession
   
   public boolean onWebReady(SonicDiffDataCallback paramSonicDiffDataCallback)
   {
-    return false;
+    Object localObject = new StringBuilder().append("session(").append(this.sId).append(") onWebReady: webCallback has set ? ->");
+    if (this.diffDataCallback != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      SonicUtils.log("SonicSdk_SonicSession", 4, bool);
+      if (this.diffDataCallback != null)
+      {
+        this.diffDataCallback = null;
+        SonicUtils.log("SonicSdk_SonicSession", 5, "session(" + this.sId + ") onWebReady: call more than once.");
+      }
+      localObject = Message.obtain();
+      ((Message)localObject).what = 2;
+      ((Message)localObject).obj = paramSonicDiffDataCallback;
+      this.mainHandler.sendMessage((Message)localObject);
+      return true;
+    }
   }
   
   protected boolean postForceDestroyIfNeed()
@@ -896,51 +1324,18 @@ public abstract class SonicSession
     this.srcResultCode = -1;
     SonicUtils.log("SonicSdk_SonicSession", 4, "session(" + this.sId + ") now refresh sonic flow task.");
     this.statistics.sonicStartTime = System.currentTimeMillis();
-    Iterator localIterator = this.sessionCallbackList.iterator();
-    while (localIterator.hasNext())
-    {
-      SonicSessionCallback localSonicSessionCallback = (SonicSessionCallback)((WeakReference)localIterator.next()).get();
-      if (localSonicSessionCallback != null) {
-        localSonicSessionCallback.onSonicSessionRefresh();
-      }
-    }
     this.isWaitingForSessionThread.set(true);
-    SonicEngine.getInstance().getRuntime().postTaskToSessionThread(new Runnable()
-    {
-      public void run()
-      {
-        SonicSession.this.runSonicFlow(false);
-      }
-    });
+    SonicEngine.getInstance().getRuntime().postTaskToSessionThread(new SonicSession.4(this));
     notifyStateChange(2, 1, null);
     return true;
   }
   
-  public boolean removeSessionCallback(SonicSessionCallback paramSonicSessionCallback)
-  {
-    Object localObject2 = null;
-    Iterator localIterator = this.sessionCallbackList.iterator();
-    Object localObject1;
-    do
-    {
-      localObject1 = localObject2;
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      localObject1 = (WeakReference)localIterator.next();
-    } while ((localObject1 == null) || (((WeakReference)localObject1).get() != paramSonicSessionCallback));
-    if (localObject1 != null) {
-      return this.sessionCallbackList.remove(localObject1);
-    }
-    return false;
-  }
-  
-  protected boolean removeSessionStateChangedCallback(Callback paramCallback)
+  protected boolean removeSessionStateChangedCallback(SonicSession.Callback paramCallback)
   {
     return this.stateChangedCallbackList.remove(new WeakReference(paramCallback));
   }
   
-  protected boolean setCookiesFromHeaders(final Map<String, List<String>> paramMap, boolean paramBoolean)
+  protected boolean setCookiesFromHeaders(Map<String, List<String>> paramMap, boolean paramBoolean)
   {
     if (paramMap != null)
     {
@@ -951,13 +1346,7 @@ public abstract class SonicSession
           return SonicEngine.getInstance().getRuntime().setCookie(getCurrentUrl(), paramMap);
         }
         SonicUtils.log("SonicSdk_SonicSession", 4, "setCookiesFromHeaders asynchronous in new thread.");
-        SonicEngine.getInstance().getRuntime().postTaskToThread(new Runnable()
-        {
-          public void run()
-          {
-            SonicEngine.getInstance().getRuntime().setCookie(SonicSession.this.getCurrentUrl(), paramMap);
-          }
-        }, 0L);
+        SonicEngine.getInstance().getRuntime().postTaskToThread(new SonicSession.6(this, paramMap), 0L);
         return true;
       }
     }
@@ -1002,7 +1391,7 @@ public abstract class SonicSession
       return;
     }
     this.wasNotified.compareAndSet(false, true);
-    final JSONObject localJSONObject = new JSONObject();
+    JSONObject localJSONObject = new JSONObject();
     try
     {
       if (this.finalResultCode == 200)
@@ -1042,17 +1431,7 @@ public abstract class SonicSession
       }
       if (l1 > 0L)
       {
-        SonicEngine.getInstance().getRuntime().postTaskToMainThread(new Runnable()
-        {
-          public void run()
-          {
-            if (SonicSession.this.diffDataCallback != null)
-            {
-              SonicSession.this.diffDataCallback.callback(localJSONObject.toString());
-              SonicSession.this.statistics.diffDataCallbackTime = System.currentTimeMillis();
-            }
-          }
-        }, 2000L - l1);
+        SonicEngine.getInstance().getRuntime().postTaskToMainThread(new SonicSession.5(this, localJSONObject), 2000L - l1);
         return;
         l1 = System.currentTimeMillis() - ((JSONObject)localObject2).optLong("local_refresh_time", 0L);
         if (l1 > 30000L)
@@ -1110,23 +1489,9 @@ public abstract class SonicSession
       return;
     }
     SonicUtils.log("SonicSdk_SonicSession", 4, "session(" + this.sId + ") now post sonic flow task.");
-    Iterator localIterator = this.sessionCallbackList.iterator();
-    while (localIterator.hasNext())
-    {
-      SonicSessionCallback localSonicSessionCallback = (SonicSessionCallback)((WeakReference)localIterator.next()).get();
-      if (localSonicSessionCallback != null) {
-        localSonicSessionCallback.onSonicSessionStart();
-      }
-    }
     this.statistics.sonicStartTime = System.currentTimeMillis();
     this.isWaitingForSessionThread.set(true);
-    SonicEngine.getInstance().getRuntime().postTaskToSessionThread(new Runnable()
-    {
-      public void run()
-      {
-        SonicSession.this.runSonicFlow(true);
-      }
-    });
+    SonicEngine.getInstance().getRuntime().postTaskToSessionThread(new SonicSession.2(this));
     notifyStateChange(0, 1, null);
   }
   
@@ -1144,15 +1509,10 @@ public abstract class SonicSession
     }
     return false;
   }
-  
-  public static abstract interface Callback
-  {
-    public abstract void onSessionStateChange(SonicSession paramSonicSession, int paramInt1, int paramInt2, Bundle paramBundle);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.sonic.sdk.SonicSession
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,18 @@
 package com.tencent.component.media.image;
 
 import com.tencent.component.media.utils.ImageManagerLog;
-import phh;
 
 public class CancelStreamDecodeGifTask
   extends StreamDecodeGifTask
 {
-  private static int jdField_a_of_type_Int;
-  private static CancelStreamDecodeGifTask jdField_a_of_type_ComTencentComponentMediaImageCancelStreamDecodeGifTask = null;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private CancelStreamDecodeGifTask b = null;
+  private static int mObjectPoolSize;
+  private static CancelStreamDecodeGifTask sPool = null;
+  private static final Object sPoolSync = new Object();
+  private CancelStreamDecodeGifTask next = null;
   
   static
   {
-    jdField_a_of_type_Int = 0;
+    mObjectPoolSize = 0;
     clearAndInitSize();
   }
   
@@ -22,23 +21,23 @@ public class CancelStreamDecodeGifTask
     super(paramImageKey);
   }
   
-  private CancelStreamDecodeGifTask(phh paramphh)
+  private CancelStreamDecodeGifTask(ImageTask paramImageTask)
   {
-    super(paramphh);
+    super(paramImageTask);
   }
   
   public static void clearAndInitSize()
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (sPoolSync)
     {
-      jdField_a_of_type_ComTencentComponentMediaImageCancelStreamDecodeGifTask = null;
+      sPool = null;
       int i = 0;
       while (i < mInitAllocatedSize)
       {
         CancelStreamDecodeGifTask localCancelStreamDecodeGifTask = new CancelStreamDecodeGifTask(null);
-        localCancelStreamDecodeGifTask.b = jdField_a_of_type_ComTencentComponentMediaImageCancelStreamDecodeGifTask;
-        jdField_a_of_type_ComTencentComponentMediaImageCancelStreamDecodeGifTask = localCancelStreamDecodeGifTask;
-        jdField_a_of_type_Int += 1;
+        localCancelStreamDecodeGifTask.next = sPool;
+        sPool = localCancelStreamDecodeGifTask;
+        mObjectPoolSize += 1;
         i += 1;
       }
       return;
@@ -48,14 +47,14 @@ public class CancelStreamDecodeGifTask
   public static CancelStreamDecodeGifTask obtain(ImageKey paramImageKey)
   {
     if (needRecycle) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (sPoolSync)
     {
-      if (jdField_a_of_type_ComTencentComponentMediaImageCancelStreamDecodeGifTask != null)
+      if (sPool != null)
       {
-        CancelStreamDecodeGifTask localCancelStreamDecodeGifTask = jdField_a_of_type_ComTencentComponentMediaImageCancelStreamDecodeGifTask;
-        jdField_a_of_type_ComTencentComponentMediaImageCancelStreamDecodeGifTask = jdField_a_of_type_ComTencentComponentMediaImageCancelStreamDecodeGifTask.b;
-        localCancelStreamDecodeGifTask.b = null;
-        jdField_a_of_type_Int -= 1;
+        CancelStreamDecodeGifTask localCancelStreamDecodeGifTask = sPool;
+        sPool = sPool.next;
+        localCancelStreamDecodeGifTask.next = null;
+        mObjectPoolSize -= 1;
         localCancelStreamDecodeGifTask.setImageKey(paramImageKey);
         return localCancelStreamDecodeGifTask;
       }
@@ -63,21 +62,21 @@ public class CancelStreamDecodeGifTask
     }
   }
   
-  public static CancelStreamDecodeGifTask obtain(phh paramphh)
+  public static CancelStreamDecodeGifTask obtain(ImageTask paramImageTask)
   {
     if (needRecycle) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (sPoolSync)
     {
-      if (jdField_a_of_type_ComTencentComponentMediaImageCancelStreamDecodeGifTask != null)
+      if (sPool != null)
       {
-        CancelStreamDecodeGifTask localCancelStreamDecodeGifTask = jdField_a_of_type_ComTencentComponentMediaImageCancelStreamDecodeGifTask;
-        jdField_a_of_type_ComTencentComponentMediaImageCancelStreamDecodeGifTask = jdField_a_of_type_ComTencentComponentMediaImageCancelStreamDecodeGifTask.b;
-        localCancelStreamDecodeGifTask.b = null;
-        jdField_a_of_type_Int -= 1;
-        localCancelStreamDecodeGifTask.setImageTask(paramphh);
+        CancelStreamDecodeGifTask localCancelStreamDecodeGifTask = sPool;
+        sPool = sPool.next;
+        localCancelStreamDecodeGifTask.next = null;
+        mObjectPoolSize -= 1;
+        localCancelStreamDecodeGifTask.setImageTask(paramImageTask);
         return localCancelStreamDecodeGifTask;
       }
-      return new CancelStreamDecodeGifTask(paramphh);
+      return new CancelStreamDecodeGifTask(paramImageTask);
     }
   }
   
@@ -116,13 +115,13 @@ public class CancelStreamDecodeGifTask
       return;
     }
     reset();
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (sPoolSync)
     {
-      if (jdField_a_of_type_Int < 50)
+      if (mObjectPoolSize < 50)
       {
-        this.b = jdField_a_of_type_ComTencentComponentMediaImageCancelStreamDecodeGifTask;
-        jdField_a_of_type_ComTencentComponentMediaImageCancelStreamDecodeGifTask = this;
-        jdField_a_of_type_Int += 1;
+        this.next = sPool;
+        sPool = this;
+        mObjectPoolSize += 1;
       }
       return;
     }
@@ -140,7 +139,7 @@ public class CancelStreamDecodeGifTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.image.CancelStreamDecodeGifTask
  * JD-Core Version:    0.7.0.1
  */

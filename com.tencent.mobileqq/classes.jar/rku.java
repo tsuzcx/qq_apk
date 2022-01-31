@@ -1,56 +1,35 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView.Callback;
-import com.tencent.mobileqq.utils.QQCustomArkDialog.AppInfo;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 import com.tencent.qphone.base.util.QLog;
 
-public class rku
-  implements ArkAppView.Callback
+class rku
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public rku(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
+  rku(rkp paramrkp) {}
   
-  public void a()
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    int i = 0;
+    int i = paramSeekBar.getProgress();
+    int j = rkp.a(this.a).a();
     if (QLog.isColorLevel()) {
-      QLog.i("ArkFullScreenAppActivity", 2, "arkview loadSucc: " + ArkFullScreenAppActivity.a(this.a));
+      QLog.d("Q.readinjoy.video.VideoUIManager", 2, "onStopTrackingTouch(): progress=" + i + ", playState=" + rjm.a(j));
     }
-    Object localObject;
-    boolean bool;
-    if (ArkFullScreenAppActivity.a(this.a) != null)
-    {
-      localObject = ArkFullScreenAppActivity.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer;
-      if (localObject != null)
-      {
-        if ((!((ArkAppContainer)localObject).checkShare()) || (!ArkFullScreenAppActivity.a(this.a).jdField_a_of_type_Boolean)) {
-          break label135;
-        }
-        bool = true;
-        if (QLog.isColorLevel()) {
-          QLog.i("ArkFullScreenAppActivity", 2, "supportShare: " + bool);
-        }
-        localObject = this.a.rightViewImg;
-        if (!bool) {
-          break label140;
-        }
-      }
+    if (j == 3) {
+      rkp.a(this.a).a(i * 1000, rkp.a(this.a));
     }
-    for (;;)
-    {
-      ((ImageView)localObject).setVisibility(i);
+    while (j != 5) {
       return;
-      label135:
-      bool = false;
-      break;
-      label140:
-      i = 4;
     }
+    rkp.a(this.a).c(i * 1000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rku
  * JD-Core Version:    0.7.0.1
  */

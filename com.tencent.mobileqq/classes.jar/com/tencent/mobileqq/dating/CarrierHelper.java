@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dating;
 
-import abwp;
+import alud;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -8,22 +8,21 @@ import android.content.res.Resources;
 import android.graphics.Paint;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.webkit.URLUtil;
 import android.widget.ImageView;
 import android.widget.TextView;
+import azqs;
+import bayu;
+import bdhb;
+import bdhk;
+import bdib;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.struct.AdData;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
 import com.tencent.mobileqq.widget.CarrierADView;
 import com.tencent.widget.BorderTextView;
 import com.tencent.widget.SingleLineTextView;
@@ -36,37 +35,18 @@ import mqq.os.MqqHandler;
 public class CarrierHelper
   implements View.OnClickListener
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "特别推荐", "约会的推荐", "附近的群的推荐", "活动的推荐", "热聊的推荐", "特别推荐", "排行榜的推荐" };
-  float jdField_a_of_type_Float = 0.0F;
-  int jdField_a_of_type_Int = 0;
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { alud.a(2131701843), alud.a(2131701846), alud.a(2131701849), alud.a(2131701847), alud.a(2131701844), alud.a(2131701843), alud.a(2131701848) };
+  float jdField_a_of_type_Float;
+  int jdField_a_of_type_Int;
   private Activity jdField_a_of_type_AndroidAppActivity;
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private CarrierADView jdField_a_of_type_ComTencentMobileqqWidgetCarrierADView;
-  private ArrayList jdField_a_of_type_JavaUtilArrayList;
-  private List jdField_a_of_type_JavaUtilList = new LinkedList();
+  private ArrayList<CarrierHelper.EntranceConfig> jdField_a_of_type_JavaUtilArrayList;
+  private List<AdData> jdField_a_of_type_JavaUtilList;
   private boolean jdField_a_of_type_Boolean;
   private int b;
-  private int c = -1;
-  
-  public CarrierHelper(QQAppInterface paramQQAppInterface, View.OnClickListener paramOnClickListener, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.b = paramInt;
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener == null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener = this;
-    }
-  }
-  
-  public View a(IFlingSwitch paramIFlingSwitch)
-  {
-    View localView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2130970421, null);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCarrierADView = ((CarrierADView)localView.findViewById(2131365693));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCarrierADView.setContentDescription(",");
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCarrierADView.setFlingSwitch(paramIFlingSwitch);
-    return localView;
-  }
+  private int c;
   
   public CarrierHelper.EntranceConfig a()
   {
@@ -116,7 +96,7 @@ public class CarrierHelper
         localLinkedList.add(Integer.valueOf(localAdData.ad_source));
       }
     }
-    ThreadManager.getSubThreadHandler().post(new abwp(this, localLinkedList));
+    ThreadManager.getSubThreadHandler().post(new CarrierHelper.1(this, localLinkedList));
   }
   
   public void a(int paramInt, Object paramObject)
@@ -151,25 +131,18 @@ public class CarrierHelper
     this.jdField_a_of_type_ComTencentMobileqqWidgetCarrierADView.setCarrierData(this.jdField_a_of_type_JavaUtilList, this.c, this);
   }
   
-  public void a(Activity paramActivity)
-  {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Int = paramActivity.getResources().getDisplayMetrics().widthPixels;
-    this.jdField_a_of_type_Float = paramActivity.getResources().getDisplayMetrics().density;
-  }
-  
   public void a(View paramView, AdData paramAdData)
   {
-    Object localObject = (ImageView)paramView.findViewById(2131368290);
-    BorderTextView localBorderTextView = (BorderTextView)paramView.findViewById(2131370470);
-    SingleLineTextView localSingleLineTextView1 = (SingleLineTextView)paramView.findViewById(2131370468);
-    SingleLineTextView localSingleLineTextView2 = (SingleLineTextView)paramView.findViewById(2131370469);
-    TextView localTextView1 = (TextView)paramView.findViewById(2131370471);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131370472);
-    View localView = paramView.findViewById(2131370473);
+    Object localObject = (ImageView)paramView.findViewById(2131362015);
+    BorderTextView localBorderTextView = (BorderTextView)paramView.findViewById(2131362032);
+    SingleLineTextView localSingleLineTextView1 = (SingleLineTextView)paramView.findViewById(2131362050);
+    SingleLineTextView localSingleLineTextView2 = (SingleLineTextView)paramView.findViewById(2131362031);
+    TextView localTextView1 = (TextView)paramView.findViewById(2131361973);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131361975);
+    View localView = paramView.findViewById(2131364018);
     localBorderTextView.setTextSize(1, 11.0F);
     localBorderTextView.setBorderWidth(Math.round(localBorderTextView.getResources().getDisplayMetrics().density * 1.0F));
-    ((ImageView)localObject).setImageDrawable(URLDrawableHelper.a(paramAdData.img_url));
+    ((ImageView)localObject).setImageDrawable(bayu.a(paramAdData.img_url));
     int i;
     if ((paramAdData.wording != null) && (paramAdData.wording.length() > 0))
     {
@@ -182,7 +155,7 @@ public class CarrierHelper
       }
       localSingleLineTextView2.setText(paramAdData.distance);
       localSingleLineTextView2.setVisibility(0);
-      i = Math.round(localBorderTextView.a().measureText(paramAdData.distance)) + 5 + 89;
+      i = Math.round(localBorderTextView.getPaint().measureText(paramAdData.distance)) + 5 + 89;
       label211:
       localSingleLineTextView1.setMaxWidth((int)(this.jdField_a_of_type_Int - i * this.jdField_a_of_type_Float));
       localSingleLineTextView1.setText(paramAdData.title);
@@ -199,7 +172,7 @@ public class CarrierHelper
       paramView.setContentDescription((CharSequence)localObject);
       localView.setContentDescription((CharSequence)localObject);
       localView.setTag(paramAdData.jump_url);
-      localView.setTag(2131362041, Integer.valueOf(paramAdData.ad_source));
+      localView.setTag(2131373501, Integer.valueOf(paramAdData.ad_source));
       localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       return;
       localBorderTextView.setVisibility(4);
@@ -212,20 +185,14 @@ public class CarrierHelper
   
   public void a(String paramString)
   {
-    Class[] arrayOfClass = new Class[3];
-    arrayOfClass[0] = Object.class;
-    arrayOfClass[1] = Integer.class;
-    arrayOfClass[2] = Object.class;
-    paramString = FileUtils.a(paramString, arrayOfClass);
-    if ((paramString != null) && (paramString.length == arrayOfClass.length))
-    {
-      this.jdField_a_of_type_JavaUtilList = ((List)paramString[0]);
-      this.c = ((Integer)paramString[1]).intValue();
-      this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)paramString[2]);
+    if ((this.jdField_a_of_type_JavaUtilList.size() == 0) || (this.jdField_a_of_type_ComTencentMobileqqWidgetCarrierADView == null) || (TextUtils.isEmpty(paramString))) {
+      return;
     }
+    int i = this.jdField_a_of_type_ComTencentMobileqqWidgetCarrierADView.a();
+    bdhb.a(paramString, new Object[] { this.jdField_a_of_type_JavaUtilList, Integer.valueOf(i), this.jdField_a_of_type_JavaUtilArrayList });
   }
   
-  public void a(List paramList, int paramInt, ArrayList paramArrayList)
+  public void a(List<AdData> paramList, int paramInt, ArrayList<CarrierHelper.EntranceConfig> paramArrayList)
   {
     this.jdField_a_of_type_JavaUtilList.clear();
     if ((paramList != null) && (paramList.size() > 0)) {
@@ -244,36 +211,27 @@ public class CarrierHelper
     return true;
   }
   
-  public void b(String paramString)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList.size() == 0) || (this.jdField_a_of_type_ComTencentMobileqqWidgetCarrierADView == null) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    int i = this.jdField_a_of_type_ComTencentMobileqqWidgetCarrierADView.a();
-    FileUtils.a(paramString, new Object[] { this.jdField_a_of_type_JavaUtilList, Integer.valueOf(i), this.jdField_a_of_type_JavaUtilArrayList });
-  }
-  
   public void onClick(View paramView)
   {
-    Object localObject = (Integer)paramView.getTag(2131362041);
+    Object localObject = (Integer)paramView.getTag(2131373501);
     String str = (String)paramView.getTag();
     if ((localObject == null) || (str == null)) {
       return;
     }
     if ((this.b == 2) || (this.b == 1)) {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80050D1", "0X80050D1", this.b, 0, String.valueOf(localObject), "", "", "");
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80050D1", "0X80050D1", this.b, 0, String.valueOf(localObject), "", "", "");
     }
     if (((Integer)localObject).intValue() == 5) {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80052A3", "0X80052A3", this.b, 0, "", "", "", "");
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80052A3", "0X80052A3", this.b, 0, "", "", "", "");
     }
     if (this.jdField_a_of_type_AndroidAppActivity == null) {}
     for (paramView = BaseApplicationImpl.getContext();; paramView = this.jdField_a_of_type_AndroidAppActivity)
     {
-      localObject = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, str);
+      localObject = bdib.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, str);
       if (localObject == null) {
         break;
       }
-      ((JumpAction)localObject).b();
+      ((bdhk)localObject).c();
       return;
     }
     localObject = new Intent(BaseApplicationImpl.getContext(), QQBrowserActivity.class);
@@ -283,7 +241,7 @@ public class CarrierHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.CarrierHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,20 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import com.tencent.biz.qqcircle.fragments.QCirclePersonalBaseBottomFragment;
 
 public class twy
-  implements View.OnClickListener
+  implements yia<trq>
 {
-  public twy(TroopDisbandActivity paramTroopDisbandActivity, Dialog paramDialog) {}
+  public twy(QCirclePersonalBaseBottomFragment paramQCirclePersonalBaseBottomFragment) {}
   
-  public void onClick(View paramView)
+  public void a(yii paramyii, trq paramtrq)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (paramyii.e()) {
+      this.a.b();
     }
-    TroopDisbandActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     twy
  * JD-Core Version:    0.7.0.1
  */

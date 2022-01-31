@@ -14,7 +14,7 @@ public class WXAPIFactory
   
   public static IWXAPI createWXAPI(Context paramContext, String paramString)
   {
-    return createWXAPI(paramContext, paramString, false);
+    return createWXAPI(paramContext, paramString, true);
   }
   
   public static IWXAPI createWXAPI(Context paramContext, String paramString, boolean paramBoolean)
@@ -25,7 +25,7 @@ public class WXAPIFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mm.opensdk.openapi.WXAPIFactory
  * JD-Core Version:    0.7.0.1
  */

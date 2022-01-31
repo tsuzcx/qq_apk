@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import awge;
+import awhs;
 
 public class InterestLabelInfo
-  extends Entity
+  extends awge
   implements Cloneable
 {
   public static final String TABLE_NAME = ArticleInfo.class.getSimpleName();
-  @unique
+  @awhs
   public int mInterestLabelID;
   public String mInterestLabelNme;
   public boolean mIsDefault;
@@ -29,7 +29,7 @@ public class InterestLabelInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo
  * JD-Core Version:    0.7.0.1
  */

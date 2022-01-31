@@ -1,33 +1,28 @@
-import Wallet.GetSkinListRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
-public class xgu
-  implements BusinessObserver
+class xgu
+  implements Animation.AnimationListener
 {
-  public xgu(RedPacketManager paramRedPacketManager, QQAppInterface paramQQAppInterface) {}
+  xgu(xgt paramxgt) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    GetSkinListRsp localGetSkinListRsp = (GetSkinListRsp)paramBundle.getSerializable("rsp");
-    paramBundle.putBoolean("isCache", false);
-    if (RedPacketManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketManager) == null) {}
-    do
-    {
-      return;
-      RedPacketManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketManager).onReceive(paramInt, paramBoolean, paramBundle);
-      ThreadManager.post(new xgv(this, localGetSkinListRsp), 5, null, false);
-    } while (!QLog.isColorLevel());
-    QLog.d("RedPacketManager", 2, "requestRedPacketSkinList onReceive isSuccess:" + paramBoolean);
+    this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
+    if (this.a.a.jdField_a_of_type_Xgo != null) {
+      this.a.a.jdField_a_of_type_Xgo.a(null);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xgu
  * JD-Core Version:    0.7.0.1
  */

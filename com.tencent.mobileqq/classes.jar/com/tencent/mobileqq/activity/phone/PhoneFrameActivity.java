@@ -1,23 +1,24 @@
 package com.tencent.mobileqq.activity.phone;
 
+import aepi;
+import ainb;
+import ainc;
+import alud;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
+import azqs;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
 import java.util.ArrayList;
-import wuz;
-import wva;
 
 public class PhoneFrameActivity
   extends IphoneTitleBarActivity
@@ -37,7 +38,7 @@ public class PhoneFrameActivity
   
   private void a()
   {
-    Intent localIntent = AIOUtils.a(new Intent(this, SplashActivity.class), null);
+    Intent localIntent = aepi.a(new Intent(this, SplashActivity.class), null);
     Object localObject = new Bundle(this.jdField_a_of_type_AndroidOsBundle);
     ((Bundle)localObject).putBoolean("PhotoConst.HANDLE_DEST_RESULT", false);
     ((Bundle)localObject).putBoolean("PhotoConst.IS_FORWARD", true);
@@ -62,32 +63,32 @@ public class PhoneFrameActivity
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131363244);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131375863);
     this.b = ((View)this.jdField_a_of_type_AndroidViewView.getParent());
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363245));
-    this.leftView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363473));
-    this.rightViewText = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363428));
-    this.rightViewText.setText(2131437170);
-    this.rightViewText.setOnClickListener(new wuz(this));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363474));
-    if (AppSetting.b) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("设置");
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368624));
+    this.leftView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368626));
+    this.rightViewText = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368655));
+    this.rightViewText.setText(2131695209);
+    this.rightViewText.setOnClickListener(new ainb(this));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368638));
+    if (AppSetting.c) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131708393));
     }
     IphoneTitleBarActivity.setLayerType(this.jdField_a_of_type_AndroidViewView);
     IphoneTitleBarActivity.setLayerType(this.jdField_a_of_type_AndroidWidgetTextView);
     IphoneTitleBarActivity.setLayerType(this.leftView);
     IphoneTitleBarActivity.setLayerType(this.rightViewText);
     IphoneTitleBarActivity.setLayerType(this.jdField_a_of_type_AndroidWidgetImageView);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame = ((PhoneFrame)findViewById(2131365478));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame = ((PhoneFrame)findViewById(2131371762));
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setActivity(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setPhoneContext(new wva(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setPhoneContext(new ainc(this));
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.a(null);
     Bundle localBundle = new Bundle();
     localBundle.putInt("key_req_type", this.jdField_a_of_type_Int);
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.b(localBundle);
   }
   
-  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if (paramInt1 == 20001)
     {
@@ -101,25 +102,25 @@ public class PhoneFrameActivity
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.a(paramInt1, paramInt2, paramIntent);
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     getWindow().setBackgroundDrawable(null);
-    setContentView(2130969166);
+    setContentView(2131559424);
     this.jdField_a_of_type_Int = getIntent().getIntExtra("key_req_type", 0);
     b();
     this.jdField_a_of_type_AndroidOsBundle = getIntent().getExtras();
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.c();
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.d();
     super.doOnDestroy();
   }
   
-  protected void doOnNewIntent(Intent paramIntent)
+  public void doOnNewIntent(Intent paramIntent)
   {
     super.doOnNewIntent(paramIntent);
     if (paramIntent.getBooleanExtra("PhotoConst.SEND_FLAG", false))
@@ -135,16 +136,16 @@ public class PhoneFrameActivity
     this.jdField_a_of_type_AndroidOsBundle.putString("GALLERY.FORWORD_LOCAL_PATH", paramIntent);
     this.jdField_a_of_type_AndroidOsBundle.putBoolean("FORWARD_IS_EDITED", true);
     a();
-    ReportController.b(this.app, "CliOper", "", "", "0X800514C", "0X800514C", 0, 0, "", "", "", "");
+    azqs.b(this.app, "CliOper", "", "", "0X800514C", "0X800514C", 0, 0, "", "", "", "");
   }
   
-  protected void doOnPause()
+  public void doOnPause()
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.b();
     super.doOnPause();
   }
   
-  protected void doOnResume()
+  public void doOnResume()
   {
     super.doOnResume();
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.a();
@@ -156,16 +157,16 @@ public class PhoneFrameActivity
     {
       Intent localIntent = new Intent(this, SplashActivity.class);
       localIntent.setFlags(67108864);
-      localIntent.putExtra("tab_index", MainFragment.c);
+      localIntent.putExtra("tab_index", MainFragment.d);
       startActivity(localIntent);
     }
     super.finish();
-    overridePendingTransition(2131034129, 2131034130);
+    overridePendingTransition(2130771988, 2130771989);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.PhoneFrameActivity
  * JD-Core Version:    0.7.0.1
  */

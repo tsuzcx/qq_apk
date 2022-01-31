@@ -1,20 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.msfmqpsdkbridge.MSFIntChkStrike;
-
-public class akzm
-  implements DialogInterface.OnDismissListener
+public abstract interface akzm
 {
-  public akzm(MSFIntChkStrike paramMSFIntChkStrike) {}
+  public abstract void a();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    MSFIntChkStrike.a(this.a, false);
-  }
+  public abstract void d(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akzm
  * JD-Core Version:    0.7.0.1
  */

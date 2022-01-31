@@ -1,23 +1,29 @@
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class bpr
-  extends FriendListObserver
+  implements MediaPlayer.OnCompletionListener
 {
-  public bpr(AccountDetailActivity paramAccountDetailActivity) {}
+  public bpr(BaseApplicationImpl paramBaseApplicationImpl, MediaPlayer.OnCompletionListener paramOnCompletionListener) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if ((paramBoolean) && (paramString.equals(this.a.b))) {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(paramString));
+    if (this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.b == 0)
+    {
+      if (this.jdField_a_of_type_AndroidMediaMediaPlayer$OnCompletionListener != null) {
+        this.jdField_a_of_type_AndroidMediaMediaPlayer$OnCompletionListener.onCompletion(paramMediaPlayer);
+      }
+      return;
     }
+    paramMediaPlayer = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
+    paramMediaPlayer.b -= 1;
+    this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.a.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bpr
  * JD-Core Version:    0.7.0.1
  */

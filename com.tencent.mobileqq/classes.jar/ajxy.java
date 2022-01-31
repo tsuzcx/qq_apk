@@ -1,12 +1,17 @@
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.widget.ContainerView;
 
-public class ajxy
+class ajxy
+  implements View.OnLongClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList a;
-  public int b;
+  ajxy(ajxw paramajxw, ContainerView paramContainerView) {}
+  
+  public boolean onLongClick(View paramView)
+  {
+    this.jdField_a_of_type_Ajxw.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView, paramView);
+    return false;
+  }
 }
 
 

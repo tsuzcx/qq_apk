@@ -1,28 +1,42 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.mobileqq.shortvideo.dancemachine.utils.DanceLog;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
+import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
+import com.tencent.mobileqq.activity.contacts.view.SimpleCheckableSlidingIndicator;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class ahjb
-  implements Runnable
+  implements ahvi
 {
-  public ahjb(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment, boolean paramBoolean) {}
+  public ahjb(TroopView paramTroopView) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    DanceLog.a("EffectsFragment", "closeEvent begin exe isReady=" + this.jdField_a_of_type_Boolean);
-    if ((this.jdField_a_of_type_Boolean) && (EffectsCameraCaptureFragment.e(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment)))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment.jdField_a_of_type_Boolean = true;
-      EffectsCameraCaptureFragment.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment);
+    if (QLog.isColorLevel()) {
+      QLog.i("addContacts.TroopView", 2, "onRepeatClick. position:" + paramInt);
     }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment.k();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.setFaceEffect("");
-    DanceLog.a("EffectsFragment", "closeEvent end  exe...");
+    if (paramInt != -1)
+    {
+      TroopView.a(this.a).setCurrentPosition(-1, false);
+      int i = TroopView.a(this.a).getCurrentItem();
+      if (QLog.isColorLevel()) {
+        QLog.i("addContacts.TroopView", 2, "onCurrentTabClick. position:" + paramInt + " currentClassifyPos:" + i);
+      }
+      Object localObject = TroopView.a(this.a).a(i, false);
+      if (localObject != null)
+      {
+        localObject = (AddContactViewPagerTroopFragment)localObject;
+        ahfc localahfc = (ahfc)this.a.a.get(i);
+        localahfc.b = -1;
+        ((AddContactViewPagerTroopFragment)localObject).a(localahfc.d, "");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahjb
  * JD-Core Version:    0.7.0.1
  */

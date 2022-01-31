@@ -1,33 +1,24 @@
-import com.tencent.biz.troop.file.TroopFileProtocol.OnGetZipFileList;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.fileviewer.model.DefaultFileModel;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnZipEventListener;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.List;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
-class adct
-  implements TroopFileProtocol.OnGetZipFileList
+public class adct
+  implements banr
 {
-  adct(adcs paramadcs) {}
+  public adct(GeneralSettingActivity paramGeneralSettingActivity, int paramInt1, int paramInt2) {}
   
-  public void a(List paramList)
+  public void onCancel()
   {
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener != null) {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener.a(paramList, this.a.a.jdField_a_of_type_JavaLangString, this.a.a.b, this.a.a.c, this.a.a.d);
-    }
-    if (paramList != null)
-    {
-      ReportController.b(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_suc", 0, 0, "" + this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().TroopUin, "", FileManagerUtil.f(this.a.a.a()), "1");
-      return;
-    }
-    ReportController.b(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_fail", 0, 0, "" + this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().TroopUin, "-1", FileManagerUtil.f(this.a.a.a()), "1");
+    GeneralSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity, this.jdField_a_of_type_Int, this.b);
+  }
+  
+  public void onConfirm()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity.b();
+    GeneralSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity, this.jdField_a_of_type_Int, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adct
  * JD-Core Version:    0.7.0.1
  */

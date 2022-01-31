@@ -1,41 +1,41 @@
-import android.opengl.GLSurfaceView.EGLContextFactory;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.widget.HWVideoPlayView;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import org.json.JSONObject;
 
 public class aonv
-  implements GLSurfaceView.EGLContextFactory
 {
-  private int jdField_a_of_type_Int = 12440;
+  private boolean a;
   
-  public aonv(HWVideoPlayView paramHWVideoPlayView) {}
-  
-  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  public static aonv a(String paramString)
   {
-    int i = this.jdField_a_of_type_Int;
-    if (QLog.isColorLevel()) {
-      QLog.d("HWVideoPlayView", 1, "createContext. display = " + paramEGLDisplay + " tid = " + Thread.currentThread().getId());
-    }
-    return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
+    if (paramString == null) {}
+    do
+    {
+      return null;
+      try
+      {
+        aonv localaonv = new aonv();
+        localaonv.a = new JSONObject(paramString).optBoolean("needSeparatePersonWithGroup", false);
+        return localaonv;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("GlobalSearchConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
   }
   
-  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
+  public boolean a()
   {
-    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext)) {
-      QLog.e("HWVideoPlayView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
-    }
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecWidgetHWVideoPlayView.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("HWVideoPlayView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
-    }
+    return this.a;
+  }
+  
+  public String toString()
+  {
+    return "needSeparate:" + this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aonv
  * JD-Core Version:    0.7.0.1
  */

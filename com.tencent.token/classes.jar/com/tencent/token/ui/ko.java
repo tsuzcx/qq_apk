@@ -1,20 +1,21 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class ko
-  implements DialogInterface.OnClickListener
+class ko
+  implements View.OnClickListener
 {
-  ko(kn paramkn) {}
+  ko(GeneralVerifyMobileUpActivity paramGeneralVerifyMobileUpActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = new Intent(this.a.a, WtLoginAccountInput.class);
-    paramDialogInterface.putExtra("page_id", 4);
-    this.a.a.startActivity(paramDialogInterface);
-    this.a.a.finish();
+    paramView = new Intent(this.a, NetActiveVryOtherListActivity.class);
+    paramView.putExtra("intent.qquser", GeneralVerifyMobileUpActivity.access$100(this.a));
+    paramView.putExtra("intent.determin_factors_result", GeneralVerifyMobileUpActivity.access$500(this.a));
+    paramView.putExtra("intent.determin_verify_type", GeneralVerifyMobileUpActivity.access$000(this.a));
+    this.a.startActivity(paramView);
   }
 }
 

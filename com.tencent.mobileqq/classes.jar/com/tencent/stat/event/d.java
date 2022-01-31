@@ -3,16 +3,15 @@ package com.tencent.stat.event;
 import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION;
-import com.tencent.a.a.a.i;
 import com.tencent.stat.StatConfig;
 import com.tencent.stat.StatSpecifyReportedInfo;
+import com.tencent.stat.a.a.i;
 import com.tencent.stat.af;
 import com.tencent.stat.common.DeviceInfo;
 import com.tencent.stat.common.StatCommonHelper;
 import com.tencent.stat.common.Util;
 import java.util.Arrays;
 import java.util.List;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public abstract class d
@@ -85,8 +84,7 @@ public abstract class d
   
   public abstract EventType a();
   
-  public abstract boolean a(JSONObject paramJSONObject)
-    throws JSONException;
+  public abstract boolean a(JSONObject paramJSONObject);
   
   public boolean b(JSONObject paramJSONObject)
   {

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="@dimen/b9p"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:gravity="center" android:id="@id/cf" android:layout_width="fill_parent" android:layout_height="@dimen/b9q" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
+        <TextView android:textSize="14.0sp" android:textColor="#80ffffff" android:gravity="center" android:id="@id/jmn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/w2w" />
+        <com.tencent.av.ui.beauty.BeautySeekView android:id="@id/a7n" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+    <FrameLayout android:layout_gravity="center" android:id="@id/b9w" android:layout_width="fill_parent" android:layout_height="@dimen/b9o" android:layout_below="@id/cf" android:layout_alignParentLeft="true">
+        <com.tencent.widget.HorizontalListView android:id="@id/d9m" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0dip" />
+    </FrameLayout>
+</merge>

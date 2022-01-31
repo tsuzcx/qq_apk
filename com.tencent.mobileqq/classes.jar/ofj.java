@@ -1,20 +1,27 @@
 import android.os.Handler;
-import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
-import java.util.TimerTask;
+import com.tencent.qphone.base.util.QLog;
 
-public class ofj
-  extends TimerTask
+class ofj
+  extends rjo
 {
-  private ofj(EditVideoMusic paramEditVideoMusic) {}
+  ofj(ofi paramofi) {}
   
-  public void run()
+  public void a(rjn paramrjn)
   {
-    this.a.a.sendEmptyMessage(1001);
+    super.a(paramrjn);
+    QLog.d("KandianAdPandent", 2, "onCompletion");
+    ofi.a(this.a).sendEmptyMessage(2);
+  }
+  
+  public void a(rjn paramrjn, Object paramObject)
+  {
+    QLog.d("KandianAdPandent", 2, "onVideoPrepared");
+    ofi.a(this.a).f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ofj
  * JD-Core Version:    0.7.0.1
  */

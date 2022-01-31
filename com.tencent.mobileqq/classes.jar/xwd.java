@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.activity.richmedia.subtitles.RDBaseDataManager;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class xwd
-  implements Runnable
+class xwd
+  implements View.OnClickListener
 {
-  public xwd(RDBaseDataManager paramRDBaseDataManager, xvw paramxvw) {}
+  xwd(xwc paramxwc) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesRDBaseDataManager.a(this.jdField_a_of_type_Xvw.a, 1, null, null);
+    this.a.b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xwd
  * JD-Core Version:    0.7.0.1
  */

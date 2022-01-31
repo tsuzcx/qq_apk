@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/dqy" android:layout_width="fill_parent" android:layout_height="@dimen/b_d"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/dqx" android:focusable="false" android:clickable="false" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="@dimen/f7" android:layout_alignParentBottom="true">
+        <com.tencent.widget.FixSizeImageView android:id="@id/icon" android:focusable="false" android:clickable="false" android:scaleType="fitXY" android:contentDescription="@null" style="@style/hm" />
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/icon" android:layout_centerVertical="true">
+            <com.tencent.widget.SingleLineTextView android:textSize="18.0dip" android:id="@id/title" android:paddingRight="@dimen/f4" android:layout_marginBottom="@dimen/ajw" android:includeFontPadding="true" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" style="@style/hn" />
+            <com.tencent.mobileqq.activity.recent.cur.DragTextView android:id="@id/unreadmsg" android:layout_marginRight="@dimen/f4" android:includeFontPadding="true" android:layout_below="@id/title" android:layout_alignParentRight="true" style="@style/cg" />
+            <com.tencent.widget.SingleLineTextView android:textSize="@dimen/j9" android:id="@id/bgt" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/f4" android:includeFontPadding="true" android:layout_toLeftOf="@id/unreadmsg" android:layout_below="@id/title" android:layout_alignLeft="@id/title" />
+        </RelativeLayout>
+        <View android:id="@id/bmt" android:background="#ffebedf5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="16.0dip" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/dre" android:focusable="false" android:clickable="false" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="8.669983dip" android:layout_alignParentTop="true">
+        <com.tencent.mobileqq.gamecenter.view.ShadowView android:id="@id/ex9" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_alignParentBottom="true" />
+        <com.tencent.mobileqq.subaccount.UpArrowView android:id="@id/yw" android:duplicateParentState="true" android:layout_width="12.0dip" android:layout_height="8.0dip" android:layout_marginLeft="34.0dip" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,44 +1,18 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRenderDriver;
-import com.tencent.mobileqq.apollo.ITriggerRenderCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.locks.ReentrantLock;
-
-public class yme
-  implements Runnable
+class yme
+  implements ymf
 {
-  public yme(ApolloRenderDriver paramApolloRenderDriver, String[] paramArrayOfString) {}
+  yme(ymd paramymd) {}
   
-  public void run()
+  public void a(int paramInt, boolean paramBoolean, String paramString, Object... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloRenderDriver", 2, "start run.");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    int i = 0;
-    try
-    {
-      while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_ComTencentMobileqqApolloApolloEngine.a(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
-        i += 1;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-      if ((!this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_ComTencentMobileqqApolloITriggerRenderCallback != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_ComTencentMobileqqApolloITriggerRenderCallback.onRender();
-      }
-      return;
-    }
-    finally
-    {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+    if (this.a.jdField_a_of_type_Ymm != null) {
+      this.a.jdField_a_of_type_Ymm.a(paramBoolean, this.a.jdField_a_of_type_JavaLangString, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yme
  * JD-Core Version:    0.7.0.1
  */

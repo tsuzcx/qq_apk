@@ -1,16 +1,20 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
-import cooperation.plugin.PluginDownloader.OnPluginDownLoadListener;
+import android.graphics.Bitmap;
 
 public class ammf
 {
-  private HttpNetReq jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq;
-  private AbsPreDownloadTask jdField_a_of_type_ComTencentMobileqqTransfilePredownloadAbsPreDownloadTask;
-  private PluginDownloader.OnPluginDownLoadListener jdField_a_of_type_CooperationPluginPluginDownloader$OnPluginDownLoadListener;
+  public int a;
+  public long a;
+  public Bitmap a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public String c;
+  public String d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ammf
  * JD-Core Version:    0.7.0.1
  */

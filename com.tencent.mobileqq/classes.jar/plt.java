@@ -1,13 +1,20 @@
-import java.util.concurrent.Callable;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public abstract class plt
-  implements Callable
+class plt
+  implements ViewBase.OnClickListener
 {
-  public Object[] a;
+  plt(plq paramplq, pgd parampgd, Container paramContainer) {}
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    this.jdField_a_of_type_Plq.a(this.jdField_a_of_type_Pgd, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     plt
  * JD-Core Version:    0.7.0.1
  */

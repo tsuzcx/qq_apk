@@ -1,15 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.webview.WebSecurityPlugin;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class akmj
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  akmj(akmi paramakmi, boolean paramBoolean, Bundle paramBundle) {}
+  akmj(akmi paramakmi, ztp paramztp, View paramView) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Akmi.a.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_Ztp.a("");
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839217);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

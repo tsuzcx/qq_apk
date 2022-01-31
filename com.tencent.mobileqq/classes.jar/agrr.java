@@ -1,33 +1,44 @@
-import android.graphics.Matrix;
-import android.graphics.PointF;
 import android.view.View;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
-import com.tencent.mobileqq.widget.RatioLayout;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class agrr
-  implements ValueAnimation.AnimationUpdateListener
+class agrr
+  implements bhuk
 {
-  public agrr(ProfileTagView paramProfileTagView, View paramView, PointF paramPointF) {}
+  agrr(agrn paramagrn, bhuf parambhuf, ChatMessage paramChatMessage, String paramString) {}
   
-  public void a(ValueAnimation paramValueAnimation, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramTransformation.getMatrix().setScale(paramFloat1.floatValue(), paramFloat1.floatValue(), this.jdField_a_of_type_AndroidViewView.getWidth() * 0.5F, this.jdField_a_of_type_AndroidViewView.getHeight() * 0.5F);
-    paramFloat = this.jdField_a_of_type_AndroidGraphicsPointF.x;
-    float f1 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_AndroidGraphicsPointF.x;
-    float f2 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_ComTencentMobileqqWidgetRatioLayout.getWidth();
-    float f3 = this.jdField_a_of_type_AndroidGraphicsPointF.y;
-    float f4 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_AndroidGraphicsPointF.y;
-    float f5 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_ComTencentMobileqqWidgetRatioLayout.getHeight();
-    paramTransformation.getMatrix().postTranslate((paramFloat - f1) * f2 * paramFloat1.floatValue(), (f3 - f4) * f5 * paramFloat1.floatValue());
-    paramTransformation.getMatrix().postRotate(paramFloat1.floatValue() * 120.0F - 120.0F, this.jdField_a_of_type_AndroidViewView.getWidth() * 0.5F, this.jdField_a_of_type_AndroidViewView.getHeight() * 0.5F);
+    this.jdField_a_of_type_Bhuf.dismiss();
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+      this.jdField_a_of_type_Agrn.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin, this.jdField_a_of_type_JavaLangString, false, 1);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i(this.jdField_a_of_type_Agrn.jdField_a_of_type_JavaLangString, 2, "del hot chat member onClick, uin=" + this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin);
+      }
+      if (!bdin.d(BaseApplication.getContext()))
+      {
+        QQToast.a(this.jdField_a_of_type_Agrn.a(), this.jdField_a_of_type_Agrn.a().getString(2131694768), 0).b(this.jdField_a_of_type_Agrn.a().getTitleBarHeight());
+        return;
+      }
+    } while ((aluj)this.jdField_a_of_type_Agrn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35) == null);
+    paramView = bdgm.a(this.jdField_a_of_type_Agrn.a(), 230).setMessage(2131693401).setNegativeButton(2131690624, new agrt(this)).setPositiveButton(2131690626, new agrs(this));
+    paramView.setTitle(2131693402);
+    paramView.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agrr
  * JD-Core Version:    0.7.0.1
  */

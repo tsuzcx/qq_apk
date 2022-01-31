@@ -13,37 +13,37 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import com.tencent.token.ax;
-import com.tencent.token.bc;
-import com.tencent.token.bd;
-import com.tencent.token.fo;
+import com.tencent.token.do;
+import com.tencent.token.dt;
+import com.tencent.token.du;
+import com.tencent.token.er;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.b;
-import com.tencent.token.global.e;
+import com.tencent.token.global.c;
+import com.tencent.token.global.h;
 import com.tencent.token.ui.base.PullToRefreshListView;
-import com.tencent.token.ui.base.cq;
+import com.tencent.token.ui.base.cg;
 import java.lang.reflect.Method;
 import java.util.TimeZone;
 
 public class OpreateMsgActivity
   extends BaseActivity
-  implements cq
+  implements cg
 {
   public static final String PREFER_TIME = "opreate_msg_refresh_time";
   public static boolean s_NeedShowNewMsgCnt;
-  tj mAdapter;
-  private fo mCache = bd.a().f;
+  sn mAdapter;
+  private er mCache = du.a().f;
   Button mEditSelectBtn;
-  public Handler mHandler = new tp(this);
+  public Handler mHandler = new st(this);
   private int mHaveMsgReqTimes = 0;
   private boolean mIsEdit = false;
   public boolean mIsRefreshing = false;
   boolean mIsSelectAll;
   View mListEidt;
   PullToRefreshListView mListView;
-  private bd mMsgMgr = bd.a();
-  private View.OnClickListener mRightTitleButtonClickListener = new tq(this);
-  byte mSource = bc.e;
+  private du mMsgMgr = du.a();
+  private View.OnClickListener mRightTitleButtonClickListener = new su(this);
+  byte mSource = dt.e;
   Button mTitleButton;
   private long mUin;
   
@@ -60,7 +60,7 @@ public class OpreateMsgActivity
   
   private void saveTimeZoneFlag()
   {
-    SharedPreferences.Editor localEditor = RqdApplication.i().getSharedPreferences("msg_tips_timezone", 0).edit();
+    SharedPreferences.Editor localEditor = RqdApplication.l().getSharedPreferences("msg_tips_timezone", 0).edit();
     localEditor.putBoolean("msg_tips_timezone_flag", true);
     localEditor.commit();
   }
@@ -73,26 +73,26 @@ public class OpreateMsgActivity
   private void showDeleteDlg()
   {
     if (this.mIsSelectAll) {}
-    for (String str = getString(2131362012);; str = getString(2131362007) + this.mCache.e() + getString(2131362008))
+    for (String str = getString(2131230920);; str = getString(2131230923) + this.mCache.e() + getString(2131230922))
     {
-      showUserDialog(2131362006, str, 2131361800, 2131361804, new tr(this), null);
+      showUserDialog(2131230921, str, 2131230897, 2131230886, new sv(this), null);
       return;
     }
   }
   
   void checkTimeZoneFlag()
   {
-    if ((!RqdApplication.i().getSharedPreferences("msg_tips_timezone", 0).getBoolean("msg_tips_timezone_flag", false)) && (this.mCache.g() > 0))
+    if ((!RqdApplication.l().getSharedPreferences("msg_tips_timezone", 0).getBoolean("msg_tips_timezone_flag", false)) && (this.mCache.g() > 0))
     {
       if (TimeZone.getDefault().getOffset(System.currentTimeMillis()) != 28800000)
       {
-        View localView = findViewById(2131296782);
+        View localView = findViewById(2131558985);
         localView.setVisibility(0);
-        findViewById(2131296785).setOnClickListener(new ts(this, localView));
+        findViewById(2131558988).setOnClickListener(new sw(this, localView));
       }
       return;
     }
-    findViewById(2131296782).setVisibility(8);
+    findViewById(2131558985).setVisibility(8);
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
@@ -101,7 +101,7 @@ public class OpreateMsgActivity
     {
       try
       {
-        if ((b.d()) && (paramKeyEvent.getAction() == 0)) {}
+        if ((c.f()) && (paramKeyEvent.getAction() == 0)) {}
         switch (paramKeyEvent.getKeyCode())
         {
         case 4: 
@@ -111,7 +111,7 @@ public class OpreateMsgActivity
       catch (Exception paramKeyEvent)
       {
         paramKeyEvent.printStackTrace();
-        e.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
+        h.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
         return true;
       }
       if (isListEdit())
@@ -128,7 +128,7 @@ public class OpreateMsgActivity
   {
     this.mListView.b();
     this.mIsRefreshing = false;
-    this.mListView.a(System.currentTimeMillis());
+    this.mListView.setRefreshTime(System.currentTimeMillis());
     this.mListView.a("opreate_msg_refresh_time");
     if (paramBoolean) {
       showToast();
@@ -144,7 +144,7 @@ public class OpreateMsgActivity
   public void hideListEdit()
   {
     this.mIsEdit = false;
-    this.mTitleButton.setText(2131362291);
+    this.mTitleButton.setText(2131230766);
     this.mListEidt.setVisibility(8);
   }
   
@@ -156,15 +156,15 @@ public class OpreateMsgActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903137);
+    setContentView(2130968693);
     try
     {
-      Activity.class.getDeclaredMethod("overridePendingTransition", new Class[] { Integer.TYPE, Integer.TYPE }).invoke(this, new Object[] { Integer.valueOf(2130968585), Integer.valueOf(2130968584) });
-      this.mListEidt = findViewById(2131296827);
-      this.mListEidt.findViewById(2131296828).setOnClickListener(new tt(this));
-      this.mEditSelectBtn = ((Button)this.mListEidt.findViewById(2131296829));
-      this.mEditSelectBtn.setOnClickListener(new tu(this));
-      this.mListView = ((PullToRefreshListView)findViewById(2131296262));
+      Activity.class.getDeclaredMethod("overridePendingTransition", new Class[] { Integer.TYPE, Integer.TYPE }).invoke(this, new Object[] { Integer.valueOf(2131034135), Integer.valueOf(2131034134) });
+      this.mListEidt = findViewById(2131559025);
+      this.mListEidt.findViewById(2131559026).setOnClickListener(new sx(this, null));
+      this.mEditSelectBtn = ((Button)this.mListEidt.findViewById(2131559027));
+      this.mEditSelectBtn.setOnClickListener(new sy(this, null));
+      this.mListView = ((PullToRefreshListView)findViewById(2131558521));
       if ((!$assertionsDisabled) && (this.mListView == null)) {
         throw new AssertionError();
       }
@@ -175,48 +175,55 @@ public class OpreateMsgActivity
       {
         paramBundle.printStackTrace();
       }
-      this.mAdapter = new tj(this);
-      paramBundle = LayoutInflater.from(this).inflate(2130903142, this.mListView, false);
+      this.mAdapter = new sn(this);
+      paramBundle = LayoutInflater.from(this).inflate(2130968698, this.mListView, false);
       this.mListView.addFooterView(paramBundle);
-      this.mListView.setSelector(2130837756);
+      this.mListView.setSelector(2130837832);
       this.mAdapter.a(paramBundle);
-      paramBundle = LayoutInflater.from(this).inflate(2130903139, this.mListView, false);
+      paramBundle = LayoutInflater.from(this).inflate(2130968695, this.mListView, false);
       this.mListView.addFooterView(paramBundle);
       this.mAdapter.b(paramBundle);
-      this.mAdapter.a();
+      this.mAdapter.c();
       this.mListView.setScrollingCacheEnabled(true);
-      this.mListView.a(this);
-      this.mListView.a(2131362042);
-      this.mListView.a(this.mListView.b("opreate_msg_refresh_time"));
+      this.mListView.setOnRefreshListener(this);
+      this.mListView.a(2131231274);
+      this.mListView.setRefreshTime(this.mListView.b("opreate_msg_refresh_time"));
       paramBundle = getIntent().getBundleExtra("com.tencent.input_param");
       if (paramBundle == null) {
-        break label438;
+        break label430;
       }
     }
     if (paramBundle.getLong("uin") > 0L)
     {
       this.mUin = paramBundle.getLong("uin");
-      ax.a().a(this.mUin);
-      this.mSource = bc.d;
+      do.a().a(this.mUin);
+      this.mSource = dt.d;
       this.mTitleButton = getRightTitleButton();
       this.mTitleButton.setVisibility(0);
-      this.mTitleButton.setText(2131362291);
+      this.mTitleButton.setText(2131230766);
       this.mTitleButton.setOnClickListener(this.mRightTitleButtonClickListener);
-      if ((this.mUin != 0L) || (!s_NeedShowNewMsgCnt)) {
-        break label446;
+      if (this.mUin == 0L) {
+        break label438;
       }
-      this.mAdapter.a(true);
-      s_NeedShowNewMsgCnt = false;
+      this.mAdapter.a(false);
     }
     for (;;)
     {
       this.mListView.setAdapter(this.mAdapter);
       return;
-      label438:
+      label430:
       this.mUin = 0L;
       break;
-      label446:
-      this.mAdapter.a(false);
+      label438:
+      if (s_NeedShowNewMsgCnt)
+      {
+        this.mAdapter.a(true);
+        s_NeedShowNewMsgCnt = false;
+      }
+      else
+      {
+        this.mAdapter.a(false);
+      }
     }
   }
   
@@ -239,10 +246,10 @@ public class OpreateMsgActivity
   
   protected void onResume()
   {
-    e.c("login user queryed: " + this.mMsgMgr.d() + ", muin: " + this.mUin);
+    h.c("login user queryed: " + this.mMsgMgr.d() + ", muin: " + this.mUin);
     if (((!this.mMsgMgr.d()) && (!this.mIsRefreshing)) || ((this.mUin > 0L) && (!this.mIsRefreshing)))
     {
-      e.c("refresh safe msg: ");
+      h.c("refresh safe msg: ");
       startRefresh(this.mSource);
       this.mUin = 0L;
     }
@@ -260,27 +267,27 @@ public class OpreateMsgActivity
     this.mIsSelectAll = paramBoolean;
     if (this.mIsSelectAll)
     {
-      this.mEditSelectBtn.setText(2131362011);
+      this.mEditSelectBtn.setText(2131230880);
       return;
     }
-    this.mEditSelectBtn.setText(2131362010);
+    this.mEditSelectBtn.setText(2131230882);
   }
   
   public void showListEdit()
   {
     this.mIsEdit = true;
-    this.mTitleButton.setText(2131362292);
+    this.mTitleButton.setText(2131230765);
     this.mListEidt.setVisibility(0);
   }
   
   public void showToast()
   {
-    if (this.mCache.i() > 0)
+    if (this.mCache.h() > 0)
     {
-      showOrangeToast(this.mMsgMgr.g() + getResources().getString(2131362016), 2130837964);
+      showOrangeToast(this.mMsgMgr.f() + getResources().getString(2131230893), 2130838017);
       return;
     }
-    showOrangeToast(2131362015, 2130837964);
+    showOrangeToast(2131231271, 2130838017);
   }
   
   public void startRefresh(byte paramByte)

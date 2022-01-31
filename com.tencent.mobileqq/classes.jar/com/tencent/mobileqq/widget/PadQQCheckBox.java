@@ -1,8 +1,10 @@
 package com.tencent.mobileqq.widget;
 
+import alud;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +21,7 @@ public class PadQQCheckBox
 {
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
   private boolean jdField_a_of_type_Boolean;
   
   public PadQQCheckBox(Context paramContext)
@@ -31,13 +33,13 @@ public class PadQQCheckBox
   {
     super(paramContext, paramAttributeSet);
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.PadQQCheckBox);
-    this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(1, true);
-    this.jdField_a_of_type_JavaLangString = paramAttributeSet.getString(0);
-    LayoutInflater.from(paramContext).inflate(2130969150, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365415));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365416));
+    this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(0, true);
+    this.jdField_a_of_type_JavaLangCharSequence = paramAttributeSet.getString(1);
+    LayoutInflater.from(paramContext).inflate(2131559410, this, true);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364247));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364255));
     setChecked(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
     paramAttributeSet.recycle();
     setOnClickListener(this);
   }
@@ -62,9 +64,9 @@ public class PadQQCheckBox
   {
     super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
     if (this.jdField_a_of_type_Boolean) {}
-    for (String str = "已选中";; str = "未选中")
+    for (String str = alud.a(2131708258);; str = alud.a(2131708257))
     {
-      paramAccessibilityNodeInfo.setContentDescription(this.jdField_a_of_type_JavaLangString + str);
+      paramAccessibilityNodeInfo.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence + str);
       return;
     }
   }
@@ -73,19 +75,28 @@ public class PadQQCheckBox
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839298);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840390);
     }
     for (;;)
     {
       refreshDrawableState();
       return;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839296);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840388);
+    }
+  }
+  
+  public void setText(CharSequence paramCharSequence)
+  {
+    if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (!TextUtils.isEmpty(paramCharSequence)))
+    {
+      this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PadQQCheckBox
  * JD-Core Version:    0.7.0.1
  */

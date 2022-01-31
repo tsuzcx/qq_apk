@@ -1,13 +1,25 @@
 package com.tencent.token.ui;
 
-import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.global.h;
+import com.tencent.token.ui.base.TitleOptionMenu;
 
-public class dz
-  extends Handler
+class dz
+  implements View.OnClickListener
 {
-  public dz(FaceChangePwdIndexActivity paramFaceChangePwdIndexActivity)
+  dz(EmbedWebBaseActivity paramEmbedWebBaseActivity) {}
+  
+  public void onClick(View paramView)
   {
-    super(FaceChangePwdIndexActivity.access$700(paramFaceChangePwdIndexActivity));
+    h.a("BaseActivityonItemClicked");
+    if (this.a.mTitleMenu.getVisibility() == 0)
+    {
+      this.a.mTitleMenu.b();
+      return;
+    }
+    this.a.mTitleMenu.setOnItemClickedListener(new ea(this));
+    this.a.mTitleMenu.a();
   }
 }
 

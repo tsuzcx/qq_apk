@@ -1,20 +1,12 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.observer.GameCenterObserver;
+import android.view.MotionEvent;
 
-public class uhw
-  extends GameCenterObserver
+public abstract interface uhw
 {
-  public uhw(VisitorsActivity paramVisitorsActivity) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    this.a.e();
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uhw
  * JD-Core Version:    0.7.0.1
  */

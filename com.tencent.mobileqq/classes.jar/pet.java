@@ -1,19 +1,19 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import java.util.Comparator;
 
-public class pet
-  implements Runnable
+class pet
+  implements Comparator<AdvertisementInfo>
 {
-  public pet(BaseApplicationImpl paramBaseApplicationImpl, Intent paramIntent) {}
+  pet(pes parampes) {}
   
-  public void run()
+  public int a(AdvertisementInfo paramAdvertisementInfo1, AdvertisementInfo paramAdvertisementInfo2)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.doSendBroadcast(this.jdField_a_of_type_AndroidContentIntent);
+    return paramAdvertisementInfo1.mAdKdPos - paramAdvertisementInfo2.mAdKdPos;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pet
  * JD-Core Version:    0.7.0.1
  */

@@ -3,13 +3,13 @@ package com.tencent.mobileqq.troop.utils;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import hbv;
+import gxo;
 import org.json.JSONObject;
 
 public class TroopBarUtils$MyLBSApiPOI
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new hbv();
+  public static final Parcelable.Creator CREATOR = new gxo();
   protected static final String a = "uid";
   protected static final String b = "catalog";
   protected static final String c = "name";

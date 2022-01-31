@@ -5,25 +5,23 @@ import java.util.List;
 
 public class ResourceManager$GameNumberResource
 {
-  public String a;
-  public List a;
-  private String b = ResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager) + "number/";
+  public List<String> gameNums = new ArrayList();
+  private String prefix = ResourceManager.access$000(this.this$0) + "number/";
+  public String scoreSound = this.prefix + "score.mp3";
   
   public ResourceManager$GameNumberResource(ResourceManager paramResourceManager)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = (this.b + "score.mp3");
     int i = 0;
     while (i < 10)
     {
-      this.jdField_a_of_type_JavaUtilList.add(this.b + "gamenum_" + i + ".png");
+      this.gameNums.add(this.prefix + "gamenum_" + i + ".png");
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.GameNumberResource
  * JD-Core Version:    0.7.0.1
  */

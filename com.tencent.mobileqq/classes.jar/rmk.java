@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.discovery.HorizontalRefreshLayout;
 
 public class rmk
-  implements Runnable
+  extends AnimatorListenerAdapter
 {
-  public rmk(AssociatedAccountActivity paramAssociatedAccountActivity) {}
+  public rmk(HorizontalRefreshLayout paramHorizontalRefreshLayout) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    AssociatedAccountActivity.b(this.a);
+    HorizontalRefreshLayout.a(this.a, 0.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rmk
  * JD-Core Version:    0.7.0.1
  */

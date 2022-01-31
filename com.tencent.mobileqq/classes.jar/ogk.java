@@ -1,62 +1,86 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.POIListRequestCallback;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.POIListRequestSession;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.takevideo.EditVideoPoiSearch;
-import com.tencent.biz.qqstory.takevideo.poilist.QQStoryPoiListAdapter;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.SurfaceHolder;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView.WeakReferenceRunnable;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
+import java.lang.ref.WeakReference;
 
 public class ogk
-  implements LbsManager.POIListRequestCallback
+  implements TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnVideoPreparedListener, IVideoViewBase.IVideoViewCallBack
 {
-  public ogk(EditVideoPoiSearch paramEditVideoPoiSearch, String paramString) {}
+  private WeakReference<ReadInJoyArticleBottomVideoView> a;
   
-  public void a(int paramInt, LbsManager.POIListRequestSession paramPOIListRequestSession, List paramList)
+  public ogk(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession = paramPOIListRequestSession;
-    if (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.isValidate()) {
+    this.a = new WeakReference(paramReadInJoyArticleBottomVideoView);
+  }
+  
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    paramTVK_IMediaPlayer = (ReadInJoyArticleBottomVideoView)this.a.get();
+    if (paramTVK_IMediaPlayer == null) {
       return;
     }
-    if (paramInt == 0) {
-      if (paramPOIListRequestSession.a()) {
-        break label210;
-      }
-    }
-    label210:
-    for (boolean bool = true;; bool = false)
+    ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer, 9);
+    ocl.c = true;
+    paramTVK_IMediaPlayer.j();
+    paramTVK_IMediaPlayer.q();
+    ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer).a = true;
+  }
+  
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  {
+    paramTVK_IMediaPlayer = (ReadInJoyArticleBottomVideoView)this.a.get();
+    if (paramTVK_IMediaPlayer == null) {}
+    do
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.d.setVisibility(0);
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.a(bool);
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.jdField_a_of_type_JavaUtilArrayList == null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyArticleBottomVideoView", 0, "error msg = " + paramString);
       }
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession.b()) {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.jdField_a_of_type_JavaUtilArrayList.clear();
-      }
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.jdField_a_of_type_ComTencentBizQqstoryTakevideoPoilistQQStoryPoiListAdapter != null)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.jdField_a_of_type_ComTencentBizQqstoryTakevideoPoilistQQStoryPoiListAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.jdField_a_of_type_JavaUtilArrayList, null);
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.jdField_a_of_type_ComTencentBizQqstoryTakevideoPoilistQQStoryPoiListAdapter.notifyDataSetChanged();
-        if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-        {
-          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.a(this.jdField_a_of_type_JavaLangString);
-          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.d.setVisibility(4);
-        }
-      }
-      int i = paramInt;
-      if (paramInt == 0) {
-        i = 0;
-      }
-      StoryReportor.b("edit_video", "poi_list_success", 0, i, new String[0]);
+      ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer, 8);
+      paramTVK_IMediaPlayer.j();
+    } while (!QLog.isColorLevel());
+    QLog.i("ReadInJoyArticleBottomVideoView", 3, "WebFastProteusViewAdBannerVideoCreator start video error");
+    return false;
+  }
+  
+  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
+  {
+    paramSurfaceHolder = (ReadInJoyArticleBottomVideoView)this.a.get();
+    if (paramSurfaceHolder == null) {
       return;
     }
+    paramSurfaceHolder.p();
+  }
+  
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    paramTVK_IMediaPlayer = (ReadInJoyArticleBottomVideoView)this.a.get();
+    if (paramTVK_IMediaPlayer == null) {
+      return;
+    }
+    if ((Looper.myLooper() != Looper.getMainLooper()) && (ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer) != null))
+    {
+      ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer).post(new ReadInJoyArticleBottomVideoView.WeakReferenceRunnable(paramTVK_IMediaPlayer, 2));
+      return;
+    }
+    ReadInJoyArticleBottomVideoView.b(paramTVK_IMediaPlayer);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ogk
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package gameloginsdk;
 
 import b.a.f;
 import com.qq.taf.jce.JceStruct;
-import d.a.a;
+import com.tencent.token.fm;
 
 class i
   extends p
@@ -26,7 +26,7 @@ class i
   {
     if (paramJceStruct == null)
     {
-      paramInt1 = a.a;
+      paramInt1 = fm.a;
       a(paramInt3, (int)this.d);
     }
     do
@@ -36,13 +36,13 @@ class i
         return;
         if (paramInt3 == -50004)
         {
-          paramInt1 = a.a;
+          paramInt1 = fm.a;
           new StringBuilder().append("回包超时  httpGetAppidTypeCallback   retCode : ").append(paramInt3).toString();
           a(paramInt3, (int)this.d);
           return;
         }
         paramJceStruct = (f)paramJceStruct;
-        paramInt1 = a.a;
+        paramInt1 = fm.a;
         paramInt1 = paramJceStruct.b;
         long l = paramJceStruct.a;
         localObject = paramJceStruct.c;
@@ -52,7 +52,7 @@ class i
         new StringBuilder().append("SCGameAppid url : ").append(paramJceStruct.c).toString();
         if (!this.a.g.a(paramJceStruct.a))
         {
-          paramInt1 = a.a;
+          paramInt1 = fm.a;
           new StringBuilder().append("忽略这个包，因为没收到过包的reqid : ").append(paramJceStruct.a).toString();
           new StringBuilder().append("忽略这个包，因为没收到过SCGameAppid包的reqid : ").append(paramJceStruct.a).toString();
           return;

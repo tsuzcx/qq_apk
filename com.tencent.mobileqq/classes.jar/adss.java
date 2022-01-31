@@ -1,16 +1,18 @@
+import com.tencent.mobileqq.activity.QQSettingMe;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.imaxad.ImaxAdNetPresenter;
+import com.tencent.qphone.base.util.QLog;
 
 public class adss
-  implements Runnable
+  extends amcd
 {
-  public adss(ImaxAdNetPresenter paramImaxAdNetPresenter, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
+  public adss(QQSettingMe paramQQSettingMe) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extStr);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSettingRedesign", 2, "updateLevelAndVip from mVipInfoChangedObserver");
+    }
+    this.a.c(this.a.a.getCurrentAccountUin());
   }
 }
 

@@ -1,57 +1,56 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.open.wadl.WLog;
-import com.tencent.open.wadl.WadlJsBridgeCall;
-import com.tencent.pb.wadl.GetGameCheckCode.GetGameCheckCodeRspBody;
-import cooperation.wadl.ipc.WadlParams;
-import cooperation.wadl.ipc.WadlProxyServiceUtil;
-import cooperation.wadl.ipc.WadlProxyServiceWrap;
-import mqq.observer.BusinessObserver;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloGameShare.2;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class aljr
-  implements BusinessObserver
+  implements bfah
 {
-  public aljr(WadlJsBridgeCall paramWadlJsBridgeCall, WadlParams paramWadlParams) {}
+  public aljr(ApolloGameShare.2 param2) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(BaseResp paramBaseResp)
   {
-    try
+    if (paramBaseResp == null) {}
+    do
     {
-      Object localObject = paramBundle.getString("extra_cmd");
-      int i = paramBundle.getInt("extra_result_code");
-      String str = paramBundle.getString("extra_result_err_msg");
-      WLog.b("WadlJsBridgeCall", "getWadlTaskSign type=" + paramInt + ",success=" + paramBoolean + ",cmd=" + (String)localObject + ",resultCode=" + i + ",errMsg=" + str);
-      if (TextUtils.equals((CharSequence)localObject, "GameCenterProtoSvr.GetGameCheckCode"))
+      do
       {
-        WLog.a("WadlJsBridgeCall", 3, "get app check success=" + paramBoolean);
-        if (paramBoolean)
-        {
-          paramBundle = paramBundle.getByteArray("extra_data");
-          localObject = new GetGameCheckCode.GetGameCheckCodeRspBody();
-          ((GetGameCheckCode.GetGameCheckCodeRspBody)localObject).mergeFrom(paramBundle);
-          paramInt = ((GetGameCheckCode.GetGameCheckCodeRspBody)localObject).ret.get();
-          paramBundle = ((GetGameCheckCode.GetGameCheckCodeRspBody)localObject).check_code.get();
-          WLog.b("WadlJsBridgeCall", "getWadlTaskSign success ret=" + paramInt + ",apk sign=" + paramBundle);
-          if ((paramInt == 0) && (!TextUtils.isEmpty(paramBundle)))
-          {
-            this.jdField_a_of_type_CooperationWadlIpcWadlParams.c = paramBundle;
-            WadlProxyServiceUtil.a().b(this.jdField_a_of_type_CooperationWadlIpcWadlParams);
-          }
-        }
-      }
-      return;
-    }
-    catch (Exception paramBundle)
+        return;
+      } while ((aljp.a(this.a.this$0) == null) || (!aljp.a(this.a.this$0).equals(paramBaseResp.transaction)));
+      QLog.i("ApolloGameShare", 1, "[shareResult2WXFriendOrCircle], resp.errCode:" + paramBaseResp.errCode);
+    } while (paramBaseResp.errCode != 0);
+    paramBaseResp = this.a.this$0.a();
+    int j;
+    int i;
+    if (paramBaseResp == null)
     {
-      WLog.a("WadlJsBridgeCall", "getWadlTaskSign exception:" + paramBundle.getMessage());
+      j = -1;
+      if (1 != this.a.a) {
+        break label159;
+      }
+      i = 3;
+    }
+    for (;;)
+    {
+      VipUtils.a(aljp.a(this.a.this$0), "cmshow", "Apollo", "share_url_succeed", j, i, new String[] { Integer.toString(aljp.a(this.a.this$0)) });
+      return;
+      j = ApolloUtil.b(paramBaseResp.a.a);
+      break;
+      label159:
+      if (2 == this.a.a) {
+        i = 4;
+      } else {
+        i = -1;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aljr
  * JD-Core Version:    0.7.0.1
  */

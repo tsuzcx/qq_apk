@@ -1,24 +1,19 @@
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.view.widget.InnerListView;
-import com.tencent.biz.qqstory.view.widget.InnerListView.OnItemLongClickListener;
+import android.view.View.OnClickListener;
 
-public class oqw
-  implements View.OnLongClickListener
+class oqw
+  implements View.OnClickListener
 {
-  public oqw(InnerListView paramInnerListView, int paramInt) {}
+  oqw(oqv paramoqv, String paramString1, String paramString2) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(View paramView)
   {
-    if ((InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null) && (InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null)) {
-      return InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView).a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView, paramView, this.jdField_a_of_type_Int);
-    }
-    return false;
+    oqv.a(this.jdField_a_of_type_Oqv).a(this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oqw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,23 @@
-import com.tencent.gdtad.aditem.GdtAdLoader.Session;
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.net.GdtHttp.Listener;
-import com.tencent.gdtad.net.GdtHttp.Params;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import tencent.gdt.qq_ad_get.QQAdGetRsp;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
 
-class qkp
-  implements GdtHttp.Listener
+public final class qkp
+  implements Parcelable.Creator<DislikeInfo>
 {
-  qkp(qko paramqko) {}
-  
-  public void a(GdtHttp.Params paramParams)
+  public DislikeInfo a(Parcel paramParcel)
   {
-    if (paramParams == null) {}
-    for (;;)
-    {
-      this.a.a();
-      return;
-      if ((paramParams.c == 200) && (paramParams.b != null))
-      {
-        qko.a(this.a).a = new qq_ad_get.QQAdGetRsp();
-        try
-        {
-          qko.a(this.a).a.mergeFrom(paramParams.b);
-        }
-        catch (InvalidProtocolBufferMicroException paramParams)
-        {
-          GdtLog.d("GdtAdLoader", "onResponse", paramParams);
-        }
-      }
-    }
+    return new DislikeInfo(paramParcel);
+  }
+  
+  public DislikeInfo[] a(int paramInt)
+  {
+    return new DislikeInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qkp
  * JD-Core Version:    0.7.0.1
  */

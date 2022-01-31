@@ -10,15 +10,15 @@ import java.util.Map;
 public final class strupbuff
   extends JceStruct
 {
-  static Map cache_logstring;
+  static Map<String, ArrayList<byte[]>> cache_logstring;
   public byte encoding;
-  public Map logstring;
+  public Map<String, ArrayList<byte[]>> logstring;
   public String prefix = "";
   public int seqno;
   
   public strupbuff() {}
   
-  public strupbuff(Map paramMap, String paramString, byte paramByte, int paramInt)
+  public strupbuff(Map<String, ArrayList<byte[]>> paramMap, String paramString, byte paramByte, int paramInt)
   {
     this.logstring = paramMap;
     this.prefix = paramString;

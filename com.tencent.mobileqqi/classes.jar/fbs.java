@@ -1,23 +1,46 @@
-import android.content.Context;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.voip.VoipTencentPayActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.app.DiscussionIconHelper;
+import java.util.ArrayList;
 
-class fbs
-  implements Runnable
+public class fbs
 {
-  fbs(fbq paramfbq, Context paramContext) {}
+  public byte a;
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
   
-  public void run()
+  private fbs(DiscussionIconHelper paramDiscussionIconHelper)
   {
-    this.jdField_a_of_type_Fbq.a.a.hide();
-    Toast.makeText(this.jdField_a_of_type_AndroidContentContext, "加载失败", 0).show();
-    this.jdField_a_of_type_Fbq.a.finish();
+    this.jdField_a_of_type_Byte = 1;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public void a(byte paramByte)
+  {
+    if (paramByte == 3)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Byte = 1;
+      this.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaLangString = null;
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_b_of_type_Int = 0;
+      this.jdField_b_of_type_JavaLangString = null;
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+    }
+    while (paramByte != 2) {
+      return;
+    }
+    this.jdField_b_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     fbs
  * JD-Core Version:    0.7.0.1
  */

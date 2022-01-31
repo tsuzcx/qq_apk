@@ -1,64 +1,77 @@
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameCmdChannel;
-import com.tencent.mobileqq.apollo.process.data.CmGameMainManager;
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.biz.troop.TroopMemberApiService;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloGameData;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
-import oicq.wlogin_sdk.tools.util;
-import org.json.JSONObject;
 
 public class yrq
-  extends WtloginObserver
+  extends bayj
 {
-  public int a;
-  public int b;
+  public yrq(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public yrq(CmGameMainManager paramCmGameMainManager) {}
-  
-  public void OnGetOpenKeyWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2, ErrMsg paramErrMsg)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramInt2 == 0)
+    bass localbass;
+    Bundle localBundle;
+    if ((TroopMemberApiService.j(this.a) instanceof QQAppInterface))
     {
-      paramString = util.buf_to_string(paramArrayOfByte2);
-      if (QLog.isColorLevel()) {
-        QLog.i("cmgame_process.CmGameMainManager", 2, "OnGetOpenKeyWithoutPasswd token:" + paramString);
-      }
-      paramArrayOfByte1 = this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameMainManager.a();
-      if (paramArrayOfByte1 != null) {
-        break label57;
-      }
+      localbass = (bass)paramMessage.obj;
+      localBundle = new Bundle();
+      localBundle.putInt("seq", this.a.c);
     }
-    for (;;)
+    switch (paramMessage.what)
     {
-      return;
-      try
+    case 1004: 
+    default: 
+    case 1003: 
+      do
       {
-        label57:
-        paramArrayOfByte2 = new JSONObject();
-        paramArrayOfByte2.put("appId", paramLong2);
-        paramArrayOfByte2.put("gameId", this.jdField_a_of_type_Int);
-        paramArrayOfByte2.put("openKey", paramString);
-        CmGameCmdChannel.a(paramArrayOfByte1).a(0, "cs.on_get_open_key.local", paramArrayOfByte2.toString(), this.b);
-        paramArrayOfByte1 = ((ApolloDaoManager)paramArrayOfByte1.getManager(154)).a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameMainManager.a.game.gameId);
-        if (paramArrayOfByte1 != null)
+        do
         {
-          paramArrayOfByte1.openKey = paramString;
+          return;
+          if (localbass.jdField_b_of_type_Int != 64) {
+            break;
+          }
+          this.a.jdField_a_of_type_Int = bavb.jdField_a_of_type_Int;
+        } while (this.a.jdField_a_of_type_Int == this.a.jdField_b_of_type_Int);
+        this.a.jdField_b_of_type_Int = this.a.jdField_a_of_type_Int;
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopMemberApiService", 2, "mPhotoUploadHandler.handleMessage(), static avatar upload success. photoId = " + this.a.jdField_a_of_type_Int);
+        }
+        paramMessage = (auxh)((QQAppInterface)TroopMemberApiService.k(this.a)).a(60);
+        if (paramMessage != null) {
+          paramMessage.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, true);
+        }
+        localBundle.putInt("head_id", this.a.jdField_a_of_type_Int);
+        localBundle.putString("video_id", this.a.jdField_b_of_type_JavaLangString);
+        localBundle.putBoolean("isSuccess", true);
+        this.a.a(75, localBundle);
+        return;
+        if (localbass.jdField_b_of_type_Int == 39)
+        {
+          this.a.jdField_b_of_type_JavaLangString = ((bavb)localbass.a).jdField_b_of_type_JavaLangString;
+          if (QLog.isColorLevel()) {
+            QLog.i("TroopMemberApiService", 2, "mPhotoUploadHandler.handleMessage(), big video upload success. videoId = " + this.a.jdField_b_of_type_JavaLangString);
+          }
+          auxb.a((QQAppInterface)TroopMemberApiService.l(this.a), this.a.jdField_a_of_type_JavaLangString);
           return;
         }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("cmgame_process.CmGameMainManager", 1, "OpenKeyObserver error:", paramString);
-      }
+        localBundle.putBoolean("isSuccess", false);
+        this.a.a(75, localBundle);
+      } while (!QLog.isColorLevel());
+      QLog.i("TroopMemberApiService", 2, "mPhotoUploadHandler.handleMessage(), upload photo failed.");
+      return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopMemberApiService", 2, "mPhotoUploadHandler.handleMessage(), upload photo failed. STATUS_SEND_ERROR");
+    }
+    localBundle.putBoolean("isSuccess", false);
+    this.a.a(75, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yrq
  * JD-Core Version:    0.7.0.1
  */

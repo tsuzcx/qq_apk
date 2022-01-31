@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class structmsg$SystemMsgAction
-  extends MessageMicro
+  extends MessageMicro<SystemMsgAction>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42 }, new String[] { "name", "result", "action", "action_info", "detail_name" }, new Object[] { "", "", Integer.valueOf(0), null, "" }, SystemMsgAction.class);
   public final PBUInt32Field action = PBField.initUInt32(0);
@@ -18,7 +18,7 @@ public final class structmsg$SystemMsgAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.mobileim.structmsg.structmsg.SystemMsgAction
  * JD-Core Version:    0.7.0.1
  */

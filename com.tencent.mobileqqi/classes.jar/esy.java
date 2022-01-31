@@ -1,30 +1,24 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.dataline.activities.LiteWifiphotoActivity;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager.CallBack;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.HashMap;
 
 public class esy
-  implements View.OnClickListener
+  implements Runnable
 {
-  public esy(BannerManager paramBannerManager) {}
+  public esy(QvipSpecialSoundManager paramQvipSpecialSoundManager, QvipSpecialSoundManager.CallBack paramCallBack) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    paramView = new Intent(BannerManager.a(this.a), LiteWifiphotoActivity.class);
-    paramView.putExtra("isFromStatusbar", true);
-    BannerManager.a(this.a).startActivity(paramView);
+    String str = QvipSpecialSoundManager.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a(str);
+    boolean bool = QvipSpecialSoundManager.a.containsKey("key_special_sound_list" + QvipSpecialSoundManager.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager).a());
+    QvipSpecialSoundManager.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager, this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager$CallBack, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     esy
  * JD-Core Version:    0.7.0.1
  */

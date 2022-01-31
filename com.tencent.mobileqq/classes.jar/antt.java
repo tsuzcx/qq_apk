@@ -1,27 +1,35 @@
-import android.graphics.Bitmap;
-import dov.com.tencent.biz.qqstory.takevideo.VideoFragmentInfo;
+import com.tencent.mobileqq.armap.sensor.rotation.Vector3;
 
 public class antt
-  extends VideoFragmentInfo
 {
-  public Bitmap a;
-  public Bitmap b;
-  
-  public antt(int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3)
+  public static float a(double paramDouble)
   {
-    super(paramInt, paramBitmap1);
-    this.b = paramBitmap2;
-    this.a = paramBitmap3;
+    return (float)(paramDouble - Math.floor(paramDouble / 360.0D) * 360.0D);
   }
   
-  public antt(VideoFragmentInfo paramVideoFragmentInfo, Bitmap paramBitmap1, Bitmap paramBitmap2)
+  public static float a(float paramFloat1, float paramFloat2)
   {
-    this(paramVideoFragmentInfo.jdField_c_of_type_Int, paramVideoFragmentInfo.jdField_c_of_type_AndroidGraphicsBitmap, paramBitmap1, paramBitmap2);
+    return (float)Math.asin(paramFloat1 / (2.0F * paramFloat2));
+  }
+  
+  public static float a(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    return (float)(paramFloat1 * paramFloat2 * paramFloat3 / Math.sqrt((paramFloat1 + paramFloat2 + paramFloat3) * (paramFloat1 - paramFloat2 + paramFloat3) * (paramFloat1 + paramFloat2 - paramFloat3) * (paramFloat2 + paramFloat3 - paramFloat1)));
+  }
+  
+  public static float a(Vector3 paramVector31, Vector3 paramVector32)
+  {
+    return (float)Math.sqrt((paramVector31.x - paramVector32.x) * (paramVector31.x - paramVector32.x) + (paramVector31.y - paramVector32.y) * (paramVector31.y - paramVector32.y) + (paramVector31.z - paramVector32.z) * (paramVector31.z - paramVector32.z));
+  }
+  
+  public static float b(float paramFloat1, float paramFloat2)
+  {
+    return (float)Math.asin(Math.min(1.0F, Math.max(-1.0F, paramFloat1 / (2.0F * paramFloat2))));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     antt
  * JD-Core Version:    0.7.0.1
  */

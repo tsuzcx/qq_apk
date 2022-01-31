@@ -1,27 +1,23 @@
-import android.os.Handler;
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
-import com.tencent.mobileqq.activity.photo.SendPhotoActivity.sendPhotoTask;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pic.Logger;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
 
-public class wyt
-  implements MessageQueue.IdleHandler
+public final class wyt
+  implements Parcelable.Creator<EditTakePhotoSource>
 {
-  public wyt(SendPhotoActivity paramSendPhotoActivity) {}
-  
-  public boolean queueIdle()
+  public EditTakePhotoSource a(Parcel paramParcel)
   {
-    Logger.a(SendPhotoActivity.jdField_a_of_type_JavaLangString, "queueIdle", "start");
-    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoActivity$sendPhotoTask = new SendPhotoActivity.sendPhotoTask(this.a, null);
-    ThreadManager.post(this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoActivity$sendPhotoTask, 8, null, false);
-    return false;
+    return new EditTakePhotoSource(paramParcel);
+  }
+  
+  public EditTakePhotoSource[] a(int paramInt)
+  {
+    return new EditTakePhotoSource[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wyt
  * JD-Core Version:    0.7.0.1
  */

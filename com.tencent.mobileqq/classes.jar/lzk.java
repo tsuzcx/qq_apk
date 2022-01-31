@@ -1,60 +1,62 @@
-import android.os.Message;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.FileUploadController.FileUploadListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.ImageUploadController;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.LBSInfo;
 
-public class lzk
-  extends TransProcessorHandler
+public abstract class lzk
+  extends Binder
+  implements lzj
 {
-  public lzk(ImageUploadController paramImageUploadController) {}
-  
-  public void handleMessage(Message paramMessage)
+  public static lzj a(IBinder paramIBinder)
   {
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if ((localFileMsg == null) || (localFileMsg.b != 24) || (localFileMsg.c != 10)) {}
-    while (localFileMsg.f.equals(ImageUploadController.a(this.a))) {
-      return;
+    if (paramIBinder == null) {
+      return null;
     }
-    switch (paramMessage.what)
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.service.IQQServiceLocationCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof lzj))) {
+      return (lzj)localIInterface;
+    }
+    return new lzl(paramIBinder);
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
     {
-    case 1002: 
-    case 1004: 
     default: 
-      return;
-    case 1001: 
-      if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcVideoTransferFileUploadController$FileUploadListener != null) {
-        this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcVideoTransferFileUploadController$FileUploadListener.a();
-      }
-      ImageUploadController.a(this.a, System.currentTimeMillis());
-      return;
-    case 1003: 
-      ImageUploadController.b(this.a, System.currentTimeMillis());
-      PublicAccountReportUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8008180", "0X8008180", 0, 0, String.valueOf(ImageUploadController.a(this.a)), String.valueOf(ImageUploadController.b(this.a)), String.valueOf(ImageUploadController.a(this.a) - ImageUploadController.b(this.a)), String.valueOf(ImageUploadController.c(this.a) - ImageUploadController.d(this.a)));
-      if (QLog.isColorLevel()) {
-        QLog.d("ImageUploadController", 2, "mPicTransProcessorHandler send finished!");
-      }
-      ImageUploadController.a(this.a, localFileMsg.f);
-      ImageUploadController.b(this.a, localFileMsg.i);
-      if (QLog.isColorLevel()) {
-        QLog.d("ImageUploadController", 2, "mPicTransProcessorHandler mImageMd5=" + ImageUploadController.a(this.a) + ", mImageUrl=" + ImageUploadController.b(this.a));
-      }
-      ImageUploadController.a(this.a, 0, ImageUploadController.b(this.a), ImageUploadController.a(this.a), null);
-      return;
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.av.service.IQQServiceLocationCallback");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceLocationCallback");
+      a(paramParcel1.readInt(), paramParcel1.readString());
+      return true;
     }
-    ImageUploadController.b(this.a, System.currentTimeMillis());
-    PublicAccountReportUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8008180", "0X8008180", 0, 1, String.valueOf(ImageUploadController.a(this.a)), String.valueOf(ImageUploadController.b(this.a)), String.valueOf(ImageUploadController.a(this.a) - ImageUploadController.b(this.a)), String.valueOf(ImageUploadController.c(this.a) - ImageUploadController.d(this.a)));
-    if (QLog.isColorLevel()) {
-      QLog.d("ImageUploadController", 2, "mPicTransProcessorHandler send error:" + localFileMsg.g);
+    paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceLocationCallback");
+    boolean bool;
+    if (paramParcel1.readInt() != 0)
+    {
+      bool = true;
+      if (paramParcel1.readInt() == 0) {
+        break label125;
+      }
     }
-    ImageUploadController.a(this.a, 1004, null, null, null);
+    label125:
+    for (paramParcel1 = (LBSInfo)LBSInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    {
+      a(bool, paramParcel1);
+      return true;
+      bool = false;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lzk
  * JD-Core Version:    0.7.0.1
  */

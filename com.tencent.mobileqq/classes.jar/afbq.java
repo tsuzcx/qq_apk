@@ -1,22 +1,18 @@
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserImage.OnLoadListener;
+import com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker;
 
 public class afbq
-  implements Runnable
+  implements afbv
 {
-  public afbq(PicBrowserGalleryAdapter paramPicBrowserGalleryAdapter, int paramInt, boolean paramBoolean) {}
+  public afbq(ColorPicker paramColorPicker, afbt paramafbt) {}
   
-  public void run()
+  public void a()
   {
-    PicBrowserGalleryAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserGalleryAdapter, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
-    if (PicBrowserGalleryAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserGalleryAdapter) != null) {
-      PicBrowserGalleryAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserGalleryAdapter).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker.onClick(this.jdField_a_of_type_Afbt.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afbq
  * JD-Core Version:    0.7.0.1
  */

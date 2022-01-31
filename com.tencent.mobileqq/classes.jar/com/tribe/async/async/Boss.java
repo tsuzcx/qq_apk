@@ -57,7 +57,7 @@ public abstract interface Boss
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tribe.async.async.Boss
  * JD-Core Version:    0.7.0.1
  */

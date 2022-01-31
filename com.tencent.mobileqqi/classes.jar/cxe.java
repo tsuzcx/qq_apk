@@ -1,19 +1,16 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import com.tencent.mobileqq.activity.IndividuationSetActivity;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.biz.common.offline.HtmlOffline;
+import com.tencent.mobileqq.activity.NearPeopleActivity;
 
-class cxe
+public class cxe
   implements Runnable
 {
-  cxe(cxd paramcxd, Bitmap paramBitmap) {}
+  public cxe(NearPeopleActivity paramNearPeopleActivity) {}
   
   public void run()
   {
-    BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    int i = this.jdField_a_of_type_Cxd.a.getResources().getDimensionPixelSize(2131427609);
-    IndividuationSetActivity.a(this.jdField_a_of_type_Cxd.a).setRightIcon(localBitmapDrawable, i, i);
+    if (HtmlOffline.a(NearPeopleActivity.a(this.a)) == null) {
+      HtmlOffline.a(this.a.a, NearPeopleActivity.b(this.a), this.a.b);
+    }
   }
 }
 

@@ -6,15 +6,16 @@ import android.graphics.Canvas;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.BaseApplicationImpl;
+import xsm;
+import xwx;
 
 public class BubbleTextView
   extends TextView
 {
   public float a;
   public int a;
-  private BubbleDrawable a;
+  private xwx a;
   public boolean a;
   public float b;
   public int b;
@@ -25,10 +26,10 @@ public class BubbleTextView
   public BubbleTextView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Float = UIUtils.a(BaseApplicationImpl.getContext(), 11.0F);
-    this.jdField_b_of_type_Float = UIUtils.a(BaseApplicationImpl.getContext(), 3.0F);
-    this.jdField_c_of_type_Float = UIUtils.a(BaseApplicationImpl.getContext(), 5.0F);
-    this.jdField_a_of_type_Int = getResources().getColor(2131493773);
+    this.jdField_a_of_type_Float = xsm.a(BaseApplicationImpl.getContext(), 11.0F);
+    this.jdField_b_of_type_Float = xsm.a(BaseApplicationImpl.getContext(), 3.0F);
+    this.jdField_c_of_type_Float = xsm.a(BaseApplicationImpl.getContext(), 5.0F);
+    this.jdField_a_of_type_Int = getResources().getColor(2131166383);
     this.jdField_b_of_type_Int = 3;
     this.jdField_a_of_type_Boolean = true;
     this.jdField_c_of_type_Int = 0;
@@ -37,10 +38,10 @@ public class BubbleTextView
   public BubbleTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Float = UIUtils.a(BaseApplicationImpl.getContext(), 11.0F);
-    this.jdField_b_of_type_Float = UIUtils.a(BaseApplicationImpl.getContext(), 3.0F);
-    this.jdField_c_of_type_Float = UIUtils.a(BaseApplicationImpl.getContext(), 5.0F);
-    this.jdField_a_of_type_Int = getResources().getColor(2131493773);
+    this.jdField_a_of_type_Float = xsm.a(BaseApplicationImpl.getContext(), 11.0F);
+    this.jdField_b_of_type_Float = xsm.a(BaseApplicationImpl.getContext(), 3.0F);
+    this.jdField_c_of_type_Float = xsm.a(BaseApplicationImpl.getContext(), 5.0F);
+    this.jdField_a_of_type_Int = getResources().getColor(2131166383);
     this.jdField_b_of_type_Int = 3;
     this.jdField_a_of_type_Boolean = true;
     this.jdField_c_of_type_Int = 0;
@@ -50,10 +51,10 @@ public class BubbleTextView
   public BubbleTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Float = UIUtils.a(BaseApplicationImpl.getContext(), 11.0F);
-    this.jdField_b_of_type_Float = UIUtils.a(BaseApplicationImpl.getContext(), 3.0F);
-    this.jdField_c_of_type_Float = UIUtils.a(BaseApplicationImpl.getContext(), 5.0F);
-    this.jdField_a_of_type_Int = getResources().getColor(2131493773);
+    this.jdField_a_of_type_Float = xsm.a(BaseApplicationImpl.getContext(), 11.0F);
+    this.jdField_b_of_type_Float = xsm.a(BaseApplicationImpl.getContext(), 3.0F);
+    this.jdField_c_of_type_Float = xsm.a(BaseApplicationImpl.getContext(), 5.0F);
+    this.jdField_a_of_type_Int = getResources().getColor(2131166383);
     this.jdField_b_of_type_Int = 3;
     this.jdField_a_of_type_Boolean = true;
     this.jdField_c_of_type_Int = 0;
@@ -67,16 +68,16 @@ public class BubbleTextView
   
   private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleDrawable = new BubbleDrawable();
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleDrawable.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramInt1, paramInt3, paramInt2, paramInt4);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleDrawable.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleDrawable.jdField_c_of_type_Int = this.jdField_c_of_type_Int;
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleDrawable.jdField_b_of_type_Float = this.jdField_b_of_type_Float;
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleDrawable.jdField_c_of_type_Float = this.jdField_c_of_type_Float;
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleDrawable.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleDrawable.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleDrawable.d = this.d;
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleDrawable.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Xwx = new xwx();
+    this.jdField_a_of_type_Xwx.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramInt1, paramInt3, paramInt2, paramInt4);
+    this.jdField_a_of_type_Xwx.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+    this.jdField_a_of_type_Xwx.jdField_c_of_type_Int = this.jdField_c_of_type_Int;
+    this.jdField_a_of_type_Xwx.jdField_b_of_type_Float = this.jdField_b_of_type_Float;
+    this.jdField_a_of_type_Xwx.jdField_c_of_type_Float = this.jdField_c_of_type_Float;
+    this.jdField_a_of_type_Xwx.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+    this.jdField_a_of_type_Xwx.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Xwx.d = this.d;
+    this.jdField_a_of_type_Xwx.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
   }
   
   private void c()
@@ -123,8 +124,8 @@ public class BubbleTextView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleDrawable != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleDrawable.draw(paramCanvas);
+    if (this.jdField_a_of_type_Xwx != null) {
+      this.jdField_a_of_type_Xwx.draw(paramCanvas);
     }
     super.onDraw(paramCanvas);
   }
@@ -139,7 +140,7 @@ public class BubbleTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.bubble.BubbleTextView
  * JD-Core Version:    0.7.0.1
  */

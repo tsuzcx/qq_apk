@@ -1,31 +1,32 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import dov.com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView;
+import android.animation.AnimatorSet;
+import android.graphics.Rect;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.HashMap;
 
 public class anwx
-  implements Animation.AnimationListener
 {
-  public anwx(ArtFilterItemView paramArtFilterItemView, EditVideoArtFilter paramEditVideoArtFilter) {}
+  public long a;
+  public AnimatorSet a;
+  public Rect a;
+  public View a;
+  public ImageView a;
+  public MessageRecord a;
+  public HashMap<String, anxk> a;
+  public long b;
+  public Rect b;
+  public MessageRecord b;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public anwx()
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a = false;
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView != null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.setVisibility(8);
-    }
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter != null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter.a(true);
-    }
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anwx
  * JD-Core Version:    0.7.0.1
  */

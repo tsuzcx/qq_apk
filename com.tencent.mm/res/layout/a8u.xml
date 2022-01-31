@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/clk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/cll" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/clm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/media_btn_play" android:layout_centerInParent="true" />
+    <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/cln" android:visibility="gone" android:layout_width="@dimen/a81" android:layout_height="@dimen/a81" android:layout_centerInParent="true" />
+</RelativeLayout>

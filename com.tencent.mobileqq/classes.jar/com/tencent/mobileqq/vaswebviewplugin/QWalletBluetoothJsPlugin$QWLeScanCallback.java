@@ -19,9 +19,9 @@ class QWalletBluetoothJsPlugin$QWLeScanCallback
 {
   private boolean mAllowDuplicatesKey;
   private int mInterval;
-  private ArrayList mServices;
+  private ArrayList<UUID> mServices;
   private Timer mTimer;
-  private List tempDevices;
+  private List<QWalletBluetoothJsPlugin.BluetoothDeviceExtend> tempDevices;
   
   QWalletBluetoothJsPlugin$QWLeScanCallback(QWalletBluetoothJsPlugin paramQWalletBluetoothJsPlugin, JSONArray paramJSONArray, boolean paramBoolean, int paramInt)
   {
@@ -66,7 +66,7 @@ class QWalletBluetoothJsPlugin$QWLeScanCallback
     }
   }
   
-  List getTempDevices()
+  List<QWalletBluetoothJsPlugin.BluetoothDeviceExtend> getTempDevices()
   {
     try
     {
@@ -134,7 +134,7 @@ class QWalletBluetoothJsPlugin$QWLeScanCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletBluetoothJsPlugin.QWLeScanCallback
  * JD-Core Version:    0.7.0.1
  */

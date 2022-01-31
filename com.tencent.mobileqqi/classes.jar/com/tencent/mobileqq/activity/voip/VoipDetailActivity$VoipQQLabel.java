@@ -18,8 +18,8 @@ import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QCallRecent;
 import com.tencent.mobileqq.statistics.ReportController;
-import eyc;
-import eyd;
+import eto;
+import etp;
 
 public class VoipDetailActivity$VoipQQLabel
   extends FrameLayout
@@ -34,26 +34,26 @@ public class VoipDetailActivity$VoipQQLabel
   public VoipDetailActivity$VoipQQLabel(VoipDetailActivity paramVoipDetailActivity, Context paramContext, AttributeSet paramAttributeSet, String paramString)
   {
     super(paramContext, paramAttributeSet);
-    LayoutInflater.from(paramContext).inflate(2130904056, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234680));
+    LayoutInflater.from(paramContext).inflate(2130904058, this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234682));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131234679));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131234681));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234682));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131234681));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131234683));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234684));
     if ((VoipDetailActivity.a().relationship == 0) || (VoipDetailActivity.a().relationship == 1) || (VoipDetailActivity.a().relationship == 4)) {}
     for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
     {
       if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840403);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840405);
       }
       if ((VoipDetailActivity.a().uin != null) && (!VoipDetailActivity.a().uin.equals("")))
       {
-        this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234677));
+        this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234679));
         paramContext = paramVoipDetailActivity.b.c(VoipDetailActivity.a().uin);
         this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(paramContext);
       }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new eyc(this, paramVoipDetailActivity));
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new eyd(this, paramVoipDetailActivity));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new eto(this, paramVoipDetailActivity));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new etp(this, paramVoipDetailActivity));
       return;
     }
   }
@@ -124,7 +124,7 @@ public class VoipDetailActivity$VoipQQLabel
       label116:
       str1 = localQCallRecent.uin;
     }
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipDetailActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipDetailActivity.a(), i, str1, str4, str2, false, str3, true, true, null, "from_internal");
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipDetailActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipDetailActivity.a(), i, str1, str4, str2, false, str3, true, true, null, "");
   }
   
   public void d()

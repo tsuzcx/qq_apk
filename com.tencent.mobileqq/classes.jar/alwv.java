@@ -1,44 +1,130 @@
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.ICloudAVEngine.ResultBundle;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 
-final class alwv
-  extends alwz
+public class alwv
+  extends Handler
 {
-  alwv(alwu paramalwu)
+  private HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  private List<Message> jdField_a_of_type_JavaUtilList = new ArrayList();
+  
+  public alwv(MessageHandler paramMessageHandler, Looper paramLooper)
   {
-    super(null);
+    super(paramLooper);
   }
   
-  public boolean a(String paramString, ICloudAVEngine.ResultBundle paramResultBundle)
+  public void a()
   {
-    if (this.a.size() >= this.a.maxSize())
+    synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      alwu.a(this.a, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, "Cache not load completely.");
+      if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {
+        break label69;
+      }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      if (localIterator.hasNext()) {
+        sendMessage((Message)localIterator.next());
+      }
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    label69:
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.MessageHandler", 2, "updateUnreadWorker doC2CUpdateNow");
+    }
+  }
+  
+  public void a(Message paramMessage)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
+    {
+      paramMessage = paramMessage.getData();
+      if ((paramMessage != null) && (paramMessage.containsKey("update_unread_uin")) && (paramMessage.containsKey("update_unread_time")))
+      {
+        String str = paramMessage.getString("update_unread_uin");
+        int i = paramMessage.getInt("update_unread_type", 0);
+        long l = paramMessage.getLong("update_unread_time");
+        this.jdField_a_of_type_JavaUtilHashSet.add(abti.a(str, i) + "&" + l);
+      }
+      return;
+    }
+  }
+  
+  void a(String paramString, int paramInt, long paramLong)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
+    {
+      if (this.jdField_a_of_type_JavaUtilHashSet.contains(abti.a(paramString, paramInt) + "&" + paramLong)) {
+        this.jdField_a_of_type_JavaUtilHashSet.remove(abti.a(paramString, paramInt) + "&" + paramLong);
+      }
+      return;
+    }
+  }
+  
+  public boolean a(Message paramMessage)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
+    {
+      paramMessage = paramMessage.getData();
+      if ((paramMessage != null) && (paramMessage.containsKey("update_unread_uin")) && (paramMessage.containsKey("update_unread_time")))
+      {
+        String str = paramMessage.getString("update_unread_uin");
+        int i = paramMessage.getInt("update_unread_type", 0);
+        long l = paramMessage.getLong("update_unread_time");
+        boolean bool = this.jdField_a_of_type_JavaUtilHashSet.contains(abti.a(str, i) + "&" + l);
+        return bool;
       }
       return false;
     }
-    if (paramResultBundle.a > new Date().getTime())
+  }
+  
+  public void b(Message paramMessage)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, String.format("Add cache entry, key: %s, %s", new Object[] { paramString, paramResultBundle.toString() }));
-      }
-      this.a.put(paramString, paramResultBundle);
+      this.jdField_a_of_type_JavaUtilList.add(paramMessage);
+      return;
     }
-    for (;;)
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      return true;
+    default: 
+    case 1: 
+      do
+      {
+        return;
+        paramMessage = paramMessage.getData();
+      } while ((paramMessage == null) || (!paramMessage.containsKey("update_unread_uin")) || (!paramMessage.containsKey("update_unread_time")));
+      String str = paramMessage.getString("update_unread_uin");
+      int i = paramMessage.getInt("update_unread_type", 0);
+      long l = paramMessage.getLong("update_unread_time");
       if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, String.format("Discard expired entry, key: %s, %s", new Object[] { paramString, paramResultBundle.toString() }));
+        QLog.d("Q.msg.MessageHandler", 2, "msg update_c2c_unread-->uin:" + str + ", uinType:" + i + ", lastReadTime:" + l);
       }
+      a(str, i, l);
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.a().a(str, i, l);
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(2002, true, null);
+      return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.MessageHandler", 2, "updateUnreadWorker C2CWorkerTimeout");
+    }
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alwv
  * JD-Core Version:    0.7.0.1
  */

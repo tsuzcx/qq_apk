@@ -5,13 +5,13 @@ import java.io.Serializable;
 public class VideoSerializeData
   implements Serializable
 {
-  int errCode;
-  long fromUin;
-  long msgSeq;
-  long msgType;
-  long time;
-  long toUin;
-  String type;
+  public int errCode;
+  public long fromUin;
+  public long msgSeq;
+  public long msgType;
+  public long time;
+  public long toUin;
+  public String type;
   
   public VideoSerializeData(String paramString, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, int paramInt)
   {

@@ -1,32 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.leba.view.LebaFeedsDislikeMaskView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
 
 public class aebg
-  implements ValueAnimator.AnimatorUpdateListener
+  implements avzl
 {
-  public aebg(LebaFeedsDislikeMaskView paramLebaFeedsDislikeMaskView) {}
+  public aebg(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt, avzm paramavzm)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    LebaFeedsDislikeMaskView.a(this.a, (int)(LebaFeedsDislikeMaskView.a(this.a) * f));
-    if (f <= 0.58F)
+    if ((paramavzm != null) && (!TextUtils.isEmpty(TextPreviewTranslateActivity.b(this.a))) && (!TextPreviewTranslateActivity.b(this.a).equals(paramavzm.b)))
     {
-      f /= 0.58F;
-      LebaFeedsDislikeMaskView.a(this.a).setAlpha(1.0F * f);
-      f *= 1.2F;
-      LebaFeedsDislikeMaskView.a(this.a).setScaleX(f);
-      LebaFeedsDislikeMaskView.a(this.a).setScaleY(f);
-    }
-    for (;;)
-    {
-      this.a.invalidate();
-      return;
-      f = 1.2F - (f - 0.58F) / 0.42F * 0.2F;
-      LebaFeedsDislikeMaskView.a(this.a).setScaleX(f);
-      LebaFeedsDislikeMaskView.a(this.a).setScaleY(f);
+      TextPreviewTranslateActivity.b(this.a, paramavzm.b);
+      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.c(this.a)), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
     }
   }
 }

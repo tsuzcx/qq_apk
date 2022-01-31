@@ -12,9 +12,17 @@ import android.text.style.ImageSpan;
 public class MessageForQQWalletTips$CenterImageSpan
   extends ImageSpan
 {
+  private int size;
+  
   public MessageForQQWalletTips$CenterImageSpan(Context paramContext, int paramInt)
   {
     super(paramContext, paramInt);
+  }
+  
+  public MessageForQQWalletTips$CenterImageSpan(Context paramContext, int paramInt1, int paramInt2)
+  {
+    super(paramContext, paramInt1);
+    this.size = paramInt2;
   }
   
   public MessageForQQWalletTips$CenterImageSpan(Context paramContext, Bitmap paramBitmap)
@@ -25,6 +33,9 @@ public class MessageForQQWalletTips$CenterImageSpan
   public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
     paramCharSequence = getDrawable();
+    if (this.size > 0) {
+      paramCharSequence.setBounds(0, 0, this.size, this.size);
+    }
     paramCanvas.save();
     paramCanvas.translate(paramFloat, (paramInt5 - paramInt3 - paramCharSequence.getBounds().bottom) / 2 + paramInt3);
     paramCharSequence.draw(paramCanvas);
@@ -33,7 +44,13 @@ public class MessageForQQWalletTips$CenterImageSpan
   
   public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
   {
-    paramCharSequence = getDrawable().getBounds();
+    Drawable localDrawable = getDrawable();
+    paramCharSequence = localDrawable.getBounds();
+    if (this.size > 0)
+    {
+      localDrawable.setBounds(0, 0, this.size, this.size);
+      paramCharSequence = localDrawable.getBounds();
+    }
     if (paramFontMetricsInt != null)
     {
       paramPaint = paramPaint.getFontMetricsInt();
@@ -52,7 +69,7 @@ public class MessageForQQWalletTips$CenterImageSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForQQWalletTips.CenterImageSpan
  * JD-Core Version:    0.7.0.1
  */

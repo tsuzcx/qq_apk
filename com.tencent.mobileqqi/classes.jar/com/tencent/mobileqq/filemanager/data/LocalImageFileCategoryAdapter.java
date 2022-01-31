@@ -68,11 +68,11 @@ public class LocalImageFileCategoryAdapter
   {
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903500, null);
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903502, null);
       paramView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileCategoryBrowserActivity.a);
       paramViewGroup = new LocalImageFileCategoryAdapter.LocalImageHolder(this);
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131230758));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232744));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232747));
       paramViewGroup.b = ((ImageView)paramView.findViewById(2131231331));
       paramView.setTag(paramViewGroup);
     }
@@ -83,7 +83,7 @@ public class LocalImageFileCategoryAdapter
       paramViewGroup.jdField_a_of_type_Int = paramInt;
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAdjustViewBounds(false);
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setDefaultImage(2130839360);
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setDefaultImage(2130839362);
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAsyncClipSize(this.b, this.b);
       int i = paramInt / 4;
       String str = String.format(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileCategoryBrowserActivity.getString(2131558755), new Object[] { Integer.valueOf(i + 1), Integer.valueOf((paramInt & 0x3) + 1) });

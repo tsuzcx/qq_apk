@@ -3,12 +3,12 @@ package com.tencent.mobileqq.music;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import ghk;
+import gcy;
 
 public class SongInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ghk();
+  public static final Parcelable.Creator CREATOR = new gcy();
   public int a;
   public long a;
   public String a;

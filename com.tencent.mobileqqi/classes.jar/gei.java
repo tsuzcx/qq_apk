@@ -1,96 +1,49 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.webviewplugin.Share;
-import com.tencent.mobileqq.jsp.QQApiPlugin;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgFactory;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import android.content.SharedPreferences;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profile.ProfileCardBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
 
 public class gei
-  implements BusinessObserver
+  implements Runnable
 {
-  public gei(QQApiPlugin paramQQApiPlugin, Intent paramIntent) {}
+  public gei(ProfileCardBrowserActivity paramProfileCardBrowserActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.a.dismiss();
-    if (paramBoolean) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.ProfileCardBrowserActivity", 2, "mReloadTask, start.");
+    }
+    int i = 0;
     for (;;)
     {
+      if (i < 25) {}
       try
       {
-        Object localObject = paramBundle.getByteArray("data");
-        if (localObject != null)
+        Thread.sleep(200L);
+        this.a.c = this.a.b.getPreferences().getBoolean("is_template_list_loaded", false);
+        boolean bool = this.a.c;
+        if (bool)
         {
-          paramBundle = new GetAppInfoProto.GetAppinfoResponse();
-          paramBundle.mergeFrom((byte[])localObject);
-          if ((paramBundle.has()) && (paramBundle.ret.get() == 0) && (paramBundle.androidInfo != null))
-          {
-            localAndroidInfo = paramBundle.androidInfo;
-            localObject = Share.a(paramBundle.iconsURL, 16);
-            Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
-            if (localAndroidInfo.sourceUrl != null) {
-              continue;
-            }
-            paramBundle = "";
-            localIntent.putExtra("struct_share_key_source_url", paramBundle);
-            localIntent = this.jdField_a_of_type_AndroidContentIntent;
-            paramBundle = (Bundle)localObject;
-            if (localObject == null) {
-              paramBundle = "";
-            }
-            localIntent.putExtra("struct_share_key_source_icon", paramBundle);
-            localObject = this.jdField_a_of_type_AndroidContentIntent;
-            if (localAndroidInfo.messagetail != null) {
-              continue;
-            }
-            paramBundle = "";
-            ((Intent)localObject).putExtra("struct_share_key_source_name", paramBundle);
-            localObject = this.jdField_a_of_type_AndroidContentIntent;
-            if (localAndroidInfo.packName != null) {
-              continue;
-            }
-            paramBundle = "";
-            ((Intent)localObject).putExtra("struct_share_key_source_a_action_data", paramBundle);
+          this.a.c = this.a.b.getPreferences().getBoolean("is_template_list_loaded", false);
+          if (this.a.c) {
+            this.a.d();
           }
+          this.a.a.sendEmptyMessage(18);
+          return;
         }
       }
-      catch (Exception paramBundle)
+      catch (InterruptedException localInterruptedException)
       {
-        GetAppInfoProto.AndroidInfo localAndroidInfo;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("QQApi", 2, paramBundle.getMessage());
-        continue;
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("stuctmsg_bytes", paramBundle.getBytes());
-        this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, (byte)1);
+        localInterruptedException.printStackTrace();
+        i += 1;
       }
-      paramBundle = StructMsgFactory.a(this.jdField_a_of_type_AndroidContentIntent.getExtras());
-      if (paramBundle != null) {
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QQApi", 2, "build struct msg fail");
-      }
-      return;
-      paramBundle = localAndroidInfo.sourceUrl.get();
-      continue;
-      paramBundle = localAndroidInfo.messagetail.get();
-      continue;
-      paramBundle = localAndroidInfo.packName.get();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gei
  * JD-Core Version:    0.7.0.1
  */

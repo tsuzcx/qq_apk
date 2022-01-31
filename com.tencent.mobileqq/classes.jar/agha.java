@@ -1,24 +1,40 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.panel.PEPanel;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
 
-class agha
-  implements Runnable
+public class agha
+  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
 {
-  agha(aggv paramaggv) {}
+  public agha(PEPanel paramPEPanel) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.a())
-    {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.b();
-      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    if ((PEPanel.a(this.a) != null) && (QLog.isColorLevel())) {
+      QLog.d("PokeEmo.PEPanel", 2, String.format(" playLottieAnim onAnimationEnd listView.visibility = %d ", new Object[] { Integer.valueOf(PEPanel.a(this.a).getVisibility()) }));
+    }
+    if ((PEPanel.a(this.a) != null) && (PEPanel.a(this.a).getVisibility() != 0)) {
+      PEPanel.a(this.a).setVisibility(0);
     }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.setListViewVisibile(8);
+  }
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agha
  * JD-Core Version:    0.7.0.1
  */

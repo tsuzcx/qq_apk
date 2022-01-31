@@ -1,26 +1,23 @@
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.ViewSwitcher.ViewFactory;
-import com.tencent.mobileqq.activity.Leba;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
 
-public class sws
-  implements ViewSwitcher.ViewFactory
+public final class sws
+  implements Parcelable.Creator<ProfileParams.CurLoginUsr>
 {
-  public sws(Leba paramLeba) {}
-  
-  public View makeView()
+  public ProfileParams.CurLoginUsr a(Parcel paramParcel)
   {
-    ImageView localImageView = new ImageView(this.a.a());
-    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    return localImageView;
+    return new ProfileParams.CurLoginUsr(paramParcel.readString(), paramParcel.readString());
+  }
+  
+  public ProfileParams.CurLoginUsr[] a(int paramInt)
+  {
+    return new ProfileParams.CurLoginUsr[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sws
  * JD-Core Version:    0.7.0.1
  */

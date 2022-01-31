@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class im_msg_body$ShakeWindow
-  extends MessageMicro
+  extends MessageMicro<ShakeWindow>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "uint32_type", "uint32_reserve", "uint64_uin" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L) }, ShakeWindow.class);
   public final PBUInt32Field uint32_reserve = PBField.initUInt32(0);

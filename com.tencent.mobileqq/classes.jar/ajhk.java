@@ -1,22 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.CompoundButton;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ajhk
-  implements DialogInterface.OnClickListener
+class ajhk
+  implements View.OnClickListener
 {
-  public ajhk(PublishHomeWorkFragment paramPublishHomeWorkFragment, CompoundButton paramCompoundButton) {}
+  ajhk(ajgb paramajgb) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetCompoundButton.setChecked(true);
-  }
+  public void onClick(View paramView) {}
 }
 
 

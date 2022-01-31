@@ -1,39 +1,64 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.apollo.store.openbox.ApolloBoxData;
-import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.CopyToRspBody;
+import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.RspBody;
 
-public class yuh
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract class yuh
+  extends nac
 {
-  public yuh(ApolloCardWindow paramApolloCardWindow, TextView paramTextView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public yuh()
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    super(false);
+  }
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    int i = 102;
+    if (paramInt != 0)
     {
-      if (this.jdField_a_of_type_AndroidWidgetTextView != ApolloCardWindow.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow)) {
-        break label42;
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(ApolloBoxData.c(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
-    }
-    label42:
-    do
-    {
+      a(false, paramInt, 102, null, null, null, paramBundle);
       return;
-      if (this.jdField_a_of_type_AndroidWidgetTextView == ApolloCardWindow.b(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow))
+    }
+    Object localObject = new oidb_0x6d9.RspBody();
+    try
+    {
+      ((oidb_0x6d9.RspBody)localObject).mergeFrom(paramArrayOfByte);
+      if (!((oidb_0x6d9.RspBody)localObject).copy_to_rsp.has())
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(ApolloBoxData.b(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
+        a(false, paramInt, 102, null, null, null, paramBundle);
         return;
       }
-    } while (this.jdField_a_of_type_AndroidWidgetTextView != ApolloCardWindow.c(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(ApolloBoxData.a(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      a(false, paramInt, 102, null, null, null, paramBundle);
+      return;
+    }
+    paramArrayOfByte = (oidb_0x6d9.CopyToRspBody)((oidb_0x6d9.RspBody)localObject).copy_to_rsp.get();
+    if (!paramArrayOfByte.int32_ret_code.has())
+    {
+      a(false, paramInt, 102, null, null, null, paramBundle);
+      return;
+    }
+    int j = paramArrayOfByte.int32_ret_code.get();
+    localObject = paramArrayOfByte.str_client_wording.get();
+    String str1 = paramArrayOfByte.str_ret_msg.get();
+    String str2 = paramArrayOfByte.str_save_file_path.get();
+    paramInt = i;
+    if (paramArrayOfByte.uint32_bus_id.has()) {
+      paramInt = paramArrayOfByte.uint32_bus_id.get();
+    }
+    a(true, j, paramInt, str2, str1, (String)localObject, paramBundle);
   }
+  
+  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yuh
  * JD-Core Version:    0.7.0.1
  */

@@ -10,23 +10,23 @@ import com.tencent.component.media.image.BitmapReference;
 public class NinePatchRefDrawable
   extends NinePatchDrawable
 {
-  private Resources jdField_a_of_type_AndroidContentResResources;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private BitmapReference jdField_a_of_type_ComTencentComponentMediaImageBitmapReference;
-  private String jdField_a_of_type_JavaLangString;
-  private byte[] jdField_a_of_type_ArrayOfByte;
+  private byte[] chunk;
+  private BitmapReference mBitmapRef;
+  private Rect padding;
+  private Resources res;
+  private String srcName;
   
   public NinePatchRefDrawable(Resources paramResources, BitmapReference paramBitmapReference, byte[] paramArrayOfByte, Rect paramRect, String paramString) {}
   
   public BitmapReference getBitmapRef()
   {
-    return this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference;
+    return this.mBitmapRef;
   }
   
   public boolean isMulible()
   {
-    if (this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference != null) {
-      return this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference.isMutable();
+    if (this.mBitmapRef != null) {
+      return this.mBitmapRef.isMutable();
     }
     return false;
   }
@@ -35,7 +35,7 @@ public class NinePatchRefDrawable
   {
     try
     {
-      NinePatchRefDrawable localNinePatchRefDrawable = new NinePatchRefDrawable(this.jdField_a_of_type_AndroidContentResResources, this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_JavaLangString);
+      NinePatchRefDrawable localNinePatchRefDrawable = new NinePatchRefDrawable(this.res, this.mBitmapRef, this.chunk, this.padding, this.srcName);
       return localNinePatchRefDrawable;
     }
     catch (Exception localException)
@@ -47,7 +47,7 @@ public class NinePatchRefDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.image.drawable.NinePatchRefDrawable
  * JD-Core Version:    0.7.0.1
  */

@@ -9,9 +9,9 @@ public final class h
 {
   static byte[] e;
   static byte[] f;
-  public byte a;
-  public byte[] b;
-  public byte[] c;
+  public byte a = 0;
+  public byte[] b = null;
+  public byte[] c = null;
   public String d = "";
   
   public h() {}

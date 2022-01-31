@@ -1,34 +1,22 @@
-import android.media.MediaPlayer;
-import com.tencent.mobileqq.ptt.player.AmrPlayer;
-import com.tencent.mobileqq.ptt.player.IPttPlayerListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class agtp
-  extends Thread
+class agtp
+  implements Animation.AnimationListener
 {
-  private agtp(AmrPlayer paramAmrPlayer) {}
+  agtp(agti paramagti) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AmrPlayer", 2, "playAmr " + AmrPlayer.a(this.a));
-    }
-    try
-    {
-      AmrPlayer.a(this.a).b();
-      AmrPlayer.a(this.a).start();
-      if (AmrPlayer.a(this.a, AmrPlayer.a(this.a) - 1000) > 0) {
-        AmrPlayer.a(this.a).seekTo(AmrPlayer.a(this.a));
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (AmrPlayer.a(this.a) == null) {}
-      AmrPlayer.a(this.a).sendEmptyMessage(1);
-    }
+    this.a.W = false;
+    this.a.af = false;
+    this.a.d(this.a.o);
+    this.a.s = 1;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -3,8 +3,8 @@ package com.tencent.token.ui;
 import android.os.Bundle;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import com.tencent.token.core.bean.c;
-import com.tencent.token.global.b;
+import com.tencent.token.core.bean.b;
+import com.tencent.token.global.c;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,29 +12,29 @@ public class EnvirChangeListviewActivity
   extends BaseActivity
 {
   List envirDataList = new ArrayList();
-  String[] envirHosts = { "http://test.aq.qq.com", "http://w.aq.qq.com", "http://exp.aq.qq.com", "http://gray.aq.qq.com" };
+  String[] envirHosts = { "http://test.aq.qq.com", "https://w.aq.qq.com", "http://exp.aq.qq.com", "http://gray.aq.qq.com" };
   String[] envirNames = { "测试环境", "正式环境", "201体验环境", "157灰度环境" };
   final long[] mHits = new long[2];
-  private AdapterView.OnItemClickListener mItemClickListener = new dn(this);
-  private do maAdapter;
+  private AdapterView.OnItemClickListener mItemClickListener = new ei(this);
+  private ej maAdapter;
   
   private void initData()
   {
     int i = 0;
     if (i < this.envirNames.length)
     {
-      c localc = new c();
-      localc.a(this.envirNames[i]);
-      localc.b(this.envirHosts[i]);
-      if (this.envirHosts[i] == b.c()) {
-        localc.a(true);
+      b localb = new b();
+      localb.a(this.envirNames[i]);
+      localb.b(this.envirHosts[i]);
+      if (this.envirHosts[i] == c.e()) {
+        localb.a(true);
       }
       for (;;)
       {
-        this.envirDataList.add(localc);
+        this.envirDataList.add(localb);
         i += 1;
         break;
-        localc.a(false);
+        localb.a(false);
       }
     }
   }
@@ -42,10 +42,10 @@ public class EnvirChangeListviewActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903077);
-    paramBundle = (ListView)findViewById(2131296544);
+    setContentView(2130968642);
+    paramBundle = (ListView)findViewById(2131558830);
     initData();
-    this.maAdapter = new do(this, this, this.envirDataList);
+    this.maAdapter = new ej(this, this, this.envirDataList);
     paramBundle.setAdapter(this.maAdapter);
     paramBundle.setOnItemClickListener(this.mItemClickListener);
   }

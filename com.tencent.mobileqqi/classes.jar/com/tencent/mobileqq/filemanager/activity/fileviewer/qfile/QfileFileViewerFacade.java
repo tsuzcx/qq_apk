@@ -8,7 +8,7 @@ import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.qphone.base.util.QLog;
-import fyb;
+import ftp;
 
 public class QfileFileViewerFacade
 {
@@ -29,7 +29,7 @@ public class QfileFileViewerFacade
       if (QLog.isColorLevel()) {
         QLog.i("<FileAssistant>QfileFileViewerFacade", 1, "file maybe renmaed,realName[" + str2 + "]");
       }
-      FMDialogUtil.a(paramBaseFileViewerActivity, paramBaseFileViewerActivity.getString(2131558722), 2131558724, new fyb(str2, str1, paramFileManagerEntity, paramQQAppInterface, paramBaseFileViewerActivity));
+      FMDialogUtil.a(paramBaseFileViewerActivity, paramBaseFileViewerActivity.getString(2131558722), 2131558724, new ftp(str2, str1, paramFileManagerEntity, paramQQAppInterface, paramBaseFileViewerActivity));
       return;
     }
     FileManagerUtil.b(paramBaseFileViewerActivity, paramFileManagerEntity.strFilePath);

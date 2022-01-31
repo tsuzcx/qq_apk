@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1672" android:layout_width="wrap_content" android:layout_height="wrap_content" android:adjustViewBounds="true" android:layout_alignParentLeft="true" />
-    <TextView android:textColor="#ffffffff" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1673" android:background="#80000000" android:layout_width="30.0dip" android:layout_height="18.0dip" android:text="图标" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0a1672" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0a1672" />
-</RelativeLayout>

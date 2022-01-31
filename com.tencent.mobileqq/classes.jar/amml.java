@@ -1,30 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.plugin.PluginManagerV2;
+import java.util.List;
 
-public class amml
-  implements DialogInterface.OnClickListener
+public abstract interface amml
 {
-  private String jdField_a_of_type_JavaLangString;
+  public abstract void a();
   
-  private amml(PluginManagerV2 paramPluginManagerV2, String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    this.jdField_a_of_type_CooperationPluginPluginManagerV2.cancelInstall(this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a(List<ammf> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amml
  * JD-Core Version:    0.7.0.1
  */

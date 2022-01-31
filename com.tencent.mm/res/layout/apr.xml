@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/q1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView style="@style/ni">
+        <LinearLayout style="@style/l0">
+            <TextView android:id="@id/e3n" android:padding="0.0dip" android:text="@string/dpp" android:layout_weight="1.0" style="@style/mm" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/e3o" android:background="@drawable/abk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m1" android:minHeight="@dimen/n9">
+                <TextView android:textSize="@dimen/m2" android:textColor="@color/s4" android:id="@id/e3p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/l2" android:text="@string/egt" />
+                <TextView android:textSize="@dimen/dq" android:textColor="@color/s4" android:gravity="left" android:id="@id/e1h" android:paddingRight="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:id="@id/e3q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m1">
+                <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:id="@id/e3r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/l2" android:text="@string/dpm" />
+                <EditText android:id="@id/e3s" android:minHeight="@dimen/kw" android:hint="@string/dph" style="@style/mk" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m1">
+                <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:id="@id/e3t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/l2" android:text="@string/dpk" />
+                <EditText android:id="@id/e3u" android:minHeight="@dimen/kw" android:hint="@string/dpg" style="@style/mk" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m1">
+                <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:id="@id/e3v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/l2" android:text="@string/dpf" />
+                <EditText android:id="@id/e3w" android:minHeight="@dimen/kw" android:hint="@string/dpi" style="@style/mk" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/ko" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m1" android:text="@string/f7h" />
+            <TextView android:textSize="@dimen/ko" android:textColor="@color/a83" android:id="@id/e3x" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/c1u" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,18 +1,29 @@
 package com.tencent.token.ui;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import android.content.DialogInterface.OnCancelListener;
+import android.view.View;
+import com.tencent.token.global.h;
+import com.tencent.token.ui.base.SwitchButton;
 
-final class eo
-  implements DialogInterface.OnClickListener
+class eo
+  implements DialogInterface.OnCancelListener
 {
-  eo(FacePwdIndexActivity paramFacePwdIndexActivity) {}
+  eo(el paramel, boolean paramBoolean) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface = new Intent(this.a, StartPwdUpdateInfoActivity.class);
-    this.a.startActivity(paramDialogInterface);
+    h.a("onCancel");
+    paramDialogInterface = FaceChangeMobileActivity.access$200(this.b.a);
+    if (!this.a) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramDialogInterface.a(bool, false);
+      FaceChangeMobileActivity.access$300(this.b.a).setVisibility(0);
+      FaceChangeMobileActivity.access$400(this.b.a).setVisibility(0);
+      FaceChangeMobileActivity.access$500(this.b.a).setVisibility(0);
+      return;
+    }
   }
 }
 

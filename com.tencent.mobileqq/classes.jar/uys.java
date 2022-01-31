@@ -1,39 +1,20 @@
-import android.app.Activity;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet;
+import java.util.ArrayList;
 
-public class uys
-  extends ClickableSpan
+public abstract interface uys
 {
-  public uys(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
-    {
-      paramView = ActionSheet.a(this.a.jdField_a_of_type_AndroidContentContext);
-      paramView.b(2131433828);
-      paramView.c(2131433015);
-      paramView.a(new uyt(this));
-      paramView.a(new uyu(this, paramView));
-      paramView.show();
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005973", "0X8005973", 0, 0, "", "", "", "");
-    }
-  }
+  public abstract void a(ArrayList<uyg> paramArrayList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3);
   
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(Color.rgb(26, 144, 240));
-  }
+  public abstract void a(uyg paramuyg, boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uys
  * JD-Core Version:    0.7.0.1
  */

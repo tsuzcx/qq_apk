@@ -1,20 +1,18 @@
-import com.immersion.stickersampleapp.HapticManager;
-import com.tencent.mobileqq.activity.aio.item.ZanCombolEffectView;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.10.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class vlu
-  implements Runnable
+public final class vlu
+  implements vcw
 {
-  vlu(vlt paramvlt) {}
-  
-  public void run()
+  public void a(vcv paramvcv)
   {
-    HapticManager.a().a();
-    ZanCombolEffectView.a(this.a.a, HapticManager.a().a(ZanCombolEffectView.a(this.a.a), 2));
+    ThreadManager.getUIHandler().post(new PlayModeUtils.10.1(this, paramvcv));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vlu
  * JD-Core Version:    0.7.0.1
  */

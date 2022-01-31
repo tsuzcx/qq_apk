@@ -1,26 +1,19 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.Tag;
-import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agpf
-  implements Comparator
+class agpf
+  implements DialogInterface.OnClickListener
 {
-  Point jdField_a_of_type_AndroidGraphicsPoint;
+  agpf(agoz paramagoz) {}
   
-  public agpf(TagCloudView paramTagCloudView, Point paramPoint)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
-  }
-  
-  public int a(Tag paramTag1, Tag paramTag2)
-  {
-    return TagCloudView.a(paramTag1.a(), this.jdField_a_of_type_AndroidGraphicsPoint) - TagCloudView.a(paramTag2.a(), this.jdField_a_of_type_AndroidGraphicsPoint);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agpf
  * JD-Core Version:    0.7.0.1
  */

@@ -9,28 +9,28 @@ import java.util.ArrayList;
 public class MergeProcessor
   extends ImageProcessor
 {
-  private int jdField_a_of_type_Int;
-  private ArrayList jdField_a_of_type_JavaUtilArrayList;
+  private ArrayList<ImageProcessor> mProcessors;
+  private int mType;
   
   @Public
   public MergeProcessor()
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.mType = 1;
+    this.mProcessors = new ArrayList();
   }
   
   @Public
   public MergeProcessor(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.mType = paramInt;
+    this.mProcessors = new ArrayList();
   }
   
   @Public
   public void addProcessor(int paramInt, ImageProcessor paramImageProcessor)
   {
-    if ((paramInt >= 0) && (paramInt <= this.jdField_a_of_type_JavaUtilArrayList.size()) && (paramImageProcessor != null)) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramInt, paramImageProcessor);
+    if ((paramInt >= 0) && (paramInt <= this.mProcessors.size()) && (paramImageProcessor != null)) {
+      this.mProcessors.add(paramInt, paramImageProcessor);
     }
   }
   
@@ -38,37 +38,37 @@ public class MergeProcessor
   public void addProcessor(ImageProcessor paramImageProcessor)
   {
     if (paramImageProcessor != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramImageProcessor);
+      this.mProcessors.add(paramImageProcessor);
     }
   }
   
   @Public
   public ImageProcessor getProcessor(int paramInt)
   {
-    return (ImageProcessor)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    return (ImageProcessor)this.mProcessors.get(paramInt);
   }
   
   @Public
   public int getProcessorCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.mProcessors.size();
   }
   
   public int getType()
   {
-    return this.jdField_a_of_type_Int;
+    return this.mType;
   }
   
   public Drawable process(Drawable paramDrawable)
   {
     int i = 0;
     Drawable localDrawable = paramDrawable;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.mProcessors.size())
     {
       if (localDrawable == null) {
         return paramDrawable;
       }
-      localDrawable = ((ImageProcessor)this.jdField_a_of_type_JavaUtilArrayList.get(i)).process(localDrawable);
+      localDrawable = ((ImageProcessor)this.mProcessors.get(i)).process(localDrawable);
       i += 1;
     }
     return localDrawable;
@@ -77,12 +77,12 @@ public class MergeProcessor
   @Public
   public void removeProcessor(ImageProcessor paramImageProcessor)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.remove(paramImageProcessor);
+    this.mProcessors.remove(paramImageProcessor);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.image.processor.MergeProcessor
  * JD-Core Version:    0.7.0.1
  */

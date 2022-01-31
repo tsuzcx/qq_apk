@@ -1,20 +1,16 @@
-import android.os.Handler;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.mobileqq.hotpic.HotPicMainPanel;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
 
-public class adpr
-  implements URLDrawable.DownloadListener
+class adpr
+  implements View.OnLongClickListener
 {
-  public adpr(HotPicMainPanel paramHotPicMainPanel, ImageView paramImageView) {}
+  adpr(adpq paramadpq, long paramLong) {}
   
-  public void onFileDownloadFailed(int paramInt) {}
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong)
+  public boolean onLongClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel.a.post(new adps(this));
+    bdgm.a(this.jdField_a_of_type_Adpq.a, 230).setTitle(this.jdField_a_of_type_Adpq.a.getString(2131720531)).setItems(2130968611, new adps(this)).show();
+    return true;
   }
 }
 

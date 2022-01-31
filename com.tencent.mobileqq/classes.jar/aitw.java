@@ -1,23 +1,15 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.utils.TroopBarUtils;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aitw
-  implements InputFilter
+class aitw
+  implements DialogInterface.OnClickListener
 {
-  public aitw(AbsPublishActivity paramAbsPublishActivity) {}
+  aitw(aitu paramaitu) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramCharSequence != null)
-    {
-      paramCharSequence = paramCharSequence.toString();
-      if (TroopBarUtils.a(paramCharSequence, '\n') + TroopBarUtils.a(paramSpanned.toString(), '\n') > 100) {
-        return paramCharSequence.replaceAll("\n", "");
-      }
-    }
-    return null;
+    aitt.a(this.a.a).dismiss();
   }
 }
 

@@ -1,33 +1,19 @@
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.ConfigHandler;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
-import protocol.KQQConfig.GetResourceRespInfo;
+import android.os.Process;
+import com.tencent.mobileqq.app.ProcessExitReceiver;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class few
-  implements Runnable
+  extends Thread
 {
-  public few(ConfigHandler paramConfigHandler, String paramString, GetResourceRespInfo paramGetResourceRespInfo) {}
+  public few(ProcessExitReceiver paramProcessExitReceiver) {}
   
   public void run()
   {
-    File localFile = new File(AppConstants.aQ);
-    try
-    {
-      if (HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a, new URL(this.jdField_a_of_type_JavaLangString), localFile))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a(1, true, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a(1, false, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ProcessExitReceiver", 2, "Kill process " + MobileQQ.getMobileQQ().getProcessName());
     }
-    catch (MalformedURLException localMalformedURLException)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a(1, false, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
-    }
+    Process.killProcess(Process.myPid());
   }
 }
 

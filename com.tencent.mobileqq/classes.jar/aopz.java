@@ -1,131 +1,102 @@
-import android.media.AudioRecord;
-import android.os.Process;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.Lock;
+import org.json.JSONObject;
 
 public class aopz
-  extends Thread
 {
-  public aopz(AudioCapture paramAudioCapture) {}
+  private long jdField_a_of_type_Long = 2000L;
+  private boolean jdField_a_of_type_Boolean = true;
+  private long jdField_b_of_type_Long = 60000L;
+  private boolean jdField_b_of_type_Boolean = false;
+  private boolean c = true;
+  private boolean d = false;
   
-  public void run()
+  public static aopz a(String paramString)
   {
-    this.a.b();
-    int i = 0;
-    int j;
-    label86:
-    int m;
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      for (;;)
-      {
-        synchronized (this.a.jdField_a_of_type_JavaLangObject)
-        {
-          try
-          {
-            this.a.jdField_a_of_type_JavaLangObject.wait();
-            if (!this.a.jdField_a_of_type_Boolean) {
-              break;
-            }
-            this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-            this.a.jdField_b_of_type_Long = System.currentTimeMillis();
-            Process.setThreadPriority(-19);
-            k = 1;
-            j = i;
-            i = k;
-            if (!Lock.jdField_a_of_type_Boolean) {
-              break label542;
-            }
-            if ((this.a.jdField_a_of_type_AndroidMediaAudioRecord == null) || (this.a.jdField_a_of_type_ArrayOfByte == null) || (this.a.jdField_b_of_type_ArrayOfByte == null)) {
-              continue;
-            }
-            this.a.jdField_b_of_type_Long = System.currentTimeMillis();
-            if (this.a.e < this.a.f) {
-              break label273;
-            }
-            m = 0;
-            k = m;
-            if (this.a.jdField_a_of_type_AndroidMediaAudioRecord != null)
-            {
-              k = m;
-              if (this.a.jdField_a_of_type_ArrayOfByte != null) {
-                k = this.a.jdField_a_of_type_AndroidMediaAudioRecord.read(this.a.jdField_a_of_type_ArrayOfByte, 0, this.a.f);
-              }
-            }
-            this.a.b(k);
-            if (i != 0)
-            {
-              i = 0;
-              continue;
-            }
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            localInterruptedException.printStackTrace();
-          }
-        }
-        this.a.c(this.a.jdField_a_of_type_ArrayOfByte, k, System.currentTimeMillis() - this.a.jdField_a_of_type_Long, true, 4);
-      }
-      label273:
-      if ((this.a.jdField_a_of_type_AndroidMediaAudioRecord == null) || (this.a.jdField_a_of_type_ArrayOfByte == null)) {
-        break label662;
-      }
+    boolean bool2 = true;
+    if (paramString == null) {
+      return null;
     }
-    label662:
-    for (int k = this.a.jdField_a_of_type_AndroidMediaAudioRecord.read(this.a.jdField_a_of_type_ArrayOfByte, 0, this.a.e);; k = 0)
+    try
     {
-      this.a.b(k);
-      if (k <= 0) {
-        break label86;
-      }
-      if (i != 0)
+      aopz localaopz = new aopz();
+      paramString = new JSONObject(paramString);
+      if (paramString.optInt("useNewLog", 1) == 1)
       {
-        i = 0;
-        break label86;
-      }
-      if (j + k > this.a.f)
-      {
-        System.arraycopy(this.a.jdField_a_of_type_ArrayOfByte, 0, this.a.jdField_b_of_type_ArrayOfByte, j, this.a.f - j);
-        m = AudioCapture.a(this.a, this.a.jdField_b_of_type_ArrayOfByte, this.a.f);
-        int n = this.a.f - m;
-        this.a.c(this.a.jdField_b_of_type_ArrayOfByte, n, System.currentTimeMillis() - this.a.jdField_a_of_type_Long, true, 4);
-        if (m > 0) {
-          System.arraycopy(this.a.jdField_b_of_type_ArrayOfByte, n, this.a.jdField_b_of_type_ArrayOfByte, 0, m);
+        bool1 = true;
+        localaopz.jdField_a_of_type_Boolean = bool1;
+        if (paramString.optInt("compressAndEncrypt", 0) != 1) {
+          break label130;
         }
-        j = this.a.f - j;
-        k -= j;
-        System.arraycopy(this.a.jdField_a_of_type_ArrayOfByte, j, this.a.jdField_b_of_type_ArrayOfByte, m, k);
-        j = m + k;
+        bool1 = true;
+        label56:
+        localaopz.jdField_b_of_type_Boolean = bool1;
+        if (paramString.optInt("enableConsole", 1) != 1) {
+          break label135;
+        }
+        bool1 = true;
+        label74:
+        localaopz.c = bool1;
+        if (paramString.optInt("enableCheckPermission", 1) != 1) {
+          break label140;
+        }
       }
-      for (;;)
+      label130:
+      label135:
+      label140:
+      for (boolean bool1 = bool2;; bool1 = false)
       {
+        localaopz.d = bool1;
+        localaopz.jdField_a_of_type_Long = paramString.optLong("locationSdkCallbackIntervalMillis", 2000L);
+        localaopz.jdField_b_of_type_Long = paramString.optLong("locationBgTimeoutMillis", 60000L);
+        return localaopz;
+        bool1 = false;
         break;
-        System.arraycopy(this.a.jdField_a_of_type_ArrayOfByte, 0, this.a.jdField_b_of_type_ArrayOfByte, j, k);
-        j += k;
+        bool1 = false;
+        break label56;
+        bool1 = false;
+        break label74;
       }
-      label542:
-      i = AudioCapture.a(this.a, this.a.jdField_b_of_type_ArrayOfByte, j);
-      j -= i;
-      this.a.c(this.a.jdField_b_of_type_ArrayOfByte, j, System.currentTimeMillis() - this.a.jdField_a_of_type_Long, false, 9);
-      if (i > 0)
-      {
-        System.arraycopy(this.a.jdField_b_of_type_ArrayOfByte, j, this.a.jdField_b_of_type_ArrayOfByte, 0, i);
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AudioCapture", 2, "AudioNoiseSuppression[QQ]: leftLen=" + i);
-      }
-      i = 0;
-      break;
-      this.a.b();
-      return;
+      return null;
     }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public long a()
+  {
+    if (this.jdField_a_of_type_Long < 0L) {
+      return 2000L;
+    }
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public long b()
+  {
+    if (this.jdField_b_of_type_Long < 0L) {
+      return 60000L;
+    }
+    return this.jdField_b_of_type_Long;
+  }
+  
+  public boolean b()
+  {
+    return this.d;
+  }
+  
+  public String toString()
+  {
+    return "QConfLogBean{useNewLog=" + this.jdField_a_of_type_Boolean + ", compressAndEncrypt=" + this.jdField_b_of_type_Boolean + ", enableConsole=" + this.c + ",enableCheckPermission=" + this.d + ",locationSdkCallbackIntervalMillis=" + this.jdField_a_of_type_Long + ",locationBgTimeoutMillis=" + this.jdField_b_of_type_Long + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aopz
  * JD-Core Version:    0.7.0.1
  */

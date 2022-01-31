@@ -7,19 +7,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDisplayUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
+import nrt;
+import orc;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.PackInfo;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.SpecialTopicInfo;
+import ors;
+import pgd;
+import qbs;
+import szp;
+import tencent.im.oidb.articlesummary.articlesummary.PackInfo;
+import tencent.im.oidb.articlesummary.articlesummary.SpecialTopicInfo;
 
 public class ComponentHeaderSpecialTopic
   extends ComponentHeaderBase
@@ -47,7 +49,7 @@ public class ComponentHeaderSpecialTopic
   {
     try
     {
-      paramArticleInfo = ((oidb_cmd0x68b.SpecialTopicInfo)paramArticleInfo.mPackInfoObj.msg_special_topic_info.get()).str_header_title.get();
+      paramArticleInfo = ((articlesummary.SpecialTopicInfo)paramArticleInfo.mPackInfoObj.msg_special_topic_info.get()).str_header_title.get();
       if (TextUtils.isEmpty(paramArticleInfo)) {
         QLog.w("ComponentHeaderSpecialTopic", 1, "ReadInJoyHeader special topic title empty");
       }
@@ -68,7 +70,7 @@ public class ComponentHeaderSpecialTopic
     if (paramArticleInfo.mHeaderIconUrl == null) {
       try
       {
-        String str = ((oidb_cmd0x68b.SpecialTopicInfo)paramArticleInfo.mPackInfoObj.msg_special_topic_info.get()).str_header_icon_url.get();
+        String str = ((articlesummary.SpecialTopicInfo)paramArticleInfo.mPackInfoObj.msg_special_topic_info.get()).str_header_icon_url.get();
         if (TextUtils.isEmpty(str)) {
           QLog.w("ComponentHeaderSpecialTopic", 1, "ReadInJoyHeader special topic icon url empty");
         }
@@ -83,7 +85,7 @@ public class ComponentHeaderSpecialTopic
           localException.printStackTrace();
           localObject = null;
         }
-        Object localObject = ReadInJoyUtils.a((String)localObject);
+        Object localObject = ors.a((String)localObject);
         paramArticleInfo.mHeaderIconUrl = ((URL)localObject);
         return localObject;
       }
@@ -95,10 +97,16 @@ public class ComponentHeaderSpecialTopic
   {
     try
     {
-      JSONObject localJSONObject = ReadInJoyUtils.a();
+      JSONObject localJSONObject = ors.a();
       localJSONObject.put("feeds_source", paramString);
-      localJSONObject.put("kandian_mode", ReadInJoyUtils.e());
-      PublicAccountReportUtils.a(null, "CliOper", "", "", "0X800744D", "0X800744D", 0, 0, ReadInJoyUtils.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a()), "", "", localJSONObject.toString(), false);
+      localJSONObject.put("kandian_mode", ors.e());
+      String str = ors.e(this.jdField_a_of_type_Qbs.a.a());
+      if (szp.a(this.jdField_a_of_type_Qbs.a.e())) {}
+      for (paramString = "0X8009357";; paramString = "0X800744D")
+      {
+        nrt.a(null, "CliOper", "", "", paramString, paramString, 0, 0, str, "", "", localJSONObject.toString(), false);
+        return;
+      }
       return;
     }
     catch (JSONException paramString)
@@ -111,7 +119,7 @@ public class ComponentHeaderSpecialTopic
   {
     try
     {
-      paramArticleInfo = ((oidb_cmd0x68b.SpecialTopicInfo)paramArticleInfo.mPackInfoObj.msg_special_topic_info.get()).str_header_jump_url.get();
+      paramArticleInfo = ((articlesummary.SpecialTopicInfo)paramArticleInfo.mPackInfoObj.msg_special_topic_info.get()).str_header_jump_url.get();
       if (TextUtils.isEmpty(paramArticleInfo)) {
         QLog.w("ComponentHeaderSpecialTopic", 1, "ReadInJoyHeader special topic url empty");
       }
@@ -129,15 +137,15 @@ public class ComponentHeaderSpecialTopic
   
   private void d()
   {
-    String str = b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a());
+    String str = b(this.jdField_a_of_type_Qbs.a.a());
     if (!TextUtils.isEmpty(str)) {
-      ReadInJoyUtils.a(getContext(), str);
+      ors.a(getContext(), str);
     }
   }
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969582, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559969, this, true);
   }
   
   public void a()
@@ -151,28 +159,36 @@ public class ComponentHeaderSpecialTopic
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131366859));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366865));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131375272));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375263));
   }
   
-  public void a(IReadInJoyModel paramIReadInJoyModel)
+  public void a(Object paramObject)
   {
-    if ((paramIReadInJoyModel.a()) && (paramIReadInJoyModel.c() == 1)) {}
+    super.a(paramObject);
+    if ((paramObject instanceof pgd)) {
+      a((pgd)paramObject);
+    }
+  }
+  
+  public void a(pgd parampgd)
+  {
+    if ((parampgd.a()) && (parampgd.c() == 1)) {}
     ArticleInfo localArticleInfo;
     for (int i = 0;; i = 8)
     {
       setVisibility(i);
-      if ((paramIReadInJoyModel.a()) && (paramIReadInJoyModel.c() == 1)) {
-        localArticleInfo = paramIReadInJoyModel.a();
+      if ((parampgd.a()) && (parampgd.c() == 1)) {
+        localArticleInfo = parampgd.a();
       }
-      switch (paramIReadInJoyModel.c())
+      switch (parampgd.c())
       {
       default: 
         return;
       }
     }
-    paramIReadInJoyModel = a(localArticleInfo);
-    if (paramIReadInJoyModel == null) {
+    parampgd = a(localArticleInfo);
+    if (parampgd == null) {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(8);
     }
     for (;;)
@@ -180,15 +196,7 @@ public class ComponentHeaderSpecialTopic
       this.jdField_a_of_type_AndroidWidgetTextView.setText(a(localArticleInfo));
       return;
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(0);
-      ReadInJoyDisplayUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, paramIReadInJoyModel, getContext());
-    }
-  }
-  
-  public void a(Object paramObject)
-  {
-    super.a(paramObject);
-    if ((paramObject instanceof IReadInJoyModel)) {
-      a((IReadInJoyModel)paramObject);
+      orc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, parampgd, getContext());
     }
   }
   
@@ -204,7 +212,7 @@ public class ComponentHeaderSpecialTopic
     }
     for (;;)
     {
-      a(ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a()));
+      a(ors.d(this.jdField_a_of_type_Qbs.a.a()));
       return;
       d();
     }
@@ -212,7 +220,7 @@ public class ComponentHeaderSpecialTopic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderSpecialTopic
  * JD-Core Version:    0.7.0.1
  */

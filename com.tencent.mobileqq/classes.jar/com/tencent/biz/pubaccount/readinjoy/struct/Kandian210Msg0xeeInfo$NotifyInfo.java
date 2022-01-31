@@ -23,7 +23,7 @@ public class Kandian210Msg0xeeInfo$NotifyInfo
   public String orangeWord;
   public Kandian210Msg0xeeInfo.OrdinaryPushInfo ordinaryPushInfo;
   public String pictureJumpURL;
-  public ArrayList picturesURLList;
+  public ArrayList<String> picturesURLList;
   public long sceneType;
   public int showLine;
   public Kandian210Msg0xeeInfo.SocialPushInfo socialPushInfo;
@@ -66,7 +66,7 @@ public class Kandian210Msg0xeeInfo$NotifyInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo.NotifyInfo
  * JD-Core Version:    0.7.0.1
  */

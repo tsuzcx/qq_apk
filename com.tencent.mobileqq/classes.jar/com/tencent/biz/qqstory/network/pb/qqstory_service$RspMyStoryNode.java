@@ -9,12 +9,12 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_service$RspMyStoryNode
-  extends MessageMicro
+  extends MessageMicro<RspMyStoryNode>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field has_more_feed = PBField.initUInt32(0);
   public final PBBytesField has_more_feed_cover = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField list = PBField.initRepeatMessage(qqstory_struct.StoryDayNode.class);
+  public final PBRepeatMessageField<qqstory_struct.StoryDayNode> list = PBField.initRepeatMessage(qqstory_struct.StoryDayNode.class);
   public qqstory_struct.ErrorInfo result = new qqstory_struct.ErrorInfo();
   
   static
@@ -25,7 +25,7 @@ public final class qqstory_service$RspMyStoryNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspMyStoryNode
  * JD-Core Version:    0.7.0.1
  */

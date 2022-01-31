@@ -1,19 +1,28 @@
-import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class wvd
-  implements Runnable
 {
-  public wvd(PhoneLaunchActivity paramPhoneLaunchActivity) {}
+  public int a;
+  public final long a;
+  public final String a;
+  public boolean a;
+  public String b = "";
   
-  public void run()
+  public wvd(String paramString)
   {
-    this.a.a.g();
+    this.jdField_a_of_type_Int = 1000;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public ErrorMessage a()
+  {
+    return new ErrorMessage(this.jdField_a_of_type_Int, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wvd
  * JD-Core Version:    0.7.0.1
  */

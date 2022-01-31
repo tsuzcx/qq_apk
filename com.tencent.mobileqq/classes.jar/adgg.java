@@ -1,41 +1,27 @@
-import com.tencent.mobileqq.filemanager.settings.FMSettings;
-import java.io.File;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.Leba.35.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class adgg
-  implements Runnable
+  extends auuq
 {
-  public adgg(FMSettings paramFMSettings, String paramString) {}
+  public adgg(Leba paramLeba) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    try
-    {
-      Object localObject = new File(this.jdField_a_of_type_JavaLangString);
-      if (!((File)localObject).exists()) {
-        return;
-      }
-      if (((File)localObject).isDirectory())
-      {
-        localObject = ((File)localObject).listFiles();
-        if ((localObject != null) && (localObject.length != 0))
-        {
-          int j = localObject.length;
-          int i = 0;
-          while (i < j)
-          {
-            localObject[i].delete();
-            i += 1;
-          }
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.redpoint", 2, "NearbyEnterUpdateObserver onReceive");
+    }
+    if (Leba.a(this.a) == null) {
       return;
     }
-    catch (Exception localException) {}
+    this.a.a.post(new Leba.35.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adgg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import com.tencent.widget.XListView;
 
-public class ajiu
-  implements DialogInterface.OnClickListener
+class ajiu
+  implements vdr
 {
-  public ajiu(ReciteFragment paramReciteFragment) {}
+  ajiu(ajit paramajit) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface.dismiss();
+    this.a.a.invalidateViews();
   }
 }
 

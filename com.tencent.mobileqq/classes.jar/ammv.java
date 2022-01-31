@@ -1,23 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qappcenter.remote.RecvMsg;
+import com.tencent.mobileqq.app.msgcache.MsgLruCache;
 
-public final class ammv
-  implements Parcelable.Creator
+public class ammv
 {
-  public RecvMsg a(Parcel paramParcel)
+  public int a;
+  public String a;
+  public int b;
+  public int c;
+  
+  public ammv(MsgLruCache paramMsgLruCache, String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    return new RecvMsg(paramParcel);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.b = paramInt3;
   }
   
-  public RecvMsg[] a(int paramInt)
+  public String toString()
   {
-    return new RecvMsg[paramInt];
+    if (this.jdField_a_of_type_Int == amms.c) {}
+    for (String str = "A";; str = "B") {
+      return this.jdField_a_of_type_JavaLangString + "_" + this.c + "_" + str + "_" + this.b;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ammv
  * JD-Core Version:    0.7.0.1
  */

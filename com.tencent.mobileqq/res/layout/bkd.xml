@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/cet" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/hgk" android:paddingLeft="13.25dip" android:paddingRight="13.25dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <Button android:layout_gravity="center" android:id="@id/ceu" android:background="@drawable/az5" android:visibility="visible" android:clickable="false" android:layout_width="25.0dip" android:layout_height="25.0dip" android:contentDescription="@string/gpr" />
+        <TextView android:textSize="11.0sp" android:textColor="@color/a7s" android:layout_gravity="center" android:id="@id/cev" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.5dip" android:text="@string/gpr" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/hgj" android:paddingLeft="13.25dip" android:paddingRight="13.25dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <Button android:layout_gravity="center" android:id="@id/cer" android:background="@drawable/az4" android:visibility="visible" android:clickable="false" android:layout_width="25.0dip" android:layout_height="25.0dip" android:contentDescription="@string/gpp" />
+        <TextView android:textSize="11.0sp" android:textColor="@color/a7s" android:layout_gravity="center" android:id="@id/ces" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.5dip" android:text="@string/gpp" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/hgh" android:paddingLeft="13.25dip" android:paddingRight="13.25dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <Button android:textColor="@color/al3" android:layout_gravity="center" android:id="@id/cep" android:background="@drawable/f68" android:clickable="false" android:layout_width="@dimen/n5" android:layout_height="@dimen/n5" android:contentDescription="@string/cbd" />
+        <TextView android:textSize="@dimen/ayj" android:textColor="@android:color/white" android:gravity="center" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.5dip" android:text="@string/cbd" />
+    </LinearLayout>
+</LinearLayout>

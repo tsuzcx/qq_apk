@@ -1,31 +1,48 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.webviewplugin.Ad;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.model.FriendManager;
 
 public class bui
-  implements Animation.AnimationListener
+  extends CardObserver
 {
-  public bui(Ad paramAd) {}
+  public bui(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838312);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
+    {
+      Object localObject;
+      String str;
+      TextView localTextView;
+      if ((paramBoolean) && (paramObject != null) && (paramObject.uin != null) && (paramObject.uin.equals(this.a.getIntent().getExtras().getString("uin"))))
+      {
+        localObject = (FriendManager)this.a.b.getManager(8);
+        str = ((FriendManager)localObject).d(paramObject.uin);
+        localObject = ((FriendManager)localObject).c(paramObject.uin);
+        localTextView = (TextView)this.a.findViewById(2131231090);
+        if (!AddFriendVerifyActivity.a(this.a)) {
+          break label138;
+        }
+        if (!((String)localObject).equals(paramObject.uin)) {
+          localTextView.setText((CharSequence)localObject);
+        }
+      }
+      return;
+      label138:
+      localTextView.setText(String.format("%s(%s)", new Object[] { localObject, str }));
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bui
  * JD-Core Version:    0.7.0.1
  */

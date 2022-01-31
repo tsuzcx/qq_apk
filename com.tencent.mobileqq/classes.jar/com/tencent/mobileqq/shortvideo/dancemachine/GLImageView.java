@@ -6,100 +6,107 @@ import android.graphics.RectF;
 public class GLImageView
   extends GlView
 {
-  protected GLImage a;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean = false;
+  protected GLImage mBackGround = new GLImage();
+  private String mResPath = "";
+  private boolean mSizeChanged = false;
   
   public GLImageView(GLViewContext paramGLViewContext, String paramString)
   {
     super(paramGLViewContext, paramString);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImage = new GLImage();
-    f(4);
+    initView(4);
   }
   
-  public RectF a()
+  public void clearStatus()
   {
-    return this.b;
+    super.clearStatus();
   }
   
-  public void a(Bitmap paramBitmap)
+  public GLImage getCurrentBackGround()
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImage.a(paramBitmap);
-    this.f = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImage.a();
+    return this.mBackGround;
   }
   
-  public void a(String paramString)
+  public RectF getImageClipDrawRegion()
   {
-    if (!this.jdField_a_of_type_JavaLangString.equals(paramString))
+    return this.mClipRegion;
+  }
+  
+  public RectF getImageRegion()
+  {
+    return this.mSizeRegion;
+  }
+  
+  public void release()
+  {
+    super.release();
+    clearStatus();
+    this.mBackGround.release();
+    this.mResPath = "";
+  }
+  
+  public void setConvertedImageAndClipRegion(RectF paramRectF)
+  {
+    if (!this.mSizeRegion.equals(paramRectF))
     {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImage.a(paramString);
-      this.f = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImage.a();
-      this.jdField_a_of_type_JavaLangString = paramString;
+      this.mSizeRegion.set(paramRectF);
+      this.mClipRegion.set(paramRectF);
+      this.mSizeChanged = true;
     }
   }
   
-  public boolean a()
+  public void setImageBitmap(Bitmap paramBitmap)
   {
-    boolean bool2 = super.a();
+    this.mBackGround.loadTextureSync(paramBitmap);
+    this.mCurrentTexture = this.mBackGround.getTexture();
+  }
+  
+  public void setImageClipDrawRegion(RectF paramRectF)
+  {
+    if (!this.mClipRegion.equals(paramRectF))
+    {
+      this.mClipRegion.set(paramRectF);
+      this.mHaveMappedClipSize = false;
+      mapClipRegion();
+      this.mSizeChanged = true;
+    }
+  }
+  
+  public void setImageRegion(RectF paramRectF)
+  {
+    if (!this.mSizeRegion.equals(paramRectF))
+    {
+      this.mSizeRegion.set(paramRectF);
+      this.mHaveMappedSize = false;
+      mapSizeRegion();
+      this.mSizeChanged = true;
+    }
+  }
+  
+  public void setImageRes(String paramString)
+  {
+    if (!this.mResPath.equals(paramString))
+    {
+      this.mBackGround.loadTextureSync(paramString);
+      this.mCurrentTexture = this.mBackGround.getTexture();
+      this.mResPath = paramString;
+    }
+  }
+  
+  public boolean updateParam()
+  {
+    boolean bool2 = super.updateParam();
     boolean bool1 = bool2;
     if (!bool2)
     {
-      bool1 = this.jdField_a_of_type_Boolean;
-      this.jdField_a_of_type_Boolean = false;
+      bool1 = this.mSizeChanged;
+      this.mSizeChanged = false;
     }
     return bool1;
-  }
-  
-  public RectF a_()
-  {
-    return this.c;
-  }
-  
-  public GLImage b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImage;
-  }
-  
-  public void b(RectF paramRectF)
-  {
-    if (!this.b.equals(paramRectF))
-    {
-      this.b.set(paramRectF);
-      this.m = false;
-      l();
-      this.jdField_a_of_type_Boolean = true;
-    }
-  }
-  
-  public void c(RectF paramRectF)
-  {
-    if (!this.b.equals(paramRectF))
-    {
-      this.b.set(paramRectF);
-      this.c.set(paramRectF);
-      this.jdField_a_of_type_Boolean = true;
-    }
-  }
-  
-  public void d()
-  {
-    super.d();
-  }
-  
-  public void d(RectF paramRectF)
-  {
-    if (!this.c.equals(paramRectF))
-    {
-      this.c.set(paramRectF);
-      this.n = false;
-      m();
-      this.jdField_a_of_type_Boolean = true;
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.GLImageView
  * JD-Core Version:    0.7.0.1
  */

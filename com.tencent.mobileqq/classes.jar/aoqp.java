@@ -1,18 +1,28 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
+import android.text.TextUtils;
 
 public class aoqp
-  implements FileFilter
 {
-  public boolean accept(File paramFile)
+  public String a;
+  public boolean a;
+  
+  public aoqp(aoqo paramaoqo)
   {
-    return Pattern.matches("cpu[0-9]", paramFile.getName());
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+  }
+  
+  public String toString()
+  {
+    return "WebBundleConfig{enable=" + this.jdField_a_of_type_Boolean + ", preloadUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoqp
  * JD-Core Version:    0.7.0.1
  */

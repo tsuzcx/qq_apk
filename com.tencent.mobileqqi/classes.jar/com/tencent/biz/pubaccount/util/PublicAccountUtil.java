@@ -8,10 +8,10 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.widget.Toast;
-import brf;
-import brg;
-import brh;
-import bri;
+import blb;
+import blc;
+import bld;
+import ble;
 import com.tencent.biz.coupon.CouponActivity;
 import com.tencent.biz.pubaccount.PublicAccountServlet;
 import com.tencent.common.app.AppInterface;
@@ -143,7 +143,7 @@ public class PublicAccountUtil
       try
       {
         localFollowRequest.uin.set((int)Long.parseLong(paramString));
-        localNewIntent.setObserver(new brh(paramAppInterface, paramContext, paramString));
+        localNewIntent.setObserver(new bld(paramAppInterface, paramContext, paramString));
         localNewIntent.putExtra("data", localFollowRequest.toByteArray());
         paramAppInterface.startServlet(localNewIntent);
         return;
@@ -158,7 +158,7 @@ public class PublicAccountUtil
     String str = paramQQAppInterface.getSid();
     if (TextUtils.isEmpty(str))
     {
-      ((AccountManager)paramQQAppInterface.getManager(0)).updateSid(new brf(paramQQAppInterface, paramContext, paramString));
+      ((AccountManager)paramQQAppInterface.getManager(0)).updateSid(new blb(paramQQAppInterface, paramContext, paramString));
       return;
     }
     b(paramQQAppInterface, paramContext, paramString, str);
@@ -173,7 +173,7 @@ public class PublicAccountUtil
       localActionSheet.c(2131560550);
     }
     localActionSheet.d(2131561746);
-    localActionSheet.a(new brg(paramQQAppInterface, paramString, paramInt, paramLong, paramBoolean, paramContext, localActionSheet));
+    localActionSheet.a(new blc(paramQQAppInterface, paramString, paramInt, paramLong, paramBoolean, paramContext, localActionSheet));
     localActionSheet.show();
   }
   
@@ -394,7 +394,7 @@ public class PublicAccountUtil
       localGetPublicAccountDetailInfoRequest.uin.set((int)Long.parseLong(paramString));
       label76:
       localNewIntent.putExtra("data", localGetPublicAccountDetailInfoRequest.toByteArray());
-      localNewIntent.setObserver(new bri(paramContext, paramAppInterface));
+      localNewIntent.setObserver(new ble(paramContext, paramAppInterface));
       paramAppInterface.startServlet(localNewIntent);
       if (QLog.isColorLevel()) {
         QLog.d("PublicAccountUtil", 2, "sendDetailInfoRequest exit");

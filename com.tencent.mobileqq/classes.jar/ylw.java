@@ -1,22 +1,36 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import android.view.View;
+import android.view.Window;
 
-class ylw
-  implements Runnable
+public class ylw
 {
-  ylw(ylv paramylv, String paramString) {}
-  
-  public void run()
+  public static void a(Window paramWindow)
   {
-    if (this.jdField_a_of_type_Ylv.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender() != null) {
-      this.jdField_a_of_type_Ylv.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender().getSavaWrapper().b(this.jdField_a_of_type_Ylv.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorAddr, this.jdField_a_of_type_JavaLangString);
+    if (paramWindow == null) {
+      return;
     }
+    paramWindow.getDecorView().setSystemUiVisibility(2);
+    paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(new ylx(paramWindow));
+  }
+  
+  public static void b(Window paramWindow)
+  {
+    if (paramWindow == null) {
+      return;
+    }
+    paramWindow.setFlags(8, 8);
+  }
+  
+  public static void c(Window paramWindow)
+  {
+    if (paramWindow == null) {
+      return;
+    }
+    paramWindow.clearFlags(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ylw
  * JD-Core Version:    0.7.0.1
  */

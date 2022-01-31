@@ -1,9 +1,9 @@
 package cooperation.qzone.plugin;
 
-import amyd;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import bjqb;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
 
@@ -15,7 +15,7 @@ public class QZonePatchService
     if (QLog.isColorLevel()) {
       QLog.d("QZonePluginManger", 2, "QZonePatchService onBind");
     }
-    return amyd.a().a();
+    return bjqb.a().a();
   }
   
   public void onCreate()
@@ -53,7 +53,7 @@ public class QZonePatchService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.plugin.QZonePatchService
  * JD-Core Version:    0.7.0.1
  */

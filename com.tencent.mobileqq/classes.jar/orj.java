@@ -1,24 +1,13 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.view.widget.StoryAddDescribeGuideDialog;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.List;
 
-public class orj
-  implements Animation.AnimationListener
+public abstract interface orj
 {
-  public orj(StoryAddDescribeGuideDialog paramStoryAddDescribeGuideDialog) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.dismiss();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(boolean paramBoolean, List<BaseArticleInfo> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     orj
  * JD-Core Version:    0.7.0.1
  */

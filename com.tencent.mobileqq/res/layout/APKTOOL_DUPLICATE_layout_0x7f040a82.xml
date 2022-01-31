@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.widget.QZonePullToRefreshListView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d9d" android:scrollbarStyle="insideOverlay" android:id="@id/album_list" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" />
-    <ViewStub android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f56" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0409e0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f88" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2b42" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040a36" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
-</RelativeLayout>

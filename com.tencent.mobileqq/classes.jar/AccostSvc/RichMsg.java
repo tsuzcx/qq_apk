@@ -8,16 +8,16 @@ import java.util.ArrayList;
 public final class RichMsg
   extends JceStruct
 {
-  static ArrayList cache_VecMsg;
+  static ArrayList<MsgItem> cache_VecMsg;
   static UserInfo cache_stSender;
-  public ArrayList VecMsg;
+  public ArrayList<MsgItem> VecMsg;
   public int iActionID;
   public String sAction = "";
   public UserInfo stSender;
   
   public RichMsg() {}
   
-  public RichMsg(ArrayList paramArrayList, String paramString, UserInfo paramUserInfo, int paramInt)
+  public RichMsg(ArrayList<MsgItem> paramArrayList, String paramString, UserInfo paramUserInfo, int paramInt)
   {
     this.VecMsg = paramArrayList;
     this.sAction = paramString;

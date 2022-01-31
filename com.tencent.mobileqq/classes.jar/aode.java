@@ -1,35 +1,42 @@
-import com.tencent.util.InputMethodUtil;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import dov.com.tencent.biz.qqstory.takevideo.poilist.SearchPoiListLayout;
-import java.util.ArrayList;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.content.Context;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.subscribe.beans.SubscribeColorNoteReserveBean;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qphone.base.util.QLog;
 
 public class aode
-  implements AbsListView.OnScrollListener
+  implements aocw
 {
-  int jdField_a_of_type_Int = 0;
+  private String a = "SubscribeColorNoteLauncher";
   
-  public aode(SearchPoiListLayout paramSearchPoiListLayout) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void a(Context paramContext, ColorNote paramColorNote)
   {
-    if (paramInt == 1) {
-      InputMethodUtil.b(SearchPoiListLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistSearchPoiListLayout));
+    try
+    {
+      paramColorNote = paramColorNote.getReserve();
+      if (paramColorNote == null) {
+        return;
+      }
+      paramColorNote = (SubscribeColorNoteReserveBean)yly.a(paramColorNote);
+      if (paramColorNote != null)
+      {
+        CertifiedAccountMeta.StFeed localStFeed = new CertifiedAccountMeta.StFeed();
+        localStFeed.mergeFrom(paramColorNote.feedData);
+        QLog.d(this.a, 2, "articleInfo From ColorNote :\n" + localStFeed.toString());
+        ybt.a(paramContext, "", localStFeed, new ExtraTypeInfo(paramColorNote.pageType, 9003), null);
+        return;
+      }
     }
-    while ((paramInt != 0) || (SearchPoiListLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistSearchPoiListLayout) == null) || (this.jdField_a_of_type_Int < SearchPoiListLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistSearchPoiListLayout).size())) {
-      return;
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
     }
-    SearchPoiListLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistSearchPoiListLayout);
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aode
  * JD-Core Version:    0.7.0.1
  */

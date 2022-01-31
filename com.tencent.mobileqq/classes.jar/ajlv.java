@@ -1,13 +1,12 @@
-import com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler;
+import android.content.Context;
 
 public class ajlv
-  implements Runnable
+  extends ajlx
 {
-  public ajlv(TroopNoticeJsHandler paramTroopNoticeJsHandler, String paramString) {}
-  
-  public void run()
+  public ajlv(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopJspTroopNoticeJsHandler.c(this.jdField_a_of_type_JavaLangString);
+    this.a = paramContext.getString(2131697682);
+    this.b = this.a;
   }
 }
 

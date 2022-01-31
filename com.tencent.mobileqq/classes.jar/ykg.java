@@ -1,35 +1,10 @@
-import com.tencent.mobileqq.DrawerPushItem;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.persistence.EntityManager;
-import java.util.List;
-
-public class ykg
-  implements Runnable
+public abstract interface ykg<T>
 {
-  public ykg(ApolloManager paramApolloManager, DrawerPushItem paramDrawerPushItem) {}
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem == null) {
-      return;
-    }
-    synchronized (ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager))
-    {
-      if ((ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager) != null) && (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem != null) && (ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager).contains(this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem))) {
-        ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager).remove(this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem);
-      }
-      if (ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager) != null)
-      {
-        ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager).b(this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem);
-        ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager).a();
-      }
-      return;
-    }
-  }
+  public abstract void a(T... paramVarArgs);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ykg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,14 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
+import tencent.im.oidb.cmd0x79a.oidb_0x79a.RspBody;
 
-public class nfc
-  extends RecyclerView.OnScrollListener
+public abstract interface nfc
 {
-  boolean jdField_a_of_type_Boolean = false;
+  public abstract void a();
   
-  public nfc(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
-  {
-    paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
-    if (paramInt == 0)
-    {
-      if ((paramRecyclerView.findLastCompletelyVisibleItemPosition() == paramRecyclerView.getItemCount() - 1) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.a.c();
-      }
-      return;
-    }
-    MsgTabStoryNodeListManager.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager);
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    if (paramInt1 > 0)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public abstract void a(oidb_0x79a.RspBody paramRspBody);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nfc
  * JD-Core Version:    0.7.0.1
  */

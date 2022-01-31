@@ -1,32 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class caj
-  implements DialogInterface.OnClickListener
+public final class caj
+  implements View.OnClickListener
 {
-  public caj(AddRequestActivity paramAddRequestActivity) {}
+  public caj(Handler paramHandler, Runnable paramRunnable) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (NetworkUtil.e(BaseApplication.getContext()))
-    {
-      long l = Long.valueOf(this.a.b.a()).longValue();
-      this.a.showDialog(2);
-      this.a.a.a(l, Long.valueOf(AddRequestActivity.a(this.a)).longValue(), 1);
-      return;
-    }
-    QQToast.a(this.a, 2131562449, 0).b(this.a.d());
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     caj
  * JD-Core Version:    0.7.0.1
  */

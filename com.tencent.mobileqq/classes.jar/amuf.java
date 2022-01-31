@@ -1,18 +1,47 @@
-import cooperation.qzone.font.FontManager;
-import java.io.File;
-import java.io.FileFilter;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public class amuf
-  implements FileFilter
+class amuf
+  extends BroadcastReceiver
 {
-  public amuf(FontManager paramFontManager) {}
+  amuf(amue paramamue) {}
   
-  public boolean accept(File paramFile)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramFile = paramFile.getName();
-    boolean bool1 = paramFile.endsWith(".ftf");
-    boolean bool2 = paramFile.endsWith(".ttf");
-    return (bool1) || (bool2);
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    do
+    {
+      int i;
+      int j;
+      do
+      {
+        do
+        {
+          return;
+        } while ((!"tencent.businessnotify.qq.to.subprocess".equals(paramIntent.getAction())) || (paramIntent.getIntExtra("bussinessType", 0) != 2));
+        switch (paramIntent.getIntExtra("event", 0))
+        {
+        default: 
+          return;
+        case 1: 
+          paramContext = paramIntent.getStringExtra("bussinessSubName");
+          i = paramIntent.getIntExtra("download_Index", 0);
+          j = paramIntent.getIntExtra("download_Progress", 0);
+          if (AudioHelper.e()) {
+            QLog.w(this.a.c, 1, "receive notify, index[" + i + "], progress[" + j + "]");
+          }
+          break;
+        }
+      } while (this.a.a == null);
+      this.a.a.b(paramContext, i, j);
+      return;
+      paramContext = paramIntent.getStringExtra("config_Content");
+      this.a.b(paramContext);
+    } while (this.a.a == null);
+    this.a.a.b();
   }
 }
 

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class group_mgr$LevelInfo$LevelName
-  extends MessageMicro
+  extends MessageMicro<LevelName>
 {
   public static final int LEVEL_FIELD_NUMBER = 1;
   public static final int NAME_FIELD_NUMBER = 2;
@@ -17,7 +17,7 @@ public final class group_mgr$LevelInfo$LevelName
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.hw.group_mgr.LevelInfo.LevelName
  * JD-Core Version:    0.7.0.1
  */

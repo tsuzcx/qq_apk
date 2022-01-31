@@ -8,15 +8,16 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import bejh;
+import bejk;
 import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.qrcode.util.QRUtils;
 import com.tencent.biz.ui.RefreshView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
 import com.tencent.mobileqq.widget.WebViewProgressBar;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
+import ybk;
 
 public class QQVasH5PayBrowserActivity$QQVasH5PayBrowserFragment
   extends WebViewFragment
@@ -50,24 +51,24 @@ public class QQVasH5PayBrowserActivity$QQVasH5PayBrowserFragment
   }
   
   @TargetApi(11)
-  private void f()
+  private void i()
   {
-    if (super.a() != null)
+    if (super.getWebView() != null)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.a & 0x80000) == 0L) {
+      if ((this.jdField_a_of_type_Bejk.a & 0x80000) == 0L) {
         break label223;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setVisibility(8);
+      this.jdField_a_of_type_Bejh.a.setVisibility(8);
       Intent localIntent = a();
       if ((localIntent == null) || (!localIntent.getBooleanExtra("from_qreader", false))) {
         break label172;
       }
       a((ViewGroup)getActivity().getWindow().getDecorView());
-      if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_AndroidViewViewGroup instanceof RefreshView)) {
-        ((RefreshView)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_AndroidViewViewGroup).a(false);
+      if ((this.jdField_a_of_type_Bejh.jdField_c_of_type_AndroidViewViewGroup instanceof RefreshView)) {
+        ((RefreshView)this.jdField_a_of_type_Bejh.jdField_c_of_type_AndroidViewViewGroup).a(false);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b != null) {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b.setVisibility(8);
+      if (this.jdField_a_of_type_Bejh.jdField_c_of_type_AndroidViewView != null) {
+        this.jdField_a_of_type_Bejh.jdField_c_of_type_AndroidViewView.setVisibility(8);
       }
       if (this.jdField_a_of_type_ComTencentBizUiTouchWebView.getX5WebViewExtension() == null) {
         break label195;
@@ -88,10 +89,10 @@ public class QQVasH5PayBrowserActivity$QQVasH5PayBrowserFragment
         localException.printStackTrace();
         continue;
       }
-      l(true);
-      super.a().setVisibility(4);
+      m(true);
+      super.getWebView().setVisibility(4);
       return;
-      super.getActivity().getWindow().setBackgroundDrawableResource(2131492924);
+      super.getActivity().getWindow().setBackgroundDrawableResource(2131167140);
       break;
       label195:
       this.jdField_a_of_type_ComTencentBizUiTouchWebView.setBackgroundColor(0);
@@ -100,38 +101,41 @@ public class QQVasH5PayBrowserActivity$QQVasH5PayBrowserFragment
         this.jdField_a_of_type_ComTencentBizUiTouchWebView.setLayerType(1, null);
         continue;
         label223:
-        if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b != null) {
-          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b.setVisibility(0);
+        if (this.jdField_a_of_type_Bejh.jdField_c_of_type_AndroidViewView != null) {
+          this.jdField_a_of_type_Bejh.jdField_c_of_type_AndroidViewView.setVisibility(0);
         }
       }
     }
   }
   
-  protected int a(Bundle paramBundle)
+  public int a(Bundle paramBundle)
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewFragment", 2, "QQVasH5PayBrowserActivity doCreateLoopStep_Final: ");
+    }
     int i = super.a(paramBundle);
-    super.a().setVisibility(0);
+    super.getWebView().setVisibility(0);
     return i;
   }
   
   public void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
     super.a(paramWebView, paramInt, paramString1, paramString2);
-    QRUtils.a(1, 2131430035);
+    ybk.a(1, 2131695724);
     super.getActivity().finish();
   }
   
   @TargetApi(11)
-  protected int c(Bundle paramBundle)
+  public int d(Bundle paramBundle)
   {
-    int i = super.c(paramBundle);
-    f();
+    int i = super.d(paramBundle);
+    i();
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQVasH5PayBrowserActivity.QQVasH5PayBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,55 +1,16 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agis
-  implements Runnable
+class agis
+  implements DialogInterface.OnClickListener
 {
-  public agis(ScanTorchActivity paramScanTorchActivity) {}
+  agis(agiq paramagiq) {}
   
-  public void run()
-  {
-    String[] arrayOfString = new String[2];
-    arrayOfString[0] = "res/redpack/rank_dialog_bg.png";
-    arrayOfString[1] = "res/redpack/cup.png";
-    int j = arrayOfString.length;
-    int i = 0;
-    for (;;)
-    {
-      if (i >= j) {
-        return;
-      }
-      String str = arrayOfString[i];
-      try
-      {
-        Bitmap localBitmap = ScanTorchActivity.a(this.a, str, false);
-        if (localBitmap != null) {
-          BaseApplicationImpl.sImageCache.put(str, localBitmap);
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        if (!QLog.isColorLevel()) {
-          break label97;
-        }
-        QLog.e("ScanTorchActivity", 2, "binhai preload img throwable", localThrowable);
-        while ((localThrowable instanceof OutOfMemoryError))
-        {
-          System.gc();
-          break;
-          QLog.d("ScanTorchActivity", 1, "binhai preload img t=" + localThrowable.getMessage());
-        }
-      }
-      i += 1;
-    }
-    label97:
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agis
  * JD-Core Version:    0.7.0.1
  */

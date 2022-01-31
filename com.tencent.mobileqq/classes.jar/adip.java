@@ -1,19 +1,29 @@
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.activity.MainFragment;
 
-class adip
-  implements Runnable
+public class adip
+  extends adix
 {
-  adip(adil paramadil) {}
-  
-  public void run()
+  public adip(MainFragment paramMainFragment)
   {
-    UniformDownloaderAppBabySdk.c(this.a.a);
-    UniformDownloaderAppBabySdk.a(this.a.a);
+    super(null);
+  }
+  
+  public void onClick(View paramView)
+  {
+    alsn localalsn = this.a.b();
+    if ((localalsn instanceof ReadinjoyTabFrame)) {
+      ((ReadinjoyTabFrame)localalsn).l();
+    }
+    owy.a().l();
+    MainFragment.a(MainFragment.a(this.a), MainFragment.a(this.a));
+    super.onClick(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adip
  * JD-Core Version:    0.7.0.1
  */

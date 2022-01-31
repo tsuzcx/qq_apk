@@ -1,43 +1,50 @@
-import android.annotation.TargetApi;
-import android.content.ClipData;
-import android.content.ClipData.Item;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
+import com.tencent.ark.open.ArkAppInfo.AppTemplateView;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class afik
-  implements View.OnLongClickListener
+public final class afik
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  public afik(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel) {}
+  protected WeakReference<afii> a;
   
-  @TargetApi(11)
-  public boolean onLongClick(View paramView)
+  public afik(WeakReference<afii> paramWeakReference)
   {
-    if (this.a.a.getChildCount() <= 1) {
-      return true;
-    }
-    Object localObject = new ClipData.Item("");
-    paramView.startDrag(new ClipData("", new String[] { "text/plain" }, (ClipData.Item)localObject), new afix(this.a, paramView), paramView, 0);
-    localObject = NearbyProfileEditTribePanel.a(this.a, (PicInfo)paramView.getTag(), null);
-    ((RelativeLayout)localObject).setVisibility(4);
-    NearbyProfileEditTribePanel.a(this.a, (RelativeLayout)localObject);
-    int i = this.a.a.indexOfChild(paramView);
-    if (i != -1)
+    this.a = paramWeakReference;
+  }
+  
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  {
+    paramObject = (afii)this.a.get();
+    if (paramObject == null)
     {
-      this.a.a.removeView(paramView);
-      this.a.a.addView(NearbyProfileEditTribePanel.a(this.a), i);
-      return true;
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkApp.ArkAppContainer", 1, "onGetAppPathByName.wrapper == null");
+      }
+      return;
     }
-    paramView.setVisibility(4);
-    return true;
+    String str1 = paramObject.a(paramString);
+    if (paramAppPathInfo != null) {}
+    for (paramString = paramAppPathInfo.path;; paramString = null)
+    {
+      paramObject.a.getAppFromLocal = false;
+      paramObject.a.endOfGetApp = System.currentTimeMillis();
+      if ((paramAppPathInfo != null) && (paramAppPathInfo.appTempInfo != null))
+      {
+        String str2 = paramAppPathInfo.appTempInfo.template;
+        str2 = paramAppPathInfo.appTempInfo.templateView;
+        afii.a(paramObject).view = str2;
+      }
+      afii.a(paramAppPathInfo);
+      paramObject.a(paramString, paramInt, str1);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afik
  * JD-Core Version:    0.7.0.1
  */

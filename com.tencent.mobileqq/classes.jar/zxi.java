@@ -1,34 +1,25 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.mobileqq.ar.ARGlobalRemoteManager;
-import com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager.Stub;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.device.msg.activities.DeviceMsgSettingActivity;
+import mqq.app.QQPermissionCallback;
 
 public class zxi
-  implements ServiceConnection
+  implements QQPermissionCallback
 {
-  public zxi(ARGlobalRemoteManager paramARGlobalRemoteManager) {}
+  public zxi(DeviceMsgSettingActivity paramDeviceMsgSettingActivity) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    ARGlobalRemoteManager.a(this.a, IArGlobalConfigManager.Stub.a(paramIBinder));
-    if (QLog.isColorLevel()) {
-      QLog.d("ARGlobalRemoteManager", 2, "onServiceConnected ARGlobalRemoteManager=" + ARGlobalRemoteManager.a(this.a));
-    }
+    bdgm.b(this.a);
+    this.a.finish();
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    ARGlobalRemoteManager.a(this.a, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("ARGlobalRemoteManager", 2, "onServiceDisconnected ARGlobalRemoteManager=" + ARGlobalRemoteManager.a(this.a));
-    }
+    DeviceMsgSettingActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     zxi
  * JD-Core Version:    0.7.0.1
  */

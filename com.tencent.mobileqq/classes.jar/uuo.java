@@ -1,21 +1,29 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import org.json.JSONObject;
 
 public class uuo
-  implements Runnable
 {
-  public uuo(ArkAppItemBubbleBuilder.Holder paramHolder1, String paramString, ArkAppItemBubbleBuilder.Holder paramHolder2) {}
-  
-  public void run()
-  {
-    String str = ArkAppCenter.b(this.jdField_a_of_type_JavaLangString);
-    ArkAppCenter.a().postToMainThread(new uup(this, str));
-  }
+  public int a;
+  public String a;
+  public JSONObject a;
+  public boolean a;
+  public int b;
+  public String b;
+  public JSONObject b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public boolean d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uuo
  * JD-Core Version:    0.7.0.1
  */

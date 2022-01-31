@@ -1,34 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.adapter.HotChatPostListAdapter;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
-import com.tencent.widget.OverScrollViewListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.io.File;
 
-public class vvh
-  implements OverScrollViewListener
+public abstract interface vvh
 {
-  public vvh(HotChatPie paramHotChatPie) {}
+  public abstract void a(VideoViewVideoHolder paramVideoViewVideoHolder, String paramString1, String paramString2, File paramFile, boolean paramBoolean);
   
-  public void a(int paramInt, View paramView, ListView paramListView)
-  {
-    HotChatPie.a(this.a).setPullType(0);
-    HotChatPie.a(this.a).c(HotChatPie.j);
-    HotChatPie.a(this.a, 0, this.a.a.a());
-  }
+  public abstract void a(VideoViewVideoHolder paramVideoViewVideoHolder, vwa paramvwa);
   
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    return false;
-  }
+  public abstract boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, vwa paramvwa, int paramInt, Object paramObject);
   
-  public void b(int paramInt, View paramView, ListView paramListView) {}
+  public abstract boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, vwa paramvwa, boolean paramBoolean);
   
-  public void c(int paramInt, View paramView, ListView paramListView) {}
+  public abstract void b(VideoViewVideoHolder paramVideoViewVideoHolder, vwa paramvwa);
+  
+  public abstract void c(VideoViewVideoHolder paramVideoViewVideoHolder, vwa paramvwa);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vvh
  * JD-Core Version:    0.7.0.1
  */

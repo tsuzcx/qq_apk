@@ -1,21 +1,48 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.util.DanceGameReporter;
-import com.tencent.mobileqq.shortvideo.dancegame.DanceGameVideoManager;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
+import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class ahiy
-  implements Runnable
+  implements ahvv
 {
-  public ahiy(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment, long paramLong) {}
+  public ahiy(TroopView paramTroopView) {}
   
-  public void run()
+  public void a()
   {
-    DanceGameVideoManager.a().a();
-    DanceGameReporter.a().a(this.jdField_a_of_type_Long);
+    if (babd.a())
+    {
+      localMessage = TroopView.a(this.a).obtainMessage(15);
+      TroopView.a(this.a).sendMessage(localMessage);
+    }
+    do
+    {
+      return;
+      if (!bdin.g(BaseApplication.getContext())) {
+        break label105;
+      }
+      if (this.a.a.size() <= 0) {
+        break;
+      }
+    } while ((TroopView.a(this.a) == null) || (TroopView.a(this.a) == null));
+    TroopView.a(this.a).b(TroopView.a(this.a).getCurrentItem());
+    return;
+    TroopView.b(this.a);
+    return;
+    label105:
+    if (QLog.isColorLevel()) {
+      QLog.d("addContacts.TroopView", 2, "refresh falied. network unavailable");
+    }
+    Message localMessage = TroopView.a(this.a).obtainMessage(13);
+    TroopView.a(this.a).sendMessageDelayed(localMessage, 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahiy
  * JD-Core Version:    0.7.0.1
  */

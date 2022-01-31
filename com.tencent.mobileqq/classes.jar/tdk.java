@@ -1,20 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
-public class tdk
-  implements DialogInterface.OnClickListener
+class tdk
+  implements TextView.OnEditorActionListener
 {
-  public tdk(NotificationActivity paramNotificationActivity) {}
+  tdk(tdf paramtdf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.a();
+    switch (paramInt)
+    {
+    case 5: 
+    default: 
+      return false;
+    }
+    if (tdf.a(this.a) != null) {
+      tdf.a(this.a).a();
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tdk
  * JD-Core Version:    0.7.0.1
  */

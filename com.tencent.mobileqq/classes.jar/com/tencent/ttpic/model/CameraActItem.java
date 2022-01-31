@@ -1,8 +1,8 @@
 package com.tencent.ttpic.model;
 
 import android.graphics.PointF;
+import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.filter.BaseFilter;
-import com.tencent.filter.Frame;
 import java.util.List;
 
 public class CameraActItem
@@ -36,15 +36,15 @@ public class CameraActItem
   
   public void reset() {}
   
-  public void update(Frame paramFrame, long paramLong, List<List<PointF>> paramList, List<float[]> paramList1, double paramDouble, int paramInt)
+  public void update(Frame paramFrame, long paramLong, List<List<PointF>> paramList, List<float[]> paramList1, int paramInt)
   {
-    super.update(paramFrame, paramLong, paramList, paramList1, paramDouble, paramInt);
+    super.update(paramFrame, paramLong, paramList, paramList1, paramInt);
     this.cameraFrame = paramFrame;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.model.CameraActItem
  * JD-Core Version:    0.7.0.1
  */

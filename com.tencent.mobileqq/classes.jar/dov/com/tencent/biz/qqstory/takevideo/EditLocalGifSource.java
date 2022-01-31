@@ -4,7 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import anrc;
+import bjvw;
+import bmiy;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import java.io.File;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 public class EditLocalGifSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator CREATOR = new anrc();
+  public static final Parcelable.Creator<EditLocalGifSource> CREATOR = new bmiy();
   @NonNull
   public long a;
   @NonNull
@@ -20,11 +21,11 @@ public class EditLocalGifSource
   @NonNull
   public String a;
   @NonNull
-  public ArrayList a;
+  public ArrayList<String> a;
   @NonNull
   public boolean a;
   @NonNull
-  public ArrayList b = new ArrayList();
+  public ArrayList<String> b = new ArrayList();
   
   public EditLocalGifSource(Parcel paramParcel)
   {
@@ -33,6 +34,19 @@ public class EditLocalGifSource
     paramParcel.readStringList(this.jdField_a_of_type_JavaUtilArrayList);
     this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)paramParcel.readParcelable(LocalMediaInfo.class.getClassLoader()));
     this.jdField_a_of_type_Long = paramParcel.readLong();
+  }
+  
+  public EditLocalGifSource(String paramString, ArrayList<String> paramArrayList, LocalMediaInfo paramLocalMediaInfo)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    paramString = paramLocalMediaInfo;
+    if (paramLocalMediaInfo == null) {
+      paramString = new LocalMediaInfo();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramString;
+    this.jdField_a_of_type_Long = bjvw.d;
   }
   
   public int a()
@@ -83,7 +97,7 @@ public class EditLocalGifSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditLocalGifSource
  * JD-Core Version:    0.7.0.1
  */

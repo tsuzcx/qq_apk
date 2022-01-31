@@ -3,10 +3,13 @@ package com.tencent.mobileqq.shortvideo.filter;
 import android.annotation.SuppressLint;
 import android.opengl.GLES20;
 import android.os.SystemClock;
-import com.tencent.filter.Frame;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.aekit.openrender.internal.VideoFilterBase;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLLittleBoy;
 import com.tencent.mobileqq.shortvideo.facedancegame.FaceDanceDetectTask;
 import com.tencent.mobileqq.shortvideo.facedancegame.GestureDetectManager;
-import com.tencent.ttpic.filter.VideoFlipFilter;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import com.tencent.ttpic.openapi.filter.TextureRender;
 import com.tencent.util.PhoneProperty;
 import java.util.TreeSet;
 
@@ -14,109 +17,129 @@ import java.util.TreeSet;
 public class QQFaceDanceDetectFilter
   extends QQBaseFilter
 {
-  public Frame a;
-  QQFilterRenderManager jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager;
-  VideoFlipFilter jdField_a_of_type_ComTencentTtpicFilterVideoFlipFilter = VideoFlipFilter.createVideoFlipFilter();
-  boolean jdField_a_of_type_Boolean = false;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[1];
-  boolean b;
-  boolean c = false;
-  private boolean d = false;
+  public static final String TAG = "QQFaceDanceDetect";
+  boolean isInit = false;
+  boolean isInitFaceDetectSDK = false;
+  boolean isInitGestureDetectSDK = false;
+  QQFilterRenderManager mFilterRenderManager;
+  private VideoFilterBase mFlipFilter = new VideoFilterBase("precision highp float;\nattribute vec4 position;\nattribute vec2 inputTextureCoordinate;\nvarying vec2 textureCoordinate;\n\nvoid main() {\n    gl_Position = position;\n    textureCoordinate = inputTextureCoordinate;\n}\n", "precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+  public Frame mFlipFrame = new Frame();
+  private int[] mFlipTextureID = new int[1];
+  private RenderBuffer mRenderInFBO;
+  private RenderBuffer mRenderOutFBO;
+  private int scaleTexture;
+  private boolean shouldInitTexture = false;
+  private int surfaceHeight;
+  private int surfaceWidth;
+  private TextureRender textureRender;
   
   public QQFaceDanceDetectFilter(int paramInt, QQFilterRenderManager paramQQFilterRenderManager)
   {
     super(paramInt, paramQQFilterRenderManager);
-    this.jdField_a_of_type_ComTencentFilterFrame = new Frame();
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = paramQQFilterRenderManager;
+    this.mFilterRenderManager = paramQQFilterRenderManager;
   }
   
-  private void c()
+  private void initSDK()
   {
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.isInitFaceDetectSDK)
     {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.e();
-      FaceDanceDetectTask.a().a(this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager);
-      this.jdField_b_of_type_Boolean = true;
+      this.mFilterRenderManager.initAEDetector_sync();
+      FaceDanceDetectTask.getInstance().setQQFilterRenderManager(this.mFilterRenderManager);
+      this.isInitFaceDetectSDK = true;
     }
-    if (!this.c)
+    if (!this.isInitGestureDetectSDK)
     {
-      a();
-      this.c = true;
+      initGestureDetectSDK();
+      this.isInitGestureDetectSDK = true;
     }
   }
   
-  public void a()
+  private void initTexture()
   {
-    GestureDetectManager.a().a();
+    if (this.mRenderInFBO != null) {
+      this.mRenderInFBO.destroy();
+    }
+    if (this.mRenderOutFBO != null) {
+      this.mRenderOutFBO.destroy();
+    }
+    if (this.textureRender != null) {
+      this.textureRender.release();
+    }
+    this.mRenderOutFBO = new RenderBuffer(this.surfaceWidth, this.surfaceHeight, 33984);
+    this.textureRender = new TextureRender();
   }
   
-  public void a(TreeSet paramTreeSet)
+  public void clearFlipFrame()
+  {
+    if (this.mFlipFrame != null) {
+      this.mFlipFrame.clear();
+    }
+  }
+  
+  public void initGestureDetectSDK()
+  {
+    GestureDetectManager.getInstance().LoadSDK();
+  }
+  
+  public boolean isFilterWork()
+  {
+    return QQFaceDanceMechineFilter.isEnableFaceDance;
+  }
+  
+  public void onDrawFrame()
+  {
+    this.mOutputTextureID = this.mInputTextureID;
+  }
+  
+  public void onSurfaceDestroy()
+  {
+    super.onSurfaceDestroy();
+    GLES20.glDeleteTextures(this.mFlipTextureID.length, this.mFlipTextureID, 0);
+    FaceDanceDetectTask.getInstance().DestoryTask();
+    if ((this.mFlipFilter != null) && (this.isInit))
+    {
+      this.mFlipFilter.clearGLSLSelf();
+      this.mFlipFrame.clear();
+    }
+    this.isInit = false;
+  }
+  
+  public void postDetectTask(TreeSet<GLLittleBoy> paramTreeSet)
   {
     if ((paramTreeSet == null) || (paramTreeSet.size() == 0)) {}
     do
     {
       return;
-      c();
-    } while (FaceDanceDetectTask.a().a());
-    if (!this.jdField_a_of_type_Boolean)
+      initSDK();
+    } while (FaceDanceDetectTask.getInstance().checkIsRunning());
+    if (!this.isInit)
     {
-      GLES20.glGenTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
-      this.jdField_a_of_type_ComTencentTtpicFilterVideoFlipFilter.ClearGLSL();
-      this.jdField_a_of_type_ComTencentTtpicFilterVideoFlipFilter.ApplyGLSLFilter();
-      this.jdField_a_of_type_Boolean = true;
+      GLES20.glGenTextures(this.mFlipTextureID.length, this.mFlipTextureID, 0);
+      this.mFlipFilter.clearGLSLSelf();
+      this.mFlipFilter.ApplyGLSLFilter();
+      this.mFlipFilter.setRotationAndFlip(0, false, true);
+      this.isInit = true;
       return;
     }
     long l2 = SystemClock.elapsedRealtimeNanos();
-    int i = this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.a();
-    int j = this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.b();
-    byte[] arrayOfByte1 = this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.a(this.jdField_a_of_type_Int, i, j);
+    int i = this.mFilterRenderManager.getFaceDetectWidth();
+    int j = this.mFilterRenderManager.getFaceDetectHeight();
+    byte[] arrayOfByte = this.mFilterRenderManager.getFaceDetectDataByTexture(this.mInputTextureID, i, j);
     long l1 = SystemClock.elapsedRealtimeNanos();
-    FaceDanceDetectTask.a("frist getFaceDetectDataByTexture", l2, l1);
-    this.jdField_a_of_type_ComTencentTtpicFilterVideoFlipFilter.RenderProcess(this.jdField_a_of_type_Int, a().f(), a().g(), this.jdField_a_of_type_ArrayOfInt[0], 0.0D, this.jdField_a_of_type_ComTencentFilterFrame);
+    FaceDanceDetectTask.logTimeInfo("frist getFaceDetectDataByTexture", l2, l1);
+    this.mFlipFilter.RenderProcess(this.mInputTextureID, getQQFilterRenderManager().getFilterWidth(), getQQFilterRenderManager().getFilterHeight(), this.mFlipTextureID[0], 0.0D, this.mFlipFrame);
     if (PhoneProperty.instance().isCannotReuseFrameBuffer()) {
-      this.jdField_a_of_type_ComTencentFilterFrame.clear();
+      this.mFlipFrame.clear();
     }
     l2 = SystemClock.elapsedRealtimeNanos();
-    FaceDanceDetectTask.a("Flip Texture", l1, l2);
-    byte[] arrayOfByte2 = this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.a(this.jdField_a_of_type_ArrayOfInt[0], i, j);
-    FaceDanceDetectTask.a("second getFaceDetectDataByTexture", l2, SystemClock.elapsedRealtimeNanos());
-    FaceDanceDetectTask.a().a(arrayOfByte1, arrayOfByte2, i, j, paramTreeSet);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentFilterFrame != null) {
-      this.jdField_a_of_type_ComTencentFilterFrame.clear();
-    }
-  }
-  
-  public void e()
-  {
-    super.e();
-    GLES20.glDeleteTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
-    FaceDanceDetectTask.a().c();
-    if ((this.jdField_a_of_type_ComTencentTtpicFilterVideoFlipFilter != null) && (this.jdField_a_of_type_Boolean))
-    {
-      this.jdField_a_of_type_ComTencentTtpicFilterVideoFlipFilter.ClearGLSL();
-      this.jdField_a_of_type_ComTencentFilterFrame.clear();
-    }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void h()
-  {
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-  }
-  
-  public boolean i_()
-  {
-    return QQFaceDanceMechineFilter.jdField_a_of_type_Boolean;
+    FaceDanceDetectTask.logTimeInfo("Flip Texture", l1, l2);
+    FaceDanceDetectTask.logTimeInfo("second getFaceDetectDataByTexture", l2, SystemClock.elapsedRealtimeNanos());
+    FaceDanceDetectTask.getInstance().postTask(arrayOfByte, this.mFlipFrame, i, j, paramTreeSet);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQFaceDanceDetectFilter
  * JD-Core Version:    0.7.0.1
  */

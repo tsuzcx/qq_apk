@@ -1,31 +1,48 @@
-import android.graphics.Rect;
-import android.view.TouchDelegate;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.CardVideoInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.NormalCardInfo;
+import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public class wll
-  implements Runnable
 {
-  public wll(TroopActivity paramTroopActivity, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  private qqstory_struct.NormalCardInfo jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NormalCardInfo;
+  private CardItem.CardVideoInfo jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
   
-  public void run()
+  public wll(qqstory_struct.NormalCardInfo paramNormalCardInfo)
   {
-    Object localObject = new Rect();
-    this.jdField_a_of_type_AndroidViewView.setEnabled(true);
-    this.jdField_a_of_type_AndroidViewView.getHitRect((Rect)localObject);
-    ((Rect)localObject).top -= this.jdField_a_of_type_Int;
-    ((Rect)localObject).bottom += this.b;
-    ((Rect)localObject).left -= this.c;
-    ((Rect)localObject).right += this.d;
-    localObject = new TouchDelegate((Rect)localObject, this.jdField_a_of_type_AndroidViewView);
-    if (View.class.isInstance(this.jdField_a_of_type_AndroidViewView.getParent())) {
-      ((View)this.jdField_a_of_type_AndroidViewView.getParent()).setTouchDelegate((TouchDelegate)localObject);
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NormalCardInfo = paramNormalCardInfo;
+  }
+  
+  public wll(byte[] paramArrayOfByte)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NormalCardInfo = new qqstory_struct.NormalCardInfo();
+    try
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NormalCardInfo.mergeFrom(paramArrayOfByte);
+      return;
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wxe.e("Q.qqstory.discover.CardItem", paramArrayOfByte.toString());
+    }
+  }
+  
+  public CardItem.CardVideoInfo a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo == null)
+    {
+      if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NormalCardInfo.story_video_info.size() == 0) {
+        return null;
+      }
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo = new CardItem.CardVideoInfo((qqstory_struct.CardVideoInfo)this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NormalCardInfo.story_video_info.get(0));
+    }
+    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wll
  * JD-Core Version:    0.7.0.1
  */

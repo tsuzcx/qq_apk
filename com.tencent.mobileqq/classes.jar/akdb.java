@@ -1,34 +1,55 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NewUpgradeDialog;
-import com.tencent.open.appcircle.st.AppCircleReportManager;
-import com.tencent.open.appcircle.st.STUtils;
-import com.tencent.open.base.LogUtility;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.13.1;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
 
 public class akdb
-  implements View.OnClickListener
+  implements TVK_SDKMgr.InstallListener
 {
-  public akdb(NewUpgradeDialog paramNewUpgradeDialog) {}
+  public akdb(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onClick(View paramView)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    int i = 2;
-    LogUtility.b("NewUpgradeDialog", STUtils.a(10010, NewUpgradeDialog.a(), 2, 200));
-    AppCircleReportManager.a().a(17, STUtils.a(10010, NewUpgradeDialog.a(), 4, 200));
-    this.a.dismiss();
-    ((Activity)this.a.a.get()).finish();
-    if (NewUpgradeDialog.a() == 2) {
-      i = 1;
+    ShortVideoPlayActivity.a(this.a, false);
+    ShortVideoPlayActivity.d(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.c(this.a));
+    this.a.a(this.a.a.getResources().getString(2131698159));
+    ShortVideoPlayActivity.c(this.a, 3000);
+    ShortVideoPlayActivity.d(this.a, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onInstalledFailed:" + paramInt);
     }
-    ReportController.b(null, "dc00898", "", "", "0X8008FFC", "0X8008FFC", i, 0, "", "", "", "");
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_entrance", "ShortVideoPlayActivity");
+    localHashMap.put("param_erroCode", String.valueOf(paramInt));
+    localHashMap.put("param_result", "0");
+    azri.a(BaseApplication.getContext()).a(null, "actInstallTVK", false, 0L, 0L, localHashMap, "");
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    ShortVideoPlayActivity.a(this.a, true);
+    ShortVideoPlayActivity.d(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.c(this.a));
+    if (this.a.b.get() != null) {
+      ((MqqHandler)this.a.b.get()).post(new ShortVideoPlayActivity.13.1(this));
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_entrance", "ShortVideoPlayActivity");
+    localHashMap.put("param_erroCode", "0");
+    localHashMap.put("param_result", "1");
+    azri.a(BaseApplication.getContext()).a(null, "actInstallTVK", true, 0L, 0L, localHashMap, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akdb
  * JD-Core Version:    0.7.0.1
  */

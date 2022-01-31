@@ -1,35 +1,22 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.appcircle.widget.AppNewsTitleBar;
-import cooperation.qappcenter.remote.RemoteServiceProxy;
-import cooperation.qappcenter.remote.SendMsg;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
 public class aldf
-  implements View.OnClickListener
+  extends apmh
 {
-  public aldf(AppNewsTitleBar paramAppNewsTitleBar) {}
+  public aldf(ApolloGameActivity paramApolloGameActivity) {}
   
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (AppNewsTitleBar.a(this.a) == null);
-      AppNewsTitleBar.a(this.a).finish();
-      return;
-    } while ((AppNewsTitleBar.a(this.a) != 0) || (AppNewsTitleBar.a(this.a) == null));
-    AppNewsTitleBar.a(this.a).b(new SendMsg("onShareClick"));
-  }
+  public void onBindedToClient() {}
+  
+  public void onDisconnectWithService() {}
+  
+  public void onPushMsg(Bundle paramBundle) {}
+  
+  public void onResponse(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aldf
  * JD-Core Version:    0.7.0.1
  */

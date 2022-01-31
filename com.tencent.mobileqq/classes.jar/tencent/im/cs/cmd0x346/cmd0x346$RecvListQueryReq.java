@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class cmd0x346$RecvListQueryReq
-  extends MessageMicro
+  extends MessageMicro<RecvListQueryReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "uint64_uin", "uint32_begin_index", "uint32_req_count" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0) }, RecvListQueryReq.class);
   public final PBUInt32Field uint32_begin_index = PBField.initUInt32(0);
@@ -16,7 +16,7 @@ public final class cmd0x346$RecvListQueryReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.cmd0x346.cmd0x346.RecvListQueryReq
  * JD-Core Version:    0.7.0.1
  */

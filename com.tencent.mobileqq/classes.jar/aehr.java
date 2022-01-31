@@ -1,47 +1,80 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class aehr
-  extends Handler
+  implements ahpq
 {
-  public aehr() {}
+  public aehr(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public aehr(Looper paramLooper)
+  public void a(String paramString, structmsg.StructMsg paramStructMsg, int paramInt)
   {
-    super(paramLooper);
+    int i;
+    if ((TroopInfo.hasPayPrivilege(paramInt, 128)) && (TroopInfo.hasPayPrivilege(paramInt, 512)))
+    {
+      i = 1;
+      if (i == 0) {
+        break label126;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.systemmsg.TroopRequestActivity", 2, "onTroopPrivilege payTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt);
+      }
+      ahpp.a(this.a, paramString);
+      ahpp.a(this.a.app);
+      this.a.i();
+      azqs.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "pay_troop", "", "", "");
+    }
+    label126:
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          i = 0;
+          break;
+          if (((this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() != 11) || (this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.sub_type.get() != 3)) && (this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() != 7)) {
+            break label250;
+          }
+        } while (this.a.jdField_a_of_type_Amdu == null);
+        try
+        {
+          long l = Long.parseLong(this.a.jdField_a_of_type_JavaLangString);
+          this.a.h();
+          this.a.jdField_a_of_type_Amdu.a(l, 8390784);
+          return;
+        }
+        catch (Exception paramString) {}
+      } while (!QLog.isColorLevel());
+      QLog.i("Q.systemmsg.TroopRequestActivity", 2, paramString.toString());
+      return;
+      this.a.h();
+      TroopRequestActivity.a(this.a, 1);
+    } while (this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() != 2);
+    label250:
+    azqs.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "agree_invite", 0, 0, paramString, "", "0", "0");
+    azqs.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "normal_troop", "", "", "");
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(String paramString1, structmsg.StructMsg paramStructMsg, int paramInt1, int paramInt2, String paramString2)
   {
-    int i = paramMessage.what;
-    Object localObject = (Object[])paramMessage.obj;
-    if (i == 1)
+    this.a.i();
+    paramStructMsg = this.a;
+    if (paramInt1 == 72) {}
+    for (paramInt1 = 2131690073;; paramInt1 = 2131690072)
     {
-      if (ChatBackgroundManager.c < 3)
-      {
-        paramMessage = (String)localObject[0];
-        localObject = (QQAppInterface)localObject[1];
-        ChatBackgroundManager.a((QQAppInterface)localObject, paramMessage, StatisticCollector.a(BaseApplication.getContext()));
-        ChatBackgroundManager.c += 1;
-        if (QLog.isColorLevel()) {
-          QLog.d("ThemeDownloadTrace", 2, "reportTimes is:" + ChatBackgroundManager.c);
-        }
-        Message localMessage = ChatBackgroundManager.a.obtainMessage();
-        localMessage.what = 1;
-        localMessage.obj = new Object[] { paramMessage, localObject };
-        ChatBackgroundManager.a.sendMessageDelayed(localMessage, 120000L);
+      QQToast.a(paramStructMsg, paramInt1, 1).a();
+      azqs.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "err", "", "", "");
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.systemmsg.TroopRequestActivity", 2, "NotificationView onTroopPrivilege network! error rspTroopUin = " + paramString1);
       }
-    }
-    else {
       return;
     }
-    ChatBackgroundManager.c = 0;
   }
 }
 

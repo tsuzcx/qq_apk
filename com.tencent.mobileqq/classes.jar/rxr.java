@@ -1,23 +1,24 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.QAVHrMeeting.OnGetNickNameOfMaskDisc;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController.4.1;
 
-public final class rxr
-  implements QAVHrMeeting.OnGetNickNameOfMaskDisc
+public class rxr
+  implements View.OnClickListener
 {
-  public rxr(Bundle paramBundle, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString) {}
+  public rxr(SlideActiveAnimController paramSlideActiveAnimController) {}
   
-  public void a(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putInt("MeetingStasks", paramInt);
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    this.a.d = true;
+    SlideActiveAnimController.a(this.a, new SlideActiveAnimController.4.1(this));
+    SlideActiveAnimController.a(this.a).postDelayed(SlideActiveAnimController.a(this.a), 5000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rxr
  * JD-Core Version:    0.7.0.1
  */

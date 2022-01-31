@@ -1,20 +1,17 @@
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.observer.GetRedPointExObserver;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetDecoder;
 
-public class ned
-  extends GetRedPointExObserver
+final class ned
+  extends ThreadLocal<CharsetDecoder>
 {
-  public ned(MsgTabNodeListLoader paramMsgTabNodeListLoader) {}
-  
-  protected void a(Object paramObject)
+  protected CharsetDecoder a()
   {
-    ThreadManager.post(new nee(this), 5, null, true);
+    return Charset.forName("UTF-8").newDecoder();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ned
  * JD-Core Version:    0.7.0.1
  */

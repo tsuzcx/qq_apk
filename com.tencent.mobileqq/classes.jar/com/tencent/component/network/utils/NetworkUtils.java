@@ -19,7 +19,7 @@ public class NetworkUtils
   public static final String APN_NAME_WIFI = "wifi";
   private static final Uri PREFERRED_APN_URI = Uri.parse("content://telephony/carriers/preferapn");
   private static final String TAG = "NetworkUtil";
-  private static final HashMap sAPNProxies = new HashMap();
+  private static final HashMap<String, Proxy> sAPNProxies = new HashMap();
   
   static
   {
@@ -36,14 +36,14 @@ public class NetworkUtils
     //   0: aconst_null
     //   1: astore_2
     //   2: aload_0
-    //   3: invokestatic 76	com/tencent/component/network/utils/NetworkUtils:getActiveNetworkInfo	(Landroid/content/Context;)Landroid/net/NetworkInfo;
+    //   3: invokestatic 77	com/tencent/component/network/utils/NetworkUtils:getActiveNetworkInfo	(Landroid/content/Context;)Landroid/net/NetworkInfo;
     //   6: astore 4
     //   8: aload 4
     //   10: ifnonnull +5 -> 15
     //   13: aconst_null
     //   14: areturn
     //   15: aload 4
-    //   17: invokevirtual 82	android/net/NetworkInfo:getType	()I
+    //   17: invokevirtual 83	android/net/NetworkInfo:getType	()I
     //   20: iconst_1
     //   21: if_icmpne +19 -> 40
     //   24: ldc 8
@@ -53,95 +53,95 @@ public class NetworkUtils
     //   29: aload_0
     //   30: ifnull +8 -> 38
     //   33: aload_0
-    //   34: invokevirtual 88	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   34: invokevirtual 89	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   37: astore_1
     //   38: aload_1
     //   39: areturn
     //   40: aload 4
-    //   42: invokevirtual 82	android/net/NetworkInfo:getType	()I
+    //   42: invokevirtual 83	android/net/NetworkInfo:getType	()I
     //   45: ifne +165 -> 210
-    //   48: invokestatic 93	com/tencent/component/network/utils/PlatformUtil:a	()I
+    //   48: invokestatic 94	com/tencent/component/network/utils/PlatformUtil:version	()I
     //   51: bipush 17
     //   53: if_icmpge +152 -> 205
     //   56: aload_0
-    //   57: invokevirtual 99	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   60: getstatic 27	com/tencent/component/network/utils/NetworkUtils:PREFERRED_APN_URI	Landroid/net/Uri;
+    //   57: invokevirtual 100	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   60: getstatic 28	com/tencent/component/network/utils/NetworkUtils:PREFERRED_APN_URI	Landroid/net/Uri;
     //   63: aconst_null
     //   64: aconst_null
     //   65: aconst_null
     //   66: aconst_null
-    //   67: invokevirtual 105	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   67: invokevirtual 106	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   70: astore_0
     //   71: aload_0
     //   72: astore_2
     //   73: aconst_null
     //   74: astore_0
     //   75: aload_2
-    //   76: ifnull +90 -> 166
+    //   76: ifnull +32 -> 108
     //   79: aload_2
-    //   80: invokeinterface 111 1 0
-    //   85: ifeq +81 -> 166
+    //   80: invokeinterface 112 1 0
+    //   85: ifeq +23 -> 108
     //   88: aload_2
     //   89: aload_2
-    //   90: ldc 113
-    //   92: invokeinterface 117 2 0
-    //   97: invokeinterface 121 2 0
+    //   90: ldc 114
+    //   92: invokeinterface 118 2 0
+    //   97: invokeinterface 122 2 0
     //   102: astore_1
     //   103: aload_1
     //   104: astore_0
     //   105: goto -30 -> 75
-    //   108: astore_1
-    //   109: aconst_null
-    //   110: astore_3
-    //   111: aload_2
-    //   112: astore_0
-    //   113: aload_3
-    //   114: astore_2
-    //   115: aload_1
-    //   116: invokevirtual 124	java/lang/Throwable:printStackTrace	()V
-    //   119: aload_2
-    //   120: astore_1
-    //   121: aload_0
-    //   122: ifnull +11 -> 133
-    //   125: aload_0
-    //   126: invokeinterface 127 1 0
-    //   131: aload_2
-    //   132: astore_1
-    //   133: aload_1
-    //   134: astore_0
-    //   135: aload_1
-    //   136: invokestatic 133	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   139: ifeq -112 -> 27
-    //   142: aload 4
-    //   144: invokevirtual 136	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
-    //   147: astore_0
-    //   148: goto -121 -> 27
-    //   151: astore_0
-    //   152: aconst_null
-    //   153: astore_2
-    //   154: aload_2
-    //   155: ifnull +9 -> 164
-    //   158: aload_2
-    //   159: invokeinterface 127 1 0
-    //   164: aload_0
-    //   165: athrow
-    //   166: aload_0
-    //   167: astore_1
-    //   168: aload_2
-    //   169: ifnull -36 -> 133
-    //   172: aload_2
-    //   173: invokeinterface 127 1 0
-    //   178: aload_0
-    //   179: astore_1
-    //   180: goto -47 -> 133
+    //   108: aload_0
+    //   109: astore_1
+    //   110: aload_2
+    //   111: ifnull +11 -> 122
+    //   114: aload_2
+    //   115: invokeinterface 125 1 0
+    //   120: aload_0
+    //   121: astore_1
+    //   122: aload_1
+    //   123: astore_0
+    //   124: aload_1
+    //   125: invokestatic 131	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   128: ifeq -101 -> 27
+    //   131: aload 4
+    //   133: invokevirtual 134	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
+    //   136: astore_0
+    //   137: goto -110 -> 27
+    //   140: astore_1
+    //   141: aconst_null
+    //   142: astore_3
+    //   143: aload_2
+    //   144: astore_0
+    //   145: aload_3
+    //   146: astore_2
+    //   147: aload_1
+    //   148: invokevirtual 137	java/lang/Throwable:printStackTrace	()V
+    //   151: aload_2
+    //   152: astore_1
+    //   153: aload_0
+    //   154: ifnull -32 -> 122
+    //   157: aload_0
+    //   158: invokeinterface 125 1 0
+    //   163: aload_2
+    //   164: astore_1
+    //   165: goto -43 -> 122
+    //   168: astore_0
+    //   169: aconst_null
+    //   170: astore_2
+    //   171: aload_2
+    //   172: ifnull +9 -> 181
+    //   175: aload_2
+    //   176: invokeinterface 125 1 0
+    //   181: aload_0
+    //   182: athrow
     //   183: astore_0
-    //   184: goto -30 -> 154
+    //   184: goto -13 -> 171
     //   187: astore_1
     //   188: aload_0
     //   189: astore_2
     //   190: aload_1
     //   191: astore_0
-    //   192: goto -38 -> 154
+    //   192: goto -21 -> 171
     //   195: astore_1
     //   196: aload_2
     //   197: astore_3
@@ -149,31 +149,31 @@ public class NetworkUtils
     //   199: astore_2
     //   200: aload_3
     //   201: astore_0
-    //   202: goto -87 -> 115
+    //   202: goto -55 -> 147
     //   205: aconst_null
     //   206: astore_1
-    //   207: goto -74 -> 133
+    //   207: goto -85 -> 122
     //   210: aconst_null
     //   211: astore_0
     //   212: goto -185 -> 27
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	215	0	paramContext	Context
-    //   28	76	1	localObject1	Object
-    //   108	8	1	localThrowable1	Throwable
-    //   120	60	1	localObject2	Object
+    //   28	97	1	localObject1	Object
+    //   140	8	1	localThrowable1	Throwable
+    //   152	13	1	localObject2	Object
     //   187	4	1	localObject3	Object
     //   195	1	1	localThrowable2	Throwable
     //   206	1	1	localObject4	Object
     //   1	199	2	localObject5	Object
-    //   110	91	3	localObject6	Object
-    //   6	137	4	localNetworkInfo	NetworkInfo
+    //   142	59	3	localObject6	Object
+    //   6	126	4	localNetworkInfo	NetworkInfo
     // Exception table:
     //   from	to	target	type
-    //   56	71	108	java/lang/Throwable
-    //   56	71	151	finally
+    //   56	71	140	java/lang/Throwable
+    //   56	71	168	finally
     //   79	103	183	finally
-    //   115	119	187	finally
+    //   147	151	187	finally
     //   79	103	195	java/lang/Throwable
   }
   
@@ -186,7 +186,7 @@ public class NetworkUtils
     }
     catch (Throwable paramContext)
     {
-      QDLog.d("NetworkUtil", "fail to get active network info", paramContext);
+      QDLog.e("NetworkUtil", "fail to get active network info", paramContext);
     }
     return null;
   }
@@ -199,14 +199,14 @@ public class NetworkUtils
       paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getDhcpInfo();
       if (paramContext != null)
       {
-        localDNS.a = int32ToIPStr(paramContext.dns1);
-        localDNS.b = int32ToIPStr(paramContext.dns2);
+        localDNS.primary = int32ToIPStr(paramContext.dns1);
+        localDNS.secondary = int32ToIPStr(paramContext.dns2);
       }
     }
-    if ((localDNS.a == null) && (localDNS.b == null))
+    if ((localDNS.primary == null) && (localDNS.secondary == null))
     {
-      localDNS.a = PropertyUtil.a("net.dns1", null);
-      localDNS.b = PropertyUtil.a("net.dns2", null);
+      localDNS.primary = PropertyUtil.get("net.dns1", null);
+      localDNS.secondary = PropertyUtil.get("net.dns2", null);
     }
     return localDNS;
   }
@@ -344,7 +344,7 @@ public class NetworkUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.utils.NetworkUtils
  * JD-Core Version:    0.7.0.1
  */

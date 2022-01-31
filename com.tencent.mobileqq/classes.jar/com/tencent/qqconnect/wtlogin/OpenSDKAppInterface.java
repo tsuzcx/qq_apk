@@ -1,11 +1,15 @@
 package com.tencent.qqconnect.wtlogin;
 
-import alwk;
+import alof;
+import alud;
 import android.app.Activity;
 import android.app.AlertDialog.Builder;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Bitmap.Config;
@@ -17,15 +21,20 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import awgg;
+import azpf;
+import bdal;
+import bdhj;
+import bfrj;
+import bgln;
+import bglo;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.startup.step.Step;
-import com.tencent.mobileqq.startup.step.Step.AmStepFactory;
-import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MD5;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -36,12 +45,14 @@ import oicq.wlogin_sdk.sharemem.WloginSimpleInfo;
 public class OpenSDKAppInterface
   extends AppInterface
 {
-  private BaseApplicationImpl a;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  private bfrj jdField_a_of_type_Bfrj;
+  private BaseApplicationImpl jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
   
   public OpenSDKAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
     super(paramBaseApplicationImpl, paramString);
-    this.a = paramBaseApplicationImpl;
+    this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = paramBaseApplicationImpl;
   }
   
   public long a(WtloginManager paramWtloginManager, String paramString)
@@ -73,12 +84,39 @@ public class OpenSDKAppInterface
     return localBitmap;
   }
   
+  public Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  {
+    float f2 = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getResources().getDisplayMetrics().density;
+    int i = paramBitmap.getWidth();
+    float f1 = f2;
+    if (i > 0)
+    {
+      f1 = f2;
+      if (i < paramInt1 * f2) {
+        f1 = i / paramInt1;
+      }
+    }
+    paramInt1 = (int)(paramInt1 * f1);
+    paramInt2 = (int)(f1 * paramInt2);
+    return bdhj.a(paramBitmap, paramInt1, paramInt1, paramInt2);
+  }
+  
+  public Bitmap a(String paramString)
+  {
+    long l = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getSharedPreferences("ssoappicon", 0).getLong(paramString, 0L);
+    if (l == 0L) {}
+    while (System.currentTimeMillis() / 1000L - l > 172800L) {
+      return null;
+    }
+    return bdal.a(alof.aX + "appicon/" + paramString);
+  }
+  
   public Bitmap a(String paramString, int paramInt, boolean paramBoolean)
   {
-    Bitmap localBitmap2 = BitmapManager.a(b(paramString));
+    Bitmap localBitmap2 = bdal.a(b(paramString));
     Bitmap localBitmap1 = localBitmap2;
     if (localBitmap2 == null) {
-      localBitmap1 = BitmapManager.a(a(paramString));
+      localBitmap1 = bdal.a(a(paramString));
     }
     if (localBitmap1 == null) {
       paramString = null;
@@ -96,12 +134,25 @@ public class OpenSDKAppInterface
     return a(localBitmap1);
   }
   
+  public bfrj a()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Bfrj == null) {
+        this.jdField_a_of_type_Bfrj = new bfrj();
+      }
+      bfrj localbfrj = this.jdField_a_of_type_Bfrj;
+      return localbfrj;
+    }
+    finally {}
+  }
+  
   public String a(String paramString)
   {
     String str = MD5.toMD5(paramString);
     str = MD5.toMD5(str + paramString);
     paramString = MD5.toMD5(str + paramString);
-    return AppConstants.bm + paramString + ".png";
+    return alof.bJ + paramString + ".png";
   }
   
   public void a(Context paramContext, String paramString)
@@ -110,7 +161,7 @@ public class OpenSDKAppInterface
     {
       paramContext = new AlertDialog.Builder(paramContext);
       paramContext.setMessage(paramString);
-      paramContext.setNegativeButton("确定", new alwk(this));
+      paramContext.setNegativeButton(alud.a(2131708250), new bgln(this));
       paramContext.show();
     }
   }
@@ -120,8 +171,8 @@ public class OpenSDKAppInterface
     if (paramBitmap == null) {
       return;
     }
-    this.a.getSharedPreferences("ssoappicon", 0).edit().putLong(paramString, System.currentTimeMillis() / 1000L).commit();
-    File localFile = new File(AppConstants.aJ + "appicon/");
+    this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getSharedPreferences("ssoappicon", 0).edit().putLong(paramString, System.currentTimeMillis() / 1000L).commit();
+    File localFile = new File(alof.aX + "appicon/");
     if (!localFile.exists()) {
       localFile.mkdirs();
     }
@@ -153,12 +204,12 @@ public class OpenSDKAppInterface
     String str = MD5.toMD5(paramString);
     str = MD5.toMD5(str + paramString);
     paramString = MD5.toMD5(str + paramString);
-    return AppConstants.bD + paramString + ".png";
+    return alof.bO + paramString + ".png";
   }
   
   public BaseApplication getApp()
   {
-    return this.a;
+    return this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
   }
   
   public int getAppid()
@@ -171,25 +222,35 @@ public class OpenSDKAppInterface
     return null;
   }
   
-  public EntityManagerFactory getEntityManagerFactory(String paramString)
+  public awgg getEntityManagerFactory(String paramString)
   {
     return null;
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    Step.AmStepFactory.b(10, BaseApplicationImpl.sDirector, null).c();
+    azpf.b(11, BaseApplicationImpl.sDirector, null).step();
+    if (QLog.isColorLevel()) {
+      QLog.i("OpenSDKAppInterface", 2, "onCreate: invoked.  savedInstanceState: " + paramBundle);
+    }
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bglo(this);
+    paramBundle = new IntentFilter();
+    paramBundle.addAction("mqq.intent.action.ACCOUNT_KICKED");
+    this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     super.onDestroy();
+    if (this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl != null) {
+      this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qqconnect.wtlogin.OpenSDKAppInterface
  * JD-Core Version:    0.7.0.1
  */

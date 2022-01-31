@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="87.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/l16" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.activity.aio.item.ClickedWaveView android:id="@id/dcf" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginBottom="2.0dip" android:layout_centerHorizontal="true" />
+        <ProgressBar android:id="@id/eff" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="16.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" android:layout_centerInParent="true" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/bpb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/fso" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/ac1" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:layout_below="@id/l16" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <TextView android:textSize="12.0dip" android:textColor="@color/afo" android:id="@id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="TextView" android:maxLines="1" android:maxEms="5" android:includeFontPadding="false" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/c3w" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:src="@drawable/bhl" />
+    </LinearLayout>
+    <ImageView android:id="@id/flag_new" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-8.0dip" android:layout_marginTop="6.0dip" android:src="@drawable/h1s" android:layout_toRightOf="@id/l16" android:layout_alignParentTop="true" />
+</RelativeLayout>

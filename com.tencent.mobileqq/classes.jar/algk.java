@@ -1,61 +1,83 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadApi;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.DownloadQueryListener;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.ReentrantLock;
 
-public final class algk
-  implements Runnable
+@Deprecated
+public class algk
 {
-  public algk(List paramList, DownloadQueryListener paramDownloadQueryListener) {}
+  private static algk jdField_a_of_type_Algk;
+  public int a;
+  public String a;
+  public AtomicInteger a;
+  private ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
   
-  public void run()
+  public algk()
   {
-    LogUtility.a(DownloadApi.a, "getQueryDownloadAction enter");
-    DownloadManager.a().a();
-    for (;;)
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public static algk a()
+  {
+    try
     {
-      int i;
-      try
-      {
-        ArrayList localArrayList = new ArrayList();
-        int j = this.jdField_a_of_type_JavaUtilList.size();
-        i = 0;
-        if (i < j)
-        {
-          DownloadInfo localDownloadInfo = (DownloadInfo)this.jdField_a_of_type_JavaUtilList.get(i);
-          if (DownloadManager.a().a(localDownloadInfo))
-          {
-            LogUtility.a(DownloadApi.a, "refreshDownloadInfo true " + localDownloadInfo);
-            localArrayList.add(localDownloadInfo);
-          }
-        }
-        else
-        {
-          if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener != null) {
-            this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.b_(localArrayList);
-          }
-          return;
-        }
+      if (jdField_a_of_type_Algk == null) {
+        jdField_a_of_type_Algk = new algk();
       }
-      catch (Exception localException)
-      {
-        LogUtility.c(DownloadApi.a, "Exception>>>", localException);
-        if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener == null) {
-          continue;
-        }
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.a(-1, localException.getMessage());
-        return;
+      algk localalgk = jdField_a_of_type_Algk;
+      return localalgk;
+    }
+    finally {}
+  }
+  
+  public algk a(QQAppInterface paramQQAppInterface)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloActionManager", 2, "[setAppInterface] app:" + paramQQAppInterface);
+    }
+    return this;
+  }
+  
+  public ReentrantLock a()
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloActionManager", 2, "[getLock].");
       }
-      i += 1;
+      if (this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloActionManager", 2, "create lock.");
+        }
+        this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
+      }
+      ReentrantLock localReentrantLock = this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
+      return localReentrantLock;
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloActionManager", 2, "[onDestroy]");
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     algk
  * JD-Core Version:    0.7.0.1
  */

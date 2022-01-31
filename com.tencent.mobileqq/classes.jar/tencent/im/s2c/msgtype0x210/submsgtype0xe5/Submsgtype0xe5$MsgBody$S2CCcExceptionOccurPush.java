@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class Submsgtype0xe5$MsgBody$S2CCcExceptionOccurPush
-  extends MessageMicro
+  extends MessageMicro<S2CCcExceptionOccurPush>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8 }, new String[] { "uint32_optype" }, new Object[] { Integer.valueOf(0) }, S2CCcExceptionOccurPush.class);
   public final PBUInt32Field uint32_optype = PBField.initUInt32(0);

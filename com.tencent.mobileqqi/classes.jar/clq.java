@@ -1,31 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.thridappshare.ThridAppShareHelper;
+import com.tencent.mobileqq.activity.ForwardOperations;
+import com.tencent.mobileqq.activity.ForwardOperations.CancelCallback;
 
 public class clq
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public clq(Conversation paramConversation) {}
+  public clq(ForwardOperations paramForwardOperations) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramContext = paramIntent.getStringExtra("wording");
-    int i = paramIntent.getIntExtra("timetowait", 360000);
-    this.a.a.A = i;
-    this.a.a.d = paramContext;
-    this.a.a.a(13, 2);
-    this.a.a.a(null);
-    new Handler().postDelayed(new clr(this), i);
-    ReportController.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_PushBanner", "showBanner", 0, 0, "", "", "", "");
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
+    ThridAppShareHelper.a(this.a.A, "app_share_cancle", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     clq
  * JD-Core Version:    0.7.0.1
  */

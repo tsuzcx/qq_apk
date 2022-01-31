@@ -1,21 +1,16 @@
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-
 class tyd
-  implements Runnable
+  implements tyr
 {
-  tyd(tyc paramtyc, TroopInfo paramTroopInfo) {}
+  tyd(txz paramtxz) {}
   
-  public void run()
+  public void a()
   {
-    ((TroopManager)this.jdField_a_of_type_Tyc.a.app.getManager(51)).b(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo);
+    txz.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tyd
  * JD-Core Version:    0.7.0.1
  */

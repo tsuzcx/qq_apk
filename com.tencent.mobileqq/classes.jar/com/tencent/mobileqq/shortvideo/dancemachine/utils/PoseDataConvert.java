@@ -5,46 +5,53 @@ import java.util.List;
 
 public class PoseDataConvert
 {
-  private static int[][] a;
+  private static int[][] mirrorMap;
   
   static
   {
-    int[] arrayOfInt1 = { 14, 15 };
-    int[] arrayOfInt2 = { 16, 17 };
-    int[] arrayOfInt3 = { 2, 5 };
-    int[] arrayOfInt4 = { 3, 6 };
-    int[] arrayOfInt5 = { 4, 7 };
-    int[] arrayOfInt6 = { 34, 35 };
-    int[] arrayOfInt7 = { 27, 30 };
-    int[] arrayOfInt8 = { 28, 31 };
-    a = new int[][] { arrayOfInt1, arrayOfInt2, arrayOfInt3, arrayOfInt4, arrayOfInt5, { 8, 11 }, { 9, 12 }, { 10, 13 }, { 32, 33 }, arrayOfInt6, { 20, 23 }, { 21, 24 }, { 22, 25 }, { 26, 29 }, arrayOfInt7, arrayOfInt8 };
+    int[] arrayOfInt1 = { 3, 6 };
+    int[] arrayOfInt2 = { 32, 33 };
+    mirrorMap = new int[][] { { 14, 15 }, { 16, 17 }, { 2, 5 }, arrayOfInt1, { 4, 7 }, { 8, 11 }, { 9, 12 }, { 10, 13 }, arrayOfInt2, { 34, 35 }, { 20, 23 }, { 21, 24 }, { 22, 25 }, { 26, 29 }, { 27, 30 }, { 28, 31 } };
   }
   
-  public static void a(List paramList)
+  public static float[] convertPointsOld(float[] paramArrayOfFloat, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    if (paramList.size() != 36) {}
-    for (;;)
+    int j = (paramArrayOfFloat.length - 1) / 3;
+    float[] arrayOfFloat = new float[j * 3];
+    int i = 0;
+    while (i < j)
     {
-      return;
-      int i = 0;
-      Vec3f localVec3f;
-      while (i < paramList.size())
-      {
-        localVec3f = (Vec3f)paramList.get(i);
-        i += 1;
-      }
-      i = 0;
-      while (i < a.length)
-      {
-        localVec3f = (Vec3f)paramList.get(a[i][0]);
-        paramList.set(a[i][0], paramList.get(a[i][1]));
-        paramList.set(a[i][1], localVec3f);
-        i += 1;
-      }
+      arrayOfFloat[(i * 3)] = (-(paramFloat3 - paramArrayOfFloat[(i * 3)] * 2.0F) / paramFloat3);
+      arrayOfFloat[(i * 3 + 1)] = ((paramFloat4 - paramArrayOfFloat[(i * 3 + 1)] * 2.0F) / paramFloat4);
+      arrayOfFloat[(i * 3 + 2)] = paramArrayOfFloat[(i * 3 + 2)];
+      i += 1;
     }
+    return arrayOfFloat;
   }
   
-  public static void a(float[] paramArrayOfFloat, List paramList)
+  public static float[] convertPointsToFrameCoordinate(float[] paramArrayOfFloat, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    float f = paramFloat1 / paramFloat3;
+    paramFloat2 /= paramFloat4;
+    int j = (paramArrayOfFloat.length - 1) / 3;
+    float[] arrayOfFloat = new float[j * 3];
+    int i = 0;
+    while (i < j)
+    {
+      paramFloat1 = paramArrayOfFloat[(i * 3)];
+      if (QmcfManager.getInstance().needConvertCoor()) {
+        paramFloat1 = paramFloat3 - paramArrayOfFloat[(i * 3)];
+      }
+      paramFloat4 = paramArrayOfFloat[(i * 3 + 1)];
+      arrayOfFloat[(i * 3)] = (paramFloat1 * f);
+      arrayOfFloat[(i * 3 + 1)] = (paramFloat4 * paramFloat2);
+      arrayOfFloat[(i * 3 + 2)] = paramArrayOfFloat[(i * 3 + 2)];
+      i += 1;
+    }
+    return arrayOfFloat;
+  }
+  
+  public static void convertToVec3f(float[] paramArrayOfFloat, List<Vec3f> paramList)
   {
     int j = paramArrayOfFloat.length / 3;
     if (paramList.size() < j)
@@ -67,39 +74,55 @@ public class PoseDataConvert
         localVec3f1 = new Vec3f();
         paramList.set(i, localVec3f1);
       }
-      localVec3f1.a(paramArrayOfFloat[(i * 3)], paramArrayOfFloat[(i * 3 + 1)], paramArrayOfFloat[(i * 3 + 2)]);
+      localVec3f1.set(paramArrayOfFloat[(i * 3)], paramArrayOfFloat[(i * 3 + 1)], paramArrayOfFloat[(i * 3 + 2)]);
       i += 1;
     }
-    if (QmcfManager.a().b()) {
-      a(paramList);
+    if (QmcfManager.getInstance().needConvertCoor()) {
+      mirrorTrans(paramList);
     }
   }
   
-  public static float[] a(float[] paramArrayOfFloat, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public static void mirrorTrans(List<Vec3f> paramList)
   {
-    float f = paramFloat1 / paramFloat3;
-    paramFloat2 /= paramFloat4;
-    int j = (paramArrayOfFloat.length - 1) / 3;
-    float[] arrayOfFloat = new float[j * 3];
+    if (paramList.size() != 36) {}
+    for (;;)
+    {
+      return;
+      int i = 0;
+      Vec3f localVec3f;
+      while (i < paramList.size())
+      {
+        localVec3f = (Vec3f)paramList.get(i);
+        i += 1;
+      }
+      i = 0;
+      while (i < mirrorMap.length)
+      {
+        localVec3f = (Vec3f)paramList.get(mirrorMap[i][0]);
+        paramList.set(mirrorMap[i][0], paramList.get(mirrorMap[i][1]));
+        paramList.set(mirrorMap[i][1], localVec3f);
+        i += 1;
+      }
+    }
+  }
+  
+  public static float[] normalizedPoseData(float[] paramArrayOfFloat, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    paramArrayOfFloat = convertPointsToFrameCoordinate(paramArrayOfFloat, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
+    int j = paramArrayOfFloat.length / 3;
     int i = 0;
     while (i < j)
     {
-      paramFloat1 = paramArrayOfFloat[(i * 3)];
-      if (QmcfManager.a().b()) {
-        paramFloat1 = paramFloat3 - paramArrayOfFloat[(i * 3)];
-      }
-      paramFloat4 = paramArrayOfFloat[(i * 3 + 1)];
-      arrayOfFloat[(i * 3)] = (paramFloat1 * f);
-      arrayOfFloat[(i * 3 + 1)] = (paramFloat4 * paramFloat2);
-      arrayOfFloat[(i * 3 + 2)] = paramArrayOfFloat[(i * 3 + 2)];
+      paramArrayOfFloat[(i * 3)] = (-(paramFloat1 - paramArrayOfFloat[(i * 3)] * 2.0F) / paramFloat1);
+      paramArrayOfFloat[(i * 3 + 1)] = ((paramFloat2 - paramArrayOfFloat[(i * 3 + 1)] * 2.0F) / paramFloat2);
       i += 1;
     }
-    return arrayOfFloat;
+    return paramArrayOfFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.utils.PoseDataConvert
  * JD-Core Version:    0.7.0.1
  */

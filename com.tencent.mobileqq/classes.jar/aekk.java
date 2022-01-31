@@ -1,18 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class aekk
-  extends BroadcastReceiver
+  implements DialogInterface.OnDismissListener
 {
-  public aekk(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin) {}
+  public aekk(UpgradeActivity paramUpgradeActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramIntent != null) && ("BROAD_CAST_CALL_PAGE_SHARE".equals(paramIntent.getAction()))) {
-      MusicGeneWebViewPlugin.a(this.a);
-    }
+    this.a.finish();
   }
 }
 

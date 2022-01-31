@@ -1,34 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.view.View;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.widget.AdapterView;
 
 public class acux
-  implements Runnable
+  implements bhuw
 {
-  public acux(FileManagerDataCenter paramFileManagerDataCenter, Bundle paramBundle) {}
+  public acux(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
   
-  public void run()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.jdField_a_of_type_AndroidOsBundle == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileManagerDataCenter<FileAssistant>", 2, "INTENT_ACTION_RENAME_FILENAME extra is null!!!");
-      }
-      return;
-    }
-    String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("peerUin");
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("peerType");
-    String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("sourceStr");
-    String str3 = this.jdField_a_of_type_AndroidOsBundle.getString("filePath");
-    long l = this.jdField_a_of_type_AndroidOsBundle.getLong("dataLength");
-    int j = this.jdField_a_of_type_AndroidOsBundle.getInt("fileSourceId");
-    Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle.getBundle("otherData");
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileManagerDataCenter.a(str1, i, str3, l, j, str2, localBundle);
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a(paramView);
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acux
  * JD-Core Version:    0.7.0.1
  */

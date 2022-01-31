@@ -1,40 +1,18 @@
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.troop.data.TroopBarPostAbsLayout.AbsItemViewHolder;
-import com.tencent.mobileqq.troop.data.TroopBarPostLayout2;
+import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.troop.widget.VideoViewX;
 
 public class gzo
-  extends TroopBarPostAbsLayout.AbsItemViewHolder
+  implements View.OnFocusChangeListener
 {
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public URLImageView a;
-  public LinearLayout b;
-  public TextView b;
-  public TextView c = null;
-  public TextView d = null;
+  public gzo(VideoViewX paramVideoViewX) {}
   
-  public gzo(TroopBarPostLayout2 paramTroopBarPostLayout2, View paramView)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.jdField_a_of_type_ComTencentImageURLImageView = null;
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = null;
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
-    this.jdField_b_of_type_AndroidWidgetTextView = null;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131232487));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232495));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131232475));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131232496));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232488));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232497));
-    this.c = ((TextView)paramView.findViewById(2131232498));
-    this.d = ((TextView)paramView.findViewById(2131232499));
+    if (VideoViewX.a(this.a) != null) {
+      VideoViewX.a(this.a).onClick(paramView);
+    }
   }
 }
 

@@ -1,157 +1,108 @@
-import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class aopw
+public class aopw
+  extends aokh<aopv>
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long;
-  long[] jdField_a_of_type_ArrayOfLong = new long[3];
-  int jdField_b_of_type_Int = 0;
-  long jdField_b_of_type_Long;
-  long[] jdField_b_of_type_ArrayOfLong = new long[3];
-  int jdField_c_of_type_Int = 0;
-  long jdField_c_of_type_Long;
-  int jdField_d_of_type_Int = 0;
-  long jdField_d_of_type_Long;
-  long e;
-  long f;
-  long g;
-  long h;
-  long i;
-  long j;
-  long k;
-  long l;
-  long m;
-  long n;
-  long o;
-  long p;
-  long q = 9223372036854775807L;
-  long r = 0L;
-  long s = 9223372036854775807L;
-  long t = 0L;
-  
-  aopw(aopu paramaopu) {}
-  
-  long a()
+  public static int a(Context paramContext, String paramString)
   {
-    return System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "poke_msg_btn_is_show", 0);
   }
   
-  void a()
+  public static void a(Context paramContext, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+    paramContext.putInt(paramString + "_" + "poke_msg_btn_is_show", paramInt);
+    paramContext.apply();
   }
   
-  void a(boolean paramBoolean)
+  public int a()
   {
-    if ((paramBoolean) && (this.jdField_a_of_type_Int < 3))
+    return 439;
+  }
+  
+  @NonNull
+  public aopv a(int paramInt)
+  {
+    return new aopv(0);
+  }
+  
+  @Nullable
+  public aopv a(aoko[] paramArrayOfaoko)
+  {
+    j = 0;
+    i = j;
+    if (paramArrayOfaoko != null)
     {
-      arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
-      i1 = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = (i1 + 1);
-      arrayOfLong[i1] = System.currentTimeMillis();
+      i = j;
+      if (paramArrayOfaoko.length > 0) {
+        paramArrayOfaoko = paramArrayOfaoko[0].a;
+      }
     }
-    while (this.jdField_b_of_type_Int >= 3) {
-      return;
-    }
-    long[] arrayOfLong = this.jdField_b_of_type_ArrayOfLong;
-    int i1 = this.jdField_b_of_type_Int;
-    this.jdField_b_of_type_Int = (i1 + 1);
-    arrayOfLong[i1] = System.currentTimeMillis();
-  }
-  
-  long b()
-  {
-    if (this.jdField_c_of_type_Int < 3) {
-      return 0L;
-    }
-    return this.jdField_a_of_type_ArrayOfLong[0];
-  }
-  
-  void b(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (this.jdField_c_of_type_Int < 3))
+    try
     {
-      this.jdField_a_of_type_ArrayOfLong[this.jdField_c_of_type_Int] = (System.currentTimeMillis() - this.jdField_a_of_type_ArrayOfLong[this.jdField_c_of_type_Int]);
-      this.jdField_c_of_type_Int += 1;
-      if (this.jdField_c_of_type_Int == 3)
+      if (QLog.isColorLevel()) {
+        QLog.d("handlePushMsgBtnConfig", 2, "handlePushMsgBtnConfig. strContent = " + paramArrayOfaoko);
+      }
+      i = new JSONObject(paramArrayOfaoko).getInt("isPushSwitchShow");
+    }
+    catch (Exception paramArrayOfaoko)
+    {
+      for (;;)
       {
-        this.jdField_a_of_type_Aopu.a.a("hw_video_time_used_msg", "videoEncodeTime:cnt20=" + this.jdField_a_of_type_ArrayOfLong[0] + " cnt1=" + this.jdField_a_of_type_ArrayOfLong[1] + " cnt2" + this.jdField_a_of_type_ArrayOfLong[2]);
-        this.jdField_a_of_type_ArrayOfLong[0] = ((this.jdField_a_of_type_ArrayOfLong[0] + this.jdField_a_of_type_ArrayOfLong[1] + this.jdField_a_of_type_ArrayOfLong[2]) / 3L * 1000L / 2L);
-        this.jdField_a_of_type_Aopu.a.a("hw_video_time_used_msg", "videoEncodeTime:timeout=" + this.jdField_a_of_type_ArrayOfLong[0]);
+        i = j;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("handlePushMsgBtnConfig", 2, "PushMsgBtnConfig parse error", paramArrayOfaoko);
+          i = j;
+        }
       }
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_d_of_type_Int >= 3);
-      this.jdField_b_of_type_ArrayOfLong[this.jdField_d_of_type_Int] = (System.currentTimeMillis() - this.jdField_b_of_type_ArrayOfLong[this.jdField_d_of_type_Int]);
-      this.jdField_d_of_type_Int += 1;
-    } while (this.jdField_d_of_type_Int != 3);
-    this.jdField_a_of_type_Aopu.a.a("hw_video_time_used_msg", "audioEncodeTime:cnt20=" + this.jdField_b_of_type_ArrayOfLong[0] + " cnt1=" + this.jdField_b_of_type_ArrayOfLong[1] + " cnt2" + this.jdField_b_of_type_ArrayOfLong[2]);
-    this.jdField_b_of_type_ArrayOfLong[0] = ((this.jdField_b_of_type_ArrayOfLong[0] + this.jdField_b_of_type_ArrayOfLong[1] + this.jdField_b_of_type_ArrayOfLong[2]) / 3L * 1000L / 2L);
-    this.jdField_a_of_type_Aopu.a.a("hw_video_time_used_msg", "audioEncodeTime:timeout=" + this.jdField_b_of_type_ArrayOfLong[0]);
+    return new aopv(i);
   }
   
-  long c()
+  public Class a()
   {
-    if (this.jdField_d_of_type_Int < 3) {
-      return 0L;
+    return aopv.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aopv paramaopv)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("handlePushMsgBtnConfig", 2, "handlePushMsgBtnConfig. onUpdate = " + paramaopv.a);
     }
-    return this.jdField_b_of_type_ArrayOfLong[0];
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    a(localQQAppInterface.getApp(), localQQAppInterface.getAccount(), paramaopv.a);
   }
   
-  void c(boolean paramBoolean)
+  public int b()
   {
-    long l1 = a();
-    if (paramBoolean)
-    {
-      if (l1 > this.r) {
-        this.r = l1;
-      }
-      if (l1 < this.q) {
-        this.q = l1;
-      }
-    }
-    do
-    {
-      return;
-      if (l1 > this.t) {
-        this.t = l1;
-      }
-    } while (l1 >= this.s);
-    this.s = l1;
+    return 0;
   }
   
-  public String toString()
+  public boolean b()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mThumbGen=").append(this.l).append(" ");
-    localStringBuilder.append("mThumbGenFunc=").append(this.m).append(" ");
-    localStringBuilder.append("mMuxerCreate=").append(this.n).append(" ");
-    localStringBuilder.append("mMuxerAdd=").append(this.o).append(" ");
-    localStringBuilder.append("mMuxerStart=").append(this.p).append(" ");
-    localStringBuilder.append("mWriteVideoMax=").append(this.r).append(" ");
-    localStringBuilder.append("mWriteVideoMIn=").append(this.q).append(" ");
-    localStringBuilder.append("mWriteAudioMax=").append(this.t).append(" ");
-    localStringBuilder.append("mWriteAudioMIn=").append(this.s).append(" ");
-    localStringBuilder.append("vConfig=").append(this.jdField_b_of_type_Long).append(" ");
-    localStringBuilder.append("vInit=").append(this.jdField_c_of_type_Long).append(" ");
-    localStringBuilder.append("vStart=").append(this.jdField_d_of_type_Long).append(" ");
-    localStringBuilder.append("vStop=").append(this.e).append(" ");
-    localStringBuilder.append("vRelease=").append(this.f).append(" ");
-    localStringBuilder.append("aConfig=").append(this.g).append(" ");
-    localStringBuilder.append("aInit=").append(this.h).append(" ");
-    localStringBuilder.append("aStart=").append(this.i).append(" ");
-    localStringBuilder.append("aStop=").append(this.j).append(" ");
-    localStringBuilder.append("aRelease=").append(this.k).append(" ");
-    return localStringBuilder.toString();
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aopw
  * JD-Core Version:    0.7.0.1
  */

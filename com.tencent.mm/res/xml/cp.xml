@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.wallet.pwd.ui.WalletBalancePrivacyMMHeaderPreference android:key="wallet_balance_privacy_header" android:layout="@layout/b55" />
+    <CheckBoxPreference android:summary="@string/fzc" android:title="@string/fzb" android:key="wallet_banlance_privacy_cb" android:layout="@layout/afi" />
+    <PreferenceCategory />
+</PreferenceScreen>

@@ -1,76 +1,86 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.common.DownloadDBHelper;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-public class alha
-  implements Runnable
+class alha
+  implements alhf
 {
-  public alha(DownloadManager paramDownloadManager) {}
+  alha(algt paramalgt) {}
   
-  public void run()
+  public void a()
   {
-    DownloadInfo localDownloadInfo;
-    try
+    QLog.e("AVEngineWalper", 1, "onExitRoomComplete");
+    if (this.a.jdField_a_of_type_Bgkw != null) {
+      this.a.jdField_a_of_type_Bgkw.a();
+    }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    QLog.e("AVEngineWalper", 1, "onRoomDisconnect   result=" + paramInt + ", errinfo=" + paramString);
+    if (this.a.jdField_a_of_type_Bgkw != null) {
+      this.a.jdField_a_of_type_Bgkw.c(paramInt, paramString);
+    }
+  }
+  
+  public void a(int paramInt, String[] paramArrayOfString)
+  {
+    int k = paramArrayOfString.length;
+    int j = 0;
+    String str;
+    if (j < k)
     {
-      if (!CommonDataAdapter.a().a().getSharedPreferences("opensdk_config", 0).getBoolean("download_clear_unuse", false))
+      str = paramArrayOfString[j];
+      QLog.i("AVEngineWalper", 1, String.format("onEndpointsUpdateInfo|eventid=%d, id=%s", new Object[] { Integer.valueOf(paramInt), str }));
+      if (!this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
+        break label237;
+      }
+    }
+    label237:
+    for (int i = ((Integer)this.a.jdField_a_of_type_JavaUtilMap.get(str)).intValue();; i = 0)
+    {
+      switch (paramInt)
       {
-        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-        for (;;)
-        {
-          if (!localIterator.hasNext()) {
-            break label174;
-          }
-          localDownloadInfo = (DownloadInfo)localIterator.next();
-          if (localDownloadInfo.jdField_c_of_type_Int != 0) {
-            break label135;
-          }
-          if (localDownloadInfo.a != 0) {
-            break;
-          }
-          String str = localDownloadInfo.jdField_c_of_type_JavaLangString;
-          label77:
-          if (this.a.a(str) == null)
-          {
-            this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localDownloadInfo.b);
-            DownloadDBHelper.a().a(localDownloadInfo.b);
-          }
+      default: 
+        label116:
+        if (i != 0) {
+          this.a.jdField_a_of_type_JavaUtilMap.put(str, Integer.valueOf(i));
         }
+        break;
+      }
+      for (;;)
+      {
+        j += 1;
+        break;
+        i |= 0x20;
+        break label116;
+        i &= 0xFFFFFFDF;
+        break label116;
+        i |= 0x1;
+        break label116;
+        i &= 0xFFFFFFFE;
+        break label116;
+        if (this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
+          this.a.jdField_a_of_type_JavaUtilMap.remove(str);
+        }
+      }
+      if (this.a.jdField_a_of_type_Bgkw != null) {
+        this.a.jdField_a_of_type_Bgkw.a(paramInt, paramArrayOfString);
       }
       return;
     }
-    catch (Exception localException)
-    {
-      LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "checkDownloadList>>>", localException);
+  }
+  
+  public void a(String[] paramArrayOfString)
+  {
+    QLog.e("AVEngineWalper", 1, "onSemiAutoRecvCameraVideo");
+    if (this.a.jdField_a_of_type_Bgkw != null) {
+      this.a.jdField_a_of_type_Bgkw.a(paramArrayOfString);
     }
-    label135:
-    label174:
-    do
-    {
-      localObject = localDownloadInfo.h;
-      break label77;
-      if (this.a.a(localDownloadInfo) != null) {
-        break;
-      }
-      this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localDownloadInfo.b);
-      DownloadDBHelper.a().a(localDownloadInfo.b);
-      break;
-    } while (this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() <= 200);
-    Object localObject = CommonDataAdapter.a().a().getSharedPreferences("opensdk_config", 0).edit();
-    ((SharedPreferences.Editor)localObject).putBoolean("download_clear_unuse", true);
-    ((SharedPreferences.Editor)localObject).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alha
  * JD-Core Version:    0.7.0.1
  */

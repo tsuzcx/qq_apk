@@ -1,39 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.StrangerHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.BannerManager;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.ArrayList;
-import java.util.List;
 
-class cfd
-  implements ActionSheet.OnButtonClickListener
+public class cfd
+  extends BroadcastReceiver
 {
-  cfd(cfc paramcfc, ActionSheet paramActionSheet) {}
+  public cfd(Conversation paramConversation) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      ReportController.b(this.jdField_a_of_type_Cfc.a.b, "CliOper", "", this.jdField_a_of_type_Cfc.a.a.a, "Manage_stranger", "Manage_str_delete", 0, 0, "", "", "", "");
-      paramView = (StrangerHandler)this.jdField_a_of_type_Cfc.a.b.a(28);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(Long.parseLong(this.jdField_a_of_type_Cfc.a.a.a)));
-      paramView.b(localArrayList);
-      if (ChatActivity.a(this.jdField_a_of_type_Cfc.a) == null) {
-        ChatActivity.a(this.jdField_a_of_type_Cfc.a, new QQProgressDialog(this.jdField_a_of_type_Cfc.a, 0));
-      }
-      ChatActivity.a(this.jdField_a_of_type_Cfc.a).show();
-    }
+    paramContext = paramIntent.getStringExtra("wording");
+    int i = paramIntent.getIntExtra("timetowait", 360000);
+    this.a.a.A = i;
+    this.a.a.d = paramContext;
+    this.a.a.a(13, 2);
+    this.a.a.a(null);
+    new Handler().postDelayed(new cfe(this), i);
+    ReportController.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_PushBanner", "showBanner", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,43 +1,24 @@
-import android.content.res.Resources;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.apollo.store.ApolloFloatActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class yst
-  implements Runnable
+class yst
+  extends ysw
 {
-  public yst(ApolloFloatActivity paramApolloFloatActivity, Resources paramResources, RelativeLayout paramRelativeLayout) {}
-  
-  public void run()
+  yst(ysm paramysm, ysj paramysj, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloFloatActivity.a = new TextView(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloFloatActivity);
-    this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloFloatActivity.a.setBackgroundResource(2130846269);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(AIOUtils.a(50.0F, this.jdField_a_of_type_AndroidContentResResources), AIOUtils.a(52.0F, this.jdField_a_of_type_AndroidContentResResources));
-    if (ApolloFloatActivity.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloFloatActivity) == 1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloFloatActivity.a.setTextColor(-16777216);
-      this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloFloatActivity.a.setVisibility(8);
+    super(paramysm.a);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "watermark doen");
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloFloatActivity.a.setGravity(17);
-      this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloFloatActivity.a.setTextSize(17.0F);
-      this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloFloatActivity.a.setText(2131434937);
-      this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloFloatActivity.a.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloFloatActivity);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloFloatActivity.a, localLayoutParams);
-      return;
-      localLayoutParams.addRule(10, -1);
-      localLayoutParams.addRule(11, -1);
-      localLayoutParams.rightMargin = AIOUtils.a(5.0F, this.jdField_a_of_type_AndroidContentResResources);
-      this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloFloatActivity.a.setTextColor(this.jdField_a_of_type_AndroidContentResResources.getColor(2131494210));
-    }
+    this.jdField_a_of_type_Ysj.a(this.jdField_a_of_type_JavaLangString, paramBoolean, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yst
  * JD-Core Version:    0.7.0.1
  */

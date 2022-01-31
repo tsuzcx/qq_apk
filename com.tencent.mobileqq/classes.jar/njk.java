@@ -1,30 +1,19 @@
-import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
-import com.tencent.biz.qqstory.playvideo.ProgressControler;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class njk
-  implements Runnable
+class njk
+  implements View.OnClickListener
 {
-  public njk(FeedsPlayModeBase paramFeedsPlayModeBase, boolean paramBoolean) {}
+  njk(njj paramnjj) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.e = false;
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.g();
-    }
-    while ((this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size() <= 0) || (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.a() <= 1)) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.a() - 1);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.setCurrentItem(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.b, false);
+    this.a.a.a(this.a.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     njk
  * JD-Core Version:    0.7.0.1
  */

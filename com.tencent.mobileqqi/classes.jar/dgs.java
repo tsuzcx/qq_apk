@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicAccountChatActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
 
 public class dgs
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public dgs(PublicAccountChatActivity paramPublicAccountChatActivity) {}
+  public dgs(RegisterSendUpSms paramRegisterSendUpSms) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView.setVisibility(8);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dgs
  * JD-Core Version:    0.7.0.1
  */

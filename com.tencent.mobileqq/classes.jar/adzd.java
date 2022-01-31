@@ -1,35 +1,17 @@
-import android.os.Handler;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class adzd
-  implements TVK_SDKMgr.InstallListener
+  implements DialogInterface.OnClickListener
 {
-  private Handler a;
+  public adzd(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
   
-  public adzd(Handler paramHandler)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramHandler;
-  }
-  
-  public void onInstallProgress(float paramFloat)
-  {
-    if (this.a != null) {
-      this.a.sendEmptyMessage(2);
-    }
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    if (this.a != null) {
-      this.a.sendEmptyMessage(1);
-    }
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    if (this.a != null) {
-      this.a.sendEmptyMessage(0);
-    }
+    azqs.b(this.a.app, "dc00898", "", "", "0X8007547", "0X8007547", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
+    this.a.finish();
   }
 }
 

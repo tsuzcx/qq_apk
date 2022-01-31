@@ -1,61 +1,42 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.subaccount.SubAccountProtocManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.observer.SubAccountObserver;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.biz.pubaccount.util.monitor.FPSSuspendedBall;
 
 public class tas
-  extends SubAccountObserver
+  implements View.OnTouchListener
 {
-  public tas(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int;
   
-  protected void onGetKeyBack(String paramString1, String paramString2, String paramString3)
+  private tas(FPSSuspendedBall paramFPSSuspendedBall) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack: mainAccount=" + paramString1 + " subAccount=" + paramString2);
-    }
-    if (TextUtils.isEmpty(paramString3))
+    switch (paramMotionEvent.getAction())
     {
-      paramString1 = new HashMap();
-      paramString1.put("param_FailCode", "12005");
-      paramString1.put("fail_step", "getKeyEmpty");
-      paramString1.put("fail_location", "subLogin");
-      StatisticCollector.a(BaseApplication.getContext()).a(this.a.app.getCurrentAccountUin(), "actSBGeykey", false, 0L, 0L, paramString1, "");
-      this.a.c();
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack:subLogin ...has Failed key  =  null");
-      }
-      this.a.a(2131436356, 0);
     }
-    do
+    for (;;)
     {
-      return;
-      paramString1 = new HashMap();
-      paramString1.put("param_FailCode", "12006");
-      paramString1.put("fail_step", "getKeyNotEmpty");
-      paramString1.put("fail_location", "subLogin");
-      StatisticCollector.a(BaseApplication.getContext()).a(this.a.app.getCurrentAccountUin(), "actSBGeykey", true, 0L, 0L, paramString1, "");
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack: key not null");
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginVerifyCodeActivity", 2, "subaccount onGetKeyBack goto bind");
-      }
-      paramString1 = (SubAccountProtocManager)this.a.app.getManager(27);
-      if (paramString1 != null) {
-        paramString1.a(paramString2, paramString3, LoginVerifyCodeActivity.a(this.a));
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack: success .........");
+      return false;
+      this.jdField_a_of_type_Int = FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).x;
+      this.jdField_b_of_type_Int = FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).y;
+      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+      this.jdField_b_of_type_Float = paramMotionEvent.getRawY();
+      continue;
+      FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).x = (this.jdField_a_of_type_Int + (int)(this.jdField_a_of_type_Float - paramMotionEvent.getRawX()));
+      FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).y = (this.jdField_b_of_type_Int + (int)(paramMotionEvent.getRawY() - this.jdField_b_of_type_Float));
+      FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).updateViewLayout(paramView, FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tas
  * JD-Core Version:    0.7.0.1
  */

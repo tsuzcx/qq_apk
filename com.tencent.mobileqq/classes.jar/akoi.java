@@ -1,20 +1,36 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
-import mqq.app.AppRuntime;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public final class akoi
-  implements Runnable
+class akoi
+  extends BroadcastReceiver
 {
-  public akoi(AppRuntime paramAppRuntime, Intent paramIntent) {}
+  akoi(aknx paramaknx) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    SwiftBrowserCookieMonster.a(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_AndroidContentIntent);
+    if (paramIntent == null) {
+      QLog.e("ApolloManager", 1, "[onReceive] intent null");
+    }
+    do
+    {
+      return;
+      paramContext = paramIntent.getAction();
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloManager", 2, new Object[] { "[onReceive] action=", paramContext });
+      }
+    } while (!"com.tencent.mobileqq.action.ACTION_APOLLO_STORE_CRASH_EVENT".equals(paramContext));
+    paramContext = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_user_config", 0).getString("apollo_store_watch_current_url", "");
+    ((bdug)this.a.a.a(71)).a(null, paramContext, -1003, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akoi
  * JD-Core Version:    0.7.0.1
  */

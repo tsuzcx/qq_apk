@@ -1,27 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.Doraemon.APICallback;
-import com.tencent.mobileqq.Doraemon.APIConfig;
-import com.tencent.mobileqq.Doraemon.APIParam;
-import com.tencent.mobileqq.Doraemon.UserPermission;
-import com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAPIManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.qipc.QIPCModule;
 
 public class reg
-  implements DialogInterface.OnClickListener
 {
-  public reg(DefaultDoraemonAPIManager paramDefaultDoraemonAPIManager, UserPermission paramUserPermission, APIConfig paramAPIConfig, APIParam paramAPIParam, APICallback paramAPICallback) {}
+  private static reg jdField_a_of_type_Reg;
+  private aesa jdField_a_of_type_Aesa;
+  private altm jdField_a_of_type_Altm;
+  private View jdField_a_of_type_AndroidViewView;
+  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new reh(this, "Module_VideoFeedsIPCServer");
+  private oiq jdField_a_of_type_Oiq;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static reg a()
   {
-    QLog.i("DoraemonOpenAPI.apiMgr", 1, "reject " + this.jdField_a_of_type_ComTencentMobileqqDoraemonUserPermission.a);
-    DefaultDoraemonAPIManager.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplDefaultDoraemonAPIManager, this.jdField_a_of_type_ComTencentMobileqqDoraemonUserPermission, 1);
-    DefaultDoraemonAPIManager.b(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplDefaultDoraemonAPIManager, 4, this.jdField_a_of_type_ComTencentMobileqqDoraemonAPIConfig, this.jdField_a_of_type_ComTencentMobileqqDoraemonAPIParam, this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback);
+    if (jdField_a_of_type_Reg == null) {}
+    try
+    {
+      jdField_a_of_type_Reg = new reg();
+      return jdField_a_of_type_Reg;
+    }
+    finally {}
+  }
+  
+  public QIPCModule a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     reg
  * JD-Core Version:    0.7.0.1
  */

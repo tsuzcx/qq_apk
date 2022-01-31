@@ -1,26 +1,48 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-
 class aiex
-  implements Runnable
 {
-  aiex(aiev paramaiev, String paramString1, boolean paramBoolean, String paramString2) {}
+  private final int jdField_a_of_type_Int;
+  private final boolean jdField_a_of_type_Boolean;
   
-  public void run()
+  private aiex(int paramInt1, int paramInt2)
   {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append(" dump");
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = "成功，文件路径为" + this.b;; str = "失败")
+    this.jdField_a_of_type_Int = paramInt1;
+    if (paramInt2 > 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      QQToast.a(localBaseApplicationImpl, str, 2000).a();
+      this.jdField_a_of_type_Boolean = bool;
       return;
+    }
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (aiex)paramObject;
+      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
+        return false;
+      }
+    } while (this.jdField_a_of_type_Boolean == paramObject.jdField_a_of_type_Boolean);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    int j = this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 1;; i = 0) {
+      return i + j * 31;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiex
  * JD-Core Version:    0.7.0.1
  */

@@ -1,59 +1,43 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.qphone.base.util.QLog;
+import NS_COMM.COMM.StCommonExt;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import mqq.app.AppRuntime;
 
-public class ydr
-  implements SeekBar.OnSeekBarChangeListener
+class ydr
+  implements View.OnClickListener
 {
-  public ydr(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  ydr(ydp paramydp) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onProgressChanged: progress = " + paramInt + ",fromUser=" + paramBoolean);
-    }
-    if (paramBoolean)
+    paramView = new StringBuilder(ybn.b(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
+    if (this.a.a() != null) {}
+    for (;;)
     {
-      paramSeekBar = this.a;
-      paramSeekBar.g += 1;
-      ShortVideoPlayActivity.b(this.a, true);
-    }
-    this.a.b(paramInt * this.a.b / 10000L);
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    ShortVideoPlayActivity.b(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onStartTrackingTouch: progress = " + i);
-    }
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    this.a.l();
-    paramSeekBar = this.a;
-    paramSeekBar.h += 1;
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    int j = (int)(i * this.a.b / 10000L);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onStopTrackingTouch: seekProgress = " + i + ", mCacheProgress= " + ShortVideoPlayActivity.b(this.a) + ", timestamp = " + j);
-    }
-    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
-    {
-      if (this.a.jdField_a_of_type_Int == 2) {
-        this.a.a();
+      try
+      {
+        paramView.append(URLEncoder.encode(this.a.a().attachInfo.get(), "UTF-8"));
+        zaj.b("auth_follow", "clk_more", 0, 0, new String[0]);
+        ybt.a(paramView.toString());
+        return;
       }
-      this.a.a(j);
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        localUnsupportedEncodingException.printStackTrace();
+        continue;
+      }
+      QLog.d(ydp.a, 0, "jump more recommend H5 page with no attach info!");
     }
-    ShortVideoPlayActivity.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ydr
  * JD-Core Version:    0.7.0.1
  */

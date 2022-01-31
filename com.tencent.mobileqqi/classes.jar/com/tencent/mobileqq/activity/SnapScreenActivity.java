@@ -18,10 +18,10 @@ import android.view.Window;
 import android.widget.Button;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.qphone.base.util.BaseApplication;
-import dod;
-import doe;
-import dof;
-import dog;
+import dim;
+import din;
+import dio;
+import dip;
 import mqq.util.NativeUtil;
 
 public class SnapScreenActivity
@@ -36,7 +36,7 @@ public class SnapScreenActivity
   private ViewGroup a;
   public Window a;
   public Button a;
-  public dog a;
+  public dip a;
   public Bitmap b;
   public Drawable b;
   public Button b;
@@ -66,18 +66,18 @@ public class SnapScreenActivity
     }
     for (this.jdField_a_of_type_AndroidViewWindow = paramWindow.getWindow();; this.jdField_a_of_type_AndroidViewWindow = paramWindow)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839690);
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839689);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839692);
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839691);
       paramContext = (LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater");
-      this.jdField_a_of_type_Dog = new dog(this, this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_Dog, 0);
-      this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234394));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234395));
-      this.d = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234393));
-      this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234392));
-      this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(new dod(this));
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new doe(this));
-      this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new dof(this));
+      this.jdField_a_of_type_Dip = new dip(this, this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_Dip, 0);
+      this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234396));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234397));
+      this.d = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234395));
+      this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234394));
+      this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(new dim(this));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new din(this));
+      this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new dio(this));
       return;
     }
   }
@@ -110,8 +110,8 @@ public class SnapScreenActivity
   public void b()
   {
     this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getConfiguration().orientation;
-    this.jdField_a_of_type_Dog.k = 0;
-    this.jdField_a_of_type_Dog.a.setEmpty();
+    this.jdField_a_of_type_Dip.k = 0;
+    this.jdField_a_of_type_Dip.a.setEmpty();
     Bitmap localBitmap = NativeUtil.screenshot(this.jdField_a_of_type_AndroidContentContext);
     this.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
     this.jdField_c_of_type_AndroidGraphicsBitmap = localBitmap;
@@ -134,7 +134,7 @@ public class SnapScreenActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903941);
+    setContentView(2130903943);
     this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131231116));
     a(this, getWindow());
     b();

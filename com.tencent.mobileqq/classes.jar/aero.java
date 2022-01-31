@@ -1,21 +1,39 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
-import com.tencent.widget.ExpandableListView;
-import com.tencent.widget.ExpandableListView.OnGroupClickListener;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.ThemeCustomizeStrategy.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.qphone.base.util.QLog;
 
 public class aero
-  implements ExpandableListView.OnGroupClickListener
+  implements ajal
 {
-  public aero(NearbyVisitorListActivity paramNearbyVisitorListActivity) {}
+  public aero(CustomizeStrategyFactory.ThemeCustomizeStrategy.1 param1) {}
   
-  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt, long paramLong)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    return true;
+    paramPathResult = paramPathResult.filePath;
+    if (paramInt == 0) {}
+    try
+    {
+      this.a.a.background = paramPathResult;
+      if (QLog.isColorLevel()) {
+        QLog.d("CustomizeStrategyFactory", 2, "ThemeCustomizeStrategy info.background=" + this.a.a.background);
+      }
+      CustomizeStrategyFactory.a().a(this.a.a);
+      return;
+    }
+    catch (Throwable paramPathResult)
+    {
+      for (;;)
+      {
+        paramPathResult.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aero
  * JD-Core Version:    0.7.0.1
  */

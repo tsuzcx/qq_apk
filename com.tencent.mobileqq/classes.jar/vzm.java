@@ -1,69 +1,60 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.StrangerChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class vzm
-  extends CardObserver
+class vzm
+  implements View.OnLongClickListener
 {
-  public vzm(StrangerChatPie paramStrangerChatPie) {}
+  vzm(vzl paramvzl) {}
   
-  protected void b(boolean paramBoolean, Object paramObject)
+  public boolean onLongClick(View paramView)
   {
-    Object localObject = null;
-    String str1;
-    if ((paramBoolean) && ((paramObject instanceof Card)))
+    int i = 0;
+    switch (paramView.getId())
     {
-      paramObject = (Card)paramObject;
-      str1 = paramObject.uin;
-      localObject = paramObject.strCampusName;
-      paramObject = paramObject.tempChatSig;
-    }
-    for (;;)
-    {
-      Locale localLocale;
-      String str3;
-      String str4;
-      if (QLog.isColorLevel())
+    default: 
+    case 2131370721: 
+    case 2131376558: 
+      do
       {
-        localLocale = Locale.getDefault();
-        str3 = Utils.b(str1);
-        str4 = Utils.b((String)localObject);
-        if (paramObject != null) {
-          break label201;
-        }
-      }
-      label201:
-      for (String str2 = "sig is null";; str2 = "sig is not null")
-      {
-        QLog.d("StrangerChatPie", 2, String.format(localLocale, "onGetCampusInfo [%s, %s, %s]", new Object[] { str3, str4, str2 }));
-        if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1029) && (Utils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, str1)) && (!TextUtils.isEmpty((CharSequence)localObject)))
+        do
         {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = ((String)localObject);
-          if (paramObject != null) {
-            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().l(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramObject);
+          return true;
+          paramView = (uvt)uwa.a(10);
+          if (((Boolean)paramView.b("player_show_debug_panel", Boolean.valueOf(false))).booleanValue()) {
+            break;
           }
-          this.a.a().runOnUiThread(new vzn(this));
-        }
-        return;
+          bool = true;
+          paramView.b("player_show_debug_panel", Boolean.valueOf(bool));
+          paramView = ((StoryPlayerGroupHolder)this.a.a()).a();
+        } while (paramView == null);
+        paramView = (VideoViewVideoHolder)paramView.a(VideoViewVideoHolder.class);
+      } while (paramView == null);
+      if (bool) {}
+      for (;;)
+      {
+        paramView.a(i);
+        return true;
+        bool = false;
+        break;
+        i = 8;
       }
-      str2 = null;
-      str1 = null;
-      paramObject = localObject;
-      localObject = str2;
+    }
+    paramView = (uvt)uwa.a(10);
+    if (!((Boolean)paramView.b("player_use_tvk", Boolean.valueOf(false))).booleanValue()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramView.b("player_use_tvk", Boolean.valueOf(bool));
+      QQToast.a(this.a.b(), "UserTVK: " + bool, 0).a();
+      return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vzm
  * JD-Core Version:    0.7.0.1
  */

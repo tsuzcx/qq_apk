@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import com.tencent.mobileqq.activity.aio.helper.TroopRobotHelper.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class afgo
-  implements ActionSheet.OnDismissListener
+  implements bcrs
 {
-  public afgo(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
+  afgo(afgn paramafgn) {}
   
-  public void onDismiss()
+  public void a(String paramString)
   {
-    NearbyProfileEditPanel.a(this.a, this.a.b, false);
+    ThreadManager.getUIHandler().post(new TroopRobotHelper.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afgo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,18 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.ModifyFriendInfoActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.widget.ActionSheet;
 
 public class dbr
   implements View.OnClickListener
 {
-  public dbr(ModifyFriendInfoActivity paramModifyFriendInfoActivity) {}
+  public dbr(QQBrowserActivity paramQQBrowserActivity) {}
   
   public void onClick(View paramView)
   {
-    Toast.makeText(this.a, 2131561611, 0).show();
+    if (this.a.a.isShowing()) {
+      this.a.a.dismiss();
+    }
   }
 }
 

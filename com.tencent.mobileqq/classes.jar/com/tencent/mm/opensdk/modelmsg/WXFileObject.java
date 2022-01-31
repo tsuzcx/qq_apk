@@ -2,7 +2,7 @@ package com.tencent.mm.opensdk.modelmsg;
 
 import android.os.Bundle;
 import com.tencent.mm.opensdk.utils.Log;
-import java.io.File;
+import com.tencent.mm.opensdk.utils.d;
 
 public class WXFileObject
   implements WXMediaMessage.IMediaObject
@@ -31,13 +31,7 @@ public class WXFileObject
   
   private int getFileSize(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    do
-    {
-      return 0;
-      paramString = new File(paramString);
-    } while (!paramString.exists());
-    return (int)paramString.length();
+    return d.getFileSize(paramString);
   }
   
   public boolean checkArgs()
@@ -94,7 +88,7 @@ public class WXFileObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXFileObject
  * JD-Core Version:    0.7.0.1
  */

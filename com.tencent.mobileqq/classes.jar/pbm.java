@@ -1,61 +1,50 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
-import com.tencent.mobileqq.emosm.DataFactory;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
 
 public class pbm
-  extends BroadcastReceiver
+  implements Animator.AnimatorListener
 {
-  public pbm(NewerGuidePlugin paramNewerGuidePlugin) {}
+  public pbm(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, String.format("mAvatarReceiver.onReceive action=%s", new Object[] { paramContext }));
-    }
-    if ("ACTION_NEWER_GUIDE_SELECT_AVATAR_RESULT".equals(paramContext))
+    oxb.a().a(null, 110, true, null);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    oxb.a().a(null, 110, true, null);
+    if (ReadInjoyIMAXAdFragment.a(this.a) != null)
     {
-      paramContext = paramIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
-      boolean bool = paramIntent.getBooleanExtra("PhotoConst.SYNCQZONE", false);
-      paramIntent = paramIntent.getStringExtra("PhotoConst.SOURCE_FROM");
-      if (!TextUtils.isEmpty(paramContext))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("NewerGuidePlugin", 2, String.format("mAvatarReceiver.onReceive path=%s syncQZone=%s sourceFrom=%s", new Object[] { paramContext, Boolean.valueOf(bool), paramIntent }));
-        }
-        Bundle localBundle = new Bundle();
-        localBundle.putString("key_action", "setAvatar");
-        localBundle.putString("path", paramContext);
-        localBundle.putBoolean("PhotoConst.SYNCQZONE", bool);
-        localBundle.putString("PhotoConst.SOURCE_FROM", paramIntent);
-        paramContext = DataFactory.a("ipc_newer_guide", null, NewerGuidePlugin.a(this.a).key, localBundle);
-        WebIPCOperator.a().a(paramContext);
-        if (NewerGuidePlugin.a(this.a) == null)
-        {
-          paramContext = this.a.mRuntime.a();
-          int i = paramContext.getResources().getDimensionPixelSize(2131558448);
-          NewerGuidePlugin.a(this.a, new QQProgressDialog(paramContext, i));
-          NewerGuidePlugin.a(this.a).a("上传头像中...");
-        }
-        NewerGuidePlugin.a(this.a).show();
+      ReadInjoyIMAXAdFragment.a(this.a).setVisibility(0);
+      ReadInjoyIMAXAdFragment.b(this.a).setVisibility(0);
+      ReadInjoyIMAXAdFragment.c(this.a).setVisibility(0);
+      ReadInjoyIMAXAdFragment.b(this.a).setVisibility(0);
+      if (ReadInjoyIMAXAdFragment.e(this.a) != 1001) {
+        break label90;
       }
+      ReadInjoyIMAXAdFragment.c(this.a).setVisibility(0);
     }
+    label90:
+    while (ReadInjoyIMAXAdFragment.e(this.a) != 1002) {
+      return;
+    }
+    ReadInjoyIMAXAdFragment.c(this.a).setVisibility(8);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    oxb.a().a(null, 110, false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pbm
  * JD-Core Version:    0.7.0.1
  */

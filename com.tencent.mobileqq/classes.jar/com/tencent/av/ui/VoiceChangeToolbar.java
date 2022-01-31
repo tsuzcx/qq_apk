@@ -1,89 +1,108 @@
 package com.tencent.av.ui;
 
-import android.content.Context;
-import android.content.res.Resources;
+import aepi;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout.LayoutParams;
+import bdoo;
 import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.widget.HorizontalListView;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import kcs;
+import lid;
+import mdd;
+import mej;
+import mjk;
+import mjp;
+import mkj;
+import mog;
+import moh;
+import moi;
+import mok;
 
 public class VoiceChangeToolbar
   extends BaseToolbar
   implements View.OnClickListener
 {
   public static String TAG = "VoiceChangeToolbar";
-  QAVPtvTemplateAdapter mAdapter;
+  private static VoiceChangeToolbar mToolbarInstance;
+  mjk mAdapter;
   Button mEarbackBtn = null;
-  ArrayList mItemInfo;
+  ArrayList<mkj> mItemInfo;
   HorizontalListView mListView;
-  BaseToolbar.UIInfo mUIInfo = null;
-  QAVPtvTemplateAdapter.IEffectCallback mVoiceClickCallback = new kcs(this);
+  mej mUIInfo = null;
+  mjp mVoiceClickCallback = new mok(this);
   
   public VoiceChangeToolbar(VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity)
   {
     super(paramVideoAppInterface, paramAVActivity);
   }
   
-  private ArrayList getList()
+  private ArrayList<mkj> getList()
   {
-    VoiceChangeData.VoiceInfo[] arrayOfVoiceInfo = VoiceChangeData.a().a();
-    if (arrayOfVoiceInfo == null) {}
+    moh[] arrayOfmoh = mog.a().a();
+    if (arrayOfmoh == null) {}
     ArrayList localArrayList;
-    for (int i = 1;; i = arrayOfVoiceInfo.length + 1)
+    for (int i = 1;; i = arrayOfmoh.length + 1)
     {
       localArrayList = new ArrayList(i);
-      Object localObject = new QavListItemBase.ItemInfo();
-      ((QavListItemBase.ItemInfo)localObject).jdField_a_of_type_JavaLangString = "-1";
+      Object localObject = new mkj();
+      ((mkj)localObject).jdField_a_of_type_JavaLangString = "-1";
       localArrayList.add(localObject);
-      if (arrayOfVoiceInfo == null) {
+      if (arrayOfmoh == null) {
         break;
       }
       i = 0;
-      while (i < arrayOfVoiceInfo.length)
+      while (i < arrayOfmoh.length)
       {
-        localObject = arrayOfVoiceInfo[i];
-        QavListItemBase.ItemInfo localItemInfo = new QavListItemBase.ItemInfo();
-        localItemInfo.jdField_a_of_type_Int = 2;
-        localItemInfo.jdField_a_of_type_JavaLangString = (((VoiceChangeData.VoiceInfo)localObject).jdField_a_of_type_Int + "");
-        localItemInfo.c = ((VoiceChangeData.VoiceInfo)localObject).jdField_a_of_type_JavaLangString;
-        localItemInfo.jdField_b_of_type_JavaLangString = ((VoiceChangeData.VoiceInfo)localObject).c;
-        localItemInfo.jdField_b_of_type_Int = ((VoiceChangeData.VoiceInfo)localObject).jdField_b_of_type_Int;
-        localItemInfo.d = ((VoiceChangeData.VoiceInfo)localObject).jdField_a_of_type_JavaLangString;
-        localItemInfo.jdField_a_of_type_Boolean = true;
-        localArrayList.add(localItemInfo);
+        localObject = arrayOfmoh[i];
+        mkj localmkj = new mkj();
+        localmkj.jdField_a_of_type_Int = 2;
+        localmkj.jdField_a_of_type_JavaLangString = (((moh)localObject).jdField_a_of_type_Int + "");
+        localmkj.c = ((moh)localObject).jdField_a_of_type_JavaLangString;
+        localmkj.jdField_b_of_type_JavaLangString = ((moh)localObject).c;
+        localmkj.jdField_b_of_type_Int = ((moh)localObject).jdField_b_of_type_Int;
+        localmkj.d = ((moh)localObject).jdField_a_of_type_JavaLangString;
+        localmkj.jdField_a_of_type_Boolean = true;
+        localmkj.jdField_a_of_type_JavaLangObject = localObject;
+        localArrayList.add(localmkj);
         i += 1;
       }
     }
     return localArrayList;
   }
   
+  public static void setEffectConfigItem(long paramLong, String paramString)
+  {
+    if ((mToolbarInstance == null) || (mToolbarInstance.isOutOfArray(paramString))) {
+      return;
+    }
+    mToolbarInstance.setSelectedItem(paramString);
+    mkj localmkj = new mkj();
+    localmkj.jdField_a_of_type_JavaLangString = paramString;
+    mToolbarInstance.mVoiceClickCallback.a(paramLong, localmkj);
+  }
+  
   private void updateEarbackBtn()
   {
-    int i = 2130840361;
-    if (this.mApp.a().a().aC) {
-      i = 2130840362;
+    int i = 2130841963;
+    if (this.mApp.a().a().az) {
+      i = 2130841964;
     }
     this.mEarbackBtn.setCompoundDrawablesWithIntrinsicBounds(i, 0, 0, 0);
   }
   
-  protected BaseToolbar.UIInfo getUIInfo()
+  protected mej getUIInfo()
   {
     if (this.mUIInfo == null)
     {
-      this.mUIInfo = new BaseToolbar.UIInfo();
+      this.mUIInfo = new mej();
       this.mUIInfo.d = 5;
-      this.mUIInfo.g = 2130969364;
-      this.mUIInfo.e = 103416;
-      this.mUIInfo.f = 2130840346;
-      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getResources().getString(2131428733);
+      this.mUIInfo.f = 2131559643;
+      this.mUIInfo.e = 2130841945;
+      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getString(2131696389);
     }
     return this.mUIInfo;
   }
@@ -91,6 +110,23 @@ public class VoiceChangeToolbar
   public String getUnableInfo()
   {
     return "";
+  }
+  
+  public boolean isOutOfArray(String paramString)
+  {
+    if ((this.mListView == null) || (this.mAdapter == null) || (this.mItemInfo == null)) {}
+    for (;;)
+    {
+      return true;
+      int i = 1;
+      while (i < this.mItemInfo.size())
+      {
+        if (((mkj)this.mItemInfo.get(i)).jdField_a_of_type_JavaLangString.equals(paramString)) {
+          return false;
+        }
+        i += 1;
+      }
+    }
   }
   
   public void onClick(View paramView)
@@ -102,86 +138,87 @@ public class VoiceChangeToolbar
     }
     paramView = this.mApp.a().a();
     boolean bool;
-    if (!this.mApp.a().a().aC)
+    if (!this.mApp.a().a().az)
     {
       bool = true;
-      paramView.aC = bool;
-      if (this.mApp.a().a().S != 0) {
-        this.mApp.a().b(this.mApp.a().a().aC);
+      paramView.az = bool;
+      if (this.mApp.a().a().T != 0) {
+        this.mApp.a().c(this.mApp.a().a().az);
       }
       updateEarbackBtn();
-      if (this.mApp.a().a().aC) {
-        break label152;
+      if (this.mApp.a().a().az) {
+        break label153;
       }
-      EffectToolbar.showCloseEarbackToast((Context)this.mActivity.get());
-      VoiceChangeDataReport.a("0X8007EF4", "");
+      mdd.a(this.mApp, 1017);
+      moi.a("0X8007EF4", "");
     }
     for (;;)
     {
-      EffectSettingUi.a(this.mApp);
+      EffectSettingUi.a(this.mApp, -1010L);
       return;
       bool = false;
       break;
-      label152:
-      VoiceChangeDataReport.a("0X8007EF3", "");
+      label153:
+      moi.a("0X8007EF3", "");
     }
   }
   
-  protected void onCreate(AVActivity paramAVActivity)
+  protected void onCreate(long paramLong, AVActivity paramAVActivity)
   {
-    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131366275));
+    mToolbarInstance = this;
+    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131367803));
     this.mListView.setStayDisplayOffsetZero(true);
     this.mItemInfo = getList();
-    this.mAdapter = new QAVPtvTemplateAdapter(this.mApp, paramAVActivity, this.mItemInfo, this.mListView);
+    this.mAdapter = new mjk(this.mApp, paramAVActivity, this.mItemInfo, this.mListView);
     this.mAdapter.a(true);
     this.mAdapter.b(true);
     this.mAdapter.a(this.mVoiceClickCallback);
     this.mListView.setAdapter(this.mAdapter);
-    this.mEarbackBtn = ((Button)this.toolbarView.findViewById(2131366282));
+    this.mEarbackBtn = ((Button)this.toolbarView.findViewById(2131364103));
+    this.mEarbackBtn.setTextSize(bdoo.e(aepi.a(12.0F, paramAVActivity.getResources())));
     this.mEarbackBtn.setOnClickListener(this);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.setMargins(QAVPtvTemplateAdapter.a(paramAVActivity.getResources(), QAVPtvTemplateAdapter.a(paramAVActivity), 0.1666667F), 0, 0, 0);
+    localLayoutParams.setMargins(mjk.a(paramAVActivity.getResources(), this.mAdapter.a(), 0.1666667F), 0, 0, 0);
     this.mEarbackBtn.setLayoutParams(localLayoutParams);
     updateEarbackBtn();
   }
   
-  protected void onShow(int paramInt, boolean paramBoolean)
+  protected void onDestroy(long paramLong, VideoAppInterface paramVideoAppInterface)
   {
-    setSelectedItem(this.mApp.a().a().S + "");
+    mToolbarInstance = null;
+  }
+  
+  protected void onShow(long paramLong, int paramInt, boolean paramBoolean)
+  {
+    if ((this.mItemInfo == null) || (this.mItemInfo.size() == 1))
+    {
+      this.mItemInfo = getList();
+      if ((this.mItemInfo != null) && (this.mItemInfo.size() > 1) && (this.mAdapter != null))
+      {
+        this.mAdapter.a(this.mItemInfo);
+        this.mAdapter.notifyDataSetChanged();
+      }
+    }
+    setSelectedItem(this.mApp.a().a().T + "");
     updateEarbackBtn();
   }
   
   public void setSelectedItem(String paramString)
   {
-    if ((this.mListView == null) || (this.mAdapter == null) || (this.mItemInfo == null)) {}
-    label157:
+    if ((this.mListView == null) || (this.mAdapter == null) || (this.mItemInfo == null)) {
+      return;
+    }
+    int i = 1;
+    if (i < this.mItemInfo.size()) {
+      if (!((mkj)this.mItemInfo.get(i)).jdField_a_of_type_JavaLangString.equals(paramString)) {}
+    }
     for (;;)
     {
+      setSelectedListViewItemAndShow(this.mListView, this.mAdapter, i);
       return;
-      int i = 1;
-      if (i < this.mItemInfo.size()) {
-        if (!((QavListItemBase.ItemInfo)this.mItemInfo.get(i)).jdField_a_of_type_JavaLangString.equals(paramString)) {}
-      }
-      for (;;)
-      {
-        if ((!this.mAdapter.a(i)) || ((i >= this.mListView.getFirstVisiblePosition()) && (i <= this.mListView.getLastVisiblePosition()))) {
-          break label157;
-        }
-        int k = 0;
-        int j = k;
-        if (i > 0)
-        {
-          j = k;
-          if (i > QAVPtvTemplateAdapter.a(this.mAdapter.jdField_a_of_type_AndroidContentContext)) {
-            j = this.mAdapter.jdField_b_of_type_Int + (i - 1) * this.mAdapter.jdField_a_of_type_Int;
-          }
-        }
-        this.mListView.a(j);
-        return;
-        i += 1;
-        break;
-        i = -1;
-      }
+      i += 1;
+      break;
+      i = -1;
     }
   }
   
@@ -190,9 +227,9 @@ public class VoiceChangeToolbar
     if ((this.mListView == null) || (this.mAdapter == null)) {
       return;
     }
-    paramArrayOfObject = getList();
-    this.mAdapter.a(paramArrayOfObject);
-    setSelectedItem(this.mApp.a().a().S + "");
+    this.mItemInfo = getList();
+    this.mAdapter.a(this.mItemInfo);
+    setSelectedItem(this.mApp.a().a().T + "");
     this.mAdapter.notifyDataSetChanged();
   }
 }

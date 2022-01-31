@@ -1,30 +1,23 @@
-import cooperation.qzone.remote.RecvMsg;
-import cooperation.qzone.remote.RemoteServiceProxy;
-import cooperation.qzone.remote.SendMsg;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import com.tencent.mobileqq.ar.ObjectBaseData;
+import com.tencent.mobileqq.ar.ObjectSurfaceView;
+import com.tencent.qphone.base.util.QLog;
 
 public class amyj
-  extends Thread
+  implements awbh
 {
-  public amyj(RemoteServiceProxy paramRemoteServiceProxy) {}
+  public amyj(ObjectSurfaceView paramObjectSurfaceView, ObjectBaseData paramObjectBaseData) {}
   
-  public void run()
+  public void a()
   {
-    while (!this.a.sendMsgQueue.isEmpty())
-    {
-      SendMsg localSendMsg = (SendMsg)this.a.sendMsgQueue.poll();
-      if (localSendMsg != null) {
-        try
-        {
-          this.a.sendMsgToService(localSendMsg);
-        }
-        catch (Exception localException)
-        {
-          RecvMsg localRecvMsg = this.a.createWaiteRespTimeout(localSendMsg, "sendMsgToServiceFailed，" + localException.toString());
-          this.a.sendFailedRespToApp(localSendMsg, localRecvMsg);
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ObjectSurfaceView", 2, "onContentClick wikiurl = " + this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData.c);
     }
+    ObjectSurfaceView.b(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView, this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData.c);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView.a.a();
   }
 }
 

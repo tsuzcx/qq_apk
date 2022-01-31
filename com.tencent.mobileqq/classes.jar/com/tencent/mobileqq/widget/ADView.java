@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.widget;
 
-import aksl;
-import aksm;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -15,39 +13,41 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.struct.PushBanner;
+import azum;
+import bemw;
+import bemx;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.QZLog;
 
 public class ADView
   extends LinearLayout
 {
   protected float a;
-  private aksm jdField_a_of_type_Aksm = new aksm(this);
+  private bemx jdField_a_of_type_Bemx = new bemx(this);
   public WorkSpaceView a;
+  public final String a;
   private boolean jdField_a_of_type_Boolean;
   protected LinearLayout b;
   protected boolean e = true;
-  public int f;
-  public boolean f;
-  public int g = this.jdField_f_of_type_Int;
-  protected int h = 2;
-  protected int i;
+  public boolean f = true;
+  protected int g = 2130837578;
+  protected int h = this.g;
+  protected int i = 2;
+  protected int j;
   
   public ADView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_f_of_type_Int = 2130837546;
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-    this.jdField_f_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = "ADView";
     a(paramContext);
   }
   
   public ADView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_f_of_type_Int = 2130837546;
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-    this.jdField_f_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = "ADView";
     a(paramContext);
   }
   
@@ -62,26 +62,40 @@ public class ADView
   
   public void a(int paramInt1, int paramInt2)
   {
-    int j = 0;
-    LinearLayout localLinearLayout = (LinearLayout)this.b.getChildAt(paramInt1);
-    WorkSpaceView localWorkSpaceView = (WorkSpaceView)localLinearLayout.getChildAt(0);
-    localWorkSpaceView.removeViewAt(paramInt2);
-    localLinearLayout = (LinearLayout)localLinearLayout.getChildAt(1);
-    localLinearLayout.removeViewAt(paramInt2);
-    if (localLinearLayout.getChildCount() > 1) {}
-    for (paramInt1 = j;; paramInt1 = 4)
+    try
     {
-      localLinearLayout.setVisibility(paramInt1);
-      if (paramInt2 > 0) {
-        localWorkSpaceView.a(paramInt2 - 1);
+      QZLog.i("removeFromWorkSpace", "@newcard TABINDEX " + paramInt1 + "page" + paramInt2);
+      Object localObject = (ViewGroup)this.b.getChildAt(paramInt1);
+      WorkSpaceView localWorkSpaceView = (WorkSpaceView)((ViewGroup)localObject).getChildAt(0);
+      localWorkSpaceView.removeViewAt(paramInt2);
+      localObject = (LinearLayout)((ViewGroup)localObject).getChildAt(1);
+      ((LinearLayout)localObject).removeViewAt(paramInt2);
+      if (((LinearLayout)localObject).getChildCount() > 1) {}
+      for (paramInt1 = 0;; paramInt1 = 4)
+      {
+        ((LinearLayout)localObject).setVisibility(paramInt1);
+        if (paramInt2 > 0) {
+          localWorkSpaceView.a(paramInt2 - 1);
+        }
+        return;
       }
       return;
+    }
+    catch (Exception localException)
+    {
+      paramInt1 = 0;
+      while (paramInt1 < this.b.getChildCount() - 1)
+      {
+        QZLog.i("ADView", "@newcard " + this.b.getChildAt(paramInt1).getClass());
+        paramInt1 += 1;
+      }
+      QZLog.i("ADView", 2, "@newcard  ", localException);
     }
   }
   
   public void a(int paramInt1, int paramInt2, View paramView)
   {
-    int j = 0;
+    int k = 0;
     try
     {
       RelativeLayout localRelativeLayout = (RelativeLayout)this.b.getChildAt(paramInt1);
@@ -90,7 +104,7 @@ public class ADView
       paramView = (LinearLayout)localRelativeLayout.getChildAt(1);
       paramView.removeViewAt(paramInt2);
       if (paramView.getChildCount() > 1) {}
-      for (paramInt1 = j;; paramInt1 = 4)
+      for (paramInt1 = k;; paramInt1 = 4)
       {
         paramView.setVisibility(paramInt1);
         if (paramInt2 > 0) {
@@ -103,7 +117,7 @@ public class ADView
     catch (Exception paramView) {}
   }
   
-  public void a(Context paramContext)
+  protected void a(Context paramContext)
   {
     setPadding(0, 0, 0, 0);
     this.b = new LinearLayout(paramContext);
@@ -121,8 +135,8 @@ public class ADView
       localRelativeLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
       localObject = new LinearLayout(getContext());
       this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView = new WorkSpaceView(getContext());
-      setCircle(this.jdField_f_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setOnScreenChangeListener(new aksl(this, (LinearLayout)localObject));
+      setCircle(this.f);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setOnScreenChangeListener(new bemw(this, (LinearLayout)localObject));
       this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
       this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setId(100000);
@@ -149,14 +163,14 @@ public class ADView
     }
   }
   
-  public void a(LinearLayout paramLinearLayout)
+  protected void a(LinearLayout paramLinearLayout)
   {
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(8, 100000);
     localLayoutParams.addRule(14, 100000);
     localLayoutParams.setMargins(0, 0, 0, (int)(6.0F * this.jdField_a_of_type_Float));
     paramLinearLayout.setGravity(16);
-    paramLinearLayout.setBackgroundResource(2130839286);
+    paramLinearLayout.setBackgroundResource(2130840320);
     paramLinearLayout.setPadding((int)(4.0F * this.jdField_a_of_type_Float), 0, (int)(2.0F * this.jdField_a_of_type_Float), 0);
     paramLinearLayout.setLayoutParams(localLayoutParams);
   }
@@ -165,17 +179,17 @@ public class ADView
   {
     localImageView = new ImageView(getContext());
     LinearLayout.LayoutParams localLayoutParams;
-    if (this.i > 0)
+    if (this.j > 0)
     {
-      localLayoutParams = new LinearLayout.LayoutParams((int)(this.i * this.jdField_a_of_type_Float), (int)(this.i * this.jdField_a_of_type_Float));
-      localLayoutParams.setMargins(0, 0, (int)(this.h * this.jdField_a_of_type_Float), 0);
+      localLayoutParams = new LinearLayout.LayoutParams((int)(this.j * this.jdField_a_of_type_Float), (int)(this.j * this.jdField_a_of_type_Float));
+      localLayoutParams.setMargins(0, 0, (int)(this.i * this.jdField_a_of_type_Float), 0);
       localImageView.setLayoutParams(localLayoutParams);
     }
     for (;;)
     {
       try
       {
-        localImageView.setImageDrawable(getContext().getResources().getDrawable(this.g));
+        localImageView.setImageDrawable(getContext().getResources().getDrawable(this.h));
         if (!paramBoolean) {
           continue;
         }
@@ -183,17 +197,17 @@ public class ADView
       }
       catch (Exception localException)
       {
-        localImageView.setImageResource(this.jdField_f_of_type_Int);
+        localImageView.setImageResource(this.g);
         continue;
-        int j = 4;
+        int k = 4;
         continue;
       }
       paramLinearLayout.addView(localImageView);
       if (paramLinearLayout.getChildCount() <= 1) {
         continue;
       }
-      j = 0;
-      paramLinearLayout.setVisibility(j);
+      k = 0;
+      paramLinearLayout.setVisibility(k);
       return;
       localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
       break;
@@ -201,9 +215,9 @@ public class ADView
     }
   }
   
-  public boolean b()
+  public boolean c()
   {
-    return this.jdField_f_of_type_Boolean;
+    return this.f;
   }
   
   public void h()
@@ -218,36 +232,36 @@ public class ADView
   
   public void i()
   {
-    this.jdField_a_of_type_Aksm.removeMessages(0);
+    this.jdField_a_of_type_Bemx.removeMessages(0);
     try
     {
-      PushBanner localPushBanner = (PushBanner)this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.getChildAt(this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.a()).getTag();
-      j = localPushBanner.a;
-      setContentDescription(localPushBanner.n);
-      j *= 1000;
+      azum localazum = (azum)this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.getChildAt(this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.a()).getTag();
+      k = localazum.a;
+      setContentDescription(localazum.n);
+      k *= 1000;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        int j = 5000;
+        int k = 5000;
       }
     }
-    this.jdField_a_of_type_Aksm.sendEmptyMessageDelayed(0, j);
+    this.jdField_a_of_type_Bemx.sendEmptyMessageDelayed(0, k);
   }
   
   public void j()
   {
-    this.jdField_a_of_type_Aksm.sendEmptyMessage(1);
+    this.jdField_a_of_type_Bemx.sendEmptyMessage(1);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    int j;
+    int k;
     if (this.e)
     {
-      j = paramMotionEvent.getAction();
-      if (j != 0) {
+      k = paramMotionEvent.getAction();
+      if (k != 0) {
         break label32;
       }
       getParent().requestDisallowInterceptTouchEvent(true);
@@ -256,7 +270,7 @@ public class ADView
     {
       return super.onInterceptTouchEvent(paramMotionEvent);
       label32:
-      if ((j == 1) || (j == 3)) {
+      if ((k == 1) || (k == 3)) {
         getParent().requestDisallowInterceptTouchEvent(false);
       }
     }
@@ -267,7 +281,7 @@ public class ADView
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView != null) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setCircle(paramBoolean);
     }
-    this.jdField_f_of_type_Boolean = paramBoolean;
+    this.f = paramBoolean;
   }
   
   public void setIsCloseADView(boolean paramBoolean)
@@ -277,7 +291,7 @@ public class ADView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ADView
  * JD-Core Version:    0.7.0.1
  */

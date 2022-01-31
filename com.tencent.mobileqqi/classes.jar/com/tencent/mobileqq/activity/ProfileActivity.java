@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Parcelable;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.FileProvider7Helper;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -43,7 +43,7 @@ public abstract class ProfileActivity
   public static final int Z = 71;
   private static final int a = 22578;
   protected static final String a = "http://m.3g.qq.com/forward.html?sid=%s&fr=1&tuin=%s&page=tmsglist";
-  public static final int[][] a = { { 2130840270, 2131361842 }, { 2130840273, 2131361843 }, { 2130840276, 2131361844 } };
+  public static final int[][] a = { { 2130840272, 2131361842 }, { 2130840275, 2131361843 }, { 2130840278, 2131361844 } };
   public static final int aA = 999;
   public static final int aB = 4;
   public static final int aC = 5;
@@ -204,16 +204,15 @@ public abstract class ProfileActivity
   
   public static Uri a(Activity paramActivity, int paramInt)
   {
-    Object localObject = new File(AppConstants.an + "photo/");
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
+    Object localObject1 = new File(AppConstants.an + "photo/");
+    if (!((File)localObject1).exists()) {
+      ((File)localObject1).mkdirs();
     }
-    localObject = Uri.fromFile(new File(AppConstants.an + "photo/" + System.currentTimeMillis() + ".jpg"));
-    Intent localIntent = new Intent("android.media.action.IMAGE_CAPTURE");
-    localIntent.putExtra("output", (Parcelable)localObject);
-    localIntent.putExtra("android.intent.extra.videoQuality", 100);
-    paramActivity.startActivityForResult(localIntent, paramInt);
-    return localObject;
+    Object localObject2 = AppConstants.an + "photo/" + System.currentTimeMillis() + ".jpg";
+    localObject1 = new Intent();
+    localObject2 = FileProvider7Helper.setSystemCapture(paramActivity, new File((String)localObject2), (Intent)localObject1);
+    paramActivity.startActivityForResult((Intent)localObject1, paramInt);
+    return localObject2;
   }
   
   public static void a(Activity paramActivity, ProfileActivity.AllInOne paramAllInOne, int paramInt)

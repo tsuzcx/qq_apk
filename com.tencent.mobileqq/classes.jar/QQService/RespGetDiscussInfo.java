@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public final class RespGetDiscussInfo
   extends JceStruct
 {
-  static ArrayList cache_Members;
+  static ArrayList<DiscussMemberInfo> cache_Members;
   public long CreateTime;
   public long DiscussFlag;
   public long DiscussUin;
@@ -18,7 +18,7 @@ public final class RespGetDiscussInfo
   public long GroupUin;
   public long InfoSeq;
   public long InteRemarkTimeStamp;
-  public ArrayList Members;
+  public ArrayList<DiscussMemberInfo> Members;
   public String Name = "";
   public long OwnerUin;
   
@@ -34,7 +34,7 @@ public final class RespGetDiscussInfo
   
   public RespGetDiscussInfo() {}
   
-  public RespGetDiscussInfo(long paramLong1, long paramLong2, long paramLong3, long paramLong4, String paramString, ArrayList paramArrayList, long paramLong5, long paramLong6, long paramLong7, long paramLong8)
+  public RespGetDiscussInfo(long paramLong1, long paramLong2, long paramLong3, long paramLong4, String paramString, ArrayList<DiscussMemberInfo> paramArrayList, long paramLong5, long paramLong6, long paramLong7, long paramLong8)
   {
     this.DiscussUin = paramLong1;
     this.OwnerUin = paramLong2;

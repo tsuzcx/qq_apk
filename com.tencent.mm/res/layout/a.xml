@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:overScrollMode="never"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/iv" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:layout_width="47.5dip" android:layout_height="56.0dip" android:layout_marginTop="57.5dip" android:src="@drawable/boo" android:scaleType="centerInside" />
+            <TextView android:textSize="20.0dip" android:textColor="@color/h6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:text="@string/cow" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/w6" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="40.5dip" android:layout_marginTop="20.0dip" android:layout_marginRight="40.5dip" android:text="@string/ba" />
+            <Button android:id="@id/iw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/la" android:layout_marginTop="40.0dip" android:layout_marginRight="@dimen/la" android:text="@string/co7" style="@style/nq" />
+        </LinearLayout>
+        <TextView android:textSize="14.0dip" android:textColor="@color/tc" android:gravity="bottom" android:id="@id/ix" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="18.0dip" android:text="@string/aqv" android:layout_below="@id/iv" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</ScrollView>

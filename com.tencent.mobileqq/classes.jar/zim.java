@@ -1,23 +1,13 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.model.PhoneContactManager.IPhoneContactListener;
-import java.util.Iterator;
-import java.util.LinkedList;
+import android.app.Activity;
+import com.tencent.widget.AdapterView;
 
-public class zim
-  implements Runnable
+public abstract class zim
 {
-  public zim(PhoneContactManagerImp paramPhoneContactManagerImp, long paramLong) {}
+  public abstract void a(int paramInt);
   
-  public void run()
-  {
-    synchronized (PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp))
-    {
-      Iterator localIterator = PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp).iterator();
-      if (localIterator.hasNext()) {
-        ((PhoneContactManager.IPhoneContactListener)localIterator.next()).a(this.jdField_a_of_type_Long);
-      }
-    }
-  }
+  public abstract void a(Activity paramActivity, zin paramzin, int paramInt);
+  
+  public abstract void a(AdapterView paramAdapterView, int paramInt);
 }
 
 

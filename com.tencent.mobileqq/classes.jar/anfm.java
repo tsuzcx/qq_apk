@@ -1,13 +1,18 @@
-import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArAwardInfo;
 
-public class anfm
-  implements Runnable
+public final class anfm
+  implements Parcelable.Creator<ArAwardInfo>
 {
-  public anfm(TroopHomeworkHelper.UploadFileTask paramUploadFileTask) {}
-  
-  public void run()
+  public ArAwardInfo a(Parcel paramParcel)
   {
-    this.a.b();
+    return new ArAwardInfo(paramParcel);
+  }
+  
+  public ArAwardInfo[] a(int paramInt)
+  {
+    return new ArAwardInfo[paramInt];
   }
 }
 

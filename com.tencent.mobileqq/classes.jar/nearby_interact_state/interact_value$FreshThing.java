@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class interact_value$FreshThing
-  extends MessageMicro
+  extends MessageMicro<FreshThing>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_content_2 = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -33,7 +33,7 @@ public final class interact_value$FreshThing
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nearby_interact_state.interact_value.FreshThing
  * JD-Core Version:    0.7.0.1
  */

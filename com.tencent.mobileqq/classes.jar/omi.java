@@ -1,34 +1,27 @@
-import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
-import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
+import android.view.View;
 
-public class omi
-  implements HorizontalListView.OnScrollStateChangedListener
+class omi
+  implements bhuk
 {
-  public omi(ScrollFrameSelectBar paramScrollFrameSelectBar) {}
+  omi(omg paramomg, omt paramomt, bhuf parambhuf) {}
   
-  public void a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    SLog.a("Q.qqstory.frameWidget.ScrollFrameSelectBar", "onScrollStateChanged:%s", Integer.valueOf(paramInt));
     switch (paramInt)
     {
-    default: 
-    case 4098: 
-    case 4099: 
-      do
-      {
-        return;
-      } while (!ScrollFrameSelectBar.a(this.a).isPlaying());
-      ScrollFrameSelectBar.a(this.a).b();
-      return;
     }
-    this.a.b();
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      this.jdField_a_of_type_Omg.a().a(this.jdField_a_of_type_Omt, this.jdField_a_of_type_Omg.c);
+      this.jdField_a_of_type_Omg.notifyDataSetChanged();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     omi
  * JD-Core Version:    0.7.0.1
  */

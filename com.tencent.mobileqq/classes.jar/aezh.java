@@ -1,37 +1,21 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.now.datasource.CommentsDataSource.LoadCommentsCallback;
-import com.tencent.mobileqq.nearby.now.model.Comments;
-import com.tencent.mobileqq.nearby.now.view.CommentsView;
-import com.tencent.mobileqq.nearby.now.view.presenter.CommentsPresenterImpl;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.ConfessBrowserFragment;
 
-public class aezh
-  implements CommentsDataSource.LoadCommentsCallback
+class aezh
+  implements View.OnClickListener
 {
-  public aezh(CommentsPresenterImpl paramCommentsPresenterImpl) {}
+  aezh(aezg paramaezg) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (CommentsPresenterImpl.a(this.a) != null)
-    {
-      CommentsPresenterImpl.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131430837));
-      CommentsPresenterImpl.a(this.a).b();
-      CommentsPresenterImpl.a(this.a).c();
-    }
-  }
-  
-  public void a(Comments paramComments)
-  {
-    if (CommentsPresenterImpl.a(this.a) != null)
-    {
-      CommentsPresenterImpl.a(this.a);
-      CommentsPresenterImpl.a(this.a).a(paramComments);
-      CommentsPresenterImpl.a(this.a).b();
-    }
+    this.a.a.a().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aezh
  * JD-Core Version:    0.7.0.1
  */

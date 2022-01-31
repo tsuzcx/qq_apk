@@ -1,6 +1,7 @@
 package com.tencent.util;
 
 import android.os.Build;
+import com.tencent.ttpic.baseutils.log.LogUtils;
 
 public class PhoneProperty
 {
@@ -36,16 +37,16 @@ public class PhoneProperty
   {
     if (this.showLog)
     {
-      LogUtil.i("PhoneProperty", "******MODEL*****" + Build.MODEL);
-      LogUtil.i("PhoneProperty", "******BRAND*****" + Build.BRAND);
-      LogUtil.i("PhoneProperty", "*******DEVICE****" + Build.DEVICE);
-      LogUtil.i("PhoneProperty", "*****DISPLAY******" + Build.DISPLAY);
-      LogUtil.i("PhoneProperty", "*****HARDWARE******" + Build.HARDWARE);
-      LogUtil.i("PhoneProperty", "******MANUFACTURER*****" + Build.MANUFACTURER);
-      LogUtil.i("PhoneProperty", "*****PRODUCT******" + Build.PRODUCT);
-      LogUtil.i("PhoneProperty", "******TAGS*****" + Build.TAGS);
-      LogUtil.i("PhoneProperty", "*****USER******" + Build.USER);
-      LogUtil.i("PhoneProperty", "****TYPE*******" + Build.TYPE);
+      LogUtils.i("PhoneProperty", "******MODEL*****" + Build.MODEL);
+      LogUtils.i("PhoneProperty", "******BRAND*****" + Build.BRAND);
+      LogUtils.i("PhoneProperty", "*******DEVICE****" + Build.DEVICE);
+      LogUtils.i("PhoneProperty", "*****DISPLAY******" + Build.DISPLAY);
+      LogUtils.i("PhoneProperty", "*****HARDWARE******" + Build.HARDWARE);
+      LogUtils.i("PhoneProperty", "******MANUFACTURER*****" + Build.MANUFACTURER);
+      LogUtils.i("PhoneProperty", "*****PRODUCT******" + Build.PRODUCT);
+      LogUtils.i("PhoneProperty", "******TAGS*****" + Build.TAGS);
+      LogUtils.i("PhoneProperty", "*****USER******" + Build.USER);
+      LogUtils.i("PhoneProperty", "****TYPE*******" + Build.TYPE);
     }
   }
   
@@ -196,7 +197,7 @@ public class PhoneProperty
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.util.PhoneProperty
  * JD-Core Version:    0.7.0.1
  */

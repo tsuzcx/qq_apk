@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class ilive_short_video_label$RoomInfo
-  extends MessageMicro
+  extends MessageMicro<RoomInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField anchor_logo_640 = PBField.initString("");
@@ -25,7 +25,7 @@ public final class ilive_short_video_label$RoomInfo
   public final PBUInt32Field room_id = PBField.initUInt32(0);
   public final PBStringField room_name = PBField.initString("");
   public final PBUInt32Field subroom_id = PBField.initUInt32(0);
-  public final PBRepeatMessageField title_info = PBField.initRepeatMessage(ilive_short_video_label.RichTitleElement.class);
+  public final PBRepeatMessageField<ilive_short_video_label.RichTitleElement> title_info = PBField.initRepeatMessage(ilive_short_video_label.RichTitleElement.class);
   public final PBUInt32Field total_money = PBField.initUInt32(0);
   public final PBUInt32Field total_people = PBField.initUInt32(0);
   public final PBUInt32Field total_record_people = PBField.initUInt32(0);
@@ -43,7 +43,7 @@ public final class ilive_short_video_label$RoomInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.ilive_short_video_label.RoomInfo
  * JD-Core Version:    0.7.0.1
  */

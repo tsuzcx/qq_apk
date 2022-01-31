@@ -1,23 +1,22 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.events.QCircleSelectTabEvent;
+import com.tencent.biz.qqcircle.fragments.QCircleFolderFollowTabFragment;
 
 public class twt
-  extends TransProcessorHandler
+  implements View.OnClickListener
 {
-  public twt(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public twt(QCircleFolderFollowTabFragment paramQCircleFolderFollowTabFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    int i = paramMessage.what;
-    if ((i == 1003) || (i == 2003)) {
-      this.a.c();
-    }
+    tzv.a("", 22, 13L);
+    yiw.a().a(new QCircleSelectTabEvent(6));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     twt
  * JD-Core Version:    0.7.0.1
  */

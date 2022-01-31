@@ -1,33 +1,26 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
-import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.ViewGroup;
 
-public class aeye
-  implements View.OnLayoutChangeListener
+class aeye
+  implements Animator.AnimatorListener
 {
-  public aeye(StuffContainerView paramStuffContainerView) {}
+  aeye(aeyd paramaeyd, ViewGroup paramViewGroup) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = StuffContainerView.a(this.a);
-    if ((StuffContainerView.a(this.a) > 0L) && (l1 - l2 < 500L)) {}
-    do
-    {
-      return;
-      StuffContainerView.a(this.a, l1);
-      if (QLog.isColorLevel()) {
-        QLog.d("StuffContainerView", 2, "VideoInfoListenerImpl onLayoutChange");
-      }
-    } while (this.a.a == null);
-    this.a.a.l();
+    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeye
  * JD-Core Version:    0.7.0.1
  */

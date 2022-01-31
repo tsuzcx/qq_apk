@@ -1,32 +1,44 @@
-import android.content.Intent;
-import android.os.Message;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vas.IndividuationUrlHelper;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
 
 public class xje
-  implements View.OnClickListener
+  extends xis
 {
-  public xje(BannerManager paramBannerManager, String paramString) {}
+  public int c;
   
-  public void onClick(View paramView)
+  public xje(int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
-    paramView = new Intent(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), QQBrowserActivity.class);
-    paramView.putExtra("individuation_url_type", 40100);
-    VasWebviewUtil.openQQBrowserWithoutAD(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), IndividuationUrlHelper.a(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), "themeDetail", this.jdField_a_of_type_JavaLangString, ""), 32L, paramView, true, -1);
-    BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).obtainMessage(12).sendToTarget();
-    ReportController.b(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).app, "CliOper", "", "", "0X8005B9F", "0X8005B9F", 0, 0, "", "", "", "");
+    super(paramInt1, paramString, paramInt2);
+    this.c = paramInt3;
+  }
+  
+  @NonNull
+  public Class<? extends xit> a()
+  {
+    return xjf.class;
+  }
+  
+  @NonNull
+  public xit a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    return new xjf(this, paramContext, paramViewGroup);
+  }
+  
+  public void a(int paramInt)
+  {
+    wxe.a("WeatherFilterData", "updateWeather:%s", Integer.valueOf(paramInt));
+    this.c = paramInt;
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xje
  * JD-Core Version:    0.7.0.1
  */

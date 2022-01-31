@@ -1,32 +1,18 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.HintDrawable;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
-public class aoef
-  extends Property
+final class aoef
+  extends aobz
 {
-  public aoef(HintDrawable paramHintDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  aoef(aobx paramaobx, ColorNote paramColorNote) {}
   
-  public Integer a(HintDrawable paramHintDrawable)
+  public void onDeleteColorNote(int paramInt, String paramString, boolean paramBoolean)
   {
-    if (paramHintDrawable != null) {
-      return Integer.valueOf(HintDrawable.a(paramHintDrawable));
-    }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(HintDrawable paramHintDrawable, Integer paramInteger)
-  {
-    if (paramHintDrawable != null) {
-      HintDrawable.a(paramHintDrawable, paramInteger.intValue());
-    }
+    this.jdField_a_of_type_Aobx.a(this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote.parseBundle());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoef
  * JD-Core Version:    0.7.0.1
  */

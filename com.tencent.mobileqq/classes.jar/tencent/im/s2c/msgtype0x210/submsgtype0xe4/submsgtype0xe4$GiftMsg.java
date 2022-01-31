@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class submsgtype0xe4$GiftMsg
-  extends MessageMicro
+  extends MessageMicro<GiftMsg>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField gift_wording = PBField.initBytes(ByteStringMicro.EMPTY);

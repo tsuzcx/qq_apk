@@ -1,46 +1,22 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspTranslateToken;
 
 public class vgp
-  extends Handler
+  extends uro
 {
-  public vgp(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public long a;
+  public String a;
+  public String c;
   
-  public void handleMessage(Message paramMessage)
+  public vgp(qqstory_service.RspTranslateToken paramRspTranslateToken) {}
+  
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoRealItemBuilder", 2, "EncodeHandler.handleMessage, msg.what = " + paramMessage.what + ", ret is " + paramMessage.arg1);
-    }
-    switch (paramMessage.what)
-    {
-    }
-    String str;
-    do
-    {
-      int i;
-      do
-      {
-        return;
-        i = paramMessage.arg1;
-        paramMessage = paramMessage.getData();
-      } while (!QLog.isColorLevel());
-      QLog.i("ShortVideoRealItemBuilder", 2, "ret is " + i);
-      QLog.i("ShortVideoRealItemBuilder", 2, "data is " + paramMessage);
-      return;
-      str = paramMessage.getData().getString("maxvideo.file.mp4");
-    } while (!QLog.isColorLevel());
-    QLog.d("ShortVideoRealItemBuilder", 2, "EncodeHandler.handleMessage MaxVideoConst.MSG_ENDret is " + paramMessage.arg1 + ",targetFile is " + str);
+    return "StoryShareTranslateTokenResponse{coverUrl='" + this.c + '\'' + ", dstBuffer='" + this.jdField_a_of_type_JavaLangString + '\'' + ", shootTimeMillis=" + this.jdField_a_of_type_Long + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vgp
  * JD-Core Version:    0.7.0.1
  */

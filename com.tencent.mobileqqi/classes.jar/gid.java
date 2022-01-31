@@ -1,75 +1,154 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pic.BasePicOprerator;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.mobileqq.pic.Logger;
-import com.tencent.mobileqq.pic.PicFowardInfo;
-import com.tencent.mobileqq.pic.PicUploadInfo;
-import com.tencent.mobileqq.pic.compress.CompressOperator;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.mobileqq.transfile.TransferRequest.PicUpExtraInfo;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.richstatus.ISameStatusListener;
+import com.tencent.mobileqq.richstatus.IStatusListener;
+import com.tencent.mobileqq.richstatus.StatusManager;
+import com.tencent.mobileqq.richstatus.StatusObserver;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class gid
-  extends AsyncTask
+  extends StatusObserver
 {
-  public gid(BasePicOprerator paramBasePicOprerator, PicFowardInfo paramPicFowardInfo) {}
+  public gid(StatusManager paramStatusManager) {}
   
-  protected Void a(Void... paramVarArgs)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    Logger.a(this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_JavaLangString, "doForward", "start");
-    if (this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqPicPicFowardInfo.a("doForward", "rec==null");
-      this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.a(4, this.jdField_a_of_type_ComTencentMobileqqPicPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo);
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.shuo", 2, "onGetSyncShuoshuo " + paramBoolean1 + ", " + paramBoolean2);
     }
-    paramVarArgs = (MessageForPic)this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    paramVarArgs.path = this.jdField_a_of_type_ComTencentMobileqqPicPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.g;
-    Object localObject = new CompressInfo();
-    ((CompressInfo)localObject).c = paramVarArgs.path;
-    CompressOperator.b((CompressInfo)localObject);
-    if (((CompressInfo)localObject).jdField_e_of_type_JavaLangString != null)
+    label83:
+    IStatusListener localIStatusListener;
+    if (paramBoolean1)
     {
-      paramVarArgs.thumbMsgUrl = ((CompressInfo)localObject).jdField_e_of_type_JavaLangString;
-      paramVarArgs.thumbWidth = ((CompressInfo)localObject).d;
-      paramVarArgs.thumbHeight = ((CompressInfo)localObject).jdField_e_of_type_Int;
+      StatusManager.c(this.a, 0L);
+      StatusManager.a(this.a, paramBoolean2);
+      if (StatusManager.b(this.a) == null) {
+        return;
+      }
+      Iterator localIterator = StatusManager.b(this.a).iterator();
+      if (!localIterator.hasNext()) {
+        return;
+      }
+      localIStatusListener = (IStatusListener)localIterator.next();
+      if (!paramBoolean1) {
+        break label162;
+      }
     }
-    paramVarArgs.serial();
-    this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramVarArgs.frienduin, paramVarArgs.istroop, paramVarArgs.uniseq, paramVarArgs.msgData);
-    if ((this.jdField_a_of_type_ComTencentMobileqqPicPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_b_of_type_Int == 1001) && (!this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(this.jdField_a_of_type_ComTencentMobileqqPicPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.c)))
+    label162:
+    for (int i = 100;; i = -1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_ComTencentMobileqqPicPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.c, this.jdField_a_of_type_ComTencentMobileqqPicPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqPicPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.g, this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
-      BasePicOprerator.a(this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator, this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-      Logger.a(this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_JavaLangString, "getFowardTask.start old lbs protocol", "");
-      return null;
+      localIStatusListener.a(i, paramBoolean2);
+      break label83;
+      StatusManager.c(this.a, System.currentTimeMillis() - 180000L + 60000L);
+      paramBoolean2 = StatusManager.b(this.a).getBoolean("k_sync_ss", false);
+      break;
     }
-    paramVarArgs = new TransferRequest();
-    paramVarArgs.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
-    paramVarArgs.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin;
-    paramVarArgs.c = this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin;
-    paramVarArgs.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop;
-    paramVarArgs.jdField_b_of_type_Int = 1;
-    paramVarArgs.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq;
-    paramVarArgs.jdField_a_of_type_Boolean = true;
-    paramVarArgs.d = this.jdField_a_of_type_ComTencentMobileqqPicPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_a_of_type_Int;
-    paramVarArgs.g = this.jdField_a_of_type_ComTencentMobileqqPicPicFowardInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.g;
-    localObject = new TransferRequest.PicUpExtraInfo();
-    ((TransferRequest.PicUpExtraInfo)localObject).jdField_a_of_type_Boolean = false;
-    paramVarArgs.jdField_a_of_type_JavaLangObject = localObject;
-    paramVarArgs.jdField_a_of_type_ComTencentMobileqqPicUpCallBack = this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator;
-    this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramVarArgs);
-    BasePicOprerator.a(this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator, this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-    Logger.a(this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_JavaLangString, "doForward", "end");
-    return null;
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, byte[] paramArrayOfByte, ArrayList paramArrayList)
+  {
+    int i;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder().append("onGetStatusMate ").append(paramBoolean1).append(" ").append(paramBoolean2).append(" ").append(paramInt).append(" ");
+      if (paramArrayList != null)
+      {
+        i = paramArrayList.size();
+        QLog.d("Q.richstatus.mate", 2, i);
+      }
+    }
+    else
+    {
+      if (!paramBoolean1) {
+        break label124;
+      }
+      StatusManager.a(this.a, paramArrayOfByte);
+    }
+    for (;;)
+    {
+      if (paramBoolean1) {
+        if (paramBoolean2)
+        {
+          if (StatusManager.a(this.a) != null)
+          {
+            StatusManager.a(this.a, paramArrayList);
+            return;
+            i = -1;
+            break;
+            label124:
+            if (!paramBoolean2) {
+              continue;
+            }
+            StatusManager.a(this.a, null);
+            continue;
+          }
+          if (StatusManager.b(this.a) == null) {
+            StatusManager.b(this.a, new ArrayList());
+          }
+          paramArrayOfByte = this.a.a(StatusManager.b(this.a), paramArrayList, paramInt);
+        }
+      }
+    }
+    for (;;)
+    {
+      label184:
+      if ((StatusManager.a(this.a) != null) && (StatusManager.a(this.a).length > 0)) {}
+      for (boolean bool = true;; bool = false)
+      {
+        if (StatusManager.c(this.a) == null) {
+          break label283;
+        }
+        paramArrayList = StatusManager.c(this.a).iterator();
+        while (paramArrayList.hasNext()) {
+          ((ISameStatusListener)paramArrayList.next()).a(paramBoolean1, paramBoolean2, paramInt, paramArrayOfByte, bool);
+        }
+        break;
+        paramArrayOfByte = this.a.a(paramArrayList);
+        break label184;
+      }
+      label283:
+      break;
+      paramArrayOfByte = paramArrayList;
+    }
+  }
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.shuo", 2, "onSetSyncShuoshuo " + paramBoolean1 + ", " + paramBoolean2);
+    }
+    label74:
+    IStatusListener localIStatusListener;
+    if (paramBoolean1)
+    {
+      StatusManager.a(this.a, paramBoolean2);
+      if (StatusManager.b(this.a) == null) {
+        return;
+      }
+      Iterator localIterator = StatusManager.b(this.a).iterator();
+      if (!localIterator.hasNext()) {
+        return;
+      }
+      localIStatusListener = (IStatusListener)localIterator.next();
+      if (!paramBoolean1) {
+        break label134;
+      }
+    }
+    label134:
+    for (int i = 100;; i = -1)
+    {
+      localIStatusListener.b(i, paramBoolean2);
+      break label74;
+      paramBoolean2 = StatusManager.b(this.a).getBoolean("k_sync_ss", false);
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gid
  * JD-Core Version:    0.7.0.1
  */

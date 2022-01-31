@@ -1,32 +1,24 @@
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchFragment;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchResult;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import java.util.List;
 
 public class wid
-  implements Runnable
 {
-  public wid(ClassificationSearchFragment paramClassificationSearchFragment, SearchResult paramSearchResult) {}
+  public int a;
+  public List<LikeEntry> a;
+  public boolean a;
+  public int b;
   
-  public void run()
+  public wid(boolean paramBoolean, List<LikeEntry> paramList, int paramInt1, int paramInt2)
   {
-    ClassificationSearchFragment localClassificationSearchFragment;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult != null)
-    {
-      localClassificationSearchFragment = this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult.a) {
-        break label30;
-      }
-    }
-    label30:
-    for (int i = 1;; i = 0)
-    {
-      ClassificationSearchFragment.a(localClassificationSearchFragment, i);
-      return;
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wid
  * JD-Core Version:    0.7.0.1
  */

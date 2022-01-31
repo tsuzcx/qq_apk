@@ -1,43 +1,82 @@
-import android.animation.Animator;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.AnimatorAdapter;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.FlowPlusPanel;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import java.util.ArrayList;
 
 public class xop
-  extends AnimatorAdapter
+  extends BaseAdapter
 {
-  public xop(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  int jdField_a_of_type_Int = -1;
+  Context jdField_a_of_type_AndroidContentContext;
+  ArrayList<xou> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public xop(HorizontalSelectColorLayout paramHorizontalSelectColorLayout, Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "startExitPtvModeAnimation: onAnimationEnd <<===");
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowPlusPanel != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowPlusPanel.a();
-    }
-    this.a.k();
-    this.a.e.setVisibility(4);
-    this.a.e.setPadding(0, 0, 0, 0);
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.y();
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "startExitPtvModeAnimation: onAnimationStart ===>>");
+    this.jdField_a_of_type_Int = paramInt;
+    notifyDataSetChanged();
+  }
+  
+  public void a(ArrayList<xou> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    xou localxou = (xou)getItem(paramInt);
+    View localView;
+    if (paramView == null)
+    {
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561434, paramViewGroup, false);
+      paramView = new xoq(this);
+      paramView.a = ((ImageView)localView.findViewById(2131368477));
+      paramView.b = ((ImageView)localView.findViewById(2131368569));
+      localView.setTag(paramView);
+      paramViewGroup = paramView;
     }
+    for (;;)
+    {
+      paramViewGroup.a.setImageDrawable(localxou.a);
+      if (paramInt != this.jdField_a_of_type_Int) {
+        break;
+      }
+      paramViewGroup.b.setVisibility(0);
+      return localView;
+      paramViewGroup = (xoq)paramView.getTag();
+      localView = paramView;
+    }
+    paramViewGroup.b.setVisibility(8);
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xop
  * JD-Core Version:    0.7.0.1
  */

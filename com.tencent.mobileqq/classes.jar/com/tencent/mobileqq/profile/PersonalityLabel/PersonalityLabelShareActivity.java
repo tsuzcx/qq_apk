@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import agor;
+import aepi;
+import alud;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -9,6 +10,7 @@ import android.graphics.Canvas;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextPaint;
 import android.text.TextUtils;
@@ -20,30 +22,32 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.google.zxing.common.BitMatrix;
-import com.tencent.biz.qrcode.util.QRUtils;
+import awqc;
+import awqe;
+import awqh;
+import awqk;
+import awqo;
+import bdgc;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
-import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView.OnUpdateDrawingListener;
-import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagUtil;
-import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.widget.BounceScrollView;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.SystemBarCompact;
+import gs;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import ybk;
 
 public class PersonalityLabelShareActivity
   extends IphoneTitleBarActivity
-  implements View.OnClickListener, ShareHelper.OnUseResListener, TagCloudView.OnUpdateDrawingListener
+  implements View.OnClickListener, awqh, awqk
 {
   float jdField_a_of_type_Float;
   int jdField_a_of_type_Int = 0;
@@ -54,31 +58,46 @@ public class PersonalityLabelShareActivity
   Button jdField_a_of_type_AndroidWidgetButton;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
+  awqe jdField_a_of_type_Awqe;
   PersonalityLabel jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabel;
-  ShareHelper jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper;
   TagCloudView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView;
-  public boolean a;
+  boolean jdField_a_of_type_Boolean = true;
   Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
   View jdField_b_of_type_AndroidViewView;
   Button jdField_b_of_type_AndroidWidgetButton;
-  public boolean b;
-  public Bitmap c;
-  View c;
+  boolean jdField_b_of_type_Boolean = false;
+  Bitmap jdField_c_of_type_AndroidGraphicsBitmap;
+  View jdField_c_of_type_AndroidViewView;
   View d;
   
-  public PersonalityLabelShareActivity()
+  private void c()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = false;
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      if (checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)
+      {
+        requestPermissions(new awqc(this), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
+        return;
+      }
+      d();
+      return;
+    }
+    d();
   }
   
   private void d()
   {
+    this.jdField_a_of_type_Boolean = false;
+    ThreadManager.postImmediately(new PersonalityLabelShareActivity.2(this), null, true);
+  }
+  
+  private void e()
+  {
     ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabel.getSize());
     Object localObject3 = null;
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2131493236);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2131165402);
     }
     Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabel.getLatestThumbLocalUrl();
     if (!TextUtils.isEmpty((CharSequence)localObject1)) {
@@ -89,7 +108,7 @@ public class PersonalityLabelShareActivity
       try
       {
         localObject1 = URLDrawable.getDrawable(new URL("file:///" + ((File)localObject1).getAbsolutePath()), this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-        TagUtil.a(localArrayList, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabel, this.jdField_a_of_type_Float);
+        awqo.a(localArrayList, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabel, this.jdField_a_of_type_Float);
         this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView.setTags(localArrayList);
         this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView.setTagIcon((Drawable)localObject1);
         return;
@@ -161,8 +180,8 @@ public class PersonalityLabelShareActivity
     int k;
     try
     {
-      localObject2 = QRUtils.a(String.format(ShareHelper.a, new Object[] { this.app.getCurrentAccountUin() }), 29);
-      m = ((BitMatrix)localObject2).a();
+      localObject2 = ybk.a(String.format(awqe.a, new Object[] { this.app.getCurrentAccountUin() }), 29);
+      m = ((gs)localObject2).a();
       localObject1 = new int[m * m];
       i = 0;
     }
@@ -213,11 +232,11 @@ public class PersonalityLabelShareActivity
       }
     }
     if (j < m) {
-      if (((BitMatrix)localObject2).a(j, i)) {
+      if (((gs)localObject2).a(j, i)) {
         k = -16777216;
       }
     }
-    label305:
+    label306:
     for (;;)
     {
       localObject2 = Bitmap.createBitmap(m, m, Bitmap.Config.ARGB_8888);
@@ -226,7 +245,7 @@ public class PersonalityLabelShareActivity
       for (;;)
       {
         if (i >= m) {
-          break label305;
+          break label306;
         }
         j = 0;
         break;
@@ -254,52 +273,54 @@ public class PersonalityLabelShareActivity
   void a()
   {
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-    Object localObject = (BounceScrollView)findViewById(2131370705);
+    Object localObject = (BounceScrollView)findViewById(2131363439);
     ((BounceScrollView)localObject).setVerticalScrollBarEnabled(false);
     ((BounceScrollView)localObject).mScrollFlag = 1;
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView = ((TagCloudView)findViewById(2131370962));
+    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView = ((TagCloudView)findViewById(2131377452));
     this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView.setOnUpdateDrawingListener(this);
     this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView.setMinHeight((int)(this.jdField_a_of_type_Float * 150.0F));
     this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView.setThreshold((int)(this.jdField_a_of_type_Float * 7.5F));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370961);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131370963);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131370964);
-    this.d = findViewById(2131362823);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131371561);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131368316);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131377718);
+    this.d = findViewById(2131369855);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370965));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363632));
-    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131559451);
-    localObject = ContactUtils.a(this.app, this.app.getCurrentAccountUin());
-    int i = getResources().getDisplayMetrics().widthPixels - AIOUtils.a(20.0F, getResources()) * 5 - AIOUtils.a(1.0F, getResources()) - this.jdField_a_of_type_Int - AIOUtils.a(10.0F, getResources());
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373906));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377606));
+    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131298173);
+    localObject = bdgc.a(this.app, this.app.getCurrentAccountUin());
+    String str1 = alud.a(2131708343);
+    String str2 = alud.a(2131708365);
+    int i = getResources().getDisplayMetrics().widthPixels - aepi.a(20.0F, getResources()) * 5 - aepi.a(1.0F, getResources()) - this.jdField_a_of_type_Int - aepi.a(10.0F, getResources());
     TextPaint localTextPaint = new TextPaint();
     localTextPaint.setTextSize(this.jdField_a_of_type_AndroidWidgetTextView.getTextSize());
-    String str1 = "来自" + (String)localObject + "的个性标签";
-    String str2 = (String)TextUtils.ellipsize(str1, localTextPaint, i, TextUtils.TruncateAt.END);
-    if (TextUtils.equals(str1, str2)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(str2);
+    String str3 = str1 + (String)localObject + str2;
+    String str4 = (String)TextUtils.ellipsize(str3, localTextPaint, i, TextUtils.TruncateAt.END);
+    if (TextUtils.equals(str3, str4)) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(str4);
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370966));
-      this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131370967));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363697));
+      this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363717));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.jdField_a_of_type_AndroidGraphicsBitmap = a();
       if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
       {
-        QQToast.a(this, 1, "生成二维码失败，请重试", 0).a();
+        QQToast.a(this, 1, alud.a(2131708342), 0).a();
         finish();
       }
       this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      d();
+      e();
       return;
       do
       {
         localObject = (String)((String)localObject).subSequence(0, ((String)localObject).length() - 1);
-        str1 = "来自" + (String)localObject + "..." + "的个性标签";
-        str2 = (String)TextUtils.ellipsize(str1, localTextPaint, i, TextUtils.TruncateAt.END);
-      } while (!TextUtils.equals(str1, str2));
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(str2);
+        str3 = str1 + (String)localObject + "..." + str2;
+        str4 = (String)TextUtils.ellipsize(str3, localTextPaint, i, TextUtils.TruncateAt.END);
+      } while (!TextUtils.equals(str3, str4));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(str4);
     }
   }
   
@@ -328,188 +349,188 @@ public class PersonalityLabelShareActivity
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 310	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_a_of_type_AndroidViewView	Landroid/view/View;
-    //   4: invokevirtual 431	android/view/View:getWidth	()I
+    //   1: getfield 342	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_a_of_type_AndroidViewView	Landroid/view/View;
+    //   4: invokevirtual 465	android/view/View:getWidth	()I
     //   7: istore_2
     //   8: aload_0
-    //   9: getfield 310	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_a_of_type_AndroidViewView	Landroid/view/View;
-    //   12: invokevirtual 434	android/view/View:getHeight	()I
+    //   9: getfield 342	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_a_of_type_AndroidViewView	Landroid/view/View;
+    //   12: invokevirtual 468	android/view/View:getHeight	()I
     //   15: istore_3
     //   16: iload_2
     //   17: iload_3
-    //   18: getstatic 212	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   21: invokestatic 218	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   18: getstatic 244	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   21: invokestatic 250	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
     //   24: astore 4
-    //   26: new 224	android/graphics/Canvas
+    //   26: new 256	android/graphics/Canvas
     //   29: dup
     //   30: aload 4
-    //   32: invokespecial 227	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
+    //   32: invokespecial 259	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
     //   35: astore 5
     //   37: aload 5
     //   39: iconst_m1
-    //   40: invokevirtual 437	android/graphics/Canvas:drawColor	(I)V
+    //   40: invokevirtual 471	android/graphics/Canvas:drawColor	(I)V
     //   43: aload_0
     //   44: aload_0
-    //   45: getfield 120	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView	Lcom/tencent/mobileqq/profile/PersonalityLabel/tagCloud/TagCloudView;
-    //   48: invokevirtual 439	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:a	(Landroid/view/View;)Landroid/graphics/Point;
+    //   45: getfield 154	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView	Lcom/tencent/mobileqq/profile/PersonalityLabel/tagCloud/TagCloudView;
+    //   48: invokevirtual 473	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:a	(Landroid/view/View;)Landroid/graphics/Point;
     //   51: astore 6
     //   53: aload 5
-    //   55: invokevirtual 442	android/graphics/Canvas:save	()I
+    //   55: invokevirtual 476	android/graphics/Canvas:save	()I
     //   58: pop
     //   59: aload 5
     //   61: aload 6
-    //   63: getfield 445	android/graphics/Point:x	I
+    //   63: getfield 479	android/graphics/Point:x	I
     //   66: i2f
     //   67: aload 6
-    //   69: getfield 448	android/graphics/Point:y	I
+    //   69: getfield 482	android/graphics/Point:y	I
     //   72: i2f
-    //   73: invokevirtual 452	android/graphics/Canvas:translate	(FF)V
+    //   73: invokevirtual 486	android/graphics/Canvas:translate	(FF)V
     //   76: aload_0
-    //   77: getfield 426	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_b_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   77: getfield 460	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_b_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   80: ifnull +18 -> 98
     //   83: aload 5
     //   85: aload_0
-    //   86: getfield 426	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_b_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   86: getfield 460	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_b_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   89: fconst_0
     //   90: fconst_0
     //   91: aload_0
     //   92: getfield 42	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_a_of_type_AndroidTextTextPaint	Landroid/text/TextPaint;
-    //   95: invokevirtual 455	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
+    //   95: invokevirtual 489	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
     //   98: aload 5
-    //   100: invokevirtual 458	android/graphics/Canvas:restore	()V
+    //   100: invokevirtual 492	android/graphics/Canvas:restore	()V
     //   103: aload_0
     //   104: aload_0
-    //   105: getfield 316	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_c_of_type_AndroidViewView	Landroid/view/View;
-    //   108: invokevirtual 439	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:a	(Landroid/view/View;)Landroid/graphics/Point;
+    //   105: getfield 348	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_c_of_type_AndroidViewView	Landroid/view/View;
+    //   108: invokevirtual 473	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:a	(Landroid/view/View;)Landroid/graphics/Point;
     //   111: astore 7
     //   113: aload_0
     //   114: aload_0
-    //   115: getfield 313	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_b_of_type_AndroidViewView	Landroid/view/View;
-    //   118: invokevirtual 439	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:a	(Landroid/view/View;)Landroid/graphics/Point;
+    //   115: getfield 345	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_b_of_type_AndroidViewView	Landroid/view/View;
+    //   118: invokevirtual 473	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:a	(Landroid/view/View;)Landroid/graphics/Point;
     //   121: astore 6
     //   123: aload_0
     //   124: aload_0
-    //   125: getfield 319	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:d	Landroid/view/View;
-    //   128: invokevirtual 439	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:a	(Landroid/view/View;)Landroid/graphics/Point;
+    //   125: getfield 351	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:d	Landroid/view/View;
+    //   128: invokevirtual 473	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:a	(Landroid/view/View;)Landroid/graphics/Point;
     //   131: astore 8
     //   133: aload 5
-    //   135: invokevirtual 442	android/graphics/Canvas:save	()I
+    //   135: invokevirtual 476	android/graphics/Canvas:save	()I
     //   138: pop
-    //   139: ldc_w 459
+    //   139: ldc_w 493
     //   142: aload_0
-    //   143: invokevirtual 66	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:getResources	()Landroid/content/res/Resources;
-    //   146: invokestatic 352	com/tencent/mobileqq/activity/aio/AIOUtils:a	(FLandroid/content/res/Resources;)I
+    //   143: invokevirtual 100	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:getResources	()Landroid/content/res/Resources;
+    //   146: invokestatic 391	aepi:a	(FLandroid/content/res/Resources;)I
     //   149: istore_2
-    //   150: ldc_w 460
+    //   150: ldc_w 494
     //   153: aload_0
-    //   154: invokevirtual 66	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:getResources	()Landroid/content/res/Resources;
-    //   157: invokestatic 352	com/tencent/mobileqq/activity/aio/AIOUtils:a	(FLandroid/content/res/Resources;)I
+    //   154: invokevirtual 100	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:getResources	()Landroid/content/res/Resources;
+    //   157: invokestatic 391	aepi:a	(FLandroid/content/res/Resources;)I
     //   160: istore_3
     //   161: aload 5
     //   163: aload 8
-    //   165: getfield 445	android/graphics/Point:x	I
+    //   165: getfield 479	android/graphics/Point:x	I
     //   168: aload 7
-    //   170: getfield 445	android/graphics/Point:x	I
+    //   170: getfield 479	android/graphics/Point:x	I
     //   173: iadd
     //   174: aload 6
-    //   176: getfield 445	android/graphics/Point:x	I
+    //   176: getfield 479	android/graphics/Point:x	I
     //   179: iadd
     //   180: i2f
     //   181: aload 8
-    //   183: getfield 448	android/graphics/Point:y	I
+    //   183: getfield 482	android/graphics/Point:y	I
     //   186: aload 7
-    //   188: getfield 448	android/graphics/Point:y	I
+    //   188: getfield 482	android/graphics/Point:y	I
     //   191: iadd
     //   192: aload 6
-    //   194: getfield 448	android/graphics/Point:y	I
+    //   194: getfield 482	android/graphics/Point:y	I
     //   197: iadd
     //   198: i2f
-    //   199: invokevirtual 452	android/graphics/Canvas:translate	(FF)V
+    //   199: invokevirtual 486	android/graphics/Canvas:translate	(FF)V
     //   202: aload_0
-    //   203: getfield 462	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_b_of_type_AndroidGraphicsDrawableDrawable	Landroid/graphics/drawable/Drawable;
+    //   203: getfield 496	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_b_of_type_AndroidGraphicsDrawableDrawable	Landroid/graphics/drawable/Drawable;
     //   206: iconst_0
     //   207: iconst_0
     //   208: iload_2
     //   209: iload_3
-    //   210: invokevirtual 467	android/graphics/drawable/Drawable:setBounds	(IIII)V
+    //   210: invokevirtual 501	android/graphics/drawable/Drawable:setBounds	(IIII)V
     //   213: aload_0
-    //   214: getfield 462	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_b_of_type_AndroidGraphicsDrawableDrawable	Landroid/graphics/drawable/Drawable;
+    //   214: getfield 496	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_b_of_type_AndroidGraphicsDrawableDrawable	Landroid/graphics/drawable/Drawable;
     //   217: aload 5
-    //   219: invokevirtual 471	android/graphics/drawable/Drawable:draw	(Landroid/graphics/Canvas;)V
+    //   219: invokevirtual 505	android/graphics/drawable/Drawable:draw	(Landroid/graphics/Canvas;)V
     //   222: aload 5
-    //   224: invokevirtual 458	android/graphics/Canvas:restore	()V
+    //   224: invokevirtual 492	android/graphics/Canvas:restore	()V
     //   227: aload_0
     //   228: aload_0
-    //   229: getfield 333	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   232: invokevirtual 439	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:a	(Landroid/view/View;)Landroid/graphics/Point;
+    //   229: getfield 365	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   232: invokevirtual 473	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:a	(Landroid/view/View;)Landroid/graphics/Point;
     //   235: astore 8
     //   237: aload 5
-    //   239: invokevirtual 442	android/graphics/Canvas:save	()I
+    //   239: invokevirtual 476	android/graphics/Canvas:save	()I
     //   242: pop
     //   243: aload_0
-    //   244: getfield 333	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   247: invokevirtual 475	android/widget/TextView:getLayout	()Landroid/text/Layout;
+    //   244: getfield 365	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   247: invokevirtual 509	android/widget/TextView:getLayout	()Landroid/text/Layout;
     //   250: astore 9
     //   252: aload 8
-    //   254: getfield 445	android/graphics/Point:x	I
+    //   254: getfield 479	android/graphics/Point:x	I
     //   257: aload 7
-    //   259: getfield 445	android/graphics/Point:x	I
+    //   259: getfield 479	android/graphics/Point:x	I
     //   262: iadd
     //   263: aload 6
-    //   265: getfield 445	android/graphics/Point:x	I
+    //   265: getfield 479	android/graphics/Point:x	I
     //   268: iadd
     //   269: i2f
     //   270: fstore_1
     //   271: aload 8
-    //   273: getfield 448	android/graphics/Point:y	I
+    //   273: getfield 482	android/graphics/Point:y	I
     //   276: istore_2
     //   277: aload 5
     //   279: fload_1
     //   280: aload 7
-    //   282: getfield 448	android/graphics/Point:y	I
+    //   282: getfield 482	android/graphics/Point:y	I
     //   285: iload_2
     //   286: iadd
     //   287: aload 6
-    //   289: getfield 448	android/graphics/Point:y	I
+    //   289: getfield 482	android/graphics/Point:y	I
     //   292: iadd
     //   293: i2f
-    //   294: invokevirtual 452	android/graphics/Canvas:translate	(FF)V
+    //   294: invokevirtual 486	android/graphics/Canvas:translate	(FF)V
     //   297: aload 9
     //   299: aload 5
-    //   301: invokevirtual 478	android/text/Layout:draw	(Landroid/graphics/Canvas;)V
+    //   301: invokevirtual 512	android/text/Layout:draw	(Landroid/graphics/Canvas;)V
     //   304: aload 5
-    //   306: invokevirtual 458	android/graphics/Canvas:restore	()V
+    //   306: invokevirtual 492	android/graphics/Canvas:restore	()V
     //   309: aload 5
-    //   311: invokevirtual 442	android/graphics/Canvas:save	()I
+    //   311: invokevirtual 476	android/graphics/Canvas:save	()I
     //   314: pop
     //   315: aload_0
     //   316: aload_0
-    //   317: getfield 328	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
-    //   320: invokevirtual 439	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:a	(Landroid/view/View;)Landroid/graphics/Point;
+    //   317: getfield 360	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   320: invokevirtual 473	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:a	(Landroid/view/View;)Landroid/graphics/Point;
     //   323: astore 7
     //   325: aload 6
-    //   327: getfield 445	android/graphics/Point:x	I
+    //   327: getfield 479	android/graphics/Point:x	I
     //   330: aload 7
-    //   332: getfield 445	android/graphics/Point:x	I
+    //   332: getfield 479	android/graphics/Point:x	I
     //   335: iadd
     //   336: i2f
     //   337: fstore_1
     //   338: aload 6
-    //   340: getfield 448	android/graphics/Point:y	I
+    //   340: getfield 482	android/graphics/Point:y	I
     //   343: istore_2
     //   344: aload 5
     //   346: fload_1
     //   347: aload 7
-    //   349: getfield 448	android/graphics/Point:y	I
+    //   349: getfield 482	android/graphics/Point:y	I
     //   352: iload_2
     //   353: iadd
     //   354: i2f
-    //   355: invokevirtual 452	android/graphics/Canvas:translate	(FF)V
+    //   355: invokevirtual 486	android/graphics/Canvas:translate	(FF)V
     //   358: aload 5
     //   360: aload_0
-    //   361: getfield 397	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   361: getfield 432	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   364: aconst_null
-    //   365: new 229	android/graphics/Rect
+    //   365: new 261	android/graphics/Rect
     //   368: dup
     //   369: iconst_0
     //   370: iconst_0
@@ -517,11 +538,11 @@ public class PersonalityLabelShareActivity
     //   372: getfield 33	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_a_of_type_Int	I
     //   375: aload_0
     //   376: getfield 33	com/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelShareActivity:jdField_a_of_type_Int	I
-    //   379: invokespecial 232	android/graphics/Rect:<init>	(IIII)V
+    //   379: invokespecial 264	android/graphics/Rect:<init>	(IIII)V
     //   382: aconst_null
-    //   383: invokevirtual 236	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
+    //   383: invokevirtual 268	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
     //   386: aload 5
-    //   388: invokevirtual 458	android/graphics/Canvas:restore	()V
+    //   388: invokevirtual 492	android/graphics/Canvas:restore	()V
     //   391: aload 4
     //   393: areturn
     //   394: astore 6
@@ -529,13 +550,13 @@ public class PersonalityLabelShareActivity
     //   397: astore 5
     //   399: aload 5
     //   401: astore 4
-    //   403: invokestatic 136	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   403: invokestatic 170	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   406: ifeq -15 -> 391
-    //   409: ldc 138
+    //   409: ldc 172
     //   411: iconst_2
     //   412: aload 6
-    //   414: invokevirtual 242	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   417: invokestatic 173	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   414: invokevirtual 274	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   417: invokestatic 205	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   420: aload 5
     //   422: areturn
     //   423: astore 6
@@ -543,13 +564,13 @@ public class PersonalityLabelShareActivity
     //   426: astore 5
     //   428: aload 5
     //   430: astore 4
-    //   432: invokestatic 136	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   432: invokestatic 170	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   435: ifeq -44 -> 391
-    //   438: ldc 138
+    //   438: ldc 172
     //   440: iconst_2
     //   441: aload 6
-    //   443: invokevirtual 146	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   446: invokestatic 173	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   443: invokevirtual 180	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   446: invokestatic 205	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   449: aload 5
     //   451: areturn
     //   452: astore 6
@@ -588,11 +609,8 @@ public class PersonalityLabelShareActivity
   
   void b()
   {
-    setLeftViewName(2131432414);
-    getTitleBarView().setBackgroundResource(2130838214);
+    setLeftViewName(2131690382);
     this.rightViewText.setVisibility(8);
-    this.leftView.setTextColor(getResources().getColorStateList(2130842956));
-    this.leftView.setBackgroundDrawable(getResources().getDrawable(2130844179));
     if (this.mSystemBarComp != null)
     {
       this.mSystemBarComp.setStatusDrawable(null);
@@ -602,20 +620,14 @@ public class PersonalityLabelShareActivity
     }
   }
   
-  void c()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    ThreadManager.postImmediately(new agor(this), null, true);
-  }
-  
-  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if (paramInt2 == -1)
     {
       if (paramInt1 != 1) {
         break label25;
       }
-      QRUtils.a(2, 2131430007);
+      ybk.a(2, 2131717592);
     }
     for (;;)
     {
@@ -624,7 +636,7 @@ public class PersonalityLabelShareActivity
       label25:
       if (paramInt1 == 21)
       {
-        Intent localIntent = AIOUtils.a(new Intent(this, SplashActivity.class), null);
+        Intent localIntent = aepi.a(new Intent(this, SplashActivity.class), null);
         localIntent.putExtras(new Bundle(paramIntent.getExtras()));
         startActivity(localIntent);
         finish();
@@ -632,17 +644,17 @@ public class PersonalityLabelShareActivity
     }
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130970514);
+    setContentView(2131561143);
     this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabel = ((PersonalityLabel)getIntent().getParcelableExtra("data"));
     a();
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842966);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845276);
     return true;
   }
   
-  protected void doOnResume()
+  public void doOnResume()
   {
     super.doOnResume();
     b();
@@ -650,9 +662,9 @@ public class PersonalityLabelShareActivity
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131370967) {
+    if (paramView.getId() == 2131363717) {
       if (!this.jdField_a_of_type_Boolean) {
-        QQToast.a(this, 2131439091, 0).a();
+        QQToast.a(this, 2131699649, 0).a();
       }
     }
     do
@@ -665,16 +677,16 @@ public class PersonalityLabelShareActivity
         }
         if (this.jdField_c_of_type_AndroidGraphicsBitmap == null)
         {
-          QQToast.a(this, 1, 2131439090, 0).a();
+          QQToast.a(this, 1, 2131699650, 0).a();
           return;
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper == null) {
-          this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper = new ShareHelper(this, this.app, this, this);
+        if (this.jdField_a_of_type_Awqe == null) {
+          this.jdField_a_of_type_Awqe = new awqe(this, this.app, this, this);
         }
-        this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper.a(this.jdField_c_of_type_AndroidGraphicsBitmap);
-        this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper.a(null);
+        this.jdField_a_of_type_Awqe.a(this.jdField_c_of_type_AndroidGraphicsBitmap);
+        this.jdField_a_of_type_Awqe.a(null);
         return;
-        if (paramView.getId() != 2131370966) {
+        if (paramView.getId() != 2131363697) {
           break;
         }
       } while (!this.jdField_a_of_type_Boolean);
@@ -683,7 +695,7 @@ public class PersonalityLabelShareActivity
       }
       if (this.jdField_c_of_type_AndroidGraphicsBitmap == null)
       {
-        QQToast.a(this, 1, 2131439090, 0).a();
+        QQToast.a(this, 1, 2131699650, 0).a();
         return;
       }
       if (!this.jdField_b_of_type_Boolean)
@@ -691,21 +703,21 @@ public class PersonalityLabelShareActivity
         c();
         return;
       }
-      QQToast.a(this, 0, "已保存", 0).a();
+      QQToast.a(this, 0, alud.a(2131708349), 0).a();
       return;
-    } while (paramView.getId() != 2131370961);
+    } while (paramView.getId() != 2131371561);
     this.jdField_b_of_type_Boolean = false;
     if (this.jdField_c_of_type_AndroidGraphicsBitmap != null)
     {
       this.jdField_c_of_type_AndroidGraphicsBitmap.recycle();
       this.jdField_c_of_type_AndroidGraphicsBitmap = null;
     }
-    d();
+    e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelShareActivity
  * JD-Core Version:    0.7.0.1
  */

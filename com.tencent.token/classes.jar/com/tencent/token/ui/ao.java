@@ -1,56 +1,62 @@
 package com.tencent.token.ui;
 
+import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Message;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.token.core.bean.RealNameStatusResult;
+import com.tencent.token.global.f;
 
-final class ao
-  extends bo
+class ao
+  extends cb
 {
-  ao(AssistantRecommendFriendQrcode paramAssistantRecommendFriendQrcode)
+  ao(AddFaceRealNameApplyResultActivity paramAddFaceRealNameApplyResultActivity)
   {
-    super(paramAssistantRecommendFriendQrcode);
+    super(paramAddFaceRealNameApplyResultActivity);
   }
   
-  public final void handleMessage(Message paramMessage)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.isFinishing()) {}
-    for (;;)
+    switch (paramMessage.what)
     {
+    case 3065: 
+    case 3066: 
+    default: 
       return;
+    case 3064: 
       this.a.dismissDialog();
-      switch (paramMessage.what)
+      if (paramMessage.arg1 == 0)
       {
-      default: 
+        paramMessage = (RealNameStatusResult)paramMessage.obj;
+        Intent localIntent = new Intent(this.a, RealNameActivity.class);
+        localIntent.putExtra("realname_result", paramMessage);
+        localIntent.putExtra("from_add_face_succ", true);
+        this.a.startActivity(localIntent);
         return;
       }
-      if (paramMessage.arg1 == 0) {
-        try
-        {
-          Object localObject = new JSONObject((String)paramMessage.obj);
-          paramMessage = ((JSONObject)localObject).getString("wexin_share_more");
-          localObject = ((JSONObject)localObject).getString("wexin_share_glock");
-          if ((paramMessage != null) && (localObject != null) && (paramMessage.length() > 0) && (((String)localObject).length() > 0)) {
-            if (AssistantRecommendFriendQrcode.access$000(this.a) == 9)
-            {
-              AssistantRecommendFriendQrcode.access$102(this.a, (String)localObject);
-              return;
-            }
-          }
-        }
-        catch (JSONException paramMessage)
-        {
-          paramMessage.printStackTrace();
-          return;
-          AssistantRecommendFriendQrcode.access$102(this.a, paramMessage);
-          return;
-        }
-        catch (Exception paramMessage)
-        {
-          paramMessage.printStackTrace();
-        }
-      }
+      paramMessage = (f)paramMessage.obj;
+      this.a.showUserDialog(paramMessage.c);
+      return;
     }
+    this.a.dismissDialog();
+    if (paramMessage.arg1 == 0)
+    {
+      this.a.setTitle(this.a.getResources().getString(2131231524));
+      AddFaceRealNameApplyResultActivity.access$000(this.a).setBackgroundResource(2130837900);
+      AddFaceRealNameApplyResultActivity.access$100(this.a).setText(this.a.getResources().getString(2131231330));
+      AddFaceRealNameApplyResultActivity.access$200(this.a).setText(this.a.getResources().getString(2131230841));
+      AddFaceRealNameApplyResultActivity.access$300(this.a).setVisibility(0);
+      AddFaceRealNameApplyResultActivity.access$300(this.a).setText(this.a.getResources().getString(2131231140));
+      AddFaceRealNameApplyResultActivity.access$300(this.a).setBackgroundResource(2130837846);
+      AddFaceRealNameApplyResultActivity.access$300(this.a).setOnClickListener(new ap(this));
+      AddFaceRealNameApplyResultActivity.access$500(this.a).setText(this.a.getResources().getString(2131230897));
+      AddFaceRealNameApplyResultActivity.access$500(this.a).setOnClickListener(AddFaceRealNameApplyResultActivity.access$600(this.a));
+      return;
+    }
+    paramMessage = (f)paramMessage.obj;
+    this.a.showUserDialog(paramMessage.c);
   }
 }
 

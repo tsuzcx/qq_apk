@@ -1,76 +1,33 @@
-import android.os.Bundle;
+import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class wee
-  implements INetEngine.INetEngineListener
+class wee
+  implements wec
 {
-  private Handler a;
+  wee(wed paramwed, List paramList, Bitmap[] paramArrayOfBitmap, Handler paramHandler) {}
   
-  public wee(Handler paramHandler)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    this.a = paramHandler;
+    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString);
+    wdk.b(wed.a(this.jdField_a_of_type_Wed), "bitmap download success index=%d, url=%s", Integer.valueOf(i), paramString);
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i] = paramBitmap;
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 0, this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap), 200L);
   }
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
-  
-  public void a(NetResp paramNetResp)
+  public void a(String paramString, Throwable paramThrowable)
   {
-    Object localObject = this.a.obtainMessage(8);
-    ((Message)localObject).obj = paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq;
-    this.a.sendMessage((Message)localObject);
-    Bundle localBundle = (Bundle)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a();
-    localObject = localBundle.getString("ReqUniqueKey");
-    int i = localBundle.getInt("IdxInRes");
-    if (QLog.isColorLevel())
-    {
-      long l = localBundle.getLong("StartTs");
-      QLog.d("ZhituManager", 2, ZhituManager.a((String)localObject, "onResp", i, " zhitu img download onResp result fileSize = " + paramNetResp.jdField_a_of_type_Long + " file.path = " + paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c + " resp.result = " + paramNetResp.jdField_a_of_type_Int + " take time: " + Long.toString(System.currentTimeMillis() - l)));
-    }
-    if (paramNetResp.jdField_a_of_type_Int == 3)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ZhituManager", 2, ZhituManager.a((String)localObject, "OnResp", i, "result downloading, "));
-      }
-      return;
-    }
-    if (paramNetResp.jdField_a_of_type_Int == 0)
-    {
-      ZhituImgResponse localZhituImgResponse = (ZhituImgResponse)localBundle.getParcelable("ImgResponse");
-      ZhituManager.a(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c);
-      if (localZhituImgResponse != null)
-      {
-        paramNetResp = this.a.obtainMessage(3);
-        paramNetResp.obj = localBundle;
-        this.a.sendMessage(paramNetResp);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ZhituManager", 2, ZhituManager.a((String)localObject, "onResp", "download succ but md5 is mismatched"));
-      }
-      paramNetResp = this.a.obtainMessage(4);
-      localBundle.putInt("ErrorCode", 99999);
-      paramNetResp.obj = localBundle;
-    }
-    for (;;)
-    {
-      break;
-      localObject = this.a.obtainMessage(4);
-      localBundle.putInt("ErrorCode", paramNetResp.b);
-      ((Message)localObject).obj = localBundle;
-      paramNetResp = (NetResp)localObject;
-    }
+    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString);
+    wdk.c(wed.a(this.jdField_a_of_type_Wed), "bitmap download failed index=%s, error=%s", Integer.valueOf(i), paramThrowable);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 1, paramThrowable), 500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wee
  * JD-Core Version:    0.7.0.1
  */

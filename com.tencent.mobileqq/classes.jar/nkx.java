@@ -1,25 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.DeleteStoryVideoEvent;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
+import android.os.AsyncTask;
 
 class nkx
-  extends Job
+  extends AsyncTask<Void, Void, Void>
 {
-  nkx(nkw paramnkw, DeleteStoryVideoEvent paramDeleteStoryVideoEvent) {}
+  nkx(nkw paramnkw, adbx paramadbx) {}
   
-  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  protected Void a(Void... paramVarArgs)
   {
-    Dispatchers.get().dispatch(this.jdField_a_of_type_ComTencentBizQqstoryModelDeleteStoryVideoEvent);
+    this.jdField_a_of_type_Nkw.a.a(this.jdField_a_of_type_Adbx);
     return null;
+  }
+  
+  protected void a(Void paramVoid)
+  {
+    this.jdField_a_of_type_Nkw.a.a(-1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nkx
  * JD-Core Version:    0.7.0.1
  */

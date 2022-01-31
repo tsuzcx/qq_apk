@@ -21,15 +21,15 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.Vibrator;
 import android.text.TextUtils;
-import bpe;
-import bpf;
-import bpg;
-import bph;
-import bpi;
-import bpj;
-import bpk;
-import bpl;
-import bpm;
+import bja;
+import bjb;
+import bjc;
+import bjd;
+import bje;
+import bjf;
+import bjg;
+import bjh;
+import bji;
 import com.tencent.biz.common.offline.HtmlOffline;
 import com.tencent.biz.common.util.Util;
 import com.tencent.common.app.AppInterface;
@@ -87,7 +87,7 @@ public class SensorAPIJavaScript
     this.jdField_c_of_type_JavaLangString = "";
     this.jdField_a_of_type_JavaLangObject = new Object();
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new bpg(this);
+    this.jdField_a_of_type_AndroidOsHandler = new bjc(this);
   }
   
   private void a(String paramString)
@@ -95,7 +95,7 @@ public class SensorAPIJavaScript
     if (QLog.isDevelopLevel()) {
       QLog.d("SensorApi", 4, "start checkWifiStatus");
     }
-    new bpf(this, this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getApplicationContext(), paramString).start();
+    new bjb(this, this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getApplicationContext(), paramString).start();
   }
   
   public static MSFToWebViewConnector getMsfToWebViewConnector()
@@ -110,7 +110,7 @@ public class SensorAPIJavaScript
   
   public void checkUpdate(String paramString1, String paramString2)
   {
-    HtmlOffline.b(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, paramString1, this.jdField_c_of_type_JavaLangString, new bpl(this, paramString2));
+    HtmlOffline.b(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, paramString1, this.jdField_c_of_type_JavaLangString, new bjh(this, paramString2));
   }
   
   /* Error */
@@ -227,7 +227,7 @@ public class SensorAPIJavaScript
     //   208: aload_0
     //   209: iconst_1
     //   210: putfield 54	com/tencent/biz/game/SensorAPIJavaScript:jdField_b_of_type_Boolean	Z
-    //   213: new 175	bpo
+    //   213: new 175	bjk
     //   216: dup
     //   217: aload_0
     //   218: aload 5
@@ -236,7 +236,7 @@ public class SensorAPIJavaScript
     //   223: iload_2
     //   224: aload_3
     //   225: aload 6
-    //   227: invokespecial 178	bpo:<init>	(Lcom/tencent/biz/game/SensorAPIJavaScript;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLandroid/net/wifi/WifiManager;Ljava/lang/String;)V
+    //   227: invokespecial 178	bjk:<init>	(Lcom/tencent/biz/game/SensorAPIJavaScript;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLandroid/net/wifi/WifiManager;Ljava/lang/String;)V
     //   230: invokevirtual 99	java/lang/Thread:start	()V
     //   233: return
     // Local variable table:
@@ -287,12 +287,12 @@ public class SensorAPIJavaScript
       }
       paramString3 = Uri.parse(paramString2);
     } while ((paramString3 == null) || (!paramString3.isHierarchical()) || (!"pub.idqqimg.com".equals(paramString3.getHost())));
-    HtmlOffline.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, paramString1, paramString2, i, new bpk(this, paramString4));
+    HtmlOffline.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, paramString1, paramString2, i, new bjg(this, paramString4));
   }
   
   public final String getClientInfo()
   {
-    return "{\"qqVersion\":\"" + qqVersion() + "\",\"qqBuild\":\"" + "6500" + "\"}";
+    return "{\"qqVersion\":\"" + qqVersion() + "\",\"qqBuild\":\"" + "6602" + "\"}";
   }
   
   public final String getDeviceInfo()
@@ -529,7 +529,7 @@ public class SensorAPIJavaScript
         }
       } while (!preloadVoice(paramString1, paramString2, null));
       if (Build.VERSION.SDK_INT >= 8) {
-        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new bph(this, paramString2));
+        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new bjd(this, paramString2));
       }
       int i;
       do
@@ -539,7 +539,7 @@ public class SensorAPIJavaScript
           return true;
           i = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString2)).intValue();
           if (this.jdField_a_of_type_AndroidOsHandler != null) {
-            this.jdField_a_of_type_AndroidOsHandler.postDelayed(new bpi(this, i, paramString2), 200L);
+            this.jdField_a_of_type_AndroidOsHandler.postDelayed(new bje(this, i, paramString2), 200L);
           }
         }
         i = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString2)).intValue();
@@ -649,7 +649,7 @@ public class SensorAPIJavaScript
       if (QLog.isColorLevel()) {
         QLog.d("Sensor", 2, "meizu mx2 returnToAIO");
       }
-      new Handler().postDelayed(new bpj(this), 400L);
+      new Handler().postDelayed(new bjf(this), 400L);
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.setResult(4660);
@@ -747,7 +747,7 @@ public class SensorAPIJavaScript
     int i = AudioRecord.getMinBufferSize(8000, 16, 2);
     this.jdField_a_of_type_AndroidMediaAudioRecord = new AudioRecord(1, 8000, 2, 2, i);
     this.jdField_a_of_type_Boolean = true;
-    new Thread(new bpe(this, i, paramString)).start();
+    new Thread(new bja(this, i, paramString)).start();
   }
   
   public void startSyncData(String paramString1, String paramString2)
@@ -763,7 +763,7 @@ public class SensorAPIJavaScript
       }
       return;
     }
-    jdField_a_of_type_ComTencentBizGameMSFToWebViewConnector.a(paramString1, paramString2, localAppRuntime, this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, new bpm(this));
+    jdField_a_of_type_ComTencentBizGameMSFToWebViewConnector.a(paramString1, paramString2, localAppRuntime, this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, new bji(this));
   }
   
   public final void stopAccelerometer()

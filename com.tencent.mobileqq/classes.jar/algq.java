@@ -1,26 +1,10 @@
-import com.tencent.open.base.ImageUtil;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.img.ImageCache;
-import com.tencent.open.base.img.ImageDownCallback;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-
-public class algq
-  implements ImageDownCallback
+public abstract interface algq
 {
-  public algq(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
-  
-  public void a(String paramString1, String paramString2, String paramString3) {}
-  
-  public void b(String paramString1, String paramString2, String paramString3)
-  {
-    LogUtility.d(DownloadManager.a, ">>download apk icon err,should load another size icon");
-    ImageCache.a("app", ImageUtil.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b, 75), null);
-  }
+  public abstract void a(long paramLong, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     algq
  * JD-Core Version:    0.7.0.1
  */

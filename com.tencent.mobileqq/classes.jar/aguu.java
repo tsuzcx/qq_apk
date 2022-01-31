@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.jumplightalk.CLJumpLightalkConfig;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-
-public class aguu
-  implements Runnable
+class aguu
+  implements bicq
 {
-  public aguu(QCallDetailActivity paramQCallDetailActivity) {}
+  aguu(agti paramagti) {}
   
-  public void run()
+  public void a()
   {
-    QCallDetailActivity.a(this.a, CLJumpLightalkConfig.a(this.a.app.getCurrentAccountUin()));
+    if ((!this.a.al) && (this.a.am))
+    {
+      this.a.al = true;
+      syp.a("SUBSCRIPT_AIO_COST", null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aguu
  * JD-Core Version:    0.7.0.1
  */

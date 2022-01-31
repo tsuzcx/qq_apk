@@ -1,52 +1,44 @@
-import com.tencent.mobileqq.activity.AgeSelectionActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import java.util.Calendar;
+import android.os.Handler;
+import android.os.Message;
 
-public class rkq
-  implements IphonePickerView.PickerViewAdapter
+class rkq
+  extends Handler
 {
-  private rkq(AgeSelectionActivity paramAgeSelectionActivity) {}
+  rkq(rkp paramrkp) {}
   
-  public int getColumnCount()
+  public void handleMessage(Message paramMessage)
   {
-    return 3;
-  }
-  
-  public int getRowCount(int paramInt)
-  {
-    switch (paramInt)
+    switch (paramMessage.what)
     {
     default: 
-      return 0;
-    case 0: 
-      return AgeSelectionActivity.a(this.a) - 1897 + 1;
-    case 1: 
-      return 12;
+    case 100: 
+    case 101: 
+    case 102: 
+      do
+      {
+        return;
+        rkp.a(this.a);
+        return;
+        this.a.k();
+        return;
+        rkp.b(this.a);
+        sendEmptyMessageDelayed(102, 1000L);
+      } while (rkp.a(this.a) != 1);
+      rkp.c(this.a);
+      return;
+    case 103: 
+      rkp.a(this.a, 3);
+      return;
+    case 104: 
+      rkp.d(this.a);
+      return;
     }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1, AgeSelectionActivity.b(this.a) + 1897);
-    localCalendar.set(2, AgeSelectionActivity.c(this.a));
-    localCalendar.set(5, 1);
-    return localCalendar.getActualMaximum(5);
-  }
-  
-  public String getText(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return "";
-    case 0: 
-      return paramInt2 + 1897 + "年";
-    case 1: 
-      return paramInt2 + 1 + "月";
-    }
-    return paramInt2 + 1 + "日";
+    rkp.e(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rkq
  * JD-Core Version:    0.7.0.1
  */

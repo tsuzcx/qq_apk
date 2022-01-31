@@ -1,24 +1,27 @@
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.ScaleAnimation;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
 
 class mka
-  extends AnimateUtils.AnimationAdapter
+  extends ClickableSpan
 {
-  mka(mjz parammjz) {}
+  mka(mjs parammjs) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    paramAnimation = new ScaleAnimation(1.05F, 0.95F, 1.05F, 0.95F, 1, 0.5F, 1, 0.5F);
-    paramAnimation.setDuration(100L);
-    paramAnimation.setAnimationListener(new mkb(this));
-    this.a.a.a.startAnimation(paramAnimation);
+    this.a.d();
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(paramTextPaint.getColor());
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mka
  * JD-Core Version:    0.7.0.1
  */

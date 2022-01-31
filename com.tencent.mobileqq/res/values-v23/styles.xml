@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="APKTOOL_DUPLICATE_style_0x7f0e0001" parent="@style/name">
-        <item name="APKTOOL_DUPLICATE_attr_0x7f01014a">?android:colorBackgroundFloating</item>
+    <style name="c1" parent="@style/at">
+        <item name="by">?android:colorBackgroundFloating</item>
     </style>
 </resources>

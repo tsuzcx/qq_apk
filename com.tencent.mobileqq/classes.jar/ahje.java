@@ -1,19 +1,10 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.view.GuideVideoView.OnCompleteListener;
-
-public class ahje
-  implements GuideVideoView.OnCompleteListener
+public abstract interface ahje
 {
-  public ahje(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
-  
-  public void a()
-  {
-    EffectsCameraCaptureFragment.c(this.a);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahje
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="#fff0eff4" android:paddingTop="@dimen/l2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dv" android:layout_marginTop="@dimen/m1" android:layout_marginRight="@dimen/dv" android:layout_marginBottom="@dimen/m1">
+        <Button android:id="@id/efd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gam" style="@style/nu" />
+        <Button android:id="@id/efe" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m1" android:text="@string/gav" style="@style/nr" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/eff" android:paddingBottom="@dimen/dl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m1" style="@style/lx">
+        <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/n9">
+            <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/m1" android:text="@string/gaw" android:layout_weight="1.0" />
+            <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/efg" android:layout_width="@dimen/no" android:layout_height="@dimen/nl" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/gb0" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/efh" android:paddingBottom="@dimen/dl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m1" style="@style/lx">
+        <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/n9">
+            <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/m1" android:text="@string/gfz" android:layout_weight="1.0" />
+            <Button android:id="@id/efi" android:background="@color/a3x" android:layout_width="wrap_content" android:layout_height="@dimen/nl" style="@style/nw" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/gb0" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/efj" android:paddingBottom="@dimen/dl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m1" style="@style/lx">
+        <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/n9">
+            <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/m1" android:text="@string/gfx" android:layout_weight="1.0" />
+            <Button android:id="@id/efk" android:background="@color/a3x" android:layout_width="wrap_content" android:layout_height="@dimen/nl" style="@style/nw" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/gb0" />
+    </LinearLayout>
+    <Button android:id="@id/efl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dv" android:layout_marginTop="@dimen/l6" android:layout_marginRight="@dimen/dv" android:layout_marginBottom="@dimen/m1" android:text="@string/gad" style="@style/nt" />
+</LinearLayout>

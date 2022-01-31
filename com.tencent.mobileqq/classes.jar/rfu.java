@@ -1,48 +1,28 @@
-import android.content.Intent;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-
-public class rfu
-  extends ClickableSpan
+public abstract interface rfu
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
+  public abstract void a(rfs paramrfs);
   
-  public rfu(AboutActivity paramAboutActivity, String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public abstract void a(rfs paramrfs, int paramInt);
   
-  public void onClick(View paramView)
-  {
-    switch (this.jdField_a_of_type_Int)
-    {
-    }
-    for (;;)
-    {
-      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity, QQBrowserActivity.class);
-      paramView.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app.getCurrentAccountUin());
-      this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.startActivity(paramView.putExtra("url", this.jdField_a_of_type_JavaLangString));
-      return;
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app, "CliOper", "", "", "0X8005746", "0X8005746", 0, 0, "", "", "", "");
-    }
-  }
+  public abstract void a(rfs paramrfs, int paramInt1, int paramInt2, String paramString);
   
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-16754769);
-    paramTextPaint.setUnderlineText(true);
-  }
+  public abstract void a(rfs paramrfs, boolean paramBoolean);
+  
+  public abstract void b(rfs paramrfs);
+  
+  public abstract void b(rfs paramrfs, boolean paramBoolean);
+  
+  public abstract void c(rfs paramrfs);
+  
+  public abstract void d(rfs paramrfs);
+  
+  public abstract void e(rfs paramrfs);
+  
+  public abstract void f(rfs paramrfs);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rfu
  * JD-Core Version:    0.7.0.1
  */

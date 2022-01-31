@@ -9,12 +9,14 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class hummer_commelem$MsgElemInfo_servtype21
-  extends MessageMicro
+  extends MessageMicro<MsgElemInfo_servtype21>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_confessor_nick = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_topic = PBField.initBytes(ByteStringMicro.EMPTY);
   public hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext c2c_confess_ctx = new hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext();
+  public hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext group_confess_ctx = new hummer_commelem.MsgElemInfo_servtype21.GroupConfessContext();
+  public hummer_commelem.MsgElemInfo_servtype21.GroupConfessMsg group_confess_msg = new hummer_commelem.MsgElemInfo_servtype21.GroupConfessMsg();
   public final PBUInt32Field uint32_confessor_sex = PBField.initUInt32(0);
   public final PBUInt32Field uint32_sysmsg_flag = PBField.initUInt32(0);
   public final PBUInt32Field uint32_topic_id = PBField.initUInt32(0);
@@ -25,7 +27,7 @@ public final class hummer_commelem$MsgElemInfo_servtype21
   {
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 50, 58, 64 }, new String[] { "uint32_topic_id", "uint64_confessor_uin", "bytes_confessor_nick", "uint32_confessor_sex", "uint32_sysmsg_flag", "c2c_confess_ctx", "bytes_topic", "uint64_confess_time" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro2, Long.valueOf(0L) }, MsgElemInfo_servtype21.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 50, 58, 64, 74, 82 }, new String[] { "uint32_topic_id", "uint64_confessor_uin", "bytes_confessor_nick", "uint32_confessor_sex", "uint32_sysmsg_flag", "c2c_confess_ctx", "bytes_topic", "uint64_confess_time", "group_confess_msg", "group_confess_ctx" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro2, Long.valueOf(0L), null, null }, MsgElemInfo_servtype21.class);
   }
 }
 

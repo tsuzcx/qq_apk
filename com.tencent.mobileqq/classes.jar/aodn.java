@@ -1,33 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.tencent.biz.qqstory.takevideo.rmw.StoryFaceDrawableFactory;
-import dov.com.tencent.biz.qqstory.takevideo.rmw.StoryFaceDrawableFactory.FaceDrawableListener;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 
-public class aodn
-  extends Handler
+class aodn
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public aodn(StoryFaceDrawableFactory paramStoryFaceDrawableFactory, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  aodn(aodl paramaodl) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    if (paramMessage.what == 1000)
-    {
-      paramMessage = (String)paramMessage.obj;
-      this.a.a(paramMessage);
-    }
-    while ((paramMessage.what != 1002) || (this.a.a == null)) {
-      return;
-    }
-    this.a.a.a();
+    aodl.a(this.a);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aodn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,20 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
-import com.tencent.widget.ActionSheet.WatchDismissActions;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class ajht
-  implements ActionSheet.WatchDismissActions
+class ajht
+  implements View.OnClickListener
 {
-  public ajht(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  ajht(ajgb paramajgb) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    SubmitHomeWorkFragment.a(this.a).a();
-    SubmitHomeWorkFragment.c(this.a);
+    paramView = new Intent(ajgb.a(this.a), NotifyPushSettingActivity.class);
+    ajgb.a(this.a).startActivity(paramView);
+    azqs.b(ajgb.a(this.a).app, "CliOper", "", "", "0X8009EBB", "0X8009EBB", 0, 1, "", "", "", "");
+    azqs.a(ajgb.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 2, 0, "", "", "", "");
   }
 }
 

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ab;
 import java.util.ArrayList;
 
 class a
@@ -77,7 +77,7 @@ class a
       if ((!str1.equals("mqq.intent.action.ACCOUNT_EXPIRED")) && (!str1.equals("mqq.intent.action.ACCOUNT_CHANGED")) && (!str1.equals("mqq.intent.action.ACCOUNT_KICKED")) && (!str1.equals("mqq.intent.action.LOGOUT")) && (!str1.equals("mqq.intent.action.EXIT" + this.a.getPackageName()))) {
         break label33;
       }
-      r.c("MQQCloseServiceReceiver", "action : " + str1);
+      ab.c("MQQCloseServiceReceiver", "action : " + str1);
       MobileQQCloseServiceReceiver.a(this.c, this.a);
       return;
       label349:
@@ -87,7 +87,7 @@ class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.downloadclient.a
  * JD-Core Version:    0.7.0.1
  */

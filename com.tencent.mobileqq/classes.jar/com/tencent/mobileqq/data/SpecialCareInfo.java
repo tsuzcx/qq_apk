@@ -1,22 +1,39 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.os.Parcelable.Creator;
+import apft;
+import awge;
+import awhs;
 import com.tencent.qphone.base.util.QLog;
 
 public class SpecialCareInfo
-  extends Entity
-  implements Cloneable
+  extends awge
+  implements Parcelable, Cloneable
 {
+  public static final Parcelable.Creator<SpecialCareInfo> CREATOR = new apft();
   public long dateTime;
   public int friendRingId;
   public int globalSwitch;
   public int groupFriendSwitch;
   public int qzoneSwitch;
   public int specialRingSwitch;
-  @unique
+  @awhs
   public String uin;
   public byte[] zoneInfo;
+  
+  public SpecialCareInfo() {}
+  
+  public SpecialCareInfo(Parcel paramParcel)
+  {
+    this.uin = paramParcel.readString();
+    this.dateTime = paramParcel.readLong();
+    this.globalSwitch = paramParcel.readInt();
+    this.specialRingSwitch = paramParcel.readInt();
+    this.friendRingId = paramParcel.readInt();
+    this.qzoneSwitch = paramParcel.readInt();
+  }
   
   public Object clone()
   {
@@ -36,6 +53,11 @@ public class SpecialCareInfo
     return this;
   }
   
+  public int describeContents()
+  {
+    return 0;
+  }
+  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -49,10 +71,20 @@ public class SpecialCareInfo
     localStringBuilder.append("\n |-").append("qzoneSwitch:").append(this.qzoneSwitch);
     return localStringBuilder.toString();
   }
+  
+  public void writeToParcel(Parcel paramParcel, int paramInt)
+  {
+    paramParcel.writeString(this.uin);
+    paramParcel.writeLong(this.dateTime);
+    paramParcel.writeInt(this.globalSwitch);
+    paramParcel.writeInt(this.specialRingSwitch);
+    paramParcel.writeInt(this.friendRingId);
+    paramParcel.writeInt(this.qzoneSwitch);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.SpecialCareInfo
  * JD-Core Version:    0.7.0.1
  */

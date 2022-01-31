@@ -1,35 +1,23 @@
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.activity.qquserguide.UserguideVideoFragment;
 
 public class ens
-  implements RadioGroup.OnCheckedChangeListener
+  implements MediaPlayer.OnCompletionListener
 {
-  public ens(MainAssistObserver paramMainAssistObserver, RadioButton paramRadioButton1, RadioButton paramRadioButton2, Button paramButton) {}
+  public ens(UserguideVideoFragment paramUserguideVideoFragment) {}
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if ((paramInt == this.jdField_a_of_type_AndroidWidgetRadioButton.getId()) || (paramInt == this.b.getId()))
-    {
-      this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-      if (paramInt != this.jdField_a_of_type_AndroidWidgetRadioButton.getId()) {
-        break label53;
-      }
-    }
-    label53:
-    while (paramInt != this.b.getId())
-    {
-      return;
-      this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-      break;
+    if (this.a.a.getVisibility() == 8) {
+      this.a.a.setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ens
  * JD-Core Version:    0.7.0.1
  */

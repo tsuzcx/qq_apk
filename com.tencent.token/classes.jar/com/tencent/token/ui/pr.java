@@ -1,18 +1,8 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.utils.s;
-
-final class pr
-  implements View.OnClickListener
+public abstract interface pr
 {
-  pr(ModifyQQPwdActivity paramModifyQQPwdActivity) {}
-  
-  public final void onClick(View paramView)
-  {
-    s.b(this.a, this.a.getString(2131361981));
-  }
+  public abstract void a(int paramInt);
 }
 
 

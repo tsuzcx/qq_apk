@@ -1,24 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.VideoDeliverController;
-import mqq.os.MqqHandler;
+import android.os.IInterface;
+import com.tencent.av.service.AVRedPacketConfig;
 
-public class lyu
-  implements View.OnClickListener
+public abstract interface lyu
+  extends IInterface
 {
-  public lyu(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  public abstract void a(boolean paramBoolean, AVRedPacketConfig paramAVRedPacketConfig);
   
-  public void onClick(View paramView)
-  {
-    ReadInJoyDeliverVideoActivity.a(this.a).sendEmptyMessage(103);
-    ReadInJoyDeliverVideoActivity.e(this.a);
-    ReadInJoyDeliverVideoActivity.a(this.a).b();
-  }
+  public abstract void a(boolean paramBoolean, String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lyu
  * JD-Core Version:    0.7.0.1
  */

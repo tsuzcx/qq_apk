@@ -1,23 +1,25 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.intervideo.now.ShareToQQActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.RewardNoticeActivity;
 
-public class advg
-  extends FriendListObserver
+class advg
+  implements Animation.AnimationListener
 {
-  public advg(ShareToQQActivity paramShareToQQActivity) {}
+  advg(advf paramadvf) {}
   
-  protected void onUpdateFriendShieldFlag(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramLong != 0L) && (this.a.a != null) && (this.a.a.equals(paramLong + "")))
-    {
-      paramString = new Intent();
-      paramString.putExtra("isSuccess", paramBoolean2);
-      paramString.putExtra("isCancelShield", false);
-      this.a.setResult(-1, paramString);
-    }
-    this.a.finish();
+    this.a.a.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    this.a.a.b.setVisibility(8);
+    this.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    this.a.a.c();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,22 +1,13 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import java.io.Serializable;
-import java.util.ArrayList;
+import android.os.Handler;
 
-final class mv
-  implements AdapterView.OnItemClickListener
+public class mv
+  extends Handler
 {
-  mv(JLAppealListActivity paramJLAppealListActivity) {}
-  
-  public final void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public mv(IndexActivity paramIndexActivity)
   {
-    paramAdapterView = new Intent(this.a, JLAppealListDetailActivity.class);
-    paramAdapterView.putExtra("content", (Serializable)JLAppealListActivity.access$000(this.a).get(paramInt));
-    this.a.startActivity(paramAdapterView);
+    super(IndexActivity.access$000(paramIndexActivity));
   }
 }
 

@@ -3,6 +3,7 @@ package com.tencent.mobileqq.redtouch;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import axlx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -34,7 +35,7 @@ public class RedPointBroadcastReceiver
       }
       return null;
     }
-    paramString = ((RedTouchManager)this.a.getManager(35)).a(paramString);
+    paramString = ((axlx)this.a.getManager(36)).a(paramString);
     if (paramString == null)
     {
       if (QLog.isColorLevel()) {
@@ -75,7 +76,7 @@ public class RedPointBroadcastReceiver
     if (QLog.isColorLevel()) {
       QLog.d("RedPointBroadcastReceiver clearRed", 2, "path = " + paramString);
     }
-    ((RedTouchManager)paramQQAppInterface.getManager(35)).b(paramString);
+    ((axlx)paramQQAppInterface.getManager(36)).b(paramString);
   }
   
   private void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
@@ -91,13 +92,13 @@ public class RedPointBroadcastReceiver
         JSONObject localJSONObject = new JSONObject();
         try
         {
-          paramString = ((RedTouchManager)paramQQAppInterface.getManager(35)).a(paramString);
+          paramString = ((axlx)paramQQAppInterface.getManager(36)).a(paramString);
           localJSONObject.put("service_type", 0);
           localJSONObject.put("act_id", paramInt);
           localJSONObject.put("obj_id", "");
           localJSONObject.put("pay_amt", 0);
           localJSONObject.put("service_id", i);
-          ((RedTouchManager)paramQQAppInterface.getManager(35)).b(paramString, localJSONObject.toString());
+          ((axlx)paramQQAppInterface.getManager(36)).c(paramString, localJSONObject.toString());
           return;
         }
         catch (JSONException paramQQAppInterface)
@@ -155,7 +156,7 @@ public class RedPointBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedPointBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

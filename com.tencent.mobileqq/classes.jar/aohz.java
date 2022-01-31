@@ -1,29 +1,47 @@
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesRetriever;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
 
 public class aohz
-  implements Comparable
+  implements bhzf
 {
-  public int a;
-  public long a;
-  public int b;
+  public aohz(SearchResultActivity paramSearchResultActivity) {}
   
-  public aohz(VideoFramesRetriever paramVideoFramesRetriever, long paramLong, int paramInt1, int paramInt2)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = Math.min(paramInt2, VideoFramesRetriever.a(paramVideoFramesRetriever));
-    VideoFramesRetriever.a(paramVideoFramesRetriever).put(Integer.valueOf(paramInt1), this);
+    SearchResultActivity.a(this.a).c(SearchResultActivity.a(this.a));
   }
   
-  public int a(aohz paramaohz)
+  public boolean a(int paramInt, View paramView, ListView paramListView)
   {
-    return -(int)(this.jdField_a_of_type_Long - paramaohz.jdField_a_of_type_Long);
+    SearchResultActivity.a(this.a).a(SearchResultActivity.a(this.a));
+    if (bdin.d(this.a)) {
+      SearchResultActivity.c(this.a);
+    }
+    for (;;)
+    {
+      SearchResultActivity.a(this.a, System.currentTimeMillis());
+      return true;
+      SearchResultActivity.a(this.a).a(1);
+      paramView = Message.obtain();
+      paramView.what = 3;
+      SearchResultActivity.a(this.a).sendMessageDelayed(paramView, 1000L);
+    }
   }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    SearchResultActivity.a(this.a).b(SearchResultActivity.a(this.a));
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aohz
  * JD-Core Version:    0.7.0.1
  */

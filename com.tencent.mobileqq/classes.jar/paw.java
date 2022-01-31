@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ScrollView;
 
-class paw
-  implements Runnable
+public class paw
+  implements bias
 {
-  paw(pav parampav, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
+  public paw(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void run()
+  public void a(ScrollView paramScrollView, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.self.SelfFragment", 2, "onScrollStateChanged onScrollStateChanged= " + paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     paw
  * JD-Core Version:    0.7.0.1
  */

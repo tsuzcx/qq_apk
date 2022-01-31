@@ -24,7 +24,7 @@ import com.tencent.mobileqq.data.EmoticonKeyword;
 import com.tencent.mobileqq.emosm.EmosmUtils;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import fth;
+import fov;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.net.MalformedURLException;
@@ -56,7 +56,7 @@ public class EmotionPreviewLayout
     this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
     int i = (int)(10.0F * this.jdField_a_of_type_Float);
     setPadding(0, i, i, i);
-    this.jdField_a_of_type_AndroidOsHandler = new fth(this);
+    this.jdField_a_of_type_AndroidOsHandler = new fov(this);
   }
   
   private void a()
@@ -90,10 +90,10 @@ public class EmotionPreviewLayout
           {
             bool2 = true;
             if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
-              this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839112));
+              this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839114));
             }
             if ((this.b == null) || (this.b.get() == null)) {
-              this.b = new WeakReference(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839113));
+              this.b = new WeakReference(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839115));
             }
             localObject1 = URLDrawable.getDrawable((URL)localObject1, (Drawable)this.jdField_a_of_type_JavaLangRefWeakReference.get(), (Drawable)this.b.get(), bool1);
             if (((URLDrawable)localObject1).getStatus() != 1)

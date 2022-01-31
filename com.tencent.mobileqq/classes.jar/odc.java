@@ -1,23 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.ad.multiVideo.MultiVideoAdFooterView;
 
-public final class odc
-  implements Parcelable.Creator
+class odc
+  extends Handler
 {
-  public EditLocalVideoSource a(Parcel paramParcel)
+  odc(odb paramodb, Looper paramLooper)
   {
-    return new EditLocalVideoSource(paramParcel);
+    super(paramLooper);
   }
   
-  public EditLocalVideoSource[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new EditLocalVideoSource[paramInt];
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+    } while ((this.a.a == null) || (this.a.a.a == null));
+    this.a.a.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     odc
  * JD-Core Version:    0.7.0.1
  */

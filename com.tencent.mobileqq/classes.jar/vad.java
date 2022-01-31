@@ -1,27 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
 public class vad
-  extends AnimatorListenerAdapter
+  implements beqw
 {
-  public vad(HeartCombolEffectView paramHeartCombolEffectView) {}
+  public vad(StoryMsgNodeFrameLayout paramStoryMsgNodeFrameLayout) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(String paramString)
   {
-    super.onAnimationCancel(paramAnimator);
-    this.a.setVisibility(8);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    this.a.setVisibility(8);
+    this.a.a.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vad
  * JD-Core Version:    0.7.0.1
  */

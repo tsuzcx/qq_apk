@@ -1,21 +1,19 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.InputMethodUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ajhu
-  implements Runnable
+class ajhu
+  implements View.OnClickListener
 {
-  public ajhu(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  ajhu(ajgb paramajgb) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    EditText localEditText = SubmitHomeWorkFragment.a(this.a, SubmitHomeWorkFragment.a(this.a));
-    if (QLog.isColorLevel()) {
-      QLog.d("SubmitHomeWorkFragment", 2, "弹起键盘");
-    }
-    if (localEditText != null) {
-      InputMethodUtil.a(localEditText);
+    if (ajgb.a(this.a).app != null)
+    {
+      ((alpk)ajgb.a(this.a).app.a(2)).b(0, "", "not_disturb_from_conversation");
+      azqs.b(ajgb.a(this.a).app, "CliOper", "", "", "0X8009EBA", "0X8009EBA", 0, 1, "", "", "", "");
     }
   }
 }

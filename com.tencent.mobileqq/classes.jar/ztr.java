@@ -1,28 +1,58 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.OnLinePushMessageProcessor;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
-import mqq.observer.SubAccountObserver;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class ztr
-  extends SubAccountObserver
+class ztr
+  extends bayj
 {
-  public ztr(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, SubAccountManager paramSubAccountManager) {}
-  
-  protected void onGetKeyBack(String paramString1, String paramString2, String paramString3)
+  ztr(ztp paramztp, Looper paramLooper)
   {
-    if ((paramString3 == null) || (this.jdField_a_of_type_ComTencentMobileqqAppMessageOnLinePushMessageProcessor.a == null) || (paramString1 == null)) {}
-    while (!paramString1.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqAppMessageOnLinePushMessageProcessor.a.getAccount())) {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Object localObject = (bass)paramMessage.obj;
+    if ((localObject == null) || (((bass)localObject).jdField_b_of_type_Int != 24)) {}
+    while (((bass)localObject).c != 7) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqSubaccountDatamanagerSubAccountManager.a(paramString2, paramString3, true);
-    SubAccountControll.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageOnLinePushMessageProcessor.a, (byte)1, paramString2);
-    SubAccountControll.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageOnLinePushMessageProcessor.a, paramString2, false);
+    switch (paramMessage.what)
+    {
+    case 1001: 
+    case 1002: 
+    case 1004: 
+    default: 
+      return;
+    case 1003: 
+      paramMessage = new Intent();
+      paramMessage.setAction("onFaceTransferComplete");
+      localBundle = new Bundle();
+      localBundle.putLong("uniseq", ((bass)localObject).jdField_b_of_type_Long);
+      localBundle.putString("fileUrl", ((bass)localObject).i);
+      localObject = ((bass)localObject).i;
+      if (localObject != null)
+      {
+        localObject = ((String)localObject).split("/");
+        localBundle.putString("uuId", localObject[(localObject.length - 2)]);
+      }
+      paramMessage.putExtras(localBundle);
+      BaseApplicationImpl.getApplication().sendBroadcast(paramMessage, "com.tencent.smartdevice.permission.broadcast");
+      return;
+    }
+    paramMessage = new Intent();
+    paramMessage.setAction("onFaceTransferError");
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("uniseq", ((bass)localObject).jdField_b_of_type_Long);
+    paramMessage.putExtras(localBundle);
+    BaseApplicationImpl.getApplication().sendBroadcast(paramMessage, "com.tencent.smartdevice.permission.broadcast");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ztr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.leba.LebaGridHandler;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
-import com.tencent.mobileqq.leba.view.LebaGridIndicator.onPageSeletedListener;
-import com.tencent.mobileqq.leba.view.LebaTopBarView;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
 
 public class aean
-  implements LebaGridIndicator.onPageSeletedListener
+  implements TextView.OnEditorActionListener
 {
-  public aean(LebaWithFeeds paramLebaWithFeeds) {}
+  public aean(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  public void a(int paramInt)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    LebaWithFeeds.a(this.a).c(1);
-  }
-  
-  public void b(int paramInt)
-  {
-    ((LebaGridHandler)this.a.a.a(106)).a(2, true, Integer.valueOf(paramInt));
+    if ((paramInt == 1) || ((paramKeyEvent != null) && (66 == paramKeyEvent.getKeyCode()) && (paramKeyEvent.getAction() == 0))) {
+      TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).callJs("onTabKeyDown()");
+    }
+    return false;
   }
 }
 

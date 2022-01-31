@@ -1,23 +1,21 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class agep
-  extends AnimatorListenerAdapter
+class agep
+  implements View.OnTouchListener
 {
-  public agep(ARTipsManager paramARTipsManager) {}
+  agep(agem paramagem, aetk paramaetk) {}
   
-  public void onAnimationStart(Animator paramAnimator)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (ARTipsManager.a(this.a) != null) {
-      ARTipsManager.a(this.a).setVisibility(0);
-    }
+    this.jdField_a_of_type_Aetk.onTouch(paramView, paramMotionEvent);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agep
  * JD-Core Version:    0.7.0.1
  */

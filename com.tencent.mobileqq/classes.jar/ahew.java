@@ -1,13 +1,43 @@
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
 
-class ahew
-  implements Runnable
+public class ahew
+  extends ahes
 {
-  ahew(ahev paramahev, ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
-  
-  public void run()
+  public ahew(Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    ReceiptMessageReadMemberListContainerFragment.e(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageReadMemberListContainerFragment);
+    super(paramContext, paramQQAppInterface, paramBoolean);
+  }
+  
+  protected int a()
+  {
+    return 10021;
+  }
+  
+  protected void a(RecommendTroopItem paramRecommendTroopItem)
+  {
+    azqs.b(null, "dc00899", "Grp_recom", "", "no_search_result", "clk_grp", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
+  }
+  
+  protected int b()
+  {
+    return 109;
+  }
+  
+  protected void b(RecommendTroopItem paramRecommendTroopItem)
+  {
+    azqs.b(null, "dc00899", "Grp_recom", "", "no_search_result", "clk_add", 0, 0, String.valueOf(paramRecommendTroopItem.uin), paramRecommendTroopItem.recomAlgol, "", "");
+  }
+  
+  protected int c()
+  {
+    return 10022;
+  }
+  
+  protected void c(RecommendTroopItem paramRecommendTroopItem)
+  {
+    azqs.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp_grp", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
   }
 }
 

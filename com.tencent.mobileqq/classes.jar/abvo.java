@@ -1,32 +1,41 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.msgcache.CacheConstants;
-import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
 
-public class abvo
-  implements CompoundButton.OnCheckedChangeListener
+public final class abvo
+  extends RecyclablePool.Recyclable
 {
-  public abvo(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime) {}
+  public long a;
+  public String a;
+  public long[] a;
+  public long b;
+  public long c;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public abvo()
   {
-    CacheConstants.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(CacheConstants.jdField_a_of_type_JavaLangString, 0).edit().putBoolean(CacheConstants.b, paramBoolean).commit();
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixConfigActivity.getApplicationContext(), "重置缓存开关，需重启生效", 1).a();
-    if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) {
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).b(false);
+    this.jdField_a_of_type_ArrayOfLong = new long[6];
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Long = 0L;
+    this.b = 0L;
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfLong.length)
+    {
+      this.jdField_a_of_type_ArrayOfLong[i] = 0L;
+      i += 1;
     }
+    this.c = 0L;
+  }
+  
+  public void recycle()
+  {
+    super.recycle();
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abvo
  * JD-Core Version:    0.7.0.1
  */

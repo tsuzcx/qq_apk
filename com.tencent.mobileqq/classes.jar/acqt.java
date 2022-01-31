@@ -1,33 +1,20 @@
-import android.content.ContentResolver;
-import android.database.Cursor;
-import android.provider.MediaStore.Images.Media;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileFileAssistantActivity;
-import cooperation.weiyun.utils.PreferenceUtils;
-import cooperation.weiyun.utils.SoHelper;
-import mqq.app.AppRuntime;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
 
 public class acqt
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public acqt(QfileFileAssistantActivity paramQfileFileAssistantActivity) {}
+  public acqt(ContactBindedActivity paramContactBindedActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!SoHelper.a(this.a.getApplicationContext()))
-    {
-      Cursor localCursor = this.a.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, new String[] { "_data" }, null, null, "bucket_display_name");
-      if (localCursor != null)
-      {
-        int i = localCursor.getCount();
-        PreferenceUtils.a(this.a.getApplicationContext(), this.a.getAppRuntime().getAccount(), "sp_un_backup_photo_num", Integer.toString(i));
-        localCursor.close();
-      }
-    }
+    ContactBindedActivity.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acqt
  * JD-Core Version:    0.7.0.1
  */

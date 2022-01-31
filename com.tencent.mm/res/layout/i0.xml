@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="#ff292c2d" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/a_z" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textColor="@color/h6" android:gravity="center_vertical" android:id="@id/aa0" android:background="@drawable/l8" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="48.0dip" android:text="@string/acj" />
+    </LinearLayout>
+    <com.tencent.mm.plugin.brandservice.ui.base.BrandServiceSortView android:id="@id/aa1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

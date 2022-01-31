@@ -25,7 +25,7 @@ final class i
       return;
     } while ((h.d() > 0L) && (SystemClock.elapsedRealtime() - h.d() < a.q()));
     h.a(SystemClock.elapsedRealtime());
-    QLog.d(h.a, 1, "clean and compress log");
+    QLog.d(h.b, 1, "clean and compress log");
     h.e();
   }
 }

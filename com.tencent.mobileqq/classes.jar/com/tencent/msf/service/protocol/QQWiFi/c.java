@@ -8,7 +8,7 @@ public final class c
   extends JceStruct
 {
   public String a = "";
-  public int b;
+  public int b = 0;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {

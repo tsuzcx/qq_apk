@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/li0" android:background="@drawable/hc1" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <GridLayout android:id="@id/ljv" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:layout_gravity="right" android:id="@id/mes" android:padding="7.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/hc2" />
+    <ImageView android:id="@id/loh" android:layout_width="26.0dip" android:layout_height="26.0dip" android:src="@drawable/hn8" />
+</FrameLayout>

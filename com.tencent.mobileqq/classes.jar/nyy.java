@@ -1,35 +1,23 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.model.CommentManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedManager;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.SendVidPollDataResultReceiver;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class nyy
-  implements Runnable
+  implements nbs
 {
-  public nyy(HomeFeedPresenter.SendVidPollDataResultReceiver paramSendVidPollDataResultReceiver, CommentLikeFeedItem paramCommentLikeFeedItem, CommentEntry paramCommentEntry) {}
+  public nyy(ReadInJoyFeedsActivity.1 param1) {}
   
-  public void run()
+  public void loaded(String paramString, int paramInt)
   {
-    CommentManager localCommentManager = (CommentManager)SuperManager.a(17);
-    if (HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem))
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.type = 3;
-      localCommentManager.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-    }
-    for (;;)
-    {
-      ((FeedManager)SuperManager.a(11)).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
-      return;
-      localCommentManager.c(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseActivity", 2, "load 2464 html web resource finish");
     }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nyy
  * JD-Core Version:    0.7.0.1
  */

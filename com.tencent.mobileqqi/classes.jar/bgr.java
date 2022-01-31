@@ -1,8 +1,27 @@
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.PoiMapActivity;
+
 public class bgr
+  implements Animation.AnimationListener
 {
-  static int a = 1;
-  static int b = 2;
-  public static int c = 3;
+  public bgr(PoiMapActivity paramPoiMapActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    paramAnimation = (RelativeLayout.LayoutParams)this.a.d.getLayoutParams();
+    paramAnimation.bottomMargin = (-this.a.j);
+    this.a.d.setLayoutParams(paramAnimation);
+    this.a.d.clearAnimation();
+    this.a.a.setImageResource(2130838343);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

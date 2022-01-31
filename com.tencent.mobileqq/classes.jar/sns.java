@@ -1,20 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import android.support.annotation.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.viola.lottie.KdLottieView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
-public class sns
-  implements View.OnClickListener
+class sns
+  implements OnCompositionLoadedListener
 {
-  public sns(ForwardRecentActivity paramForwardRecentActivity) {}
+  sns(snr paramsnr) {}
   
-  public void onClick(View paramView)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    this.a.a(ForwardRecentActivity.a(this.a), paramView, paramView.getId());
+    if (paramLottieComposition != null)
+    {
+      this.a.a.setComposition(paramLottieComposition);
+      this.a.a.playAnimation();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sns
  * JD-Core Version:    0.7.0.1
  */

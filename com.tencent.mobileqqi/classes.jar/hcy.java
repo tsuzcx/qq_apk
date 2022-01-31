@@ -1,24 +1,42 @@
-import android.view.MotionEvent;
+import android.text.Editable;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.troop.widget.MediaControllerX;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput;
 
 public class hcy
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public hcy(MediaControllerX paramMediaControllerX) {}
+  public hcy(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if ((paramMotionEvent.getAction() == 0) && (MediaControllerX.a(this.a))) {
-      this.a.c();
+    if (QQCustomDialogWtihEmoticonInput.a(this.a).getSelectionStart() == 0) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        paramView = QQCustomDialogWtihEmoticonInput.a(this.a).getText();
+        int i = QQCustomDialogWtihEmoticonInput.a(this.a).getSelectionStart();
+        int j = TextUtils.getOffsetBefore(QQCustomDialogWtihEmoticonInput.a(this.a).getText(), i);
+        if (i != j)
+        {
+          paramView.delete(Math.min(i, j), Math.max(i, j));
+          return;
+        }
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hcy
  * JD-Core Version:    0.7.0.1
  */

@@ -2,11 +2,12 @@ package cooperation.troop;
 
 import android.content.Context;
 import android.content.Intent;
+import biqn;
+import biqw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginProxyBroadcastReceiver;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.IPluginManager;
-import cooperation.plugin.IPluginManager.PluginParams;
+import cooperation.plugin.PluginInfo;
 import mqq.app.AppRuntime;
 
 public class NearbyVideoProxyBroadcastReceiver
@@ -20,13 +21,13 @@ public class NearbyVideoProxyBroadcastReceiver
     Intent localIntent = new Intent(paramIntent.getAction());
     localIntent.putExtras(paramIntent);
     localIntent.putExtra("action", paramIntent.getAction());
-    paramIntent = new IPluginManager.PluginParams(1);
+    paramIntent = new biqw(1);
     paramIntent.b = "nearby_video_chat_plugin.apk";
-    paramIntent.d = "附近的人随机视频聊";
+    paramIntent.d = PluginInfo.l;
     paramIntent.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
     paramIntent.e = "com.tencent.mobileqq.nearbyvideochat.service.NearbyVideoMsgBroadcastReceiver";
     paramIntent.jdField_a_of_type_AndroidContentIntent = localIntent;
-    IPluginManager.a(paramContext, paramIntent);
+    biqn.b(paramContext, paramIntent);
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -39,7 +40,7 @@ public class NearbyVideoProxyBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.troop.NearbyVideoProxyBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

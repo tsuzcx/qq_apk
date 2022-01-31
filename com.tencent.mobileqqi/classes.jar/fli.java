@@ -1,18 +1,30 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.StartAppCheckHandler;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
 
 public class fli
+  implements IphonePickerView.PickerViewAdapter
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  Intent jdField_a_of_type_AndroidContentIntent;
-  public String a;
+  public fli(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public fli(StartAppCheckHandler paramStartAppCheckHandler, String paramString, Context paramContext, Intent paramIntent)
+  public int a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    return 1;
+  }
+  
+  public int a(int paramInt)
+  {
+    if (this.a.c == 0) {
+      return ConditionSearchFriendActivity.b.length;
+    }
+    return ConditionSearchFriendActivity.a.length;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    if (this.a.c == 0) {
+      return ConditionSearchFriendActivity.b[paramInt2];
+    }
+    return ConditionSearchFriendActivity.a[paramInt2];
   }
 }
 

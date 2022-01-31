@@ -1,78 +1,27 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.pic.BasePicOprerator;
-import com.tencent.mobileqq.pic.Logger;
-import com.tencent.mobileqq.pic.PicResult;
-import com.tencent.mobileqq.pic.UiCallBack;
-import java.util.ArrayList;
+import android.os.IInterface;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-public class agkl
-  extends Handler
+public abstract interface agkl
+  extends IInterface
 {
-  public agkl(BasePicOprerator paramBasePicOprerator, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract void a();
   
-  public void handleMessage(Message paramMessage)
-  {
-    Logger.a(this.a.b, this.a.jdField_a_of_type_JavaLangString, "dispatchMessage", "what:" + paramMessage.what + ",result:" + paramMessage.arg1 + ",obj:" + paramMessage.obj);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack == null) {}
-    do
-    {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 0: 
-        i = paramMessage.arg1;
-        paramMessage = (PicResult)paramMessage.obj;
-        this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.a(i, paramMessage);
-        return;
-      case 1: 
-        paramMessage = (PicResult)paramMessage.obj;
-      }
-    } while (!(paramMessage.a instanceof Integer));
-    this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.a(((Integer)paramMessage.a).intValue(), paramMessage.c);
-    return;
-    int i = paramMessage.arg1;
-    paramMessage = (PicResult)paramMessage.obj;
-    this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.d(i, paramMessage);
-    return;
-    i = paramMessage.arg1;
-    paramMessage = (PicResult)paramMessage.obj;
-    this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.b(i, paramMessage);
-    return;
-    i = paramMessage.arg1;
-    paramMessage = (PicResult)paramMessage.obj;
-    this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.c(i, paramMessage);
-    return;
-    if (paramMessage.obj != null) {}
-    for (;;)
-    {
-      try
-      {
-        ArrayList localArrayList = (ArrayList)paramMessage.obj;
-        this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.a(paramMessage.arg1, localArrayList);
-        return;
-      }
-      catch (ClassCastException localClassCastException)
-      {
-        localObject = null;
-        continue;
-      }
-      paramMessage = (PicResult)paramMessage.obj;
-      this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.a(((Integer)paramMessage.a).intValue());
-      return;
-      Object localObject = null;
-    }
-  }
+  public abstract void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean);
+  
+  public abstract void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean);
+  
+  public abstract void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3);
+  
+  public abstract void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agkl
  * JD-Core Version:    0.7.0.1
  */

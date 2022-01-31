@@ -1,24 +1,48 @@
-import com.tencent.mobileqq.portal.PortalManager;
-import com.tencent.mobileqq.portal.PortalManager.RedPacketConfig;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.AnimationView;
+import com.tencent.mobileqq.widget.AnimationView.Player;
+import java.lang.ref.WeakReference;
 
-public class agmq
-  implements Runnable
+public final class agmq
+  extends AnimationView.Player
 {
-  public agmq(PortalManager paramPortalManager, PortalManager.RedPacketConfig paramRedPacketConfig) {}
+  public static boolean a;
   
-  public void run()
+  public agmq(AnimationView paramAnimationView)
   {
-    try
+    super(paramAnimationView);
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(AnimationView paramAnimationView)
+  {
+    reset();
+    this.jdField_a_of_type_JavaLangRefWeakReference.clear();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAnimationView);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      PortalManager.a(this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager, this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$RedPacketConfig);
-      return;
     }
-    catch (Throwable localThrowable)
+    for (;;)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("PortalManager", 2, "report exception =" + localThrowable.getMessage());
-      localThrowable.printStackTrace();
+      return false;
+      if (jdField_a_of_type_Boolean)
+      {
+        paramMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 500L);
+      }
+      else
+      {
+        a();
+      }
     }
   }
 }

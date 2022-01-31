@@ -1,24 +1,16 @@
-import com.tencent.mobileqq.olympic.ShuayishuaConfig;
-import java.util.Comparator;
+import android.widget.TextView;
 
-public final class agdv
-  implements Comparator
+public class agdv
+  extends aepm
 {
-  public int a(ShuayishuaConfig paramShuayishuaConfig1, ShuayishuaConfig paramShuayishuaConfig2)
-  {
-    long l = paramShuayishuaConfig1.realBegin - paramShuayishuaConfig2.realBegin;
-    if (l > 0L) {
-      return 1;
-    }
-    if (l < 0L) {
-      return -1;
-    }
-    return 0;
-  }
+  public TextView b;
+  public TextView c;
+  
+  public agdv(agdt paramagdt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agdv
  * JD-Core Version:    0.7.0.1
  */

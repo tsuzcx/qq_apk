@@ -10,10 +10,10 @@ import java.util.Map;
 public final class mobile_sub_get_ugc_visit_req
   extends JceStruct
 {
-  static Map cache_busi_param;
+  static Map<Integer, String> cache_busi_param;
   static cell_id cache_ugcId;
   public int appid;
-  public Map busi_param;
+  public Map<Integer, String> busi_param;
   public boolean is_need_top;
   public String page = "";
   public cell_id ugcId;
@@ -21,7 +21,7 @@ public final class mobile_sub_get_ugc_visit_req
   
   public mobile_sub_get_ugc_visit_req() {}
   
-  public mobile_sub_get_ugc_visit_req(long paramLong, int paramInt, cell_id paramcell_id, Map paramMap, String paramString, boolean paramBoolean)
+  public mobile_sub_get_ugc_visit_req(long paramLong, int paramInt, cell_id paramcell_id, Map<Integer, String> paramMap, String paramString, boolean paramBoolean)
   {
     this.uin = paramLong;
     this.appid = paramInt;

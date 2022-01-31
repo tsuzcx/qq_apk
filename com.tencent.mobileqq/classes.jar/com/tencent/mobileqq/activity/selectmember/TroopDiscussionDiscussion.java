@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.selectmember;
 
+import akim;
+import akiq;
 import android.os.Bundle;
 import com.tencent.common.app.InnerFrameManager;
-import com.tencent.mobileqq.adapter.DiscussionListAdapter2;
-import com.tencent.mobileqq.adapter.DiscussionListAdapter2.DiscussionListListener;
 import com.tencent.mobileqq.data.DiscussionInfo;
 import com.tencent.widget.XListView;
 
 public class TroopDiscussionDiscussion
   extends TroopDiscussionBaseV
-  implements DiscussionListAdapter2.DiscussionListListener
+  implements akiq
 {
-  private DiscussionListAdapter2 jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2;
+  private akim jdField_a_of_type_Akim;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   
   public TroopDiscussionDiscussion(SelectMemberActivity paramSelectMemberActivity)
@@ -21,45 +21,37 @@ public class TroopDiscussionDiscussion
   
   public void a(Bundle paramBundle)
   {
-    a(2130971570);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131366744));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(2131492924);
-    this.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2 = new DiscussionListAdapter2(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, this, this.jdField_a_of_type_ComTencentWidgetXListView, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
-    this.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.a(true);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2);
-    this.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    a(2131562639);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131380348));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(2131167140);
+    this.jdField_a_of_type_Akim = new akim(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, this, this.jdField_a_of_type_ComTencentWidgetXListView, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
+    this.jdField_a_of_type_Akim.a(true);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Akim);
+    this.jdField_a_of_type_Akim.notifyDataSetChanged();
   }
   
   public void a(DiscussionInfo paramDiscussionInfo)
   {
-    Bundle localBundle;
     if (paramDiscussionInfo != null)
     {
-      localBundle = new Bundle();
+      Bundle localBundle = new Bundle();
       localBundle.putString("group_uin", paramDiscussionInfo.uin);
       localBundle.putString("group_name", paramDiscussionInfo.discussionName);
-      if ((this.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a instanceof PhoneContactSelectActivity)) {
-        this.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a(3, localBundle);
-      }
+      this.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a(7, localBundle);
     }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a(7, localBundle);
   }
   
   public void b()
   {
     super.b();
-    this.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.a();
+    this.jdField_a_of_type_Akim.a();
   }
   
   public void b(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.TroopDiscussionDiscussion
  * JD-Core Version:    0.7.0.1
  */

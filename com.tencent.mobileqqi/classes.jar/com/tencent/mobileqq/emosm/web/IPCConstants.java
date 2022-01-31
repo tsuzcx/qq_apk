@@ -23,6 +23,7 @@ public abstract interface IPCConstants
   public static final int IPC_BUBBLE_START_DOWNLOAD_V = 5;
   public static final String IPC_BUBBLE_STOP_DOWNLOAD_K = "bubble_StopDownLoad";
   public static final int IPC_BUBBLE_STOP_DOWNLOAD_V = 7;
+  public static final String IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW = "ipc_cmd_certified_account_web_plugin_follow";
   public static final HashMap IPC_CMD_MAP = new IPCConstants.1();
   public static final String IPC_DEVLOCK_CMD_CHANGE_EQUIP_LOCK_MOBILE = "changeEquipLockMobile";
   public static final String IPC_DEVLOCK_CMD_CLOSE_WEB = "closeWeb";

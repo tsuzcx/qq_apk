@@ -1,47 +1,20 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.transfile.DeviceMsgThumbDownloader;
-import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
-public class aipf
-  implements BitmapDecoder
+class aipf
+  implements DialogInterface.OnKeyListener
 {
-  public aipf(DeviceMsgThumbDownloader paramDeviceMsgThumbDownloader) {}
+  aipf(aipa paramaipa) {}
   
-  public Bitmap a(URL paramURL)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    paramURL = this.a.a(paramURL);
-    if (paramURL == null) {
-      paramURL = null;
-    }
-    for (;;)
+    if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
-      return paramURL;
-      String str = paramURL.path;
-      if (TextUtils.isEmpty(str)) {
-        return null;
-      }
-      try
-      {
-        Bitmap localBitmap = this.a.a(str);
-        paramURL = localBitmap;
-        if (localBitmap == null)
-        {
-          paramURL = this.a.b(str);
-          return paramURL;
-        }
-      }
-      catch (Throwable paramURL)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("VIdeoThumbDownloader", 2, "getBitmap", paramURL);
-        }
-      }
+      this.a.a.dismiss();
+      aipa.a(this.a, aipa.a(this.a), true, Long.valueOf(aipa.b(this.a)).longValue(), true);
     }
-    return null;
+    return false;
   }
 }
 

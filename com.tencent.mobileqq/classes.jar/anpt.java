@@ -1,29 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.capture.view.ProviderView;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class anpt
-  implements Animation.AnimationListener
+class anpt
+  implements View.OnClickListener
 {
-  public anpt(QIMProviderContainerView paramQIMProviderContainerView) {}
+  anpt(anpq paramanpq) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (QIMProviderContainerView.a(this.a) != null)
-    {
-      QIMProviderContainerView.a(this.a).setAlpha(1.0F);
-      QIMProviderContainerView.a(this.a).setVisibility(0);
-    }
+    acab.a(anpq.a(this.a), -3, "user canceled");
+    anpq.a(this.a).a();
+    anpq.a(this.a).dismiss();
+    anpq.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,12 @@
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import android.support.annotation.NonNull;
 
-public class xon
-  implements Runnable
+public abstract interface xon
 {
-  public xon(FlowCameraActivity2 paramFlowCameraActivity2) {}
-  
-  public void run()
-  {
-    if ((this.a.b != null) && (!this.a.b.isEnabled()))
-    {
-      this.a.b.setEnabled(true);
-      this.a.b.setText(2131438162);
-      this.a.b.setTextColor(-15550475);
-    }
-    int i = 0;
-    if (this.a.a != null) {
-      i = this.a.a.c();
-    }
-    if ((!this.a.i.isEnabled()) && (i > 0)) {
-      this.a.i.setEnabled(true);
-    }
-  }
+  public abstract void a(@NonNull xou paramxou);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xon
  * JD-Core Version:    0.7.0.1
  */

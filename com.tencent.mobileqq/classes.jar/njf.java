@@ -1,19 +1,22 @@
-import com.tencent.biz.qqstory.playmode.child.CommentPlayMode;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class njf
-  implements Runnable
+class njf
+  implements View.OnClickListener
 {
-  public njf(CommentPlayMode paramCommentPlayMode) {}
+  njf(nin paramnin, Dialog paramDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.setCurrentItem(0, false);
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     njf
  * JD-Core Version:    0.7.0.1
  */

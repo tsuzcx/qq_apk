@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class mobileqq_qidian$OrgJobUnion
-  extends MessageMicro
+  extends MessageMicro<OrgJobUnion>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "uint64_parentorgid", "str_job" }, new Object[] { Long.valueOf(0L), "" }, OrgJobUnion.class);
   public final PBStringField str_job = PBField.initString("");
@@ -15,7 +15,7 @@ public final class mobileqq_qidian$OrgJobUnion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qidian.proto.mobileqq_qidian.OrgJobUnion
  * JD-Core Version:    0.7.0.1
  */

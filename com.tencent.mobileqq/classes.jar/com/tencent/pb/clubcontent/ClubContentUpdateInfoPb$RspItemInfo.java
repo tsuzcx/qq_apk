@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ClubContentUpdateInfoPb$RspItemInfo
-  extends MessageMicro
+  extends MessageMicro<RspItemInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34 }, new String[] { "str_name", "uint_version", "uint_update_flag", "str_extend" }, new Object[] { "", Integer.valueOf(0), Integer.valueOf(0), "" }, RspItemInfo.class);
   public final PBStringField str_extend = PBField.initString("");
@@ -17,7 +17,7 @@ public final class ClubContentUpdateInfoPb$RspItemInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.clubcontent.ClubContentUpdateInfoPb.RspItemInfo
  * JD-Core Version:    0.7.0.1
  */

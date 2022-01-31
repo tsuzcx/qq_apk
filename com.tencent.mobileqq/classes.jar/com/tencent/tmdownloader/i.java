@@ -1,7 +1,8 @@
 package com.tencent.tmdownloader;
 
-import com.tencent.tmassistantbase.util.m;
-import com.tencent.tmassistantbase.util.r;
+import android.os.RemoteException;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.s;
 import com.tencent.tmdownloader.internal.remote.a;
 
 class i
@@ -11,25 +12,52 @@ class i
   
   public void run()
   {
+    if (this.a.mServiceInterface != null) {
+      try
+      {
+        synchronized (this.a)
+        {
+          a locala2 = (a)this.a.mServiceInterface;
+          if (locala2 != null)
+          {
+            locala2.a();
+            ab.c("RemoteOpProxy", "<initSDKReportManager2> process:" + s.e() + ", mServiceInterface is ok");
+          }
+          return;
+        }
+        ab.c("RemoteOpProxy", "<initSDKReportManager2> process:" + s.e() + ", mServiceInterface is null, post the operation");
+      }
+      catch (RemoteException localRemoteException)
+      {
+        localRemoteException.printStackTrace();
+        return;
+      }
+      catch (NullPointerException localNullPointerException)
+      {
+        ab.e("RemoteOpProxy", "initSDKReportManager2 failed,mServiceInterface");
+        return;
+      }
+    }
     try
     {
-      r.c("RemoteOpProxy", "<requestAllConfig> process:" + m.e() + ", getServiceInterface()");
-      a locala = (a)this.a.getServiceInterface();
-      if (locala != null) {
-        locala.b();
+      ab.c("RemoteOpProxy", "<initSDKReportManager2> process:" + s.e() + ", getServiceInterface()");
+      a locala1 = (a)this.a.getServiceInterface();
+      if (locala1 != null)
+      {
+        locala1.a();
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
-      r.c("RemoteOpProxy", "<requestAllConfig> process:" + m.e() + ", getServiceInterface() error, error msg = " + localException.getMessage());
+      ab.c("RemoteOpProxy", "<initSDKReportManager2> process:" + s.e() + ", getServiceInterface() error, error msg = " + localException.getMessage());
       localException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmdownloader.i
  * JD-Core Version:    0.7.0.1
  */

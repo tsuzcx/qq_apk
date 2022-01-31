@@ -1,19 +1,25 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
 public class anyy
-  implements Runnable
+  implements View.OnClickListener
 {
-  public anyy(DoodleLayout paramDoodleLayout, FaceLayer.FaceItem paramFaceItem) {}
+  public anyy(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.b(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerFaceLayer$FaceItem);
+    if ((this.a.a != null) && (this.a.a.isShowing()))
+    {
+      this.a.a.dismiss();
+      this.a.a = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anyy
  * JD-Core Version:    0.7.0.1
  */

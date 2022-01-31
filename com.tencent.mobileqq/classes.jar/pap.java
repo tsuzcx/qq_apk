@@ -1,36 +1,18 @@
-import android.os.SystemClock;
-import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelectPositionFragment;
 
 public class pap
-  implements Runnable
+  implements sky
 {
-  public pap(AbsBaseWebViewActivity paramAbsBaseWebViewActivity) {}
+  public pap(ReadInJoySelectPositionFragment paramReadInJoySelectPositionFragment) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    SystemClock.uptimeMillis();
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.a.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
-        this.a.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web"));
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine == null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine = WebAccelerateHelper.getInstance().createWebViewPluginEngine(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, this.a, null, null);
-        WebAccelerateHelper.getInstance().onPluginRuntimeReady(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine, this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, this.a);
-        SystemClock.uptimeMillis();
-      }
-      return;
-    }
+    ReadInJoySelectPositionFragment.a(this.a, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pap
  * JD-Core Version:    0.7.0.1
  */

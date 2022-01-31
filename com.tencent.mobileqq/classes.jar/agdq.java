@@ -1,45 +1,39 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Rect;
-import com.tencent.mobileqq.ocr.view.ScanOcrView;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class agdq
-  implements ValueAnimator.AnimatorUpdateListener
+class agdq
+  implements View.OnClickListener
 {
-  public agdq(ScanOcrView paramScanOcrView, agds paramagds) {}
+  agdq(agdo paramagdo, int paramInt) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    int j = (int)(this.jdField_a_of_type_Agds.a * f);
-    int i = (int)(f * this.jdField_a_of_type_Agds.jdField_b_of_type_Int);
-    int m = j - this.jdField_a_of_type_Agds.a;
-    int k = i - this.jdField_a_of_type_Agds.jdField_b_of_type_Int;
-    j = (int)(paramValueAnimator.getAnimatedFraction() * 255.0F);
-    i = j;
-    if (j > 255) {
-      i = 255;
+    paramView = new Intent(this.jdField_a_of_type_Agdo.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("individuation_url_type", 40303);
+    String str = bdtg.a(this.jdField_a_of_type_Agdo.jdField_a_of_type_AndroidContentContext, "call", "mvip.gongneng.anroid.individuation.web");
+    str = str + "&funcallId=" + this.jdField_a_of_type_Int;
+    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Agdo.jdField_a_of_type_AndroidContentContext, str, 524288L, paramView, true, -1);
+    int i = ((amca)this.jdField_a_of_type_Agdo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).g();
+    if (i == 2) {
+      i = 0;
     }
-    j = i;
-    if (i < 0) {
-      j = 0;
+    for (;;)
+    {
+      azqs.b(this.jdField_a_of_type_Agdo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004A25", "0X8004A25", 0, 0, "" + i, "", "", "");
+      return;
+      if (i == 3) {
+        i = 2;
+      }
     }
-    i = this.jdField_a_of_type_Agds.jdField_b_of_type_AndroidGraphicsRect.left;
-    int n = m / 2;
-    int i1 = this.jdField_a_of_type_Agds.jdField_b_of_type_AndroidGraphicsRect.top;
-    int i2 = k / 2;
-    int i3 = this.jdField_a_of_type_Agds.jdField_b_of_type_AndroidGraphicsRect.right;
-    m /= 2;
-    int i4 = this.jdField_a_of_type_Agds.jdField_b_of_type_AndroidGraphicsRect.bottom;
-    k /= 2;
-    this.jdField_a_of_type_Agds.e = j;
-    this.jdField_a_of_type_Agds.c.set(i - n, i1 - i2, m + i3, k + i4);
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agdq
  * JD-Core Version:    0.7.0.1
  */

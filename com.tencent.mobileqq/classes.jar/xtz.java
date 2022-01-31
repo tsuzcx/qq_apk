@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.activity.richmedia.SaveVideoActivity;
-
-public class xtz
-  implements Runnable
+class xtz
 {
-  public xtz(SaveVideoActivity paramSaveVideoActivity, String paramString) {}
+  public int a;
+  public byte[] a;
+  public int b;
   
-  public void run()
+  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    SaveVideoActivity.a(SaveVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSaveVideoActivity), SaveVideoActivity.a(SaveVideoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSaveVideoActivity), this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xtz
  * JD-Core Version:    0.7.0.1
  */

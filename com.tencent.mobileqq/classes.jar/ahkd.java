@@ -1,24 +1,38 @@
-import android.os.Handler;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
 
-public class ahkd
-  implements Runnable
+class ahkd
+  implements View.OnClickListener
 {
-  private ahkd(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public int a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public PressEffectImageView a;
+  public View b;
   
-  public void run()
+  ahkd(ahkb paramahkb) {}
+  
+  public void onClick(View paramView)
   {
-    EffectsCameraCaptureFragment.b(this.a);
-    if (EffectsCameraCaptureFragment.a(this.a) >= 3) {
-      EffectsCameraCaptureFragment.a(this.a, 0);
+    String str = this.jdField_a_of_type_Ahkb.a(this.jdField_a_of_type_Int);
+    if (paramView == this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView)
+    {
+      ahke.a().b(ahkb.a(this.jdField_a_of_type_Ahkb), str);
+      this.jdField_a_of_type_Ahkb.a();
     }
-    EffectsCameraCaptureFragment.a(this.a, EffectsCameraCaptureFragment.a(this.a));
-    this.a.a.postDelayed(EffectsCameraCaptureFragment.a(this.a), 500L);
+    while ((paramView != this.jdField_a_of_type_AndroidViewView) || (ahkb.a(this.jdField_a_of_type_Ahkb) == null)) {
+      return;
+    }
+    ahkb.a(this.jdField_a_of_type_Ahkb).a(str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahkd
  * JD-Core Version:    0.7.0.1
  */

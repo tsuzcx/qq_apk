@@ -1,17 +1,45 @@
 package com.tencent.token.ui;
 
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.jni.FaceDetector;
+import com.tencent.token.global.h;
 
-final class dj
-  implements View.OnTouchListener
+class dj
+  implements Runnable
 {
-  dj(EmbedWebBaseActivity paramEmbedWebBaseActivity) {}
+  dj(di paramdi) {}
   
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    return false;
+    try
+    {
+      synchronized (this.a.e)
+      {
+        try
+        {
+          di.a(this.a, true);
+          di.a(this.a);
+          di.b(this.a, FaceDetector.IdCardDetectInitial(di.b(this.a)));
+          h.c("IdCardDetectInitial: " + di.c(this.a) + ",mIdCardModelPath=" + di.b(this.a));
+          di.c(this.a, true);
+          di.a(this.a, false);
+          return;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            localException.printStackTrace();
+          }
+        }
+      }
+    }
+    catch (Error localError)
+    {
+      for (;;)
+      {
+        localError.printStackTrace();
+      }
+    }
   }
 }
 

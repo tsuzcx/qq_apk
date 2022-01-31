@@ -33,7 +33,7 @@ public class QQAVImageBeautyGaussianBlurFilter
     {
       arrayOfFloat[i] = ((float)(1.0D / Math.sqrt(6.283185307179586D * Math.pow(paramFloat, 2.0D)) * Math.exp(-Math.pow(i, 2.0D) / (2.0D * Math.pow(paramFloat, 2.0D)))));
       if (i == 0) {}
-      for (f1 += arrayOfFloat[i];; f1 = (float)(f1 + 2.0D * arrayOfFloat[i]))
+      for (f1 = arrayOfFloat[i] + f1;; f1 = (float)(f1 + 2.0D * arrayOfFloat[i]))
       {
         i += 1;
         break;
@@ -70,7 +70,7 @@ public class QQAVImageBeautyGaussianBlurFilter
         f1 = arrayOfFloat[(paramInt * 2 + 1)];
         float f2 = arrayOfFloat[(paramInt * 2 + 2)];
         paramFloat = f1 + f2;
-        f1 = ((paramInt * 2 + 1) * f1 + (paramInt * 2 + 2) * f2) / paramFloat;
+        f1 = (f1 * (paramInt * 2 + 1) + f2 * (paramInt * 2 + 2)) / paramFloat;
         str1 = str1 + "   sum += texture2D(inputImageTexture, blurCoordinates[0] + singleStepOffset * " + f1 + ") * " + paramFloat + ";\n";
         str1 = str1 + "   sum += texture2D(inputImageTexture, blurCoordinates[0] - singleStepOffset * " + f1 + ") * " + paramFloat + ";\n";
         paramInt += 1;
@@ -92,7 +92,7 @@ public class QQAVImageBeautyGaussianBlurFilter
     {
       localObject[i] = ((float)(1.0D / Math.sqrt(6.283185307179586D * Math.pow(paramFloat, 2.0D)) * Math.exp(-Math.pow(i, 2.0D) / (2.0D * Math.pow(paramFloat, 2.0D)))));
       if (i == 0) {}
-      for (f += localObject[i];; f = (float)(f + 2.0D * localObject[i]))
+      for (f = localObject[i] + f;; f = (float)(f + 2.0D * localObject[i]))
       {
         i += 1;
         break;
@@ -111,7 +111,7 @@ public class QQAVImageBeautyGaussianBlurFilter
     {
       paramFloat = localObject[(paramInt * 2 + 1)];
       f = localObject[(paramInt * 2 + 2)];
-      arrayOfFloat[paramInt] = (((paramInt * 2 + 1) * paramFloat + (paramInt * 2 + 2) * f) / (paramFloat + f));
+      arrayOfFloat[paramInt] = ((paramFloat * (paramInt * 2 + 1) + f * (paramInt * 2 + 2)) / (paramFloat + f));
       paramInt += 1;
     }
     localObject = "attribute vec4 position;\nattribute vec4 inputTextureCoordinate;\nuniform float texelWidthOffset;\nuniform float texelHeightOffset;\nvarying vec2 blurCoordinates[" + (i * 2 + 1) + "];\nvoid main()\n{\n   gl_Position = position;\n   vec2 singleStepOffset = vec2(texelWidthOffset, texelHeightOffset);\n   blurCoordinates[0] = inputTextureCoordinate.xy;\n";
@@ -128,7 +128,8 @@ public class QQAVImageBeautyGaussianBlurFilter
   {
     if (this.mRadiusInPixels >= 1.0F)
     {
-      int i = (int)Math.floor(Math.sqrt(-2.0D * Math.pow(this.mRadiusInPixels, 2.0D) * Math.log(0.0039063F * Math.sqrt(6.283185307179586D * Math.pow(this.mRadiusInPixels, 2.0D)))));
+      double d = Math.pow(this.mRadiusInPixels, 2.0D);
+      int i = (int)Math.floor(Math.sqrt(Math.log(0.0039063F * Math.sqrt(6.283185307179586D * Math.pow(this.mRadiusInPixels, 2.0D))) * (-2.0D * d)));
       int j = i + i % 2;
       if (this.mFilters != null)
       {
@@ -151,29 +152,13 @@ public class QQAVImageBeautyGaussianBlurFilter
     {
       this.mRadiusInPixels = Math.round(paramFloat);
       updateShader();
-      runOnDraw(new Runnable()
-      {
-        public void run()
-        {
-          if (QQAVImageBeautyGaussianBlurFilter.this.mFilters != null)
-          {
-            int i = 0;
-            while (i < QQAVImageBeautyGaussianBlurFilter.this.mFilters.size())
-            {
-              ((QQAVImageFilter)QQAVImageBeautyGaussianBlurFilter.this.mFilters.get(i)).init();
-              ((QQAVImageFilter)QQAVImageBeautyGaussianBlurFilter.this.mFilters.get(i)).onOutputSizeChanged(QQAVImageBeautyGaussianBlurFilter.this.mOutputWidth, QQAVImageBeautyGaussianBlurFilter.this.mOutputHeight);
-              QQAVImageBeautyGaussianBlurFilter.this.onOutputSizeChanged(QQAVImageBeautyGaussianBlurFilter.this.mOutputWidth, QQAVImageBeautyGaussianBlurFilter.this.mOutputHeight);
-              i += 1;
-            }
-          }
-        }
-      });
+      runOnDraw(new QQAVImageBeautyGaussianBlurFilter.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.video.effect.core.qqavimage.beauty.QQAVImageBeautyGaussianBlurFilter
  * JD-Core Version:    0.7.0.1
  */

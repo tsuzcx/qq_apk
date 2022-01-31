@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/b28" android:background="@drawable/do" android:paddingLeft="12.0dip" android:paddingTop="11.0dip" android:paddingRight="12.0dip" android:paddingBottom="11.0dip" android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="37.0dip" android:layout_marginRight="37.0dip" android:layout_centerHorizontal="true">
+        <com.tencent.mobileqq.widget.AnyScaleTypeImageView android:layout_gravity="left" android:id="@id/b29" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginRight="10.0dip" android:src="@null" android:scaleType="fitStart" android:contentDescription="@null" />
+        <LinearLayout android:orientation="vertical" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+            <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="#ff000000" android:id="@id/b2e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cyi" android:singleLine="true" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/g8" android:ellipsize="end" android:id="@id/b2b" android:paddingTop="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" android:singleLine="false" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -9,16 +9,16 @@ import java.util.Map;
 public final class ReqGetDiscussInfo
   extends JceStruct
 {
-  static Map cache_UinList;
+  static Map<Long, Integer> cache_UinList;
   public long DiscussUin;
   public long InfoSeq;
   public long InteRemarkTimeStamp = -1L;
   public String Signature = "";
-  public Map UinList;
+  public Map<Long, Integer> UinList;
   
   public ReqGetDiscussInfo() {}
   
-  public ReqGetDiscussInfo(long paramLong1, long paramLong2, Map paramMap, long paramLong3, String paramString)
+  public ReqGetDiscussInfo(long paramLong1, long paramLong2, Map<Long, Integer> paramMap, long paramLong3, String paramString)
   {
     this.DiscussUin = paramLong1;
     this.InteRemarkTimeStamp = paramLong2;

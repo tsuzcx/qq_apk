@@ -1,24 +1,20 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.antiphing.AntiphingHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.app.MQPIntChkHandler;
 
 public class fdj
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public fdj(AntiphingHandler paramAntiphingHandler) {}
+  public fdj(MQPIntChkHandler paramMQPIntChkHandler) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(AntiphingHandler.a(this.a), 4, "right button is clicked! ");
-    }
-    AntiphingHandler.a(this.a, 0);
+    MQPIntChkHandler.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     fdj
  * JD-Core Version:    0.7.0.1
  */

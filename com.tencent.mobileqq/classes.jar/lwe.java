@@ -1,44 +1,63 @@
-import android.text.TextPaint;
-import android.widget.Button;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule.Ox978RespCallBack;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.FeedsInfoUser;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Bundle;
+import com.tencent.av.redpacket.AVRedPacketManager;
+import com.tencent.av.redpacket.AVRedPacketManager.GameStateInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public class lwe
-  implements UserOperationModule.Ox978RespCallBack
+  implements lwh
 {
-  public lwe(ComponentHeaderUgc paramComponentHeaderUgc, ArticleInfo paramArticleInfo) {}
+  public lwe(AVRedPacketManager paramAVRedPacketManager) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    QLog.d("ComponentHeaderUgc", 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
-    if ((paramBoolean) && (paramInt == 2))
+    if (QLog.isColorLevel()) {
+      QLog.d("AVRedPacketManager", 2, "onLoadFinish, isSucc=" + paramBoolean + ",type=" + paramInt);
+    }
+    if (!AVRedPacketManager.a(this.a, true)) {}
+    do
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.h = paramInt;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.setEnabled(false);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.setText("已关注");
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.getPaint().setFakeBoldText(false);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.h = 2;
-      ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      ReadInJoyLogicEngine.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.a, paramInt);
-      ReadInJoyLogicEngineEventDispatcher.a().b();
+      do
+      {
+        return;
+      } while (paramInt != 1);
+      if ((this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameMode == 1) && (this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameState == 1))
+      {
+        Bundle localBundle = new Bundle();
+        localBundle.putString("key", this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.key);
+        localBundle.putInt("gameState", 1);
+        localBundle.putInt("fromWho", 1);
+        localBundle.putInt("musicId", this.a.g);
+        localBundle.putInt("enterType", this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.enterType);
+        this.a.jdField_a_of_type_Lwb.a();
+        this.a.a(1, localBundle);
+        this.a.a(false, 1011, AVRedPacketManager.jdField_a_of_type_Long, null);
+        this.a.a(false, 1021, AVRedPacketManager.c, null);
+        return;
+      }
+    } while ((this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameMode != 2) || (this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameState != 1));
+    long l = Math.abs(System.currentTimeMillis() - this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.mRedPacketComeStartTime);
+    paramBoolean = msp.b(AVRedPacketManager.a(this.a));
+    if (l >= AVRedPacketManager.f)
+    {
+      if (paramBoolean)
+      {
+        this.a.d();
+        return;
+      }
+      this.a.f();
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.setEnabled(true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.setText("关注");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.getPaint().setFakeBoldText(true);
-    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getContext(), "关注失败", 0).a();
+    if (paramBoolean)
+    {
+      this.a.a(false, 1028, AVRedPacketManager.f - l, null);
+      return;
+    }
+    this.a.a(false, 1026, AVRedPacketManager.f - l, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lwe
  * JD-Core Version:    0.7.0.1
  */

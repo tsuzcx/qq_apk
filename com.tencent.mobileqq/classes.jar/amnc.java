@@ -1,25 +1,30 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qlink.QQProxyForQlink;
-import cooperation.qlink.QlAndQQInterface.WorkState;
+import java.io.File;
 
-public class amnc
-  extends BroadcastReceiver
+final class amnc
+  extends bead
 {
-  public amnc(QQProxyForQlink paramQQProxyForQlink) {}
+  amnc(String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onCancel(beae parambeae)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    while ((!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_EXPIRED")) && (!paramContext.equals("mqq.intent.action.LOGOUT"))) {
+    ammy.jdField_a_of_type_Beae = null;
+    QLog.d(ammy.jdField_a_of_type_JavaLangString, 1, "downloadZipFile cancel");
+  }
+  
+  public void onDone(beae parambeae)
+  {
+    ammy.jdField_a_of_type_Beae = null;
+    if (parambeae.a() == 3)
+    {
+      QLog.d(ammy.jdField_a_of_type_JavaLangString, 1, "download finished " + ammy.f);
+      parambeae = new File(this.jdField_a_of_type_JavaLangString);
+      if ((parambeae.exists()) && (ammy.a(parambeae))) {
+        QLog.d(ammy.jdField_a_of_type_JavaLangString, 1, "downloadZipFile suc and zip succ");
+      }
       return;
     }
-    QLog.w("QQProxyForQlink", 1, "receive qqAccountbroacast action=" + paramContext);
-    QQProxyForQlink.a(this.a, new QlAndQQInterface.WorkState(false, 1, null, null, 0, 0, false));
-    QQProxyForQlink.c(this.a);
+    QLog.d(ammy.jdField_a_of_type_JavaLangString, 1, new Object[] { "downloadZipFile failed: ", parambeae.b, " code=", Integer.valueOf(parambeae.a) });
   }
 }
 

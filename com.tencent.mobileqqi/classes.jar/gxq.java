@@ -1,18 +1,19 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopCreateAvatarActivity;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class gxq
-  implements View.OnClickListener
+public final class gxq
+  implements Runnable
 {
-  public gxq(TroopCreateAvatarActivity paramTroopCreateAvatarActivity) {}
+  public gxq(Context paramContext, String paramString1, String paramString2, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.putExtra("isBack", 1);
-    this.a.setResult(-1, this.a.a);
-    this.a.finish();
+    QQCustomDialog localQQCustomDialog = DialogUtil.b(this.jdField_a_of_type_AndroidContentContext, 230);
+    localQQCustomDialog.setTitle(this.jdField_a_of_type_JavaLangString).setMessage(this.b);
+    localQQCustomDialog.setPositiveButton(this.jdField_a_of_type_AndroidContentContext.getResources().getString(this.jdField_a_of_type_Int), new gxr(this));
+    localQQCustomDialog.show();
   }
 }
 

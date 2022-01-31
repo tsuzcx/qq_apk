@@ -1,20 +1,45 @@
 package com.tencent.token.ui;
 
+import android.app.Dialog;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.fo;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.core.bean.RealNameStatusResult;
+import com.tencent.token.do;
+import com.tencent.token.global.h;
 
-final class tt
+class tt
   implements View.OnClickListener
 {
-  private tt(OpreateMsgActivity paramOpreateMsgActivity, byte paramByte) {}
+  tt(RealNameActivity paramRealNameActivity, Dialog paramDialog) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    if (OpreateMsgActivity.access$200(this.a).e() <= 0) {
+    this.a.dismiss();
+    h.a("QQUserAgent.getInstance().getCurrentUser()" + do.a().e());
+    if ((RealNameActivity.access$100(this.b) == null) || (do.a().e() == null)) {
       return;
     }
-    OpreateMsgActivity.access$500(this.a);
+    if (RealNameActivity.access$100(this.b).mVerify_sms == 1)
+    {
+      paramView = new Intent(this.b, RealNameStep0VerifyMobileActivity.class);
+      paramView.putExtra("realname_result", RealNameActivity.access$100(this.b));
+      paramView.putExtra("realname_mobile", RealNameActivity.access$100(this.b).mMaskMobile);
+      if (do.a().e() != null) {
+        paramView.putExtra("real_uin", do.a().e().mRealUin);
+      }
+      paramView.putExtra("scene_id", 1001);
+      paramView.putExtra("zzb_recommend_view", RealNameActivity.access$700(this.b));
+      this.b.startActivity(paramView);
+      return;
+    }
+    this.b.dismissDialog();
+    paramView = new Intent(this.b, RealNameStep1InputNameIdActivity.class);
+    paramView.putExtra("realname_result", RealNameActivity.access$100(this.b));
+    paramView.putExtra("real_uin", do.a().e().mRealUin);
+    paramView.putExtra("zzb_recommend_view", RealNameActivity.access$700(this.b));
+    this.b.startActivity(paramView);
   }
 }
 

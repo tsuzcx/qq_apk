@@ -1,28 +1,22 @@
-import android.graphics.Color;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ticker.TickerView;
 
-class slv
-  implements Runnable
+public class slv
+  extends AnimatorListenerAdapter
 {
-  slv(slt paramslt, int paramInt) {}
+  public slv(TickerView paramTickerView) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Slt.a.a.setText(this.jdField_a_of_type_Slt.a.jdField_c_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Int > this.jdField_a_of_type_Slt.a.jdField_c_of_type_Int)
-    {
-      this.jdField_a_of_type_Slt.a.a.setTextColor(-65536);
-      this.jdField_a_of_type_Slt.a.rightViewText.setEnabled(false);
-      return;
-    }
-    this.jdField_a_of_type_Slt.a.a.setTextColor(Color.rgb(119, 119, 119));
-    this.jdField_a_of_type_Slt.a.rightViewText.setEnabled(true);
+    TickerView.a(this.a).a();
+    TickerView.a(this.a);
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     slv
  * JD-Core Version:    0.7.0.1
  */

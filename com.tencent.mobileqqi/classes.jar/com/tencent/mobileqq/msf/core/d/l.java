@@ -7,24 +7,27 @@ class l
 {
   l(j paramj) {}
   
-  public byte[] getCrashExtraData()
+  public byte[] getCrashExtraData(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong)
   {
     return null;
   }
   
-  public String getCrashExtraMessage()
+  public String getCrashExtraMessage(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong)
   {
     return null;
   }
   
-  public boolean onCrashFinished(Thread paramThread, Throwable paramThrowable)
+  public boolean onCrashHandleEnd(boolean paramBoolean)
   {
     return true;
   }
   
-  public void onCrashHappen(Thread paramThread, Throwable paramThrowable) {}
+  public void onCrashHandleStart(boolean paramBoolean) {}
   
-  public void onNativeCrash(int paramInt1, int paramInt2, String paramString) {}
+  public boolean onCrashSaving(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong, String paramString4, String paramString5, String paramString6, String paramString7)
+  {
+    return true;
+  }
 }
 
 

@@ -1,40 +1,44 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import cooperation.qzone.report.lp.LpReportManager;
-import cooperation.qzone.util.QZLog;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.3.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.viola.core.ViolaEnvironment;
 
 public class srb
-  implements Runnable
+  implements srg
 {
-  public srb(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public srb(ViolaBaseView paramViolaBaseView, boolean paramBoolean, long paramLong) {}
   
-  public void run()
+  public void a()
   {
-    try
+    ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, 5, this.jdField_a_of_type_Boolean);
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView)))
     {
-      if (!TextUtils.isEmpty(this.a.a.a.a))
+      if (!TextUtils.isEmpty(paramString))
       {
-        Object localObject = this.a.a.a.a;
-        if (this.a.a.a.a.startsWith("+")) {
-          localObject = this.a.a.a.a.substring(1);
+        ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, paramString);
+        if (this.jdField_a_of_type_Boolean)
+        {
+          ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_MAIN, ViolaEnvironment.MAIN_END_NET);
+          ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.TIME_MAIN_JS_NET, Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+          ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).sendEmptyMessageDelayed(3, 0L);
         }
-        localObject = new LpReportInfo_pf00064(699, 1, Long.valueOf((String)localObject).longValue());
-        LpReportManager.getInstance().reportToPF00064((LpReportInfo_pf00064)localObject, false, false);
+        ThreadManager.post(new ViolaBaseView.3.1(this), 8, null, true);
       }
+    }
+    else {
       return;
     }
-    catch (Exception localException)
-    {
-      QZLog.e("QzoneReport", "LpReportInfoProfile", localException);
-    }
+    ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, 10, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     srb
  * JD-Core Version:    0.7.0.1
  */

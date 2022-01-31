@@ -1,34 +1,43 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
-import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Canvas;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameSubProcessHandler.10;
+import java.util.HashMap;
 
-class akxr
-  implements View.OnTouchListener
+public class akxr
+  extends alkf
 {
-  akxr(akxq paramakxq) {}
+  public akxr(CmGameSubProcessHandler.10 param10) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    switch (paramMotionEvent.getAction())
+    if (paramInt == 200)
     {
-    }
-    for (;;)
-    {
-      return false;
-      if ((ARWorldCupGameLogicManager.a(this.a.a) != null) && ((ARWorldCupGameLogicManager.a(this.a.a) instanceof ARWorldCupGlobalSceneRenderable))) {
-        ((ARWorldCupGlobalSceneRenderable)ARWorldCupGameLogicManager.a(this.a.a)).e();
+      Object localObject = new BitmapFactory.Options();
+      ((BitmapFactory.Options)localObject).inSampleSize = 1;
+      ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
+      ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.ARGB_8888;
+      paramArrayOfByte = BitmapFactory.decodeByteArray(paramArrayOfByte, 0, paramArrayOfByte.length, (BitmapFactory.Options)localObject);
+      localObject = Bitmap.createBitmap(paramArrayOfByte.getWidth(), paramArrayOfByte.getHeight(), Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas((Bitmap)localObject);
+      localCanvas.drawBitmap(paramArrayOfByte, 0.0F, 0.0F, null);
+      localCanvas.save();
+      paramArrayOfByte.recycle();
+      if (localObject != null)
+      {
+        this.a.a.a((Bitmap)localObject, 200);
+        akxp.b(this.a.this$0).put(this.a.b, localObject);
       }
-      ARWorldCupGameLogicManager.a(this.a.a).setVisibility(8);
-      QLog.d(ARWorldCupGameLogicManager.a, 2, "showCameraTranvesalDoorTouchView MotionEvent.ACTION_DOWN");
+      return;
     }
+    this.a.a.a(null, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akxr
  * JD-Core Version:    0.7.0.1
  */

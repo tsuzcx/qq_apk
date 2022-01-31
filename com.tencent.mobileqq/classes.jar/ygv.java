@@ -1,35 +1,23 @@
-import android.util.SparseArray;
-import android.util.SparseIntArray;
-import com.tencent.mobileqq.adapter.BuddyListAdapter;
-import com.tencent.mobileqq.fpsreport.FPSPinnedHeaderExpandableListView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class ygv
-  implements Runnable
+  implements View.OnClickListener
 {
-  ygv(ygu paramygu, ArrayList paramArrayList, SparseArray paramSparseArray, SparseIntArray paramSparseIntArray) {}
+  ygv(ygq paramygq, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BuddyListAdapter", 2, "notifyDataSetChanged out ThreadManager");
-    }
-    BuddyListAdapter.a(this.jdField_a_of_type_Ygu.a, this.jdField_a_of_type_JavaUtilArrayList);
-    BuddyListAdapter.a(this.jdField_a_of_type_Ygu.a, this.jdField_a_of_type_AndroidUtilSparseArray);
-    BuddyListAdapter.a(this.jdField_a_of_type_Ygu.a, this.jdField_a_of_type_AndroidUtilSparseIntArray);
-    ((FPSPinnedHeaderExpandableListView)this.jdField_a_of_type_Ygu.a.a).b();
-    BuddyListAdapter.a(this.jdField_a_of_type_Ygu.a);
-    if (BuddyListAdapter.a(this.jdField_a_of_type_Ygu.a))
-    {
-      BuddyListAdapter.a(this.jdField_a_of_type_Ygu.a, false);
-      BuddyListAdapter.b(this.jdField_a_of_type_Ygu.a);
-    }
+    ygg.b(this.jdField_a_of_type_Ygq.a, ygg.a(this.jdField_a_of_type_Ygq.a).a(ygg.a(this.jdField_a_of_type_Ygq.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply));
+    ygg.c(this.jdField_a_of_type_Ygq.a, true);
+    ygg.a(this.jdField_a_of_type_Ygq.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ygv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,26 @@
-import android.app.Activity;
-import dov.com.qq.im.QIMCameraCaptureUnit;
-import dov.com.qq.im.QIMCameraUtil;
-import dov.com.qq.im.setting.IQIMCameraContainer;
+import com.tencent.ark.ark.VariantWrapper;
 
-public class aniv
-  implements Runnable
+class aniv
+  implements anjt
 {
-  public aniv(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
+  aniv(anii paramanii, long paramLong) {}
   
-  public void run()
+  public void a(long paramLong)
   {
-    try
-    {
-      QIMCameraCaptureUnit.a(this.a, QIMCameraUtil.a(this.a.a.a(), true));
-      this.a.a.a().runOnUiThread(new aniw(this));
-      return;
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Anii.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+  }
+  
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  {
+    anif.a(this.jdField_a_of_type_Anii.a, this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aniv
  * JD-Core Version:    0.7.0.1
  */

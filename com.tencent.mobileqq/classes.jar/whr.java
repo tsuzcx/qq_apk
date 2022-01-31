@@ -1,30 +1,24 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.util.List;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.biz.qqstory.storyHome.VideoEncodeActivity;
 
 public class whr
-  implements Runnable
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public whr(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public whr(VideoEncodeActivity paramVideoEncodeActivity) {}
   
-  public void run()
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    EntityManager localEntityManager = this.a.app.getEntityManagerFactory().createEntityManager();
-    List localList = localEntityManager.a(ReadInJoySearchHistoryEntity.class, true, null, null, null, null, " timestamp DESC ", null);
-    Message localMessage = this.a.a.obtainMessage(1);
-    localMessage.obj = localList;
-    this.a.a.sendMessage(localMessage);
-    localEntityManager.a();
+    paramRadioGroup = (RadioButton)paramRadioGroup.findViewById(paramInt);
+    VideoEncodeActivity.a(this.a, (String)paramRadioGroup.getTag());
+    wxe.d("Q.qqstory:VideoEncodeActivity", "select fake vid %s", new Object[] { VideoEncodeActivity.a(this.a) });
+    VideoEncodeActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     whr
  * JD-Core Version:    0.7.0.1
  */

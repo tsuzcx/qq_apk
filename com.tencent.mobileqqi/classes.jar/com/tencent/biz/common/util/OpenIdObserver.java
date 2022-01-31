@@ -20,7 +20,7 @@ public class OpenIdObserver
     a(paramBoolean, (OpenID)paramObject);
   }
   
-  protected void a(boolean paramBoolean, OpenID paramOpenID) {}
+  public void a(boolean paramBoolean, OpenID paramOpenID) {}
 }
 
 

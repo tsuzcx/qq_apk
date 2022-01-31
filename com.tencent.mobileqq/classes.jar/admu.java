@@ -1,15 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class admu
-  implements View.OnClickListener
+  extends asim
 {
-  public admu(IphoneTitleBarFragment paramIphoneTitleBarFragment) {}
+  public admu(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    this.a.d();
+    super.a(paramBoolean, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onBandIntimateRelationship");
+    }
+    PermisionPrivacyActivity.a(this.a);
+  }
+  
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  {
+    super.a(paramBoolean1, paramString, paramBoolean2);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onDisbandIntimateRelationship");
+    }
+    PermisionPrivacyActivity.a(this.a);
   }
 }
 

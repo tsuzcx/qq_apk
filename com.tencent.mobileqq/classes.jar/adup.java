@@ -1,50 +1,18 @@
-import com.tencent.hlyyb.downloader.Downloader;
-import com.tencent.hlyyb.downloader.DownloaderTask;
-import com.tencent.mobileqq.intervideo.now.DownloadEngine.IDownloadListener;
-import com.tencent.mobileqq.intervideo.now.DownloadEngine.IHellyEventListener;
-import com.tencent.mobileqq.intervideo.now.DownloadEngine.NowDownloadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
 public class adup
-  implements IHellyEventListener
+  implements adif
 {
-  public adup(NowDownloadManager paramNowDownloadManager) {}
+  public adup(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void a(DownloaderTask paramDownloaderTask)
+  public void a()
   {
-    QLog.e("DownloadManager_Now_for_qq", 4, "onTaskCompleted----DOWNLOAD_SUCCESS, filePath = " + paramDownloaderTask.getSavePath());
-    if (NowDownloadManager.a(this.a) != null) {
-      NowDownloadManager.a(this.a).deleteTask(paramDownloaderTask, false);
-    }
-    if ((NowDownloadManager.a(this.a) != null) && (NowDownloadManager.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (NowDownloadManager.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
-      ((IDownloadListener)NowDownloadManager.a(this.a).get(paramDownloaderTask.getUrl())).a();
-    }
+    RegisterPhoneNumActivity.a(this.a).b();
   }
   
-  public void b(DownloaderTask paramDownloaderTask) {}
-  
-  public void c(DownloaderTask paramDownloaderTask)
+  public void b()
   {
-    QLog.e("DownloadManager_Now_for_qq", 4, "onTaskFailed----DOWNLOAD_FAILED");
-    if (NowDownloadManager.a(this.a) != null) {
-      NowDownloadManager.a(this.a).deleteTask(paramDownloaderTask, false);
-    }
-    if ((NowDownloadManager.a(this.a) != null) && (NowDownloadManager.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (NowDownloadManager.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
-      ((IDownloadListener)NowDownloadManager.a(this.a).get(paramDownloaderTask.getUrl())).a(paramDownloaderTask.getFailCode(), paramDownloaderTask.getFailCode(), "failed");
-    }
-  }
-  
-  public void d(DownloaderTask paramDownloaderTask) {}
-  
-  public void e(DownloaderTask paramDownloaderTask) {}
-  
-  public void f(DownloaderTask paramDownloaderTask)
-  {
-    QLog.e("DownloadManager_Now_for_qq", 4, "onTaskReceived----percent: " + paramDownloaderTask.getPercentage());
-    if ((NowDownloadManager.a(this.a) != null) && (NowDownloadManager.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (NowDownloadManager.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
-      ((IDownloadListener)NowDownloadManager.a(this.a).get(paramDownloaderTask.getUrl())).a(paramDownloaderTask.getReceivedLength(), paramDownloaderTask.getTotalLength(), paramDownloaderTask.getPercentage());
-    }
+    RegisterPhoneNumActivity.a(this.a).b();
   }
 }
 

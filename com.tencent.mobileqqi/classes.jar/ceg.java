@@ -1,26 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.app.DiscussionManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.app.proxy.RecentUserProxy;
-import com.tencent.mobileqq.data.RecentUser;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
+import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
-class ceg
-  implements DialogInterface.OnClickListener
+public class ceg
+  extends ContactBindObserver
 {
-  ceg(cef paramcef, String paramString) {}
+  public ceg(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    ((DiscussionManager)this.jdField_a_of_type_Cef.a.b.getManager(48)).a(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = this.jdField_a_of_type_Cef.a.b.a().a();
-    RecentUser localRecentUser = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString, 3000);
-    if (localRecentUser != null) {
-      paramDialogInterface.b(localRecentUser);
+    if (paramBoolean1)
+    {
+      int i = ContactSyncJumpActivity.a(this.a).b();
+      if ((i == 1) || (i == 2))
+      {
+        this.a.startActivity(new Intent(this.a, PhoneFrameActivity.class));
+        this.a.finish();
+      }
     }
-    this.jdField_a_of_type_Cef.a.finish();
   }
 }
 

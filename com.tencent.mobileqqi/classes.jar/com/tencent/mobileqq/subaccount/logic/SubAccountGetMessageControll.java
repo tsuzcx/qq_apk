@@ -8,8 +8,8 @@ import com.tencent.mobileqq.app.message.SubAccountMessageProcessor;
 import com.tencent.mobileqq.subaccount.SubAccountAssistantImpl;
 import com.tencent.mobileqq.subaccount.SubAccountProtocManager;
 import com.tencent.qphone.base.util.QLog;
-import gpw;
-import gpx;
+import glp;
+import glq;
 import mqq.manager.Manager;
 import mqq.manager.ServerConfigManager.ConfigType;
 
@@ -19,9 +19,9 @@ public class SubAccountGetMessageControll
   private static final long jdField_a_of_type_Long = 300L;
   private static final String jdField_a_of_type_JavaLangString = "Q.subaccount.SubAccountGetMessageControll";
   private int jdField_a_of_type_Int = 0;
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new gpw(this);
+  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new glp(this);
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  private gpx jdField_a_of_type_Gpx = null;
+  private glq jdField_a_of_type_Glq = null;
   private boolean jdField_a_of_type_Boolean = false;
   private byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
   private long jdField_b_of_type_Long = 300L;
@@ -126,10 +126,10 @@ public class SubAccountGetMessageControll
     }
     synchronized (this.jdField_a_of_type_ArrayOfByte)
     {
-      if (this.jdField_a_of_type_Gpx != null)
+      if (this.jdField_a_of_type_Glq != null)
       {
-        this.jdField_a_of_type_Gpx.a();
-        this.jdField_a_of_type_Gpx = null;
+        this.jdField_a_of_type_Glq.a();
+        this.jdField_a_of_type_Glq = null;
         this.jdField_b_of_type_Boolean = true;
       }
       return;
@@ -143,13 +143,13 @@ public class SubAccountGetMessageControll
     synchronized (this.jdField_a_of_type_ArrayOfByte)
     {
       this.jdField_b_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Gpx == null)
+      if (this.jdField_a_of_type_Glq == null)
       {
-        this.jdField_a_of_type_Gpx = new gpx(this, null);
-        new Thread(this.jdField_a_of_type_Gpx, "Q.subaccount.SubAccountGetMessageControll").start();
+        this.jdField_a_of_type_Glq = new glq(this, null);
+        new Thread(this.jdField_a_of_type_Glq, "Q.subaccount.SubAccountGetMessageControll").start();
         return;
       }
-      gpx.a(this.jdField_a_of_type_Gpx, paramBoolean);
+      glq.a(this.jdField_a_of_type_Glq, paramBoolean);
     }
   }
   

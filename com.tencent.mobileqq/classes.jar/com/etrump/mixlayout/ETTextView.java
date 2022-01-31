@@ -1,230 +1,1272 @@
 package com.etrump.mixlayout;
 
+import aepi;
+import afzv;
+import agdh;
+import alsf;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetrics;
+import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.text.Spannable;
+import android.text.TextPaint;
+import android.text.TextUtils;
 import android.text.style.ClickableSpan;
 import android.util.AttributeSet;
+import android.util.SparseArray;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewTreeObserver;
 import android.widget.TextView;
-import com.Vas.ColorFont.FastColorFontHelper;
-import com.Vas.ColorFont.FounderColorLayout;
+import android.widget.TextView.BufferType;
+import anwo;
+import anyh;
+import b;
+import banh;
+import bdus;
+import bdut;
+import bemz;
+import c;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.ToolAppRuntime;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder.Holder;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.bubble.BubbleInfo;
-import com.tencent.mobileqq.bubble.VipBubbleDrawable;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.vas.VasMonitorHandler;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.mobileqq.widget.AnimationTextView;
-import com.tencent.mobileqq.widget.AnimationTextView.OnDoubleClick;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
 import com.tencent.widget.XListView;
+import f;
+import fj;
+import fp;
+import fq;
+import fr;
+import fs;
+import ft;
+import fu;
+import fv;
+import fx;
+import g;
+import gb;
+import ge;
+import gg;
+import gj;
+import j;
 import java.util.concurrent.atomic.AtomicBoolean;
-import pu;
-import pv;
-import pw;
-import px;
+import k;
+import l;
+import s;
 
 public class ETTextView
   extends AnimationTextView
 {
-  public static boolean i;
-  private static boolean l;
-  public int a;
-  public long a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
-  public FounderColorLayout a;
-  public ETFont a;
-  public ETLayout a;
-  public SessionInfo a;
-  public ChatMessage a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new pu(this);
-  public boolean a;
-  public int b;
-  private MotionEvent b;
-  public boolean b;
-  private float jdField_c_of_type_Float;
-  public int c;
-  private Runnable jdField_c_of_type_JavaLangRunnable = new pv(this);
-  public boolean c;
-  private float d;
-  public int d;
-  public boolean d;
-  private float e;
-  public int e;
-  public boolean e;
-  private int f;
-  public boolean f;
-  private int jdField_g_of_type_Int;
-  boolean jdField_g_of_type_Boolean = false;
-  private int h;
-  public boolean h;
-  private int i;
-  private boolean m;
-  private boolean n;
-  private boolean o;
-  private boolean p;
-  
-  static
-  {
-    jdField_i_of_type_Boolean = true;
-  }
+  public static final int MSG_DECORATION_RENDER = 2;
+  public static final int MSG_DECORATION_TRIGGER = 0;
+  public static final int MSG_DECORATION_UPDATE = 1;
+  public static final int MSG_RECYCLE_BITMAP = 3;
+  static final String TAG = "ETTextView";
+  public static boolean enableAnimation = true;
+  public static Handler mCreateDecorationHandler;
+  private static boolean mReportError;
+  private static Bitmap mSwapBitmap;
+  private static Handler mUIHandler;
+  private boolean hasComplexScript;
+  private boolean hasComputeComplexScript;
+  public boolean isFounderAnimating;
+  public boolean isParsingMagicFont;
+  public fu mAnimationListener;
+  private final fq mBitmapLocker = new fq(this, null);
+  private boolean mCacheMeasureResult = true;
+  public int mClickEpId = -1;
+  public int mClickcEId = -1;
+  private MotionEvent mCurrentDownEvent;
+  private boolean mDecorAnimating;
+  private boolean mDecorRunning;
+  private ETDecoration mDecoration;
+  int mEmojiX = -1;
+  int mEmojiY = -1;
+  private int[] mFZColor = new int[4];
+  public ETFont mFont;
+  public j mFounderColorLayout;
+  public boolean mHasClickedArkSpan;
+  public fj mLayout;
+  private int mLinkBackcolor;
+  public boolean mMagicFont;
+  public int mMaxWidth = 2147483647;
+  public ChatMessage mMessage;
+  private int mMinHeight;
+  private int mMinWidth;
+  public long mMsgId;
+  private ft mOnBeforeTextOrFontChangeListener;
+  private boolean mPauseAnimation;
+  private MotionEvent mPreviousUpEvent;
+  private Paint mSelectPaint;
+  public SessionInfo mSessionInfo;
+  private int mShadowColor;
+  private float mShadowDx;
+  private float mShadowDy;
+  private float mShadowRadius;
+  private gg mTextGraphMap;
+  private fp mTextSelection;
+  Runnable mTimerForSecondClick = new ETTextView.1(this);
+  public boolean shouldStartAnimation;
   
   public ETTextView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_e_of_type_Int = -1;
+    initHandler();
+    init();
   }
   
   public ETTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_e_of_type_Int = -1;
+    initHandler();
+    init();
   }
   
   public ETTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_e_of_type_Int = -1;
+    initHandler();
+    init();
   }
   
-  private void a(int paramInt1, int paramInt2)
+  public static void clearCache()
   {
-    BubbleInfo localBubbleInfo;
+    if (mUIHandler != null) {
+      mUIHandler.removeCallbacksAndMessages(null);
+    }
+    if (mCreateDecorationHandler != null)
+    {
+      mCreateDecorationHandler.removeCallbacksAndMessages(null);
+      mCreateDecorationHandler.sendEmptyMessage(3);
+    }
+  }
+  
+  private void createFounderLayout(Class<? extends j> paramClass)
+  {
+    if ((this.mFounderColorLayout == null) || (this.mFounderColorLayout.getClass() != paramClass))
+    {
+      if (paramClass == l.class) {
+        this.mFounderColorLayout = new l(this, this.mFont);
+      }
+    }
+    else {
+      return;
+    }
+    if (paramClass == s.class)
+    {
+      this.mFounderColorLayout = new s(this, this.mFont);
+      return;
+    }
+    if (paramClass == b.class)
+    {
+      this.mFounderColorLayout = new b(this, this.mFont);
+      return;
+    }
+    if (paramClass == c.class)
+    {
+      this.mFounderColorLayout = new c(this, this.mFont);
+      return;
+    }
+    throw new RuntimeException("Unkown class: " + paramClass.getName());
+  }
+  
+  private void dealSmallEmojiClick(int paramInt1, int paramInt2)
+  {
+    anwo localanwo;
     Object localObject;
     Resources localResources;
     boolean bool;
-    if (this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a(paramInt1, paramInt2) != null)
+    if (this.mLayout.a(paramInt1, paramInt2) != null)
     {
-      localBubbleInfo = (BubbleInfo)getTag(2131362293);
-      localObject = (ChatMessage)getTag(2131362294);
+      localanwo = (anwo)getTag(2131363765);
+      localObject = (ChatMessage)getTag(2131364216);
       localResources = getResources();
       bool = false;
       if (localObject != null) {
         bool = ((ChatMessage)localObject).isSend();
       }
       localObject = getBackground();
-      if ((localObject == null) || (!(localObject instanceof VipBubbleDrawable))) {
+      if ((localObject == null) || (!(localObject instanceof anyh))) {
         break label82;
       }
-      ((VipBubbleDrawable)localObject).jdField_a_of_type_Boolean = true;
+      ((anyh)localObject).jdField_a_of_type_Boolean = true;
     }
     label82:
-    while ((localObject == null) || (localBubbleInfo == null)) {
+    while ((localObject == null) || (localanwo == null)) {
       return;
     }
     if (bool) {}
-    for (paramInt1 = 2130845785;; paramInt1 = 2130845621)
+    for (paramInt1 = 2130849438;; paramInt1 = 2130849262)
     {
-      localBubbleInfo.a(this, localResources.getDrawable(paramInt1));
+      localanwo.a(this, localResources.getDrawable(paramInt1));
       return;
     }
   }
   
-  private boolean g()
+  private boolean hasDecorAnimation()
   {
-    if (this.jdField_a_of_type_ComEtrumpMixlayoutETLayout == null) {}
-    ETDecoration localETDecoration;
-    do
-    {
+    if (this.mLayout == null) {}
+    while ((this.mDecoration == null) || (this.mDecoration.getFrameNum() <= 0)) {
       return false;
-      localETDecoration = this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a();
-    } while ((localETDecoration == null) || (localETDecoration.a() <= 0));
+    }
     return true;
   }
   
-  public ETLayout a()
+  private static void initHandler()
   {
-    return this.jdField_a_of_type_ComEtrumpMixlayoutETLayout;
+    Object localObject;
+    if (mCreateDecorationHandler == null)
+    {
+      mUIHandler = new fv(null);
+      if (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+        break label86;
+      }
+      localObject = (fx)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(42);
+      if ((localObject != null) && (((fx)localObject).a != null) && (((fx)localObject).a.getLooper() != null)) {
+        mCreateDecorationHandler = new fr(((fx)localObject).a.getLooper());
+      }
+    }
+    label86:
+    do
+    {
+      do
+      {
+        return;
+      } while (!(BaseApplicationImpl.getApplication().getRuntime() instanceof ToolAppRuntime));
+      localObject = gb.a();
+    } while (localObject == null);
+    mCreateDecorationHandler = new fr(((gb)localObject).a.getLooper());
   }
   
-  public void a()
+  private void setFont(ETFont paramETFont, long paramLong, int paramInt)
   {
-    if (this.jdField_a_of_type_ComVasColorFontFounderColorLayout != null) {
-      this.jdField_a_of_type_ComVasColorFontFounderColorLayout.a();
+    if (this.mMsgId != paramLong) {
+      this.hasComputeComplexScript = false;
+    }
+    if (this.mFont == null)
+    {
+      this.mFont = new ETFont(paramETFont.mFontId, paramETFont.mFontPath, getTextSize(), paramETFont.mFontType, paramETFont.mTypeface);
+      this.mFont.copy(paramETFont);
+      this.mFont.setSize(getTextSize());
+    }
+    for (;;)
+    {
+      this.mFont.m_comboIndex = paramInt;
+      if ((this.mFont.mFontType != 1) && (this.mFont.mTypeface != null)) {
+        setTypeface(this.mFont.mTypeface);
+      }
+      if (this.mFont.mFontId == 0) {
+        setTypeface(null);
+      }
+      this.mMsgId = paramLong;
+      if (this.mLayout == null) {
+        this.mLayout = new fj();
+      }
+      this.mFont.setColor(getCurrentTextColor());
+      if (this.mOnBeforeTextOrFontChangeListener != null) {
+        this.mOnBeforeTextOrFontChangeListener.a(this);
+      }
+      return;
+      this.mFont.copy(paramETFont);
+      this.mFont.mAnimationId = paramLong;
+      this.mFont.mText = paramETFont.mText;
+      if (paramETFont.mFontType != 1) {
+        this.mFont.mTypeface = paramETFont.mTypeface;
+      }
+      this.mFont.m_diyHandle = paramETFont.m_diyHandle;
     }
   }
   
-  public void a(boolean paramBoolean)
+  public void clearFounderAnimation()
   {
-    if ((!g()) || (!f()) || (!this.jdField_d_of_type_Boolean)) {}
+    if (this.mFounderColorLayout != null)
+    {
+      this.mMsgId = System.currentTimeMillis();
+      this.mFounderColorLayout.i();
+    }
+  }
+  
+  public void clearHighlightContent()
+  {
+    if (isUsingFZColorFont2()) {
+      if ((this.mFounderColorLayout instanceof k)) {
+        ((k)this.mFounderColorLayout).d();
+      }
+    }
     do
     {
       return;
-      this.jdField_e_of_type_Boolean = false;
-      this.o = jdField_i_of_type_Boolean;
-    } while ((!this.o) || (this.p) || ((!paramBoolean) && ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage == null) || (!android.text.TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("font_animation_played")))) && (this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a().jdField_a_of_type_Int == -1)));
-    if ((!paramBoolean) && (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.saveExtInfoToExtStr("font_animation_played", "1");
-      ThreadManager.executeOnSubThread(new pw(this));
+      if (!isUsingHYFont()) {
+        break;
+      }
+    } while (this.mTextSelection == null);
+    this.mTextSelection.a();
+    return;
+    super.clearHighlightContent();
+  }
+  
+  public fj getETLayout()
+  {
+    return this.mLayout;
+  }
+  
+  public gg getTextGraphMap()
+  {
+    if (this.mTextGraphMap == null) {
+      this.mTextGraphMap = new gg(getText());
     }
-    String str2;
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
+    return this.mTextGraphMap;
+  }
+  
+  public boolean hasFounderAnimationFont()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.mFont != null)
     {
-      str2 = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).c();
-      if (!paramBoolean) {
-        break label211;
+      bool1 = bool2;
+      if (this.mFont.mFontId != 0)
+      {
+        bool1 = bool2;
+        if (this.mFont.mFontType == 4)
+        {
+          int i = f.b(this.mFont.mFontId);
+          if ((i != 3) && (i != 7))
+          {
+            bool1 = bool2;
+            if (i != 8) {}
+          }
+          else
+          {
+            bool1 = true;
+          }
+        }
       }
     }
-    label211:
-    for (String str1 = "1";; str1 = "0")
+    return bool1;
+  }
+  
+  public boolean hasHYFont()
+  {
+    boolean bool2 = true;
+    boolean bool1 = false;
+    if (((this.mFont != null) && (this.mFont.mFontId != 0) && (this.mFont.mFontType == 1)) || (isDrawDefaultByHY())) {
+      if (ETEngine.getInstance().native_containComplexScript(getText().toString())) {
+        break label61;
+      }
+    }
+    label61:
+    for (bool1 = bool2;; bool1 = false) {
+      return bool1;
+    }
+  }
+  
+  public void highlightContent()
+  {
+    if (isUsingFZColorFont2()) {
+      if ((this.mFounderColorLayout instanceof k))
+      {
+        i = getTextGraphMap().a(startIndex());
+        j = getTextGraphMap().a(endIndex());
+        ((k)this.mFounderColorLayout).a(i, j);
+      }
+    }
+    do
     {
-      VasWebviewUtil.reportCommercialDrainage(str2, "Font_Mall", "0X800813C", "0", 0, 1, 1, null, str1, "" + this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId);
-      this.p = true;
-      this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_c_of_type_JavaLangRunnable);
+      return;
+      if (!isUsingHYFont()) {
+        break;
+      }
+    } while (this.mTextSelection == null);
+    int i = getTextGraphMap().a(startIndex());
+    int j = getTextGraphMap().a(endIndex() - 1);
+    this.mTextSelection.a(i, j);
+    return;
+    super.highlightContent();
+  }
+  
+  protected void init()
+  {
+    this.mSelectPaint = new Paint();
+    setTypeface(null);
+  }
+  
+  public boolean isCacheMeasureResult()
+  {
+    return this.mCacheMeasureResult;
+  }
+  
+  public boolean isDrawDefaultByHY()
+  {
+    return (this.mFont != null) && (this.mFont.mFontId == 9999) && (!TextUtils.isEmpty(this.mFont.mFontPath)) && (gj.jdField_a_of_type_Int == 4);
+  }
+  
+  public boolean isUseExpressFont()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (isUsingFZColorFont2())
+    {
+      int i = f.b(this.mFont.mFontId);
+      int j = f.c(this.mFont.mFontId);
+      bool1 = bool2;
+      if (i == 8) {
+        if (j != 3)
+        {
+          bool1 = bool2;
+          if (j != 4) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public boolean isUsingFZColorFont2()
+  {
+    if (!this.hasComputeComplexScript)
+    {
+      this.hasComplexScript = banh.b(getText().toString());
+      this.hasComputeComplexScript = true;
+    }
+    return (this.mFont != null) && (this.mFont.mFontId != 0) && (this.mFont.mFontType == 4) && (!this.hasComplexScript);
+  }
+  
+  public boolean isUsingFounderAnimationFont()
+  {
+    return hasFounderAnimationFont();
+  }
+  
+  public boolean isUsingHYFont()
+  {
+    return (hasHYFont()) && (this.mLayout != null) && (this.mLayout.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+  }
+  
+  public boolean isViewVisible()
+  {
+    if ((getContext() instanceof FragmentActivity))
+    {
+      Object localObject1 = ((FragmentActivity)getContext()).getChatFragment();
+      if ((localObject1 != null) && (((ChatFragment)localObject1).a() != null) && (((ChatFragment)localObject1).a().a != null))
+      {
+        localObject1 = ((ChatFragment)localObject1).a().a;
+        localObject1 = aepi.a((ListView)localObject1, aepi.a(this.mMsgId, ((XListView)localObject1).getAdapter()));
+        Object localObject2;
+        if ((localObject1 != null) && ((((View)localObject1).getTag() instanceof agdh)))
+        {
+          localObject2 = (agdh)((View)localObject1).getTag();
+          if ((((agdh)localObject2).d == null) || (((agdh)localObject2).d.getTop() + ((View)localObject1).getBottom() < getContext().getResources().getDimensionPixelSize(2131298914))) {}
+        }
+        else
+        {
+          do
+          {
+            return true;
+            if ((localObject1 == null) || (!(aepi.a((View)localObject1) instanceof afzv))) {
+              break;
+            }
+            localObject2 = (afzv)aepi.a((View)localObject1);
+          } while (((View)localObject1).getTop() + ((View)localObject1).getBottom() >= getContext().getResources().getDimensionPixelSize(2131298914));
+        }
+      }
+    }
+    if (((getContext() instanceof QQBrowserActivity)) || ((getContext() instanceof PublicFragmentActivity)) || ((getContext() instanceof FriendProfileCardActivity))) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
+  }
+  
+  public void locationByIndex(int paramInt, int[] paramArrayOfInt, boolean paramBoolean)
+  {
+    if (isUsingFZColorFont2()) {
+      if ((this.mFounderColorLayout instanceof k))
+      {
+        paramInt = getTextGraphMap().a(paramInt);
+        ((k)this.mFounderColorLayout).a(paramInt, paramArrayOfInt, paramBoolean);
+      }
+    }
+    do
+    {
+      return;
+      if (!isUsingHYFont()) {
+        break;
+      }
+    } while (this.mTextSelection == null);
+    paramInt = getTextGraphMap().a(paramInt);
+    this.mTextSelection.a(paramInt, paramArrayOfInt, paramBoolean);
+    return;
+    super.locationByIndex(paramInt, paramArrayOfInt, paramBoolean);
+  }
+  
+  public void onDetachedFromWindow()
+  {
+    super.onDetachedFromWindow();
+    if (this.mFounderColorLayout != null) {
+      this.mFounderColorLayout.e();
+    }
+  }
+  
+  public void onDraw(Canvas paramCanvas)
+  {
+    if (TextUtils.isEmpty(getText()))
+    {
+      super.onDraw(paramCanvas);
+      return;
+    }
+    if ((!isUsingHYFont()) && (!isUsingFZColorFont2()))
+    {
+      if ((this.mFont != null) && (this.mFont.mFontId != 0))
+      {
+        if ((this.mFont.mFontType != 1) || (!ETEngine.getInstance().native_isColorVariantFont(this.mFont))) {
+          break label123;
+        }
+        setTextColor(ETEngine.getInstance().native_getTextColor(this.mFont));
+      }
+      for (;;)
+      {
+        try
+        {
+          super.onDraw(paramCanvas);
+          return;
+        }
+        catch (Exception paramCanvas)
+        {
+          QLog.e("ETTextView", 1, "onDraw failed of:" + getText(), paramCanvas);
+          return;
+        }
+        label123:
+        if (this.mFont.mFontType == 4)
+        {
+          ??? = this.mFZColor;
+          if (g.a().a(this.mFont.mFontId, this.mFont.m_comboIndex, (int[])???) == 1) {
+            setTextColor(Color.argb(???[3], ???[0], ???[1], ???[2]));
+          }
+        }
+      }
+    }
+    long l1;
+    int j;
+    int i;
+    if (isUsingHYFont())
+    {
+      l1 = System.currentTimeMillis();
+      if (this.shouldStartAnimation) {
+        startDecorAnimation(false, false);
+      }
+      if (this.mTextSelection != null)
+      {
+        ??? = this.mTextSelection.a();
+        this.mSelectPaint.setColor(highlightBackgroundColor());
+        if (??? != null)
+        {
+          j = ((SparseArray)???).size();
+          i = 0;
+          while (i < j)
+          {
+            paramCanvas.drawRect((Rect)((SparseArray)???).valueAt(i), this.mSelectPaint);
+            i += 1;
+          }
+        }
+      }
+      this.mLayout.jdField_a_of_type_ComEtrumpMixlayoutETFont.setColor(getCurrentTextColor());
+    }
+    for (;;)
+    {
+      long l2;
+      synchronized (this.mBitmapLocker)
+      {
+        Object localObject2 = this.mBitmapLocker.a();
+        int m;
+        int k;
+        if ((localObject2 != null) && (!((Bitmap)localObject2).isRecycled()))
+        {
+          m = getPaddingLeft();
+          k = getPaddingTop();
+          if ((this.mDecorRunning) && (this.mDecoration != null))
+          {
+            paramCanvas.drawBitmap((Bitmap)localObject2, m, k, null);
+            j = k;
+            i = m;
+            if (this.mDecoration.getDecorationType() == 1)
+            {
+              this.mLayout.a(paramCanvas, m, k);
+              i = m;
+              j = k;
+            }
+            this.mLayout.b(paramCanvas, i, j);
+          }
+        }
+        else
+        {
+          l2 = System.currentTimeMillis();
+          ge.a("action_draw", this.mFont.mFontId, this.mFont.mFontType, getText().length(), l2 - l1);
+          return;
+        }
+        ETEngine localETEngine = ETEngine.getInstance();
+        if ((this.mDecoration == null) || (this.mDecoration.isLastFrame())) {
+          break label677;
+        }
+        bool = true;
+        ((Bitmap)localObject2).eraseColor(0);
+        this.mLayout.a(localETEngine, (Bitmap)localObject2, this.mDecoration, bool);
+        this.mLayout.a(paramCanvas, m, k, (Bitmap)localObject2);
+        j = k;
+        i = m;
+        if (this.mDecoration != null)
+        {
+          localObject2 = this.mDecoration.mMargins;
+          j = k;
+          i = m;
+          if (localObject2 != null)
+          {
+            i = m + ((Rect)localObject2).left;
+            j = k + ((Rect)localObject2).top;
+          }
+        }
+        this.mLayout.a(paramCanvas, i, j);
+      }
+      if (!isUsingFZColorFont2()) {
+        break;
+      }
+      l1 = System.currentTimeMillis();
+      if ((this.mFounderColorLayout != null) && (!this.mFounderColorLayout.a(paramCanvas))) {
+        super.onDraw(paramCanvas);
+      }
+      while (hasFounderAnimationFont())
+      {
+        startFounderDecorAnimation(false, false);
+        return;
+        l2 = System.currentTimeMillis();
+        ge.a("action_draw", this.mFont.mFontId, 4, getText().length(), l2 - l1);
+      }
+      break;
+      label677:
+      boolean bool = false;
+    }
+  }
+  
+  public void onMeasure(int paramInt1, int paramInt2)
+  {
+    if (TextUtils.isEmpty(getText()))
+    {
+      super.onMeasure(paramInt1, paramInt2);
+      return;
+    }
+    int i;
+    int j;
+    for (;;)
+    {
+      try
+      {
+        if (!isUsingFZColorFont2()) {
+          break label366;
+        }
+        i = f.b(this.mFont.mFontId);
+        j = f.c(this.mFont.mFontId);
+        if (i != 8) {
+          break label334;
+        }
+        if ((j == 1) || (j == 2))
+        {
+          createFounderLayout(s.class);
+          if (QLog.isColorLevel()) {
+            QLog.d("ETTextView", 2, "createFounderLayout: " + this.mFont.mFontId + "," + i + "," + j + "," + this.mFounderColorLayout);
+          }
+          int[] arrayOfInt = this.mFounderColorLayout.a(paramInt1, paramInt2, this.mMsgId, this.mMagicFont, this.mFont);
+          if ((arrayOfInt == null) || (arrayOfInt[0] <= 0) || (arrayOfInt[1] <= 0)) {
+            break;
+          }
+          setMeasuredDimension(arrayOfInt[0], arrayOfInt[1]);
+          return;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("ETTextView", 1, "measure fail ", localThrowable);
+        localThrowable.printStackTrace();
+        this.mFont.mFontId = 0;
+        this.mLayout.jdField_a_of_type_Long = -1L;
+        if ((!mReportError) && (localThrowable.getMessage().contains("textlayout")))
+        {
+          bdut.a(null, "individual_v2_font_measure_error", "font_measure_error", localThrowable.getMessage(), localThrowable.getMessage(), 0.0F);
+          bdus.a("individual_v2_font_measure_error", "font_measure_error");
+          mReportError = true;
+        }
+        super.onMeasure(paramInt1, paramInt2);
+        return;
+      }
+      if ((j == 3) || (j == 4) || (j == 5))
+      {
+        createFounderLayout(c.class);
+      }
+      else
+      {
+        createFounderLayout(l.class);
+        continue;
+        label334:
+        if (i == 7) {
+          createFounderLayout(b.class);
+        } else {
+          createFounderLayout(l.class);
+        }
+      }
+    }
+    super.onMeasure(paramInt1, paramInt2);
+    return;
+    label366:
+    if (!hasHYFont())
+    {
+      super.onMeasure(paramInt1, paramInt2);
+      return;
+    }
+    int i1 = View.MeasureSpec.getMode(paramInt1);
+    int n = View.MeasureSpec.getMode(paramInt2);
+    int m = View.MeasureSpec.getSize(paramInt1);
+    int k = View.MeasureSpec.getSize(paramInt2);
+    boolean bool1;
+    Object localObject1;
+    if ((this.mLayout == null) || (this.mLayout.jdField_a_of_type_Long != this.mMsgId) || ((this.mFont != null) && (!this.mFont.equals(this.mLayout.jdField_a_of_type_ComEtrumpMixlayoutETFont))) || (!this.mCacheMeasureResult) || (this.mLayout.jdField_b_of_type_Boolean != this.mMagicFont))
+    {
+      this.mDecorRunning = false;
+      this.mLayout = new fj();
+      this.mTextSelection = new fp(this, this.mLayout);
+      if (this.mDecoration != null)
+      {
+        this.mDecoration.deleteDescriptor();
+        this.mDecoration = null;
+      }
+      int i2 = getLinkTextColors().getDefaultColor();
+      if (this.mFont != null)
+      {
+        this.mFont.setColor(getCurrentTextColor());
+        this.mFont.setSize(getTextSize());
+        if ((getPaint().getFlags() & 0x20) <= 0) {
+          break label1397;
+        }
+        bool1 = true;
+        this.mFont.setBold(bool1);
+        if (this.mShadowRadius <= 0.0F) {
+          break label1005;
+        }
+        this.mFont.setShadow(true, this.mShadowColor, (int)this.mShadowDx, (int)this.mShadowDy, (int)this.mShadowRadius);
+      }
+      for (;;)
+      {
+        localObject1 = ETEngine.getInstance();
+        Object localObject2 = getPaint().getFontMetrics();
+        float f1 = ((Paint.FontMetrics)localObject2).descent;
+        float f2 = ((Paint.FontMetrics)localObject2).ascent;
+        float f3 = ((Paint.FontMetrics)localObject2).leading;
+        this.mLayout.jdField_a_of_type_Int = ((int)(f3 + (f1 - f2)));
+        this.mLayout.jdField_a_of_type_Long = this.mMsgId;
+        this.mLayout.jdField_b_of_type_Boolean = this.mMagicFont;
+        this.mLayout.a(this.mLinkBackcolor);
+        localObject2 = new ETFont(this.mFont.mFontId, this.mFont.mFontPath, getTextSize());
+        ((ETFont)localObject2).copy(this.mFont);
+        boolean bool2 = false;
+        i = this.mMaxWidth;
+        if ((i1 == -2147483648) || (i1 == 1073741824)) {
+          i = Math.min(this.mMaxWidth, m);
+        }
+        j = i - (getPaddingLeft() + getPaddingRight());
+        i = j;
+        if (i1 == -2147483648) {
+          i = Math.min(m, j);
+        }
+        if (this.mLayout.jdField_b_of_type_Boolean)
+        {
+          f1 = fx.c;
+          if (alsf.a() == 18.0F) {
+            f1 = fx.e;
+          }
+          ((ETFont)localObject2).setSize(f1 * getTextSize());
+        }
+        j = ((ETEngine)localObject1).native_getHorizontalMarginThreshold((ETFont)localObject2, i);
+        ((ETFont)localObject2).setSize(getTextSize());
+        bool1 = bool2;
+        if (j > 0)
+        {
+          bool1 = bool2;
+          if (j < i)
+          {
+            bool1 = this.mLayout.a((ETEngine)localObject1, i - j, getText(), (ETFont)localObject2, i2, true, i);
+            this.mDecoration = this.mLayout.a((ETEngine)localObject1, true);
+          }
+        }
+        if (this.mDecoration == null)
+        {
+          bool1 = this.mLayout.a((ETEngine)localObject1, i, getText(), (ETFont)localObject2, i2, false, i);
+          this.mDecoration = this.mLayout.a((ETEngine)localObject1, true);
+        }
+        if (bool1) {
+          break;
+        }
+        this.mFont.mFontId = 0;
+        this.mLayout.jdField_a_of_type_Long = -1L;
+        super.onMeasure(paramInt1, paramInt2);
+        return;
+        label1005:
+        this.mFont.setShadow(false, 0, 0, 0, 0);
+      }
+      if ((this.mLayout.jdField_b_of_type_Int >= 2048) || (this.mLayout.c >= 2048)) {
+        throw new Exception("large bitmap width=" + 0 + ", height=" + 0);
+      }
+      if (this.mLayout.jdField_a_of_type_Boolean) {
+        throw new Exception("no text use system measure2");
+      }
+      i = this.mLayout.jdField_b_of_type_Int;
+      j = this.mLayout.c;
+      if (this.mDecoration != null)
+      {
+        localObject1 = this.mDecoration.mMargins;
+        int i4 = ((Rect)localObject1).left;
+        int i5 = ((Rect)localObject1).right;
+        i2 = ((Rect)localObject1).top;
+        int i3 = ((Rect)localObject1).bottom;
+        i += i4 + i5;
+        j += i2 + i3;
+        label1187:
+        fq.a(this.mBitmapLocker, i, j);
+        label1198:
+        if (this.mDecoration != null)
+        {
+          localObject1 = this.mDecoration.mMargins;
+          break label1403;
+        }
+      }
+    }
+    for (;;)
+    {
+      label1217:
+      m = Math.min(i, this.mMaxWidth);
+      if (n == 1073741824)
+      {
+        j = k;
+        label1240:
+        setMeasuredDimension(Math.max(m, this.mMinWidth), Math.max(j, this.mMinHeight));
+        return;
+      }
+      label1397:
+      label1403:
+      do
+      {
+        j = this.mLayout.jdField_b_of_type_Int + getPaddingLeft() + getPaddingRight();
+        i = j;
+        if (localObject1 == null) {
+          break label1217;
+        }
+        i = j + (((Rect)localObject1).left + ((Rect)localObject1).right);
+        break label1217;
+        j = this.mLayout.c + getPaddingTop() + getPaddingBottom();
+        i = j;
+        if (localObject1 != null)
+        {
+          i = ((Rect)localObject1).top;
+          i = j + (((Rect)localObject1).bottom + i);
+        }
+        j = i;
+        if (n != -2147483648) {
+          break label1240;
+        }
+        j = Math.min(i, k);
+        break label1240;
+        continue;
+        localObject1 = null;
+        break label1187;
+        localObject1 = null;
+        break label1198;
+        bool1 = false;
+        break;
+      } while (i1 != 1073741824);
+      i = m;
+    }
+  }
+  
+  public boolean onPreDraw()
+  {
+    if ((!isUsingHYFont()) && (!isUsingFZColorFont2()))
+    {
+      getViewTreeObserver().removeOnPreDrawListener(this);
+      return super.onPreDraw();
+    }
+    getViewTreeObserver().removeOnPreDrawListener(this);
+    return true;
+  }
+  
+  protected void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    super.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
+    this.mTextGraphMap = null;
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent)
+  {
+    if ((!isUsingHYFont()) && (!isUsingFZColorFont2())) {
+      return super.onTouchEvent(paramMotionEvent);
+    }
+    if (this.onDoubleClick != null)
+    {
+      int n;
+      int i1;
+      if ((this.mPreviousUpEvent != null) && (paramMotionEvent.getAction() == 0))
+      {
+        this.touchL = paramMotionEvent.getX();
+        this.touchT = paramMotionEvent.getY();
+        i = (int)paramMotionEvent.getX();
+        j = (int)paramMotionEvent.getY();
+        k = getPaddingLeft();
+        m = getPaddingTop();
+        n = getScrollX();
+        i1 = getScrollY();
+        this.mClickEpId = -1;
+        this.mClickcEId = -1;
+        if (isUsingHYFont()) {
+          dealSmallEmojiClick(i - k + n, j - m + i1);
+        }
+        this.mCurrentDownEvent = MotionEvent.obtain(paramMotionEvent);
+        if ((this.mPreviousUpEvent != null) && (this.mCurrentDownEvent != null) && (isConsideredDoubleTap(this.mCurrentDownEvent, this.mPreviousUpEvent, paramMotionEvent)))
+        {
+          this.isSingleClick = false;
+          this.mCurrentDownEvent = null;
+          this.mPreviousUpEvent = null;
+          if (this.onDoubleClick != null)
+          {
+            this.doublleClicked = true;
+            this.onDoubleClick.a(this);
+            return true;
+          }
+        }
+      }
+      else
+      {
+        if ((this.mPreviousUpEvent != null) || (paramMotionEvent.getAction() != 0)) {
+          break label331;
+        }
+        this.isSingleClick = true;
+        this.touchL = paramMotionEvent.getX();
+        this.touchT = paramMotionEvent.getY();
+        i = (int)paramMotionEvent.getX();
+        j = (int)paramMotionEvent.getY();
+        k = getPaddingLeft();
+        m = getPaddingTop();
+        n = getScrollX();
+        i1 = getScrollY();
+        this.mClickEpId = -1;
+        this.mClickcEId = -1;
+        if (isUsingHYFont()) {
+          dealSmallEmojiClick(i - k + n, j - m + i1);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ETTextView", 2, "reserve to initial status");
+        }
+      }
+    }
+    label331:
+    while (paramMotionEvent.getAction() != 1) {
+      return super.onTouchEvent(paramMotionEvent);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ETTextView", 2, "action up");
+    }
+    int k = (int)paramMotionEvent.getX();
+    int i = (int)paramMotionEvent.getY();
+    int m = getPaddingLeft();
+    int j = getPaddingTop();
+    k = k - m + getScrollX();
+    i = i - j + getScrollY();
+    this.mEmojiX = k;
+    this.mEmojiY = i;
+    if (isUsingHYFont()) {
+      i = this.mLayout.b(k, i) + 1;
+    }
+    for (;;)
+    {
+      ClickableSpan[] arrayOfClickableSpan = (ClickableSpan[])((Spannable)getText()).getSpans(i, i, ClickableSpan.class);
+      if (arrayOfClickableSpan.length != 0)
+      {
+        arrayOfClickableSpan[0].onClick(this);
+        return true;
+        if (isUsingFZColorFont2()) {
+          i = this.mFounderColorLayout.a(k, i, getTextGraphMap());
+        }
+      }
+      else
+      {
+        this.mPreviousUpEvent = MotionEvent.obtain(paramMotionEvent);
+        if ((isUsingHYFont()) && (!this.mDecorRunning) && (this.mDecoration != null)) {
+          this.mDecoration.gotoLastFrame();
+        }
+        if (this.doublleClicked)
+        {
+          this.doublleClicked = false;
+          this.mPreviousUpEvent = null;
+        }
+        postDelayed(this.mTimerForSecondClick, 200L);
+        break;
+      }
+      i = 0;
+    }
+  }
+  
+  public void pauseAnimation()
+  {
+    this.mPauseAnimation = true;
+  }
+  
+  public void pauseFounderColorFontAnimation()
+  {
+    if (this.mFounderColorLayout != null) {
+      this.mFounderColorLayout.f();
+    }
+  }
+  
+  public void restartFounderColorFontAnimation()
+  {
+    if (this.mFounderColorLayout != null) {
+      this.mFounderColorLayout.g();
+    }
+  }
+  
+  public void setCacheMeasureResult(boolean paramBoolean)
+  {
+    if (this.mCacheMeasureResult != paramBoolean)
+    {
+      this.mCacheMeasureResult = paramBoolean;
+      requestLayout();
+    }
+  }
+  
+  public void setDefaultFont(Typeface paramTypeface, long paramLong)
+  {
+    setTypeface(paramTypeface);
+    if (gj.jdField_a_of_type_Int == 4) {
+      if (this.mFont == null)
+      {
+        this.mFont = new ETFont(9999, gj.a(), getTextSize());
+        this.mMsgId = paramLong;
+        this.mFont.mFontType = -1;
+      }
+    }
+    for (;;)
+    {
+      if (this.mOnBeforeTextOrFontChangeListener != null) {
+        this.mOnBeforeTextOrFontChangeListener.a(this);
+      }
+      return;
+      this.mFont.mFontId = 9999;
+      this.mFont.setPath(gj.a());
+      this.mFont.setSize(getTextSize());
+      break;
+      this.mFont = null;
+    }
+  }
+  
+  public void setFont(int paramInt, long paramLong)
+  {
+    if (this.mFont == null) {
+      this.mFont = new ETFont(paramInt, "", getTextSize());
+    }
+    for (;;)
+    {
+      if (this.mFont.mFontId == 0) {
+        setTypeface(null);
+      }
+      if (this.mMsgId != paramLong) {
+        this.hasComputeComplexScript = false;
+      }
+      this.mMsgId = paramLong;
+      return;
+      this.mFont.mFontId = paramInt;
+    }
+  }
+  
+  public void setFont(ETFont paramETFont, long paramLong)
+  {
+    setFont(paramETFont, paramLong, 0);
+  }
+  
+  public void setFont(ETFont paramETFont, ChatMessage paramChatMessage, SessionInfo paramSessionInfo)
+  {
+    Object localObject;
+    if ((paramETFont.mText == null) && ((paramChatMessage instanceof MessageForText)))
+    {
+      localObject = (MessageForText)paramChatMessage;
+      if (TextUtils.isEmpty(((MessageForText)localObject).sb)) {
+        break label114;
+      }
+      if (TextUtils.isEmpty(((MessageForText)localObject).sb2)) {
+        break label104;
+      }
+      localObject = ((MessageForText)localObject).sb2;
+    }
+    for (;;)
+    {
+      paramETFont.mText = ((CharSequence)localObject);
+      localObject = paramChatMessage.getExtInfoFromExtStr("vip_sub_font_id");
+      int i = 0;
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        i = Integer.parseInt((String)localObject);
+      }
+      setFont(paramETFont, paramChatMessage.uniseq, i);
+      this.mMessage = paramChatMessage;
+      this.mSessionInfo = paramSessionInfo;
+      return;
+      label104:
+      localObject = ((MessageForText)localObject).sb;
+      continue;
+      label114:
+      localObject = null;
+    }
+  }
+  
+  public void setMaxWidth(int paramInt)
+  {
+    this.mMaxWidth = paramInt;
+    super.setMaxWidth(paramInt);
+  }
+  
+  public void setMinHeight(int paramInt)
+  {
+    this.mMinHeight = paramInt;
+    super.setMinHeight(paramInt);
+  }
+  
+  public void setMinWidth(int paramInt)
+  {
+    this.mMinWidth = paramInt;
+    super.setMinWidth(paramInt);
+  }
+  
+  public void setOnTextOrFontChangeListener(ft paramft)
+  {
+    this.mOnBeforeTextOrFontChangeListener = paramft;
+  }
+  
+  public void setShadowLayer(float paramFloat1, float paramFloat2, float paramFloat3, int paramInt)
+  {
+    super.setShadowLayer(paramFloat1, paramFloat2, paramFloat3, paramInt);
+    this.mShadowRadius = paramFloat1;
+    this.mShadowDx = paramFloat2;
+    this.mShadowDy = paramFloat3;
+    this.mShadowColor = paramInt;
+  }
+  
+  public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
+  {
+    if (this.mOnBeforeTextOrFontChangeListener != null) {
+      this.mOnBeforeTextOrFontChangeListener.a(this, paramCharSequence);
+    }
+    super.setText(paramCharSequence, paramBufferType);
+  }
+  
+  public void setTextAnimationListener(fu paramfu)
+  {
+    this.mAnimationListener = paramfu;
+  }
+  
+  public final void setTextMsg(CharSequence paramCharSequence)
+  {
+    if (getText() != null) {}
+    for (String str = getText().toString();; str = "")
+    {
+      if ((paramCharSequence != null) && (!paramCharSequence.toString().equals(str)))
+      {
+        setText(paramCharSequence);
+        this.mMsgId = System.currentTimeMillis();
+        requestLayout();
+        invalidate();
+      }
       return;
     }
   }
   
-  public boolean a()
+  public void setTypeface(Typeface paramTypeface)
   {
-    if ((this.jdField_a_of_type_ComEtrumpMixlayoutETFont != null) && (this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId != 0) && (this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontType == 1)) {
-      return !ETEngine.getInstance().native_containComplexScript(getText().toString());
+    Typeface localTypeface = paramTypeface;
+    if (paramTypeface == null) {}
+    try
+    {
+      localTypeface = Typeface.DEFAULT;
+      super.setTypeface(localTypeface);
+      return;
     }
-    return false;
+    catch (Exception paramTypeface)
+    {
+      QLog.e("ETTextView", 1, "fail to setTypeface", paramTypeface);
+    }
   }
   
-  public void b()
+  public void startAnimation(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.jdField_a_of_type_ComVasColorFontFounderColorLayout != null) {
-      this.jdField_a_of_type_ComVasColorFontFounderColorLayout.b();
+    if (isUsingHYFont()) {
+      startDecorAnimation(paramBoolean1, paramBoolean2);
+    }
+    while (!hasFounderAnimationFont()) {
+      return;
+    }
+    startFounderDecorAnimation(paramBoolean1, paramBoolean2);
+  }
+  
+  public void startDecorAnimation(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.mPauseAnimation = false;
+    if ((!hasDecorAnimation()) || (!isViewVisible()) || (this.isParsingMagicFont)) {
+      return;
+    }
+    if ((enableAnimation) && (!this.mPauseAnimation)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.mDecorAnimating = bool;
+      if ((!this.mDecorAnimating) || (this.mDecorRunning) || ((paramBoolean2) && (this.mDecoration.isLastFrame()))) {
+        break;
+      }
+      this.mDecorRunning = true;
+      this.shouldStartAnimation = false;
+      mUIHandler.obtainMessage(0, fs.a(this)).sendToTarget();
+      if ((paramBoolean2) || (this.mAnimationListener == null)) {
+        break;
+      }
+      this.mAnimationListener.a(this.mMessage, paramBoolean1, this.mFont.mFontId);
+      return;
     }
   }
   
-  public void b(boolean paramBoolean)
+  public void startFounderColorFontAnimation()
   {
-    if ((this.jdField_a_of_type_ComEtrumpMixlayoutETFont == null) || (!f())) {}
+    if (this.mFounderColorLayout != null) {
+      this.mFounderColorLayout.b();
+    }
+  }
+  
+  public void startFounderDecorAnimation(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.mPauseAnimation = false;
+    if ((this.mFont == null) || (!isViewVisible())) {}
+    int i;
     int j;
-    int k;
-    label264:
-    label271:
     do
     {
       Object localObject;
@@ -238,532 +1280,100 @@ public class ETTextView
             {
               do
               {
-                return;
-                if (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+                do
+                {
+                  return;
+                  if (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+                    break;
+                  }
+                  localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+                  if (localObject == null) {
+                    break;
+                  }
+                  localObject = (fx)((QQAppInterface)localObject).getManager(42);
+                } while ((localObject != null) && (!((fx)localObject).b()));
+                if ((!enableAnimation) || (this.mPauseAnimation)) {
                   break;
                 }
-                localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-                if (localObject == null) {
-                  break;
-                }
-                localObject = (FontManager)((QQAppInterface)localObject).getManager(41);
-              } while ((localObject != null) && (!((FontManager)localObject).b()));
-              if (!jdField_i_of_type_Boolean) {
+              } while ((this.mFounderColorLayout == null) || ((!this.shouldStartAnimation) && (!paramBoolean1) && (!paramBoolean2)));
+              i = this.mFounderColorLayout.e;
+              localObject = this.mFounderColorLayout.i;
+            } while (localObject == null);
+            j = localObject[0];
+          } while ((paramBoolean2) && (i == 0));
+          if (i == 0) {
+            startFounderColorFontAnimation();
+          }
+          for (this.isFounderAnimating = true;; this.isFounderAnimating = true)
+          {
+            do
+            {
+              this.shouldStartAnimation = false;
+              if ((paramBoolean2) || (this.mAnimationListener == null)) {
                 break;
               }
-            } while ((!paramBoolean) && ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage == null) || (!android.text.TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("font_animation_played")))) && (!this.jdField_h_of_type_Boolean));
-            if ((!paramBoolean) && (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null))
-            {
-              this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.saveExtInfoToExtStr("font_animation_played", "1");
-              ThreadManager.executeOnSubThread(new px(this));
-            }
-            String str;
-            if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
-            {
-              str = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).c();
-              if (!paramBoolean) {
-                break label264;
-              }
-            }
-            for (localObject = "1";; localObject = "0")
-            {
-              VasWebviewUtil.reportCommercialDrainage(str, "Font_Mall", "0X800813C", "0", 0, 1, 1, null, (String)localObject, "" + this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId);
-              if (this.jdField_a_of_type_ComVasColorFontFounderColorLayout == null) {
-                break;
-              }
-              j = this.jdField_a_of_type_ComVasColorFontFounderColorLayout.jdField_a_of_type_Int;
-              localObject = this.jdField_a_of_type_ComVasColorFontFounderColorLayout.jdField_a_of_type_ArrayOfInt;
-              if (localObject == null) {
-                break;
-              }
-              k = localObject[0];
-              if (j != 0) {
-                break label271;
-              }
-              a();
-              this.jdField_h_of_type_Boolean = true;
+              this.mAnimationListener.a(this.mMessage, paramBoolean1, this.mFont.mFontId);
               return;
-            }
-          } while ((j <= 0) || (j >= k));
-          c();
-          this.jdField_h_of_type_Boolean = true;
-          return;
-        } while (this.jdField_a_of_type_ComVasColorFontFounderColorLayout == null);
-        j = this.jdField_a_of_type_ComVasColorFontFounderColorLayout.jdField_a_of_type_Int;
-        localObject = this.jdField_a_of_type_ComVasColorFontFounderColorLayout.jdField_a_of_type_ArrayOfInt;
+            } while ((i <= 0) || (i >= j));
+            restartFounderColorFontAnimation();
+          }
+        } while (this.mFounderColorLayout == null);
+        i = this.mFounderColorLayout.e;
+        localObject = this.mFounderColorLayout.i;
       } while (localObject == null);
-      k = localObject[0];
-    } while ((j <= 0) || (j >= k));
-    b();
+      j = localObject[0];
+    } while ((i <= 0) || (i >= j));
+    pauseFounderColorFontAnimation();
   }
   
-  public boolean b()
+  public void stopAllDecorAnimation()
   {
-    return (this.jdField_a_of_type_ComEtrumpMixlayoutETFont != null) && (this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId != 0) && (this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontType == 4) && (FastColorFontHelper.a().a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontPath) == 3);
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_ComVasColorFontFounderColorLayout != null) {
-      this.jdField_a_of_type_ComVasColorFontFounderColorLayout.c();
-    }
-  }
-  
-  public boolean c()
-  {
-    return (a()) && (this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
-  }
-  
-  public void d()
-  {
-    this.o = false;
-    this.p = false;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_c_of_type_JavaLangRunnable);
-  }
-  
-  public boolean d()
-  {
-    return b();
-  }
-  
-  public void e()
-  {
-    this.o = false;
-    if (g()) {
-      this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a().a();
-    }
-  }
-  
-  public boolean e()
-  {
-    if (!this.m)
+    if (mUIHandler != null)
     {
-      this.n = com.tencent.mobileqq.text.TextUtils.b(getText().toString());
-      this.m = true;
+      mUIHandler.removeMessages(0);
+      mUIHandler.removeMessages(1);
     }
-    return (this.jdField_a_of_type_ComEtrumpMixlayoutETFont != null) && (this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId != 0) && (this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontType == 4) && (!this.n);
+    if (mCreateDecorationHandler != null) {
+      mCreateDecorationHandler.removeMessages(2);
+    }
+    this.mDecorAnimating = false;
+    if (hasDecorAnimation()) {
+      this.mDecoration.gotoLastFrame();
+    }
   }
   
-  public boolean f()
+  public void stopFounderColorFontAnimation()
   {
-    if ((getContext() instanceof FragmentActivity))
-    {
-      Object localObject = ((FragmentActivity)getContext()).getChatFragment();
-      if ((localObject != null) && (((ChatFragment)localObject).a() != null) && (((ChatFragment)localObject).a().a != null))
+    if (this.mFounderColorLayout != null) {
+      this.mFounderColorLayout.a(true);
+    }
+  }
+  
+  public int touchIndex(int paramInt1, int paramInt2)
+  {
+    int i = -1;
+    if (isUsingFZColorFont2()) {
+      if ((this.mFounderColorLayout instanceof k))
       {
-        localObject = ((ChatFragment)localObject).a().a;
-        localObject = AIOUtils.a((ListView)localObject, AIOUtils.a(this.jdField_a_of_type_Long, ((XListView)localObject).getAdapter()));
-        if ((localObject != null) && ((((View)localObject).getTag() instanceof TextItemBuilder.Holder)) && (((TextItemBuilder.Holder)((View)localObject).getTag()).e.getTop() + ((View)localObject).getBottom() >= getContext().getResources().getDimensionPixelSize(2131558448))) {
-          return true;
-        }
+        paramInt1 = ((k)this.mFounderColorLayout).a(paramInt1, paramInt2);
+        i = getTextGraphMap().b(paramInt1);
       }
-    }
-    return false;
-  }
-  
-  protected void onDraw(Canvas paramCanvas)
-  {
-    if ((!c()) && (!e())) {
-      super.onDraw(paramCanvas);
     }
     do
     {
-      do
-      {
-        return;
-        if (c())
-        {
-          if ((this.jdField_a_of_type_ComEtrumpMixlayoutETLayout == null) || (this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_a_of_type_ComEtrumpMixlayoutETFont == null))
-          {
-            super.onDraw(paramCanvas);
-            return;
-          }
-          if (((this.o) && (this.p)) || (this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontColor != getCurrentTextColor())) {}
-          try
-          {
-            this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.b(getCurrentTextColor());
-            this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_b_of_type_ComEtrumpMixlayoutETFont.mFontColor = getLinkTextColors().getDefaultColor();
-            this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a();
-            if (this.jdField_e_of_type_Boolean) {
-              a(false);
-            }
-            this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a(paramCanvas, getPaddingLeft(), getPaddingTop());
-            return;
-          }
-          catch (Throwable localThrowable)
-          {
-            for (;;)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.e("ETTextView", 2, "onDraw err" + localThrowable.getMessage());
-              }
-            }
-          }
-        }
-      } while (!e());
-      if (!this.jdField_a_of_type_ComVasColorFontFounderColorLayout.a(paramCanvas, this.jdField_a_of_type_Long)) {
-        super.onDraw(paramCanvas);
-      }
-    } while ((!this.jdField_f_of_type_Boolean) || (!b()));
-    b(false);
-  }
-  
-  protected void onMeasure(int paramInt1, int paramInt2)
-  {
-    try
-    {
-      if (e())
-      {
-        if (this.jdField_a_of_type_ComVasColorFontFounderColorLayout == null) {
-          this.jdField_a_of_type_ComVasColorFontFounderColorLayout = new FounderColorLayout(this, this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
-        }
-        int[] arrayOfInt = this.jdField_a_of_type_ComVasColorFontFounderColorLayout.a(paramInt1, paramInt2, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
-        if ((arrayOfInt != null) && (arrayOfInt[0] > 0) && (arrayOfInt[1] > 0)) {
-          setMeasuredDimension(arrayOfInt[0], arrayOfInt[1]);
-        }
-        for (;;)
-        {
-          this.jdField_f_of_type_Boolean = true;
-          return;
-          super.onMeasure(paramInt1, paramInt2);
-        }
-      }
-      if (a()) {
-        break label202;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ETTextView", 1, "measure fail ", localThrowable);
-      localThrowable.printStackTrace();
-      this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId = 0;
-      this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_a_of_type_Long = -1L;
-      if ((!l) && (localThrowable.getMessage().contains("textlayout")))
-      {
-        VasMonitorHandler.a(null, "individual_v2_font_measure_error", "font_measure_error", localThrowable.getMessage(), localThrowable.getMessage(), 0.0F);
-        l = true;
-      }
-      super.onMeasure(paramInt1, paramInt2);
-      return;
-    }
-    super.onMeasure(paramInt1, paramInt2);
-    return;
-    label202:
-    int i4 = View.MeasureSpec.getMode(paramInt1);
-    int i3 = View.MeasureSpec.getMode(paramInt2);
-    int k = View.MeasureSpec.getSize(paramInt1);
-    int i1 = View.MeasureSpec.getSize(paramInt2);
-    if (this.jdField_a_of_type_ComEtrumpMixlayoutETLayout == null) {
-      this.jdField_a_of_type_ComEtrumpMixlayoutETLayout = new ETLayout();
-    }
-    if (this.jdField_a_of_type_ComEtrumpMixlayoutETFont != null)
-    {
-      this.jdField_a_of_type_ComEtrumpMixlayoutETFont.setColor(getCurrentTextColor());
-      this.jdField_a_of_type_ComEtrumpMixlayoutETFont.setSize(getTextSize());
-      if (this.jdField_c_of_type_Float <= 0.0F) {
-        break label529;
-      }
-      this.jdField_a_of_type_ComEtrumpMixlayoutETFont.setCrochet(true, this.jdField_i_of_type_Int, (int)this.jdField_c_of_type_Float);
-    }
-    int j;
-    while ((this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_a_of_type_Long != this.jdField_a_of_type_Long) || ((this.jdField_a_of_type_ComEtrumpMixlayoutETFont != null) && (!this.jdField_a_of_type_ComEtrumpMixlayoutETFont.equals(this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_a_of_type_ComEtrumpMixlayoutETFont))) || (this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_b_of_type_Boolean != this.jdField_a_of_type_Boolean))
-    {
-      e();
-      d();
-      this.jdField_g_of_type_Boolean = false;
-      int i2 = this.jdField_a_of_type_Int - (getPaddingLeft() + getPaddingRight());
-      j = i2;
-      if (i4 == -2147483648) {
-        j = Math.min(k, i2);
-      }
-      i2 = getLinkTextColors().getDefaultColor();
-      this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-      this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_b_of_type_Boolean = this.jdField_a_of_type_Boolean;
-      this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a(this.jdField_h_of_type_Int);
-      ETFont localETFont = new ETFont(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontPath, getTextSize());
-      localETFont.copy(this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
-      if (!this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a(j, getText(), localETFont, i2))
-      {
-        this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId = 0;
-        this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_a_of_type_Long = -1L;
-        super.onMeasure(paramInt1, paramInt2);
-        return;
-        label529:
-        this.jdField_a_of_type_ComEtrumpMixlayoutETFont.setCrochet(false, this.jdField_i_of_type_Int, 0);
-      }
-      else
-      {
-        if ((this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_a_of_type_Int >= 2048) || (this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_b_of_type_Int >= 2048)) {
-          throw new Exception("large bitmap width=" + 0 + ", height=" + 0);
-        }
-        if (this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_a_of_type_Boolean) {
-          throw new Exception("no text use system measure2");
-        }
-        this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a(this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_a_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_b_of_type_Int);
-        this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a();
-        this.jdField_e_of_type_Boolean = true;
-      }
-    }
-    for (;;)
-    {
-      setMeasuredDimension(Math.max(k, this.jdField_f_of_type_Int), Math.max(j, this.jdField_g_of_type_Int));
-      return;
-      label689:
-      k = this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_a_of_type_Int + getPaddingLeft() + getPaddingRight();
-      label765:
-      while (i3 != 1073741824)
-      {
-        if (this.jdField_a_of_type_ComEtrumpMixlayoutETLayout != null)
-        {
-          j = this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_b_of_type_Int + getPaddingTop() + getPaddingBottom();
-          if (i3 != -2147483648) {
-            break label765;
-          }
-          j = Math.min(j, i1);
-          break;
-        }
-        throw new Exception("measure height fail Layout is null");
-        break;
-        if (i4 != 1073741824) {
-          break label689;
-        }
-      }
-      j = i1;
-    }
-  }
-  
-  public boolean onPreDraw()
-  {
-    if ((!c()) && (!e()))
-    {
-      getViewTreeObserver().removeOnPreDrawListener(this);
-      return super.onPreDraw();
-    }
-    getViewTreeObserver().removeOnPreDrawListener(this);
-    return true;
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent)
-  {
-    if ((!c()) && (!e())) {
-      return super.onTouchEvent(paramMotionEvent);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick != null)
-    {
-      int i3;
-      int i4;
-      if ((this.jdField_b_of_type_AndroidViewMotionEvent != null) && (paramMotionEvent.getAction() == 0))
-      {
-        this.jdField_a_of_type_Float = paramMotionEvent.getX();
-        this.jdField_b_of_type_Float = paramMotionEvent.getY();
-        j = (int)paramMotionEvent.getX();
-        k = (int)paramMotionEvent.getY();
-        i1 = getPaddingLeft();
-        i2 = getPaddingTop();
-        i3 = getScrollX();
-        i4 = getScrollY();
-        this.jdField_b_of_type_Int = -1;
-        this.jdField_c_of_type_Int = -1;
-        if (c()) {
-          a(j - i1 + i3, k - i2 + i4);
-        }
-        this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-        if ((this.jdField_b_of_type_AndroidViewMotionEvent != null) && (this.jdField_a_of_type_AndroidViewMotionEvent != null) && (a(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent, paramMotionEvent)))
-        {
-          this.j = false;
-          this.jdField_a_of_type_AndroidViewMotionEvent = null;
-          this.jdField_b_of_type_AndroidViewMotionEvent = null;
-          if (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick != null)
-          {
-            this.k = true;
-            this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick.a(this);
-            return true;
-          }
-        }
-      }
-      else
-      {
-        if ((this.jdField_b_of_type_AndroidViewMotionEvent != null) || (paramMotionEvent.getAction() != 0)) {
-          break label332;
-        }
-        this.j = true;
-        this.jdField_a_of_type_Float = paramMotionEvent.getX();
-        this.jdField_b_of_type_Float = paramMotionEvent.getY();
-        j = (int)paramMotionEvent.getX();
-        k = (int)paramMotionEvent.getY();
-        i1 = getPaddingLeft();
-        i2 = getPaddingTop();
-        i3 = getScrollX();
-        i4 = getScrollY();
-        this.jdField_b_of_type_Int = -1;
-        this.jdField_c_of_type_Int = -1;
-        if (c()) {
-          a(j - i1 + i3, k - i2 + i4);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ETTextView", 2, "reserve to initial status");
-        }
-      }
-    }
-    label332:
-    while (paramMotionEvent.getAction() != 1) {
-      return super.onTouchEvent(paramMotionEvent);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ETTextView", 2, "action up");
-    }
-    int i1 = (int)paramMotionEvent.getX();
-    int j = (int)paramMotionEvent.getY();
-    int i2 = getPaddingLeft();
-    int k = getPaddingTop();
-    i1 = i1 - i2 + getScrollX();
-    j = j - k + getScrollY();
-    this.jdField_d_of_type_Int = i1;
-    this.jdField_e_of_type_Int = j;
-    if (c()) {
-      j = this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a(i1, j) + 1;
-    }
-    for (;;)
-    {
-      ClickableSpan[] arrayOfClickableSpan = (ClickableSpan[])((Spannable)getText()).getSpans(j, j, ClickableSpan.class);
-      if (arrayOfClickableSpan.length != 0)
-      {
-        arrayOfClickableSpan[0].onClick(this);
-        return true;
-        if (e()) {
-          j = this.jdField_a_of_type_ComVasColorFontFounderColorLayout.a(i1, j);
-        }
-      }
-      else
-      {
-        this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-        if (this.k)
-        {
-          this.k = false;
-          this.jdField_b_of_type_AndroidViewMotionEvent = null;
-        }
-        postDelayed(this.jdField_a_of_type_JavaLangRunnable, 200L);
+      return i;
+      if (!isUsingHYFont()) {
         break;
       }
-      j = 0;
-    }
-  }
-  
-  public void setFont(int paramInt, long paramLong)
-  {
-    if (this.jdField_a_of_type_ComEtrumpMixlayoutETFont == null) {
-      this.jdField_a_of_type_ComEtrumpMixlayoutETFont = new ETFont(paramInt, "", getTextSize());
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId == 0) {
-        setTypeface(null);
-      }
-      if (this.jdField_a_of_type_Long != paramLong) {
-        this.m = false;
-      }
-      this.jdField_a_of_type_Long = paramLong;
-      return;
-      this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId = paramInt;
-    }
-  }
-  
-  public void setFont(ETFont paramETFont, long paramLong)
-  {
-    if (this.jdField_a_of_type_ComEtrumpMixlayoutETFont == null)
-    {
-      this.jdField_a_of_type_ComEtrumpMixlayoutETFont = new ETFont(paramETFont.mFontId, paramETFont.mFontPath, getTextSize(), paramETFont.mFontType, paramETFont.mTypeface);
-      this.jdField_a_of_type_ComEtrumpMixlayoutETFont.copy(paramETFont);
-      this.jdField_a_of_type_ComEtrumpMixlayoutETFont.setSize(getTextSize());
-    }
-    for (;;)
-    {
-      if ((this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontType != 1) && (this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mTypeface != null)) {
-        setTypeface(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mTypeface);
-      }
-      if (this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId == 0) {
-        setTypeface(null);
-      }
-      this.jdField_a_of_type_Long = paramLong;
-      if (this.jdField_a_of_type_ComEtrumpMixlayoutETLayout == null) {
-        this.jdField_a_of_type_ComEtrumpMixlayoutETLayout = new ETLayout();
-      }
-      return;
-      this.jdField_a_of_type_ComEtrumpMixlayoutETFont.copy(paramETFont);
-      this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mAnimationId = paramLong;
-      this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mText = paramETFont.mText;
-      if (paramETFont.mFontType != 1) {
-        this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mTypeface = paramETFont.mTypeface;
-      }
-      this.jdField_a_of_type_ComEtrumpMixlayoutETFont.m_diyHandle = paramETFont.m_diyHandle;
-    }
-  }
-  
-  public void setFont(ETFont paramETFont, ChatMessage paramChatMessage, SessionInfo paramSessionInfo)
-  {
-    if (this.jdField_a_of_type_Long != paramChatMessage.uniseq) {
-      this.m = false;
-    }
-    Object localObject;
-    if ((paramETFont.mText == null) && ((paramChatMessage instanceof MessageForText)))
-    {
-      localObject = (MessageForText)paramChatMessage;
-      if (android.text.TextUtils.isEmpty(((MessageForText)localObject).sb)) {
-        break label102;
-      }
-      if (android.text.TextUtils.isEmpty(((MessageForText)localObject).sb2)) {
-        break label92;
-      }
-      localObject = ((MessageForText)localObject).sb2;
-    }
-    for (;;)
-    {
-      paramETFont.mText = ((CharSequence)localObject);
-      setFont(paramETFont, paramChatMessage.uniseq);
-      this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-      return;
-      label92:
-      localObject = ((MessageForText)localObject).sb;
-      continue;
-      label102:
-      localObject = null;
-    }
-  }
-  
-  public void setMaxWidth(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    super.setMaxWidth(paramInt);
-  }
-  
-  public void setMinHeight(int paramInt)
-  {
-    this.jdField_g_of_type_Int = paramInt;
-    super.setMinHeight(paramInt);
-  }
-  
-  public void setMinWidth(int paramInt)
-  {
-    this.jdField_f_of_type_Int = paramInt;
-    super.setMinWidth(paramInt);
-  }
-  
-  public void setShadowLayer(float paramFloat1, float paramFloat2, float paramFloat3, int paramInt)
-  {
-    this.jdField_c_of_type_Float = paramFloat1;
-    this.jdField_d_of_type_Float = paramFloat2;
-    this.jdField_e_of_type_Float = paramFloat3;
-    this.jdField_i_of_type_Int = paramInt;
-    super.setShadowLayer(paramFloat1, paramFloat2, paramFloat3, paramInt);
-    if (this.jdField_a_of_type_ComEtrumpMixlayoutETFont != null) {
-      this.jdField_a_of_type_ComEtrumpMixlayoutETFont.setShadow(true, paramInt, (int)paramFloat2, (int)paramFloat3, (int)paramFloat1);
-    }
+    } while (this.mTextSelection == null);
+    paramInt1 = this.mTextSelection.a(paramInt1, paramInt2);
+    return getTextGraphMap().b(paramInt1);
+    return super.touchIndex(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.etrump.mixlayout.ETTextView
  * JD-Core Version:    0.7.0.1
  */

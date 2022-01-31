@@ -1,13 +1,34 @@
-import com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
 public class adtb
-  implements Runnable
+  extends alpq
 {
-  public adtb(ImaxAdVideoPreloadManager paramImaxAdVideoPreloadManager, String paramString) {}
+  public adtb(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public void run()
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    ImaxAdVideoPreloadManager.a(this.jdField_a_of_type_JavaLangString);
+    if ((paramBoolean) && ((paramObject instanceof Card)) && (this.a.app.getCurrentAccountUin().equals(((Card)paramObject).uin))) {
+      QQSettingSettingActivity.a(this.a, (Card)paramObject);
+    }
+  }
+  
+  protected void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    if ((paramString != null) && (paramString.equals(this.a.app.getCurrentAccountUin())))
+    {
+      if (paramBoolean1) {
+        this.a.a(this.a.app.getCurrentAccountUin());
+      }
+      return;
+    }
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    QLog.e("QQSetting2Activity", 2, "onGetAllowSeeLoginDays isSuccess " + paramBoolean1 + "isAllow:" + paramBoolean2 + "uin " + str);
   }
 }
 

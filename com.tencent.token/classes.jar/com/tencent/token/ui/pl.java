@@ -1,20 +1,20 @@
 package com.tencent.token.ui;
 
+import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 
-final class pl
-  implements DialogInterface.OnClickListener
+class pl
+  implements DialogInterface.OnCancelListener
 {
-  pl(pi parampi) {}
+  pl(pg parampg, Activity paramActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface = new Intent(this.a.a, WtLoginAccountInput.class);
-    paramDialogInterface.putExtra("page_id", 4);
-    this.a.a.startActivity(paramDialogInterface);
-    this.a.a.finish();
+    paramDialogInterface = new Intent(this.a, WtLoginAccountInput.class);
+    this.a.startActivity(paramDialogInterface);
+    this.a.finish();
   }
 }
 

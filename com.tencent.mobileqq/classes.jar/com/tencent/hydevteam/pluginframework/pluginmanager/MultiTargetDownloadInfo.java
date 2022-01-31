@@ -17,10 +17,16 @@ public class MultiTargetDownloadInfo
     super(paramString2, paramString3, paramLong);
     this.cgiVersion = paramString1;
   }
+  
+  public MultiTargetDownloadInfo(String paramString1, String paramString2, String paramString3, long paramLong, boolean paramBoolean)
+  {
+    super(paramString2, paramString3, paramLong, paramBoolean);
+    this.cgiVersion = paramString1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.hydevteam.pluginframework.pluginmanager.MultiTargetDownloadInfo
  * JD-Core Version:    0.7.0.1
  */

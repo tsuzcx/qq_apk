@@ -1,17 +1,39 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
-import android.widget.EditText;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
-public final class ajyz
-  extends View.AccessibilityDelegate
+public class ajyz
+  implements DialogInterface.OnClickListener
 {
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  public ajyz(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    EditText localEditText = (EditText)paramView;
-    localEditText.setHint("");
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
-    paramAccessibilityNodeInfo.setContentDescription(localEditText.getContentDescription());
+    switch (paramInt)
+    {
+    }
+    boolean bool;
+    do
+    {
+      return;
+      paramDialogInterface = this.a.jdField_a_of_type_AndroidWidgetCheckBox;
+      if (this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+        break;
+      }
+      bool = true;
+      paramDialogInterface.setChecked(bool);
+      this.a.onCheckedChanged(this.a.jdField_a_of_type_AndroidWidgetCheckBox, this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
+    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d != 32);
+    if (this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
+    for (paramDialogInterface = "friendsfinder.all.confirm";; paramDialogInterface = "friendsfinder.all.cancel")
+    {
+      ajeu.a(0, paramDialogInterface);
+      return;
+      bool = false;
+      break;
+    }
   }
 }
 

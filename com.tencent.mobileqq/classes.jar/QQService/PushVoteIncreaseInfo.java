@@ -8,14 +8,14 @@ import java.util.ArrayList;
 public final class PushVoteIncreaseInfo
   extends JceStruct
 {
-  static ArrayList cache_vVoterList;
+  static ArrayList<Visitor> cache_vVoterList;
   public int iIncrement;
   public int lTime;
-  public ArrayList vVoterList;
+  public ArrayList<Visitor> vVoterList;
   
   public PushVoteIncreaseInfo() {}
   
-  public PushVoteIncreaseInfo(int paramInt1, int paramInt2, ArrayList paramArrayList)
+  public PushVoteIncreaseInfo(int paramInt1, int paramInt2, ArrayList<Visitor> paramArrayList)
   {
     this.iIncrement = paramInt1;
     this.lTime = paramInt2;

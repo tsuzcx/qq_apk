@@ -1,27 +1,36 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
+import android.view.View;
 
-public final class tgl
-  implements Parcelable.Creator
+class tgl
+  extends tgm
 {
-  public ProfileActivity.CardContactInfo a(Parcel paramParcel)
+  tgl(tgk paramtgk) {}
+  
+  public void hide()
   {
-    ProfileActivity.CardContactInfo localCardContactInfo = new ProfileActivity.CardContactInfo(null);
-    localCardContactInfo.a = paramParcel.readString();
-    localCardContactInfo.c = paramParcel.readString();
-    localCardContactInfo.b = paramParcel.readString();
-    return localCardContactInfo;
+    super.hide();
+    if (tgk.a(this.a) != null)
+    {
+      tgk.a(this.a).setVisibility(4);
+      tgk.a(this.a, 0);
+    }
   }
   
-  public ProfileActivity.CardContactInfo[] a(int paramInt)
+  public void updateUnreadCount(int paramInt, boolean paramBoolean)
   {
-    return new ProfileActivity.CardContactInfo[paramInt];
+    super.updateUnreadCount(paramInt, paramBoolean);
+    if (paramInt == 0) {
+      tgk.a(this.a, 0);
+    }
+    while ((paramInt <= tgk.a(this.a)) || (tgk.a(this.a) == null)) {
+      return;
+    }
+    tgk.a(this.a).setVisibility(0);
+    tgk.a(this.a, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tgl
  * JD-Core Version:    0.7.0.1
  */

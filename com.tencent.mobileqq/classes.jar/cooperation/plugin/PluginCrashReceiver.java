@@ -1,10 +1,11 @@
 package cooperation.plugin;
 
-import ammc;
-import ammd;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import biqn;
+import biqz;
+import bira;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -29,7 +30,7 @@ public class PluginCrashReceiver
             if ((!"com.tencent.mobileqq.ACTION_PLUGIN_CRASH".equals(localObject)) || ("com.tencent.mobileqq.ACTION_PLUGIN_STARTUP_FAILED".equals(localObject))) {
               try
               {
-                new ammd(paramIntent).execute(new String[] { "" });
+                new bira(paramIntent).execute(new String[] { "" });
                 return;
               }
               catch (Throwable paramContext)
@@ -40,7 +41,7 @@ public class PluginCrashReceiver
             if ("com.tencent.mobileqq.ACTION_PLUGIN_DIR_INFO_LOG".equals(localObject)) {
               try
               {
-                new ammc(paramContext).execute(new String[] { "" });
+                new biqz(paramContext).execute(new String[] { "" });
                 return;
               }
               catch (Throwable paramContext)
@@ -58,15 +59,15 @@ public class PluginCrashReceiver
           QLog.d("plugin_tag", 1, "receive installFailed " + paramContext + ", " + paramIntent);
         } while ("com.tencent.mobileqq".equals(paramIntent));
         paramIntent = (QQAppInterface)localObject;
-      } while (!paramIntent.a(26));
-      ((IPluginManager)paramIntent.getManager(26)).cancelInstall(paramContext);
+      } while (!paramIntent.a(27));
+      ((biqn)paramIntent.getManager(27)).cancelInstall(paramContext);
       return;
     } while (!"com.tencent.mobileqq.ACTION_PLUGIN_STARTUP_SPEED_INFO".equals(localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.plugin.PluginCrashReceiver
  * JD-Core Version:    0.7.0.1
  */

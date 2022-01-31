@@ -1,36 +1,18 @@
-import com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraOperator;
-import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter;
-import com.tencent.mobileqq.activity.richmedia.ShortVideoCaptureController;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
-public class xrx
-  implements Runnable
+public abstract class xrx
+  extends xsa
 {
-  public xrx(NewFlowCameraActivity paramNewFlowCameraActivity) {}
-  
-  public void run()
+  public xrx(xsc paramxsc, View paramView)
   {
-    String str = this.a.e;
-    NewFlowCameraActivity.a(this.a);
-    ShortVideoCaptureController.a(str, NewFlowCameraOperator.a);
-    this.a.q = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d(".photo", 2, "shot photo with capture from video");
-    }
-    NewFlowCameraActivity.a(this.a);
-    if (this.a.a == null) {}
-    for (str = "";; str = this.a.a.a())
-    {
-      FlowCameraMqqAction.a("", "0X80075BE", str, "", "", "");
-      return;
-    }
+    super(paramxsc, paramView);
   }
+  
+  public abstract int a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xrx
  * JD-Core Version:    0.7.0.1
  */

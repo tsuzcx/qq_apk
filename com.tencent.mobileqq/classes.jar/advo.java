@@ -1,29 +1,15 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
 
-public final class advo
-  implements Runnable
+public class advo
+  implements DialogInterface.OnClickListener
 {
-  public advo(String paramString1, String paramString2, int paramInt) {}
+  public advo(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    String str = null;
-    Object localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    if (localObject != null) {
-      str = ((QQAppInterface)localObject).getCurrentAccountUin();
-    }
-    localObject = new HashMap();
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      ((HashMap)localObject).put("activity", this.jdField_a_of_type_JavaLangString);
-    }
-    if (this.b != null) {
-      ((HashMap)localObject).put("detail", this.b);
-    }
-    ((HashMap)localObject).put("type", String.valueOf(this.jdField_a_of_type_Int));
-    StatisticCollector.a(BaseApplicationImpl.getApplication()).a(str, "BadTokenHooker", false, 0L, 0L, (HashMap)localObject, "", true);
+    this.a.a(this.a.c);
   }
 }
 

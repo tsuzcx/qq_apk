@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
+import com.tencent.biz.troop.VideoCombineHelper.4;
+import com.tencent.qphone.base.util.QLog;
 
 public class yse
-  implements Runnable
+  extends yta
 {
-  public yse(SpriteUIHandler paramSpriteUIHandler, long paramLong) {}
-  
-  public void run()
+  public yse(VideoCombineHelper.4 param4)
   {
-    SpriteUIHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler, this.jdField_a_of_type_Long, 1);
+    super(param4.this$0);
+  }
+  
+  public void b(ysz paramysz)
+  {
+    QLog.d(".troop.VideoCombineHelper", 2, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yse
  * JD-Core Version:    0.7.0.1
  */

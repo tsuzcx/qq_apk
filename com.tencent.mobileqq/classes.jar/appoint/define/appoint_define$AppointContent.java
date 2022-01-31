@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class appoint_define$AppointContent
-  extends MessageMicro
+  extends MessageMicro<AppointContent>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 58 }, new String[] { "uint32_appoint_subject", "uint32_pay_type", "uint32_appoint_date", "uint32_appoint_gender", "str_appoint_introduce", "msg_appoint_address", "msg_travel_info" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", null, null }, AppointContent.class);
   public appoint_define.AddressInfo msg_appoint_address = new appoint_define.AddressInfo();
@@ -20,7 +20,7 @@ public final class appoint_define$AppointContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     appoint.define.appoint_define.AppointContent
  * JD-Core Version:    0.7.0.1
  */

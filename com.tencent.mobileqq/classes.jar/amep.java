@@ -1,12 +1,10 @@
-import android.view.MotionEvent;
-
 public abstract interface amep
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public abstract void a(Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amep
  * JD-Core Version:    0.7.0.1
  */

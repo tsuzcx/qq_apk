@@ -9,7 +9,7 @@ public class BubbleUtils
   public static final int a = 0;
   public static BubbleInfo a = new BubbleInfo(0);
   public static final int b = 100000;
-  public static BubbleInfo b = new BubbleInfo(100000, 2130839099, 2130839098);
+  public static BubbleInfo b = new BubbleInfo(100000, 2130839101, 2130839100);
   
   public static BubbleInfo a(int paramInt, QQAppInterface paramQQAppInterface, Resources paramResources, BaseAdapter paramBaseAdapter)
   {

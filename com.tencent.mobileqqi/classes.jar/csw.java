@@ -1,45 +1,71 @@
-import android.os.Handler;
-import com.tencent.biz.common.util.OpenIdObserver;
-import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.mobileqq.activity.leba.LebaShowListManager;
+import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
+import com.tencent.mobileqq.config.DownloadIconsListener;
+import com.tencent.mobileqq.config.struct.LebaViewItem;
+import com.tencent.mobileqq.data.ResourcePluginInfo;
+import java.io.File;
+import java.util.HashMap;
 
 public class csw
-  extends OpenIdObserver
+  extends DownloadIconsListener
 {
-  public csw(ForwardRecentActivity paramForwardRecentActivity) {}
+  public csw(LebaListMgrActivity paramLebaListMgrActivity) {}
   
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    if ((this.a.isFinishing()) || (this.a.c)) {}
-    do
+    int k = 0;
+    if ((LebaListMgrActivity.a(this.a) == null) || (!this.a.isResume())) {}
+    label209:
+    label210:
+    for (;;)
     {
       return;
-      ForwardRecentActivity.a(this.a).e();
-      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      }
-      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
+      int m = LebaListMgrActivity.a(this.a).getCount();
+      int j = 0;
+      int i = k;
+      if (j < m)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ForwardRecentActivity", 2, "openIdObserver success");
-        }
-        if (!paramOpenID.openID.equals(this.a.v)) {
-          this.a.a();
+        Object localObject = (LebaViewItem)LebaListMgrActivity.a(this.a).getItem(j);
+        if ((((LebaViewItem)localObject).jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo != null) && (paramString.equals(((LebaViewItem)localObject).jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strPkgName)))
+        {
+          ((LebaViewItem)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(paramBitmap);
+          j = 1;
+          localObject = LebaShowListManager.a(this.a.a(), paramString, ((LebaViewItem)localObject).jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strPkgName);
+          i = j;
+          if (localObject == null) {
+            break label209;
+          }
+          i = j;
+          if (paramBitmap == null) {
+            break label209;
+          }
+          i = j;
+          if (LebaShowListManager.a().a.containsKey(((File)localObject).getAbsolutePath())) {
+            break label209;
+          }
+          LebaShowListManager.a().a.put(((File)localObject).getAbsolutePath(), paramBitmap);
+          i = 1;
         }
       }
-      else if (QLog.isColorLevel())
+      for (;;)
       {
-        QLog.d("ForwardRecentActivity", 2, "openIdObserver fail");
+        if (i == 0) {
+          break label210;
+        }
+        this.a.runOnUiThread(new csx(this, paramString));
+        return;
+        j += 1;
+        break;
       }
-    } while ((!this.a.jdField_a_of_type_Boolean) || (this.a.f != 11));
-    ForwardRecentActivity.a(this.a).a("-1010", -1, "", this.a.getString(2131560461));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     csw
  * JD-Core Version:    0.7.0.1
  */

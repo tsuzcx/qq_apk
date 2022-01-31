@@ -1,24 +1,40 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.widget.HorizontalListView.OnItemScrollEventListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class obw
-  implements HorizontalListView.OnItemScrollEventListener
+class obw
+  extends BroadcastReceiver
 {
-  public obw(StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
+  final String jdField_a_of_type_JavaLangString = "reason";
+  final String b = "globalactions";
+  final String c = "recentapps";
+  final String d = "homekey";
   
-  public void a(int paramInt, boolean paramBoolean)
+  obw(obv paramobv) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (StoryHomeHorizontalListView.a(this.a) != null) {
-      StoryHomeHorizontalListView.a(this.a).a(paramInt, paramBoolean);
+    if (paramIntent.getAction().equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
+    {
+      paramContext = paramIntent.getStringExtra("reason");
+      if ((paramContext != null) && (obv.a(this.jdField_a_of_type_Obv) != null))
+      {
+        if (!paramContext.equals("homekey")) {
+          break label55;
+        }
+        obv.a(this.jdField_a_of_type_Obv).a();
+      }
     }
-    SLog.a("HorizontalListView", "on item scroll mHasMore=%b, mIsLoadingMore:%b", Boolean.valueOf(StoryHomeHorizontalListView.a(this.a)), Boolean.valueOf(StoryHomeHorizontalListView.b(this.a)));
-    this.a.a();
+    label55:
+    while (!paramContext.equals("recentapps")) {
+      return;
+    }
+    obv.a(this.jdField_a_of_type_Obv).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     obw
  * JD-Core Version:    0.7.0.1
  */

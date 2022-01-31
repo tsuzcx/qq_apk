@@ -1,23 +1,53 @@
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter;
-import com.tencent.biz.qqstory.storyHome.model.StoryHomeFeed;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
-import com.tencent.widget.ActionSheet.OnDismissListener;
-import java.util.List;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class oad
-  implements ActionSheet.OnDismissListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public oad(FeedSegment paramFeedSegment, int paramInt) {}
+  public oad(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void onDismiss()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    StoryHomeFeed localStoryHomeFeed = (StoryHomeFeed)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment.a.a().get(this.jdField_a_of_type_Int);
-    FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment, localStoryHomeFeed, "clk_hide");
+    int j = 1;
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    }
+    for (;;)
+    {
+      syz.a(i);
+      paramCompoundButton = new JSONObject();
+      if (paramBoolean) {
+        i = j;
+      }
+      try
+      {
+        for (;;)
+        {
+          paramCompoundButton.put("click_opt", i);
+          nrt.a(null, "", "0X800A80B", "0X800A80B", 0, 0, "", "", "", paramCompoundButton.toString(), false);
+          return;
+          i = 1;
+          break;
+          i = 2;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oad
  * JD-Core Version:    0.7.0.1
  */

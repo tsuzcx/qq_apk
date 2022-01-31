@@ -1,47 +1,37 @@
 package c.t.m.g;
 
-import com.tencent.map.geolocation.TencentDistanceAnalysis;
+import android.location.Location;
+import android.os.Bundle;
 
 public final class eh
-  implements TencentDistanceAnalysis
 {
-  private double a;
-  private int b;
-  private int c;
+  public static final Location a = new Location("Empty");
   
-  public final void a(double paramDouble)
+  static
   {
-    this.a = paramDouble;
+    new Bundle();
   }
   
-  public final void a(int paramInt)
+  public static String a(int paramInt1, int paramInt2)
   {
-    this.b = paramInt;
-  }
-  
-  public final void b(int paramInt)
-  {
-    this.c = paramInt;
-  }
-  
-  public final double getConfidence()
-  {
-    return this.a;
-  }
-  
-  public final int getGpsCount()
-  {
-    return this.b;
-  }
-  
-  public final int getNetworkCount()
-  {
-    return this.c;
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    boolean bool = da.a().d("https");
+    StringBuilder localStringBuilder2 = new StringBuilder("http");
+    if (bool) {}
+    for (String str = "s";; str = "")
+    {
+      localStringBuilder1.append(str + "://lbs.map.qq.com/loc");
+      localStringBuilder1.append("?");
+      localStringBuilder1.append("c=1");
+      localStringBuilder1.append("&mars=").append(paramInt1);
+      localStringBuilder1.append("&obs=").append(paramInt2);
+      return localStringBuilder1.toString();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.eh
  * JD-Core Version:    0.7.0.1
  */

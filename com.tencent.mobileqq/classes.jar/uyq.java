@@ -1,31 +1,23 @@
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
-import com.tencent.mobileqq.vas.VasH5PayUtil;
-import com.tencent.mobileqq.vip.AioVipDonateHelper;
+import com.tribe.async.reactive.StreamFunction;
 
-public class uyq
-  implements FileManagerUtil.TipsClickedInterface
+class uyq
+  extends StreamFunction<uyg, uyg>
 {
-  public uyq(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void a(View paramView)
+  uyq(uyl paramuyl) {}
+  
+  protected void a(uyg paramuyg)
   {
-    paramView = new Bundle();
-    paramView.putString(VasH5PayUtil.e, "QQ会员");
-    paramView.putString(VasH5PayUtil.f, "LTMCLUB");
-    paramView.putString(VasH5PayUtil.d, "1450000515");
-    paramView.putInt(VasH5PayUtil.b, 3);
-    paramView.putString(VasH5PayUtil.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    paramView.putString(VasH5PayUtil.i, AioVipDonateHelper.a().c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
-    VasH5PayUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramView);
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    wxe.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary() [%d] will fetch vidlist of uinion_id: %s", Integer.valueOf(i), paramuyg.a);
+    notifyResult(paramuyg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uyq
  * JD-Core Version:    0.7.0.1
  */

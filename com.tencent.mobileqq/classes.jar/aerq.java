@@ -1,22 +1,47 @@
-import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
-import java.util.List;
+import android.graphics.Bitmap;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.VoiceResStrategy.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class aerq
-  implements Runnable
+public class aerq
+  implements ajal
 {
-  aerq(aerp paramaerp) {}
+  public aerq(CustomizeStrategyFactory.VoiceResStrategy.1 param1) {}
   
-  public void run()
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if (this.a.a.a.size() > 0) {
-      this.a.a.a(true, true);
+    paramPathResult = paramPathResult.folderPath;
+    if (paramInt == 0) {}
+    try
+    {
+      Object localObject = paramPathResult + File.separator;
+      localObject = (String)localObject + "aio.png";
+      localObject = SafeBitmapFactory.decodeFile((String)localObject, bdhj.a((String)localObject, (int)(CustomizeStrategyFactory.a * 47.0F + 0.5D)));
+      if (localObject != null) {
+        this.a.a.icon = ((Bitmap)localObject);
+      }
+      this.a.a.resPath = paramPathResult;
+      if (QLog.isColorLevel()) {
+        QLog.d("CustomizeStrategyFactory", 2, "VOICE_LOCK_RES info.icon=" + this.a.a.icon + ",resPath=" + this.a.a.resPath);
+      }
     }
-    NearbyVisitorListActivity.a(this.a.a, true, true);
+    catch (Throwable paramPathResult)
+    {
+      for (;;)
+      {
+        paramPathResult.printStackTrace();
+      }
+    }
+    CustomizeStrategyFactory.a().a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aerq
  * JD-Core Version:    0.7.0.1
  */

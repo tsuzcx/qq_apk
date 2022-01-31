@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.magicface.model;
 
 import android.media.AudioRecord;
-import com.tencent.mobileqq.utils.RecordParams;
+import atyr;
+import bdml;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecordVolume
@@ -9,12 +10,12 @@ public class RecordVolume
 {
   private int jdField_a_of_type_Int;
   private AudioRecord jdField_a_of_type_AndroidMediaAudioRecord;
-  private RecordVolume.RecordVolumeListener jdField_a_of_type_ComTencentMobileqqMagicfaceModelRecordVolume$RecordVolumeListener;
+  private atyr jdField_a_of_type_Atyr;
   private volatile boolean jdField_a_of_type_Boolean;
   
-  public RecordVolume(RecordVolume.RecordVolumeListener paramRecordVolumeListener)
+  public RecordVolume(atyr paramatyr)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelRecordVolume$RecordVolumeListener = paramRecordVolumeListener;
+    this.jdField_a_of_type_Atyr = paramatyr;
   }
   
   public void a()
@@ -26,7 +27,7 @@ public class RecordVolume
   {
     try
     {
-      int i = RecordParams.jdField_a_of_type_Int;
+      int i = bdml.jdField_a_of_type_Int;
       this.jdField_a_of_type_Int = AudioRecord.getMinBufferSize(i, 2, 2);
       this.jdField_a_of_type_AndroidMediaAudioRecord = new AudioRecord(1, i, 2, 2, this.jdField_a_of_type_Int);
       this.jdField_a_of_type_AndroidMediaAudioRecord.startRecording();
@@ -54,8 +55,8 @@ public class RecordVolume
             if (QLog.isColorLevel()) {
               QLog.i("recordVolume", 2, "====dB===" + d);
             }
-            if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelRecordVolume$RecordVolumeListener != null) {
-              this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelRecordVolume$RecordVolumeListener.a((int)Math.round(d));
+            if (this.jdField_a_of_type_Atyr != null) {
+              this.jdField_a_of_type_Atyr.a((int)Math.round(d));
             }
           }
           Thread.sleep(100L);
@@ -149,7 +150,7 @@ public class RecordVolume
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.model.RecordVolume
  * JD-Core Version:    0.7.0.1
  */

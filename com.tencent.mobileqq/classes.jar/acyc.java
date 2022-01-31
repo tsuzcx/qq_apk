@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
 public class acyc
-  extends acxu
+  implements Comparator<RecentUser>
 {
-  public acyc(OnlineFileSessionWorker paramOnlineFileSessionWorker)
-  {
-    super(paramOnlineFileSessionWorker);
-  }
+  public acyc(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  protected String a()
+  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
   {
-    return "StateRefuseByPC";
+    return (int)(paramRecentUser2.showUpTime - paramRecentUser1.showUpTime);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acyc
  * JD-Core Version:    0.7.0.1
  */

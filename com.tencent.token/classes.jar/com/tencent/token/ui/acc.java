@@ -1,22 +1,33 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.p;
-import com.tencent.token.utils.s;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.cp;
+import com.tencent.token.do;
+import com.tencent.token.global.RqdApplication;
 
-final class acc
-  implements View.OnClickListener
+class acc
+  implements DialogInterface.OnClickListener
 {
-  acc(StartPwdGestureSelActivity paramStartPwdGestureSelActivity) {}
+  acc(UtilsActivity paramUtilsActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    p.a().a(System.currentTimeMillis(), 21);
-    paramView = new Intent(this.a, StartPwdGestureDeleteActivity.class);
-    this.a.startActivityForResult(paramView, 256);
-    s.a(this.a, 1);
+    paramDialogInterface = do.a().e();
+    if (paramDialogInterface == null) {
+      return;
+    }
+    paramDialogInterface = "" + paramDialogInterface.mRealUin;
+    cp localcp = cp.a(RqdApplication.l());
+    if (!localcp.b(paramDialogInterface, 523005419L))
+    {
+      localcp.a(paramDialogInterface, this.a.mHandler, 523005419L);
+      this.a.showProDialog(this.a, 2131230843, 2131231298, null);
+      return;
+    }
+    this.a.showUserDialog(2131231654, this.a.getResources().getString(2131231653), 2131230897, new acd(this));
   }
 }
 

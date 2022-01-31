@@ -1,15 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.fileviewer.base.BaseFileViewerController;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
+import com.tencent.qphone.base.util.QLog;
+import com.weiyun.sdk.IWyFileSystem.IWyCallback;
+import com.weiyun.sdk.IWyFileSystem.Thumbnail;
+import com.weiyun.sdk.IWyFileSystem.WyErrorStatus;
 
 public class fxh
-  implements View.OnClickListener
+  implements IWyFileSystem.IWyCallback
 {
-  public fxh(BaseFileViewerController paramBaseFileViewerController) {}
+  public fxh(WeiYunLogicCenter paramWeiYunLogicCenter) {}
   
-  public void onClick(View paramView)
+  public void a(IWyFileSystem.Thumbnail paramThumbnail)
   {
-    this.a.c(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "getWeiYunThumb onSucceed. filePath[" + paramThumbnail.filePath + "]");
+    }
+    this.a.a.a().a(true, 39, new Object[] { paramThumbnail });
+  }
+  
+  public void onFailed(IWyFileSystem.WyErrorStatus paramWyErrorStatus)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getWeiYunThumb onFailed: errcode[" + paramWyErrorStatus.errorCode + "], errmsg[" + paramWyErrorStatus.errorMsg + "]");
+    }
   }
 }
 

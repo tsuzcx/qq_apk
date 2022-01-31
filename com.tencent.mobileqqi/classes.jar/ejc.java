@@ -1,24 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.View;
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.activity.contact.newfriend.CircleGroupListView;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
 
 public class ejc
-  implements DialogInterface.OnDismissListener
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public ejc(CircleGroupListView paramCircleGroupListView, int paramInt, TranslateAnimation paramTranslateAnimation) {}
+  public ejc(MainAssistObserver paramMainAssistObserver, RadioButton paramRadioButton1, RadioButton paramRadioButton2, Button paramButton) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendCircleGroupListView.b.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendCircleGroupListView.b.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendCircleGroupListView.a = null;
+    if ((paramInt == this.jdField_a_of_type_AndroidWidgetRadioButton.getId()) || (paramInt == this.b.getId()))
+    {
+      this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+      if (paramInt != this.jdField_a_of_type_AndroidWidgetRadioButton.getId()) {
+        break label53;
+      }
+    }
+    label53:
+    while (paramInt != this.b.getId())
+    {
+      return;
+      this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ejc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,60 @@
-import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
 public class nnw
-  implements AbsListView.OnScrollListener
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
-  int c = 0;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
   
-  public nnw(QQStoryWatcherListActivity paramQQStoryWatcherListActivity) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public static nnw a(String paramString)
   {
-    if ((paramInt == 0) && (this.c + this.jdField_a_of_type_Int >= this.b))
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.b) {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a(3);
-      }
+      nnw localnnw = new nnw();
+      paramString = new JSONObject(paramString);
+      localnnw.jdField_a_of_type_Int = paramString.optInt("bannerType");
+      localnnw.jdField_a_of_type_JavaLangString = paramString.optString("iconUrl");
+      localnnw.jdField_b_of_type_JavaLangString = paramString.optString("abstractText");
+      localnnw.jdField_b_of_type_Int = paramString.optInt("jumpType");
+      localnnw.c = paramString.optString("linkUrl");
+      localnnw.d = paramString.optString("appid");
+      localnnw.e = paramString.optString("scheme");
+      localnnw.f = paramString.optString("packagename");
+      localnnw.g = paramString.optString("androidDownloadUrl");
+      localnnw.h = paramString.optString("iOSDownloadUrl");
+      localnnw.i = paramString.optString("appName");
+      localnnw.j = paramString.optString("apkUrl");
+      return localnnw;
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a(1);
-    nnz.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a);
+    catch (Exception paramString) {}
+    return null;
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public boolean a()
   {
-    this.c = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt3;
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {}
+    while (((this.jdField_a_of_type_Int == 2) && (TextUtils.isEmpty(this.c))) || ((this.jdField_a_of_type_Int == 1) && ((TextUtils.isEmpty(this.f)) || (TextUtils.isEmpty(this.j))))) {
+      return false;
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nnw
  * JD-Core Version:    0.7.0.1
  */

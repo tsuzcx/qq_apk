@@ -1,23 +1,28 @@
-import com.tencent.ark.ark;
-import com.tencent.mobileqq.gameparty.GamePartyManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.profile.ProfileLabelInfo;
+import java.util.List;
 
-public class adoq
-  implements Runnable
+class adoq
+  implements View.OnClickListener
 {
-  public adoq(GamePartyManager paramGamePartyManager, String paramString) {}
+  adoq(adop paramadop) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
+    paramView = paramView.getTag();
+    if ((paramView instanceof adoo))
     {
-      ark.arkNotify("com.tencent.qqopen.teamup", "update_team_info", this.jdField_a_of_type_JavaLangString, "json");
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("GamePartyManager", 2, "arkNotify failed, .so not loaded");
+      paramView = (adoo)paramView;
+      if ((paramView.a >= 0) && (paramView.a < this.a.a.a.size()))
+      {
+        paramView = (ProfileLabelInfo)this.a.a.a.remove(paramView.a);
+        this.a.a.a(this.a.a.a.size());
+        this.a.notifyDataSetChanged();
+        adop.a(this.a, paramView);
+        azqs.b(this.a.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "2", "", "", "");
+      }
     }
   }
 }

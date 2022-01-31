@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import awge;
+import awhs;
 
 public class ShortVideoUpInfo
-  extends Entity
+  extends awge
 {
-  @unique
+  @awhs
   public String key;
   public long lastIp;
   public long timeStamp;
@@ -15,7 +15,7 @@ public class ShortVideoUpInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.ShortVideoUpInfo
  * JD-Core Version:    0.7.0.1
  */

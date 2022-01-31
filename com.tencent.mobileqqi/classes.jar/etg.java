@@ -1,32 +1,22 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
-import com.tencent.mobileqq.activity.recent.LocalSearchBar;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.voip.VoipAddressBookView;
 
 public class etg
-  extends SearchResultDialog
+  implements DialogInterface.OnDismissListener
 {
-  public etg(LocalSearchBar paramLocalSearchBar, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, AdapterView.OnItemClickListener paramOnItemClickListener)
-  {
-    super(paramContext, paramQQAppInterface, paramInt, paramOnItemClickListener);
-  }
+  public etg(VoipAddressBookView paramVoipAddressBookView) {}
   
-  @SuppressLint({"UseSparseArrays"})
-  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(a(paramContext, paramQQAppInterface));
-    localArrayList.addAll(super.a(paramContext, paramQQAppInterface, paramInt));
-    return localArrayList;
+    VoipAddressBookView.a(this.a).setVisibility(0);
+    VoipAddressBookView.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     etg
  * JD-Core Version:    0.7.0.1
  */

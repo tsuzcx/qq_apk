@@ -1,45 +1,28 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
+import android.util.SparseArray;
 
-class vud
-  implements WerewolvesHandler.Callback
+public final class vud
+  extends SparseArray<int[]>
 {
-  vud(vuc paramvuc) {}
-  
-  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
+  public vud()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.werewolf.GameRoomChatPie", 2, "exitRoom: errorCode = " + paramInt);
-    }
-    if ((paramInt == 0) || (paramInt == 1285))
-    {
-      if ((this.a.a.d != null) && (this.a.a.d.isShowing())) {
-        this.a.a.d.dismiss();
-      }
-      new Intent().putExtra("isNeedFinish", true);
-      SharedPreUtils.l(this.a.a.a(), this.a.a.a.getCurrentAccountUin(), false);
-      GameRoomAVController.a().d();
-      this.a.a.W = true;
-      this.a.a.b(1);
-      return;
-    }
-    if ((this.a.a.d != null) && (this.a.a.d.isShowing())) {
-      this.a.a.d.dismiss();
-    }
-    QQToast.a(this.a.a.a(), 1, "退出游戏失败", 0).b(this.a.a.a());
+    put(0, new int[] { 1, 7 });
+    put(1, new int[] { 0, 2 });
+    put(2, new int[] { 0, 3 });
+    put(3, new int[] { 0, 4 });
+    put(4, new int[] { 0, 5 });
+    put(5, new int[] { 0, 6 });
+    put(6, new int[] { 0, 7 });
+    put(7, new int[] { 0, 8 });
+    put(8, new int[] { 0, 9 });
+    put(9, new int[] { 0, 10, 12 });
+    put(10, new int[] { 0, 11, 12 });
+    put(11, new int[] { 0, 9, 12 });
+    put(12, new int[] { 0, 7 });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vud
  * JD-Core Version:    0.7.0.1
  */

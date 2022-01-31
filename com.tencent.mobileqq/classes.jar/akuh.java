@@ -1,22 +1,21 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.widget.FormEditItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.ValueCallback;
 
-public class akuh
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class akuh
+  implements ValueCallback<String>
 {
-  public akuh(FormEditItem paramFormEditItem) {}
+  akuh(akug paramakug) {}
   
-  public void onGlobalLayout()
+  public void a(String paramString)
   {
-    this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    FormEditItem.a(this.a, this.a.getMeasuredWidth());
-    FormEditItem.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloJSContext", 2, "[onReceiveValue] s " + paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akuh
  * JD-Core Version:    0.7.0.1
  */

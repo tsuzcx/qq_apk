@@ -1,29 +1,39 @@
-import android.os.Handler;
-import android.view.View;
-import com.tencent.biz.ui.CustomMenuBar.OnMenuItemClickListener;
-import com.tencent.crmqq.structmsg.StructMsg.ButtonInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
-import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class vra
-  implements CustomMenuBar.OnMenuItemClickListener
+class vra
+  implements uud
 {
-  public vra(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
+  vra(vqz paramvqz, CommentEntry paramCommentEntry, boolean paramBoolean) {}
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
-    this.a.p.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 10000L);
-    StructMsg.ButtonInfo localButtonInfo = this.a.a(paramInt1);
-    EnterpriseQQManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramString, this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), localButtonInfo);
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Bqq_Crm", "", "Aio_menu", "Clk_menu", 0, 0, this.a.a(), paramInt1 + "", "", "");
+    a(-1, alud.a(2131702564));
   }
+  
+  public void a(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
+    QQToast.a(BaseApplication.getContext(), 1, alud.a(2131702561), 0).a();
+    wxe.e("Q.qqstory.player.CommentFloatDialog", "delete comment failed. errorCode = %d, errorMsg=%s.", new Object[] { Integer.valueOf(paramInt), paramString });
+  }
+  
+  public void a(MessageMicro paramMessageMicro)
+  {
+    if (!vqu.b(this.jdField_a_of_type_Vqz.a)) {
+      vqu.a(this.jdField_a_of_type_Vqz.a).a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Boolean);
+    }
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vra
  * JD-Core Version:    0.7.0.1
  */

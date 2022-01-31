@@ -1,39 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.GifDrawable.OnGIFPlayOnceListener;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import mqq.util.WeakReference;
 
-public class ser
-  implements DialogInterface.OnClickListener
+class ser
+  implements GifDrawable.OnGIFPlayOnceListener
 {
-  public ser(ChatSettingForTroop paramChatSettingForTroop) {}
+  AbstractGifImage a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  ser(AbstractGifImage paramAbstractGifImage)
   {
-    if (paramInt == 1)
+    this.a = paramAbstractGifImage;
+  }
+  
+  public void onPlayOnce()
+  {
+    Object localObject = (List)seq.a().get(this.a);
+    if (localObject != null)
     {
-      paramDialogInterface = new Intent(this.a, LoginActivity.class);
-      paramDialogInterface.putExtra("is_change_account", true);
-      paramDialogInterface.putExtra("if_check_account_same", true);
-      paramDialogInterface.putExtras(this.a.getIntent().getExtras());
-      paramDialogInterface.putExtra("key_action", ChatSettingForTroop.class.getSimpleName());
-      paramDialogInterface.addFlags(268435456);
-      paramDialogInterface.addFlags(67108864);
-      this.a.a.cancel();
-      this.a.startActivity(paramDialogInterface);
-      this.a.finish();
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
+        if (localWeakReference.get() != null) {
+          ((ses)localWeakReference.get()).a();
+        }
+      }
     }
-    while (paramInt != 0) {
-      return;
-    }
-    this.a.finish();
+    this.a.setGIFPlayOnceListener(null);
+    seq.b().remove(this.a);
+    seq.a().remove(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ser
  * JD-Core Version:    0.7.0.1
  */

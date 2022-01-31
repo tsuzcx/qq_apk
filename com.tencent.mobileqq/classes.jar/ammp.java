@@ -1,53 +1,157 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
+import android.database.Cursor;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SQLiteDatabase;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.PluginPreInstaller;
+import java.util.List;
 
 public class ammp
-  extends SosoInterface.OnLocationListener
 {
-  public ammp(PluginPreInstaller paramPluginPreInstaller, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  private static int a(String paramString, int paramInt, StringBuilder paramStringBuilder, QQAppInterface paramQQAppInterface)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    paramQQAppInterface = paramQQAppInterface.b();
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      do
+      {
+        return 0;
+        StringBuilder localStringBuilder = new StringBuilder(" where msgtype != ");
+        localStringBuilder.append(-2006);
+        paramString = bdih.a(MessageRecord.getOldTableName(paramString, paramInt), MessageRecord.getTableName(paramString, paramInt), paramQQAppInterface, localStringBuilder.toString());
+      } while (paramString == null);
+      paramString = paramQQAppInterface.a(paramString.toString(), null);
+    } while (paramString == null);
+    long l;
+    if ((paramString.getCount() > 0) && (paramStringBuilder != null))
+    {
+      paramString.moveToLast();
+      if (paramInt != 3000) {
+        break label144;
+      }
+      l = paramString.getLong(paramString.getColumnIndex("shmsgseq"));
+    }
+    for (;;)
+    {
+      if (l > 0L) {
+        paramStringBuilder.append(String.valueOf(l));
+      }
+      paramInt = paramString.getCount();
+      paramString.close();
+      return paramInt;
+      label144:
+      if (paramInt == 0) {
+        l = paramString.getLong(paramString.getColumnIndex("time"));
+      } else if (paramInt == 1) {
+        l = paramString.getLong(paramString.getColumnIndex("shmsgseq"));
+      } else {
+        l = 0L;
+      }
+    }
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  private static String a(String paramString, int paramInt, QQAppInterface paramQQAppInterface)
   {
-    Object localObject;
-    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    StringBuilder localStringBuilder = new StringBuilder();
+    paramInt = ((alxa)paramQQAppInterface.getManager(92)).a(paramString, paramInt, localStringBuilder);
+    paramQQAppInterface = null;
+    paramString = paramQQAppInterface;
+    if (paramInt > 0)
     {
-      paramSosoLbsInfo = paramSosoLbsInfo.a.e;
-      if (!TextUtils.isEmpty(paramSosoLbsInfo))
+      paramString = paramQQAppInterface;
+      if (localStringBuilder.length() > 0) {
+        paramString = localStringBuilder.toString();
+      }
+    }
+    return paramString;
+  }
+  
+  public static void a(String paramString, int paramInt, QQAppInterface paramQQAppInterface)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      switch (paramInt)
       {
-        localObject = PreferenceManager.getDefaultSharedPreferences(PluginPreInstaller.a(this.a)).edit();
-        ((SharedPreferences.Editor)localObject).putString("wlx_last_location_city", paramSosoLbsInfo);
-        ((SharedPreferences.Editor)localObject).commit();
-        if (QLog.isColorLevel())
+      default: 
+      case 0: 
+        try
         {
-          localObject = new StringBuilder().append("wlx isJtcodePluginPreInstall; start location locationCity=");
-          if (TextUtils.isEmpty(paramSosoLbsInfo)) {
-            break label100;
+          if (!QLog.isColorLevel()) {
+            return;
+          }
+          QLog.d("MessageDeleteUtils", 2, "cleanMessage type not support = " + paramInt);
+          return;
+        }
+        catch (Exception paramString)
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("MessageDeleteUtils", 2, "cleanMessage exception = " + paramString.getMessage());
+          paramString.printStackTrace();
+          return;
+        }
+        a(paramString, paramInt, a(paramString, paramInt, paramQQAppInterface), paramQQAppInterface);
+        return;
+      case 1000: 
+      case 1004: 
+        a(paramString, paramInt, b(paramString, paramInt, paramQQAppInterface), paramQQAppInterface);
+        return;
+      }
+      a(paramString, paramInt, b(paramString, paramInt, paramQQAppInterface), paramQQAppInterface);
+    }
+  }
+  
+  private static void a(String paramString1, int paramInt, String paramString2, QQAppInterface paramQQAppInterface)
+  {
+    List localList = paramQQAppInterface.a().b(paramString1, paramInt);
+    if ((localList != null) && (!localList.isEmpty())) {
+      if (!((MessageRecord)localList.get(localList.size() - 1)).isSendFromLocal()) {}
+    }
+    for (long l1 = ((MessageRecord)localList.get(localList.size() - 1)).time + 2L;; l1 = 0L) {
+      for (;;)
+      {
+        paramQQAppInterface.a().a(paramString1, paramInt);
+        paramQQAppInterface.a().e(paramString1, paramInt);
+        if (paramString2 != null) {}
+        try
+        {
+          l2 = Long.parseLong(paramString2);
+          l1 = Math.max(l2, l1);
+          if (l1 > 0L) {
+            paramQQAppInterface.a().a(paramString1, paramInt, l1);
+          }
+          return;
+          l1 = ((MessageRecord)localList.get(localList.size() - 1)).time;
+        }
+        catch (Exception paramString2)
+        {
+          for (;;)
+          {
+            paramString2.printStackTrace();
+            long l2 = 0L;
           }
         }
       }
     }
-    for (;;)
-    {
-      QLog.d("PluginPreInstaller", 2, paramSosoLbsInfo);
-      return;
-      label100:
-      paramSosoLbsInfo = "null";
+  }
+  
+  private static String b(String paramString, int paramInt, QQAppInterface paramQQAppInterface)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    paramInt = a(paramString, paramInt, localStringBuilder, paramQQAppInterface);
+    paramString = null;
+    if (paramInt > 0) {
+      paramString = localStringBuilder.toString();
     }
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ammp
  * JD-Core Version:    0.7.0.1
  */

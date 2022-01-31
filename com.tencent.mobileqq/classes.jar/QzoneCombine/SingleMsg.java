@@ -9,10 +9,10 @@ import java.util.Map;
 public final class SingleMsg
   extends JceStruct
 {
-  static Map cache_data = new HashMap();
+  static Map<String, String> cache_data = new HashMap();
   static byte[] cache_extBuffer;
   public long addTime;
-  public Map data;
+  public Map<String, String> data;
   public byte[] extBuffer;
   public long opUin;
   
@@ -25,7 +25,7 @@ public final class SingleMsg
   
   public SingleMsg() {}
   
-  public SingleMsg(long paramLong1, Map paramMap, long paramLong2, byte[] paramArrayOfByte)
+  public SingleMsg(long paramLong1, Map<String, String> paramMap, long paramLong2, byte[] paramArrayOfByte)
   {
     this.addTime = paramLong1;
     this.data = paramMap;

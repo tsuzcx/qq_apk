@@ -1,57 +1,84 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.TargetApi;
+import android.app.Dialog;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewStub;
+import android.view.Window;
 
 public class yfg
-  extends Handler
+  extends Dialog
 {
-  public yfg(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
-  
-  public void handleMessage(Message paramMessage)
+  public yfg(@NonNull Context paramContext, int paramInt)
   {
-    switch (paramMessage.what)
+    super(paramContext, paramInt);
+  }
+  
+  @TargetApi(19)
+  public void P_()
+  {
+    int i = 0;
+    if (Build.VERSION.SDK_INT >= 19)
     {
-    default: 
-    case 8193: 
-    case 8194: 
-      do
+      if (Build.VERSION.SDK_INT < 21) {
+        break label84;
+      }
+      if ((getWindow() != null) && (getWindow().getDecorView() != null))
       {
-        do
-        {
-          do
-          {
-            return;
-            if (QQSpecialFriendSettingActivity.a(this.a) == null)
-            {
-              QQSpecialFriendSettingActivity.a(this.a, new QQProgressDialog(this.a, this.a.getTitleBarHeight()));
-              if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String))) {
-                QQSpecialFriendSettingActivity.a(this.a).a((String)paramMessage.obj);
-              }
-            }
-          } while ((this.a.isFinishing()) || (QQSpecialFriendSettingActivity.a(this.a).isShowing()));
-          try
-          {
-            QQSpecialFriendSettingActivity.a(this.a).show();
-            return;
-          }
-          catch (Exception paramMessage) {}
-        } while (!QLog.isColorLevel());
-        QLog.e("QQSpecialFriendSettingActivity", 2, "QQProgressDialog show exception.", paramMessage);
-        return;
-      } while ((QQSpecialFriendSettingActivity.a(this.a) == null) || (!QQSpecialFriendSettingActivity.a(this.a).isShowing()));
-      QQSpecialFriendSettingActivity.a(this.a).dismiss();
-      QQSpecialFriendSettingActivity.a(this.a, null);
-      return;
+        getWindow().clearFlags(67108864);
+        getWindow().getDecorView().setSystemUiVisibility(1280);
+        getWindow().addFlags(-2147483648);
+        getWindow().setStatusBarColor(0);
+        break label83;
+        break label83;
+        break label83;
+      }
     }
-    QQToast.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight());
+    label74:
+    Object localObject = getWindow();
+    if (localObject == null) {}
+    label188:
+    for (;;)
+    {
+      label83:
+      return;
+      label84:
+      if (getWindow() == null) {
+        break label74;
+      }
+      getWindow().addFlags(67108864);
+      break label74;
+      localObject = ((Window)localObject).getDecorView();
+      if (!(localObject instanceof ViewGroup)) {
+        break;
+      }
+      localObject = ((ViewGroup)localObject).getChildAt(0);
+      if (!(localObject instanceof ViewGroup)) {
+        break;
+      }
+      int j = ((ViewGroup)localObject).getChildCount();
+      for (;;)
+      {
+        if (i >= j) {
+          break label188;
+        }
+        View localView = ((ViewGroup)localObject).getChildAt(i);
+        if ((localView == null) || (localView.getId() == 16908290)) {
+          break;
+        }
+        if (!(localView instanceof ViewStub)) {
+          localView.setAlpha(0.0F);
+        }
+        i += 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yfg
  * JD-Core Version:    0.7.0.1
  */

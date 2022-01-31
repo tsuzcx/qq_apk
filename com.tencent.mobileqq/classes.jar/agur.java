@@ -1,44 +1,32 @@
-import android.view.View;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.av.utils.VideoActionSheet;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 
-public class agur
-  implements ActionSheet.OnButtonClickListener
+class agur
+  extends nub
 {
-  public agur(QCallDetailActivity paramQCallDetailActivity, VideoActionSheet paramVideoActionSheet) {}
+  agur(agti paramagti) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void d(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentAvUtilsVideoActionSheet.dismiss();
-    switch (paramInt)
+    if ((paramBoolean) && (agti.a(this.a).getVisibility() != 0))
     {
-    default: 
-      return;
-    case 0: 
-      QCallDetailActivity.c(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity);
+      if (mdj.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
+      {
+        agti.b(this.a).setVisibility(0);
+        agti.c(this.a).setOnClickListener(this.a);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setRight2Icon(2130846632, 2130846633);
+      }
+    }
+    else {
       return;
     }
-    if ((QCallDetailActivity.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity) == 1) || (QCallDetailActivity.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity) == 2))
-    {
-      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity, this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.a, 2);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, "CliOper", "", "", "0X8006406", "0X8006406", 5, 0, "", "", "", "");
-      return;
-    }
-    if (QCallDetailActivity.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity) == 5)
-    {
-      PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity, 1, 5);
-      return;
-    }
-    QCallDetailActivity.c(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity);
+    agti.d(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agur
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ import com.tencent.qphone.base.util.QLog;
 public class WebCoreService
   extends Service
 {
-  private static final int jdField_a_of_type_Int = AppSetting.jdField_a_of_type_Int;
+  private static final int jdField_a_of_type_Int = ;
   private static WebCoreService jdField_a_of_type_ComTencentMobileqqWebprocessWebCoreService;
   public static boolean a;
   
@@ -23,31 +23,31 @@ public class WebCoreService
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 31	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   3: getstatic 32	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
     //   6: astore_0
-    //   7: new 33	android/content/Intent
+    //   7: new 34	android/content/Intent
     //   10: dup
     //   11: aload_0
     //   12: ldc 2
-    //   14: invokespecial 36	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   14: invokespecial 37	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
     //   17: astore_1
     //   18: aload_0
     //   19: aload_1
-    //   20: invokevirtual 42	android/content/Context:startService	(Landroid/content/Intent;)Landroid/content/ComponentName;
+    //   20: invokevirtual 43	android/content/Context:startService	(Landroid/content/Intent;)Landroid/content/ComponentName;
     //   23: pop
     //   24: iconst_1
-    //   25: putstatic 44	com/tencent/mobileqq/webprocess/WebCoreService:jdField_a_of_type_Boolean	Z
+    //   25: putstatic 45	com/tencent/mobileqq/webprocess/WebCoreService:jdField_a_of_type_Boolean	Z
     //   28: ldc 2
     //   30: monitorexit
     //   31: return
     //   32: astore_0
-    //   33: invokestatic 50	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   33: invokestatic 51	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   36: ifeq -8 -> 28
-    //   39: ldc 52
+    //   39: ldc 53
     //   41: iconst_2
-    //   42: ldc 54
+    //   42: ldc 55
     //   44: aload_0
-    //   45: invokestatic 58	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   45: invokestatic 59	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   48: goto -20 -> 28
     //   51: astore_0
     //   52: ldc 2
@@ -74,29 +74,29 @@ public class WebCoreService
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: new 33	android/content/Intent
+    //   3: new 34	android/content/Intent
     //   6: dup
-    //   7: getstatic 31	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   7: getstatic 32	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
     //   10: ldc 2
-    //   12: invokespecial 36	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   12: invokespecial 37	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
     //   15: astore_0
-    //   16: invokestatic 63	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   16: invokestatic 64	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   19: aload_0
-    //   20: invokevirtual 69	com/tencent/qphone/base/util/BaseApplication:stopService	(Landroid/content/Intent;)Z
+    //   20: invokevirtual 70	com/tencent/qphone/base/util/BaseApplication:stopService	(Landroid/content/Intent;)Z
     //   23: pop
     //   24: iconst_0
-    //   25: putstatic 44	com/tencent/mobileqq/webprocess/WebCoreService:jdField_a_of_type_Boolean	Z
+    //   25: putstatic 45	com/tencent/mobileqq/webprocess/WebCoreService:jdField_a_of_type_Boolean	Z
     //   28: ldc 2
     //   30: monitorexit
     //   31: return
     //   32: astore_0
-    //   33: invokestatic 50	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   33: invokestatic 51	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   36: ifeq -8 -> 28
-    //   39: ldc 52
+    //   39: ldc 53
     //   41: iconst_2
-    //   42: ldc 54
+    //   42: ldc 55
     //   44: aload_0
-    //   45: invokestatic 58	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   45: invokestatic 59	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   48: goto -20 -> 28
     //   51: astore_0
     //   52: ldc 2
@@ -191,7 +191,7 @@ public class WebCoreService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.WebCoreService
  * JD-Core Version:    0.7.0.1
  */

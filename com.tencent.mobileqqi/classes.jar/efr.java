@@ -1,35 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.item.ShakeItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShakeWindow;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
 
 public class efr
-  implements View.OnClickListener
+  extends Handler
 {
-  public efr(ShakeItemBuilder paramShakeItemBuilder) {}
+  public efr(NotificationView paramNotificationView) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.shakemsg", 2, "shake msg onClick() is called");
-    }
-    paramView = (MessageForShakeWindow)AIOUtils.a(paramView);
-    if ((ShakeItemBuilder.a(this.a) instanceof ChatActivity))
+    switch (paramMessage.what)
     {
-      ((ChatActivity)ShakeItemBuilder.b(this.a)).u();
-      ShakeItemBuilder.a(this.a).b(paramView.frienduin, false);
+    case 1013: 
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (NotificationView.a(this.a) == null);
+      this.a.k();
+      NotificationView.a(this.a).a = GroupSystemMsgController.a().a(this.a.a);
+      NotificationView.a(this.a).notifyDataSetChanged();
       return;
     }
-    ShakeItemBuilder.b(this.a).b(paramView.frienduin, false);
+    this.a.l();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     efr
  * JD-Core Version:    0.7.0.1
  */

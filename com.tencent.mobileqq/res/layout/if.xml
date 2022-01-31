@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/cg_" android:background="@color/dw" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <dov.com.qq.im.ae.view.TabLayout android:id="@id/mqx" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginTop="12.0dip" android:layout_marginBottom="16.0dip" android:layout_alignParentBottom="true" />
+    <dov.com.qq.im.ae.view.NoScrollViewPager android:id="@id/viewPager" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/mqx" />
+</RelativeLayout>

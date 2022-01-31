@@ -1,20 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import com.tencent.mobileqq.antiphing.AntiphingHandler;
 
 public class eyw
-  implements View.OnClickListener
 {
-  public eyw(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
+  public int a;
+  public String a;
   
-  public void onClick(View paramView)
+  public eyw(AntiphingHandler paramAntiphingHandler)
   {
-    this.a.b(paramView);
+    this.jdField_a_of_type_JavaLangString = "0";
+    this.jdField_a_of_type_Int = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     eyw
  * JD-Core Version:    0.7.0.1
  */

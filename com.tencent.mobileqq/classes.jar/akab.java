@@ -1,125 +1,133 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.util.FetchBuddyAndTroopNameHelper;
-import com.tencent.mobileqq.util.FetchInfoListManager.FetchInfoListener;
-import com.tencent.mobileqq.util.FetchInfoReq;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.utils.StringUtil;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 public class akab
-  implements FetchInfoListManager.FetchInfoListener
+  extends alrl
 {
-  public akab(FetchBuddyAndTroopNameHelper paramFetchBuddyAndTroopNameHelper) {}
+  public akab(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void a(int paramInt, List paramList)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString)
   {
-    if ((paramInt != 1) || (paramList == null) || (paramList.isEmpty())) {
+    if (!paramBoolean) {
+      SelectMemberActivity.jdField_b_of_type_Boolean = false;
+    }
+    if (this.a.jdField_a_of_type_Bety != null)
+    {
+      this.a.jdField_a_of_type_Bety.dismiss();
+      if (paramBoolean)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("SelectMemberActivity", 2, "create discussion success: roomId: " + paramLong + ", mSubType: " + this.a.jdField_b_of_type_Int + ", mEntrance: " + this.a.d);
+        }
+        paramString = new ArrayList();
+        Iterator localIterator = this.a.e.iterator();
+        while (localIterator.hasNext())
+        {
+          ResultRecord localResultRecord = (ResultRecord)localIterator.next();
+          if (localResultRecord.jdField_a_of_type_Int == 5)
+          {
+            if (localResultRecord.jdField_a_of_type_JavaLangString.startsWith("pstn")) {
+              localResultRecord.jdField_a_of_type_JavaLangString = localResultRecord.jdField_a_of_type_JavaLangString.substring("pstn".length());
+            }
+            paramString.add(localResultRecord.jdField_a_of_type_JavaLangString);
+          }
+          else if ((localResultRecord.jdField_a_of_type_Int == 4) && (localResultRecord.jdField_a_of_type_JavaLangString.startsWith("+")))
+          {
+            paramString.add(localResultRecord.jdField_a_of_type_JavaLangString);
+          }
+        }
+        this.a.jdField_a_of_type_AndroidContentIntent.putExtra("roomId", paramLong);
+        if (this.a.d == 12) {
+          this.a.jdField_a_of_type_AndroidContentIntent.putExtra("select_memeber_discussion_memeber_count", this.a.e.size() + 1);
+        }
+        this.a.jdField_a_of_type_AndroidContentIntent.putParcelableArrayListExtra("result_set", this.a.e);
+        this.a.setResult(-1, this.a.jdField_a_of_type_AndroidContentIntent);
+        this.a.finish();
+      }
+    }
+    else
+    {
       return;
     }
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    QLog.d("SelectMemberActivity", 1, "create discussion fail, errCode=" + paramInt);
+    if (paramInt == 1000)
     {
-      localStringBuilder = new StringBuilder(200);
-      localStringBuilder.append("fetchInfoBatch size:").append(paramList.size()).append("  [");
+      QQToast.a(this.a, this.a.getString(2131698051), 2000).b(this.a.jdField_c_of_type_AndroidViewView.getHeight());
+      azqs.b(this.a.app, "dc00899", "Grp_set", "", "Grp_data", "forbid_discuss", 0, 0, "", "", "", "");
+      return;
+    }
+    QQToast.a(this.a, this.a.getString(2131691871), 2000).b(this.a.jdField_c_of_type_AndroidViewView.getHeight());
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
+  {
+    if (this.a.jdField_a_of_type_Bety != null)
+    {
+      this.a.jdField_a_of_type_Bety.dismiss();
+      if (!paramBoolean) {
+        break label231;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("SelectMemberActivity", 2, "add discussion member success: roomId: " + paramLong);
+      }
+      paramArrayList = new ArrayList();
+      Iterator localIterator = this.a.e.iterator();
+      while (localIterator.hasNext())
+      {
+        ResultRecord localResultRecord = (ResultRecord)localIterator.next();
+        if (localResultRecord.jdField_a_of_type_Int == 5)
+        {
+          if (localResultRecord.jdField_a_of_type_JavaLangString.startsWith("pstn")) {
+            localResultRecord.jdField_a_of_type_JavaLangString = localResultRecord.jdField_a_of_type_JavaLangString.substring("pstn".length());
+          }
+          paramArrayList.add(localResultRecord.jdField_a_of_type_JavaLangString);
+        }
+      }
+      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("roomId", paramLong);
+      this.a.jdField_a_of_type_AndroidContentIntent.putParcelableArrayListExtra("result_set", this.a.e);
+      if (!paramBoolean) {
+        break label213;
+      }
+      this.a.setResult(-1, this.a.jdField_a_of_type_AndroidContentIntent);
     }
     for (;;)
     {
-      ArrayList localArrayList = new ArrayList(paramList.size());
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        FetchInfoReq localFetchInfoReq = (FetchInfoReq)paramList.next();
-        if ((localFetchInfoReq != null) && (localFetchInfoReq.jdField_a_of_type_Int == 1) && (localFetchInfoReq.a()))
-        {
-          if ((localFetchInfoReq.jdField_a_of_type_JavaLangString != null) && (localFetchInfoReq.jdField_a_of_type_JavaLangString.length() > 0)) {
-            localArrayList.add(localFetchInfoReq.jdField_a_of_type_JavaLangString);
-          }
-          if (localStringBuilder != null) {
-            localStringBuilder.append(localFetchInfoReq.jdField_a_of_type_JavaLangString).append(",");
-          }
-        }
-      }
-      if ((QLog.isColorLevel()) && (localStringBuilder != null))
-      {
-        localStringBuilder.append("]");
-        QLog.i("FetchBuddyAndTroopNameHelper", 2, localStringBuilder.toString());
-      }
-      paramList = (FriendListHandler)FetchBuddyAndTroopNameHelper.a(this.a).a(1);
-      if (paramList == null) {
-        break;
-      }
-      paramList.a(localArrayList, false);
+      this.a.finish();
       return;
-      localStringBuilder = null;
+      label213:
+      this.a.setResult(1, this.a.jdField_a_of_type_AndroidContentIntent);
     }
+    label231:
+    if (QLog.isColorLevel()) {
+      QLog.d("SelectMemberActivity", 2, "add discussion member fail");
+    }
+    if (paramInt == 1000) {
+      azqs.b(this.a.app, "dc00899", "Grp_set", "", "Grp_data", "forbid_discuss", 0, 0, "", "", "", "");
+    }
+    QQToast.a(this.a, this.a.getString(2131691866), 2000).b(this.a.jdField_c_of_type_AndroidViewView.getHeight());
   }
   
-  public void a(FetchInfoReq paramFetchInfoReq)
+  protected void a(Object[] paramArrayOfObject)
   {
-    if ((paramFetchInfoReq == null) || (!paramFetchInfoReq.a())) {}
-    Object localObject;
+    if (this.a.jdField_a_of_type_Bety != null) {
+      this.a.jdField_a_of_type_Bety.dismiss();
+    }
+    if (paramArrayOfObject == null) {}
+    String str;
     do
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-                if (QLog.isColorLevel()) {
-                  QLog.d("FetchBuddyAndTroopNameHelper", 2, StringUtil.a(new Object[] { "fetchInfo()", paramFetchInfoReq.toString() }));
-                }
-                if (paramFetchInfoReq.jdField_a_of_type_Int != 2) {
-                  break;
-                }
-                localObject = (TroopHandler)FetchBuddyAndTroopNameHelper.a(this.a).a(20);
-              } while (localObject == null);
-              ((TroopHandler)localObject).k(paramFetchInfoReq.jdField_a_of_type_JavaLangString);
-              return;
-              if (paramFetchInfoReq.jdField_a_of_type_Int != 1) {
-                break;
-              }
-              localObject = (FriendListHandler)FetchBuddyAndTroopNameHelper.a(this.a).a(1);
-            } while (localObject == null);
-            ((FriendListHandler)localObject).b(paramFetchInfoReq.jdField_a_of_type_JavaLangString);
-            return;
-            if (paramFetchInfoReq.jdField_a_of_type_Int != 3) {
-              break;
-            }
-            localObject = (TroopHandler)FetchBuddyAndTroopNameHelper.a(this.a).a(20);
-          } while (localObject == null);
-          ArrayList localArrayList = new ArrayList();
-          localArrayList.add(paramFetchInfoReq.jdField_a_of_type_JavaLangString);
-          if ((paramFetchInfoReq.jdField_a_of_type_AndroidOsBundle != null) && (paramFetchInfoReq.jdField_a_of_type_AndroidOsBundle.getInt(ContactUtils.jdField_a_of_type_JavaLangString) == ContactUtils.b))
-          {
-            ((TroopHandler)localObject).a(paramFetchInfoReq.b, localArrayList, false, paramFetchInfoReq.jdField_a_of_type_AndroidOsBundle);
-            return;
-          }
-          ((TroopHandler)localObject).a(paramFetchInfoReq.b, (String)paramFetchInfoReq.jdField_a_of_type_JavaLangObject, localArrayList);
-          return;
-          if (paramFetchInfoReq.jdField_a_of_type_Int != 4) {
-            break;
-          }
-          localObject = (FriendListHandler)FetchBuddyAndTroopNameHelper.a(this.a).a(1);
-        } while (localObject == null);
-        ((FriendListHandler)localObject).a(paramFetchInfoReq.jdField_a_of_type_JavaLangString, true);
-        return;
-      } while (paramFetchInfoReq.jdField_a_of_type_Int != 5);
-      localObject = (CardHandler)FetchBuddyAndTroopNameHelper.a(this.a).a(2);
-    } while (localObject == null);
-    ((CardHandler)localObject).b(paramFetchInfoReq.jdField_a_of_type_JavaLangString, 3);
+      return;
+      str = (String)paramArrayOfObject[0];
+    } while (!this.a.jdField_c_of_type_JavaLangString.equals(str));
+    int i = ((Integer)paramArrayOfObject[1]).intValue();
+    QLog.d("SelectMemberActivity", 2, "add discussion member failed, error code: " + i);
+    QQToast.a(this.a, this.a.getString(2131691866), 0).b(this.a.getTitleBarHeight());
   }
 }
 

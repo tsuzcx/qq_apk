@@ -1,40 +1,29 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
 
 public class wqi
-  implements Runnable
+  extends umf<wpr, veb>
 {
-  public wqi(MainAssistObserver paramMainAssistObserver, QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
+  public wqi(wpr paramwpr)
   {
-    try
-    {
-      BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = ((RedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(35)).c();
-      if (localRedTypeInfo != null) {
-        localRedTypeInfo.red_type.set(0);
-      }
-      Message localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a.obtainMessage(4);
-      localMessage.obj = localRedTypeInfo;
-      this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a.sendMessage(localMessage);
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("MainAssistObserver", 2, "WL_DEBUG updateTabCallNotify.run error : " + localException);
-    }
+    super(paramwpr);
   }
+  
+  public void a(@NonNull wpr paramwpr, @NonNull veb paramveb)
+  {
+    wxe.a("Q.qqstory.home.data.HomeFeedPresenter", "upload status change event:%s", paramveb);
+    wpr.a(paramwpr, paramveb.a);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return veb.class;
+  }
+  
+  public void b(@NonNull wpr paramwpr, @NonNull veb paramveb) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wqi
  * JD-Core Version:    0.7.0.1
  */

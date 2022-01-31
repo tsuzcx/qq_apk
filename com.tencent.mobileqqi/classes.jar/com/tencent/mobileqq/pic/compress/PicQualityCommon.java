@@ -13,7 +13,7 @@ public abstract class PicQualityCommon
     return b();
   }
   
-  protected abstract boolean b();
+  public abstract boolean b();
 }
 
 

@@ -1,35 +1,21 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.tag.TagAdapter;
-import com.tencent.biz.qqstory.storyHome.tag.TagAdapter.OnItemClickListener;
-import com.tencent.biz.qqstory.takevideo.tag.TagItem.TagInfoBase;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class ocf
+class ocf
+  implements ViewFactory.FoundClickableViewListener
 {
-  public TextView a;
+  ocf(oce paramoce, BaseData paramBaseData, Context paramContext, ViewBase paramViewBase) {}
   
-  public ocf(View paramView)
+  public void onFound(ViewBase paramViewBase)
   {
-    this.a = ((TextView)paramView.findViewById(2131367250));
-  }
-  
-  public void a(TagItem.TagInfoBase paramTagInfoBase, TagAdapter.OnItemClickListener paramOnItemClickListener)
-  {
-    if (TextUtils.isEmpty(paramTagInfoBase.a))
-    {
-      this.a.setVisibility(8);
-      return;
-    }
-    this.a.setVisibility(0);
-    this.a.setText(TagAdapter.a(paramTagInfoBase));
-    TagAdapter.a(this.a);
-    this.a.setOnClickListener(new ocg(this, paramOnItemClickListener, paramTagInfoBase));
+    paramViewBase.setOnClickListener(new ocg(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ocf
  * JD-Core Version:    0.7.0.1
  */

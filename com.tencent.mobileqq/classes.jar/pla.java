@@ -1,35 +1,34 @@
-import com.tencent.component.network.utils.http.pool.AbstractConnPool;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
-import org.apache.commons.logging.Log;
-import org.apache.http.conn.OperatedClientConnection;
-import org.apache.http.conn.routing.HttpRoute;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class pla
-  extends AbstractConnPool
+class pla
+  implements ViewBase.OnClickListener
 {
-  private static AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong();
-  private final long jdField_a_of_type_Long;
-  private final TimeUnit jdField_a_of_type_JavaUtilConcurrentTimeUnit;
-  private final Log jdField_a_of_type_OrgApacheCommonsLoggingLog;
+  pla(pkz parampkz, BaseArticleInfo paramBaseArticleInfo, pgd parampgd, ViewBase paramViewBase) {}
   
-  public pla(Log paramLog, int paramInt1, int paramInt2, long paramLong, TimeUnit paramTimeUnit)
+  public void onClick(ViewBase paramViewBase)
   {
-    super(new plb(), paramInt1, paramInt2);
-    this.jdField_a_of_type_OrgApacheCommonsLoggingLog = paramLog;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaUtilConcurrentTimeUnit = paramTimeUnit;
-  }
-  
-  protected plc a(HttpRoute paramHttpRoute, OperatedClientConnection paramOperatedClientConnection)
-  {
-    String str = Long.toString(jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.getAndIncrement());
-    return new plc(this.jdField_a_of_type_OrgApacheCommonsLoggingLog, str, paramHttpRoute, paramOperatedClientConnection, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilConcurrentTimeUnit);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances.isEmpty())) {
+      return;
+    }
+    QLog.i("BigImageVideoProteusItem", 1, "" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances);
+    paramViewBase = (VideoColumnInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances.get(0);
+    QLog.i("BigImageVideoProteusItem", 1, "" + paramViewBase);
+    if ((paramViewBase.a != null) && (paramViewBase.a.a != 3)) {
+      rdm.a(this.jdField_a_of_type_Pgd.a().getContext(), paramViewBase.a);
+    }
+    opy.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mProteusTemplateBean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pla
  * JD-Core Version:    0.7.0.1
  */

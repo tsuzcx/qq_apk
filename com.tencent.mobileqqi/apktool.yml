@@ -1,5 +1,5 @@
 !!brut.androlib.meta.MetaInfo
-apkFileName: QQ国际版_6.0.0.apk
+apkFileName: QQ国际版-6.0.2-6602-8776.apk
 compressionType: false
 doNotCompress:
 - resources.arsc
@@ -13,7 +13,7 @@ packageInfo:
   renameManifestPackage: null
 sdkInfo:
   minSdkVersion: '7'
-  targetSdkVersion: '15'
+  targetSdkVersion: '26'
 sharedLibrary: false
 sparseResources: false
 unknownFiles:
@@ -25,5 +25,5 @@ usesFramework:
   tag: null
 version: 2.6.0
 versionInfo:
-  versionCode: '6500'
-  versionName: 6.0.0
+  versionCode: '6602'
+  versionName: 6.0.2

@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.ark;
 
+import anoa;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -18,7 +19,7 @@ public class ArkAppCenterEvent
       {
         Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
         if (localEntry.getValue() != null) {
-          ((ArkAppCenterEvent.Callback)localEntry.getValue()).a(paramInt, paramString, paramObject);
+          ((anoa)localEntry.getValue()).a(paramInt, paramString, paramObject);
         }
       }
     }
@@ -26,7 +27,7 @@ public class ArkAppCenterEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkAppCenterEvent
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,18 @@
-import android.content.Context;
-import android.content.res.TypedArray;
-import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.view.View;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo2.LayoutModifier.FactoryMerger;
-import com.tencent.biz.qqstory.takevideo2.StoryEffectsCameraCaptureFragment;
-import com.tencent.biz.qqstory.takevideo2.StoryEffectsCameraCaptureView;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
 
-public class omk
-  extends LayoutModifier.FactoryMerger
+class omk
+  extends olz
 {
-  public omk(StoryEffectsCameraCaptureFragment paramStoryEffectsCameraCaptureFragment, LayoutInflater paramLayoutInflater)
-  {
-    super(paramLayoutInflater);
-  }
+  omk(omj paramomj) {}
   
-  protected View a(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, new int[] { 16842960 });
-    int i = localTypedArray.getResourceId(0, -1);
-    localTypedArray.recycle();
-    if (i == 2131366945)
-    {
-      SLog.a("story.publish.CaptureFragment", "create view for R.id.camera_capture_view : StoryEffectsCameraCaptureView, name=%s", paramString);
-      return new StoryEffectsCameraCaptureView(paramContext, paramAttributeSet);
-    }
-    return super.a(paramView, paramString, paramContext, paramAttributeSet);
+    this.a.jdField_a_of_type_Omg.a().a(this.a.jdField_a_of_type_Omt.a.commentId, paramString, paramInt1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     omk
  * JD-Core Version:    0.7.0.1
  */

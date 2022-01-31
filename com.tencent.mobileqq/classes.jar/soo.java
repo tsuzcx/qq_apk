@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import org.json.JSONObject;
 
-class soo
-  implements Runnable
+public class soo
+  implements View.OnClickListener
 {
-  soo(son paramson) {}
+  public soo(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView != null) {
-      this.a.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.g(this.a.a.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
-    }
-    this.a.a.a.a(2131435787, 1);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, new JSONObject());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     soo
  * JD-Core Version:    0.7.0.1
  */

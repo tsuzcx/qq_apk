@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/c0" android:background="@drawable/b4w" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:textSize="17.0sp" android:textColor="@color/skin_color_btn_blue_v2" android:id="@id/a6r" android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/ey1" android:layout_weight="1.0" />
+    <Button android:textSize="17.0sp" android:textColor="@color/skin_color_btn_blue_v2" android:id="@id/a6s" android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/ey5" android:layout_weight="1.0" />
+    <Button android:textSize="17.0sp" android:textColor="@color/xw" android:id="@id/a6q" android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/ak3" android:layout_weight="1.0" />
+    <LinearLayout android:gravity="right" android:id="@id/a6u" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <Button android:textSize="15.0sp" android:textColor="@color/x0" android:id="@id/a6t" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="5.0dip" android:text="@string/ey6" style="@style/i0" />
+    </LinearLayout>
+</LinearLayout>

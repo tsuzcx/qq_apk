@@ -1,30 +1,15 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.GeneralClickHandler;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 
-public class aiic
-  extends QIPCModule
+class aiic
+  implements View.OnClickListener
 {
-  public aiic(StructMsgForGeneralShare.GeneralClickHandler paramGeneralClickHandler, String paramString)
-  {
-    super(paramString);
-  }
+  aiic(aihy paramaihy) {}
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void onClick(View paramView)
   {
-    if ("receipt_set_read".equals(paramString)) {
-      StructMsgForGeneralShare.GeneralClickHandler.a(this.a, paramBundle);
-    }
-    for (;;)
-    {
-      return null;
-      if (QLog.isColorLevel()) {
-        QLog.d(StructMsgForGeneralShare.access$000(), 2, "unknown action");
-      }
-    }
+    aihy.a(this.a).setText("");
   }
 }
 

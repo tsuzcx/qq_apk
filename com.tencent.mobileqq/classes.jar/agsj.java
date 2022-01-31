@@ -1,45 +1,58 @@
-import NS_MOBILE_MAIN_PAGE.PhotoWall;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QZonePhotoWall;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.profile.view.VipPhotoViewForSimple;
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Observable;
+import java.util.Observer;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
-public class agsj
-  implements Runnable
+class agsj
+  implements Observer
 {
-  public agsj(VipPhotoViewForSimple paramVipPhotoViewForSimple) {}
+  agsj(agse paramagse) {}
   
-  public void run()
+  public void update(Observable paramObservable, Object paramObject)
   {
-    Object localObject1 = (QZonePhotoWall)this.a.a.getEntityManagerFactory().createEntityManager().a(QZonePhotoWall.class, VipPhotoViewForSimple.a(this.a));
-    if (localObject1 != null)
+    if ((paramObject instanceof avui))
     {
-      localObject1 = ((QZonePhotoWall)localObject1).unpackPhotoWallData();
-      Object localObject2 = new ArrayList();
-      int i = 0;
-      while (i < ((ArrayList)localObject1).size())
-      {
-        ((ArrayList)localObject2).add(((PhotoWall)((ArrayList)localObject1).get(i)).photoUrls);
-        i += 1;
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "new FriendSystemMessage,:");
       }
-      localObject1 = VipPhotoViewForSimple.a(this.a, "", (List)localObject2);
-      localObject2 = Message.obtain();
-      ((Message)localObject2).what = 200;
-      ((Message)localObject2).obj = localObject1;
-      VipPhotoViewForSimple.a(this.a).sendMessage((Message)localObject2);
-      return;
+      paramObservable = ((avui)paramObject).a.getSystemMsg();
+      if (paramObservable != null) {
+        break label42;
+      }
     }
-    VipPhotoViewForSimple.a(this.a).sendEmptyMessage(201);
+    label42:
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (paramObservable.msg.sub_type.get() != 9);
+        paramObservable = String.valueOf(paramObservable.req_uin.get());
+        if (QLog.isColorLevel()) {
+          QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "FRIEND_ADDSUCCESS, uin:" + paramObservable + " badd:" + agse.a(this.a));
+        }
+      } while ((TextUtils.isEmpty(paramObservable)) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (!paramObservable.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)));
+      if (!agse.a(this.a))
+      {
+        agse.a(this.a, true);
+        atlt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObservable);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "FRIEND_ADDSUCCESS, processed:");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agsj
  * JD-Core Version:    0.7.0.1
  */

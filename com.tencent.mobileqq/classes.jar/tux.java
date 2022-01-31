@@ -1,55 +1,34 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
-import com.tencent.mobileqq.utils.AlbumConstants;
-import java.util.ArrayList;
+import com.tencent.biz.qqcircle.comment.QCircleCommentItemView;
+import com.tencent.biz.qqcircle.widgets.QCircleCommentPraiseLayout;
 
 public class tux
-  implements Handler.Callback
+  implements ucq
 {
-  public tux(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  public tux(QCircleCommentItemView paramQCircleCommentItemView) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean)
   {
-    switch (paramMessage.what)
+    yhn localyhn;
+    QCircleCommentPraiseLayout localQCircleCommentPraiseLayout;
+    if (QCircleCommentItemView.a(this.a) != null)
     {
-    default: 
-    case 1: 
-      do
-      {
-        do
-        {
-          return true;
-          paramMessage = (Intent)paramMessage.obj;
-          this.a.c = paramMessage.getIntExtra("PhotoConst.SEND_SIZE_SPEC", 0);
-          if ((55 == paramMessage.getIntExtra(AlbumConstants.h, -1)) && (paramMessage.getExtras().containsKey("PhotoConst.PHOTO_PATHS")))
-          {
-            ArrayList localArrayList = paramMessage.getExtras().getStringArrayList("PhotoConst.PHOTO_PATHS");
-            if ((localArrayList != null) && (localArrayList.size() > 0))
-            {
-              this.a.a(BaseApplicationImpl.getApplication(), localArrayList);
-              return true;
-            }
-          }
-        } while (!paramMessage.getBooleanExtra("IS_FROM_PREVIEW_ACTIVITY", false));
-        paramMessage = paramMessage.getStringArrayListExtra("key_photo_preview");
-      } while (paramMessage == null);
-      this.a.a(BaseApplicationImpl.getApplication(), paramMessage);
-      return true;
-    case 2: 
-      this.a.b(null);
-      return true;
+      localyhn = QCircleCommentItemView.a(this.a);
+      localQCircleCommentPraiseLayout = QCircleCommentItemView.a(this.a);
+      if (!paramBoolean) {
+        break label58;
+      }
     }
-    this.a.p();
-    return true;
+    label58:
+    for (int i = 14;; i = 15)
+    {
+      localyhn.a(localQCircleCommentPraiseLayout, i, QCircleCommentItemView.a(this.a), QCircleCommentItemView.a(this.a));
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tux
  * JD-Core Version:    0.7.0.1
  */

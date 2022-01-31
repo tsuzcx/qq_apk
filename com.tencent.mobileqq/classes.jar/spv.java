@@ -1,26 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.biz.pubaccount.readinjoy.viola.redpacket.VKdRedPacketProgress;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.ui.dom.DomObject;
+import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public final class spv
-  implements DialogInterface.OnClickListener
+public class spv
+  extends oxe
 {
-  public spv(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, ProfileCardInfo paramProfileCardInfo) {}
+  public spv(VKdRedPacketProgress paramVKdRedPacketProgress) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, String paramString)
   {
-    FriendProfileCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if (paramBoolean) {}
+    try
+    {
+      if (this.a.mAppendEvents.contains("redPacketProcessFinish"))
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("isFinish", paramBoolean);
+        localJSONObject.put("tips", paramString);
+        paramString = new JSONArray();
+        if (this.a.getDomObject() != null)
+        {
+          String str = this.a.getDomObject().getRef();
+          if (str != null) {
+            paramString.put(str);
+          }
+          paramString.put("redPacketProcessFinish");
+          VKdRedPacketProgress.access$000(this.a, "redPacketProcessFinish", paramString, localJSONObject);
+        }
+      }
+      else
+      {
+        QLog.i("VKdRedPacketProgress", QLog.getUIN_REPORTLOG_LEVEL(), " red packet task do not get Tips!");
+        return;
+      }
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("VKdRedPacketProgress", QLog.getUIN_REPORTLOG_LEVEL(), " onRedPacketTaskFinish error :" + paramString.getMessage());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     spv
  * JD-Core Version:    0.7.0.1
  */

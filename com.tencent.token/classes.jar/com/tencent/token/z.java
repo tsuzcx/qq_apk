@@ -1,17 +1,52 @@
 package com.tencent.token;
 
-import java.util.TimerTask;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import java.util.LinkedList;
 
-final class z
-  extends TimerTask
+public final class z
 {
-  z(x paramx) {}
+  private volatile long a = 0L;
+  private volatile LinkedList b = new LinkedList();
+  private Object c = new Object();
   
-  public final void run()
+  public final long a()
   {
-    this.a.e.OnGetStWithoutPasswd(null, 0L, 0L, 0, 0L, null, 8192, new ErrMsg());
+    return this.a;
+  }
+  
+  public final void a(int paramInt, long paramLong1, byte[] paramArrayOfByte, long paramLong2)
+  {
+    synchronized (this.c)
+    {
+      LinkedList localLinkedList = this.b;
+      byte[] arrayOfByte = new byte[(int)paramLong2];
+      System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, (int)paramLong2);
+      localLinkedList.addLast(new aa(paramInt, paramLong1, arrayOfByte, paramLong2));
+      this.a += paramLong2;
+      return;
+    }
+  }
+  
+  public final aa b()
+  {
+    synchronized (this.c)
+    {
+      if (this.b.size() > 0)
+      {
+        aa localaa = (aa)this.b.removeFirst();
+        this.a -= localaa.d;
+        return localaa;
+      }
+      return null;
+    }
+  }
+  
+  public final void c()
+  {
+    synchronized (this.c)
+    {
+      while (b() != null) {}
+      return;
+    }
   }
 }
 

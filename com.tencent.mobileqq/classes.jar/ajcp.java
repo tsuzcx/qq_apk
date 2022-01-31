@@ -1,18 +1,29 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.Callback;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleLayout;
 
-class ajcp
-  implements Runnable
+public class ajcp
+  implements ajcs
 {
-  ajcp(ajco paramajco, MessageRecord paramMessageRecord, Integer paramInteger) {}
+  public ajcp(DoodleLayout paramDoodleLayout) {}
   
-  public void run()
+  public void a()
   {
-    String str = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) {
-      str = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("key_aio_keyword");
+    if (DoodleLayout.a(this.a) != null) {
+      DoodleLayout.a(this.a).a();
     }
-    this.jdField_a_of_type_Ajco.a.a(str, this.jdField_a_of_type_JavaLangInteger);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (DoodleLayout.a(this.a) != null) {
+      DoodleLayout.a(this.a).a(paramInt1, paramInt2);
+    }
+  }
+  
+  public void b()
+  {
+    if (DoodleLayout.a(this.a) != null) {
+      DoodleLayout.a(this.a).a(this.a.a(true, false));
+    }
   }
 }
 

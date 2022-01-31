@@ -8,12 +8,19 @@ import java.util.ArrayList;
 public final class GetFriendListReq
   extends JceStruct
 {
-  static int cache_reqtype;
-  static ArrayList cache_uinList;
+  static int cache_eAppType;
+  static int cache_reqtype = 0;
+  static ArrayList<Long> cache_uinList = new ArrayList();
+  static byte[] cache_vec0xd50Req;
+  static byte[] cache_vec0xd6bReq;
+  static ArrayList<Long> cache_vecSnsTypelist;
+  public int eAppType = 0;
   public short getfriendCount;
   public byte getgroupCount;
   public byte groupid;
   public byte groupstartIndex;
+  public byte ifGetBothFlag;
+  public byte ifGetDOVId;
   public byte ifGetGroupInfo;
   public byte ifGetMSFGroup;
   public byte ifReflush;
@@ -21,14 +28,29 @@ public final class GetFriendListReq
   public int reqtype;
   public short startIndex;
   public long uin;
-  public ArrayList uinList;
+  public ArrayList<Long> uinList;
+  public byte[] vec0xd50Req;
+  public byte[] vec0xd6bReq;
+  public ArrayList<Long> vecSnsTypelist;
   public long version;
+  
+  static
+  {
+    cache_uinList.add(Long.valueOf(0L));
+    cache_eAppType = 0;
+    cache_vec0xd50Req = (byte[])new byte[1];
+    ((byte[])cache_vec0xd50Req)[0] = 0;
+    cache_vec0xd6bReq = (byte[])new byte[1];
+    ((byte[])cache_vec0xd6bReq)[0] = 0;
+    cache_vecSnsTypelist = new ArrayList();
+    cache_vecSnsTypelist.add(Long.valueOf(0L));
+  }
   
   public GetFriendListReq() {}
   
-  public GetFriendListReq(int paramInt, byte paramByte1, long paramLong1, short paramShort1, short paramShort2, byte paramByte2, byte paramByte3, byte paramByte4, byte paramByte5, byte paramByte6, byte paramByte7, long paramLong2, ArrayList paramArrayList)
+  public GetFriendListReq(int paramInt1, byte paramByte1, long paramLong1, short paramShort1, short paramShort2, byte paramByte2, byte paramByte3, byte paramByte4, byte paramByte5, byte paramByte6, byte paramByte7, long paramLong2, ArrayList<Long> paramArrayList1, int paramInt2, byte paramByte8, byte paramByte9, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, ArrayList<Long> paramArrayList2)
   {
-    this.reqtype = paramInt;
+    this.reqtype = paramInt1;
     this.ifReflush = paramByte1;
     this.uin = paramLong1;
     this.startIndex = paramShort1;
@@ -40,7 +62,13 @@ public final class GetFriendListReq
     this.ifGetMSFGroup = paramByte6;
     this.ifShowTermType = paramByte7;
     this.version = paramLong2;
-    this.uinList = paramArrayList;
+    this.uinList = paramArrayList1;
+    this.eAppType = paramInt2;
+    this.ifGetDOVId = paramByte8;
+    this.ifGetBothFlag = paramByte9;
+    this.vec0xd50Req = paramArrayOfByte1;
+    this.vec0xd6bReq = paramArrayOfByte2;
+    this.vecSnsTypelist = paramArrayList2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -57,12 +85,13 @@ public final class GetFriendListReq
     this.ifGetMSFGroup = paramJceInputStream.read(this.ifGetMSFGroup, 9, false);
     this.ifShowTermType = paramJceInputStream.read(this.ifShowTermType, 10, false);
     this.version = paramJceInputStream.read(this.version, 11, false);
-    if (cache_uinList == null)
-    {
-      cache_uinList = new ArrayList();
-      cache_uinList.add(Long.valueOf(0L));
-    }
     this.uinList = ((ArrayList)paramJceInputStream.read(cache_uinList, 12, false));
+    this.eAppType = paramJceInputStream.read(this.eAppType, 13, false);
+    this.ifGetDOVId = paramJceInputStream.read(this.ifGetDOVId, 14, false);
+    this.ifGetBothFlag = paramJceInputStream.read(this.ifGetBothFlag, 15, false);
+    this.vec0xd50Req = ((byte[])paramJceInputStream.read(cache_vec0xd50Req, 16, false));
+    this.vec0xd6bReq = ((byte[])paramJceInputStream.read(cache_vec0xd6bReq, 17, false));
+    this.vecSnsTypelist = ((ArrayList)paramJceInputStream.read(cache_vecSnsTypelist, 18, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -82,11 +111,23 @@ public final class GetFriendListReq
     if (this.uinList != null) {
       paramJceOutputStream.write(this.uinList, 12);
     }
+    paramJceOutputStream.write(this.eAppType, 13);
+    paramJceOutputStream.write(this.ifGetDOVId, 14);
+    paramJceOutputStream.write(this.ifGetBothFlag, 15);
+    if (this.vec0xd50Req != null) {
+      paramJceOutputStream.write(this.vec0xd50Req, 16);
+    }
+    if (this.vec0xd6bReq != null) {
+      paramJceOutputStream.write(this.vec0xd6bReq, 17);
+    }
+    if (this.vecSnsTypelist != null) {
+      paramJceOutputStream.write(this.vecSnsTypelist, 18);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     friendlist.GetFriendListReq
  * JD-Core Version:    0.7.0.1
  */

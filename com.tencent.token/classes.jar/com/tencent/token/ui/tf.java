@@ -1,20 +1,38 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.p;
+import android.view.Window;
+import android.widget.TextView;
+import com.tencent.token.core.bean.DeviceInfo;
 
-final class tf
-  implements View.OnClickListener
+class tf
+  extends Dialog
 {
-  tf(OpMsgDisplayActivity paramOpMsgDisplayActivity) {}
+  private DeviceInfo b;
   
-  public final void onClick(View paramView)
+  public tf(PCMobileQQVerifyedDevicesActivity paramPCMobileQQVerifyedDevicesActivity, Context paramContext, int paramInt, DeviceInfo paramDeviceInfo)
   {
-    p.a().a(System.currentTimeMillis(), 64);
-    paramView = new Intent(this.a, LoginMsgChangePwdActivity.class);
-    this.a.startActivity(paramView);
+    super(paramContext, paramInt);
+    this.b = paramDeviceInfo;
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    setContentView(2130968634);
+    paramBundle = String.format(this.a.getResources().getString(2131231539), new Object[] { this.b.dname });
+    ((TextView)findViewById(2131558778)).setText(paramBundle);
+    setCanceledOnTouchOutside(true);
+    paramBundle = getWindow();
+    paramBundle.setBackgroundDrawableResource(2130837730);
+    paramBundle.getAttributes().width = -1;
+    paramBundle.setGravity(80);
+    findViewById(2131558779).setOnClickListener(new tg(this));
+    findViewById(2131558780).setOnClickListener(new th(this));
   }
 }
 

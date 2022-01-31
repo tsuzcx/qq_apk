@@ -1,18 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketPopFragment;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
 public class aiwh
-  extends BroadcastReceiver
+  implements OnCompositionLoadedListener
 {
-  public aiwh(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public aiwh(RedPacketPopFragment paramRedPacketPopFragment, ImageView paramImageView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    if ((paramIntent != null) && (paramIntent.getAction().equals("cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.handleQunDetailDelete"))) {
-      this.a.finish();
-    }
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    localLottieDrawable.playAnimation();
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localLottieDrawable);
   }
 }
 

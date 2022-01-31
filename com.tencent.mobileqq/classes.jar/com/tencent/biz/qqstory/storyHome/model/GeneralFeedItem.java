@@ -3,21 +3,22 @@ package com.tencent.biz.qqstory.storyHome.model;
 import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.base.SerializationPB.VideoListFeed;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.GeneralFeed;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.AssertUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import uwa;
+import uwm;
+import vls;
+import wpg;
+import wxe;
+import xqq;
 
 public class GeneralFeedItem
-  extends VideoListFeedItem
+  extends VideoListFeedItem<wpg, QQUserUIItem>
 {
   public QQUserUIItem mUserUIItem = new QQUserUIItem();
   public String wsSchemaForMain = "default";
@@ -28,15 +29,15 @@ public class GeneralFeedItem
     GeneralFeedItem localGeneralFeedItem = new GeneralFeedItem();
     localGeneralFeedItem.feedId = makeFakeFeedId(QQStoryContext.a().b(), paramString);
     localGeneralFeedItem.setDate(paramString);
-    localGeneralFeedItem.mUserUIItem = ((UserManager)SuperManager.a(2)).a();
+    localGeneralFeedItem.mUserUIItem = ((uwm)uwa.a(2)).a();
     if (localGeneralFeedItem.mUserUIItem == null)
     {
       localGeneralFeedItem.mUserUIItem = new QQUserUIItem();
       localGeneralFeedItem.mUserUIItem.uid = QQStoryContext.a().b();
-      localGeneralFeedItem.mUserUIItem.qq = PlayModeUtils.a().getCurrentAccountUin();
-      localGeneralFeedItem.mUserUIItem.nickName = PlayModeUtils.a().getCurrentNickname();
+      localGeneralFeedItem.mUserUIItem.qq = vls.a().getCurrentAccountUin();
+      localGeneralFeedItem.mUserUIItem.nickName = vls.a().getCurrentNickname();
       localGeneralFeedItem.mUserUIItem.headUrl = "";
-      SLog.e("VideoListFeedItem", "create fake feed item while QQUserUIItem is null! use fake QQUserUIItem to instead.", new Object[] { localGeneralFeedItem.mUserUIItem.toString() });
+      wxe.e("VideoListFeedItem", "create fake feed item while QQUserUIItem is null! use fake QQUserUIItem to instead.", new Object[] { localGeneralFeedItem.mUserUIItem.toString() });
     }
     localGeneralFeedItem.ownerId = localGeneralFeedItem.mUserUIItem.getUnionId();
     localGeneralFeedItem.mViewTotalTime = 0L;
@@ -64,7 +65,7 @@ public class GeneralFeedItem
     if (paramObject.mUserUIItem != null)
     {
       this.mUserUIItem = paramObject.mUserUIItem;
-      AssertUtils.a(this.mUserUIItem);
+      xqq.a(this.mUserUIItem);
     }
     this.wsSchemaForMain = paramObject.wsSchemaForMain;
     this.wsSchemaForMemories = paramObject.wsSchemaForMemories;
@@ -104,8 +105,8 @@ public class GeneralFeedItem
       this.mHasPublicVideo = bool;
       paramString = new QQUserUIItem();
       paramString.convertFrom(paramGeneralFeed.user);
-      this.mUserUIItem = ((UserManager)SuperManager.a(2)).a(paramString);
-      AssertUtils.a(this.mUserUIItem);
+      this.mUserUIItem = ((uwm)uwa.a(2)).a(paramString);
+      xqq.a(this.mUserUIItem);
       this.ownerId = this.mUserUIItem.getUnionId();
       if (paramGeneralFeed.qim_sync_wording.has()) {
         this.mQimSyncWording = paramGeneralFeed.qim_sync_wording.get().toStringUtf8();
@@ -135,26 +136,14 @@ public class GeneralFeedItem
   }
   
   @NonNull
-  public GeneralHomeFeed generateHomeFeed()
+  public wpg generateHomeFeed()
   {
-    return new GeneralHomeFeed(this);
+    return new wpg(this);
   }
   
   public int getCommentLikeType()
   {
-    if (this.mUserUIItem == null) {}
-    boolean bool1;
-    boolean bool2;
-    do
-    {
-      return 1;
-      bool1 = this.mUserUIItem.isVipButNoFriend();
-      bool2 = this.mUserUIItem.isSubscribeButNoFriend();
-      if (this.mUserUIItem.isMe()) {
-        return 0;
-      }
-    } while ((bool1) || (bool2));
-    return 0;
+    return CommentLikeFeedItem.getCommentLikeType(this.mUserUIItem);
   }
   
   @NonNull
@@ -177,15 +166,15 @@ public class GeneralFeedItem
   protected void onCovertFromEntry()
   {
     super.onCovertFromEntry();
-    this.mUserUIItem = ((UserManager)SuperManager.a(2)).b(this.ownerId);
+    this.mUserUIItem = ((uwm)uwa.a(2)).b(this.ownerId);
     if (this.mUserUIItem == null)
     {
       this.mUserUIItem = new QQUserUIItem();
       this.mUserUIItem.uid = QQStoryContext.a().b();
-      this.mUserUIItem.qq = PlayModeUtils.a().getCurrentAccountUin();
-      this.mUserUIItem.nickName = PlayModeUtils.a().getCurrentNickname();
+      this.mUserUIItem.qq = vls.a().getCurrentAccountUin();
+      this.mUserUIItem.nickName = vls.a().getCurrentNickname();
       this.mUserUIItem.headUrl = "";
-      SLog.e("VideoListFeedItem", "create fake feed item while QQUserUIItem is null! use fake QQUserUIItem to instead.", new Object[] { this.mUserUIItem.toString() });
+      wxe.e("VideoListFeedItem", "create fake feed item while QQUserUIItem is null! use fake QQUserUIItem to instead.", new Object[] { this.mUserUIItem.toString() });
     }
   }
   
@@ -205,7 +194,7 @@ public class GeneralFeedItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem
  * JD-Core Version:    0.7.0.1
  */

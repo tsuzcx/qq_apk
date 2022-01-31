@@ -1,45 +1,26 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.newshare.job.AddPollViewJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.io.File;
-import java.net.URI;
-import java.net.URISyntaxException;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
 
 public class ngk
-  extends AddPollViewJob
+  implements View.OnClickListener
 {
-  public ngk(ShareModeBase paramShareModeBase, StoryVideoItem paramStoryVideoItem)
-  {
-    super(paramStoryVideoItem);
-  }
+  public ngk(EqqAccountDetailActivity paramEqqAccountDetailActivity, String paramString, npo paramnpo) {}
   
-  public boolean b()
+  public void onClick(View paramView)
   {
-    Object localObject = (String)a("result");
-    try
+    EqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_JavaLangString);
+    if ((this.jdField_a_of_type_Npo.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Npo.jdField_a_of_type_JavaLangString.contains(alud.a(2131704573))))
     {
-      localObject = new URI((String)localObject);
-      if ("file".equals(((URI)localObject).getScheme()))
-      {
-        localObject = new File((URI)localObject);
-        if (((File)localObject).exists())
-        {
-          a("UploadImageJob_in_image_file_path", ((File)localObject).getAbsolutePath());
-          return true;
-        }
-      }
+      nrt.a(EqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "0X8005A29", "0X8005A29", 0, 0, "", "", "", "", false);
+      return;
     }
-    catch (URISyntaxException localURISyntaxException)
-    {
-      SLog.c(this.b, "Error: 保存投票失败", localURISyntaxException);
-    }
-    return false;
+    EqqAccountDetailActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_Npo.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ngk
  * JD-Core Version:    0.7.0.1
  */

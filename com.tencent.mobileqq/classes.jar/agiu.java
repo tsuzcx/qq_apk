@@ -1,28 +1,22 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.drawable.BitmapDrawable;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.app.Activity;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class agiu
-  extends BitmapDrawable
+class agiu
+  implements EIPCResultCallback
 {
-  public agiu(ScanTorchActivity paramScanTorchActivity, Resources paramResources, Bitmap paramBitmap1, float paramFloat, Bitmap paramBitmap2)
-  {
-    super(paramResources, paramBitmap1);
-  }
+  agiu(agit paramagit) {}
   
-  public void draw(Canvas paramCanvas)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    paramCanvas.save();
-    paramCanvas.rotate(this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2, this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2);
-    super.draw(paramCanvas);
-    paramCanvas.restore();
+    if (-102 == paramEIPCResult.code) {
+      aghx.n(this.a.a).finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agiu
  * JD-Core Version:    0.7.0.1
  */

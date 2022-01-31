@@ -1,16 +1,21 @@
 package com.tencent.mobileqq.portal;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
+import awme;
 
 public class BreathEffectView
   extends ImageView
   implements Animation.AnimationListener
 {
+  ObjectAnimator a;
+  
   public BreathEffectView(Context paramContext)
   {
     super(paramContext);
@@ -23,23 +28,23 @@ public class BreathEffectView
   
   public void a()
   {
-    e();
-    setImageResource(2130842583);
+    g();
+    setImageResource(2130844862);
     d();
   }
   
   public void b()
   {
-    e();
-    setImageResource(2130842255);
+    g();
+    setImageResource(2130844863);
     d();
   }
   
   public void c()
   {
+    g();
+    setImageResource(2130846179);
     e();
-    setImageResource(2130842584);
-    d();
   }
   
   public void d()
@@ -54,6 +59,27 @@ public class BreathEffectView
   }
   
   public void e()
+  {
+    setVisibility(0);
+    this.a = ObjectAnimator.ofFloat(this, "alpha", new float[] { 0.0F, 1.0F, 0.5F, 1.0F, 0.0F });
+    this.a.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.a.addUpdateListener(new awme(this));
+    this.a.setDuration(4000L);
+    this.a.setRepeatCount(0);
+    this.a.start();
+  }
+  
+  public void f()
+  {
+    if (this.a != null)
+    {
+      this.a.end();
+      this.a.cancel();
+      this.a = null;
+    }
+  }
+  
+  public void g()
   {
     Animation localAnimation = getAnimation();
     if (localAnimation != null)
@@ -76,7 +102,7 @@ public class BreathEffectView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.portal.BreathEffectView
  * JD-Core Version:    0.7.0.1
  */

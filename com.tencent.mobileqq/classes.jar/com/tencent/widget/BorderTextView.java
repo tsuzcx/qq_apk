@@ -10,6 +10,7 @@ import android.util.AttributeSet;
 public class BorderTextView
   extends SimpleTextView
 {
+  private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private int b;
@@ -38,7 +39,7 @@ public class BorderTextView
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.b);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Int);
-    paramCanvas.drawRoundRect(new RectF(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, getMeasuredWidth() - this.jdField_a_of_type_Int, getMeasuredHeight() - this.jdField_a_of_type_Int), this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawRoundRect(new RectF(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, getMeasuredWidth() - this.jdField_a_of_type_Int, getMeasuredHeight() - this.jdField_a_of_type_Int), this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
   public void setBorderColor(int paramInt)
@@ -49,11 +50,17 @@ public class BorderTextView
   public void setBorderWidth(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Float = paramInt;
+  }
+  
+  public void setRadius(float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.BorderTextView
  * JD-Core Version:    0.7.0.1
  */

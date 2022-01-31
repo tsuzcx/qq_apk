@@ -1,18 +1,21 @@
-import com.tencent.biz.qqstory.base.QQStoryFeedManager;
+import com.tencent.biz.PoiMapActivity;
 
 public class mzl
-  implements Runnable
+  extends mzv
 {
-  public mzl(QQStoryFeedManager paramQQStoryFeedManager) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void run()
+  public mzl(PoiMapActivity paramPoiMapActivity)
   {
-    QQStoryFeedManager.a(this.a);
+    super(paramPoiMapActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mzl
  * JD-Core Version:    0.7.0.1
  */

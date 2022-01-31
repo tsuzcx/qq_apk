@@ -1,20 +1,29 @@
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class zyc
-  implements Runnable
+class zyc
+  extends amcj
 {
-  public zyc(ARVideoRecordButtonView paramARVideoRecordButtonView, float paramFloat) {}
+  zyc(zxz paramzxz) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordButtonView.clearAnimation();
-    ARVideoRecordButtonView.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordButtonView, ARVideoRecordButtonView.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordButtonView), this.jdField_a_of_type_Float);
-    ARVideoRecordButtonView.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordButtonView, this.jdField_a_of_type_Float);
+    if (paramBoolean)
+    {
+      if (paramInt == 1)
+      {
+        aqbd.a().a(this.a.app, BaseApplicationImpl.getApplication(), this.a.app.getCurrentAccountUin(), true);
+        return;
+      }
+      aqbd.a().a(this.a.app, BaseApplicationImpl.getApplication(), this.a.app.getCurrentAccountUin(), false);
+      return;
+    }
+    aqbd.a().a(this.a.app, BaseApplicationImpl.getApplication(), this.a.app.getCurrentAccountUin(), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     zyc
  * JD-Core Version:    0.7.0.1
  */

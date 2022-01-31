@@ -7,8 +7,8 @@ import com.tencent.qphone.base.util.QLog;
 class a
 {
   public static final String a = "MSF.C.Account";
-  private long A;
-  private long B;
+  private long A = 0L;
+  private long B = 0L;
   int b;
   private String c;
   private byte[] d = new byte[0];
@@ -23,17 +23,17 @@ class a
   private byte[] m = new byte[0];
   private byte[] n = new byte[0];
   private byte[] o = new byte[0];
-  private int p;
-  private int q;
-  private int r;
+  private int p = 0;
+  private int q = 0;
+  private int r = 0;
   private byte[] s = new byte[0];
   private byte[] t = new byte[0];
   private long u;
   private boolean v;
   private int w = -1;
   private String x = "";
-  private long y;
-  private long z;
+  private long y = 0L;
+  private long z = 0L;
   
   public a(String paramString)
   {

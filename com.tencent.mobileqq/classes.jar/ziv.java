@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ziv
-  implements Comparator
+class ziv
+  implements View.OnClickListener
 {
-  public ziv(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  ziv(zis paramzis) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public void onClick(View paramView)
   {
-    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
+    this.a.i();
   }
 }
 

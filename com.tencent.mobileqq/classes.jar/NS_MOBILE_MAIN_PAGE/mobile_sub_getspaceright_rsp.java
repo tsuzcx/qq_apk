@@ -9,24 +9,24 @@ import java.util.Map;
 public final class mobile_sub_getspaceright_rsp
   extends JceStruct
 {
-  static Map cache_allGroups;
+  static Map<Short, GROUP_RIGHT_INFO> cache_allGroups;
   static s_question cache_question;
-  static Map cache_white_list;
-  public Map allGroups;
+  static Map<Long, FRIEND_INFO> cache_white_list;
+  public Map<Short, GROUP_RIGHT_INFO> allGroups;
   public long cur_seq;
   public s_question question;
   public int rightval;
-  public Map white_list;
+  public Map<Long, FRIEND_INFO> white_list;
   
   public mobile_sub_getspaceright_rsp() {}
   
-  public mobile_sub_getspaceright_rsp(int paramInt, Map paramMap1, long paramLong, s_question params_question, Map paramMap2)
+  public mobile_sub_getspaceright_rsp(int paramInt, Map<Short, GROUP_RIGHT_INFO> paramMap, long paramLong, s_question params_question, Map<Long, FRIEND_INFO> paramMap1)
   {
     this.rightval = paramInt;
-    this.allGroups = paramMap1;
+    this.allGroups = paramMap;
     this.cur_seq = paramLong;
     this.question = params_question;
-    this.white_list = paramMap2;
+    this.white_list = paramMap1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)

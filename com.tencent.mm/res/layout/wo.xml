@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/nw" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:id="@id/bli" android:background="@drawable/n7" android:layout_width="@dimen/m4" android:layout_height="@dimen/nv" android:layout_marginLeft="@dimen/nu" />
+        <TextView android:textSize="@dimen/nh" android:textColor="@color/a6i" android:gravity="center" android:id="@id/blj" android:background="@drawable/n_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp" android:layout_below="@id/bli" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <View android:id="@id/blk" android:background="@drawable/n7" android:layout_width="@dimen/m4" android:layout_height="@dimen/nv" android:layout_marginLeft="@dimen/nu" android:layout_below="@id/blj" />
+        <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:gravity="left" android:id="@id/bll" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/n_" android:layout_toRightOf="@id/blj" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</LinearLayout>

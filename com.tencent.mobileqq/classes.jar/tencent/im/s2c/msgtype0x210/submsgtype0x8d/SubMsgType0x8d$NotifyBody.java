@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SubMsgType0x8d$NotifyBody
-  extends MessageMicro
+  extends MessageMicro<NotifyBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 82, 90, 98, 106, 114 }, new String[] { "uint32_notify_type", "uint32_seq", "uint32_push_time", "msg_publish_feeds", "msg_comment_feeds", "msg_like_feeds", "msg_delete_feeds", "msg_delete_comment" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, null, null, null, null }, NotifyBody.class);
   public SubMsgType0x8d.CommentFeeds msg_comment_feeds = new SubMsgType0x8d.CommentFeeds();

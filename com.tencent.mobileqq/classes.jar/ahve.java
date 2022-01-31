@@ -1,38 +1,12 @@
-import com.tencent.mobileqq.search.searchengine.ContactSearchEngine;
-import com.tencent.mobileqq.search.searchengine.CreateDiscussionSearchEngine;
-import com.tencent.mobileqq.search.searchengine.ISearchListener;
-import com.tencent.mobileqq.search.searchengine.SearchRequest;
-import java.util.List;
-
-public class ahve
-  implements Runnable
+public abstract interface ahve
 {
-  public ahve(ContactSearchEngine paramContactSearchEngine, SearchRequest paramSearchRequest) {}
+  public abstract void a(String paramString, int paramInt, float paramFloat);
   
-  public void run()
-  {
-    List localList1 = ContactSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineContactSearchEngine, this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest);
-    ISearchListener localISearchListener = ContactSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineContactSearchEngine);
-    if ((localISearchListener != null) && (localList1 != null))
-    {
-      if (ContactSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineContactSearchEngine) == null) {
-        localISearchListener.a(localList1, 1);
-      }
-    }
-    else {
-      return;
-    }
-    localISearchListener.a(localList1);
-    List localList2 = ContactSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineContactSearchEngine).a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest);
-    if ((localList2 != null) && (!localList2.isEmpty())) {
-      localList1.addAll(localList2);
-    }
-    localISearchListener.a(localList1, 1);
-  }
+  public abstract void c(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahve
  * JD-Core Version:    0.7.0.1
  */

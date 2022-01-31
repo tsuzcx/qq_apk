@@ -1,26 +1,51 @@
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.localmedia.baoutils.common.Callbacks.Callback;
-import dov.com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailResult;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.utils.MediaUtil;
+import org.json.JSONObject;
 
-public final class aont
-  implements Callbacks.Callback
+public class aont
 {
-  public aont(Object paramObject) {}
+  public static final String c = asne.jdField_a_of_type_JavaLangString + "GameCenterMsgBean";
+  public int a;
+  public String a;
+  public String b = asmw.c;
   
-  public Void a(Boolean arg1, MediaCodecThumbnailGenerator.ThumbnailResult paramThumbnailResult)
+  public aont()
   {
-    QLog.e(MediaUtil.a(), 2, "MediaCodecThumbnailGenerator finished().");
-    synchronized (this.a)
+    this.jdField_a_of_type_JavaLangString = asmw.b;
+  }
+  
+  public static aont a(aoko[] paramArrayOfaoko)
+  {
+    aont localaont = new aont();
+    int i = 0;
+    for (;;)
     {
-      this.a.notifyAll();
-      return null;
+      if (i < paramArrayOfaoko.length)
+      {
+        Object localObject = paramArrayOfaoko[i].jdField_a_of_type_JavaLangString;
+        try
+        {
+          localObject = new JSONObject((String)localObject);
+          localaont.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("gameMsgFuncSwitch");
+          localaont.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("gameMsgListUrl");
+          localaont.b = ((JSONObject)localObject).optString("gamePrefix");
+          QLog.i(c, 1, "[parse], mGraySwitch:" + localaont.jdField_a_of_type_Int + ",url:" + localaont.jdField_a_of_type_JavaLangString);
+          i += 1;
+        }
+        catch (Throwable localThrowable)
+        {
+          for (;;)
+          {
+            QLog.e(c, 1, localThrowable, new Object[0]);
+          }
+        }
+      }
     }
+    return localaont;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aont
  * JD-Core Version:    0.7.0.1
  */

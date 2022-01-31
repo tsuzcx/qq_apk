@@ -1,19 +1,20 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.af;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.UpgradeDeterminResult;
+import android.text.Editable;
+import android.text.TextWatcher;
 
-final class yx
-  implements View.OnClickListener
+class yx
+  implements TextWatcher
 {
-  yx(ScanLoginBindActivity paramScanLoginBindActivity, QQUser paramQQUser, UpgradeDeterminResult paramUpgradeDeterminResult) {}
+  yx(SettingSubmitCommentActivity paramSettingSubmitCommentActivity) {}
   
-  public final void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    af.a().c(this.a.mRealUin, this.b.a(), "", "", this.c.mHandler);
+    this.a.checkMenuBtnEnable();
   }
 }
 

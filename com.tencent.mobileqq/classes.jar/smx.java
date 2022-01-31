@@ -1,22 +1,52 @@
-import com.tencent.mobileqq.activity.FavEmosmManageActivity;
-import com.tencent.mobileqq.app.FavEmoRoamingObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment.5.1;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class smx
-  extends FavEmoRoamingObserver
+  implements srk
 {
-  public smx(FavEmosmManageActivity paramFavEmosmManageActivity) {}
+  public smx(ViolaFragment paramViolaFragment) {}
   
-  public void a(boolean paramBoolean)
+  public void a()
   {
-    this.a.app.removeObserver(this);
-    this.a.b.clear();
+    this.a.a.b();
+    this.a.a.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaFragment", 2, "reloadPage success!");
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.a.getActivity() != null) {}
+    for (Looper localLooper = this.a.getActivity().getMainLooper();; localLooper = BaseActivity.sTopActivity.getMainLooper())
+    {
+      new Handler(localLooper).postDelayed(new ViolaFragment.5.1(this), 1000L);
+      if (QLog.isColorLevel()) {
+        QLog.e("ViolaFragment", 2, "reloadPage error,error code=" + paramInt);
+      }
+      return;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaFragment", 2, "reloadPage process,process code=" + paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     smx
  * JD-Core Version:    0.7.0.1
  */

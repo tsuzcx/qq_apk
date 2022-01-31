@@ -1,40 +1,47 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.QQRecorder;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class aexy
-  implements Runnable
+  extends Handler
 {
-  private int jdField_a_of_type_Int = 2;
-  
-  public aexy(ShortVideoCommentsView paramShortVideoCommentsView, int paramInt)
+  public aexy(CommonRecordSoundPanel paramCommonRecordSoundPanel, Looper paramLooper)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramLooper);
   }
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    switch (this.jdField_a_of_type_Int)
+    switch (paramMessage.what)
     {
     default: 
-      ShortVideoCommentsView.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setVisibility(8);
-      ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setVisibility(8);
       return;
-    case 0: 
-      ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setVisibility(8);
-      ShortVideoCommentsView.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setVisibility(0);
+    case 16711687: 
+      this.a.b(102);
+      return;
+    case 16711686: 
+      if (QLog.isColorLevel()) {
+        QLog.d("QQRecorder", 2, "QQRecorder stop() is called,time is:" + System.currentTimeMillis());
+      }
+      CommonRecordSoundPanel.a(this.a).c();
+      bdfi.b(2131230744, false);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(16711686);
+      bdfi.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, false);
       return;
     }
-    ShortVideoCommentsView.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setVisibility(8);
-    if ((ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView) != null) && (ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).jdField_a_of_type_Int != 4)) {
-      ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setVisibility(0);
-    }
-    ShortVideoCommentsView.d(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView);
+    this.a.b(1);
+    this.a.b();
+    QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131698860), 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aexy
  * JD-Core Version:    0.7.0.1
  */

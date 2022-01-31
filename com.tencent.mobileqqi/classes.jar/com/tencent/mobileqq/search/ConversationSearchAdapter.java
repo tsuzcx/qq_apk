@@ -29,8 +29,8 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.XListView;
-import gmp;
-import gmq;
+import gig;
+import gih;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -41,7 +41,7 @@ public class ConversationSearchAdapter
   implements SearchAdapterInterface, FaceDecoder.DecodeTaskCompletionListener, AbsListView.OnScrollListener
 {
   public static final int a = 0;
-  private static Comparator jdField_a_of_type_JavaUtilComparator = new gmp();
+  private static Comparator jdField_a_of_type_JavaUtilComparator = new gig();
   public static final int b = 1;
   public static final int c = 2;
   private Context jdField_a_of_type_AndroidContentContext;
@@ -53,7 +53,7 @@ public class ConversationSearchAdapter
   private ConversationSearchAdapter.SearchResultCallBack jdField_a_of_type_ComTencentMobileqqSearchConversationSearchAdapter$SearchResultCallBack = null;
   protected FaceDecoder a;
   protected XListView a;
-  private gmq jdField_a_of_type_Gmq = null;
+  private gih jdField_a_of_type_Gih = null;
   private String jdField_a_of_type_JavaLangString;
   private List jdField_a_of_type_JavaUtilList;
   public boolean a;
@@ -308,13 +308,13 @@ public class ConversationSearchAdapter
   {
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.jdField_b_of_type_JavaLangString = paramString2;
-    if (this.jdField_a_of_type_Gmq != null)
+    if (this.jdField_a_of_type_Gih != null)
     {
-      this.jdField_a_of_type_Gmq.cancel(true);
-      this.jdField_a_of_type_Gmq = null;
+      this.jdField_a_of_type_Gih.cancel(true);
+      this.jdField_a_of_type_Gih = null;
     }
-    this.jdField_a_of_type_Gmq = new gmq(this, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Gmq.execute(new Void[0]);
+    this.jdField_a_of_type_Gih = new gih(this, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Gih.execute(new Void[0]);
   }
   
   public void a(List paramList)

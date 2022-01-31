@@ -1,16 +1,21 @@
 package com.tencent.token;
 
-public final class ae
+import com.tencent.halley.common.g;
+import com.tencent.halley.downloader.c.d.a;
+
+public abstract interface ae
 {
-  private static ae a;
+  public abstract g a(af paramaf, a parama, String paramString1, long paramLong, boolean paramBoolean, String paramString2, String paramString3, String paramString4, String paramString5);
   
-  public static ae a()
-  {
-    if (a == null) {
-      a = new ae();
-    }
-    return a;
-  }
+  public abstract ad a(af paramaf);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(af paramaf, long paramLong, byte[] paramArrayOfByte, int paramInt, boolean paramBoolean);
+  
+  public abstract void b(af paramaf);
+  
+  public abstract void c(af paramaf);
 }
 
 

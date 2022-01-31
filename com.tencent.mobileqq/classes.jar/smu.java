@@ -1,74 +1,64 @@
-import com.tencent.mobileqq.activity.FavEmosmManageActivity;
-import com.tencent.mobileqq.emosm.favroaming.FavEmoConstant;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager.FavEmotionDataInPanelCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class smu
-  implements FavroamingDBManager.FavEmotionDataInPanelCallback
+  implements srk
 {
-  public smu(FavEmosmManageActivity paramFavEmosmManageActivity) {}
+  public smu(ViolaFragment paramViolaFragment) {}
   
-  public void a(List paramList)
+  public void a()
   {
-    List localList2 = paramList;
-    if (paramList != null) {
-      localList1 = paramList;
+    this.a.a.b();
+    this.a.a.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaFragment", 2, "initViola success!");
     }
-    try
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a.a.b();
+    this.a.a.c();
+    if (QLog.isColorLevel()) {
+      QLog.e("ViolaFragment", 2, "initViola error,error code=" + paramInt);
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
+  {
+    if ((this.a.a.b()) && (paramBoolean))
     {
-      Collections.reverse(paramList);
-      localList2 = paramList;
-      localList1 = paramList;
-      if (paramList.size() > FavEmoConstant.b)
+      if (Math.abs(paramInt1) < this.a.a.a() / 2) {
+        break label79;
+      }
+      if (!ViolaFragment.a(this.a))
       {
-        localList1 = paramList;
-        int i = paramList.size() - FavEmoConstant.b;
-        localList1 = paramList;
-        paramList = paramList.subList(i, paramList.size());
-        localList2 = paramList;
-        localList1 = paramList;
-        if (QLog.isColorLevel())
-        {
-          localList1 = paramList;
-          QLog.d("FavEmoRoamingHandler", 2, "fav emoticon overflow size" + i);
-          localList2 = paramList;
-        }
-      }
-      paramList = localList2;
-    }
-    catch (UnsupportedOperationException paramList)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("FavEmoRoamingHandler", 2, paramList.getMessage());
-        }
-        paramList = localList1;
+        this.a.a(Boolean.valueOf(false));
+        ajen.a(this.a.getActivity(), true);
+        ViolaFragment.a(this.a, true);
       }
     }
-    if (paramList == null)
-    {
-      paramList = new ArrayList();
-      if (paramList.size() >= FavEmoConstant.a) {
-        ReportController.b(this.a.app, "CliOper", "", "", "0X8005CFA", "0X8005CFA", 0, 0, "", "", "", "");
-      }
-      if (paramList.size() >= FavEmoConstant.b) {
-        ReportController.b(this.a.app, "CliOper", "", "", "0X8005CFB", "0X8005CFB", 0, 0, "", "", "", "");
-      }
-      paramList.add(0, new EmoticonInfo());
-      this.a.a(paramList);
+    label79:
+    while (!ViolaFragment.a(this.a)) {
       return;
+    }
+    this.a.a(Boolean.valueOf(true));
+    ajen.a(this.a.getActivity(), false);
+    ViolaFragment.a(this.a, false);
+  }
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaFragment", 2, "initViola process,process code=" + paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     smu
  * JD-Core Version:    0.7.0.1
  */

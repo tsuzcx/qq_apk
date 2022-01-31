@@ -1,23 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
-import com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder;
+import android.graphics.Bitmap;
 
-public class vkc
-  implements View.OnTouchListener
+class vkc
+  extends vja
 {
-  public vkc(TroopGiftMsgItemBuilder paramTroopGiftMsgItemBuilder, OnLongClickAndTouchListener paramOnLongClickAndTouchListener) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  vkc(vji paramvji, boolean paramBoolean1, boolean paramBoolean2, vkr paramvkr)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener.onTouch(paramView, paramMotionEvent);
-    return false;
+    super(paramBoolean1, paramBoolean2);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Vkr.a = ((Bitmap)a("WeChatImageJob_out_bitmap"));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vkc
  * JD-Core Version:    0.7.0.1
  */

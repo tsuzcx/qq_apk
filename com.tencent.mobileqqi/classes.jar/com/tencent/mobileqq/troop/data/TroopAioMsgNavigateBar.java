@@ -34,8 +34,8 @@ import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.theme.ThemeUtil;
-import gzg;
-import gzh;
+import guz;
+import gva;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -89,7 +89,7 @@ public class TroopAioMsgNavigateBar
     int j;
     if (bool)
     {
-      this.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838316);
+      this.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838318);
       localObject = new RelativeLayout.LayoutParams(-1, -1);
       ((RelativeLayout.LayoutParams)localObject).topMargin = -9;
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_c_of_type_AndroidWidgetRelativeLayout, 0, (ViewGroup.LayoutParams)localObject);
@@ -104,13 +104,13 @@ public class TroopAioMsgNavigateBar
       if (!bool) {
         break label775;
       }
-      i = 2130838332;
+      i = 2130838334;
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, i, 0);
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(18);
       if (!bool) {
         break label781;
       }
-      j = 2131361928;
+      j = 2131361938;
       label291:
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(j));
       this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131427359));
@@ -127,7 +127,7 @@ public class TroopAioMsgNavigateBar
       if (!bool) {
         break label787;
       }
-      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130838321);
+      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130838323);
     }
     for (;;)
     {
@@ -156,16 +156,16 @@ public class TroopAioMsgNavigateBar
       this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(17170445);
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(17170445);
       return;
-      this.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838315);
+      this.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838317);
       break;
       label775:
-      i = 2130838331;
+      i = 2130838333;
       break label264;
       label781:
-      j = 2131362026;
+      j = 2131362036;
       break label291;
       label787:
-      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130838320);
+      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130838322);
     }
   }
   
@@ -208,7 +208,7 @@ public class TroopAioMsgNavigateBar
   {
     if (Looper.getMainLooper() != Looper.myLooper())
     {
-      new Handler(Looper.getMainLooper()).post(new gzg(this));
+      new Handler(Looper.getMainLooper()).post(new guz(this));
       return;
     }
     i();
@@ -303,7 +303,7 @@ public class TroopAioMsgNavigateBar
     DisplayMetrics localDisplayMetrics = new DisplayMetrics();
     ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
     this.e = localDisplayMetrics.heightPixels;
-    this.f = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131427565));
+    this.f = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131427568));
     this.jdField_a_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(0.0F, 0.0F, 0 - this.f, 0.0F);
     this.jdField_b_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, 0 - this.f);
     this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(300L);
@@ -495,7 +495,7 @@ public class TroopAioMsgNavigateBar
   {
     if (Looper.getMainLooper() != Looper.myLooper())
     {
-      new Handler(Looper.getMainLooper()).post(new gzh(this));
+      new Handler(Looper.getMainLooper()).post(new gva(this));
       return;
     }
     k();

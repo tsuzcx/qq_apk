@@ -1,29 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.util.Pair;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import qqcircle.QQCircleRead.ConfidentCircleMemberRsp;
 
 class tue
-  implements DialogInterface.OnClickListener
+  implements zac<QQCircleRead.ConfidentCircleMemberRsp>
 {
-  tue(tud paramtud, SubAccountControll paramSubAccountControll, Pair paramPair) {}
+  tue(tuc paramtuc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleRead.ConfidentCircleMemberRsp paramConfidentCircleMemberRsp)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSubaccountSubAccountControll.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
-    if (!SubAccountControll.a(this.jdField_a_of_type_Tud.a.app))
+    if ((!paramBoolean) || (paramLong != 0L) || (paramConfidentCircleMemberRsp == null))
     {
-      this.jdField_a_of_type_Tud.a.setTitle("");
-      SubAccountAssistantForward.a(this.jdField_a_of_type_Tud.a.app, this.jdField_a_of_type_Tud.a, null);
+      if (!TextUtils.isEmpty(paramString)) {
+        QLog.e("QCircleTopAuthPart", 1, "confirmCircleMemberShip error:" + paramString);
+      }
+      return;
     }
-    this.jdField_a_of_type_Tud.a.finish();
+    QLog.e("QCircleTopAuthPart", 1, "confirmCircleMemberShip success!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tue
  * JD-Core Version:    0.7.0.1
  */

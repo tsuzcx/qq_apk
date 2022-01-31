@@ -1,12 +1,9 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.global.e;
-import com.tencent.token.utils.s;
+import com.tencent.token.global.h;
 import java.io.Serializable;
 import java.util.ArrayList;
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class MbInfoResult
   implements Serializable
@@ -14,18 +11,13 @@ public class MbInfoResult
   private static final long serialVersionUID = 1491530977583986061L;
   public ArrayList mMbInfoItems = new ArrayList();
   
-  public MbInfoResult(JSONObject paramJSONObject)
+  public MbInfoResult(JSONArray paramJSONArray)
   {
-    paramJSONObject = s.d(paramJSONObject.getString("data"));
-    if (paramJSONObject == null) {
-      throw new JSONException("dec transdata error");
-    }
-    paramJSONObject = new JSONArray(new String(paramJSONObject));
-    e.c(paramJSONObject.toString());
+    h.c(paramJSONArray.toString());
     int i = 0;
-    while (i < paramJSONObject.length())
+    while (i < paramJSONArray.length())
     {
-      MbInfoResult.MbInfoItem localMbInfoItem = new MbInfoResult.MbInfoItem(paramJSONObject.getJSONObject(i));
+      MbInfoResult.MbInfoItem localMbInfoItem = new MbInfoResult.MbInfoItem(paramJSONArray.getJSONObject(i));
       this.mMbInfoItems.add(localMbInfoItem);
       i += 1;
     }

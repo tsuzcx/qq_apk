@@ -1,29 +1,7 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
-import com.tencent.biz.qqstory.model.DataProvider.DataUpdateListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
-
-public class xuo
-  implements DataProvider.DataUpdateListener
-{
-  public xuo(P2VEditMusicDialog paramP2VEditMusicDialog) {}
-  
-  public void a(boolean paramBoolean, AddressDataProvider.AddressInfo paramAddressInfo)
-  {
-    SLog.b("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate.");
-    if ((paramBoolean) && (paramAddressInfo != null))
-    {
-      SLog.a("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate success, address=%s", paramAddressInfo);
-      this.a.a.post(new xup(this, paramAddressInfo));
-      return;
-    }
-    SLog.e("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate failed.");
-  }
-}
+public class xuo {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xuo
  * JD-Core Version:    0.7.0.1
  */

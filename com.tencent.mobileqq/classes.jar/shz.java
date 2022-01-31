@@ -1,54 +1,134 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.RegisterProxySvcPackObserver;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.PopupWindow;
 import com.tencent.qphone.base.util.QLog;
 
-public class shz
-  extends RegisterProxySvcPackObserver
+public abstract class shz
+  extends PopupWindow
 {
-  public shz(Conversation paramConversation) {}
+  public final float a;
+  private final int a;
+  public Activity a;
+  protected View a;
+  protected FrameLayout a;
+  protected ImageView a;
+  public final String a;
+  protected boolean a;
+  public final float b;
+  private int b;
+  protected ImageView b;
+  private int c;
+  private int d;
+  private int e;
   
-  protected void a(int paramInt, long paramLong1, long paramLong2)
+  public shz(Activity paramActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "onSelfPcOnlineStatusBanner int iState = " + paramInt + ", long clientType = " + paramLong1 + ", long appId" + paramLong2);
+    super(paramActivity);
+    this.jdField_a_of_type_JavaLangString = "ReadInJoyBasePopupWindow";
+    this.jdField_a_of_type_Float = 0.8F;
+    this.jdField_b_of_type_Float = 1.0F;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_AndroidViewView.measure(0, 0);
+    this.c = this.jdField_a_of_type_AndroidViewView.getMeasuredHeight();
+    setHeight(this.c);
+    QLog.d("ReadInJoyBasePopupWindow", 2, new Object[] { "calculatePopupWindow, popupHeight = ", Integer.valueOf(this.c) });
+  }
+  
+  public abstract View a(LayoutInflater paramLayoutInflater);
+  
+  protected void a()
+  {
+    this.d = ((int)bdgk.i());
+    this.e = ((int)bdgk.j());
+    Object localObject = (LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater");
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)localObject).inflate(2131559909, null);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364771));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378287));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378286));
+    localObject = a((LayoutInflater)localObject);
+    if (localObject != null) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView((View)localObject);
     }
-    if (paramInt == 1)
+    setBackgroundDrawable(new ColorDrawable(0));
+    this.jdField_b_of_type_Int = ((int)(this.d - this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131298618) * 2.0F));
+    setWidth(this.jdField_b_of_type_Int);
+    setTouchable(true);
+    setFocusable(true);
+    setContentView(this.jdField_a_of_type_AndroidViewView);
+    b();
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  protected void a(float paramFloat)
+  {
+    WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidAppActivity.getWindow().getAttributes();
+    localLayoutParams.alpha = paramFloat;
+    this.jdField_a_of_type_AndroidAppActivity.getWindow().setAttributes(localLayoutParams);
+  }
+  
+  protected final void a(View paramView)
+  {
+    c();
+    a(0.8F);
+    int[] arrayOfInt = new int[2];
+    paramView.getLocationOnScreen(arrayOfInt);
+    int i = this.e;
+    int m = arrayOfInt[1];
+    int n = paramView.getHeight();
+    int j = (int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131298618);
+    int k = this.jdField_b_of_type_Int - (arrayOfInt[0] - j) - paramView.getWidth() / 2;
+    QLog.d("ReadInJoyBasePopupWindow", 2, new Object[] { "marginRight = ", Integer.valueOf(k) });
+    if (i - (m + n) > this.c)
     {
-      if (paramLong1 == 77313L)
+      if (k > this.jdField_b_of_type_Int * 0.1D) {
+        setAnimationStyle(2131755035);
+      }
+      for (;;)
       {
-        if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.c)
-        {
-          SharedPreferences localSharedPreferences = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("tim_pc_banner_shared_pre_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0);
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.d = localSharedPreferences.getBoolean("tim_pc_banner_switch", false);
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.c = true;
-        }
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.d) {
-          break label165;
-        }
-      }
-      label165:
-      while (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.jdField_b_of_type_Boolean) {
+        i = arrayOfInt[1] + paramView.getHeight() + bdoo.a(4.0F);
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
+        this.jdField_a_of_type_AndroidWidgetImageView.setPadding(0, 0, k, 0);
+        showAtLocation(paramView, 0, j, i);
+        QLog.d("ReadInJoyBasePopupWindow", 2, new Object[] { "x = ", Integer.valueOf(j), ", y = ", Integer.valueOf(i), ", width = ", Integer.valueOf(this.jdField_b_of_type_Int), ", height = ", Integer.valueOf(this.c) });
         return;
+        setAnimationStyle(2131755034);
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(9, 2);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.jdField_b_of_type_Long = paramLong1;
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a = paramLong2;
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(-1, null);
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800887F", "0X800887F", 0, 0, "", "", "", "");
-      return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.b();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.jdField_b_of_type_Boolean = false;
+    if (k > this.jdField_b_of_type_Int * 0.1D) {
+      setAnimationStyle(2131755038);
+    }
+    for (;;)
+    {
+      i = arrayOfInt[1] - this.c - bdoo.a(4.0F);
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.jdField_b_of_type_AndroidWidgetImageView.setPadding(0, 0, k, 0);
+      break;
+      setAnimationStyle(2131755037);
+    }
+  }
+  
+  public void b()
+  {
+    setOnDismissListener(new sia(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     shz
  * JD-Core Version:    0.7.0.1
  */

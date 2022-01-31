@@ -1,22 +1,23 @@
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView.OnHorizontalScrollListener;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoryDataPuller;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.GameAdDownloadInfo;
 
-public class nsr
-  implements StoryPickerHorizontalListView.OnHorizontalScrollListener
+public final class nsr
+  implements Parcelable.Creator<VideoInfo.GameAdDownloadInfo>
 {
-  public nsr(StoryPickerFragment paramStoryPickerFragment) {}
-  
-  public void a(String paramString)
+  public VideoInfo.GameAdDownloadInfo a(Parcel paramParcel)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramString);
-    }
+    return new VideoInfo.GameAdDownloadInfo(paramParcel);
+  }
+  
+  public VideoInfo.GameAdDownloadInfo[] a(int paramInt)
+  {
+    return new VideoInfo.GameAdDownloadInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nsr
  * JD-Core Version:    0.7.0.1
  */

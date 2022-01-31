@@ -1,44 +1,47 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
 
 public class acay
-  extends TeamWorkFileImportObserver
+  extends alwx
 {
-  public acay(MessengerService paramMessengerService) {}
+  public acay(AccountManageActivity paramAccountManageActivity) {}
   
-  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  public void a(boolean paramBoolean, String paramString, bade parambade)
   {
-    if (this.a.a != null)
+    if (this.a.isFinishing()) {}
+    bacu localbacu;
+    do
     {
-      paramTeamWorkFileImportInfo = new Bundle();
-      paramTeamWorkFileImportInfo.putString("url", null);
-      this.a.a.putBundle("response", paramTeamWorkFileImportInfo);
-      this.a.a(this.a.a);
-      this.a.a = null;
-    }
-  }
-  
-  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.emoji.web.MessengerService", 2, "MessengerService onFileImportSuccess");
-    }
-    if (this.a.a != null)
-    {
-      paramTeamWorkFileImportInfo = new Bundle();
-      paramTeamWorkFileImportInfo.putString("url", paramString);
-      this.a.a.putBundle("response", paramTeamWorkFileImportInfo);
-      this.a.a(this.a.a);
-      this.a.a = null;
-    }
+      for (;;)
+      {
+        return;
+        AccountManageActivity.a(this.a, false);
+        localbacu = (bacu)this.a.app.getManager(62);
+        if (parambade.a != 1) {
+          break;
+        }
+        if ((this.a.isResume()) && (bacu.a(this.a.app, "sub.uin.all")))
+        {
+          paramString = localbacu.a("sub.uin.all");
+          int j = paramString.size();
+          int i = 0;
+          while (i < j)
+          {
+            parambade = (Pair)paramString.get(i);
+            localbacu.a(this.a.app, this.a, parambade, new acaz(this, localbacu, parambade));
+            i += 1;
+          }
+        }
+      }
+    } while (!this.a.isResume());
+    localbacu.a(paramString, 1, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acay
  * JD-Core Version:    0.7.0.1
  */

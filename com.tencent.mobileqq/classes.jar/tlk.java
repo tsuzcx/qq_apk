@@ -1,25 +1,39 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.observer.GameCenterObserver;
+import android.os.Build.VERSION;
+import android.os.HandlerThread;
 
 public class tlk
-  extends GameCenterObserver
 {
-  public tlk(QQSettingMe paramQQSettingMe) {}
+  private HandlerThread a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public HandlerThread a()
   {
-    if (this.a.c)
-    {
-      this.a.k();
-      return;
+    if (this.a == null) {
+      this.a = new HandlerThread("WeishiHandlerThread");
     }
-    QQSettingMe.a(this.a, true);
+    return this.a;
+  }
+  
+  public void a()
+  {
+    if (this.a != null)
+    {
+      if (Build.VERSION.SDK_INT < 18) {
+        break label29;
+      }
+      this.a.quitSafely();
+    }
+    for (;;)
+    {
+      this.a = null;
+      return;
+      label29:
+      this.a.quit();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tlk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,49 @@
-import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
-import com.tencent.mobileqq.richmedia.capture.view.SplitEffectsCameraCaptureView;
-import com.tencent.mobileqq.widget.CircleProgress;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
-class lhf
-  implements Runnable
+public class lhf
 {
-  lhf(lhe paramlhe, boolean paramBoolean, String paramString) {}
+  private static String jdField_a_of_type_JavaLangString = "GBatteryMonitor";
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new lhg(this);
+  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void run()
+  public lhf(VideoAppInterface paramVideoAppInterface)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Lhe.a) == 5) {
-        ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Lhe.a, 2);
-      }
-      for (;;)
-      {
-        ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Lhe.a, this.jdField_a_of_type_JavaLangString);
-        ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Lhe.a).setSourceVideoPath(this.jdField_a_of_type_JavaLangString);
-        ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Lhe.a).setVisibility(8);
-        ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Lhe.a).setVisibility(8);
-        return;
-        ReadInJoyCameraCaptureActivity.b(this.jdField_a_of_type_Lhe.a, 2);
-        ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Lhe.a);
-      }
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+  }
+  
+  public void a()
+  {
+    IntentFilter localIntentFilter = new IntentFilter("android.intent.action.BATTERY_CHANGED");
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null) {
+      this.jdField_a_of_type_Boolean = true;
     }
-    QQToast.a(BaseApplication.getContext(), 1, 2131428454, 0).a(this.jdField_a_of_type_Lhe.a.e()).show();
+  }
+  
+  public void b()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+        this.jdField_a_of_type_Boolean = false;
+      }
+      return;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "video exit IllegalArgumentException ", localIllegalArgumentException);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lhf
  * JD-Core Version:    0.7.0.1
  */

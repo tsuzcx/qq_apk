@@ -1,22 +1,17 @@
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
-import com.tencent.mobileqq.troop.utils.TroopAppMgr;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatchers;
 
 public class umc
-  implements Runnable
 {
-  public umc(PlusPanel paramPlusPanel, TroopAppMgr paramTroopAppMgr, TroopAIOAppInfo paramTroopAIOAppInfo) {}
-  
-  public void run()
+  public static Dispatcher a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr.c(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAIOAppInfo.appid, 0);
-    }
+    return Dispatchers.get(ThreadManager.getSubThreadLooper());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     umc
  * JD-Core Version:    0.7.0.1
  */

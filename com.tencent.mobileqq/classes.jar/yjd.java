@@ -1,36 +1,27 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.antiphing.AntiphingHandler;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class yjd
-  implements DialogInterface.OnClickListener
+  extends aobz
 {
-  public yjd(AntiphingHandler paramAntiphingHandler) {}
+  public yjd(SubscribeBaseFragment paramSubscribeBaseFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(AntiphingHandler.a(this.a), 2, "On Click Left Button! ");
-    }
-    if (this.a.mRuntime.a() != null) {
-      this.a.mRuntime.a().finish();
-    }
-    for (;;)
+    super.onAddColorNote(paramBundle, paramBoolean);
+    aofm.a(BaseApplicationImpl.getContext(), 2, true);
+    if (this.a.getActivity() != null)
     {
-      AntiphingHandler.a(this.a, 1);
-      return;
-      if (QLog.isDevelopLevel()) {
-        QLog.d(AntiphingHandler.a(this.a), 4, "Call back object is null!");
-      }
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yjd
  * JD-Core Version:    0.7.0.1
  */

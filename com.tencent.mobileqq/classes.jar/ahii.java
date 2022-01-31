@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.CaptureSoDownloadFragment;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ahii
-  implements Runnable
+  implements ahkj
 {
-  public ahii(CaptureSoDownloadFragment paramCaptureSoDownloadFragment) {}
+  public ahii(SearchContactsFragment paramSearchContactsFragment) {}
   
-  public void run()
+  public Activity a()
   {
-    this.a.a();
+    return this.a.a();
+  }
+  
+  public QQAppInterface a()
+  {
+    return this.a.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahii
  * JD-Core Version:    0.7.0.1
  */

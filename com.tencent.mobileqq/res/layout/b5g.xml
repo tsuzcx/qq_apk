@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@drawable/b4w" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailListView android:id="@id/bhe" android:background="@drawable/b4w" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="#00000000" android:divider="@null" android:layout_above="@id/b8q" />
+    <include android:id="@id/b8q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/b53" />
+    <TextView android:textSize="16.0dip" android:textColor="#ff777777" android:id="@id/efs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fxg" android:drawablePadding="15.0dip" android:layout_centerInParent="true" />
+</RelativeLayout>

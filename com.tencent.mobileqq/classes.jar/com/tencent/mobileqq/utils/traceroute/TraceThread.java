@@ -16,7 +16,7 @@ public class TraceThread
   private int jdField_a_of_type_Int;
   private TraceConstants.TraceMethod jdField_a_of_type_ComTencentMobileqqUtilsTracerouteTraceConstants$TraceMethod;
   private String jdField_a_of_type_JavaLangString;
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<Handler> jdField_a_of_type_JavaLangRefWeakReference;
   
   private String a(String paramString)
   {
@@ -134,7 +134,7 @@ public class TraceThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.traceroute.TraceThread
  * JD-Core Version:    0.7.0.1
  */

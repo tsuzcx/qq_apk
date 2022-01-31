@@ -1,36 +1,38 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Task;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.TaskPool;
-import java.util.LinkedList;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import java.io.File;
+import java.util.ArrayList;
 
 public class ajpl
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ajpl(TroopFileTransferManager.TaskPool paramTaskPool) {}
+  public ajpl(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile, Button paramButton) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    synchronized (this.a)
+    if (new File(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.b).exists())
     {
-      for (;;)
-      {
-        if (this.a.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
-        {
-          this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
-          return;
-        }
-        TroopFileTransferManager.Task localTask = (TroopFileTransferManager.Task)this.a.jdField_a_of_type_JavaUtilLinkedList.remove(0);
-        localTask.run();
-        if (localTask.a != 0) {
-          continue;
-        }
-        try
-        {
-          Thread.sleep(200L);
-        }
-        catch (InterruptedException localInterruptedException) {}
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.sendBroadcast(new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", Uri.fromFile(this.jdField_a_of_type_JavaIoFile)));
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.l();
+      paramView = new ArrayList();
+      paramView.add(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.b);
+      ajpy.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2, paramView);
+      this.jdField_a_of_type_AndroidWidgetButton.setClickable(false);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.setResult(1001);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.finish();
+      if (ajpx.a == 1) {
+        ajpy.b("", "0X8005F5C", "0");
       }
     }
+    else
+    {
+      return;
+    }
+    ajpy.b("", "0X8005F5C", "1");
   }
 }
 

@@ -1,13 +1,19 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import android.opengl.GLES20;
 
-public class amwf
-  implements amwl
+class amwf
+  implements anfd
 {
-  public amwf(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
+  amwf(amwe paramamwe) {}
   
   public void a()
   {
-    QzoneWebMusicJsPlugin.access$000(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin, this.jdField_a_of_type_JavaLangString);
+    GLES20.glUniform1i(amwe.a(this.a), amwe.b(this.a));
+  }
+  
+  public void a(int paramInt)
+  {
+    amwe.a(this.a, GLES20.glGetUniformLocation(paramInt, "uDisplayType"));
+    amwp.a("glGetUniformLocation uDisplayType");
   }
 }
 

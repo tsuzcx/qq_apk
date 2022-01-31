@@ -1,21 +1,44 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
 public class rzg
-  implements View.OnClickListener
+  implements INetInfoHandler
 {
-  public rzg(ChatHistory paramChatHistory) {}
+  public rzg(FastWebActivity paramFastWebActivity) {}
   
-  public void onClick(View paramView)
+  public void onNetMobile2None()
   {
-    this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
+    FastWebActivity.o(this.a);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    FastWebActivity.o(this.a);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    FastWebActivity.o(this.a);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    FastWebActivity.o(this.a);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    FastWebActivity.o(this.a);
+  }
+  
+  public void onNetWifi2None()
+  {
+    FastWebActivity.o(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rzg
  * JD-Core Version:    0.7.0.1
  */

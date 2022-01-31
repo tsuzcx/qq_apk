@@ -102,23 +102,25 @@ class MyZipFile
     Object localObject = new BufferedInputStream(new RAFStream(this.mRaf, n), 4096);
     byte[] arrayOfByte = new byte[46];
     int i = 0;
+    MyZipEntry localMyZipEntry;
+    String str;
+    if (i < j)
+    {
+      localMyZipEntry = new MyZipEntry(arrayOfByte, (InputStream)localObject);
+      str = localMyZipEntry.getName();
+      if ((str != null) && (!str.contains("../"))) {}
+    }
     for (;;)
     {
-      MyZipEntry localMyZipEntry;
-      if (i < j)
+      i += 1;
+      break;
+      this.mEntries.put(str, localMyZipEntry);
+      if (str.equals(this.libname))
       {
-        localMyZipEntry = new MyZipEntry(arrayOfByte, (InputStream)localObject);
-        this.mEntries.put(localMyZipEntry.getName(), localMyZipEntry);
-        if (localMyZipEntry.getName().equals(this.libname)) {
-          this.desentry = localMyZipEntry;
-        }
-      }
-      else
-      {
+        this.desentry = localMyZipEntry;
         return;
       }
-      if (!localMyZipEntry.getName().contains("lib")) {}
-      i += 1;
+      if (str.contains("lib")) {}
     }
   }
   
@@ -144,10 +146,14 @@ class MyZipFile
   public InputStream getInputStream(MyZipEntry arg1)
     throws IOException
   {
-    Object localObject1 = getEntry(???.getName());
-    if (localObject1 == null) {
+    ??? = ???.getName();
+    if ((??? == null) || (???.contains("../"))) {}
+    Object localObject1;
+    do
+    {
       return null;
-    }
+      localObject1 = getEntry(???);
+    } while (localObject1 == null);
     synchronized (this.mRaf)
     {
       RAFStream localRAFStream = new RAFStream(???, ((MyZipEntry)localObject1).mLocalHeaderRelOffset + 28L);

@@ -1,24 +1,32 @@
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberFromFriendGroup;
+import java.util.List;
 
-public final class akbc
-  implements Comparator
+class akbc
+  implements View.OnClickListener
 {
-  public int compare(Object paramObject1, Object paramObject2)
+  akbc(akbb paramakbb) {}
+  
+  public void onClick(View paramView)
   {
-    long l1 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject1)[1]);
-    long l2 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject2)[1]);
-    if (l1 == l2) {
-      return 0;
+    paramView = (akbd)paramView.getTag();
+    if (this.a.a.a.contains(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups))
+    {
+      this.a.a.a.remove(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups);
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+      this.a.a.a(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups, false);
+      return;
     }
-    if (l1 < l2) {
-      return 2;
-    }
-    return -1;
+    this.a.a.a.add(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups);
+    paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+    this.a.a.a(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akbc
  * JD-Core Version:    0.7.0.1
  */

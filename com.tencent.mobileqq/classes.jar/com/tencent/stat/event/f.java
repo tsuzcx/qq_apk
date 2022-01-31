@@ -3,7 +3,6 @@ package com.tencent.stat.event;
 import android.content.Context;
 import com.tencent.stat.StatSpecifyReportedInfo;
 import com.tencent.stat.common.Util;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class f
@@ -27,7 +26,6 @@ public class f
   }
   
   public boolean a(JSONObject paramJSONObject)
-    throws JSONException
   {
     Util.jsonPut(paramJSONObject, "pi", this.p);
     Util.jsonPut(paramJSONObject, "rf", this.q);

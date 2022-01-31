@@ -1,24 +1,20 @@
 package com.tencent.mobileqq.model;
 
-import com.tencent.commonsdk.cache.QQConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
+import aufn;
 
-class EmoticonManager$2
-  extends QQConcurrentHashMap
+public class EmoticonManager$2
+  implements Runnable
 {
-  EmoticonManager$2(EmoticonManager paramEmoticonManager, int paramInt1, int paramInt2, int paramInt3)
-  {
-    super(paramInt1, paramInt2, paramInt3);
-  }
+  public EmoticonManager$2(aufn paramaufn) {}
   
-  protected int sizeOf(String paramString, CopyOnWriteArrayList paramCopyOnWriteArrayList)
+  public void run()
   {
-    return super.sizeOf(paramString, paramCopyOnWriteArrayList) * paramCopyOnWriteArrayList.size();
+    aufn.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.model.EmoticonManager.2
  * JD-Core Version:    0.7.0.1
  */

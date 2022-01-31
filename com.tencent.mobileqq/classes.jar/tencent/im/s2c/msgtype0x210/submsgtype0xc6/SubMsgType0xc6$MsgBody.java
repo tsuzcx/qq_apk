@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SubMsgType0xc6$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "uint32_sec_cmd", "msg_s2c_account_exception_notify" }, new Object[] { Integer.valueOf(0), null }, MsgBody.class);
   public SubMsgType0xc6.AccountExceptionAlertBody msg_s2c_account_exception_notify = new SubMsgType0xc6.AccountExceptionAlertBody();

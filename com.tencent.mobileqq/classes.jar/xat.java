@@ -1,21 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class xat
-  implements DialogInterface.OnClickListener
+class xat
+  extends SimpleJob<Object>
 {
-  public xat(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  xat(xan paramxan, String paramString)
   {
-    this.a.getActivity().finish();
+    super(paramString);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    wxk.a("0X80076BC");
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xat
  * JD-Core Version:    0.7.0.1
  */

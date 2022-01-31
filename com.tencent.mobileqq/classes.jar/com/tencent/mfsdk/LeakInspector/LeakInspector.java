@@ -1,15 +1,20 @@
 package com.tencent.mfsdk.LeakInspector;
 
+import abuz;
+import abvb;
+import abvf;
 import android.app.Activity;
 import android.os.Environment;
+import aztr;
+import bdzf;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.pool.RecyclablePool;
-import com.tencent.mobileqq.app.memory.MemoryReporter;
+import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.UUID;
 import mqq.os.MqqHandler;
-import rdp;
 
 public class LeakInspector
 {
@@ -18,13 +23,13 @@ public class LeakInspector
   private static LeakInspector jdField_a_of_type_ComTencentMfsdkLeakInspectorLeakInspector;
   private static boolean jdField_a_of_type_Boolean = true;
   private static boolean b = true;
-  private LeakInspector.InspectorListener jdField_a_of_type_ComTencentMfsdkLeakInspectorLeakInspector$InspectorListener;
+  private abvf jdField_a_of_type_Abvf;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   
-  private LeakInspector(MqqHandler paramMqqHandler, LeakInspector.InspectorListener paramInspectorListener)
+  private LeakInspector(MqqHandler paramMqqHandler, abvf paramabvf)
   {
     this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
-    this.jdField_a_of_type_ComTencentMfsdkLeakInspectorLeakInspector$InspectorListener = paramInspectorListener;
+    this.jdField_a_of_type_Abvf = paramabvf;
   }
   
   private LeakInspector.InspectUUID a(Object paramObject, String paramString)
@@ -37,9 +42,15 @@ public class LeakInspector
     return localInspectUUID;
   }
   
-  public static LeakInspector a()
+  public static void a()
   {
-    return jdField_a_of_type_ComTencentMfsdkLeakInspectorLeakInspector;
+    if ((new File(bdzf.a(Environment.getExternalStorageDirectory().getPath() + "/tencent/AutoTestFlag_02")).exists()) || (new File(bdzf.a(Environment.getExternalStorageDirectory().getPath() + "/tencent/AutoTestFlag_03")).exists()) || (10 == BaseApplicationImpl.sProcessId)) {}
+    for (jdField_a_of_type_Boolean = false; new File(bdzf.a(Environment.getExternalStorageDirectory().getPath() + "/tencent/AutoTestFlag_03")).exists(); jdField_a_of_type_Boolean = true)
+    {
+      b = false;
+      return;
+    }
+    b = true;
   }
   
   public static void a(Activity paramActivity)
@@ -47,12 +58,15 @@ public class LeakInspector
     if (QLog.isColorLevel()) {
       QLog.d("LeakInspector", 2, new Object[] { "afterOnDestroy ", paramActivity.getClass().getSimpleName() });
     }
-    ActivityLeakSolution.b(paramActivity);
-    ActivityLeakSolution.a(paramActivity);
-    ActivityLeakSolution.c(paramActivity);
-    ActivityLeakSolution.b(paramActivity);
-    ActivityLeakSolution.a(paramActivity);
-    ActivityLeakSolution.a();
+    abvb.b(paramActivity);
+    abvb.a(paramActivity);
+    abvb.c(paramActivity);
+    abvb.b(paramActivity);
+    abvb.a(paramActivity);
+    abvb.a();
+    abvb.d(paramActivity);
+    abvb.e(paramActivity);
+    if (!MagnifierSDK.a()) {}
     try
     {
       a(paramActivity);
@@ -72,29 +86,28 @@ public class LeakInspector
   
   public static void a(Object paramObject, String paramString)
   {
+    if (MagnifierSDK.a())
+    {
+      aztr.a().a(paramObject, paramString);
+      return;
+    }
     if (jdField_a_of_type_ComTencentMfsdkLeakInspectorLeakInspector == null) {
       throw new RuntimeException("Please call initInspector before this");
     }
-    if (jdField_a_of_type_ComTencentMfsdkLeakInspectorLeakInspector.jdField_a_of_type_ComTencentMfsdkLeakInspectorLeakInspector$InspectorListener == null) {
+    if (jdField_a_of_type_ComTencentMfsdkLeakInspectorLeakInspector.jdField_a_of_type_Abvf == null) {
       throw new RuntimeException("Please init a listener first!");
     }
     jdField_a_of_type_ComTencentMfsdkLeakInspectorLeakInspector.b(paramObject, paramString);
   }
   
-  public static void a(MqqHandler paramMqqHandler, LeakInspector.InspectorListener paramInspectorListener)
+  public static void a(MqqHandler paramMqqHandler, abvf paramabvf)
   {
     if (jdField_a_of_type_ComTencentMfsdkLeakInspectorLeakInspector != null) {
       throw new RuntimeException("Oh man, this only can be called once.");
     }
-    jdField_a_of_type_ComTencentMfsdkLeakInspectorLeakInspector = new LeakInspector(paramMqqHandler, paramInspectorListener);
+    jdField_a_of_type_ComTencentMfsdkLeakInspectorLeakInspector = new LeakInspector(paramMqqHandler, paramabvf);
     jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool = new RecyclablePool(LeakInspector.InspectUUID.class, 20);
-    if ((new File(Environment.getExternalStorageDirectory().getPath() + "/tencent/AutoTestFlag_02").exists()) || (new File(Environment.getExternalStorageDirectory().getPath() + "/tencent/AutoTestFlag_03").exists())) {}
-    for (jdField_a_of_type_Boolean = false; new File(Environment.getExternalStorageDirectory().getPath() + "/tencent/AutoTestFlag_03").exists(); jdField_a_of_type_Boolean = true)
-    {
-      b = false;
-      return;
-    }
-    b = true;
+    a();
   }
   
   public static boolean a()
@@ -104,17 +117,29 @@ public class LeakInspector
   
   private void b(Object paramObject, String paramString)
   {
-    if (jdField_a_of_type_ComTencentMfsdkLeakInspectorLeakInspector.jdField_a_of_type_ComTencentMfsdkLeakInspectorLeakInspector$InspectorListener.a(paramObject)) {}
-    while (!MemoryReporter.a().jdField_a_of_type_Boolean) {
+    if (jdField_a_of_type_ComTencentMfsdkLeakInspectorLeakInspector.jdField_a_of_type_Abvf.a(paramObject)) {}
+    for (;;)
+    {
       return;
+      try
+      {
+        if (Math.random() < abuz.a)
+        {
+          paramObject = new LeakInspector.InspectorRunner(this, a(paramObject, paramString), 0);
+          this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(paramObject, 1000L);
+          return;
+        }
+      }
+      catch (Exception paramObject)
+      {
+        QLog.d("LeakInspector", 1, "newInspect ", paramObject);
+      }
     }
-    paramObject = new rdp(this, a(paramObject, paramString), 0);
-    this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(paramObject, 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mfsdk.LeakInspector.LeakInspector
  * JD-Core Version:    0.7.0.1
  */

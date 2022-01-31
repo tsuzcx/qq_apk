@@ -1,20 +1,10 @@
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.util.AlbumLibDownloaderUtil;
-import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
-
 public class anbs
-  implements Runnable
 {
-  public anbs(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, String[] paramArrayOfString) {}
+  public int a = 3000;
   
-  public void run()
+  public String toString()
   {
-    if (AlbumLibDownloaderUtil.a().a(AlbumLibDownloaderUtil.a, true))
-    {
-      QZoneSharePictureJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin, this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin.a.mRuntime, this.jdField_a_of_type_ArrayOfJavaLangString);
-      return;
-    }
-    QZoneSharePictureJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin, this.jdField_a_of_type_ArrayOfJavaLangString);
+    return "ARCloudReqMarkerInfo{timeout = " + this.a + '}';
   }
 }
 

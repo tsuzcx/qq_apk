@@ -1,42 +1,28 @@
-import android.content.ContentResolver;
-import android.content.Context;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.DoodleActivity;
+import com.tencent.mobileqq.widget.DoodleTextView;
 
 public class cix
-  implements Runnable
+  implements View.OnClickListener
 {
-  public cix(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, Uri paramUri, String paramString) {}
+  public cix(DoodleActivity paramDoodleActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
+    if ((this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() == 0) || (this.a.b.getVisibility() == 0))
     {
-      localObject3 = BaseApplicationImpl.getContext().getContentResolver().query(this.jdField_a_of_type_AndroidNetUri, null, this.jdField_a_of_type_JavaLangString, null, null);
-      localObject1 = localObject3;
-      if (localObject3 != null)
-      {
-        ((Cursor)localObject3).getCount();
-        localObject1 = localObject3;
-      }
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.a.b.setVisibility(8);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
+      return;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Object localObject3;
-        Object localObject1;
-        Object localObject2 = null;
-      }
-    }
-    localObject3 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a.obtainMessage(8);
-    ((Message)localObject3).obj = localObject1;
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a.sendMessage((Message)localObject3);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodleTextView.d();
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839725);
+    this.a.c.setVisibility(8);
   }
 }
 

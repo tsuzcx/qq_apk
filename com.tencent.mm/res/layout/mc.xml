@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/apa" android:paddingLeft="@dimen/l2" android:paddingRight="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center" android:paddingBottom="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <include android:id="@id/api" layout="@layout/me" />
+        <include android:id="@id/apj" layout="@layout/md" />
+    </FrameLayout>
+    <RelativeLayout android:paddingBottom="@dimen/l2" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:id="@id/apk" android:background="@drawable/a01" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dl" android:layout_marginBottom="@dimen/l2" />
+    </RelativeLayout>
+</LinearLayout>

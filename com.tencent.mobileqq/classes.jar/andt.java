@@ -1,23 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import cooperation.qzone.QZoneHelper.QZoneCoverConstants;
-import cooperation.qzone.webviewplugin.personalize.QZoneCoverStoreJsPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class andt
-  implements View.OnClickListener
+final class andt
+  implements bauf
 {
-  public andt(QZoneCoverStoreJsPlugin paramQZoneCoverStoreJsPlugin) {}
-  
-  public void onClick(View paramView)
+  public void a(bave parambave, bavf parambavf)
   {
-    if ((this.a.mRuntime.a() != null) && (this.a.mRuntime.a() != null))
-    {
-      paramView = QZoneHelper.QZoneCoverConstants.a("qzone", String.valueOf(1), this.a.mRuntime.a().getAccount(), this.a.mRuntime.a().getAccount());
-      this.a.mRuntime.a().loadUrl(paramView);
+    if ((parambave == null) || (parambavf == null)) {}
+    while (!(parambave instanceof baub)) {
+      return;
     }
+    baub localbaub = (baub)parambave;
+    localbaub.jdField_a_of_type_Long += parambavf.c;
+    parambavf.c = 0L;
+    parambavf = "bytes=" + localbaub.jdField_a_of_type_Long + "-";
+    localbaub.jdField_a_of_type_JavaUtilHashMap.put("Range", parambavf);
+    parambavf = localbaub.jdField_a_of_type_JavaLangString;
+    if (parambavf.contains("range="))
+    {
+      parambavf = parambavf.substring(0, parambavf.lastIndexOf("range="));
+      localbaub.jdField_a_of_type_JavaLangString = (parambavf + "range=" + localbaub.jdField_a_of_type_Long);
+    }
+    QLog.i("AREngine_ARResourceDownload", 1, "IBreakDownFix. url = " + ((baub)parambave).jdField_a_of_type_JavaLangString + ", offset=" + localbaub.jdField_a_of_type_Long);
   }
 }
 

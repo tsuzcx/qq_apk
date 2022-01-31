@@ -3,14 +3,14 @@ package com.tencent.token.ui.base;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-final class c
+class c
   implements View.OnClickListener
 {
-  c(CaptchaDialog paramCaptchaDialog) {}
+  c(CommonActionSheetDialog paramCommonActionSheetDialog) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    this.a.a();
+    CommonActionSheetDialog.a(this.a).a(1);
   }
 }
 

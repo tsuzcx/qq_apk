@@ -1,42 +1,88 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoBusiManager;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoReq;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.widget.AbsListView.LayoutParams;
 
-class aois
-  implements Runnable
+public class aois
+  extends ajju
 {
-  aois(aoir paramaoir) {}
+  int a;
   
-  public void run()
+  public View a(int paramInt, Object paramObject, ajjp paramajjp, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ajlm paramajlm)
   {
-    if (this.a.jdField_a_of_type_AndroidContentIntent != null)
+    paramOnClickListener = paramContext.getResources();
+    if (paramView == null)
     {
-      int i = this.a.jdField_a_of_type_AndroidContentIntent.getIntExtra("file_send_business_type", 2);
-      if (QLog.isColorLevel()) {
-        QLog.d("SendVideoActivity", 2, "#SendTask# run(), busiType = " + i + ",VideoFileDir = " + this.a.jdField_a_of_type_AndroidContentIntent.getStringExtra("file_video_source_dir"));
+      paramajjp = null;
+      if ((paramView == null) || (!(paramView.getTag() instanceof aoit))) {
+        break label179;
       }
-      int j = this.a.jdField_a_of_type_AndroidContentIntent.getIntExtra("uintype", -1);
-      if (j == 9501) {
-        i = 4;
+      paramajjp = (aoit)paramajjp;
+      label35:
+      paramInt = paramViewGroup.getMeasuredHeight() - this.a;
+      if (paramInt >= 0) {
+        break label348;
       }
-      ShortVideoReq localShortVideoReq = ShortVideoBusiManager.a(0, i);
-      localShortVideoReq.a(ShortVideoBusiManager.a(this.a.jdField_a_of_type_AndroidContentIntent, localShortVideoReq));
-      if ((j != 9501) || (QLog.isColorLevel())) {
-        QLog.d("SendVideoActivity", 2, "#SendTask# run(): success");
-      }
+      paramInt = (int)(this.a * 1.5F);
     }
-    if (!this.a.jdField_a_of_type_Boolean)
+    label81:
+    label348:
+    for (;;)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setResult(-1, this.a.jdField_a_of_type_AndroidContentIntent);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+      if ((paramView.getLayoutParams() instanceof AbsListView.LayoutParams))
+      {
+        paramViewGroup = (AbsListView.LayoutParams)paramView.getLayoutParams();
+        paramViewGroup.width = -1;
+        paramViewGroup.height = paramInt;
+        paramView.setLayoutParams(paramViewGroup);
+        if ((paramObject instanceof Integer))
+        {
+          paramInt = ((Integer)paramObject).intValue();
+          if (paramInt != 16) {
+            break label294;
+          }
+          paramajjp.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839229);
+          if ((paramajjp.jdField_a_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
+            ((Animatable)paramajjp.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).start();
+          }
+          paramajjp.jdField_a_of_type_AndroidWidgetTextView.setText(2131699014);
+        }
+      }
+      while (paramInt != 17)
+      {
+        return paramView;
+        paramajjp = paramView.getTag();
+        break;
+        paramView = LayoutInflater.from(paramContext).inflate(2131560892, null);
+        paramajjp = new aoit();
+        paramajjp.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131369147));
+        paramajjp.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367819));
+        paramajjp.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379107));
+        paramView.setTag(paramajjp);
+        this.a = (paramOnClickListener.getDimensionPixelSize(2131297979) + paramOnClickListener.getDimensionPixelSize(2131297981) + paramOnClickListener.getDimensionPixelSize(2131297980) * 2);
+        break label35;
+        paramViewGroup = new AbsListView.LayoutParams(-1, paramInt);
+        break label81;
+      }
+      if ((paramajjp.jdField_a_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
+        ((Animatable)paramajjp.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).stop();
+      }
+      paramajjp.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+      paramajjp.jdField_a_of_type_AndroidWidgetTextView.setText(2131699013);
+      return paramView;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aois
  * JD-Core Version:    0.7.0.1
  */

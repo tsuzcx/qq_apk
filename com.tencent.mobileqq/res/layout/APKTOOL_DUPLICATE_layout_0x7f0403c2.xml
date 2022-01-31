@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0208ab" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13e5" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0403c7" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13e6" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0403ce" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13c3" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0265" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d04fd" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13e7" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0265" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0403c9" android:layout_width="fill_parent" android:layout_height="55.0dip" />
-</LinearLayout>

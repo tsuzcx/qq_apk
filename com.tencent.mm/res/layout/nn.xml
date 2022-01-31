@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout style="@style/g7"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/ap9" android:layout_alignParentTop="true" android:layout_alignParentRight="true" layout="@layout/m2" style="@style/gc" />
+    <TextView android:id="@id/ox" android:visibility="gone" android:text="{user}" android:layout_toLeftOf="@id/ap9" style="@style/gl" />
+    <LinearLayout android:id="@id/a_" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toLeftOf="@id/ap9" style="@style/gh">
+        <View android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <com.tencent.mm.ui.widget.MMNeat7extView android:id="@id/oy" android:background="@drawable/k6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxHeight="@dimen/fy" android:minHeight="@dimen/eg" style="@style/gr" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

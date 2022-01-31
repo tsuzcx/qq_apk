@@ -8,8 +8,8 @@ public class NearbyGrayTipsManager$SceneThree
 {
   private static final long serialVersionUID = 1L;
   public boolean keywordTrigger;
-  public ArrayList keywords;
-  public ArrayList whichSide;
+  public ArrayList<String> keywords;
+  public ArrayList<Integer> whichSide;
 }
 
 

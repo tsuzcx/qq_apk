@@ -1,27 +1,25 @@
-import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.FrameLayoutCompat;
 
-public class rfn
-  implements View.OnClickListener
+class rfn
+  implements rpt
 {
-  public rfn(AboutActivity paramAboutActivity) {}
+  rfn(rfm paramrfm, String paramString) {}
   
-  public void onClick(View paramView)
+  public void a(@NonNull View paramView, int paramInt)
   {
-    paramView = new Intent(this.a, QQBrowserActivity.class);
-    paramView.putExtra("uin", this.a.app.getCurrentAccountUin());
-    this.a.startActivity(paramView.putExtra("url", AboutActivity.a(this.a)));
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8005745", "0X8005745", 0, 0, "", "", "", "");
+    if ((paramView == VideoFeedsPlayActivity.a(this.jdField_a_of_type_Rfm.a)) && (paramInt == 0))
+    {
+      VideoFeedsPlayActivity.a(this.jdField_a_of_type_Rfm.a).setVisibilityChangedListener(null);
+      this.jdField_a_of_type_Rfm.a(true, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rfn
  * JD-Core Version:    0.7.0.1
  */

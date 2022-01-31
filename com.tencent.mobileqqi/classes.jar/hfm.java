@@ -1,19 +1,16 @@
-import java.util.Comparator;
+import android.content.Context;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.CameraFrameLayout;
+import com.tencent.mobileqq.widget.QQToast;
 
-public final class hfm
-  implements Comparator
+public class hfm
+  implements Runnable
 {
-  public int compare(Object paramObject1, Object paramObject2)
+  public hfm(CameraFrameLayout paramCameraFrameLayout) {}
+  
+  public void run()
   {
-    long l1 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject1)[1]);
-    long l2 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject2)[1]);
-    if (l1 == l2) {
-      return 0;
-    }
-    if (l1 < l2) {
-      return 2;
-    }
-    return -1;
+    QQToast.a(this.a.getContext(), 0, this.a.getContext().getString(2131561697), 0).b(((BaseActivity)this.a.getContext()).d());
   }
 }
 

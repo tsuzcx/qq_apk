@@ -4,7 +4,7 @@ import android.os.Bundle;
 import mqq.app.Constants.Action;
 
 public abstract class TicketObserver
-  implements BusinessObserver, Constants.Action
+  implements Constants.Action, BusinessObserver
 {
   public void onChangeTicket(String paramString) {}
   

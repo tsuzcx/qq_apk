@@ -1,19 +1,12 @@
-import android.os.Bundle;
-import com.tencent.open.downloadnew.MyAppApi;
+import java.io.ByteArrayOutputStream;
 
-public final class algi
-  implements Runnable
+public abstract interface algi
 {
-  public algi(Bundle paramBundle) {}
-  
-  public void run()
-  {
-    MyAppApi.a().b(this.a);
-  }
+  public abstract void a(boolean paramBoolean, ByteArrayOutputStream paramByteArrayOutputStream);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     algi
  * JD-Core Version:    0.7.0.1
  */

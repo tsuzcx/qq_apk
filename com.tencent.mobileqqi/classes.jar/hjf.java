@@ -1,39 +1,39 @@
+import android.graphics.Bitmap;
 import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.widget.ADView;
-import com.tencent.mobileqq.widget.WorkSpaceView.OnScreenChangeListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.widget.PinnedDividerListView;
+import com.tencent.open.agent.FriendListOpenFrame;
+import com.tencent.open.agent.FriendListOpenFrame.ViewHolder;
 
 public class hjf
-  implements WorkSpaceView.OnScreenChangeListener
+  implements Runnable
 {
-  public hjf(ADView paramADView, LinearLayout paramLinearLayout) {}
+  public hjf(FriendListOpenFrame paramFriendListOpenFrame, String paramString, Bitmap paramBitmap) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    int j = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+    int j = this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame.a.getChildCount();
     int i = 0;
-    while (i < j)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i).setEnabled(false);
-      i += 1;
-    }
-    if (paramInt == -1) {
-      i = j - 1;
-    }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i).setEnabled(true);
-      return;
-      i = paramInt;
-      if (paramInt == j) {
-        i = 0;
+      if (i < j)
+      {
+        FriendListOpenFrame.ViewHolder localViewHolder = (FriendListOpenFrame.ViewHolder)this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame.a.getChildAt(i).getTag();
+        if ((localViewHolder != null) && (this.jdField_a_of_type_JavaLangString.equals(localViewHolder.jdField_b_of_type_JavaLangString))) {
+          localViewHolder.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+        }
       }
+      else
+      {
+        return;
+      }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hjf
  * JD-Core Version:    0.7.0.1
  */

@@ -9,14 +9,14 @@ import java.util.Map;
 public final class change_vkey_rsp
   extends JceStruct
 {
-  static Map cache_video_urls;
+  static Map<String, UrlRsp> cache_video_urls;
   public String msg = "";
   public int ret;
-  public Map video_urls;
+  public Map<String, UrlRsp> video_urls;
   
   public change_vkey_rsp() {}
   
-  public change_vkey_rsp(int paramInt, String paramString, Map paramMap)
+  public change_vkey_rsp(int paramInt, String paramString, Map<String, UrlRsp> paramMap)
   {
     this.ret = paramInt;
     this.msg = paramString;
@@ -49,7 +49,7 @@ public final class change_vkey_rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_VIDEO.change_vkey_rsp
  * JD-Core Version:    0.7.0.1
  */

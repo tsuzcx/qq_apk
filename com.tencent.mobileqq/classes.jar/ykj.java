@@ -1,23 +1,20 @@
-import com.tencent.mobileqq.DrawerPushItem;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import java.util.Comparator;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
 
-public class ykj
-  implements Comparator
+class ykj
+  implements zac<CertifiedAccountRead.StGetFeedDetailRsp>
 {
-  public ykj(ApolloManager paramApolloManager) {}
+  ykj(yki paramyki, ykg paramykg) {}
   
-  public int a(DrawerPushItem paramDrawerPushItem1, DrawerPushItem paramDrawerPushItem2)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp)
   {
-    if (paramDrawerPushItem2.priority == paramDrawerPushItem1.priority) {
-      return paramDrawerPushItem1.sub_priority - paramDrawerPushItem2.sub_priority;
+    if (this.jdField_a_of_type_Ykg != null) {
+      this.jdField_a_of_type_Ykg.a(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetFeedDetailRsp });
     }
-    return paramDrawerPushItem1.priority - paramDrawerPushItem2.priority;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ykj
  * JD-Core Version:    0.7.0.1
  */

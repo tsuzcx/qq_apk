@@ -9,12 +9,13 @@ public final class feed_host_info
   extends JceStruct
 {
   static yellow_info cache_OpuinYellowInfo = new yellow_info();
-  static ArrayList cache_vec_feedInfos = new ArrayList();
+  static ArrayList<feed_info> cache_vec_feedInfos = new ArrayList();
   public yellow_info OpuinYellowInfo;
   public String actiondesc = "";
   public String nickname = "";
+  public String strWords = "";
   public long uUin;
-  public ArrayList vec_feedInfos;
+  public ArrayList<feed_info> vec_feedInfos;
   
   static
   {
@@ -24,13 +25,14 @@ public final class feed_host_info
   
   public feed_host_info() {}
   
-  public feed_host_info(long paramLong, String paramString1, String paramString2, ArrayList paramArrayList, yellow_info paramyellow_info)
+  public feed_host_info(long paramLong, String paramString1, String paramString2, ArrayList<feed_info> paramArrayList, yellow_info paramyellow_info, String paramString3)
   {
     this.uUin = paramLong;
     this.nickname = paramString1;
     this.actiondesc = paramString2;
     this.vec_feedInfos = paramArrayList;
     this.OpuinYellowInfo = paramyellow_info;
+    this.strWords = paramString3;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -40,6 +42,7 @@ public final class feed_host_info
     this.actiondesc = paramJceInputStream.readString(2, false);
     this.vec_feedInfos = ((ArrayList)paramJceInputStream.read(cache_vec_feedInfos, 3, false));
     this.OpuinYellowInfo = ((yellow_info)paramJceInputStream.read(cache_OpuinYellowInfo, 4, false));
+    this.strWords = paramJceInputStream.readString(5, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -57,11 +60,14 @@ public final class feed_host_info
     if (this.OpuinYellowInfo != null) {
       paramJceOutputStream.write(this.OpuinYellowInfo, 4);
     }
+    if (this.strWords != null) {
+      paramJceOutputStream.write(this.strWords, 5);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_UNDEAL_COUNT.feed_host_info
  * JD-Core Version:    0.7.0.1
  */

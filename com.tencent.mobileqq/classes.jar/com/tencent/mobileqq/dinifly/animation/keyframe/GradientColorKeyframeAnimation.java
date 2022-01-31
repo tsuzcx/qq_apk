@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.dinifly.animation.keyframe;
 
-import com.tencent.mobileqq.dinifly.animation.Keyframe;
 import com.tencent.mobileqq.dinifly.model.content.GradientColor;
+import com.tencent.mobileqq.dinifly.value.Keyframe;
 import java.util.List;
 
 public class GradientColorKeyframeAnimation
@@ -9,16 +9,15 @@ public class GradientColorKeyframeAnimation
 {
   private final GradientColor gradientColor;
   
-  public GradientColorKeyframeAnimation(List<? extends Keyframe<GradientColor>> paramList)
+  public GradientColorKeyframeAnimation(List<Keyframe<GradientColor>> paramList)
   {
     super(paramList);
     paramList = (GradientColor)((Keyframe)paramList.get(0)).startValue;
     if (paramList == null) {}
-    for (;;)
+    for (int i = 0;; i = paramList.getSize())
     {
       this.gradientColor = new GradientColor(new float[i], new int[i]);
       return;
-      i = paramList.getSize();
     }
   }
   
@@ -30,7 +29,7 @@ public class GradientColorKeyframeAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.keyframe.GradientColorKeyframeAnimation
  * JD-Core Version:    0.7.0.1
  */

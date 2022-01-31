@@ -1,19 +1,30 @@
 package com.tencent.token.ui;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.token.global.h;
+import com.tencent.token.ui.base.RecommendView;
 
-final class n
-  extends BroadcastReceiver
+class n
+  implements Animation.AnimationListener
 {
-  n(AccountPageActivity paramAccountPageActivity) {}
+  n(m paramm) {}
   
-  public final void onReceive(Context paramContext, Intent paramIntent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramIntent.getAction().equals("com.tencent.token.account_opr_msg")) {
-      AccountPageActivity.access$000(this.a);
-    }
+    h.c("onAnimationEnd");
+    AccountPageActivity.access$3200(this.a.b).clearAnimation();
+    AccountPageActivity.access$3200(this.a.b).layout(this.a.a - (int)AccountPageActivity.access$3200(this.a.b).getViewWidth(), AccountPageActivity.access$3200(this.a.b).getTop(), this.a.a, AccountPageActivity.access$3200(this.a.b).getBottom());
+    h.c("w_screen---" + this.a.a + "\nw_screen - (int) mZzbRecomView.getViewWidth()---" + (this.a.a - (int)AccountPageActivity.access$3200(this.a.b).getViewWidth()));
+    AccountPageActivity.access$3200(this.a.b).setShowBink(true);
+    AccountPageActivity.access$3200(this.a.b).a();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    AccountPageActivity.access$3200(this.a.b).setVisibility(0);
   }
 }
 

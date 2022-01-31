@@ -1,43 +1,30 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.device.ble.QFindGattManager;
-import com.tencent.device.qfind.BluetoothLeService;
-import com.tencent.device.qfind.BluetoothLeService.LocalBinder;
-import com.tencent.device.qfind.PeerInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.pts.nativemodule.IPTSLoadFeeds;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class pwj
-  implements ServiceConnection
+  implements IPTSLoadFeeds
 {
-  public pwj(QFindGattManager paramQFindGattManager) {}
+  private final String jdField_a_of_type_JavaLangString = "PTSLoadFeedsModule";
+  private pvj jdField_a_of_type_Pvj = new pwk(this);
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public pwj()
   {
-    QFindGattManager.a(this.a, ((BluetoothLeService.LocalBinder)paramIBinder).a());
-    if ((!QFindGattManager.a(this.a).a()) && (QLog.isColorLevel())) {
-      QLog.e("DeviceBLE2", 2, "Unable to initialize Bluetooth");
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("DeviceBLE2", 2, "ServiceConnection onServiceConnected ");
-    }
-    if (!QFindGattManager.a(this.a).isEmpty())
-    {
-      this.a.a = ((PeerInfo)QFindGattManager.a(this.a).get(0));
-      QFindGattManager.a(this.a).remove(0);
-      QFindGattManager.a(this.a).a(this.a.a.a, this.a.a.b);
-    }
+    pvi.a().a(this.jdField_a_of_type_Pvj);
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void loadFeeds(long paramLong1, long paramLong2, int paramInt, long paramLong3)
   {
-    QFindGattManager.a(this.a, null);
+    oxd localoxd = (oxd)((QQAppInterface)ors.a()).getManager(163);
+    QLog.i("PTSLoadFeedsModule", 1, "[loadFeeds], channelID = " + paramLong1 + ", limitCount = " + paramInt);
+    if (localoxd != null) {
+      localoxd.a().a((int)paramLong1, paramInt, 9223372036854775807L, true, paramLong3);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pwj
  * JD-Core Version:    0.7.0.1
  */

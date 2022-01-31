@@ -1,38 +1,22 @@
-import android.app.Activity;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider.SwiftBrowserComponentContext;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderContext;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.mobileqq.DrawerPushItem;
+import java.util.Comparator;
 
-public class akob
-  implements SwiftBrowserComponentsProvider.SwiftBrowserComponentContext
+class akob
+  implements Comparator<DrawerPushItem>
 {
-  public akob(SwiftBrowserComponentsProvider paramSwiftBrowserComponentsProvider) {}
+  akob(aknx paramaknx) {}
   
-  public Activity a()
+  public int a(DrawerPushItem paramDrawerPushItem1, DrawerPushItem paramDrawerPushItem2)
   {
-    return this.a.a.a();
-  }
-  
-  public WebViewFragment a()
-  {
-    return this.a.a.a();
-  }
-  
-  public SwiftBrowserComponentsProvider a()
-  {
-    return this.a;
-  }
-  
-  public WebView a()
-  {
-    return this.a.a.a();
+    if (paramDrawerPushItem2.priority == paramDrawerPushItem1.priority) {
+      return paramDrawerPushItem1.sub_priority - paramDrawerPushItem2.sub_priority;
+    }
+    return paramDrawerPushItem1.priority - paramDrawerPushItem2.priority;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akob
  * JD-Core Version:    0.7.0.1
  */

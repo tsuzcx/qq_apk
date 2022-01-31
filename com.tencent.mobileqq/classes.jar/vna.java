@@ -1,25 +1,21 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.widget.ProgressPieDrawable;
-import com.tencent.mobileqq.widget.ProgressPieDrawable.OnProgressListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
+import com.tencent.widget.AbsListView;
 
 public class vna
-  implements ProgressPieDrawable.OnProgressListener
+  implements bhtv
 {
-  public vna(AIOGalleryScene paramAIOGalleryScene) {}
+  public vna(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
   
-  public void a(ProgressPieDrawable paramProgressPieDrawable)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AIOGalleryScene", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + paramProgressPieDrawable);
-    }
+    this.a.a = paramInt1;
   }
   
-  public void a(ProgressPieDrawable paramProgressPieDrawable, int paramInt1, int paramInt2) {}
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vna
  * JD-Core Version:    0.7.0.1
  */

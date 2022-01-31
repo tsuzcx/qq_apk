@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.richmedia.dc;
 
-import ahnz;
 import android.os.Handler;
 import android.os.HandlerThread;
 
@@ -20,17 +19,17 @@ public class DataReport
     return jdField_a_of_type_ComTencentMobileqqRichmediaDcDataReport;
   }
   
-  public void a(ahnz paramahnz)
+  public void a(DataReport.ReportTask paramReportTask)
   {
-    if (paramahnz == null) {
+    if (paramReportTask == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(paramahnz);
+    this.jdField_a_of_type_AndroidOsHandler.post(paramReportTask);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.dc.DataReport
  * JD-Core Version:    0.7.0.1
  */

@@ -1,71 +1,52 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.SendMultiPictureHelper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
+import com.tencent.biz.qqcircle.widgets.message.item.QCircleMessageReplyItemView;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import java.util.List;
 
 public class trk
-  extends TransProcessorHandler
+  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  public trk(SendMultiPictureHelper paramSendMultiPictureHelper) {}
+  private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
+  private List<trx> jdField_a_of_type_JavaUtilList;
+  private ugy jdField_a_of_type_Ugy;
   
-  public void handleMessage(Message paramMessage)
+  public void a(List<trx> paramList)
   {
-    int i = paramMessage.what;
-    paramMessage = (FileMsg)paramMessage.obj;
-    if (paramMessage == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SendMultiPictureHelper", 2, "file is null");
-      }
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public void a(ugy paramugy)
+  {
+    this.jdField_a_of_type_Ugy = paramugy;
+  }
+  
+  public int getItemCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
-    do
-    {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("SendMultiPictureHelper", 2, "transferListener status: " + i);
-        }
-        i = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramMessage.p, paramMessage.i, paramMessage.b);
-      } while (this.a.jdField_d_of_type_Boolean);
-      if (this.a.jdField_b_of_type_Boolean)
-      {
-        if (paramMessage.d == 1005)
-        {
-          this.a.jdField_c_of_type_Boolean = true;
-          return;
-        }
-        if (paramMessage.d == 1003)
-        {
-          this.a.a();
-          return;
-        }
-        SendMultiPictureHelper.a(this.a, this.a.jdField_c_of_type_Int, this.a.jdField_a_of_type_JavaLangString, paramMessage.b);
-        return;
-      }
-      if (paramMessage.d == 1003)
-      {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(String.format(this.a.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(100) }));
-        }
-        this.a.a();
-        return;
-      }
-      if (paramMessage.d == 1005)
-      {
-        this.a.a();
-        return;
-      }
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(String.format(this.a.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(i) }));
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      ((trl)paramViewHolder).a(this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt, this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo);
+    }
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    paramViewGroup = new QCircleMessageReplyItemView(paramViewGroup.getContext());
+    paramViewGroup.setReplyItemListener(this.jdField_a_of_type_Ugy);
+    return new trl(paramViewGroup);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     trk
  * JD-Core Version:    0.7.0.1
  */

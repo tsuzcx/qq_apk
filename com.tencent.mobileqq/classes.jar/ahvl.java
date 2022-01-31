@@ -1,26 +1,21 @@
-import com.tencent.mobileqq.search.model.GroupSearchModelMessage;
-import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
 
 public class ahvl
-  extends GroupSearchEngine.SearchEngineEntity
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ahvl(GroupSearchEngine paramGroupSearchEngine, ISearchEngine paramISearchEngine, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramISearchEngine, paramString, paramInt);
-  }
+  public ahvl(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
   
-  public ISearchResultGroupModel a(List paramList, String paramString)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return new GroupSearchModelMessage(paramList, paramString);
+    this.a.h = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahvl
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class qqshop_act$SQQSHPActShowInfo
-  extends MessageMicro
+  extends MessageMicro<SQQSHPActShowInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 66 }, new String[] { "title", "logo", "subtext", "btn_text", "btn_url", "detail_url", "gift_text", "act_text" }, new Object[] { "", "", "", "", "", "", "", "" }, SQQSHPActShowInfo.class);
   public final PBStringField act_text = PBField.initString("");
@@ -20,7 +20,7 @@ public final class qqshop_act$SQQSHPActShowInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.qqshop.qqshop_act.SQQSHPActShowInfo
  * JD-Core Version:    0.7.0.1
  */

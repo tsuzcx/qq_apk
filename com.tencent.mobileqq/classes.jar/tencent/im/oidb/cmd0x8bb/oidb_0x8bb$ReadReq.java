@@ -6,15 +6,15 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class oidb_0x8bb$ReadReq
-  extends MessageMicro
+  extends MessageMicro<ReadReq>
 {
   public static final int RPT_MSG_GROUP_CONCERNED_FIELD_NUMBER = 1;
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "rpt_msg_group_concerned" }, new Object[] { null }, ReadReq.class);
-  public final PBRepeatMessageField rpt_msg_group_concerned = PBField.initRepeatMessage(oidb_0x8bb.GroupConcernedInfo.class);
+  public final PBRepeatMessageField<oidb_0x8bb.GroupConcernedInfo> rpt_msg_group_concerned = PBField.initRepeatMessage(oidb_0x8bb.GroupConcernedInfo.class);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8bb.oidb_0x8bb.ReadReq
  * JD-Core Version:    0.7.0.1
  */

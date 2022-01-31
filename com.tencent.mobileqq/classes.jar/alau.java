@@ -1,35 +1,18 @@
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.AuthorityLoginView;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class alau
-  implements Runnable
+  implements aljj
 {
-  alau(alat paramalat, String paramString) {}
+  alau(alas paramalas, boolean paramBoolean, int paramInt, int[] paramArrayOfInt) {}
   
-  public void run()
+  public void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    if ((AuthorityLoginView.a(this.jdField_a_of_type_Alat.a.a) instanceof AuthorityActivity)) {
-      ((AuthorityActivity)AuthorityLoginView.a(this.jdField_a_of_type_Alat.a.a)).a(this.jdField_a_of_type_JavaLangString, false);
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Alat.a.a.a != null)
-      {
-        this.jdField_a_of_type_Alat.a.a.a.dismiss();
-        this.jdField_a_of_type_Alat.a.a.a = null;
-      }
-      return;
-      if ((AuthorityLoginView.a(this.jdField_a_of_type_Alat.a.a) instanceof QuickLoginAuthorityActivity)) {
-        ((QuickLoginAuthorityActivity)AuthorityLoginView.a(this.jdField_a_of_type_Alat.a.a)).a(this.jdField_a_of_type_JavaLangString, false);
-      }
-    }
+    alas.a(this.jdField_a_of_type_Alas, this.jdField_a_of_type_Boolean, paramQQAppInterface, paramString1, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alau
  * JD-Core Version:    0.7.0.1
  */

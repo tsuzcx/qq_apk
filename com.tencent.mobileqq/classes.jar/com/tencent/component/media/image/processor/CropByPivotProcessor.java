@@ -9,8 +9,9 @@ public class CropByPivotProcessor
   extends ImageProcessor
 {
   public static float GOLDEN_CUDGEL_RATIO = 1.78F;
-  public float mPivotXRate = 0.0F;
-  public float mPivotYRate = 0.0F;
+  private static final float PIVOT_DEFAULT_VALUE = 0.0F;
+  protected float mPivotXRate = 0.0F;
+  protected float mPivotYRate = 0.0F;
   
   public CropByPivotProcessor() {}
   
@@ -39,7 +40,7 @@ public class CropByPivotProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.image.processor.CropByPivotProcessor
  * JD-Core Version:    0.7.0.1
  */

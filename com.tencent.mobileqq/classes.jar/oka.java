@@ -1,27 +1,27 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class oka
-  implements Runnable
+class oka
+  implements ViewBase.OnClickListener
 {
-  public oka(DoodleTextureView paramDoodleTextureView) {}
+  oka(ojn paramojn) {}
   
-  public void run()
+  public void onClick(ViewBase paramViewBase)
   {
-    PersonalityOperator localPersonalityOperator = (PersonalityOperator)this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.a(102);
-    if (localPersonalityOperator != null)
+    if (this.a.jdField_a_of_type_Omt.a != null)
     {
-      localPersonalityOperator.a();
-      localPersonalityOperator.a(this.a.jdField_a_of_type_Int, this.a.b);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.h();
-      this.a.a();
+      ors.a(this.a.jdField_a_of_type_Omg.a().getContext(), this.a.jdField_a_of_type_Omt.a.activityJumpUrl);
+      if (this.a.jdField_a_of_type_Omg.a() != null) {
+        this.a.jdField_a_of_type_Omg.a().e(this.a.jdField_a_of_type_Omt);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oka
  * JD-Core Version:    0.7.0.1
  */

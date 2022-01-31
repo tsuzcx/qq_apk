@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
-import cooperation.weiyun.sdk.download.WyDownloader;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 
-public class anhx
-  implements ThreadPool.Job
+public abstract interface anhx
 {
-  public anhx(WyDownloader paramWyDownloader, HttpNetReq paramHttpNetReq) {}
+  public abstract anga a();
   
-  public Void a(ThreadPool.JobContext paramJobContext)
-  {
-    WyDownloader.a(this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader).a(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
-    return null;
-  }
+  public abstract ange a();
+  
+  public abstract awby a();
+  
+  public abstract ARCommonConfigInfo a();
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

@@ -1,28 +1,19 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import mqq.os.MqqHandler;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudRead.StGetCommentListRsp;
 
-public class tum
-  extends MqqHandler
+class tum
+  implements zac<FeedCloudRead.StGetCommentListRsp>
 {
-  public tum(SubLoginActivity paramSubLoginActivity) {}
+  tum(tuk paramtuk, FeedCloudMeta.StFeed paramStFeed) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetCommentListRsp paramStGetCommentListRsp)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1982: 
-      this.a.finish();
-      return;
-    }
-    this.a.c();
+    tuk.a(this.jdField_a_of_type_Tuk, paramBoolean, paramLong, paramString, paramStGetCommentListRsp, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, false, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tum
  * JD-Core Version:    0.7.0.1
  */

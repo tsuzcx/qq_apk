@@ -1,22 +1,25 @@
-import com.tencent.open.appcommon.js.BaseInterface;
+import android.text.TextUtils;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.export.js.VipDownloadInterface;
 import com.tencent.smtt.sdk.WebView;
-import java.util.List;
-import java.util.TimerTask;
 
 public class hos
-  extends TimerTask
+  implements Runnable
 {
-  public hos(BaseInterface paramBaseInterface, WebView paramWebView, long paramLong) {}
+  public hos(VipDownloadInterface paramVipDownloadInterface, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseInterface.optLef <= 0)
+    try
     {
-      cancel();
-      this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseInterface.firstIn = true;
+      if ((this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_ComTencentSmttSdkWebView != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+        this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
+      }
+      return;
     }
-    if (this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseInterface.batchCallbackQueue.size() > 0) {
-      this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseInterface.batchCallback(this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_Long);
+    catch (Exception localException)
+    {
+      LogUtility.a(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "webview loadUrl>>> ", localException);
     }
   }
 }

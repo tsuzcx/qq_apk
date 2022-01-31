@@ -1,18 +1,12 @@
-import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
+import android.view.View;
 
-class oly
-  implements Runnable
+public abstract interface oly
 {
-  oly(olx paramolx) {}
-  
-  public void run()
-  {
-    EditVideoTagPresenter.a(EditVideoTagPresenter.a(this.a.a), EditVideoTagPresenter.a(this.a.a));
-  }
+  public abstract void a(View paramView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oly
  * JD-Core Version:    0.7.0.1
  */

@@ -1,60 +1,24 @@
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-import com.tencent.mobileqq.flashchat.FlashChatPanel;
-import com.tencent.mobileqq.flashchat.FlashChatTextEffectView;
-import com.tencent.mobileqq.widget.QQViewPager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class adjw
-  extends PagerAdapter
+  implements DialogInterface.OnClickListener
 {
-  public adjw(FlashChatPanel paramFlashChatPanel) {}
+  public adjw(NotificationActivity paramNotificationActivity) {}
   
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((QQViewPager)paramViewGroup).removeView((View)paramObject);
-  }
-  
-  public int getCount()
-  {
-    return 2;
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    FlashChatTextEffectView localFlashChatTextEffectView;
-    if (paramInt == 0) {
-      localFlashChatTextEffectView = this.a.jdField_a_of_type_ArrayOfComTencentMobileqqFlashchatFlashChatTextEffectView[0];
-    }
-    for (;;)
-    {
-      if (localFlashChatTextEffectView != null)
-      {
-        ViewParent localViewParent = this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getParent();
-        if (localViewParent != null) {
-          ((ViewGroup)localViewParent).removeView(localFlashChatTextEffectView);
-        }
-        paramViewGroup.addView(localFlashChatTextEffectView);
-        localFlashChatTextEffectView.requestLayout();
-      }
-      return localFlashChatTextEffectView;
-      if (paramInt == 1) {
-        localFlashChatTextEffectView = this.a.jdField_a_of_type_ArrayOfComTencentMobileqqFlashchatFlashChatTextEffectView[1];
-      } else {
-        localFlashChatTextEffectView = null;
-      }
-    }
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
+    SettingCloneUtil.writeValue(this.a.app.getApp(), null, "security_scan_key", "qqsetting_security_scan_key", true);
+    this.a.app.y();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adjw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class actr
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
-  public actr(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
+  public actr(DialogActivity paramDialogActivity) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    QfileRecentPicFileTabView.a(this.a);
-    this.a.e();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     actr
  * JD-Core Version:    0.7.0.1
  */

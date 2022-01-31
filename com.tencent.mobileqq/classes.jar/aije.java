@@ -1,21 +1,41 @@
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout28;
-import com.tencent.mobileqq.troop.robot.RobotResourcesManager;
-import com.tencent.mobileqq.troop.robot.RobotResourcesManager.LoadResourceCallback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
-public class aije
-  implements RobotResourcesManager.LoadResourceCallback
+class aije
+  implements Comparator<RecentBaseData>
 {
-  public aije(StructMsgItemLayout28 paramStructMsgItemLayout28, String paramString1, String paramString2, aijf paramaijf) {}
+  aije(aijd paramaijd) {}
   
-  public void a(int paramInt)
+  public int a(RecentBaseData paramRecentBaseData1, RecentBaseData paramRecentBaseData2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.robot.StructMsg", 2, "errorCode = " + paramInt);
+    int j = 0;
+    int i = j;
+    long l1;
+    long l2;
+    if ((paramRecentBaseData1 instanceof RecentUserBaseData))
+    {
+      i = j;
+      if ((paramRecentBaseData2 instanceof RecentUserBaseData))
+      {
+        paramRecentBaseData1 = (RecentUserBaseData)paramRecentBaseData1;
+        paramRecentBaseData2 = (RecentUserBaseData)paramRecentBaseData2;
+        l1 = Math.max(paramRecentBaseData1.mUser.lastmsgtime, paramRecentBaseData1.mUser.lastmsgdrafttime);
+        l2 = Math.max(paramRecentBaseData2.mUser.lastmsgtime, paramRecentBaseData2.mUser.lastmsgdrafttime);
+        if (l1 <= l2) {
+          break label83;
+        }
+        i = -1;
+      }
     }
-    if (paramInt == 0) {
-      RobotResourcesManager.a().a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Aijf.b);
-    }
+    label83:
+    do
+    {
+      return i;
+      i = j;
+    } while (l1 >= l2);
+    return 1;
   }
 }
 

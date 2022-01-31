@@ -1,106 +1,203 @@
-import android.view.LayoutInflater;
-import android.view.View;
+import android.app.Activity;
+import android.content.Intent;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.troop.file.MoveFileActivity;
-import com.tencent.mobileqq.troop.data.TroopFileInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager.OpenRedPacketResultStruct;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import java.util.ArrayList;
+import org.jetbrains.annotations.NotNull;
 
 public class oyl
-  extends BaseAdapter
-  implements AbsListView.OnScrollListener
+  extends oyf
+  implements qgu
 {
   private int jdField_a_of_type_Int;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  @Nullable
+  private String jdField_a_of_type_JavaLangString;
+  private qgh jdField_a_of_type_Qgh;
+  private qhb jdField_a_of_type_Qhb = new qhb(new qgy());
   private int b;
+  private int c;
   
-  private oyl(MoveFileActivity paramMoveFileActivity) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public oyl(@NotNull oyg paramoyg, Activity paramActivity)
   {
-    if (paramInt == 0)
+    super(paramoyg, "RIJRedPacketPopupStep");
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
+  
+  private boolean a(Activity paramActivity)
+  {
+    if ((RIJRedPacketManager.a().a()) && (!(paramActivity instanceof ReadInJoyNewFeedsActivity)))
     {
-      QLog.e("IphoneTitleBarActivity", 4, "onScrollStateChanged=SCROLL_STATE_IDLE");
-      if (this.jdField_a_of_type_Int == this.b - 2)
-      {
-        if (!MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity)) {
-          break label44;
-        }
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a(true);
-      }
+      this.jdField_a_of_type_Qhb.a(this);
+      this.jdField_a_of_type_Qhb.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c);
+      RIJRedPacketManager.a().a();
+      return true;
     }
-    label44:
+    return false;
+  }
+  
+  private boolean b(Activity paramActivity)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    Intent localIntent;
+    String str;
+    if (!(paramActivity instanceof ReadInJoyNewFeedsActivity))
+    {
+      localIntent = paramActivity.getIntent();
+      int i = localIntent.getIntExtra("launch_from", 0);
+      str = localIntent.getStringExtra("redpackid");
+      if (i != 17) {
+        break label218;
+      }
+      this.jdField_a_of_type_Qhb.a(this);
+      i = localIntent.getIntExtra("share_source_from_content", 5);
+      int j = localIntent.getIntExtra("plat_source", 0);
+      RIJRedPacketManager.OpenRedPacketResultStruct localOpenRedPacketResultStruct = (RIJRedPacketManager.OpenRedPacketResultStruct)localIntent.getParcelableExtra("key_open_red_packet_result");
+      if (localOpenRedPacketResultStruct != null)
+      {
+        paramActivity = null;
+        if (localOpenRedPacketResultStruct.jdField_a_of_type_Boolean)
+        {
+          paramActivity = new qfz();
+          paramActivity.c = localOpenRedPacketResultStruct.d;
+          paramActivity.b = localOpenRedPacketResultStruct.c;
+          paramActivity.jdField_a_of_type_JavaLangString = localOpenRedPacketResultStruct.b;
+        }
+        this.jdField_a_of_type_Qhb.a(localOpenRedPacketResultStruct.jdField_a_of_type_Long, localOpenRedPacketResultStruct.jdField_a_of_type_JavaLangString, paramActivity, localOpenRedPacketResultStruct.e, 2, j, 2);
+      }
+      QLog.i("RIJRedPacketPopupStep", 1, "launch from red packet tips click. share source: " + i + "\n packetId: " + str + "\n");
+      localIntent.removeExtra("launch_from");
+      localIntent.removeExtra("redpackid");
+      bool1 = true;
+    }
+    label218:
     do
     {
-      return;
-      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a(false);
-    } while (TroopFileUtils.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app, this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity, this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a) == 0);
-    this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a();
+      return bool1;
+      bool1 = bool2;
+    } while (TextUtils.isEmpty(str));
+    this.jdField_a_of_type_Qhb.a(this);
+    this.jdField_a_of_type_Qhb.b(str, this.jdField_a_of_type_Int, this.b, this.c);
+    localIntent.removeExtra("redpackid");
+    return true;
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.b = paramInt3;
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
-  }
-  
-  public int getCount()
-  {
-    return MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null)
+    QLog.d("RIJRedPacketPopupStep", 1, "showErrorRedPacketDialog");
+    if ((a()) && (b()))
     {
-      paramViewGroup = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getLayoutInflater().inflate(2130969894, MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity), false);
-      paramView = new oym(null);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131368389));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131368388));
-      paramView.b = ((TextView)paramViewGroup.findViewById(2131368390));
-      paramViewGroup.setTag(paramView);
+      new qgm((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView(), BaseApplicationImpl.getContext().getString(2131718923), BaseApplicationImpl.getContext().getString(2131719109), paramInt1, paramInt2, this.jdField_a_of_type_JavaLangString).a(false);
+      a(true);
     }
-    paramView = (oym)paramViewGroup.getTag();
-    TroopFileInfo localTroopFileInfo = (TroopFileInfo)MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).get(paramInt);
-    if (localTroopFileInfo != null)
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, @Nullable String paramString)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(long paramLong, String paramString1, @Nullable qfz paramqfz, String paramString2, int paramInt1, int paramInt2, int paramInt3)
+  {
+    QLog.d("RIJRedPacketPopupStep", 1, "showOpenRedPacketDialog, rowkey = " + this.jdField_a_of_type_JavaLangString);
+    ViewGroup localViewGroup;
+    if ((a()) && (b()))
     {
-      if (!MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity, paramInt)) {
-        break label162;
+      localViewGroup = (ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView();
+      if (paramqfz != null) {
+        break label97;
       }
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopFileInfo.c);
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841323);
     }
-    while (paramInt == MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity))
+    label97:
+    for (paramString1 = new qgk(localViewGroup, paramLong, paramString2, paramString1, paramInt1, paramInt2, paramInt3, this.jdField_a_of_type_JavaLangString);; paramString1 = new qgo(localViewGroup, paramLong, paramString1, paramqfz, paramString2, paramInt1, paramInt2, paramInt3, this.jdField_a_of_type_JavaLangString))
     {
-      paramView.b.setVisibility(0);
-      return paramViewGroup;
-      label162:
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText("移出文件夹");
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841325);
+      paramString1.a(false);
+      a(true);
+      return;
     }
-    paramView.b.setVisibility(4);
-    return paramViewGroup;
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3)
+  {
+    QLog.d("RIJRedPacketPopupStep", 1, "showErrorRedPacketDialog, wording = " + paramString1);
+    if ((a()) && (b()))
+    {
+      new qgm((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView(), paramString1, paramString2, paramInt1, paramInt2, this.jdField_a_of_type_JavaLangString).a(false);
+      a(true);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3)
+  {
+    QLog.d("RIJRedPacketPopupStep", 1, "showRedPacketDialog, rowkey = " + paramString3);
+    if ((a()) && (b()) && ((this.jdField_a_of_type_Qgh == null) || (!this.jdField_a_of_type_Qgh.a())))
+    {
+      this.jdField_a_of_type_Qgh = new qgh((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView(), paramString1, paramString2, this.jdField_a_of_type_Qhb, paramInt1, paramInt2, paramInt3, paramString3);
+      this.jdField_a_of_type_Qgh.a();
+    }
+    a(true);
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    QLog.d("RIJRedPacketPopupStep", 1, "haveWallet = " + paramBoolean1 + " hasOpen = " + paramBoolean2);
+  }
+  
+  public void f()
+  {
+    super.f();
+    this.jdField_a_of_type_Qhb.a();
+    if (this.jdField_a_of_type_Qgh != null)
+    {
+      this.jdField_a_of_type_Qgh.b();
+      this.jdField_a_of_type_Qgh = null;
+    }
+  }
+  
+  protected void g()
+  {
+    QLog.d("RIJRedPacketPopupStep", 1, "doStepFromOnResume");
+    if ((a()) && (b()) && (this.jdField_a_of_type_AndroidAppActivity != null) && (!b(this.jdField_a_of_type_AndroidAppActivity))) {
+      a(false);
+    }
+  }
+  
+  protected void h()
+  {
+    QLog.d("RIJRedPacketPopupStep", 1, "doStepFromOnShowSelf");
+    if ((b()) && (this.jdField_a_of_type_AndroidAppActivity != null) && ((!a(this.jdField_a_of_type_AndroidAppActivity)) || (!b(this.jdField_a_of_type_AndroidAppActivity)))) {
+      a(false);
+    }
+  }
+  
+  public void i()
+  {
+    QLog.d("RIJRedPacketPopupStep", 1, "dismissRedPacketDialog");
+    if (this.jdField_a_of_type_Qgh != null) {
+      this.jdField_a_of_type_Qgh.b();
+    }
+  }
+  
+  public void j()
+  {
+    QLog.d("RIJRedPacketPopupStep", 1, "showOtherPopupView");
+    a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oyl
  * JD-Core Version:    0.7.0.1
  */

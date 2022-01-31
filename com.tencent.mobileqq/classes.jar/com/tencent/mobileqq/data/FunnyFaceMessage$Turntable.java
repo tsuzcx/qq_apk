@@ -13,7 +13,7 @@ public class FunnyFaceMessage$Turntable
 {
   public String hitNickName;
   public String hitUin;
-  public List uinList = new ArrayList();
+  public List<String> uinList = new ArrayList();
   
   public FunnyFaceMessage$Turntable() {}
   
@@ -61,7 +61,7 @@ public class FunnyFaceMessage$Turntable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.FunnyFaceMessage.Turntable
  * JD-Core Version:    0.7.0.1
  */

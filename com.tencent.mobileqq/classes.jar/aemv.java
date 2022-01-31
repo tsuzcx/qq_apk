@@ -1,19 +1,27 @@
-import com.tencent.mobileqq.nearby.NearbyProxy;
-import com.tencent.mobileqq.nearby.ipc.NearbyProxyObserver;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
 
 public class aemv
-  implements Runnable
+  extends ClickableSpan
 {
-  public aemv(NearbyProxy paramNearbyProxy, NearbyProxyObserver paramNearbyProxyObserver, int paramInt, Object[] paramArrayOfObject) {}
+  public aemv(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProxyObserver.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
+    this.a.b();
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.rgb(0, 165, 224));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aemv
  * JD-Core Version:    0.7.0.1
  */

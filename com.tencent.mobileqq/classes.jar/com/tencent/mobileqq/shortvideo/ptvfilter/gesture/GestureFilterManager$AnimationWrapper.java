@@ -2,102 +2,115 @@ package com.tencent.mobileqq.shortvideo.ptvfilter.gesture;
 
 import android.graphics.PointF;
 import com.tencent.mobileqq.shortvideo.gesture.GestureKeyInfo;
-import com.tencent.ttpic.model.StickerItem;
-import java.util.List;
-import java.util.Map;
+import com.tencent.sveffects.SLog;
+import com.tencent.ttpic.openapi.PTDetectInfo;
+import com.tencent.ttpic.openapi.model.StickerItem;
 
 public class GestureFilterManager$AnimationWrapper
 {
-  private long jdField_a_of_type_Long = 0L;
-  public GestureKeyInfo a;
-  public NonFit2DFilter a;
-  private boolean jdField_a_of_type_Boolean = false;
+  public static final int ANIMATION_PLAY = 1;
+  public static final int ANIMATION_STOP = 2;
+  private long deadlineTimeStamp = 0L;
+  public NonFit2DFilter mFilter;
+  public GestureKeyInfo mGestureInfo;
+  private boolean mHasCallApplyGLSLFilter = false;
   
   public GestureFilterManager$AnimationWrapper(StickerItem paramStickerItem, String paramString, GestureKeyInfo paramGestureKeyInfo, PointF paramPointF, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureNonFit2DFilter = new NonFit2DFilter(paramStickerItem, paramString);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureKeyInfo = paramGestureKeyInfo;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureNonFit2DFilter.a(paramPointF);
+    this.mFilter = new NonFit2DFilter(paramStickerItem, paramString);
+    this.mGestureInfo = paramGestureKeyInfo;
+    this.mFilter.updateFilterPosition(paramPointF);
   }
   
-  public static boolean a(GestureKeyInfo paramGestureKeyInfo1, GestureKeyInfo paramGestureKeyInfo2, float paramFloat)
+  public static boolean compareGestureInfo(GestureKeyInfo paramGestureKeyInfo1, GestureKeyInfo paramGestureKeyInfo2, float paramFloat)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (Math.abs(paramGestureKeyInfo1.a[0].x - paramGestureKeyInfo2.a[0].x) <= paramFloat)
+    if (Math.abs(paramGestureKeyInfo1.hotPoints[0].x - paramGestureKeyInfo2.hotPoints[0].x) <= paramFloat)
     {
       bool1 = bool2;
-      if (Math.abs(paramGestureKeyInfo1.a[0].y - paramGestureKeyInfo2.a[0].y) <= paramFloat) {
+      if (Math.abs(paramGestureKeyInfo1.hotPoints[0].y - paramGestureKeyInfo2.hotPoints[0].y) <= paramFloat) {
         bool1 = true;
       }
     }
     return bool1;
   }
   
-  public int a(long paramLong)
+  public void clearGLSLSelf()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureNonFit2DFilter.a(paramLong)) {
+    if (SLog.isEnable()) {
+      SLog.d("TimGestureLog", "mFilter.clearGLSLSelf");
+    }
+    this.mFilter.clearGLSLSelf();
+  }
+  
+  public void destroyAudio()
+  {
+    this.mFilter.destroyAudio();
+  }
+  
+  public int getAnimationStatus(long paramLong)
+  {
+    if (this.mFilter.isAnimationPlay(paramLong)) {
       return 1;
     }
     return 2;
   }
   
-  public long a()
+  public long getDeadLineTimeStamp()
   {
-    return this.jdField_a_of_type_Long;
+    return this.deadlineTimeStamp;
   }
   
-  public void a()
+  public void renderTexture(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureNonFit2DFilter.a();
-  }
-  
-  public void a(int paramInt1, int paramInt2, double paramDouble)
-  {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.mFilter.isHasCleared())
     {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureNonFit2DFilter.ApplyGLSLFilter();
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureNonFit2DFilter.setRenderMode(1);
-      this.jdField_a_of_type_Boolean = true;
+      this.mFilter.OnDrawFrameGLSL();
+      this.mFilter.renderTexture(paramInt1, paramInt2, paramInt3);
     }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureNonFit2DFilter.updateVideoSize(paramInt1, paramInt2, paramDouble);
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public void resetAnimationEndStatus()
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureNonFit2DFilter.OnDrawFrameGLSL();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureNonFit2DFilter.renderTexture(paramInt1, paramInt2, paramInt3);
+    this.mFilter.resetAnimationEndStatus();
   }
   
-  public void a(long paramLong)
+  public void setRenderMode(int paramInt)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.mFilter.setRenderMode(paramInt);
   }
   
-  public void a(GestureKeyInfo paramGestureKeyInfo, PointF paramPointF)
+  public void updateDeadLineTimeStamp(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureKeyInfo = paramGestureKeyInfo;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureNonFit2DFilter.a(paramPointF);
+    this.deadlineTimeStamp = paramLong;
   }
   
-  public void a(List paramList, float[] paramArrayOfFloat, Map paramMap, float paramFloat, long paramLong)
+  public void updateFilterPostion(GestureKeyInfo paramGestureKeyInfo, PointF paramPointF)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureNonFit2DFilter.updatePreview(null, null, paramMap, paramFloat, paramLong);
+    this.mGestureInfo = paramGestureKeyInfo;
+    this.mFilter.updateFilterPosition(paramPointF);
   }
   
-  public void b()
+  public void updatePreview(PTDetectInfo paramPTDetectInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureNonFit2DFilter.c();
+    this.mFilter.updatePreview(paramPTDetectInfo);
   }
   
-  public void c()
+  public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureNonFit2DFilter.clearGLSLSelf();
+    if (!this.mHasCallApplyGLSLFilter)
+    {
+      this.mFilter.ApplyGLSLFilter();
+      this.mFilter.setRenderMode(1);
+      this.mHasCallApplyGLSLFilter = true;
+    }
+    this.mFilter.updateVideoSize(paramInt1, paramInt2, paramDouble);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ptvfilter.gesture.GestureFilterManager.AnimationWrapper
  * JD-Core Version:    0.7.0.1
  */

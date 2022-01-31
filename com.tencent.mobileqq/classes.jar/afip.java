@@ -1,24 +1,21 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
 
-public class afip
-  implements Runnable
+class afip
+  implements amkd
 {
-  public afip(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel, String paramString) {}
+  afip(afin paramafin) {}
   
-  public void run()
+  public void a(int paramInt, zib paramzib) {}
+  
+  public void a(long paramLong)
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.a.app, "CliOper", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
-    if (QLog.isDevelopLevel()) {
-      QLog.i("Q.nearby_people_card.", 4, "reportClickEvent " + this.jdField_a_of_type_JavaLangString);
-    }
+    afin.a("onLowMemory");
+    afin.a().sendMessage(afin.a().obtainMessage(5));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afip
  * JD-Core Version:    0.7.0.1
  */

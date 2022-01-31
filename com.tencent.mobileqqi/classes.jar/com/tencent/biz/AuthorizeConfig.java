@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.text.TextUtils;
-import bmm;
+import bgi;
 import com.tencent.biz.common.util.Util;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -743,7 +743,7 @@ public class AuthorizeConfig
         break;
       }
       jdField_b_of_type_Int = 1;
-      new Thread(new bmm(this)).start();
+      new Thread(new bgi(this)).start();
       return;
     }
   }

@@ -1,13 +1,25 @@
-import com.tencent.mobileqq.leba.LebaFeedsVideoPlayController;
+import android.content.Context;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class adyv
-  implements Runnable
+  implements View.OnClickListener
 {
-  public adyv(LebaFeedsVideoPlayController paramLebaFeedsVideoPlayController) {}
+  public adyv(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a();
+    this.a.b(0);
+    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", 2131230720);
+    if (this.a.a().booleanValue())
+    {
+      this.a.b();
+      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230720));
+    }
   }
 }
 

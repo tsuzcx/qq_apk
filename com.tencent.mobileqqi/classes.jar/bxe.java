@@ -1,20 +1,15 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivity;
 
 public class bxe
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public bxe(LiteTransferWrapper paramLiteTransferWrapper) {}
+  public bxe(ChatActivity paramChatActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (LiteTransferWrapper.access$300(this.a) != 0L)
-    {
-      this.a.destryOperator(LiteTransferWrapper.access$300(this.a));
-      LiteTransferWrapper.access$302(this.a, 0L);
-    }
-    LiteTransferWrapper.access$402(this.a, null);
-    LiteTransferWrapper.access$602(this.a, null);
-    this.a.releaseGlobalFuncCallback();
+    paramDialogInterface.dismiss();
   }
 }
 

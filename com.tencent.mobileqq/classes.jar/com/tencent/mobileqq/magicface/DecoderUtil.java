@@ -1,10 +1,13 @@
 package com.tencent.mobileqq.magicface;
 
+import android.content.pm.ApplicationInfo;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
 public class DecoderUtil
 {
   public static boolean IS_LOAD_SUCESS;
+  final String nativeLibraryDir = BaseApplicationImpl.getApplication().getApplicationInfo().nativeLibraryDir;
   
   static
   {
@@ -24,9 +27,19 @@ public class DecoderUtil
     }
   }
   
-  public native int createAlphaDecoder();
+  public int createAlphaDecoder()
+  {
+    return createAlphaDecoder(this.nativeLibraryDir);
+  }
   
-  public native int createVideoDecoder();
+  public native int createAlphaDecoder(String paramString);
+  
+  public int createVideoDecoder()
+  {
+    return createVideoDecoder(this.nativeLibraryDir);
+  }
+  
+  public native int createVideoDecoder(String paramString);
   
   public native int decodeAlphaDecoder(byte[] paramArrayOfByte1, int paramInt, byte[] paramArrayOfByte2);
   
@@ -58,7 +71,7 @@ public class DecoderUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.DecoderUtil
  * JD-Core Version:    0.7.0.1
  */

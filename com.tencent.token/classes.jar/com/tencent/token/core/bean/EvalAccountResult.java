@@ -1,6 +1,6 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.global.e;
+import com.tencent.token.global.h;
 import java.io.Serializable;
 import java.util.ArrayList;
 import org.json.JSONArray;
@@ -11,8 +11,8 @@ public class EvalAccountResult
 {
   public static final int RECOMMD_ITEM_ID_MY_FOOT = 1;
   public static final int RECOMMD_ITEM_ID_MY_MB = 4;
-  public static final int RECOMMD_ITEM_ID_MY_PROT = 3;
   public static final int RECOMMD_ITEM_ID_MY_PWD = 2;
+  public static final int RECOMMD_ITEM_ID_MY_QQPIM_PROTECT = 5;
   public static final int RECOMMD_ITEM_ID_SUB_ACC_LOCK = 305;
   public static final int RECOMMD_ITEM_ID_SUB_FACE_MB = 401;
   public static final int RECOMMD_ITEM_ID_SUB_FINGER_MB = 402;
@@ -29,6 +29,7 @@ public class EvalAccountResult
   public static final int RECOMMD_ITEM_ID_SUB_TOKEN_MB = 406;
   private static final long serialVersionUID = -6565579543089831219L;
   public int mActionId;
+  public int mCanZzb;
   public int mDegree;
   public String mDesc;
   public String mMarketUrl;
@@ -46,7 +47,7 @@ public class EvalAccountResult
   public EvalAccountResult(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
   {
     JSONObject localJSONObject = paramJSONObject1.getJSONObject("check_result");
-    e.b("check_result:" + localJSONObject.toString());
+    h.b("check_result:" + localJSONObject.toString());
     this.mStatus = localJSONObject.getInt("status");
     this.mSubStatus = localJSONObject.getInt("sub_status");
     this.mTitle = localJSONObject.getString("title");
@@ -57,6 +58,9 @@ public class EvalAccountResult
     }
     if (localJSONObject.has("desc")) {
       this.mDesc = localJSONObject.getString("desc");
+    }
+    if (localJSONObject.has("can_zzb")) {
+      this.mCanZzb = localJSONObject.getInt("can_zzb");
     }
     this.mSummary = paramJSONObject2.getString("summary");
     if (paramJSONObject2.getInt("out_of_date") == 0) {}
@@ -73,7 +77,7 @@ public class EvalAccountResult
       paramJSONObject1 = paramJSONObject1.getJSONArray("recommends");
       while (i < paramJSONObject1.length())
       {
-        e.b("一级推荐列表" + paramJSONObject1.getJSONObject(i).toString());
+        h.b("一级推荐列表" + paramJSONObject1.getJSONObject(i).toString());
         paramJSONObject2 = new EvalAccountResult.RecommendItem(paramJSONObject1.getJSONObject(i));
         this.mRecommends.add(paramJSONObject2);
         i += 1;

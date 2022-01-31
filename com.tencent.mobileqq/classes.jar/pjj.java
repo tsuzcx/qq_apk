@@ -1,23 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.component.network.downloader.DownloadResult.Status;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-public final class pjj
-  implements Parcelable.Creator
+class pjj
+  implements View.OnClickListener
 {
-  public DownloadResult.Status a(Parcel paramParcel)
-  {
-    return new DownloadResult.Status(paramParcel);
-  }
+  pjj(pji parampji, pgd parampgd, rvg paramrvg) {}
   
-  public DownloadResult.Status[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new DownloadResult.Status[paramInt];
+    if (pji.a(this.jdField_a_of_type_Pji) == null) {
+      pji.a(this.jdField_a_of_type_Pji, new bhxx(pji.a(this.jdField_a_of_type_Pji)));
+    }
+    pji.a(this.jdField_a_of_type_Pji).a((pgq)this.jdField_a_of_type_Pgd, this.jdField_a_of_type_Pgd.a().mDislikeInfos);
+    pji.a(this.jdField_a_of_type_Pji).a(paramView, new pjk(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pjj
  * JD-Core Version:    0.7.0.1
  */

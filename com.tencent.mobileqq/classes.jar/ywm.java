@@ -1,31 +1,29 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import java.lang.ref.WeakReference;
 
-public final class ywm
-  implements BusinessObserver
+class ywm
+  implements View.OnClickListener
 {
-  public ywm(SharedPreferences paramSharedPreferences, AppInterface paramAppInterface) {}
+  ywm(ywj paramywj, TroopGiftPanel paramTroopGiftPanel) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloGameUtil", 2, "checkApolloGameRedDot onReceive isSuccess:" + paramBoolean + ",ret:" + paramInt);
-    }
-    if (paramBoolean)
+    this.jdField_a_of_type_Ywj.c();
+    this.jdField_a_of_type_Ywj.b();
+    if (this.jdField_a_of_type_Ywj.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c)
     {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("apollo_game_reddot_checkTime", System.currentTimeMillis()).commit();
-      ThreadManager.post(new ywn(this, paramBundle), 5, null, true);
+      this.jdField_a_of_type_Ywj.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.b();
+      return;
     }
+    ((BaseChatPie)this.jdField_a_of_type_Ywj.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b.get()).aW();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ywm
  * JD-Core Version:    0.7.0.1
  */

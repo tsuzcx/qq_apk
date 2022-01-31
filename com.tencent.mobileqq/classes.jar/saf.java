@@ -1,46 +1,39 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
 public class saf
-  implements Runnable
 {
-  public saf(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList1, List paramList2) {}
+  public float a;
+  public int a;
+  public long a;
+  public BaseData a;
+  public Long a;
+  public long b;
   
-  public void run()
+  public saf(int paramInt, Long paramLong, BaseData paramBaseData)
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.a().a((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(0), false);
-    }
-    while ((this.b != null) && (this.b.size() > 0))
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangLong = paramLong;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramBaseData;
+    this.b = 0L;
+  }
+  
+  public void a(saf paramsaf)
+  {
+    if (paramsaf != null)
     {
-      Iterator localIterator = this.b.iterator();
-      while (localIterator.hasNext())
-      {
-        FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-        localFileManagerEntity.bDelInAio = true;
-        if (QLog.isDevelopLevel()) {
-          QLog.d("ChatHistoryFIleActivity", 1, "ChatHistory entity[" + localFileManagerEntity.getId() + "] del File:" + localFileManagerEntity.nSessionId);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.a().b(localFileManagerEntity.nSessionId);
-      }
-      if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.a().a(this.jdField_a_of_type_JavaUtilList, false);
-      }
+      this.jdField_a_of_type_JavaLangLong = paramsaf.jdField_a_of_type_JavaLangLong;
+      this.jdField_a_of_type_Long = paramsaf.jdField_a_of_type_Long;
+      this.jdField_a_of_type_Float = paramsaf.jdField_a_of_type_Float;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramsaf.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
+      this.b = paramsaf.b;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a.sendEmptyMessage(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     saf
  * JD-Core Version:    0.7.0.1
  */

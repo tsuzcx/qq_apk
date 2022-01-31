@@ -1,30 +1,29 @@
-import com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine;
-import com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine.FTSSearchResultItem;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahtw
-  implements Comparator
+  extends alog
 {
-  public ahtw(FTSMessageSearchEngine paramFTSMessageSearchEngine) {}
+  public ahtw(TroopFragment paramTroopFragment) {}
   
-  public int a(FTSMessageSearchEngine.FTSSearchResultItem paramFTSSearchResultItem1, FTSMessageSearchEngine.FTSSearchResultItem paramFTSSearchResultItem2)
+  protected void a(int paramInt)
   {
-    int j = Long.signum(paramFTSSearchResultItem1.b - paramFTSSearchResultItem2.b);
-    int i = j;
-    if (j == 0)
+    switch (paramInt)
     {
-      j = Long.signum(paramFTSSearchResultItem1.c - paramFTSSearchResultItem2.c);
-      i = j;
-      if (j == 0) {
-        i = Long.signum(-paramFTSSearchResultItem1.a + paramFTSSearchResultItem2.a);
-      }
     }
-    return i;
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("contacts.fragment.TroopFragment", 2, "onCacheInited " + paramInt);
+      }
+    } while (this.a.a == null);
+    this.a.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahtw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,12 @@
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnBufferingUpdateListener;
-
-public class npg
-  implements IMediaPlayer.OnBufferingUpdateListener
+public abstract interface npg
 {
-  public npg(TextureVideoView paramTextureVideoView) {}
+  public abstract void a();
   
-  public void a(IMediaPlayer paramIMediaPlayer, int paramInt)
-  {
-    this.a.f = paramInt;
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     npg
  * JD-Core Version:    0.7.0.1
  */

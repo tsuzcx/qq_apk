@@ -1,28 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.app.DiscussionHandler;
-import com.tencent.mobileqq.app.DiscussionManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.app.proxy.RecentUserProxy;
-import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.activity.Contacts;
+import com.tencent.mobileqq.fpsreport.FPSPinnedHeaderExpandableListView;
 
-class ceh
-  implements DialogInterface.OnClickListener
+public class ceh
+  implements Runnable
 {
-  ceh(cef paramcef, String paramString) {}
+  public ceh(Contacts paramContacts) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ((DiscussionManager)this.jdField_a_of_type_Cef.a.b.getManager(48)).a(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = this.jdField_a_of_type_Cef.a.b.a().a();
-    RecentUser localRecentUser = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString, 3000);
-    if (localRecentUser != null) {
-      paramDialogInterface.b(localRecentUser);
-    }
-    ((DiscussionHandler)this.jdField_a_of_type_Cef.a.b.a(6)).d();
-    this.jdField_a_of_type_Cef.a.finish();
+    this.a.a.setSelection(0);
   }
 }
 

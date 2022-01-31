@@ -1,20 +1,25 @@
-import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
-import com.tencent.mobileqq.shortvideo.ptvfilter.FilterProcessRender;
+import android.view.MotionEvent;
+import android.view.View;
 
-public class xxh
-  implements Runnable
+public abstract interface xxh
 {
-  public xxh(CameraFilterGLView paramCameraFilterGLView) {}
+  public abstract void a(int paramInt);
   
-  public void run()
-  {
-    this.a.a.a();
-    this.a.a.f();
-  }
+  public abstract void a(View paramView, float paramFloat);
+  
+  public abstract void a(View paramView, float paramFloat, MotionEvent paramMotionEvent);
+  
+  public abstract void a(View paramView, xxe paramxxe);
+  
+  public abstract boolean a(View paramView);
+  
+  public abstract boolean a(View paramView, xxk paramxxk, MotionEvent paramMotionEvent);
+  
+  public abstract boolean b(View paramView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xxh
  * JD-Core Version:    0.7.0.1
  */

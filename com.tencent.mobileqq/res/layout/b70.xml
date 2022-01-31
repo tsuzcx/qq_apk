@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView android:id="@id/gzb" android:paddingBottom="100.0dip" android:focusable="false" android:fadingEdge="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0dip" android:layout_above="@id/gxl" />
+    <ViewStub android:id="@id/gxm" android:layout="@layout/b6i" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <ViewStub android:id="@id/l39" android:layout="@layout/b6n" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignTop="@id/gzb" />
+    <ImageButton android:id="@id/gyb" android:background="@color/ajr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:src="@drawable/fj5" android:scaleType="centerInside" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:contentDescription="@string/r7m" />
+</RelativeLayout>

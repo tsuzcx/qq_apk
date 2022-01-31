@@ -1,28 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeConstants;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.biz.qqcircle.widgets.QCirclePushAsyncTextView;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StUser;
 
-public class ugi
-  implements DialogInterface.OnClickListener
+class ugi
+  implements uew
 {
-  public ugi(UpgradeActivity paramUpgradeActivity) {}
+  ugi(uge paramuge, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    ReportController.b(this.a.app, "CliOper", "", "", "0X800417E", "0X800417E", 0, 0, "", "", "", "");
-    if (UpgradeActivity.a(this.a)) {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X800714C", "0X800714C", 0, 0, "", "", "", "");
-    }
-    UpgradeActivity.a(this.a, false);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, UpgradeConstants.b(), String.valueOf(2), UpgradeController.a(), "");
+    tzs.a("", this.jdField_a_of_type_Uge.a(), this.jdField_a_of_type_Uge.a, 43);
+    tqs.a(uge.a(this.jdField_a_of_type_Uge).getContext(), this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void a(FeedCloudMeta.StUser paramStUser)
+  {
+    tzs.a(paramStUser.id.get(), this.jdField_a_of_type_Uge.a(), this.jdField_a_of_type_Uge.a, 41);
+    tqs.a(paramStUser);
+  }
+  
+  public void b()
+  {
+    tzs.a("", this.jdField_a_of_type_Uge.a(), this.jdField_a_of_type_Uge.a, 42);
+    tqs.a(uge.a(this.jdField_a_of_type_Uge).getContext(), this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ugi
  * JD-Core Version:    0.7.0.1
  */

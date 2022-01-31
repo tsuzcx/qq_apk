@@ -1,33 +1,27 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.widget.ListView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import mqq.os.MqqHandler;
+import android.widget.ImageView;
 
-public class aexf
-  implements Runnable
+class aexf
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aexf(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  aexf(aexe paramaexe) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((ShortVideoCommentsView.a(this.a) != null) && (ShortVideoCommentsView.a(this.a).getChildCount() > 0))
-    {
-      if (ShortVideoCommentsView.a(this.a).getChildAt(0).getTop() != 0)
-      {
-        ShortVideoCommentsView.a(this.a).setSelection(0);
-        ThreadManager.getUIHandler().postDelayed(this, 10L);
-      }
+    double d = ((Double)paramValueAnimator.getAnimatedValue()).doubleValue();
+    if (aexe.a(this.a) != null) {
+      aexe.a(this.a).setAlpha((float)d);
     }
-    else {
-      return;
+    if (aexe.a(this.a) != null) {
+      aexe.a(this.a).setAlpha((float)d * 2.0F);
     }
-    ThreadManager.getUIHandler().removeCallbacks(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aexf
  * JD-Core Version:    0.7.0.1
  */

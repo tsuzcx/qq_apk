@@ -1,25 +1,22 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
-
-public class thy
-  extends FacePreloadBaseAdapter.ViewHolder
+public abstract interface thy
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public thx a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  public TextView f;
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(int paramInt, Object paramObject);
+  
+  public abstract void a(String paramString1, boolean paramBoolean, String paramString2);
+  
+  public abstract void a(tho paramtho);
+  
+  public abstract void a(tho paramtho, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(tho paramtho);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     thy
  * JD-Core Version:    0.7.0.1
  */

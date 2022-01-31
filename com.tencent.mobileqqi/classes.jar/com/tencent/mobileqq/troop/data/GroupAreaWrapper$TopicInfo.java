@@ -17,25 +17,25 @@ public class GroupAreaWrapper$TopicInfo
   
   protected void a(View paramView)
   {
-    ((NearbyTroops.ActivityAndTopicViewHolder)paramView.getTag()).a.setTextColor(paramView.getContext().getResources().getColor(2131361931));
-    paramView.findViewById(2131232391).setBackgroundResource(2130838403);
+    ((NearbyTroops.ActivityAndTopicViewHolder)paramView.getTag()).a.setTextColor(paramView.getContext().getResources().getColor(2131361941));
+    paramView.findViewById(2131232394).setBackgroundResource(2130838405);
   }
   
   protected void a(TextView paramTextView)
   {
     paramTextView.setText(paramTextView.getContext().getString(2131559304, new Object[] { Integer.valueOf(this.b) }));
     paramTextView.setCompoundDrawablePadding(8);
-    paramTextView.setCompoundDrawablesWithIntrinsicBounds(2130838462, 0, 0, 0);
+    paramTextView.setCompoundDrawablesWithIntrinsicBounds(2130838464, 0, 0, 0);
   }
   
   public void onClick(View paramView)
   {
     super.onClick(paramView);
     int i = paramView.getId();
-    if (i == 2131232385) {
+    if (i == 2131232388) {
       ReportController.b(this.a, "P_CliOper", "Grp_nearby", "", "post", "Clk_list", 0, 0, "", "", "", "");
     }
-    while (i != 2131232389) {
+    while (i != 2131232392) {
       return;
     }
     ReportController.b(this.a, "P_CliOper", "Grp_nearby", "", "post", "Clk_detail", 0, 0, "", "", "", "");

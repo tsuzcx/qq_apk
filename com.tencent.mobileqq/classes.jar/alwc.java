@@ -1,26 +1,18 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.qqconnect.wtlogin.Login;
-
 public class alwc
-  implements TextView.OnEditorActionListener
+  implements alpg
 {
-  public alwc(Login paramLogin) {}
+  public void a(Object paramObject) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt == 6)
-    {
-      this.a.b();
-      return true;
+    if (paramInt == 1) {
+      a(paramObject);
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alwc
  * JD-Core Version:    0.7.0.1
  */

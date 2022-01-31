@@ -1,19 +1,23 @@
-import android.os.Looper;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
+import android.support.annotation.NonNull;
 
-public class wds
-  implements Runnable
+class wds
+  implements wdo
 {
-  public wds(ZhituManager paramZhituManager) {}
+  wds(wdr paramwdr) {}
   
-  public void run()
+  public void a(@NonNull wdm paramwdm)
   {
-    ZhituManager.a(this.a, Looper.myQueue());
+    paramwdm = paramwdm.a();
+    if (paramwdm != null) {
+      wdr.a(this.a, paramwdm);
+    }
   }
+  
+  public void b(@NonNull wdm paramwdm) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wds
  * JD-Core Version:    0.7.0.1
  */

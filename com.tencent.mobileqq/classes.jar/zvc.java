@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
-import com.tencent.mobileqq.app.proxy.ProxyListener;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-
-public class zvc
-  implements Runnable
+class zvc
 {
-  public zvc(DataLineMsgProxy paramDataLineMsgProxy, String paramString1, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  long jdField_b_of_type_Long;
+  String jdField_b_of_type_JavaLangString;
   
-  public void run()
+  public zvc(zux paramzux, String paramString1, long paramLong1, int paramInt, String paramString2, long paramLong2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a.a(String.valueOf(0), 0, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ArrayOfJavaLangString, 2, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyListener);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_Long = paramLong2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     zvc
  * JD-Core Version:    0.7.0.1
  */

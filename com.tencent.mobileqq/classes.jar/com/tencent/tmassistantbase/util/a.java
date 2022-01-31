@@ -14,35 +14,11 @@ public class a
     }
   }
   
-  public static byte[] a(String paramString, int paramInt)
-  {
-    return a(paramString.getBytes(), paramInt);
-  }
-  
-  public static byte[] a(byte[] paramArrayOfByte, int paramInt)
-  {
-    return a(paramArrayOfByte, 0, paramArrayOfByte.length, paramInt);
-  }
-  
-  public static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
-  {
-    c localc = new c(paramInt3, new byte[paramInt2 * 3 / 4]);
-    if (!localc.a(paramArrayOfByte, paramInt1, paramInt2, true)) {
-      throw new IllegalArgumentException("bad base-64");
-    }
-    if (localc.b == localc.a.length) {
-      return localc.a;
-    }
-    paramArrayOfByte = new byte[localc.b];
-    System.arraycopy(localc.a, 0, paramArrayOfByte, 0, localc.b);
-    return paramArrayOfByte;
-  }
-  
-  public static String b(byte[] paramArrayOfByte, int paramInt)
+  public static String a(byte[] paramArrayOfByte, int paramInt)
   {
     try
     {
-      paramArrayOfByte = new String(c(paramArrayOfByte, paramInt), "US-ASCII");
+      paramArrayOfByte = new String(b(paramArrayOfByte, paramInt), "US-ASCII");
       return paramArrayOfByte;
     }
     catch (UnsupportedEncodingException paramArrayOfByte)
@@ -51,25 +27,25 @@ public class a
     }
   }
   
-  public static byte[] b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  public static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    d locald = new d(paramInt3, null);
+    c localc = new c(paramInt3, null);
     int i = paramInt2 / 3 * 4;
     int j;
-    if (locald.d)
+    if (localc.d)
     {
       paramInt3 = i;
       if (paramInt2 % 3 > 0) {
         paramInt3 = i + 4;
       }
       i = paramInt3;
-      if (locald.e)
+      if (localc.e)
       {
         i = paramInt3;
         if (paramInt2 > 0)
         {
           j = (paramInt2 - 1) / 57;
-          if (!locald.f) {
+          if (!localc.f) {
             break label186;
           }
         }
@@ -79,9 +55,9 @@ public class a
     for (i = 2;; i = 1)
     {
       i = paramInt3 + i * (j + 1);
-      locald.a = new byte[i];
-      locald.a(paramArrayOfByte, paramInt1, paramInt2, true);
-      if ((a) || (locald.b == i)) {
+      localc.a = new byte[i];
+      localc.a(paramArrayOfByte, paramInt1, paramInt2, true);
+      if ((a) || (localc.b == i)) {
         break label192;
       }
       throw new AssertionError();
@@ -101,17 +77,17 @@ public class a
       }
     }
     label192:
-    return locald.a;
+    return localc.a;
   }
   
-  public static byte[] c(byte[] paramArrayOfByte, int paramInt)
+  public static byte[] b(byte[] paramArrayOfByte, int paramInt)
   {
-    return b(paramArrayOfByte, 0, paramArrayOfByte.length, paramInt);
+    return a(paramArrayOfByte, 0, paramArrayOfByte.length, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.a
  * JD-Core Version:    0.7.0.1
  */

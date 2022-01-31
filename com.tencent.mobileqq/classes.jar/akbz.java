@@ -1,23 +1,13 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.utils.ContactUtils.OnGetTroopMemberNameCallback;
-
-public final class akbz
-  implements Runnable
+public class akbz
 {
-  public akbz(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, ContactUtils.OnGetTroopMemberNameCallback paramOnGetTroopMemberNameCallback) {}
+  public int a;
+  public awge a;
   
-  public void run()
-  {
-    String str = ContactUtils.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b);
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsContactUtils$OnGetTroopMemberNameCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsContactUtils$OnGetTroopMemberNameCallback.a(str);
-    }
-  }
+  protected akbz(akbx paramakbx) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akbz
  * JD-Core Version:    0.7.0.1
  */

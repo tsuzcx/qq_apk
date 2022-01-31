@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqshop_code$SRsp
-  extends MessageMicro
+  extends MessageMicro<SRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "ret_code", "expired_time", "auth_code" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), "" }, SRsp.class);
   public final PBStringField auth_code = PBField.initString("");
@@ -17,7 +17,7 @@ public final class qqshop_code$SRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.qqshop.qqshop_code.SRsp
  * JD-Core Version:    0.7.0.1
  */

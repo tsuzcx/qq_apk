@@ -1,23 +1,26 @@
-import android.support.v4.util.LruCache;
-import com.tencent.mobileqq.hotchat.PttShowRoomMng;
-import com.tencent.mobileqq.hotchat.PttShowRoomMng.Guest;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class adpk
-  extends LruCache
+  implements TextWatcher
 {
-  public adpk(PttShowRoomMng paramPttShowRoomMng, int paramInt)
+  public adpk(PublicAccountListActivity paramPublicAccountListActivity) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    super(paramInt);
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.b(paramEditable);
   }
   
-  protected int a(String paramString, PttShowRoomMng.Guest paramGuest)
-  {
-    return 1;
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adpk
  * JD-Core Version:    0.7.0.1
  */

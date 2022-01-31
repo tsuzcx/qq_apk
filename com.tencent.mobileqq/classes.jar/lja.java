@@ -1,46 +1,70 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.BDHCommonUploadProcessor;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.av.app.VideoAppInterface;
 
 public class lja
-  implements Runnable
 {
-  public lja(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, String paramString) {}
+  private alpd[] a = new alpd[4];
   
-  public void run()
+  private alpd b(VideoAppInterface paramVideoAppInterface, int paramInt)
   {
-    if (!new File(this.jdField_a_of_type_JavaLangString).exists())
+    Object localObject = null;
+    long l1 = System.currentTimeMillis();
+    switch (paramInt)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentComponentFragment.f();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentComponentFragment.a(1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentComponentFragment.getString(2131438884));
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyCommentComponentFragment", 2, "startUploadPic file not exist, path=" + this.jdField_a_of_type_JavaLangString);
-      }
-      return;
     }
-    TransFileController localTransFileController = ReadInJoyCommentComponentFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentComponentFragment).app.a();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentComponentFragment.a.a(new Class[] { BDHCommonUploadProcessor.class });
-    localTransFileController.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentComponentFragment.a);
-    TransferRequest localTransferRequest = new TransferRequest();
-    localTransferRequest.jdField_a_of_type_Boolean = true;
-    localTransferRequest.jdField_c_of_type_Int = 10;
-    localTransferRequest.i = this.jdField_a_of_type_JavaLangString;
-    localTransferRequest.jdField_a_of_type_Long = ((Math.random() * 1000000.0D));
-    localTransferRequest.jdField_c_of_type_JavaLangString = "0";
-    localTransferRequest.b = 24;
-    localTransferRequest.jdField_a_of_type_JavaLangString = "KandianUGCPicUpload";
-    localTransFileController.a(localTransferRequest);
+    for (paramVideoAppInterface = localObject;; paramVideoAppInterface = new lio(paramVideoAppInterface))
+    {
+      lek.c("BusinessHandlerFactory", "createHandler unknown name");
+      for (;;)
+      {
+        long l2 = System.currentTimeMillis();
+        lek.c("BusinessHandlerFactory", "createHandler,cost time:" + (l2 - l1));
+        return paramVideoAppInterface;
+        paramVideoAppInterface = new liz(paramVideoAppInterface);
+        continue;
+        paramVideoAppInterface = new liw(paramVideoAppInterface);
+        continue;
+        paramVideoAppInterface = new lwb(paramVideoAppInterface);
+      }
+    }
+  }
+  
+  public alpd a(VideoAppInterface paramVideoAppInterface, int paramInt)
+  {
+    Object localObject = this.a[paramInt];
+    if (localObject != null) {
+      return localObject;
+    }
+    synchronized (this.a)
+    {
+      alpd localalpd = this.a[paramInt];
+      localObject = localalpd;
+      if (localalpd == null)
+      {
+        paramVideoAppInterface = b(paramVideoAppInterface, paramInt);
+        localObject = paramVideoAppInterface;
+        if (paramVideoAppInterface != null)
+        {
+          this.a[paramInt] = paramVideoAppInterface;
+          localObject = paramVideoAppInterface;
+        }
+      }
+      return localObject;
+    }
+  }
+  
+  public void a(lil paramlil)
+  {
+    paramlil.a("TransInfoCreate.CreateSession", new int[] { 1 });
+    paramlil.a("TransInfo.JoinSession", new int[] { 0 });
+    paramlil.a("TransInfo.ExitSession", new int[] { 0 });
+    paramlil.a("TransInfo.ChangeSession", new int[] { 0 });
+    paramlil.a("TransInfo.RawData", new int[] { 0 });
+    paramlil.a("OidbSvc.0xa75", new int[] { 2 });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lja
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Nika amandla</string>
+    <string name="b">I-%1$s ngeke isebenze ngaphandle kokuthi unike amandla amasevisi we-Google Play.</string>
+    <string name="c">Nika amandla amasevisi we-Google Play</string>
+    <string name="d">Faka</string>
+    <string name="e">I-%1$s ngeke ize iqalise ngaphandle kwamasevisi we-Google Play, angekho kusukela kudivayisi yakho.</string>
+    <string name="f">Thola amasevisi we-Google Play</string>
+    <string name="g">Iphutha lamasevisi we-Google Play</string>
+    <string name="h">%1$s inenkinga ngamasevisi e-Google Play. Sicela uzame futhi.</string>
+    <string name="i">%1$s ngeke isebenze ngaphandle kwamasevisi e-Google Play, angasekelwa idivayisi yakho.</string>
+    <string name="j">Isibuyekezo</string>
+    <string name="k">I-%1$s ngeke ize iqalise ngaphandle kokuthi ubuyekeze i-Google Play.</string>
+    <string name="l">Buyekeza amasevisi we-Google Play</string>
+    <string name="m">I-%1$s ngeke ize iqalise ngaphandle kwamasevisi we-Google Play, okwamanje abuyekezwayo.</string>
+    <string name="n">Kudingeka inguqulo entsha yamasevisi we-Google Play. Izozibuyekeza ngokwayo maduze.</string>
+    <string name="o">Vula kufoni</string>
+    <string name="p">Ngena ngemvume</string>
+    <string name="q">Ngena ngemvume nge-Google</string>
+    <string name="r">999+</string>
+</resources>

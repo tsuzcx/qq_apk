@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/a6q" android:paddingLeft="32.0dip" android:paddingRight="32.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginTop="48.0dip" android:src="@raw/safe" />
+    <TextView android:textSize="22.0dip" android:textStyle="bold" android:textColor="@color/h8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:text="@string/fxv" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/h8" android:gravity="center" android:id="@id/ft4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/ezt" />
+    <Space android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <Button android:id="@id/ft5" android:text="@string/fun" style="@style/nr" />
+    <TextView android:textSize="12.0dip" android:textColor="@color/h7" android:gravity="center" android:id="@id/ft6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="64.0dip" android:layout_marginBottom="24.0dip" android:text="" />
+</LinearLayout>

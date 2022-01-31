@@ -1,19 +1,33 @@
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-import java.util.Comparator;
+import android.support.v4.view.ViewPager.PageTransformer;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.BannerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.ChannelTopBanner;
 
 public class sle
-  implements Comparator
+  implements ViewPager.PageTransformer
 {
-  private sle(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  private sle(ChannelTopBanner paramChannelTopBanner) {}
   
-  public int a(slc paramslc1, slc paramslc2)
+  public void transformPage(View paramView, float paramFloat)
   {
-    return paramslc1.c.compareToIgnoreCase(paramslc2.c);
+    if (paramView == null) {}
+    while ((this.a.a != null) && (this.a.a.getCount() == 1)) {
+      return;
+    }
+    if ((paramFloat <= -1.1F) || (paramFloat >= 1.1F))
+    {
+      paramView.setScaleX(0.9F);
+      paramView.setScaleY(0.9F);
+      return;
+    }
+    paramFloat = Math.max(0.9F, 1.0F - Math.abs(0.2000001F * paramFloat));
+    paramView.setScaleX(paramFloat);
+    paramView.setScaleY(paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sle
  * JD-Core Version:    0.7.0.1
  */

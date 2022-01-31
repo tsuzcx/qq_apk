@@ -1,29 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.FetchCommentObserver;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListAdapter;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
+import com.tencent.av.business.manager.pendant.PendantItem;
 
 public class ljz
-  implements ArticleCommentModule.FetchCommentObserver
+  implements ljn<PendantItem>
 {
-  public ljz(ReadInJoySecondCommentListAdapter paramReadInJoySecondCommentListAdapter) {}
+  public ljz(MagicFaceDataEntity paramMagicFaceDataEntity) {}
   
-  public void a(ArticleInfo paramArticleInfo)
-  {
-    ReadInJoySecondCommentListAdapter.a(this.a).a = true;
-    this.a.notifyDataSetChanged();
-  }
+  public void a(long paramLong, PendantItem paramPendantItem) {}
   
-  public void a(ArticleInfo paramArticleInfo, int paramInt, String paramString)
+  public void a(long paramLong, PendantItem paramPendantItem, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoySecondCommentListAdapter", 2, "fetch second level comment failed ,err code =" + paramInt + "err msg =" + paramString);
+    lek.c("MagicFaceDataEntity", "onDownloadFinish: " + paramPendantItem.toString() + "|" + paramBoolean);
+    if (paramBoolean) {
+      MagicFaceDataEntity.a(this.a, paramLong, paramPendantItem);
     }
   }
+  
+  public void a(PendantItem paramPendantItem, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ljz
  * JD-Core Version:    0.7.0.1
  */

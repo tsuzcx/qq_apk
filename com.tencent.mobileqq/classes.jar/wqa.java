@@ -1,23 +1,17 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-
-class wqa
-  implements Runnable
+public abstract interface wqa
+  extends wow<wpn>
 {
-  wqa(wpz paramwpz, int paramInt) {}
+  public abstract void a(String paramString);
   
-  public void run()
-  {
-    this.jdField_a_of_type_Wpz.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a(32, 16, Integer.valueOf(this.jdField_a_of_type_Int));
-    Intent localIntent = new Intent("com.tencent.qq.syncQQMessage");
-    this.jdField_a_of_type_Wpz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(localIntent);
-  }
+  public abstract void a(wqp paramwqp);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wqa
  * JD-Core Version:    0.7.0.1
  */

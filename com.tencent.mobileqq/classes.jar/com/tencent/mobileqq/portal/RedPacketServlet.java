@@ -1,10 +1,13 @@
 package com.tencent.mobileqq.portal;
 
-import agmx;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.ProtoServlet;
+import awni;
+import bdgc;
+import bdgk;
+import bdin;
+import bdpd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -29,10 +32,6 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayInputStream;
@@ -47,6 +46,7 @@ import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
 import mqq.app.Packet;
 import mqq.os.MqqHandler;
+import mzx;
 import org.apache.http.util.ByteArrayBuffer;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -75,13 +75,13 @@ import tencent.im.new_year_report.PackShareReport.PkgReq;
 import tencent.im.new_year_report.PackShareReport.ReportShareReq;
 
 public class RedPacketServlet
-  extends ProtoServlet
+  extends mzx
 {
   private static int a;
   
   private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    if ((paramInt6 < 2) || (!NetworkUtil.g(BaseApplicationImpl.sApplication))) {
+    if ((paramInt6 < 2) || (!bdin.g(BaseApplicationImpl.sApplication))) {
       return;
     }
     if (QLog.isColorLevel()) {
@@ -124,28 +124,6 @@ public class RedPacketServlet
     paramAppRuntime.startServlet(localNewIntent);
   }
   
-  public static void a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
-  {
-    if (!NetworkUtil.g(BaseApplicationImpl.sApplication)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("PortalManager.Servlet", 2, "reportShare, " + paramInt1 + ", " + paramInt2 + ", " + paramInt3 + ", " + paramInt4 + ", " + paramInt5 + ", " + paramInt6 + ", " + paramInt7 + ", " + paramInt8);
-    }
-    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), RedPacketServlet.class);
-    localNewIntent.putExtra("k_cmd", 9);
-    localNewIntent.putExtra("k_uin", paramAppRuntime.getAccount());
-    localNewIntent.putExtra("k_id", paramInt1);
-    localNewIntent.putExtra("k_s_type", paramInt2);
-    localNewIntent.putExtra("k_s_channel", paramInt3);
-    localNewIntent.putExtra("key_totalcnt", paramInt4);
-    localNewIntent.putExtra("key_combocnt", paramInt5);
-    localNewIntent.putExtra("k_money", paramInt6);
-    localNewIntent.putExtra("key_goodscnt", paramInt7);
-    localNewIntent.putExtra("key_errorCode", paramInt8);
-    paramAppRuntime.startServlet(localNewIntent);
-  }
-  
   private static void a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
     if (QLog.isColorLevel()) {
@@ -167,7 +145,7 @@ public class RedPacketServlet
     }
   }
   
-  public static void a(AppRuntime paramAppRuntime, int paramInt, ArrayList paramArrayList, boolean paramBoolean, Bundle paramBundle)
+  public static void a(AppRuntime paramAppRuntime, int paramInt, ArrayList<RedPacketServlet.BrashReportItem> paramArrayList, boolean paramBoolean, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
       QLog.d("PortalManager.Servlet", 2, "reportBrashCount, " + paramBundle);
@@ -220,7 +198,7 @@ public class RedPacketServlet
     boolean bool1;
     if (bool2)
     {
-      Object localObject1 = WupUtil.b(paramFromServiceMsg.getWupBuffer());
+      Object localObject1 = bdpd.b(paramFromServiceMsg.getWupBuffer());
       switch (m)
       {
       case 3: 
@@ -238,7 +216,7 @@ public class RedPacketServlet
             paramIntent.putExtra("k_retry", n + 1);
             if (m == 7)
             {
-              ThreadManager.getSubThreadHandler().postDelayed(new agmx(this, paramIntent), 60000L);
+              ThreadManager.getSubThreadHandler().postDelayed(new RedPacketServlet.1(this, paramIntent), 60000L);
               label182:
               return;
             }
@@ -256,7 +234,7 @@ public class RedPacketServlet
                 QLog.d("PortalManager.Servlet", 2, "onReceive, result = " + l1);
               }
               if (l1 != 0L) {
-                break label644;
+                break label645;
               }
               localObject1 = new PackServer.PkgResp();
               ((PackServer.PkgResp)localObject1).mergeFrom(((Unisso.UniSsoServerRsp)localObject3).rspdata.get().toByteArray());
@@ -265,29 +243,29 @@ public class RedPacketServlet
               paramFromServiceMsg.putInt("k_id", i);
               if ((((PackServer.PkgResp)localObject1).grab_interval.has()) || (((PackServer.PkgResp)localObject1).report_active_interval.has()) || (((PackServer.PkgResp)localObject1).report_normal_interval.has()))
               {
-                localObject3 = (PortalManager)((QQAppInterface)getAppRuntime()).getManager(78);
+                localObject3 = (PortalManager)((QQAppInterface)getAppRuntime()).getManager(79);
                 if (localObject3 != null)
                 {
                   if (!((PackServer.PkgResp)localObject1).grab_interval.has()) {
-                    break label2594;
+                    break label2595;
                   }
                   l1 = ((PackServer.PkgResp)localObject1).grab_interval.get();
-                  label394:
+                  label393:
                   if (!((PackServer.PkgResp)localObject1).report_active_interval.has()) {
-                    break label2602;
+                    break label2603;
                   }
                   l2 = ((PackServer.PkgResp)localObject1).report_active_interval.get();
-                  label416:
+                  label415:
                   if (!((PackServer.PkgResp)localObject1).report_normal_interval.has()) {
-                    break label2610;
+                    break label2611;
                   }
                   l3 = ((PackServer.PkgResp)localObject1).report_normal_interval.get();
-                  label438:
+                  label437:
                   ((PortalManager)localObject3).a(l1, l2, l3);
                 }
               }
               if (j != 0) {
-                break label2587;
+                break label2588;
               }
               localObject1 = (PackServer.GetNewPackResp)((PackServer.PkgResp)localObject1).get_new_pack.get();
               localObject3 = (PackData.Pack)((PackServer.GetNewPackResp)localObject1).data.get();
@@ -314,7 +292,7 @@ public class RedPacketServlet
               int j;
               long l2;
               long l3;
-              label603:
+              label604:
               Object localObject4;
               Object localObject5;
               paramFromServiceMsg = null;
@@ -326,12 +304,12 @@ public class RedPacketServlet
           bool1 = false;
           continue;
           paramFromServiceMsg.putString("k_url", ((PackData.Pack)localObject3).url.get());
-          break label2587;
-          label644:
+          break label2588;
+          label645:
           bool1 = true;
           paramFromServiceMsg.putInt("k_type", -1);
-          break label2591;
-          localObject4 = (PortalManager)((QQAppInterface)getAppRuntime()).getManager(78);
+          break label2592;
+          localObject4 = (PortalManager)((QQAppInterface)getAppRuntime()).getManager(79);
           localObject5 = new ConfigurationService.RespGetConfigByPage();
           ((ConfigurationService.RespGetConfigByPage)localObject5).mergeFrom(localThrowable1);
           i = ((ConfigurationService.RespGetConfigByPage)localObject5).result.get();
@@ -352,13 +330,13 @@ public class RedPacketServlet
         Object localObject2;
         Object localObject7;
         Object localObject8;
-        label2570:
-        label2580:
-        label2587:
-        label2591:
-        label2594:
-        label2602:
-        label2610:
+        label2571:
+        label2581:
+        label2588:
+        label2592:
+        label2595:
+        label2603:
+        label2611:
         try
         {
           ((PortalManager)localObject4).c();
@@ -387,7 +365,7 @@ public class RedPacketServlet
             localObject2 = paramIntent.getByteArrayExtra("k_buff");
             localObject3 = ((ConfigurationService.RespGetConfigByPage)localObject5).content.get().toByteArray();
             if (localObject2 == null) {
-              break label2651;
+              break label2652;
             }
             i = localObject2.length;
             localObject7 = new ByteArrayBuffer(i + localObject3.length);
@@ -400,7 +378,7 @@ public class RedPacketServlet
             if (i == -1)
             {
               localObject2 = ((ConfigurationService.PageRespInfo)localObject6).md5.get();
-              localObject7 = PortalUtils.a((byte[])localObject3);
+              localObject7 = awni.a((byte[])localObject3);
               i = ((ConfigurationService.PageRespInfo)localObject6).total_size.get();
               if (QLog.isColorLevel()) {
                 QLog.d("PortalManager.Servlet", 1, "onReceive, " + i + ", " + (String)localObject2 + ", " + (String)localObject7);
@@ -450,7 +428,7 @@ public class RedPacketServlet
             else
             {
               if (i == 0) {
-                break label2656;
+                break label2657;
               }
               a(getAppRuntime(), j, ((ConfigurationService.PageRespInfo)localObject6).next_offset.get(), ((ConfigurationService.PageRespInfo)localObject6).task_id.get(), ((ConfigurationService.PageRespInfo)localObject6).cookies.get().toByteArray(), (byte[])localObject3);
               return;
@@ -472,8 +450,8 @@ public class RedPacketServlet
           }
         }
         catch (Throwable localThrowable2) {}
-        label2651:
-        label2656:
+        label2652:
+        label2657:
         try
         {
           for (;;)
@@ -487,7 +465,7 @@ public class RedPacketServlet
             paramFromServiceMsg.putInt("key_seq", paramIntent.getIntExtra("key_seq", -1));
             paramFromServiceMsg.putInt("k_r_type", paramIntent.getIntExtra("k_r_type", -1));
             if (i != 0) {
-              break label2580;
+              break label2581;
             }
             localObject4 = (QQAppInterface)getAppRuntime();
             localObject3 = null;
@@ -505,7 +483,7 @@ public class RedPacketServlet
             if (localObject3 != null)
             {
               localObject7 = new JSONObject();
-              ((JSONObject)localObject7).put("key", PortalUtils.a((String)localObject6, ((PackRanking.RankingInfo)localObject3).uin.get()));
+              ((JSONObject)localObject7).put("key", awni.a((String)localObject6, ((PackRanking.RankingInfo)localObject3).uin.get()));
               ((JSONObject)localObject7).put("ranking", ((PackRanking.RankingInfo)localObject3).ranking.get());
               ((JSONObject)localObject7).put("count", ((PackRanking.RankingInfo)localObject3).count.get());
               ((JSONObject)localObject7).put("nick", ((QQAppInterface)localObject4).getCurrentNickname());
@@ -523,10 +501,10 @@ public class RedPacketServlet
                     localObject8 = (PackRanking.RankingElem)((Iterator)localObject7).next();
                     i += 1;
                     JSONObject localJSONObject = new JSONObject();
-                    localJSONObject.put("key", PortalUtils.a((String)localObject6, ((PackRanking.RankingElem)localObject8).uin.get()));
+                    localJSONObject.put("key", awni.a((String)localObject6, ((PackRanking.RankingElem)localObject8).uin.get()));
                     localJSONObject.put("ranking", i);
                     localJSONObject.put("count", ((PackRanking.RankingElem)localObject8).count.get());
-                    localJSONObject.put("nick", ContactUtils.l((QQAppInterface)localObject4, String.valueOf(((PackRanking.RankingElem)localObject8).uin.get())));
+                    localJSONObject.put("nick", bdgc.j((QQAppInterface)localObject4, String.valueOf(((PackRanking.RankingElem)localObject8).uin.get())));
                     ((JSONArray)localObject3).put(localJSONObject);
                   }
                   ((JSONObject)localObject5).put("totalList", localObject3);
@@ -536,7 +514,7 @@ public class RedPacketServlet
             if (localObject2 != null)
             {
               localObject3 = new JSONObject();
-              ((JSONObject)localObject3).put("key", PortalUtils.a((String)localObject6, ((PackRanking.RankingInfo)localObject2).uin.get()));
+              ((JSONObject)localObject3).put("key", awni.a((String)localObject6, ((PackRanking.RankingInfo)localObject2).uin.get()));
               ((JSONObject)localObject3).put("ranking", ((PackRanking.RankingInfo)localObject2).ranking.get());
               ((JSONObject)localObject3).put("count", ((PackRanking.RankingInfo)localObject2).count.get());
               ((JSONObject)localObject3).put("nick", ((QQAppInterface)localObject4).getCurrentNickname());
@@ -554,10 +532,10 @@ public class RedPacketServlet
                     localObject7 = (PackRanking.RankingElem)((Iterator)localObject3).next();
                     i += 1;
                     localObject8 = new JSONObject();
-                    ((JSONObject)localObject8).put("key", PortalUtils.a((String)localObject6, ((PackRanking.RankingElem)localObject7).uin.get()));
+                    ((JSONObject)localObject8).put("key", awni.a((String)localObject6, ((PackRanking.RankingElem)localObject7).uin.get()));
                     ((JSONObject)localObject8).put("ranking", i);
                     ((JSONObject)localObject8).put("count", ((PackRanking.RankingElem)localObject7).count.get());
-                    ((JSONObject)localObject8).put("nick", ContactUtils.l((QQAppInterface)localObject4, String.valueOf(((PackRanking.RankingElem)localObject7).uin.get())));
+                    ((JSONObject)localObject8).put("nick", bdgc.j((QQAppInterface)localObject4, String.valueOf(((PackRanking.RankingElem)localObject7).uin.get())));
                     ((JSONArray)localObject2).put(localObject8);
                   }
                   ((JSONObject)localObject5).put("comboList", localObject2);
@@ -603,14 +581,14 @@ public class RedPacketServlet
                   i = 0;
                 }
               }
-              paramFromServiceMsg = (PortalManager)((QQAppInterface)getAppRuntime()).getManager(78);
+              paramFromServiceMsg = (PortalManager)((QQAppInterface)getAppRuntime()).getManager(79);
               if (paramFromServiceMsg != null) {
                 paramFromServiceMsg.a(i1, j);
               }
               ((Bundle)localObject2).putInt("share_type", j);
               ((Bundle)localObject2).putInt("share_channel", i);
               if (!QLog.isColorLevel()) {
-                break label2570;
+                break label2571;
               }
               QLog.i("PortalManager.Servlet", 2, "onReceive, shareType=" + j + ", shareChannel=" + i);
               paramFromServiceMsg = (FromServiceMsg)localObject2;
@@ -639,7 +617,7 @@ public class RedPacketServlet
             break label182;
           }
           return;
-          break label603;
+          break label604;
           paramFromServiceMsg = (FromServiceMsg)localObject2;
           bool1 = bool2;
           break;
@@ -650,17 +628,17 @@ public class RedPacketServlet
       bool1 = bool2;
       break;
       l1 = -1L;
-      break label394;
+      break label393;
       l2 = -1L;
-      break label416;
+      break label415;
       l3 = -1L;
-      break label438;
+      break label437;
       break;
       if ((i1 != 0) || (i == j)) {
         if ((i1 != 0) && (i == j))
         {
           continue;
-          break label603;
+          break label604;
           i = 0;
           continue;
           bool1 = false;
@@ -729,7 +707,7 @@ public class RedPacketServlet
               localObject1 = new Unisso.UniSsoServerReq();
               localObject2 = new PackServer.PkgReq();
               ((PackServer.PkgReq)localObject2).cmdtype.set(1);
-              ((PackServer.PkgReq)localObject2).net_type.set(NetworkUtil.a(BaseApplicationImpl.sApplication));
+              ((PackServer.PkgReq)localObject2).net_type.set(bdin.a(BaseApplicationImpl.sApplication));
               localObject3 = paramIntent.getStringExtra("k_uin");
               k = a + 1;
               a = k;
@@ -742,7 +720,7 @@ public class RedPacketServlet
               ((PackServer.GetNewPackReq)localObject4).signature.set(ByteStringMicro.copyFrom(((String)localObject3 + m + k).getBytes()));
               ((PackServer.PkgReq)localObject2).get_new_pack.set((MessageMicro)localObject4);
               ((Unisso.UniSsoServerReq)localObject1).reqdata.set(ByteStringMicro.copyFrom(((PackServer.PkgReq)localObject2).toByteArray()));
-              localObject1 = WupUtil.a(((Unisso.UniSsoServerReq)localObject1).toByteArray());
+              localObject1 = bdpd.a(((Unisso.UniSsoServerReq)localObject1).toByteArray());
               localObject2 = "NY2015.get_new_pack";
               paramIntent.putExtra("k_retry", 2);
               break;
@@ -763,15 +741,15 @@ public class RedPacketServlet
               localObject3 = new ConfigurationService.Screen();
               ((ConfigurationService.Screen)localObject3).setHasFlag(true);
               ((ConfigurationService.Screen)localObject3).model.set("");
-              ((ConfigurationService.Screen)localObject3).width.set((int)DeviceInfoUtil.h());
-              ((ConfigurationService.Screen)localObject3).height.set((int)DeviceInfoUtil.i());
-              ((ConfigurationService.Screen)localObject3).dpi.set(DeviceInfoUtil.d());
-              ((ConfigurationService.Screen)localObject3).multi_touch.set(DeviceInfoUtil.c());
+              ((ConfigurationService.Screen)localObject3).width.set((int)bdgk.g());
+              ((ConfigurationService.Screen)localObject3).height.set((int)bdgk.h());
+              ((ConfigurationService.Screen)localObject3).dpi.set(bdgk.d());
+              ((ConfigurationService.Screen)localObject3).multi_touch.set(bdgk.c());
               ((ConfigurationService.DeviceInfo)localObject2).setHasFlag(true);
               ((ConfigurationService.DeviceInfo)localObject2).screen = ((ConfigurationService.Screen)localObject3);
               ((ConfigurationService.ReqGetConfigByPage)localObject1).device_info.set((MessageMicro)localObject2);
               ((ConfigurationService.ReqGetConfigByPage)localObject1).type.set(1004);
-              localObject1 = WupUtil.a(((ConfigurationService.ReqGetConfigByPage)localObject1).toByteArray());
+              localObject1 = bdpd.a(((ConfigurationService.ReqGetConfigByPage)localObject1).toByteArray());
               localObject2 = "ConfigurationService.ReqGetConfigByPage";
               break;
               localObject1 = new ConfigurationService.ReqReportConfig();
@@ -783,7 +761,7 @@ public class RedPacketServlet
               ((ConfigurationService.ReportConfig)localObject2).result.set(paramIntent.getIntExtra("k_code", -1));
               ((ConfigurationService.ReqReportConfig)localObject1).config_list.add((MessageMicro)localObject2);
               localObject2 = "ConfigurationService.ReqReportConfig";
-              localObject1 = WupUtil.a(((ConfigurationService.ReqReportConfig)localObject1).toByteArray());
+              localObject1 = bdpd.a(((ConfigurationService.ReqReportConfig)localObject1).toByteArray());
               paramIntent.putExtra("k_retry", 2);
               break;
               localObject1 = new Unisso.UniSsoServerReq();
@@ -860,7 +838,7 @@ public class RedPacketServlet
             }
             ((PackReport.PkgReq)localObject2).report.set((List)localObject4);
             ((Unisso.UniSsoServerReq)localObject1).reqdata.set(ByteStringMicro.copyFrom(((PackReport.PkgReq)localObject2).toByteArray()));
-            localObject1 = WupUtil.a(((Unisso.UniSsoServerReq)localObject1).toByteArray());
+            localObject1 = bdpd.a(((Unisso.UniSsoServerReq)localObject1).toByteArray());
             localObject2 = "NewYearReport.pack_report";
             paramIntent.putExtra("k_retry", 2);
             break;
@@ -876,7 +854,7 @@ public class RedPacketServlet
           ((PackRanking.QueryRankingReq)localObject3).num.set(k);
           ((PackRanking.PkgReq)localObject2).query_ranking.set((MessageMicro)localObject3);
           ((Unisso.UniSsoServerReq)localObject1).reqdata.set(ByteStringMicro.copyFrom(((PackRanking.PkgReq)localObject2).toByteArray()));
-          localObject1 = WupUtil.a(((Unisso.UniSsoServerReq)localObject1).toByteArray());
+          localObject1 = bdpd.a(((Unisso.UniSsoServerReq)localObject1).toByteArray());
           localObject2 = "NewYearReport.pack_ranking";
           paramIntent.putExtra("k_retry", 2);
           break;
@@ -907,7 +885,7 @@ public class RedPacketServlet
         ((PackShareReport.PkgReq)localObject3).report_share.set((MessageMicro)localObject5);
         ((PackShareReport.PkgReq)localObject3).head.set((MessageMicro)localObject4);
         ((Unisso.UniSsoServerReq)localObject2).reqdata.set(ByteStringMicro.copyFrom(((PackShareReport.PkgReq)localObject3).toByteArray()));
-        localObject1 = WupUtil.a(((Unisso.UniSsoServerReq)localObject2).toByteArray());
+        localObject1 = bdpd.a(((Unisso.UniSsoServerReq)localObject2).toByteArray());
         localObject2 = "NewYearReport.pack_share";
         paramIntent.putExtra("k_retry", 2);
         break;
@@ -920,7 +898,7 @@ public class RedPacketServlet
       ((subcmd0x501.SubCmd0x501ReqBody)localObject1).uint32_request_flag.set(4);
       localObject2 = new subcmd0x501.ReqBody();
       ((subcmd0x501.ReqBody)localObject2).msg_subcmd_0x501_req_body.set((MessageMicro)localObject1);
-      localObject1 = WupUtil.a(((subcmd0x501.ReqBody)localObject2).toByteArray());
+      localObject1 = bdpd.a(((subcmd0x501.ReqBody)localObject2).toByteArray());
       localObject2 = "HttpConn.0x6ff_501";
       paramIntent.putExtra("k_retry", 2);
       break;
@@ -932,7 +910,7 @@ public class RedPacketServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.portal.RedPacketServlet
  * JD-Core Version:    0.7.0.1
  */

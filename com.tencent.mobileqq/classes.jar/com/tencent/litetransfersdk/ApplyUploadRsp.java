@@ -9,6 +9,7 @@ public class ApplyUploadRsp
   public int int32_ret_code;
   public String[] rpt_str_uploadip_list;
   public String str_ret_msg;
+  public String str_upload_dns;
   public String str_upload_domain;
   public String str_upload_ip;
   public int uint32_httpsvr_api_ver;
@@ -20,7 +21,7 @@ public class ApplyUploadRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.litetransfersdk.ApplyUploadRsp
  * JD-Core Version:    0.7.0.1
  */

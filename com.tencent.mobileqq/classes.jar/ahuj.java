@@ -1,21 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.model.GroupSearchModelFooter;
-import com.tencent.mobileqq.search.presenter.SearchResultGroupFooterViewPresenter;
-
-public class ahuj
-  implements View.OnClickListener
+class ahuj
+  implements aufw
 {
-  public ahuj(SearchResultGroupFooterViewPresenter paramSearchResultGroupFooterViewPresenter, GroupSearchModelFooter paramGroupSearchModelFooter) {}
+  ahuj(ahuf paramahuf) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupSearchModelFooter.b(paramView);
+    this.a.c(false);
+    ahuf.a(this.a);
   }
+  
+  public void a(long paramLong) {}
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahuj
  * JD-Core Version:    0.7.0.1
  */

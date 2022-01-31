@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">ဖွင့်ရန်</string>
+    <string name="b">Google Play ဝန်ဆောင်မှုများကို မဖွင့်သ၍ %1$s သည်အလုပ်လုပ်မည်မဟုတ်ပါ။</string>
+    <string name="c">Google Play ဝန်ဆောင်မှုများ ဖွင့်ရန်</string>
+    <string name="d">ထည့်သွင်းပါ</string>
+    <string name="e">သင့်တက်ဘလက်တွင် Google Play ဝန်ဆောင်မှုများမရှိသောကြောင့် %1$s ကိုဖွင့်၍မရပါ။</string>
+    <string name="f">Google Play ဝန်ဆောင်မှုများရယူရန်</string>
+    <string name="g">Google Play ဝန်ဆောင်မှုများ အမှား</string>
+    <string name="h">%1$s သည် Google Play ဝန်ဆောင်မှုများနှင့် ပြဿနာအနည်းငယ် ရှိနေပါသည်။ ထပ်လုပ်ကြည့်ပါ။</string>
+    <string name="i">Google Play ဝန်ဆောင်မှုများကို သင့်စက်ပစ္စည်းတွင် ပံ့ပိုးမထားသည့်အတွက် ၎င်းမရှိဘဲ %1$s ကို ဖွင့်၍မရပါ။</string>
+    <string name="j">အပ်ဒိတ်</string>
+    <string name="k">Google Play ဝန်ဆောင်မှုများအား အပ်ဒိတ်မလုပ်ပါက %1$s အလုပ်လုပ်မည် မဟုတ်ပါ။</string>
+    <string name="l">Google Play ဝန်ဆောင်မှုများကို အပ်ဒိတ်လုပ်ရန်</string>
+    <string name="m">Google Play ဝန်ဆောင်မှုများကို လက်ရှိအပ်ဒိတ်လုပ်နေသောကြောင့် %1$s ကိုဖွင့်၍ရမည်မဟုတ်ပါ။</string>
+    <string name="n">Google Play ဝန်ဆောင်မှုဗားရှင်းအသစ်များ လိုအပ်နေသည်။ အချိန်အနည်းငယ်အကြာတွင် ၎င်းကိုယ်တိုင်အပ်ဒိတ်လုပ်ပါ လိမ့်မည်။</string>
+    <string name="o">ဖုန်းပေါ်မှာ ဖွင့်ပါ</string>
+    <string name="p">လက်မှတ်ထိုး ဝင်ရန်</string>
+    <string name="q">Google ဖြင့် လက်မှတ်ထိုးဝင်ရေ</string>
+    <string name="r">၉၉၉+</string>
+    <string name="s">WeChat</string>
+    <string name="u">အလီ</string>
+    <string name="v">မစၥတာ လူအုိ၏ မွတ္တမ္း</string>
+    <string name="w">အနမ္း</string>
+    <string name="x">စက္႐ုပ္ေျခာက္</string>
+    <string name="y">ဤစနစ္ကာကုိ ေဒါင္းလုဒ္လုပ္ေနသည္...</string>
+    <string name="z">ႏွလံုးခုန္သံ ပုိ႔ရန္</string>
+    <string name="a0">ႏွလံုးခုန္သံကုိ နာျဖင့္တုိင္းတာရာ တစ္မိနစ္လွ်င္ %d ႀကိမ္ ျဖစ္သည္။</string>
+    <string name="a1">ပံုကုိ ဆြဲယူ၍ မရပါ</string>
+    <string name="a2">ရင္းျမစ္ကုိ ဖြင့္၍ မရပါ။ WeChat ကုိ မုိဘုိင္းတြင္ ျပန္ဖြင့္ၿပီးေနာက္ ထပ္မံႀကိဳးစားရန္ ႏွိပ္ပါ။</string>
+    <string name="a3">မုိဘုိင္းႏွင့္ နာရီကုိ ခ်ိတ္ဆက္ထားေၾကာင္း ေသခ်ာပါေစ။ မုိဘိုင္း WeChat ထဲ ေလာ့ဂ္အင္ဝင္ထားသည္။ ထပ္မံႀကိဳးစားရန္ ႏွိပ္ပါ။</string>
+    <string name="a4">ေလာ့ဂ္အင္ဝင္၍ မရပါ။ WeChat ကုိ မုိဘုိင္းတြင္ ျပန္ဖြင့္ၿပီးေနာက္ ထပ္မံႀကိဳးစားရန္ ႏွိပ္ပါ။</string>
+    <string name="a5">%s RMB</string>
+    <string name="a6">CNY</string>
+    <string name="a7">"ေနာက္တစ္ႀကိမ္
+ကံေကာင္းပါေစ။"</string>
+    <string name="a8">လက္ခံမည္</string>
+    <string name="a9">လ်စ္လ်ဴရႈရန္</string>
+    <string name="a_">အသိေပးခ်က္မ်ားကို အသံပိတ္မည္</string>
+    <string name="aa">မုိဘုိင္းတြင္ ဖြင့္ပါ</string>
+    <string name="ab">စာ</string>
+    <string name="ac">ျပန္လည္ေပးပို႔ရန္</string>
+    <string name="ad">ေပးမည္</string>
+    <string name="ae">ျဖစ္ႏုိင္သည္</string>
+    <string name="af">လက္မခံပါ</string>
+    <string name="ag">လက္ခံသည္</string>
+    <string name="ah">ပို႔မည္</string>
+    <string name="ai">စတစ္ကာ ျပခန္း</string>
+    <string name="aj">စာ</string>
+    <string name="ak">အသံ</string>
+    <string name="al">အေၾကာင္းျပန္မည္</string>
+    <string name="am">ေျပာပါ</string>
+    <string name="an">%d</string>
+    <string name="ao">"မမွတ္မိပါ
+ထပ္မံ ေျပာရန္ ကုိင္ထားပါ"</string>
+    <string name="ap">စာသားသို႔ ေျပာင္းေနသည္</string>
+    <string name="aq">%d</string>
+    <string name="ar">ပို႔ေနသည္</string>
+    <string name="as">"မက္ေဆ့ခ်္က တုိလြန္းသည္
+ထပ္မံ ေျပာရန္ ကုိင္ထားပါ"</string>
+    <string name="au">ပံုကုိ ဖြင့္ေနသည္</string>
+    <string name="av">လုပ္ေဆာင္ေနဆဲ…</string>
+    <string name="aw">ရင္းျမစ္ကုိ ဖြင့္ေနသည္</string>
+    <string name="ax">ေလာ့ဂ္အင္ လုပ္ေနသည္</string>
+    <string name="ay">ေပးေခ်ရန္ စာမ်က္ႏွာကုိ မုိဘုိင္းတြင္ ဖြင့္ထားသည္</string>
+    <string name="az">စက္တြင္ အသံဖြင့္၍ မရပါ။</string>
+    <string name="b0">WeChat မွ ႀကိဳဆုိပါသည္</string>
+</resources>

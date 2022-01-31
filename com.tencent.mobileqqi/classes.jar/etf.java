@@ -1,59 +1,39 @@
-import android.view.View;
-import android.widget.Adapter;
-import com.tencent.mobileqq.activity.recent.LocalSearchBar;
-import com.tencent.mobileqq.activity.recent.OnRecentUserOpsListener;
-import com.tencent.mobileqq.search.ContactsSearchableRecentUser;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import com.tencent.mobileqq.activity.ForwardOperations;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
+import com.tencent.mobileqq.activity.voip.VoipAddressBookView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.search.ContactsSearchablePhoneContact;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class etf
-  implements AdapterView.OnItemClickListener
+  extends SearchResultDialog
 {
-  private long jdField_a_of_type_Long = 0L;
-  
-  public etf(LocalSearchBar paramLocalSearchBar) {}
-  
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public etf(VoipAddressBookView paramVoipAddressBookView, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, ForwardOperations paramForwardOperations)
   {
-    paramLong = System.currentTimeMillis();
-    long l = Math.abs(paramLong - this.jdField_a_of_type_Long);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "onItemClick() gap = " + l);
+    super(paramContext, paramQQAppInterface, paramInt, paramForwardOperations);
+  }
+  
+  @SuppressLint({"UseSparseArrays"})
+  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = new ArrayList();
+    ((ArrayList)localObject).addAll(this.a.a);
+    localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      localArrayList.add(new ContactsSearchablePhoneContact(paramContext, paramQQAppInterface, (PhoneContact)((Iterator)localObject).next(), 38654705664L));
     }
-    if (l < 250L) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent", 2, "onItemClick() 点击太快了吧， pos = " + paramInt);
-      }
-    }
-    label189:
-    for (;;)
-    {
-      return;
-      this.jdField_a_of_type_Long = paramLong;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent", 2, "onItemClick() pos = " + paramInt);
-      }
-      paramAdapterView = paramAdapterView.a();
-      if (paramAdapterView == null) {}
-      for (paramAdapterView = null;; paramAdapterView = paramAdapterView.getItem(paramInt))
-      {
-        if (!(paramAdapterView instanceof ContactsSearchableRecentUser)) {
-          break label189;
-        }
-        paramAdapterView = (ContactsSearchableRecentUser)paramAdapterView;
-        if (LocalSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLocalSearchBar) == null) {
-          break;
-        }
-        LocalSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLocalSearchBar).a(paramView, paramAdapterView, paramAdapterView.c(), false);
-        return;
-      }
-    }
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     etf
  * JD-Core Version:    0.7.0.1
  */

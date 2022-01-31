@@ -1,31 +1,29 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.troop.widget.ProfileGuideHelper;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.17.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.core.ViolaEnvironment;
 
 public class sqz
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements srg
 {
-  public sqz(FriendProfileCardActivity paramFriendProfileCardActivity, View paramView, int paramInt1, int paramInt2) {}
+  public sqz(ViolaBaseView paramViolaBaseView, boolean paramBoolean, long paramLong) {}
   
-  public void onGlobalLayout()
+  public void a() {}
+  
+  public void a(String paramString)
   {
-    int[] arrayOfInt = new int[2];
-    this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(arrayOfInt);
-    int i = arrayOfInt[1];
-    int j = this.jdField_a_of_type_AndroidViewView.getHeight();
-    if ((i + j <= this.jdField_a_of_type_Int - this.b) && (i != this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.j))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.a(i, j, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.j = i;
+    if (this.jdField_a_of_type_Boolean) {
+      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.TIME_BIZ_JS_OFFLINE, Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    if (QLog.isColorLevel()) {
+      ThreadManager.post(new ViolaBaseView.17.1(this, paramString), 8, null, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sqz
  * JD-Core Version:    0.7.0.1
  */

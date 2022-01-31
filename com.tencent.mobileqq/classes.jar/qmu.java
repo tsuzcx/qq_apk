@@ -1,18 +1,24 @@
-import com.tencent.gdtad.views.video.GdtVideoCommonView;
-
 public class qmu
-  implements Runnable
+  implements Cloneable
 {
-  public qmu(GdtVideoCommonView paramGdtVideoCommonView) {}
+  public int a = 0;
+  public long a;
+  public long b;
   
-  public void run()
+  public qmu a()
   {
-    this.a.d();
+    try
+    {
+      qmu localqmu = (qmu)super.clone();
+      return localqmu;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qmu
  * JD-Core Version:    0.7.0.1
  */

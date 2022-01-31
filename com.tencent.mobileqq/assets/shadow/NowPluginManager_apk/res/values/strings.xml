@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">plugin_manager</string>
+    <string name="qb_now_first_tips">直播组件加载中</string>
+</resources>

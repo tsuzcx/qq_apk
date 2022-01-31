@@ -1,20 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserDebugHelper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.Manager;
 
 public class akop
-  implements DialogInterface.OnClickListener
+  implements Manager
 {
-  public akop(SwiftBrowserDebugHelper paramSwiftBrowserDebugHelper) {}
+  public static String a = "ApolloNativeSSOReqMgr";
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public akop(QQAppInterface paramQQAppInterface)
   {
-    paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, "[ApolloNativeSSOReqMgr]");
+    }
   }
+  
+  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akop
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.widget.PublishItemBar;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import java.util.ArrayList;
 
-public class aitm
-  implements Animation.AnimationListener
+class aitm
+  implements View.OnClickListener
 {
-  public aitm(AbsPublishActivity paramAbsPublishActivity) {}
+  aitm(aitl paramaitl) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.a.clearAnimation();
+    AIOLongShotHelper.a(this.a.mActivity, (String)aitl.a(this.a).selectedPhotoList.get(0), new aitn(this));
+    AIOLongShotHelper.a("0X8009DEE");
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

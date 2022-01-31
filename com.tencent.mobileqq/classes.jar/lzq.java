@@ -1,19 +1,17 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.video.OrientationDetector;
-
-public class lzq
-  implements Runnable
+class lzq
+  implements mag
 {
-  public lzq(OrientationDetector paramOrientationDetector, Activity paramActivity) {}
+  lzq(lzp paramlzp, String paramString) {}
   
-  public void run()
+  public void a(maf parammaf)
   {
-    OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector, this.jdField_a_of_type_AndroidAppActivity.getRequestedOrientation());
+    parammaf.a(this.jdField_a_of_type_JavaLangString);
+    parammaf.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lzq
  * JD-Core Version:    0.7.0.1
  */

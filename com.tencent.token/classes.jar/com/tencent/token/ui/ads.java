@@ -1,18 +1,19 @@
 package com.tencent.token.ui;
 
-import android.widget.ListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.token.core.bean.MbInfoResult.MbInfoItem;
+import com.tencent.token.cw;
 
-final class ads
-  implements Runnable
+class ads
+  implements DialogInterface.OnClickListener
 {
-  ads(adr paramadr, int paramInt) {}
+  ads(adr paramadr, UtilsMbInfoItemActivity paramUtilsMbInfoItemActivity) {}
   
-  public final void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    UtilsGameLockActivity.access$300(this.b.a).requestFocusFromTouch();
-    UtilsGameLockActivity.access$300(this.b.a).setSelection(this.a);
-    UtilsGameLockActivity.access$300(this.b.a).requestFocus();
-    UtilsGameLockActivity.access$202(this.b.a, 0);
+    cw.a().b(0L, UtilsMbInfoItemActivity.access$300(this.b.d).mId, UtilsMbInfoItemActivity.access$600(this.b.d));
+    this.a.showProDialog(this.a, 2131230843, 2131231567, null);
   }
 }
 

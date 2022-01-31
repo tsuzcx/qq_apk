@@ -1,29 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.pubaccount.readinjoy.video.multivideo.MultiVideoFragment;
 
 public class rmy
-  implements View.OnClickListener
+  extends RecyclerView.OnScrollListener
 {
-  public rmy(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  private int jdField_a_of_type_Int = 0;
   
-  public void onClick(View paramView)
+  private rmy(MultiVideoFragment paramMultiVideoFragment) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    paramView = (View)paramView.getParent();
-    if ((paramView == null) || (paramView.getTag() == null)) {}
-    do
-    {
-      return;
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8007146", "0X8007146", 0, 0, "", "", "", "");
-    } while (!(paramView.getTag() instanceof SubAccountInfo));
-    this.a.a((SubAccountInfo)paramView.getTag());
+    if (paramInt == 0) {}
+    rna.a(MultiVideoFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoMultivideoMultiVideoFragment), new rmz(this, paramInt));
+    this.jdField_a_of_type_Int = paramInt;
   }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rmy
  * JD-Core Version:    0.7.0.1
  */

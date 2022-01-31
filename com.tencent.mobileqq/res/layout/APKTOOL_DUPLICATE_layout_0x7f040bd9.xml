@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f24" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a22d1" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022198" android:paddingLeft="0.0dip" android:paddingTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0227" android:paddingRight="0.0dip" android:paddingBottom="0.0dip" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="left" android:orientation="vertical" android:id="@id/content" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</com.tencent.mobileqq.widget.BounceScrollView>

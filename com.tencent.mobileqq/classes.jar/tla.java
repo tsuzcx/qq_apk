@@ -1,31 +1,22 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import mqq.app.MobileQQ;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.util.OuterInterceptManager.1;
 
 public class tla
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public tla(QQSettingMe paramQQSettingMe) {}
+  public tla(OuterInterceptManager.1 param1) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null)
-    {
-      String str = this.a.a.getCurrentAccountUin();
-      if (!TextUtils.isEmpty(str)) {
-        WebProcessManager.a(str, "key_individuation_click_time");
-      }
-      this.a.a.getApplication().getSharedPreferences("emoticon_panel_" + this.a.a.getCurrentAccountUin(), 0).edit().putLong("sp_key_market_open_time", System.currentTimeMillis()).commit();
+    if (this.a.a != null) {
+      this.a.a.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tla
  * JD-Core Version:    0.7.0.1
  */

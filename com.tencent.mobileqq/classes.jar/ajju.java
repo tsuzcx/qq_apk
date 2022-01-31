@@ -1,85 +1,114 @@
-import android.graphics.Color;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment.SearchArticle;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
-public class ajju
-  extends BaseAdapter
+public abstract class ajju
 {
-  private SearchReciteArticleFragment jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment;
-  private String jdField_a_of_type_JavaLangString;
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
+  public static final int[] a;
+  public static final int[] b = { 2130839329, 2130839328, 2130839328, 2130839328, 2130839330, 2130839330, 2130839330, 2130839328, 2130839328, 2130839330 };
+  public static final int[] c = { 2131370198, 2131370219, 2131370192, 2131370212, 2131370209, 2131370210, 2131370222, 2131370218, 2131370217, 2131370191 };
+  protected ajit a;
+  protected bibh a;
   
-  public ajju(SearchReciteArticleFragment paramSearchReciteArticleFragment)
+  static
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment = paramSearchReciteArticleFragment;
+    jdField_a_of_type_ArrayOfInt = new int[] { 2131691562, 2131691340, 2131691310, 2131691314, 2131691311, 2131691312, 2131694602, 2131693304, 2131693302, 2131691309 };
   }
   
-  public SearchReciteArticleFragment.SearchArticle a(int paramInt)
+  public int a()
   {
-    return (SearchReciteArticleFragment.SearchArticle)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return 1;
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
+  public abstract View a(int paramInt, Object paramObject, ajjp paramajjp, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ajlm paramajlm);
   
-  public void a(SearchReciteArticleFragment.SearchArticle paramSearchArticle)
+  public final View a(Context paramContext, int paramInt, ajjw paramajjw)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramSearchArticle);
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    View localView = LayoutInflater.from(paramContext).inflate(paramInt, null);
+    if ((this.jdField_a_of_type_Ajit != null) && (this.jdField_a_of_type_Ajit.a()))
     {
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130969924, null, false);
-      paramViewGroup = new ajjv(this, null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131361926));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131368491));
-      paramViewGroup.c = ((TextView)paramView.findViewById(2131361932));
-      paramViewGroup.b.setOnClickListener(paramViewGroup);
-      paramView.setTag(paramViewGroup);
-      paramViewGroup.jdField_a_of_type_Int = paramInt;
-      SearchReciteArticleFragment.SearchArticle localSearchArticle = a(paramInt);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(SearchReciteArticleFragment.a(this.jdField_a_of_type_JavaLangString, localSearchArticle.jdField_a_of_type_JavaLangString, Color.parseColor("#00B6F9")));
-      paramViewGroup.c.setText(SearchReciteArticleFragment.a(this.jdField_a_of_type_JavaLangString, localSearchArticle.b, Color.parseColor("#00B6F9")));
-      paramViewGroup = paramViewGroup.b;
-      if (localSearchArticle.jdField_a_of_type_Int != 1) {
-        break label175;
+      if (this.jdField_a_of_type_Bibh == null) {
+        this.jdField_a_of_type_Bibh = a(paramContext);
+      }
+      return this.jdField_a_of_type_Bibh.a(paramContext, localView, paramajjw, -1);
+    }
+    paramajjw.g = localView;
+    paramajjw.a = null;
+    return localView;
+  }
+  
+  public bibh a(Context paramContext)
+  {
+    int i = paramContext.getResources().getDimensionPixelSize(2131298631);
+    int j = paramContext.getResources().getDimensionPixelSize(2131298632);
+    int k = a();
+    paramContext = c;
+    int[] arrayOfInt1 = jdField_a_of_type_ArrayOfInt;
+    int[] arrayOfInt2 = b;
+    return new ajjv(this, k, 2, new int[] { i, j }, -1, paramContext, arrayOfInt1, arrayOfInt2);
+  }
+  
+  public List<String> a(RecentBaseData paramRecentBaseData, Context paramContext)
+  {
+    return null;
+  }
+  
+  public void a(ajit paramajit)
+  {
+    this.jdField_a_of_type_Ajit = paramajit;
+  }
+  
+  public void a(Context paramContext, View paramView, int paramInt, Object paramObject, ajjw paramajjw, View.OnClickListener paramOnClickListener)
+  {
+    if (this.jdField_a_of_type_Bibh != null) {}
+    for (int i = this.jdField_a_of_type_Bibh.a(paramContext, paramView, paramInt, paramObject, paramajjw, paramOnClickListener);; i = 0)
+    {
+      int j = paramView.getScrollX();
+      if ((paramInt >= 0) && (this.jdField_a_of_type_Ajit != null) && (this.jdField_a_of_type_Ajit.a == paramInt))
+      {
+        paramView.scrollTo(i, 0);
+        if ((j != 0) && (QLog.isDevelopLevel())) {
+          if (this.jdField_a_of_type_Ajit != null) {
+            break label123;
+          }
+        }
+      }
+      label123:
+      for (paramContext = null;; paramContext = Integer.valueOf(this.jdField_a_of_type_Ajit.a))
+      {
+        auwz.a("updateItemMenuView", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(j), paramContext });
+        return;
+        if (j == 0) {
+          break;
+        }
+        paramView.scrollTo(0, 0);
+        break;
       }
     }
-    label175:
-    for (paramInt = 0;; paramInt = 8)
+  }
+  
+  protected void a(View paramView)
+  {
+    if ((paramView instanceof DynamicAvatarView))
     {
-      paramViewGroup.setVisibility(paramInt);
-      return paramView;
-      paramViewGroup = (ajjv)paramView.getTag();
-      break;
+      paramView = (DynamicAvatarView)paramView;
+      if (paramView.a == null) {
+        paramView.a = new bibv();
+      }
+      paramView.a.a(true);
     }
   }
+  
+  public void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, Drawable paramDrawable) {}
 }
 
 

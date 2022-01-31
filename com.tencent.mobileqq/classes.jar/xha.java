@@ -1,34 +1,69 @@
-import Wallet.GetGroupRedPackListRsp;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetAvailableListListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import java.lang.ref.SoftReference;
-import java.util.HashMap;
+import android.graphics.PointF;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import java.util.List;
 
-class xha
-  implements Runnable
+public class xha
+  implements xec
 {
-  xha(xgz paramxgz, GetGroupRedPackListRsp paramGetGroupRedPackListRsp) {}
+  private xha(DoodleLayout paramDoodleLayout) {}
   
-  public void run()
+  public void a()
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Xgz.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketManager.b != null)
+    this.a.d(3);
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (paramFloat == 1.0F) {
+      this.a.jdField_a_of_type_Xfh.a(this.a.a().a());
+    }
+  }
+  
+  public void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3) {}
+  
+  public boolean a(xed paramxed)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView != null) && (paramxed != null))
     {
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_Xgz.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketManager.b.get(this.jdField_a_of_type_Xgz.b + "_" + this.jdField_a_of_type_Xgz.jdField_a_of_type_Int) != null) {
-        localObject1 = (IRedPacket.OnGetAvailableListListener)((SoftReference)this.jdField_a_of_type_Xgz.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketManager.b.get(this.jdField_a_of_type_Xgz.b + "_" + this.jdField_a_of_type_Xgz.jdField_a_of_type_Int)).get();
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.setVisibility(0);
+      Object localObject;
+      if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b())
+      {
+        localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a();
+        ((xiq)localObject).d = false;
+        if (!(localObject instanceof xdr)) {
+          break label124;
+        }
+        xdn localxdn = this.a.a();
+        if (localxdn != null) {
+          localxdn.a.add((xdr)localObject);
+        }
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a(paramxed);
+        paramxed.d = true;
+        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.requestLayout();
+        return true;
+        label124:
+        if ((localObject instanceof xed))
+        {
+          localObject = this.a.a();
+          if (localObject != null) {
+            ((xeb)localObject).d();
+          }
+        }
       }
     }
-    if (localObject1 == null) {
-      return;
-    }
-    this.jdField_a_of_type_Xgz.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketManager.a(this.jdField_a_of_type_Xgz.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Xgz.b, this.jdField_a_of_type_Xgz.jdField_a_of_type_Int, (IRedPacket.OnGetAvailableListListener)localObject1, this.jdField_a_of_type_WalletGetGroupRedPackListRsp, false);
+    return false;
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xha
  * JD-Core Version:    0.7.0.1
  */

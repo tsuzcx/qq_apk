@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class adrx
-  implements Runnable
+public class adrx
+  implements DialogInterface.OnClickListener
 {
-  adrx(adrw paramadrw) {}
+  public adrx(QQSettingCleanActivity paramQQSettingCleanActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    PresenceInterfaceImpl.a(this.a.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl, true);
-    PresenceInterfaceImpl.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
-    this.a.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl.a.b(-11);
-    QLog.d("PresenceInterfaceImpl", 2, "saveUserPermission false");
+    ThreadManager.executeOnNetWorkThread(new QQSettingCleanActivity.2.1(this));
   }
 }
 

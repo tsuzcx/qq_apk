@@ -7,17 +7,16 @@ import dalvik.system.DexClassLoader;
 public class QZoneVerticalVideoClassLoader
   extends DexClassLoader
 {
-  private ClassLoader a;
-  private final String[] b = new String[0];
+  private ClassLoader mGrandParent;
+  private final String[] mInterceptPackageNames = new String[0];
   
   public QZoneVerticalVideoClassLoader(String paramString1, String paramString2, String paramString3, ClassLoader paramClassLoader)
   {
     super(paramString1, paramString2, paramString3, paramClassLoader);
-    this.a = paramClassLoader.getParent().getParent();
+    this.mGrandParent = paramClassLoader.getParent().getParent();
   }
   
-  protected Class loadClass(String paramString, boolean paramBoolean)
-    throws ClassNotFoundException
+  protected Class<?> loadClass(String paramString, boolean paramBoolean)
   {
     int j = 0;
     int i = paramString.lastIndexOf('.');
@@ -25,7 +24,7 @@ public class QZoneVerticalVideoClassLoader
     Object localObject2;
     for (Object localObject1 = paramString.substring(0, i);; localObject1 = "")
     {
-      localObject2 = this.b;
+      localObject2 = this.mInterceptPackageNames;
       int k = localObject2.length;
       i = 0;
       while (i < k)
@@ -65,7 +64,7 @@ public class QZoneVerticalVideoClassLoader
     } while (localObject2 != null);
     try
     {
-      paramString = this.a.loadClass(paramString);
+      paramString = this.mGrandParent.loadClass(paramString);
       return paramString;
     }
     catch (ClassNotFoundException paramString)

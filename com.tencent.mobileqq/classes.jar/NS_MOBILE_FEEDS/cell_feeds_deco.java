@@ -36,7 +36,7 @@ public final class cell_feeds_deco
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_feeds_deco
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.pb;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -130,7 +129,6 @@ public final class PBRepeatMessageField<T extends MessageMicro<T>>
   }
   
   public void readFrom(CodedInputStreamMicro paramCodedInputStreamMicro)
-    throws IOException
   {
     try
     {
@@ -151,7 +149,6 @@ public final class PBRepeatMessageField<T extends MessageMicro<T>>
   }
   
   protected List<T> readFromDirectly(CodedInputStreamMicro paramCodedInputStreamMicro)
-    throws IOException
   {
     throw new RuntimeException("PBRepeatField not support readFromDirectly method.");
   }
@@ -177,13 +174,11 @@ public final class PBRepeatMessageField<T extends MessageMicro<T>>
   }
   
   public void writeTo(CodedOutputStreamMicro paramCodedOutputStreamMicro, int paramInt)
-    throws IOException
   {
     writeToDirectly(paramCodedOutputStreamMicro, paramInt, this.value);
   }
   
   protected void writeToDirectly(CodedOutputStreamMicro paramCodedOutputStreamMicro, int paramInt, List<T> paramList)
-    throws IOException
   {
     paramList = paramList.iterator();
     for (;;)

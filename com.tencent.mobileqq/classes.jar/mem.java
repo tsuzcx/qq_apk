@@ -1,35 +1,32 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendManager;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class mem
-  implements Runnable
 {
-  public mem(VideoFeedsRecommendManager paramVideoFeedsRecommendManager) {}
-  
-  public void run()
+  public static void a(String paramString)
   {
-    VideoFeedsRecommendManager.a(this.a, ReadInJoyHelper.D(VideoFeedsRecommendManager.a(this.a)));
-    VideoFeedsRecommendManager.b(this.a, ReadInJoyHelper.E(VideoFeedsRecommendManager.a(this.a)));
-    VideoFeedsRecommendManager.a(this.a, ReadInJoyHelper.a(VideoFeedsRecommendManager.a(this.a)));
-    VideoFeedsRecommendManager.c(this.a, ReadInJoyHelper.F(VideoFeedsRecommendManager.a(this.a)));
-    if ((VideoFeedsRecommendManager.a(this.a) < 0.0F) || (VideoFeedsRecommendManager.a(this.a) > 1.0D)) {
-      VideoFeedsRecommendManager.a(this.a, 0.8F);
+    azqs.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
+  }
+  
+  public static void b(String paramString)
+  {
+    int i = 0;
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof VideoAppInterface)) {
+      i = ((VideoAppInterface)localObject).b("BEAUTY_SKIN");
     }
-    if (VideoFeedsRecommendManager.a(this.a) < 1000) {
-      VideoFeedsRecommendManager.b(this.a, 40000);
-    }
-    if (VideoFeedsRecommendManager.b(this.a) != 0) {
-      VideoFeedsRecommendManager.a(this.a, true);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoFeedsRecommendManager", 2, "init() 开关配置，mIsOpened = " + VideoFeedsRecommendManager.a(this.a) + ", mStrategyID = " + VideoFeedsRecommendManager.b(this.a) + ", mStrategyDurationLimit = " + VideoFeedsRecommendManager.a(this.a) + ", mStrategyDurationPercent = " + VideoFeedsRecommendManager.a(this.a) + ", mOperator = " + VideoFeedsRecommendManager.c(this.a));
+    if (i > 0) {}
+    for (localObject = "0X80076B4";; localObject = "0X80076B3")
+    {
+      a((String)localObject);
+      lek.c("BeautyToolbar", "DataReport onUserBeauty:" + paramString + "|" + i);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mem
  * JD-Core Version:    0.7.0.1
  */

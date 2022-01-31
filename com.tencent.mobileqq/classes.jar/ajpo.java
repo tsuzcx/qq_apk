@@ -1,17 +1,44 @@
-import android.content.Context;
-import android.os.AsyncTask;
-import com.dataline.core.DirectForwarder;
-import com.dataline.core.DirectForwarder.CallBack;
+import android.animation.Animator;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ajpo
-  extends DirectForwarder.CallBack
+public class ajpo
+  extends ajog
 {
-  public ajpo(Context paramContext) {}
+  public ajpo(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  protected void a(AsyncTask paramAsyncTask, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super.a(paramAsyncTask, paramInt);
-    DirectForwarder.a(this.a, paramAsyncTask, paramInt, new ajpp(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("FlowCameraActivity", 2, "enterPtvModeAnimation: onAnimationEnd <<===");
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.x();
+    this.a.m();
+    if (!this.a.jdField_f_of_type_Boolean) {
+      this.a.e(false);
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FlowCameraActivity", 2, "enterPtvModeAnimation: onAnimationStart ===>>");
+    }
+    this.a.e.setVisibility(0);
+    this.a.jdField_f_of_type_AndroidViewView.setBackgroundColor(this.a.getResources().getColor(2131165611));
+    this.a.c = true;
+    if (this.a.jdField_a_of_type_Ajqc != null) {
+      this.a.jdField_a_of_type_Ajqc.b();
+    }
+    if (this.a.jdField_f_of_type_Boolean)
+    {
+      this.a.b.setOnTouchListener(this.a.jdField_a_of_type_AndroidViewView$OnTouchListener);
+      this.a.b.setLongClickable(false);
+    }
   }
 }
 

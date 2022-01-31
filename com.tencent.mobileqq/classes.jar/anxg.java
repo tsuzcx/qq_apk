@@ -1,36 +1,29 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.LayerListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.view.View;
 
-public class anxg
-  implements ValueAnimator.AnimatorUpdateListener
+class anxg
+  extends AnimatorListenerAdapter
 {
-  public anxg(TextLayer.TextItem paramTextItem) {}
+  anxg(anxd paramanxd, ObjectAnimator paramObjectAnimator) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.a.a.b == null) {
-      return;
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Anxd.c != null) {
+      this.jdField_a_of_type_Anxd.c.setVisibility(0);
     }
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.s = (this.a.d + this.a.f * f);
-    this.a.t = (this.a.e + this.a.g * f);
-    this.a.q = (this.a.b + this.a.h * f);
-    this.a.r = (this.a.c + this.a.i * f);
-    if (this.a.a.a != null) {
-      this.a.a.a.a(f);
-    }
-    if (f == 1.0F) {
-      this.a.a.b(5);
-    }
-    TextLayer.a(this.a.a);
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anxg
  * JD-Core Version:    0.7.0.1
  */

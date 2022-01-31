@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARBaseRender;
-import com.tencent.mobileqq.arcard.ARCardRender;
-import java.util.Map;
+import android.content.Context;
+import android.view.View;
+import com.tencent.ad.tangram.image.AdImageViewAdapter;
+import com.tencent.ad.tangram.image.AdImageViewAdapter.Params;
+import com.tencent.gdtad.views.image.GdtGifImageView;
+import java.lang.ref.WeakReference;
 
 public class aame
-  implements Runnable
+  implements AdImageViewAdapter
 {
-  public aame(ARCardRender paramARCardRender) {}
-  
-  public void run()
+  public View buildImageView(AdImageViewAdapter.Params paramParams)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender != null)
+    if ((paramParams != null) && (paramParams.isValid()))
     {
-      this.a.jdField_a_of_type_JavaUtilMap.remove(this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.a());
-      this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.d();
-      this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender = null;
+      WeakReference localWeakReference = new WeakReference(new aamf(this, paramParams));
+      return new GdtGifImageView((Context)paramParams.context.get(), paramParams.url, paramParams.guassianUrl, localWeakReference);
     }
+    return null;
   }
 }
 

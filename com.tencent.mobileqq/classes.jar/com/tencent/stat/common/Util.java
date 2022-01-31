@@ -20,7 +20,6 @@ import java.io.File;
 import java.util.Collections;
 import java.util.List;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Util
@@ -447,7 +446,6 @@ public class Util
   }
   
   public static void jsonPut(JSONObject paramJSONObject, String paramString1, String paramString2)
-    throws JSONException
   {
     if (paramString2 != null) {}
     try

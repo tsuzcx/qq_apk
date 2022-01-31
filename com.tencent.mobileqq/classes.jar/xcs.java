@@ -1,43 +1,24 @@
-import Wallet.RspWalletConfig;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.graphics.Bitmap;
 
 public class xcs
-  implements BusinessObserver
 {
-  public xcs(QWalletConfigManager paramQWalletConfigManager) {}
+  public final int c;
+  public final Bitmap c;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public xcs(int paramInt, Bitmap paramBitmap)
   {
-    if (paramInt == 17)
-    {
-      if (!paramBoolean) {}
-      try
-      {
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.d("QWalletConfigManager", 2, "setConfigSession fail get rsp:");
-        return;
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle.printStackTrace();
-      }
-      paramBundle = (RspWalletConfig)paramBundle.getSerializable("rsp");
-      if (QLog.isColorLevel())
-      {
-        QLog.d("QWalletConfigManager", 2, "setConfigSession RspWalletConfig|" + paramBundle);
-        return;
-      }
-    }
+    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_c_of_type_AndroidGraphicsBitmap = paramBitmap;
+  }
+  
+  public String toString()
+  {
+    return "VideoFragmentInfo{blockIndex=" + this.jdField_c_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xcs
  * JD-Core Version:    0.7.0.1
  */

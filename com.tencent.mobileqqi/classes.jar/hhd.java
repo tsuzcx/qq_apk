@@ -1,20 +1,29 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.QQMapView;
+import com.tencent.mobileqq.widget.QQMapView.QQMapViewObserver;
+import com.tencent.tencentmap.mapsdk.map.GeoPoint;
 
 public class hhd
-  implements View.OnTouchListener
+  extends Handler
 {
-  public hhd(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput) {}
+  public hhd(QQMapView paramQQMapView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839367);
-    return false;
+    GeoPoint localGeoPoint;
+    if ((paramMessage != null) && (paramMessage.obj != null) && (this.a.a != null)) {
+      localGeoPoint = (GeoPoint)paramMessage.obj;
+    }
+    switch (paramMessage.arg1)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.a.b(localGeoPoint);
+      return;
+    }
+    this.a.a.c(localGeoPoint);
   }
 }
 

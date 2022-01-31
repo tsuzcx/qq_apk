@@ -1,21 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.ttpic.util.Coffee;
+import com.tencent.ttpic.util.DecryptListener;
 
-class lkk
-  implements ViewBase.OnClickListener
+final class lkk
+  implements DecryptListener
 {
-  lkk(lkh paramlkh, ViewBase paramViewBase) {}
-  
-  public void a(ViewBase paramViewBase)
+  public byte[] decrypt(byte[] paramArrayOfByte)
   {
-    ReadInJoyUtils.a(this.jdField_a_of_type_Lkh.a.a(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.b());
+    return Coffee.drink(paramArrayOfByte, Coffee.getDefaultSign());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lkk
  * JD-Core Version:    0.7.0.1
  */

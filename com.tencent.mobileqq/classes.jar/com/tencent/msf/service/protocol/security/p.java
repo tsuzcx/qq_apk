@@ -10,11 +10,11 @@ public final class p
   static byte[] f;
   static byte[] g;
   static byte[] h;
-  public byte[] a;
+  public byte[] a = null;
   public String b = "";
   public String c = "";
-  public byte[] d;
-  public byte[] e;
+  public byte[] d = null;
+  public byte[] e = null;
   
   public p() {}
   

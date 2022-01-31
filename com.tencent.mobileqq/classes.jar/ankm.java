@@ -1,37 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.statistics.QIMReportController;
-import com.tencent.mobileqq.statistics.reportitem.QIMReadWriteReportItem;
-import com.tencent.mobileqq.troop.widget.RedDotImageView;
-import dov.com.qq.im.capture.QIMCaptureController;
-import dov.com.qq.im.capture.banner.QIMCaptureBannerManager;
-import dov.com.qq.im.capture.view.PressScaleAnimDelegate;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.TicketManager;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class ankm
-  implements View.OnClickListener
+class ankm
+  implements WtTicketPromise
 {
-  public ankm(QIMCaptureController paramQIMCaptureController, RedDotImageView paramRedDotImageView, boolean paramBoolean1, boolean paramBoolean2, QIMCaptureBannerManager paramQIMCaptureBannerManager, boolean paramBoolean3) {}
+  ankm(anke paramanke, TicketManager paramTicketManager, QQAppInterface paramQQAppInterface, String paramString, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void Done(Ticket paramTicket)
   {
-    paramView = new ankn(this);
-    if ((this.jdField_a_of_type_Boolean) && (this.b)) {
-      this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerManager.c(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkApp", 2, "--- pskey async done---  ");
     }
-    if ((this.jdField_a_of_type_Boolean) && (this.c)) {
-      this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerManager.d(true);
-    }
-    PressScaleAnimDelegate.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView, 200L, paramView);
-    QIMCaptureController.a(this.jdField_a_of_type_DovComQqImCaptureQIMCaptureController, (RelativeLayout)QIMCaptureController.a(this.jdField_a_of_type_DovComQqImCaptureQIMCaptureController).findViewById(2131365911));
-    paramView = new QIMReadWriteReportItem();
-    paramView.d = "0X8008D52";
-    QIMReportController.b(null, paramView);
+    paramTicket = this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
+    anke.a(this.jdField_a_of_type_Anke, this.jdField_a_of_type_Long, true, paramTicket);
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    QLog.e("ArkApp", 1, "--- pskey async failed---  " + paramErrMsg.getMessage());
+    anke.a(this.jdField_a_of_type_Anke, this.jdField_a_of_type_Long, false, null);
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    QLog.e("ArkApp", 1, "--- pskey async timeout---  " + paramErrMsg.getMessage());
+    anke.a(this.jdField_a_of_type_Anke, this.jdField_a_of_type_Long, false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ankm
  * JD-Core Version:    0.7.0.1
  */

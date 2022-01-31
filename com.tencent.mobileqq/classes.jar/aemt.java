@@ -1,33 +1,19 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.nearby.NearbyProxy;
-import com.tencent.mobileqq.util.FaceDecoder.DecodeTaskCompletionListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aemt
-  implements FaceDecoder.DecodeTaskCompletionListener
+class aemt
+  implements View.OnClickListener
 {
-  public aemt(NearbyProxy paramNearbyProxy) {}
+  aemt(aemq paramaemq, aemn paramaemn) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    synchronized (this.a.a)
-    {
-      if (this.a.a.contains(paramString))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("NearbyProxy", 2, "onDecodeTaskCompleted: reqUin=" + paramString + ", avatar=" + paramBitmap);
-        }
-        this.a.a.remove(paramString);
-        NearbyProxy.a(this.a, 4154, new Object[] { Integer.valueOf(paramInt2), paramString, paramBitmap });
-      }
-      return;
-    }
+    this.jdField_a_of_type_Aemq.a.a(this.jdField_a_of_type_Aemn);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aemt
  * JD-Core Version:    0.7.0.1
  */

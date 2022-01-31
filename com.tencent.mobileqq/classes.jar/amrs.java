@@ -1,22 +1,30 @@
-import android.net.Proxy;
-import cooperation.qzone.QZoneHttpUtil.HttpProxy;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public final class amrs
-  extends QZoneHttpUtil.HttpProxy
+class amrs
+  implements QQPermissionCallback
 {
-  public int a()
+  amrs(amrr paramamrr, BaseActivity paramBaseActivity, amrp paramamrp) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return Proxy.getDefaultPort();
+    if (QLog.isColorLevel()) {
+      QLog.d("sms.content", 2, "checkPermission, deny");
+    }
   }
   
-  public String a()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return Proxy.getDefaultHost();
+    amrr.a(this.jdField_a_of_type_Amrr, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Amrp);
+    if (QLog.isColorLevel()) {
+      QLog.d("sms.content", 2, "checkPermission, grant");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amrs
  * JD-Core Version:    0.7.0.1
  */

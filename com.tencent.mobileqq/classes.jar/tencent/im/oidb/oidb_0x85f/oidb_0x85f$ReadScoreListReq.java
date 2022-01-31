@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x85f$ReadScoreListReq
-  extends MessageMicro
+  extends MessageMicro<ReadScoreListReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48 }, new String[] { "uint32_index_begin", "uint32_index_end", "uint32_dimension", "uint32_index_order", "uint32_day", "uint64_user_id" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L) }, ReadScoreListReq.class);
   public final PBUInt32Field uint32_day = PBField.initUInt32(0);
@@ -19,7 +19,7 @@ public final class oidb_0x85f$ReadScoreListReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.oidb_0x85f.oidb_0x85f.ReadScoreListReq
  * JD-Core Version:    0.7.0.1
  */

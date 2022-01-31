@@ -1,13 +1,27 @@
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 
-public class gxl
+public final class gxl
   implements Runnable
 {
-  public gxl(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  public gxl(QQAppInterface paramQQAppInterface, Entity paramEntity) {}
   
   public void run()
   {
-    this.a.a(true);
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
+    if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity != null) && (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity.getId() != -1L)) {
+      if (!localEntityManager.a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity)) {
+        localEntityManager.a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity.getClass());
+      }
+    }
+    for (;;)
+    {
+      localEntityManager.a();
+      return;
+      localEntityManager.a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity);
+    }
   }
 }
 

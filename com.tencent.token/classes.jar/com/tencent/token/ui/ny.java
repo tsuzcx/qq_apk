@@ -1,18 +1,17 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class ny
-  implements View.OnClickListener
+class ny
+  implements DialogInterface.OnClickListener
 {
-  ny(nx paramnx, int paramInt) {}
+  ny(nw paramnw) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    nx.a(this.b, this.a);
-    nx.b(this.b).checkMenuBtnEnable(nx.a(this.b));
-    this.b.notifyDataSetChanged();
+    nw.a(this.a).f.d = false;
+    nu.a(this.a.a, nw.a(this.a));
   }
 }
 

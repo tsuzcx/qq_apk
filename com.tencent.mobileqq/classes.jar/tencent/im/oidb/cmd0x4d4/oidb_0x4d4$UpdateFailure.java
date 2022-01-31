@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.trunk.Qworkflow.Qworkflow.Workflow;
 
 public final class oidb_0x4d4$UpdateFailure
-  extends MessageMicro
+  extends MessageMicro<UpdateFailure>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_error_msg = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -26,7 +26,7 @@ public final class oidb_0x4d4$UpdateFailure
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x4d4.oidb_0x4d4.UpdateFailure
  * JD-Core Version:    0.7.0.1
  */

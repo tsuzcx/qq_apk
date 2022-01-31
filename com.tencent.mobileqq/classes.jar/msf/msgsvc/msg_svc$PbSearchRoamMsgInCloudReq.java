@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class msg_svc$PbSearchRoamMsgInCloudReq
-  extends MessageMicro
+  extends MessageMicro<PbSearchRoamMsgInCloudReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField serialize_reqbody = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -20,7 +20,7 @@ public final class msg_svc$PbSearchRoamMsgInCloudReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     msf.msgsvc.msg_svc.PbSearchRoamMsgInCloudReq
  * JD-Core Version:    0.7.0.1
  */

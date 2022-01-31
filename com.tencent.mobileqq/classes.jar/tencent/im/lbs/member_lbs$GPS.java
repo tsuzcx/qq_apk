@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class member_lbs$GPS
-  extends MessageMicro
+  extends MessageMicro<GPS>
 {
   public static final int INT64_ALTITUDE_FIELD_NUMBER = 3;
   public static final int INT64_LATITUDE_FIELD_NUMBER = 1;
@@ -21,7 +21,7 @@ public final class member_lbs$GPS
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.lbs.member_lbs.GPS
  * JD-Core Version:    0.7.0.1
  */

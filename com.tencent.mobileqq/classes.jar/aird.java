@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
-import com.tencent.mobileqq.transfile.ShortVideoForwardProcessor;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class aird
-  implements ITransCallbackForReport
+class aird
+  implements DialogInterface.OnClickListener
 {
-  public aird(ShortVideoForwardProcessor paramShortVideoForwardProcessor) {}
+  aird(aira paramaira) {}
   
-  public void onFailed(int paramInt, String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(false, this.a.j, paramString1, paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    }
+    if (((NewPhotoListActivity)this.a.mActivity).sendBtn != null) {
+      ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
+    }
   }
 }
 

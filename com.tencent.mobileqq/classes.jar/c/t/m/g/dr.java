@@ -1,334 +1,106 @@
 package c.t.m.g;
 
-import android.annotation.SuppressLint;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
-import android.telephony.CellInfo;
-import android.telephony.CellLocation;
-import android.telephony.PhoneStateListener;
-import android.telephony.ServiceState;
-import android.telephony.TelephonyManager;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.util.Base64;
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 
-final class dr
-  extends PhoneStateListener
+public final class dr
 {
-  volatile boolean a;
-  private final da b;
-  private final TelephonyManager c;
-  private ea d = null;
-  private ServiceState e = null;
-  private HandlerThread f;
-  private Handler g;
-  private Runnable h;
-  private Handler i;
-  private List<String> j;
-  private CellLocation k;
+  private static final byte[] a = { 84, 101, 110, 99, 101, 110, 116, 76, 111, 99, 97, 116, 105, 111, 110, 49 };
   
-  public dr(da paramda)
+  public static String a(String paramString1, String paramString2)
   {
-    this.b = paramda;
-    this.c = paramda.c();
-    this.h = new Runnable()
-    {
-      public final void run()
-      {
-        dr.a(dr.this);
-        dr.this.a = true;
-      }
-    };
+    return a(paramString1, paramString2, 1);
   }
   
-  private void a(int paramInt)
+  private static String a(String paramString1, String paramString2, int paramInt)
   {
-    try
-    {
-      this.b.c().listen(this, paramInt);
-      return;
+    Object localObject = null;
+    if ((paramInt != 1) && (paramInt != 2)) {
+      throw new IllegalArgumentException("wrong mode.");
     }
-    catch (Throwable localThrowable)
+    if ((paramString1 == null) || (paramString1.length() == 0))
     {
-      f.a.b("TxNewCellProvider", "listenCellState: failed! flags=" + paramInt + localThrowable.toString());
+      paramString1 = "";
+      return paramString1;
     }
-  }
-  
-  private void a(List<ea> paramList)
-  {
-    ea localea = null;
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramList.iterator();
-    paramList = localea;
-    if (localIterator.hasNext())
-    {
-      localea = (ea)localIterator.next();
-      localArrayList.add(localea.b());
-      if ((this.j == null) || (this.j.contains(localea.b()))) {
-        break label152;
-      }
-      paramList = localea;
-    }
-    label152:
+    if (paramInt == 1) {}
     for (;;)
     {
-      break;
-      this.j = localArrayList;
-      if (paramList != null)
-      {
-        this.d = paramList;
-        f.a.b("TxNewCellProvider", "notify");
-        if ((!this.a) || (this.d == null) || (this.b == null)) {
-          return;
-        }
-        try
-        {
-          this.b.b(this.d);
-          return;
-        }
-        finally
-        {
-          paramList = finally;
-          throw paramList;
-        }
-      }
-      f.a.b("TxNewCellProvider", "onTxCellInfoChange: same cell ");
-      return;
-    }
-  }
-  
-  public final void a()
-  {
-    if (!this.a) {
-      return;
-    }
-    this.a = false;
-    a(0);
-    try
-    {
-      if (this.g != null)
-      {
-        this.g.removeCallbacksAndMessages(null);
-        this.g = null;
-      }
-      if (this.f != null)
-      {
-        this.f.quit();
-        this.f = null;
-      }
-      this.e = null;
-      if (this.j != null) {
-        this.j = null;
-      }
-      f.a.a("TxNewCellProvider", "shutdown: state=[shutdown]");
-      return;
-    }
-    finally {}
-  }
-  
-  @SuppressLint({"NewApi"})
-  public final void a(Handler paramHandler, boolean paramBoolean)
-  {
-    if (this.a) {}
-    for (;;)
-    {
-      return;
-      this.i = paramHandler;
-      if (this.j == null) {
-        this.j = new ArrayList();
-      }
-      this.f = new HandlerThread("new_cell_provider");
-      if (this.f == null) {
-        continue;
-      }
       try
       {
-        this.f.start();
-        this.g = new a(this.f.getLooper(), (byte)0);
-        this.g.post(this.h);
-        if (paramBoolean) {
-          continue;
+        paramString1 = paramString1.getBytes();
+        if (paramString1 == null) {
+          break label124;
         }
-        this.g.sendEmptyMessage(0);
-        return;
-      }
-      catch (Throwable paramHandler)
-      {
-        for (;;)
+        if (paramString1.length == 0)
         {
-          this.g = new a(this.i.getLooper(), (byte)0);
+          break label124;
+          if (paramInt == 2) {
+            paramString1 = Base64.decode(paramString1.getBytes(), 2);
+          }
         }
-      }
-    }
-  }
-  
-  @SuppressLint({"NewApi"})
-  public final void onCellInfoChanged(List<CellInfo> paramList)
-  {
-    ArrayList localArrayList;
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      localArrayList = new ArrayList();
-      paramList = paramList.iterator();
-      label126:
-      while (paramList.hasNext())
-      {
-        Object localObject = (CellInfo)paramList.next();
-        if (((CellInfo)localObject).isRegistered())
+        else
         {
-          localObject = ea.a(this.b, (CellInfo)localObject);
-          if ((((ea)localObject).b < 0) || (((ea)localObject).c < 0) || (((ea)localObject).b == 535) || (((ea)localObject).c == 535)) {}
-          for (int m = 0;; m = 1)
-          {
-            if (m == 0) {
-              break label126;
-            }
-            localArrayList.add(localObject);
+          paramString2 = a(paramString1, paramString1.length, paramString2, paramInt);
+          if (paramInt == 1) {
+            return Base64.encodeToString(paramString2, 2);
+          }
+          paramString1 = localObject;
+          if (paramInt != 2) {
             break;
           }
+          paramString1 = new String(paramString2);
+          return paramString1;
         }
       }
-      if (localArrayList.size() <= 0) {
-        break label150;
-      }
-      a(localArrayList);
-    }
-    label150:
-    do
-    {
-      return;
-      f.a.b("TxNewCellProvider", "cellInfos list is null");
-      f.a.b("TxNewCellProvider", "cell info maybe has no rigister");
-      paramList = this.k;
-      if (paramList != null)
+      catch (Throwable paramString1)
       {
-        localArrayList = new ArrayList();
-        localArrayList.add(ea.a(this.b, paramList, null));
-        a(localArrayList);
-        return;
+        return "";
       }
-      f.a.b("TxNewCellProvider", "cellLocation is still null,so we use the last CellInfo,this happen when restart requestLocationUpdate");
-    } while (this.d == null);
-    paramList = new ArrayList();
-    paramList.add(this.d);
-    a(paramList);
+      paramString1 = null;
+    }
+    label124:
+    return "";
   }
   
-  public final void onServiceStateChanged(ServiceState paramServiceState)
+  private static byte[] a(byte[] paramArrayOfByte, int paramInt1, String paramString, int paramInt2)
   {
-    int n = 1;
-    int i2 = 0;
-    super.onServiceStateChanged(paramServiceState);
-    if (paramServiceState == null) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        ServiceState localServiceState = this.e;
-        if ((localServiceState != null) && (localServiceState.getState() == paramServiceState.getState())) {
-          continue;
-        }
-        this.e = paramServiceState;
-        if (!this.a) {
-          continue;
-        }
-        int m;
-        boolean bool;
-        if (this.e != null) {
-          if (this.e.getState() == 0)
-          {
-            m = 1;
-            paramServiceState = this.b.c();
-            bool = en.a(this.b.a);
-            if (paramServiceState == null) {
-              break label175;
-            }
-            if (paramServiceState.getSimState() != 5) {
-              break label164;
-            }
-            break label177;
-          }
-        }
-        for (;;)
-        {
-          paramServiceState = new Message();
-          paramServiceState.what = 12999;
-          paramServiceState.arg1 = 12003;
-          paramServiceState.arg2 = i1;
-          this.b.b(paramServiceState);
-          return;
-          m = this.e.getState();
-          if (m == 1)
-          {
-            m = 0;
-            break;
-          }
-          m = -1;
-          break;
-          label164:
-          n = 0;
-          label175:
-          label177:
-          do
-          {
-            i1 = m;
-            break;
-            n = 0;
-            i1 = i2;
-            if (bool) {
-              break;
-            }
-          } while (n != 0);
-          int i1 = i2;
-        }
-        return;
-      }
-      catch (Throwable paramServiceState) {}
+    if ((paramInt2 != 1) && (paramInt2 != 2)) {
+      throw new IllegalArgumentException("wrong mode.");
     }
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0) || (paramInt1 == 0)) {
+      return do.a;
+    }
+    try
+    {
+      paramString = new SecretKeySpec(paramString.getBytes("UTF-8"), "AES");
+      Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+      localCipher.init(paramInt2, paramString, new IvParameterSpec(a));
+      if (localCipher == null) {
+        return do.a;
+      }
+      paramArrayOfByte = localCipher.doFinal(paramArrayOfByte, 0, paramInt1);
+      return paramArrayOfByte;
+    }
+    catch (Throwable paramArrayOfByte) {}
+    return do.a;
   }
   
-  final class a
-    extends Handler
+  public static byte[] a(byte[] paramArrayOfByte, String paramString)
   {
-    private a(Looper paramLooper)
-    {
-      super();
-    }
-    
-    @SuppressLint({"NewApi"})
-    public final void handleMessage(Message paramMessage)
-    {
-      if (!dr.this.a) {}
-      do
-      {
-        return;
-        paramMessage = null;
-        if (dr.b(dr.this) != null) {}
-        try
-        {
-          List localList = dr.b(dr.this).getAllCellInfo();
-          paramMessage = localList;
-        }
-        catch (Throwable localThrowable)
-        {
-          for (;;)
-          {
-            f.a.a("TxNewCellProvider", "cannot get cellinfo", localThrowable);
-          }
-        }
-        dr.a(dr.this, en.a(dr.c(dr.this)));
-        dr.this.onCellInfoChanged(paramMessage);
-      } while (dr.d(dr.this) == null);
-      sendEmptyMessageDelayed(0, 30000L);
-    }
+    return a(paramArrayOfByte, paramArrayOfByte.length, paramString, 1);
+  }
+  
+  public static String b(String paramString1, String paramString2)
+  {
+    return a(paramString1, paramString2, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.dr
  * JD-Core Version:    0.7.0.1
  */

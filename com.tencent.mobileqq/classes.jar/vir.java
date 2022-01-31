@@ -1,47 +1,44 @@
-import android.content.res.ColorStateList;
-import android.text.Spannable;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder.Holder;
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.RecommendCommonMessage.ArkContextInfo;
-import com.tencent.mobileqq.data.RecommendCommonMessage.ArkMsgAppInfo;
-import com.tencent.mobileqq.data.RecommendCommonMessage.IGetAppInfosByContextCallback;
-import java.util.ArrayList;
-import java.util.LinkedList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.qphone.base.util.QLog;
 
-public class vir
-  implements RecommendCommonMessage.IGetAppInfosByContextCallback
+class vir
+  extends urs<vgo, vgp>
 {
-  public vir(TextItemBuilder paramTextItemBuilder, RecommendCommonMessage.ArkContextInfo paramArkContextInfo, Spannable paramSpannable, int paramInt1, int paramInt2, TextItemBuilder.Holder paramHolder, MessageForText paramMessageForText, ColorStateList paramColorStateList, int paramInt3) {}
+  vir(viq paramviq, String[] paramArrayOfString) {}
   
-  public void a(ArrayList paramArrayList)
+  public void a(@NonNull vgo paramvgo, @Nullable vgp paramvgp, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (paramArrayList.size() > 0)
+    if ((paramvgp == null) || (paramvgp.jdField_a_of_type_Int != 0))
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkContextInfo.contextAppInfoList.clear();
-      int j = Math.min(paramArrayList.size(), ArkRecommendController.b);
-      int i = 0;
-      while (i < j)
+      if (paramvgp != null) {}
+      for (int i = paramvgp.jdField_a_of_type_Int;; i = -1)
       {
-        RecommendCommonMessage.ArkMsgAppInfo localArkMsgAppInfo = (RecommendCommonMessage.ArkMsgAppInfo)paramArrayList.get(i);
-        if (!this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkContextInfo.contextAppInfoList.contains(localArkMsgAppInfo)) {
-          this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkContextInfo.contextAppInfoList.add(localArkMsgAppInfo);
+        if (QLog.isColorLevel()) {
+          QLog.e("EncryptUrlJob", 2, "encrypt failed, error code = " + i);
         }
-        i += 1;
+        viq.a(this.jdField_a_of_type_Viq, false);
+        return;
       }
-      if (TextItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder, this.jdField_a_of_type_AndroidTextSpannable, this.jdField_a_of_type_Int, this.b))
-      {
-        TextItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$Holder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText, this.jdField_a_of_type_AndroidTextSpannable, this.jdField_a_of_type_AndroidContentResColorStateList, this.jdField_a_of_type_Int, this.b, this.c);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$Holder.e.requestLayout();
+    }
+    if (((Boolean)((uvt)uwa.a(10)).b("key_share_encrypt_flag", Boolean.valueOf(false))).booleanValue()) {}
+    for (paramvgo = vky.a(this.jdField_a_of_type_ArrayOfJavaLangString[1], viq.a(this.jdField_a_of_type_Viq));; paramvgo = this.jdField_a_of_type_ArrayOfJavaLangString[1])
+    {
+      paramvgo = this.jdField_a_of_type_ArrayOfJavaLangString[0] + "?token=" + paramvgp.jdField_a_of_type_JavaLangString + "&" + paramvgo;
+      if (QLog.isColorLevel()) {
+        QLog.d("EncryptUrlJob", 2, new Object[] { "encrypt done url:", paramvgo });
       }
+      this.jdField_a_of_type_Viq.a("EncryptUrlJob_coverUrl", paramvgp.c);
+      this.jdField_a_of_type_Viq.a("EncryptUrlJob_encryptedUrl", paramvgo);
+      viq.b(this.jdField_a_of_type_Viq, true);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vir
  * JD-Core Version:    0.7.0.1
  */

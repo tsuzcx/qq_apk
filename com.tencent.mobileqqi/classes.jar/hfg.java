@@ -1,17 +1,23 @@
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.CameraFrameLayout;
 
-class hfg
-  implements Runnable
+public class hfg
+  extends Handler
 {
-  hfg(hfe paramhfe, Exception paramException) {}
+  public hfg(CameraFrameLayout paramCameraFrameLayout) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Hfe.a.dismiss();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "safetyReport exception1" + this.jdField_a_of_type_JavaLangException.getMessage());
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      CameraFrameLayout.a(this.a, paramMessage.arg1);
+      return;
     }
+    CameraFrameLayout.a(this.a);
   }
 }
 

@@ -5,12 +5,11 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.component.network.utils.AssertUtil;
-import pjg;
 
 public final class DownloadResult
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new pjg();
+  public static final Parcelable.Creator<DownloadResult> CREATOR = new DownloadResult.1();
   private DownloadResult.Content mContent = new DownloadResult.Content();
   private String mDescInfo;
   private String mDetailDownloadInfo;
@@ -39,7 +38,7 @@ public final class DownloadResult
     if (!TextUtils.isEmpty(paramString)) {}
     for (boolean bool = true;; bool = false)
     {
-      AssertUtil.a(bool);
+      AssertUtil.assertTrue(bool);
       this.mUrl = paramString;
       return;
     }
@@ -93,7 +92,7 @@ public final class DownloadResult
   public void reset()
   {
     this.mStatus.reset();
-    this.mProcess.a();
+    this.mProcess.reset();
     this.mContent.reset();
   }
   
@@ -133,7 +132,7 @@ public final class DownloadResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.downloader.DownloadResult
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,13 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import android.view.View;
 
-public class ajiw
-  implements Runnable
+class ajiw
+  implements bhvm
 {
-  public ajiw(ReciteRecordLayout paramReciteRecordLayout) {}
+  ajiw(ajit paramajit, View paramView) {}
   
-  public void run()
+  public void a()
   {
-    this.a.a.setText(2131431556);
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

@@ -1,32 +1,31 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAllFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.QfileTimeUtils;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class actf
-  implements Runnable
+class actf
+  extends aluu
 {
-  public actf(QfileRecentAllFileTabView paramQfileRecentAllFileTabView, FileManagerEntity paramFileManagerEntity) {}
+  actf(acte paramacte, BaseActivity paramBaseActivity) {}
   
-  public void run()
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    Object localObject = QfileTimeUtils.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.srvTime);
-    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentAllFileTabView.a.containsKey(localObject)) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentAllFileTabView.a.put(localObject, new ArrayList());
-    }
-    localObject = (List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentAllFileTabView.a.get(localObject);
-    if (((List)localObject).contains(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity) == true) {
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.removeObserver(this);
+    if (paramBoolean)
+    {
+      if ((this.jdField_a_of_type_Acte.a != null) && (this.jdField_a_of_type_Acte.a.isShowing())) {
+        this.jdField_a_of_type_Acte.a.dismiss();
+      }
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, alud.a(2131702987), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
       return;
     }
-    ((List)localObject).add(0, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentAllFileTabView.i();
+    if ((this.jdField_a_of_type_Acte.a != null) && (this.jdField_a_of_type_Acte.a.isShowing())) {
+      this.jdField_a_of_type_Acte.a.dismiss();
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, alud.a(2131702988), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     actf
  * JD-Core Version:    0.7.0.1
  */

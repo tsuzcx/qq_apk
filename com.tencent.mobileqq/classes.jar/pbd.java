@@ -1,30 +1,27 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.webviewplugin.HotchatPlugin;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyVideoChannelFragment;
 
 public class pbd
-  implements View.OnClickListener
+  implements obx
 {
-  public pbd(HotchatPlugin paramHotchatPlugin, String paramString, Activity paramActivity) {}
+  public pbd(ReadInJoyVideoChannelFragment paramReadInJoyVideoChannelFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentBizWebviewpluginHotchatPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
-    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity))
+    rjg localrjg = this.a.a();
+    if ((localrjg != null) && (localrjg.a() != null))
     {
-      paramView = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppInterface();
-      if ((paramView instanceof NearbyAppInterface)) {
-        ((NearbyAppInterface)paramView).reportClickEvent("dc00899", "grp_lbs", "", "hot_create", "clk_create", 0, 0, "", "", "", "");
+      if (localrjg.a().a()) {
+        localrjg.a().i();
       }
+      localrjg.a().d();
     }
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pbd
  * JD-Core Version:    0.7.0.1
  */

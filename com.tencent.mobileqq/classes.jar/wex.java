@@ -1,46 +1,53 @@
-import com.tencent.mobileqq.activity.bless.BlessBaseActivity;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.database.HotSortVideoEntry;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
 public class wex
-  extends MessageObserver
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, vep>
 {
-  public wex(BlessBaseActivity paramBlessBaseActivity) {}
-  
-  public void a(boolean paramBoolean1, int paramInt, long paramLong, boolean paramBoolean2)
+  public wex(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessManager", 2, "onSendBlessMsgResp " + paramBoolean1);
-    }
-    this.a.a();
-    if (!this.a.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.a.jdField_a_of_type_Boolean = false;
-    if (paramInt == 67L)
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull vep paramvep)
+  {
+    if (!paramQQStoryShareGroupProfileActivity.g) {}
+    wfk localwfk;
+    Object localObject1;
+    do
     {
-      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.a.a(paramLong);
-      QQToast.a(this.a.app.getApp(), 2131438285, 1).a();
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BlessManager", 2, "onSendBlessMsgResp failed:" + paramInt + " waitTime=" + paramLong);
-      }
-      this.a.b(paramBoolean1);
       return;
-      if (!paramBoolean1) {
-        QQToast.a(this.a.app.getApp(), 2131438286, 1).a();
-      }
-    }
+      Object localObject2 = null;
+      localwfk = paramQQStoryShareGroupProfileActivity.a.a;
+      Iterator localIterator = paramQQStoryShareGroupProfileActivity.a.a.a.iterator();
+      do
+      {
+        localObject1 = localObject2;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject1 = (HotSortVideoEntry)localIterator.next();
+      } while (!((HotSortVideoEntry)localObject1).storyId.equals(paramvep.a));
+    } while (localObject1 == null);
+    ((HotSortVideoEntry)localObject1).viewCount += 1;
+    ((uvh)uwa.a(25)).a((HotSortVideoEntry)localObject1);
+    localwfk.a((HotSortVideoEntry)localObject1);
+    paramQQStoryShareGroupProfileActivity.d = true;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vep.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wex
  * JD-Core Version:    0.7.0.1
  */

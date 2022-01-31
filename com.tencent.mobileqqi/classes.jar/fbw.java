@@ -1,24 +1,30 @@
-import com.tencent.mobileqq.adapter.AllBuddyListAdapter;
-import com.tencent.mobileqq.app.ContactSorter;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.util.Comparator;
+import android.os.Process;
+import com.tencent.mobileqq.app.EmoticonManagerImp;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.EPJsonTask;
+import com.tencent.mobileqq.emoticon.EmoticonController;
+import com.tencent.qphone.base.util.QLog;
 
 public class fbw
-  implements Comparator
+  implements Runnable
 {
-  public fbw(AllBuddyListAdapter paramAllBuddyListAdapter) {}
+  public fbw(EmoticonManagerImp paramEmoticonManagerImp, String paramString, int paramInt) {}
   
-  private String a(Entity paramEntity)
+  public void run()
   {
-    paramEntity = (Friends)paramEntity;
-    return ContactUtils.a(paramEntity) + paramEntity.uin;
-  }
-  
-  public int a(Entity paramEntity1, Entity paramEntity2)
-  {
-    return ContactSorter.a(a(paramEntity1), a(paramEntity2));
+    Process.setThreadPriority(10);
+    EmoticonPackage localEmoticonPackage = this.jdField_a_of_type_ComTencentMobileqqAppEmoticonManagerImp.b(this.jdField_a_of_type_JavaLangString);
+    if (localEmoticonPackage == null) {
+      return;
+    }
+    localEmoticonPackage.jsonVersion = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_ComTencentMobileqqAppEmoticonManagerImp.a(localEmoticonPackage);
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonManagerImp", 2, this.jdField_a_of_type_Int + "==========KeywordJsonupdate============" + this.jdField_a_of_type_JavaLangString);
+    }
+    EmoticonController.a(EmoticonManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppEmoticonManagerImp)).a(localEmoticonPackage.epId, EPJsonTask.b, false);
+    EmoticonManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppEmoticonManagerImp, this.jdField_a_of_type_JavaLangString);
+    EmoticonManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppEmoticonManagerImp, true, 3000L);
   }
 }
 

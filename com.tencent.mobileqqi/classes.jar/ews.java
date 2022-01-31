@@ -1,71 +1,189 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareActivity;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareManager;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.widget.Switch;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.provider.MediaStore.Images.Media;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.voip.VoipHistoryActivity;
+import com.tencent.mobileqq.activity.voip.VoipHistoryAllType;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.data.QCallRecent;
+import com.tencent.mobileqq.data.voip.VoipHistoryData;
+import com.tencent.mobileqq.model.PhoneContactManager;
+import com.tencent.mobileqq.utils.ImageUtil;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
 public class ews
-  implements CompoundButton.OnCheckedChangeListener
+  extends BaseAdapter
 {
-  public ews(QvipSpecialCareActivity paramQvipSpecialCareActivity) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public ews(VoipHistoryActivity paramVoipHistoryActivity, Context paramContext)
   {
-    paramCompoundButton = new ArrayList();
-    paramCompoundButton.add(QvipSpecialCareActivity.a(this.a));
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add("1");
-    if (paramBoolean) {
-      if (!QvipSpecialCareActivity.a(this.a).a(QvipSpecialCareActivity.a(this.a))) {}
-    }
-    while (!QvipSpecialCareActivity.a(this.a).a(QvipSpecialCareActivity.a(this.a)))
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
+  }
+  
+  public int getCount()
+  {
+    return VoipHistoryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipHistoryActivity).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return VoipHistoryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipHistoryActivity).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Date localDate = new Date(System.currentTimeMillis());
+    paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130904060, paramViewGroup, false);
+    ImageView localImageView2 = (ImageView)paramViewGroup.findViewById(2131234700);
+    ImageView localImageView1 = (ImageView)paramViewGroup.findViewById(2131234702);
+    TextView localTextView2 = (TextView)paramViewGroup.findViewById(2131234701);
+    TextView localTextView3 = (TextView)paramViewGroup.findViewById(2131234703);
+    TextView localTextView1 = (TextView)paramViewGroup.findViewById(2131234704);
+    VoipHistoryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipHistoryActivity, (RelativeLayout)paramViewGroup.findViewById(2131234699));
+    VoipHistoryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipHistoryActivity).setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipHistoryActivity);
+    paramView = (ewr)paramViewGroup.getTag();
+    if (paramView == null)
     {
-      return;
-      if (!NetworkUtil.e(this.a))
+      paramView = new ewr(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipHistoryActivity, null);
+      paramViewGroup.setTag(paramView);
+    }
+    for (;;)
+    {
+      paramView.a = ((VoipHistoryAllType)VoipHistoryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipHistoryActivity).get(paramInt));
+      VoipHistoryData localVoipHistoryData;
+      if (paramView.a.type == VoipHistoryActivity.jdField_b_of_type_Int)
       {
-        QvipSpecialCareActivity.a(this.a, this.a.getString(2131562488));
-        QvipSpecialCareActivity.a(this.a);
-        return;
-      }
-      if (VipUtils.a(this.a.b))
-      {
-        if (QvipSpecialCareActivity.a(this.a).c() < QvipSpecialCareActivity.a(this.a).b())
+        localVoipHistoryData = (VoipHistoryData)paramView.a.obj;
+        if (VoipHistoryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipHistoryActivity) != null)
         {
-          QvipSpecialCareActivity.c(this.a);
-          QvipSpecialCareActivity.b(this.a);
-          QvipSpecialCareActivity.a(this.a).a(paramCompoundButton, 2, localArrayList);
-          return;
+          paramView = VoipHistoryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipHistoryActivity).a(localVoipHistoryData.contactLookupId);
+          if ((paramView == null) || (paramView.photoUri == null)) {}
         }
-        paramCompoundButton = String.format(this.a.getString(2131562994), new Object[] { Integer.valueOf(QvipSpecialCareActivity.a(this.a).b()) });
-        QvipSpecialCareActivity.b(this.a, paramCompoundButton);
-        QvipSpecialCareActivity.a(this.a).setChecked(false);
-        return;
       }
-      if (QvipSpecialCareActivity.a(this.a).c() < QvipSpecialCareActivity.a(this.a).a())
+      try
       {
-        QvipSpecialCareActivity.d(this.a);
-        QvipSpecialCareActivity.b(this.a);
-        QvipSpecialCareActivity.a(this.a).a(paramCompoundButton, 2, localArrayList);
-        return;
+        paramView = MediaStore.Images.Media.getBitmap(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipHistoryActivity.getContentResolver(), paramView.photoUri);
+        localImageView2.setImageBitmap(ImageUtil.a(paramView, paramView.getWidth(), paramView.getWidth(), paramView.getHeight()));
+        label259:
+        if (localVoipHistoryData.contactLookupId != null)
+        {
+          localTextView2.setText(localVoipHistoryData.strContactName);
+          localTextView3.setText(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipHistoryActivity.getString(2131559880));
+          if (localVoipHistoryData.startTime != 0L)
+          {
+            paramView = new Date(localVoipHistoryData.startTime);
+            if (paramView.getDate() != localDate.getDate()) {
+              break label526;
+            }
+            paramView = new SimpleDateFormat("HH:mm").format(paramView);
+            label340:
+            localTextView1.setText(paramView);
+          }
+          switch (localVoipHistoryData.status)
+          {
+          }
+        }
+        for (;;)
+        {
+          VoipHistoryActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipHistoryActivity, (RelativeLayout)paramViewGroup.findViewById(2131234698));
+          VoipHistoryActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipHistoryActivity).setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipHistoryActivity);
+          if (VoipHistoryActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipHistoryActivity) != null) {
+            VoipHistoryActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipHistoryActivity).setOnLongClickListener(new ewt(this));
+          }
+          return paramViewGroup;
+          if (!TextUtils.isEmpty(localVoipHistoryData.nickName))
+          {
+            localTextView2.setText(localVoipHistoryData.nickName);
+            break;
+          }
+          if (TextUtils.isEmpty(localVoipHistoryData.countryCode)) {}
+          for (paramView = localVoipHistoryData.phoneNumberWithoutCountry;; paramView = localVoipHistoryData.countryCode + " " + localVoipHistoryData.phoneNumberWithoutCountry)
+          {
+            localTextView2.setText(paramView);
+            break;
+          }
+          label526:
+          paramView = new SimpleDateFormat("MM-dd").format(paramView);
+          break label340;
+          localImageView1.setImageResource(2130840376);
+          continue;
+          localImageView1.setImageResource(2130840374);
+          continue;
+          localImageView1.setImageResource(2130840375);
+        }
+        paramView = (QCallRecent)paramView.a.obj;
+        localImageView2.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipHistoryActivity.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.c(paramView.uin));
+        localTextView2.setText(paramView.displayName);
+        if (paramView.isVideo())
+        {
+          localTextView3.setText(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipHistoryActivity.getString(2131559878));
+          ((ImageView)paramViewGroup.findViewById(2131234705)).setImageResource(2130840483);
+          if (paramView.isSend())
+          {
+            localImageView1.setImageResource(2130840376);
+            label666:
+            if (paramView.lastCallTime == 0L) {
+              break label814;
+            }
+            paramView = new Date(paramView.lastCallTime * 1000L);
+            if (paramView.getDate() != localDate.getDate()) {
+              break label816;
+            }
+          }
+        }
+        label814:
+        label816:
+        for (paramView = new SimpleDateFormat("HH:mm").format(paramView);; paramView = new SimpleDateFormat("MM-dd").format(paramView))
+        {
+          localTextView1.setText(paramView);
+          break;
+          if (paramView.isMissedCall())
+          {
+            localImageView1.setImageResource(2130840375);
+            break label666;
+          }
+          localImageView1.setImageResource(2130840374);
+          break label666;
+          localTextView3.setText(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipHistoryActivity.getString(2131559879));
+          if (paramView.isSend())
+          {
+            localImageView1.setImageResource(2130840376);
+            break label666;
+          }
+          if (paramView.isMissedCall())
+          {
+            localImageView1.setImageResource(2130840375);
+            break label666;
+          }
+          localImageView1.setImageResource(2130840374);
+          break label666;
+          break;
+        }
       }
-      paramCompoundButton = String.format(this.a.getString(2131562138), new Object[] { Integer.valueOf(QvipSpecialCareActivity.a(this.a).a()), Integer.valueOf(QvipSpecialCareActivity.a(this.a).b()) });
-      QvipSpecialCareActivity.a(this.a, paramCompoundButton, 2131562229);
-      QvipSpecialCareActivity.a(this.a).setChecked(false);
-      return;
+      catch (IOException paramView)
+      {
+        break label259;
+      }
     }
-    if (!NetworkUtil.e(this.a))
-    {
-      QvipSpecialCareActivity.a(this.a, this.a.getString(2131562488));
-      QvipSpecialCareActivity.a(this.a);
-      return;
-    }
-    QvipSpecialCareActivity.e(this.a);
-    QvipSpecialCareActivity.b(this.a);
-    QvipSpecialCareActivity.a(this.a).a(paramCompoundButton, 4, localArrayList);
   }
 }
 

@@ -1,20 +1,28 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import android.os.Looper;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class amdo
+public final class amdo
+  extends MqqHandler
 {
-  public int a;
-  public final Rect a = new Rect();
-  public Drawable a;
-  public int b;
-  public Drawable b;
-  public int c;
-  public int d;
-  public int e;
+  public amdo(Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void removeCallbacksAndMessages(Object paramObject)
+  {
+    if (paramObject == null)
+    {
+      QLog.e("ThreadManager", 1, "global fileHandler cannot excute removeCallbacksAndMessages");
+      return;
+    }
+    super.removeCallbacksAndMessages(paramObject);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amdo
  * JD-Core Version:    0.7.0.1
  */

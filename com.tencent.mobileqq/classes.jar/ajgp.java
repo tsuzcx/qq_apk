@@ -1,19 +1,21 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.CheckBox;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class ajgp
   implements View.OnClickListener
 {
-  ajgp(ajgn paramajgn, CheckBox paramCheckBox) {}
+  ajgp(ajgb paramajgb) {}
   
   public void onClick(View paramView)
   {
-    paramView = this.jdField_a_of_type_AndroidWidgetCheckBox;
-    if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
-    for (boolean bool = true;; bool = false)
+    if (ajgb.a(this.a) != null) {}
+    for (paramView = ajgb.a(this.a).app;; paramView = null)
     {
-      paramView.setChecked(bool);
+      if (paramView != null) {
+        anpd.a().a(ajgb.a(this.a), paramView);
+      }
+      anpd.a().a();
       return;
     }
   }

@@ -1,21 +1,28 @@
-import com.tencent.mobileqq.apollo.process.chanel.CmGameSubProcessHandler;
-import com.tencent.mobileqq.apollo.utils.ApolloGameShare;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class yre
-  implements Runnable
+class yre
+  implements yrb
 {
-  public yre(CmGameSubProcessHandler paramCmGameSubProcessHandler, String paramString) {}
+  yre(yrd paramyrd, String paramString) {}
   
-  public void run()
+  public void callback(Bundle paramBundle)
   {
-    if (CmGameSubProcessHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameSubProcessHandler) != null) {
-      CmGameSubProcessHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameSubProcessHandler).a(this.jdField_a_of_type_JavaLangString);
+    boolean bool = paramBundle.getBoolean("isSuccess", false);
+    if (bool)
+    {
+      paramBundle = paramBundle.getString("data");
+      this.jdField_a_of_type_Yrd.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
     }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d(this.jdField_a_of_type_Yrd.TAG, 2, "getTroopBarPublishInfo() in callback isSuccess=" + bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yre
  * JD-Core Version:    0.7.0.1
  */

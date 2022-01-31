@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqavopensdkSsoTunnel$UniSsoServerRspComm
-  extends MessageMicro
+  extends MessageMicro<UniSsoServerRspComm>
 {
   public static final int DELAYMS_FIELD_NUMBER = 1;
   public static final int PACKAGESIZE_FIELD_NUMBER = 2;
@@ -19,7 +19,7 @@ public final class qqavopensdkSsoTunnel$UniSsoServerRspComm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqavopensdk.IntrenalLogic.qqavopensdkSsoTunnel.UniSsoServerRspComm
  * JD-Core Version:    0.7.0.1
  */

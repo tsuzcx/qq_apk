@@ -5,12 +5,12 @@ import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.IBinder;
 import android.widget.Toast;
-import com.tencent.av.AVLog;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.utils.TraeHelper;
 import com.tencent.qphone.base.util.QLog;
-import jmn;
+import lek;
+import lyt;
 import mqq.app.AppService;
+import mwk;
 
 public class AVServiceForQQ
   extends AppService
@@ -18,9 +18,9 @@ public class AVServiceForQQ
   private int jdField_a_of_type_Int = 10;
   public Notification a;
   public VideoAppInterface a;
-  private TraeHelper jdField_a_of_type_ComTencentAvUtilsTraeHelper;
   public String a;
-  private jmn jdField_a_of_type_Jmn;
+  private lyt jdField_a_of_type_Lyt;
+  private mwk jdField_a_of_type_Mwk;
   private boolean jdField_a_of_type_Boolean;
   private int b = 13;
   public String b;
@@ -42,11 +42,11 @@ public class AVServiceForQQ
     if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      if (this.jdField_a_of_type_Jmn != null) {
+      if (this.jdField_a_of_type_Lyt != null) {
         bool2 = true;
       }
-      AVLog.d(paramIntent, String.format("onBind, appInterface[%b], AVServiceForQQ[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
-      return this.jdField_a_of_type_Jmn;
+      lek.d(paramIntent, String.format("onBind, appInterface[%b], AVServiceForQQ[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+      return this.jdField_a_of_type_Lyt;
     }
   }
   
@@ -56,8 +56,8 @@ public class AVServiceForQQ
     try
     {
       super.onCreate();
-      if (this.jdField_a_of_type_Jmn == null) {
-        this.jdField_a_of_type_Jmn = new jmn(this, null);
+      if (this.jdField_a_of_type_Lyt == null) {
+        this.jdField_a_of_type_Lyt = new lyt(this, null);
       }
     }
     catch (Exception localException1)
@@ -72,19 +72,26 @@ public class AVServiceForQQ
         if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
         for (boolean bool1 = true;; bool1 = false)
         {
-          if (this.jdField_a_of_type_Jmn != null) {
-            bool2 = true;
+          for (;;)
+          {
+            if (this.jdField_a_of_type_Lyt != null) {
+              bool2 = true;
+            }
+            lek.d(str1, String.format("onCreate, appInterface[%b], AVServiceForQQ[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+            return;
+            localException1 = localException1;
+            QLog.d(this.jdField_a_of_type_JavaLangString, 1, "AVServiceForQQ onCreate, Fail", localException1);
+            String str2 = super.getString(2131721302) + " 0x0a";
+            try
+            {
+              Toast.makeText(super.getBaseContext(), str2, 0).show();
+            }
+            catch (Exception localException2) {}
           }
-          AVLog.d(str1, String.format("onCreate, appInterface[%b], AVServiceForQQ[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
-          return;
-          localException1 = localException1;
-          QLog.d(this.jdField_a_of_type_JavaLangString, 1, "AVServiceForQQ onCreate, Fail", localException1);
-          String str2 = super.getString(2131428796) + " 0x0a";
-          Toast.makeText(super.getBaseContext(), str2, 0).show();
           break;
         }
       }
-      catch (Exception localException2)
+      catch (Exception localException3)
       {
         break label48;
       }
@@ -114,36 +121,55 @@ public class AVServiceForQQ
     if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
     for (bool1 = true;; bool1 = false)
     {
-      if (this.jdField_a_of_type_Jmn != null) {
+      if (this.jdField_a_of_type_Lyt != null) {
         bool2 = true;
       }
-      AVLog.d(str, String.format("onDestroy, appInterface[%b], AVServiceForQQ[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+      lek.d(str, String.format("onDestroy, appInterface[%b], AVServiceForQQ[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
       return;
     }
   }
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    boolean bool2 = false;
     if ((this.app instanceof VideoAppInterface)) {
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = ((VideoAppInterface)this.app);
     }
+    String str;
+    boolean bool1;
     if (QLog.isDevelopLevel())
     {
-      paramIntent = this.jdField_a_of_type_JavaLangString;
+      str = this.jdField_a_of_type_JavaLangString;
       if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
-        break label101;
+        break label143;
+      }
+      bool1 = true;
+      if (this.jdField_a_of_type_Lyt == null) {
+        break label149;
       }
     }
-    label101:
-    for (boolean bool1 = true;; bool1 = false)
+    label143:
+    label149:
+    for (boolean bool2 = true;; bool2 = false)
     {
-      if (this.jdField_a_of_type_Jmn != null) {
-        bool2 = true;
+      QLog.d(str, 4, String.format("onCreate, appInterface[%b], AVServiceForQQ[%b], flags[%d], startId[%d]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+      if ((paramIntent != null) && (paramIntent.getBooleanExtra("setForeground", false)))
+      {
+        bool1 = paramIntent.getBooleanExtra("foreground", false);
+        paramIntent = (Notification)paramIntent.getParcelableExtra("notification");
       }
-      QLog.d(paramIntent, 4, String.format("onCreate, appInterface[%b], AVServiceForQQ[%b], flags[%d], startId[%d]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-      return 2;
+      try
+      {
+        this.jdField_a_of_type_Lyt.a(bool1, paramIntent);
+        return 2;
+      }
+      catch (Throwable paramIntent)
+      {
+        QLog.e(this.jdField_a_of_type_JavaLangString, 1, "", paramIntent);
+      }
+      bool1 = false;
+      break;
     }
+    return 2;
   }
 }
 

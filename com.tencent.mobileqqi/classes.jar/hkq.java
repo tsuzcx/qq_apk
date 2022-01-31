@@ -1,34 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageView;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.widget.DropdownView;
+import com.tencent.open.appcommon.js.BaseInterface;
+import com.tencent.open.base.LogUtility;
+import com.tencent.smtt.sdk.WebView;
 
 public class hkq
-  implements View.OnClickListener
+  implements Runnable
 {
-  public hkq(DropdownView paramDropdownView) {}
+  public hkq(BaseInterface paramBaseInterface, long paramLong, String paramString, WebView paramWebView) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.jdField_a_of_type_Hkt.clearFocus();
-    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_Hkt.getWindowToken(), 0);
-    if ((this.a.jdField_a_of_type_Hkt.getAdapter() != null) && (this.a.jdField_a_of_type_Hkt.getAdapter().getCount() > 0))
+    String str = "javascript:QzoneApp.fire('batchCallback',{guid:" + this.jdField_a_of_type_Long + ",'r':-2,'data':['" + this.jdField_a_of_type_JavaLangString + "']});";
+    LogUtility.e("Response<callBatch>", str);
+    try
     {
-      if ((((ImageView)paramView).getDrawable() == this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) && (!this.a.jdField_a_of_type_Boolean)) {
-        DropdownView.a(this.a).postDelayed(new hkr(this, paramView), 250L);
-      }
-    }
-    else {
+      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(str);
       return;
     }
-    this.a.jdField_a_of_type_Hkt.dismissDropDown();
+    catch (Exception localException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hkq
  * JD-Core Version:    0.7.0.1
  */

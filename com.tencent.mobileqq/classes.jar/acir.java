@@ -1,18 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class acir
-  implements Parcelable.Creator
+public class acir
+  extends amco
 {
-  public ExtendFriendProfileEditFragment.ExtendFriendInfo a(Parcel paramParcel)
-  {
-    return new ExtendFriendProfileEditFragment.ExtendFriendInfo(paramParcel);
-  }
+  public acir(BaseChatPie paramBaseChatPie) {}
   
-  public ExtendFriendProfileEditFragment.ExtendFriendInfo[] a(int paramInt)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    return new ExtendFriendProfileEditFragment.ExtendFriendInfo[paramInt];
+    if (((this.a.a() instanceof SplashActivity)) && (SplashActivity.a != 2)) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.a, 2, "VideoRedbag, onCheckRealNameRsp in aio");
+      }
+    } while ((!paramBoolean) || (paramInt != azjh.a));
+    bdgm.a(this.a.a(), 0, null, this.a.a().getString(2131720135), 2131720137, 2131720136, new acis(this), new acit(this)).show();
   }
 }
 

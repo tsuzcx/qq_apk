@@ -1,22 +1,14 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
-import com.tencent.mobileqq.config.struct.LebaViewItem;
-import com.tencent.mobileqq.redtouch.RedTouch;
 
-public class yhn
-  implements View.OnClickListener
+public abstract interface yhn
 {
-  public yhn(LebaListMgrAdapter paramLebaListMgrAdapter, RedTouch paramRedTouch, LebaViewItem paramLebaViewItem) {}
+  public abstract void a(View paramView, int paramInt1, int paramInt2, Object paramObject);
   
-  public void onClick(View paramView)
-  {
-    LebaListMgrAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListMgrAdapter, this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem, true);
-  }
+  public abstract void b(View paramView, int paramInt1, int paramInt2, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yhn
  * JD-Core Version:    0.7.0.1
  */

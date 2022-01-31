@@ -1,20 +1,23 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStepExector.CompletedHandler;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter;
-import com.tencent.biz.qqstory.support.logging.SLog;
-
 public class nzt
-  implements SimpleStepExector.CompletedHandler
 {
-  public nzt(StoryListPresenter paramStoryListPresenter) {}
+  public int a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void a()
+  public nzt(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    SLog.d("Q.qqstory.home.StoryListPresenter", "ParallelStepExecutor finish requestAllDataFromNet steps");
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nzt
  * JD-Core Version:    0.7.0.1
  */

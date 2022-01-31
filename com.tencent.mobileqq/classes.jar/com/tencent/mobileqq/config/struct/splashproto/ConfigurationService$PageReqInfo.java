@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ConfigurationService$PageReqInfo
-  extends MessageMicro
+  extends MessageMicro<PageReqInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField cookies = PBField.initBytes(ByteStringMicro.EMPTY);

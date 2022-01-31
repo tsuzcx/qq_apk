@@ -1,51 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.eqq.EnterpriseDetailActivity;
-import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.widget.Switch;
+import android.graphics.Bitmap;
+import com.tencent.biz.webviewplugin.Share;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-public class bpb
-  implements DialogInterface.OnClickListener
+class bpb
+  implements Runnable
 {
-  public bpb(EnterpriseDetailActivity paramEnterpriseDetailActivity, mobileqq_mp.ConfigInfo paramConfigInfo, Switch paramSwitch, boolean paramBoolean) {}
+  bpb(bpa parambpa, String paramString1, String paramString2, String paramString3, Bitmap paramBitmap) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (paramInt == 0) {
-      if ((3 == this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ConfigInfo.state_id.get()) && (this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ConfigInfo.state.get() == 0))
-      {
-        paramDialogInterface = this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity;
-        localConfigInfo = this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ConfigInfo;
-        localSwitch = this.jdField_a_of_type_ComTencentWidgetSwitch;
-        if (!this.jdField_a_of_type_Boolean)
-        {
-          bool = true;
-          EnterpriseDetailActivity.a(paramDialogInterface, localConfigInfo, localSwitch, bool);
-        }
+    if ((this.jdField_a_of_type_Bpa.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.isResume()) && (!this.jdField_a_of_type_Bpa.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.isFinishing()))
+    {
+      if ((this.jdField_a_of_type_Bpa.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_Bpa.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+        this.jdField_a_of_type_Bpa.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
       }
-      else
-      {
-        EnterpriseDetailActivity.a(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ConfigInfo, this.jdField_a_of_type_ComTencentWidgetSwitch);
-        this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.a.isConfirmed = true;
-        EnterpriseDetailActivity.b(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity, this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.a);
-        this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.g = false;
-      }
+      this.jdField_a_of_type_Bpa.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(this.jdField_a_of_type_Bpa.jdField_a_of_type_Int, this.jdField_a_of_type_Bpa.jdField_a_of_type_ComTencentBizWebviewpluginShare.b, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_AndroidGraphicsBitmap);
     }
-    while (paramInt != 1) {
-      for (;;)
-      {
-        mobileqq_mp.ConfigInfo localConfigInfo;
-        Switch localSwitch;
-        return;
-        boolean bool = false;
-      }
-    }
-    EnterpriseDetailActivity.a(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ConfigInfo, this.jdField_a_of_type_ComTencentWidgetSwitch, this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.a.isConfirmed = true;
-    EnterpriseDetailActivity.b(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity, this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.a);
-    this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.g = false;
   }
 }
 

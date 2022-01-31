@@ -1,24 +1,28 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
 class afiw
-  implements Runnable
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  afiw(afiv paramafiv) {}
+  afiw(afiv paramafiv1, afiv paramafiv2) {}
   
-  public void run()
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    if (NearbyProfileEditTribePanel.a(this.a.a) != null)
+    if (paramBitmap != null)
     {
-      NearbyProfileEditTribePanel.a(this.a.a).setVisibility(0);
-      NearbyProfileEditTribePanel.a(this.a.a);
-      NearbyProfileEditTribePanel.a(this.a.a, null);
+      this.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+      return;
     }
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afiw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,27 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.olympic.OlympicManager;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder;
 
 public class agdz
-  implements Runnable
+  implements uns
 {
-  public agdz(OlympicManager paramOlympicManager, int paramInt) {}
+  long jdField_a_of_type_Long;
+  agea jdField_a_of_type_Agea;
+  String jdField_a_of_type_JavaLangString;
   
-  public void run()
+  public agdz(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder) {}
+  
+  public void a(String paramString1, String paramString2, int paramInt)
   {
-    synchronized (OlympicManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager))
-    {
-      SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager.a.getPreferences();
-      if (localSharedPreferences != null) {
-        localSharedPreferences.edit().putInt("isTorchbearer", this.jdField_a_of_type_Int).commit();
-      }
-      return;
-    }
+    if (!paramString1.equals(this.a)) {}
   }
+  
+  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt) {}
+  
+  public void b(String paramString1, String paramString2, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agdz
  * JD-Core Version:    0.7.0.1
  */

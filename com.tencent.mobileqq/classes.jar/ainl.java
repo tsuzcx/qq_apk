@@ -1,52 +1,26 @@
-import com.tencent.mobileqq.testassister.ShareAppLogHelper;
-import java.io.File;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class ainl
-  implements Runnable
+class ainl
+  extends awhw
 {
-  public ainl(ShareAppLogHelper paramShareAppLogHelper) {}
+  ainl(aink paramaink) {}
   
-  public void run()
+  protected void c(boolean paramBoolean)
   {
-    int i = ShareAppLogHelper.a(this.a);
-    if (i != 0)
+    if (QLog.isColorLevel()) {
+      QLog.i("SettingActivity2", 2, "onDisableMobileMatch suc[" + paramBoolean + "]");
+    }
+    this.a.a.a.b();
+    this.a.a.a.app.unRegistObserver(this);
+    if (paramBoolean)
     {
-      ShareAppLogHelper.a(this.a, i);
-      ShareAppLogHelper.a(this.a);
+      this.a.a.a.a();
+      this.a.a.a.setResult(-1);
       return;
     }
-    i = ShareAppLogHelper.b(this.a);
-    if (i == 1)
-    {
-      ShareAppLogHelper.b(this.a, i);
-      ShareAppLogHelper.b(this.a);
-      if (!ShareAppLogHelper.a(this.a)) {
-        ShareAppLogHelper.a(this.a, ShareAppLogHelper.a(this.a));
-      }
-    }
-    for (;;)
-    {
-      ShareAppLogHelper.a(this.a);
-      return;
-      try
-      {
-        File localFile = new File(ShareAppLogHelper.a(this.a));
-        if (!localFile.exists()) {
-          continue;
-        }
-        localFile.delete();
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      continue;
-      if (i == 0) {
-        ShareAppLogHelper.a(this.a, ShareAppLogHelper.a(this.a));
-      } else {
-        ShareAppLogHelper.a(this.a, i);
-      }
-    }
+    this.a.a.a.a(1, alud.a(2131714252));
   }
 }
 

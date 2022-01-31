@@ -1,44 +1,31 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.HongbaoKeywordGrayTips;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
-public class wcy
-  implements Runnable
+class wcy
+  extends nac
 {
-  public wcy(HongbaoKeywordGrayTips paramHongbaoKeywordGrayTips) {}
+  wcy(wcv paramwcv, boolean paramBoolean) {}
   
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    Object localObject = HongbaoKeywordGrayTips.a(this.a).a().a(HongbaoKeywordGrayTips.a(this.a).jdField_a_of_type_JavaLangString, HongbaoKeywordGrayTips.a(this.a).jdField_a_of_type_Int);
-    int i = ((List)localObject).size();
-    if (i > 0)
+    if (paramInt != 0)
     {
-      localObject = (ChatMessage)((List)localObject).get(i - 1);
-      if (HongbaoKeywordGrayTips.a(this.a).jdField_a_of_type_Int != 0) {
-        break label130;
-      }
-      HongbaoKeywordGrayTips.a(this.a, ((ChatMessage)localObject).time);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("HongbaoKeywordGrayTips", 2, "size : " + i + ", mLastMsgIdOrTime:" + HongbaoKeywordGrayTips.a(this.a));
-      }
-      return;
-      label130:
-      if ((HongbaoKeywordGrayTips.a(this.a).jdField_a_of_type_Int == 3000) || (HongbaoKeywordGrayTips.a(this.a).jdField_a_of_type_Int == 1)) {
-        HongbaoKeywordGrayTips.a(this.a, ((ChatMessage)localObject).shmsgseq);
+      paramArrayOfByte = this.a;
+      if (!this.b) {}
+      for (boolean bool = true;; bool = false)
+      {
+        paramArrayOfByte.a(3, bool);
+        this.a.a(0, this.a.a.getString(2131721096));
+        return;
       }
     }
+    ((ulu)this.a.a.app.getManager(181)).b(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wcy
  * JD-Core Version:    0.7.0.1
  */

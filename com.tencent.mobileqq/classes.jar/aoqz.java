@@ -1,36 +1,69 @@
-import android.graphics.Canvas;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
 
 public class aoqz
+  extends aokh<aoqy>
 {
-  public boolean d = true;
-  public boolean e = true;
-  public int f;
-  public boolean f;
-  public int g;
-  
-  aoqz(TCProgressBar paramTCProgressBar)
+  public static aoqy a()
   {
-    this.jdField_f_of_type_Boolean = false;
+    return (aoqy)aoks.a().a(292);
   }
   
-  void a(Canvas paramCanvas)
+  public int a()
   {
-    this.jdField_f_of_type_Boolean = false;
+    return 292;
   }
   
-  boolean a(float paramFloat)
+  @NonNull
+  public aoqy a(int paramInt)
+  {
+    return new aoqy();
+  }
+  
+  @Nullable
+  public aoqy a(aoko[] paramArrayOfaoko)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("TCProgressBar", 2, "checkBounds,x = " + paramFloat + ",x_coord = " + this.jdField_f_of_type_Int + ",x_coord + length = " + (this.jdField_f_of_type_Int + this.g));
+      QLog.d("ReadInjoySearchJumpurlConfProcessor", 2, "[onParsed] confFiles = " + paramArrayOfaoko);
     }
-    return (paramFloat > this.jdField_f_of_type_Int) && (paramFloat < this.jdField_f_of_type_Int + this.g);
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInjoySearchJumpurlConfProcessor", 2, "[onParsed] confFiles[0].content= " + paramArrayOfaoko[0].a);
+      }
+      return aoqy.a(paramArrayOfaoko[0].a);
+    }
+    return null;
+  }
+  
+  public Class<aoqy> a()
+  {
+    return aoqy.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aoqy paramaoqy) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoqz
  * JD-Core Version:    0.7.0.1
  */

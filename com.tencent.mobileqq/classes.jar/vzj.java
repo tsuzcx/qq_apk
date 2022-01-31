@@ -1,93 +1,39 @@
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.StrangerChatPie;
-import com.tencent.mobileqq.app.ShieldListObserver;
-import com.tencent.mobileqq.util.Utils;
-import java.util.List;
+import android.content.Intent;
 
 public class vzj
-  extends ShieldListObserver
+  extends vtg
 {
-  public vzj(StrangerChatPie paramStrangerChatPie) {}
+  private vzi a;
   
-  protected void a(boolean paramBoolean, List paramList)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
-      return;
-    }
-    String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1006) {
-      str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.f;
-    }
-    for (;;)
-    {
-      if (paramList == null) {}
-      int k;
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        k = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k == 0) {
-        break;
-      }
-      ChatActivityUtils.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramBoolean, false);
-      if (!paramBoolean) {
-        break;
-      }
-      this.a.k();
-      return;
+    if (this.a != null) {
+      this.a.a(paramInt1, paramInt2, paramIntent);
     }
   }
   
-  protected void b(boolean paramBoolean, List paramList)
+  public void a(vzi paramvzi)
   {
-    int k = 0;
-    ChatActivityUtils.b();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
-      return;
+    this.a = paramvzi;
+  }
+  
+  public void f()
+  {
+    if (this.a != null) {
+      this.a.c();
     }
-    String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1006) {
-      str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.f;
-    }
-    for (;;)
-    {
-      if (paramList == null) {}
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k == 0) {
-        break;
-      }
-      ChatActivityUtils.b();
-      if (!paramBoolean) {
-        break;
-      }
-      this.a.k();
-      return;
+  }
+  
+  public void g()
+  {
+    if (this.a != null) {
+      this.a.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vzj
  * JD-Core Version:    0.7.0.1
  */

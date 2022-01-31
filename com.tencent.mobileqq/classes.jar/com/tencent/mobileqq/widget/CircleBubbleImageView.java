@@ -84,7 +84,7 @@ public class CircleBubbleImageView
       while (this.jdField_c_of_type_Boolean)
       {
         paramCanvas.drawCircle(j, j, j, this.jdField_a_of_type_AndroidGraphicsPaint);
-        if (this.d) {
+        if ((this.d) && (this.jdField_a_of_type_AndroidGraphicsPath != null)) {
           paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
         }
         return;
@@ -223,7 +223,7 @@ public class CircleBubbleImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CircleBubbleImageView
  * JD-Core Version:    0.7.0.1
  */

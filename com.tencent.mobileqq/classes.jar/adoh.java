@@ -1,37 +1,45 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.mobileqq.freshnews.BlockableEditTextView;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.businessCard.data.BusinessCard;
+import com.tencent.qphone.base.util.QLog;
 
 public class adoh
-  implements ActionMode.Callback
+  extends anyt
 {
-  public adoh(BlockableEditTextView paramBlockableEditTextView) {}
+  public adoh(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public void a(boolean paramBoolean, String paramString)
   {
-    return false;
+    super.a(paramBoolean, paramString);
   }
   
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    if (BlockableEditTextView.a(this.a) == 0) {
-      return true;
+    super.a(paramBoolean, paramString, paramInt);
+    if (paramBoolean)
+    {
+      BusinessCard localBusinessCard = ((anys)this.a.app.getManager(112)).a(paramString);
+      QLog.i("BusinessCard_observer_ProfileCardMoreActivity", 4, "onGetCardInfo success : cardId = " + paramString);
+      this.a.a(localBusinessCard);
+      this.a.a = localBusinessCard;
+      return;
     }
-    return BlockableEditTextView.a(this.a);
+    QLog.e("BusinessCard_observer_ProfileCardMoreActivity", 4, "onGetCardInfo faild : cardId = " + paramString);
   }
   
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  public void b(boolean paramBoolean, String paramString)
   {
-    return false;
+    super.b(paramBoolean, paramString);
+  }
+  
+  public void b(boolean paramBoolean, String paramString, int paramInt)
+  {
+    super.b(paramBoolean, paramString, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adoh
  * JD-Core Version:    0.7.0.1
  */

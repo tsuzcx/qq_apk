@@ -1,14 +1,18 @@
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import cooperation.troop_homework.jsp.TroopHWFileDownloadManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArFeatureInfo;
 
-public class anfo
-  implements Runnable
+public final class anfo
+  implements Parcelable.Creator<ArFeatureInfo>
 {
-  public anfo(TroopHWFileDownloadManager paramTroopHWFileDownloadManager, String paramString) {}
-  
-  public void run()
+  public ArFeatureInfo a(Parcel paramParcel)
   {
-    TroopHWFileDownloadManager.a(this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWFileDownloadManager).pauseDownloadTask(this.jdField_a_of_type_JavaLangString);
+    return new ArFeatureInfo(paramParcel);
+  }
+  
+  public ArFeatureInfo[] a(int paramInt)
+  {
+    return new ArFeatureInfo[paramInt];
   }
 }
 

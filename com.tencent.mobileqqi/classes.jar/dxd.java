@@ -1,18 +1,28 @@
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.anim.BubbleAnimation;
 
-class dxd
-  implements Runnable
+public class dxd
+  extends View
 {
-  dxd(dxc paramdxc, boolean paramBoolean1, String paramString1, boolean paramBoolean2, String paramString2, String paramString3) {}
-  
-  public void run()
+  public dxd(BubbleAnimation paramBubbleAnimation, Context paramContext)
   {
-    TroopMemberListActivity.a(this.jdField_a_of_type_Dxc.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Boolean, 0, 0, this.jdField_b_of_type_JavaLangString, this.c);
+    super(paramContext);
+  }
+  
+  protected boolean verifyDrawable(Drawable paramDrawable)
+  {
+    if ((BubbleAnimation.a(this.a).a()) && (BubbleAnimation.b(this.a).a())) {
+      BubbleAnimation.a(this.a).post(new dxe(this));
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dxd
  * JD-Core Version:    0.7.0.1
  */

@@ -28,14 +28,14 @@ public class FormSwitchItem
   private boolean jdField_a_of_type_Boolean;
   private int h;
   private int i;
-  private int j = getResources().getDimensionPixelSize(2131427599);
+  private int j = getResources().getDimensionPixelSize(2131427602);
   private int k;
   private int l;
   
   public FormSwitchItem(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    int m = getResources().getDimensionPixelSize(2131427598);
+    int m = getResources().getDimensionPixelSize(2131427601);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.A);
     this.i = paramContext.getDimensionPixelSize(3, m);
     this.jdField_a_of_type_JavaLangCharSequence = paramContext.getString(13);
@@ -54,15 +54,15 @@ public class FormSwitchItem
     switch (paramInt)
     {
     default: 
-      return paramResources.getDrawable(2130840176);
+      return paramResources.getDrawable(2130840178);
     case 0: 
-      return paramResources.getDrawable(2130840176);
+      return paramResources.getDrawable(2130840178);
     case 1: 
-      return paramResources.getDrawable(2130840186);
+      return paramResources.getDrawable(2130840188);
     case 2: 
-      return paramResources.getDrawable(2130840184);
+      return paramResources.getDrawable(2130840186);
     }
-    return paramResources.getDrawable(2130840178);
+    return paramResources.getDrawable(2130840180);
   }
   
   private void a()
@@ -74,7 +74,7 @@ public class FormSwitchItem
       this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence);
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 16.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131362070));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131362080));
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(3);
     setLeftIcon(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.k, this.l);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
@@ -85,7 +85,7 @@ public class FormSwitchItem
     addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
     this.jdField_a_of_type_ComTencentWidgetSwitch = new Switch(getContext());
     this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentWidgetSwitch.setBackgroundResource(2130837827);
+    this.jdField_a_of_type_ComTencentWidgetSwitch.setBackgroundResource(2130837829);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.rightMargin = this.j;
     localLayoutParams.addRule(11);
@@ -120,7 +120,7 @@ public class FormSwitchItem
       localLayoutParams.addRule(15);
       addView(this.jdField_a_of_type_AndroidWidgetProgressBar, localLayoutParams);
       this.jdField_a_of_type_ComTencentWidgetSwitch.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130837851));
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130837853));
       this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminate(true);
       return;
     }
@@ -261,7 +261,7 @@ public class FormSwitchItem
       {
         this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
         this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131362070));
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131362080));
       }
     }
     else {

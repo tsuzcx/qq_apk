@@ -1,36 +1,48 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import android.text.TextUtils;
+import android.webkit.URLUtil;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.SquareImageView;
 
 public class ssf
-  implements ActionSheet.OnButtonClickListener
+  implements zac<CertifiedAccountRead.StGetMainPageRsp>
 {
-  public ssf(FriendProfileImageActivity paramFriendProfileImageActivity, FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo, ActionSheet paramActionSheet) {}
+  public ssf(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
   
-  public void OnClick(View paramView, int paramInt)
+  private void a(CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    switch (paramInt)
+    CertifiedAccountMeta.StUser localStUser = (CertifiedAccountMeta.StUser)paramStGetMainPageRsp.user.get();
+    ServiceAccountFolderActivityNew.a(this.a, localStUser.id.get());
+    String str = localStUser.icon.get();
+    if ((!TextUtils.isEmpty(paramStGetMainPageRsp.user.icon.get())) && (URLUtil.isNetworkUrl(str)))
     {
+      ServiceAccountFolderActivityNew.a(this.a).setImageURL(str);
+      ServiceAccountFolderActivityNew.a(this.a).setOnClickListener(new ssg(this, localStUser));
     }
-    for (;;)
+  }
+  
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
+  {
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.d);
-      continue;
-      if ((!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.b) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.a)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
+      if (paramStGetMainPageRsp != null)
+      {
+        ServiceAccountFolderActivityNew.a(this.a, paramStGetMainPageRsp);
+        wxe.c("ServiceAccountFolderActivityNew", "sendRequest GetMainPage success");
+        a(paramStGetMainPageRsp);
+        ServiceAccountFolderActivityNew.a(this.a);
+        ServiceAccountFolderActivityNew.a(this.a, paramStGetMainPageRsp);
       }
+      return;
     }
+    wxe.c("ServiceAccountFolderActivityNew", "sendRequest GetMainPage error retCode:" + paramLong + ",errMsg:" + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ssf
  * JD-Core Version:    0.7.0.1
  */

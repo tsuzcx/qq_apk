@@ -1,35 +1,58 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder.Holder;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetWeather;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetWeather;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class vgj
-  implements ActionSheet.OnButtonClickListener
+  extends urt<vhu>
 {
-  public vgj(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, MessageForShortVideo paramMessageForShortVideo, ShortVideoRealItemBuilder.Holder paramHolder, ActionSheet paramActionSheet) {}
+  private static final String a = uqn.a("StorySvc.get_weather");
+  public final int c;
+  public final int d;
+  public final int e;
   
-  public void OnClick(View paramView, int paramInt)
+  public vgj(int paramInt1, int paramInt2, int paramInt3)
   {
-    switch (paramInt)
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
+  }
+  
+  public String a()
+  {
+    return a;
+  }
+  
+  public uro a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetWeather localRspGetWeather = new qqstory_service.RspGetWeather();
+    try
     {
+      localRspGetWeather.mergeFrom(paramArrayOfByte);
+      return new vhu(localRspGetWeather);
     }
-    for (;;)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 2) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder$Holder);
-      } else {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder$Holder);
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
       }
     }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetWeather localReqGetWeather = new qqstory_service.ReqGetWeather();
+    localReqGetWeather.coordinate.set(this.c);
+    localReqGetWeather.longitude.set(this.d);
+    localReqGetWeather.latitude.set(this.e);
+    return localReqGetWeather.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vgj
  * JD-Core Version:    0.7.0.1
  */

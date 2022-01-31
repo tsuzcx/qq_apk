@@ -1,56 +1,67 @@
-import android.app.Activity;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListModel;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Gallery;
+import android.content.Context;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.ViewConfiguration;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
 
-public final class ehd
-  implements URLDrawable.URLDrawableListener
+public class ehd
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public int a;
-  public long a;
-  public URLDrawable a;
+  private static final int jdField_a_of_type_Int = 100;
+  private float jdField_a_of_type_Float;
   
-  private ehd(AIOGalleryScene paramAIOGalleryScene) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public ehd(TopGestureLayout paramTopGestureLayout, Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOGalleryScene", 2, "rawPhotoBtn decode onLoadCanceled URL():" + paramURLDrawable.getURL());
-    }
-    this.a.a(false);
-    this.a.jdField_a_of_type_Ehd = null;
+    this.jdField_a_of_type_Float = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 2);
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOGalleryScene", 2, "rawPhotoBtn decode onLoadFialed URL():" + paramURLDrawable.getURL());
-    }
-    QQToast.a(AIOGalleryScene.a(this.a), AIOGalleryScene.b(this.a).getString(2131561436), 0).a();
-    this.a.c(true);
-    this.a.a(false);
-    this.a.jdField_a_of_type_Ehd = null;
+    TopGestureLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout, 0);
+    return super.onDown(paramMotionEvent);
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOGalleryScene", 2, "rawPhotoBtn decode onLoadSuccessed URL():" + paramURLDrawable.getURL());
+    if ((TopGestureLayout.b(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout)) || (TopGestureLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout))) {
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
-    this.a.c(false);
-    this.a.a(false);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.b.b = paramURLDrawable.getExifOrientation();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a(paramURLDrawable, AIOGalleryScene.a(this.a).p());
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.notifyDataSetChanged();
-    AIOGalleryScene.b(this.a).e();
-    this.a.jdField_a_of_type_Ehd = null;
+    float f1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+    float f2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / f1);
+    if ((TopGestureLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout, 1)) && (f1 < 0.0F) && (f2 < 0.5F) && (TopGestureLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout) != null))
+    {
+      TopGestureLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout, -1);
+      TopGestureLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout).flingLToR();
+    }
+    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if (TopGestureLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout)) {
+      return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    }
+    float f1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+    float f2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / f1);
+    if (TopGestureLayout.b(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout))
+    {
+      if ((Math.abs(f1) > this.jdField_a_of_type_Float) && (paramFloat1 < 0.0F) && (f2 < 0.5F))
+      {
+        TopGestureLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout, 1);
+        return true;
+      }
+    }
+    else if ((TopGestureLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout, 1)) && ((paramFloat1 > 0.0F) || (f2 >= 0.5F))) {
+      TopGestureLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout, -1);
+    }
+    return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    TopGestureLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout, -1);
+    return super.onSingleTapUp(paramMotionEvent);
   }
 }
 

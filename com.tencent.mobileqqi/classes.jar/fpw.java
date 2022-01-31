@@ -1,37 +1,46 @@
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.widget.ActionSheet;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.filemanager.activity.CloudFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.ImageFileAdapter.ViewHolder;
+import com.tencent.mobileqq.filemanager.data.OfflineFileAdapter.CloudFileItemHolder;
+import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileAdapter.WeiYunFileItemHolder;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import com.tencent.mobileqq.utils.BubbleContextMenu;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 
 public class fpw
-  implements IphonePickerView.IphonePickListener
+  implements View.OnLongClickListener
 {
-  public fpw(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  public fpw(CloudFileBrowserActivity paramCloudFileBrowserActivity) {}
   
-  public void a()
+  public boolean onLongClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.a.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()))
-    {
-      this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = null;
+    if (paramView == null) {
+      return false;
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (this.a.c == 0)
-    {
-      this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(ConditionSearchFriendActivity.jdField_b_of_type_ArrayOfJavaLangString[paramInt2]);
-      this.a.jdField_b_of_type_Int = paramInt2;
-      return;
+    String str;
+    if (this.a.a == 9L) {
+      str = ((OfflineFileAdapter.CloudFileItemHolder)paramView.getTag()).a.b;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(ConditionSearchFriendActivity.jdField_a_of_type_ArrayOfJavaLangString[paramInt2]);
-    this.a.jdField_a_of_type_Int = paramInt2;
+    for (;;)
+    {
+      QQCustomMenu localQQCustomMenu = new QQCustomMenu();
+      localQQCustomMenu.a(2131230986, paramView.getContext().getString(2131561917));
+      CloudFileBrowserActivity.a(this.a, BubbleContextMenu.a(paramView, localQQCustomMenu, new fpx(this, paramView), str));
+      return true;
+      if (this.a.a == 10L) {
+        str = ((ImageFileAdapter.ViewHolder)paramView.getTag()).a.b;
+      } else {
+        str = ((WeiYunFileAdapter.WeiYunFileItemHolder)paramView.getTag()).a.b;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     fpw
  * JD-Core Version:    0.7.0.1
  */

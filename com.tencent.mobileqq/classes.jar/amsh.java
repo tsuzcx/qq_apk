@@ -1,67 +1,34 @@
-import android.os.FileObserver;
-import android.os.Handler;
-import android.util.Pair;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.opengl.GLSurfaceView.EGLContextFactory;
+import com.tencent.mobileqq.ar.ARGLSurfaceView;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.QZoneStartupMonitor;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class amsh
-  extends FileObserver
+  implements GLSurfaceView.EGLContextFactory
 {
-  public amsh(QZoneStartupMonitor paramQZoneStartupMonitor, String paramString, int paramInt)
+  private int jdField_a_of_type_Int = 12440;
+  
+  public amsh(ARGLSurfaceView paramARGLSurfaceView) {}
+  
+  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    super(paramString, paramInt);
+    QLog.i("AREngine_ARGLSurfaceView", 1, "createContext. display = " + paramEGLDisplay);
+    int i = this.jdField_a_of_type_Int;
+    return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
   }
   
-  public void onEvent(int paramInt, String paramString)
+  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
   {
-    if (!"qzone_startup_monitor".equals(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("QZoneStartupMonitor", 2, "path:" + paramString + ",非监控文件：" + "qzone_startup_monitor");
-      }
-      return;
+    if (ARGLSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView) != null) {
+      ARGLSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView).a();
     }
-    switch (paramInt & 0xFFF)
-    {
-    default: 
-      return;
-    case 256: 
-      paramInt = QzoneConfig.getInstance().getConfig("QZoneSetting", "startupFailTimeout", 60000);
-      QZoneStartupMonitor.a(this.a, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneStartupMonitor", 2, "如果" + paramInt + "ms 后，未收到启动成功的消息，则认为启动失败");
-      }
-      QZoneStartupMonitor.a(this.a).sendEmptyMessageDelayed(1, paramInt);
-      return;
+    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext)) {
+      QLog.e("AREngine_ARGLSurfaceView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneStartupMonitor", 2, "启动成功，清理超时，并校验odex和上报");
-    }
-    QZoneStartupMonitor.a(this.a).removeMessages(1);
-    paramString = QZoneStartupMonitor.a(BaseApplicationImpl.getApplication(), "qzone_plugin.apk");
-    if (paramString != null) {}
-    for (paramInt = ((Integer)paramString.first).intValue();; paramInt = 0)
-    {
-      QZoneStartupMonitor.a(this.a, true);
-      QZoneStartupMonitor.a(this.a, paramInt, QZoneStartupMonitor.a(this.a), LocalMultiProcConfig.getInt("key_recovery_count", 0));
-      LocalMultiProcConfig.putInt("key_recovery_count", 0);
-      return;
-    }
-  }
-  
-  public void startWatching()
-  {
-    super.startWatching();
-    QLog.i("QZoneStartupMonitor", 1, "startWatching");
-  }
-  
-  public void stopWatching()
-  {
-    super.stopWatching();
-    QLog.i("QZoneStartupMonitor", 1, "stopWatching");
+    QLog.i("AREngine_ARGLSurfaceView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
   }
 }
 

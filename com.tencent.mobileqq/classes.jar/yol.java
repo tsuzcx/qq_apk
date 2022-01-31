@@ -1,22 +1,23 @@
-import com.tencent.mobileqq.apollo.ai.ApolloAILogicProcessor;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.subscribe.widget.comment.component.richtext.element.ContentElement;
 
-public class yol
-  implements Runnable
+public final class yol
+  implements Parcelable.Creator<ContentElement>
 {
-  public yol(ApolloAILogicProcessor paramApolloAILogicProcessor) {}
-  
-  public void run()
+  public ContentElement a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloAILogicProcessor", 2, "[run post]");
-    }
-    ApolloAILogicProcessor.a(this.a);
+    return new ContentElement();
+  }
+  
+  public ContentElement[] a(int paramInt)
+  {
+    return new ContentElement[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yol
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.Editable;
-import android.view.View;
-import android.view.animation.TranslateAnimation;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class rzj
-  implements DialogInterface.OnDismissListener
+  implements oil
 {
-  public rzj(ChatHistory paramChatHistory, View paramView1, int paramInt, View paramView2, TranslateAnimation paramTranslateAnimation) {}
+  public rzj(FastWebActivity paramFastWebActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(oio paramoio)
   {
-    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    this.b.setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    paramDialogInterface = (MessageSearchDialog)paramDialogInterface;
-    int i = paramDialogInterface.a() + this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.l;
-    boolean bool = paramDialogInterface.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("ChatHistory", 2, "onDismiss, recordCount : " + i);
-    }
-    if (i <= 0) {}
-    int j;
-    do
+    String str = FastWebActivity.a(this.a);
+    StringBuilder localStringBuilder = new StringBuilder().append("onBiuAndCommentSend fastWeb");
+    if (paramoio == null) {}
+    for (Object localObject = "null";; localObject = Integer.valueOf(paramoio.a()))
     {
-      return;
-      j = (i - 1) / 8 + 1;
-      if (QLog.isColorLevel()) {
-        QLog.i("ChatHistory", 2, "onDismiss, pageIndex = " + j);
+      QLog.d(str, 1, localObject);
+      if ((paramoio == null) || (paramoio.a() != 0)) {
+        break;
       }
-    } while (j < 0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.c = ((i - 1) % 8);
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(j));
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-    if (bool)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.leftView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131433698));
+      if (FastWebActivity.a(this.a) != null)
+      {
+        localObject = FastWebActivity.a(this.a);
+        ((FastWebArticleInfo)localObject).b += 1L;
+        FastWebActivity.a(this.a).a(this.a, FastWebActivity.a(this.a), FastWebActivity.a(this.a));
+      }
+      oik.a(paramoio.b(), paramoio.a(), paramoio.c(), paramoio.b(), paramoio.a(), paramoio.c(), paramoio.d(), paramoio.a());
+      if ((paramoio.c() == 1) && (!FastWebActivity.j(this.a)))
+      {
+        FastWebActivity.h(this.a, true);
+        sce.a(this.a);
+      }
       return;
     }
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getIntent().getExtras().getString("leftViewText");
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.leftView.setText(paramDialogInterface);
+    QQToast.a(BaseApplication.getContext(), 1, alud.a(2131713279), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rzj
  * JD-Core Version:    0.7.0.1
  */

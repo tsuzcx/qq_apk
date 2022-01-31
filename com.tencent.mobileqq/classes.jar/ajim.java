@@ -1,16 +1,15 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 
-public class ajim
-  implements View.OnClickListener
+public abstract interface ajim
 {
-  public ajim(ReciteFragment paramReciteFragment) {}
+  public abstract void a(View paramView, RecentBaseData paramRecentBaseData, String paramString, boolean paramBoolean);
   
-  public void onClick(View paramView)
-  {
-    ReciteFragment.a(this.a);
-  }
+  public abstract void a(View paramView, Object paramObject);
+  
+  public abstract void a(RecentBaseData paramRecentBaseData, String paramString);
+  
+  public abstract void a(String paramString1, RecentBaseData paramRecentBaseData, String paramString2);
 }
 
 

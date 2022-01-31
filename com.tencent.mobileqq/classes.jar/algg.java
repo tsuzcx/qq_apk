@@ -1,42 +1,23 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadApi;
-import com.tencent.tmdatasourcesdk.ITMAssistantExchangeURLListenner;
-import com.tencent.tmdatasourcesdk.internal.protocol.jce.AppSimpleDetail;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONObject;
 
-public final class algg
-  implements ITMAssistantExchangeURLListenner
+public class algg
 {
-  public void onExchangedURLSucceed(ArrayList arg1, boolean paramBoolean)
-  {
-    LogUtility.b(DownloadApi.jdField_a_of_type_JavaLangString, "onExchangedURLSucceed --- ");
-    if ((paramBoolean) && (??? != null) && (???.size() > 0))
-    {
-      ??? = ???.iterator();
-      while (???.hasNext())
-      {
-        Object localObject1 = ???.next();
-        if ((localObject1 instanceof AppSimpleDetail))
-        {
-          int i = ((AppSimpleDetail)localObject1).versionCode;
-          if (i > 0) {
-            DownloadApi.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(((AppSimpleDetail)localObject1).packageName, Integer.valueOf(i));
-          }
-        }
-      }
-    }
-    synchronized (DownloadApi.jdField_a_of_type_JavaLangObject)
-    {
-      DownloadApi.jdField_a_of_type_JavaLangObject.notify();
-      return;
-    }
-  }
+  public int a;
+  public long a;
+  public JSONObject a = new JSONObject();
+  public long b;
+  public long c;
+  public long d;
+  public long e;
+  public long f;
+  public long g;
+  public long h;
+  public long i;
+  public long j;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     algg
  * JD-Core Version:    0.7.0.1
  */

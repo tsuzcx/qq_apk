@@ -1,39 +1,48 @@
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment.1.1;
 
 public class rfv
-  implements Runnable
+  implements qyo
 {
-  public rfv(AccountManageActivity paramAccountManageActivity) {}
+  public rfv(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public void run()
+  public void a()
   {
-    try
-    {
-      if (this.a.app != null)
+    if ((VideoFeedsRecommendFragment.a(this.a)) && (VideoFeedsRecommendFragment.a(this.a) != null) && (VideoFeedsRecommendFragment.a(this.a).a != null) && (VideoFeedsRecommendFragment.a(this.a).a.a != null) && (VideoFeedsRecommendFragment.a(this.a).a.a.a != null) && (VideoFeedsRecommendFragment.a(this.a) != null)) {
+      if ((oed.e(VideoFeedsRecommendFragment.a(this.a).a.a.a)) && (!VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).c)))
       {
-        FriendsManager localFriendsManager = (FriendsManager)this.a.app.getManager(50);
-        if (localFriendsManager != null) {
-          AccountManageActivity.a(this.a, localFriendsManager.a(this.a.app.getCurrentAccountUin()));
+        localVideoInfo = VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).c);
+        if (localVideoInfo != null)
+        {
+          i = VideoFeedsRecommendFragment.a(this.a).getAdapterPosition() - 1;
+          j = VideoFeedsRecommendFragment.a(this.a).c;
+          VideoFeedsRecommendFragment.a(this.a).a(i, j, localVideoInfo);
+          odt.a(this.a.getActivity(), 50, true);
         }
       }
-      return;
     }
-    catch (Exception localException)
+    while ((VideoFeedsRecommendFragment.a(this.a) == null) || (VideoFeedsRecommendFragment.a(this.a) == null))
     {
+      VideoInfo localVideoInfo;
+      int i;
+      int j;
+      VideoFeedsRecommendFragment.a(this.a).postDelayed(new VideoFeedsRecommendFragment.1.1(this, i + 1), 0L);
       do
       {
-        localException.printStackTrace();
-      } while (!QLog.isColorLevel());
-      QLog.w("AccountManageActivity", 2, "showLogoutDialog getCard Exception! ");
+        return;
+      } while (VideoFeedsRecommendFragment.a(this.a) == null);
+      VideoFeedsRecommendFragment.a(this.a).c();
+      return;
     }
+    VideoFeedsRecommendFragment.a(this.a).c(VideoFeedsRecommendFragment.a(this.a).a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rfv
  * JD-Core Version:    0.7.0.1
  */

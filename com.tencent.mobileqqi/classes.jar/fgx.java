@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.FriendsManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
+import com.tencent.ims.signature.SignatureReport;
+import com.tencent.mobileqq.app.StartAppCheckHandler;
 
 public class fgx
-  extends Thread
 {
-  public fgx(FriendListHandler paramFriendListHandler, String paramString1, String paramString2)
-  {
-    super(paramString1);
-  }
+  public int a;
+  public long a;
+  signature.SignatureReport jdField_a_of_type_ComTencentImsSignature$SignatureReport;
+  fgw jdField_a_of_type_Fgw;
+  public String a;
+  String b;
+  String c;
+  String d;
   
-  public void run()
+  public fgx(StartAppCheckHandler paramStartAppCheckHandler, String paramString)
   {
-    FriendsManagerImp localFriendsManagerImp = (FriendsManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a.getManager(8);
-    Friends localFriends = localFriendsManagerImp.b(this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a.a());
-    localFriends.signature = this.jdField_a_of_type_JavaLangString;
-    localFriendsManagerImp.a(localFriends);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentImsSignature$SignatureReport = new signature.SignatureReport();
   }
 }
 

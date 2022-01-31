@@ -1,0 +1,884 @@
+package com.google.android.exoplayer2.metadata.id3;
+
+import com.google.android.exoplayer2.i.m;
+import com.google.android.exoplayer2.i.x;
+import com.google.android.exoplayer2.metadata.Metadata;
+import com.google.android.exoplayer2.metadata.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.UnsupportedEncodingException;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
+
+public final class a
+  implements com.google.android.exoplayer2.metadata.a
+{
+  public static final int aJO;
+  private final a.a aOc;
+  
+  static
+  {
+    AppMethodBeat.i(95321);
+    aJO = x.aS("ID3");
+    AppMethodBeat.o(95321);
+  }
+  
+  public a()
+  {
+    this(null);
+  }
+  
+  public a(a.a parama)
+  {
+    this.aOc = parama;
+  }
+  
+  private static ChapterFrame a(m paramm, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, a.a parama)
+  {
+    AppMethodBeat.i(95315);
+    int i = paramm.position;
+    int j = c(paramm.data, i);
+    String str = new String(paramm.data, i, j - i, "ISO-8859-1");
+    paramm.setPosition(j + 1);
+    j = paramm.readInt();
+    int k = paramm.readInt();
+    long l2 = paramm.cc();
+    long l1 = l2;
+    if (l2 == 4294967295L) {
+      l1 = -1L;
+    }
+    long l3 = paramm.cc();
+    l2 = l3;
+    if (l3 == 4294967295L) {
+      l2 = -1L;
+    }
+    ArrayList localArrayList = new ArrayList();
+    while (paramm.position < i + paramInt1)
+    {
+      Id3Frame localId3Frame = a(paramInt2, paramm, paramBoolean, paramInt3, parama);
+      if (localId3Frame != null) {
+        localArrayList.add(localId3Frame);
+      }
+    }
+    paramm = new Id3Frame[localArrayList.size()];
+    localArrayList.toArray(paramm);
+    paramm = new ChapterFrame(str, j, k, l1, l2, paramm);
+    AppMethodBeat.o(95315);
+    return paramm;
+  }
+  
+  private static Id3Frame a(int paramInt1, m paramm, boolean paramBoolean, int paramInt2, a.a parama)
+  {
+    AppMethodBeat.i(95314);
+    int i5 = paramm.readUnsignedByte();
+    int i6 = paramm.readUnsignedByte();
+    int i7 = paramm.readUnsignedByte();
+    int i2;
+    int i;
+    if (paramInt1 >= 3)
+    {
+      i2 = paramm.readUnsignedByte();
+      if (paramInt1 != 4) {
+        break label162;
+      }
+      j = paramm.qT();
+      i = j;
+      if (!paramBoolean) {
+        i = j & 0xFF | (j >> 8 & 0xFF) << 7 | (j >> 16 & 0xFF) << 14 | (j >> 24 & 0xFF) << 21;
+      }
+      label100:
+      if (paramInt1 < 3) {
+        break label185;
+      }
+    }
+    label162:
+    label185:
+    for (int i3 = paramm.readUnsignedShort();; i3 = 0)
+    {
+      if ((i5 != 0) || (i6 != 0) || (i7 != 0) || (i2 != 0) || (i != 0) || (i3 != 0)) {
+        break label191;
+      }
+      paramm.setPosition(paramm.limit);
+      AppMethodBeat.o(95314);
+      return null;
+      i2 = 0;
+      break;
+      if (paramInt1 == 3)
+      {
+        i = paramm.qT();
+        break label100;
+      }
+      i = paramm.qO();
+      break label100;
+    }
+    label191:
+    int i8 = paramm.position + i;
+    if (i8 > paramm.limit)
+    {
+      paramm.setPosition(paramm.limit);
+      AppMethodBeat.o(95314);
+      return null;
+    }
+    if ((parama != null) && (!parama.f(paramInt1, i5, i6, i7, i2)))
+    {
+      paramm.setPosition(i8);
+      AppMethodBeat.o(95314);
+      return null;
+    }
+    int m = 0;
+    int n = 0;
+    int i1 = 0;
+    int j = 0;
+    int k = 0;
+    if (paramInt1 == 3) {
+      if ((i3 & 0x80) != 0)
+      {
+        j = 1;
+        if ((i3 & 0x40) == 0) {
+          break label368;
+        }
+        k = 1;
+        label304:
+        if ((i3 & 0x20) == 0) {
+          break label374;
+        }
+        m = 1;
+        label315:
+        i3 = j;
+        int i4 = m;
+        m = j;
+        n = k;
+        k = i4;
+        j = i3;
+      }
+    }
+    for (;;)
+    {
+      if ((m == 0) && (n == 0)) {
+        break label486;
+      }
+      paramm.setPosition(i8);
+      AppMethodBeat.o(95314);
+      return null;
+      j = 0;
+      break;
+      label368:
+      k = 0;
+      break label304;
+      label374:
+      m = 0;
+      break label315;
+      if (paramInt1 == 4)
+      {
+        if ((i3 & 0x40) != 0)
+        {
+          j = 1;
+          label396:
+          if ((i3 & 0x8) == 0) {
+            break label454;
+          }
+          m = 1;
+          label407:
+          if ((i3 & 0x4) == 0) {
+            break label460;
+          }
+          n = 1;
+          label417:
+          if ((i3 & 0x2) == 0) {
+            break label466;
+          }
+        }
+        label454:
+        label460:
+        label466:
+        for (i1 = 1;; i1 = 0)
+        {
+          if ((i3 & 0x1) == 0) {
+            break label472;
+          }
+          i3 = 1;
+          k = j;
+          j = i3;
+          break;
+          j = 0;
+          break label396;
+          m = 0;
+          break label407;
+          n = 0;
+          break label417;
+        }
+        label472:
+        i3 = 0;
+        k = j;
+        j = i3;
+      }
+    }
+    label486:
+    Object localObject2;
+    label580:
+    Object localObject1;
+    label1020:
+    Object localObject3;
+    if (k != 0)
+    {
+      k = i - 1;
+      paramm.en(1);
+      i = k;
+      if (j != 0)
+      {
+        i = k - 4;
+        paramm.en(4);
+      }
+      j = i;
+      if (i1 != 0) {
+        j = f(paramm, i);
+      }
+      if ((i5 == 84) && (i6 == 88) && (i7 == 88) && ((paramInt1 == 2) || (i2 == 88))) {
+        if (j <= 0) {
+          parama = null;
+        }
+      }
+      for (;;)
+      {
+        if (parama == null) {}
+        try
+        {
+          new StringBuilder("Failed to decode frame: id=").append(g(paramInt1, i5, i6, i7, i2)).append(", frameSize=").append(j);
+          return parama;
+          paramInt2 = paramm.readUnsignedByte();
+          parama = dK(paramInt2);
+          localObject2 = new byte[j - 1];
+          paramm.readBytes((byte[])localObject2, 0, j - 1);
+          i = h((byte[])localObject2, 0, paramInt2);
+          localObject1 = new String((byte[])localObject2, 0, i, parama);
+          i += dL(paramInt2);
+          if (i < localObject2.length)
+          {
+            parama = new String((byte[])localObject2, i, h((byte[])localObject2, i, paramInt2) - i, parama);
+            parama = new TextInformationFrame("TXXX", (String)localObject1, parama);
+            continue;
+          }
+        }
+        catch (UnsupportedEncodingException parama)
+        {
+          for (;;)
+          {
+            return null;
+            parama = "";
+          }
+          if (i5 == 84)
+          {
+            parama = g(paramInt1, i5, i6, i7, i2);
+            if (j <= 0)
+            {
+              parama = null;
+              continue;
+            }
+            paramInt2 = paramm.readUnsignedByte();
+            localObject1 = dK(paramInt2);
+            localObject2 = new byte[j - 1];
+            paramm.readBytes((byte[])localObject2, 0, j - 1);
+            parama = new TextInformationFrame(parama, null, new String((byte[])localObject2, 0, h((byte[])localObject2, 0, paramInt2), (String)localObject1));
+            continue;
+          }
+        }
+        finally
+        {
+          paramm.setPosition(i8);
+          AppMethodBeat.o(95314);
+        }
+        if ((i5 == 87) && (i6 == 88) && (i7 == 88) && ((paramInt1 == 2) || (i2 == 88)))
+        {
+          if (j <= 0)
+          {
+            parama = null;
+          }
+          else
+          {
+            paramInt2 = paramm.readUnsignedByte();
+            localObject1 = dK(paramInt2);
+            parama = new byte[j - 1];
+            paramm.readBytes(parama, 0, j - 1);
+            i = h(parama, 0, paramInt2);
+            localObject1 = new String(parama, 0, i, (String)localObject1);
+            paramInt2 = i + dL(paramInt2);
+            if (paramInt2 >= parama.length) {
+              break;
+            }
+            parama = new String(parama, paramInt2, c(parama, paramInt2) - paramInt2, "ISO-8859-1");
+            parama = new UrlLinkFrame("WXXX", (String)localObject1, parama);
+          }
+        }
+        else if (i5 == 87)
+        {
+          parama = g(paramInt1, i5, i6, i7, i2);
+          localObject1 = new byte[j];
+          paramm.readBytes((byte[])localObject1, 0, j);
+          parama = new UrlLinkFrame(parama, null, new String((byte[])localObject1, 0, c((byte[])localObject1, 0), "ISO-8859-1"));
+        }
+        else
+        {
+          if ((i5 != 80) || (i6 != 82) || (i7 != 73) || (i2 != 86)) {
+            break label1874;
+          }
+          parama = new byte[j];
+          paramm.readBytes(parama, 0, j);
+          paramInt2 = c(parama, 0);
+          parama = new PrivFrame(new String(parama, 0, paramInt2, "ISO-8859-1"), i(parama, paramInt2 + 1, parama.length));
+          continue;
+          label1193:
+          paramInt2 = paramm.readUnsignedByte();
+          parama = dK(paramInt2);
+          localObject1 = new byte[j - 1];
+          paramm.readBytes((byte[])localObject1, 0, j - 1);
+          i = c((byte[])localObject1, 0);
+          localObject2 = new String((byte[])localObject1, 0, i, "ISO-8859-1");
+          i += 1;
+          k = h((byte[])localObject1, i, paramInt2);
+          localObject3 = new String((byte[])localObject1, i, k - i, parama);
+          i = dL(paramInt2) + k;
+          k = h((byte[])localObject1, i, paramInt2);
+          parama = new GeobFrame((String)localObject2, (String)localObject3, new String((byte[])localObject1, i, k - i, parama), i((byte[])localObject1, dL(paramInt2) + k, localObject1.length));
+        }
+      }
+      label1351:
+      k = paramm.readUnsignedByte();
+      localObject2 = dK(k);
+      localObject3 = new byte[j - 1];
+      paramm.readBytes((byte[])localObject3, 0, j - 1);
+      if (paramInt1 == 2)
+      {
+        i = 2;
+        localObject1 = "image/" + x.aQ(new String((byte[])localObject3, 0, 3, "ISO-8859-1"));
+        paramInt2 = i;
+        parama = (a.a)localObject1;
+        if (((String)localObject1).equals("image/jpg"))
+        {
+          parama = "image/jpeg";
+          paramInt2 = i;
+        }
+      }
+      for (;;)
+      {
+        i = localObject3[(paramInt2 + 1)];
+        paramInt2 += 2;
+        m = h((byte[])localObject3, paramInt2, k);
+        parama = new ApicFrame(parama, new String((byte[])localObject3, paramInt2, m - paramInt2, (String)localObject2), i & 0xFF, i((byte[])localObject3, dL(k) + m, localObject3.length));
+        break;
+        i = c((byte[])localObject3, 0);
+        localObject1 = x.aQ(new String((byte[])localObject3, 0, i, "ISO-8859-1"));
+        paramInt2 = i;
+        parama = (a.a)localObject1;
+        if (((String)localObject1).indexOf('/') == -1)
+        {
+          parama = "image/".concat(String.valueOf(localObject1));
+          paramInt2 = i;
+        }
+      }
+      label1585:
+      paramInt2 = paramm.readUnsignedByte();
+      parama = dK(paramInt2);
+      localObject1 = new byte[3];
+      paramm.readBytes((byte[])localObject1, 0, 3);
+      localObject1 = new String((byte[])localObject1, 0, 3);
+      localObject3 = new byte[j - 4];
+      paramm.readBytes((byte[])localObject3, 0, j - 4);
+      i = h((byte[])localObject3, 0, paramInt2);
+      localObject2 = new String((byte[])localObject3, 0, i, parama);
+      i += dL(paramInt2);
+      if (i >= localObject3.length) {
+        break label2012;
+      }
+    }
+    label1874:
+    label2012:
+    for (parama = new String((byte[])localObject3, i, h((byte[])localObject3, i, paramInt2) - i, parama);; parama = "")
+    {
+      parama = new CommentFrame((String)localObject1, (String)localObject2, parama);
+      break label580;
+      do
+      {
+        if ((i5 == 67) && (i6 == 72) && (i7 == 65) && (i2 == 80))
+        {
+          parama = a(paramm, j, paramInt1, paramBoolean, paramInt2, parama);
+          break label580;
+        }
+        if ((i5 == 67) && (i6 == 84) && (i7 == 79) && (i2 == 67))
+        {
+          parama = b(paramm, j, paramInt1, paramBoolean, paramInt2, parama);
+          break label580;
+        }
+        parama = g(paramInt1, i5, i6, i7, i2);
+        localObject1 = new byte[j];
+        paramm.readBytes((byte[])localObject1, 0, j);
+        parama = new BinaryFrame(parama, (byte[])localObject1);
+        break label580;
+        k = i;
+        break;
+        parama = "";
+        break label1020;
+        if ((i5 == 71) && (i6 == 69) && (i7 == 79) && ((i2 == 66) || (paramInt1 == 2))) {
+          break label1193;
+        }
+        if (paramInt1 == 2 ? (i5 == 80) || (i6 == 73) || (i7 == 67) : (i5 == 65) && (i6 == 80) && (i7 == 73) && (i2 == 67)) {
+          break label1351;
+        }
+      } while ((i5 != 67) || (i6 != 79) || (i7 != 77) || ((i2 != 77) && (paramInt1 != 2)));
+      if (j >= 4) {
+        break label1585;
+      }
+      parama = null;
+      break label580;
+    }
+  }
+  
+  private static boolean a(m paramm, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    AppMethodBeat.i(95313);
+    int m = paramm.position;
+    label390:
+    label396:
+    for (;;)
+    {
+      try
+      {
+        if (paramm.qM() >= paramInt2)
+        {
+          int k;
+          if (paramInt1 >= 3)
+          {
+            i = paramm.readInt();
+            l = paramm.cc();
+            k = paramm.readUnsignedShort();
+            if ((i == 0) && (l == 0L) && (k == 0)) {
+              return true;
+            }
+          }
+          else
+          {
+            i = paramm.qO();
+            j = paramm.qO();
+            l = j;
+            k = 0;
+            continue;
+          }
+          if ((paramInt1 != 4) || (paramBoolean)) {
+            break label396;
+          }
+          if ((0x808080 & l) != 0L) {
+            return false;
+          }
+          long l = (l >> 24 & 0xFF) << 21 | 0xFF & l | (l >> 8 & 0xFF) << 7 | (l >> 16 & 0xFF) << 14;
+          int j = 0;
+          if (paramInt1 == 4)
+          {
+            if ((k & 0x40) != 0)
+            {
+              i = 1;
+              if ((k & 0x1) != 0)
+              {
+                j = 1;
+                k = j;
+                j = i;
+                i = k;
+                k = 0;
+                if (j != 0) {
+                  k = 1;
+                }
+                j = k;
+                if (i != 0) {
+                  j = k + 4;
+                }
+                if (l >= j) {
+                  continue;
+                }
+                return false;
+              }
+            }
+            else
+            {
+              i = 0;
+              continue;
+            }
+            j = 0;
+            continue;
+          }
+          else
+          {
+            if (paramInt1 != 3) {
+              break label390;
+            }
+            if ((k & 0x20) != 0)
+            {
+              j = 1;
+              if ((k & 0x80) != 0) {
+                i = 1;
+              }
+            }
+            else
+            {
+              j = 0;
+              continue;
+            }
+            i = 0;
+            continue;
+          }
+          i = paramm.qM();
+          if (i < l) {
+            return false;
+          }
+          i = (int)l;
+          paramm.en(i);
+          continue;
+        }
+        paramm.setPosition(m);
+      }
+      finally
+      {
+        paramm.setPosition(m);
+        AppMethodBeat.o(95313);
+      }
+      AppMethodBeat.o(95313);
+      return true;
+      int i = 0;
+    }
+  }
+  
+  private static ChapterTocFrame b(m paramm, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, a.a parama)
+  {
+    AppMethodBeat.i(95316);
+    int j = paramm.position;
+    int i = c(paramm.data, j);
+    String str = new String(paramm.data, j, i - j, "ISO-8859-1");
+    paramm.setPosition(i + 1);
+    i = paramm.readUnsignedByte();
+    boolean bool1;
+    if ((i & 0x2) != 0)
+    {
+      bool1 = true;
+      if ((i & 0x1) == 0) {
+        break label166;
+      }
+    }
+    String[] arrayOfString;
+    label166:
+    for (boolean bool2 = true;; bool2 = false)
+    {
+      int k = paramm.readUnsignedByte();
+      arrayOfString = new String[k];
+      i = 0;
+      while (i < k)
+      {
+        int m = paramm.position;
+        int n = c(paramm.data, m);
+        arrayOfString[i] = new String(paramm.data, m, n - m, "ISO-8859-1");
+        paramm.setPosition(n + 1);
+        i += 1;
+      }
+      bool1 = false;
+      break;
+    }
+    ArrayList localArrayList = new ArrayList();
+    while (paramm.position < j + paramInt1)
+    {
+      Id3Frame localId3Frame = a(paramInt2, paramm, paramBoolean, paramInt3, parama);
+      if (localId3Frame != null) {
+        localArrayList.add(localId3Frame);
+      }
+    }
+    paramm = new Id3Frame[localArrayList.size()];
+    localArrayList.toArray(paramm);
+    paramm = new ChapterTocFrame(str, bool1, bool2, arrayOfString, paramm);
+    AppMethodBeat.o(95316);
+    return paramm;
+  }
+  
+  private static int c(byte[] paramArrayOfByte, int paramInt)
+  {
+    while (paramInt < paramArrayOfByte.length)
+    {
+      if (paramArrayOfByte[paramInt] == 0) {
+        return paramInt;
+      }
+      paramInt += 1;
+    }
+    return paramArrayOfByte.length;
+  }
+  
+  private static String dK(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "ISO-8859-1";
+    case 0: 
+      return "ISO-8859-1";
+    case 1: 
+      return "UTF-16";
+    case 2: 
+      return "UTF-16BE";
+    }
+    return "UTF-8";
+  }
+  
+  private static int dL(int paramInt)
+  {
+    if ((paramInt == 0) || (paramInt == 3)) {
+      return 1;
+    }
+    return 2;
+  }
+  
+  private static int f(m paramm, int paramInt)
+  {
+    AppMethodBeat.i(95317);
+    byte[] arrayOfByte = paramm.data;
+    int j = paramm.position;
+    int i = paramInt;
+    paramInt = j;
+    while (paramInt + 1 < i)
+    {
+      j = i;
+      if ((arrayOfByte[paramInt] & 0xFF) == 255)
+      {
+        j = i;
+        if (arrayOfByte[(paramInt + 1)] == 0)
+        {
+          System.arraycopy(arrayOfByte, paramInt + 2, arrayOfByte, paramInt + 1, i - paramInt - 2);
+          j = i - 1;
+        }
+      }
+      paramInt += 1;
+      i = j;
+    }
+    AppMethodBeat.o(95317);
+    return i;
+  }
+  
+  private static String g(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    AppMethodBeat.i(95318);
+    if (paramInt1 == 2)
+    {
+      str = String.format(Locale.US, "%c%c%c", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+      AppMethodBeat.o(95318);
+      return str;
+    }
+    String str = String.format(Locale.US, "%c%c%c%c", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5) });
+    AppMethodBeat.o(95318);
+    return str;
+  }
+  
+  private static int h(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(95319);
+    int i = c(paramArrayOfByte, paramInt1);
+    if (paramInt2 != 0)
+    {
+      paramInt1 = i;
+      if (paramInt2 != 3) {}
+    }
+    else
+    {
+      AppMethodBeat.o(95319);
+      return i;
+    }
+    do
+    {
+      paramInt1 = c(paramArrayOfByte, paramInt1 + 1);
+      if (paramInt1 >= paramArrayOfByte.length - 1) {
+        break;
+      }
+    } while ((paramInt1 % 2 != 0) || (paramArrayOfByte[(paramInt1 + 1)] != 0));
+    AppMethodBeat.o(95319);
+    return paramInt1;
+    paramInt1 = paramArrayOfByte.length;
+    AppMethodBeat.o(95319);
+    return paramInt1;
+  }
+  
+  private static byte[] i(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(95320);
+    if (paramInt2 <= paramInt1)
+    {
+      AppMethodBeat.o(95320);
+      return new byte[0];
+    }
+    paramArrayOfByte = Arrays.copyOfRange(paramArrayOfByte, paramInt1, paramInt2);
+    AppMethodBeat.o(95320);
+    return paramArrayOfByte;
+  }
+  
+  private static b x(m paramm)
+  {
+    AppMethodBeat.i(95312);
+    if (paramm.qM() < 10)
+    {
+      AppMethodBeat.o(95312);
+      return null;
+    }
+    if (paramm.qO() != aJO)
+    {
+      AppMethodBeat.o(95312);
+      return null;
+    }
+    int m = paramm.readUnsignedByte();
+    paramm.en(1);
+    int n = paramm.readUnsignedByte();
+    int i = paramm.qS();
+    int j;
+    if (m == 2)
+    {
+      if ((n & 0x40) != 0) {}
+      for (j = 1; j != 0; j = 0)
+      {
+        AppMethodBeat.o(95312);
+        return null;
+      }
+      if ((m >= 4) || ((n & 0x80) == 0)) {
+        break label263;
+      }
+    }
+    label263:
+    for (boolean bool = true;; bool = false)
+    {
+      paramm = new b(m, bool, i);
+      AppMethodBeat.o(95312);
+      return paramm;
+      int k;
+      if (m == 3)
+      {
+        if ((n & 0x40) != 0) {}
+        for (k = 1;; k = 0)
+        {
+          j = i;
+          if (k != 0)
+          {
+            j = paramm.readInt();
+            paramm.en(j);
+            j = i - (j + 4);
+          }
+          i = j;
+          break;
+        }
+      }
+      if (m == 4)
+      {
+        if ((n & 0x40) != 0)
+        {
+          k = 1;
+          label199:
+          j = i;
+          if (k != 0)
+          {
+            j = paramm.qS();
+            paramm.en(j - 4);
+            j = i - j;
+          }
+          if ((n & 0x10) == 0) {
+            break label250;
+          }
+        }
+        label250:
+        for (k = 1;; k = 0)
+        {
+          i = j;
+          if (k != 0) {
+            i = j - 10;
+          }
+          break;
+          k = 0;
+          break label199;
+        }
+      }
+      AppMethodBeat.o(95312);
+      return null;
+    }
+  }
+  
+  public final Metadata a(d paramd)
+  {
+    AppMethodBeat.i(95310);
+    paramd = paramd.aAS;
+    paramd = b(paramd.array(), paramd.limit());
+    AppMethodBeat.o(95310);
+    return paramd;
+  }
+  
+  public final Metadata b(byte[] paramArrayOfByte, int paramInt)
+  {
+    AppMethodBeat.i(95311);
+    ArrayList localArrayList = new ArrayList();
+    paramArrayOfByte = new m(paramArrayOfByte, paramInt);
+    b localb = x(paramArrayOfByte);
+    if (localb == null)
+    {
+      AppMethodBeat.o(95311);
+      return null;
+    }
+    int j = paramArrayOfByte.position;
+    boolean bool;
+    if (localb.aOd == 2)
+    {
+      paramInt = 6;
+      int i = localb.aOf;
+      if (localb.aOe) {
+        i = f(paramArrayOfByte, localb.aOf);
+      }
+      paramArrayOfByte.em(i + j);
+      if (a(paramArrayOfByte, localb.aOd, paramInt, false)) {
+        break label225;
+      }
+      if ((localb.aOd != 4) || (!a(paramArrayOfByte, 4, paramInt, true))) {
+        break label180;
+      }
+      bool = true;
+    }
+    for (;;)
+    {
+      if (paramArrayOfByte.qM() >= paramInt)
+      {
+        Id3Frame localId3Frame = a(localb.aOd, paramArrayOfByte, bool, paramInt, this.aOc);
+        if (localId3Frame == null) {
+          continue;
+        }
+        localArrayList.add(localId3Frame);
+        continue;
+        paramInt = 10;
+        break;
+        label180:
+        new StringBuilder("Failed to validate ID3 tag with majorVersion=").append(localb.aOd);
+        AppMethodBeat.o(95311);
+        return null;
+      }
+      paramArrayOfByte = new Metadata(localArrayList);
+      AppMethodBeat.o(95311);
+      return paramArrayOfByte;
+      label225:
+      bool = false;
+    }
+  }
+  
+  static final class b
+  {
+    final int aOd;
+    final boolean aOe;
+    final int aOf;
+    
+    public b(int paramInt1, boolean paramBoolean, int paramInt2)
+    {
+      this.aOd = paramInt1;
+      this.aOe = paramBoolean;
+      this.aOf = paramInt2;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+ * Qualified Name:     com.google.android.exoplayer2.metadata.id3.a
+ * JD-Core Version:    0.7.0.1
+ */

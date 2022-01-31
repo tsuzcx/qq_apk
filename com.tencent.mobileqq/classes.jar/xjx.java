@@ -1,33 +1,47 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager.IBannerInteract;
-import com.tencent.mobileqq.activity.recent.BannerManager.MessageToShowBanner;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.os.Message;
+import java.io.File;
 
-public class xjx
-  implements View.OnClickListener
+class xjx
+  implements bedj
 {
-  private BannerManager.MessageToShowBanner jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  private String jdField_a_of_type_JavaLangString;
+  private xkl jdField_a_of_type_Xkl;
   
-  public xjx(BannerManager.MessageToShowBanner paramMessageToShowBanner, MqqHandler paramMqqHandler)
+  xjx(xkl paramxkl, String paramString)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner = paramMessageToShowBanner;
+    this.jdField_a_of_type_Xkl = paramxkl;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onClick(View paramView)
+  public void a() {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner.jdField_a_of_type_JavaLangString + " on enter");
+    Object localObject = new File(this.jdField_a_of_type_JavaLangString.substring(0, this.jdField_a_of_type_JavaLangString.lastIndexOf(".af")).concat("_").concat(String.valueOf(this.jdField_a_of_type_Xkl.c)).concat(".pcm"));
+    if (((File)localObject).exists())
+    {
+      File localFile = new File(this.jdField_a_of_type_JavaLangString);
+      if (localFile.exists()) {
+        localFile.delete();
+      }
+      bdhb.a((File)localObject, new File(this.jdField_a_of_type_JavaLangString));
+      if (xjv.a() != null)
+      {
+        localObject = xjv.a().obtainMessage(10);
+        ((Message)localObject).obj = this.jdField_a_of_type_Xkl;
+        xjv.a().sendMessage((Message)localObject);
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$IBannerInteract.a();
   }
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xjx
  * JD-Core Version:    0.7.0.1
  */

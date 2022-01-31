@@ -1,69 +1,47 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.annotation.NonNull;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tribe.async.reactive.Stream;
 
 public class uzw
-  extends ClickableSpan
 {
-  public final String a;
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private String jdField_b_of_type_JavaLangString;
-  private WeakReference jdField_b_of_type_JavaLangRefWeakReference;
+  private int jdField_a_of_type_Int = 1;
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b = true;
   
-  public uzw(GrayTipsItemBuilder paramGrayTipsItemBuilder, QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
+  public void a(@NonNull uyg paramuyg, vaa paramvaa)
   {
-    this.jdField_a_of_type_JavaLangString = "mqqapi://nearby_entry/nearby_profile?src_type=web&version=1&from=10003&from_type=0&uin=%s&mode=3";
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_b_of_type_JavaLangString = paramString;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (this.b)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("MsgTabVideoPreloaderDataProvider", 2, "下载vidList和VideoInfo");
+        }
+        Stream.of(paramuyg).map(new uyw("MsgTabPreloader")).map(new uyt(null)).subscribe(new uzx(this, paramvaa, paramuyg));
+      }
+    }
+    else {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("MsgTabVideoPreloaderDataProvider", 2, "只加载vidList");
+    }
+    Stream.of(paramuyg).map(new uyw("MsgTabPreloader")).subscribe(new uzz(this, paramvaa, paramuyg));
   }
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Object localObject = (Context)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-    if ((paramView == null) || (localObject == null)) {}
-    long l;
-    do
-    {
-      do
-      {
-        return;
-      } while (!(localObject instanceof Activity));
-      if (!NetworkUtil.d((Context)localObject))
-      {
-        QQToast.a((Context)localObject, 2131433009, 0).b(((Context)localObject).getResources().getDimensionPixelSize(2131558448));
-        return;
-      }
-      l = System.currentTimeMillis();
-      if ((GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder) == 0L) || (l <= GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder)) || (l - GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder) > 800L)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("GrayTipsItemBuilder", 2, "click too often...ignore click envent");
-    return;
-    GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder, l);
-    localObject = JumpParser.a(paramView, (Context)localObject, String.format("mqqapi://nearby_entry/nearby_profile?src_type=web&version=1&from=10003&from_type=0&uin=%s&mode=3", new Object[] { this.jdField_b_of_type_JavaLangString }));
-    if (localObject != null) {
-      ((JumpAction)localObject).b();
-    }
-    ReportController.b(paramView, "CliOper", "", "", "0X80055FD", "0X80055FD", 0, 0, com.tencent.mobileqq.nearpeople.NearbyRecommender.NearbyRecommenderUtils.a(paramView)[0], this.jdField_b_of_type_JavaLangString, "", "");
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uzw
  * JD-Core Version:    0.7.0.1
  */

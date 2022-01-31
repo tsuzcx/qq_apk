@@ -12,8 +12,10 @@ public final class VipBaseInfo
   extends JceStruct
   implements Cloneable
 {
-  static Map cache_mOpenInfo;
-  public Map mOpenInfo;
+  static Map<Integer, VipOpenInfo> cache_mOpenInfo;
+  public int iGrayNameplateFlag;
+  public int iNameplateVipType;
+  public Map<Integer, VipOpenInfo> mOpenInfo;
   
   static
   {
@@ -21,15 +23,20 @@ public final class VipBaseInfo
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
+      cache_mOpenInfo = new HashMap();
+      VipOpenInfo localVipOpenInfo = new VipOpenInfo();
+      cache_mOpenInfo.put(Integer.valueOf(0), localVipOpenInfo);
       return;
     }
   }
   
   public VipBaseInfo() {}
   
-  public VipBaseInfo(Map paramMap)
+  public VipBaseInfo(Map<Integer, VipOpenInfo> paramMap, int paramInt1, int paramInt2)
   {
     this.mOpenInfo = paramMap;
+    this.iNameplateVipType = paramInt1;
+    this.iGrayNameplateFlag = paramInt2;
   }
   
   public String className()
@@ -55,21 +62,29 @@ public final class VipBaseInfo
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
   {
-    new JceDisplayer(paramStringBuilder, paramInt).display(this.mOpenInfo, "mOpenInfo");
+    paramStringBuilder = new JceDisplayer(paramStringBuilder, paramInt);
+    paramStringBuilder.display(this.mOpenInfo, "mOpenInfo");
+    paramStringBuilder.display(this.iNameplateVipType, "iNameplateVipType");
+    paramStringBuilder.display(this.iGrayNameplateFlag, "iGrayNameplateFlag");
   }
   
   public void displaySimple(StringBuilder paramStringBuilder, int paramInt)
   {
-    new JceDisplayer(paramStringBuilder, paramInt).displaySimple(this.mOpenInfo, false);
+    paramStringBuilder = new JceDisplayer(paramStringBuilder, paramInt);
+    paramStringBuilder.displaySimple(this.mOpenInfo, true);
+    paramStringBuilder.displaySimple(this.iNameplateVipType, true);
+    paramStringBuilder.displaySimple(this.iGrayNameplateFlag, false);
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {
+    if (paramObject == null) {}
+    do
+    {
       return false;
-    }
-    paramObject = (VipBaseInfo)paramObject;
-    return JceUtil.equals(this.mOpenInfo, paramObject.mOpenInfo);
+      paramObject = (VipBaseInfo)paramObject;
+    } while ((!JceUtil.equals(this.mOpenInfo, paramObject.mOpenInfo)) || (!JceUtil.equals(this.iNameplateVipType, paramObject.iNameplateVipType)) || (!JceUtil.equals(this.iGrayNameplateFlag, paramObject.iGrayNameplateFlag)));
+    return true;
   }
   
   public String fullClassName()
@@ -77,7 +92,17 @@ public final class VipBaseInfo
     return "QQService.VipBaseInfo";
   }
   
-  public Map getMOpenInfo()
+  public int getIGrayNameplateFlag()
+  {
+    return this.iGrayNameplateFlag;
+  }
+  
+  public int getINameplateVipType()
+  {
+    return this.iNameplateVipType;
+  }
+  
+  public Map<Integer, VipOpenInfo> getMOpenInfo()
   {
     return this.mOpenInfo;
   }
@@ -97,16 +122,22 @@ public final class VipBaseInfo
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
-    if (cache_mOpenInfo == null)
-    {
-      cache_mOpenInfo = new HashMap();
-      VipOpenInfo localVipOpenInfo = new VipOpenInfo();
-      cache_mOpenInfo.put(Integer.valueOf(0), localVipOpenInfo);
-    }
     this.mOpenInfo = ((Map)paramJceInputStream.read(cache_mOpenInfo, 0, true));
+    this.iNameplateVipType = paramJceInputStream.read(this.iNameplateVipType, 1, false);
+    this.iGrayNameplateFlag = paramJceInputStream.read(this.iGrayNameplateFlag, 2, false);
   }
   
-  public void setMOpenInfo(Map paramMap)
+  public void setIGrayNameplateFlag(int paramInt)
+  {
+    this.iGrayNameplateFlag = paramInt;
+  }
+  
+  public void setINameplateVipType(int paramInt)
+  {
+    this.iNameplateVipType = paramInt;
+  }
+  
+  public void setMOpenInfo(Map<Integer, VipOpenInfo> paramMap)
   {
     this.mOpenInfo = paramMap;
   }
@@ -114,6 +145,8 @@ public final class VipBaseInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.mOpenInfo, 0);
+    paramJceOutputStream.write(this.iNameplateVipType, 1);
+    paramJceOutputStream.write(this.iGrayNameplateFlag, 2);
   }
 }
 

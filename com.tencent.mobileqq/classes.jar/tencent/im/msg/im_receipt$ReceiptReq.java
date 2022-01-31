@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class im_receipt$ReceiptReq
-  extends MessageMicro
+  extends MessageMicro<ReceiptReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "command", "msg_info" }, new Object[] { Integer.valueOf(1), null }, ReceiptReq.class);
   public final PBEnumField command = PBField.initEnum(1);

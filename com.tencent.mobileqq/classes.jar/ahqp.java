@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.search.ContentRecommendModel;
+import com.tencent.mobileqq.activity.contact.troop.TroopView;
 
-class ahqp
-  implements Runnable
+public class ahqp
+  extends alwx
 {
-  ahqp(ahqo paramahqo) {}
+  public ahqp(TroopView paramTroopView) {}
   
-  public void run()
+  protected void a()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchContentRecommendModel.b(this.a.jdField_a_of_type_ComTencentMobileqqSearchModelContentRecommendDataModel);
+    this.a.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahqp
  * JD-Core Version:    0.7.0.1
  */

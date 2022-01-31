@@ -1,29 +1,38 @@
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer.ArkAppModuleCallback;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class rkr
-  implements ArkAppContainer.ArkAppModuleCallback
+class rkr
+  implements rje
 {
-  public rkr(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
+  rkr(rkp paramrkp) {}
   
-  public boolean a(ArkAppContainer paramArkAppContainer)
+  public List<qyp> a(List<VideoInfo> paramList)
   {
-    this.a.finish();
-    if (ArkFullScreenAppActivity.a(this.a)) {
-      this.a.overridePendingTransition(2131034134, 2131034135);
+    ArrayList localArrayList = new ArrayList();
+    if (paramList != null)
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        Object localObject = (VideoInfo)paramList.next();
+        if (localObject != null)
+        {
+          localObject = qys.a((VideoInfo)localObject);
+          if (localObject != null) {
+            localArrayList.add(rqj.a((BaseArticleInfo)localObject, true));
+          }
+        }
+      }
     }
-    return false;
-  }
-  
-  public boolean a(ArkAppContainer paramArkAppContainer, String paramString1, String paramString2)
-  {
-    return false;
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rkr
  * JD-Core Version:    0.7.0.1
  */

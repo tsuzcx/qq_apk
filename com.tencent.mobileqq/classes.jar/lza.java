@@ -1,39 +1,44 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.Notification;
+import android.graphics.Bitmap;
+import android.os.IInterface;
+import com.tencent.av.service.AVPbInfo;
 
-public class lza
-  implements AdapterView.OnItemClickListener
+public abstract interface lza
+  extends IInterface
 {
-  public lza(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment, boolean paramBoolean) {}
+  public abstract int a(long paramLong, int paramInt);
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment.getActivity(), 2131438914, 0).a();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment.getActivity().finish();
-      return;
-      paramView = new Intent();
-      paramAdapterView = paramAdapterView.getItemAtPosition(paramInt);
-      if ((paramAdapterView != null) && ((paramAdapterView instanceof TagInfo)))
-      {
-        paramView.putExtra("SEARCH_TAG_RESULT", (TagInfo)paramAdapterView);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment.getActivity().setResult(-1, paramView);
-      }
-    }
-  }
+  public abstract AVPbInfo a(byte[] paramArrayOfByte);
+  
+  public abstract void a();
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(long paramLong, String paramString);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, Bitmap paramBitmap);
+  
+  public abstract void a(lyx paramlyx);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean, Notification paramNotification);
+  
+  public abstract void a(byte[] paramArrayOfByte);
+  
+  public abstract void b();
+  
+  public abstract void b(byte[] paramArrayOfByte);
+  
+  public abstract void c();
+  
+  public abstract void c(byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lza
  * JD-Core Version:    0.7.0.1
  */

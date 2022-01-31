@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:visibility="gone" layout="@layout/aj4" />
+    <include android:visibility="gone" layout="@layout/aiz" />
+    <include android:visibility="gone" layout="@layout/aj3" />
+</FrameLayout>

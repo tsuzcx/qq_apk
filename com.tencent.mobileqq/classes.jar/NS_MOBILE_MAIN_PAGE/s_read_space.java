@@ -8,14 +8,14 @@ import java.util.ArrayList;
 public final class s_read_space
   extends JceStruct
 {
-  static ArrayList cache_detailreadspace;
+  static ArrayList<s_user> cache_detailreadspace;
   public int allnum;
-  public ArrayList detailreadspace;
+  public ArrayList<s_user> detailreadspace;
   public int unreadnum;
   
   public s_read_space() {}
   
-  public s_read_space(int paramInt1, int paramInt2, ArrayList paramArrayList)
+  public s_read_space(int paramInt1, int paramInt2, ArrayList<s_user> paramArrayList)
   {
     this.allnum = paramInt1;
     this.unreadnum = paramInt2;

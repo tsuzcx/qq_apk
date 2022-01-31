@@ -1,19 +1,20 @@
-import com.tencent.mfsdk.collector.DropFrameMonitor;
-import com.tencent.mobileqq.statistics.UnifiedMonitor;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aigi
-  implements Runnable
+class aigi
+  implements View.OnClickListener
 {
-  public aigi(UnifiedMonitor paramUnifiedMonitor) {}
+  aigi(aigf paramaigf) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    DropFrameMonitor.a().c();
+    this.a.a = null;
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aigi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.mobileqq.activity.selectmember.TroopListInnerFrame.TroopListAdapter;
+import com.tencent.mobileqq.activity.selectmember.TroopListInnerFrame.TroopListAdapter.TroopListItemWithMask;
+import java.util.Comparator;
 
 public class ert
-  implements View.OnClickListener
+  implements Comparator
 {
-  public ert(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  private ert(TroopListInnerFrame.TroopListAdapter paramTroopListAdapter) {}
   
-  public void onClick(View paramView)
+  public int a(TroopListInnerFrame.TroopListAdapter.TroopListItemWithMask paramTroopListItemWithMask1, TroopListInnerFrame.TroopListAdapter.TroopListItemWithMask paramTroopListItemWithMask2)
   {
-    this.a.onBackPressed();
+    return paramTroopListItemWithMask1.a - paramTroopListItemWithMask2.a;
   }
 }
 

@@ -1,33 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.remote.SimpleAccount;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
-public class rmz
-  implements View.OnClickListener
+class rmz
+  implements rnb<RecyclerView.ViewHolder>
 {
-  public rmz(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  rmz(rmy paramrmy, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void a(RecyclerView.ViewHolder paramViewHolder)
   {
-    if (paramView.getParent() == null) {}
-    do
-    {
-      do
-      {
-        return;
-        paramView = (View)paramView.getParent().getParent();
-      } while ((paramView == null) || (paramView.getTag() == null));
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8007147", "0X8007147", 0, 0, "", "", "", "");
-    } while (!(paramView.getTag() instanceof SimpleAccount));
-    this.a.a((SimpleAccount)paramView.getTag());
+    if ((paramViewHolder instanceof rne)) {
+      ((rne)paramViewHolder).a(this.jdField_a_of_type_Int);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rmz
  * JD-Core Version:    0.7.0.1
  */

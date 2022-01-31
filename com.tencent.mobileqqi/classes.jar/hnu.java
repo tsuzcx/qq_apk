@@ -1,16 +1,19 @@
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.open.agent.OpenFrame;
-import com.tencent.open.agent.OpenSdkFriendService.CheckAvatarUpdateListener;
-import com.tencent.open.agent.SocialFriendChooser;
+import android.app.Activity;
+import com.tencent.open.downloadnew.MyAppApi;
 
-class hnu
-  implements OpenSdkFriendService.CheckAvatarUpdateListener
+public class hnu
+  implements Runnable
 {
-  hnu(hnt paramhnt) {}
+  public hnu(MyAppApi paramMyAppApi, Activity paramActivity) {}
   
-  public void a()
+  public void run()
   {
-    ((OpenFrame)this.a.a.a.getCurrentView()).g();
+    if ((this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.e) && (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a != null))
+    {
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.e(this.jdField_a_of_type_AndroidAppActivity);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.b(this.jdField_a_of_type_AndroidAppActivity);
   }
 }
 

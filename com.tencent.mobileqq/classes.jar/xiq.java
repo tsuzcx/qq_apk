@@ -1,28 +1,55 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import mqq.os.MqqHandler;
+import android.animation.ValueAnimator;
+import android.graphics.Canvas;
+import android.graphics.PointF;
+import android.support.annotation.NonNull;
 
-public class xiq
-  implements View.OnClickListener
+public abstract class xiq
 {
-  public xiq(BannerManager paramBannerManager) {}
+  public ValueAnimator a;
+  public PointF a;
+  public boolean b = true;
+  public boolean c;
+  public boolean d;
+  public int e;
+  public boolean e;
+  public boolean f;
+  public float j = 1.0F;
+  public float k;
+  public float l;
+  public float m;
+  public float n;
+  public float o;
+  public float p = 1.0F;
   
-  public void onClick(View paramView)
+  public xiq(@NonNull PointF paramPointF, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, boolean paramBoolean)
   {
-    paramView = new Intent(BannerManager.a(this.a), TroopAssisSettingActivity.class);
-    BannerManager.a(this.a).startActivityForResult(paramView, 9001);
-    BannerManager.a(this.a).sendEmptyMessageDelayed(1, 1000L);
-    ReportController.b(BannerManager.a(this.a).app, "P_CliOper", "Grp_msg", "", "Msglist", "Clk_setmsg", 0, 0, "", "", "", "");
+    this.a = new PointF(paramPointF.x, paramPointF.y);
+    this.j = paramFloat1;
+    this.k = paramFloat2;
+    this.l = paramFloat3;
+    this.m = paramFloat4;
+    this.n = paramFloat5;
+    this.o = paramFloat6;
+    this.b = paramBoolean;
   }
+  
+  public xiq(xiq paramxiq, float paramFloat)
+  {
+    this.a = new PointF(paramxiq.a.x * paramFloat, paramxiq.a.y * paramFloat);
+    paramxiq.j *= paramFloat;
+    this.k = paramxiq.k;
+    paramxiq.l *= paramFloat;
+    paramxiq.m *= paramFloat;
+    this.n = paramxiq.n;
+    this.o = paramxiq.o;
+    this.b = paramxiq.b;
+  }
+  
+  public void a(Canvas paramCanvas) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     xiq
  * JD-Core Version:    0.7.0.1
  */

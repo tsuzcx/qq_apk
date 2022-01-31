@@ -1,24 +1,32 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.Contacts;
+import com.tencent.mobileqq.adapter.BuddyListAdapter;
+import com.tencent.mobileqq.app.MessageObserver;
 
 public class cen
-  implements View.OnTouchListener
+  extends MessageObserver
 {
-  public cen(ChatActivity paramChatActivity) {}
+  private cen(Contacts paramContacts) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void a(int paramInt1, int paramInt2)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.a.findViewById(2131231203).setBackgroundResource(2130840094);
-    }
-    for (;;)
+    Contacts localContacts = this.a;
+    if (paramInt1 != 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      return false;
-      if (paramMotionEvent.getAction() == 1) {
-        this.a.findViewById(2131231203).setBackgroundResource(2130840093);
+      localContacts.c = bool;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAdapterBuddyListAdapter != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqAdapterBuddyListAdapter.a(this.a.c);
+        this.a.jdField_a_of_type_ComTencentMobileqqAdapterBuddyListAdapter.b();
       }
+      return;
+    }
+  }
+  
+  protected void c()
+  {
+    if (this.a.jdField_a_of_type_Boolean) {
+      this.a.a(1400L, true);
     }
   }
 }

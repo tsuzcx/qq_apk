@@ -1,22 +1,18 @@
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.biz.PoiMapActivity.PoiItemAdapter;
-import com.tencent.biz.PoiMapActivity.PoiTab;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.biz.qrcode.activity.ScannerActivity.QQDialogCancelListener;
+import com.tencent.biz.qrcode.activity.ScannerActivity.ScannerActivityHandler;
 
 public class bnh
-  implements AbsListView.OnScrollListener
+  extends ScannerActivity.QQDialogCancelListener
 {
-  public bnh(PoiMapActivity.PoiTab paramPoiTab, PoiMapActivity paramPoiMapActivity) {}
+  public bnh(ScannerActivity.ScannerActivityHandler paramScannerActivityHandler, ScannerActivity paramScannerActivity) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void a()
   {
-    if ((paramInt == 0) && (paramAbsListView.r() == paramAbsListView.a() - 1) && (this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.a.b)) {
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.b(false);
+    if (this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity.h) {
+      this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity.a(null);
     }
   }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

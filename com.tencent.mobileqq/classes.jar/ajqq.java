@@ -1,35 +1,20 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.troop.utils.TroopRobotManager;
-import com.tencent.mobileqq.troop.utils.TroopRobotManager.Callback;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import java.util.Comparator;
 
 public class ajqq
-  extends ProtoUtils.TroopProtocolObserver
+  implements Comparator<ajsu>
 {
-  public ajqq(TroopRobotManager paramTroopRobotManager, TroopRobotManager.Callback paramCallback) {}
+  public ajqq(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public int a(ajsu paramajsu1, ajsu paramajsu2)
   {
-    paramBundle = new cmd0x934.RspBody();
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopRobotManager$Callback.a(paramInt, paramBundle);
-      return;
+    if ((paramajsu1.a < paramajsu2.a) || ((paramajsu1.a == paramajsu2.a) && (paramajsu1.b < paramajsu2.b))) {
+      return -1;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(paramArrayOfByte));
-        }
-      }
+    if ((paramajsu1.a != paramajsu2.a) || (paramajsu1.b != paramajsu2.b)) {
+      return 1;
     }
+    return 0;
   }
 }
 

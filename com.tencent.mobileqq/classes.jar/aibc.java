@@ -1,56 +1,70 @@
-import android.os.SystemClock;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.ShareResource;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceManagerFilter;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceManagerFilter.GamePlayOutData;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceScoreFilter;
-import java.util.List;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
 
 public class aibc
-  implements Animation.AnimationListener
+  implements bhzf
 {
-  public aibc(DanceScoreFilter paramDanceScoreFilter) {}
+  public aibc(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    DanceScoreFilter.a(this.a, true);
-    DanceScoreFilter.a(this.a, SystemClock.elapsedRealtime());
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
+    {
+      paramView.c(l);
+      return;
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public boolean a(int paramInt, View paramView, ListView paramListView)
   {
-    int i = ResourceManager.a().a().size() * 50;
-    int j = this.a.a.a.a;
-    if (j < i * 0.2F)
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewCompleteVisableAndReleased");
+    }
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
     {
-      DanceScoreFilter.b(this.a).a(DanceScoreFilter.a(this.a).a.d);
-      DanceScoreFilter.a(this.a, "C");
+      paramView.a(l);
+      if (!bdin.g(this.a.getActivity())) {
+        break;
+      }
+      ChatHistoryTroopFileFragment.a(this.a).a(0, 0);
+      return true;
+    }
+    ChatHistoryTroopFileFragment.a(this.a, 1);
+    bcnt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ChatHistoryTroopFileFragment.a(this.a));
+    return true;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewCompleteVisable");
+    }
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
+    {
+      paramView.b(l);
       return;
     }
-    if (j < i * 0.3F)
-    {
-      DanceScoreFilter.b(this.a).a(DanceScoreFilter.a(this.a).a.c);
-      DanceScoreFilter.a(this.a, "B");
-      return;
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewNotCompleteVisableAndReleased");
     }
-    if (j < i * 0.4F)
-    {
-      DanceScoreFilter.b(this.a).a(DanceScoreFilter.a(this.a).a.b);
-      DanceScoreFilter.a(this.a, "A");
-      return;
-    }
-    DanceScoreFilter.b(this.a).a(DanceScoreFilter.a(this.a).a.e);
-    DanceScoreFilter.a(this.a, "S");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aibc
  * JD-Core Version:    0.7.0.1
  */

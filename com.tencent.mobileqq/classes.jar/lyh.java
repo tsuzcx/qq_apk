@@ -1,68 +1,96 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.mobileqq.utils.Base64Util;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
-
 public class lyh
-  extends ReadInJoyObserver
 {
-  public lyh(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  public int a;
+  public long a;
+  public int b;
+  public int c;
   
-  public void a(int paramInt1, long paramLong, String paramString1, int paramInt2, String paramString2)
+  public lyh()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverUGCActivity", 2, "onDeliverUGCResult retCode=" + paramInt1 + ", feedsId=" + paramLong + ", rowkey=" + paramString1 + ", status=" + paramInt2 + ", comment=" + paramString2);
-    }
-    ReadInJoyDeliverUGCActivity.d(this.a, true);
-    ReadInJoyDeliverUGCActivity.e(this.a);
-    ReadInJoyDeliverUGCActivity.b(this.a, paramInt1);
-    if (paramInt1 == 0)
+    this.jdField_a_of_type_Long = 67L;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Int != 0) && (this.b != 0) && (this.c != 0);
+  }
+  
+  public boolean a(lyh paramlyh)
+  {
+    boolean bool2 = true;
+    boolean bool1 = false;
+    if ((paramlyh == null) || (!paramlyh.a()))
     {
-      ReadInJoyDeliverUGCActivity.c(this.a, 2, this.a.getString(2131438883));
-      ReadInJoyDeliverUGCActivity.c(this.a, -1);
-      ReadInJoyDeliverUGCActivity.e(this.a, true);
-      for (;;)
+      bool2 = false;
+      return bool2;
+    }
+    if (this.jdField_a_of_type_Int != paramlyh.jdField_a_of_type_Int)
+    {
+      this.jdField_a_of_type_Int = paramlyh.jdField_a_of_type_Int;
+      bool1 = true;
+    }
+    if (this.b != paramlyh.b)
+    {
+      this.b = paramlyh.b;
+      bool1 = bool2;
+    }
+    for (;;)
+    {
+      bool2 = bool1;
+      if (this.c == paramlyh.c) {
+        break;
+      }
+      this.c = paramlyh.c;
+      if (this.c == 0) {
+        this.c = 15;
+      }
+      this.jdField_a_of_type_Long = (1000 / this.c);
+      return bool1;
+    }
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    label71:
+    label74:
+    for (;;)
+    {
+      return true;
+      if (!(paramObject instanceof lyh)) {
+        break;
+      }
+      paramObject = (lyh)paramObject;
+      if (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int)
       {
-        try
-        {
-          ReadInJoyDeliverUGCActivity.a(this.a).put("feedsId", String.valueOf(paramLong));
-          ReadInJoyDeliverUGCActivity.a(this.a).put("rowkey", paramString1);
-          ReadInJoyDeliverUGCActivity.a(this.a).put("status", paramInt2);
-          paramString1 = paramString2;
-          if (paramString2 == null) {
-            paramString1 = "";
-          }
-          ReadInJoyDeliverUGCActivity.a(this.a).put("comment", new String(Base64Util.encode(paramString1.getBytes(), 0)));
-          if (ReadInJoyDeliverUGCActivity.c(this.a) != 12) {
-            continue;
-          }
-          ReadInJoyDeliverUGCActivity.a(this.a).put("feedsType", 4);
-        }
-        catch (Exception paramString1)
-        {
-          continue;
-        }
-        this.a.finish();
-        ReadInJoyLogicEngine.a().b(true);
-        return;
-        if (ReadInJoyDeliverUGCActivity.c(this.a) == 13) {
-          ReadInJoyDeliverUGCActivity.a(this.a).put("feedsType", 5);
+        i = 1;
+        if ((i == 0) || (this.b != paramObject.b)) {
+          break label71;
         }
       }
+      for (int i = 1;; i = 0)
+      {
+        if ((i != 0) && (this.c == paramObject.c)) {
+          break label74;
+        }
+        return false;
+        i = 0;
+        break;
+      }
     }
-    if (paramInt1 == 33)
-    {
-      ReadInJoyDeliverUGCActivity.d(this.a, 1, this.a.getString(2131438869));
-      return;
-    }
-    ReadInJoyDeliverUGCActivity.e(this.a, 1, this.a.getString(2131438884));
+    return false;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RecordParam{").append("width: ").append(this.jdField_a_of_type_Int).append(", height: ").append(this.b).append(", fps: ").append(this.c).append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lyh
  * JD-Core Version:    0.7.0.1
  */

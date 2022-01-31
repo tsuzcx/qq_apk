@@ -1,53 +1,74 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.StoryManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder.AIOStoryDownloadListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.IEventReceiver;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class vdq
-  extends QQStoryItemBuilder.AIOStoryDownloadListener
+  implements IEventReceiver
 {
-  public vdq(QQStoryItemBuilder paramQQStoryItemBuilder) {}
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private vdr jdField_a_of_type_Vdr;
+  private vds jdField_a_of_type_Vds;
+  private vdt jdField_a_of_type_Vdt;
   
-  public void a(String paramString1, String paramString2, int paramInt)
+  public vdq(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQStoryItemBuilder", 2, "get video download finish,vid=" + paramString1);
-    }
-    if (!paramString1.equals(this.jdField_a_of_type_JavaLangString)) {}
-    do
-    {
-      return;
-      paramString1 = ((StoryManager)SuperManager.a(5)).a(paramString1);
-      if (paramString1 != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("QQStoryItemBuilder", 2, "get video download finish, storyVideoItem == null");
-    return;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder, this.jdField_a_of_type_Long, paramString1, false);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    b();
   }
   
-  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt)
+  private void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("QQStoryItemBuilder", 2, "Download video failed,vid=" + paramString1);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Vds = new vds(this);
+    this.jdField_a_of_type_Vdt = new vdt(this);
+    umc.a().registerSubscriber(this.jdField_a_of_type_Vds);
+    umc.a().registerSubscriber(this.jdField_a_of_type_Vdt);
   }
   
-  public void b(String paramString1, String paramString2, int paramInt)
+  private void c()
   {
     if (QLog.isColorLevel()) {
-      QLog.e("QQStoryItemBuilder", 2, "Download video onPause,vid=" + paramString1);
+      QLog.i("RecentTabHaloPresenter", 2, "invalidateHalo: invoked.  mCallback: " + this.jdField_a_of_type_Vdr);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder, this.jdField_a_of_type_Long);
+    if (this.jdField_a_of_type_Vdr != null) {
+      this.jdField_a_of_type_Vdr.a();
+    }
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RecentTabHaloPresenter", 2, "destroy: invoked. ");
+    }
+    umc.a().unRegisterSubscriber(this.jdField_a_of_type_Vds);
+    umc.a().unRegisterSubscriber(this.jdField_a_of_type_Vdt);
+    this.jdField_a_of_type_Vdr = null;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+  }
+  
+  public void a(vdr paramvdr)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RecentTabHaloPresenter", 2, "setCallback: invoked. Message: callback: " + paramvdr);
+    }
+    this.jdField_a_of_type_Vdr = paramvdr;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+  }
+  
+  public boolean isValidate()
+  {
+    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vdq
  * JD-Core Version:    0.7.0.1
  */

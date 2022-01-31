@@ -1,34 +1,23 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.ImageView;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
+import com.tencent.biz.pubaccount.readinjoy.config.AladdinListener;
+import java.util.ArrayList;
 
 public class osp
-  extends Handler
 {
-  public osp(QRCardActivity paramQRCardActivity) {}
+  public static ArrayList<AladdinListener> a = new ArrayList();
   
-  public void handleMessage(Message paramMessage)
+  public static void a(AladdinListener paramAladdinListener)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while ((this.a.jdField_a_of_type_Boolean) || (!(paramMessage.obj instanceof Bitmap)));
-      paramMessage = (Bitmap)paramMessage.obj;
-    } while (paramMessage == null);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(0);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramMessage);
+    a.add(paramAladdinListener);
+  }
+  
+  public static void b(AladdinListener paramAladdinListener)
+  {
+    a.remove(paramAladdinListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     osp
  * JD-Core Version:    0.7.0.1
  */

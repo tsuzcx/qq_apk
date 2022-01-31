@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class MobileQQDetect$ReqDetectSrategyPacket
-  extends MessageMicro
+  extends MessageMicro<ReqDetectSrategyPacket>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "u32_version", "u32_lastTime", "u32_lastUid", "envParam" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null }, ReqDetectSrategyPacket.class);
   public MobileQQDetect.EnvParamPacket envParam = new MobileQQDetect.EnvParamPacket();
@@ -16,7 +16,7 @@ public final class MobileQQDetect$ReqDetectSrategyPacket
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ims.MobileQQDetect.ReqDetectSrategyPacket
  * JD-Core Version:    0.7.0.1
  */

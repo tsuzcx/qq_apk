@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class b
   extends JceStruct
 {
-  public byte a;
+  public byte a = 0;
   public String b = "";
-  public long c;
-  public long d;
-  public long e;
+  public long c = 0L;
+  public long d = 0L;
+  public long e = 0L;
   
   public b() {}
   

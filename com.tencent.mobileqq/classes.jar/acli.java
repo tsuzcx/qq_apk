@@ -1,26 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendAnim;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class acli
-  implements Animation.AnimationListener
+public final class acli
+  implements DialogInterface.OnCancelListener
 {
-  public acli(Face2FaceAddFriendAnim paramFace2FaceAddFriendAnim) {}
+  public acli(aclo paramaclo, acln paramacln) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    ((Face2FaceAddFriendActivity)this.a.jdField_a_of_type_AndroidContentContext).i();
-    this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation = null;
+    if (this.jdField_a_of_type_Aclo.a) {
+      azqs.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
+    }
+    if (this.jdField_a_of_type_Acln != null) {
+      this.jdField_a_of_type_Acln.a();
+    }
+    paramDialogInterface.dismiss();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acli
  * JD-Core Version:    0.7.0.1
  */

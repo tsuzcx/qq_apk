@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.pluginsdk;
 
+import android.annotation.SuppressLint;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -9,24 +10,25 @@ import android.os.IBinder;
 import mqq.app.AppService;
 import mqq.app.MobileQQ;
 
+@SuppressLint({"NewApi"})
 public abstract class PluginService
   extends AppService
   implements IPluginService
 {
-  private int a;
-  private Context b;
   protected String mApkFilePath;
+  private Context mContext;
   protected ClassLoader mDexClassLoader;
   protected boolean mIsRunInPlugin;
-  protected Service mOutService;
+  public Service mOutService;
   protected PackageInfo mPackageInfo;
   protected String mPluginID;
   protected String mPluginName;
+  private int mPluginResourcesType;
   
   public void IInit(String paramString1, String paramString2, String paramString3, Service paramService, ClassLoader paramClassLoader, PackageInfo paramPackageInfo, int paramInt)
   {
     if (DebugHelper.sDebug) {
-      DebugHelper.log("plugin_tag", "PluginService.IInit: " + paramString2 + ", " + this.a);
+      DebugHelper.log("plugin_tag", "PluginService.IInit: " + paramString2 + ", " + this.mPluginResourcesType);
     }
     this.mIsRunInPlugin = true;
     this.mPluginName = paramString1;
@@ -35,13 +37,13 @@ public abstract class PluginService
     this.mOutService = paramService;
     this.mDexClassLoader = paramClassLoader;
     this.mPackageInfo = paramPackageInfo;
-    this.a = paramInt;
-    if (this.b == null) {}
+    this.mPluginResourcesType = paramInt;
+    if (this.mContext == null) {}
     try
     {
-      this.b = new c(paramService, 0, this.mApkFilePath, this.mDexClassLoader, paramService.getResources(), this.a);
+      this.mContext = new PluginContext(paramService, 0, this.mApkFilePath, this.mDexClassLoader, paramService.getResources(), this.mPluginResourcesType);
       label124:
-      attachBaseContext(this.b);
+      attachBaseContext(this.mContext);
       return;
     }
     catch (Error paramString1)
@@ -122,8 +124,8 @@ public abstract class PluginService
       }
       return super.getSystemService(paramString);
     }
-    if (this.b != null) {
-      return this.b.getSystemService(paramString);
+    if (this.mContext != null) {
+      return this.mContext.getSystemService(paramString);
     }
     return super.getSystemService(paramString);
   }
@@ -136,7 +138,7 @@ public abstract class PluginService
     localStartActivityParams.mPluginID = this.mPluginID;
     localStartActivityParams.mPluginApkFilePath = this.mApkFilePath;
     localStartActivityParams.proxyActivity = paramString1;
-    localStartActivityParams.mPluginResoucesType = this.a;
+    localStartActivityParams.mPluginResoucesType = this.mPluginResourcesType;
     localStartActivityParams.mUseSkinEngine = paramBoolean;
     localStartActivityParams.loader = this.mDexClassLoader;
     localStartActivityParams.launchActivity = paramString2;

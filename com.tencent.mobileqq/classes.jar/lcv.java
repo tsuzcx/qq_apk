@@ -1,29 +1,22 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyBaseViewController;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.Cryptor;
 
 public class lcv
-  extends GestureDetector.SimpleOnGestureListener
 {
-  private WeakReference a;
+  private final String a = "ZaDA32%dkn_vs4dAjg";
   
-  public lcv(ReadInJoyBaseViewController paramReadInJoyBaseViewController)
+  protected String a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    this.a = new WeakReference(paramReadInJoyBaseViewController);
+    return new String(new Cryptor().decrypt(paramArrayOfByte1, paramArrayOfByte2));
   }
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  protected byte[] a()
   {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((ReadInJoyBaseViewController)this.a.get()).a(true);
-    }
-    return false;
+    return "ZaDA32%dkn_vs4dAjg".getBytes();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lcv
  * JD-Core Version:    0.7.0.1
  */

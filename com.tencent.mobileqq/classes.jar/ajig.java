@@ -1,8 +1,13 @@
-import com.tencent.mobileqq.troop.homework.recite.ui.PinyinTextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.DrawerFrame;
 
 public class ajig
+  implements View.OnClickListener
 {
-  public PinyinTextView a;
+  public ajig(DrawerFrame paramDrawerFrame) {}
+  
+  public void onClick(View paramView) {}
 }
 
 

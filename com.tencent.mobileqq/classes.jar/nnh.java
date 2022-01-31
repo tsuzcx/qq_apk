@@ -1,43 +1,20 @@
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibilityDialog;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
-public class nnh
-  extends PagerAdapter
+class nnh
+  implements DialogInterface.OnClickListener
 {
-  private List jdField_a_of_type_JavaUtilList;
+  nnh(nmx paramnmx, JsResult paramJsResult) {}
   
-  public nnh(MyVideoVisibilityDialog paramMyVideoVisibilityDialog, List paramList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    paramViewGroup.addView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.confirm();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nnh
  * JD-Core Version:    0.7.0.1
  */

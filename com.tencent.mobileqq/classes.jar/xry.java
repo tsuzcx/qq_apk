@@ -1,26 +1,56 @@
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraReporter;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.TextView;
 
 public class xry
-  implements Camera.AutoFocusCallback
+  extends xsa
 {
-  public xry(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  TextView a;
   
-  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
+  public xry(xsc paramxsc, View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".photo", 2, "shot photo with custom camera focus " + paramBoolean);
+    super(paramxsc, paramView);
+    this.a = ((TextView)paramView.findViewById(2131377644));
+    this.a.setMaxLines(1);
+    this.a.setSingleLine();
+  }
+  
+  public CharSequence a()
+  {
+    return this.a.getText();
+  }
+  
+  public void a(CharSequence paramCharSequence)
+  {
+    paramCharSequence = paramCharSequence.toString();
+    this.a.setText(paramCharSequence);
+    paramCharSequence = xrr.a(this.a, 1);
+    this.a.setText(paramCharSequence);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.a.setBackgroundResource(2130844197);
+      return;
     }
-    NewFlowCameraReporter.a(paramBoolean);
-    NewFlowCameraActivity.b(this.a);
+    this.a.setBackgroundResource(0);
+  }
+  
+  public CharSequence b()
+  {
+    return this.a.getHint();
+  }
+  
+  public void b(CharSequence paramCharSequence)
+  {
+    this.a.setHint(paramCharSequence);
+    this.a.setGravity(17);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xry
  * JD-Core Version:    0.7.0.1
  */

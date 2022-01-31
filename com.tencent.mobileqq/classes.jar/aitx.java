@@ -1,22 +1,54 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import android.content.Intent;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aitx
-  implements InputFilter
+  extends airj
 {
-  public aitx(AbsPublishActivity paramAbsPublishActivity) {}
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  protected aitx(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    if (paramCharSequence != null)
-    {
-      paramCharSequence = paramCharSequence.toString();
-      if (paramCharSequence.contains("\n")) {
-        return paramCharSequence.replaceAll("\n", "");
-      }
+    super(paramNewPhotoPreviewActivity);
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    int i = ((NewPhotoPreviewActivity)this.mActivity).getIntent().getIntExtra("PhotoConst.CURRENT_SELECTED_INDEX", -1);
+    ArrayList localArrayList1 = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
+    ArrayList localArrayList2 = new ArrayList();
+    if (localArrayList1 != null) {
+      localArrayList2.addAll(localArrayList1);
     }
-    return null;
+    super.initData(paramIntent);
+    this.a.paths.clear();
+    this.a.paths = localArrayList2;
+    this.a.totalPicCount = this.a.paths.size();
+    this.a.firstSelectedPostion = i;
+    if (this.a.firstSelectedPostion >= this.a.totalPicCount) {
+      this.a.firstSelectedPostion = -1;
+    }
+    this.mPhotoCommonData.selectedIndex.clear();
+    this.mPhotoCommonData.selectedIndex.add(Integer.valueOf(this.a.firstSelectedPostion));
+    paramIntent = paramIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
+    if (this.mPhotoCommonData.selectedPhotoList == null) {
+      this.mPhotoCommonData.selectedPhotoList = new ArrayList();
+    }
+    for (;;)
+    {
+      if ((paramIntent != null) && (!paramIntent.equals(""))) {
+        this.mPhotoCommonData.selectedPhotoList.add(paramIntent);
+      }
+      QLog.d("PhotoPreviewLogicScanEntry", 1, new Object[] { "count=", Integer.valueOf(this.a.totalPicCount), " pos=", Integer.valueOf(this.a.firstSelectedPostion) });
+      return;
+      this.mPhotoCommonData.selectedPhotoList.clear();
+    }
+  }
+  
+  public void initUI()
+  {
+    super.initUI();
+    ((NewPhotoPreviewActivity)this.mActivity).cancelTv.setVisibility(8);
   }
 }
 

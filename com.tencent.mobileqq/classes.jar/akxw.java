@@ -1,39 +1,22 @@
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class akxw
-  implements Runnable
+final class akxw
+  implements EIPCResultCallback
 {
-  public akxw(ARWorldCupGameLogicManager paramARWorldCupGameLogicManager, int paramInt, String paramString) {}
+  akxw(long paramLong) {}
   
-  public void run()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    case 0: 
-      ARWorldCupGameLogicManager.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager).setVisibility(8);
-      ARWorldCupGameLogicManager.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager).setVisibility(8);
-      ARWorldCupGameLogicManager.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager).setVisibility(8);
-      return;
-    case 1: 
-      ARWorldCupGameLogicManager.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager).setText(this.jdField_a_of_type_JavaLangString);
-      ARWorldCupGameLogicManager.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager).setVisibility(8);
-      ARWorldCupGameLogicManager.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager).setVisibility(0);
-      ARWorldCupGameLogicManager.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager).setVisibility(0);
-      return;
-    }
-    ARWorldCupGameLogicManager.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager).setVisibility(0);
-    ARWorldCupGameLogicManager.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager).setVisibility(8);
-    ARWorldCupGameLogicManager.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager).setVisibility(0);
+    paramEIPCResult = paramEIPCResult.data.getString("respData");
+    akwd.a().callbackFromRequest(this.a, 0, "cs.check_pubAccount_state.local", paramEIPCResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akxw
  * JD-Core Version:    0.7.0.1
  */

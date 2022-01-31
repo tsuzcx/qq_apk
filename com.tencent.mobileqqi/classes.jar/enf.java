@@ -1,30 +1,20 @@
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.SecSigObserver;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
 
 public class enf
-  extends SecSigObserver
+  implements View.OnClickListener
 {
-  public enf(MainAssistObserver paramMainAssistObserver) {}
+  public enf(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("sec_sig_tag", 2, "mSecSigObserver start url:" + paramString5);
-    }
-    paramString1 = DialogUtil.a(this.a.a, 230).setTitle(paramString1).setMessage(paramString2).setPositiveButton(paramString4, new enh(this, paramString5)).setNegativeButton(paramString3, new eng(this));
-    if (paramString1 != null)
-    {
-      paramString1.setCancelable(false);
-      paramString1.show();
-    }
+    this.a.onBackPressed();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     enf
  * JD-Core Version:    0.7.0.1
  */

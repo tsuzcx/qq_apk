@@ -20,9 +20,9 @@ public abstract class o
   
   public abstract void a(String paramString);
   
-  public abstract void b();
+  public abstract void a(String paramString, int paramInt);
   
-  public abstract void b(String paramString);
+  public abstract void b();
   
   public abstract void c();
 }

@@ -1,19 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.utils.QQCustomArkDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
 public class akdv
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public akdv(QQCustomArkDialog paramQQCustomArkDialog, Bundle paramBundle) {}
+  public akdv(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void run()
-  {
-    QQCustomArkDialog.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomArkDialog, this.jdField_a_of_type_AndroidOsBundle);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akdv
  * JD-Core Version:    0.7.0.1
  */

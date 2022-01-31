@@ -1,18 +1,42 @@
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
 
-class xiw
-  implements Runnable
+public class xiw
+  extends xis
 {
-  xiw(xiv paramxiv) {}
+  @NonNull
+  public final uwv a;
+  @NonNull
+  public final String c;
   
-  public void run()
+  public xiw(int paramInt1, String paramString1, int paramInt2, @NonNull String paramString2, @NonNull uwv paramuwv)
   {
-    BannerManager.a(this.a.a, true);
+    super(paramInt1, paramString1, paramInt2);
+    this.c = paramString2;
+    this.a = paramuwv;
+  }
+  
+  @NonNull
+  public Class<? extends xit> a()
+  {
+    return xiy.class;
+  }
+  
+  @NonNull
+  public xit a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    return new xiy(paramContext, paramViewGroup, null);
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xiw
  * JD-Core Version:    0.7.0.1
  */

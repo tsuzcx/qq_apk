@@ -357,7 +357,7 @@ public class DownloadTask
       String str = null;
       BytesBufferPool.BytesBuffer localBytesBuffer = sBytesBufferPool.get();
       long l2 = 0L;
-      long l6 = this.mContentLength;
+      long l5 = this.mContentLength;
       long l4 = System.currentTimeMillis();
       Object localObject = localFileOutputStream;
       try
@@ -415,20 +415,20 @@ public class DownloadTask
         {
           new ArrayList();
           l1 = l2;
-          long l5 = localFile.length();
+          long l6 = localFile.length();
           for (;;)
           {
             l1 = l2;
             paramInt = paramHttpResponse.read(localBytesBuffer.data, 0, localBytesBuffer.data.length);
             if (paramInt <= 0)
             {
-              if (l6 <= 0L)
+              if (l5 <= 0L)
               {
                 l1 = l2;
-                notifyDownloadProgress(this.mUrlKey, l6 + l5, 1.0F);
+                notifyDownloadProgress(this.mUrlKey, l5 + l6, 1.0F);
               }
               l1 = l2;
-              paramDownloadResult.getContent().size = (l2 + l5);
+              paramDownloadResult.getContent().size = (l2 + l6);
               if (paramHttpResponse != null) {
                 paramHttpResponse.close();
               }
@@ -447,10 +447,10 @@ public class DownloadTask
             l1 = l3;
             paramDownloadResult.getContent().size = l3;
             l2 = l3;
-            if (l6 > 0L)
+            if (l5 > 0L)
             {
               l1 = l3;
-              notifyDownloadProgress(this.mUrlKey, l6 + l5, (float)(l3 + l5) / (float)(l6 + l5));
+              notifyDownloadProgress(this.mUrlKey, l5 + l6, (float)(l3 + l6) / (float)(l5 + l6));
               l2 = l3;
             }
           }

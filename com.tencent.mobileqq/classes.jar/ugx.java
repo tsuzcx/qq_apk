@@ -1,35 +1,19 @@
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqcircle.widgets.message.item.QCircleMessageReplyItemView;
 
 public class ugx
-  extends ContactBindObserver
+  implements ucd
 {
-  public ugx(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  public ugx(QCircleMessageReplyItemView paramQCircleMessageReplyItemView, String paramString) {}
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VerifyPhoneNumActivity", 2, "VerifyPhoneNumActivity onReBindMblWTLogin isSuccess = " + paramBoolean1 + "; resultOk = " + paramBoolean2);
-    }
-    this.a.a();
-    if (paramBoolean1)
-    {
-      if (paramBoolean2)
-      {
-        VerifyPhoneNumActivity.a(this.a, true);
-        VerifyPhoneNumActivity.c(this.a);
-        return;
-      }
-      VerifyPhoneNumActivity.c(this.a);
-      return;
-    }
-    VerifyPhoneNumActivity.c(this.a);
+    tzs.a(this.jdField_a_of_type_JavaLangString, QCircleMessageReplyItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMessageItemQCircleMessageReplyItemView).a, QCircleMessageReplyItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsMessageItemQCircleMessageReplyItemView), 44);
+    tqs.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ugx
  * JD-Core Version:    0.7.0.1
  */

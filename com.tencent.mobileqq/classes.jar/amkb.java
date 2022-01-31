@@ -1,19 +1,14 @@
-import cooperation.comic.ui.QQComicTabBarView;
-import cooperation.comic.utils.QQComicRedTouchManager.PluginRedTouchObserver;
-
-public class amkb
-  extends QQComicRedTouchManager.PluginRedTouchObserver
+public abstract interface amkb
 {
-  public amkb(QQComicTabBarView paramQQComicTabBarView) {}
+  public abstract void a(String paramString, boolean paramBoolean);
   
-  public void a()
-  {
-    this.a.a();
-  }
+  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, Long paramLong);
+  
+  public abstract void b(String paramString, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amkb
  * JD-Core Version:    0.7.0.1
  */

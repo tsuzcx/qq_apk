@@ -1,14 +1,20 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.app.Activity;
 
-public class ziz
-  implements Runnable
+public abstract interface ziz
 {
-  public ziz(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public abstract void a();
   
-  public void run()
-  {
-    PhoneContactManagerImp.a(this.a, false, false);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(Activity paramActivity, zin paramzin);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract void c();
 }
 
 

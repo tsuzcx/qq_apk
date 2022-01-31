@@ -6,7 +6,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import com.tencent.token.ui.IndexActivity;
 
-final class as
+class as
   implements Runnable
 {
   private View b;
@@ -38,7 +38,7 @@ final class as
     this.g.setAnimationListener(new at(this, paramGameLoginSndConfirmView));
   }
   
-  public final void run()
+  public void run()
   {
     GameLoginSndConfirmView.d(this.a).setVisibility(0);
     GameLoginSndConfirmView.e(this.a).setEnabled(true);

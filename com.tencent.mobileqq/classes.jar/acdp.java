@@ -1,45 +1,27 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmojiListenerManager;
-import com.tencent.mobileqq.emoticon.EmojiManager;
-import com.tencent.mobileqq.emoticon.VasEmojiManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import java.io.File;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
 
 public class acdp
-  implements Runnable
+  implements View.OnClickListener
 {
-  public acdp(VasEmojiManager paramVasEmojiManager, String paramString, EmoticonPackage paramEmoticonPackage) {}
+  public acdp(AddRequestActivity paramAddRequestActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqEmoticonVasEmojiManager.a();
-    if ((!new File(VasEmojiManager.b(this.jdField_a_of_type_JavaLangString)).exists()) || (!((EmojiManager)localObject).b(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId, true, false)))
-    {
-      localObject = (VasQuickUpdateManager)this.jdField_a_of_type_ComTencentMobileqqEmoticonVasEmojiManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(183);
-      if (localObject != null)
-      {
-        EmojiManager.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage);
-        ((VasQuickUpdateManager)localObject).a(1004L, this.jdField_a_of_type_JavaLangString, "VasEmojiManager");
-      }
+    paramView = this.a.getIntent();
+    paramView.putExtra("param_wzry_data", AddRequestActivity.a(this.a));
+    ahmz.a(this.a.app, this.a, this.a.jdField_a_of_type_JavaLangString, AddRequestActivity.a(this.a), this.a.jdField_a_of_type_Int, AddRequestActivity.a(this.a), paramView);
+    if (AddRequestActivity.a(this.a) != null) {
+      azqs.b(this.a.app, "CliOper", "", "", "0X800843E", "0X800843E", 0, 0, "", "", "", "");
     }
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0)
-      {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqEmoticonVasEmojiManager.a();
-        ((EmojiManager)localObject).jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId);
-        ((EmojiManager)localObject).a((Bundle)this.jdField_a_of_type_ComTencentMobileqqEmoticonVasEmojiManager.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId), null, false, 0, "nomatch", 0L, 0);
-      }
-      return;
-    }
+    azqs.b(this.a.app, "CliOper", "", "", "0X800AA42", "0X800AA42", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acdp
  * JD-Core Version:    0.7.0.1
  */

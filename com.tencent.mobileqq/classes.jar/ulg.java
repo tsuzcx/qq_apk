@@ -1,40 +1,77 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.TargetApi;
+import com.tencent.common.config.AppSetting;
 
-class ulg
-  implements Runnable
+@TargetApi(14)
+public class ulg
 {
-  ulg(ulf paramulf, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
+  public static final Boolean a;
+  public static final String a;
+  public static boolean a;
+  public static final String b;
+  public static final String c;
+  public static final String d;
+  public static final String e;
+  public static final String f;
+  public static final String g;
+  public static final String h;
+  public static final String i;
+  public static final String j;
+  public static final String k;
+  public static final String l;
+  public static final String m;
+  public static final String n;
+  public static final String o;
+  public static final String p;
+  public static final String q;
+  public static final String r;
+  public static final String s;
+  public static final String t;
+  public static final String u;
   
-  public void run()
+  static
   {
-    try
+    jdField_a_of_type_JavaLangString = alud.a(2131711207);
+    b = alud.a(2131711204);
+    jdField_a_of_type_Boolean = AppSetting.a().contains("r");
+    c = ajrx.jdField_a_of_type_JavaLangString + "/qqstory/";
+    d = c + "debug/";
+    e = c + "upload/";
+    f = e + ".music/";
+    g = c + ".tmp/";
+    h = g + "download/preload/";
+    i = g + "download/mine/";
+    j = g + ".tmp/";
+    k = j + "watermark/";
+    l = j + "merge/";
+    m = j + "audio/";
+    n = j + "video/";
+    o = j + "slideshow/";
+    p = j + "textfilter/";
+    q = j + "pk/result/";
+    r = k + "source/";
+    s = k + "doodle/";
+    t = k + "composite/";
+    u = k + "download/";
+    jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
+  }
+  
+  public static String a(int paramInt)
+  {
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "VoiceResStrategy");
-      }
-      if ((this.jdField_a_of_type_Ulf.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager == null) || (this.jdField_a_of_type_Ulf.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager == null))
-      {
-        CustomizeStrategyFactory.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo);
-        return;
-      }
-      String str = this.jdField_a_of_type_Ulf.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager.a("voice_pwd", "http://imgcache.qq.com/channel/static/socialpay/voice/", new String[] { "urlPrefix" });
-      str = str + "voice_rate_" + this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.templateId + ".zip";
-      this.jdField_a_of_type_Ulf.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager.a(str, new ulh(this));
-      return;
+    default: 
+      return "UNKNOWN";
+    case 0: 
+      return "VIDEO";
+    case 1: 
+      return "MASK_PIC";
     }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+    return "THUMBNAIL";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ulg
  * JD-Core Version:    0.7.0.1
  */

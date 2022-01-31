@@ -1,19 +1,24 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.token.utils.w;
 
-final class oi
-  implements View.OnClickListener
+class oi
+  extends ClickableSpan
 {
-  oi(LoginMsgChangePwdActivity paramLoginMsgChangePwdActivity) {}
+  oi(LogoActivity paramLogoActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(@NonNull View paramView)
   {
-    paramView = new Intent(this.a, ModifyQQPwdActivity.class);
-    paramView.putExtra("page_id", 2);
-    pv.a().a(this.a, paramView, pv.b);
+    w.a(this.a, "https://sdi.3g.qq.com/v/2019120415543611159");
+  }
+  
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-16740609);
   }
 }
 

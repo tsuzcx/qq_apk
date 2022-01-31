@@ -2,165 +2,121 @@ package oicq.wlogin_sdk.code2d;
 
 import java.util.ArrayList;
 import java.util.List;
+import oicq.wlogin_sdk.request.oicq_request;
+import oicq.wlogin_sdk.request.t;
 import oicq.wlogin_sdk.tools.util;
 
 public class e
-  extends b
+  extends c
 {
   public e()
   {
-    this._cmd = 19;
+    this._cmd = 18;
   }
   
   public int a(byte[] paramArrayOfByte)
   {
-    paramArrayOfByte = get_response(paramArrayOfByte, 0);
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 11)) {
+    byte[] arrayOfByte3 = null;
+    byte[] arrayOfByte4 = get_response(paramArrayOfByte, 0);
+    if ((arrayOfByte4 == null) || (arrayOfByte4.length < 8)) {
       return -1009;
     }
-    _status.a = util.buf_to_int64(paramArrayOfByte, 2);
-    _status.b = (util.buf_to_int8(paramArrayOfByte, 10) & 0xFF);
-    if (_status.b != 0)
-    {
-      i = util.buf_to_int16(paramArrayOfByte, 11);
-      _status.f = new byte[i];
-      System.arraycopy(paramArrayOfByte, 13, _status.f, 0, i);
+    paramArrayOfByte = a(arrayOfByte4, 0);
+    _status.a = paramArrayOfByte.b;
+    _status.h = paramArrayOfByte.c;
+    _status.b = paramArrayOfByte.d;
+    int i = paramArrayOfByte.a + 0;
+    if (_status.b != 0) {
       return _status.b;
     }
-    _status.c = (util.buf_to_int32(paramArrayOfByte, 11) & 0xFFFFFFFF);
-    int i = util.buf_to_int16(paramArrayOfByte, 15);
-    _status.d = new byte[i];
-    System.arraycopy(paramArrayOfByte, 17, _status.d, 0, i);
-    int j = i + 17;
-    int k = util.buf_to_int16(paramArrayOfByte, j);
-    _status.g = new byte[0];
-    _status.e = new ArrayList(k);
-    i = 0;
-    j += 2;
-    if (i < k)
+    _status.a = util.buf_to_int64(arrayOfByte4, i);
+    i += 8;
+    _status.c = util.buf_to_int32(arrayOfByte4, i);
+    i += 4;
+    _status.e = new ArrayList();
+    int k = util.buf_to_int16(arrayOfByte4, i);
+    i += 2;
+    int j = 0;
+    byte[] arrayOfByte2 = null;
+    byte[] arrayOfByte1 = null;
+    paramArrayOfByte = null;
+    if (j < k)
     {
-      int m = util.buf_to_int16(paramArrayOfByte, j);
-      int n = util.buf_to_int16(paramArrayOfByte, j + 2);
-      if (m == 13)
+      int m = util.buf_to_int16(arrayOfByte4, i);
+      int n = i + 2;
+      i = util.buf_to_int16(arrayOfByte4, n);
+      n += 2;
+      switch (m)
       {
-        _status.g = new byte[n];
-        System.arraycopy(paramArrayOfByte, j + 4, _status.g, 0, n);
+      default: 
+        byte[] arrayOfByte5 = new byte[i + 4];
+        System.arraycopy(arrayOfByte4, n - 4, arrayOfByte5, 0, arrayOfByte5.length);
+        _status.e.add(arrayOfByte5);
+        i = n + i;
       }
       for (;;)
       {
-        j += n + 4;
-        i += 1;
+        j += 1;
         break;
-        if (m == 26)
-        {
-          if (util.buf_to_int8(paramArrayOfByte, j + 4) == 1) {}
-          for (boolean bool = true;; bool = false)
-          {
-            c.t = bool;
-            break;
-          }
-        }
-        byte[] arrayOfByte = new byte[n + 4];
-        System.arraycopy(paramArrayOfByte, j, arrayOfByte, 0, n + 4);
-        _status.e.add(arrayOfByte);
+        paramArrayOfByte = new byte[i];
+        System.arraycopy(arrayOfByte4, n, paramArrayOfByte, 0, i);
+        i = n + i;
+        continue;
+        arrayOfByte2 = new byte[i];
+        System.arraycopy(arrayOfByte4, n, arrayOfByte2, 0, i);
+        i = n + i;
+        continue;
+        arrayOfByte1 = new byte[i];
+        System.arraycopy(arrayOfByte4, n, arrayOfByte1, 0, i);
+        i = n + i;
+        continue;
+        arrayOfByte3 = new byte[i];
+        System.arraycopy(arrayOfByte4, n, arrayOfByte3, 0, i);
+        i = n + i;
+        util.LOGI("get tgtQR len " + arrayOfByte3.length, "" + _status.a);
       }
     }
+    if ((paramArrayOfByte == null) || (arrayOfByte1 == null) || (arrayOfByte2 == null)) {
+      return -1009;
+    }
+    d.q = oicq_request.b(paramArrayOfByte, arrayOfByte1);
+    d.r = arrayOfByte2;
+    d.s = arrayOfByte3;
     return _status.b;
   }
   
-  public byte[] a(long paramLong1, long paramLong2, boolean paramBoolean, byte[] paramArrayOfByte1, int[] paramArrayOfInt, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, int paramInt, byte[] paramArrayOfByte5)
+  protected e.a a(byte[] paramArrayOfByte, int paramInt)
   {
-    byte[] arrayOfByte = paramArrayOfByte1;
-    if (paramArrayOfByte1 == null) {
-      arrayOfByte = new byte[0];
+    e.a locala = new e.a(this);
+    int i = util.buf_to_int16(paramArrayOfByte, paramInt);
+    int j = paramInt + 2;
+    paramInt = 0;
+    if (i != 0) {
+      paramInt = util.buf_to_int8(paramArrayOfByte, j);
     }
-    paramArrayOfByte1 = paramArrayOfInt;
-    if (paramArrayOfInt == null) {
-      paramArrayOfByte1 = new int[0];
+    if (2 == paramInt) {
+      locala.b = util.buf_to_int64(paramArrayOfByte, j + 1);
     }
-    paramArrayOfInt = paramArrayOfByte2;
-    if (paramArrayOfByte2 == null) {
-      paramArrayOfInt = new byte[0];
-    }
-    paramArrayOfByte2 = paramArrayOfByte3;
-    if (paramArrayOfByte3 == null) {
-      paramArrayOfByte2 = new byte[0];
-    }
-    paramArrayOfByte3 = paramArrayOfByte4;
-    if (paramArrayOfByte4 == null) {
-      paramArrayOfByte3 = new byte[0];
-    }
-    paramArrayOfByte4 = paramArrayOfByte5;
-    if (paramArrayOfByte5 == null) {
-      paramArrayOfByte4 = new byte[0];
-    }
-    if ((paramArrayOfByte4 != null) && (paramArrayOfByte4.length > 0))
-    {
-      paramArrayOfByte5 = new byte[arrayOfByte.length + 16 + 2 + paramArrayOfInt.length + 16 + 1 + 2 + 1 + 2 + paramArrayOfByte1.length * 2 + 2 + 4 + paramArrayOfByte3.length + 4 + paramArrayOfByte4.length];
-      util.int64_to_buf32(paramArrayOfByte5, 2, paramLong2);
-      util.int64_to_buf(paramArrayOfByte5, 6, paramLong1);
-      util.int16_to_buf(paramArrayOfByte5, 14, arrayOfByte.length);
-      System.arraycopy(arrayOfByte, 0, paramArrayOfByte5, 16, arrayOfByte.length);
-      i = arrayOfByte.length + 16;
-      util.int16_to_buf(paramArrayOfByte5, i, paramArrayOfInt.length);
-      i += 2;
-      System.arraycopy(paramArrayOfInt, 0, paramArrayOfByte5, i, paramArrayOfInt.length);
-      i += paramArrayOfInt.length;
-      if ((paramArrayOfByte2 == null) || (paramArrayOfByte2.length != 16)) {
-        break label398;
-      }
-      System.arraycopy(paramArrayOfByte2, 0, paramArrayOfByte5, i, 16);
-      i += 16;
-    }
-    for (;;)
-    {
-      util.int8_to_buf(paramArrayOfByte5, i, 1);
-      i += 1;
-      util.int16_to_buf(paramArrayOfByte5, i, paramInt);
-      paramInt = i + 2;
-      util.int8_to_buf(paramArrayOfByte5, paramInt, 3);
-      paramInt += 1;
-      util.int16_to_buf(paramArrayOfByte5, paramInt, paramArrayOfByte1.length);
-      paramInt += 2;
-      i = 0;
-      while (i < paramArrayOfByte1.length)
-      {
-        util.int16_to_buf(paramArrayOfByte5, paramInt, paramArrayOfByte1[i]);
-        paramInt += 2;
-        i += 1;
-      }
-      paramArrayOfByte5 = new byte[arrayOfByte.length + 16 + 2 + paramArrayOfInt.length + 16 + 1 + 2 + 1 + 2 + paramArrayOfByte1.length * 2 + 2 + 4 + paramArrayOfByte3.length];
-      break;
-      label398:
-      i += 16;
-    }
-    int j = 1;
-    int i = j;
-    if (paramArrayOfByte4 != null)
-    {
-      i = j;
-      if (paramArrayOfByte4.length > 0) {
-        i = 2;
-      }
-    }
-    util.int16_to_buf(paramArrayOfByte5, paramInt, i);
-    paramInt += 2;
-    util.int16_to_buf(paramArrayOfByte5, paramInt, 9);
-    paramInt += 2;
-    util.int16_to_buf(paramArrayOfByte5, paramInt, paramArrayOfByte3.length);
-    paramInt += 2;
-    System.arraycopy(paramArrayOfByte3, 0, paramArrayOfByte5, paramInt, paramArrayOfByte3.length);
-    paramInt += paramArrayOfByte3.length;
-    if ((paramArrayOfByte4 != null) && (paramArrayOfByte4.length > 0))
-    {
-      util.int16_to_buf(paramArrayOfByte5, paramInt, 12);
-      paramInt += 2;
-      util.int16_to_buf(paramArrayOfByte5, paramInt, paramArrayOfByte4.length);
-      paramInt += 2;
-      System.arraycopy(paramArrayOfByte4, 0, paramArrayOfByte5, paramInt, paramArrayOfByte4.length);
-      paramInt = paramArrayOfByte4.length;
-    }
-    return get_request(paramLong1, paramBoolean, paramArrayOfByte5);
+    paramInt = j + i;
+    locala.c = util.buf_to_int32(paramArrayOfByte, paramInt);
+    locala.d = util.buf_to_int8(paramArrayOfByte, paramInt + 4);
+    locala.a = (i + 2 + 4 + 1);
+    return locala;
+  }
+  
+  public byte[] a(long paramLong1, long paramLong2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    byte[] arrayOfByte = new byte[paramArrayOfByte1.length + 13 + (paramArrayOfByte2.length + 11 + 2)];
+    util.int16_to_buf(arrayOfByte, 0, 5);
+    util.int8_to_buf(arrayOfByte, 2, 1);
+    util.int32_to_buf(arrayOfByte, 3, t.az);
+    util.int64_to_buf32(arrayOfByte, 7, paramLong2);
+    int i = fill_staff(arrayOfByte, paramArrayOfByte1, 11);
+    util.int64_to_buf(arrayOfByte, i, paramLong1);
+    i += 8;
+    util.int8_to_buf(arrayOfByte, i, 8);
+    fill_staff(arrayOfByte, paramArrayOfByte2, i + 1);
+    return get_request(paramLong1, true, arrayOfByte);
   }
 }
 

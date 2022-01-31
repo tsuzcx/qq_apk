@@ -8,16 +8,19 @@ import java.util.Map;
 
 public class DownloadRequest
 {
+  private long fileSizeForRangeMode;
   private boolean mCacheEntry = false;
   private boolean mIsCanceled = false;
   private Downloader.DownloadListener mListener;
-  private Map mParams;
+  private Map<String, String> mParams;
   private final String[] mPaths;
   private final String mUrl;
   public Downloader.DownloadMode mode = Downloader.DownloadMode.FastMode;
   public boolean needMd5 = false;
+  public DownloadRequest.OnResponseDataListener onResponseDataListener;
   public OutputStream outputStream;
   public long range;
+  public int rangeNumber;
   
   public DownloadRequest(String paramString, String[] paramArrayOfString, boolean paramBoolean, Downloader.DownloadListener paramDownloadListener)
   {
@@ -29,7 +32,7 @@ public class DownloadRequest
         bool1 = true;
       }
     }
-    AssertUtil.a(bool1);
+    AssertUtil.assertTrue(bool1);
     this.mUrl = paramString;
     this.mPaths = paramArrayOfString;
     this.mListener = paramDownloadListener;
@@ -82,12 +85,17 @@ public class DownloadRequest
     return false;
   }
   
+  public long getFileSizeForRangeMode()
+  {
+    return this.fileSizeForRangeMode;
+  }
+  
   public Downloader.DownloadListener getListener()
   {
     return this.mListener;
   }
   
-  public Map getParams()
+  public Map<String, String> getParams()
   {
     return this.mParams;
   }
@@ -120,6 +128,11 @@ public class DownloadRequest
     return this.mIsCanceled;
   }
   
+  public void setFileSizeForRangeMode(long paramLong)
+  {
+    this.fileSizeForRangeMode = paramLong;
+  }
+  
   public void setListener(Downloader.DownloadListener paramDownloadListener)
   {
     this.mListener = paramDownloadListener;
@@ -132,7 +145,7 @@ public class DownloadRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.downloader.DownloadRequest
  * JD-Core Version:    0.7.0.1
  */

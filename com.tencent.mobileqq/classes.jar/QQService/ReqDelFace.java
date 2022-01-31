@@ -9,14 +9,14 @@ public final class ReqDelFace
   extends JceStruct
 {
   static ReqHead cache_stHeader;
-  static ArrayList cache_vFaceInfo;
+  static ArrayList<FaceInfo> cache_vFaceInfo;
   public ReqHead stHeader;
   public int uFaceTimeStamp;
-  public ArrayList vFaceInfo;
+  public ArrayList<FaceInfo> vFaceInfo;
   
   public ReqDelFace() {}
   
-  public ReqDelFace(ReqHead paramReqHead, int paramInt, ArrayList paramArrayList)
+  public ReqDelFace(ReqHead paramReqHead, int paramInt, ArrayList<FaceInfo> paramArrayList)
   {
     this.stHeader = paramReqHead;
     this.uFaceTimeStamp = paramInt;

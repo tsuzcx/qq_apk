@@ -1,49 +1,33 @@
-import android.content.Context;
-import android.content.Intent;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity;
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.List;
 
-public class wvc
-  extends ContactBindObserver
+class wvc
+  extends SimpleJob<Object>
 {
-  public wvc(PhoneLaunchActivity paramPhoneLaunchActivity) {}
-  
-  protected void b(boolean paramBoolean, int paramInt)
+  wvc(wvb paramwvb, String paramString, StoryVideoItem paramStoryVideoItem, List paramList)
   {
-    PhoneLaunchActivity.a(this.a).setEnabled(true);
-    if (this.a.a != null)
+    super(paramString);
+  }
+  
+  protected Object a(@NonNull JobContext arg1, @Nullable Void... paramVarArgs)
+  {
+    synchronized (wvb.a(this.jdField_a_of_type_Wvb))
     {
-      this.a.app.unRegistObserver(this.a.a);
-      this.a.a = null;
+      this.jdField_a_of_type_Wvb.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
+      this.jdField_a_of_type_Wvb.jdField_a_of_type_Wvd = new wvd(this.jdField_a_of_type_Wvb.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+      this.jdField_a_of_type_Wvb.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+      this.jdField_a_of_type_Wvb.b();
+      return null;
     }
-    this.a.b();
-    if (paramBoolean)
-    {
-      Object localObject = this.a;
-      if ((PhoneLaunchActivity.a(this.a)) || (PhoneLaunchActivity.b(this.a)))
-      {
-        this.a.setResult(-1);
-        this.a.finish();
-        return;
-      }
-      localObject = new Intent((Context)localObject, SettingActivity2.class);
-      if (PhoneLaunchActivity.c(this.a)) {
-        ((Intent)localObject).putExtra("kSrouce", 7);
-      }
-      this.a.startActivityForResult((Intent)localObject, 2);
-      this.a.setResult(-1);
-      this.a.finish();
-      return;
-    }
-    this.a.b("启用失败，请重新尝试！");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wvc
  * JD-Core Version:    0.7.0.1
  */

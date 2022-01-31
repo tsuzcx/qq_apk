@@ -1,24 +1,45 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import android.support.annotation.UiThread;
+import java.lang.ref.WeakReference;
 
-class tie
-  implements View.OnClickListener
+public class tie<V extends tat>
+  implements taw<V>
 {
-  tie(tib paramtib, SharedPreferences paramSharedPreferences, String paramString) {}
+  private WeakReference<V> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  @UiThread
+  public V a()
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
-    this.jdField_a_of_type_Tib.a.a.sendEmptyMessageDelayed(1010, 1000L);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      return null;
+    }
+    return (tat)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      this.jdField_a_of_type_JavaLangRefWeakReference.clear();
+      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    }
+  }
+  
+  @UiThread
+  public void a(V paramV)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramV);
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tie
  * JD-Core Version:    0.7.0.1
  */

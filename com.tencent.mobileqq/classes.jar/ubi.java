@@ -1,20 +1,24 @@
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import java.util.List;
+import android.view.animation.Interpolator;
+import com.tencent.biz.qqcircle.utils.QCircleSlidBottomView;
 
 public class ubi
-  implements Runnable
+  implements Interpolator
 {
-  public ubi(TroopMemberListActivity paramTroopMemberListActivity, List paramList, int paramInt1, int paramInt2) {}
+  private double jdField_a_of_type_Double;
   
-  public void run()
+  public ubi(QCircleSlidBottomView paramQCircleSlidBottomView, double paramDouble)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList.subList(this.jdField_a_of_type_Int, this.b);
-    TroopMemberListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, localList, this.b);
+    this.jdField_a_of_type_Double = paramDouble;
+  }
+  
+  public float getInterpolation(float paramFloat)
+  {
+    return (float)(Math.pow(2.0D, -24.0D * paramFloat) * Math.sin((paramFloat - this.jdField_a_of_type_Double / 10.0D) * 6.283185307179586D / this.jdField_a_of_type_Double) + 1.0D);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ubi
  * JD-Core Version:    0.7.0.1
  */

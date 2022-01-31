@@ -15,15 +15,15 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class cmd0x7ce$AppintDetail
-  extends MessageMicro
+  extends MessageMicro<AppintDetail>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_SigC2C = PBField.initBytes(ByteStringMicro.EMPTY);
   public appoint_define.AppointInfo msg_appoints_info = new appoint_define.AppointInfo();
   public appoint_define.PublisherInfo msg_publisher_info = new appoint_define.PublisherInfo();
-  public final PBRepeatMessageField rpt_msg_comment_list = PBField.initRepeatMessage(appoint_define.DateComment.class);
-  public final PBRepeatMessageField rpt_msg_stranger_info = PBField.initRepeatMessage(appoint_define.StrangerInfo.class);
-  public final PBRepeatMessageField rpt_msg_vistor_info = PBField.initRepeatMessage(appoint_define.StrangerInfo.class);
+  public final PBRepeatMessageField<appoint_define.DateComment> rpt_msg_comment_list = PBField.initRepeatMessage(appoint_define.DateComment.class);
+  public final PBRepeatMessageField<appoint_define.StrangerInfo> rpt_msg_stranger_info = PBField.initRepeatMessage(appoint_define.StrangerInfo.class);
+  public final PBRepeatMessageField<appoint_define.StrangerInfo> rpt_msg_vistor_info = PBField.initRepeatMessage(appoint_define.StrangerInfo.class);
   public final PBStringField str_aio_errmsg = PBField.initString("");
   public final PBStringField str_profile_errmsg = PBField.initString("");
   public final PBUInt32Field uint32_can_aio = PBField.initUInt32(0);
@@ -47,7 +47,7 @@ public final class cmd0x7ce$AppintDetail
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x7ce.AppintDetail
  * JD-Core Version:    0.7.0.1
  */

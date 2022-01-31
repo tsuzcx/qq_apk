@@ -7,7 +7,7 @@ import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-public class QQStoryBaseActivity$ProgressView
+class QQStoryBaseActivity$ProgressView
   extends FrameLayout
 {
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
@@ -27,9 +27,9 @@ public class QQStoryBaseActivity$ProgressView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2130970906, this);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131363005));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363632));
+    LayoutInflater.from(paramContext).inflate(2131561654, this);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131372332));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377606));
   }
   
   public void a(CharSequence paramCharSequence)
@@ -45,7 +45,7 @@ public class QQStoryBaseActivity$ProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity.ProgressView
  * JD-Core Version:    0.7.0.1
  */

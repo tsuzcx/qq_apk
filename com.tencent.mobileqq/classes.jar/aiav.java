@@ -1,27 +1,14 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceManagerFilter;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceReadyFilter;
-
-public class aiav
-  implements Animation.AnimationListener
+public abstract interface aiav
 {
-  public aiav(DanceReadyFilter paramDanceReadyFilter) {}
+  public abstract void a();
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    DanceReadyFilter.f(this.a).h_(false);
-    this.a.a.a();
-  }
+  public abstract void b();
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiav
  * JD-Core Version:    0.7.0.1
  */

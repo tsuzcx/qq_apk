@@ -1,34 +1,41 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.HotChatHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
-class vuy
-  implements DialogInterface.OnClickListener
+public class vuy
+  extends JobSegment<String, String>
 {
-  vuy(vux paramvux) {}
+  private vuy(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(JobContext paramJobContext, String paramString)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.h = new Dialog(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.a(), 2131624516);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.h.setContentView(2130968595);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.h.setCancelable(true);
-    ((TextView)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.h.findViewById(2131362776)).setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.a().getString(2131434453));
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.h.show();
-    ((HotChatHandler)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35)).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin, this.a.jdField_a_of_type_JavaLangString, 1);
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005D55", "0X8005D55", 0, 0, "", "", "", "");
+    this.a.jdField_a_of_type_Vwa.a(null);
+    this.a.jdField_a_of_type_Vwa.a(null);
+    this.a.jdField_a_of_type_Vwa.a(null);
+    this.a.jdField_a_of_type_Vwa.a(null);
+    this.a.jdField_a_of_type_Vwa.a(null);
+    if (VideoViewVideoHolder.f(this.a) == 0)
+    {
+      wxe.d(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. already idle state");
+      notifyResult(paramString);
+      return;
+    }
+    if (VideoViewVideoHolder.f(this.a) < 7)
+    {
+      wxe.d(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. change to idle directly");
+      VideoViewVideoHolder.a(this.a, 0);
+      notifyResult(paramString);
+      return;
+    }
+    wxe.b(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. stop video view");
+    this.a.jdField_a_of_type_Vwa.a();
+    VideoViewVideoHolder.a(this.a, 0);
+    notifyResult(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vuy
  * JD-Core Version:    0.7.0.1
  */

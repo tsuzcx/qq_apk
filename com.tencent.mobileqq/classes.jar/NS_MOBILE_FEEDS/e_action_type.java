@@ -6,6 +6,8 @@ public final class e_action_type
   implements Serializable
 {
   public static final int _AdaptVideoByCmd = 13;
+  public static final int _AddToTheMoment = 55;
+  public static final int _AnimojiShoot = 57;
   public static final int _DirectedGetLuckyMoney = 44;
   public static final int _DoAsActionSchema = 20;
   public static final int _DoCollect = 39;
@@ -21,6 +23,7 @@ public final class e_action_type
   public static final int _EnterAdvDetailPage = 28;
   public static final int _EnterAdvOriginDetailPage = 29;
   public static final int _EnterAdvSoldOut = 30;
+  public static final int _EnterClickSmallRegion = 60;
   public static final int _EnterDetailPage = 0;
   public static final int _EnterEventPage = 31;
   public static final int _EnterFakeDetailPage = 8;
@@ -31,10 +34,13 @@ public final class e_action_type
   public static final int _EnterOriginDetailPageWithCellId = 27;
   public static final int _EnterOriginFakeDetailPage = 9;
   public static final int _EnterPersonalAlbum = 32;
+  public static final int _EnterRankingPage = 58;
   public static final int _EnterShareAlbum = 15;
   public static final int _EnterTagEventPageWithHybridCover = 53;
+  public static final int _EnterTopicPage = 59;
   public static final int _EnterVideoFloatLayer = 52;
   public static final int _Gift = 12;
+  public static final int _OpenAdvPanoramaLanddingPage = 62;
   public static final int _OpenAdvPicTopAsActionSchema = 54;
   public static final int _OpenCanvas = 46;
   public static final int _OpenConnApp = 17;
@@ -49,6 +55,7 @@ public final class e_action_type
   public static final int _OpenQQWallet = 26;
   public static final int _OpenRefer = 16;
   public static final int _OpenSignLuckyMoneySchema = 47;
+  public static final int _OpenToRenzheng = 63;
   public static final int _OpenVideoDirect = 3;
   public static final int _OpenVideoIframe = 4;
   public static final int _OpenVideoInCellorLayer = 19;
@@ -64,7 +71,7 @@ public final class e_action_type
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.e_action_type
  * JD-Core Version:    0.7.0.1
  */

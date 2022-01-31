@@ -1,104 +1,77 @@
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.PointF;
-import android.graphics.Rect;
-import android.view.View;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.lang.ref.WeakReference;
 
 public class xlm
-  implements Runnable
+  extends xlo<xlb, xlb>
 {
-  private int jdField_a_of_type_Int;
-  private List jdField_a_of_type_JavaUtilList;
+  private final int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private final WeakReference<xaz> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public xlm(DragFrameLayout paramDragFrameLayout, List paramList)
+  public xlm(String paramString, xaz paramxaz, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList);
-    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramxaz);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public Bitmap a()
+  protected void a(JobContext paramJobContext, xlb paramxlb)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Int >= 0)
-    {
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_Int >= DragFrameLayout.a().length) {}
+    wxe.a("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "start generate thumb ... mVideoIndex = %d", Integer.valueOf(this.jdField_a_of_type_Int));
+    xlh localxlh = paramxlb.jdField_a_of_type_Xlh;
+    int i = localxlh.c;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
+      paramJobContext = (xaz)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    try
+    while (paramJobContext != null)
     {
-      localObject1 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.getResources(), DragFrameLayout.a()[this.jdField_a_of_type_Int]);
-      return localObject1;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      do
+      Bitmap localBitmap = paramJobContext.a(this.jdField_a_of_type_Int);
+      if (localBitmap != null)
       {
-        localObject1 = localObject2;
-      } while (!QLog.isColorLevel());
-      QLog.e("DragRelativeLayout", 2, "decodeBitmap failed" + localOutOfMemoryError, localOutOfMemoryError);
-    }
-    return null;
-  }
-  
-  public PointF a()
-  {
-    PointF localPointF = new PointF();
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
-    {
-      View localView = (View)this.jdField_a_of_type_JavaUtilList.get(0);
-      Rect localRect = new Rect();
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.getGlobalVisibleRect(localRect);
-      int i = localRect.left;
-      int j = localRect.top;
-      localView.getGlobalVisibleRect(localRect);
-      localRect.left -= i;
-      localRect.top -= j;
-      localRect.right -= i;
-      localRect.bottom -= j;
-      localPointF.set(localRect.centerX(), localRect.centerY());
-    }
-    return localPointF;
-  }
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0)
-    {
-      if (this == DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout)) {
-        DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout, null);
-      }
-      DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout, -1);
-      if (QLog.isColorLevel()) {
-        QLog.d("Drag", 2, "DONE!");
-      }
-      DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout, true);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.invalidate();
-      return;
-      View localView = (View)this.jdField_a_of_type_JavaUtilList.get(0);
-      if (this.jdField_a_of_type_Int == DragFrameLayout.a().length)
-      {
-        this.jdField_a_of_type_JavaUtilList.remove(0);
-        this.jdField_a_of_type_Int = -1;
+        try
+        {
+          String str2 = this.jdField_a_of_type_JavaLangString;
+          String str1 = str2;
+          if (str2 == null) {
+            str1 = xlr.a(paramxlb.jdField_a_of_type_Int, paramxlb.b, ".jpg");
+          }
+          i = new xlj(localBitmap, str1, localxlh.jdField_a_of_type_Int, localxlh.jdField_b_of_type_Int, i, localxlh.jdField_a_of_type_Float, localxlh.jdField_a_of_type_Double, localxlh.jdField_b_of_type_Double, paramxlb.jdField_a_of_type_Int).a(new Void[0]).intValue();
+          paramJobContext.a(localBitmap);
+          if (i != 0) {
+            break label217;
+          }
+          paramxlb.jdField_a_of_type_JavaLangString = str1;
+          paramxlb.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = str1;
+          wxe.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb success ...", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+          super.notifyResult(paramxlb);
+          return;
+        }
+        finally
+        {
+          paramJobContext.a(localBitmap);
+        }
+        paramJobContext = null;
+        continue;
+        label217:
+        wxe.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ...", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+        super.notifyError(new ErrorMessage(-1, alud.a(2131706071) + this.jdField_a_of_type_Int));
       }
       else
       {
-        localView.setVisibility(4);
-        this.jdField_a_of_type_Int += 1;
+        wxe.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ... EditVideoPlayerExport generateVideoFrameBitmap return null", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+        super.notifyError(new ErrorMessage(-1, alud.a(2131706076) + this.jdField_a_of_type_Int));
+        return;
       }
     }
+    wxe.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ... can not find EditVideoPlayerExport", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    super.notifyError(new ErrorMessage(-1, alud.a(2131706072) + this.jdField_a_of_type_Int));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xlm
  * JD-Core Version:    0.7.0.1
  */

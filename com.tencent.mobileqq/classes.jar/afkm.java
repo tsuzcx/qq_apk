@@ -1,31 +1,19 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.GetLocalUnPiblishListCallback;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyProfileCardMomentAdapter;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class afkm
-  implements NearbyMomentManager.GetLocalUnPiblishListCallback
+  implements DialogInterface.OnClickListener
 {
   afkm(afkj paramafkj) {}
   
-  public void a(List paramList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    NearbyMomentFragment.b(this.a.a).clear();
-    NearbyMomentFragment.b(this.a.a).addAll(paramList);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(NearbyMomentFragment.b(this.a.a));
-    localArrayList.addAll(NearbyMomentFragment.a(this.a.a));
-    NearbyMomentFragment.a(this.a.a).a(localArrayList);
-    localArrayList = new ArrayList();
-    localArrayList.addAll(paramList);
-    this.a.a.b();
-    NearbyMomentFragment.a(this.a.a, localArrayList);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afkm
  * JD-Core Version:    0.7.0.1
  */

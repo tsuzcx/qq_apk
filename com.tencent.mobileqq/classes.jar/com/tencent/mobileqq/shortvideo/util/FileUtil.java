@@ -4,12 +4,12 @@ import java.io.File;
 
 public class FileUtil
 {
-  public static boolean a(String paramString)
+  public static boolean checkFileExist(String paramString)
   {
     return new File(paramString).exists();
   }
   
-  public static boolean b(String paramString)
+  public static boolean fileExistsAndNotEmpty(String paramString)
   {
     if (paramString == null) {}
     do
@@ -22,7 +22,7 @@ public class FileUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.FileUtil
  * JD-Core Version:    0.7.0.1
  */

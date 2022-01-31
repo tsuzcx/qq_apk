@@ -1,22 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import java.util.List;
+import java.util.Map;
 
-public class afar
-  implements View.OnClickListener
+public abstract interface afar
 {
-  public afar(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public abstract void a(String paramString, int paramInt, afaj paramafaj, List<afbe> paramList, Map<Integer, Integer> paramMap);
   
-  public void onClick(View paramView)
-  {
-    this.a.c(paramView);
-    new NowVideoReporter().h("video").i("playpage_like_click").b().a(this.a.a);
-  }
+  public abstract boolean a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afar
  * JD-Core Version:    0.7.0.1
  */

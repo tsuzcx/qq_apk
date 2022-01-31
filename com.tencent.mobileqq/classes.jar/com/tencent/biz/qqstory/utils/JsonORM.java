@@ -6,16 +6,17 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.IdentityHashMap;
 import java.util.Map;
-import ook;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import xrk;
+import xrl;
 
 public class JsonORM
 {
-  private static final Map a = new IdentityHashMap();
+  private static final Map<Class, xrl[]> a = new IdentityHashMap();
   
-  public static int a(Class paramClass)
+  public static int a(Class<?> paramClass)
   {
     if (paramClass == String.class) {
       return 0;
@@ -42,12 +43,12 @@ public class JsonORM
   }
   
   @NonNull
-  public static Object a(JSONObject paramJSONObject, Class paramClass)
+  public static <T> T a(JSONObject paramJSONObject, Class<T> paramClass)
   {
     if ((paramJSONObject == null) || (paramClass == null)) {
       throw new IllegalArgumentException("both jsonObject and clazz should not be null");
     }
-    Object localObject2 = (ook[])a.get(paramClass);
+    Object localObject2 = (xrl[])a.get(paramClass);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
@@ -122,7 +123,7 @@ public class JsonORM
       throw new IllegalArgumentException("object should not be null");
     }
     Class localClass = paramObject.getClass();
-    Object localObject2 = (ook[])a.get(localClass);
+    Object localObject2 = (xrl[])a.get(localClass);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
@@ -155,18 +156,25 @@ public class JsonORM
           throw new JsonORM.JsonParseException("operate json object error", paramObject);
         }
         ((JSONObject)localObject2).put(localClass.jdField_a_of_type_JavaLangString, localClass.jdField_a_of_type_JavaLangReflectField.getLong(paramObject));
-        break label296;
+        break label314;
         ((JSONObject)localObject2).put(localClass.jdField_a_of_type_JavaLangString, localClass.jdField_a_of_type_JavaLangReflectField.getDouble(paramObject));
-        break label296;
-        ((JSONObject)localObject2).put(localClass.jdField_a_of_type_JavaLangString, localClass.jdField_a_of_type_JavaLangReflectField.get(paramObject));
-        break label296;
-        ((JSONObject)localObject2).put(localClass.jdField_a_of_type_JavaLangString, a(localClass.jdField_a_of_type_JavaLangReflectField.get(paramObject)));
+        break label314;
+        Object localObject3 = localClass.jdField_a_of_type_JavaLangReflectField.get(paramObject);
+        if (localObject3 != null)
+        {
+          ((JSONObject)localObject2).put(localClass.jdField_a_of_type_JavaLangString, localObject3);
+          break label314;
+          localObject3 = localClass.jdField_a_of_type_JavaLangReflectField.get(paramObject);
+          if (localObject3 != null) {
+            ((JSONObject)localObject2).put(localClass.jdField_a_of_type_JavaLangString, a(localObject3));
+          }
+        }
       }
       else
       {
         return localObject2;
       }
-      label296:
+      label314:
       i += 1;
     }
   }
@@ -256,26 +264,26 @@ public class JsonORM
     paramField.set(paramObject, paramJSONObject.optString(paramString));
   }
   
-  private static void a(Class paramClass, ArrayList paramArrayList)
+  private static void a(Class<?> paramClass, ArrayList<xrl> paramArrayList)
   {
     paramClass = paramClass.getDeclaredFields();
     int i = 0;
     if (i != paramClass.length)
     {
       Field localField = paramClass[i];
-      JsonORM.Column localColumn = (JsonORM.Column)localField.getAnnotation(JsonORM.Column.class);
-      if (localColumn == null) {}
+      xrk localxrk = (xrk)localField.getAnnotation(xrk.class);
+      if (localxrk == null) {}
       for (;;)
       {
         i += 1;
         break;
-        paramArrayList.add(new ook(localColumn.a(), a(localField.getType()), localField));
+        paramArrayList.add(new xrl(localxrk.a(), a(localField.getType()), localField));
       }
     }
   }
   
   @NonNull
-  public static Object[] a(JSONArray paramJSONArray, Class paramClass)
+  public static <T> T[] a(JSONArray paramJSONArray, Class<T> paramClass)
   {
     if ((paramJSONArray == null) || (paramClass == null)) {
       throw new IllegalArgumentException("both jsonArray and clazz should not be null");
@@ -302,7 +310,7 @@ public class JsonORM
     return arrayOfObject;
   }
   
-  private static ook[] a(Class paramClass)
+  private static xrl[] a(Class<?> paramClass)
   {
     ArrayList localArrayList = new ArrayList();
     while (paramClass != null)
@@ -310,14 +318,14 @@ public class JsonORM
       a(paramClass, localArrayList);
       paramClass = paramClass.getSuperclass();
     }
-    paramClass = new ook[localArrayList.size()];
+    paramClass = new xrl[localArrayList.size()];
     localArrayList.toArray(paramClass);
     return paramClass;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.JsonORM
  * JD-Core Version:    0.7.0.1
  */

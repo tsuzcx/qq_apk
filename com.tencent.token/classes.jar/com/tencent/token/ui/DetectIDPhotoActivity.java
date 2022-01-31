@@ -11,9 +11,9 @@ import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.jni.FaceDetector.IdCardDirection;
-import com.tencent.token.global.e;
-import com.tencent.token.ui.base.bf;
-import com.tencent.token.ui.base.cu;
+import com.tencent.token.global.h;
+import com.tencent.token.ui.base.bh;
+import com.tencent.token.ui.base.cm;
 
 public class DetectIDPhotoActivity
   extends BaseActivity
@@ -21,11 +21,11 @@ public class DetectIDPhotoActivity
   private final int F_DETECT_TWOSIDES_OVERTIME = 30000;
   private byte[] backphotoinfo;
   private byte[] frontphotoinfo;
-  private Handler handler = new cz(this);
+  private Handler handler = new dq(this);
   private boolean mAnimation;
   private String mBackPath;
   private TextView mBorderTipTxt;
-  private Runnable mCheckOverTimeThread = new cv(this);
+  private Runnable mCheckOverTimeThread = new dl(this);
   private int mCurrentSide = 1;
   private boolean mDetectTwoSides = false;
   private String mFrontPath;
@@ -50,22 +50,23 @@ public class DetectIDPhotoActivity
   
   private void initView()
   {
-    setContentView(2130903068);
+    setContentView(2130968633);
     hideTitle();
-    findViewById(2131296490).setOnClickListener(new cw(this));
-    findViewById(2131296488).setOnClickListener(new cx(this));
-    this.mPreview = ((DetectIDPhotoPreview)findViewById(2131296481));
-    this.mGrid = ((ImageView)findViewById(2131296483));
-    this.mScan = ((ImageView)findViewById(2131296484));
-    this.mScan.setBackgroundDrawable(new bf(this));
-    this.mImgBorder = ((ImageView)findViewById(2131296482));
-    this.mImgBorder.setImageResource(2130837822);
-    this.mBorderTipTxt = ((TextView)findViewById(2131296487));
+    findViewById(2131558776).setOnClickListener(new dm(this));
+    findViewById(2131558774).setOnClickListener(new dn(this));
+    this.mPreview = ((DetectIDPhotoPreview)findViewById(2131558767));
+    this.mPreview.setVisibility(4);
+    this.mGrid = ((ImageView)findViewById(2131558769));
+    this.mScan = ((ImageView)findViewById(2131558770));
+    this.mScan.setBackgroundDrawable(new bh(this));
+    this.mImgBorder = ((ImageView)findViewById(2131558768));
+    this.mImgBorder.setImageResource(2130837903);
+    this.mBorderTipTxt = ((TextView)findViewById(2131558773));
     if (this.mCurrentSide == 2)
     {
-      this.mBorderTipTxt.setText(2131362515);
+      this.mBorderTipTxt.setText(2131231346);
       if (!this.mAnimation) {
-        this.mImgBorder.setImageResource(2130837821);
+        this.mImgBorder.setImageResource(2130837902);
       }
     }
     if (!this.mStartCheckOverTime)
@@ -77,12 +78,12 @@ public class DetectIDPhotoActivity
   
   private void showChangeTakepicAlert()
   {
-    showUserDialog(2131362778, getResources().getString(2131362779), 2131362780, 2131361804, new db(this), new dc(this));
+    showUserDialog(2131230929, getResources().getString(2131230926), 2131230927, 2131230886, new ds(this), new dt(this));
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    e.c("resultCoderesultCode=" + paramInt2);
+    h.c("resultCoderesultCode=" + paramInt2);
     if (paramInt2 == 10) {
       if (this.mCurrentSide == 1) {
         this.mFrontPath = null;
@@ -105,7 +106,7 @@ public class DetectIDPhotoActivity
         {
           this.mCurrentSide = 2;
           this.mAnimation = true;
-          e.c("onActivityResulton ccurrent_step=" + this.mCurrentSide);
+          h.c("onActivityResulton ccurrent_step=" + this.mCurrentSide);
           return;
         }
       } while (this.mCurrentSide != 2);
@@ -114,7 +115,7 @@ public class DetectIDPhotoActivity
       paramIntent.putExtra("backdata", this.mBackPath);
       paramIntent.putExtra("frontphotoinfo", this.frontphotoinfo);
       paramIntent.putExtra("backphotoinfo", this.backphotoinfo);
-      e.c("step2 onActivityResult!!!");
+      h.c("step2 onActivityResult!!!");
       setResult(0, paramIntent);
       finish();
       return;
@@ -124,7 +125,7 @@ public class DetectIDPhotoActivity
     this.mBackPath = paramIntent.getStringExtra("backdata");
     localIntent.putExtra("frontdata", this.mFrontPath);
     localIntent.putExtra("backdata", this.mBackPath);
-    e.c("step2 onActivityResult!!!");
+    h.c("step2 onActivityResult!!!");
     setResult(0, localIntent);
     finish();
   }
@@ -141,12 +142,7 @@ public class DetectIDPhotoActivity
   {
     super.onPause();
     this.mPreview.a();
-    this.mImgBorder = null;
-    if (this.mPreview != null)
-    {
-      this.mPreview.a();
-      this.mPreview = null;
-    }
+    destroyview();
     System.gc();
   }
   
@@ -159,7 +155,8 @@ public class DetectIDPhotoActivity
     }
     for (;;)
     {
-      this.mPreview.a(this, this.handler);
+      Object localObject = new do(this);
+      requestRuntimePermissions(new String[] { "android.permission.CAMERA" }, (dy)localObject);
       if (this.mAnimation)
       {
         this.mScan.setVisibility(4);
@@ -169,17 +166,17 @@ public class DetectIDPhotoActivity
         this.mImgBorder.measure(i, j);
         this.mImgBorderH = this.mImgBorder.getMeasuredHeight();
         this.mImgBorderW = this.mImgBorder.getMeasuredWidth();
-        cu localcu = new cu(0.0F, 90.0F, this.mImgBorderW / 2, this.mImgBorderH / 2, true);
-        localcu.setDuration(400L);
-        localcu.setFillAfter(true);
-        localcu.setAnimationListener(new cy(this));
-        this.mImgBorder.startAnimation(localcu);
+        localObject = new cm(0.0F, 90.0F, this.mImgBorderW / 2, this.mImgBorderH / 2, 310.0F, true);
+        ((Animation)localObject).setDuration(400L);
+        ((Animation)localObject).setFillAfter(true);
+        ((Animation)localObject).setAnimationListener(new dp(this));
+        this.mImgBorder.startAnimation((Animation)localObject);
         this.mAnimation = false;
       }
       return;
-      this.mPreview.a(FaceDetector.IdCardDirection.DT_FRONT);
+      this.mPreview.setSide(FaceDetector.IdCardDirection.DT_FRONT);
       continue;
-      this.mPreview.a(FaceDetector.IdCardDirection.DT_BACK);
+      this.mPreview.setSide(FaceDetector.IdCardDirection.DT_BACK);
     }
   }
 }

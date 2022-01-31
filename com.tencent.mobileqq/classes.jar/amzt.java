@@ -1,64 +1,90 @@
-import android.content.Intent;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qzone.share.QZoneShareActivity;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
-public class amzt
-  implements TextWatcher
+public abstract class amzt
+  extends Binder
+  implements amzs
 {
-  public amzt(QZoneShareActivity paramQZoneShareActivity) {}
-  
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public amzt()
   {
-    if (((paramInt2 == 1) || (paramInt2 == 2)) && (paramInt3 == 0)) {
-      try
-      {
-        QZoneShareActivity.b(this.a, QZoneShareActivity.a(this.a, paramCharSequence, paramInt1 + paramInt2));
-        if (QZoneShareActivity.b(this.a) == -1)
-        {
-          QZoneShareActivity.c(this.a);
-          return;
-        }
-        QZoneShareActivity.c(this.a, paramInt1);
-        QZoneShareActivity.a(this.a, paramCharSequence.toString().substring(QZoneShareActivity.b(this.a), QZoneShareActivity.c(this.a) + paramInt2));
-        return;
-      }
-      catch (Exception paramCharSequence)
-      {
-        QZoneShareActivity.c(this.a);
-      }
-    }
+    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
   }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public static amzs a(IBinder paramIBinder)
   {
-    this.a.a.removeTextChangedListener(this);
-    if (paramCharSequence == null)
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof amzs))) {
+      return (amzs)localIInterface;
+    }
+    return new amzu(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      this.a.a.addTextChangedListener(this);
-      QZoneShareActivity.c(this.a);
-      return;
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      a();
+      paramParcel2.writeNoException();
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      a(paramParcel1.readLong(), paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      return true;
+    case 3: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      a(paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
     }
-    if ((paramInt3 == 1) && (paramInt2 == 0) && (paramCharSequence.toString().substring(paramInt1, paramInt1 + 1).equals("@")))
+    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+    ArConfigInfo localArConfigInfo;
+    ArEffectConfig localArEffectConfig;
+    if (paramParcel1.readInt() != 0)
     {
-      this.a.a(false);
-      this.a.g = true;
-      paramCharSequence = new Intent(BaseApplication.getContext(), SelectMemberActivity.class);
-      paramCharSequence.putExtra("param_only_friends", true);
-      paramCharSequence.putExtra("param_min", 1);
-      this.a.startActivityForResult(paramCharSequence, 1000);
+      localArConfigInfo = (ArConfigInfo)ArConfigInfo.CREATOR.createFromParcel(paramParcel1);
+      if (paramParcel1.readInt() == 0) {
+        break label219;
+      }
+      localArEffectConfig = (ArEffectConfig)ArEffectConfig.CREATOR.createFromParcel(paramParcel1);
+      label178:
+      if (paramParcel1.readInt() == 0) {
+        break label225;
+      }
     }
-    if (QZoneShareActivity.a(this.a, QZoneShareActivity.a(this.a), false)) {
-      this.a.a.getEditableText().delete(QZoneShareActivity.b(this.a), QZoneShareActivity.c(this.a));
+    label219:
+    label225:
+    for (paramParcel1 = (ARCommonConfigInfo)ARCommonConfigInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    {
+      a(localArConfigInfo, localArEffectConfig, paramParcel1);
+      paramParcel2.writeNoException();
+      return true;
+      localArConfigInfo = null;
+      break;
+      localArEffectConfig = null;
+      break label178;
     }
-    QZoneShareActivity.c(this.a);
-    this.a.i();
-    this.a.a.addTextChangedListener(this);
   }
 }
 

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class qqstory_group$RspGroupVideoForward
-  extends MessageMicro
+  extends MessageMicro<RspGroupVideoForward>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public qqstory_struct.ErrorInfo result = new qqstory_struct.ErrorInfo();
@@ -21,7 +21,7 @@ public final class qqstory_group$RspGroupVideoForward
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupVideoForward
  * JD-Core Version:    0.7.0.1
  */

@@ -1,92 +1,37 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
-import com.tencent.mobileqq.app.ShieldListObserver;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.playvideo.player.ExploreAnimalView;
+import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
 
 public class vvz
-  extends ShieldListObserver
+  implements Animation.AnimationListener
 {
-  public vvz(NearbyChatPie paramNearbyChatPie) {}
+  public vvz(ExploreAnimalView paramExploreAnimalView) {}
   
-  protected void a(boolean paramBoolean, List paramList)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ChatActivityUtils.b();
-    Object localObject = this.a.jdField_a_of_type_AndroidContentContext;
-    Context localContext = this.a.jdField_a_of_type_AndroidContentContext;
-    int i;
-    if (paramBoolean)
-    {
-      i = 2131434508;
-      QQToast.a((Context)localObject, 2, localContext.getString(i), 0).b(this.a.a());
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-        break label69;
-      }
-    }
-    label69:
-    do
-    {
-      int k;
-      do
-      {
-        return;
-        i = 2131434510;
-        break;
-        localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-        if (paramList == null) {}
-        for (i = 0;; i = paramList.size())
-        {
-          int j = 0;
-          k = 0;
-          while ((k == 0) && (j < i))
-          {
-            if (Utils.a(String.valueOf(paramList.get(j)), localObject)) {
-              k = 1;
-            }
-            j += 1;
-          }
-        }
-      } while (k == 0);
-      ChatActivityUtils.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramBoolean, false);
-    } while (!paramBoolean);
-    this.a.k();
+    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.5F, 1.0F);
+    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(600L);
+    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setRepeatCount(-1);
+    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setRepeatMode(2);
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
+    paramAnimation = (ImageView)this.a.findViewById(2131365404);
+    ImageView localImageView1 = (ImageView)this.a.findViewById(2131365405);
+    ImageView localImageView2 = (ImageView)this.a.findViewById(2131362823);
+    this.a.a(paramAnimation, 100L);
+    this.a.a(localImageView1, 240L);
+    this.a.a(localImageView2, 360L);
   }
   
-  protected void b(boolean paramBoolean, List paramList)
-  {
-    int k = 0;
-    ChatActivityUtils.b();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {}
-    do
-    {
-      do
-      {
-        return;
-        String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-        if (paramList == null) {}
-        for (int i = 0;; i = paramList.size())
-        {
-          int j = 0;
-          while ((k == 0) && (j < i))
-          {
-            if (Utils.a(String.valueOf(paramList.get(j)), str)) {
-              k = 1;
-            }
-            j += 1;
-          }
-        }
-      } while (k == 0);
-      ChatActivityUtils.b();
-    } while (!paramBoolean);
-    this.a.k();
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vvz
  * JD-Core Version:    0.7.0.1
  */

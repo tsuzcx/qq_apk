@@ -1,46 +1,22 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
-import com.tencent.mobileqq.filemanager.data.FileCategoryAdapter;
-import com.tencent.mobileqq.filemanager.data.FileCategoryEntity;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.ChatHistory.17.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class acmb
-  extends AsyncTask
+  implements DialogInterface.OnClickListener
 {
-  public acmb(FMLocalFileActivity paramFMLocalFileActivity) {}
+  public acmb(ChatHistory paramChatHistory) {}
   
-  protected Integer a(Void... paramVarArgs)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return Integer.valueOf(FileCategoryUtil.d(this.a));
-  }
-  
-  protected void a(Integer paramInteger)
-  {
-    super.onPostExecute(paramInteger);
-    this.a.stopTitleProgress();
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      FileCategoryEntity localFileCategoryEntity = (FileCategoryEntity)localIterator.next();
-      if (localFileCategoryEntity.e == 4)
-      {
-        localFileCategoryEntity.d = paramInteger.intValue();
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter.notifyDataSetChanged();
-      }
-    }
-  }
-  
-  protected void onPreExecute()
-  {
-    super.onPreExecute();
-    this.a.startTitleProgress();
+    ThreadManager.post(new ChatHistory.17.1(this), 8, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acmb
  * JD-Core Version:    0.7.0.1
  */

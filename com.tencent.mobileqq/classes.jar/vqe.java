@@ -1,30 +1,27 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.widget.PatchedButton;
-import com.tencent.widget.XEditTextEx;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 class vqe
-  implements Runnable
+  implements urr<vfr, vfs>
 {
-  vqe(vqd paramvqd, Drawable paramDrawable1, Drawable paramDrawable2, Drawable paramDrawable3, StateListDrawable paramStateListDrawable) {}
+  vqe(vqd paramvqd, vps paramvps) {}
   
-  public void run()
+  public void a(@NonNull vfr paramvfr, @Nullable vfs paramvfs, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_Vqd.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    if (this.jdField_a_of_type_Vqd.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)
+    if ((paramErrorMessage.isFail()) || (paramvfs == null))
     {
-      this.jdField_a_of_type_Vqd.jdField_a_of_type_ComTencentWidgetXEditTextEx.setBackgroundDrawable(this.b);
-      this.jdField_a_of_type_Vqd.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTextColor(-16777216);
+      wxe.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
+      this.jdField_a_of_type_Vps.a(paramErrorMessage, null, false);
+      return;
     }
-    this.jdField_a_of_type_Vqd.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setBackgroundDrawable(this.c);
-    this.jdField_a_of_type_Vqd.jdField_a_of_type_ComTencentWidgetPatchedButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable);
+    this.jdField_a_of_type_Vqd.a.a(paramvfs.jdField_a_of_type_JavaUtilList, paramvfs.jdField_a_of_type_JavaLangString, paramvfs.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Vps.a(paramErrorMessage, vpa.b(paramvfs.jdField_a_of_type_JavaUtilList), paramvfs.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vqe
  * JD-Core Version:    0.7.0.1
  */

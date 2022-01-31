@@ -1,32 +1,27 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.view.DragSortAdapter;
-import com.tencent.mobileqq.emosm.view.DragSortListView.DropListener;
-import com.tencent.mobileqq.emoticon.EmojiListenerManager;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
 
 public class smf
-  implements DragSortListView.DropListener
+  implements Animation.AnimationListener
 {
-  public smf(EmosmActivity paramEmosmActivity) {}
+  public smf(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout, int paramInt1, int paramInt2) {}
   
-  public void b_(int paramInt1, int paramInt2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramInt1 != paramInt2)
-    {
-      EmoticonPackage localEmoticonPackage = (EmoticonPackage)this.a.a.getItem(paramInt1);
-      this.a.a.a(localEmoticonPackage);
-      this.a.a.b(true);
-      this.a.a.a(localEmoticonPackage, paramInt2);
-      EmojiListenerManager.a().a(localEmoticonPackage, paramInt1, paramInt2);
-      this.a.c = true;
-      ReportController.b(this.a.app, "CliOper", "", "", "EmosSetting", "EpMove", 0, 0, "", "", "", "");
-    }
+    CommonSuspensionGestureLayout.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout).setVisibility(8);
+    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout).a(true, this.jdField_a_of_type_Int, this.b);
+    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout, this.b);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     smf
  * JD-Core Version:    0.7.0.1
  */

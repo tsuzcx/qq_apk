@@ -11,21 +11,22 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.token.af;
-import com.tencent.token.ag;
-import com.tencent.token.as;
-import com.tencent.token.ax;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.global.e;
+import com.tencent.token.cw;
+import com.tencent.token.cx;
+import com.tencent.token.dj;
+import com.tencent.token.do;
+import com.tencent.token.global.h;
 
 public class UtilsModSetMobileStep2SmsActivity
   extends BaseActivity
   implements View.OnClickListener, Runnable
 {
   private boolean isCurrentMobile = true;
+  private String mA2 = "";
   private int mBindRetryTimes = 0;
   private String mCountryCode;
-  private Handler mHandler = new afq(this);
+  private Handler mHandler = new aee(this);
   private boolean mIsModSetSucc = false;
   private boolean mIsRunning = true;
   private boolean mIsTimeTask = false;
@@ -34,17 +35,23 @@ public class UtilsModSetMobileStep2SmsActivity
   private int mPageId;
   private int mRetryTimes = 0;
   private String mSMSChannel;
-  Runnable mSetModMobileRunnable = new afo(this);
+  Runnable mSetModMobileRunnable = new aec(this);
   private Button mStep2BindBtn;
   private long mTimeConter;
   private String mTitle;
-  private String mUin;
+  private long mUin;
   private QQUser mUser;
+  
+  private void gotoSetMobile()
+  {
+    this.mRetryTimes = 0;
+    this.mHandler.postDelayed(this.mSetModMobileRunnable, 10000L);
+  }
   
   private void init()
   {
     if (this.mUser != null) {
-      this.mUin = (this.mUser.mRealUin + "");
+      this.mUin = this.mUser.mRealUin;
     }
     Bundle localBundle = getIntent().getExtras();
     if (localBundle == null)
@@ -63,16 +70,16 @@ public class UtilsModSetMobileStep2SmsActivity
     this.mTitle = localBundle.getString("title");
     this.mCountryCode = localBundle.getString("area_code");
     setTitle(this.mTitle);
-    e.c("test mbinfo, positon=, optype=" + this.mOpType + ", mobile=" + this.mMobile + ", area_code=" + this.mCountryCode);
-    this.mStep2BindBtn = ((Button)findViewById(2131296442));
+    h.c("test mbinfo, positon=, optype=" + this.mOpType + ", mobile=" + this.mMobile + ", area_code=" + this.mCountryCode + ",title=" + this.mTitle);
+    this.mStep2BindBtn = ((Button)findViewById(2131558730));
     this.mStep2BindBtn.setOnClickListener(this);
-    ((Button)findViewById(2131296443)).setOnClickListener(this);
-    ((TextView)findViewById(2131296440)).setText(this.mMobile);
+    findViewById(2131558731).setOnClickListener(this);
+    ((TextView)findViewById(2131558728)).setText(this.mMobile);
   }
   
   private void showFailDialog(String paramString)
   {
-    showUserDialog(2131361907, paramString, 2131361800, new afr(this), new afs(this));
+    showUserDialog(2131231509, paramString, 2131230897, new aef(this), new aeg(this));
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
@@ -93,7 +100,7 @@ public class UtilsModSetMobileStep2SmsActivity
       catch (Exception paramKeyEvent)
       {
         paramKeyEvent.printStackTrace();
-        e.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
+        h.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
         return true;
       }
     }
@@ -102,8 +109,8 @@ public class UtilsModSetMobileStep2SmsActivity
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     this.mHandler.sendEmptyMessage(3);
-    startTimeTask(3);
-    e.b("startTimeTask onActivityResult");
+    startTimeTask();
+    h.b("startTimeTask onActivityResult");
   }
   
   public void onClick(View paramView)
@@ -112,36 +119,59 @@ public class UtilsModSetMobileStep2SmsActivity
     {
     default: 
       return;
-    case 2131296442: 
+    case 2131558730: 
       this.isCurrentMobile = true;
-      af.a().a(this.mMobile, 0L, 0, 2, this.mCountryCode, this.mHandler);
-      showProDialog(this, 2131361808, getResources().getString(2131362216) + this.mTitle + getResources().getString(2131362217), null);
+      cw.a().a(this.mMobile, 0L, 0, 2, this.mCountryCode, this.mHandler);
+      showProDialog(this, 2131230843, getResources().getString(2131231585) + this.mTitle + getResources().getString(2131231586), null);
       return;
-    case 2131296443: 
+    case 2131558731: 
       this.isCurrentMobile = false;
-      af.a().a(this.mMobile, 0L, 0, 2, this.mCountryCode, this.mHandler);
-      showProDialog(this, 2131361808, getResources().getString(2131362216) + this.mTitle + getResources().getString(2131362217), null);
+      cw.a().a(this.mMobile, 0L, 0, 2, this.mCountryCode, this.mHandler);
+      showProDialog(this, 2131230843, getResources().getString(2131231585) + this.mTitle + getResources().getString(2131231586), null);
       return;
     }
-    if (this.mPageId == 10)
+    if (this.mOpType == 3)
     {
-      paramView = new Intent(this, IndexActivity.class);
-      paramView.putExtra("index_from", 16);
+      paramView = new Intent(this, MyMbSubPageActivity.class);
+      paramView.addFlags(67108864);
       startActivity(paramView);
     }
     for (;;)
     {
       finish();
       return;
-      startActivity(new Intent(this, IndexActivity.class));
+      if (this.mPageId == 10)
+      {
+        paramView = new Intent(this, IndexActivity.class);
+        paramView.putExtra("index_from", 16);
+        startActivity(paramView);
+      }
+      else if (this.mPageId == 14)
+      {
+        paramView = new Intent(this, MyMbSubPageActivity.class);
+        paramView.putExtra("page_id", this.mPageId);
+        paramView.addFlags(67108864);
+        startActivity(paramView);
+      }
+      else if (this.mPageId == 17)
+      {
+        paramView = new Intent(this, MyMbSubPageActivity.class);
+        paramView.putExtra("page_id", this.mPageId);
+        paramView.addFlags(67108864);
+        startActivity(paramView);
+      }
+      else
+      {
+        startActivity(new Intent(this, IndexActivity.class));
+      }
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903245);
-    this.mUser = ax.a().e();
+    setContentView(2130968808);
+    this.mUser = do.a().e();
     init();
     new Thread(this).start();
   }
@@ -155,16 +185,16 @@ public class UtilsModSetMobileStep2SmsActivity
   public void onResume()
   {
     super.onResume();
-    ag.c().a.a(this.mHandler);
+    cx.c().a.a(this.mHandler);
   }
   
   public void onStop()
   {
     super.onStop();
-    ag.c().a.a(null);
+    cx.c().a.a(null);
   }
   
-  public void removeTimeTask(int paramInt)
+  public void removeTimeTask()
   {
     this.mIsTimeTask = false;
   }
@@ -175,8 +205,8 @@ public class UtilsModSetMobileStep2SmsActivity
       if ((this.mIsTimeTask) && (System.currentTimeMillis() - this.mTimeConter > 60000L)) {
         try
         {
-          e.c("removeTimeTask removeTimeTask");
-          removeTimeTask(6);
+          h.c("removeTimeTask removeTimeTask");
+          removeTimeTask();
           Message localMessage = new Message();
           localMessage.what = 15;
           this.mHandler.sendMessage(localMessage);
@@ -201,16 +231,16 @@ public class UtilsModSetMobileStep2SmsActivity
     catch (Exception paramString1)
     {
       paramString1.printStackTrace();
-      e.b(paramString1.toString());
+      h.b(paramString1.toString());
     }
   }
   
   public void showProgressDialog()
   {
-    showProDialog(this, 2131362363, 2131361827, new afp(this));
+    showProDialog(this, 2131231657, 2131230804, new aed(this));
   }
   
-  public void startTimeTask(int paramInt)
+  public void startTimeTask()
   {
     this.mTimeConter = System.currentTimeMillis();
     this.mIsTimeTask = true;

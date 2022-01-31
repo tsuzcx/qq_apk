@@ -1,23 +1,17 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.webkit.WebView;
+import android.os.Handler;
+import android.os.Message;
 
-final class dl
-  implements View.OnClickListener
+class dl
+  implements Runnable
 {
-  dl(EmbedWebBaseActivity paramEmbedWebBaseActivity) {}
+  dl(DetectIDPhotoActivity paramDetectIDPhotoActivity) {}
   
-  public final void onClick(View paramView)
+  public void run()
   {
-    if (this.a.mWebView.canGoBack())
-    {
-      EmbedWebBaseActivity.access$502(this.a, true);
-      this.a.mWebView.goBack();
-      return;
-    }
-    this.a.finish();
+    Message localMessage = DetectIDPhotoActivity.access$000(this.a).obtainMessage(5);
+    DetectIDPhotoActivity.access$000(this.a).sendMessage(localMessage);
   }
 }
 

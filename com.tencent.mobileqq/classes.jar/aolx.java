@@ -1,33 +1,99 @@
-import com.tencent.mobileqq.widget.CircleProgress;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragmentAllWaite;
 
 public class aolx
-  implements Runnable
+  extends aokh<aolr>
 {
-  public aolx(CaptureQmcfSoDownloadFragmentAllWaite paramCaptureQmcfSoDownloadFragmentAllWaite, String paramString) {}
-  
-  public void run()
+  public static aolr b(int paramInt)
   {
-    if (CaptureQmcfSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite))
-    {
-      CaptureQmcfSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite).setProgress((CaptureQmcfSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite) + CaptureQmcfSoDownloadFragmentAllWaite.b(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite)) / 2);
-      if (QLog.isColorLevel()) {
-        QLog.d("CaptureSoDownloadFragmentAllWaite", 2, "" + this.jdField_a_of_type_JavaLangString + " setProgress=" + (CaptureQmcfSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite) + CaptureQmcfSoDownloadFragmentAllWaite.b(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite)) / 2);
-      }
-      CaptureQmcfSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite);
+    aolr localaolr = (aolr)aoks.a().a(paramInt);
+    if (localaolr != null) {
+      return localaolr;
     }
-    do
+    return new aolr();
+  }
+  
+  public int a()
+  {
+    return 0;
+  }
+  
+  @NonNull
+  public aolr a(int paramInt)
+  {
+    return new aolr();
+  }
+  
+  public aolr a(String paramString)
+  {
+    QLog.d("ArkConfProcessor", 1, "[onParsed] type=" + a() + ", content = " + paramString);
+    return new aolr(paramString);
+  }
+  
+  @Nullable
+  public aolr a(aoko[] paramArrayOfaoko)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkConfProcessor", 2, "[onParsed] config type = " + a());
+    }
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
     {
-      return;
-      CaptureQmcfSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite).setProgress(CaptureQmcfSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite));
-    } while (!QLog.isColorLevel());
-    QLog.d("CaptureSoDownloadFragmentAllWaite", 2, "" + this.jdField_a_of_type_JavaLangString + " setProgress=" + CaptureQmcfSoDownloadFragmentAllWaite.c(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite));
+      paramArrayOfaoko = paramArrayOfaoko[0].a;
+      if (!TextUtils.isEmpty(paramArrayOfaoko)) {
+        return a(paramArrayOfaoko);
+      }
+      QLog.d("ArkConfProcessor", 1, "[onParsed] content is empty, config type = " + a());
+    }
+    return null;
+  }
+  
+  public Class<aolr> a()
+  {
+    return aolr.class;
+  }
+  
+  public void a()
+  {
+    super.a();
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("ArkConfProcessor", 1, "[onReqFailed] failCode=" + paramInt + ", config type = " + a());
+  }
+  
+  public void a(aolr paramaolr)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkConfProcessor", 2, "[onUpdate]  config type = " + a());
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aolx
  * JD-Core Version:    0.7.0.1
  */

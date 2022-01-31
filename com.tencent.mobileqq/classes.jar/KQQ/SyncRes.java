@@ -9,14 +9,14 @@ public final class SyncRes
   extends JceStruct
 {
   static SyncReqCookie cache_cookie;
-  static ArrayList cache_vecResPkg;
+  static ArrayList<InfoItem> cache_vecResPkg;
   public SyncReqCookie cookie;
   public byte result;
-  public ArrayList vecResPkg;
+  public ArrayList<InfoItem> vecResPkg;
   
   public SyncRes() {}
   
-  public SyncRes(byte paramByte, ArrayList paramArrayList, SyncReqCookie paramSyncReqCookie)
+  public SyncRes(byte paramByte, ArrayList<InfoItem> paramArrayList, SyncReqCookie paramSyncReqCookie)
   {
     this.result = paramByte;
     this.vecResPkg = paramArrayList;
@@ -50,7 +50,7 @@ public final class SyncRes
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     KQQ.SyncRes
  * JD-Core Version:    0.7.0.1
  */

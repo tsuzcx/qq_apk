@@ -1,39 +1,61 @@
-import com.tencent.mobileqq.richmedia.capture.util.DanceGameReporter;
+import android.support.v4.util.SparseArrayCompat;
 
-public class ahks
+public class ahks<T>
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  int b;
-  
-  public ahks(DanceGameReporter paramDanceGameReporter, String paramString, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
+  SparseArrayCompat<ahkr<T>> a = new SparseArrayCompat();
   
   public int a()
   {
-    if (this.jdField_a_of_type_Int > 0) {
-      return this.b * 100 / this.jdField_a_of_type_Int;
+    return this.a.size();
+  }
+  
+  public int a(T paramT, int paramInt)
+  {
+    int i = this.a.size() - 1;
+    while (i >= 0)
+    {
+      if (((ahkr)this.a.valueAt(i)).a(paramT, paramInt)) {
+        return this.a.keyAt(i);
+      }
+      i -= 1;
     }
-    return 0;
+    throw new IllegalArgumentException("No ItemViewDelegate added that matches position=" + paramInt + " in data source");
   }
   
-  public void a()
+  public ahkr a(int paramInt)
   {
-    this.b += 1;
+    return (ahkr)this.a.get(paramInt);
   }
   
-  public void b()
+  public ahks<T> a(ahkr<T> paramahkr)
   {
-    this.jdField_a_of_type_Int += 1;
+    int i = this.a.size();
+    if (paramahkr != null) {
+      this.a.put(i, paramahkr);
+    }
+    return this;
+  }
+  
+  public void a(ahkz paramahkz, T paramT, int paramInt)
+  {
+    int j = this.a.size();
+    int i = 0;
+    while (i < j)
+    {
+      ahkr localahkr = (ahkr)this.a.valueAt(i);
+      if (localahkr.a(paramT, paramInt))
+      {
+        localahkr.a(paramahkz, paramT, paramInt);
+        return;
+      }
+      i += 1;
+    }
+    throw new IllegalArgumentException("No ItemViewDelegateManager added that matches position=" + paramInt + " in data source");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahks
  * JD-Core Version:    0.7.0.1
  */

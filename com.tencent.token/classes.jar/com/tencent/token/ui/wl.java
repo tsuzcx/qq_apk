@@ -1,18 +1,16 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.af;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class wl
-  implements View.OnClickListener
+class wl
+  implements DialogInterface.OnClickListener
 {
-  wl(RealNameStep0VerifyMobileActivity paramRealNameStep0VerifyMobileActivity) {}
+  wl(wi paramwi) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.showProDialogWithoutShutDown(this.a, this.a.getString(2131361844));
-    af.a().a(0L, Long.valueOf(RealNameStep0VerifyMobileActivity.access$100(this.a)), RealNameStep0VerifyMobileActivity.access$200(this.a), RealNameStep0VerifyMobileActivity.access$800(this.a));
+    this.a.a.dismissDialog();
   }
 }
 

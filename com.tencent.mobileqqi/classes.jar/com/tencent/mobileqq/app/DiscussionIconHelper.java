@@ -13,12 +13,12 @@ import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import fgd;
-import fge;
-import fgf;
-import fgg;
-import fgh;
-import fgi;
+import fbp;
+import fbq;
+import fbr;
+import fbs;
+import fbt;
+import fbu;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -45,10 +45,10 @@ public class DiscussionIconHelper
   private static final int h = 3600000;
   private DiscussionHandler jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private fge jdField_a_of_type_Fge = null;
-  private fgi jdField_a_of_type_Fgi;
+  private fbq jdField_a_of_type_Fbq = null;
+  private fbu jdField_a_of_type_Fbu;
   private Object jdField_a_of_type_JavaLangObject = new Object();
-  private Comparator jdField_a_of_type_JavaUtilComparator = new fgd(this);
+  private Comparator jdField_a_of_type_JavaUtilComparator = new fbp(this);
   private HashMap jdField_a_of_type_JavaUtilHashMap;
   private Hashtable jdField_a_of_type_JavaUtilHashtable;
   private String jdField_b_of_type_JavaLangString;
@@ -64,10 +64,10 @@ public class DiscussionIconHelper
     }
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_a_of_type_JavaUtilHashtable = new Hashtable();
-    this.jdField_a_of_type_Fgi = new fgi(paramDiscussionHandler.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getMainLooper(), this, null);
+    this.jdField_a_of_type_Fbu = new fbu(paramDiscussionHandler.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getMainLooper(), this, null);
     this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler = paramDiscussionHandler;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fgf(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fbr(this));
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this);
   }
   
@@ -124,7 +124,7 @@ public class DiscussionIconHelper
     }
   }
   
-  private fgg a(String paramString, boolean paramBoolean1, fgg paramfgg, boolean paramBoolean2)
+  private fbs a(String paramString, boolean paramBoolean1, fbs paramfbs, boolean paramBoolean2)
   {
     Object localObject1 = (DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(48);
     Object localObject2 = ((DiscussionManager)localObject1).b(paramString);
@@ -142,9 +142,9 @@ public class DiscussionIconHelper
       if ((localObject2 != null) && (((ArrayList)localObject2).size() != 0)) {
         break label453;
       }
-      paramfgg.jdField_a_of_type_Int = 0;
+      paramfbs.jdField_a_of_type_Int = 0;
       localObject3 = a((ArrayList)localObject2, paramString, paramBoolean2);
-      paramfgg.jdField_a_of_type_JavaLangString = ((String)localObject3);
+      paramfbs.jdField_a_of_type_JavaLangString = ((String)localObject3);
       if (paramBoolean1)
       {
         localObject1 = ((DiscussionManager)localObject1).a(paramString);
@@ -160,7 +160,7 @@ public class DiscussionIconHelper
     }
     for (;;)
     {
-      paramfgg.jdField_a_of_type_Boolean = paramBoolean1;
+      paramfbs.jdField_a_of_type_Boolean = paramBoolean1;
       if (QLog.isColorLevel())
       {
         localObject2 = ((DiscussionInfo)localObject1).discussionName;
@@ -174,7 +174,7 @@ public class DiscussionIconHelper
         }
         QLog.d("Q.qqhead.dih", 2, "getDiscussionIconInfo. disUin=" + paramString + ", isChanged=" + paramBoolean1 + ", name=" + (String)localObject1 + ", faceUinSet=" + (String)localObject4 + ", newFaceUinSet=" + (String)localObject3);
       }
-      return paramfgg;
+      return paramfbs;
       localObject3 = new StringBuilder();
       localObject4 = ((ArrayList)localObject2).iterator();
       if (((Iterator)localObject4).hasNext())
@@ -193,14 +193,14 @@ public class DiscussionIconHelper
       QLog.d("Q.qqhead.dih", 2, "discussionUin=" + paramString + " memberUinList is:" + ((StringBuilder)localObject3).toString());
       break;
       label453:
-      paramfgg.jdField_a_of_type_Int = ((ArrayList)localObject2).size();
+      paramfbs.jdField_a_of_type_Int = ((ArrayList)localObject2).size();
       break label89;
       label465:
       if ((localObject3 != null) && (!((String)localObject3).equals(localObject4))) {
         paramBoolean1 = true;
       } else if ((localObject4 != null) && (!((String)localObject4).equals(localObject3))) {
         paramBoolean1 = true;
-      } else if ((paramfgg.jdField_a_of_type_Byte == 2) && (localObject3 != null) && (!((String)localObject3).equals(paramfgg.jdField_b_of_type_JavaLangString))) {
+      } else if ((paramfbs.jdField_a_of_type_Byte == 2) && (localObject3 != null) && (!((String)localObject3).equals(paramfbs.jdField_b_of_type_JavaLangString))) {
         paramBoolean1 = true;
       } else {
         paramBoolean1 = false;
@@ -246,24 +246,24 @@ public class DiscussionIconHelper
     return " ";
   }
   
-  private void a(String paramString, fgg paramfgg, boolean paramBoolean)
+  private void a(String paramString, fbs paramfbs, boolean paramBoolean)
   {
-    if (paramfgg.jdField_a_of_type_Byte == 3)
+    if (paramfbs.jdField_a_of_type_Byte == 3)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("Q.qqhead.dih", 2, "CreateIcon created: " + paramString + ", iconCount=" + paramfgg.jdField_a_of_type_JavaUtilArrayList.size() + ", totalCount=" + paramfgg.jdField_a_of_type_Int);
+        QLog.d("Q.qqhead.dih", 2, "CreateIcon created: " + paramString + ", iconCount=" + paramfbs.jdField_a_of_type_JavaUtilArrayList.size() + ", totalCount=" + paramfbs.jdField_a_of_type_Int);
       }
       return;
     }
-    Object localObject1 = b(paramfgg.jdField_a_of_type_JavaLangString, paramString, paramfgg.jdField_a_of_type_JavaUtilArrayList);
+    Object localObject1 = b(paramfbs.jdField_a_of_type_JavaLangString, paramString, paramfbs.jdField_a_of_type_JavaUtilArrayList);
     boolean bool1 = ((Boolean)((Pair)localObject1).first).booleanValue();
     boolean bool2 = ((Boolean)((Pair)localObject1).second).booleanValue();
     String str;
     if (bool1)
     {
-      paramfgg.jdField_b_of_type_Int += 1;
-      str = a(paramfgg.jdField_a_of_type_JavaUtilArrayList, paramString, paramBoolean);
-      paramfgg.jdField_b_of_type_JavaLangString = str;
+      paramfbs.jdField_b_of_type_Int += 1;
+      str = a(paramfbs.jdField_a_of_type_JavaUtilArrayList, paramString, paramBoolean);
+      paramfbs.jdField_b_of_type_JavaLangString = str;
       localObject1 = (DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(48);
       if (localObject1 == null) {
         break label510;
@@ -280,8 +280,8 @@ public class DiscussionIconHelper
         ((EntityManager)localObject2).a((Entity)localObject1);
         ((EntityManager)localObject2).a();
       }
-      if ((paramfgg.jdField_a_of_type_JavaUtilArrayList.size() >= paramfgg.jdField_a_of_type_Int) && (bool2)) {
-        paramfgg.jdField_a_of_type_Byte = 3;
+      if ((paramfbs.jdField_a_of_type_JavaUtilArrayList.size() >= paramfbs.jdField_a_of_type_Int) && (bool2)) {
+        paramfbs.jdField_a_of_type_Byte = 3;
       }
       this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.a(bool1, bool2, paramString);
       if (!QLog.isColorLevel()) {
@@ -299,12 +299,12 @@ public class DiscussionIconHelper
       }
       for (localObject1 = ((String)localObject2).substring(0, 2) + "." + ((String)localObject2).charAt(((String)localObject2).length() - 1);; localObject1 = null)
       {
-        QLog.d("Q.qqhead.dih", 2, "CreateIcon Done: " + paramString + ", name=" + (String)localObject1 + ", state=" + paramfgg.jdField_a_of_type_Byte + ", iconCount=" + paramfgg.jdField_a_of_type_JavaUtilArrayList.size() + ", totalCount=" + paramfgg.jdField_a_of_type_Int + ", isComplete=" + bool2 + ", faceUinSet=" + paramfgg.jdField_a_of_type_JavaLangString + ", newFaceUinSet=" + str);
+        QLog.d("Q.qqhead.dih", 2, "CreateIcon Done: " + paramString + ", name=" + (String)localObject1 + ", state=" + paramfbs.jdField_a_of_type_Byte + ", iconCount=" + paramfbs.jdField_a_of_type_JavaUtilArrayList.size() + ", totalCount=" + paramfbs.jdField_a_of_type_Int + ", isComplete=" + bool2 + ", faceUinSet=" + paramfbs.jdField_a_of_type_JavaLangString + ", newFaceUinSet=" + str);
         return;
         if (!QLog.isColorLevel()) {
           break;
         }
-        QLog.d("Q.qqhead.dih", 2, "CreateIcon fail: " + paramString + ", iconCount=" + paramfgg.jdField_a_of_type_JavaUtilArrayList.size() + ", totalCount=" + paramfgg.jdField_a_of_type_Int);
+        QLog.d("Q.qqhead.dih", 2, "CreateIcon fail: " + paramString + ", iconCount=" + paramfbs.jdField_a_of_type_JavaUtilArrayList.size() + ", totalCount=" + paramfbs.jdField_a_of_type_Int);
         return;
       }
     }
@@ -317,26 +317,26 @@ public class DiscussionIconHelper
       synchronized (this.jdField_a_of_type_JavaUtilHashMap)
       {
         long l = System.currentTimeMillis();
-        fgg localfgg;
+        fbs localfbs;
         if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
         {
-          localfgg = (fgg)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-          if (localfgg.jdField_a_of_type_Byte == 3)
+          localfbs = (fbs)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+          if (localfbs.jdField_a_of_type_Byte == 3)
           {
             k = 1;
-            if (((k == 0) && (l - localfgg.jdField_a_of_type_Long < this.j)) || ((k != 0) && (!paramBoolean) && (l - localfgg.jdField_a_of_type_Long < 3600000L))) {
+            if (((k == 0) && (l - localfbs.jdField_a_of_type_Long < this.j)) || ((k != 0) && (!paramBoolean) && (l - localfbs.jdField_a_of_type_Long < 3600000L))) {
               return false;
             }
-            localfgg.a(localfgg.jdField_a_of_type_Byte);
-            localfgg.jdField_a_of_type_Long = l;
-            this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localfgg);
+            localfbs.a(localfbs.jdField_a_of_type_Byte);
+            localfbs.jdField_a_of_type_Long = l;
+            this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localfbs);
             return true;
           }
         }
         else
         {
-          localfgg = new fgg(this, null);
-          this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localfgg);
+          localfbs = new fbs(this, null);
+          this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localfbs);
         }
       }
       int k = 0;
@@ -534,9 +534,9 @@ public class DiscussionIconHelper
   
   private void f(String paramString)
   {
-    this.jdField_a_of_type_Fgi.removeMessages(9527, paramString);
-    paramString = this.jdField_a_of_type_Fgi.obtainMessage(9527, paramString);
-    this.jdField_a_of_type_Fgi.sendMessageDelayed(paramString, 300L);
+    this.jdField_a_of_type_Fbu.removeMessages(9527, paramString);
+    paramString = this.jdField_a_of_type_Fbu.obtainMessage(9527, paramString);
+    this.jdField_a_of_type_Fbu.sendMessageDelayed(paramString, 300L);
   }
   
   /* Error */
@@ -638,16 +638,16 @@ public class DiscussionIconHelper
       while (localIterator.hasNext())
       {
         String str1 = (String)localIterator.next();
-        fgg localfgg = (fgg)this.jdField_a_of_type_JavaUtilHashMap.get(str1);
-        if ((localfgg != null) && (localfgg.jdField_a_of_type_JavaLangString != null) && (localfgg.jdField_a_of_type_Byte != 3))
+        fbs localfbs = (fbs)this.jdField_a_of_type_JavaUtilHashMap.get(str1);
+        if ((localfbs != null) && (localfbs.jdField_a_of_type_JavaLangString != null) && (localfbs.jdField_a_of_type_Byte != 3))
         {
-          String str2 = localfgg.jdField_a_of_type_JavaLangString;
+          String str2 = localfbs.jdField_a_of_type_JavaLangString;
           if ((paramBoolean) && (str2.contains(paramString)))
           {
             if (QLog.isColorLevel()) {
               QLog.d("Q.qqhead.dih", 2, "onUpdateCustomHead: disUin=" + str1 + ", uin=" + paramString + ", faceUinSet=" + str2);
             }
-            localfgg.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+            localfbs.jdField_a_of_type_JavaUtilArrayList.add(paramString);
             f(str1);
           }
         }
@@ -665,8 +665,8 @@ public class DiscussionIconHelper
     if (QLog.isColorLevel()) {
       QLog.d("Q.qqhead.dih", 2, "DiscussionIconHelper release.");
     }
-    if (this.jdField_a_of_type_Fge != null) {
-      this.jdField_a_of_type_Fge.jdField_a_of_type_Boolean = false;
+    if (this.jdField_a_of_type_Fbq != null) {
+      this.jdField_a_of_type_Fbq.jdField_a_of_type_Boolean = false;
     }
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
@@ -677,8 +677,8 @@ public class DiscussionIconHelper
         while (localIterator.hasNext())
         {
           String str = (String)localIterator.next();
-          fgg localfgg = (fgg)this.jdField_a_of_type_JavaUtilHashMap.get(str);
-          if ((localfgg != null) && (localfgg.jdField_a_of_type_Byte != 3)) {
+          fbs localfbs = (fbs)this.jdField_a_of_type_JavaUtilHashMap.get(str);
+          if ((localfbs != null) && (localfbs.jdField_a_of_type_Byte != 3)) {
             this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.a(false, true, str);
           }
         }
@@ -706,7 +706,7 @@ public class DiscussionIconHelper
       if (QLog.isColorLevel()) {
         QLog.d("Q.qqhead.dih", 2, "checkDisIcon: " + paramString + ", isNeedToDo=" + bool);
       }
-      paramString = new fgh(this, 1, paramString);
+      paramString = new fbt(this, 1, paramString);
       ThreadManager.a().post(paramString);
     }
   }
@@ -725,7 +725,7 @@ public class DiscussionIconHelper
       QLog.d("Q.qqhead.dih", 2, "refreshDisIcon: " + paramString);
     }
     this.jdField_a_of_type_JavaUtilHashtable.put(paramString, Long.valueOf(l));
-    paramString = new fgh(this, 3, paramString);
+    paramString = new fbt(this, 3, paramString);
     ThreadManager.a().post(paramString);
   }
   
@@ -749,7 +749,7 @@ public class DiscussionIconHelper
     for (;;)
     {
       return true;
-      paramMessage = new fgh(this, 2, (String)paramMessage.obj);
+      paramMessage = new fbt(this, 2, (String)paramMessage.obj);
       ThreadManager.a().post(paramMessage);
     }
   }

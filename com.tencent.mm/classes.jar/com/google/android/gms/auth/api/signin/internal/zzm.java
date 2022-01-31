@@ -1,0 +1,23 @@
+package com.google.android.gms.auth.api.signin.internal;
+
+import com.google.android.gms.common.api.Status;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+final class zzm
+  extends zzd
+{
+  zzm(zzl paramzzl) {}
+  
+  public final void zzg(Status paramStatus)
+  {
+    AppMethodBeat.i(50448);
+    this.zzey.setResult(paramStatus);
+    AppMethodBeat.o(50448);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+ * Qualified Name:     com.google.android.gms.auth.api.signin.internal.zzm
+ * JD-Core Version:    0.7.0.1
+ */

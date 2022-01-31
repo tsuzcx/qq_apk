@@ -5,7 +5,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import hsy;
+import hou;
 
 public class PermissionView$PermissionAdapter
   extends BaseAdapter
@@ -37,16 +37,16 @@ public class PermissionView$PermissionAdapter
     if (paramView == null)
     {
       paramView = new PermissionView.Tag();
-      localView = View.inflate(this.a.jdField_a_of_type_AndroidContentContext, 2130903333, null);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131232124));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131232123));
+      localView = View.inflate(this.a.jdField_a_of_type_AndroidContentContext, 2130903335, null);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131232127));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131232126));
       localView.setTag(paramView);
       paramViewGroup = paramView;
     }
     for (;;)
     {
       this.a.a(paramViewGroup, paramInt);
-      localView.setOnClickListener(new hsy(this));
+      localView.setOnClickListener(new hou(this));
       return localView;
       paramViewGroup = (PermissionView.Tag)paramView.getTag();
       localView = paramView;

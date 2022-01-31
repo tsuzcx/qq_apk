@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
 
-public class fyv
+class fyv
   implements Runnable
 {
-  public fyv(FileManagerRSWorker paramFileManagerRSWorker, long paramLong) {}
+  fyv(fys paramfys, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileManagerRSWorker.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileManagerRSWorker.f, this.jdField_a_of_type_Long);
+    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Fys.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.c);
+    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Fys.a);
   }
 }
 

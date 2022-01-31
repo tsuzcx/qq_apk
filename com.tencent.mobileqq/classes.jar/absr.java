@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import dov.com.qq.im.capture.util.ConfigSimplifier.ConfigDownloadCallback;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class absr
-  implements ConfigSimplifier.ConfigDownloadCallback
+class absr
+  implements Comparator<MessageRecord>
 {
-  public absr(ConfigServlet paramConfigServlet, QQAppInterface paramQQAppInterface, ConfigurationService.Config paramConfig) {}
+  absr(absp paramabsp) {}
   
-  public void a(String paramString)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    VideoFilterTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), paramString, this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.version.get());
+    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     absr
  * JD-Core Version:    0.7.0.1
  */

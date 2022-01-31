@@ -1,16 +1,17 @@
 package com.tencent.token.ui.base;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-final class bj
-  implements DialogInterface.OnClickListener
+class bj
+  implements View.OnTouchListener
 {
-  bj(bi parambi) {}
+  bj(LockPatternVerifyView paramLockPatternVerifyView) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    bh.d(this.a.a);
+    return true;
   }
 }
 

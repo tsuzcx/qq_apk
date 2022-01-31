@@ -1,54 +1,20 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.DataLineObserver;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import android.graphics.RectF;
+import com.tencent.biz.pubaccount.readinjoy.view.ucrop.GestureCropImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ucrop.UCropView;
 
 public class sho
-  extends DataLineObserver
+  implements shr
 {
-  public sho(Conversation paramConversation) {}
+  public sho(UCropView paramUCropView) {}
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  public void a(RectF paramRectF)
   {
-    super.a(paramBoolean, paramLong, paramString);
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    if (i == 0) {
-      this.a.a(8, AppConstants.y, 6000);
-    }
-    while (i != 1) {
-      return;
-    }
-    this.a.a(8, AppConstants.z, 6000);
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong, String paramString)
-  {
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong.longValue());
-    if (i == 0) {
-      this.a.a(9, AppConstants.y, 6003);
-    }
-    while (i != 1) {
-      return;
-    }
-    this.a.a(8, AppConstants.z, 6003);
-  }
-  
-  protected void b(boolean paramBoolean, long paramLong, String paramString)
-  {
-    super.b(paramBoolean, paramLong, paramString);
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    if (i == 0) {
-      this.a.a(8, AppConstants.y, 6000);
-    }
-    while (i != 1) {
-      return;
-    }
-    this.a.a(8, AppConstants.z, 6003);
+    UCropView.a(this.a).setCropRect(paramRectF);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sho
  * JD-Core Version:    0.7.0.1
  */

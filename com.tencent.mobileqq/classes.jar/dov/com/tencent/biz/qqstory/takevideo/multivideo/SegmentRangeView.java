@@ -13,32 +13,35 @@ import android.util.DisplayMetrics;
 import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
-import aoci;
+import bnae;
+import bnah;
+import bnai;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import xsv;
 
 public class SegmentRangeView
   extends View
-  implements VideoFrameLoader.VideoFrameLoaderListener
+  implements bnai
 {
   private float jdField_a_of_type_Float = 8.0F;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private VideoFrameLoader jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader = new VideoFrameLoader();
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
+  private bnah jdField_a_of_type_Bnah;
+  private WeakReference<bnae> jdField_a_of_type_JavaLangRefWeakReference;
+  private List<Bitmap> jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float = 20.0F;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private List jdField_b_of_type_JavaUtilList;
+  private List<Pair<Long, Long>> jdField_b_of_type_JavaUtilList;
   private boolean jdField_b_of_type_Boolean;
   private float jdField_c_of_type_Float = 72.0F;
   private int jdField_c_of_type_Int;
@@ -202,7 +205,7 @@ public class SegmentRangeView
     return null;
   }
   
-  public final List a()
+  public final List<Pair<Long, Long>> a()
   {
     if (this.f >= this.g) {
       return null;
@@ -220,7 +223,7 @@ public class SegmentRangeView
     {
       localArrayList.add(new Pair(Long.valueOf(l3), Long.valueOf(l2)));
       return localArrayList;
-      QLog.e("SegmentRangeView", 2, "geRanges error, start:" + l1 + " end:" + l2);
+      QLog.e("SegmentRangeView", 2, "geRanges, start:" + l1 + " end:" + l2);
       l3 = l1;
     }
   }
@@ -228,10 +231,10 @@ public class SegmentRangeView
   public void a()
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader != null)
+    if (this.jdField_a_of_type_Bnah != null)
     {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader.c();
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader = null;
+      this.jdField_a_of_type_Bnah.c();
+      this.jdField_a_of_type_Bnah = null;
     }
     this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_b_of_type_JavaUtilList = null;
@@ -253,22 +256,20 @@ public class SegmentRangeView
     invalidate();
   }
   
-  public void a(String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, aoci paramaoci)
+  public void a(String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, bnae parambnae, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaoci);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambnae);
     this.jdField_a_of_type_Long = (paramLong2 - paramLong1);
     this.jdField_b_of_type_Long = paramLong1;
-    this.jdField_d_of_type_Boolean = paramBoolean;
-    if (paramBoolean)
+    this.jdField_d_of_type_Boolean = paramBoolean1;
+    boolean bool = xsv.a(paramInt2, paramInt3, paramInt1);
+    if (paramBoolean1)
     {
       this.jdField_d_of_type_Int = paramInt2;
       this.jdField_e_of_type_Int = paramInt3;
       paramInt1 = 0;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader = new VideoFrameLoader();
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader.a(paramString, paramLong1, paramLong2, paramInt1, this);
+      this.jdField_a_of_type_Bnah = new bnah(getContext(), paramBoolean2, bool);
+      this.jdField_a_of_type_Bnah.a(paramString, paramLong1, paramLong2, paramInt1, this);
       this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(2130706432);
       this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
@@ -277,29 +278,34 @@ public class SegmentRangeView
       this.jdField_b_of_type_AndroidGraphicsPaint.setColor(-15550475);
       this.f = this.jdField_b_of_type_Float;
       this.g = this.f;
-      this.jdField_a_of_type_AndroidGraphicsBitmap = a(2130842016);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = a(2130842018);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = a(2130844240);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = a(2130844242);
       return;
+    }
+    if ((bool) && (paramBoolean2)) {}
+    for (int j = paramInt1 + 90;; j = paramInt1)
+    {
       if (paramInt1 % 180 > 0)
       {
         this.jdField_d_of_type_Int = paramInt3;
         this.jdField_e_of_type_Int = paramInt2;
+        paramInt1 = j;
+        break;
       }
-      else
-      {
-        this.jdField_d_of_type_Int = paramInt2;
-        this.jdField_e_of_type_Int = paramInt3;
-      }
+      this.jdField_d_of_type_Int = paramInt2;
+      this.jdField_e_of_type_Int = paramInt3;
+      paramInt1 = j;
+      break;
     }
   }
   
-  public void a(List paramList)
+  public void a(List<Long> paramList)
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      aoci localaoci = (aoci)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localaoci != null) {
-        localaoci.a(paramList);
+      bnae localbnae = (bnae)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbnae != null) {
+        localbnae.a(paramList);
       }
     }
   }
@@ -378,10 +384,10 @@ public class SegmentRangeView
           this.jdField_c_of_type_Int += 1;
         }
       } while (this.jdField_c_of_type_Int == 0);
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader != null)
+      if (this.jdField_a_of_type_Bnah != null)
       {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader.b();
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader.a(this.jdField_c_of_type_Int, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        this.jdField_a_of_type_Bnah.b();
+        this.jdField_a_of_type_Bnah.a(this.jdField_c_of_type_Int, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       }
     }
     List localList = this.jdField_b_of_type_JavaUtilList;
@@ -431,7 +437,7 @@ public class SegmentRangeView
     }
     label455:
     label457:
-    for (paramMotionEvent = (aoci)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramMotionEvent = null)
+    for (paramMotionEvent = (bnae)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramMotionEvent = null)
     {
       if (paramMotionEvent != null)
       {
@@ -459,7 +465,7 @@ public class SegmentRangeView
             this.g = (this.f + getWidth() * 0.1F);
           }
           if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
-          for (paramMotionEvent = (aoci)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramMotionEvent = null)
+          for (paramMotionEvent = (bnae)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramMotionEvent = null)
           {
             if (paramMotionEvent == null) {
               break label455;
@@ -489,7 +495,7 @@ public class SegmentRangeView
     }
   }
   
-  public void setRanges(List paramList)
+  public void setRanges(List<Pair<Long, Long>> paramList)
   {
     if (getWidth() == 0)
     {
@@ -535,7 +541,7 @@ public class SegmentRangeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.multivideo.SegmentRangeView
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import java.io.Serializable;
 import org.json.JSONObject;
 
 public class AdData
-  implements Serializable, Comparable
+  implements Serializable, Comparable<AdData>
 {
   public static final int UI_PICTURE = 2;
   public static final int UI_PICTURE_and_TEXT = 3;
@@ -45,18 +45,18 @@ public class AdData
     switch (paramInt)
     {
     default: 
-      paramString = BaseApplicationImpl.getContext().getString(2131430512);
+      paramString = BaseApplicationImpl.getContext().getString(2131696522);
     }
     for (;;)
     {
       return paramString;
-      paramString = BaseApplicationImpl.getContext().getString(2131437535);
+      paramString = BaseApplicationImpl.getContext().getString(2131699128);
       continue;
-      paramString = BaseApplicationImpl.getContext().getString(2131433277);
+      paramString = BaseApplicationImpl.getContext().getString(2131691143);
       continue;
-      paramString = BaseApplicationImpl.getContext().getString(2131437855);
+      paramString = BaseApplicationImpl.getContext().getString(2131699504);
       continue;
-      paramString = BaseApplicationImpl.getContext().getString(2131437305);
+      paramString = BaseApplicationImpl.getContext().getString(2131693392);
     }
   }
   
@@ -268,7 +268,7 @@ public class AdData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.struct.AdData
  * JD-Core Version:    0.7.0.1
  */

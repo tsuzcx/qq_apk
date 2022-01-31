@@ -2,59 +2,55 @@ package com.tencent.token;
 
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.global.b;
-import com.tencent.token.global.d;
-import java.util.HashMap;
-import org.json.JSONObject;
+import com.tencent.token.global.f;
+import com.tencent.token.utils.UserTask;
 
-public final class dv
-  extends bm
+class dv
+  extends UserTask
 {
-  private long c;
-  private String d;
+  dv(du paramdu, byte paramByte, Handler paramHandler) {}
   
-  protected final String a()
+  public f a(String... paramVarArgs)
   {
-    ae.a();
-    if (ax.a().p()) {
-      ax.a();
-    }
-    for (String str = ax.c; str == null; str = null)
+    Object localObject = new f();
+    do localdo = do.a();
+    du localdu = du.a();
+    if (!localdo.o())
     {
-      this.a.a(104, null, null);
-      return null;
+      paramVarArgs = localdo.q();
+      localObject = paramVarArgs;
+      if (paramVarArgs.b()) {}
     }
-    str = "?aq_base_sid=" + str + "&uin=" + this.c;
-    return b.c() + "/cn/mbtoken3/mbtoken3_get_ads_info" + str;
+    do
+    {
+      do
+      {
+        return paramVarArgs;
+        if (localdo.e() == null)
+        {
+          ((f)localObject).b(103);
+          return localObject;
+        }
+        if (localdo.k() != null) {
+          break;
+        }
+        localObject = localdo.r();
+        paramVarArgs = (String[])localObject;
+      } while (!((f)localObject).b());
+      localObject = localdu.a(this.a);
+      paramVarArgs = (String[])localObject;
+    } while (!((f)localObject).b());
+    ((f)localObject).c();
+    return localObject;
   }
   
-  protected final void a(fs paramfs)
+  public void a(f paramf)
   {
-    this.c = ((Long)paramfs.c.get("param.uinhash")).longValue();
-  }
-  
-  protected final void a(JSONObject paramJSONObject)
-  {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
-    {
-      a(i, null);
-      return;
-    }
-    this.d = paramJSONObject.getString("ads_info");
-    this.a.a = 0;
-  }
-  
-  protected final void b()
-  {
-    if (!this.b.e)
-    {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.obj = this.d;
-      localMessage.sendToTarget();
-      this.b.e = true;
-    }
+    Message localMessage = this.b.obtainMessage();
+    localMessage.what = 1002;
+    localMessage.arg1 = paramf.a;
+    localMessage.obj = paramf;
+    localMessage.sendToTarget();
   }
 }
 

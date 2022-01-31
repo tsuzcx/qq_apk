@@ -1,61 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
-import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ChatHistory;
 
-public class aclt
-  implements View.OnClickListener
+class aclt
+  implements DialogInterface.OnCancelListener
 {
-  public aclt(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
+  aclt(acls paramacls) {}
   
-  public void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.a.f())
-    {
-      FMDataCache.b();
-      this.a.e(false);
-      if (this.a.c())
-      {
-        this.a.setResult(5);
-        this.a.finish();
-        return;
-      }
-      this.a.rightViewText.setVisibility(0);
-      this.a.rightViewText.setText(2131428089);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar.setVisibility(8);
-      this.a.setTitle(this.a.b);
-      this.a.b();
-      this.a.a();
-      if (this.a.jdField_a_of_type_Int == 1) {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      }
-      this.a.b(false);
-      return;
+    if (this.a.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.a.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    if (BaseFileAssistantActivity.a(this.a) != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("BaseFileAssistantActivity<FileAssistant>", 2, "onRightEditClick");
-      }
-      BaseFileAssistantActivity.a(this.a).g();
-    }
-    FMDataCache.b();
-    this.a.e(true);
-    this.a.rightViewText.setVisibility(0);
-    this.a.rightViewText.setText(2131428127);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar.setVisibility(0);
-    this.a.b();
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.b(true);
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aclt
  * JD-Core Version:    0.7.0.1
  */

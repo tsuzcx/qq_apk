@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.activity.SubAccountMessageActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-public class drm
+class drm
   implements Runnable
 {
-  public drm(SubAccountMessageActivity paramSubAccountMessageActivity) {}
+  drm(drl paramdrl, boolean paramBoolean1, String paramString1, boolean paramBoolean2, String paramString2, String paramString3) {}
   
   public void run()
   {
-    this.a.h();
-    SubAccountMessageActivity.d(this.a);
+    TroopMemberListActivity.a(this.jdField_a_of_type_Drl.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Boolean, 0, 0, this.jdField_b_of_type_JavaLangString, this.c);
   }
 }
 

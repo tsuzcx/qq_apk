@@ -1,19 +1,22 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.qqstory.view.segment.SegmentManager;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class oqq
-  extends DataSetObserver
+class oqq
+  implements ViewBase.OnClickListener
 {
-  public oqq(SegmentManager paramSegmentManager) {}
+  oqq(oqd paramoqd) {}
   
-  public void onChanged()
+  public void onClick(ViewBase paramViewBase)
   {
-    SegmentManager.a(this.a, true);
+    szl.a((Activity)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), (AdvertisementInfo)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.a.jdField_a_of_type_Pgd.a(), this.a.jdField_a_of_type_Pgd.e(), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oqq
  * JD-Core Version:    0.7.0.1
  */

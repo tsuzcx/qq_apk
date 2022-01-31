@@ -1,17 +1,31 @@
-import android.os.AsyncTask;
-import com.dataline.core.DirectForwarder;
-import com.dataline.core.DirectForwarder.CallBack;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.app.MemoryManager;
 
 public class adki
-  extends DirectForwarder.CallBack
+  implements DialogInterface.OnClickListener
 {
-  public adki(ForwardBaseOption paramForwardBaseOption) {}
+  public adki(NotificationActivity paramNotificationActivity, CheckBox paramCheckBox, boolean paramBoolean, SharedPreferences paramSharedPreferences) {}
   
-  protected void a(AsyncTask paramAsyncTask, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.a(paramAsyncTask, paramInt);
-    DirectForwarder.a(this.a.a, paramAsyncTask, paramInt, new adkj(this));
+    try
+    {
+      boolean bool = this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked();
+      if (this.jdField_a_of_type_Boolean != bool) {
+        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("MemoryAlertAutoClear", bool).commit();
+      }
+      MemoryManager.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app);
+      return;
+    }
+    catch (Exception paramDialogInterface) {}finally
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+    }
   }
 }
 

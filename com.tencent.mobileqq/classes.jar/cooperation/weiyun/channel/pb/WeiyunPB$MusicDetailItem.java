@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class WeiyunPB$MusicDetailItem
-  extends MessageMicro
+  extends MessageMicro<MusicDetailItem>
 {
   public static final int SINGER_LOGO_FIELD_NUMBER = 40;
   public static final int SINGER_NAME_FIELD_NUMBER = 30;
@@ -20,7 +20,7 @@ public final class WeiyunPB$MusicDetailItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.weiyun.channel.pb.WeiyunPB.MusicDetailItem
  * JD-Core Version:    0.7.0.1
  */

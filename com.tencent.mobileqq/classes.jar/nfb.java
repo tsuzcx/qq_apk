@@ -1,23 +1,35 @@
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeAdapter;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class nfb
-  extends RecyclerView.AdapterDataObserver
+final class nfb
+  implements BusinessObserver
 {
-  public nfb(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
+  nfb(QQAppInterface paramQQAppInterface, nfd paramnfd) {}
   
-  public void onChanged()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.a.a.getItemCount() > 0) {
+    if ((paramBoolean) && (paramBundle != null))
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
+      {
+        nez.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, this.jdField_a_of_type_Nfd);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("SplashActivity", 2, "getSameCityCheckTypeInfo success but data is null");
+      }
+      this.jdField_a_of_type_Nfd.a("");
       return;
     }
-    this.a.b();
+    this.jdField_a_of_type_Nfd.a("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nfb
  * JD-Core Version:    0.7.0.1
  */

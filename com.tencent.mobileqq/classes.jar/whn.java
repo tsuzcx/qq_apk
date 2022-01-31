@@ -1,55 +1,61 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyActivityHelper;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySearchTipsContainer.OnTipClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar;
+import com.tencent.common.app.AppInterface;
 
 public class whn
-  implements ReadInJoySearchTipsContainer.OnTipClickListener
 {
-  public whn(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  private avvb jdField_a_of_type_Avvb = new who(this);
+  public MystoryListView a;
+  protected NewMessageYellowBar a;
+  protected AppInterface a;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(String paramString)
+  public void a()
   {
-    Object localObject;
-    if (paramString != null)
-    {
-      Iterator localIterator = this.a.c.iterator();
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject = (ChannelInfo)localIterator.next();
-      } while (!paramString.equals(((ChannelInfo)localObject).mChannelName));
+    this.jdField_a_of_type_Boolean = false;
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Avvb);
     }
-    for (paramString = (String)localObject;; paramString = null)
-    {
-      if (paramString != null)
-      {
-        if (!TextUtils.isEmpty(paramString.mJumpUrl))
-        {
-          localObject = new Intent(this.a, QQBrowserActivity.class);
-          ((Intent)localObject).putExtra("hide_operation_bar", true);
-          ((Intent)localObject).putExtra("url", paramString.mJumpUrl);
-          this.a.startActivity((Intent)localObject);
-        }
-      }
-      else {
-        return;
-      }
-      ReadInJoyActivityHelper.a(this.a, paramString.mChannelID, paramString.mChannelName, paramString.mChannelType, 0);
+  }
+  
+  public void a(AppInterface paramAppInterface, View paramView, MystoryListView paramMystoryListView)
+  {
+    if (!(paramView instanceof NewMessageYellowBar)) {
+      throw new IllegalArgumentException("StoryHomePushYellowBarHandler 传入View不对");
+    }
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar = ((NewMessageYellowBar)paramView);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView = paramMystoryListView;
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar.setOnClickListener(new whp(this));
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Avvb);
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar == null) {
       return;
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar.a(0, 0);
+    ((nan)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(70)).a(21);
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Avvb);
+    }
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = QQStoryContext.a();
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Avvb);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     whn
  * JD-Core Version:    0.7.0.1
  */

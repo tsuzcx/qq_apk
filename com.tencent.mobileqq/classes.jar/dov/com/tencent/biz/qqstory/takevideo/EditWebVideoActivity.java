@@ -1,5 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
+import akcn;
+import alud;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,27 +9,27 @@ import android.os.Handler.Callback;
 import android.os.Message;
 import android.text.TextUtils;
 import android.widget.TextView;
-import anvl;
-import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraControl;
-import com.tencent.mobileqq.transfile.PtvGuideUploader;
-import com.tencent.mobileqq.transfile.PtvGuideUploader.IPtvGuidUpCallback;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.StringUtil;
+import axpl;
+import azhg;
+import bavw;
+import bavy;
+import bdhb;
+import bdnn;
+import bhsl;
+import bmoz;
+import bmpa;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MqqWeakReferenceHandler;
-import dov.com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
 import java.io.File;
 
 public class EditWebVideoActivity
   extends EditVideoActivity
-  implements Handler.Callback, PtvGuideUploader.IPtvGuidUpCallback
+  implements Handler.Callback, bavy
 {
   private int jdField_a_of_type_Int;
+  private akcn jdField_a_of_type_Akcn = new bmoz(this);
   private ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
-  private MqqWeakReferenceHandler jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler;
-  private EncodeVideoTask.ResultListener jdField_a_of_type_DovComTencentMobileqqActivityShortvideoEncodeVideoTask$ResultListener = new anvl(this);
+  private bhsl jdField_a_of_type_Bhsl;
   private String jdField_a_of_type_JavaLangString;
   private byte[] jdField_a_of_type_ArrayOfByte;
   private int jdField_b_of_type_Int;
@@ -38,15 +40,16 @@ public class EditWebVideoActivity
   private String d;
   private String f;
   
-  private void d()
+  private void g()
   {
     if (QLog.isColorLevel()) {
       QLog.d("EditWebVideoActivity", 2, "jumpToH5Activity, uid:" + this.d + ", md5:" + this.jdField_c_of_type_JavaLangString + ", callback:" + this.f);
     }
     Intent localIntent = new Intent("tencent.video.q2v.startUploadPTV");
     localIntent.putExtra("broadcastType", 1);
+    localIntent.putExtra("recordType", 2);
     sendBroadcast(localIntent);
-    c();
+    f();
     if (!TextUtils.isEmpty(this.f))
     {
       localIntent = new Intent();
@@ -59,7 +62,7 @@ public class EditWebVideoActivity
       sendBroadcast(localIntent);
       return;
     }
-    QQToast.a(this, "对不起，视频处理异常...", 0).a();
+    QQToast.a(this, alud.a(2131704357), 0).a();
     finish();
   }
   
@@ -68,38 +71,38 @@ public class EditWebVideoActivity
     if (QLog.isColorLevel()) {
       QLog.e("EditWebVideoActivity", 2, "onShareClick " + this.jdField_b_of_type_JavaLangString + " mthumbPath" + this.jdField_a_of_type_JavaLangString);
     }
-    if ((StringUtil.a(this.jdField_b_of_type_JavaLangString)) || (StringUtil.a(this.jdField_a_of_type_JavaLangString)))
+    if ((bdnn.a(this.jdField_b_of_type_JavaLangString)) || (bdnn.a(this.jdField_a_of_type_JavaLangString)))
     {
       finish();
       return;
     }
     if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_b_of_type_JavaLangString == null))
     {
-      QQToast.a(this, 2131435624, 0).a();
-      c();
+      QQToast.a(this, 2131692636, 0).a();
+      f();
       return;
     }
     File localFile1 = new File(this.jdField_a_of_type_JavaLangString);
     File localFile2 = new File(this.jdField_b_of_type_JavaLangString);
     if ((!localFile1.exists()) || (!localFile2.exists()))
     {
-      QQToast.a(this, 2131435624, 0).a();
-      c();
+      QQToast.a(this, 2131692636, 0).a();
+      f();
       return;
     }
     if ((!localFile1.isFile()) || (!localFile2.isFile()))
     {
-      QQToast.a(this, 2131435625, 0).a();
-      c();
+      QQToast.a(this, 2131692638, 0).a();
+      f();
       return;
     }
-    if (new PtvGuideUploader(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_ArrayOfByte, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_Int).a())
+    if (new bavw(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_ArrayOfByte, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_Int).a())
     {
-      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(1003, 60000L);
+      this.jdField_a_of_type_Bhsl.sendEmptyMessageDelayed(1003, 60000L);
       return;
     }
-    c();
-    QQToast.a(this, 1, 2131435306, 0).a();
+    f();
+    QQToast.a(this, 1, 2131720032, 0).a();
   }
   
   public void a(int paramInt, String paramString)
@@ -107,48 +110,33 @@ public class EditWebVideoActivity
     if (QLog.isColorLevel()) {
       QLog.d("EditWebVideoActivity", 2, "OnUploadVideoListener onUploadFail!");
     }
-    if (this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.hasMessages(1003)) {
-      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(1003);
+    if (this.jdField_a_of_type_Bhsl.hasMessages(1003)) {
+      this.jdField_a_of_type_Bhsl.removeMessages(1003);
     }
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(1003);
+    this.jdField_a_of_type_Bhsl.sendEmptyMessage(1003);
   }
   
-  protected void b()
-  {
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager == null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager = new EditWebVideoPartManager();
-    }
-    ((EditWebVideoPartManager)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager).a(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoEncodeVideoTask$ResultListener);
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("EditWebVideoActivity", 2, "cancelProgressDialog");
-    }
-    try
-    {
-      if (this.jdField_a_of_type_AndroidAppProgressDialog != null) {
-        this.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
-      }
-      return;
-    }
-    catch (Exception localException) {}
-  }
-  
-  public void c(String paramString)
+  public void a(String paramString)
   {
     this.d = paramString;
     if (QLog.isColorLevel()) {
       QLog.i("EditWebVideoActivity", 2, "OnUploadVideoListener onUploadSuccess! " + this.d);
     }
-    if (this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.hasMessages(1003)) {
-      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(1003);
+    if (this.jdField_a_of_type_Bhsl.hasMessages(1003)) {
+      this.jdField_a_of_type_Bhsl.removeMessages(1003);
     }
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(1001);
+    this.jdField_a_of_type_Bhsl.sendEmptyMessage(1001);
   }
   
-  void d(String paramString)
+  protected void d()
+  {
+    if (this.jdField_a_of_type_Bmnj == null) {
+      this.jdField_a_of_type_Bmnj = new bmpa();
+    }
+    ((bmpa)this.jdField_a_of_type_Bmnj).a(this.jdField_a_of_type_Akcn);
+  }
+  
+  public void d(String paramString)
   {
     if (QLog.isColorLevel()) {
       QLog.e("EditWebVideoActivity", 2, "showProgressDialog " + paramString);
@@ -160,12 +148,12 @@ public class EditWebVideoActivity
         if (this.jdField_a_of_type_AndroidAppProgressDialog == null) {
           continue;
         }
-        c();
-        localTextView = (TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363399);
-        if (!StringUtil.a(paramString)) {
+        f();
+        localTextView = (TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131371894);
+        if (!bdnn.a(paramString)) {
           continue;
         }
-        localTextView.setText(2131434314);
+        localTextView.setText(2131717582);
       }
       catch (Throwable paramString)
       {
@@ -183,27 +171,42 @@ public class EditWebVideoActivity
       }
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
       return;
-      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this, 2131624516);
+      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this, 2131755801);
       this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(false);
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
-      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969180);
+      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131559437);
     }
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler = new MqqWeakReferenceHandler(this);
+    this.jdField_a_of_type_Bhsl = new bhsl(this);
     this.f = getIntent().getStringExtra("edit_video_call_back");
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
     if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      FileUtils.d(this.jdField_b_of_type_JavaLangString);
+      bdhb.d(this.jdField_b_of_type_JavaLangString);
     }
+  }
+  
+  void f()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("EditWebVideoActivity", 2, "cancelProgressDialog");
+    }
+    try
+    {
+      if (this.jdField_a_of_type_AndroidAppProgressDialog != null) {
+        this.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
+      }
+      return;
+    }
+    catch (Exception localException) {}
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -216,24 +219,24 @@ public class EditWebVideoActivity
     default: 
       return false;
     case 1003: 
-      c();
-      QQToast.a(this, 1, 2131435303, 0).a();
+      f();
+      QQToast.a(this, 1, 2131720031, 0).a();
       finish();
       return true;
     case 1001: 
-      CaptureReportUtil.b(CameraControl.a().jdField_a_of_type_Int, "");
-      d();
+      axpl.b(azhg.a().jdField_a_of_type_Int, "");
+      g();
       return true;
     }
-    c();
-    d("上传视频中...");
+    f();
+    d(alud.a(2131704366));
     a();
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditWebVideoActivity
  * JD-Core Version:    0.7.0.1
  */

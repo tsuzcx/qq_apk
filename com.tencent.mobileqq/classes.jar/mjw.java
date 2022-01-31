@@ -1,42 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyConstants;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySocialMsgTips;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
 
-public class mjw
-  implements View.OnClickListener
+class mjw
+  implements DialogInterface.OnClickListener
 {
-  public mjw(ReadinjoySocialMsgTips paramReadinjoySocialMsgTips) {}
+  mjw(mju parammju) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (ReadinjoySocialMsgTips.a(this.a) != null) {
-      ReadinjoySocialMsgTips.a(this.a).onClick(paramView);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    KandianMergeManager localKandianMergeManager = (KandianMergeManager)ReadInJoyUtils.a().getManager(161);
-    int i = localKandianMergeManager.e() - localKandianMergeManager.b();
-    if (localKandianMergeManager.b() > 0) {}
-    for (paramView = ReadInJoyConstants.g + i;; paramView = ReadInJoyConstants.c + i)
+    this.a.a.c();
+    mjs.a(this.a.a, false);
+    if (paramInt == 1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadinjoySocialMsgTips", 2, "person message box url: " + paramView);
-      }
-      localKandianMergeManager.b();
-      localKandianMergeManager.k();
-      ReadInJoyUtils.a(ReadinjoySocialMsgTips.a(this.a), paramView);
-      PublicAccountReportUtils.a(null, "", "0X800824B", "0X800824B", 0, 0, "", "", "", ReadInJoyUtils.d(), false);
+      azqs.b(null, "CliOper", "", "", "0X800A565", "0X800A565", 0, 0, "", "", "", "");
+      mjs.a(this.a.a);
+    }
+    while (paramInt != 0) {
       return;
     }
+    mjs.a(this.a.a, mjs.a(this.a.a).a().v);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mjw
  * JD-Core Version:    0.7.0.1
  */

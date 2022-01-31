@@ -1,23 +1,23 @@
-import com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnErrorListener;
-import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
-
 public class ohq
-  implements IMediaPlayer.OnErrorListener
 {
-  public ohq(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
-  
-  public boolean a(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public static int a()
   {
-    LocalVideoSelectActivity.a(this.a).a();
-    LocalVideoSelectActivity.a(this.a).a(true);
-    return true;
+    return ((Integer)bkbq.a("sp_key_biu_button_click_behaviour", Integer.valueOf(0))).intValue();
+  }
+  
+  public static void a()
+  {
+    bkbq.a("sp_key_biu_long_click_tips_count", Integer.valueOf(((Integer)bkbq.a("sp_key_biu_long_click_tips_count", Integer.valueOf(0))).intValue() + 1));
+  }
+  
+  public static int b()
+  {
+    return ((Integer)bkbq.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(1))).intValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ohq
  * JD-Core Version:    0.7.0.1
  */

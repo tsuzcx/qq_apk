@@ -1,32 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import UserGrowth.stWeishiDengtaReportReq;
+import UserGrowth.stWeishiDengtaReportRsp;
+import java.util.Map;
 
 public class tka
-  implements View.OnClickListener
+  extends thb<stWeishiDengtaReportRsp>
 {
-  public tka(QQMapActivity paramQQMapActivity) {}
-  
-  public void onClick(View paramView)
+  public tka(String paramString, Map<String, String> paramMap)
   {
-    if (this.a.l)
-    {
-      this.a.w();
-      return;
-    }
-    if ("group_activity".equals(this.a.o))
-    {
-      this.a.k();
-      return;
-    }
-    this.a.setResult(-1, this.a.a());
-    this.a.finish();
-    this.a.d();
+    super("WeishiDengtaReport");
+    stWeishiDengtaReportReq localstWeishiDengtaReportReq = new stWeishiDengtaReportReq();
+    localstWeishiDengtaReportReq.eventName = paramString;
+    localstWeishiDengtaReportReq.params = paramMap;
+    this.a = localstWeishiDengtaReportReq;
+    tlo.b("BeaconSendRequest", "BeaconSendRequest = " + localstWeishiDengtaReportReq.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tka
  * JD-Core Version:    0.7.0.1
  */

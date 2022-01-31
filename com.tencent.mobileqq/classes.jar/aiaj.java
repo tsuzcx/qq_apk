@@ -1,24 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLLittleBoyManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
 
 public class aiaj
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public aiaj(GLLittleBoyManager paramGLLittleBoyManager) {}
+  public aiaj(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment, acnt paramacnt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GLLittleBoyManager.a(this.a, paramAnimation);
+    this.jdField_a_of_type_Acnt.a(true);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiaj
  * JD-Core Version:    0.7.0.1
  */

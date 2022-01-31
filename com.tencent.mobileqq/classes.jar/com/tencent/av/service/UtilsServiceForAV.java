@@ -6,12 +6,13 @@ import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import mal;
 import mqq.app.AppService;
 
 public class UtilsServiceForAV
   extends AppService
 {
-  final IBinder jdField_a_of_type_AndroidOsIBinder = new UtilsServiceForAV.LocalBinder(this);
+  final IBinder jdField_a_of_type_AndroidOsIBinder = new mal(this);
   PowerManager.WakeLock jdField_a_of_type_AndroidOsPowerManager$WakeLock = null;
   VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
   
@@ -58,7 +59,7 @@ public class UtilsServiceForAV
     PowerManager localPowerManager = (PowerManager)getSystemService("power");
     try
     {
-      this.jdField_a_of_type_AndroidOsPowerManager$WakeLock = localPowerManager.newWakeLock(32, "QQLitePower");
+      this.jdField_a_of_type_AndroidOsPowerManager$WakeLock = localPowerManager.newWakeLock(32, "mobileqq:serforav");
     }
     catch (Exception localException1)
     {

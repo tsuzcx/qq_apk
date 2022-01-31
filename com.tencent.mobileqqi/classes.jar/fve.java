@@ -1,25 +1,16 @@
-import com.tencent.mobileqq.filemanager.activity.FMCloudActivity;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import java.util.List;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 
 public class fve
-  extends FMObserver
+  extends fvj
 {
-  public fve(FMCloudActivity paramFMCloudActivity) {}
-  
-  protected void a(List paramList)
+  public fve(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
-    super.a(paramList);
-    FMCloudActivity.a(this.a, paramList);
-    FMCloudActivity.a(this.a);
+    super(paramOnlineFileSessionWorker);
   }
   
-  protected void c(int paramInt, String paramString)
+  protected String a()
   {
-    super.c(paramInt, paramString);
-    FMCloudActivity.a(this.a);
-    FMToastUtil.a(2131562097);
+    return "StateCancelUploadWhenRecv";
   }
 }
 

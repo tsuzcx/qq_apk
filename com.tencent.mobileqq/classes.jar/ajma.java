@@ -1,15 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.logic.HomeworkTroopController;
+import android.content.Context;
 
-class ajma
-  implements View.OnClickListener
+public class ajma
+  extends ajlx
 {
-  ajma(ajlz paramajlz) {}
-  
-  public void onClick(View paramView)
+  public ajma(Context paramContext)
   {
-    this.a.a.c();
+    this.a = paramContext.getString(2131691828);
   }
 }
 

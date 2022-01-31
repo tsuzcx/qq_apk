@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
-import com.tencent.mobileqq.data.QQAlbumInfo;
+import android.os.Handler;
+import android.text.TextUtils;
 
-public class wvv
-  implements Runnable
+class wvv
+  implements wsv<wsc>
 {
-  public wvv(AlbumListAdapter paramAlbumListAdapter, QQAlbumInfo paramQQAlbumInfo) {}
+  wvv(wvq paramwvq, String paramString) {}
   
-  public void run()
+  public void a(wsc paramwsc)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqDataQQAlbumInfo);
+    if ((paramwsc.a != null) && (TextUtils.equals(paramwsc.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)))
+    {
+      wvq.a(this.jdField_a_of_type_Wvq).a = paramwsc.a;
+      wvq.a(this.jdField_a_of_type_Wvq).sendMessage(wvq.a(this.jdField_a_of_type_Wvq).obtainMessage(0, wvq.a(this.jdField_a_of_type_Wvq)));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wvv
  * JD-Core Version:    0.7.0.1
  */

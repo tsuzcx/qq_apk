@@ -1,49 +1,149 @@
-import android.location.Location;
-import android.location.LocationListener;
-import android.os.Bundle;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
-import java.util.List;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.util.ArrayList;
 
 public class oiq
-  implements LocationListener
+  implements azef, azeh
 {
-  public oiq(DoodleEmojiManager paramDoodleEmojiManager) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private oir jdField_a_of_type_Oir;
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b;
+  private boolean c;
   
-  public void onLocationChanged(Location paramLocation)
+  public oiq(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if (paramLocation != null)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    if (azkt.a(paramContext) != 0) {}
+    for (;;)
     {
-      SLog.a("DoodleEmojiManager", "onLocationChanged, location : %s", paramLocation);
-      if (this.a.b.size() >= 10)
-      {
-        this.a.b.remove(0);
-        SLog.b("DoodleEmojiManager", "onLocationChanged, LocationList size > 5, remove the first location.");
-      }
-      this.a.b.add(new Location(paramLocation));
+      this.jdField_a_of_type_Boolean = bool;
       return;
+      bool = false;
     }
-    SLog.d("DoodleEmojiManager", "onLocationChanged, location is null.");
   }
   
-  public void onProviderDisabled(String paramString)
+  private void a(int paramInt)
   {
-    SLog.a("DoodleEmojiManager", "onProviderDisabled, provider: %s .", paramString);
+    c();
+    if (this.jdField_a_of_type_Oir != null) {
+      this.jdField_a_of_type_Oir.a(paramInt);
+    }
   }
   
-  public void onProviderEnabled(String paramString)
+  private void c()
   {
-    SLog.a("DoodleEmojiManager", "onProviderEnabled, provider: %s .", paramString);
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
+      ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
+    }
   }
   
-  public void onStatusChanged(String paramString, int paramInt, Bundle paramBundle)
+  private void d()
   {
-    SLog.a("DoodleEmojiManager", "onStatusChanged, provider: %s , status: %s .", paramString, Integer.valueOf(paramInt));
+    if ((this.b) && ((this.c) || (!this.jdField_a_of_type_Boolean))) {
+      a(1);
+    }
+  }
+  
+  public void G_()
+  {
+    VideoEnvironment.a("ReadInJoyCameraCaptureSoManager", "onNetWorkNone", null);
+  }
+  
+  public void a()
+  {
+    ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    int j = 1;
+    VideoEnvironment.a("ReadInJoyCameraCaptureSoManager", "result=" + paramInt1 + ",serverError=" + paramInt2, null);
+    int k = 0;
+    int i;
+    if (paramInt1 != 1)
+    {
+      i = j;
+      if (paramInt1 != 0) {}
+    }
+    else
+    {
+      if (paramInt2 == 0) {
+        break label69;
+      }
+      i = j;
+    }
+    if (i != 0) {
+      a(3);
+    }
+    return;
+    label69:
+    ArrayList localArrayList = new ArrayList(1);
+    if (ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList) == 0)
+    {
+      ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this);
+      if (azkt.a(VideoEnvironment.a()) == 2)
+      {
+        ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this);
+        paramInt1 = k;
+      }
+    }
+    for (;;)
+    {
+      i = paramInt1;
+      break;
+      this.c = true;
+      VideoEnvironment.a("ReadInJoyCameraCaptureSoManager", "onConfigResult| getFilterSoState != 2", null);
+      paramInt1 = k;
+      continue;
+      paramInt1 = 1;
+    }
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    if (paramString1.startsWith("new_qq_android_native_short_video_"))
+    {
+      if (paramInt != 0) {
+        a(3);
+      }
+    }
+    else if (paramString1.startsWith("new_qq_android_native_short_filter_"))
+    {
+      if (paramInt == 0) {
+        break label92;
+      }
+      a(3);
+    }
+    for (;;)
+    {
+      VideoEnvironment.a("ReadInJoyCameraCaptureSoManager", "name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
+      return;
+      this.b = true;
+      d();
+      break;
+      label92:
+      this.c = true;
+      d();
+    }
+  }
+  
+  public void a(String paramString, long paramLong1, long paramLong2) {}
+  
+  public void a(oir paramoir)
+  {
+    this.jdField_a_of_type_Oir = paramoir;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oiq
  * JD-Core Version:    0.7.0.1
  */

@@ -7,8 +7,8 @@ import com.tencent.open.base.LogUtility;
 import com.tencent.tmassistantsdk.openSDK.ITMQQDownloaderOpenSDKListener;
 import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDKParam;
 import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDK_V2;
-import hsl;
-import hsm;
+import hoh;
+import hoi;
 
 public class MyAppApi$QQDownloadListener
   implements ITMQQDownloaderOpenSDKListener
@@ -37,13 +37,13 @@ public class MyAppApi$QQDownloadListener
   {
     this.a.b = true;
     Log.i("MyAppApi", "OnDownloadTaskStateChanged");
-    ThreadManager.b().post(new hsl(this, paramTMQQDownloaderOpenSDKParam, paramInt1, paramInt2, paramString));
+    ThreadManager.b().post(new hoh(this, paramTMQQDownloaderOpenSDKParam, paramInt1, paramInt2, paramString));
   }
   
   public void OnQQDownloaderInvalid()
   {
     Log.i("MyAppApi", "应用宝挂了");
-    ThreadManager.b().post(new hsm(this));
+    ThreadManager.b().post(new hoi(this));
   }
   
   public void OnServiceFree()

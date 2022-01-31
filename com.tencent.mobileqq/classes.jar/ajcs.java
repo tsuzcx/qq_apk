@@ -1,17 +1,10 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.Callback;
-
-public class ajcs
-  implements Runnable
+public abstract interface ajcs
 {
-  public ajcs(TroopAioKeywordTipManager paramTroopAioKeywordTipManager, TroopAioKeywordTipManager.Callback paramCallback, MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo) {}
+  public abstract void a();
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager$Callback.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipInfo);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void b();
 }
 
 

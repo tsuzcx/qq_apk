@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@null" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:onClick="BtnOnClick"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/g_f" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:onClick="BtnOnClick">
+        <ImageView android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_margin="25.0dip" android:src="@drawable/dbz" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/g_e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a61" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+        <ImageView android:id="@id/g_o" android:layout_width="1.0dip" android:layout_height="1.0dip" android:layout_marginTop="@dimen/a8e" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/g_k" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:layout_marginBottom="3.5dip" android:src="@drawable/d9m" android:layout_toRightOf="@id/g_o" android:layout_alignBottom="@id/g_o" android:scaleX="1.2" android:scaleY="1.2" />
+        <RelativeLayout android:id="@id/g_h" android:clickable="true" android:layout_width="@dimen/a8e" android:layout_height="@dimen/a8e" android:layout_centerHorizontal="true">
+            <ImageView android:id="@id/g_g" android:layout_width="@dimen/a8e" android:layout_height="@dimen/a8e" android:src="@drawable/ddb" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <TextView android:textSize="15.0dip" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/g_m" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:maxWidth="144.0dip" android:singleLine="true" android:layout_below="@id/g_h" android:layout_centerHorizontal="true" android:contentDescription="@null" />
+        <TextView android:textSize="13.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/g_n" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_below="@id/g_m" android:layout_centerHorizontal="true" android:contentDescription="@null" />
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="40.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <Button android:enabled="false" android:textSize="16.0dip" android:textColor="@color/al3" android:id="@id/g9q" android:background="@drawable/v6" android:layout_width="108.0dip" android:layout_height="wrap_content" android:minWidth="100.0dip" android:text="@string/dj5" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:onClick="BtnOnClick" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/s4" android:id="@id/g_p" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:layout_above="@id/g9q" android:layout_centerHorizontal="true" android:contentDescription="@null" />
+    </RelativeLayout>
+</RelativeLayout>

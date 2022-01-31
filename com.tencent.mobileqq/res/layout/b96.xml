@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="210.0dip">
+        <ImageView android:id="@id/dcy" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@color/aj4" android:scaleType="centerCrop" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="15.0dip" android:layout_marginTop="82.0dip" android:layout_marginRight="15.0dip">
+            <TextView android:textSize="30.0sp" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/ji2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:maxLines="1" android:singleLine="true" android:includeFontPadding="false" />
+            <RelativeLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <ImageView android:id="@id/fzk" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginRight="5.0dip" android:layout_alignParentLeft="true" />
+                <TextView android:textSize="12.0sp" android:textColor="#ccffffff" android:ellipsize="end" android:id="@id/jio" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/fzk" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <RelativeLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="34.0dip" android:layout_marginTop="10.0dip">
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/eox" android:layout_width="wrap_content" android:layout_height="34.0dip" />
+                <Button android:textSize="14.0sp" android:textColor="@color/al3" android:id="@id/j6u" android:background="@drawable/am9" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:height="30.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+        </LinearLayout>
+    </FrameLayout>
+</FrameLayout>

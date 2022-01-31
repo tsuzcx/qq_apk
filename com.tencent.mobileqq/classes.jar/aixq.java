@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-
 public class aixq
-  implements DialogInterface.OnClickListener
 {
-  public aixq(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public long a;
+  public String a;
+  public String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aixq() {}
+  
+  public aixq(String paramString1, String paramString2, long paramLong)
   {
-    this.a.setResult(-1, null);
-    this.a.finish();
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

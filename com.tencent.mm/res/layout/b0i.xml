@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/f0i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/aa5" android:src="@drawable/avt" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="@dimen/kz" android:textColor="@color/a2f" android:id="@id/f0j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/aa_" android:text="@string/eyn" android:layout_centerHorizontal="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/f0k" android:background="@drawable/a44" android:paddingTop="@dimen/n_" android:paddingBottom="@dimen/n_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/aa4" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:paddingStart="@dimen/l2" android:paddingEnd="@dimen/l2">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/f0l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/n_" android:contentDescription="@string/eyk" />
+        <TextView android:textSize="@dimen/lj" android:textColor="@color/a2h" android:id="@id/f0m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eyk" />
+    </LinearLayout>
+</merge>

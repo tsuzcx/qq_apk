@@ -38,17 +38,12 @@ public class Tracker
   
   public String dumpTrackerInfo()
   {
-    StringBuilder localStringBuilder2 = new StringBuilder("_TRACKER_");
+    StringBuilder localStringBuilder = new StringBuilder("_TRACKER_");
     try
     {
       Iterator localIterator = this.logStrings.iterator();
-      for (;;)
-      {
-        StringBuilder localStringBuilder1 = localStringBuilder2;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localStringBuilder2.append((String)localIterator.next());
+      while (localIterator.hasNext()) {
+        localStringBuilder.append((String)localIterator.next());
       }
       Object localObject;
       return "_TRACKER_FAIL.";
@@ -56,8 +51,12 @@ public class Tracker
     catch (Exception localException)
     {
       localObject = null;
-      this.logStrings.clear();
-      if (localObject != null) {
+      for (;;)
+      {
+        this.logStrings.clear();
+        if (localObject == null) {
+          break;
+        }
         return localObject.toString();
       }
     }
@@ -75,7 +74,7 @@ public class Tracker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.highway.transaction.Tracker
  * JD-Core Version:    0.7.0.1
  */

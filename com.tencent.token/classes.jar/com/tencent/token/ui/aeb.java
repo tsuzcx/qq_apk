@@ -1,17 +1,24 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.utils.s;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 
-final class aeb
-  implements View.OnClickListener
+class aeb
+  implements DialogInterface.OnClickListener
 {
-  aeb(UtilsGameProtectActivity paramUtilsGameProtectActivity) {}
+  aeb(aea paramaea) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    s.b(this.a, this.a.getString(2131361975));
+    paramDialogInterface = new Intent(this.a.a, UtilsModSetMobileStep2SmsActivity.class);
+    paramDialogInterface.putExtra("title", UtilsModSetMobileStep2Activity.access$100(this.a.a));
+    paramDialogInterface.putExtra("op_type", UtilsModSetMobileStep2Activity.access$200(this.a.a));
+    paramDialogInterface.putExtra("mobile", UtilsModSetMobileStep2Activity.access$300(this.a.a));
+    paramDialogInterface.putExtra("area_code", UtilsModSetMobileStep2Activity.access$400(this.a.a));
+    paramDialogInterface.putExtra("page_id", UtilsModSetMobileStep2Activity.access$500(this.a.a));
+    this.a.a.startActivity(paramDialogInterface);
+    this.a.a.finish();
   }
 }
 

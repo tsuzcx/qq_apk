@@ -4,28 +4,30 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import pjz;
 
 public class QzoneResumeTransfer$CacheFileAttribute
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new pjz();
-  public String a;
-  public String b;
+  public static final Parcelable.Creator<CacheFileAttribute> CREATOR = new QzoneResumeTransfer.CacheFileAttribute.1();
+  public String ContentEncoding;
+  public String ContentType;
+  public String LastModifyTime;
   
   public QzoneResumeTransfer$CacheFileAttribute(Parcel paramParcel)
   {
     if (paramParcel == null) {
       return;
     }
-    this.a = paramParcel.readString();
-    this.b = paramParcel.readString();
+    this.ContentType = paramParcel.readString();
+    this.LastModifyTime = paramParcel.readString();
+    this.ContentEncoding = paramParcel.readString();
   }
   
-  public QzoneResumeTransfer$CacheFileAttribute(String paramString1, String paramString2)
+  public QzoneResumeTransfer$CacheFileAttribute(String paramString1, String paramString2, String paramString3)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    this.ContentType = paramString1;
+    this.LastModifyTime = paramString2;
+    this.ContentEncoding = paramString3;
   }
   
   public int describeContents()
@@ -43,14 +45,14 @@ public class QzoneResumeTransfer$CacheFileAttribute
         break;
       }
       paramObject = (CacheFileAttribute)paramObject;
-    } while ((TextUtils.equals(this.a, paramObject.a)) && (TextUtils.equals(this.b, paramObject.b)));
+    } while ((TextUtils.equals(this.ContentType, paramObject.ContentType)) && (TextUtils.equals(this.LastModifyTime, paramObject.LastModifyTime)) && (TextUtils.equals(this.ContentEncoding, paramObject.ContentEncoding)));
     return false;
     return false;
   }
   
   public String toString()
   {
-    return "CacheFileAttr --- ContentType:" + this.a + " LastModify:" + this.b;
+    return "CacheFileAttr --- ContentType:" + this.ContentType + " LastModify:" + this.LastModifyTime + " ContentEncoding:" + this.ContentEncoding;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -58,13 +60,14 @@ public class QzoneResumeTransfer$CacheFileAttribute
     if (paramParcel == null) {
       return;
     }
-    paramParcel.writeString(this.a);
-    paramParcel.writeString(this.b);
+    paramParcel.writeString(this.ContentType);
+    paramParcel.writeString(this.LastModifyTime);
+    paramParcel.writeString(this.ContentEncoding);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.downloader.impl.strategy.QzoneResumeTransfer.CacheFileAttribute
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,26 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.QSecFramework;
-import com.tencent.qqprotect.qsec.QSecFramework.IGoingUpHandler;
+import com.tencent.mobileqq.app.NearbyGrayTipsManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 public class alxo
-  implements QSecFramework.IGoingUpHandler
+  implements Comparator<MessageRecord>
 {
-  public alxo(QSecFramework paramQSecFramework) {}
+  public alxo(NearbyGrayTipsManager paramNearbyGrayTipsManager) {}
   
-  public int a(int paramInt1, int paramInt2, int paramInt3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    if (paramInt1 != 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSecFramework", 2, String.format("Native msg, cookie: %08X, delay: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-      }
-      if (paramInt2 != 0) {
-        QSecFramework.a(this.a).sendMessageDelayed(QSecFramework.a(this.a).obtainMessage(1, paramInt1, 0), paramInt2 * 1000);
-      }
+    if (paramMessageRecord1.time < paramMessageRecord2.time) {
+      return 1;
     }
-    else
-    {
-      return 0;
+    if (paramMessageRecord1.time > paramMessageRecord2.time) {
+      return -1;
     }
-    QSecFramework.a(this.a).sendMessage(QSecFramework.a(this.a).obtainMessage(1, paramInt1, 0));
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alxo
  * JD-Core Version:    0.7.0.1
  */

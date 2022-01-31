@@ -1,23 +1,37 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager.FavEmotionDataInPanelCallback;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
+import java.io.File;
+import java.io.IOException;
 
 public class abzp
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abzp(FavroamingDBManager paramFavroamingDBManager, FavroamingDBManager.FavEmotionDataInPanelCallback paramFavEmotionDataInPanelCallback) {}
+  public abzp(TestAppFragment paramTestAppFragment) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingDBManager.b();
-    ThreadManager.getUIHandler().post(new abzq(this, localList));
+    if (paramBoolean)
+    {
+      new File(this.a.a).mkdirs();
+      paramCompoundButton = new File(this.a.a, this.a.b);
+      try
+      {
+        paramCompoundButton.createNewFile();
+        return;
+      }
+      catch (IOException paramCompoundButton)
+      {
+        paramCompoundButton.printStackTrace();
+        return;
+      }
+    }
+    new File(this.a.a, this.a.b).delete();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abzp
  * JD-Core Version:    0.7.0.1
  */

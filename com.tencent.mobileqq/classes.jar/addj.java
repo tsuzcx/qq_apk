@@ -1,28 +1,20 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
 
 public class addj
-  extends MessageObserver
+  implements View.OnClickListener
 {
-  public addj(MPcFileModel paramMPcFileModel) {}
+  public addj(GesturePWDCreateActivity paramGesturePWDCreateActivity) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    if (paramInt1 == 0)
-    {
-      if (MPcFileModel.b(this.a)) {
-        FMToastUtil.a(2131427615);
-      }
-      MPcFileModel.a(this.a, false);
-      QLog.d("MPcFileModel<FileAssistant>[MPFile]", 2, "PC offline!");
-    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     addj
  * JD-Core Version:    0.7.0.1
  */

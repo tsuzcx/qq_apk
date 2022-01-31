@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import bcto;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -18,7 +19,7 @@ public class UsingTimeReportManager
 {
   private IntentFilter jdField_a_of_type_AndroidContentIntentFilter;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<bcto> jdField_a_of_type_JavaUtilList = new ArrayList();
   
   public UsingTimeReportManager(AppInterface paramAppInterface)
   {
@@ -50,7 +51,7 @@ public class UsingTimeReportManager
       ((List)localObject1).addAll(this.jdField_a_of_type_JavaUtilList);
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext()) {
-        ((UsingTimeReportManager.IStateChangeCallBack)((Iterator)localObject1).next()).c();
+        ((bcto)((Iterator)localObject1).next()).c();
       }
     }
     finally {}
@@ -64,7 +65,7 @@ public class UsingTimeReportManager
       ((List)localObject1).addAll(this.jdField_a_of_type_JavaUtilList);
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext()) {
-        ((UsingTimeReportManager.IStateChangeCallBack)((Iterator)localObject1).next()).d();
+        ((bcto)((Iterator)localObject1).next()).d();
       }
     }
     finally {}
@@ -78,41 +79,41 @@ public class UsingTimeReportManager
       ((List)localObject1).addAll(this.jdField_a_of_type_JavaUtilList);
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext()) {
-        ((UsingTimeReportManager.IStateChangeCallBack)((Iterator)localObject1).next()).e();
+        ((bcto)((Iterator)localObject1).next()).e();
       }
     }
     finally {}
   }
   
-  public void a(UsingTimeReportManager.IStateChangeCallBack paramIStateChangeCallBack)
+  public void a(bcto parambcto)
   {
     try
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramIStateChangeCallBack)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramIStateChangeCallBack);
+      if (!this.jdField_a_of_type_JavaUtilList.contains(parambcto)) {
+        this.jdField_a_of_type_JavaUtilList.add(parambcto);
       }
       return;
     }
     finally
     {
-      paramIStateChangeCallBack = finally;
-      throw paramIStateChangeCallBack;
+      parambcto = finally;
+      throw parambcto;
     }
   }
   
-  public void b(UsingTimeReportManager.IStateChangeCallBack paramIStateChangeCallBack)
+  public void b(bcto parambcto)
   {
     try
     {
-      if (this.jdField_a_of_type_JavaUtilList.contains(paramIStateChangeCallBack)) {
-        this.jdField_a_of_type_JavaUtilList.remove(paramIStateChangeCallBack);
+      if (this.jdField_a_of_type_JavaUtilList.contains(parambcto)) {
+        this.jdField_a_of_type_JavaUtilList.remove(parambcto);
       }
       return;
     }
     finally
     {
-      paramIStateChangeCallBack = finally;
-      throw paramIStateChangeCallBack;
+      parambcto = finally;
+      throw parambcto;
     }
   }
   
@@ -170,7 +171,7 @@ public class UsingTimeReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.UsingTimeReportManager
  * JD-Core Version:    0.7.0.1
  */

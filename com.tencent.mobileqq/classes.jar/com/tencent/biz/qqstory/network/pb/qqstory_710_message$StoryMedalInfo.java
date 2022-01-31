@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_710_message$StoryMedalInfo
-  extends MessageMicro
+  extends MessageMicro<StoryMedalInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField content = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -29,7 +29,7 @@ public final class qqstory_710_message$StoryMedalInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_710_message.StoryMedalInfo
  * JD-Core Version:    0.7.0.1
  */

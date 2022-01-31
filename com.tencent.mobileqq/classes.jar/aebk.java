@@ -1,27 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.leba.view.LebaFeedsViewBase;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
 
 public class aebk
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public aebk(LebaFeedsViewBase paramLebaFeedsViewBase) {}
+  public aebk(TranslucentTRansferFragment paramTranslucentTRansferFragment, bdjz parambdjz) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.b) {}
-    switch (paramMotionEvent.getAction())
-    {
-    case 2: 
-    default: 
-      return false;
-    case 0: 
-      this.a.a(true);
-      return false;
-    }
-    this.a.a(false);
-    return false;
+    this.jdField_a_of_type_Bdjz.dismiss();
+    paramDialogInterface = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTranslucentTRansferFragment.getActivity(), RegisterPhoneNumActivity.class);
+    paramDialogInterface.putExtra("invite_code", this.jdField_a_of_type_ComTencentMobileqqActivityTranslucentTRansferFragment.getActivity().getIntent().getStringExtra("invite_code"));
+    this.jdField_a_of_type_ComTencentMobileqqActivityTranslucentTRansferFragment.startActivity(paramDialogInterface);
+    azqs.b(null, "dc00898", "", "", "0X800970C", "0X800970C", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/fkc" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:id="@id/fkd" android:background="@drawable/common_tips_bg_white" android:layout_width="fill_parent" android:layout_height="@dimen/al4">
+        <TextView android:textSize="14.0sp" android:textColor="@color/ah3" android:gravity="center|left" android:id="@id/fke" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/al6" android:text="@string/cqz" android:drawableLeft="@drawable/b9e" android:drawablePadding="@dimen/al8" android:layout_weight="1.0" />
+        <ImageView android:id="@id/fkb" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/al6" android:src="@drawable/cip" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:id="@id/arg" android:background="@drawable/common_tips_bg_white" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/al4">
+        <TextView android:textSize="14.0sp" android:textColor="@color/ah3" android:gravity="center|left" android:id="@id/arh" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/al6" android:text="@string/z3" android:drawablePadding="@dimen/al8" android:layout_weight="1.0" />
+        <ImageView android:id="@id/arf" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/al6" android:src="@drawable/cip" />
+    </LinearLayout>
+</LinearLayout>

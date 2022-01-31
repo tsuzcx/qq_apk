@@ -22,7 +22,7 @@ import com.tencent.mobileqq.text.EmotcationConstants;
 import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
-import hbm;
+import gxf;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -201,7 +201,7 @@ public class AtTroopMemberSpan
       return localStringBuffer.toString();
     }
     if (arrayOfAtTroopMemberSpan.length > 1) {
-      Arrays.sort(arrayOfAtTroopMemberSpan, new hbm(paramEditable));
+      Arrays.sort(arrayOfAtTroopMemberSpan, new gxf(paramEditable));
     }
     int j = 0;
     while (i < arrayOfAtTroopMemberSpan.length)

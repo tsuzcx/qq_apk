@@ -1,15 +1,23 @@
-import com.tencent.mobileqq.vashealth.PathTraceManager;
-import java.util.List;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class akjw
-  implements Runnable
+class akjw
+  implements Animation.AnimationListener
 {
-  public akjw(PathTraceManager paramPathTraceManager, List paramList) {}
+  akjw(akjt paramakjt, View paramView) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager.a(this.jdField_a_of_type_JavaUtilList);
+    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView.getTag() instanceof akjz))) {
+      ((akjz)this.jdField_a_of_type_AndroidViewView.getTag()).a = true;
+    }
+    akjt.a(this.jdField_a_of_type_Akjt);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

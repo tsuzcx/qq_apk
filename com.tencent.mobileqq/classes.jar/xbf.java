@@ -1,20 +1,14 @@
-import com.tencent.mobileqq.activity.qwallet.RedPacketRecordFragment;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
 
-public class xbf
-  implements Runnable
+public abstract interface xbf
 {
-  public xbf(RedPacketRecordFragment paramRedPacketRecordFragment, int paramInt) {}
+  public abstract void a();
   
-  public void run()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.f()) {
-      RedPacketRecordFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment, this.jdField_a_of_type_Int);
-    }
-  }
+  public abstract void a(TroopBarPOI paramTroopBarPOI);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xbf
  * JD-Core Version:    0.7.0.1
  */

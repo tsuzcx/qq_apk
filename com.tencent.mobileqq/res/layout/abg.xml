@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto">
+    <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureLayout android:id="@id/ct4" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/kqw" android:background="@color/bq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/kq6" android:background="#73111112" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="horizontal" android:id="@id/cpy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/az_" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <ImageView android:background="@drawable/dry" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" android:layout_marginTop="11.0dip" android:layout_marginBottom="11.0dip" />
+            </LinearLayout>
+            <TextView android:textSize="17.0sp" android:textColor="#ffffffff" android:layout_gravity="center_vertical" android:id="@id/cq1" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="全屏模式标题" android:layout_weight="1.0" android:lineSpacingExtra="1.0dip" />
+        </LinearLayout>
+        <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGradientMaskView android:layout_gravity="bottom" android:layout_width="fill_parent" android:layout_height="90.0dip" android:alpha="0.7" tencent:mask_mode="10" />
+        <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsInterceptTouchLayout android:layout_gravity="bottom" android:id="@id/acm" android:layout_width="fill_parent" android:layout_height="90.0dip">
+            <LinearLayout android:layout_gravity="bottom" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="38.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:layout_alignParentBottom="true">
+                <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/bcq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:text="00:00" />
+                <ImageView android:layout_gravity="center_vertical" android:id="@id/kvj" android:visibility="gone" android:layout_width="21.0dip" android:layout_height="21.0dip" android:src="@drawable/a2k" />
+                <SeekBar android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/iln" android:paddingLeft="4.0dip" android:paddingTop="15.0dip" android:paddingRight="4.0dip" android:paddingBottom="15.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxHeight="2.0dip" android:progressDrawable="@drawable/a0y" android:minHeight="2.0dip" android:thumb="@drawable/a2f" android:thumbOffset="3.0dip" android:layout_weight="1.0" />
+                <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/jv0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="00:00" />
+                <FrameLayout android:orientation="horizontal" android:id="@id/cpz" android:paddingLeft="14.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                    <ImageView android:layout_gravity="center" android:id="@id/cq0" android:background="@drawable/d8n" android:layout_width="21.0dip" android:layout_height="21.0dip" />
+                </FrameLayout>
+            </LinearLayout>
+        </com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsInterceptTouchLayout>
+    </FrameLayout>
+    <RelativeLayout android:id="@id/fv1" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/fv0" android:layout_width="62.0dip" android:layout_height="62.0dip" android:layout_centerInParent="true" android:contentDescription="@string/pus" />
+        <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/feu" android:background="@drawable/t0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_marginTop="14.0dip" android:text="0M流量" android:layout_centerInParent="true" />
+        <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:id="@id/e14" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.0dip" android:layout_below="@id/feu" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="15.0dip" android:textColor="#e6ffffff" android:id="@id/bye" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:text="" android:layout_above="@id/feu" android:layout_below="@id/fv0" android:layout_centerHorizontal="true" />
+        <ViewStub android:id="@id/byd" android:layout="@layout/abo" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+    <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/ca1" android:background="@drawable/sx" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_centerInParent="true" />
+    <TextView android:textSize="10.0sp" android:textColor="@color/alf" android:layout_gravity="center_vertical" android:id="@id/itd" android:background="#4d000000" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" />
+</FrameLayout>

@@ -1,34 +1,20 @@
-import android.os.Handler;
 import android.os.Message;
-import com.tencent.mobileqq.intervideo.huayang.HuayangPluginLauncher;
+import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
+import mqq.os.MqqHandler;
 
 public class aduh
-  implements Runnable
+  extends MqqHandler
 {
-  public aduh(HuayangPluginLauncher paramHuayangPluginLauncher, boolean paramBoolean) {}
+  public aduh(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher) == null) {
-      HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher, HuayangPluginLauncher.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher));
-    }
-    if ((HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher) != null) && (HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher)))
+    switch (paramMessage.what)
     {
-      if (!this.jdField_a_of_type_Boolean) {
-        break label108;
-      }
-      Message localMessage = Message.obtain(HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher), 2);
-      HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher).sendMessage(localMessage);
-      HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher, HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher));
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher.jdField_a_of_type_Boolean = true;
-    }
-    for (;;)
-    {
-      HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher, false);
+    default: 
       return;
-      label108:
-      HuayangPluginLauncher.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher, HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher));
     }
+    this.a.finish();
   }
 }
 

@@ -1,44 +1,30 @@
 package com.tencent.token;
 
-import com.tencent.token.global.b;
-import com.tencent.token.global.d;
+import android.media.SoundPool;
+import android.os.AsyncTask;
 import java.util.HashMap;
-import org.json.JSONObject;
 
-public final class da
-  extends bm
+class da
+  extends AsyncTask
 {
-  private long c;
+  da(cz paramcz) {}
   
-  protected final String a()
+  public String a(String... paramVarArgs)
   {
-    ae.a();
-    if (ax.a().p()) {
-      ax.a();
-    }
-    for (String str = ax.c; str == null; str = null)
+    try
     {
-      this.a.a(104, null, null);
+      paramVarArgs = (Integer)cz.a(this.a).get(Integer.valueOf(11));
+      if (paramVarArgs == null) {
+        return null;
+      }
+      int i = this.a.a(paramVarArgs.intValue());
+      Thread.sleep(600L);
+      cz.b(this.a).stop(i);
+      cz.a(this.a, false);
       return null;
     }
-    str = "?uin=" + this.c + "&aq_base_sid=" + str;
-    return b.c() + "/cn/mbtoken3/mbtoken3_feedback_mobile_using" + str;
-  }
-  
-  protected final void a(fs paramfs)
-  {
-    this.c = ((Long)paramfs.c.get("param.uinhash")).longValue();
-  }
-  
-  protected final void a(JSONObject paramJSONObject)
-  {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
-    {
-      a(i, paramJSONObject.getString("info"));
-      return;
-    }
-    this.a.a = 0;
+    catch (Exception paramVarArgs) {}
+    return null;
   }
 }
 

@@ -69,7 +69,7 @@ public class RecentTroopAssistantItem
           if ((TroopNotificationHelper.a(str)) || (TroopNotificationHelper.d(str)))
           {
             this.jdField_c_of_type_JavaLangCharSequence = BaseApplicationImpl.getContext().getString(2131561546);
-            this.D = paramContext.getResources().getColor(2131362110);
+            this.D = paramContext.getResources().getColor(2131362120);
           }
           i = this.F & 0xFFFFF0FF;
           localObject1 = (FriendManager)paramQQAppInterface.getManager(8);

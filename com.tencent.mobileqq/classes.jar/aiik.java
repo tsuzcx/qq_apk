@@ -1,23 +1,17 @@
+import android.content.Context;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemButton;
-import java.lang.ref.WeakReference;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 
-public class aiik
-  implements View.OnLongClickListener
+class aiik
+  implements View.OnTouchListener
 {
-  public aiik(StructMsgItemButton paramStructMsgItemButton) {}
+  aiik(aiie paramaiie) {}
   
-  public boolean onLongClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a != null)
-    {
-      OnLongClickAndTouchListener localOnLongClickAndTouchListener = (OnLongClickAndTouchListener)this.a.a.get();
-      if (localOnLongClickAndTouchListener != null) {
-        return localOnLongClickAndTouchListener.onLongClick(paramView);
-      }
-    }
+    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
     return false;
   }
 }

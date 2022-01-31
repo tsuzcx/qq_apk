@@ -1,34 +1,33 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.QQMapView;
-import com.tencent.mobileqq.widget.QQMapView.QQMapViewObserver;
-import com.tencent.tencentmap.mapsdk.map.GeoPoint;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.open.applist.WebAppActivity;
+import com.tencent.open.base.LogUtility;
+import com.tencent.smtt.sdk.DownloadListener;
 
 public class hlh
-  extends Handler
+  implements DownloadListener
 {
-  public hlh(QQMapView paramQQMapView) {}
+  public hlh(WebAppActivity paramWebAppActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
   {
-    GeoPoint localGeoPoint;
-    if ((paramMessage != null) && (paramMessage.obj != null) && (this.a.a != null)) {
-      localGeoPoint = (GeoPoint)paramMessage.obj;
-    }
-    switch (paramMessage.arg1)
+    LogUtility.c("WebAppActivity", "url= " + paramString1);
+    LogUtility.c("WebAppActivity", "minetype= " + paramString4);
+    paramString1 = new Intent("android.intent.action.VIEW", Uri.parse(paramString1));
+    try
     {
-    default: 
-      return;
-    case 0: 
-      this.a.a.b(localGeoPoint);
+      this.a.startActivity(paramString1);
       return;
     }
-    this.a.a.c(localGeoPoint);
+    catch (Exception paramString1)
+    {
+      LogUtility.c("WebAppActivity", "no activity handle Intent.ACTION_VIEW ", paramString1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hlh
  * JD-Core Version:    0.7.0.1
  */

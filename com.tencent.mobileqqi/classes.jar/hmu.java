@@ -1,19 +1,50 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.GetAuthApiListResponse;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
 
-class hmu
-  implements DialogInterface.OnClickListener
+public class hmu
+  implements Runnable
 {
-  hmu(hms paramhms, SdkAuthorize.GetAuthApiListResponse paramGetAuthApiListResponse, JSONObject paramJSONObject) {}
+  public hmu(DownloadManager paramDownloadManager, String paramString, int paramInt, DownloadInfo paramDownloadInfo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_Hms.a.a(this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$GetAuthApiListResponse.ret.get(), this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
+    int j = 3;
+    int i = j;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    try
+    {
+      if (this.jdField_a_of_type_Int == 0) {
+        i = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().startDownloadTask(this.jdField_a_of_type_JavaLangString, "application/vnd.android.package-archive");
+      }
+      for (;;)
+      {
+        LogUtility.a(DownloadManager.jdField_a_of_type_JavaLangString, "startDownloadTask downloadSDKClient result=" + i + " url=" + this.jdField_a_of_type_JavaLangString);
+        if (i != 0) {
+          this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, i, "");
+        }
+        return;
+        if (this.jdField_a_of_type_Int == 1)
+        {
+          i = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().startDownloadTask(this.jdField_a_of_type_JavaLangString, "application/tm.android.apkdiff");
+        }
+        else
+        {
+          LogUtility.a(DownloadManager.jdField_a_of_type_JavaLangString, "startDownload download unapk file, url = " + this.jdField_a_of_type_JavaLangString + ",filename = " + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.d);
+          i = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().startDownloadTask(this.jdField_a_of_type_JavaLangString, "resource/tm.android.unknown", this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.e);
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "downloadSDKClient>>>", localException);
+        i = j;
+      }
+    }
   }
 }
 

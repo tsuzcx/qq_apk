@@ -1,26 +1,34 @@
+import android.util.Pair;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.widget.HorizontalListViewAdapter;
-import com.tencent.mobileqq.filemanager.widget.HorizontalListViewAdapter.MenuData;
-import com.tencent.widget.ActionSheet;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.MainFragment;
+import java.util.List;
 
 public class adis
-  implements View.OnClickListener
+  implements bhuk
 {
-  public adis(HorizontalListViewAdapter paramHorizontalListViewAdapter, int paramInt) {}
+  public adis(MainFragment paramMainFragment, List paramList, bhuf parambhuf) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((HorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetHorizontalListViewAdapter) != null) && (HorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetHorizontalListViewAdapter).isShowing())) {
-      HorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetHorizontalListViewAdapter).dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.e();
+    if ((paramInt < 0) && (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
+      return;
     }
-    ((HorizontalListViewAdapter.MenuData)HorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetHorizontalListViewAdapter).get(this.jdField_a_of_type_Int)).a.onClick(paramView);
+    try
+    {
+      MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment, ((Integer)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).first).intValue(), (adiz)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).second);
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+    }
+    catch (Throwable paramView)
+    {
+      paramView.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adis
  * JD-Core Version:    0.7.0.1
  */

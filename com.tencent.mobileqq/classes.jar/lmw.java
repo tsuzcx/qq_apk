@@ -1,43 +1,90 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
+import java.util.List;
 
 public class lmw
-  extends BroadcastReceiver
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static final Object a;
+  public static final Comparator<lmw> a;
+  private static lmw b;
+  private static int c;
+  public int a;
+  public bamw a;
+  private lmw a;
+  public int b;
+  
+  static
   {
-    if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
+    jdField_a_of_type_JavaLangObject = new Object();
+    jdField_a_of_type_JavaUtilComparator = new lmx();
+  }
+  
+  private lmw(bamw parambamw, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Bamw = parambamw;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public static lmw a(bamw parambamw, int paramInt1, int paramInt2)
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      QLog.d("ReadinjoySPEventReport", 2, "receive screen off broadcast");
-      ReadinjoySPEventReport.b(false);
-    }
-    do
-    {
-      return;
-      if (paramIntent.getAction().equals("android.intent.action.SCREEN_ON"))
+      if (jdField_b_of_type_Lmw != null)
       {
-        QLog.d("ReadinjoySPEventReport", 2, "receive screen on broadcast");
-        ReadinjoySPEventReport.b(true);
-        return;
+        lmw locallmw = jdField_b_of_type_Lmw;
+        jdField_b_of_type_Lmw = locallmw.jdField_a_of_type_Lmw;
+        locallmw.a(parambamw, paramInt1, paramInt2);
+        c -= 1;
+        return locallmw;
       }
-    } while (!paramIntent.getAction().equals("com.tencent.plugin.state.change"));
-    int i = paramIntent.getIntExtra("key_plugin_state", -1);
-    QLog.d("ReadinjoySPEventReport", 2, "ACTION_PLUGIN_STATE_CHANGE " + i);
-    switch (i)
+      return new lmw(parambamw, paramInt1, paramInt2);
+    }
+  }
+  
+  private void a(bamw parambamw, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Lmw = null;
+    this.jdField_a_of_type_Bamw = parambamw;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public static void a(List<lmw> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {}
+    for (;;)
     {
-    case 0: 
-    default: 
+      return;
+      int i = paramList.size() - 1;
+      while (i >= 0)
+      {
+        lmw locallmw = (lmw)paramList.remove(i);
+        if (locallmw != null) {
+          locallmw.a();
+        }
+        i -= 1;
+      }
+    }
+  }
+  
+  public void a()
+  {
+    a(null, -1, -1);
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (c < 50)
+      {
+        this.jdField_a_of_type_Lmw = jdField_b_of_type_Lmw;
+        jdField_b_of_type_Lmw = this;
+        c += 1;
+      }
       return;
     }
-    ReadinjoySPEventReport.a(System.currentTimeMillis());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lmw
  * JD-Core Version:    0.7.0.1
  */

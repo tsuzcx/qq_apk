@@ -1,21 +1,34 @@
-import android.graphics.Color;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.TencentDocData;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class acnw
-  implements Runnable
+class acnw
+  implements View.OnClickListener
 {
-  public acnw(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
+  acnw(acnu paramacnu) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    MPFileVerifyPwdView.b(this.a).setEnabled(true);
-    MPFileVerifyPwdView.b(this.a).setTextColor(Color.parseColor("#00a5e0"));
+    if ((paramView.getTag() instanceof String)) {}
+    do
+    {
+      return;
+      paramView = (akib)paramView.getTag();
+      if ((paramView.a instanceof FileManagerEntity))
+      {
+        paramView = (FileManagerEntity)paramView.a;
+        this.a.a(paramView);
+        return;
+      }
+    } while (!(paramView.a instanceof TencentDocData));
+    paramView = (TencentDocData)paramView.a;
+    this.a.a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acnw
  * JD-Core Version:    0.7.0.1
  */

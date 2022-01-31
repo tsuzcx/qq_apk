@@ -1,26 +1,33 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pic.PicPreDownloader;
-import com.tencent.mobileqq.pic.PreDownloadStrategyBeta;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
 public class wbk
-  implements Runnable
+  extends umf<wax, utf>
 {
-  public wbk(TroopChatPie paramTroopChatPie) {}
-  
-  public void run()
+  public wbk(wax paramwax)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
+    super(paramwax);
+  }
+  
+  public void a(@NonNull wax paramwax, @NonNull utf paramutf)
+  {
+    if ((paramwax.a != null) && (TextUtils.equals(paramwax.a.b, paramutf.a)))
     {
-      String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a.b(str);
+      wxe.a(this.TAG, "receive feed info change event. %s.", paramutf.toString());
+      paramwax.i();
     }
   }
+  
+  public Class acceptEventClass()
+  {
+    return utf.class;
+  }
+  
+  public void b(@NonNull wax paramwax, @NonNull utf paramutf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wbk
  * JD-Core Version:    0.7.0.1
  */

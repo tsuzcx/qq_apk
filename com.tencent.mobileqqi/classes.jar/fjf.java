@@ -1,46 +1,15 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.RecommendContact;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class fjf
-  implements Runnable
+public final class fjf
+  implements Comparator
 {
-  public fjf(PhoneContactManagerImp paramPhoneContactManagerImp, List paramList) {}
-  
-  public void run()
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return;
+    if (paramMessageRecord1.longMsgIndex > paramMessageRecord2.longMsgIndex) {
+      return 1;
     }
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-        return;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContactManager", 2, "setRecommendMsgReaded");
-    }
-    EntityTransaction localEntityTransaction = PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp).a();
-    try
-    {
-      localEntityTransaction.a();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        RecommendContact localRecommendContact = (RecommendContact)localIterator.next();
-        PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp).a(localRecommendContact);
-      }
-    }
-    finally
-    {
-      localEntityTransaction.b();
-    }
-    localEntityTransaction.b();
+    return -1;
   }
 }
 

@@ -1,17 +1,45 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.LoginActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.PeopleAroundBaseActivity;
+import com.tencent.mobileqq.adapter.PeopleAroundAdapter;
+import com.tencent.widget.XListView;
+import java.lang.ref.WeakReference;
 
 public class czb
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public czb(LoginActivity paramLoginActivity) {}
+  private WeakReference a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public czb(PeopleAroundBaseActivity paramPeopleAroundBaseActivity)
+  {
+    this.a = new WeakReference(paramPeopleAroundBaseActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    PeopleAroundBaseActivity localPeopleAroundBaseActivity = (PeopleAroundBaseActivity)this.a.get();
+    if (localPeopleAroundBaseActivity == null) {}
+    do
+    {
+      return;
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      }
+      PeopleAroundBaseActivity.a(localPeopleAroundBaseActivity);
+      localPeopleAroundBaseActivity.jdField_a_of_type_ComTencentWidgetXListView.B();
+      if (paramMessage.arg1 == 1) {
+        localPeopleAroundBaseActivity.a(1, 2131562097);
+      }
+    } while (!localPeopleAroundBaseActivity.jdField_a_of_type_ComTencentMobileqqAdapterPeopleAroundAdapter.b);
+    localPeopleAroundBaseActivity.jdField_a_of_type_ComTencentMobileqqAdapterPeopleAroundAdapter.b = false;
+    localPeopleAroundBaseActivity.jdField_a_of_type_ComTencentMobileqqAdapterPeopleAroundAdapter.notifyDataSetChanged();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     czb
  * JD-Core Version:    0.7.0.1
  */

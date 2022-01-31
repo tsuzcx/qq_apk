@@ -1,18 +1,15 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
+import com.tencent.av.VideoController;
 
-class mtr
-  implements Runnable
+public class mtr
 {
-  mtr(mtq parammtq) {}
-  
-  public void run()
+  public static void a()
   {
-    SubscriptRecommendController.a(this.a.a.a, false);
+    mtq.a("0X800A3D8", VideoController.a().a().d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mtr
  * JD-Core Version:    0.7.0.1
  */

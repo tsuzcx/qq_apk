@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.trooppiceffects.view;
 
-import ajxd;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
@@ -19,16 +18,17 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import bcxg;
 
 public class PhantomPicView
   extends FrameLayout
-  implements IPicView
+  implements bcxg
 {
   protected Handler a;
   protected FrameLayout a;
   protected ImageView a;
   protected boolean a;
-  public FrameLayout b;
+  protected FrameLayout b;
   protected ImageView b;
   protected ImageView c;
   
@@ -95,7 +95,7 @@ public class PhantomPicView
     ((AnimatorSet)localObject3).play((Animator)localObject1).with((Animator)localObject4).with((Animator)localObject2);
     ((AnimatorSet)localObject3).start();
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setTag(localObject3);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ajxd(this), 80L);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new PhantomPicView.1(this), 80L);
   }
   
   public void setBitmap(Bitmap paramBitmap)
@@ -113,7 +113,7 @@ public class PhantomPicView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.view.PhantomPicView
  * JD-Core Version:    0.7.0.1
  */

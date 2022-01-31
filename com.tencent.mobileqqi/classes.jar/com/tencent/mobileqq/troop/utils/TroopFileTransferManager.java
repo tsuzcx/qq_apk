@@ -35,8 +35,8 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import hcd;
-import hcf;
+import gxw;
+import gxy;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -129,7 +129,7 @@ public class TroopFileTransferManager
       if (jdField_a_of_type_JavaUtilMap == null)
       {
         jdField_a_of_type_JavaUtilMap = new HashMap();
-        new Thread(new hcd()).start();
+        new Thread(new gxw()).start();
       }
       TroopFileUploadingManager.a(paramQQAppInterface);
       TroopFileTransferManager localTroopFileTransferManager2 = (TroopFileTransferManager)jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
@@ -1880,7 +1880,7 @@ public class TroopFileTransferManager
     if (this.jdField_a_of_type_JavaUtilTimer == null)
     {
       this.jdField_a_of_type_JavaUtilTimer = new Timer();
-      this.jdField_a_of_type_JavaUtilTimer.schedule(new hcf(this), 10000L, 10000L);
+      this.jdField_a_of_type_JavaUtilTimer.schedule(new gxy(this), 10000L, 10000L);
     }
   }
   
@@ -2340,10 +2340,10 @@ public class TroopFileTransferManager
     //   21: ifeq +21 -> 42
     //   24: new 114	java/lang/Thread
     //   27: dup
-    //   28: new 1124	hcg
+    //   28: new 1124	gxz
     //   31: dup
     //   32: aload_0
-    //   33: invokespecial 1125	hcg:<init>	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;)V
+    //   33: invokespecial 1125	gxz:<init>	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;)V
     //   36: invokespecial 120	java/lang/Thread:<init>	(Ljava/lang/Runnable;)V
     //   39: invokevirtual 123	java/lang/Thread:start	()V
     //   42: aload_0

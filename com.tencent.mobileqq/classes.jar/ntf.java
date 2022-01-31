@@ -1,20 +1,43 @@
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public class ntf
-  implements Runnable
+final class ntf
+  implements bfah
 {
-  public ntf(QQStoryBaseActivity paramQQStoryBaseActivity) {}
+  ntf(String paramString, syx paramsyx) {}
   
-  public void run()
+  public void a(BaseResp paramBaseResp)
   {
-    ((UserManager)SuperManager.a(2)).c();
+    boolean bool = true;
+    if ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction))) {
+      return;
+    }
+    BaseApplicationImpl.getContext();
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      ybk.b(1, 2131720031);
+      bool = false;
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      if (this.jdField_a_of_type_Syx == null) {
+        break;
+      }
+      this.jdField_a_of_type_Syx.a(bool);
+      return;
+      ybk.b(2, 2131720050);
+      continue;
+      bool = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ntf
  * JD-Core Version:    0.7.0.1
  */

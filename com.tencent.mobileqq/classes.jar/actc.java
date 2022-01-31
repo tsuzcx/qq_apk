@@ -1,49 +1,65 @@
-import com.tencent.mobileqq.app.DataLineHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qphone.base.util.QLog;
 
 class actc
-  implements FMDialogUtil.FMDialogInterface
+  implements DialogInterface.OnClickListener
 {
-  actc(actb paramactb, FileManagerEntity paramFileManagerEntity) {}
+  actc(actb paramactb) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Actb.a.a.a().ac();
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
-      QfileBaseRecentFileTabView.s(this.jdField_a_of_type_Actb.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    }
-    DataLineHandler localDataLineHandler;
-    ArrayList localArrayList;
-    do
+    switch (paramInt)
     {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
-        break;
+    }
+    for (;;)
+    {
+      try
+      {
+        paramDialogInterface.dismiss();
+        this.a.a.jdField_a_of_type_AndroidAppDialog = null;
+        return;
       }
-      localDataLineHandler = (DataLineHandler)QfileBaseRecentFileTabView.t(this.jdField_a_of_type_Actb.a).a(8);
-      localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
-    } while (localDataLineHandler.a(localArrayList));
-    FMToastUtil.a(2131428328);
-    return;
-    QfileBaseRecentFileTabView.u(this.jdField_a_of_type_Actb.a).a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      catch (Exception paramDialogInterface) {}
+      if (SettingCloneUtil.readValue(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), null, "pcactive_config", false)) {
+        this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startPCActivePolling(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "logout");
+      }
+      this.a.a.a(this.a.a.a(), this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      continue;
+      if (actb.a(this.a).startsWith("http")) {}
+      for (;;)
+      {
+        try
+        {
+          Intent localIntent = new Intent(this.a.a.a(), QQBrowserActivity.class);
+          localIntent.putExtra("url", actb.a(this.a));
+          this.a.a.a().startActivity(localIntent);
+          azqs.b(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008273", "0X8008273", 0, 0, "", "", "", "");
+        }
+        catch (Exception localException)
+        {
+          if (!QLog.isDevelopLevel()) {
+            continue;
+          }
+          localException.printStackTrace();
+          continue;
+        }
+        if (actb.a(this.a).startsWith("mqqapi:")) {
+          bdib.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.a(), actb.a(this.a)).c();
+        }
+      }
+    }
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     actc
  * JD-Core Version:    0.7.0.1
  */

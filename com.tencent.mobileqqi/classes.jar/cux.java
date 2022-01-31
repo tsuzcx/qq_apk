@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class cux
-  implements View.OnClickListener
+class cux
+  implements DialogInterface.OnClickListener
 {
-  public cux(GesturePWDCreateActivity paramGesturePWDCreateActivity) {}
+  cux(cuv paramcuv) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
+    paramDialogInterface.dismiss();
   }
 }
 

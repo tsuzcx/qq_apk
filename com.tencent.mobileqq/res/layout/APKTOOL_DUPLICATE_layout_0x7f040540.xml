@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:visibility="gone" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040543" />
-    <include android:visibility="gone" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04053e" />
-    <include android:visibility="gone" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040542" />
-</FrameLayout>

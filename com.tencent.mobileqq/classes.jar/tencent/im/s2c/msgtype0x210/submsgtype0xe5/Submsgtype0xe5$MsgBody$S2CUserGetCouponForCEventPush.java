@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Submsgtype0xe5$MsgBody$S2CUserGetCouponForCEventPush
-  extends MessageMicro
+  extends MessageMicro<S2CUserGetCouponForCEventPush>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50 }, new String[] { "uint64_qquin", "uint64_kfuin", "uint64_coupon_id", "uint32_timestamp", "uint64_kfext", "str_tips_content" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), "" }, S2CUserGetCouponForCEventPush.class);
   public final PBStringField str_tips_content = PBField.initString("");

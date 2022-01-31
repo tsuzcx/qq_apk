@@ -23,12 +23,12 @@ import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.mobileqq.widget.HornAnimationView;
 import com.tencent.mobileqq.widget.HornAnimationView.OnHornItemClickObserver;
 import com.tencent.widget.AbsListView.LayoutParams;
-import dcv;
-import dcw;
-import dcx;
-import dcy;
-import dcz;
-import dda;
+import cxe;
+import cxf;
+import cxg;
+import cxh;
+import cxi;
+import cxj;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
@@ -48,10 +48,10 @@ public class NearPeopleActivity
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  LBSObserver jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new dcx(this);
+  LBSObserver jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new cxg(this);
   private NearHornHandler jdField_a_of_type_ComTencentMobileqqAppNearHornHandler;
-  NearHornObserver jdField_a_of_type_ComTencentMobileqqAppNearHornObserver = new dcz(this);
-  HornAnimationView.OnHornItemClickObserver jdField_a_of_type_ComTencentMobileqqWidgetHornAnimationView$OnHornItemClickObserver = new dcy(this);
+  NearHornObserver jdField_a_of_type_ComTencentMobileqqAppNearHornObserver = new cxi(this);
+  HornAnimationView.OnHornItemClickObserver jdField_a_of_type_ComTencentMobileqqWidgetHornAnimationView$OnHornItemClickObserver = new cxh(this);
   public HornAnimationView a;
   public Boolean a;
   private ScheduledExecutorService jdField_a_of_type_JavaUtilConcurrentScheduledExecutorService;
@@ -102,7 +102,7 @@ public class NearPeopleActivity
   {
     super.a(paramBoolean1, paramBoolean2);
     if ((NetworkUtil.e(this)) && (paramBoolean2)) {
-      this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new dda(this));
+      this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new cxj(this));
     }
   }
   
@@ -113,7 +113,7 @@ public class NearPeopleActivity
     this.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler = ((NearHornHandler)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(31));
     this.c = this.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.a;
     if (NetworkUtil.e(this)) {
-      this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new dcw(this));
+      this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new cxf(this));
     }
     if (this.jdField_a_of_type_AndroidWidgetLinearLayout == null)
     {
@@ -141,10 +141,10 @@ public class NearPeopleActivity
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
     this.jdField_a_of_type_AndroidContentContext = this;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131233340));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131233342));
     this.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
     this.jdField_g_of_type_JavaLangString = String.format(this.jdField_g_of_type_JavaLangString, new Object[] { this.jdField_b_of_type_JavaLangString });
-    new Handler().postDelayed(new dcv(this), 2000L);
+    new Handler().postDelayed(new cxe(this), 2000L);
     return true;
   }
   

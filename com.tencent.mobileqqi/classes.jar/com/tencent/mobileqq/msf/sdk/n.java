@@ -28,18 +28,19 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class n
 {
-  private static AtomicBoolean A;
-  private static int B = 0;
-  private static long C = 0L;
-  private static AtomicBoolean D;
-  private static final int[] E;
-  private static AtomicInteger F;
-  private static Handler G;
-  private static volatile Context H;
-  private static String I = "";
-  private static final String J = "MSF.D.QLogImpl";
-  private static final String K = "QLog";
-  private static final String L = "";
+  private static FileWriter A;
+  private static AtomicBoolean B;
+  private static int C = 0;
+  private static long D = 0L;
+  private static AtomicBoolean E;
+  private static final int[] F;
+  private static AtomicInteger G;
+  private static Handler H;
+  private static volatile Context I;
+  private static String J = "";
+  private static final String K = "MSF.D.QLogImpl";
+  private static final String L = "QLog";
+  private static final String M = "";
   protected static int a = 1;
   protected static final boolean b = false;
   protected static boolean c = false;
@@ -61,38 +62,39 @@ public class n
   private static final String s = "appMemory";
   private static int t = a;
   private static String u;
-  private static long v;
+  private static String v;
   private static long w;
-  private static String x;
+  private static long x;
   private static String y;
-  private static FileWriter z;
+  private static String z;
   
   static
   {
     c = true;
     d = new Object();
     u = "";
-    x = "";
+    v = "";
     y = "";
+    z = "";
     h = new k(15000);
     i = new ReentrantLock();
-    A = new AtomicBoolean(false);
-    C = 0L;
-    D = new AtomicBoolean(false);
-    E = new int[] { 1, 2, 4, 8, 16, 29 };
-    F = new AtomicInteger(0);
-    G = new Handler(Looper.getMainLooper());
-    H = null;
+    B = new AtomicBoolean(false);
+    D = 0L;
+    E = new AtomicBoolean(false);
+    F = new int[] { 1, 2, 4, 8, 16, 29 };
+    G = new AtomicInteger(0);
+    H = new Handler(Looper.getMainLooper());
+    I = null;
     j = new o();
   }
   
   public static String a()
   {
-    int i1 = x.indexOf(":");
+    int i1 = y.indexOf(":");
     if (i1 > 0) {
-      return x.substring(0, i1);
+      return y.substring(0, i1);
     }
-    return x;
+    return y;
   }
   
   public static String a(int paramInt)
@@ -112,7 +114,7 @@ public class n
   
   public static String a(String paramString)
   {
-    return x.replace(":", "_") + "." + paramString + ".log";
+    return y.replace(":", "_") + "." + paramString + ".log";
   }
   
   public static void a(int paramInt, String paramString1, String paramString2)
@@ -166,7 +168,8 @@ public class n
       File localFile;
       try
       {
-        u = Environment.getExternalStorageDirectory().getPath() + "/tencent/" + y.replace(".", "/") + "/";
+        u = QLog.getLogExternalPath(BaseApplication.context) + "/tencent/msflogs/" + z.replace(".", "/") + "/";
+        v = Environment.getExternalStorageDirectory().getPath() + "/tencent/" + z.replace(".", "/") + "/";
         localObject3 = new File(u);
         if (!((File)localObject3).exists()) {
           ((File)localObject3).mkdirs();
@@ -182,25 +185,25 @@ public class n
           if (!localFile.exists())
           {
             boolean bool = localFile.createNewFile();
-            o();
+            p();
             localObject3 = localFile;
-            if (z != null)
+            if (A != null)
             {
-              z.write(I + "|" + x + "|D|" + "MSF.D.QLogImpl" + "|" + Build.MODEL + " " + Build.VERSION.RELEASE + " create newLogFile " + localFile.getName() + " " + bool + "\n");
-              z.flush();
+              A.write(J + "|" + y + "|D|" + "MSF.D.QLogImpl" + "|" + Build.MODEL + " " + Build.VERSION.RELEASE + " create newLogFile " + localFile.getName() + " " + bool + "\n");
+              A.flush();
               localObject3 = localFile;
             }
-            z = new FileWriter((File)localObject3, true);
-            o();
+            A = new FileWriter((File)localObject3, true);
+            p();
             return;
           }
-          o();
+          p();
           localObject3 = localFile;
-          if (z == null) {
+          if (A == null) {
             continue;
           }
-          z.write(I + "|" + x + "|E|" + "MSF.D.QLogImpl" + "|" + Build.MODEL + " " + Build.VERSION.RELEASE + "|newLogFile " + localFile.getName() + " is existed.\n");
-          z.flush();
+          A.write(J + "|" + y + "|E|" + "MSF.D.QLogImpl" + "|" + Build.MODEL + " " + Build.VERSION.RELEASE + "|newLogFile " + localFile.getName() + " is existed.\n");
+          A.flush();
           localObject3 = localFile;
           continue;
           localThrowable1.printStackTrace();
@@ -219,7 +222,7 @@ public class n
   
   public static void a(Context paramContext)
   {
-    H = paramContext.getApplicationContext();
+    I = paramContext.getApplicationContext();
     j.run();
   }
   
@@ -256,7 +259,7 @@ public class n
     paramCalendar.add(11, 1);
     paramCalendar.set(12, 0);
     paramCalendar.set(13, 0);
-    v = paramCalendar.getTimeInMillis();
+    w = paramCalendar.getTimeInMillis();
   }
   
   public static void a(boolean paramBoolean)
@@ -303,7 +306,7 @@ public class n
     Calendar localCalendar = Calendar.getInstance();
     localCalendar.setTimeInMillis(paramLong);
     Object localObject = new SimpleDateFormat("yy.MM.dd.HH");
-    I = new SimpleDateFormat("yy-MM-dd HH:mm:ss").format(Long.valueOf(paramLong));
+    J = new SimpleDateFormat("yy-MM-dd HH:mm:ss").format(Long.valueOf(paramLong));
     localObject = ((SimpleDateFormat)localObject).format(localCalendar.getTime());
     b(localCalendar);
     a(localCalendar);
@@ -342,7 +345,7 @@ public class n
   private static void b(Calendar paramCalendar)
   {
     paramCalendar.set(14, 0);
-    w = paramCalendar.getTimeInMillis() + 1000L;
+    x = paramCalendar.getTimeInMillis() + 1000L;
   }
   
   public static SimpleDateFormat c()
@@ -357,22 +360,22 @@ public class n
     //   0: ldc 2
     //   2: monitorenter
     //   3: lload_0
-    //   4: getstatic 491	com/tencent/mobileqq/msf/sdk/n:w	J
+    //   4: getstatic 504	com/tencent/mobileqq/msf/sdk/n:x	J
     //   7: lcmp
     //   8: ifle +34 -> 42
-    //   11: getstatic 92	com/tencent/mobileqq/msf/sdk/n:d	Ljava/lang/Object;
+    //   11: getstatic 93	com/tencent/mobileqq/msf/sdk/n:d	Ljava/lang/Object;
     //   14: astore_2
     //   15: aload_2
     //   16: monitorenter
-    //   17: getstatic 501	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:timeFormatter	Ljava/text/SimpleDateFormat;
+    //   17: getstatic 514	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:timeFormatter	Ljava/text/SimpleDateFormat;
     //   20: lload_0
-    //   21: invokestatic 458	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   24: invokevirtual 462	java/text/SimpleDateFormat:format	(Ljava/lang/Object;)Ljava/lang/String;
-    //   27: putstatic 150	com/tencent/mobileqq/msf/sdk/n:I	Ljava/lang/String;
-    //   30: getstatic 491	com/tencent/mobileqq/msf/sdk/n:w	J
-    //   33: ldc2_w 488
+    //   21: invokestatic 471	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   24: invokevirtual 475	java/text/SimpleDateFormat:format	(Ljava/lang/Object;)Ljava/lang/String;
+    //   27: putstatic 153	com/tencent/mobileqq/msf/sdk/n:J	Ljava/lang/String;
+    //   30: getstatic 504	com/tencent/mobileqq/msf/sdk/n:x	J
+    //   33: ldc2_w 501
     //   36: ladd
-    //   37: putstatic 491	com/tencent/mobileqq/msf/sdk/n:w	J
+    //   37: putstatic 504	com/tencent/mobileqq/msf/sdk/n:x	J
     //   40: aload_2
     //   41: monitorexit
     //   42: ldc 2
@@ -454,7 +457,7 @@ public class n
   
   public static String e()
   {
-    return x;
+    return y;
   }
   
   private static void e(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
@@ -464,7 +467,7 @@ public class n
     {
       return;
       long l1 = System.currentTimeMillis();
-      if (l1 >= w) {
+      if (l1 >= x) {
         c(l1);
       }
       if ((r != 0L) && (l1 - r > 1800000L))
@@ -474,7 +477,7 @@ public class n
       }
       String str = a(paramInt);
       l1 = Thread.currentThread().getId();
-      paramString2 = I + "|" + x + "[" + B + "]|" + String.valueOf(l1) + "|" + str + "|" + paramString1 + "|" + paramString2 + "\n";
+      paramString2 = J + "|" + y + "[" + C + "]|" + String.valueOf(l1) + "|" + str + "|" + paramString1 + "|" + paramString2 + "\n";
       paramString1 = paramString2;
       if (paramThrowable != null) {
         paramString1 = paramString2 + "\n" + Log.getStackTraceString(paramThrowable) + "\n";
@@ -484,9 +487,9 @@ public class n
         Log.d("QLogImpl", "addLogToCache failed!");
         return;
       }
-    } while ((BaseApplication.getContext() == null) || (System.currentTimeMillis() - C <= 180000L));
-    C = System.currentTimeMillis();
-    p();
+    } while ((BaseApplication.getContext() == null) || (System.currentTimeMillis() - D <= 180000L));
+    D = System.currentTimeMillis();
+    q();
   }
   
   public static boolean f()
@@ -521,6 +524,11 @@ public class n
     return false;
   }
   
+  public static String h()
+  {
+    return v;
+  }
+  
   private static void h(String paramString)
   {
     try
@@ -531,7 +539,7 @@ public class n
       if (!"mounted".equals(Environment.getExternalStorageState())) {
         return;
       }
-      if (z != null) {
+      if (A != null) {
         break label132;
       }
       System.out.println("can not write log.");
@@ -546,7 +554,7 @@ public class n
       long l1;
       while (((paramString instanceof IOException)) && (paramString.getMessage().contains("ENOSPC")))
       {
-        if (!D.compareAndSet(false, true)) {
+        if (!E.compareAndSet(false, true)) {
           return;
         }
         paramString.printStackTrace();
@@ -569,15 +577,15 @@ public class n
           }
           label132:
           l1 = System.currentTimeMillis();
-          if (l1 > v) {
+          if (l1 > w) {
             a(l1);
           }
           boolean bool = i.tryLock();
           if (bool) {}
           try
           {
-            z.write(paramString);
-            z.flush();
+            A.write(paramString);
+            A.flush();
             i.unlock();
           }
           finally
@@ -587,7 +595,7 @@ public class n
           Log.d("QLogImpl", "insertLogToCacheHead failed!");
         }
       }
-      D.compareAndSet(true, false);
+      E.compareAndSet(true, false);
       paramString.printStackTrace();
       try
       {
@@ -599,21 +607,21 @@ public class n
         paramString.printStackTrace();
       }
     }
-    D.compareAndSet(true, false);
+    E.compareAndSet(true, false);
     return;
   }
   
-  private static void o()
+  private static void p()
     throws IOException
   {
-    if ((z != null) && (!"".equals(QLog.sBuildNumber)))
+    if ((A != null) && (!"".equals(QLog.sBuildNumber)))
     {
-      z.write(I + "|" + x + "|D|" + "|QQ_Version: " + QLog.sBuildNumber + "\r\n");
-      z.flush();
+      A.write(J + "|" + y + "|D|" + "|QQ_Version: " + QLog.sBuildNumber + "\r\n");
+      A.flush();
     }
   }
   
-  private static void p()
+  private static void q()
   {
     try
     {

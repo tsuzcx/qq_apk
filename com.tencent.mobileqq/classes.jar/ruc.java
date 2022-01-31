@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.support.v4.view.MotionEventCompat;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
 
 public class ruc
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public ruc(BaseChatPie paramBaseChatPie) {}
+  public ruc(ReadInJoyNavigationGridview paramReadInJoyNavigationGridview) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.an();
+    if ((MotionEventCompat.getActionMasked(paramMotionEvent) == 0) && (ReadInJoyNavigationGridview.a(this.a) != null)) {
+      ReadInJoyNavigationGridview.a(this.a).a();
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ruc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
 class vyu
-  implements Runnable
+  implements MediaPlayer.OnCompletionListener
 {
-  vyu(vyt paramvyt) {}
+  vyu(vys paramvys, vyk paramvyk) {}
   
-  public void run()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    this.a.a.z(0);
+    this.jdField_a_of_type_Vyk.a(this.jdField_a_of_type_Vys);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vyu
  * JD-Core Version:    0.7.0.1
  */

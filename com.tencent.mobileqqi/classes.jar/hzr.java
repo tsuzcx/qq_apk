@@ -1,42 +1,24 @@
-import android.view.View;
-import android.widget.ListAdapter;
-import com.tencent.widget.AbsListView;
+import android.app.Activity;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.PluginParams;
 
-public class hzr
-  extends iab
-  implements Runnable
+public final class hzr
+  implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  private hzr(AbsListView paramAbsListView)
-  {
-    super(paramAbsListView, null);
-  }
+  public hzr(IPluginManager.PluginParams paramPluginParams, Activity paramActivity) {}
   
-  public void run()
+  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
   {
-    int i = this.a.W;
-    View localView = this.a.getChildAt(i - this.a.ap);
-    long l;
-    if (localView != null)
+    if (paramPluginManagerClient.isPluginInstalled(this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b))
     {
-      i = this.a.W;
-      l = this.a.a.getItemId(this.a.W);
-      if ((!a()) || (this.a.p)) {
-        break label126;
-      }
-    }
-    label126:
-    for (boolean bool = this.a.b(localView, i, l);; bool = false)
-    {
-      if (bool)
-      {
-        this.a.ab = -1;
-        this.a.setPressed(false);
-        localView.setPressed(false);
-        return;
-      }
-      this.a.ab = 2;
+      IPluginManager.d(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
+      IPluginManager.a(null);
       return;
     }
+    paramPluginManagerClient.installPlugin(this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b, new hzs(this));
+    IPluginManager.a(null);
   }
 }
 

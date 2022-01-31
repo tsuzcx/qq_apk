@@ -1,41 +1,31 @@
-import com.tencent.component.media.image.ImageManager;
-import java.io.File;
-import java.util.Comparator;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq;
 
-public final class pgs
-  implements Comparator
+public class pgs
 {
-  public int a(File paramFile1, File paramFile2)
+  private int jdField_a_of_type_Int = 1;
+  private long jdField_a_of_type_Long;
+  private long b = 0L;
+  
+  public ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq a()
   {
-    String str = paramFile1.getName();
-    Integer localInteger2 = (Integer)ImageManager.b().get(str);
-    Integer localInteger1 = localInteger2;
-    if (localInteger2 == null)
-    {
-      localInteger1 = Integer.valueOf((int)(paramFile1.lastModified() / 1000L));
-      ImageManager.b().put(str, localInteger1);
-    }
-    str = paramFile2.getName();
-    localInteger2 = (Integer)ImageManager.b().get(str);
-    paramFile1 = localInteger2;
-    if (localInteger2 == null)
-    {
-      paramFile1 = Integer.valueOf((int)(paramFile2.lastModified() / 1000L));
-      ImageManager.b().put(str, paramFile1);
-    }
-    if (localInteger1.intValue() > paramFile1.intValue()) {
-      return -1;
-    }
-    if (localInteger1.intValue() < paramFile1.intValue()) {
-      return 1;
-    }
-    return 0;
+    return new ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq(this, null);
+  }
+  
+  public pgs a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public pgs b(long paramLong)
+  {
+    this.b = paramLong;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pgs
  * JD-Core Version:    0.7.0.1
  */

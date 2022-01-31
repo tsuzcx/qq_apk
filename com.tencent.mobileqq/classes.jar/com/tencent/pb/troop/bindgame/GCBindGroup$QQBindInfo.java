@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class GCBindGroup$QQBindInfo
-  extends MessageMicro
+  extends MessageMicro<QQBindInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "appid", "group_code", "app_name" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), "" }, QQBindInfo.class);
   public final PBStringField app_name = PBField.initString("");
@@ -17,7 +17,7 @@ public final class GCBindGroup$QQBindInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.troop.bindgame.GCBindGroup.QQBindInfo
  * JD-Core Version:    0.7.0.1
  */

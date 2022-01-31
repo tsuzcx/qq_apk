@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class mobileqq_mp$UpdateResponseItem
-  extends MessageMicro
+  extends MessageMicro<UpdateResponseItem>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 58 }, new String[] { "module_id", "module_version", "module_state", "download_url", "md5", "decrypt", "pwd" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", Boolean.valueOf(false), "" }, UpdateResponseItem.class);
   public final PBBoolField decrypt = PBField.initBool(false);
@@ -21,7 +21,7 @@ public final class mobileqq_mp$UpdateResponseItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mp.mobileqq_mp.UpdateResponseItem
  * JD-Core Version:    0.7.0.1
  */

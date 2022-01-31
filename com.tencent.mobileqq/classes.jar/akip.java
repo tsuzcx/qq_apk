@@ -1,105 +1,54 @@
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.os.Handler;
-import android.view.MotionEvent;
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
-public class akip
-  implements View.OnTouchListener
+class akip
+  implements View.OnClickListener
 {
-  public akip(HealthBusinessPlugin paramHealthBusinessPlugin) {}
+  akip(akim paramakim) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    switch (paramMotionEvent.getAction())
+    ((SlideDetectListView)akim.a(this.a)).a();
+    Object localObject = (View)paramView.getParent();
+    if ((localObject instanceof ShaderAnimLayout)) {
+      ((ShaderAnimLayout)localObject).d();
+    }
+    paramView = paramView.getTag();
+    if (!(paramView instanceof DiscussionInfo)) {
+      return;
+    }
+    localObject = (DiscussionInfo)paramView;
+    if (bdin.a(akim.a(this.a)) == 0)
     {
-    default: 
-    case 0: 
-    case 2: 
-      for (;;)
-      {
-        return false;
-        this.a.a.x = ((int)paramMotionEvent.getRawX());
-        this.a.a.y = ((int)paramMotionEvent.getRawY());
-        if (QLog.isColorLevel())
-        {
-          QLog.d("HealthBusinessPlugin", 2, "down clicked");
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.d("HealthBusinessPlugin", 2, "move clicked");
-          }
-        }
-      }
+      paramView = (BaseActivity)akim.a(this.a);
+      QQToast.a(paramView, 2131696590, 0).b(paramView.getTitleBarHeight());
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("HealthBusinessPlugin", 2, "up clicked");
-    }
-    this.a.b.x = ((int)paramMotionEvent.getRawX());
-    this.a.b.y = ((int)paramMotionEvent.getRawY());
-    if ((Math.abs(this.a.a.y - this.a.b.y) < 8) && (Math.abs(this.a.a.x - this.a.b.x) < 8))
+    if ((!((DiscussionInfo)localObject).hasCollect) && (((alrk)this.a.a.getManager(53)).a() >= 80))
     {
-      paramView = new Rect();
-      paramMotionEvent = this.a.e.keySet().iterator();
-      while (paramMotionEvent.hasNext())
-      {
-        Object localObject = (String)paramMotionEvent.next();
-        FrameLayout localFrameLayout = (FrameLayout)this.a.e.get(localObject);
-        SeekBar localSeekBar = ((akjh)this.a.jdField_f_of_type_JavaUtilHashMap.get(localObject)).jdField_a_of_type_AndroidWidgetSeekBar;
-        TextView localTextView1 = ((akjh)this.a.jdField_f_of_type_JavaUtilHashMap.get(localObject)).jdField_c_of_type_AndroidWidgetTextView;
-        TextView localTextView2 = ((akjh)this.a.jdField_f_of_type_JavaUtilHashMap.get(localObject)).jdField_b_of_type_AndroidWidgetTextView;
-        ImageView localImageView1 = ((akjh)this.a.jdField_f_of_type_JavaUtilHashMap.get(localObject)).jdField_a_of_type_AndroidWidgetImageView;
-        ImageView localImageView2 = ((akjh)this.a.jdField_f_of_type_JavaUtilHashMap.get(localObject)).jdField_b_of_type_AndroidWidgetImageView;
-        TextView localTextView3 = ((akjh)this.a.jdField_f_of_type_JavaUtilHashMap.get(localObject)).jdField_a_of_type_AndroidWidgetTextView;
-        ImageView localImageView3 = ((akjh)this.a.jdField_f_of_type_JavaUtilHashMap.get(localObject)).jdField_c_of_type_AndroidWidgetImageView;
-        localFrameLayout.getGlobalVisibleRect(paramView);
-        if ((paramView.contains(this.a.a.x, this.a.a.y)) && (paramView.contains(this.a.b.x, this.a.b.y)))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("HealthBusinessPlugin", 2, "videoplayer section clicked");
-          }
-          if (localSeekBar.getVisibility() == 4)
-          {
-            localSeekBar.setVisibility(0);
-            localTextView1.setVisibility(0);
-            localTextView2.setVisibility(0);
-            localImageView3.setVisibility(0);
-            if (((TVK_IMediaPlayer)this.a.d.get(localObject)).isPlaying()) {}
-            for (int i = 2130845010;; i = 2130845291)
-            {
-              localImageView1.setImageResource(i);
-              localImageView1.setVisibility(0);
-              this.a.jdField_f_of_type_Boolean = true;
-              localImageView2.setVisibility(4);
-              localTextView3.setVisibility(4);
-              this.a.c.removeCallbacksAndMessages(null);
-              localObject = new akiq(this, localSeekBar, localTextView1, localTextView2, localImageView3, localImageView1, localImageView2, localTextView3);
-              this.a.c.postDelayed((Runnable)localObject, 3000L);
-              break;
-            }
-          }
-          localSeekBar.setVisibility(4);
-          localTextView1.setVisibility(4);
-          localTextView2.setVisibility(4);
-          localImageView3.setVisibility(4);
-          localImageView1.setVisibility(4);
-          this.a.jdField_f_of_type_Boolean = false;
-          localImageView2.setVisibility(0);
-          localTextView3.setVisibility(0);
-        }
-      }
+      paramView = (BaseActivity)akim.a(this.a);
+      QQToast.a(paramView, akim.a(this.a).getString(2131696588, new Object[] { String.valueOf(80) }), 0).b(paramView.getTitleBarHeight());
+      return;
     }
-    return false;
+    alri localalri = (alri)this.a.a.a(6);
+    if (((DiscussionInfo)localObject).hasCollect) {}
+    for (paramView = "0X8006898";; paramView = "0X8006897")
+    {
+      azqs.b(this.a.a, "CliOper", "", "", paramView, paramView, 0, 0, "", "", "", "");
+      if (!((DiscussionInfo)localObject).hasCollect) {
+        break;
+      }
+      localalri.e(Long.valueOf(((DiscussionInfo)localObject).uin).longValue());
+      return;
+    }
+    localalri.d(Long.valueOf(((DiscussionInfo)localObject).uin).longValue());
   }
 }
 

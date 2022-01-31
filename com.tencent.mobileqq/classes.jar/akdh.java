@@ -1,20 +1,16 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.open.downloadnew.MyAppApi;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class akdh
-  implements Runnable
+class akdh
+  implements DialogInterface.OnClickListener
 {
-  public akdh(Activity paramActivity, Bundle paramBundle) {}
+  akdh(akdf paramakdf) {}
   
-  public void run()
-  {
-    MyAppApi.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, true, true);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akdh
  * JD-Core Version:    0.7.0.1
  */

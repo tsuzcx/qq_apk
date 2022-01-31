@@ -62,9 +62,9 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinEngine;
 import com.tencent.theme.SkinnableActivityProcesser;
 import com.tencent.theme.SkinnableActivityProcesser.Callback;
-import fdr;
-import fds;
-import fdt;
+import ezd;
+import eze;
+import ezf;
 import java.io.File;
 import java.lang.reflect.Field;
 import mqq.app.AppActivity;
@@ -238,7 +238,7 @@ public class BaseActivity
     }
     startActivity(new Intent(a(), GesturePWDUnlockActivity.class));
     s = true;
-    new Handler().postDelayed(new fds(this), 1000L);
+    new Handler().postDelayed(new eze(this), 1000L);
   }
   
   @Deprecated
@@ -318,7 +318,7 @@ public class BaseActivity
     }
   }
   
-  protected boolean a()
+  public boolean a()
   {
     return true;
   }
@@ -345,7 +345,7 @@ public class BaseActivity
     return false;
   }
   
-  protected String c_()
+  public String c_()
   {
     return null;
   }
@@ -435,14 +435,14 @@ public class BaseActivity
     setVolumeControlStream(3);
     if (!jdField_a_of_type_Boolean)
     {
-      if (SettingCloneUtil.readValue(this, null, getString(2131563409), "qqsetting_screenshot_key", false)) {
+      if (SettingCloneUtil.readValue(this, null, getString(2131563437), "qqsetting_screenshot_key", false)) {
         y();
       }
       jdField_a_of_type_Boolean = true;
     }
     paramBundle = new IntentFilter();
     paramBundle.addAction("android.intent.action.SCREEN_OFF");
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new fdt(this, null);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ezf(this, null);
     registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
     paramBundle = getIntent().getExtras();
     if (paramBundle != null)
@@ -703,7 +703,7 @@ public class BaseActivity
     return this.jdField_b_of_type_Boolean;
   }
   
-  protected void j(int paramInt)
+  public void j(int paramInt)
   {
     findViewById(16908290).setBackgroundResource(paramInt);
   }
@@ -783,11 +783,11 @@ public class BaseActivity
     a(paramIntent, paramInt, 2);
   }
   
-  protected void w_() {}
+  public void w_() {}
   
   public void y()
   {
-    ThreadManager.b().post(new fdr(this));
+    ThreadManager.b().post(new ezd(this));
   }
   
   public void z()

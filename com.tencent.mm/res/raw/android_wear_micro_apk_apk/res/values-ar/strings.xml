@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">تمكين</string>
+    <string name="b">‏لن يعمل %1$s ما لم يتم تمكين خدمات Google Play.</string>
+    <string name="c">‏تمكين خدمات Google Play</string>
+    <string name="d">تثبيت</string>
+    <string name="e">‏لن يتم تشغيل %1$s بدون خدمات Google Play، والتي لا تتوفر على جهازك.</string>
+    <string name="f">‏الحصول على خدمات Google Play</string>
+    <string name="g">‏خطأ في خدمات Google Play</string>
+    <string name="h">‏لدى %1$s مشكلة في خدمات Google Play. الرجاء إعادة المحاولة.</string>
+    <string name="i">‏لن يتم تشغيل %1$s بدون خدمات Google Play التي لا يوفرها جهازك.</string>
+    <string name="j">تحديث</string>
+    <string name="k">‏لن يتم تشغيل %1$s ما لم يتم تحديث خدمات Google Play.</string>
+    <string name="l">‏تحديث خدمات Google Play</string>
+    <string name="m">‏لن يتم تشغيل %1$s بدون خدمات Google Play، والتي يتم تحديثها حاليًا.</string>
+    <string name="n">‏يجب توفر إصدار جديد من خدمات Google Play. سيتم تحديثها تلقائيًا قريبًا.</string>
+    <string name="o">فتح على الهاتف</string>
+    <string name="p">تسجل الدخول</string>
+    <string name="q">‏تسجيل الدخول عبر Google</string>
+    <string name="r">+999</string>
+    <string name="s">WeChat</string>
+    <string name="t">إنهاء</string>
+    <string name="u">Ali</string>
+    <string name="v">Mr. Luo History</string>
+    <string name="w">Kiss</string>
+    <string name="x">Robot Six</string>
+    <string name="y">يجري تنزيل هذا الملصق...</string>
+    <string name="z">نبضة القلب الثانية</string>
+    <string name="a0">لقد قمت بقياس نبض القلب بالساعة:%d من المرات/الدقيقة.</string>
+    <string name="a1">يتعذّر تحميل الصورة</string>
+    <string name="a2">يتعذّر تحميل المصدر. بعد إعادة تشغيل WeChat على الهاتف، اضغط لإعادة المحاولة.</string>
+    <string name="a3">تأكد من توصيل الهاتف المحمول والساعة. تم تسجيل دخول WeChat للهاتف المحمول. انقر لإعادة المحاولة.</string>
+    <string name="a4">يتعذّر تسجيل الدخول. بعد إعادة تشغيل WeChat على الهاتف، اضغط لإعادة المحاولة.</string>
+    <string name="a5">￥%s</string>
+    <string name="a6">CNY</string>
+    <string name="a7">"حظ أوفر
+في المرة القادمة"</string>
+    <string name="a8">قبول</string>
+    <string name="a9">تجاهل</string>
+    <string name="a_">إخطارات</string>
+    <string name="aa">فتح في الهاتف المحمول</string>
+    <string name="ab">نصية</string>
+    <string name="ac">إعادة الإرسال</string>
+    <string name="ad">دفع</string>
+    <string name="ae">ربما</string>
+    <string name="af">لا</string>
+    <string name="ag">نعم</string>
+    <string name="ah">إرسال</string>
+    <string name="ai">معرض الملصقات</string>
+    <string name="aj">نصية</string>
+    <string name="ak">صوتية</string>
+    <string name="al">رد</string>
+    <string name="am">تحدث...</string>
+    <string name="an">%d</string>
+    <string name="ao">"خطأ في التعرُّف
+اضغط للتحدث مرة أخرى"</string>
+    <string name="ap">تحويل إلى نص</string>
+    <string name="aq">%d</string>
+    <string name="ar">جارٍ الإرسال</string>
+    <string name="as">"النص قصير للغاية
+اضغط للتحدث مرة أخرى"</string>
+    <string name="at">1300  1030  7150  9660  79</string>
+    <string name="au">تحميل الصورة</string>
+    <string name="av">جارٍ التحميل...</string>
+    <string name="aw">تحميل المصدر</string>
+    <string name="ax">تسجيل الدخول</string>
+    <string name="ay">صفحة الدفع مفتوحة على الهاتف</string>
+    <string name="az">لا يدعم الجهاز تشغيل ملف صوتي.</string>
+    <string name="b0">مرحبًا بك في WeChat</string>
+</resources>

@@ -21,7 +21,7 @@ public class PicReporter
   
   public static void a()
   {
-    boolean bool = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131563423), "qqsetting_auto_receive_pic_key", true);
+    boolean bool = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131563451), "qqsetting_auto_receive_pic_key", true);
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_state", String.valueOf(bool));
     Logger.a(a, "report2G3G4GSwitchState", "param_state:" + bool);

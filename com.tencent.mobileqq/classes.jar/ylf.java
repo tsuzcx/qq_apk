@@ -1,31 +1,17 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
-import com.tencent.ttpic.util.VideoGlobalContext;
-import com.tencent.ttpic.util.VideoPrefsUtil;
-import com.tencent.ttpic.util.youtu.VideoFaceDetector;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import java.io.File;
+import java.util.Comparator;
 
-public final class ylf
-  implements EIPCResultCallback
+final class ylf
+  implements Comparator<File>
 {
-  public ylf(ApolloRender paramApolloRender) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
+  public int a(File paramFile1, File paramFile2)
   {
-    VideoPrefsUtil.init(BaseApplicationImpl.getContext());
-    VideoGlobalContext.setContext(BaseApplicationImpl.getContext());
-    if (PtvFilterSoLoad.a(BaseApplicationImpl.getContext(), false))
-    {
-      this.a.mDetector = new VideoFaceDetector(PtvFilterSoLoad.a(BaseApplicationImpl.getContext(), null));
-      this.a.mDetector.init();
-    }
+    return paramFile1.getName().compareToIgnoreCase(paramFile2.getName());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ylf
  * JD-Core Version:    0.7.0.1
  */

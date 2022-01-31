@@ -1,12 +1,20 @@
-import com.tencent.mobileqq.apollo.process.CmGameClientQIPCModule;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.subscribe.widget.textview.FollowTextView;
 
 public class ypz
+  implements DialogInterface.OnDismissListener
 {
-  private static CmGameClientQIPCModule a = new CmGameClientQIPCModule("cm_game_client_module");
+  public ypz(FollowTextView paramFollowTextView) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    FollowTextView.a(this.a, true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ypz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,20 @@
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
+import android.animation.ObjectAnimator;
 
-public class anxf
+class anxf
   extends AnimatorListenerAdapter
 {
-  public anxf(FaceLayer.FaceItem paramFaceItem) {}
+  anxf(anxd paramanxd, ObjectAnimator paramObjectAnimator) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    this.a.p = 12.0F;
-    this.a.b.k();
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anxf
  * JD-Core Version:    0.7.0.1
  */

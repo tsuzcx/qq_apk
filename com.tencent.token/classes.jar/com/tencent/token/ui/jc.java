@@ -1,26 +1,18 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.token.af;
-import com.tencent.token.ax;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.ui.base.co;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.global.h;
 
-final class jc
-  implements DialogInterface.OnClickListener
+class jc
+  implements View.OnClickListener
 {
-  jc(iv paramiv) {}
+  jc(FaceStartVryCameraActivity paramFaceStartVryCameraActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (ax.a().e() != null) {}
-    for (long l = ax.a().e().mRealUin;; l = 0L)
-    {
-      af.a().a(0L, l, FaceRegCameraActivity.access$1500(this.a.a), FaceRegCameraActivity.access$1900(this.a.a), 0, FaceRegCameraActivity.access$2000(this.a.a), FaceRegCameraActivity.access$1600(this.a.a));
-      FaceRegCameraActivity.access$1300(this.a.a).b();
-      return;
-    }
+    h.c("onBackPressed");
+    this.a.finish();
   }
 }
 

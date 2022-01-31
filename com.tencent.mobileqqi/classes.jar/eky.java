@@ -1,45 +1,17 @@
-import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
-import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollToTopListener;
-import com.tencent.widget.AbsListView;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PhoneContact;
 
 public class eky
-  implements SlideDetectListView.OnScrollToTopListener
 {
-  public eky(NotificationView paramNotificationView) {}
-  
-  public void a() {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((NotificationView.a(this.a) != null) && (paramInt == 0) && (NotificationView.a(this.a) == NotificationView.a(this.a).getCount())) {
-      NotificationView.b(this.a);
-    }
-    NotificationView.a(this.a, paramInt);
-    if (paramInt != 0)
-    {
-      NotificationView.a(this.a).c();
-      NotificationView.a(this.a).a();
-    }
-    while (!NotificationView.a(this.a).a()) {
-      return;
-    }
-    NotificationView.a(this.a).b();
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    NotificationView.b(this.a, paramInt1 + paramInt2 - 1);
-    if (paramInt1 > 1) {
-      GroupSystemMsgController.a().a();
-    }
-    while (!this.a.b) {
-      return;
-    }
-    GroupSystemMsgController.a().f();
-  }
+  public int a;
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public PhoneContact a;
+  public String a;
+  public Button b;
 }
 
 

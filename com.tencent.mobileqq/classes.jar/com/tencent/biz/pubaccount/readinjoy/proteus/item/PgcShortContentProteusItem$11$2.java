@@ -1,0 +1,22 @@
+package com.tencent.biz.pubaccount.readinjoy.proteus.item;
+
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import pnk;
+
+public class PgcShortContentProteusItem$11$2
+  implements Runnable
+{
+  public PgcShortContentProteusItem$11$2(pnk parampnk) {}
+  
+  public void run()
+  {
+    this.a.a.setVisibility(8);
+    this.a.b.setVisibility(0);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.item.PgcShortContentProteusItem.11.2
+ * JD-Core Version:    0.7.0.1
+ */

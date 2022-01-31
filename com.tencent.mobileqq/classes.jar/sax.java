@@ -1,33 +1,33 @@
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnticipateInterpolator;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
 class sax
-  extends AccountObserver
+  implements Animation.AnimationListener
 {
-  sax(saw paramsaw) {}
+  sax(saw paramsaw, FastWebArticleInfo paramFastWebArticleInfo) {}
   
-  public void onRefreshDA2(boolean paramBoolean, String paramString1, String paramString2)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    if (QLog.isColorLevel())
+    ImageView localImageView = saw.a(this.jdField_a_of_type_Saw);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.a) {}
+    for (int i = 2130842488;; i = 2130841342)
     {
-      paramString1 = new StringBuilder().append("onRefrshDA2 result: ").append(paramBoolean).append(", da2 length: ");
-      if (paramString2 != null) {
-        break label70;
-      }
-    }
-    label70:
-    for (int i = 0;; i = paramString2.length())
-    {
-      QLog.e("ChatHistoryForC2C", 2, i);
-      this.a.a.runOnUiThread(new say(this, paramBoolean));
+      localImageView.setImageResource(i);
+      paramAnimation.setInterpolator(new AnticipateInterpolator());
       return;
     }
   }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sax
  * JD-Core Version:    0.7.0.1
  */

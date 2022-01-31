@@ -8,16 +8,16 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class CouponProto$MyCouponFavourListResp
-  extends MessageMicro
+  extends MessageMicro<MyCouponFavourListResp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "retcode", "coupons", "ts" }, new Object[] { Integer.valueOf(0), null, Long.valueOf(0L) }, MyCouponFavourListResp.class);
-  public final PBRepeatMessageField coupons = PBField.initRepeatMessage(CouponProto.Coupon.class);
+  public final PBRepeatMessageField<CouponProto.Coupon> coupons = PBField.initRepeatMessage(CouponProto.Coupon.class);
   public final PBUInt32Field retcode = PBField.initUInt32(0);
   public final PBUInt64Field ts = PBField.initUInt64(0L);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.protofile.coupon.CouponProto.MyCouponFavourListResp
  * JD-Core Version:    0.7.0.1
  */

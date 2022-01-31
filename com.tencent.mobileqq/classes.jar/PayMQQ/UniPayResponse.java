@@ -12,10 +12,10 @@ public final class UniPayResponse
   extends JceStruct
   implements Cloneable
 {
-  static Map cache_mapResponse;
+  static Map<String, String> cache_mapResponse;
   public int iShowOpen;
   public int iUniPayType;
-  public Map mapResponse;
+  public Map<String, String> mapResponse;
   public String sProductID = "";
   public String sUin = "";
   
@@ -31,7 +31,7 @@ public final class UniPayResponse
   
   public UniPayResponse() {}
   
-  public UniPayResponse(String paramString1, int paramInt1, int paramInt2, String paramString2, Map paramMap)
+  public UniPayResponse(String paramString1, int paramInt1, int paramInt2, String paramString2, Map<String, String> paramMap)
   {
     this.sUin = paramString1;
     this.iShowOpen = paramInt1;
@@ -107,7 +107,7 @@ public final class UniPayResponse
     return this.iUniPayType;
   }
   
-  public Map getMapResponse()
+  public Map<String, String> getMapResponse()
   {
     return this.mapResponse;
   }
@@ -159,7 +159,7 @@ public final class UniPayResponse
     this.iUniPayType = paramInt;
   }
   
-  public void setMapResponse(Map paramMap)
+  public void setMapResponse(Map<String, String> paramMap)
   {
     this.mapResponse = paramMap;
   }
@@ -185,7 +185,7 @@ public final class UniPayResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     PayMQQ.UniPayResponse
  * JD-Core Version:    0.7.0.1
  */

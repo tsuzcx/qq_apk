@@ -16,8 +16,8 @@ import com.tencent.mobileqq.filemanager.data.FileCategoryAdapter;
 import com.tencent.mobileqq.filemanager.data.FileCategoryEntity;
 import com.tencent.mobileqq.filemanager.data.WeiYunClassificationType;
 import com.tencent.widget.XListView;
-import fvd;
-import fve;
+import fqr;
+import fqs;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -44,8 +44,8 @@ public class FMCloudActivity
   
   public FMCloudActivity()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new fvd(this);
-    this.jdField_b_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new fve(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new fqr(this);
+    this.jdField_b_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new fqs(this);
   }
   
   private void a(List paramList)
@@ -171,7 +171,7 @@ public class FMCloudActivity
   {
     if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null))
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837852);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837854);
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, null, null);
       ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).start();
     }
@@ -197,14 +197,14 @@ public class FMCloudActivity
     String str5 = getString(2131558695);
     String str6 = getString(2131558681);
     String str7 = getString(2131558685);
-    a(2130903505, 2130838960, 1, getString(2131558686), 0, true, 0, "video", 1);
-    a(2130903489, 2130838604, 0, str6, 0, false, 9, "offline", 1);
-    a(2130903505, 2130838960, 1, str7, 0, true, 0, "other", 1);
-    a(2130903489, 2130838608, 0, str1, 0, true, 10, "picture", 2);
-    a(2130903489, 2130838605, 0, str2, 0, true, 1, "music", 3);
-    a(2130903489, 2130838611, 0, str3, 0, true, 2, "video", 3);
-    a(2130903489, 2130838603, 0, str4, 0, true, 3, "document", 3);
-    a(2130903489, 2130838606, 0, str5, 0, true, 5, "other", 4);
+    a(2130903507, 2130838962, 1, getString(2131558686), 0, true, 0, "video", 1);
+    a(2130903491, 2130838606, 0, str6, 0, false, 9, "offline", 1);
+    a(2130903507, 2130838962, 1, str7, 0, true, 0, "other", 1);
+    a(2130903491, 2130838610, 0, str1, 0, true, 10, "picture", 2);
+    a(2130903491, 2130838607, 0, str2, 0, true, 1, "music", 3);
+    a(2130903491, 2130838613, 0, str3, 0, true, 2, "video", 3);
+    a(2130903491, 2130838605, 0, str4, 0, true, 3, "document", 3);
+    a(2130903491, 2130838608, 0, str5, 0, true, 5, "other", 4);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter.notifyDataSetChanged();
   }
   
@@ -232,9 +232,9 @@ public class FMCloudActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903493);
+    setContentView(2130903495);
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(a());
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232727));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232730));
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter = new FileCategoryAdapter(this, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter);
     j();

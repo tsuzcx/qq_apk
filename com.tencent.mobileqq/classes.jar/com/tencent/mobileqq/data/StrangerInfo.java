@@ -4,15 +4,15 @@ import android.text.TextUtils;
 import android.util.Base64;
 import appoint.define.appoint_define.CommonLabel;
 import appoint.define.appoint_define.PublisherInfo;
+import awge;
+import awhp;
+import bdns;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
-import com.tencent.mobileqq.utils.TimeFormatterUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.lang.reflect.Field;
@@ -25,7 +25,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class StrangerInfo
-  extends Entity
+  extends awge
   implements Serializable
 {
   private static final long serialVersionUID = 0L;
@@ -39,12 +39,12 @@ public class StrangerInfo
   public int gender;
   public int godFlag;
   public String interestNameStr;
-  @notColumn
-  public ArrayList interestNames = new ArrayList();
+  @awhp
+  public ArrayList<String> interestNames = new ArrayList();
   public String interestTypeStr;
-  @notColumn
-  public ArrayList interestTypes = new ArrayList();
-  @notColumn
+  @awhp
+  public ArrayList<Integer> interestTypes = new ArrayList();
+  @awhp
   public boolean isNewVisitor;
   public int lableId;
   public byte[] lableMsgLast;
@@ -56,7 +56,7 @@ public class StrangerInfo
   public int recentVisitorTime;
   public int recommend;
   public byte[] strangerDeclare;
-  @notColumn
+  @awhp
   public String timeStr;
   public long tinyId;
   public long uin;
@@ -352,7 +352,7 @@ public class StrangerInfo
       label1054:
       if (localStrangerInfo.recentVisitorTime > 0)
       {
-        paramPublisherInfo = TimeFormatterUtils.a(localStrangerInfo.recentVisitorTime * 1000L, true, "yyyy-MM-dd");
+        paramPublisherInfo = bdns.a(localStrangerInfo.recentVisitorTime * 1000L, true, "yyyy-MM-dd");
         localStrangerInfo.timeStr = paramPublisherInfo;
         return localStrangerInfo;
       }
@@ -371,11 +371,11 @@ public class StrangerInfo
     }
   }
   
-  protected void postRead()
+  public void postRead()
   {
     super.postRead();
     if (this.recentVisitorTime > 0) {
-      this.timeStr = TimeFormatterUtils.a(this.recentVisitorTime * 1000L, true, "yyyy-MM-dd");
+      this.timeStr = bdns.a(this.recentVisitorTime * 1000L, true, "yyyy-MM-dd");
     }
     int i;
     if (!TextUtils.isEmpty(this.interestNameStr)) {
@@ -431,7 +431,7 @@ public class StrangerInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    for (Class localClass = getClass(); localClass != Entity.class; localClass = localClass.getSuperclass())
+    for (Class localClass = getClass(); localClass != awge.class; localClass = localClass.getSuperclass())
     {
       Field[] arrayOfField = localClass.getDeclaredFields();
       int j = arrayOfField.length;
@@ -465,7 +465,7 @@ public class StrangerInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.StrangerInfo
  * JD-Core Version:    0.7.0.1
  */

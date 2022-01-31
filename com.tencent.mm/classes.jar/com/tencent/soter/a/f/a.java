@@ -1,0 +1,16 @@
+package com.tencent.soter.a.f;
+
+public abstract interface a<W, T>
+{
+  public abstract void a(b<T> paramb);
+  
+  public abstract void bK(W paramW);
+  
+  public abstract void execute();
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+ * Qualified Name:     com.tencent.soter.a.f.a
+ * JD-Core Version:    0.7.0.1
+ */

@@ -4,9 +4,9 @@ import android.content.Context;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import apyt;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
-import com.tencent.mobileqq.emoticonview.StickerGestureDetector;
 import com.tencent.qphone.base.util.QLog;
 
 public class EmojiStickerManager$EmotionKeywordLayout
@@ -44,11 +44,11 @@ public class EmojiStickerManager$EmotionKeywordLayout
         if ((!this.b) && ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c instanceof TopGestureLayout)))
         {
           Object localObject = ((TopGestureLayout)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c).getGestureDetector();
-          if ((localObject instanceof StickerGestureDetector))
+          if ((localObject instanceof apyt))
           {
-            localObject = (StickerGestureDetector)localObject;
-            ((StickerGestureDetector)localObject).a = paramMotionEvent.getRawX();
-            ((StickerGestureDetector)localObject).b = paramMotionEvent.getRawY();
+            localObject = (apyt)localObject;
+            ((apyt)localObject).a = paramMotionEvent.getRawX();
+            ((apyt)localObject).b = paramMotionEvent.getRawY();
             this.b = true;
           }
         }
@@ -59,7 +59,7 @@ public class EmojiStickerManager$EmotionKeywordLayout
         }
         if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c != null))
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aT();
+          this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.bi();
           this.jdField_a_of_type_Boolean = false;
           this.b = false;
           this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.onTouchEvent(paramMotionEvent);
@@ -73,7 +73,7 @@ public class EmojiStickerManager$EmotionKeywordLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.EmojiStickerManager.EmotionKeywordLayout
  * JD-Core Version:    0.7.0.1
  */

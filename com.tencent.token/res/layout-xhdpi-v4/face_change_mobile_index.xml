@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_marginTop="26.0dip" />
+    <RelativeLayout android:id="@id/set_face_pwd" android:background="@color/common_list_item_background" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <TextView android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="@string/face_change_mobile" style="@style/text_view" />
+        <com.tencent.token.ui.base.SwitchButton android:id="@id/check_face_pwd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    <TextView android:textSize="@dimen/text_size_15" android:textColor="@color/utils_font_color_item_desc" android:gravity="center_vertical" android:id="@id/face_pwd_verify_tip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="17.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="26.0dip" android:text="@string/face_change_mobile_text" />
+    <View android:id="@id/divider" android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    <RelativeLayout android:id="@id/face_chanege_pwd" android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <TextView android:gravity="center_vertical" android:id="@id/face_chanege_pwd_text" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:text="@string/face_try_change_mobile_text" style="@style/text_view" />
+        <ImageView android:id="@id/face_chanege_pwd_tip" android:visibility="invisible" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginLeft="5.0dip" android:src="@drawable/icon_safe_msg_tip" android:scaleType="fitXY" android:layout_toRightOf="@id/face_chanege_pwd_text" android:layout_centerVertical="true" android:contentDescription="@string/app_name" />
+        <TextView android:id="@id/face_chanege_pwd_text_right" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:drawableRight="@drawable/arrow_gray" android:drawablePadding="5.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/utils_text_item_name" />
+    </RelativeLayout>
+    <View android:id="@id/divider2" android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+</LinearLayout>

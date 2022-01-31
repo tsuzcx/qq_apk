@@ -1,24 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.annotation.TargetApi;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
+import android.util.Log;
 
 public class xjm
-  implements View.OnClickListener
 {
-  public xjm(BannerManager paramBannerManager) {}
-  
-  public void onClick(View paramView)
+  @TargetApi(16)
+  public static int a(MediaExtractor paramMediaExtractor)
   {
-    this.a.a(18, 0);
-    this.a.a(-1, null);
-    ReportController.b(BannerManager.a(this.a).app, "CliOper", "", "", "QQWIFI", "clk_buleClose", 0, 0, "", "", "", "");
+    int j = paramMediaExtractor.getTrackCount();
+    int i = 0;
+    while (i < j)
+    {
+      MediaFormat localMediaFormat = paramMediaExtractor.getTrackFormat(i);
+      String str = localMediaFormat.getString("mime");
+      if (str.startsWith("video/"))
+      {
+        Log.d("VideoUtils", "Extractor selected track " + i + " (" + str + "): " + localMediaFormat);
+        return i;
+      }
+      i += 1;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xjm
  * JD-Core Version:    0.7.0.1
  */

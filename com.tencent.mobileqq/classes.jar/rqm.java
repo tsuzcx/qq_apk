@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
-
-public class rqm
-  implements Runnable
+class rqm
+  implements rjl
 {
-  public rqm(BaseChatPie paramBaseChatPie) {}
+  rqm(rqj paramrqj) {}
   
-  public void run()
+  public void a(rjk paramrjk, boolean paramBoolean)
   {
-    this.a.a.setSelection(0);
+    if (paramBoolean) {}
+    while ((this.a.c == 0) || (this.a.c == 56) || (qzy.c)) {
+      return;
+    }
+    this.a.a(paramrjk);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rqm
  * JD-Core Version:    0.7.0.1
  */

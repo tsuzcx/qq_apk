@@ -12,28 +12,28 @@ public final class FileStoragePushFSSvcList
   static DomainIpChannel cache_domainIpChannel;
   static FmtIPInfo cache_fmtIPInfo;
   static byte[] cache_pttlist;
-  static ArrayList cache_vC2CPicDownList;
-  static ArrayList cache_vGPicDownLoadList;
-  static ArrayList cache_vPicDownLoadList;
-  static ArrayList cache_vQzoneProxyServiceList;
-  static ArrayList cache_vUpLoadList;
-  static ArrayList cache_vUrlEncodeServiceList;
-  static ArrayList cache_vVipEmotionList;
+  static ArrayList<FileStorageServerListInfo> cache_vC2CPicDownList;
+  static ArrayList<FileStorageServerListInfo> cache_vGPicDownLoadList;
+  static ArrayList<FileStorageServerListInfo> cache_vPicDownLoadList;
+  static ArrayList<FileStorageServerListInfo> cache_vQzoneProxyServiceList;
+  static ArrayList<FileStorageServerListInfo> cache_vUpLoadList;
+  static ArrayList<FileStorageServerListInfo> cache_vUrlEncodeServiceList;
+  static ArrayList<FileStorageServerListInfo> cache_vVipEmotionList;
   public BigDataChannel bigDataChannel;
   public DomainIpChannel domainIpChannel;
   public FmtIPInfo fmtIPInfo;
   public byte[] pttlist;
-  public ArrayList vC2CPicDownList;
-  public ArrayList vGPicDownLoadList;
-  public ArrayList vPicDownLoadList;
-  public ArrayList vQzoneProxyServiceList;
-  public ArrayList vUpLoadList;
-  public ArrayList vUrlEncodeServiceList;
-  public ArrayList vVipEmotionList;
+  public ArrayList<FileStorageServerListInfo> vC2CPicDownList;
+  public ArrayList<FileStorageServerListInfo> vGPicDownLoadList;
+  public ArrayList<FileStorageServerListInfo> vPicDownLoadList;
+  public ArrayList<FileStorageServerListInfo> vQzoneProxyServiceList;
+  public ArrayList<FileStorageServerListInfo> vUpLoadList;
+  public ArrayList<FileStorageServerListInfo> vUrlEncodeServiceList;
+  public ArrayList<FileStorageServerListInfo> vVipEmotionList;
   
   public FileStoragePushFSSvcList() {}
   
-  public FileStoragePushFSSvcList(ArrayList paramArrayList1, ArrayList paramArrayList2, ArrayList paramArrayList3, ArrayList paramArrayList4, ArrayList paramArrayList5, BigDataChannel paramBigDataChannel, ArrayList paramArrayList6, ArrayList paramArrayList7, FmtIPInfo paramFmtIPInfo, DomainIpChannel paramDomainIpChannel, byte[] paramArrayOfByte)
+  public FileStoragePushFSSvcList(ArrayList<FileStorageServerListInfo> paramArrayList1, ArrayList<FileStorageServerListInfo> paramArrayList2, ArrayList<FileStorageServerListInfo> paramArrayList3, ArrayList<FileStorageServerListInfo> paramArrayList4, ArrayList<FileStorageServerListInfo> paramArrayList5, BigDataChannel paramBigDataChannel, ArrayList<FileStorageServerListInfo> paramArrayList6, ArrayList<FileStorageServerListInfo> paramArrayList7, FmtIPInfo paramFmtIPInfo, DomainIpChannel paramDomainIpChannel, byte[] paramArrayOfByte)
   {
     this.vUpLoadList = paramArrayList1;
     this.vPicDownLoadList = paramArrayList2;

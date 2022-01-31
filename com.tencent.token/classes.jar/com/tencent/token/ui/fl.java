@@ -1,19 +1,16 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class fl
-  implements Runnable
+class fl
+  implements DialogInterface.OnClickListener
 {
-  fl(es parames) {}
+  fl(fj paramfj) {}
   
-  public final void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Intent localIntent = new Intent(this.a.a, ModifyQQPwdActivity.class);
-    localIntent.putExtra("face_vry_succ", true);
-    localIntent.addFlags(67108864);
-    this.a.a.startActivity(localIntent);
-    this.a.a.finish();
+    FaceRecognitionCameraActivity.access$500(this.a.a);
   }
 }
 

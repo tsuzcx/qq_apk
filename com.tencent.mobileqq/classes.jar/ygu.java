@@ -1,31 +1,29 @@
-import android.util.SparseArray;
-import android.util.SparseIntArray;
-import com.tencent.mobileqq.adapter.BuddyListAdapter;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.pb.PBStringField;
 
-public class ygu
-  implements Runnable
+class ygu
+  implements View.OnClickListener
 {
-  public ygu(BuddyListAdapter paramBuddyListAdapter) {}
+  ygu(ygq paramygq, CertifiedAccountMeta.StReply paramStReply) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ArrayList localArrayList = new ArrayList();
-    SparseArray localSparseArray = new SparseArray();
-    SparseIntArray localSparseIntArray = new SparseIntArray();
-    BuddyListAdapter.a(this.a, localArrayList, localSparseArray, localSparseIntArray);
-    if (QLog.isColorLevel()) {
-      QLog.d("BuddyListAdapter", 2, "notifyDataSetChanged in ThreadManager");
+    paramView = (ClipboardManager)ygg.i(this.jdField_a_of_type_Ygq.a).getSystemService("clipboard");
+    if (paramView != null)
+    {
+      paramView.setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply.content.get()));
+      ygg.a(this.jdField_a_of_type_Ygq.a).dismiss();
     }
-    ThreadManager.getUIHandler().post(new ygv(this, localArrayList, localSparseArray, localSparseIntArray));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ygu
  * JD-Core Version:    0.7.0.1
  */

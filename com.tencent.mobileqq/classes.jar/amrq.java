@@ -1,37 +1,25 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hitrate.PreloadProcHitPluginSession;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.QZoneHelper;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-public final class amrq
-  implements Runnable
+public class amrq
+  extends alpd
 {
-  public amrq(QQAppInterface paramQQAppInterface, PreloadProcHitPluginSession paramPreloadProcHitPluginSession) {}
-  
-  public void run()
+  public amrq(QQAppInterface paramQQAppInterface)
   {
-    int i = QzoneConfig.getInstance().getConfig("QZoneSetting", "PreloadQzoneProcessEnable", 1);
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneHelper", 2, "preloadInFriendProfileCard enable:" + i);
-    }
-    if (i == 1)
-    {
-      long l = DeviceInfoUtil.e() / 1048576L;
-      i = QzoneConfig.getInstance().getConfig("QZoneSetting", "PreloadQzoneProcessRamThreshold", 1024);
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneHelper", 2, "preloadInFriendProfileCard totalMemSize:" + l + ",threshold:" + i);
-      }
-      if (l >= i) {
-        QZoneHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "FriendProfileCardActivity", this.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession);
-      }
-    }
+    super(paramQQAppInterface);
   }
+  
+  protected Class<? extends alpg> observerClass()
+  {
+    return amco.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amrq
  * JD-Core Version:    0.7.0.1
  */

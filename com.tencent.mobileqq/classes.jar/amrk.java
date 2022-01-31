@@ -1,43 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsDataV2.GpsInfo;
-import cooperation.qzone.LbsDataV2.PoiInfo;
+import android.annotation.TargetApi;
+import android.content.Context;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
 
-public final class amrk
-  implements Parcelable.Creator
+public class amrk
 {
-  public LbsDataV2.PoiInfo a(Parcel paramParcel)
+  @TargetApi(23)
+  public static void a(AppActivity paramAppActivity, int paramInt, QQPermissionCallback paramQQPermissionCallback)
   {
-    LbsDataV2.PoiInfo localPoiInfo = new LbsDataV2.PoiInfo();
-    if (paramParcel != null)
-    {
-      localPoiInfo.poiId = paramParcel.readString();
-      localPoiInfo.poiName = paramParcel.readString();
-      localPoiInfo.poiType = paramParcel.readInt();
-      localPoiInfo.poiTypeName = paramParcel.readString();
-      localPoiInfo.poiDefaultName = paramParcel.readString();
-      localPoiInfo.address = paramParcel.readString();
-      localPoiInfo.districtCode = paramParcel.readInt();
-      localPoiInfo.distance = paramParcel.readInt();
-      localPoiInfo.hotValue = paramParcel.readInt();
-      localPoiInfo.phoneNumber = paramParcel.readString();
-      localPoiInfo.poiOrderType = paramParcel.readInt();
-      localPoiInfo.poiNum = paramParcel.readInt();
-      localPoiInfo.dianPingId = paramParcel.readString();
-      localPoiInfo.gpsInfo = ((LbsDataV2.GpsInfo)paramParcel.readParcelable(LbsDataV2.GpsInfo.class.getClassLoader()));
-      localPoiInfo.show_poi = paramParcel.readInt();
+    if (paramAppActivity != null) {
+      paramAppActivity.requestPermissions(paramQQPermissionCallback, paramInt, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
     }
-    return localPoiInfo;
   }
   
-  public LbsDataV2.PoiInfo[] a(int paramInt)
+  @TargetApi(23)
+  public static boolean a(Context paramContext)
   {
-    return null;
+    return (paramContext != null) && (paramContext.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") == 0) && (paramContext.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amrk
  * JD-Core Version:    0.7.0.1
  */

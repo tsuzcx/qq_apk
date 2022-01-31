@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:padding="20.0dip" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <Button android:textSize="@dimen/aym" android:textColor="@color/bp" android:id="@id/lr7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="加载so" />
+        <Button android:textSize="@dimen/aym" android:textColor="@color/bp" android:id="@id/m5t" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/r3c" />
+        <Button android:textSize="@dimen/aym" android:textColor="@color/bp" android:id="@id/le2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/r36" />
+        <Button android:textSize="@dimen/aym" android:textColor="@color/bp" android:id="@id/m5n" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/r2u" />
+        <Button android:textSize="@dimen/aym" android:textColor="@color/bp" android:id="@id/m3_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/r31" />
+        <Button android:textSize="@dimen/aym" android:textColor="@color/bp" android:id="@id/mb2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="token确认" />
+        <LinearLayout android:orientation="vertical" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="test export:" />
+            <LinearLayout android:orientation="horizontal" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="input uin:" />
+                <EditText android:id="@id/lgn" android:layout_width="200.0dip" android:layout_height="wrap_content" android:inputType="number" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="input uintype:" />
+                <EditText android:id="@id/lgo" android:layout_width="200.0dip" android:layout_height="wrap_content" android:hint="0-friend,1-troop" android:inputType="number" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="input number:" />
+                <EditText android:id="@id/lm5" android:layout_width="200.0dip" android:layout_height="wrap_content" android:hint="txt:10000,pic 1000" android:inputType="number" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="fileDir path:" />
+                <EditText android:id="@id/lhm" android:layout_width="200.0dip" android:layout_height="wrap_content" android:hint="pic or file path in the sdcard" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="isNeedGeneratePic:" />
+                <EditText android:id="@id/lmp" android:layout_width="200.0dip" android:layout_height="wrap_content" android:hint="0 or 1,that:use one pic generate more pics" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:gravity="center_horizontal" android:id="@id/lw9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/iut" />
+            <Button android:gravity="center_horizontal" android:id="@id/lwa" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/iuv" />
+            <TextView android:gravity="center_horizontal" android:id="@id/lw_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/iuu" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:gravity="center_horizontal" android:id="@id/m81" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/r2v" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:gravity="center_horizontal" android:id="@id/m82" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/r3_" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:gravity="center_horizontal" android:id="@id/m80" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/r2t" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:gravity="center_horizontal" android:id="@id/lgm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/r2f" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:gravity="center_horizontal" android:id="@id/m1w" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/r37" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:gravity="center_horizontal" android:id="@id/lf1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="test import:" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:gravity="center_horizontal" android:id="@id/ld7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="清除该会话消息记录包含db " />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:gravity="center_horizontal" android:id="@id/ld6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/r2q" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:gravity="center_horizontal" android:id="@id/leu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="copy QQ消息主db到/msgbackup/test/" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+            <Button android:gravity="center_horizontal" android:id="@id/m9k" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/r2e" />
+            <Button android:gravity="center_horizontal" android:id="@id/le3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/r2s" />
+            <Button android:gravity="center_horizontal" android:id="@id/le4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/r2c" />
+            <Button android:gravity="center_horizontal" android:id="@id/ll4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/r3b" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:gravity="center_horizontal" android:id="@id/lge" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/r2j" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:gravity="center_horizontal" android:id="@id/m5s" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/r2r" />
+            <Button android:gravity="center_horizontal" android:id="@id/m5r" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/r2p" />
+            <Button android:gravity="center_horizontal" android:id="@id/mep" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="url的value进行编码" />
+            <Button android:gravity="center_horizontal" android:id="@id/meo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="url的value进行解码" />
+            <Button android:gravity="center_horizontal" android:id="@id/jfp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="测试加密url解析filepath" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

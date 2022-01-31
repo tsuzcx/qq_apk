@@ -1,36 +1,18 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.lbs.BasicLocation;
-import com.tencent.biz.qqstory.model.lbs.LbsManager;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.LbsUpdateListener;
-import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase;
-import com.tencent.biz.qqstory.storyHome.model.FeedManager;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
 
 public class nyt
-  implements LbsManager.LbsUpdateListener
+  implements oxc
 {
-  public nyt(HomeFeedPresenter paramHomeFeedPresenter, LbsManager paramLbsManager) {}
+  public nyt(ReadInJoyChannelActivity paramReadInJoyChannelActivity, int paramInt) {}
   
-  public void a(boolean paramBoolean, @Nullable BasicLocation paramBasicLocation)
+  public void a(oxe paramoxe)
   {
-    SLog.e("Q.qqstory.home.data.HomeFeedPresenter", "lbs update %b %s", new Object[] { Boolean.valueOf(paramBoolean), paramBasicLocation });
-    this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager.b(this);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a.get())
-    {
-      SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "is destroy");
-      return;
-    }
-    HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter).a = paramBasicLocation;
-    HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter).a(null, 0);
-    ((FeedManager)SuperManager.a(11)).a = paramBasicLocation;
+    paramoxe.h(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nyt
  * JD-Core Version:    0.7.0.1
  */

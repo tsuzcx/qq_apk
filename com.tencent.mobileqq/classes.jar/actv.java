@@ -1,28 +1,22 @@
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil.GetApkPackageInfoCallback;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.FileExecutor;
-import java.util.concurrent.Executor;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class actv
-  implements FileCategoryUtil.GetApkPackageInfoCallback
+  implements DialogInterface.OnClickListener
 {
-  public actv(FileManagerEngine paramFileManagerEngine, FileManagerEntity paramFileManagerEntity, Runnable paramRunnable) {}
+  public actv(DialogActivity paramDialogActivity) {}
   
-  public void a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = paramString;
-    FileManagerUtil.FileExecutor.a().execute(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strApkPackageName = paramString;
+    baic.a(this.a.app, this.a);
+    this.a.finish();
+    azqs.b(this.a.app, "dc00898", "", "", "0X800906A", "0X800906A", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     actv
  * JD-Core Version:    0.7.0.1
  */

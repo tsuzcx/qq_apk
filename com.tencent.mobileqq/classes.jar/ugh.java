@@ -1,29 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeConstants;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
-import com.tencent.mobileqq.statistics.ReportController;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ugh
-  implements DialogInterface.OnClickListener
+class ugh
+  implements ufg
 {
-  public ugh(UpgradeActivity paramUpgradeActivity) {}
+  ugh(uge paramuge) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    ReportController.b(this.a.app, "CliOper", "", "", "0X800417F", "0X800417F", 0, 0, "", "", "", "");
-    if (UpgradeActivity.a(this.a)) {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X800714D", "0X800714D", 0, 0, "", "", "", "");
-    }
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, UpgradeConstants.b(), String.valueOf(2), UpgradeController.a(), "0");
-    UpgradeController.a().a(this.a.app);
-    this.a.finish();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(tzy.a("ext2", String.valueOf(paramInt)));
+    tzs.a(34, 2, this.a.a, localArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ugh
  * JD-Core Version:    0.7.0.1
  */

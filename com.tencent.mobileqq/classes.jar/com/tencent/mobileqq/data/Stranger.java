@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
+import awge;
+import awhp;
+import awhs;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
-import com.tencent.mobileqq.persistence.unique;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="uin")
 public class Stranger
-  extends Entity
+  extends awge
 {
   public static final int GENDER_FEMALE = 1;
   public static final int GENDER_MALE = 0;
@@ -21,9 +21,9 @@ public class Stranger
   public String name;
   public String remark;
   public long time;
-  @notColumn
+  @awhp
   public boolean uiSelected;
-  @unique
+  @awhs
   public String uin;
   
   public static boolean copyInfo(Stranger paramStranger1, Stranger paramStranger2)
@@ -47,7 +47,7 @@ public class Stranger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.Stranger
  * JD-Core Version:    0.7.0.1
  */

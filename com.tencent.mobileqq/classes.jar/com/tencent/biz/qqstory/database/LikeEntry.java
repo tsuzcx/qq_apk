@@ -2,26 +2,26 @@ package com.tencent.biz.qqstory.database;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.Copyable;
+import awge;
 import com.tencent.biz.qqstory.network.pb.qqstory_group.NewlyLikeInfo;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoLikeInfo;
-import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.persistence.Entity;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import ulj;
+import wxe;
 
 public class LikeEntry
-  extends Entity
-  implements Copyable, Comparable
+  extends awge
+  implements Comparable<LikeEntry>, ulj
 {
   public static final int ROLE_NORMAL = 0;
   public static final int ROLE_VIP = 2;
@@ -61,7 +61,7 @@ public class LikeEntry
     return localLikeEntry;
   }
   
-  public static String convertFromItem(List paramList)
+  public static String convertFromItem(List<LikeEntry> paramList)
   {
     if (paramList == null) {
       return "";
@@ -88,7 +88,7 @@ public class LikeEntry
     return localJSONArray.toString();
   }
   
-  public static List convertFromJson(String paramString)
+  public static List<LikeEntry> convertFromJson(String paramString)
   {
     localArrayList = new ArrayList();
     if (TextUtils.isEmpty(paramString)) {}
@@ -114,7 +114,7 @@ public class LikeEntry
       }
       catch (Exception paramString)
       {
-        SLog.e("Q.qqstory:LikeEntry", String.format("Parse json error , %s", new Object[] { paramString.getMessage() }));
+        wxe.e("Q.qqstory:LikeEntry", String.format("Parse json error , %s", new Object[] { paramString.getMessage() }));
       }
     }
   }
@@ -149,7 +149,7 @@ public class LikeEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.LikeEntry
  * JD-Core Version:    0.7.0.1
  */

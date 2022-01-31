@@ -1,31 +1,33 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import dov.com.qq.im.capture.data.CaptureComboManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler.1;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
 public class anli
-  implements Handler.Callback
+  implements DialogInterface.OnClickListener
 {
-  public anli(CaptureComboManager paramCaptureComboManager) {}
+  public anli(ArkAppSchemeCenter.TelSchemeHandler.1 param1, bdjz parambdjz) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
+    paramDialogInterface = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppSchemeCenter$TelSchemeHandler$1.a));
+    ArkAppCenter.a(paramDialogInterface);
+    BaseActivity.sTopActivity.startActivity(paramDialogInterface);
+    if ((this.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Bdjz.isShowing())) {}
+    try
     {
+      this.jdField_a_of_type_Bdjz.dismiss();
+      return;
     }
-    for (;;)
-    {
-      return false;
-      this.a.a.removeMessages(1);
-      if (this.a.a()) {
-        this.a.a.sendEmptyMessageDelayed(1, 50L);
-      }
-    }
+    catch (Exception paramDialogInterface) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anli
  * JD-Core Version:    0.7.0.1
  */

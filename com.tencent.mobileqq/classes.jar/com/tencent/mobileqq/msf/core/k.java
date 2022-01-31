@@ -2,7 +2,7 @@ package com.tencent.mobileqq.msf.core;
 
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.a.a;
-import com.tencent.mobileqq.msf.core.c.d;
+import com.tencent.mobileqq.msf.core.c.e;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Arrays;
@@ -50,11 +50,11 @@ final class k
             if (h.a(localException))
             {
               localException.delete();
-              QLog.d(h.a, 1, "compress log " + localException.getName());
+              QLog.d(h.b, 1, "compress log " + localException.getName());
             }
             else
             {
-              QLog.d(h.a, 1, "compress log fail " + localException.getName());
+              QLog.d(h.b, 1, "compress log fail " + localException.getName());
             }
           }
         }
@@ -84,7 +84,7 @@ final class k
         }
         str.delete();
         if (QLog.isColorLevel()) {
-          QLog.d(h.a, 2, "del expires log " + str.getName());
+          QLog.d(h.b, 2, "del expires log " + str.getName());
         }
         i += 1;
       }
@@ -96,7 +96,7 @@ final class k
     ((Calendar)localObject1).set(12, 0);
     ((Calendar)localObject1).set(13, 0);
     ((Calendar)localObject1).set(14, 0);
-    d.b(((Calendar)localObject1).getTimeInMillis());
+    e.b(((Calendar)localObject1).getTimeInMillis());
   }
 }
 

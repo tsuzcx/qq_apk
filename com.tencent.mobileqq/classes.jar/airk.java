@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
 
 class airk
-  implements Runnable
+  implements View.OnClickListener
 {
-  airk(airj paramairj, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  airk(airj paramairj) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Airj.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 3);
+    ((NewPhotoPreviewActivity)this.a.mActivity).flashPicCb.toggle();
   }
 }
 

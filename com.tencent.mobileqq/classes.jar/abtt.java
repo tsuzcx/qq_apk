@@ -1,31 +1,10 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout.ArkSearchReportCallback;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppHandler;
-import com.tencent.mobileqq.data.ArkBabyqCardInfo;
-import com.tencent.mobileqq.data.MessageForArkBabyqReply;
-import java.lang.ref.WeakReference;
-
-public class abtt
-  implements ArkAppRootLayout.ArkSearchReportCallback
+public abstract interface abtt<T>
 {
-  public abtt(ArkBabyqCardInfo paramArkBabyqCardInfo) {}
-  
-  public void a()
-  {
-    if ((this.a.mBabyQReplyMsg != null) && (this.a.mBabyQReplyMsg.get() != null))
-    {
-      MessageForArkBabyqReply localMessageForArkBabyqReply = (MessageForArkBabyqReply)this.a.mBabyQReplyMsg.get();
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-      if (localQQAppInterface != null) {
-        ((ArkAppHandler)localQQAppInterface.a(95)).a(localMessageForArkBabyqReply.arkSearchType, 0, 2, this.a.extra, localMessageForArkBabyqReply.arkMsgId, this.a.appName, this.a.appView, null, 0, 0);
-      }
-    }
-  }
+  public abstract T a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abtt
  * JD-Core Version:    0.7.0.1
  */

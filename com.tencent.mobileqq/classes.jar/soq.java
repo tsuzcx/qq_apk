@@ -1,33 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class soq
-  implements DialogInterface.OnClickListener
+public class soq
+  implements qft
 {
-  soq(sop paramsop) {}
+  public soq(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    if (NetworkUtil.g(this.a.jdField_a_of_type_Sol.a))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.c(this.a.jdField_a_of_type_JavaLangString);
-      this.a.jdField_a_of_type_Sol.a.H();
-      return;
+    JSONObject localJSONObject = new JSONObject();
+    int i;
+    if (paramBoolean) {
+      i = 1;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.j();
-    this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(this.a.jdField_a_of_type_Sol.a.a.a.jdField_a_of_type_JavaLangString, "");
-    this.a.jdField_a_of_type_Sol.a.a("请确认网络状态后重试", 0);
-    this.a.jdField_a_of_type_Sol.a.G();
+    try
+    {
+      for (;;)
+      {
+        localJSONObject.put("result", i);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
+        return;
+        i = 0;
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     soq
  * JD-Core Version:    0.7.0.1
  */

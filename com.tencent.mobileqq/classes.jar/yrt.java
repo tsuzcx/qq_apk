@@ -1,29 +1,21 @@
-import android.app.Activity;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.process.data.CmGameScreenRotate;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
 
-public class yrt
-  implements Runnable
+class yrt
+  implements beex
 {
-  public yrt(CmGameScreenRotate paramCmGameScreenRotate, int paramInt) {}
+  yrt(yrr paramyrr, int paramInt, String paramString) {}
   
-  public void run()
+  public void a(Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 8))
-    {
-      if ((CmGameScreenRotate.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameScreenRotate) != null) && (CmGameScreenRotate.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameScreenRotate).getVisibility() == 0)) {
-        CmGameScreenRotate.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameScreenRotate).setRequestedOrientation(this.jdField_a_of_type_Int);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameScreenRotate.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      return;
-    }
-    CmGameScreenRotate.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameScreenRotate).setRequestedOrientation(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameScreenRotate.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    paramBundle.putInt("seq", this.jdField_a_of_type_Int);
+    paramBundle.putString("processName", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Yrr.a.a(121, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yrt
  * JD-Core Version:    0.7.0.1
  */

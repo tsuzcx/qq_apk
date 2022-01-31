@@ -1,17 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import cooperation.qzone.widget.QzoneGuideBubbleHelper;
+import android.graphics.Rect;
 
 public class aned
-  implements View.OnTouchListener
 {
-  public aned(QzoneGuideBubbleHelper paramQzoneGuideBubbleHelper) {}
+  public float a;
+  public int a;
+  public Rect a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public aned()
   {
-    this.a.a();
-    return false;
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  }
+  
+  public String toString()
+  {
+    return String.format("AIRect[%d,%.2f,%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Float.valueOf(this.jdField_a_of_type_Float), this.jdField_a_of_type_AndroidGraphicsRect });
   }
 }
 

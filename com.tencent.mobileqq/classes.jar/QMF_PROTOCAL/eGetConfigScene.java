@@ -23,7 +23,7 @@ public final class eGetConfigScene
   public static final int _SceneAppRun = 0;
   public static final int _SceneNetworkChanged = 3;
   public static final int _SceneTimeout = 2;
-  private static eGetConfigScene[] a;
+  private static eGetConfigScene[] __values;
   private String __T = new String();
   private int __value;
   
@@ -33,7 +33,7 @@ public final class eGetConfigScene
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      a = new eGetConfigScene[8];
+      __values = new eGetConfigScene[8];
       SceneAppRun = new eGetConfigScene(0, 0, "SceneAppRun");
       SceneAppActivate = new eGetConfigScene(1, 1, "SceneAppActivate");
       SceneTimeout = new eGetConfigScene(2, 2, "SceneTimeout");
@@ -51,16 +51,16 @@ public final class eGetConfigScene
   {
     this.__T = paramString;
     this.__value = paramInt2;
-    a[paramInt1] = this;
+    __values[paramInt1] = this;
   }
   
   public static eGetConfigScene convert(int paramInt)
   {
     int i = 0;
-    while (i < a.length)
+    while (i < __values.length)
     {
-      if (a[i].value() == paramInt) {
-        return a[i];
+      if (__values[i].value() == paramInt) {
+        return __values[i];
       }
       i += 1;
     }
@@ -73,10 +73,10 @@ public final class eGetConfigScene
   public static eGetConfigScene convert(String paramString)
   {
     int i = 0;
-    while (i < a.length)
+    while (i < __values.length)
     {
-      if (a[i].toString().equals(paramString)) {
-        return a[i];
+      if (__values[i].toString().equals(paramString)) {
+        return __values[i];
       }
       i += 1;
     }

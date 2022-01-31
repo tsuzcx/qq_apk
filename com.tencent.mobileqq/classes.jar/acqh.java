@@ -1,28 +1,44 @@
-import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelAppTabView;
-import com.tencent.mobileqq.filemanager.settings.FMSettings;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
-import java.util.HashMap;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.qphone.base.util.QLog;
 
 public class acqh
-  implements Runnable
+  extends ndm
 {
-  public acqh(QfileLocalFileDelAppTabView paramQfileLocalFileDelAppTabView) {}
+  public acqh(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    HashMap localHashMap = new HashMap();
-    FileCategoryUtil.a(false, FMSettings.a().b(), ".apk", "", localHashMap, this.a);
-    String str = FMSettings.a().a();
-    if (str != null) {
-      FileCategoryUtil.a(false, str, ".apk", "", localHashMap, null);
-    }
-    FileCategoryUtil.a(localHashMap);
-    QfileLocalFileDelAppTabView.a(this.a, new acqi(this));
+    if ((this.a.isFinishing()) || (this.a.m)) {}
+    do
+    {
+      do
+      {
+        return;
+        this.a.p();
+        if (this.a.b != null) {
+          this.a.b.removeCallbacksAndMessages(null);
+        }
+        if ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null)) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.chatopttroop", 2, "openIdObserver success");
+        }
+      } while (paramOpenID.openID.equals(this.a.e));
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.chatopttroop", 2, "-->onGetOpenId--openid doesn't equal current openid");
+      }
+      this.a.s();
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.chatopttroop", 2, "openIdObserver fail");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acqh
  * JD-Core Version:    0.7.0.1
  */

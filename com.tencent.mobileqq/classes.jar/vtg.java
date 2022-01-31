@@ -1,24 +1,26 @@
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.activity.aio.tips.GatherContactsTips;
+import android.content.Intent;
+import android.os.Bundle;
 
 public class vtg
-  implements Runnable
+  implements vrx
 {
-  public vtg(FriendChatPie paramFriendChatPie) {}
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public void run()
-  {
-    if (FriendChatPie.a(this.a) != null)
-    {
-      FriendChatPie.a(this.a).b(1);
-      FriendChatPie.a(this.a).b(2);
-      FriendChatPie.a(this.a, null);
-    }
-  }
+  public void a(Bundle paramBundle1, Bundle paramBundle2) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vtg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemLongClickListener;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
-class aivp
-  implements AdapterView.OnItemLongClickListener
+public class aivp
+  implements OnCompositionLoadedListener
 {
-  aivp(aivm paramaivm) {}
+  public aivp(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
   
-  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    if ((this.a.a.a.c) || (this.a.a.a.b)) {
-      TroopAvatarWallEditActivity.a(this.a.a.a);
-    }
-    return true;
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    localLottieDrawable.playAnimation();
+    this.a.d.setImageDrawable(localLottieDrawable);
   }
 }
 

@@ -2,27 +2,34 @@ package com.tencent.token.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.af;
-import com.tencent.token.ax;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.fn;
+import com.tencent.token.cp;
+import com.tencent.token.do;
+import com.tencent.token.global.RqdApplication;
+import com.tencent.token.global.h;
+import com.tencent.token.utils.w;
 
-final class ta
+class ta
   implements View.OnClickListener
 {
-  ta(OpMsgDisplayActivity paramOpMsgDisplayActivity) {}
+  ta(PCMobileQQVerifyedDevicesActivity paramPCMobileQQVerifyedDevicesActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = ax.a().e();
-    if ((fn.a().c() == null) && (paramView != null) && (paramView.mIsBinded))
-    {
-      af.a().e(0L, OpMsgDisplayActivity.access$300(this.a));
-      OpMsgDisplayActivity.access$002(this.a, 53);
-      this.a.showUserDialog(12);
+    paramView = do.a().e();
+    if (paramView == null) {
       return;
     }
-    OpMsgDisplayActivity.access$100(this.a, 53);
+    cp localcp = cp.a(RqdApplication.l());
+    byte[] arrayOfByte = localcp.b(do.a().e().mRealUin);
+    h.a("mailprotect data=" + arrayOfByte);
+    if ((arrayOfByte != null) && (arrayOfByte.length > 0) && (!localcp.b("" + paramView.mRealUin, 523005419L)))
+    {
+      PCMobileQQVerifyedDevicesActivity.access$002(this.a, w.a(arrayOfByte));
+      PCMobileQQVerifyedDevicesActivity.access$100(this.a);
+      return;
+    }
+    cp.a(RqdApplication.l()).a("" + paramView.mRealUin, PCMobileQQVerifyedDevicesActivity.access$200(this.a), 523005419L, 64);
   }
 }
 

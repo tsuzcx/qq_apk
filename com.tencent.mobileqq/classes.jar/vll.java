@@ -1,22 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.utils.VideoActionSheet;
-import com.tencent.mobileqq.utils.QAVGroupConfig.Report;
-
-public final class vll
-  implements View.OnClickListener
+class vll
+  implements vcd
 {
-  public vll(boolean paramBoolean, VideoActionSheet paramVideoActionSheet) {}
+  vll(vlj paramvlj, vcc paramvcc) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    QAVGroupConfig.Report.a(this.jdField_a_of_type_Boolean, 2);
-    this.jdField_a_of_type_ComTencentAvUtilsVideoActionSheet.dismiss();
+    this.jdField_a_of_type_Vcc.a();
+    this.jdField_a_of_type_Vlj.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vll
  * JD-Core Version:    0.7.0.1
  */

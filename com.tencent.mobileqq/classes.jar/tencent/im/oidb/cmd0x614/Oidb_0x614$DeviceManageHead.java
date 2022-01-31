@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Oidb_0x614$DeviceManageHead
-  extends MessageMicro
+  extends MessageMicro<DeviceManageHead>
 {
   public static final int BYTES_APPNAME_FIELD_NUMBER = 7;
   public static final int BYTES_GUID_FIELD_NUMBER = 4;
@@ -36,7 +36,7 @@ public final class Oidb_0x614$DeviceManageHead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x614.Oidb_0x614.DeviceManageHead
  * JD-Core Version:    0.7.0.1
  */

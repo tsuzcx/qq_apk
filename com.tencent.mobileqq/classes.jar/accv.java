@@ -1,29 +1,30 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.EPRecommendTask;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import mqq.util.WeakReference;
+import android.view.View;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
 
 public class accv
-  extends VasQuickUpdateManager.CallBacker
+  implements bhuk
 {
-  public accv(EPRecommendTask paramEPRecommendTask) {}
+  public accv(AddFriendVerifyActivity paramAddFriendVerifyActivity, bhuf parambhuf) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramString2 = (QQAppInterface)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (paramString2 == null) {}
-    while (!"emoji_app_vip_emoji_aio_android_config.json".equals(paramString1)) {
-      return;
+    switch (paramInt)
+    {
     }
-    ((VasQuickUpdateManager)paramString2.getManager(183)).b(this.a.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
-    paramString1 = VasQuickUpdateManager.a(paramString2, "emoji_app_vip_emoji_aio_android_config.json", false, null);
-    this.a.a(paramString1);
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 1001));
+      continue;
+      aiqe.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     accv
  * JD-Core Version:    0.7.0.1
  */

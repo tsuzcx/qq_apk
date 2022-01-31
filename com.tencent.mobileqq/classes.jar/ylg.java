@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.ttpic.util.youtu.VideoFaceDetector;
+import com.tencent.biz.subscribe.utils.AnimationDrawableFactory.4;
+import java.io.File;
+import java.util.Comparator;
 
-public final class ylg
-  implements Runnable
+public class ylg
+  implements Comparator<File>
 {
-  public ylg(ApolloRender paramApolloRender, byte[] paramArrayOfByte, int paramInt1, int paramInt2) {}
+  public ylg(AnimationDrawableFactory.4 param4) {}
   
-  public void run()
+  public int a(File paramFile1, File paramFile2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mDetector.doFaceDetect(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.b);
+    return paramFile1.getName().compareToIgnoreCase(paramFile2.getName());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ylg
  * JD-Core Version:    0.7.0.1
  */

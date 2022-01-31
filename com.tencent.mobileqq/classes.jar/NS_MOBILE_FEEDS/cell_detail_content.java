@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class cell_detail_content
   extends JceStruct
 {
-  static ArrayList cache_detail_content = new ArrayList();
-  public ArrayList detail_content;
+  static ArrayList<byte[]> cache_detail_content = new ArrayList();
+  public ArrayList<byte[]> detail_content;
   
   static
   {
@@ -20,7 +20,7 @@ public final class cell_detail_content
   
   public cell_detail_content() {}
   
-  public cell_detail_content(ArrayList paramArrayList)
+  public cell_detail_content(ArrayList<byte[]> paramArrayList)
   {
     this.detail_content = paramArrayList;
   }
@@ -39,7 +39,7 @@ public final class cell_detail_content
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_detail_content
  * JD-Core Version:    0.7.0.1
  */

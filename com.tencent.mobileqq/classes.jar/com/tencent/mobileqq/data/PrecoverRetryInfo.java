@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import awge;
+import awhs;
 
 public class PrecoverRetryInfo
-  extends Entity
+  extends awge
 {
   public String businessId;
   public int itemRetryCount;
   public String md5;
-  @unique
+  @awhs
   public String pk;
   public long retryUpdateTime;
   public int totalRetryCount;
@@ -32,17 +32,17 @@ public class PrecoverRetryInfo
     this.pk = null;
   }
   
-  protected void postRead()
+  public void postRead()
   {
     super.postRead();
   }
   
-  protected void postwrite()
+  public void postwrite()
   {
     super.postwrite();
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     super.prewrite();
     if ((!TextUtils.isEmpty(this.businessId)) && (!TextUtils.isEmpty(this.md5)))
@@ -67,7 +67,7 @@ public class PrecoverRetryInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.PrecoverRetryInfo
  * JD-Core Version:    0.7.0.1
  */

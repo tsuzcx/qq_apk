@@ -1,25 +1,40 @@
-import android.widget.EditText;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.biz.subscribe.utils.SubscribeAdDeviceInfoHelper.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
+import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
 
-public final class ylz
-  implements Runnable
+public class ylz
 {
-  public ylz(ApolloRender paramApolloRender, RelativeLayout paramRelativeLayout) {}
+  private static ylz jdField_a_of_type_Ylz;
+  private qq_ad_get.QQAdGet.DeviceInfo jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo;
   
-  public void run()
+  public static ylz a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender == null) {
-      return;
+    if (jdField_a_of_type_Ylz == null) {}
+    try
+    {
+      if (jdField_a_of_type_Ylz == null) {
+        jdField_a_of_type_Ylz = new ylz();
+      }
+      return jdField_a_of_type_Ylz;
     }
-    int i = (int)(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getMeasuredWidth() - 80.0F * DeviceInfoUtil.a);
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorPop.setWidth(i);
+    finally {}
+  }
+  
+  public qq_ad_get.QQAdGet.DeviceInfo a()
+  {
+    a();
+    return this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo;
+  }
+  
+  public void a()
+  {
+    ThreadManager.getFileThreadHandler().post(new SubscribeAdDeviceInfoHelper.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ylz
  * JD-Core Version:    0.7.0.1
  */

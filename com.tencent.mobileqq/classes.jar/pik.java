@@ -1,18 +1,35 @@
-import com.tencent.component.media.image.view.AsyncImageable.AsyncImageableImpl;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class pik
-  implements Runnable
+class pik
+  implements yrb
 {
-  public pik(AsyncImageable.AsyncImageableImpl paramAsyncImageableImpl, String paramString, String[] paramArrayOfString) {}
+  pik(pih parampih, String paramString) {}
   
-  public void run()
+  public void callback(Bundle paramBundle)
   {
-    AsyncImageable.AsyncImageableImpl.a(this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncImageableImpl, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString);
+    if (QLog.isDebugVersion()) {
+      QLog.d("ReadInJoyWebviewPlugin", 4, "receive cancelLoadSkin callback resp:" + paramBundle.toString());
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", "" + paramBundle.getString("skinId"));
+      this.jdField_a_of_type_Pih.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+      return;
+    }
+    catch (JSONException paramBundle)
+    {
+      QLog.w("ReadInJoyWebviewPlugin", 1, "readSkinAndSound error " + paramBundle.toString());
+      this.jdField_a_of_type_Pih.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pik
  * JD-Core Version:    0.7.0.1
  */

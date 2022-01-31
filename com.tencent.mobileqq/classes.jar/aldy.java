@@ -1,40 +1,74 @@
-import android.os.Bundle;
-import com.tencent.open.appcommon.js.BaseJsCallBack;
-import cooperation.qappcenter.remote.RemoteServiceProxy;
-import cooperation.qappcenter.remote.SendMsg;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class aldy
-  implements Runnable
+final class aldy
+  extends bead
 {
-  public aldy(BaseJsCallBack paramBaseJsCallBack, String paramString) {}
+  aldy(File paramFile, aknx paramaknx, int paramInt1, int paramInt2, AtomicInteger paramAtomicInteger1, AtomicInteger paramAtomicInteger2, AtomicInteger paramAtomicInteger3, aled paramaled, String paramString, int paramInt3, int[] paramArrayOfInt, int paramInt4) {}
   
-  public void run()
+  public void onDone(beae parambeae)
   {
-    try
-    {
-      if (BaseJsCallBack.access$000(this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack) != null)
-      {
-        JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
-        SendMsg localSendMsg = new SendMsg("setActionButton");
-        localSendMsg.a.putString("iconType", localJSONObject.optString("iconType"));
-        localSendMsg.a.putString("visible", localJSONObject.optString("visible"));
-        localSendMsg.a.putString("callBackKey", localJSONObject.optString("callBackKey"));
-        localSendMsg.a.putString("rightText", localJSONObject.optString("text"));
-        BaseJsCallBack.access$000(this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack).b(localSendMsg);
-      }
-      return;
+    boolean bool = true;
+    super.onDone(parambeae);
+    if (3 == parambeae.a()) {
+      if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
     }
-    catch (JSONException localJSONException)
+    for (;;)
     {
-      localJSONException.printStackTrace();
+      try
+      {
+        ndr.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
+        aldv.a(this.jdField_a_of_type_Aknx, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+        if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()) {
+          break label421;
+        }
+        if (this.jdField_a_of_type_Aled != null)
+        {
+          parambeae = this.jdField_a_of_type_Aled;
+          if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0) {
+            bool = false;
+          }
+          parambeae.onDownLoadFinish(bool, this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_Int, this.jdField_a_of_type_ArrayOfInt, this.d);
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloResDownloader", 2, "downloadApolloRes download all done uin: " + this.jdField_a_of_type_JavaLangString + "all cnt: " + this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", err cnt: " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+          }
+        }
+        this.jdField_a_of_type_JavaIoFile.delete();
+        return;
+      }
+      catch (Exception parambeae)
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " error->" + parambeae.getMessage());
+        continue;
+      }
+      catch (OutOfMemoryError parambeae)
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " error->" + parambeae.getMessage());
+        continue;
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+      QLog.d("ApolloResDownloader", 1, "download file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " task.getStatus()->" + parambeae.a());
+      continue;
+      label421:
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloResDownloader", 2, "downloadApolloRes download uin:" + this.jdField_a_of_type_JavaLangString + ", cb cnt: " + this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", all cnt: " + this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aldy
  * JD-Core Version:    0.7.0.1
  */

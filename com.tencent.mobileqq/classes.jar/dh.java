@@ -1,20 +1,19 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.dataline.util.PrinterSessionAdapter;
+import com.tencent.device.datadef.DeviceInfo;
+import java.util.ArrayList;
 
-public class dh
-  implements View.OnLongClickListener
+class dh
+  extends zto
 {
-  public dh(PrinterSessionAdapter paramPrinterSessionAdapter) {}
+  dh(df paramdf) {}
   
-  public boolean onLongClick(View paramView)
+  protected void a(ArrayList<DeviceInfo> paramArrayList)
   {
-    return this.a.a(paramView);
+    df.a(this.a, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dh
  * JD-Core Version:    0.7.0.1
  */

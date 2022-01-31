@@ -1,64 +1,34 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class abzr
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public abzr(FavroamingDBManager paramFavroamingDBManager, List paramList, int paramInt) {}
+  public abzr(TestAppFragment paramTestAppFragment, EditText paramEditText1, EditText paramEditText2) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingDBManager.a.getEntityManagerFactory().createEntityManager();
-    if (localEntityManager == null) {}
-    boolean bool2;
-    do
+    paramDialogInterface.dismiss();
+    paramDialogInterface = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    String str = this.b.getText().toString();
+    if ((TextUtils.isEmpty(paramDialogInterface)) || (TextUtils.isEmpty(str)))
     {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.getActivity(), alud.a(2131715243), 1).a();
       return;
-      int i = 0;
-      bool2 = false;
-      if (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        CustomEmotionData localCustomEmotionData = (CustomEmotionData)this.jdField_a_of_type_JavaUtilList.get(i);
-        boolean bool1;
-        switch (this.jdField_a_of_type_Int)
-        {
-        case 3: 
-        default: 
-          bool1 = bool2;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("FavroamingDBManager", 2, "can not save fav emoticon data, type:" + this.jdField_a_of_type_Int);
-            bool1 = bool2;
-          }
-          break;
-        }
-        for (;;)
-        {
-          i += 1;
-          bool2 = bool1;
-          break;
-          localCustomEmotionData.setStatus(1000);
-          localEntityManager.a(localCustomEmotionData);
-          bool1 = bool2;
-          continue;
-          bool1 = localEntityManager.a(localCustomEmotionData);
-          continue;
-          bool1 = localEntityManager.b(localCustomEmotionData);
-        }
-      }
-      localEntityManager.a();
-    } while (!QLog.isColorLevel());
-    QLog.d("FavroamingDBManager", 2, "updateFavEmotionDataListInDB type:" + this.jdField_a_of_type_Int + ",data size:" + this.jdField_a_of_type_JavaUtilList.size() + " save result: " + bool2);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.c = paramDialogInterface;
+    this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_Int = Integer.parseInt(str);
+    this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_Abwx = abxc.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_Int, paramDialogInterface);
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.getActivity(), "appid切换为:" + paramDialogInterface, 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abzr
  * JD-Core Version:    0.7.0.1
  */

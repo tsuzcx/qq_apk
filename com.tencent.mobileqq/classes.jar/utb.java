@@ -1,73 +1,31 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-public class utb
+class utb
+  extends vii
 {
-  public uta a = new uta();
-  public uta b = new uta();
-  public uta c = new uta();
-  public uta d = new uta();
+  utb(uta paramuta) {}
   
   public void a()
   {
-    this.a.a(this.b);
-    this.c.a(this.d);
-    this.b.a(this.d);
+    super.a();
+    usz.a(this.a.a, null);
   }
   
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  public void a(int paramInt)
   {
-    this.a.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    this.b.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    this.c.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    super.a(paramInt);
+    wxj.a("home_page", "suc_share", 1, paramInt, new String[] { wxj.b(this.a.a.a) + "", wxj.a(this.a.a.a) + "", this.a.a.a.feedId });
   }
   
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong, boolean paramBoolean)
+  public void b(int paramInt)
   {
-    if (paramBoolean)
-    {
-      this.a.a(this.b);
-      this.c.a(this.d);
-      this.b.a((this.c.jdField_a_of_type_Float + paramFloat1) / 2.0F, (this.c.b + paramFloat2) / 2.0F, (this.c.c + paramFloat3) / 2.0F, (this.c.jdField_a_of_type_Long + paramLong) / 2L);
-      this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-      return;
-    }
-    this.b.a((this.c.jdField_a_of_type_Float + paramFloat1) / 2.0F, (this.c.b + paramFloat2) / 2.0F, (this.c.c + paramFloat3) / 2.0F, (this.c.jdField_a_of_type_Long + paramLong) / 2L);
-    this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-  }
-  
-  public void a(utb paramutb)
-  {
-    this.a.a(paramutb.a);
-    this.b.a(paramutb.b);
-    this.c.a(paramutb.c);
-    this.d.a(paramutb.d);
-  }
-  
-  public void b(utb paramutb)
-  {
-    if (paramutb.d == this.c)
-    {
-      this.a = paramutb.a;
-      this.c = paramutb.c;
-      this.b.a((this.d.jdField_a_of_type_Float + this.c.jdField_a_of_type_Float) / 2.0F, (this.d.b + this.c.b) / 2.0F, (this.d.c + this.c.c) / 2.0F, (this.d.jdField_a_of_type_Long + this.c.jdField_a_of_type_Long) / 2L);
-    }
-    do
-    {
-      return;
-      if (this.d == paramutb.c)
-      {
-        this.d.a(paramutb.d);
-        this.b.a((this.d.jdField_a_of_type_Float + this.c.jdField_a_of_type_Float) / 2.0F, (this.d.b + this.c.b) / 2.0F, (this.d.c + this.c.c) / 2.0F, (this.d.jdField_a_of_type_Long + this.c.jdField_a_of_type_Long) / 2L);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("TransPathJob", 2, "TransPathJob merge point error");
+    super.b(paramInt);
+    wxj.a("home_page", "share_chanel", 1, paramInt, new String[] { wxj.b(this.a.a.a) + "", wxj.a(this.a.a.a) + "", this.a.a.a.feedId });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     utb
  * JD-Core Version:    0.7.0.1
  */

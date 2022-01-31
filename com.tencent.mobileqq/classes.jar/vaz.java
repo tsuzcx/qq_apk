@@ -1,17 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class vaz
-  implements DialogInterface.OnClickListener
+  extends avvb
 {
-  public vaz(MarketFaceItemBuilder paramMarketFaceItemBuilder) {}
+  vaz(vaw paramvaw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  protected void a(Object paramObject)
+  {
+    ThreadManager.post(new MsgTabStoryNodeListManager.2.1(this, paramObject), 5, null, true);
+    wxe.b(vaw.b(), "freshRedPoint, showStoryNode");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vaz
  * JD-Core Version:    0.7.0.1
  */

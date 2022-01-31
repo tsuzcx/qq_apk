@@ -1,16 +1,18 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.SetTroopAdminsActivity;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SubaccountUgActivity;
 
-public class dno
-  implements Runnable
+class dno
+  implements DialogInterface.OnClickListener
 {
-  public dno(SetTroopAdminsActivity paramSetTroopAdminsActivity) {}
+  dno(dnn paramdnn) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ArrayList localArrayList = this.a.a();
-    this.a.a.sendMessage(this.a.a.obtainMessage(2, localArrayList));
+    paramDialogInterface = new Intent(this.a.a.a(), SubaccountUgActivity.class);
+    this.a.a.startActivity(paramDialogInterface);
+    this.a.a.finish();
   }
 }
 

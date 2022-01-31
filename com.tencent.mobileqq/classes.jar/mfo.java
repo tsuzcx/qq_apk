@@ -1,28 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper;
-import com.tencent.biz.widgets.ElasticHorScrView;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
 
 public class mfo
-  implements Runnable
+  implements mkg
 {
-  public mfo(VideoShareHelper paramVideoShareHelper, ElasticHorScrView paramElasticHorScrView1, int paramInt1, ElasticHorScrView paramElasticHorScrView2, int paramInt2) {}
+  public mfo(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI, long paramLong, int paramInt) {}
   
-  public void run()
+  public void a()
   {
-    if (this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.jdField_a_of_type_Int) {
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
-    }
-    while (this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.jdField_b_of_type_Int)
-    {
-      this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
-      return;
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
-    }
-    this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.k = true;
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.L();
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.d(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.k = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mfo
  * JD-Core Version:    0.7.0.1
  */

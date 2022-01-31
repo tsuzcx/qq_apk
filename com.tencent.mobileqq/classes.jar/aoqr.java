@@ -1,43 +1,76 @@
-import android.annotation.TargetApi;
-import dov.com.tencent.mobileqq.shortvideo.util.videoconverter.VideoConverter.Processor;
-import dov.com.tencent.mobileqq.shortvideo.util.videoconverter.VideoConverter.VideoConverterImpl;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
-@TargetApi(18)
 public class aoqr
-  implements VideoConverter.VideoConverterImpl
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
   
-  public boolean a(File paramFile, VideoConverter.Processor paramProcessor, boolean paramBoolean)
+  public aoqr()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+  }
+  
+  public static aoqr a(aoko[] paramArrayOfaoko)
+  {
+    localaoqr = new aoqr();
+    int i = 0;
+    try
     {
-      this.jdField_a_of_type_Boolean = true;
-      paramFile = new Thread(new aoqs(this, paramFile, paramProcessor), "VideoConvert");
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramFile);
-      paramFile.start();
-      if (paramBoolean) {}
-      try
+      while (i < paramArrayOfaoko.length)
       {
-        paramFile.join();
-        return true;
+        JSONObject localJSONObject = new JSONObject(paramArrayOfaoko[i].jdField_a_of_type_JavaLangString);
+        if (localJSONObject.has("pubaccountSwitch"))
+        {
+          localaoqr.jdField_a_of_type_Int = localJSONObject.optInt("pubaccountSwitch");
+          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed swtich=" + localaoqr.jdField_a_of_type_Int);
+          }
+        }
+        if (localJSONObject.has("fullPopIntervalDay"))
+        {
+          localaoqr.jdField_b_of_type_Int = localJSONObject.optInt("fullPopIntervalDay");
+          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed fullPopIntervalDay=" + localaoqr.jdField_b_of_type_Int);
+          }
+        }
+        if (localJSONObject.has("isFeedByWeb"))
+        {
+          localaoqr.c = localJSONObject.optInt("isFeedByWeb");
+          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed isFeedByWeb=" + localaoqr.c);
+          }
+        }
+        if (localJSONObject.has("gamePubUrl"))
+        {
+          localaoqr.jdField_b_of_type_JavaLangString = localJSONObject.optString("gamePubUrl");
+          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed gamePubUlr=" + localaoqr.jdField_a_of_type_JavaLangString);
+          }
+        }
+        if (localJSONObject.has("feedUrl"))
+        {
+          localaoqr.jdField_a_of_type_JavaLangString = localJSONObject.optString("feedUrl");
+          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed feedUrl=" + localaoqr.jdField_a_of_type_JavaLangString);
+          }
+        }
+        i += 1;
       }
-      catch (InterruptedException paramFile)
-      {
-        paramFile.printStackTrace();
-        return true;
-      }
+      return localaoqr;
     }
-    return false;
+    catch (Throwable paramArrayOfaoko)
+    {
+      com.tencent.TMG.utils.QLog.e("QQGameConfBean", 1, "QQGameConfBean parse error e=" + paramArrayOfaoko.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoqr
  * JD-Core Version:    0.7.0.1
  */

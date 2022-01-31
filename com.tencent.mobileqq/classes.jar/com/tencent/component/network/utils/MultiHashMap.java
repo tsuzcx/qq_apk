@@ -4,54 +4,54 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class MultiHashMap
-  extends HashMap
+public class MultiHashMap<K, V>
+  extends HashMap<K, HashSet<V>>
 {
-  public boolean add(Object paramObject1, Object paramObject2)
+  public boolean add(K paramK, V paramV)
   {
-    if (paramObject2 == null) {
+    if (paramV == null) {
       return false;
     }
-    HashSet localHashSet2 = (HashSet)get(paramObject1);
+    HashSet localHashSet2 = (HashSet)get(paramK);
     HashSet localHashSet1 = localHashSet2;
     if (localHashSet2 == null)
     {
       localHashSet1 = new HashSet();
-      put(paramObject1, localHashSet1);
+      put(paramK, localHashSet1);
     }
-    return localHashSet1.add(paramObject2);
+    return localHashSet1.add(paramV);
   }
   
-  public boolean remove(Object paramObject1, Object paramObject2)
+  public boolean remove(K paramK, V paramV)
   {
     boolean bool = true;
-    if (paramObject2 == null) {
-      return remove(paramObject1) != null;
+    if (paramV == null) {
+      return remove(paramK) != null;
     }
-    Collection localCollection = (Collection)get(paramObject1);
-    if ((localCollection != null) && (localCollection.remove(paramObject2))) {}
+    Collection localCollection = (Collection)get(paramK);
+    if ((localCollection != null) && (localCollection.remove(paramV))) {}
     for (;;)
     {
       if ((localCollection != null) && (localCollection.isEmpty())) {
-        remove(paramObject1);
+        remove(paramK);
       }
       return bool;
       bool = false;
     }
   }
   
-  public int sizeOf(Object paramObject)
+  public int sizeOf(K paramK)
   {
-    paramObject = (Collection)get(paramObject);
-    if (paramObject == null) {
+    paramK = (Collection)get(paramK);
+    if (paramK == null) {
       return 0;
     }
-    return paramObject.size();
+    return paramK.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.utils.MultiHashMap
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,97 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.GetAppPathByActionResult;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByActionCallback;
-import com.tencent.mobileqq.data.RecommendCommonMessage.ArkMsgAppInfo;
-import com.tencent.mobileqq.data.RecommendCommonMessage.IGetAppInfosByContextListCallback;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.util.SparseArray;
+import com.tencent.mfsdk.MagnifierSDK;
 
-public final class abvg
-  implements ArkLocalAppMgr.IGetAppPathByActionCallback
+public class abvg
 {
-  public abvg(String paramString1, boolean paramBoolean, String paramString2) {}
+  public static int a;
+  private static long a;
+  public static SparseArray<abvh> a;
   
-  public void a(Object paramObject, ArrayList paramArrayList)
+  static
   {
-    ArrayList localArrayList = new ArrayList();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
+    jdField_a_of_type_Long = Math.round((float)(System.currentTimeMillis() / 86400000L));
+    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(18);
+    jdField_a_of_type_AndroidUtilSparseArray.put(1, new abvh(0L, 0));
+    jdField_a_of_type_AndroidUtilSparseArray.put(4, new abvh(0L, 0));
+    jdField_a_of_type_AndroidUtilSparseArray.put(6, new abvh(0L, 0));
+    jdField_a_of_type_AndroidUtilSparseArray.put(7, new abvh(0L, 0));
+    jdField_a_of_type_AndroidUtilSparseArray.put(14, new abvh(0L, 0));
+    jdField_a_of_type_AndroidUtilSparseArray.put(9, new abvh(0L, 0));
+    jdField_a_of_type_AndroidUtilSparseArray.put(16, new abvh(0L, 0));
+  }
+  
+  public static void a()
+  {
+    long l;
+    if (MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences != null) {
+      l = MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences.getLong("last_start_date", 0L);
+    }
+    int[] arrayOfInt;
+    int j;
+    int i;
+    int k;
+    for (;;)
     {
-      ArkLocalAppMgr.GetAppPathByActionResult localGetAppPathByActionResult = (ArkLocalAppMgr.GetAppPathByActionResult)paramArrayList.next();
-      if ((localGetAppPathByActionResult.a == 0) && (localGetAppPathByActionResult.c != null))
+      if ((jdField_a_of_type_Long - l > 0L) && (MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor != null))
       {
-        RecommendCommonMessage.ArkMsgAppInfo localArkMsgAppInfo = new RecommendCommonMessage.ArkMsgAppInfo();
-        localArkMsgAppInfo.appName = localGetAppPathByActionResult.b;
-        localArkMsgAppInfo.appPath = localGetAppPathByActionResult.c;
-        localArkMsgAppInfo.appView = localGetAppPathByActionResult.d;
-        localArkMsgAppInfo.keyword = this.jdField_a_of_type_JavaLangString;
-        localArkMsgAppInfo.equalInputText = this.jdField_a_of_type_Boolean;
-        localArkMsgAppInfo.meta = this.b;
-        localArrayList.add(localArkMsgAppInfo);
+        MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong("last_start_date", jdField_a_of_type_Long);
+        MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("count_today_reported", 0);
+        arrayOfInt = abuz.jdField_a_of_type_ArrayOfInt;
+        j = arrayOfInt.length;
+        i = 0;
+        for (;;)
+        {
+          if (i < j)
+          {
+            k = arrayOfInt[i];
+            MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("count_plugin_" + String.valueOf(k), 0);
+            jdField_a_of_type_AndroidUtilSparseArray.put(k, new abvh(0L, 0));
+            i += 1;
+            continue;
+            l = jdField_a_of_type_Long;
+            break;
+          }
+        }
+        MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.apply();
       }
     }
-    paramObject = (RecommendCommonMessage.IGetAppInfosByContextListCallback)paramObject;
-    paramObject.mAppList.addAll(localArrayList);
-    int i = paramObject.mCount - 1;
-    paramObject.mCount = i;
-    if (i == 0) {
-      paramObject.onGetAppInfos(paramObject.mAppList);
+    for (;;)
+    {
+      return;
+      if (MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences != null)
+      {
+        jdField_a_of_type_Int = MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences.getInt("count_today_reported", 0);
+        if (jdField_a_of_type_Int >= abuz.jdField_a_of_type_Int) {
+          break;
+        }
+        arrayOfInt = abuz.jdField_a_of_type_ArrayOfInt;
+        j = arrayOfInt.length;
+        i = 0;
+        while (i < j)
+        {
+          k = arrayOfInt[i];
+          int m = MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences.getInt("count_plugin_" + String.valueOf(k), 0);
+          jdField_a_of_type_AndroidUtilSparseArray.put(k, new abvh(0L, m));
+          i += 1;
+        }
+      }
     }
+  }
+  
+  public static void a(int paramInt)
+  {
+    abvh localabvh = (abvh)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localabvh == null) {
+      return;
+    }
+    localabvh.jdField_a_of_type_Int += 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abvg
  * JD-Core Version:    0.7.0.1
  */

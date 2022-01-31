@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class ModGroupSort
   extends JceStruct
 {
-  static ArrayList cache_vMsgGroupSort;
-  public ArrayList vMsgGroupSort;
+  static ArrayList<GroupSort> cache_vMsgGroupSort;
+  public ArrayList<GroupSort> vMsgGroupSort;
   
   public ModGroupSort() {}
   
-  public ModGroupSort(ArrayList paramArrayList)
+  public ModGroupSort(ArrayList<GroupSort> paramArrayList)
   {
     this.vMsgGroupSort = paramArrayList;
   }
@@ -38,7 +38,7 @@ public final class ModGroupSort
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     IMMsgBodyPack.ModGroupSort
  * JD-Core Version:    0.7.0.1
  */

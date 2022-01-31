@@ -1,5 +1,8 @@
 package android.support.v4.util;
 
+import android.support.annotation.RestrictTo;
+
+@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class DebugUtils
 {
   public static void buildShortClassTag(Object paramObject, StringBuilder paramStringBuilder)

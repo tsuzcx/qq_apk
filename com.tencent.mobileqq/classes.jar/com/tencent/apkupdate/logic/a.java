@@ -13,6 +13,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import com.tencent.apkupdate.ApkUpdateListener;
 import com.tencent.apkupdate.ApkUpdateParam;
+import com.tencent.apkupdate.b.b;
 import com.tencent.apkupdate.logic.protocol.jce.ApkFileInfo;
 import com.tencent.apkupdate.logic.protocol.jce.AppInfoForUpdate;
 import com.tencent.apkupdate.logic.protocol.jce.AppUpdateInfo;
@@ -51,7 +52,7 @@ public final class a
           i = j;
           return i;
         }
-        PackageManager localPackageManager = com.tencent.apkupdate.logic.protocol.b.a().b().getPackageManager();
+        PackageManager localPackageManager = com.tencent.apkupdate.logic.protocol.a.a().b().getPackageManager();
         Iterator localIterator = paramList.iterator();
         if (localIterator.hasNext())
         {
@@ -69,7 +70,7 @@ public final class a
               String str = (String)this.d.get(localPackageInfo.packageName);
               paramList = str;
               if (TextUtils.isEmpty(str)) {
-                paramList = com.tencent.apkupdate.logic.protocol.b.a(localPackageInfo.packageName).toLowerCase();
+                paramList = com.tencent.apkupdate.logic.protocol.a.a(localPackageInfo.packageName).toLowerCase();
               }
               localApkFileInfo.manifestMd5 = paramList;
               localApkFileInfo.fileCRC32 = locala.a();
@@ -139,12 +140,12 @@ public final class a
     //   50: checkcast 108	com/tencent/apkupdate/logic/protocol/jce/ApkFileInfo
     //   53: invokevirtual 187	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   56: pop
-    //   57: invokestatic 50	com/tencent/apkupdate/logic/protocol/b:a	()Lcom/tencent/apkupdate/logic/protocol/b;
+    //   57: invokestatic 50	com/tencent/apkupdate/logic/protocol/a:a	()Lcom/tencent/apkupdate/logic/protocol/a;
     //   60: new 189	com/tencent/apkupdate/logic/protocol/a/b
     //   63: dup
     //   64: aload_2
     //   65: invokespecial 192	com/tencent/apkupdate/logic/protocol/a/b:<init>	(Ljava/util/List;)V
-    //   68: invokevirtual 195	com/tencent/apkupdate/logic/protocol/b:a	(Ljava/lang/Runnable;)V
+    //   68: invokevirtual 195	com/tencent/apkupdate/logic/protocol/a:a	(Ljava/lang/Runnable;)V
     //   71: goto -57 -> 14
     //   74: astore_2
     //   75: aload_0
@@ -215,7 +216,7 @@ public final class a
           localObject2 = (List)paramMessage.obj;
         } while (localObject2 == null);
         paramMessage = new ArrayList();
-        localObject1 = com.tencent.apkupdate.logic.protocol.b.a().b().getPackageManager();
+        localObject1 = com.tencent.apkupdate.logic.protocol.a.a().b().getPackageManager();
         long l1 = System.currentTimeMillis();
         Object localObject2 = ((List)localObject2).iterator();
         while (((Iterator)localObject2).hasNext())
@@ -238,8 +239,8 @@ public final class a
                 localAppInfoForUpdate = new AppInfoForUpdate();
                 localAppInfoForUpdate.packageName = str;
                 localAppInfoForUpdate.versionCode = ((PackageInfo)localObject3).versionCode;
-                localAppInfoForUpdate.signatureMd5 = com.tencent.apkupdate.logic.protocol.b.a().b(str);
-                localAppInfoForUpdate.manifestMd5 = com.tencent.apkupdate.logic.protocol.b.a(str).toLowerCase();
+                localAppInfoForUpdate.signatureMd5 = com.tencent.apkupdate.logic.protocol.a.a().b(str);
+                localAppInfoForUpdate.manifestMd5 = com.tencent.apkupdate.logic.protocol.a.a(str).toLowerCase();
                 this.d.put(str, localAppInfoForUpdate.manifestMd5);
                 if ((((PackageInfo)localObject3).applicationInfo.flags & 0x1) > 0) {
                   break label404;
@@ -247,7 +248,7 @@ public final class a
                 localAppInfoForUpdate.appType = 1;
                 localAppInfoForUpdate.versionName = ((PackageInfo)localObject3).versionName;
                 localAppInfoForUpdate.actionFlag = ((byte)i);
-                localAppInfoForUpdate.grayVersionCode = com.tencent.apkupdate.c.b.a().a(str);
+                localAppInfoForUpdate.grayVersionCode = b.a().a(str);
                 localAppInfoForUpdate.targetVersionCode = j;
                 localAppInfoForUpdate.targetGrayVersionCode = k;
                 paramMessage.add(localAppInfoForUpdate);
@@ -276,7 +277,7 @@ public final class a
         paramMessage.sendToTarget();
         return;
         paramMessage = (ArrayList)paramMessage.obj;
-        com.tencent.apkupdate.logic.protocol.b.a().a(new com.tencent.apkupdate.logic.protocol.a.a(paramMessage));
+        com.tencent.apkupdate.logic.protocol.a.a().a(new com.tencent.apkupdate.logic.protocol.a.a(paramMessage));
         return;
       } while (a((ArrayList)paramMessage.obj) <= 0);
       paramMessage = a().obtainMessage();
@@ -301,7 +302,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.apkupdate.logic.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,42 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 
-public class mss
-  implements View.OnFocusChangeListener
+class mss
+  extends meu
 {
-  public mss(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  mss(msr parammsr) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  protected void b(mey parammey)
   {
-    if (paramBoolean)
+    if (parammey.jdField_b_of_type_Boolean) {
+      return;
+    }
+    parammey.jdField_b_of_type_Boolean = this.a.a("onAVActivityPreBackPressed");
+    if (parammey.jdField_b_of_type_Boolean) {
+      parammey.jdField_b_of_type_JavaLangString = "AVRegbagResultUI";
+    }
+    QLog.w(this.a.i, 1, "onAVActivityPreBackPressed, BlockSystemBack[" + parammey.jdField_b_of_type_Boolean + "]");
+  }
+  
+  protected void e(String paramString)
+  {
+    if (this.a.a() != null)
     {
-      paramView.clearFocus();
-      SubscriptFeedsActivity.a(this.a);
-      long l = System.currentTimeMillis();
-      if (l - SubscriptFeedsActivity.a(this.a) > 1500L)
-      {
-        SubscriptFeedsActivity.a(this.a, l);
-        UniteSearchActivity.a(this.a, null, 12);
-        if (QLog.isColorLevel()) {
-          QLog.d("SubscriptFeedsActivity", 2, "Search Subscript Account...");
-        }
+      QLog.w(this.a.i, 1, "onActivityOnResume, peerUin[" + paramString + "], mStarter[" + this.a.a.jdField_b_of_type_Boolean + "], mPlayUin[" + this.a.a.jdField_b_of_type_JavaLangString + "], mStartUin[" + this.a.a.a + "]");
+      if (((this.a.a.jdField_b_of_type_Boolean) && (TextUtils.equals(this.a.a.jdField_b_of_type_JavaLangString, paramString))) || ((!this.a.a.jdField_b_of_type_Boolean) && (TextUtils.equals(this.a.a.a, paramString)))) {
+        this.a.c();
       }
     }
+    else
+    {
+      return;
+    }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mss
  * JD-Core Version:    0.7.0.1
  */

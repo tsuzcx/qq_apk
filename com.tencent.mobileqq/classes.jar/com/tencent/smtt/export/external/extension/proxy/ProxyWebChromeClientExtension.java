@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.webkit.ValueCallback;
@@ -191,6 +192,7 @@ public class ProxyWebChromeClientExtension
         if ((paramValueCallback.getMessage() == null) || (!paramValueCallback.getMessage().contains("onSavePassword"))) {
           throw paramValueCallback;
         }
+        Log.d("incompatible-oldcore", "IX5WebChromeClientExtension.onSavePassword");
         sCompatibleNewOnSavePassword = false;
       }
     }
@@ -233,6 +235,7 @@ public class ProxyWebChromeClientExtension
       if ((paramValueCallback.getMessage() == null) || (!paramValueCallback.getMessage().contains("openFileChooser"))) {
         throw paramValueCallback;
       }
+      Log.d("incompatible-oldcore", "IX5WebChromeClientExtension.openFileChooser");
       sCompatibleOpenFileChooser = false;
     }
   }
@@ -258,7 +261,7 @@ public class ProxyWebChromeClientExtension
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.export.external.extension.proxy.ProxyWebChromeClientExtension
  * JD-Core Version:    0.7.0.1
  */

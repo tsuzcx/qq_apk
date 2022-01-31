@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class actt
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public actt(FMObserver paramFMObserver, ThumbnailInfo paramThumbnailInfo) {}
+  public actt(DialogActivity paramDialogActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataThumbnailInfo);
+    QLog.d("qqBaseActivity", 1, "checkBackgroundRestricWhilteList cancel.");
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     actt
  * JD-Core Version:    0.7.0.1
  */

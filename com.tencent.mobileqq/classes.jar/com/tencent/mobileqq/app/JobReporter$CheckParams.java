@@ -2,7 +2,8 @@ package com.tencent.mobileqq.app;
 
 public class JobReporter$CheckParams
 {
-  public String a = "";
+  public String newThreadName = "";
+  public StackTraceElement[] ste;
 }
 
 

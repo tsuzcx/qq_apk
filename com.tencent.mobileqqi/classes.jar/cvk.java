@@ -1,25 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.mobileqq.statistics.StatisticCollector;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity2;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.SSOAccountObserver;
 
 public class cvk
-  implements View.OnClickListener
+  extends SSOAccountObserver
 {
-  public cvk(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  public cvk(LoginVerifyCodeActivity2 paramLoginVerifyCodeActivity2) {}
   
-  public void onClick(View paramView)
+  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    this.a.c();
-    GesturePWDUtils.setGestureUnlockFailedType(this.a, 0);
-    StatisticCollector.a(this.a.getBaseContext()).a(this.a.b, this.a.b.a(), "Gesture_pwd", "click_forgive", 0, 1, "0", null, null, null, null);
+    this.a.g();
+  }
+  
+  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SSOAccountObserver", 2, "onGetTicketNoPasswd wtTicket=" + paramArrayOfByte);
+    }
+    String str = null;
+    if (paramInt == 4096) {
+      str = new String(paramArrayOfByte);
+    }
+    paramArrayOfByte = new Intent();
+    paramArrayOfByte.putExtra("last_account", paramString);
+    paramArrayOfByte.putExtra("wtTicket", str);
+    paramArrayOfByte.putExtra("ssobundle", paramBundle);
+    this.a.setResult(-1, paramArrayOfByte);
+    this.a.finish();
+  }
+  
+  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
+  {
+    this.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cvk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,25 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import com.tencent.mobileqq.activity.ChatHistoryImageView.DownloadAndSaveTask;
 
-class acof
-  implements Runnable
+public class acof
+  implements DialogInterface.OnClickListener
 {
-  acof(acod paramacod, DownloadInfo paramDownloadInfo) {}
+  public acof(ChatHistoryImageView paramChatHistoryImageView) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    UniformDownloadActivity.b(this.jdField_a_of_type_Acod.a).setVisibility(0);
-    UniformDownloadActivity.a(this.jdField_a_of_type_Acod.a).setVisibility(0);
-    UniformDownloadActivity.b(this.jdField_a_of_type_Acod.a).setText(this.jdField_a_of_type_Acod.a.getString(2131428580, new Object[] { this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g + "%" }));
+    if (this.a.a != null)
+    {
+      this.a.a.b = false;
+      this.a.a.a(false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acof
  * JD-Core Version:    0.7.0.1
  */

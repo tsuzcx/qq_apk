@@ -1,37 +1,70 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.av.service.IAVServiceForQQ.Stub;
-import com.tencent.av.service.QavWrapper;
-import com.tencent.av.service.QavWrapper.OnReadyListener;
+import android.os.Bundle;
+import com.tencent.biz.eqq.EnterpriseDetailActivity;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class bio
-  implements ServiceConnection
+  implements BusinessObserver
 {
-  public bio(QavWrapper paramQavWrapper) {}
+  public bio(EnterpriseDetailActivity paramEnterpriseDetailActivity) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QavWrapper", 2, "Qav Service connected!");
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "success:" + String.valueOf(paramBoolean));
     }
-    this.a.jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ = IAVServiceForQQ.Stub.a(paramIBinder);
-    if ((this.a.jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ != null) && (this.a.jdField_a_of_type_ComTencentAvServiceQavWrapper$OnReadyListener != null)) {
-      this.a.jdField_a_of_type_ComTencentAvServiceQavWrapper$OnReadyListener.a(this.a);
+    if (!paramBoolean) {
+      if (!this.a.jdField_a_of_type_Boolean) {
+        this.a.a(2131560545);
+      }
     }
-    while (!QLog.isColorLevel()) {
+    for (;;)
+    {
+      paramBundle = this.a;
+      paramBundle.jdField_a_of_type_Int -= 1;
+      if (this.a.jdField_a_of_type_Int == 0) {
+        EnterpriseDetailActivity.b(this.a);
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("crmtest", 4, "receive sendDetailInfoResponse, ts=" + System.currentTimeMillis());
+      }
       return;
+      if (paramBoolean) {}
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
+          localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
+          if ((((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get() != 0) || ((this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail != null) && ((this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail == null) || (localGetEqqAccountDetailInfoResponse.seqno.get() == this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.seqno)))) {
+            continue;
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetEqqAccountDetailInfoResponse = localGetEqqAccountDetailInfoResponse;
+          paramBundle = new EqqDetail(this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetEqqAccountDetailInfoResponse);
+          if ((this.a.c) && (paramBundle.followType == 1))
+          {
+            EnterpriseDetailActivity.b(this.a, this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
+            EnterpriseDetailActivity.f(this.a);
+            continue;
+          }
+          EnterpriseDetailActivity.c(this.a, paramBundle);
+          continue;
+        }
+        if (this.a.jdField_a_of_type_Boolean) {
+          continue;
+        }
+        this.a.a(2131560545);
+      }
+      catch (Exception paramBundle) {}
+      if (!this.a.jdField_a_of_type_Boolean) {
+        this.a.a(2131560545);
+      }
     }
-    QLog.d("QavWrapper", 2, "mQavProxy == null or mOnReadyListener == null");
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavWrapper", 2, "Qav Service disconnected!");
-    }
-    this.a.jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ = null;
   }
 }
 

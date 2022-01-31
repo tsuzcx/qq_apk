@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class ArticleComment$CreateArticleCommentRespond
-  extends MessageMicro
+  extends MessageMicro<CreateArticleCommentRespond>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField comment_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -21,7 +21,7 @@ public final class ArticleComment$CreateArticleCommentRespond
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ac.ArticleComment.CreateArticleCommentRespond
  * JD-Core Version:    0.7.0.1
  */

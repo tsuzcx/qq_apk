@@ -1,19 +1,35 @@
-import android.content.DialogInterface.OnClickListener;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.widget.MicroPhoneDialog;
+import com.tencent.qphone.base.util.QLog;
 
 public class hgx
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public hgx(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, DialogInterface.OnClickListener paramOnClickListener) {}
+  public hgx(MicroPhoneDialog paramMicroPhoneDialog) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, 0);
+    if (this.a.a)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.profilecard.MicroPhone", 2, "enableRotate true, refuse onTouch..");
+      }
+      return true;
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
+    int i = paramMotionEvent.getAction();
+    if (i == 0)
+    {
+      MicroPhoneDialog.d(this.a);
+      return true;
+    }
+    if ((i == 3) || (i == 1))
+    {
+      this.a.g();
+      return true;
+    }
+    return false;
   }
 }
 

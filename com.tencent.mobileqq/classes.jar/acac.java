@@ -1,68 +1,26 @@
-import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.view.DragSortAdapter;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class acac
   implements View.OnClickListener
 {
-  public acac(DragSortAdapter paramDragSortAdapter) {}
+  public acac(AboutActivity paramAboutActivity) {}
   
   public void onClick(View paramView)
   {
-    boolean bool = false;
-    if (paramView.getTag() == null) {}
-    Object localObject;
-    EmoticonPackage localEmoticonPackage;
-    int i;
-    do
-    {
-      do
-      {
-        return;
-        localObject = (QQAppInterface)((BaseActivity)this.a.a).getAppRuntime();
-        localEmoticonPackage = (EmoticonPackage)paramView.getTag();
-      } while (!localEmoticonPackage.valid);
-      i = DragSortAdapter.a(this.a, (QQAppInterface)localObject, localEmoticonPackage);
-      if (i == 0)
-      {
-        DragSortAdapter.a(this.a, localEmoticonPackage, paramView);
-        ReportController.b((QQAppInterface)localObject, "CliOper", "", ((QQAppInterface)localObject).getCurrentAccountUin(), "ep_mall", "Clk_updatepkg_mine", 0, 0, localEmoticonPackage.epId, "" + localEmoticonPackage.localVersion, "" + localEmoticonPackage.latestVersion, "");
-        return;
-      }
-      if ((i == 1) || (i == 2))
-      {
-        localObject = this.a;
-        if (i == 1) {
-          bool = true;
-        }
-        DragSortAdapter.a((DragSortAdapter)localObject, localEmoticonPackage, paramView, bool);
-        return;
-      }
-    } while (i != 3);
-    if (!NetworkUtil.a(this.a.a)) {
-      DialogUtil.a(this.a.a, 230).setTitle(this.a.a.getString(2131433265)).setMessage(this.a.a.getString(2131436259)).setPositiveButton(this.a.a.getString(2131434144), new acae(this, localEmoticonPackage, paramView)).setNegativeButton(this.a.a.getString(2131434145), new acad(this)).show();
-    }
-    for (;;)
-    {
-      ReportController.b((QQAppInterface)localObject, "CliOper", "", "", "ep_mall", "0X8005C14", 0, 0, "", "", "", "");
-      return;
-      if (NetworkUtil.a(this.a.a)) {
-        DragSortAdapter.a(this.a, localEmoticonPackage, paramView);
-      }
-    }
+    paramView = new Intent(this.a, QQBrowserActivity.class);
+    paramView.putExtra("uin", this.a.app.getCurrentAccountUin());
+    this.a.startActivity(paramView.putExtra("url", AboutActivity.a(this.a)));
+    azqs.b(this.a.app, "CliOper", "", "", "0X8005745", "0X8005745", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acac
  * JD-Core Version:    0.7.0.1
  */

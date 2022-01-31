@@ -1,20 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.QWalletCommonServlet;
-import mqq.observer.BusinessObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class xap
-  implements Runnable
+class xap
+  implements DialogInterface.OnClickListener
 {
-  public xap(QWalletCommonServlet paramQWalletCommonServlet, BusinessObserver paramBusinessObserver, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  xap(xan paramxan) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xap
  * JD-Core Version:    0.7.0.1
  */

@@ -6,6 +6,8 @@ public class SonicSessionStatistics
   public long connectionConnectTime;
   public long connectionFlowFinishTime;
   public long connectionFlowStartTime;
+  public long connectionRecDataEndTime;
+  public long connectionRecDataStartTime;
   public long connectionRespondTime;
   public long diffDataCallbackTime;
   public int finalMode;
@@ -17,7 +19,7 @@ public class SonicSessionStatistics
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.sonic.sdk.SonicSessionStatistics
  * JD-Core Version:    0.7.0.1
  */

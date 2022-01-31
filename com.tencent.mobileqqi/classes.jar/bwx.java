@@ -1,13 +1,21 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatActivity;
 
 public class bwx
-  implements Runnable
+  extends Handler
 {
-  public bwx(LiteTransferWrapper paramLiteTransferWrapper, String paramString) {}
-  
-  public void run()
+  public bwx(ChatActivity paramChatActivity, Looper paramLooper)
   {
-    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SetTempPathToJNI(LiteTransferWrapper.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_JavaLangString);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1) {
+      ChatActivity.a(this.a, null, false);
+    }
   }
 }
 

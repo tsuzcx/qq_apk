@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/kb" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/la" android:background="@drawable/am" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/dp" android:layout_alignParentLeft="true">
+        <ImageView android:id="@id/b1p" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/actionbar_quit_webview_icon" android:contentDescription="@string/gg" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/pm" android:background="@color/e1" android:layout_width="@dimen/fq" android:layout_height="@dimen/l5" />
+    </LinearLayout>
+    <TextView android:ellipsize="end" android:gravity="center_vertical" android:id="@id/cz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_toLeftOf="@id/ftq" android:layout_toRightOf="@id/la" android:layout_centerVertical="true" style="@style/kt" />
+    <RelativeLayout android:id="@id/ftq" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true">
+        <ImageView android:id="@id/b1q" android:paddingLeft="@dimen/g2" android:paddingRight="@dimen/g2" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/actionbar_icon_dark_more" />
+        <TextView android:textColor="@color/e6" android:gravity="center" android:id="@id/ftr" android:background="@drawable/am" android:paddingLeft="@dimen/g2" android:paddingRight="@dimen/g2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="send" />
+    </RelativeLayout>
+</RelativeLayout>

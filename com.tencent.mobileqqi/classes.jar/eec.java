@@ -1,53 +1,71 @@
 import android.app.Activity;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View.OnClickListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.activity.contact.newfriend.BaseNewFriendView.INewFriendContext;
+import com.tencent.mobileqq.activity.contact.newfriend.ContactRecommendActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class eec
-  extends ClickableSpan
+  implements BaseNewFriendView.INewFriendContext
 {
-  public eec(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
+  public eec(ContactRecommendActivity paramContactRecommendActivity) {}
   
-  public void onClick(View paramView)
+  public Activity a()
   {
-    String str;
-    if ((GrayTipsItemBuilder.l(this.a) instanceof Activity))
-    {
-      if (GrayTipsItemBuilder.n(this.a).jdField_a_of_type_Int != 1006) {
-        break label153;
-      }
-      str = GrayTipsItemBuilder.o(this.a).jdField_a_of_type_JavaLangString;
-      paramView = null;
+    return this.a;
+  }
+  
+  public View a()
+  {
+    if ((View)this.a.findViewById(2131231448).getParent() != null) {
+      return (View)this.a.findViewById(2131231448).getParent().getParent();
     }
-    for (;;)
-    {
-      ChatActivityUtils.a(GrayTipsItemBuilder.g(this.a), (Activity)GrayTipsItemBuilder.m(this.a), GrayTipsItemBuilder.q(this.a).jdField_a_of_type_Int, paramView, GrayTipsItemBuilder.r(this.a).d, str, true, GrayTipsItemBuilder.s(this.a).b, true, true, null, null);
-      str = ChatActivityUtils.a(GrayTipsItemBuilder.t(this.a).jdField_a_of_type_Int);
-      paramView = str;
-      if (str == null) {
-        paramView = "";
-      }
-      ReportController.b(GrayTipsItemBuilder.h(this.a), "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "12", paramView, "", "");
-      return;
-      label153:
-      paramView = GrayTipsItemBuilder.p(this.a).jdField_a_of_type_JavaLangString;
-      str = null;
+    return null;
+  }
+  
+  public QQAppInterface a()
+  {
+    return this.a.b;
+  }
+  
+  public void a()
+  {
+    ContactRecommendActivity.b(this.a);
+  }
+  
+  public void a(int paramInt, View.OnClickListener paramOnClickListener) {}
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (this.a.isResume()) {
+      QQToast.a(a(), paramString, 0).b(this.a.d());
     }
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void a(boolean paramBoolean) {}
+  
+  public View b()
   {
-    paramTextPaint.setColor(Color.rgb(26, 144, 240));
+    return (View)this.a.findViewById(2131231448).getParent();
+  }
+  
+  public void b()
+  {
+    ContactRecommendActivity.a(this.a);
+  }
+  
+  public View c()
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     eec
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/bh4" android:background="@drawable/emoji_item_category_bg" android:paddingTop="20.0dip" android:paddingBottom="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m1" android:layout_marginRight="@dimen/m1" style="@style/ln" />
+    <FrameLayout android:id="@id/bh5" android:background="@drawable/a13" android:duplicateParentState="false" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/bh6" android:background="@drawable/abk" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/m1" android:layout_marginRight="@dimen/m1">
+            <ImageView android:id="@id/bh7" android:paddingRight="@dimen/a1f" android:layout_width="@dimen/a18" android:layout_height="@dimen/a18" android:layout_centerVertical="true" />
+            <LinearLayout android:orientation="vertical" android:id="@id/bh8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/bh9" android:layout_toRightOf="@id/bh7" android:layout_centerVertical="true">
+                <TextView android:textColor="@color/h6" android:id="@id/bcz" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/ln" />
+                <TextView android:ellipsize="end" android:id="@id/bh_" android:paddingTop="@dimen/dl" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/lm" />
+                <TextView android:id="@id/bha" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/lm" />
+            </LinearLayout>
+            <FrameLayout android:gravity="center" android:id="@id/bh9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/n6" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+                <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/bhb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_marginRight="2.0dip" android:minWidth="@dimen/n6" android:minHeight="@dimen/n7">
+                    <TextView android:textSize="@dimen/n5" android:textColor="@color/t_" android:gravity="center" android:id="@id/bhc" android:paddingLeft="@dimen/lb" android:paddingRight="@dimen/lb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:shadowRadius="1.2" />
+                </LinearLayout>
+                <ImageView android:gravity="center" android:layout_gravity="center" android:id="@id/bhd" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/bhe" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a0t" />
+                <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/bhf" android:layout_width="@dimen/n6" android:layout_height="wrap_content">
+                    <ProgressBar android:layout_gravity="center_vertical" android:id="@id/bhg" android:layout_width="@dimen/n6" android:layout_height="wrap_content" android:max="100" android:progress="0" style="@style/ld" />
+                </LinearLayout>
+            </FrameLayout>
+        </RelativeLayout>
+        <ImageView android:id="@id/bhh" android:layout_width="35.0dip" android:layout_height="35.0dip" android:src="@drawable/afl" />
+    </FrameLayout>
+</LinearLayout>

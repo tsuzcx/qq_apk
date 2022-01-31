@@ -1,23 +1,13 @@
-import com.tencent.mobileqq.app.proxy.RecentUserProxy;
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.Comparator;
+import com.tencent.mobileqq.emoticonview.HorizonEmoticonTabs;
 
 public class fpb
-  implements Comparator
+  implements Runnable
 {
-  public fpb(RecentUserProxy paramRecentUserProxy) {}
+  public fpb(HorizonEmoticonTabs paramHorizonEmoticonTabs, int paramInt) {}
   
-  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
+  public void run()
   {
-    long l1 = Math.max(paramRecentUser1.lastmsgtime, paramRecentUser1.lastmsgdrafttime);
-    long l2 = Math.max(paramRecentUser2.lastmsgtime, paramRecentUser2.lastmsgdrafttime);
-    if (l1 < l2) {
-      return 1;
-    }
-    if (l1 == l2) {
-      return 0;
-    }
-    return -1;
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizonEmoticonTabs.scrollBy(this.jdField_a_of_type_Int, 0);
   }
 }
 

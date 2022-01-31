@@ -1,36 +1,25 @@
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder.SignVideoItemHolder;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie.OnListViewScrollStateListener;
-import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.HashMap;
+import java.util.Map;
 
 public class vkn
-  implements TroopChatPie.OnListViewScrollStateListener
 {
-  public vkn(TroopSignItemBuilder.TroopSignVideoItemBuilder paramTroopSignVideoItemBuilder, TroopSignItemBuilder.TroopSignVideoItemBuilder.SignVideoItemHolder paramSignVideoItemHolder, BaseChatItemLayout paramBaseChatItemLayout) {}
+  public int a;
+  public StoryVideoItem a;
+  public Map<String, String> a = new HashMap();
+  public final String b = "Q.qqstory.share." + getClass().getSimpleName();
   
-  public void a(boolean paramBoolean)
+  public final void a(String paramString1, String paramString2)
   {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopSignItemBuilder$TroopSignVideoItemBuilder$SignVideoItemHolder.a.l();
-      TroopSignItemBuilder.TroopSignVideoItemBuilder.a().removeCallbacksAndMessages(null);
-      return;
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
+      this.a.put(paramString1, paramString2);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.getParent() != null)
-    {
-      TroopSignItemBuilder.TroopSignVideoItemBuilder.b().postDelayed(new vko(this), 200L);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopSignItemBuilder$TroopSignVideoItemBuilder$SignVideoItemHolder.a.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopSignItemBuilder$TroopSignVideoItemBuilder$SignVideoItemHolder.d.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vkn
  * JD-Core Version:    0.7.0.1
  */

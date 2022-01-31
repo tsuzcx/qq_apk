@@ -1,19 +1,33 @@
-import com.tencent.biz.qqstory.model.DiscoverManager;
-import com.tencent.biz.qqstory.storyHome.discover.model.CardItem;
+import android.os.AsyncTask;
+import android.text.TextUtils;
 
-public class nct
-  implements Runnable
+final class nct
+  extends AsyncTask<Void, Void, Void>
 {
-  public nct(DiscoverManager paramDiscoverManager, CardItem paramCardItem) {}
+  String jdField_a_of_type_JavaLangString = "";
   
-  public void run()
+  nct(ncu paramncu, String paramString) {}
+  
+  protected Void a(Void... paramVarArgs)
   {
-    DiscoverManager.a(this.jdField_a_of_type_ComTencentBizQqstoryModelDiscoverManager, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem);
+    this.jdField_a_of_type_JavaLangString = ncs.a(this.b);
+    return null;
+  }
+  
+  protected void a(Void paramVoid)
+  {
+    super.onPostExecute(paramVoid);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      this.jdField_a_of_type_Ncu.a();
+      return;
+    }
+    this.jdField_a_of_type_Ncu.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nct
  * JD-Core Version:    0.7.0.1
  */

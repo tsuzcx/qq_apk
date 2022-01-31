@@ -1,18 +1,7 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
-
-public class uqm
-  implements Runnable
-{
-  public uqm(PressToSpeakPanel paramPressToSpeakPanel) {}
-  
-  public void run()
-  {
-    this.a.c();
-  }
-}
+public abstract interface uqm {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uqm
  * JD-Core Version:    0.7.0.1
  */

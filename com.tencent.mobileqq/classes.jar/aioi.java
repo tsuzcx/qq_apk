@@ -1,19 +1,35 @@
-import android.content.Context;
-import com.tencent.mobileqq.theme.ThemeSwitchManager;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
 
 public class aioi
-  implements Runnable
+  extends alpq
 {
-  public aioi(ThemeSwitchManager paramThemeSwitchManager, Context paramContext, String paramString) {}
+  public aioi(PhotoCropActivity paramPhotoCropActivity) {}
   
-  public void run()
+  protected void onUpdateAvatar(boolean paramBoolean, String paramString)
   {
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, "漫游主题已更新", 4000).a();
-    if (QLog.isColorLevel()) {
-      QLog.i("ThemeSwitchManager", 2, "setSkinTheme, QQToast.makeText: set sv theme id=" + this.jdField_a_of_type_JavaLangString);
+    if ("FROM_SDK_AVATAR_SET_IMAGE".equals(this.a.b))
+    {
+      this.a.a.removeMessages(1003);
+      this.a.c();
+      if (!paramBoolean)
+      {
+        paramString = this.a.getIntent();
+        paramString.putExtra("key_from_sdk_set_avatar_result", false);
+        this.a.setResult(-1, paramString);
+        this.a.finish();
+      }
     }
+    else
+    {
+      return;
+    }
+    azqs.b(this.a.app, "dc00898", "", "", "0X8009B6B", "0X8009B6B", 0, 0, "", "", "", "");
+    paramString = this.a.getIntent();
+    paramString.putExtra("key_from_sdk_set_avatar_result", true);
+    this.a.setResult(-1, paramString);
+    this.a.finish();
   }
 }
 

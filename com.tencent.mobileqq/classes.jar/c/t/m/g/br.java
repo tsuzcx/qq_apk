@@ -1,28 +1,25 @@
 package c.t.m.g;
 
-import android.os.Handler;
+import org.json.JSONObject;
 
-final class br
-  implements Runnable
+public abstract class br
+  implements bc
 {
-  br(bo parambo) {}
+  public void a() {}
   
-  public final void run()
-  {
-    try
-    {
-      o.e();
-      bo.a(this.a, o.b());
-      bo.b(this.a).removeCallbacks(bo.a(this.a));
-      bo.b(this.a).post(bo.a(this.a));
-      return;
-    }
-    catch (Throwable localThrowable) {}
-  }
+  public final void a(int paramInt) {}
+  
+  public void a(bn parambn) {}
+  
+  public void a(JSONObject paramJSONObject) {}
+  
+  public void b() {}
+  
+  public abstract String c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.br
  * JD-Core Version:    0.7.0.1
  */

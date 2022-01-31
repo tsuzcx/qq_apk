@@ -1,36 +1,18 @@
-class oov
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+
+public class oov
+  implements ViewBase.IBuilder
 {
-  final String jdField_a_of_type_JavaLangString;
-  final boolean jdField_a_of_type_Boolean;
-  boolean b;
-  
-  oov(boolean paramBoolean, String paramString)
+  public ViewBase build(VafContext paramVafContext)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  static oov a()
-  {
-    return new oov(false, "");
-  }
-  
-  static oov a(Process paramProcess)
-  {
-    if (a(Integer.valueOf(paramProcess.exitValue()))) {}
-    for (String str = opi.a(paramProcess.getInputStream());; str = opi.a(paramProcess.getErrorStream())) {
-      return new oov(a(Integer.valueOf(paramProcess.exitValue())), str);
-    }
-  }
-  
-  static boolean a(Integer paramInteger)
-  {
-    return (paramInteger != null) && (paramInteger.intValue() == 0);
+    return new oou(paramVafContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oov
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,30 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.recent.OnRecentUserOpsListener;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.XListView;
-import java.util.List;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class yog
-  extends RecentAdapter
+class yog
+  implements bfah
 {
-  public yog(HotChatCenterFragment paramHotChatCenterFragment, Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, OnRecentUserOpsListener paramOnRecentUserOpsListener, int paramInt)
-  {
-    super(paramContext, paramQQAppInterface, paramXListView, paramOnRecentUserOpsListener, paramInt);
-  }
+  yog(yod paramyod) {}
   
-  public void a(RecentBaseData paramRecentBaseData, String paramString)
+  public void a(BaseResp paramBaseResp)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.a(paramRecentBaseData, paramString);
-  }
-  
-  public void b(RecentBaseData paramRecentBaseData, String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      this.jdField_a_of_type_JavaUtilList.remove(paramRecentBaseData);
-      notifyDataSetChanged();
+    if ((yod.a(this.a) == null) || (!yod.a(this.a).equals(paramBaseResp.transaction))) {
+      return;
     }
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      QQToast.a(this.a.a, 1, alud.a(2131715039), 0).a();
+      return;
+    }
+    QQToast.a(this.a.a, 2, alud.a(2131715041), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yog
  * JD-Core Version:    0.7.0.1
  */

@@ -1,67 +1,64 @@
 import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.common.util.LoadedBack2;
-import com.tencent.biz.webviewplugin.OfflinePlugin;
-import com.tencent.mobileqq.webview.swift.WebUiBaseInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.webviewplugin.WebUiUtils.QQBrowserBaseActivityInterface;
-import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebUiMethodInterface;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import org.json.JSONObject;
 
 public class pca
-  implements LoadedBack2
+  implements TVK_SDKMgr.InstallListener
 {
-  public pca(OfflinePlugin paramOfflinePlugin) {}
+  private Handler a;
   
-  public void a()
+  public pca(Handler paramHandler)
   {
-    Object localObject = this.a.mRuntime.a();
-    if (localObject == null) {}
-    for (;;)
-    {
-      return;
-      WebUiBaseInterface localWebUiBaseInterface = this.a.mRuntime.a(this.a.mRuntime.a());
-      if ((localWebUiBaseInterface != null) && ((localWebUiBaseInterface instanceof WebUiUtils.QQBrowserBaseActivityInterface)) && (((WebUiUtils.QQBrowserBaseActivityInterface)localWebUiBaseInterface).b() != localObject))
-      {
-        localObject = this.a.mRuntime.a();
-        if (localObject != null) {
-          try
-          {
-            localWebUiBaseInterface = this.a.mRuntime.a(this.a.mRuntime.a());
-            if ((localWebUiBaseInterface instanceof WebUiUtils.WebUiMethodInterface))
-            {
-              ((WebView)localObject).loadUrl(((WebUiUtils.WebUiMethodInterface)localWebUiBaseInterface).b());
-              return;
-            }
-          }
-          catch (Exception localException)
-          {
-            localException.printStackTrace();
-          }
-        }
-      }
+    this.a = paramHandler;
+  }
+  
+  public void onInstallProgress(float paramFloat)
+  {
+    if (this.a != null) {
+      this.a.sendEmptyMessage(2);
     }
   }
   
-  public void a(int paramInt)
+  public void onInstalledFailed(int paramInt)
   {
-    Message localMessage = this.a.a.obtainMessage();
-    localMessage.arg1 = 4;
-    localMessage.arg2 = paramInt;
-    this.a.a.sendMessage(localMessage);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("version", "8.3.5");
+      localJSONObject.put("error_code", paramInt);
+      label25:
+      if (this.a != null) {
+        this.a.sendEmptyMessage(1);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label25;
+    }
   }
   
-  public void a(String paramString, int paramInt)
+  public void onInstalledSuccessed()
   {
-    paramString = this.a.a.obtainMessage();
-    paramString.arg1 = 5;
-    paramString.arg2 = paramInt;
-    this.a.a.sendMessage(paramString);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("version", "8.3.5");
+      label17:
+      if (this.a != null) {
+        this.a.sendEmptyMessage(0);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label17;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pca
  * JD-Core Version:    0.7.0.1
  */

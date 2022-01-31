@@ -1,23 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.graytip.UniteGrayTipItemBuilder;
-import com.tencent.mobileqq.transfile.AbsDownloader;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import java.io.File;
-import java.net.URL;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class adov
-  implements Runnable
+  extends avva
 {
-  public adov(UniteGrayTipItemBuilder paramUniteGrayTipItemBuilder, MessageRecord paramMessageRecord) {}
+  public adov(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    File localFile = AbsDownloader.a(URLDrawableHelper.a((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 1, null).toString());
-    if ((localFile == null) || (!localFile.exists())) {
-      new Handler(Looper.getMainLooper()).post(new adow(this));
+    if (PublicAccountListActivity.a(this.a)) {
+      PublicAccountListActivity.a(this.a);
     }
   }
 }

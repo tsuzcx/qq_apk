@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import awge;
+import awhs;
 import java.io.Serializable;
 
 public class ChatBackgroundInfo
-  extends Entity
+  extends awge
   implements Serializable
 {
   public static final int COMPLETED = 0;
@@ -15,7 +15,7 @@ public class ChatBackgroundInfo
   public static final String THUMBURL = "thumbUrl";
   public static final String URL = "url";
   private static final long serialVersionUID = 1L;
-  @unique
+  @awhs
   public String id;
   public String name;
   public String thumbUrl;
@@ -35,7 +35,7 @@ public class ChatBackgroundInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.ChatBackgroundInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,12 @@
-import android.view.ViewTreeObserver.OnScrollChangedListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
+import com.tencent.mobileqq.armap.SdCardImageAnimView;
 
-public class ansm
-  implements ViewTreeObserver.OnScrollChangedListener
+public abstract interface ansm
 {
-  public ansm(EditVideoButton paramEditVideoButton) {}
-  
-  public void onScrollChanged()
-  {
-    EditVideoButton.a(this.a);
-  }
+  public abstract void a(SdCardImageAnimView paramSdCardImageAnimView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ansm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,60 +1,119 @@
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Context;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 
 public class aiui
-  extends AsyncTask
+  extends SQLiteOpenHelper
 {
-  public aiui(MediaPreviewActivity paramMediaPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
-  
-  protected Bundle a(Void... paramVarArgs)
+  public aiui(Context paramContext, String paramString)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("forward_type", 1);
-    paramVarArgs = new File(AppConstants.bz);
-    if (!paramVarArgs.exists()) {
-      paramVarArgs.mkdirs();
-    }
-    String str = AppConstants.bz + Utils.Crc64String(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
-    paramVarArgs = str;
-    if (!new File(str).exists()) {}
-    try
-    {
-      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(str);
-      localBundle.putBoolean("forward_urldrawable", true);
-      localBundle.putString("forward_urldrawable_thumb_url", this.jdField_a_of_type_JavaLangString);
-      localBundle.putString("forward_filepath", paramVarArgs);
-      localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
-      localBundle.putString("forward_extra", paramVarArgs);
-      return localBundle;
-    }
-    catch (IOException paramVarArgs)
-    {
-      QLog.e("foward", 2, "IOException", paramVarArgs);
-    }
-    return null;
+    super(paramContext, "passwd_red_bag_" + paramString + ".db", null, 5);
   }
   
-  protected void a(Bundle paramBundle)
+  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
   {
-    if (paramBundle == null)
+    try
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, "保存图片失败", 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getTitleBarHeight());
+      if (QLog.isColorLevel()) {
+        QLog.d("PasswdRedBagDBHelper", 2, " onCreate execSQL sqlRedBags=" + "CREATE TABLE IF NOT EXISTS red_bags (redbag_id VARCHAR PRIMARY KEY, redbag_index VARCHAR, uint64_creator_uin VARCHAR, expire_time INTEGER, password VARCHAR, is_open INTEGER, is_finish INTEGER, is_overdue INTEGER, redbag_type INTEGER, last_password VARCHAR, ext_str VARCHAR);" + " sqlRedBagRelation=" + "CREATE TABLE IF NOT EXISTS red_bag_relations (code VARCHAR, source VARCHAR, redbag_id VARCHAR, authkey VARCHAR );" + " sqlUpdateTimes=" + "CREATE TABLE IF NOT EXISTS update_times (code INTEGER, source INTEGER, last_update_time INTEGER, PRIMARY KEY(code,source));");
+      }
+      paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS red_bags (redbag_id VARCHAR PRIMARY KEY, redbag_index VARCHAR, uint64_creator_uin VARCHAR, expire_time INTEGER, password VARCHAR, is_open INTEGER, is_finish INTEGER, is_overdue INTEGER, redbag_type INTEGER, last_password VARCHAR, ext_str VARCHAR);");
       return;
     }
-    Intent localIntent = new Intent();
-    localIntent.putExtras(paramBundle);
-    ForwardBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, localIntent, 21);
+    catch (SQLException localSQLException2)
+    {
+      try
+      {
+        paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS red_bag_relations (code VARCHAR, source VARCHAR, redbag_id VARCHAR, authkey VARCHAR );");
+      }
+      catch (SQLException localSQLException2)
+      {
+        try
+        {
+          for (;;)
+          {
+            paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS update_times (code INTEGER, source INTEGER, last_update_time INTEGER, PRIMARY KEY(code,source));");
+            return;
+            localSQLException1 = localSQLException1;
+            if (QLog.isColorLevel())
+            {
+              QLog.e("PasswdRedBagDBHelper", 2, " onCreate execSQL exception", localSQLException1);
+              continue;
+              localSQLException2 = localSQLException2;
+              if (QLog.isColorLevel()) {
+                QLog.e("PasswdRedBagDBHelper", 2, " onCreate execSQL exception", localSQLException2);
+              }
+            }
+          }
+        }
+        catch (SQLException paramSQLiteDatabase)
+        {
+          while (!QLog.isColorLevel()) {}
+          QLog.e("PasswdRedBagDBHelper", 2, " onCreate execSQL exception", paramSQLiteDatabase);
+        }
+      }
+    }
+  }
+  
+  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  {
+    int i = paramInt1;
+    if (QLog.isColorLevel())
+    {
+      QLog.d("PasswdRedBagDBHelper", 2, "onUpgrade<<<<<oldVersion: " + paramInt1 + " newVersion: " + paramInt2);
+      i = paramInt1;
+    }
+    if (i < paramInt2)
+    {
+      switch (i)
+      {
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        try
+        {
+          paramSQLiteDatabase.execSQL("ALTER TABLE red_bags ADD COLUMN redbag_index VARCHAR ");
+        }
+        catch (Exception localException1) {}
+        if (QLog.isColorLevel())
+        {
+          QLog.e("PasswdRedBagDBHelper", 2, " exception occurred when " + "ALTER TABLE red_bags ADD COLUMN redbag_index VARCHAR ", localException1);
+          continue;
+          try
+          {
+            paramSQLiteDatabase.execSQL("ALTER TABLE red_bags ADD COLUMN redbag_type INTEGER DEFAULT 0");
+          }
+          catch (Exception localException2) {}
+          if (QLog.isColorLevel())
+          {
+            QLog.e("PasswdRedBagDBHelper", 2, " exception occurred when " + "ALTER TABLE red_bags ADD COLUMN redbag_type INTEGER DEFAULT 0", localException2);
+            continue;
+            try
+            {
+              paramSQLiteDatabase.execSQL("ALTER TABLE red_bags ADD COLUMN last_password VARCHAR ");
+            }
+            catch (Exception localException3) {}
+            if (QLog.isColorLevel())
+            {
+              QLog.e("PasswdRedBagDBHelper", 2, " exception occurred when " + "ALTER TABLE red_bags ADD COLUMN last_password VARCHAR ", localException3);
+              continue;
+              try
+              {
+                paramSQLiteDatabase.execSQL("ALTER TABLE red_bags ADD COLUMN ext_str VARCHAR ");
+              }
+              catch (Exception localException4) {}
+              if (QLog.isColorLevel()) {
+                QLog.e("PasswdRedBagDBHelper", 2, " exception occurred when " + "ALTER TABLE red_bags ADD COLUMN ext_str VARCHAR ", localException4);
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 

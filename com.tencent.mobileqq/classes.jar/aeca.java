@@ -1,37 +1,16 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.lightReply.LightReplyMenuManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 
 public class aeca
-  implements Animator.AnimatorListener
+  implements View.OnClickListener
 {
-  public aeca(LightReplyMenuManager paramLightReplyMenuManager) {}
+  public aeca(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    this.a.b = false;
-    this.a.c = false;
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (this.a.a != null)
-    {
-      this.a.a.setVisibility(8);
-      LightReplyMenuManager.a(this.a, null);
-      this.a.a = null;
-      LightReplyMenuManager.a(this.a, false);
-    }
-    this.a.b = false;
-    this.a.c = false;
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.b = true;
+    TroopAssistantActivity.a(this.a);
+    azqs.b(this.a.app, "dc00899", "Grp_msg", "", "helper-guide", "Clk_close", 0, 0, "", "", "", "");
   }
 }
 

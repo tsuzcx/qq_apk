@@ -1,16 +1,12 @@
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-import cooperation.qzone.webviewplugin.QzoneVideoTabJsPlugin;
-
-public class andm
-  implements Runnable
+public abstract interface andm
 {
-  public andm(QzoneVideoTabJsPlugin paramQzoneVideoTabJsPlugin, String paramString) {}
+  public abstract void a();
   
-  public void run()
-  {
-    RemoteHandleManager.a().a().f(this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void a(boolean paramBoolean, andn paramandn);
+  
+  public abstract void b();
 }
 
 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.activity.aio.doodle.DoodlePanel android:id="@id/panelLayout" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.activity.aio.doodle.DoodleLayout android:layout_gravity="center_horizontal" android:id="@id/bo7" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="81.0dip" android:layout_centerHorizontal="true" />
+    <LinearLayout android:orientation="horizontal" android:background="#fff8f8f8" android:layout_width="fill_parent" android:layout_height="81.0dip" android:layout_alignParentBottom="true">
+        <RelativeLayout android:orientation="vertical" android:layout_width="1.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker android:id="@id/b27" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginLeft="9.0dip" android:layout_marginBottom="1.0dip" android:layout_above="@id/cut" />
+            <View android:background="#ffe6e6e6" android:layout_width="1.0px" android:layout_height="30.0dip" android:layout_marginTop="7.0dip" android:layout_alignRight="@id/b27" />
+            <com.tencent.mobileqq.activity.aio.doodle.control.GifTemplatePicker android:id="@id/cut" android:layout_width="fill_parent" android:layout_height="37.0dip" android:layout_alignParentBottom="true" />
+            <View android:background="#ffe6e6e6" android:layout_width="fill_parent" android:layout_height="0.5px" android:layout_marginBottom="36.5dip" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="75.0dip" android:layout_height="81.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true">
+            <Button android:id="@id/dyq" android:background="@drawable/ag" android:layout_width="75.0dip" android:layout_height="44.0dip" android:scaleType="centerInside" android:layout_centerHorizontal="true" />
+            <Button android:id="@id/ajw" android:layout_width="fill_parent" android:layout_height="37.0dip" android:text="@string/a1p" android:layout_alignParentBottom="true" style="@style/i2" />
+        </RelativeLayout>
+    </LinearLayout>
+    <View android:background="#ffe6e6e6" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginBottom="81.0dip" android:layout_alignParentBottom="true" />
+</com.tencent.mobileqq.activity.aio.doodle.DoodlePanel>

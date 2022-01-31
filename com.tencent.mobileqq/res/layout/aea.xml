@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/geo" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/get" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" layout="@layout/aei" />
+    <com.tenpay.sdk.view.ObservableScrollView android:id="@id/ge8" android:background="#fff8f9fa" android:focusable="false" android:focusableInTouchMode="false" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/get">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="vertical" android:background="@drawable/hez" android:layout_width="fill_parent" android:layout_height="155.0dip">
+                    <TextView android:textSize="18.0sp" android:textColor="#ffffddb2" android:layout_gravity="center_horizontal" android:id="@id/gey" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:singleLine="true" />
+                    <TextView android:textSize="50.0sp" android:textColor="#ffffddb2" android:gravity="bottom" android:layout_gravity="center_horizontal" android:id="@id/ge6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0.00" android:singleLine="true" />
+                </LinearLayout>
+                <RelativeLayout android:id="@id/ges" android:layout_width="fill_parent" android:layout_height="70.0dip" android:layout_marginTop="115.0dip">
+                    <ImageView android:background="@drawable/hey" android:layout_width="fill_parent" android:layout_height="35.0dip" android:layout_alignParentBottom="true" />
+                    <ImageView android:id="@id/geq" android:background="@drawable/dxx" android:layout_width="70.0dip" android:layout_height="70.0dip" android:scaleType="fitXY" android:layout_centerInParent="true" />
+                </RelativeLayout>
+            </FrameLayout>
+            <LinearLayout android:orientation="vertical" android:background="#fff8f8f8" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <View android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="13.0dip" />
+                <RelativeLayout android:id="@id/gep" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="18.0sp" android:textColor="#ff000000" android:id="@id/ger" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:singleLine="true" android:layout_centerInParent="true" />
+                    <ImageView android:id="@id/geu" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="5.0dip" android:layout_toRightOf="@id/ger" android:layout_centerVertical="true" />
+                </RelativeLayout>
+                <TextView android:textSize="14.0sp" android:textColor="@color/wg" android:ellipsize="end" android:gravity="center" android:id="@id/gec" android:background="#ffffffff" android:paddingTop="4.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
+                <View android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="30.0dip" />
+                <RelativeLayout android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="14.0sp" android:textColor="#ff777777" android:id="@id/geb" android:paddingBottom="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:text="" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+                    <TextView android:textSize="14.0sp" android:textColor="@color/ui" android:id="@id/gea" android:paddingBottom="10.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="@string/q2j" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                </RelativeLayout>
+                <ImageView android:background="#ffdedede" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+                <include android:id="@id/gen" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="66.0dip" android:layout_marginBottom="10.0dip" layout="@layout/aeb" />
+                <LinearLayout android:orientation="vertical" android:id="@id/gem" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/gev" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <ImageView android:id="@id/gew" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_marginTop="35.0dip" android:src="@drawable/dxn" />
+                    <TextView android:textSize="14.0sp" android:textColor="#ff777777" android:id="@id/gex" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/q3u" />
+                </LinearLayout>
+                <ImageView android:id="@id/ge9" android:background="#ffdedede" android:layout_width="fill_parent" android:layout_height="1.0px" />
+                <include android:id="@id/ged" android:layout_width="fill_parent" android:layout_height="0.0dip" layout="@layout/aem" />
+                <TextView android:textSize="14.0sp" android:textColor="#ff777777" android:layout_gravity="center" android:id="@id/ge7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginBottom="31.0dip" android:text="" />
+                <LinearLayout android:orientation="vertical" android:id="@id/d28" android:background="@color/x1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="19.0dip" android:layout_marginRight="15.0dip">
+                    <ViewStub android:id="@id/l28" android:layout="@layout/agq" android:layout_width="fill_parent" android:layout_height="80.0dip" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </com.tenpay.sdk.view.ObservableScrollView>
+</RelativeLayout>

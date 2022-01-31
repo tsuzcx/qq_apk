@@ -1,51 +1,33 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberCardInfo;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.DBUtils;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class sdl
-  implements Runnable
+final class sdl
+  implements bhyk
 {
-  sdl(sdk paramsdk) {}
+  sdl(Context paramContext, AdData paramAdData) {}
   
-  public void run()
+  public void a()
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    TroopMemberInfo localTroopMemberInfo;
-    if (this.a.a.app != null)
-    {
-      localObject1 = localObject2;
-      if (this.a.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData != null)
-      {
-        localObject1 = DBUtils.a().a(this.a.a.app, this.a.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.a.app.getCurrentAccountUin());
-        if (localObject1 != null) {
-          break label171;
-        }
-        localTroopMemberInfo = DBUtils.a().a(this.a.a.app, this.a.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.a.app.getCurrentAccountUin());
-        localObject1 = localObject2;
-        if (localTroopMemberInfo == null) {}
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("JumpAdUtils", 2, "onPopupWindowForAdComplain");
     }
-    label171:
-    for (localObject1 = localTroopMemberInfo.troopnick;; localObject1 = ((TroopMemberCardInfo)localObject1).name)
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
     {
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        this.a.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopCard = ((String)localObject1);
-        this.a.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
-      }
-      return;
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_from_type", 3);
+      localIntent.putExtra("key_ad_info", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData);
+      PublicFragmentActivity.a((Activity)this.jdField_a_of_type_AndroidContentContext, localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sdl
  * JD-Core Version:    0.7.0.1
  */

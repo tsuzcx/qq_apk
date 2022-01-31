@@ -1,51 +1,53 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.1;
+import com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.2;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class afgm
-  implements IphonePickerView.PickerViewAdapter
+  implements affa
 {
-  public afgm(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
+  private BaseChatPie a;
   
-  public int getColumnCount()
+  public afgm(BaseChatPie paramBaseChatPie)
   {
-    return 1;
+    this.a = paramBaseChatPie;
   }
   
-  public int getRowCount(int paramInt)
+  private void a()
   {
-    return 4;
-  }
-  
-  public String getText(int paramInt1, int paramInt2)
-  {
-    int i = 3;
-    if (paramInt2 < 0) {}
-    for (paramInt1 = 0;; paramInt1 = paramInt2)
-    {
-      if (paramInt1 > 3) {
-        paramInt1 = i;
-      }
-      for (;;)
-      {
-        switch (paramInt1)
-        {
-        default: 
-          return "";
-        case 0: 
-          return "保密";
-        case 1: 
-          return "单身";
-        case 2: 
-          return "恋爱中";
-        }
-        return "已婚";
-      }
+    if ((this.a != null) && (this.a.z()) && (this.a.b() == 1)) {
+      ThreadManager.post(new TroopNotificationAIOHelper.1(this), 8, null, true);
     }
+  }
+  
+  private void b()
+  {
+    if ((this.a != null) && (this.a.b() == 1)) {
+      ThreadManager.post(new TroopNotificationAIOHelper.2(this), 8, null, true);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 4: 
+      a();
+      return;
+    }
+    b();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 4, 9 };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afgm
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class PttCenter$PttIntrodApplyUploadResp
-  extends MessageMicro
+  extends MessageMicro<PttIntrodApplyUploadResp>
 {
   public static final int BYTES_UP_FILEKEY_FIELD_NUMBER = 4;
   public static final int BYTES_UP_UKEY_FIELD_NUMBER = 5;
@@ -21,7 +21,7 @@ public final class PttCenter$PttIntrodApplyUploadResp
   public final PBBytesField bytes_up_filekey = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_up_ukey = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBInt32Field int32_ret_code = PBField.initInt32(0);
-  public final PBRepeatMessageField rpt_msg_tryup_iplist = PBField.initRepeatMessage(PttCenter.ServerListInfo.class);
+  public final PBRepeatMessageField<PttCenter.ServerListInfo> rpt_msg_tryup_iplist = PBField.initRepeatMessage(PttCenter.ServerListInfo.class);
   public final PBStringField str_ret_msg = PBField.initString("");
   
   static
@@ -33,7 +33,7 @@ public final class PttCenter$PttIntrodApplyUploadResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pttcenterservice.PttCenter.PttIntrodApplyUploadResp
  * JD-Core Version:    0.7.0.1
  */

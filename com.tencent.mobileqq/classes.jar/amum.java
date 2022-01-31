@@ -1,19 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.DiscoverTab;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ar.ARRecord.ARRecordUtils.1;
 
-public final class amum
-  implements Parcelable.Creator
+public class amum
+  implements DialogInterface.OnClickListener
 {
-  public DiscoverTab a(Parcel paramParcel)
-  {
-    return new DiscoverTab(paramParcel);
-  }
+  public amum(ARRecordUtils.1 param1) {}
   
-  public DiscoverTab[] a(int paramInt)
-  {
-    return new DiscoverTab[paramInt];
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

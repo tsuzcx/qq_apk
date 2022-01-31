@@ -1,65 +1,23 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView.EGLConfigChooser;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.businessCard.data.CardUinInfo;
 
-public abstract class aoaa
-  implements GLTextureView.EGLConfigChooser
+public final class aoaa
+  implements Parcelable.Creator<CardUinInfo>
 {
-  protected int[] a;
-  
-  public aoaa(GLTextureView paramGLTextureView, int[] paramArrayOfInt)
+  public CardUinInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ArrayOfInt = a(paramArrayOfInt);
+    return new CardUinInfo(paramParcel);
   }
   
-  private int[] a(int[] paramArrayOfInt)
+  public CardUinInfo[] a(int paramInt)
   {
-    if ((GLTextureView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView) != 2) && (GLTextureView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView) != 3)) {
-      return paramArrayOfInt;
-    }
-    int i = paramArrayOfInt.length;
-    int[] arrayOfInt = new int[i + 2];
-    System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, i - 1);
-    arrayOfInt[(i - 1)] = 12352;
-    if (GLTextureView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView) == 2) {
-      arrayOfInt[i] = 4;
-    }
-    for (;;)
-    {
-      arrayOfInt[(i + 1)] = 12344;
-      return arrayOfInt;
-      arrayOfInt[i] = 64;
-    }
+    return new CardUinInfo[paramInt];
   }
-  
-  public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
-  {
-    int[] arrayOfInt = new int[1];
-    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, null, 0, arrayOfInt)) {
-      throw new IllegalArgumentException("eglChooseConfig failed");
-    }
-    int i = arrayOfInt[0];
-    if (i <= 0) {
-      throw new IllegalArgumentException("No configs match configSpec");
-    }
-    EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
-    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, arrayOfEGLConfig, i, arrayOfInt)) {
-      throw new IllegalArgumentException("eglChooseConfig#2 failed");
-    }
-    paramEGL10 = a(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
-    if (paramEGL10 == null) {
-      throw new IllegalArgumentException("No config chosen");
-    }
-    return paramEGL10;
-  }
-  
-  abstract EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoaa
  * JD-Core Version:    0.7.0.1
  */

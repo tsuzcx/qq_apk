@@ -4,12 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Parcel;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.Request.Builder;
-import com.squareup.okhttp.Response;
-import com.squareup.okhttp.ResponseBody;
 import com.tencent.component.network.downloader.UrlKeyGenerator;
 import com.tencent.component.network.downloader.common.Utils;
 import com.tencent.component.network.downloader.strategy.ResumeTransfer;
@@ -17,7 +12,6 @@ import com.tencent.component.network.module.base.QDLog;
 import com.tencent.component.network.module.cache.file.FileCacheService;
 import com.tencent.component.network.utils.Base64;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -28,6 +22,10 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Pattern;
+import okhttp3.MediaType;
+import okhttp3.Request.Builder;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -37,132 +35,34 @@ import org.apache.http.client.methods.HttpGet;
 public class QzoneResumeTransfer
   implements ResumeTransfer
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private UrlKeyGenerator jdField_a_of_type_ComTencentComponentNetworkDownloaderUrlKeyGenerator;
-  private FileCacheService jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileCacheService;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private String jdField_a_of_type_JavaLangString;
-  private List jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-  public Map a;
-  public boolean a;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = { "a[0-9].qpic.cn", "m.qpic.cn", ".*qzonestyle.gtimg.cn", ".*qzs.qq.com", ".*i.gtimg.cn", "a\\d+.photo.store.qq.com", "b\\d+.photo.store.qq.com", "vqzone.tc.qq.com", "vwecam.tc.qq.com" };
-  private Map jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private boolean jdField_b_of_type_Boolean = false;
+  private FileCacheService mCache;
+  private Map<String, QzoneResumeTransfer.CacheFileAttribute> mCacheAttributes = new ConcurrentHashMap();
+  private boolean mCheckContentType = false;
+  private Context mContext;
+  private List<String> mDomainCacheList = Collections.synchronizedList(new ArrayList());
+  public Map<String, Pattern> mDominPatterns = new HashMap();
+  public boolean mForceEnable = false;
+  private final Object mLock = new Object();
+  private String mName;
+  private SharedPreferences mSharePre;
+  private String[] mSupportDomains = { "a[0-9].qpic.cn", "m.qpic.cn", ".*qzonestyle.gtimg.cn", ".*qzs.qq.com", ".*i.gtimg.cn", "a\\d+.photo.store.qq.com", "b\\d+.photo.store.qq.com", "vqzone.tc.qq.com", "vwecam.tc.qq.com" };
+  private UrlKeyGenerator mUrlKeyGenerator;
   
   public QzoneResumeTransfer(Context paramContext, String paramString, FileCacheService paramFileCacheService, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileCacheService = paramFileCacheService;
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    d();
-    if (this.jdField_b_of_type_Boolean)
+    this.mContext = paramContext;
+    this.mName = paramString;
+    this.mCache = paramFileCacheService;
+    this.mCheckContentType = paramBoolean;
+    initUrlPatterns();
+    if (this.mCheckContentType)
     {
-      this.jdField_a_of_type_AndroidContentSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext);
-      b();
+      this.mSharePre = paramContext.getSharedPreferences("qzone_download_resume_" + getProcessName(this.mContext), 0);
+      loadConfig();
     }
   }
   
-  private QzoneResumeTransfer.CacheFileAttribute a(String paramString)
-  {
-    paramString = c(paramString);
-    if (paramString == null) {
-      return null;
-    }
-    return (QzoneResumeTransfer.CacheFileAttribute)this.jdField_b_of_type_JavaUtilMap.get(paramString);
-  }
-  
-  private QzoneResumeTransfer.CacheFileAttribute a(HttpResponse paramHttpResponse, Response paramResponse)
-  {
-    Header localHeader = null;
-    Object localObject = null;
-    if ((paramHttpResponse == null) && (paramResponse == null)) {
-      return null;
-    }
-    if (paramHttpResponse != null)
-    {
-      paramResponse = paramHttpResponse.getEntity();
-      if (paramResponse == null) {
-        break label133;
-      }
-      paramResponse = paramResponse.getContentType();
-      if (paramResponse == null) {
-        break label133;
-      }
-    }
-    label133:
-    for (paramResponse = paramResponse.getValue();; paramResponse = null)
-    {
-      localHeader = paramHttpResponse.getFirstHeader("Last-Modified");
-      paramHttpResponse = paramResponse;
-      if (localHeader != null)
-      {
-        localObject = localHeader.getValue();
-        paramHttpResponse = paramResponse;
-      }
-      for (;;)
-      {
-        return new QzoneResumeTransfer.CacheFileAttribute(paramHttpResponse, (String)localObject);
-        if (paramResponse != null)
-        {
-          localObject = paramResponse.body();
-          paramHttpResponse = localHeader;
-          if (localObject != null)
-          {
-            localObject = ((ResponseBody)localObject).contentType();
-            paramHttpResponse = localHeader;
-            if (localObject != null) {
-              paramHttpResponse = ((MediaType)localObject).toString();
-            }
-          }
-          localObject = paramResponse.header("Last-Modified");
-        }
-        else
-        {
-          paramHttpResponse = null;
-        }
-      }
-    }
-  }
-  
-  private boolean a(File paramFile)
-  {
-    if ((paramFile == null) || (!paramFile.exists())) {}
-    long l;
-    do
-    {
-      return false;
-      l = paramFile.lastModified();
-      l = System.currentTimeMillis() - l;
-    } while ((l < 0L) || (l > 86400000L));
-    return true;
-  }
-  
-  private boolean a(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    do
-    {
-      return true;
-      if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-        return false;
-      }
-    } while (this.jdField_a_of_type_JavaUtilList.contains(paramString2));
-    paramString1 = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-    while (paramString1.hasNext()) {
-      if (Utils.match((Pattern)((Map.Entry)paramString1.next()).getValue(), paramString2)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramString2);
-      }
-    }
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
-  }
-  
-  private boolean a(String paramString, HttpResponse paramHttpResponse, Response paramResponse)
+  private boolean checkContentRange(String paramString, HttpResponse paramHttpResponse, Response paramResponse)
   {
     long l4 = 0L;
     if (((paramHttpResponse == null) || (paramHttpResponse.getStatusLine() == null) || (paramHttpResponse.getStatusLine().getStatusCode() != 206)) && ((paramResponse == null) || (paramResponse.code() != 206))) {
@@ -210,8 +110,8 @@ public class QzoneResumeTransfer
             l2 = 0L;
             continue;
           }
-          paramString = c(paramString);
-          paramString = this.jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileCacheService.a(paramString);
+          paramString = getTmpCacheFileName(paramString);
+          paramString = this.mCache.getFile(paramString);
           l3 = l4;
           if (paramString != null)
           {
@@ -232,16 +132,16 @@ public class QzoneResumeTransfer
               {
                 l1 = ((ResponseBody)localObject).contentLength();
               }
-              catch (IOException localIOException)
+              catch (Throwable localThrowable)
               {
-                localIOException.printStackTrace();
+                localThrowable.printStackTrace();
               }
             }
           }
         }
         l1 = 0L;
         break;
-        paramHttpResponse = localIOException;
+        paramHttpResponse = localThrowable;
         if (paramResponse == null) {
           break label105;
         }
@@ -257,68 +157,39 @@ public class QzoneResumeTransfer
     }
   }
   
-  private String b(String paramString)
+  private String getProcessName(Context paramContext)
   {
-    paramString = c(paramString);
-    if (paramString == null) {
-      return null;
-    }
-    paramString = (QzoneResumeTransfer.CacheFileAttribute)this.jdField_b_of_type_JavaUtilMap.get(paramString);
-    if (paramString != null) {
-      return paramString.jdField_a_of_type_JavaLangString;
-    }
-    return null;
-  }
-  
-  private void b()
-  {
-    localObject3 = null;
-    localObject1 = null;
-    Object localObject4 = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("contenttype_" + this.jdField_a_of_type_JavaLangString, null);
-    if (localObject4 != null) {}
     try
     {
-      localObject4 = Utils.unmarshall(Base64.a((String)localObject4, 0));
-      localObject1 = localObject4;
-      localObject3 = localObject4;
-      this.jdField_b_of_type_JavaUtilMap.clear();
-      localObject1 = localObject4;
-      localObject3 = localObject4;
-      ((Parcel)localObject4).readMap(this.jdField_b_of_type_JavaUtilMap, this.jdField_a_of_type_AndroidContentContext.getClassLoader());
-      if (localObject4 == null) {
-        break label93;
-      }
-      localObject1 = localObject4;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      String str = Utils.getCurrentProcessName(paramContext);
+      paramContext = str;
+      if (str != null)
       {
-        localObject3 = localObject1;
-        QDLog.d("download", "download", localThrowable);
-        if (localObject1 == null) {}
+        paramContext = str;
+        if (str.contains(":"))
+        {
+          int i = str.lastIndexOf(":");
+          paramContext = str;
+          if (i > 0) {
+            paramContext = str.substring(i + 1);
+          }
+        }
       }
-    }
-    finally
-    {
-      if (localObject3 == null) {
-        break label141;
+      if (!TextUtils.isEmpty(paramContext)) {
+        return paramContext;
       }
-      localObject3.recycle();
+      return "";
     }
-    localObject1.recycle();
-    label93:
-    if (this.jdField_b_of_type_JavaUtilMap == null) {
-      this.jdField_b_of_type_JavaUtilMap = new HashMap();
-    }
+    catch (Throwable paramContext) {}
+    return "";
   }
   
-  private String c(String paramString)
+  private String getTmpCacheFileName(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentComponentNetworkDownloaderUrlKeyGenerator;
+    Object localObject = this.mUrlKeyGenerator;
     if (localObject == null)
     {
       localObject = paramString;
@@ -329,147 +200,337 @@ public class QzoneResumeTransfer
     for (;;)
     {
       return String.valueOf(paramString.hashCode());
-      localObject = ((UrlKeyGenerator)localObject).a(paramString);
+      localObject = ((UrlKeyGenerator)localObject).doGenerate(paramString);
       break;
       label44:
       paramString = (String)localObject;
     }
   }
   
-  private void c()
+  private QzoneResumeTransfer.CacheFileAttribute getTmpFileAttr(String paramString)
+  {
+    paramString = getTmpCacheFileName(paramString);
+    if (paramString == null) {
+      return null;
+    }
+    return (QzoneResumeTransfer.CacheFileAttribute)this.mCacheAttributes.get(paramString);
+  }
+  
+  private String getTmpFileContentType(String paramString)
+  {
+    paramString = getTmpCacheFileName(paramString);
+    if (paramString == null) {
+      return null;
+    }
+    paramString = (QzoneResumeTransfer.CacheFileAttribute)this.mCacheAttributes.get(paramString);
+    if (paramString != null) {
+      return paramString.ContentType;
+    }
+    return null;
+  }
+  
+  private void initUrlPatterns()
+  {
+    this.mDominPatterns.clear();
+    int i = 0;
+    while (i < this.mSupportDomains.length)
+    {
+      Pattern localPattern = Pattern.compile(this.mSupportDomains[i], 2);
+      this.mDominPatterns.put(this.mSupportDomains[i], localPattern);
+      i += 1;
+    }
+  }
+  
+  private boolean isCacheFileVaild(File paramFile)
+  {
+    if ((paramFile == null) || (!paramFile.exists())) {}
+    long l;
+    do
+    {
+      return false;
+      l = paramFile.lastModified();
+      l = System.currentTimeMillis() - l;
+    } while ((l < 0L) || (l > 86400000L));
+    return true;
+  }
+  
+  private void loadConfig()
   {
     localObject3 = null;
     localObject1 = null;
+    Object localObject4 = this.mSharePre.getString("contenttype_" + this.mName, null);
+    if (localObject4 != null) {}
     try
     {
-      Parcel localParcel = Parcel.obtain();
-      localObject1 = localParcel;
-      localObject3 = localParcel;
-      localParcel.writeMap(this.jdField_b_of_type_JavaUtilMap);
-      localObject1 = localParcel;
-      localObject3 = localParcel;
-      String str = new String(Base64.b(localParcel.marshall(), 0));
-      localObject1 = localParcel;
-      localObject3 = localParcel;
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("contenttype_" + this.jdField_a_of_type_JavaLangString, str).commit();
-      if (localParcel == null) {
-        break label100;
+      localObject4 = Utils.unmarshall(Base64.decode((String)localObject4, 0));
+      localObject1 = localObject4;
+      localObject3 = localObject4;
+      this.mCacheAttributes.clear();
+      localObject1 = localObject4;
+      localObject3 = localObject4;
+      ((Parcel)localObject4).readMap(this.mCacheAttributes, this.mContext.getClassLoader());
+      if (localObject4 != null) {
+        ((Parcel)localObject4).recycle();
       }
-      localObject1 = localParcel;
     }
-    catch (Exception localException)
+    catch (Throwable localThrowable)
     {
       for (;;)
       {
-        label100:
         localObject3 = localObject1;
-        QDLog.c("QzoneResumeTransfer", "saveConfig", localException);
-        if (localObject1 == null) {}
+        QDLog.e("download", "download", localThrowable);
+        if (localObject1 != null) {
+          localObject1.recycle();
+        }
       }
     }
     finally
     {
       if (localObject3 == null) {
-        break label130;
+        break label143;
       }
       localObject3.recycle();
     }
-    localObject1.recycle();
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
-    {
-      Pattern localPattern = Pattern.compile(this.jdField_a_of_type_ArrayOfJavaLangString[i], 2);
-      this.jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_ArrayOfJavaLangString[i], localPattern);
-      i += 1;
+    if (this.mCacheAttributes == null) {
+      this.mCacheAttributes = new HashMap();
     }
   }
   
-  public String a(String paramString)
+  private QzoneResumeTransfer.CacheFileAttribute parseAttrs(HttpResponse paramHttpResponse, Response paramResponse)
   {
-    paramString = this.jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileCacheService.a(c(paramString));
-    if ((paramString != null) && (paramString.exists())) {
-      return paramString.getPath();
+    Object localObject1 = null;
+    Object localObject2 = null;
+    if ((paramHttpResponse == null) && (paramResponse == null)) {
+      return null;
     }
-    return null;
+    if (paramHttpResponse != null)
+    {
+      paramResponse = paramHttpResponse.getEntity();
+      if (paramResponse == null) {
+        break label188;
+      }
+      paramResponse = paramResponse.getContentType();
+      if (paramResponse == null) {
+        break label188;
+      }
+    }
+    label188:
+    for (paramResponse = paramResponse.getValue();; paramResponse = null)
+    {
+      localObject1 = paramHttpResponse.getFirstHeader("Last-Modified");
+      if (localObject1 != null) {}
+      for (localObject1 = ((Header)localObject1).getValue();; localObject1 = null)
+      {
+        Header localHeader = paramHttpResponse.getFirstHeader("Content-Encoding");
+        paramHttpResponse = paramResponse;
+        Object localObject3 = localObject1;
+        if (localHeader != null)
+        {
+          localObject2 = localHeader.getValue();
+          localObject3 = localObject1;
+          paramHttpResponse = paramResponse;
+        }
+        for (;;)
+        {
+          return new QzoneResumeTransfer.CacheFileAttribute(paramHttpResponse, (String)localObject3, (String)localObject2);
+          if (paramResponse != null)
+          {
+            localObject2 = paramResponse.body();
+            paramHttpResponse = (HttpResponse)localObject1;
+            if (localObject2 != null)
+            {
+              localObject2 = ((ResponseBody)localObject2).contentType();
+              paramHttpResponse = (HttpResponse)localObject1;
+              if (localObject2 != null) {
+                paramHttpResponse = ((MediaType)localObject2).toString();
+              }
+            }
+            localObject3 = paramResponse.header("Last-Modified");
+            localObject2 = paramResponse.header("Content-Encoding");
+          }
+          else
+          {
+            localObject3 = null;
+            paramHttpResponse = null;
+          }
+        }
+      }
+    }
   }
   
-  public void a()
+  private void saveConfig()
   {
-    this.jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileCacheService.a();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    Object localObject3 = null;
+    Object localObject1 = null;
+    try
     {
-      this.jdField_b_of_type_JavaUtilMap.clear();
-      c();
+      Parcel localParcel = Parcel.obtain();
+      localObject1 = localParcel;
+      localObject3 = localParcel;
+      localParcel.writeMap(this.mCacheAttributes);
+      localObject1 = localParcel;
+      localObject3 = localParcel;
+      String str = new String(Base64.encode(localParcel.marshall(), 0));
+      localObject1 = localParcel;
+      localObject3 = localParcel;
+      this.mSharePre.edit().putString("contenttype_" + this.mName, str).commit();
       return;
     }
-  }
-  
-  public void a(UrlKeyGenerator paramUrlKeyGenerator)
-  {
-    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderUrlKeyGenerator = paramUrlKeyGenerator;
-  }
-  
-  public void a(String arg1)
-  {
-    String str = c(???);
-    this.jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileCacheService.a(str);
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    catch (Exception localException)
     {
-      this.jdField_b_of_type_JavaUtilMap.remove(str);
-      c();
+      localObject3 = localObject1;
+      QDLog.w("QzoneResumeTransfer", "saveConfig", localException);
       return;
+    }
+    finally
+    {
+      if (localObject3 != null) {
+        localObject3.recycle();
+      }
     }
   }
   
-  public void a(String paramString1, String arg2, HttpResponse paramHttpResponse, Response paramResponse)
+  private boolean supportResumeDownload(String paramString1, String paramString2)
+  {
+    if (this.mForceEnable) {}
+    do
+    {
+      return true;
+      if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+        return false;
+      }
+    } while (this.mDomainCacheList.contains(paramString2));
+    paramString1 = this.mDominPatterns.entrySet().iterator();
+    while (paramString1.hasNext()) {
+      if (Utils.match((Pattern)((Map.Entry)paramString1.next()).getValue(), paramString2)) {
+        this.mDomainCacheList.add(paramString2);
+      }
+    }
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
+  }
+  
+  public void addCacheTmpFile(String paramString1, String arg2, HttpResponse paramHttpResponse, Response paramResponse)
   {
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(???))) {}
     do
     {
       return;
       ??? = new File(???);
-    } while ((!???.exists()) || (???.length() <= 0L) || (!this.jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileCacheService.a(c(paramString1))) || (!this.jdField_b_of_type_Boolean) || ((paramHttpResponse == null) && (paramResponse == null)));
-    paramHttpResponse = a(paramHttpResponse, paramResponse);
+    } while ((!???.exists()) || (???.length() <= 0L) || (!this.mCache.putFile(getTmpCacheFileName(paramString1))) || (!this.mCheckContentType) || ((paramHttpResponse == null) && (paramResponse == null)));
+    paramHttpResponse = parseAttrs(paramHttpResponse, paramResponse);
     paramResponse = new StringBuilder().append("Downloader Resume Response url:").append(paramString1).append(" curr:");
     if (paramHttpResponse != null) {}
     for (??? = paramHttpResponse.toString();; ??? = "N/A")
     {
-      QDLog.a("downloader", ???);
+      QDLog.d("downloader", ???);
       if (paramHttpResponse == null) {
         break;
       }
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      synchronized (this.mLock)
       {
-        if (!paramHttpResponse.equals((QzoneResumeTransfer.CacheFileAttribute)this.jdField_b_of_type_JavaUtilMap.get(c(paramString1))))
+        if (!paramHttpResponse.equals((QzoneResumeTransfer.CacheFileAttribute)this.mCacheAttributes.get(getTmpCacheFileName(paramString1))))
         {
-          this.jdField_b_of_type_JavaUtilMap.put(c(paramString1), paramHttpResponse);
-          c();
+          this.mCacheAttributes.put(getTmpCacheFileName(paramString1), paramHttpResponse);
+          saveConfig();
         }
         return;
       }
     }
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  public void cleanCache()
   {
-    if (paramBoolean) {
-      synchronized (this.jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileCacheService)
-      {
-        this.jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileCacheService.a(c(paramString));
-        if (!this.jdField_b_of_type_Boolean) {}
+    this.mCache.clear();
+    synchronized (this.mLock)
+    {
+      this.mCacheAttributes.clear();
+      saveConfig();
+      return;
+    }
+  }
+  
+  public void cleanCache(String arg1)
+  {
+    String str = getTmpCacheFileName(???);
+    this.mCache.deleteFile(str);
+    synchronized (this.mLock)
+    {
+      this.mCacheAttributes.remove(str);
+      saveConfig();
+      return;
+    }
+  }
+  
+  public String getResumeTmpFile(String paramString)
+  {
+    paramString = this.mCache.getFile(getTmpCacheFileName(paramString));
+    if ((paramString != null) && (paramString.exists())) {
+      return paramString.getPath();
+    }
+    return null;
+  }
+  
+  public boolean handleResponse(String paramString1, String paramString2, HttpResponse paramHttpResponse, Response paramResponse)
+  {
+    if ((!this.mCheckContentType) || (!supportResumeDownload(paramString1, paramString2))) {
+      return true;
+    }
+    if ((TextUtils.isEmpty(paramString1)) || ((paramHttpResponse == null) && (paramResponse == null))) {
+      return false;
+    }
+    if (!checkContentRange(paramString1, paramHttpResponse, paramResponse)) {
+      return false;
+    }
+    paramString2 = getTmpFileAttr(paramString1);
+    if (paramString2 == null) {
+      return true;
+    }
+    paramHttpResponse = parseAttrs(paramHttpResponse, paramResponse);
+    if (QDLog.isInfoEnable())
+    {
+      paramResponse = new StringBuilder().append("download content-type check url:").append(paramString1).append(" old:");
+      if (paramString2 == null) {
+        break label157;
+      }
+      paramString1 = paramString2.toString();
+      paramResponse = paramResponse.append(paramString1).append(" curr:");
+      if (paramHttpResponse == null) {
+        break label164;
       }
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    label157:
+    label164:
+    for (paramString1 = paramHttpResponse.toString();; paramString1 = "N/A")
     {
-      if (this.jdField_b_of_type_JavaUtilMap.containsKey(c(paramString)))
+      QDLog.i("downloader", paramString1);
+      if (!paramString2.equals(paramHttpResponse)) {
+        break label171;
+      }
+      return true;
+      paramString1 = "N/A";
+      break;
+    }
+    label171:
+    return false;
+  }
+  
+  public void onDownloadResult(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      synchronized (this.mCache)
       {
-        this.jdField_b_of_type_JavaUtilMap.remove(c(paramString));
-        c();
+        this.mCache.deleteFile(getTmpCacheFileName(paramString));
+        if (!this.mCheckContentType) {}
+      }
+    }
+    synchronized (this.mLock)
+    {
+      if (this.mCacheAttributes.containsKey(getTmpCacheFileName(paramString)))
+      {
+        this.mCacheAttributes.remove(getTmpCacheFileName(paramString));
+        saveConfig();
       }
       return;
       paramString = finally;
@@ -477,22 +538,22 @@ public class QzoneResumeTransfer
     }
   }
   
-  public void a(HttpGet paramHttpGet, Request.Builder paramBuilder, String paramString1, String paramString2)
+  public void prepareRequest(HttpGet paramHttpGet, Request.Builder paramBuilder, String paramString1, String paramString2)
   {
-    if (!a(paramString1, paramString2)) {
+    if (!supportResumeDownload(paramString1, paramString2)) {
       return;
     }
-    paramString2 = c(paramString1);
-    File localFile = this.jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileCacheService.a(paramString2);
+    paramString2 = getTmpCacheFileName(paramString1);
+    File localFile = this.mCache.getFile(paramString2);
     long l;
     if ((localFile != null) && (localFile.exists())) {
-      if (a(localFile))
+      if (isCacheFileVaild(localFile))
       {
         l = localFile.length();
-        paramString2 = b(paramString1);
+        paramString2 = getTmpFileContentType(paramString1);
         if (l > 0L)
         {
-          if (this.jdField_b_of_type_Boolean) {
+          if (this.mCheckContentType) {
             break label223;
           }
           if (paramHttpGet == null) {
@@ -504,9 +565,9 @@ public class QzoneResumeTransfer
     }
     for (;;)
     {
-      QDLog.b("downloader", "Downloader Resume --- begin range:" + l + " Accept:" + paramString2 + " url:" + paramString1);
+      QDLog.i("downloader", "Downloader Resume --- begin range:" + l + " Accept:" + paramString2 + " url:" + paramString1);
       return;
-      this.jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileCacheService.a(paramString2);
+      this.mCache.deleteFile(paramString2);
       l = 0L;
       break;
       label181:
@@ -533,83 +594,44 @@ public class QzoneResumeTransfer
     }
   }
   
-  public void a(String[] paramArrayOfString, boolean paramBoolean)
+  public void setSupportDomains(String[] paramArrayOfString, boolean paramBoolean)
   {
     if ((paramArrayOfString == null) || (paramArrayOfString.length <= 0)) {
       return;
     }
     if (!paramBoolean) {}
     String[] arrayOfString;
-    for (this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;; this.jdField_a_of_type_ArrayOfJavaLangString = arrayOfString)
+    for (this.mSupportDomains = paramArrayOfString;; this.mSupportDomains = arrayOfString)
     {
-      d();
+      initUrlPatterns();
       return;
-      int i = this.jdField_a_of_type_ArrayOfJavaLangString.length;
+      int i = this.mSupportDomains.length;
       int j = paramArrayOfString.length + i;
       arrayOfString = new String[j];
       i = 0;
       if (i < j)
       {
-        if (i < this.jdField_a_of_type_ArrayOfJavaLangString.length) {
-          arrayOfString[i] = this.jdField_a_of_type_ArrayOfJavaLangString[i];
+        if (i < this.mSupportDomains.length) {
+          arrayOfString[i] = this.mSupportDomains[i];
         }
         for (;;)
         {
           i += 1;
           break;
-          arrayOfString[i] = paramArrayOfString[(i - this.jdField_a_of_type_ArrayOfJavaLangString.length)];
+          arrayOfString[i] = paramArrayOfString[(i - this.mSupportDomains.length)];
         }
       }
     }
   }
   
-  public boolean a(String paramString1, String paramString2, HttpResponse paramHttpResponse, Response paramResponse)
+  public void setUrlKeyGenerator(UrlKeyGenerator paramUrlKeyGenerator)
   {
-    if ((!this.jdField_b_of_type_Boolean) || (!a(paramString1, paramString2))) {
-      return true;
-    }
-    if ((TextUtils.isEmpty(paramString1)) || ((paramHttpResponse == null) && (paramResponse == null))) {
-      return false;
-    }
-    if (!a(paramString1, paramHttpResponse, paramResponse)) {
-      return false;
-    }
-    paramString2 = a(paramString1);
-    if (paramString2 == null) {
-      return true;
-    }
-    paramHttpResponse = a(paramHttpResponse, paramResponse);
-    if (QDLog.b())
-    {
-      paramResponse = new StringBuilder().append("download content-type check url:").append(paramString1).append(" old:");
-      if (paramString2 == null) {
-        break label157;
-      }
-      paramString1 = paramString2.toString();
-      paramResponse = paramResponse.append(paramString1).append(" curr:");
-      if (paramHttpResponse == null) {
-        break label164;
-      }
-    }
-    label157:
-    label164:
-    for (paramString1 = paramHttpResponse.toString();; paramString1 = "N/A")
-    {
-      QDLog.b("downloader", paramString1);
-      if (!paramString2.equals(paramHttpResponse)) {
-        break label171;
-      }
-      return true;
-      paramString1 = "N/A";
-      break;
-    }
-    label171:
-    return false;
+    this.mUrlKeyGenerator = paramUrlKeyGenerator;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.downloader.impl.strategy.QzoneResumeTransfer
  * JD-Core Version:    0.7.0.1
  */

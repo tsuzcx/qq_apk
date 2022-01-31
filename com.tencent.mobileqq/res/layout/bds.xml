@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.AnimationView android:id="@id/du9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:layout_gravity="bottom|center|left" android:id="@id/ibp" android:paddingLeft="6.0dip" android:paddingRight="9.0dip" android:visibility="gone" android:layout_width="109.0dip" android:layout_height="19.0dip" android:layout_marginBottom="4.0dip">
+        <ImageView android:id="@id/dbq" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginRight="4.5dip" android:src="@drawable/bu4" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="12.0dip" android:id="@id/k5t" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/dbq" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</FrameLayout>

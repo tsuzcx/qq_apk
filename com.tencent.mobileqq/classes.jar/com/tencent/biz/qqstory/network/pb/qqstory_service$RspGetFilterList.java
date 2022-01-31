@@ -9,10 +9,10 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_service$RspGetFilterList
-  extends MessageMicro
+  extends MessageMicro<RspGetFilterList>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatMessageField filter_list = PBField.initRepeatMessage(qqstory_struct.FilterListPack.class);
+  public final PBRepeatMessageField<qqstory_struct.FilterListPack> filter_list = PBField.initRepeatMessage(qqstory_struct.FilterListPack.class);
   public final PBUInt32Field frequency = PBField.initUInt32(0);
   public final PBUInt32Field is_end = PBField.initUInt32(0);
   public final PBBytesField next_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -26,7 +26,7 @@ public final class qqstory_service$RspGetFilterList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetFilterList
  * JD-Core Version:    0.7.0.1
  */

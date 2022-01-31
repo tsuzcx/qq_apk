@@ -1,142 +1,109 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.app.AppRuntime;
-import mqq.manager.VerifyDevLockManager.NotifyType;
-import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewStub;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class roh
-  extends VerifyDevLockManager.VerifyDevLockObserver
 {
-  public roh(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private Object jdField_a_of_type_JavaLangObject;
+  private View jdField_b_of_type_AndroidViewView;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private TextView c;
   
-  private void a(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
+  public roh(View paramView, View.OnClickListener paramOnClickListener)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.c();
-    if (paramInt2 == 0)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvVerifyCode uin:" + paramString + " seq=" + paramInt1);
-        if (paramDevlockInfo != null) {
-          QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvVerifyCode info.TimeLimit:" + paramDevlockInfo.TimeLimit);
-        }
-      }
-      setSeq(paramInt1);
-      paramInt2 = 60;
-      paramInt1 = paramInt2;
-      if (paramDevlockInfo != null)
-      {
-        paramInt1 = paramInt2;
-        if (paramDevlockInfo.TimeLimit > 0) {
-          paramInt1 = paramDevlockInfo.TimeLimit;
-        }
-      }
-      AuthDevVerifyCodeActivity.a(this.a, paramInt1);
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvVerifyCode ret = " + paramInt2 + " seq=" + paramInt1);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvVerifyCode  errMsg:" + paramErrMsg.getMessage() + " seq=" + paramInt1);
-      }
-    }
-    if ((paramInt2 == 9) || (paramInt2 == 155))
-    {
-      this.a.setResult(-1);
-      this.a.finish();
-    }
-    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
-    {
-      this.a.a(paramErrMsg.getMessage(), 1);
-      return;
-    }
-    paramString = this.a.getString(2131434215);
-    this.a.a(paramString, 1);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
   }
   
-  private void b(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
+  private void c()
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    AuthDevVerifyCodeActivity.a(this.a);
-    if (paramInt2 == 0)
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvCheckSMSResult uin:" + paramString + " seq=" + paramInt1);
-      }
-      setSeq(paramInt1);
-      return;
+      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      this.jdField_b_of_type_AndroidWidgetTextView.setTag(this.jdField_a_of_type_JavaLangObject);
     }
-    if (QLog.isColorLevel())
+    if (this.c != null)
     {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvCheckSMSResult ret = " + paramInt2 + " seq=" + paramInt1);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvCheckSMSResult  errMsg:" + paramErrMsg.getMessage() + " seq=" + paramInt1);
-      }
+      this.c.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      this.c.setTag(this.jdField_a_of_type_JavaLangObject);
     }
-    if ((paramInt2 == 9) || (paramInt2 == 155))
-    {
-      this.a.setResult(-1);
-      this.a.finish();
-    }
-    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
-    {
-      this.a.a(paramErrMsg.getMessage(), 1);
-      return;
-    }
-    paramString = this.a.getString(2131434215);
-    this.a.a(paramString, 1);
   }
   
-  public void onRecvNotice(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvNotice uin:" + paramString + " seq=" + paramInt1);
-    }
-    if (paramNotifyType == VerifyDevLockManager.NotifyType.NOTIFY_REFRESH_SMS_RESULT)
+    if (this.jdField_b_of_type_AndroidViewView != null)
     {
-      a(paramInt1, paramString, paramInt2, paramErrMsg, paramDevlockInfo);
-      return;
+      this.jdField_b_of_type_AndroidViewView.clearAnimation();
+      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
     }
-    b(paramInt1, paramString, paramInt2, paramErrMsg, paramDevlockInfo);
   }
   
-  public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel())
+    if (this.jdField_b_of_type_AndroidViewView == null)
     {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onVerifyClose ret = " + paramInt2);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onVerifyClose  errMsg:" + paramErrMsg.getMessage());
-      }
+      this.jdField_b_of_type_AndroidViewView = ((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131365819)).inflate();
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131365820));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131365813));
+      this.c = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131379772));
+      this.jdField_b_of_type_AndroidViewView.setOnClickListener(null);
     }
-    if (this.a.isFinishing())
+    c();
+    rdm.a(this.jdField_b_of_type_AndroidViewView);
+    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842773);
+    int i = xin.b(this.jdField_a_of_type_AndroidContentContext, 18.6F);
+    localDrawable.setBounds(0, 0, i, i);
+    this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(localDrawable, null, null, null);
+    this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(aepi.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString1);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString2);
+    if (paramInt == 1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onVerifyClose activity is finishing.");
-      }
+      this.c.setVisibility(0);
+      paramString1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841460);
+      paramInt = xin.b(this.jdField_a_of_type_AndroidContentContext, 18.6F);
+      paramString1.setBounds(0, 0, paramInt, paramInt);
+      this.c.setCompoundDrawables(paramString1, null, null, null);
+      this.c.setCompoundDrawablePadding(aepi.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
       return;
     }
-    this.a.c();
-    AuthDevVerifyCodeActivity.a(this.a);
-    this.a.setResult(-1);
-    this.a.finish();
-    EquipmentLockImpl.a().a((AppRuntime)AuthDevVerifyCodeActivity.a(this.a).get(), this.a, paramString, true);
+    this.c.setVisibility(8);
+    this.jdField_b_of_type_AndroidViewView.requestLayout();
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener, Object paramObject)
+  {
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    c();
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_b_of_type_AndroidViewView != null) && (this.jdField_b_of_type_AndroidViewView.getVisibility() == 0);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_b_of_type_AndroidViewView != null) {
+      rdm.a(this.jdField_b_of_type_AndroidViewView, 8, 300, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     roh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,45 @@
-import com.tencent.mobileqq.activity.FriendProfileImageAvatar;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class cus
-  extends FriendListObserver
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public cus(FriendProfileImageAvatar paramFriendProfileImageAvatar) {}
+  public cus(LoginInfoActivity paramLoginInfoActivity) {}
   
-  protected void a(boolean paramBoolean, Setting paramSetting)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((paramSetting == null) || (!this.a.b.equals(paramSetting.uin))) {}
-    do
+    int j = 1;
+    int i = 1;
+    if (paramCompoundButton == LoginInfoActivity.a(this.a).a())
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.profilecard.Avatar", 2, "onGetHeadInfo: uin=" + paramSetting.uin);
+      paramCompoundButton = this.a.b;
+      if (paramBoolean)
+      {
+        ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Mobile_pc_online", 0, i, "", "", "", "");
+        SettingCloneUtil.writeValue(this.a, this.a.b.a(), "login_accounts", "qqsetting_bothonline_key", paramBoolean);
+        this.a.b.m();
       }
-    } while ((!this.a.jdField_a_of_type_Boolean) || (paramSetting.url == null) || (paramSetting.url.length() <= 0));
-    this.a.a(paramSetting.uin, paramSetting.bFaceFlags, paramSetting.url);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (!this.a.b.equals(paramString)) {
-      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.Avatar", 2, "onUpdateCustomHead: uin=" + paramString);
+    while (paramCompoundButton != LoginInfoActivity.b(this.a).a()) {
+      for (;;)
+      {
+        return;
+        i = 0;
+      }
     }
-    this.a.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
-    if (paramBoolean)
+    paramCompoundButton = this.a.b;
+    if (paramBoolean) {}
+    for (i = j;; i = 0)
     {
-      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo, false);
-      this.a.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Security_check", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, null, "security_scan_key", "qqsetting_security_scan_key", paramBoolean);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.h = 2;
-    this.a.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
   }
 }
 

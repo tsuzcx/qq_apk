@@ -11,45 +11,42 @@ public final class h
   public static final h d;
   public static final int e = 3;
   public static final h f;
-  public static final int g = 4;
-  public static final h h;
-  private static h[] j;
-  private int k;
-  private String l = new String();
+  private static h[] h;
+  private int i;
+  private String j = new String();
   
   static
   {
     if (!h.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
-      i = bool;
-      j = new h[3];
+      g = bool;
+      h = new h[3];
       b = new h(0, 1, "PUSH_SERVER_LIST");
       d = new h(1, 2, "PUSH_FMT_SERVER_LIST");
       f = new h(2, 3, "PUSH_CLILOG_CONFIG");
-      h = new h(2, 4, "PUSH_PROXY_LIST");
       return;
     }
   }
   
   private h(int paramInt1, int paramInt2, String paramString)
   {
-    this.l = paramString;
-    this.k = paramInt2;
-    j[paramInt1] = this;
+    this.j = paramString;
+    this.i = paramInt2;
+    h[paramInt1] = this;
   }
   
   public static h a(int paramInt)
   {
-    int m = 0;
-    while (m < j.length)
+    int k = 0;
+    while (k < h.length)
     {
-      if (j[m].a() == paramInt) {
-        return j[m];
+      if (h[k].a() == paramInt) {
+        return h[k];
       }
-      m += 1;
+      k += 1;
     }
-    if (!i) {
+    if (!g) {
       throw new AssertionError();
     }
     return null;
@@ -57,15 +54,15 @@ public final class h
   
   public static h a(String paramString)
   {
-    int m = 0;
-    while (m < j.length)
+    int k = 0;
+    while (k < h.length)
     {
-      if (j[m].toString().equals(paramString)) {
-        return j[m];
+      if (h[k].toString().equals(paramString)) {
+        return h[k];
       }
-      m += 1;
+      k += 1;
     }
-    if (!i) {
+    if (!g) {
       throw new AssertionError();
     }
     return null;
@@ -73,12 +70,12 @@ public final class h
   
   public int a()
   {
-    return this.k;
+    return this.i;
   }
   
   public String toString()
   {
-    return this.l;
+    return this.j;
   }
 }
 

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.QZoneFeedsViewPager android:id="@id/hug" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/ha2" android:background="@null" android:layout_width="fill_parent" android:layout_height="@dimen/azx" />
+    <RelativeLayout android:id="@id/elo" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

@@ -1,21 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.ViewGroup;
+import java.util.ArrayList;
 
-public class stq
-  implements DialogInterface.OnClickListener
+class stq
 {
-  public stq(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, QQCustomDialog paramQQCustomDialog) {}
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  ArrayList<ViewGroup> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-  }
+  private stq(stn paramstn) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     stq
  * JD-Core Version:    0.7.0.1
  */

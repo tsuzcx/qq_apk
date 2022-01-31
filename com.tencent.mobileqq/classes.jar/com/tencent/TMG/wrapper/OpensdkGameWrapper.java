@@ -9,11 +9,6 @@ import android.os.Build.VERSION;
 import android.os.Environment;
 import android.util.Log;
 import com.tencent.TMG.logger.LogReporter;
-import com.tencent.TMG.ptt.PttListener.DownloadFileListener;
-import com.tencent.TMG.ptt.PttListener.PlayFileListener;
-import com.tencent.TMG.ptt.PttListener.RecordFileListener;
-import com.tencent.TMG.ptt.PttListener.UploadFileListener;
-import com.tencent.TMG.ptt.PttListener.Voice2TextListener;
 import com.tencent.TMG.ptt.PttManager;
 import com.tencent.TMG.sdk.AVLoggerClient;
 
@@ -49,7 +44,7 @@ public class OpensdkGameWrapper
     paramContext = paramContext.getApplicationInfo();
     str = str + "DATADIR=" + paramContext.dataDir + ";";
     if (Build.VERSION.SDK_INT >= 9) {}
-    for (paramContext = str + "LIBDIR=" + paramContext.nativeLibraryDir + ";";; paramContext = str + "LIBDIR=" + paramContext.dataDir + "/lib" + ";")
+    for (paramContext = str + "LIBDIR=" + paramContext.nativeLibraryDir + ";";; paramContext = str + "LIBDIR=" + paramContext.dataDir + "/lib;")
     {
       paramContext = paramContext + "HW_AVC_ENC=0;";
       paramContext = paramContext + "HW_AVC_DEC=0;";
@@ -94,22 +89,7 @@ public class OpensdkGameWrapper
   int DownloadRecordedFile(String paramString1, String paramString2)
   {
     Log.i("opensdkGameWrapper", String.format("DownloadRecordedFile|filePath=%s, fileid=%s.", new Object[] { paramString1, paramString2 }));
-    PttManager.createInstance(this.mActivity.getApplicationContext()).downloadFile(paramString2, paramString1, new PttListener.DownloadFileListener()
-    {
-      public void onCompleted(int paramAnonymousInt, String paramAnonymousString1, String paramAnonymousString2)
-      {
-        String str = paramAnonymousString1;
-        if (paramAnonymousString1 == null) {
-          str = "";
-        }
-        paramAnonymousString1 = paramAnonymousString2;
-        if (paramAnonymousString2 == null) {
-          paramAnonymousString1 = "";
-        }
-        Log.i("opensdkGameWrapper", String.format("DownloadRecordedFile|onCompleted| code=%d, filePath=%s,fileid=%s", new Object[] { Integer.valueOf(paramAnonymousInt), str, paramAnonymousString1 }));
-        OpensdkGameWrapper.this.nativeDownloadRecordedFileCallback(paramAnonymousInt, str, paramAnonymousString1);
-      }
-    });
+    PttManager.createInstance(this.mActivity.getApplicationContext()).downloadFile(paramString2, paramString1, new OpensdkGameWrapper.4(this));
     return 0;
   }
   
@@ -181,18 +161,7 @@ public class OpensdkGameWrapper
   public int playRecordedFile(String paramString)
   {
     Log.i("opensdkGameWrapper", "playRecordedFile|filePath=" + paramString);
-    PttManager.createInstance(this.mActivity.getApplicationContext()).playRecordedFile(paramString, new PttListener.PlayFileListener()
-    {
-      public void onCompleted(int paramAnonymousInt, String paramAnonymousString)
-      {
-        String str = paramAnonymousString;
-        if (paramAnonymousString == null) {
-          str = "";
-        }
-        Log.i("opensdkGameWrapper", String.format("playRecordedFile|onCompleted| code=%d, filePath=%s", new Object[] { Integer.valueOf(paramAnonymousInt), str }));
-        OpensdkGameWrapper.this.nativePlayRecordedFileCallback(paramAnonymousInt, str);
-      }
-    });
+    return PttManager.createInstance(this.mActivity.getApplicationContext()).playRecordedFile(paramString, new OpensdkGameWrapper.2(this));
   }
   
   public void reportLog()
@@ -225,18 +194,7 @@ public class OpensdkGameWrapper
   public int startRecording(String paramString)
   {
     Log.i("opensdkGameWrapper", "StartRecording|filePath=" + paramString);
-    PttManager.createInstance(this.mActivity.getApplicationContext()).startRecording(paramString, new PttListener.RecordFileListener()
-    {
-      public void onCompleted(int paramAnonymousInt, String paramAnonymousString)
-      {
-        String str = paramAnonymousString;
-        if (paramAnonymousString == null) {
-          str = "";
-        }
-        Log.i("opensdkGameWrapper", String.format("startRecording|onCompleted| code=%d, filePath=%s", new Object[] { Integer.valueOf(paramAnonymousInt), str }));
-        OpensdkGameWrapper.this.nativestartRecordingCallback(paramAnonymousInt, str);
-      }
-    });
+    return PttManager.createInstance(this.mActivity.getApplicationContext()).startRecording(paramString, new OpensdkGameWrapper.1(this));
   }
   
   public int stopPlayFile()
@@ -255,50 +213,20 @@ public class OpensdkGameWrapper
   int uploadRecordedFile(String paramString)
   {
     Log.i("opensdkGameWrapper", "uploadRecordedFile|filePath=" + paramString);
-    PttManager.createInstance(this.mActivity.getApplicationContext()).uploadFile(paramString, new PttListener.UploadFileListener()
-    {
-      public void onCompleted(int paramAnonymousInt, String paramAnonymousString1, String paramAnonymousString2)
-      {
-        String str = paramAnonymousString1;
-        if (paramAnonymousString1 == null) {
-          str = "";
-        }
-        paramAnonymousString1 = paramAnonymousString2;
-        if (paramAnonymousString2 == null) {
-          paramAnonymousString1 = "";
-        }
-        Log.i("opensdkGameWrapper", String.format("uploadRecordedFile|onCompleted| code=%d, filePath=%s,fileid=%s", new Object[] { Integer.valueOf(paramAnonymousInt), str, paramAnonymousString1 }));
-        OpensdkGameWrapper.this.nativeUploadRecordedFileCallback(paramAnonymousInt, str, paramAnonymousString1);
-      }
-    });
+    PttManager.createInstance(this.mActivity.getApplicationContext()).uploadFile(paramString, new OpensdkGameWrapper.3(this));
     return 0;
   }
   
   int voice2Text(String paramString)
   {
     Log.i("opensdkGameWrapper", String.format("voice2Text| fileid=%s.", new Object[] { paramString }));
-    PttManager.createInstance(this.mActivity.getApplicationContext()).voice2Text(paramString, new PttListener.Voice2TextListener()
-    {
-      public void onCompleted(int paramAnonymousInt, String paramAnonymousString1, String paramAnonymousString2)
-      {
-        String str = paramAnonymousString2;
-        if (paramAnonymousString2 == null) {
-          str = "";
-        }
-        paramAnonymousString2 = paramAnonymousString1;
-        if (paramAnonymousString1 == null) {
-          paramAnonymousString2 = "";
-        }
-        Log.i("opensdkGameWrapper", String.format("voice2Text|onCompleted| code=%d, fileid=%s,text=%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString2, str }));
-        OpensdkGameWrapper.this.nativeVoice2TextCallback(paramAnonymousInt, paramAnonymousString2, str);
-      }
-    });
+    PttManager.createInstance(this.mActivity.getApplicationContext()).voice2Text(paramString, new OpensdkGameWrapper.5(this));
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.TMG.wrapper.OpensdkGameWrapper
  * JD-Core Version:    0.7.0.1
  */

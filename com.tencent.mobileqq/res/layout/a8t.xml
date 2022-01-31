@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/bz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/a49" android:clickable="true" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="6.0" />
+    <LinearLayout android:orientation="vertical" android:id="@id/rx" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="96.0">
+        <RelativeLayout android:id="@id/head" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="7.0">
+            <ImageView android:id="@id/close" android:paddingLeft="@dimen/ms" android:paddingRight="@dimen/ms" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/gkd" android:layout_centerVertical="true" />
+            <TextView android:textSize="@dimen/ayp" android:textColor="@color/ev" android:id="@id/coz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:layout_centerInParent="true" />
+            <View android:background="@color/eo" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+        <com.tencent.widget.ListView android:id="@id/cnc" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="0.0dip" android:divider="@null" android:layout_weight="87.0" />
+    </LinearLayout>
+</LinearLayout>

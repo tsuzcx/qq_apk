@@ -1,20 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.mobileqq.troopshare.TroopShareUtility;
+import com.tencent.mobileqq.utils.SendMessageHandler;
+import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
+import java.util.List;
 
 public class hed
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public hed(TroopShareUtility paramTroopShareUtility) {}
+  public hed(SendMessageHandler paramSendMessageHandler, long paramLong, String paramString) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    TroopShareUtility.a(this.a, false);
-    if ((!(TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity)) || (this.a.a)) {
+    if (SendMessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqUtilsSendMessageHandler) >= SendMessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqUtilsSendMessageHandler).size()) {
       return;
     }
-    ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
+    int i = SendMessageHandler.b(this.jdField_a_of_type_ComTencentMobileqqUtilsSendMessageHandler);
+    SendMessageHandler.SendMessageRunnable localSendMessageRunnable = (SendMessageHandler.SendMessageRunnable)SendMessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqUtilsSendMessageHandler).get(i);
+    localSendMessageRunnable.jdField_a_of_type_Int = i;
+    localSendMessageRunnable.i = System.currentTimeMillis();
+    localSendMessageRunnable.e = this.jdField_a_of_type_Long;
+    localSendMessageRunnable.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localSendMessageRunnable.run();
   }
 }
 

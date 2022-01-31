@@ -1,22 +1,40 @@
-import com.tencent.common.galleryactivity.AbstractImageAdapter;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
-import com.tencent.mobileqq.activity.aio.photo.AIOPhotoListAdapter;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
+import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
 
-public class vof
-  implements Runnable
+final class vof
+  implements vmd
 {
-  public vof(AIOImageListScene paramAIOImageListScene) {}
+  vof(ShareFromMemoryPlayInfo paramShareFromMemoryPlayInfo, int paramInt, Activity paramActivity, View paramView) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if ((this.a.a != null) && (!((AIOPhotoListAdapter)this.a.a).a(false))) {
-      this.a.a.notifyDataSetChanged();
+    int i = 1;
+    OpenPlayerBuilder.Data localData = new OpenPlayerBuilder(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo, this.jdField_a_of_type_Int).a();
+    OpenPlayerBuilder.UIStyle localUIStyle;
+    if (paramInt != -1)
+    {
+      localUIStyle = localData.mUIStyle;
+      if (paramInt != 1) {
+        break label66;
+      }
+    }
+    label66:
+    for (paramInt = i;; paramInt = 2)
+    {
+      localUIStyle.bottomWidgetShowFlag = paramInt;
+      localData.mUIStyle.mPlayerRepeatMode = 2;
+      vod.a(this.jdField_a_of_type_AndroidAppActivity, localData, this.jdField_a_of_type_AndroidViewView);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vof
  * JD-Core Version:    0.7.0.1
  */

@@ -1,127 +1,61 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.view.MotionEvent;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import org.json.JSONObject;
 
 public class aoqy
-  extends aoqz
 {
-  float jdField_a_of_type_Float = 0.0F;
-  int jdField_a_of_type_Int = -1;
-  public boolean a;
-  int b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  int d = 0;
-  public int e;
+  public int a;
+  public String a;
+  public String b = "";
+  public String c = "";
+  public String d = "https://sou.qq.com/kandian.html?_bid=2958&_wv=3&keyword=$KEYWORD$";
   
-  public aoqy(TCProgressBar paramTCProgressBar)
+  public aoqy()
   {
-    super(paramTCProgressBar);
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 1;
   }
   
-  public int a()
+  public static aoqy a(String paramString)
   {
-    return this.f + this.d;
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.left = this.f;
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.right = (this.f + this.g);
-    int i = this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.top;
-    int j = this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.bottom;
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.top = 0;
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.bottom = this.e;
-    if (this.jdField_a_of_type_Boolean) {
-      a(paramCanvas, this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsBitmap);
-    }
-    for (;;)
+    aoqy localaoqy = new aoqy();
+    try
     {
-      this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.top = i;
-      this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.bottom = j;
-      super.a(paramCanvas);
-      return;
-      a(paramCanvas, this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsBitmap);
-    }
-  }
-  
-  void a(Canvas paramCanvas, Bitmap paramBitmap)
-  {
-    if (paramBitmap == null)
-    {
-      this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setColor(-65536);
+      JSONObject localJSONObject = new JSONObject(paramString);
+      localaoqy.jdField_a_of_type_JavaLangString = localJSONObject.optString("kQQPASearchDiscoverPageUrl");
+      localaoqy.b = localJSONObject.optString("kQQPASearchListTitleIconUrl");
+      localaoqy.c = localJSONObject.optString("kQQPAClickAssociationalWordWebUrl");
+      localaoqy.jdField_a_of_type_Int = localJSONObject.optInt("kQQPAClickAssociationalWordToWebSearch", 1);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInjoySearchJumpurlConfBean", 2, new Object[] { "loadConfig292Data json = ", paramString });
       }
-      paramCanvas.drawRect(this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint);
-      return;
+      localaoqy.d = localJSONObject.optString("kQQPASearchJumpUrl", "https://sou.qq.com/kandian.html?_bid=2958&_wv=3&keyword=$KEYWORD$");
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInjoySearchJumpurlConfBean", 2, "loadConfig292Data(). readinjoy_search_jump_url=" + localaoqy.d + ", discoveryPageUrl = " + localaoqy.jdField_a_of_type_JavaLangString);
+      }
     }
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
-    paramCanvas.drawBitmap(paramBitmap, null, this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(false);
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_c_of_type_Int < 0) {}
-    for (int i = -this.jdField_c_of_type_Int; i > 1; i = this.jdField_c_of_type_Int) {
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(float paramFloat)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TCProgressBar", 2, "checkBounds,x = " + paramFloat + ",x_coord = " + this.f + ",x_coord + length = " + (this.f + this.g));
-    }
-    return (paramFloat > this.f - 25) && (paramFloat < this.f + this.g + 25);
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    float f = paramMotionEvent.getX();
-    int i = paramMotionEvent.getAction();
-    switch (i)
+    catch (Exception paramString)
     {
-    default: 
-    case 0: 
-    case 2: 
       do
       {
-        return true;
-        this.jdField_b_of_type_Boolean = true;
-        this.jdField_a_of_type_Int = i;
-        this.jdField_a_of_type_Float = f;
-        this.jdField_b_of_type_Int = 0;
-        this.jdField_a_of_type_Boolean = false;
-        return true;
-        this.jdField_c_of_type_Int = ((int)(f - this.jdField_a_of_type_Float));
-        this.jdField_a_of_type_Int = i;
-        this.jdField_a_of_type_Float = f;
-        this.jdField_b_of_type_Int += 1;
-        this.jdField_c_of_type_Boolean = false;
-      } while (!a());
-      this.f += this.jdField_c_of_type_Int;
-      return true;
+        if (QLog.isColorLevel()) {
+          QLog.e("ReadInjoySearchJumpurlConfBean", 2, "loadPublicAccountCenterUrlConfig error", paramString);
+        }
+        localaoqy.d = "https://sou.qq.com/kandian.html?_bid=2958&_wv=3&keyword=$KEYWORD$";
+      } while (!QLog.isColorLevel());
+      QLog.d("ReadInjoySearchJumpurlConfBean", 2, "loadConfig292Data(). use the default url. exception=" + paramString.getStackTrace());
     }
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_c_of_type_Boolean = true;
-    return true;
+    return localaoqy;
+    return localaoqy;
+  }
+  
+  public String toString()
+  {
+    return "kQQPASearchDiscoverPageUrl = " + this.jdField_a_of_type_JavaLangString + "kQQPASearchListTitleIconUrl = " + this.b + "kQQPAClickAssociationalWordWebUrl = " + this.c + "kQQPAClickAssociationalWordToWebSearch = " + this.jdField_a_of_type_Int + "kQQPASearchJumpUrl = " + this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoqy
  * JD-Core Version:    0.7.0.1
  */

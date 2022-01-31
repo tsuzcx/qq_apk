@@ -1,23 +1,33 @@
-import com.tencent.mobileqq.search.FunctionModuleConfigManager;
-import com.tencent.mobileqq.search.model.GroupBaseNetSearchModelItem;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
 
 public class ahqu
-  implements Comparator
+  implements View.OnClickListener
 {
-  public ahqu(FunctionModuleConfigManager paramFunctionModuleConfigManager) {}
+  public ahqu(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
   
-  public int a(GroupBaseNetSearchModelItem paramGroupBaseNetSearchModelItem1, GroupBaseNetSearchModelItem paramGroupBaseNetSearchModelItem2)
+  public void onClick(View paramView)
   {
-    paramGroupBaseNetSearchModelItem1 = paramGroupBaseNetSearchModelItem1.c;
-    paramGroupBaseNetSearchModelItem2 = paramGroupBaseNetSearchModelItem2.c;
-    return ChnToSpell.a(paramGroupBaseNetSearchModelItem1, 2).compareTo(ChnToSpell.a(paramGroupBaseNetSearchModelItem2, 2));
+    if ((paramView.getTag() instanceof ahpn))
+    {
+      paramView = (ahpn)paramView.getTag();
+      if (paramView != null) {}
+    }
+    else
+    {
+      return;
+    }
+    paramView = TroopInfoActivity.a(paramView.b, 4);
+    paramView.putInt("t_s_f", 1002);
+    bcpx.a(this.a.getActivity(), paramView, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahqu
  * JD-Core Version:    0.7.0.1
  */

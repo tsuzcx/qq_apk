@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class GetMusicListReq
   extends JceStruct
 {
-  static ArrayList cache_music_id;
-  public ArrayList music_id;
+  static ArrayList<MusicID> cache_music_id;
+  public ArrayList<MusicID> music_id;
   
   public GetMusicListReq() {}
   
-  public GetMusicListReq(ArrayList paramArrayList)
+  public GetMusicListReq(ArrayList<MusicID> paramArrayList)
   {
     this.music_id = paramArrayList;
   }
@@ -38,7 +38,7 @@ public final class GetMusicListReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_MUSIC.GetMusicListReq
  * JD-Core Version:    0.7.0.1
  */

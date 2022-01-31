@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/bg_texture" android:paddingLeft="@dimen/vh" android:paddingRight="@dimen/vh" android:paddingBottom="@dimen/title_bar_height" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center_horizontal" android:layout_width="93.0dip" android:layout_height="80.0dip" android:src="@drawable/qq_eqlock_authdev_phone" android:scaleType="fitCenter" />
+    <TextView android:textSize="15.0sp" android:textColor="@color/skin_black" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/em1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/b0d" android:lineSpacingExtra="7.0dip" />
+    <RelativeLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+        <TextView android:textSize="15.0sp" android:textColor="@color/skin_black" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/ipj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/b0c" />
+        <TextView android:textSize="15.0sp" android:textColor="@color/skin_gray2" android:gravity="center_horizontal" android:id="@id/fn0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/b0c" android:layout_centerVertical="true" />
+        <Button android:gravity="center" android:id="@id/at1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/b09" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/i9" />
+    </RelativeLayout>
+    <Button android:id="@id/ug_btn" android:layout_width="fill_parent" android:layout_height="46.0dip" android:layout_marginTop="35.0dip" android:text="@string/b0b" style="@style/b9" />
+    <Button android:id="@id/buj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="46.0dip" android:layout_marginTop="20.0dip" android:text="@string/az5" style="@style/bd" />
+    <TextView android:textSize="15.0sp" android:textColor="@color/skin_black" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/lyl" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/io6" android:lineSpacingExtra="7.0dip" />
+</LinearLayout>

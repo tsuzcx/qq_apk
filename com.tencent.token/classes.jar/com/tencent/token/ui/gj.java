@@ -3,14 +3,14 @@ package com.tencent.token.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 
-final class gj
+class gj
   implements DialogInterface.OnClickListener
 {
-  gj(fz paramfz) {}
+  gj(fj paramfj) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FaceRecognitionCameraActivityOld.access$2100(this.a.a);
+    this.a.a.finish();
   }
 }
 

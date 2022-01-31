@@ -1,88 +1,48 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.StoryProtocolObserver;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_del_message.ErrorInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_del_message.RspDelOneMessage;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.lang.ref.WeakReference;
 
-public class nxv
-  extends ProtoUtils.StoryProtocolObserver
+final class nxv
+  implements anvo
 {
-  public nxv(StoryMessageListActivity paramStoryMessageListActivity) {}
+  nxv(WeakReference paramWeakReference, boolean paramBoolean, String paramString1, String paramString2) {}
   
-  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(int paramInt1, int paramInt2)
   {
-    int j = -1;
-    paramBundle = new qqstory_struct.ErrorInfo();
-    qqstory_710_del_message.RspDelOneMessage localRspDelOneMessage;
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      localRspDelOneMessage = new qqstory_710_del_message.RspDelOneMessage();
-    }
-    for (;;)
+    int i = 1;
+    if (nxu.a() == paramInt1)
     {
-      int m;
-      int k;
-      try
-      {
-        localRspDelOneMessage.mergeFrom(paramArrayOfByte);
-        if (!localRspDelOneMessage.errinfo.error_code.has()) {
-          break label236;
-        }
-        i = localRspDelOneMessage.errinfo.error_code.get();
-        j = i;
-        if (j == 0) {
-          i = 1;
-        }
+      anwc.a().a(paramInt1);
+      nxu.a(-1);
+      if ((2 != paramInt2) && (1 != paramInt2)) {
+        break label123;
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        m = 0;
-        k = j;
+    }
+    label123:
+    for (paramInt1 = 1;; paramInt1 = 0)
+    {
+      Context localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      Object localObject = localContext;
+      if (localContext == null) {
+        localObject = BaseApplicationImpl.getContext();
       }
-      try
-      {
-        paramBundle.error_code.set(localRspDelOneMessage.errinfo.error_code.get());
-        paramBundle.error_desc.set(localRspDelOneMessage.errinfo.error_desc.get());
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.qqstory.msgList", 2, "receive delete one msg, code=" + paramInt + " bizCode=" + j);
-        }
-        if (i == 0) {
-          QQToast.a(this.a.getApplicationContext(), 1, "删除失败，请重试", 0).a();
-        }
-        return paramBundle;
+      if ((-1 == paramInt2) && (this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (localObject != null)) {
+        ors.e((Context)localObject, this.jdField_a_of_type_JavaLangString);
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      localObject = this.b;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (paramInt2 = i;; paramInt2 = 0)
       {
-        for (;;)
-        {
-          k = j;
-          m = i;
-        }
-      }
-      int i = 0;
-      continue;
-      j = k;
-      i = m;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("Q.qqstory.msgList", 2, "error parse RspDelOneMessage", paramArrayOfByte);
-        j = k;
-        i = m;
-        continue;
-        label236:
-        i = 0;
+        ors.a((String)localObject, paramInt1, paramInt2);
+        return;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nxv
  * JD-Core Version:    0.7.0.1
  */

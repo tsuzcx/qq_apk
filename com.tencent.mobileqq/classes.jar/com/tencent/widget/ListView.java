@@ -1,10 +1,5 @@
 package com.tencent.widget;
 
-import alzq;
-import amaa;
-import amcn;
-import amco;
-import amcp;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -13,7 +8,9 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.FocusFinder;
 import android.view.KeyEvent;
@@ -31,15 +28,24 @@ import android.widget.Checkable;
 import android.widget.ListAdapter;
 import android.widget.PopupWindow;
 import android.widget.RemoteViews.RemoteView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyOverScrollViewListener;
+import bhtb;
+import bhtr;
+import bhtw;
+import bhxm;
+import bhyq;
+import bhyr;
+import bhys;
+import bhyt;
+import bhzf;
+import bica;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinEngine;
 import com.tencent.theme.SkinnableView;
-import com.tencent.util.VersionUtils;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Iterator;
+import rug;
 
 @RemoteViews.RemoteView
 public class ListView
@@ -67,35 +73,36 @@ public class ListView
   protected static final int OVERSCROLL_STATUS_IDLE = 0;
   private static final int OVERSCROLL_STATUS_VISABLE = 1;
   private long delAnimDuration;
+  private boolean descendantInvalidatedFlag;
   public boolean isTouchHolding;
   private int[] mAddingRows;
   private boolean mAnimation = true;
   private boolean mAreAllItemsSelectable = true;
-  private final amcn mArrowScrollFocusResult = new amcn(null);
+  private final bhyq mArrowScrollFocusResult = new bhyq(null);
   private Drawable mContentBackgroundDrawable;
   Drawable mDivider;
   public int mDividerHeight;
   private boolean mDividerIsOpaque;
   private Paint mDividerPaint;
-  private amco mFocusSelector;
+  private ListView.FocusSelector mFocusSelector;
   private boolean mFooterDividersEnabled;
-  private ArrayList mFooterViewInfos = new ArrayList();
+  private ArrayList<bhyr> mFooterViewInfos = new ArrayList();
   private boolean mHeaderDividersEnabled;
-  public ArrayList mHeaderViewInfos = new ArrayList();
+  protected ArrayList<bhyr> mHeaderViewInfos = new ArrayList();
   protected int[] mHeaderViewLevelIndex = { 0, 0, 0 };
   private Animation mInsertAnimation;
   private boolean mIsCacheColorOpaque;
   private boolean mItemsCanFocus;
-  private ListView.OnScrollChangeListener mOnScrollChangeListener;
+  private bhyt mOnScrollChangeListener;
   Drawable mOverScrollFooter;
   protected int mOverScrollFooterHeight;
   Drawable mOverScrollHeader;
-  public Drawable mOverScrollHeaderShadow;
+  protected Drawable mOverScrollHeaderShadow;
   int mOverScrollHeaderTopOffset = 0;
-  public int mOverScrollHeight;
-  protected OverScrollViewListener mOverScrollViewListener;
-  private ListView.OverscrollViewContainer mOverscrollFooterView;
-  public int mOverscrollHeadState = 0;
+  protected int mOverScrollHeight;
+  protected bhzf mOverScrollViewListener;
+  protected ListView.OverscrollViewContainer mOverscrollFooterView;
+  protected int mOverscrollHeadState = 0;
   public ListView.OverscrollViewContainer mOverscrollHeaderViewContainer;
   private final Rect mTempRect = new Rect();
   private boolean mUseEfficientMode;
@@ -120,7 +127,7 @@ public class ListView
   public ListView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramAttributeSet = new TypedArrayWarpper(paramContext.obtainStyledAttributes(paramAttributeSet, getStyleableValues("ListView"), paramInt, 0));
+    paramAttributeSet = new bica(paramContext.obtainStyledAttributes(paramAttributeSet, getStyleableValues("ListView"), paramInt, 0));
     CharSequence[] arrayOfCharSequence = paramAttributeSet.a(LISTVIEW_ENTRIES);
     if (arrayOfCharSequence != null) {
       setAdapter(new ArrayAdapter(paramContext, 17367043, arrayOfCharSequence));
@@ -137,7 +144,7 @@ public class ListView
     if (paramContext != null) {
       setOverscrollFooter(paramContext);
     }
-    paramInt = paramAttributeSet.d(LISTVIEW_DIVIDERHEIGHT, 0);
+    paramInt = paramAttributeSet.c(LISTVIEW_DIVIDERHEIGHT, 0);
     if (paramInt != 0) {
       setDividerHeight(paramInt);
     }
@@ -288,7 +295,7 @@ public class ListView
     return i + getArrowScrollPreviewLength();
   }
   
-  private amcn arrowScrollFocused(int paramInt)
+  private bhyq arrowScrollFocused(int paramInt)
   {
     int j = 1;
     int i = 1;
@@ -404,8 +411,8 @@ public class ListView
       localObject = arrowScrollFocused(paramInt);
       if (localObject != null)
       {
-        i = ((amcn)localObject).a();
-        j = ((amcn)localObject).b();
+        i = ((bhyq)localObject).a();
+        j = ((bhyq)localObject).b();
       }
       if (localObject == null) {
         break label311;
@@ -518,12 +525,15 @@ public class ListView
   
   private void checkOverScrollHeaderIsVisable()
   {
+    int j;
+    rug localrug;
+    View localView;
     int i;
     if ((this.mTouchMode == 5) && (getScrollY() != 0))
     {
-      i = getScrollY();
-      if ((i >= 0) || (this.mOverscrollHeaderViewContainer == null) || (i <= -getOverScrollHeight())) {
-        break label159;
+      j = getScrollY();
+      if ((j >= 0) || (this.mOverscrollHeaderViewContainer == null) || (j <= -getOverScrollHeight())) {
+        break label179;
       }
       if ((this.mOverscrollHeadState == 0) || (this.mOverscrollHeadState == 2))
       {
@@ -532,13 +542,21 @@ public class ListView
         }
         this.mOverscrollHeadState = 1;
       }
-      if ((this.mOverScrollViewListener != null) && ((this.mOverScrollViewListener instanceof ReadInJoyOverScrollViewListener)))
+      if ((this.mOverScrollViewListener != null) && ((this.mOverScrollViewListener instanceof rug)))
       {
-        ((ReadInJoyOverScrollViewListener)this.mOverScrollViewListener).a(0, this.mOverscrollHeaderViewContainer.getChildAt(0), this, -i * 100 / getOverScrollHeight());
-        ((ReadInJoyOverScrollViewListener)this.mOverScrollViewListener).a(this.mOverscrollHeaderViewContainer.getChildAt(0), this, -i);
+        localrug = (rug)this.mOverScrollViewListener;
+        localView = this.mOverscrollHeaderViewContainer.getChildAt(0);
+        if (getOverScrollHeight() <= 0) {
+          break label174;
+        }
+        i = -j * 100 / getOverScrollHeight();
+        localrug.a(0, localView, this, i);
+        ((rug)this.mOverScrollViewListener).a(this.mOverscrollHeaderViewContainer.getChildAt(0), this, -j);
       }
     }
-    label159:
+    label174:
+    label179:
+    label335:
     do
     {
       do
@@ -546,8 +564,10 @@ public class ListView
         do
         {
           return;
-          if ((i <= 0) || (this.mOverscrollFooterView == null) || (i >= getOverScrollFooterHeight())) {
-            break;
+          i = 0;
+          break;
+          if ((j <= 0) || (this.mOverscrollFooterView == null) || (j >= getOverScrollFooterHeight())) {
+            break label335;
           }
           if ((this.mOverscrollHeadState == 0) || (this.mOverscrollHeadState == 2))
           {
@@ -556,18 +576,25 @@ public class ListView
             }
             this.mOverscrollHeadState = 1;
           }
-        } while ((this.mOverScrollViewListener == null) || (!(this.mOverScrollViewListener instanceof ReadInJoyOverScrollViewListener)));
-        ((ReadInJoyOverScrollViewListener)this.mOverScrollViewListener).a(1, this.mOverscrollFooterView.getChildAt(0), this, i * 100 / getOverScrollHeight());
-        ((ReadInJoyOverScrollViewListener)this.mOverScrollViewListener).a(this.mOverscrollHeaderViewContainer.getChildAt(0), this, i);
-        return;
-        if ((i >= 0) || (this.mOverscrollHeaderViewContainer == null)) {
-          break;
+        } while ((this.mOverScrollViewListener == null) || (!(this.mOverScrollViewListener instanceof rug)));
+        localrug = (rug)this.mOverScrollViewListener;
+        localView = this.mOverscrollFooterView.getChildAt(0);
+        if (getOverScrollFooterHeight() == 0) {}
+        for (i = 0;; i = j * 100 / getOverScrollFooterHeight())
+        {
+          localrug.a(1, localView, this, i);
+          ((rug)this.mOverScrollViewListener).a(this.mOverscrollFooterView.getChildAt(0), this, j);
+          return;
         }
-      } while ((this.mOverScrollViewListener == null) || (!(this.mOverScrollViewListener instanceof ReadInJoyOverScrollViewListener)));
-      ((ReadInJoyOverScrollViewListener)this.mOverScrollViewListener).a(this.mOverscrollHeaderViewContainer.getChildAt(0), this, -i);
+        if ((j >= 0) || (this.mOverscrollHeaderViewContainer == null)) {
+          break label387;
+        }
+      } while ((this.mOverScrollViewListener == null) || (!(this.mOverScrollViewListener instanceof rug)));
+      ((rug)this.mOverScrollViewListener).a(this.mOverscrollHeaderViewContainer.getChildAt(0), this, -j);
       return;
-    } while ((i <= 0) || (this.mOverscrollFooterView == null));
-    ((ReadInJoyOverScrollViewListener)this.mOverScrollViewListener).a(this.mOverscrollHeaderViewContainer.getChildAt(0), this, i);
+    } while ((j <= 0) || (this.mOverscrollFooterView == null) || (!(this.mOverScrollViewListener instanceof rug)));
+    label387:
+    ((rug)this.mOverScrollViewListener).a(this.mOverscrollFooterView.getChildAt(0), this, j);
   }
   
   private void checkOverscrollViewIsCompleteVisable(View paramView)
@@ -594,7 +621,7 @@ public class ListView
     this.mOverScrollViewListener.b(1, this.mOverscrollFooterView.getChildAt(0), this);
   }
   
-  private void clearRecycledState(ArrayList paramArrayList)
+  private void clearRecycledState(ArrayList<bhyr> paramArrayList)
   {
     if (paramArrayList != null)
     {
@@ -602,7 +629,7 @@ public class ListView
       int i = 0;
       while (i < j)
       {
-        AbsListView.LayoutParams localLayoutParams = (AbsListView.LayoutParams)((ListView.FixedViewInfo)paramArrayList.get(i)).jdField_a_of_type_AndroidViewView.getLayoutParams();
+        AbsListView.LayoutParams localLayoutParams = (AbsListView.LayoutParams)((bhyr)paramArrayList.get(i)).jdField_a_of_type_AndroidViewView.getLayoutParams();
         if (localLayoutParams != null) {
           localLayoutParams.jdField_a_of_type_Boolean = false;
         }
@@ -650,7 +677,7 @@ public class ListView
       default: 
         return false;
         int j;
-        if ((VersionUtils.e()) && (paramKeyEvent.hasNoModifiers()))
+        if ((bhtb.e()) && (paramKeyEvent.hasNoModifiers()))
         {
           bool2 = resurrectSelectionIfNeeded();
           bool1 = bool2;
@@ -676,7 +703,7 @@ public class ListView
         }
         else
         {
-          if ((!VersionUtils.e()) || (!paramKeyEvent.hasModifiers(2))) {
+          if ((!bhtb.e()) || (!paramKeyEvent.hasModifiers(2))) {
             break label144;
           }
           if ((resurrectSelectionIfNeeded()) || (fullScroll(33)))
@@ -689,7 +716,7 @@ public class ListView
             bool1 = false;
             i = paramInt2;
             continue;
-            if ((VersionUtils.e()) && (paramKeyEvent.hasNoModifiers()))
+            if ((bhtb.e()) && (paramKeyEvent.hasNoModifiers()))
             {
               bool2 = resurrectSelectionIfNeeded();
               bool1 = bool2;
@@ -715,7 +742,7 @@ public class ListView
             }
             else
             {
-              if ((!VersionUtils.e()) || (!paramKeyEvent.hasModifiers(2))) {
+              if ((!bhtb.e()) || (!paramKeyEvent.hasModifiers(2))) {
                 break label144;
               }
               if ((resurrectSelectionIfNeeded()) || (fullScroll(130)))
@@ -728,19 +755,19 @@ public class ListView
                 bool1 = false;
                 i = paramInt2;
                 continue;
-                if ((!VersionUtils.e()) || (!paramKeyEvent.hasNoModifiers())) {
+                if ((!bhtb.e()) || (!paramKeyEvent.hasNoModifiers())) {
                   break label144;
                 }
                 bool1 = handleHorizontalFocusWithinListItem(17);
                 i = paramInt2;
                 continue;
-                if ((!VersionUtils.e()) || (!paramKeyEvent.hasNoModifiers())) {
+                if ((!bhtb.e()) || (!paramKeyEvent.hasNoModifiers())) {
                   break label144;
                 }
                 bool1 = handleHorizontalFocusWithinListItem(66);
                 i = paramInt2;
                 continue;
-                if ((!VersionUtils.e()) || (!paramKeyEvent.hasNoModifiers())) {
+                if ((!bhtb.e()) || (!paramKeyEvent.hasNoModifiers())) {
                   break label144;
                 }
                 bool2 = resurrectSelectionIfNeeded();
@@ -763,7 +790,7 @@ public class ListView
                       if ((this.mPopup != null) && (this.mPopup.isShowing())) {
                         break label144;
                       }
-                      if ((VersionUtils.e()) && (paramKeyEvent.hasNoModifiers())) {
+                      if ((bhtb.e()) && (paramKeyEvent.hasNoModifiers())) {
                         if ((resurrectSelectionIfNeeded()) || (!pageScroll(130))) {}
                       }
                       for (;;)
@@ -771,9 +798,9 @@ public class ListView
                         bool1 = true;
                         i = paramInt2;
                         break;
-                        if ((!VersionUtils.e()) || (!paramKeyEvent.hasModifiers(1)) || (resurrectSelectionIfNeeded()) || (!pageScroll(33))) {}
+                        if ((!bhtb.e()) || (!paramKeyEvent.hasModifiers(1)) || (resurrectSelectionIfNeeded()) || (!pageScroll(33))) {}
                       }
-                      if ((VersionUtils.e()) && (paramKeyEvent.hasNoModifiers()))
+                      if ((bhtb.e()) && (paramKeyEvent.hasNoModifiers()))
                       {
                         if ((resurrectSelectionIfNeeded()) || (pageScroll(33)))
                         {
@@ -788,7 +815,7 @@ public class ListView
                       }
                       else
                       {
-                        if ((!VersionUtils.e()) || (!paramKeyEvent.hasModifiers(2))) {
+                        if ((!bhtb.e()) || (!paramKeyEvent.hasModifiers(2))) {
                           break label144;
                         }
                         if ((resurrectSelectionIfNeeded()) || (fullScroll(33)))
@@ -801,7 +828,7 @@ public class ListView
                           bool1 = false;
                           i = paramInt2;
                           continue;
-                          if ((VersionUtils.e()) && (paramKeyEvent.hasNoModifiers()))
+                          if ((bhtb.e()) && (paramKeyEvent.hasNoModifiers()))
                           {
                             if ((resurrectSelectionIfNeeded()) || (pageScroll(130)))
                             {
@@ -816,7 +843,7 @@ public class ListView
                           }
                           else
                           {
-                            if ((!VersionUtils.e()) || (!paramKeyEvent.hasModifiers(2))) {
+                            if ((!bhtb.e()) || (!paramKeyEvent.hasModifiers(2))) {
                               break label144;
                             }
                             if ((resurrectSelectionIfNeeded()) || (fullScroll(130)))
@@ -829,7 +856,7 @@ public class ListView
                               bool1 = false;
                               i = paramInt2;
                               continue;
-                              if ((!VersionUtils.e()) || (!paramKeyEvent.hasNoModifiers())) {
+                              if ((!bhtb.e()) || (!paramKeyEvent.hasNoModifiers())) {
                                 break label144;
                               }
                               if ((resurrectSelectionIfNeeded()) || (fullScroll(33)))
@@ -842,7 +869,7 @@ public class ListView
                                 bool1 = false;
                                 i = paramInt2;
                                 continue;
-                                if ((!VersionUtils.e()) || (!paramKeyEvent.hasNoModifiers())) {
+                                if ((!bhtb.e()) || (!paramKeyEvent.hasNoModifiers())) {
                                   break label144;
                                 }
                                 if ((resurrectSelectionIfNeeded()) || (fullScroll(130)))
@@ -1039,6 +1066,9 @@ public class ListView
     paramInt2 -= paramInt1;
     int i = reconcileSelectedPosition();
     View localView = makeAndAddView(i, paramInt1, true, this.mListPadding.left, true);
+    if (localView == null) {
+      return localView;
+    }
     this.mFirstPosition = i;
     paramInt1 = localView.getMeasuredHeight();
     if (paramInt1 <= paramInt2) {
@@ -1061,6 +1091,9 @@ public class ListView
     paramInt2 = getTopSelectionPixel(paramInt2, j, i);
     paramInt3 = getBottomSelectionPixel(paramInt3, j, i);
     View localView = makeAndAddView(i, paramInt1, true, this.mListPadding.left, true);
+    if (localView == null) {
+      return localView;
+    }
     if (localView.getBottom() > paramInt3) {
       localView.offsetTopAndBottom(-Math.min(localView.getTop() - paramInt2, localView.getBottom() - paramInt3));
     }
@@ -1094,58 +1127,62 @@ public class ListView
   {
     boolean bool;
     View localView5;
-    View localView3;
-    View localView4;
-    View localView1;
-    View localView2;
     if (paramInt1 == this.mSelectedPosition)
     {
       bool = true;
       localView5 = makeAndAddView(paramInt1, paramInt2, true, this.mListPadding.left, bool);
-      this.mFirstPosition = paramInt1;
-      paramInt2 = this.mDividerHeight;
-      if (this.mStackFromBottom) {
-        break label122;
-      }
-      localView3 = fillUp(paramInt1 - 1, localView5.getTop() - paramInt2);
-      adjustViewsUpOrDown();
-      localView4 = fillDown(paramInt1 + 1, paramInt2 + localView5.getBottom());
-      paramInt1 = getChildCount();
-      localView1 = localView3;
-      localView2 = localView4;
-      if (paramInt1 > 0)
-      {
-        correctTooHigh(paramInt1);
-        localView2 = localView4;
-        localView1 = localView3;
+      if (localView5 != null) {
+        break label40;
       }
     }
+    label40:
+    View localView2;
     for (;;)
     {
-      if (!bool) {
-        break label191;
-      }
       return localView5;
       bool = false;
       break;
-      label122:
-      localView3 = fillDown(paramInt1 + 1, localView5.getBottom() + paramInt2);
-      adjustViewsUpOrDown();
-      localView4 = fillUp(paramInt1 - 1, localView5.getTop() - paramInt2);
-      paramInt1 = getChildCount();
-      localView1 = localView4;
-      localView2 = localView3;
-      if (paramInt1 > 0)
+      this.mFirstPosition = paramInt1;
+      paramInt2 = this.mDividerHeight;
+      View localView3;
+      View localView4;
+      View localView1;
+      if (!this.mStackFromBottom)
       {
-        correctTooLow(paramInt1);
+        localView3 = fillUp(paramInt1 - 1, localView5.getTop() - paramInt2);
+        adjustViewsUpOrDown();
+        localView4 = fillDown(paramInt1 + 1, paramInt2 + localView5.getBottom());
+        paramInt1 = getChildCount();
+        localView1 = localView3;
+        localView2 = localView4;
+        if (paramInt1 > 0)
+        {
+          correctTooHigh(paramInt1);
+          localView2 = localView4;
+          localView1 = localView3;
+        }
+      }
+      while (!bool)
+      {
+        if (localView1 == null) {
+          break label204;
+        }
+        return localView1;
+        localView3 = fillDown(paramInt1 + 1, localView5.getBottom() + paramInt2);
+        adjustViewsUpOrDown();
+        localView4 = fillUp(paramInt1 - 1, localView5.getTop() - paramInt2);
+        paramInt1 = getChildCount();
         localView1 = localView4;
         localView2 = localView3;
+        if (paramInt1 > 0)
+        {
+          correctTooLow(paramInt1);
+          localView1 = localView4;
+          localView2 = localView3;
+        }
       }
     }
-    label191:
-    if (localView1 != null) {
-      return localView1;
-    }
+    label204:
     return localView2;
   }
   
@@ -1153,58 +1190,62 @@ public class ListView
   {
     boolean bool;
     View localView5;
-    View localView3;
-    View localView4;
-    View localView1;
-    View localView2;
     if (paramInt1 == this.mSelectedPosition)
     {
       bool = true;
       localView5 = makeAndAddView(paramInt1, paramInt2, false, this.mListPadding.left, bool);
-      this.mFirstPosition = paramInt1;
-      paramInt2 = this.mDividerHeight;
-      if (this.mStackFromBottom) {
-        break label122;
-      }
-      localView3 = fillUp(paramInt1 - 1, localView5.getTop() - paramInt2);
-      adjustViewsUpOrDown();
-      localView4 = fillDown(paramInt1 + 1, paramInt2 + localView5.getBottom());
-      paramInt1 = getChildCount();
-      localView1 = localView3;
-      localView2 = localView4;
-      if (paramInt1 > 0)
-      {
-        correctTooHigh(paramInt1);
-        localView2 = localView4;
-        localView1 = localView3;
+      if (localView5 != null) {
+        break label40;
       }
     }
+    label40:
+    View localView2;
     for (;;)
     {
-      if (!bool) {
-        break label191;
-      }
       return localView5;
       bool = false;
       break;
-      label122:
-      localView3 = fillDown(paramInt1 + 1, localView5.getBottom() + paramInt2);
-      adjustViewsUpOrDown();
-      localView4 = fillUp(paramInt1 - 1, localView5.getTop() - paramInt2);
-      paramInt1 = getChildCount();
-      localView1 = localView4;
-      localView2 = localView3;
-      if (paramInt1 > 0)
+      this.mFirstPosition = paramInt1;
+      paramInt2 = this.mDividerHeight;
+      View localView3;
+      View localView4;
+      View localView1;
+      if (!this.mStackFromBottom)
       {
-        correctTooLow(paramInt1);
+        localView3 = fillUp(paramInt1 - 1, localView5.getTop() - paramInt2);
+        adjustViewsUpOrDown();
+        localView4 = fillDown(paramInt1 + 1, paramInt2 + localView5.getBottom());
+        paramInt1 = getChildCount();
+        localView1 = localView3;
+        localView2 = localView4;
+        if (paramInt1 > 0)
+        {
+          correctTooHigh(paramInt1);
+          localView2 = localView4;
+          localView1 = localView3;
+        }
+      }
+      while (!bool)
+      {
+        if (localView1 == null) {
+          break label204;
+        }
+        return localView1;
+        localView3 = fillDown(paramInt1 + 1, localView5.getBottom() + paramInt2);
+        adjustViewsUpOrDown();
+        localView4 = fillUp(paramInt1 - 1, localView5.getTop() - paramInt2);
+        paramInt1 = getChildCount();
         localView1 = localView4;
         localView2 = localView3;
+        if (paramInt1 > 0)
+        {
+          correctTooLow(paramInt1);
+          localView1 = localView4;
+          localView2 = localView3;
+        }
       }
     }
-    label191:
-    if (localView1 != null) {
-      return localView1;
-    }
+    label204:
     return localView2;
   }
   
@@ -1387,31 +1428,6 @@ public class ListView
     }
   }
   
-  private boolean isDirectChildHeaderOrFooter(View paramView)
-  {
-    ArrayList localArrayList = this.mHeaderViewInfos;
-    int j = localArrayList.size();
-    int i = 0;
-    while (i < j)
-    {
-      if (paramView == ((ListView.FixedViewInfo)localArrayList.get(i)).jdField_a_of_type_AndroidViewView) {
-        return true;
-      }
-      i += 1;
-    }
-    localArrayList = this.mFooterViewInfos;
-    j = localArrayList.size();
-    i = 0;
-    while (i < j)
-    {
-      if (paramView == ((ListView.FixedViewInfo)localArrayList.get(i)).jdField_a_of_type_AndroidViewView) {
-        return true;
-      }
-      i += 1;
-    }
-    return false;
-  }
-  
   private boolean isViewAncestorOf(View paramView1, View paramView2)
   {
     if (paramView1 == paramView2) {
@@ -1545,27 +1561,6 @@ public class ListView
     }
   }
   
-  private void measureScrapChild(View paramView, int paramInt1, int paramInt2)
-  {
-    AbsListView.LayoutParams localLayoutParams2 = (AbsListView.LayoutParams)paramView.getLayoutParams();
-    AbsListView.LayoutParams localLayoutParams1 = localLayoutParams2;
-    if (localLayoutParams2 == null)
-    {
-      localLayoutParams1 = new AbsListView.LayoutParams(-1, -2, 0);
-      paramView.setLayoutParams(localLayoutParams1);
-    }
-    localLayoutParams1.jdField_a_of_type_Int = this.mAdapter.getItemViewType(paramInt1);
-    localLayoutParams1.jdField_b_of_type_Boolean = true;
-    paramInt2 = ViewGroup.getChildMeasureSpec(paramInt2, this.mListPadding.left + this.mListPadding.right, localLayoutParams1.width);
-    paramInt1 = localLayoutParams1.height;
-    if (paramInt1 > 0) {}
-    for (paramInt1 = View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824);; paramInt1 = View.MeasureSpec.makeMeasureSpec(0, 0))
-    {
-      paramView.measure(paramInt2, paramInt1);
-      return;
-    }
-  }
-  
   private View moveSelection(View paramView1, View paramView2, int paramInt1, int paramInt2, int paramInt3)
   {
     int j = getVerticalFadingEdgeLength();
@@ -1647,7 +1642,7 @@ public class ListView
     paramView.layout(k, m, i + k, j + m);
   }
   
-  private void removeFixedViewInfo(View paramView, ArrayList paramArrayList)
+  private void removeFixedViewInfo(View paramView, ArrayList<bhyr> paramArrayList)
   {
     int j = paramArrayList.size();
     int i = 0;
@@ -1655,7 +1650,7 @@ public class ListView
     {
       if (i < j)
       {
-        if (((ListView.FixedViewInfo)paramArrayList.get(i)).jdField_a_of_type_AndroidViewView == paramView) {
+        if (((bhyr)paramArrayList.get(i)).jdField_a_of_type_AndroidViewView == paramView) {
           paramArrayList.remove(i);
         }
       }
@@ -1671,7 +1666,7 @@ public class ListView
     offsetChildrenTopAndBottom(paramInt);
     int i = getHeight() - this.mListPadding.bottom;
     int j = this.mListPadding.top;
-    amaa localamaa = this.mRecycler;
+    bhtw localbhtw = this.mRecycler;
     View localView;
     if (paramInt < 0)
     {
@@ -1692,10 +1687,10 @@ public class ListView
       localView = getChildAt(0);
       if (localView.getBottom() < j)
       {
-        if (localamaa.a(((AbsListView.LayoutParams)localView.getLayoutParams()).jdField_a_of_type_Int))
+        if (localbhtw.a(((AbsListView.LayoutParams)localView.getLayoutParams()).jdField_a_of_type_Int))
         {
           detachViewFromParent(localView);
-          localamaa.a(localView, this.mFirstPosition);
+          localbhtw.a(localView, this.mFirstPosition);
         }
         for (;;)
         {
@@ -1721,10 +1716,10 @@ public class ListView
       localView = getChildAt(paramInt);
       if (localView.getTop() > i)
       {
-        if (localamaa.a(((AbsListView.LayoutParams)localView.getLayoutParams()).jdField_a_of_type_Int))
+        if (localbhtw.a(((AbsListView.LayoutParams)localView.getLayoutParams()).jdField_a_of_type_Int))
         {
           detachViewFromParent(localView);
-          localamaa.a(localView, this.mFirstPosition + paramInt);
+          localbhtw.a(localView, this.mFirstPosition + paramInt);
         }
         for (;;)
         {
@@ -1793,7 +1788,7 @@ public class ListView
           if ((this.mCachingStarted) && (!paramView.isDrawingCacheEnabled())) {
             paramView.setDrawingCacheEnabled(true);
           }
-          if ((VersionUtils.e()) && (paramBoolean3) && (((AbsListView.LayoutParams)paramView.getLayoutParams()).jdField_b_of_type_Int != paramInt1)) {
+          if ((bhtb.e()) && (paramBoolean3) && (((AbsListView.LayoutParams)paramView.getLayoutParams()).jdField_b_of_type_Int != paramInt1)) {
             paramView.jumpDrawablesToCurrentState();
           }
           traceEnd();
@@ -1817,7 +1812,7 @@ public class ListView
           paramView = paramView;
           setStatisticCollector();
           continue;
-          if ((getContext().getApplicationInfo().targetSdkVersion < 11) || (!VersionUtils.e())) {
+          if ((getContext().getApplicationInfo().targetSdkVersion < 11) || (!bhtb.e())) {
             continue;
           }
           paramView.setActivated(this.mCheckStates.get(paramInt1));
@@ -2011,13 +2006,13 @@ public class ListView
         if ((this.mCachingStarted) && (!localView.isDrawingCacheEnabled())) {
           localView.setDrawingCacheEnabled(true);
         }
-        if ((VersionUtils.e()) && (((AbsListView.LayoutParams)localView.getLayoutParams()).jdField_b_of_type_Int != paramInt1)) {
+        if ((bhtb.e()) && (((AbsListView.LayoutParams)localView.getLayoutParams()).jdField_b_of_type_Int != paramInt1)) {
           localView.jumpDrawablesToCurrentState();
         }
         return localView.getHeight() - i;
         localView = this.mAdapter.getView(paramInt1, this.mRecycler.b(paramInt1), this);
         break;
-        if ((getContext().getApplicationInfo().targetSdkVersion < 11) || (!VersionUtils.e())) {
+        if ((getContext().getApplicationInfo().targetSdkVersion < 11) || (!bhtb.e())) {
           break label221;
         }
         localView.setActivated(this.mCheckStates.get(paramInt1));
@@ -2041,11 +2036,11 @@ public class ListView
   
   public void addFooterView(View paramView, Object paramObject, boolean paramBoolean)
   {
-    ListView.FixedViewInfo localFixedViewInfo = new ListView.FixedViewInfo(this);
-    localFixedViewInfo.jdField_a_of_type_AndroidViewView = paramView;
-    localFixedViewInfo.jdField_a_of_type_JavaLangObject = paramObject;
-    localFixedViewInfo.jdField_a_of_type_Boolean = paramBoolean;
-    this.mFooterViewInfos.add(localFixedViewInfo);
+    bhyr localbhyr = new bhyr(this);
+    localbhyr.jdField_a_of_type_AndroidViewView = paramView;
+    localbhyr.jdField_a_of_type_JavaLangObject = paramObject;
+    localbhyr.jdField_a_of_type_Boolean = paramBoolean;
+    this.mFooterViewInfos.add(localbhyr);
     if ((this.mAdapter != null) && (this.mDataSetObserver != null)) {
       this.mDataSetObserver.onChanged();
     }
@@ -2063,17 +2058,20 @@ public class ListView
   
   public void addHeaderView(View paramView, int paramInt, Object paramObject, boolean paramBoolean)
   {
-    if ((this.mAdapter != null) && (!(this.mAdapter instanceof HeaderViewListAdapter))) {
+    if ((this.mAdapter != null) && (!(this.mAdapter instanceof bhxm))) {
       throw new IllegalStateException("Cannot add header view to list -- setAdapter has already been called.");
     }
     if (paramView == null) {}
     do
     {
       return;
-      ListView.FixedViewInfo localFixedViewInfo = new ListView.FixedViewInfo(this);
-      localFixedViewInfo.jdField_a_of_type_AndroidViewView = paramView;
-      localFixedViewInfo.jdField_a_of_type_JavaLangObject = paramObject;
-      localFixedViewInfo.jdField_a_of_type_Boolean = paramBoolean;
+      if ((paramView.getParent() != null) && (paramView.getParent() != this) && (Log.isLoggable("XListView", 5))) {
+        Log.w("XListView", "The specified child already has a parent. You must call removeView() on the child's parent first.");
+      }
+      bhyr localbhyr = new bhyr(this);
+      localbhyr.jdField_a_of_type_AndroidViewView = paramView;
+      localbhyr.jdField_a_of_type_JavaLangObject = paramObject;
+      localbhyr.jdField_a_of_type_Boolean = paramBoolean;
       if (this.mHeaderViewLevelIndex[paramInt] > this.mHeaderViewInfos.size())
       {
         int i = paramInt;
@@ -2083,7 +2081,7 @@ public class ListView
           i += 1;
         }
       }
-      this.mHeaderViewInfos.add(this.mHeaderViewLevelIndex[paramInt], localFixedViewInfo);
+      this.mHeaderViewInfos.add(this.mHeaderViewLevelIndex[paramInt], localbhyr);
       while (paramInt < 3)
       {
         paramView = this.mHeaderViewLevelIndex;
@@ -2135,7 +2133,7 @@ public class ListView
     }
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     if (this.mCachingStarted) {
       this.mCachingActive = true;
@@ -2167,11 +2165,11 @@ public class ListView
     {
       m = 1;
       if ((localDrawable2 == null) && (localOverscrollViewContainer2 == null)) {
-        break label757;
+        break label773;
       }
       k = 1;
       if ((i1 <= 0) || (this.mDivider == null)) {
-        break label763;
+        break label779;
       }
       n = 1;
       if (this.mContentBackgroundDrawable != null)
@@ -2199,13 +2197,13 @@ public class ListView
             if (localObject != null)
             {
               if (getLastVisiblePosition() != getCount() - 1) {
-                break label769;
+                break label785;
               }
               i = ((View)localObject).getTop();
             }
           }
           if (i >= 0) {
-            break label778;
+            break label794;
           }
           j = 0;
           paramCanvas.clipRect(0, j, localRect.right, localRect.bottom);
@@ -2215,7 +2213,7 @@ public class ListView
         paramCanvas.restoreToCount(i2);
       }
       if ((n == 0) && (m == 0) && (k == 0)) {
-        break label913;
+        break label929;
       }
       localRect = this.mTempRect;
       localRect.left = this.mPaddingLeft;
@@ -2229,11 +2227,11 @@ public class ListView
       i4 = this.mFirstPosition;
       boolean bool4 = this.mAreAllItemsSelectable;
       localObject = this.mAdapter;
-      if (!VersionUtils.a()) {
-        break label804;
+      if (!bhtb.a()) {
+        break label820;
       }
       if ((!isOpaque()) || (super.isOpaque())) {
-        break label798;
+        break label814;
       }
       bool1 = true;
       if ((bool1) && (this.mDividerPaint == null) && (this.mIsCacheColorOpaque))
@@ -2254,8 +2252,8 @@ public class ListView
       {
         if (m != 0)
         {
-          localRect.bottom = (0 - this.mDividerHeight + this.mOverScrollHeaderTopOffset);
-          localRect.top = (this.mOverScrollHeaderTopOffset + i10);
+          localRect.bottom = (this.mListPadding.top + 0 - this.mDividerHeight + this.mOverScrollHeaderTopOffset);
+          localRect.top = (this.mListPadding.top + i10 + this.mOverScrollHeaderTopOffset);
           drawOverscrollHeader(paramCanvas, localOverscrollViewContainer1, localDrawable3, localDrawable1, localRect);
         }
         if (n != 0)
@@ -2266,12 +2264,12 @@ public class ListView
         }
       }
       if (n == 0) {
-        break label846;
+        break label862;
       }
       j = 0;
-      label599:
+      label615:
       if (j >= i2) {
-        break label846;
+        break label862;
       }
       if (((bool2) || (i4 + j >= i5)) && ((bool3) || (i4 + j < i3 - i6 - 1)))
       {
@@ -2279,7 +2277,7 @@ public class ListView
         if ((m < i9 + (i7 - i8 - i)) && ((k == 0) || (j != i2 - 1)))
         {
           if ((!bool4) && ((!((ListAdapter)localObject).isEnabled(i4 + j)) || ((j != i2 - 1) && (!((ListAdapter)localObject).isEnabled(i4 + j + 1))))) {
-            break label813;
+            break label829;
           }
           localRect.top = m;
           localRect.bottom = (m + i1);
@@ -2290,32 +2288,32 @@ public class ListView
     for (;;)
     {
       j += 1;
-      break label599;
+      break label615;
       m = 0;
       break;
-      label757:
+      label773:
       k = 0;
       break label79;
-      label763:
+      label779:
       n = 0;
       break label94;
-      label769:
+      label785:
       i = ((View)localObject).getBottom();
       break label238;
-      label778:
+      label794:
       j = i;
       if (i <= localRect.bottom) {
         break label244;
       }
       j = localRect.bottom;
       break label244;
-      label798:
+      label814:
       bool1 = false;
       break label416;
-      label804:
+      label820:
       bool1 = isOpaque();
       break label416;
-      label813:
+      label829:
       if (bool1)
       {
         localRect.top = m;
@@ -2323,7 +2321,7 @@ public class ListView
         paramCanvas.drawRect(localRect, localPaint);
       }
     }
-    label846:
+    label862:
     int i = this.mBottom + i10 + this.mDividerHeight;
     if ((k != 0) && (i4 + i2 == i3) && (i > this.mBottom))
     {
@@ -2331,7 +2329,7 @@ public class ListView
       localRect.bottom = i;
       drawOverscrollFooter(paramCanvas, localOverscrollViewContainer2, localDrawable2, localRect);
     }
-    label913:
+    label929:
     super.dispatchDraw(paramCanvas);
   }
   
@@ -2353,7 +2351,7 @@ public class ListView
     return bool1;
   }
   
-  public boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
+  protected boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
   {
     try
     {
@@ -2480,7 +2478,7 @@ public class ListView
     int i = 0;
     while (i < j)
     {
-      if (((ListView.FixedViewInfo)this.mHeaderViewInfos.get(i)).jdField_a_of_type_AndroidViewView == paramView) {
+      if (((bhyr)this.mHeaderViewInfos.get(i)).jdField_a_of_type_AndroidViewView == paramView) {
         return i;
       }
       i += 1;
@@ -2653,6 +2651,29 @@ public class ListView
     return this.mItemsCanFocus;
   }
   
+  public int getListViewScrollY()
+  {
+    View localView = getChildAt(0);
+    if (localView == null) {
+      return getScrollY();
+    }
+    int k = getFirstVisiblePosition();
+    if (k >= this.mHeaderViewInfos.size())
+    {
+      Iterator localIterator = this.mHeaderViewInfos.iterator();
+      for (i = 0; localIterator.hasNext(); i = ((bhyr)localIterator.next()).jdField_a_of_type_AndroidViewView.getHeight() + i) {}
+      return -localView.getTop() + (k - this.mHeaderViewInfos.size()) * localView.getHeight() + i;
+    }
+    int i = 0;
+    int j = 0;
+    while (i < k)
+    {
+      j += ((bhyr)this.mHeaderViewInfos.get(i)).jdField_a_of_type_AndroidViewView.getHeight();
+      i += 1;
+    }
+    return -localView.getTop() + j;
+  }
+  
   public int getMaxScrollAmount()
   {
     return (int)(0.33F * (getBottom() - this.mTop));
@@ -2694,7 +2715,7 @@ public class ListView
     return this.mOverScrollHeader;
   }
   
-  public int getSpringbackOffset()
+  protected int getSpringbackOffset()
   {
     int j = 0;
     int k = getScrollY();
@@ -2816,6 +2837,8 @@ public class ListView
     }
   }
   
+  protected void initPaddingManual() {}
+  
   public ViewParent invalidateChildInParent(int[] paramArrayOfInt, Rect paramRect)
   {
     paramArrayOfInt = super.invalidateChildInParent(paramArrayOfInt, paramRect);
@@ -2836,6 +2859,31 @@ public class ListView
     return paramArrayOfInt;
   }
   
+  public boolean isDirectChildHeaderOrFooter(View paramView)
+  {
+    ArrayList localArrayList = this.mHeaderViewInfos;
+    int j = localArrayList.size();
+    int i = 0;
+    while (i < j)
+    {
+      if (paramView == ((bhyr)localArrayList.get(i)).jdField_a_of_type_AndroidViewView) {
+        return true;
+      }
+      i += 1;
+    }
+    localArrayList = this.mFooterViewInfos;
+    j = localArrayList.size();
+    i = 0;
+    while (i < j)
+    {
+      if (paramView == ((bhyr)localArrayList.get(i)).jdField_a_of_type_AndroidViewView) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
   public boolean isOpaque()
   {
     return false;
@@ -2851,7 +2899,7 @@ public class ListView
     return (this.mScrollY < 0) && (this.mOverscrollHeaderViewContainer != null);
   }
   
-  public void layoutChildren()
+  protected void layoutChildren()
   {
     boolean bool1 = this.mBlockLayoutRequests;
     if (!bool1)
@@ -2921,7 +2969,7 @@ public class ListView
           return;
           i = this.mNextSelectedPosition - this.mFirstPosition;
           if ((i < 0) || (i >= i1)) {
-            break label1505;
+            break label1526;
           }
           localView3 = getChildAt(i);
           localView1 = null;
@@ -2932,10 +2980,10 @@ public class ListView
         if (this.mItemCount != this.mAdapter.getCount())
         {
           localObject1 = this.mAdapter.getClass();
-          if ((this.mAdapter instanceof HeaderViewListAdapter)) {
-            localObject1 = ((HeaderViewListAdapter)this.mAdapter).getWrappedAdapter().getClass();
+          if ((this.mAdapter instanceof bhxm)) {
+            localObject1 = ((bhxm)this.mAdapter).getWrappedAdapter().getClass();
           }
-          throw new IllegalStateException("The content of the adapter has changed but ListView did not receive a notification. Make sure the content of your adapter is not modified from a background thread, but only from the UI thread. [in ListView(" + getId() + ", " + getClass() + ") with Adapter(" + localObject1 + ")]mItemCount=" + this.mItemCount + "mAdapter.getCount()=" + this.mAdapter.getCount());
+          throw new IllegalStateException("The content of the adapter has changed but ListView did not receive a notification. Make sure the content of your adapter is not modified from a background thread, but only from the UI thread. [in ListView(" + getId() + ", " + getClass() + ") with Adapter(" + localObject1 + ")]mItemCount=" + this.mItemCount + "mAdapter.getCount()=" + this.mAdapter.getCount() + ",adapter.addr = " + this.mAdapter.toString());
         }
         break;
       }
@@ -2949,21 +2997,21 @@ public class ListView
     }
     setSelectedPositionInt(this.mNextSelectedPosition);
     int i2 = this.mFirstPosition;
-    amaa localamaa = this.mRecycler;
+    bhtw localbhtw = this.mRecycler;
     Object localObject4 = null;
     if (bool2)
     {
       k = 0;
       while (k < i1)
       {
-        localamaa.a(getChildAt(k), i2 + k);
+        localbhtw.a(getChildAt(k), i2 + k);
         k += 1;
       }
     }
-    localamaa.a(i1, i2);
+    localbhtw.a(i1, i2);
     Object localObject6 = getFocusedChild();
-    label579:
-    label596:
+    label595:
+    label612:
     Object localObject3;
     if (localObject6 != null)
     {
@@ -2971,10 +3019,10 @@ public class ListView
       {
         localObject5 = findFocus();
         if (localObject5 == null) {
-          break label1536;
+          break label1557;
         }
         ((View)localObject5).onStartTemporaryDetach();
-        break label1536;
+        break label1557;
       }
       requestFocus();
       localObject6 = localObject4;
@@ -2984,26 +3032,26 @@ public class ListView
       switch (this.mLayoutMode)
       {
       case 2: 
-        label672:
+        label688:
         if (i1 == 0) {
           if (!this.mStackFromBottom)
           {
             setSelectedPositionInt(lookForSelectablePosition(0, true));
             localObject3 = fillFromTop(j);
-            label701:
+            label717:
             stayOnTheTop();
-            localamaa.c();
+            localbhtw.c();
             if (localObject3 == null) {
-              break label1396;
+              break label1417;
             }
             if ((!this.mItemsCanFocus) || (!hasFocus()) || (((View)localObject3).hasFocus())) {
-              break label1386;
+              break label1407;
             }
-            if ((localObject3 == localObject5) && (localObject4.requestFocus())) {
-              break label1546;
+            if ((localObject3 == localObject5) && (localObject4 != null) && (localObject4.requestFocus())) {
+              break label1567;
             }
             if (!((View)localObject3).requestFocus()) {
-              break label1558;
+              break label1579;
             }
           }
         }
@@ -3012,7 +3060,7 @@ public class ListView
     }
     for (;;)
     {
-      label763:
+      label784:
       if (i == 0)
       {
         localView1 = getFocusedChild();
@@ -3020,7 +3068,9 @@ public class ListView
           localView1.clearFocus();
         }
         positionSelector(-1, (View)localObject3);
+        label811:
         this.mSelectedTop = ((View)localObject3).getTop();
+        label820:
         if ((localObject4 != null) && (localObject4.getWindowToken() != null)) {
           localObject4.onFinishTemporaryDetach();
         }
@@ -3035,7 +3085,7 @@ public class ListView
         invokeOnItemScrollListener();
         j = this.mFirstPosition + getChildCount() - 1;
         if ((this.mInsertAnimation == null) || (this.mAddingRows == null) || (!bool2) || (this.mItemCount <= 0) || (j < this.mItemCount - 1) || (getChildAt(getChildCount() - 1).getBottom() >= m)) {
-          break label1477;
+          break label1498;
         }
         localObject3 = this.mAddingRows;
         k = localObject3.length;
@@ -3043,46 +3093,44 @@ public class ListView
       }
       for (;;)
       {
-        label790:
-        label799:
         if (i < k)
         {
           m = localObject3[i];
           if ((m < this.mFirstPosition) || (m > j)) {
-            break label1551;
+            break label1572;
           }
           getChildAt(m - this.mFirstPosition).startAnimation(this.mInsertAnimation);
-          break label1551;
+          break label1572;
           if (localView3 != null)
           {
             localObject3 = fillFromSelection(localView3.getTop(), j, m);
-            break label701;
+            break label717;
           }
           localObject3 = fillFromMiddle(j, m);
-          break label701;
+          break label717;
           if (!this.mStackFromBottom)
           {
             localObject3 = fillSpecific(this.mSyncPosition, this.mSpecificTop);
-            break label701;
+            break label717;
           }
           localObject3 = fillSpecificBottom(this.mSyncPosition, this.mLayoutHeight - this.mSpecificBottom);
-          break label701;
+          break label717;
           localObject3 = fillUp(this.mItemCount - 1, m);
           adjustViewsUpOrDown();
-          break label701;
+          break label717;
           this.mFirstPosition = 0;
           localObject3 = fillFromTop(j);
           adjustViewsUpOrDown();
-          break label701;
+          break label717;
           localObject3 = fillSpecific(reconcileSelectedPosition(), this.mSpecificTop);
-          break label701;
+          break label717;
           localObject3 = fillSpecificBottom(reconcileSelectedPosition(), this.mLayoutHeight - this.mSpecificBottom);
-          break label701;
+          break label717;
           localObject3 = moveSelection((View)localObject3, localView3, i, j, m);
-          break label701;
+          break label717;
           setSelectedPositionInt(lookForSelectablePosition(this.mItemCount - 1, false));
           localObject3 = fillUp(this.mItemCount - 1, m);
-          break label701;
+          break label717;
           if ((this.mSelectedPosition >= 0) && (this.mSelectedPosition < this.mItemCount))
           {
             i = this.mSelectedPosition;
@@ -3108,7 +3156,7 @@ public class ListView
               }
             }
             localObject3 = fillSpecific(0, j);
-            break label701;
+            break label717;
           }
           if (n < this.mItemCount)
           {
@@ -3120,14 +3168,14 @@ public class ListView
             }
           }
           localObject3 = fillSpecificBottom(this.mItemCount - 1, this.mLayoutHeight);
-          break label701;
+          break label717;
           ((View)localObject3).setSelected(false);
           this.mSelectorRect.setEmpty();
-          break label790;
-          label1386:
+          break label811;
+          label1407:
           positionSelector(-1, (View)localObject3);
-          break label790;
-          label1396:
+          break label811;
+          label1417:
           if ((this.mTouchMode > 0) && (this.mTouchMode < 3))
           {
             localObject3 = getChildAt(this.mMotionPosition - this.mFirstPosition);
@@ -3138,17 +3186,17 @@ public class ListView
           for (;;)
           {
             if ((!hasFocus()) || (localObject4 == null)) {
-              break label1475;
+              break label1496;
             }
             localObject4.requestFocus();
             break;
             this.mSelectedTop = 0;
             this.mSelectorRect.setEmpty();
           }
-          label1475:
-          break label799;
+          label1496:
+          break label820;
         }
-        label1477:
+        label1498:
         this.mAddingRows = null;
         if (!bool1) {
           this.mBlockLayoutRequests = false;
@@ -3157,8 +3205,8 @@ public class ListView
         return;
         localObject4 = null;
         localObject5 = null;
-        break label596;
-        label1505:
+        break label612;
+        label1526:
         localView1 = null;
         localView2 = null;
         localObject3 = null;
@@ -3170,17 +3218,17 @@ public class ListView
         localObject3 = null;
         i = 0;
         break label230;
-        label1536:
+        label1557:
         localObject4 = localObject6;
-        break label579;
-        break label672;
-        label1546:
+        break label595;
+        break label688;
+        label1567:
         i = 1;
-        break label763;
-        label1551:
+        break label784;
+        label1572:
         i += 1;
       }
-      label1558:
+      label1579:
       i = 0;
     }
   }
@@ -3287,8 +3335,8 @@ public class ListView
     label267:
     for (;;)
     {
-      if ((bool) && (((amaa)localObject).a(((AbsListView.LayoutParams)localView.getLayoutParams()).jdField_a_of_type_Int))) {
-        ((amaa)localObject).a(localView, -1);
+      if ((bool) && (((bhtw)localObject).a(((AbsListView.LayoutParams)localView.getLayoutParams()).jdField_a_of_type_Int))) {
+        ((bhtw)localObject).a(localView, -1);
       }
       paramInt2 = localView.getMeasuredHeight() + paramInt2;
       if (paramInt2 >= paramInt4)
@@ -3328,12 +3376,53 @@ public class ListView
     }
   }
   
-  protected alzq newObserver()
+  protected void measureScrapChild(View paramView, int paramInt1, int paramInt2)
   {
-    return new amcp(this);
+    AbsListView.LayoutParams localLayoutParams2 = (AbsListView.LayoutParams)paramView.getLayoutParams();
+    AbsListView.LayoutParams localLayoutParams1 = localLayoutParams2;
+    if (localLayoutParams2 == null)
+    {
+      localLayoutParams1 = new AbsListView.LayoutParams(-1, -2, 0);
+      paramView.setLayoutParams(localLayoutParams1);
+    }
+    localLayoutParams1.jdField_a_of_type_Int = this.mAdapter.getItemViewType(paramInt1);
+    localLayoutParams1.jdField_b_of_type_Boolean = true;
+    paramInt2 = ViewGroup.getChildMeasureSpec(paramInt2, this.mListPadding.left + this.mListPadding.right, localLayoutParams1.width);
+    paramInt1 = localLayoutParams1.height;
+    if (paramInt1 > 0) {}
+    for (paramInt1 = View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824);; paramInt1 = View.MeasureSpec.makeMeasureSpec(0, 0))
+    {
+      paramView.measure(paramInt2, paramInt1);
+      return;
+    }
   }
   
-  public void onFinishInflate()
+  protected bhtr newObserver()
+  {
+    return new bhys(this);
+  }
+  
+  public void onDescendantInvalidated(View paramView1, View paramView2)
+  {
+    super.onDescendantInvalidated(paramView1, paramView2);
+    try
+    {
+      if ((Build.VERSION.SDK_INT >= 26) && (this.descendantInvalidatedFlag))
+      {
+        paramView1 = View.class.getDeclaredField("mPrivateFlags");
+        paramView1.setAccessible(true);
+        paramView1.set(this, Integer.valueOf(paramView1.getInt(this) | 0x80000000));
+      }
+      return;
+    }
+    catch (Exception paramView1)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("XListView", 2, paramView1.getMessage(), paramView1);
+    }
+  }
+  
+  protected void onFinishInflate()
   {
     super.onFinishInflate();
     int j = getChildCount();
@@ -3450,12 +3539,13 @@ public class ListView
     return commonKey(paramInt, 1, paramKeyEvent);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (this.mOverscrollHeaderViewContainer != null)
     {
-      this.mOverscrollHeaderViewContainer.layout(this.mListPadding.left, this.mListPadding.top, this.mListPadding.left + this.mOverscrollHeaderViewContainer.getMeasuredWidth(), this.mOverscrollHeaderViewContainer.getMeasuredHeight());
+      paramInt1 = this.mListPadding.top;
+      this.mOverscrollHeaderViewContainer.layout(this.mListPadding.left, paramInt1, this.mListPadding.left + this.mOverscrollHeaderViewContainer.getMeasuredWidth(), this.mOverscrollHeaderViewContainer.getMeasuredHeight() + paramInt1);
       this.mTopOverflingDistance = this.mOverscrollHeaderViewContainer.getHeight();
     }
     if (this.mOverscrollFooterView != null)
@@ -3466,7 +3556,7 @@ public class ListView
   }
   
   @TargetApi(11)
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     int i1 = View.MeasureSpec.getMode(paramInt1);
@@ -3486,7 +3576,7 @@ public class ListView
       measureScrapChild(localView, 0, paramInt1);
       i = localView.getMeasuredWidth();
       j = localView.getMeasuredHeight();
-      if (!VersionUtils.e()) {
+      if (!bhtb.e()) {
         break label357;
       }
       paramInt2 = combineMeasuredStates(0, localView.getMeasuredState());
@@ -3526,7 +3616,7 @@ public class ListView
         return;
         paramInt2 = this.mAdapter.getCount();
         break;
-        if (VersionUtils.e()) {
+        if (bhtb.e()) {
           paramInt2 = 0xFF000000 & paramInt2 | m;
         } else {
           paramInt2 = m;
@@ -3542,7 +3632,7 @@ public class ListView
     }
   }
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if ((paramInt2 < 0) && (paramInt4 == 0) && (this.mOverscrollHeaderViewContainer != null)) {
       attachWindow(this.mOverscrollHeaderViewContainer);
@@ -3552,6 +3642,7 @@ public class ListView
       if (this.mOnScrollChangeListener != null) {
         this.mOnScrollChangeListener.a(this.mFirstPosition, getChildCount(), this.mItemCount);
       }
+      super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
       return;
       if ((paramInt2 == 0) && (paramInt4 < 0) && (this.mOverscrollHeaderViewContainer != null)) {
         detachedWindow(this.mOverscrollHeaderViewContainer);
@@ -3563,7 +3654,7 @@ public class ListView
     }
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (getChildCount() > 0)
     {
@@ -3575,7 +3666,7 @@ public class ListView
         int k = Math.max(0, localView.getBottom() - (paramInt2 - this.mPaddingTop));
         int m = localView.getTop();
         if (this.mFocusSelector == null) {
-          this.mFocusSelector = new amco(this, null);
+          this.mFocusSelector = new ListView.FocusSelector(this, null);
         }
         post(this.mFocusSelector.a(i + j, m - k));
       }
@@ -3589,11 +3680,11 @@ public class ListView
     this.mRecycler.b();
     Iterator localIterator = this.mHeaderViewInfos.iterator();
     while (localIterator.hasNext()) {
-      SkinEngine.invalidateAll(((ListView.FixedViewInfo)localIterator.next()).jdField_a_of_type_AndroidViewView);
+      SkinEngine.invalidateAll(((bhyr)localIterator.next()).jdField_a_of_type_AndroidViewView);
     }
     localIterator = this.mFooterViewInfos.iterator();
     while (localIterator.hasNext()) {
-      SkinEngine.invalidateAll(((ListView.FixedViewInfo)localIterator.next()).jdField_a_of_type_AndroidViewView);
+      SkinEngine.invalidateAll(((bhyr)localIterator.next()).jdField_a_of_type_AndroidViewView);
     }
   }
   
@@ -3665,7 +3756,7 @@ public class ListView
   {
     if (this.mFooterViewInfos.size() > 0)
     {
-      if ((this.mAdapter == null) || (!((HeaderViewListAdapter)this.mAdapter).b(paramView))) {
+      if ((this.mAdapter == null) || (!((bhxm)this.mAdapter).b(paramView))) {
         break label60;
       }
       if (this.mDataSetObserver != null) {
@@ -3692,11 +3783,11 @@ public class ListView
       if (i >= k) {
         break label165;
       }
-      if (((ListView.FixedViewInfo)this.mHeaderViewInfos.get(i)).jdField_a_of_type_AndroidViewView != paramView) {}
+      if (((bhyr)this.mHeaderViewInfos.get(i)).jdField_a_of_type_AndroidViewView != paramView) {}
     }
     for (;;)
     {
-      if ((this.mAdapter != null) && (((HeaderViewListAdapter)this.mAdapter).a(paramView))) {
+      if ((this.mAdapter != null) && (((bhxm)this.mAdapter).a(paramView))) {
         if (this.mDataSetObserver != null) {
           this.mDataSetObserver.onChanged();
         }
@@ -3820,7 +3911,7 @@ public class ListView
     int i;
     if ((this.mHeaderViewInfos.size() > 0) || (this.mFooterViewInfos.size() > 0))
     {
-      this.mAdapter = new HeaderViewListAdapter(this.mHeaderViewInfos, this.mFooterViewInfos, paramListAdapter);
+      this.mAdapter = new bhxm(this.mHeaderViewInfos, this.mFooterViewInfos, paramListAdapter);
       this.mOldSelectedPosition = -1;
       this.mOldSelectedRowId = -9223372036854775808L;
       super.setAdapter(paramListAdapter);
@@ -3831,7 +3922,7 @@ public class ListView
       this.mOldItemCount = this.mItemCount;
       this.mItemCount = this.mAdapter.getCount();
       checkFocus();
-      this.mDataSetObserver = new amcp(this);
+      this.mDataSetObserver = new bhys(this);
       this.mAdapter.registerDataSetObserver(this.mDataSetObserver);
       this.mRecycler.a(this.mAdapter.getViewTypeCount());
       if (!this.mStackFromBottom) {
@@ -3907,7 +3998,7 @@ public class ListView
       return;
       this.mContentBackgroundDrawable = paramDrawable;
       if (paramBoolean1) {
-        this.mOverScrollHeaderShadow = getResources().getDrawable(2130839293);
+        this.mOverScrollHeaderShadow = getResources().getDrawable(2130840340);
       }
     }
   }
@@ -3917,6 +4008,11 @@ public class ListView
     if (paramLong > 0L) {
       this.delAnimDuration = paramLong;
     }
+  }
+  
+  public void setDescendantInvalidatedFlags(boolean paramBoolean)
+  {
+    this.descendantInvalidatedFlag = paramBoolean;
   }
   
   public void setDivider(Drawable paramDrawable)
@@ -3978,9 +4074,9 @@ public class ListView
     }
   }
   
-  public void setOnScrollChangeListener(ListView.OnScrollChangeListener paramOnScrollChangeListener)
+  public void setOnScrollChangeListener(bhyt parambhyt)
   {
-    this.mOnScrollChangeListener = paramOnScrollChangeListener;
+    this.mOnScrollChangeListener = parambhyt;
   }
   
   public void setOverScrollFooter(View paramView)
@@ -4043,9 +4139,9 @@ public class ListView
     this.mOverScrollHeight = paramInt;
   }
   
-  public void setOverScrollListener(OverScrollViewListener paramOverScrollViewListener)
+  public void setOverScrollListener(bhzf parambhzf)
   {
-    this.mOverScrollViewListener = paramOverScrollViewListener;
+    this.mOverScrollViewListener = parambhzf;
   }
   
   public void setOverscrollFooter(Drawable paramDrawable)
@@ -4146,6 +4242,7 @@ public class ListView
           this.mSyncPosition = paramInt1;
           this.mSyncRowId = this.mAdapter.getItemId(paramInt1);
         }
+        initPaddingManual();
         this.mSpecificTop = (this.mListPadding.top + paramInt2);
         return;
         this.mResurrectToPosition = paramInt1;
@@ -4177,9 +4274,9 @@ public class ListView
   public void setStatisticCollector()
   {
     ListAdapter localListAdapter = getAdapter();
-    if ((localListAdapter instanceof HeaderViewListAdapter))
+    if ((localListAdapter instanceof bhxm))
     {
-      localListAdapter = ((HeaderViewListAdapter)localListAdapter).getWrappedAdapter();
+      localListAdapter = ((bhxm)localListAdapter).getWrappedAdapter();
       if ((localListAdapter instanceof ExpandableListConnector))
       {
         ((ExpandableListConnector)localListAdapter).a().getClass().getName();

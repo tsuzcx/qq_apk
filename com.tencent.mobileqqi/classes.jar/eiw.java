@@ -1,25 +1,26 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
-import com.tencent.util.WeakReferenceHandler;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
 
 public class eiw
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public eiw(SearchResultDialog paramSearchResultDialog) {}
+  public eiw(MainAssistObserver paramMainAssistObserver) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    List localList = this.a.a(this.a.getContext(), SearchResultDialog.a(this.a), SearchResultDialog.a(this.a));
-    Message localMessage = SearchResultDialog.a(this.a).obtainMessage();
-    localMessage.what = 1;
-    localMessage.obj = localList;
-    SearchResultDialog.a(this.a).sendMessage(localMessage);
+    Intent localIntent = new Intent(this.a.a, GesturePWDSettingActivity.class);
+    localIntent.putExtra("key_reset", true);
+    this.a.a.startActivity(localIntent);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eiw
  * JD-Core Version:    0.7.0.1
  */

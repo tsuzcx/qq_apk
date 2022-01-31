@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class ilive_feeds_tmem$LbsInfoOld
-  extends MessageMicro
+  extends MessageMicro<LbsInfoOld>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField lat = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -24,7 +24,7 @@ public final class ilive_feeds_tmem$LbsInfoOld
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_tmem.LbsInfoOld
  * JD-Core Version:    0.7.0.1
  */

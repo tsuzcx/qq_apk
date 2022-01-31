@@ -1,23 +1,10 @@
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ConnectionCallback;
-
-class aapd
-  implements Runnable
+public abstract interface aapd
 {
-  aapd(aaoz paramaaoz) {}
-  
-  public void run()
-  {
-    if ((ArkAppEventObserverManager.a(this.a.a) != null) && (!"cellular".equals(ArkAppEventObserverManager.a(this.a.a))))
-    {
-      ArkAppEventObserverManager.a(this.a.a).a(true, "cellular");
-      ArkAppEventObserverManager.a(this.a.a, "cellular");
-    }
-  }
+  public abstract void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aapd
  * JD-Core Version:    0.7.0.1
  */

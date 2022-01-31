@@ -1,21 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.search.activity.VADActivity;
+import mqq.os.MqqHandler;
 
-public class ahsk
-  implements DialogInterface.OnClickListener
+class ahsk
+  implements ahud
 {
-  public ahsk(VADActivity paramVADActivity) {}
+  ahsk(ahsi paramahsi) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.finish();
-    paramDialogInterface.dismiss();
+    this.a.a.sendEmptyMessageDelayed(7, 100L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahsk
  * JD-Core Version:    0.7.0.1
  */

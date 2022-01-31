@@ -5,16 +5,17 @@ public class ImageData
 {
   public int a;
   public String a;
+  public boolean a = true;
   public int b;
   
   public ImageData()
   {
-    this.d = 3;
+    super(3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ImageData
  * JD-Core Version:    0.7.0.1
  */

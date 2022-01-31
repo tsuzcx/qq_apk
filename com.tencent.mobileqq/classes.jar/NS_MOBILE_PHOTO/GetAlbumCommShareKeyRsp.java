@@ -9,9 +9,9 @@ import java.util.Map;
 public final class GetAlbumCommShareKeyRsp
   extends JceStruct
 {
-  static Map cache_outs = new HashMap();
+  static Map<String, String> cache_outs = new HashMap();
   public String msg = "";
-  public Map outs;
+  public Map<String, String> outs;
   public int ret;
   
   static
@@ -21,7 +21,7 @@ public final class GetAlbumCommShareKeyRsp
   
   public GetAlbumCommShareKeyRsp() {}
   
-  public GetAlbumCommShareKeyRsp(int paramInt, String paramString, Map paramMap)
+  public GetAlbumCommShareKeyRsp(int paramInt, String paramString, Map<String, String> paramMap)
   {
     this.ret = paramInt;
     this.msg = paramString;

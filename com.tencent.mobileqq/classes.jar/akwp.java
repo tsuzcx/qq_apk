@@ -1,41 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnSeekCompleteListener;
+import org.json.JSONObject;
 
-public class akwp
-  implements DialogInterface.OnDismissListener
+class akwp
+  implements MediaPlayer.OnSeekCompleteListener
 {
-  private WeakReference a;
+  akwp(akwn paramakwn, JSONObject paramJSONObject, akxn paramakxn) {}
   
-  public akwp(DialogInterface.OnDismissListener paramOnDismissListener)
+  public void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
-    this.a = new WeakReference(paramOnDismissListener);
-  }
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (this.a == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("QzoneProgressDialog", 2, "CustomDismissListener mDismissLis, lis is null");
-      }
+    if (this.jdField_a_of_type_OrgJsonJSONObject != null) {
+      akwn.a(this.jdField_a_of_type_Akwn, this.jdField_a_of_type_Akxn, this.jdField_a_of_type_OrgJsonJSONObject);
     }
-    do
-    {
-      return;
-      DialogInterface.OnDismissListener localOnDismissListener = (DialogInterface.OnDismissListener)this.a.get();
-      if (localOnDismissListener != null)
-      {
-        localOnDismissListener.onDismiss(paramDialogInterface);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("QzoneProgressDialog", 2, "CustomDismissListener, lis is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akwp
  * JD-Core Version:    0.7.0.1
  */

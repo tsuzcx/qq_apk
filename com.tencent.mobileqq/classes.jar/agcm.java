@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
-class agcm
-  implements Runnable
+public class agcm
+  implements DialogInterface.OnClickListener
 {
-  agcm(agch paramagch) {}
+  public agcm(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ScanOcrActivity.a(this.a.a, null, true, false);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agcm
  * JD-Core Version:    0.7.0.1
  */

@@ -9,35 +9,31 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.net.Uri;
-import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Parcelable;
 import android.os.Process;
 import com.qq.jce.wup.UniAttribute;
-import com.tencent.securemodule.service.ICallback;
-import com.tencent.securemodule.service.IControlService;
+import com.tencent.securemodule.aa;
+import com.tencent.securemodule.ab;
+import com.tencent.securemodule.ae;
+import com.tencent.securemodule.ah;
+import com.tencent.securemodule.as;
+import com.tencent.securemodule.at;
+import com.tencent.securemodule.ax;
+import com.tencent.securemodule.c;
+import com.tencent.securemodule.e;
+import com.tencent.securemodule.o;
 import com.tencent.securemodule.ui.SecureEventReceiver;
+import com.tencent.securemodule.w;
+import com.tencent.securemodule.x;
+import com.tencent.securemodule.z;
 import java.io.File;
 import java.io.Serializable;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import sm.aa;
-import sm.ab;
-import sm.ac;
-import sm.ae;
-import sm.ah;
-import sm.as;
-import sm.at;
-import sm.az;
-import sm.c;
-import sm.e;
-import sm.o;
-import sm.w;
-import sm.x;
-import sm.z;
 
 public class SecureService
   extends Service
@@ -47,7 +43,7 @@ public class SecureService
   private boolean c = false;
   private boolean d = false;
   private boolean e = false;
-  private a f = new a();
+  private SecureService.a f = new SecureService.a(this);
   
   private int a(String paramString)
   {
@@ -58,7 +54,7 @@ public class SecureService
     }
     Object localObject1 = new UniAttribute();
     ((UniAttribute)localObject1).setEncodeName("UTF-8");
-    ((UniAttribute)localObject1).decode(az.b(paramString));
+    ((UniAttribute)localObject1).decode(ax.b(paramString));
     paramString = (e)((UniAttribute)localObject1).getByClass("data", new e());
     if ((paramString == null) || (paramString.c() == null)) {
       return -6;
@@ -361,7 +357,7 @@ public class SecureService
     if ((paramIntent == null) || ("1000012".equals(paramIntent.getAction()))) {
       return;
     }
-    if (!az.a(getApplicationContext(), "sm_mq"))
+    if (!ax.a(getApplicationContext(), "sm_mq"))
     {
       stopSelf();
       c();
@@ -384,40 +380,10 @@ public class SecureService
     }
     return super.onUnbind(paramIntent);
   }
-  
-  public class a
-    extends Binder
-    implements IControlService
-  {
-    public a() {}
-    
-    public void doRemoteTask(String paramString, ICallback paramICallback)
-    {
-      if (!az.a(SecureService.this.getApplicationContext(), "sm_mq")) {
-        return;
-      }
-      try
-      {
-        new Thread(new ac(this, paramString, paramICallback)).start();
-        return;
-      }
-      finally {}
-    }
-    
-    public void setIsShowingTips(boolean paramBoolean1, boolean paramBoolean2)
-    {
-      SecureService.a(SecureService.this, paramBoolean1);
-      if (paramBoolean2)
-      {
-        SecureService.this.stopSelf();
-        SecureService.a(SecureService.this);
-      }
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.securemodule.impl.SecureService
  * JD-Core Version:    0.7.0.1
  */

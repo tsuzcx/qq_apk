@@ -5,6 +5,8 @@ import com.tencent.component.media.ImageManagerEnv;
 
 public class ImageManagerLog
 {
+  private static final String TAG = "QZoneImageManager";
+  
   public static void d(String paramString1, String paramString2)
   {
     paramString1 = "[" + paramString1 + "] " + paramString2;
@@ -31,7 +33,7 @@ public class ImageManagerLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.utils.ImageManagerLog
  * JD-Core Version:    0.7.0.1
  */

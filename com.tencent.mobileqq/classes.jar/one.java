@@ -1,25 +1,21 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.troop.forward.TroopStoryForwardTask;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForTroopStory;
+import java.util.List;
 
 class one
-  implements Runnable
+  extends oob
 {
-  one(ond paramond, String paramString) {}
-  
-  public void run()
+  one(omz paramomz, boolean paramBoolean, List paramList)
   {
-    this.jdField_a_of_type_Ond.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.storyId = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Ond.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.serial();
-    this.jdField_a_of_type_Ond.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Ond.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.frienduin, this.jdField_a_of_type_Ond.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.istroop, this.jdField_a_of_type_Ond.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.uniseq, this.jdField_a_of_type_Ond.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.msgData);
-    this.jdField_a_of_type_Ond.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+    super(paramomz, null);
+  }
+  
+  void a(ooe paramooe)
+  {
+    paramooe.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, omz.d(this.jdField_a_of_type_Omz), 2, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     one
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,21 @@
-import com.tencent.mobileqq.ar.arengine.ARCloudReqFileInfo;
-import com.tencent.mobileqq.ar.arengine.ARCloudReqInfo;
-import com.tencent.mobileqq.ocr.OcrControl;
-import com.tencent.mobileqq.ocr.OcrControl.OcrCallback;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class agbr
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public agbr(OcrControl paramOcrControl, String paramString, ARCloudReqFileInfo paramARCloudReqFileInfo) {}
+  public agbr(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    ARCloudReqInfo localARCloudReqInfo = OcrControl.a(this.jdField_a_of_type_ComTencentMobileqqOcrOcrControl, this.jdField_a_of_type_JavaLangString);
-    if ((localARCloudReqInfo != null) && (OcrControl.a(this.jdField_a_of_type_ComTencentMobileqqOcrOcrControl) != null))
-    {
-      long l1 = System.currentTimeMillis();
-      long l2 = localARCloudReqInfo.c;
-      OcrControl.a(this.jdField_a_of_type_ComTencentMobileqqOcrOcrControl).a(4, null, this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.b, l1 - l2);
-    }
+    this.a.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agbr
  * JD-Core Version:    0.7.0.1
  */

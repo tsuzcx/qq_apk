@@ -1,29 +1,47 @@
 package com.tencent.mobileqq.data;
 
-import abvd;
+import alof;
+import ambz;
 import android.annotation.TargetApi;
 import android.database.Cursor;
+import apfm;
+import awgf;
+import awgg;
+import awgs;
+import awhf;
+import azaf;
+import bdhb;
+import bhrz;
+import bhtb;
 import com.dataline.mpfile.MpfileTaskRecord;
 import com.tencent.biz.pubaccount.AccountDetail.bean.DynamicInfoEntity;
 import com.tencent.biz.pubaccount.ecshopassit.EcShopData;
 import com.tencent.biz.pubaccount.readinjoy.data.ReadInJoyActivityDAUInfo;
+import com.tencent.biz.pubaccount.readinjoy.question.bean.QuestionSquareBean;
 import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
 import com.tencent.biz.pubaccount.troopbarassit.TroopBarData;
 import com.tencent.biz.qqstory.settings.QQStoryUserInfo;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.Doraemon.monitor.APIQuotaEntity;
 import com.tencent.mobileqq.DrawerPushItem;
 import com.tencent.mobileqq.activity.TroopNotificationCache;
+import com.tencent.mobileqq.activity.aio.BeancurdMsg;
 import com.tencent.mobileqq.activity.bless.BlessPtvModule;
 import com.tencent.mobileqq.activity.bless.BlessTask;
 import com.tencent.mobileqq.activity.bless.BlessWording;
 import com.tencent.mobileqq.addon.DiyPendantEntity;
 import com.tencent.mobileqq.apollo.data.ApolloActionRecentData;
 import com.tencent.mobileqq.apollo.data.ApolloGameRedDot;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.SQLiteOpenHelper;
+import com.tencent.mobileqq.apollo.data.ApolloPreDownloadData;
+import com.tencent.mobileqq.apollo.data.ApolloWhiteFaceID;
+import com.tencent.mobileqq.apollo.data.CmGamePushItem;
+import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
+import com.tencent.mobileqq.app.qqdaily.FrontBackData;
+import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
 import com.tencent.mobileqq.ar.model.ArDownloadInfo;
 import com.tencent.mobileqq.bubble.BubbleDiyEntity;
 import com.tencent.mobileqq.businessCard.data.BusinessCard;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.mobileqq.confess.ConfessConvInfo;
 import com.tencent.mobileqq.config.operation.QQOperationTaskRecord;
 import com.tencent.mobileqq.config.operation.QQOperationViopTipTask;
@@ -31,23 +49,25 @@ import com.tencent.mobileqq.config.operation.QQOperationVoipTipsTaskExcuteRecord
 import com.tencent.mobileqq.data.fts.FTSNewTroopSync;
 import com.tencent.mobileqq.data.fts.FTSTroopSync;
 import com.tencent.mobileqq.data.fts.FTSTroopTime;
+import com.tencent.mobileqq.data.qzone.FeedInfo;
 import com.tencent.mobileqq.doutu.DoutuData;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.gamecenter.data.GameNoticeInfo;
+import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
+import com.tencent.mobileqq.gamecenter.message.UinToTinyId;
 import com.tencent.mobileqq.hotpic.HotPicData;
 import com.tencent.mobileqq.hotpic.HotPicSendData;
 import com.tencent.mobileqq.hotpic.HotPicTagInfo;
 import com.tencent.mobileqq.hotpic.HotVideoData;
+import com.tencent.mobileqq.microapp.apkg.AppInfo;
+import com.tencent.mobileqq.mini.entry.MiniAppEntity;
+import com.tencent.mobileqq.mini.entry.desktop.item.DeskTopAppEntity;
+import com.tencent.mobileqq.mini.entry.desktop.item.DesktopCardEntity;
 import com.tencent.mobileqq.multimsg.MultiMsgNick;
 import com.tencent.mobileqq.nearby.gameroom.RecentInviteUser;
 import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
 import com.tencent.mobileqq.ocr.data.OcrRecogResult;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.persistence.OGEntityManager;
-import com.tencent.mobileqq.persistence.TableBuilder;
 import com.tencent.mobileqq.profile.ProfileShoppingPhotoInfo;
-import com.tencent.mobileqq.qcall.PstnCardInfo;
-import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.shortvideo.redbag.VideoRedbagData;
 import com.tencent.mobileqq.statistics.Reporting;
 import com.tencent.mobileqq.troop.data.NotificationRecommendTroopItem;
@@ -57,9 +77,7 @@ import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
 import com.tencent.mobileqq.troop.data.TroopAioTopADInfo;
 import com.tencent.mobileqq.troop.data.TroopGiftBagInfo;
 import com.tencent.mobileqq.troop.data.TroopTipsEntity;
-import com.tencent.mobileqq.troop.data.TroopTopicDetailInfo;
 import com.tencent.mobileqq.trooponline.data.TroopAllOnlineData;
-import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.SecurityUtile;
 import com.tencent.mobileqq.vashealth.TracePathData;
 import com.tencent.mobileqq.vashealth.TracePointsData;
@@ -71,8 +89,7 @@ import com.tencent.qidian.data.QidianInternalInfo;
 import com.tencent.qidian.data.QidianPAForWpa;
 import com.tencent.qidian.data.QidianProfileUiInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.ArrayUtils;
-import com.tencent.util.VersionUtils;
+import cooperation.qzone.contentbox.model.QZoneMsgEntityNew;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -83,24 +100,32 @@ import mqq.app.MobileQQ;
 
 @TargetApi(11)
 public class QQEntityManagerFactory
-  extends EntityManagerFactory
+  extends awgg
 {
-  private static final Class[] EXTRA_CLASSES = { MultiMsgNick.class, FTSTroopSync.class, Reporting.class, BusinessCard.class, FTSTroopTime.class, DoutuData.class, QQOperationViopTipTask.class, HotPicTagInfo.class, BmqqAccountType.class, QQOperationTaskRecord.class, QQOperationVoipTipsTaskExcuteRecord.class, TroopNotificationCache.class, TroopAIOAppInfo.class, ReadInJoyActivityDAUInfo.class, HotPicData.class, HotVideoData.class, ProfileShoppingPhotoInfo.class, DrawerPushItem.class, TroopAioKeyBlackRule.class, TroopAioKeywordTipInfo.class, TroopAllOnlineData.class, DynamicInfoEntity.class, DiyPendantEntity.class, ApolloObtainedActionData.class, RecentInviteUser.class, ApolloGameRedDot.class, InterestTagInfo.class, OcrRecogResult.class, ArDownloadInfo.class, BlessPtvModule.class, BlessWording.class, QQStoryUserInfo.class, HotPicSendData.class, PstnCardInfo.class, TroopTipsEntity.class, BubbleDiyEntity.class, TroopGiftBagInfo.class, TroopTopicDetailInfo.class, HotChatInfo.class, ApolloGameData.class, EmoticonKeywords.class, BlessTask.class, VideoRedbagData.class, ApolloActionRecentData.class, TroopAioTopADInfo.class, NotificationRecommendTroopItem.class, ApolloGameModeData.class, FTSNewTroopSync.class, GuideData.class };
+  private static final String CORRUPT_DATABASE_PATH = "/tencent/msflogs/corruptInfo";
+  private static final int DB_VERSION = 307;
+  private static final Class[] EXTRA_CLASSES = { MultiMsgNick.class, FTSTroopSync.class, Reporting.class, BusinessCard.class, FTSTroopTime.class, DoutuData.class, QQOperationViopTipTask.class, HotPicTagInfo.class, BmqqAccountType.class, QQOperationTaskRecord.class, QQOperationVoipTipsTaskExcuteRecord.class, TroopNotificationCache.class, TroopAIOAppInfo.class, ReadInJoyActivityDAUInfo.class, HotPicData.class, HotVideoData.class, ProfileShoppingPhotoInfo.class, DrawerPushItem.class, TroopAioKeyBlackRule.class, TroopAioKeywordTipInfo.class, TroopAllOnlineData.class, DynamicInfoEntity.class, DiyPendantEntity.class, ApolloObtainedActionData.class, RecentInviteUser.class, ApolloGameRedDot.class, InterestTagInfo.class, OcrRecogResult.class, ArDownloadInfo.class, BlessPtvModule.class, BlessWording.class, QQStoryUserInfo.class, HotPicSendData.class, TroopTipsEntity.class, BubbleDiyEntity.class, TroopGiftBagInfo.class, HotChatInfo.class, ApolloGameData.class, EmoticonKeywords.class, BlessTask.class, VideoRedbagData.class, ApolloActionRecentData.class, TroopAioTopADInfo.class, NotificationRecommendTroopItem.class, FTSNewTroopSync.class, GuideData.class, FeedInfo.class, BeancurdMsg.class, APIQuotaEntity.class, AppInfo.class, QuestionSquareBean.class, CmGamePushItem.class, ApolloActionData.class, QZoneMsgEntityNew.class, ApolloPreDownloadData.class, ApolloBaseInfo.class, TraceData.class, PadFaceAd.class, GameNoticeInfo.class, ExtensionInfo.class, ApolloWhiteFaceID.class, MiniAppEntity.class, ColorNote.class, DesktopCardEntity.class, FrontBackData.class, DeskTopAppEntity.class };
+  private static final int FLAG_CHECK_AUTHENTICATION = -1;
   private static final String[] FORCE_IGNORED_TABLE = { "PAReportInfo", "CircleBuddy ", "CircleGroup ", "Sticker", "TopicInfo", "FriendMore", "FreshNewsNotify", "QQCardFolder", "bubble_diytext", "ApolloGameBtnData", "ApolloGameActivityConfig", "CardProfilev2", "SecMsgSession" };
-  private static final String[] NO_ENTITY_TABLE = { "msg_sync_log", "msg_upgrade_log" };
+  private static final String[] NO_ENTITY_TABLE;
+  private static final String STAG = "QQEntityManagerFactory";
   private static final String[] SYSTEM_TABLE;
-  private static final String[] TABLE_TO_DROP = { "WhiteListItem", "TroopAIOCommonAppInfo", "TroopVideoUrlEntity", "FreshNewsInfo" };
+  private static final String[] TABLE_TO_DROP = { "WhiteListItem", "TroopAIOCommonAppInfo", "TroopVideoUrlEntity", "FreshNewsInfo", "GodListConfig", "GodEntity", "DatingSig", "DatingFeedInfo", "OpenTroopInfo", "TroopStorySnapListEntity", "SearchHistoryEntity", "TroopTopicDetailInfo", "MiniAppInfo" };
   public static long corruptedTime = -1L;
   protected static boolean isUpdateFromLowV74;
+  private static List<String> mReportedTable;
+  private static Class[] mVerifyClasses;
   public String TAG = "QQEntityManagerFactory";
   protected boolean bUpdated;
-  public SQLiteOpenHelper dbHelper;
-  public QQEntityManagerFactory.SQLiteOpenHelperImpl mInnerDbHelper;
+  protected ambz dbHelper;
+  protected QQEntityManagerFactory.SQLiteOpenHelperImpl mInnerDbHelper;
   public String name;
   
   static
   {
     SYSTEM_TABLE = new String[] { "android_metadata", "sqlite_sequence" };
+    NO_ENTITY_TABLE = new String[] { "msg_sync_log", "msg_upgrade_log" };
+    mVerifyClasses = new Class[] { MessageRecord.class, RecentUser.class, Friends.class, TroopInfo.class };
   }
   
   public QQEntityManagerFactory(String paramString)
@@ -115,8 +140,8 @@ public class QQEntityManagerFactory
     ArrayList localArrayList = new ArrayList();
     String str;
     Object localObject1;
-    label786:
-    label799:
+    label829:
+    label842:
     Class localClass;
     if (localCursor1 != null)
     {
@@ -135,7 +160,7 @@ public class QQEntityManagerFactory
             for (;;)
             {
               if (localObject1 != null) {
-                OGEntityManager.a(localArrayList, str, localCursor2, (Class)localObject1);
+                awgs.a(localArrayList, str, localCursor2, (Class)localObject1);
               }
               localCursor2.close();
               break;
@@ -231,6 +256,10 @@ public class QQEntityManagerFactory
               {
                 localObject1 = CardProfile.class;
               }
+              else if (str.equals(TroopAIOAppInfo.class.getSimpleName()))
+              {
+                localObject1 = TroopAIOAppInfo.class;
+              }
               else if (str.equals("TroopInfoV2"))
               {
                 localObject1 = TroopInfo.class;
@@ -239,18 +268,18 @@ public class QQEntityManagerFactory
               {
                 localObject1 = VideoRedbagData.class;
               }
-              else if ((ArrayUtils.a(SYSTEM_TABLE, str)) || (ArrayUtils.a(NO_ENTITY_TABLE, str)))
+              else if ((bhrz.a(SYSTEM_TABLE, str)) || (bhrz.a(NO_ENTITY_TABLE, str)))
               {
                 if (!QLog.isColorLevel()) {
-                  break label1052;
+                  break label1095;
                 }
                 QLog.d("QQEntityManagerFactory", 2, "check table with " + str + " is system or no entity table");
                 localObject1 = null;
               }
-              else if (ArrayUtils.a(FORCE_IGNORED_TABLE, str))
+              else if (bhrz.a(FORCE_IGNORED_TABLE, str))
               {
                 if (!QLog.isColorLevel()) {
-                  break label1052;
+                  break label1095;
                 }
                 QLog.d("QQEntityManagerFactory", 2, "check table with " + str + " is force ignored");
                 localObject1 = null;
@@ -259,21 +288,25 @@ public class QQEntityManagerFactory
               {
                 localObject1 = ConfessConvInfo.class;
               }
+              else if (str.equals(UinToTinyId.getTinyTableName()))
+              {
+                localObject1 = UinToTinyId.class;
+              }
               else
               {
                 if (!needToDrop(str, paramInt1, paramInt2)) {
-                  break label786;
+                  break label829;
                 }
-                paramSQLiteDatabase.execSQL(TableBuilder.a(str));
+                paramSQLiteDatabase.execSQL(awhf.a(str));
                 localObject1 = null;
               }
             }
             if (localObject2 != null) {
-              break label1045;
+              break label1088;
             }
             localObject1 = generateExtraClassMap(EXTRA_CLASSES);
             if (!((Map)localObject1).containsKey(str)) {
-              break label1058;
+              break label1101;
             }
             localClass = (Class)((Map)localObject1).get(str);
             localObject2 = localClass;
@@ -284,9 +317,9 @@ public class QQEntityManagerFactory
         }
       }
     }
-    label1045:
-    label1052:
-    label1058:
+    label1088:
+    label1095:
+    label1101:
     for (Object localObject2 = localClass;; localObject2 = null)
     {
       for (;;)
@@ -330,13 +363,13 @@ public class QQEntityManagerFactory
       com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
       return;
       localObject1 = localObject2;
-      break label799;
+      break label842;
       localObject1 = null;
       break;
     }
   }
   
-  private static Map generateExtraClassMap(Class[] paramArrayOfClass)
+  private static Map<String, Class> generateExtraClassMap(Class[] paramArrayOfClass)
   {
     HashMap localHashMap = new HashMap(paramArrayOfClass.length);
     int j = paramArrayOfClass.length;
@@ -360,50 +393,50 @@ public class QQEntityManagerFactory
     //   3: astore_2
     //   4: aconst_null
     //   5: astore_0
-    //   6: ldc_w 450
+    //   6: ldc_w 526
     //   9: astore_3
-    //   10: ldc_w 452
+    //   10: ldc_w 528
     //   13: aconst_null
-    //   14: invokestatic 456	android/database/sqlite/SQLiteDatabase:openOrCreateDatabase	(Ljava/lang/String;Landroid/database/sqlite/SQLiteDatabase$CursorFactory;)Landroid/database/sqlite/SQLiteDatabase;
+    //   14: invokestatic 532	android/database/sqlite/SQLiteDatabase:openOrCreateDatabase	(Ljava/lang/String;Landroid/database/sqlite/SQLiteDatabase$CursorFactory;)Landroid/database/sqlite/SQLiteDatabase;
     //   17: astore 4
     //   19: aload 4
     //   21: astore_0
     //   22: aload_2
     //   23: astore_1
     //   24: aload_0
-    //   25: ldc_w 458
+    //   25: ldc_w 534
     //   28: aconst_null
-    //   29: invokevirtual 209	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   29: invokevirtual 284	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
     //   32: astore_2
     //   33: aload_2
     //   34: astore_1
     //   35: aload_2
-    //   36: invokeinterface 219 1 0
+    //   36: invokeinterface 294 1 0
     //   41: ifeq +33 -> 74
     //   44: aload_2
     //   45: astore_1
-    //   46: new 344	java/lang/StringBuilder
+    //   46: new 413	java/lang/StringBuilder
     //   49: dup
-    //   50: invokespecial 345	java/lang/StringBuilder:<init>	()V
+    //   50: invokespecial 414	java/lang/StringBuilder:<init>	()V
     //   53: aload_3
-    //   54: invokevirtual 351	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: invokevirtual 420	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   57: aload_2
     //   58: iconst_0
-    //   59: invokeinterface 223 2 0
-    //   64: invokevirtual 351	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: invokevirtual 356	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   59: invokeinterface 298 2 0
+    //   64: invokevirtual 420	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   67: invokevirtual 425	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   70: astore_3
     //   71: goto -38 -> 33
     //   74: aload_2
     //   75: ifnull +9 -> 84
     //   78: aload_2
-    //   79: invokeinterface 250 1 0
+    //   79: invokeinterface 325 1 0
     //   84: aload_3
     //   85: astore_1
     //   86: aload_0
     //   87: ifnull +9 -> 96
     //   90: aload_0
-    //   91: invokevirtual 459	android/database/sqlite/SQLiteDatabase:close	()V
+    //   91: invokevirtual 535	android/database/sqlite/SQLiteDatabase:close	()V
     //   94: aload_3
     //   95: astore_1
     //   96: aload_1
@@ -411,24 +444,24 @@ public class QQEntityManagerFactory
     //   98: astore_2
     //   99: aconst_null
     //   100: astore_1
-    //   101: ldc_w 461
+    //   101: ldc_w 537
     //   104: astore_3
-    //   105: ldc_w 463
+    //   105: ldc_w 539
     //   108: iconst_1
-    //   109: ldc_w 465
+    //   109: ldc_w 541
     //   112: aload_2
-    //   113: invokestatic 469	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   113: invokestatic 545	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   116: aload_1
     //   117: ifnull +9 -> 126
     //   120: aload_1
-    //   121: invokeinterface 250 1 0
+    //   121: invokeinterface 325 1 0
     //   126: aload_3
     //   127: astore_1
     //   128: aload_0
     //   129: ifnull -33 -> 96
     //   132: aload_0
-    //   133: invokevirtual 459	android/database/sqlite/SQLiteDatabase:close	()V
-    //   136: ldc_w 461
+    //   133: invokevirtual 535	android/database/sqlite/SQLiteDatabase:close	()V
+    //   136: ldc_w 537
     //   139: areturn
     //   140: astore_2
     //   141: aconst_null
@@ -436,11 +469,11 @@ public class QQEntityManagerFactory
     //   143: aload_1
     //   144: ifnull +9 -> 153
     //   147: aload_1
-    //   148: invokeinterface 250 1 0
+    //   148: invokeinterface 325 1 0
     //   153: aload_0
     //   154: ifnull +7 -> 161
     //   157: aload_0
-    //   158: invokevirtual 459	android/database/sqlite/SQLiteDatabase:close	()V
+    //   158: invokevirtual 535	android/database/sqlite/SQLiteDatabase:close	()V
     //   161: aload_2
     //   162: athrow
     //   163: astore_2
@@ -487,40 +520,55 @@ public class QQEntityManagerFactory
   private static boolean needToDrop(String paramString, int paramInt1, int paramInt2)
   {
     if ((paramString.startsWith("RedPacketData_")) && (paramInt1 < 214)) {}
-    while (ArrayUtils.a(TABLE_TO_DROP, paramString)) {
+    while (bhrz.a(TABLE_TO_DROP, paramString)) {
       return true;
     }
     return false;
   }
   
-  public SQLiteOpenHelper build(String paramString)
+  private static void reportUnknownTable(String paramString)
   {
+    if ("0".equals("fd2cc8f9")) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("发现未注册数据库升级方法的表 ").append(paramString).append(" ，请查看 QQEntityManagerFactory#checkColumnChange 方法，有问题请联系 harlanye \r\n");
+    localStringBuilder.append("\r\n App Revision is ").append("fd2cc8f9").append("\r\n");
+    mReportedTable.add(paramString);
+    QLog.d("QQEntityManagerFactory", 1, "report unknown table: " + paramString);
+  }
+  
+  private void verifyDBVersion() {}
+  
+  public ambz build(String paramString)
+  {
+    verifyDBVersion();
     if (this.dbHelper == null)
     {
-      if (!VersionUtils.e()) {
-        break label183;
+      if (!bhtb.e()) {
+        break label187;
       }
-      this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, paramString + ".db", null, 222, new abvd(this));
+      this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, paramString + ".db", null, 307, new apfm(this));
     }
     for (;;)
     {
       paramString = BaseApplicationImpl.getApplication();
-      if ((paramString != null) && (paramString.getProcessName().equalsIgnoreCase(paramString.getPackageName()))) {
-        paramString = new File(SQLiteOpenHelper.jdField_a_of_type_JavaLangString);
+      if ((paramString != null) && (paramString.getQQProcessName().equalsIgnoreCase(paramString.getPackageName()))) {
+        paramString = new File(ambz.jdField_a_of_type_JavaLangString);
       }
       try
       {
         if (paramString.exists())
         {
-          SQLiteOpenHelper.jdField_a_of_type_Boolean = true;
-          FileUtils.d(SQLiteOpenHelper.jdField_a_of_type_JavaLangString);
+          ambz.jdField_a_of_type_Boolean = true;
+          bdhb.d(ambz.jdField_a_of_type_JavaLangString);
         }
-        QLog.d(this.TAG, 1, "walFlag: " + SQLiteOpenHelper.jdField_a_of_type_Boolean);
-        this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
+        QLog.d(this.TAG, 1, "walFlag: " + ambz.jdField_a_of_type_Boolean);
+        this.dbHelper = new ambz(this.mInnerDbHelper);
         QLog.d(this.TAG, 1, new Object[] { "new SQLiteOpenHelper = : ", this.dbHelper });
         return this.dbHelper;
-        label183:
-        this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, paramString + ".db", null, 222);
+        label187:
+        this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, paramString + ".db", null, 307);
       }
       catch (Exception paramString)
       {
@@ -532,47 +580,57 @@ public class QQEntityManagerFactory
     }
   }
   
-  public void createDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
+  protected void createDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
   {
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new Groups()));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new Friends()));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new RecentUser()));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new Ability()));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new TroopInfo()));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new Card()));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new DiscussionInfo()));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new PhoneContact()));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new DataLineMsgRecord()));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new DataLineMsgRecord(1)));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new EmoticonPackage()));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new Emoticon()));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new EmoticonTab()));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new RoamSetting()));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new TroopMemberInfo()));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new TroopRemindSettingData()));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new ShieldListInfo()));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new ContactCard()));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new QZoneCover()));
-    MessageRecord localMessageRecord = MessageRecordFactory.a(-1000);
-    localMessageRecord.frienduin = String.valueOf(AppConstants.G);
+    paramSQLiteDatabase.execSQL(awhf.a(new Groups()));
+    paramSQLiteDatabase.execSQL(awhf.a(new Friends()));
+    paramSQLiteDatabase.execSQL(awhf.a(new RecentUser()));
+    paramSQLiteDatabase.execSQL(awhf.a(new Ability()));
+    paramSQLiteDatabase.execSQL(awhf.a(new TroopInfo()));
+    paramSQLiteDatabase.execSQL(awhf.a(new Card()));
+    paramSQLiteDatabase.execSQL(awhf.a(new DiscussionInfo()));
+    paramSQLiteDatabase.execSQL(awhf.a(new PhoneContact()));
+    paramSQLiteDatabase.execSQL(awhf.a(new DataLineMsgRecord()));
+    paramSQLiteDatabase.execSQL(awhf.a(new DataLineMsgRecord(1)));
+    paramSQLiteDatabase.execSQL(awhf.a(new EmoticonPackage()));
+    paramSQLiteDatabase.execSQL(awhf.a(new Emoticon()));
+    paramSQLiteDatabase.execSQL(awhf.a(new EmoticonTab()));
+    paramSQLiteDatabase.execSQL(awhf.a(new RoamSetting()));
+    paramSQLiteDatabase.execSQL(awhf.a(new TroopMemberInfo()));
+    paramSQLiteDatabase.execSQL(awhf.a(new TroopRemindSettingData()));
+    paramSQLiteDatabase.execSQL(awhf.a(new ShieldListInfo()));
+    paramSQLiteDatabase.execSQL(awhf.a(new ContactCard()));
+    paramSQLiteDatabase.execSQL(awhf.a(new QZoneCover()));
+    MessageRecord localMessageRecord = azaf.a(-1000);
+    localMessageRecord.frienduin = String.valueOf(alof.H);
     localMessageRecord.istroop = 1001;
-    paramSQLiteDatabase.execSQL(TableBuilder.a(localMessageRecord));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new SearchHistory()));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new ExtensionInfo()));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new CommonlyUsedTroop()));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new ExpiredPushBanner()));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new HotChatInfo()));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new SpecialCareInfo()));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new ApolloBaseInfo()));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new ApolloPandora()));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new FileManagerEntity()));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new ReportedBanner()));
-    paramSQLiteDatabase.execSQL(TableBuilder.a(new MedalInfo()));
+    paramSQLiteDatabase.execSQL(awhf.a(localMessageRecord));
+    paramSQLiteDatabase.execSQL(awhf.a(new SearchHistory()));
+    paramSQLiteDatabase.execSQL(awhf.a(new ExtensionInfo()));
+    paramSQLiteDatabase.execSQL(awhf.a(new CommonlyUsedTroop()));
+    paramSQLiteDatabase.execSQL(awhf.a(new ExpiredPushBanner()));
+    paramSQLiteDatabase.execSQL(awhf.a(new HotChatInfo()));
+    paramSQLiteDatabase.execSQL(awhf.a(new SpecialCareInfo()));
+    paramSQLiteDatabase.execSQL(awhf.a(new ApolloBaseInfo()));
+    paramSQLiteDatabase.execSQL(awhf.a(new ApolloPandora()));
+    paramSQLiteDatabase.execSQL(awhf.a(new FileManagerEntity()));
+    paramSQLiteDatabase.execSQL(awhf.a(new ReportedBanner()));
+    paramSQLiteDatabase.execSQL(awhf.a(new MedalInfo()));
+    paramSQLiteDatabase.execSQL(awhf.a(new TempMsgInfo()));
+    paramSQLiteDatabase.execSQL(awhf.a(new PushSwitchGrayTipsInfo()));
+    paramSQLiteDatabase.execSQL(awhf.a(new AppletsAccountInfo()));
+    paramSQLiteDatabase.execSQL(awhf.a(new ColorNote()));
+    paramSQLiteDatabase.execSQL(awhf.a(new FrontBackData()));
   }
   
-  public String getPackageName()
+  protected String getPackageName()
   {
     return "com.tencent.mobileqq.data";
+  }
+  
+  public boolean isNeedEncry()
+  {
+    return true;
   }
   
   public boolean isUpdateFromLowV74()
@@ -590,7 +648,7 @@ public class QQEntityManagerFactory
     isUpdateFromLowV74 = false;
   }
   
-  public void upgradeDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  protected void upgradeDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
     if (paramInt1 < 20)
     {
@@ -598,108 +656,137 @@ public class QQEntityManagerFactory
       return;
     }
     if (paramInt1 < 112) {
-      paramSQLiteDatabase.execSQL(TableBuilder.a(new DataLineMsgRecord(1)));
+      paramSQLiteDatabase.execSQL(awhf.a(new DataLineMsgRecord(1)));
     }
     if (paramInt1 < 70) {
-      paramSQLiteDatabase.execSQL(TableBuilder.a(new ExtensionInfo()));
+      paramSQLiteDatabase.execSQL(awhf.a(new ExtensionInfo()));
     }
     if (paramInt1 < 34)
     {
-      paramSQLiteDatabase.execSQL(TableBuilder.a(DiscussionInfo.class.getSimpleName()));
-      paramSQLiteDatabase.execSQL(TableBuilder.a(new DiscussionInfo()));
+      paramSQLiteDatabase.execSQL(awhf.a(DiscussionInfo.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(awhf.a(new DiscussionInfo()));
     }
     if (paramInt1 < 115) {
-      paramSQLiteDatabase.execSQL(TableBuilder.a(TroopAppInfo.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(awhf.a(TroopAppInfo.class.getSimpleName()));
     }
     if (paramInt1 < 29) {
-      paramSQLiteDatabase.execSQL(TableBuilder.a(new Ability()));
+      paramSQLiteDatabase.execSQL(awhf.a(new Ability()));
     }
     if (paramInt1 < 35) {
-      paramSQLiteDatabase.execSQL(TableBuilder.a(new PhoneContact()));
+      paramSQLiteDatabase.execSQL(awhf.a(new PhoneContact()));
     }
     if (paramInt1 < 36)
     {
-      paramSQLiteDatabase.execSQL(TableBuilder.a("TroopSelfInfo"));
-      paramSQLiteDatabase.execSQL(TableBuilder.a(TroopInfo.class.getSimpleName()));
-      paramSQLiteDatabase.execSQL(TableBuilder.a(new TroopInfo()));
+      paramSQLiteDatabase.execSQL(awhf.a("TroopSelfInfo"));
+      paramSQLiteDatabase.execSQL(awhf.a(TroopInfo.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(awhf.a(new TroopInfo()));
       this.bUpdated = true;
     }
     if (paramInt1 < 41)
     {
-      paramSQLiteDatabase.execSQL(TableBuilder.a(Card.class.getSimpleName()));
-      paramSQLiteDatabase.execSQL(TableBuilder.a(new Card()));
-      paramSQLiteDatabase.execSQL(TableBuilder.a(ResourcePluginInfo.class.getSimpleName()));
-      paramSQLiteDatabase.execSQL(TableBuilder.a(new ResourcePluginInfo()));
+      paramSQLiteDatabase.execSQL(awhf.a(Card.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(awhf.a(new Card()));
+      paramSQLiteDatabase.execSQL(awhf.a(ResourcePluginInfo.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(awhf.a(new ResourcePluginInfo()));
     }
     if (paramInt1 < 48)
     {
-      paramSQLiteDatabase.execSQL(TableBuilder.a(Setting.class.getSimpleName()));
-      paramSQLiteDatabase.execSQL(TableBuilder.a(new Setting()));
+      paramSQLiteDatabase.execSQL(awhf.a(Setting.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(awhf.a(new Setting()));
     }
     if (paramInt1 <= 66) {
-      paramSQLiteDatabase.execSQL(TableBuilder.a(new SearchHistory()));
+      paramSQLiteDatabase.execSQL(awhf.a(new SearchHistory()));
     }
     if (paramInt1 < 74) {
       isUpdateFromLowV74 = true;
     }
     if (paramInt1 <= 84)
     {
-      paramSQLiteDatabase.execSQL(TableBuilder.a(new ExpiredPushBanner()));
-      paramSQLiteDatabase.execSQL(TableBuilder.a(new ShortVideoUpInfo()));
+      paramSQLiteDatabase.execSQL(awhf.a(new ExpiredPushBanner()));
+      paramSQLiteDatabase.execSQL(awhf.a(new ShortVideoUpInfo()));
     }
     if (paramInt1 <= 89) {
-      paramSQLiteDatabase.execSQL(TableBuilder.a(new HotChatInfo()));
+      paramSQLiteDatabase.execSQL(awhf.a(new HotChatInfo()));
     }
     if (paramInt1 <= 98) {
-      paramSQLiteDatabase.execSQL(TableBuilder.a(DatingInfo.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(awhf.a(DatingInfo.class.getSimpleName()));
     }
     if (paramInt1 < 102) {
-      paramSQLiteDatabase.execSQL(TableBuilder.a(new SpecialCareInfo()));
+      paramSQLiteDatabase.execSQL(awhf.a(new SpecialCareInfo()));
     }
     if (paramInt1 < 103) {
-      paramSQLiteDatabase.execSQL(TableBuilder.a("RecommendMessage"));
+      paramSQLiteDatabase.execSQL(awhf.a("RecommendMessage"));
     }
     if (paramInt1 < 125)
     {
-      paramSQLiteDatabase.execSQL(TableBuilder.a(new ApolloBaseInfo()));
-      paramSQLiteDatabase.execSQL(TableBuilder.a(new ApolloPandora()));
+      paramSQLiteDatabase.execSQL(awhf.a(new ApolloBaseInfo()));
+      paramSQLiteDatabase.execSQL(awhf.a(new ApolloPandora()));
     }
     if (paramInt1 < 113)
     {
-      paramSQLiteDatabase.execSQL(TableBuilder.a(DatingInfo.class.getSimpleName()));
-      paramSQLiteDatabase.execSQL(TableBuilder.a(DateEventMsg.class.getSimpleName()));
-      paramSQLiteDatabase.execSQL(TableBuilder.a(DatingRecentDetail.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(awhf.a(DatingInfo.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(awhf.a(DateEventMsg.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(awhf.a(DatingRecentDetail.class.getSimpleName()));
     }
     if (paramInt1 < 125) {
-      paramSQLiteDatabase.execSQL(TableBuilder.a("t_qqcard_item"));
+      paramSQLiteDatabase.execSQL(awhf.a("t_qqcard_item"));
     }
     if (paramInt1 < 137) {
-      paramSQLiteDatabase.execSQL(TableBuilder.a(MessageRecord.getTableName(AppConstants.K, 0)));
+      paramSQLiteDatabase.execSQL(awhf.a(MessageRecord.getTableName(alof.M, 0)));
     }
     if (paramInt1 < 145) {
-      paramSQLiteDatabase.execSQL(TableBuilder.a(new ContactCard()));
+      paramSQLiteDatabase.execSQL(awhf.a(new ContactCard()));
     }
     if (paramInt1 < 184)
     {
-      paramSQLiteDatabase.execSQL(TableBuilder.a(TroopInfo.class.getSimpleName()));
-      paramSQLiteDatabase.execSQL(TableBuilder.a(new TroopInfo()));
+      paramSQLiteDatabase.execSQL(awhf.a(TroopInfo.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(awhf.a(new TroopInfo()));
       if (QLog.isColorLevel()) {
         QLog.d(".troop.qidian_private_troop", 2, "upgradeDatabase, change troopInfo table, newVer=" + paramInt2 + ", oldVer=" + paramInt1);
       }
     }
     if (paramInt1 < 185) {
-      paramSQLiteDatabase.execSQL(TableBuilder.a(new ReportedBanner()));
+      paramSQLiteDatabase.execSQL(awhf.a(new ReportedBanner()));
     }
     if (paramInt1 < 188)
     {
-      paramSQLiteDatabase.execSQL(TableBuilder.a("CircleBuddy"));
-      paramSQLiteDatabase.execSQL(TableBuilder.a("CircleGroup"));
+      paramSQLiteDatabase.execSQL(awhf.a("CircleBuddy"));
+      paramSQLiteDatabase.execSQL(awhf.a("CircleGroup"));
     }
     if (paramInt1 < 189) {
-      paramSQLiteDatabase.execSQL(TableBuilder.a(new MedalInfo()));
+      paramSQLiteDatabase.execSQL(awhf.a(new MedalInfo()));
     }
     if (paramInt1 < 217) {
-      paramSQLiteDatabase.execSQL(TableBuilder.a(TableBuilder.b(TroopAIOAppInfo.class)));
+      paramSQLiteDatabase.execSQL(awhf.a(awhf.b(TroopAIOAppInfo.class)));
+    }
+    if (paramInt1 < 233)
+    {
+      paramSQLiteDatabase.execSQL(awhf.a(awhf.b(MayKnowRecommend.class)));
+      paramSQLiteDatabase.execSQL(awhf.a(awhf.b(PushRecommend.class)));
+      paramSQLiteDatabase.execSQL(awhf.a(awhf.b(MayKnowExposure.class)));
+    }
+    if (paramInt1 < 238) {
+      paramSQLiteDatabase.execSQL(awhf.a(new TempMsgInfo()));
+    }
+    if (paramInt1 < 241) {
+      paramSQLiteDatabase.execSQL(awhf.a(new PushSwitchGrayTipsInfo()));
+    }
+    if (paramInt1 < 242) {
+      paramSQLiteDatabase.execSQL(awhf.a(new AppletsAccountInfo()));
+    }
+    if (paramInt1 < 242) {
+      paramSQLiteDatabase.execSQL(awhf.a(new OcrRecogResult()));
+    }
+    if (paramInt1 < 282) {
+      paramSQLiteDatabase.execSQL(awhf.a(new ColorNote()));
+    }
+    if (paramInt1 < 300) {
+      paramSQLiteDatabase.execSQL(awhf.a(new FrontBackData()));
+    }
+    if (paramInt1 < 307)
+    {
+      paramSQLiteDatabase.execSQL(awhf.a(DeskTopAppEntity.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(awhf.a(new DeskTopAppEntity()));
     }
     checkColumnChange(getPackageName(), paramSQLiteDatabase, paramInt1, paramInt2);
   }
@@ -708,14 +795,14 @@ public class QQEntityManagerFactory
   {
     if (this.name.matches("^[0-9]*$"))
     {
-      EntityManager localEntityManager = createEntityManager();
-      Ability localAbility = (Ability)localEntityManager.a(Ability.class, "flags=?", new String[] { String.valueOf(-1) });
+      awgf localawgf = createEntityManager();
+      Ability localAbility = (Ability)localawgf.a(Ability.class, "flags=?", new String[] { String.valueOf(-1) });
       if (localAbility == null)
       {
         localAbility = new Ability();
         localAbility.flags = -1;
         localAbility.uin = this.name;
-        localEntityManager.b(localAbility);
+        localawgf.b(localAbility);
         return true;
       }
       if ((localAbility.uin == null) || (!localAbility.uin.equals(this.name)))
@@ -724,7 +811,7 @@ public class QQEntityManagerFactory
         localAbility = new Ability();
         localAbility.flags = -1;
         localAbility.uin = this.name;
-        localEntityManager.b(localAbility);
+        localawgf.b(localAbility);
         return false;
       }
     }

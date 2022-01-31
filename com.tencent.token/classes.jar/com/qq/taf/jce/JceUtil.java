@@ -126,12 +126,12 @@ public final class JceUtil
     return 0;
   }
   
-  public static <T extends Comparable<T>> int compareTo(T paramT1, T paramT2)
+  public static int compareTo(Comparable paramComparable1, Comparable paramComparable2)
   {
-    return paramT1.compareTo(paramT2);
+    return paramComparable1.compareTo(paramComparable2);
   }
   
-  public static <T extends Comparable<T>> int compareTo(List<T> paramList1, List<T> paramList2)
+  public static int compareTo(List paramList1, List paramList2)
   {
     paramList1 = paramList1.iterator();
     paramList2 = paramList2.iterator();
@@ -179,8 +179,8 @@ public final class JceUtil
   
   public static int compareTo(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    int j = 0;
     int i = 0;
+    int j = 0;
     while ((j < paramArrayOfByte1.length) && (i < paramArrayOfByte2.length))
     {
       int k = compareTo(paramArrayOfByte1[j], paramArrayOfByte2[i]);
@@ -195,8 +195,8 @@ public final class JceUtil
   
   public static int compareTo(char[] paramArrayOfChar1, char[] paramArrayOfChar2)
   {
-    int j = 0;
     int i = 0;
+    int j = 0;
     while ((j < paramArrayOfChar1.length) && (i < paramArrayOfChar2.length))
     {
       int k = compareTo(paramArrayOfChar1[j], paramArrayOfChar2[i]);
@@ -211,8 +211,8 @@ public final class JceUtil
   
   public static int compareTo(double[] paramArrayOfDouble1, double[] paramArrayOfDouble2)
   {
-    int j = 0;
     int i = 0;
+    int j = 0;
     while ((j < paramArrayOfDouble1.length) && (i < paramArrayOfDouble2.length))
     {
       int k = compareTo(paramArrayOfDouble1[j], paramArrayOfDouble2[i]);
@@ -227,8 +227,8 @@ public final class JceUtil
   
   public static int compareTo(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    int j = 0;
     int i = 0;
+    int j = 0;
     while ((j < paramArrayOfFloat1.length) && (i < paramArrayOfFloat2.length))
     {
       int k = compareTo(paramArrayOfFloat1[j], paramArrayOfFloat2[i]);
@@ -243,8 +243,8 @@ public final class JceUtil
   
   public static int compareTo(int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    int j = 0;
     int i = 0;
+    int j = 0;
     while ((j < paramArrayOfInt1.length) && (i < paramArrayOfInt2.length))
     {
       int k = compareTo(paramArrayOfInt1[j], paramArrayOfInt2[i]);
@@ -259,8 +259,8 @@ public final class JceUtil
   
   public static int compareTo(long[] paramArrayOfLong1, long[] paramArrayOfLong2)
   {
-    int j = 0;
     int i = 0;
+    int j = 0;
     while ((j < paramArrayOfLong1.length) && (i < paramArrayOfLong2.length))
     {
       int k = compareTo(paramArrayOfLong1[j], paramArrayOfLong2[i]);
@@ -273,26 +273,26 @@ public final class JceUtil
     return compareTo(paramArrayOfLong1.length, paramArrayOfLong2.length);
   }
   
-  public static <T extends Comparable<T>> int compareTo(T[] paramArrayOfT1, T[] paramArrayOfT2)
+  public static int compareTo(Comparable[] paramArrayOfComparable1, Comparable[] paramArrayOfComparable2)
   {
-    int j = 0;
     int i = 0;
-    while ((j < paramArrayOfT1.length) && (i < paramArrayOfT2.length))
+    int j = 0;
+    while ((j < paramArrayOfComparable1.length) && (i < paramArrayOfComparable2.length))
     {
-      int k = paramArrayOfT1[j].compareTo(paramArrayOfT2[i]);
+      int k = paramArrayOfComparable1[j].compareTo(paramArrayOfComparable2[i]);
       if (k != 0) {
         return k;
       }
       j += 1;
       i += 1;
     }
-    return compareTo(paramArrayOfT1.length, paramArrayOfT2.length);
+    return compareTo(paramArrayOfComparable1.length, paramArrayOfComparable2.length);
   }
   
   public static int compareTo(short[] paramArrayOfShort1, short[] paramArrayOfShort2)
   {
-    int j = 0;
     int i = 0;
+    int j = 0;
     while ((j < paramArrayOfShort1.length) && (i < paramArrayOfShort2.length))
     {
       int k = compareTo(paramArrayOfShort1[j], paramArrayOfShort2[i]);
@@ -307,8 +307,8 @@ public final class JceUtil
   
   public static int compareTo(boolean[] paramArrayOfBoolean1, boolean[] paramArrayOfBoolean2)
   {
-    int j = 0;
     int i = 0;
+    int j = 0;
     while ((j < paramArrayOfBoolean1.length) && (i < paramArrayOfBoolean2.length))
     {
       int k = compareTo(paramArrayOfBoolean1[j], paramArrayOfBoolean2[i]);
@@ -672,7 +672,7 @@ public final class JceUtil
     if (paramArrayOfBoolean[j] != 0) {}
     for (int k = 0;; k = 1)
     {
-      i = i * 37 + k;
+      i = k + i * 37;
       j += 1;
       break;
     }

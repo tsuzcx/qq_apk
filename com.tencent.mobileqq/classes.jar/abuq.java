@@ -1,21 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.GrayTipsSpan;
-import com.tencent.mobileqq.data.MessageForNewGrayTips;
+import org.json.JSONObject;
 
 public class abuq
-  implements View.OnClickListener
 {
-  public abuq(MessageForNewGrayTips paramMessageForNewGrayTips, GrayTipsSpan paramGrayTipsSpan) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  public void onClick(View paramView)
+  public abuq(abun paramabun) {}
+  
+  public boolean a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForNewGrayTips.click(paramView, this.jdField_a_of_type_ComTencentMobileqqDataGrayTipsSpan.url);
+    try
+    {
+      this.jdField_a_of_type_Int = Integer.parseInt(paramJSONObject.getString("param_index"));
+      this.jdField_b_of_type_Int = Integer.parseInt(paramJSONObject.getString("param_type"));
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("param_value1").trim();
+      this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("param_value2").trim();
+      return true;
+    }
+    catch (Exception paramJSONObject)
+    {
+      abui.a("KingKongNativePatch", "Parse parameter error!");
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return "Index " + this.jdField_a_of_type_Int + ": " + this.jdField_b_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.jdField_b_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abuq
  * JD-Core Version:    0.7.0.1
  */

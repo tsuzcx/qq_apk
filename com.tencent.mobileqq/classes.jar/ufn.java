@@ -1,17 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ufn
-  implements DialogInterface.OnClickListener
+class ufn
+  implements View.OnClickListener
 {
-  public ufn(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  ufn(ufk paramufk) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    ufk.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ufn
  * JD-Core Version:    0.7.0.1
  */

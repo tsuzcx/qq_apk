@@ -1,15 +1,16 @@
 package cooperation.qzone.model;
 
-import amuw;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bjlf;
+import java.util.ArrayList;
 import java.util.Map;
 
 public class VideoInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amuw();
+  public static final Parcelable.Creator<VideoInfo> CREATOR = new bjlf();
   public byte a;
   public int a;
   public long a;
@@ -17,7 +18,8 @@ public class VideoInfo
   public VideoInfo.VideoRemark a;
   public VideoUrl a;
   public String a;
-  public Map a;
+  public ArrayList<VideoUrl> a;
+  public Map<String, String> a;
   public boolean a;
   public int b;
   public long b;
@@ -50,8 +52,10 @@ public class VideoInfo
   public String g;
   public boolean g;
   public int h;
+  public String h;
   public boolean h;
   public int i;
+  public String i;
   public boolean i;
   public int j;
   public boolean j;
@@ -59,10 +63,11 @@ public class VideoInfo
   public boolean k;
   public int l;
   public boolean l;
+  public int m;
   
   public VideoInfo()
   {
-    this.jdField_e_of_type_Int = 0;
+    this.jdField_f_of_type_Int = 0;
     this.jdField_c_of_type_Boolean = true;
     this.jdField_d_of_type_Boolean = true;
     this.jdField_d_of_type_Long = -1L;
@@ -70,7 +75,7 @@ public class VideoInfo
   
   public boolean a()
   {
-    return ((this.jdField_a_of_type_Byte & 0x1) != 0) || (this.jdField_d_of_type_Int == 1);
+    return ((this.jdField_a_of_type_Byte & 0x1) != 0) || (this.jdField_e_of_type_Int == 1);
   }
   
   public boolean b()
@@ -85,12 +90,12 @@ public class VideoInfo
   
   public String toString()
   {
-    return "VideoInfo [videoId=" + this.jdField_a_of_type_JavaLangString + ", videoUrl=" + this.jdField_a_of_type_CooperationQzoneModelVideoUrl + ", bigUrl=" + this.jdField_b_of_type_CooperationQzoneModelPictureUrl + ", actionType=" + this.jdField_a_of_type_Int + ", actionUrl=" + this.jdField_b_of_type_JavaLangString + ", highBrUrl=" + this.jdField_b_of_type_CooperationQzoneModelVideoUrl + ", lowBrUrl=" + this.jdField_c_of_type_CooperationQzoneModelVideoUrl + ", fileType=" + this.jdField_b_of_type_Int + ", videoType=" + this.jdField_c_of_type_Int + ",videoShowType=" + this.jdField_d_of_type_Int + ", videoTime=" + this.jdField_b_of_type_Long + ", videoStatus=" + this.jdField_e_of_type_Int + ", originVideoUrl=" + this.jdField_d_of_type_CooperationQzoneModelVideoUrl + ", originVideoSize=" + this.jdField_a_of_type_Long + "]";
+    return "VideoInfo [videoId=" + this.jdField_a_of_type_JavaLangString + ", videoUrl=" + this.jdField_a_of_type_CooperationQzoneModelVideoUrl + ", bigUrl=" + this.jdField_b_of_type_CooperationQzoneModelPictureUrl + ", actionType=" + this.jdField_a_of_type_Int + ", actionUrl=" + this.jdField_b_of_type_JavaLangString + ", highBrUrl=" + this.jdField_b_of_type_CooperationQzoneModelVideoUrl + ", lowBrUrl=" + this.jdField_c_of_type_CooperationQzoneModelVideoUrl + ", fileType=" + this.jdField_c_of_type_Int + ", videoType=" + this.jdField_d_of_type_Int + ",videoShowType=" + this.jdField_e_of_type_Int + ", videoTime=" + this.jdField_b_of_type_Long + ", videoStatus=" + this.jdField_f_of_type_Int + ", originVideoUrl=" + this.jdField_d_of_type_CooperationQzoneModelVideoUrl + ", originVideoSize=" + this.jdField_a_of_type_Long + "]";
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int n = 1;
+    int i1 = 1;
     paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
     paramParcel.writeParcelable(this.jdField_a_of_type_CooperationQzoneModelVideoUrl, paramInt);
     paramParcel.writeParcelable(this.jdField_a_of_type_CooperationQzoneModelPictureUrl, paramInt);
@@ -103,78 +108,82 @@ public class VideoInfo
     paramParcel.writeParcelable(this.jdField_c_of_type_CooperationQzoneModelVideoUrl, paramInt);
     paramParcel.writeParcelable(this.jdField_d_of_type_CooperationQzoneModelVideoUrl, paramInt);
     paramParcel.writeParcelable(this.jdField_e_of_type_CooperationQzoneModelVideoUrl, paramInt);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
+    paramParcel.writeList(this.jdField_a_of_type_JavaUtilArrayList);
     paramParcel.writeInt(this.jdField_b_of_type_Int);
+    paramParcel.writeLong(this.jdField_a_of_type_Long);
     paramParcel.writeInt(this.jdField_c_of_type_Int);
+    paramParcel.writeInt(this.jdField_d_of_type_Int);
     paramParcel.writeLong(this.jdField_b_of_type_Long);
     paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
     paramParcel.writeByte(this.jdField_a_of_type_Byte);
-    paramParcel.writeInt(this.jdField_d_of_type_Int);
     paramParcel.writeInt(this.jdField_e_of_type_Int);
-    paramParcel.writeLong(this.jdField_c_of_type_Long);
     paramParcel.writeInt(this.jdField_f_of_type_Int);
+    paramParcel.writeLong(this.jdField_c_of_type_Long);
     paramParcel.writeInt(this.jdField_g_of_type_Int);
+    paramParcel.writeInt(this.jdField_h_of_type_Int);
     paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
-    int m;
+    int n;
     if (this.jdField_b_of_type_Boolean)
     {
-      m = 1;
-      paramParcel.writeInt(m);
+      n = 1;
+      paramParcel.writeInt(n);
       paramParcel.writeParcelable(this.jdField_a_of_type_CooperationQzoneModelVideoInfo$VideoRemark, paramInt);
       paramParcel.writeLong(this.jdField_d_of_type_Long);
       paramParcel.writeString(this.jdField_f_of_type_JavaLangString);
       if (!this.jdField_i_of_type_Boolean) {
-        break label370;
+        break label402;
       }
       paramInt = 1;
-      label252:
+      label268:
       paramParcel.writeInt(paramInt);
       if (!this.jdField_j_of_type_Boolean) {
-        break label375;
+        break label407;
       }
       paramInt = 1;
-      label266:
+      label282:
       paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.h);
-      paramParcel.writeString(this.jdField_g_of_type_JavaLangString);
       paramParcel.writeInt(this.jdField_i_of_type_Int);
+      paramParcel.writeString(this.jdField_g_of_type_JavaLangString);
       paramParcel.writeInt(this.jdField_j_of_type_Int);
       paramParcel.writeInt(this.jdField_k_of_type_Int);
-      paramParcel.writeLong(this.jdField_e_of_type_Long);
       paramParcel.writeInt(this.jdField_l_of_type_Int);
+      paramParcel.writeLong(this.jdField_e_of_type_Long);
+      paramParcel.writeInt(this.m);
       if (!this.jdField_k_of_type_Boolean) {
-        break label380;
+        break label412;
       }
       paramInt = 1;
-      label336:
+      label352:
       paramParcel.writeInt(paramInt);
       if (!this.jdField_l_of_type_Boolean) {
-        break label385;
+        break label417;
       }
     }
-    label385:
-    for (paramInt = n;; paramInt = 0)
+    label402:
+    label407:
+    label412:
+    label417:
+    for (paramInt = i1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
       paramParcel.writeLong(this.jdField_f_of_type_Long);
+      paramParcel.writeString(this.jdField_h_of_type_JavaLangString);
+      paramParcel.writeString(this.jdField_i_of_type_JavaLangString);
       return;
-      m = 0;
+      n = 0;
       break;
-      label370:
       paramInt = 0;
-      break label252;
-      label375:
+      break label268;
       paramInt = 0;
-      break label266;
-      label380:
+      break label282;
       paramInt = 0;
-      break label336;
+      break label352;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.model.VideoInfo
  * JD-Core Version:    0.7.0.1
  */

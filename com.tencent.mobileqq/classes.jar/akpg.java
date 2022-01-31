@@ -1,32 +1,34 @@
-import com.tencent.biz.common.offline.AsyncCallBack;
-import com.tencent.biz.webviewplugin.OfflinePlugin;
-import com.tencent.biz.webviewplugin.OfflineWebResManager;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import org.json.JSONObject;
 
-class akpg
-  implements AsyncCallBack
+public final class akpg
+  implements abwu
 {
-  akpg(akpf paramakpf, long paramLong) {}
+  public akpg(View paramView, abwx paramabwx, long paramLong, int paramInt, String paramString) {}
   
-  public void a(int paramInt, String paramString)
+  public void onComplete() {}
+  
+  public void onFailure(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Akpf.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.i("SwiftBrowserOfflineHandler", 2, "now offline bid has checked, bid " + this.jdField_a_of_type_Akpf.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler.jdField_a_of_type_JavaLangString + ", loadMode: " + this.jdField_a_of_type_Akpf.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", cost: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    if (paramInt != 0)
-    {
-      OfflinePlugin.c(this.jdField_a_of_type_Akpf.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler.jdField_a_of_type_JavaLangString);
-      OfflineWebResManager.a(this.jdField_a_of_type_Akpf.jdField_a_of_type_JavaLangString);
-    }
-    this.jdField_a_of_type_Akpf.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler.a();
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Abwx, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location login failed," + paramString);
   }
+  
+  public void onPermission(int paramInt)
+  {
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Abwx, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location login permision code");
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    ApolloRender.getLocationDoLocation(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Abwx, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akpg
  * JD-Core Version:    0.7.0.1
  */

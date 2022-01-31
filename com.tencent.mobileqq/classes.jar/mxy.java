@@ -1,24 +1,30 @@
-import com.tencent.biz.pubaccount.PublicAccountArticleHandler;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
-
 public class mxy
-  implements Runnable
 {
-  public mxy(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
-  
-  public void run()
+  public static int a(int paramInt1, int paramInt2)
   {
-    int i = 0;
-    if (PublicAccountImageCollectionMainActivity.d(this.a)) {
-      i = 1;
+    return (paramInt1 % paramInt2 + paramInt2) % paramInt2;
+  }
+  
+  public static int a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  {
+    paramInt1 = a(paramInt1, paramInt3);
+    paramInt2 = a(paramInt2, paramInt3);
+    if (paramBoolean)
+    {
+      if (paramInt1 > paramInt2) {
+        return paramInt1 - paramInt2;
+      }
+      return paramInt1 + (paramInt3 - paramInt2);
     }
-    PublicAccountImageCollectionMainActivity.a(this.a).a(this.a.c, PublicAccountImageCollectionMainActivity.b(this.a), i);
-    PublicAccountImageCollectionMainActivity.a(this.a, "");
+    if (paramInt1 > paramInt2) {
+      return paramInt3 - paramInt1 + paramInt2;
+    }
+    return paramInt2 - paramInt1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mxy
  * JD-Core Version:    0.7.0.1
  */

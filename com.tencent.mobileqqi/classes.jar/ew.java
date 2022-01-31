@@ -1,19 +1,13 @@
-import android.os.Handler;
-import com.dataline.util.widget.WaitTextView;
-import com.dataline.util.widget.WaitTextView.RefreshListener;
+import com.dataline.util.HttpUpload.HttpUploadListenerPack;
 
 public class ew
   implements Runnable
 {
-  public ew(WaitTextView paramWaitTextView) {}
+  public ew(HttpUpload.HttpUploadListenerPack paramHttpUploadListenerPack, long paramLong1, String paramString, long paramLong2) {}
   
   public void run()
   {
-    WaitTextView.a(this.a);
-    if (WaitTextView.a(this.a) != null) {
-      WaitTextView.a(this.a).a();
-    }
-    WaitTextView.a(this.a).postDelayed(this, 500L);
+    this.jdField_a_of_type_ComDatalineUtilHttpUpload$HttpUploadListenerPack.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

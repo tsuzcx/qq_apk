@@ -1,21 +1,20 @@
-import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnErrorListener;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
+import android.view.View;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
 
-class npy
-  implements Runnable
+public class npy
+  implements TouchWebView.OnScrollChangedListener
 {
-  npy(npx paramnpx) {}
+  public npy(PublicAccountBrowser paramPublicAccountBrowser) {}
   
-  public void run()
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.a(this.a.a, 102, 201, 0, "", null);
-    }
+    PublicAccountBrowser.b(this.a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     npy
  * JD-Core Version:    0.7.0.1
  */

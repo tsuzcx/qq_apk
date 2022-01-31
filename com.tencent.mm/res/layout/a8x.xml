@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/kb" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/bt0" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <CheckBox android:id="@id/bsz" android:background="@drawable/vn" android:focusable="false" android:clickable="false" android:layout_width="@dimen/eu" android:layout_height="@dimen/eu" android:layout_marginTop="@dimen/lb" android:layout_marginRight="@dimen/lb" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</RelativeLayout>

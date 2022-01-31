@@ -1,6 +1,6 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.global.e;
+import com.tencent.token.global.h;
 import java.io.Serializable;
 import org.json.JSONObject;
 
@@ -9,6 +9,7 @@ public class RealNameRegResult
 {
   private static final long serialVersionUID = 736958906972493428L;
   public int chance_left;
+  public int change_face_result;
   public int complete_time;
   public int daily_zzb_cnt;
   public int dispatch_time;
@@ -22,12 +23,13 @@ public class RealNameRegResult
     this.submit_time = paramJSONObject.getInt("submit_time");
     this.complete_time = paramJSONObject.getInt("complete_time");
     this.chance_left = paramJSONObject.getInt("chance_left");
-    e.a("chance_left:" + this.chance_left);
+    h.a("chance_left:" + this.chance_left);
     this.daily_zzb_cnt = paramJSONObject.getInt("daily_zzb_cnt");
-    e.a("daily_zzb_cnt:" + this.daily_zzb_cnt);
+    h.a("daily_zzb_cnt:" + this.daily_zzb_cnt);
     this.top_msg_text = paramJSONObject.getString("top_msg_text");
-    e.a("top_msg_text:" + this.top_msg_text);
+    h.a("top_msg_text:" + this.top_msg_text);
     this.dispatch_time = paramJSONObject.getInt("dispatch_time");
+    this.change_face_result = paramJSONObject.getInt("change_face_result");
   }
 }
 

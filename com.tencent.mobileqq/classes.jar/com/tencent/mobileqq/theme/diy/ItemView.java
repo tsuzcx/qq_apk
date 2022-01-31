@@ -31,12 +31,12 @@ public class ItemView
   {
     if (this.mThumImg == null)
     {
-      this.mThumImg = ((ImageView)super.findViewById(2131372637));
-      this.mUsedTv = ((TextView)super.findViewById(2131372638));
+      this.mThumImg = ((ImageView)super.findViewById(2131377818));
+      this.mUsedTv = ((TextView)super.findViewById(2131379415));
       this.mUsedTv.setVisibility(8);
-      this.mNameTv = ((TextView)super.findViewById(2131372639));
-      this.bgView = super.findViewById(2131372636);
-      this.mFlagFeetype = ((ImageView)super.findViewById(2131369445));
+      this.mNameTv = ((TextView)super.findViewById(2131370991));
+      this.bgView = super.findViewById(2131379413);
+      this.mFlagFeetype = ((ImageView)super.findViewById(2131366468));
     }
     if (paramResSuitData1 == null)
     {
@@ -55,8 +55,8 @@ public class ItemView
       if (!"99".equals(paramResSuitData1.id)) {
         break label334;
       }
-      ((ResData)localObject1).resID = 2130843321;
-      i = super.getResources().getColor(2131493151);
+      ((ResData)localObject1).resID = 2130845683;
+      i = super.getResources().getColor(2131166493);
     }
     for (;;)
     {
@@ -81,7 +81,7 @@ public class ItemView
         if (paramResSuitData1.feeType != 5) {
           break label475;
         }
-        this.mFlagFeetype.setImageResource(2130843116);
+        this.mFlagFeetype.setImageResource(2130846610);
         label281:
         if ((paramResSuitData2 == null) || (!paramResSuitData1.id.equals(paramResSuitData2.id))) {
           break label506;
@@ -99,7 +99,7 @@ public class ItemView
         if ("100".equals(paramResSuitData1.id))
         {
           if (paramResSuitData1.resID > 0) {}
-          for (i = paramResSuitData1.resID;; i = 2130843321)
+          for (i = paramResSuitData1.resID;; i = 2130845683)
           {
             ((ResData)localObject1).resID = i;
             i = 0;
@@ -115,7 +115,7 @@ public class ItemView
         break;
         label414:
         if ("999".equals(paramResSuitData1.id)) {
-          ((ResData)localObject1).resID = 2130843283;
+          ((ResData)localObject1).resID = 2130845638;
         }
         localObject1 = DIYThemeUtils.getDIYDrawable(super.getContext(), (ResData)localObject1, 0, 0, -1, false);
         i = 0;
@@ -126,7 +126,7 @@ public class ItemView
         label475:
         if (paramResSuitData1.feeType == 4)
         {
-          this.mFlagFeetype.setImageResource(2130843124);
+          this.mFlagFeetype.setImageResource(2130846611);
           break label281;
         }
         this.mFlagFeetype.setImageDrawable(null);
@@ -144,7 +144,7 @@ public class ItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.ItemView
  * JD-Core Version:    0.7.0.1
  */

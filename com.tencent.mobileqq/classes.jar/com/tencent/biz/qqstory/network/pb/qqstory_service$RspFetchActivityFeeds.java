@@ -7,12 +7,14 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_service$RspFetchActivityFeeds
-  extends MessageMicro
+  extends MessageMicro<RspFetchActivityFeeds>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatMessageField feed_list = PBField.initRepeatMessage(qqstory_struct.ActivityFeedNode.class);
+  public final PBRepeatMessageField<qqstory_struct.ActivityFeedNode> feed_list = PBField.initRepeatMessage(qqstory_struct.ActivityFeedNode.class);
+  public final PBUInt64Field feeds_seq = PBField.initUInt64(0L);
   public final PBUInt32Field fetch_time = PBField.initUInt32(0);
   public final PBUInt32Field is_end = PBField.initUInt32(0);
   public final PBBytesField next_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -21,12 +23,12 @@ public final class qqstory_service$RspFetchActivityFeeds
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42 }, new String[] { "result", "next_cookie", "is_end", "fetch_time", "feed_list" }, new Object[] { null, localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), null }, RspFetchActivityFeeds.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 48 }, new String[] { "result", "next_cookie", "is_end", "fetch_time", "feed_list", "feeds_seq" }, new Object[] { null, localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), null, Long.valueOf(0L) }, RspFetchActivityFeeds.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspFetchActivityFeeds
  * JD-Core Version:    0.7.0.1
  */

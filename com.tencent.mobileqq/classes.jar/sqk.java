@@ -1,19 +1,29 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.ViolaVideoView;
 
 public class sqk
-  implements Runnable
+  implements rdf
 {
-  public sqk(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public sqk(ViolaVideoView paramViolaVideoView) {}
   
-  public void run()
+  public long a()
   {
-    this.a.G();
-    this.a.I();
+    return ViolaVideoView.a(this.a).a();
+  }
+  
+  public void a(int paramInt)
+  {
+    ViolaVideoView.a(this.a).d(paramInt);
+  }
+  
+  public long b()
+  {
+    return ViolaVideoView.a(this.a).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sqk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.smooth.ItemManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class afmk
-  implements View.OnTouchListener
+class afmk
+  implements arrh
 {
-  private afmk(ItemManager paramItemManager) {}
+  afmk(afmf paramafmf, FileManagerEntity paramFileManagerEntity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    boolean bool3 = true;
-    boolean bool2 = false;
-    int i = paramMotionEvent.getAction();
-    Object localObject = this.a;
-    boolean bool1 = bool3;
-    if (i != 1) {
-      if (i != 3) {
-        break label105;
-      }
-    }
-    label105:
-    for (bool1 = bool3;; bool1 = false)
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
     {
-      ((ItemManager)localObject).b = bool1;
-      if ((this.a.b) && (this.a.jdField_a_of_type_Int != 2)) {
-        this.a.a();
-      }
-      localObject = this.a.jdField_a_of_type_Afmi.a();
-      bool1 = bool2;
-      if (localObject != null) {
-        bool1 = ((View.OnTouchListener)localObject).onTouch(paramView, paramMotionEvent);
-      }
-      return bool1;
+      this.jdField_a_of_type_Afmf.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      return;
     }
+    this.jdField_a_of_type_Afmf.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afmk
  * JD-Core Version:    0.7.0.1
  */

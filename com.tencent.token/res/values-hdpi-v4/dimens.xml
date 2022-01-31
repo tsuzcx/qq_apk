@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="realname_detail_margetop">80.0dip</dimen>
-    <dimen name="logo_margin_top">20.0dip</dimen>
     <dimen name="branerheight">93.0dip</dimen>
+    <dimen name="logo_margin_top">20.0dip</dimen>
     <dimen name="photoheight">257.0dip</dimen>
     <dimen name="photowidth">397.0dip</dimen>
-    <dimen name="dialog_height">360.0dip</dimen>
+    <dimen name="realname_detail_margetop">80.0dip</dimen>
+    <dimen name="zzb_icon_margin_top">32.0dip</dimen>
     <dimen name="dialog_content_height">345.0dip</dimen>
     <dimen name="dialog_content_top">15.0dip</dimen>
+    <dimen name="dialog_height">360.0dip</dimen>
     <dimen name="orange_toast_height">30.0dip</dimen>
-    <dimen name="qqface_not_verify_left_width">38.0dip</dimen>
     <dimen name="qqface_not_verify_left_margin_left">2.0dip</dimen>
+    <dimen name="qqface_not_verify_left_width">38.0dip</dimen>
+    <dimen name="realname_find_margin_left">5.0dip</dimen>
+    <dimen name="realname_find_margin_right">5.0dip</dimen>
 </resources>

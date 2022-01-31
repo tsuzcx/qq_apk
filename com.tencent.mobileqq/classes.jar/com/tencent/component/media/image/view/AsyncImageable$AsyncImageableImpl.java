@@ -10,165 +10,118 @@ import android.widget.ImageView;
 import com.tencent.component.media.image.ImageKey;
 import com.tencent.component.media.image.ImageLoader;
 import com.tencent.component.media.image.ImageLoader.Options;
-import pij;
-import pik;
-import pil;
-import pim;
-import pin;
-import pio;
 
 public class AsyncImageable$AsyncImageableImpl
   implements AsyncImageable
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = new String[0];
-  private int jdField_a_of_type_Int;
-  private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private final ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private ImageLoader.Options jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options = new ImageLoader.Options();
-  private final ImageLoader jdField_a_of_type_ComTencentComponentMediaImageImageLoader;
-  private AsyncImageable.AsyncImageListener jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncImageListener;
-  private AsyncImageable.AsyncOptions jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncOptions = new pij(this);
-  private final AsyncImageable jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable;
-  private String jdField_a_of_type_JavaLangString = null;
-  private final Thread jdField_a_of_type_JavaLangThread = Looper.getMainLooper().getThread();
-  private final pin jdField_a_of_type_Pin;
-  private final pio jdField_a_of_type_Pio;
-  private AsyncImageable.AsyncImageListener jdField_b_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncImageListener;
-  private String jdField_b_of_type_JavaLangString = null;
+  private static final String[] EMPTY_STR_ARRAY = new String[0];
+  private int mAsyncImageId;
+  private AsyncImageable.AsyncImageListener mAsyncListener;
+  private final AsyncImageable mAsyncListenerCallback;
+  private AsyncImageable.AsyncOptions mAsyncOptions = new AsyncImageable.AsyncImageableImpl.1(this);
+  private final AsyncImageable.AsyncImageableImpl.WeakImageLoadListener mImageLoadListener;
+  private final ImageLoader mImageLoader;
+  private final ImageView mImageView;
+  private AsyncImageable.AsyncImageListener mInternalAsyncListener;
+  private String mLatestUrl = null;
+  private final Handler mMainHandler = new Handler(Looper.getMainLooper());
+  private final Thread mMainThread = Looper.getMainLooper().getThread();
+  private ImageLoader.Options mOptions = new ImageLoader.Options();
+  private final AsyncImageable.AsyncImageableImpl.WeakStreamLoadListener mStreamLoadListener;
+  private String mUrl = null;
   
   public AsyncImageable$AsyncImageableImpl(ImageView paramImageView, AsyncImageable paramAsyncImageable)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-    this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader = ImageLoader.getInstance(paramImageView.getContext());
-    this.jdField_a_of_type_Pin = new pin(this);
-    this.jdField_a_of_type_Pio = new pio(this);
-    this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable = paramAsyncImageable;
-    this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options.useMainThread = true;
+    this.mImageView = paramImageView;
+    this.mImageLoader = ImageLoader.getInstance(paramImageView.getContext());
+    this.mImageLoadListener = new AsyncImageable.AsyncImageableImpl.WeakImageLoadListener(this);
+    this.mStreamLoadListener = new AsyncImageable.AsyncImageableImpl.WeakStreamLoadListener(this);
+    this.mAsyncListenerCallback = paramAsyncImageable;
+    this.mOptions.useMainThread = true;
   }
   
-  private void a()
-  {
-    this.jdField_a_of_type_JavaLangString = null;
-  }
-  
-  private void a(float paramFloat)
-  {
-    AsyncImageable.AsyncImageListener localAsyncImageListener = this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncImageListener;
-    Object localObject1 = this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable;
-    Object localObject2;
-    if (localAsyncImageListener != null)
-    {
-      if (localObject1 != null)
-      {
-        localObject2 = localObject1;
-        localAsyncImageListener.onImageProgress((AsyncImageable)localObject2, paramFloat);
-      }
-    }
-    else
-    {
-      localObject2 = this.jdField_b_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncImageListener;
-      if (localObject2 != null) {
-        if (localObject1 == null) {
-          break label58;
-        }
-      }
-    }
-    for (;;)
-    {
-      ((AsyncImageable.AsyncImageListener)localObject2).onImageProgress((AsyncImageable)localObject1, paramFloat);
-      return;
-      localObject2 = this;
-      break;
-      label58:
-      localObject1 = this;
-    }
-  }
-  
-  private void a(Drawable paramDrawable, boolean paramBoolean)
+  private void applyAsyncImage(Drawable paramDrawable, boolean paramBoolean)
   {
     if (paramDrawable != null)
     {
       if (!paramBoolean) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
+        this.mImageView.setImageDrawable(paramDrawable);
       }
       for (;;)
       {
-        this.jdField_a_of_type_Int = paramDrawable.hashCode();
+        this.mAsyncImageId = paramDrawable.hashCode();
         return;
-        Animation localAnimation1 = this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncOptions.jdField_a_of_type_AndroidViewAnimationAnimation;
-        Animation localAnimation2 = this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncOptions.jdField_b_of_type_AndroidViewAnimationAnimation;
+        Animation localAnimation1 = this.mAsyncOptions.inAnimation;
+        Animation localAnimation2 = this.mAsyncOptions.outAnimation;
         if (localAnimation2 != null)
         {
-          b(this.jdField_a_of_type_AndroidWidgetImageView, localAnimation2, new pil(this, paramDrawable, localAnimation1));
+          scheduleAnimation(this.mImageView, localAnimation2, new AsyncImageable.AsyncImageableImpl.3(this, paramDrawable, localAnimation1));
         }
         else if (localAnimation1 != null)
         {
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
-          b(this.jdField_a_of_type_AndroidWidgetImageView, localAnimation1, null);
+          this.mImageView.setImageDrawable(paramDrawable);
+          scheduleAnimation(this.mImageView, localAnimation1, null);
         }
         else
         {
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
+          this.mImageView.setImageDrawable(paramDrawable);
         }
       }
     }
-    this.jdField_a_of_type_Int = 0;
+    this.mAsyncImageId = 0;
   }
   
-  private void a(String paramString)
+  private void applyDefaultImage()
   {
-    if (Thread.currentThread() != this.jdField_a_of_type_JavaLangThread) {
+    Drawable localDrawable = this.mAsyncOptions.defaultImage;
+    int i = this.mAsyncOptions.defaultImageId;
+    if (localDrawable != null) {
+      this.mImageView.setImageDrawable(localDrawable);
+    }
+    while (i == 0) {
+      return;
+    }
+    this.mImageView.setImageResource(i);
+  }
+  
+  private void applyFailImage()
+  {
+    Drawable localDrawable = this.mAsyncOptions.failImage;
+    int i = this.mAsyncOptions.failImageId;
+    if (localDrawable != null) {
+      this.mImageView.setImageDrawable(localDrawable);
+    }
+    while (i == 0) {
+      return;
+    }
+    this.mImageView.setImageResource(i);
+  }
+  
+  private boolean checkAsyncChanged(String paramString)
+  {
+    return !equalsString(this.mUrl, paramString);
+  }
+  
+  private void ensureDrawable()
+  {
+    int i = this.mAsyncImageId;
+    if (i != 0)
+    {
+      Drawable localDrawable = this.mImageView.getDrawable();
+      if ((localDrawable == null) || (localDrawable.hashCode() != i)) {
+        resetAsyncImage();
+      }
+    }
+  }
+  
+  private void ensureThread(String paramString)
+  {
+    if (Thread.currentThread() != this.mMainThread) {
       throw new RuntimeException(paramString + " can ONLY be called within main thread!");
     }
   }
   
-  private void a(String paramString, String... paramVarArgs)
-  {
-    if ((this.jdField_a_of_type_JavaLangString == null) && (paramString == null))
-    {
-      b();
-      return;
-    }
-    paramVarArgs = this.jdField_a_of_type_JavaLangString;
-    ImageLoader.Options localOptions = this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options;
-    if ((paramString == null) && (paramVarArgs != null))
-    {
-      this.jdField_a_of_type_JavaLangString = null;
-      this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader.cancel(paramVarArgs, this.jdField_a_of_type_Pin, localOptions);
-      b();
-      return;
-    }
-    a("setAsyncImage");
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    paramVarArgs = this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options;
-    this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options = ImageLoader.Options.copy(this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options);
-    this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncOptions.fillOptions(this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options);
-    this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options.needCallBackProcessPercent = true;
-    this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options.useMainThread = true;
-    paramVarArgs = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    if ((paramVarArgs != null) && (paramVarArgs.width > 0) && (paramVarArgs.height > 0))
-    {
-      this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options.clipWidth = paramVarArgs.width;
-      this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options.clipHeight = paramVarArgs.height;
-    }
-    d();
-    if (this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncOptions.g) {}
-    for (paramString = this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader.loadImageSync(paramString, this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options); paramString != null; paramString = this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader.loadImage(paramString, this.jdField_a_of_type_Pin, this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options))
-    {
-      a(paramString, false);
-      e();
-      return;
-    }
-    b();
-  }
-  
-  private boolean a(String paramString)
-  {
-    return !a(this.jdField_a_of_type_JavaLangString, paramString);
-  }
-  
-  private static boolean a(String paramString1, String paramString2)
+  private static boolean equalsString(String paramString1, String paramString2)
   {
     boolean bool = true;
     if ((paramString1 == null) || (paramString2 == null)) {
@@ -183,116 +136,46 @@ public class AsyncImageable$AsyncImageableImpl
     return false;
   }
   
-  private void b()
+  private static boolean equalsStringArray(String[] paramArrayOfString1, String[] paramArrayOfString2)
   {
-    Drawable localDrawable = this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncOptions.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    int i = this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncOptions.c;
-    if (localDrawable != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
+    boolean bool2 = false;
+    boolean bool1;
+    if (paramArrayOfString1 == paramArrayOfString2) {
+      bool1 = true;
     }
-    while (i == 0) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(i);
-  }
-  
-  private static void b(View paramView, Animation paramAnimation, Runnable paramRunnable)
-  {
-    if ((paramView == null) || (paramAnimation == null))
+    do
     {
-      if (paramRunnable != null) {
-        paramRunnable.run();
-      }
-      return;
-    }
-    paramView.clearAnimation();
-    paramAnimation.setAnimationListener(new pim(paramRunnable));
-    paramView.startAnimation(paramAnimation);
-  }
-  
-  private void c()
-  {
-    Drawable localDrawable = this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncOptions.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-    int i = this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncOptions.d;
-    if (localDrawable != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
-    }
-    while (i == 0) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(i);
-  }
-  
-  private void d()
-  {
-    AsyncImageable.AsyncImageListener localAsyncImageListener = this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncImageListener;
-    Object localObject1 = this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable;
-    Object localObject2;
-    if (localAsyncImageListener != null)
-    {
-      if (localObject1 != null)
+      do
       {
-        localObject2 = localObject1;
-        localAsyncImageListener.onImageStarted((AsyncImageable)localObject2);
-      }
-    }
-    else
-    {
-      localObject2 = this.jdField_b_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncImageListener;
-      if (localObject2 != null) {
-        if (localObject1 == null) {
-          break label53;
-        }
-      }
-    }
+        do
+        {
+          return bool1;
+          bool1 = bool2;
+        } while (paramArrayOfString1 == null);
+        bool1 = bool2;
+      } while (paramArrayOfString2 == null);
+      bool1 = bool2;
+    } while (paramArrayOfString1.length != paramArrayOfString2.length);
+    int i = 0;
     for (;;)
     {
-      ((AsyncImageable.AsyncImageListener)localObject2).onImageStarted((AsyncImageable)localObject1);
-      return;
-      localObject2 = this;
-      break;
-      label53:
-      localObject1 = this;
+      if (i >= paramArrayOfString1.length) {
+        break label66;
+      }
+      bool1 = bool2;
+      if (!equalsString(paramArrayOfString1[i], paramArrayOfString2[i])) {
+        break;
+      }
+      i += 1;
     }
+    label66:
+    return true;
   }
   
-  private void e()
+  private void notifyAsyncImageFailed()
   {
-    AsyncImageable.AsyncImageListener localAsyncImageListener = this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncImageListener;
-    Object localObject1 = this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable;
-    Object localObject2;
-    if (localAsyncImageListener != null)
-    {
-      if (localObject1 != null)
-      {
-        localObject2 = localObject1;
-        localAsyncImageListener.onImageLoaded((AsyncImageable)localObject2);
-      }
-    }
-    else
-    {
-      localObject2 = this.jdField_b_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncImageListener;
-      if (localObject2 != null) {
-        if (localObject1 == null) {
-          break label53;
-        }
-      }
-    }
-    for (;;)
-    {
-      ((AsyncImageable.AsyncImageListener)localObject2).onImageLoaded((AsyncImageable)localObject1);
-      return;
-      localObject2 = this;
-      break;
-      label53:
-      localObject1 = this;
-    }
-  }
-  
-  private void f()
-  {
-    AsyncImageable.AsyncImageListener localAsyncImageListener = this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncImageListener;
-    Object localObject1 = this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable;
+    AsyncImageable.AsyncImageListener localAsyncImageListener = this.mAsyncListener;
+    Object localObject1 = this.mAsyncListenerCallback;
     Object localObject2;
     if (localAsyncImageListener != null)
     {
@@ -304,7 +187,7 @@ public class AsyncImageable$AsyncImageableImpl
     }
     else
     {
-      localObject2 = this.jdField_b_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncImageListener;
+      localObject2 = this.mInternalAsyncListener;
       if (localObject2 != null) {
         if (localObject1 == null) {
           break label53;
@@ -322,11 +205,170 @@ public class AsyncImageable$AsyncImageableImpl
     }
   }
   
+  private void notifyAsyncImageLoaded()
+  {
+    AsyncImageable.AsyncImageListener localAsyncImageListener = this.mAsyncListener;
+    Object localObject1 = this.mAsyncListenerCallback;
+    Object localObject2;
+    if (localAsyncImageListener != null)
+    {
+      if (localObject1 != null)
+      {
+        localObject2 = localObject1;
+        localAsyncImageListener.onImageLoaded((AsyncImageable)localObject2);
+      }
+    }
+    else
+    {
+      localObject2 = this.mInternalAsyncListener;
+      if (localObject2 != null) {
+        if (localObject1 == null) {
+          break label53;
+        }
+      }
+    }
+    for (;;)
+    {
+      ((AsyncImageable.AsyncImageListener)localObject2).onImageLoaded((AsyncImageable)localObject1);
+      return;
+      localObject2 = this;
+      break;
+      label53:
+      localObject1 = this;
+    }
+  }
+  
+  private void notifyAsyncImageProgress(float paramFloat)
+  {
+    AsyncImageable.AsyncImageListener localAsyncImageListener = this.mAsyncListener;
+    Object localObject1 = this.mAsyncListenerCallback;
+    Object localObject2;
+    if (localAsyncImageListener != null)
+    {
+      if (localObject1 != null)
+      {
+        localObject2 = localObject1;
+        localAsyncImageListener.onImageProgress((AsyncImageable)localObject2, paramFloat);
+      }
+    }
+    else
+    {
+      localObject2 = this.mInternalAsyncListener;
+      if (localObject2 != null) {
+        if (localObject1 == null) {
+          break label58;
+        }
+      }
+    }
+    for (;;)
+    {
+      ((AsyncImageable.AsyncImageListener)localObject2).onImageProgress((AsyncImageable)localObject1, paramFloat);
+      return;
+      localObject2 = this;
+      break;
+      label58:
+      localObject1 = this;
+    }
+  }
+  
+  private void notifyAsyncImageStart()
+  {
+    AsyncImageable.AsyncImageListener localAsyncImageListener = this.mAsyncListener;
+    Object localObject1 = this.mAsyncListenerCallback;
+    Object localObject2;
+    if (localAsyncImageListener != null)
+    {
+      if (localObject1 != null)
+      {
+        localObject2 = localObject1;
+        localAsyncImageListener.onImageStarted((AsyncImageable)localObject2);
+      }
+    }
+    else
+    {
+      localObject2 = this.mInternalAsyncListener;
+      if (localObject2 != null) {
+        if (localObject1 == null) {
+          break label53;
+        }
+      }
+    }
+    for (;;)
+    {
+      ((AsyncImageable.AsyncImageListener)localObject2).onImageStarted((AsyncImageable)localObject1);
+      return;
+      localObject2 = this;
+      break;
+      label53:
+      localObject1 = this;
+    }
+  }
+  
+  private void resetAsyncImage()
+  {
+    this.mUrl = null;
+  }
+  
+  private static void scheduleAnimation(View paramView, Animation paramAnimation, Runnable paramRunnable)
+  {
+    if ((paramView == null) || (paramAnimation == null))
+    {
+      if (paramRunnable != null) {
+        paramRunnable.run();
+      }
+      return;
+    }
+    paramView.clearAnimation();
+    paramAnimation.setAnimationListener(new AsyncImageable.AsyncImageableImpl.4(paramRunnable));
+    paramView.startAnimation(paramAnimation);
+  }
+  
+  private void setAsyncImageInternal(String paramString, String... paramVarArgs)
+  {
+    if ((this.mUrl == null) && (paramString == null))
+    {
+      applyDefaultImage();
+      return;
+    }
+    paramVarArgs = this.mUrl;
+    ImageLoader.Options localOptions = this.mOptions;
+    if ((paramString == null) && (paramVarArgs != null))
+    {
+      this.mUrl = null;
+      this.mImageLoader.cancel(paramVarArgs, this.mImageLoadListener, localOptions);
+      applyDefaultImage();
+      return;
+    }
+    ensureThread("setAsyncImage");
+    this.mUrl = paramString;
+    this.mLatestUrl = paramString;
+    paramVarArgs = this.mOptions;
+    this.mOptions = ImageLoader.Options.copy(this.mOptions);
+    this.mAsyncOptions.fillOptions(this.mOptions);
+    this.mOptions.needCallBackProcessPercent = true;
+    this.mOptions.useMainThread = true;
+    paramVarArgs = this.mImageView.getLayoutParams();
+    if ((paramVarArgs != null) && (paramVarArgs.width > 0) && (paramVarArgs.height > 0))
+    {
+      this.mOptions.clipWidth = paramVarArgs.width;
+      this.mOptions.clipHeight = paramVarArgs.height;
+    }
+    notifyAsyncImageStart();
+    if (this.mAsyncOptions.justMemoryCache) {}
+    for (paramString = this.mImageLoader.loadImageSync(paramString, this.mOptions); paramString != null; paramString = this.mImageLoader.loadImage(paramString, this.mImageLoadListener, this.mOptions))
+    {
+      applyAsyncImage(paramString, false);
+      notifyAsyncImageLoaded();
+      return;
+    }
+    applyDefaultImage();
+  }
+  
   public void finalize()
   {
     try
     {
-      this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader.cancel(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Pin, this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options);
+      this.mImageLoader.cancel(this.mUrl, this.mImageLoadListener, this.mOptions);
       return;
     }
     finally
@@ -337,42 +379,42 @@ public class AsyncImageable$AsyncImageableImpl
   
   public String getAsyncImage()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.mLatestUrl;
   }
   
   public AsyncImageable.AsyncOptions getAsyncOptions()
   {
-    return this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncOptions;
+    return this.mAsyncOptions;
   }
   
   public void setAsyncImage(String paramString)
   {
-    setAsyncImage(paramString, jdField_a_of_type_ArrayOfJavaLangString);
+    setAsyncImage(paramString, EMPTY_STR_ARRAY);
   }
   
   public void setAsyncImage(String paramString, String... paramVarArgs)
   {
-    if (Thread.currentThread() != this.jdField_a_of_type_JavaLangThread)
+    if (Thread.currentThread() != this.mMainThread)
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new pik(this, paramString, paramVarArgs));
+      this.mMainHandler.post(new AsyncImageable.AsyncImageableImpl.2(this, paramString, paramVarArgs));
       return;
     }
-    a(paramString, paramVarArgs);
+    setAsyncImageInternal(paramString, paramVarArgs);
   }
   
   public void setAsyncImageListener(AsyncImageable.AsyncImageListener paramAsyncImageListener)
   {
-    this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncImageListener = paramAsyncImageListener;
+    this.mAsyncListener = paramAsyncImageListener;
   }
   
   public void setInternalAsyncImageListener(AsyncImageable.AsyncImageListener paramAsyncImageListener)
   {
-    this.jdField_b_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncImageListener = paramAsyncImageListener;
+    this.mInternalAsyncListener = paramAsyncImageListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.image.view.AsyncImageable.AsyncImageableImpl
  * JD-Core Version:    0.7.0.1
  */

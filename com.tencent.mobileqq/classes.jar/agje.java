@@ -1,25 +1,55 @@
-import com.tencent.mapsdk.raster.model.CameraPosition;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.app.Activity;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.map.TencentMap.OnMapCameraChangeListener;
+import java.io.File;
 
-public class agje
-  implements TencentMap.OnMapCameraChangeListener
+final class agje
+  extends AsyncTask<Void, Void, Boolean>
 {
-  public agje(ScanTorchActivity paramScanTorchActivity) {}
+  agje(File paramFile1, File paramFile2, Activity paramActivity, agjg paramagjg) {}
   
-  public void onCameraChange(CameraPosition paramCameraPosition) {}
-  
-  public void onCameraChangeFinish(CameraPosition paramCameraPosition)
+  protected Boolean a(Void... paramVarArgs)
   {
-    if ((ScanTorchActivity.a(this.a) != null) && (QLog.isColorLevel())) {
-      QLog.d("ScanTorchActivity", 2, "ARLBSPOIDialog onCameraChangeFinish");
+    try
+    {
+      if (ey.a(this.jdField_a_of_type_JavaIoFile, this.b))
+      {
+        bdhj.a(this.jdField_a_of_type_AndroidAppActivity, this.b.getAbsolutePath());
+        return Boolean.valueOf(true);
+      }
+      return Boolean.valueOf(false);
+    }
+    catch (OutOfMemoryError paramVarArgs)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("AIOGalleryUtils", 2, "savePhoto  OOM ");
+      }
+    }
+    return Boolean.valueOf(false);
+  }
+  
+  protected void a(Boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity)) {}
+    for (int i = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getTitleBarHeight();; i = 0)
+    {
+      if (paramBoolean.booleanValue()) {}
+      for (String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131695324);; str = this.jdField_a_of_type_AndroidAppActivity.getString(2131695350))
+      {
+        QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2, str, 0).b(i);
+        if (this.jdField_a_of_type_Agjg != null) {
+          this.jdField_a_of_type_Agjg.a(paramBoolean.booleanValue());
+        }
+        return;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agje
  * JD-Core Version:    0.7.0.1
  */

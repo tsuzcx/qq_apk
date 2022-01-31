@@ -1,30 +1,29 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
 
 public class lel
-  implements ActionSheet.OnButtonClickListener
 {
-  public lel(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  private static baue jdField_a_of_type_Baue;
+  private static bdpy jdField_a_of_type_Bdpy = new lem();
   
-  public void OnClick(View paramView, int paramInt)
+  public static baue a()
   {
-    switch (paramInt)
+    if (jdField_a_of_type_Baue == null) {}
+    try
     {
+      if (jdField_a_of_type_Baue == null)
+      {
+        HttpCommunicator localHttpCommunicator = new HttpCommunicator(jdField_a_of_type_Bdpy, 128);
+        localHttpCommunicator.a();
+        jdField_a_of_type_Baue = new bavh(localHttpCommunicator, true);
+      }
+      return jdField_a_of_type_Baue;
     }
-    for (;;)
-    {
-      ReadInJoySettingActivity.b(this.a).cancel();
-      return;
-      ReadInJoySettingActivity.d(this.a, false);
-      ReadInJoySettingActivity.c(this.a, ReadInJoySettingActivity.c(this.a));
-    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lel
  * JD-Core Version:    0.7.0.1
  */

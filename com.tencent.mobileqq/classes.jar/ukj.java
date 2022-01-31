@@ -1,65 +1,69 @@
-import android.content.Context;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout.OnChatMessageCheckedChangeListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.multimsg.MultiMsgManager;
-import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
-public final class ukj
-  implements CompoundButton.OnCheckedChangeListener
+public class ukj
+  extends ukk<uja>
 {
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  private int a = 200;
+  
+  protected double a()
   {
-    Object localObject = (ChatMessage)paramCompoundButton.getTag();
-    if (localObject == null) {}
-    for (;;)
-    {
-      return;
-      if (paramBoolean != MultiMsgManager.a().a((ChatMessage)localObject))
-      {
-        if (!paramBoolean) {
-          MultiMsgManager.a().a((ChatMessage)localObject, paramBoolean);
-        }
-        while (BaseChatItemLayout.a != null)
-        {
-          BaseChatItemLayout.a.a((ChatMessage)localObject, paramBoolean);
-          return;
-          if (MultiMsgManager.a().b())
-          {
-            localObject = paramCompoundButton.getContext().getString(2131433418, new Object[] { Integer.valueOf(MultiMsgManager.a().a()) });
-            QQToast.a(paramCompoundButton.getContext(), (CharSequence)localObject, 0).b(((BaseActivity)paramCompoundButton.getContext()).getTitleBarHeight());
-            paramCompoundButton.setChecked(false);
-            return;
-          }
-          if ((((localObject instanceof MessageForPic)) || ((localObject instanceof MessageForMixedMsg)) || (((ChatMessage)localObject).msgtype == -1036)) && (MultiMsgManager.a().c()))
-          {
-            localObject = paramCompoundButton.getContext().getString(2131433419, new Object[] { Integer.valueOf(MultiMsgManager.a().b()) });
-            QQToast.a(paramCompoundButton.getContext(), (CharSequence)localObject, 0).b(((BaseActivity)paramCompoundButton.getContext()).getTitleBarHeight());
-            paramCompoundButton.setChecked(false);
-            return;
-          }
-          if (((localObject instanceof MessageForShortVideo)) && (MultiMsgManager.a().d()))
-          {
-            localObject = paramCompoundButton.getContext().getString(2131433420, new Object[] { Integer.valueOf(MultiMsgManager.a().c()) });
-            QQToast.a(paramCompoundButton.getContext(), (CharSequence)localObject, 0).b(((BaseActivity)paramCompoundButton.getContext()).getTitleBarHeight());
-            paramCompoundButton.setChecked(false);
-            return;
-          }
-          MultiMsgManager.a().a((ChatMessage)localObject, paramBoolean);
-        }
-      }
+    return 0.3D;
+  }
+  
+  protected int a()
+  {
+    return this.a;
+  }
+  
+  protected long a(uja paramuja1, uja paramuja2)
+  {
+    if ((paramuja1 != paramuja2) && (paramuja1.b == paramuja2.b)) {
+      return 1L;
     }
+    return Math.abs(paramuja1.b - paramuja2.b);
+  }
+  
+  protected uja a(List<uja> paramList)
+  {
+    long l = 0L;
+    int i = 0;
+    while (i < paramList.size())
+    {
+      l += ((uja)paramList.get(i)).b;
+      i += 1;
+    }
+    uja localuja = new uja();
+    localuja.b = (l / paramList.size());
+    return localuja;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a = paramInt;
+  }
+  
+  protected boolean a(long paramLong)
+  {
+    int i = b();
+    if (i > 0) {
+      if (paramLong / i >= 1500L) {}
+    }
+    while (paramLong < 200L)
+    {
+      return true;
+      return false;
+    }
+    return false;
+  }
+  
+  protected boolean a(uja paramuja1, uja paramuja2)
+  {
+    return paramuja1.b == paramuja2.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ukj
  * JD-Core Version:    0.7.0.1
  */

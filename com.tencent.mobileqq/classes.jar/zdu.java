@@ -1,29 +1,18 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.FriendListHandler;
-import mqq.os.MqqHandler;
-
-public class zdu
-  extends MqqHandler
+class zdu
+  implements bckp
 {
-  public zdu(FriendListHandler paramFriendListHandler, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  zdu(zdt paramzdt, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(String paramString1, String paramString2)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    if (bcka.jdField_a_of_type_JavaLangString.equals(paramString2)) {
+      this.jdField_a_of_type_Zdt.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":1,\"id\":" + paramString2 + "}" });
     }
-    FriendListHandler.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zdu
  * JD-Core Version:    0.7.0.1
  */

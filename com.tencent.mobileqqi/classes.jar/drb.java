@@ -1,20 +1,16 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.qphone.base.remote.SimpleAccount;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-class drb
-  implements Runnable
+public class drb
+  implements View.OnClickListener
 {
-  drb(dra paramdra) {}
+  public drb(TroopMemberListActivity paramTroopMemberListActivity, Dialog paramDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_Dqz.a.e();
-    this.a.jdField_a_of_type_Dqz.a.a(this.a.jdField_a_of_type_Dqz.a.getString(2131562096));
-    Intent localIntent = new Intent(this.a.jdField_a_of_type_Dqz.a, SubLoginActivity.class);
-    localIntent.putExtra("subuin", this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.getUin());
-    this.a.jdField_a_of_type_Dqz.a.startActivity(localIntent);
+    this.jdField_a_of_type_AndroidAppDialog.cancel();
   }
 }
 

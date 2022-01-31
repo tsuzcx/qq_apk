@@ -9,9 +9,9 @@ public final class l
 {
   static byte[] d;
   static byte[] e;
-  public int a;
-  public byte[] b;
-  public byte[] c;
+  public int a = 0;
+  public byte[] b = null;
+  public byte[] c = null;
   
   public l() {}
   

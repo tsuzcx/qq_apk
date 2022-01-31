@@ -1,62 +1,38 @@
-import android.view.View;
-import com.tencent.mobileqq.filemanager.activity.CloudFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.activity.CloudFileBrowserActivity.OverScrollViewTag;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
-import com.tencent.widget.OverScrollViewListener;
 
 public class fue
-  implements OverScrollViewListener
+  extends BroadcastReceiver
 {
-  public fue(CloudFileBrowserActivity paramCloudFileBrowserActivity) {}
+  public fue(FileManagerDataCenter paramFileManagerDataCenter) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.c == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.c)
+    paramContext = paramIntent.getAction();
+    if ((paramContext != null) && (paramContext.equalsIgnoreCase("com.opensdk.downloadmanager.renameFilename")))
     {
-      paramView.c(l);
-      return;
+      localBundle = paramIntent.getBundleExtra("extraBundle");
+      if (localBundle != null) {
+        break label46;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("FileManagerDataCenter<FileAssistant>", 2, "INTENT_ACTION_RENAME_FILENAME extra is null!!!");
+      }
     }
-  }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(CloudFileBrowserActivity.b, 2, "onViewCompleteVisableAndReleased");
-    }
-    paramListView = (PullRefreshHeader)paramView;
-    if (this.a.c == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.c)
-    {
-      paramListView.a(l);
-      this.a.h();
-      ((CloudFileBrowserActivity.OverScrollViewTag)paramView.getTag()).a = true;
-      return true;
-    }
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(CloudFileBrowserActivity.b, 2, "onViewCompleteVisable");
-    }
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.c == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.c)
-    {
-      paramView.b(l);
-      return;
-    }
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(CloudFileBrowserActivity.b, 2, "onViewNotCompleteVisableAndReleased");
-    }
+    return;
+    label46:
+    paramContext = localBundle.getString("peerUin");
+    int i = localBundle.getInt("peerType");
+    paramIntent = localBundle.getString("sourceStr");
+    String str = localBundle.getString("filePath");
+    long l = localBundle.getLong("dataLength");
+    int j = localBundle.getInt("fileSourceId");
+    Bundle localBundle = localBundle.getBundle("otherData");
+    this.a.a(paramContext, i, str, l, j, paramIntent, localBundle);
   }
 }
 

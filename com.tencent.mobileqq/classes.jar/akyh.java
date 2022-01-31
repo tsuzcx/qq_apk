@@ -1,22 +1,44 @@
-import com.tencent.mobileqq.ar.config.WorldCupMgr;
-import com.tencent.mobileqq.worldcup.WorldCupShareFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 
-public class akyh
-  implements Runnable
+class akyh
+  extends BroadcastReceiver
 {
-  public akyh(WorldCupShareFragment paramWorldCupShareFragment) {}
+  akyh(akyg paramakyg) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QLog.i("WorldCupShareFragment", 2, "WL_DEBUG mResDownloadTimeoutRunnable.run");
-    WorldCupMgr.a(WorldCupShareFragment.a(this.a)).b(WorldCupShareFragment.a(this.a));
-    WorldCupShareFragment.b(this.a, true);
+    if (akyg.a(this.a) == null) {}
+    do
+    {
+      do
+      {
+        return;
+        if ("android.intent.action.SCREEN_ON".equals(paramIntent.getAction()))
+        {
+          if (akyg.a(this.a))
+          {
+            akyg.a(this.a).runRenderTask(akyg.a(this.a));
+            return;
+          }
+          akyg.a(this.a);
+          return;
+        }
+      } while (!"android.intent.action.SCREEN_OFF".equals(paramIntent.getAction()));
+      if (!akyg.a(this.a)) {
+        break;
+      }
+    } while (akyg.a(this.a) == null);
+    akyg.a(this.a).runRenderTask(akyg.b(this.a));
+    return;
+    akyg.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akyh
  * JD-Core Version:    0.7.0.1
  */

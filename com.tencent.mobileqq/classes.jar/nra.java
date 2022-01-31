@@ -1,69 +1,40 @@
-import com.tencent.biz.qqstory.base.QQStoryHandler;
-import com.tencent.biz.qqstory.base.QQStoryManager;
-import com.tencent.biz.qqstory.base.QQStoryObserver;
-import com.tencent.biz.qqstory.settings.QQStoryBasicSettingsActivity;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.AsyncTask;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 
 public class nra
-  extends QQStoryObserver
+  extends AsyncTask<String, Integer, String>
 {
-  public nra(QQStoryBasicSettingsActivity paramQQStoryBasicSettingsActivity) {}
+  String jdField_a_of_type_JavaLangString;
   
-  public void b(int paramInt)
+  protected String a(String... paramVarArgs)
   {
-    QQStoryBasicSettingsActivity.a(this.a);
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-    case 1001: 
-      this.a.a(0);
-      return;
-    case 2: 
-      this.a.a(1);
-      return;
-    case 3: 
-      this.a.a(2);
-      return;
+    if (super.isCancelled()) {
+      return null;
     }
-    QQToast.a(this.a, "请求失败!", 0).b(this.a.getTitleBarHeight());
+    return this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a(paramVarArgs[0], paramVarArgs[1]);
   }
   
-  public void b(boolean paramBoolean)
+  protected void a(String paramString)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a();
+    String str = paramString;
+    if (paramString == null) {
+      str = "{\"r\" : \"-100\"}";
     }
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.a(this.a.b(this.a.jdField_a_of_type_Int));
-      this.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.b(this.a.b(this.a.jdField_a_of_type_Int));
-      if (this.a.jdField_a_of_type_Int == 2) {
-        StoryReportor.a("browse_friend_settings", "close", 0, 0, new String[] { "", "", "", "" });
-      }
-      do
-      {
-        return;
-        if (this.a.jdField_a_of_type_Int == 0)
-        {
-          StoryReportor.a("browse_friend_settings", "choose_all", 0, 0, new String[] { "", "", "", "" });
-          return;
-        }
-      } while (this.a.jdField_a_of_type_Int != 1);
-      StoryReportor.a("browse_friend_settings", "choose_wifi", 0, 0, new String[] { "", "", "", "" });
-      return;
-    }
-    QQToast.a(this.a, 2131437531, 0).b(this.a.getTitleBarHeight());
-    this.a.a(this.a.b);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler.d();
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs("clientCallback", new String[] { ndq.a(str), ndq.a(this.jdField_a_of_type_JavaLangString) });
   }
+  
+  protected void a(Integer... paramVarArgs) {}
+  
+  protected void onCancelled()
+  {
+    super.onCancelled();
+  }
+  
+  protected void onPreExecute() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nra
  * JD-Core Version:    0.7.0.1
  */

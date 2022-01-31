@@ -1,26 +1,19 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.mobileqq.utils.LogTag;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
 
-public class airn
-  extends MessageObserver
+class airn
+  implements arrh
 {
-  public airn(ShortVideoUploadProcessor paramShortVideoUploadProcessor) {}
+  airn(airm paramairm) {}
   
-  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
+  public void a()
   {
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    LogTag.a(String.valueOf(this.a.a.jdField_a_of_type_Long), "message", "sendMsgFinish isSuccess:" + paramBoolean + ",mr = " + this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.toString());
-    this.a.a(this.a.c, false, paramBoolean, paramStatictisInfo);
-    if (paramBoolean)
-    {
-      this.a.e();
-      return;
-    }
-    this.a.d();
+    this.a.a.c();
+  }
+  
+  public void b()
+  {
+    ((NewPhotoPreviewActivity)this.a.a.mActivity).sendBtn.setClickable(true);
   }
 }
 

@@ -1,31 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupInnerListView;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupInnerListView.ILoadMoreDataListener;
-import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.DownloadBarInfo;
 
-public class nsn
-  implements LoadingMoreHelper.OnLoadMoreListener
+public final class nsn
+  implements Parcelable.Creator<VideoInfo.DownloadBarInfo>
 {
-  public nsn(ShareGroupInnerListView paramShareGroupInnerListView) {}
-  
-  public void a()
+  public VideoInfo.DownloadBarInfo a(Parcel paramParcel)
   {
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupInnerListView$ILoadMoreDataListener != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupInnerListView$ILoadMoreDataListener.a(this.a.jdField_a_of_type_JavaLangString);
-    }
+    return new VideoInfo.DownloadBarInfo(paramParcel);
   }
   
-  public boolean a(boolean paramBoolean)
+  public VideoInfo.DownloadBarInfo[] a(int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupInnerListView$ILoadMoreDataListener != null) {
-      return this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupInnerListView$ILoadMoreDataListener.a(this.a.jdField_a_of_type_JavaLangString);
-    }
-    return false;
+    return new VideoInfo.DownloadBarInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nsn
  * JD-Core Version:    0.7.0.1
  */

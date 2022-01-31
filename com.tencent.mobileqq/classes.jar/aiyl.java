@@ -1,28 +1,69 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aiyl
-  extends SosoInterface.OnLocationListener
 {
-  public aiyl(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  private SendHbActivity a;
+  
+  public aiyl(SendHbActivity paramSendHbActivity)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this.a = paramSendHbActivity;
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, "onLocationFinish() errCode=" + paramInt);
+    Map localMap = this.a.a();
+    localMap.put("channel", this.a.jdField_a_of_type_Int + "");
+    localMap.put("bus_type", "1");
+    localMap.put("type", "1");
+    a(localMap);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    if (TextUtils.isEmpty(paramString2)) {
+      return;
     }
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    try
     {
-      double d1 = paramSosoLbsInfo.a.a;
-      double d2 = paramSosoLbsInfo.a.b;
-      TroopBarPublishLocationSelectActivity.a(this.a, (int)(d1 * 1000000.0D), (int)(d2 * 1000000.0D), 0, true, this.a);
+      localJSONObject.put("userId", paramString2);
+      localJSONObject.put("viewTag", "qrcodeHb");
+      localJSONObject.put("comeForm", 1);
+      paramString2 = new JSONObject();
+      if (!TextUtils.isEmpty(paramString1)) {
+        paramString2.putOpt("qrToken", paramString1);
+      }
+      paramString2.putOpt("comeFrom", Integer.valueOf(1));
+      localJSONObject.put("extra_data", paramString2.toString());
+      paramString1 = new Bundle();
+      paramString1.putString("json", localJSONObject.toString());
+      paramString1.putString("callbackSn", "0");
+      paramString1.putLong("vacreport_key_seq", this.a.jdField_a_of_type_Long);
+      PayBridgeActivity.a(this.a, 5, paramString1);
+      return;
     }
+    catch (JSONException paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+  }
+  
+  public void a(Map<String, String> paramMap)
+  {
+    Object localObject = new JSONObject(paramMap);
+    paramMap = this.a.b();
+    paramMap.put("extra_data", ((JSONObject)localObject).toString());
+    localObject = new Bundle();
+    ((Bundle)localObject).putString("json", new JSONObject(paramMap).toString());
+    ((Bundle)localObject).putString("callbackSn", "0");
+    ((Bundle)localObject).putLong("vacreport_key_seq", this.a.jdField_a_of_type_Long);
+    PayBridgeActivity.a(this.a, 5, (Bundle)localObject);
   }
 }
 

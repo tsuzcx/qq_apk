@@ -1,19 +1,10 @@
-import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy;
-import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper;
-
-public class amqh
-  implements Runnable
+public abstract interface amqh
 {
-  public amqh(QQIndividualityRemoteProxy paramQQIndividualityRemoteProxy, QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper paramQQIndividualityRemoteProxyCallWrapper) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy.a(this.jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy$QQIndividualityRemoteProxyCallWrapper);
-  }
+  public abstract void a(int paramInt, amqe paramamqe);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amqh
  * JD-Core Version:    0.7.0.1
  */

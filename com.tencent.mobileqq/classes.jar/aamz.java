@@ -1,16 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.arcard.ARCardPageProcess;
-import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
+import android.text.TextUtils;
 
-public class aamz
-  implements Runnable
+public final class aamz
 {
-  public aamz(ARGreetingCardListManager paramARGreetingCardListManager) {}
+  public int a;
+  public String a;
+  public int b;
   
-  public void run()
+  public boolean a()
   {
-    ARGreetingCardListManager.a(this.a).setVisibility(4);
-    ARGreetingCardListManager.a(this.a).a();
+    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Int >= 0) && (this.b >= 0);
   }
 }
 

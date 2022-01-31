@@ -1,9 +1,19 @@
-import android.widget.TextView;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.emoj.EmojiGifHelper.OnConvertListener;
+import eipc.EIPCResult;
 
-public class ajbe
+class ajbe
+  implements EmojiGifHelper.OnConvertListener
 {
-  public int a;
-  public TextView a;
+  ajbe(ajaz paramajaz, int paramInt) {}
+  
+  public void onConvertResult(boolean paramBoolean, String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("res", paramBoolean);
+    localBundle.putString("path", paramString);
+    this.jdField_a_of_type_Ajaz.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
+  }
 }
 
 

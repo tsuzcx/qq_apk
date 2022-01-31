@@ -1,36 +1,36 @@
-import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
+import com.tencent.qphone.base.util.QLog;
 
-public class xts
-  implements ModuleDownloadListener
+final class xts
+  extends xtb
 {
-  public xts(QzDynamicVideoPreviewActivity paramQzDynamicVideoPreviewActivity) {}
+  xts(xtb paramxtb) {}
   
-  public void onDownloadCanceled(String paramString)
+  public void onFailure(String paramString)
   {
-    QZLog.i("QzDynamicVideoPreviewActivity", 2, new Object[] { "onDownloadCanceled ", paramString });
-  }
-  
-  public void onDownloadFailed(String paramString)
-  {
-    QZLog.i("QzDynamicVideoPreviewActivity", 2, new Object[] { "onDownloadFailed ", paramString });
-    this.a.runOnUiThread(new xtu(this));
-  }
-  
-  public void onDownloadProgress(String paramString, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("cyber_clink.jar")) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
     }
-    this.a.runOnUiThread(new xtt(this));
+    this.a.onFailure(paramString);
+    wxj.a("music_composite", "music_clip", 0, 1, new String[0]);
+  }
+  
+  public void onStart()
+  {
+    super.onStart();
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    paramString = String.valueOf(System.currentTimeMillis() - this.b);
+    wxj.a("music_composite", "music_clip", 0, 0, new String[] { paramString });
+    if (QLog.isColorLevel()) {
+      QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 2, "音乐截取成功耗时：" + paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xts
  * JD-Core Version:    0.7.0.1
  */

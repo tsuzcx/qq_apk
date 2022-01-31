@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.doutu.DoutuEmotionAdapter;
-import com.tencent.mobileqq.doutu.DoutuManager;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class abyk
-  implements Runnable
+class abyk
+  implements View.OnClickListener
 {
-  public abyk(DoutuManager paramDoutuManager, long paramLong) {}
+  abyk(abyi paramabyi) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuManager.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuManager.a.a(this.jdField_a_of_type_Long);
-    }
+    this.a.a.d();
+    abyi.a(this.a);
   }
 }
 

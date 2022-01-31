@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import ahhs;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import axou;
 import com.tencent.mobileqq.qmcf.QmcfManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -16,10 +16,10 @@ import org.json.JSONObject;
 public class FilterCategory
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ahhs();
+  public static final Parcelable.Creator<FilterCategory> CREATOR = new axou();
   public int a;
   public String a;
-  public List a;
+  public List<FilterCategoryItem> a;
   
   public FilterCategory(Parcel paramParcel)
   {
@@ -119,9 +119,9 @@ public class FilterCategory
             }
           }
           localObject3 = localFilterCategoryItem.a();
-          if ((localObject3 != null) && (((FilterDesc)localObject3).jdField_a_of_type_Int == 1)) {
-            if (QmcfManager.a().b(((FilterDesc)localObject3).e)) {
-              if (QmcfManager.a().a(1)) {}
+          if ((localObject3 != null) && (((FilterDesc)localObject3).type == 1)) {
+            if (QmcfManager.getInstance().isArtFilterVersionOK(((FilterDesc)localObject3).version)) {
+              if (QmcfManager.getInstance().hasQmcfEntrance(1)) {}
             }
           }
         }
@@ -147,7 +147,7 @@ public class FilterCategory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.data.FilterCategory
  * JD-Core Version:    0.7.0.1
  */

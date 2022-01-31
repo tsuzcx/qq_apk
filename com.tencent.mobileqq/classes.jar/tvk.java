@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.mobileqq.bubble.BubbleDiyFetcher;
-
-public class tvk
-  implements Runnable
+class tvk
+  implements bhvm
 {
-  public tvk(TextPreviewActivity paramTextPreviewActivity, BubbleDiyFetcher paramBubbleDiyFetcher, String paramString) {}
+  tvk(tvj paramtvj) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.a(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity.app, this.jdField_a_of_type_JavaLangString, null);
+    tuz.a(this.a.a, 63);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tvk
  * JD-Core Version:    0.7.0.1
  */

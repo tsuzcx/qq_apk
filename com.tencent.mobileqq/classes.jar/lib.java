@@ -1,19 +1,18 @@
-import android.widget.Button;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyEffectsCameraCaptureFragment;
+import android.os.IBinder.DeathRecipient;
 
-public class lib
-  implements Runnable
+class lib
+  implements IBinder.DeathRecipient
 {
-  public lib(ReadInJoyEffectsCameraCaptureFragment paramReadInJoyEffectsCameraCaptureFragment) {}
+  lib(lia paramlia) {}
   
-  public void run()
+  public void binderDied()
   {
-    this.a.a.setVisibility(0);
+    lek.d("QQServiceProxy", "QQServiceForAV mobileQQ process exited!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lib
  * JD-Core Version:    0.7.0.1
  */

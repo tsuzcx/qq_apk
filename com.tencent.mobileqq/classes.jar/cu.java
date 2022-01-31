@@ -1,19 +1,21 @@
-import com.dataline.data.PrinterManager;
-import com.tencent.mobileqq.app.DataLineObserver;
+import com.dataline.activities.PrinterSubOptionActivity;
 
 public class cu
-  extends DataLineObserver
 {
-  public cu(PrinterManager paramPrinterManager) {}
+  public int a;
+  public long a;
+  public String a;
   
-  protected void b()
+  public cu(PrinterSubOptionActivity paramPrinterSubOptionActivity, int paramInt, long paramLong, String paramString)
   {
-    PrinterManager.a(this.a, 1);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.mobileqq.activity.selectmember.FriendTabView;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
 public class xyy
-  implements View.OnClickListener
+  implements bfah
 {
-  public xyy(FriendTabView paramFriendTabView) {}
+  public xyy(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onClick(View paramView)
+  public void a(BaseResp paramBaseResp)
   {
-    this.a.a.a(1);
+    if ((this.a.g == null) || (!this.a.g.equals(paramBaseResp.transaction))) {
+      return;
+    }
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      ybk.a(1, 2131720031);
+      return;
+    }
+    ybk.a(2, 2131720050);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xyy
  * JD-Core Version:    0.7.0.1
  */

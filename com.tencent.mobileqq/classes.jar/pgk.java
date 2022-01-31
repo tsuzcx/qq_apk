@@ -1,158 +1,92 @@
-import com.tencent.component.media.ImageManagerEnv.ImageDownloaderListener;
-import com.tencent.component.media.image.DownloadImageTask;
-import com.tencent.component.media.image.ImageDownloadInfo;
-import com.tencent.component.media.image.ImageKey;
-import com.tencent.component.media.image.ImageLoader.Options;
-import com.tencent.component.media.image.ImageManager;
-import com.tencent.component.media.image.ImageTaskConst;
-import com.tencent.component.media.image.ImageTaskTracer;
-import com.tencent.component.media.image.ImageTracer;
-import com.tencent.component.media.image.ProgressTracer;
-import com.tencent.component.media.utils.ImageManagerLog;
-import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager;
+import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.EntranceIconInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.ExtraInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.concurrent.ExecutorService;
+import tencent.im.oidb.cmd0xdcb.oidb_cmd0xdcb.ExtraInfo;
+import tencent.im.oidb.cmd0xdcb.oidb_cmd0xdcb.IconInfo;
+import tencent.im.oidb.cmd0xdcb.oidb_cmd0xdcb.ReqBody;
+import tencent.im.oidb.cmd0xdcb.oidb_cmd0xdcb.ReqParam;
+import tencent.im.oidb.cmd0xdcb.oidb_cmd0xdcb.RspBody;
 
-public final class pgk
-  implements ImageManagerEnv.ImageDownloaderListener
+public class pgk
+  extends pgp
 {
-  private void a(ImageKey paramImageKey, ImageDownloadInfo paramImageDownloadInfo)
+  public pgk(AppInterface paramAppInterface, awgf paramawgf, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
   {
-    JSONObject localJSONObject;
-    if ((paramImageKey != null) && (paramImageKey.options != null) && (paramImageDownloadInfo != null)) {
-      localJSONObject = new JSONObject();
-    }
-    try
-    {
-      localJSONObject.put("问题描述", ImageTaskConst.getImageTaskErrorDescription(paramImageDownloadInfo.nocacheCode));
-      localJSONObject.put("serverIp", paramImageDownloadInfo.serverIp);
-      localJSONObject.put("clientIp", paramImageDownloadInfo.clientIp);
-      localJSONObject.put("nocacheStatus", String.valueOf(paramImageDownloadInfo.nocacheCode));
-      localJSONObject.put("filePath", paramImageKey.filePath);
-      localJSONObject.put("downloadDetailInfo", paramImageDownloadInfo.downloadDetailInfo);
-      paramImageKey.options.errCode = localJSONObject.toString();
-      ImageManagerLog.w("DownloadImageTask", "processErrorInfo, info = " + localJSONObject.toString());
-      return;
-    }
-    catch (JSONException paramImageDownloadInfo)
-    {
-      for (;;)
-      {
-        ImageManagerLog.e("DownloadImageTask", "onDownloadFailed, Json Exception!");
-        paramImageDownloadInfo.printStackTrace();
-      }
+    super(paramAppInterface, paramawgf, paramExecutorService, parampuz, paramHandler);
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xdcb")) {
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
     }
   }
   
-  public void onDownloadCanceled(String paramString)
+  public void b(int paramInt)
   {
-    DownloadImageTask localDownloadImageTask = (DownloadImageTask)DownloadImageTask.a().remove(paramString);
-    ImageTaskTracer.removeImageDownloadRecord(ImageKey.getUrlKey(paramString, false));
-    ImageTracer.cancel(paramString);
-    if (localDownloadImageTask != null) {
-      localDownloadImageTask.setResult(0, new Object[] { paramString });
-    }
+    QLog.d("ReadInJoyDianDianEntranceModule", 1, "requestIconRefreshInfo | reqFeedType " + paramInt);
+    Object localObject = new oidb_cmd0xdcb.ReqBody();
+    oidb_cmd0xdcb.ReqParam localReqParam = new oidb_cmd0xdcb.ReqParam();
+    localReqParam.uint32_req_type.set(paramInt);
+    ((oidb_cmd0xdcb.ReqBody)localObject).msg_req_param.set(localReqParam);
+    localObject = pvb.a("OidbSvc.0xdcb", 3531, 0, ((oidb_cmd0xdcb.ReqBody)localObject).toByteArray());
+    ((ToServiceMsg)localObject).getAttributes().put("req_feed_type", Integer.valueOf(paramInt));
+    a((ToServiceMsg)localObject);
   }
   
-  public void onDownloadFailed(String paramString, ImageDownloadInfo paramImageDownloadInfo)
+  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    DownloadImageTask localDownloadImageTask = (DownloadImageTask)DownloadImageTask.a().remove(paramString);
-    Object localObject = ImageKey.getUrlKey(paramString, false);
-    ImageTaskTracer.removeImageDownloadRecord((String)localObject);
-    ImageTaskTracer.addImageDownloadFailedRecord((String)localObject);
-    ImageTracer.downloadFail(paramString);
-    ProgressTracer.print(1001, paramString);
-    int j;
-    int k;
-    int i;
-    if (localDownloadImageTask != null)
+    oidb_cmd0xdcb.RspBody localRspBody = new oidb_cmd0xdcb.RspBody();
+    int i = ((Integer)paramToServiceMsg.getAttributes().get("req_feed_type")).intValue();
+    int j = pvb.a(paramFromServiceMsg, paramObject, localRspBody);
+    QLog.d("ReadInJoyDianDianEntranceModule", 1, "handleIconRefreshInfoRsp | retCode " + j + " ; reqFeedsType " + i);
+    paramToServiceMsg = new RecommendFeedsDiandianEntranceManager.EntranceIconInfo();
+    paramToServiceMsg.jdField_a_of_type_Int = i;
+    paramFromServiceMsg = new RecommendFeedsDiandianEntranceManager.ExtraInfo();
+    if ((j == 0) && (localRspBody.msg_icon_info.has()))
     {
-      localObject = localDownloadImageTask.getImageKey();
-      if ((localObject != null) && (((ImageKey)localObject).options != null) && (paramImageDownloadInfo != null))
-      {
-        j = paramImageDownloadInfo.failCode;
-        k = paramImageDownloadInfo.retCode;
-        if (paramImageDownloadInfo.retCode >= 0) {
-          break label297;
-        }
-        i = 1;
+      paramObject = (oidb_cmd0xdcb.IconInfo)localRspBody.msg_icon_info.get();
+      if (paramObject.feeds_msg_icon_url.has()) {
+        paramToServiceMsg.jdField_a_of_type_JavaLangString = paramObject.feeds_msg_icon_url.get();
       }
-    }
-    for (;;)
-    {
-      JSONObject localJSONObject = new JSONObject();
-      try
-      {
-        localJSONObject.put("问题描述", ImageTaskConst.getImageTaskErrorDescription(paramImageDownloadInfo.retCode));
-        localJSONObject.put("failCode", String.valueOf(j));
-        localJSONObject.put("exceptionCode", String.valueOf(k));
-        localJSONObject.put("serverIp", paramImageDownloadInfo.serverIp);
-        localJSONObject.put("clientIp", paramImageDownloadInfo.clientIp);
-        localJSONObject.put("errType", String.valueOf(i));
-        localJSONObject.put("url", paramString);
-        ((ImageKey)localObject).options.errCode = localJSONObject.toString();
-        ImageManagerLog.e("DownloadImageTask", "onDownloadFailed, failCode=" + paramImageDownloadInfo.failCode + ", exceptionCode=" + paramImageDownloadInfo.retCode + ", serverIp=" + paramImageDownloadInfo.serverIp + ", clientIp=" + paramImageDownloadInfo.clientIp + ", contentType=" + paramImageDownloadInfo.contentType + "， url=" + paramString);
-        localDownloadImageTask.setResult(1, new Object[] { paramString });
-        return;
-        label297:
-        i = 2;
+      if (paramObject.feeds_default_icon_url.has()) {
+        paramToServiceMsg.b = paramObject.feeds_default_icon_url.get();
       }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          ImageManagerLog.e("DownloadImageTask", "onDownloadFailed, Json Exception!");
-          localJSONException.printStackTrace();
+      if (paramObject.uint32_is_use_gif.has()) {
+        if (paramObject.uint32_is_use_gif.get() == 0) {
+          break label292;
         }
       }
     }
-  }
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
-  {
-    DownloadImageTask localDownloadImageTask = (DownloadImageTask)DownloadImageTask.a().get(paramString);
-    ImageTaskTracer.removeImageDownloadRecord(ImageKey.getUrlKey(paramString, false));
-    if (localDownloadImageTask != null) {
-      localDownloadImageTask.setResult(3, new Object[] { paramString, Long.valueOf(paramLong), Float.valueOf(paramFloat) });
-    }
-  }
-  
-  public void onDownloadSucceed(String paramString1, String paramString2, boolean paramBoolean, ImageDownloadInfo paramImageDownloadInfo)
-  {
-    DownloadImageTask localDownloadImageTask = (DownloadImageTask)DownloadImageTask.a().remove(paramString1);
-    ImageTaskTracer.removeImageDownloadRecord(ImageKey.getUrlKey(paramString1, false));
-    if (localDownloadImageTask == null) {
-      return;
-    }
-    boolean bool = ImageManager.getInstance().a(localDownloadImageTask.mImageKey, paramString1, paramString2, paramBoolean);
-    if (bool)
+    label292:
+    for (boolean bool = true;; bool = false)
     {
-      if (paramBoolean) {
-        a(localDownloadImageTask.getImageKey(), paramImageDownloadInfo);
+      paramToServiceMsg.jdField_a_of_type_Boolean = bool;
+      if (paramObject.str_jump_schema.has()) {
+        paramToServiceMsg.c = paramObject.str_jump_schema.get();
       }
-      localDownloadImageTask.setResult(2, new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean) });
+      paramToServiceMsg.jdField_a_of_type_Int = i;
+      if ((localRspBody.msg_extra_info.has()) && (localRspBody.msg_extra_info.str_report_json.has())) {
+        paramFromServiceMsg.jdField_a_of_type_JavaLangString = localRspBody.msg_extra_info.str_report_json.get();
+      }
+      QLog.d("ReadInJoyDianDianEntranceModule", 1, "handleIconRefreshInfoRsp | EntranceIconInfo " + paramToServiceMsg);
+      RecommendFeedsDiandianEntranceManager.a().a(paramToServiceMsg);
       return;
-    }
-    paramString2 = localDownloadImageTask.getImageKey();
-    if ((paramString2 != null) && (paramString2.options != null)) {
-      paramString2.options.errCode = ImageManager.getErrorString(paramString2, 800);
-    }
-    ImageManagerLog.w("DownloadImageTask", "onDownloadSucceed, canDecode = " + bool + ", url=" + paramString1);
-    localDownloadImageTask.setResult(1, new Object[] { paramString1 });
-  }
-  
-  public void onStreamProgress(String paramString1, String paramString2)
-  {
-    DownloadImageTask localDownloadImageTask = (DownloadImageTask)DownloadImageTask.a().get(paramString1);
-    ImageTaskTracer.removeImageDownloadRecord(ImageKey.getUrlKey(paramString1, false));
-    if ((localDownloadImageTask != null) && (localDownloadImageTask.mImageKey != null) && (localDownloadImageTask.mImageKey.options != null) && (localDownloadImageTask.mImageKey.options.isGifPlayWhileDownloading)) {
-      localDownloadImageTask.setResult(14, new Object[] { paramString1, paramString2 });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pgk
  * JD-Core Version:    0.7.0.1
  */

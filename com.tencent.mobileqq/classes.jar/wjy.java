@@ -1,33 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class wjy
-  implements DialogInterface.OnClickListener
+class wjy
+  extends uss
 {
-  public wjy(SystemMsgListView paramSystemMsgListView) {}
+  wjy(wjw paramwjw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
   {
-    if (paramInt == 1)
-    {
-      paramDialogInterface = new Intent(this.a.getContext(), BindNumberActivity.class);
-      paramDialogInterface.putExtra("kSrouce", 17);
-      this.a.a(paramDialogInterface, 230);
-      ReportController.b(this.a.a, "dc00898", "", "", "0X80077C9", "0X80077C9", 0, 0, "", "", "", "");
+    wxe.a("Q.qqstory.detail.StoryDetailPresenter", "post comment result is %s.", Boolean.valueOf(paramBoolean));
+    if (!wjw.a(this.a).get()) {
+      wjw.a(this.a).c();
     }
-    while (paramInt != 0) {
-      return;
-    }
-    ReportController.b(this.a.a, "dc00898", "", "", "0X80077CA", "0X80077CA", 0, 0, "", "", "", "");
+  }
+  
+  public boolean a(CommentEntry paramCommentEntry, qqstory_service.RspAddFeedComment paramRspAddFeedComment)
+  {
+    uux localuux = (uux)uwa.a(17);
+    localuux.a(paramCommentEntry.commentId);
+    paramCommentEntry.commentId = paramRspAddFeedComment.comment_id.get();
+    paramCommentEntry.status = 0;
+    localuux.a(paramCommentEntry);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wjy
  * JD-Core Version:    0.7.0.1
  */

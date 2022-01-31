@@ -1,37 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.VersionUtils;
-import mqq.os.MqqHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushOpDialogModel;
 
-public class tiy
-  implements Animation.AnimationListener
+public final class tiy
+  implements Parcelable.Creator<WSPushOpDialogModel>
 {
-  public tiy(QQLSActivity paramQQLSActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public WSPushOpDialogModel a(Parcel paramParcel)
   {
-    this.a.a.removeMessages(99);
-    if (VersionUtils.g())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQLSActivity", 2, "do SmoothFinish");
-      }
-      QQLSActivity.g(this.a);
-      this.a.finish();
-      return;
-    }
-    this.a.a.postAtFrontOfQueue(new tiz(this));
+    return new WSPushOpDialogModel(paramParcel);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public WSPushOpDialogModel[] a(int paramInt)
+  {
+    return new WSPushOpDialogModel[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tiy
  * JD-Core Version:    0.7.0.1
  */

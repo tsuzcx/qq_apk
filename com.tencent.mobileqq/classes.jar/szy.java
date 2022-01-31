@@ -1,35 +1,12 @@
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.net.Uri;
 
-public class szy
-  implements Runnable
+public abstract interface szy
 {
-  public szy(LoginInfoActivity paramLoginInfoActivity) {}
-  
-  public void run()
-  {
-    try
-    {
-      if ((LoginInfoActivity.a(this.a) != null) && (LoginInfoActivity.a(this.a).isShowing()))
-      {
-        LoginInfoActivity.a(this.a).dismiss();
-        LoginInfoActivity.a(this.a).cancel();
-      }
-      LoginInfoActivity.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
-  }
+  public abstract void a(Uri paramUri, String paramString, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     szy
  * JD-Core Version:    0.7.0.1
  */

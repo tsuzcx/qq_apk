@@ -1,20 +1,27 @@
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
-import dov.com.qq.im.capture.music.QQMusicPlayerScene;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.ArkAiAppPanel.4.1;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import java.util.ArrayList;
 
 public class anmd
-  implements Runnable
+  implements View.OnClickListener
 {
-  public anmd(QQMusicPlayerScene paramQQMusicPlayerScene, String paramString, int paramInt1, int paramInt2) {}
+  anmd(anma paramanma) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_DovComQqImCaptureMusicQQMusicPlayerScene.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_DovComQqImCaptureMusicQQMusicPlayerScene.a(this.b);
+    if ((anma.a(this.a) == null) || (anma.a(this.a).size() <= 0) || (anma.a(this.a) >= anma.a(this.a).size()) || (anma.a(this.a).get(anma.a(this.a)) == null)) {
+      return;
+    }
+    paramView = ((afih)anma.a(this.a).get(anma.a(this.a))).getAppName();
+    ArkAppCenter.a().post(paramView, new ArkAiAppPanel.4.1(this, paramView));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmd
  * JD-Core Version:    0.7.0.1
  */

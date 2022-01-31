@@ -1,18 +1,11 @@
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.os.Handler;
 
-class ydf
-  implements Runnable
-{
-  ydf(yde paramyde) {}
-  
-  public void run()
-  {
-    this.a.a.b();
-  }
-}
+public class ydf
+  extends Handler
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ydf
  * JD-Core Version:    0.7.0.1
  */

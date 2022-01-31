@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
+import ajaz;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import eipc.EIPCResult;
-import xgf;
 
-public class QWalletIPCModule$1$1
+class QWalletIPCModule$1$1
   extends ResultReceiver
 {
-  public QWalletIPCModule$1$1(xgf paramxgf, Handler paramHandler)
+  QWalletIPCModule$1$1(QWalletIPCModule.1 param1, Handler paramHandler)
   {
     super(paramHandler);
   }
@@ -22,12 +22,12 @@ public class QWalletIPCModule$1$1
     }
     paramBundle = new EIPCResult();
     paramBundle.data = localBundle;
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCModule.callbackResult(this.a.jdField_a_of_type_Int, paramBundle);
+    this.a.this$0.callbackResult(this.a.a, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.preload.QWalletIPCModule.1.1
  * JD-Core Version:    0.7.0.1
  */

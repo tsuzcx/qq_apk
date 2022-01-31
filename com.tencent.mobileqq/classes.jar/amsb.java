@@ -1,32 +1,55 @@
-import android.os.Handler;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
-import cooperation.qzone.plugin.OnQZonePluginInstallListner.Stub;
 
 public class amsb
-  extends OnQZonePluginInstallListner.Stub
 {
-  public amsb(QZoneLiveVideoDownLoadActivtyV2 paramQZoneLiveVideoDownLoadActivtyV2) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, float paramFloat, long paramLong) {}
-  
-  public void a(String paramString, int paramInt)
+  private static int a(int paramInt)
   {
-    QLog.w("QZoneLiveVideoDownLoadActivtyV2", 1, "[onInstallError] pluginId=" + paramString + ", errorCode=" + paramInt);
-    paramString = this.a.a.obtainMessage();
-    paramString.what = 1010;
-    if (8 == paramInt) {}
-    for (paramString.obj = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ToastPluginDownloadErrorNoSpace", "内部存储空间不足，下载失败");; paramString.obj = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ToastPluginDownloadError", "插件下载失败"))
-    {
-      this.a.a.sendMessage(paramString);
-      return;
+    if (paramInt == 0) {
+      return 1;
+    }
+    if (paramInt == 1) {
+      return 0;
+    }
+    return 2;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  {
+    paramInt = a(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.i("PublicAccountStateReporter", 2, "onPublicAccountReceiveState state : " + paramInt + ", name: " + paramString2 + ", pUin: " + paramString1);
+    }
+    paramQQAppInterface = (amru)paramQQAppInterface.a(148);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.a(paramString1, paramString2, paramInt);
     }
   }
   
-  public void b(String paramString) {}
+  private static void a(@NonNull QQAppInterface paramQQAppInterface, boolean paramBoolean, int paramInt1, long paramLong1, long paramLong2, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountStateReporter", 2, new Object[] { "doPublicAccountFollowState { isFollow=", Boolean.valueOf(paramBoolean), " appType=", Integer.valueOf(paramInt1), " appid=", Long.valueOf(paramLong1), " puin=", Long.valueOf(paramLong2), " source=", Integer.valueOf(paramInt2), " }" });
+    }
+    paramQQAppInterface = (amru)paramQQAppInterface.a(148);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.a(paramBoolean, paramInt1, paramLong1, paramLong2, paramInt2);
+    }
+  }
+  
+  public static void a(@NonNull QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString, int paramInt)
+  {
+    try
+    {
+      a(paramQQAppInterface, paramBoolean, -1, -1L, Long.parseLong(paramString), paramInt);
+      return;
+    }
+    catch (NumberFormatException paramQQAppInterface)
+    {
+      QLog.d("PublicAccountStateReporter", 1, new Object[] { "NumberFormatException, puin=", paramString });
+    }
+  }
 }
 
 

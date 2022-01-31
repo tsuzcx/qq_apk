@@ -9,10 +9,10 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ApolloUserTrace$STUserClickTrack
-  extends MessageMicro
+  extends MessageMicro<STUserClickTrack>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50 }, new String[] { "screenScale", "screenX", "screenY", "time", "list", "name" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, "" }, STUserClickTrack.class);
-  public final PBRepeatMessageField list = PBField.initRepeatMessage(ApolloUserTrace.STClickInfo.class);
+  public final PBRepeatMessageField<ApolloUserTrace.STClickInfo> list = PBField.initRepeatMessage(ApolloUserTrace.STClickInfo.class);
   public final PBStringField name = PBField.initString("");
   public final PBInt32Field screenScale = PBField.initInt32(0);
   public final PBInt32Field screenX = PBField.initInt32(0);
@@ -21,7 +21,7 @@ public final class ApolloUserTrace$STUserClickTrack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.apollousertrace.ApolloUserTrace.STUserClickTrack
  * JD-Core Version:    0.7.0.1
  */

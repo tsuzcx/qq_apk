@@ -1,25 +1,23 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
 
-public class afde
-  implements View.OnClickListener
+class afde
+  extends ambp
 {
-  public afde(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  afde(afdd paramafdd) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    if ((this.a.a != null) && (!this.a.isFinishing()))
-    {
-      this.a.a.dismiss();
-      this.a.a = null;
+    afdd.a(this.a).a.b();
+    afgb localafgb = (afgb)afdd.a(this.a).a(29);
+    if (localafgb != null) {
+      localafgb.f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afde
  * JD-Core Version:    0.7.0.1
  */

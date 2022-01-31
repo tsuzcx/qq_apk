@@ -1,69 +1,60 @@
 import android.os.Handler;
 import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouchManager.BannerInfoHandler;
-import com.tencent.mobileqq.redtouch.VipBannerInfo;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.MainAcitivityReportHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class gkf
-  implements RedTouchManager.BannerInfoHandler
+public class gkf
+  extends Handler
 {
-  gkf(gke paramgke) {}
+  public gkf(MainAcitivityReportHelper paramMainAcitivityReportHelper) {}
   
-  public boolean a(VipBannerInfo paramVipBannerInfo)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramVipBannerInfo != null) && (paramVipBannerInfo.a != null))
+    SplashActivity localSplashActivity = (SplashActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localSplashActivity == null) {}
+    do
     {
-      int m = paramVipBannerInfo.e;
-      if ((1 == paramVipBannerInfo.a.iNewFlag.get()) && (1 == paramVipBannerInfo.f) && (!TextUtils.isEmpty(paramVipBannerInfo.b)) && (m >= 1) && (m <= 4))
+      QQAppInterface localQQAppInterface;
+      do
       {
-        int i;
-        int j;
-        label109:
-        int k;
-        if ((1 == m) && (!VipUtils.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityConversation.a)))
+        return;
+        localQQAppInterface = localSplashActivity.b;
+      } while ((localQQAppInterface == null) || (!localQQAppInterface.isLogin()));
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      }
+      MainAcitivityReportHelper.a(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.e("MainActivityReportHandler", 2, "handleMessage count:" + MainAcitivityReportHelper.b(this.a));
+      }
+      if (!"0".equals(localQQAppInterface.a()))
+      {
+        long l = System.currentTimeMillis();
+        if (l - this.a.jdField_a_of_type_Long > 300000L)
         {
-          i = 1;
-          if ((2 != m) || (VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityConversation.a))) {
-            break label230;
+          this.a.jdField_a_of_type_Long = l;
+          paramMessage = (FriendListHandler)localQQAppInterface.a(1);
+          if (paramMessage != null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("MainActivityReportHandler", 2, "handleMessage requst online friens");
+            }
+            paramMessage.d(localQQAppInterface.a(), (byte)0);
           }
-          j = 1;
-          if ((3 != m) || (!VipUtils.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityConversation.a))) {
-            break label235;
-          }
-          k = 1;
-          label134:
-          if ((4 != m) || (!VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityConversation.a))) {
-            break label241;
-          }
-        }
-        label230:
-        label235:
-        label241:
-        for (m = 1;; m = 0)
-        {
-          if ((i == 0) && (j == 0) && (k == 0) && (m == 0)) {
-            break label247;
-          }
-          this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(9);
-          Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(8, paramVipBannerInfo);
-          localMessage.obj = paramVipBannerInfo;
-          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-          return true;
-          i = 0;
-          break;
-          j = 0;
-          break label109;
-          k = 0;
-          break label134;
         }
       }
+    } while ((localSplashActivity == null) || (!localSplashActivity.isResume()) || (MainAcitivityReportHelper.b(this.a) >= 1));
+    MainAcitivityReportHelper.c(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.e("MainActivityReportHandler", 2, "handleMessage sand msg count:" + MainAcitivityReportHelper.b(this.a));
     }
-    label247:
-    return false;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 300000L);
   }
 }
 

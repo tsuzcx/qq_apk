@@ -1,6 +1,9 @@
 package oicq.wlogin_sdk.request;
 
+import java.util.HashMap;
+import oicq.wlogin_sdk.tlv_type.tlv_t543;
 import oicq.wlogin_sdk.tools.ErrMsg;
+import oicq.wlogin_sdk.tools.util;
 
 class WtloginHelper$HelperThread$6
   implements Runnable
@@ -15,6 +18,11 @@ class WtloginHelper$HelperThread$6
     }
     Object localObject = t.b(this.this$1.mUserSigInfo._seqence);
     WtloginHelper.HelperThread.access$600(this.this$1, (async_context)localObject, this.val$ret);
+    if (((async_context)localObject)._t543 != null)
+    {
+      util.LOGI("context from seq " + this.this$1.mUserSigInfo._seqence + " tlv length " + ((async_context)localObject)._t543.get_data_len(), this.this$1.mUserAccount);
+      this.this$1.mUserSigInfo.loginResultTLVMap.put(new Integer(1347), ((async_context)localObject)._t543);
+    }
     localObject = ((async_context)localObject)._last_err_msg;
     if (this.this$1.mST == null)
     {

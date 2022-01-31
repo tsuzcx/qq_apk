@@ -1,42 +1,35 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.messagesearch.C2CMessageResultAdapter;
-import com.tencent.mobileqq.activity.messagesearch.C2CMessageSearchDialog;
-import com.tencent.mobileqq.activity.messagesearch.MessageItem;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemLongClickListener;
-
 public class wrm
-  implements AdapterView.OnItemLongClickListener
 {
-  public wrm(C2CMessageSearchDialog paramC2CMessageSearchDialog) {}
+  public static ThreadLocal<StringBuilder> a = new wrn();
   
-  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static String a(Object... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("C2CMessageSearchDialog", 2, "onLongClick, position = " + paramInt);
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.getCount() <= 0) || (paramInt <= 0)) {}
-    do
+    StringBuilder localStringBuilder = (StringBuilder)a.get();
+    if (paramVarArgs.length > 0)
     {
-      return true;
-      paramAdapterView = (MessageItem)this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.getItem(paramInt - 1);
-    } while (paramAdapterView == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem = paramAdapterView;
-    paramView.setSelected(true);
-    paramAdapterView = new QQCustomMenu();
-    paramAdapterView.a(2131375573, "复制", 2130838305);
-    paramAdapterView.a(2131363517, this.a.jdField_a_of_type_AndroidContentContext.getString(2131435083), 2130838313);
-    this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = BubbleContextMenu.a(paramView, paramAdapterView, C2CMessageSearchDialog.a(this.a), new wrn(this, paramView));
-    return true;
+      int j = paramVarArgs.length;
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject = paramVarArgs[i];
+        if (localObject != null) {
+          localStringBuilder.append(localObject.toString());
+        }
+        i += 1;
+      }
+    }
+    return "";
+    paramVarArgs = localStringBuilder.toString();
+    if (localStringBuilder.length() > 512) {
+      a.set(new StringBuilder(512));
+    }
+    localStringBuilder.setLength(0);
+    return paramVarArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wrm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,39 @@
-import android.content.res.Resources;
-import android.graphics.BitmapFactory.Options;
-import android.util.DisplayMetrics;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.util.BitmapManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.util.WeakReferenceHandler;
-import java.io.File;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StNotice;
+import feedcloud.FeedCloudMeta.StOperation;
+import feedcloud.FeedCloudMeta.StUser;
 
-public class uha
-  implements Runnable
+class uha
+  implements View.OnClickListener
 {
-  public uha(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  uha(ugz paramugz) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    File localFile1 = new File(EmojiStickerManager.a(), "qvip_profile_diy_card_guide.png");
-    File localFile2 = new File(EmojiStickerManager.a(), "qvip_profile_diy_card_guide_demo.png");
-    if ((localFile1.exists()) && (localFile2.exists()))
+    if ((this.a.a != null) && (!TextUtils.isEmpty(this.a.a.operation.opUser.id.get())))
     {
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inDensity = 320;
-      localOptions.inTargetDensity = this.a.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().densityDpi;
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap = BitmapManager.a(localFile1.getAbsolutePath(), localOptions);
-      this.a.b = BitmapManager.a(localFile2.getAbsolutePath(), localOptions);
-      this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(9);
-      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      return;
+      if (paramView.getId() != 2131368706) {
+        break label94;
+      }
+      tzv.a(this.a.a.operation.opUser.id.get(), 17, 8L);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager.a(1004L, "emojiStickerGuideZip_v2", "VipProfileCardDiy");
+    for (;;)
+    {
+      tqs.a(this.a.a.operation.opUser.id.get());
+      return;
+      label94:
+      if (paramView.getId() == 2131378900) {
+        tzv.a(this.a.a.operation.opUser.id.get(), 17, 9L);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uha
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.DialogActivity;
-
-public class sjr
-  implements DialogInterface.OnCancelListener
+public abstract interface sjr
 {
-  public sjr(DialogActivity paramDialogActivity) {}
+  public abstract void a(int paramInt);
   
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    this.a.finish();
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sjr
  * JD-Core Version:    0.7.0.1
  */

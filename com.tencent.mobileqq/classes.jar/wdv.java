@@ -1,21 +1,22 @@
-import android.os.Looper;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.Stream;
+import java.util.List;
 
-public class wdv
-  implements Runnable
+class wdv
+  implements wdq<Bitmap>
 {
-  public wdv(ZhituManager paramZhituManager) {}
+  wdv(wdt paramwdt, List paramList, String paramString) {}
   
-  public void run()
+  @NonNull
+  public Stream<Bitmap> a(wdm paramwdm)
   {
-    ZhituManager.a(this.a, ZhituManager.a(this.a));
-    ZhituManager.a(this.a, false);
-    Looper.myLooper().quit();
+    return wdt.a(this.jdField_a_of_type_Wdt, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wdv
  * JD-Core Version:    0.7.0.1
  */

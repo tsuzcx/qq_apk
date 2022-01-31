@@ -1,51 +1,79 @@
-import android.graphics.Bitmap;
-import com.dataline.util.file.MediaStoreUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.IGetVideoCallback;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
+import QQService.SvcDevLoginInfo;
+import QQService.SvcRspGetDevLoginInfo;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
 
-public final class adhh
-  implements FileManagerUtil.IGetVideoCallback
+public class adhh
+  extends altm
 {
-  public adhh(String paramString1, String paramString2) {}
+  public adhh(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void a(Bitmap paramBitmap)
+  protected void onGetLoginDevResult(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
   {
-    if (paramBitmap == null) {
+    LoginInfoActivity.d(this.a);
+    if ((paramBoolean) && (paramSvcRspGetDevLoginInfo != null) && (paramSvcRspGetDevLoginInfo.iResult == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetLoginDevResult success");
+      }
+      LoginInfoActivity.a(this.a, paramSvcRspGetDevLoginInfo.vecCurrentLoginDevInfo);
+      if (QLog.isColorLevel())
+      {
+        QLog.d("LoginInfoActivity.AccDevSec", 2, "------------------------------------------------------------------------------");
+        paramSvcRspGetDevLoginInfo = LoginInfoActivity.a(this.a).iterator();
+        while (paramSvcRspGetDevLoginInfo.hasNext())
+        {
+          SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)paramSvcRspGetDevLoginInfo.next();
+          if (localSvcDevLoginInfo != null) {
+            QLog.d("LoginInfoActivity.AccDevSec", 2, "SvcDevLoginInfo.iAppId=" + localSvcDevLoginInfo.iAppId + " iLoginTime=" + localSvcDevLoginInfo.iLoginTime + " strLoginLocation=" + localSvcDevLoginInfo.strLoginLocation + " iLoginPlatform=" + localSvcDevLoginInfo.iLoginPlatform + " strDeviceName=" + localSvcDevLoginInfo.strDeviceName + " strDeviceTypeInfo" + localSvcDevLoginInfo.strDeviceTypeInfo);
+          }
+        }
+        QLog.d("LoginInfoActivity.AccDevSec", 2, "------------------------------------------------------------------------------");
+      }
+      LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
       return;
     }
-    try
+    if (QLog.isColorLevel())
     {
-      FileUtil.a(paramBitmap, this.a);
-      paramBitmap.recycle();
-      int i = MediaStoreUtil.a(this.b);
-      MediaStoreUtil.a(this.a, i);
+      QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetLoginDevResult fail isSuccess=" + paramBoolean);
+      if (paramSvcRspGetDevLoginInfo != null) {
+        break label288;
+      }
+      QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetLoginDevResult data is null");
+    }
+    for (;;)
+    {
+      QQToast.a(this.a.getActivity(), 1, this.a.getString(2131692211), 0).b(this.a.getTitleBarHeight());
+      return;
+      label288:
+      QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetLoginDevResult data.iResult=" + paramSvcRspGetDevLoginInfo.iResult);
+    }
+  }
+  
+  protected void onKickOutDevFResult(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginInfoActivity.AccDevSec", 2, "onKickOutDevFResult isSuccess=" + paramBoolean + " appid=" + paramLong + " result=" + paramInt1 + " index=" + paramInt2);
+    }
+    LoginInfoActivity.d(this.a);
+    if (paramBoolean)
+    {
+      if ((paramInt1 == 0) && (paramInt2 >= 1) && (paramInt2 < LoginInfoActivity.a(this.a).size()))
+      {
+        LoginInfoActivity.a(this.a).remove(paramInt2);
+        LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
+      }
       return;
     }
-    catch (FileNotFoundException paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail FileNotFoundException:" + paramBitmap.getMessage());
-      return;
-    }
-    catch (IOException paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail IOException:" + paramBitmap.getMessage());
-      return;
-    }
-    catch (OutOfMemoryError paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail OutOfMemoryError:" + paramBitmap.getMessage());
-    }
+    QQToast.a(this.a.getApplicationContext(), this.a.getString(2131694648), 0).b(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adhh
  * JD-Core Version:    0.7.0.1
  */

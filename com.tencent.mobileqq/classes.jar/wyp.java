@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.widget.Gallery.OnScollListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class wyp
-  implements Gallery.OnScollListener
+class wyp
+  implements betp
 {
-  public wyp(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  wyp(wym paramwym) {}
   
-  public void a(int paramInt)
+  public void a(betn parambetn)
   {
-    this.a.l();
+    if (QLog.isColorLevel()) {
+      QLog.i("EditPicSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambetn);
+    }
   }
   
-  public void b(int paramInt) {}
+  public void a(betn parambetn, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wyp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.fling;
 
+import ahyb;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import wpp;
 
 public class ScreenCapture
 {
@@ -19,7 +19,7 @@ public class ScreenCapture
       return;
     }
     QLog.i("sethmao", 4, "path is " + paramString);
-    new wpp(paramView).execute(new String[] { paramString });
+    new ahyb(paramView).execute(new String[] { paramString });
   }
   
   public static boolean clearSnapCacheFile(Context paramContext)
@@ -70,7 +70,7 @@ public class ScreenCapture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.fling.ScreenCapture
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.HotChatShare;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
 public class vvl
-  implements View.OnClickListener
+  implements Animator.AnimatorListener
 {
-  public vvl(HotChatPie paramHotChatPie, String paramString) {}
+  public vvl(XViewPager paramXViewPager) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    paramView = ((HotChatManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(59)).a(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqAppHotChatShare.a(paramView);
+    if (XViewPager.a(this.a) != null) {
+      XViewPager.a(this.a).b(0);
+    }
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (XViewPager.a(this.a) != null) {
+      XViewPager.a(this.a).b(0);
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vvl
  * JD-Core Version:    0.7.0.1
  */

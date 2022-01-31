@@ -11,12 +11,14 @@ public class HotWordSearchEntryDataModel$HotSearchItem
   public String indexBgColor;
   public String indexTextColor;
   public String jumpUrl;
-  public int showType;
+  public String recallWord;
+  public String rightIconUrl;
   public String title;
+  public String titleTextColor;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.HotSearchItem
  * JD-Core Version:    0.7.0.1
  */

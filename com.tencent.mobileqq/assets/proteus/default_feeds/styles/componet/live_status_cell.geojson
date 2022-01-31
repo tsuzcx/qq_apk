@@ -1,0 +1,158 @@
+{
+    "view_id": "id_live_style_cell",
+    "view_type": "UIView",
+    "layout_type": "layout_linear",
+    "direction": "horizontal",
+    "height": {
+        "type": "relative",
+        "value": "19"
+    },
+    "width": {
+        "type": "wrap_content"
+    },
+    "attributes": {
+        "setBackgroundColorString:": "#4D000000",
+        "setCornerRadiusString:": "3"
+    },
+    "default_visible": "YES",
+    "subviews": [
+        {
+            "view_id": "id_live_status_cell",
+            "view_type": "UIView",
+            "layout_type": "layout_relative",
+            "default_visible": "YES",
+            "height": {
+                "type": "match_parent"
+            },
+            "width": {
+                "type": "wrap_content"
+            },
+            "align_parent_center_vertical": "YES",
+            "subviews": [
+                {
+                    "view_id": "id_live_status_bg",
+                    "view_type": "ReadInjoyAsynImageView",
+                    "height": {
+                        "type": "match_parent"
+                    },
+                    "width": {
+                        "type": "match_parent"
+                    },
+                    "attributes": {
+                        "setImageWithURLString:lineup:": [
+                            "$live_status_bg_url",
+                            "1"
+                        ],
+                        "setCornerRadiusArray:type:": [
+                            ["3", "0", "0", "3"],
+                            "absolutely"
+                        ]
+                    }
+                },
+                {
+                    "view_id": "id_live_status_cell",
+                    "view_type": "container",
+                    "layout_type": "layout_linear",
+                    "direction": "horizontal",
+                    "height": {
+                        "type": "match_parent"
+                    },
+                    "width": {
+                        "type": "wrap_content"
+                    },
+                    "subviews": [
+                        {
+                            "view_id": "id_live_status_padding",
+                            "view_type": "UIView",
+                            "default_visible": "YES",
+                            "height": {
+                                "type": "match_parent"
+                            },
+                            "width": {
+                                "type": "relative",
+                                "value": "7"
+                            }
+                        },
+                        {
+                            "view_id": "id_live_status_icon",
+                            "view_type": "ReadInJoyGifView",
+                            "height": {
+                                "type": "absolutely",
+                                "value": "12"
+                            },
+                            "width": {
+                                "type": "absolutely",
+                                "value": "12"
+                            },
+                            "default_visible": "NO",
+                            "align_parent_center_vertical": "YES",
+                            "align_parent_left": "YES",
+                            "margin_right": "1",
+                            "attributes": {
+                                "setGifUrl:": "$live_status_icon_url"
+                            }
+                        },
+                        {
+                            "view_id": "id_live_status_text",
+                            "view_type": "UILabel",
+                            "height": {
+                                "type": "wrap_content"
+                            },
+                            "width": {
+                                "type": "wrap_content"
+                            },
+                            "right_of_view": "id_live_status_icon",
+                            "align_parent_center_vertical": "YES",
+                            "margin_right": "10",
+                            "attributes": {
+                                "setTextColorString:": "#FFFFFF",
+                                "setFontSizeString:": "11",
+                                "setText:": "$live_status_text",
+                                "setNumberOfLinesString:": "1"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "view_id": "id_live_hot_icon",
+            "view_type": "ReadInjoyAsynImageView",
+            "height": {
+                "type": "absolutely",
+                "value": "10"
+            },
+            "width": {
+                "type": "absolutely",
+                "value": "10"
+            },
+            "align_parent_center_vertical": "YES",
+            "margin_left": "5",
+            "attributes": {
+                "setImageWithURLString:lineup:": [
+                    "$live_hot_icon_url",
+                    "1"
+                ]
+            }
+        },
+        {
+            "view_id": "id_live_hot_text",
+            "view_type": "UILabel",
+            "height": {
+                "type": "wrap_content"
+            },
+            "width": {
+                "type": "wrap_content"
+            },
+            "align_parent_center_vertical": "YES",
+            "margin_left": "2",
+            "margin_right": "8",
+            "attributes": {
+                "setTextColorString:": "#FFFFFF",
+                "setFontSizeString:": "11",
+                "setText:": "$live_hot_text",
+                "setNumberOfLinesString:": "1"
+            }
+        }
+    ]
+}

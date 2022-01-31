@@ -1,80 +1,70 @@
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
-import com.tencent.mobileqq.video.VipVideoApiPlugin;
-import com.tencent.mobileqq.video.VipVideoManager;
+import com.tencent.mobileqq.data.MayKnowRecommend;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.widget.XListView;
+import java.util.List;
 
-public class akkp
-  extends Client.onRemoteRespObserver
+class akkp
+  extends altm
 {
-  public akkp(VipVideoApiPlugin paramVipVideoApiPlugin) {}
+  akkp(akkn paramakkn) {}
   
-  public void onBindedToClient() {}
-  
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle)
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
   {
-    Object localObject;
-    String str;
-    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == this.a.a.key))
-    {
-      localObject = paramBundle.getString("cmd");
-      str = paramBundle.getString("callbackid");
-      paramBundle = paramBundle.getBundle("response");
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendAdapter", 2, "onCancelMayKnowRecommend isSuccess = " + paramBoolean);
     }
-    for (;;)
+    if (paramBoolean)
     {
-      try
-      {
-        if (TextUtils.equals((CharSequence)localObject, "ipc_video_isinstalled"))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("VideoApiPlugin", 2, "video remote response cmd=" + (String)localObject);
-          }
-          boolean bool = paramBundle.getBoolean("isInstalled");
-          this.a.callJs(str, new String[] { String.valueOf(bool) });
-          return;
-        }
-        if (!TextUtils.equals((CharSequence)localObject, "ipc_video_install_plugin")) {
-          break label347;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoApiPlugin", 2, "video remote response cmd=" + (String)localObject);
-        }
-        int i = paramBundle.getInt("status");
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("status", i);
-        switch (i)
-        {
-        case 3: 
-          this.a.callJs(str, new String[] { ((JSONObject)localObject).toString() });
-          return;
-        }
+      if ((this.a.jdField_a_of_type_Akkb != null) && ((this.a.jdField_a_of_type_Akkb instanceof akkc))) {
+        ((akkc)this.a.jdField_a_of_type_Akkb).a(paramString);
       }
-      catch (Exception paramBundle)
+      akkn.a(this.a);
+    }
+  }
+  
+  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (paramBoolean) {
+      akkn.a(this.a);
+    }
+  }
+  
+  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
+  {
+    super.onMayKnowListPushAdd(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendAdapter", 2, "onMayKnowListPushAdd isSuccess = " + paramBoolean);
+    }
+    if (paramBoolean) {
+      akkn.a(this.a);
+    }
+  }
+  
+  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
+  {
+    super.onMayKnowListPushDel(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendAdapter", 2, "onMayKnowListPushDel isSuccess = " + paramBoolean);
+    }
+    if (paramBoolean) {
+      akkn.a(this.a);
+    }
+  }
+  
+  protected void onMayknowStateChanged(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendAdapter", 2, "onMayknowStateChanged isSuccess = " + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      this.a.notifyDataSetChanged();
+      if (akkn.a(this.a) != null)
       {
-        paramBundle.printStackTrace();
-        return;
+        akkn.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+        akkn.a(this.a).postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1600L);
       }
-      ((JSONObject)localObject).put("result", 0);
-      ((JSONObject)localObject).put("progress", 100);
-      ((JSONObject)localObject).put("msg", "install finished");
-      continue;
-      ((JSONObject)localObject).put("result", 1);
-      ((JSONObject)localObject).put("progress", paramBundle.getFloat("progress"));
-      ((JSONObject)localObject).put("msg", "install progress");
-      continue;
-      ((JSONObject)localObject).put("result", paramBundle.getInt("errCode"));
-      ((JSONObject)localObject).put("progress", VipVideoManager.a);
-      ((JSONObject)localObject).put("msg", "install failed");
-      continue;
-      label347:
-      return;
     }
   }
 }

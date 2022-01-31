@@ -1,63 +1,44 @@
+import android.content.Context;
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.widget.QQToast;
-import dov.com.tencent.biz.qqstory.takevideo.permission.ComplexPart;
-import dov.com.tencent.biz.qqstory.takevideo.permission.ComplexPart.Friend;
-import dov.com.tencent.biz.qqstory.takevideo.permission.PermissionListAdapter;
-import dov.com.tencent.biz.qqstory.takevideo.permission.PermissionPart;
-import dov.com.tencent.biz.qqstory.takevideo.permission.PermissionSettingActivity;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.music.QQPlayerService;
 
 public class aocy
-  implements View.OnClickListener
+  implements aocw
 {
-  public aocy(PermissionSettingActivity paramPermissionSettingActivity) {}
-  
-  public void onClick(View paramView)
+  private void a(Intent paramIntent, ColorNote paramColorNote)
   {
-    paramView = new Intent();
-    Object localObject = PermissionSettingActivity.a(this.a).a();
-    int i = 10000;
-    if (localObject != null)
+    String str = paramIntent.getStringExtra("url");
+    if ((!TextUtils.isEmpty(str)) && (str.matches("^https?://fm\\.qzone\\.qq\\.com/.*")))
     {
-      i = ((PermissionPart)localObject).b();
-      SLog.a("Q.qqstory.QQStoryBaseActivity", "onCompleteBtnClick, partType:%s", Integer.valueOf(i));
-      paramView.putExtra("PERMISSION_TYPE_KEY", i);
-      paramView.putExtra("PERMISSION_CURRENT_UIN_KEY", PermissionSettingActivity.a(this.a));
-      switch (i)
-      {
+      paramColorNote = paramColorNote.getReserve();
+      if ((paramColorNote != null) && (paramColorNote.length > 0)) {
+        paramIntent.putExtra("url", new String(paramColorNote));
       }
     }
-    for (;;)
+  }
+  
+  public void a(Context paramContext, ColorNote paramColorNote)
+  {
+    if (paramColorNote == null) {}
+    Intent localIntent;
+    do
     {
-      PermissionSettingActivity.a(this.a, i);
-      this.a.setResult(1, paramView);
-      this.a.finish();
-      return;
-      ArrayList localArrayList = new ArrayList();
-      localObject = ((ComplexPart)localObject).a();
-      if (((List)localObject).isEmpty())
+      do
       {
-        SLog.d("Q.qqstory.QQStoryBaseActivity", "onCompleteBtnClick, empty friend list.");
-        QQToast.a(this.a, "请选择分组", 0).a();
         return;
-      }
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        localArrayList.add(((ComplexPart.Friend)((Iterator)localObject).next()).a());
-      }
-      paramView.putExtra("PERMISSION_UIN_LIST_KEY", localArrayList);
-      SLog.a("Q.qqstory.QQStoryBaseActivity", "select uin list:%s", localArrayList.toString());
-    }
+      } while (paramColorNote.getServiceType() != 16973824);
+      localIntent = QQPlayerService.a();
+    } while (localIntent == null);
+    a(localIntent, paramColorNote);
+    localIntent.addFlags(268435456);
+    paramContext.startActivity(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aocy
  * JD-Core Version:    0.7.0.1
  */

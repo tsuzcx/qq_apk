@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class aggr
-  implements Runnable
+  implements Animation.AnimationListener
 {
   aggr(aggq paramaggq) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QQToast.a(this.a.a.getApplicationContext(), "定位超时，请检查你的定位服务是否开启。", 1).b(this.a.a.getTitleBarHeight());
+    if (aggq.a(this.a) != null) {
+      aggq.a(this.a).b();
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aggr
  * JD-Core Version:    0.7.0.1
  */

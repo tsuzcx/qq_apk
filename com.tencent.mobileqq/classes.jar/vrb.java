@@ -1,24 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.ui.CustomMenuBar;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
+import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-public class vrb
-  implements View.OnClickListener
+class vrb
+  extends uss
 {
-  public vrb(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
+  vrb(vqz paramvqz) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
-    this.a.a.setVisibility(8);
-    this.a.b.setVisibility(0);
+    wxe.a("Q.qqstory.player.CommentFloatDialog", "post comment result is %s.", Boolean.valueOf(paramBoolean));
+    if (!vqu.b(this.a.a)) {
+      vqu.a(this.a.a).p();
+    }
+  }
+  
+  public boolean a(CommentEntry paramCommentEntry, qqstory_service.RspAddFeedComment paramRspAddFeedComment)
+  {
+    uux localuux = (uux)uwa.a(17);
+    localuux.a(paramCommentEntry.commentId);
+    paramCommentEntry.commentId = paramRspAddFeedComment.comment_id.get();
+    paramCommentEntry.status = 0;
+    localuux.a(paramCommentEntry);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vrb
  * JD-Core Version:    0.7.0.1
  */

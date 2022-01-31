@@ -1,45 +1,24 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.unifiedebug.UnifiedDebugReporter;
-import com.tencent.pb.unifiedebug.RemoteDebugReportMsg.RemoteLogRsp;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import java.lang.ref.WeakReference;
 
 public class ajyi
-  implements BusinessObserver
+  implements DialogInterface.OnCancelListener
 {
-  public ajyi(UnifiedDebugReporter paramUnifiedDebugReporter) {}
+  private final WeakReference<Activity> a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public ajyi(Activity paramActivity)
   {
-    if (paramBoolean)
-    {
-      paramBundle = paramBundle.getByteArray("extra_data");
-      if (paramBundle == null) {}
+    this.a = new WeakReference(paramActivity);
+  }
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    Activity localActivity = (Activity)this.a.get();
+    if ((localActivity != null) && (!localActivity.isFinishing())) {
+      paramDialogInterface.dismiss();
     }
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        RemoteDebugReportMsg.RemoteLogRsp localRemoteLogRsp = new RemoteDebugReportMsg.RemoteLogRsp();
-        localRemoteLogRsp.mergeFrom(paramBundle);
-        if (localRemoteLogRsp.i32_ret.has())
-        {
-          paramInt = localRemoteLogRsp.i32_ret.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("UnifiedDebugReporter", 2, "onReceive: retCode=" + paramInt);
-          }
-        }
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.e("UnifiedDebugReporter", 2, "onReceive: exception=" + paramBundle.getMessage());
-        return;
-      }
-    }
-    QLog.e("UnifiedDebugReporter", 2, "onReceive: isSuccess=" + paramBoolean);
   }
 }
 

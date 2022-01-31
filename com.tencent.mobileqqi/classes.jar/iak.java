@@ -1,36 +1,74 @@
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import com.tencent.image.ProxyDrawable;
-import com.tencent.widget.BubblePopupWindow;
+import android.app.ProgressDialog;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.plugin.IPluginManager.OnPluginReadyListener;
+import cooperation.plugin.PluginManagerV2.LaunchState;
 
 public class iak
-  extends ProxyDrawable
+  extends OnPluginInstallListener.Stub
 {
-  int jdField_a_of_type_Int;
-  int b;
+  private PluginManagerV2.LaunchState a;
   
-  public iak(BubblePopupWindow paramBubblePopupWindow, Drawable paramDrawable)
+  public iak(PluginManagerV2.LaunchState paramLaunchState)
   {
-    super(paramDrawable);
+    this.a = paramLaunchState;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void onInstallBegin(String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    invalidateSelf();
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "onInstallBegin." + paramString);
+    }
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_AndroidAppProgressDialog != null)) {
+      this.a.jdField_a_of_type_AndroidAppProgressDialog.show();
+    }
   }
   
-  public void draw(Canvas paramCanvas)
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
   {
-    Rect localRect = getBounds();
-    if (this.b > this.jdField_a_of_type_Int)
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "onInstallDownloadProgress." + paramString);
+    }
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_AndroidAppProgressDialog != null))
     {
-      int i = paramCanvas.save();
-      paramCanvas.clipRect(this.jdField_a_of_type_Int, 0, this.b, localRect.height());
-      this.mCurrDrawable.draw(paramCanvas);
-      paramCanvas.restoreToCount(i);
+      this.a.jdField_a_of_type_AndroidAppProgressDialog.setMax(paramInt2);
+      this.a.jdField_a_of_type_AndroidAppProgressDialog.setProgress(paramInt1);
+    }
+  }
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "onInstallError." + paramString + "," + paramInt);
+    }
+    paramString = this.a;
+    IPluginManager.OnPluginReadyListener localOnPluginReadyListener;
+    if ((paramString != null) && (paramString.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener != null))
+    {
+      localOnPluginReadyListener = paramString.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener;
+      if (paramInt != 2) {
+        break label86;
+      }
+    }
+    label86:
+    for (boolean bool = true;; bool = false)
+    {
+      localOnPluginReadyListener.a(bool, paramString.jdField_a_of_type_AndroidContentContext, paramString.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
+      return;
+    }
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "onInstallFinish." + paramString);
+    }
+    paramString = this.a;
+    if ((!paramString.jdField_a_of_type_Boolean) && (paramString.jdField_a_of_type_AndroidAppProgressDialog != null)) {
+      paramString.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
+    }
+    if ((paramString != null) && (paramString.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener != null)) {
+      paramString.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener.a(true, paramString.jdField_a_of_type_AndroidContentContext, paramString.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
     }
   }
 }

@@ -1,23 +1,53 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.NewFlowEditVideoActivity;
+import android.support.annotation.NonNull;
+import com.tencent.image.URLDrawable;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class xsq
-  implements DialogInterface.OnClickListener
+class xsq
 {
-  public xsq(NewFlowEditVideoActivity paramNewFlowEditVideoActivity) {}
+  public static ConcurrentHashMap<xso, Boolean> a;
+  private static volatile xsq a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  static
   {
-    paramDialogInterface.dismiss();
-    NewFlowEditVideoActivity.b(this.a, false);
-    NewFlowEditVideoActivity.b(this.a).setSelected(false);
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  }
+  
+  public static xsq a()
+  {
+    if (jdField_a_of_type_Xsq == null) {}
+    try
+    {
+      if (jdField_a_of_type_Xsq == null) {
+        jdField_a_of_type_Xsq = new xsq();
+      }
+      return jdField_a_of_type_Xsq;
+    }
+    finally {}
+  }
+  
+  public static void a(URLDrawable paramURLDrawable, String paramString)
+  {
+    paramString = new xso(a(), paramURLDrawable, paramString);
+    paramURLDrawable.setDownloadListener(paramString);
+    paramURLDrawable.setURLDrawableListener(paramString);
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(true));
+  }
+  
+  public void a(@NonNull xso paramxso)
+  {
+    boolean bool = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramxso);
+    wxe.a("Q.qqstory.UIUtils", "remove(), contains %b", Boolean.valueOf(bool));
+    if (!bool) {
+      azpo.a(xsh.a(alud.a(2131716261), null), "Story.UIUtils.monitor " + paramxso.toString());
+    }
+    paramxso.a.setDownloadListener(null);
+    paramxso.a.setURLDrawableListener(null);
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramxso);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xsq
  * JD-Core Version:    0.7.0.1
  */

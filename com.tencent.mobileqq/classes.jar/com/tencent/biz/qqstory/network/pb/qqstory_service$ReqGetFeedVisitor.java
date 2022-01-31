@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class qqstory_service$ReqGetFeedVisitor
-  extends MessageMicro
+  extends MessageMicro<ReqGetFeedVisitor>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField feed_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -20,7 +20,7 @@ public final class qqstory_service$ReqGetFeedVisitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetFeedVisitor
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class im_msg_body$LifeOnlineAccount
-  extends MessageMicro
+  extends MessageMicro<LifeOnlineAccount>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField gdt_cli_data = PBField.initBytes(ByteStringMicro.EMPTY);

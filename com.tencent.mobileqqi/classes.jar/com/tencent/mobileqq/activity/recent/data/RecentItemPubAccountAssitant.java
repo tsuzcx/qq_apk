@@ -35,7 +35,7 @@ public class RecentItemPubAccountAssitant
     if (this.A > 0)
     {
       this.jdField_c_of_type_JavaLangCharSequence = String.format(paramContext.getString(2131560567), new Object[] { Integer.valueOf(this.A) });
-      this.D = paramContext.getResources().getColor(2131362110);
+      this.D = paramContext.getResources().getColor(2131362120);
       return;
     }
     this.jdField_c_of_type_JavaLangCharSequence = "";

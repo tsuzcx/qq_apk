@@ -1,25 +1,20 @@
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 
 public class acow
-  implements FMDialogUtil.FMDialogInterface
+  extends ambf
 {
-  public acow(UniformDownloadActivity paramUniformDownloadActivity) {}
+  public acow(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void a()
+  public void a(Object paramObject)
   {
-    UniformDownloadActivity.a(this.a);
-  }
-  
-  public void b()
-  {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    if (paramObject != null) {
+      ((Integer)paramObject).intValue();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acow
  * JD-Core Version:    0.7.0.1
  */

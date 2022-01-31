@@ -1,17 +1,22 @@
-import com.tencent.mobileqq.app.NearbyHandler;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class adnm
-  implements Runnable
+class adnm
+  extends awhw
 {
-  public adnm(NearbyHybridFragment paramNearbyHybridFragment) {}
+  adnm(adnl paramadnl) {}
   
-  public void run()
+  protected void b(boolean paramBoolean)
   {
-    ((NearbyHandler)this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(3)).a((float)NearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.b, (float)NearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.a, 5);
+    super.b(paramBoolean);
+    PhoneUnityChangeActivity.a(this.a.a.a);
+    this.a.a.a.app.unRegistObserver(this);
+    if (paramBoolean)
+    {
+      ((alys)this.a.a.a.app.getManager(102)).a(null);
+      this.a.a.a.setResult(4001);
+      this.a.a.a.finish();
+    }
   }
 }
 

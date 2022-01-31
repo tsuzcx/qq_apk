@@ -26,10 +26,10 @@ import com.tencent.mobileqq.emoticon.EmoticonController;
 import com.tencent.mobileqq.model.EmoticonManager;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import fsk;
-import fsl;
-import fsm;
-import fsn;
+import fnx;
+import fny;
+import fnz;
+import foa;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -89,23 +89,23 @@ public class BigEmoticonViewBinder
   
   private void a(View paramView)
   {
-    Object localObject1 = paramView.findViewById(2131231636);
-    GridView localGridView = (GridView)paramView.findViewById(2131233300);
+    Object localObject1 = paramView.findViewById(2131231637);
+    GridView localGridView = (GridView)paramView.findViewById(2131233302);
     localGridView.setVisibility(8);
-    Object localObject4 = ((View)localObject1).findViewById(2131231611);
-    Button localButton1 = (Button)((View)localObject1).findViewById(2131231614);
-    Object localObject2 = ((View)localObject1).findViewById(2131231616);
-    ProgressBar localProgressBar = (ProgressBar)((View)localObject1).findViewById(2131231617);
-    ImageButton localImageButton = (ImageButton)((View)localObject1).findViewById(2131231618);
-    View localView = ((View)localObject1).findViewById(2131231607);
-    paramView = (ImageView)((View)localObject1).findViewById(2131231606);
-    Object localObject3 = (TextView)((View)localObject1).findViewById(2131231612);
-    Object localObject5 = (TextView)((View)localObject1).findViewById(2131231613);
-    Button localButton2 = (Button)((View)localObject1).findViewById(2131231605);
-    Button localButton3 = (Button)((View)localObject1).findViewById(2131231610);
-    localObject5 = (Button)((View)localObject1).findViewById(2131231615);
-    TextView localTextView1 = (TextView)((View)localObject1).findViewById(2131231608);
-    TextView localTextView2 = (TextView)((View)localObject1).findViewById(2131231609);
+    Object localObject4 = ((View)localObject1).findViewById(2131231612);
+    Button localButton1 = (Button)((View)localObject1).findViewById(2131231615);
+    Object localObject2 = ((View)localObject1).findViewById(2131231617);
+    ProgressBar localProgressBar = (ProgressBar)((View)localObject1).findViewById(2131231618);
+    ImageButton localImageButton = (ImageButton)((View)localObject1).findViewById(2131231619);
+    View localView = ((View)localObject1).findViewById(2131231608);
+    paramView = (ImageView)((View)localObject1).findViewById(2131231607);
+    Object localObject3 = (TextView)((View)localObject1).findViewById(2131231613);
+    Object localObject5 = (TextView)((View)localObject1).findViewById(2131231614);
+    Button localButton2 = (Button)((View)localObject1).findViewById(2131231606);
+    Button localButton3 = (Button)((View)localObject1).findViewById(2131231611);
+    localObject5 = (Button)((View)localObject1).findViewById(2131231616);
+    TextView localTextView1 = (TextView)((View)localObject1).findViewById(2131231609);
+    TextView localTextView2 = (TextView)((View)localObject1).findViewById(2131231610);
     localButton3.setOnClickListener(this);
     ((Button)localObject5).setOnClickListener(this);
     localButton1.setOnClickListener(this);
@@ -262,12 +262,12 @@ public class BigEmoticonViewBinder
   
   private void b(View paramView)
   {
-    TextView localTextView1 = (TextView)paramView.findViewById(2131231646);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131231647);
-    Button localButton = (Button)paramView.findViewById(2131231648);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131231606);
-    ProgressBar localProgressBar = (ProgressBar)paramView.findViewById(2131231617);
-    paramView = paramView.findViewById(2131231649);
+    TextView localTextView1 = (TextView)paramView.findViewById(2131231647);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131231648);
+    Button localButton = (Button)paramView.findViewById(2131231649);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131231607);
+    ProgressBar localProgressBar = (ProgressBar)paramView.findViewById(2131231618);
+    paramView = paramView.findViewById(2131231650);
     localTextView1.setText(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.name);
     localTextView2.setText(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.updateTip);
     localButton.setOnClickListener(this);
@@ -465,9 +465,9 @@ public class BigEmoticonViewBinder
     Object localObject = c(0);
     if (localObject != null)
     {
-      localObject = (ProgressBar)((View)localObject).findViewById(2131231617);
+      localObject = (ProgressBar)((View)localObject).findViewById(2131231618);
       if (localObject != null) {
-        ((ProgressBar)localObject).post(new fsk(this, (ProgressBar)localObject, paramInt));
+        ((ProgressBar)localObject).post(new fnx(this, (ProgressBar)localObject, paramInt));
       }
     }
   }
@@ -511,7 +511,7 @@ public class BigEmoticonViewBinder
   public void b()
   {
     View localView = c(0);
-    localView.post(new fsl(this, localView));
+    localView.post(new fny(this, localView));
   }
   
   public void c()
@@ -519,9 +519,9 @@ public class BigEmoticonViewBinder
     Object localObject = c(0);
     if (localObject != null)
     {
-      localObject = (ImageView)((View)localObject).findViewById(2131231606);
+      localObject = (ImageView)((View)localObject).findViewById(2131231607);
       if ((localObject != null) && (((ImageView)localObject).getVisibility() == 0)) {
-        ((ImageView)localObject).post(new fsm(this, (ImageView)localObject));
+        ((ImageView)localObject).post(new fnz(this, (ImageView)localObject));
       }
     }
   }
@@ -532,7 +532,7 @@ public class BigEmoticonViewBinder
     {
       this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.hasReadUpdatePage = true;
       this.jdField_a_of_type_Int = 1;
-      ThreadManager.b(new fsn(this));
+      ThreadManager.b(new foa(this));
     }
   }
   
@@ -541,10 +541,10 @@ public class BigEmoticonViewBinder
     switch (paramView.getId())
     {
     default: 
-    case 2131231648: 
-    case 2131231610: 
+    case 2131231649: 
+    case 2131231611: 
+    case 2131231616: 
     case 2131231615: 
-    case 2131231614: 
       do
       {
         do
@@ -556,9 +556,9 @@ public class BigEmoticonViewBinder
           paramView = EmoticonController.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
           paramView.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage, true);
           localObject3 = c(0);
-          localObject1 = (Button)((View)localObject3).findViewById(2131231648);
-          localObject2 = (ProgressBar)((View)localObject3).findViewById(2131231617);
-          localObject3 = ((View)localObject3).findViewById(2131231649);
+          localObject1 = (Button)((View)localObject3).findViewById(2131231649);
+          localObject2 = (ProgressBar)((View)localObject3).findViewById(2131231618);
+          localObject3 = ((View)localObject3).findViewById(2131231650);
           ((View)localObject3).setVisibility(0);
           f = paramView.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId);
           if (f >= 0.0F)
@@ -585,10 +585,10 @@ public class BigEmoticonViewBinder
         ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "Ep_endoffer_click", 0, 0, "", "", "", "");
       }
       localObject1 = c(0);
-      Object localObject2 = (ImageButton)((View)localObject1).findViewById(2131231618);
-      localObject2 = (Button)((View)localObject1).findViewById(2131231614);
-      Object localObject3 = (ProgressBar)((View)localObject1).findViewById(2131231617);
-      localObject1 = ((View)localObject1).findViewById(2131231616);
+      Object localObject2 = (ImageButton)((View)localObject1).findViewById(2131231619);
+      localObject2 = (Button)((View)localObject1).findViewById(2131231615);
+      Object localObject3 = (ProgressBar)((View)localObject1).findViewById(2131231618);
+      localObject1 = ((View)localObject1).findViewById(2131231617);
       float f = paramView.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId);
       ((Button)localObject2).setVisibility(8);
       ((View)localObject1).setVisibility(0);
@@ -599,8 +599,8 @@ public class BigEmoticonViewBinder
     }
     EmoticonController.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).e(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage);
     paramView = c(0);
-    Object localObject1 = (Button)paramView.findViewById(2131231614);
-    paramView.findViewById(2131231616).setVisibility(8);
+    Object localObject1 = (Button)paramView.findViewById(2131231615);
+    paramView.findViewById(2131231617).setVisibility(8);
     ((Button)localObject1).setVisibility(0);
   }
 }

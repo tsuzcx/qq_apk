@@ -8,10 +8,10 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 
 public final class oidb_cmd0x8f7$ApplyDelReqBody
-  extends MessageMicro
+  extends MessageMicro<ApplyDelReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatField rpt_bytes_uuid = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> rpt_bytes_uuid = PBField.initRepeat(PBBytesField.__repeatHelper__);
   
   static
   {
@@ -21,7 +21,7 @@ public final class oidb_cmd0x8f7$ApplyDelReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8f7.oidb_cmd0x8f7.ApplyDelReqBody
  * JD-Core Version:    0.7.0.1
  */

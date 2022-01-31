@@ -1,45 +1,66 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasH5PayUtil;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqConvertGroupId;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertGroupId;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupId;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.Iterator;
+import java.util.List;
 
-public final class vdc
-  implements DialogInterface.OnClickListener
+public class vdc
+  extends urt<vdd>
 {
-  public vdc(QQAppInterface paramQQAppInterface, int paramInt1, Activity paramActivity, int paramInt2) {}
+  public static final String a;
+  public List<String> a;
+  public int c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  static
   {
-    if (true == PokeItemHelper.a) {
-      PokeItemHelper.a = false;
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      QLog.d("vaspoke", 4, "dialogInterfaceOnClick mApp is null.");
-    }
-    while (((2 != this.jdField_a_of_type_Int) && (4 != this.jdField_a_of_type_Int)) || (paramInt != 1)) {
-      return;
-    }
-    if (2 == this.jdField_a_of_type_Int)
+    jdField_a_of_type_JavaLangString = uqn.a("StoryGroupSvc.convert_group_id");
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public uro a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspConvertGroupId localRspConvertGroupId = new qqstory_service.RspConvertGroupId();
+    try
     {
-      VasH5PayUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, "mvip.g.a.poke_" + this.b, 3, "1450000515", "LTMCLUB", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131436740), "");
-      VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTipClick", "", 0, 0, 0, "", String.valueOf(this.b), "vip", "", "", "", "", 0, 0, 0, 0);
-      return;
+      localRspConvertGroupId.mergeFrom(paramArrayOfByte);
+      return new vdd(localRspConvertGroupId);
     }
-    VasH5PayUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, "mvip.g.a.poke_" + this.b, 3, "1450000516", "CJCLUBT", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131436943), "");
-    VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTipClick", "", 0, 0, 0, "", String.valueOf(this.b), "svip", "", "", "", "", 0, 0, 0, 0);
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wxe.b("Q.qqstory.net:BatchNetHandler", a(), paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqConvertGroupId localReqConvertGroupId = new qqstory_service.ReqConvertGroupId();
+    localReqConvertGroupId.convert_from.set(this.c);
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        qqstory_struct.GroupId localGroupId = new qqstory_struct.GroupId();
+        localGroupId.group_uin.set(Long.valueOf(str).longValue());
+        localReqConvertGroupId.group_req_list.add(localGroupId);
+      }
+    }
+    return localReqConvertGroupId.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vdc
  * JD-Core Version:    0.7.0.1
  */

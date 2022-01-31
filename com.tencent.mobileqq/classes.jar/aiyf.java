@@ -1,20 +1,28 @@
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.tribe.TribePostTitlePrefixPanelController;
-import com.tencent.mobileqq.tribe.view.TribeTitlePrefixPanelView.PrefixSelectedListener;
-import com.tencent.mobileqq.tribe.view.TribeTitlePrefixPanelView.TitlePrefixItem;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.qphone.base.util.QLog;
 
 public class aiyf
-  implements TribeTitlePrefixPanelView.PrefixSelectedListener
+  implements View.OnFocusChangeListener
 {
-  private aiyf(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public aiyf(LingHbFragment paramLingHbFragment) {}
   
-  public void a(TribeTitlePrefixPanelView.TitlePrefixItem paramTitlePrefixItem)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTribeTitlePrefixPanelView$TitlePrefixItem = paramTitlePrefixItem;
-    this.a.jdField_a_of_type_ComTencentMobileqqTribeTribePostTitlePrefixPanelController.b();
-    this.a.e(true);
-    ReportController.b(null, "dc00899", "Grp_tribe", "", "pub_page", "choose_prefix", 0, 0, this.a.r, "", "", "");
+    if (paramBoolean) {
+      LingHbFragment.a(this.a).a(this.a.c.getText().toString(), false);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("LingHbFragment", 2, "onFocusChange:" + paramBoolean);
+      }
+      return;
+      LingHbFragment.a(this.a).a();
+    }
   }
 }
 

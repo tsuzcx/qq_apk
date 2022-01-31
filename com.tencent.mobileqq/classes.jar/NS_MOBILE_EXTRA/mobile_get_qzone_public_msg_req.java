@@ -9,8 +9,8 @@ import java.util.Map;
 public final class mobile_get_qzone_public_msg_req
   extends JceStruct
 {
-  static Map cache_map_ext = new HashMap();
-  public Map map_ext;
+  static Map<String, String> cache_map_ext = new HashMap();
+  public Map<String, String> map_ext;
   public long uin;
   
   static
@@ -20,7 +20,7 @@ public final class mobile_get_qzone_public_msg_req
   
   public mobile_get_qzone_public_msg_req() {}
   
-  public mobile_get_qzone_public_msg_req(long paramLong, Map paramMap)
+  public mobile_get_qzone_public_msg_req(long paramLong, Map<String, String> paramMap)
   {
     this.uin = paramLong;
     this.map_ext = paramMap;

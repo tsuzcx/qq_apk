@@ -1,19 +1,36 @@
-import com.tencent.mobileqq.widget.QQToast;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class ansx
-  implements Runnable
+final class ansx
+  implements bauf
 {
-  public ansx(EditVideoDoodle paramEditVideoDoodle) {}
-  
-  public void run()
+  public void a(bave parambave, bavf parambavf)
   {
-    QQToast.a(this.a.a(), "表情个数已达上限", 0).a();
+    if ((parambave == null) || (parambavf == null)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!(parambave instanceof baub));
+      parambave = (baub)parambave;
+      parambave.jdField_a_of_type_Long += parambavf.c;
+      parambavf.c = 0L;
+      parambavf = "bytes=" + parambave.jdField_a_of_type_Long + "-";
+      parambave.jdField_a_of_type_JavaUtilHashMap.put("Range", parambavf);
+      parambavf = parambave.jdField_a_of_type_JavaLangString;
+      if (parambavf.contains("range="))
+      {
+        String str = parambavf.substring(0, parambavf.lastIndexOf("range="));
+        parambave.jdField_a_of_type_JavaLangString = (str + "range=" + parambave.jdField_a_of_type_Long);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("ResDownloadManager", 2, "IBreakDownFix, " + parambavf);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ansx
  * JD-Core Version:    0.7.0.1
  */

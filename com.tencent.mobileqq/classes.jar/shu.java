@@ -1,23 +1,25 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-
-class shu
-  implements Runnable
+public final class shu
 {
-  shu(shq paramshq) {}
-  
-  public void run()
+  public static float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    if (this.a.a.a != null)
-    {
-      this.a.a.a.a();
-      this.a.a.a.a(-1, null);
+    paramFloat1 = paramFloat1 / paramFloat4 - 1.0F;
+    return (paramFloat1 * (paramFloat1 * paramFloat1) + 1.0F) * paramFloat3 + paramFloat2;
+  }
+  
+  public static float b(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    paramFloat1 /= paramFloat4 / 2.0F;
+    if (paramFloat1 < 1.0F) {
+      return paramFloat1 * (paramFloat3 / 2.0F * paramFloat1 * paramFloat1) + paramFloat2;
     }
+    paramFloat3 /= 2.0F;
+    paramFloat1 -= 2.0F;
+    return (paramFloat1 * (paramFloat1 * paramFloat1) + 2.0F) * paramFloat3 + paramFloat2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     shu
  * JD-Core Version:    0.7.0.1
  */

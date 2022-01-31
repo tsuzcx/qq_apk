@@ -1,18 +1,14 @@
-import android.accounts.AccountManagerCallback;
-import android.accounts.AccountManagerFuture;
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
-import com.tencent.qphone.base.util.QLog;
+import IMMsgBodyPack.MsgType0x210;
 
-public class abtm
-  implements AccountManagerCallback
+class abtm
+  implements mag
 {
-  public abtm(ContactSyncManager paramContactSyncManager) {}
+  abtm(abtl paramabtl, MsgType0x210 paramMsgType0x210) {}
   
-  public void run(AccountManagerFuture paramAccountManagerFuture)
+  public void a(maf parammaf)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Manager", 2, "removeSyncAccount | is done = " + paramAccountManagerFuture.isDone());
-    }
+    parammaf.b(this.jdField_a_of_type_IMMsgBodyPackMsgType0x210.vProtobuf);
+    parammaf.a();
   }
 }
 

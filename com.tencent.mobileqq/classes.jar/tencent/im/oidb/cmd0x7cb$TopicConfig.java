@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class cmd0x7cb$TopicConfig
-  extends MessageMicro
+  extends MessageMicro<TopicConfig>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34 }, new String[] { "uint32_topic_id", "str_topic_name", "uint32_deadline", "str_err_deadline" }, new Object[] { Integer.valueOf(0), "", Integer.valueOf(0), "" }, TopicConfig.class);
   public final PBStringField str_err_deadline = PBField.initString("");
@@ -17,7 +17,7 @@ public final class cmd0x7cb$TopicConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x7cb.TopicConfig
  * JD-Core Version:    0.7.0.1
  */

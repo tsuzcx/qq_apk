@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.util;
 
 import AvatarInfo.QQHeadInfo;
-import ajzw;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.NearbyUtils;
+import auwz;
+import bdbt;
 import com.tencent.qphone.base.util.QLog;
 
 public class FaceInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ajzw();
+  public static final Parcelable.Creator<FaceInfo> CREATOR = new bdbt();
   public static int f;
   public static int g = 1;
   public static int h = 2;
@@ -80,12 +80,16 @@ public class FaceInfo
     case 1: 
       return "TIME_REQ_READY";
     case 2: 
-      return "TIME_BEGIN_DOWNLOAD";
+      return "TIME_BEGIN_DOWNLOADINFO";
     case 3: 
-      return "TIME_END_DOWNLOAD";
+      return "TIME_END_DOWNLOADINFO";
     case 4: 
-      return "TIME_BEGIN_DECODE";
+      return "TIME_BEGIN_DOWNLOAD";
     case 5: 
+      return "TIME_END_DOWNLOAD";
+    case 6: 
+      return "TIME_BEGIN_DECODE";
+    case 7: 
       return "TIME_END_DECODE";
     }
     return "TIME_REQ_END";
@@ -121,7 +125,7 @@ public class FaceInfo
         localStringBuilder.append("_").append(paramInt3);
       }
       return localStringBuilder.toString();
-      localStringBuilder.append("dis_e_");
+      localStringBuilder.append("dis_g_");
       continue;
       localStringBuilder.append("troop_");
       continue;
@@ -183,7 +187,7 @@ public class FaceInfo
       } while ((paramInt1 < 0) || (paramInt1 >= s));
       this.jdField_a_of_type_ArrayOfLong[paramInt1] = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
-        NearbyUtils.a(FaceInfo.class.getSimpleName(), "markTime", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(this.jdField_a_of_type_ArrayOfLong[paramInt1]), this });
+        auwz.a(FaceInfo.class.getSimpleName(), "markTime", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(this.jdField_a_of_type_ArrayOfLong[paramInt1]), this });
       }
     } while ((paramInt1 != r) || (!QLog.isColorLevel()));
     StringBuilder localStringBuilder = new StringBuilder(260);
@@ -281,7 +285,7 @@ public class FaceInfo
         break;
       }
     } while (!QLog.isDevelopLevel());
-    NearbyUtils.a(FaceInfo.class.getSimpleName(), "isTimeOut", new Object[] { Integer.valueOf(paramInt) });
+    auwz.a(FaceInfo.class.getSimpleName(), "isTimeOut", new Object[] { Integer.valueOf(paramInt) });
     return false;
     if (Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_ArrayOfLong[paramInt]) >= paramLong) {}
     for (;;)
@@ -355,7 +359,7 @@ public class FaceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.FaceInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,23 @@
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVManager.EnterRoomCallback;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqavopensdk.AVEngineEventHandler;
+import android.content.Context;
+import android.widget.RadioButton;
+import com.tencent.biz.troopgift.RadioButtonIndicator;
 
 public class yve
-  implements AVManager.EnterRoomCallback
+  extends RadioButton
 {
-  public yve(AVEngineWalper paramAVEngineWalper) {}
-  
-  public void a(int paramInt, String paramString)
+  public yve(RadioButtonIndicator paramRadioButtonIndicator, Context paramContext)
   {
-    if (paramInt == 0) {
-      QLog.e("AVEngineWalper", 1, "EnterRoom successfully!!!");
-    }
-    for (;;)
-    {
-      if (this.a.a != null) {
-        this.a.a.b(paramInt, paramString);
-      }
-      return;
-      QLog.e("AVEngineWalper", 1, "enter room failed. result=" + paramInt + ", errorInfo=" + paramString);
-    }
+    super(paramContext);
+  }
+  
+  public boolean performClick()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yve
  * JD-Core Version:    0.7.0.1
  */

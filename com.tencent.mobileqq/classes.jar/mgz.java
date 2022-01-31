@@ -1,27 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
+import com.tencent.av.ui.MultiIncomingCallsActivity.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class mgz
-  implements AbsListView.OnScrollListener
+  extends lht
 {
-  public mgz(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter) {}
+  public mgz(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  protected void a(long paramLong1, long paramLong2, ArrayList<lqk> paramArrayList)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    ReadInJoyBaseAdapter.b(this.a, paramAbsListView);
+    ThreadManager.getUIHandler().post(new MultiIncomingCallsActivity.1.1(this, paramArrayList));
   }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mgz
  * JD-Core Version:    0.7.0.1
  */

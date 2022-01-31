@@ -2,18 +2,20 @@ package dov.com.tencent.biz.qqstory.takevideo.multivideo;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Pair;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import aoci;
+import bnad;
+import bnae;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class SegmentPicker
   extends RelativeLayout
-  implements aoci
+  implements bnae
 {
   private SegmentRangeView jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentRangeView;
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<bnad> jdField_a_of_type_JavaLangRefWeakReference;
   
   public SegmentPicker(Context paramContext)
   {
@@ -33,7 +35,7 @@ public class SegmentPicker
     addView(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentRangeView, paramContext);
   }
   
-  public List a()
+  public List<Pair<Long, Long>> a()
   {
     if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentRangeView != null) {
       return this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentRangeView.a();
@@ -53,23 +55,23 @@ public class SegmentPicker
   
   public void a(long paramLong)
   {
-    SegmentPicker.SegmentPickerListener localSegmentPickerListener = null;
+    bnad localbnad = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localSegmentPickerListener = (SegmentPicker.SegmentPickerListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localbnad = (bnad)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localSegmentPickerListener != null) {
-      localSegmentPickerListener.a(paramLong);
+    if (localbnad != null) {
+      localbnad.a(paramLong);
     }
   }
   
-  public void a(List paramList)
+  public void a(List<Long> paramList)
   {
-    SegmentPicker.SegmentPickerListener localSegmentPickerListener = null;
+    bnad localbnad = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localSegmentPickerListener = (SegmentPicker.SegmentPickerListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localbnad = (bnad)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localSegmentPickerListener != null) {
-      localSegmentPickerListener.a(paramList);
+    if (localbnad != null) {
+      localbnad.a(paramList);
     }
   }
   
@@ -80,27 +82,27 @@ public class SegmentPicker
     }
   }
   
-  public boolean a(String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, SegmentPicker.SegmentPickerListener paramSegmentPickerListener)
+  public boolean a(String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, bnad parambnad, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramSegmentPickerListener);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambnad);
     if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentRangeView != null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentRangeView.a(paramString, paramLong1, paramLong2, paramInt1, paramInt2, paramInt3, paramBoolean, this);
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentRangeView.a(paramString, paramLong1, paramLong2, paramInt1, paramInt2, paramInt3, paramBoolean1, this, paramBoolean2);
     }
     return true;
   }
   
   public void b(long paramLong)
   {
-    SegmentPicker.SegmentPickerListener localSegmentPickerListener = null;
+    bnad localbnad = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localSegmentPickerListener = (SegmentPicker.SegmentPickerListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localbnad = (bnad)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localSegmentPickerListener != null) {
-      localSegmentPickerListener.b(paramLong);
+    if (localbnad != null) {
+      localbnad.b(paramLong);
     }
   }
   
-  public void setRanges(List paramList)
+  public void setRanges(List<Pair<Long, Long>> paramList)
   {
     if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentRangeView != null) {
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentRangeView.setRanges(paramList);
@@ -109,7 +111,7 @@ public class SegmentPicker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.multivideo.SegmentPicker
  * JD-Core Version:    0.7.0.1
  */

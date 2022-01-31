@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/ix" android:background="@drawable/common_strip_setting_top" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginTop="20.0dip">
+        <TextView android:textSize="@dimen/ayo" android:textColor="@color/skin_black" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/qle" />
+        <TextView android:textSize="@dimen/ayo" android:textColor="@color/skin_black" android:layout_gravity="center_vertical" android:id="@id/is" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="50.0dip" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/b7x" android:background="@drawable/common_strip_setting_bottom" android:layout_width="fill_parent" android:layout_height="44.0dip">
+        <TextView android:textSize="@dimen/ayo" android:textColor="@color/skin_black" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/qld" />
+        <TextView android:textSize="@dimen/ayo" android:textColor="@color/skin_black" android:layout_gravity="center_vertical" android:id="@id/b7w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="50.0dip" />
+    </LinearLayout>
+</LinearLayout>

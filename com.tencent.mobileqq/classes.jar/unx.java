@@ -1,17 +1,25 @@
-import com.tencent.mobileqq.activity.aio.anim.VipPendantDrawable;
+import com.tencent.biz.qqstory.base.preload.PreloadQueue;
 
-public class unx
+public final class unx
 {
-  public String a;
+  protected int a = 0;
   
-  public unx(VipPendantDrawable paramVipPendantDrawable, String paramString)
+  public PreloadQueue a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    PreloadQueue localPreloadQueue = new PreloadQueue();
+    PreloadQueue.access$002(localPreloadQueue, this.a);
+    return localPreloadQueue;
+  }
+  
+  public unx a(int paramInt)
+  {
+    this.a = paramInt;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     unx
  * JD-Core Version:    0.7.0.1
  */

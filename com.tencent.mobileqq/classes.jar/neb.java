@@ -1,80 +1,90 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryManager;
-import com.tencent.biz.qqstory.msgTabNode.network.MsgTabNodeListRequest;
-import com.tencent.biz.qqstory.msgTabNode.network.MsgTabNodeListRequest.MsgTabNodeListResponse;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
 public class neb
-  implements CmdTaskManger.CommandCallback
+  extends nec
 {
-  public neb(MsgTabNodeListLoader paramMsgTabNodeListLoader) {}
+  protected int a;
+  protected int b;
   
-  public void a(@NonNull MsgTabNodeListRequest arg1, @Nullable MsgTabNodeListRequest.MsgTabNodeListResponse paramMsgTabNodeListResponse, @NonNull ErrorMessage paramErrorMessage)
+  public static neb a(ByteBuffer paramByteBuffer)
   {
-    if ((paramErrorMessage.isFail()) || (paramMsgTabNodeListResponse == null))
-    {
-      SLog.b("Q.qqstory.msgTab.nodeList", "onResponse() get latest failed: %s", paramErrorMessage.getErrorMessage());
-      this.a.a(false);
-      if (this.a.a()) {
-        this.a.a(new ArrayList(this.a.jdField_a_of_type_JavaUtilArrayList), true, this.a.jdField_a_of_type_Boolean, true);
-      }
-      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      return;
+    return a(paramByteBuffer, new neb());
+  }
+  
+  public static neb a(ByteBuffer paramByteBuffer, neb paramneb)
+  {
+    paramByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
+    if (paramByteBuffer.capacity() < paramByteBuffer.position() + 4) {
+      return null;
     }
-    this.a.a(true);
-    if (TextUtils.equals(this.a.b, paramMsgTabNodeListResponse.jdField_a_of_type_JavaLangString))
-    {
-      SLog.b("Q.qqstory.msgTab.nodeList", "not change, sort only, mData size=%d", Integer.valueOf(this.a.jdField_a_of_type_JavaUtilArrayList.size()));
-      synchronized (this.a.jdField_a_of_type_JavaLangObject)
-      {
-        Collections.sort(this.a.jdField_a_of_type_JavaUtilArrayList, this.a.jdField_a_of_type_JavaUtilComparator);
-        this.a.a();
-        this.a.a(new ArrayList(this.a.jdField_a_of_type_JavaUtilArrayList), true, this.a.jdField_a_of_type_Boolean, false);
-        this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        return;
-      }
+    return paramneb.a(paramByteBuffer.getInt(paramByteBuffer.position()) + paramByteBuffer.position(), paramByteBuffer);
+  }
+  
+  private int b(int paramInt)
+  {
+    paramInt = (paramInt + 2) * 2;
+    if (paramInt < this.b) {
+      return this.jdField_a_of_type_JavaNioByteBuffer.getShort(paramInt + this.jdField_a_of_type_Int);
     }
-    new ArrayList();
-    ??? = this.a.jdField_a_of_type_JavaLangObject;
-    int i = 0;
-    try
-    {
-      while (i < paramMsgTabNodeListResponse.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        MsgTabNodeListLoader.a(this.a, (MsgTabNodeInfo)paramMsgTabNodeListResponse.jdField_a_of_type_JavaUtilArrayList.get(i));
-        i += 1;
-      }
-      this.a.b = paramMsgTabNodeListResponse.jdField_a_of_type_JavaLangString;
-      this.a.jdField_a_of_type_JavaLangString = paramMsgTabNodeListResponse.c;
-      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.a.jdField_a_of_type_JavaUtilArrayList.addAll(paramMsgTabNodeListResponse.jdField_a_of_type_JavaUtilArrayList);
-      Collections.sort(this.a.jdField_a_of_type_JavaUtilArrayList, this.a.jdField_a_of_type_JavaUtilComparator);
-      this.a.jdField_a_of_type_Boolean = paramMsgTabNodeListResponse.jdField_a_of_type_Boolean;
-      this.a.a();
-      MsgTabNodeListLoader.a(this.a);
-      this.a.a(false, false);
-      paramMsgTabNodeListResponse = new ArrayList(this.a.jdField_a_of_type_JavaUtilArrayList);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryManager.a(paramMsgTabNodeListResponse, true);
-      this.a.a(paramMsgTabNodeListResponse, true, this.a.jdField_a_of_type_Boolean, false);
-      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      SLog.c("Q.qqstory.msgTab.nodeList", "get latest data size=" + this.a.jdField_a_of_type_JavaUtilArrayList.size());
-      return;
+    return 0;
+  }
+  
+  public long a(int paramInt, long paramLong)
+  {
+    paramInt = b(paramInt);
+    if (paramInt != 0) {
+      paramLong = this.jdField_a_of_type_JavaNioByteBuffer.getLong(paramInt + this.c);
     }
-    finally {}
+    return paramLong;
+  }
+  
+  public String a(int paramInt)
+  {
+    paramInt = b(paramInt);
+    if (paramInt != 0) {
+      return b(paramInt + this.c);
+    }
+    return null;
+  }
+  
+  public nea a(int paramInt)
+  {
+    return a(paramInt, new nea());
+  }
+  
+  public nea a(int paramInt, nea paramnea)
+  {
+    paramInt = b(paramInt);
+    if (paramInt != 0) {
+      return paramnea.a(a(paramInt + this.c), this.jdField_a_of_type_JavaNioByteBuffer);
+    }
+    return null;
+  }
+  
+  public neb a(int paramInt, ByteBuffer paramByteBuffer)
+  {
+    if ((paramInt < 0) || (paramByteBuffer.capacity() < paramInt + 4)) {
+      paramByteBuffer = null;
+    }
+    do
+    {
+      return paramByteBuffer;
+      this.c = paramInt;
+      this.jdField_a_of_type_JavaNioByteBuffer = paramByteBuffer;
+      this.jdField_a_of_type_Int = (this.c - this.jdField_a_of_type_JavaNioByteBuffer.getInt(this.c));
+      if (!a(this.jdField_a_of_type_Int, 2)) {
+        return null;
+      }
+      this.b = this.jdField_a_of_type_JavaNioByteBuffer.getShort(this.jdField_a_of_type_Int);
+      paramByteBuffer = this;
+    } while (a(this.jdField_a_of_type_Int, this.b));
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     neb
  * JD-Core Version:    0.7.0.1
  */

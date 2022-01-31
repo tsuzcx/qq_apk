@@ -1,21 +1,49 @@
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar;
-import java.util.Locale;
+import android.content.Context;
+import android.content.IntentFilter;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class obv
-  implements Runnable
 {
-  public obv(NewMessageYellowBar paramNewMessageYellowBar, int paramInt) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private IntentFilter jdField_a_of_type_AndroidContentIntentFilter;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private obw jdField_a_of_type_Obw;
+  private obx jdField_a_of_type_Obx;
   
-  public void run()
+  public obv(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(Locale.getDefault(), "%d个小视频更新", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar.jdField_a_of_type_AndroidWidgetTextView.startAnimation(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar.jdField_a_of_type_AndroidViewAnimationAnimationSet);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidContentIntentFilter = new IntentFilter("android.intent.action.CLOSE_SYSTEM_DIALOGS");
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_Obw != null) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))) {
+      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_Obw, this.jdField_a_of_type_AndroidContentIntentFilter);
+    }
+  }
+  
+  public void a(obx paramobx)
+  {
+    this.jdField_a_of_type_Obx = paramobx;
+    this.jdField_a_of_type_Obw = new obw(this);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Obw != null) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false))) {
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Obw);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     obv
  * JD-Core Version:    0.7.0.1
  */

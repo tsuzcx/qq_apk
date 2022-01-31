@@ -1,5 +1,13 @@
 package android.support.v4.app;
 
+import android.support.annotation.AnimRes;
+import android.support.annotation.AnimatorRes;
+import android.support.annotation.IdRes;
+import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
+import android.support.annotation.StyleRes;
+import android.view.View;
+
 public abstract class FragmentTransaction
 {
   public static final int TRANSIT_ENTER_MASK = 4096;
@@ -10,19 +18,25 @@ public abstract class FragmentTransaction
   public static final int TRANSIT_NONE = 0;
   public static final int TRANSIT_UNSET = -1;
   
-  public abstract FragmentTransaction add(int paramInt, Fragment paramFragment);
+  public abstract FragmentTransaction add(@IdRes int paramInt, Fragment paramFragment);
   
-  public abstract FragmentTransaction add(int paramInt, Fragment paramFragment, String paramString);
+  public abstract FragmentTransaction add(@IdRes int paramInt, Fragment paramFragment, @Nullable String paramString);
   
   public abstract FragmentTransaction add(Fragment paramFragment, String paramString);
   
-  public abstract FragmentTransaction addToBackStack(String paramString);
+  public abstract FragmentTransaction addSharedElement(View paramView, String paramString);
+  
+  public abstract FragmentTransaction addToBackStack(@Nullable String paramString);
   
   public abstract FragmentTransaction attach(Fragment paramFragment);
   
   public abstract int commit();
   
   public abstract int commitAllowingStateLoss();
+  
+  public abstract void commitNow();
+  
+  public abstract void commitNowAllowingStateLoss();
   
   public abstract FragmentTransaction detach(Fragment paramFragment);
   
@@ -36,25 +50,34 @@ public abstract class FragmentTransaction
   
   public abstract FragmentTransaction remove(Fragment paramFragment);
   
-  public abstract FragmentTransaction replace(int paramInt, Fragment paramFragment);
+  public abstract FragmentTransaction replace(@IdRes int paramInt, Fragment paramFragment);
   
-  public abstract FragmentTransaction replace(int paramInt, Fragment paramFragment, String paramString);
+  public abstract FragmentTransaction replace(@IdRes int paramInt, Fragment paramFragment, @Nullable String paramString);
   
-  public abstract FragmentTransaction setBreadCrumbShortTitle(int paramInt);
+  public abstract FragmentTransaction runOnCommit(Runnable paramRunnable);
+  
+  @Deprecated
+  public abstract FragmentTransaction setAllowOptimization(boolean paramBoolean);
+  
+  public abstract FragmentTransaction setBreadCrumbShortTitle(@StringRes int paramInt);
   
   public abstract FragmentTransaction setBreadCrumbShortTitle(CharSequence paramCharSequence);
   
-  public abstract FragmentTransaction setBreadCrumbTitle(int paramInt);
+  public abstract FragmentTransaction setBreadCrumbTitle(@StringRes int paramInt);
   
   public abstract FragmentTransaction setBreadCrumbTitle(CharSequence paramCharSequence);
   
-  public abstract FragmentTransaction setCustomAnimations(int paramInt1, int paramInt2);
+  public abstract FragmentTransaction setCustomAnimations(@AnimRes @AnimatorRes int paramInt1, @AnimRes @AnimatorRes int paramInt2);
   
-  public abstract FragmentTransaction setCustomAnimations(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public abstract FragmentTransaction setCustomAnimations(@AnimRes @AnimatorRes int paramInt1, @AnimRes @AnimatorRes int paramInt2, @AnimRes @AnimatorRes int paramInt3, @AnimRes @AnimatorRes int paramInt4);
+  
+  public abstract FragmentTransaction setPrimaryNavigationFragment(Fragment paramFragment);
+  
+  public abstract FragmentTransaction setReorderingAllowed(boolean paramBoolean);
   
   public abstract FragmentTransaction setTransition(int paramInt);
   
-  public abstract FragmentTransaction setTransitionStyle(int paramInt);
+  public abstract FragmentTransaction setTransitionStyle(@StyleRes int paramInt);
   
   public abstract FragmentTransaction show(Fragment paramFragment);
 }

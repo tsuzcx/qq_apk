@@ -1,63 +1,35 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import java.lang.ref.WeakReference;
 
 public class rud
-  implements View.OnKeyListener, TextView.OnEditorActionListener
+  extends Handler
 {
-  private rud(BaseChatPie paramBaseChatPie) {}
+  private WeakReference<ReadInJoyNavigationGridview> a;
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public rud(ReadInJoyNavigationGridview paramReadInJoyNavigationGridview)
   {
-    if (paramInt == 4)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.BaseChatPie", 2, "IME_ACTION_SEND");
-      }
-      this.a.al();
-      return true;
-    }
-    return false;
+    this.a = new WeakReference(paramReadInJoyNavigationGridview);
   }
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramKeyEvent.getKeyCode() == 66)
-    {
-      if (paramKeyEvent.getAction() == 1)
-      {
-        paramView = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.aio.BaseChatPie", 2, " sendOnEnterEnabled = " + this.a.l);
-        }
-        if ((this.a.l) && (paramView.length() > 0)) {
-          this.a.ak();
-        }
-      }
-      if (this.a.l) {
-        return true;
-      }
+    ReadInJoyNavigationGridview localReadInJoyNavigationGridview = (ReadInJoyNavigationGridview)this.a.get();
+    if ((localReadInJoyNavigationGridview == null) || (ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview))) {
+      return;
     }
-    else if ((paramKeyEvent.getKeyCode() == 67) && (paramKeyEvent.getAction() == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart() == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionEnd() == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131362132) != null))
+    switch (paramMessage.what)
     {
-      paramView = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getCompoundDrawables();
-      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setCompoundDrawables(paramView[0], null, paramView[2], paramView[3]);
-      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(2131362132, null);
-      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(0);
-      this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo = null;
-      return true;
+    default: 
+      return;
     }
-    return false;
+    ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rud
  * JD-Core Version:    0.7.0.1
  */

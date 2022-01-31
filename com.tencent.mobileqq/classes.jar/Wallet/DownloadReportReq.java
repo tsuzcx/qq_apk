@@ -11,7 +11,7 @@ public final class DownloadReportReq
   public static final int TYPE_DOWNLOADING = 0;
   public static final int TYPE_DOWNLOAD_FAIL = 2;
   public static final int TYPE_DOWNLOAD_SUCC = 1;
-  static ArrayList cache_vecResInfo = new ArrayList();
+  static ArrayList<ResInfo> cache_vecResInfo = new ArrayList();
   public int iActId = 1001;
   public int iPlatForm = 1;
   public int iScene;
@@ -21,7 +21,7 @@ public final class DownloadReportReq
   public String sPhoneType = "";
   public String sQQVersion = "";
   public String sSpeed = "";
-  public ArrayList vecResInfo;
+  public ArrayList<ResInfo> vecResInfo;
   
   static
   {

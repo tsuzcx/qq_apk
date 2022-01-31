@@ -1,135 +1,54 @@
 package com.tencent.token;
 
-import android.content.ContentValues;
-import android.content.Context;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
-public class bw
+final class bw
 {
-  public static d a(fs paramfs, String paramString)
+  private Lock a = new ReentrantLock();
+  private bs b = null;
+  
+  public final bs a()
   {
-    int i = 0;
-    Object localObject = null;
-    d locald = new d((byte)0);
-    try
-    {
-      ae.a();
-      if (ax.a().p())
-      {
-        ax.a();
-        localObject = ax.c;
-      }
-      if (localObject == null)
-      {
-        paramfs = b(paramfs, paramString);
-        return paramfs;
-      }
-      localObject = bi.a(paramString);
-      if (localObject != null)
-      {
-        localObject = ((bm)localObject).c(paramfs);
-        if (((d)localObject).a == 0) {
-          i = 1;
-        }
-        if (i == 0) {
-          break label118;
-        }
-        ae.a();
-        ax.a().m();
-        return localObject;
-      }
-    }
-    finally {}
-    locald.a(10000, null, null);
-    return locald;
-    label118:
-    if (((d)localObject).a == 104)
-    {
-      paramfs = b(paramfs, paramString);
-      return paramfs;
-    }
-    return localObject;
+    return this.b;
   }
   
-  private static d b(fs paramfs, String paramString)
+  /* Error */
+  public final void a(bs parambs)
   {
-    int m = 1;
-    int k = 1;
-    new d((byte)0);
-    e.c(paramString);
-    if (paramfs.m == 1) {
-      paramfs.m = 0;
-    }
-    for (int i = 1;; i = 0)
-    {
-      d locald = bi.a("mbtoken3_exchange_key_v3").c(paramfs);
-      if (locald.a == 0) {}
-      for (int j = 1; j == 0; j = 0)
-      {
-        paramfs = locald;
-        return paramfs;
-      }
-      locald = bi.a("mbtoken3_get_uin_list_v2").c(paramfs);
-      if (locald.a == 0) {}
-      for (j = 1; j == 0; j = 0) {
-        return locald;
-      }
-      if (paramString == "mbtoken3_get_uin_list_v2") {
-        return locald;
-      }
-      long l = ((Long)paramfs.n.get("uin")).longValue();
-      if (ax.a().c(l) == null)
-      {
-        paramString = bi.a("mbtoken3_qry_bind_notify_msg");
-        paramfs.e = true;
-        paramString = paramString.c(paramfs);
-        paramfs.e = false;
-        if (paramString.a == 0) {}
-        for (i = k;; i = 0)
-        {
-          paramfs = paramString;
-          if (i == 0) {
-            break;
-          }
-          if ((paramString.c == null) || (paramString.c.isEmpty())) {
-            break label213;
-          }
-          paramString.a(222, null, paramString.c);
-          return paramString;
-        }
-        label213:
-        paramString.a(222, null, RqdApplication.i().getString(2131362822));
-        return paramString;
-      }
-      paramString = bi.a(paramString);
-      if (paramString != null)
-      {
-        if (i != 0)
-        {
-          paramfs.m = 1;
-          paramfs.k = true;
-        }
-        paramString = paramString.c(paramfs);
-        if (paramString.a != 0) {
-          break label301;
-        }
-      }
-      label301:
-      for (i = m;; i = 0)
-      {
-        paramfs = paramString;
-        if (i == 0) {
-          break;
-        }
-        ae.a();
-        ax.a().m();
-        return paramString;
-        locald.a(10000, null, null);
-        return locald;
-      }
-    }
+    // Byte code:
+    //   0: aload_1
+    //   1: ifnull +33 -> 34
+    //   4: aload_0
+    //   5: getfield 17	com/tencent/token/bw:a	Ljava/util/concurrent/locks/Lock;
+    //   8: invokeinterface 29 1 0
+    //   13: aload_0
+    //   14: getfield 19	com/tencent/token/bw:b	Lcom/tencent/token/bs;
+    //   17: ifnonnull +18 -> 35
+    //   20: aload_0
+    //   21: aload_1
+    //   22: putfield 19	com/tencent/token/bw:b	Lcom/tencent/token/bs;
+    //   25: aload_0
+    //   26: getfield 17	com/tencent/token/bw:a	Ljava/util/concurrent/locks/Lock;
+    //   29: invokeinterface 32 1 0
+    //   34: return
+    //   35: aload_1
+    //   36: invokevirtual 36	com/tencent/token/bs:b	()V
+    //   39: goto -14 -> 25
+    //   42: astore_1
+    //   43: aload_0
+    //   44: getfield 17	com/tencent/token/bw:a	Ljava/util/concurrent/locks/Lock;
+    //   47: invokeinterface 32 1 0
+    //   52: aload_1
+    //   53: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	54	0	this	bw
+    //   0	54	1	parambs	bs
+    // Exception table:
+    //   from	to	target	type
+    //   13	25	42	finally
+    //   35	39	42	finally
   }
 }
 

@@ -1,49 +1,60 @@
 import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.mobileqq.musicgene.BitmapOptionUtil;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 public class aekx
-  implements DownloadParams.DecodeHandler
+  extends WebViewClient
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private final boolean jdField_a_of_type_Boolean;
+  private aekx(UpgradeDetailActivity paramUpgradeDetailActivity) {}
   
-  public aekx(MusicPlayerActivity paramMusicPlayerActivity, boolean paramBoolean, String paramString)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramMusicPlayerActivity);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeDetailActivity", 2, "onPageFinished: " + paramString);
+    }
+    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+    super.onPageFinished(paramWebView, paramString);
   }
   
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    Object localObject = (MusicPlayerActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((paramBitmap != null) && (localObject != null))
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeDetailActivity", 2, "onPageStarted: " + paramString);
+    }
+    if (this.a.a(paramString)) {
+      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+    }
+    try
     {
-      paramDownloadParams = BitmapOptionUtil.a(Bitmap.createBitmap(paramBitmap, 0, paramBitmap.getHeight() / 2, paramBitmap.getWidth(), paramBitmap.getHeight() / 2));
-      localObject = Message.obtain(MusicPlayerActivity.a((MusicPlayerActivity)localObject), 49);
-      Bundle localBundle = new Bundle();
-      localBundle.putIntArray("KEY_COLOR_LIST", paramDownloadParams);
-      localBundle.putBoolean("KEY_MATCH_SONG", this.jdField_a_of_type_Boolean);
-      ((Message)localObject).setData(localBundle);
-      ((Message)localObject).sendToTarget();
-      if ((paramDownloadParams != null) && (paramDownloadParams.length >= 2))
-      {
-        localObject = new ArrayList();
-        ((ArrayList)localObject).add(Integer.valueOf(paramDownloadParams[0]));
-        ((ArrayList)localObject).add(Integer.valueOf(paramDownloadParams[1]));
-        MusicPlayerActivity.c().put(this.jdField_a_of_type_JavaLangString, localObject);
+      this.a.jdField_a_of_type_ComTencentSmttSdkWebView.stopLoading();
+      return;
+    }
+    catch (Exception paramWebView) {}
+    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    return;
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    this.a.a(true);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeDetailActivity", 2, "shouldOverrideUrlLoading: " + paramString);
+    }
+    if ((paramString == null) || ("".equals(paramString)) || ("about:blank;".equals(paramString)) || ("about:blank".equals(paramString))) {}
+    for (;;)
+    {
+      return true;
+      if ((!UpgradeDetailActivity.a(this.a).a(paramWebView, paramString)) && (!this.a.a(paramString))) {
+        this.a.a(paramString);
       }
     }
-    return paramBitmap;
   }
 }
 

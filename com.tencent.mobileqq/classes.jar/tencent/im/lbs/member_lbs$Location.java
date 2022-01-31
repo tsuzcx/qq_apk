@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt64Field;
 
 public final class member_lbs$Location
-  extends MessageMicro
+  extends MessageMicro<Location>
 {
   public static final int INT64_LATITUDE_FIELD_NUMBER = 1;
   public static final int INT64_LONGITUDE_FIELD_NUMBER = 2;
@@ -16,7 +16,7 @@ public final class member_lbs$Location
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.lbs.member_lbs.Location
  * JD-Core Version:    0.7.0.1
  */

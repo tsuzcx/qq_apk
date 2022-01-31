@@ -1,18 +1,7 @@
-import com.tencent.mobileqq.activity.AccountManageActivity;
-
-public class rgo
-  implements Runnable
-{
-  public rgo(AccountManageActivity paramAccountManageActivity) {}
-  
-  public void run()
-  {
-    this.a.g();
-  }
-}
+class rgo {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rgo
  * JD-Core Version:    0.7.0.1
  */

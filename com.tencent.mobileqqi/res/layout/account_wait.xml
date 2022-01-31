@@ -2,5 +2,5 @@
 <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/loadingdialogRoot" android:background="@drawable/dialog_bg" android:layout_width="216.0dip" android:layout_height="92.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ProgressBar android:layout_gravity="center" android:id="@id/footLoading" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:layout_marginBottom="6.0dip" android:indeterminateDrawable="@drawable/sc_publish_spinner_temp" style="@style/qZonePublishProgressStyleTemp" />
-    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b002d" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0116" android:id="@id/dialogText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/changing" android:singleLine="true" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b002d" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0120" android:id="@id/dialogText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/changing" android:singleLine="true" android:layout_centerHorizontal="true" />
 </LinearLayout>

@@ -1,19 +1,22 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.biz.pubaccount.subscript.ReadInJoyArticle;
 
 public class suc
-  implements Runnable
 {
-  public suc(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  public int a;
+  public long a;
+  public ReadInJoyArticle a;
+  public String a;
+  public String b = "";
   
-  public void run()
+  public suc()
   {
-    GesturePWDUnlockActivity.a(this.a).setEnabled(true);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     suc
  * JD-Core Version:    0.7.0.1
  */

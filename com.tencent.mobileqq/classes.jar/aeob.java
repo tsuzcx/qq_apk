@@ -1,38 +1,39 @@
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import Wallet.AcsPullMsgRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
+import java.util.ArrayList;
 
 public class aeob
-  implements WerewolvesHandler.Callback
+  implements aeor
 {
-  public aeob(GameRoomInviteActivity paramGameRoomInviteActivity, aeor paramaeor) {}
+  public aeob(ReminderListFragment paramReminderListFragment) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if ((paramInt == 0) && (paramRspBody != null))
+    if (paramBoolean)
     {
-      paramRspBody = this.jdField_a_of_type_Aeor;
-      if (!this.jdField_a_of_type_Aeor.a)
+      paramBundle = (AcsPullMsgRsp)paramBundle.getSerializable("rsp");
+      if (paramBundle != null)
       {
-        bool = true;
-        paramRspBody.a = bool;
-        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a();
-        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a.notifyDataSetChanged();
-      }
-    }
-    while (paramRspBody == null) {
-      for (;;)
-      {
+        paramBundle = paramBundle.msgs;
+        if ((paramBundle != null) && (!paramBundle.isEmpty()))
+        {
+          ArrayList localArrayList = new ArrayList(paramBundle.size());
+          ReminderListFragment.a(this.a, paramBundle, localArrayList, true);
+          return;
+        }
+        ReminderListFragment.b(this.a);
         return;
-        boolean bool = false;
       }
+      ReminderListFragment.b(this.a);
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a(paramInt, paramRspBody, "设置失败");
+    ReminderListFragment.a(this.a, alud.a(2131713773));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeob
  * JD-Core Version:    0.7.0.1
  */

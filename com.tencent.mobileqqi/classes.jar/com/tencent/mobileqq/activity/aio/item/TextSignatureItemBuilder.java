@@ -23,7 +23,7 @@ import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.TimeFormatterUtils;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
 import com.tencent.qphone.base.util.QLog;
-import egg;
+import ebe;
 import java.util.ArrayList;
 import org.json.JSONArray;
 
@@ -108,7 +108,7 @@ public class TextSignatureItemBuilder
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     Object localObject2 = (MessageForRichState)paramMessageRecord;
-    paramLinearLayout = (egg)paramViewHolder;
+    paramLinearLayout = (ebe)paramViewHolder;
     paramMessageRecord = paramView;
     if (paramView == null)
     {
@@ -190,7 +190,7 @@ public class TextSignatureItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new egg(this);
+    return new ebe(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}

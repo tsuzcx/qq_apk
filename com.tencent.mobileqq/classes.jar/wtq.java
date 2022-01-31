@@ -1,68 +1,83 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.phone.BindNumberFromPcActivity;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.activity.phone.RebindActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.util.SparseArray;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import java.util.HashMap;
 
 public class wtq
-  extends ContactBindObserver
+  implements View.OnClickListener, View.OnLongClickListener
 {
-  public wtq(BindNumberFromPcActivity paramBindNumberFromPcActivity) {}
+  public int a;
+  public SparseArray<View> a;
+  public View a;
+  public Object a;
+  public String a;
+  public HashMap<String, Object> a;
+  public wrj a;
+  public int b;
+  public SparseArray<String> b;
+  public int c = -1;
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public wtq(View paramView)
   {
-    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    this.a.b();
-    int i;
-    if (paramBoolean)
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    this.jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    paramView.setTag(this);
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public <T extends View> T a(int paramInt)
+  {
+    View localView2 = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    View localView1 = localView2;
+    if (localView2 == null)
     {
-      i = paramBundle.getInt("k_result");
-      if ((i == 104) || (i == 0))
-      {
-        paramBundle = new Intent(this.a, BindVerifyActivity.class);
-        paramBundle.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
-        paramBundle.putExtra("k_country_code", this.a.b);
-        if ((paramBundle != null) && (!this.a.isFinishing()))
-        {
-          paramBundle.addFlags(536870912);
-          this.a.startActivityForResult(paramBundle, 1);
-        }
-      }
+      localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localView1);
     }
-    for (;;)
-    {
-      this.a.app.unRegistObserver(BindNumberFromPcActivity.a(this.a));
-      BindNumberFromPcActivity.a(this.a, null);
-      return;
-      if (i == 107)
-      {
-        Intent localIntent = new Intent(this.a, RebindActivity.class);
-        localIntent.putExtra("k_uin", paramBundle.getString("k_uin"));
-        localIntent.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
-        localIntent.putExtra("k_country_code", this.a.b);
-        paramBundle = localIntent;
-        break;
-      }
-      if (i == 106)
-      {
-        this.a.setResult(-1);
-        this.a.finish();
-        paramBundle = null;
-        break;
-      }
-      this.a.b(a(i));
-      paramBundle = null;
-      break;
-      this.a.b(2131434455);
+    return localView1;
+  }
+  
+  public Object a(String paramString)
+  {
+    return this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  public void a(String paramString, Object paramObject)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramObject);
+  }
+  
+  public void a(wrj paramwrj)
+  {
+    this.jdField_a_of_type_Wrj = paramwrj;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Wrj != null) {
+      this.jdField_a_of_type_Wrj.a(this.jdField_b_of_type_Int, paramView, this.jdField_a_of_type_JavaLangObject, this);
     }
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Wrj != null) {
+      this.jdField_a_of_type_Wrj.b(this.jdField_b_of_type_Int, paramView, this.jdField_a_of_type_JavaLangObject, this);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wtq
  * JD-Core Version:    0.7.0.1
  */

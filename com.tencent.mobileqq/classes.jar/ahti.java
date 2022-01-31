@@ -1,33 +1,21 @@
-import com.tencent.mobileqq.app.UniteSearchObserver;
-import com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
 
 public class ahti
-  extends UniteSearchObserver
+  implements aybr
 {
-  public ahti(HotWordsForSubBussFragment paramHotWordsForSubBussFragment) {}
+  private ahti(FriendFragment paramFriendFragment) {}
   
-  public void a(int paramInt, String paramString)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    super.a(paramInt, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.w(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "handleBusiHotWordError code=" + paramInt + " errorMsg;" + paramString);
-    }
-  }
-  
-  public void a(int paramInt, List paramList)
-  {
-    HotWordsForSubBussFragment.jdField_a_of_type_Int = paramInt;
-    HotWordsForSubBussFragment.a(this.a, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.i(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "handleTabSearchResult expireTime;" + HotWordsForSubBussFragment.jdField_a_of_type_Int);
+    if ((FriendFragment.b(this.a)) && (paramBitmap != null) && (paramInt2 == 200)) {
+      FriendFragment.a(this.a, 1400L, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahti
  * JD-Core Version:    0.7.0.1
  */

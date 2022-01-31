@@ -1,47 +1,15 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite;
-import com.tencent.mobileqq.surfaceviewaction.gl.Texture;
-import java.util.LinkedList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
 
-class aild
-  implements Runnable
+public class aild
+  implements View.OnClickListener
 {
-  aild(ailc paramailc) {}
+  public aild(BaseActivityView paramBaseActivityView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    for (;;)
-    {
-      int j;
-      synchronized (this.a.a)
-      {
-        Texture[] arrayOfTexture = FrameSprite.a(this.a.a);
-        if ((arrayOfTexture == null) || (FrameSprite.a(this.a.a))) {
-          return;
-        }
-        FrameSprite.a(this.a.a, new Texture[FrameSprite.a(this.a.a).length / 2]);
-        j = 0;
-        int i = 0;
-        if (j < FrameSprite.a(this.a.a).length)
-        {
-          if (j % 2 == 0)
-          {
-            FrameSprite localFrameSprite2 = this.a.a;
-            int k = i + 1;
-            FrameSprite.a(localFrameSprite2, i, arrayOfTexture[j]);
-            i = k;
-          }
-          else
-          {
-            FrameSprite.a(this.a.a).remove(arrayOfTexture[j]);
-            arrayOfTexture[j].c();
-          }
-        }
-        else {
-          return;
-        }
-      }
-      j += 1;
-    }
+    this.a.f();
   }
 }
 

@@ -7,15 +7,15 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_service$ReqActivityLoadMoreVideo
-  extends MessageMicro
+  extends MessageMicro<ReqActivityLoadMoreVideo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16 }, new String[] { "req_list", "fetch_num" }, new Object[] { null, Integer.valueOf(0) }, ReqActivityLoadMoreVideo.class);
   public final PBUInt32Field fetch_num = PBField.initUInt32(0);
-  public final PBRepeatMessageField req_list = PBField.initRepeatMessage(qqstory_struct.LoadMoreReqNode.class);
+  public final PBRepeatMessageField<qqstory_struct.LoadMoreReqNode> req_list = PBField.initRepeatMessage(qqstory_struct.LoadMoreReqNode.class);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqActivityLoadMoreVideo
  * JD-Core Version:    0.7.0.1
  */

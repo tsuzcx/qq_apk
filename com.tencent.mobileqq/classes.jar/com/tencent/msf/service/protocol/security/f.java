@@ -9,8 +9,8 @@ public final class f
 {
   static byte[] c;
   static byte[] d;
-  public byte[] a;
-  public byte[] b;
+  public byte[] a = null;
+  public byte[] b = null;
   
   public f() {}
   

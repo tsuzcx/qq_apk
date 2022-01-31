@@ -1,22 +1,24 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.observer.GameCenterObserver;
+import android.view.View;
+import android.view.ViewGroup;
 
 public class thl
-  extends GameCenterObserver
 {
-  public thl(PublicAccountListActivity paramPublicAccountListActivity) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (PublicAccountListActivity.a(this.a)) {
-      PublicAccountListActivity.a(this.a);
-    }
-  }
+  public int a = 0;
+  public long a;
+  public View a;
+  public ViewGroup a;
+  public String a;
+  public thf a;
+  public tho a;
+  public thp a;
+  public thy a;
+  public boolean a;
+  public int b;
+  public boolean b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     thl
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ public final class SvcReqDelLoginInfo
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList cache_vecDeviceItemDes;
+  static ArrayList<DeviceItemDes> cache_vecDeviceItemDes;
   static byte[] cache_vecGuid;
   public long iAppId;
   public long iDelMe;
   public long iDelType = 1L;
   public String strAppName = "";
-  public ArrayList vecDeviceItemDes;
+  public ArrayList<DeviceItemDes> vecDeviceItemDes;
   public byte[] vecGuid;
   
   static
@@ -32,7 +32,7 @@ public final class SvcReqDelLoginInfo
   
   public SvcReqDelLoginInfo() {}
   
-  public SvcReqDelLoginInfo(byte[] paramArrayOfByte, String paramString, ArrayList paramArrayList, long paramLong1, long paramLong2, long paramLong3)
+  public SvcReqDelLoginInfo(byte[] paramArrayOfByte, String paramString, ArrayList<DeviceItemDes> paramArrayList, long paramLong1, long paramLong2, long paramLong3)
   {
     this.vecGuid = paramArrayOfByte;
     this.strAppName = paramString;
@@ -121,7 +121,7 @@ public final class SvcReqDelLoginInfo
     return this.strAppName;
   }
   
-  public ArrayList getVecDeviceItemDes()
+  public ArrayList<DeviceItemDes> getVecDeviceItemDes()
   {
     return this.vecDeviceItemDes;
   }
@@ -185,7 +185,7 @@ public final class SvcReqDelLoginInfo
     this.strAppName = paramString;
   }
   
-  public void setVecDeviceItemDes(ArrayList paramArrayList)
+  public void setVecDeviceItemDes(ArrayList<DeviceItemDes> paramArrayList)
   {
     this.vecDeviceItemDes = paramArrayList;
   }

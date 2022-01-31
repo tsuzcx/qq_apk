@@ -1,75 +1,88 @@
 package com.tencent.token.ui;
 
 import android.content.res.Resources;
-import android.os.Handler;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.token.af;
-import com.tencent.token.core.bean.e;
-import com.tencent.token.ui.base.SwitchButton;
+import android.os.Message;
+import android.widget.EditText;
+import com.tencent.token.do;
+import com.tencent.token.global.f;
+import com.tencent.token.global.h;
+import com.tencent.token.ui.base.SecondVerifyDialog;
 
-final class ot
-  implements CompoundButton.OnCheckedChangeListener
+class ot
+  extends cb
 {
-  private oy b;
-  
-  ot(or paramor) {}
-  
-  public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  ot(ModifyQQPwdActivity paramModifyQQPwdActivity)
   {
-    int i = 1;
-    paramCompoundButton = (oy)((SwitchButton)paramCompoundButton).getTag();
-    if ((paramCompoundButton == null) || (paramCompoundButton.f == null) || (paramCompoundButton.a == null)) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          this.b = paramCompoundButton;
-        } while (paramCompoundButton.f.d);
-        switch (paramCompoundButton.f.a)
-        {
-        case 81: 
-        default: 
-          return;
-        }
-      } while (paramBoolean != paramCompoundButton.f.e);
-      paramCompoundButton.f.d = true;
-      or.a(this.a, paramCompoundButton);
-      localObject = or.a(this.a).getItem(82);
-      if ((paramCompoundButton.f.e) && (((e)localObject).c))
-      {
-        or.a(this.a).showUserDialog(2131361808, or.a(this.a).getResources().getString(2131362246), 2131362256, 2131361804, new ou(this), new ov(this));
-        return;
-      }
-      if (paramCompoundButton.f.e) {}
-      for (i = 0;; i = 1)
-      {
-        paramCompoundButton = af.a();
-        localObject = or.a(this.a).mA2;
-        localHandler = or.a(this.a).mHandler;
-        paramCompoundButton.b(0L, new int[] { 71 }, new int[] { i }, (String)localObject, localHandler);
-        return;
-      }
-    } while (paramBoolean != paramCompoundButton.f.c);
-    paramCompoundButton.f.d = true;
-    or.a(this.a, paramCompoundButton);
-    Object localObject = or.a(this.a).getItem(80);
-    if ((!paramCompoundButton.f.c) && (!((e)localObject).e))
-    {
-      or.a(this.a).showUserDialog(2131361808, or.a(this.a).getResources().getString(2131362255), 2131362256, 2131361804, new ow(this), new ox(this));
+    super(paramModifyQQPwdActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if ((this.a == null) || ((this.a != null) && (this.a.isFinishing()))) {
       return;
     }
-    int j = paramCompoundButton.f.a;
-    if (paramCompoundButton.f.c) {
-      i = 0;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1010: 
+    case 1012: 
+      if (this.a.mPwdTextView == null) {
+        break;
+      }
     }
-    paramCompoundButton = af.a();
-    localObject = or.a(this.a).mA2;
-    Handler localHandler = or.a(this.a).mHandler;
-    paramCompoundButton.b(0L, new int[] { j }, new int[] { i }, (String)localObject, localHandler);
+    for (Object localObject = this.a.mPwdTextView.getText().toString(); 1 == paramMessage.arg1; localObject = null)
+    {
+      this.a.showUserDialog(2131230843, this.a.getResources().getString(2131230941) + (String)localObject, 2131230897, 2131230886, new ou(this, (String)localObject), null);
+      return;
+      if (1 != paramMessage.arg1) {
+        break;
+      }
+      this.a.dismissDialog();
+      paramMessage = new SecondVerifyDialog(this.a, 2131362182, this.a.mHandler, paramMessage.arg1);
+      paramMessage.setCancelable(true);
+      paramMessage.show();
+      return;
+      if (1 != paramMessage.arg1) {
+        break;
+      }
+      this.a.dismissDialog();
+      return;
+      this.a.dismissDialog();
+      if (paramMessage.arg1 == 0)
+      {
+        this.a.showSuccessView();
+        return;
+      }
+      localObject = (f)paramMessage.obj;
+      f.a(this.a.getResources(), (f)localObject);
+      h.c("modqqpwd: " + ((f)localObject).a + ", " + ((f)localObject).c + ", arg=" + paramMessage.arg1);
+      if ((111 == ((f)localObject).a) || (110 == ((f)localObject).a) || (103 == ((f)localObject).a))
+      {
+        this.a.showUserDialog(2131231464, ((f)localObject).c, 2131230778, new ow(this));
+        return;
+      }
+      this.a.showUserDialog(2131231464, ((f)localObject).c, 2131230897, null);
+      return;
+      this.a.dismissDialog();
+      if (paramMessage.arg1 == 0)
+      {
+        paramMessage = do.a().e();
+        if (paramMessage == null)
+        {
+          ModifyQQPwdActivity.access$000(this.a, this.a.getResources().getString(2131230962));
+          return;
+        }
+        ModifyQQPwdActivity.access$100(this.a, paramMessage);
+        return;
+      }
+      paramMessage = (f)paramMessage.obj;
+      if ((paramMessage.c == null) || (paramMessage.c.length() == 0)) {
+        f.a(this.a.getResources(), paramMessage);
+      }
+      this.a.showUserDialog(2131230843, paramMessage.c, 2131230881, 2131230886, new ox(this), new oy(this));
+      return;
+    }
   }
 }
 

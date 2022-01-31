@@ -1,8 +1,6 @@
 package com.tencent.smtt.sdk;
 
 import android.content.ContentResolver;
-import android.graphics.Bitmap;
-import com.tencent.smtt.export.external.interfaces.IconListener;
 
 @Deprecated
 public class WebIconDatabase
@@ -27,7 +25,7 @@ public class WebIconDatabase
     return createInstance();
   }
   
-  public void bulkRequestIconForPageUrl(ContentResolver paramContentResolver, String paramString, IconListener paramIconListener) {}
+  public void bulkRequestIconForPageUrl(ContentResolver paramContentResolver, String paramString, WebIconDatabase.IconListener paramIconListener) {}
   
   public void close()
   {
@@ -73,27 +71,15 @@ public class WebIconDatabase
     android.webkit.WebIconDatabase.getInstance().removeAllIcons();
   }
   
-  public void requestIconForPageUrl(String paramString, final IconListener paramIconListener)
+  public void requestIconForPageUrl(String paramString, WebIconDatabase.IconListener paramIconListener)
   {
     X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
     if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core()))
     {
-      localX5CoreEngine.wizard().requestIconForPageUrl(paramString, new IconListener()
-      {
-        public void onReceivedIcon(String paramAnonymousString, Bitmap paramAnonymousBitmap)
-        {
-          paramIconListener.onReceivedIcon(paramAnonymousString, paramAnonymousBitmap);
-        }
-      });
+      localX5CoreEngine.wizard().requestIconForPageUrl(paramString, new WebIconDatabase.1(this, paramIconListener));
       return;
     }
-    android.webkit.WebIconDatabase.getInstance().requestIconForPageUrl(paramString, new android.webkit.WebIconDatabase.IconListener()
-    {
-      public void onReceivedIcon(String paramAnonymousString, Bitmap paramAnonymousBitmap)
-      {
-        paramIconListener.onReceivedIcon(paramAnonymousString, paramAnonymousBitmap);
-      }
-    });
+    android.webkit.WebIconDatabase.getInstance().requestIconForPageUrl(paramString, new WebIconDatabase.2(this, paramIconListener));
   }
   
   public void retainIconForPageUrl(String paramString)
@@ -106,16 +92,10 @@ public class WebIconDatabase
     }
     android.webkit.WebIconDatabase.getInstance().retainIconForPageUrl(paramString);
   }
-  
-  @Deprecated
-  public static abstract interface IconListener
-  {
-    public abstract void onReceivedIcon(String paramString, Bitmap paramBitmap);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebIconDatabase
  * JD-Core Version:    0.7.0.1
  */

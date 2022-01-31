@@ -1,22 +1,22 @@
+import android.view.View;
 import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.widget.ScrollerRunnable;
 import com.tencent.widget.XListView;
 
-public final class am
-  implements Runnable
+public class am
+  implements bets
 {
-  public am(XListView paramXListView, ScrollerRunnable paramScrollerRunnable) {}
+  private View jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.findViewById(2131372245);
   
-  public void run()
+  public am(LiteActivity paramLiteActivity) {}
+  
+  public boolean a()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetXListView.getCount() > 2) {
-      LiteActivity.a(this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.jdField_a_of_type_ComTencentWidgetXListView, this.jdField_a_of_type_ComTencentWidgetXListView.getCount());
-    }
+    return (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a.isDirty()) || (this.jdField_a_of_type_AndroidViewView.isDirty());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     am
  * JD-Core Version:    0.7.0.1
  */

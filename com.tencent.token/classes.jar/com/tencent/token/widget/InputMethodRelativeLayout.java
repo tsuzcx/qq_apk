@@ -41,19 +41,24 @@ public class InputMethodRelativeLayout
   {
     if ((this.a != null) && (paramInt1 == paramInt3) && (paramInt3 != 0) && (paramInt4 != 0)) {
       if ((paramInt2 >= paramInt4) || (Math.abs(paramInt2 - paramInt4) <= 50)) {
-        break label85;
+        break label87;
       }
     }
     for (this.f = true;; this.f = false)
     {
-      this.a.a(this.f, paramInt2);
+      this.a.a(this.f, paramInt4, paramInt2);
       measure(this.b - paramInt1 + getWidth(), this.c - paramInt2 + getHeight());
-      label85:
+      label87:
       do
       {
         return;
       } while ((paramInt2 <= paramInt4) || (Math.abs(paramInt2 - paramInt4) <= 50));
     }
+  }
+  
+  public void setOnSizeChangedListenner(a parama)
+  {
+    this.a = parama;
   }
 }
 

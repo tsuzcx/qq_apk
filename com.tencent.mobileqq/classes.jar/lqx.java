@@ -1,19 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ChannelInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import java.nio.ByteBuffer;
 
 public class lqx
-  implements Runnable
 {
-  public lqx(ChannelInfoModule paramChannelInfoModule, ChannelInfo paramChannelInfo) {}
+  public int a;
+  public ByteBuffer a;
+  public boolean a;
   
-  public void run()
+  public lqx(ByteBuffer paramByteBuffer, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelInfo);
+    this.jdField_a_of_type_JavaNioByteBuffer = paramByteBuffer;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lqx
  * JD-Core Version:    0.7.0.1
  */

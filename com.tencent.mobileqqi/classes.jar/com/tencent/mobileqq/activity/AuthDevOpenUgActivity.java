@@ -13,9 +13,9 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import cbr;
-import cbs;
-import cbt;
+import bvw;
+import bvx;
+import bvy;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -56,7 +56,7 @@ public class AuthDevOpenUgActivity
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  VerifyDevLockManager.VerifyDevLockObserver jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = new cbt(this);
+  VerifyDevLockManager.VerifyDevLockObserver jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = new bvy(this);
   private DevlockInfo jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = null;
   private boolean jdField_a_of_type_Boolean = false;
   private Button jdField_b_of_type_AndroidWidgetButton;
@@ -158,7 +158,7 @@ public class AuthDevOpenUgActivity
   
   private void a(String paramString, int paramInt)
   {
-    Object localObject1 = (LinearLayout)super.findViewById(2131233354);
+    Object localObject1 = (LinearLayout)super.findViewById(2131233356);
     RelativeLayout localRelativeLayout = new RelativeLayout(this);
     Object localObject2 = new LinearLayout.LayoutParams(-1, -2);
     ((LinearLayout.LayoutParams)localObject2).setMargins(0, 0, 0, AIOUtils.a(0.5F, getResources()));
@@ -170,7 +170,7 @@ public class AuthDevOpenUgActivity
     ((TextView)localObject2).setText(paramString);
     ((TextView)localObject2).setTextSize(16.0F);
     ((TextView)localObject2).setLineSpacing(6.0F, 1.0F);
-    ((TextView)localObject2).setTextColor(getResources().getColor(2131362070));
+    ((TextView)localObject2).setTextColor(getResources().getColor(2131362080));
     paramString = new RelativeLayout.LayoutParams(-1, -2);
     paramString.addRule(1, ((EquipLockCircleView)localObject1).getId());
     ((TextView)localObject2).setLayoutParams(paramString);
@@ -180,7 +180,7 @@ public class AuthDevOpenUgActivity
   private void b(String paramString)
   {
     TextView localTextView = (TextView)findViewById(2131231456);
-    localTextView = (TextView)findViewById(2131232947);
+    localTextView = (TextView)findViewById(2131232950);
     if (TextUtils.isEmpty(paramString)) {
       localTextView.setVisibility(8);
     }
@@ -343,7 +343,7 @@ public class AuthDevOpenUgActivity
     {
     default: 
       return;
-    case 2131232959: 
+    case 2131232962: 
       if (this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface != null) {
         this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.sendWirelessMeibaoReq(1);
       }
@@ -371,7 +371,7 @@ public class AuthDevOpenUgActivity
       }
       EquipLockWebEntrance.a(this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
       return;
-    case 2131232948: 
+    case 2131232951: 
       paramView = getString(2131561753);
       str = getString(2131561863);
     }
@@ -379,7 +379,7 @@ public class AuthDevOpenUgActivity
     {
       ReportController.b(null, "P_CliOper", "Safe_DeviceLock", this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), "UserBehavior", "Manually", 0, 3, "", "", "", "");
       label304:
-      QQCustomDialogDevLock.a(this, this.u, this.v, this.w, paramView, str, new cbr(this), new cbs(this)).show();
+      QQCustomDialogDevLock.a(this, this.u, this.v, this.w, paramView, str, new bvw(this), new bvx(this)).show();
       return;
       if (QLog.isColorLevel()) {
         QLog.d("Q.devlock.AuthDevOpenUgActivity", 2, "onClick.cancelVerifyCode mVerifyObserver.seq=" + this.jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver.getSeq());
@@ -432,9 +432,9 @@ public class AuthDevOpenUgActivity
       }
     }
     super.onCreate(paramBundle);
-    super.setContentView(2130903568);
+    super.setContentView(2130903570);
     super.setTitle(2131561941);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131232948));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131232951));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo != null) {
       a(this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.ProtectIntro);

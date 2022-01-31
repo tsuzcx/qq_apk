@@ -1,56 +1,152 @@
-import android.os.IBinder;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.utils.TroopBarUtils;
-import com.tencent.mobileqq.troop.utils.TroopTopicMgr;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.handler.GetFeedFeatureHandler.1;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class vco
-  implements IAIOImageProviderCallBack
+  extends vce
+  implements urr
 {
-  public vco(PicItemBuilder paramPicItemBuilder, AIOImageData paramAIOImageData, MessageForPic paramMessageForPic) {}
+  public static ConcurrentHashMap<String, Long> a;
+  public List<String> a;
+  public woy a;
+  private final boolean a;
+  public List<String> b = new ArrayList();
   
-  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean) {}
-  
-  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
+  static
   {
-    if ((paramLong == this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.g) && (paramInt1 == this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.f) && (1 == paramInt3))
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  }
+  
+  public vco(@NonNull List<String> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.jdField_a_of_type_Woy = ((woy)uwa.a(11));
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public vco(@NonNull List<String> paramList, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.jdField_a_of_type_Woy = ((woy)uwa.a(11));
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public static void a(@NonNull List<String> paramList)
+  {
+    int j = paramList.size();
+    int k = (int)Math.ceil(j / 5.0D);
+    int i = 0;
+    while (i < k)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("zivonchen", 2, "downloadImage id = " + paramLong + ", subId = " + paramInt1 + ", type = " + paramInt2 + ", result = " + paramInt3 + ", resultStr = " + paramString + ", isPart = " + paramBoolean);
-      }
-      TroopTopicMgr localTroopTopicMgr = (TroopTopicMgr)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(97);
-      if ((localTroopTopicMgr != null) && ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)))
-      {
-        TroopBarUtils.a.clear();
-        localTroopTopicMgr.a(((FragmentActivity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.jdField_a_of_type_AndroidContentContext).getChatFragment().a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, paramString, 4);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_talk", "", "pub_talk", "Clk_bubble", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "2", "", "");
-        if (QLog.isColorLevel()) {
-          QLog.d("IAIOImageProviderCallBack", 2, "image has new downloaded!");
-        }
-      }
+      new vco(paramList.subList(i * 5, Math.min((i + 1) * 5, j))).a();
+      i += 1;
     }
   }
   
-  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt) {}
-  
-  public IBinder asBinder()
+  private void b(List<uxd> paramList)
   {
-    return null;
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      uxd localuxd = (uxd)paramList.next();
+      FeedItem localFeedItem = this.jdField_a_of_type_Woy.a(localuxd.a);
+      if (localFeedItem == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.qqstory.home.GetFeedFeatureHandler", 2, new Object[] { "null feedItem when saving feed feature...feedId=", localuxd.a });
+        }
+      }
+      else
+      {
+        localFeedItem.convertFromFeedFeature(localuxd);
+        localArrayList.add(localFeedItem);
+      }
+    }
+    this.jdField_a_of_type_Woy.a(localArrayList);
+  }
+  
+  public void a()
+  {
+    ThreadManager.post(new GetFeedFeatureHandler.1(this), 8, null, true);
+  }
+  
+  public void a(@NonNull urt paramurt, @Nullable uro paramuro, @NonNull ErrorMessage paramErrorMessage)
+  {
+    if (((paramurt instanceof vfj)) && ((paramuro instanceof vhg)))
+    {
+      paramurt = (vhg)paramuro;
+      paramuro = new vcp();
+      paramuro.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+      if ((paramErrorMessage.isSuccess()) && (!paramurt.jdField_a_of_type_JavaUtilList.isEmpty()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.home.GetFeedFeatureHandler", 2, new Object[] { "save feedFeature: first=", ((uxd)paramurt.jdField_a_of_type_JavaUtilList.get(0)).a });
+        }
+        b(paramurt.jdField_a_of_type_JavaUtilList);
+        paramuro.jdField_a_of_type_JavaUtilList = paramurt.jdField_a_of_type_JavaUtilList;
+        umc.a().dispatch(paramuro);
+        b();
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.qqstory.home.GetFeedFeatureHandler", 2, "save feedFeature failed.", paramErrorMessage);
+        }
+        umc.a().dispatch(paramuro);
+        c();
+        return;
+      } while ((!(paramurt instanceof vex)) || (!(paramuro instanceof vey)));
+      paramurt = (vey)paramuro;
+      if (paramErrorMessage.isSuccess())
+      {
+        paramuro = new ArrayList(paramurt.jdField_a_of_type_JavaUtilList.size());
+        paramurt = paramurt.jdField_a_of_type_JavaUtilList.iterator();
+        while (paramurt.hasNext()) {
+          paramuro.add(((wqn)paramurt.next()).a());
+        }
+        if (!paramuro.isEmpty())
+        {
+          this.jdField_a_of_type_Woy.a(paramuro);
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.qqstory.home.GetFeedFeatureHandler", 2, new Object[] { "save feedItem: first=", ((FeedItem)paramuro.get(0)).feedId, ". request FeedFeature." });
+          }
+          paramurt = new vfj();
+          paramurt.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+          urp.a().a(paramurt, this);
+          return;
+        }
+      }
+    } while (this.b.isEmpty());
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.home.GetFeedFeatureHandler", 2, new Object[] { "request local FeedFeature after FeedItem. first=", this.b.get(0) });
+    }
+    paramurt = new vfj();
+    paramurt.jdField_a_of_type_JavaUtilList = this.b;
+    urp.a().a(paramurt, this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vco
  * JD-Core Version:    0.7.0.1
  */

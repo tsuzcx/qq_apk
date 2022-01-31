@@ -1,25 +1,38 @@
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.adapter.WebFastAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.TextData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.BaseItemViewHolder;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class mmx
-  implements View.OnClickListener
+class mmx
+  implements mkg
 {
-  public mmx(WebFastAdapter paramWebFastAdapter) {}
+  mmx(mmw parammmw, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    TextData localTextData = (TextData)WebFastAdapter.a(this.a).a;
-    ((ClipboardManager)paramView.getContext().getSystemService("clipboard")).setText(localTextData.a.toString());
+    if (this.jdField_a_of_type_Mmw.a.jdField_a_of_type_ComTencentAvUiQavPanel != null)
+    {
+      this.jdField_a_of_type_Mmw.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131372756, false);
+      this.jdField_a_of_type_Mmw.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131362956, false);
+      this.jdField_a_of_type_Mmw.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131362968, false);
+      this.jdField_a_of_type_Mmw.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131362967, false);
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Mmw.a.a().a(this.jdField_a_of_type_Mmw.a.c, 250);
+    this.jdField_a_of_type_Mmw.a.a().b(250);
+    this.jdField_a_of_type_Mmw.a.a().b(this.jdField_a_of_type_Mmw.a.c, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Mmw.a.e = true;
+    QLog.d(this.jdField_a_of_type_Mmw.a.jdField_a_of_type_JavaLangString, 1, "onClose()-> onOutAnimationEnd ->finish  ");
+    this.jdField_a_of_type_Mmw.a.finish();
+    this.jdField_a_of_type_Mmw.a.overridePendingTransition(0, 2130772165);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mmx
  * JD-Core Version:    0.7.0.1
  */

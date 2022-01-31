@@ -1,15 +1,20 @@
-import com.tencent.mobileqq.activity.selectmember.TroopListInnerFrame.TroopListAdapter;
-import com.tencent.mobileqq.activity.selectmember.TroopListInnerFrame.TroopListAdapter.TroopListItemWithMask;
-import java.util.Comparator;
+import android.media.AudioManager;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
 public class ewh
-  implements Comparator
+  implements Runnable
 {
-  private ewh(TroopListInnerFrame.TroopListAdapter paramTroopListAdapter) {}
+  public ewh(VoipDialInterfaceActivity paramVoipDialInterfaceActivity, boolean paramBoolean) {}
   
-  public int a(TroopListInnerFrame.TroopListAdapter.TroopListItemWithMask paramTroopListItemWithMask1, TroopListInnerFrame.TroopListAdapter.TroopListItemWithMask paramTroopListItemWithMask2)
+  public void run()
   {
-    return paramTroopListItemWithMask1.a - paramTroopListItemWithMask2.a;
+    AudioManager localAudioManager = (AudioManager)this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipDialInterfaceActivity.getSystemService("audio");
+    if (this.jdField_a_of_type_Boolean)
+    {
+      localAudioManager.setSpeakerphoneOn(true);
+      return;
+    }
+    localAudioManager.setSpeakerphoneOn(false);
   }
 }
 

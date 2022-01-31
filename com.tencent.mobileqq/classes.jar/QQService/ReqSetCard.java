@@ -10,23 +10,23 @@ public final class ReqSetCard
 {
   static int cache_eSubCmd;
   static ReqHead cache_stHeader;
-  static ArrayList cache_vAddTags;
+  static ArrayList<TagInfo> cache_vAddTags;
   static byte[] cache_vBackground;
-  static ArrayList cache_vDelTags;
+  static ArrayList<TagInfo> cache_vDelTags;
   static byte[] cache_vReqSetTemplate;
-  static ArrayList cache_vTagsID;
+  static ArrayList<TagInfo> cache_vTagsID;
   public byte bIsSingle;
   public int eSubCmd = CARDSETTYPE.TYPE_SET_DEFAUT.value();
   public ReqHead stHeader;
-  public ArrayList vAddTags;
+  public ArrayList<TagInfo> vAddTags;
   public byte[] vBackground;
-  public ArrayList vDelTags;
+  public ArrayList<TagInfo> vDelTags;
   public byte[] vReqSetTemplate;
-  public ArrayList vTagsID;
+  public ArrayList<TagInfo> vTagsID;
   
   public ReqSetCard() {}
   
-  public ReqSetCard(ReqHead paramReqHead, int paramInt, byte paramByte, ArrayList paramArrayList1, byte[] paramArrayOfByte1, ArrayList paramArrayList2, ArrayList paramArrayList3, byte[] paramArrayOfByte2)
+  public ReqSetCard(ReqHead paramReqHead, int paramInt, byte paramByte, ArrayList<TagInfo> paramArrayList1, byte[] paramArrayOfByte1, ArrayList<TagInfo> paramArrayList2, ArrayList<TagInfo> paramArrayList3, byte[] paramArrayOfByte2)
   {
     this.stHeader = paramReqHead;
     this.eSubCmd = paramInt;

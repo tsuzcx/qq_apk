@@ -1,17 +1,72 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.arcard.ArCardSelectMemberActivity;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.aditem.GdtAppReceiver;
+import com.tencent.gdtad.aditem.GdtHandler;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
+import com.tencent.gdtad.api.adbox.GdtAdBoxData;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.lang.ref.WeakReference;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DestInfo;
 
-public final class aans
-  implements DialogInterface.OnClickListener
+public class aans
 {
-  public aans(Context paramContext) {}
+  private aanr jdField_a_of_type_Aanr;
+  private aant jdField_a_of_type_Aant;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aans(aant paramaant, aanr paramaanr)
   {
-    ((ArCardSelectMemberActivity)this.a).u();
+    aase.a("GdtAdBoxPresenter", "GdtAdBoxPresenter() called with: view = [" + paramaant + "], model = [" + paramaanr + "]");
+    this.jdField_a_of_type_Aant = paramaant;
+    this.jdField_a_of_type_Aanr = paramaanr;
+    paramaanr.a(this);
   }
+  
+  public void a()
+  {
+    aase.a("GdtAdBoxPresenter", "onCreate() called");
+    this.jdField_a_of_type_Aant.b(this.jdField_a_of_type_Aanr);
+  }
+  
+  public void a(Activity paramActivity, View paramView, GdtAdBoxData paramGdtAdBoxData)
+  {
+    paramGdtAdBoxData = new GdtHandler.Params();
+    GdtAppReceiver localGdtAppReceiver = new GdtAppReceiver();
+    paramGdtAdBoxData.c = 11;
+    paramGdtAdBoxData.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    paramActivity = paramView.getTag(2131367076);
+    if (paramActivity == null)
+    {
+      aase.d("GdtAdBoxPresenter", "onClick() tag == null");
+      return;
+    }
+    paramActivity = (GdtAd)paramActivity;
+    aase.a("GdtAdBoxPresenter", "onClick() open url = [" + paramActivity.info.dest_info.landing_page.get() + "]");
+    paramGdtAdBoxData.jdField_a_of_type_ComTencentGdtadAditemGdtAd = paramActivity;
+    paramGdtAdBoxData.jdField_a_of_type_Boolean = true;
+    paramGdtAdBoxData.jdField_b_of_type_Boolean = true;
+    paramGdtAdBoxData.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(localGdtAppReceiver);
+    paramActivity = new Bundle();
+    paramActivity.putString("big_brother_ref_source_key", "biz_src_miniapp");
+    paramGdtAdBoxData.jdField_a_of_type_AndroidOsBundle = paramActivity;
+    GdtHandler.a(paramGdtAdBoxData);
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public void b()
+  {
+    aase.a("GdtAdBoxPresenter", "onResume() called");
+  }
+  
+  public void c() {}
+  
+  public void d() {}
 }
 
 

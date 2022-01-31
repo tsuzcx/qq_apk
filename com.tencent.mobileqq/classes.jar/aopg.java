@@ -1,39 +1,33 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.INet_ShortVideoResource;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.shortvideo.util.SoLoader;
-import dov.com.qq.im.capture.QIMManager;
-import dov.com.qq.im.capture.data.CaptureComboManager;
-
 public class aopg
-  implements ShortVideoResourceManager.INet_ShortVideoResource
 {
-  private String a;
+  private aoph jdField_a_of_type_Aoph;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void C_()
+  public aopg()
   {
-    VideoEnvironment.a(this.a, "onNetWorkNone...", null);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Aoph = new aoph();
   }
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public aopg(String paramString, aoph paramaoph)
   {
-    VideoEnvironment.a(this.a, "onDownloadFinish| name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
-    if (paramString1.startsWith("new_qq_android_native_art_filter_"))
-    {
-      SoLoader.a(BaseApplicationImpl.getContext());
-      ((CaptureComboManager)QIMManager.a().c(5)).e();
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Aoph = paramaoph;
   }
   
-  public void a(String paramString, long paramLong1, long paramLong2)
+  public aoph a()
   {
-    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-    VideoEnvironment.a(this.a, "name=" + paramString + ",totalLen=" + paramLong2 + ",curOffset=" + paramLong1 + ",localProgress=" + i, null);
+    return this.jdField_a_of_type_Aoph;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aopg
  * JD-Core Version:    0.7.0.1
  */

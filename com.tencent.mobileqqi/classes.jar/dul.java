@@ -1,32 +1,51 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.UpgradeTipsDialog;
+import com.tencent.mobileqq.jsbridge.JsBridge;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 public class dul
-  extends Handler
+  extends WebViewClient
 {
-  public dul(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public dul(UpgradeTipsDialog paramUpgradeTipsDialog) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    if (!this.a.b.isLogin()) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeController", 2, "onPageFinished: " + paramString);
     }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.h();
-      return;
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeController", 2, "onPageStarted: " + paramString);
     }
-    this.a.h();
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeController", 2, "onReceivedError: " + paramInt + ", " + paramString1);
+    }
+    ReportController.b(UpgradeTipsDialog.a(this.a), "CliOper", "", "", "Update_tips", "Upd_fail", 0, paramInt, "", "", "", "");
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if ((paramString == null) || ("".equals(paramString)) || ("about:blank;".equals(paramString)) || ("about:blank".equals(paramString))) {}
+    while (UpgradeTipsDialog.a(this.a).a(paramWebView, paramString)) {
+      return true;
+    }
+    this.a.a.loadUrl(paramString);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dul
  * JD-Core Version:    0.7.0.1
  */

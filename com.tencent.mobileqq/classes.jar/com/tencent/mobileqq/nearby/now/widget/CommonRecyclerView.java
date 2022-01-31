@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.util.AttributeSet;
 import android.view.View;
+import aviy;
+import avja;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -14,8 +16,8 @@ public class CommonRecyclerView
   extends RecyclerView
 {
   private int jdField_a_of_type_Int = -1;
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
-  private List b = new ArrayList();
+  private List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<View> b = new ArrayList();
   
   public CommonRecyclerView(Context paramContext)
   {
@@ -33,20 +35,15 @@ public class CommonRecyclerView
   }
   
   @Nullable
-  public CommonAdapter a()
+  public avja a()
   {
     if (getAdapter() == null) {
       return null;
     }
-    if ((((AdapterWrapper)getAdapter()).a() instanceof CommonAdapter)) {
-      return (CommonAdapter)((AdapterWrapper)getAdapter()).a();
+    if ((((aviy)getAdapter()).a() instanceof avja)) {
+      return (avja)((aviy)getAdapter()).a();
     }
     return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
   }
   
   public void setAdapter(RecyclerView.Adapter paramAdapter)
@@ -59,10 +56,10 @@ public class CommonRecyclerView
       return;
       if ((a() == null) || (paramAdapter != a()))
       {
-        if (!(paramAdapter instanceof CommonAdapter)) {
+        if (!(paramAdapter instanceof avja)) {
           throw new IllegalArgumentException("adapter must extends CommonAdapter");
         }
-        super.setAdapter(new AdapterWrapper(paramAdapter));
+        super.setAdapter(new aviy(paramAdapter));
         View localView;
         if (this.jdField_a_of_type_JavaUtilList.size() > 0)
         {
@@ -70,7 +67,7 @@ public class CommonRecyclerView
           while (paramAdapter.hasNext())
           {
             localView = (View)paramAdapter.next();
-            ((AdapterWrapper)getAdapter()).a(localView);
+            ((aviy)getAdapter()).a(localView);
           }
         }
         if (this.b.size() <= 0) {
@@ -80,7 +77,7 @@ public class CommonRecyclerView
         while (paramAdapter.hasNext())
         {
           localView = (View)paramAdapter.next();
-          ((AdapterWrapper)getAdapter()).b(localView);
+          ((aviy)getAdapter()).b(localView);
         }
       }
     }
@@ -88,7 +85,7 @@ public class CommonRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.widget.CommonRecyclerView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,26 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.qwallet.QWalletFullWindowActivity.QWalletFullWindowFragment;
+import android.view.View;
 
-public class xaq
-  extends BroadcastReceiver
+class xaq
+  implements bhuk
 {
-  public xaq(QWalletFullWindowActivity.QWalletFullWindowFragment paramQWalletFullWindowFragment) {}
+  xaq(xan paramxan, bhuf parambhuf) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramIntent == null) {}
-    do
+    switch (paramInt)
     {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
       return;
-      if ("action_close_camera".equals(paramIntent.getAction()))
-      {
-        QWalletFullWindowActivity.QWalletFullWindowFragment.a(this.a).finish();
-        return;
-      }
-    } while ((!"cn.abel.action.broadcast".equals(paramIntent.getAction())) || (paramIntent.getBooleanExtra("isOpen", false)));
-    QWalletFullWindowActivity.QWalletFullWindowFragment.b(this.a).finish();
+      this.jdField_a_of_type_Xan.c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xaq
  * JD-Core Version:    0.7.0.1
  */

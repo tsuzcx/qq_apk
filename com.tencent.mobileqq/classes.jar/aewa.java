@@ -1,39 +1,61 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.nearby.now.model.LocationInfo;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsManager;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadInfo;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadListener;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aewa
-  extends SosoInterface.OnLocationListener
+  extends aokh<aevz>
 {
-  public aewa(VideoFeedsManager paramVideoFeedsManager, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, VideoFeedsUploader.UploadInfo paramUploadInfo)
+  public int a()
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    return 609;
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  @NonNull
+  public aevz a(int paramInt)
   {
-    if (paramSosoLbsInfo == null)
-    {
-      paramSosoLbsInfo = new VideoFeedsUploader.UploadResult();
-      paramSosoLbsInfo.i = "定位失败！";
-      paramSosoLbsInfo.a = -108;
-      VideoFeedsManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsManager).a(new VideoFeedsUploader.UploadInfo(), paramSosoLbsInfo);
-      return;
+    QLog.d("TroopDragonKingAnimEntryConfig.config", 2, "migrateOldOrDefaultContent, type: " + paramInt);
+    return new aevz();
+  }
+  
+  @Nullable
+  public aevz a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
+      return aevz.a(paramArrayOfaoko[0].a);
     }
-    LocationInfo localLocationInfo = new LocationInfo();
-    localLocationInfo.init("" + paramSosoLbsInfo.a.jdField_b_of_type_Double, "" + paramSosoLbsInfo.a.jdField_a_of_type_Double, paramSosoLbsInfo.a.e, paramSosoLbsInfo.a.jdField_a_of_type_JavaLangString);
-    localLocationInfo.setAddress(paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString);
-    VideoFeedsManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsManager, this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadInfo, localLocationInfo);
+    return null;
+  }
+  
+  public Class<aevz> a()
+  {
+    return aevz.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("TroopDragonKingAnimEntryConfig.config", 1, "onReqFailed, failCode = " + paramInt);
+  }
+  
+  public void a(aevz paramaevz) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aewa
  * JD-Core Version:    0.7.0.1
  */

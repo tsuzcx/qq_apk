@@ -4,15 +4,15 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-final class rw
+class rw
   implements View.OnClickListener
 {
-  rw(NetActiveVryQQTokenActivity paramNetActiveVryQQTokenActivity) {}
+  rw(OpMsgDisplayActivity paramOpMsgDisplayActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, SelectCountryCodeActivity.class);
-    this.a.startActivityForResult(paramView, 0);
+    paramView = new Intent(this.a, UtilsMailProtectActivity.class);
+    this.a.startActivity(paramView);
   }
 }
 

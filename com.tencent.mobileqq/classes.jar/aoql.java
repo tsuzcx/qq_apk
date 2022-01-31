@@ -1,19 +1,16 @@
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
-import dov.com.tencent.mobileqq.shortvideo.util.OffScreenGLSurface;
-
-public class aoql
-  implements Runnable
+class aoql
+  implements blzd
 {
-  public aoql(OffScreenGLSurface paramOffScreenGLSurface) {}
+  aoql(aoqk paramaoqk) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    OffScreenGLSurface.a(this.a).sendFirstFrameMsg();
+    ((blvu)blqr.a(1)).a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoql
  * JD-Core Version:    0.7.0.1
  */

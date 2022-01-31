@@ -9,13 +9,13 @@ public final class SQ_CLIENT_UPDATE_REQ
   extends JceStruct
 {
   static int cache_triggerType = 0;
-  static ArrayList cache_vModule;
-  static ArrayList cache_vPlugin = new ArrayList();
+  static ArrayList<UPDATE_INFO> cache_vModule;
+  static ArrayList<UPDATE_INFO> cache_vPlugin = new ArrayList();
   public int apiLevel;
   public String qua = "";
   public int triggerType;
-  public ArrayList vModule;
-  public ArrayList vPlugin;
+  public ArrayList<UPDATE_INFO> vModule;
+  public ArrayList<UPDATE_INFO> vPlugin;
   public String version = "";
   
   static
@@ -29,7 +29,7 @@ public final class SQ_CLIENT_UPDATE_REQ
   
   public SQ_CLIENT_UPDATE_REQ() {}
   
-  public SQ_CLIENT_UPDATE_REQ(String paramString1, String paramString2, int paramInt1, int paramInt2, ArrayList paramArrayList1, ArrayList paramArrayList2)
+  public SQ_CLIENT_UPDATE_REQ(String paramString1, String paramString2, int paramInt1, int paramInt2, ArrayList<UPDATE_INFO> paramArrayList1, ArrayList<UPDATE_INFO> paramArrayList2)
   {
     this.qua = paramString1;
     this.version = paramString2;
@@ -69,7 +69,7 @@ public final class SQ_CLIENT_UPDATE_REQ
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_CLIENT_UPDATE.SQ_CLIENT_UPDATE_REQ
  * JD-Core Version:    0.7.0.1
  */

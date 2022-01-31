@@ -1,40 +1,53 @@
-import android.text.SpannableStringBuilder;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightItem;
-import com.tencent.mobileqq.graytip.UniteGrayTipItemBuilder;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
 public class adoy
-  extends View.AccessibilityDelegate
+  implements Comparator<adpf>
 {
-  public adoy(UniteGrayTipItemBuilder paramUniteGrayTipItemBuilder, long paramLong1, long paramLong2, ArrayList paramArrayList, SpannableStringBuilder paramSpannableStringBuilder) {}
+  public adoy(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public int a(adpf paramadpf1, adpf paramadpf2)
   {
-    super.sendAccessibilityEvent(paramView, paramInt);
-    if (paramInt == 1)
+    paramadpf1 = paramadpf1.a.name;
+    paramadpf2 = paramadpf2.a.name;
+    if ((paramadpf1 == null) && (paramadpf2 == null)) {}
+    int j;
+    int k;
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatItemBuilder", 2, new Object[] { "revoke msg grayTipItemBuilder sendAccessibilityEvent click msg uinseq=", Long.valueOf(this.jdField_a_of_type_Long), ",holder.mPosition=", Long.valueOf(this.b) });
+      return 0;
+      if ((paramadpf1 == null) && (paramadpf2 != null)) {
+        return -1;
       }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
+      if ((paramadpf1 != null) && (paramadpf2 == null)) {
+        return 1;
+      }
+      j = paramadpf1.length();
+      k = paramadpf2.length();
+      int m = Math.min(j, k);
+      int i = 0;
+      while (i < m)
       {
-        Object localObject = (MessageForGrayTips.HightlightItem)localIterator.next();
-        if (localObject != null)
+        char c1 = paramadpf1.charAt(i);
+        char c2 = paramadpf2.charAt(i);
+        if (c1 != c2)
         {
-          localObject = (ClickableSpan[])this.jdField_a_of_type_AndroidTextSpannableStringBuilder.getSpans(((MessageForGrayTips.HightlightItem)localObject).start, ((MessageForGrayTips.HightlightItem)localObject).end, MessageForGrayTips.HightlightClickableSpan.class);
-          if (localObject.length > 0) {
-            localObject[0].onClick(paramView);
+          paramadpf1 = ChnToSpell.a(c1, i);
+          paramadpf2 = ChnToSpell.a(c2, i);
+          if (paramadpf1.jdField_a_of_type_Int == paramadpf2.jdField_a_of_type_Int) {
+            return paramadpf1.jdField_a_of_type_JavaLangString.compareTo(paramadpf2.jdField_a_of_type_JavaLangString);
           }
+          return paramadpf1.jdField_a_of_type_Int - paramadpf2.jdField_a_of_type_Int;
         }
+        i += 1;
       }
-    }
+      if (j < k) {
+        return -1;
+      }
+    } while (j <= k);
+    return 1;
   }
 }
 

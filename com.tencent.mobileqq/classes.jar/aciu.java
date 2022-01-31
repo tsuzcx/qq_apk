@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.BaseChatPie.84;
 
-class aciu
-  implements Runnable
+public class aciu
+  implements View.OnTouchListener
 {
-  aciu(acit paramacit) {}
+  public aciu(BaseChatPie.84 param84) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ExtendFriendSquareFragment.a(this.a.a).notifyItemChanged(ExtendFriendSquareFragment.a(this.a.a));
+    return true;
   }
 }
 

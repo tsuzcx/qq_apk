@@ -1,5 +1,20 @@
 package com.tencent.mobileqq.activity;
 
+import aeli;
+import aelj;
+import aelk;
+import aell;
+import aelm;
+import aeln;
+import aelo;
+import aelp;
+import aelq;
+import aelr;
+import aelt;
+import aepi;
+import alpq;
+import alto;
+import alud;
 import android.annotation.TargetApi;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -18,6 +33,7 @@ import android.os.Message;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputFilter.LengthFilter;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.util.SparseArray;
@@ -39,76 +55,68 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
-import com.tencent.biz.common.util.HttpUtil;
+import assg;
+import awqu;
+import awra;
+import awsl;
+import awsm;
+import awug;
+import awuk;
+import awul;
+import awuy;
+import awwj;
+import awwk;
+import banh;
+import bddf;
+import bdgm;
+import bdjz;
+import bduj;
+import bdun;
+import bety;
+import bhsj;
+import bhtd;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
 import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.hiboom.HiBoomManager;
-import com.tencent.mobileqq.profile.ProfileCardTemplate;
 import com.tencent.mobileqq.profile.diy.DiyTextView;
-import com.tencent.mobileqq.profile.diy.VipDiyCardConstants;
-import com.tencent.mobileqq.profile.diy.VipProfileDiyCardConfig;
-import com.tencent.mobileqq.profile.upload.VipUploadUtils;
-import com.tencent.mobileqq.profile.upload.task.VipBaseUpsImageUploadTask;
-import com.tencent.mobileqq.profile.upload.task.VipImageUploadManager;
 import com.tencent.mobileqq.profile.view.HScrollView;
-import com.tencent.mobileqq.profile.view.HScrollView.ScrollViewListener;
 import com.tencent.mobileqq.profile.view.SingleTouchLayout;
-import com.tencent.mobileqq.profile.view.SingleTouchLayout.SingleTapListener;
 import com.tencent.mobileqq.profile.view.SoftInputDetectView;
-import com.tencent.mobileqq.profile.view.SoftInputDetectView.OnImStateChangedListener;
 import com.tencent.mobileqq.profile.view.VerticalSeekBar;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vas.VasH5PayUtil;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.mobileqq.vas.avatar.AvatarLayout;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.widget.VoteView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.upload.uinterface.data.UpsImageUploadResult;
-import com.tencent.util.InputMethodUtil;
-import com.tencent.util.WeakReferenceHandler;
 import com.tencent.widget.immersive.ImmersiveTitleBar2;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.io.File;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
-import uha;
-import uhb;
-import uhc;
-import uhd;
-import uhe;
-import uhf;
-import uhg;
-import uhi;
-import uhj;
-import uhk;
-import uhl;
-import uhm;
+import ndd;
 
 public class VipProfileCardDiyActivity
   extends BaseActivity
-  implements Handler.Callback, TextWatcher, View.OnClickListener, ViewTreeObserver.OnGlobalLayoutListener, SeekBar.OnSeekBarChangeListener, HScrollView.ScrollViewListener, SingleTouchLayout.SingleTapListener, SoftInputDetectView.OnImStateChangedListener
+  implements Handler.Callback, TextWatcher, View.OnClickListener, ViewTreeObserver.OnGlobalLayoutListener, SeekBar.OnSeekBarChangeListener, awuy, awwj, awwk
 {
+  public static final String a;
   float jdField_a_of_type_Float;
   int jdField_a_of_type_Int;
   public long a;
-  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new uhi(this);
+  aelt jdField_a_of_type_Aelt = new aell(this);
+  alpq jdField_a_of_type_Alpq = new aelm(this);
+  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new aeln(this);
   SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  public Resources a;
-  public Bitmap a;
-  public Drawable a;
+  Resources jdField_a_of_type_AndroidContentResResources;
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   View jdField_a_of_type_AndroidViewView;
   Button jdField_a_of_type_AndroidWidgetButton;
   EditText jdField_a_of_type_AndroidWidgetEditText;
@@ -117,63 +125,63 @@ public class VipProfileCardDiyActivity
   PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
+  assg jdField_a_of_type_Assg;
+  bdjz jdField_a_of_type_Bdjz;
+  bety jdField_a_of_type_Bety;
+  public bhtd a;
   VipProfileCardDiyActivity.DiyDefaultTextView jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$DiyDefaultTextView;
   VipProfileCardDiyActivity.HiBoomTemplateView jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView;
-  VipProfileCardDiyActivity.OnMeasuredListener jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$OnMeasuredListener = new uhf(this);
-  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new uhg(this);
-  DynamicAvatarView jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView;
   Card jdField_a_of_type_ComTencentMobileqqDataCard;
-  HiBoomManager jdField_a_of_type_ComTencentMobileqqHiboomHiBoomManager;
   DiyTextView jdField_a_of_type_ComTencentMobileqqProfileDiyDiyTextView;
   HScrollView jdField_a_of_type_ComTencentMobileqqProfileViewHScrollView;
   public SingleTouchLayout a;
   SoftInputDetectView jdField_a_of_type_ComTencentMobileqqProfileViewSoftInputDetectView;
   VerticalSeekBar jdField_a_of_type_ComTencentMobileqqProfileViewVerticalSeekBar;
-  QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+  VasQuickUpdateManager.CallBacker jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new aeli(this);
   public VasQuickUpdateManager a;
-  QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+  AvatarLayout jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout;
   VoteView jdField_a_of_type_ComTencentMobileqqWidgetVoteView;
-  public WeakReferenceHandler a;
   ImmersiveTitleBar2 jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2;
-  public String a;
-  public HashMap a;
-  public AtomicBoolean a;
+  public HashMap<String, String> a;
+  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   public boolean a;
   float jdField_b_of_type_Float;
   int jdField_b_of_type_Int = 1;
-  DialogInterface.OnClickListener jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new uhj(this);
-  public Bitmap b;
+  DialogInterface.OnClickListener jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new aelo(this);
+  Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   View jdField_b_of_type_AndroidViewView;
   ImageView jdField_b_of_type_AndroidWidgetImageView;
   TextView jdField_b_of_type_AndroidWidgetTextView;
+  bdjz jdField_b_of_type_Bdjz;
+  bety jdField_b_of_type_Bety;
   VipProfileCardDiyActivity.HiBoomTemplateView jdField_b_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView;
-  QQCustomDialog jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  QQProgressDialog jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  String jdField_b_of_type_JavaLangString;
+  public String b;
   public AtomicBoolean b;
   boolean jdField_b_of_type_Boolean;
   float jdField_c_of_type_Float;
   int jdField_c_of_type_Int;
-  DialogInterface.OnClickListener jdField_c_of_type_AndroidContentDialogInterface$OnClickListener = new uhk(this);
+  DialogInterface.OnClickListener jdField_c_of_type_AndroidContentDialogInterface$OnClickListener = new aelp(this);
   ImageView jdField_c_of_type_AndroidWidgetImageView;
   TextView jdField_c_of_type_AndroidWidgetTextView;
-  public String c;
+  String jdField_c_of_type_JavaLangString;
   boolean jdField_c_of_type_Boolean = false;
   float jdField_d_of_type_Float;
-  public int d;
-  DialogInterface.OnClickListener jdField_d_of_type_AndroidContentDialogInterface$OnClickListener = new uhl(this);
+  int jdField_d_of_type_Int;
+  DialogInterface.OnClickListener jdField_d_of_type_AndroidContentDialogInterface$OnClickListener = new aelq(this);
   TextView jdField_d_of_type_AndroidWidgetTextView;
-  String jdField_d_of_type_JavaLangString;
+  public String d;
   volatile boolean jdField_d_of_type_Boolean = false;
-  public int e;
-  DialogInterface.OnClickListener jdField_e_of_type_AndroidContentDialogInterface$OnClickListener = new uhm(this);
+  int jdField_e_of_type_Int;
+  DialogInterface.OnClickListener jdField_e_of_type_AndroidContentDialogInterface$OnClickListener = new aelr(this);
   TextView jdField_e_of_type_AndroidWidgetTextView;
-  public String e;
+  String jdField_e_of_type_JavaLangString;
   int jdField_f_of_type_Int = -1;
-  DialogInterface.OnClickListener jdField_f_of_type_AndroidContentDialogInterface$OnClickListener = new uhb(this);
+  DialogInterface.OnClickListener jdField_f_of_type_AndroidContentDialogInterface$OnClickListener = new aelj(this);
   TextView jdField_f_of_type_AndroidWidgetTextView;
+  public String f;
   int jdField_g_of_type_Int;
   TextView jdField_g_of_type_AndroidWidgetTextView;
+  public String g;
   int h;
   int i;
   public int j;
@@ -182,16 +190,20 @@ public class VipProfileCardDiyActivity
   int m = 30000;
   public int n = 2;
   
+  static
+  {
+    jdField_a_of_type_JavaLangString = alud.a(2131717162);
+  }
+  
   public VipProfileCardDiyActivity()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
     this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
   public static boolean a(int paramInt)
   {
-    File localFile = new File(VipDiyCardConstants.jdField_a_of_type_JavaLangString + paramInt);
+    File localFile = new File(awsl.jdField_a_of_type_JavaLangString + paramInt);
     if ((localFile.exists()) && (localFile.isDirectory())) {}
     for (String[] arrayOfString = localFile.list(); (localFile.exists()) && (arrayOfString != null) && (arrayOfString.length > 0); arrayOfString = null) {
       return true;
@@ -207,7 +219,7 @@ public class VipProfileCardDiyActivity
     return false;
   }
   
-  public int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
+  int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
   {
     int i1 = 1;
     int i2 = 1;
@@ -274,37 +286,37 @@ public class VipProfileCardDiyActivity
     if (this.jdField_a_of_type_Long == -1L) {
       finish();
     }
-    this.jdField_a_of_type_JavaLangString = localIntent.getStringExtra("extra_card_url");
-    this.jdField_b_of_type_JavaLangString = localIntent.getStringExtra("extra_card_default_text");
-    if (android.text.TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      this.jdField_b_of_type_JavaLangString = "请输入文字";
+    this.jdField_b_of_type_JavaLangString = localIntent.getStringExtra("extra_card_url");
+    this.jdField_c_of_type_JavaLangString = localIntent.getStringExtra("extra_card_default_text");
+    if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+      this.jdField_c_of_type_JavaLangString = jdField_a_of_type_JavaLangString;
     }
-    this.jdField_c_of_type_JavaLangString = localIntent.getStringExtra("extra_card_path");
-    label139:
+    this.jdField_d_of_type_JavaLangString = localIntent.getStringExtra("extra_card_path");
+    label141:
     int i1;
-    if (!android.text.TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCard.diyText))
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCard.diyText))
     {
-      this.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataCard.diyText;
+      this.jdField_e_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataCard.diyText;
       if (this.jdField_a_of_type_ComTencentMobileqqDataCard.diyTextFontId <= 0) {
-        break label295;
+        break label297;
       }
       this.h = this.jdField_a_of_type_ComTencentMobileqqDataCard.diyTextFontId;
       if ((this.jdField_a_of_type_Long == 0L) || (this.jdField_a_of_type_Long != this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId)) {
-        break label310;
+        break label312;
       }
       i1 = 1;
-      label165:
-      if ((i1 == 0) || (android.text.TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCard.diyText))) {
-        break label315;
+      label167:
+      if ((i1 == 0) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCard.diyText))) {
+        break label317;
       }
       this.jdField_a_of_type_Float = (this.jdField_a_of_type_ComTencentMobileqqDataCard.diyTextLocX * this.jdField_d_of_type_Int);
       this.jdField_b_of_type_Float = (this.jdField_a_of_type_ComTencentMobileqqDataCard.diyTextLocY * this.jdField_e_of_type_Int);
       this.jdField_c_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqDataCard.diyTextScale;
       this.jdField_d_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqDataCard.diyTextDegree;
       this.i = ((int)(this.jdField_a_of_type_ComTencentMobileqqDataCard.diyTextTransparency * 255.0F));
-      label254:
+      label256:
       if (this.i >= -77) {
-        break label387;
+        break label389;
       }
       this.i = -77;
     }
@@ -312,22 +324,22 @@ public class VipProfileCardDiyActivity
     {
       this.i += 77;
       return;
-      this.jdField_d_of_type_JavaLangString = localIntent.getStringExtra("extra_card_text");
+      this.jdField_e_of_type_JavaLangString = localIntent.getStringExtra("extra_card_text");
       break;
-      label295:
+      label297:
       this.h = localIntent.getIntExtra("extra_card_font", -1);
-      break label139;
-      label310:
+      break label141;
+      label312:
       i1 = 0;
-      break label165;
-      label315:
+      break label167;
+      label317:
       this.jdField_a_of_type_Float = localIntent.getFloatExtra("extra_card_x", 1.4E-45F);
       this.jdField_b_of_type_Float = localIntent.getFloatExtra("extra_card_y", 1.4E-45F);
       this.jdField_c_of_type_Float = localIntent.getFloatExtra("extra_card_scale", 1.0F);
       this.jdField_d_of_type_Float = localIntent.getFloatExtra("extra_card_rotation", 0.0F);
       this.i = ((int)(localIntent.getFloatExtra("extra_card_transparency", 0.0F) * 255.0F));
-      break label254;
-      label387:
+      break label256;
+      label389:
       if (this.i > 77) {
         this.i = 77;
       }
@@ -337,7 +349,7 @@ public class VipProfileCardDiyActivity
   public void a(int paramInt)
   {
     if (paramInt == 1) {
-      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X8008115", "", 1, 0, 0, HttpUtil.a(), "", "");
+      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X8008115", "", 1, 0, 0, ndd.a(), "", "");
     }
   }
   
@@ -351,17 +363,17 @@ public class VipProfileCardDiyActivity
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView != null) && (paramBoolean)) {
         break label91;
       }
-      ProfileCardUtil.a(this.app, paramLong1, paramLong2);
-      this.jdField_e_of_type_JavaLangString = a();
+      bddf.a(this.app, paramLong1, paramLong2);
+      this.jdField_f_of_type_JavaLangString = a();
       if (this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView != null) {
-        break label263;
+        break label266;
       }
     }
-    label263:
+    label266:
     for (int i1 = 0;; i1 = this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.jdField_a_of_type_Int)
     {
       this.j = i1;
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(6, this.m);
+      this.jdField_a_of_type_Bhtd.sendEmptyMessageDelayed(6, this.m);
       return;
       label91:
       i1 = this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.jdField_a_of_type_Int;
@@ -371,7 +383,7 @@ public class VipProfileCardDiyActivity
       float f1 = this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout.a();
       float f2 = this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout.b();
       float f3 = (this.jdField_a_of_type_ComTencentMobileqqProfileViewVerticalSeekBar.a() - 77) / 255.0F;
-      ProfileCardUtil.a(this.app, paramLong1, paramLong2, null, 0L, null, i1, str, (String)localObject, f1, f2, f3);
+      bddf.a(this.app, paramLong1, paramLong2, null, 0L, null, i1, str, (String)localObject, f1, f2, f3, "", 0L);
       break;
     }
   }
@@ -386,14 +398,14 @@ public class VipProfileCardDiyActivity
     this.jdField_a_of_type_AndroidWidgetEditText.setFocusable(true);
     this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(true);
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-    InputMethodUtil.a(this.jdField_a_of_type_AndroidWidgetEditText);
+    bhsj.a(this.jdField_a_of_type_AndroidWidgetEditText);
     c();
   }
   
   public void a(View paramView, float paramFloat)
   {
     c();
-    String str = HttpUtil.a();
+    String str = ndd.a();
     if (paramFloat > 1.0F) {}
     for (paramView = "0";; paramView = "1")
     {
@@ -405,13 +417,13 @@ public class VipProfileCardDiyActivity
   public void a(View paramView, float paramFloat1, float paramFloat2)
   {
     c();
-    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X8008110", "", 1, 0, 0, HttpUtil.a(), "", "");
+    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X8008110", "", 1, 0, 0, ndd.a(), "", "");
   }
   
   void a(String paramString)
   {
     this.jdField_a_of_type_AndroidWidgetEditText.setText(paramString);
-    if (!android.text.TextUtils.isEmpty(paramString)) {
+    if (!TextUtils.isEmpty(paramString)) {
       this.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramString.length());
     }
   }
@@ -428,20 +440,20 @@ public class VipProfileCardDiyActivity
   public void a(String paramString1, String paramString2, boolean paramBoolean)
   {
     h();
-    long l1 = ProfileCardTemplate.g;
+    long l1 = awra.g;
     if ((!this.jdField_d_of_type_Boolean) && (!isFinishing()))
     {
       this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView != null) && (paramBoolean)) {
         break label86;
       }
-      ProfileCardUtil.a(this.app, l1, 160L, paramString2, ProfileCardUtil.a(paramString1), null);
-      this.jdField_e_of_type_JavaLangString = a();
+      bddf.a(this.app, l1, 160L, paramString2, bddf.a(paramString1), null);
+      this.jdField_f_of_type_JavaLangString = a();
       if (this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView != null) {
-        break label291;
+        break label294;
       }
     }
-    label291:
+    label294:
     for (int i1 = 0;; i1 = this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.jdField_a_of_type_Int)
     {
       this.j = i1;
@@ -454,10 +466,10 @@ public class VipProfileCardDiyActivity
       float f1 = this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout.a();
       float f2 = this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout.b();
       float f3 = (this.jdField_a_of_type_ComTencentMobileqqProfileViewVerticalSeekBar.a() - 77) / 255.0F;
-      if ((android.text.TextUtils.isEmpty(str)) || (i2 == 0)) {}
+      if ((TextUtils.isEmpty(str)) || (i2 == 0)) {}
       for (i1 = 160;; i1 = 1600)
       {
-        ProfileCardUtil.a(this.app, l1, i1, paramString2, ProfileCardUtil.a(paramString1), null, i2, str, (String)localObject, f1, f2, f3);
+        bddf.a(this.app, l1, i1, paramString2, bddf.a(paramString1), null, i2, str, (String)localObject, f1, f2, f3, "", 0L);
         break;
       }
     }
@@ -465,19 +477,19 @@ public class VipProfileCardDiyActivity
   
   public void a(String paramString, boolean paramBoolean)
   {
-    if (android.text.TextUtils.isEmpty(paramString))
+    if (TextUtils.isEmpty(paramString))
     {
       QLog.e("VipProfileCardDiyActivity", 1, "uploadBackgroundToUps filePath is empty");
       return;
     }
-    uhd localuhd = new uhd(this, Long.parseLong(this.app.getCurrentAccountUin()), paramString, VipUploadUtils.a(this.app), "qqprofile", paramString, paramBoolean);
-    localuhd.b = VipUploadUtils.a(this.app);
-    localuhd.i = VipUploadUtils.a(this.app, paramString);
+    aelk localaelk = new aelk(this, Long.parseLong(this.app.getCurrentAccountUin()), paramString, awug.a(this.app), "qqprofile", paramString, paramBoolean);
+    localaelk.a = awug.a(this.app);
+    localaelk.i = awug.a(this.app, paramString);
     j();
-    paramString = (VipImageUploadManager)this.app.getManager(89);
+    paramString = (awul)this.app.getManager(90);
     paramString.a(this.app, null);
-    localuhd.a();
-    paramString.a(this.app, localuhd, null);
+    localaelk.a();
+    paramString.a(this.app, localaelk, null);
   }
   
   public void a(boolean paramBoolean, int paramInt)
@@ -499,10 +511,10 @@ public class VipProfileCardDiyActivity
     return true;
   }
   
-  public boolean a(long paramLong, int paramInt1, String paramString, int paramInt2, int paramInt3)
+  boolean a(long paramLong, int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
-    FriendsManager localFriendsManager = (FriendsManager)this.app.getManager(50);
-    Card localCard = localFriendsManager.a(this.app.getCurrentAccountUin());
+    alto localalto = (alto)this.app.getManager(51);
+    Card localCard = localalto.b(this.app.getCurrentAccountUin());
     if ((localCard != null) && (paramLong >= 0L))
     {
       localCard.lCurrentStyleId = paramLong;
@@ -510,7 +522,7 @@ public class VipProfileCardDiyActivity
       localCard.strCurrentBgUrl = paramString;
       localCard.backgroundColor = paramInt2;
       localCard.templateRet = paramInt3;
-      if (!localFriendsManager.a(localCard))
+      if (!localalto.a(localCard))
       {
         if (QLog.isDevelopLevel()) {
           QLog.d("VipProfileCardDiyActivity", 4, "save card in db failed ");
@@ -527,35 +539,36 @@ public class VipProfileCardDiyActivity
   @TargetApi(11)
   void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewSoftInputDetectView = ((SoftInputDetectView)findViewById(2131362840));
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)findViewById(2131363379));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363245));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363428));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371005));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131371007));
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewHScrollView = ((HScrollView)findViewById(2131371006));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131371009));
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout = ((SingleTouchLayout)findViewById(2131371010));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131371014));
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewVerticalSeekBar = ((VerticalSeekBar)findViewById(2131371013));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131365597);
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewSoftInputDetectView = ((SoftInputDetectView)findViewById(2131376034));
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)findViewById(2131378030));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368624));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368655));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372311));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131377529));
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewHScrollView = ((HScrollView)findViewById(2131377527));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365488));
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout = ((SingleTouchLayout)findViewById(2131365489));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365483));
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewVerticalSeekBar = ((VerticalSeekBar)findViewById(2131369425));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131370086);
     this.jdField_a_of_type_ComTencentMobileqqProfileDiyDiyTextView = new DiyTextView(this);
     this.jdField_a_of_type_ComTencentMobileqqProfileDiyDiyTextView.setBackgroundColor(0);
     this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout.a(this.jdField_a_of_type_ComTencentMobileqqProfileDiyDiyTextView);
-    int i1 = AIOUtils.a(10.0F, this.jdField_a_of_type_AndroidContentResResources);
+    int i1 = aepi.a(10.0F, this.jdField_a_of_type_AndroidContentResResources);
     this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$DiyDefaultTextView = new VipProfileCardDiyActivity.DiyDefaultTextView(this, this);
     this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$DiyDefaultTextView.setTextColor(-1);
     this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$DiyDefaultTextView.setTextSize(18.0F);
     this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$DiyDefaultTextView.setPadding(i1, i1, i1, i1);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131371008));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371011));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131368881);
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView = ((DynamicAvatarView)findViewById(2131369100));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370257));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371021));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371020));
-    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371022));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetVoteView = ((VoteView)findViewById(2131370536));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131376488));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365482));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131372251);
+    this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout = ((AvatarLayout)findViewById(2131368242));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368260));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368254));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368252));
+    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368253));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetVoteView = ((VoteView)findViewById(2131380087));
+    this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.a(0, this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.findViewById(2131363115), false);
     this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.a(0);
     this.jdField_a_of_type_ComTencentMobileqqProfileViewHScrollView.setOnScrollListener(this);
     this.jdField_a_of_type_ComTencentMobileqqProfileViewVerticalSeekBar.setOnSeekBarChangeListener(this);
@@ -566,10 +579,10 @@ public class VipProfileCardDiyActivity
     this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout.a = this;
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(VipProfileDiyCardConfig.jdField_a_of_type_Int) });
+    this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(awsm.jdField_a_of_type_Int) });
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.getViewTreeObserver().addOnGlobalLayoutListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqProfileDiyDiyTextView.setOnMeasuredListener(this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$OnMeasuredListener);
+    this.jdField_a_of_type_ComTencentMobileqqProfileDiyDiyTextView.setOnMeasuredListener(this.jdField_a_of_type_Aelt);
     SoftInputDetectView localSoftInputDetectView = this.jdField_a_of_type_ComTencentMobileqqProfileViewSoftInputDetectView;
     if (ImmersiveUtils.isSupporImmersive() != 1) {}
     for (boolean bool = true;; bool = false)
@@ -589,10 +602,10 @@ public class VipProfileCardDiyActivity
   {
     if (paramInt == 2)
     {
-      VasH5PayUtil.a(this.app, this, "mvip.g.a.mp_wz", 3, "1450000516", "CJCLUBT", getString(2131436943), "svipdiyCardH5Pay");
+      bdun.a(this.app, this, "mvip.g.a.mp_wz", 3, "1450000516", "CJCLUBT", getString(2131720522), "svipdiyCardH5Pay");
       return;
     }
-    VasH5PayUtil.a(this.app, this, "mvip.g.a.mp_wz", 3, "1450000515", "LTMCLUB", getString(2131436740), "vipdiyCardH5Pay");
+    bdun.a(this.app, this, "mvip.g.a.mp_wz", 3, "1450000515", "LTMCLUB", getString(2131695593), "vipdiyCardH5Pay");
   }
   
   public void b(View paramView)
@@ -601,7 +614,7 @@ public class VipProfileCardDiyActivity
     this.jdField_a_of_type_Boolean = true;
     a("");
     c();
-    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X800810F", "", 1, 0, 0, HttpUtil.a(), "", "");
+    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X800810F", "", 1, 0, 0, ndd.a(), "", "");
   }
   
   void b(String paramString)
@@ -610,12 +623,12 @@ public class VipProfileCardDiyActivity
     int i2;
     boolean bool;
     String str;
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView != null) && (!android.text.TextUtils.isEmpty(a())))
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView != null) && (!TextUtils.isEmpty(a())))
     {
       i2 = 1;
-      bool = VipUtils.a(this.app);
-      str = getString(2131439018);
-      if (!android.text.TextUtils.isEmpty(paramString)) {
+      bool = VipUtils.b(this.app);
+      str = getString(2131695535);
+      if (!TextUtils.isEmpty(paramString)) {
         break label309;
       }
       if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_a_of_type_Long != 160L) && (this.jdField_a_of_type_Long != 1600L)) {
@@ -627,7 +640,7 @@ public class VipProfileCardDiyActivity
       if (!bool) {
         break label214;
       }
-      paramString = getString(2131439022);
+      paramString = getString(2131695533);
     }
     label143:
     label278:
@@ -641,16 +654,16 @@ public class VipProfileCardDiyActivity
       int i1;
       if (((this.jdField_a_of_type_Long == 0L) || (this.jdField_a_of_type_Long == 160L)) && (bool))
       {
-        i3 = 2131439012;
+        i3 = 2131695554;
         if (this.n != 2) {
           break label278;
         }
         if (!bool) {
           break label271;
         }
-        i1 = 2131439013;
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.b(this, 0, str, paramString, i3, i1, this.jdField_d_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_c_of_type_AndroidContentDialogInterface$OnClickListener);
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+        i1 = 2131695550;
+        this.jdField_a_of_type_Bdjz = bdgm.a(this, 0, str, paramString, i3, i1, this.jdField_d_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_c_of_type_AndroidContentDialogInterface$OnClickListener);
+        this.jdField_a_of_type_Bdjz.show();
         if (i2 != 0) {
           if (!bool) {
             break label302;
@@ -659,34 +672,34 @@ public class VipProfileCardDiyActivity
       }
       for (paramString = "4";; paramString = "3")
       {
-        VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081C9", "", 1, 0, 0, HttpUtil.a(), paramString, "");
+        VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081C9", "", 1, 0, 0, ndd.a(), paramString, "");
         return;
         i2 = 0;
         break;
         label214:
-        paramString = getString(2131439019);
+        paramString = getString(2131695531);
         break label96;
         label225:
-        paramString = getString(2131439021);
+        paramString = getString(2131695532);
         break label96;
         label236:
         if (bool)
         {
-          paramString = getString(2131439020);
+          paramString = getString(2131695534);
           break label96;
         }
-        paramString = getString(2131439019);
+        paramString = getString(2131695531);
         break label96;
-        i3 = 2131433015;
+        i3 = 2131690648;
         break label126;
-        i1 = 2131439014;
+        i1 = 2131695547;
         break label143;
-        if (VipUtils.b(this.app))
+        if (VipUtils.c(this.app))
         {
-          i1 = 2131439015;
+          i1 = 2131695551;
           break label143;
         }
-        i1 = 2131439016;
+        i1 = 2131695548;
         break label143;
       }
     }
@@ -705,7 +718,7 @@ public class VipProfileCardDiyActivity
   
   public void c(String paramString)
   {
-    ThreadManager.executeOnFileThread(new uhc(this, paramString));
+    ThreadManager.executeOnFileThread(new VipProfileCardDiyActivity.11(this, paramString));
   }
   
   void d()
@@ -713,29 +726,34 @@ public class VipProfileCardDiyActivity
     int i2 = 0;
     Object localObject1;
     Object localObject2;
-    if (android.text.TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString))
     {
-      localObject1 = ProfileCardUtil.a(this, this.jdField_a_of_type_JavaLangString);
+      localObject1 = awqu.a(this, awra.n, this.jdField_a_of_type_Long);
       localObject2 = new File((String)localObject1);
       if ((!((File)localObject2).isFile()) || (!((File)localObject2).exists())) {
-        break label537;
+        break label577;
       }
       c((String)localObject1);
     }
-    label536:
-    label537:
+    label391:
+    label523:
+    label576:
+    label577:
     for (int i1 = 0;; i1 = 1)
     {
-      if (i1 != 0) {
-        ThreadManager.post(new uhe(this, (File)localObject2, (String)localObject1), 8, null, true);
+      if (i1 != 0)
+      {
+        localObject2 = ((bduj)this.app.getManager(235)).a;
+        this.jdField_g_of_type_JavaLangString = ((String)localObject1);
+        ((awqu)localObject2).a(this.app, "card." + this.jdField_a_of_type_Long);
       }
-      localObject1 = new LinearLayout.LayoutParams(AIOUtils.a(86.0F, this.jdField_a_of_type_AndroidContentResResources), AIOUtils.a(123.0F, this.jdField_a_of_type_AndroidContentResResources));
-      ((LinearLayout.LayoutParams)localObject1).setMargins(0, AIOUtils.a(12.0F, this.jdField_a_of_type_AndroidContentResResources), AIOUtils.a(5.0F, this.jdField_a_of_type_AndroidContentResResources), AIOUtils.a(10.0F, this.jdField_a_of_type_AndroidContentResResources));
+      localObject1 = new LinearLayout.LayoutParams(aepi.a(86.0F, this.jdField_a_of_type_AndroidContentResResources), aepi.a(123.0F, this.jdField_a_of_type_AndroidContentResResources));
+      ((LinearLayout.LayoutParams)localObject1).setMargins(0, aepi.a(12.0F, this.jdField_a_of_type_AndroidContentResResources), aepi.a(5.0F, this.jdField_a_of_type_AndroidContentResResources), aepi.a(10.0F, this.jdField_a_of_type_AndroidContentResResources));
       localObject2 = URLDrawable.URLDrawableOptions.obtain();
-      SparseArray localSparseArray = VipProfileDiyCardConfig.jdField_a_of_type_AndroidUtilSparseArray;
+      SparseArray localSparseArray = awsm.jdField_a_of_type_AndroidUtilSparseArray;
       if (localSparseArray == null)
       {
-        VipProfileDiyCardConfig.a(this.app);
+        awsm.a(this.app);
         this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$DiyDefaultTextView);
         f();
       }
@@ -750,32 +768,31 @@ public class VipProfileCardDiyActivity
         this.jdField_b_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView = new VipProfileCardDiyActivity.HiBoomTemplateView(this, this, this.jdField_f_of_type_Int, bool);
         localObject3 = URLDrawable.getDrawable((String)localObject3, (URLDrawable.URLDrawableOptions)localObject2);
         this.jdField_b_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.setImageDrawable((Drawable)localObject3);
-        if ((this.jdField_a_of_type_Long == 0L) || ((android.text.TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) && (this.jdField_g_of_type_Int == 1)))
+        if ((this.jdField_a_of_type_Long == 0L) || ((TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) && (this.jdField_g_of_type_Int == 1)))
         {
           this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout.setVisibility(8);
           this.jdField_a_of_type_Boolean = true;
           e();
-          label336:
+          label376:
           this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_b_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView, (ViewGroup.LayoutParams)localObject1);
           i1 = i2;
-          label351:
           if (i1 >= localSparseArray.size()) {
-            break label536;
+            break label576;
           }
           i2 = localSparseArray.keyAt(i1);
           if (i2 != this.jdField_f_of_type_Int) {
-            break label483;
+            break label523;
           }
         }
         for (;;)
         {
           i1 += 1;
-          break label351;
-          c(this.jdField_c_of_type_JavaLangString);
+          break label391;
+          c(this.jdField_d_of_type_JavaLangString);
           break;
           this.jdField_b_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.setChecked(true);
           this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView = this.jdField_b_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView;
-          this.jdField_a_of_type_ComTencentMobileqqProfileDiyDiyTextView.setHiBoom(this.jdField_f_of_type_Int, 2, HiBoomManager.b);
+          this.jdField_a_of_type_ComTencentMobileqqProfileDiyDiyTextView.setHiBoom(this.jdField_f_of_type_Int, 1, assg.b);
           if (!bool) {}
           for (bool = true;; bool = false)
           {
@@ -783,16 +800,14 @@ public class VipProfileCardDiyActivity
             if (this.jdField_b_of_type_Boolean) {
               this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.jdField_b_of_type_Int = 1;
             }
-            if (android.text.TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
-              break label476;
+            if (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
+              break label516;
             }
-            a(this.jdField_d_of_type_JavaLangString);
+            a(this.jdField_e_of_type_JavaLangString);
             break;
           }
-          label476:
           e();
-          break label336;
-          label483:
+          break label376;
           localObject3 = (String)localSparseArray.get(i2);
           VipProfileCardDiyActivity.HiBoomTemplateView localHiBoomTemplateView = new VipProfileCardDiyActivity.HiBoomTemplateView(this, this, i2, a(i2));
           localHiBoomTemplateView.setImageDrawable(URLDrawable.getDrawable((String)localObject3, (URLDrawable.URLDrawableOptions)localObject2));
@@ -808,43 +823,45 @@ public class VipProfileCardDiyActivity
     onClick(this.jdField_a_of_type_AndroidWidgetTextView);
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     this.mActNeedImmersive = false;
     getIntent().putExtra("fling_action_key", 0);
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970531);
+    super.setContentView(2131561167);
     this.jdField_a_of_type_AndroidContentSharedPreferences = getSharedPreferences("vip_profile_diy_card", 0);
-    this.jdField_a_of_type_ComTencentMobileqqDataCard = ProfileCardUtil.a(this.app, this.app.getCurrentAccountUin());
+    this.jdField_a_of_type_ComTencentMobileqqDataCard = bddf.a(this.app, this.app.getCurrentAccountUin());
     this.jdField_a_of_type_AndroidContentResResources = super.getResources();
     paramBundle = this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics();
     this.jdField_d_of_type_Int = paramBundle.widthPixels;
     this.jdField_e_of_type_Int = paramBundle.heightPixels;
-    this.jdField_a_of_type_Int = AIOUtils.a(130.0F, this.jdField_a_of_type_AndroidContentResResources);
+    this.jdField_a_of_type_Int = aepi.a(130.0F, this.jdField_a_of_type_AndroidContentResResources);
     a();
-    this.jdField_c_of_type_Int = AIOUtils.a(5.0F, this.jdField_a_of_type_AndroidContentResResources);
-    this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager = ((VasQuickUpdateManager)this.app.getManager(183));
-    this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomManager = ((HiBoomManager)this.app.getManager(218));
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
-    addObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
+    this.jdField_c_of_type_Int = aepi.a(5.0F, this.jdField_a_of_type_AndroidContentResResources);
+    this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager = ((VasQuickUpdateManager)this.app.getManager(184));
+    this.jdField_a_of_type_Assg = ((assg)this.app.getManager(219));
+    this.jdField_a_of_type_Bhtd = new bhtd(Looper.getMainLooper(), this);
+    addObserver(this.jdField_a_of_type_Alpq);
     b();
+    ((VasQuickUpdateManager)this.app.getManager(184)).addCallBacker(this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
     d();
-    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X800810D", "", 1, 0, 0, HttpUtil.a(), "", String.valueOf(this.jdField_a_of_type_Long));
+    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X800810D", "", 1, 0, 0, ndd.a(), "", String.valueOf(this.jdField_a_of_type_Long));
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
     this.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeCallbacks(null);
-    removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
+    this.jdField_a_of_type_Bhtd.removeCallbacks(null);
+    removeObserver(this.jdField_a_of_type_Alpq);
     i();
     k();
+    ((VasQuickUpdateManager)this.app.getManager(184)).removeCallBacker(this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
   }
   
   @TargetApi(9)
-  protected void doOnWindowFocusChanged(boolean paramBoolean)
+  public void doOnWindowFocusChanged(boolean paramBoolean)
   {
     super.doOnWindowFocusChanged(paramBoolean);
     if (paramBoolean)
@@ -854,10 +871,10 @@ public class VipProfileCardDiyActivity
       }
       if (this.jdField_a_of_type_AndroidWidgetPopupWindow == null)
       {
-        localView = getLayoutInflater().inflate(2130970530, null);
-        localButton = (Button)localView.findViewById(2131371004);
-        this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131371002));
-        this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131371003));
+        localView = getLayoutInflater().inflate(2131561166, null);
+        localButton = (Button)localView.findViewById(2131363620);
+        this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367405));
+        this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367396));
         localButton.setOnClickListener(this);
         this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(localView, -1, -1);
         this.jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(true);
@@ -869,7 +886,7 @@ public class VipProfileCardDiyActivity
           break label168;
         }
         this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-        ThreadManager.executeOnFileThread(new uha(this));
+        ThreadManager.executeOnFileThread(new VipProfileCardDiyActivity.2(this));
       }
     }
     label168:
@@ -879,7 +896,7 @@ public class VipProfileCardDiyActivity
       View localView;
       Button localButton;
       return;
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(9);
+      this.jdField_a_of_type_Bhtd.sendEmptyMessage(9);
       return;
     }
   }
@@ -887,12 +904,12 @@ public class VipProfileCardDiyActivity
   public void e()
   {
     if ((this.jdField_a_of_type_Long == 0L) || (this.jdField_a_of_type_Long == 160L) || (this.jdField_a_of_type_Long == 1600L)) {
-      a(VipProfileDiyCardConfig.jdField_a_of_type_JavaLangString);
+      a(awsm.jdField_a_of_type_JavaLangString);
     }
-    while (android.text.TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+    while (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
       return;
     }
-    a(this.jdField_b_of_type_JavaLangString);
+    a(this.jdField_c_of_type_JavaLangString);
   }
   
   public void f()
@@ -911,26 +928,26 @@ public class VipProfileCardDiyActivity
       do
       {
         return;
-        l1 = ProfileCardTemplate.g;
+        l1 = awra.g;
         if (this.jdField_a_of_type_Long != 0L) {
           break;
         }
       } while (!a());
-      str = (String)this.jdField_a_of_type_JavaUtilHashMap.get(this.jdField_c_of_type_JavaLangString);
-      if (!android.text.TextUtils.isEmpty(str))
+      str = (String)this.jdField_a_of_type_JavaUtilHashMap.get(this.jdField_d_of_type_JavaLangString);
+      if (!TextUtils.isEmpty(str))
       {
-        a(this.jdField_c_of_type_JavaLangString, str, true);
+        a(this.jdField_d_of_type_JavaLangString, str, true);
         return;
       }
-      a(this.jdField_c_of_type_JavaLangString, true);
+      a(this.jdField_d_of_type_JavaLangString, true);
       return;
       if ((this.jdField_a_of_type_Long != 160L) && (this.jdField_a_of_type_Long != 1600L)) {
         break;
       }
-    } while ((!a()) || (android.text.TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)));
-    a(ProfileCardUtil.a(this, this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_JavaLangString, true);
+    } while ((!a()) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)));
+    a(awqu.a(this, awra.n, this.jdField_a_of_type_Long), this.jdField_b_of_type_JavaLangString, true);
     return;
-    if (android.text.TextUtils.isEmpty(a()))
+    if (TextUtils.isEmpty(a()))
     {
       o();
       if (this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView == null) {}
@@ -949,10 +966,10 @@ public class VipProfileCardDiyActivity
     {
       if (!isFinishing())
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131436753);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+        this.jdField_a_of_type_Bety = new bety(this, getTitleBarHeight());
+        this.jdField_a_of_type_Bety.setCancelable(false);
+        this.jdField_a_of_type_Bety.c(2131695639);
+        this.jdField_a_of_type_Bety.show();
       }
       return;
     }
@@ -992,12 +1009,12 @@ public class VipProfileCardDiyActivity
             startActivity(paramMessage);
           }
         case 1: 
-          if (!android.text.TextUtils.isEmpty((String)paramMessage.obj))
+          if (!TextUtils.isEmpty((String)paramMessage.obj))
           {
             QQToast.a(this, (String)paramMessage.obj, 0).a();
             return false;
           }
-          QQToast.a(this, 2131439011, 0).a();
+          QQToast.a(this, 2131695555, 0).a();
           return false;
         case 2: 
           b((String)paramMessage.obj);
@@ -1023,35 +1040,41 @@ public class VipProfileCardDiyActivity
       paramMessage.bottomMargin = 0;
       ((View)localObject).setLayoutParams(paramMessage);
     }
-    QQToast.a(this, 1, 2131439031, 0).a();
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.jdField_a_of_type_Int == this.jdField_f_of_type_Int) && (this.jdField_b_of_type_Boolean)) {
-      if (this.h == -1)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.setChecked(false);
-        b(null);
+    QQToast.a(this, 1, 2131695543, 0).a();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView != null)
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.jdField_a_of_type_Int != this.jdField_f_of_type_Int) || (!this.jdField_b_of_type_Boolean)) {
+        break label396;
       }
+      if (this.h != -1) {
+        break label385;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.setChecked(false);
+      b(null);
     }
     for (;;)
     {
       this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$DiyDefaultTextView, this.jdField_a_of_type_Int);
       return false;
+      label385:
       this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.setChecked(false);
       continue;
+      label396:
       this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.setChecked(false);
     }
     i();
     k();
     return false;
-    Object localObject = getString(2131439029);
+    Object localObject = getString(2131695544);
     paramMessage = (String)paramMessage.obj;
-    if (!android.text.TextUtils.isEmpty(paramMessage)) {}
+    if (!TextUtils.isEmpty(paramMessage)) {}
     for (;;)
     {
       QQToast.a(this, 1, paramMessage, 0).a();
       return false;
-      localObject = String.format(getString(2131439030), new Object[] { Integer.valueOf(VipProfileDiyCardConfig.jdField_a_of_type_Int) });
+      localObject = String.format(getString(2131695558), new Object[] { Integer.valueOf(awsm.jdField_a_of_type_Int) });
       paramMessage = (String)paramMessage.obj;
-      if (!android.text.TextUtils.isEmpty(paramMessage)) {}
+      if (!TextUtils.isEmpty(paramMessage)) {}
       for (;;)
       {
         QQToast.a(this, 1, paramMessage, 0).a();
@@ -1073,12 +1096,12 @@ public class VipProfileCardDiyActivity
   
   public void i()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {}
+    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      this.jdField_a_of_type_Bety.dismiss();
       label24:
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+      this.jdField_a_of_type_Bety = null;
       return;
     }
     catch (Exception localException)
@@ -1093,10 +1116,10 @@ public class VipProfileCardDiyActivity
     {
       if (!isFinishing())
       {
-        this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-        this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
-        this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131433645);
-        this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+        this.jdField_b_of_type_Bety = new bety(this, getTitleBarHeight());
+        this.jdField_b_of_type_Bety.setCancelable(false);
+        this.jdField_b_of_type_Bety.c(2131690826);
+        this.jdField_b_of_type_Bety.show();
       }
       return;
     }
@@ -1108,12 +1131,12 @@ public class VipProfileCardDiyActivity
   
   public void k()
   {
-    if ((this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {}
+    if ((this.jdField_b_of_type_Bety != null) && (this.jdField_b_of_type_Bety.isShowing())) {}
     try
     {
-      this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      this.jdField_b_of_type_Bety.dismiss();
       label24:
-      this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+      this.jdField_b_of_type_Bety = null;
       return;
     }
     catch (Exception localException)
@@ -1124,10 +1147,10 @@ public class VipProfileCardDiyActivity
   
   public void l()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
+    if (this.jdField_a_of_type_Bdjz != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
+      this.jdField_a_of_type_Bdjz.dismiss();
+      this.jdField_a_of_type_Bdjz = null;
     }
   }
   
@@ -1136,22 +1159,22 @@ public class VipProfileCardDiyActivity
     n();
     int i1;
     int i2;
-    if (!android.text.TextUtils.isEmpty(a()))
+    if (!TextUtils.isEmpty(a()))
     {
       i1 = 1;
       if (i1 == 0) {
         break label102;
       }
-      i2 = 2131439023;
+      i2 = 2131695552;
       label24:
       str = getString(i2);
       if (i1 == 0) {
         break label109;
       }
-      i2 = 2131439024;
+      i2 = 2131695546;
       label38:
-      this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, str, i2, 2131439025, this.jdField_f_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_e_of_type_AndroidContentDialogInterface$OnClickListener);
-      this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+      this.jdField_b_of_type_Bdjz = bdgm.a(this, str, i2, 2131695539, this.jdField_f_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_e_of_type_AndroidContentDialogInterface$OnClickListener);
+      this.jdField_b_of_type_Bdjz.show();
       if (i1 == 0) {
         break label116;
       }
@@ -1161,32 +1184,32 @@ public class VipProfileCardDiyActivity
     label116:
     for (String str = "1";; str = "0")
     {
-      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081C9", "", 1, 0, 0, HttpUtil.a(), str, "");
+      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081C9", "", 1, 0, 0, ndd.a(), str, "");
       return;
       i1 = 0;
       break;
-      i2 = 2131439027;
+      i2 = 2131695542;
       break label24;
-      i2 = 2131439026;
+      i2 = 2131695541;
       break label38;
     }
   }
   
   public void n()
   {
-    if (this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
+    if (this.jdField_b_of_type_Bdjz != null)
     {
-      this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
+      this.jdField_b_of_type_Bdjz.dismiss();
+      this.jdField_b_of_type_Bdjz = null;
     }
   }
   
   void o()
   {
     n();
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, getString(2131439032), 2131439033, 2131439035, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081C9", "", 1, 0, 0, HttpUtil.a(), "2", "");
+    this.jdField_b_of_type_Bdjz = bdgm.a(this, getString(2131695545), 2131695536, 2131695553, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+    this.jdField_b_of_type_Bdjz.show();
+    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081C9", "", 1, 0, 0, ndd.a(), "2", "");
   }
   
   public void onClick(View paramView)
@@ -1194,9 +1217,8 @@ public class VipProfileCardDiyActivity
     switch (paramView.getId())
     {
     }
-    label367:
-    label1014:
-    label1019:
+    label370:
+    label1023:
     do
     {
       do
@@ -1214,7 +1236,7 @@ public class VipProfileCardDiyActivity
           this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
           this.jdField_a_of_type_ComTencentMobileqqProfileViewVerticalSeekBar.setVisibility(0);
           this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131433699);
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131690624);
           VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X800820F", "", 1, 0, 0, "", "", "");
           return;
         }
@@ -1222,49 +1244,49 @@ public class VipProfileCardDiyActivity
         VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X800810E", "", 1, 0, 0, "", "", "");
         return;
         this.jdField_b_of_type_Int = 2;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131439034);
-        if (android.text.TextUtils.isEmpty(a()))
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131695537);
+        if (TextUtils.isEmpty(a()))
         {
           this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout.setVisibility(8);
           this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
           this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
           this.jdField_a_of_type_AndroidWidgetEditText.setVisibility(8);
           this.jdField_a_of_type_ComTencentMobileqqProfileViewVerticalSeekBar.setVisibility(8);
-          InputMethodUtil.a(this);
+          bhsj.a(this);
           this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-          if (android.text.TextUtils.isEmpty(this.jdField_d_of_type_AndroidWidgetTextView.getText()))
+          if (TextUtils.isEmpty(this.jdField_d_of_type_AndroidWidgetTextView.getText()))
           {
-            this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView.setFaceDrawable(this.app, 1, this.app.getCurrentAccountUin(), 200, true, true, true, false, 3);
+            this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.setFaceDrawable(this.app, 1, this.app.getCurrentAccountUin(), 200, true, true, true, false, 3);
             this.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqDataCard.strNick);
             this.jdField_f_of_type_AndroidWidgetTextView.setText(String.format("%s岁", new Object[] { Byte.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataCard.age) }));
             if (this.jdField_a_of_type_ComTencentMobileqqDataCard.shGender != 1) {
-              break label675;
+              break label681;
             }
-            paramView = "女";
+            paramView = alud.a(2131717161);
             this.jdField_e_of_type_AndroidWidgetTextView.setText(paramView);
             localObject = "";
             paramView = (View)localObject;
-            if (!android.text.TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCard.strCountry))
+            if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCard.strCountry))
             {
               paramView = (View)localObject;
-              if (!"中国".equals(this.jdField_a_of_type_ComTencentMobileqqDataCard.strCountry)) {
+              if (!alud.a(2131717160).equals(this.jdField_a_of_type_ComTencentMobileqqDataCard.strCountry)) {
                 paramView = "" + this.jdField_a_of_type_ComTencentMobileqqDataCard.strCountry;
               }
             }
             localObject = paramView;
-            if (!android.text.TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCard.strProvince))
+            if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCard.strProvince))
             {
               localObject = paramView;
-              if (!android.text.TextUtils.isEmpty(paramView)) {
+              if (!TextUtils.isEmpty(paramView)) {
                 localObject = paramView + "，";
               }
               localObject = (String)localObject + this.jdField_a_of_type_ComTencentMobileqqDataCard.strProvince;
             }
             paramView = (View)localObject;
-            if (!android.text.TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCard.strCity))
+            if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCard.strCity))
             {
               paramView = (View)localObject;
-              if (!android.text.TextUtils.isEmpty((CharSequence)localObject)) {
+              if (!TextUtils.isEmpty((CharSequence)localObject)) {
                 paramView = (String)localObject + "，";
               }
               paramView = paramView + this.jdField_a_of_type_ComTencentMobileqqDataCard.strCity;
@@ -1272,29 +1294,29 @@ public class VipProfileCardDiyActivity
             this.jdField_g_of_type_AndroidWidgetTextView.setText(paramView);
             paramView = this.jdField_a_of_type_ComTencentMobileqqWidgetVoteView;
             if (this.jdField_a_of_type_ComTencentMobileqqDataCard.bVoted != 1) {
-              break label698;
+              break label707;
             }
           }
         }
         for (boolean bool = true;; bool = false)
         {
           paramView.a(true, bool, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lVoteCount, this.jdField_a_of_type_ComTencentMobileqqDataCard.iVoteIncrement, null, false);
-          VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CB", "", 1, 0, 0, HttpUtil.a(), "", "");
+          VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CB", "", 1, 0, 0, ndd.a(), "", "");
           return;
           this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout.setEditable(false);
           break;
           if (this.jdField_a_of_type_ComTencentMobileqqDataCard.shGender == 0)
           {
-            paramView = "男";
-            break label367;
+            paramView = alud.a(2131717166);
+            break label370;
           }
           paramView = "";
-          break label367;
+          break label370;
         }
         if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Int == 1))
         {
           if ((this.jdField_a_of_type_Long == 0L) || (this.jdField_a_of_type_Long == 160L) || (this.jdField_a_of_type_Long == 1600L)) {
-            a(VipProfileDiyCardConfig.jdField_a_of_type_JavaLangString);
+            a(awsm.jdField_a_of_type_JavaLangString);
           }
           for (;;)
           {
@@ -1306,19 +1328,19 @@ public class VipProfileCardDiyActivity
             this.jdField_a_of_type_Boolean = false;
             if ((this.h == -1) && (this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.jdField_a_of_type_Int == this.jdField_f_of_type_Int) && (this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.jdField_b_of_type_Int == 0))
             {
-              this.jdField_a_of_type_ComTencentMobileqqProfileDiyDiyTextView.setHiBoom(this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.jdField_a_of_type_Int, 2, HiBoomManager.b);
+              this.jdField_a_of_type_ComTencentMobileqqProfileDiyDiyTextView.setHiBoom(this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.jdField_a_of_type_Int, 1, assg.b);
               this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.jdField_b_of_type_Int = 1;
             }
-            VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X8008113", "", 1, 0, 0, HttpUtil.a(), "", "");
+            VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X8008113", "", 1, 0, 0, ndd.a(), "", "");
             return;
-            a(this.jdField_b_of_type_JavaLangString);
+            a(this.jdField_c_of_type_JavaLangString);
           }
         }
         this.jdField_a_of_type_AndroidWidgetEditText.setVisibility(8);
         if (this.jdField_b_of_type_Int != 2) {
           this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout.setEditable(true);
         }
-        InputMethodUtil.a(this);
+        bhsj.a(this);
         return;
         g();
         int i1;
@@ -1326,49 +1348,50 @@ public class VipProfileCardDiyActivity
         if (this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView != null)
         {
           i1 = 1;
-          if (android.text.TextUtils.isEmpty(a())) {
-            break label1014;
+          if (TextUtils.isEmpty(a())) {
+            break label1023;
           }
           i2 = 1;
           if (i1 == 0) {
-            break label1026;
+            break label1035;
           }
           if (i2 == 0) {
-            break label1019;
+            break label1028;
           }
           paramView = "2";
           if (i1 == 0) {
-            break label1043;
+            break label1052;
           }
         }
         for (Object localObject = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView.jdField_a_of_type_Int);; localObject = "")
         {
-          VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X8008116", "", 1, 0, 0, HttpUtil.a(), paramView, (String)localObject);
+          VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X8008116", "", 1, 0, 0, ndd.a(), paramView, (String)localObject);
           return;
           i1 = 0;
           break;
           i2 = 0;
-          break label958;
+          break label967;
           paramView = "1";
-          break label970;
+          break label979;
           if (i2 != 0)
           {
             paramView = "";
-            break label970;
+            break label979;
           }
           paramView = "0";
-          break label970;
+          break label979;
         }
       } while (this.jdField_a_of_type_AndroidWidgetPopupWindow == null);
       this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
     } while (this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$HiBoomTemplateView == null);
-    label675:
-    label698:
-    label958:
-    label970:
+    label681:
+    label707:
+    label967:
+    label979:
     this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout.setVisibility(0);
-    label1026:
-    label1043:
+    label1028:
+    label1035:
+    label1052:
     return;
   }
   
@@ -1411,8 +1434,8 @@ public class VipProfileCardDiyActivity
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramCharSequence = com.tencent.mobileqq.text.TextUtils.b(paramCharSequence.toString());
-    if (!android.text.TextUtils.isEmpty(paramCharSequence))
+    paramCharSequence = banh.c(paramCharSequence.toString());
+    if (!TextUtils.isEmpty(paramCharSequence))
     {
       this.jdField_a_of_type_ComTencentMobileqqProfileDiyDiyTextView.setText(paramCharSequence);
       this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity$DiyDefaultTextView.setText(paramCharSequence);
@@ -1432,7 +1455,7 @@ public class VipProfileCardDiyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VipProfileCardDiyActivity
  * JD-Core Version:    0.7.0.1
  */

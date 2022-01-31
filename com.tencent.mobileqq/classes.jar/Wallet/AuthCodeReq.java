@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class AuthCodeReq
   extends JceStruct
 {
-  static ArrayList cache_apps = new ArrayList();
-  public ArrayList apps;
+  static ArrayList<Long> cache_apps = new ArrayList();
+  public ArrayList<Long> apps;
   public String skey = "";
   public long uin;
   

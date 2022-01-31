@@ -1,33 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoLikeRsp;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class yfx
-  implements Animation.AnimationListener
+class yfx
+  implements zac<CertifiedAccountWrite.StDoLikeRsp>
 {
-  public yfx(SpecailCareListActivity paramSpecailCareListActivity) {}
+  yfx(yfp paramyfp) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoLikeRsp paramStDoLikeRsp)
   {
-    this.a.leftView.clearAnimation();
-    this.a.a.clearAnimation();
-    this.a.leftView.setVisibility(0);
-    this.a.a.setVisibility(0);
-    this.a.rightViewText.setClickable(true);
-    this.a.rightViewText.setText("管理");
-    this.a.rightViewText.setContentDescription("管理 按钮");
-    this.a.c = false;
+    umc.a().dispatch(this.a.a(new Object[] { Integer.valueOf(7), Long.valueOf(paramLong), paramString, paramStDoLikeRsp }));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yfx
  * JD-Core Version:    0.7.0.1
  */

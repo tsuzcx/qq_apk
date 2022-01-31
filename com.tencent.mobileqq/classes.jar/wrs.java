@@ -1,42 +1,22 @@
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import com.tencent.widget.XListView;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.lang.ref.WeakReference;
 
-public class wrs
-  implements AbsListView.OnScrollListener
+final class wrs
+  implements wta
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
+  wrs(WeakReference paramWeakReference) {}
   
-  public wrs(MessageSearchDialog paramMessageSearchDialog) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void a(ErrorMessage paramErrorMessage)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageSearchDialog.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() == this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageSearchDialog.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i(MessageSearchDialog.jdField_a_of_type_JavaLangString, 2, "onScrollStateChanged, scrollState = " + paramInt + ", lastItem = " + this.jdField_a_of_type_Int + ", totalItemCount = " + this.b);
-      }
-    } while ((this.b == 0) || (this.jdField_a_of_type_Int != this.b) || (paramInt != 0));
-    if (QLog.isColorLevel()) {
-      QLog.i(MessageSearchDialog.jdField_a_of_type_JavaLangString, 2, "onScrollStateChanged, reach bottom, lastItem = " + this.jdField_a_of_type_Int + ", totalItemCount = " + this.b);
+    wrt localwrt = (wrt)this.a.get();
+    if (localwrt != null) {
+      localwrt.a(paramErrorMessage);
     }
-    MessageSearchDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageSearchDialog);
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
-    this.b = paramInt3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wrs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,31 @@
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.ar.config.WorldCup;
+import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 
 public class tbi
-  implements Runnable
+  implements tob
 {
-  public tbi(MainFragment paramMainFragment) {}
+  public tbi(WSHomeFragment paramWSHomeFragment) {}
   
-  public void run()
+  public void a(toa paramtoa)
   {
-    String str = MainFragment.a(this.a);
-    WorldCup.a(MainFragment.a(this.a), this.a.getActivity(), this.a.getView(), str);
+    if (paramtoa != null) {}
+    switch (paramtoa.a)
+    {
+    default: 
+      return;
+    case 2131721486: 
+      WSPublicAccReport.getInstance().reportNotificationClick();
+      WSHomeFragment.b(this.a);
+      ((tij)this.a.b()).a(this.a.getActivity(), 602);
+      return;
+    }
+    WSPublicAccReport.getInstance().reportPersonHomeClick();
+    ((tij)this.a.b()).a(this.a.getActivity());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tbi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,73 +1,66 @@
 package com.tencent.tmassistantbase.util;
 
-import android.content.Context;
-import android.os.Handler;
-import android.os.Process;
-import android.util.Log;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.text.TextUtils;
 
-class u
-  extends Thread
+public final class u
 {
-  u(t paramt, String paramString)
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public int g;
+  public int h;
+  public int i;
+  
+  private String b()
   {
-    super(paramString);
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append("0");
+    localStringBuffer.append(this.b.subSequence(0, 1));
+    localStringBuffer.append(this.c);
+    return localStringBuffer.toString();
   }
   
-  public void run()
+  public String a()
   {
-    int i = 0;
-    if ((r.g()) && (r.t.compareAndSet(false, true))) {
-      try
-      {
-        r.j();
-        try
-        {
-          r.o = r.h.getPackageName();
-          r.j = new LinkedBlockingQueue(15000);
-          r.n = Process.myPid();
-          Log.d("TMLog", "TMLog init start ");
-          r.k();
-          r.y.setName("logWriteThread");
-          r.y.start();
-          r.w.removeCallbacks(r.x);
-          return;
-        }
-        catch (Exception localException1)
-        {
-          for (;;)
-          {
-            r.o = "unknow";
-          }
-        }
-        int j;
-        return;
-      }
-      catch (Exception localException2)
-      {
-        r.t.set(false);
-        localException2.printStackTrace();
-        j = r.v.get();
-        Log.d("TMLog", "TMLog init post retry " + j + " times, interval " + r.u[j]);
-        r.w.removeCallbacks(r.x);
-        r.w.postDelayed(r.x, r.u[j] * 60000);
-        j += 1;
-        if (j >= r.u.length) {}
-        for (;;)
-        {
-          r.v.set(i);
-          return;
-          i = j;
-        }
-      }
+    String str = b();
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append("TMASDK_");
+    localStringBuffer.append(this.b);
+    if (!TextUtils.isEmpty(this.d))
+    {
+      localStringBuffer.append("_");
+      localStringBuffer.append(this.d);
     }
+    localStringBuffer.append("/");
+    localStringBuffer.append(str);
+    localStringBuffer.append("&NA/");
+    localStringBuffer.append(str);
+    localStringBuffer.append("&");
+    localStringBuffer.append(this.f);
+    localStringBuffer.append("_");
+    localStringBuffer.append(this.i);
+    localStringBuffer.append("&");
+    localStringBuffer.append(this.g / 16);
+    localStringBuffer.append("_");
+    localStringBuffer.append(this.h / 16);
+    localStringBuffer.append("_");
+    localStringBuffer.append("14&");
+    localStringBuffer.append(this.a);
+    localStringBuffer.append("&");
+    localStringBuffer.append(this.e);
+    localStringBuffer.append("&");
+    localStringBuffer.append("NA");
+    localStringBuffer.append("&");
+    localStringBuffer.append("V3");
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.u
  * JD-Core Version:    0.7.0.1
  */

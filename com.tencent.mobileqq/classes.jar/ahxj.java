@@ -1,55 +1,25 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.service.gamecenter.AppLaucherHelper;
-import com.tencent.open.business.base.AppUtil;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ahxj
-  extends Handler
+class ahxj
+  implements DialogInterface.OnClickListener
 {
-  public ahxj(AppLaucherHelper paramAppLaucherHelper, Looper paramLooper, Context paramContext, String paramString1, int paramInt, AppInterface paramAppInterface, String paramString2, String paramString3)
-  {
-    super(paramLooper);
-  }
+  ahxj(ahww paramahww, boolean paramBoolean, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    azqs.b(null, "dc00898", "", "", "0X8009DCA", "0X8009DCA", 0, 0, ahww.a(this.jdField_a_of_type_Ahww), "", "", "");
+    if (this.jdField_a_of_type_Boolean)
     {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.b = true;
-      if (this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-        this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent = null;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(getClass().getSimpleName(), 2, "lauchApp time out");
-      }
-      paramMessage = AppLaucherHelper.a(this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString);
-      AppUtil.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramMessage, this.jdField_a_of_type_Int);
-      AppLaucherHelper.jdField_a_of_type_Boolean = false;
+      ahww.a(this.jdField_a_of_type_Ahww, ahww.a(this.jdField_a_of_type_Ahww), Long.valueOf(ahww.a(this.jdField_a_of_type_Ahww)).longValue(), false);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.b = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-      this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent = null;
-    }
-    AppLaucherHelper.a(this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.b, this.c, this.jdField_a_of_type_JavaLangString, "", this.jdField_a_of_type_Int);
+    ahww.a(this.jdField_a_of_type_Ahww, ahww.a(this.jdField_a_of_type_Ahww), Long.valueOf(ahww.a(this.jdField_a_of_type_Ahww)).longValue(), false, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahxj
  * JD-Core Version:    0.7.0.1
  */

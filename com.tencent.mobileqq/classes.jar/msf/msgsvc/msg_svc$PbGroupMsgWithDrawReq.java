@@ -10,11 +10,11 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class msg_svc$PbGroupMsgWithDrawReq
-  extends MessageMicro
+  extends MessageMicro<PbGroupMsgWithDrawReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_userdef = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField msg_list = PBField.initRepeatMessage(msg_svc.PbGroupMsgWithDrawReq.MessageInfo.class);
+  public final PBRepeatMessageField<msg_svc.PbGroupMsgWithDrawReq.MessageInfo> msg_list = PBField.initRepeatMessage(msg_svc.PbGroupMsgWithDrawReq.MessageInfo.class);
   public final PBUInt32Field uint32_group_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_sub_cmd = PBField.initUInt32(0);
   public final PBUInt64Field uint64_group_code = PBField.initUInt64(0L);
@@ -27,7 +27,7 @@ public final class msg_svc$PbGroupMsgWithDrawReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     msf.msgsvc.msg_svc.PbGroupMsgWithDrawReq
  * JD-Core Version:    0.7.0.1
  */

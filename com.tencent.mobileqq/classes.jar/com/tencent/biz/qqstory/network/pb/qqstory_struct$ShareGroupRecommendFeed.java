@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_struct$ShareGroupRecommendFeed
-  extends MessageMicro
+  extends MessageMicro<ShareGroupRecommendFeed>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField blurb = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -27,7 +27,7 @@ public final class qqstory_struct$ShareGroupRecommendFeed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupRecommendFeed
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,40 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.worldcup.WorldCupShareFragment;
-import java.io.File;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.process.data.CmGameManager.GameEventReceiver.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.QLog;
 
 public class akyr
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public akyr(WorldCupShareFragment paramWorldCupShareFragment) {}
-  
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    boolean bool1 = false;
-    Object localObject2 = null;
-    Object localObject1 = new File(AppConstants.aP);
-    ((File)localObject1).mkdirs();
-    if (((File)localObject1).canWrite())
+    if (paramIntent == null) {
+      QLog.e("cmgame_process.CmGameManager", 1, "[onReceive] intent null");
+    }
+    do
     {
-      localObject2 = Long.toString(System.currentTimeMillis());
-      localObject1 = AppConstants.aP + "world_cup_share_" + (String)localObject2 + ".mp4";
-      File localFile = new File((String)localObject1);
-      int i = 2;
-      while ((localFile.exists()) && (i < 2147483647))
+      do
       {
-        localObject1 = AppConstants.aP + "world_cup_share_" + (String)localObject2 + "(" + i + ").mp4";
-        localFile = new File((String)localObject1);
-        i += 1;
-      }
-      boolean bool2 = WorldCupShareFragment.a(this.a, WorldCupShareFragment.a(this.a), (String)localObject1);
-      bool1 = bool2;
-      localObject2 = localObject1;
-      if (!bool2)
-      {
-        bool1 = bool2;
-        localObject2 = localObject1;
-        if (localFile.exists())
-        {
-          localFile.delete();
-          localObject2 = localObject1;
-          bool1 = bool2;
+        return;
+        paramContext = paramIntent.getAction();
+        if (QLog.isColorLevel()) {
+          QLog.d("cmgame_process.CmGameManager", 2, new Object[] { "[onReceive] action=", paramContext });
         }
+      } while ((!"com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext)) || (!"apolloGameWebMessage".equals(paramIntent.getStringExtra("event"))));
+      paramContext = paramIntent.getStringExtra("data");
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameManager", 2, new Object[] { "[onReceive] data=", paramContext });
       }
-    }
-    if (this.a.getActivity() != null) {
-      this.a.getActivity().runOnUiThread(new akys(this, bool1, (String)localObject2));
-    }
+    } while (TextUtils.isEmpty(paramContext));
+    ThreadManagerV2.excute(new CmGameManager.GameEventReceiver.1(this, paramContext), 16, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akyr
  * JD-Core Version:    0.7.0.1
  */

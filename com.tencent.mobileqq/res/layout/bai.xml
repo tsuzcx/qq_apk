@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/l2k" android:background="#e60c0c0c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/l5b" android:layout_width="320.0dip" android:layout_height="390.0dip" android:layout_centerInParent="true">
+        <TextView android:textColor="#ff808080" android:id="@id/k9d" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rc8" android:layout_centerInParent="true" />
+        <Button android:textSize="18.0dip" android:textColor="@color/al3" android:id="@id/agw" android:background="@drawable/fkc" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="16.0dip" android:text="@string/rc7" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <TextView android:textSize="17.0dip" android:textColor="@color/if" android:id="@id/l5c" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginTop="20.0dip" android:text="@string/cancel" android:shadowColor="@color/by" android:shadowRadius="3.0" />
+</RelativeLayout>

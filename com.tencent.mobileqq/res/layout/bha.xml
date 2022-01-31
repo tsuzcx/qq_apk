@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/hih" android:background="#ffeaeaea" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:id="@id/l57" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
+        <LinearLayout android:orientation="vertical" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bhr" />
+            <EditText android:textSize="16.0sp" android:textColor="@color/a6r" android:textColorHint="#ff707070" android:gravity="top" android:id="@id/ck4" android:background="#ffffffff" android:paddingLeft="15.0dip" android:paddingTop="15.0dip" android:paddingRight="10.0dip" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="80.0dip" android:minHeight="133.0dip" android:hint="@string/gle" android:maxLines="8" android:imeOptions="actionDone" />
+            <FrameLayout android:id="@id/cka" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="94.0dip">
+                <include layout="@layout/blo" />
+            </FrameLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

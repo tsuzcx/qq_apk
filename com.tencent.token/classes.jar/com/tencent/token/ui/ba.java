@@ -1,16 +1,56 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Message;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class ba
-  implements View.OnClickListener
+class ba
+  extends cb
 {
-  ba(BaseActivity paramBaseActivity) {}
-  
-  public final void onClick(View paramView)
+  ba(AssistantRecommendFriendQrcode paramAssistantRecommendFriendQrcode)
   {
-    this.a.dismissDialog();
+    super(paramAssistantRecommendFriendQrcode);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a.isFinishing()) {}
+    for (;;)
+    {
+      return;
+      this.a.dismissDialog();
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      }
+      if (paramMessage.arg1 == 0) {
+        try
+        {
+          Object localObject = new JSONObject((String)paramMessage.obj);
+          paramMessage = ((JSONObject)localObject).getString("wexin_share_more");
+          localObject = ((JSONObject)localObject).getString("wexin_share_glock");
+          if ((paramMessage != null) && (localObject != null) && (paramMessage.length() > 0) && (((String)localObject).length() > 0)) {
+            if (AssistantRecommendFriendQrcode.access$000(this.a) == 9)
+            {
+              AssistantRecommendFriendQrcode.access$102(this.a, (String)localObject);
+              return;
+            }
+          }
+        }
+        catch (JSONException paramMessage)
+        {
+          paramMessage.printStackTrace();
+          return;
+          AssistantRecommendFriendQrcode.access$102(this.a, paramMessage);
+          return;
+        }
+        catch (Exception paramMessage)
+        {
+          paramMessage.printStackTrace();
+        }
+      }
+    }
   }
 }
 

@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.filemanager.core.ThumbHttpDownloader;
-import com.tencent.mobileqq.filemanager.core.ThumbHttpDownloader.DownloadTask;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.16.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class aczc
-  implements Runnable
+  extends avva
 {
-  public aczc(ThumbHttpDownloader paramThumbHttpDownloader, ThumbHttpDownloader.DownloadTask paramDownloadTask) {}
+  public aczc(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    ThumbHttpDownloader.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreThumbHttpDownloader, this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreThumbHttpDownloader$DownloadTask);
+    ThreadManager.post(new FriendProfileCardActivity.16.1(this), 5, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aczc
  * JD-Core Version:    0.7.0.1
  */

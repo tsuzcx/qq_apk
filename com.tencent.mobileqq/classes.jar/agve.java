@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.app.DiscussionObserver;
-import com.tencent.mobileqq.qcall.QCallFacade;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class agve
-  extends DiscussionObserver
+class agve
+  implements View.OnClickListener
 {
-  public agve(QCallFacade paramQCallFacade) {}
+  agve(agvc paramagvc) {}
   
-  protected void b(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    this.a.b(paramString, 3000);
+    if (!this.a.N) {
+      bclg.a(this.a.jdField_a_of_type_AndroidContentContext, null, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agve
  * JD-Core Version:    0.7.0.1
  */

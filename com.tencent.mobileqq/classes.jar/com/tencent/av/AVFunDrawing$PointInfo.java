@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBFloatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class AVFunDrawing$PointInfo
-  extends MessageMicro
+  extends MessageMicro<PointInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 13, 21, 24 }, new String[] { "float_x", "float_y", "uint32_type" }, new Object[] { Float.valueOf(0.0F), Float.valueOf(0.0F), Integer.valueOf(0) }, PointInfo.class);
   public final PBFloatField float_x = PBField.initFloat(0.0F);

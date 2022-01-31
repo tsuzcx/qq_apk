@@ -64,25 +64,30 @@ public abstract class b
       return true;
     case 5: 
       paramParcel1.enforceInterface("com.tencent.tmdownloader.internal.remote.IRemoteOpInterface");
-      a(paramParcel1.readString(), paramParcel1.createByteArray());
+      d();
       paramParcel2.writeNoException();
       return true;
     case 6: 
       paramParcel1.enforceInterface("com.tencent.tmdownloader.internal.remote.IRemoteOpInterface");
-      a(paramParcel1.readString(), paramParcel1.readInt());
+      a(paramParcel1.readString(), paramParcel1.createByteArray());
       paramParcel2.writeNoException();
       return true;
     case 7: 
       paramParcel1.enforceInterface("com.tencent.tmdownloader.internal.remote.IRemoteOpInterface");
-      a(paramParcel1.readString(), paramParcel1.readLong());
+      a(paramParcel1.readString(), paramParcel1.readInt());
       paramParcel2.writeNoException();
       return true;
     case 8: 
       paramParcel1.enforceInterface("com.tencent.tmdownloader.internal.remote.IRemoteOpInterface");
-      a(paramParcel1.readString(), paramParcel1.readString());
+      a(paramParcel1.readString(), paramParcel1.readLong());
       paramParcel2.writeNoException();
       return true;
     case 9: 
+      paramParcel1.enforceInterface("com.tencent.tmdownloader.internal.remote.IRemoteOpInterface");
+      a(paramParcel1.readString(), paramParcel1.readString());
+      paramParcel2.writeNoException();
+      return true;
+    case 10: 
       paramParcel1.enforceInterface("com.tencent.tmdownloader.internal.remote.IRemoteOpInterface");
       String str = paramParcel1.readString();
       if (paramParcel1.readInt() != 0) {
@@ -91,25 +96,25 @@ public abstract class b
       a(str, bool);
       paramParcel2.writeNoException();
       return true;
-    case 10: 
+    case 11: 
       paramParcel1.enforceInterface("com.tencent.tmdownloader.internal.remote.IRemoteOpInterface");
       paramParcel1 = a(paramParcel1.readString());
       paramParcel2.writeNoException();
       paramParcel2.writeByteArray(paramParcel1);
       return true;
-    case 11: 
+    case 12: 
       paramParcel1.enforceInterface("com.tencent.tmdownloader.internal.remote.IRemoteOpInterface");
       paramInt1 = b(paramParcel1.readString());
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
-    case 12: 
+    case 13: 
       paramParcel1.enforceInterface("com.tencent.tmdownloader.internal.remote.IRemoteOpInterface");
       long l = c(paramParcel1.readString());
       paramParcel2.writeNoException();
       paramParcel2.writeLong(l);
       return true;
-    case 13: 
+    case 14: 
       paramParcel1.enforceInterface("com.tencent.tmdownloader.internal.remote.IRemoteOpInterface");
       paramParcel1 = d(paramParcel1.readString());
       paramParcel2.writeNoException();
@@ -129,7 +134,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.remote.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,12 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
-import com.tencent.qphone.base.util.QLog;
-
 public class aeiw
-  implements WXShareHelper.WXShareListener
 {
-  public aeiw(AIOShareActionSheet paramAIOShareActionSheet) {}
+  public int a;
+  public long a;
   
-  public void a(BaseResp paramBaseResp)
+  public aeiw()
   {
-    QLog.d("AIOShareActionSheet", 1, "WXShareResult trans:" + paramBaseResp.transaction + " ,errCode:" + paramBaseResp.errCode + " ,errStr:" + paramBaseResp.errStr);
-    WXShareHelper.a().b(this);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
   }
 }
 

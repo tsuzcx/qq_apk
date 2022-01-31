@@ -1,7 +1,10 @@
 package cooperation.qqpim;
 
-import amqm;
-import amqn;
+import biyg;
+import biyh;
+import biyi;
+import biyk;
+import biyn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -15,9 +18,9 @@ public class QQPimGetTipsInfoIPC
   private static int jdField_a_of_type_Int = -1;
   private static QQPimGetTipsInfoIPC jdField_a_of_type_CooperationQqpimQQPimGetTipsInfoIPC;
   private long jdField_a_of_type_Long;
-  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new amqn(this, QQPimDefineList.c);
-  private QQPimGetTipsInfoIPC.IGetQQPimTipsCallBack jdField_a_of_type_CooperationQqpimQQPimGetTipsInfoIPC$IGetQQPimTipsCallBack;
-  QQPimPluginLoadRunnable.IPluginLoadListener jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable$IPluginLoadListener = new amqm(this);
+  private biyk jdField_a_of_type_Biyk;
+  biyn jdField_a_of_type_Biyn = new biyh(this);
+  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new biyi(this, biyg.c);
   private QQPimPluginLoadRunnable jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable;
   public QQPimTipsInfo a;
   private String jdField_a_of_type_JavaLangString;
@@ -48,7 +51,7 @@ public class QQPimGetTipsInfoIPC
   
   public void a()
   {
-    this.jdField_a_of_type_CooperationQqpimQQPimGetTipsInfoIPC$IGetQQPimTipsCallBack = null;
+    this.jdField_a_of_type_Biyk = null;
     if (this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable != null)
     {
       this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable.a();
@@ -56,13 +59,13 @@ public class QQPimGetTipsInfoIPC
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface, QQPimGetTipsInfoIPC.IGetQQPimTipsCallBack paramIGetQQPimTipsCallBack, String paramString1, String paramString2)
+  public void a(QQAppInterface paramQQAppInterface, biyk parambiyk, String paramString1, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.i(QQPimDefineList.jdField_a_of_type_JavaLangString, 2, "QQPimGetTipsInfoIPC.getContactTipsIpc()" + paramIGetQQPimTipsCallBack.hashCode());
+      QLog.i(biyg.jdField_a_of_type_JavaLangString, 2, "QQPimGetTipsInfoIPC.getContactTipsIpc()" + parambiyk.hashCode());
     }
     jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_CooperationQqpimQQPimGetTipsInfoIPC$IGetQQPimTipsCallBack = paramIGetQQPimTipsCallBack;
+    this.jdField_a_of_type_Biyk = parambiyk;
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.b = paramString2;
     try
@@ -89,14 +92,14 @@ public class QQPimGetTipsInfoIPC
     if (this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable != null) {
       this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable.a();
     }
-    this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable = new QQPimPluginLoadRunnable(this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable$IPluginLoadListener);
+    this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable = new QQPimPluginLoadRunnable(this.jdField_a_of_type_Biyn);
     ThreadManager.postImmediately(this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable, null, true);
   }
   
   public void c()
   {
     if (QLog.isColorLevel()) {
-      QLog.i(QQPimDefineList.jdField_a_of_type_JavaLangString, 2, "QQPimGetTipsInfoIPC.noticeClickTipsIPC()");
+      QLog.i(biyg.jdField_a_of_type_JavaLangString, 2, "QQPimGetTipsInfoIPC.noticeClickTipsIPC()");
     }
     jdField_a_of_type_Int = 1;
     QQPimPluginProxyService.a(a());
@@ -104,7 +107,7 @@ public class QQPimGetTipsInfoIPC
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqpim.QQPimGetTipsInfoIPC
  * JD-Core Version:    0.7.0.1
  */

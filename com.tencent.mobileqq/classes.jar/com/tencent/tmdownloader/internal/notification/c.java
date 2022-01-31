@@ -1,6 +1,7 @@
 package com.tencent.tmdownloader.internal.notification;
 
 import android.app.Notification;
+import android.app.Notification.Builder;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.util.DisplayMetrics;
@@ -9,7 +10,8 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.RemoteViews;
 import android.widget.TextView;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.GlobalUtil;
+import com.tencent.tmassistantbase.util.ab;
 
 public class c
 {
@@ -39,16 +41,17 @@ public class c
     }
     try
     {
-      Notification localNotification = new Notification();
-      localNotification.setLatestEventInfo(paramContext, "SearchForTitle", "SearchForText", null);
-      paramContext = (ViewGroup)localNotification.contentView.apply(paramContext, null);
+      Notification.Builder localBuilder = new Notification.Builder(GlobalUtil.getInstance().getContext());
+      localBuilder.setContentTitle("SearchForTitle");
+      localBuilder.setContentText("SearchForText");
+      paramContext = (ViewGroup)localBuilder.build().contentView.apply(paramContext, null);
       a(paramContext);
       b(paramContext);
       return;
     }
     catch (Exception paramContext)
     {
-      r.c(a.a, "" + paramContext.getMessage(), paramContext);
+      ab.c("SDK_NotificationManager", "" + paramContext.getMessage(), paramContext);
     }
   }
   
@@ -121,7 +124,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.notification.c
  * JD-Core Version:    0.7.0.1
  */

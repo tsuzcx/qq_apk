@@ -1,12 +1,17 @@
-public class ajgr
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class ajgr
+  implements View.OnClickListener
 {
-  public Object a;
-  public Object b;
+  ajgr(ajgb paramajgb) {}
   
-  ajgr(Object paramObject1, Object paramObject2)
+  public void onClick(View paramView)
   {
-    this.a = paramObject1;
-    this.b = paramObject2;
+    if (this.a.jdField_b_of_type_Long == 77313L) {
+      this.a.jdField_b_of_type_Boolean = true;
+    }
+    this.a.c();
   }
 }
 

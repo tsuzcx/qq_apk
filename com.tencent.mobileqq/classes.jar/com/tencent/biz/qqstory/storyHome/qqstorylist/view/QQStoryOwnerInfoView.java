@@ -14,10 +14,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.biz.qqstory.utils.UIUtils;
+import biby;
 import com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView;
 import com.tencent.biz.qqstory.view.widget.StoryUserBadgeView;
-import com.tencent.widget.TraceUtils;
+import xsm;
 
 public class QQStoryOwnerInfoView
   extends ViewGroup
@@ -71,24 +71,24 @@ public class QQStoryOwnerInfoView
   
   private void a()
   {
-    TraceUtils.a("QQStoryInfoView.init");
+    biby.a("QQStoryInfoView.init");
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    this.jdField_a_of_type_AndroidWidgetImageView.setId(2131371741);
+    this.jdField_a_of_type_AndroidWidgetImageView.setId(2131373756);
     addView(this.jdField_a_of_type_AndroidWidgetImageView);
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryQIMBadgeView = new StoryQIMBadgeView(getContext());
     addView(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryQIMBadgeView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2130970732, this, false));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131561457, this, false));
     addView(this.jdField_a_of_type_AndroidWidgetTextView);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2130970731, this, false));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131561456, this, false));
     addView(this.jdField_b_of_type_AndroidWidgetTextView);
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView = new StoryUserBadgeView(getContext());
     addView(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2130970731, this, false));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131561456, this, false));
     addView(this.jdField_c_of_type_AndroidWidgetTextView);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)LayoutInflater.from(getContext()).inflate(2130970730, this, false));
-    this.jdField_a_of_type_AndroidWidgetButton.setId(2131371726);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)LayoutInflater.from(getContext()).inflate(2131561455, this, false));
+    this.jdField_a_of_type_AndroidWidgetButton.setId(2131362068);
     addView(this.jdField_a_of_type_AndroidWidgetButton);
-    TraceUtils.a();
+    biby.a();
   }
   
   private void a(int paramInt1, int paramInt2)
@@ -161,21 +161,21 @@ public class QQStoryOwnerInfoView
   
   private void b()
   {
-    this.jdField_c_of_type_Int = getContext().getResources().getDimensionPixelSize(2131560268);
+    this.jdField_c_of_type_Int = getContext().getResources().getDimensionPixelSize(2131298344);
     this.jdField_d_of_type_Int = this.jdField_c_of_type_Int;
-    this.f = getContext().getResources().getDimensionPixelSize(2131560270);
-    this.e = getContext().getResources().getDimensionPixelSize(2131560277);
-    this.g = getContext().getResources().getDimensionPixelSize(2131560272);
+    this.f = getContext().getResources().getDimensionPixelSize(2131298349);
+    this.e = getContext().getResources().getDimensionPixelSize(2131298345);
+    this.g = getContext().getResources().getDimensionPixelSize(2131298346);
     this.h = this.g;
-    this.q = getContext().getResources().getDimensionPixelSize(2131560271);
-    this.i = getContext().getResources().getDimensionPixelSize(2131560274);
+    this.q = getContext().getResources().getDimensionPixelSize(2131298348);
+    this.i = getContext().getResources().getDimensionPixelSize(2131298343);
     this.j = this.i;
-    this.l = getContext().getResources().getDimensionPixelSize(2131560275);
-    this.k = getContext().getResources().getDimensionPixelSize(2131560276);
-    this.r = UIUtils.a(getContext(), 2.0F);
-    this.o = UIUtils.a(getContext(), 10.0F);
-    this.p = UIUtils.a(getContext(), 15.0F);
-    this.n = getContext().getResources().getDimensionPixelSize(2131560273);
+    this.l = getContext().getResources().getDimensionPixelSize(2131298342);
+    this.k = getContext().getResources().getDimensionPixelSize(2131298341);
+    this.r = xsm.a(getContext(), 2.0F);
+    this.o = xsm.a(getContext(), 10.0F);
+    this.p = xsm.a(getContext(), 15.0F);
+    this.n = getContext().getResources().getDimensionPixelSize(2131298347);
     this.m = 0;
   }
   
@@ -273,7 +273,7 @@ public class QQStoryOwnerInfoView
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    TraceUtils.a("QQStoryInfoView.onLayout");
+    biby.a("QQStoryInfoView.onLayout");
     try
     {
       a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
@@ -285,13 +285,13 @@ public class QQStoryOwnerInfoView
     }
     finally
     {
-      TraceUtils.a();
+      biby.a();
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    TraceUtils.a("QQStoryInfoView.onMeasure");
+    biby.a("QQStoryInfoView.onMeasure");
     try
     {
       this.jdField_a_of_type_Int = View.MeasureSpec.getSize(paramInt1);
@@ -306,7 +306,7 @@ public class QQStoryOwnerInfoView
     }
     finally
     {
-      TraceUtils.a();
+      biby.a();
     }
   }
   
@@ -400,7 +400,7 @@ public class QQStoryOwnerInfoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.QQStoryOwnerInfoView
  * JD-Core Version:    0.7.0.1
  */

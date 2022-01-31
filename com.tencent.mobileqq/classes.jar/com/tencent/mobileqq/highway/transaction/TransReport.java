@@ -26,6 +26,8 @@ public class TransReport
   public static final String rep_heart_resp = "param_heart_resp";
   public static final String rep_ip = "ip";
   public static final String rep_isPreConnExist = "PreConn:";
+  public static final String rep_is_ipv6 = "param_is_ipv6";
+  public static final String rep_net_ip_type = "param_net_ip_type";
   public static final String rep_net_type = "net:";
   public static final String rep_port = "port";
   public static final String rep_progress = "progress";
@@ -58,6 +60,7 @@ public class TransReport
   public long ipConnCost;
   public int ipIndex = -1;
   public boolean isConnected;
+  public boolean isIpv6;
   public HashMap<Integer, AtomicInteger> mDataFlowOfChannel = new HashMap();
   public boolean mIsPreConnExist;
   public int mRetryCode;
@@ -65,6 +68,7 @@ public class TransReport
   public int mRetryTimes_SegsNum;
   public int mRetryTimes_SegsTotal;
   public int mTransferedSize = -1;
+  public int netIpType;
   public int netType;
   public String port = "";
   public String protoType;
@@ -75,17 +79,20 @@ public class TransReport
   
   public HashMap<String, String> getReportInfo()
   {
+    int j = 0;
     HashMap localHashMap = new HashMap();
-    String str = "UnKnow";
     switch (this.netType)
     {
+    default: 
+      str = "UnKnow";
     }
     StringBuilder localStringBuilder;
+    int i;
     for (;;)
     {
       localStringBuilder = new StringBuilder("");
       localObject1 = this.mDataFlowOfChannel.values().iterator();
-      int i = 0;
+      i = 0;
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (AtomicInteger)((Iterator)localObject1).next();
@@ -128,10 +135,10 @@ public class TransReport
       ((StringBuilder)localObject1).append("proto").append(":").append(this.protoType).append(";");
       localObject2 = ((StringBuilder)localObject1).append("hasNet").append(":");
       if (!this.bHasNet) {
-        break label848;
+        break label911;
       }
       str = "true";
-      label495:
+      label499:
       ((StringBuilder)localObject2).append(str).append(";");
       ((StringBuilder)localObject1).append("progress").append(":").append(this.mTransferedSize).append(";");
       ((StringBuilder)localObject1).append("param_BDH_Reason").append(this.failReason).append(";");
@@ -146,12 +153,12 @@ public class TransReport
       localHashMap.put("param_conf_connNum", String.valueOf(this.confConnNum));
       localHashMap.put("segspercnt", localStringBuilder.toString());
       if (!this.bFINLost) {
-        break label855;
+        break label918;
       }
     }
-    label848:
-    label855:
-    for (str = String.valueOf(true);; str = String.valueOf(false))
+    label911:
+    label918:
+    for (String str = String.valueOf(true);; str = String.valueOf(false))
     {
       localHashMap.put("param_fin_lost", str);
       localHashMap.put("param_retry_seg_count", String.valueOf(this.mRetryTimes_SegsNum));
@@ -163,11 +170,17 @@ public class TransReport
       localHashMap.put("ip", String.valueOf(this.ipAddr));
       localHashMap.put("port", this.port);
       localHashMap.put("param_BDH_Cache_Diff", String.valueOf(this.bCacheDiff));
+      i = j;
+      if (this.isIpv6) {
+        i = 1;
+      }
+      localHashMap.put("param_is_ipv6", String.valueOf(i));
+      localHashMap.put("param_net_ip_type", String.valueOf(this.netIpType));
       return localHashMap;
       str = "0";
       break;
       str = "false";
-      break label495;
+      break label499;
     }
   }
   
@@ -194,7 +207,7 @@ public class TransReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.highway.transaction.TransReport
  * JD-Core Version:    0.7.0.1
  */

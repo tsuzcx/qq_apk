@@ -1,14 +1,28 @@
-import com.tencent.mobileqq.troop.data.TroopTopicDetailInfo;
-import com.tencent.mobileqq.troop.utils.TroopTopicMgr;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.21;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.21.1.1;
+import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
 
-class ajqv
-  implements Runnable
+public class ajqv
+  implements ajtc
 {
-  ajqv(ajqu paramajqu, TroopTopicDetailInfo paramTroopTopicDetailInfo) {}
+  public ajqv(NewFlowCameraActivity.21.1.1 param1) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Ajqu.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopTopicDetailInfo);
+    if (paramInt == 0)
+    {
+      NewFlowCameraActivity.b(this.a.a.a.this$0, true);
+      if (this.a.a.a.this$0.d.getVisibility() == 0)
+      {
+        this.a.a.a.this$0.d.setVisibility(8);
+        this.a.a.a.this$0.a.a(NewFlowCameraActivity.a(this.a.a.a.this$0));
+      }
+      return;
+    }
+    NewFlowCameraActivity.b(this.a.a.a.this$0, false);
+    this.a.a.a.this$0.a.a(NewFlowCameraActivity.a(this.a.a.a.this$0));
   }
 }
 

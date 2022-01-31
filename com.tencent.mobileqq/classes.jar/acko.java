@@ -1,22 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
-import com.tencent.mobileqq.util.ProfileCardUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class acko
-  implements View.OnClickListener
+public final class acko
+  implements DialogInterface.OnClickListener
 {
-  public acko(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
-  
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.a(), this.jdField_a_of_type_JavaLangString, 0);
+    paramDialogInterface.dismiss();
+    mtq.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acko
  * JD-Core Version:    0.7.0.1
  */

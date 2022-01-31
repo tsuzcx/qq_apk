@@ -1,35 +1,38 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.AsyncTask;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.dingdong.DingdongPluginDataFactory.ScheduleSummaryData;
-import cooperation.dingdong.DingdongPluginHelper;
-import cooperation.dingdong.data.ScheduleReminderMgr;
-import cooperation.dingdong.data.ScheduleTipsDialog;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import msf.msgsvc.msg_svc.PbSendMsgReq;
 
-public class amle
-  extends AsyncTask
+class amle
+  implements abso
 {
-  public amle(ScheduleReminderMgr paramScheduleReminderMgr, DingdongPluginDataFactory.ScheduleSummaryData paramScheduleSummaryData) {}
+  amle(amlc paramamlc, String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte) {}
   
-  protected Boolean a(Void... paramVarArgs)
+  public ToServiceMsg a()
   {
-    return Boolean.valueOf(DingdongPluginHelper.b(ScheduleReminderMgr.a(this.jdField_a_of_type_CooperationDingdongDataScheduleReminderMgr).getApp().getApplicationContext()));
-  }
-  
-  protected void a(Boolean paramBoolean)
-  {
-    Intent localIntent = new Intent(ScheduleReminderMgr.a(this.jdField_a_of_type_CooperationDingdongDataScheduleReminderMgr).getApp().getApplicationContext(), ScheduleTipsDialog.class);
-    localIntent.setFlags(268435456);
-    localIntent.putExtra("isforeground", paramBoolean);
-    localIntent.putExtra("summaryinfo", this.jdField_a_of_type_CooperationDingdongDingdongPluginDataFactory$ScheduleSummaryData);
-    ScheduleReminderMgr.a(this.jdField_a_of_type_CooperationDingdongDataScheduleReminderMgr).getApp().getApplicationContext().startActivity(localIntent);
+    ToServiceMsg localToServiceMsg = amlc.b(this.jdField_a_of_type_Amlc).createToServiceMsg("MessageSvc.PbSendMsg");
+    localToServiceMsg.extraData.putString("uin", this.jdField_a_of_type_JavaLangString);
+    localToServiceMsg.extraData.putByte("cmd", (byte)0);
+    localToServiceMsg.extraData.putByte("keyType", (byte)0);
+    localToServiceMsg.extraData.putByte("sendType", (byte)0);
+    localToServiceMsg.extraData.putInt("busiType", 1025);
+    localToServiceMsg.extraData.putString("toUin", this.jdField_a_of_type_JavaLangString);
+    localToServiceMsg.extraData.putLong("sessionid", this.jdField_a_of_type_Long);
+    localToServiceMsg.extraData.putInt("random", this.jdField_a_of_type_Int);
+    localToServiceMsg.extraData.putLong("msgsize", 0L);
+    localToServiceMsg.addAttribute("_tag_LOGSTR", String.valueOf(this.jdField_b_of_type_Long));
+    localToServiceMsg.extraData.putInt("ROUNTING_TYPE", 9);
+    localToServiceMsg.extraData.putInt("transC2CCmd", this.jdField_b_of_type_Int);
+    azak localazak = new azak();
+    localazak.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+    localazak.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    localToServiceMsg.putWupBuffer(azad.a(amlc.b(this.jdField_a_of_type_Amlc), 9, this.jdField_a_of_type_JavaLangString, localazak, this.jdField_b_of_type_Long, this.jdField_a_of_type_Int).toByteArray());
+    return localToServiceMsg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amle
  * JD-Core Version:    0.7.0.1
  */

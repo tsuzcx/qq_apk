@@ -1,13 +1,21 @@
 package com.tencent.token.ui;
 
-final class hm
-  implements Runnable
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.utils.w;
+
+class hm
+  implements View.OnClickListener
 {
-  hm(hl paramhl) {}
+  hm(FaceRecognitionDefaultActivity paramFaceRecognitionDefaultActivity) {}
   
-  public final void run()
+  public void onClick(View paramView)
   {
-    this.a.a.finish();
+    paramView = new Intent(this.a, FaceChangeMobileActivity.class);
+    paramView.putExtra("open_switch", FaceRecognitionDefaultActivity.access$100(this.a));
+    this.a.startActivity(paramView);
+    w.a(null, "face_changemobile_redtip", true);
   }
 }
 

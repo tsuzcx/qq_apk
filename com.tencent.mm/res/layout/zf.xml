@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/iu"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:padding="@dimen/hx" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/im">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <FrameLayout android:id="@id/bt8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/hs">
+                    <ImageView android:id="@id/zl" style="@style/il" />
+                    <ImageView android:layout_gravity="center" android:id="@id/bt9" android:visibility="gone" android:src="@drawable/afu" android:contentDescription="@string/gd" style="@style/is" />
+                    <ImageView android:layout_gravity="bottom|center|right" android:id="@id/bt_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/avr" android:contentDescription="@string/gd" />
+                </FrameLayout>
+                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:id="@id/bta" android:text="{title}" style="@style/iq" />
+                    <TextView android:id="@id/btb" android:layout_marginTop="3.0dip" android:text="{desc}" style="@style/ir" />
+                    <TextView android:id="@id/btc" android:layout_marginTop="3.0dip" android:text="{title}" style="@style/iq" />
+                    <TextView android:id="@id/btd" android:layout_marginTop="3.0dip" android:text="{desc}" style="@style/ir" />
+                </LinearLayout>
+            </LinearLayout>
+            <include layout="@layout/zd" />
+            <include layout="@layout/zc" />
+        </LinearLayout>
+        <include layout="@layout/zb" />
+    </LinearLayout>
+</FrameLayout>

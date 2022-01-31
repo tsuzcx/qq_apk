@@ -1,24 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.EditActivity;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
 
 public class slj
-  implements View.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  public slj(EditActivity paramEditActivity) {}
+  public slj(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    EditActivity.a(this.a).setVisibility(4);
-    EditActivity.a(this.a).setImageResource(2130844545);
-    EditActivity.a(this.a, false);
+    this.a.a();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     slj
  * JD-Core Version:    0.7.0.1
  */

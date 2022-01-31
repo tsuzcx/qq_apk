@@ -1,27 +1,57 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.PorterDuff.Mode;
+import android.util.Pair;
+import android.widget.ImageView;
+import com.tencent.biz.subscribe.utils.MergeBitmapBlurUtil.1;
+import com.tencent.biz.subscribe.utils.MergeBitmapBlurUtil.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public final class ylv
-  implements View.OnClickListener
+public class ylv
 {
-  public ylv(ApolloRender paramApolloRender, ApolloSurfaceView paramApolloSurfaceView) {}
-  
-  public void onClick(View paramView)
+  public static void a(String paramString, ImageView paramImageView)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorPop != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView != null))
+    ThreadManager.post(new MergeBitmapBlurUtil.1(paramString, paramImageView), 5, null, false);
+  }
+  
+  private static void b(Bitmap paramBitmap, ImageView paramImageView)
+  {
+    ThreadManager.getUIHandler().post(new MergeBitmapBlurUtil.2(paramBitmap, paramImageView));
+  }
+  
+  private static void b(String paramString, Bitmap paramBitmap, ImageView paramImageView)
+  {
+    Bitmap localBitmap;
+    Canvas localCanvas;
+    if (paramBitmap != null)
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorPop.getText().toString();
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorPop.setText("");
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.queueEvent(new ylw(this, paramView));
+      localBitmap = bdhj.a(paramImageView.getContext(), paramBitmap, 0.25F, 20.0F);
+      if (localBitmap != null)
+      {
+        localCanvas = new Canvas();
+        if (!localBitmap.isMutable()) {
+          break label124;
+        }
+      }
+    }
+    label124:
+    for (Object localObject = localBitmap;; localObject = localBitmap.copy(localBitmap.getConfig(), true))
+    {
+      localCanvas.setBitmap((Bitmap)localObject);
+      localCanvas.drawColor(Color.parseColor("#3F000000"), PorterDuff.Mode.SRC_OVER);
+      localObject = xsv.a(paramBitmap.getWidth(), paramBitmap.getHeight(), paramImageView.getWidth(), paramImageView.getHeight());
+      paramBitmap = xqw.a(xqw.a(localBitmap, ((Integer)((Pair)localObject).first).intValue(), ((Integer)((Pair)localObject).second).intValue(), true), paramBitmap);
+      b(paramBitmap, paramImageView);
+      bdfz.a(paramString, paramBitmap);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ylv
  * JD-Core Version:    0.7.0.1
  */

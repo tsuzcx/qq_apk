@@ -1,28 +1,22 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.theme.SkinEngine;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public final class wck
-  implements Runnable
+class wck
+  implements DialogInterface.OnDismissListener
 {
-  public wck(TextView paramTextView) {}
+  wck(wcj paramwcj, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Drawable localDrawable1 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845881);
-    Drawable localDrawable2 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845883);
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { 16842910 }, localDrawable1);
-    localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable2);
-    ThreadManager.getUIHandler().post(new wcl(this, localStateListDrawable));
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wck
  * JD-Core Version:    0.7.0.1
  */

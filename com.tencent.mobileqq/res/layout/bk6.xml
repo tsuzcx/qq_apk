@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/kz_" android:layout_width="132.0dip" android:layout_height="48.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="48.0dip" android:layout_height="48.0dip">
+        <ImageView android:id="@id/kyy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/ido" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="50.0dip" android:layout_centerVertical="true">
+        <TextView android:textSize="8.0sp" android:textColor="#a3ffffff" android:id="@id/kz4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rr9" />
+        <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:id="@id/kz5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/kz4" />
+    </RelativeLayout>
+    <View android:id="@id/kww" android:background="#29ffffff" android:visibility="gone" android:layout_width="1.0dip" android:layout_height="24.0dip" android:layout_marginLeft="6.0dip" android:layout_toRightOf="@id/ido" android:layout_centerVertical="true" />
+    <RelativeLayout android:id="@id/idu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_toRightOf="@id/kww" android:layout_centerVertical="true">
+        <TextView android:textSize="8.0sp" android:textColor="#a3ffffff" android:id="@id/kz6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rr6" />
+        <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:id="@id/kz8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/kz6" />
+        <TextView android:textSize="11.0sp" android:textColor="#ffffffff" android:gravity="center_vertical" android:id="@id/kz7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rr_" android:layout_toRightOf="@id/kz8" android:layout_alignTop="@id/kz8" android:layout_alignBottom="@id/kz8" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/iec" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="50.0dip" android:layout_centerVertical="true">
+        <TextView android:textSize="8.0sp" android:textColor="#a3ffffff" android:id="@id/kyz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="QZONE VIP >" />
+        <TextView android:textSize="11.0sp" android:textColor="#ffffffff" android:id="@id/kz0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rr8" android:layout_below="@id/kyz" />
+    </RelativeLayout>
+</RelativeLayout>

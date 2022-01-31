@@ -1,34 +1,53 @@
-import android.content.Context;
-import android.os.Handler;
-import android.view.KeyEvent;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.support.annotation.Nullable;
+import android.support.v4.util.MQLruCache;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import java.io.File;
 
-public class aeta
-  implements TextView.OnEditorActionListener
+class aeta
+  implements ImageAssetDelegate
 {
-  public aeta(SelectLocationFragment paramSelectLocationFragment) {}
+  aeta(aesz paramaesz) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  @Nullable
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    if ((paramInt == 2) || (paramInt == 3) || (paramInt == 6))
-    {
-      paramKeyEvent = (InputMethodManager)paramTextView.getContext().getSystemService("input_method");
-      if (paramKeyEvent.isActive()) {
-        paramKeyEvent.hideSoftInputFromWindow(paramTextView.getApplicationWindowToken(), 0);
-      }
-      SelectLocationFragment.a(this.a).removeMessages(1);
-      SelectLocationFragment.a(this.a).sendEmptyMessage(1);
-      return true;
+    paramLottieImageAsset = paramLottieImageAsset.getFileName();
+    paramLottieImageAsset = this.a.a + File.separator + paramLottieImageAsset;
+    boolean bool = new File(paramLottieImageAsset).exists();
+    if (QLog.isColorLevel()) {
+      QLog.d("IntimateTitleSwitchView", 0, "fetchBitmap exists:" + bool + " imagePath:" + paramLottieImageAsset);
     }
-    return false;
+    if (!bool) {
+      return null;
+    }
+    Object localObject = BaseApplicationImpl.sImageCache.get(paramLottieImageAsset);
+    if ((localObject != null) && ((localObject instanceof Bitmap))) {
+      return (Bitmap)localObject;
+    }
+    try
+    {
+      localObject = new BitmapFactory.Options();
+      ((BitmapFactory.Options)localObject).inScaled = false;
+      localObject = BitmapFactory.decodeFile(paramLottieImageAsset, (BitmapFactory.Options)localObject);
+      BaseApplicationImpl.sImageCache.put(paramLottieImageAsset, localObject);
+      return localObject;
+    }
+    catch (Throwable paramLottieImageAsset)
+    {
+      QLog.i("IntimateTitleSwitchView", 0, "fetchBitmap error " + paramLottieImageAsset.getMessage());
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeta
  * JD-Core Version:    0.7.0.1
  */

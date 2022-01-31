@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class Qworkflow$TodoChangeNotification
-  extends MessageMicro
+  extends MessageMicro<TodoChangeNotification>
 {
   public static final int ADD_NEW = 1;
   public static final int CONFIRM_READ = 4;
@@ -15,11 +15,11 @@ public final class Qworkflow$TodoChangeNotification
   public static final int DELETE_ALL = 3;
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "enum_change_type", "rpt_change_item_list" }, new Object[] { Integer.valueOf(1), null }, TodoChangeNotification.class);
   public final PBEnumField enum_change_type = PBField.initEnum(1);
-  public final PBRepeatMessageField rpt_change_item_list = PBField.initRepeatMessage(Qworkflow.TodoChangeItem.class);
+  public final PBRepeatMessageField<Qworkflow.TodoChangeItem> rpt_change_item_list = PBField.initRepeatMessage(Qworkflow.TodoChangeItem.class);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.trunk.Qworkflow.Qworkflow.TodoChangeNotification
  * JD-Core Version:    0.7.0.1
  */

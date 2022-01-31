@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ac" parent="@style/ab">
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
+    </style>
+    <style name="fy" parent="@style/fx">
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
+    </style>
+    <style name="u1" parent="@style/u0">
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
+    </style>
+    <style name="xh" parent="@style/d6">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
+    </style>
+</resources>

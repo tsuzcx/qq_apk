@@ -1,25 +1,39 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class afgh
-  implements TextWatcher
+class afgh
+  extends ambp
 {
-  public afgh(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
+  afgh(afgf paramafgf) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(boolean paramBoolean)
   {
-    NearbyUtils.a(this.a.a, 30);
+    if (QLog.isColorLevel()) {
+      QLog.d("RedpointHandler", 2, "troopChatPie RedpointObserver  onDataChange");
+    }
+    BusinessInfoCheckUpdate.AppInfo localAppInfo = ((axlx)afgf.a(this.a).a.getManager(36)).a(4, String.valueOf(130500));
+    if (this.a.b == null) {
+      this.a.b = ((ImageView)afgf.a(this.a).c.findViewById(2131375551));
+    }
+    if (this.a.b == null) {
+      return;
+    }
+    if ((localAppInfo != null) && (localAppInfo.iNewFlag.get() == 1))
+    {
+      this.a.b.setVisibility(0);
+      return;
+    }
+    this.a.b.setVisibility(8);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afgh
  * JD-Core Version:    0.7.0.1
  */

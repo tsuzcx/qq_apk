@@ -6,16 +6,18 @@ import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class submsgtype0xc5$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_diandian_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
   public submsgtype0xc5.NotifyBody msg_notify_infos = new submsgtype0xc5.NotifyBody();
   public final PBEnumField operator_type = PBField.initEnum(1);
+  public final PBStringField str_msgid = PBField.initString("");
   public final PBUInt32Field uint32_bid = PBField.initUInt32(0);
   public final PBUInt32Field uint32_push_time = PBField.initUInt32(0);
   public final PBUInt32Field uint32_source = PBField.initUInt32(0);
@@ -25,7 +27,7 @@ public final class submsgtype0xc5$MsgBody
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 82, 90 }, new String[] { "uint32_bid", "uint32_source", "operator_type", "uint64_article_id", "uint32_push_time", "uint64_seq", "msg_notify_infos", "bytes_diandian_cookie" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), null, localByteStringMicro }, MsgBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 58, 82, 90 }, new String[] { "uint32_bid", "uint32_source", "operator_type", "uint64_article_id", "uint32_push_time", "uint64_seq", "str_msgid", "msg_notify_infos", "bytes_diandian_cookie" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), "", null, localByteStringMicro }, MsgBody.class);
   }
 }
 

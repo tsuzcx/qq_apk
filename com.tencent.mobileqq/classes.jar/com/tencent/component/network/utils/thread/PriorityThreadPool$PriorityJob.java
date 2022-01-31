@@ -2,33 +2,33 @@ package com.tencent.component.network.utils.thread;
 
 import java.util.concurrent.atomic.AtomicLong;
 
-class PriorityThreadPool$PriorityJob
-  implements ThreadPool.Job, Comparable
+class PriorityThreadPool$PriorityJob<T>
+  implements ThreadPool.Job<T>, Comparable<PriorityJob>
 {
-  private static final AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(0L);
-  private final int jdField_a_of_type_Int;
-  private final long jdField_a_of_type_Long;
-  private final ThreadPool.Job jdField_a_of_type_ComTencentComponentNetworkUtilsThreadThreadPool$Job;
-  private final boolean jdField_a_of_type_Boolean;
+  private static final AtomicLong SEQ = new AtomicLong(0L);
+  private final boolean mFifo;
+  private final ThreadPool.Job<T> mJob;
+  private final int mPriority;
+  private final long mSeqNum;
   
-  public PriorityThreadPool$PriorityJob(ThreadPool.Job paramJob, int paramInt, boolean paramBoolean)
+  public PriorityThreadPool$PriorityJob(ThreadPool.Job<T> paramJob, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadThreadPool$Job = paramJob;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.getAndIncrement();
+    this.mJob = paramJob;
+    this.mPriority = paramInt;
+    this.mFifo = paramBoolean;
+    this.mSeqNum = SEQ.getAndIncrement();
   }
   
-  private int a(PriorityJob paramPriorityJob)
+  private int subCompareTo(PriorityJob paramPriorityJob)
   {
     int i;
-    if (this.jdField_a_of_type_Long < paramPriorityJob.jdField_a_of_type_Long) {
+    if (this.mSeqNum < paramPriorityJob.mSeqNum) {
       i = -1;
     }
-    while (this.jdField_a_of_type_Boolean)
+    while (this.mFifo)
     {
       return i;
-      if (this.jdField_a_of_type_Long > paramPriorityJob.jdField_a_of_type_Long) {
+      if (this.mSeqNum > paramPriorityJob.mSeqNum) {
         i = 1;
       } else {
         i = 0;
@@ -39,24 +39,24 @@ class PriorityThreadPool$PriorityJob
   
   public int compareTo(PriorityJob paramPriorityJob)
   {
-    if (this.jdField_a_of_type_Int > paramPriorityJob.jdField_a_of_type_Int) {
+    if (this.mPriority > paramPriorityJob.mPriority) {
       return -1;
     }
-    if (this.jdField_a_of_type_Int < paramPriorityJob.jdField_a_of_type_Int) {
+    if (this.mPriority < paramPriorityJob.mPriority) {
       return 1;
     }
-    return a(paramPriorityJob);
+    return subCompareTo(paramPriorityJob);
   }
   
-  public Object run(ThreadPool.JobContext paramJobContext)
+  public T run(ThreadPool.JobContext paramJobContext)
   {
     try
     {
       String str = Thread.currentThread().getName();
       str = str.substring(0, str.indexOf(" sub:") + " sub:".length());
-      Thread.currentThread().setName(str + this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadThreadPool$Job.getClass().toString());
+      Thread.currentThread().setName(str + this.mJob.getClass().toString());
       label58:
-      return this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadThreadPool$Job.run(paramJobContext);
+      return this.mJob.run(paramJobContext);
     }
     catch (Exception localException)
     {
@@ -66,7 +66,7 @@ class PriorityThreadPool$PriorityJob
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.utils.thread.PriorityThreadPool.PriorityJob
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,17 @@
-import com.tencent.av.core.IVideoEventListener;
-import com.tencent.av.core.VcControllerImpl;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.ShareSelectionFriendListAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.util.ImageCreator;
 
 public class bhh
-  implements Runnable
+  implements ImageCreator
 {
-  public bhh(VcControllerImpl paramVcControllerImpl) {}
+  public bhh(ShareSelectionFriendListAdapter paramShareSelectionFriendListAdapter, Friends paramFriends) {}
   
-  public void run()
+  public Drawable a()
   {
-    if (this.a.mEventListener != null) {
-      this.a.mEventListener.b(this.a.mPreviewW, this.a.mPreviewH);
-    }
+    return this.jdField_a_of_type_ComTencentBizShareSelectionFriendListAdapter.a.b(this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin);
   }
 }
 

@@ -1,13 +1,26 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.Texture;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ailm
-  implements Runnable
+  extends awhw
 {
-  public ailm(Texture paramTexture) {}
+  public ailm(BindNumberActivity paramBindNumberActivity) {}
   
-  public void run()
+  protected void b(boolean paramBoolean)
   {
-    this.a.b();
+    super.b(paramBoolean);
+    if (paramBoolean) {
+      BindNumberActivity.a(this.a).sendEmptyMessage(3);
+    }
+    for (;;)
+    {
+      this.a.app.unRegistObserver(this.a.b);
+      this.a.b = null;
+      return;
+      this.a.b();
+      this.a.b(2131719233);
+    }
   }
 }
 

@@ -1,20 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.RecommendFriendActivity;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
-public class toj
-  implements View.OnClickListener
+class toj
+  implements toy
 {
-  public toj(RecommendFriendActivity paramRecommendFriendActivity) {}
+  toj(toi paramtoi) {}
   
-  public void onClick(View paramView)
+  public void a(Object paramObject)
   {
-    this.a.finish();
+    if ((paramObject instanceof top))
+    {
+      if (!this.a.b) {
+        ((PublicAccountImageCollectionMainActivity)toi.a(this.a)).h();
+      }
+      this.a.b = true;
+    }
+    while ((paramObject instanceof toq)) {
+      if (toi.a(this.a))
+      {
+        this.a.d(true);
+        return;
+        ((PublicAccountImageCollectionMainActivity)toi.a(this.a)).g();
+      }
+      else
+      {
+        this.a.d(false);
+        return;
+      }
+    }
+    this.a.d(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     toj
  * JD-Core Version:    0.7.0.1
  */

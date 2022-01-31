@@ -1,5 +1,5 @@
 {
-  "Area": "com.qzone.canvasui.widget.RelativeAreaLayout",
+  "class": "com.tencent.ditto.widget.RelativeAreaLayout",
   "shell": {
     "id": "qzone_card_root_container",
     "width": "match_parent",
@@ -8,7 +8,7 @@
   },
   "children": [
     {
-      "Area": "com.qzone.canvasui.widget.CanvasImageArea",
+      "class": "com.tencent.ditto.widget.DittoImageArea",
       "shell": {
         "id": "qzone_card_bg",
         "width": "match_parent",
@@ -17,7 +17,7 @@
       }
     },
     {
-      "Area": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
+      "class": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
       "shell": {
         "id": "qzone_card_avatar_bg",
         "width": "105 dp",
@@ -27,7 +27,7 @@
         "centerVertical":true
       }
     },{
-      "Area": "com.qzone.canvasui.widget.LinearAreaLayout",
+      "class": "com.tencent.ditto.widget.LinearAreaLayout",
       "shell": {
         "id": "qzone_card_right_container",
         "width": "69dp",
@@ -39,7 +39,7 @@
       },
       "children": [
         {
-          "Area": "com.qzone.canvasui.widget.LinearAreaLayout",
+          "class": "com.tencent.ditto.widget.LinearAreaLayout",
           "shell": {
             "width": "wrap_content",
             "height": "wrap_content",
@@ -48,7 +48,7 @@
           },
           "children": [
             {
-              "Area": "com.qzone.canvasui.widget.CanvasTextArea",
+              "class": "com.tencent.ditto.widget.DittoTextArea",
               "shell": {
                 "id": "qzone_card_fans",
                 "width": "32dp",
@@ -61,7 +61,7 @@
               }
             },
             {
-              "Area": "com.qzone.canvasui.widget.CanvasTextArea",
+              "class": "com.tencent.ditto.widget.DittoTextArea",
               "shell": {
                 "id": "qzone_card_visitor",
                 "width": "32dp",
@@ -75,7 +75,7 @@
           ]
         },
         {
-          "Area": "com.qzone.canvasui.widget.LinearAreaLayout",
+          "class": "com.tencent.ditto.widget.LinearAreaLayout",
           "shell": {
             "width": "wrap_content",
             "height": "wrap_content",
@@ -84,7 +84,7 @@
           },
           "children": [
             {
-              "Area": "com.qzone.canvasui.widget.CanvasTextArea",
+              "class": "com.tencent.ditto.widget.DittoTextArea",
               "shell": {
                 "id": "qzone_card_fans_desc",
                 "width": "32dp",
@@ -98,7 +98,7 @@
               }
             },
             {
-              "Area": "com.qzone.canvasui.widget.CanvasTextArea",
+              "class": "com.tencent.ditto.widget.DittoTextArea",
               "shell": {
                 "id": "qzone_card_visitor_desc",
                 "width": "32dp",
@@ -112,7 +112,7 @@
             }
           ]
         },{
-          "Area": "com.qzone.canvasui.widget.CanvasButtonArea",
+          "class": "com.tencent.ditto.widget.DittoButtonArea",
           "shell": {
             "id": "qzone_card_follow_button",
             "width": "match_parent",
@@ -133,7 +133,7 @@
       ]
     }
   ,{
-      "Area": "com.qzone.canvasui.area.CanvasArea",
+      "class": "com.tencent.ditto.area.DittoArea",
       "shell": {
         "id": "qzone_card_divider",
         "width": "1dp",
@@ -143,7 +143,7 @@
         "centerVertical":true
       }
     },{
-      "Area": "com.qzone.canvasui.widget.LinearAreaLayout",
+      "class": "com.tencent.ditto.widget.LinearAreaLayout",
       "shell": {
         "id": "qzone_card_left_container",
         "width": "match_parent",
@@ -156,7 +156,7 @@
       },
       "children": [
         {
-          "Area": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
+          "class": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
           "shell": {
             "id": "qzone_card_avatar",
             "width": "50dp",
@@ -167,7 +167,7 @@
             "margin": "21dp,0,0,0"
           }
         },{
-          "Area": "com.qzone.canvasui.widget.LinearAreaLayout",
+          "class": "com.tencent.ditto.widget.LinearAreaLayout",
           "shell": {
             "width": "match_parent",
             "height": "wrap_content",
@@ -177,7 +177,7 @@
           },
           "children": [
             {
-              "Area": "com.qzone.canvasui.widget.FlexLinearAreaLayout",
+              "class": "com.tencent.ditto.widget.FlexLinearAreaLayout",
               "shell": {
                 "width": "wrap_content",
                 "height": "wrap_content",
@@ -187,7 +187,7 @@
               },
               "children": [
                 {
-                  "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+                  "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
                   "shell": {
                     "id": "qzone_card_nickname",
                     "width": "wrap_content",
@@ -201,7 +201,7 @@
                   }
                 },
                 {
-                  "Area": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
+                  "class": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
                   "shell": {
                     "id": "qzone_card_famousspace_icon",
                     "width": "15 dp",
@@ -213,7 +213,7 @@
               ]
             },
             {
-              "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+              "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
               "shell": {
                 "id": "qzone_card_desc",
                 "width": "match_parent",

@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.filemanager.activity.FMRecentFileActivity;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 
-class fvn
-  implements Runnable
+public class fvn
+  extends fvj
 {
-  fvn(fvj paramfvj) {}
-  
-  public void run()
+  public fvn(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
-    FMRecentFileActivity.a(this.a.a);
+    super(paramOnlineFileSessionWorker);
+  }
+  
+  protected String a()
+  {
+    return "StateGotoOffFileProcess";
   }
 }
 

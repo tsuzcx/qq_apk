@@ -9,18 +9,18 @@ public final class GetTroopAppointRemarkResp
   extends JceStruct
 {
   static int cache_result;
-  static ArrayList cache_vecTroopRemark;
+  static ArrayList<stTroopRemarkInfo> cache_vecTroopRemark;
   public long GroupCode;
   public long GroupUin;
   public short errorCode;
   public long office_mode;
   public int result;
   public long uin;
-  public ArrayList vecTroopRemark;
+  public ArrayList<stTroopRemarkInfo> vecTroopRemark;
   
   public GetTroopAppointRemarkResp() {}
   
-  public GetTroopAppointRemarkResp(long paramLong1, long paramLong2, long paramLong3, ArrayList paramArrayList, int paramInt, short paramShort, long paramLong4)
+  public GetTroopAppointRemarkResp(long paramLong1, long paramLong2, long paramLong3, ArrayList<stTroopRemarkInfo> paramArrayList, int paramInt, short paramShort, long paramLong4)
   {
     this.uin = paramLong1;
     this.GroupCode = paramLong2;
@@ -61,7 +61,7 @@ public final class GetTroopAppointRemarkResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     friendlist.GetTroopAppointRemarkResp
  * JD-Core Version:    0.7.0.1
  */

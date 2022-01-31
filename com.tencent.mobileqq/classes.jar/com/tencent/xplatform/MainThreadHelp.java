@@ -14,18 +14,12 @@ public class MainThreadHelp
   
   public static void postTask(long paramLong)
   {
-    new Handler(Looper.getMainLooper()).post(new Runnable()
-    {
-      public void run()
-      {
-        MainThreadHelp.nativeProcessTask(this.val$nativeTask);
-      }
-    });
+    new Handler(Looper.getMainLooper()).post(new MainThreadHelp.1(paramLong));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.xplatform.MainThreadHelp
  * JD-Core Version:    0.7.0.1
  */

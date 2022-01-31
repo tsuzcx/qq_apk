@@ -1,57 +1,19 @@
-import android.content.Intent;
-import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.app.AppRuntime;
-import mqq.observer.SubAccountObserver;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-public class dqz
-  implements View.OnClickListener
+class dqz
+  implements Runnable
 {
-  public dqz(SubAccountBindActivity paramSubAccountBindActivity) {}
+  dqz(dqy paramdqy) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    Object localObject = paramView.findViewById(2131231002);
-    if ((localObject != null) && (((View)localObject).getVisibility() == 0)) {}
-    do
-    {
-      return;
-      if (SubAccountAssistantManager.a().a(this.a.b))
-      {
-        this.a.a(this.a.getString(2131563287));
-        return;
-      }
-      int i = ((Integer)paramView.getTag()).intValue();
-      paramView = (SimpleAccount)SubAccountBindActivity.a(this.a).get(i);
-      if (!paramView.isLogined())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onSelectAccountClick.onClick:add account");
-        }
-        localObject = new Intent(this.a, SubLoginActivity.class);
-        ((Intent)localObject).putExtra("subuin", paramView.getUin());
-        this.a.startActivity((Intent)localObject);
-        return;
-      }
-    } while (!this.a.f());
-    localObject = SubAccountAssistantManager.a();
-    String str = ((SubAccountAssistantManager)localObject).a();
-    this.a.d();
-    if (TextUtils.isEmpty(str))
-    {
-      localObject = new dra(this, paramView, (SubAccountAssistantManager)localObject);
-      this.a.getAppRuntime().getSubAccountKey(this.a.b.getAccount(), paramView.getUin(), (SubAccountObserver)localObject);
-      return;
-    }
-    ((SubAccountAssistantManager)localObject).a(this.a.b, paramView.getUin(), str);
+    TroopMemberListActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, false);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.getWindow().peekDecorView().getWindowToken(), 0);
   }
 }
 

@@ -1,51 +1,48 @@
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.data.ActivateFriendItem;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.AddressItem;
+import java.util.List;
 
 public class uiy
-  extends FriendListObserver
 {
-  public uiy(ActivateFriendGrid paramActivateFriendGrid) {}
+  public AddressItem a;
+  public String a;
+  public List<uja> a;
+  public uke a;
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public uiy(String paramString)
   {
-    int i = 0;
-    for (;;)
-    {
-      if (i < ActivateFriendGrid.a(this.a).size())
-      {
-        String str = String.valueOf(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin);
-        if (paramString.equals(str))
-        {
-          paramString = ContactUtils.b(ActivateFriendGrid.a(this.a), str, false);
-          ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setNickName(paramString);
-        }
-      }
-      else
-      {
-        return;
-      }
-      i += 1;
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  public boolean equals(Object paramObject)
   {
-    int i = 0;
-    while (i < ActivateFriendGrid.a(this.a).size())
+    if (paramObject == null) {}
+    do
     {
-      String str = ContactUtils.l(ActivateFriendGrid.a(this.a), String.valueOf(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin));
-      ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setNickName(str);
-      i += 1;
+      return false;
+      if (this == paramObject) {
+        return true;
+      }
+    } while (!(paramObject instanceof uiy));
+    return TextUtils.equals(this.jdField_a_of_type_JavaLangString, ((uiy)paramObject).jdField_a_of_type_JavaLangString);
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder1 = new StringBuilder("GeoHashPhotoGroup=[");
+    localStringBuilder1.append("geohashString:").append(this.jdField_a_of_type_JavaLangString);
+    StringBuilder localStringBuilder2 = localStringBuilder1.append("picList size:");
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilList.size())
+    {
+      localStringBuilder2.append(i);
+      return localStringBuilder1.toString();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uiy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,25 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
+import android.support.annotation.NonNull;
 
-public class wdx
-  implements MessageQueue.IdleHandler
+public abstract class wdx
+  implements wdo
 {
-  public wdx(ZhituManager paramZhituManager) {}
+  protected void a(Error paramError) {}
   
-  public boolean queueIdle()
+  protected void a(wdl paramwdl) {}
+  
+  public final void a(@NonNull wdm paramwdm)
   {
-    ZhituManager.a(this.a, true);
-    return true;
+    a(new wdl(paramwdm.a()));
+  }
+  
+  public final void b(@NonNull wdm paramwdm)
+  {
+    a(paramwdm.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wdx
  * JD-Core Version:    0.7.0.1
  */

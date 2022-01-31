@@ -1,53 +1,50 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.CameraUtil;
-import com.tencent.mobileqq.widget.CameraFrameLayout;
-import com.tencent.mobileqq.widget.CameraFrameLayoutProxy;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.open.agent.SwitchAccountActivity;
 import com.tencent.qphone.base.util.QLog;
 
-public class hjv
-  implements SharedPreferences.OnSharedPreferenceChangeListener
+class hjv
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public hjv(CameraFrameLayoutProxy paramCameraFrameLayoutProxy) {}
+  hjv(hju paramhju) {}
   
-  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraFrameLayoutProxy", 2, "onSharedPreferenceChanged begin");
-    }
-    if ((paramSharedPreferences == null) || (CameraFrameLayoutProxy.a(this.a) == null)) {}
-    do
+    if ((Math.abs(paramFloat1) > Math.abs(paramFloat2)) && (Math.abs(paramFloat1) > 20.0F) && (!this.a.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a))
     {
-      do
+      if (this.a.jdField_a_of_type_AndroidViewView != null)
       {
-        QQAppInterface localQQAppInterface;
-        do
+        paramMotionEvent1 = this.a.jdField_a_of_type_AndroidViewView.findViewById(2131230987);
+        if (paramMotionEvent1 != null)
         {
-          return;
-          localQQAppInterface = (QQAppInterface)((BaseActivity)CameraFrameLayoutProxy.a(this.a)).getAppRuntime();
-        } while ((!CameraUtil.a(localQQAppInterface, paramString)) || (!CameraUtil.a(localQQAppInterface, CameraFrameLayoutProxy.a(this.a))) || (!CameraUtil.b(localQQAppInterface)));
-        boolean bool = paramSharedPreferences.getBoolean(paramString, false);
-        if (QLog.isColorLevel()) {
-          QLog.d("CameraFrameLayoutProxy", 2, "onSharedPreferenceChanged isOpen:" + bool + "  mIsOpen:" + this.a.b);
+          if (paramMotionEvent1.getVisibility() == 0) {
+            break label115;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("AccountManage", 2, "show current selectedAccountView");
+          }
+          ((ShaderAnimLayout)paramMotionEvent1).a();
+          this.a.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a = true;
+          this.a.jdField_a_of_type_AndroidViewView.setPressed(false);
         }
-        if (!bool) {
-          break;
-        }
-        if ((CameraFrameLayoutProxy.a(this.a) != null) && (CameraFrameLayoutProxy.a(this.a).b())) {
-          this.a.b = false;
-        }
-      } while (this.a.b);
-      CameraFrameLayoutProxy.a(this.a);
-      return;
-    } while (!this.a.b);
-    CameraFrameLayoutProxy.b(this.a);
+      }
+      for (;;)
+      {
+        return true;
+        label115:
+        ((ShaderAnimLayout)paramMotionEvent1).d();
+        this.a.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a = true;
+        this.a.jdField_a_of_type_AndroidViewView.setPressed(false);
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hjv
  * JD-Core Version:    0.7.0.1
  */

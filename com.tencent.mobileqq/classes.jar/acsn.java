@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class acsn
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  acsn(acsi paramacsi) {}
+  acsn(acsl paramacsl) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.e();
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acsn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,21 @@
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.download.DownloadUrlManager;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.widget.FadeIconImageView;
 
-class npz
-  implements Runnable
+public class npz
+  implements View.OnClickListener
 {
-  npz(npx paramnpx) {}
+  public npz(PublicAccountBrowser paramPublicAccountBrowser) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.c)))
-    {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilPlayModeUtils$DebugInfo.f = SystemClock.uptimeMillis();
-      SLog.d("VideoViewTVKImpl", "TVK_IMediaPlayer.openMediaPlayerByUrl, 1, vid=%s", new Object[] { this.a.jdField_a_of_type_JavaLangString });
-      TVKPreloader.a();
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager.a(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.c.replace("https://", "http://")), 0L, 0L, this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo, null);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.jdField_a_of_type_Int = 1;
-    }
+    PublicAccountBrowser.a(this.a).callOnClick();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     npz
  * JD-Core Version:    0.7.0.1
  */

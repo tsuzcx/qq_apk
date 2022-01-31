@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/jc0" android:background="@drawable/bg_texture" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_alignParentBottom="true">
+        <ImageView android:id="@id/fse" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:src="@drawable/c_" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/iso" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:src="@drawable/bq" android:layout_toRightOf="@id/fse" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/d5o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:src="@drawable/c4" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <com.tencent.mobileqq.activity.aio.InputLinearLayout android:gravity="center_vertical" android:layout_gravity="bottom" android:id="@id/jcj" android:background="@drawable/skin_aio_input_bar_bg_theme_version2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="50.0dip" android:baselineAligned="false" android:layout_alignParentBottom="true">
+        <View android:id="@id/jcl" android:layout_width="0.0dip" android:layout_height="0.0dip" />
+        <com.tencent.widget.XEditTextEx android:textSize="16.0sp" android:textColor="@color/skin_input_theme_version2" android:layout_gravity="center_vertical" android:id="@id/jci" android:background="@drawable/skin_aio_input_bg" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:shadowColor="@color/dn" android:shadowDx="0.0" android:shadowDy="1.0" android:shadowRadius="1.0" android:layout_weight="1.0" android:inputType="text" android:textSelectHandle="@drawable/h57" />
+        <com.tencent.widget.PatchedButton android:layout_gravity="center_vertical" android:id="@id/jck" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/ad9" android:layout_marginLeft="5.0dip" android:layout_marginRight="8.0dip" android:text="@string/b9f" style="@style/b9" />
+    </com.tencent.mobileqq.activity.aio.InputLinearLayout>
+</RelativeLayout>

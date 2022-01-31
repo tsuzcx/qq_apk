@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.LocationInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
 
-public final class aetq
-  implements Parcelable.Creator
+public class aetq
+  implements DialogInterface.OnClickListener
 {
-  public LocationInfo a(Parcel paramParcel)
-  {
-    return new LocationInfo(paramParcel);
-  }
+  public aetq(PlusPanel paramPlusPanel) {}
   
-  public LocationInfo[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new LocationInfo[paramInt];
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aetq
  * JD-Core Version:    0.7.0.1
  */

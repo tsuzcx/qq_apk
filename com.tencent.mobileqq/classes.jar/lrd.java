@@ -1,46 +1,39 @@
-import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule;
-
 public class lrd
 {
-  private long jdField_a_of_type_Long;
-  Object jdField_a_of_type_JavaLangObject;
-  public boolean a;
-  private long b;
+  private short jdField_a_of_type_Short;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private short b;
   
-  public lrd(FastWebModule paramFastWebModule, Object paramObject)
+  public lrd(short paramShort1, short paramShort2, byte[] paramArrayOfByte)
   {
-    this(paramFastWebModule, paramObject, 600000L);
-    if (paramObject == null) {
-      this.jdField_a_of_type_Boolean = true;
-    }
+    this.jdField_a_of_type_Short = paramShort1;
+    this.b = paramShort2;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
   }
   
-  public lrd(FastWebModule paramFastWebModule, Object paramObject, long paramLong)
+  public int a()
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.b = System.currentTimeMillis();
-    this.jdField_a_of_type_Long = paramLong;
+    return b() + 4;
   }
   
-  public Object a()
+  public short a()
   {
-    return this.jdField_a_of_type_JavaLangObject;
+    return this.jdField_a_of_type_Short;
   }
   
-  public void a(Object paramObject)
+  public byte[] a()
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.b = System.currentTimeMillis();
+    return this.jdField_a_of_type_ArrayOfByte;
   }
   
-  public boolean a()
+  public short b()
   {
-    return System.currentTimeMillis() - this.b >= this.jdField_a_of_type_Long;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lrd
  * JD-Core Version:    0.7.0.1
  */

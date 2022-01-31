@@ -1,11 +1,11 @@
 package cooperation.qzone.remote;
 
-import amyf;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import bjqp;
 
 public abstract class IActionListener$Stub
   extends Binder
@@ -28,7 +28,7 @@ public abstract class IActionListener$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IActionListener))) {
       return (IActionListener)localIInterface;
     }
-    return new amyf(paramIBinder);
+    return new bjqp(paramIBinder);
   }
   
   public IBinder asBinder()
@@ -57,7 +57,7 @@ public abstract class IActionListener$Stub
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.remote.IActionListener.Stub
  * JD-Core Version:    0.7.0.1
  */

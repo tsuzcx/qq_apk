@@ -1,15 +1,21 @@
-import android.opengl.GLES20;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.qphone.base.util.QLog;
 
 public class ailw
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ailw(VideoSprite paramVideoSprite) {}
+  public ailw(BindVerifyActivity paramBindVerifyActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GLES20.glDeleteTextures(this.a.a.length, this.a.a, 0);
-    GLES20.glFlush();
+    if (QLog.isColorLevel()) {
+      QLog.d("BindVerifyActivity", 2, "new user guild confirm unbind");
+    }
+    this.a.a.b(BindVerifyActivity.a(this.a), BindVerifyActivity.b(this.a), 0, BindVerifyActivity.a(this.a), BindVerifyActivity.b(this.a));
+    this.a.a(2131719785, 1000L, true);
   }
 }
 

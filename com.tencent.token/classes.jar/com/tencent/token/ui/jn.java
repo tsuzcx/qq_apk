@@ -1,16 +1,20 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
+import com.tencent.token.core.bean.QQUser;
 
-final class jn
-  implements DialogInterface.OnClickListener
+class jn
+  implements Runnable
 {
-  jn(jl paramjl) {}
+  jn(jl paramjl, DeterminVerifyFactorsResult paramDeterminVerifyFactorsResult) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.a.dismissDialog();
+    QQUser localQQUser = new QQUser();
+    localQQUser.mRealUin = FindPasswdActivity.access$100(this.b.a);
+    localQQUser.mIsZzb = true;
+    abi.a().a(localQQUser);
+    abi.a().a(this.b.a, this.a, FindPasswdActivity.access$200(this.b.a));
   }
 }
 

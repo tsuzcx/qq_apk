@@ -1,44 +1,52 @@
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
-import com.tencent.mobileqq.extendfriend.utils.ExtendFriendResourceUtil;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import java.io.File;
+import android.view.View.OnClickListener;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
 public class acjd
-  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public acjd(BaseChatPie paramBaseChatPie) {}
   
-  public acjd(ExtendFriendSquareFragment paramExtendFriendSquareFragment, View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131362719));
-  }
-  
-  public void a(acjd paramacjd, acjj paramacjj)
-  {
-    paramacjd.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams().height = ExtendFriendSquareFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment).getHeight();
-    paramacjj = URLDrawable.URLDrawableOptions.obtain();
-    paramacjj.mLoadingDrawable = URLDrawableHelper.a;
-    paramacjj.mFailedDrawable = URLDrawableHelper.a;
-    paramacjj = ExtendFriendResourceUtil.a("expand_square_blank.png");
-    if (new File(paramacjj).exists())
+    switch (paramView.getId())
     {
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inPreferredConfig = Bitmap.Config.RGB_565;
-      paramacjj = ExtendFriendResourceUtil.a(paramacjj, localOptions);
-      paramacjd.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(new BitmapDrawable(paramacjj));
     }
+    BaseChatPie localBaseChatPie;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          paramView = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131373121);
+        } while (!(paramView instanceof bcit));
+        paramView = (bcit)paramView;
+      } while ((paramView == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null));
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.aio.BaseChatPie", 2, "TextItemBuilder onClickListener: isReplyMsg = true, mSourceMsgSeq = " + paramView.a);
+      }
+      localBaseChatPie = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getChatFragment().a();
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) && ((localBaseChatPie instanceof agps)))
+      {
+        ((agps)localBaseChatPie).a(22, paramView.d, paramView.c, null);
+        return;
+      }
+    } while (!localBaseChatPie.j());
+    QQMessageFacade.Message localMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    localBaseChatPie.a(22, paramView.a, (int)(localMessage.shmsgseq - paramView.a), null);
+    MessageForReplyText.reportReplyMsg(null, "typebox", "clk_original", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, null);
   }
 }
 

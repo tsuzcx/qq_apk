@@ -1,29 +1,57 @@
-import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import android.text.TextUtils;
+import java.util.HashSet;
 
 public class uxz
-  extends VasQuickUpdateManager.CallBacker
 {
-  public uxz(GivingHeartItemBuilder paramGivingHeartItemBuilder) {}
+  final int jdField_a_of_type_Int;
+  public final Bundle a;
+  String jdField_a_of_type_JavaLangString = "";
+  HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  boolean jdField_a_of_type_Boolean = true;
+  String jdField_b_of_type_JavaLangString = "";
+  boolean jdField_b_of_type_Boolean = true;
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public uxz(int paramInt)
   {
-    if ((paramString1.equals("poke.effectList")) && (paramInt1 == 0))
+    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public static uxz a()
+  {
+    return new uxz(20);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilHashSet.clear();
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public void a(String paramString)
+  {
+    if (!TextUtils.equals(paramString, this.jdField_b_of_type_JavaLangString))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("GivingHeart", 2, "download vas poke list from GivingHeartItemBuilder, update pokeSvipMap now.");
-      }
-      ThreadManager.getFileThreadHandler().post(new uya(this));
+      this.jdField_b_of_type_JavaLangString = paramString;
+      a();
     }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uxz
  * JD-Core Version:    0.7.0.1
  */

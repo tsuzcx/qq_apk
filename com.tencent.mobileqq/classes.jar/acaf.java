@@ -1,41 +1,65 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.emosm.view.DragSortController;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import com.tencent.qphone.base.util.BaseApplication;
+import protocol.KQQConfig.UpgradeInfo;
 
 public class acaf
-  extends GestureDetector.SimpleOnGestureListener
+  implements View.OnClickListener
 {
-  public acaf(DragSortController paramDragSortController) {}
+  public acaf(AboutActivity paramAboutActivity) {}
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if ((!this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.b()) && (this.a.d != -1)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setTapPos(this.a.d);
+    int i = 2;
+    if (bfox.a().b())
+    {
+      if (bdmr.a()) {
+        i = 1;
+      }
+      azqs.b(null, "dc00898", "", "", "0X8008FFB", "0X8008FFB", i, 0, "", "", "", "");
+      paramView = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
+      paramView.putExtra("StrTitle", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
+      paramView.putExtra("StrUpgradeDesc", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
+      paramView.putExtra("iUpgradeType", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
+      paramView.putExtra("activity_type", 4096);
+      if (BaseActivity.sTopActivity != null) {
+        BaseActivity.sTopActivity.startActivity(paramView);
+      }
     }
-    return false;
-  }
-  
-  public final boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.b()) || (Math.abs(paramFloat1) <= Math.abs(paramFloat2)) || (this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c()) || (this.a.c) || (Math.abs(paramFloat1) <= this.a.jdField_a_of_type_Float) || ((paramFloat1 < 0.0F) && (this.a.jdField_a_of_type_Int == 2))) {}
-    while ((paramFloat1 > 0.0F) && (this.a.jdField_a_of_type_Int == 1)) {
-      return false;
-    }
-    int i = this.a.d;
-    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setSrcPos(i);
-    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c();
-    return false;
+    do
+    {
+      do
+      {
+        return;
+        if ((AboutActivity.a(this.a).jdField_a_of_type_Amqj == null) || (!bdmr.a(AboutActivity.a(this.a).jdField_a_of_type_Amqj.a))) {
+          break;
+        }
+        if (bdmr.a()) {
+          i = 1;
+        }
+        azqs.b(null, "dc00898", "", "", "0X8008FFB", "0X8008FFB", i, 0, "", "", "", "");
+        paramView = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
+        paramView.putExtra("StrTitle", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
+        paramView.putExtra("StrUpgradeDesc", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
+        paramView.putExtra("iUpgradeType", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
+        paramView.putExtra("activity_type", 4096);
+      } while (BaseActivity.sTopActivity == null);
+      BaseActivity.sTopActivity.startActivity(paramView);
+      return;
+    } while ((AboutActivity.a(this.a) == null) || (AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null));
+    azqs.b(this.a.app, "CliOper", "", "", "0X8004DB2", "0X8004DB2", 0, 0, "", "", amqe.a(), "");
+    UpgradeDetailActivity.a(this.a, amqe.a().a(), false, false, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acaf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,74 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class btv
-  extends TroopObserver
+  implements DialogInterface.OnClickListener
 {
-  public btv(TroopMemberApiService paramTroopMemberApiService) {}
+  public btv(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  protected void a(int paramInt, byte paramByte)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("type", 5);
-    localBundle.putBoolean("isSuccess", false);
-    localBundle.putSerializable("data", new Object[] { Integer.valueOf(paramInt), Byte.valueOf(paramByte) });
-    TroopMemberApiService.a(this.a, 3, localBundle);
-  }
-  
-  protected void a(int paramInt, byte paramByte, String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("type", 5);
-    localBundle.putBoolean("isSuccess", true);
-    localBundle.putSerializable("data", new Object[] { Integer.valueOf(paramInt), Byte.valueOf(paramByte), paramString });
-    TroopMemberApiService.a(this.a, 3, localBundle);
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("type", 4);
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putSerializable("data", null);
-    TroopMemberApiService.a(this.a, 3, localBundle);
-    if (QLog.isColorLevel()) {
-      QLog.d("troopMember", 2, "get member list from server successful in qq process");
-    }
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("type", 40);
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putSerializable("data", Integer.valueOf(paramInt));
-    TroopMemberApiService.a(this.a, 3, localBundle);
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt, ArrayList paramArrayList)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("type", 43);
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putSerializable("data", new Object[] { Integer.valueOf(paramInt), paramArrayList });
-    TroopMemberApiService.a(this.a, 3, localBundle);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, int paramInt, long[] paramArrayOfLong)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("type", 44);
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putSerializable("data", new Object[] { paramString, Integer.valueOf(paramInt), paramArrayOfLong });
-    TroopMemberApiService.a(this.a, 3, localBundle);
+    ReportController.b(this.a.b, "P_CliOper", "Safe_AntiFraud", this.a.b.a(), "AlertDialog", "UserClick", 0, AddFriendLogicActivity.a(this.a), "", "", "", "");
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     btv
  * JD-Core Version:    0.7.0.1
  */

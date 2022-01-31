@@ -1,43 +1,42 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.richmedia.mediacodec.recorder.HWEncodeListener;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.MergeEditVideo;
-import dov.com.tencent.mobileqq.shortvideo.filter.QQEncodeFilterRender;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aong
-  implements HWEncodeListener
 {
-  public aong(MergeEditVideo paramMergeEditVideo, QQEncodeFilterRender paramQQEncodeFilterRender, int paramInt1, int paramInt2) {}
+  private boolean a;
   
-  public void a()
+  public static aong a(String paramString)
   {
-    if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoFilterQQEncodeFilterRender != null) {
-      this.jdField_a_of_type_DovComTencentMobileqqShortvideoFilterQQEncodeFilterRender.a(this.jdField_a_of_type_Int, this.b);
+    boolean bool = true;
+    if (paramString == null) {
+      return null;
     }
-  }
-  
-  public void a(String arg1)
-  {
-    synchronized (MergeEditVideo.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecMergeEditVideo))
+    try
     {
-      MergeEditVideo.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecMergeEditVideo, true);
-      MergeEditVideo.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecMergeEditVideo).notifyAll();
-      if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoFilterQQEncodeFilterRender != null) {
-        this.jdField_a_of_type_DovComTencentMobileqqShortvideoFilterQQEncodeFilterRender.a();
+      aong localaong = new aong();
+      if (new JSONObject(paramString).optInt("isDefaultOpen", 1) == 1) {}
+      for (;;)
+      {
+        localaong.a = bool;
+        return localaong;
+        bool = false;
       }
-      return;
+      return null;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("DarkModeConfigProcessor", 2, "DarkModeConfigBean parse error", paramString);
     }
   }
   
-  public void a_(int paramInt, Throwable paramThrowable)
+  public boolean a()
   {
-    SLog.e("MergeEditVideo", "encode error errorCode = " + paramInt + " Exception = " + paramThrowable);
+    return this.a;
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aong
  * JD-Core Version:    0.7.0.1
  */

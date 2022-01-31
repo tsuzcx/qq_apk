@@ -1,174 +1,108 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 
 class mwo
-  implements Runnable
+  extends BaseAdapter
 {
-  mwo(mwn parammwn, boolean paramBoolean, Bundle paramBundle) {}
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  mwq jdField_a_of_type_Mwq;
+  private String[] jdField_a_of_type_ArrayOfJavaLangString;
   
-  public void run()
+  mwo(Context paramContext, @NonNull mwq parammwq)
   {
-    int i = 0;
-    int j = 0;
-    int n = 0;
-    int i1 = 0;
-    int m = 0;
-    if (this.jdField_a_of_type_Boolean) {
-      j = i1;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Mwq = parammwq;
+    this.jdField_a_of_type_ArrayOfJavaLangString = parammwq.a();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    notifyDataSetChanged();
+  }
+  
+  public void a(Context paramContext, @NonNull mwq parammwq)
+  {
+    if (paramContext != null) {
+      this.jdField_a_of_type_AndroidContentContext = paramContext;
     }
+    this.jdField_a_of_type_ArrayOfJavaLangString = parammwq.a();
+    this.jdField_a_of_type_Mwq = parammwq;
+    notifyDataSetInvalidated();
+  }
+  
+  public void a(String paramString)
+  {
+    int j = getCount();
+    int i = 0;
     for (;;)
     {
-      try
+      if (i < j)
       {
-        localObject3 = this.jdField_a_of_type_AndroidOsBundle.getByteArray("data");
-        k = i;
-        if (localObject3 != null)
-        {
-          j = i1;
-          localGetPublicAccountDetailInfoResponse = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
-          j = i1;
-          localGetPublicAccountDetailInfoResponse.mergeFrom((byte[])localObject3);
-          k = i;
-          j = i1;
-          if (localGetPublicAccountDetailInfoResponse.ret_info.has())
-          {
-            k = i;
-            j = i1;
-            if (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.has())
-            {
-              k = i;
-              j = i1;
-              if (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0)
-              {
-                j = i1;
-                localObject3 = new AccountDetail(localGetPublicAccountDetailInfoResponse);
-                j = i1;
-                localObject4 = this.jdField_a_of_type_Mwn.a.getEntityManagerFactory(this.jdField_a_of_type_Mwn.a.getAccount()).createEntityManager();
-                k = i;
-                if (localObject4 != null)
-                {
-                  j = i1;
-                  ((EntityManager)localObject4).b((Entity)localObject3);
-                  if (localObject3 != null)
-                  {
-                    j = i1;
-                    localObject4 = (PublicAccountDataManager)this.jdField_a_of_type_Mwn.a.getManager(55);
-                    if (localObject4 != null)
-                    {
-                      j = i1;
-                      ((PublicAccountDataManager)localObject4).a((AccountDetail)localObject3);
-                      j = i1;
-                      if (((PublicAccountDataManager)localObject4).b(((AccountDetail)localObject3).uin) == null)
-                      {
-                        j = i1;
-                        if (((AccountDetail)localObject3).followType == 1)
-                        {
-                          j = i1;
-                          ((PublicAccountDataManager)localObject4).a(PublicAccountInfo.createPublicAccount((AccountDetail)localObject3, 0L));
-                        }
-                      }
-                    }
-                  }
-                  j = i1;
-                  j = n;
-                }
-              }
-            }
-          }
+        mwr localmwr = (mwr)getItem(i);
+        if ((localmwr != null) && (localmwr.jdField_a_of_type_JavaLangString != null) && (localmwr.jdField_a_of_type_JavaLangString.equals(paramString))) {
+          a(i);
         }
       }
-      catch (Exception localException)
+      else
       {
-        Object localObject3;
-        int k;
-        mobileqq_mp.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse;
-        Object localObject4;
-        continue;
-      }
-      try
-      {
-        if (PublicAccountUtil.a != null)
-        {
-          j = n;
-          PublicAccountUtil.a.sendEmptyMessage(36);
-          i = 1;
-          j = i;
-          if (PublicAccountUtil.a() != null)
-          {
-            j = i;
-            if (PublicAccountUtil.a().get() != null)
-            {
-              j = i;
-              if (localGetPublicAccountDetailInfoResponse.uin.has())
-              {
-                j = i;
-                localObject4 = Message.obtain();
-                j = i;
-                ((Message)localObject4).obj = String.valueOf(localGetPublicAccountDetailInfoResponse.uin.get());
-                j = i;
-                ((Message)localObject4).what = 200;
-                j = i;
-                ((Handler)PublicAccountUtil.a().get()).sendMessage((Message)localObject4);
-              }
-            }
-          }
-          j = i;
-          k = i;
-          j = i;
-          if (localGetPublicAccountDetailInfoResponse.uin.has())
-          {
-            k = i;
-            if (localObject3 != null)
-            {
-              j = i;
-              ServiceAccountFolderManager.a().a(this.jdField_a_of_type_Mwn.a, (AccountDetail)localObject3);
-              k = i;
-            }
-          }
-          j = k;
-          if (j != 0) {}
-        }
-      }
-      finally {}
-      try
-      {
-        if (PublicAccountUtil.a != null) {
-          PublicAccountUtil.a.sendEmptyMessage(36);
-        }
         return;
       }
-      finally {}
-      j = n;
-      localObject4 = this.jdField_a_of_type_Mwn.a.getHandler(Conversation.class);
-      i = m;
-      if (localObject4 != null)
+      i += 1;
+    }
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_Mwq != null) {
+      return this.jdField_a_of_type_Mwq.a();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_Mwq.a(this.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = (mwr)getItem(paramInt);
+    if (paramViewGroup != null) {
+      if (paramView == null)
       {
-        j = n;
-        ((MqqHandler)localObject4).sendEmptyMessage(1014);
-        i = m;
+        paramView = new mwp(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.jdField_a_of_type_Int, paramViewGroup.b);
+        paramViewGroup = (mwp)paramView;
+        if (paramInt != this.jdField_a_of_type_Int) {
+          break label94;
+        }
       }
+    }
+    label94:
+    for (boolean bool = true;; bool = false)
+    {
+      paramViewGroup.a(bool);
+      return paramView;
+      ((mwp)paramView).a(paramViewGroup.b);
+      paramView.setContentDescription(paramViewGroup.b);
+      ((mwp)paramView).a(paramViewGroup.jdField_a_of_type_Int);
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mwo
  * JD-Core Version:    0.7.0.1
  */

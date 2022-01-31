@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.qzone.feed.ui.component.FeedDate android:textSize="22.0sp" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c36" android:background="@null" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b016a" android:paddingTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b016c" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b016b" android:paddingBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b016c" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080e02" android:layout_width="60.0dip" android:layout_height="60.0dip" android:scaleType="centerCrop"
   xmlns:android="http://schemas.android.com/apk/res/android" />

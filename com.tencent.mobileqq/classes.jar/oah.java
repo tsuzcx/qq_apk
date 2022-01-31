@@ -1,16 +1,23 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
 public class oah
-  implements ActionSheet.OnDismissListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public oah(FeedSegment paramFeedSegment) {}
+  public oah(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void onDismiss() {}
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    if (!paramCompoundButton.isPressed()) {
+      return;
+    }
+    ReadInJoySettingActivity.c(this.a, paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oah
  * JD-Core Version:    0.7.0.1
  */

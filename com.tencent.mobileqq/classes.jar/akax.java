@@ -1,9 +1,13 @@
-public class akax
+import android.widget.ImageView;
+import android.widget.TextView;
+
+class akax
+  extends akba
 {
-  public float a;
-  public int a;
-  public boolean a;
-  public int b;
+  public ImageView a;
+  public TextView a;
+  public TextView b;
+  public TextView c;
 }
 
 

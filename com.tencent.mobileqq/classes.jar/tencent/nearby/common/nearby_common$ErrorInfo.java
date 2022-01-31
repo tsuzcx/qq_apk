@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class nearby_common$ErrorInfo
-  extends MessageMicro
+  extends MessageMicro<ErrorInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field error_code = PBField.initUInt32(0);
@@ -22,7 +22,7 @@ public final class nearby_common$ErrorInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.nearby.common.nearby_common.ErrorInfo
  * JD-Core Version:    0.7.0.1
  */

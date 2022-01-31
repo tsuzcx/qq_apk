@@ -24,13 +24,13 @@ import com.tencent.mobileqq.service.profile.GetSimpleInfoCheckUpdateItem;
 import com.tencent.mobileqq.util.QQSettingUtil.UserBitFlagCheckUpdate;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import fmh;
+import fhv;
 import java.util.HashMap;
 
 public class GetCheckUpdate
   extends AsyncStep
 {
-  fmh a;
+  fhv a;
   
   private void a(QQAppInterface paramQQAppInterface)
   {
@@ -109,19 +109,19 @@ public class GetCheckUpdate
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(120, (CheckUpdateItemInterface)localObject);
       a(localQQAppInterface);
     }
-    if (this.jdField_a_of_type_Fmh == null)
+    if (this.jdField_a_of_type_Fhv == null)
     {
-      this.jdField_a_of_type_Fmh = new fmh(this, null);
-      localQQAppInterface.a(this.jdField_a_of_type_Fmh);
+      this.jdField_a_of_type_Fhv = new fhv(this, null);
+      localQQAppInterface.a(this.jdField_a_of_type_Fhv);
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Fmh != null)
+    if (this.jdField_a_of_type_Fhv != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.c(this.jdField_a_of_type_Fmh);
-      this.jdField_a_of_type_Fmh = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.c(this.jdField_a_of_type_Fhv);
+      this.jdField_a_of_type_Fhv = null;
     }
   }
 }

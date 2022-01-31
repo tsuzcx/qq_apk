@@ -1,23 +1,59 @@
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.InnerListView;
-import com.tencent.biz.qqstory.view.widget.InnerListView.OnItemClickListener;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class oqv
-  implements View.OnClickListener
+  extends RecyclerView.Adapter
 {
-  public oqv(InnerListView paramInnerListView, int paramInt) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private sic jdField_a_of_type_Sic;
+  private List<String> b = new ArrayList();
   
-  public void onClick(View paramView)
+  public oqv(Context paramContext, List<String> paramList1, List<String> paramList2, sic paramsic)
   {
-    if ((InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null) && (InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null)) {
-      InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView).a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView, paramView, this.jdField_a_of_type_Int);
+    this.b = paramList1;
+    this.jdField_a_of_type_JavaUtilList = paramList2;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Sic = paramsic;
+  }
+  
+  public int getItemCount()
+  {
+    if (this.b != null) {
+      return this.b.size();
     }
+    return 0;
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if ((paramViewHolder instanceof oqx))
+    {
+      paramViewHolder = (oqx)paramViewHolder;
+      if ((paramInt >= 0) && (paramInt < this.b.size()))
+      {
+        String str1 = (String)this.b.get(paramInt);
+        String str2 = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+        paramViewHolder.a.setText(str1);
+        paramViewHolder.a.setOnClickListener(new oqw(this, str2, str1));
+      }
+    }
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new oqx(this, View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559984, null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oqv
  * JD-Core Version:    0.7.0.1
  */

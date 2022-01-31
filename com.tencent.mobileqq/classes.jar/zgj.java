@@ -1,94 +1,191 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.Base64Util;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.OutputStream;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.webviewplugin.UrlCheckPlugin.1;
+import com.tencent.biz.webviewplugin.UrlCheckPlugin.4;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class zgj
+  extends WebViewPlugin
 {
-  public int a;
-  public long a;
-  public int b;
-  public long b;
-  public long c;
-  public long d;
-  public long e;
+  public static int a;
+  public static int b = 1;
+  public static int c = 2;
+  public static int d = 3;
+  WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams = null;
+  WindowManager jdField_a_of_type_AndroidViewWindowManager = null;
+  ImageView jdField_a_of_type_AndroidWidgetImageView = null;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
+  TextView jdField_a_of_type_AndroidWidgetTextView = null;
+  CustomWebView jdField_a_of_type_ComTencentBizPubaccountCustomWebView = null;
+  BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity = null;
+  public Runnable a;
+  public nad a;
+  boolean jdField_a_of_type_Boolean = false;
+  public int e = jdField_a_of_type_Int;
+  int f = 0;
+  int g = 0;
+  int h = 0;
+  
+  public zgj()
+  {
+    this.jdField_a_of_type_JavaLangRunnable = new UrlCheckPlugin.4(this);
+    this.mPluginNameSpace = "URL_CHECK";
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_Nad == null) {
+      this.jdField_a_of_type_Nad = new nad(this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView, new zgk(this));
+    }
+  }
   
   public void a()
   {
-    long l = DeviceInfoUtil.e();
+    Object localObject = this.mRuntime.a();
+    if ((localObject != null) && (!((Activity)localObject).isFinishing()) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.e == c))
+    {
+      localObject = ((Activity)localObject).getWindowManager();
+      this.e = d;
+    }
     try
     {
-      Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("MemoryManagerMemoryStat", 0).getString("LowMemoryStat", null);
-      if (localObject == null) {
-        return;
-      }
-      if (((String)localObject).length() == 0) {
-        return;
-      }
-      localObject = new DataInputStream(new ByteArrayInputStream(Base64Util.decode((String)localObject, 0)));
-      this.jdField_a_of_type_Long = ((DataInputStream)localObject).readLong();
-      this.jdField_b_of_type_Long = ((DataInputStream)localObject).readLong();
-      this.jdField_a_of_type_Int = ((DataInputStream)localObject).readInt();
-      this.c = ((DataInputStream)localObject).readLong();
-      this.d = ((DataInputStream)localObject).readLong();
-      this.jdField_b_of_type_Int = ((DataInputStream)localObject).readInt();
-      this.e = ((DataInputStream)localObject).readLong();
+      ((WindowManager)localObject).removeView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+      return;
     }
-    catch (Exception localException)
+    catch (IllegalArgumentException localIllegalArgumentException)
     {
-      for (;;)
+      while (!QLog.isColorLevel()) {}
+      QLog.e(this.TAG, 2, "removeView Error:" + localIllegalArgumentException.getMessage());
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    Object localObject = this.mRuntime.a();
+    if (!(localObject instanceof BaseActivity)) {}
+    for (;;)
+    {
+      return;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView == null) {
+        continue;
+      }
+      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null)
       {
-        b();
+        this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = ((BaseActivity)localObject);
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getLayoutInflater().inflate(2131558964, null));
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378113));
+        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378107));
+        this.jdField_a_of_type_AndroidViewWindowManager = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindowManager();
+        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams();
+        localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources();
+      }
+      try
+      {
+        i = Resources.getSystem().getDimensionPixelSize(Resources.getSystem().getIdentifier("status_bar_height", "dimen", "android"));
+        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.gravity = 49;
+        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = (i + this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.type = 1002;
+        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.format = 1;
+        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.flags = 262664;
+        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = -1;
+        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = -2;
+        if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+          this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new zgl(this));
+        }
+        if (this.jdField_a_of_type_AndroidViewWindowManager == null) {
+          this.jdField_a_of_type_AndroidViewWindowManager = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindowManager();
+        }
+        if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getText(paramInt));
+        }
+        this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.h + this.g);
+        this.e = c;
+        try
+        {
+          this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+          return;
+        }
+        catch (Exception localException1) {}
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e(this.TAG, 2, "addView exception:" + localException1.getMessage());
+        return;
+      }
+      catch (Exception localException2)
+      {
+        for (;;)
+        {
+          int i = (int)(localException1.getDisplayMetrics().density * 25.0F + 0.5D);
+        }
       }
     }
-    if ((l < this.jdField_a_of_type_Long) || (l < this.jdField_b_of_type_Long) || (l < this.c) || (l < this.d))
-    {
-      b();
-      return;
-    }
   }
   
-  public void b()
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
-    this.c = 0L;
-    this.d = 0L;
-    this.jdField_b_of_type_Int = 0;
-    this.e = 0L;
+    this.f = paramInt1;
+    this.g = paramInt2;
+    this.h = paramInt3;
   }
   
-  public void c()
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
-    try
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = this.mRuntime.a();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView == null) {}
+    do
     {
-      Object localObject = new ByteArrayOutputStream();
-      DataOutputStream localDataOutputStream = new DataOutputStream((OutputStream)localObject);
-      localDataOutputStream.writeLong(this.jdField_a_of_type_Long);
-      localDataOutputStream.writeLong(this.jdField_b_of_type_Long);
-      localDataOutputStream.writeInt(this.jdField_a_of_type_Int);
-      localDataOutputStream.writeLong(this.c);
-      localDataOutputStream.writeLong(this.d);
-      localDataOutputStream.writeInt(this.jdField_b_of_type_Int);
-      localDataOutputStream.writeLong(this.e);
-      localDataOutputStream.flush();
-      localObject = ((ByteArrayOutputStream)localObject).toByteArray();
-      BaseApplicationImpl.getApplication().getSharedPreferences("MemoryManagerMemoryStat", 0).edit().putString("LowMemoryStat", Base64Util.encodeToString((byte[])localObject, 0)).commit();
-      return;
+      do
+      {
+        do
+        {
+          return false;
+          paramString = this.mRuntime.a();
+        } while (!(paramString instanceof BaseActivity));
+        this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = ((BaseActivity)paramString);
+        b();
+        if (paramLong != 8589934597L) {
+          break;
+        }
+        if (this.jdField_a_of_type_Nad != null)
+        {
+          this.jdField_a_of_type_Nad.a();
+          this.jdField_a_of_type_Nad = null;
+        }
+      } while ((this.e != c) || (this.jdField_a_of_type_AndroidWidgetImageView == null));
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(null);
+      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      a();
+      return false;
+    } while ((paramLong != 8589934594L) || (this.f != 2) || (this.e == c));
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.postDelayed(new UrlCheckPlugin.1(this), this.g);
+    return false;
+  }
+  
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_Nad != null)
+    {
+      this.jdField_a_of_type_Nad.a();
+      this.jdField_a_of_type_Nad = null;
     }
-    catch (Exception localException) {}
+    super.onDestroy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     zgj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0925" android:padding="3.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="5.0dip" android:layout_marginRight="5.0dip">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a240f" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
-        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2410" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0212" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </FrameLayout>
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2411" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020805" android:layout_alignParentRight="true" />
-</merge>

@@ -1,24 +1,63 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.createNewTroop.CateListAdapter;
-import com.tencent.mobileqq.troop.createNewTroop.CateListAdapter.ViewHolder;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCateView;
-import com.tencent.mobileqq.troop.createNewTroop.TroopCateListProvider.TroopCateInfo;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
 
 public class ajaw
-  implements View.OnClickListener
 {
-  public ajaw(CateListAdapter.ViewHolder paramViewHolder) {}
+  private static volatile ajaw jdField_a_of_type_Ajaw;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public void onClick(View paramView)
+  public static ajaw a()
   {
-    paramView = (TroopCateListProvider.TroopCateInfo)paramView.getTag();
-    if (paramView.b == 1)
+    if (jdField_a_of_type_Ajaw == null) {}
+    try
     {
-      this.a.a.a.a(paramView.a, null);
-      return;
+      if (jdField_a_of_type_Ajaw == null) {
+        jdField_a_of_type_Ajaw = new ajaw();
+      }
+      return jdField_a_of_type_Ajaw;
     }
-    this.a.a.a.a(paramView.d, paramView.a);
+    finally {}
+  }
+  
+  private void b()
+  {
+    this.b = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCConnector", 2, "begin connect:");
+    }
+    QIPCClientHelper.getInstance().getClient().addListener(new ajax(this));
+    long l = System.currentTimeMillis();
+    QIPCClientHelper.getInstance().getClient().connect(new ajay(this, l));
+  }
+  
+  public void a()
+  {
+    if ((!this.jdField_a_of_type_Boolean) && (!this.b)) {
+      b();
+    }
+    if (!this.jdField_a_of_type_Boolean) {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        boolean bool = this.jdField_a_of_type_Boolean;
+        if (!bool) {}
+        try
+        {
+          this.jdField_a_of_type_JavaLangObject.wait(500L);
+          return;
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          for (;;)
+          {
+            localInterruptedException.printStackTrace();
+          }
+        }
+      }
+    }
   }
 }
 

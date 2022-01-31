@@ -1,30 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.structmsg.StructMsgFactory;
-import com.tencent.mobileqq.troop.data.TroopTopicDetailInfo;
-
-public final class ajfd
-  implements Parcelable.Creator
+public abstract interface ajfd
 {
-  public TroopTopicDetailInfo a(Parcel paramParcel)
-  {
-    TroopTopicDetailInfo localTroopTopicDetailInfo = new TroopTopicDetailInfo();
-    localTroopTopicDetailInfo.troopUin = paramParcel.readString();
-    localTroopTopicDetailInfo.msgSeq = paramParcel.readLong();
-    localTroopTopicDetailInfo.bid = paramParcel.readLong();
-    localTroopTopicDetailInfo.pid = paramParcel.readString();
-    paramParcel.readByteArray(localTroopTopicDetailInfo.detailInfoData);
-    if ((localTroopTopicDetailInfo.detailInfoData != null) && (localTroopTopicDetailInfo.detailInfoData.length > 0)) {
-      localTroopTopicDetailInfo.detailStructMsg = StructMsgFactory.a(localTroopTopicDetailInfo.detailInfoData, 0);
-    }
-    localTroopTopicDetailInfo.pVersion = paramParcel.readLong();
-    return localTroopTopicDetailInfo;
-  }
+  public abstract void l();
   
-  public TroopTopicDetailInfo[] a(int paramInt)
-  {
-    return new TroopTopicDetailInfo[paramInt];
-  }
+  public abstract void m();
+  
+  public abstract void n();
 }
 
 

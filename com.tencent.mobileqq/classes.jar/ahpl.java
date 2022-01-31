@@ -1,31 +1,77 @@
-import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.richstatus.RichStatusEditText.RichStatusEditListener;
-import com.tencent.mobileqq.widget.ClickableImageSpan;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.data.Stranger;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
 
 public class ahpl
-  implements RichStatusEditText.RichStatusEditListener
+  extends amdd
 {
-  public ahpl(EditActivity paramEditActivity) {}
+  public ahpl(TroopActivity paramTroopActivity) {}
   
-  public void a(ClickableImageSpan paramClickableImageSpan)
+  public void a(boolean paramBoolean, PBRepeatMessageField<oidb_0x5d4.DelResult> paramPBRepeatMessageField)
   {
-    if (EditActivity.a(this.a) == paramClickableImageSpan)
+    if (paramBoolean)
     {
-      if (EditActivity.a(this.a) != null) {
-        EditActivity.a(this.a).a(null);
+      if (paramPBRepeatMessageField != null)
+      {
+        paramPBRepeatMessageField = paramPBRepeatMessageField.get().iterator();
+        while (paramPBRepeatMessageField.hasNext())
+        {
+          oidb_0x5d4.DelResult localDelResult = (oidb_0x5d4.DelResult)paramPBRepeatMessageField.next();
+          QLog.d("TroopActivity", 2, "ondelete: uin " + localDelResult.uin.get());
+          if (this.a.a != null)
+          {
+            int i = 0;
+            while (i < this.a.a.size())
+            {
+              Stranger localStranger = (Stranger)this.a.a.get(i);
+              if (localStranger.uin.equals(String.valueOf(localDelResult.uin.get()))) {
+                this.a.a.remove(localStranger);
+              }
+              i += 1;
+            }
+          }
+        }
       }
-      EditActivity.a(this.a, null);
+    }
+    else if (QLog.isColorLevel()) {
+      QLog.d("TroopActivity", 2, "onDelete is failed");
     }
   }
   
-  public boolean a(ClickableImageSpan paramClickableImageSpan)
+  public void a(boolean paramBoolean, List<Stranger> paramList)
   {
-    return paramClickableImageSpan != EditActivity.a(this.a);
+    if (paramBoolean) {
+      if (paramList != null)
+      {
+        this.a.a.clear();
+        this.a.a.addAll(paramList);
+        QLog.d("TroopActivity", 2, "onGetListRemote :" + this.a.a.size());
+      }
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("TroopActivity", 2, "onGetListRemote is failed");
+  }
+  
+  public void b(boolean paramBoolean, List<Stranger> paramList)
+  {
+    if ((paramBoolean) && (paramList != null))
+    {
+      this.a.a.clear();
+      this.a.a.addAll(paramList);
+      QLog.d("TroopActivity", 2, "onGetListLocal :" + this.a.a.size());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahpl
  * JD-Core Version:    0.7.0.1
  */

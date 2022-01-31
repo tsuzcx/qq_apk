@@ -8,46 +8,52 @@ import java.util.ArrayList;
 public final class GetTroopListReqV2
   extends JceStruct
 {
-  static byte[] cache_vecCookies;
-  static ArrayList cache_vecGroupInfo;
+  static byte[] cache_vecCookies = (byte[])new byte[1];
+  static ArrayList<stTroopNum> cache_vecGroupInfo;
+  public byte bGetLongGroupName;
   public byte bGetMSFMsgFlag;
   public byte bGroupFlagExt;
+  public long dwCompanyId;
   public int shVersion;
   public long uin;
   public byte[] vecCookies;
-  public ArrayList vecGroupInfo;
+  public ArrayList<stTroopNum> vecGroupInfo;
+  public long versionNum;
+  
+  static
+  {
+    ((byte[])cache_vecCookies)[0] = 0;
+    cache_vecGroupInfo = new ArrayList();
+    stTroopNum localstTroopNum = new stTroopNum();
+    cache_vecGroupInfo.add(localstTroopNum);
+  }
   
   public GetTroopListReqV2() {}
   
-  public GetTroopListReqV2(long paramLong, byte paramByte1, byte[] paramArrayOfByte, ArrayList paramArrayList, byte paramByte2, int paramInt)
+  public GetTroopListReqV2(long paramLong1, byte paramByte1, byte[] paramArrayOfByte, ArrayList<stTroopNum> paramArrayList, byte paramByte2, int paramInt, long paramLong2, long paramLong3, byte paramByte3)
   {
-    this.uin = paramLong;
+    this.uin = paramLong1;
     this.bGetMSFMsgFlag = paramByte1;
     this.vecCookies = paramArrayOfByte;
     this.vecGroupInfo = paramArrayList;
     this.bGroupFlagExt = paramByte2;
     this.shVersion = paramInt;
+    this.dwCompanyId = paramLong2;
+    this.versionNum = paramLong3;
+    this.bGetLongGroupName = paramByte3;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
     this.uin = paramJceInputStream.read(this.uin, 0, true);
     this.bGetMSFMsgFlag = paramJceInputStream.read(this.bGetMSFMsgFlag, 1, false);
-    if (cache_vecCookies == null)
-    {
-      cache_vecCookies = (byte[])new byte[1];
-      ((byte[])cache_vecCookies)[0] = 0;
-    }
     this.vecCookies = ((byte[])paramJceInputStream.read(cache_vecCookies, 2, false));
-    if (cache_vecGroupInfo == null)
-    {
-      cache_vecGroupInfo = new ArrayList();
-      stTroopNum localstTroopNum = new stTroopNum();
-      cache_vecGroupInfo.add(localstTroopNum);
-    }
     this.vecGroupInfo = ((ArrayList)paramJceInputStream.read(cache_vecGroupInfo, 3, false));
     this.bGroupFlagExt = paramJceInputStream.read(this.bGroupFlagExt, 4, false);
     this.shVersion = paramJceInputStream.read(this.shVersion, 5, false);
+    this.dwCompanyId = paramJceInputStream.read(this.dwCompanyId, 6, false);
+    this.versionNum = paramJceInputStream.read(this.versionNum, 7, false);
+    this.bGetLongGroupName = paramJceInputStream.read(this.bGetLongGroupName, 8, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -62,11 +68,14 @@ public final class GetTroopListReqV2
     }
     paramJceOutputStream.write(this.bGroupFlagExt, 4);
     paramJceOutputStream.write(this.shVersion, 5);
+    paramJceOutputStream.write(this.dwCompanyId, 6);
+    paramJceOutputStream.write(this.versionNum, 7);
+    paramJceOutputStream.write(this.bGetLongGroupName, 8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     friendlist.GetTroopListReqV2
  * JD-Core Version:    0.7.0.1
  */

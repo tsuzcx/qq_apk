@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
+import awge;
 
 public abstract class BaseRecentUser
-  extends Entity
+  extends awge
 {
   public boolean mIsParsed;
   
@@ -36,7 +36,7 @@ public abstract class BaseRecentUser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.BaseRecentUser
  * JD-Core Version:    0.7.0.1
  */

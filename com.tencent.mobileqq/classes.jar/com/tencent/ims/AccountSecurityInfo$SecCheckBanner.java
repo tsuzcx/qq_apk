@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class AccountSecurityInfo$SecCheckBanner
-  extends MessageMicro
+  extends MessageMicro<SecCheckBanner>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16 }, new String[] { "str_wording", "u32_timeToShow" }, new Object[] { "", Integer.valueOf(0) }, SecCheckBanner.class);
   public final PBStringField str_wording = PBField.initString("");
@@ -15,7 +15,7 @@ public final class AccountSecurityInfo$SecCheckBanner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ims.AccountSecurityInfo.SecCheckBanner
  * JD-Core Version:    0.7.0.1
  */

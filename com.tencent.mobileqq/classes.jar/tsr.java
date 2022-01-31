@@ -1,20 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SigCommentListActivity;
+import mqq.app.QQPermissionCallback;
 
-public class tsr
-  implements View.OnClickListener
+class tsr
+  implements QQPermissionCallback
 {
-  public tsr(SigCommentListActivity paramSigCommentListActivity) {}
+  tsr(tsk paramtsk) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.a(true, true);
+    tsk.a(this.a);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    tsk.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tsr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,28 @@
 import android.view.View;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.PreviewSimpleFilePresenter;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
 
 public class adem
-  implements FileManagerUtil.TipsClickedInterface
+  implements View.OnClickListener
 {
-  public adem(PreviewSimpleFilePresenter paramPreviewSimpleFilePresenter) {}
+  public adem(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  public void a(View paramView)
+  public void onClick(View paramView)
   {
-    this.a.a.g();
+    boolean bool = HongbaoShowerActivity.a(this.a).isChecked();
+    paramView = HongbaoShowerActivity.a(this.a);
+    if (!bool) {}
+    for (bool = true;; bool = false)
+    {
+      paramView.setChecked(bool);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adem
  * JD-Core Version:    0.7.0.1
  */

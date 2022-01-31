@@ -1,59 +1,53 @@
-import android.content.Context;
-import com.tencent.component.network.module.base.QDLog;
-import com.tencent.component.network.module.cache.file.FileCacheService;
-import com.tencent.component.network.module.cache.file.FileStorageHandler;
-import com.tencent.component.network.module.cache.file.FileStorageHandler.Collector;
-import com.tencent.component.network.utils.thread.ThreadPool.Job;
-import com.tencent.component.network.utils.thread.ThreadPool.JobContext;
-import java.util.Collection;
-import java.util.Iterator;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONObject;
 
 public class pkh
-  implements ThreadPool.Job
 {
-  public pkh(FileStorageHandler paramFileStorageHandler, boolean paramBoolean, Context paramContext) {}
-  
-  public Object run(ThreadPool.JobContext paramJobContext)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    paramJobContext.setMode(1);
-    paramJobContext = FileStorageHandler.a(this.jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileStorageHandler).a();
-    int i;
-    int j;
-    if (paramJobContext != null)
+    JSONObject localJSONObject1 = new JSONObject();
+    Object localObject = new JSONObject();
+    ((JSONObject)localObject).put("small_video_icon", "public_account_video_profile");
+    localJSONObject1.put("id_small_video_icon", localObject);
+    localObject = new JSONObject();
+    ((JSONObject)localObject).put("small_video_cover", "public_account_small_video_mengceng");
+    localJSONObject1.put("id_small_video_cover", localObject);
+    JSONObject localJSONObject2 = new JSONObject();
+    if (paramBaseArticleInfo.mSinglePicture != null)
     {
-      paramJobContext = paramJobContext.iterator();
-      i = 0;
-      j = 0;
-      while (paramJobContext.hasNext())
-      {
-        FileCacheService localFileCacheService = (FileCacheService)paramJobContext.next();
-        int k = localFileCacheService.b(this.jdField_a_of_type_Boolean);
-        int m = localFileCacheService.a(this.jdField_a_of_type_Boolean);
-        int n = FileStorageHandler.a(this.jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileStorageHandler, k, m);
-        localFileCacheService.a(this.jdField_a_of_type_Boolean, n);
-        if (QDLog.b()) {
-          QDLog.b("downloader", "clear cache service:" + localFileCacheService + ": remain=" + n);
-        }
-        j += m;
-        i += k;
-      }
-      if (i > 0) {
+      localObject = paramBaseArticleInfo.mSinglePicture.getFile();
+      localJSONObject2.put("article_small_imge_url", localObject);
+      localJSONObject1.put("id_article_small_imge", localJSONObject2);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("small_video_duration", orc.a(paramBaseArticleInfo.mVideoDuration));
+      localJSONObject1.put("id_small_video_duration", localObject);
+      pkm.a(paramBaseArticleInfo, localJSONObject1, true);
+      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
         break label186;
       }
+      pkm.a(paramBaseArticleInfo, localJSONObject1);
+      pkm.b(paramBaseArticleInfo, localJSONObject1);
     }
-    label186:
-    for (float f = 3.4028235E+38F;; f = j / i)
+    for (;;)
     {
-      if (f < 0.1F) {
-        FileStorageHandler.a(this.jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileStorageHandler, this.jdField_a_of_type_AndroidContentContext);
-      }
-      return null;
+      pkm.l(paramBaseArticleInfo, localJSONObject1);
+      pkm.e(paramBaseArticleInfo, localJSONObject1);
+      pkm.g(paramBaseArticleInfo, localJSONObject1);
+      localJSONObject1.put("style_ID", "ReadInjoy_small_cell");
+      pkm.a(localJSONObject1, paramBaseArticleInfo);
+      return localJSONObject1;
+      localObject = null;
+      break;
+      label186:
+      pkm.d(paramBaseArticleInfo, localJSONObject1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pkh
  * JD-Core Version:    0.7.0.1
  */

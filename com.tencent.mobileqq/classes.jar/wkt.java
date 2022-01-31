@@ -1,95 +1,163 @@
-import android.app.Activity;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.telephony.TelephonyManager;
-import com.tencent.biz.ProtoServlet;
-import com.tencent.mobileqq.activity.contact.troop.BaseTroopView.ITroopContext;
-import com.tencent.mobileqq.activity.contact.troop.RecommendTroopView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.app.NewIntent;
-import tencent.im.nearbygroup.ext.NearbyGroupExt.ReqBody;
-import tencent.im.troop_search_userinfo.userinfo.AppInfo;
-import tencent.im.troop_search_userinfo.userinfo.DevAttr;
-import tencent.im.troop_search_userinfo.userinfo.GPS;
-import tencent.im.troop_search_userinfo.userinfo.UserInfo;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailListView;
 
 public class wkt
-  extends SosoInterface.OnLocationListener
+  extends xvp
+  implements View.OnClickListener
 {
-  public wkt(RecommendTroopView paramRecommendTroopView, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public static final String KEY = "DetailDoubleTabSegment";
+  private int jdField_a_of_type_Int = 1;
+  private wia jdField_a_of_type_Wia;
+  private wiq jdField_a_of_type_Wiq;
+  private wtq jdField_a_of_type_Wtq;
+  
+  public wkt(Context paramContext)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    super(paramContext);
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  private void a(TextView paramTextView, boolean paramBoolean)
   {
-    Object localObject1;
-    Object localObject2;
-    if ((paramInt == 0) && (paramSosoLbsInfo != null))
+    if (paramBoolean)
     {
-      this.a.b = Double.valueOf(paramSosoLbsInfo.a.a * 1000000.0D).intValue();
-      this.a.c = Double.valueOf(paramSosoLbsInfo.a.b * 1000000.0D).intValue();
-      paramSosoLbsInfo = new userinfo.UserInfo();
-      localObject1 = new userinfo.GPS();
-      if (this.a.b != 0)
-      {
-        ((userinfo.GPS)localObject1).uint32_lat.set(this.a.b);
-        ((userinfo.GPS)localObject1).uint32_lon.set(this.a.c);
-        paramSosoLbsInfo.gps.set((MessageMicro)localObject1);
-        localObject1 = (TelephonyManager)this.a.a().getSystemService("phone");
-        if (localObject1 != null)
-        {
-          localObject2 = new userinfo.DevAttr();
-          if (((TelephonyManager)localObject1).getSimSerialNumber() != null) {
-            ((userinfo.DevAttr)localObject2).str_imei.set(((TelephonyManager)localObject1).getSimSerialNumber());
-          }
-          if (((TelephonyManager)localObject1).getSubscriberId() != null) {
-            ((userinfo.DevAttr)localObject2).str_imsi.set(((TelephonyManager)localObject1).getSubscriberId());
-          }
-          if (((TelephonyManager)localObject1).getLine1Number() != null) {
-            ((userinfo.DevAttr)localObject2).str_phonenum.set(((TelephonyManager)localObject1).getLine1Number());
-          }
-          paramSosoLbsInfo.attr.set((MessageMicro)localObject2);
-        }
-        localObject1 = new userinfo.AppInfo();
-        ((userinfo.AppInfo)localObject1).plat_type.set(2);
+      if (QQStoryContext.a()) {
+        paramTextView.setBackgroundResource(2130846020);
       }
-    }
-    try
-    {
-      localObject2 = this.a.a().getPackageManager().getPackageInfo(this.a.a().getPackageName(), 0);
-      ((userinfo.AppInfo)localObject1).str_app_version.set(((PackageInfo)localObject2).versionName);
-      paramSosoLbsInfo.app_info.set((MessageMicro)localObject1);
-      localObject1 = new NearbyGroupExt.ReqBody();
-      ((NearbyGroupExt.ReqBody)localObject1).user_info.set(paramSosoLbsInfo);
-      ((NearbyGroupExt.ReqBody)localObject1).uint32_type.set(2);
-      paramSosoLbsInfo = new NewIntent(this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a().getApplicationContext(), ProtoServlet.class);
-      paramSosoLbsInfo.putExtra("cmd", "NearbyGroupExt.GetGroupList");
-      paramSosoLbsInfo.putExtra("data", ((NearbyGroupExt.ReqBody)localObject1).toByteArray());
-      paramSosoLbsInfo.setObserver(new wku(this));
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(paramSosoLbsInfo);
-      return;
-    }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException)
-    {
       for (;;)
       {
-        localNameNotFoundException.printStackTrace();
+        paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166387));
+        return;
+        paramTextView.setBackgroundResource(2130846019);
       }
     }
+    paramTextView.setBackgroundResource(0);
+    if (QQStoryContext.a())
+    {
+      paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166400));
+      return;
+    }
+    paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166388));
+  }
+  
+  public void W_()
+  {
+    if (((StoryDetailListView)a()).a())
+    {
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public int a()
+  {
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Wiq != null) && (this.jdField_a_of_type_Wiq.b())) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public View a(int paramInt, wtq paramwtq, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = (TextView)paramwtq.a(2131377079);
+    TextView localTextView = (TextView)paramwtq.a(2131377078);
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      a(paramViewGroup, true);
+      a(localTextView, false);
+    }
+    for (;;)
+    {
+      return paramwtq.a();
+      a(paramViewGroup, false);
+      a(localTextView, true);
+    }
+  }
+  
+  public String a()
+  {
+    return "DetailDoubleTabSegment";
+  }
+  
+  public wtq a(int paramInt, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_Wtq = new wtq(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561421, paramViewGroup, false));
+    paramViewGroup = (TextView)this.jdField_a_of_type_Wtq.a(2131377079);
+    TextView localTextView = (TextView)this.jdField_a_of_type_Wtq.a(2131377078);
+    if (QQStoryContext.a())
+    {
+      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166398));
+      localTextView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166398));
+      this.jdField_a_of_type_Wtq.a(2131373736).setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166400));
+    }
+    paramViewGroup.setOnClickListener(this);
+    localTextView.setOnClickListener(this);
+    return this.jdField_a_of_type_Wtq;
+  }
+  
+  public void a(wia paramwia)
+  {
+    this.jdField_a_of_type_Wia = paramwia;
+  }
+  
+  public void a(wiq paramwiq, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Wiq = paramwiq;
+    if (this.jdField_a_of_type_Wiq.a())
+    {
+      if (paramBoolean) {
+        this.jdField_a_of_type_Int = 2;
+      }
+    }
+    else {
+      return;
+    }
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int c()
+  {
+    if (this.jdField_a_of_type_Wtq == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_Wtq.a().getMeasuredHeight();
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Wia == null) {}
+    do
+    {
+      do
+      {
+        return;
+        switch (paramView.getId())
+        {
+        default: 
+          return;
+        }
+      } while (this.jdField_a_of_type_Int == 2);
+      this.jdField_a_of_type_Wia.a(2);
+      return;
+    } while (this.jdField_a_of_type_Int == 1);
+    this.jdField_a_of_type_Wia.a(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wkt
  * JD-Core Version:    0.7.0.1
  */

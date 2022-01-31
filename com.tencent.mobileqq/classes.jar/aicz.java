@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
-class aicz
-  implements Runnable
+public class aicz
+  implements View.OnTouchListener
 {
-  aicz(aicy paramaicy) {}
+  public aicz(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    RedBagVideoManager.c(this.a.a);
-    RedBagVideoManager.a(this.a.a, false);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aicz
  * JD-Core Version:    0.7.0.1
  */

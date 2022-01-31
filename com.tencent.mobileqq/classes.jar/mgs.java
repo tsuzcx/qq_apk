@@ -1,42 +1,45 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAllInOneBar;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
+import com.tencent.av.ui.GamePlayView;
+import com.tencent.mobileqq.armap.ARGLSurfaceView.SurfaceStateListener;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
+import javax.microedition.khronos.opengles.GL10;
 
 public class mgs
-  implements HttpWebCgiAsyncTask.Callback
+  implements ARGLSurfaceView.SurfaceStateListener
 {
-  public mgs(ReadInJoyAllInOneBar paramReadInJoyAllInOneBar) {}
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public mgs(GamePlayView paramGamePlayView) {}
+  
+  public void onDestroy() {}
+  
+  public void onEGLConfigCreated(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, EGLContext paramEGLContext, long paramLong) {}
+  
+  public void onEGLContextDestroyed(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext) {}
+  
+  public void onInit(long paramLong)
   {
-    if ((paramInt != 1000) || (paramJSONObject != null)) {}
-    for (;;)
-    {
-      try
-      {
-        if (paramJSONObject.optInt("ret") == 0) {
-          break label61;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        QLog.e(ReadInJoyAllInOneBar.a, 1, "requestCode == REQUEST_CODE_COMMENT. parse result failed. result=" + paramJSONObject);
-        return;
-      }
-      ReadInJoyAllInOneBar.a(this.a, bool);
-      return;
-      label61:
-      boolean bool = true;
-      continue;
-      bool = false;
-    }
+    GamePlayView.a(this.jdField_a_of_type_ComTencentAvUiGamePlayView, paramLong);
   }
+  
+  public void onPause()
+  {
+    QLog.d("ARZimuTask_GamePlayView", 2, "surfaceListener onPause");
+  }
+  
+  public void onResume()
+  {
+    QLog.d("ARZimuTask_GamePlayView", 2, "surfaceListener onResume");
+  }
+  
+  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mgs
  * JD-Core Version:    0.7.0.1
  */

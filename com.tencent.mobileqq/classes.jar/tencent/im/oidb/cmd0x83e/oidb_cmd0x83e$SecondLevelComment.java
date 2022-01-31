@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class oidb_cmd0x83e$SecondLevelComment
-  extends MessageMicro
+  extends MessageMicro<SecondLevelComment>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_comment_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -22,7 +22,7 @@ public final class oidb_cmd0x83e$SecondLevelComment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x83e.oidb_cmd0x83e.SecondLevelComment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,12 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.filemanager.app.FileTransferObserver;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.Comparator;
 
 public final class fyg
-  extends Handler
+  implements Comparator
 {
-  public fyg(Looper paramLooper)
+  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    Object[] arrayOfObject = (Object[])paramMessage.obj;
-    ((FileTransferObserver)arrayOfObject[0]).a(paramMessage.what, ((Boolean)arrayOfObject[1]).booleanValue(), arrayOfObject[2]);
+    return -Long.valueOf(paramFileInfo1.b()).compareTo(Long.valueOf(paramFileInfo2.b()));
   }
 }
 

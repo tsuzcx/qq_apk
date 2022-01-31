@@ -1,40 +1,59 @@
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.SigCommentListActivity;
+import com.tencent.mobileqq.app.SignatureManager.SigComments;
+import java.util.List;
 
-class adya
-  implements TroopMemberApiClient.Callback
+public class adya
+  extends amct
 {
-  adya(adxz paramadxz, String paramString) {}
+  public adya(SigCommentListActivity paramSigCommentListActivity) {}
   
-  public void a(Bundle paramBundle)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    if (paramBundle.getBoolean("isSuccess", false))
+    List localList;
+    if (this.a.isResume())
     {
-      int i = paramBundle.getInt("appid");
-      Object localObject = paramBundle.getString("openId");
-      if ((i != this.jdField_a_of_type_Adxz.jdField_a_of_type_JavaLangInteger.intValue()) || (!((String)localObject).equals(this.jdField_a_of_type_Adxz.jdField_a_of_type_JavaLangString))) {
-        break label120;
+      this.a.stopTitleProgress();
+      if (!paramBoolean) {
+        break label175;
       }
-      paramBundle = paramBundle.getString("uin");
-      if (!TextUtils.isEmpty(paramBundle))
+      if ((paramObject instanceof Bundle))
       {
-        localObject = new Intent(this.jdField_a_of_type_Adxz.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(), FriendProfileCardActivity.class);
-        ((Intent)localObject).putExtra("troopUin", this.jdField_a_of_type_JavaLangString);
-        ((Intent)localObject).putExtra("memberUin", paramBundle);
-        this.jdField_a_of_type_Adxz.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a().startActivity((Intent)localObject);
+        paramObject = (SignatureManager.SigComments)((Bundle)paramObject).getSerializable("data");
+        paramBoolean = paramObject.isOver;
+        paramObject = paramObject.mlist;
+        localList = this.a.a.a();
+        if (paramObject.size() <= 0) {
+          break label128;
+        }
+        if (localList == null) {
+          break label113;
+        }
+        localList.addAll(localList.size(), paramObject);
+        this.a.a.a(localList, paramBoolean);
+        this.a.a.notifyDataSetChanged();
       }
     }
-    label120:
-    while (!QLog.isColorLevel()) {
+    label113:
+    do
+    {
       return;
-    }
-    QLog.d("UiApiPlugin", 2, "appId != appID || !openId.equals(openID)");
+      this.a.a.a(paramObject, paramBoolean);
+      break;
+      if ((localList != null) && (localList.size() > 0)) {
+        this.a.a.a(localList, paramBoolean);
+      }
+      for (;;)
+      {
+        this.a.a.notifyDataSetChanged();
+        return;
+        SigCommentListActivity.a(this.a, 3);
+      }
+      paramObject = this.a.a.a();
+    } while ((paramObject != null) && (paramObject.size() > 0));
+    label128:
+    label175:
+    SigCommentListActivity.a(this.a, 2);
   }
 }
 

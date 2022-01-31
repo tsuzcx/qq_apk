@@ -1,15 +1,27 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.DataLineObserver;
 
 public class cez
-  implements Runnable
+  extends DataLineObserver
 {
-  public cez(ChatActivity paramChatActivity) {}
+  public cez(Conversation paramConversation) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, long paramLong, String paramString)
   {
-    ChatActivity.a(this.a);
-    this.a.a.postDelayed(new cfa(this), 10L);
+    super.a(paramBoolean, paramLong, paramString);
+    this.a.a(8, AppConstants.P, 6000);
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong, String paramString)
+  {
+    this.a.a(9, AppConstants.P, 6000);
+  }
+  
+  protected void b(boolean paramBoolean, long paramLong, String paramString)
+  {
+    super.b(paramBoolean, paramLong, paramString);
+    this.a.a(8, AppConstants.P, 6000);
   }
 }
 

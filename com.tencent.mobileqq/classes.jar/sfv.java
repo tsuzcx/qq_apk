@@ -1,41 +1,34 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-
-class sfv
-  implements Runnable
+public class sfv
 {
-  sfv(sfs paramsfs) {}
+  public String a;
+  public sfq a;
+  public String b;
   
-  public void run()
+  public sfv(String paramString, sfq paramsfq, boolean paramBoolean)
   {
-    long l = SharedPreUtils.a(this.a.a.a.getApplication(), this.a.a.a.getCurrentAccountUin());
-    if (System.currentTimeMillis() - l >= 86400000L)
-    {
-      localUpgradeTIMWrapper = UpgradeTIMWrapper.a();
-      if (localUpgradeTIMWrapper != null)
-      {
-        localMessage = this.a.a.b.obtainMessage(1134045);
-        localMessage.obj = localUpgradeTIMWrapper;
-        this.a.a.a(new sfw(this, localMessage));
-      }
+    if (paramString == null) {
+      throw new IllegalArgumentException();
     }
-    while (!QLog.isColorLevel())
+    this.jdField_a_of_type_Sfq = paramsfq;
+    if (paramBoolean)
     {
-      UpgradeTIMWrapper localUpgradeTIMWrapper;
-      Message localMessage;
+      this.jdField_a_of_type_JavaLangString = paramString;
       return;
     }
-    QLog.e("UpgradeTIMWrapper", 2, "Conversation onReceiveShowTIMUpgradeTips smaller than 24 hours");
+    this.b = paramString;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      return this.b;
+    }
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sfv
  * JD-Core Version:    0.7.0.1
  */

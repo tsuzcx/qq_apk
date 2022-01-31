@@ -1,33 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
+import com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity;
 
 public class aiou
-  implements Runnable
 {
-  public aiou(C2CPicUploadProcessor paramC2CPicUploadProcessor) {}
+  float jdField_a_of_type_Float;
+  String jdField_a_of_type_JavaLangString;
   
-  public void run()
+  public aiou(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity, String paramString, float paramFloat)
   {
-    switch (this.a.v)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.d("<BDH_LOG> sendFileNotBlockCallThread() BUT current status is INIT");
-      return;
-    case 2: 
-      this.a.d("<BDH_LOG> sendFileNotBlockCallThread() resume HTTP channel");
-      this.a.r();
-      return;
-    }
-    if (this.a.b != null)
-    {
-      this.a.d("<BDH_LOG> sendFileNotBlockCallThread() resume BDH channel");
-      this.a.a.getHwEngine().resumeTransactionTask(this.a.b);
-      return;
-    }
-    this.a.d("<BDH_LOG> sendFileNotBlockCallThread() resume BDH channel, but trans == null");
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Float = paramFloat;
   }
 }
 

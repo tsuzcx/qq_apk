@@ -1,18 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-
-public class mjm
-  extends ThreadLocal
+class mjm
+  implements bhxs
 {
-  public mjm(ReadInJoyXListView paramReadInJoyXListView) {}
+  mjm(mjk parammjk) {}
   
-  protected Boolean a()
+  public void onScrollStateChanged(int paramInt)
   {
-    return Boolean.valueOf(false);
+    if ((paramInt == 4097) && (this.a.a != null)) {
+      this.a.a.a(0L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mjm
  * JD-Core Version:    0.7.0.1
  */

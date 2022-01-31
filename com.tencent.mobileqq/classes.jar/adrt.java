@@ -1,20 +1,18 @@
-import android.os.Handler;
-import com.tencent.mobileqq.hotpic.CircleProgressView;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
-import com.tencent.mobileqq.hotpic.VideoBaseItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class adrt
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public adrt(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
+  public adrt(QQMapActivity paramQQMapActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.a.setProgress(this.a.jdField_a_of_type_ComTencentMobileqqHotpicVideoBaseItem.b());
-    if (this.a.jdField_b_of_type_Boolean) {
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_b_of_type_JavaLangRunnable, 100L);
+    if ((this.a.l) && (!this.a.m) && (!this.a.k)) {
+      this.a.finish();
     }
+    this.a.m = false;
   }
 }
 

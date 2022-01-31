@@ -1,23 +1,13 @@
-import android.widget.ImageView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import cooperation.wadl.ipc.WadlResult;
+import java.util.ArrayList;
 
-public class anjn
-  implements Runnable
+abstract interface anjn
 {
-  public anjn(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
-  
-  public void run()
-  {
-    this.a.d = false;
-    this.a.s();
-    QIMEffectCameraCaptureUnit.f(this.a, true);
-    QIMEffectCameraCaptureUnit.b(this.a).setVisibility(0);
-    QIMEffectCameraCaptureUnit.b(this.a).setEnabled(true);
-  }
+  public abstract void a(ArrayList<WadlResult> paramArrayList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anjn
  * JD-Core Version:    0.7.0.1
  */

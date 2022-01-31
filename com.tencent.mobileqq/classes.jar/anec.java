@@ -1,13 +1,14 @@
-import cooperation.qzone.widget.QzoneGuideBubbleHelper;
-
 public class anec
-  implements Runnable
 {
-  public anec(QzoneGuideBubbleHelper paramQzoneGuideBubbleHelper) {}
+  public int a;
+  public long a;
+  public String a;
+  public String b;
+  public String c;
   
-  public void run()
+  public String toString()
   {
-    this.a.a();
+    return "SearchQuestionResult{errCode=" + this.jdField_a_of_type_Int + ", errMsg='" + this.jdField_a_of_type_JavaLangString + '\'' + ", questionId=" + this.jdField_a_of_type_Long + ", questionText='" + this.b + '\'' + ", questionUrl='" + this.c + '\'' + '}';
   }
 }
 

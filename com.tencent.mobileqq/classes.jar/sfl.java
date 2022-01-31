@@ -1,30 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.RunningJob;
+import com.tencent.image.URLDrawableHandler;
 
-public final class sfl
-  implements Comparator
+public class sfl
+  implements URLDrawableHandler
 {
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public sfl(RunningJob paramRunningJob) {}
+  
+  public void doCancel() {}
+  
+  public boolean isCancelled()
   {
-    boolean bool1 = TextUtils.isEmpty(paramPhoneContact1.pinyinFirst);
-    boolean bool2 = TextUtils.isEmpty(paramPhoneContact2.pinyinFirst);
-    if ((bool1) || (bool2))
-    {
-      if ((bool1) && (bool2)) {
-        return 0;
-      }
-      if (bool2) {
-        return -1;
-      }
-      return 1;
-    }
-    return paramPhoneContact1.pinyinFirst.toLowerCase().charAt(0) - paramPhoneContact2.pinyinFirst.toLowerCase().charAt(0);
+    return false;
   }
+  
+  public void onFileDownloadFailed(int paramInt) {}
+  
+  public void onFileDownloadStarted()
+  {
+    pdz.b(3, this.a.a);
+  }
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    if (this.a.a.d == 0) {
+      pdz.b(2, this.a.a);
+    }
+  }
+  
+  public void publishProgress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sfl
  * JD-Core Version:    0.7.0.1
  */

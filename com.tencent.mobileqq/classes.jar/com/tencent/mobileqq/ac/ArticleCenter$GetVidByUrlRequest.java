@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class ArticleCenter$GetVidByUrlRequest
-  extends MessageMicro
+  extends MessageMicro<GetVidByUrlRequest>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField mv = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -22,7 +22,7 @@ public final class ArticleCenter$GetVidByUrlRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ac.ArticleCenter.GetVidByUrlRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -1,71 +1,75 @@
-import QQService.EVIPSPEC;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.util.Comparator;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.net.URLEncoder;
+import java.util.HashMap;
 
 public class ybn
-  implements Comparator
 {
-  public int a(ybl paramybl)
+  public static final String a;
+  public static final HashMap<String, String> a;
+  public static final String[] a;
+  public static final String b;
+  public static final HashMap<String, String> b;
+  public static final String c;
+  public static final HashMap<String, String> c;
+  public static final String d;
+  private static final String e = bdzf.a("cache/");
+  private static final String f = bdzf.a("qsubscribe/");
+  
+  static
   {
-    if (paramybl.jdField_a_of_type_Int != -1) {
-      return paramybl.jdField_a_of_type_Int;
-    }
-    Friends localFriends = paramybl.jdField_a_of_type_ComTencentMobileqqDataFriends;
-    int k = ContactUtils.a(localFriends.detalStatusFlag, localFriends.iTermType);
-    int j;
-    int i;
-    if ((k != 6) && (k != 0))
-    {
-      j = 65536;
-      if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
-        break label132;
-      }
-      i = 4096;
-      switch (k)
-      {
-      case 5: 
-      case 6: 
-      default: 
-        label64:
-        i = j | i | (int)localFriends.getLastLoginType();
-      }
-    }
-    for (;;)
-    {
-      paramybl.jdField_a_of_type_Int = i;
-      return i;
-      j = 131072;
-      break;
-      label132:
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))
-      {
-        i = 8192;
-        break label64;
-      }
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ))
-      {
-        i = 12288;
-        break label64;
-      }
-      i = 16384;
-      break label64;
-      i = j | i | 0x1;
-      continue;
-      i = j | i | 0x2;
-      continue;
-      i = j | i | 0x3;
-    }
+    jdField_a_of_type_JavaLangString = f + "file/";
+    jdField_b_of_type_JavaLangString = f + "cache/";
+    jdField_c_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "animation/";
+    d = e + "tencent_sdk_download/";
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_b_of_type_JavaUtilHashMap = new HashMap();
+    jdField_c_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_JavaUtilHashMap.put("follow_guide_pics", "https://down.qq.com/video_story/certified_account/animation_pics/follow_guide_pics.zip");
+    jdField_a_of_type_JavaUtilHashMap.put("praise_guide_pics", "https://down.qq.com/video_story/certified_account/animation_pics/praise_guide_pics.zip");
+    jdField_b_of_type_JavaUtilHashMap.put("follow_guide_pics", jdField_c_of_type_JavaLangString + "follow_guide_pics" + File.separator);
+    jdField_b_of_type_JavaUtilHashMap.put("praise_guide_pics", jdField_c_of_type_JavaLangString + "praise_guide_pics" + File.separator);
+    jdField_c_of_type_JavaUtilHashMap.put("follow_guide_pics", "KEY_SUBSCRIBE_FOLLOW_GUIDE_DOWNLOAD_URL");
+    jdField_c_of_type_JavaUtilHashMap.put("praise_guide_pics", "KEY_SUBSCRIBE_FOLLOW_PRAISE_DOWNLOAD_URL");
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "follow_guide_pics", "praise_guide_pics" };
   }
   
-  public int a(ybl paramybl1, ybl paramybl2)
+  public static String a(String paramString)
   {
-    return a(paramybl1) - a(paramybl2);
+    return String.format("https://h5.qzone.qq.com/subscription/openshop/%s?_proxy=1&_wv=3", new Object[] { paramString });
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    String str = String.format("https://h5.qzone.qq.com/subscription/addgoods/%s?_proxy=1&_wv=3", new Object[] { paramString1 });
+    paramString1 = str;
+    if (paramString2 != null)
+    {
+      paramString1 = str;
+      if (!bdnn.a(paramString2)) {
+        paramString1 = str + "&id=" + URLEncoder.encode(paramString2);
+      }
+    }
+    return paramString1;
+  }
+  
+  public static String b(String paramString)
+  {
+    return "https://h5.qzone.qq.com/subscription/morerecommend/{uin}?_proxy=1&_wv=3&_p=".replace("{uin}", paramString);
+  }
+  
+  public static String c(String paramString)
+  {
+    paramString = jdField_a_of_type_JavaLangString + paramString;
+    if (QLog.isColorLevel()) {
+      QLog.d("SubscribeConstants", 4, "QSUSCRIBE_DOWNLOAD_ROOT_PATH" + jdField_a_of_type_JavaLangString + "   getSDKPrivatePath realPath=" + paramString);
+    }
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ybn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,24 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.Callback;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import java.util.Collections;
+import java.util.List;
 
-class ajci
-  extends TroopAioKeywordTipManager.Callback
+public class ajci
+  implements View.OnClickListener
 {
-  ajci(ajch paramajch) {}
+  public ajci(ChooseItemView paramChooseItemView) {}
   
-  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
+  public void onClick(View paramView)
   {
-    if (!this.a.a.a.a) {}
-    do
+    if ((ChooseItemView.a(this.a) != null) && (ChooseItemView.a(this.a).size() > 1))
     {
-      return;
-      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("TroopAioKeywordTipBar", 2, "mCheckKeywordRunnable, messageRecord == null || keywordTipInfo == null");
-    return;
-    TroopAioKeywordTipBar.a(this.a.a.a, paramMessageRecord, paramTroopAioKeywordTipInfo);
+      Collections.shuffle(ChooseItemView.a(this.a));
+      this.a.a(ChooseItemView.a(this.a), true);
+    }
+    if (ChooseItemView.a(this.a) != null) {
+      ChooseItemView.a(this.a).onClick(paramView);
+    }
   }
 }
 

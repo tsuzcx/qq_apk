@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class nearfield_group$ReqGetGroupList
-  extends MessageMicro
+  extends MessageMicro<ReqGetGroupList>
 {
   public static final int MSG_HEAD_FIELD_NUMBER = 1;
   public static final int MSG_LBS_INFO_FIELD_NUMBER = 2;
@@ -19,7 +19,7 @@ public final class nearfield_group$ReqGetGroupList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.nearfield_group.nearfield_group.ReqGetGroupList
  * JD-Core Version:    0.7.0.1
  */

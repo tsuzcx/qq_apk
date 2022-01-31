@@ -1,31 +1,48 @@
 import android.text.TextUtils;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadConstants;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.open.downloadnew.common.PackageInstallReceiver;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class aljf
-  implements Runnable
+final class aljf
+  implements aljj
 {
-  public aljf(PackageInstallReceiver paramPackageInstallReceiver, String paramString1, String paramString2) {}
-  
-  public void run()
+  public void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    LogUtility.c(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonPackageInstallReceiver.jdField_a_of_type_JavaLangString, "ACTION_PACKAGE_REMOVED >> " + this.jdField_a_of_type_JavaLangString);
-    if ((!TextUtils.isEmpty(this.b)) && (this.b.equals(DownloadConstants.p)))
-    {
-      DownloadManager.a().a(true);
-      MyAppApi.a().f();
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameBasicEventUtil", 2, "[notifyRoleDress], uin:" + paramString1 + ",roleId:" + paramInt1 + ",from:" + paramInt2 + ",cmd:" + paramString3);
     }
-    DownloadInfo localDownloadInfo = new DownloadInfo("", this.b);
-    DownloadManager.a().a(9, localDownloadInfo);
+    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
+      return;
+    }
+    try
+    {
+      paramArrayOfInt = alje.a(paramInt1, paramArrayOfInt);
+      if (paramArrayOfInt == null)
+      {
+        QLog.e("ApolloGameBasicEventUtil", 1, "errInfo-> jsonObject is NULL");
+        return;
+      }
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.e("ApolloGameBasicEventUtil", 1, "[notifyRoleDress], errInfo->" + paramQQAppInterface.getMessage());
+      return;
+    }
+    if (!TextUtils.isEmpty(paramString2)) {
+      paramArrayOfInt.put("openId", paramString2);
+    }
+    for (;;)
+    {
+      ApolloCmdChannel.getChannel(paramQQAppInterface).callbackFromRequest(paramLong, 0, paramString3, paramArrayOfInt.toString());
+      return;
+      paramArrayOfInt.put("uin", paramString1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aljf
  * JD-Core Version:    0.7.0.1
  */

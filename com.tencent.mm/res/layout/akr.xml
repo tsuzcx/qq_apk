@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/dot" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/da2" style="@style/a0k" />
+    <TextView android:id="@id/dou" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/daj" style="@style/a0k" />
+    <TextView android:id="@id/dov" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/daf" style="@style/a0k" />
+    <TextView android:id="@id/dow" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dag" style="@style/a0k" />
+    <TextView android:id="@id/dox" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/da4" style="@style/a0k" />
+    <TextView android:id="@id/doy" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/da3" style="@style/a0k" />
+    <TextView android:id="@id/doz" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dab" style="@style/a0k" />
+    <TextView android:id="@id/dp0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/da5" style="@style/a0k" />
+</LinearLayout>

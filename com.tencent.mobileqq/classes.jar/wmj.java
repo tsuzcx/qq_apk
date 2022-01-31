@@ -1,56 +1,84 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
-import com.tencent.mobileqq.app.BizTroopHandler;
-import com.tencent.mobileqq.app.DiscussionHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.statistics.ReportTask;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-public class wmj
-  implements ActionSheet.OnButtonClickListener
+class wmj
+  extends QQUIEventReceiver<wmf, vck>
 {
-  public wmj(ContactsTroopAdapter paramContactsTroopAdapter, DiscussionHandler paramDiscussionHandler, DiscussionInfo paramDiscussionInfo, boolean paramBoolean, ActionSheet paramActionSheet) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public wmj(wmf paramwmf)
   {
-    paramView = this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo;
-    boolean bool;
-    if (!this.jdField_a_of_type_Boolean)
+    super(paramwmf);
+  }
+  
+  public void a(wmf paramwmf, vck paramvck)
+  {
+    if (!TextUtils.equals(paramvck.jdField_a_of_type_JavaLangString, paramwmf.c)) {}
+    do
     {
-      bool = true;
-      paramView.a((DiscussionInfo)localObject, bool);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label154;
+      do
+      {
+        return;
+        paramwmf.b(paramwmf.b);
+      } while ((paramvck.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (!paramvck.e));
+      if (paramvck.c) {
+        paramwmf.a.clear();
       }
-      paramInt = 1;
-      label43:
-      paramView = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.uin;
-      ((BizTroopHandler)this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsTroopAdapter.a.a(22)).a(18, true, new Object[] { paramView, Integer.valueOf(paramInt), Integer.valueOf(0), null });
-      localObject = new ReportTask(this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsTroopAdapter.a).a("dc00899").b("Grp_Dis_set").c("Grp_contactlist");
-      if (!this.jdField_a_of_type_Boolean) {
-        break label159;
-      }
-    }
-    label154:
-    label159:
-    for (paramView = "Clk_unstick";; paramView = "Clk_stick")
+      paramvck = paramvck.jdField_a_of_type_JavaUtilList;
+    } while (paramvck == null);
+    paramvck = paramvck.iterator();
+    label72:
+    VideoCollectionItem localVideoCollectionItem;
+    Object localObject1;
+    ArrayList localArrayList;
+    Object localObject2;
+    if (paramvck.hasNext())
     {
-      ((ReportTask)localObject).d(paramView).a();
-      return;
-      bool = false;
-      break;
-      paramInt = 0;
-      break label43;
+      localVideoCollectionItem = (VideoCollectionItem)paramvck.next();
+      localObject1 = new ArrayList();
+      localArrayList = new ArrayList(localVideoCollectionItem.videoVidList);
+      localObject2 = new ArrayList();
+      Iterator localIterator = localVideoCollectionItem.videoItemList.iterator();
+      while (localIterator.hasNext()) {
+        ((ArrayList)localObject2).add(((StoryVideoItem)localIterator.next()).mVid);
+      }
+      localArrayList.removeAll((Collection)localObject2);
     }
+    int j;
+    for (int i = 0;; i = j)
+    {
+      if (i < localArrayList.size())
+      {
+        j = Math.min(localArrayList.size(), i + 20);
+        if (i < j) {}
+      }
+      else
+      {
+        localObject1 = new vcc((List)localObject1);
+        ((vcc)localObject1).a("Q.qqstory.memories:MemoryDataPuller");
+        paramwmf.a.put(localVideoCollectionItem.collectionId, localObject1);
+        break label72;
+        break;
+      }
+      localObject2 = localArrayList.subList(i, j);
+      ((List)localObject1).add(paramwmf.a(localVideoCollectionItem.collectionId, (List)localObject2));
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vck.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wmj
  * JD-Core Version:    0.7.0.1
  */

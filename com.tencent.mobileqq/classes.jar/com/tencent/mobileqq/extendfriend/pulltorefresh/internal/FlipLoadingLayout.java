@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.extendfriend.pulltorefresh.internal;
 
-import acjs;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -12,12 +11,13 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.ProgressBar;
+import aqgu;
 import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Mode;
 import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Orientation;
 
 @SuppressLint({"ViewConstructor"})
 public class FlipLoadingLayout
-  extends acjs
+  extends aqgu
 {
   private final Animation a;
   private final Animation b;
@@ -42,7 +42,7 @@ public class FlipLoadingLayout
   
   private float a()
   {
-    switch (acjr.a[this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Mode.ordinal()])
+    switch (aqgt.a[this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Mode.ordinal()])
     {
     }
     do
@@ -56,7 +56,7 @@ public class FlipLoadingLayout
     return 270.0F;
   }
   
-  protected void a(Drawable paramDrawable)
+  public void a(Drawable paramDrawable)
   {
     if (paramDrawable != null)
     {
@@ -75,33 +75,33 @@ public class FlipLoadingLayout
     }
   }
   
-  protected int b()
+  public int b()
   {
-    return 2130838619;
+    return 2130839250;
   }
   
-  protected void b(float paramFloat) {}
+  public void b(float paramFloat) {}
   
-  protected void e()
+  public void i()
   {
     if (this.jdField_a_of_type_AndroidViewAnimationAnimation == this.jdField_a_of_type_AndroidWidgetImageView.getAnimation()) {
       this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.b);
     }
   }
   
-  protected void f()
+  public void j()
   {
     this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
   }
   
-  protected void g()
+  public void k()
   {
     this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
   
-  protected void h()
+  public void l()
   {
     this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
@@ -110,7 +110,7 @@ public class FlipLoadingLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.pulltorefresh.internal.FlipLoadingLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,87 @@
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.item.PttItemBuilder;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspIconPostfix;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.IconInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.UsrIcon;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
-public class vdh
-  implements ActionSheet.OnButtonClickListener
+class vdh
+  extends SimpleJob<Void>
 {
-  public vdh(PttItemBuilder paramPttItemBuilder, MessageForPtt paramMessageForPtt, ActionSheet paramActionSheet) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  vdh(vdg paramvdg, String paramString)
   {
-    ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-    paramView = ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-    if (paramView != null) {}
-    try
+    super(paramString);
+  }
+  
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    paramJobContext = this.a.a.icon_info.get();
+    HashMap localHashMap = new HashMap();
+    uwm localuwm = (uwm)uwa.a(2);
+    Iterator localIterator = paramJobContext.iterator();
+    String str;
+    QQUserUIItem localQQUserUIItem;
+    for (;;)
     {
-      ((MessageForPtt)paramView).c2cViaOffline = true;
-      ((MessageForPtt)paramView).isResend = true;
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("DiyTextId", paramView.vipBubbleDiyTextId);
-      ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getLocalFilePath(), paramView.uniseq, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceLength * 1000, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceType, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceChangeFlag, 0, true, paramView.vipSubBubbleId, localBundle);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder.b();
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
+      if (localIterator.hasNext())
+      {
+        paramJobContext = (qqstory_struct.IconInfo)localIterator.next();
+        str = paramJobContext.union_id.get().toStringUtf8();
+        localQQUserUIItem = localuwm.b(str);
+        if (localQQUserUIItem != null) {
+          if ((paramJobContext.err_code.get() == 0) && (paramJobContext.usr_icon_list.has()) && (paramJobContext.usr_icon_list.size() > 0))
+          {
+            paramVarArgs = (qqstory_struct.UsrIcon)paramJobContext.usr_icon_list.get(0);
+            paramJobContext = paramVarArgs.icon_postfix.get().toStringUtf8();
+            paramVarArgs = paramVarArgs.jmp_postfix.get().toStringUtf8();
+            if (TextUtils.isEmpty(paramJobContext)) {
+              break label309;
+            }
+            paramJobContext = "http://pub.idqqimg.com/pc/misc/qqstory_icon/" + paramJobContext;
+          }
+        }
+      }
     }
-    catch (RuntimeException paramView)
+    label309:
+    for (;;)
     {
+      if (!TextUtils.isEmpty(paramVarArgs)) {
+        paramVarArgs = "https://story.now.qq.com/mobile/pages/medal.html?_bid=2473&_wv=1031" + paramVarArgs;
+      }
       for (;;)
       {
-        paramView.printStackTrace();
-        Toast.makeText(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder.jdField_a_of_type_AndroidContentContext, paramView.getMessage(), 0).show();
+        localHashMap.put(str, new String[] { paramJobContext, paramVarArgs });
+        localQQUserUIItem.setUserIcon(paramJobContext, paramVarArgs);
+        for (;;)
+        {
+          localQQUserUIItem.iconUrlCacheTime = System.currentTimeMillis();
+          localuwm.a(localQQUserUIItem);
+          break;
+          localHashMap.put(str, new String[] { "", "" });
+          localQQUserUIItem.setUserIcon("", "");
+        }
+        paramJobContext = new vdi();
+        paramJobContext.a = localHashMap;
+        umc.a().dispatch(paramJobContext);
+        return null;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vdh
  * JD-Core Version:    0.7.0.1
  */

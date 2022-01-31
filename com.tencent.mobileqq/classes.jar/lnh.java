@@ -1,35 +1,21 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
-
-public class lnh
-  implements Animator.AnimatorListener
+class lnh
 {
-  public lnh(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment) {}
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString = "";
+  int jdField_b_of_type_Int = 0;
+  String jdField_b_of_type_JavaLangString = "";
+  int c = 0;
+  int d = 0;
+  int e = 0;
+  int f = 0;
+  int g = 0;
+  int h = 0;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    ReadInJoyAtlasFragment.a(this.a, false);
-    if (ReadInJoyAtlasFragment.a(this.a) != null)
-    {
-      ReadInJoyAtlasFragment.b(this.a, true);
-      ReadInJoyAtlasFragment.a(this.a).finish();
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    ReadInJoyAtlasFragment.a(this.a, true);
-  }
+  lnh(lnf paramlnf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lnh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,23 @@
-import com.tencent.biz.qqstory.newshare.callback.OnPrepareShareListener;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareData;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class ngz
-  implements Runnable
+class ngz
+  implements Animation.AnimationListener
 {
-  public ngz(ShareModeBase paramShareModeBase, ShareData paramShareData) {}
+  ngz(ngw paramngw) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModeBaseShareModeBase.a.b(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareData);
+    ngw.a(this.a, this.a.a.c, this.a.a.d, 100L, 240L);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ngz
  * JD-Core Version:    0.7.0.1
  */

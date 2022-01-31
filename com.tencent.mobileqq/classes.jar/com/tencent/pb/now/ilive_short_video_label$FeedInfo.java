@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class ilive_short_video_label$FeedInfo
-  extends MessageMicro
+  extends MessageMicro<FeedInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField feed_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -23,7 +23,7 @@ public final class ilive_short_video_label$FeedInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.ilive_short_video_label.FeedInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
 import android.view.View;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseActivity;
 
 public class nyc
-  implements BubblePopupWindow.OnDismissListener
+  implements View.OnClickListener
 {
-  public nyc(StoryMessageListActivity paramStoryMessageListActivity, View paramView) {}
+  public nyc(ReadInJoyBaseActivity paramReadInJoyBaseActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    this.a.onBackEvent();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nyc
  * JD-Core Version:    0.7.0.1
  */

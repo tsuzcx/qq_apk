@@ -1,19 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import com.tencent.util.Pair;
 
 public class adzv
-  implements AdapterView.OnItemClickListener
+  implements DialogInterface.OnClickListener
 {
-  public adzv(LebaWithFeeds paramLebaWithFeeds) {}
+  public adzv(SubAccountUgActivity paramSubAccountUgActivity, bacu parambacu, Pair paramPair) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.c()) {
-      ThreadManager.post(new adzw(this, paramView, paramInt), 8, null, true);
+    this.jdField_a_of_type_Bacu.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
+    if (!bacu.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.setTitle("");
+      bact.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity, null);
     }
+    this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.finish();
   }
 }
 

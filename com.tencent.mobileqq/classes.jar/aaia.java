@@ -1,31 +1,94 @@
-import com.tencent.mobileqq.ar.arengine.ARReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.qphone.base.util.QLog;
 
 public class aaia
-  implements Runnable
 {
-  public aaia(ARReport paramARReport, long paramLong, boolean paramBoolean) {}
+  private static AppInterface a;
   
-  public void run()
+  private static void a(String paramString, long paramLong)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
-    if (this.jdField_a_of_type_Boolean) {
-      localHashMap.put("result", "0");
+    String[] arrayOfString;
+    if (bdin.b(BaseApplication.getContext()) == 1)
+    {
+      arrayOfString = new String[3];
+      arrayOfString[0] = "param_WIFIGameCenterDownloadFlow";
+      arrayOfString[1] = "param_WIFIFlow";
+      arrayOfString[2] = "param_Flow";
     }
     for (;;)
     {
-      StatisticCollector.a(BaseApplication.getContext()).a("", "ARNativeBridgeSo", true, 0L, 0L, localHashMap, "");
+      a(paramString, arrayOfString, paramLong);
       return;
-      localHashMap.put("result", "1");
+      arrayOfString = new String[3];
+      arrayOfString[0] = "param_XGGameCenterDownloadFlow";
+      arrayOfString[1] = "param_XGFlow";
+      arrayOfString[2] = "param_Flow";
+    }
+  }
+  
+  public static void a(String paramString, long paramLong, short paramShort)
+  {
+    if (paramShort == 0) {
+      a(paramString, paramLong);
+    }
+    while (paramShort != 1) {
+      return;
+    }
+    b(paramString, paramLong);
+  }
+  
+  private static void a(String paramString, String[] paramArrayOfString, long paramLong)
+  {
+    if ((a == null) || (paramArrayOfString == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("TrafficStatistics", 2, "application or tags is null, return.");
+      }
+    }
+    for (;;)
+    {
+      return;
+      try
+      {
+        String str = a.getCurrentAccountUin();
+        a.sendAppDataIncerment(str, paramArrayOfString, paramLong);
+        if (QLog.isColorLevel())
+        {
+          QLog.d("TrafficStatistics", 2, paramString + " fileSize: " + paramLong);
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
+  private static void b(String paramString, long paramLong)
+  {
+    String[] arrayOfString;
+    if (bdin.b(BaseApplication.getContext()) == 1)
+    {
+      arrayOfString = new String[3];
+      arrayOfString[0] = "param_WIFIGameCenterUploadFlow";
+      arrayOfString[1] = "param_WIFIFlow";
+      arrayOfString[2] = "param_Flow";
+    }
+    for (;;)
+    {
+      a(paramString, arrayOfString, paramLong);
+      return;
+      arrayOfString = new String[3];
+      arrayOfString[0] = "param_XGGameCenterUploadFlow";
+      arrayOfString[1] = "param_XGFlow";
+      arrayOfString[2] = "param_Flow";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaia
  * JD-Core Version:    0.7.0.1
  */

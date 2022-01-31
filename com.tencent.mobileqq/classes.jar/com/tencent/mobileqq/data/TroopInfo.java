@@ -1,12 +1,18 @@
 package com.tencent.mobileqq.data;
 
+import alud;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.text.TextUtils;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.common.app.BaseApplicationImpl;
+import awge;
+import awhl;
+import awhp;
+import awhs;
+import bcpa;
+import bcpb;
+import com.tencent.mobileqq.activity.photo.TroopClipPic;
 import com.tencent.mobileqq.app.GroupIconHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
@@ -16,10 +22,8 @@ import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
 import com.tencent.mobileqq.troop.utils.TroopNameHelper;
-import com.tencent.qphone.base.util.QLog;
+import com.trunk.group_feeds.group_feeds.GroupFeedsMessage;
 import friendlist.stLevelRankPair;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
@@ -30,30 +34,38 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
-import mqq.app.AppRuntime;
+import ndd;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import tencent.im.oidb.cmd0x787.oidb_0x787.LevelName;
 import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupExInfoOnly;
 import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupGeoInfo;
-import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupHeadPortrait;
-import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupHeadPortraitInfo;
 import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
 import tencent.im.oidb.cmd0x88d.oidb_0x88d.TagRecord;
 import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
+import tencent.im.oidb.cmd0x8f9.oidb_0x8f9.GroupFeedsRecord;
 
 public class TroopInfo
-  extends Entity
+  extends awge
   implements Serializable
 {
+  public static final int ALLOW_HISTORY_MSG_READ_FOR_NEW_MEMBER = 4;
   public static final int ALLOW_UPLOAD_TROOP_ALBUM = 1;
   public static final int ALLOW_UPLOAD_TROOP_FILE = 2;
+  public static final int CONFESS_TALK_OPEN_FLAG = 8192;
   public static final int DEL_PIC_REQ = 2;
   public static final int GROUP_CLASS_EXT_TYPE_CLASSMATES = 10011;
+  public static final int GROUP_CLASS_EXT_TYPE_FANS = 27;
   public static final int GROUP_CLASS_EXT_TYPE_GAME = 25;
   public static final int GROUP_CLASS_EXT_TYPE_HOMEWORK = 32;
   public static final int GROUP_CLASS_EXT_TYPE_IGNORE = 0;
   public static final int GROUP_CLASS_EXT_TYPE_OFFICIAL = 10012;
   public static final int GROUP_CLASS_EXT_TYPE_RELATIVES = 10010;
   public static final int GROUP_CLASS_EXT_TYPE_WORKMATES = 10009;
+  public static final int KING_TEAM_APPID = 1104466820;
+  public static final int KING_TEAM_TROOP_SUBTYPE_BATTLE = 0;
+  @Deprecated
   public static final int MODIFY_ORDER = 0;
   public static final int ONLY_TROOP_MEMBER_INVITE_JOIN_TROOP = 4;
   public static final int PAY_CHOICE_PAY_TO_JOIN_TROOP = 512;
@@ -62,22 +74,36 @@ public class TroopInfo
   public static final int PAY_PRIVILEGE_GIFT_SETTLEMENT_ABILITY = 256;
   public static final int PAY_PRIVILEGE_GROUP_FEE = 64;
   public static final int PAY_PRIVILEGE_PAY_TO_JOIN_TROOP = 128;
-  public static final String QIDIAN_TROOP_MEMBER_DEF_NICK = "群成员";
+  public static final int QIDIAN_PRIVATE_TROOP_FLAG = 32;
+  public static final String QIDIAN_TROOP_MEMBER_DEF_NICK = alud.a(2131715850);
+  public static final int QZONE_TROOP_ENTRANCE = 131072;
   public static final int SET_DEFAULT_PIC = 1;
   public static final String TABLE_NAME = "TroopInfoV2";
+  public static final String TAG = "TroopInfo";
+  public static final int TROOP_AUTO_APPROVAL = 1048576;
   public static final int TROOP_GAME_BIND = 2048;
+  public static final int TROOP_HONOR_AIO_SWITCH = 33554432;
+  public static final int TROOP_LISTEN_TOGETHER = 2097152;
   public static final int TROOP_PRIVILEGE_INVITE_NEED_REVIEW = 101711872;
   public static final int TROOP_PRIVILEGE_INVITE_WITHOUT_REVIEW = 1048576;
   public static final int TROOP_PRIVILEGE_INVITE_WITHOUT_REVIEW_MEMCOUNT_IN_100 = 67108864;
   public static final int TROOP_PRIVILEGE_INVITE_WITHOUT_REVIEW_MEMCOUNT_IN_50 = 33554432;
+  public static final int TROOP_SHARE_LOCATION = 67108864;
+  public static final int TROOP_SING_TOGETHER = 16777216;
+  public static final int TROOP_WATCH_TOGETHER = 4194304;
   public String Administrator;
   public String adminNameShow;
+  public int allowMemberAtAll;
+  public int allowMemberKick;
+  public int allowMemberModifTroopName;
   public long associatePubAccount;
   public byte cAlbumResult;
   public short cGroupLevel;
   public short cGroupOption;
   public byte cGroupRankSysFlag;
   public byte cGroupRankUserFlag;
+  public long cmdUinFlagEx2;
+  public String dailyNewMemberUins;
   public long dwAdditionalFlag;
   public long dwAppPrivilegeFlag;
   public long dwAuthGroupType;
@@ -92,18 +118,33 @@ public class TroopInfo
   public long dwGroupInfoSeq;
   public long dwGroupLevelSeq;
   public long dwLastBAFTipMsgUniSeq;
+  public long dwLastBAFTipMsgUniSeq2;
   public long dwLastInsertBAFTipTime;
   public long dwOfficeMode;
   public long dwTimeStamp;
+  public int eliminated;
+  public int exitTroopReason = 0;
+  public String feeds_id;
   public String fingertroopmemo;
+  public int gameSwitchStatus;
+  public int groupFlagExt4;
+  public int groupFreezeReason;
   public boolean hasSetNewTroopHead;
   public boolean hasSetNewTroopName;
+  public long hlGuildAppid;
+  public int hlGuildBinary = 1;
+  public int hlGuildOrgid;
+  public long hlGuildSubType;
+  public int isAllowHistoryMsgFlag;
   public boolean isNewTroop;
   public int isShowInNearbyTroops = -1;
   public String joinTroopAnswer;
   public String joinTroopQuestion;
   public long lastMsgTime;
-  HashMap mCachedLevelMap;
+  @awhl(a=0)
+  public long lastShareLbsMsgUniseq;
+  public String mAtOrReplyMeUins;
+  HashMap<Integer, String> mCachedLevelMap;
   public boolean mCanSearchByKeywords;
   public boolean mCanSearchByTroopUin;
   public int mComparePartInt;
@@ -111,6 +152,7 @@ public class TroopInfo
   public String mGroupClassExtText;
   public String mHeaderUinsNew;
   public String mHeaderUinsOld;
+  public int mIsFreezed;
   public long mMemberCardSeq = -1L;
   public boolean mMemberInvitingFlag;
   public long mMemberNumSeq = -1L;
@@ -125,15 +167,23 @@ public class TroopInfo
   public int mTroopFileVideoIsWhite;
   public long mTroopFileVideoReqInterval;
   public float mTroopNeedPayNumber = 0.0F;
-  public List mTroopPicList;
-  public Set mTroopVerifyingPics;
+  @awhp
+  public List<TroopClipPic> mTroopPicList = new ArrayList(8);
+  public String mTroopPicListJson = "";
+  @awhp
+  public Set<String> mTroopVerifyingPics = new HashSet();
   public int maxAdminNum;
   public int maxInviteMemNum;
   public String memberListToShow;
+  public String myHonorList;
+  public int nMsgLimitFreq;
   public int nTroopGrade;
   public String newTroopName;
   public long newTroopNameTimeStamp;
+  public String oldTroopName;
   public String ownerNameShow;
+  public int showGameSwitchStatus;
+  public String strLastAnnouncement;
   public String strLocation;
   public String strQZonePhotoUrls;
   public long timeSec;
@@ -142,10 +192,12 @@ public class TroopInfo
   public long troopCreateTime;
   public long troopCreditLevel = 5L;
   public long troopCreditLevelInfo;
+  public int troopHonorGrayFlag;
   public int troopLat;
   public String troopLevelMap;
   public int troopLon;
   public long troopPrivilegeFlag;
+  public int troopRepeatType;
   public int troopTypeExt = -1;
   public String troopcode;
   public short troopface;
@@ -154,8 +206,9 @@ public class TroopInfo
   public String troopname;
   public String troopowneruin;
   public int trooptype;
-  @unique
+  @awhs
   public String troopuin;
+  public long udwCmdUinRingtoneID;
   public String uin;
   public int wClickBAFTipCount;
   public int wInsertBAFTipCount;
@@ -164,7 +217,7 @@ public class TroopInfo
   public int wMemberNumClient;
   public int wSpecialClass;
   
-  public static String convertMemberUinListToString(ArrayList paramArrayList, int paramInt)
+  public static String convertMemberUinListToString(ArrayList<String> paramArrayList, int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     paramArrayList = paramArrayList.iterator();
@@ -185,7 +238,7 @@ public class TroopInfo
     }
   }
   
-  public static List getTags(String paramString)
+  public static List<String> getTags(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
     if (!TextUtils.isEmpty(paramString))
@@ -201,6 +254,20 @@ public class TroopInfo
     return localArrayList;
   }
   
+  public static boolean hasCover(TroopInfo paramTroopInfo)
+  {
+    if (paramTroopInfo == null) {
+      return false;
+    }
+    paramTroopInfo = paramTroopInfo.mTroopPicList.iterator();
+    while (paramTroopInfo.hasNext()) {
+      if (((TroopClipPic)paramTroopInfo.next()).type == 0) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
   public static boolean hasPayPrivilege(long paramLong, int paramInt)
   {
     return ((0x20 | paramLong) & paramInt) != 0L;
@@ -211,8 +278,22 @@ public class TroopInfo
     if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
       return false;
     }
-    paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(51)).a(paramString);
+    paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(52)).b(paramString);
     return (paramQQAppInterface != null) && (paramQQAppInterface.isAdmin());
+  }
+  
+  public static boolean isCmdUinFlagEx2Open(long paramLong, int paramInt)
+  {
+    return (paramInt & paramLong) != 0L;
+  }
+  
+  public static boolean isFansTroop(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
+      return false;
+    }
+    paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(52)).b(paramString);
+    return (paramQQAppInterface != null) && (paramQQAppInterface.isFansTroop());
   }
   
   public static boolean isHomeworkTroop(QQAppInterface paramQQAppInterface, String paramString)
@@ -220,7 +301,7 @@ public class TroopInfo
     if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
       return false;
     }
-    paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(51)).a(paramString);
+    paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(52)).b(paramString);
     return (paramQQAppInterface != null) && (paramQQAppInterface.isHomeworkTroop());
   }
   
@@ -234,15 +315,15 @@ public class TroopInfo
     if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
       return false;
     }
-    paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(51)).a(paramString);
+    paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(52)).b(paramString);
     return (paramQQAppInterface != null) && (isQidianPrivateTroop(paramQQAppInterface.dwGroupFlagExt3));
   }
   
   public static final boolean isTroopMember(QQAppInterface paramQQAppInterface, String paramString)
   {
-    paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(51);
+    paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(52);
     if (paramQQAppInterface != null) {
-      return paramQQAppInterface.a(paramString) != null;
+      return paramQQAppInterface.b(paramString) != null;
     }
     return false;
   }
@@ -252,18 +333,7 @@ public class TroopInfo
     return (paramInt & 0x2000) == 8192;
   }
   
-  public static List setAvatarPicId(oidb_0x88d.GroupHeadPortrait paramGroupHeadPortrait)
-  {
-    if (paramGroupHeadPortrait.uint32_pic_cnt.get() != paramGroupHeadPortrait.rpt_msg_info.size()) {}
-    ArrayList localArrayList = new ArrayList();
-    paramGroupHeadPortrait = paramGroupHeadPortrait.rpt_msg_info.get().iterator();
-    while (paramGroupHeadPortrait.hasNext()) {
-      localArrayList.add(String.valueOf(((oidb_0x88d.GroupHeadPortraitInfo)paramGroupHeadPortrait.next()).rpt_uint32_pic_id.get()));
-    }
-    return localArrayList;
-  }
-  
-  public static String setTags(List paramList)
+  public static String setTags(List<oidb_0x88d.TagRecord> paramList)
   {
     StringBuffer localStringBuffer = new StringBuffer();
     if ((paramList != null) && (paramList.size() > 0))
@@ -298,22 +368,7 @@ public class TroopInfo
     return localStringBuffer.toString();
   }
   
-  public static Set setVerifyingAvatarPicId(oidb_0x88d.GroupHeadPortrait paramGroupHeadPortrait)
-  {
-    int i = paramGroupHeadPortrait.uint32_verifying_pic_cnt.get();
-    int j = paramGroupHeadPortrait.rpt_msg_verifyingpic_info.size();
-    if ((i != j) && (QLog.isColorLevel())) {
-      QLog.d("TroopInfo", 2, String.format("wrong data from server! uint32_verifying_pic_cnt = %d not equals rpt_msg_verifyingpic_info's size = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) }));
-    }
-    HashSet localHashSet = new HashSet();
-    paramGroupHeadPortrait = paramGroupHeadPortrait.rpt_msg_verifyingpic_info.get().iterator();
-    while (paramGroupHeadPortrait.hasNext()) {
-      localHashSet.add(String.valueOf(((oidb_0x88d.GroupHeadPortraitInfo)paramGroupHeadPortrait.next()).rpt_uint32_pic_id.get()));
-    }
-    return localHashSet;
-  }
-  
-  protected static String troopLevelMapToString(HashMap paramHashMap)
+  protected static String troopLevelMapToString(HashMap<Integer, String> paramHashMap)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     int j = paramHashMap.size();
@@ -338,7 +393,17 @@ public class TroopInfo
     return Math.min(getMemNumForAutoInviteIntoGroup(paramQQAppInterface), paramInt) > this.wMemberNumClient;
   }
   
-  public void coverAdministrators(QQAppInterface paramQQAppInterface, ArrayList paramArrayList)
+  public boolean checkFlagExt4(int paramInt)
+  {
+    return (this.groupFlagExt4 & paramInt) > 0;
+  }
+  
+  public boolean checkFreezeReason(int paramInt)
+  {
+    return (this.groupFreezeReason & paramInt) > 0;
+  }
+  
+  public void coverAdministrators(QQAppInterface paramQQAppInterface, ArrayList<String> paramArrayList)
   {
     if ((paramArrayList == null) || (paramQQAppInterface == null)) {
       return;
@@ -351,28 +416,31 @@ public class TroopInfo
       localStringBuffer.append(str + "|");
     }
     this.Administrator = localStringBuffer.toString();
-    ((TroopManager)paramQQAppInterface.getManager(51)).b(this);
+    ((TroopManager)paramQQAppInterface.getManager(52)).b(this);
   }
   
   public void coverFrom(oidb_0x88d.GroupInfo paramGroupInfo)
   {
-    boolean bool2 = true;
+    boolean bool2 = false;
     if (paramGroupInfo.uint32_group_grade.has()) {
       this.nTroopGrade = paramGroupInfo.uint32_group_grade.get();
     }
+    label72:
+    label90:
+    boolean bool1;
+    label228:
+    Object localObject;
     if (paramGroupInfo.string_group_finger_memo.has())
     {
       this.fingertroopmemo = paramGroupInfo.string_group_finger_memo.get().toStringUtf8();
       if (!paramGroupInfo.string_group_rich_finger_memo.has()) {
-        break label595;
+        break label807;
       }
       this.mRichFingerMemo = paramGroupInfo.string_group_rich_finger_memo.get().toStringUtf8();
-      label72:
       if (!TextUtils.isEmpty(this.mRichFingerMemo)) {
-        break label605;
+        break label817;
       }
       this.mRichFingerMemo = this.fingertroopmemo;
-      label90:
       if ((paramGroupInfo.st_group_ex_info.has()) && (paramGroupInfo.st_group_ex_info.uint32_money_for_add_group.has())) {
         this.mTroopNeedPayNumber = (paramGroupInfo.st_group_ex_info.uint32_money_for_add_group.get() * 0.01F);
       }
@@ -390,16 +458,15 @@ public class TroopInfo
       if (paramGroupInfo.uint32_no_finger_open_flag.has())
       {
         if (paramGroupInfo.uint32_no_finger_open_flag.get() != 0) {
-          break label630;
+          break label842;
         }
         bool1 = true;
-        label228:
         this.mCanSearchByKeywords = bool1;
       }
       if (paramGroupInfo.uint32_no_code_finger_open_flag.has())
       {
         if (paramGroupInfo.uint32_no_code_finger_open_flag.get() != 0) {
-          break label636;
+          break label848;
         }
         bool1 = true;
         label257:
@@ -408,7 +475,7 @@ public class TroopInfo
       if (paramGroupInfo.uint32_is_conf_group.has())
       {
         if (paramGroupInfo.uint32_is_conf_group.get() != 1) {
-          break label642;
+          break label854;
         }
         bool1 = true;
         label287:
@@ -417,34 +484,33 @@ public class TroopInfo
       if (paramGroupInfo.uint32_is_modify_conf_group_face.has())
       {
         if (paramGroupInfo.uint32_is_modify_conf_group_face.get() != 1) {
-          break label648;
+          break label860;
         }
         bool1 = true;
         label317:
         this.hasSetNewTroopHead = bool1;
       }
-      if (paramGroupInfo.uint32_is_modify_conf_group_name.has()) {
-        if (paramGroupInfo.uint32_is_modify_conf_group_name.get() != 1) {
-          break label654;
+      if (paramGroupInfo.uint32_is_modify_conf_group_name.has())
+      {
+        bool1 = bool2;
+        if (paramGroupInfo.uint32_is_modify_conf_group_name.get() == 1) {
+          bool1 = true;
         }
+        this.hasSetNewTroopName = bool1;
       }
-    }
-    label642:
-    label648:
-    label654:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.hasSetNewTroopName = bool1;
       if (paramGroupInfo.rpt_tag_record.has()) {
         this.mTags = setTags(paramGroupInfo.rpt_tag_record.get());
       }
       if (paramGroupInfo.string_group_class_text.has()) {
         this.mGroupClassExtText = paramGroupInfo.string_group_class_text.get().toStringUtf8();
       }
-      oidb_0x88d.GroupGeoInfo localGroupGeoInfo = (oidb_0x88d.GroupGeoInfo)paramGroupInfo.group_geo_info.get();
-      String str = localGroupGeoInfo.bytes_geocontent.get().toStringUtf8();
-      int i = (int)localGroupGeoInfo.int64_latitude.get();
-      int j = (int)localGroupGeoInfo.int64_longitude.get();
+      if (paramGroupInfo.uint32_is_allow_recall_msg.has()) {
+        this.isAllowHistoryMsgFlag = paramGroupInfo.uint32_is_allow_recall_msg.get();
+      }
+      localObject = (oidb_0x88d.GroupGeoInfo)paramGroupInfo.group_geo_info.get();
+      String str = ((oidb_0x88d.GroupGeoInfo)localObject).bytes_geocontent.get().toStringUtf8();
+      int i = (int)((oidb_0x88d.GroupGeoInfo)localObject).int64_latitude.get();
+      int j = (int)((oidb_0x88d.GroupGeoInfo)localObject).int64_longitude.get();
       if (!TextUtils.isEmpty(str)) {
         this.strLocation = str;
       }
@@ -464,23 +530,50 @@ public class TroopInfo
       this.troopTypeExt = paramGroupInfo.uint32_group_type_flag.get();
       this.dwGroupFlag = paramGroupInfo.uint32_group_flag.get();
       if (!isNewTroop()) {
-        break label660;
+        break label866;
       }
-      this.maxInviteMemNum = paramGroupInfo.uint32_auto_agree_join_group_user_num_for_conf_group.get();
+    }
+    label807:
+    label817:
+    label842:
+    label848:
+    label854:
+    label860:
+    label866:
+    for (this.maxInviteMemNum = paramGroupInfo.uint32_auto_agree_join_group_user_num_for_conf_group.get();; this.maxInviteMemNum = paramGroupInfo.uint32_auto_agree_join_group_user_num_for_normal_group.get())
+    {
+      this.allowMemberModifTroopName = paramGroupInfo.uint32_is_allow_conf_group_member_modify_group_name.get();
+      this.allowMemberKick = paramGroupInfo.uint32_is_allow_conf_group_member_nick.get();
+      this.allowMemberAtAll = paramGroupInfo.uint32_is_allow_conf_group_member_at_all.get();
+      if (((paramGroupInfo.string_long_group_name.has()) && (!this.isNewTroop)) || (this.hasSetNewTroopName))
+      {
+        localObject = paramGroupInfo.string_long_group_name.get().toStringUtf8();
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          this.troopname = ((String)localObject);
+          if (this.newTroopName == null) {
+            this.newTroopName = ((String)localObject);
+          }
+        }
+      }
+      if (paramGroupInfo.uint32_is_group_freeze.has()) {
+        this.mIsFreezed = paramGroupInfo.uint32_is_group_freeze.get();
+      }
+      this.groupFlagExt4 = paramGroupInfo.uint32_group_flagext4.get();
+      this.groupFreezeReason = paramGroupInfo.uint32_group_freeze_reason.get();
+      if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+        com.tencent.TMG.utils.QLog.d("vip_pretty.TroopInfo", 1, "get flag ext4=" + this.groupFlagExt4 + " freeze reason=" + this.groupFreezeReason);
+      }
       return;
       this.fingertroopmemo = "";
       break;
-      label595:
       this.mRichFingerMemo = "";
       break label72;
-      label605:
-      this.mRichFingerMemo = HttpUtil.c(this.mRichFingerMemo);
-      this.mRichFingerMemo = HttpUtil.b(this.mRichFingerMemo);
+      this.mRichFingerMemo = ndd.c(this.mRichFingerMemo);
+      this.mRichFingerMemo = ndd.b(this.mRichFingerMemo);
       break label90;
-      label630:
       bool1 = false;
       break label228;
-      label636:
       bool1 = false;
       break label257;
       bool1 = false;
@@ -488,13 +581,10 @@ public class TroopInfo
       bool1 = false;
       break label317;
     }
-    label660:
-    this.maxInviteMemNum = paramGroupInfo.uint32_auto_agree_join_group_user_num_for_normal_group.get();
   }
   
-  protected boolean entityByCursor(Cursor paramCursor)
+  public boolean entityByCursor(Cursor paramCursor)
   {
-    boolean bool2 = false;
     this.Administrator = paramCursor.getString(paramCursor.getColumnIndex("Administrator"));
     this.cAlbumResult = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("cAlbumResult")));
     this.cGroupLevel = paramCursor.getShort(paramCursor.getColumnIndex("cGroupLevel"));
@@ -519,13 +609,13 @@ public class TroopInfo
     this.mComparePartInt = paramCursor.getInt(paramCursor.getColumnIndex("mComparePartInt"));
     this.mCompareSpell = paramCursor.getString(paramCursor.getColumnIndex("mCompareSpell"));
     this.mGroupClassExtText = paramCursor.getString(paramCursor.getColumnIndex("mGroupClassExtText"));
-    boolean bool1;
+    boolean bool;
     if (paramCursor.getInt(paramCursor.getColumnIndex("mMemberInvitingFlag")) == 1) {
-      bool1 = true;
+      bool = true;
     }
     for (;;)
     {
-      this.mMemberInvitingFlag = bool1;
+      this.mMemberInvitingFlag = bool;
       this.mQZonePhotoNum = paramCursor.getInt(paramCursor.getColumnIndex("mQZonePhotoNum"));
       this.mRichFingerMemo = paramCursor.getString(paramCursor.getColumnIndex("mRichFingerMemo"));
       this.mSomeMemberUins = paramCursor.getString(paramCursor.getColumnIndex("mSomeMemberUins"));
@@ -533,6 +623,7 @@ public class TroopInfo
       this.mHeaderUinsNew = paramCursor.getString(paramCursor.getColumnIndex("mHeaderUinsNew"));
       this.mTags = paramCursor.getString(paramCursor.getColumnIndex("mTags"));
       this.mTroopAvatarId = paramCursor.getInt(paramCursor.getColumnIndex("mTroopAvatarId"));
+      this.mTroopPicListJson = paramCursor.getString(paramCursor.getColumnIndex("mTroopPicListJson"));
       this.maxAdminNum = paramCursor.getInt(paramCursor.getColumnIndex("maxAdminNum"));
       this.nTroopGrade = paramCursor.getInt(paramCursor.getColumnIndex("nTroopGrade"));
       this.strLocation = paramCursor.getString(paramCursor.getColumnIndex("strLocation"));
@@ -569,31 +660,36 @@ public class TroopInfo
       this.mOldMemberNumSeq = paramCursor.getLong(paramCursor.getColumnIndex("mOldMemberNumSeq"));
       if (paramCursor.getInt(paramCursor.getColumnIndex("mCanSearchByKeywords")) == 1)
       {
-        bool1 = true;
-        label1290:
-        this.mCanSearchByKeywords = bool1;
+        bool = true;
+        label1306:
+        this.mCanSearchByKeywords = bool;
         if (paramCursor.getInt(paramCursor.getColumnIndex("mCanSearchByTroopUin")) != 1) {
-          break label1728;
+          break label2362;
         }
-        bool1 = true;
-        label1316:
-        this.mCanSearchByTroopUin = bool1;
+        bool = true;
+        label1332:
+        this.mCanSearchByTroopUin = bool;
         if (paramCursor.getInt(paramCursor.getColumnIndex("isNewTroop")) != 1) {
-          break label1733;
+          break label2367;
         }
-        bool1 = true;
-        label1342:
-        this.isNewTroop = bool1;
+        bool = true;
+        label1358:
+        this.isNewTroop = bool;
         if (paramCursor.getInt(paramCursor.getColumnIndex("hasSetNewTroopHead")) != 1) {
-          break label1738;
+          break label2372;
         }
-        bool1 = true;
-        this.hasSetNewTroopHead = bool1;
-        bool1 = bool2;
-        if (paramCursor.getInt(paramCursor.getColumnIndex("hasSetNewTroopName")) == 1) {
-          bool1 = true;
+        bool = true;
+        label1384:
+        this.hasSetNewTroopHead = bool;
+        if (paramCursor.getInt(paramCursor.getColumnIndex("hasSetNewTroopName")) != 1) {
+          break label2377;
         }
-        this.hasSetNewTroopName = bool1;
+        bool = true;
+        this.hasSetNewTroopName = bool;
+        this.eliminated = paramCursor.getInt(paramCursor.getColumnIndex("eliminated"));
+        this.feeds_id = paramCursor.getString(paramCursor.getColumnIndex("feeds_id"));
+        this.troopRepeatType = paramCursor.getInt(paramCursor.getColumnIndex("troopRepeatType"));
+        this.myHonorList = paramCursor.getString(paramCursor.getColumnIndex("myHonorList"));
       }
       try
       {
@@ -603,7 +699,12 @@ public class TroopInfo
         this.topicId = paramCursor.getString(paramCursor.getColumnIndex("topicId"));
         this.memberListToShow = paramCursor.getString(paramCursor.getColumnIndex("memberListToShow"));
         this.maxInviteMemNum = paramCursor.getInt(paramCursor.getColumnIndex("maxInviteMemNum"));
-        label1516:
+        this.allowMemberAtAll = paramCursor.getInt(paramCursor.getColumnIndex("allowMemberAtAll"));
+        this.allowMemberKick = paramCursor.getInt(paramCursor.getColumnIndex("allowMemberKick"));
+        this.allowMemberModifTroopName = paramCursor.getInt(paramCursor.getColumnIndex("allowMemberModifTroopName"));
+        this.oldTroopName = paramCursor.getString(paramCursor.getColumnIndex("oldTroopName"));
+        this.mIsFreezed = paramCursor.getInt(paramCursor.getColumnIndex("mIsFreezed"));
+        label1700:
         int i = paramCursor.getColumnIndex("troopCreditLevel");
         if (i >= 0) {
           this.troopCreditLevel = paramCursor.getLong(i);
@@ -619,6 +720,14 @@ public class TroopInfo
         i = paramCursor.getColumnIndex("dwCmdUinJoinTime");
         if (i >= 0) {
           this.dwCmdUinJoinTime = paramCursor.getLong(i);
+        }
+        i = paramCursor.getColumnIndex("cmdUinFlagEx2");
+        if (i >= 0) {
+          this.cmdUinFlagEx2 = paramCursor.getLong(i);
+        }
+        i = paramCursor.getColumnIndex("udwCmdUinRingtoneID");
+        if (i >= 0) {
+          this.udwCmdUinRingtoneID = paramCursor.getLong(i);
         }
         i = paramCursor.getColumnIndex("dwLastInsertBAFTipTime");
         if (i >= 0) {
@@ -636,23 +745,85 @@ public class TroopInfo
         if (i >= 0) {
           this.dwLastBAFTipMsgUniSeq = paramCursor.getLong(i);
         }
+        i = paramCursor.getColumnIndex("dwLastBAFTipMsgUniSeq2");
+        if (i >= 0) {
+          this.dwLastBAFTipMsgUniSeq2 = paramCursor.getLong(i);
+        }
+        i = paramCursor.getColumnIndex("dailyNewMemberUins");
+        if (i >= 0) {
+          this.dailyNewMemberUins = paramCursor.getString(i);
+        }
+        i = paramCursor.getColumnIndex("exitTroopReason");
+        if (i >= 0) {
+          this.exitTroopReason = paramCursor.getInt(i);
+        }
+        i = paramCursor.getColumnIndex("eliminated");
+        if (i >= 0) {
+          this.eliminated = paramCursor.getInt(i);
+        }
+        i = paramCursor.getColumnIndex("strLastAnnouncement");
+        if (i >= 0) {
+          this.strLastAnnouncement = paramCursor.getString(i);
+        }
+        i = paramCursor.getColumnIndex("nMsgLimitFreq");
+        if (i >= 0) {
+          this.nMsgLimitFreq = paramCursor.getInt(i);
+        }
+        i = paramCursor.getColumnIndex("hlGuildAppid");
+        if (i > 0) {
+          this.hlGuildAppid = paramCursor.getInt(i);
+        }
+        i = paramCursor.getColumnIndex("hlGuildSubType");
+        if (i > 0) {
+          this.hlGuildSubType = paramCursor.getInt(i);
+        }
+        i = paramCursor.getColumnIndex("mAtOrReplyMeUins");
+        if (i >= 0) {
+          this.mAtOrReplyMeUins = paramCursor.getString(i);
+        }
+        i = paramCursor.getColumnIndex("groupFreezeReason");
+        if (i >= 0) {
+          this.groupFreezeReason = paramCursor.getInt(i);
+        }
+        i = paramCursor.getColumnIndex("groupFlagExt4");
+        if (i >= 0) {
+          this.groupFlagExt4 = paramCursor.getInt(i);
+        }
+        i = paramCursor.getColumnIndex("troopHonorGrayFlag");
+        if (i >= 0) {
+          this.troopHonorGrayFlag = paramCursor.getInt(i);
+        }
+        i = paramCursor.getColumnIndex("isAllowHistoryMsgFlag");
+        if (i >= 0) {
+          this.isAllowHistoryMsgFlag = paramCursor.getInt(i);
+        }
+        i = paramCursor.getColumnIndex("troopRepeatType");
+        if (i >= 0) {
+          this.troopRepeatType = paramCursor.getInt(i);
+        }
+        if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+          com.tencent.TMG.utils.QLog.d("TroopInfo", 0, "fightgag._troopinfo.dwGagTimeStamp_me = " + this.dwGagTimeStamp_me + ",troopuin = " + this.troopuin);
+        }
         return true;
-        bool1 = false;
+        bool = false;
         continue;
-        bool1 = false;
-        break label1290;
-        label1728:
-        bool1 = false;
-        break label1316;
-        label1733:
-        bool1 = false;
-        break label1342;
-        label1738:
-        bool1 = false;
+        bool = false;
+        break label1306;
+        label2362:
+        bool = false;
+        break label1332;
+        label2367:
+        bool = false;
+        break label1358;
+        label2372:
+        bool = false;
+        break label1384;
+        label2377:
+        bool = false;
       }
       catch (Exception localException)
       {
-        break label1516;
+        break label1700;
       }
     }
   }
@@ -683,7 +854,7 @@ public class TroopInfo
   public String getAdminShow(Context paramContext)
   {
     if (TextUtils.isEmpty(this.adminNameShow)) {
-      return paramContext.getString(2131433157);
+      return paramContext.getString(2131720951);
     }
     return this.adminNameShow;
   }
@@ -692,12 +863,12 @@ public class TroopInfo
   {
     String str = "";
     if ((this.troopPrivilegeFlag & 0x6100000) == 0L) {
-      str = paramResources.getString(2131430169);
+      str = paramResources.getString(2131696962);
     }
     while (((this.troopPrivilegeFlag & 0x2000000) != 33554432L) && ((this.troopPrivilegeFlag & 0x4000000) != 67108864L) && ((this.troopPrivilegeFlag & 0x100000) != 1048576L)) {
       return str;
     }
-    return paramResources.getString(2131430168);
+    return paramResources.getString(2131696963);
   }
   
   public String getInviteModeWording(Resources paramResources)
@@ -710,7 +881,7 @@ public class TroopInfo
       if (((i != 1) && (i != 6)) || (isOnlyTroopMemberInviteOption())) {
         break label69;
       }
-      str = paramResources.getString(2131430163);
+      str = paramResources.getString(2131696967);
     }
     label69:
     do
@@ -719,13 +890,27 @@ public class TroopInfo
       i = this.cGroupOption;
       break;
       if ((this.troopPrivilegeFlag & 0x6100000) == 0L) {
-        return paramResources.getString(2131430164);
+        return paramResources.getString(2131696966);
       }
       if ((this.troopPrivilegeFlag & 0x100000) == 1048576L) {
-        return paramResources.getString(2131430163);
+        return paramResources.getString(2131696967);
       }
     } while (((this.troopPrivilegeFlag & 0x4000000) != 67108864L) && ((this.troopPrivilegeFlag & 0x2000000) != 33554432L));
-    return paramResources.getString(2131430166);
+    return paramResources.getString(2131696968);
+  }
+  
+  public String getLatestMemo()
+  {
+    String str2 = this.strLastAnnouncement;
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2))
+    {
+      str1 = str2;
+      if (!TextUtils.isEmpty(this.troopmemo)) {
+        str1 = this.troopmemo;
+      }
+    }
+    return str1;
   }
   
   public int getMemNumForAutoInviteIntoGroup(QQAppInterface paramQQAppInterface)
@@ -782,7 +967,7 @@ public class TroopInfo
   public String getOwnerShow(Context paramContext)
   {
     if (TextUtils.isEmpty(this.ownerNameShow)) {
-      return paramContext.getString(2131433156);
+      return paramContext.getString(2131721113);
     }
     return this.ownerNameShow;
   }
@@ -792,7 +977,7 @@ public class TroopInfo
     return "66";
   }
   
-  public ArrayList getQZonePhotoUrls()
+  public ArrayList<String> getQZonePhotoUrls()
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
@@ -820,7 +1005,7 @@ public class TroopInfo
     return localObject1;
   }
   
-  public List getSomeMemberUins()
+  public List<String> getSomeMemberUins()
   {
     ArrayList localArrayList = new ArrayList();
     if ((this.mSomeMemberUins != null) && (this.mSomeMemberUins.length() > 0))
@@ -867,7 +1052,7 @@ public class TroopInfo
   }
   
   @SuppressLint({"UseSparseArrays"})
-  public HashMap getTroopLevelMap()
+  public HashMap<Integer, String> getTroopLevelMap()
   {
     int i = 0;
     if ((this.mCachedLevelMap == null) || (this.mCachedLevelMap.size() == 0))
@@ -875,7 +1060,7 @@ public class TroopInfo
       try
       {
         if (this.mCachedLevelMap != null) {
-          break label224;
+          break label223;
         }
         this.mCachedLevelMap = new HashMap();
         if (this.troopLevelMap != null)
@@ -897,22 +1082,22 @@ public class TroopInfo
               {
                 for (;;)
                 {
-                  if (QLog.isColorLevel()) {
-                    QLog.d("TroopInfo", 2, "getTroopLevelMap, catch exception, key: " + arrayOfString2[0] + " value: " + arrayOfString2[1]);
+                  if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+                    com.tencent.TMG.utils.QLog.d("TroopInfo", 0, "getTroopLevelMap, catch exception, key: " + arrayOfString2[0] + " value: " + arrayOfString2[1]);
                   }
                 }
               }
             }
           }
         }
-        if (!QLog.isColorLevel()) {
-          break label224;
+        if (!com.tencent.TMG.utils.QLog.isColorLevel()) {
+          break label223;
         }
       }
       finally {}
-      QLog.d("Q.getTroopMemberLevelInfo", 2, "getTroopLevelMap:" + this.troopuin + ", create cache");
+      com.tencent.TMG.utils.QLog.d("Q.getTroopMemberLevelInfo", 0, "getTroopLevelMap:" + this.troopuin + ", create cache");
     }
-    label224:
+    label223:
     return this.mCachedLevelMap;
   }
   
@@ -954,8 +1139,8 @@ public class TroopInfo
       }
       else
       {
-        if (QLog.isColorLevel()) {
-          QLog.d(TroopInfo.class.getSimpleName(), 2, "hasInviteMemAuth：mMemberInvitingFlag=" + this.mMemberInvitingFlag + ", mTroopInfoData.isOwnerOrAdim() = " + isAdmin() + ", mTroopInfoData.cGroupOption=" + this.cGroupOption + ", isPayToJoinTroop=" + bool1);
+        if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+          com.tencent.TMG.utils.QLog.d(TroopInfo.class.getSimpleName(), 0, "hasInviteMemAuth：mMemberInvitingFlag=" + this.mMemberInvitingFlag + ", mTroopInfoData.isOwnerOrAdim() = " + isAdmin() + ", mTroopInfoData.cGroupOption=" + this.cGroupOption + ", isPayToJoinTroop=" + bool1);
         }
         bool2 = false;
       }
@@ -999,6 +1184,26 @@ public class TroopInfo
     return (this.troopPrivilegeFlag & 0x10000) == 0L;
   }
   
+  public boolean isAutoApprovalOpen()
+  {
+    return (this.dwGroupFlagExt3 & 0x100000) == 1048576L;
+  }
+  
+  public boolean isDisband()
+  {
+    return this.exitTroopReason == 2;
+  }
+  
+  public boolean isExited()
+  {
+    return this.exitTroopReason != 0;
+  }
+  
+  public boolean isFansTroop()
+  {
+    return this.dwGroupClassExt == 27L;
+  }
+  
   public boolean isGameBind()
   {
     return (this.dwGroupFlagExt3 & 0x800) != 0L;
@@ -1009,9 +1214,46 @@ public class TroopInfo
     return this.dwGroupClassExt == 25L;
   }
   
+  public boolean isHistoryMsgReadEnableForNewMember()
+  {
+    return this.isAllowHistoryMsgFlag == 1;
+  }
+  
   public boolean isHomeworkTroop()
   {
     return this.dwGroupClassExt == 32L;
+  }
+  
+  public boolean isKicked()
+  {
+    return this.exitTroopReason == 1;
+  }
+  
+  public boolean isKingBattleTroop()
+  {
+    boolean bool2 = false;
+    if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+      com.tencent.TMG.utils.QLog.d("TroopInfo", 0, "hlGuildAppid:" + this.hlGuildAppid + ",subType:" + this.hlGuildSubType);
+    }
+    boolean bool1 = bool2;
+    if (this.hlGuildAppid == 1104466820L)
+    {
+      bool1 = bool2;
+      if (this.hlGuildSubType == 0L) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public boolean isListenTogetherOpen()
+  {
+    return (this.dwGroupFlagExt3 & 0x200000) != 0L;
+  }
+  
+  public boolean isNeedClearAutoApproval()
+  {
+    return (this.cGroupOption != 2) || ((this.troopPrivilegeFlag & 0x200) == 512L);
   }
   
   public boolean isNewTroop()
@@ -1027,6 +1269,33 @@ public class TroopInfo
   public boolean isQidianPrivateTroop()
   {
     return isQidianPrivateTroop(this.dwGroupFlagExt3);
+  }
+  
+  public boolean isSharingLocation()
+  {
+    if ((this.dwGroupFlagExt3 & 0x4000000) != 0L) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+        com.tencent.qphone.base.util.QLog.d("TroopInfo", 2, new Object[] { "isSharingLocation: invoked. ", " is: ", Boolean.valueOf(bool) });
+      }
+      return bool;
+    }
+  }
+  
+  public boolean isShowQzoneEntrance()
+  {
+    return (this.dwGroupFlagExt3 & 0x20000) == 0L;
+  }
+  
+  public boolean isThirdAppBind()
+  {
+    return this.hlGuildBinary != 1;
+  }
+  
+  public boolean isTogetherBusinessOpen(int paramInt)
+  {
+    return (this.dwGroupFlagExt3 & paramInt) != 0L;
   }
   
   public boolean isTroopAdmin(String paramString)
@@ -1063,12 +1332,42 @@ public class TroopInfo
     }
   }
   
+  public boolean isTroopHonorOpen()
+  {
+    return (this.dwGroupFlagExt3 & 0x2000000) == 0L;
+  }
+  
   public boolean isTroopOwner(String paramString)
   {
     return (paramString != null) && (paramString.equals(this.troopowneruin));
   }
   
-  public ArrayList parseTroopMemeberList()
+  public boolean isUseClassAvatar()
+  {
+    return (!this.isNewTroop) && ((this.dwGroupFlagExt & 0x20000) != 0L);
+  }
+  
+  public boolean isWatchTogetherOpen()
+  {
+    return (this.dwGroupFlagExt3 & 0x400000) != 0L;
+  }
+  
+  public boolean messageEnablePreview()
+  {
+    return !isCmdUinFlagEx2Open(this.cmdUinFlagEx2, 1024);
+  }
+  
+  public boolean messageEnableSound()
+  {
+    return !isCmdUinFlagEx2Open(this.cmdUinFlagEx2, 2048);
+  }
+  
+  public boolean messageEnableVibrate()
+  {
+    return !isCmdUinFlagEx2Open(this.cmdUinFlagEx2, 4096);
+  }
+  
+  public ArrayList<Long> parseTroopMemeberList()
   {
     ArrayList localArrayList = new ArrayList();
     if (this.memberListToShow != null)
@@ -1087,8 +1386,8 @@ public class TroopInfo
           {
             for (;;)
             {
-              if (QLog.isColorLevel()) {
-                QLog.d("troopInfo_member", 2, "parse error: " + arrayOfString[i]);
+              if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+                com.tencent.TMG.utils.QLog.d("troopInfo_member", 0, "parse error: " + arrayOfString[i]);
               }
             }
           }
@@ -1096,6 +1395,249 @@ public class TroopInfo
       }
     }
     return localArrayList;
+  }
+  
+  public void postRead()
+  {
+    super.postRead();
+    ArrayList localArrayList = new ArrayList(8);
+    if (!TextUtils.isEmpty(this.mTroopPicListJson)) {}
+    for (;;)
+    {
+      int i;
+      try
+      {
+        JSONArray localJSONArray = new JSONArray(this.mTroopPicListJson);
+        if ((localJSONArray != null) && (localJSONArray.length() > 0))
+        {
+          i = 0;
+          if (i < localJSONArray.length())
+          {
+            Object localObject = localJSONArray.getJSONObject(i);
+            String str = ((JSONObject)localObject).getString("id");
+            localObject = ((JSONObject)localObject).optString("clip");
+            if (TextUtils.isEmpty(str)) {
+              break label231;
+            }
+            TroopClipPic localTroopClipPic = new TroopClipPic();
+            if (str.equals(String.valueOf(this.mTroopAvatarId))) {
+              localTroopClipPic.type = 1;
+            }
+            localTroopClipPic.id = str;
+            localTroopClipPic.clipInfo = ((String)localObject);
+            localArrayList.add(localTroopClipPic);
+          }
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+        this.mTroopPicList.clear();
+        this.mTroopPicList.addAll(localArrayList);
+        if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+          com.tencent.TMG.utils.QLog.i("TroopInfo", 0, String.format("postRead troopUin=%s avatarId=%d mTroopPicListJson=%s", new Object[] { this.troopuin, Integer.valueOf(this.mTroopAvatarId), this.mTroopPicListJson }));
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        continue;
+      }
+      label231:
+      i += 1;
+    }
+  }
+  
+  /* Error */
+  public void prewrite()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: invokespecial 1275	awge:prewrite	()V
+    //   4: new 1228	org/json/JSONArray
+    //   7: dup
+    //   8: invokespecial 1276	org/json/JSONArray:<init>	()V
+    //   11: astore_1
+    //   12: aload_0
+    //   13: getfield 249	com/tencent/mobileqq/data/TroopInfo:mTroopPicList	Ljava/util/List;
+    //   16: invokeinterface 330 1 0
+    //   21: astore_2
+    //   22: aload_2
+    //   23: invokeinterface 287 1 0
+    //   28: ifeq +83 -> 111
+    //   31: aload_2
+    //   32: invokeinterface 291 1 0
+    //   37: checkcast 332	com/tencent/mobileqq/activity/photo/TroopClipPic
+    //   40: astore_3
+    //   41: aload_3
+    //   42: getfield 1251	com/tencent/mobileqq/activity/photo/TroopClipPic:id	Ljava/lang/String;
+    //   45: invokestatic 314	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   48: ifne -26 -> 22
+    //   51: new 1239	org/json/JSONObject
+    //   54: dup
+    //   55: invokespecial 1277	org/json/JSONObject:<init>	()V
+    //   58: astore 4
+    //   60: aload 4
+    //   62: ldc_w 1237
+    //   65: aload_3
+    //   66: getfield 1251	com/tencent/mobileqq/activity/photo/TroopClipPic:id	Ljava/lang/String;
+    //   69: invokevirtual 1280	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   72: pop
+    //   73: aload_3
+    //   74: getfield 1254	com/tencent/mobileqq/activity/photo/TroopClipPic:clipInfo	Ljava/lang/String;
+    //   77: invokestatic 314	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   80: ifne +16 -> 96
+    //   83: aload 4
+    //   85: ldc_w 1243
+    //   88: aload_3
+    //   89: getfield 1254	com/tencent/mobileqq/activity/photo/TroopClipPic:clipInfo	Ljava/lang/String;
+    //   92: invokevirtual 1280	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   95: pop
+    //   96: aload_1
+    //   97: aload 4
+    //   99: invokevirtual 1283	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
+    //   102: pop
+    //   103: goto -81 -> 22
+    //   106: astore_2
+    //   107: aload_2
+    //   108: invokevirtual 1255	org/json/JSONException:printStackTrace	()V
+    //   111: aload_0
+    //   112: aload_1
+    //   113: invokevirtual 1284	org/json/JSONArray:toString	()Ljava/lang/String;
+    //   116: putfield 258	com/tencent/mobileqq/data/TroopInfo:mTroopPicListJson	Ljava/lang/String;
+    //   119: invokestatic 695	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   122: ifeq +43 -> 165
+    //   125: ldc 61
+    //   127: iconst_0
+    //   128: ldc_w 1286
+    //   131: iconst_3
+    //   132: anewarray 1177	java/lang/Object
+    //   135: dup
+    //   136: iconst_0
+    //   137: aload_0
+    //   138: getfield 867	com/tencent/mobileqq/data/TroopInfo:troopuin	Ljava/lang/String;
+    //   141: aastore
+    //   142: dup
+    //   143: iconst_1
+    //   144: aload_0
+    //   145: getfield 821	com/tencent/mobileqq/data/TroopInfo:mTroopAvatarId	I
+    //   148: invokestatic 1087	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   151: aastore
+    //   152: dup
+    //   153: iconst_2
+    //   154: aload_0
+    //   155: getfield 258	com/tencent/mobileqq/data/TroopInfo:mTroopPicListJson	Ljava/lang/String;
+    //   158: aastore
+    //   159: invokestatic 1268	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   162: invokestatic 1271	com/tencent/TMG/utils/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   165: return
+    //   166: astore_2
+    //   167: aload_2
+    //   168: invokevirtual 1272	java/lang/Exception:printStackTrace	()V
+    //   171: goto -60 -> 111
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	174	0	this	TroopInfo
+    //   11	102	1	localJSONArray	JSONArray
+    //   21	11	2	localIterator	Iterator
+    //   106	2	2	localJSONException	JSONException
+    //   166	2	2	localException	Exception
+    //   40	49	3	localTroopClipPic	TroopClipPic
+    //   58	40	4	localJSONObject	JSONObject
+    // Exception table:
+    //   from	to	target	type
+    //   12	22	106	org/json/JSONException
+    //   22	96	106	org/json/JSONException
+    //   96	103	106	org/json/JSONException
+    //   12	22	166	java/lang/Exception
+    //   22	96	166	java/lang/Exception
+    //   96	103	166	java/lang/Exception
+  }
+  
+  public void setAutoApprovalOpen(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (this.dwGroupFlagExt3 |= 0x100000;; this.dwGroupFlagExt3 &= 0xFFEFFFFF)
+    {
+      if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+        com.tencent.TMG.utils.QLog.i("TroopInfo", 0, String.format("setAutoApprovalOpen [%s, %s]", new Object[] { Long.valueOf(this.dwGroupFlagExt3), Boolean.valueOf(paramBoolean) }));
+      }
+      return;
+    }
+  }
+  
+  public void setCmdUinFlagEx2(boolean paramBoolean, int paramInt)
+  {
+    if (paramBoolean)
+    {
+      this.cmdUinFlagEx2 |= paramInt;
+      return;
+    }
+    this.cmdUinFlagEx2 &= (paramInt ^ 0xFFFFFFFF);
+  }
+  
+  public void setIsListenTogether(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.dwGroupFlagExt3 |= 0x200000;
+      return;
+    }
+    this.dwGroupFlagExt3 &= 0xFFDFFFFF;
+  }
+  
+  public void setIsSharingLocation(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.dwGroupFlagExt3 |= 0x4000000;
+      return;
+    }
+    this.dwGroupFlagExt3 &= 0xFBFFFFFF;
+  }
+  
+  public void setIsWatchTogether(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.dwGroupFlagExt3 |= 0x400000;
+      return;
+    }
+    this.dwGroupFlagExt3 &= 0xFFBFFFFF;
+  }
+  
+  public void setLastMemoData(oidb_0x8f9.GroupFeedsRecord paramGroupFeedsRecord)
+  {
+    if (paramGroupFeedsRecord != null) {}
+    for (;;)
+    {
+      try
+      {
+        group_feeds.GroupFeedsMessage localGroupFeedsMessage = (group_feeds.GroupFeedsMessage)paramGroupFeedsRecord.msg_feeds_content.get();
+        paramGroupFeedsRecord = bcpa.a(String.valueOf(paramGroupFeedsRecord.uint32_feeds_type.get()), localGroupFeedsMessage.toByteArray(), true);
+        if (paramGroupFeedsRecord == null) {
+          continue;
+        }
+        this.strLastAnnouncement = paramGroupFeedsRecord.c;
+      }
+      catch (Throwable paramGroupFeedsRecord)
+      {
+        paramGroupFeedsRecord.printStackTrace();
+        this.strLastAnnouncement = "";
+        continue;
+      }
+      if (this.strLastAnnouncement == null) {
+        this.strLastAnnouncement = "";
+      }
+      if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+        com.tencent.TMG.utils.QLog.i("TroopInfo", 0, "setLastMemoData : " + this.strLastAnnouncement);
+      }
+      return;
+      this.strLastAnnouncement = "";
+      continue;
+      this.strLastAnnouncement = "";
+    }
   }
   
   public void setOnlyTroopMemberInviteOption(boolean paramBoolean)
@@ -1113,8 +1655,18 @@ public class TroopInfo
     this.dwGroupFlagExt3 |= 0x20;
   }
   
+  public void setTogetherBusiness(boolean paramBoolean, int paramInt)
+  {
+    if (paramBoolean)
+    {
+      this.dwGroupFlagExt3 |= paramInt;
+      return;
+    }
+    this.dwGroupFlagExt3 &= (paramInt ^ 0xFFFFFFFF);
+  }
+  
   @SuppressLint({"UseSparseArrays"})
-  public void setTroopLevelMap(List paramList)
+  public void setTroopLevelMap(List<stLevelRankPair> paramList)
   {
     if (paramList != null) {}
     try
@@ -1130,13 +1682,13 @@ public class TroopInfo
           localHashMap.put(Integer.valueOf((int)localstLevelRankPair.dwLevel), localstLevelRankPair.strRank);
           i += 1;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.getTroopMemberLevelInfo", 2, "setTroopLevelMap:" + this.troopuin + ", old=" + this.troopLevelMap);
+        if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+          com.tencent.TMG.utils.QLog.d("Q.getTroopMemberLevelInfo", 0, "setTroopLevelMap:" + this.troopuin + ", old=" + this.troopLevelMap);
         }
         this.troopLevelMap = troopLevelMapToString(localHashMap);
         this.mCachedLevelMap = localHashMap;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.getTroopMemberLevelInfo", 2, "setTroopLevelMap:" + this.troopuin + ", new=" + this.troopLevelMap);
+        if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+          com.tencent.TMG.utils.QLog.d("Q.getTroopMemberLevelInfo", 0, "setTroopLevelMap:" + this.troopuin + ", new=" + this.troopLevelMap);
         }
       }
       return;
@@ -1145,7 +1697,7 @@ public class TroopInfo
   }
   
   @SuppressLint({"UseSparseArrays"})
-  public void setTroopLevelMap787(List paramList)
+  public void setTroopLevelMap787(List<oidb_0x787.LevelName> paramList)
   {
     if (paramList != null) {}
     try
@@ -1161,13 +1713,13 @@ public class TroopInfo
           localHashMap.put(Integer.valueOf(localLevelName.uint32_level.get()), localLevelName.str_name.get().toStringUtf8());
           i += 1;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.getTroopMemberLevelInfo", 2, "setTroopLevelMap787:" + this.troopuin + ", old=" + this.troopLevelMap);
+        if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+          com.tencent.TMG.utils.QLog.d("Q.getTroopMemberLevelInfo", 0, "setTroopLevelMap787:" + this.troopuin + ", old=" + this.troopLevelMap);
         }
         this.troopLevelMap = troopLevelMapToString(localHashMap);
         this.mCachedLevelMap = localHashMap;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.getTroopMemberLevelInfo", 2, "setTroopLevelMap787:" + this.troopuin + ", new=" + this.troopLevelMap);
+        if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+          com.tencent.TMG.utils.QLog.d("Q.getTroopMemberLevelInfo", 0, "setTroopLevelMap787:" + this.troopuin + ", new=" + this.troopLevelMap);
         }
       }
       return;
@@ -1175,50 +1727,87 @@ public class TroopInfo
     finally {}
   }
   
-  public void updateHeadMemberList(ArrayList paramArrayList)
+  public void setUseClassAvatar(boolean paramBoolean)
   {
-    paramArrayList.remove(BaseApplicationImpl.getApplication().getRuntime().getAccount());
-    this.mHeaderUinsNew = GroupIconHelper.a(paramArrayList, false);
+    if (paramBoolean)
+    {
+      this.dwGroupFlagExt |= 0x20000;
+      return;
+    }
+    this.dwGroupFlagExt &= 0xFFFDFFFF;
   }
   
-  public void updateHeadMemberUins(List paramList)
+  public String toString()
   {
+    Object localObject2 = this.troopuin;
+    String str = this.newTroopName;
+    Object localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = "[no uin]";
+    }
+    localObject2 = str;
+    if (TextUtils.isEmpty(str)) {
+      localObject2 = "[no name]";
+    }
+    return "TroopInfo: {uin = " + (String)localObject1 + ", name = " + (String)localObject2 + "}";
+  }
+  
+  public void updateHeadMemberList(ArrayList<String> paramArrayList)
+  {
+    if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+      com.tencent.TMG.utils.QLog.d("TroopInfo", 0, "updateHeadMemberList");
+    }
+    this.mHeaderUinsNew = GroupIconHelper.a(GroupIconHelper.a(paramArrayList, this), false);
+  }
+  
+  public void updateHeadMemberUins(List<oidb_0x899.memberlist> paramList)
+  {
+    if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+      com.tencent.TMG.utils.QLog.d("TroopInfo", 0, "updateHeadMemberUins");
+    }
     int i;
-    String str;
     ArrayList localArrayList;
     int j;
-    label33:
+    label37:
     oidb_0x899.memberlist localmemberlist;
     if (paramList != null)
     {
       i = paramList.size();
-      str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
       localArrayList = new ArrayList();
       j = 0;
       if (j >= i) {
-        break label149;
+        break label118;
       }
       localmemberlist = (oidb_0x899.memberlist)paramList.get(j);
       if ((localmemberlist != null) && (localmemberlist.uint64_member_uin.has())) {
-        break label78;
+        break label82;
       }
     }
     for (;;)
     {
       j += 1;
-      break label33;
+      break label37;
       i = 0;
       break;
-      label78:
-      if (!str.equals("" + localmemberlist.uint64_member_uin.get())) {
-        localArrayList.add("" + localmemberlist.uint64_member_uin.get());
-      }
+      label82:
+      localArrayList.add("" + localmemberlist.uint64_member_uin.get());
     }
-    label149:
-    this.mHeaderUinsNew = GroupIconHelper.a(localArrayList, false);
+    label118:
+    this.mHeaderUinsNew = GroupIconHelper.a(GroupIconHelper.a(localArrayList, this), false);
   }
   
-  public void updateQZonePhotoUrls(ArrayList paramArrayList)
+  public void updateLastMemoFromWeb(String paramString)
+  {
+    this.strLastAnnouncement = paramString;
+    if (this.strLastAnnouncement == null) {
+      this.strLastAnnouncement = "";
+    }
+    if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+      com.tencent.TMG.utils.QLog.i("TroopInfo", 0, "updateLastMemoFromWeb : " + this.strLastAnnouncement);
+    }
+  }
+  
+  public void updateQZonePhotoUrls(ArrayList<String> paramArrayList)
   {
     int j = 0;
     StringBuilder localStringBuilder = new StringBuilder();
@@ -1239,7 +1828,7 @@ public class TroopInfo
     this.strQZonePhotoUrls = localStringBuilder.toString();
   }
   
-  public void updateSomeMemberUins(List paramList)
+  public void updateSomeMemberUins(List<oidb_0x899.memberlist> paramList)
   {
     int j = 0;
     int i;

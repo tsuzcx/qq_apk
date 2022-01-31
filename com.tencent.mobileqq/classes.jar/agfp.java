@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.ar.FaceUIController;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
 
 public class agfp
-  implements Runnable
+  extends agfg
 {
-  public agfp(ScanTorchActivity paramScanTorchActivity) {}
-  
-  public void run()
-  {
-    this.a.a.a.dismiss();
-  }
+  public TroopSignVideoView a;
+  public View e;
+  public View f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agfp
  * JD-Core Version:    0.7.0.1
  */

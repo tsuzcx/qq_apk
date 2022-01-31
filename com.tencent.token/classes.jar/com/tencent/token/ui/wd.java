@@ -1,25 +1,28 @@
 package com.tencent.token.ui;
 
-import android.content.res.Resources;
-import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.widget.EditText;
 
-final class wd
+class wd
   implements View.OnClickListener
 {
-  wd(RealNameSmsContentTipActivity paramRealNameSmsContentTipActivity) {}
+  wd(RealNameStep0VerifyMobileDownActivity paramRealNameStep0VerifyMobileDownActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    RealNameSmsContentTipActivity.access$1200(this.a).setVisibility(0);
-    RealNameSmsContentTipActivity.access$1400(this.a).setText(this.a.getResources().getString(2131361882));
-    RealNameSmsContentTipActivity.access$1000(this.a).setVisibility(4);
-    RealNameSmsContentTipActivity.access$202(this.a, 0);
-    RealNameSmsContentTipActivity.access$1300(this.a).setClickable(false);
-    this.a.mHandler.sendEmptyMessage(3);
+    if (RealNameStep0VerifyMobileDownActivity.access$1200(this.a) != null) {
+      RealNameStep0VerifyMobileDownActivity.access$1200(this.a).clearFocus();
+    }
+    paramView = RealNameStep0VerifyMobileDownActivity.access$1200(this.a).getText().toString();
+    if ((paramView == null) || (paramView.length() == 0)) {
+      this.a.showToast(2131230959);
+    }
+    while (RealNameStep0VerifyMobileDownActivity.access$900(this.a)) {
+      return;
+    }
+    this.a.showProDialog(this.a, 2131230843, 2131231298, null);
+    RealNameStep0VerifyMobileDownActivity.access$1400(this.a, paramView);
   }
 }
 

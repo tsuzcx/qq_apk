@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="13.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c057d" android:ellipsize="end" android:id="@id/title" android:paddingLeft="15.0dip" android:paddingTop="20.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
-</LinearLayout>

@@ -1,54 +1,36 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class djt
   implements DialogInterface.OnClickListener
 {
-  public djt(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
+  public djt(SplashActivity paramSplashActivity, CheckBox paramCheckBox) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReportController.b(this.a.b, "P_CliOper", "", "", "mp_msg_sys_16", "lixian_redelete", 0, 0, "", "", "", "");
-    if (!this.a.isFinishing())
-    {
-      paramDialogInterface.cancel();
-      this.a.showDialog(1);
+    paramDialogInterface = "";
+    if (this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.b.d()) {
+      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.b.a();
     }
-    if (Build.VERSION.SDK_INT > 15) {}
-    try
-    {
-      paramDialogInterface = new WebView(this.a);
-      paramDialogInterface.clearCache(true);
-      paramDialogInterface.clearFormData();
-      paramDialogInterface.clearSslPreferences();
-      if (Build.VERSION.SDK_INT >= 11) {
-        paramDialogInterface.removeJavascriptInterface("searchBoxJavaBridge_");
-      }
-      paramDialogInterface.clearHistory();
-      paramDialogInterface.clearMatches();
-      paramDialogInterface.destroy();
-    }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AssitantSettingActivity", 2, "clear webview cache got exception:" + paramDialogInterface.getMessage());
-        }
-      }
-    }
-    ThreadManager.b(new dju(this));
+    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity).edit();
+    localEditor.putBoolean("notToastPushMsg" + paramDialogInterface, this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
+    localEditor.putBoolean(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131563456) + paramDialogInterface, true);
+    localEditor.putBoolean(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131563457) + paramDialogInterface, true);
+    localEditor.putBoolean("discussion_msg_notify" + paramDialogInterface, true);
+    localEditor.putBoolean(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131563459) + paramDialogInterface, true);
+    localEditor.commit();
+    this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     djt
  * JD-Core Version:    0.7.0.1
  */

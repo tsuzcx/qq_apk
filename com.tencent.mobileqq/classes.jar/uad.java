@@ -1,39 +1,23 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.biz.qqcircle.requests.QCircleClientReportRequest;
+import com.tencent.qphone.base.util.QLog;
+import qqcircle.QQCircleReport.StDataReportRsp;
 
-public class uad
-  implements View.OnClickListener
+class uad
+  implements zac<QQCircleReport.StDataReportRsp>
 {
-  public uad(TroopMemberListActivity paramTroopMemberListActivity) {}
+  uad(uab paramuab, QCircleClientReportRequest paramQCircleClientReportRequest) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleReport.StDataReportRsp paramStDataReportRsp)
   {
-    if ((this.a.d == 15) && (TroopMemberListActivity.a(this.a).size() > 0))
-    {
-      paramView = new Intent();
-      paramView.putExtra("param_deleted_uins", TroopMemberListActivity.a(this.a));
-      this.a.setResult(-1, paramView);
-      if ((this.a.e == null) || (!this.a.e.equals(this.a.app.getCurrentAccountUin()))) {
-        break label159;
-      }
-    }
-    label159:
-    for (int i = 0;; i = 1)
-    {
-      ReportController.b(this.a.app, "dc00899", "Grp_mber", "", "mber_list", "del_inacmem", 0, 0, this.a.b, "" + i, "1", TroopMemberListActivity.a(this.a).toString());
-      this.a.finish();
-      return;
+    if (((!paramBoolean) || (paramLong != 0L) || (paramStDataReportRsp == null)) && (!TextUtils.isEmpty(paramString))) {
+      QLog.e("QCircleReporter", 1, "performClientReport error:" + paramString + ",traceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleClientReportRequest.getTraceId());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uad
  * JD-Core Version:    0.7.0.1
  */

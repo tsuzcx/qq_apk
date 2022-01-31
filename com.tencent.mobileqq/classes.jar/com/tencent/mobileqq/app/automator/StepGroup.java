@@ -1,12 +1,14 @@
 package com.tencent.mobileqq.app.automator;
 
+import amhg;
+
 public class StepGroup
   extends AsyncStep
 {
-  protected String a;
   protected AsyncStep[] a;
   protected String[] a;
-  public int d;
+  public String b;
+  public int e;
   
   private String a(String paramString)
   {
@@ -84,14 +86,15 @@ public class StepGroup
     return localStringBuilder.toString().split("-");
   }
   
-  protected AsyncStep a()
+  public AsyncStep a()
   {
-    if (this.d < this.jdField_a_of_type_ArrayOfJavaLangString.length)
+    if (this.e < this.jdField_a_of_type_ArrayOfJavaLangString.length)
     {
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep[this.d] = StepFactory.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator, this.jdField_a_of_type_ArrayOfJavaLangString[this.d]);
+      this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep[this.e] = amhg.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator, this.jdField_a_of_type_ArrayOfJavaLangString[this.e]);
+      this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep[this.e].jdField_a_of_type_ArrayOfJavaLangObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
       AsyncStep[] arrayOfAsyncStep = this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep;
-      int i = this.d;
-      this.d = (i + 1);
+      int i = this.e;
+      this.e = (i + 1);
       return arrayOfAsyncStep[i];
     }
     return null;
@@ -99,9 +102,9 @@ public class StepGroup
   
   public void a()
   {
-    this.b = 2147483647L;
-    this.jdField_a_of_type_ArrayOfJavaLangString = a(this.jdField_a_of_type_JavaLangString);
-    this.d = 0;
+    this.jdField_b_of_type_Long = 2147483647L;
+    this.jdField_a_of_type_ArrayOfJavaLangString = a(this.jdField_b_of_type_JavaLangString);
+    this.e = 0;
     this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep = new AsyncStep[this.jdField_a_of_type_ArrayOfJavaLangString.length];
   }
   
@@ -110,12 +113,11 @@ public class StepGroup
     if (paramInt != 4) {
       super.a(paramInt);
     }
-    AsyncStep[] arrayOfAsyncStep;
+    AsyncStep[] arrayOfAsyncStep = this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep;
     int j;
     int i;
-    if (((paramInt == 8) || (paramInt == 4)) && (this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep != null))
+    if (((paramInt == 8) || (paramInt == 4)) && (arrayOfAsyncStep != null))
     {
-      arrayOfAsyncStep = this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep;
       j = arrayOfAsyncStep.length;
       i = 0;
     }

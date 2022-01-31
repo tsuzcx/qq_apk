@@ -16,7 +16,6 @@ public class DynamicPluginLoader
   private static PluginLoader a;
   
   private static void a(Object paramObject)
-    throws AssertionError
   {
     if (paramObject == null) {
       throw new AssertionError();
@@ -25,7 +24,6 @@ public class DynamicPluginLoader
   
   @API
   private void initPluginLoaderIfNeeded(InstalledPlugin paramInstalledPlugin)
-    throws LoadPluginException
   {
     if (a == null)
     {
@@ -46,7 +44,6 @@ public class DynamicPluginLoader
   
   @API
   public ProgressFuture<RunningPlugin> loadPlugin(Context paramContext, InstalledPlugin paramInstalledPlugin)
-    throws LoadPluginException
   {
     if ((paramInstalledPlugin instanceof UseDynamicPluginLoaderInstalledPlugin)) {
       try
@@ -86,7 +83,7 @@ public class DynamicPluginLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.hydevteam.pluginframework.pluginloader.DynamicPluginLoader
  * JD-Core Version:    0.7.0.1
  */

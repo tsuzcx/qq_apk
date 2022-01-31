@@ -1,23 +1,18 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnBufferingUpdateListener;
-import com.tencent.mobileqq.troop.widget.VideoViewX;
+import com.tencent.mobileqq.utils.RoamSettingController;
 
 public class hec
-  implements MediaPlayer.OnBufferingUpdateListener
+  implements Runnable
 {
-  public hec(VideoViewX paramVideoViewX) {}
+  public hec(RoamSettingController paramRoamSettingController) {}
   
-  public void onBufferingUpdate(MediaPlayer paramMediaPlayer, int paramInt)
+  public void run()
   {
-    VideoViewX.e(this.a, paramInt);
-    if (VideoViewX.a(this.a) != null) {
-      VideoViewX.a(this.a).onBufferingUpdate(VideoViewX.a(this.a), paramInt);
-    }
+    RoamSettingController.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hec
  * JD-Core Version:    0.7.0.1
  */

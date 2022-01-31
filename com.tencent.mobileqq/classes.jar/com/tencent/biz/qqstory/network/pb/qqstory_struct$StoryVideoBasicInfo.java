@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_struct$StoryVideoBasicInfo
-  extends MessageMicro
+  extends MessageMicro<StoryVideoBasicInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public qqstory_struct.Address address = new qqstory_struct.Address();
@@ -22,7 +22,7 @@ public final class qqstory_struct$StoryVideoBasicInfo
   public final PBUInt32Field has_related_videos = PBField.initUInt32(0);
   public final PBBytesField label = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField owner_union_id = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField poll_options = PBField.initRepeat(PBStringField.__repeatHelper__);
+  public final PBRepeatField<String> poll_options = PBField.initRepeat(PBStringField.__repeatHelper__);
   public final PBStringField poll_text = PBField.initString("");
   public final PBBytesField title = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField vid = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -49,7 +49,7 @@ public final class qqstory_struct$StoryVideoBasicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoBasicInfo
  * JD-Core Version:    0.7.0.1
  */

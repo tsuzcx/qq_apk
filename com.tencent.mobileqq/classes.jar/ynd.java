@@ -1,43 +1,59 @@
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.ApolloTicker;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
 
 public class ynd
-  implements Runnable
+  implements Handler.Callback
 {
-  private final long jdField_a_of_type_Long;
-  public final ApolloSurfaceView a;
-  private final long b;
+  public ynd(VideoPlayerView paramVideoPlayerView) {}
   
-  ynd(ApolloTicker paramApolloTicker, ApolloSurfaceView paramApolloSurfaceView, long paramLong1, long paramLong2)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView = paramApolloSurfaceView;
-    this.jdField_a_of_type_Long = paramLong2;
-    this.b = paramLong1;
-  }
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView == null) {}
-    while ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.mIsDestroy == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.mIsDestroy.get()) || (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.mRenderMode != 0)) {
-      return;
-    }
-    long l = System.currentTimeMillis();
-    try
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker.nativeCallbackTicker(this.b, l, 0.01666666666666667D * this.jdField_a_of_type_Long);
-      return;
     }
-    catch (Throwable localThrowable)
+    label258:
+    do
     {
-      QLog.e("ApolloTicker", 1, "[onDrawFrame]");
-    }
+      do
+      {
+        return false;
+        if (VideoPlayerView.g(this.a)) {}
+        for (int i = paramMessage.arg2 - paramMessage.arg1;; i = paramMessage.arg1)
+        {
+          int j = i / 1000 / 60;
+          i = i / 1000 % 60;
+          if ((VideoPlayerView.a(this.a) != null) && (VideoPlayerView.a(this.a).a() > VideoPlayerView.a(this.a).b() / 2L) && (!VideoPlayerView.h(this.a))) {
+            VideoPlayerView.f(this.a);
+          }
+          if (VideoPlayerView.i(this.a)) {
+            break label258;
+          }
+          if (this.a.b != null) {
+            this.a.b.setText(String.format("%02d:%02d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) }));
+          }
+          if ((VideoPlayerView.a(this.a) == null) || (!((Boolean)paramMessage.obj).booleanValue())) {
+            break;
+          }
+          VideoPlayerView.a(this.a).a(String.format("%02d:%02d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) }), paramMessage.arg2, paramMessage.arg1);
+          return false;
+        }
+      } while ((VideoPlayerView.a(this.a) == null) || (!((Boolean)paramMessage.obj).booleanValue()));
+      VideoPlayerView.a(this.a).onVideoProgressUpdate(paramMessage.arg1);
+      return false;
+      VideoPlayerView.g(this.a);
+      return false;
+    } while (VideoPlayerView.d(this.a) == null);
+    VideoPlayerView.d(this.a).setVisibility(8);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ynd
  * JD-Core Version:    0.7.0.1
  */

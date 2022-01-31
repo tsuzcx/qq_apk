@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.widget.BounceScrollView;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class afch
-  implements Runnable
+class afch
+  implements MessageQueue.IdleHandler
 {
-  public afch(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, BounceScrollView paramBounceScrollView, int paramInt) {}
+  afch(afcg paramafcg) {}
   
-  public void run()
+  public boolean queueIdle()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.scrollBy(0, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseChatDrawer", 2, "queueIdle");
+    }
+    if (afce.b()) {
+      this.a.a();
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afch
  * JD-Core Version:    0.7.0.1
  */

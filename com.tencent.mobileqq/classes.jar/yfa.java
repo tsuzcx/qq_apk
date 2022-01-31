@@ -1,43 +1,19 @@
-import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager.CallBack;
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.view.View;
 
-public class yfa
-  implements QvipSpecialSoundManager.CallBack
+class yfa
+  implements yem
 {
-  public yfa(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
+  yfa(yew paramyew) {}
   
-  public void a(boolean paramBoolean)
+  public void a(View paramView, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialCareSettingActivity", 2, "loadSpecialSoundConfig onResult: " + paramBoolean);
-    }
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        QQSpecialCareSettingActivity.a(this.a);
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      finally
-      {
-        this.a.stopTitleProgress();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSpecialCareSettingActivity", 2, "loadSpecialSoundConfig fail.");
-      }
-    }
+    this.a.d(paramStFeed);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yfa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,34 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class agjm
-  implements ImageAssetDelegate
+  implements DialogInterface.OnClickListener
 {
-  agjm(agjl paramagjl) {}
+  agjm(agji paramagji, int paramInt) {}
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramLottieImageAsset = paramLottieImageAsset.getFileName();
-    Bitmap localBitmap = (Bitmap)this.a.a.a.get(paramLottieImageAsset);
-    QLog.i("ScanTorchActivity", 1, "loadWorldCupGuideAnimation. fetchBitmap. name = " + paramLottieImageAsset);
-    return localBitmap;
+    if (paramInt == 1)
+    {
+      if (this.jdField_a_of_type_Int != 0) {
+        break label47;
+      }
+      this.jdField_a_of_type_Agji.a(new Integer[] { Integer.valueOf(0), Integer.valueOf(1) });
+    }
+    for (;;)
+    {
+      agji.b(this.jdField_a_of_type_Agji, null);
+      return;
+      label47:
+      if (this.jdField_a_of_type_Int == 1) {
+        this.jdField_a_of_type_Agji.a(new Integer[] { Integer.valueOf(0), Integer.valueOf(2) });
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agjm
  * JD-Core Version:    0.7.0.1
  */

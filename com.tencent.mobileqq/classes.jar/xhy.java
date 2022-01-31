@@ -1,20 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.observer.BusinessObserver;
+import java.io.File;
+import java.io.FileFilter;
 
 class xhy
-  implements BusinessObserver
+  implements FileFilter
 {
-  xhy(xhx paramxhx, long paramLong) {}
+  xhy(xhx paramxhx) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public boolean accept(File paramFile)
   {
-    ThreadManager.postImmediately(new xhz(this, paramBoolean, paramBundle, paramInt), null, false);
+    paramFile = paramFile.getName();
+    return (paramFile.endsWith(".jpg")) || (paramFile.endsWith(".png")) || (paramFile.endsWith(".bmp"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xhy
  * JD-Core Version:    0.7.0.1
  */

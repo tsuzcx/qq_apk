@@ -1,23 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-class dqw
-  implements DialogInterface.OnClickListener
+public class dqw
+  implements Animation.AnimationListener
 {
-  dqw(dqv paramdqv) {}
+  public dqw(TroopMemberListActivity paramTroopMemberListActivity, View paramView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramInt == 1)
-    {
-      this.a.a.d();
-      SubAccountBindActivity.a(this.a.a, true);
-      SubAccountAssistantManager.a().a(this.a.a.b);
-      this.a.a.f();
+    this.jdField_a_of_type_AndroidViewView.clearAnimation();
+    if (!this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,21 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-
-public class wxc
-  implements DialogInterface.OnClickListener
+public abstract interface wxc
 {
-  public wxc(PhotoListActivity paramPhotoListActivity) {}
+  public abstract void a(String paramString1, String paramString2);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.setResult(8001);
-  }
+  public abstract void a(String paramString1, String paramString2, Throwable paramThrowable);
+  
+  public abstract boolean a(int paramInt);
+  
+  public abstract void b(String paramString1, String paramString2);
+  
+  public abstract void b(String paramString1, String paramString2, Throwable paramThrowable);
+  
+  public abstract void c(String paramString1, String paramString2);
+  
+  public abstract void c(String paramString1, String paramString2, Throwable paramThrowable);
+  
+  public abstract void d(String paramString1, String paramString2);
+  
+  public abstract void d(String paramString1, String paramString2, Throwable paramThrowable);
+  
+  public abstract void e(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wxc
  * JD-Core Version:    0.7.0.1
  */

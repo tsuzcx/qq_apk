@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
 import android.support.annotation.NonNull;
+import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="busId,them,actId")
 public class AioPushData
-  extends Entity
-  implements Comparable
+  extends awge
+  implements Comparable<AioPushData>
 {
   public String actId;
   public int begTs;
@@ -52,7 +52,7 @@ public class AioPushData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.AioPushData
  * JD-Core Version:    0.7.0.1
  */

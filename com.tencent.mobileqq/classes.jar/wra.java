@@ -1,39 +1,35 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.CallTabUnreadListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qcall.QCallFacade;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.LruCache;
 
-public class wra
-  implements CallTabUnreadListener
+class wra
+  extends LruCache<wrb, Drawable>
 {
-  public wra(MainAssistObserver paramMainAssistObserver) {}
-  
-  public void a()
+  wra(wqy paramwqy, int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SplashActivity", 4, "msg fresh callback...");
+    super(paramInt);
+  }
+  
+  protected int a(wrb paramwrb, Drawable paramDrawable)
+  {
+    if ((paramDrawable instanceof BitmapDrawable))
+    {
+      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
+      if (paramDrawable != null)
+      {
+        int i = paramDrawable.getRowBytes();
+        i = paramDrawable.getHeight() * i;
+        wrk.b("Q.qqstory.newImageLoader", new Object[] { "URLImageLoader cache put:", paramwrb, " size=", Integer.valueOf(i) });
+        return i;
+      }
     }
-    if ((this.a.a == null) || (this.a.a.app == null)) {
-      return;
-    }
-    QQAppInterface localQQAppInterface = this.a.a.app;
-    int i = QCallFacade.a(localQQAppInterface);
-    this.a.a(36, 16, Integer.valueOf(i));
-    Intent localIntent = new Intent("com.tencent.qq.syncQQMessage");
-    localQQAppInterface.getApp().sendBroadcast(localIntent);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("fetchUnReadCount", 4, String.format("MainAssistObserver通话tab, callUnReadCount[%s]", new Object[] { Integer.valueOf(i) }));
-    }
-    localQQAppInterface.C();
+    return 524288;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wra
  * JD-Core Version:    0.7.0.1
  */

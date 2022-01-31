@@ -1,38 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.view.View;
+import com.tencent.av.ui.guide.GuideHelper;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
 
 public class mrf
-  extends Handler
+  implements mrj
 {
-  private WeakReference a;
+  public mrf(GuideHelper paramGuideHelper, long paramLong, Context paramContext, int paramInt) {}
   
-  public mrf(ReadInJoySkinAnimManager paramReadInJoySkinAnimManager)
+  public void a(LottieDrawable paramLottieDrawable)
   {
-    this.a = new WeakReference(paramReadInJoySkinAnimManager);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    ReadInJoySkinAnimManager localReadInJoySkinAnimManager = (ReadInJoySkinAnimManager)this.a.get();
-    if (localReadInJoySkinAnimManager == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    this.jdField_a_of_type_ComTencentAvUiGuideGuideHelper.a.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = paramLottieDrawable;
+    if ((paramLottieDrawable != null) && (this.jdField_a_of_type_ComTencentAvUiGuideGuideHelper.a.jdField_a_of_type_AndroidViewView != null))
     {
-    default: 
-      return;
-    case 1: 
-      ReadInJoySkinAnimManager.b(localReadInJoySkinAnimManager);
-      return;
+      this.jdField_a_of_type_ComTencentAvUiGuideGuideHelper.a.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(paramLottieDrawable);
+      GuideHelper.a(this.jdField_a_of_type_ComTencentAvUiGuideGuideHelper, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
     }
-    ReadInJoySkinAnimManager.a(localReadInJoySkinAnimManager);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mrf
  * JD-Core Version:    0.7.0.1
  */

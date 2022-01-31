@@ -1,22 +1,23 @@
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileOtherTabView;
-import java.util.LinkedHashMap;
+import com.tencent.mobileqq.activity.Conversation;
 
-class acrz
-  implements Runnable
+public class acrz
+  extends aqru
 {
-  acrz(acry paramacry, LinkedHashMap paramLinkedHashMap) {}
+  public acrz(Conversation paramConversation) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Acry.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    this.jdField_a_of_type_Acry.a.jdField_a_of_type_JavaUtilLinkedHashMap.putAll(this.jdField_a_of_type_JavaUtilLinkedHashMap);
-    this.jdField_a_of_type_Acry.a.i();
-    this.jdField_a_of_type_Acry.a.setSelect(0);
+    this.a.a(8, paramString, -2147483648);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    this.a.a(8, paramString1, -2147483648);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acrz
  * JD-Core Version:    0.7.0.1
  */

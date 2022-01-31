@@ -1,19 +1,18 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
 public class ailr
-  implements MediaPlayer.OnErrorListener
+  implements DialogInterface.OnClickListener
 {
-  public ailr(VideoSprite paramVideoSprite) {}
+  public ailr(BindNumberActivity paramBindNumberActivity) {}
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("VideoSprite", 2, "onError: " + paramInt1);
+    if (this.a.a != null) {
+      this.a.a.setText("");
     }
-    return true;
   }
 }
 

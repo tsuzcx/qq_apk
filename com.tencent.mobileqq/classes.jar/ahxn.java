@@ -1,22 +1,36 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.service.message.MessagePBElemDecoder;
-import cooperation.dingdong.data.OfficeCenterSharedPref;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class ahxn
-  implements Runnable
+class ahxn
+  extends nac
 {
-  public ahxn(MessagePBElemDecoder paramMessagePBElemDecoder) {}
+  ahxn(ahww paramahww) {}
   
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (!OfficeCenterSharedPref.a().a(MessagePBElemDecoder.a(this.a).getCurrentAccountUin() + "officecenter_receive_schedule_message", false)) {
-      OfficeCenterSharedPref.a().b(MessagePBElemDecoder.a(this.a).getCurrentAccountUin() + "officecenter_receive_schedule_message", true);
+    QLog.i("SDKEmotionSettingManager", 1, " checkJumpAction checkOpenidDiff errorCode =" + paramInt);
+    if ((ahww.a(this.a).isFinishing()) || (this.a.a))
+    {
+      QLog.i("SDKEmotionSettingManager", 1, " checkJumpAction activity finishing or timeout");
+      return;
     }
+    this.a.c();
+    if (ahww.a(this.a) != null) {
+      ahww.a(this.a).removeCallbacks(ahww.b(this.a));
+    }
+    if (paramInt == 16)
+    {
+      this.a.d();
+      return;
+    }
+    ahww.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahxn
  * JD-Core Version:    0.7.0.1
  */

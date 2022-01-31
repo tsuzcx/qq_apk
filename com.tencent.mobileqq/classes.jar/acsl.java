@@ -1,18 +1,27 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.qphone.base.util.QLog;
 
-class acsl
-  implements Runnable
+public class acsl
+  extends amco
 {
-  acsl(acsi paramacsi) {}
+  public acsl(Conversation paramConversation) {}
   
-  public void run()
+  public void a(boolean paramBoolean, int paramInt)
   {
-    this.a.a.e();
+    if (!this.a.f) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent", 2, "VideoRedbag, onCheckRealNameRsp in conv");
+      }
+    } while ((!paramBoolean) || (paramInt != azjh.a));
+    bdgm.a(this.a.a(), 0, null, this.a.a(2131720135), 2131720137, 2131720136, new acsm(this), new acsn(this)).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acsl
  * JD-Core Version:    0.7.0.1
  */

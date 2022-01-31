@@ -1,25 +1,34 @@
-import android.view.MotionEvent;
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemButton;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
 
-public class aiil
-  implements View.OnTouchListener
+class aiil
+  implements bhuw
 {
-  public aiil(StructMsgItemButton paramStructMsgItemButton) {}
+  aiil(aiie paramaiie) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.a.a != null)
-    {
-      OnLongClickAndTouchListener localOnLongClickAndTouchListener = (OnLongClickAndTouchListener)this.a.a.get();
-      if (localOnLongClickAndTouchListener != null) {
-        return localOnLongClickAndTouchListener.onTouch(paramView, paramMotionEvent);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
     }
-    return false;
+    if ((this.a.jdField_a_of_type_Aieh.getCount() <= 0) || (paramInt <= 0)) {}
+    do
+    {
+      return;
+      paramAdapterView = (aihj)this.a.jdField_a_of_type_Aieh.getItem(paramInt - 1);
+    } while (paramAdapterView == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, mRecordCount = " + this.a.jdField_a_of_type_Int + ",needSearchInCloud:" + this.a.b);
+    }
+    paramView = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+    ChatHistoryBubbleListForTroopFragment.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, paramView, paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq, -1, 2);
+    this.a.a(true);
   }
 }
 

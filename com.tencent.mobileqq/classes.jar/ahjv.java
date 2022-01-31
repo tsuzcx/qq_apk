@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-
 class ahjv
-  implements Runnable
+  extends altm
 {
-  ahjv(ahjs paramahjs) {}
+  ahjv(ahjr paramahjr) {}
   
-  public void run()
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    EffectsCameraCaptureFragment.a(this.a.a, false);
+    if ((paramBoolean) && (ahjr.a(this.a) != null)) {
+      ahjr.a(this.a).a(String.valueOf(paramObject));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahjv
  * JD-Core Version:    0.7.0.1
  */

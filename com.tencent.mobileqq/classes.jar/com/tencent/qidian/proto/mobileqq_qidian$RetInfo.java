@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class mobileqq_qidian$RetInfo
-  extends MessageMicro
+  extends MessageMicro<RetInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "uint32_ret_code", "str_error_msg" }, new Object[] { Integer.valueOf(0), "" }, RetInfo.class);
   public final PBStringField str_error_msg = PBField.initString("");
@@ -15,7 +15,7 @@ public final class mobileqq_qidian$RetInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qidian.proto.mobileqq_qidian.RetInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ public class c
   
   public static c a()
   {
-    return a.a();
+    return c.a.a();
   }
   
   public void onBindEnd(boolean paramBoolean)
@@ -115,11 +115,6 @@ public class c
       QLog.w("StatManager", 1, "", localException);
       localException.printStackTrace();
     }
-  }
-  
-  private static class a
-  {
-    private static final c a = new c(null);
   }
 }
 

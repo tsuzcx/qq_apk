@@ -1,37 +1,24 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity.13.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class nyg
-  extends QQUIEventReceiver
+  implements bhum
 {
-  public nyg(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
-  {
-    super(paramStoryMessageListActivity);
-  }
+  public nyg(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
+  public void onDismiss()
   {
-    if (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i(this.TAG, 2, "get userinfo come back. >>>>>> " + paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList);
-      }
-      paramStoryMessageListActivity.e();
+    if ((!this.a.a) && (this.a.j != -1)) {
+      ThreadManager.getUIHandler().postDelayed(new ReadInJoyBaseDeliverActivity.13.1(this), 300L);
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return GetUserInfoHandler.UpdateUserInfoEvent.class;
+    this.a.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nyg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.SecondDemoView;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class aobq
-  implements ValueAnimator.AnimatorUpdateListener
+class aobq
+  implements View.OnClickListener
 {
-  public aobq(SecondDemoView paramSecondDemoView) {}
+  aobq(aobo paramaobo, BaseActivity paramBaseActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    paramValueAnimator = (ArrayList)paramValueAnimator.getAnimatedValue();
-    this.a.a = paramValueAnimator;
-    this.a.invalidate();
+    aobo.a(this.jdField_a_of_type_Aobo, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    azqs.a(this.jdField_a_of_type_Aobo.a, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 23, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aobq
  * JD-Core Version:    0.7.0.1
  */

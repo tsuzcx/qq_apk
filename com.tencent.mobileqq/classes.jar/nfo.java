@@ -1,27 +1,28 @@
-import com.tencent.biz.qqstory.model.HotSortVideoManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.network.handler.GetHotSortVideoHandler;
-import com.tencent.biz.qqstory.network.handler.GetHotSortVideoHandler.GetHotSortVideoResponse;
-import com.tencent.biz.qqstory.network.handler.GetHotSortVideoHandler.GetVideoByHotSortEvent;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
 
 public class nfo
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public nfo(GetHotSortVideoHandler.GetHotSortVideoResponse paramGetHotSortVideoResponse, ArrayList paramArrayList, GetHotSortVideoHandler.GetVideoByHotSortEvent paramGetVideoByHotSortEvent) {}
+  int jdField_a_of_type_Int = 0;
+  Handler jdField_a_of_type_AndroidOsHandler = new nfp(this);
   
-  public void run()
+  public nfo(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ((HotSortVideoManager)SuperManager.a(25)).a(this.jdField_a_of_type_JavaUtilArrayList, GetHotSortVideoHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetHotSortVideoHandler$GetHotSortVideoResponse.a), true);
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetHotSortVideoHandler$GetVideoByHotSortEvent.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    Dispatchers.get().dispatch(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetHotSortVideoHandler$GetVideoByHotSortEvent);
+    if (paramMotionEvent.getAction() == 1) {
+      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 5L);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nfo
  * JD-Core Version:    0.7.0.1
  */

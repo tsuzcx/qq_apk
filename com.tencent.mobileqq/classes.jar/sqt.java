@@ -1,31 +1,25 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
-import com.tencent.mobileqq.medalwall.MedalWallMng;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
+import com.tencent.viola.core.ViolaInstance;
 
 public class sqt
-  implements Runnable
+  extends sqj
+  implements sqc
 {
-  public sqt(FriendProfileCardActivity paramFriendProfileCardActivity, DiniFlyAnimationView paramDiniFlyAnimationView) {}
-  
-  public void run()
+  public sqt(Activity paramActivity, spx paramspx, VVideoView paramVVideoView, ViolaInstance paramViolaInstance)
   {
-    JSONObject localJSONObject = MedalWallMng.a();
-    if (localJSONObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MedalWallMng", 2, "lottie json is null!");
-      }
-      return;
-    }
-    LottieComposition.Factory.fromJson(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getResources(), localJSONObject, new squ(this));
+    super(paramActivity, paramspx, paramVVideoView, paramViolaInstance);
   }
+  
+  public void M_() {}
+  
+  public void N_() {}
+  
+  public void O_() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sqt
  * JD-Core Version:    0.7.0.1
  */

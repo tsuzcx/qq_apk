@@ -1,134 +1,68 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioManager;
-import com.tencent.sharp.jni.TraeAudioManager.DeviceConfigManager;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class alyt
+public class alyt
 {
-  alyt(TraeAudioManager paramTraeAudioManager) {}
+  public int a;
+  public long a;
+  public int b;
+  public long b;
+  public long c;
   
-  public abstract String a();
-  
-  String a(int paramInt)
+  public alyt()
   {
-    String str;
-    switch (paramInt)
-    {
-    default: 
-      str = "unknow";
-    }
-    for (;;)
-    {
-      return str + ":" + paramInt;
-      str = "STATE_OFF";
-      continue;
-      str = "STATE_TURNING_ON";
-      continue;
-      str = "STATE_ON";
-      continue;
-      str = "STATE_TURNING_OFF";
-    }
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public abstract void a();
-  
-  abstract void a(Context paramContext, Intent paramIntent);
-  
-  public void a(Context paramContext, Intent paramIntent, TraeAudioManager.DeviceConfigManager paramDeviceConfigManager)
+  public static alyt a(String paramString)
   {
-    if ("android.bluetooth.adapter.action.STATE_CHANGED".equals(paramIntent.getAction()))
+    alyt localalyt = new alyt();
+    try
     {
-      i = paramIntent.getIntExtra("android.bluetooth.adapter.extra.STATE", -1);
-      j = paramIntent.getIntExtra("android.bluetooth.adapter.extra.PREVIOUS_STATE", -1);
-      if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 2, "BT ACTION_STATE_CHANGED|   EXTRA_STATE " + a(i));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 2, "BT ACTION_STATE_CHANGED|   EXTRA_PREVIOUS_STATE " + a(j));
-      }
-      if (i == 10) {
-        if (QLog.isColorLevel()) {
-          QLog.w("TRAE", 2, "    BT off");
-        }
-      }
+      paramString = new JSONObject(paramString);
+      localalyt.jdField_a_of_type_Int = paramString.optInt("version", -1);
+      localalyt.jdField_a_of_type_Long = paramString.optLong("showDate", 0L);
+      localalyt.jdField_b_of_type_Long = paramString.optInt("leftShowNum", 0);
+      localalyt.jdField_b_of_type_Int = paramString.optInt("showCountEveryDay", 0);
+      localalyt.c = paramString.optInt("leftLoginNum", 0);
+      return localalyt;
     }
-    while ((("android.bluetooth.device.action.ACL_CONNECTED".equals(paramIntent.getAction())) && (Build.VERSION.SDK_INT < 11)) || (("android.bluetooth.device.action.ACL_DISCONNECTED".equals(paramIntent.getAction())) && (Build.VERSION.SDK_INT < 11)))
+    catch (Exception paramString)
     {
-      int i;
-      int j;
-      paramDeviceConfigManager.a("DEVICE_BLUETOOTHHEADSET", false);
-      do
+      localalyt.jdField_a_of_type_Int = -1;
+    }
+    return localalyt;
+  }
+  
+  public String a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("version", this.jdField_a_of_type_Int);
+      localJSONObject.put("showDate", this.jdField_a_of_type_Long);
+      localJSONObject.put("leftShowNum", this.jdField_b_of_type_Long);
+      localJSONObject.put("showCountEveryDay", this.jdField_b_of_type_Int);
+      localJSONObject.put("leftLoginNum", this.c);
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
       {
-        return;
-      } while ((i != 12) || (!QLog.isColorLevel()));
-      QLog.w("TRAE", 2, "BT OFF-->ON,Visiable it...");
-      return;
-    }
-    a(paramContext, paramIntent);
-  }
-  
-  abstract void a(IntentFilter paramIntentFilter);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(Context paramContext, TraeAudioManager.DeviceConfigManager paramDeviceConfigManager);
-  
-  String b(int paramInt)
-  {
-    String str;
-    switch (paramInt)
-    {
-    default: 
-      str = "unknow";
-    }
-    for (;;)
-    {
-      return str + ":" + paramInt;
-      str = "SCO_AUDIO_STATE_DISCONNECTED";
-      continue;
-      str = "SCO_AUDIO_STATE_CONNECTED";
-      continue;
-      str = "SCO_AUDIO_STATE_CONNECTING";
-      continue;
-      str = "SCO_AUDIO_STATE_ERROR";
+        localJSONException.printStackTrace();
+      }
     }
   }
   
-  public void b(IntentFilter paramIntentFilter)
+  public String toString()
   {
-    paramIntentFilter.addAction("android.bluetooth.adapter.action.STATE_CHANGED");
-    paramIntentFilter.addAction("android.bluetooth.device.action.ACL_CONNECTED");
-    paramIntentFilter.addAction("android.bluetooth.device.action.ACL_DISCONNECTED");
-    a(paramIntentFilter);
-  }
-  
-  String c(int paramInt)
-  {
-    String str;
-    switch (paramInt)
-    {
-    default: 
-      str = "unknow";
-    }
-    for (;;)
-    {
-      return str + ":" + paramInt;
-      str = "STATE_DISCONNECTED";
-      continue;
-      str = "STATE_CONNECTING";
-      continue;
-      str = "STATE_CONNECTED";
-      continue;
-      str = "STATE_DISCONNECTING";
-    }
+    return "MobileUnityVersionInfo [version=" + this.jdField_a_of_type_Int + ", showDate=" + this.jdField_a_of_type_Long + ", leftShowNum=" + this.jdField_b_of_type_Long + ", leftLoginNum = " + this.c + ", showCountEveryDay=" + this.jdField_b_of_type_Int + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alyt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,70 +1,129 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.Rect;
+import android.util.DisplayMetrics;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 public class zji
-  implements Runnable
+  implements ziz
 {
   int jdField_a_of_type_Int = 0;
-  volatile boolean jdField_a_of_type_Boolean;
-  volatile int jdField_b_of_type_Int = 0;
-  volatile boolean jdField_b_of_type_Boolean = false;
-  volatile int c = 5;
+  Rect jdField_a_of_type_AndroidGraphicsRect;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  berz jdField_a_of_type_Berz;
+  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
   
-  private zji(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  private void a(Activity paramActivity)
+  {
+    Object localObject1 = null;
+    try
+    {
+      localObject2 = BitmapFactory.decodeResource(paramActivity.getResources(), 2130848099);
+      localObject1 = localObject2;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      Object localObject2;
+      label14:
+      break label14;
+    }
+    localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = Bitmap.createBitmap(4, 4, Bitmap.Config.ARGB_8888);
+    }
+    this.jdField_a_of_type_Berz = new berz((Bitmap)localObject2, (int)(paramActivity.getResources().getDisplayMetrics().density * 12.0F));
+    this.jdField_a_of_type_Berz.setLevel(0);
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
+  }
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = false;
-    BaseApplicationImpl.sUiHandler.postDelayed(this, 100L);
+    this.jdField_a_of_type_Boolean = true;
+    if ((this.b) && (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 4))
+    {
+      if ((this.jdField_a_of_type_AndroidGraphicsRect.width() == 0) || (this.jdField_a_of_type_AndroidGraphicsRect.height() == 0))
+      {
+        this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_AndroidWidgetImageView.getWidth(), this.jdField_a_of_type_AndroidWidgetImageView.getHeight());
+        this.jdField_a_of_type_Berz.setBounds(this.jdField_a_of_type_AndroidGraphicsRect);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_Berz);
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    }
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager", 2, "set progress, actual = " + paramInt1 + ", expected = " + paramInt2);
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = true;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if ((this.jdField_a_of_type_AndroidGraphicsRect.width() == 0) || (this.jdField_a_of_type_AndroidGraphicsRect.height() == 0))
+      {
+        this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_AndroidWidgetImageView.getWidth(), this.jdField_a_of_type_AndroidWidgetImageView.getHeight());
+        this.jdField_a_of_type_Berz.setBounds(this.jdField_a_of_type_AndroidGraphicsRect);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_Berz);
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     }
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt2;
-    BaseApplicationImpl.sUiHandler.removeCallbacks(this);
-    BaseApplicationImpl.sUiHandler.postDelayed(this, 20L);
+    if ((paramInt >= 0) && (paramInt < 100))
+    {
+      this.jdField_a_of_type_Berz.setLevel(paramInt * 100);
+      this.jdField_a_of_type_Berz.invalidateSelf();
+      return;
+    }
+    this.jdField_a_of_type_Berz.a();
+  }
+  
+  public void a(Activity paramActivity, ImageView paramImageView)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
+    a(paramActivity);
+  }
+  
+  public void a(Activity paramActivity, zin paramzin)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((RelativeLayout)paramzin.a()).findViewById(2131372371));
+    a(paramActivity);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Boolean = true;
-    BaseApplicationImpl.sUiHandler.removeCallbacks(this);
+    this.jdField_a_of_type_Boolean = false;
+    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    }
   }
   
-  public void run()
+  public void b(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager", 2, "run progress, isCanceled = " + this.jdField_a_of_type_Boolean + ", bindState = " + this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.jdField_a_of_type_Int);
-    }
-    Object localObject;
-    if ((!this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.jdField_a_of_type_Int == 8) || (this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.jdField_a_of_type_Int == 4)) && (this.jdField_a_of_type_Int + 1 < this.c))
+    if ((paramInt >= 0) && (paramInt <= 100))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp;
-      int i = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = (i + 1);
-      PhoneContactManagerImp.b((PhoneContactManagerImp)localObject, i);
-      if (this.jdField_b_of_type_Boolean)
-      {
-        PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp, 7);
-        this.jdField_b_of_type_Boolean = false;
-      }
-      localObject = BaseApplicationImpl.sUiHandler;
-      if (this.jdField_a_of_type_Int >= this.jdField_b_of_type_Int) {
-        break label166;
-      }
+      this.jdField_a_of_type_Berz.setLevel(paramInt * 100);
+      this.jdField_a_of_type_Berz.invalidateSelf();
     }
-    label166:
-    for (long l = 20L;; l = 100L)
-    {
-      ((MqqHandler)localObject).postDelayed(this, l);
-      return;
+  }
+  
+  public boolean b()
+  {
+    return this.b;
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.b = false;
+    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
     }
   }
 }

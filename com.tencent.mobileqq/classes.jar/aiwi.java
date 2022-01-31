@@ -1,32 +1,24 @@
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
+import com.tencent.mobileqq.activity.qwallet.RedPacketVoiceFragment;
 
 public class aiwi
   implements View.OnClickListener
 {
-  public aiwi(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public aiwi(RedPacketVoiceFragment paramRedPacketVoiceFragment) {}
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    if ((!this.a.c()) && (RedPacketVoiceFragment.a(this.a) != null) && (paramView != null))
     {
-    default: 
-      return;
-    case 2131362740: 
-      paramView = (ActionSheet)ActionSheetHelper.a(this.a, null);
-      paramView.a(2131435885, 3);
-      paramView.c(2131433015);
-      paramView.a(new aiwj(this, paramView));
-      paramView.show();
-      return;
-    case 2131364798: 
-      TroopAvatarWallPreviewActivity.c(this.a);
-      return;
+      Intent localIntent = new Intent(paramView.getContext(), PayBridgeActivity.class);
+      localIntent.putExtras(RedPacketVoiceFragment.a(this.a));
+      localIntent.putExtra("pay_requestcode", 5);
+      paramView.getContext().startActivity(localIntent);
     }
-    TroopAvatarWallPreviewActivity.h(this.a);
   }
 }
 

@@ -1,68 +1,15 @@
-import com.tencent.mobileqq.imaxad.ImaxAdUtil;
-import com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
 public class adtd
-  implements INetInfoHandler
+  extends alqh
 {
-  ImaxAdVideoPreloadManager a;
+  public adtd(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public adtd(ImaxAdVideoPreloadManager paramImaxAdVideoPreloadManager1, ImaxAdVideoPreloadManager paramImaxAdVideoPreloadManager2)
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    this.a = paramImaxAdVideoPreloadManager2;
-  }
-  
-  public void a()
-  {
-    this.a = null;
-  }
-  
-  public void onNetMobile2None()
-  {
-    ImaxAdUtil.b("onNetMobile2None");
-    if (this.a != null) {
-      ImaxAdVideoPreloadManager.b(this.a);
-    }
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    ImaxAdUtil.b("onNetMobile2Wifi");
-    if (this.a != null) {
-      ImaxAdVideoPreloadManager.b(this.a);
-    }
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    ImaxAdUtil.b("onNetNone2Mobile");
-    if (this.a != null) {
-      ImaxAdVideoPreloadManager.b(this.a);
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    ImaxAdUtil.b("onNetNone2Wifi");
-    if (this.a != null) {
-      ImaxAdVideoPreloadManager.b(this.a);
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    ImaxAdUtil.b("onNetWifi2Mobile");
-    if (this.a != null) {
-      ImaxAdVideoPreloadManager.b(this.a);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    ImaxAdUtil.b("onNetWifi2None");
-    if (this.a != null) {
-      ImaxAdVideoPreloadManager.b(this.a);
-    }
+    QQSettingSettingActivity.a(this.a, paramUpgradeDetailWrapper);
+    QQSettingSettingActivity.c(this.a);
   }
 }
 

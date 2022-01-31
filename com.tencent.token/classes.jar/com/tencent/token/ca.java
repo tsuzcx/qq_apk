@@ -1,101 +1,100 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Message;
-import android.util.DisplayMetrics;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.b;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
-import com.tencent.token.utils.s;
-import com.tencent.token.utils.t;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import org.json.JSONObject;
+import com.tencent.halley.common.b.f;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public final class ca
-  extends bm
+  implements br
 {
-  public static int c = -1;
-  public static int d = -1;
-  private long e;
-  private int f;
+  private static AtomicInteger k = new AtomicInteger(0);
+  public f a;
+  public int b = 0;
+  public String c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public bg h;
+  public long i;
+  public int j;
+  private f l;
+  private byte[] m;
+  private int n = 0;
   
-  public static void a(fs paramfs, long paramLong)
+  public ca(f paramf)
   {
-    paramfs.c.put("param.realuin", Long.valueOf(paramLong));
+    new CountDownLatch(1);
+    this.d = 0;
+    this.e = 0;
+    this.f = 0;
+    this.g = 0;
+    this.h = null;
+    this.i = 0L;
+    this.j = 20;
+    this.l = paramf;
+    this.n = k.getAndIncrement();
+    this.l.a(this.n);
   }
   
-  protected final String a()
+  public final f a()
   {
-    ae.a();
-    if (ax.a().p()) {
-      ax.a();
-    }
-    for (String str = ax.c; str == null; str = null)
-    {
-      this.a.a(104, null, null);
-      return null;
-    }
-    Object localObject = RqdApplication.i().getResources().getDisplayMetrics();
-    localObject = s.a(new Object[] { "real_uin", Long.valueOf(this.e), "scene_id", Integer.valueOf(1), "mobile_brand", URLEncoder.encode(Build.BRAND), "mobile_model", URLEncoder.encode(Build.MODEL), "mobile_sdk_int", Integer.valueOf(Integer.parseInt(Build.VERSION.SDK)), "mobile_sdk_str", URLEncoder.encode(Build.VERSION.RELEASE), "screen_witdh", Integer.valueOf(((DisplayMetrics)localObject).widthPixels), "screen_height", Integer.valueOf(((DisplayMetrics)localObject).heightPixels), "screen_dpi", Integer.valueOf(((DisplayMetrics)localObject).densityDpi), "cpu_count", Integer.valueOf(t.r()), "cpu_freq", Integer.valueOf(t.s()) });
-    str = "?aq_base_sid=" + str + "&data=" + (String)localObject;
-    return b.c() + "/cn/mbtoken3/mbtoken3_idcard_auto_detect" + str;
+    return this.a;
   }
   
-  protected final void a(fs paramfs)
+  public final void a(int paramInt)
   {
-    this.e = ((Long)paramfs.c.get("param.realuin")).longValue();
+    bz.a().a(this, paramInt);
   }
   
-  protected final void a(JSONObject paramJSONObject)
+  public final int b()
   {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
-    {
-      a(i, paramJSONObject.getString("info"));
-      return;
-    }
-    paramJSONObject = s.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
-    {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      this.f = paramJSONObject.getInt("need_idcard_detect");
-      if (this.f == 1) {}
-      try
-      {
-        c = paramJSONObject.getInt("displayangle");
-        d = paramJSONObject.getInt("imageangle");
-        e.a("plain angle=" + c + ",angel2=" + d);
-        this.a.a = 0;
-        return;
-      }
-      catch (Exception paramJSONObject)
-      {
-        for (;;)
-        {
-          paramJSONObject.printStackTrace();
-        }
-      }
-    }
-    e.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.i().getString(2131361799));
+    return this.b;
   }
   
-  protected final void b()
+  public final String c()
   {
-    if (!this.b.e)
-    {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.arg2 = this.f;
-      localMessage.sendToTarget();
-      this.b.e = true;
-    }
+    return this.c;
+  }
+  
+  public final bg d()
+  {
+    return this.h;
+  }
+  
+  public final int e()
+  {
+    return this.d;
+  }
+  
+  public final int f()
+  {
+    return this.g;
+  }
+  
+  public final int g()
+  {
+    return this.e;
+  }
+  
+  public final int h()
+  {
+    return this.f;
+  }
+  
+  public final void i()
+  {
+    this.m = this.l.a();
+  }
+  
+  public final int j()
+  {
+    return this.n;
+  }
+  
+  public final byte[] k()
+  {
+    return this.m;
   }
 }
 

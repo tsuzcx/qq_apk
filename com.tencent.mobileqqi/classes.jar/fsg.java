@@ -1,53 +1,25 @@
-import com.tencent.mobileqq.emoticon.EPJsonTask;
-import com.tencent.mobileqq.emoticon.EmoticonController;
-import com.tencent.mobileqq.emoticon.EmoticonController.ProgressHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
 
 public class fsg
-  implements Runnable
 {
-  public fsg(EmoticonController paramEmoticonController, int paramInt) {}
+  public int a;
+  public int b;
   
-  public void run()
+  public fsg(LocalFileBrowserActivity paramLocalFileBrowserActivity)
   {
-    EmoticonController.ProgressHandler localProgressHandler;
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonController.e)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonController.e.size() == 0) {
-        return;
-      }
-      localProgressHandler = (EmoticonController.ProgressHandler)this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonController.e.remove(0);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonController.f.add(localProgressHandler);
-      ??? = new EPJsonTask(localProgressHandler.a, EmoticonController.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonController));
-      ((EPJsonTask)???).a(localProgressHandler);
-      ((EPJsonTask)???).a(this.jdField_a_of_type_Int);
-    }
-    try
-    {
-      ((EPJsonTask)???).a();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.emoji.EmosmDetailActivity", 2, "startDownloadEmosmJson|json is loading");
-      }
-      EmoticonController.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonController, this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonController.f, localProgressHandler);
-      return;
-      localObject1 = finally;
-      throw localObject1;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.emoji.EmoDown", 2, "downloadEmosmJson Exception|" + localException.toString());
-        }
-      }
-    }
+    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
+  }
+  
+  public fsg(LocalFileBrowserActivity paramLocalFileBrowserActivity, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     fsg
  * JD-Core Version:    0.7.0.1
  */

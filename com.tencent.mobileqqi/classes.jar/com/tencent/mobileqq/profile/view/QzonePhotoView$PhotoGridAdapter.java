@@ -73,9 +73,9 @@ class QzonePhotoView$PhotoGridAdapter
     if (paramView == null)
     {
       paramView = new QzonePhotoView.PhotoGridAdapter.ItemHolder(this);
-      RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView.getContext()).inflate(2130903688, null);
+      RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView.getContext()).inflate(2130903690, null);
       localRelativeLayout.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int));
-      paramView.a = ((URLImageView)localRelativeLayout.findViewById(2131233432));
+      paramView.a = ((URLImageView)localRelativeLayout.findViewById(2131233434));
       paramView.a.setTag(new DataTag(25, null));
       if (paramViewGroup.j == 100) {
         paramView.a.setImageURL(paramViewGroup.a(this.jdField_a_of_type_Int));

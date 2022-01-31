@@ -1,21 +1,18 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ScreenShot;
-import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
-import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
+import java.util.concurrent.ThreadFactory;
 
-public class fkw
-  implements View.OnClickListener
+public final class fkw
+  implements ThreadFactory
 {
-  public fkw(ScreenShot paramScreenShot) {}
-  
-  public void onClick(View paramView)
+  public Thread newThread(Runnable paramRunnable)
   {
-    ScreenShot.a(this.a);
-    if ((!MobileIssueSettings.g) && (Build.VERSION.SDK_INT < 11)) {
-      KapalaiAdapterUtil.a().b(this.a.a);
+    paramRunnable = new Thread("Bubble_Animation");
+    if (paramRunnable.isDaemon()) {
+      paramRunnable.setDaemon(false);
     }
+    if (paramRunnable.getPriority() != 5) {
+      paramRunnable.setPriority(5);
+    }
+    return paramRunnable;
   }
 }
 

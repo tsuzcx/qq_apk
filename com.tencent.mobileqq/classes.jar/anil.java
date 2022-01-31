@@ -1,25 +1,23 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import dov.com.qq.im.QIMCameraCaptureUnit;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.3;
 
 public class anil
-  implements MediaScanner.OnMediaInfoScannerListener
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public anil(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
+  public anil(ArkAppDeviceModule.ObserverMethod.3 param3, bdjz parambdjz) {}
   
-  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    if (!paramBoolean)
-    {
-      this.a.a(101);
-      return;
+    if (paramBitmap != null) {
+      ((ImageView)this.jdField_a_of_type_Bdjz.findViewById(2131365192)).setImageBitmap(paramBitmap);
     }
-    this.a.a(this.a.a, paramLocalMediaInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anil
  * JD-Core Version:    0.7.0.1
  */

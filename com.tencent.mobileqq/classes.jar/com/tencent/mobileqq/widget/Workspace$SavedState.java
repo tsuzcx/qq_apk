@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.widget;
 
-import akxl;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.view.View.BaseSavedState;
+import bewq;
 
 public class Workspace$SavedState
   extends View.BaseSavedState
 {
-  public static final Parcelable.Creator CREATOR = new akxl();
+  public static final Parcelable.Creator<SavedState> CREATOR = new bewq();
   int currentScreen = -1;
   
   private Workspace$SavedState(Parcel paramParcel)
@@ -31,7 +31,7 @@ public class Workspace$SavedState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.Workspace.SavedState
  * JD-Core Version:    0.7.0.1
  */

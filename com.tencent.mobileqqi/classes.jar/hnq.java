@@ -1,17 +1,26 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.open.agent.RecommendListManager;
-import java.util.HashMap;
+import android.app.Activity;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.base.TicketUtils;
+import com.tencent.open.base.TicketUtils.TicketCallback;
+import com.tencent.open.downloadnew.MyAppApi;
 
 public class hnq
-  implements Runnable
+  implements TicketUtils.TicketCallback
 {
-  public hnq(RecommendListManager paramRecommendListManager, String paramString, Bitmap paramBitmap) {}
+  public hnq(MyAppApi paramMyAppApi, TicketUtils paramTicketUtils, long paramLong, Activity paramActivity) {}
   
-  public void run()
+  public void a()
   {
-    ((ImageView)((View)this.jdField_a_of_type_ComTencentOpenAgentRecommendListManager.a.get(this.jdField_a_of_type_JavaLangString)).findViewById(2131230940)).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    LogUtility.a("MyAppApi", "onGetA1Fail ---");
+    ThreadManager.b().post(new hns(this));
+  }
+  
+  public void a(String paramString, byte[] paramArrayOfByte)
+  {
+    LogUtility.a("MyAppApi", "onGetA1 ---");
+    ThreadManager.b().post(new hnr(this, paramArrayOfByte, paramString));
   }
 }
 

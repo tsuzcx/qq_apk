@@ -1,10 +1,16 @@
-import com.tencent.mobileqq.app.ShakeListener;
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
 
 public class aeeb
-  extends ShakeListener
+  implements DialogInterface.OnClickListener
 {
-  public aeeb(MagicfaceActionManager paramMagicfaceActionManager) {}
+  public aeeb(TroopLowCreditLevelNotifyActivity paramTroopLowCreditLevelNotifyActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.finish();
+  }
 }
 
 

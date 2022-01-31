@@ -1,46 +1,29 @@
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.widget.QQViewPager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.GridView;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateViewPagerAdapter;
-import dov.com.qq.im.capture.view.QIMPtvTemplateProviderView;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
 
 public class anpz
-  implements Runnable
+  implements View.OnClickListener
 {
-  public anpz(QIMPtvTemplateProviderView paramQIMPtvTemplateProviderView, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo) {}
+  public anpz(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    GridView localGridView = (GridView)this.jdField_a_of_type_DovComQqImCaptureViewQIMPtvTemplateProviderView.jdField_a_of_type_DovComQqImCaptureAdapterQIMPtvTemplateViewPagerAdapter.a.get(Integer.valueOf(this.jdField_a_of_type_DovComQqImCaptureViewQIMPtvTemplateProviderView.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem()));
-    if (localGridView != null)
-    {
-      localListAdapter = localGridView.a();
-      if ((localListAdapter instanceof QIMPtvTemplateAdapter))
-      {
-        i = ((QIMPtvTemplateAdapter)localListAdapter).a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
-        ((QIMPtvTemplateAdapter)localListAdapter).a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, i);
-        localGridView.requestFocusFromTouch();
-        localGridView.setFocusableInTouchMode(true);
-        localGridView.setSelection(i);
-        ((QIMPtvTemplateAdapter)localListAdapter).notifyDataSetChanged();
-      }
+    paramView = (bhuf)bhus.a(BaseActivity.sTopActivity, null);
+    paramView.a(BaseActivity.sTopActivity.getString(2131690265));
+    paramView.a(2131690264, 3);
+    paramView.c(2131690266);
+    paramView.setOnDismissListener(new anqa(this, paramView));
+    paramView.a(new anqb(this, paramView));
+    if (!paramView.isShowing()) {
+      paramView.show();
     }
-    while (!QLog.isColorLevel())
-    {
-      ListAdapter localListAdapter;
-      int i;
-      return;
-    }
-    QLog.d("PtvTemplateProviderView", 2, "gridView is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpz
  * JD-Core Version:    0.7.0.1
  */

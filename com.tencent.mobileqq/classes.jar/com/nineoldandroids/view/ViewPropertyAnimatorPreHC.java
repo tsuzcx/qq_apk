@@ -5,7 +5,6 @@ import android.view.animation.Interpolator;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.Animator.AnimatorListener;
 import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
 import com.nineoldandroids.view.animation.AnimatorProxy;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -28,21 +27,15 @@ class ViewPropertyAnimatorPreHC
   private static final int TRANSLATION_Y = 2;
   private static final int X = 128;
   private static final int Y = 256;
-  private Runnable mAnimationStarter = new Runnable()
-  {
-    public void run()
-    {
-      ViewPropertyAnimatorPreHC.this.startAnimation();
-    }
-  };
-  private AnimatorEventListener mAnimatorEventListener = new AnimatorEventListener(null);
-  private HashMap<Animator, PropertyBundle> mAnimatorMap = new HashMap();
+  private Runnable mAnimationStarter = new ViewPropertyAnimatorPreHC.1(this);
+  private ViewPropertyAnimatorPreHC.AnimatorEventListener mAnimatorEventListener = new ViewPropertyAnimatorPreHC.AnimatorEventListener(this, null);
+  private HashMap<Animator, ViewPropertyAnimatorPreHC.PropertyBundle> mAnimatorMap = new HashMap();
   private long mDuration;
   private boolean mDurationSet = false;
   private Interpolator mInterpolator;
   private boolean mInterpolatorSet = false;
   private Animator.AnimatorListener mListener = null;
-  ArrayList<NameValuesHolder> mPendingAnimations = new ArrayList();
+  ArrayList<ViewPropertyAnimatorPreHC.NameValuesHolder> mPendingAnimations = new ArrayList();
   private final AnimatorProxy mProxy;
   private long mStartDelay = 0L;
   private boolean mStartDelaySet = false;
@@ -67,22 +60,22 @@ class ViewPropertyAnimatorPreHC
   
   private void animatePropertyBy(int paramInt, float paramFloat1, float paramFloat2)
   {
-    Object localObject;
     Iterator localIterator;
+    Object localObject;
     if (this.mAnimatorMap.size() > 0)
     {
-      localObject = null;
       localIterator = this.mAnimatorMap.keySet().iterator();
       if (localIterator.hasNext()) {
         break label107;
       }
+      localObject = null;
     }
     for (;;)
     {
       if (localObject != null) {
         ((Animator)localObject).cancel();
       }
-      localObject = new NameValuesHolder(paramInt, paramFloat1, paramFloat2);
+      localObject = new ViewPropertyAnimatorPreHC.NameValuesHolder(paramInt, paramFloat1, paramFloat2);
       this.mPendingAnimations.add(localObject);
       localObject = (View)this.mView.get();
       if (localObject != null)
@@ -92,12 +85,11 @@ class ViewPropertyAnimatorPreHC
       }
       return;
       label107:
-      Animator localAnimator = (Animator)localIterator.next();
-      PropertyBundle localPropertyBundle = (PropertyBundle)this.mAnimatorMap.get(localAnimator);
+      localObject = (Animator)localIterator.next();
+      ViewPropertyAnimatorPreHC.PropertyBundle localPropertyBundle = (ViewPropertyAnimatorPreHC.PropertyBundle)this.mAnimatorMap.get(localObject);
       if ((!localPropertyBundle.cancel(paramInt)) || (localPropertyBundle.mPropertyMask != 0)) {
         break;
       }
-      localObject = localAnimator;
     }
   }
   
@@ -171,14 +163,14 @@ class ViewPropertyAnimatorPreHC
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F });
     ArrayList localArrayList = (ArrayList)this.mPendingAnimations.clone();
     this.mPendingAnimations.clear();
-    int j = 0;
     int k = localArrayList.size();
     int i = 0;
+    int j = 0;
     for (;;)
     {
       if (i >= k)
       {
-        this.mAnimatorMap.put(localValueAnimator, new PropertyBundle(j, localArrayList));
+        this.mAnimatorMap.put(localValueAnimator, new ViewPropertyAnimatorPreHC.PropertyBundle(j, localArrayList));
         localValueAnimator.addUpdateListener(this.mAnimatorEventListener);
         localValueAnimator.addListener(this.mAnimatorEventListener);
         if (this.mStartDelaySet) {
@@ -193,7 +185,7 @@ class ViewPropertyAnimatorPreHC
         localValueAnimator.start();
         return;
       }
-      j |= ((NameValuesHolder)localArrayList.get(i)).mNameConstant;
+      j |= ((ViewPropertyAnimatorPreHC.NameValuesHolder)localArrayList.get(i)).mNameConstant;
       i += 1;
     }
   }
@@ -392,136 +384,10 @@ class ViewPropertyAnimatorPreHC
     animatePropertyBy(256, paramFloat);
     return this;
   }
-  
-  private class AnimatorEventListener
-    implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
-  {
-    private AnimatorEventListener() {}
-    
-    public void onAnimationCancel(Animator paramAnimator)
-    {
-      if (ViewPropertyAnimatorPreHC.this.mListener != null) {
-        ViewPropertyAnimatorPreHC.this.mListener.onAnimationCancel(paramAnimator);
-      }
-    }
-    
-    public void onAnimationEnd(Animator paramAnimator)
-    {
-      if (ViewPropertyAnimatorPreHC.this.mListener != null) {
-        ViewPropertyAnimatorPreHC.this.mListener.onAnimationEnd(paramAnimator);
-      }
-      ViewPropertyAnimatorPreHC.this.mAnimatorMap.remove(paramAnimator);
-      if (ViewPropertyAnimatorPreHC.this.mAnimatorMap.isEmpty()) {
-        ViewPropertyAnimatorPreHC.this.mListener = null;
-      }
-    }
-    
-    public void onAnimationRepeat(Animator paramAnimator)
-    {
-      if (ViewPropertyAnimatorPreHC.this.mListener != null) {
-        ViewPropertyAnimatorPreHC.this.mListener.onAnimationRepeat(paramAnimator);
-      }
-    }
-    
-    public void onAnimationStart(Animator paramAnimator)
-    {
-      if (ViewPropertyAnimatorPreHC.this.mListener != null) {
-        ViewPropertyAnimatorPreHC.this.mListener.onAnimationStart(paramAnimator);
-      }
-    }
-    
-    public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-    {
-      float f1 = paramValueAnimator.getAnimatedFraction();
-      paramValueAnimator = (ViewPropertyAnimatorPreHC.PropertyBundle)ViewPropertyAnimatorPreHC.this.mAnimatorMap.get(paramValueAnimator);
-      Object localObject;
-      if ((paramValueAnimator.mPropertyMask & 0x1FF) != 0)
-      {
-        localObject = (View)ViewPropertyAnimatorPreHC.this.mView.get();
-        if (localObject != null) {
-          ((View)localObject).invalidate();
-        }
-      }
-      paramValueAnimator = paramValueAnimator.mNameValuesHolder;
-      int j;
-      int i;
-      if (paramValueAnimator != null)
-      {
-        j = paramValueAnimator.size();
-        i = 0;
-      }
-      for (;;)
-      {
-        if (i >= j)
-        {
-          paramValueAnimator = (View)ViewPropertyAnimatorPreHC.this.mView.get();
-          if (paramValueAnimator != null) {
-            paramValueAnimator.invalidate();
-          }
-          return;
-        }
-        localObject = (ViewPropertyAnimatorPreHC.NameValuesHolder)paramValueAnimator.get(i);
-        float f2 = ((ViewPropertyAnimatorPreHC.NameValuesHolder)localObject).mFromValue;
-        float f3 = ((ViewPropertyAnimatorPreHC.NameValuesHolder)localObject).mDeltaValue;
-        ViewPropertyAnimatorPreHC.this.setValue(((ViewPropertyAnimatorPreHC.NameValuesHolder)localObject).mNameConstant, f2 + f3 * f1);
-        i += 1;
-      }
-    }
-  }
-  
-  private static class NameValuesHolder
-  {
-    float mDeltaValue;
-    float mFromValue;
-    int mNameConstant;
-    
-    NameValuesHolder(int paramInt, float paramFloat1, float paramFloat2)
-    {
-      this.mNameConstant = paramInt;
-      this.mFromValue = paramFloat1;
-      this.mDeltaValue = paramFloat2;
-    }
-  }
-  
-  private static class PropertyBundle
-  {
-    ArrayList<ViewPropertyAnimatorPreHC.NameValuesHolder> mNameValuesHolder;
-    int mPropertyMask;
-    
-    PropertyBundle(int paramInt, ArrayList<ViewPropertyAnimatorPreHC.NameValuesHolder> paramArrayList)
-    {
-      this.mPropertyMask = paramInt;
-      this.mNameValuesHolder = paramArrayList;
-    }
-    
-    boolean cancel(int paramInt)
-    {
-      int j;
-      int i;
-      if (((this.mPropertyMask & paramInt) != 0) && (this.mNameValuesHolder != null))
-      {
-        j = this.mNameValuesHolder.size();
-        i = 0;
-      }
-      for (;;)
-      {
-        if (i >= j) {
-          return false;
-        }
-        if (((ViewPropertyAnimatorPreHC.NameValuesHolder)this.mNameValuesHolder.get(i)).mNameConstant == paramInt)
-        {
-          this.mNameValuesHolder.remove(i);
-          this.mPropertyMask &= (paramInt ^ 0xFFFFFFFF);
-          return true;
-        }
-        i += 1;
-      }
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.nineoldandroids.view.ViewPropertyAnimatorPreHC
  * JD-Core Version:    0.7.0.1
  */

@@ -1,60 +1,53 @@
 package com.tencent.av.video.call;
 
 import android.content.Context;
-import android.os.SystemClock;
+import android.content.Intent;
+import android.os.Handler;
+import bdin;
 import com.qq.jce.wup.UniPacket;
-import com.tencent.av.AVLog;
-import com.tencent.av.report.AVReport;
-import com.tencent.av.report.AVReport.ReceiverNodeStage;
-import com.tencent.av.report.AVReport.SenderNodeStage;
-import com.tencent.av.report.TraeConfigUpdate;
-import com.tencent.av.video.jce.QQService.strupbuff;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.msf.sdk.MsfServiceSdk;
-import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import len;
+import lgb;
+import mqg;
 
 public class ClientLogReport
 {
-  private static final String BUSSINESS_DETAIL = "param_bussinesstype";
-  private static final String CONFIG_TRAE = "param_config_trae";
-  private static final String DETAIL = "param_detail";
-  private static final String DETAIL_TRAE = "param_detail_trae";
   private static final int GACSReportNewKey = 2085;
   private static final int GACSReportNewKey2 = 2207;
+  private static final String HWCodecCapabilityTestKey = "dc05274";
+  public static final int HWCodecCapabilityTestTopicId = 5274;
   private static final int LogSendRet_FAIL = 0;
   private static final int LogSendRet_OK = 1;
   private static final int LogSendRet_PENDING = 2;
-  private static final String MSF_DETAIL = "param_msf_detail";
   private static final String NewGACSReport = "dc02085";
   private static final String NewGACSReport2 = "dc02207";
-  private static final String RECEIVER = "actAVQualityReportReceiver";
-  private static final String SDK_VERSION_DETAIL = "param_sdkversion";
-  private static final String SENDER = "actAVQualityReportSender";
-  private static final String SESSION_DETAIL = "param_sessionid";
-  private static final String ServerDataKey = "Data";
+  private static final String REPORT_FAIL_LOG_DIR = ;
+  private static final long REPORT_FAIL_RETRY_MAX_INTERVAL = 86400000L;
+  private static final String REPORT_RECORD_IS_RETRY = "report_record_is_retry";
+  private static final String REPORT_RECORD_SEQ = "report_record_seq";
   private static final String ServerFilterKey = "video_log";
-  private static final int SharpLogServerFilterKey = 607;
-  private static final int SharpReportServerFilterKey = 617;
   private static final String TAG = "ClientLogReport";
-  private static final String TERMINAL_TYPE = "param_terminaltype";
-  private static final String UIN_DETAIL = "param_peeruin";
   private static final String UdpCheckResultServerFilterKey = "video_udpcheck_log";
   private static ClientLogReport instance;
-  private static final String serviceCmd = "CliLogSvc.UploadReq";
-  private int appid;
-  private UniPacket client;
-  private boolean init;
-  private Map jceMap;
-  private strupbuff logJce;
+  private int mAppId;
+  private Context mContext;
+  private boolean mInit;
+  private MsfServiceSdk mMsfSub;
   private boolean mNativeInit;
-  private MsfServiceSdk msfSub;
+  private Map<Integer, ClientLogReport.ReportRecord> mReportRecordCache = new ConcurrentHashMap();
+  private boolean mReportRetryEnable;
+  private int mSeqNo;
+  private VideoAppInterface mVideoApp;
   
   static
   {
@@ -63,9 +56,9 @@ public class ClientLogReport
       cacheMethodIds();
       return;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    catch (Throwable localThrowable)
     {
-      AVLog.e("ClientLogReport", localUnsatisfiedLinkError.getMessage());
+      QLog.e("ClientLogReport", 1, "cacheMethodIds fail.", localThrowable);
     }
   }
   
@@ -77,9 +70,9 @@ public class ClientLogReport
       this.mNativeInit = true;
       return;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    catch (Throwable localThrowable)
     {
-      AVLog.e("ClientLogReport", localUnsatisfiedLinkError.getMessage());
+      QLog.e("ClientLogReport", 1, "ClientLogReport fail.", localThrowable);
     }
   }
   
@@ -95,151 +88,248 @@ public class ClientLogReport
     return instance;
   }
   
-  public int callbackSendLog(long paramLong, int paramInt, byte[] paramArrayOfByte)
+  private int sendLog(long paramLong, int paramInt, byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    if (!this.init) {
-      return 0;
-    }
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return 0;
-    }
-    Object localObject = String.valueOf(paramInt);
-    if (paramInt == 0) {
-      localObject = "video_log";
-    }
-    while ((this.jceMap == null) || (this.msfSub == null))
+    if (!this.mInit)
     {
+      QLog.e("ClientLogReport", 1, "sendLog mInit is false.");
       return 0;
-      if (paramInt == 1) {
-        localObject = "video_udpcheck_log";
-      } else if (paramInt == 2085) {
-        localObject = "dc02085";
-      } else if (paramInt == 2207) {
-        localObject = "dc02207";
-      }
+    }
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
+    {
+      QLog.e("ClientLogReport", 1, "sendLog log is empty.");
+      return 0;
+    }
+    if (this.mMsfSub == null)
+    {
+      QLog.e("ClientLogReport", 1, "sendLog mMsfSub is null.");
+      return 0;
+    }
+    Object localObject1 = String.valueOf(paramInt);
+    if (paramInt == 0) {
+      localObject1 = "video_log";
     }
     try
     {
-      this.jceMap.clear();
-      this.jceMap.put(localObject, new ArrayList());
-      ((ArrayList)this.jceMap.get(localObject)).add(paramArrayOfByte);
-      this.client.put("Data", this.logJce);
-      paramArrayOfByte = this.client.encode();
-      localObject = new ToServiceMsg(this.msfSub.getMsfServiceName(), String.valueOf(paramLong), "CliLogSvc.UploadReq");
-      ((ToServiceMsg)localObject).setNeedCallback(false);
-      ((ToServiceMsg)localObject).putWupBuffer(paramArrayOfByte);
-      paramInt = this.msfSub.sendMsg((ToServiceMsg)localObject);
-      if (paramInt >= 0) {
+      Object localObject2 = new ConcurrentHashMap();
+      ((Map)localObject2).put(localObject1, new ArrayList());
+      ((ArrayList)((Map)localObject2).get(localObject1)).add(paramArrayOfByte);
+      if ((this.mReportRetryEnable) && (this.mVideoApp != null) && (paramInt == 918))
+      {
+        this.mSeqNo += 1;
+        localObject1 = new QQService.strupbuff();
+        ((QQService.strupbuff)localObject1).logstring = ((Map)localObject2);
+        ((QQService.strupbuff)localObject1).seqno = this.mSeqNo;
+        localObject2 = new UniPacket(true);
+        ((UniPacket)localObject2).setServantName("QQService.CliLogSvc.MainServantObj");
+        ((UniPacket)localObject2).setFuncName("UploadReq");
+        ((UniPacket)localObject2).put("Data", localObject1);
+        localObject1 = ((UniPacket)localObject2).encode();
+        if (QLog.isColorLevel()) {
+          QLog.d("ClientLogReport", 2, String.format("sendLog with response length=%s wupBuf=%s", new Object[] { Integer.valueOf(localObject1.length), Arrays.toString((byte[])localObject1) }));
+        }
+        localObject1 = Arrays.copyOfRange((byte[])localObject1, 4, localObject1.length);
+        if (QLog.isColorLevel()) {
+          QLog.d("ClientLogReport", 2, String.format("sendLog length=%s wupBuf1=%s", new Object[] { Integer.valueOf(localObject1.length), Arrays.toString((byte[])localObject1) }));
+        }
+        localObject2 = new ClientLogReport.ReportRecord(null);
+        ((ClientLogReport.ReportRecord)localObject2).mUin = paramLong;
+        ((ClientLogReport.ReportRecord)localObject2).mTopicId = paramInt;
+        ((ClientLogReport.ReportRecord)localObject2).mLog = paramArrayOfByte;
+        ((ClientLogReport.ReportRecord)localObject2).mTimestamp = System.currentTimeMillis();
+        this.mReportRecordCache.put(Integer.valueOf(this.mSeqNo), localObject2);
+        paramArrayOfByte = new ToServiceMsg(null, String.valueOf(paramLong), "CliLogSvc.UploadReq");
+        paramArrayOfByte.putWupBuffer((byte[])localObject1);
+        paramArrayOfByte.setNeedCallback(true);
+        paramArrayOfByte.setTimeout(15000L);
+        paramArrayOfByte.addAttribute("report_record_seq", Integer.valueOf(this.mSeqNo));
+        paramArrayOfByte.addAttribute("report_record_is_retry", Boolean.valueOf(paramBoolean));
+        this.mVideoApp.sendToService(paramArrayOfByte);
+      }
+      for (;;)
+      {
         return 1;
+        if (paramInt == 1)
+        {
+          localObject1 = "video_udpcheck_log";
+          break;
+        }
+        if (paramInt == 2085)
+        {
+          localObject1 = "dc02085";
+          break;
+        }
+        if (paramInt == 2207)
+        {
+          localObject1 = "dc02207";
+          break;
+        }
+        if (paramInt != 5274) {
+          break;
+        }
+        localObject1 = "dc05274";
+        break;
+        paramArrayOfByte = new com.tencent.av.video.jce.QQService.strupbuff();
+        paramArrayOfByte.logstring = ((Map)localObject2);
+        localObject1 = new UniPacket(true);
+        ((UniPacket)localObject1).put("Data", paramArrayOfByte);
+        paramArrayOfByte = ((UniPacket)localObject1).encode();
+        if (QLog.isColorLevel()) {
+          QLog.d("ClientLogReport", 2, String.format("sendLog without response length=%s wupBuf=%s", new Object[] { Integer.valueOf(paramArrayOfByte.length), Arrays.toString(paramArrayOfByte) }));
+        }
+        localObject1 = new ToServiceMsg(this.mMsfSub.getMsfServiceName(), String.valueOf(paramLong), "CliLogSvc.UploadReq");
+        ((ToServiceMsg)localObject1).putWupBuffer(paramArrayOfByte);
+        ((ToServiceMsg)localObject1).setNeedCallback(false);
+        this.mMsfSub.sendMsg((ToServiceMsg)localObject1);
       }
       return 0;
     }
-    catch (Exception paramArrayOfByte)
+    catch (Throwable paramArrayOfByte)
     {
-      paramArrayOfByte.printStackTrace();
+      QLog.e("ClientLogReport", 1, "callbackSendLog fail.", paramArrayOfByte);
     }
-    return 0;
   }
   
-  public void callbackSendNodeData(long paramLong1, int paramInt, long paramLong2, long paramLong3)
+  /* Error */
+  private void writeToFile(File paramFile, byte[] paramArrayOfByte)
   {
-    paramLong1 = SystemClock.elapsedRealtime();
-    AVReport localAVReport = AVReport.a();
-    if (localAVReport == null) {
-      return;
-    }
-    if (paramLong3 != 0L) {
-      localAVReport.S = paramLong3;
-    }
-    if (paramLong2 != 0L) {
-      localAVReport.R = paramLong2;
-    }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 100: 
-      AVReport.a().jdField_f_of_type_Long = paramLong1;
-      AVReport.a().jdField_a_of_type_ComTencentAvReportAVReport$SenderNodeStage = AVReport.SenderNodeStage.SendRequestReq;
-      return;
-    case 118: 
-      AVReport.a().jdField_b_of_type_Long = paramLong1;
-      AVReport.a().jdField_a_of_type_ComTencentAvReportAVReport$SenderNodeStage = AVReport.SenderNodeStage.SendAVRoomReq;
-      localAVReport.jdField_b_of_type_Boolean = false;
-      return;
-    case 119: 
-      AVReport.a().jdField_e_of_type_Long = paramLong1;
-      AVReport.a().jdField_a_of_type_ComTencentAvReportAVReport$SenderNodeStage = AVReport.SenderNodeStage.RecvAVRoomReqACK;
-      return;
-    }
-    localAVReport.r = paramLong1;
-    localAVReport.jdField_a_of_type_ComTencentAvReportAVReport$ReceiverNodeStage = AVReport.ReceiverNodeStage.other;
+    // Byte code:
+    //   0: new 303	java/io/FileOutputStream
+    //   3: dup
+    //   4: aload_1
+    //   5: invokespecial 306	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   8: astore_3
+    //   9: aload_3
+    //   10: astore_1
+    //   11: aload_3
+    //   12: aload_2
+    //   13: invokevirtual 309	java/io/FileOutputStream:write	([B)V
+    //   16: aload_3
+    //   17: astore_1
+    //   18: aload_3
+    //   19: invokevirtual 312	java/io/FileOutputStream:flush	()V
+    //   22: aload_3
+    //   23: ifnull +7 -> 30
+    //   26: aload_3
+    //   27: invokevirtual 315	java/io/FileOutputStream:close	()V
+    //   30: return
+    //   31: astore 4
+    //   33: aconst_null
+    //   34: astore_2
+    //   35: aload_2
+    //   36: astore_1
+    //   37: ldc 44
+    //   39: iconst_1
+    //   40: ldc_w 317
+    //   43: aload 4
+    //   45: invokestatic 87	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   48: aload_2
+    //   49: ifnull -19 -> 30
+    //   52: aload_2
+    //   53: invokevirtual 315	java/io/FileOutputStream:close	()V
+    //   56: return
+    //   57: astore_1
+    //   58: return
+    //   59: astore_2
+    //   60: aconst_null
+    //   61: astore_1
+    //   62: aload_1
+    //   63: ifnull +7 -> 70
+    //   66: aload_1
+    //   67: invokevirtual 315	java/io/FileOutputStream:close	()V
+    //   70: aload_2
+    //   71: athrow
+    //   72: astore_1
+    //   73: return
+    //   74: astore_1
+    //   75: goto -5 -> 70
+    //   78: astore_2
+    //   79: goto -17 -> 62
+    //   82: astore 4
+    //   84: aload_3
+    //   85: astore_2
+    //   86: goto -51 -> 35
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	89	0	this	ClientLogReport
+    //   0	89	1	paramFile	File
+    //   0	89	2	paramArrayOfByte	byte[]
+    //   8	77	3	localFileOutputStream	java.io.FileOutputStream
+    //   31	13	4	localThrowable1	Throwable
+    //   82	1	4	localThrowable2	Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   0	9	31	java/lang/Throwable
+    //   52	56	57	java/lang/Throwable
+    //   0	9	59	finally
+    //   26	30	72	java/lang/Throwable
+    //   66	70	74	java/lang/Throwable
+    //   11	16	78	finally
+    //   18	22	78	finally
+    //   37	48	78	finally
+    //   11	16	82	java/lang/Throwable
+    //   18	22	82	java/lang/Throwable
   }
   
-  public int callbackSendQualityLog(long paramLong1, long paramLong2, long paramLong3, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, int paramInt4, byte[] paramArrayOfByte)
+  public int callbackSendLog(long paramLong, int paramInt, byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return 0;
-    }
-    HashMap localHashMap = new HashMap();
-    if (AVReport.a().jdField_b_of_type_JavaLangString != null) {
-      localHashMap.put("param_peeruin", AVReport.a().jdField_b_of_type_JavaLangString);
-    }
-    localHashMap.put("param_sessionid", String.valueOf(paramLong3));
-    localHashMap.put("param_sdkversion", String.valueOf(paramInt3));
-    localHashMap.put("param_bussinesstype", String.valueOf(paramInt1));
-    localHashMap.put("param_terminaltype", String.valueOf(paramInt2));
-    localHashMap.put("param_msf_detail", AVReport.a().a(paramBoolean));
-    localHashMap.put("param_config_trae", TraeConfigUpdate.a().a());
-    paramArrayOfByte = new String(paramArrayOfByte).split("&");
-    if (paramArrayOfByte.length > 0)
+    QLog.d("ClientLogReport", 1, String.format("callbackSendLog sendUin=%s topicId=%s log=%s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt), paramArrayOfByte }));
+    return sendLog(paramLong, paramInt, paramArrayOfByte, false);
+  }
+  
+  public void checkLocalReportRecord()
+  {
+    QLog.d("ClientLogReport", 1, "checkLocalReportRecord");
+    if (!this.mInit)
     {
-      localHashMap.put("param_detail", paramArrayOfByte[0]);
-      if (paramArrayOfByte.length > 1) {
-        localHashMap.put("param_detail_trae", paramArrayOfByte[1]);
-      }
+      QLog.e("ClientLogReport", 1, "checkLocalReportRecord mInit is false.");
+      return;
     }
+    if (!bdin.g(this.mContext))
+    {
+      QLog.e("ClientLogReport", 1, "checkLocalReportRecord network is invalid.");
+      return;
+    }
+    new Handler(ThreadManagerV2.getFileThreadLooper()).post(new ClientLogReport.1(this));
+  }
+  
+  public void handleServerResp(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("ClientLogReport", 2, localHashMap.toString());
+      QLog.d("ClientLogReport", 2, String.format("handleServerResp request=%s response=%s", new Object[] { paramIntent, paramFromServiceMsg }));
     }
-    if (paramBoolean) {
-      StatisticCollector.a(BaseApplication.getContext()).a(String.valueOf(paramLong1), "actAVQualityReportSender", true, 0L, 0L, localHashMap, "", true);
+    int i;
+    boolean bool2;
+    if ((paramIntent != null) && (paramFromServiceMsg != null))
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      i = ((Integer)paramIntent.getAttribute("report_record_seq")).intValue();
+      boolean bool1 = ((Boolean)paramIntent.getAttribute("report_record_is_retry")).booleanValue();
+      bool2 = paramFromServiceMsg.isSuccess();
+      paramIntent = (ClientLogReport.ReportRecord)this.mReportRecordCache.get(Integer.valueOf(i));
+      QLog.d("ClientLogReport", 1, String.format("handleServerResp seq=%s isRetry=%s success=%s record=%s", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool1), Boolean.valueOf(bool2), paramIntent }));
+      if (paramIntent != null)
+      {
+        if (!bool1) {
+          break label173;
+        }
+        lgb.a(bool2);
+      }
     }
     for (;;)
     {
-      return 1;
-      StatisticCollector.a(BaseApplication.getContext()).a(String.valueOf(paramLong1), "actAVQualityReportReceiver", true, 0L, 0L, localHashMap, "", true);
-    }
-  }
-  
-  public int callbackSendQualityLogBuf(long paramLong, int paramInt, byte[] paramArrayOfByte)
-  {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return 0;
-    }
-    try
-    {
-      paramArrayOfByte = new String(paramArrayOfByte, "UTF-8").split("#");
-      if (paramArrayOfByte.length >= 8)
+      this.mReportRecordCache.remove(Integer.valueOf(i));
+      return;
+      label173:
+      if (!bool2)
       {
-        long l1 = Long.parseLong(paramArrayOfByte[1]);
-        long l2 = Long.parseLong(paramArrayOfByte[2]);
-        paramInt = Integer.parseInt(paramArrayOfByte[3]);
-        int i = Integer.parseInt(paramArrayOfByte[4]);
-        if (Integer.parseInt(paramArrayOfByte[5]) != 0) {}
-        for (boolean bool = true;; bool = false)
-        {
-          int j = Integer.parseInt(paramArrayOfByte[6]);
-          paramArrayOfByte = paramArrayOfByte[7];
-          paramInt = callbackSendQualityLog(paramLong, l1, l2, paramInt, i, j, bool, paramArrayOfByte.length(), paramArrayOfByte.getBytes());
-          return paramInt;
+        paramFromServiceMsg = new File(REPORT_FAIL_LOG_DIR);
+        if (!paramFromServiceMsg.exists()) {
+          paramFromServiceMsg.mkdirs();
         }
+        paramIntent.writeToFile(new File(REPORT_FAIL_LOG_DIR, String.valueOf(paramIntent.mTimestamp)));
+        lgb.c();
       }
-      return 0;
-    }
-    catch (UnsupportedEncodingException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
     }
   }
   
@@ -247,144 +337,26 @@ public class ClientLogReport
   {
     if (this.mNativeInit)
     {
-      this.client = new UniPacket(true);
-      this.jceMap = new ConcurrentHashMap();
-      this.logJce = new strupbuff(this.jceMap);
-      this.msfSub = MsfServiceSdk.get();
-      this.appid = paramInt;
-      this.init = true;
+      this.mContext = paramContext;
+      this.mAppId = paramInt;
+      this.mMsfSub = MsfServiceSdk.get();
+      if (mqg.a().q != 1) {
+        break label73;
+      }
+    }
+    label73:
+    for (boolean bool = true;; bool = false)
+    {
+      this.mReportRetryEnable = bool;
+      this.mInit = true;
+      QLog.d("ClientLogReport", 1, String.format("init mReportRetryEnable=%s", new Object[] { Boolean.valueOf(this.mReportRetryEnable) }));
+      return;
     }
   }
   
-  public void processNode(int paramInt, long paramLong1, long paramLong2)
+  public void setVideoAppInterface(VideoAppInterface paramVideoAppInterface)
   {
-    long l = SystemClock.elapsedRealtime();
-    AVReport localAVReport = AVReport.a();
-    if (localAVReport == null) {
-      return;
-    }
-    if (paramLong2 != 0L) {
-      localAVReport.S = paramLong2;
-    }
-    if (paramLong1 != 0L) {
-      localAVReport.R = paramLong1;
-    }
-    switch (paramInt)
-    {
-    case 105: 
-    case 108: 
-    case 115: 
-    case 121: 
-    default: 
-      return;
-    case 100: 
-      AVReport.a().jdField_f_of_type_Long = l;
-      AVReport.a().jdField_a_of_type_ComTencentAvReportAVReport$SenderNodeStage = AVReport.SenderNodeStage.SendRequestReq;
-      return;
-    case 118: 
-      AVReport.a().jdField_b_of_type_Long = l;
-      AVReport.a().jdField_a_of_type_ComTencentAvReportAVReport$SenderNodeStage = AVReport.SenderNodeStage.SendAVRoomReq;
-      localAVReport.jdField_b_of_type_Boolean = false;
-      return;
-    case 119: 
-      AVReport.a().jdField_e_of_type_Long = l;
-      AVReport.a().jdField_a_of_type_ComTencentAvReportAVReport$SenderNodeStage = AVReport.SenderNodeStage.RecvAVRoomReqACK;
-      return;
-    case 122: 
-      AVReport.a().l = l;
-      return;
-    case 123: 
-      AVReport.a().jdField_m_of_type_Long = l;
-      return;
-    case 104: 
-      localAVReport.g = true;
-      localAVReport.J = l;
-      localAVReport.jdField_p_of_type_Boolean = true;
-      return;
-    case 109: 
-      localAVReport.h = true;
-      localAVReport.K = l;
-      localAVReport.jdField_p_of_type_Boolean = true;
-      return;
-    case 110: 
-      localAVReport.i = true;
-      localAVReport.L = l;
-      localAVReport.jdField_p_of_type_Boolean = true;
-      return;
-    case 102: 
-      localAVReport.j = true;
-      localAVReport.M = l;
-      localAVReport.jdField_p_of_type_Boolean = true;
-      return;
-    case 103: 
-      localAVReport.j = true;
-      localAVReport.M = l;
-      localAVReport.jdField_p_of_type_Boolean = true;
-      return;
-    case 111: 
-      if (localAVReport.jdField_a_of_type_Boolean) {
-        localAVReport.jdField_n_of_type_Long = l;
-      }
-      for (;;)
-      {
-        localAVReport.jdField_p_of_type_Boolean = true;
-        return;
-        localAVReport.C = l;
-      }
-    case 106: 
-      if (localAVReport.jdField_a_of_type_Boolean) {
-        localAVReport.o = l;
-      }
-      for (;;)
-      {
-        localAVReport.jdField_p_of_type_Boolean = true;
-        localAVReport.jdField_m_of_type_Boolean = true;
-        localAVReport.P = l;
-        return;
-        localAVReport.D = l;
-      }
-    case 112: 
-      if (localAVReport.jdField_a_of_type_Boolean) {
-        localAVReport.jdField_p_of_type_Long = l;
-      }
-      for (;;)
-      {
-        localAVReport.jdField_p_of_type_Boolean = true;
-        localAVReport.jdField_n_of_type_Boolean = true;
-        localAVReport.Q = l;
-        return;
-        localAVReport.E = l;
-      }
-    case 117: 
-      localAVReport.jdField_b_of_type_Boolean = true;
-      return;
-    case 120: 
-      localAVReport.c = true;
-      return;
-    case 101: 
-      localAVReport.F = l;
-      return;
-    case 107: 
-      localAVReport.r = l;
-      localAVReport.jdField_a_of_type_ComTencentAvReportAVReport$ReceiverNodeStage = AVReport.ReceiverNodeStage.other;
-      return;
-    case 124: 
-      localAVReport.A = l;
-      return;
-    case 125: 
-      localAVReport.B = l;
-      return;
-    case 116: 
-      localAVReport.d = true;
-      localAVReport.G = l;
-      return;
-    case 113: 
-      localAVReport.jdField_e_of_type_Boolean = true;
-      localAVReport.H = l;
-      return;
-    }
-    localAVReport.jdField_f_of_type_Boolean = true;
-    localAVReport.I = l;
+    this.mVideoApp = paramVideoAppInterface;
   }
 }
 

@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.model.QueryTask.Query;
-import java.util.List;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.data.AccountDetail;
 
 public class aeht
-  implements QueryTask.Query
+  extends bcmk
 {
-  public aeht(EmoticonManager paramEmoticonManager) {}
+  public aeht(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public List a(Integer paramInteger)
+  protected void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail)
   {
-    return this.a.a(paramInteger.intValue());
+    if ((paramBoolean) && (paramAccountDetail != null))
+    {
+      this.a.j.setText(paramAccountDetail.name);
+      this.a.b.setVisibility(0);
+      this.a.e();
+    }
   }
 }
 

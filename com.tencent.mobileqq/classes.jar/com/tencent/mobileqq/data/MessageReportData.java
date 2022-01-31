@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
+import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="uinType,senderUin,recieverUin,msgType,entrance,entrance2,onlineStatus,terminal,isFirst")
 public class MessageReportData
-  extends Entity
+  extends awge
 {
   private static final String IMAME_MSG_FORMAT = "%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%d|";
   private static final String MSG_FORMAT = "%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|";
@@ -252,7 +252,7 @@ public class MessageReportData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageReportData
  * JD-Core Version:    0.7.0.1
  */

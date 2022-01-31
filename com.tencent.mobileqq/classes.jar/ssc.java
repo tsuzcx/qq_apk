@@ -1,22 +1,30 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemLongClickListener;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
+import com.tencent.biz.subscribe.account_folder.top_pannel.TopPanelView;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
 
 public class ssc
-  implements AdapterView.OnItemLongClickListener
+  implements TopGestureLayout.InterceptTouchEventListener
 {
-  public ssc(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public ssc(ServiceAccountFolderActivity paramServiceAccountFolderActivity) {}
   
-  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
+  
+  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    FriendProfileImageActivity.a(this.a);
+    if (ServiceAccountFolderActivity.a(this.a) != null)
+    {
+      float f = paramMotionEvent.getY();
+      if ((f > ServiceAccountFolderActivity.a(this.a).getTop()) && (f < ServiceAccountFolderActivity.a(this.a).getBottom())) {
+        return false;
+      }
+    }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ssc
  * JD-Core Version:    0.7.0.1
  */

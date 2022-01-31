@@ -1,46 +1,27 @@
-import android.telephony.PhoneStateListener;
-import com.tencent.av.utils.PhoneStatusMonitor;
-import com.tencent.av.utils.PhoneStatusMonitor.PhoneStatusListener;
-import com.tencent.av.utils.PhoneStatusTools;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mm.sdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
 public class bmb
-  extends PhoneStateListener
+  implements WXShareHelper.WXShareListener
 {
-  public bmb(PhoneStatusMonitor paramPhoneStatusMonitor) {}
+  public bmb(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onCallStateChanged(int paramInt, String paramString)
+  public void a(BaseResp paramBaseResp)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      super.onCallStateChanged(paramInt, paramString);
+    if ((this.a.l == null) || (!this.a.l.equals(paramBaseResp.transaction))) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("PhoneStatusMonitor", 2, "onCallStateChanged CALL_STATE_IDLE");
-      }
-      if ((this.a.jdField_a_of_type_Boolean) && (!PhoneStatusTools.e(this.a.jdField_a_of_type_AndroidContentContext)))
-      {
-        this.a.jdField_a_of_type_Boolean = false;
-        if (this.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener != null)
-        {
-          this.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener.a(false);
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.d("PhoneStatusMonitor", 2, "onCallStateChanged CALL_STATE_RINGING or CALL_STATE_OFFHOOK");
-          }
-          if (!this.a.jdField_a_of_type_Boolean)
-          {
-            this.a.jdField_a_of_type_Boolean = true;
-            if (this.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener != null) {
-              this.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener.a(true);
-            }
-          }
-        }
-      }
     }
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      QRUtils.a(1, 2131562035);
+      return;
+    }
+    QRUtils.a(2, 2131562917);
   }
 }
 

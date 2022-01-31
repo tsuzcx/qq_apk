@@ -1,25 +1,60 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.richmedia.LBSDetetor;
+import android.content.Context;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class xpn
-  implements Handler.Callback
+  extends nbq
 {
-  public xpn(LBSDetetor paramLBSDetetor) {}
+  public boolean a;
   
-  public boolean handleMessage(Message paramMessage)
+  public xpn(Context paramContext, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSDetetor", 2, "check timeout. reqCookie:" + paramMessage.what);
+    super(paramContext, paramString);
+  }
+  
+  public String a()
+  {
+    return "key_for_troop_dynamic";
+  }
+  
+  public void a(String paramString)
+  {
+    boolean bool = true;
+    this.a = true;
+    if (TextUtils.isEmpty(paramString)) {
+      return;
     }
-    LBSDetetor.a(this.a, false, null, paramMessage.what);
-    return false;
+    for (;;)
+    {
+      try
+      {
+        if (new JSONObject(paramString).getInt("isShowTroopDynamic") != 1) {
+          break label56;
+        }
+        this.a = bool;
+        return;
+      }
+      catch (JSONException paramString) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("readQuickShotShareToStoryConfig", 2, paramString.getMessage());
+      return;
+      label56:
+      bool = false;
+    }
+  }
+  
+  public String b()
+  {
+    return "key_for_troop_dynamic_version";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xpn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
+import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="feedsId")
 public class TroopNotificationCache
-  extends Entity
+  extends awge
 {
   public static final int FEED_TYPE_NEW_GUIDE = 34;
   public static final int FEED_TYPE_NOTICE = 23;
@@ -18,6 +18,7 @@ public class TroopNotificationCache
   public int feedType = 34;
   public String feedsId;
   public long filterID;
+  public boolean needConfirm;
   public boolean read;
   public int serviceID;
   public int src;
@@ -29,7 +30,7 @@ public class TroopNotificationCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopNotificationCache
  * JD-Core Version:    0.7.0.1
  */

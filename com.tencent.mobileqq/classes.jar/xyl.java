@@ -1,248 +1,211 @@
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.os.Handler;
-import android.view.View;
-import android.widget.Button;
-import android.widget.GridView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-import com.tencent.mobileqq.app.NearFieldDiscussObserver;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
+import com.tencent.biz.qrcode.activity.QRJumpActivity;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.nearfield_discuss.nearfield_discuss.BusiRespHead;
-import tencent.im.nearfield_discuss.nearfield_discuss.UserProfile;
+import java.net.URLEncoder;
 
 public class xyl
-  extends NearFieldDiscussObserver
 {
-  public xyl(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
-  
-  protected void a(boolean paramBoolean, Object paramObject)
+  public static int a(QQAppInterface paramQQAppInterface, Activity paramActivity, xyh paramxyh, String paramString, Bundle paramBundle)
   {
-    paramObject = (Object[])paramObject;
-    int j = ((Integer)paramObject[0]).intValue();
-    int i = -1;
-    if (paramObject.length == 3) {
-      i = ((Integer)paramObject[2]).intValue();
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
+    if ((paramxyh == null) || (paramxyh.a() == 0))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+      a(paramQQAppInterface, paramActivity, paramString);
+      return 0;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("CreateFaceToFaceDiscussionActivity", 2, "onGetNearFieldDiscussInfo " + paramBoolean + " mSessionId=" + this.a.jdField_a_of_type_Int + " sessionId=" + j);
-    }
-    if (paramBoolean)
-    {
-      paramObject = (String)paramObject[1];
-      if (j == this.a.jdField_a_of_type_Int)
-      {
-        if ((i != 0) || (!DiscussionInfo.isValidDisUin(paramObject))) {
-          break label256;
-        }
-        this.a.finish();
-        localObject = ContactUtils.a(this.a.app, this.a.getActivity().getApplicationContext(), paramObject);
-        localIntent = AIOUtils.a(new Intent(this.a.getActivity(), SplashActivity.class), null);
-        localIntent.putExtra("uin", paramObject);
-        localIntent.putExtra("uintype", 3000);
-        localIntent.putExtra("uinname", (String)localObject);
-        localIntent.putExtra("isBack2Root", true);
-        this.a.startActivity(localIntent);
-      }
-    }
-    label256:
-    while (j != this.a.jdField_a_of_type_Int)
-    {
-      Object localObject;
-      Intent localIntent;
-      return;
-      if ((i == 2) || (i == 1))
-      {
-        this.a.finish();
-        localObject = AIOUtils.a(new Intent(this.a.getActivity(), SplashActivity.class), null);
-        ((Intent)localObject).putExtra("uin", paramObject);
-        ((Intent)localObject).putExtra("uintype", 1);
-        ((Intent)localObject).putExtra("uinname", ContactUtils.j(this.a.app, this.a.app.getCurrentAccountUin()) + "创建的群");
-        ((Intent)localObject).putExtra("isBack2Root", true);
-        this.a.startActivity((Intent)localObject);
-        ReportController.b(this.a.app, "dc00899", "Grp_create", "", "f2f", "cre_suc", 0, 0, paramObject, "", "", "");
-        return;
-      }
-      CreateFaceToFaceDiscussionActivity.a(this.a, 1, this.a.getString(2131437179));
-      return;
-    }
-    CreateFaceToFaceDiscussionActivity.b(this.a, 1, this.a.getString(2131437179));
-  }
-  
-  protected void a(boolean paramBoolean, List paramList, int paramInt1, int paramInt2, nearfield_discuss.BusiRespHead paramBusiRespHead, int paramInt3, int paramInt4, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CreateFaceToFaceDiscussionActivity", 2, "NearFieldDiscussObserver isSuccess = " + paramBoolean + " ; interval = " + paramInt1);
-    }
-    Object localObject;
-    if (paramBoolean)
-    {
-      if (paramInt1 > 0) {
-        this.a.jdField_a_of_type_Long = (paramInt1 * 1000);
-      }
-      if ((paramBusiRespHead != null) && (paramBusiRespHead.int32_reply_code.get() != 0))
-      {
-        if (!this.a.jdField_c_of_type_Boolean)
-        {
-          paramList = paramBusiRespHead.str_result.get();
-          QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, paramList, 0).a();
-          ((Animatable)this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable).stop();
-          this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
-          if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
-            this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-          }
-          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 600L);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("CreateFaceToFaceDiscussionActivity", 2, "head.int32_reply_code = " + paramBusiRespHead.int32_reply_code.get());
-        }
-        return;
-      }
-      paramBusiRespHead = "";
-      localObject = paramBusiRespHead;
-      if (paramList != null)
-      {
-        localObject = paramBusiRespHead;
-        if (paramLong != 0L)
-        {
-          localObject = paramBusiRespHead;
-          if (paramInt4 != 0)
-          {
-            Iterator localIterator = paramList.iterator();
-            localObject = paramBusiRespHead;
-            if (localIterator.hasNext())
-            {
-              localObject = (nearfield_discuss.UserProfile)localIterator.next();
-              if (((nearfield_discuss.UserProfile)localObject).uint64_uin.get() != paramLong) {
-                break label1088;
-              }
-              paramBusiRespHead = ((nearfield_discuss.UserProfile)localObject).str_nick.get();
-            }
-          }
-        }
-      }
-    }
-    label1088:
     for (;;)
     {
-      break;
-      switch (paramInt4)
+      try
       {
-      default: 
-        if (this.a.jdField_a_of_type_JavaUtilList == null)
+        switch (paramxyh.c)
         {
-          this.a.jdField_a_of_type_JavaUtilList = new ArrayList();
-          label364:
-          this.a.jdField_a_of_type_JavaUtilList.add(this.a.jdField_a_of_type_TencentImNearfield_discussNearfield_discuss$UserProfile);
-          if (paramList != null) {
-            this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
-          }
-          if ((paramList == null) && (QLog.isColorLevel())) {
-            QLog.i("CreateFaceToFaceDiscussionActivity", 2, "usrList == null");
-          }
-          if (this.a.jdField_a_of_type_Xyo != null)
-          {
-            this.a.jdField_a_of_type_Xyo.notifyDataSetChanged();
-            this.a.jdField_a_of_type_AndroidWidgetGridView.setVisibility(0);
-          }
-          if (this.a.d)
-          {
-            this.a.d = false;
-            CreateFaceToFaceDiscussionActivity.a(this.a);
-            paramList = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(0);
-            this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramList, this.a.jdField_a_of_type_Long);
+        case 4: 
+        case 5: 
+        case 7: 
+        case 8: 
+        case 9: 
+          a(paramQQAppInterface, paramActivity, paramString);
+          return 0;
+        }
+      }
+      catch (Exception paramxyh)
+      {
+        String str2;
+        String str3;
+        String str1;
+        Uri localUri;
+        a(paramQQAppInterface, paramActivity, paramString);
+        return 0;
+      }
+      a(paramQQAppInterface, paramActivity, paramxyh.a().a() + "", paramBundle.getBoolean("issupportwpa", false));
+      return 1;
+      str2 = "";
+      str3 = paramBundle.getString("authSig");
+      str1 = str2;
+      if (!TextUtils.isEmpty(paramString))
+      {
+        localUri = Uri.parse(paramString);
+        str1 = str2;
+        if (localUri != null)
+        {
+          str1 = str2;
+          if (localUri.isHierarchical()) {
+            str1 = localUri.getQueryParameter("jump_from");
           }
         }
-        break;
       }
-      for (;;)
+      a(paramQQAppInterface, paramActivity, paramxyh.a().a() + "", str1, paramBundle.getString("authKey"), str3);
+      return 2;
+      a(paramQQAppInterface, paramActivity, paramxyh.a().a() + "", paramBundle);
+      return 3;
+      a(paramActivity, paramxyh);
+      return paramxyh.c;
+      a(paramQQAppInterface, paramActivity, sus.a(paramxyh.a().a()), paramBundle);
+      return 10;
+    }
+  }
+  
+  private static String a(String paramString)
+  {
+    if ((paramString == null) || ("".equals(paramString)) || (paramString.length() == 0)) {
+      return null;
+    }
+    try
+    {
+      paramString = new String(bdfr.decode(paramString, 0));
+      return paramString;
+    }
+    catch (Exception paramString) {}
+    return null;
+  }
+  
+  private static void a(Context paramContext, xyh paramxyh)
+  {
+    ndv.a(paramContext, null, String.valueOf(paramxyh.a().a()), false, 1, true, -1);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString)
+  {
+    paramQQAppInterface = new Intent(paramActivity, QQBrowserActivity.class);
+    paramString = 1024 + "https://qm.qq.com/cgi-bin/result" + "?p=a&v=" + bdgk.c() + "&r=" + URLEncoder.encode(paramString).replaceAll("\\+", "%20") + "&_wv=1027";
+    paramQQAppInterface.putExtra("title", paramActivity.getString(2131719407));
+    paramQQAppInterface.putExtra("url", paramString);
+    paramQQAppInterface.putExtra("key_isReadModeEnabled", true);
+    if (paramActivity.getIntent().getBooleanExtra("QRDecode", false) == true)
+    {
+      paramActivity.startActivityForResult(paramQQAppInterface, 2);
+      return;
+    }
+    paramActivity.startActivity(paramQQAppInterface);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString, int paramInt)
+  {
+    paramQQAppInterface = new Intent(paramActivity, QRCardActivity.class);
+    paramQQAppInterface.putExtra("CARDMODE", paramInt);
+    paramQQAppInterface.putExtra("QRCARDSTR", paramString);
+    paramActivity.startActivity(paramQQAppInterface);
+  }
+  
+  private static final void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString, Bundle paramBundle)
+  {
+    Intent localIntent = new Intent();
+    if (paramBundle != null)
+    {
+      String str = paramBundle.getString("extvalue");
+      paramBundle = paramBundle.getString("exttype");
+      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramBundle)))
       {
-        ((Animatable)this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable).stop();
-        this.a.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(null);
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        return;
-        CreateFaceToFaceDiscussionActivity.a(this.a).setText(this.a.getString(2131435499));
-        CreateFaceToFaceDiscussionActivity.a(this.a).setContentDescription(this.a.getString(2131435499));
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.getString(2131435971));
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.a.getString(2131435971));
-        this.a.jdField_b_of_type_AndroidWidgetTextView.setText(this.a.getString(2131435973));
-        this.a.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(this.a.getString(2131435973));
-        this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(this.a.getResources().getColor(2131494236));
-        this.a.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838491);
-        this.a.jdField_a_of_type_AndroidWidgetButton.setText("立即创建");
-        this.a.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.a.jdField_c_of_type_AndroidWidgetTextView.setText(this.a.getString(2131435978));
-        break;
-        this.a.jdField_b_of_type_Boolean = false;
-        this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-        this.a.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.a.jdField_c_of_type_AndroidWidgetTextView.setText(this.a.getString(2131435980, new Object[] { localObject }));
-        this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.getString(2131435976));
-        this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(-1);
-        this.a.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.a.getString(2131435976));
-        this.a.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838491);
-        break;
-        this.a.jdField_b_of_type_Boolean = true;
-        this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-        this.a.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.a.jdField_c_of_type_AndroidWidgetTextView.setText(this.a.getString(2131435979, new Object[] { localObject }));
-        this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.getString(2131435977));
-        this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(-1);
-        this.a.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.a.getString(2131435977));
-        this.a.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838491);
-        break;
-        this.a.jdField_a_of_type_JavaUtilList.clear();
-        break label364;
-        if (!this.a.jdField_c_of_type_Boolean)
-        {
-          QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, "请稍后再试", 1).a();
-          if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
-            this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-          }
-          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 600L);
+        localIntent.putExtra("extvalue", str);
+        localIntent.putExtra("exttype", paramBundle);
+      }
+    }
+    localIntent.putExtra("source", 1);
+    syb.a(localIntent, paramQQAppInterface, paramActivity, paramString, -1);
+    PublicAccountHandler.a(paramQQAppInterface, paramString, "Pb_account_lifeservice", "mp_msg_sys_1", "scan");
+  }
+  
+  private static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("src_type", "internal");
+    localBundle.putString("version", "1");
+    localBundle.putString("callback_type", "scheme");
+    localBundle.putString("callback_name", "open_card");
+    localBundle.putString("uin", paramString1);
+    localBundle.putString("card_type", "group");
+    localBundle.putString("authKey", paramString3);
+    localBundle.putString("authSig", paramString4);
+    localBundle.putString("from", "qrcode");
+    if (!TextUtils.isEmpty(bdhk.i)) {
+      localBundle.putString("appid", bdhk.i);
+    }
+    if (!TextUtils.isEmpty(bdhk.j)) {
+      localBundle.putString("openid", a(bdhk.j));
+    }
+    bdhk.i = null;
+    bdhk.j = null;
+    paramString1 = paramString2;
+    if (bdnn.a(paramString2))
+    {
+      if (!(paramActivity instanceof ScannerActivity)) {
+        break label219;
+      }
+      paramString1 = "ScannerActivity";
+    }
+    for (;;)
+    {
+      localBundle.putString("jump_from", paramString1);
+      paramQQAppInterface = bdib.a(paramQQAppInterface, paramActivity, Uri.parse("mqqapi://card/show_pslcard?" + ndd.a(localBundle)).toString());
+      if (paramQQAppInterface != null) {
+        paramQQAppInterface.c();
+      }
+      return;
+      label219:
+      paramString1 = paramString2;
+      if ((paramActivity instanceof QRJumpActivity)) {
+        if (paramActivity.getIntent().getBooleanExtra("fromQrcode", false)) {
+          paramString1 = "ScannerActivity";
+        } else {
+          paramString1 = "QRJumpActivity";
         }
       }
     }
   }
   
-  protected void b(boolean paramBoolean, Object paramObject)
+  private static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CreateFaceToFaceDiscussionActivity", 2, "on push | isSuccess = " + paramBoolean);
-    }
-    if ((paramBoolean) && (((Integer)((Object[])(Object[])paramObject)[0]).intValue() == this.a.jdField_a_of_type_Int) && (this.a.isResume()))
+    Bundle localBundle = new Bundle();
+    localBundle.putString("src_type", "internal");
+    localBundle.putString("version", "1");
+    localBundle.putString("callback_type", "scheme");
+    localBundle.putString("callback_name", "open_card");
+    localBundle.putString("uin", paramString);
+    if (paramBoolean) {}
+    for (paramString = "1";; paramString = "0")
     {
-      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(0)) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+      localBundle.putString("wpa", paramString);
+      paramQQAppInterface = bdib.a(paramQQAppInterface, paramActivity, Uri.parse("mqqapi://card/show_pslcard?" + ndd.a(localBundle)).toString());
+      if (paramQQAppInterface != null)
+      {
+        paramQQAppInterface.b();
+        paramQQAppInterface.c();
       }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xyl
  * JD-Core Version:    0.7.0.1
  */

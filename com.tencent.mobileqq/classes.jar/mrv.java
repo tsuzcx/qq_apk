@@ -1,28 +1,26 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeedAdapter;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.SingleLineTextView;
-import com.tencent.widget.SwipRightMenuBuilder.SwipItemBaseHolder;
+import com.tencent.av.app.VideoAppInterface;
 
-public class mrv
-  extends SwipRightMenuBuilder.SwipItemBaseHolder
+class mrv
+  implements msz
 {
-  public Button a;
-  public ImageView a;
-  public RelativeLayout a;
-  public DragTextView a;
-  public SingleLineTextView a;
-  public String a;
-  public Button b;
-  public SingleLineTextView b;
+  mrv(mrt parammrt) {}
   
-  public mrv(ServiceAccountFolderFeedAdapter paramServiceAccountFolderFeedAdapter) {}
+  public void a(msy parammsy)
+  {
+    mrt localmrt = this.a;
+    if (parammsy.b == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localmrt.a(bool, parammsy.g, parammsy.c);
+      this.a.a = null;
+      mrt.b(this.a).a(new Object[] { Integer.valueOf(8003), Integer.valueOf(7) });
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mrv
  * JD-Core Version:    0.7.0.1
  */

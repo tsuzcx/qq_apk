@@ -1,0 +1,17 @@
+package feedcloud;
+
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
+
+public final class FeedCloudWrite$StDoSecurityRsp
+  extends MessageMicro<StDoSecurityRsp>
+{
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "extInfo" }, new Object[] { null }, StDoSecurityRsp.class);
+  public FeedCloudCommon.StCommonExt extInfo = new FeedCloudCommon.StCommonExt();
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+ * Qualified Name:     feedcloud.FeedCloudWrite.StDoSecurityRsp
+ * JD-Core Version:    0.7.0.1
+ */

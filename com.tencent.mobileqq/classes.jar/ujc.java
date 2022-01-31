@@ -1,29 +1,14 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid.GridCallBack;
-import com.tencent.mobileqq.activity.activateFriend.PositionActivatePage;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.AddressItem;
+import java.util.HashMap;
 
-public class ujc
-  implements ActivateFriendGrid.GridCallBack
+public abstract interface ujc
 {
-  public ujc(PositionActivatePage paramPositionActivatePage) {}
-  
-  public void a(int paramInt)
-  {
-    if (paramInt > 0) {
-      this.a.a.setEnabled(true);
-    }
-    while (paramInt > 1)
-    {
-      this.a.a.setText(2131437241);
-      return;
-      this.a.a.setEnabled(false);
-    }
-    this.a.a.setText(2131437242);
-  }
+  public abstract void a(ErrorMessage paramErrorMessage, HashMap<String, AddressItem> paramHashMap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ujc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,28 @@
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.SystemMessageProcessor;
+import android.support.annotation.NonNull;
 
 public class wkn
-  implements Runnable
+  extends umf<wjw, veb>
 {
-  public wkn(NotificationView paramNotificationView) {}
-  
-  public void run()
+  public wkn(wjw paramwjw)
   {
-    if (this.a.a != null) {
-      this.a.a.a().a().c();
-    }
+    super(paramwjw);
   }
+  
+  public void a(@NonNull wjw paramwjw, @NonNull veb paramveb)
+  {
+    wjw.a(paramwjw, paramveb.a, this.TAG);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return veb.class;
+  }
+  
+  public void b(@NonNull wjw paramwjw, @NonNull veb paramveb) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wkn
  * JD-Core Version:    0.7.0.1
  */

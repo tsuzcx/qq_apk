@@ -1,27 +1,15 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
-import com.tencent.mobileqq.statistics.ReportController;
-import mqq.os.MqqHandler;
+import java.io.InputStream;
+import java.util.List;
 
-class sfz
-  implements Runnable
+public abstract interface sfz
 {
-  sfz(sfy paramsfy, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
+  public abstract InputStream a(String paramString);
   
-  public void run()
-  {
-    Message localMessage = this.jdField_a_of_type_Sfy.a.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage();
-    localMessage.obj = this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper;
-    this.jdField_a_of_type_Sfy.a.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(22, 2);
-    this.jdField_a_of_type_Sfy.a.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(22, localMessage);
-    ReportController.b(this.jdField_a_of_type_Sfy.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8008658", "0X8008658", 0, 0, "", "", "", "");
-  }
+  public abstract List<String> a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sfz
  * JD-Core Version:    0.7.0.1
  */

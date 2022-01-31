@@ -1,20 +1,15 @@
-import com.tencent.mobileqq.statistics.storage.StorageItem;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aihd
-  implements Comparator
+class aihd
+  implements View.OnClickListener
 {
-  public int compare(Object paramObject1, Object paramObject2)
+  aihd(aiha paramaiha) {}
+  
+  public void onClick(View paramView)
   {
-    paramObject1 = (StorageItem)paramObject1;
-    paramObject2 = (StorageItem)paramObject2;
-    if (paramObject1.b > paramObject2.b) {
-      return -1;
-    }
-    if (paramObject1.b < paramObject2.b) {
-      return 1;
-    }
-    return 0;
+    this.a.a = null;
+    this.a.dismiss();
   }
 }
 

@@ -1,84 +1,55 @@
 package c.t.m.g;
 
-import android.util.Base64;
-import java.io.ByteArrayOutputStream;
-import java.security.MessageDigest;
-import java.util.zip.GZIPOutputStream;
-
 public final class ct
 {
-  private static final byte[] a = new byte[0];
+  private static int[] a = { 0, 8, 10, 33, 65535, 50594049, 268435455, 2147483647 };
   
-  public static byte[] a(String paramString)
+  public static boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    try
+    if ((paramInt2 < 0) || (paramInt3 < 0) || (paramInt4 < 0) || (paramInt5 <= 0) || (paramInt2 == 535) || (paramInt3 == 535) || (paramInt4 == 65535) || (paramInt5 == 65535)) {}
+    label75:
+    label104:
+    label111:
+    label114:
+    for (;;)
     {
-      paramString = a(paramString.getBytes("UTF-8"));
-      paramString = cr.a(paramString, "0PEq^X$sjtWqEqa2$dg4TG2PT^4dFEep");
-      if (!f.a.a(paramString))
+      return false;
+      paramInt2 = cp.a.a;
+      if (paramInt1 == 2)
       {
-        paramString = Base64.encode(paramString, 2);
-        if (!f.a.a(paramString)) {
-          return paramString;
+        paramInt1 = 1;
+        if (paramInt1 == 0)
+        {
+          if (paramInt4 == 25840) {
+            continue;
+          }
+          int[] arrayOfInt = a;
+          paramInt1 = 0;
+          if (paramInt1 >= arrayOfInt.length) {
+            break label111;
+          }
+          if (paramInt5 != arrayOfInt[paramInt1]) {
+            break label104;
+          }
         }
       }
-    }
-    catch (Throwable paramString)
-    {
-      cl.b("SosoLocUtils", paramString.toString());
-      return a;
-    }
-    return a;
-  }
-  
-  public static byte[] a(byte[] paramArrayOfByte)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    try
-    {
-      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(paramArrayOfByte.length);
-      localObject1 = localObject2;
-      GZIPOutputStream localGZIPOutputStream = new GZIPOutputStream(localByteArrayOutputStream);
-      localObject1 = localObject2;
-      localGZIPOutputStream.write(paramArrayOfByte);
-      localObject1 = localObject2;
-      localGZIPOutputStream.close();
-      localObject1 = localObject2;
-      paramArrayOfByte = localByteArrayOutputStream.toByteArray();
-      localObject1 = paramArrayOfByte;
-      localByteArrayOutputStream.close();
-      return paramArrayOfByte;
-    }
-    catch (Throwable paramArrayOfByte) {}
-    return localObject1;
-  }
-  
-  public static String b(String paramString)
-  {
-    try
-    {
-      Object localObject = MessageDigest.getInstance("MD5");
-      ((MessageDigest)localObject).update(paramString.getBytes());
-      localObject = ((MessageDigest)localObject).digest();
-      StringBuilder localStringBuilder = new StringBuilder();
-      int j = localObject.length;
-      int i = 0;
-      while (i < j)
+      for (paramInt1 = 1;; paramInt1 = 0)
       {
-        localStringBuilder.append(Integer.toHexString(localObject[i] & 0xFF)).append("");
-        i += 1;
+        if (paramInt1 != 0) {
+          break label114;
+        }
+        return true;
+        paramInt1 = 0;
+        break;
+        paramInt1 += 1;
+        break label75;
       }
-      localObject = localStringBuilder.toString();
-      return localObject;
     }
-    catch (Throwable localThrowable) {}
-    return "abcdefgh" + paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.ct
  * JD-Core Version:    0.7.0.1
  */

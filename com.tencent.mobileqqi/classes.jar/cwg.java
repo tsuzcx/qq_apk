@@ -1,17 +1,27 @@
-import com.tencent.mobileqq.activity.HelloListActivity;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ModifyFriendInfoActivity;
 
 public class cwg
-  implements Runnable
+  extends Handler
 {
-  public cwg(HelloListActivity paramHelloListActivity, MessageRecord paramMessageRecord) {}
+  public cwg(ModifyFriendInfoActivity paramModifyFriendInfoActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop == 1001) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityHelloListActivity.a(0);
+    switch (paramMessage.what)
+    {
+    default: 
+    case 1: 
+      do
+      {
+        return;
+      } while ((this.a.c == null) || (this.a.c.length() <= 0));
+      this.a.b.setText(this.a.c);
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityHelloListActivity.a();
+    this.a.a.setText(this.a.d);
   }
 }
 

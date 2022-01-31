@@ -1,0 +1,110 @@
+{
+    "view_type": "UIView",
+    "view_id": "id_header_wrapper",
+    "event_type": "cmd_url_click_card_report",
+    "height": {
+        "type": "wrap_content"
+    },
+    "width": {
+        "type": "match_parent"
+    },
+    "attributes": {
+        "setAttatchInfo:": "$fg_url"
+    },
+    "data_attributes": {
+        "setLocalInfo:": {
+            "click_area":"1"
+        }
+    },
+    "subviews": [
+        {
+            "view_type": "UIView",
+            "view_id": "id_header_inner_wrapper",
+            "layout_type": "layout_linear",
+            "direction":"horizontal",
+            "visible_depend_on_children":"YES",
+            "height": {
+                "type": "relative",
+                "value": "45"
+            },
+            "width": {
+                "type": "match_parent"
+            },
+            "subviews": [
+                {
+                    "view_type": "ReadInjoyAsynImageView",
+                    "view_id": "id_header_icon",
+                    "margin_left": "8",
+                    "align_parent_center_vertical": "YES",
+                    "height": {
+                        "type": "relative",
+                        "value": "21"
+                    },
+                    "width": {
+                        "type": "relative",
+                        "value": "21"
+                    },
+                    "attributes": {
+                        "setImageWithURLString:lineup:":["$module_image_url","1"]
+                    }
+                },
+                {
+                    "view_type": "UIView",
+                    "view_id": "id_header_tag_wrapper",
+                    "layout_type": "layout_relative",
+                    "margin_left": "6",
+                    "align_parent_center_vertical": "YES",
+                    "visible_depend_on_children": "YES",
+                    "height": {
+                        "type": "absolutely",
+                        "value": "21"
+                    },
+                    "width": {
+                        "type": "wrap_content"
+                    },
+                    "attributes": {
+                        "setCornerRadiusString:": "2",
+                        "setBackgroundColorString:": "$module_tag_back_color"
+                    },
+                    "subviews": [
+                        {
+                            "view_type": "UILabel",
+                            "view_id": "id_header_tag",
+                            "margin_left":"3",
+                            "margin_right":"3",
+                            "align_parent_center_vertical": "YES",
+                            "height": {
+                                "type": "wrap_content"
+                            },
+                            "width": {
+                                "type": "wrap_content"
+                            },
+                            "attributes": {
+                                "setTextColorString:": "#FFFFFF",
+                                "setBoldFontSizeString:":"14",
+                                "setText:":"$module_tag"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "view_type": "UILabel",
+                    "view_id": "id_header_name",
+                    "margin_left": "6",
+                    "align_parent_center_vertical": "YES",
+                    "height": {
+                        "type": "wrap_content"
+                    },
+                    "width": {
+                        "type": "wrap_content"
+                    },
+                    "attributes": {
+                        "setTextColorString:": "$module_name_color",
+                        "setBoldFontSizeString:":"17",
+                        "setText:":"$module_name"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,21 +1,14 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.utils.GVideoUpdateUtil.OnGVideoUpdateListener;
-import com.tencent.mobileqq.activity.aio.tips.VideoStatusTipsBar;
+import android.support.annotation.NonNull;
 
-public class wdo
-  implements GVideoUpdateUtil.OnGVideoUpdateListener
+abstract interface wdo
 {
-  public wdo(VideoStatusTipsBar paramVideoStatusTipsBar, Intent paramIntent) {}
+  public abstract void a(@NonNull wdm paramwdm);
   
-  public void a(Context paramContext, String paramString)
-  {
-    paramContext.startActivity(this.jdField_a_of_type_AndroidContentIntent);
-  }
+  public abstract void b(@NonNull wdm paramwdm);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wdo
  * JD-Core Version:    0.7.0.1
  */

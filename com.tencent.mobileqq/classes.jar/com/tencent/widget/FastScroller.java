@@ -1,6 +1,5 @@
 package com.tencent.widget;
 
-import ambn;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -22,7 +21,8 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.BaseAdapter;
 import android.widget.SectionIndexer;
-import com.tencent.util.VersionUtils;
+import bhtb;
+import bhxm;
 
 public class FastScroller
 {
@@ -30,8 +30,8 @@ public class FastScroller
   private static final int[] jdField_b_of_type_ArrayOfInt = new int[0];
   private static final int[] jdField_c_of_type_ArrayOfInt = { 16843609, 16843574, 16843577, 16843575, 16843576, 16843578 };
   private static int jdField_d_of_type_Int = 4;
-  public float a;
-  public int a;
+  float jdField_a_of_type_Float;
+  int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
@@ -39,16 +39,16 @@ public class FastScroller
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
   BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter;
   private SectionIndexer jdField_a_of_type_AndroidWidgetSectionIndexer;
-  public AbsListView a;
+  AbsListView jdField_a_of_type_ComTencentWidgetAbsListView;
   private FastScroller.ScrollFade jdField_a_of_type_ComTencentWidgetFastScroller$ScrollFade;
-  private final Runnable jdField_a_of_type_JavaLangRunnable = new ambn(this);
+  private final Runnable jdField_a_of_type_JavaLangRunnable = new FastScroller.1(this);
   private String jdField_a_of_type_JavaLangString;
   boolean jdField_a_of_type_Boolean;
   private Object[] jdField_a_of_type_ArrayOfJavaLangObject;
   int jdField_b_of_type_Int;
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  public boolean b;
-  public int c;
+  boolean jdField_b_of_type_Boolean;
+  int jdField_c_of_type_Int;
   private Drawable jdField_c_of_type_AndroidGraphicsDrawableDrawable;
   private boolean jdField_c_of_type_Boolean;
   private Drawable jdField_d_of_type_AndroidGraphicsDrawableDrawable;
@@ -132,7 +132,7 @@ public class FastScroller
         this.k = localTypedArray.getInt(5, 0);
         this.jdField_a_of_type_Boolean = true;
         b();
-        this.jdField_e_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131558431);
+        this.jdField_e_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131296886);
         this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
         this.jdField_a_of_type_ComTencentWidgetFastScroller$ScrollFade = new FastScroller.ScrollFade(this);
         this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
@@ -152,7 +152,7 @@ public class FastScroller
         if (paramContext.getApplicationInfo().targetSdkVersion >= 11)
         {
           this.jdField_g_of_type_Boolean = bool;
-          if (VersionUtils.e()) {
+          if (bhtb.e()) {
             m = this.jdField_a_of_type_ComTencentWidgetAbsListView.getVerticalScrollbarPosition();
           }
           a(m);
@@ -171,9 +171,9 @@ public class FastScroller
   {
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
     if ((paramDrawable instanceof NinePatchDrawable)) {
-      this.jdField_b_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131558432);
+      this.jdField_b_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131296888);
     }
-    for (this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131558433);; this.jdField_a_of_type_Int = paramDrawable.getIntrinsicHeight())
+    for (this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131296887);; this.jdField_a_of_type_Int = paramDrawable.getIntrinsicHeight())
     {
       this.jdField_e_of_type_Boolean = true;
       return;
@@ -229,7 +229,7 @@ public class FastScroller
     b(0);
   }
   
-  public void a(float paramFloat)
+  void a(float paramFloat)
   {
     int i6 = this.jdField_a_of_type_ComTencentWidgetAbsListView.getCount();
     this.jdField_a_of_type_Boolean = false;
@@ -651,10 +651,10 @@ public class FastScroller
     Object localObject2 = this.jdField_a_of_type_ComTencentWidgetAbsListView.getAdapter();
     this.jdField_a_of_type_AndroidWidgetSectionIndexer = null;
     Object localObject1 = localObject2;
-    if ((localObject2 instanceof HeaderViewListAdapter))
+    if ((localObject2 instanceof bhxm))
     {
-      this.jdField_g_of_type_Int = ((HeaderViewListAdapter)localObject2).a();
-      localObject1 = ((HeaderViewListAdapter)localObject2).getWrappedAdapter();
+      this.jdField_g_of_type_Int = ((bhxm)localObject2).a();
+      localObject1 = ((bhxm)localObject2).getWrappedAdapter();
     }
     if ((localObject1 instanceof ExpandableListConnector))
     {
@@ -849,7 +849,7 @@ public class FastScroller
     this.jdField_a_of_type_ComTencentWidgetAbsListView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 180L);
   }
   
-  public void f()
+  void f()
   {
     b(3);
     if ((this.jdField_a_of_type_AndroidWidgetBaseAdapter == null) && (this.jdField_a_of_type_ComTencentWidgetAbsListView != null)) {

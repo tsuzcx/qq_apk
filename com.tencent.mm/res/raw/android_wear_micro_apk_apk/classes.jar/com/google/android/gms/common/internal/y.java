@@ -1,0 +1,15 @@
+package com.google.android.gms.common.internal;
+
+import com.google.android.gms.common.api.Scope;
+import java.util.Set;
+
+public final class y
+{
+  public final Set<Scope> GR;
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\res\raw\android_wear_micro_apk_apk\classes.jar
+ * Qualified Name:     com.google.android.gms.common.internal.y
+ * JD-Core Version:    0.7.0.1
+ */

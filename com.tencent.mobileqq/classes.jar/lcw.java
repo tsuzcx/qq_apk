@@ -1,21 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewController;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFollowActivity;
-
-public class lcw
-  implements View.OnClickListener
+public abstract class lcw
 {
-  public lcw(ReadInJoyFollowActivity paramReadInJoyFollowActivity) {}
+  private static lce a;
   
-  public void onClick(View paramView)
+  public static lce a()
   {
-    this.a.a.a(true);
+    try
+    {
+      if (a == null) {
+        a = new lce();
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public static boolean a()
+  {
+    return a != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lcw
  * JD-Core Version:    0.7.0.1
  */

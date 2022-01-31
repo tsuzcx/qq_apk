@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class C2CType0x211_SubC2CType0x8$RespGetList
-  extends MessageMicro
+  extends MessageMicro<RespGetList>
 {
   public static final int BYTES_COOKIE_FIELD_NUMBER = 5;
   public static final int INT32_UPDATE_INTERVAL_FIELD_NUMBER = 4;
@@ -21,7 +21,7 @@ public final class C2CType0x211_SubC2CType0x8$RespGetList
   public final PBBytesField bytes_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBInt32Field int32_update_interval = PBField.initInt32(0);
   public C2CType0x211_SubC2CType0x8.BusiRespHead msg_head = new C2CType0x211_SubC2CType0x8.BusiRespHead();
-  public final PBRepeatMessageField rpt_msg_user_list = PBField.initRepeatMessage(C2CType0x211_SubC2CType0x8.UserProfile.class);
+  public final PBRepeatMessageField<C2CType0x211_SubC2CType0x8.UserProfile> rpt_msg_user_list = PBField.initRepeatMessage(C2CType0x211_SubC2CType0x8.UserProfile.class);
   public final PBUInt32Field uint32_session_id = PBField.initUInt32(0);
   
   static

@@ -1,21 +1,33 @@
-import com.tencent.mobileqq.olympic.activity.ARTipsManager.ButtonClickListener;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class aghg
-  implements ARTipsManager.ButtonClickListener
+class aghg
+  implements URLDrawable.URLDrawableListener
 {
-  public aghg(ScanTorchActivity paramScanTorchActivity) {}
+  aghg(aghf paramaghf, String paramString) {}
   
-  public void a()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    ScanTorchActivity.p(this.a);
-    ReportController.b(null, "dc00898", "", "", "0X80085B2", "0X80085B2", 0, 0, "", "", "", "");
+    QLog.e("AioPanelMiniAppManager", 1, "onLoadFialed: failed. ", paramThrowable);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AioPanelMiniAppManager", 2, "onLoadSuccessed: invoked.  url: " + this.jdField_a_of_type_JavaLangString);
+    }
+    aghf.a(this.jdField_a_of_type_Aghf).put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aghg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,37 @@
-import com.tencent.biz.widgets.ElasticHorScrView;
-import dov.com.tencent.mobileqq.richmedia.capture.view.ShareActionSheet;
+import android.support.v4.util.ArraySet;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class aonc
-  implements Runnable
 {
-  public aonc(ShareActionSheet paramShareActionSheet) {}
+  public ArraySet<String> a = new ArraySet();
   
-  public void run()
+  public static aonc a(String paramString)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.a.jdField_a_of_type_Int) {
-      this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
-    }
-    while (this.a.b.getWidth() < ShareActionSheet.a(this.a))
+    localaonc = new aonc();
+    try
     {
-      this.a.b.setMove(true);
-      return;
-      this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
+      paramString = new JSONObject(paramString).getJSONArray("white_list");
+      int i = 0;
+      while (i < paramString.length())
+      {
+        localaonc.a.add(paramString.optString(i, ""));
+        i += 1;
+      }
+      return localaonc;
     }
-    this.a.b.setMove(false);
+    catch (Throwable paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("BroadcastConfProcessor", 2, paramString, new Object[0]);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aonc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,32 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.util.FaceManager;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class ajzz
-  extends FriendListObserver
+  implements View.OnTouchListener
 {
-  private ajzz(FaceManager paramFaceManager) {}
+  float jdField_a_of_type_Float = 0.0F;
+  float b = 0.0F;
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(4, paramBoolean, new Object[] { paramString });
-  }
+  public ajzz(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a(39, paramBoolean, new Object[] { paramString });
-  }
-  
-  protected void onUpdateQCallHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(6, paramBoolean1, new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2) });
-  }
-  
-  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(5, paramBoolean1, new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2) });
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(30, paramBoolean, new Object[] { paramString });
+    int i = paramMotionEvent.getAction();
+    if (i == 0)
+    {
+      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+      this.b = paramMotionEvent.getRawY();
+    }
+    for (;;)
+    {
+      return false;
+      if ((i == 2) && ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float > 10.0F) || (paramMotionEvent.getRawY() - this.b > 10.0F))) {
+        this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a.b();
+      }
+    }
   }
 }
 

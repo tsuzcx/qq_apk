@@ -1,21 +1,26 @@
-import android.graphics.Bitmap;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
 
 public class anuo
-  implements Runnable
+  implements bhuk
 {
-  public anuo(EditVideoPartManager paramEditVideoPartManager) {}
+  public anuo(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    Bitmap localBitmap = this.a.a();
-    this.a.a.a(localBitmap);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    this.a.a.a("DynamicAvatarRecordActivity");
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anuo
  * JD-Core Version:    0.7.0.1
  */

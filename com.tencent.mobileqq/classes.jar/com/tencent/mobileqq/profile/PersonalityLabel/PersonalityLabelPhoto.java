@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import agoq;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import awqb;
+import bdeu;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.util.Utils;
 import java.io.Serializable;
 import tencent.im.label.comm.PersonalityTagComm.LabelPhoto;
 
 public class PersonalityLabelPhoto
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new agoq();
+  public static final Parcelable.Creator<PersonalityLabelPhoto> CREATOR = new awqb();
   public static final long ID_INVALID = -1L;
   public static final String TAG = "PersonalityLabelPhoto";
   public long fileId = -1L;
-  boolean local = false;
+  public boolean local = false;
   public String localThumbPath = "";
   long praiseCount = 0L;
   public long uniseq = 0L;
@@ -79,7 +79,7 @@ public class PersonalityLabelPhoto
   
   public boolean equals(Object paramObject)
   {
-    return Utils.a(((PersonalityLabelPhoto)paramObject).url, this.url);
+    return bdeu.a(((PersonalityLabelPhoto)paramObject).url, this.url);
   }
   
   public String get128SizeUrl()
@@ -119,7 +119,7 @@ public class PersonalityLabelPhoto
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto
  * JD-Core Version:    0.7.0.1
  */

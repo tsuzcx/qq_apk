@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingTop="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="63.0dip" android:layout_height="@dimen/amg">
+        <ImageView android:id="@id/d2x" android:layout_width="@dimen/amh" android:layout_height="@dimen/amh" android:scaleType="fitXY" android:layout_centerInParent="true" />
+        <com.tencent.biz.qqstory.widget.RotateCircleImageView android:id="@id/axz" android:layout_width="@dimen/amg" android:layout_height="@dimen/amg" android:layout_centerInParent="true" app:rciv_border_width="1.5dip" />
+        <ImageView android:id="@id/i3m" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/fel" android:layout_alignBottom="@id/d2x" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="@dimen/az4" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/i3n" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip" android:text="@string/r85" android:singleLine="true" android:includeFontPadding="false" android:layout_alignBottom="@id/d2x" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/j9l" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/ayk" android:textColor="@color/skin_black_theme_version2" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/title" android:layout_width="63.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/amj" android:maxWidth="@dimen/amg" android:text="@string/r7e" android:singleLine="true" android:includeFontPadding="false" />
+</LinearLayout>

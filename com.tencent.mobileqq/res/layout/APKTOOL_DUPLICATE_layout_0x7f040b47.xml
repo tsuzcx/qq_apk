@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a32e4" android:background="#ffececec" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="94.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <TextView android:textSize="14.0sp" android:textColor="#ff707070" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a32e5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="好友仅展示最近三天的动态" android:singleLine="true" android:layout_centerInParent="true" android:layout_centerVertical="true" />
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b0f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d9e" android:scaleType="fitCenter" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a32e5" android:layout_centerVertical="true" />
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a32e6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d9f" android:scaleType="fitCenter" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a32e5" android:layout_centerVertical="true" />
-    </RelativeLayout>
-</RelativeLayout>

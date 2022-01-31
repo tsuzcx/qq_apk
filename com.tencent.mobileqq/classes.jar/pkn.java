@@ -1,122 +1,59 @@
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.SocketTimeoutException;
-import java.nio.ByteBuffer;
-import java.nio.channels.DatagramChannel;
-import java.nio.channels.SelectableChannel;
-import java.nio.channels.SelectionKey;
-import java.nio.channels.Selector;
-import java.security.SecureRandom;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
-public final class pkn
+public class pkn
+  implements poa
 {
-  private static SecureRandom jdField_a_of_type_JavaSecuritySecureRandom = new SecureRandom();
-  private long jdField_a_of_type_Long = 5000L;
-  
-  private static void a(SelectionKey paramSelectionKey, long paramLong)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    paramLong -= System.currentTimeMillis();
-    int i = 0;
-    if (paramLong > 0L) {
-      i = paramSelectionKey.selector().select(paramLong);
-    }
-    while (i == 0)
-    {
-      throw new SocketTimeoutException();
-      if (paramLong == 0L) {
-        i = paramSelectionKey.selector().selectNow();
-      }
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    if (paramLong > 0L) {
-      this.jdField_a_of_type_Long = paramLong;
-    }
-  }
-  
-  public byte[] a(String paramString, byte[] paramArrayOfByte)
-  {
-    localDatagramChannel = null;
-    try
-    {
-      localObject = DatagramChannel.open();
-      ((SelectableChannel)localObject).configureBlocking(false);
-      localObject = ((SelectableChannel)localObject).register(Selector.open(), 1);
-      try
-      {
-        localDatagramChannel = (DatagramChannel)((SelectionKey)localObject).channel();
-        InetSocketAddress localInetSocketAddress = new InetSocketAddress(jdField_a_of_type_JavaSecuritySecureRandom.nextInt(64511) + 1024);
-        localDatagramChannel.socket().bind(localInetSocketAddress);
-        localDatagramChannel.connect(new InetSocketAddress(InetAddress.getByName(paramString), 53));
-        localDatagramChannel.write(ByteBuffer.wrap(paramArrayOfByte));
-        paramString = new byte[512];
-        l1 = System.currentTimeMillis();
-        l2 = this.jdField_a_of_type_Long;
-      }
-      finally
-      {
-        try
-        {
-          long l2;
-          while (!((SelectionKey)localObject).isReadable()) {
-            a((SelectionKey)localObject, l1 + l2);
-          }
-          if (paramArrayOfByte == null) {
-            break label174;
-          }
-        }
-        finally
-        {
-          if (((SelectionKey)localObject).isValid()) {
-            ((SelectionKey)localObject).interestOps(0);
-          }
-        }
-      }
-    }
-    finally
-    {
-      for (;;)
-      {
-        Object localObject;
-        long l1;
-        int i;
-        paramArrayOfByte = localDatagramChannel;
-      }
-    }
-    paramArrayOfByte.selector().close();
-    paramArrayOfByte.channel().close();
-    label174:
-    throw paramString;
-    if (((SelectionKey)localObject).isValid()) {
-      ((SelectionKey)localObject).interestOps(0);
-    }
-    l1 = localDatagramChannel.read(ByteBuffer.wrap(paramString));
-    if (l1 > 0L)
-    {
-      i = (int)l1;
-      paramArrayOfByte = new byte[i];
-      System.arraycopy(paramString, 0, paramArrayOfByte, 0, i);
-      if (localObject != null)
-      {
-        ((SelectionKey)localObject).selector().close();
-        ((SelectionKey)localObject).channel().close();
-      }
-      return paramArrayOfByte;
-    }
-    if (localObject != null)
-    {
-      ((SelectionKey)localObject).selector().close();
-      ((SelectionKey)localObject).channel().close();
-    }
     return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    long l2 = 0L;
+    if (paramBaseArticleInfo == null) {
+      return null;
+    }
+    long l1 = l2;
+    if (paramBaseArticleInfo.mSocialFeedInfo != null)
+    {
+      l1 = l2;
+      if (paramBaseArticleInfo.mSocialFeedInfo.a != null) {
+        l1 = paramBaseArticleInfo.mSocialFeedInfo.a.a;
+      }
+    }
+    return new pjo().a(paramBaseArticleInfo).b(paramBaseArticleInfo).a(paramBaseArticleInfo, l1).f(paramBaseArticleInfo).g(paramBaseArticleInfo).i(paramBaseArticleInfo).j(paramBaseArticleInfo).k(paramBaseArticleInfo).C(paramBaseArticleInfo).q(paramBaseArticleInfo).r(paramBaseArticleInfo).v(paramBaseArticleInfo).w(paramBaseArticleInfo).A(paramBaseArticleInfo).B(paramBaseArticleInfo).a("ReadInjoy_original_cell").F(paramBaseArticleInfo).E(paramBaseArticleInfo).H(paramBaseArticleInfo).I(paramBaseArticleInfo).a();
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pgd parampgd, int paramInt2)
+  {
+    paramContainer = paramContainer.getVirtualView();
+    Object localObject = (pqg)paramContainer.findViewBaseByName("id_info_avator");
+    if (localObject != null) {
+      ((pqg)localObject).a(parampgd);
+    }
+    localObject = (pqe)paramContainer.findViewBaseByName("id_article_comment");
+    if (localObject != null) {
+      ((pqe)localObject).a(parampgd);
+    }
+    psw.a(paramContainer, parampgd.a());
+    pkm.a(paramContainer, parampgd);
+    psw.b(paramContainer, parampgd);
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, pgd parampgd, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pkn
  * JD-Core Version:    0.7.0.1
  */

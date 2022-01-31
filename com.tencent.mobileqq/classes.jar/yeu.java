@@ -1,17 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
+import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
 
-public class yeu
-  implements DialogInterface.OnClickListener
+class yeu
+  extends RecyclerView.ViewHolder
 {
-  public yeu(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public yeu(yes paramyes, View paramView)
+  {
+    super(paramView);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(SubscribeDraftBean paramSubscribeDraftBean)
+  {
+    if ((this.itemView instanceof SubScribeDraftItemView)) {
+      ((SubScribeDraftItemView)this.itemView).setData(paramSubscribeDraftBean);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yeu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,27 @@
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerEntryItemView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import common.config.service.QzoneConfig;
+import mqq.app.AppRuntime;
 
 public class yck
-  implements Runnable
+  implements View.OnClickListener
 {
-  public yck(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  public yck(RecommendBannerEntryItemView paramRecommendBannerEntryItemView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberListInnerFrame", 2, "read troop members from database before updating data from server");
-    }
-    TroopMemberListInnerFrame.a(this.a, this.a.b, null);
+    paramView = QzoneConfig.getInstance().getConfig("qqminiapp", "publicAcuntDiscoverPageSchema", "mqqapi://miniapp/open?_atype=0&_mappid=1109786902&_mvid=&_vt=3&_sig=f945854d8893417d87b3599d8dce7bdde77f409be5548044ed67383266b1fbf4");
+    MiniAppLauncher.startMiniApp(this.a.getContext(), paramView, 2016, null, null);
+    bjdt.a();
+    zaj.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "auth_page", "clk_find", 0, 0, new String[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yck
  * JD-Core Version:    0.7.0.1
  */

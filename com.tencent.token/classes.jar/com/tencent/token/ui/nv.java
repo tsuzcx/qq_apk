@@ -1,21 +1,20 @@
 package com.tencent.token.ui;
 
-import android.view.MotionEvent;
+import android.content.Intent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.token.ui.base.cf;
+import android.view.View.OnClickListener;
+import com.tmsdk.TMSDKContext;
 
-final class nv
-  implements View.OnTouchListener
+class nv
+  implements View.OnClickListener
 {
-  nv(KnowTokenActivity paramKnowTokenActivity) {}
+  nv(nu paramnu) {}
   
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if ((paramView == KnowTokenActivity.access$500(this.a)) && (paramMotionEvent.getAction() == 0)) {
-      KnowTokenActivity.access$500(this.a).a();
-    }
-    return false;
+    TMSDKContext.saveActionData(1150079);
+    paramView = new Intent(nu.a(this.a), PCMobileQQVerifyedDevicesActivity.class);
+    nu.a(this.a).startActivity(paramView);
   }
 }
 

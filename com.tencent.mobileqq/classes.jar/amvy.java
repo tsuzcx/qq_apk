@@ -1,77 +1,24 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.music.BroadcastMusicInfo;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-import org.json.JSONObject;
 
 public class amvy
-  implements Runnable
+  extends amvl
 {
-  public amvy(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, Bundle paramBundle) {}
+  public String b;
+  public String c;
   
-  public void run()
+  public amvy(String paramString1, int paramInt1, int paramInt2, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3, String paramString2, String paramString3)
   {
-    if (QzoneWebMusicJsPlugin.access$500(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin)) {
-      for (;;)
-      {
-        try
-        {
-          localJSONObject1 = new JSONObject();
-          if (this.jdField_a_of_type_AndroidOsBundle == null) {
-            continue;
-          }
-          SongInfo localSongInfo = (SongInfo)this.jdField_a_of_type_AndroidOsBundle.getParcelable("param.song");
-          if ((localSongInfo == null) || (localSongInfo.jdField_a_of_type_Int != 9) || (localSongInfo.jdField_a_of_type_CooperationQzoneMusicBroadcastMusicInfo == null)) {
-            continue;
-          }
-          i = this.jdField_a_of_type_AndroidOsBundle.getInt("param.state");
-          localJSONObject1.put("code", 0);
-          localJSONObject2 = new JSONObject();
-          localJSONObject2.put("uin", this.jdField_a_of_type_AndroidOsBundle.getLong("param.uin"));
-          localJSONObject2.put("detailUrl", localSongInfo.jdField_a_of_type_CooperationQzoneMusicBroadcastMusicInfo.detailUrl);
-          localJSONObject2.put("broadcastID", localSongInfo.jdField_a_of_type_CooperationQzoneMusicBroadcastMusicInfo.broadcastID);
-          localJSONObject2.put("broadcastName", localSongInfo.jdField_a_of_type_CooperationQzoneMusicBroadcastMusicInfo.broadcastName);
-          if (i != 2) {
-            continue;
-          }
-          localJSONObject2.put("state", "playing");
-        }
-        catch (Exception localException)
-        {
-          JSONObject localJSONObject1;
-          int i;
-          JSONObject localJSONObject2;
-          if (!QLog.isColorLevel()) {
-            return;
-          }
-          QLog.e(QzoneWebMusicJsPlugin.access$600(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin), 2, "callNetWorkInterfaceForGetttingLiveInfo error");
-          return;
-          localJSONObject2.put("state", "paused");
-          continue;
-          localException.put("code", 1);
-          continue;
-          QzoneWebMusicJsPlugin.access$700().a(localException);
-        }
-        localJSONObject1.put("data", localJSONObject2);
-        if (QLog.isColorLevel()) {
-          QLog.e(QzoneWebMusicJsPlugin.access$600(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin), 2, "callNetWorkInterfaceForGetttingLiveInfo  isDestroy " + this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.isDestroy + "  result " + localJSONObject1.toString());
-        }
-        if ((this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.isDestroy) || (QzoneWebMusicJsPlugin.access$700() == null)) {
-          return;
-        }
-        if (!QzoneWebMusicJsPlugin.access$700().a) {
-          continue;
-        }
-        this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.callJs4OpenApi(QzoneWebMusicJsPlugin.access$700(), 0, localJSONObject1.toString());
-        return;
-        if (i != 1) {
-          continue;
-        }
-        localJSONObject2.put("state", "buffering");
+    super(paramString1, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      paramString1 = paramString2.split("\\|");
+      if (paramString1.length > 0) {
+        this.b = paramString1[0];
       }
     }
+    this.c = paramString3;
+    QLog.d("GreetingCardResourceInfo", 2, String.format("GreetingCardResourceInfo mLuaScriptPath=%s mResourceDirPath=%s", new Object[] { this.b, this.c }));
   }
 }
 

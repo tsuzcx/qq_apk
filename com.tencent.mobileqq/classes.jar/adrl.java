@@ -1,29 +1,15 @@
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.hotpic.HotVideoData;
-import com.tencent.mobileqq.hotpic.HotVideoData.HotVideoGetUrlCallBack;
-import com.tencent.mobileqq.hotpic.HotVideoData.HotVideoGetUrlResult;
-import com.tencent.mobileqq.hotpic.HotVideoPreviewDownloader;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
-public class adrl
-  implements HotVideoData.HotVideoGetUrlCallBack
+class adrl
+  implements DialogInterface.OnClickListener
 {
-  public adrl(HotVideoPreviewDownloader paramHotVideoPreviewDownloader, HotVideoData paramHotVideoData, File paramFile, URLDrawableHandler paramURLDrawableHandler) {}
+  adrl(adrj paramadrj) {}
   
-  public void a(HotVideoData.HotVideoGetUrlResult paramHotVideoGetUrlResult)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramHotVideoGetUrlResult.a)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.url = paramHotVideoGetUrlResult.a();
-      HotVideoPreviewDownloader.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoPreviewDownloader, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData, this.jdField_a_of_type_ComTencentImageURLDrawableHandler);
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_JavaIoFile.delete();
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.onFileDownloadFailed(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.picIndex);
-    } while (this.jdField_a_of_type_ComTencentImageURLDrawableHandler == null);
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadFailed(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.picIndex);
+    this.a.a.p();
   }
 }
 

@@ -1,52 +1,116 @@
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileDocTabView;
-import com.tencent.mobileqq.filemanager.settings.FMSettings;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.TroopMemberCardInfo;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class acrr
-  implements Runnable
+  extends ameq
 {
-  public acrr(QfileLocalFileDocTabView paramQfileLocalFileDocTabView) {}
+  public acrr(Conversation paramConversation) {}
   
-  public void run()
+  protected void a()
   {
-    HashMap localHashMap = new HashMap();
-    Object localObject1 = FMSettings.a().b();
-    if (this.a.a.d() != 8) {}
-    for (boolean bool = true;; bool = false)
-    {
-      FileCategoryUtil.a(bool, (String)localObject1, ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|", "", localHashMap, null);
-      localObject1 = FMSettings.a().a();
-      if (localObject1 != null) {
-        FileCategoryUtil.a(bool, (String)localObject1, ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|", "", localHashMap, null);
-      }
-      localObject1 = new HashMap();
-      Iterator localIterator = localHashMap.keySet().iterator();
-      while (localIterator.hasNext())
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, "refresh recent, from_onupdaterecentlist");
+    }
+    this.a.a(0L);
+  }
+  
+  protected void a(int paramInt1, int paramInt2, String paramString)
+  {
+    if (paramInt1 == 6) {
+      if (paramInt2 == 0)
       {
-        Object localObject2 = (String)localIterator.next();
-        String str = this.a.a((String)localObject2);
-        localObject2 = (List)localHashMap.get(localObject2);
-        if (!((HashMap)localObject1).containsKey(str)) {
-          ((HashMap)localObject1).put(str, new ArrayList());
-        }
-        ((List)((HashMap)localObject1).get(str)).addAll((Collection)localObject2);
+        auam.a().c(this.a.a);
+        this.a.a(8, paramString, 1);
+        this.a.a(8, alof.C, 5000);
+        this.a.a(8, alof.aL, 5001);
       }
     }
-    FileCategoryUtil.a((Map)localObject1);
-    QfileLocalFileDocTabView.a(this.a, new acrs(this, (HashMap)localObject1));
+    while ((paramInt1 != 2) || (paramInt2 != 0)) {
+      return;
+    }
+    auam.a().b(paramString, this.a.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, "refresh recent, from_ontroopmanagersuccess");
+    }
+    this.a.a(8, paramString, 1);
+    this.a.a(8, alof.C, 5000);
+    this.a.a(8, alof.aL, 5001);
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    this.a.a(8, paramString1, 1);
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    auam.a().c(this.a.a);
+  }
+  
+  protected void a(boolean paramBoolean1, byte paramByte, TroopInfo paramTroopInfo, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
+    {
+      this.a.a(8, alof.C, 5000);
+      this.a.a(8, alof.aL, 5001);
+      if (paramTroopInfo != null) {
+        this.a.a(8, paramTroopInfo.troopuin, 1);
+      }
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean)
+    {
+      this.a.a(8, paramString, 1);
+      this.a.a(8, alof.C, 5000);
+      this.a.a(8, alof.aL, 5001);
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, ArrayList<TroopMemberCardInfo> paramArrayList, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (paramBoolean2) && (paramArrayList != null) && (paramArrayList.size() > 0))
+    {
+      paramArrayList = (TroopMemberCardInfo)paramArrayList.get(0);
+      if (paramArrayList != null)
+      {
+        this.a.a(8, paramArrayList.troopuin, 1);
+        this.a.a(8, paramArrayList.memberuin, -2147483648);
+        this.a.a(8, alof.C, 5000);
+        this.a.a(8, alof.aL, 5001);
+      }
+    }
+  }
+  
+  protected void b(String paramString1, String paramString2)
+  {
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (paramString2.equals(this.a.a.getCurrentAccountUin()))) {
+      this.a.a(8, paramString1, 1);
+    }
+  }
+  
+  protected void b(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "Conversation.onGetTroopMemberCard isSuccess=" + paramBoolean + " data=" + paramObject);
+    }
+    if ((paramBoolean) && (paramObject != null))
+    {
+      long l = ((Long)((Object[])(Object[])paramObject)[0]).longValue();
+      this.a.a(8, String.valueOf(l), 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acrr
  * JD-Core Version:    0.7.0.1
  */

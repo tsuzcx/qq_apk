@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.lyric.widget;
 
-import aede;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -8,16 +7,17 @@ import android.view.MotionEvent;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ScrollView;
 import android.widget.Scroller;
+import atxh;
 import java.util.Timer;
 
 public class LyricViewScroll
   extends ScrollView
 {
-  public volatile int a;
+  protected volatile int a;
   protected Scroller a;
-  private LyricViewScroll.LyricViewScrollListener a;
-  public Timer a;
-  public volatile boolean a;
+  private atxh a;
+  protected Timer a;
+  protected volatile boolean a;
   private volatile boolean b = true;
   private volatile boolean c;
   
@@ -71,20 +71,20 @@ public class LyricViewScroll
         this.jdField_a_of_type_Boolean = false;
         continue;
         this.c = true;
-        if (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll$LyricViewScrollListener != null)
+        if (this.jdField_a_of_type_Atxh != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll$LyricViewScrollListener.a(getScrollY());
+          this.jdField_a_of_type_Atxh.a(getScrollY());
           continue;
           Log.v("LyricViewScroll", "onTouchEvent -> ACTION_UP");
           if (!this.jdField_a_of_type_Boolean)
           {
             this.jdField_a_of_type_Boolean = true;
             this.jdField_a_of_type_JavaUtilTimer = new Timer();
-            this.jdField_a_of_type_JavaUtilTimer.scheduleAtFixedRate(new aede(this), 100L, 100L);
+            this.jdField_a_of_type_JavaUtilTimer.scheduleAtFixedRate(new LyricViewScroll.1(this), 100L, 100L);
             continue;
             Log.v("LyricViewScroll", "onTouchEvent -> ACTION_CANCEL");
             this.jdField_a_of_type_Int = getScrollY();
-            this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll$LyricViewScrollListener.b(this.jdField_a_of_type_Int);
+            this.jdField_a_of_type_Atxh.b(this.jdField_a_of_type_Int);
             this.c = false;
             if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilTimer != null))
             {
@@ -96,6 +96,16 @@ public class LyricViewScroll
       }
     }
     return false;
+  }
+  
+  public void b(int paramInt)
+  {
+    if (!this.c)
+    {
+      this.jdField_a_of_type_AndroidWidgetScroller.forceFinished(true);
+      this.jdField_a_of_type_Int = paramInt;
+      scrollTo(0, paramInt);
+    }
   }
   
   public void computeScroll()
@@ -118,14 +128,14 @@ public class LyricViewScroll
     this.b = paramBoolean;
   }
   
-  public void setScrollListener(LyricViewScroll.LyricViewScrollListener paramLyricViewScrollListener)
+  public void setScrollListener(atxh paramatxh)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll$LyricViewScrollListener = paramLyricViewScrollListener;
+    this.jdField_a_of_type_Atxh = paramatxh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.widget.LyricViewScroll
  * JD-Core Version:    0.7.0.1
  */

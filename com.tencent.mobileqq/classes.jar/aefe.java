@@ -1,56 +1,33 @@
-import android.content.ComponentName;
 import android.content.Intent;
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.managers.TimJumpLoginManager;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.WFastLoginInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginHelper;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import java.util.ArrayList;
 
 public class aefe
-  extends WtloginListener
+  implements View.OnClickListener
 {
-  public aefe(TimJumpLoginManager paramTimJumpLoginManager, QQProgressDialog paramQQProgressDialog, WtloginHelper paramWtloginHelper, Bundle paramBundle) {}
+  public aefe(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(TimJumpLoginManager.a, 2, "jumpTimLogin OnException=" + paramErrMsg + ", cmd=" + paramInt);
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-    }
-    QQToast.a(TimJumpLoginManager.a(this.jdField_a_of_type_ComTencentMobileqqManagersTimJumpLoginManager).getApp(), 1, 2131439134, 0).a();
-  }
-  
-  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(TimJumpLoginManager.a, 2, "jumpTimLogin onGetA1WithA1 ret=" + paramInt2);
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-    }
-    if (paramInt2 != 0)
+    if ((this.a.d == 15) && (TroopMemberListActivity.a(this.a).size() > 0))
     {
-      QQToast.a(TimJumpLoginManager.a(this.jdField_a_of_type_ComTencentMobileqqManagersTimJumpLoginManager).getApp(), 1, 2131439134, 0).a();
+      paramView = new Intent();
+      paramView.putExtra("param_deleted_uins", TroopMemberListActivity.a(this.a));
+      this.a.setResult(-1, paramView);
+      if ((this.a.e == null) || (!this.a.e.equals(this.a.app.getCurrentAccountUin()))) {
+        break label159;
+      }
+    }
+    label159:
+    for (int i = 0;; i = 1)
+    {
+      azqs.b(this.a.app, "dc00899", "Grp_mber", "", "mber_list", "del_inacmem", 0, 0, this.a.b, "" + i, "1", TroopMemberListActivity.a(this.a).toString());
+      this.a.finish();
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(TimJumpLoginManager.a, 2, "jumpTimLogin call TIM JumpActivity");
-    }
-    paramArrayOfByte1 = new Intent();
-    paramArrayOfByte1.setComponent(new ComponentName("com.tencent.tim", "com.tencent.mobileqq.activity.LoginJumpTeamWorkActivity"));
-    paramArrayOfByte1.setFlags(268435456);
-    paramArrayOfByte1.putExtras(this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo));
-    paramArrayOfByte1.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-    TimJumpLoginManager.a(this.jdField_a_of_type_ComTencentMobileqqManagersTimJumpLoginManager).getApp().startActivity(paramArrayOfByte1);
   }
 }
 

@@ -1,20 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import java.util.List;
+import com.tencent.av.gaudio.GaInviteLockActivity;
+import com.tencent.av.ui.QavPanel;
 
 public class lqc
-  implements Runnable
+  implements mkg
 {
-  public lqc(ArticleInfoModule paramArticleInfoModule, List paramList) {}
+  public lqc(GaInviteLockActivity paramGaInviteLockActivity) {}
   
-  public void run()
+  public void a()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().c(this.jdField_a_of_type_JavaUtilList);
+    if (this.a.a != null)
+    {
+      this.a.a.setViewEnable(2131372757, false);
+      this.a.a.setViewEnable(2131372756, false);
+      this.a.a.setViewEnable(2131362956, false);
+    }
+  }
+  
+  public void b()
+  {
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2130772165);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lqc
  * JD-Core Version:    0.7.0.1
  */

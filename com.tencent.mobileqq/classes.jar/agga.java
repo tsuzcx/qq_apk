@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
 public class agga
-  implements Runnable
+  implements afky
 {
-  public agga(ScanTorchActivity paramScanTorchActivity) {}
+  public agga(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  public void run()
+  public void onUpdate(int paramInt)
   {
-    QQToast.a(this.a.getApplicationContext(), "你已经参加过抽奖啦，不要太贪心哦。", 1).b(this.a.getTitleBarHeight());
+    if (paramInt == 23) {
+      UnlimitedBladeWorks.a(this.a).start();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agga
  * JD-Core Version:    0.7.0.1
  */

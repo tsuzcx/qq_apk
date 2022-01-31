@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.permission.PermissionSettingActivity;
 
-class xkw
-  implements Runnable
+public class xkw
+  implements View.OnClickListener
 {
-  xkw(xku paramxku) {}
+  public xkw(PermissionSettingActivity paramPermissionSettingActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QQToast.a(this.a.a.a, 1, "资源加载失败", 1).a();
+    paramView = PermissionSettingActivity.a(this.a).a();
+    if (paramView != null)
+    {
+      PermissionSettingActivity.a(this.a, paramView);
+      this.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xkw
  * JD-Core Version:    0.7.0.1
  */

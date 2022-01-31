@@ -10,8 +10,8 @@ import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.OrientationEventListener;
-import com.tencent.mobileqq.armap.sensor.ARSensorManager;
-import com.tencent.mobileqq.armap.sensor.ARSensorManager.OnSensorChangeListener;
+import anta;
+import antb;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
 import javax.microedition.khronos.egl.EGLConfig;
@@ -19,7 +19,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class ARGLSurfaceView
   extends GLSurfaceView
-  implements GLSurfaceView.Renderer, ARSensorManager.OnSensorChangeListener
+  implements GLSurfaceView.Renderer, antb
 {
   public static final int ACCELER_TYPE = 1;
   public static long FPS_LIMIT = 33L;
@@ -36,8 +36,8 @@ public class ARGLSurfaceView
   private volatile boolean mIsContextDestroyed;
   volatile boolean mIsDestroyed = false;
   private boolean mIsSupportPreserveEGLContextOnPause = true;
-  private ARSensorManager.OnSensorChangeListener mSensorListener;
-  public ARSensorManager mSensorManager;
+  private antb mSensorListener;
+  public anta mSensorManager;
   private ARGLSurfaceView.SurfaceStateListener mSurfaceStateListener;
   private OrientationEventListener orientationListener;
   
@@ -98,12 +98,12 @@ public class ARGLSurfaceView
     this.orientationListener = new ARGLSurfaceView.3(this, paramActivity, paramActivity);
   }
   
-  public void initSensor(ARSensorManager.OnSensorChangeListener paramOnSensorChangeListener, int paramInt)
+  public void initSensor(antb paramantb, int paramInt)
   {
     if ((this.mSensorManager == null) && (this.mCurActivity != null))
     {
-      this.mSensorManager = new ARSensorManager(this.mCurActivity, paramInt);
-      this.mSensorListener = paramOnSensorChangeListener;
+      this.mSensorManager = new anta(this.mCurActivity, paramInt);
+      this.mSensorListener = paramantb;
     }
   }
   
@@ -203,18 +203,14 @@ public class ARGLSurfaceView
   
   public void onRotationUpdateQuaternion(float[] paramArrayOfFloat)
   {
-    if (this.mEngineHandler != 0L)
-    {
-      queueEvent(new ARGLSurfaceView.19(this, paramArrayOfFloat));
-      if (this.mSensorListener != null) {
-        this.mSensorListener.onRotationUpdateQuaternion(paramArrayOfFloat);
-      }
+    if ((this.mEngineHandler != 0L) && (this.mSensorListener != null)) {
+      this.mSensorListener.onRotationUpdateQuaternion(paramArrayOfFloat);
     }
   }
   
   public void onSensorSupport(int paramInt, boolean paramBoolean)
   {
-    queueEvent(new ARGLSurfaceView.20(this, paramInt, paramBoolean));
+    queueEvent(new ARGLSurfaceView.19(this, paramInt, paramBoolean));
     if (this.mSensorListener != null) {
       this.mSensorListener.onSensorSupport(paramInt, paramBoolean);
     }
@@ -462,7 +458,7 @@ public class ARGLSurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ARGLSurfaceView
  * JD-Core Version:    0.7.0.1
  */

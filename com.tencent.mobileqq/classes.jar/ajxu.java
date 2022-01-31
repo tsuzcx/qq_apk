@@ -1,20 +1,12 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import com.tencent.mobileqq.unifiedebug.SnapshotService;
-import com.tencent.qphone.base.util.QLog;
-
-public class ajxu
-  implements Runnable
+public final class ajxu
 {
-  public ajxu(SnapshotService paramSnapshotService, Bitmap paramBitmap, ajxy paramajxy, ajya paramajya) {}
+  public final int a;
+  public final int b;
   
-  public void run()
+  ajxu(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(SnapshotService.a(), 2, "ScreenShot Finish Callback");
-    }
-    SnapshotService.a(this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Ajxy, this.jdField_a_of_type_Ajya);
-    this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService.a.post(new ajxv(this));
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 

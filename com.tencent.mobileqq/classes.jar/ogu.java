@@ -1,26 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoSyncStoryGuide;
-import com.tencent.biz.qqstory.takevideo.EditVideoUi;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyCutImageView;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 
-public class ogu
-  implements DialogInterface.OnDismissListener
+class ogu
+  implements oer
 {
-  public ogu(EditVideoSyncStoryGuide paramEditVideoSyncStoryGuide) {}
+  ogu(ogr paramogr) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "showSyncStoryGuide ->onDismiss-------");
+    if (ogr.a(this.a).booleanValue())
+    {
+      if ((ogr.a(this.a).isShown()) && (ogr.a(this.a).getWindowVisibility() == 0))
+      {
+        ogr.a(this.a, ogr.a(this.a));
+        ogr.a(this.a).removeCallbacks(ogr.a(this.a));
+        ogr.a(this.a).postDelayed(ogr.a(this.a), ogr.a(this.a).mAdvertisementExtInfo.p);
+      }
     }
-    SharedPreUtils.b(this.a.a.a());
+    else {
+      return;
+    }
+    ogr.a(this.a, Boolean.valueOf(false));
+    ogr.a(this.a, ogr.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ogu
  * JD-Core Version:    0.7.0.1
  */

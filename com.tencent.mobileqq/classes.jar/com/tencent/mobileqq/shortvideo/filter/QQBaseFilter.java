@@ -1,95 +1,102 @@
 package com.tencent.mobileqq.shortvideo.filter;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class QQBaseFilter
 {
-  protected int a;
-  private QQFilterRenderManager a;
-  protected Map a;
-  protected int b;
-  protected int c;
-  protected int d = 0;
+  static final int CREATED = 1;
+  static final int INITED = 2;
+  static final int UNINIT = 0;
+  protected boolean mCaptureMode;
+  private QQFilterRenderManager mFilterRenderManagerInstance = null;
+  protected int mFilterType;
+  protected int mInputTextureID;
+  protected int mOutputTextureID;
+  protected AtomicInteger mQuoteCount = new AtomicInteger(0);
+  protected Object mSpecificParam;
+  protected int mStatus = 0;
   
   public QQBaseFilter(int paramInt, QQFilterRenderManager paramQQFilterRenderManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = null;
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.c = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = paramQQFilterRenderManager;
+    this.mFilterType = paramInt;
+    this.mFilterRenderManagerInstance = paramQQFilterRenderManager;
   }
   
-  public QQFilterRenderManager a()
+  public int getFilterType()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager;
+    return this.mFilterType;
   }
   
-  public void a(int paramInt, int[] paramArrayOfInt)
+  public int getIntputTextureID()
   {
-    this.d = paramInt;
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0))
-    {
-      int i = paramArrayOfInt.length;
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        int j = paramArrayOfInt[paramInt];
-        this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(j), Integer.valueOf(j));
-        paramInt += 1;
-      }
-    }
+    return this.mInputTextureID;
   }
   
-  public boolean a(int paramInt)
+  public int getOutputTextureID()
   {
-    if ((this.jdField_a_of_type_JavaUtilMap == null) || (this.jdField_a_of_type_JavaUtilMap.size() == 0)) {
-      return false;
-    }
-    return this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt));
+    return this.mOutputTextureID;
   }
   
-  public int b()
+  public QQFilterRenderManager getQQFilterRenderManager()
   {
-    return this.b;
+    return this.mFilterRenderManagerInstance;
   }
   
-  public void b(int paramInt)
+  public Object getSpecificParam()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return this.mSpecificParam;
   }
   
-  public void b(int paramInt1, int paramInt2) {}
-  
-  public int c()
-  {
-    return this.c;
-  }
-  
-  public int d()
-  {
-    return this.d;
-  }
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g() {}
-  
-  public void h() {}
-  
-  public boolean i_()
+  public boolean isFilterWork()
   {
     return false;
+  }
+  
+  public boolean needFaceDetect()
+  {
+    return false;
+  }
+  
+  public void onChangeCamera(int paramInt) {}
+  
+  public void onDrawFrame() {}
+  
+  public void onPause() {}
+  
+  public void onResume() {}
+  
+  public void onSurfaceChange(int paramInt1, int paramInt2) {}
+  
+  public void onSurfaceCreate() {}
+  
+  public void onSurfaceDestroy() {}
+  
+  protected void parseSpecificParam() {}
+  
+  public void setCaptureMode(boolean paramBoolean)
+  {
+    this.mCaptureMode = paramBoolean;
+  }
+  
+  public void setInputTextureID(int paramInt)
+  {
+    this.mInputTextureID = paramInt;
+  }
+  
+  public void setOutputTextureID(int paramInt)
+  {
+    this.mOutputTextureID = paramInt;
+  }
+  
+  public void setSpecificParam(Object paramObject)
+  {
+    this.mSpecificParam = paramObject;
+    parseSpecificParam();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQBaseFilter
  * JD-Core Version:    0.7.0.1
  */

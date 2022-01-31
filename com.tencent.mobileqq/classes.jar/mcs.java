@@ -1,18 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
+import android.graphics.PointF;
+import java.util.ArrayList;
 
-public class mcs
-  implements Runnable
+class mcs
 {
-  public mcs(VideoFeedsListView paramVideoFeedsListView) {}
+  int jdField_a_of_type_Int;
+  ArrayList<PointF> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  mgp jdField_a_of_type_Mgp;
+  byte[] jdField_a_of_type_ArrayOfByte;
+  int b;
+  int c;
+  int d;
+  int e;
+  int f;
   
-  public void run()
-  {
-    this.a.d(false);
-  }
+  mcs(mcr parammcr) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mcs
  * JD-Core Version:    0.7.0.1
  */

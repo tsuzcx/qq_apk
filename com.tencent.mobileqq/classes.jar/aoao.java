@@ -1,21 +1,10 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.NormalFacePackage;
-import java.io.File;
-import java.io.FileFilter;
-
-public class aoao
-  implements FileFilter
+public abstract interface aoao
 {
-  public aoao(NormalFacePackage paramNormalFacePackage) {}
-  
-  public boolean accept(File paramFile)
-  {
-    paramFile = paramFile.getName();
-    return (paramFile.endsWith(".jpg")) || (paramFile.endsWith(".png")) || (paramFile.endsWith(".bmp")) || (paramFile.endsWith(".apng")) || (paramFile.endsWith(".gif"));
-  }
+  public abstract void a(byte[] paramArrayOfByte, aoaq paramaoaq);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoao
  * JD-Core Version:    0.7.0.1
  */

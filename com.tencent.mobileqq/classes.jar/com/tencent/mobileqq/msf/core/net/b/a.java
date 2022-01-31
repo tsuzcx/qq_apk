@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.msf.core.net.b;
 
+import com.tencent.qphone.base.util.QLog;
+
 public abstract class a
   implements Runnable
 {
@@ -8,9 +10,10 @@ public abstract class a
   public static final int c = -2;
   public static final int d = -3;
   protected int e;
-  protected a f;
+  protected a.a f;
+  public Object g;
   
-  public a(int paramInt, a parama)
+  public a(int paramInt, a.a parama)
   {
     this.e = paramInt;
     this.f = parama;
@@ -20,9 +23,12 @@ public abstract class a
   
   protected void a(int paramInt, String paramString)
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("EchoTask", 2, "notifyEchoResult: " + paramString);
+    }
     b();
     if (this.f != null) {
-      this.f.a(this.e, paramInt, paramString, d());
+      this.f.a(this, this.e, paramInt, paramString, d());
     }
   }
   
@@ -48,11 +54,6 @@ public abstract class a
       return;
     }
     a(a(str), str);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void a(int paramInt1, int paramInt2, String paramString, Object paramObject);
   }
 }
 

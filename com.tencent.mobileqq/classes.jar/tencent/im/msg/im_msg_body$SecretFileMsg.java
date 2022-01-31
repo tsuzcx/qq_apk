@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class im_msg_body$SecretFileMsg
-  extends MessageMicro
+  extends MessageMicro<SecretFileMsg>
 {
   public static final int TYPE_C2C = 0;
   public static final int TYPE_DISCU = 4;

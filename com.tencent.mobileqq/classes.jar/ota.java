@@ -1,33 +1,67 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.util.TroopReportor;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import mqq.app.AppRuntime;
 
 public class ota
-  implements Runnable
+  implements AladdinConfigHandler
 {
-  public ota(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  public void run()
+  public static int a(AppRuntime paramAppRuntime, int paramInt)
   {
-    String str = "temp_qrcode_share_" + this.a.jdField_c_of_type_JavaLangString + ".png";
-    try
+    int i = 1;
+    if (paramAppRuntime == null)
     {
-      str = QRUtils.a(this.a.getApplicationContext(), str, this.a.b);
-      this.a.runOnUiThread(new otc(this, str));
+      QLog.e("ChannelListDynamicOrder", 1, "getSharedPreferences: return null for runtime is null");
+      return 0;
+    }
+    paramAppRuntime = "readinjoy_channel_list_dynamic_order_changed_map_" + paramAppRuntime.getAccount();
+    if (BaseApplicationImpl.getApplication().getSharedPreferences(paramAppRuntime, 0).getBoolean("channel_" + paramInt, false)) {}
+    for (paramInt = i;; paramInt = 0) {
+      return paramInt;
+    }
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, int paramInt)
+  {
+    if (paramAppRuntime == null)
+    {
+      QLog.e("ChannelListDynamicOrder", 1, "getSharedPreferences: return null for runtime is null");
       return;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    paramAppRuntime = "readinjoy_channel_list_dynamic_order_changed_map_" + paramAppRuntime.getAccount();
+    BaseApplicationImpl.getApplication().getSharedPreferences(paramAppRuntime, 0).edit().putBoolean("channel_" + paramInt, true).apply();
+  }
+  
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  {
+    QLog.d("ChannelListDynamicOrder", 2, "[onReceiveConfig] " + paramString);
+    paramString = osq.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      if (this.a.jdField_c_of_type_Int == 2) {
-        TroopReportor.a("Grp_share", "grpData_admin", "qr_qzone", 0, 0, new String[] { this.a.jdField_c_of_type_JavaLangString, String.valueOf(this.a.a), "1" });
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      if (TextUtils.equals("channel_list_dynamic_order_switch", str1)) {
+        bkbq.a("sp_key_channel_list_dynamic_order_switch", Boolean.valueOf(TextUtils.equals(str2, "1")));
       }
-      this.a.runOnUiThread(new otb(this));
     }
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    bkbq.a("sp_key_channel_list_dynamic_order_switch", Boolean.valueOf(false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ota
  * JD-Core Version:    0.7.0.1
  */

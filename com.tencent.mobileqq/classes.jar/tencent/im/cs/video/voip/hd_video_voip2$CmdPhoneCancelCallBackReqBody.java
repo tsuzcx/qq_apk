@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class hd_video_voip2$CmdPhoneCancelCallBackReqBody
-  extends MessageMicro
+  extends MessageMicro<CmdPhoneCancelCallBackReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_call_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -22,7 +22,7 @@ public final class hd_video_voip2$CmdPhoneCancelCallBackReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.video.voip.hd_video_voip2.CmdPhoneCancelCallBackReqBody
  * JD-Core Version:    0.7.0.1
  */

@@ -4,31 +4,21 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.MakeVideoActivity;
-import com.tencent.mobileqq.app.ThreadManager;
+import befl;
+import begz;
+import bjce;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.JsWebViewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.QwJsInterface;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pdr;
 
 public class WeizhengquanJsPlugin
-  extends JsWebViewPlugin
+  extends befl
 {
-  protected long a;
-  Activity a;
-  public String a;
-  private String b;
-  private final String c = "getVideo";
-  private final String d = "getPayAdInfo";
-  
-  public WeizhengquanJsPlugin()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  Activity jdField_a_of_type_AndroidAppActivity;
+  String jdField_a_of_type_JavaLangString = "";
+  private final String b = "getPayAdInfo";
+  private final String c = "pushMusicInfo";
   
   private String a(String... paramVarArgs)
   {
@@ -53,69 +43,28 @@ public class WeizhengquanJsPlugin
     }
   }
   
-  private void a(Intent paramIntent, byte paramByte, int paramInt)
-  {
-    if (paramByte == 1)
-    {
-      if (paramInt != -1) {
-        break label41;
-      }
-      paramIntent = paramIntent.getStringExtra("path");
-      if (!TextUtils.isEmpty(paramIntent)) {
-        break label25;
-      }
-    }
-    label25:
-    label41:
-    do
-    {
-      return;
-      ThreadManager.post(new pdr(this, paramIntent), 2, null, true);
-      return;
-      paramIntent = paramIntent.getStringExtra("result");
-    } while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-    callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramIntent });
-  }
-  
-  private boolean a(JsBridgeListener paramJsBridgeListener, String... paramVarArgs)
-  {
-    boolean bool = false;
-    paramVarArgs = paramVarArgs[0];
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("WeizhengquanJsPlugin", 2, "" + this.jdField_a_of_type_Long + " WeizhengquanJsPlugin.handleJsRequest params:" + paramVarArgs);
-    }
-    if (paramVarArgs != null)
-    {
-      a(paramVarArgs, paramJsBridgeListener);
-      bool = true;
-    }
-    return bool;
-  }
-  
-  private boolean b(JsBridgeListener paramJsBridgeListener, String... paramVarArgs)
+  private void a(JsBridgeListener paramJsBridgeListener, String... paramVarArgs)
   {
     if (QLog.isColorLevel()) {
       QLog.i("WeizhengquanJsPlugin", 2, "prosGetPayAdInfo...");
     }
-    if (!(this.mRuntime.a() instanceof QwJsInterface))
-    {
+    if (!(this.mRuntime.a() instanceof bjce)) {
       QLog.i("WeizhengquanJsPlugin", 2, "activity error : " + this.jdField_a_of_type_AndroidAppActivity);
-      return false;
     }
-    int i = ((QwJsInterface)this.mRuntime.a()).a();
-    QLog.i("WeizhengquanJsPlugin", 2, "bzCode = " + i);
-    if (1 != i) {
-      return true;
-    }
-    paramVarArgs = (Bundle)((QwJsInterface)this.mRuntime.a()).b();
+    do
+    {
+      return;
+      i = ((bjce)this.mRuntime.a()).a();
+      QLog.i("WeizhengquanJsPlugin", 2, "bzCode = " + i);
+    } while (1 != i);
+    paramVarArgs = (Bundle)((bjce)this.mRuntime.a()).b();
     if (paramVarArgs == null)
     {
       QLog.i("WeizhengquanJsPlugin", 2, "error bundle is null...");
-      return true;
+      return;
     }
     paramJsBridgeListener = paramVarArgs.getString("paySuccJsonData");
-    i = paramVarArgs.getInt("ScreenHeight");
+    int i = paramVarArgs.getInt("ScreenHeight");
     int j = paramVarArgs.getInt("PayHeight");
     int k = paramVarArgs.getInt("ADHeight");
     QLog.i("WeizhengquanJsPlugin", 2, "data = " + paramJsBridgeListener + " sh = " + i + " ph = " + j + " ah = " + k);
@@ -130,7 +79,35 @@ public class WeizhengquanJsPlugin
       paramVarArgs.put("paySuccJsonData", paramJsBridgeListener);
       QLog.i("WeizhengquanJsPlugin", 2, this.jdField_a_of_type_JavaLangString + " => " + paramVarArgs);
       callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramVarArgs.toString() });
-      return true;
+      return;
+    }
+    catch (JSONException paramJsBridgeListener)
+    {
+      paramJsBridgeListener.printStackTrace();
+    }
+  }
+  
+  private void b(JsBridgeListener paramJsBridgeListener, String... paramVarArgs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("WeizhengquanJsPlugin", 2, "prosPushMusicInfo...");
+    }
+    if (paramVarArgs.length <= 0)
+    {
+      QLog.i("WeizhengquanJsPlugin", 2, "error, parameters empty...");
+      return;
+    }
+    try
+    {
+      paramJsBridgeListener = new JSONObject();
+      paramJsBridgeListener.put("ret_code", "0");
+      paramJsBridgeListener.put("ret_msg", "success");
+      callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramJsBridgeListener.toString() });
+      paramJsBridgeListener = new Intent();
+      paramJsBridgeListener.putExtra("h5arg", paramVarArgs[0]);
+      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, paramJsBridgeListener);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+      return;
     }
     catch (JSONException paramJsBridgeListener)
     {
@@ -141,22 +118,12 @@ public class WeizhengquanJsPlugin
     }
   }
   
-  protected void a(String paramString, JsBridgeListener paramJsBridgeListener)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeizhengquanJsPlugin", 2, "pay requet params json=" + paramString);
-    }
-    paramJsBridgeListener = new Intent(this.jdField_a_of_type_AndroidAppActivity, MakeVideoActivity.class);
-    paramJsBridgeListener.putExtra("params", paramString);
-    startActivityForResult(paramJsBridgeListener, (byte)1);
-  }
-  
-  protected String getNameSpace()
+  public String getNameSpace()
   {
     return "qw";
   }
   
-  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     QLog.d("WeizhengquanJsPlugin", 2, "handleJsRequest url = " + paramString1 + " pkgName = " + paramString2 + " methodName = " + paramString3 + " arg.length = " + paramVarArgs.length);
     if (!getNameSpace().equals(paramString2)) {}
@@ -169,20 +136,14 @@ public class WeizhengquanJsPlugin
         QLog.d("WeizhengquanJsPlugin", 2, "function name is null...");
         return true;
       }
-      this.b = paramString3;
-      if ("getVideo".equals(paramString3)) {
-        return a(paramJsBridgeListener, paramVarArgs);
+      if ("getPayAdInfo".equals(paramString3))
+      {
+        a(paramJsBridgeListener, paramVarArgs);
+        return true;
       }
-    } while (!"getPayAdInfo".equals(paramString3));
-    return b(paramJsBridgeListener, paramVarArgs);
-  }
-  
-  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
-  {
-    super.onActivityResult(paramIntent, paramByte, paramInt);
-    if ("getVideo".equals(this.b)) {
-      a(paramIntent, paramByte, paramInt);
-    }
+    } while (!"pushMusicInfo".equals(paramString3));
+    b(paramJsBridgeListener, paramVarArgs);
+    return true;
   }
   
   public void onCreate()
@@ -192,7 +153,7 @@ public class WeizhengquanJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.WeizhengquanJsPlugin
  * JD-Core Version:    0.7.0.1
  */

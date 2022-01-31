@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/cqg" android:background="@drawable/a7e" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/e_1" android:background="@drawable/qb_troup_group_divide_line" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <TextView android:textColor="@color/skin_gray2" android:gravity="center" android:id="@id/jfb" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_below="@id/e_1" />
+</RelativeLayout>

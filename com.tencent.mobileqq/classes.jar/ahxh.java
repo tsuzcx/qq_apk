@@ -1,28 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.service.gamecenter.AppLaucherHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ahxh
-  extends Handler
+class ahxh
+  implements DialogInterface.OnClickListener
 {
-  public ahxh(AppLaucherHelper paramAppLaucherHelper) {}
+  ahxh(ahww paramahww) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.handleMessage(paramMessage);
-    if (paramMessage.what == 0)
-    {
-      AppLaucherHelper.a = false;
-      if (QLog.isColorLevel()) {
-        QLog.d(getClass().getSimpleName(), 2, "wtlogin time out");
-      }
+    if (paramInt == 0) {
+      ahww.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahxh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,60 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.DeviceMsgChatPie;
-import java.util.ArrayList;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
-public class vsc
-  implements DialogInterface.OnClickListener
+final class vsc
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public vsc(DeviceMsgChatPie paramDeviceMsgChatPie, ArrayList paramArrayList, String paramString) {}
+  vsc(ViewGroup paramViewGroup, ImageView paramImageView1, ImageView paramImageView2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramDialogInterface.dismiss();
-    DeviceMsgChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDeviceMsgChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDeviceMsgChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString);
+    float f1 = ((Float)paramValueAnimator.getAnimatedValue("scaleX")).floatValue();
+    float f2 = ((Float)paramValueAnimator.getAnimatedValue("scaleY")).floatValue();
+    this.jdField_a_of_type_AndroidViewViewGroup.setPivotX(0.5F);
+    this.jdField_a_of_type_AndroidViewViewGroup.setScaleX(f1);
+    this.jdField_a_of_type_AndroidViewViewGroup.setPivotY(0.5F);
+    this.jdField_a_of_type_AndroidViewViewGroup.setScaleY(f2);
+    this.jdField_a_of_type_AndroidViewViewGroup.setTranslationX(((Float)paramValueAnimator.getAnimatedValue("translateX")).floatValue());
+    this.jdField_a_of_type_AndroidViewViewGroup.setTranslationY(((Float)paramValueAnimator.getAnimatedValue("translateY")).floatValue());
+    int i = this.jdField_a_of_type_AndroidViewViewGroup.getWidth();
+    int j = this.jdField_a_of_type_AndroidViewViewGroup.getHeight();
+    float f3;
+    if (f1 < f2)
+    {
+      f1 = f2 / f1;
+      f2 = i;
+      f3 = i;
+      this.jdField_a_of_type_AndroidWidgetImageView.setPivotX(0.5F);
+      this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(f1);
+      this.jdField_a_of_type_AndroidWidgetImageView.setTranslationX((f2 - f3 * f1) * 0.5F);
+      this.jdField_a_of_type_AndroidWidgetImageView.setPivotY(0.5F);
+      this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(1.0F);
+      this.jdField_a_of_type_AndroidWidgetImageView.setTranslationY(0.0F);
+    }
+    for (;;)
+    {
+      this.b.setAlpha(((Float)paramValueAnimator.getAnimatedValue("backgroundAlpha")).floatValue());
+      return;
+      if (f2 < f1)
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView.setPivotX(0.5F);
+        this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(1.0F);
+        this.jdField_a_of_type_AndroidWidgetImageView.setTranslationX(0.0F);
+        f1 /= f2;
+        f2 = j;
+        f3 = j;
+        this.jdField_a_of_type_AndroidWidgetImageView.setPivotY(0.5F);
+        this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(f1);
+        this.jdField_a_of_type_AndroidWidgetImageView.setTranslationY((f2 - f3 * f1) * 0.5F);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vsc
  * JD-Core Version:    0.7.0.1
  */

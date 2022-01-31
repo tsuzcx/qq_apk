@@ -6,42 +6,29 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
-public class LocalBroadcastManager
+public final class LocalBroadcastManager
 {
   private static final boolean DEBUG = false;
   static final int MSG_EXEC_PENDING_BROADCASTS = 1;
   private static final String TAG = "LocalBroadcastManager";
   private static LocalBroadcastManager mInstance;
   private static final Object mLock = new Object();
-  private final HashMap<String, ArrayList<ReceiverRecord>> mActions = new HashMap();
+  private final HashMap mActions = new HashMap();
   private final Context mAppContext;
   private final Handler mHandler;
-  private final ArrayList<BroadcastRecord> mPendingBroadcasts = new ArrayList();
-  private final HashMap<BroadcastReceiver, ArrayList<IntentFilter>> mReceivers = new HashMap();
+  private final ArrayList mPendingBroadcasts = new ArrayList();
+  private final HashMap mReceivers = new HashMap();
   
   private LocalBroadcastManager(Context paramContext)
   {
     this.mAppContext = paramContext;
-    this.mHandler = new Handler(paramContext.getMainLooper())
-    {
-      public void handleMessage(Message paramAnonymousMessage)
-      {
-        switch (paramAnonymousMessage.what)
-        {
-        default: 
-          super.handleMessage(paramAnonymousMessage);
-          return;
-        }
-        LocalBroadcastManager.this.executePendingBroadcasts();
-      }
-    };
+    this.mHandler = new LocalBroadcastManager.1(this, paramContext.getMainLooper());
   }
   
   private void executePendingBroadcasts()
@@ -55,7 +42,7 @@ public class LocalBroadcastManager
         if (i <= 0) {
           return;
         }
-        BroadcastRecord[] arrayOfBroadcastRecord = new BroadcastRecord[i];
+        LocalBroadcastManager.BroadcastRecord[] arrayOfBroadcastRecord = new LocalBroadcastManager.BroadcastRecord[i];
         this.mPendingBroadcasts.toArray(arrayOfBroadcastRecord);
         this.mPendingBroadcasts.clear();
         i = 0;
@@ -63,10 +50,14 @@ public class LocalBroadcastManager
           continue;
         }
         ??? = arrayOfBroadcastRecord[i];
+        int k = ???.receivers.size();
         int j = 0;
-        if (j < ???.receivers.size())
+        if (j < k)
         {
-          ((ReceiverRecord)???.receivers.get(j)).receiver.onReceive(this.mAppContext, ???.intent);
+          LocalBroadcastManager.ReceiverRecord localReceiverRecord = (LocalBroadcastManager.ReceiverRecord)???.receivers.get(j);
+          if (!localReceiverRecord.dead) {
+            localReceiverRecord.receiver.onReceive(this.mAppContext, ???.intent);
+          }
           j += 1;
         }
       }
@@ -74,7 +65,8 @@ public class LocalBroadcastManager
     }
   }
   
-  public static LocalBroadcastManager getInstance(Context paramContext)
+  @NonNull
+  public static LocalBroadcastManager getInstance(@NonNull Context paramContext)
   {
     synchronized (mLock)
     {
@@ -86,11 +78,11 @@ public class LocalBroadcastManager
     }
   }
   
-  public void registerReceiver(BroadcastReceiver paramBroadcastReceiver, IntentFilter paramIntentFilter)
+  public void registerReceiver(@NonNull BroadcastReceiver paramBroadcastReceiver, @NonNull IntentFilter paramIntentFilter)
   {
     synchronized (this.mReceivers)
     {
-      ReceiverRecord localReceiverRecord = new ReceiverRecord(paramIntentFilter, paramBroadcastReceiver);
+      LocalBroadcastManager.ReceiverRecord localReceiverRecord = new LocalBroadcastManager.ReceiverRecord(paramIntentFilter, paramBroadcastReceiver);
       Object localObject2 = (ArrayList)this.mReceivers.get(paramBroadcastReceiver);
       Object localObject1 = localObject2;
       if (localObject2 == null)
@@ -98,7 +90,7 @@ public class LocalBroadcastManager
         localObject1 = new ArrayList(1);
         this.mReceivers.put(paramBroadcastReceiver, localObject1);
       }
-      ((ArrayList)localObject1).add(paramIntentFilter);
+      ((ArrayList)localObject1).add(localReceiverRecord);
       int i = 0;
       while (i < paramIntentFilter.countActions())
       {
@@ -117,13 +109,14 @@ public class LocalBroadcastManager
     }
   }
   
-  public boolean sendBroadcast(Intent paramIntent)
+  public boolean sendBroadcast(@NonNull Intent paramIntent)
   {
     int i;
     label161:
     int j;
-    Object localObject2;
+    Object localObject;
     int k;
+    ArrayList localArrayList1;
     synchronized (this.mReceivers)
     {
       String str1 = paramIntent.getAction();
@@ -132,206 +125,176 @@ public class LocalBroadcastManager
       String str3 = paramIntent.getScheme();
       Set localSet = paramIntent.getCategories();
       if ((paramIntent.getFlags() & 0x8) == 0) {
-        break label521;
+        break label500;
       }
       i = 1;
       if (i != 0) {
         Log.v("LocalBroadcastManager", "Resolving type " + str2 + " scheme " + str3 + " of intent " + paramIntent);
       }
-      ArrayList localArrayList = (ArrayList)this.mActions.get(paramIntent.getAction());
-      if (localArrayList == null) {
-        break label497;
+      ArrayList localArrayList2 = (ArrayList)this.mActions.get(paramIntent.getAction());
+      if (localArrayList2 == null) {
+        break label477;
       }
       if (i == 0) {
-        break label502;
+        break label485;
       }
-      Log.v("LocalBroadcastManager", "Action list: " + localArrayList);
-      break label502;
-      if (j >= localArrayList.size()) {
-        break label554;
+      Log.v("LocalBroadcastManager", "Action list: " + localArrayList2);
+      break label485;
+      if (j >= localArrayList2.size()) {
+        break label536;
       }
-      ReceiverRecord localReceiverRecord = (ReceiverRecord)localArrayList.get(j);
+      localObject = (LocalBroadcastManager.ReceiverRecord)localArrayList2.get(j);
       if (i != 0) {
-        Log.v("LocalBroadcastManager", "Matching against filter " + localReceiverRecord.filter);
+        Log.v("LocalBroadcastManager", "Matching against filter " + ((LocalBroadcastManager.ReceiverRecord)localObject).filter);
       }
-      if (localReceiverRecord.broadcasting)
+      if (((LocalBroadcastManager.ReceiverRecord)localObject).broadcasting)
       {
-        localObject1 = localObject2;
-        if (i != 0)
-        {
-          Log.v("LocalBroadcastManager", "  Filter's target already added");
-          localObject1 = localObject2;
+        if (i == 0) {
+          break label505;
         }
+        Log.v("LocalBroadcastManager", "  Filter's target already added");
       }
       else
       {
-        k = localReceiverRecord.filter.match(str1, str2, str3, localUri, localSet, "LocalBroadcastManager");
+        k = ((LocalBroadcastManager.ReceiverRecord)localObject).filter.match(str1, str2, str3, localUri, localSet, "LocalBroadcastManager");
         if (k >= 0)
         {
           if (i != 0) {
             Log.v("LocalBroadcastManager", "  Filter matched!  match=0x" + Integer.toHexString(k));
           }
-          localObject1 = localObject2;
-          if (localObject2 == null) {
-            localObject1 = new ArrayList();
+          if (localArrayList1 != null) {
+            break label482;
           }
-          ((ArrayList)localObject1).add(localReceiverRecord);
-          localReceiverRecord.broadcasting = true;
+          localArrayList1 = new ArrayList();
+          label311:
+          localArrayList1.add(localObject);
+          ((LocalBroadcastManager.ReceiverRecord)localObject).broadcasting = true;
         }
       }
     }
-    Object localObject1 = localObject2;
     if (i != 0) {
       switch (k)
       {
       default: 
-        localObject1 = "unknown reason";
-        label392:
-        Log.v("LocalBroadcastManager", "  Filter did not match: " + (String)localObject1);
-        localObject1 = localObject2;
+        localObject = "unknown reason";
+        label376:
+        Log.v("LocalBroadcastManager", "  Filter did not match: " + (String)localObject);
         break;
       }
     }
     for (;;)
     {
-      if (i < ((ArrayList)localObject2).size())
+      if (i < localArrayList1.size())
       {
-        ((ReceiverRecord)((ArrayList)localObject2).get(i)).broadcasting = false;
+        ((LocalBroadcastManager.ReceiverRecord)localArrayList1.get(i)).broadcasting = false;
         i += 1;
       }
       else
       {
-        this.mPendingBroadcasts.add(new BroadcastRecord(paramIntent, (ArrayList)localObject2));
+        this.mPendingBroadcasts.add(new LocalBroadcastManager.BroadcastRecord(paramIntent, localArrayList1));
         if (!this.mHandler.hasMessages(1)) {
           this.mHandler.sendEmptyMessage(1);
         }
         return true;
-        label497:
-        label502:
+        label477:
+        label482:
+        label485:
+        label500:
+        label505:
         do
         {
           return false;
-          localObject2 = null;
+          break label311;
+          localArrayList1 = null;
           j = 0;
           break label161;
-          j += 1;
-          localObject2 = localObject1;
-          break label161;
-          i = 0;
-          break;
-          localObject1 = "action";
-          break label392;
-          localObject1 = "category";
-          break label392;
-          localObject1 = "data";
-          break label392;
-          localObject1 = "type";
-          break label392;
-        } while (localObject2 == null);
-        label521:
-        label554:
+          for (;;)
+          {
+            j += 1;
+            break label161;
+            i = 0;
+            break;
+          }
+          localObject = "action";
+          break label376;
+          localObject = "category";
+          break label376;
+          localObject = "data";
+          break label376;
+          localObject = "type";
+          break label376;
+        } while (localArrayList1 == null);
+        label536:
         i = 0;
       }
     }
   }
   
-  public void sendBroadcastSync(Intent paramIntent)
+  public void sendBroadcastSync(@NonNull Intent paramIntent)
   {
     if (sendBroadcast(paramIntent)) {
       executePendingBroadcasts();
     }
   }
   
-  public void unregisterReceiver(BroadcastReceiver paramBroadcastReceiver)
+  public void unregisterReceiver(@NonNull BroadcastReceiver paramBroadcastReceiver)
   {
     for (;;)
     {
+      int i;
+      int j;
       int k;
-      int m;
       synchronized (this.mReceivers)
       {
         ArrayList localArrayList1 = (ArrayList)this.mReceivers.remove(paramBroadcastReceiver);
-        if (localArrayList1 == null)
-        {
+        if (localArrayList1 == null) {
           return;
-          if (j < localArrayList1.size())
+        }
+        i = localArrayList1.size() - 1;
+        if (i >= 0)
+        {
+          LocalBroadcastManager.ReceiverRecord localReceiverRecord1 = (LocalBroadcastManager.ReceiverRecord)localArrayList1.get(i);
+          localReceiverRecord1.dead = true;
+          j = 0;
+          if (j >= localReceiverRecord1.filter.countActions()) {
+            break label203;
+          }
+          String str = localReceiverRecord1.filter.getAction(j);
+          ArrayList localArrayList2 = (ArrayList)this.mActions.get(str);
+          if (localArrayList2 == null) {
+            break label196;
+          }
+          k = localArrayList2.size() - 1;
+          if (k >= 0)
           {
-            IntentFilter localIntentFilter = (IntentFilter)localArrayList1.get(j);
-            k = 0;
-            if (k >= localIntentFilter.countActions()) {
-              break label190;
-            }
-            String str = localIntentFilter.getAction(k);
-            ArrayList localArrayList2 = (ArrayList)this.mActions.get(str);
-            if (localArrayList2 == null) {
-              break label181;
-            }
-            i = 0;
-            if (i < localArrayList2.size())
+            LocalBroadcastManager.ReceiverRecord localReceiverRecord2 = (LocalBroadcastManager.ReceiverRecord)localArrayList2.get(k);
+            if (localReceiverRecord2.receiver == paramBroadcastReceiver)
             {
-              m = i;
-              if (((ReceiverRecord)localArrayList2.get(i)).receiver != paramBroadcastReceiver) {
-                break label173;
-              }
-              localArrayList2.remove(i);
-              m = i - 1;
-              break label173;
+              localReceiverRecord2.dead = true;
+              localArrayList2.remove(k);
             }
+          }
+          else
+          {
             if (localArrayList2.size() > 0) {
-              break label181;
+              break label196;
             }
             this.mActions.remove(str);
-            break label181;
+            break label196;
           }
+        }
+        else
+        {
           return;
         }
       }
-      int j = 0;
+      k -= 1;
       continue;
-      label173:
-      int i = m + 1;
-      continue;
-      label181:
-      k += 1;
-      continue;
-      label190:
+      label196:
       j += 1;
-    }
-  }
-  
-  private static class BroadcastRecord
-  {
-    final Intent intent;
-    final ArrayList<LocalBroadcastManager.ReceiverRecord> receivers;
-    
-    BroadcastRecord(Intent paramIntent, ArrayList<LocalBroadcastManager.ReceiverRecord> paramArrayList)
-    {
-      this.intent = paramIntent;
-      this.receivers = paramArrayList;
-    }
-  }
-  
-  private static class ReceiverRecord
-  {
-    boolean broadcasting;
-    final IntentFilter filter;
-    final BroadcastReceiver receiver;
-    
-    ReceiverRecord(IntentFilter paramIntentFilter, BroadcastReceiver paramBroadcastReceiver)
-    {
-      this.filter = paramIntentFilter;
-      this.receiver = paramBroadcastReceiver;
-    }
-    
-    public String toString()
-    {
-      StringBuilder localStringBuilder = new StringBuilder(128);
-      localStringBuilder.append("Receiver{");
-      localStringBuilder.append(this.receiver);
-      localStringBuilder.append(" filter=");
-      localStringBuilder.append(this.filter);
-      localStringBuilder.append("}");
-      return localStringBuilder.toString();
+      continue;
+      label203:
+      i -= 1;
     }
   }
 }

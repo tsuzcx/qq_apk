@@ -1,28 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.SetTroopAdminsActivity;
+import java.util.ArrayList;
 
 public class dhx
-  implements View.OnClickListener
+  implements Runnable
 {
-  public dhx(QQMapActivity paramQQMapActivity) {}
+  public dhx(SetTroopAdminsActivity paramSetTroopAdminsActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (!NetworkUtil.e(this.a))
-    {
-      this.a.q();
-      return;
-    }
-    if (NetworkUtil.b(this.a))
-    {
-      this.a.m();
-      return;
-    }
-    DialogUtil.a(this.a, 230).setTitle(this.a.getString(2131562272)).setMessage(2131563235).setPositiveButton(2131563186, new dhz(this)).setNegativeButton(2131561746, new dhy(this)).show();
+    ArrayList localArrayList = this.a.a();
+    this.a.a.sendMessage(this.a.a.obtainMessage(2, localArrayList));
   }
 }
 

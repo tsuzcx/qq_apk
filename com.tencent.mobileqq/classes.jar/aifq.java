@@ -1,20 +1,14 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class aifq
-  implements Runnable
+class aifq
+  implements DialogInterface.OnClickListener
 {
-  public aifq(String paramString) {}
+  aifq(aiez paramaiez) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Intent localIntent = new Intent();
-    localIntent.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
-    localIntent.putExtra("reporting_tag", "dc01616");
-    localIntent.putExtra("reporting_detail", this.a);
-    localIntent.putExtra("reporting_count", 1);
-    localIntent.putExtra("is_runtime", 0);
-    BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
+    paramDialogInterface.dismiss();
   }
 }
 

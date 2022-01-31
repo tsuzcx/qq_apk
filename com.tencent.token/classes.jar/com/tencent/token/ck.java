@@ -1,68 +1,28 @@
 package com.tencent.token;
 
-import com.tencent.token.global.b;
-import com.tencent.token.global.d;
-import com.tencent.token.utils.s;
-import java.util.HashMap;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.token.global.h;
+import com.tencent.token.ui.BaseActivity;
+import com.tencent.token.ui.base.GameLoginSndConfirmDialog;
 
-public final class ck
-  extends bm
+class ck
+  extends Handler
 {
-  ag c = ag.c();
-  gj d = ax.a().l;
-  private long e;
+  ck(cj paramcj) {}
   
-  protected final String a()
+  public void handleMessage(Message paramMessage)
   {
-    this.c.m();
-    String str2 = this.c.o();
-    ae.a();
-    if (ax.a().p()) {
-      ax.a();
-    }
-    for (String str1 = ax.c; str1 == null; str1 = null)
+    if (cj.a(this.a) != null) {}
+    try
     {
-      this.a.a(104, null, null);
-      return null;
-    }
-    str1 = "?uin=" + this.e + "&sess_id=" + str1 + "&tkn_code=" + str2 + "&ksid=" + this.c.h();
-    str1 = str1 + "&channel_id=" + s.k();
-    return b.c() + "/cn/mbtoken3/mbtoken3_login" + str1;
-  }
-  
-  protected final void a(fs paramfs)
-  {
-    this.e = ((Long)paramfs.c.get("param.uinhash")).longValue();
-  }
-  
-  protected final void a(JSONObject paramJSONObject)
-  {
-    long l = paramJSONObject.getLong("uin");
-    ax.a();
-    ax.a(paramJSONObject);
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
-    {
-      a(i, paramJSONObject.getString("info"));
+      new GameLoginSndConfirmDialog(BaseActivity.sTopActivity, 2131362156).show();
       return;
     }
-    if (l != this.e)
+    catch (Exception paramMessage)
     {
-      this.a.a(10000, "uin not match=" + l + ":" + this.e, null);
-      return;
+      h.c("GameSafeLoginManager: " + paramMessage.getMessage());
     }
-    ax.a().m();
-    if (!this.d.a(l)) {
-      this.a.a(10000, "mUserStorage.setCurrentUserByUin failed", null);
-    }
-    System.currentTimeMillis();
-    l = paramJSONObject.getInt("valid_time");
-    ax.a().a(this.e, l);
-    if (this.c.h().length() == 0) {
-      this.c.c(paramJSONObject.getString("ksid"));
-    }
-    this.a.a = 0;
   }
 }
 

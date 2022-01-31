@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_cmd0x69f$ChannelInfo
-  extends MessageMicro
+  extends MessageMicro<ChannelInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_ark_config = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -25,7 +25,7 @@ public final class oidb_cmd0x69f$ChannelInfo
   public final PBEnumField enum_channel_cover_style = PBField.initEnum(0);
   public final PBEnumField enum_column_type = PBField.initEnum(0);
   public oidb_cmd0x69f.RichTips msg_rich_tips = new oidb_cmd0x69f.RichTips();
-  public final PBRepeatMessageField rpt_child_channel_list = PBField.initRepeatMessage(oidb_cmd0x69f.ChildChannelInfo.class);
+  public final PBRepeatMessageField<oidb_cmd0x69f.ChildChannelInfo> rpt_child_channel_list = PBField.initRepeatMessage(oidb_cmd0x69f.ChildChannelInfo.class);
   public final PBUInt32Field uint32_bold_font = PBField.initUInt32(0);
   public final PBUInt32Field uint32_channel_id = PBField.initUInt32(0);
   public final PBUInt32Field uint32_channel_type = PBField.initUInt32(0);
@@ -54,7 +54,7 @@ public final class oidb_cmd0x69f$ChannelInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x69f.oidb_cmd0x69f.ChannelInfo
  * JD-Core Version:    0.7.0.1
  */

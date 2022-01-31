@@ -1,29 +1,29 @@
-import android.view.View;
-import android.widget.ListView;
-import com.tencent.av.utils.UITools;
-import com.tencent.mobileqq.nearby.now.model.Comments;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import java.util.List;
+import android.animation.TypeEvaluator;
+import com.tencent.qphone.base.util.QLog;
 
-public class aexg
-  implements Runnable
+class aexg
+  implements TypeEvaluator
 {
-  public aexg(ShortVideoCommentsView paramShortVideoCommentsView) {}
-  
-  public void run()
+  public Object evaluate(float paramFloat, Object paramObject1, Object paramObject2)
   {
-    int i = UITools.b(this.a.getContext());
-    if (ShortVideoCommentsView.a() * this.a.a.a.size() + ShortVideoCommentsView.b(this.a).getMeasuredHeight() >= i)
-    {
-      ShortVideoCommentsView.a(this.a).setSelectionFromTop(1, ShortVideoCommentsView.a() + ShortVideoCommentsView.b(this.a).getMeasuredHeight());
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AdditionalAnimController", 2, "AlphaEvaluator value: " + paramFloat);
     }
-    ShortVideoCommentsView.a(this.a).setSelection(this.a.a.a.size() + 1);
+    if ((paramFloat >= 0.0F) && (paramFloat <= 0.02985074626865672D)) {
+      return Double.valueOf(paramFloat * 0.5D / 0.02985074626865672D);
+    }
+    if ((paramFloat > 0.02985074626865672D) && (paramFloat <= 0.9253731343283582D)) {
+      return Double.valueOf(0.5D);
+    }
+    if ((paramFloat > 0.9253731343283582D) && (paramFloat <= 1.0F)) {
+      return Double.valueOf((1.0F - paramFloat) * 0.5D / 0.07462686567164178D);
+    }
+    return Double.valueOf(0.0D);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aexg
  * JD-Core Version:    0.7.0.1
  */

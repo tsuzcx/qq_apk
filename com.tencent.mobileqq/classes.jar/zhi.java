@@ -1,35 +1,18 @@
-import android.util.Pair;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.mobileqq.app.MessageRoamManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Calendar;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class zhi
-  implements Runnable
+class zhi
+  implements View.OnClickListener
 {
-  public zhi(MessageRoamManager paramMessageRoamManager, int paramInt) {}
+  zhi(zhh paramzhh, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject = Calendar.getInstance();
-    int j = this.jdField_a_of_type_Int;
-    int i = 8;
-    while (j < this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_JavaUtilList.size())
-    {
-      ((Calendar)localObject).setTimeInMillis(((Long)this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_JavaUtilList.get(j)).longValue());
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a((Calendar)localObject);
-      Pair localPair = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a((Calendar)((Calendar)localObject).clone());
-      int k = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_JavaLangString, ((Long)localPair.first).longValue(), ((Long)localPair.second).longValue());
-      if (i - k <= 0) {
-        break;
-      }
-      j += 1;
-      i -= k;
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Zhh, -2);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatHistoryForC2C.class);
-    ((MqqHandler)localObject).sendMessageDelayed(((MqqHandler)localObject).obtainMessage(0), 0L);
+    this.jdField_a_of_type_Zhh.dismiss();
   }
 }
 

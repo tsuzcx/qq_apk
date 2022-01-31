@@ -1,24 +1,18 @@
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.ComboAnimation3;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
-
 public class unl
-  extends AnimateUtils.AnimationAdapter
+  implements ulj
 {
-  public unl(ComboAnimation3 paramComboAnimation3) {}
+  public String a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void copy(Object paramObject)
   {
-    if ((ComboAnimation3.a(this.a) != null) && (ComboAnimation3.a(this.a).isShown())) {
-      this.a.a.post(new unm(this));
+    if ((paramObject instanceof unl)) {
+      this.a = ((unl)paramObject).a;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     unl
  * JD-Core Version:    0.7.0.1
  */

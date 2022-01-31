@@ -1,33 +1,66 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.DataTag;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.util.List;
 
-class ctv
-  implements View.OnClickListener
+public class ctv
+  implements TextWatcher
 {
-  ctv(ctu paramctu) {}
+  public ctv(LoginActivity paramLoginActivity) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((FriendProfileCardActivity.a(this.a.a) != null) && (FriendProfileCardActivity.a(this.a.a).isShowing())) {
-      FriendProfileCardActivity.a(this.a.a).dismiss();
+    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null) {
+      LoginActivity.a(this.a, null);
     }
-    if ((ctu.a(this.a) != null) && ((ctu.a(this.a).a instanceof String)))
+    do
     {
-      this.a.a.a((String)ctu.a(this.a).a);
-      ReportController.b(this.a.a.b, "CliOper", "", "", "P_prof", "Prof_copy", ProfileActivity.a(this.a.a.a.a.f), 0, Integer.toString(ProfileActivity.a(this.a.a.a.a)), "", "", "");
+      do
+      {
+        return;
+      } while (paramCharSequence == null);
+      paramCharSequence = paramCharSequence.toString();
+    } while ((paramCharSequence == null) || (paramCharSequence.length() == 0) || (this.a.jdField_a_of_type_JavaUtilList == null));
+    paramInt1 = 0;
+    label53:
+    SimpleAccount localSimpleAccount;
+    if (paramInt1 < this.a.jdField_a_of_type_JavaUtilList.size())
+    {
+      localSimpleAccount = (SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(paramInt1);
+      if ((localSimpleAccount != null) && (localSimpleAccount.getUin() != null)) {
+        break label107;
+      }
+    }
+    label107:
+    while (!paramCharSequence.equals(this.a.b.b(localSimpleAccount.getUin())))
+    {
+      paramInt1 += 1;
+      break label53;
+      break;
+    }
+    if ((localSimpleAccount != null) && (localSimpleAccount.isLogined()))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText("!@#ewaGbhkc$!!=");
+      this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = localSimpleAccount;
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setClearButtonVisible(false);
+      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText("");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ctv
  * JD-Core Version:    0.7.0.1
  */

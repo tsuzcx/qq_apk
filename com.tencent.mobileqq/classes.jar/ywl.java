@@ -1,91 +1,46 @@
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.ApolloGameItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.ApolloGameItemBuilder.GameHolder;
-import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForApollo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.common.app.AppInterface;
 import java.lang.ref.WeakReference;
 
-public final class ywl
-  implements Runnable
+class ywl
+  implements TextView.OnEditorActionListener
 {
-  public ywl(WeakReference paramWeakReference, MessageForApollo paramMessageForApollo, Bundle paramBundle, QQAppInterface paramQQAppInterface) {}
+  ywl(ywj paramywj, TroopGiftPanel paramTroopGiftPanel) {}
   
-  public void run()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    for (;;)
+    if (paramInt == 6)
     {
-      int j;
-      int i;
-      try
+      this.jdField_a_of_type_Ywj.c();
+      paramTextView = this.jdField_a_of_type_Ywj.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString();
+      if (!TextUtils.isEmpty(paramTextView))
       {
-        if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-          break label293;
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo == null) {
-          return;
-        }
-        localAbsListView = (AbsListView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localAbsListView == null) {
-          break label293;
-        }
-        j = localAbsListView.getFirstVisiblePosition();
-        k = localAbsListView.getLastVisiblePosition();
-        if (!QLog.isColorLevel()) {
-          break label294;
-        }
-        QLog.d("ApolloGameUtil", 2, new Object[] { "[notifyUIUpdate] firstVPos:", Integer.valueOf(j), ",lastVPos:", Integer.valueOf(k) });
-      }
-      catch (Throwable localThrowable)
-      {
-        AbsListView localAbsListView;
-        int k;
-        Object localObject;
-        MessageForApollo localMessageForApollo;
-        localThrowable.printStackTrace();
-        QLog.e("ApolloGameUtil", 1, "[notifyUIUpdate],errInfo->" + localThrowable.getMessage());
-      }
-      if (i <= k)
-      {
-        localObject = localAbsListView.getChildAt(i - j);
-        if (localObject != null)
-        {
-          localObject = ((View)localObject).getTag();
-          if ((localObject instanceof ArkAppItemBubbleBuilder.Holder))
-          {
-            localObject = (ApolloGameItemBuilder.GameHolder)localObject;
-            localMessageForApollo = (MessageForApollo)((ApolloGameItemBuilder.GameHolder)localObject).a;
-            if ((ApolloGameUtil.a(localMessageForApollo.msgType)) && (localMessageForApollo.roomId == this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.roomId))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("ApolloGameUtil", 2, new Object[] { "find the view with the same roomId,", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.roomId) });
-              }
-              if ((this.jdField_a_of_type_AndroidOsBundle != null) && (this.jdField_a_of_type_AndroidOsBundle.getInt("type") == 1)) {
-                ApolloGameItemBuilder.a((ApolloGameItemBuilder.GameHolder)localObject, this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidOsBundle.getInt("gameId"), this.jdField_a_of_type_AndroidOsBundle.getInt("process"));
-              }
-            }
-          }
+        this.jdField_a_of_type_Ywj.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(paramTextView);
+        this.jdField_a_of_type_Ywj.b();
+        if (!nav.a().a(this.jdField_a_of_type_Ywj.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a())) {
+          break label194;
         }
       }
-      else
+      label194:
+      for (paramInt = 2;; paramInt = 1)
       {
-        label293:
-        return;
-        label294:
-        i = j;
-        continue;
+        azqs.b(null, "dc00899", "Grp_flower", "", "aio_mall", "Clk_numok", paramInt, 0, this.jdField_a_of_type_Ywj.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", this.jdField_a_of_type_Ywj.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + mwu.a((AppInterface)this.jdField_a_of_type_Ywj.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get(), ((AppInterface)this.jdField_a_of_type_Ywj.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get()).getCurrentAccountUin(), this.jdField_a_of_type_Ywj.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
+        return true;
+        this.jdField_a_of_type_Ywj.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a("1");
+        break;
       }
-      i += 1;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ywl
  * JD-Core Version:    0.7.0.1
  */

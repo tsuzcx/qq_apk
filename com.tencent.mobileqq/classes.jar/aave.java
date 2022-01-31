@@ -1,99 +1,96 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.GetAppPathByActionResult;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.smtt.sdk.WebView;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Set;
 
 public class aave
-  implements Runnable
+  extends beej
+  implements befh
 {
-  static
+  protected Intent a;
+  
+  public aave(Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
   {
-    if (!ArkLocalAppMgr.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
+    super(paramContext, paramActivity, paramAppInterface);
+    this.a = paramIntent;
+  }
+  
+  public void a()
+  {
+    super.doOnResume();
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    super.doOnCreate(this.a);
+  }
+  
+  public void a(TouchWebView paramTouchWebView)
+  {
+    this.mWebview = paramTouchWebView;
+  }
+  
+  public void b()
+  {
+    super.doOnPause();
+  }
+  
+  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
+  {
+    super.bindJavaScript(paramArrayList);
+  }
+  
+  public void buildBottomBar() {}
+  
+  public void buildContentView(Bundle paramBundle) {}
+  
+  public void buildData() {}
+  
+  public void buildLayout() {}
+  
+  public void buildTitleBar() {}
+  
+  public final void buildWebView(AppInterface paramAppInterface)
+  {
+    super.buildBaseWebView(paramAppInterface);
+  }
+  
+  public void c()
+  {
+    try
     {
-      jdField_a_of_type_Boolean = bool;
+      super.doOnDestroy();
       return;
+    }
+    catch (Exception localException)
+    {
+      aase.d("GdtWebViewBuilder", "getVideoComponent error", localException);
     }
   }
   
-  public aave(ArkLocalAppMgr paramArkLocalAppMgr, int paramInt, String paramString1, String paramString2, aavw paramaavw, String paramString3) {}
-  
-  public void run()
+  public void preInitWebviewPlugin()
   {
-    int i = this.jdField_a_of_type_Int;
-    Object localObject3 = this.jdField_a_of_type_JavaLangString;
-    ??? = this.b;
-    ArrayList localArrayList = new ArrayList();
-    if ((i == 0) && (!TextUtils.isEmpty((CharSequence)localObject3)))
-    {
-      ArkLocalAppMgr.a((String)localObject3, String.format("%s.%s", new Object[] { this.jdField_a_of_type_Aavw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aavw.b }), this.jdField_a_of_type_Aavw.jdField_a_of_type_Int, localArrayList);
-      if (!localArrayList.isEmpty()) {
-        break label448;
-      }
-      ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("findAppViewMatchAction, not match, context=%s, action=%s, app-name=%s", new Object[] { this.jdField_a_of_type_Aavw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aavw.b, this.c }));
-      i = -1;
-      ??? = "Action NOT Matched";
+    super.preInitPluginEngine();
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {
+      return true;
     }
-    label448:
-    for (;;)
-    {
-      if (localArrayList.isEmpty())
-      {
-        if ((!jdField_a_of_type_Boolean) && (i == 0))
-        {
-          throw new AssertionError();
-          if (i == 0) {
-            i = -1;
-          }
-        }
-        else
-        {
-          localObject3 = new ArkLocalAppMgr.GetAppPathByActionResult();
-          ((ArkLocalAppMgr.GetAppPathByActionResult)localObject3).b = this.c;
-          ((ArkLocalAppMgr.GetAppPathByActionResult)localObject3).jdField_a_of_type_Int = i;
-          ((ArkLocalAppMgr.GetAppPathByActionResult)localObject3).jdField_a_of_type_JavaLangString = ((String)???);
-          ((ArkLocalAppMgr.GetAppPathByActionResult)localObject3).c = null;
-          ((ArkLocalAppMgr.GetAppPathByActionResult)localObject3).d = null;
-          ((ArkLocalAppMgr.GetAppPathByActionResult)localObject3).e = null;
-          localArrayList.add(localObject3);
-        }
-      }
-      else {
-        synchronized (this.jdField_a_of_type_Aavw)
-        {
-          this.jdField_a_of_type_Aavw.c.addAll(localArrayList);
-          this.jdField_a_of_type_Aavw.jdField_a_of_type_JavaUtilSet.remove(this.c);
-          if (this.jdField_a_of_type_Aavw.jdField_a_of_type_JavaUtilSet.isEmpty())
-          {
-            this.jdField_a_of_type_Aavw.jdField_a_of_type_Boolean = true;
-            ArkLocalAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr, this.jdField_a_of_type_Aavw);
-            return;
-            if ((!jdField_a_of_type_Boolean) && (i != 0)) {
-              throw new AssertionError();
-            }
-            localObject3 = localArrayList.iterator();
-            while (((Iterator)localObject3).hasNext())
-            {
-              ArkLocalAppMgr.GetAppPathByActionResult localGetAppPathByActionResult = (ArkLocalAppMgr.GetAppPathByActionResult)((Iterator)localObject3).next();
-              localGetAppPathByActionResult.b = this.c;
-              localGetAppPathByActionResult.jdField_a_of_type_Int = 0;
-              localGetAppPathByActionResult.jdField_a_of_type_JavaLangString = ((String)???);
-              localGetAppPathByActionResult.c = this.jdField_a_of_type_JavaLangString;
-            }
-          }
-          ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("getAppByAction finished, action=%s.%s, app-count=%d, unfinished-count=%d", new Object[] { this.jdField_a_of_type_Aavw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aavw.b, Integer.valueOf(this.jdField_a_of_type_Aavw.c.size()), Integer.valueOf(this.jdField_a_of_type_Aavw.jdField_a_of_type_JavaUtilSet.size()) }));
-          return;
-        }
-      }
-    }
+    paramWebView.loadUrl(paramString);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aave
  * JD-Core Version:    0.7.0.1
  */

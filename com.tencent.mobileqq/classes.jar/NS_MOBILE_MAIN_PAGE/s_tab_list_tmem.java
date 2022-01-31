@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class s_tab_list_tmem
   extends JceStruct
 {
-  static ArrayList cache_user_list = new ArrayList();
-  public ArrayList user_list;
+  static ArrayList<Integer> cache_user_list = new ArrayList();
+  public ArrayList<Integer> user_list;
   
   static
   {
@@ -18,7 +18,7 @@ public final class s_tab_list_tmem
   
   public s_tab_list_tmem() {}
   
-  public s_tab_list_tmem(ArrayList paramArrayList)
+  public s_tab_list_tmem(ArrayList<Integer> paramArrayList)
   {
     this.user_list = paramArrayList;
   }

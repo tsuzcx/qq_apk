@@ -1,11 +1,10 @@
 package com.tencent.weiyun.utils;
 
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
-import android.net.Uri;
+import android.media.MediaScannerConnection;
 import android.os.Environment;
 import android.os.StatFs;
 import android.text.TextUtils;
@@ -73,37 +72,30 @@ public final class IOUtils
   
   public static boolean copyFiles(File paramFile1, File paramFile2)
   {
-    int i = 0;
-    boolean bool2;
-    if ((paramFile1 == null) || (paramFile2 == null))
+    if ((paramFile1 == null) || (paramFile2 == null)) {}
+    do
     {
-      bool2 = false;
-      return bool2;
-    }
-    if (!paramFile1.exists()) {
-      return false;
-    }
-    if (paramFile1.isFile()) {
-      return performCopyFile(paramFile1, paramFile2);
-    }
-    paramFile1 = paramFile1.listFiles();
-    if (paramFile1 == null) {
-      return false;
-    }
-    boolean bool1 = true;
-    int j = paramFile1.length;
-    for (;;)
-    {
-      bool2 = bool1;
-      if (i >= j) {
-        break;
+      do
+      {
+        return false;
+      } while (!paramFile1.exists());
+      if (paramFile1.isFile()) {
+        return performCopyFile(paramFile1, paramFile2);
       }
+      paramFile1 = paramFile1.listFiles();
+    } while (paramFile1 == null);
+    boolean bool = true;
+    int j = paramFile1.length;
+    int i = 0;
+    while (i < j)
+    {
       File localFile = paramFile1[i];
       if (!copyFiles(localFile, new File(paramFile2, localFile.getName()))) {
-        bool1 = false;
+        bool = false;
       }
       i += 1;
     }
+    return bool;
   }
   
   private static String countToUnit(int paramInt)
@@ -183,32 +175,36 @@ public final class IOUtils
   
   public static boolean ensureStorageSpace(String paramString, long paramLong)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
-      for (Object localObject1 = new File(paramString); !((File)localObject1).exists(); localObject1 = ((File)localObject1).getParentFile()) {}
-      Object localObject2 = localObject1;
-      if (!((File)localObject1).isDirectory()) {
-        localObject2 = ((File)localObject1).getParentFile();
-      }
-      long l1 = 0L;
-      try
+    }
+    for (Object localObject1 = new File(paramString); !((File)localObject1).exists(); localObject1 = ((File)localObject1).getParentFile()) {}
+    Object localObject2 = localObject1;
+    if (!((File)localObject1).isDirectory()) {
+      localObject2 = ((File)localObject1).getParentFile();
+    }
+    long l1 = 0L;
+    try
+    {
+      localObject1 = new StatFs(((File)localObject2).getAbsolutePath());
+      long l2 = ((StatFs)localObject1).getAvailableBlocks();
+      int i = ((StatFs)localObject1).getBlockSize();
+      l1 = i * l2;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
       {
-        localObject1 = new StatFs(((File)localObject2).getAbsolutePath());
-        long l2 = ((StatFs)localObject1).getAvailableBlocks();
-        int i = ((StatFs)localObject1).getBlockSize();
-        l1 = l2 * i;
+        Log.d("IOUtils", "ensure storage space error for path:" + paramString, localThrowable);
+        continue;
+        boolean bool = false;
       }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          Log.d("IOUtils", "ensure storage space error for path:" + paramString, localThrowable);
-        }
-      }
-    } while (l1 <= paramLong);
-    return true;
+    }
+    if (l1 > paramLong)
+    {
+      bool = true;
+      return bool;
+    }
   }
   
   /* Error */
@@ -218,28 +214,28 @@ public final class IOUtils
     //   0: iconst_0
     //   1: istore_3
     //   2: aconst_null
-    //   3: astore 7
+    //   3: astore 6
     //   5: aconst_null
-    //   6: astore 6
-    //   8: aload 6
+    //   6: astore 7
+    //   8: aload 7
     //   10: astore 5
-    //   12: aload 7
+    //   12: aload 6
     //   14: astore 4
     //   16: new 78	java/io/File
     //   19: dup
     //   20: aload_0
     //   21: invokespecial 81	java/io/File:<init>	(Ljava/lang/String;)V
     //   24: astore 8
-    //   26: aload 6
+    //   26: aload 7
     //   28: astore 5
-    //   30: aload 7
+    //   30: aload 6
     //   32: astore 4
     //   34: aload 8
     //   36: invokevirtual 92	java/io/File:exists	()Z
     //   39: ifne +123 -> 162
-    //   42: aload 6
+    //   42: aload 7
     //   44: astore 5
-    //   46: aload 7
+    //   46: aload 6
     //   48: astore 4
     //   50: aload 8
     //   52: invokevirtual 200	java/io/File:mkdirs	()Z
@@ -300,16 +296,16 @@ public final class IOUtils
     //   159: istore_2
     //   160: iload_2
     //   161: ireturn
-    //   162: aload 6
+    //   162: aload 7
     //   164: astore 5
-    //   166: aload 7
+    //   166: aload 6
     //   168: astore 4
     //   170: aload 8
     //   172: invokevirtual 125	java/io/File:isDirectory	()Z
     //   175: ifne -119 -> 56
-    //   178: aload 6
+    //   178: aload 7
     //   180: astore 5
-    //   182: aload 7
+    //   182: aload 6
     //   184: astore 4
     //   186: ldc 15
     //   188: ldc 207
@@ -380,10 +376,10 @@ public final class IOUtils
     //   1	248	3	bool2	boolean
     //   14	290	4	localObject1	Object
     //   10	287	5	localObject2	Object
-    //   6	173	6	localFile1	File
+    //   3	180	6	localFile1	File
     //   208	28	6	localThrowable1	Throwable
     //   292	10	6	localThrowable2	Throwable
-    //   3	180	7	localObject3	Object
+    //   6	173	7	localObject3	Object
     //   24	147	8	localFile2	File
     // Exception table:
     //   from	to	target	type
@@ -443,246 +439,276 @@ public final class IOUtils
   public static String getFileSha1(String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: aconst_null
-    //   3: astore 6
-    //   5: new 235	java/io/FileInputStream
-    //   8: dup
-    //   9: aload_0
-    //   10: invokespecial 236	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   13: astore 4
+    //   0: iconst_0
+    //   1: istore_1
+    //   2: new 235	java/io/FileInputStream
+    //   5: dup
+    //   6: aload_0
+    //   7: invokespecial 236	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   10: astore 4
+    //   12: aload 4
+    //   14: astore_3
     //   15: sipush 16384
     //   18: newarray byte
-    //   20: astore_3
-    //   21: ldc 238
-    //   23: invokestatic 244	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
-    //   26: astore 5
-    //   28: iconst_0
-    //   29: istore_1
-    //   30: iload_1
-    //   31: iconst_m1
-    //   32: if_icmpeq +70 -> 102
-    //   35: aload 4
-    //   37: aload_3
-    //   38: invokevirtual 250	java/io/InputStream:read	([B)I
-    //   41: istore_2
-    //   42: iload_2
-    //   43: istore_1
-    //   44: iload_2
-    //   45: ifle -15 -> 30
-    //   48: aload 5
-    //   50: aload_3
-    //   51: iconst_0
-    //   52: iload_2
-    //   53: invokevirtual 254	java/security/MessageDigest:update	([BII)V
-    //   56: iload_2
-    //   57: istore_1
-    //   58: goto -28 -> 30
-    //   61: astore 5
-    //   63: aload 4
-    //   65: astore_3
-    //   66: ldc 15
-    //   68: new 27	java/lang/StringBuilder
-    //   71: dup
-    //   72: invokespecial 28	java/lang/StringBuilder:<init>	()V
-    //   75: ldc_w 256
-    //   78: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   81: aload_0
-    //   82: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   85: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   88: aload 5
-    //   90: invokestatic 196	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    //   93: pop
-    //   94: aload 4
-    //   96: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
-    //   99: ldc 24
-    //   101: areturn
-    //   102: aload 5
-    //   104: invokevirtual 262	java/security/MessageDigest:digest	()[B
-    //   107: invokestatic 268	com/tencent/weiyun/utils/Utils:bytes2HexStr	([B)Ljava/lang/String;
-    //   110: invokevirtual 271	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   113: astore_3
-    //   114: aload 4
-    //   116: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
-    //   119: aload_3
-    //   120: areturn
-    //   121: astore_0
-    //   122: aload_3
-    //   123: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
-    //   126: aload_0
-    //   127: athrow
-    //   128: astore_0
-    //   129: aload 4
-    //   131: astore_3
-    //   132: goto -10 -> 122
-    //   135: astore 5
-    //   137: aload 6
-    //   139: astore 4
-    //   141: goto -78 -> 63
+    //   20: astore 5
+    //   22: aload 4
+    //   24: astore_3
+    //   25: ldc 238
+    //   27: invokestatic 244	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   30: astore 6
+    //   32: iload_1
+    //   33: iconst_m1
+    //   34: if_icmpeq +78 -> 112
+    //   37: aload 4
+    //   39: astore_3
+    //   40: aload 4
+    //   42: aload 5
+    //   44: invokevirtual 250	java/io/InputStream:read	([B)I
+    //   47: istore_2
+    //   48: iload_2
+    //   49: istore_1
+    //   50: iload_2
+    //   51: ifle -19 -> 32
+    //   54: aload 4
+    //   56: astore_3
+    //   57: aload 6
+    //   59: aload 5
+    //   61: iconst_0
+    //   62: iload_2
+    //   63: invokevirtual 254	java/security/MessageDigest:update	([BII)V
+    //   66: iload_2
+    //   67: istore_1
+    //   68: goto -36 -> 32
+    //   71: astore 5
+    //   73: aload 4
+    //   75: astore_3
+    //   76: ldc 15
+    //   78: new 27	java/lang/StringBuilder
+    //   81: dup
+    //   82: invokespecial 28	java/lang/StringBuilder:<init>	()V
+    //   85: ldc_w 256
+    //   88: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   91: aload_0
+    //   92: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   95: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   98: aload 5
+    //   100: invokestatic 196	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   103: pop
+    //   104: aload 4
+    //   106: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   109: ldc 24
+    //   111: areturn
+    //   112: aload 4
+    //   114: astore_3
+    //   115: aload 6
+    //   117: invokevirtual 262	java/security/MessageDigest:digest	()[B
+    //   120: invokestatic 268	com/tencent/weiyun/utils/Utils:bytes2HexStr	([B)Ljava/lang/String;
+    //   123: invokevirtual 271	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   126: astore 5
+    //   128: aload 4
+    //   130: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   133: aload 5
+    //   135: areturn
+    //   136: astore_0
+    //   137: aconst_null
+    //   138: astore_3
+    //   139: aload_3
+    //   140: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   143: aload_0
+    //   144: athrow
+    //   145: astore_0
+    //   146: goto -7 -> 139
+    //   149: astore 5
+    //   151: aconst_null
+    //   152: astore 4
+    //   154: goto -81 -> 73
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	144	0	paramString	String
-    //   29	29	1	i	int
-    //   41	16	2	j	int
-    //   1	131	3	localObject1	Object
-    //   13	127	4	localObject2	Object
-    //   26	23	5	localMessageDigest	java.security.MessageDigest
-    //   61	42	5	localThrowable1	Throwable
-    //   135	1	5	localThrowable2	Throwable
-    //   3	135	6	localObject3	Object
+    //   0	157	0	paramString	String
+    //   1	67	1	i	int
+    //   47	20	2	j	int
+    //   14	126	3	localFileInputStream1	java.io.FileInputStream
+    //   10	143	4	localFileInputStream2	java.io.FileInputStream
+    //   20	40	5	arrayOfByte	byte[]
+    //   71	28	5	localThrowable1	Throwable
+    //   126	8	5	str	String
+    //   149	1	5	localThrowable2	Throwable
+    //   30	86	6	localMessageDigest	java.security.MessageDigest
     // Exception table:
     //   from	to	target	type
-    //   15	28	61	java/lang/Throwable
-    //   35	42	61	java/lang/Throwable
-    //   48	56	61	java/lang/Throwable
-    //   102	114	61	java/lang/Throwable
-    //   5	15	121	finally
-    //   66	94	121	finally
-    //   15	28	128	finally
-    //   35	42	128	finally
-    //   48	56	128	finally
-    //   102	114	128	finally
-    //   5	15	135	java/lang/Throwable
+    //   15	22	71	java/lang/Throwable
+    //   25	32	71	java/lang/Throwable
+    //   40	48	71	java/lang/Throwable
+    //   57	66	71	java/lang/Throwable
+    //   115	128	71	java/lang/Throwable
+    //   2	12	136	finally
+    //   15	22	145	finally
+    //   25	32	145	finally
+    //   40	48	145	finally
+    //   57	66	145	finally
+    //   76	104	145	finally
+    //   115	128	145	finally
+    //   2	12	149	java/lang/Throwable
   }
   
   /* Error */
   public static String[] getFileSha1AndMd5(String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: aconst_null
-    //   3: astore 6
-    //   5: new 235	java/io/FileInputStream
-    //   8: dup
-    //   9: aload_0
-    //   10: invokespecial 236	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   13: astore 4
+    //   0: iconst_0
+    //   1: istore_1
+    //   2: new 235	java/io/FileInputStream
+    //   5: dup
+    //   6: aload_0
+    //   7: invokespecial 236	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   10: astore 4
+    //   12: aload 4
+    //   14: astore_3
     //   15: sipush 16384
     //   18: newarray byte
-    //   20: astore 5
-    //   22: ldc 238
-    //   24: invokestatic 244	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
-    //   27: astore 6
-    //   29: ldc_w 275
-    //   32: invokestatic 244	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
-    //   35: astore_3
-    //   36: iconst_0
-    //   37: istore_1
-    //   38: iload_1
-    //   39: iconst_m1
-    //   40: if_icmpeq +92 -> 132
-    //   43: aload 4
-    //   45: aload 5
-    //   47: invokevirtual 250	java/io/InputStream:read	([B)I
-    //   50: istore_2
-    //   51: iload_2
-    //   52: istore_1
-    //   53: iload_2
-    //   54: ifle -16 -> 38
-    //   57: aload 6
-    //   59: aload 5
-    //   61: iconst_0
-    //   62: iload_2
-    //   63: invokevirtual 254	java/security/MessageDigest:update	([BII)V
-    //   66: aload_3
-    //   67: aload 5
-    //   69: iconst_0
-    //   70: iload_2
-    //   71: invokevirtual 254	java/security/MessageDigest:update	([BII)V
-    //   74: iload_2
-    //   75: istore_1
-    //   76: goto -38 -> 38
-    //   79: astore 5
-    //   81: aload 4
-    //   83: astore_3
-    //   84: ldc 15
-    //   86: new 27	java/lang/StringBuilder
-    //   89: dup
-    //   90: invokespecial 28	java/lang/StringBuilder:<init>	()V
-    //   93: ldc_w 256
-    //   96: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   99: aload_0
-    //   100: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   103: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   106: aload 5
-    //   108: invokestatic 196	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    //   111: pop
-    //   112: aload 4
-    //   114: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
-    //   117: iconst_2
-    //   118: anewarray 38	java/lang/String
-    //   121: dup
-    //   122: iconst_0
-    //   123: ldc 24
-    //   125: aastore
-    //   126: dup
-    //   127: iconst_1
-    //   128: ldc 24
-    //   130: aastore
-    //   131: areturn
-    //   132: aload 6
-    //   134: invokevirtual 262	java/security/MessageDigest:digest	()[B
-    //   137: invokestatic 268	com/tencent/weiyun/utils/Utils:bytes2HexStr	([B)Ljava/lang/String;
-    //   140: invokevirtual 271	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   143: astore 5
-    //   145: aload_3
-    //   146: invokevirtual 262	java/security/MessageDigest:digest	()[B
-    //   149: invokestatic 268	com/tencent/weiyun/utils/Utils:bytes2HexStr	([B)Ljava/lang/String;
-    //   152: invokevirtual 271	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   155: astore_3
-    //   156: aload 4
-    //   158: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
-    //   161: iconst_2
-    //   162: anewarray 38	java/lang/String
-    //   165: dup
-    //   166: iconst_0
-    //   167: aload 5
-    //   169: aastore
-    //   170: dup
-    //   171: iconst_1
-    //   172: aload_3
-    //   173: aastore
-    //   174: areturn
-    //   175: astore_0
-    //   176: aload_3
-    //   177: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
-    //   180: aload_0
-    //   181: athrow
-    //   182: astore_0
-    //   183: aload 4
-    //   185: astore_3
-    //   186: goto -10 -> 176
-    //   189: astore 5
-    //   191: aload 6
-    //   193: astore 4
-    //   195: goto -114 -> 81
+    //   20: astore 6
+    //   22: aload 4
+    //   24: astore_3
+    //   25: ldc 238
+    //   27: invokestatic 244	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   30: astore 7
+    //   32: aload 4
+    //   34: astore_3
+    //   35: ldc_w 275
+    //   38: invokestatic 244	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   41: astore 5
+    //   43: iload_1
+    //   44: iconst_m1
+    //   45: if_icmpeq +102 -> 147
+    //   48: aload 4
+    //   50: astore_3
+    //   51: aload 4
+    //   53: aload 6
+    //   55: invokevirtual 250	java/io/InputStream:read	([B)I
+    //   58: istore_2
+    //   59: iload_2
+    //   60: istore_1
+    //   61: iload_2
+    //   62: ifle -19 -> 43
+    //   65: aload 4
+    //   67: astore_3
+    //   68: aload 7
+    //   70: aload 6
+    //   72: iconst_0
+    //   73: iload_2
+    //   74: invokevirtual 254	java/security/MessageDigest:update	([BII)V
+    //   77: aload 4
+    //   79: astore_3
+    //   80: aload 5
+    //   82: aload 6
+    //   84: iconst_0
+    //   85: iload_2
+    //   86: invokevirtual 254	java/security/MessageDigest:update	([BII)V
+    //   89: iload_2
+    //   90: istore_1
+    //   91: goto -48 -> 43
+    //   94: astore 5
+    //   96: aload 4
+    //   98: astore_3
+    //   99: ldc 15
+    //   101: new 27	java/lang/StringBuilder
+    //   104: dup
+    //   105: invokespecial 28	java/lang/StringBuilder:<init>	()V
+    //   108: ldc_w 256
+    //   111: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   114: aload_0
+    //   115: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   118: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   121: aload 5
+    //   123: invokestatic 196	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   126: pop
+    //   127: aload 4
+    //   129: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   132: iconst_2
+    //   133: anewarray 38	java/lang/String
+    //   136: dup
+    //   137: iconst_0
+    //   138: ldc 24
+    //   140: aastore
+    //   141: dup
+    //   142: iconst_1
+    //   143: ldc 24
+    //   145: aastore
+    //   146: areturn
+    //   147: aload 4
+    //   149: astore_3
+    //   150: aload 7
+    //   152: invokevirtual 262	java/security/MessageDigest:digest	()[B
+    //   155: invokestatic 268	com/tencent/weiyun/utils/Utils:bytes2HexStr	([B)Ljava/lang/String;
+    //   158: invokevirtual 271	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   161: astore 6
+    //   163: aload 4
+    //   165: astore_3
+    //   166: aload 5
+    //   168: invokevirtual 262	java/security/MessageDigest:digest	()[B
+    //   171: invokestatic 268	com/tencent/weiyun/utils/Utils:bytes2HexStr	([B)Ljava/lang/String;
+    //   174: invokevirtual 271	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   177: astore 5
+    //   179: aload 4
+    //   181: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   184: iconst_2
+    //   185: anewarray 38	java/lang/String
+    //   188: dup
+    //   189: iconst_0
+    //   190: aload 6
+    //   192: aastore
+    //   193: dup
+    //   194: iconst_1
+    //   195: aload 5
+    //   197: aastore
+    //   198: areturn
+    //   199: astore_0
+    //   200: aconst_null
+    //   201: astore_3
+    //   202: aload_3
+    //   203: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   206: aload_0
+    //   207: athrow
+    //   208: astore_0
+    //   209: goto -7 -> 202
+    //   212: astore 5
+    //   214: aconst_null
+    //   215: astore 4
+    //   217: goto -121 -> 96
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	198	0	paramString	String
-    //   37	39	1	i	int
-    //   50	25	2	j	int
-    //   1	185	3	localObject1	Object
-    //   13	181	4	localObject2	Object
-    //   20	48	5	arrayOfByte	byte[]
-    //   79	28	5	localThrowable1	Throwable
-    //   143	25	5	str	String
-    //   189	1	5	localThrowable2	Throwable
-    //   3	189	6	localMessageDigest	java.security.MessageDigest
+    //   0	220	0	paramString	String
+    //   1	90	1	i	int
+    //   58	32	2	j	int
+    //   14	189	3	localFileInputStream1	java.io.FileInputStream
+    //   10	206	4	localFileInputStream2	java.io.FileInputStream
+    //   41	40	5	localMessageDigest1	java.security.MessageDigest
+    //   94	73	5	localThrowable1	Throwable
+    //   177	19	5	str	String
+    //   212	1	5	localThrowable2	Throwable
+    //   20	171	6	localObject	Object
+    //   30	121	7	localMessageDigest2	java.security.MessageDigest
     // Exception table:
     //   from	to	target	type
-    //   15	36	79	java/lang/Throwable
-    //   43	51	79	java/lang/Throwable
-    //   57	74	79	java/lang/Throwable
-    //   132	156	79	java/lang/Throwable
-    //   5	15	175	finally
-    //   84	112	175	finally
-    //   15	36	182	finally
-    //   43	51	182	finally
-    //   57	74	182	finally
-    //   132	156	182	finally
-    //   5	15	189	java/lang/Throwable
+    //   15	22	94	java/lang/Throwable
+    //   25	32	94	java/lang/Throwable
+    //   35	43	94	java/lang/Throwable
+    //   51	59	94	java/lang/Throwable
+    //   68	77	94	java/lang/Throwable
+    //   80	89	94	java/lang/Throwable
+    //   150	163	94	java/lang/Throwable
+    //   166	179	94	java/lang/Throwable
+    //   2	12	199	finally
+    //   15	22	208	finally
+    //   25	32	208	finally
+    //   35	43	208	finally
+    //   51	59	208	finally
+    //   68	77	208	finally
+    //   80	89	208	finally
+    //   99	127	208	finally
+    //   150	163	208	finally
+    //   166	179	208	finally
+    //   2	12	212	java/lang/Throwable
   }
   
   public static long getFileSize(File paramFile)
@@ -706,7 +732,6 @@ public final class IOUtils
       paramFile = paramFile.listFiles();
       l2 = l1;
     } while (paramFile == null);
-    l1 = 0L;
     int j = paramFile.length;
     int i = 0;
     for (;;)
@@ -715,8 +740,9 @@ public final class IOUtils
       if (i >= j) {
         break;
       }
-      l1 += getFileSize(paramFile[i]);
+      l2 = getFileSize(paramFile[i]);
       i += 1;
+      l1 = l2 + l1;
     }
   }
   
@@ -752,9 +778,18 @@ public final class IOUtils
     if (!isSdcardMounted()) {
       return -1L;
     }
-    StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
-    long l = localStatFs.getBlockSize();
-    return localStatFs.getBlockCount() * l;
+    try
+    {
+      StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
+      long l = localStatFs.getBlockSize();
+      int i = localStatFs.getBlockCount();
+      return i * l;
+    }
+    catch (Throwable localThrowable)
+    {
+      Log.e("IOUtils", "getSdcardCapability error", localThrowable);
+    }
+    return -1L;
   }
   
   public static String getSdcardCapabilityForDisplay()
@@ -771,9 +806,18 @@ public final class IOUtils
     if (!isSdcardMounted()) {
       return -1L;
     }
-    StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
-    long l = localStatFs.getBlockSize();
-    return localStatFs.getAvailableBlocks() * l;
+    try
+    {
+      StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
+      long l = localStatFs.getBlockSize();
+      int i = localStatFs.getAvailableBlocks();
+      return i * l;
+    }
+    catch (Throwable localThrowable)
+    {
+      Log.e("IOUtils", "getSdcardRemain error", localThrowable);
+    }
+    return -1L;
   }
   
   public static String getSdcardRemainForDisplay()
@@ -803,392 +847,244 @@ public final class IOUtils
   private static boolean performCopyFile(File paramFile1, File paramFile2)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: ifnull +7 -> 8
-    //   4: aload_1
-    //   5: ifnonnull +5 -> 10
-    //   8: iconst_0
-    //   9: ireturn
-    //   10: aconst_null
-    //   11: astore 16
-    //   13: aconst_null
-    //   14: astore 15
-    //   16: aconst_null
-    //   17: astore 14
-    //   19: aconst_null
-    //   20: astore 13
-    //   22: aload 13
-    //   24: astore 11
-    //   26: aload 15
-    //   28: astore 12
-    //   30: aload 14
-    //   32: astore 9
-    //   34: aload 16
-    //   36: astore 10
-    //   38: aload_0
-    //   39: invokevirtual 92	java/io/File:exists	()Z
-    //   42: ifeq +28 -> 70
-    //   45: aload 13
-    //   47: astore 11
-    //   49: aload 15
-    //   51: astore 12
-    //   53: aload 14
-    //   55: astore 9
-    //   57: aload 16
-    //   59: astore 10
-    //   61: aload_0
-    //   62: invokevirtual 95	java/io/File:isFile	()Z
-    //   65: istore_2
-    //   66: iload_2
-    //   67: ifne +13 -> 80
-    //   70: aconst_null
-    //   71: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
-    //   74: aconst_null
-    //   75: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
-    //   78: iconst_0
-    //   79: ireturn
-    //   80: aload 13
-    //   82: astore 11
-    //   84: aload 15
-    //   86: astore 12
-    //   88: aload 14
-    //   90: astore 9
-    //   92: aload 16
-    //   94: astore 10
-    //   96: aload_1
-    //   97: invokevirtual 92	java/io/File:exists	()Z
-    //   100: ifeq +66 -> 166
-    //   103: aload 13
-    //   105: astore 11
-    //   107: aload 15
-    //   109: astore 12
-    //   111: aload 14
-    //   113: astore 9
-    //   115: aload 16
-    //   117: astore 10
-    //   119: aload_0
-    //   120: invokevirtual 128	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   123: aload_1
-    //   124: invokevirtual 128	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   127: invokestatic 351	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
-    //   130: istore_2
-    //   131: iload_2
-    //   132: ifeq +13 -> 145
-    //   135: aconst_null
-    //   136: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
-    //   139: aconst_null
-    //   140: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
-    //   143: iconst_1
-    //   144: ireturn
-    //   145: aload 13
-    //   147: astore 11
-    //   149: aload 15
-    //   151: astore 12
-    //   153: aload 14
-    //   155: astore 9
-    //   157: aload 16
-    //   159: astore 10
-    //   161: aload_1
-    //   162: iconst_0
-    //   163: invokestatic 146	com/tencent/weiyun/utils/IOUtils:deleteFile	(Ljava/io/File;Z)V
-    //   166: aload 13
-    //   168: astore 11
-    //   170: aload 15
-    //   172: astore 12
-    //   174: aload 14
-    //   176: astore 9
-    //   178: aload 16
-    //   180: astore 10
-    //   182: aload_1
-    //   183: invokevirtual 178	java/io/File:getParentFile	()Ljava/io/File;
-    //   186: astore 17
-    //   188: aload 13
-    //   190: astore 11
-    //   192: aload 15
-    //   194: astore 12
-    //   196: aload 14
-    //   198: astore 9
-    //   200: aload 16
-    //   202: astore 10
-    //   204: aload 17
-    //   206: invokevirtual 95	java/io/File:isFile	()Z
-    //   209: ifeq +25 -> 234
-    //   212: aload 13
-    //   214: astore 11
-    //   216: aload 15
-    //   218: astore 12
-    //   220: aload 14
-    //   222: astore 9
-    //   224: aload 16
-    //   226: astore 10
-    //   228: aload 17
-    //   230: iconst_0
-    //   231: invokestatic 146	com/tencent/weiyun/utils/IOUtils:deleteFile	(Ljava/io/File;Z)V
-    //   234: aload 13
-    //   236: astore 11
-    //   238: aload 15
-    //   240: astore 12
-    //   242: aload 14
-    //   244: astore 9
-    //   246: aload 16
-    //   248: astore 10
-    //   250: aload 17
-    //   252: invokevirtual 92	java/io/File:exists	()Z
-    //   255: ifne +39 -> 294
-    //   258: aload 13
-    //   260: astore 11
-    //   262: aload 15
-    //   264: astore 12
-    //   266: aload 14
-    //   268: astore 9
-    //   270: aload 16
-    //   272: astore 10
-    //   274: aload 17
-    //   276: invokevirtual 200	java/io/File:mkdirs	()Z
-    //   279: istore_2
-    //   280: iload_2
-    //   281: ifne +13 -> 294
-    //   284: aconst_null
-    //   285: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
-    //   288: aconst_null
-    //   289: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
-    //   292: iconst_0
-    //   293: ireturn
-    //   294: aload 13
-    //   296: astore 11
-    //   298: aload 15
-    //   300: astore 12
-    //   302: aload 14
-    //   304: astore 9
-    //   306: aload 16
-    //   308: astore 10
-    //   310: new 235	java/io/FileInputStream
-    //   313: dup
-    //   314: aload_0
-    //   315: invokespecial 354	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   318: invokevirtual 358	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
-    //   321: astore_0
-    //   322: aload 13
-    //   324: astore 11
-    //   326: aload_0
-    //   327: astore 12
-    //   329: aload 14
-    //   331: astore 9
-    //   333: aload_0
-    //   334: astore 10
-    //   336: new 360	java/io/FileOutputStream
-    //   339: dup
-    //   340: aload_1
-    //   341: invokespecial 361	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   344: invokevirtual 362	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
-    //   347: astore 13
-    //   349: aload 13
-    //   351: astore 11
-    //   353: aload_0
-    //   354: astore 12
-    //   356: aload 13
-    //   358: astore 9
-    //   360: aload_0
-    //   361: astore 10
-    //   363: aload_0
-    //   364: invokevirtual 367	java/nio/channels/FileChannel:size	()J
-    //   367: lstore_3
-    //   368: lload_3
-    //   369: ldc2_w 368
-    //   372: lcmp
-    //   373: ifgt +65 -> 438
-    //   376: lconst_0
-    //   377: lstore_3
-    //   378: aload 13
-    //   380: astore 9
-    //   382: aload_0
-    //   383: astore 10
-    //   385: aload_0
-    //   386: invokevirtual 367	java/nio/channels/FileChannel:size	()J
-    //   389: lstore 5
-    //   391: lload_3
-    //   392: lload 5
-    //   394: lcmp
-    //   395: ifge +30 -> 425
-    //   398: aload 13
-    //   400: astore 9
-    //   402: aload_0
-    //   403: astore 10
-    //   405: aload 13
-    //   407: aload_0
-    //   408: lload_3
-    //   409: ldc2_w 7
-    //   412: invokevirtual 373	java/nio/channels/FileChannel:transferFrom	(Ljava/nio/channels/ReadableByteChannel;JJ)J
-    //   415: lstore 7
-    //   417: lload_3
-    //   418: lload 7
-    //   420: ladd
-    //   421: lstore_3
-    //   422: goto -31 -> 391
-    //   425: aload_0
-    //   426: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
-    //   429: aload 13
-    //   431: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
-    //   434: iconst_1
-    //   435: ireturn
-    //   436: astore 9
-    //   438: aload 13
-    //   440: astore 11
-    //   442: aload_0
-    //   443: astore 12
-    //   445: aload 13
-    //   447: astore 9
-    //   449: aload_0
-    //   450: astore 10
-    //   452: sipush 8192
-    //   455: invokestatic 379	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
-    //   458: astore 14
-    //   460: aload 13
-    //   462: astore 11
-    //   464: aload_0
-    //   465: astore 12
-    //   467: aload 13
-    //   469: astore 9
-    //   471: aload_0
-    //   472: astore 10
-    //   474: aload_0
-    //   475: aload 14
-    //   477: invokevirtual 382	java/nio/channels/FileChannel:read	(Ljava/nio/ByteBuffer;)I
-    //   480: ifle +112 -> 592
-    //   483: aload 13
-    //   485: astore 11
-    //   487: aload_0
-    //   488: astore 12
-    //   490: aload 13
-    //   492: astore 9
-    //   494: aload_0
-    //   495: astore 10
-    //   497: aload 14
-    //   499: invokevirtual 386	java/nio/ByteBuffer:flip	()Ljava/nio/Buffer;
-    //   502: pop
-    //   503: aload 13
-    //   505: astore 11
-    //   507: aload_0
-    //   508: astore 12
-    //   510: aload 13
-    //   512: astore 9
-    //   514: aload_0
-    //   515: astore 10
-    //   517: aload 13
-    //   519: aload 14
-    //   521: invokevirtual 389	java/nio/channels/FileChannel:write	(Ljava/nio/ByteBuffer;)I
-    //   524: pop
-    //   525: aload 13
-    //   527: astore 11
-    //   529: aload_0
-    //   530: astore 12
-    //   532: aload 13
-    //   534: astore 9
-    //   536: aload_0
-    //   537: astore 10
-    //   539: aload 14
-    //   541: invokevirtual 393	java/nio/ByteBuffer:compact	()Ljava/nio/ByteBuffer;
-    //   544: pop
-    //   545: goto -85 -> 460
-    //   548: astore_0
-    //   549: aload 11
-    //   551: astore 9
-    //   553: aload 12
-    //   555: astore 10
-    //   557: ldc 15
-    //   559: ldc_w 395
-    //   562: aload_0
-    //   563: invokestatic 398	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    //   566: pop
-    //   567: aload 11
-    //   569: astore 9
-    //   571: aload 12
-    //   573: astore 10
-    //   575: aload_1
-    //   576: iconst_0
-    //   577: invokestatic 146	com/tencent/weiyun/utils/IOUtils:deleteFile	(Ljava/io/File;Z)V
-    //   580: aload 12
-    //   582: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
-    //   585: aload 11
-    //   587: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
-    //   590: iconst_0
-    //   591: ireturn
-    //   592: aload_0
-    //   593: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
-    //   596: aload 13
-    //   598: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
-    //   601: iconst_1
-    //   602: ireturn
-    //   603: astore_0
-    //   604: aload 10
-    //   606: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
-    //   609: aload 9
-    //   611: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
-    //   614: aload_0
-    //   615: athrow
+    //   0: aconst_null
+    //   1: astore 10
+    //   3: aconst_null
+    //   4: astore 9
+    //   6: aload_0
+    //   7: ifnull +7 -> 14
+    //   10: aload_1
+    //   11: ifnonnull +5 -> 16
+    //   14: iconst_0
+    //   15: ireturn
+    //   16: aload_0
+    //   17: invokevirtual 92	java/io/File:exists	()Z
+    //   20: ifeq +12 -> 32
+    //   23: aload_0
+    //   24: invokevirtual 95	java/io/File:isFile	()Z
+    //   27: istore_2
+    //   28: iload_2
+    //   29: ifne +13 -> 42
+    //   32: aconst_null
+    //   33: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   36: aconst_null
+    //   37: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   40: iconst_0
+    //   41: ireturn
+    //   42: aload_1
+    //   43: invokevirtual 92	java/io/File:exists	()Z
+    //   46: ifeq +34 -> 80
+    //   49: aload_0
+    //   50: invokevirtual 128	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   53: aload_1
+    //   54: invokevirtual 128	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   57: invokestatic 358	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+    //   60: istore_2
+    //   61: iload_2
+    //   62: ifeq +13 -> 75
+    //   65: aconst_null
+    //   66: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   69: aconst_null
+    //   70: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   73: iconst_1
+    //   74: ireturn
+    //   75: aload_1
+    //   76: iconst_0
+    //   77: invokestatic 146	com/tencent/weiyun/utils/IOUtils:deleteFile	(Ljava/io/File;Z)V
+    //   80: aload_1
+    //   81: invokevirtual 178	java/io/File:getParentFile	()Ljava/io/File;
+    //   84: astore 11
+    //   86: aload 11
+    //   88: invokevirtual 95	java/io/File:isFile	()Z
+    //   91: ifeq +9 -> 100
+    //   94: aload 11
+    //   96: iconst_0
+    //   97: invokestatic 146	com/tencent/weiyun/utils/IOUtils:deleteFile	(Ljava/io/File;Z)V
+    //   100: aload 11
+    //   102: invokevirtual 92	java/io/File:exists	()Z
+    //   105: ifne +23 -> 128
+    //   108: aload 11
+    //   110: invokevirtual 200	java/io/File:mkdirs	()Z
+    //   113: istore_2
+    //   114: iload_2
+    //   115: ifne +13 -> 128
+    //   118: aconst_null
+    //   119: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   122: aconst_null
+    //   123: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   126: iconst_0
+    //   127: ireturn
+    //   128: new 235	java/io/FileInputStream
+    //   131: dup
+    //   132: aload_0
+    //   133: invokespecial 361	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   136: invokevirtual 365	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   139: astore_0
+    //   140: new 367	java/io/FileOutputStream
+    //   143: dup
+    //   144: aload_1
+    //   145: invokespecial 368	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   148: invokevirtual 369	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   151: astore 9
+    //   153: aload_0
+    //   154: invokevirtual 374	java/nio/channels/FileChannel:size	()J
+    //   157: lstore_3
+    //   158: lload_3
+    //   159: ldc2_w 375
+    //   162: lcmp
+    //   163: ifgt +51 -> 214
+    //   166: lconst_0
+    //   167: lstore_3
+    //   168: aload_0
+    //   169: invokevirtual 374	java/nio/channels/FileChannel:size	()J
+    //   172: lstore 5
+    //   174: lload_3
+    //   175: lload 5
+    //   177: lcmp
+    //   178: ifge +23 -> 201
+    //   181: aload 9
+    //   183: aload_0
+    //   184: lload_3
+    //   185: ldc2_w 7
+    //   188: invokevirtual 380	java/nio/channels/FileChannel:transferFrom	(Ljava/nio/channels/ReadableByteChannel;JJ)J
+    //   191: lstore 7
+    //   193: lload_3
+    //   194: lload 7
+    //   196: ladd
+    //   197: lstore_3
+    //   198: goto -24 -> 174
+    //   201: aload_0
+    //   202: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   205: aload 9
+    //   207: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   210: iconst_1
+    //   211: ireturn
+    //   212: astore 10
+    //   214: sipush 8192
+    //   217: invokestatic 386	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
+    //   220: astore 10
+    //   222: aload_0
+    //   223: aload 10
+    //   225: invokevirtual 389	java/nio/channels/FileChannel:read	(Ljava/nio/ByteBuffer;)I
+    //   228: ifle +69 -> 297
+    //   231: aload 10
+    //   233: invokevirtual 393	java/nio/ByteBuffer:flip	()Ljava/nio/Buffer;
+    //   236: pop
+    //   237: aload 9
+    //   239: aload 10
+    //   241: invokevirtual 396	java/nio/channels/FileChannel:write	(Ljava/nio/ByteBuffer;)I
+    //   244: pop
+    //   245: aload 10
+    //   247: invokevirtual 400	java/nio/ByteBuffer:compact	()Ljava/nio/ByteBuffer;
+    //   250: pop
+    //   251: goto -29 -> 222
+    //   254: astore 11
+    //   256: aload 9
+    //   258: astore 10
+    //   260: aload_0
+    //   261: astore 9
+    //   263: aload 10
+    //   265: astore_0
+    //   266: aload 11
+    //   268: astore 10
+    //   270: ldc 15
+    //   272: ldc_w 402
+    //   275: aload 10
+    //   277: invokestatic 332	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   280: pop
+    //   281: aload_1
+    //   282: iconst_0
+    //   283: invokestatic 146	com/tencent/weiyun/utils/IOUtils:deleteFile	(Ljava/io/File;Z)V
+    //   286: aload 9
+    //   288: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   291: aload_0
+    //   292: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   295: iconst_0
+    //   296: ireturn
+    //   297: aload_0
+    //   298: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   301: aload 9
+    //   303: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   306: iconst_1
+    //   307: ireturn
+    //   308: astore_1
+    //   309: aconst_null
+    //   310: astore_0
+    //   311: aload 10
+    //   313: astore 9
+    //   315: aload_0
+    //   316: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   319: aload 9
+    //   321: invokestatic 258	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   324: aload_1
+    //   325: athrow
+    //   326: astore_1
+    //   327: aload 10
+    //   329: astore 9
+    //   331: goto -16 -> 315
+    //   334: astore_1
+    //   335: goto -20 -> 315
+    //   338: astore_1
+    //   339: aload_0
+    //   340: astore 10
+    //   342: aload 9
+    //   344: astore_0
+    //   345: aload 10
+    //   347: astore 9
+    //   349: goto -34 -> 315
+    //   352: astore 10
+    //   354: aconst_null
+    //   355: astore_0
+    //   356: goto -86 -> 270
+    //   359: astore 10
+    //   361: aload_0
+    //   362: astore 9
+    //   364: aconst_null
+    //   365: astore_0
+    //   366: goto -96 -> 270
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	616	0	paramFile1	File
-    //   0	616	1	paramFile2	File
-    //   65	216	2	bool	boolean
-    //   367	55	3	l1	long
-    //   389	4	5	l2	long
-    //   415	4	7	l3	long
-    //   32	369	9	localObject1	Object
-    //   436	1	9	localThrowable	Throwable
-    //   447	163	9	localFileChannel1	java.nio.channels.FileChannel
-    //   36	569	10	localObject2	Object
-    //   24	562	11	localFileChannel2	java.nio.channels.FileChannel
-    //   28	553	12	localObject3	Object
-    //   20	577	13	localFileChannel3	java.nio.channels.FileChannel
-    //   17	523	14	localByteBuffer	java.nio.ByteBuffer
-    //   14	285	15	localObject4	Object
-    //   11	296	16	localObject5	Object
-    //   186	89	17	localFile	File
+    //   0	369	0	paramFile1	File
+    //   0	369	1	paramFile2	File
+    //   27	88	2	bool	boolean
+    //   157	41	3	l1	long
+    //   172	4	5	l2	long
+    //   191	4	7	l3	long
+    //   4	359	9	localObject1	Object
+    //   1	1	10	localObject2	Object
+    //   212	1	10	localThrowable1	Throwable
+    //   220	126	10	localObject3	Object
+    //   352	1	10	localThrowable2	Throwable
+    //   359	1	10	localThrowable3	Throwable
+    //   84	25	11	localFile	File
+    //   254	13	11	localThrowable4	Throwable
     // Exception table:
     //   from	to	target	type
-    //   385	391	436	java/lang/Throwable
-    //   405	417	436	java/lang/Throwable
-    //   38	45	548	java/lang/Throwable
-    //   61	66	548	java/lang/Throwable
-    //   96	103	548	java/lang/Throwable
-    //   119	131	548	java/lang/Throwable
-    //   161	166	548	java/lang/Throwable
-    //   182	188	548	java/lang/Throwable
-    //   204	212	548	java/lang/Throwable
-    //   228	234	548	java/lang/Throwable
-    //   250	258	548	java/lang/Throwable
-    //   274	280	548	java/lang/Throwable
-    //   310	322	548	java/lang/Throwable
-    //   336	349	548	java/lang/Throwable
-    //   363	368	548	java/lang/Throwable
-    //   452	460	548	java/lang/Throwable
-    //   474	483	548	java/lang/Throwable
-    //   497	503	548	java/lang/Throwable
-    //   517	525	548	java/lang/Throwable
-    //   539	545	548	java/lang/Throwable
-    //   38	45	603	finally
-    //   61	66	603	finally
-    //   96	103	603	finally
-    //   119	131	603	finally
-    //   161	166	603	finally
-    //   182	188	603	finally
-    //   204	212	603	finally
-    //   228	234	603	finally
-    //   250	258	603	finally
-    //   274	280	603	finally
-    //   310	322	603	finally
-    //   336	349	603	finally
-    //   363	368	603	finally
-    //   385	391	603	finally
-    //   405	417	603	finally
-    //   452	460	603	finally
-    //   474	483	603	finally
-    //   497	503	603	finally
-    //   517	525	603	finally
-    //   539	545	603	finally
-    //   557	567	603	finally
-    //   575	580	603	finally
+    //   168	174	212	java/lang/Throwable
+    //   181	193	212	java/lang/Throwable
+    //   153	158	254	java/lang/Throwable
+    //   214	222	254	java/lang/Throwable
+    //   222	251	254	java/lang/Throwable
+    //   16	28	308	finally
+    //   42	61	308	finally
+    //   75	80	308	finally
+    //   80	100	308	finally
+    //   100	114	308	finally
+    //   128	140	308	finally
+    //   140	153	326	finally
+    //   153	158	334	finally
+    //   168	174	334	finally
+    //   181	193	334	finally
+    //   214	222	334	finally
+    //   222	251	334	finally
+    //   270	286	338	finally
+    //   16	28	352	java/lang/Throwable
+    //   42	61	352	java/lang/Throwable
+    //   75	80	352	java/lang/Throwable
+    //   80	100	352	java/lang/Throwable
+    //   100	114	352	java/lang/Throwable
+    //   128	140	352	java/lang/Throwable
+    //   140	153	359	java/lang/Throwable
   }
   
   private static String performRename(String paramString)
@@ -1243,10 +1139,7 @@ public final class IOUtils
   
   public static void scan2MediaStore(Context paramContext, File paramFile)
   {
-    paramFile = Uri.fromFile(paramFile);
-    Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
-    localIntent.setData(paramFile);
-    paramContext.sendBroadcast(localIntent);
+    MediaScannerConnection.scanFile(paramContext.getApplicationContext(), new String[] { paramFile.getAbsolutePath() }, null, null);
   }
   
   public static String spliceFilePath(String paramString1, String paramString2)
@@ -1263,7 +1156,7 @@ public final class IOUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.weiyun.utils.IOUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -1,55 +1,48 @@
-import com.tencent.mobileqq.activity.contact.OnlineStatusIconHelper;
-import java.util.HashMap;
-import org.xml.sax.Attributes;
-import org.xml.sax.Locator;
-import org.xml.sax.helpers.DefaultHandler;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class wgz
-  extends DefaultHandler
+public final class wgz
+  implements View.OnClickListener
 {
-  public wgz(OnlineStatusIconHelper paramOnlineStatusIconHelper) {}
+  public wgz(wgx paramwgx, Activity paramActivity, String paramString) {}
   
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2) {}
-  
-  public void endDocument() {}
-  
-  public void endElement(String paramString1, String paramString2, String paramString3) {}
-  
-  public void endPrefixMapping(String paramString) {}
-  
-  public void ignorableWhitespace(char[] paramArrayOfChar, int paramInt1, int paramInt2) {}
-  
-  public void processingInstruction(String paramString1, String paramString2) {}
-  
-  public void setDocumentLocator(Locator paramLocator) {}
-  
-  public void skippedEntity(String paramString) {}
-  
-  public void startDocument() {}
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  public void onClick(View paramView)
   {
-    if (paramString3.equals("config")) {
-      this.a.a.clear();
-    }
-    while (!paramString3.equals("value")) {
-      return;
-    }
-    int i = Integer.parseInt(paramAttributes.getValue("termType"));
-    try
+    wxe.d("QQStoryMainController", "top right button on click:" + this.jdField_a_of_type_Wgx);
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_Wgx.c)) && (ndd.a(this.jdField_a_of_type_Wgx.c)))
     {
-      int j = Integer.parseInt(paramAttributes.getValue("icon"));
-      this.a.a.put(Integer.valueOf(i), Integer.valueOf(j));
-      return;
+      paramView = this.jdField_a_of_type_Wgx.c;
+      if (this.jdField_a_of_type_Wgx.a != 1) {
+        break label172;
+      }
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramView);
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
     }
-    catch (Exception paramString1) {}
+    for (;;)
+    {
+      wxj.a("hall", "exp", 0, 0, new String[] { "" });
+      if (!"troopStoryHallConfig".equals(this.jdField_a_of_type_JavaLangString)) {
+        break label197;
+      }
+      wxj.a("story_grp", "clk_find_left", 0, 0, new String[] { "", "", "", "" });
+      return;
+      paramView = "https://story.now.qq.com/mobile/find.html?_wv=3&_bid=2542";
+      break;
+      label172:
+      if ((this.jdField_a_of_type_Wgx.a == 2) || (this.jdField_a_of_type_Wgx.a != 3)) {}
+    }
+    label197:
+    wxj.a("home_page", "clk_find_entry", 0, 0, new String[0]);
   }
-  
-  public void startPrefixMapping(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wgz
  * JD-Core Version:    0.7.0.1
  */

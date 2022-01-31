@@ -1,118 +1,94 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.image;
 
-import android.content.res.Resources;
-import android.content.res.Resources.NotFoundException;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.ImageView.ScaleType;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.ImageCommon;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.OfflineUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtil.QLog;
 
 public class NativeImage
   extends ImageBase
 {
-  private Drawable a;
-  protected NativeImageImp a;
-  private Drawable b = new ColorDrawable(0);
+  private static final String TAG = "NativeImage_TMTEST";
+  protected NativeImageImp mNative;
   
   public NativeImage(VafContext paramVafContext)
   {
     super(paramVafContext);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#E9E9E9"));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewImageNativeImageImp = new NativeImageImp(paramVafContext.a());
+    this.mNative = new NativeImageImp(paramVafContext.getContext());
   }
   
-  public int a()
+  public int getComMeasuredHeight()
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewImageNativeImageImp.a();
+    return this.mNative.getComMeasuredHeight();
   }
   
-  public View a()
+  public int getComMeasuredWidth()
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewImageNativeImageImp;
+    return this.mNative.getComMeasuredWidth();
   }
   
-  public void a()
+  public View getNativeView()
   {
-    super.a();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewImageNativeImageImp.setPadding(this.o, this.q, this.p, this.r);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewImageNativeImageImp.setScaleType((ImageView.ScaleType)ImageBase.a.get(this.z));
-    a(this.e);
-    f();
+    return this.mNative;
   }
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewImageNativeImageImp.b(paramInt1, paramInt2);
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.d("NativeImage_TMTEST", 2, "loadImage: path is " + paramString);
-    if (paramString != null)
-    {
-      if ((!paramString.startsWith("http")) && (!paramString.startsWith("pubaccount"))) {
-        break label68;
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewImageNativeImageImp.a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewImageNativeImageImp.setImageSrc(paramString);
-    }
-    label68:
-    Object localObject;
-    do
-    {
-      return;
-      localObject = ImageCommon.a(paramString);
-      paramString = OfflineUtils.a(paramString);
-      if (paramString != null)
-      {
-        localObject = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.b;
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.b;
-        paramString = URLDrawable.getDrawable(new File(paramString), (URLDrawable.URLDrawableOptions)localObject);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewImageNativeImageImp.setImageDrawable(paramString);
-        return;
-      }
-    } while (localObject == null);
-    QLog.d("NativeImage_TMTEST", 2, "loadImage: cant find in offline dir, try to load from resources");
-    try
-    {
-      paramString = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewImageNativeImageImp.getResources();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewImageNativeImageImp.setImageDrawable(paramString.getDrawable(((Integer)localObject).intValue()));
-      return;
-    }
-    catch (Resources.NotFoundException paramString)
-    {
-      QLog.d("NativeImage_TMTEST", 2, "loadImage: cant find in resources dir, do nothing");
-    }
-  }
-  
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewImageNativeImageImp.a(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public boolean a()
+  public boolean isContainer()
   {
     return true;
   }
   
-  public int b()
+  public void loadImage(String paramString)
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewImageNativeImageImp.b();
+    LogUtil.QLog.d("NativeImage_TMTEST", 2, "loadImage: path is " + paramString);
+    if ((paramString != null) && (!paramString.equals("-1"))) {
+      this.mNative.setImageDrawable(DrawableUtil.getDrawable(this.mNative.getContext(), paramString, null, null));
+    }
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.mNative.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.mNative.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.mNative.setPadding(this.mPaddingLeft, this.mPaddingTop, this.mPaddingRight, this.mPaddingBottom);
+    this.mNative.setScaleType((ImageView.ScaleType)ImageBase.IMAGE_SCALE_TYPE.get(this.mScaleType, ImageView.ScaleType.CENTER_CROP));
+    this.mNative.setCorner(this.mBorderTopLeftRadius, this.mBorderTopRightRadius, this.mBorderBottomLeftRadius, this.mBorderBottomRightRadius);
+    loadImage(this.mSrc);
+    refresh();
+  }
+  
+  public void reset()
+  {
+    super.reset();
+    this.mNative.setImageSrc(null);
+    this.mSrc = null;
+  }
+  
+  public void setBitmap(Bitmap paramBitmap, boolean paramBoolean)
+  {
+    this.mNative.setImageBitmap(paramBitmap);
+  }
+  
+  public void setImageDrawable(Drawable paramDrawable, boolean paramBoolean)
+  {
+    this.mNative.setImageDrawable(paramDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.image.NativeImage
  * JD-Core Version:    0.7.0.1
  */

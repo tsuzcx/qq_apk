@@ -1,22 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.qq.im.capture.QIMCaptureController;
-import dov.com.qq.im.capture.view.ProviderViewEditContainer;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
-public class ankl
-  implements View.OnTouchListener
+class ankl
+  implements afje
 {
-  public ankl(QIMCaptureController paramQIMCaptureController) {}
+  ankl(anke paramanke, long paramLong) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    return QIMCaptureController.a(this.a).a(paramMotionEvent);
+    this.jdField_a_of_type_Anke.a(this.jdField_a_of_type_Long, paramBoolean, paramSosoLbsInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ankl
  * JD-Core Version:    0.7.0.1
  */

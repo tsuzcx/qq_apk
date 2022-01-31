@@ -4,29 +4,29 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyActivityHelper;
-import com.tencent.biz.qqstory.boundaries.StoryApi;
+import ayha;
+import aynu;
+import ayod;
+import bdgc;
+import bivc;
+import bjdt;
+import bjea;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.FunctionModuleConfigManager;
-import com.tencent.mobileqq.search.model.ISearchResultModel;
-import com.tencent.mobileqq.search.model.NetSearchTemplateBaseItem;
-import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.QfavHelper;
 import cooperation.qwallet.plugin.QWalletHelper;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.QZoneHelper.UserInfo;
 import cooperation.qzone.QzonePluginProxyActivity;
+import nxu;
+import uqn;
 
 public class LebaSearchTransparentJumpActivity
   extends IphoneTitleBarActivity
 {
   public View a;
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     paramBundle = BaseApplicationImpl.getApplication().getRuntime();
@@ -37,19 +37,19 @@ public class LebaSearchTransparentJumpActivity
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
-    FunctionModuleConfigManager localFunctionModuleConfigManager = (FunctionModuleConfigManager)this.app.getManager(221);
-    if (localFunctionModuleConfigManager.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel != null) {
-      localFunctionModuleConfigManager.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel = null;
+    ayha localayha = (ayha)this.app.getManager(222);
+    if (localayha.jdField_a_of_type_Aynu != null) {
+      localayha.jdField_a_of_type_Aynu = null;
     }
-    if (localFunctionModuleConfigManager.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateBaseItem != null) {
-      localFunctionModuleConfigManager.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateBaseItem = null;
+    if (localayha.jdField_a_of_type_Ayod != null) {
+      localayha.jdField_a_of_type_Ayod = null;
     }
   }
   
-  protected void doOnResume()
+  public void doOnResume()
   {
     int j = 0;
     super.doOnResume();
@@ -61,32 +61,32 @@ public class LebaSearchTransparentJumpActivity
     {
       finish();
       return;
-      StoryApi.a(this, 23, ((Intent)localObject1).getLongExtra("uin", 0L));
+      uqn.a(this, 23, ((Intent)localObject1).getLongExtra("uin", 0L));
       continue;
-      QWalletHelper.launchQWalletAct(this, this.app, true);
+      QWalletHelper.launchQWalletAct(this, this.app, true, false);
       continue;
       localObject1 = new Intent();
       ((Intent)localObject1).putExtra("newflag", true);
       ((Intent)localObject1).putExtra("refer", "schemeActiveFeeds");
       QzonePluginProxyActivity.a((Intent)localObject1, "com.qzone.feed.ui.activity.QZoneFriendFeedActivity");
       ((Intent)localObject1).addFlags(805306368);
-      QZoneHelper.b(this, this.app.getCurrentAccountUin(), (Intent)localObject1, -1);
+      bjdt.b(this, this.app.getCurrentAccountUin(), (Intent)localObject1, -1);
       continue;
-      ((Intent)localObject1).putExtra("selfSet_leftViewText", getString(2131433698));
-      QfavHelper.a(this, this.app.getAccount(), (Intent)localObject1, -1, false);
+      ((Intent)localObject1).putExtra("selfSet_leftViewText", getString(2131690623));
+      bivc.a(this, this.app.getAccount(), (Intent)localObject1, -1, false);
       continue;
-      QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.a();
+      bjea localbjea = bjea.a();
       try
       {
         long l = Long.valueOf(this.app.getCurrentAccountUin()).longValue();
-        localUserInfo.a = String.valueOf(l);
+        localbjea.a = String.valueOf(l);
         String str = this.app.getCurrentNickname();
         localObject1 = str;
         if (TextUtils.isEmpty(str)) {
-          localObject1 = ContactUtils.j(this.app, String.valueOf(l));
+          localObject1 = bdgc.h(this.app, String.valueOf(l));
         }
-        localUserInfo.b = ((String)localObject1);
-        QZoneHelper.a(this, localUserInfo, Long.valueOf(l), 0, false, -1);
+        localbjea.b = ((String)localObject1);
+        bjdt.b(this, localbjea, Long.valueOf(l), 0, false, -1);
       }
       catch (Exception localException1)
       {
@@ -94,7 +94,7 @@ public class LebaSearchTransparentJumpActivity
         return;
       }
       int i = localException1.getIntExtra("tab_tab_index", 0);
-      ReadInJoyActivityHelper.a(this.app, this, 1, i);
+      nxu.a(this.app, this, 1, i);
       continue;
       Object localObject2 = new Intent(this, PhoneUnityBindInfoActivity.class);
       ((Intent)localObject2).putExtra("kSrouce", 18);
@@ -108,11 +108,11 @@ public class LebaSearchTransparentJumpActivity
       try
       {
         i = Integer.valueOf(localObject2[1]).intValue();
-        localObject2 = ((FunctionModuleConfigManager)this.app.getManager(221)).jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel;
+        localObject2 = ((ayha)this.app.getManager(222)).jdField_a_of_type_Aynu;
         if (localObject2 != null)
         {
-          this.a.setTag(2131362080, Integer.valueOf(i));
-          ((ISearchResultModel)localObject2).a(this.a);
+          this.a.setTag(2131379972, Integer.valueOf(i));
+          ((aynu)localObject2).a(this.a);
         }
       }
       catch (Exception localException2)
@@ -129,7 +129,7 @@ public class LebaSearchTransparentJumpActivity
         QLog.d("kueenie", 2, "result model is null");
       }
       continue;
-      ((FunctionModuleConfigManager)this.app.getManager(221)).jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateBaseItem.a(this.a);
+      ((ayha)this.app.getManager(222)).jdField_a_of_type_Ayod.a(this.a);
     }
   }
 }

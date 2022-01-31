@@ -1,16 +1,24 @@
 package com.tencent.token.ui;
 
-import android.widget.ImageView;
-import com.tencent.token.ui.base.ck;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.cw;
+import com.tencent.token.cx;
+import com.tencent.token.global.h;
 
-final class zi
+class zi
   implements Runnable
 {
-  zi(SecurityReporterActivity paramSecurityReporterActivity, ck paramck) {}
+  zi(SmsContentTipActivity paramSmsContentTipActivity) {}
   
-  public final void run()
+  public void run()
   {
-    this.a.setBounds(SecurityReporterActivity.access$300(this.b).getLeft(), SecurityReporterActivity.access$300(this.b).getTop(), SecurityReporterActivity.access$300(this.b).getRight(), SecurityReporterActivity.access$300(this.b).getBottom());
+    h.a("send unbind seq request:" + SmsContentTipActivity.access$1000(this.a));
+    if (!SmsContentTipActivity.access$000(this.a)) {
+      return;
+    }
+    cx.c().n();
+    cw.a().a(SmsContentTipActivity.access$1100(this.a).mUin, SmsContentTipActivity.access$1100(this.a).mRealUin, 1005, 0, this.a.mHandler);
+    SmsContentTipActivity.access$1008(this.a);
   }
 }
 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qzone.commoncode.module.videorecommend.widget.QzoneRelativeLayoutView android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.AsyncImageView android:id="@id/fro" android:layout_width="73.5dip" android:layout_height="73.5dip" android:scaleType="centerCrop" android:layout_alignParentLeft="true" />
+    <TextView android:textSize="14.0sp" android:textColor="#ffdfdfdf" android:gravity="center" android:layout_gravity="center" android:id="@id/frn" android:background="@drawable/ir" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="28.0dip" android:layout_marginRight="20.0dip" android:maxLines="1" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="14.0sp" android:textColor="#80ffffff" android:ellipsize="end" android:id="@id/frq" android:layout_width="155.0dip" android:layout_height="wrap_content" android:layout_marginLeft="88.0dip" android:layout_marginTop="17.0dip" android:layout_marginRight="10.0dip" android:maxLines="1" />
+    <TextView android:textSize="12.0sp" android:textColor="#4fffffff" android:ellipsize="end" android:id="@id/frm" android:layout_width="155.0dip" android:layout_height="wrap_content" android:layout_marginLeft="88.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="17.0dip" android:maxLines="1" android:layout_alignParentBottom="true" />
+    <com.qzone.widget.AsyncImageView android:id="@id/frl" android:layout_width="15.0dip" android:layout_height="15.0dip" android:scaleType="fitXY" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <com.qzone.widget.AsyncImageView android:id="@id/frp" android:layout_width="25.0dip" android:layout_height="12.5dip" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+</com.qzone.commoncode.module.videorecommend.widget.QzoneRelativeLayoutView>

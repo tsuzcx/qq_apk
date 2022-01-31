@@ -1,27 +1,23 @@
-import android.media.MediaRecorder;
-import android.media.MediaRecorder.OnInfoListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewplugin.QzoneAudioRecordPlugin.SimpleAACRecorder;
+import com.tencent.YTFace.model.FaceStatus;
 
 public class ancf
-  implements MediaRecorder.OnInfoListener
 {
-  public ancf(QzoneAudioRecordPlugin.SimpleAACRecorder paramSimpleAACRecorder) {}
+  public float a;
+  public int a;
+  public FaceStatus a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public void onInfo(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
+  public String toString()
   {
-    switch (paramInt1)
-    {
-    default: 
-      QLog.i("QzoneVoiceRecordPlugin.SimpleRecorder", 4, "start|onInfo|what=" + paramInt1 + ",extra=" + paramInt2);
-      return;
-    case 801: 
-      QLog.i("QzoneVoiceRecordPlugin.SimpleRecorder", 4, "start|onInfo|max file size reached.extra=" + paramInt2);
-      this.a.a();
-      return;
-    }
-    QLog.i("QzoneVoiceRecordPlugin.SimpleRecorder", 4, "start|onInfo|max duration reached.extra=" + paramInt2);
-    this.a.a();
+    return "FaceInfo{name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", tracked=" + this.jdField_a_of_type_Boolean + ", lostCount=" + this.c + ", faceType=" + this.jdField_a_of_type_Int + ", faceStatus=" + this.jdField_a_of_type_ComTencentYTFaceModelFaceStatus + '}';
   }
 }
 

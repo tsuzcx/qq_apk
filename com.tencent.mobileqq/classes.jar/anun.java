@@ -1,23 +1,20 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoHallowenUpload.Listener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
 
 class anun
-  implements EditWebVideoHallowenUpload.Listener
+  implements DialogInterface.OnClickListener
 {
-  anun(anul paramanul, Runnable paramRunnable) {}
+  anun(anum paramanum) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anun
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class PttCenter$PttIntrodApplyUploadReq
-  extends MessageMicro
+  extends MessageMicro<PttIntrodApplyUploadReq>
 {
   public static final int BYTES_MD5_FIELD_NUMBER = 3;
   public static final int STR_FILE_NAME_FIELD_NUMBER = 2;
@@ -27,7 +27,7 @@ public final class PttCenter$PttIntrodApplyUploadReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pttcenterservice.PttCenter.PttIntrodApplyUploadReq
  * JD-Core Version:    0.7.0.1
  */

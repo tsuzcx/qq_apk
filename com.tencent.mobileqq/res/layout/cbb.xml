@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectionsTabLayout android:id="@id/le7" android:layout_width="fill_parent" android:layout_height="70.0dip" android:layout_centerInParent="true" app:tabCompatContentEnd="11.0dip" app:tabCompatContentStart="11.0dip" app:tabCompatMinWidth="94.0dip" app:tabCompatPaddingEnd="2.5dip" app:tabCompatPaddingStart="2.5dip" />
+</RelativeLayout>

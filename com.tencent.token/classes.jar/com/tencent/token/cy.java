@@ -1,93 +1,231 @@
 package com.tencent.token;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.b;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
-import com.tencent.token.utils.s;
-import java.util.HashMap;
-import org.json.JSONObject;
+import com.tencent.token.global.h;
 
-public final class cy
-  extends bm
+public class cy
 {
-  private long c;
-  private int d;
-  private int e;
-  private boolean f;
-  private String g;
-  private final String h = "/cn/mbtoken3/mbtoken3_face_verify_on_off";
+  private static cy b = null;
+  public int a = 0;
+  private Context c = null;
+  private String d = null;
   
-  protected final String a()
+  public static cy a()
   {
-    int j = 1;
-    int i = 1;
-    ae.a();
-    if (ax.a().p()) {
-      ax.a();
+    if (b == null) {
+      b = new cy();
     }
-    for (String str1 = ax.c; str1 == null; str1 = null)
-    {
-      this.a.a(104, null, null);
-      return null;
-    }
-    String str2;
-    if (this.e == 0)
-    {
-      l = this.c;
-      if (this.f) {}
-      for (;;)
-      {
-        str2 = s.a(new Object[] { "uin", Long.valueOf(l), "on_off", Integer.valueOf(i), "seq_id", Integer.valueOf(this.d), "A2", this.g });
-        str1 = "?uin=" + this.c + "&aq_base_sid=" + str1 + "&data=" + str2;
-        return b.c() + "/cn/mbtoken3/mbtoken3_face_verify_on_off" + str1;
-        i = 0;
-      }
-    }
-    long l = this.c;
-    if (this.f) {}
-    for (i = j;; i = 0)
-    {
-      str2 = s.a(new Object[] { "uin", Long.valueOf(l), "on_off", Integer.valueOf(i), "scene_id", Integer.valueOf(this.e), "seq_id", Integer.valueOf(this.d), "A2", this.g });
-      break;
-    }
+    b.d(RqdApplication.l());
+    return b;
   }
   
-  protected final void a(fs paramfs)
+  public static void b()
   {
-    this.c = ((Long)paramfs.c.get("param.uinhash")).longValue();
-    this.e = ((Integer)paramfs.c.get("param.scene_id")).intValue();
-    this.f = ((Boolean)paramfs.c.get("param.verifyonoff")).booleanValue();
-    this.g = ((String)paramfs.c.get("param.wtlogin.a2"));
-    this.d = paramfs.j;
+    b = null;
   }
   
-  protected final void a(JSONObject paramJSONObject)
+  private String c(String paramString)
   {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
+    return com.tencent.token.utils.encrypt.c.c(com.tencent.token.utils.encrypt.c.a(paramString));
+  }
+  
+  private void d(Context paramContext)
+  {
+    if (this.c == paramContext) {}
+    label36:
+    label105:
+    label110:
+    label124:
+    for (;;)
     {
-      a(i, paramJSONObject.getString("info"));
       return;
-    }
-    paramJSONObject = s.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
-    {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      e.a("mbtoken3_general_verify_mobile_code ret: " + paramJSONObject);
-      i = paramJSONObject.getInt("seq_id");
-      if (i != this.d)
+      this.c = paramContext;
+      boolean bool;
+      if (paramContext != null)
       {
-        e.c("parseJSON error seq is wrong seq=" + i + ",right = " + this.d);
-        this.a.a(10030, null, null);
+        bool = true;
+        h.a(bool);
+        paramContext = c(paramContext);
+        if (paramContext == null) {
+          break label105;
+        }
+        bool = true;
+        h.a(bool);
+        this.a = paramContext.getInt("pwd_type", 0);
+        if (this.a != 2) {
+          break label110;
+        }
+      }
+      for (this.d = paramContext.getString("pwd3g", null);; this.d = paramContext.getString("pwd", null))
+      {
+        if (this.a != 0) {
+          break label124;
+        }
+        a(this.c, this.d);
+        this.a = 1;
         return;
+        bool = false;
+        break;
+        bool = false;
+        break label36;
       }
-      this.a.a = 0;
+    }
+  }
+  
+  public void a(Context paramContext)
+  {
+    b(paramContext, null);
+    a(paramContext, 0L);
+  }
+  
+  public void a(Context paramContext, int paramInt)
+  {
+    paramContext = c(paramContext);
+    if (paramContext != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      h.a(bool);
+      paramContext = paramContext.edit();
+      paramContext.putInt("lock_time", paramInt);
+      paramContext.commit();
       return;
     }
-    e.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.i().getString(2131361799));
+  }
+  
+  public void a(Context paramContext, long paramLong)
+  {
+    paramContext = c(paramContext);
+    if (paramContext != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      h.a(bool);
+      paramContext = paramContext.edit();
+      paramContext.putLong("last_lock", paramLong);
+      paramContext.commit();
+      return;
+    }
+  }
+  
+  public boolean a(Context paramContext, String paramString)
+  {
+    paramContext = c(paramContext);
+    boolean bool;
+    if (paramContext != null)
+    {
+      bool = true;
+      h.a(bool);
+      paramContext = paramContext.edit();
+      if ((paramString != null) && (paramString.length() > 0)) {
+        break label62;
+      }
+      this.d = null;
+      paramContext.remove("pwd");
+    }
+    for (;;)
+    {
+      paramContext.commit();
+      return true;
+      bool = false;
+      break;
+      label62:
+      this.d = c(paramString);
+      paramContext.putString("pwd", this.d);
+      paramContext.putInt("pwd_type", 1);
+      this.a = 1;
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    if ((paramString == null) || (this.d == null)) {}
+    while (1 > this.a) {
+      return false;
+    }
+    return this.d.equals(c(paramString));
+  }
+  
+  public int b(Context paramContext)
+  {
+    paramContext = c(paramContext);
+    if (paramContext != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      h.a(bool);
+      return paramContext.getInt("lock_time", 0);
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    SharedPreferences.Editor localEditor = RqdApplication.l().getSharedPreferences("startpwd_gesture_new_tip", 0).edit();
+    localEditor.putBoolean(paramString, false);
+    localEditor.commit();
+  }
+  
+  public boolean b(Context paramContext, String paramString)
+  {
+    Object localObject = c(paramContext);
+    boolean bool;
+    if (localObject != null)
+    {
+      bool = true;
+      h.a(bool);
+      localObject = ((SharedPreferences)localObject).edit();
+      if ((paramString != null) && (paramString.length() > 0)) {
+        break label68;
+      }
+      this.d = null;
+      ((SharedPreferences.Editor)localObject).remove("pwd3g");
+    }
+    for (;;)
+    {
+      ((SharedPreferences.Editor)localObject).commit();
+      return true;
+      bool = false;
+      break;
+      label68:
+      if (this.a == 1) {
+        a(paramContext, null);
+      }
+      this.d = c(paramString);
+      this.a = 2;
+      ((SharedPreferences.Editor)localObject).putString("pwd3g", this.d);
+      ((SharedPreferences.Editor)localObject).putInt("pwd_type", 2);
+    }
+  }
+  
+  public SharedPreferences c(Context paramContext)
+  {
+    switch ()
+    {
+    default: 
+      return RqdApplication.l().getSharedPreferences("token_pwd_file", 0);
+    case 0: 
+      return RqdApplication.l().getSharedPreferences("token_pwd_file_test", 0);
+    case 1: 
+      return RqdApplication.l().getSharedPreferences("token_pwd_file", 0);
+    case 2: 
+      return RqdApplication.l().getSharedPreferences("token_pwd_file_exp", 0);
+    }
+    return RqdApplication.l().getSharedPreferences("token_pwd_file_gray", 0);
+  }
+  
+  public boolean c()
+  {
+    return (this.d != null) && (this.d.length() > 0);
+  }
+  
+  public boolean d()
+  {
+    return (this.d != null) && (this.d.length() > 0) && (this.a == 2);
+  }
+  
+  public int e()
+  {
+    return this.a;
   }
 }
 

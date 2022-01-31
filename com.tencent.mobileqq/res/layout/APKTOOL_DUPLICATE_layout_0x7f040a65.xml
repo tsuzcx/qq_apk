@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.proxy.albumcomponent.widget.TravelHeaderCell android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ee7" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip">
-        <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2bb5" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" />
-        <com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ef1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0a2bb5" android:layout_alignParentRight="true" />
-    </RelativeLayout>
-</LinearLayout>

@@ -1,10 +1,5 @@
 package com.tencent.mobileqq.conditionsearch.widget;
 
-import abri;
-import abrj;
-import abrk;
-import abrl;
-import abrm;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -12,10 +7,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import aoig;
+import aoih;
+import aoii;
+import aoij;
+import aoik;
+import aoil;
+import aoim;
+import bhuy;
+import bicg;
 import com.tencent.mobileqq.remind.widget.WheelTextView;
 import com.tencent.mobileqq.remind.widget.WheelView;
-import com.tencent.widget.AdapterView.OnItemSelectedListener;
-import com.tencent.widget.VerticalGallery.OnSelectViewDataUpdateListener;
 
 public class IphonePickerView
   extends LinearLayout
@@ -24,11 +26,11 @@ public class IphonePickerView
   private static int b = -12303292;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private IphonePickerView.IphonePickListener jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$IphonePickListener;
-  private IphonePickerView.PickerViewAdapter jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$PickerViewAdapter;
-  private AdapterView.OnItemSelectedListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener = new abrj(this);
-  private VerticalGallery.OnSelectViewDataUpdateListener jdField_a_of_type_ComTencentWidgetVerticalGallery$OnSelectViewDataUpdateListener = new abrk(this);
-  private abrm[] jdField_a_of_type_ArrayOfAbrm;
+  private aoil jdField_a_of_type_Aoil;
+  private aoim jdField_a_of_type_Aoim;
+  private bhuy jdField_a_of_type_Bhuy = new aoih(this);
+  private bicg jdField_a_of_type_Bicg = new aoii(this);
+  private aoik[] jdField_a_of_type_ArrayOfAoik;
   private WheelView[] jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView;
   private int c;
   
@@ -76,13 +78,13 @@ public class IphonePickerView
   private void a(WheelView paramWheelView, int paramInt)
   {
     paramWheelView.setTag(Integer.valueOf(paramInt));
-    abrm localabrm = new abrm(this, paramInt, 25);
+    aoik localaoik = new aoik(this, paramInt, 25);
     this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView[paramInt] = paramWheelView;
-    this.jdField_a_of_type_ArrayOfAbrm[paramInt] = localabrm;
-    paramWheelView.setAdapter(localabrm);
-    paramWheelView.setOnItemSelectedListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener);
-    paramWheelView.setOnSelectViewDataUpdateListener(this.jdField_a_of_type_ComTencentWidgetVerticalGallery$OnSelectViewDataUpdateListener);
-    paramWheelView.setOnEndMovementListener(new abrl(this, paramInt));
+    this.jdField_a_of_type_ArrayOfAoik[paramInt] = localaoik;
+    paramWheelView.setAdapter(localaoik);
+    paramWheelView.setOnItemSelectedListener(this.jdField_a_of_type_Bhuy);
+    paramWheelView.setOnSelectViewDataUpdateListener(this.jdField_a_of_type_Bicg);
+    paramWheelView.setOnEndMovementListener(new aoij(this, paramInt));
   }
   
   public int a(int paramInt)
@@ -95,50 +97,50 @@ public class IphonePickerView
   
   public void a(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfAbrm.length)) {
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfAoik.length)) {
       throw new IllegalArgumentException("Error column index " + paramInt);
     }
-    this.jdField_a_of_type_ArrayOfAbrm[paramInt].notifyDataSetChanged();
+    this.jdField_a_of_type_ArrayOfAoik[paramInt].notifyDataSetChanged();
   }
   
-  public void a(IphonePickerView.PickerViewAdapter paramPickerViewAdapter)
+  public void a(aoim paramaoim)
   {
     Object localObject1 = getContext().getResources();
-    jdField_a_of_type_Int = ((Resources)localObject1).getColor(2131494273);
-    b = ((Resources)localObject1).getColor(2131494248);
-    setBackgroundColor(((Resources)localObject1).getColor(2131494250));
-    Object localObject2 = findViewById(2131368509);
+    jdField_a_of_type_Int = ((Resources)localObject1).getColor(2131166987);
+    b = ((Resources)localObject1).getColor(2131166947);
+    setBackgroundColor(((Resources)localObject1).getColor(2131166952));
+    Object localObject2 = findViewById(2131377870);
     if (localObject2 != null) {
-      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131494284));
+      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131167000));
     }
-    localObject2 = findViewById(2131368510);
+    localObject2 = findViewById(2131377871);
     if (localObject2 != null) {
-      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131494284));
+      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131167000));
     }
-    localObject2 = findViewById(2131365875);
+    localObject2 = findViewById(2131369484);
     if (localObject2 != null) {
-      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131494283));
+      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131166999));
     }
-    localObject2 = findViewById(2131365876);
+    localObject2 = findViewById(2131369462);
     if (localObject2 != null) {
-      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131494283));
+      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131166999));
     }
-    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$PickerViewAdapter = paramPickerViewAdapter;
-    this.c = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$PickerViewAdapter.getColumnCount();
+    this.jdField_a_of_type_Aoim = paramaoim;
+    this.c = this.jdField_a_of_type_Aoim.a();
     if ((this.c <= 0) || (this.c > 3)) {
       throw new RuntimeException("Unsupportted column count " + this.c);
     }
     this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView = new WheelView[this.c];
-    this.jdField_a_of_type_ArrayOfAbrm = new abrm[this.c];
-    paramPickerViewAdapter = (WheelView)findViewById(2131365872);
-    localObject1 = (WheelView)findViewById(2131365873);
-    localObject2 = (WheelView)findViewById(2131365874);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370272));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370273));
+    this.jdField_a_of_type_ArrayOfAoik = new aoik[this.c];
+    paramaoim = (WheelView)findViewById(2131365017);
+    localObject1 = (WheelView)findViewById(2131367798);
+    localObject2 = (WheelView)findViewById(2131370654);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131377869));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377896));
     if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new abri(this));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new aoig(this));
     }
-    a(paramPickerViewAdapter, 0);
+    a(paramaoim, 0);
     if (this.c < 2) {
       ((WheelView)localObject1).setVisibility(8);
     }
@@ -153,9 +155,9 @@ public class IphonePickerView
     a((WheelView)localObject2, 2);
   }
   
-  public void setPickListener(IphonePickerView.IphonePickListener paramIphonePickListener)
+  public void setPickListener(aoil paramaoil)
   {
-    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$IphonePickListener = paramIphonePickListener;
+    this.jdField_a_of_type_Aoil = paramaoil;
   }
   
   public void setSelection(int paramInt1, int paramInt2)
@@ -173,7 +175,7 @@ public class IphonePickerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.widget.IphonePickerView
  * JD-Core Version:    0.7.0.1
  */

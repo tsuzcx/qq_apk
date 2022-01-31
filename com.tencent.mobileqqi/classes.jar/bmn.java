@@ -1,25 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.PoiMapActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.qrcode.activity.QRJumpActivity;
 
 public class bmn
-  implements View.OnTouchListener
+  implements DialogInterface.OnCancelListener
 {
-  public bmn(PoiMapActivity paramPoiMapActivity) {}
+  public bmn(QRJumpActivity paramQRJumpActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    do
-    {
-      return false;
-    } while (!this.a.a);
-    this.a.k();
-    this.a.a = false;
-    return false;
+    this.a.finish();
   }
 }
 

@@ -1,23 +1,46 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.international.activity.FeedbackActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.pic.BasePicOprerator;
+import com.tencent.mobileqq.pic.Logger;
+import com.tencent.mobileqq.pic.PicResult;
+import com.tencent.mobileqq.pic.UiCallBack;
 
 public class gdt
-  implements View.OnClickListener
+  extends Handler
 {
-  public gdt(FeedbackActivity paramFeedbackActivity) {}
-  
-  public void onClick(View paramView)
+  public gdt(BasePicOprerator paramBasePicOprerator, Looper paramLooper)
   {
-    paramView = FeedbackActivity.a(this.a).getEditableText().toString().trim();
-    if (TextUtils.isEmpty(paramView)) {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Logger.a(this.a.b, this.a.jdField_a_of_type_JavaLangString, "dispatchMessage", "what:" + paramMessage.what + ",result:" + paramMessage.arg1 + ",obj:" + paramMessage.obj);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack == null) {}
+    int i;
+    PicResult localPicResult;
+    do
+    {
       return;
-    }
-    FeedbackActivity.b(this.a);
-    paramView.trim();
-    FeedbackActivity.a(this.a, paramView);
+      i = paramMessage.arg1;
+      localPicResult = (PicResult)paramMessage.obj;
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      case 0: 
+        this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.a(i, localPicResult);
+        return;
+      }
+    } while (!(localPicResult.a instanceof Integer));
+    this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.a(((Integer)localPicResult.a).intValue());
+    return;
+    this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.b(i, localPicResult);
+    return;
+    this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.c(i, localPicResult);
+    return;
+    this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.d(i, localPicResult);
   }
 }
 

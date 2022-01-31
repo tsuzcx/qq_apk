@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="44" android:drawable="@drawable/hyi" />
+    <item android:duration="44" android:drawable="@drawable/hyh" />
+    <item android:duration="44" android:drawable="@drawable/hyr" />
+    <item android:duration="44" android:drawable="@drawable/hyq" />
+    <item android:duration="44" android:drawable="@drawable/hyp" />
+    <item android:duration="44" android:drawable="@drawable/hyo" />
+    <item android:duration="44" android:drawable="@drawable/hyn" />
+    <item android:duration="44" android:drawable="@drawable/hym" />
+    <item android:duration="44" android:drawable="@drawable/hyl" />
+    <item android:duration="44" android:drawable="@drawable/hyk" />
+    <item android:duration="44" android:drawable="@drawable/hyj" />
+</animation-list>

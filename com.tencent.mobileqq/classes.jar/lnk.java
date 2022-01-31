@@ -1,28 +1,20 @@
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyAtlasViewPagerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment.ReportEventListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySwipeView.OnSlidingFinishListener;
-
-public class lnk
-  implements ReadInJoySwipeView.OnSlidingFinishListener
+class lnk
 {
-  public lnk(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment) {}
+  byte jdField_a_of_type_Byte = 1;
+  byte b = 0;
+  byte c = 1;
+  byte d = 1;
+  byte e = 1;
+  byte f = 0;
+  byte g = 0;
+  byte h = 0;
+  byte i = 0;
   
-  public void a()
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("exitType", 2);
-    localBundle.putSerializable("lastShowImageModel", this.a.a.a());
-    ReadInJoyAtlasFragment.a(this.a).a(-2, localBundle);
-    ReadInJoyAtlasFragment.b(this.a, true);
-    ReadInJoyAtlasFragment.a(this.a).finish();
-  }
+  lnk(lnf paramlnf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lnk
  * JD-Core Version:    0.7.0.1
  */

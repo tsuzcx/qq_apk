@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.nearby.now.location.LocationListener;
-import com.tencent.mobileqq.nearby.now.location.TLocationManager;
-import com.tencent.mobileqq.nearby.now.model.LocationInfo;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.widget.XListView;
 
-public class aetg
-  implements Runnable
+public abstract interface aetg
 {
-  public aetg(TLocationManager paramTLocationManager, LocationListener paramLocationListener, LocationInfo paramLocationInfo) {}
+  public abstract void a(XListView paramXListView, int paramInt, View paramView, ChatMessage paramChatMessage, long paramLong, float paramFloat);
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationLocationListener.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo);
-  }
+  public abstract void a(XListView paramXListView, int paramInt, View paramView, ChatMessage paramChatMessage, boolean paramBoolean);
+  
+  public abstract boolean a(XListView paramXListView, int paramInt, View paramView, ChatMessage paramChatMessage);
+  
+  public abstract boolean a(XListView paramXListView, int paramInt1, View paramView, ChatMessage paramChatMessage, AudioPlayer paramAudioPlayer, int paramInt2);
+  
+  public abstract boolean b(ChatMessage paramChatMessage);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aetg
  * JD-Core Version:    0.7.0.1
  */

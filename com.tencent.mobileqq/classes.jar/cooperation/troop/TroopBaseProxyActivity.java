@@ -1,5 +1,6 @@
 package cooperation.troop;
 
+import alud;
 import android.app.Activity;
 import android.app.Dialog;
 import android.widget.TextView;
@@ -15,7 +16,7 @@ public class TroopBaseProxyActivity
     {
       try
       {
-        paramActivity = new Dialog(paramActivity, 2131624516);
+        paramActivity = new Dialog(paramActivity, 2131755801);
         Activity localActivity = paramActivity;
       }
       catch (OutOfMemoryError localOutOfMemoryError1)
@@ -23,9 +24,9 @@ public class TroopBaseProxyActivity
         try
         {
           paramActivity.setCancelable(true);
-          paramActivity.setContentView(2130969180);
+          paramActivity.setContentView(2131559437);
           paramActivity.show();
-          ((TextView)paramActivity.findViewById(2131363399)).setText("正在加载...");
+          ((TextView)paramActivity.findViewById(2131371894)).setText(alud.a(2131715646));
           localActivity = paramActivity;
           return localActivity;
         }
@@ -48,7 +49,7 @@ public class TroopBaseProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.troop.TroopBaseProxyActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,15 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.JumpActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class cxl
-  implements Handler.Callback
+  implements DialogInterface.OnClickListener
 {
-  public cxl(JumpActivity paramJumpActivity) {}
+  public cxl(NotificationActivity paramNotificationActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     this.a.finish();
-    return true;
   }
 }
 

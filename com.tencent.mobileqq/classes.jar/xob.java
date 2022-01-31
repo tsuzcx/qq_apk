@@ -1,28 +1,15 @@
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import javax.annotation.Nonnull;
 
-class xob
-  implements Runnable
+public abstract interface xob
 {
-  xob(xoa paramxoa) {}
+  public abstract void a(int paramInt, @Nonnull List<xoe> paramList, boolean paramBoolean);
   
-  public void run()
-  {
-    if (!FileUtils.d(EditLocalVideoActivity.f(this.a.jdField_a_of_type_Xnz.a))) {
-      QLog.d("EditLocalVideoActivity", 2, "delete origin final mp4 failed!" + EditLocalVideoActivity.f(this.a.jdField_a_of_type_Xnz.a));
-    }
-    for (;;)
-    {
-      EditLocalVideoActivity.f(this.a.jdField_a_of_type_Xnz.a, this.a.jdField_a_of_type_JavaLangString);
-      return;
-      QLog.d("EditLocalVideoActivity", 2, "delete origin final mp4 success!" + EditLocalVideoActivity.f(this.a.jdField_a_of_type_Xnz.a));
-    }
-  }
+  public abstract void b(int paramInt, @Nonnull List<xoe> paramList, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xob
  * JD-Core Version:    0.7.0.1
  */

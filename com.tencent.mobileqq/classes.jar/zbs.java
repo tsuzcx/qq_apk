@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.app.ConfigHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.JumpFilterHelper;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class zbs
-  implements Runnable
+class zbs
+  implements View.OnClickListener
 {
-  public zbs(ConfigHandler paramConfigHandler) {}
+  zbs(zbr paramzbr) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    JumpFilterHelper.a().a(this.a.b.getApplication());
+    if (zbr.a(this.a) == null) {}
+    while (yxv.a(zbr.class.getName() + "clickPanel")) {
+      return;
+    }
+    this.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zbs
  * JD-Core Version:    0.7.0.1
  */

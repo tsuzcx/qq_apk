@@ -1,45 +1,28 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import android.util.Log;
-import com.tencent.mobileqq.troop.widget.MediaControllerX;
-import com.tencent.mobileqq.troop.widget.VideoViewX;
+import android.content.ComponentName;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ShortcutGuideDialogActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForVideo;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.util.VersionUtils;
 
-public class hea
-  implements MediaPlayer.OnErrorListener
+class hea
+  implements Runnable
 {
-  public hea(VideoViewX paramVideoViewX) {}
+  hea(hdz paramhdz, MessageForVideo paramMessageForVideo, String paramString) {}
   
-  @TargetApi(8)
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void run()
   {
-    Log.d(VideoViewX.a(this.a), "Error: " + paramInt1 + "," + paramInt2);
-    VideoViewX.b(this.a);
-    VideoViewX.c(this.a, -1);
-    VideoViewX.d(this.a, -1);
-    VideoViewX.b(this.a, true);
-    if (VideoViewX.a(this.a) != null)
-    {
-      VideoViewX.a(this.a).d();
-      VideoViewX.a(this.a).c();
-    }
-    if (VersionUtils.b()) {
-      ((AudioManager)BaseApplication.getContext().getSystemService("audio")).abandonAudioFocus(this.a.a);
-    }
-    if ((VideoViewX.a(this.a) != null) && (VideoViewX.a(this.a).onError(VideoViewX.a(this.a), paramInt1, paramInt2))) {}
-    while (this.a.getWindowToken() == null) {
-      return true;
-    }
-    return true;
+    Intent localIntent = new Intent();
+    localIntent.setComponent(new ComponentName("com.tencent.mobileqqi", ShortcutGuideDialogActivity.class.getName()));
+    localIntent.setFlags(268435456);
+    localIntent.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqDataMessageForVideo.frienduin);
+    localIntent.putExtra("nick", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Hdz.a.a().startActivity(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hea
  * JD-Core Version:    0.7.0.1
  */

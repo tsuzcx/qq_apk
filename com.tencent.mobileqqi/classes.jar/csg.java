@@ -1,23 +1,17 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
 
 class csg
-  implements Runnable
+  implements PermissionDialogCallback
 {
-  csg(cse paramcse, URLDrawable paramURLDrawable) {}
+  csg(cse paramcse) {}
   
-  public void run()
-  {
-    if ((this.jdField_a_of_type_Cse.a != null) && (this.jdField_a_of_type_Cse.a.isShowing()))
-    {
-      this.jdField_a_of_type_Cse.a.setPreviewImage(this.jdField_a_of_type_ComTencentImageURLDrawable);
-      this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new csh(this));
-    }
-  }
+  public void a() {}
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     csg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,29 @@
-import android.os.Handler;
-import android.os.Message;
+import android.view.KeyEvent;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.TextView.OnEditorActionListener;
 
-public class uck
-  extends Handler
+class uck
+  implements TextView.OnEditorActionListener
 {
-  public uck(TroopRequestActivity paramTroopRequestActivity) {}
+  uck(uce paramuce) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    switch (paramMessage.what)
+    switch (paramInt)
     {
+    case 5: 
     default: 
-      return;
-    case 0: 
-      this.a.i();
-      QQToast.a(this.a, this.a.getString(2131434462), 0).b(this.a.getTitleBarHeight());
-      this.a.finish();
-      return;
-    case 1: 
-      this.a.a(true);
-      this.a.i();
-      QQToast.a(this.a, this.a.getString(2131434464), 0).b(this.a.getTitleBarHeight());
-      return;
+      return false;
     }
-    paramMessage = (String)paramMessage.obj;
-    this.a.p.setText(paramMessage + "");
-    this.a.p.setContentDescription(paramMessage + "");
-    this.a.p.setVisibility(0);
+    if (uce.a(this.a) != null) {
+      uce.a(this.a).a();
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uck
  * JD-Core Version:    0.7.0.1
  */

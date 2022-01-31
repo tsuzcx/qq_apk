@@ -8,25 +8,27 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.inputmethod.InputMethodManager;
-import com.tencent.biz.qqstory.comment.FeedCommentLego;
 import com.tencent.biz.qqstory.comment.StoryInputBarView;
-import com.tencent.biz.qqstory.model.item.IFeedOwner;
-import com.tencent.biz.qqstory.storyHome.memory.model.StoryProfileListViewConfig;
-import com.tencent.biz.qqstory.storyHome.memory.view.segment.MemoriesFeedSegment;
+import com.tencent.biz.qqstory.database.CommentEntry;
 import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.IMyStoryListView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment.InputViewHideListener;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
 import com.tencent.biz.qqstory.view.segment.SegmentList;
-import com.tencent.biz.qqstory.view.segment.SegmentView;
 import java.util.Iterator;
 import java.util.List;
+import ust;
+import uxe;
+import wmy;
+import wnk;
+import wtr;
+import wuv;
+import wxe;
+import wxj;
+import xvp;
 
 public class StoryMemoriesListView
   extends SegmentList
-  implements View.OnTouchListener, FeedSegment.InputViewHideListener
+  implements View.OnTouchListener, wuv
 {
-  private StoryProfileListViewConfig a;
+  private wmy a;
   
   public StoryMemoriesListView(Context paramContext)
   {
@@ -43,33 +45,34 @@ public class StoryMemoriesListView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void a()
+  public void a()
   {
     Iterator localIterator = this.a.a().iterator();
     while (localIterator.hasNext()) {
-      a((SegmentView)localIterator.next());
+      a((xvp)localIterator.next());
     }
     super.setDivider(null);
     super.setVerticalScrollBarEnabled(false);
     super.setHorizontalScrollBarEnabled(false);
-    super.setBackgroundColor(-1);
     super.setOnTouchListener(this);
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView.a().setInputViewHideListener(this);
+    if (this.a.jdField_a_of_type_Wtr != null) {
+      this.a.jdField_a_of_type_Wtr.a().setInputViewHideListener(this);
     }
   }
   
+  public void a(String paramString, CommentEntry paramCommentEntry) {}
+  
   public void b()
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView.j();
+    if (this.a.jdField_a_of_type_Wtr != null) {
+      this.a.jdField_a_of_type_Wtr.g();
     }
   }
   
   public void c()
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView.k();
+    if (this.a.jdField_a_of_type_Wtr != null) {
+      this.a.jdField_a_of_type_Wtr.h();
     }
   }
   
@@ -77,14 +80,25 @@ public class StoryMemoriesListView
   
   public void e() {}
   
-  public void f() {}
+  public void layoutChildren()
+  {
+    try
+    {
+      super.layoutChildren();
+      return;
+    }
+    catch (IllegalStateException localIllegalStateException)
+    {
+      wxe.e("SwipListView", "error:%s", new Object[] { localIllegalStateException.toString() });
+    }
+  }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView == null) {
+    if (this.a.jdField_a_of_type_Wtr == null) {
       return false;
     }
-    paramView = this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView.a();
+    paramView = this.a.jdField_a_of_type_Wtr.a();
     if (paramView.getVisibility() == 0)
     {
       ((InputMethodManager)this.a.jdField_a_of_type_AndroidAppActivity.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
@@ -92,37 +106,37 @@ public class StoryMemoriesListView
       paramView.setVisibility(8);
       b();
       paramView = paramView.a.a;
-      int i = StoryReportor.a(paramView.getOwner());
+      int i = wxj.a(paramView.getOwner());
       if (paramView.getOwner().isMe()) {}
       for (paramView = "1";; paramView = "2")
       {
-        StoryReportor.a("home_page", "cancel_reply", i, 0, new String[] { paramView, "3", "", "" });
+        wxj.a("home_page", "cancel_reply", i, 0, new String[] { paramView, "3", "", "" });
         return true;
       }
     }
     return false;
   }
   
-  public void setConfig(@NonNull StoryProfileListViewConfig paramStoryProfileListViewConfig)
+  public void setConfig(@NonNull wmy paramwmy)
   {
-    this.a = paramStoryProfileListViewConfig;
+    this.a = paramwmy;
   }
   
   public boolean trackMotionScroll(int paramInt1, int paramInt2)
   {
-    MemoriesFeedSegment localMemoriesFeedSegment = (MemoriesFeedSegment)a("FeedSegment");
-    if ((localMemoriesFeedSegment == null) || (localMemoriesFeedSegment.a() == 0) || (!localMemoriesFeedSegment.c())) {
+    wnk localwnk = (wnk)a("FeedSegment");
+    if ((localwnk == null) || (localwnk.a() == 0) || (!localwnk.c())) {
       return super.trackMotionScroll(paramInt1, paramInt2);
     }
-    localMemoriesFeedSegment.c(1);
+    localwnk.c(1);
     boolean bool = super.trackMotionScroll(paramInt1, paramInt2);
-    localMemoriesFeedSegment.c(0);
+    localwnk.c(0);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.view.StoryMemoriesListView
  * JD-Core Version:    0.7.0.1
  */

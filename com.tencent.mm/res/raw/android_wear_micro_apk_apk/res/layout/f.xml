@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.wear.app.ui.emoji.EmojiLayout android:layout_width="fill_parent" android:layout_height="100.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.wear.app.emoji.gif.MMGIFImageView android:id="@id/ah" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_centerInParent="true" />
+</com.tencent.mm.wear.app.ui.emoji.EmojiLayout>

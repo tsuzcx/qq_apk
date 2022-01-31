@@ -1,31 +1,34 @@
-import android.view.View;
-import com.tencent.mobileqq.remind.widget.IosTimepicker;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemSelectedListener;
+import android.view.ViewTreeObserver;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
+import com.tencent.widget.SwipListView;
 
 public class ahge
-  implements AdapterView.OnItemSelectedListener
+  implements akkb
 {
-  public ahge(IosTimepicker paramIosTimepicker) {}
+  public ahge(AddContactsView paramAddContactsView) {}
   
-  public void a(AdapterView paramAdapterView) {}
-  
-  public void b(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a()
   {
-    IosTimepicker.a(this.a, paramView, 1);
-    if (paramView.getTag() != null)
-    {
-      int i = Integer.parseInt(paramView.getTag().toString());
-      int j = paramAdapterView.getChildCount();
-      paramInt = 0;
-      while (paramInt < j)
-      {
-        if (i != paramInt) {
-          IosTimepicker.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
-        }
-        paramInt += 1;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onAllRecommendsCaneled _B");
     }
+    this.a.b.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentWidgetSwipListView.setVisibility(8);
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onRecommendsAvailable _B");
+    }
+    this.a.b.setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
+    this.a.e();
+    this.a.jdField_a_of_type_ComTencentWidgetSwipListView.getViewTreeObserver().addOnGlobalLayoutListener(new ahgf(this));
   }
 }
 

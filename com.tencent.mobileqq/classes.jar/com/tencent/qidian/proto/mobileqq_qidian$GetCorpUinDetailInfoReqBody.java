@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class mobileqq_qidian$GetCorpUinDetailInfoReqBody
-  extends MessageMicro
+  extends MessageMicro<GetCorpUinDetailInfoReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "uint64_uin", "uint32_req_type" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0) }, GetCorpUinDetailInfoReqBody.class);
   public final PBUInt32Field uint32_req_type = PBField.initUInt32(0);
@@ -15,7 +15,7 @@ public final class mobileqq_qidian$GetCorpUinDetailInfoReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qidian.proto.mobileqq_qidian.GetCorpUinDetailInfoReqBody
  * JD-Core Version:    0.7.0.1
  */

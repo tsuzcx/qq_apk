@@ -1,26 +1,17 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.widget.QQViewPager;
-import com.tencent.mobileqq.widget.TabBarView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
 
-public class ahet
-  implements ViewPager.OnPageChangeListener
+class ahet
+  implements View.OnClickListener
 {
-  public ahet(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  ahet(ahes paramahes) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void onClick(View paramView)
   {
-    ReceiptMessageReadMemberListContainerFragment.a(this.a).setSelectedTab(paramInt, true);
-    if (paramInt == 0)
-    {
-      ReceiptMessageReadMemberListContainerFragment.a(this.a).a(false);
-      return;
-    }
-    ReceiptMessageReadMemberListContainerFragment.a(this.a).a(true);
+    paramView = (RecommendTroopItem)paramView.getTag(-1);
+    bcpx.a(ahes.a(this.a), paramView, this.a.a());
+    this.a.b(paramView);
   }
 }
 

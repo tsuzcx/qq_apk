@@ -1,111 +1,47 @@
 package com.tencent.gdtad.views.canvas.components.video;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.views.GdtViewStatus;
-import com.tencent.gdtad.views.canvas.GdtCanvasData;
-import com.tencent.gdtad.views.canvas.components.GdtCanvasComponentView;
-import com.tencent.gdtad.views.canvas.framework.GdtCanvasPageView;
+import aase;
+import aatt;
+import aaut;
+import aauv;
+import com.tencent.ad.tangram.canvas.views.AdViewStatus;
+import com.tencent.ad.tangram.canvas.views.canvas.components.AdCanvasComponentView;
+import com.tencent.ad.tangram.canvas.views.canvas.framework.AdCanvasPageView;
 import com.tencent.gdtad.views.video.GdtVideoCommonView;
-import com.tencent.gdtad.views.video.GdtVideoCommonView.LoadListener;
-import com.tencent.gdtad.views.video.GdtVideoCommonView.VideoFullScreenListener;
-import com.tencent.gdtad.views.video.GdtVideoData;
 import java.lang.ref.WeakReference;
-import qmd;
 
 public class GdtCanvasVideoComponentView
-  extends GdtCanvasComponentView
-  implements GdtVideoCommonView.LoadListener, GdtVideoCommonView.VideoFullScreenListener
+  extends AdCanvasComponentView
+  implements aaut, aauv
 {
   public static int a;
-  private static int b;
-  private GdtCanvasMutiVideoManager jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsVideoGdtCanvasMutiVideoManager;
+  private aatt jdField_a_of_type_Aatt;
+  private AdCanvasPageView jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasFrameworkAdCanvasPageView;
   private GdtCanvasVideoComponentData jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsVideoGdtCanvasVideoComponentData;
-  private GdtCanvasPageView jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasPageView;
   private GdtVideoCommonView jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView;
-  private int c;
+  private int b;
   
-  public GdtCanvasVideoComponentView(Context paramContext, WeakReference paramWeakReference, GdtCanvasVideoComponentData paramGdtCanvasVideoComponentData, GdtCanvasMutiVideoManager paramGdtCanvasMutiVideoManager, GdtCanvasPageView paramGdtCanvasPageView)
-  {
-    super(paramContext, paramWeakReference);
-    this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsVideoGdtCanvasMutiVideoManager = paramGdtCanvasMutiVideoManager;
-    this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasPageView = paramGdtCanvasPageView;
-    a(paramContext, paramGdtCanvasVideoComponentData);
-  }
-  
-  private void a(Context paramContext, GdtCanvasVideoComponentData paramGdtCanvasVideoComponentData)
-  {
-    if ((paramGdtCanvasVideoComponentData == null) || (!paramGdtCanvasVideoComponentData.isValid())) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsVideoGdtCanvasVideoComponentData = paramGdtCanvasVideoComponentData;
-    g();
-    Object localObject = new LinearLayout(paramContext);
-    addView((View)localObject);
-    ((LinearLayout)localObject).setPadding(0, a().paddingTop, 0, a().paddingBottom);
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView = new GdtVideoCommonView(paramContext);
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.setOnVideoFullScreen(this);
-    jdField_a_of_type_Int += 1;
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a = ("video_" + jdField_a_of_type_Int);
-    ((LinearLayout)localObject).addView(this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView);
-    int i = getResources().getDisplayMetrics().widthPixels;
-    if (b == 0) {
-      b = (int)(i * 0.33F);
-    }
-    paramContext = this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.getLayoutParams();
-    paramContext.width = i;
-    paramContext.height = b;
-    if (a().width > 0) {
-      paramContext.height = ((int)(a().height / a().width * i));
-    }
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.setLayoutParams(paramContext);
-    localObject = new GdtVideoData();
-    ((GdtVideoData)localObject).setPlayScene(6);
-    ((GdtVideoData)localObject).setUrl(paramGdtCanvasVideoComponentData.url);
-    ((GdtVideoData)localObject).setCoverUrl(paramGdtCanvasVideoComponentData.thumbUrl);
-    ((GdtVideoData)localObject).setDurationMillis(paramGdtCanvasVideoComponentData.duration);
-    ((GdtVideoData)localObject).setLoop(paramGdtCanvasVideoComponentData.loop);
-    if (a() != null) {}
-    for (paramContext = a().ad;; paramContext = null)
-    {
-      ((GdtVideoData)localObject).setAd(paramContext);
-      this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.setData((GdtVideoData)localObject, this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsVideoGdtCanvasMutiVideoManager);
-      this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.setLoadListener(this);
-      this.jdField_a_of_type_ComTencentGdtadViewsGdtViewStatus = new GdtViewStatus(new WeakReference(this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView), new WeakReference(this), 0.5F);
-      return;
-    }
-  }
-  
-  private void j()
+  private void c()
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasPageView.a())
+    while (i < this.jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasFrameworkAdCanvasPageView.getCount())
     {
-      GdtCanvasComponentView localGdtCanvasComponentView = this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasPageView.a(i);
-      if (localGdtCanvasComponentView != this) {
-        localGdtCanvasComponentView.setVisibility(8);
+      AdCanvasComponentView localAdCanvasComponentView = this.jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasFrameworkAdCanvasPageView.getView(i);
+      if (localAdCanvasComponentView != this) {
+        localAdCanvasComponentView.setVisibility(8);
       }
       i += 1;
     }
   }
   
-  private void k()
+  private void d()
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasPageView.a())
+    while (i < this.jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasFrameworkAdCanvasPageView.getCount())
     {
-      this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasPageView.a(i).setVisibility(0);
+      this.jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasFrameworkAdCanvasPageView.getView(i).setVisibility(0);
       i += 1;
     }
-  }
-  
-  public GdtViewStatus a()
-  {
-    return this.jdField_a_of_type_ComTencentGdtadViewsGdtViewStatus;
   }
   
   public GdtCanvasVideoComponentData a()
@@ -115,69 +51,74 @@ public class GdtCanvasVideoComponentView
   
   public void a()
   {
-    super.a();
-    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView != null)
-    {
-      this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a();
-      GdtLog.c("GdtCanvasVideoComponentView", "onViewResume " + this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a);
-    }
+    d();
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.setisFullScreen(false, 8);
+    post(new GdtCanvasVideoComponentView.1(this));
   }
   
-  public boolean a()
+  public void a(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a()) && (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView != null))
-    {
-      h();
-      return true;
-    }
-    return super.a();
+    stopLoad(paramBoolean);
   }
   
   public void b()
   {
-    super.b();
-    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView != null)
+    if ((this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView != null) && (!this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.b()))
     {
-      this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.b();
-      this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsVideoGdtCanvasMutiVideoManager.a(new WeakReference(this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView));
-      GdtLog.c("GdtCanvasVideoComponentView", "onViewPause " + this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a);
+      c();
+      this.b = this.jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasFrameworkAdCanvasPageView.getScrollY();
+      this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.setisFullScreen(true, 8);
     }
   }
   
-  public void b(boolean paramBoolean)
+  public boolean back()
   {
-    a(paramBoolean);
+    if ((this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.b()) && (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView != null))
+    {
+      a();
+      return true;
+    }
+    return super.back();
   }
   
-  public void d()
+  public AdViewStatus getStatus()
   {
-    super.d();
+    return this.status;
+  }
+  
+  public void onActivityDestroy()
+  {
+    super.onActivityDestroy();
     if (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView != null) {
-      this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.h();
+      this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.j();
     }
     jdField_a_of_type_Int = 0;
   }
   
-  public void h()
+  public void onViewPause()
   {
-    k();
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.setisFullScreen(false, 8);
-    post(new qmd(this));
+    super.onViewPause();
+    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView != null)
+    {
+      this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.b();
+      this.jdField_a_of_type_Aatt.a(new WeakReference(this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView));
+      aase.c("GdtCanvasVideoComponentView", "onViewPause " + this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a);
+    }
   }
   
-  public void i()
+  public void onViewResume()
   {
-    if ((this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView != null) && (!this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a()))
+    super.onViewResume();
+    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView != null)
     {
-      j();
-      this.c = this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasPageView.getScrollY();
-      this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.setisFullScreen(true, 8);
+      this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a();
+      aase.c("GdtCanvasVideoComponentView", "onViewResume " + this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.components.video.GdtCanvasVideoComponentView
  * JD-Core Version:    0.7.0.1
  */

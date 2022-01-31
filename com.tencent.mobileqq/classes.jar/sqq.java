@@ -1,26 +1,21 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.OnGetPhotoWallListener;
-import com.tencent.widget.ListView.OnScrollChangeListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
 
-public class sqq
-  implements ListView.OnScrollChangeListener
+class sqq
+  extends AnimatorListenerAdapter
 {
-  public sqq(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  sqq(sqo paramsqo, VVideoView paramVVideoView, View paramView) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((paramInt1 + paramInt2 != paramInt3) || (paramInt3 <= 0) || (this.a.b()) || (!NetworkUtil.d(this.a))) {}
-    while ((this.a.a == null) || (!this.a.a.a())) {
-      return;
-    }
-    this.a.a.a();
-    this.a.d(true);
+    sqo.a(this.jdField_a_of_type_Sqo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideoView, this.jdField_a_of_type_AndroidViewView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sqq
  * JD-Core Version:    0.7.0.1
  */

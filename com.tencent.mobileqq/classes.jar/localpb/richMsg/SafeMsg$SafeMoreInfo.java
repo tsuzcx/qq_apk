@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class SafeMsg$SafeMoreInfo
-  extends MessageMicro
+  extends MessageMicro<SafeMoreInfo>
 {
   public static final int STRFROMMOBILE_FIELD_NUMBER = 2;
   public static final int STRFROMNAME_FIELD_NUMBER = 3;
@@ -19,7 +19,7 @@ public final class SafeMsg$SafeMoreInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     localpb.richMsg.SafeMsg.SafeMoreInfo
  * JD-Core Version:    0.7.0.1
  */

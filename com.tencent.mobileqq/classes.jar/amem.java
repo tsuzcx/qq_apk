@@ -1,36 +1,19 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.widget.calloutpopupwindow.CalloutPopupWindow;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.app.TroopManager;
 
 public class amem
-  extends Handler
 {
-  public amem()
-  {
-    super(Looper.getMainLooper());
-  }
+  public long a;
+  public String a;
   
-  public void handleMessage(Message paramMessage)
+  public amem(TroopManager paramTroopManager, String paramString, long paramLong)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (paramMessage.obj == null);
-      paramMessage = ((WeakReference)paramMessage.obj).get();
-    } while ((paramMessage == null) || (!(paramMessage instanceof CalloutPopupWindow)));
-    ((CalloutPopupWindow)paramMessage).dismiss();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amem
  * JD-Core Version:    0.7.0.1
  */

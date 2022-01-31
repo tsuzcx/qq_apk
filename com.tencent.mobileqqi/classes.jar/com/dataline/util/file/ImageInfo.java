@@ -3,13 +3,13 @@ package com.dataline.util.file;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import et;
+import fb;
 import java.io.File;
 
 public class ImageInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new et();
+  public static final Parcelable.Creator CREATOR = new fb();
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
   private long jdField_b_of_type_Long;

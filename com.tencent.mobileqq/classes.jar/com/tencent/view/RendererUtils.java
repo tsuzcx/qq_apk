@@ -6,11 +6,14 @@ import android.graphics.Color;
 import android.graphics.RectF;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
+import com.tencent.aekit.openrender.AEOpenRenderConfig;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.filter.GLSLRender;
 import com.tencent.filter.QImage;
-import com.tencent.util.GLMemoryManager;
-import com.tencent.util.LogUtil;
-import com.tencent.util.PhoneProperty;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import com.tencent.ttpic.baseutils.device.DeviceAttrs;
+import com.tencent.ttpic.baseutils.log.LogUtils;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
@@ -23,28 +26,27 @@ public class RendererUtils
   private static final String FRAGMENT_SHADER = "precision mediump float;\nuniform sampler2D tex_sampler;\nuniform float alpha;\nuniform vec4 bkg;\nvarying vec2 v_texcoord;\nvoid main() {\nvec4 color = texture2D(tex_sampler, v_texcoord);\ngl_FragColor = vec4(color.r*alpha + bkg.r*(1.0-alpha), color.g*alpha + bkg.g*(1.0-alpha), color.b*alpha + bkg.b*(1.0-alpha), 1.0);\n}\n";
   private static final String FRAGMENT_SHADER_ALPHA = "precision mediump float;\nuniform sampler2D tex_sampler;\nuniform float alpha;\nuniform vec4 bkg;\nvarying vec2 v_texcoord;\nvoid main() {\nvec4 color = texture2D(tex_sampler, v_texcoord);\ngl_FragColor = vec4(color.r*alpha + bkg.r*(1.0-alpha), color.g*alpha + bkg.g*(1.0-alpha), color.b*alpha + bkg.b*(1.0-alpha), color.a);\n}\n";
   private static final float[] POS_VERTICES = { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
-  private static final float[] TEX_VERTICES;
+  private static final float[] TEX_VERTICES = { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
   private static final String VERTEX_SHADER = "attribute vec4 a_position;\nattribute vec2 a_texcoord;\nvarying vec2 v_texcoord;\nvoid main() {\n  gl_Position = a_position;\n  v_texcoord = a_texcoord;\n}\n";
-  private static boolean enableLog = true;
-  
-  static
-  {
-    TEX_VERTICES = new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
-  }
   
   public static void checkGlError(String paramString)
   {
-    int i = GLES20.glGetError();
-    if ((i != 0) && (enableLog))
+    if (!AEOpenRenderConfig.isEnableLog()) {}
+    for (;;)
     {
-      LogUtil.e("RendererUtils", paramString + ": glError " + i);
-      paramString = (StackTraceElement[])Thread.getAllStackTraces().get(Thread.currentThread());
-      int j = paramString.length;
-      i = 0;
-      while (i < j)
+      return;
+      int i = GLES20.glGetError();
+      if (i != 0)
       {
-        LogUtil.e("SS     ", paramString[i].toString());
-        i += 1;
+        LogUtils.e("RendererUtils", paramString + ": glError " + i);
+        paramString = (StackTraceElement[])Thread.getAllStackTraces().get(Thread.currentThread());
+        int j = paramString.length;
+        i = 0;
+        while (i < j)
+        {
+          LogUtils.e("SS     ", paramString[i].toString());
+          i += 1;
+        }
       }
     }
   }
@@ -57,7 +59,7 @@ public class RendererUtils
     checkGlError("glDeleteTextures");
   }
   
-  public static FilterContext createFilterProgram(String paramString1, String paramString2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  public static RendererUtils.FilterContext createFilterProgram(String paramString1, String paramString2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
     String str = paramString1;
     if (paramString1 == null) {
@@ -90,7 +92,7 @@ public class RendererUtils
         throw new RuntimeException("Could not link program: " + paramString1);
       }
     }
-    paramString2 = new FilterContext();
+    paramString2 = new RendererUtils.FilterContext();
     paramString2.texSamplerHandle = GLES20.glGetUniformLocation(k, "tex_sampler");
     paramString2.texCoordHandle = GLES20.glGetAttribLocation(k, "a_texcoord");
     paramString2.posCoordHandle = GLES20.glGetAttribLocation(k, "a_position");
@@ -108,12 +110,12 @@ public class RendererUtils
     return paramString2;
   }
   
-  public static RenderContext createProgram()
+  public static RendererUtils.RenderContext createProgram()
   {
     return createProgram(POS_VERTICES, TEX_VERTICES, false);
   }
   
-  private static RenderContext createProgram(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, boolean paramBoolean)
+  private static RendererUtils.RenderContext createProgram(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, boolean paramBoolean)
   {
     int i = loadShader(35633, "attribute vec4 a_position;\nattribute vec2 a_texcoord;\nvarying vec2 v_texcoord;\nvoid main() {\n  gl_Position = a_position;\n  v_texcoord = a_texcoord;\n}\n");
     if (i == 0) {}
@@ -142,20 +144,20 @@ public class RendererUtils
         throw new RuntimeException("Could not link program: " + paramArrayOfFloat1);
       }
     }
-    Object localObject = new RenderContext();
-    RenderContext.access$702((RenderContext)localObject, GLES20.glGetUniformLocation(k, "tex_sampler"));
-    RenderContext.access$802((RenderContext)localObject, GLES20.glGetUniformLocation(k, "alpha"));
-    RenderContext.access$902((RenderContext)localObject, GLES20.glGetUniformLocation(k, "bkg"));
-    RenderContext.access$402((RenderContext)localObject, GLES20.glGetAttribLocation(k, "a_texcoord"));
-    RenderContext.access$602((RenderContext)localObject, GLES20.glGetAttribLocation(k, "a_position"));
-    RenderContext.access$502((RenderContext)localObject, createVerticesBuffer(paramArrayOfFloat2));
-    RenderContext.access$002((RenderContext)localObject, createVerticesBuffer(paramArrayOfFloat1));
-    RenderContext.access$302((RenderContext)localObject, k);
-    RenderContext.access$202((RenderContext)localObject, paramBoolean);
+    Object localObject = new RendererUtils.RenderContext();
+    RendererUtils.RenderContext.access$702((RendererUtils.RenderContext)localObject, GLES20.glGetUniformLocation(k, "tex_sampler"));
+    RendererUtils.RenderContext.access$802((RendererUtils.RenderContext)localObject, GLES20.glGetUniformLocation(k, "alpha"));
+    RendererUtils.RenderContext.access$902((RendererUtils.RenderContext)localObject, GLES20.glGetUniformLocation(k, "bkg"));
+    RendererUtils.RenderContext.access$402((RendererUtils.RenderContext)localObject, GLES20.glGetAttribLocation(k, "a_texcoord"));
+    RendererUtils.RenderContext.access$602((RendererUtils.RenderContext)localObject, GLES20.glGetAttribLocation(k, "a_position"));
+    RendererUtils.RenderContext.access$502((RendererUtils.RenderContext)localObject, createVerticesBuffer(paramArrayOfFloat2));
+    RendererUtils.RenderContext.access$002((RendererUtils.RenderContext)localObject, createVerticesBuffer(paramArrayOfFloat1));
+    RendererUtils.RenderContext.access$302((RendererUtils.RenderContext)localObject, k);
+    RendererUtils.RenderContext.access$202((RendererUtils.RenderContext)localObject, paramBoolean);
     return localObject;
   }
   
-  public static RenderContext createProgramWithBlend()
+  public static RendererUtils.RenderContext createProgramWithBlend()
   {
     return createProgram(POS_VERTICES, TEX_VERTICES, true);
   }
@@ -163,7 +165,7 @@ public class RendererUtils
   public static int createTexture()
   {
     int[] arrayOfInt = new int[1];
-    GLMemoryManager.getInstance().genTexture(arrayOfInt.length, arrayOfInt, 0, true);
+    GlUtil.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
     checkGlError("glGenTextures");
     return arrayOfInt[0];
   }
@@ -172,13 +174,23 @@ public class RendererUtils
   {
     int i = createTexture();
     GLES20.glBindTexture(3553, i);
-    GLUtils.texImage2D(3553, 0, paramBitmap, 0);
-    GLES20.glTexParameteri(3553, 10240, 9729);
-    GLES20.glTexParameteri(3553, 10241, 9729);
-    GLES20.glTexParameteri(3553, 10242, 33071);
-    GLES20.glTexParameteri(3553, 10243, 33071);
-    checkGlError("texImage2D");
-    return i;
+    try
+    {
+      GLUtils.texImage2D(3553, 0, paramBitmap, 0);
+      GLES20.glTexParameteri(3553, 10240, 9729);
+      GLES20.glTexParameteri(3553, 10241, 9729);
+      GLES20.glTexParameteri(3553, 10242, 33071);
+      GLES20.glTexParameteri(3553, 10243, 33071);
+      checkGlError("texImage2D");
+      return i;
+    }
+    catch (IllegalArgumentException paramBitmap)
+    {
+      for (;;)
+      {
+        paramBitmap.printStackTrace();
+      }
+    }
   }
   
   private static FloatBuffer createVerticesBuffer(float[] paramArrayOfFloat)
@@ -213,7 +225,7 @@ public class RendererUtils
     arrayOfFloat[1] *= f;
     arrayOfFloat[3] *= f;
     arrayOfFloat[5] *= f;
-    arrayOfFloat[7] *= f;
+    arrayOfFloat[7] = (f * arrayOfFloat[7]);
     return arrayOfFloat;
   }
   
@@ -255,9 +267,9 @@ public class RendererUtils
     }
   }
   
-  public static void renderTexture(RenderContext paramRenderContext, int paramInt1, int paramInt2, int paramInt3)
+  public static void renderTexture(RendererUtils.RenderContext paramRenderContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    GLES20.glUseProgram(paramRenderContext.shaderProgram);
+    GLES20.glUseProgram(RendererUtils.RenderContext.access$300(paramRenderContext));
     if (GLES20.glGetError() != 0)
     {
       createProgram();
@@ -265,17 +277,17 @@ public class RendererUtils
     }
     GLES20.glViewport(0, 0, paramInt2, paramInt3);
     checkGlError("glViewport");
-    if (paramRenderContext.alphaBlend)
+    if (RendererUtils.RenderContext.access$200(paramRenderContext))
     {
       GLES20.glEnable(3042);
       GLES20.glBlendFunc(770, 771);
     }
     for (;;)
     {
-      GLES20.glVertexAttribPointer(paramRenderContext.texCoordHandle, 2, 5126, false, 0, paramRenderContext.texVertices);
-      GLES20.glEnableVertexAttribArray(paramRenderContext.texCoordHandle);
-      GLES20.glVertexAttribPointer(paramRenderContext.posCoordHandle, 2, 5126, false, 0, paramRenderContext.posVertices);
-      GLES20.glEnableVertexAttribArray(paramRenderContext.posCoordHandle);
+      GLES20.glVertexAttribPointer(RendererUtils.RenderContext.access$400(paramRenderContext), 2, 5126, false, 0, RendererUtils.RenderContext.access$500(paramRenderContext));
+      GLES20.glEnableVertexAttribArray(RendererUtils.RenderContext.access$400(paramRenderContext));
+      GLES20.glVertexAttribPointer(RendererUtils.RenderContext.access$600(paramRenderContext), 2, 5126, false, 0, RendererUtils.RenderContext.access$000(paramRenderContext));
+      GLES20.glEnableVertexAttribArray(RendererUtils.RenderContext.access$600(paramRenderContext));
       checkGlError("vertex attribute setup");
       GLES20.glActiveTexture(33984);
       checkGlError("glActiveTexture");
@@ -285,9 +297,9 @@ public class RendererUtils
       GLES20.glTexParameteri(3553, 10242, 33071);
       GLES20.glTexParameteri(3553, 10243, 33071);
       checkGlError("glBindTexture");
-      GLES20.glUniform1i(paramRenderContext.texSamplerHandle, 0);
-      GLES20.glUniform1f(paramRenderContext.alphaHandle, paramRenderContext.alpha);
-      GLES20.glUniform4f(paramRenderContext.bkgHandle, 0.203125F, 0.203125F, 0.2148438F, 1.0F);
+      GLES20.glUniform1i(RendererUtils.RenderContext.access$700(paramRenderContext), 0);
+      GLES20.glUniform1f(RendererUtils.RenderContext.access$800(paramRenderContext), RendererUtils.RenderContext.access$100(paramRenderContext));
+      GLES20.glUniform4f(RendererUtils.RenderContext.access$900(paramRenderContext), 0.203125F, 0.203125F, 0.2148438F, 1.0F);
       GLES20.glDrawArrays(5, 0, 4);
       GLES20.glFinish();
       return;
@@ -295,13 +307,13 @@ public class RendererUtils
     }
   }
   
-  public static void renderTexture(RenderContext paramRenderContext, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  public static void renderTexture(RendererUtils.RenderContext paramRenderContext, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    RenderContext.access$202(paramRenderContext, paramBoolean);
+    RendererUtils.RenderContext.access$202(paramRenderContext, paramBoolean);
     renderTexture(paramRenderContext, paramInt1, paramInt2, paramInt3);
   }
   
-  public static void renderTexture2FBO(FilterContext paramFilterContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public static void renderTexture2FBO(RendererUtils.FilterContext paramFilterContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     GLES20.glBindFramebuffer(36160, 0);
     GLES20.glActiveTexture(33984);
@@ -350,22 +362,37 @@ public class RendererUtils
   public static Bitmap saveTexture(int paramInt1, int paramInt2, int paramInt3)
   {
     Bitmap localBitmap = Bitmap.createBitmap(paramInt2, paramInt3, Bitmap.Config.ARGB_8888);
-    if (localBitmap != null) {
-      saveTextureToBitmap(paramInt1, paramInt2, paramInt3, localBitmap);
+    saveTextureToBitmap(paramInt1, paramInt2, paramInt3, localBitmap);
+    return localBitmap;
+  }
+  
+  public static Bitmap saveTexture(Frame paramFrame)
+  {
+    Object localObject;
+    if (paramFrame == null) {
+      localObject = null;
     }
+    Bitmap localBitmap;
+    do
+    {
+      return localObject;
+      localBitmap = Bitmap.createBitmap(paramFrame.width, paramFrame.height, Bitmap.Config.ARGB_8888);
+      localObject = localBitmap;
+    } while (localBitmap == null);
+    saveTextureToBitmap(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, localBitmap);
     return localBitmap;
   }
   
   public static QImage saveTexture2QImage(int paramInt1, int paramInt2, int paramInt3)
   {
-    return saveTexture2QImageWithShare(paramInt1, paramInt2, paramInt3, FilterDefault.currentShareIndex);
+    return saveTexture2QImageWithShare(paramInt1, paramInt2, paramInt3, BitmapUtils.currentShareIndex);
   }
   
   public static QImage saveTexture2QImageWithShare(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (paramInt4 < 0)
     {
-      if (PhoneProperty.instance().isGpuWorkaroundForTU880())
+      if (DeviceAttrs.getInstance().gpuWorkaroundForTU880)
       {
         GLES20.glActiveTexture(33984);
         checkGlError("glActiveTexture");
@@ -390,7 +417,7 @@ public class RendererUtils
     return GLSLRender.nativeCopyTextureWithShare(paramInt2, paramInt3, paramInt1, paramInt4);
   }
   
-  public static Bitmap saveTextureTo(int paramInt1, int paramInt2, int paramInt3)
+  public static Bitmap saveTextureTo(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     int[] arrayOfInt = new int[1];
     GLES20.glGenFramebuffers(1, arrayOfInt, 0);
@@ -399,7 +426,7 @@ public class RendererUtils
     GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt1, 0);
     checkGlError("glFramebufferTexture2D");
     ByteBuffer localByteBuffer = ByteBuffer.allocate(paramInt2 * paramInt3 * 4);
-    GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, localByteBuffer);
+    GLES20.glReadPixels(paramInt4, paramInt5, paramInt2, paramInt3, 6408, 5121, localByteBuffer);
     checkGlError("glReadPixels");
     Bitmap localBitmap = Bitmap.createBitmap(paramInt2, paramInt3, Bitmap.Config.ARGB_8888);
     localBitmap.copyPixelsFromBuffer(localByteBuffer);
@@ -410,14 +437,14 @@ public class RendererUtils
   
   public static void saveTextureToBitmap(int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap)
   {
-    saveTextureToBitmapWithShare(paramInt1, paramInt2, paramInt3, paramBitmap, FilterDefault.currentShareIndex);
+    saveTextureToBitmapWithShare(paramInt1, paramInt2, paramInt3, paramBitmap, BitmapUtils.currentShareIndex);
   }
   
   public static void saveTextureToBitmapWithShare(int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap, int paramInt4)
   {
     if (paramInt4 < 0)
     {
-      if (PhoneProperty.instance().isGpuWorkaroundForTU880())
+      if (DeviceAttrs.getInstance().gpuWorkaroundForTU880)
       {
         GLES20.glActiveTexture(33984);
         checkGlError("glActiveTexture");
@@ -442,9 +469,25 @@ public class RendererUtils
     GLSLRender.nativeCopyPixelToBitmapWithShare(paramBitmap, paramInt1, paramInt4);
   }
   
+  public static ByteBuffer saveTextureToByteBuffer(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    int[] arrayOfInt = new int[1];
+    GLES20.glGenFramebuffers(1, arrayOfInt, 0);
+    GLES20.glBindFramebuffer(36160, arrayOfInt[0]);
+    checkGlError("glBindFramebuffer");
+    GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt1, 0);
+    checkGlError("glFramebufferTexture2D");
+    ByteBuffer localByteBuffer = ByteBuffer.allocate(paramInt2 * paramInt3 * 4);
+    GLES20.glReadPixels(paramInt4, paramInt5, paramInt2, paramInt3, 6408, 5121, localByteBuffer);
+    checkGlError("glReadPixels");
+    GLES20.glBindFramebuffer(36160, 0);
+    GLES20.glDeleteFramebuffers(1, arrayOfInt, 0);
+    return localByteBuffer;
+  }
+  
   public static void saveTextureToRgbBuffer(int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte, int paramInt4)
   {
-    if (FilterDefault.currentShareIndex < 0)
+    if (BitmapUtils.currentShareIndex < 0)
     {
       GLES20.glBindFramebuffer(36160, paramInt4);
       checkGlError("glBindFramebuffer");
@@ -455,7 +498,7 @@ public class RendererUtils
       checkGlError("glBindFramebuffer");
       return;
     }
-    GLSLRender.nativePushDataFromTexture(paramArrayOfByte, paramInt2, paramInt3, FilterDefault.currentShareIndex);
+    GLSLRender.nativePushDataFromTexture(paramArrayOfByte, paramInt2, paramInt3, BitmapUtils.currentShareIndex);
   }
   
   public static void saveTextureToRgbBufferByShare(int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte, int paramInt4)
@@ -463,22 +506,17 @@ public class RendererUtils
     GLSLRender.nativeCopyTexturToDataWithShare(paramInt1, paramArrayOfByte, paramInt2, paramInt3, paramInt4);
   }
   
-  public static void setEnableLog(boolean paramBoolean)
+  public static void setRenderToAlpha(RendererUtils.RenderContext paramRenderContext, int paramInt)
   {
-    enableLog = paramBoolean;
+    RendererUtils.RenderContext.access$102(paramRenderContext, paramInt / 255.0F);
   }
   
-  public static void setRenderToAlpha(RenderContext paramRenderContext, int paramInt)
+  public static void setRenderToFit(RendererUtils.RenderContext paramRenderContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    RenderContext.access$102(paramRenderContext, paramInt / 255.0F);
+    RendererUtils.RenderContext.access$002(paramRenderContext, createVerticesBuffer(getFitVertices(paramInt1, paramInt2, paramInt3, paramInt4)));
   }
   
-  public static void setRenderToFit(RenderContext paramRenderContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    RenderContext.access$002(paramRenderContext, createVerticesBuffer(getFitVertices(paramInt1, paramInt2, paramInt3, paramInt4)));
-  }
-  
-  public static void setRenderToFlip(RenderContext paramRenderContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat1, float paramFloat2)
+  public static void setRenderToFlip(RendererUtils.RenderContext paramRenderContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat1, float paramFloat2)
   {
     float[] arrayOfFloat1 = getFitVertices(paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt1 = (int)paramFloat1 / 180;
@@ -509,12 +547,12 @@ public class RendererUtils
       arrayOfFloat2[0] = (arrayOfFloat1[0] * paramFloat1 * f2);
       arrayOfFloat1[1] *= f2;
       arrayOfFloat2[4] = arrayOfFloat2[0];
-      arrayOfFloat1[5] *= f2;
-      f1 = 5.0F / (arrayOfFloat1[2] * f1 + 5.0F);
-      arrayOfFloat2[2] = (arrayOfFloat1[2] * paramFloat1 * f1);
+      arrayOfFloat2[5] = (f2 * arrayOfFloat1[5]);
+      f1 = 5.0F / (f1 * arrayOfFloat1[2] + 5.0F);
+      arrayOfFloat2[2] = (paramFloat1 * arrayOfFloat1[2] * f1);
       arrayOfFloat1[3] *= f1;
       arrayOfFloat2[6] = arrayOfFloat2[2];
-      arrayOfFloat1[7] *= f1;
+      arrayOfFloat2[7] = (f1 * arrayOfFloat1[7]);
     }
     if (paramFloat2 % 180.0F != 0.0F)
     {
@@ -524,30 +562,30 @@ public class RendererUtils
       f1 = 5.0F / (arrayOfFloat1[1] * paramFloat2 + 5.0F);
       arrayOfFloat1[0] *= f1;
       arrayOfFloat2[1] = (arrayOfFloat1[1] * paramFloat1 * f1);
-      arrayOfFloat1[2] *= f1;
+      arrayOfFloat2[2] = (f1 * arrayOfFloat1[2]);
       arrayOfFloat2[3] = arrayOfFloat2[1];
-      paramFloat2 = 5.0F / (arrayOfFloat1[5] * paramFloat2 + 5.0F);
+      paramFloat2 = 5.0F / (paramFloat2 * arrayOfFloat1[5] + 5.0F);
       arrayOfFloat1[4] *= paramFloat2;
-      arrayOfFloat2[5] = (arrayOfFloat1[5] * paramFloat1 * paramFloat2);
+      arrayOfFloat2[5] = (paramFloat1 * arrayOfFloat1[5] * paramFloat2);
       arrayOfFloat1[6] *= paramFloat2;
       arrayOfFloat2[7] = arrayOfFloat2[5];
     }
-    RenderContext.access$002(paramRenderContext, createVerticesBuffer(arrayOfFloat2));
+    RendererUtils.RenderContext.access$002(paramRenderContext, createVerticesBuffer(arrayOfFloat2));
   }
   
-  public static void setRenderToRotate(RenderContext paramRenderContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat)
+  public static void setRenderToRotate(RendererUtils.RenderContext paramRenderContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat)
   {
     paramFloat = -paramFloat * 0.01745329F;
     float f2 = (float)Math.cos(paramFloat);
     float f3 = (float)Math.sin(paramFloat);
-    paramFloat = f2 * paramInt1;
-    float f1 = f3 * paramInt1;
+    paramFloat = paramInt1 * f2;
+    float f1 = paramInt1 * f3;
     f2 *= paramInt2;
     f3 *= paramInt2;
     float[] arrayOfFloat = new float[8];
     arrayOfFloat[0] = (-paramFloat + f3);
     arrayOfFloat[1] = (-f1 - f2);
-    arrayOfFloat[2] = (paramFloat + f3);
+    arrayOfFloat[2] = (f3 + paramFloat);
     arrayOfFloat[3] = (f1 - f2);
     arrayOfFloat[4] = (-arrayOfFloat[2]);
     arrayOfFloat[5] = (-arrayOfFloat[3]);
@@ -564,41 +602,17 @@ public class RendererUtils
       arrayOfFloat[paramInt2] *= paramFloat / paramInt4;
       paramInt1 += 2;
     }
-    RenderContext.access$002(paramRenderContext, createVerticesBuffer(arrayOfFloat));
+    RendererUtils.RenderContext.access$002(paramRenderContext, createVerticesBuffer(arrayOfFloat));
   }
   
-  public static void setRenderToScale(RenderContext paramRenderContext, RectF paramRectF)
+  public static void setRenderToScale(RendererUtils.RenderContext paramRenderContext, RectF paramRectF)
   {
-    RenderContext.access$002(paramRenderContext, createVerticesBuffer(new float[] { paramRectF.left * 2.0F - 1.0F, 1.0F - paramRectF.bottom * 2.0F, paramRectF.right * 2.0F - 1.0F, 1.0F - paramRectF.bottom * 2.0F, paramRectF.left * 2.0F - 1.0F, 1.0F - paramRectF.top * 2.0F, paramRectF.right * 2.0F - 1.0F, 1.0F - paramRectF.top * 2.0F }));
-  }
-  
-  public static class FilterContext
-  {
-    public int posCoordHandle;
-    public FloatBuffer posVertices;
-    public int shaderProgram;
-    public int texCoordHandle;
-    public int texSamplerHandle;
-    public FloatBuffer texVertices;
-  }
-  
-  public static class RenderContext
-  {
-    private float alpha = 1.0F;
-    private boolean alphaBlend = false;
-    private int alphaHandle;
-    private int bkgHandle;
-    private int posCoordHandle;
-    private FloatBuffer posVertices;
-    private int shaderProgram;
-    private int texCoordHandle;
-    private int texSamplerHandle;
-    private FloatBuffer texVertices;
+    RendererUtils.RenderContext.access$002(paramRenderContext, createVerticesBuffer(new float[] { paramRectF.left * 2.0F - 1.0F, 1.0F - paramRectF.bottom * 2.0F, paramRectF.right * 2.0F - 1.0F, 1.0F - paramRectF.bottom * 2.0F, paramRectF.left * 2.0F - 1.0F, 1.0F - paramRectF.top * 2.0F, paramRectF.right * 2.0F - 1.0F, 1.0F - paramRectF.top * 2.0F }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.view.RendererUtils
  * JD-Core Version:    0.7.0.1
  */

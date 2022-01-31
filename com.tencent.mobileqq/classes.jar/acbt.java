@@ -1,90 +1,148 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.apollo.view.ApolloInfo;
-import com.tencent.mobileqq.apollo.view.ApolloMainInfo;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.activity.AddAccountActivity.4.1;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloFavActionData;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONException;
-import org.json.JSONObject;
+import mqq.observer.AccountObserver;
 
-class acbt
-  implements Runnable
+public class acbt
+  extends AccountObserver
 {
-  acbt(acbg paramacbg, QQAppInterface paramQQAppInterface, long paramLong, int paramInt, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public acbt(AddAccountActivity paramAddAccountActivity) {}
   
-  public void run()
+  public void onCheckQuickRegisterAccount(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte)
   {
-    Object localObject2;
-    ApolloFavActionData localApolloFavActionData;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    super.onCheckQuickRegisterAccount(paramBoolean, paramInt, paramArrayOfByte);
+    if (QLog.isColorLevel()) {
+      QLog.d("Login_Optimize_AddAccountActivity", 2, "onCheckQuickRegisterAccount|isSuccess= " + paramBoolean + ",code=" + paramInt);
+    }
+    if (!this.a.isFinishing()) {}
+    try
     {
-      localObject2 = (ApolloDaoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(154);
-      localApolloFavActionData = ((ApolloDaoManager)localObject2).a(this.jdField_a_of_type_Long);
-      JSONObject localJSONObject = new JSONObject();
+      this.a.dismissDialog(1);
+      if ((paramBoolean) && (paramInt == 0))
+      {
+        paramArrayOfByte = new Intent(this.a, RegisterByNicknameAndPwdActivity.class);
+        paramArrayOfByte.putExtra("key_register_binduin", this.a.app.getCurrentAccountUin());
+        paramArrayOfByte.putExtra("key_register_from_quick_register", true);
+        paramArrayOfByte.putExtra("key_register_is_phone_num_registered", true);
+        paramArrayOfByte.putExtra("not_need_verify_sms", true);
+        this.a.startActivity(paramArrayOfByte);
+        return;
+      }
+    }
+    catch (Exception paramArrayOfByte)
+    {
       for (;;)
       {
-        try
-        {
-          localJSONObject.put("seq", this.jdField_a_of_type_Long);
-          if (localApolloFavActionData != null) {
-            continue;
-          }
-          localJSONObject.put("ret", 1);
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.emoji.web.MessengerService", 2, "del fav but local has not the action");
-          }
-        }
-        catch (JSONException localJSONException)
-        {
-          if (!QLog.isColorLevel()) {
-            return;
-          }
-          QLog.e("Q.emoji.web.MessengerService", 2, "delFavAction json error + " + localJSONException.toString());
-          return;
-          ((ApolloDaoManager)localObject2).b(localApolloFavActionData);
-          localJSONException.put("ret", 0);
-          MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
-          if (localMqqHandler == null) {
-            continue;
-          }
-          Object localObject1 = new ApolloMainInfo(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-          ((ApolloInfo)localObject1).a = ((ApolloDaoManager)localObject2).a(this.jdField_a_of_type_Int);
-          ((ApolloInfo)localObject1).b = localApolloFavActionData.text;
-          ((ApolloInfo)localObject1).d = localApolloFavActionData.textType;
-          localObject2 = localMqqHandler.obtainMessage(66);
-          ((Message)localObject2).obj = localObject1;
-          ((Message)localObject2).arg1 = 1;
-          ((Message)localObject2).sendToTarget();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("Q.emoji.web.MessengerService", 2, "del fav action success +" + localJSONException.toString());
-          continue;
-        }
-        localObject1 = new Bundle();
-        ((Bundle)localObject1).putString("delFavAction", localJSONObject.toString());
-        this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject1);
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+        paramArrayOfByte.printStackTrace();
+      }
+      paramArrayOfByte = new Intent(this.a, RegisterPhoneNumActivity.class);
+      paramArrayOfByte.putExtra("key_register_from", 1);
+      this.a.startActivity(paramArrayOfByte);
+    }
+  }
+  
+  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte, int paramInt2)
+  {
+    QLog.d("AddAccountActivity", 1, "onLoginFailed ret=" + paramInt1);
+    if (!this.a.isFinishing()) {}
+    try
+    {
+      this.a.dismissDialog(0);
+      this.a.runOnUiThread(new AddAccountActivity.4.1(this));
+      if (QLog.isColorLevel()) {
+        QLog.d("AddAccountActivity", 2, "onLoginFailed errorMsg = " + paramString2 + " ret=" + paramInt1);
+      }
+      if ((paramString2 == null) || (paramString2.equals("")))
+      {
+        QQToast.a(this.a, 2131694766, 0).a();
         return;
-        if (this.jdField_a_of_type_Int == localApolloFavActionData.acitonId) {
-          continue;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+      if (!TextUtils.isEmpty(paramString3))
+      {
+        Intent localIntent = new Intent(this.a, NotificationActivity.class);
+        localIntent.putExtra("type", 8);
+        if (paramInt1 == 40)
+        {
+          localIntent.putExtra("msg", paramString2);
+          localIntent.putExtra("errorver", paramInt2);
         }
-        localJSONObject.put("ret", 2);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.emoji.web.MessengerService", 2, "del fav action fail +" + localJSONObject.toString());
+        for (;;)
+        {
+          localIntent.putExtra("loginalias", paramString1);
+          localIntent.putExtra("loginret", paramInt1);
+          localIntent.putExtra("errorUrl", paramString3);
+          localIntent.putExtra("expiredSig", paramArrayOfByte);
+          this.a.startActivity(localIntent);
+          return;
+          localIntent.putExtra("msg", paramString2 + " " + paramString3);
         }
       }
+      if (paramInt1 == 2008)
+      {
+        bdgm.a(this.a, 230, alud.a(2131700202), alud.a(2131700203), "OK", null, new acbu(this), null).show();
+        QQToast.a(this.a, 2131693233, 0).a();
+        return;
+      }
+      bdgm.a(this.a, 230, alud.a(2131700206), paramString2, new acbv(this), null).show();
+    }
+  }
+  
+  public void onLoginSuccess(String paramString1, String paramString2)
+  {
+    QLog.d("AddAccountActivity", 1, "onLoginSuccess");
+  }
+  
+  public void onLoginTimeout(String paramString)
+  {
+    QLog.d("AddAccountActivity", 1, "onLoginTimeout");
+    if (!this.a.isFinishing()) {}
+    try
+    {
+      this.a.dismissDialog(0);
+      QQToast.a(this.a, 2131694766, 0).a();
+      return;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
+  public void onUserCancel(String paramString)
+  {
+    super.onUserCancel(paramString);
+    if (!this.a.isFinishing()) {}
+    try
+    {
+      this.a.dismissDialog(0);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acbt
  * JD-Core Version:    0.7.0.1
  */

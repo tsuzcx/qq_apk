@@ -1,52 +1,150 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem.UserID;
-import com.tencent.biz.qqstory.network.request.ConvertUinAndUnionIdRequest;
-import com.tencent.biz.qqstory.network.response.ConvertUinAndUnionIdResponse;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.util.List;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.NetworkInfo.State;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class ndk
-  implements CmdTaskManger.CommandCallback
 {
-  public ndk(UserManager paramUserManager, QQUserUIItem.UserID paramUserID, boolean paramBoolean, long paramLong) {}
-  
-  public void a(ConvertUinAndUnionIdRequest arg1, ConvertUinAndUnionIdResponse paramConvertUinAndUnionIdResponse, ErrorMessage paramErrorMessage)
+  public static int a(Context paramContext)
   {
-    long l = System.currentTimeMillis();
-    if (paramErrorMessage.isSuccess())
+    try
     {
-      ??? = paramConvertUinAndUnionIdResponse.a;
-      if (???.size() > 0)
+      paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+      if (paramContext == null) {
+        break label269;
+      }
+      paramContext = paramContext.getActiveNetworkInfo();
+      if ((paramContext == null) || (!paramContext.isConnected())) {
+        break label195;
+      }
+      i = paramContext.getType();
+      if (!QLog.isColorLevel()) {
+        break label305;
+      }
+      QLog.d("NetworkUtil", 2, new Object[] { "getNetworkType type = ", Integer.valueOf(i) });
+    }
+    catch (IllegalStateException paramContext)
+    {
+      if (!QLog.isColorLevel()) {
+        break label343;
+      }
+      QLog.d("NetworkUtil", 2, "getNetworkType IllegalStateException", paramContext);
+      break label343;
+      if (!QLog.isColorLevel()) {
+        break label343;
+      }
+      QLog.d("NetworkUtil", 2, "getNetworkType could not get ConnectivityManager");
+      break label343;
+    }
+    catch (Exception paramContext)
+    {
+      int i;
+      label195:
+      while (QLog.isColorLevel())
       {
-        ??? = (QQUserUIItem)???.get(0);
-        ??? = this.jdField_a_of_type_ComTencentBizQqstoryModelUserManager.a(???);
-        this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID.a = ???.qq;
-        this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID.b = ???.uid;
-        if (this.jdField_a_of_type_Boolean)
+        QLog.d("NetworkUtil", 2, "getNetworkType exception", paramContext);
+        break;
+        switch (i)
         {
-          ??? = (StoryConfigManager)SuperManager.a(10);
-          ???.b("qqstory_my_uin", this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID.a);
-          ???.b("qqstory_my_union_id", this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID.b);
+        case 0: 
+        default: 
+          return -1;
+        }
+        return 1;
+      }
+      label269:
+      label305:
+      return -1;
+      return 2;
+      return 3;
+      return 4;
+    }
+    i = paramContext.getSubtype();
+    switch (i)
+    {
+    default: 
+      if (QLog.isColorLevel())
+      {
+        QLog.d("NetworkUtil", 2, new Object[] { "getNetworkType subType = ", Integer.valueOf(i) });
+        break;
+        if (paramContext == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("NetworkUtil", 2, "getNetworkType networkInfo = null");
+          }
+        }
+        else if (QLog.isColorLevel()) {
+          QLog.d("NetworkUtil", 2, new Object[] { "getNetworkType networkInfo isConnected =", Boolean.valueOf(paramContext.isConnected()) });
         }
       }
-      SLog.d("Q.qqstory.user.UserManager", "get server inf success ,%s , time :%d", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID, Long.valueOf(l - this.jdField_a_of_type_Long) });
+      break;
     }
-    synchronized (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID)
+    label343:
+    return 0;
+  }
+  
+  public static String a(String paramString, int paramInt)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        String str = new URL(paramString).getHost();
+        Object localObject2 = bazo.a().a(str, paramInt);
+        if (!TextUtils.isEmpty((CharSequence)localObject2))
+        {
+          Object localObject1 = localObject2;
+          if (!((String)localObject2).contains(":"))
+          {
+            localObject2 = new StringBuilder().append((String)localObject2);
+            if (!paramString.startsWith("https")) {
+              break label89;
+            }
+          }
+          label89:
+          for (localObject1 = ":443";; localObject1 = ":80")
+          {
+            localObject1 = (String)localObject1;
+            return paramString.replaceFirst(str, (String)localObject1);
+          }
+        }
+        return paramString;
+      }
+      catch (MalformedURLException localMalformedURLException)
+      {
+        QLog.e("NetworkUtil", 1, "MalformedURLException", localMalformedURLException);
+      }
+    }
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+    if (paramContext == null) {}
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID.notifyAll();
-      return;
-      SLog.d("Q.qqstory.user.UserManager", "get server info fail , %s, time :%d", new Object[] { paramErrorMessage, Long.valueOf(l - this.jdField_a_of_type_Long) });
+      return false;
+      paramContext = paramContext.getAllNetworkInfo();
+      if (paramContext != null)
+      {
+        int i = 0;
+        while (i < paramContext.length)
+        {
+          if (paramContext[i].getState() == NetworkInfo.State.CONNECTED) {
+            return true;
+          }
+          i += 1;
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ndk
  * JD-Core Version:    0.7.0.1
  */

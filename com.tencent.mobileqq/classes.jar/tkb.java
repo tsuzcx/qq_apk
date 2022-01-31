@@ -1,22 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import UserGrowth.stBlockRecommPersonReq;
+import UserGrowth.stBlockRecommPersonRsp;
 
 public class tkb
-  implements View.OnClickListener
+  extends thb<stBlockRecommPersonRsp>
 {
-  public tkb(QQMapActivity paramQQMapActivity) {}
-  
-  public void onClick(View paramView)
+  public tkb(String paramString)
   {
-    this.a.u();
-    ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "sdk_locate", "click_send", 0, 0, "", "", "", "");
+    super("BlockRecommPerson");
+    this.a = new stBlockRecommPersonReq(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tkb
  * JD-Core Version:    0.7.0.1
  */

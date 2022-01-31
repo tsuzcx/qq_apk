@@ -1,30 +1,28 @@
+import android.support.annotation.NonNull;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
 
 public class vsg
-  implements View.OnClickListener
+  extends vsi
 {
-  public vsg(DiscussChatPie paramDiscussChatPie) {}
+  private ElasticImageView a;
   
-  public void onClick(View paramView)
+  public vsg(@NonNull ViewGroup paramViewGroup)
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
-    this.a.jdField_a_of_type_ComTencentWidgetActionSheet = PlusPanelUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true, true, null, 1);
-    long l = Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b() != l) {
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Multi_call", "Mc_corner_launch", 0, 0, "", "", "", "");
-    }
+    super(paramViewGroup);
+  }
+  
+  protected View a(ViewGroup paramViewGroup)
+  {
+    this.a = ((ElasticImageView)paramViewGroup.findViewById(2131364343));
+    this.a.setOnClickListener(new vsh(this));
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vsg
  * JD-Core Version:    0.7.0.1
  */

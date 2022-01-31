@@ -1,68 +1,19 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportCover;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class tvb
-  extends Client.onRemoteRespObserver
+class tvb
+  implements View.OnClickListener
 {
-  public tvb(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  tvb(tuz paramtuz) {}
   
-  public void onBindedToClient()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "-->onBindedToClient");
-    }
-    TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a);
-  }
-  
-  public void onDisconnectWithService()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "-->onDisconnectWithService");
-    }
-  }
-  
-  public void onPushMsg(Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "-->onPushMsg");
-    }
-  }
-  
-  public void onResponse(Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "-->onResponse");
-    }
-    if (paramBundle == null) {}
-    String str;
-    do
-    {
-      do
-      {
-        return;
-      } while (paramBundle.getInt("respkey", 0) != TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).key);
-      TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a, false);
-      str = paramBundle.getString("cmd");
-      paramBundle.getString("callbackid");
-      paramBundle = paramBundle.getBundle("response");
-    } while ((!"ipc_cmd_get_team_work_url".equals(str)) || (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a) == null));
-    paramBundle = paramBundle.getString("url");
-    if ((!TextUtils.isEmpty(paramBundle)) && (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a) != null) && (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).a()))
-    {
-      this.a.a.loadUrl(paramBundle);
-      return;
-    }
-    TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).b();
+    tuz.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tvb
  * JD-Core Version:    0.7.0.1
  */

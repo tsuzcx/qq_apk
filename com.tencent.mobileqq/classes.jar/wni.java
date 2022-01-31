@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qzonestatus.QzoneContactsFeedManager;
+import android.text.TextUtils;
 
 public class wni
-  implements Runnable
+  extends wnd
 {
-  public wni(FriendFragment paramFriendFragment) {}
-  
-  public void run()
+  public wni()
   {
-    ((QzoneContactsFeedManager)this.a.a.getManager(90)).a();
+    super("memory_publish", null);
+  }
+  
+  public static boolean a(wnd paramwnd)
+  {
+    return TextUtils.equals("memory_publish", paramwnd.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wni
  * JD-Core Version:    0.7.0.1
  */

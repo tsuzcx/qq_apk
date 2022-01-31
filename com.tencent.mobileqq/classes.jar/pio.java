@@ -1,45 +1,37 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.component.media.image.ImageLoader.Options;
-import com.tencent.component.media.image.ImageLoader.StreamDownloadListener;
-import com.tencent.component.media.image.view.AsyncImageable.AsyncImageableImpl;
-import java.lang.ref.WeakReference;
-
 public class pio
-  implements ImageLoader.StreamDownloadListener
 {
-  private WeakReference a;
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public pio(AsyncImageable.AsyncImageableImpl paramAsyncImageableImpl)
+  public pio(String paramString)
   {
-    this.a = new WeakReference(paramAsyncImageableImpl);
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  private AsyncImageable.AsyncImageableImpl a()
+  public pio(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    return (AsyncImageable.AsyncImageableImpl)this.a.get();
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_Int = 2;
+    this.d = paramString1;
+    this.c = paramString2;
+    this.b = paramString3;
+    this.e = paramString4;
   }
   
-  public void onApplyToImage(String paramString, Drawable paramDrawable, ImageLoader.Options paramOptions)
+  public String toString()
   {
-    paramOptions = a();
-    if (paramOptions == null) {}
-    while (AsyncImageable.AsyncImageableImpl.a(paramOptions, paramString)) {
-      return;
-    }
-    AsyncImageable.AsyncImageableImpl.a(paramOptions, paramDrawable, true);
+    return "type = " + this.jdField_a_of_type_Int + " index = " + this.jdField_a_of_type_JavaLangString + " city = " + this.b + " province = " + this.c + " country = " + this.d + " citycode = " + this.e;
   }
-  
-  public void onDownloadCanceled(String paramString1, String paramString2, String paramString3) {}
-  
-  public void onDownloadFailed(String paramString1, String paramString2, String paramString3) {}
-  
-  public void onDownloadProgress(String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte, int paramInt) {}
-  
-  public void onDownloadSucceed(String paramString1, String paramString2, String paramString3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pio
  * JD-Core Version:    0.7.0.1
  */

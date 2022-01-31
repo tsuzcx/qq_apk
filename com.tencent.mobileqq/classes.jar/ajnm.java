@@ -1,49 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.troop.utils.ChangeMachineManager;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class ajnm
-  implements HttpWebCgiAsyncTask.Callback
+  implements View.OnClickListener
 {
-  public ajnm(ChangeMachineManager paramChangeMachineManager) {}
+  public ajnm(LoginView paramLoginView) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.change_machine", 2, "getChangeMachineFlag result:" + paramJSONObject);
-    }
-    int j = 0;
-    int k = -1;
-    paramInt = k;
-    int i = j;
-    if (paramJSONObject != null)
-    {
-      if (paramJSONObject.has("code")) {
-        break label88;
-      }
-      i = j;
-      paramInt = k;
-    }
-    for (;;)
-    {
-      if ((paramInt == 0) && (i != 0))
-      {
-        ChangeMachineManager.a(this.a);
-        this.a.b();
-      }
-      return;
-      label88:
-      k = paramJSONObject.optInt("code");
-      paramInt = k;
-      i = j;
-      if (k == 0)
-      {
-        i = paramJSONObject.optInt("flag");
-        paramInt = k;
-      }
-    }
+    azqs.a(this.a.a, "dc00898", "", "", "0X800AA2E", "0X800AA2E", 0, 0, "", "", "", "");
+    LoginView.a(this.a).dismiss();
   }
 }
 

@@ -1,35 +1,39 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class mja
-  extends Handler
+  extends bdjz
 {
-  private WeakReference a;
-  
-  public mja(ReadInJoyNavigationGridview paramReadInJoyNavigationGridview)
+  public mja(Context paramContext, int paramInt)
   {
-    this.a = new WeakReference(paramReadInJoyNavigationGridview);
+    super(paramContext, paramInt);
   }
   
-  public void handleMessage(Message paramMessage)
+  public static bdjz a(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    ReadInJoyNavigationGridview localReadInJoyNavigationGridview = (ReadInJoyNavigationGridview)this.a.get();
-    if ((localReadInJoyNavigationGridview == null) || (ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview))) {
-      return;
+    paramContext = new mja(paramContext, 2131755801);
+    paramContext.setContentView(2131558942);
+    paramContext.setTitle(paramString1);
+    paramContext.setMessage(paramString2);
+    paramContext.setNegativeButton(paramInt2, paramOnClickListener2);
+    paramContext.setPositiveButton(paramInt3, paramOnClickListener1);
+    paramContext.setCanceledOnTouchOutside(false);
+    return paramContext;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    QLog.w("MultiVideoEnterPageActivity", 1, "onWindowFocusChanged, hasFocus[" + paramBoolean + "]");
+    if (!paramBoolean) {
+      dismiss();
     }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mja
  * JD-Core Version:    0.7.0.1
  */

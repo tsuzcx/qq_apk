@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public final class BatchDownloadActionRequest
   extends JceStruct
 {
-  static ArrayList<IPCDownloadParam> a;
+  static ArrayList<IPCDownloadParam> cache_batchData;
   public ArrayList<IPCDownloadParam> batchData = null;
   public int batchRequestType = 0;
   public String uin = "";
@@ -29,13 +29,13 @@ public final class BatchDownloadActionRequest
   public void readFrom(JceInputStream paramJceInputStream)
   {
     this.batchRequestType = paramJceInputStream.read(this.batchRequestType, 0, true);
-    if (a == null)
+    if (cache_batchData == null)
     {
-      a = new ArrayList();
+      cache_batchData = new ArrayList();
       IPCDownloadParam localIPCDownloadParam = new IPCDownloadParam();
-      a.add(localIPCDownloadParam);
+      cache_batchData.add(localIPCDownloadParam);
     }
-    this.batchData = ((ArrayList)paramJceInputStream.read(a, 1, false));
+    this.batchData = ((ArrayList)paramJceInputStream.read(cache_batchData, 1, false));
     this.uin = paramJceInputStream.readString(2, false);
     this.uinType = paramJceInputStream.readString(3, false);
     this.via = paramJceInputStream.readString(4, false);
@@ -60,7 +60,7 @@ public final class BatchDownloadActionRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.param.jce.BatchDownloadActionRequest
  * JD-Core Version:    0.7.0.1
  */

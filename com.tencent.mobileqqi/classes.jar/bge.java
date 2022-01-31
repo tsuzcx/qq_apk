@@ -1,19 +1,21 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
+import android.content.Context;
+import com.rookery.asyncHttpClient.AsyncHttpClient;
+import com.rookery.asyncHttpClient.AsyncHttpResponseHandler;
+import com.rookery.translate.TranslateClient;
 
-public class bge
-  implements Runnable
+class bge
+  extends TranslateClient
 {
-  public bge(VideoController paramVideoController) {}
+  private static final String a = "http://passport.imqq.com/App/MobileQQ/ChangeTrans.html";
   
-  public void run()
+  public static void a(Context paramContext, AsyncHttpResponseHandler paramAsyncHttpResponseHandler)
   {
-    this.a.b(this.a.a.a, 12);
+    a().a(paramContext, "http://passport.imqq.com/App/MobileQQ/ChangeTrans.html", null, null, new bgf(paramAsyncHttpResponseHandler));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bge
  * JD-Core Version:    0.7.0.1
  */

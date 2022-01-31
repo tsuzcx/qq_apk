@@ -9,10 +9,10 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_0x8f8$SubCmd19SetAsyncMsgStateReq
-  extends MessageMicro
+  extends MessageMicro<SubCmd19SetAsyncMsgStateReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatField rpt_bytes_feeds_id = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> rpt_bytes_feeds_id = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBUInt32Field uint32_set_type = PBField.initUInt32(0);
   
   static
@@ -23,7 +23,7 @@ public final class oidb_0x8f8$SubCmd19SetAsyncMsgStateReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8f8.oidb_0x8f8.SubCmd19SetAsyncMsgStateReq
  * JD-Core Version:    0.7.0.1
  */

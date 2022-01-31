@@ -1,86 +1,99 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Handler;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.mobileqq.activity.fling.ContentWrapView;
-import com.tencent.mobileqq.activity.fling.FlingTrackerHandler;
-import com.tencent.mobileqq.activity.fling.ScreenCapture;
-import com.tencent.mobileqq.activity.fling.TopLayout;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.photo.AlbumListActivity;
+import com.tencent.mobileqq.data.QQAlbumInfo;
+import com.tencent.mobileqq.utils.AlbumUtil;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class emd
-  implements Runnable
+  extends BaseAdapter
 {
-  public emd(FlingTrackerHandler paramFlingTrackerHandler) {}
+  ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(-2141891243);
+  private Drawable.ConstantState jdField_a_of_type_AndroidGraphicsDrawableDrawable$ConstantState;
+  private List jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void run()
+  public emd(AlbumListActivity paramAlbumListActivity)
   {
-    Object localObject1 = (Activity)this.a.a.get();
-    if (localObject1 == null) {
-      QLog.i("sethmao", 4, "activity is null");
-    }
-    for (;;)
-    {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$ConstantState = paramAlbumListActivity.getResources().getDrawable(2130837804).getConstantState();
+  }
+  
+  public QQAlbumInfo a(int paramInt)
+  {
+    return (QQAlbumInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void a(List paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if ((paramList == null) || (paramList.size() == 0)) {
       return;
-      Object localObject2;
-      if (!ScreenCapture.hasSnapFile((Context)localObject1))
-      {
-        if (FlingTrackerHandler.a(this.a) > 5) {
-          FlingTrackerHandler.a(this.a, 0);
-        }
+    }
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    Object localObject;
+    URL localURL;
+    if (paramView == null)
+    {
+      localView = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListActivity.getLayoutInflater().inflate(2130903546, null);
+      paramViewGroup = (TextView)localView;
+      localObject = a(paramInt);
+      paramViewGroup.setText(((QQAlbumInfo)localObject).name + String.format(" (%d)", new Object[] { Integer.valueOf(((QQAlbumInfo)localObject).imageCount) }));
+      paramView = paramViewGroup.getCompoundDrawables()[0];
+      localURL = AlbumUtil.a(((QQAlbumInfo)localObject).cover, 200);
+      if ((paramView == null) || (!URLDrawable.class.isInstance(paramView))) {
+        break label231;
       }
-      else
-      {
-        localObject2 = (ViewGroup)((Activity)localObject1).getWindow().getDecorView();
-        if (FlingTrackerHandler.a(this.a) != null) {
-          break label319;
-        }
-        FlingTrackerHandler.a(this.a, ((ViewGroup)localObject2).getChildAt(0));
-        View localView = FlingTrackerHandler.a(this.a);
-        FlingTrackerHandler.a(this.a, new TopLayout((Context)localObject1));
-        FlingTrackerHandler.a(this.a).setBackgroundColor(-16777216);
-        TopLayout localTopLayout = FlingTrackerHandler.a(this.a);
-        localTopLayout.setOnDraggingListener(this.a);
-        ((ViewGroup)localObject2).addView(localTopLayout);
-        ((ViewGroup)localObject2).removeView(localView);
-        FlingTrackerHandler.a(this.a, new ContentWrapView((Context)localObject1));
-        localObject2 = FlingTrackerHandler.a(this.a);
-        ((ContentWrapView)localObject2).addView(localView);
-        localTopLayout.setContent((ContentWrapView)localObject2);
-        FlingTrackerHandler.a(this.a, new ImageView((Context)localObject1));
-        FlingTrackerHandler.a(this.a).setScaleType(ImageView.ScaleType.FIT_START);
-        localObject1 = FlingTrackerHandler.a(this.a);
-        ((ImageView)localObject1).setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-        localTopLayout.setBehind((View)localObject1);
+      localObject = (URLDrawable)paramView;
+      paramView = (View)localObject;
+      if (!localURL.equals(((URLDrawable)localObject).getURL())) {
+        ((URLDrawable)localObject).cancelDownload(true);
       }
-      while ((this.a.a()) && (FlingTrackerHandler.a(this.a) != null) && (FlingTrackerHandler.a(this.a).getDrawable() == null))
+    }
+    label231:
+    for (paramView = null;; paramView = null)
+    {
+      if (paramView == null)
       {
-        FlingTrackerHandler.a(this.a);
-        return;
-        QLog.i("sethmao", 4, "snap file is not exist, reload after 100ms");
-        FlingTrackerHandler.b(this.a);
-        FlingTrackerHandler.a(this.a).postDelayed(this, 100L);
-        return;
-        label319:
-        if (!this.a.a())
-        {
-          ((ViewGroup)localObject2).addView(FlingTrackerHandler.a(this.a));
-          ((ViewGroup)localObject2).removeView(FlingTrackerHandler.a(this.a));
-          FlingTrackerHandler.a(this.a).addView(FlingTrackerHandler.a(this.a));
-        }
+        paramView = URLDrawable.getDrawable(localURL, this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable, null);
+        paramView.setBounds(0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListActivity.c);
+        localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$ConstantState.newDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListActivity.getResources());
+        ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getIntrinsicWidth(), ((Drawable)localObject).getIntrinsicHeight());
+        paramViewGroup.setCompoundDrawables(paramView, null, (Drawable)localObject, null);
       }
+      return localView;
+      paramViewGroup = (TextView)paramView;
+      localView = paramView;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     emd
  * JD-Core Version:    0.7.0.1
  */

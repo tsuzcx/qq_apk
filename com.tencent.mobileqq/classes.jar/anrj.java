@@ -1,72 +1,107 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.reactive.SimpleObserver;
-import cooperation.qzone.QZoneHelper;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
-import dov.com.tencent.biz.qqstory.takevideo.publish.GenerateContext;
-import dov.com.tencent.biz.qqstory.takevideo.publish.GeneratePicArgs;
+import com.tencent.ark.ark.Application;
+import com.tencent.ark.ark.ApplicationCallback;
+import com.tencent.ark.ark.ModuleRegister;
+import com.tencent.ark.open.ArkAppConfigMgr;
+import com.tencent.ark.open.security.ArkAppUrlChecker;
+import com.tencent.mobileqq.ark.ArkAppCenterEvent;
+import com.tencent.qphone.base.util.QLog;
 
-public class anrj
-  extends SimpleObserver
+final class anrj
+  implements ark.ApplicationCallback
 {
-  public anrj(EditPicPartManager paramEditPicPartManager) {}
-  
-  public void a(GenerateContext paramGenerateContext)
+  public void AppCreate(ark.Application paramApplication)
   {
-    super.onNext(paramGenerateContext);
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.f();
-    Object localObject = this.a.a();
-    String str = paramGenerateContext.a.jdField_b_of_type_JavaLangString;
-    if ((this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int == 2)) {}
-    for (boolean bool = true;; bool = false)
+    ArkAppCenterEvent.a(0, paramApplication.GetSpecific("appName"), null);
+  }
+  
+  public void AppDestroy(ark.Application paramApplication)
+  {
+    paramApplication = paramApplication.GetSpecific("appName");
+    ArkAppCenterEvent.a(1, paramApplication, null);
+    anrm.a(paramApplication);
+  }
+  
+  public boolean CheckUrlLegalityCallback(ark.Application paramApplication, String paramString)
+  {
+    paramApplication = paramApplication.GetSpecific("appName");
+    ArkAppUrlChecker localArkAppUrlChecker = ArkAppConfigMgr.getInstance().getUrlChecker(paramApplication);
+    boolean bool1 = true;
+    int j;
+    int i;
+    boolean bool2;
+    if (localArkAppUrlChecker != null)
     {
-      EditPicPartManager.a((String)localObject, str, paramGenerateContext.a.jdField_b_of_type_Boolean, paramGenerateContext.a.a, bool, this.a.c);
-      localObject = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity();
-      if ((localObject != null) && (!((Activity)localObject).isFinishing()))
-      {
-        SLog.b("EditPicActivity.EditPicPartManager", "picDestPath = " + paramGenerateContext.a.jdField_b_of_type_JavaLangString);
-        paramGenerateContext = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(paramGenerateContext);
-        this.a.a();
-        str = paramGenerateContext.getStringExtra("PhotoConst.PLUGIN_APK");
-        bool = paramGenerateContext.getBooleanExtra("DirectBackToQzone", false);
-        if ((!"qzone_plugin.apk".equals(str)) || (!bool)) {
-          break;
-        }
-        QZoneHelper.a((Activity)localObject, "", paramGenerateContext, -1);
-        this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(-1, null, 2131034158, 0);
+      j = localArkAppUrlChecker.checkUrlIsValidByAppResouceList(paramString);
+      i = 0;
+      if (j != 0) {
+        break label279;
       }
-      return;
+      bool1 = true;
+      boolean bool3 = ArkAppConfigMgr.getInstance().isUrlCheckEnable(paramApplication);
+      boolean bool4 = anob.a();
+      if ((!bool3) || (bool4)) {
+        break label285;
+      }
+      bool2 = true;
+      label69:
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkApp.ArkMultiProcUtil", 2, new Object[] { "ArkSafe.UrlCheck.CheckUrlLegalityCallback,appname=", paramApplication, ", enableCheck=", Boolean.valueOf(bool2), ", appEnableCheck=", Boolean.valueOf(bool3), ", isPublicAccount=", Boolean.valueOf(bool4) });
+      }
+      if (bool1) {
+        break label291;
+      }
+      i = 1;
+      if (bool2) {
+        break label291;
+      }
+      QLog.e("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkSafe.UrlCheck.setDisable.EngineCallback , isValid set=true, appName=", paramApplication, ",appEnableCheck=", Boolean.valueOf(bool3), ", isPublicAccount=", Boolean.valueOf(bool4), ",url=", ndq.b(paramString, new String[0]) });
+      bool1 = true;
+      i = 2;
     }
-    if (this.a.jdField_a_of_type_Int == 1)
+    label279:
+    label285:
+    label291:
+    for (;;)
     {
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(-1, paramGenerateContext, 2131034158, 0);
-      return;
+      anrm.a(paramApplication, paramString, j, i, "");
+      QLog.e("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkSafe.EngineCallback appName=", paramApplication, ",url=", ndq.b(paramString, new String[0]), ", isValid=", Boolean.valueOf(bool1) });
+      return bool1;
+      bool1 = false;
+      break;
+      bool2 = false;
+      break label69;
     }
-    this.a.a((Activity)localObject, this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a(), paramGenerateContext);
   }
   
-  public void onCancel()
+  public void OutputScriptError(String paramString1, String paramString2)
   {
-    super.onCancel();
-    SLog.d("EditPicActivity.EditPicPartManager", "PIC PUBLISH cancel !");
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.f();
-    QQToast.a(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(), "取消编辑", 0).a();
+    if (paramString1 == null) {
+      paramString1 = "";
+    }
+    for (;;)
+    {
+      if (paramString2 == null) {
+        paramString2 = "";
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ArkApp.ArkMultiProcUtil", 1, String.format("%s.script error: %s", new Object[] { paramString1, paramString2 }));
+        }
+        anoe.a(null, paramString1, "ScriptError", 0, 0, 0L, 0L, 0L, paramString2, "");
+        return;
+      }
+    }
   }
   
-  public void onError(@NonNull Error paramError)
+  public void RegisterModules(ark.ModuleRegister paramModuleRegister, ark.Application paramApplication)
   {
-    super.onError(paramError);
-    this.a.a(paramError);
+    anjy.a(paramModuleRegister, paramApplication);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anrj
  * JD-Core Version:    0.7.0.1
  */

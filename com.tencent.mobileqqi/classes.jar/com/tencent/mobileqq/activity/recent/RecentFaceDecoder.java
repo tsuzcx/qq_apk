@@ -37,7 +37,7 @@ public class RecentFaceDecoder
   public static Pair a(int paramInt, String paramString)
   {
     int k = -2147483648;
-    int m = 2130838027;
+    int m = 2130838029;
     int i = m;
     int j = k;
     switch (paramInt)
@@ -58,17 +58,17 @@ public class RecentFaceDecoder
         if (!String.valueOf(AppConstants.W).equals(paramString)) {
           if (String.valueOf(AppConstants.V).equals(paramString))
           {
-            i = 2130838023;
+            i = 2130838025;
             j = k;
           }
           else if (String.valueOf(AppConstants.N).equals(paramString))
           {
-            i = 2130838029;
+            i = 2130838031;
             j = k;
           }
           else if (AppConstants.S.equals(paramString))
           {
-            i = 2130838091;
+            i = 2130838093;
             j = k;
           }
           else
@@ -77,7 +77,7 @@ public class RecentFaceDecoder
             i = -2147483648;
             continue;
             j = 102;
-            i = 2130838588;
+            i = 2130838590;
             continue;
             j = 11;
             i = -2147483648;
@@ -88,19 +88,19 @@ public class RecentFaceDecoder
             j = 4;
             i = -2147483648;
             continue;
-            i = 2130838021;
+            i = 2130838023;
+            j = k;
+            continue;
+            i = 2130838030;
             j = k;
             continue;
             i = 2130838028;
             j = k;
             continue;
-            i = 2130838026;
+            i = 2130838024;
             j = k;
             continue;
-            i = 2130838022;
-            j = k;
-            continue;
-            i = 2130838025;
+            i = 2130838027;
             j = k;
           }
         }

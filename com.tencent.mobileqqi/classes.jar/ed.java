@@ -1,33 +1,42 @@
 import android.content.Context;
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.dataline.activities.DLFileViewerActivity;
-import com.dataline.activities.DLFilesViewerActivity;
-import com.dataline.util.DatalineFilesAdapter;
-import com.dataline.util.DatalineFilesAdapter.ItemHolder;
-import com.dataline.util.file.DLFileInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import android.os.Bundle;
+import com.dataline.mpfile.MpFileConstant;
+import com.dataline.mpfile.MpfileDataCenter;
+import java.util.TimerTask;
 
 public class ed
-  implements View.OnClickListener
+  extends TimerTask
 {
-  public ed(DatalineFilesAdapter paramDatalineFilesAdapter) {}
+  private long jdField_a_of_type_Long = System.currentTimeMillis();
+  private long b = 0L;
   
-  public void onClick(View paramView)
+  private ed(MpfileDataCenter paramMpfileDataCenter) {}
+  
+  public void a(long paramLong)
   {
-    paramView = (DatalineFilesAdapter.ItemHolder)paramView.getTag();
-    if (paramView.a == null) {}
+    this.b = paramLong;
+  }
+  
+  public void run()
+  {
+    if (this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter.jdField_a_of_type_Boolean) {
+      cancel();
+    }
+    long l;
     do
     {
       return;
-      paramView = DatalineFilesAdapter.a(this.a).a().b(paramView.a.a);
-    } while (paramView == null);
-    Intent localIntent = new Intent(DatalineFilesAdapter.a(this.a).getApplicationContext(), DLFileViewerActivity.class);
-    localIntent.putExtra("dl_file_info_session_id", paramView.sessionid);
-    DatalineFilesAdapter.a(this.a).startActivityForResult(localIntent, 102);
+      l = System.currentTimeMillis();
+    } while ((l <= this.jdField_a_of_type_Long) || (l - this.jdField_a_of_type_Long <= 30000L));
+    cancel();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(MpFileConstant.e, MpfileDataCenter.q);
+    localBundle.putLong(MpFileConstant.f, this.b);
+    Intent localIntent = new Intent();
+    localIntent.setAction(MpFileConstant.d);
+    localIntent.putExtras(localBundle);
+    this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter.jdField_a_of_type_AndroidContentContext.sendBroadcast(localIntent);
   }
 }
 

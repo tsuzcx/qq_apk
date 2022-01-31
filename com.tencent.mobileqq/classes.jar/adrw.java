@@ -1,17 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
 
 public class adrw
   implements DialogInterface.OnClickListener
 {
-  public adrw(PresenceInterfaceImpl paramPresenceInterfaceImpl, QQAppInterface paramQQAppInterface) {}
+  public adrw(QQSettingCleanActivity paramQQSettingCleanActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl.a.post(new adrx(this));
+    azqs.b(this.a.app, "dc00898", "", "", "0X8007915", "0X8007915", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
   }
 }
 

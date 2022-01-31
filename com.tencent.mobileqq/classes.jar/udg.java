@@ -1,27 +1,20 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.troop.utils.TroopBindPubAccountProtocol.RequestPublicAccountObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
 
-public class udg
-  extends TroopBindPubAccountProtocol.RequestPublicAccountObserver
+class udg
+  implements DialogInterface.OnClickListener
 {
-  public udg(TroopRequestActivity paramTroopRequestActivity) {}
+  udg(udb paramudb, int paramInt) {}
   
-  protected void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean) && (paramAccountDetail != null))
-    {
-      this.a.k.setText(paramAccountDetail.name);
-      this.a.b.setVisibility(0);
-      this.a.e();
-    }
+    QCircleFeedCommentWidget.a(this.jdField_a_of_type_Udb.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).a(this.jdField_a_of_type_Udb.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_Udb.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     udg
  * JD-Core Version:    0.7.0.1
  */

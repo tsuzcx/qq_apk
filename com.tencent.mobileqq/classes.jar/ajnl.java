@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
-class ajnl
-  implements Runnable
+public class ajnl
+  implements adif
 {
-  ajnl(ajnk paramajnk) {}
+  public ajnl(LoginView paramLoginView) {}
   
-  public void run()
+  public void a()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a = 1;
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a(this.a.jdField_a_of_type_Boolean);
+    LoginView.a(this.a);
+  }
+  
+  public void b()
+  {
+    LoginView.a(this.a);
   }
 }
 

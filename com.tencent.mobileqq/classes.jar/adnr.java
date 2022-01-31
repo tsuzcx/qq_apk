@@ -1,34 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ScaleGestureDetector;
+import com.tencent.mobileqq.activity.PortraitImageview;
 
-class adnr
-  implements DialogInterface.OnClickListener
+public class adnr
+  extends adnt
 {
-  adnr(adnq paramadnq) {}
+  public adnr(PortraitImageview paramPortraitImageview) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    paramDialogInterface = BaseApplicationImpl.getContext().getSharedPreferences("now_down_apk", 4);
-    if (paramDialogInterface.getInt("state", 0) == 1) {
+    if ((paramScaleGestureDetector != null) && (paramScaleGestureDetector.isInProgress())) {
       try
       {
-        UniformDownloadUtil.a(paramDialogInterface.getString("filePath", ""));
-        return;
+        float f1 = this.a.a();
+        float f2 = paramScaleGestureDetector.getScaleFactor();
+        f1 = Math.min(this.a.b(), Math.max(f1 * f2, 0.1F));
+        this.a.a(f1, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
+        this.a.invalidate();
+        return true;
       }
-      catch (Exception paramDialogInterface)
+      catch (IllegalArgumentException paramScaleGestureDetector)
       {
-        QLog.e("NearbyHybridFragment", 1, paramDialogInterface, new Object[0]);
-        this.a.a.f();
-        return;
+        paramScaleGestureDetector.printStackTrace();
       }
     }
-    this.a.a.f();
+    return false;
   }
 }
 

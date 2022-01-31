@@ -1,22 +1,81 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class hce
-  implements FilenameFilter
+public class hce
+  extends BaseAdapter
 {
-  hce(hcd paramhcd) {}
+  public hce(QQCustomDialog paramQQCustomDialog) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public int getCount()
   {
-    if (paramString == null) {
-      return false;
+    if (this.a.items != null) {
+      return this.a.items.length;
     }
-    return paramString.startsWith("[Thumb]");
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (this.a.inflater == null) {
+      this.a.inflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
+    }
+    paramViewGroup = paramView;
+    if (paramView == null)
+    {
+      paramViewGroup = this.a.inflater.inflate(2130903163, null);
+      paramView = new hck(this.a, null);
+      paramView.a = ((TextView)paramViewGroup.findViewById(2131231474));
+      paramViewGroup.setTag(paramView);
+    }
+    paramView = (hck)paramViewGroup.getTag();
+    int i;
+    int j;
+    int k;
+    int m;
+    if (paramView.a != null)
+    {
+      paramView.a.setText(this.a.items[paramInt]);
+      paramView.a.setOnClickListener(new hcj(this.a, paramInt));
+      i = paramView.a.getPaddingTop();
+      j = paramView.a.getPaddingLeft();
+      k = paramView.a.getPaddingRight();
+      m = paramView.a.getPaddingBottom();
+      if (this.a.items.length != 1) {
+        break label207;
+      }
+      paramView.a.setBackgroundResource(2130837925);
+    }
+    for (;;)
+    {
+      paramView.a.setPadding(j, i, k, m);
+      return paramViewGroup;
+      label207:
+      if (paramInt == 0) {
+        paramView.a.setBackgroundResource(2130837926);
+      } else if (paramInt == this.a.items.length - 1) {
+        paramView.a.setBackgroundResource(2130837924);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hce
  * JD-Core Version:    0.7.0.1
  */

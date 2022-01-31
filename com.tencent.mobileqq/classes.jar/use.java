@@ -1,30 +1,47 @@
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleResHelper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.scribble.ScribbleResMgr;
-import com.tencent.mobileqq.scribble.ScribbleResMgr.ResCallback;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-public class use
-  implements Runnable
+public final class use
+  extends MSFServlet
 {
-  public use(DoodleResHelper paramDoodleResHelper, int paramInt1, int paramInt2, View paramView, ScribbleResMgr.ResCallback paramResCallback) {}
-  
-  public void run()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (this.jdField_a_of_type_Int == 0) {
-      ScribbleResMgr.a(localQQAppInterface).a(localQQAppInterface, 1, this.b, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr$ResCallback);
-    }
-    while ((this.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_Int != 2)) {
+    if (paramIntent == null) {
       return;
     }
-    ScribbleResMgr.a(localQQAppInterface).a(localQQAppInterface, 2, this.b, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr$ResCallback);
+    Bundle localBundle = paramIntent.getExtras();
+    paramIntent = null;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      paramIntent = bdpd.b(paramFromServiceMsg.getWupBuffer());
+      localBundle.putInt("data_error_code", 0);
+    }
+    for (;;)
+    {
+      QQStoryContext.a().a().a(localBundle, paramIntent);
+      return;
+      localBundle.putString("data_error_msg", paramFromServiceMsg.getBusinessFailMsg());
+      localBundle.putInt("data_error_code", paramFromServiceMsg.getBusinessFailCode());
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
+    paramPacket.putSendData(bdpd.a(arrayOfByte));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    paramPacket.autoResend = paramIntent.getBooleanExtra("support_retry", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     use
  * JD-Core Version:    0.7.0.1
  */

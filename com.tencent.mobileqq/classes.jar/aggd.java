@@ -1,18 +1,29 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.immersion.stickersampleapp.HapticManager;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
-public class aggd
-  implements Runnable
+class aggd
+  implements afkw
 {
-  public aggd(ScanTorchActivity paramScanTorchActivity) {}
+  aggd(aggc paramaggc) {}
   
-  public void run()
+  public void a()
   {
-    this.a.l();
+    UnlimitedBladeWorks.a(this.a.a).b = true;
+    UnlimitedBladeWorks.a(this.a.a).a = false;
+    if (UnlimitedBladeWorks.a(this.a.a) != null)
+    {
+      UnlimitedBladeWorks.a(this.a.a).a();
+      if (UnlimitedBladeWorks.b(this.a.a))
+      {
+        HapticManager.a().c(UnlimitedBladeWorks.a(this.a.a));
+        UnlimitedBladeWorks.a(this.a.a, 0);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aggd
  * JD-Core Version:    0.7.0.1
  */

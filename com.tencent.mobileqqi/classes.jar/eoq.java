@@ -1,48 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.LocalSearchBar;
 
 public class eoq
-  extends Handler
+  implements View.OnClickListener
 {
-  private WeakReference a;
+  public eoq(LocalSearchBar paramLocalSearchBar) {}
   
-  public eoq(BaseActivityView paramBaseActivityView)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramBaseActivityView);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    boolean bool = true;
-    BaseActivityView localBaseActivityView = (BaseActivityView)this.a.get();
-    if (localBaseActivityView == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    long l = System.currentTimeMillis();
+    if (l - this.a.a > 1000L)
     {
-    default: 
-      throw new RuntimeException("Unknown message: " + paramMessage.what);
-    case 1: 
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      for (;;)
-      {
-        localBaseActivityView.b(i, bool);
-        return;
-        bool = false;
-      }
-    case 2: 
-      localBaseActivityView.f();
-      return;
+      this.a.a = l;
+      Conversation.d(false);
+      this.a.a();
     }
-    localBaseActivityView.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eoq
  * JD-Core Version:    0.7.0.1
  */

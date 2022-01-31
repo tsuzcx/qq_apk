@@ -1,20 +1,16 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
 
-public class ahxw
-  extends ContentObserver
+class ahxw
+  extends RecyclerView.ViewHolder
 {
-  public ahxw(QZoneManagerImp paramQZoneManagerImp, Handler paramHandler)
-  {
-    super(paramHandler);
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
   
-  public void onChange(boolean paramBoolean)
+  ahxw(ahxv paramahxv, View paramView)
   {
-    super.onChange(paramBoolean);
-    ThreadManager.post(new ahxx(this), 8, null, true);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376974));
   }
 }
 

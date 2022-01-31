@@ -1,26 +1,46 @@
-import com.tencent.mobileqq.search.model.GroupSearchModelPublicAcnt;
-import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
-import java.util.List;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahvm
-  extends GroupSearchEngine.SearchEngineEntity
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public ahvm(GroupSearchEngine paramGroupSearchEngine, ISearchEngine paramISearchEngine, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramISearchEngine, paramString, paramInt);
-  }
+  public ahvm(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
   
-  public ISearchResultGroupModel a(List paramList, String paramString)
+  public void onGlobalLayout()
   {
-    return new GroupSearchModelPublicAcnt(paramList, paramString, GroupSearchEngine.a(this.a));
+    if (Build.VERSION.SDK_INT < 16) {
+      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
+    for (;;)
+    {
+      this.a.b(this.a.e);
+      this.a.c(this.a.e);
+      View localView = this.a.a.getChildAt(this.a.e);
+      if (localView != null)
+      {
+        this.a.h = localView.getLeft();
+        if (localView.getMeasuredWidth() == 0)
+        {
+          this.a.h = (SimpleSlidingIndicator.a(this.a) + (SimpleSlidingIndicator.b(this.a) + SimpleSlidingIndicator.c(this.a)) * this.a.e);
+          if (QLog.isColorLevel()) {
+            QLog.i("SimpleSlidingIndicator", 2, "onGlobalLayout, x[" + this.a.h + "], size[" + this.a.a.getChildCount() + "], left[" + localView.getLeft() + "], width[" + localView.getMeasuredWidth() + "], pos[" + this.a.e + "], CPlr" + SimpleSlidingIndicator.a(this.a) + "]");
+          }
+        }
+        this.a.invalidate();
+      }
+      return;
+      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahvm
  * JD-Core Version:    0.7.0.1
  */

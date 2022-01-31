@@ -1,29 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
 public class aexd
-  implements View.OnTouchListener
+  implements badp
 {
-  public aexd(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public aexd(FriendShipWaveView paramFriendShipWaveView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      ShortVideoCommentsView.a(this.a).setTextColor(2130706432);
-    }
-    for (;;)
-    {
-      return false;
-      ShortVideoCommentsView.a(this.a).setTextColor(-16777216);
-    }
+    this.a.jdField_a_of_type_Baem.a = 255;
+    this.a.jdField_a_of_type_Baem.a(this.a.jdField_a_of_type_Baen);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aexd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,19 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
-import com.tencent.mobileqq.shortvideo.hwcodec.VideoSourceHelper;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ofz
-  implements Runnable
+class ofz
+  implements View.OnClickListener
 {
-  public ofz(EditVideoPlayer paramEditVideoPlayer, int paramInt, byte[] paramArrayOfByte) {}
+  ofz(ofx paramofx) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    SLog.a("Q.qqstory.record.EditVideoPlayer", "setMosaic %d", Integer.valueOf(this.jdField_a_of_type_Int));
-    VideoSourceHelper.nativeSetMosaic(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfByte);
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ofz
  * JD-Core Version:    0.7.0.1
  */

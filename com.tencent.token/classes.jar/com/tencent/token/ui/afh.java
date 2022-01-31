@@ -1,24 +1,18 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.widget.EditText;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.utils.w;
 
-final class afh
-  implements DialogInterface.OnClickListener
+class afh
+  implements View.OnClickListener
 {
-  afh(afg paramafg) {}
+  afh(VryMobileForStrategyActivity paramVryMobileForStrategyActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = new Intent(this.a.a, UtilsModSetMobileStep2SmsActivity.class);
-    paramDialogInterface.putExtra("title", UtilsModSetMobileStep1Activity.access$200(this.a.a));
-    paramDialogInterface.putExtra("op_type", UtilsModSetMobileStep1Activity.access$300(this.a.a));
-    paramDialogInterface.putExtra("mobile", UtilsModSetMobileStep1Activity.access$000(this.a.a).getText().toString());
-    paramDialogInterface.putExtra("area_code", UtilsModSetMobileStep1Activity.access$400(this.a.a));
-    paramDialogInterface.putExtra("page_id", UtilsModSetMobileStep1Activity.access$500(this.a.a));
-    this.a.a.startActivity(paramDialogInterface);
+    w.a(this.a, this.a.getResources().getString(2131230861), this.a.getResources().getString(2131231620));
   }
 }
 

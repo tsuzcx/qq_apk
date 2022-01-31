@@ -1,19 +1,41 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.token.af;
-import com.tencent.token.ui.base.co;
+import com.tencent.jni.FaceDetector;
+import com.tencent.jni.LiveThreshold;
+import com.tencent.token.global.h;
 
-final class gz
-  implements DialogInterface.OnClickListener
+class gz
+  implements Runnable
 {
-  gz(fz paramfz) {}
+  gz(gx paramgx) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    af.a().a(0L, 0L, FaceRecognitionCameraActivityOld.access$100(this.a.a), FaceRecognitionCameraActivityOld.access$700(this.a.a), 0, FaceRecognitionCameraActivityOld.access$1400(this.a.a), FaceRecognitionCameraActivityOld.access$1100(this.a.a));
-    FaceRecognitionCameraActivityOld.access$1700(this.a.a).b();
+    synchronized (this.a.e)
+    {
+      if (!this.a.o)
+      {
+        long l = System.currentTimeMillis();
+        LiveThreshold localLiveThreshold = new LiveThreshold();
+        gx.a(this.a, localLiveThreshold);
+        h.a("shakeAngle" + localLiveThreshold.shakeAngle());
+        h.a("nodAngle" + localLiveThreshold.nodAngle());
+        h.a("mouthOpenScore" + localLiveThreshold.mouthOpenScore());
+        h.a("blinkScore" + localLiveThreshold.blinkScore());
+        h.a("downAngle" + localLiveThreshold.downAngle());
+        this.a.m = FaceDetector.LiveDetectInitial(gx.e(this.a), localLiveThreshold);
+        com.tencent.token.core.protocolcenter.protocol.ProtoFaceCommon.i = (int)(System.currentTimeMillis() - l);
+        if (this.a.m)
+        {
+          gx.a(this.a, System.currentTimeMillis());
+          gx.b(this.a, false);
+          this.a.o = true;
+        }
+        h.d("LiveDetectInitial,ret=" + this.a.m + ",livemodelfile=" + gx.e(this.a));
+        h.a("LiveDetectInitial,ret=" + this.a.m + ",livemodelfile=" + gx.e(this.a));
+      }
+      return;
+    }
   }
 }
 

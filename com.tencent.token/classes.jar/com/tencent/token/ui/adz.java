@@ -1,20 +1,19 @@
 package com.tencent.token.ui;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
 
-final class adz
-  implements View.OnClickListener
+class adz
+  extends BroadcastReceiver
 {
-  adz(UtilsGameProtectActivity paramUtilsGameProtectActivity) {}
+  adz(UtilsModSetMobileStep2Activity paramUtilsModSetMobileStep2Activity) {}
   
-  public final void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramView = new Intent(this.a, WtLoginAccountInput.class);
-    paramView.putExtra("page_id", 4);
-    this.a.startActivity(paramView);
-    this.a.finish();
+    if (paramIntent.getAction().equals("com.tencent.token.GET_MOBILE_CODE_INTERVAL")) {
+      UtilsModSetMobileStep2Activity.access$000(this.a);
+    }
   }
 }
 

@@ -1,36 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.campuscircle.CampusCircleObserver;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
 public class soi
-  extends CampusCircleObserver
+  implements smr
 {
-  public soi(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public soi(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle, Card paramCard)
+  public void a()
   {
-    if ((paramBoolean) && (paramCard != null) && (paramCard.uin != null) && (paramCard.uin.equals(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)))
-    {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard = paramCard;
-      this.a.runOnUiThread(new soj(this));
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, null);
   }
   
-  public void a(boolean paramBoolean, Card paramCard)
+  public void a(int paramInt) {}
+  
+  public void b()
   {
-    if ((paramBoolean) && (paramCard != null) && (paramCard.uin != null) && (paramCard.uin.equals(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)))
-    {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard = paramCard;
-      this.a.runOnUiThread(new sok(this));
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     soi
  * JD-Core Version:    0.7.0.1
  */

@@ -21,9 +21,9 @@ import com.tencent.open.appcommon.js.OpenJsBridge;
 import com.tencent.open.base.LogUtility;
 import com.tencent.open.downloadnew.MyAppApi;
 import com.tencent.smtt.sdk.WebView;
-import hoj;
-import hok;
-import hol;
+import hkf;
+import hkg;
+import hkh;
 import java.io.File;
 
 public abstract class AppViewBaseActivity
@@ -52,8 +52,8 @@ public abstract class AppViewBaseActivity
   public static final int r = 103;
   public static final int s = 104;
   public OpenJsBridge a;
-  protected hok a;
-  protected hol a;
+  public hkg a;
+  public hkh a;
   public long b;
   public Handler b;
   public long c;
@@ -66,7 +66,7 @@ public abstract class AppViewBaseActivity
   public boolean h = false;
   public String l;
   protected String o = "";
-  protected String p = "";
+  public String p = "";
   protected String q;
   
   static
@@ -80,8 +80,8 @@ public abstract class AppViewBaseActivity
   {
     this.jdField_g_of_type_Boolean = false;
     this.jdField_c_of_type_AndroidOsHandler = new AppViewBaseActivity.ExtendHandler(this);
-    this.jdField_a_of_type_Hol = new hol(this, this);
-    this.jdField_a_of_type_Hok = new hok(this, this);
+    this.jdField_a_of_type_Hkh = new hkh(this, this);
+    this.jdField_a_of_type_Hkg = new hkg(this, this);
   }
   
   public static void b(boolean paramBoolean)
@@ -120,7 +120,7 @@ public abstract class AppViewBaseActivity
     if (this.jdField_a_of_type_AndroidWidgetProgressBar != null) {
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
     }
-    ThreadManager.b(new hoj(this, paramObject, paramString2, paramString1));
+    ThreadManager.b(new hkf(this, paramObject, paramString2, paramString1));
   }
   
   public boolean a(WebView paramWebView, String paramString)
@@ -135,8 +135,8 @@ public abstract class AppViewBaseActivity
       return;
     }
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131232129);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131232128);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131232132);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131232131);
     this.jdField_b_of_type_AndroidViewView.setVisibility(4);
     if (paramBundle.getString("visible").equals("1"))
     {
@@ -146,7 +146,7 @@ public abstract class AppViewBaseActivity
       }
     }
     label114:
-    for (int i1 = 2130838201;; i1 = 2130838202)
+    for (int i1 = 2130838203;; i1 = 2130838204)
     {
       this.jdField_a_of_type_AndroidViewView.setBackgroundResource(i1);
       this.p = paramBundle.getString("callBackKey");
@@ -254,8 +254,8 @@ public abstract class AppViewBaseActivity
       this.jdField_a_of_type_ComTencentOpenAppcommonJsOpenJsBridge = null;
     }
     super.doOnDestroy();
-    this.jdField_a_of_type_Hol.a();
-    this.jdField_a_of_type_Hok.a();
+    this.jdField_a_of_type_Hkh.a();
+    this.jdField_a_of_type_Hkg.a();
   }
   
   public void doOnPause()
@@ -331,7 +331,7 @@ public abstract class AppViewBaseActivity
     return true;
   }
   
-  protected abstract void l();
+  public abstract void l();
   
   protected void p()
   {

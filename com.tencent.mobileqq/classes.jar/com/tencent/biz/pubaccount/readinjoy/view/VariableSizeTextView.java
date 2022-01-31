@@ -1,7 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Build.VERSION;
@@ -20,13 +19,13 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import bdaq;
+import bdgk;
 import com.nineoldandroids.animation.ValueAnimator;
-import com.tencent.mobileqq.R.styleable;
-import com.tencent.mobileqq.util.DisplayUtil;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
-import mle;
+import rxx;
+import rxy;
 
 public class VariableSizeTextView
   extends RelativeLayout
@@ -35,7 +34,7 @@ public class VariableSizeTextView
   protected float a;
   ViewConfiguration jdField_a_of_type_AndroidViewViewConfiguration = ViewConfiguration.get(getContext());
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private VariableSizeTextView.OnSizeChangedListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView$OnSizeChangedListener;
+  private rxy jdField_a_of_type_Rxy;
   protected boolean a;
   public float b;
   private boolean b;
@@ -62,14 +61,13 @@ public class VariableSizeTextView
   public VariableSizeTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.VariableSizeTextView);
-    this.jdField_a_of_type_Float = paramContext.getDimensionPixelSize(0, 0);
-    paramContext.recycle();
     setClickable(true);
     setFocusable(true);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 14.0F);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#E8E8E8"));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 16.0F);
+    this.jdField_a_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
+    this.jdField_a_of_type_AndroidWidgetTextView.setLineSpacing(bdaq.a(paramContext, 3.0F), 1.0F);
     paramContext = new RelativeLayout.LayoutParams(-1, -2);
     paramContext.addRule(10);
     addView(this.jdField_a_of_type_AndroidWidgetTextView, paramContext);
@@ -132,7 +130,7 @@ public class VariableSizeTextView
     b();
     int k = getMeasuredWidth();
     if (k == 0) {
-      k = (int)DeviceInfoUtil.l();
+      k = (int)bdgk.k();
     }
     for (;;)
     {
@@ -187,14 +185,14 @@ public class VariableSizeTextView
           }
           this.d = paramMotionEvent.getRawY();
           k = localLayoutParams.height;
-          if ((k != this.jdField_b_of_type_Float) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView$OnSizeChangedListener != null)) {
-            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView$OnSizeChangedListener.a();
+          if ((k != this.jdField_b_of_type_Float) && (this.jdField_a_of_type_Rxy != null)) {
+            this.jdField_a_of_type_Rxy.a();
           }
         } while (k <= this.jdField_b_of_type_Float);
         paramMotionEvent = ValueAnimator.ofFloat(new float[] { k, this.jdField_b_of_type_Float });
         paramMotionEvent.setDuration(300L);
         paramMotionEvent.setInterpolator(new DecelerateInterpolator());
-        paramMotionEvent.addUpdateListener(new mle(this, localLayoutParams));
+        paramMotionEvent.addUpdateListener(new rxx(this, localLayoutParams));
         setFocusable(false);
         setClickable(false);
         paramMotionEvent.start();
@@ -236,8 +234,8 @@ public class VariableSizeTextView
       for (k = (int)(m + k * Math.pow(Math.abs(f1), 0.7D));; k = (int)(this.jdField_b_of_type_Float + 0.5F))
       {
         localLayoutParams.height = k;
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView$OnSizeChangedListener != null) {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView$OnSizeChangedListener.a(m, k);
+        if (this.jdField_a_of_type_Rxy != null) {
+          this.jdField_a_of_type_Rxy.a(m, k);
         }
         setLayoutParams(localLayoutParams);
         return true;
@@ -250,8 +248,8 @@ public class VariableSizeTextView
     label537:
     label543:
     localLayoutParams.height = k;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView$OnSizeChangedListener != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView$OnSizeChangedListener.a(m, k);
+    if (this.jdField_a_of_type_Rxy != null) {
+      this.jdField_a_of_type_Rxy.a(m, k);
     }
     setLayoutParams(localLayoutParams);
     return true;
@@ -259,9 +257,9 @@ public class VariableSizeTextView
     return true;
   }
   
-  public void setOnSizeChangedListener(VariableSizeTextView.OnSizeChangedListener paramOnSizeChangedListener)
+  public void setOnSizeChangedListener(rxy paramrxy)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView$OnSizeChangedListener = paramOnSizeChangedListener;
+    this.jdField_a_of_type_Rxy = paramrxy;
   }
   
   public void setText(int paramInt1, int paramInt2, CharSequence paramCharSequence)
@@ -270,19 +268,24 @@ public class VariableSizeTextView
     paramInt1 = a(paramInt1 + 1);
     paramInt2 = a(paramInt2);
     localObject = new SpannableStringBuilder((CharSequence)localObject);
-    ((SpannableStringBuilder)localObject).setSpan(new AbsoluteSizeSpan(DisplayUtil.a(getContext(), 17.0F)), 0, paramInt1, 33);
-    ((SpannableStringBuilder)localObject).setSpan(new AbsoluteSizeSpan(DisplayUtil.a(getContext(), 12.0F)), paramInt1, paramInt2 + paramInt1 + 1, 33);
-    ((SpannableStringBuilder)localObject).setSpan(new ForegroundColorSpan(Color.parseColor("#77FFFFFF")), paramInt1, paramInt2 + paramInt1 + 1, 33);
+    ((SpannableStringBuilder)localObject).setSpan(new AbsoluteSizeSpan(bdaq.a(getContext(), 17.0F)), 0, paramInt1, 33);
+    ((SpannableStringBuilder)localObject).setSpan(new AbsoluteSizeSpan(bdaq.a(getContext(), 12.0F)), paramInt1, paramInt2 + paramInt1 + 1, 33);
+    ((SpannableStringBuilder)localObject).setSpan(new ForegroundColorSpan(Color.parseColor("#E8E8E8")), paramInt1, paramInt2 + paramInt1 + 1, 33);
     ((SpannableStringBuilder)localObject).append("  ");
     if (!TextUtils.isEmpty(paramCharSequence)) {
       ((SpannableStringBuilder)localObject).append(paramCharSequence);
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
   }
+  
+  public void setText(String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.VariableSizeTextView
  * JD-Core Version:    0.7.0.1
  */

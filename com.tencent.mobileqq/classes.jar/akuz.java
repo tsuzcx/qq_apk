@@ -1,95 +1,200 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.musicpendant.MusicPendantManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.ArcImageView;
-import com.tencent.mobileqq.widget.MusicPendantView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingFragment;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import com.tencent.mobileqq.data.ApolloGameData;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-class akuz
-  implements Runnable
+public class akuz
+  extends aksi
 {
-  akuz(akuy paramakuy) {}
-  
-  public void run()
+  public akuz(CmGameLoadingFragment paramCmGameLoadingFragment, AppInterface paramAppInterface)
   {
-    Object localObject;
-    try
+    super(paramAppInterface, true);
+  }
+  
+  public void onDownloadConfirm(CmGameStartChecker.StartCheckParam paramStartCheckParam, aksj paramaksj, long paramLong)
+  {
+    if (CmGameLoadingFragment.a(this.a)) {}
+    do
     {
-      QQAppInterface localQQAppInterface = MusicPendantManager.a().a();
-      if (MusicPendantView.a(this.a.a) != null) {
-        MusicPendantView.a(this.a.a).removeMessages(1001);
-      }
-      localObject = MusicPendantManager.a();
-      if ((localObject != null) && (((MusicPendantManager)localObject).a())) {
-        ReportController.b(localQQAppInterface, "CliOper", "", "", "0X8006A78", "0X8006A78", 0, 0, "", "", "", "");
-      }
-      while ((localObject != null) && (((MusicPendantManager)localObject).a()) && ((((MusicPendantManager)localObject).a() == null) || (1 > ((MusicPendantManager)localObject).a().length)))
+      do
       {
-        this.a.a.b();
+        do
+        {
+          do
+          {
+            return;
+            if ((paramStartCheckParam != null) && (paramStartCheckParam.game != null)) {
+              break;
+            }
+          } while (!QLog.isColorLevel());
+          QLog.d("cmgame_process.CmGameLoadingFragment", 2, "onDownloadConfirm mStartCheckParam == null || mStartCheckParam.game == null");
+          return;
+          if ((CmGameLoadingFragment.a(this.a) == null) || (paramStartCheckParam.requestCode == CmGameLoadingFragment.a(this.a).requestCode)) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("cmgame_process.CmGameLoadingFragment", 2, "onDownloadConfirm startCheckParam.requestCode != mStartCheckParam.requestCode");
         return;
-        ReportController.b(localQQAppInterface, "CliOper", "", "", "0X8006A8C", "0X8006A8C", 0, 0, "", "", "", "");
+        if (paramLong > 0L) {
+          break;
+        }
+        QLog.d("cmgame_process.CmGameLoadingFragment", 2, new Object[] { "[onDownloadConfirm] packageSize is invalid, packageSize=", Long.valueOf(paramLong) });
+      } while (paramaksj == null);
+      paramaksj.a(paramStartCheckParam);
+      return;
+      if ((CmGameLoadingFragment.a(this.a) != null) && (CmGameLoadingFragment.a(this.a).statMap != null)) {
+        CmGameLoadingFragment.a(this.a).statMap.put("download_confirm", Long.valueOf(1L));
       }
-      if (localObject == null) {
-        break label159;
-      }
+    } while (CmGameLoadingFragment.a(this.a) == null);
+    CmGameLoadingFragment.a(this.a).a(paramStartCheckParam, paramaksj, paramLong);
+  }
+  
+  public void onDownloadGameResDown(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    super.onDownloadGameResDown(paramStartCheckParam);
+    if ((CmGameLoadingFragment.a(this.a) != null) && (CmGameLoadingFragment.a(this.a).statMap != null)) {
+      CmGameLoadingFragment.a(this.a).statMap.put("download_game_res", Long.valueOf(1L));
     }
-    catch (Exception localException)
+  }
+  
+  public void onDownloadGameResFail(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    QLog.d("cmgame_process.CmGameLoadingFragment", 1, "[onDownloadGameResFail]");
+    onGameFailed(paramStartCheckParam, -12L);
+  }
+  
+  public void onDownloadGameResProgress(CmGameStartChecker.StartCheckParam paramStartCheckParam, int paramInt)
+  {
+    if (CmGameLoadingFragment.a(this.a) != null) {
+      CmGameLoadingFragment.a(this.a).a(paramStartCheckParam, paramInt);
+    }
+  }
+  
+  public void onGameCheckFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams)
+  {
+    if (CmGameLoadingFragment.a(this.a)) {}
+    do
     {
-      QLog.e("MusicPendantView", 1, "mPlayClickListener.onClick() exception", localException);
+      return;
+      if (paramStartCheckParam == null)
+      {
+        QLog.e("cmgame_process.CmGameLoadingFragment", 1, "onCheckGameFinish mStartCheckParam == null");
+        return;
+      }
+      if (paramLong != 0L)
+      {
+        onGameFailed(paramStartCheckParam, paramLong);
+        return;
+      }
+    } while (CmGameLoadingFragment.a(this.a) == null);
+    CmGameLoadingFragment.a(this.a).a(paramLong, paramStartCheckParam);
+  }
+  
+  public void onGameCheckRetry(int paramInt)
+  {
+    if (CmGameLoadingFragment.a(this.a)) {}
+    while (CmGameLoadingFragment.a(this.a) == null) {
       return;
     }
-    ((MusicPendantManager)localObject).c();
-    label159:
-    if (MusicPendantView.a(this.a.a) != null) {
-      MusicPendantView.a(this.a.a).sendEmptyMessage(1005);
+    CmGameLoadingFragment.a(this.a).a(paramInt, CmGameLoadingFragment.a(this.a));
+  }
+  
+  public void onGameFailed(CmGameStartChecker.StartCheckParam paramStartCheckParam, long paramLong)
+  {
+    akvv.a().a(paramStartCheckParam, paramLong, null);
+    if (CmGameLoadingFragment.a(this.a) != null) {
+      CmGameLoadingFragment.a(this.a).b(paramStartCheckParam, paramLong);
     }
-    if ((MusicPendantView.a(this.a.a) != null) && (MusicPendantView.a(this.a.a).a()))
+  }
+  
+  public void onGameLifeTipShow(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    if (CmGameLoadingFragment.a(this.a)) {
+      return;
+    }
+    if (QLog.isColorLevel())
     {
-      MusicPendantView.a(this.a.a).a(false);
-      MusicPendantView.a(true);
-      FriendsManager localFriendsManager;
-      label264:
-      MusicPendantManager localMusicPendantManager;
-      if (localException != null)
-      {
-        localFriendsManager = (FriendsManager)localException.getManager(50);
-        if (localFriendsManager == null) {
-          break label325;
-        }
-        localObject = localFriendsManager.a(((MusicPendantManager)localObject).b());
-        if ((localObject == null) || (!((Card)localObject).showRedPointMusicPendant)) {
-          return;
-        }
-        localMusicPendantManager = MusicPendantManager.a();
-        if (!((Card)localObject).showRedPointMusicPendant) {
-          break label330;
-        }
+      if (paramStartCheckParam != null) {
+        break label38;
       }
-      label325:
-      label330:
-      for (int i = 0;; i = 1)
-      {
-        localMusicPendantManager.a(4059, i);
-        ((Card)localObject).showRedPointMusicPendant = false;
-        if (localFriendsManager.a((Card)localObject)) {
-          return;
-        }
-        QLog.e("MusicPendantView", 1, "onClick(): save card in db failed ");
-        return;
-        localFriendsManager = null;
-        break;
-        localObject = null;
-        break label264;
-      }
+      QLog.d("cmgame_process.CmGameLoadingFragment", 2, "showGameLifeTip mStartCheckParam is null");
     }
+    for (;;)
+    {
+      onGameFailed(paramStartCheckParam, -1L);
+      return;
+      label38:
+      QLog.d("cmgame_process.CmGameLoadingFragment", 2, new Object[] { "showGameLifeTip mStartCheckParam:", paramStartCheckParam });
+    }
+  }
+  
+  public void onGetGameData(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    super.onGetGameData(paramStartCheckParam);
+    if ((paramStartCheckParam == null) || (paramStartCheckParam.game == null)) {
+      QLog.e("cmgame_process.CmGameLoadingFragment", 1, "onGetGameData startCheckParam == null or game is null");
+    }
+    do
+    {
+      return;
+      CmGameLoadingFragment.a(this.a).game = paramStartCheckParam.game;
+    } while (CmGameLoadingFragment.a(this.a) == null);
+    CmGameLoadingFragment.a(this.a).b(paramStartCheckParam);
+  }
+  
+  public void onVerifyGameFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams)
+  {
+    if (CmGameLoadingFragment.a(this.a)) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if ((paramCmGameInitParams != null) && (CmGameLoadingFragment.a(this.a) != null))
+          {
+            paramCmGameInitParams.commFlag = CmGameLoadingFragment.a(this.a).commFlag;
+            paramCmGameInitParams.mSSORule = CmGameLoadingFragment.a(this.a).mSSORule;
+            if (CmGameLoadingFragment.a(this.a).game != null) {
+              paramCmGameInitParams.appId = CmGameLoadingFragment.a(this.a).game.appId;
+            }
+            paramCmGameInitParams.rpUrl = CmGameLoadingFragment.a(this.a).rpUrl;
+            paramCmGameInitParams.rpIconUrl = CmGameLoadingFragment.a(this.a).rpIconUrl;
+          }
+          if (paramCmGameInitParams != null) {
+            paramCmGameInitParams.accessTokenRet = 0;
+          }
+          akvv.a().a(paramStartCheckParam, paramLong, paramCmGameInitParams);
+          QLog.d("cmgame_process.CmGameLoadingFragment", 1, new Object[] { "[onCheckGameFinish] resultCode=", Long.valueOf(paramLong) });
+          if (paramStartCheckParam != null) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("cmgame_process.CmGameLoadingFragment", 2, "onCheckGameFinish mStartCheckParam == null");
+        return;
+        if ((CmGameLoadingFragment.a(this.a) == null) || (paramStartCheckParam.requestCode == CmGameLoadingFragment.a(this.a).requestCode)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("cmgame_process.CmGameLoadingFragment", 2, "onCheckGameFinish startCheckParam.requestCode != mStartCheckParam.requestCode");
+      return;
+      if (paramLong != 0L)
+      {
+        onGameFailed(paramStartCheckParam, paramLong);
+        return;
+      }
+    } while (CmGameLoadingFragment.a(this.a) == null);
+    CmGameLoadingFragment.a(this.a).a(paramStartCheckParam, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akuz
  * JD-Core Version:    0.7.0.1
  */

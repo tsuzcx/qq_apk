@@ -1,26 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.biz.common.util.LoadedBack;
-import com.tencent.biz.game.SensorAPIJavaScript;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.webviewplugin.SosoPlugin;
+import com.tencent.mobileqq.transfile.SosoSrvAddrProvider;
 import com.tencent.qphone.base.util.QLog;
 
 public class bpk
-  implements LoadedBack
+  extends BroadcastReceiver
 {
-  public bpk(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
+  public bpk(SosoPlugin paramSosoPlugin) {}
   
-  public void a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+    int i = paramIntent.getIntExtra("com.tencent.receiver.soso.type", SosoSrvAddrProvider.a);
+    if (i == SosoSrvAddrProvider.a)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(SosoPlugin.a(this.a), 2, "soso receiver ACTION_SOSO_TYPE_UPDATE");
+      }
+      SosoSrvAddrProvider.a().c();
+    }
+    while (i != SosoSrvAddrProvider.b) {
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("forceUpdate", 2, "loaded code:" + paramInt);
+      QLog.d(SosoPlugin.b(this.a), 2, "soso receiver ACTION_SOSO_TYPE_CLEAR");
     }
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.b = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.notifyCacheReady(paramInt);
+    SosoSrvAddrProvider.a().a();
   }
-  
-  public void b(int paramInt) {}
 }
 
 

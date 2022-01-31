@@ -1,21 +1,23 @@
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.TextView;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import java.util.Comparator;
+import java.util.HashMap;
 
 class akin
-  implements Runnable
+  implements Comparator<awge>
 {
-  akin(akim paramakim, SeekBar paramSeekBar, TextView paramTextView1, TextView paramTextView2, ImageView paramImageView1, ImageView paramImageView2, TextView paramTextView3) {}
+  akin(akim paramakim, HashMap paramHashMap) {}
   
-  public void run()
+  public int a(awge paramawge1, awge paramawge2)
   {
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    this.jdField_a_of_type_Akim.a.f = false;
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.c.setVisibility(0);
+    long l1 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramawge1).uin)).longValue();
+    long l2 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramawge2).uin)).longValue();
+    if (l1 < l2) {
+      return -1;
+    }
+    if (l1 > l2) {
+      return 1;
+    }
+    return 0;
   }
 }
 

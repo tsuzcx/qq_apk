@@ -1,25 +1,27 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.NewFriendManager;
-import java.util.HashSet;
-import java.util.Iterator;
-
 public class zib
-  implements Runnable
 {
-  public zib(NewFriendManager paramNewFriendManager) {}
+  public float a;
+  public int a;
+  public float b;
+  public int b;
   
-  public void run()
+  public zib(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = NewFriendManager.a(this.a).iterator();
-    while (localIterator.hasNext())
-    {
-      localStringBuilder.append((String)localIterator.next());
-      localStringBuilder.append("#");
-    }
-    BaseApplicationImpl.getApplication().getSharedPreferences("new_friend", 0).edit().putString("new_friend_list", localStringBuilder.toString()).commit();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("MemoryLevelInfo{");
+    localStringBuilder.append("MemoryPercent=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", delayTime=").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", maxCacheSize=").append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(", trimPercent=").append(this.jdField_b_of_type_Float);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

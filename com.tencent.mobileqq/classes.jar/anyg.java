@@ -1,21 +1,57 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.GuideHelper;
+import android.os.Build.VERSION;
+import java.util.AbstractCollection;
+import java.util.ArrayDeque;
+import java.util.concurrent.ArrayBlockingQueue;
 
-public class anyg
-  implements View.OnClickListener
+public class anyg<T>
 {
-  public anyg(GuideHelper paramGuideHelper, ViewGroup paramViewGroup) {}
+  final AbstractCollection<T> a;
   
-  public void onClick(View paramView)
+  public anyg(int paramInt)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiGuideHelper.a(this.jdField_a_of_type_AndroidViewViewGroup);
+    if (Build.VERSION.SDK_INT >= 9)
+    {
+      this.a = new ArrayDeque();
+      return;
+    }
+    this.a = new ArrayBlockingQueue(30);
+  }
+  
+  public T a()
+  {
+    if (Build.VERSION.SDK_INT >= 9)
+    {
+      if ((this.a instanceof ArrayDeque)) {
+        return ((ArrayDeque)this.a).poll();
+      }
+    }
+    else if ((this.a instanceof ArrayBlockingQueue)) {
+      return ((ArrayBlockingQueue)this.a).poll();
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    this.a.clear();
+  }
+  
+  public void a(T paramT)
+  {
+    if (Build.VERSION.SDK_INT >= 9) {
+      if ((this.a instanceof ArrayDeque)) {
+        ((ArrayDeque)this.a).offer(paramT);
+      }
+    }
+    while (!(this.a instanceof ArrayBlockingQueue)) {
+      return;
+    }
+    ((ArrayBlockingQueue)this.a).offer(paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anyg
  * JD-Core Version:    0.7.0.1
  */

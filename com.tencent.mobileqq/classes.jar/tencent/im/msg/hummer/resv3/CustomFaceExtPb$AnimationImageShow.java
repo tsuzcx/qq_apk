@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class CustomFaceExtPb$AnimationImageShow
-  extends MessageMicro
+  extends MessageMicro<AnimationImageShow>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_animation_param = PBField.initBytes(ByteStringMicro.EMPTY);

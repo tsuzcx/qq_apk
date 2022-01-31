@@ -1,39 +1,30 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.net.ConnectivityManager.NetworkCallback;
+import android.net.Network;
+import android.os.Handler;
+import android.support.annotation.RequiresApi;
+import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor.NetworkCallbackImpl.1;
+import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor.NetworkCallbackImpl.2;
+import org.jetbrains.annotations.Nullable;
 
-public class rlv
-  implements CompoundButton.OnCheckedChangeListener
+@RequiresApi(21)
+public final class rlv
+  extends ConnectivityManager.NetworkCallback
 {
-  public rlv(AssistantSettingActivity paramAssistantSettingActivity) {}
+  private rlv(rlt paramrlt) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onAvailable(@Nullable Network paramNetwork)
   {
-    if (AppSetting.b) {
-      this.a.a.setContentDescription("摇动手机截屏");
-    }
-    paramCompoundButton = this.a.app;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Shake_screenshot", "Shake_screenshot_switch", 0, i, "", "", "", "");
-      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131433581), "qqsetting_screenshot_key", paramBoolean);
-      if (!paramBoolean) {
-        break;
-      }
-      this.a.turnOnShake();
-      return;
-    }
-    this.a.turnOffShake();
+    rlt.a(this.a).post(new BandwidthPredictor.NetworkCallbackImpl.1(this));
+  }
+  
+  public void onLost(@Nullable Network paramNetwork)
+  {
+    rlt.a(this.a).post(new BandwidthPredictor.NetworkCallbackImpl.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rlv
  * JD-Core Version:    0.7.0.1
  */

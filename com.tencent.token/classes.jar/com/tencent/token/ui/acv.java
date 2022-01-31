@@ -1,16 +1,17 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.utils.w;
 
-final class acv
-  implements DialogInterface.OnCancelListener
+class acv
+  implements View.OnClickListener
 {
-  acv(UnbindUinActivity paramUnbindUinActivity) {}
+  acv(UtilsLoginProtectActivity paramUtilsLoginProtectActivity) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.unbindResult();
+    w.b(this.a, this.a.getString(2131231554));
   }
 }
 

@@ -1,18 +1,29 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.view.ComplexGuidViewPager;
-import com.tencent.mobileqq.troop.homework.entry.ui.view.ComplexGuidViewPager.OnGuideBtnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class ajhz
+class ajhz
   implements View.OnClickListener
 {
-  public ajhz(ComplexGuidViewPager paramComplexGuidViewPager) {}
+  private ajhy jdField_a_of_type_Ajhy;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  
+  ajhz(ajhy paramajhy, MqqHandler paramMqqHandler)
+  {
+    this.jdField_a_of_type_Ajhy = paramajhy;
+    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+  }
   
   public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.c();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, this.jdField_a_of_type_Ajhy.jdField_a_of_type_JavaLangString + " on close");
     }
+    paramView = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(201);
+    paramView.obj = this.jdField_a_of_type_Ajhy;
+    this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(paramView);
+    this.jdField_a_of_type_Ajhy.jdField_a_of_type_Ajhw.onClose();
   }
 }
 

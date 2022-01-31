@@ -19,7 +19,7 @@ public abstract class Servlet
     return this.container;
   }
   
-  void init(AppRuntime paramAppRuntime, ServletContainer paramServletContainer)
+  public void init(AppRuntime paramAppRuntime, ServletContainer paramServletContainer)
   {
     this.mAppRuntime = paramAppRuntime;
     this.container = paramServletContainer;
@@ -37,7 +37,7 @@ public abstract class Servlet
     getAppRuntime().notifyObservers(paramClass, paramInt, paramBoolean, paramBundle);
   }
   
-  protected void onCreate() {}
+  public void onCreate() {}
   
   protected void onDestroy() {}
   

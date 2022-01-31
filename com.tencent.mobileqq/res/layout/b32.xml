@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/b2n" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="1.0">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="16.0dip" android:textColor="@color/skin_gray2_item" android:gravity="center" android:id="@id/jqk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="55.0dip" android:layout_marginRight="15.0dip" android:text="@string/fu_" android:maxLines="2" />
+            <com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid android:id="@id/cx6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="120.0dip" />
+            <Button android:gravity="center" android:id="@id/ge" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="30.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="50.0dip" android:text="@string/fu0" android:layout_below="@id/cx6" style="@style/b9" />
+            <View android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_below="@id/ge" />
+        </RelativeLayout>
+    </com.tencent.mobileqq.widget.BounceScrollView>
+</LinearLayout>

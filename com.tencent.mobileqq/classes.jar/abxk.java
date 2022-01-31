@@ -1,35 +1,40 @@
-import android.graphics.Rect;
-import android.view.TouchDelegate;
-import android.view.View;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
 import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.reactive.SimpleObserver;
 
-public class abxk
-  implements Runnable
+class abxk
+  extends SimpleObserver<auef>
 {
-  public abxk(MsgBoxListActivity paramMsgBoxListActivity, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  abxk(abxj paramabxj, abxt paramabxt) {}
   
-  public void run()
+  public void a(auef paramauef)
   {
-    Object localObject = new Rect();
-    this.jdField_a_of_type_AndroidViewView.setEnabled(true);
-    this.jdField_a_of_type_AndroidViewView.getHitRect((Rect)localObject);
-    ((Rect)localObject).top -= this.jdField_a_of_type_Int;
-    ((Rect)localObject).bottom += this.b;
-    ((Rect)localObject).left -= this.c;
-    ((Rect)localObject).right += this.d;
-    if (QLog.isColorLevel()) {
-      QLog.d("TouchDelegate", 2, " bounds.top=" + ((Rect)localObject).top + "bounds.bottom=" + ((Rect)localObject).bottom);
+    abxt localabxt = this.jdField_a_of_type_Abxt;
+    if (paramauef.c == 1) {}
+    for (int i = 2;; i = 3)
+    {
+      localabxt.a(paramauef, i);
+      return;
     }
-    localObject = new TouchDelegate((Rect)localObject, this.jdField_a_of_type_AndroidViewView);
-    if (View.class.isInstance(this.jdField_a_of_type_AndroidViewView.getParent())) {
-      ((View)this.jdField_a_of_type_AndroidViewView.getParent()).setTouchDelegate((TouchDelegate)localObject);
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("DoraemonOpenAPI.permissionHelper", 2, "onError: " + paramError.getMessage());
+    }
+    if ((paramError instanceof AppInfoError)) {}
+    for (int i = ((AppInfoError)paramError).type;; i = 0)
+    {
+      this.jdField_a_of_type_Abxt.a(null, i);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abxk
  * JD-Core Version:    0.7.0.1
  */

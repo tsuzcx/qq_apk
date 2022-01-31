@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class cmd0x95a$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 810, 818, 826 }, new String[] { "msg_update_ar_count_rsp", "msg_get_ar_count_list_rsp", "msg_get_ar_activity_list_rsp", "msg_get_ar_activity_detail_rsp", "msg_get_ar_activity_red_rsp", "msg_get_world_cup_info_rsp", "msg_set_world_cup_info_rsp", "msg_join_world_cup_rsp" }, new Object[] { null, null, null, null, null, null, null, null }, RspBody.class);
   public cmd0x95a.GetArActivityDetailRsp msg_get_ar_activity_detail_rsp = new cmd0x95a.GetArActivityDetailRsp();
@@ -18,7 +18,7 @@ public final class cmd0x95a$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x95a.cmd0x95a.RspBody
  * JD-Core Version:    0.7.0.1
  */

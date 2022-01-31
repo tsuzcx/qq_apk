@@ -1,34 +1,26 @@
-import com.rookery.asyncHttpClient.AsyncHttpResponseHandler;
-import com.rookery.asyncHttpClient.JsonHttpResponseHandler;
-import org.apache.http.Header;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.rookery.asyncHttpClient.AsyncHttpClient;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import org.apache.http.HttpRequest;
+import org.apache.http.HttpRequestInterceptor;
+import org.apache.http.protocol.HttpContext;
 
-final class bfx
-  extends JsonHttpResponseHandler
+public class bfx
+  implements HttpRequestInterceptor
 {
-  bfx(AsyncHttpResponseHandler paramAsyncHttpResponseHandler) {}
+  public bfx(AsyncHttpClient paramAsyncHttpClient) {}
   
-  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
+  public void process(HttpRequest paramHttpRequest, HttpContext paramHttpContext)
   {
-    super.a(paramInt, paramArrayOfHeader, paramJSONObject);
-    try
-    {
-      paramJSONObject = paramJSONObject.getString("id");
-      this.a.a(paramInt, paramArrayOfHeader, paramJSONObject);
-      return;
+    if (!paramHttpRequest.containsHeader("Accept-Encoding")) {
+      paramHttpRequest.addHeader("Accept-Encoding", "gzip");
     }
-    catch (JSONException paramArrayOfHeader)
+    paramHttpContext = AsyncHttpClient.a(this.a).keySet().iterator();
+    while (paramHttpContext.hasNext())
     {
-      paramArrayOfHeader.printStackTrace();
-    }
-  }
-  
-  public void a(Throwable paramThrowable, JSONObject paramJSONObject)
-  {
-    super.a(paramThrowable, paramJSONObject);
-    if ((paramThrowable != null) && (paramThrowable.getMessage() != null)) {
-      this.a.a(paramThrowable, paramThrowable.getMessage());
+      String str = (String)paramHttpContext.next();
+      paramHttpRequest.addHeader(str, (String)AsyncHttpClient.a(this.a).get(str));
     }
   }
 }

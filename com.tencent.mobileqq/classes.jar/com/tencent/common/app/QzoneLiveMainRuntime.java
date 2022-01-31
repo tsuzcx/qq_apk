@@ -1,9 +1,9 @@
 package com.tencent.common.app;
 
 import android.os.Bundle;
+import bjdt;
+import bjpz;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.plugin.QZonePluginUtils;
 import mqq.app.AppRuntime;
 
 public class QzoneLiveMainRuntime
@@ -22,19 +22,19 @@ public class QzoneLiveMainRuntime
     super.onCreate(paramBundle);
   }
   
-  protected AppRuntime onGetSubRuntime(String paramString)
+  public AppRuntime onGetSubRuntime(String paramString)
   {
     AppRuntime localAppRuntime = null;
     if (QLog.isColorLevel()) {
       QLog.i(a, 2, "QzoneLiveMainRuntime.onGetSubRuntime() moduleId " + paramString);
     }
-    if (paramString.equals(QZonePluginUtils.a())) {
-      localAppRuntime = QZoneHelper.b(BaseApplicationImpl.getApplication());
+    if (paramString.equals(bjpz.a())) {
+      localAppRuntime = bjdt.b(BaseApplicationImpl.getApplication());
     }
-    while (!paramString.equals("qzone_vertical_video_plugin.apk")) {
+    while (!paramString.equals("qzone_weishi_feeds_plugin.apk")) {
       return localAppRuntime;
     }
-    return QZoneHelper.c(BaseApplicationImpl.getApplication());
+    return bjdt.d(BaseApplicationImpl.getApplication());
   }
 }
 

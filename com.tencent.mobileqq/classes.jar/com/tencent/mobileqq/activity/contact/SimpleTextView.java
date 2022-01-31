@@ -7,17 +7,20 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.FontMetrics;
+import android.graphics.Typeface;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.View.MeasureSpec;
+import bdgz;
 import com.tencent.mobileqq.R.styleable;
-import com.tencent.mobileqq.utils.DisplayUtils;
+import com.tencent.theme.ISkinTypeface;
 
 public class SimpleTextView
   extends View
+  implements ISkinTypeface
 {
   private int jdField_a_of_type_Int;
   private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
@@ -41,7 +44,7 @@ public class SimpleTextView
     if (paramAttributeSet != null)
     {
       paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.SimpleTextView);
-      paramInt = paramAttributeSet.getDimensionPixelSize(0, (int)DisplayUtils.a(paramContext, 12.0F));
+      paramInt = paramAttributeSet.getDimensionPixelSize(0, (int)bdgz.a(paramContext, 12.0F));
       localObject = paramAttributeSet.getColorStateList(1);
       paramContext = paramAttributeSet.getString(2);
       this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramInt);
@@ -50,6 +53,7 @@ public class SimpleTextView
       localObject = getDrawableState();
       this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState((int[])localObject, this.b);
       this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.SANS_SERIF);
       setText(paramContext);
       paramAttributeSet.recycle();
     }
@@ -98,6 +102,11 @@ public class SimpleTextView
     if ((this.jdField_a_of_type_AndroidContentResColorStateList != null) && (this.jdField_a_of_type_AndroidContentResColorStateList.isStateful())) {
       a();
     }
+  }
+  
+  public Paint getPaint()
+  {
+    return this.jdField_a_of_type_AndroidTextTextPaint;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -173,7 +182,7 @@ public class SimpleTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.SimpleTextView
  * JD-Core Version:    0.7.0.1
  */

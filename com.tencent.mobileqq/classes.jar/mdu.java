@@ -1,21 +1,39 @@
-import android.view.animation.Interpolator;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class mdu
-  implements Interpolator
+  implements URLDrawable.URLDrawableListener
 {
-  private float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public mdu(AVActivity paramAVActivity) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    return -paramFloat3 * (float)Math.cos(paramFloat1 / paramFloat4 * 1.570796326794897D) + paramFloat3 + paramFloat2;
+    AVActivity.a(this.a, false);
+    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadCanceled().");
   }
   
-  public float getInterpolation(float paramFloat)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return a(paramFloat, 0.0F, 1.0F, 1.0F);
+    AVActivity.a(this.a, false);
+    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadFialed().");
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadProgressed(). i = " + paramInt);
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    AVActivity.a(this.a, true);
+    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadSuccessed().");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mdu
  * JD-Core Version:    0.7.0.1
  */

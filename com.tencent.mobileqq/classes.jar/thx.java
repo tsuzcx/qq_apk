@@ -1,38 +1,20 @@
-import com.tencent.mobileqq.data.PublicAccountInfo;
-
 public class thx
 {
-  public PublicAccountInfo a;
+  public int a;
   public String a;
-  public String b = "";
+  public boolean a;
+  public String b;
   
-  public thx(PublicAccountInfo paramPublicAccountInfo)
+  public thx(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
-  }
-  
-  public void a(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.jdField_a_of_type_JavaLangString = str;
-  }
-  
-  public void b(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.b = str;
+    this.jdField_a_of_type_Boolean = true;
+    this.b = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     thx
  * JD-Core Version:    0.7.0.1
  */

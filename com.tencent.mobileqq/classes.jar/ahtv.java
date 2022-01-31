@@ -1,24 +1,45 @@
-import com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine;
-import com.tencent.mobileqq.search.searchengine.ISearchListener;
-import com.tencent.mobileqq.search.searchengine.SearchRequest;
-import java.util.List;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ahtv
-  implements Runnable
+  extends alpa
 {
-  public ahtv(FTSMessageSearchEngine paramFTSMessageSearchEngine, SearchRequest paramSearchRequest, ISearchListener paramISearchListener) {}
+  public ahtv(TroopFragment paramTroopFragment) {}
   
-  public void run()
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqSearchFtsmsgFTSMessageSearchEngine.b(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest);
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(localList, 1);
+    if (paramInt2 == 0)
+    {
+      this.a.h();
+      if (this.a.isResumed()) {
+        if (paramInt1 != 0) {
+          break label47;
+        }
+      }
     }
+    label47:
+    while (!this.a.isResumed())
+    {
+      QQToast.a(this.a.getActivity(), 2, alud.a(2131715777), 0).a();
+      do
+      {
+        return;
+      } while (paramInt1 != 1);
+      QQToast.a(this.a.getActivity(), 2, alud.a(2131715776), 0).a();
+      return;
+    }
+    paramString1 = paramString2;
+    if (TextUtils.isEmpty(paramString2)) {
+      paramString1 = this.a.getResources().getString(2131695087);
+    }
+    QQToast.a(this.a.getActivity(), 1, paramString1, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahtv
  * JD-Core Version:    0.7.0.1
  */

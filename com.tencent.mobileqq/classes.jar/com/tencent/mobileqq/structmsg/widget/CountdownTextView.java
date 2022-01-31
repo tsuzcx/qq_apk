@@ -1,17 +1,18 @@
 package com.tencent.mobileqq.structmsg.widget;
 
-import aikd;
+import aiud;
+import aiue;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.photopreview.CountDownTimer;
-import com.tencent.mobileqq.activity.photopreview.CountDownTimer.CountDownTimerListener;
+import baah;
+import baai;
 
 public class CountdownTextView
   extends TextView
 {
-  private CountDownTimer.CountDownTimerListener jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer$CountDownTimerListener;
-  private CountDownTimer jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer = new CountDownTimer();
+  private aiud jdField_a_of_type_Aiud = new aiud();
+  private aiue jdField_a_of_type_Aiue;
   
   public CountdownTextView(Context paramContext)
   {
@@ -30,19 +31,19 @@ public class CountdownTextView
   
   public void a()
   {
-    CountDownTimer localCountDownTimer = this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer;
-    if (localCountDownTimer != null) {
-      localCountDownTimer.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer$CountDownTimerListener);
+    aiud localaiud = this.jdField_a_of_type_Aiud;
+    if (localaiud != null) {
+      localaiud.b(this.jdField_a_of_type_Aiue);
     }
   }
   
-  public void a(long paramLong, CountdownTextView.TimerCallback paramTimerCallback)
+  public void a(long paramLong, baai parambaai)
   {
-    CountDownTimer localCountDownTimer = this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer;
-    if (localCountDownTimer != null)
+    aiud localaiud = this.jdField_a_of_type_Aiud;
+    if (localaiud != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer$CountDownTimerListener = new aikd(this, paramLong, paramTimerCallback);
-      localCountDownTimer.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer$CountDownTimerListener);
+      this.jdField_a_of_type_Aiue = new baah(this, paramLong, parambaai);
+      localaiud.a(this.jdField_a_of_type_Aiue);
     }
   }
   
@@ -54,7 +55,7 @@ public class CountdownTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.widget.CountdownTextView
  * JD-Core Version:    0.7.0.1
  */

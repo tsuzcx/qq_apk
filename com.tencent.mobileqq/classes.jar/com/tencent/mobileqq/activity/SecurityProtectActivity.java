@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity;
 
+import alud;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -9,26 +10,24 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import aprk;
+import araj;
+import azqs;
+import bdhg;
+import bdic;
+import bdin;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.emoticon.DownloadInfo;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.HttpDownloadUtil.DownloadInfoListener;
-import com.tencent.mobileqq.utils.JumpQqPimSecureUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import tri;
-import trj;
 
 public class SecurityProtectActivity
   extends IphoneTitleBarActivity
-  implements View.OnClickListener, HttpDownloadUtil.DownloadInfoListener
+  implements View.OnClickListener, bdhg
 {
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   public Long a;
-  public String a;
+  String jdField_a_of_type_JavaLangString = "http://qqwx.qq.com/s?aid=index&g_f=407";
   private boolean jdField_a_of_type_Boolean;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   public String b;
@@ -37,22 +36,23 @@ public class SecurityProtectActivity
   
   public SecurityProtectActivity()
   {
-    this.jdField_a_of_type_JavaLangString = "http://qqwx.qq.com/s?aid=index&g_f=407";
-    this.jdField_b_of_type_JavaLangString = "腾讯手机管家";
+    this.jdField_b_of_type_JavaLangString = alud.a(2131714084);
     this.jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
   }
   
-  public boolean a(DownloadInfo paramDownloadInfo)
+  public boolean a(aprk paramaprk)
   {
-    if (paramDownloadInfo.b == 0)
+    if (paramaprk.b == 0)
     {
-      this.jdField_a_of_type_JavaLangLong = Long.valueOf(paramDownloadInfo.e);
-      if ((NetworkUtil.d(getActivity())) && (this.jdField_a_of_type_JavaLangLong.longValue() > 0L))
+      this.jdField_a_of_type_JavaLangLong = Long.valueOf(paramaprk.e);
+      if ((bdin.d(getActivity())) && (this.jdField_a_of_type_JavaLangLong.longValue() > 0L))
       {
-        paramDownloadInfo = new Bundle();
-        paramDownloadInfo.putString("_filename_from_dlg", this.jdField_b_of_type_JavaLangString);
-        paramDownloadInfo.putLong("_filesize_from_dlg", this.jdField_a_of_type_JavaLangLong.longValue());
-        UniformDownloadMgr.a().b(this.jdField_a_of_type_JavaLangString, paramDownloadInfo);
+        paramaprk = new Bundle();
+        paramaprk.putString("_filename_from_dlg", this.jdField_b_of_type_JavaLangString);
+        paramaprk.putLong("_filesize_from_dlg", this.jdField_a_of_type_JavaLangLong.longValue());
+        paramaprk.putString("big_brother_source_key", "biz_src_safe");
+        paramaprk.putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_safe");
+        araj.a().b(this.jdField_a_of_type_JavaLangString, paramaprk);
         return true;
       }
     }
@@ -60,29 +60,29 @@ public class SecurityProtectActivity
     {
       this.jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
     }
-    new Handler(Looper.getMainLooper()).post(new trj(this));
+    new Handler(Looper.getMainLooper()).post(new SecurityProtectActivity.2(this));
     return true;
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130971548);
-    setTitle(2131436656);
+    super.setContentView(2131562617);
+    setTitle(2131719664);
     this.rightViewText.setVisibility(8);
-    this.leftView.setText(2131436644);
+    this.leftView.setText(2131719670);
     this.leftView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375034));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370057));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370066));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370058));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378138));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367422));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376499));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131379231));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setClickable(true);
     this.jdField_a_of_type_AndroidWidgetButton.setFocusable(true);
     return true;
   }
   
-  protected void doOnResume()
+  public void doOnResume()
   {
     super.doOnResume();
     if (this.c == true)
@@ -90,15 +90,15 @@ public class SecurityProtectActivity
       finish();
       return;
     }
-    this.jdField_a_of_type_Boolean = JumpQqPimSecureUtil.a(this);
-    this.jdField_b_of_type_Boolean = JumpQqPimSecureUtil.b(this);
+    this.jdField_a_of_type_Boolean = bdic.a(this);
+    this.jdField_b_of_type_Boolean = bdic.b(this);
     String str;
     if (!this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845496);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131436657);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849093);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719658);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131436659);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131719652);
       if (!this.jdField_b_of_type_Boolean) {
         break label192;
       }
@@ -106,20 +106,20 @@ public class SecurityProtectActivity
     }
     for (;;)
     {
-      ReportController.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_", str, 0, 0, "", "", "", "");
+      azqs.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_", str, 0, 0, "", "", "", "");
       return;
       if (!this.jdField_b_of_type_Boolean)
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845497);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131436661);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849094);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719660);
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-        this.jdField_a_of_type_AndroidWidgetButton.setText(2131436662);
+        this.jdField_a_of_type_AndroidWidgetButton.setText(2131719653);
         break;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845495);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131436663);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849092);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719654);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131436665);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131719659);
       break;
       label192:
       if (this.jdField_a_of_type_Boolean) {
@@ -130,7 +130,7 @@ public class SecurityProtectActivity
     }
   }
   
-  protected void doOnStop()
+  public void doOnStop()
   {
     super.doOnStop();
     if (this.c == true) {
@@ -144,26 +144,26 @@ public class SecurityProtectActivity
     {
     default: 
       return;
-    case 2131370058: 
+    case 2131379231: 
       if (!this.jdField_a_of_type_Boolean)
       {
-        ThreadManager.executeOnNetWorkThread(new tri(this));
+        ThreadManager.executeOnNetWorkThread(new SecurityProtectActivity.1(this));
         this.c = true;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131436658);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719655);
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
         this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-        ((LinearLayout)findViewById(2131371297)).setVisibility(0);
-        ReportController.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_", "click on bluebtn download qqpimsecure", 0, 0, "", "", "", "");
+        ((LinearLayout)findViewById(2131365452)).setVisibility(0);
+        azqs.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_", "click on bluebtn download qqpimsecure", 0, 0, "", "", "", "");
         return;
       }
       if (!this.jdField_b_of_type_Boolean)
       {
-        JumpQqPimSecureUtil.a(this, "mobileqq", 7798785);
-        ReportController.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_", "click on bluebtn weakup qqpimsecure", 0, 0, "", "", "", "");
+        bdic.a(this, "mobileqq", 7798785);
+        azqs.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_", "click on bluebtn weakup qqpimsecure", 0, 0, "", "", "", "");
         return;
       }
-      JumpQqPimSecureUtil.a(this, "mobileqq", 8716289);
-      ReportController.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_", "click on bluebtn run_scan", 0, 0, "", "", "", "");
+      bdic.a(this, "mobileqq", 8716289);
+      azqs.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_", "click on bluebtn run_scan", 0, 0, "", "", "", "");
       return;
     }
     finish();
@@ -171,7 +171,7 @@ public class SecurityProtectActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SecurityProtectActivity
  * JD-Core Version:    0.7.0.1
  */

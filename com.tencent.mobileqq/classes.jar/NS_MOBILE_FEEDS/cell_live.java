@@ -10,23 +10,23 @@ import java.util.Map;
 public final class cell_live
   extends JceStruct
 {
-  static Map cache_extendInfo = new HashMap();
-  static Map cache_mapExtendInfo;
-  static ArrayList cache_vctCommentList;
-  static ArrayList cache_vctLiveUserList;
+  static Map<String, String> cache_extendInfo = new HashMap();
+  static Map<Integer, String> cache_mapExtendInfo;
+  static ArrayList<SpecialMsg> cache_vctCommentList;
+  static ArrayList<liveUser> cache_vctLiveUserList;
   public String exception_tips = "";
-  public Map extendInfo;
+  public Map<String, String> extendInfo;
   public int giftNum;
   public int likeNum;
   public int liveType;
   public int livetime;
-  public Map mapExtendInfo;
+  public Map<Integer, String> mapExtendInfo;
   public String roomid = "";
   public int roomstat;
   public String tipsMessage = "";
   public int usercount;
-  public ArrayList vctCommentList;
-  public ArrayList vctLiveUserList;
+  public ArrayList<SpecialMsg> vctCommentList;
+  public ArrayList<liveUser> vctLiveUserList;
   
   static
   {
@@ -43,7 +43,7 @@ public final class cell_live
   
   public cell_live() {}
   
-  public cell_live(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString2, Map paramMap1, String paramString3, ArrayList paramArrayList1, ArrayList paramArrayList2, int paramInt6, Map paramMap2)
+  public cell_live(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString2, Map<String, String> paramMap, String paramString3, ArrayList<SpecialMsg> paramArrayList, ArrayList<liveUser> paramArrayList1, int paramInt6, Map<Integer, String> paramMap1)
   {
     this.roomid = paramString1;
     this.roomstat = paramInt1;
@@ -52,12 +52,12 @@ public final class cell_live
     this.giftNum = paramInt4;
     this.likeNum = paramInt5;
     this.tipsMessage = paramString2;
-    this.extendInfo = paramMap1;
+    this.extendInfo = paramMap;
     this.exception_tips = paramString3;
-    this.vctCommentList = paramArrayList1;
-    this.vctLiveUserList = paramArrayList2;
+    this.vctCommentList = paramArrayList;
+    this.vctLiveUserList = paramArrayList1;
     this.liveType = paramInt6;
-    this.mapExtendInfo = paramMap2;
+    this.mapExtendInfo = paramMap1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -110,7 +110,7 @@ public final class cell_live
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_live
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,12 @@
 package oicq.wlogin_sdk.request;
 
+import oicq.wlogin_sdk.pow.b;
 import oicq.wlogin_sdk.tlv_type.tlv_t104;
 import oicq.wlogin_sdk.tlv_type.tlv_t105;
 import oicq.wlogin_sdk.tlv_type.tlv_t116;
 import oicq.wlogin_sdk.tlv_type.tlv_t161;
 import oicq.wlogin_sdk.tlv_type.tlv_t165;
+import oicq.wlogin_sdk.tlv_type.tlv_t546;
 import oicq.wlogin_sdk.tlv_type.tlv_t8;
 import oicq.wlogin_sdk.tools.ErrMsg;
 import oicq.wlogin_sdk.tools.util;
@@ -76,6 +78,7 @@ public class q
     tlv_t105 localtlv_t105 = new tlv_t105();
     tlv_t165 localtlv_t165 = new tlv_t165();
     tlv_t161 localtlv_t161 = new tlv_t161();
+    tlv_t546 localtlv_t546 = new tlv_t546();
     async_context localasync_context = t.b(this.x.h);
     paramInt2 = c(paramArrayOfByte, paramInt1 + 2);
     util.LOGD(getClass().getName(), "type=" + paramInt2);
@@ -87,6 +90,7 @@ public class q
       paramInt1 = paramInt2;
     }
     int i;
+    label325:
     do
     {
       do
@@ -102,11 +106,23 @@ public class q
         paramInt1 = i;
       } while (i < 0);
       localasync_context._t105 = localtlv_t105;
-      if (localtlv_t165.get_tlv(paramArrayOfByte, j, this.c - j) >= 0) {}
-      for (localasync_context._t165 = localtlv_t165;; localasync_context._t165 = new tlv_t165())
+      if (localtlv_t165.get_tlv(paramArrayOfByte, j, this.c - j) >= 0)
       {
+        localasync_context._t165 = localtlv_t165;
+        paramInt1 = localtlv_t546.get_tlv(paramArrayOfByte, j, this.c - j);
+        if (paramInt1 < 0) {
+          break label325;
+        }
+        util.LOGI("flush get tlv546 success len:" + localtlv_t546.get_data_len(), "");
+      }
+      for (localasync_context._t546 = localtlv_t546;; localasync_context._t546 = new tlv_t546())
+      {
+        b.a(localtlv_t546.get_data());
         a((ErrMsg)null);
         return paramInt2;
+        localasync_context._t165 = new tlv_t165();
+        break;
+        util.LOGI("flush get tlv546 fail ret:" + paramInt1, "");
       }
       i = localtlv_t161.get_tlv(paramArrayOfByte, j, this.c - j - 1);
       paramInt1 = i;

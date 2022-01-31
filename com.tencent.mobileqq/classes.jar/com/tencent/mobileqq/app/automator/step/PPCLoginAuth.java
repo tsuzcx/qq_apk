@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app.automator.step;
 
+import alyb;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.PPCLoginAuthHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -11,13 +11,13 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class PPCLoginAuth
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
-    SharedPreferences localSharedPreferences = this.a.b.getApp().getSharedPreferences("mobileQQ", 0);
+    SharedPreferences localSharedPreferences = this.a.app.getApp().getSharedPreferences("mobileQQ", 0);
     long l = localSharedPreferences.getLong("lastPPCLoginAuthTime", 0L);
     if (System.currentTimeMillis() - l > 86400000L)
     {
-      ((PPCLoginAuthHandler)this.a.b.a(58)).c();
+      ((alyb)this.a.app.a(58)).b();
       localSharedPreferences.edit().putLong("lastPPCLoginAuthTime", System.currentTimeMillis()).commit();
     }
     return 7;

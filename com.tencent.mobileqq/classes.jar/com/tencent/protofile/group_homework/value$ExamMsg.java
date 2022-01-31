@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class value$ExamMsg
-  extends MessageMicro
+  extends MessageMicro<ExamMsg>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field difficulty = PBField.initUInt32(0);
@@ -30,7 +30,7 @@ public final class value$ExamMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.protofile.group_homework.value.ExamMsg
  * JD-Core Version:    0.7.0.1
  */

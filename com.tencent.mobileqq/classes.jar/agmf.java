@@ -1,26 +1,41 @@
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.portal.FormalView;
-import com.tencent.mobileqq.portal.StrokeTextView;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
 
 public class agmf
-  extends AnimateUtils.AnimationAdapter
+  extends aglx
 {
-  public agmf(FormalView paramFormalView, View paramView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public agmf(QQAppInterface paramQQAppInterface, agmp paramagmp, QQWalletTransferMsgElem paramQQWalletTransferMsgElem, int paramInt, aere paramaere)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.d();
-    this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.a = true;
+    super(paramQQAppInterface, paramagmp, paramQQWalletTransferMsgElem, paramInt, paramaere);
+    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.isSend()) {
+      this.i = 0;
+    }
+    this.j = 2130846771;
   }
   
-  public void onAnimationStart(Animation paramAnimation)
+  public boolean b()
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    if (FormalView.a(this.jdField_a_of_type_ComTencentMobileqqPortalFormalView) != null) {
-      FormalView.a(this.jdField_a_of_type_ComTencentMobileqqPortalFormalView).setVisibility(0);
+    boolean bool = super.b();
+    if (bool) {
+      return bool;
     }
+    this.jdField_a_of_type_Agmp.b.setVisibility(0);
+    this.jdField_a_of_type_Agmp.b.setTextColor(-8947849);
+    this.jdField_a_of_type_Agmp.b.setText("QQ视频通话红包");
+    return false;
+  }
+  
+  public void i()
+  {
+    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.isSend())
+    {
+      this.jdField_a_of_type_Agmp.d.setVisibility(0);
+      return;
+    }
+    super.i();
   }
 }
 

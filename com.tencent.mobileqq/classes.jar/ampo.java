@@ -1,35 +1,37 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.widget.FadeIconImageView;
-import cooperation.qqfav.QfavUtil;
-import cooperation.qqfav.widget.FavoriteActionSheet;
-import cooperation.qqfav.widget.FavoriteActionSheet.Actions;
-import cooperation.qqfav.widget.LocationDetailActivity;
-import mqq.app.AppRuntime;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class ampo
-  extends FavoriteActionSheet
+public final class ampo
+  implements Handler.Callback
 {
-  public ampo(LocationDetailActivity paramLocationDetailActivity, Activity paramActivity, FavoriteActionSheet.Actions paramActions, int paramInt1, int paramInt2, AppRuntime paramAppRuntime)
+  public boolean handleMessage(Message paramMessage)
   {
-    super(paramActivity, paramActions, paramInt1, paramInt2, paramAppRuntime);
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (LocationDetailActivity.a(this.a))
+    switch (paramMessage.what)
     {
-      QfavUtil.a(true);
-      if (LocationDetailActivity.a(this.a) != null) {
-        LocationDetailActivity.a(this.a).setVisibility(8);
+    }
+    for (;;)
+    {
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.i("SOSO.LBS", 2, "msg_stop_location.");
+      }
+      SosoInterface.c();
+      SosoInterface.d();
+      continue;
+      if (SosoInterface.a().hasMessages(1001))
+      {
+        SosoInterface.a().removeMessages(1001);
+        SosoInterface.a().sendEmptyMessageDelayed(1001, 3000L);
       }
     }
-    super.onClick(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ampo
  * JD-Core Version:    0.7.0.1
  */

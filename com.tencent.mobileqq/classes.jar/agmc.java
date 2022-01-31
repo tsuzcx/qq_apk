@@ -1,31 +1,27 @@
-import android.view.View;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.portal.ConversationHongBao;
-
-public class agmc
-  implements Animator.AnimatorListener
+public abstract interface agmc
 {
-  public agmc(ConversationHongBao paramConversationHongBao, View paramView) {}
+  public static final String a = alud.a(2131706118);
+  public static final String b = alud.a(2131706115);
+  public static final String c = alud.a(2131706116);
+  public static final String d = alud.a(2131706117);
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.o();
-  }
+  public abstract void a();
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.o();
-  }
+  public abstract void b();
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public abstract boolean b();
   
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.f) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-  }
+  public abstract void c();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 

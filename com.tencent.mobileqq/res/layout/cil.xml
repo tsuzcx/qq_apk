@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.videostory.widget.view.StrokeTextView android:textSize="18.0dip" android:textStyle="bold|italic" android:textColor="@color/al3" android:gravity="center_horizontal" android:id="@id/mtg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="x" android:shadowColor="@color/bp" android:shadowDx="4.0" android:shadowDy="4.0" android:shadowRadius="1.0" />
+    <com.tencent.biz.videostory.widget.view.StrokeTextView android:textSize="28.0dip" android:textStyle="bold|italic" android:textColor="@color/al3" android:gravity="center_horizontal" android:id="@id/mtf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:shadowColor="@color/bp" android:shadowDx="4.0" android:shadowDy="4.0" android:shadowRadius="1.0" />
+</merge>

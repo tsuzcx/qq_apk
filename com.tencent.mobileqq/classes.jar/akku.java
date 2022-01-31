@@ -1,19 +1,31 @@
-import com.tencent.mobileqq.video.VipVideoPlayActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class akku
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+class akku
+  implements View.OnClickListener
 {
-  public akku(VipVideoPlayActivity paramVipVideoPlayActivity) {}
+  akku(akkt paramakkt) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipVideoPlayActivity", 2, "video player prepared");
+    paramView = paramView.getTag();
+    if ((paramView != null) && ((paramView instanceof akla)))
+    {
+      paramView = (akla)paramView;
+      bclg.a(akkt.a(this.a), akkt.a(this.a), paramView.a);
+      bcpg localbcpg = (bcpg)akkt.a(this.a).getManager(203);
+      if ((localbcpg != null) && (localbcpg.a(akkt.a(this.a), paramView.a, akkt.a(this.a)))) {
+        localbcpg.a(akkt.a(this.a), paramView.a);
+      }
+      if (akkt.a(this.a) != null) {}
     }
-    this.a.runOnUiThread(new akkv(this));
+    else
+    {
+      return;
+    }
+    azqs.b(akkt.a(this.a).app, "dc00898", "", "", "", "0X8009F9F", 0, 0, paramView.a, "", "", "");
   }
 }
 

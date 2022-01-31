@@ -1,28 +1,29 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
+import awge;
+import awhs;
+import bckq;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
-import com.tencent.mobileqq.troop.utils.AvatarTroopUtil;
 import java.util.List;
+import tencent.im.group.group_label.GroupLabel.Label;
 import tencent.im.oidb.cmd0x8b4.GroupInfo;
 
 public class ShowExternalTroop
-  extends Entity
+  extends awge
 {
   public long addedTimestamp;
-  public List labelList;
+  public List<GroupLabel.Label> labelList;
   public String strFaceUrl;
   public String troopDesRich;
   public String troopDesText;
   public String troopName;
-  @unique
+  @awhs
   public String troopUin;
   
   public ShowExternalTroop() {}
@@ -38,7 +39,7 @@ public class ShowExternalTroop
       this.troopDesRich = paramGroupInfo.bytes_rich_intro.get().toStringUtf8();
       this.labelList = paramGroupInfo.rpt_group_label.get();
       if (TextUtils.isEmpty(paramGroupInfo.str_face_url.get())) {
-        this.strFaceUrl = AvatarTroopUtil.a(AvatarTroopUtil.a(null, this.troopUin, 0));
+        this.strFaceUrl = bckq.a(bckq.a(null, this.troopUin, 0));
       }
     }
     else
@@ -57,13 +58,13 @@ public class ShowExternalTroop
     localShowExternalTroop.troopUin = paramString1;
     localShowExternalTroop.troopName = paramString2;
     localShowExternalTroop.addedTimestamp = paramLong;
-    localShowExternalTroop.strFaceUrl = AvatarTroopUtil.a(AvatarTroopUtil.a(null, paramString1, 0));
+    localShowExternalTroop.strFaceUrl = bckq.a(bckq.a(null, paramString1, 0));
     return localShowExternalTroop;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.ShowExternalTroop
  * JD-Core Version:    0.7.0.1
  */

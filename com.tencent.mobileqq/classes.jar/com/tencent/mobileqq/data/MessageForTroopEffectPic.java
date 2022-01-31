@@ -1,17 +1,18 @@
 package com.tencent.mobileqq.data;
 
+import alud;
+import bcko;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.IAnimationMessage;
 import localpb.richMsg.RichMsg.PicRec;
 import tencent.im.msg.hummer.resv3.CustomFaceExtPb.AnimationImageShow;
 import tencent.im.msg.hummer.resv3.CustomFaceExtPb.ResvAttr;
 
 public class MessageForTroopEffectPic
   extends MessageForPic
-  implements AIOAnimationControlManager.IAnimationMessage
+  implements bcko
 {
   public int effectId;
   
@@ -55,6 +56,11 @@ public class MessageForTroopEffectPic
     return this.frienduin;
   }
   
+  public int getLimitType()
+  {
+    return 0;
+  }
+  
   public long getSenderUin()
   {
     return Long.parseLong(this.senderuin);
@@ -67,7 +73,7 @@ public class MessageForTroopEffectPic
   
   public String getSummaryMsg()
   {
-    return "[秀图]";
+    return alud.a(2131706967);
   }
   
   public boolean isReaded()
@@ -77,7 +83,7 @@ public class MessageForTroopEffectPic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTroopEffectPic
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
 
-class aeqa
-  implements Runnable
+public class aeqa
+  extends View.AccessibilityDelegate
 {
-  aeqa(aepz paramaepz, boolean paramBoolean) {}
+  public aeqa(BaseBubbleBuilder paramBaseBubbleBuilder) {}
   
-  public void run()
+  @TargetApi(16)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
-    this.jdField_a_of_type_Aepz.a.l();
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Aepz.a.a(2, "编辑资料成功");
-      this.jdField_a_of_type_Aepz.a.a(true);
-      this.jdField_a_of_type_Aepz.a.finish();
-      NearbySPUtil.a(this.jdField_a_of_type_Aepz.a.app.getAccount(), "nearby_need_show_guide", Boolean.valueOf(false));
-      return;
+    if (Build.VERSION.SDK_INT >= 16) {
+      paramAccessibilityNodeInfo.setVisibleToUser(false);
     }
-    this.jdField_a_of_type_Aepz.a.a(1, "更新交友资料失败，请重试。");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeqa
  * JD-Core Version:    0.7.0.1
  */

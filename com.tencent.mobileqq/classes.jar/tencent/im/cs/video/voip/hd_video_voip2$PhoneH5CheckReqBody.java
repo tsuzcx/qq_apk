@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class hd_video_voip2$PhoneH5CheckReqBody
-  extends MessageMicro
+  extends MessageMicro<PhoneH5CheckReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32 }, new String[] { "uint64_seq", "msg_from_tel", "msg_to_tel", "uint64_prvt_id" }, new Object[] { Long.valueOf(0L), null, null, Long.valueOf(0L) }, PhoneH5CheckReqBody.class);
   public hd_video_voip2.TelInfo msg_from_tel = new hd_video_voip2.TelInfo();
@@ -16,7 +16,7 @@ public final class hd_video_voip2$PhoneH5CheckReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.video.voip.hd_video_voip2.PhoneH5CheckReqBody
  * JD-Core Version:    0.7.0.1
  */

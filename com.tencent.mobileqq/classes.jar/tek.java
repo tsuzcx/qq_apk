@@ -1,23 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.mobileqq.activity.Now;
+import org.json.JSONObject;
 
 public class tek
-  implements View.OnClickListener
+  extends ted
 {
-  public tek(Now paramNow) {}
+  public long a;
+  public boolean a;
   
-  public void onClick(View paramView)
+  public tek(JSONObject paramJSONObject)
   {
-    if (Now.a(this.a) != null) {
-      Now.a(this.a).n();
+    super(paramJSONObject);
+  }
+  
+  public static tek a(JSONObject paramJSONObject)
+  {
+    return new tek(paramJSONObject);
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null)
+    {
+      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isPreloadVideoPlugin");
+      this.jdField_a_of_type_Long = paramJSONObject.optLong("queryPluginTimeInterval");
+      return;
     }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = 3600L;
+  }
+  
+  public String toString()
+  {
+    return "WeSeeVideoPluginConfigInfo{mIsPreloadPluginInWsRecommend=" + this.jdField_a_of_type_Boolean + ", mQueryPluginTimeInterval=" + this.jdField_a_of_type_Long + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tek
  * JD-Core Version:    0.7.0.1
  */

@@ -6,5 +6,5 @@
             <solid android:color="#ffc8c7cc" />
         </shape>
     </item>
-    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200e1" android:bottom="0.5dip" />
+    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200e1" android:top="0.5dip" />
 </layer-list>

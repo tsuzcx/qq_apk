@@ -1,24 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnDismissListener;
-
-public class amal
-  implements View.OnClickListener
+class amal
+  implements mag
 {
-  public amal(ActionSheet paramActionSheet) {}
+  amal(amai paramamai) {}
   
-  public void onClick(View paramView)
+  public void a(maf parammaf)
   {
-    this.a.dismiss();
-    if (ActionSheet.a(this.a) != null) {
-      ActionSheet.a(this.a).onDismiss();
-    }
+    parammaf.a(this.a.a);
+    parammaf.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amal
  * JD-Core Version:    0.7.0.1
  */

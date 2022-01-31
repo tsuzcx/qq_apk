@@ -1,25 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
 
-public class mig
-  implements Runnable
+class mig
+  implements View.OnClickListener
 {
-  public mig(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  mig(mie parammie) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    KandianOx210MsgInfo localKandianOx210MsgInfo = ((KandianMergeManager)ReadInJoyUtils.a().getManager(161)).f();
-    ThreadManager.getUIHandler().post(new mih(this, localKandianOx210MsgInfo));
+    if (this.a.a.a != null) {
+      this.a.a.a.j();
+    }
+    azqs.b(null, "CliOper", "", "", "0X8005DF3", "0X8005DF3", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mig
  * JD-Core Version:    0.7.0.1
  */

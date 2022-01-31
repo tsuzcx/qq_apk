@@ -1,20 +1,27 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.graphics.Bitmap;
 
 public class aggn
-  implements Runnable
 {
-  public aggn(ScanTorchActivity paramScanTorchActivity) {}
+  public float a;
+  public int a;
+  public Bitmap a;
+  public float b;
+  public int b;
+  public float c = 0.0F;
+  public float d = 0.0F;
+  public float e;
   
-  public void run()
+  private aggn()
   {
-    ScanTorchActivity.c(this.a, true);
-    ScanTorchActivity.l(this.a);
-    ScanTorchActivity.d(this.a, true);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aggn
  * JD-Core Version:    0.7.0.1
  */

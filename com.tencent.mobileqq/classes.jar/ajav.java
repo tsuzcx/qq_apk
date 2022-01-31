@@ -1,34 +1,35 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.createNewTroop.CateListAdapter.SingleItemViewHolder;
-
-public class ajav
-  implements View.OnTouchListener
+public abstract class ajav
+  extends bead
 {
-  public ajav(CateListAdapter.SingleItemViewHolder paramSingleItemViewHolder) {}
+  private bead a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ajav(bead parambead)
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 0)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(0.15F);
-      this.a.c.setAlpha(0.5F);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
+    this.a = parambead;
+  }
+  
+  public void onDoneFile(beae parambeae)
+  {
+    super.onDoneFile(parambeae);
+    if (this.a != null) {
+      this.a.onDoneFile(parambeae);
     }
-    for (;;)
-    {
-      return false;
-      if ((i == 3) || (i == 1))
-      {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
-        this.a.c.setAlpha(1.0F);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-      }
+  }
+  
+  public void onProgress(beae parambeae)
+  {
+    super.onProgress(parambeae);
+    if (this.a != null) {
+      this.a.onProgress(parambeae);
     }
+  }
+  
+  public boolean onStart(beae parambeae)
+  {
+    if (this.a != null) {
+      this.a.onStart(parambeae);
+    }
+    return super.onStart(parambeae);
   }
 }
 

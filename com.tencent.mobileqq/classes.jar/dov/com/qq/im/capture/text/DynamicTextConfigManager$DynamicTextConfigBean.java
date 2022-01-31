@@ -1,6 +1,7 @@
 package dov.com.qq.im.capture.text;
 
 import android.text.TextUtils;
+import blxg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -10,7 +11,7 @@ import org.json.JSONObject;
 
 public class DynamicTextConfigManager$DynamicTextConfigBean
 {
-  public ArrayList fontInfos = new ArrayList();
+  public ArrayList<blxg> fontInfos = new ArrayList();
   public int iconDrawableId;
   public int predownload;
   public int text_id;
@@ -43,8 +44,8 @@ public class DynamicTextConfigManager$DynamicTextConfigBean
             i = 0;
             while (i < j)
             {
-              localObject2 = DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo.a((JSONObject)paramJSONObject.get(i));
-              ((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject2).jdField_a_of_type_Int = localDynamicTextConfigBean.text_id;
+              localObject2 = blxg.a((JSONObject)paramJSONObject.get(i));
+              ((blxg)localObject2).jdField_a_of_type_Int = localDynamicTextConfigBean.text_id;
               if (localObject2 != null) {
                 localDynamicTextConfigBean.fontInfos.add(localObject2);
               }
@@ -78,7 +79,7 @@ public class DynamicTextConfigManager$DynamicTextConfigBean
     }
     int k = this.fontInfos.size();
     Iterator localIterator = this.fontInfos.iterator();
-    for (int i = 0;; i = ((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localIterator.next()).b * 1 / k + i)
+    for (int i = 0;; i = ((blxg)localIterator.next()).b * 1 / k + i)
     {
       j = i;
       if (!localIterator.hasNext()) {
@@ -95,8 +96,8 @@ public class DynamicTextConfigManager$DynamicTextConfigBean
     Iterator localIterator = this.fontInfos.iterator();
     while (localIterator.hasNext())
     {
-      DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo localDynamicTextFontInfo = (DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localIterator.next();
-      if ((localDynamicTextFontInfo != null) && (paramString.equals(localDynamicTextFontInfo.jdField_a_of_type_JavaLangString))) {
+      blxg localblxg = (blxg)localIterator.next();
+      if ((localblxg != null) && (paramString.equals(localblxg.jdField_a_of_type_JavaLangString))) {
         return true;
       }
     }
@@ -105,7 +106,7 @@ public class DynamicTextConfigManager$DynamicTextConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean
  * JD-Core Version:    0.7.0.1
  */

@@ -54,7 +54,7 @@ public class MessageStruct
   public static final int MSG_VIDEOPLAYER_STOP_AUDIO = 67108869;
   public static final int MSG_VIDEOPLAYER_WRITE_AUDIO = 67108868;
   public int mId;
-  MessageCallBack mMsgCallBack;
+  MessageStruct.MessageCallBack mMsgCallBack;
   public String mName;
   public Object mObj0;
   public Object mObj1;
@@ -78,15 +78,10 @@ public class MessageStruct
   {
     return "{id:0x" + Integer.toHexString(this.mId).toUpperCase() + ", name=" + this.mName + ", param0:" + this.mParam0 + ", param1:" + this.mParam1 + ", obj0:" + this.mObj0 + ", obj1:" + this.mObj1 + ", msgCallBack:" + this.mMsgCallBack + "}";
   }
-  
-  public static abstract interface MessageCallBack
-  {
-    public abstract void ProcessMsg(MessageStruct paramMessageStruct, Object paramObject);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.maxvideo.common.MessageStruct
  * JD-Core Version:    0.7.0.1
  */

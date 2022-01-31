@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.qqstory.shareGroup.infocard.view.CircleImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a276e" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02184a" android:layout_width="34.0dip" android:layout_height="34.0dip" android:scaleType="centerCrop" />
-</FrameLayout>

@@ -12,7 +12,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class submsgtype0xdd$MsgBody$WifiPOIInfo
-  extends MessageMicro
+  extends MessageMicro<WifiPOIInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_name = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -20,7 +20,7 @@ public final class submsgtype0xdd$MsgBody$WifiPOIInfo
   public final PBBytesField bytes_uid = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBInt32Field int32_latitude = PBField.initInt32(0);
   public final PBInt32Field int32_longitude = PBField.initInt32(0);
-  public final PBRepeatMessageField rpt_msg_seats_info = PBField.initRepeatMessage(submsgtype0xdd.MsgBody.SeatsInfo.class);
+  public final PBRepeatMessageField<submsgtype0xdd.MsgBody.SeatsInfo> rpt_msg_seats_info = PBField.initRepeatMessage(submsgtype0xdd.MsgBody.SeatsInfo.class);
   public final PBStringField string_banner_url = PBField.initString("");
   public final PBStringField string_face_url = PBField.initString("");
   public final PBStringField string_join_group_url = PBField.initString("");

@@ -1,25 +1,33 @@
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.Mp4FlowReEncoder;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import java.util.List;
 
-public class ahoj
-  implements Comparator
+class ahoj
+  implements View.OnClickListener
 {
-  public ahoj(Mp4FlowReEncoder paramMp4FlowReEncoder) {}
+  ahoj(ahoi paramahoi) {}
   
-  public int a(ahod paramahod1, ahod paramahod2)
+  public void onClick(View paramView)
   {
-    if (paramahod2.a() > paramahod1.a()) {
-      return -1;
+    ahok localahok = (ahok)paramView.getTag();
+    if ((localahok == null) || (!(localahok instanceof ahok))) {
+      return;
     }
-    if (paramahod2.a() == paramahod1.a()) {
-      return 0;
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
+    paramView = (View)paramView.getParent();
+    if ((paramView instanceof ShaderAnimLayout)) {
+      ((ShaderAnimLayout)paramView).d();
     }
-    return 1;
+    ahoi.a(this.a, localahok.a);
+    this.a.jdField_a_of_type_JavaUtilList.add(ahoi.a(this.a).remove(this.a.getCount() - localahok.b - 1));
+    this.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahoj
  * JD-Core Version:    0.7.0.1
  */

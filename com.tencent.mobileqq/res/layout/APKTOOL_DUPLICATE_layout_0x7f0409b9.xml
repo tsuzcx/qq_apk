@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02207e" android:addStatesFromChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="50.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="8.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0567" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2b88" android:visibility="invisible" android:layout_width="43.0dip" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="DAY" android:singleLine="true" android:layout_centerVertical="true" />
-    <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0566" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2b89" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="未知地点" android:singleLine="true" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a2b88" android:layout_centerVertical="true" />
-    <com.qzone.widget.CommonLine android:layout_width="310.0dip" android:layout_height="1.0px" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-</RelativeLayout>

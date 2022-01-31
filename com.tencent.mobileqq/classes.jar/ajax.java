@@ -1,18 +1,31 @@
-import android.widget.ListView;
-import com.tencent.mobileqq.troop.createNewTroop.CateListAdapter;
-import com.tencent.mobileqq.troop.createNewTroop.CateListAdapter.ViewHolder;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCateView;
-import com.tencent.mobileqq.troop.createNewTroop.SubCateListView.OnToggleSubListListener;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCOnGetConnectionListener;
 
-public class ajax
-  implements SubCateListView.OnToggleSubListListener
+class ajax
+  implements EIPCOnGetConnectionListener
 {
-  public ajax(CateListAdapter.ViewHolder paramViewHolder) {}
+  ajax(ajaw paramajaw) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void onConnectBind(EIPCConnection paramEIPCConnection)
   {
-    if ((paramBoolean) && (paramInt > 0)) {
-      this.a.a.a.a.smoothScrollBy(paramInt, 200);
+    if (paramEIPCConnection != null) {
+      ajaw.a(this.a, paramEIPCConnection.procName);
+    }
+    ajaw.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCConnector", 2, "onConnectBind");
+    }
+  }
+  
+  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  {
+    if (paramEIPCConnection != null) {
+      ajaw.a(this.a, paramEIPCConnection.procName);
+    }
+    ajaw.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCConnector", 2, "onConnectUnbind");
     }
   }
 }

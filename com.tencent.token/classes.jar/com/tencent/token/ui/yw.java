@@ -1,20 +1,34 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.token.cw;
+import com.tencent.token.utils.x;
 
-final class yw
+class yw
   implements View.OnClickListener
 {
-  yw(ScanLoginBindActivity paramScanLoginBindActivity) {}
+  yw(SettingSubmitCommentActivity paramSettingSubmitCommentActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, IndexActivity.class);
-    paramView.putExtra("index_from", 22);
-    this.a.startActivity(paramView);
-    this.a.finish();
+    SettingSubmitCommentActivity.access$002(this.a, SettingSubmitCommentActivity.access$300(this.a).getText().toString());
+    if (SettingSubmitCommentActivity.access$000(this.a).length() == 0) {
+      return;
+    }
+    SettingSubmitCommentActivity.access$300(this.a).clearFocus();
+    x.a(this.a);
+    try
+    {
+      SettingSubmitCommentActivity.access$200(this.a).b(0L, SettingSubmitCommentActivity.access$000(this.a), SettingSubmitCommentActivity.access$100(this.a));
+      this.a.showProDialog(this.a, 2131230843, 2131231298, null);
+      return;
+    }
+    catch (Exception paramView)
+    {
+      paramView.printStackTrace();
+    }
   }
 }
 

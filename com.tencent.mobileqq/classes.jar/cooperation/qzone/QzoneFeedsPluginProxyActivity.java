@@ -1,18 +1,23 @@
 package cooperation.qzone;
 
+import abws;
+import android.content.Intent;
 import android.os.Bundle;
 
 public class QzoneFeedsPluginProxyActivity
   extends QzonePluginProxyActivity
 {
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
   }
   
-  protected void onResume()
+  public void onResume()
   {
     super.onResume();
+    if (getIntent().getIntExtra("hc_code", 0) != 0) {
+      abws.a().a(getIntent().getIntExtra("hc_code", 0), true);
+    }
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -22,7 +27,7 @@ public class QzoneFeedsPluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.QzoneFeedsPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

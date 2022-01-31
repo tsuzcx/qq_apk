@@ -1,20 +1,27 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.troop.model.TroopStorySingleVideoSynchronizer;
-import java.util.Collections;
+import java.util.ArrayList;
 
-public class onz
-  implements Runnable
+class onz
+  extends oob
 {
-  public onz(TroopStorySingleVideoSynchronizer paramTroopStorySingleVideoSynchronizer, StoryVideoItem paramStoryVideoItem) {}
-  
-  public void run()
+  onz(omz paramomz, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopStorySingleVideoSynchronizer.a(Collections.singletonList(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem), true);
+    super(paramomz, null);
+  }
+  
+  void a(ooe paramooe)
+  {
+    if (this.jdField_a_of_type_Int == 1) {
+      paramooe.onCommentListLoad(2, false, new ArrayList(), false, 4, 4);
+    }
+    while (this.jdField_a_of_type_Int != 2) {
+      return;
+    }
+    paramooe.onCommentLoadMore(2, false, new ArrayList(), false, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     onz
  * JD-Core Version:    0.7.0.1
  */

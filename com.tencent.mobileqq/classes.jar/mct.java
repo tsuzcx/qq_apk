@@ -1,17 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
-
-public class mct
-  implements View.OnClickListener
+class mct
 {
-  public mct(VideoFeedsListView paramVideoFeedsListView) {}
+  lsv jdField_a_of_type_Lsv;
+  mcs[] jdField_a_of_type_ArrayOfMcs = new mcs[2];
   
-  public void onClick(View paramView) {}
+  mct(mcr parammcr)
+  {
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfMcs.length)
+    {
+      this.jdField_a_of_type_ArrayOfMcs[i] = new mcs(parammcr);
+      i += 1;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mct
  * JD-Core Version:    0.7.0.1
  */

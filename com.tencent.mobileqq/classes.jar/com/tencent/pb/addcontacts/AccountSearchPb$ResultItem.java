@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class AccountSearchPb$ResultItem
-  extends MessageMicro
+  extends MessageMicro<ResultItem>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField feed_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -22,7 +22,7 @@ public final class AccountSearchPb$ResultItem
   public final PBBytesField nick_name = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField phtot_update = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField pic_url = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField pic_url_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> pic_url_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBBytesField result_id = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField summary = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field total_pic_num = PBField.initUInt32(0);
@@ -46,7 +46,7 @@ public final class AccountSearchPb$ResultItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.addcontacts.AccountSearchPb.ResultItem
  * JD-Core Version:    0.7.0.1
  */

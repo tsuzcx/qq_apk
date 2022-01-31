@@ -1,19 +1,27 @@
-import cooperation.qqreader.QRBridgeActivity;
-import cooperation.qqreader.QRBridgeActivity.PluginLaunchReceiver;
-
 public class amqw
-  implements Runnable
 {
-  public amqw(QRBridgeActivity.PluginLaunchReceiver paramPluginLaunchReceiver) {}
+  public long a;
+  public String a;
+  public long b = -1L;
+  public long c = -1L;
   
-  public void run()
+  public amqw(long paramLong)
   {
-    this.a.a.finish();
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = Long.toString(paramLong);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Long = -1L;
+    this.c = -1L;
+    this.b = -1L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amqw
  * JD-Core Version:    0.7.0.1
  */

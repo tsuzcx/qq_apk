@@ -1,26 +1,32 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.item.ThumbItemBuilder;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class viz
-  extends Handler
+class viz
+  implements URLDrawable.URLDrawableListener
 {
-  public viz(ThumbItemBuilder paramThumbItemBuilder, Looper paramLooper)
+  viz(viy paramviy) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    super(paramLooper);
+    viy.c(this.a, false);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (paramMessage.what == ThumbItemBuilder.a) {
-      this.a.b();
-    }
+    viy.b(this.a, false);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    this.a.a("UrlDrawableDownloadJob_dra", paramURLDrawable.getCurrDrawable());
+    viy.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     viz
  * JD-Core Version:    0.7.0.1
  */

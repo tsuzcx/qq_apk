@@ -1,29 +1,78 @@
-import com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine;
-import com.tencent.mobileqq.search.searchengine.ISearchListener;
-import com.tencent.mobileqq.search.searchengine.SearchRequest;
-import com.tencent.mobileqq.utils.fts.SQLiteFTSUtils;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.contacts.fragment.RecommendFriendFragment;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
 import java.util.List;
 
 public class ahtu
-  implements Runnable
+  extends altm
 {
-  public ahtu(FTSMessageSearchEngine paramFTSMessageSearchEngine, SearchRequest paramSearchRequest, ISearchListener paramISearchListener) {}
+  public ahtu(RecommendFriendFragment paramRecommendFriendFragment) {}
   
-  public void run()
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
   {
-    if (SQLiteFTSUtils.g(FTSMessageSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchFtsmsgFTSMessageSearchEngine)) == 1) {}
-    for (List localList = this.jdField_a_of_type_ComTencentMobileqqSearchFtsmsgFTSMessageSearchEngine.b(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest, false);; localList = this.jdField_a_of_type_ComTencentMobileqqSearchFtsmsgFTSMessageSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest, false))
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendFragment", 2, "onCancelMayKnowRecommend isSuccess:" + paramBoolean);
+    }
+    if (paramBoolean) {
+      RecommendFriendFragment.a(this.a);
+    }
+  }
+  
+  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendFragment", 2, "onGetMayKnowRecommend isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean) {
+      RecommendFriendFragment.a(this.a);
+    }
+  }
+  
+  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
+  {
+    super.onMayKnowListPushAdd(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendFragment", 2, "onMayKnowListPushAdd isSuccess:" + paramBoolean);
+    }
+    if (paramBoolean) {
+      RecommendFriendFragment.a(this.a);
+    }
+  }
+  
+  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
+  {
+    super.onMayKnowListPushDel(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendFragment", 2, "onMayKnowListPushDel isSuccess:" + paramBoolean);
+    }
+    if (paramBoolean) {
+      RecommendFriendFragment.a(this.a);
+    }
+  }
+  
+  protected void onMayknowStateChanged(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendFragment", 2, "onMayknowStateChanged isSuccess:" + paramBoolean);
+    }
+    if (paramBoolean)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(localList, 1);
+      if (this.a.jdField_a_of_type_Ahsa != null) {
+        this.a.jdField_a_of_type_Ahsa.notifyDataSetChanged();
       }
-      return;
+      if (this.a.jdField_a_of_type_ComTencentWidgetXListView != null)
+      {
+        this.a.jdField_a_of_type_ComTencentWidgetXListView.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+        this.a.jdField_a_of_type_ComTencentWidgetXListView.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1600L);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahtu
  * JD-Core Version:    0.7.0.1
  */

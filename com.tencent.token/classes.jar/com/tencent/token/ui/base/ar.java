@@ -3,12 +3,12 @@ package com.tencent.token.ui.base;
 import android.os.Handler;
 import android.os.Message;
 
-final class ar
+class ar
   extends Handler
 {
   ar(GameLoginSndConfirmView paramGameLoginSndConfirmView) {}
   
-  public final void handleMessage(Message paramMessage) {}
+  public void handleMessage(Message paramMessage) {}
 }
 
 

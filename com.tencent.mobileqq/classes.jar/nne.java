@@ -1,28 +1,23 @@
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
-import com.tencent.biz.qqstory.playmode.util.ShareGroupVideoDataProvider;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
-public class nne
-  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
+class nne
+  implements DialogInterface.OnClickListener
 {
-  public nne(ShareGroupVideoDataProvider paramShareGroupVideoDataProvider, BatchGetVideoInfo paramBatchGetVideoInfo, String paramString) {}
+  nne(nmx paramnmx, JsResult paramJsResult, Context paramContext) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilShareGroupVideoDataProvider.a(this.jdField_a_of_type_JavaLangString, false, null);
-  }
-  
-  public void a(ArrayList paramArrayList)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilShareGroupVideoDataProvider.a(this.jdField_a_of_type_JavaLangString, true, paramArrayList);
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
+    ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nne
  * JD-Core Version:    0.7.0.1
  */

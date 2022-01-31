@@ -1,21 +1,22 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qqfav.QfavBuilder;
-import cooperation.qqfav.QfavHelper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkViewModel;
 
-public class amox
-  implements Runnable
+class amox
+  implements View.OnClickListener
 {
-  public amox(QfavBuilder paramQfavBuilder, Activity paramActivity, QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString) {}
+  amox(amow paramamow, ArkViewModel paramArkViewModel) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QfavHelper.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, false);
+    if (this.jdField_a_of_type_ComTencentArkArkViewModel != null) {
+      this.jdField_a_of_type_ComTencentArkArkViewModel.reinitArkContainer();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amox
  * JD-Core Version:    0.7.0.1
  */

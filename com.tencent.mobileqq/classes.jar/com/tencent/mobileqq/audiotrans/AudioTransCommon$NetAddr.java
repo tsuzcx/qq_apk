@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBFixed32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class AudioTransCommon$NetAddr
-  extends MessageMicro
+  extends MessageMicro<NetAddr>
 {
   public static final int PT_TCP = 1;
   public static final int PT_UDP = 2;
@@ -20,7 +20,7 @@ public final class AudioTransCommon$NetAddr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.audiotrans.AudioTransCommon.NetAddr
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,7 @@ public class JavaHookBridge
   private static Map<Member, Set<HookMethodCallback>> hookCallbackMap;
   private static boolean isCompatible;
   private static Map<Member, Integer> methodIdMap = new ConcurrentHashMap();
-  private static Map<Member, MethodInfo> methodInfoMap;
+  private static Map<Member, JavaHookBridge.MethodInfo> methodInfoMap;
   private static Map<Member, ReplaceMethodCallback> replaceCallBackMap = new ConcurrentHashMap();
   private static boolean soError = false;
   
@@ -95,7 +95,6 @@ public class JavaHookBridge
   }
   
   public static void findAndHookConstructor(Class<?> paramClass, Object... paramVarArgs)
-    throws NoSuchMethodException
   {
     if (!isSdkAvailable()) {
       return;
@@ -113,7 +112,7 @@ public class JavaHookBridge
         paramClass = paramClass.getDeclaredConstructor((Class[])localObject);
         localObject = paramClass.getDeclaringClass();
         i = getMethodId(paramClass);
-        MethodInfo localMethodInfo = new MethodInfo(paramClass.getParameterTypes(), null);
+        JavaHookBridge.MethodInfo localMethodInfo = new JavaHookBridge.MethodInfo(paramClass.getParameterTypes(), null);
         methodInfoMap.put(paramClass, localMethodInfo);
         addHookCallback(paramClass, paramVarArgs);
         hookMethodNative(paramClass, (Class)localObject, i);
@@ -125,7 +124,6 @@ public class JavaHookBridge
   }
   
   public static void findAndHookMethod(Class<?> paramClass, String paramString, Object... paramVarArgs)
-    throws NoSuchMethodException
   {
     if (!isSdkAvailable()) {
       return;
@@ -142,7 +140,7 @@ public class JavaHookBridge
         paramVarArgs = (HookMethodCallback)paramVarArgs[(paramVarArgs.length - 1)];
         paramString = paramClass.getDeclaredMethod(paramString, (Class[])localObject);
         i = getMethodId(paramString);
-        localObject = new MethodInfo(paramString.getParameterTypes(), paramString.getReturnType());
+        localObject = new JavaHookBridge.MethodInfo(paramString.getParameterTypes(), paramString.getReturnType());
         methodInfoMap.put(paramString, localObject);
         addHookCallback(paramString, paramVarArgs);
         hookMethodNative(paramString, paramClass, i);
@@ -154,7 +152,6 @@ public class JavaHookBridge
   }
   
   public static void findAndReplaceMethod(Class<?> paramClass, String paramString, Object... paramVarArgs)
-    throws NoSuchMethodException
   {
     if (!isSdkAvailable()) {
       return;
@@ -172,7 +169,7 @@ public class JavaHookBridge
         paramClass = paramClass.getDeclaredMethod(paramString, (Class[])localObject);
         paramString = paramClass.getDeclaringClass();
         i = getMethodId(paramClass);
-        localObject = new MethodInfo(paramClass.getParameterTypes(), paramClass.getReturnType());
+        localObject = new JavaHookBridge.MethodInfo(paramClass.getParameterTypes(), paramClass.getReturnType());
         methodInfoMap.put(paramClass, localObject);
         if (replaceCallBackMap.containsKey(paramClass)) {
           Log.e("JavaHookBridge", paramClass.getName() + " was replaced by " + ((ReplaceMethodCallback)replaceCallBackMap.get(paramClass)).getClass().getName() + ". And now is replaced by " + paramVarArgs.getClass().getName());
@@ -215,7 +212,6 @@ public class JavaHookBridge
   }
   
   private static Object handleHookMethod(Member paramMember, Object paramObject, Object[] paramArrayOfObject)
-    throws Throwable
   {
     Set localSet = (Set)hookCallbackMap.get(paramMember);
     MethodHookParam localMethodHookParam = new MethodHookParam();
@@ -280,14 +276,12 @@ public class JavaHookBridge
   private static synchronized native void hookMethodNative(Member paramMember, Class<?> paramClass, int paramInt);
   
   public static Object invokeOriginMethod(Member paramMember, Object paramObject, Object[] paramArrayOfObject)
-    throws InvocationTargetException
   {
-    Object localObject = (MethodInfo)methodInfoMap.get(paramMember);
-    if (localObject != null) {
-      return invokeOriginMethodNative(paramMember, getMethodId(paramMember), paramObject, paramArrayOfObject, ((MethodInfo)localObject).paramTypes, ((MethodInfo)localObject).returnType);
-    }
-    localObject = null;
     Class localClass = null;
+    Object localObject = (JavaHookBridge.MethodInfo)methodInfoMap.get(paramMember);
+    if (localObject != null) {
+      return invokeOriginMethodNative(paramMember, getMethodId(paramMember), paramObject, paramArrayOfObject, ((JavaHookBridge.MethodInfo)localObject).paramTypes, ((JavaHookBridge.MethodInfo)localObject).returnType);
+    }
     if ((paramMember instanceof Method))
     {
       localObject = ((Method)paramMember).getParameterTypes();
@@ -296,32 +290,19 @@ public class JavaHookBridge
     for (;;)
     {
       return invokeOriginMethodNative(paramMember, getMethodId(paramMember), paramObject, paramArrayOfObject, (Class[])localObject, localClass);
-      if ((paramMember instanceof Constructor))
-      {
+      if ((paramMember instanceof Constructor)) {
         localObject = ((Constructor)paramMember).getParameterTypes();
-        localClass = null;
+      } else {
+        localObject = null;
       }
     }
   }
   
-  private static native Object invokeOriginMethodNative(Member paramMember, int paramInt, Object paramObject, Object[] paramArrayOfObject, Class<?>[] paramArrayOfClass, Class<?> paramClass)
-    throws InvocationTargetException;
+  private static native Object invokeOriginMethodNative(Member paramMember, int paramInt, Object paramObject, Object[] paramArrayOfObject, Class<?>[] paramArrayOfClass, Class<?> paramClass);
   
   public static boolean isSdkAvailable()
   {
     return (isCompatible) && (!soError);
-  }
-  
-  public static class MethodInfo
-  {
-    final Class<?>[] paramTypes;
-    final Class<?> returnType;
-    
-    public MethodInfo(Class<?>[] paramArrayOfClass, Class<?> paramClass)
-    {
-      this.paramTypes = paramArrayOfClass;
-      this.returnType = paramClass;
-    }
   }
 }
 

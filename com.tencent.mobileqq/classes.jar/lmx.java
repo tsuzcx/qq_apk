@@ -1,30 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.WeishiManager;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import java.util.Comparator;
 
-public class lmx
-  implements Runnable
+final class lmx
+  implements Comparator<lmw>
 {
-  public lmx(WeishiManager paramWeishiManager) {}
-  
-  public void run()
+  public int a(lmw paramlmw1, lmw paramlmw2)
   {
-    if (WeishiManager.a(this.a) == null) {
-      return;
+    if (paramlmw1 == paramlmw2) {
+      return 0;
     }
-    SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_JavaLangString = AppConstants.aH;
-    localSessionInfo.jdField_a_of_type_Int = 1008;
-    ChatActivityFacade.a(WeishiManager.a(this.a), localSessionInfo);
-    WeishiManager.a(this.a).a().c(AppConstants.aH, 1008);
+    if (paramlmw1 == null) {
+      return -1;
+    }
+    if (paramlmw2 == null) {
+      return 1;
+    }
+    return paramlmw1.a - paramlmw2.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lmx
  * JD-Core Version:    0.7.0.1
  */

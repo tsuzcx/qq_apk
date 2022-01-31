@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/b8q" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.SwipListView android:id="@id/ebs" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:divider="@null" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/guz" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.biz.qqstory.view.widget.QQStoryLoadingView android:textSize="16.0dip" android:textColor="@color/skin_gray_group_item" android:id="@id/gxd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fxg" android:drawablePadding="15.0dip" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/skin_gray_group_item" android:gravity="center_horizontal" android:id="@id/bw7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="15.0dip" />
+    </LinearLayout>
+</FrameLayout>

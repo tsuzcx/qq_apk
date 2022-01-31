@@ -1,32 +1,24 @@
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
-import org.apache.http.HttpResponse;
-import org.apache.http.impl.client.DefaultRedirectHandler;
-import org.apache.http.protocol.HttpContext;
-
-public final class aiqh
-  extends DefaultRedirectHandler
+public abstract interface aiqh
 {
-  public URI getLocationURI(HttpResponse paramHttpResponse, HttpContext paramHttpContext)
-  {
-    URI localURI = super.getLocationURI(paramHttpResponse, paramHttpContext);
-    paramHttpResponse = paramHttpContext.getAttribute("mobileqq_report_flag");
-    if ((paramHttpResponse != null) && ((paramHttpResponse instanceof Integer)) && (((Integer)paramHttpResponse).intValue() > 0))
-    {
-      Object localObject = paramHttpContext.getAttribute("mobileqq_direct_uri");
-      paramHttpResponse = localObject;
-      if (localObject == null)
-      {
-        paramHttpResponse = new ArrayList();
-        paramHttpContext.setAttribute("mobileqq_direct_uri", paramHttpResponse);
-      }
-      if ((paramHttpResponse != null) && ((paramHttpResponse instanceof List))) {
-        ((List)paramHttpResponse).add(localURI);
-      }
-    }
-    return localURI;
-  }
+  public abstract void a(aiqo paramaiqo);
+  
+  public abstract void a(aiqo paramaiqo, int paramInt);
+  
+  public abstract void a(aiqo paramaiqo, int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(aiqo paramaiqo, long paramLong);
+  
+  public abstract void a(aiqo paramaiqo, boolean paramBoolean);
+  
+  public abstract void b(aiqo paramaiqo);
+  
+  public abstract void b(aiqo paramaiqo, int paramInt);
+  
+  public abstract void c(aiqo paramaiqo);
+  
+  public abstract void d(aiqo paramaiqo);
+  
+  public abstract void v();
 }
 
 

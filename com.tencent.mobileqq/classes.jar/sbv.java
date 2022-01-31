@@ -1,19 +1,32 @@
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.utils.QQUtils;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class sbv
-  implements Runnable
+class sbv
+  implements View.OnClickListener
 {
-  public sbv(ChatSettingActivity paramChatSettingActivity) {}
+  sbv(sbu paramsbu) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QQUtils.a(this.a.app, ChatSettingActivity.b(this.a), ChatSettingActivity.f(this.a), this.a.getTitleBarHeight(), this.a.a, 500, "0", ChatSettingActivity.a(this.a));
+    try
+    {
+      ((ClipboardManager)paramView.getContext().getSystemService("clipboard")).setText(this.a.a.c.getString("id_attribute_text"));
+      return;
+    }
+    catch (Exception paramView)
+    {
+      QLog.d("WebProteusViewCreator", 1, "showAsDropDown error,msg:" + paramView.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sbv
  * JD-Core Version:    0.7.0.1
  */

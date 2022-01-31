@@ -1,44 +1,84 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import android.os.Build;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgTabNodeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class uzk
-  extends ClickableSpan
+  extends urt
 {
-  public uzk(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
+  static final String a;
+  static boolean b;
+  public boolean a;
+  public String b;
+  public int c;
+  public String c;
   
-  public void onClick(View paramView)
+  static
   {
-    if (NetworkUtil.d(this.a.jdField_a_of_type_AndroidContentContext))
-    {
-      paramView = (FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      paramView.a((short)1, localArrayList, false);
-      return;
-    }
-    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131433009), 1).b(((BaseActivity)this.a.jdField_a_of_type_AndroidContentContext).getTitleBarHeight());
+    jdField_a_of_type_JavaLangString = uqn.a("StoryTabSvc.startpage_feeds_list_725");
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public String a()
   {
-    paramTextPaint.setColor(Color.rgb(26, 144, 240));
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public uro a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspMsgTabNodeList localRspMsgTabNodeList = new qqstory_service.RspMsgTabNodeList();
+    try
+    {
+      localRspMsgTabNodeList.mergeFrom(paramArrayOfByte);
+      return new uzl(localRspMsgTabNodeList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    if (jdField_b_of_type_Boolean)
+    {
+      this.jdField_b_of_type_JavaLangString = null;
+      this.jdField_c_of_type_JavaLangString = null;
+    }
+    qqstory_service.ReqMsgTabNodeList localReqMsgTabNodeList = new qqstory_service.ReqMsgTabNodeList();
+    if (this.jdField_b_of_type_JavaLangString != null) {
+      localReqMsgTabNodeList.current_seq.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    }
+    localReqMsgTabNodeList.source.set(this.jdField_c_of_type_Int);
+    if (this.jdField_c_of_type_JavaLangString != null) {
+      localReqMsgTabNodeList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+    }
+    localReqMsgTabNodeList.version.set(4);
+    Long localLong = xrm.a();
+    if (localLong != null) {
+      localReqMsgTabNodeList.adcode.set(localLong.longValue());
+    }
+    localReqMsgTabNodeList.device.set(ByteStringMicro.copyFromUtf8(Build.DEVICE));
+    localReqMsgTabNodeList.force_refresh.set(this.jdField_a_of_type_Boolean);
+    localReqMsgTabNodeList.client_version.set(ByteStringMicro.copyFromUtf8("8.3.5"));
+    return localReqMsgTabNodeList.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "MsgTabNodeListRequest{cookie='" + this.jdField_c_of_type_JavaLangString + '\'' + ", seq='" + this.jdField_b_of_type_JavaLangString + '\'' + ", source=" + this.jdField_c_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uzk
  * JD-Core Version:    0.7.0.1
  */

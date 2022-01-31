@@ -1,13 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.Switch;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qqfav.widget.FavoriteActionSheet;
 
 public class ibj
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public ibj(Switch paramSwitch) {}
+  public ibj(FavoriteActionSheet paramFavoriteActionSheet) {}
   
-  public void onClick(View paramView) {}
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.a = false;
+  }
 }
 
 

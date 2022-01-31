@@ -1,30 +1,35 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.VipInfoHandler;
 import com.tencent.qphone.base.util.QLog;
-import mqq.manager.TicketManager;
 
-public class tle
-  implements Runnable
+class tle
+  extends bjol
 {
-  public tle(QQSettingMe paramQQSettingMe) {}
+  tle(tld paramtld) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    if (!QQSettingMe.d(this.a)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, "updateVipInfo");
-    }
-    String str1 = this.a.a.getCurrentAccountUin();
-    String str2 = ((TicketManager)this.a.a.getManager(2)).getSkey(str1);
-    ((VipInfoHandler)this.a.a.a(27)).a(str2, str1);
+    tld.a = 1;
+    tld.a(this.a);
+    QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk state == STATE_DOWNLOADED onInstallBegin  STATE_PRELOAD_BEGIN sPreloadPluginState = " + tld.a);
+  }
+  
+  public void a(String paramString, float paramFloat, long paramLong) {}
+  
+  public void a(String paramString, int paramInt)
+  {
+    tld.a = -1;
+    QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk state == STATE_DOWNLOADED onInstallError  STATE_PRELOAD_ERR sPreloadPluginState = " + tld.a);
+  }
+  
+  public void b(String paramString)
+  {
+    tld.a = 2;
+    tld.a(this.a);
+    QLog.i("QzoneVerticalVideoPluginApk", 1, "QzoneVerticalVideoPluginApk state == STATE_DOWNLOADED onInstallFinish  STATE_PRELOAD_FINISH sPreloadPluginState = " + tld.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tle
  * JD-Core Version:    0.7.0.1
  */

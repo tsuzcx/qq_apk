@@ -2,34 +2,43 @@ package com.tencent.upload.uinterface;
 
 import SLICE_UPLOAD.AuthToken;
 import SLICE_UPLOAD.CheckType;
+import SLICE_UPLOAD.DumpBussinessReq;
 import SLICE_UPLOAD.FileControlReq;
 import SLICE_UPLOAD.UploadModel;
 import SLICE_UPLOAD.stEnvironment;
 import android.os.Handler;
 import android.os.Parcel;
-import com.tencent.upload.common.Const.UploadRetCode;
-import com.tencent.upload.common.Const.b;
-import com.tencent.upload.common.FileUtils;
 import com.tencent.upload.common.UploadConfiguration;
-import com.tencent.upload.d.a.a.b;
-import com.tencent.upload.d.e;
+import com.tencent.upload.common.UploadGlobalConfig;
+import com.tencent.upload.network.session.cache.CacheUtil;
 import com.tencent.upload.report.Report;
+import com.tencent.upload.request.UploadRequest;
+import com.tencent.upload.request.impl.BatchControlRequest;
+import com.tencent.upload.request.impl.FileControlRequest;
+import com.tencent.upload.task.TaskState;
+import com.tencent.upload.task.UploadTask;
+import com.tencent.upload.task.data.UploadDataSource.FileDataSource;
+import com.tencent.upload.uinterface.token.TokenProvider;
+import com.tencent.upload.utils.Const.FileType;
+import com.tencent.upload.utils.Const.UploadRetCode;
+import com.tencent.upload.utils.FileUtils;
+import com.tencent.upload.utils.UploadLog;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
 public abstract class AbstractUploadTask
-  extends e
+  extends UploadTask
 {
   public static final String ENTRY_TYPE_ALBUM = "album";
   public static final String ENTRY_TYPE_SHUOSHUO = "shoushuo";
   protected static final String TAG = "AbstractUploadTask";
-  public byte[] b2Gt = null;
   public String entry = "";
   public Object extra;
   public int iSync = 1;
   public long iUin = 0L;
   public long iUploadTime = 0L;
+  public boolean isSyncWeishi;
   int lastState = -1;
   protected int mBatchId;
   protected byte[] mBizReq;
@@ -39,7 +48,7 @@ public abstract class AbstractUploadTask
   protected UploadModel mModel;
   protected boolean mNeedBatch = true;
   protected boolean mNeedIpRedirect;
-  protected String mOriginFilePath;
+  public String mOriginFilePath;
   protected stEnvironment mStEnv;
   protected String mTmpUploadPath;
   public String md5 = null;
@@ -47,6 +56,7 @@ public abstract class AbstractUploadTask
   public int preupload = 0;
   public String reportRefer = "mqzone";
   public String sDescMD5;
+  public String sDevIMEI;
   public String sFileMD5;
   public String sRefer = "mqzone";
   public String sha1 = null;
@@ -87,13 +97,13 @@ public abstract class AbstractUploadTask
   private void resetPath(String paramString)
   {
     this.mFilePath = paramString;
-    this.mDataSource = new a.b(paramString);
+    this.mDataSource = new UploadDataSource.FileDataSource(paramString);
     this.mDataLength = FileUtils.getFileLength(this.mFilePath);
   }
   
   protected void buildEnv()
   {
-    this.mStEnv = com.tencent.upload.common.a.g();
+    this.mStEnv = UploadGlobalConfig.getEnv();
     this.mStEnv.refer = this.sRefer;
     this.mStEnv.entrance = this.uploadEntrance;
   }
@@ -130,51 +140,47 @@ public abstract class AbstractUploadTask
     return this.mBatchId;
   }
   
-  protected int getBucketSize()
+  public int getBucketSize()
   {
     return 16384;
   }
   
-  protected com.tencent.upload.c.b getControlRequest()
+  public UploadRequest getControlRequest()
   {
-    Object localObject2;
-    StringBuilder localStringBuilder;
+    Object localObject1;
     if (this.mAppid.equalsIgnoreCase("video_qzone"))
     {
       this.mCheckType = CheckType.TYPE_SHA1;
       localObject1 = FileUtils.getFileSha1(new File(this.mFilePath));
       this.sha1 = ((String)localObject1);
-      this.mChecksum = ((String)localObject1);
-      com.tencent.upload.common.b.b("AbstractUploadTask", "mCheckType: " + this.mCheckType);
-      com.tencent.upload.common.b.b("AbstractUploadTask", "mChecksum: " + this.mChecksum);
-      localObject1 = this.vLoginData;
-      localObject2 = new AuthToken(2, (byte[])localObject1, this.vLoginKey, com.tencent.upload.common.a.b().getAppId());
-      localStringBuilder = new StringBuilder().append(" vLoginData.size:");
-      if (localObject1 != null) {
-        break label358;
-      }
     }
-    label358:
-    for (Object localObject1 = "null";; localObject1 = Integer.valueOf(localObject1.length))
+    for (this.mChecksum = ((String)localObject1);; this.mChecksum = ((String)localObject1))
     {
-      com.tencent.upload.common.b.c("AbstractUploadTask", localObject1 + " vLoginKey.size:" + this.vLoginKey.length);
+      UploadLog.d("AbstractUploadTask", "mCheckType: " + this.mCheckType + "\nmChecksum: " + this.mChecksum);
+      Object localObject2 = TokenProvider.getAuthToken(this.vLoginData, this.vLoginKey);
       buildEnv();
       this.mModel = UploadModel.MODEL_NORMAL;
       if (this.preupload == 1) {
         this.mModel = UploadModel.MODEL_PRE_UPLOAD;
       }
-      localObject1 = new com.tencent.upload.c.a.c(this.iUin + "", this.mAppid, (AuthToken)localObject2, this.mChecksum, this.mCheckType, this.mDataLength, this.mStEnv, this.mModel, this.mSessionId, this.mNeedIpRedirect, true, this.iSync);
-      ((com.tencent.upload.c.a.c)localObject1).a(buildExtra());
+      localObject1 = null;
+      if (this.isSyncWeishi)
+      {
+        localObject1 = new HashMap();
+        DumpBussinessReq localDumpBussinessReq = new DumpBussinessReq();
+        localDumpBussinessReq.IMEI = this.sDevIMEI;
+        ((Map)localObject1).put(Integer.valueOf(1), localDumpBussinessReq);
+      }
+      localObject1 = new FileControlRequest(this.iUin + "", this.mAppid, (AuthToken)localObject2, this.mChecksum, this.mCheckType, this.mDataLength, this.mStEnv, this.mModel, this.mSessionId, this.mNeedIpRedirect, true, this.iSync, (Map)localObject1);
+      ((FileControlRequest)localObject1).setExtraParam(buildExtra());
       localObject2 = new HashMap();
-      ((Map)localObject2).put("1", (FileControlReq)((com.tencent.upload.c.a.c)localObject1).h());
-      localObject1 = new com.tencent.upload.c.a.b((Map)localObject2);
-      ((com.tencent.upload.c.a.b)localObject1).a(this.flowId);
+      ((Map)localObject2).put("1", (FileControlReq)((FileControlRequest)localObject1).createJceRequest());
+      localObject1 = new BatchControlRequest((Map)localObject2);
+      ((BatchControlRequest)localObject1).setTaskId(this.flowId);
       return localObject1;
       this.mCheckType = CheckType.TYPE_MD5;
       localObject1 = FileUtils.getMd5ByFile_REAL(new File(this.mFilePath));
       this.md5 = ((String)localObject1);
-      this.mChecksum = ((String)localObject1);
-      break;
     }
   }
   
@@ -183,92 +189,92 @@ public abstract class AbstractUploadTask
     return this.mDataLength;
   }
   
-  public Const.b getFileType()
+  public Const.FileType getFileType()
   {
-    return Const.b.e;
+    return Const.FileType.Other;
   }
   
   /* Error */
-  protected com.tencent.upload.c.a.d getFileUploadRequest(com.tencent.upload.d.a parama)
+  public com.tencent.upload.request.impl.FileUploadRequest getFileUploadRequest(com.tencent.upload.task.AtomFile paramAtomFile)
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 358	com/tencent/upload/uinterface/AbstractUploadTask:mSliceSize	I
+    //   1: getfield 340	com/tencent/upload/uinterface/AbstractUploadTask:mSliceSize	I
     //   4: ifle +68 -> 72
     //   7: aload_0
-    //   8: getfield 358	com/tencent/upload/uinterface/AbstractUploadTask:mSliceSize	I
+    //   8: getfield 340	com/tencent/upload/uinterface/AbstractUploadTask:mSliceSize	I
     //   11: istore_2
     //   12: aload_0
     //   13: iload_2
-    //   14: putfield 358	com/tencent/upload/uinterface/AbstractUploadTask:mSliceSize	I
+    //   14: putfield 340	com/tencent/upload/uinterface/AbstractUploadTask:mSliceSize	I
     //   17: aconst_null
     //   18: astore 5
     //   20: aload_1
     //   21: monitorenter
     //   22: aload_1
-    //   23: invokevirtual 362	com/tencent/upload/d/a:a	()J
+    //   23: invokevirtual 345	com/tencent/upload/task/AtomFile:getRemainSize	()J
     //   26: lstore_3
     //   27: lload_3
     //   28: lconst_0
     //   29: lcmp
     //   30: ifgt +50 -> 80
-    //   33: ldc 25
-    //   35: new 234	java/lang/StringBuilder
+    //   33: ldc 14
+    //   35: new 222	java/lang/StringBuilder
     //   38: dup
-    //   39: invokespecial 236	java/lang/StringBuilder:<init>	()V
-    //   42: ldc_w 364
-    //   45: invokevirtual 242	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: invokespecial 224	java/lang/StringBuilder:<init>	()V
+    //   42: ldc_w 347
+    //   45: invokevirtual 230	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   48: aload_0
-    //   49: getfield 198	com/tencent/upload/uinterface/AbstractUploadTask:flowId	I
-    //   52: invokevirtual 276	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   55: ldc_w 366
-    //   58: invokevirtual 242	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   61: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   64: invokestatic 369	com/tencent/upload/common/b:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   49: getfield 186	com/tencent/upload/uinterface/AbstractUploadTask:flowId	I
+    //   52: invokevirtual 350	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   55: ldc_w 352
+    //   58: invokevirtual 230	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   61: invokevirtual 238	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   64: invokestatic 355	com/tencent/upload/utils/UploadLog:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   67: aload_1
     //   68: monitorexit
     //   69: aload 5
     //   71: areturn
     //   72: aload_0
-    //   73: invokevirtual 371	com/tencent/upload/uinterface/AbstractUploadTask:getBucketSize	()I
+    //   73: invokevirtual 357	com/tencent/upload/uinterface/AbstractUploadTask:getBucketSize	()I
     //   76: istore_2
     //   77: goto -65 -> 12
     //   80: lload_3
     //   81: aload_0
-    //   82: getfield 358	com/tencent/upload/uinterface/AbstractUploadTask:mSliceSize	I
+    //   82: getfield 340	com/tencent/upload/uinterface/AbstractUploadTask:mSliceSize	I
     //   85: i2l
-    //   86: invokestatic 377	java/lang/Math:min	(JJ)J
+    //   86: invokestatic 363	java/lang/Math:min	(JJ)J
     //   89: lstore_3
-    //   90: new 379	com/tencent/upload/c/a/d
+    //   90: new 365	com/tencent/upload/request/impl/FileUploadRequest
     //   93: dup
     //   94: aload_0
-    //   95: getfield 161	com/tencent/upload/uinterface/AbstractUploadTask:mDataSource	Lcom/tencent/upload/d/a/a;
-    //   98: new 234	java/lang/StringBuilder
+    //   95: getfield 149	com/tencent/upload/uinterface/AbstractUploadTask:mDataSource	Lcom/tencent/upload/task/data/UploadDataSource;
+    //   98: new 222	java/lang/StringBuilder
     //   101: dup
-    //   102: invokespecial 236	java/lang/StringBuilder:<init>	()V
+    //   102: invokespecial 224	java/lang/StringBuilder:<init>	()V
     //   105: aload_0
-    //   106: getfield 96	com/tencent/upload/uinterface/AbstractUploadTask:iUin	J
-    //   109: invokevirtual 296	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   112: ldc 92
-    //   114: invokevirtual 242	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   117: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   106: getfield 84	com/tencent/upload/uinterface/AbstractUploadTask:iUin	J
+    //   109: invokevirtual 292	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   112: ldc 80
+    //   114: invokevirtual 230	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   117: invokevirtual 238	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   120: aload_0
-    //   121: getfield 212	com/tencent/upload/uinterface/AbstractUploadTask:mAppid	Ljava/lang/String;
+    //   121: getfield 200	com/tencent/upload/uinterface/AbstractUploadTask:mAppid	Ljava/lang/String;
     //   124: aload_0
-    //   125: getfield 299	com/tencent/upload/uinterface/AbstractUploadTask:mSessionId	Ljava/lang/String;
+    //   125: getfield 295	com/tencent/upload/uinterface/AbstractUploadTask:mSessionId	Ljava/lang/String;
     //   128: aload_1
     //   129: lload_3
-    //   130: invokevirtual 382	com/tencent/upload/d/a:a	(J)J
+    //   130: invokevirtual 369	com/tencent/upload/task/AtomFile:reduce	(J)J
     //   133: lload_3
     //   134: aload_0
-    //   135: getfield 225	com/tencent/upload/uinterface/AbstractUploadTask:mCheckType	LSLICE_UPLOAD/CheckType;
+    //   135: getfield 213	com/tencent/upload/uinterface/AbstractUploadTask:mCheckType	LSLICE_UPLOAD/CheckType;
     //   138: iconst_0
-    //   139: invokespecial 385	com/tencent/upload/c/a/d:<init>	(Lcom/tencent/upload/d/a/a;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JJLSLICE_UPLOAD/CheckType;Z)V
+    //   139: invokespecial 372	com/tencent/upload/request/impl/FileUploadRequest:<init>	(Lcom/tencent/upload/task/data/UploadDataSource;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JJLSLICE_UPLOAD/CheckType;Z)V
     //   142: astore 5
     //   144: aload 5
     //   146: aload_0
-    //   147: getfield 198	com/tencent/upload/uinterface/AbstractUploadTask:flowId	I
-    //   150: invokevirtual 386	com/tencent/upload/c/a/d:a	(I)V
+    //   147: getfield 186	com/tencent/upload/uinterface/AbstractUploadTask:flowId	I
+    //   150: invokevirtual 373	com/tencent/upload/request/impl/FileUploadRequest:setTaskId	(I)V
     //   153: goto -86 -> 67
     //   156: astore 5
     //   158: aload_1
@@ -278,10 +284,10 @@ public abstract class AbstractUploadTask
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	163	0	this	AbstractUploadTask
-    //   0	163	1	parama	com.tencent.upload.d.a
+    //   0	163	1	paramAtomFile	com.tencent.upload.task.AtomFile
     //   11	66	2	i	int
     //   26	108	3	l	long
-    //   18	127	5	locald	com.tencent.upload.c.a.d
+    //   18	127	5	localFileUploadRequest	com.tencent.upload.request.impl.FileUploadRequest
     //   156	5	5	localObject	Object
     // Exception table:
     //   from	to	target	type
@@ -302,7 +308,7 @@ public abstract class AbstractUploadTask
     return this.mFlowRecoder;
   }
   
-  public String getProtocalAppid()
+  public String getProtocolAppid()
   {
     return this.mAppid;
   }
@@ -331,26 +337,18 @@ public abstract class AbstractUploadTask
   
   protected void onDestroy()
   {
-    com.tencent.upload.a.a.b(this, this.mSessionId);
+    CacheUtil.deleteSessionId(this, this.mSessionId);
   }
   
-  protected void onUploadError(final int paramInt, final String paramString)
+  public void onUploadError(int paramInt, String paramString)
   {
-    com.tencent.upload.common.b.d("AbstractUploadTask", "upload file failed! actionId=" + getTaskId() + " ret=" + paramInt + " msg=" + paramString);
+    UploadLog.w("AbstractUploadTask", "upload file failed! actionId=" + getTaskId() + " ret=" + paramInt + " msg=" + paramString);
     if (this.uploadTaskCallback == null) {
       return;
     }
     if (this.mHandler != null)
     {
-      this.mHandler.post(new Runnable()
-      {
-        public void run()
-        {
-          if (AbstractUploadTask.this.uploadTaskCallback != null) {
-            AbstractUploadTask.this.uploadTaskCallback.onUploadError(AbstractUploadTask.this, paramInt, paramString);
-          }
-        }
-      });
+      this.mHandler.post(new AbstractUploadTask.3(this, paramInt, paramString));
       return;
     }
     this.uploadTaskCallback.onUploadError(this, paramInt, paramString);
@@ -358,10 +356,10 @@ public abstract class AbstractUploadTask
   
   public final void onUploadProcessStart()
   {
-    onUploadStateChange(com.tencent.upload.d.c.a);
+    onUploadStateChange(TaskState.WAITING);
   }
   
-  protected void onUploadProgress(final long paramLong1, long paramLong2)
+  public void onUploadProgress(long paramLong1, long paramLong2)
   {
     if (this.uploadTaskCallback == null) {}
     while (this.mFinish) {
@@ -369,23 +367,15 @@ public abstract class AbstractUploadTask
     }
     if (this.mHandler != null)
     {
-      this.mHandler.post(new Runnable()
-      {
-        public void run()
-        {
-          if (AbstractUploadTask.this.uploadTaskCallback != null) {
-            AbstractUploadTask.this.uploadTaskCallback.onUploadProgress(AbstractUploadTask.this, paramLong1, this.b);
-          }
-        }
-      });
+      this.mHandler.post(new AbstractUploadTask.1(this, paramLong1, paramLong2));
       return;
     }
     this.uploadTaskCallback.onUploadProgress(this, paramLong1, paramLong2);
   }
   
-  protected void onUploadStateChange(com.tencent.upload.d.c paramc)
+  public void onUploadStateChange(TaskState paramTaskState)
   {
-    final int i = paramc.c();
+    int i = paramTaskState.getOutState();
     if ((i == 1) && (this.lastState == i)) {}
     do
     {
@@ -397,36 +387,20 @@ public abstract class AbstractUploadTask
     } while (this.uploadTaskCallback == null);
     if (this.mHandler != null)
     {
-      this.mHandler.post(new Runnable()
-      {
-        public void run()
-        {
-          if (AbstractUploadTask.this.uploadTaskCallback != null) {
-            AbstractUploadTask.this.uploadTaskCallback.onUploadStateChange(AbstractUploadTask.this, i);
-          }
-        }
-      });
+      this.mHandler.post(new AbstractUploadTask.4(this, i));
       return;
     }
     this.uploadTaskCallback.onUploadStateChange(this, i);
   }
   
-  protected void onUploadSucceed(final Object paramObject)
+  public void onUploadSucceed(Object paramObject)
   {
     if (this.uploadTaskCallback == null) {
       return;
     }
     if (this.mHandler != null)
     {
-      this.mHandler.post(new Runnable()
-      {
-        public void run()
-        {
-          if (AbstractUploadTask.this.uploadTaskCallback != null) {
-            AbstractUploadTask.this.uploadTaskCallback.onUploadSucceed(AbstractUploadTask.this, paramObject);
-          }
-        }
-      });
+      this.mHandler.post(new AbstractUploadTask.2(this, paramObject));
       return;
     }
     this.uploadTaskCallback.onUploadSucceed(this, paramObject);
@@ -437,20 +411,20 @@ public abstract class AbstractUploadTask
     String str = getFilePath();
     if (!FileUtils.isFileExist(str))
     {
-      com.tencent.upload.common.b.e("AbstractUploadTask", Const.UploadRetCode.FILE_NOT_EXIST + " path:" + str);
+      UploadLog.e("AbstractUploadTask", Const.UploadRetCode.FILE_NOT_EXIST + " path:" + str);
       onError(Const.UploadRetCode.FILE_NOT_EXIST.getCode(), Const.UploadRetCode.FILE_NOT_EXIST.getDesc());
       return false;
     }
     if (!FileUtils.isValidTempFile(str))
     {
-      com.tencent.upload.common.b.e("AbstractUploadTask", Const.UploadRetCode.FILE_LENGTH_INVALID + " path:" + str);
+      UploadLog.e("AbstractUploadTask", Const.UploadRetCode.FILE_LENGTH_INVALID + " path:" + str);
       onError(Const.UploadRetCode.FILE_LENGTH_INVALID.getCode(), Const.UploadRetCode.FILE_LENGTH_INVALID.getDesc());
       return false;
     }
     return true;
   }
   
-  protected void report(int paramInt, String paramString)
+  public void report(int paramInt, String paramString)
   {
     this.mReportObj.refer = this.reportRefer;
     this.mReportObj.uploadType = getUploadTaskType();
@@ -481,17 +455,10 @@ public abstract class AbstractUploadTask
     this.mTmpUploadPath = paramString;
     resetPath(paramString);
   }
-  
-  public static final class PreUploadFlag
-  {
-    public static final int HIT_PRE_UPLOAD = 2;
-    public static final int NORMAL_UPLOAD = 0;
-    public static final int PRE_UPLOAD = 1;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.upload.uinterface.AbstractUploadTask
  * JD-Core Version:    0.7.0.1
  */

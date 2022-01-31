@@ -1,14 +1,25 @@
-import com.tencent.mobileqq.leba.LebaFeedsVideoPlayController;
-import com.tencent.mobileqq.leba.LebaFeedsVideoPlayController.VideoPlayParam;
+import android.provider.Settings.System;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class adyx
-  implements Runnable
+  implements View.OnClickListener
 {
-  public adyx(LebaFeedsVideoPlayController paramLebaFeedsVideoPlayController, LebaFeedsVideoPlayController.VideoPlayParam paramVideoPlayParam) {}
+  public adyx(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController$VideoPlayParam, 3);
+    this.a.b(2);
+    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.a);
+    if (this.a.a().booleanValue())
+    {
+      paramView = Settings.System.DEFAULT_NOTIFICATION_URI;
+      this.a.b();
+      this.a.a(paramView);
+    }
   }
 }
 

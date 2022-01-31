@@ -1,90 +1,174 @@
-import android.database.SQLException;
-import android.os.Message;
-import android.os.SystemClock;
-import android.util.Pair;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.mobileqq.app.MessageRoamManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.persistence.MessageRecordEntityManager;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import android.graphics.PorterDuff.Mode;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
 
 public class zhh
-  implements Runnable
+  extends Dialog
 {
-  public zhh(MessageRoamManager paramMessageRoamManager, String paramString1, String paramString2, String paramString3, Pair paramPair, long paramLong) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private zhk jdField_a_of_type_Zhk;
+  private boolean jdField_a_of_type_Boolean;
+  private View jdField_b_of_type_AndroidViewView;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private TextView c;
+  private TextView d;
+  private TextView e;
   
-  public void run()
+  public zhh(Context paramContext)
   {
-    if (QLog.isColorLevel()) {}
-    for (long l1 = SystemClock.uptimeMillis();; l1 = 0L)
+    super(paramContext, 2131755801);
+    super.setContentView(2131559086);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    a();
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131377949);
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131377944);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365222));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365228));
+    this.c = ((TextView)super.findViewById(2131377947));
+    ((ImageView)super.findViewById(2131377948)).setColorFilter(-7745469, PorterDuff.Mode.MULTIPLY);
+    this.d = ((TextView)super.findViewById(2131377942));
+    ((ImageView)super.findViewById(2131377943)).setColorFilter(-909794, PorterDuff.Mode.MULTIPLY);
+    this.e = ((TextView)super.findViewById(2131377182));
+  }
+  
+  private void b(boolean paramBoolean)
+  {
+    int j = 8;
+    QLog.i("ShareToQZone", 2, "width:" + this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams().width);
+    Object localObject;
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a.a().d();
-      MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a.getHandler(ChatHistoryForC2C.class);
-      ArrayList localArrayList;
-      try
-      {
-        List localList1 = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, ((Long)this.jdField_a_of_type_AndroidUtilPair.first).longValue(), this.jdField_a_of_type_Long);
-        if (localList1 == null) {
-          break label313;
-        }
-        localObject2 = localMqqHandler.obtainMessage(23);
-        localArrayList = new ArrayList(localList1.size());
-        Iterator localIterator = localList1.iterator();
-        while (localIterator.hasNext()) {
-          localArrayList.add((ChatMessage)localIterator.next());
-        }
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      localObject = this.jdField_b_of_type_AndroidViewView;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label126;
       }
-      catch (SQLException localSQLException)
-      {
-        for (;;)
-        {
-          List localList2 = ((MessageRecordEntityManager)this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a.getEntityManagerFactory().createMessageRecordEntityManager()).a(MessageRecord.class, this.jdField_a_of_type_JavaLangString, false, this.c, null, null, null, null, null);
-        }
+      i = 8;
+      label65:
+      ((View)localObject).setVisibility(i);
+      localObject = this.jdField_a_of_type_AndroidViewView;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label131;
       }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel())
-          {
-            localException.printStackTrace();
-            QLog.d("Q.roammsg.MessageRoamManager", 2, "getMessageByDay: ", localException);
-          }
-          Object localObject1 = null;
-        }
+      i = 0;
+      label86:
+      ((View)localObject).setVisibility(i);
+      localObject = this.e;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label137;
       }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("Q.roammsg.MessageRoamManager", 2, "handlePBGetRoamMsg OutOfMemoryError ! ", localOutOfMemoryError);
-        }
+    }
+    label131:
+    label137:
+    for (int i = j;; i = 0)
+    {
+      ((TextView)localObject).setVisibility(i);
+      return;
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      break;
+      label126:
+      i = 0;
+      break label65;
+      i = 8;
+      break label86;
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.d != null) {
+      this.d.setText(paramInt);
+    }
+  }
+  
+  public void a(String paramString, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new zhi(this, paramOnClickListener));
+  }
+  
+  public void a(zhk paramzhk)
+  {
+    this.jdField_a_of_type_Zhk = paramzhk;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.e != null)
+    {
+      if (paramInt != 0) {
+        this.e.setText(paramInt);
       }
-      do
-      {
-        return;
-        ((Message)localObject2).obj = localArrayList;
-        localMqqHandler.sendMessage((Message)localObject2);
-      } while (!QLog.isColorLevel());
-      long l2 = SystemClock.uptimeMillis();
-      Object localObject2 = new StringBuilder().append("queryMessageByDayFromDB: costTime: ").append(l2 - l1).append(",records num: ");
-      if (localOutOfMemoryError == null) {}
-      for (int i = 0;; i = localOutOfMemoryError.size())
-      {
-        QLog.d("Q.roammsg.MessageRoamManager", 2, i);
-        return;
-        label313:
-        localObject2 = localMqqHandler.obtainMessage(22);
-        ((Message)localObject2).obj = null;
-        break;
+    }
+    else {
+      return;
+    }
+    this.e.setText("");
+  }
+  
+  public void b(String paramString, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener == null)
+    {
+      b(false);
+      return;
+    }
+    b(true);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new zhj(this, paramOnClickListener));
+  }
+  
+  public void c(int paramInt)
+  {
+    if (this.c != null) {
+      this.c.setText(paramInt);
+    }
+  }
+  
+  public void dismiss()
+  {
+    try
+    {
+      super.dismiss();
+      return;
+    }
+    catch (Exception localException) {}
+  }
+  
+  public void onBackPressed()
+  {
+    QLog.i("ShareResultDialog", 2, "onBackPressed");
+    super.onBackPressed();
+    zhk localzhk;
+    if (this.jdField_a_of_type_Zhk != null)
+    {
+      localzhk = this.jdField_a_of_type_Zhk;
+      if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0) {
+        break label44;
       }
+    }
+    label44:
+    for (boolean bool = true;; bool = false)
+    {
+      localzhk.a(bool);
+      return;
     }
   }
 }

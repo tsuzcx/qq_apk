@@ -1,86 +1,20 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
-import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import mqq.app.MobileQQ;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class aclx
-  implements RadioGroup.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public aclx(FMActivity paramFMActivity) {}
+  public aclx(ChatHistory paramChatHistory) {}
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public void onClick(View paramView)
   {
-    int i = -1;
-    if (this.a.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    }
-    this.a.g();
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar.setVisibility(0);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView != null)
-    {
-      this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.removeAllViews();
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView.setVisibility(8);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView.a();
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView = null;
-      this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView);
-    }
-    if (paramInt == 2131368780)
-    {
-      this.a.a().f();
-      ((RadioButton)this.a.findViewById(2131368781)).setChecked(false);
-      ((RadioButton)this.a.findViewById(2131368782)).setChecked(false);
-      FMActivity.d(this.a);
-      i = 0;
-    }
-    for (;;)
-    {
-      paramRadioGroup = this.a.app.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
-      paramRadioGroup.putInt("last_select_tab_type", i);
-      paramRadioGroup.commit();
-      return;
-      if (paramInt == 2131368781)
-      {
-        this.a.a().e();
-        FMActivity.e(this.a);
-        ((RadioButton)this.a.findViewById(2131368780)).setChecked(false);
-        ((RadioButton)this.a.findViewById(2131368782)).setChecked(false);
-        paramInt = 1;
-        i = paramInt;
-        if (this.a.g == 0)
-        {
-          i = paramInt;
-          if (this.a.j)
-          {
-            this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-            i = paramInt;
-          }
-        }
-      }
-      else if (paramInt == 2131368782)
-      {
-        this.a.a().d();
-        ((RadioButton)this.a.findViewById(2131368781)).setChecked(false);
-        ((RadioButton)this.a.findViewById(2131368780)).setChecked(false);
-        FMActivity.a(this.a, 2);
-        i = 2;
-      }
-    }
+    this.a.a(12, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aclx
  * JD-Core Version:    0.7.0.1
  */

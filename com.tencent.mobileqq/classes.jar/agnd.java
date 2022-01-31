@@ -1,14 +1,29 @@
-import com.tencent.mobileqq.precover.PrecoverManager;
-import com.tencent.mobileqq.precover.PrecoverReporter;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 
 public class agnd
-  implements Runnable
+  extends agmy
 {
-  public agnd(PrecoverManager paramPrecoverManager) {}
+  public AnimationView.AnimationInfo a;
+  public String b;
   
-  public void run()
+  public agnd(String paramString)
   {
-    PrecoverManager.a(this.a).a();
+    super(paramString);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo != null)
+    {
+      this.b = paramRedPacketInfo.background;
+      this.a = paramRedPacketInfo.animInfo;
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.b != null) || (this.a != null);
   }
 }
 

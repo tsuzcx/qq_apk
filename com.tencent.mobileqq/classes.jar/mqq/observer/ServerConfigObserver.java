@@ -5,7 +5,7 @@ import mqq.app.Constants.Action;
 import protocol.KQQConfig.GetResourceRespV2;
 
 public class ServerConfigObserver
-  implements BusinessObserver, Constants.Action
+  implements Constants.Action, BusinessObserver
 {
   public void onGetPluginConfig(boolean paramBoolean, int paramInt, GetResourceRespV2 paramGetResourceRespV2) {}
   

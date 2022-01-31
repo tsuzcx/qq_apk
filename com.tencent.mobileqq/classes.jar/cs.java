@@ -1,29 +1,33 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
+import com.dataline.activities.PrinterOptionActivity;
 
-public final class cs
-  implements FMDialogUtil.FMDialogInterface
+public class cs
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public cs(AsyncTask paramAsyncTask, int paramInt, FMDialogUtil.FMDialogInterface paramFMDialogInterface) {}
+  public cs(PrinterOptionActivity paramPrinterOptionActivity) {}
   
-  public void a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidOsAsyncTask.execute(new Integer[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFMDialogUtil$FMDialogInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFMDialogUtil$FMDialogInterface.a();
+    if (paramBoolean)
+    {
+      PrinterOptionActivity.a(this.a).setVisibility(0);
+      PrinterOptionActivity.a(this.a).setText(2131691430);
+      return;
     }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFMDialogUtil$FMDialogInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFMDialogUtil$FMDialogInterface.b();
+    if (PrinterOptionActivity.b(this.a))
+    {
+      PrinterOptionActivity.a(this.a).setVisibility(0);
+      PrinterOptionActivity.a(this.a).setText(2131691410);
+      return;
     }
+    PrinterOptionActivity.a(this.a).setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cs
  * JD-Core Version:    0.7.0.1
  */

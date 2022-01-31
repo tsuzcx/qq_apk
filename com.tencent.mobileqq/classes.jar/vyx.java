@@ -1,48 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnVideoSizeChangedListener;
 
-public class vyx
-  implements BusinessObserver
+class vyx
+  implements MediaPlayer.OnVideoSizeChangedListener
 {
-  public vyx(PublicAccountChatPie paramPublicAccountChatPie) {}
+  vyx(vys paramvys, vyq paramvyq) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onVideoSizeChanged(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, "requestQidiKefu ... onReceive = " + paramBoolean);
-    }
-    if (paramBoolean) {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        mobileqq_mp.SendMenuEventResponse localSendMenuEventResponse = new mobileqq_mp.SendMenuEventResponse();
-        localSendMenuEventResponse.mergeFrom(paramBundle);
-        paramInt = localSendMenuEventResponse.ret_info.ret_code.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.aio.BaseChatPie", 2, "requestQidiKefu ... onReceive: retCode = " + paramInt);
-        }
-        if (paramInt == 0)
-        {
-          this.a.ak = true;
-          this.a.bn();
-          this.a.aY();
-          return;
-        }
-      }
-      catch (Exception paramBundle) {}
-    }
-    this.a.w(2131430033);
-    this.a.aY();
+    this.jdField_a_of_type_Vyq.a(this.jdField_a_of_type_Vys, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vyx
  * JD-Core Version:    0.7.0.1
  */

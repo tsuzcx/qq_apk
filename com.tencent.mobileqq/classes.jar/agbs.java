@@ -1,28 +1,38 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ar.arengine.ARCloudReqFileInfo;
-import com.tencent.mobileqq.ocr.OcrControl;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import java.io.File;
-import java.util.HashMap;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import com.tencent.qphone.base.util.QLog;
 
 public class agbs
-  implements Runnable
+  extends AnimatorListenerAdapter
 {
-  public agbs(OcrControl paramOcrControl, ARCloudReqFileInfo paramARCloudReqFileInfo) {}
+  public agbs(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    long l1 = new File(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.a).length() / 1024L;
-    long l2 = new File(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.b).length() / 1024L;
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("ocrFilesize", String.valueOf(l1));
-    localHashMap.put("previewFilesize", String.valueOf(l2));
-    StatisticCollector.a(BaseApplicationImpl.getContext()).a("", "ocr_pic_size", true, 0L, 0L, localHashMap, "", false);
+    super.onAnimationEnd(paramAnimator);
+    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {
+      return;
+    }
+    SixCombolEffectView.b(this.a).start();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+    if (SixCombolEffectView.a(this.a)) {}
+    do
+    {
+      return;
+      SixCombolEffectView.jdField_a_of_type_Int = 2;
+    } while (!QLog.isColorLevel());
+    QLog.w("SixCombolEffectView", 2, "Animation 2 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agbs
  * JD-Core Version:    0.7.0.1
  */

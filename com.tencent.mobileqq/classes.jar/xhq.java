@@ -1,27 +1,14 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools.TextUrlClickListener;
-
-public final class xhq
-  extends ClickableSpan
+public abstract interface xhq
 {
-  public xhq(QWalletTools.TextUrlClickListener paramTextUrlClickListener, String paramString) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletUtilsQWalletTools$TextUrlClickListener.a(this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a(String paramString);
   
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setUnderlineText(false);
-  }
+  public abstract void b(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xhq
  * JD-Core Version:    0.7.0.1
  */

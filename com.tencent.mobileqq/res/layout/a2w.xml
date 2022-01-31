@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/a_x" android:paddingLeft="@dimen/ce" android:paddingTop="@dimen/cf" android:paddingRight="@dimen/ce" android:paddingBottom="@dimen/cf" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.troop.ablum.widget.FeedDate android:textSize="16.0sp" android:textColor="@color/ix" android:id="@id/jlb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/pa" android:layout_marginBottom="10.0dip" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false">
+        <com.tencent.image.URLImageView android:id="@id/fni" android:layout_width="@dimen/ck" android:layout_height="@dimen/ck" />
+        <com.tencent.image.URLImageView android:id="@id/fnj" android:layout_width="@dimen/ck" android:layout_height="@dimen/ck" android:layout_marginLeft="@dimen/cg" />
+        <com.tencent.image.URLImageView android:id="@id/fnk" android:layout_width="@dimen/ck" android:layout_height="@dimen/ck" android:layout_marginLeft="@dimen/cg" />
+    </LinearLayout>
+</LinearLayout>

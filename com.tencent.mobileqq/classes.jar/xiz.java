@@ -1,24 +1,45 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.open.agent.datamodel.ImageLoader.ImageLoadListener;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
 
 public class xiz
-  implements ImageLoader.ImageLoadListener
+  extends xis
 {
-  public xiz(BannerManager paramBannerManager, Bundle paramBundle, Message paramMessage) {}
+  protected EditVideoParams a;
+  public String c;
   
-  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
+  public xiz(int paramInt1, String paramString, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putParcelable("iconURLBitmap", paramBitmap);
-    BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).post(new xja(this));
+    super(paramInt1, paramString, paramInt2);
+  }
+  
+  public xiz(int paramInt1, String paramString, int paramInt2, EditVideoParams paramEditVideoParams)
+  {
+    super(paramInt1, paramString, paramInt2);
+    this.a = paramEditVideoParams;
+  }
+  
+  @NonNull
+  public Class<? extends xit> a()
+  {
+    return xjb.class;
+  }
+  
+  @NonNull
+  public xit a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    return new xjb(this, paramContext, paramViewGroup, null);
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xiz
  * JD-Core Version:    0.7.0.1
  */

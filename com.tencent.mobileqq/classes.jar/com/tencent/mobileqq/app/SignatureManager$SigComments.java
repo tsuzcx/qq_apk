@@ -7,7 +7,7 @@ public class SignatureManager$SigComments
   implements Serializable
 {
   public boolean isOver;
-  public List mlist;
+  public List<SignatureManager.SigCommentInfo> mlist;
 }
 
 

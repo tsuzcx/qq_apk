@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class DynamicBusinessHotWord$HotWordItem
-  extends MessageMicro
+  extends MessageMicro<HotWordItem>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField word = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -22,7 +22,7 @@ public final class DynamicBusinessHotWord$HotWordItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pb.unite.search.DynamicBusinessHotWord.HotWordItem
  * JD-Core Version:    0.7.0.1
  */

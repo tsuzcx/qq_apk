@@ -12,8 +12,8 @@ public final class FloatItem
 {
   static int cache_iProperty;
   static int cache_iType = 0;
-  static Map cache_mapExtInfo;
-  static ArrayList cache_vecView;
+  static Map<String, String> cache_mapExtInfo;
+  static ArrayList<FloatItemView> cache_vecView;
   public int iAngleSpeed;
   public int iCount;
   public int iDirection;
@@ -26,14 +26,14 @@ public final class FloatItem
   public int iRotationY;
   public int iSpeed;
   public int iType;
-  public Map mapExtInfo;
+  public Map<String, String> mapExtInfo;
   public String strDescription = "";
   public String strDesignerInfo = "";
   public String strFloatName = "";
   public String strId = "";
   public String strThumbUrl = "";
   public String strTraceInfo = "";
-  public ArrayList vecView;
+  public ArrayList<FloatItemView> vecView;
   
   static
   {
@@ -47,7 +47,7 @@ public final class FloatItem
   
   public FloatItem() {}
   
-  public FloatItem(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11, String paramString3, String paramString4, ArrayList paramArrayList, String paramString5, int paramInt12, String paramString6, Map paramMap)
+  public FloatItem(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11, String paramString3, String paramString4, ArrayList<FloatItemView> paramArrayList, String paramString5, int paramInt12, String paramString6, Map<String, String> paramMap)
   {
     this.strId = paramString1;
     this.iType = paramInt1;

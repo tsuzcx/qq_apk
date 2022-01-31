@@ -1,19 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.troop.createNewTroop.SubCateListView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
 
-public class ajbv
-  implements ValueAnimator.AnimatorUpdateListener
+public final class ajbv
+  implements Parcelable.Creator<RedPacketInfoBase>
 {
-  public ajbv(SubCateListView paramSubCateListView, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public RedPacketInfoBase a(Parcel paramParcel)
   {
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    return new RedPacketInfoBase(paramParcel);
+  }
+  
+  public RedPacketInfoBase[] a(int paramInt)
+  {
+    return new RedPacketInfoBase[paramInt];
   }
 }
 

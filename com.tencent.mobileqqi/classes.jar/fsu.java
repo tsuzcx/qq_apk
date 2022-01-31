@@ -1,24 +1,20 @@
-import com.tencent.mobileqq.app.ClubContentUpdateHandler.ClubContentUpdateListener;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.fileviewer.base.BaseFileViewerController;
 
 public class fsu
-  implements ClubContentUpdateHandler.ClubContentUpdateListener
+  implements View.OnClickListener
 {
-  public fsu(EmoticonMainPanel paramEmoticonMainPanel) {}
+  public fsu(BaseFileViewerController paramBaseFileViewerController) {}
   
-  public void a(HashMap paramHashMap)
+  public void onClick(View paramView)
   {
-    if ((paramHashMap == null) || (paramHashMap.size() == 0)) {}
-    while ((!EmoticonMainPanel.a(this.a)) || (this.a.getVisibility() != 0) || (EmoticonMainPanel.b() != 2)) {
-      return;
-    }
-    this.a.post(new fsv(this));
+    this.a.b(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     fsu
  * JD-Core Version:    0.7.0.1
  */

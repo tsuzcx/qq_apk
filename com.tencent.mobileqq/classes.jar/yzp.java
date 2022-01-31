@@ -1,52 +1,65 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.ChatPieApolloViewController;
-import com.tencent.mobileqq.apollo.script.SpriteActionScript;
-import com.tencent.mobileqq.apollo.script.SpriteUtil;
-import com.tencent.mobileqq.apollo.view.ChatApolloViewListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import cooperation.qzone.util.QZLog;
+import java.io.File;
 
-public class yzp
-  implements Runnable
+class yzp
+  extends bead
 {
-  public yzp(ChatApolloViewListener paramChatApolloViewListener, boolean paramBoolean, Object paramObject) {}
+  yzp(yzo paramyzo, Downloader.DownloadListener paramDownloadListener, String paramString1, yzq paramyzq, String paramString2, String paramString3) {}
   
-  public void run()
+  public void onCancel(beae parambeae)
   {
-    try
+    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
+      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadCanceled(this.jdField_a_of_type_JavaLangString);
+    }
+    yzq.a(this.jdField_a_of_type_Yzq, 3);
+    QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "onDownloadCanceled" });
+  }
+  
+  public void onDone(beae parambeae)
+  {
+    if (parambeae.a == 0)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloViewChatApolloViewListener.a == null) {
-        return;
-      }
-      Object localObject2 = (BaseChatPie)this.jdField_a_of_type_ComTencentMobileqqApolloViewChatApolloViewListener.a.get();
-      if ((localObject2 != null) && (((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqApolloChatPieApolloViewController != null) && (((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqApolloChatPieApolloViewController.a()) && (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangObject != null))
+      boolean bool;
+      if (new File(yzo.jdField_a_of_type_JavaLangString).exists())
       {
-        Object localObject1 = (ArrayList)this.jdField_a_of_type_JavaLangObject;
-        if ((localObject1 != null) && (((ArrayList)localObject1).size() != 0))
-        {
-          localObject2 = SpriteUtil.a(((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          if (localObject2 != null)
-          {
-            localObject1 = ((ArrayList)localObject1).iterator();
-            while (((Iterator)localObject1).hasNext()) {
-              ((SpriteActionScript)localObject2).a((String)((Iterator)localObject1).next(), true);
-            }
-          }
+        bool = bjtz.b(new File(this.jdField_a_of_type_JavaLangString), new File(yzo.jdField_a_of_type_JavaLangString + "/" + this.b));
+        if (!bool) {
+          break label158;
         }
+        if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
+          this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadSucceed(this.jdField_a_of_type_JavaLangString, new DownloadResult(this.c));
+        }
+        new File(this.jdField_a_of_type_JavaLangString).delete();
+        yzq.a(this.jdField_a_of_type_Yzq, 0);
       }
-      return;
+      for (;;)
+      {
+        QZLog.i("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByIdsuccess:" + bool);
+        return;
+        label158:
+        yzq.a(this.jdField_a_of_type_Yzq, 2);
+      }
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ChatApolloViewListener", 1, localThrowable, new Object[0]);
+    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
+      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadFailed(this.jdField_a_of_type_JavaLangString, new DownloadResult(this.c));
     }
+    yzq.a(this.jdField_a_of_type_Yzq, 2);
+    QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByIdonDownloadFailed:" });
+  }
+  
+  public void onProgress(beae parambeae)
+  {
+    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
+      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadProgress(this.jdField_a_of_type_JavaLangString, 0L, 0.0F);
+    }
+    yzq.a(this.jdField_a_of_type_Yzq, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yzp
  * JD-Core Version:    0.7.0.1
  */

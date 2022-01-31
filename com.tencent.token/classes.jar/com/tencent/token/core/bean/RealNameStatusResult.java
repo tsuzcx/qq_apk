@@ -1,6 +1,6 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.global.e;
+import com.tencent.token.global.h;
 import java.io.Serializable;
 import org.json.JSONObject;
 
@@ -26,6 +26,7 @@ public class RealNameStatusResult
   public long mSubmitTime;
   public String mToastText;
   public String mToastUrl;
+  public int mVerify_sms;
   public int realnameday;
   public int regVersion;
   public int reg_rank;
@@ -41,7 +42,7 @@ public class RealNameStatusResult
   public RealNameStatusResult(JSONObject paramJSONObject)
   {
     this.mRealStatus = paramJSONObject.getInt("realname_status");
-    e.a("real_name_status_result: " + paramJSONObject);
+    h.a("real_name_status_result: " + paramJSONObject);
     try
     {
       this.mToastText = paramJSONObject.getString("top_toast_text");
@@ -49,7 +50,7 @@ public class RealNameStatusResult
       switch (this.mRealStatus)
       {
       default: 
-        e.b("realname_status=" + this.mRealStatus + ", mobile=" + this.mMaskMobile);
+        h.b("realname_status=" + this.mRealStatus + ", mobile=" + this.mMaskMobile);
         return;
       }
     }
@@ -57,7 +58,7 @@ public class RealNameStatusResult
     {
       for (;;)
       {
-        e.c("json parse error: mToastText,mToastUrl");
+        h.c("json parse error: mToastText,mToastUrl");
         continue;
         this.mMaskName = paramJSONObject.getString("masked_name");
         this.mMaskId = paramJSONObject.getString("masked_id");
@@ -82,6 +83,7 @@ public class RealNameStatusResult
           this.mMaskMobile = paramJSONObject.getString("masked_mobile");
           this.mDispatchTime = paramJSONObject.getInt("dispatch_time");
           break;
+          this.mLeftTime = paramJSONObject.getInt("time_left");
           this.chanceLeft = paramJSONObject.getInt("chance_left");
           this.mMsgText = paramJSONObject.getString("top_msg_text");
         }
@@ -91,12 +93,13 @@ public class RealNameStatusResult
         {
           this.mApplyRefuseTime = paramJSONObject.getLong("apply_refused_time");
           this.mDispatchTime = paramJSONObject.getInt("dispatch_time");
+          this.mVerify_sms = paramJSONObject.optInt("verify_sms", 1);
         }
         catch (Exception localException2)
         {
           for (;;)
           {
-            e.c("json parse error: apply_refused_time");
+            h.c("json parse error: apply_refused_time");
           }
         }
         this.subTitle = paramJSONObject.getString("subtitle_text");

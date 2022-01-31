@@ -1,16 +1,18 @@
 package c.t.m.g;
 
-public abstract interface aw
+final class aw
+  implements Runnable
 {
-  public abstract void a();
+  aw(aq paramaq) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
+  public final void run()
+  {
+    aq.a(this.a, false, true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.aw
  * JD-Core Version:    0.7.0.1
  */

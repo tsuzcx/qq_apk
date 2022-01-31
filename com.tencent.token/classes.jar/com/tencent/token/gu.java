@@ -1,10 +1,34 @@
 package com.tencent.token;
 
-public abstract interface gu
+import javax.annotation.Nullable;
+import okhttp3.ap;
+import okhttp3.at;
+import okhttp3.e;
+
+public final class gu
 {
-  public abstract void a(byte[] paramArrayOfByte);
+  @Nullable
+  public final ap a;
+  @Nullable
+  public final at b;
   
-  public abstract void b();
+  gu(ap paramap, at paramat)
+  {
+    this.a = paramap;
+    this.b = paramat;
+  }
+  
+  public static boolean a(at paramat, ap paramap)
+  {
+    switch (paramat.b())
+    {
+    }
+    do
+    {
+      return false;
+    } while (((paramat.a("Expires") == null) && (paramat.h().c() == -1) && (!paramat.h().e()) && (!paramat.h().d())) || (paramat.h().b()) || (paramap.f().b()));
+    return true;
+  }
 }
 
 

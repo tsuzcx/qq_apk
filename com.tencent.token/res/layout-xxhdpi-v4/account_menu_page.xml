@@ -10,8 +10,8 @@
         </RelativeLayout>
         <RelativeLayout android:id="@id/accountcenter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:layout_centerVertical="true">
             <com.tencent.token.ui.base.RoundImageView android:id="@id/account_bind_qqface_center" android:layout_width="70.0dip" android:layout_height="70.0dip" android:layout_marginLeft="2.0dip" android:layout_marginTop="2.0dip" android:src="@drawable/no_login_default" android:scaleType="fitXY" />
-            <ImageView android:id="@id/img_head_border_center" android:layout_width="74.0dip" android:layout_height="74.0dip" android:src="@drawable/active_succ_img_border" android:scaleType="fitXY" android:contentDescription="@string/app_name" />
-            <ImageView android:id="@id/img_head_border2_center" android:visibility="visible" android:layout_width="78.0dip" android:layout_height="30.0dip" android:layout_marginLeft="2.0dip" android:layout_marginTop="50.0dip" android:src="@drawable/zzb_icon_pic" android:scaleType="fitXY" />
+            <ImageView android:id="@id/img_head_border_center" android:layout_width="73.0dip" android:layout_height="73.0dip" android:src="@drawable/active_succ_img_border" android:scaleType="fitXY" android:contentDescription="@string/app_name" />
+            <ImageView android:id="@id/img_head_border2_center" android:visibility="visible" android:layout_width="76.0dip" android:layout_height="30.0dip" android:layout_marginTop="50.0dip" android:src="@drawable/zzb_icon_pic" android:scaleType="fitXY" />
             <TextView android:textSize="@dimen/text_size_12" android:textColor="@color/text_white" android:gravity="center" android:id="@id/qqface_not_verify_center" android:background="@drawable/account_not_verify_bg" android:visibility="visible" android:layout_width="@dimen/qqface_not_verify_center_width" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/qqface_not_verify_center_margin_left" android:layout_marginTop="62.0dip" android:text="@string/account_manager_bindstate_unbind" android:layout_alignLeft="@id/account_bind_qqface_center" />
         </RelativeLayout>
         <RelativeLayout android:id="@id/accountright" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="30.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
@@ -48,7 +48,8 @@
         <TextView android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:text="@string/setting_sendfeedback_title" android:drawableLeft="@drawable/sendfeedbackicon" android:drawablePadding="7.0dip" style="@style/text_view_16_white_bold" />
         <ImageView android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="200.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/arrow_gray" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/app_name" />
     </RelativeLayout>
-    <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/feedback">
-        <Button android:layout_gravity="center" android:id="@id/unbindbt" android:background="@drawable/unbindbt" android:layout_width="140.0dip" android:layout_height="40.0dip" android:text="@string/menu_unbind_curraccount" android:layout_centerHorizontal="true" style="@style/text_view_16_white_bold" />
-    </LinearLayout>
+    <RelativeLayout android:id="@id/unbind" android:background="@drawable/menu_backgroundl" android:layout_width="fill_parent" android:layout_height="@dimen/left_menu_item_height" android:layout_below="@id/feedback">
+        <TextView android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:text="@string/menu_unbind_curraccount" android:drawableLeft="@drawable/exiticon" android:drawablePadding="7.0dip" style="@style/text_view_16_white_bold" />
+        <ImageView android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="200.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/arrow_gray" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/app_name" />
+    </RelativeLayout>
 </RelativeLayout>

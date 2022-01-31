@@ -1,21 +1,24 @@
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.shortvideo.util.AudioDataCache;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
 
-class aohf
-  implements Runnable
+public class aohf
+  implements TextWatcher
 {
-  aohf(aohe paramaohe, RMVideoStateMgr paramRMVideoStateMgr) {}
+  public aohf(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null) {
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr);
-    }
+    this.a.a = true;
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aohf
  * JD-Core Version:    0.7.0.1
  */

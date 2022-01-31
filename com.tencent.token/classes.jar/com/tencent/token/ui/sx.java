@@ -2,27 +2,19 @@ package com.tencent.token.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.af;
-import com.tencent.token.ax;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.fn;
+import com.tencent.token.er;
 
-final class sx
+class sx
   implements View.OnClickListener
 {
-  sx(OpMsgDisplayActivity paramOpMsgDisplayActivity) {}
+  private sx(OpreateMsgActivity paramOpreateMsgActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = ax.a().e();
-    if ((fn.a().c() == null) && (paramView != null) && (paramView.mIsBinded))
-    {
-      af.a().e(0L, OpMsgDisplayActivity.access$300(this.a));
-      OpMsgDisplayActivity.access$002(this.a, 52);
-      this.a.showUserDialog(12);
+    if (OpreateMsgActivity.access$200(this.a).e() <= 0) {
       return;
     }
-    OpMsgDisplayActivity.access$100(this.a, 52);
+    OpreateMsgActivity.access$500(this.a);
   }
 }
 

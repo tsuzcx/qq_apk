@@ -1,122 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class yfc
-  extends FriendListObserver
+class yfc
+  implements View.OnTouchListener
 {
-  public yfc(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
+  yfc(yew paramyew) {}
   
-  protected void onSetSpecialCareSwitch_global(boolean paramBoolean, Object[] paramArrayOfObject)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialCareSettingActivity", 2, "onSetSpecialCareSwith_global isSuccess: " + paramBoolean);
+    if (paramMotionEvent.getAction() == 0) {
+      yew.a(this.a, 0);
     }
-    Object localObject;
-    boolean bool;
-    if (!paramBoolean)
-    {
-      localObject = this.a;
-      FormSwitchItem localFormSwitchItem = QQSpecialCareSettingActivity.a(this.a);
-      if (!QQSpecialCareSettingActivity.a(this.a).a())
-      {
-        bool = true;
-        ((QQSpecialCareSettingActivity)localObject).a(localFormSwitchItem, bool);
-      }
+    if (yew.a(this.a) != null) {
+      yew.a(this.a).a(paramMotionEvent);
     }
-    else
-    {
-      this.a.a.sendEmptyMessage(8194);
-      localObject = this.a.a.obtainMessage(8195);
-      if (paramBoolean) {
-        i = 2;
-      }
-      ((Message)localObject).arg1 = i;
-      if (!paramBoolean) {
-        break label194;
-      }
-      if (!Boolean.valueOf(((boolean[])(boolean[])paramArrayOfObject[2])[0]).booleanValue()) {
-        break label188;
-      }
-      i = 2131436897;
-    }
-    for (;;)
-    {
-      ((Message)localObject).arg2 = i;
-      this.a.a.sendMessage((Message)localObject);
-      QQSpecialCareSettingActivity.b(this.a);
-      SubAccountControll.e(this.a.app);
-      return;
-      bool = false;
-      break;
-      label188:
-      i = 2131436900;
-      continue;
-      label194:
-      if (((boolean[])(boolean[])paramArrayOfObject[2])[0] != 0) {
-        i = 2131436902;
-      } else {
-        i = 2131436903;
-      }
-    }
-  }
-  
-  protected void onSetSpecialCareSwitch_qzone(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialCareSettingActivity", 2, "onSetSpecialCareSwith_qzone isSuccess: " + paramBoolean);
-    }
-    FormSwitchItem localFormSwitchItem;
-    if (!paramBoolean)
-    {
-      paramArrayOfObject = this.a;
-      localFormSwitchItem = QQSpecialCareSettingActivity.b(this.a);
-      if (QQSpecialCareSettingActivity.b(this.a).a()) {
-        break label77;
-      }
-    }
-    label77:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      paramArrayOfObject.a(localFormSwitchItem, paramBoolean);
-      QQSpecialCareSettingActivity.b(this.a);
-      return;
-    }
-  }
-  
-  protected void onSetSpecialCareSwitch_specialRing(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialCareSettingActivity", 2, "onSetSpecialCareSwith_specialRing isSuccess: " + paramBoolean);
-    }
-    QQSpecialCareSettingActivity.b(this.a);
-  }
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialCareSettingActivity", 2, "onUpdateDelFriend isSuccess: " + paramBoolean + ", uin: " + paramObject);
-    }
-    QQSpecialCareSettingActivity.b(this.a);
-  }
-  
-  protected void onUpdateSpecialCareList(boolean paramBoolean1, boolean paramBoolean2, List paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialCareSettingActivity", 2, "onUpdateSpecialCareList isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2);
-    }
-    QQSpecialCareSettingActivity.b(this.a);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yfc
  * JD-Core Version:    0.7.0.1
  */

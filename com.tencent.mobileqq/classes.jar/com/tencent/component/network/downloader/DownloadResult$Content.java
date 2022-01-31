@@ -3,12 +3,11 @@ package com.tencent.component.network.downloader;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import pjh;
 
 public final class DownloadResult$Content
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new pjh();
+  public static final Parcelable.Creator<Content> CREATOR = new DownloadResult.Content.1();
   public String clientip;
   public Object content;
   public String encoding;
@@ -17,6 +16,7 @@ public final class DownloadResult$Content
   public String md5;
   public boolean noCache;
   public long realsize;
+  public String redirectUrl;
   public int retCode;
   public long size;
   public String type;
@@ -84,7 +84,7 @@ public final class DownloadResult$Content
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.downloader.DownloadResult.Content
  * JD-Core Version:    0.7.0.1
  */

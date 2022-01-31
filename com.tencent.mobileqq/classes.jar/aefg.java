@@ -1,22 +1,16 @@
-import com.tencent.biz.ProtoUtils;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.List;
-import tencent.im.oidb.cmd0x72d.cmd0x72d.ReqBody;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class aefg
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aefg(TroopAssistantManager paramTroopAssistantManager, QQAppInterface paramQQAppInterface, ProtoUtils.TroopProtocolObserver paramTroopProtocolObserver) {}
+  public aefg(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqManagersTroopAssistantManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    cmd0x72d.ReqBody localReqBody = new cmd0x72d.ReqBody();
-    localReqBody.rpt_uint64_groupcode.set(localList);
-    ProtoUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizProtoUtils$TroopProtocolObserver, localReqBody.toByteArray(), "OidbSvc.0x72d_0", 1837, 0);
+    TroopMemberListActivity.b(this.a);
+    new azqx(this.a.app).a("dc00899").b("Grp_online").c("mber_list").d("clk_sort").a(new String[] { this.a.b }).a();
   }
 }
 

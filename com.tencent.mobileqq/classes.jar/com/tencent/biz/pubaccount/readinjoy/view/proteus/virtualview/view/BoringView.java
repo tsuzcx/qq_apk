@@ -3,59 +3,58 @@ package com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view;
 import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import mra;
 
 public class BoringView
   extends ViewBase
 {
-  private mra a;
+  private BoringView.BoringViewImpl mNative;
   
   public BoringView(VafContext paramVafContext)
   {
     super(paramVafContext);
-    this.a = new mra(paramVafContext.a());
+    this.mNative = new BoringView.BoringViewImpl(paramVafContext.getContext());
   }
   
-  public int a()
+  public int getComMeasuredHeight()
   {
-    return this.a.getMeasuredWidth();
+    return this.mNative.getMeasuredHeight();
   }
   
-  public View a()
+  public int getComMeasuredWidth()
   {
-    return this.a;
+    return this.mNative.getMeasuredWidth();
   }
   
-  public void a()
+  public View getNativeView()
   {
-    super.a();
-    this.a.f(this.f);
-    this.a.e(this.e);
-    this.a.a(this.h);
-    this.a.b(this.i);
-    this.a.c(this.j);
-    this.a.d(this.k);
-    this.a.setBackgroundColor(this.d);
+    return this.mNative;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.a.measure(paramInt1, paramInt2);
+    this.mNative.layout(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onComMeasure(int paramInt1, int paramInt2)
   {
-    this.a.layout(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.mNative.measure(paramInt1, paramInt2);
   }
   
-  public int b()
+  public void onParseValueFinished()
   {
-    return this.a.getMeasuredHeight();
+    super.onParseValueFinished();
+    this.mNative.setBorderColor(this.mBorderColor);
+    this.mNative.setBorderWidth(this.mBorderWidth);
+    this.mNative.setBorderTopLeftRadius(this.mBorderTopLeftRadius);
+    this.mNative.setBorderTopRightRadius(this.mBorderTopRightRadius);
+    this.mNative.setBorderBottomLeftRadius(this.mBorderBottomLeftRadius);
+    this.mNative.setBorderBottomRightRadius(this.mBorderBottomRightRadius);
+    this.mNative.setBackgroundColor(this.mBackground);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.BoringView
  * JD-Core Version:    0.7.0.1
  */

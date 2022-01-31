@@ -1,16 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantActivity;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.transfile.VideoThumbDownloader;
+import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
 public class gob
-  implements View.OnClickListener
+  implements BitmapDecoder
 {
-  public gob(QZoneShareAlbumAssistantActivity paramQZoneShareAlbumAssistantActivity) {}
+  public gob(VideoThumbDownloader paramVideoThumbDownloader) {}
   
-  public void onClick(View paramView)
+  public Bitmap a(URL paramURL)
   {
-    QZoneShareAlbumAssistantActivity.b(this.a);
-    this.a.a(7);
+    String str = paramURL.getPath();
+    try
+    {
+      Bitmap localBitmap = VideoThumbDownloader.a(this.a, str);
+      paramURL = localBitmap;
+      if (localBitmap == null) {
+        paramURL = VideoThumbDownloader.b(this.a, str);
+      }
+      return paramURL;
+    }
+    catch (Throwable paramURL)
+    {
+      QLog.e("VIdeoThumbDownloader", 2, "getBitmap", paramURL);
+    }
+    return null;
   }
 }
 

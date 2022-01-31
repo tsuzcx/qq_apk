@@ -1,20 +1,23 @@
 package com.tencent.mobileqq.nearby.now.model;
 
-import aetu;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import avcr;
+import avdd;
+import avde;
 import java.util.ArrayList;
 
 public class VideoData
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aetu();
+  public static final Parcelable.Creator<VideoData> CREATOR = new avde();
   public int a;
   public long a;
+  public avdd a;
   public LocationInfo a;
   public String a;
-  public ArrayList a;
+  public ArrayList<avcr> a;
   public boolean a;
   public int b;
   public long b;
@@ -32,15 +35,22 @@ public class VideoData
   public long e;
   public String e;
   public int f;
+  public long f;
   public String f;
   public int g;
+  public long g;
   public String g;
   public int h;
+  public long h;
   public String h;
   public int i;
   public String i;
+  public int j;
   public String j;
+  public int k;
   public String k;
+  public int l;
+  public int m;
   
   public VideoData()
   {
@@ -71,18 +81,18 @@ public class VideoData
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.jdField_b_of_type_Boolean = bool1;
-      this.jdField_c_of_type_Int = paramParcel.readInt();
+      this.jdField_d_of_type_Int = paramParcel.readInt();
       this.jdField_g_of_type_JavaLangString = paramParcel.readString();
       this.h = paramParcel.readString();
-      this.jdField_b_of_type_Long = paramParcel.readLong();
       this.jdField_c_of_type_Long = paramParcel.readLong();
-      this.j = paramParcel.readString();
-      this.k = paramParcel.readString();
       this.jdField_e_of_type_Long = paramParcel.readLong();
-      this.jdField_f_of_type_Int = paramParcel.readInt();
-      this.jdField_g_of_type_Int = paramParcel.readInt();
-      this.jdField_d_of_type_Int = paramParcel.readInt();
+      this.jdField_j_of_type_JavaLangString = paramParcel.readString();
+      this.k = paramParcel.readString();
+      this.jdField_g_of_type_Long = paramParcel.readLong();
+      this.i = paramParcel.readInt();
+      this.jdField_j_of_type_Int = paramParcel.readInt();
       this.jdField_e_of_type_Int = paramParcel.readInt();
+      this.jdField_f_of_type_Int = paramParcel.readInt();
       return;
       bool1 = false;
       break;
@@ -106,7 +116,7 @@ public class VideoData
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int m = 1;
+    int n = 1;
     paramParcel.writeInt(this.jdField_a_of_type_Int);
     paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
     paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
@@ -125,21 +135,21 @@ public class VideoData
       }
     }
     label206:
-    for (paramInt = m;; paramInt = 0)
+    for (paramInt = n;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeInt(this.jdField_c_of_type_Int);
+      paramParcel.writeInt(this.jdField_d_of_type_Int);
       paramParcel.writeString(this.jdField_g_of_type_JavaLangString);
       paramParcel.writeString(this.h);
-      paramParcel.writeLong(this.jdField_b_of_type_Long);
       paramParcel.writeLong(this.jdField_c_of_type_Long);
-      paramParcel.writeString(this.j);
-      paramParcel.writeString(this.k);
       paramParcel.writeLong(this.jdField_e_of_type_Long);
-      paramParcel.writeInt(this.jdField_f_of_type_Int);
-      paramParcel.writeInt(this.jdField_g_of_type_Int);
-      paramParcel.writeInt(this.jdField_d_of_type_Int);
+      paramParcel.writeString(this.jdField_j_of_type_JavaLangString);
+      paramParcel.writeString(this.k);
+      paramParcel.writeLong(this.jdField_g_of_type_Long);
+      paramParcel.writeInt(this.i);
+      paramParcel.writeInt(this.jdField_j_of_type_Int);
       paramParcel.writeInt(this.jdField_e_of_type_Int);
+      paramParcel.writeInt(this.jdField_f_of_type_Int);
       return;
       paramInt = 0;
       break;
@@ -148,7 +158,7 @@ public class VideoData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.model.VideoData
  * JD-Core Version:    0.7.0.1
  */

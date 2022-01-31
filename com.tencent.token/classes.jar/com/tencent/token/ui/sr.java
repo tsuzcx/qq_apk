@@ -1,18 +1,21 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.SafeMsgItem;
+import com.tencent.token.er;
 
-final class sr
-  implements View.OnClickListener
+class sr
+  implements Runnable
 {
-  sr(OpMsgDisplayActivity paramOpMsgDisplayActivity) {}
+  SafeMsgItem a = null;
   
-  public final void onClick(View paramView)
+  public sr(sn paramsn, SafeMsgItem paramSafeMsgItem)
   {
-    paramView = new Intent(this.a, UtilsLoginProtectActivity.class);
-    this.a.startActivity(paramView);
+    this.a = paramSafeMsgItem;
+  }
+  
+  public void run()
+  {
+    this.b.b.a(this.a);
   }
 }
 

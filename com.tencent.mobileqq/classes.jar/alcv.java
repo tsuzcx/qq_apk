@@ -1,45 +1,60 @@
-import android.database.Cursor;
-import android.os.Parcel;
-import com.tencent.open.agent.datamodel.FriendGroup;
-import com.tencent.open.component.cache.database.DbCacheData.DbCreator;
-import com.tencent.open.component.cache.database.DbCacheData.Structure;
+import android.app.Activity;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
 
-public final class alcv
-  implements DbCacheData.DbCreator
+public class alcv
 {
-  public int a()
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  private FrameLayout.LayoutParams jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams;
+  
+  private alcv(Activity paramActivity)
   {
-    return 0;
+    this.jdField_a_of_type_AndroidViewView = ((FrameLayout)paramActivity.findViewById(16908290)).getChildAt(0);
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new alcw(this));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams = ((FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams());
   }
   
-  public FriendGroup a(Cursor paramCursor)
+  private int a()
   {
-    Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("data"));
-    if (localObject == null) {
-      return null;
+    Rect localRect = new Rect();
+    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
+    return localRect.bottom - localRect.top;
+  }
+  
+  private void a()
+  {
+    int i = a();
+    int j;
+    int k;
+    if (i != this.jdField_a_of_type_Int)
+    {
+      j = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
+      k = j - i;
+      if (k <= j / 4) {
+        break label58;
+      }
     }
-    paramCursor = Parcel.obtain();
-    paramCursor.unmarshall((byte[])localObject, 0, localObject.length);
-    paramCursor.setDataPosition(0);
-    localObject = new FriendGroup();
-    ((FriendGroup)localObject).a(paramCursor);
-    paramCursor.recycle();
-    return localObject;
+    label58:
+    for (this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.height = (j - k);; this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.height = j)
+    {
+      this.jdField_a_of_type_AndroidViewView.requestLayout();
+      this.jdField_a_of_type_Int = i;
+      return;
+    }
   }
   
-  public String a()
+  public static void a(Activity paramActivity)
   {
-    return null;
-  }
-  
-  public DbCacheData.Structure[] a()
-  {
-    return new DbCacheData.Structure[] { new DbCacheData.Structure("groupId", "INTEGER UNIQUE"), new DbCacheData.Structure("data", "BLOB") };
+    new alcv(paramActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alcv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/info" android:singleLine="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0282" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0673" android:visibility="gone" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0284" />
-</LinearLayout>

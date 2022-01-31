@@ -1,22 +1,25 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.portal.ConversationHongBao;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
 
 public class agma
-  extends AnimateUtils.AnimationAdapter
+  extends aglx
 {
-  public agma(ConversationHongBao paramConversationHongBao) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public agma(QQAppInterface paramQQAppInterface, agmp paramagmp, QQWalletTransferMsgElem paramQQWalletTransferMsgElem, int paramInt, aere paramaere)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PortalManager", 2, "RESUME_GESTURE_ANI, " + this.a.d);
+    super(paramQQAppInterface, paramagmp, paramQQWalletTransferMsgElem, paramInt, paramaere);
+  }
+  
+  public boolean b()
+  {
+    boolean bool = super.b();
+    if (bool) {
+      return bool;
     }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 200L);
+    this.a.b.setVisibility(0);
+    this.a.b.setTextColor(-8947849);
+    this.a.b.setText("QQ企业红包");
+    return false;
   }
 }
 

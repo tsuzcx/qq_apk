@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class modifyexamine$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   public static final int STR_ERRMSG_FIELD_NUMBER = 4;
   public static final int UINT32_LIMIT_TIMES_FIELD_NUMBER = 2;
@@ -21,7 +21,7 @@ public final class modifyexamine$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.modifyexamine.modifyexamine.RspBody
  * JD-Core Version:    0.7.0.1
  */

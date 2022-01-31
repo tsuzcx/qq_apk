@@ -1,43 +1,48 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.open.base.MD5Utils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
 
-public class yui
-  extends DownloadListener
+public abstract class yui
+  extends nac
 {
-  public yui(ApolloCardWindow paramApolloCardWindow) {}
-  
-  public void onDoneFile(DownloadTask paramDownloadTask)
+  public yui()
   {
-    if (paramDownloadTask == null) {
+    super(false);
+  }
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (paramInt != 0)
+    {
+      a(false, paramInt, null, paramBundle);
       return;
     }
+    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
     try
     {
-      ??? = paramDownloadTask.a().getString("path");
-      String str = paramDownloadTask.a().getString("url");
-      paramDownloadTask = this.a.a((String)???);
-      str = MD5Utils.d(str);
-      synchronized (ApolloCardWindow.a)
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d6.DownloadFileRspBody)localRspBody.download_file_rsp.get();
+      if (paramArrayOfByte.int32_ret_code.has())
       {
-        ApolloCardWindow.a.put(str, paramDownloadTask);
+        a(true, 0, paramArrayOfByte, paramBundle);
         return;
       }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      a(false, -1, null, paramBundle);
       return;
     }
-    catch (Exception paramDownloadTask)
-    {
-      QLog.e("ApolloCardWindow", 1, "onDoneFile error:", paramDownloadTask);
-    }
+    a(false, -1, null, paramBundle);
   }
+  
+  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yui
  * JD-Core Version:    0.7.0.1
  */

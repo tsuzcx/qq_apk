@@ -16,8 +16,8 @@ import android.graphics.RectF;
 import android.graphics.Shader.TileMode;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
+import bhtb;
 import com.tencent.image.URLDrawable;
-import com.tencent.util.VersionUtils;
 
 public class PAImageView
   extends AnyScaleTypeImageView
@@ -141,7 +141,7 @@ public class PAImageView
   @TargetApi(11)
   public void f()
   {
-    if (VersionUtils.e())
+    if (bhtb.e())
     {
       this.jdField_c_of_type_Int = 2;
       if (this.jdField_c_of_type_Int != 1) {
@@ -205,7 +205,7 @@ public class PAImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PAImageView
  * JD-Core Version:    0.7.0.1
  */

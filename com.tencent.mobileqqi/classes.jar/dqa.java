@@ -1,17 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.data.TroopInfo;
 
-public final class dqa
-  implements DialogInterface.OnClickListener
+class dqa
+  implements Runnable
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  dqa(dpz paramdpz) {}
+  
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    TroopHandler localTroopHandler = (TroopHandler)this.a.a.b.a(19);
+    if (localTroopHandler != null) {
+      localTroopHandler.k(this.a.a.a.troopuin);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dqa
  * JD-Core Version:    0.7.0.1
  */

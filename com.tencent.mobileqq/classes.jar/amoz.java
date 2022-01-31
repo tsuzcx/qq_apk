@@ -1,20 +1,10 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.QfavHelper;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import tencent.im.oidb.cmd0xe27.oidb_cmd0xe27.RspBody;
 
-public final class amoz
-  implements Runnable
+public abstract interface amoz
 {
-  public void run()
-  {
-    synchronized ()
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("qqfav", 2, "notify(sPluginInstalled) qqfav.apk");
-      }
-      QfavHelper.a().notifyAll();
-      return;
-    }
-  }
+  public abstract void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, oidb_cmd0xe27.RspBody paramRspBody);
 }
 
 

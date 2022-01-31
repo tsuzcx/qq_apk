@@ -20,7 +20,7 @@ import com.tencent.mobileqq.filemanager.activity.fileviewer.qfile.QfileFileViewe
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.QLog;
-import gce;
+import fxs;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -54,33 +54,33 @@ public class PreviewImageAdapter
     this.e *= 2;
     this.jdField_c_of_type_Int = ((int)(paramContext.getResources().getDisplayMetrics().widthPixels * 1.5D));
     this.d = ((int)(paramContext.getResources().getDisplayMetrics().heightPixels * 1.5D));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130840360);
-    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130837860);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130840362);
+    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130837862);
   }
   
-  private View a(int paramInt, View paramView, gce paramgce)
+  private View a(int paramInt, View paramView, fxs paramfxs)
   {
     BaseImageInfo localBaseImageInfo = (BaseImageInfo)getItem(paramInt);
     if (localBaseImageInfo == null)
     {
-      paramgce.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      b(paramgce.jdField_a_of_type_AndroidWidgetProgressBar);
+      paramfxs.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      b(paramfxs.jdField_a_of_type_AndroidWidgetProgressBar);
     }
     do
     {
       return paramView;
       this.jdField_b_of_type_Boolean = localBaseImageInfo.e;
-      a(paramgce.jdField_a_of_type_AndroidWidgetProgressBar);
+      a(paramfxs.jdField_a_of_type_AndroidWidgetProgressBar);
       if (localBaseImageInfo.b != null) {
         break;
       }
       if (this.jdField_b_of_type_Boolean) {
-        paramgce.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        paramfxs.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       }
     } while (!(this.jdField_a_of_type_AndroidContentContext instanceof DLFileViewerActivity));
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840361);
-    paramgce.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
-    a(paramgce.jdField_a_of_type_AndroidWidgetProgressBar, localBaseImageInfo.e);
+    Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840363);
+    paramfxs.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
+    a(paramfxs.jdField_a_of_type_AndroidWidgetProgressBar, localBaseImageInfo.e);
     return paramView;
     localObject = localBaseImageInfo.b;
     if (((String)localObject).startsWith("http")) {}
@@ -90,14 +90,14 @@ public class PreviewImageAdapter
       {
         localObject = URLDrawable.getDrawable(new URL((String)localObject), this.jdField_c_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, true);
         ((URLDrawable)localObject).setTargetDensity(this.e);
-        paramgce.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
-        a(paramgce.jdField_a_of_type_AndroidWidgetProgressBar, localBaseImageInfo.e);
+        paramfxs.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
+        a(paramfxs.jdField_a_of_type_AndroidWidgetProgressBar, localBaseImageInfo.e);
         return paramView;
       }
       catch (MalformedURLException localMalformedURLException)
       {
         localMalformedURLException.printStackTrace();
-        paramgce.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        paramfxs.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
         continue;
       }
       File localFile = new File(localMalformedURLException);
@@ -106,15 +106,15 @@ public class PreviewImageAdapter
         {
           URLDrawable localURLDrawable = URLDrawable.getDrawable(FileManagerUtil.a(localMalformedURLException, -1, -1, localFile), this.jdField_c_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, true);
           localURLDrawable.setTargetDensity(this.e);
-          paramgce.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(localURLDrawable);
+          paramfxs.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(localURLDrawable);
         }
         catch (Exception localException)
         {
           localException.printStackTrace();
-          paramgce.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+          paramfxs.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
         }
       } else {
-        paramgce.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        paramfxs.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       }
     }
   }
@@ -137,24 +137,24 @@ public class PreviewImageAdapter
     b(paramProgressBar);
   }
   
-  private View b(int paramInt, View paramView, gce paramgce)
+  private View b(int paramInt, View paramView, fxs paramfxs)
   {
     FileViewerImageInfo localFileViewerImageInfo = (FileViewerImageInfo)getItem(paramInt);
     if (localFileViewerImageInfo == null)
     {
-      paramgce.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      b(paramgce.jdField_a_of_type_AndroidWidgetProgressBar);
+      paramfxs.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      b(paramfxs.jdField_a_of_type_AndroidWidgetProgressBar);
     }
     do
     {
       return paramView;
-      a(paramgce.jdField_a_of_type_AndroidWidgetProgressBar);
+      a(paramfxs.jdField_a_of_type_AndroidWidgetProgressBar);
       if (localFileViewerImageInfo.a != null) {
         break;
       }
     } while (!localFileViewerImageInfo.f);
-    paramgce.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    a(paramgce.jdField_a_of_type_AndroidWidgetProgressBar, localFileViewerImageInfo.f);
+    paramfxs.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    a(paramfxs.jdField_a_of_type_AndroidWidgetProgressBar, localFileViewerImageInfo.f);
     return paramView;
     FileManagerEntity localFileManagerEntity = localFileViewerImageInfo.a;
     Object localObject1;
@@ -174,8 +174,8 @@ public class PreviewImageAdapter
     }
     while (localObject1 == null)
     {
-      paramgce.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      a(paramgce.jdField_a_of_type_AndroidWidgetProgressBar, localFileViewerImageInfo.f);
+      paramfxs.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      a(paramfxs.jdField_a_of_type_AndroidWidgetProgressBar, localFileViewerImageInfo.f);
       return paramView;
       localObject1 = localFileManagerEntity.strFilePath;
       continue;
@@ -197,17 +197,17 @@ public class PreviewImageAdapter
       {
         localObject1 = URLDrawable.getDrawable(FileManagerUtil.a((String)localObject1, -1, -1, (File)localObject2), this.jdField_c_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, true);
         ((URLDrawable)localObject1).setTargetDensity(this.e);
-        paramgce.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject1);
-        a(paramgce.jdField_a_of_type_AndroidWidgetProgressBar, localFileViewerImageInfo.f);
+        paramfxs.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject1);
+        a(paramfxs.jdField_a_of_type_AndroidWidgetProgressBar, localFileViewerImageInfo.f);
         return paramView;
       }
       catch (Exception localException)
       {
         localException.printStackTrace();
-        paramgce.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        paramfxs.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
         continue;
       }
-      paramgce.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      paramfxs.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     }
   }
   
@@ -266,8 +266,8 @@ public class PreviewImageAdapter
     View localView;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903513, null);
-      paramViewGroup = new gce(this);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903515, null);
+      paramViewGroup = new fxs(this);
       paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131230758));
       paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131230757));
       paramView.setTag(paramViewGroup);
@@ -280,7 +280,7 @@ public class PreviewImageAdapter
     do
     {
       return localView;
-      paramViewGroup = (gce)paramView.getTag();
+      paramViewGroup = (fxs)paramView.getTag();
       break;
       localView = paramView;
     } while (!(this.jdField_a_of_type_AndroidContentContext instanceof QfileFileViewerActivity));

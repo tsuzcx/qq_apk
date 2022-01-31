@@ -1,29 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.task.OnAddOrDeleGameListener;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.activity.AddFriendActivity;
 
-class acbz
-  implements OnAddOrDeleGameListener
+public class acbz
+  implements ahhf
 {
-  acbz(acby paramacby) {}
+  public acbz(AddFriendActivity paramAddFriendActivity) {}
   
-  public void a(long paramLong, String paramString)
+  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString)
   {
-    Bundle localBundle = new Bundle();
-    if (paramLong == 0L) {}
-    for (int i = 0;; i = 1)
+    if (AddFriendActivity.a(this.a))
     {
-      localBundle.putInt("result", i);
-      localBundle.putString("message", paramString);
-      this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
+      AddFriendActivity.a(this.a, paramInt1, paramBoolean, paramObject, paramInt2, paramString);
       return;
     }
+    AddFriendActivity.b(this.a, paramInt1, paramBoolean, paramObject, paramInt2, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acbz
  * JD-Core Version:    0.7.0.1
  */

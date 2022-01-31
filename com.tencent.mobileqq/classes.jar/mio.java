@@ -1,37 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.skin.CommonSkinRes;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoyRefreshManager;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshRes;
-import com.tencent.biz.pubaccount.readinjoy.skin.SkinData;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
 
 public class mio
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public mio(ReadInJoyListViewGroup paramReadInJoyListViewGroup, RefreshData paramRefreshData, ReadInJoyRefreshManager paramReadInJoyRefreshManager, SkinData paramSkinData, ReadInJoySkinManager paramReadInJoySkinManager) {}
+  public mio(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = (int)(System.currentTimeMillis() / 1000L);
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData != null) && (i >= this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.beginTime) && (i <= this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.endTime) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.isShown) && (RefreshRes.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.id)) && (RefreshRes.a() != 0))
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyRefreshManager.a(1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.id);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyRefreshManager.a(true);
-      RefreshRes.a();
-      ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).sendEmptyMessage(1);
-    }
-    while ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinSkinData == null) || (i < this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinSkinData.beginTime) || (i > this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinSkinData.endTime) || (!CommonSkinRes.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinSkinData.id)) || (CommonSkinRes.b() == 0)) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoySkinManager.a(1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinSkinData.id);
-    CommonSkinRes.a();
-    ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).sendEmptyMessage(1);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mio
  * JD-Core Version:    0.7.0.1
  */

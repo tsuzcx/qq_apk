@@ -1,28 +1,16 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.Callback;
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
 
-class ajch
-  extends TroopAioKeywordTipManager.Callback
+public class ajch
+  implements View.OnTouchListener
 {
-  ajch(ajcg paramajcg, List paramList, TroopAioKeywordTipManager paramTroopAioKeywordTipManager) {}
+  public ajch(ChooseItemView paramChooseItemView) {}
   
-  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_a_of_type_Ajcg.a.a) {}
-    do
-    {
-      return;
-      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
-        break;
-      }
-    } while ((this.jdField_a_of_type_JavaUtilList.size() <= 0) || (TroopAioKeywordTipBar.a(this.jdField_a_of_type_Ajcg.a)));
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager.a(this.jdField_a_of_type_JavaUtilList, null, 2, new ajci(this));
-    return;
-    TroopAioKeywordTipBar.a(this.jdField_a_of_type_Ajcg.a, paramMessageRecord, paramTroopAioKeywordTipInfo);
+    return true;
   }
 }
 

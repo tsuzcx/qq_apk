@@ -1,86 +1,131 @@
 package c.t.m.g;
 
-import android.text.TextUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import java.util.Observable;
 
-public final class db
+class db
+  extends Observable
+  implements SharedPreferences.OnSharedPreferenceChangeListener
 {
-  public final da a;
-  public int b;
-  String c;
-  String d;
-  public String e;
-  String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  int k;
-  int l;
-  public long m;
-  public int n = -2;
-  private String o;
-  private String p = "5.3.7";
-  private String q = "180306";
+  private static String a = "cc_c_t_m_l_";
+  private static volatile db b = null;
+  private static volatile SharedPreferences c = null;
   
-  db(da paramda)
+  private db()
   {
-    this.a = paramda;
+    c = dy.a(a);
   }
   
-  public final String a()
+  /* Error */
+  protected static db a()
   {
-    if (TextUtils.isEmpty(this.c)) {
-      return "0123456789ABCDEF";
-    }
-    return this.c;
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 20	c/t/m/g/db:b	Lc/t/m/g/db;
+    //   6: ifnonnull +19 -> 25
+    //   9: ldc 2
+    //   11: monitorenter
+    //   12: new 2	c/t/m/g/db
+    //   15: dup
+    //   16: invokespecial 33	c/t/m/g/db:<init>	()V
+    //   19: putstatic 20	c/t/m/g/db:b	Lc/t/m/g/db;
+    //   22: ldc 2
+    //   24: monitorexit
+    //   25: getstatic 20	c/t/m/g/db:b	Lc/t/m/g/db;
+    //   28: astore_0
+    //   29: ldc 2
+    //   31: monitorexit
+    //   32: aload_0
+    //   33: areturn
+    //   34: astore_0
+    //   35: ldc 2
+    //   37: monitorexit
+    //   38: aload_0
+    //   39: athrow
+    //   40: astore_0
+    //   41: ldc 2
+    //   43: monitorexit
+    //   44: aload_0
+    //   45: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   28	5	0	localdb	db
+    //   34	5	0	localObject1	Object
+    //   40	5	0	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   12	25	34	finally
+    //   35	38	34	finally
+    //   3	12	40	finally
+    //   25	29	40	finally
+    //   38	40	40	finally
   }
   
-  public final String b()
+  protected static void a(String paramString)
   {
-    if (TextUtils.isEmpty(this.d)) {
-      return "0123456789ABCDEF";
-    }
-    return this.d;
+    a = "cc_c_t_m_l_".concat(String.valueOf(paramString));
   }
   
-  public final String c()
+  protected final SharedPreferences b()
   {
-    if ((TextUtils.isEmpty(this.f)) || (this.f.contains("0000"))) {
-      return "0123456789ABCDEF";
-    }
-    return this.f;
-  }
-  
-  public final String d()
-  {
-    if (this.p == null) {
-      return "None";
-    }
-    return this.p;
-  }
-  
-  public final String e()
-  {
-    if (this.q == null) {
-      return "None";
-    }
-    return this.q;
-  }
-  
-  public final String f()
-  {
-    if (this.o == null)
+    try
     {
-      StringBuilder localStringBuilder = new StringBuilder(100);
-      localStringBuilder.append(a()).append("_").append(b()).append("_").append(c()).append("_QQGeoLocation");
-      this.o = f.a.e(localStringBuilder.toString());
+      if (c == null) {
+        c = dy.a(a);
+      }
+      SharedPreferences localSharedPreferences = c;
+      return localSharedPreferences;
     }
-    return this.o;
+    finally {}
+  }
+  
+  protected final void c()
+  {
+    try
+    {
+      if (c != null)
+      {
+        addObserver(da.a());
+        c.registerOnSharedPreferenceChangeListener(this);
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  protected final void d()
+  {
+    try
+    {
+      if (c != null)
+      {
+        c.unregisterOnSharedPreferenceChangeListener(this);
+        deleteObserver(da.a());
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
+  {
+    setChanged();
+    notifyObservers(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.db
  * JD-Core Version:    0.7.0.1
  */

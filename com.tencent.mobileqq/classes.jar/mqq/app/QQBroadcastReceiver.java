@@ -23,7 +23,6 @@ public class QQBroadcastReceiver
   {
     MobileQQ localMobileQQ = MobileQQ.sMobileQQ;
     long l = System.currentTimeMillis();
-    Object localObject1;
     if (paramIntent == null)
     {
       localObject1 = "";
@@ -43,6 +42,7 @@ public class QQBroadcastReceiver
     }
     label99:
     label126:
+    Object localObject2;
     do
     {
       return;
@@ -51,68 +51,75 @@ public class QQBroadcastReceiver
       localMobileQQ.broadcastInfoQueue.poll();
       localMobileQQ.broadcastInfoQueue.offer(localObject1);
       break label70;
-      localObject1 = localMobileQQ.waitAppRuntime(null);
-    } while (localObject1 == null);
-    Object localObject3 = getModuleId();
-    Object localObject2 = localObject1;
-    if (!TextUtils.isEmpty((CharSequence)localObject3))
+      localObject2 = localMobileQQ.waitAppRuntime(null);
+    } while (localObject2 == null);
+    Object localObject1 = getModuleId();
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
-      localObject3 = ((AppRuntime)localObject1).getAppRuntime((String)localObject3);
-      localObject2 = localObject1;
-      if (localObject3 != null) {
-        localObject2 = localObject3;
-      }
-    }
-    int i;
-    if (paramIntent != null)
-    {
-      localObject1 = null;
-      i = -1;
-    }
-    try
-    {
-      localObject3 = paramIntent.getStringExtra("k_pcactive_uin");
-      localObject1 = localObject3;
-      int j = paramIntent.getIntExtra("k_pcactive_retryIndex", -1);
-      i = j;
-      localObject1 = localObject3;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      localObject1 = ((AppRuntime)localObject2).getAppRuntime((String)localObject1);
+      if (localObject1 != null)
       {
-        localException.printStackTrace();
-        continue;
-        Object localObject4 = null;
-      }
-    }
-    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!"0".equals(localObject1)))
-    {
-      QLog.d("QQBroadcastReceiver", 1, "PCActive:active qq process");
-      localMobileQQ.isPCActive = true;
-      localMobileQQ.reportPCActive((String)localObject1, i);
-      if (!SettingCloneUtil.readValue(localMobileQQ, localObject2.getAccount(), null, "pcactive_has_notice", false)) {
-        SettingCloneUtil.writeValue(localMobileQQ, localObject2.getAccount(), null, "pcactive_notice_key", true);
-      }
-      if (!localObject2.isLogin())
-      {
-        QLog.d("QQBroadcastReceiver", 1, "PCActive:Account is not login");
-        localObject3 = localObject2.getApplication().getAllAccounts();
-        if (localObject3 == null) {
-          break label418;
-        }
-        localObject3 = (SimpleAccount)((List)localObject3).get(0);
-        if ((localObject3 != null) && (((String)localObject1).equals(((SimpleAccount)localObject3).getUin())) && (((SimpleAccount)localObject3).isLogined()))
+        localObject2 = localObject1;
+        for (;;)
         {
-          QLog.d("QQBroadcastReceiver", 1, "PCActive:Show Notification");
-          localObject2.login((SimpleAccount)localObject3);
-          localObject3 = new Intent("com.tencent.mobileqq.closeNotification");
-          ((Intent)localObject3).putExtra("uin", (String)localObject1);
-          paramContext.sendBroadcast((Intent)localObject3);
+          if (paramIntent != null) {}
+          try
+          {
+            localObject1 = paramIntent.getStringExtra("k_pcactive_uin");
+          }
+          catch (Exception localException1)
+          {
+            for (;;)
+            {
+              try
+              {
+                i = paramIntent.getIntExtra("k_pcactive_retryIndex", -1);
+                if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!"0".equals(localObject1)))
+                {
+                  QLog.d("QQBroadcastReceiver", 1, "PCActive:active qq process");
+                  localMobileQQ.isPCActive = true;
+                  localMobileQQ.reportPCActive((String)localObject1, i);
+                  if (!SettingCloneUtil.readValue(localMobileQQ, ((AppRuntime)localObject2).getAccount(), null, "pcactive_has_notice", false)) {
+                    SettingCloneUtil.writeValue(localMobileQQ, ((AppRuntime)localObject2).getAccount(), null, "pcactive_notice_key", true);
+                  }
+                  if (!((AppRuntime)localObject2).isLogin())
+                  {
+                    QLog.d("QQBroadcastReceiver", 1, "PCActive:Account is not login");
+                    Object localObject3 = ((AppRuntime)localObject2).getApplication().getAllAccounts();
+                    if (localObject3 == null) {
+                      continue;
+                    }
+                    localObject3 = (SimpleAccount)((List)localObject3).get(0);
+                    if ((localObject3 != null) && (((String)localObject1).equals(((SimpleAccount)localObject3).getUin())) && (((SimpleAccount)localObject3).isLogined()))
+                    {
+                      QLog.d("QQBroadcastReceiver", 1, "PCActive:Show Notification");
+                      ((AppRuntime)localObject2).login((SimpleAccount)localObject3);
+                      localObject3 = new Intent("com.tencent.mobileqq.closeNotification");
+                      ((Intent)localObject3).putExtra("uin", (String)localObject1);
+                      paramContext.sendBroadcast((Intent)localObject3);
+                    }
+                  }
+                }
+                onReceive((AppRuntime)localObject2, paramContext, paramIntent);
+                return;
+              }
+              catch (Exception localException2)
+              {
+                int i;
+                Object localObject4;
+                continue;
+              }
+              localException1 = localException1;
+              localObject1 = null;
+              localException1.printStackTrace();
+              i = -1;
+              continue;
+              localObject4 = null;
+            }
+          }
         }
       }
     }
-    onReceive(localObject2, paramContext, paramIntent);
   }
   
   public void onReceive(AppRuntime paramAppRuntime, Context paramContext, Intent paramIntent) {}

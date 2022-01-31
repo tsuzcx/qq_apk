@@ -1,19 +1,18 @@
-import com.tencent.biz.pubaccount.assistant.PubAccountAssistantSettingAdapter;
+import com.tencent.litetransfersdk.LiteTransferWrapper;
 
 public class bra
   implements Runnable
 {
-  public bra(PubAccountAssistantSettingAdapter paramPubAccountAssistantSettingAdapter) {}
+  public bra(LiteTransferWrapper paramLiteTransferWrapper, String paramString) {}
   
   public void run()
   {
-    this.a.notifyDataSetChanged();
-    PubAccountAssistantSettingAdapter.a(this.a, false);
+    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SetThumbTempPathToJNI(LiteTransferWrapper.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bra
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,13 @@
-import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy;
-import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper;
-import java.util.concurrent.ConcurrentLinkedQueue;
-
-class amqj
-  extends Thread
+public class amqj
 {
-  amqj(amqi paramamqi) {}
-  
-  public void run()
-  {
-    while (!this.a.a.a.isEmpty())
-    {
-      QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper localQQIndividualityRemoteProxyCallWrapper = (QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper)this.a.a.a.poll();
-      if (localQQIndividualityRemoteProxyCallWrapper != null) {
-        this.a.a.a(localQQIndividualityRemoteProxyCallWrapper);
-      }
-    }
-  }
+  public int a = -1;
+  public long a;
+  public String a;
+  public String b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amqj
  * JD-Core Version:    0.7.0.1
  */

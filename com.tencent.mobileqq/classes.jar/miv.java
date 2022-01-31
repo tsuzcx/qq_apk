@@ -1,18 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
 
-class miv
-  implements Runnable
+public class miv
+  implements View.OnClickListener
 {
-  miv(miu parammiu) {}
+  public miv(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ReadInJoyListViewGroup.b(this.a.a);
+    this.a.a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     miv
  * JD-Core Version:    0.7.0.1
  */

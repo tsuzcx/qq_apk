@@ -1,38 +1,31 @@
 package com.tencent.token.ui;
 
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.Window;
-import android.widget.TextView;
-import com.tencent.token.core.bean.DeviceInfo;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult.VerifyTypeItem;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.cw;
 
-final class aer
-  extends Dialog
+class aer
+  implements View.OnClickListener
 {
-  private DeviceInfo b;
+  aer(VerifyMobilePhoneActivity paramVerifyMobilePhoneActivity) {}
   
-  public aer(UtilsMailProtectActivity paramUtilsMailProtectActivity, Context paramContext, DeviceInfo paramDeviceInfo)
+  public void onClick(View paramView)
   {
-    super(paramContext, 2131427400);
-    this.b = paramDeviceInfo;
-  }
-  
-  protected final void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    setContentView(2130903069);
-    paramBundle = String.format(this.a.getResources().getString(2131362245), new Object[] { this.b.dname });
-    ((TextView)findViewById(2131296492)).setText(paramBundle);
-    setCanceledOnTouchOutside(true);
-    paramBundle = getWindow();
-    paramBundle.setBackgroundDrawableResource(2130837639);
-    paramBundle.getAttributes().width = -1;
-    paramBundle.setGravity(80);
-    findViewById(2131296493).setOnClickListener(new aes(this));
-    findViewById(2131296494).setOnClickListener(new aet(this));
+    if (VerifyMobilePhoneActivity.access$000(this.a) != null) {
+      VerifyMobilePhoneActivity.access$000(this.a).clearFocus();
+    }
+    paramView = VerifyMobilePhoneActivity.access$000(this.a).getText().toString();
+    if (!TextUtils.isEmpty(paramView))
+    {
+      cw.a().b(VerifyMobilePhoneActivity.access$100(this.a).b(), paramView, VerifyMobilePhoneActivity.access$200(this.a).a(), this.a.mHandler);
+      this.a.showProDialog(this.a, 2131230843, 2131231298, null);
+      return;
+    }
+    this.a.showUserDialog(2131230843, this.a.getString(2131230957), 2131230897, new aes(this));
   }
 }
 

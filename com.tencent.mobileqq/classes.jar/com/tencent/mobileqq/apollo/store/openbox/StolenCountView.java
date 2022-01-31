@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.apollo.store.openbox;
 
+import aldt;
+import aliu;
 import android.content.Context;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import bdgk;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.apollo.store.ApolloImageDownloader;
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import java.io.File;
 
 public class StolenCountView
@@ -25,17 +25,17 @@ public class StolenCountView
   
   private void a()
   {
-    if (!new File(ApolloConstant.g + "boxcard/apollo_stolen_count_1.png").exists()) {
-      ApolloImageDownloader.a("apollo_stolen_count_1.png", null, ApolloImageDownloader.a("apollo_stolen_count_1.png")).startDownload();
+    if (!new File(aliu.k + "boxcard/apollo_stolen_count_1.png").exists()) {
+      aldt.a("apollo_stolen_count_1.png", null, aldt.a("apollo_stolen_count_1.png")).startDownload();
     }
-    if (!new File(ApolloConstant.g + "boxcard/apollo_stolen_count_2.png").exists()) {
-      ApolloImageDownloader.a("apollo_stolen_count_2.png", null, ApolloImageDownloader.a("apollo_stolen_count_2.png")).startDownload();
+    if (!new File(aliu.k + "boxcard/apollo_stolen_count_2.png").exists()) {
+      aldt.a("apollo_stolen_count_2.png", null, aldt.a("apollo_stolen_count_2.png")).startDownload();
     }
-    if (!new File(ApolloConstant.g + "boxcard/apollo_stolen_count_3.png").exists()) {
-      ApolloImageDownloader.a("apollo_stolen_count_3.png", null, ApolloImageDownloader.a("apollo_stolen_count_3.png")).startDownload();
+    if (!new File(aliu.k + "boxcard/apollo_stolen_count_3.png").exists()) {
+      aldt.a("apollo_stolen_count_3.png", null, aldt.a("apollo_stolen_count_3.png")).startDownload();
     }
-    if (!new File(ApolloConstant.g + "boxcard/apollo_stolen_count_4.png").exists()) {
-      ApolloImageDownloader.a("apollo_stolen_count_4.png", null, ApolloImageDownloader.a("apollo_stolen_count_4.png")).startDownload();
+    if (!new File(aliu.k + "boxcard/apollo_stolen_count_4.png").exists()) {
+      aldt.a("apollo_stolen_count_4.png", null, aldt.a("apollo_stolen_count_4.png")).startDownload();
     }
   }
   
@@ -43,16 +43,16 @@ public class StolenCountView
   {
     a();
     this.b = new URLImageView(paramContext);
-    int j = (int)((float)DeviceInfoUtil.j() * 0.97F);
-    int i = (int)((float)DeviceInfoUtil.j() * 0.192F);
+    int j = (int)((float)bdgk.i() * 0.97F);
+    int i = (int)((float)bdgk.i() * 0.192F);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(j, i);
     localLayoutParams.addRule(13);
-    URLDrawable localURLDrawable = ApolloImageDownloader.a("apollo_stolen_count_bg.png", null, ApolloImageDownloader.a("apollo_stolen_count_bg.png"));
+    URLDrawable localURLDrawable = aldt.a("apollo_stolen_count_bg.png", null, aldt.a("apollo_stolen_count_bg.png"));
     localURLDrawable.startDownload();
     this.b.setImageDrawable(localURLDrawable);
     this.b.setAlpha(0);
     super.addView(this.b, localLayoutParams);
-    j = (int)((float)DeviceInfoUtil.j() * 0.738F);
+    j = (int)((float)bdgk.i() * 0.738F);
     this.a = new URLImageView(paramContext);
     paramContext = new RelativeLayout.LayoutParams(j, i);
     this.a.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
@@ -62,7 +62,7 @@ public class StolenCountView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.openbox.StolenCountView
  * JD-Core Version:    0.7.0.1
  */

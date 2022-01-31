@@ -1,15 +1,27 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.dataline.mpfile.MpfileTaskListAdapter;
+import com.dataline.mpfile.LiteMpFileMainActivity;
+import com.dataline.mpfile.MpFileDataReportCenter;
+import com.dataline.mpfile.MpFileDataReportCenter.MPFWorkType;
+import com.dataline.mpfile.MpfileDataCenter;
+import com.dataline.mpfile.MpfileDataReportInfo;
+import com.dataline.util.DBNetworkUtil;
 
 public class dy
-  implements View.OnLongClickListener
+  implements Runnable
 {
-  public dy(MpfileTaskListAdapter paramMpfileTaskListAdapter) {}
+  public dy(LiteMpFileMainActivity paramLiteMpFileMainActivity) {}
   
-  public boolean onLongClick(View paramView)
+  public void run()
   {
-    return false;
+    MpfileDataReportInfo localMpfileDataReportInfo = new MpfileDataReportInfo();
+    localMpfileDataReportInfo.jdField_b_of_type_Int = 253;
+    localMpfileDataReportInfo.jdField_a_of_type_Int = MpFileDataReportCenter.MPFWorkType.connection.ordinal();
+    localMpfileDataReportInfo.jdField_a_of_type_JavaLangString = MpfileDataCenter.k;
+    localMpfileDataReportInfo.jdField_b_of_type_JavaLangString = DBNetworkUtil.a();
+    localMpfileDataReportInfo.d = MpfileDataCenter.E;
+    localMpfileDataReportInfo.jdField_b_of_type_Long = LiteMpFileMainActivity.b(this.a);
+    localMpfileDataReportInfo.c = LiteMpFileMainActivity.c(this.a);
+    MpFileDataReportCenter.a(this.a.b, localMpfileDataReportInfo);
+    this.a.a(MpfileDataCenter.t);
   }
 }
 

@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.widget.Toast;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.33;
 
 class ryz
-  implements Runnable
+  implements qfu
 {
-  ryz(ryy paramryy, int paramInt) {}
+  ryz(ryy paramryy) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    if (!this.jdField_a_of_type_Ryy.a.a.isFinishing()) {
-      this.jdField_a_of_type_Ryy.a.a.a(this.jdField_a_of_type_Int);
-    }
+    srt.a(this.a.a.a.this$0, paramString, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ryz
  * JD-Core Version:    0.7.0.1
  */

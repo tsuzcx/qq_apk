@@ -1,18 +1,12 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoySelfInnerListViewAdapter;
-
-public class mjp
+public abstract interface mjp
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView b;
+  public abstract void a(long paramLong);
   
-  private mjp(ReadInjoySelfInnerListViewAdapter paramReadInjoySelfInnerListViewAdapter) {}
+  public abstract void a(long paramLong, mkj parammkj);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mjp
  * JD-Core Version:    0.7.0.1
  */

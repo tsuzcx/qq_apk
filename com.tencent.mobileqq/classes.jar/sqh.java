@@ -1,41 +1,96 @@
-import android.graphics.Bitmap;
-import android.os.Message;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.anim.FriendProfileCardBgDrawable;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.ProfileShoppingPhotoInfo;
-import com.tencent.mobileqq.utils.StackBlur;
-import com.tencent.util.WeakReferenceHandler;
+import android.view.View;
+import android.view.ViewGroup;
+import org.json.JSONObject;
 
 public class sqh
-  implements Runnable
 {
-  public sqh(FriendProfileCardActivity paramFriendProfileCardActivity, Bitmap paramBitmap) {}
+  public int a;
+  public View a;
+  public ViewGroup a;
+  private rjn a;
+  public sqd a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public boolean d;
+  public int e;
+  public boolean e;
+  public int f;
+  public boolean f;
   
-  public void run()
+  public sqh(ViewGroup paramViewGroup, JSONObject paramJSONObject)
   {
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    Object localObject = localBitmap;
-    if (localBitmap == null) {
-      localObject = ((FriendProfileCardBgDrawable)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable).b();
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_d_of_type_Int = 1000;
+    this.jdField_e_of_type_Int = -1;
+    this.jdField_f_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_a_of_type_Sqd = new sqd(paramJSONObject.getJSONObject("video_info"));
+    if (paramJSONObject.has("autoplay")) {
+      this.jdField_b_of_type_Boolean = paramJSONObject.getBoolean("autoplay");
     }
-    if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
-    {
-      localObject = Bitmap.createScaledBitmap((Bitmap)localObject, (int)(((Bitmap)localObject).getWidth() * 0.125F), (int)(((Bitmap)localObject).getHeight() * 0.125F), true);
-      StackBlur.a((Bitmap)localObject, 2);
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a != null))
-      {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b.obtainMessage(12, localObject);
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileShoppingPhotoInfo = ProfileShoppingPhotoInfo.getPhotoInfo(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a);
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b.sendMessage((Message)localObject);
-      }
+    if (paramJSONObject.has("muted")) {
+      this.jdField_a_of_type_Boolean = paramJSONObject.getBoolean("muted");
     }
+    if (paramJSONObject.has("start_position")) {
+      this.jdField_a_of_type_Int = paramJSONObject.getInt("start_position");
+    }
+    if (paramJSONObject.has("width")) {
+      this.jdField_b_of_type_Int = paramJSONObject.getInt("width");
+    }
+    if (paramJSONObject.has("height")) {
+      this.jdField_c_of_type_Int = paramJSONObject.getInt("height");
+    }
+    if (paramJSONObject.has("controls")) {
+      this.jdField_c_of_type_Boolean = paramJSONObject.getBoolean("controls");
+    }
+    if (paramJSONObject.has("resize")) {
+      a(paramJSONObject.getString("resize"));
+    }
+    if (paramJSONObject.has("timeupdateRate")) {
+      this.jdField_d_of_type_Int = paramJSONObject.getInt("timeupdateRate");
+    }
+    if (paramJSONObject.has("barBottomMargin")) {
+      this.jdField_e_of_type_Int = paramJSONObject.getInt("barBottomMargin");
+    }
+    if (paramJSONObject.has("disableFullScreen")) {
+      this.jdField_d_of_type_Boolean = paramJSONObject.getBoolean("disableFullScreen");
+    }
+    if (paramJSONObject.has("disableSeek")) {
+      this.jdField_e_of_type_Boolean = paramJSONObject.getBoolean("disableSeek");
+    }
+    if (paramJSONObject.has("endWithLastFrame")) {
+      this.jdField_f_of_type_Boolean = paramJSONObject.getBoolean("endWithLastFrame");
+    }
+  }
+  
+  void a(String paramString)
+  {
+    if (paramString.equals("contain")) {
+      this.jdField_f_of_type_Int = 0;
+    }
+    while (!paramString.equals("cover")) {
+      return;
+    }
+    this.jdField_f_of_type_Int = 2;
+  }
+  
+  public String toString()
+  {
+    return "VideoPlayParam{videoInfo=" + this.jdField_a_of_type_Sqd + ", startPosition=" + this.jdField_a_of_type_Int + ", muted=" + this.jdField_a_of_type_Boolean + ", autoPlay=" + this.jdField_b_of_type_Boolean + ", width=" + this.jdField_b_of_type_Int + ", height=" + this.jdField_c_of_type_Int + ", controls=" + this.jdField_c_of_type_Boolean + ", timeupdateRate=" + this.jdField_d_of_type_Int + ", barBottomMargin=" + this.jdField_e_of_type_Int + ", disableFullScreen=" + this.jdField_d_of_type_Boolean + ", disableSeek=" + this.jdField_e_of_type_Boolean + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sqh
  * JD-Core Version:    0.7.0.1
  */

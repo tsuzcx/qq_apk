@@ -1,34 +1,33 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import com.tencent.mobileqq.leba.view.LebaFeedsDislikeMaskView;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import java.util.List;
 
 public class aebh
-  implements Animator.AnimatorListener
+  implements PopupWindow.OnDismissListener
 {
-  public aebh(LebaFeedsDislikeMaskView paramLebaFeedsDislikeMaskView) {}
+  public aebh(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onDismiss()
   {
-    LebaFeedsDislikeMaskView.a(this.a).setAlpha(1.0F);
-    LebaFeedsDislikeMaskView.a(this.a).setScaleX(1.0F);
-    LebaFeedsDislikeMaskView.a(this.a).setScaleY(1.0F);
-    LebaFeedsDislikeMaskView.a(this.a, LebaFeedsDislikeMaskView.a(this.a));
-    this.a.invalidate();
-    LebaFeedsDislikeMaskView.a(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    LebaFeedsDislikeMaskView.a(this.a).setAlpha(0.0F);
-    LebaFeedsDislikeMaskView.a(this.a).setScaleX(0.0F);
-    LebaFeedsDislikeMaskView.a(this.a).setScaleY(0.0F);
-    LebaFeedsDislikeMaskView.a(this.a, 0);
-    this.a.invalidate();
+    this.a.a = null;
+    Object localObject;
+    if ((TextPreviewTranslateActivity.b(this.a) != null) && (TextPreviewTranslateActivity.b(this.a).size() > 1))
+    {
+      localObject = this.a.getResources();
+      if (!TextPreviewTranslateActivity.a(this.a)) {
+        break label76;
+      }
+    }
+    label76:
+    for (int i = 2130845229;; i = 2130845740)
+    {
+      localObject = ((Resources)localObject).getDrawable(i);
+      TextPreviewTranslateActivity.b(this.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, (Drawable)localObject);
+      return;
+    }
   }
 }
 

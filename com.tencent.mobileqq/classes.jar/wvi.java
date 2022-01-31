@@ -1,40 +1,54 @@
-import android.content.Intent;
+import android.app.Activity;
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.activity.phone.RebindActivity;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.view.View;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
-public class wvi
-  extends ContactBindObserver
+class wvi
+  extends wrj
 {
-  public wvi(RebindActivity paramRebindActivity) {}
+  wvi(wvg paramwvg) {}
   
-  protected void b(boolean paramBoolean, Bundle paramBundle)
+  public void a(int paramInt, View paramView, Object paramObject, wtq paramwtq)
   {
-    this.a.b();
-    if (paramBoolean)
-    {
-      paramBundle = new Intent(this.a, BindVerifyActivity.class);
-      paramBundle.putExtra("kSrouce", this.a.jdField_a_of_type_Int);
-      paramBundle.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
-      paramBundle.putExtra("kBindType", RebindActivity.a(this.a));
-      paramBundle.putExtra("keyReqBindMode", 1);
-      paramBundle.putExtra("k_country_code", RebindActivity.a(this.a));
-      paramBundle.putExtra("cmd_param_is_from_uni", RebindActivity.a(this.a));
-      paramBundle.putExtra("cmd_param_is_from_change_bind", RebindActivity.b(this.a));
-      paramBundle.addFlags(67108864);
-      paramBundle.putExtra("k_is_block", this.a.getIntent().getBooleanExtra("k_is_block", false));
-      paramBundle.putExtra("key_is_from_qqhotspot", this.a.getIntent().getBooleanExtra("key_is_from_qqhotspot", false));
-      paramBundle.putExtra("key_is_from_qav_multi_call", this.a.getIntent().getBooleanExtra("key_is_from_qav_multi_call", false));
-      this.a.startActivityForResult(paramBundle, 1);
-      return;
+    if ((paramView == paramwtq.a(2131373794)) || (paramView == paramwtq.a(2131373795)) || (paramView == paramwtq.a(2131373798))) {
+      if (wvg.a(this.a)) {
+        wxe.d("Q.qqstory.home.LocalVideoPushSegment", "now is opening the new page, so ignore the click");
+      }
     }
-    this.a.b(2131434455);
+    while (paramView != paramwtq.a(2131373793))
+    {
+      return;
+      wvg.a(this.a, true);
+      paramObject = new Bundle();
+      paramObject.putInt("capture_intent_mode", 3);
+      if (wvg.a(this.a) == 1) {
+        paramObject.putString("story_capture_album_id", "default_id");
+      }
+      for (;;)
+      {
+        xpk.a().a((Activity)wvg.a(this.a), paramObject, 20000);
+        wxj.a("home_page", "clk_smartalbum", 0, 0, new String[] { wvg.a(this.a, wvg.a(this.a)) });
+        return;
+        if (wvg.a(this.a) == 2)
+        {
+          if (wvg.a(this.a) != null) {}
+          for (paramView = String.valueOf(wvg.a(this.a).a());; paramView = "default_id")
+          {
+            paramObject.putString("story_capture_album_id", paramView);
+            break;
+          }
+        }
+        if (wvg.a(this.a) != 3) {}
+      }
+    }
+    this.a.a.b("last_cancel_time", Long.valueOf(NetConnInfoCenter.getServerTimeMillis()));
+    this.a.a(null, 4);
+    wxj.a("home_page", "close_smartalbum", 0, 0, new String[] { wvg.a(this.a, wvg.a(this.a)) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wvi
  * JD-Core Version:    0.7.0.1
  */

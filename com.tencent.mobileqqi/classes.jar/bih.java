@@ -1,43 +1,17 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.service.AVServiceForQQ;
-import com.tencent.av.service.IAVServiceCallback;
-import com.tencent.av.service.IAVServiceForQQ.Stub;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.eqq.EnterpriseDetailActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class bih
-  extends IAVServiceForQQ.Stub
+  implements View.OnClickListener
 {
-  IAVServiceCallback jdField_a_of_type_ComTencentAvServiceIAVServiceCallback = null;
+  public bih(EnterpriseDetailActivity paramEnterpriseDetailActivity, String paramString) {}
   
-  private bih(AVServiceForQQ paramAVServiceForQQ) {}
-  
-  public void a(IAVServiceCallback paramIAVServiceCallback)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentAvServiceIAVServiceCallback = paramIAVServiceCallback;
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_ComTencentAvServiceAVServiceForQQ.a != null) {}
-    for (VideoController localVideoController = this.jdField_a_of_type_ComTencentAvServiceAVServiceForQQ.a.a();; localVideoController = VideoController.a())
-    {
-      if (localVideoController != null) {
-        localVideoController.b(paramArrayOfByte);
-      }
-      return;
-    }
-  }
-  
-  public void b(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_ComTencentAvServiceAVServiceForQQ.a != null) {}
-    for (VideoController localVideoController = this.jdField_a_of_type_ComTencentAvServiceAVServiceForQQ.a.a();; localVideoController = VideoController.a())
-    {
-      if (localVideoController != null) {
-        localVideoController.c(paramArrayOfByte);
-      }
-      return;
-    }
+    EnterpriseDetailActivity.b(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity, this.jdField_a_of_type_JavaLangString);
+    ReportController.b(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.a, "CliOper", "", "", "Biz_card", "Biz_card_more", 0, 0, this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.b, "", "", "");
   }
 }
 

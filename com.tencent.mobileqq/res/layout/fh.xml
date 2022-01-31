@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/fic" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/b8q" android:layout_width="255.0dip" android:layout_height="116.0dip" android:layout_marginTop="20.0dip" android:layout_marginBottom="10.0dip">
+        <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/bac" android:layout_width="255.0dip" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <TextView android:textSize="14.0dip" android:textColor="#ff777777" android:ellipsize="end" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="jazzy获得了新勋章" android:singleLine="true" android:includeFontPadding="false" android:drawableLeft="@drawable/ema" android:drawableRight="@drawable/emb" android:drawablePadding="3.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+        <com.tencent.image.URLImageView android:id="@id/icon" android:layout_width="@dimen/agp" android:layout_height="@dimen/agp" android:layout_marginLeft="17.0dip" android:layout_marginTop="2.0dip" android:layout_marginBottom="2.0dip" android:layout_below="@id/title" android:layout_alignParentLeft="true" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="12.0dip" android:layout_marginRight="10.0dip" android:layout_toRightOf="@id/icon" android:layout_below="@id/title">
+            <LinearLayout android:gravity="bottom|center|left" android:orientation="horizontal" android:id="@id/f5i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip">
+                <TextView android:textSize="20.0dip" android:textColor="#ff000000" android:ellipsize="end" android:gravity="bottom|center|left" android:id="@id/f5e" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/kfh" android:singleLine="true" android:includeFontPadding="false" android:layout_weight="1.0" />
+                <ImageView android:id="@id/bab" android:visibility="visible" android:layout_width="24.0dip" android:layout_height="20.0dip" android:layout_marginLeft="3.0dip" android:layout_marginBottom="3.0dip" android:src="@drawable/exm" />
+            </LinearLayout>
+            <TextView android:textSize="13.5dip" android:textColor="#ff777777" android:id="@id/bg6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:text="@string/kfv" android:maxLines="2" android:includeFontPadding="false" />
+        </LinearLayout>
+    </RelativeLayout>
+    <com.tencent.mobileqq.dating.widget.DatingCommentTextView android:textSize="13.0dip" android:textColor="@color/skin_tips" android:id="@id/jmp" android:background="@drawable/eld" android:paddingLeft="9.0dip" android:paddingTop="4.0dip" android:paddingRight="9.0dip" android:paddingBottom="4.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" />
+</LinearLayout>

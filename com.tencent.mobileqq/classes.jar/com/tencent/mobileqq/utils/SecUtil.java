@@ -32,54 +32,64 @@ public class SecUtil
     //   21: getfield 56	android/content/pm/ApplicationInfo:sourceDir	Ljava/lang/String;
     //   24: invokespecial 59	java/io/File:<init>	(Ljava/lang/String;)V
     //   27: invokespecial 62	java/util/jar/JarFile:<init>	(Ljava/io/File;)V
-    //   30: invokevirtual 66	java/util/jar/JarFile:entries	()Ljava/util/Enumeration;
-    //   33: astore_0
-    //   34: new 68	java/util/HashSet
-    //   37: dup
-    //   38: invokespecial 69	java/util/HashSet:<init>	()V
-    //   41: astore_1
-    //   42: aload_0
-    //   43: invokeinterface 75 1 0
-    //   48: ifeq +45 -> 93
-    //   51: aload_0
-    //   52: invokeinterface 79 1 0
-    //   57: checkcast 81	java/util/jar/JarEntry
-    //   60: invokevirtual 85	java/util/jar/JarEntry:getName	()Ljava/lang/String;
-    //   63: astore_2
-    //   64: aload_1
-    //   65: aload_2
-    //   66: invokeinterface 91 2 0
-    //   71: iconst_1
-    //   72: if_icmpne +5 -> 77
-    //   75: iconst_1
-    //   76: ireturn
-    //   77: aload_1
-    //   78: aload_2
-    //   79: invokeinterface 94 2 0
-    //   84: pop
-    //   85: goto -43 -> 42
-    //   88: astore_0
-    //   89: aload_0
-    //   90: invokevirtual 97	java/lang/Exception:printStackTrace	()V
-    //   93: iconst_0
-    //   94: ireturn
-    //   95: astore_0
-    //   96: aload_0
-    //   97: invokevirtual 98	java/lang/OutOfMemoryError:printStackTrace	()V
-    //   100: goto -7 -> 93
+    //   30: astore_0
+    //   31: aload_0
+    //   32: invokevirtual 66	java/util/jar/JarFile:entries	()Ljava/util/Enumeration;
+    //   35: astore_1
+    //   36: new 68	java/util/HashSet
+    //   39: dup
+    //   40: invokespecial 69	java/util/HashSet:<init>	()V
+    //   43: astore_2
+    //   44: aload_1
+    //   45: invokeinterface 75 1 0
+    //   50: ifeq +51 -> 101
+    //   53: aload_1
+    //   54: invokeinterface 79 1 0
+    //   59: checkcast 81	java/util/jar/JarEntry
+    //   62: invokevirtual 85	java/util/jar/JarEntry:getName	()Ljava/lang/String;
+    //   65: astore_3
+    //   66: aload_2
+    //   67: aload_3
+    //   68: invokeinterface 91 2 0
+    //   73: iconst_1
+    //   74: if_icmpne +9 -> 83
+    //   77: aload_0
+    //   78: invokevirtual 94	java/util/jar/JarFile:close	()V
+    //   81: iconst_1
+    //   82: ireturn
+    //   83: aload_2
+    //   84: aload_3
+    //   85: invokeinterface 97 2 0
+    //   90: pop
+    //   91: goto -47 -> 44
+    //   94: astore_0
+    //   95: aload_0
+    //   96: invokevirtual 100	java/lang/Exception:printStackTrace	()V
+    //   99: iconst_0
+    //   100: ireturn
+    //   101: aload_0
+    //   102: invokevirtual 94	java/util/jar/JarFile:close	()V
+    //   105: goto -6 -> 99
+    //   108: astore_0
+    //   109: aload_0
+    //   110: invokevirtual 101	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   113: goto -14 -> 99
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	103	0	paramContext	Context
-    //   41	37	1	localHashSet	java.util.HashSet
-    //   63	16	2	str	String
+    //   0	116	0	paramContext	Context
+    //   35	19	1	localEnumeration	java.util.Enumeration
+    //   43	41	2	localHashSet	java.util.HashSet
+    //   65	20	3	str	String
     // Exception table:
     //   from	to	target	type
-    //   6	42	88	java/lang/Exception
-    //   42	75	88	java/lang/Exception
-    //   77	85	88	java/lang/Exception
-    //   6	42	95	java/lang/OutOfMemoryError
-    //   42	75	95	java/lang/OutOfMemoryError
-    //   77	85	95	java/lang/OutOfMemoryError
+    //   6	44	94	java/lang/Exception
+    //   44	81	94	java/lang/Exception
+    //   83	91	94	java/lang/Exception
+    //   101	105	94	java/lang/Exception
+    //   6	44	108	java/lang/OutOfMemoryError
+    //   44	81	108	java/lang/OutOfMemoryError
+    //   83	91	108	java/lang/OutOfMemoryError
+    //   101	105	108	java/lang/OutOfMemoryError
   }
   
   public static String getFileMd5(InputStream paramInputStream)
@@ -269,7 +279,7 @@ public class SecUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.SecUtil
  * JD-Core Version:    0.7.0.1
  */

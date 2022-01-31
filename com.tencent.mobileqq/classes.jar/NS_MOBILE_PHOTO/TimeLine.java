@@ -9,10 +9,10 @@ import java.util.Map;
 public final class TimeLine
   extends JceStruct
 {
-  static Map cache_festivals = new HashMap();
+  static Map<String, TimeEvent> cache_festivals = new HashMap();
   public long begin_time;
   public long end_time;
-  public Map festivals;
+  public Map<String, TimeEvent> festivals;
   public int show_day;
   public int show_month;
   public int show_time;
@@ -28,7 +28,7 @@ public final class TimeLine
   
   public TimeLine() {}
   
-  public TimeLine(long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, Map paramMap)
+  public TimeLine(long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, Map<String, TimeEvent> paramMap)
   {
     this.begin_time = paramLong1;
     this.end_time = paramLong2;

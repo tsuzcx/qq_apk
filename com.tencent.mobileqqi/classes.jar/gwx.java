@@ -1,47 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troop.activity.TroopBarImagePreviewAdapter;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.utils.TroopBarUtils;
-import com.tencent.mobileqq.troop.utils.TroopBarUtils.MyBar;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
 
 public class gwx
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public gwx(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public gwx(VideoPlayLogic paramVideoPlayLogic) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool;
-    if ("key_photo_delete_action".equals(paramIntent.getAction()))
-    {
-      int i = paramIntent.getIntExtra("key_photo_delete_position", -1);
-      if ((i >= 0) && (i < this.a.jdField_a_of_type_JavaUtilArrayList.size()))
-      {
-        this.a.jdField_a_of_type_JavaUtilArrayList.remove(i);
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarImagePreviewAdapter.a(this.a.jdField_a_of_type_JavaUtilArrayList);
-        paramContext = this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarImagePreviewAdapter;
-        if (this.a.jdField_a_of_type_JavaUtilArrayList.size() >= 8) {
-          break label128;
-        }
-        bool = true;
-        paramContext.a(bool, true);
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopBarUtils$MyBar != null) {
-        break label134;
-      }
-    }
-    label128:
-    label134:
-    for (paramContext = "0";; paramContext = this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopBarUtils$MyBar.s)
-    {
-      TroopBarUtils.a("pub_page", "del_photo", paramContext, "", "", "");
-      return;
-      bool = false;
-      break;
-    }
+    VideoPlayLogic.a(this.a);
   }
 }
 

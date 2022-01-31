@@ -1,15 +1,29 @@
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class akmh
-  implements Runnable
+public class akmh
 {
-  akmh(akmf paramakmf, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
-  
-  public void run()
+  public static akmm a(int paramInt, awge paramawge, QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(this.jdField_a_of_type_JavaLangString);
+    if (paramInt == 0) {
+      return new akmk(paramQQAppInterface, paramContext, paramawge);
     }
+    if (paramInt == 5) {
+      return new akmi(paramQQAppInterface, paramContext, paramawge);
+    }
+    if (paramInt == 1) {
+      return new akmq(paramQQAppInterface, paramContext, paramawge);
+    }
+    if (paramInt == 2) {
+      return new akms(paramQQAppInterface, paramContext, paramawge, 2);
+    }
+    if (paramInt == 3) {
+      return new akms(paramQQAppInterface, paramContext, paramawge, 3);
+    }
+    if (paramInt == 4) {
+      return new akmk(paramQQAppInterface, paramContext, paramawge);
+    }
+    return null;
   }
 }
 

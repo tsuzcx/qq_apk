@@ -1,14 +1,11 @@
-public final class amjp
-  extends ThreadLocal
+public class amjp
 {
-  protected char[] a()
-  {
-    return new char[1024];
-  }
+  public int a;
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amjp
  * JD-Core Version:    0.7.0.1
  */

@@ -2,25 +2,27 @@ package com.tencent.mobileqq.shortvideo.resource;
 
 public abstract interface Resources
 {
-  public abstract AVFilterResource a();
+  public abstract SpecialAVFilterResource getAVFilterResource();
   
-  public abstract ArtFilterResource a();
+  public abstract ArtFilterResource getArtFilterResource();
   
-  public abstract BeautyResource a();
+  public abstract AVFilterResource getAvFilterResource();
   
-  public abstract GestureGameResource a();
+  public abstract BeautyResource getBeautyResource();
   
-  public abstract GestureResource a();
+  public abstract GestureResource getGestureResource();
   
-  public abstract LowLightResource a();
+  public abstract LowLightResource getLowLightResource();
   
-  public abstract PtuFilterResource a();
+  public abstract PtuFilterResource getPtuFilterResource();
   
-  public abstract SpecialAVFilterResource a();
+  public abstract SensorResource getSensorResource();
+  
+  public abstract GestureGameResource geteGestureGameResource();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.resource.Resources
  * JD-Core Version:    0.7.0.1
  */

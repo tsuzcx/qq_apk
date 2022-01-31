@@ -1,33 +1,35 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.DrawerFrame;
+import com.tencent.mobileqq.activity.recent.cur.DragRelativeLayout;
+import com.tencent.mobileqq.activity.recent.cur.DragRelativeLayout.OnDragModeChangedListener;
+import java.util.List;
 
-class cfx
-  implements ActionSheet.OnButtonClickListener
+public class cfx
+  implements DragRelativeLayout.OnDragModeChangedListener
 {
-  cfx(cfw paramcfw, ActionSheet paramActionSheet) {}
+  private int jdField_a_of_type_Int = -2147483648;
+  private List jdField_a_of_type_JavaUtilList;
   
-  public void OnClick(View paramView, int paramInt)
+  private cfx(Conversation paramConversation) {}
+  
+  public void a(int paramInt, List paramList) {}
+  
+  public void a(boolean paramBoolean, int paramInt, DragRelativeLayout paramDragRelativeLayout)
   {
-    switch (paramInt)
+    if (paramDragRelativeLayout.a() == -1)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      ChatActivityFacade.b(this.jdField_a_of_type_Cfw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Cfw.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      if (!(this.jdField_a_of_type_Cfw.jdField_a_of_type_AndroidContentContext instanceof ChatActivity))
-      {
-        this.jdField_a_of_type_Cfw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Cfw.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
-        return;
+      if ((this.jdField_a_of_type_Int == -2147483648) || (Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation) != null)) {
+        Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation).sendEmptyMessage(10);
       }
-      ((ChatActivity)this.jdField_a_of_type_Cfw.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Cfw.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.setDrawerEnabled(true);
+      }
     }
+    while (this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a == null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.setDrawerEnabled(false);
   }
 }
 

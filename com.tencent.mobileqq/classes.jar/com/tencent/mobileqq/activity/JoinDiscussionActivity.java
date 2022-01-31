@@ -1,5 +1,13 @@
 package com.tencent.mobileqq.activity;
 
+import QQService.DiscussMemberInfo;
+import adfa;
+import adfb;
+import adfc;
+import adfd;
+import alri;
+import altm;
+import alud;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,19 +16,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.app.DiscussionHandler;
-import com.tencent.mobileqq.app.FriendListObserver;
+import bdin;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import java.util.ArrayList;
 import java.util.List;
-import svp;
-import svq;
-import svr;
-import svs;
-import svv;
 
 public class JoinDiscussionActivity
   extends IphoneTitleBarActivity
@@ -28,21 +29,21 @@ public class JoinDiscussionActivity
 {
   int jdField_a_of_type_Int = 0;
   public long a;
+  private adfc jdField_a_of_type_Adfc;
+  private adfd jdField_a_of_type_Adfd;
+  public alri a;
+  private altm jdField_a_of_type_Altm = new adfb(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
-  public ImageView a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  public TextView a;
-  public DiscussionHandler a;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new svq(this);
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   public String a;
-  public ArrayList a;
-  public List a;
-  private svs jdField_a_of_type_Svs;
-  private svv jdField_a_of_type_Svv;
+  public ArrayList<String> a;
+  public List<DiscussMemberInfo> a;
   public int b;
   public long b;
   private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  public TextView b;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
   String jdField_b_of_type_JavaLangString;
   public String c = "";
   public String d;
@@ -57,34 +58,34 @@ public class JoinDiscussionActivity
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364815));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364816));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364817));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364818));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364819));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364821));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365314));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365327));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365333));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364923));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131368991));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365873));
   }
   
   private void c()
   {
-    setTitle("加入多人聊天");
-    setRightButton(2131433015, this);
+    setTitle(alud.a(2131706270));
+    setRightButton(2131690648, this);
     this.leftView.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new svp(this));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new adfa(this));
   }
   
   private void d()
   {
-    if (NetworkUtil.d(this))
+    if (bdin.d(this))
     {
       startTitleProgress();
       if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0)) {
-        this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.c(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Alri.c(this.jdField_a_of_type_JavaLangString);
       }
       while ((this.jdField_b_of_type_JavaLangString == null) || (this.jdField_b_of_type_JavaLangString.length() <= 0)) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.b(this.jdField_b_of_type_JavaLangString);
+      this.jdField_a_of_type_Alri.b(this.jdField_b_of_type_JavaLangString);
       return;
     }
     a(0, -160);
@@ -92,15 +93,15 @@ public class JoinDiscussionActivity
   
   private void e()
   {
-    runOnUiThread(new svr(this));
+    runOnUiThread(new JoinDiscussionActivity.3(this));
   }
   
   public void a()
   {
-    if (NetworkUtil.d(this))
+    if (bdin.d(this))
     {
       startTitleProgress();
-      this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Alri.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
       return;
     }
     a(1, -160);
@@ -114,7 +115,7 @@ public class JoinDiscussionActivity
     {
     default: 
       if (paramInt1 == 1) {
-        str = "加入多人聊天失败，请稍后重试";
+        str = alud.a(2131706268);
       }
       break;
     }
@@ -122,33 +123,33 @@ public class JoinDiscussionActivity
     {
       QQToast.a(this, str, 0).b(getTitleBarHeight());
       return;
-      str = "多人聊天不存在";
+      str = alud.a(2131706262);
       continue;
-      str = "多人聊天人数已达上限";
+      str = alud.a(2131706266);
       continue;
-      str = "非法多人聊天链接";
+      str = alud.a(2131706264);
       continue;
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       return;
-      str = "网络错误，请稍后重试";
+      str = alud.a(2131706265);
       continue;
       if (paramInt1 == 0) {
-        str = "获取多人聊天信息失败，请稍后重试";
+        str = alud.a(2131706263);
       }
     }
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130969034);
+    super.setContentView(2131559203);
     paramBundle = getIntent().getExtras();
-    this.jdField_a_of_type_Svv = new svv(this, null);
-    this.jdField_a_of_type_Svs = new svs(this, null);
-    addObserver(this.jdField_a_of_type_Svv);
-    addObserver(this.jdField_a_of_type_Svs);
-    addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    this.jdField_a_of_type_Adfd = new adfd(this, null);
+    this.jdField_a_of_type_Adfc = new adfc(this, null);
+    addObserver(this.jdField_a_of_type_Adfd);
+    addObserver(this.jdField_a_of_type_Adfc);
+    addObserver(this.jdField_a_of_type_Altm);
     this.jdField_a_of_type_Int = paramBundle.getInt("addDisSource");
     this.jdField_a_of_type_JavaLangString = paramBundle.getString("sig");
     this.jdField_b_of_type_JavaLangString = paramBundle.getString("innerSig");
@@ -167,23 +168,23 @@ public class JoinDiscussionActivity
     }
     b();
     c();
-    this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler = ((DiscussionHandler)this.app.a(6));
+    this.jdField_a_of_type_Alri = ((alri)this.app.a(6));
     d();
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_Svv);
-    removeObserver(this.jdField_a_of_type_Svs);
-    removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    removeObserver(this.jdField_a_of_type_Adfd);
+    removeObserver(this.jdField_a_of_type_Adfc);
+    removeObserver(this.jdField_a_of_type_Altm);
     super.doOnDestroy();
   }
   
   public void finish()
   {
     super.finish();
-    overridePendingTransition(0, 2131034122);
+    overridePendingTransition(0, 2130771978);
   }
   
   public void onClick(View paramView)
@@ -193,7 +194,7 @@ public class JoinDiscussionActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.JoinDiscussionActivity
  * JD-Core Version:    0.7.0.1
  */

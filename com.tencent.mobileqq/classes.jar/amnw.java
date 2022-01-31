@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkShareJumpActivity;
+import android.content.ContentValues;
 
 public class amnw
-  implements DialogInterface.OnClickListener
+  extends amnp
 {
-  public amnw(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public amnw(String paramString1, int paramInt1, String paramString2, ContentValues paramContentValues, String paramString3, String[] paramArrayOfString, int paramInt2, amnx paramamnx)
   {
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    super(paramString1, paramInt1, paramString2, paramContentValues, paramString3, paramArrayOfString, paramInt2, paramamnx);
+  }
+  
+  public amnw(String paramString1, int paramInt1, String paramString2, awge paramawge, int paramInt2, amnx paramamnx)
+  {
+    super(paramString1, paramInt1, paramString2, paramawge, paramInt2, paramamnx);
   }
 }
 

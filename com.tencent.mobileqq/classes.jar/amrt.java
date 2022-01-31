@@ -1,20 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
+import com.tencent.mobileqq.app.utils.NumberWheelView;
+import com.tencent.widget.VerticalGallery;
 
-public class amrt
-  extends Handler
+public abstract interface amrt
 {
-  public amrt(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    this.a.a(this.a.a, paramMessage);
-  }
+  public abstract void a(NumberWheelView paramNumberWheelView, VerticalGallery paramVerticalGallery);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amrt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.language.SelectLanguageActivity;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import com.tencent.mobileqq.utils.AlbumUtil;
 
 public class emi
   implements View.OnClickListener
 {
-  public emi(SelectLanguageActivity paramSelectLanguageActivity) {}
+  public emi(CameraPreviewActivity paramCameraPreviewActivity) {}
   
   public void onClick(View paramView)
   {
-    SelectLanguageActivity.a(this.a, 2);
+    this.a.finish();
+    AlbumUtil.a(this.a, true, false);
   }
 }
 

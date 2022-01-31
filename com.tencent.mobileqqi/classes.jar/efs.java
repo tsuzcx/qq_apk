@@ -1,22 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.item.ShakeItemBuilder;
-import com.tencent.mobileqq.data.MessageForShakeWindow;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter.ViewHolder;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import com.tencent.mobileqq.pb.PBEnumField;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class efs
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public efs(ShakeItemBuilder paramShakeItemBuilder, MessageForShakeWindow paramMessageForShakeWindow) {}
+  public efs(NotificationView paramNotificationView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ChatActivityFacade.a(ShakeItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShakeItemBuilder), ShakeItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShakeItemBuilder), ShakeItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShakeItemBuilder), this.jdField_a_of_type_ComTencentMobileqqDataMessageForShakeWindow.uniseq);
+    paramView = (NotificationAdapter.ViewHolder)paramView.getTag();
+    if (paramView.a.msg_type.get() == 2) {
+      this.a.a(paramView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     efs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,21 @@
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agio
-  extends Animation
+class agio
+  implements DialogInterface.OnClickListener
 {
-  float jdField_a_of_type_Float;
-  float b;
+  agio(aghx paramaghx) {}
   
-  public agio(ScanTorchActivity paramScanTorchActivity) {}
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramFloat < 0.382F) {}
-    for (float f = 1.0F + paramFloat / 0.382F * 0.382F;; f = 1.382F - (paramFloat - 0.382F) / 0.618F * 0.382F)
-    {
-      paramTransformation.getMatrix().setScale(f, f, this.jdField_a_of_type_Float / 2.0F, this.b / 2.0F);
-      super.applyTransformation(paramFloat, paramTransformation);
-      return;
+    if (this.a.a != null) {
+      this.a.a.o();
     }
-  }
-  
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_Float = paramInt1;
-    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agio
  * JD-Core Version:    0.7.0.1
  */

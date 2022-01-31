@@ -1,126 +1,149 @@
-import android.text.TextUtils;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Build.VERSION;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.mobileqq.subaccount.AssociatedAccountOptPopBar;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.util.FaceDrawable;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.widget.LeftPopupMenuDialog.MenuItem;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.FixSizeImageView;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.13.2;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aiki
-  extends FriendListObserver
+  implements bhuk
 {
-  public aiki(AssociatedAccountOptPopBar paramAssociatedAccountOptPopBar) {}
+  public aiki(AvatarPendantActivity paramAvatarPendantActivity, boolean paramBoolean, bhuf parambhuf) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (this.a.a == null) || (this.a.a.isFinishing()) || (this.a.a.app == null)) {}
-    Object localObject;
-    do
+    switch (paramInt)
     {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("AssociatedAccountOptPopBar", 2, "onUpdateCustomHead uin = " + paramString);
-        }
-        localObject = AssociatedAccountOptPopBar.a(this.a, paramString);
-      } while (localObject == null);
-      localObject = (FixSizeImageView)((View)localObject).findViewById(2131362719);
-    } while (localObject == null);
-    FaceDrawable localFaceDrawable = FaceDrawable.a(this.a.a.app, 1, paramString);
-    ((FixSizeImageView)localObject).setTag(paramString);
-    ((FixSizeImageView)localObject).setImageDrawable(localFaceDrawable);
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
-    View localView;
-    TextView localTextView;
-    LeftPopupMenuDialog.MenuItem localMenuItem;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.d("AssociatedAccountOptPopBar", 2, "onUpdateFriendInfo  uin = " + paramString + " isSuccess = " + paramBoolean);
-          }
-        } while ((this.a.a == null) || (this.a.a.isFinishing()) || (this.a.a.app == null));
-        localView = AssociatedAccountOptPopBar.a(this.a, paramString);
-      } while (localView == null);
-      localTextView = (TextView)localView.findViewById(2131363378);
-      localMenuItem = (LeftPopupMenuDialog.MenuItem)localView.getTag();
-    } while ((localTextView == null) || (localMenuItem == null));
-    Object localObject;
-    if ((localMenuItem.jdField_a_of_type_JavaLangObject instanceof SubAccountInfo))
-    {
-      if (!TextUtils.equals(paramString, ((SubAccountInfo)localMenuItem.jdField_a_of_type_JavaLangObject).subuin)) {
-        break label474;
-      }
-      localObject = ContactUtils.b(this.a.a.app, paramString, false);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        break label479;
-      }
     }
     for (;;)
     {
-      if (!paramString.equals(localMenuItem.jdField_a_of_type_JavaLangString))
+      try
       {
-        localMenuItem.jdField_a_of_type_JavaLangString = paramString;
-        paramBoolean = true;
+        this.jdField_a_of_type_Bhuf.dismiss();
+        return;
       }
-      for (;;)
+      catch (Exception paramView)
       {
-        label207:
-        if (paramBoolean)
+        boolean bool;
+        int i;
+        int j;
+        paramView.printStackTrace();
+      }
+      bool = VideoEnvironment.e();
+      if ((AudioHelper.b()) || (Build.MODEL.contains("Redmi 3")) || (Build.MODEL.contains("M3S")))
+      {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, alud.a(2131701253), 0).a();
+      }
+      else if (bool)
+      {
+        if (Build.VERSION.SDK_INT >= 23)
         {
-          localTextView.setText(localMenuItem.jdField_a_of_type_JavaLangString);
-          if (AppSetting.b) {
-            if (localMenuItem.c != 0) {
-              break label409;
+          if (this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.checkSelfPermission("android.permission.CAMERA") != 0)
+          {
+            paramInt = 1;
+            if (this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.checkSelfPermission("android.permission.RECORD_AUDIO") != 0)
+            {
+              i = 1;
+              if (this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0) {
+                continue;
+              }
+              j = 1;
+              if ((paramInt == 0) && (i == 0) && (j == 0)) {
+                continue;
+              }
+              this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.requestPermissions(new aikj(this), 1, new String[] { "android.permission.CAMERA", "android.permission.RECORD_AUDIO", "android.permission.WRITE_EXTERNAL_STORAGE" });
             }
           }
+          else
+          {
+            paramInt = 0;
+            continue;
+          }
+          i = 0;
+          continue;
+          j = 0;
+          continue;
+          DynamicAvatarRecordActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, 1, 1);
+          azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "dc00898", "", "", "0X8007100", "0X8007100", 0, 0, "", "", "", "");
         }
-        label409:
-        for (localMenuItem.b = (this.a.a.getString(2131436416, new Object[] { localMenuItem.jdField_a_of_type_JavaLangString }) + " " + this.a.a.getString(2131437126));; localMenuItem.b = (this.a.a.getString(2131436417, new Object[] { localMenuItem.jdField_a_of_type_JavaLangString }) + " " + this.a.a.getString(2131437126)))
+        else
         {
-          AssociatedAccountOptPopBar.a(this.a, localView, localMenuItem);
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("AssociatedAccountOptPopBar", 2, "onUpdateFriendInfo needUpdate = " + paramBoolean);
-          return;
-          if (!(localMenuItem.jdField_a_of_type_JavaLangObject instanceof SimpleAccount)) {
-            break label474;
-          }
-          localObject = (SimpleAccount)localMenuItem.jdField_a_of_type_JavaLangObject;
-          if (!TextUtils.equals(paramString, ((SimpleAccount)localObject).getUin())) {
-            break label474;
-          }
-          paramString = SubAccountControll.a(this.a.a.app, (SimpleAccount)localObject);
-          if (paramString.equals(localMenuItem.jdField_a_of_type_JavaLangString)) {
-            break label474;
-          }
-          localMenuItem.jdField_a_of_type_JavaLangString = paramString;
-          paramBoolean = true;
-          break label207;
+          DynamicAvatarRecordActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, 1, 1);
+          azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "dc00898", "", "", "0X8007100", "0X8007100", 0, 0, "", "", "", "");
         }
-        label474:
-        paramBoolean = false;
       }
-      label479:
-      paramString = (String)localObject;
+      else
+      {
+        if (!this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.e)
+        {
+          ThreadManager.postImmediately(new AvatarPendantActivity.13.2(this), null, true);
+          this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.e = true;
+        }
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, alud.a(2131701257), 0).a();
+        continue;
+        this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.g();
+        paramView = new Intent();
+        paramInt = bddf.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity);
+        paramView.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
+        paramView.putExtra("Business_Origin", 100);
+        paramView.putExtra("BUSINESS_ORIGIN_NEW", 100);
+        paramView.putExtra("PhotoConst.PHOTOLIST_KEY_FILTER_GIF_VIDEO", true);
+        paramView.putExtra("fromWhereClick", 11);
+        PhotoUtils.a(paramView, this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, AvatarPendantActivity.class.getName(), paramInt, paramInt, 1080, 1080, bddf.a());
+        azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "CliOper", "", "", "0X8004177", "0X8004177", this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h, 0, "", "", "", "");
+        continue;
+        this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.g();
+        if (Build.VERSION.SDK_INT >= 23)
+        {
+          if (this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.checkSelfPermission("android.permission.CAMERA") != 0)
+          {
+            paramInt = 1;
+            if (this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)
+            {
+              i = 1;
+              if ((paramInt == 0) && (i == 0)) {
+                continue;
+              }
+              this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.requestPermissions(new aikk(this), 2, new String[] { "android.permission.CAMERA", "android.permission.WRITE_EXTERNAL_STORAGE" });
+            }
+          }
+          else
+          {
+            paramInt = 0;
+            continue;
+          }
+          i = 0;
+          continue;
+          this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.jdField_a_of_type_AndroidNetUri = ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, 5);
+          azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "CliOper", "", "", "0X8004176", "0X8004176", this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h, 0, "", "", "", "");
+        }
+        else
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.jdField_a_of_type_AndroidNetUri = ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, 5);
+          azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "CliOper", "", "", "0X8004176", "0X8004176", this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h, 0, "", "", "", "");
+          continue;
+          if (this.jdField_a_of_type_Boolean)
+          {
+            paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, QQBrowserActivity.class);
+            paramView.putExtra("url", "https://ti.qq.com/avatarlist/public/index.html?_wv=3&_wwv=4");
+            this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.startActivity(paramView);
+            azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "dc00898", "", "", "0X8007C10", "0X8007C10", 0, 0, "", "", "", "");
+          }
+          else
+          {
+            bddf.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView, this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, 0, 0);
+          }
+        }
+      }
     }
   }
 }

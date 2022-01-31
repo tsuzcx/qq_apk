@@ -1,20 +1,14 @@
-import android.content.DialogInterface;
-import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
-import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class xkz
-  extends DialogUtil.DialogOnClickAdapter
 {
-  public xkz(RecentOptPopBar paramRecentOptPopBar) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  protected ImageView a;
+  protected TextView a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xkz
  * JD-Core Version:    0.7.0.1
  */

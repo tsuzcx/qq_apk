@@ -1,16 +1,70 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.smartdevice.SmartDevicePluginLoader;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public class anek
-  implements DialogInterface.OnDismissListener
+class anek
+  implements amyd
 {
-  public anek(SmartDevicePluginLoader paramSmartDevicePluginLoader, DialogInterface.OnDismissListener paramOnDismissListener) {}
+  private int jdField_a_of_type_Int;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  anek(aneh paramaneh) {}
+  
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener.onDismiss(paramDialogInterface);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("MiniRecog.MiniCodeController", 2, String.format("onMiniDownloadSuccess type=%d", new Object[] { Integer.valueOf(paramInt) }));
+      }
+      this.jdField_a_of_type_Aneh.a();
+      return;
+      aneh.c(this.jdField_a_of_type_Aneh, true);
+      continue;
+      aneh.d(this.jdField_a_of_type_Aneh, true);
+      continue;
+      aneh.e(this.jdField_a_of_type_Aneh, true);
+      this.jdField_a_of_type_Int = 100;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    }
+    while (paramInt1 == 0)
+    {
+      Iterator localIterator = aneh.a(this.jdField_a_of_type_Aneh).iterator();
+      while (localIterator.hasNext())
+      {
+        anel localanel = (anel)((WeakReference)localIterator.next()).get();
+        if (localanel != null) {
+          localanel.b(this.jdField_a_of_type_Int);
+        }
+      }
+      this.jdField_a_of_type_Int = paramInt2;
+    }
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MiniRecog.MiniCodeController", 2, String.format("onMiniDownloadError type=%d error=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+    }
+    if (paramInt1 == 0)
+    {
+      Iterator localIterator = aneh.a(this.jdField_a_of_type_Aneh).iterator();
+      while (localIterator.hasNext())
+      {
+        anel localanel = (anel)((WeakReference)localIterator.next()).get();
+        if (localanel != null) {
+          localanel.c(paramInt2);
+        }
+      }
     }
   }
 }

@@ -1,7 +1,6 @@
 package dov.com.tencent.mobileqq.richmedia.capture.data;
 
 import android.text.TextUtils;
-import aolm;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
@@ -35,7 +34,7 @@ public class CaptureRedDotConfig
   public static final int TYPE_PTV_TEMPLATE_REDDOT = 2;
   public static final String VERSION_ID = "redDotVersion";
   private static final long serialVersionUID = 1L;
-  public HashMap categories = new HashMap();
+  public HashMap<Integer, CaptureRedDotConfig.CategoryRedConfig> categories = new HashMap();
   public int defaultCategoryId;
   public int defaultCategoryVer;
   public String defaultUseId;
@@ -46,7 +45,7 @@ public class CaptureRedDotConfig
   public boolean hasUse;
   public int iconVersion;
   public transient boolean isShowing = false;
-  public HashMap redDotItems = new HashMap();
+  public HashMap<String, CaptureRedDotConfig.RedDotItemConfig> redDotItems = new HashMap();
   public int redDotVersion;
   public boolean showRedDot;
   public int showTime;
@@ -63,92 +62,92 @@ public class CaptureRedDotConfig
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokestatic 112	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1: invokestatic 114	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   4: ifeq +5 -> 9
     //   7: aconst_null
     //   8: areturn
-    //   9: new 114	java/io/File
+    //   9: new 116	java/io/File
     //   12: dup
     //   13: aload_0
     //   14: ldc 10
-    //   16: invokespecial 117	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   16: invokespecial 119	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   19: astore 4
-    //   21: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   21: invokestatic 125	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   24: ifeq +62 -> 86
-    //   27: new 125	java/lang/StringBuilder
+    //   27: new 127	java/lang/StringBuilder
     //   30: dup
-    //   31: invokespecial 126	java/lang/StringBuilder:<init>	()V
+    //   31: invokespecial 128	java/lang/StringBuilder:<init>	()V
     //   34: ldc 52
-    //   36: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   39: aload_1
-    //   40: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   43: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   40: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   43: invokevirtual 136	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   46: iconst_2
-    //   47: new 125	java/lang/StringBuilder
+    //   47: new 127	java/lang/StringBuilder
     //   50: dup
-    //   51: invokespecial 126	java/lang/StringBuilder:<init>	()V
-    //   54: ldc 136
-    //   56: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   51: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   54: ldc 138
+    //   56: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   59: aload 4
-    //   61: invokevirtual 139	java/io/File:getPath	()Ljava/lang/String;
-    //   64: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: ldc 141
-    //   69: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   61: invokevirtual 141	java/io/File:getPath	()Ljava/lang/String;
+    //   64: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   67: ldc 143
+    //   69: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   72: aload 4
-    //   74: invokevirtual 144	java/io/File:exists	()Z
-    //   77: invokevirtual 147	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   80: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   83: invokestatic 151	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   74: invokevirtual 146	java/io/File:exists	()Z
+    //   77: invokevirtual 149	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   80: invokevirtual 136	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   83: invokestatic 153	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   86: aload 4
-    //   88: invokevirtual 144	java/io/File:exists	()Z
+    //   88: invokevirtual 146	java/io/File:exists	()Z
     //   91: ifeq -84 -> 7
-    //   94: new 153	java/io/ObjectInputStream
+    //   94: new 155	java/io/ObjectInputStream
     //   97: dup
-    //   98: new 155	java/io/BufferedInputStream
+    //   98: new 157	java/io/BufferedInputStream
     //   101: dup
-    //   102: new 157	java/io/FileInputStream
+    //   102: new 159	java/io/FileInputStream
     //   105: dup
     //   106: aload 4
-    //   108: invokespecial 160	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   111: invokespecial 163	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   114: invokespecial 164	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   108: invokespecial 162	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   111: invokespecial 165	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   114: invokespecial 166	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   117: astore_2
     //   118: aload_2
     //   119: astore_0
     //   120: aload_2
-    //   121: invokevirtual 168	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   121: invokevirtual 170	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
     //   124: checkcast 2	dov/com/tencent/mobileqq/richmedia/capture/data/CaptureRedDotConfig
     //   127: astore_3
     //   128: aload_2
     //   129: astore_0
-    //   130: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   130: invokestatic 125	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   133: ifeq +47 -> 180
     //   136: aload_2
     //   137: astore_0
-    //   138: new 125	java/lang/StringBuilder
+    //   138: new 127	java/lang/StringBuilder
     //   141: dup
-    //   142: invokespecial 126	java/lang/StringBuilder:<init>	()V
+    //   142: invokespecial 128	java/lang/StringBuilder:<init>	()V
     //   145: ldc 52
-    //   147: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   147: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   150: aload_1
-    //   151: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   154: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   151: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   154: invokevirtual 136	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   157: iconst_2
-    //   158: new 125	java/lang/StringBuilder
+    //   158: new 127	java/lang/StringBuilder
     //   161: dup
-    //   162: invokespecial 126	java/lang/StringBuilder:<init>	()V
-    //   165: ldc 170
-    //   167: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   162: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   165: ldc 172
+    //   167: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   170: aload_3
-    //   171: invokevirtual 173	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   174: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   177: invokestatic 151	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   171: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   174: invokevirtual 136	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   177: invokestatic 153	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   180: aload_3
     //   181: astore_0
     //   182: aload_2
     //   183: ifnull +9 -> 192
     //   186: aload_2
-    //   187: invokevirtual 176	java/io/ObjectInputStream:close	()V
+    //   187: invokevirtual 178	java/io/ObjectInputStream:close	()V
     //   190: aload_3
     //   191: astore_0
     //   192: aload_0
@@ -159,30 +158,30 @@ public class CaptureRedDotConfig
     //   197: aload_1
     //   198: astore_0
     //   199: aload 4
-    //   201: invokevirtual 179	java/io/File:delete	()Z
+    //   201: invokevirtual 181	java/io/File:delete	()Z
     //   204: pop
     //   205: aload_1
     //   206: astore_0
-    //   207: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   207: invokestatic 125	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   210: ifeq +33 -> 243
     //   213: aload_1
     //   214: astore_0
     //   215: ldc 52
     //   217: iconst_2
-    //   218: new 125	java/lang/StringBuilder
+    //   218: new 127	java/lang/StringBuilder
     //   221: dup
-    //   222: invokespecial 126	java/lang/StringBuilder:<init>	()V
-    //   225: ldc 181
-    //   227: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   222: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   225: ldc 183
+    //   227: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   230: aload_3
-    //   231: invokevirtual 184	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   234: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   237: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   240: invokestatic 151	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   231: invokevirtual 186	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   234: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   237: invokevirtual 136	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   240: invokestatic 153	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   243: aload_1
     //   244: ifnull +51 -> 295
     //   247: aload_1
-    //   248: invokevirtual 176	java/io/ObjectInputStream:close	()V
+    //   248: invokevirtual 178	java/io/ObjectInputStream:close	()V
     //   251: aconst_null
     //   252: astore_0
     //   253: goto -61 -> 192
@@ -196,7 +195,7 @@ public class CaptureRedDotConfig
     //   265: aload_0
     //   266: ifnull +7 -> 273
     //   269: aload_0
-    //   270: invokevirtual 176	java/io/ObjectInputStream:close	()V
+    //   270: invokevirtual 178	java/io/ObjectInputStream:close	()V
     //   273: aload_1
     //   274: athrow
     //   275: astore_0
@@ -249,7 +248,7 @@ public class CaptureRedDotConfig
     if (QLog.isColorLevel()) {
       QLog.d("QIMRedDotConfig" + paramString2, 2, "saveRedDotConfig|config= " + paramCaptureRedDotConfig);
     }
-    ThreadManager.getFileThreadHandler().post(new aolm(paramString1, paramCaptureRedDotConfig, paramString2));
+    ThreadManager.getFileThreadHandler().post(new CaptureRedDotConfig.1(paramString1, paramCaptureRedDotConfig, paramString2));
   }
   
   public boolean needShowRedDot(int paramInt1, int paramInt2, String paramString)
@@ -473,7 +472,7 @@ public class CaptureRedDotConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.richmedia.capture.data.CaptureRedDotConfig
  * JD-Core Version:    0.7.0.1
  */

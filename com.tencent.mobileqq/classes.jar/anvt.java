@@ -1,20 +1,15 @@
-import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.widget.VideoFilterPlayView.TrackerCallback;
-import java.util.Map;
+import com.tencent.mobileqq.data.RockDownloadInfo;
+import java.util.ArrayList;
 
-public class anvt
-  implements VideoFilterPlayView.TrackerCallback
+public abstract class anvt
 {
-  public anvt(HWEditImportVideoPlayer paramHWEditImportVideoPlayer) {}
+  public abstract void a(RockDownloadInfo paramRockDownloadInfo, String paramString, int paramInt);
   
-  public void a(Map paramMap)
-  {
-    this.a.a(new anvu(this, paramMap), 0L);
-  }
+  public abstract void a(ArrayList<RockDownloadInfo> paramArrayList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anvt
  * JD-Core Version:    0.7.0.1
  */

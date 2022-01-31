@@ -8,11 +8,11 @@ import java.util.ArrayList;
 public final class RespGetEntrance
   extends JceStruct
 {
-  static ArrayList cache_entrance_list = new ArrayList();
-  static ArrayList cache_xml_list;
-  public ArrayList entrance_list;
+  static ArrayList<EntranceContent> cache_entrance_list = new ArrayList();
+  static ArrayList<String> cache_xml_list;
+  public ArrayList<EntranceContent> entrance_list;
   public long interval = 300L;
-  public ArrayList xml_list;
+  public ArrayList<String> xml_list;
   
   static
   {
@@ -24,11 +24,11 @@ public final class RespGetEntrance
   
   public RespGetEntrance() {}
   
-  public RespGetEntrance(ArrayList paramArrayList1, long paramLong, ArrayList paramArrayList2)
+  public RespGetEntrance(ArrayList<EntranceContent> paramArrayList, long paramLong, ArrayList<String> paramArrayList1)
   {
-    this.entrance_list = paramArrayList1;
+    this.entrance_list = paramArrayList;
     this.interval = paramLong;
-    this.xml_list = paramArrayList2;
+    this.xml_list = paramArrayList1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)

@@ -1,21 +1,33 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.msgcache.CacheConstants;
-import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-
-public class abvp
-  implements CompoundButton.OnCheckedChangeListener
+public final class abvp
 {
-  public abvp(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime) {}
+  public int a;
+  public long a;
+  public long[] a;
+  public long b;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public abvp()
   {
-    CacheConstants.b = paramBoolean;
-    this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(CacheConstants.a, 0).edit().putBoolean(CacheConstants.c, paramBoolean).commit();
+    this.jdField_a_of_type_ArrayOfLong = new long[] { 0L, 0L, 0L, 0L, 0L, 0L };
+  }
+  
+  public abvp(long paramLong1, long paramLong2, long[] paramArrayOfLong)
+  {
+    this.jdField_a_of_type_ArrayOfLong = new long[] { 0L, 0L, 0L, 0L, 0L, 0L };
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+    this.jdField_a_of_type_ArrayOfLong = paramArrayOfLong;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Long = 0L;
+    this.b = 0L;
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfLong.length)
+    {
+      this.jdField_a_of_type_ArrayOfLong[i] = 0L;
+      i += 1;
+    }
   }
 }
 

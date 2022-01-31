@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.activity.registerGuideLogin;
 
+import adic;
+import ajmz;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
@@ -11,7 +13,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class GuideBaseFragment
   extends Fragment
 {
-  protected GuideBaseFragment.GuideCallBack a;
+  protected adic a;
+  protected ajmz a;
   public BaseActivity a;
   public QQAppInterface a;
   public String a;
@@ -22,6 +25,7 @@ public class GuideBaseFragment
   public GuideBaseFragment(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Adic = new adic();
   }
   
   public Dialog a(int paramInt)
@@ -36,12 +40,12 @@ public class GuideBaseFragment
   
   public void a(int paramInt, Dialog paramDialog) {}
   
-  public void a(Intent paramIntent) {}
-  
-  public void a(GuideBaseFragment.GuideCallBack paramGuideCallBack)
+  public void a(ajmz paramajmz)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment$GuideCallBack = paramGuideCallBack;
+    this.jdField_a_of_type_Ajmz = paramajmz;
   }
+  
+  public void a(Intent paramIntent) {}
   
   public void a(boolean paramBoolean) {}
   
@@ -58,7 +62,7 @@ public class GuideBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.GuideBaseFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,65 +1,73 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.support.v4.widget.ExploreByTouchHelper;
+import android.content.Context;
+import android.graphics.Color;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.accessibility.AccessibilityEvent;
-import com.tencent.mobileqq.widget.ConfigClearableEditText;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.widget.TextView;
 import java.util.List;
 
 public class aktd
-  extends ExploreByTouchHelper
+  extends RecyclerView.Adapter<akte>
 {
-  public aktd(ConfigClearableEditText paramConfigClearableEditText, View paramView)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
+  private List<aktc> jdField_a_of_type_JavaUtilList;
+  
+  public aktd(Context paramContext, List<aktc> paramList)
   {
-    super(paramView);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  protected int getVirtualViewAt(float paramFloat1, float paramFloat2)
+  public akte a(ViewGroup paramViewGroup, int paramInt)
   {
-    if ((ConfigClearableEditText.c(this.a)) && (paramFloat1 > this.a.getWidth() - this.a.getPaddingRight() - this.a.a.getIntrinsicWidth())) {
-      return 0;
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == 1)) {
+      return new akte(this, this.jdField_a_of_type_AndroidViewView);
     }
-    return -1;
+    return new akte(this, LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558831, paramViewGroup, false));
   }
   
-  protected void getVisibleVirtualViews(List paramList)
+  public void a(akte paramakte, int paramInt)
   {
-    if (ConfigClearableEditText.c(this.a)) {
-      paramList.add(Integer.valueOf(0));
-    }
-  }
-  
-  protected boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConfigClearableEditTextHelper", 2, "onPerformActionForVirtualView virtualViewId:" + paramInt1);
-    }
-    return false;
-  }
-  
-  protected void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
-  {
-    if (paramInt == 0) {
-      paramAccessibilityEvent.setContentDescription("删除 按钮");
-    }
-  }
-  
-  protected void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
-  {
-    if (paramInt == 0)
+    if (getItemViewType(paramInt) == 0)
     {
-      paramAccessibilityNodeInfoCompat.setContentDescription("删除 按钮");
-      paramAccessibilityNodeInfoCompat.addAction(16);
-      paramAccessibilityNodeInfoCompat.setBoundsInParent(new Rect(this.a.getWidth() - this.a.getPaddingRight() - this.a.a.getIntrinsicWidth(), this.a.getPaddingTop(), this.a.getWidth() - this.a.getPaddingRight(), this.a.getHeight() - this.a.getPaddingBottom()));
+      aktc localaktc = (aktc)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      paramakte.a.setText(localaktc.jdField_a_of_type_JavaLangString);
+      paramakte.a.setTextColor(Color.parseColor(akst.c[localaktc.jdField_a_of_type_Int]));
     }
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    notifyItemInserted(getItemCount() - 1);
+  }
+  
+  public void a(List<aktc> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public int getItemCount()
+  {
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      return this.jdField_a_of_type_JavaUtilList.size() + 1;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == getItemCount() - 1)) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aktd
  * JD-Core Version:    0.7.0.1
  */

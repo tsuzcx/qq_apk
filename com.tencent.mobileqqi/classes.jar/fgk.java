@@ -1,30 +1,21 @@
-import android.os.Process;
-import com.tencent.mobileqq.app.EmoticonManagerImp;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EPJsonTask;
-import com.tencent.mobileqq.emoticon.EmoticonController;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ScreenShot;
+import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
+import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
 
 public class fgk
-  implements Runnable
+  implements View.OnClickListener
 {
-  public fgk(EmoticonManagerImp paramEmoticonManagerImp, String paramString, int paramInt) {}
+  public fgk(ScreenShot paramScreenShot) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Process.setThreadPriority(10);
-    EmoticonPackage localEmoticonPackage = this.jdField_a_of_type_ComTencentMobileqqAppEmoticonManagerImp.b(this.jdField_a_of_type_JavaLangString);
-    if (localEmoticonPackage == null) {
-      return;
+    ScreenShot.a(this.a);
+    if ((!MobileIssueSettings.g) && (Build.VERSION.SDK_INT < 11)) {
+      KapalaiAdapterUtil.a().b(this.a.a);
     }
-    localEmoticonPackage.jsonVersion = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_ComTencentMobileqqAppEmoticonManagerImp.a(localEmoticonPackage);
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonManagerImp", 2, this.jdField_a_of_type_Int + "==========KeywordJsonupdate============" + this.jdField_a_of_type_JavaLangString);
-    }
-    EmoticonController.a(EmoticonManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppEmoticonManagerImp)).a(localEmoticonPackage.epId, EPJsonTask.b, false);
-    EmoticonManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppEmoticonManagerImp, this.jdField_a_of_type_JavaLangString);
-    EmoticonManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppEmoticonManagerImp, true, 3000L);
   }
 }
 

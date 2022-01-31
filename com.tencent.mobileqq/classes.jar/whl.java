@@ -1,32 +1,12 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.mobileqq.widget.FormMutiItem;
-
-class whl
-  implements Runnable
+public abstract interface whl
 {
-  whl(whk paramwhk, String paramString) {}
+  public abstract void a();
   
-  public void run()
-  {
-    if (this.jdField_a_of_type_Whk.a.b != null)
-    {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        this.jdField_a_of_type_Whk.a.b.setSecondLineText("");
-        this.jdField_a_of_type_Whk.a.b.setSecondLineVisible(false);
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_Whk.a.b.setSecondLineText(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Whk.a.b.setSecondLineVisible(true);
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     whl
  * JD-Core Version:    0.7.0.1
  */

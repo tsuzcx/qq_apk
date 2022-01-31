@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class im_msg_body$PubGroup
-  extends MessageMicro
+  extends MessageMicro<PubGroup>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_nickname = PBField.initBytes(ByteStringMicro.EMPTY);

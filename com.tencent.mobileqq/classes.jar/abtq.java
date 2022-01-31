@@ -1,30 +1,27 @@
-import com.tencent.mobileqq.customviews.MessageProgressTextView;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class abtq
-  implements Runnable
+  implements arbr
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
+  public abtq(QQMessageFacade paramQQMessageFacade, MessageForFile paramMessageForFile, FileManagerEntity paramFileManagerEntity) {}
   
-  public abtq(MessageProgressTextView paramMessageProgressTextView, int paramInt1, int paramInt2)
+  public void a()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop).c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
   }
   
-  public void a(int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    this.b = paramInt;
-  }
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView.a = null;
-    if (!this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView.b)
+    if ((paramInt == -6101) || (paramInt == -7003))
     {
-      this.jdField_a_of_type_Int += this.b;
-      MessageProgressTextView.a(this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView, this.jdField_a_of_type_Int, this.b);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 16;
+      QQMessageFacade.a(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade).a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
     }
+    QQMessageFacade.a(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade).a().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop, ammb.h, 0);
   }
 }
 

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class submsgtype0xf9$Video
-  extends MessageMicro
+  extends MessageMicro<Video>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26 }, new String[] { "uint32_layout", "str_cover", "str_src" }, new Object[] { Integer.valueOf(0), "", "" }, Video.class);
   public final PBStringField str_cover = PBField.initString("");

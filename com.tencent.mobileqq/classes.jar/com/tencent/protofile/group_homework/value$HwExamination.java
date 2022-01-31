@@ -8,10 +8,10 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class value$HwExamination
-  extends MessageMicro
+  extends MessageMicro<HwExamination>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 72, 82, 90, 402 }, new String[] { "total_count", "correct_count", "error_count", "undone_count", "total_score", "elapsed_time", "avg_elapsed_time", "difficult", "answer_status", "answer_analyse", "difficult_desc", "answer" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", null }, HwExamination.class);
-  public final PBRepeatMessageField answer = PBField.initRepeatMessage(value.HwExamAnswer.class);
+  public final PBRepeatMessageField<value.HwExamAnswer> answer = PBField.initRepeatMessage(value.HwExamAnswer.class);
   public final PBStringField answer_analyse = PBField.initString("");
   public final PBUInt32Field answer_status = PBField.initUInt32(0);
   public final PBUInt32Field avg_elapsed_time = PBField.initUInt32(0);
@@ -26,7 +26,7 @@ public final class value$HwExamination
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.protofile.group_homework.value.HwExamination
  * JD-Core Version:    0.7.0.1
  */

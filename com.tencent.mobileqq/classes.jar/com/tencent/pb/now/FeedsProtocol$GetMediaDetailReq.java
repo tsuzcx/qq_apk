@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class FeedsProtocol$GetMediaDetailReq
-  extends MessageMicro
+  extends MessageMicro<GetMediaDetailReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField querystring = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -20,7 +20,7 @@ public final class FeedsProtocol$GetMediaDetailReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.FeedsProtocol.GetMediaDetailReq
  * JD-Core Version:    0.7.0.1
  */

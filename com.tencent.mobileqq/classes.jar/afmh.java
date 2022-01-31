@@ -1,38 +1,34 @@
-import android.os.Handler;
-import android.os.Process;
-import com.tencent.mobileqq.nearby.smooth.ItemLoader;
-import java.lang.ref.SoftReference;
-import java.util.Map;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public final class afmh
-  implements Runnable
+class afmh
+  implements bhuk
 {
-  private final afmf jdField_a_of_type_Afmf;
-  private final ItemLoader jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader;
+  afmh(afmf paramafmf, MessageForFile paramMessageForFile, bhuf parambhuf, BaseChatItemLayout paramBaseChatItemLayout, afmm paramafmm) {}
   
-  public afmh(ItemLoader paramItemLoader, afmf paramafmf)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader = paramItemLoader;
-    this.jdField_a_of_type_Afmf = paramafmf;
-  }
-  
-  public void run()
-  {
-    Process.setThreadPriority(10);
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.b.remove(this.jdField_a_of_type_Afmf.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_Afmf)) {}
-    do
+    paramView = this.jdField_a_of_type_Afmf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop);
+    if (paramView != null)
     {
-      return;
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_Afmf.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Afmf.jdField_a_of_type_JavaLangInteger.intValue());
-      this.jdField_a_of_type_Afmf.c = new SoftReference(localObject);
-    } while ((this.jdField_a_of_type_Afmf.b == null) || (this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_Afmf)));
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a.post(new afme(this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader, this.jdField_a_of_type_Afmf, false));
+      if (paramView.status == 16)
+      {
+        arri.a(2131692941);
+        this.jdField_a_of_type_Bhuf.cancel();
+        return;
+      }
+      arrr.a(this.jdField_a_of_type_Afmf.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_Afmf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
+    }
+    this.jdField_a_of_type_Afmf.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_Afmm, paramView, false);
+    this.jdField_a_of_type_Bhuf.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afmh
  * JD-Core Version:    0.7.0.1
  */

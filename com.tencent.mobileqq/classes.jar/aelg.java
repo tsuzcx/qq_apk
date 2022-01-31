@@ -1,44 +1,27 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import com.tencent.mobileqq.mybusiness.MyBusinessManager;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class aelg
-  extends ContactBindObserver
+  extends WtloginObserver
 {
-  boolean jdField_a_of_type_Boolean = false;
+  public aelg(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
   
-  public aelg(MyBusinessManager paramMyBusinessManager) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
   {
-    if ((this.jdField_a_of_type_Boolean) && (paramBoolean2))
+    if (QLog.isColorLevel())
     {
-      RespondQueryQQBindingStat localRespondQueryQQBindingStat = ((PhoneContactManager)this.jdField_a_of_type_ComTencentMobileqqMybusinessMyBusinessManager.a.getManager(10)).a();
-      if ((localRespondQueryQQBindingStat == null) || (TextUtils.isEmpty(localRespondQueryQQBindingStat.mobileNo))) {
-        break label95;
+      QLog.d("VerifyPhoneNumActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
+      if (paramErrMsg != null) {
+        QLog.d("VerifyPhoneNumActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("PhoneContact", 2, "mybusiness ContactBindObserver onQueryBindState");
-      }
-      ((MyBusinessManager)this.jdField_a_of_type_ComTencentMobileqqMybusinessMyBusinessManager.a.getManager(48)).a(localRespondQueryQQBindingStat.mobileNo, localRespondQueryQQBindingStat.type, "", false);
-      this.jdField_a_of_type_Boolean = false;
     }
-    label95:
-    while (!QLog.isColorLevel()) {
+    if (paramInt2 == 0) {
       return;
     }
-    QLog.d("PhoneContact", 2, "mybusiness bindInfo null ");
-  }
-  
-  protected void c(boolean paramBoolean, int paramInt)
-  {
-    if ((paramBoolean) && (paramInt == 0)) {
-      this.jdField_a_of_type_Boolean = true;
-    }
+    VerifyPhoneNumActivity.a(this.a);
+    VerifyPhoneNumActivity.b(this.a);
   }
 }
 

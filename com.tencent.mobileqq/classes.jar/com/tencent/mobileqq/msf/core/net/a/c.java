@@ -2,9 +2,6 @@ package com.tencent.mobileqq.msf.core.net.a;
 
 import android.content.Context;
 import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.HandlerThread;
-import android.os.Message;
 import com.huawei.android.bastet.HwBastet;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
@@ -22,7 +19,7 @@ public class c
   public static Context b;
   public static Handler c;
   private static boolean d = false;
-  private static HwBastet e;
+  private static HwBastet e = null;
   private static ConcurrentHashMap f = new ConcurrentHashMap();
   private static ConcurrentHashMap g = new ConcurrentHashMap();
   private static boolean h = false;
@@ -38,22 +35,22 @@ public class c
   private static int r = 0;
   private static boolean s = true;
   private static boolean t = false;
-  private static a u;
+  private static c.a u = null;
   private static final int v = 153;
   private static final int w = 154;
-  private static boolean x;
-  private static int y;
+  private static boolean x = false;
+  private static int y = 0;
   
   public c(Context paramContext)
   {
     QLog.d("HwSocketAdaptor", 1, "init HwSocketAdaptor");
     b = paramContext;
     f();
-    u = new a("netHandlerThread");
+    u = new c.a("netHandlerThread");
     u.start();
     c = new Handler(u.getLooper(), u);
     d = false;
-    c.sendEmptyMessageDelayed(154, com.tencent.mobileqq.msf.core.a.a.aO());
+    c.sendEmptyMessageDelayed(154, com.tencent.mobileqq.msf.core.a.a.aP());
     y = 0;
   }
   
@@ -193,7 +190,7 @@ public class c
         }
         QLog.d("HwSocketAdaptor", 1, "heartbeatUnexpectCount:" + r);
         r += 1;
-        if (r >= com.tencent.mobileqq.msf.core.a.a.aM())
+        if (r >= com.tencent.mobileqq.msf.core.a.a.aN())
         {
           QLog.d("HwSocketAdaptor", 1, "close heartbeat proxy switch");
           b(156, false);
@@ -248,7 +245,7 @@ public class c
           i = 0;
         }
         i += 1;
-      } while (i <= com.tencent.mobileqq.msf.core.a.a.aJ());
+      } while (i <= com.tencent.mobileqq.msf.core.a.a.aK());
       t = true;
       a.j();
       i = 0;
@@ -286,7 +283,7 @@ public class c
       QLog.d("HwSocketAdaptor", 1, "failed to construct HwBastet instance " + paramSocket.toString());
       j += 1;
       d = false;
-      if (j > com.tencent.mobileqq.msf.core.a.a.aK())
+      if (j > com.tencent.mobileqq.msf.core.a.a.aL())
       {
         a.j();
         j = 0;
@@ -317,7 +314,7 @@ public class c
         QLog.d("HwSocketAdaptor", 1, "failed to send in huawei channel " + paramArrayOfByte.toString());
         j += 1;
         d = false;
-      } while (j <= com.tencent.mobileqq.msf.core.a.a.aK());
+      } while (j <= com.tencent.mobileqq.msf.core.a.a.aL());
       a.j();
       j = 0;
       k += 1;
@@ -400,70 +397,6 @@ public class c
     }
     s = paramBoolean;
     return false;
-  }
-  
-  static class a
-    extends HandlerThread
-    implements Handler.Callback
-  {
-    public a(String paramString)
-    {
-      super();
-    }
-    
-    public boolean handleMessage(Message paramMessage)
-    {
-      int i = paramMessage.what;
-      switch (i)
-      {
-      }
-      do
-      {
-        return false;
-        try
-        {
-          QLog.d("HwSocketAdaptor", 1, "bastet detect connection closed");
-          return false;
-        }
-        catch (Exception paramMessage)
-        {
-          QLog.d("HwSocketAdaptor", 1, "bastet handler process event " + i + "failed " + paramMessage.toString(), paramMessage);
-          return false;
-        }
-        QLog.d("HwSocketAdaptor", 1, "bastet detect connection established");
-        return false;
-        int j = Integer.valueOf(paramMessage.arg1).intValue();
-        QLog.d("HwSocketAdaptor", 1, "bastet detect net quality event, level:" + j);
-        return false;
-        c.a(true);
-        paramMessage = (String)paramMessage.obj;
-        QLog.d("HwSocketAdaptor", 1, "bastet Heartbeat:  " + paramMessage);
-        return false;
-        QLog.d("HwSocketAdaptor", 1, "basetet heartbeat is not available");
-        a.a("exception");
-        c.c.removeMessages(153);
-        return false;
-        if (!c.b())
-        {
-          QLog.d("HwSocketAdaptor", 1, "Heartbeat Log has not been reported, pause heartbeat");
-          a.a("exception");
-          c.b(c.c() + 1);
-          return false;
-        }
-        c.a(false);
-        c.c.sendEmptyMessageDelayed(153, 2700000L);
-        return false;
-        if (c.d())
-        {
-          QLog.d("HwSocketAdaptor", 1, "reset mode in cycle, resume mode " + c.e());
-          c.b(false);
-          c.c(c.e() + 1);
-          a.k();
-        }
-      } while (c.e() > com.tencent.mobileqq.msf.core.a.a.aN());
-      c.c.sendEmptyMessageDelayed(154, com.tencent.mobileqq.msf.core.a.a.aO());
-      return false;
-    }
   }
 }
 

@@ -1,20 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.QQStoryWarningActivity;
-
 public class nnv
-  implements View.OnClickListener
 {
-  public nnv(QQStoryWarningActivity paramQQStoryWarningActivity) {}
+  public int a;
+  public long a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
   
-  public void onClick(View paramView)
+  public boolean a()
   {
-    this.a.superFinish();
+    return this.b == 1;
+  }
+  
+  public String toString()
+  {
+    return "materialId = " + this.jdField_a_of_type_Int + " ,repeatedReqFlag=" + this.b + " kdPos=" + this.c + ",adPosID=" + this.jdField_a_of_type_Long;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nnv
  * JD-Core Version:    0.7.0.1
  */

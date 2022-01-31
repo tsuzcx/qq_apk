@@ -1,134 +1,196 @@
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import com.tencent.biz.qqstory.app.QQStoryConstant;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.DownloadStatusChangeEvent;
-import com.tencent.biz.qqstory.utils.BitmapUtils;
-import com.tencent.biz.qqstory.utils.FileUtils;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegUtils;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.log.VipWebViewReportLog;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-import com.tribe.async.dispatch.Dispatchers;
-import java.io.File;
-import java.io.IOException;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage.MessageLevel;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
+import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
+import java.net.MalformedURLException;
+import java.net.URL;
 
-public final class nmx
-  implements Runnable
+public class nmx
+  extends WebChromeClient
 {
-  public nmx(StoryVideoItem paramStoryVideoItem, String paramString, int paramInt) {}
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 0L;
+  bdjz jdField_a_of_type_Bdjz;
+  String jdField_a_of_type_JavaLangString = "";
+  public boolean a;
   
-  public void run()
+  private String a(Context paramContext, String paramString)
   {
-    String str2 = PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, true);
-    File localFile = new File(str2);
-    Object localObject1 = UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mLocalVideoPath, PlayModeUtils.a().getResources().getDisplayMetrics().widthPixels, PlayModeUtils.a().getResources().getDisplayMetrics().heightPixels);
-    if ((!FileUtils.c(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mLocalVideoPath)) || (localObject1 == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, "storyVideoItem.mLocalVideoPath: " + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mLocalVideoPath + " or retriever.getFrameAtTime == null");
-      }
-      localObject1 = new PlayModeUtils.DownloadStatusChangeEvent(this.jdField_a_of_type_JavaLangString, 3, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-      Dispatchers.get().dispatch((Dispatcher.Dispatchable)localObject1);
-      return;
+    if (paramString == null) {
+      return null;
     }
-    Object localObject2 = FFmpegUtils.a(PlayModeUtils.a(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoWidth, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoHeight, this.jdField_a_of_type_Int);
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      QLog.e("Q.qqstory.player.PlayModeUtils", 2, "download water mark failed");
+    if (paramString.startsWith("data:")) {
+      return paramContext.getString(2131693815);
     }
-    Object localObject3 = FFmpegUtils.b(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-    localObject1 = FFmpegUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-    String str1 = FFmpegUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getInteractLayout(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoWidth, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoHeight);
-    if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
-    while ((!TextUtils.isEmpty((CharSequence)localObject3)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
+    try
     {
-      str1 = QQStoryConstant.q;
-      str1 = str1 + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid + System.currentTimeMillis() + "_max.png";
-      if (!FFmpegUtils.a((String)localObject3, (String)localObject1, str1))
-      {
-        localObject1 = new PlayModeUtils.DownloadStatusChangeEvent(this.jdField_a_of_type_JavaLangString, 3, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-        Dispatchers.get().dispatch((Dispatcher.Dispatchable)localObject1);
-        QLog.e("Q.qqstory.player.PlayModeUtils", 2, "combineTwoImg maxMask videoVote failed");
-        return;
-        localObject1 = str1;
-      }
-      else
-      {
-        localObject1 = str1;
-      }
+      paramContext = new URL(paramString).getHost();
+      return paramContext;
     }
-    while ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
-    {
-      localObject3 = localObject2;
-      if (FFmpegUtils.a((String)localObject1, (String)localObject2, (String)localObject2)) {
-        break label433;
-      }
-      localObject1 = new PlayModeUtils.DownloadStatusChangeEvent(this.jdField_a_of_type_JavaLangString, 3, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-      Dispatchers.get().dispatch((Dispatcher.Dispatchable)localObject1);
-      QLog.e("Q.qqstory.player.PlayModeUtils", 2, "combineTwoImg failed");
-      return;
-      if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-        localObject1 = localObject3;
-      }
+    catch (MalformedURLException paramContext) {}
+    return paramString;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Bdjz.isShowing())) {
+      this.jdField_a_of_type_Bdjz.cancel();
     }
-    if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
-    for (;;)
-    {
-      localObject3 = localObject1;
-      label433:
-      localObject1 = UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mLocalVideoPath, PlayModeUtils.a().getResources().getDisplayMetrics().widthPixels, PlayModeUtils.a().getResources().getDisplayMetrics().heightPixels);
-      if (localObject1 != null) {
-        break;
-      }
-      localObject1 = new PlayModeUtils.DownloadStatusChangeEvent(this.jdField_a_of_type_JavaLangString, 3, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-      Dispatchers.get().dispatch((Dispatcher.Dispatchable)localObject1);
-      QLog.e("Q.qqstory.player.PlayModeUtils", 2, "getLocalVideoThumbnail failed");
-      return;
-      localObject1 = localObject2;
-    }
-    if (!TextUtils.isEmpty((CharSequence)localObject3))
-    {
-      localObject3 = SafeBitmapFactory.decodeFile((String)localObject3);
-      localObject2 = BitmapUtils.b((Bitmap)localObject1, (Bitmap)localObject3);
-      ((Bitmap)localObject1).recycle();
-      ((Bitmap)localObject3).recycle();
-      localObject1 = localObject2;
+  }
+  
+  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
+  {
+    super.onConsoleMessage(paramConsoleMessage);
+    VipWebViewReportLog.a(paramConsoleMessage);
+    Object localObject2;
+    if (((this.jdField_a_of_type_Boolean) && (paramConsoleMessage.messageLevel() == ConsoleMessage.MessageLevel.ERROR)) || (QLog.isColorLevel())) {
+      localObject2 = "";
     }
     for (;;)
     {
       try
       {
-        ImageUtil.a((Bitmap)localObject1, new File(str2));
-        ((Bitmap)localObject1).recycle();
-        FileUtils.b(PlayModeUtils.a(), localFile);
-        localObject1 = new PlayModeUtils.DownloadStatusChangeEvent(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-        ((PlayModeUtils.DownloadStatusChangeEvent)localObject1).b = str2;
-        Dispatchers.get().dispatch((Dispatcher.Dispatchable)localObject1);
-        return;
+        if (paramConsoleMessage.messageLevel() != null) {
+          localObject2 = "" + "messageLevel =" + paramConsoleMessage.messageLevel().toString();
+        }
+        localObject1 = localObject2;
+        if (paramConsoleMessage.sourceId() != null) {
+          localObject1 = (String)localObject2 + ", sourceId=" + paramConsoleMessage.sourceId();
+        }
+        localObject2 = localObject1;
+        if (paramConsoleMessage.lineNumber() != 0) {
+          localObject2 = (String)localObject1 + ", lineNumber=" + paramConsoleMessage.lineNumber();
+        }
+        localObject1 = localObject2;
+        if (paramConsoleMessage.message() != null) {
+          localObject1 = (String)localObject2 + ", message=" + paramConsoleMessage.message();
+        }
+        if (paramConsoleMessage.messageLevel() != ConsoleMessage.MessageLevel.ERROR) {
+          continue;
+        }
+        if ((System.currentTimeMillis() - this.jdField_a_of_type_Long > 60000L) || (!((String)localObject1).equals(this.jdField_a_of_type_JavaLangString)))
+        {
+          QLog.e("WEBVIEWCHECK", 1, "CustomWebChromeClient onConsoleMessage:" + (String)localObject1);
+          this.jdField_a_of_type_JavaLangString = ((String)localObject1);
+          this.jdField_a_of_type_Long = System.currentTimeMillis();
+        }
       }
-      catch (IOException localIOException)
+      catch (Exception paramConsoleMessage)
       {
-        localObject2 = new PlayModeUtils.DownloadStatusChangeEvent(this.jdField_a_of_type_JavaLangString, 3, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-        Dispatchers.get().dispatch((Dispatcher.Dispatchable)localObject2);
+        Object localObject1;
+        paramConsoleMessage.printStackTrace();
+        continue;
       }
-      if (!QLog.isColorLevel()) {
-        break;
+      if (QLog.isColorLevel()) {
+        break label357;
       }
-      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, "FFmpegUtils combineTwoImg IOException " + localIOException.getMessage());
-      return;
+      return true;
+      if ((System.currentTimeMillis() - this.jdField_a_of_type_Long > 180000L) || (!((String)localObject1).equals(this.jdField_a_of_type_JavaLangString)))
+      {
+        QLog.d("WEBVIEWCHECK", 2, "CustomWebChromeClient onConsoleMessage:" + (String)localObject1);
+        this.jdField_a_of_type_JavaLangString = ((String)localObject1);
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+      }
     }
+    label357:
+    return false;
+  }
+  
+  public boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
+  {
+    Context localContext = paramWebView.getContext();
+    if (((localContext instanceof Activity)) && (!((Activity)localContext).isFinishing()) && ((!(paramWebView instanceof CustomWebView)) || (!((CustomWebView)paramWebView).isPaused)))
+    {
+      if ((this.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Bdjz.isShowing())) {
+        this.jdField_a_of_type_Bdjz.dismiss();
+      }
+      this.jdField_a_of_type_Bdjz = bdgm.a(localContext, 0);
+      this.jdField_a_of_type_Bdjz.setTitle(a(localContext, paramString1));
+      this.jdField_a_of_type_Bdjz.setMessage(paramString2);
+      this.jdField_a_of_type_Bdjz.setPositiveButton(2131694953, new nmy(this, paramJsResult));
+      if (this.jdField_a_of_type_Int > 2) {
+        this.jdField_a_of_type_Bdjz.setNegativeButton(localContext.getString(2131690608), localContext.getResources().getColor(2131165332), new nnb(this, paramJsResult, localContext));
+      }
+      this.jdField_a_of_type_Bdjz.setOnCancelListener(new nnc(this, paramJsResult, localContext));
+      this.jdField_a_of_type_Bdjz.show();
+      this.jdField_a_of_type_Int += 1;
+      return true;
+    }
+    paramJsResult.cancel();
+    return true;
+  }
+  
+  public boolean onJsBeforeUnload(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
+  {
+    paramString1 = paramWebView.getContext();
+    if (((paramString1 instanceof Activity)) && (!((Activity)paramString1).isFinishing()) && ((!(paramWebView instanceof CustomWebView)) || (!((CustomWebView)paramWebView).isPaused)))
+    {
+      if ((this.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Bdjz.isShowing())) {
+        this.jdField_a_of_type_Bdjz.dismiss();
+      }
+      this.jdField_a_of_type_Bdjz = bdgm.a(paramString1, 0);
+      this.jdField_a_of_type_Bdjz.setTitle(2131693814);
+      this.jdField_a_of_type_Bdjz.setMessage(paramString2);
+      this.jdField_a_of_type_Bdjz.setPositiveButton(2131690506, new nnh(this, paramJsResult));
+      if (this.jdField_a_of_type_Int > 2) {
+        this.jdField_a_of_type_Bdjz.setNegativeButton(paramString1.getString(2131690608), paramString1.getResources().getColor(2131165332), new nni(this, paramJsResult, paramString1));
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_Bdjz.setOnCancelListener(new nna(this, paramJsResult, paramString1));
+        this.jdField_a_of_type_Bdjz.show();
+        return true;
+        this.jdField_a_of_type_Bdjz.setNegativeButton(2131690505, new nmz(this, paramJsResult));
+      }
+    }
+    paramJsResult.cancel();
+    return true;
+  }
+  
+  public boolean onJsConfirm(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
+  {
+    Context localContext = paramWebView.getContext();
+    if (((localContext instanceof Activity)) && (!((Activity)localContext).isFinishing()) && ((!(paramWebView instanceof CustomWebView)) || (!((CustomWebView)paramWebView).isPaused)))
+    {
+      if ((this.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Bdjz.isShowing())) {
+        this.jdField_a_of_type_Bdjz.dismiss();
+      }
+      this.jdField_a_of_type_Bdjz = bdgm.a(localContext, 0);
+      this.jdField_a_of_type_Bdjz.setTitle(a(localContext, paramString1));
+      this.jdField_a_of_type_Bdjz.setMessage(paramString2);
+      this.jdField_a_of_type_Bdjz.setPositiveButton(2131694953, new nnd(this, paramJsResult));
+      if (this.jdField_a_of_type_Int > 2) {
+        this.jdField_a_of_type_Bdjz.setNegativeButton(localContext.getString(2131690608), localContext.getResources().getColor(2131165332), new nne(this, paramJsResult, localContext));
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_Bdjz.setOnCancelListener(new nng(this, paramJsResult, localContext));
+        this.jdField_a_of_type_Bdjz.show();
+        return true;
+        this.jdField_a_of_type_Bdjz.setNegativeButton(2131690648, new nnf(this, paramJsResult));
+      }
+    }
+    paramJsResult.cancel();
+    return true;
+  }
+  
+  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
+  {
+    paramJsPromptResult.cancel();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nmx
  * JD-Core Version:    0.7.0.1
  */

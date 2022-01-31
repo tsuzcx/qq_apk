@@ -9,10 +9,10 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_group$RspGetGroupVideoCommentList
-  extends MessageMicro
+  extends MessageMicro<RspGetGroupVideoCommentList>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatMessageField comment_list = PBField.initRepeatMessage(qqstory_group.CommentInfo.class);
+  public final PBRepeatMessageField<qqstory_group.CommentInfo> comment_list = PBField.initRepeatMessage(qqstory_group.CommentInfo.class);
   public final PBBytesField cookie = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field is_end = PBField.initUInt32(0);
   public qqstory_struct.ErrorInfo result = new qqstory_struct.ErrorInfo();
@@ -26,7 +26,7 @@ public final class qqstory_group$RspGetGroupVideoCommentList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_group.RspGetGroupVideoCommentList
  * JD-Core Version:    0.7.0.1
  */

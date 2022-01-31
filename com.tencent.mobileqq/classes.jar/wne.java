@@ -1,24 +1,20 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsDeviceAdapter;
-import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
-import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView;
 
 public class wne
-  extends FriendListObserver
+  implements bhxs
 {
-  public wne(DeviceFragment paramDeviceFragment) {}
+  public wne(MemoriesInnerListView paramMemoriesInnerListView) {}
   
-  protected void onPullIpad()
+  public void onScrollStateChanged(int paramInt)
   {
-    if (this.a.a == null) {
-      return;
+    if ((paramInt == 4097) && (this.a.a != null)) {
+      this.a.a.a(MemoriesInnerListView.a(this.a).a);
     }
-    this.a.a.d();
-    this.a.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wne
  * JD-Core Version:    0.7.0.1
  */

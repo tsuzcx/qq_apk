@@ -1,36 +1,30 @@
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqreader.QRBridgeActivity;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class amqu
-  extends OnPluginInstallListener.Stub
+  extends ayyb
 {
-  public amqu(QRBridgeActivity paramQRBridgeActivity) {}
+  BrowserAppInterface a;
   
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
+  public amqu(BrowserAppInterface paramBrowserAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QRBridgeActivity", 2, "installPlugin onInstallError, pluginId = " + paramString + ", errorCode = " + paramInt);
-    }
-    ReportController.b(this.a.app, "P_CliOper", "VIP_QQREADER", "", "0X800604D", "0X800604D", 1, paramInt, "", "", "", "");
+    this.a = paramBrowserAppInterface;
   }
   
-  public void onInstallFinish(String paramString)
+  public AppInterface a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QRBridgeActivity", 2, "installPlugin onInstallFinish, pluginId = " + paramString);
-    }
-    ReportController.b(this.a.app, "P_CliOper", "VIP_QQREADER", "", "0X800604D", "0X800604D", 1, 0, "", "", "", "");
+    return this.a;
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg)
+  {
+    super.b(paramToServiceMsg, null, atkg.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amqu
  * JD-Core Version:    0.7.0.1
  */

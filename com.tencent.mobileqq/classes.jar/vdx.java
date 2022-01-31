@@ -1,27 +1,28 @@
-import com.tencent.mobileqq.activity.aio.item.QQWalletMsgItemBuilder;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QWalletHelper;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class vdx
-  implements Runnable
+  extends uli
 {
-  public vdx(QQWalletMsgItemBuilder paramQQWalletMsgItemBuilder, int paramInt) {}
+  public final String a;
+  public final String b;
+  public final String c;
   
-  public void run()
+  public vdx(ErrorMessage paramErrorMessage, String paramString1, String paramString2, String paramString3)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQWalletMsgItemBuilder.jdField_a_of_type_AndroidContentContext == null) {}
-    while (QWalletHelper.isQWalletProcessExist(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQWalletMsgItemBuilder.jdField_a_of_type_AndroidContentContext)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(QQWalletMsgItemBuilder.jdField_a_of_type_JavaLangString, 2, "preload qwallet process by qqWalletMsg isTroop=" + this.jdField_a_of_type_Int);
-    }
-    QWalletHelper.preloadQWallet(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQWalletMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, "qwallet_red");
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.b = paramString2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.c = paramString3;
+  }
+  
+  public String toString()
+  {
+    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin='" + this.b + '\'' + ", impeachType=" + this.c + "} " + super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vdx
  * JD-Core Version:    0.7.0.1
  */

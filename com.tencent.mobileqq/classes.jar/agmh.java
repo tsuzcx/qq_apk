@@ -1,34 +1,18 @@
-import android.view.View;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.portal.FormalView;
+import com.tencent.qphone.base.util.QLog;
 
-public class agmh
-  implements Animator.AnimatorListener
+class agmh
+  implements bjch
 {
-  public agmh(FormalView paramFormalView) {}
+  agmh(agmg paramagmg) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(int paramInt, String... paramVarArgs)
   {
-    this.a.f();
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.f();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    FormalView.a(this.a).setVisibility(0);
-    if (this.a.a == 1)
+    if ((paramVarArgs.length <= 0) || (paramVarArgs[0] == null))
     {
-      FormalView.b(this.a).setVisibility(0);
+      QLog.i(agmg.a, 2, "error get pskey...");
       return;
     }
-    FormalView.b(this.a).setVisibility(8);
+    agmg.a(this.a, paramVarArgs[0]);
   }
 }
 

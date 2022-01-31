@@ -7,8 +7,8 @@ import android.view.KeyEvent;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
-import bwd;
-import bwe;
+import bqf;
+import bqg;
 import com.tencent.qphone.base.util.QLog;
 
 public abstract class GalleryManager
@@ -80,7 +80,7 @@ public abstract class GalleryManager
   public AnimationView a()
   {
     AnimationView localAnimationView = new AnimationView(this.jdField_a_of_type_AndroidAppActivity, null);
-    localAnimationView.setId(2131231776);
+    localAnimationView.setId(2131231778);
     localAnimationView.setVisibility(4);
     return localAnimationView;
   }
@@ -114,7 +114,7 @@ public abstract class GalleryManager
             this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene.a(this);
           }
           this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene.j();
-          this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene.a().post(new bwd(this));
+          this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene.a().post(new bqf(this));
           this.jdField_a_of_type_ComTencentCommonGalleryactivityImageScene = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene;
         }
         while ((this.jdField_a_of_type_AndroidAppActivity != null) && ((this.jdField_a_of_type_AndroidAppActivity instanceof ActionBarActivity)))
@@ -122,7 +122,7 @@ public abstract class GalleryManager
           ((ActionBarActivity)this.jdField_a_of_type_AndroidAppActivity).supportInvalidateOptionsMenu();
           return;
           if (this.jdField_a_of_type_ComTencentCommonGalleryactivityImageScene == this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene) {
-            this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene.a().post(new bwe(this));
+            this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene.a().post(new bqg(this));
           }
         }
       }

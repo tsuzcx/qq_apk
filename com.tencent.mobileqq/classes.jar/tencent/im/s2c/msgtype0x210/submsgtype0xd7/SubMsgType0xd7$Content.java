@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class SubMsgType0xd7$Content
-  extends MessageMicro
+  extends MessageMicro<Content>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_buluo_word = PBField.initBytes(ByteStringMicro.EMPTY);

@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.richmedia.dc.DataAdapter;
+import android.graphics.Bitmap;
 
-public abstract class ahnt
-  extends DataAdapter
+class ahnt
+  implements aybr
 {
-  public int b = -1;
-  public int c;
-  public int d = -1;
-  public int e = -1;
-  public int f = -1;
-  public int g = -1;
-  public int h = -1;
+  ahnt(ahns paramahns) {}
+  
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  {
+    if ((paramInt2 == 200) && (paramBitmap != null)) {
+      this.a.notifyDataSetChanged();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahnt
  * JD-Core Version:    0.7.0.1
  */

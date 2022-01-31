@@ -1,26 +1,16 @@
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-
-public class yal
-  implements ChatActivityUtils.StartVideoListener
+final class yal
+  extends yaj
 {
-  public yal(SelectMemberActivity paramSelectMemberActivity) {}
+  yal(yas paramyas) {}
   
-  public void a() {}
-  
-  public void b()
+  public void a()
   {
-    this.a.g = 2;
-  }
-  
-  public void c()
-  {
-    this.a.finish();
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yal
  * JD-Core Version:    0.7.0.1
  */

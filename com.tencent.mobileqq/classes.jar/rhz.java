@@ -1,20 +1,16 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class rhz
-  implements Runnable
+class rhz
+  implements DialogInterface.OnClickListener
 {
-  public rhz(AddFriendActivity paramAddFriendActivity, int paramInt) {}
+  rhz(rhx paramrhx) {}
   
-  public void run()
-  {
-    AddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendActivity).setText(this.jdField_a_of_type_Int);
-    AddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendActivity).setVisibility(0);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rhz
  * JD-Core Version:    0.7.0.1
  */

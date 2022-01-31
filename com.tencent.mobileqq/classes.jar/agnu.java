@@ -1,70 +1,39 @@
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.mobileqq.pic.compress.CompressOperator;
-import com.tencent.mobileqq.profile.PersonalityLabel.PLUploadManager;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import com.tencent.qidian.data.BmqqAccountType;
 
-public class agnu
-  implements Runnable
+class agnu
+  extends alpq
 {
-  public agnu(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
+  agnu(agnn paramagnn) {}
   
-  public void run()
+  protected void onGetAccountType(boolean paramBoolean, BmqqAccountType paramBmqqAccountType)
   {
-    ArrayList localArrayList = new ArrayList(9);
-    int i = PersonalityLabelGalleryActivity.a(this.a).size() - 1;
-    if (i >= 0)
+    super.onGetAccountType(paramBoolean, paramBmqqAccountType);
+    agnn.a(this.a);
+    this.a.br();
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null) && (this.a.jdField_a_of_type_Bfyh.f(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (!agnn.a(this.a)))
     {
-      Object localObject = (String)PersonalityLabelGalleryActivity.a(this.a).get(i);
-      if (this.a.e)
-      {
-        this.a.runOnUiThread(new agnv(this));
-        return;
-      }
-      localObject = new CompressInfo((String)localObject, 0);
-      ((CompressInfo)localObject).f = 0;
-      CompressOperator.b((CompressInfo)localObject);
-      if (QLog.isColorLevel()) {
-        QLog.i("PersonalityLabelGalleryActivity", 2, "personality_label uploadPhoto(), thumb_path = " + ((CompressInfo)localObject).e);
-      }
-      if (!TextUtils.isEmpty(((CompressInfo)localObject).e))
-      {
-        localArrayList.add(localObject);
-        localObject = new File(((CompressInfo)localObject).e);
-      }
-      for (;;)
-      {
-        try
-        {
-          localObject = new URL("file:///" + ((File)localObject).getAbsolutePath());
-          int j = (int)(120.0F * PersonalityLabelGalleryActivity.a(this.a));
-          URLDrawable.getDrawable((URL)localObject, j, j, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable).startDownload();
-          i -= 1;
-        }
-        catch (MalformedURLException localMalformedURLException)
-        {
-          localMalformedURLException.printStackTrace();
-          continue;
-        }
-        this.a.runOnUiThread(new agnw(this, i));
-      }
+      agnn.a(this.a, true);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getChatFragment().a);
     }
-    if (localArrayList.size() > 0) {
-      this.a.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPLUploadManager.a(localArrayList, PersonalityLabelGalleryActivity.a(this.a));
+    if ((paramBmqqAccountType != null) && (paramBmqqAccountType.getUin() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (paramBmqqAccountType.getUin().equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (paramBmqqAccountType.getAccountType() == 6)) {
+      agnn.b(this.a);
     }
-    this.a.runOnUiThread(new agnx(this));
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1024) && ((TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d)) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = ndv.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      this.a.e.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agnu
  * JD-Core Version:    0.7.0.1
  */

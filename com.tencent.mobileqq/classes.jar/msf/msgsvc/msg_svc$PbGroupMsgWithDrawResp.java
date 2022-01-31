@@ -11,12 +11,12 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class msg_svc$PbGroupMsgWithDrawResp
-  extends MessageMicro
+  extends MessageMicro<PbGroupMsgWithDrawResp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_userdef = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBStringField errmsg = PBField.initString("");
-  public final PBRepeatMessageField failed_msg_list = PBField.initRepeatMessage(msg_svc.PbGroupMsgWithDrawResp.MessageResult.class);
+  public final PBRepeatMessageField<msg_svc.PbGroupMsgWithDrawResp.MessageResult> failed_msg_list = PBField.initRepeatMessage(msg_svc.PbGroupMsgWithDrawResp.MessageResult.class);
   public final PBUInt32Field result = PBField.initUInt32(0);
   public final PBUInt32Field uint32_group_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_sub_cmd = PBField.initUInt32(0);
@@ -30,7 +30,7 @@ public final class msg_svc$PbGroupMsgWithDrawResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     msf.msgsvc.msg_svc.PbGroupMsgWithDrawResp
  * JD-Core Version:    0.7.0.1
  */

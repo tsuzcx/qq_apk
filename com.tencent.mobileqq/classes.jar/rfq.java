@@ -1,70 +1,25 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper.NewApkInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.SPSettings;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.qphone.base.util.BaseApplication;
-import protocol.KQQConfig.UpgradeInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.PlayStartVideoRunnable;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
 public class rfq
-  implements View.OnClickListener
+  implements aesa
 {
-  public rfq(AboutActivity paramAboutActivity) {}
+  public rfq(VideoFeedsPlayManager.PlayStartVideoRunnable paramPlayStartVideoRunnable, MessageForShortVideo paramMessageForShortVideo) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView, bass parambass, int paramInt1, int paramInt2)
   {
-    int i = 2;
-    if (MyAppApi.a().b())
-    {
-      if (SPSettings.a()) {
-        i = 1;
-      }
-      ReportController.b(null, "dc00898", "", "", "0X8008FFB", "0X8008FFB", i, 0, "", "", "", "");
-      paramView = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
-      paramView.putExtra("StrTitle", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
-      paramView.putExtra("StrUpgradeDesc", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
-      paramView.putExtra("iUpgradeType", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
-      paramView.putExtra("activity_type", 4096);
-      if (BaseActivity.sTopActivity != null) {
-        BaseActivity.sTopActivity.startActivity(paramView);
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        if ((AboutActivity.a(this.a).jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper$NewApkInfo == null) || (!SPSettings.a(AboutActivity.a(this.a).jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper$NewApkInfo.a))) {
-          break;
-        }
-        if (SPSettings.a()) {
-          i = 1;
-        }
-        ReportController.b(null, "dc00898", "", "", "0X8008FFB", "0X8008FFB", i, 0, "", "", "", "");
-        paramView = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
-        paramView.putExtra("StrTitle", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
-        paramView.putExtra("StrUpgradeDesc", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
-        paramView.putExtra("iUpgradeType", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
-        paramView.putExtra("activity_type", 4096);
-      } while (BaseActivity.sTopActivity == null);
-      BaseActivity.sTopActivity.startActivity(paramView);
+    if ((!VideoFeedsPlayManager.PlayStartVideoRunnable.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$PlayStartVideoRunnable)) && (!VideoFeedsPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$PlayStartVideoRunnable.this$0, VideoFeedsPlayManager.PlayStartVideoRunnable.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$PlayStartVideoRunnable)))) {}
+    while ((parambass == null) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) || (parambass.jdField_b_of_type_Long != this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq) || ((parambass.jdField_b_of_type_Int != 6) && (parambass.jdField_b_of_type_Int != 17) && (parambass.jdField_b_of_type_Int != 9) && (parambass.jdField_b_of_type_Int != 20))) {
       return;
-    } while ((AboutActivity.a(this.a) == null) || (AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null));
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004DB2", "0X8004DB2", 0, 0, "", "", UpgradeController.a(), "");
-    UpgradeDetailActivity.a(this.a, UpgradeController.a().a(), false, false, true);
+    }
+    VideoFeedsPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$PlayStartVideoRunnable.this$0, parambass.u, parambass.c, parambass.d, parambass.jdField_b_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rfq
  * JD-Core Version:    0.7.0.1
  */

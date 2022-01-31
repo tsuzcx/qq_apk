@@ -1,21 +1,25 @@
-import android.view.View;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.qphone.base.util.QLog;
-
 public class aknh
-  implements Runnable
 {
-  public aknh(WebViewFragment paramWebViewFragment, int paramInt) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d = -1;
   
-  public void run()
+  public aknh()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "banner scroll to " + this.jdField_a_of_type_Int + " !");
-    }
-    if (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.a.a) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.a.getView().scrollTo(0, this.jdField_a_of_type_Int);
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_ArrayOfByte = null;
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

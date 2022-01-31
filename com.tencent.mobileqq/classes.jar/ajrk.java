@@ -1,33 +1,20 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mapsdk.raster.model.GeoPoint;
-import com.tencent.mobileqq.troop.widget.AutoLocationMapView;
-import com.tencent.mobileqq.troop.widget.AutoLocationMapView.AutoLocationCallback;
-import com.tencent.mobileqq.util.BitmapManager;
-import com.tencent.tencentmap.mapsdk.map.MapController;
-import com.tencent.tencentmap.mapsdk.map.Overlay;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.45;
 
 public class ajrk
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public ajrk(AutoLocationMapView paramAutoLocationMapView) {}
+  public ajrk(NewFlowCameraActivity.45 param45) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GeoPoint localGeoPoint = (GeoPoint)paramMessage.obj;
-    this.a.clearAllOverlays();
-    if (paramMessage.arg1 == 0)
-    {
-      Object localObject = this.a.getController();
-      ((MapController)localObject).setCenter(localGeoPoint);
-      ((MapController)localObject).setZoom(this.a.getMaxZoomLevel());
-      localObject = new ajrl(BitmapManager.a(this.a.getContext().getResources(), 2130840540), localGeoPoint);
-      this.a.addOverlay((Overlay)localObject);
-    }
-    if (this.a.a != null) {
-      this.a.a.a(paramMessage.arg1, localGeoPoint);
-    }
+    paramDialogInterface = this.a.this$0.getIntent();
+    paramDialogInterface.putExtra("flow_back", 0);
+    this.a.this$0.setResult(1001, paramDialogInterface);
+    this.a.this$0.finish();
   }
 }
 

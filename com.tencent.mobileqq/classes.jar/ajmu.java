@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.OnCleanAnimationListener;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 
 public class ajmu
-  implements TroopGiftAnimationController.OnCleanAnimationListener
 {
-  public ajmu(AIOAnimationControlManager paramAIOAnimationControlManager) {}
-  
-  public void a()
+  public static ajms a(Object paramObject)
   {
-    this.a.e();
+    if ((paramObject instanceof RecentBaseData)) {
+      return new ajmv();
+    }
+    return new ajmt();
   }
 }
 

@@ -1,18 +1,44 @@
-import com.tencent.gdtad.net.GdtHttp.Params;
+import com.tencent.qphone.base.util.QLog;
 
-class qln
-  extends GdtHttp.Params
+public class qln
+  implements Cloneable
 {
-  public int d = -2147483648;
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  public boolean b()
+  protected Object clone()
   {
-    return (super.b()) && (this.b != null);
+    try
+    {
+      qln localqln = (qln)super.clone();
+      return localqln;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      QLog.e("NewPolymericInfo", 2, "PackVideoInfo item clone failed. exception = " + localCloneNotSupportedException);
+    }
+    return null;
+  }
+  
+  public String toString()
+  {
+    return "PackVideoInfo{businessType=" + this.jdField_a_of_type_Int + ", vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", width=" + this.jdField_b_of_type_Int + ", height=" + this.jdField_c_of_type_Int + ", duration=" + this.jdField_d_of_type_Int + ", xgFileSize=" + this.jdField_a_of_type_Long + ", thirdUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", shareUrl='" + this.jdField_c_of_type_JavaLangString + '\'' + ", thirdUin=" + this.jdField_b_of_type_Long + ", thirdUinName='" + this.jdField_d_of_type_JavaLangString + '\'' + ", thirdName='" + this.e + '\'' + ", thirdIcon='" + this.f + '\'' + ", thirdAction='" + this.g + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qln
  * JD-Core Version:    0.7.0.1
  */

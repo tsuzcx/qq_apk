@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" style="@style/ra"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.pay.ui.common.APHead android:id="@id/eup" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:layout_height="80.0dip" android:layout_weight="100.0" style="@style/midas_linear">
+        <LinearLayout android:orientation="horizontal" android:paddingTop="0.0dip" android:paddingBottom="0.0dip" android:layout_height="150.0dip" style="@style/ov">
+            <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/eur" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <RelativeLayout android:gravity="center" android:layout_gravity="center" android:visibility="visible" android:layout_width="50.0dip" android:layout_height="50.0dip">
+                    <ImageView android:gravity="center" android:layout_width="50.0dip" android:layout_height="50.0dip" android:src="@drawable/czu" android:scaleType="center" android:layout_centerInParent="true" />
+                    <ImageView android:gravity="center" android:layout_width="44.0dip" android:layout_height="44.0dip" android:src="@drawable/czt" android:scaleType="center" android:layout_centerInParent="true" />
+                    <ImageView android:gravity="center" android:id="@id/euq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/czs" android:scaleType="center" android:layout_centerInParent="true" />
+                    <TextView android:textSize="16.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/eus" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+                </RelativeLayout>
+                <TextView android:textSize="14.0sp" android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="@string/o4u" android:lineSpacingExtra="3.0dip" android:lineSpacingMultiplier="1.2" />
+            </LinearLayout>
+            <LinearLayout android:id="@id/ev5" android:paddingTop="0.0dip" android:paddingBottom="0.0dip" android:visibility="gone" style="@style/ov">
+                <View android:id="@id/ev9" style="@style/q4" />
+                <View android:id="@id/ev6" android:layout_marginLeft="15.0dip" style="@style/q5" />
+                <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <TextView android:textColor="@color/n_" android:id="@id/ev7" android:text="@string/o4t" style="@style/r1" />
+                    <TextView android:textColor="@color/n_" android:id="@id/ev8" android:text="@string/o4w" style="@style/r1" />
+                    <LinearLayout android:id="@id/eut" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                        <TextView android:textColor="@color/n_" android:id="@id/euv" android:text="@string/o54" style="@style/midas_tx" />
+                        <TextView android:textColor="@color/nb" android:id="@id/euu" android:text="@string/c_g" style="@style/midas_tx" />
+                    </LinearLayout>
+                    <LinearLayout android:id="@id/ev_" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                        <TextView android:textColor="@color/nc" android:text="@string/o4o" style="@style/r3" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:layout_gravity="bottom" android:id="@id/eun" android:visibility="gone" style="@style/qo">
+                <LinearLayout android:paddingTop="10.0dip" android:paddingBottom="10.0dip" style="@style/ov">
+                    <View style="@style/q4" />
+                    <TextView android:textColor="@color/n_" android:text="@string/o5g" style="@style/r1" />
+                </LinearLayout>
+                <View style="@style/qc" />
+                <LinearLayout android:orientation="horizontal" android:id="@id/eux" android:paddingTop="3.0dip" android:paddingBottom="3.0dip" style="@style/qf">
+                    <TextView android:textSize="14.0sp" android:gravity="left" android:layout_width="0.0dip" android:text="@string/o4r" android:layout_weight="100.0" style="@style/r8" />
+                    <TextView android:textSize="14.0sp" android:id="@id/euw" android:text="10.00元" style="@style/r8" />
+                </LinearLayout>
+                <View style="@style/pj" />
+                <LinearLayout android:orientation="horizontal" android:id="@id/euz" android:paddingTop="3.0dip" android:paddingBottom="3.0dip" style="@style/qf">
+                    <TextView android:textSize="14.0sp" android:gravity="left" android:layout_width="0.0dip" android:text="@string/o5i" android:layout_weight="100.0" style="@style/r8" />
+                    <TextView android:textSize="14.0sp" android:id="@id/euy" android:text="20.00元" style="@style/r8" />
+                </LinearLayout>
+                <View style="@style/pj" />
+                <LinearLayout android:orientation="horizontal" android:id="@id/ev3" android:paddingTop="3.0dip" android:paddingBottom="3.0dip" style="@style/qf">
+                    <TextView android:textSize="14.0sp" android:textColor="@color/n_" android:gravity="left" android:layout_width="0.0dip" android:text="@string/o50" android:layout_weight="100.0" style="@style/r8" />
+                    <TextView android:textSize="14.0sp" android:textColor="@color/n_" android:id="@id/ev2" android:text="30.00元" style="@style/r8" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="12.0sp" android:gravity="center" android:id="@id/ev4" android:visibility="invisible" android:layout_marginTop="2.0dip" android:layout_marginBottom="2.0dip" android:text="@string/o5c" style="@style/r8" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <View style="@style/qc" />
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ev1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:id="@id/ev0" android:text="@string/o5m" style="@style/ow" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:layout_gravity="center" android:layout_marginBottom="15.0dip" style="@style/pw">
+        <TextView android:textSize="12.0sp" android:layout_width="fill_parent" android:text="@string/c_d" style="@style/r8" />
+        <LinearLayout style="@style/ot">
+            <TextView android:textSize="12.0sp" android:text="@string/c_e" style="@style/r8" />
+            <TextView android:textSize="12.0sp" android:id="@id/euo" android:layout_width="105.0dip" android:text="@string/c_f" style="@style/r9" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

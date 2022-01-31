@@ -1,20 +1,38 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
-import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreSimpleListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.Switch;
 
 public class oab
-  extends LoadingMoreHelper.OnLoadMoreSimpleListener
+  implements DialogInterface.OnKeyListener
 {
-  public oab(FeedSegment paramFeedSegment) {}
+  public oab(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public boolean a(boolean paramBoolean)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    FeedSegment.a(this.a);
-    return true;
+    boolean bool = true;
+    if (paramInt == 4)
+    {
+      ReadInJoySettingActivity.a(this.a, true);
+      paramDialogInterface = ReadInJoySettingActivity.a(this.a);
+      if (ReadInJoySettingActivity.a(this.a)) {
+        break label53;
+      }
+    }
+    for (;;)
+    {
+      paramDialogInterface.setChecked(bool);
+      ReadInJoySettingActivity.a(this.a).cancel();
+      return false;
+      label53:
+      bool = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oab
  * JD-Core Version:    0.7.0.1
  */

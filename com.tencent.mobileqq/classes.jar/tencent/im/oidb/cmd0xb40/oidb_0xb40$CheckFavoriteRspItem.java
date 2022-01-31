@@ -9,10 +9,10 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_0xb40$CheckFavoriteRspItem
-  extends MessageMicro
+  extends MessageMicro<CheckFavoriteRspItem>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatField bytes_cid_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> bytes_cid_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBBytesField bytes_rowkey = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field uint32_result = PBField.initUInt32(0);
   
@@ -25,7 +25,7 @@ public final class oidb_0xb40$CheckFavoriteRspItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xb40.oidb_0xb40.CheckFavoriteRspItem
  * JD-Core Version:    0.7.0.1
  */

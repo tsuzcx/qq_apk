@@ -1,49 +1,43 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.VideoServerInfoManager;
-import com.tencent.biz.qqstory.base.download.DownloadUrlManager;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.DebugInfo;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import com.tencent.util.URLUtil;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import mqq.os.MqqHandler;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.pubaccount.PublicAccountBrowser.12.1;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketPopupView;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
+import com.tencent.qphone.base.util.QLog;
 
 public class npx
-  extends SimpleJob
+  extends oxe
 {
-  public npx(VideoViewTVKImpl paramVideoViewTVKImpl, VideoServerInfoManager paramVideoServerInfoManager, PlayModeUtils.DebugInfo paramDebugInfo, String paramString, DownloadUrlManager paramDownloadUrlManager, TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
+  public npx(PublicAccountBrowser paramPublicAccountBrowser) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(boolean paramBoolean, String paramString)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.c)) {
-      return null;
-    }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.c.contains("qqstocdnd"))
+    if ((paramBoolean) && (PublicAccountBrowser.a(this.a) != null))
     {
-      paramJobContext = this.jdField_a_of_type_ComTencentBizQqstoryBaseVideoServerInfoManager.a();
-      SLog.a("VideoViewTVKImpl", "get url key:%s", paramJobContext);
-      if (TextUtils.isEmpty(paramJobContext)) {
-        break label90;
+      Object localObject = new int[2];
+      PublicAccountBrowser.a(this.a).getLocationInWindow((int[])localObject);
+      if (PublicAccountBrowser.b(this.a) == null)
+      {
+        PublicAccountBrowser.b(this.a, new RIJRedPacketPopupView(this.a));
+        localObject = new RelativeLayout.LayoutParams(-2, -2);
+        ((RelativeLayout)this.a.findViewById(2131363457)).addView(PublicAccountBrowser.b(this.a), (ViewGroup.LayoutParams)localObject);
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.c = URLUtil.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.c, "authkey", paramJobContext);
+      PublicAccountBrowser.b(this.a).a(false);
+      PublicAccountBrowser.b(this.a).b(false);
+      PublicAccountBrowser.b(this.a).setText(paramString);
+      PublicAccountBrowser.b(this.a).setVisibility(4);
+      PublicAccountBrowser.b(this.a).post(new PublicAccountBrowser.12.1(this, paramString));
+      PublicAccountBrowser.b(this.a, true);
+      return;
     }
-    for (;;)
-    {
-      ThreadManager.getUIHandler().post(new npz(this));
-      return null;
-      label90:
-      ThreadManager.getUIHandler().post(new npy(this));
-    }
+    QLog.i("PublicAccountBrowser", 1, " red packet task do not get Tips!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     npx
  * JD-Core Version:    0.7.0.1
  */

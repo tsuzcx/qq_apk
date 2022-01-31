@@ -1,32 +1,64 @@
-import com.tencent.mobileqq.emoticonview.BaseEmotionAdapter;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity.8.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
-import java.util.List;
+import com.tencent.widget.SingleLineTextView;
 
-class acfw
-  implements Runnable
+public class acfw
+  extends altm
 {
-  acfw(acfv paramacfv, List paramList) {}
+  public acfw(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void run()
+  void a(String paramString, View paramView)
   {
-    int i = 1;
-    QLog.d("EmotionPanelViewPagerAdapter", 1, "instantiateItem get data callback, panelType = " + this.jdField_a_of_type_Acfv.jdField_a_of_type_Int + ", panelInfo = " + this.jdField_a_of_type_Acfv.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelInfo);
-    this.jdField_a_of_type_Acfv.jdField_a_of_type_ComTencentWidgetListView.setOnScrollListener(new acfx(this));
-    if (this.jdField_a_of_type_Acfv.jdField_a_of_type_Int == 5) {}
-    for (;;)
-    {
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > i)) {
-        this.jdField_a_of_type_Acfv.jdField_a_of_type_ComTencentMobileqqEmoticonviewBaseEmotionAdapter.a(this.jdField_a_of_type_JavaUtilList);
-      }
+    if ((TextUtils.isEmpty(paramString)) || (paramView == null)) {
       return;
-      i = 0;
     }
+    this.a.runOnUiThread(new AssociatedAccountManageActivity.8.1(this, paramString, paramView));
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
+    View localView;
+    do
+    {
+      return;
+      localView = AssociatedAccountManageActivity.a(this.a, paramString, 0);
+      if (localView != null) {
+        a(paramString, localView);
+      }
+      localView = AssociatedAccountManageActivity.a(this.a, paramString, 1);
+    } while (localView == null);
+    a(paramString, localView);
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AssociatedAccountManage", 2, "onUpdateFriendInfo  uin = " + paramString + " isSuccess = " + paramBoolean);
+    }
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
+    View localView;
+    do
+    {
+      return;
+      localView = AssociatedAccountManageActivity.a(this.a, paramString, 0);
+      if (localView != null)
+      {
+        ((SingleLineTextView)localView.findViewById(2131370977)).setText(bdgc.h(this.a.app, paramString));
+        a(paramString, localView);
+      }
+      localView = AssociatedAccountManageActivity.a(this.a, paramString, 1);
+    } while (localView == null);
+    ((SingleLineTextView)localView.findViewById(2131370977)).setText(bdgc.h(this.a.app, paramString));
+    a(paramString, localView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acfw
  * JD-Core Version:    0.7.0.1
  */

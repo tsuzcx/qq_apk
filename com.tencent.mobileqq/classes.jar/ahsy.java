@@ -1,25 +1,12 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
-import com.tencent.qphone.base.util.BaseApplication;
-
-public class ahsy
-  implements View.OnTouchListener
+public abstract interface ahsy
 {
-  public ahsy(ContactSearchFragment paramContactSearchFragment) {}
+  public abstract void a(int paramInt, boolean paramBoolean, Object paramObject);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
-  }
+  public abstract void ar_();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahsy
  * JD-Core Version:    0.7.0.1
  */

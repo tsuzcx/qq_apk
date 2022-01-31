@@ -1,21 +1,14 @@
-import com.tencent.mobileqq.text.AppleEmojiManager;
-import java.io.File;
-
-public final class aino
-  implements Runnable
+public class aino
 {
-  public aino(File paramFile1, File paramFile2, File paramFile3) {}
-  
-  public void run()
-  {
-    if (this.a.exists()) {
-      this.a.delete();
-    }
-    if (this.b.exists()) {
-      this.b.delete();
-    }
-    AppleEmojiManager.a(this.c);
-  }
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public boolean d;
+  public boolean e = true;
 }
 
 

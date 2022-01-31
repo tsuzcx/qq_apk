@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cooperation.qzone.widget.QzoneSearchResultView android:orientation="horizontal" android:background="@drawable/jj" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/d3i" android:duplicateParentState="true" android:layout_width="@dimen/ajm" android:layout_height="@dimen/ajm" android:layout_marginLeft="@dimen/ajj" android:layout_marginTop="@dimen/ajl" android:layout_marginRight="@dimen/ajj" android:layout_marginBottom="@dimen/ajl" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <LinearLayout android:orientation="vertical" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ajl">
+        <RelativeLayout android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:layout_marginBottom="5.0dip">
+            <TextView android:textSize="18.0sp" android:textColor="@color/skin_black_item" android:ellipsize="end" android:id="@id/cb9" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="180.0dip" android:singleLine="true" />
+            <TextView android:textSize="18.0sp" android:textColor="@color/skin_gray2_item" android:id="@id/il2" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toRightOf="@id/cb9" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/skin_gray2_item" android:id="@id/g5c" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2_item" android:id="@id/title" android:visibility="gone" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:layout_marginBottom="2.0dip" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2_item" android:id="@id/j8_" android:visibility="visible" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:layout_marginBottom="5.0dip" />
+        <cooperation.qzone.widget.QzoneImagesContainer android:id="@id/ddm" android:visibility="visible" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:layout_marginBottom="5.0dip" />
+        <View android:background="#ffe1e2e3" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="5.0dip" />
+    </LinearLayout>
+</cooperation.qzone.widget.QzoneSearchResultView>

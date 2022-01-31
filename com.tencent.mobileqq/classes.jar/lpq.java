@@ -1,20 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import com.tencent.av.gaudio.AVNotifyCenter;
 
 public class lpq
-  implements Runnable
 {
-  public lpq(ArticleInfoModule paramArticleInfoModule, int paramInt) {}
+  public int a;
+  public long a;
+  public boolean a;
   
-  public void run()
+  public lpq(AVNotifyCenter paramAVNotifyCenter) {}
+  
+  public String toString()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().c(this.jdField_a_of_type_Int);
-    ReadInJoyLogicEngineEventDispatcher.a().b();
+    return "relationId[" + this.jdField_a_of_type_Long + "], isOffLine[" + this.jdField_a_of_type_Boolean + "], avType[" + this.jdField_a_of_type_Int + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lpq
  * JD-Core Version:    0.7.0.1
  */

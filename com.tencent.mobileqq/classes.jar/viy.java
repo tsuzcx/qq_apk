@@ -1,147 +1,57 @@
-import android.content.Context;
-import android.os.SystemClock;
-import com.rookery.translate.model.TransDiskCache;
-import com.rookery.translate.model.TransMemCache;
-import com.rookery.translate.model.TranslateCache;
-import com.rookery.translate.type.Language;
-import com.rookery.translate.type.TranslateCallback;
-import com.rookery.translate.type.TranslateError;
-import com.tencent.mobileqq.activity.aio.item.TextTranslationItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.TextTranslationItemBuilder.Holder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import java.util.Map;
 
 public class viy
-  implements TranslateCallback
+  extends vkh
 {
-  public viy(TextTranslationItemBuilder paramTextTranslationItemBuilder, TextTranslationItemBuilder.Holder paramHolder, Context paramContext, String paramString) {}
+  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void a(long paramLong, String paramString1, Language paramLanguage, String paramString2, TextTranslationItemBuilder.Holder paramHolder)
+  public viy()
   {
-    TextTranslationItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder);
-    if (paramHolder != null) {
-      TranslateCache.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_JavaLangString, paramHolder.jdField_c_of_type_JavaLangString, paramHolder.jdField_b_of_type_Long, Boolean.valueOf(false));
-    }
-    String str;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Translator", 2, "[ChatAdapter]holder id:" + this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.jdField_b_of_type_Long + "request id:" + paramLong);
-      }
-      if ((!paramString1.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.jdField_b_of_type_JavaLangString)) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.jdField_b_of_type_Long != paramLong) || (paramHolder == null) || (paramHolder.jdField_b_of_type_AndroidViewView == null) || (this.jdField_a_of_type_AndroidContentContext == null)) {
-        break label481;
-      }
-      if (!paramLanguage.toString().equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
-        break label317;
-      }
-      TextTranslationItemBuilder.b += 1;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.f != 0) {
-        break label389;
-      }
-      str = "0";
-      label180:
-      StatisticCollector.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "Translate_external", "Translate_external", 0, 1, 0, String.valueOf(SystemClock.uptimeMillis() - paramHolder.jdField_c_of_type_Long), str, paramLanguage.toString(), this.jdField_a_of_type_JavaLangString);
-      if ((paramLanguage.toString().equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) || (paramString2.equalsIgnoreCase(paramString1))) {
-        break label434;
-      }
-      paramLanguage = TranslateCache.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder.jdField_a_of_type_AndroidContentContext.getApplicationContext());
-      if (paramLanguage != null) {
-        paramLanguage.a(paramString1, paramString2, paramLong, Boolean.valueOf(true), this.jdField_a_of_type_JavaLangString);
-      }
-      paramHolder.g = 1;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder.b();
-    }
-    label317:
-    label481:
-    do
-    {
-      return;
-      if ((paramLanguage.toString().equalsIgnoreCase("zh-CHS")) && (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("zh-CN")))
-      {
-        TextTranslationItemBuilder.b += 1;
-        break;
-      }
-      if ((!paramLanguage.toString().equalsIgnoreCase("zh-CHT")) || (!this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("zh-TW"))) {
-        break;
-      }
-      TextTranslationItemBuilder.b += 1;
-      break;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.f == 1)
-      {
-        str = "1";
-        break label180;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.f == 3000)
-      {
-        str = "2";
-        break label180;
-      }
-      str = "";
-      break label180;
-      paramLanguage = TranslateCache.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder.jdField_a_of_type_AndroidContentContext.getApplicationContext());
-      if (paramLanguage != null) {
-        paramLanguage.a(paramString1, paramString2, paramLong, Boolean.valueOf(false), this.jdField_a_of_type_JavaLangString);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder.a(2131436452);
-      return;
-      if ((!paramLanguage.toString().equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_AndroidContentContext != null))
-      {
-        TranslateCache.a(this.jdField_a_of_type_AndroidContentContext).a(paramString1, paramString2, paramLong, Boolean.valueOf(true), this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-    } while (this.jdField_a_of_type_AndroidContentContext == null);
-    label389:
-    label434:
-    TranslateCache.a(this.jdField_a_of_type_AndroidContentContext).a(paramString1, paramString2, paramLong, Boolean.valueOf(false), this.jdField_a_of_type_JavaLangString);
+    a(false, true);
   }
   
-  public void a(long paramLong, String paramString, TranslateError paramTranslateError, TextTranslationItemBuilder.Holder paramHolder)
+  public viy(String paramString)
   {
-    TextTranslationItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder);
-    if (paramHolder != null) {
-      TranslateCache.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_JavaLangString, paramHolder.jdField_c_of_type_JavaLangString, paramHolder.jdField_b_of_type_Long, Boolean.valueOf(false));
+    this();
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a()
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, localURLDrawableOptions);
+    this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new viz(this));
+    if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() != null))
+    {
+      a("UrlDrawableDownloadJob_dra", this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable());
+      b(true);
+      return;
     }
-    if ((paramHolder != null) && (paramHolder.jdField_b_of_type_AndroidViewView != null) && (paramTranslateError != null)) {
-      if ((paramTranslateError.getMessage() != null) && (paramTranslateError.getMessage().length() > 0)) {
-        if ((paramTranslateError.getMessage().indexOf("Unable to resolve host") >= 0) || (paramTranslateError.getMessage().indexOf("can't resolve host") >= 0))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder.a(2131436453);
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.f != 0) {
-            break label232;
-          }
-          paramString = "0";
-          StatisticCollector.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "Translate_external", "Translate_external", 0, 1, 1, "", paramString, "", "");
-          if (QLog.isColorLevel()) {
-            QLog.e("Translator", 2, "onFailed:" + paramTranslateError);
-          }
-        }
-      }
+    this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
+  }
+  
+  protected void a(Map<String, Object> paramMap)
+  {
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("UrlDrawableDownloadJob_iiu"))) {
+      this.jdField_a_of_type_JavaLangString = ((String)vky.a(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap, "UrlDrawableDownloadJob_iiu", this.jdField_a_of_type_JavaLangString));
     }
-    label232:
-    while (!QLog.isColorLevel()) {
-      for (;;)
-      {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder.a(2131436451);
-        continue;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder.a(2131436454);
-        continue;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.f == 1) {
-          paramString = "1";
-        } else if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.f == 3000) {
-          paramString = "2";
-        } else {
-          paramString = "";
-        }
-      }
+  }
+  
+  public boolean a()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return false;
     }
-    QLog.e("Translator", 2, "onFailed:e is null");
+    return super.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     viy
  * JD-Core Version:    0.7.0.1
  */

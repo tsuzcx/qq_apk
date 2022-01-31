@@ -1,18 +1,33 @@
 package com.tencent.token.ui;
 
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.ImageView;
-import com.tencent.token.ui.base.FaceView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.token.core.bean.h;
+import com.tencent.token.dr;
+import com.tencent.token.dw;
+import com.tencent.token.ui.base.dj;
 
-final class ka
-  implements Runnable
+class ka
+  implements CompoundButton.OnCheckedChangeListener
 {
-  ka(FaceStartVryCameraActivity paramFaceStartVryCameraActivity, float paramFloat) {}
+  ka(jy paramjy) {}
   
-  public final void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    ((ViewGroup.MarginLayoutParams)FaceStartVryCameraActivity.access$800(this.b).getLayoutParams()).topMargin = ((int)(FaceStartVryCameraActivity.access$400(this.b).a() - this.a * 170.0F));
-    ((ViewGroup.MarginLayoutParams)FaceStartVryCameraActivity.access$900(this.b).getLayoutParams()).topMargin = ((int)(FaceStartVryCameraActivity.access$400(this.b).a() - this.a * 170.0F));
+    paramCompoundButton = (dj)paramCompoundButton.getTag();
+    if (paramCompoundButton == null) {}
+    h localh;
+    do
+    {
+      return;
+      localh = paramCompoundButton.a();
+    } while ((localh == null) || (paramCompoundButton.h() == null) || (!dr.a().o()) || (paramBoolean != localh.c) || (localh.e) || (jy.a(this.a)));
+    jy.a(this.a, localh);
+    jy.a(this.a, paramCompoundButton);
+    localh.e = true;
+    jy.a(this.a, true);
+    this.a.a(paramCompoundButton, false);
+    dw.a().a(3, jy.b(this.a).getHandler());
   }
 }
 

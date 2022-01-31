@@ -1,27 +1,10 @@
-import com.tencent.mobileqq.search.model.IContactSearchModel;
-import com.tencent.mobileqq.search.searchengine.ContactSearchEngine;
-import java.util.Comparator;
-
-public final class ahvd
-  implements Comparator
+public abstract interface ahvd
 {
-  public int a(IContactSearchModel paramIContactSearchModel1, IContactSearchModel paramIContactSearchModel2)
-  {
-    int j = Long.signum(paramIContactSearchModel2.b() - paramIContactSearchModel1.b());
-    int i = j;
-    if (j == 0) {
-      i = Long.signum(paramIContactSearchModel2.a() - paramIContactSearchModel1.a());
-    }
-    j = i;
-    if (i == 0) {
-      j = ContactSearchEngine.a(paramIContactSearchModel1, paramIContactSearchModel2);
-    }
-    return j;
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahvd
  * JD-Core Version:    0.7.0.1
  */

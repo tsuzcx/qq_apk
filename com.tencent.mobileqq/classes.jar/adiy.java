@@ -1,21 +1,29 @@
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 
 public class adiy
-  implements FMDialogUtil.FMDialogInterface
+  implements View.OnTouchListener
 {
-  public adiy(QfileEditBottomBar paramQfileEditBottomBar) {}
-  
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QfileEditBottomBar.a(this.a);
+    switch (paramMotionEvent.getActionMasked())
+    {
+    case 2: 
+    default: 
+      return false;
+    case 0: 
+      FrameHelperActivity.c(false);
+      return false;
+    }
+    FrameHelperActivity.c(true);
+    return false;
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adiy
  * JD-Core Version:    0.7.0.1
  */

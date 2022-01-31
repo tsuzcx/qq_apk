@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.music.SongInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
-public final class aekg
-  implements Parcelable.Creator
+public class aekg
+  implements DialogInterface.OnClickListener
 {
-  public SongInfo a(Parcel paramParcel)
-  {
-    return new SongInfo(paramParcel, null);
-  }
+  public aekg(UpgradeActivity paramUpgradeActivity) {}
   
-  public SongInfo[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new SongInfo[paramInt];
+    this.a.finish();
   }
 }
 

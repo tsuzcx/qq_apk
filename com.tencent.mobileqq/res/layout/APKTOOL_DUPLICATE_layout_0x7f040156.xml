@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:mobileqq="http://schemas.android.com/apk/res/com.tencent.mobileqq">
-    <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:id="@id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <com.tencent.mobileqq.widget.PadQQCheckBox android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09ab" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" mobileqq:text="@string/APKTOOL_DUPLICATE_string_0x7f0b170e" mobileqq:checked="true" />
-</LinearLayout>

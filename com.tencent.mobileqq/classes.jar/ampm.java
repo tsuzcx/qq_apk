@@ -1,68 +1,51 @@
-import android.view.View;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import cooperation.qqfav.widget.FavoriteActionSheet;
-import cooperation.qqfav.widget.FavoriteActionSheet.Actions;
-import java.util.List;
-
-public class ampm
-  implements ActionSheet.OnButtonClickListener
+class ampm
 {
-  public ampm(FavoriteActionSheet paramFavoriteActionSheet) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
   
-  public void OnClick(View paramView, int paramInt)
+  public ampm(String paramString, boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    if ((this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions == null)) {
-      return;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.c = paramBoolean3;
+    this.d = paramBoolean4;
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Int == 5) {
+      return 0;
     }
-    this.a.jdField_a_of_type_Boolean = true;
-    if (paramInt < this.a.jdField_a_of_type_JavaUtilList.size())
-    {
-      paramInt = ((Integer)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).intValue();
-      if (paramInt == 16) {
-        this.a.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.e();
-      }
+    if (this.jdField_a_of_type_Int == 4) {
+      return 60000;
     }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if (paramInt == 32)
-      {
-        this.a.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.a();
-      }
-      else if (paramInt == 1)
-      {
-        this.a.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.c();
-        FavoriteActionSheet.a(this.a);
-      }
-      else if (paramInt == 2)
-      {
-        this.a.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.f();
-      }
-      else if (paramInt == 4)
-      {
-        this.a.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.g();
-      }
-      else if (paramInt == 8)
-      {
-        this.a.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.d();
-      }
-      else if (paramInt == 64)
-      {
-        this.a.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.b();
-        continue;
-        paramInt -= this.a.jdField_a_of_type_JavaUtilList.size();
-        if ((paramInt >= 0) && (paramInt < this.a.b.size())) {
-          this.a.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.a((String)this.a.b.get(paramInt));
-        }
-      }
+    if (this.jdField_a_of_type_Int == 3) {
+      return 180000;
     }
+    if (this.jdField_a_of_type_Int == 2) {
+      return 600000;
+    }
+    return 1800000;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("businessId: ").append(this.jdField_a_of_type_JavaLangString).append(",").append("reqLonAndLat: ").append(this.jdField_a_of_type_Boolean).append(",").append("realTimeRequirement: ").append(this.jdField_a_of_type_Int).append(",").append("requestDataLevel: ").append(this.jdField_b_of_type_Int).append(",").append("reqGoon: ").append(this.jdField_b_of_type_Boolean).append(",").append("canUseGps: ").append(this.c);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ampm
  * JD-Core Version:    0.7.0.1
  */

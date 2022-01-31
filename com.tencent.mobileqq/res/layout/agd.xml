@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/jek" android:background="@color/vu" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/adk" />
+    <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/agh" />
+            <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/agf" />
+            <LinearLayout android:orientation="vertical" android:id="@id/ghh" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <View style="@style/ta" />
+            <com.tenpay.sdk.view.FiTConnectionView android:id="@id/cbl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="15.0dip" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

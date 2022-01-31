@@ -1,19 +1,11 @@
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.QzoneGiftFullScreenViewController.GiftFullScreenPlayListener;
-import cooperation.qzone.webviewplugin.QZoneGiftFullScreenJsPlugin;
-
 public class anbn
-  implements QzoneGiftFullScreenViewController.GiftFullScreenPlayListener
 {
-  public anbn(QZoneGiftFullScreenJsPlugin paramQZoneGiftFullScreenJsPlugin, String paramString) {}
+  public anau a;
+  public boolean a;
   
-  public void a()
+  public String toString()
   {
-    if (this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneGiftFullScreenJsPlugin.a != null)
-    {
-      String str = "window." + this.jdField_a_of_type_JavaLangString + "({playFinish:1})";
-      this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneGiftFullScreenJsPlugin.a.callJs(str);
-    }
+    return "ARCloudRecogResultBase{hasLBSLocation = " + this.jdField_a_of_type_Boolean + ", checkResult = " + this.jdField_a_of_type_Anau + '}';
   }
 }
 

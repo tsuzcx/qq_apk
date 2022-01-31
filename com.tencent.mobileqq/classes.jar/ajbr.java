@@ -1,18 +1,21 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.troop.createNewTroop.AbsNewTroopBaseView;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
-
 public class ajbr
-  extends AnimatorListenerAdapter
 {
-  public ajbr(NewTroopCreateActivity paramNewTroopCreateActivity) {}
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public ajbr(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopAbsNewTroopBaseView != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopAbsNewTroopBaseView.a(this.a.jdField_a_of_type_Boolean);
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+  }
+  
+  public String toString()
+  {
+    return "ShowInfo{Red=" + this.jdField_a_of_type_Boolean + ",Corner=" + this.jdField_b_of_type_Boolean + ",con='" + this.jdField_a_of_type_JavaLangString + '\'' + ",buf='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
   }
 }
 

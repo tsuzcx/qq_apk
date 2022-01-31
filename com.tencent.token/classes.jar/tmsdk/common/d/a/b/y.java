@@ -2,8 +2,10 @@ package tmsdk.common.d.a.b;
 
 import android.os.Process;
 import com.qq.taf.jce.JceStruct;
-import d.b.a;
+import com.tencent.token.fn;
+import com.tencent.token.fo;
 import java.lang.ref.WeakReference;
+import tmsdk.common.a.b;
 
 public class y
   implements x
@@ -14,23 +16,23 @@ public class y
   public y(long paramLong)
   {
     this.a = paramLong;
-    this.b = ((r)tmsdk.common.a.b.a(r.class));
+    this.b = ((r)b.a(r.class));
     new StringBuilder().append("pid: ").append(Process.myPid()).append("SharkQueueProxy mSharkProtocolQueue: ").append(this.b.hashCode()).toString();
   }
   
-  public d.b.b a(int paramInt1, int paramInt2)
+  public fo a(int paramInt1, int paramInt2)
   {
     return this.b.a(paramInt1, paramInt2);
   }
   
-  public WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, a parama)
+  public WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, fn paramfn)
   {
-    return this.b.a(this.a, paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, parama);
+    return this.b.a(this.a, paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramfn);
   }
   
-  public WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, a parama, long paramLong)
+  public WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, fn paramfn, long paramLong)
   {
-    return this.b.a(this.a, paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, parama, paramLong);
+    return this.b.a(this.a, paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramfn, paramLong);
   }
   
   public void a(int paramInt)
@@ -38,9 +40,9 @@ public class y
     this.b.a(paramInt);
   }
   
-  public void a(int paramInt1, JceStruct paramJceStruct, int paramInt2, d.b.b paramb)
+  public void a(int paramInt1, JceStruct paramJceStruct, int paramInt2, fo paramfo)
   {
-    this.b.a(paramInt1, paramJceStruct, paramInt2, paramb);
+    this.b.a(paramInt1, paramJceStruct, paramInt2, paramfo);
   }
   
   public void b(int paramInt)

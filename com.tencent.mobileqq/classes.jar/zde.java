@@ -1,37 +1,51 @@
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.MemoryManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.battery.BatteryStats;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.biz.webviewplugin.BusinessReportPlugin.1;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
 
 public class zde
-  extends zeq
+  extends WebViewPlugin
 {
-  private String a;
+  private Handler a;
+  public boolean a;
   
-  protected void a(String paramString)
+  public zde()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.mPluginNameSpace = "JD_REPORT";
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   }
   
-  protected void b(String paramString)
+  public void a(String paramString)
   {
-    super.b(paramString);
-    MemoryManager.a().a(0, 0, this.c, this.d, 0L, 0L, 3);
-    QQAppInterface.a().d();
-    this.jdField_a_of_type_JavaLangString = paramString;
-    CoreService.startCoreService(zeo.a().a);
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.c();
+    if (this.jdField_a_of_type_Boolean) {}
+    try
+    {
+      this.jdField_a_of_type_AndroidOsHandler.post(new BusinessReportPlugin.1(this, paramString));
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("BusinessReporter", 1, "Report Error:" + paramString);
+    }
   }
   
-  protected void d(String paramString)
+  public void b(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Boolean = ntv.a(paramString);
+  }
+  
+  public Object handleEvent(String paramString, long paramLong)
+  {
+    if (paramLong == 8L) {
+      a(paramString);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zde
  * JD-Core Version:    0.7.0.1
  */

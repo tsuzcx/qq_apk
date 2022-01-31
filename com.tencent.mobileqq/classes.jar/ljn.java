@@ -1,35 +1,14 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
-
-public class ljn
+public abstract interface ljn<T>
 {
-  public ImageView a;
-  public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
-  public ReadInJoyHeadImageView a;
-  public ReadInJoyNickNameTextView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  public TextView f;
-  public TextView g;
-  public TextView h;
-  public TextView i;
-  public TextView j;
+  public abstract void onDownloadFinish(long paramLong, T paramT, boolean paramBoolean);
   
-  public ljn(ReadInJoyCommentListAdapter paramReadInJoyCommentListAdapter) {}
+  public abstract void onItemSelectedChanged(long paramLong, T paramT);
+  
+  public abstract void onProgressUpdate(T paramT, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ljn
  * JD-Core Version:    0.7.0.1
  */

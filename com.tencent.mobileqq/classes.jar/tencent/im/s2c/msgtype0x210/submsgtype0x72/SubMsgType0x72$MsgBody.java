@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SubMsgType0x72$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   public static final int STR_CONTENT_FIELD_NUMBER = 4;
   public static final int STR_INFO_DATE_FIELD_NUMBER = 5;

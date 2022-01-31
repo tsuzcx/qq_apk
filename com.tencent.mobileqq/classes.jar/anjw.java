@@ -1,20 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-
-public class anjw
-  implements View.OnClickListener
+public abstract interface anjw
+  extends anjv
 {
-  public anjw(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.c();
-  }
+  public abstract void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anjw
  * JD-Core Version:    0.7.0.1
  */

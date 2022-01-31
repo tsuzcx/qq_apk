@@ -2,8 +2,8 @@ package cooperation.qlink;
 
 import android.content.ServiceConnection;
 import com.tencent.qphone.base.util.QLog;
-import ifo;
-import ifp;
+import iau;
+import iav;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import mqq.app.AppRuntime;
 
@@ -11,7 +11,7 @@ public class QlinkServiceProxy
 {
   private static final String jdField_a_of_type_JavaLangString = "QlinkServiceProxy";
   private volatile long jdField_a_of_type_Long = -1L;
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new ifo(this);
+  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new iau(this);
   private volatile IQlinkService jdField_a_of_type_CooperationQlinkIQlinkService;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private ConcurrentLinkedQueue jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
@@ -30,9 +30,9 @@ public class QlinkServiceProxy
   
   private void b()
   {
-    ifp localifp = new ifp(this);
-    localifp.setName("handleWaitSendProxyMsgThread");
-    localifp.start();
+    iav localiav = new iav(this);
+    localiav.setName("handleWaitSendProxyMsgThread");
+    localiav.start();
   }
   
   private void b(SendMsg paramSendMsg)

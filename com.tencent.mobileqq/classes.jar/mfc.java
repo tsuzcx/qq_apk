@@ -1,44 +1,28 @@
 import android.os.Handler;
-import android.os.Handler.Callback;
+import android.os.Looper;
 import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall.OnVideoPluginInstallListener;
 
-public class mfc
-  implements Handler.Callback
+class mfc
+  extends Handler
 {
-  public mfc(VideoPluginInstall paramVideoPluginInstall) {}
+  public mfc(mfb parammfb, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public boolean handleMessage(Message paramMessage)
+  public void handleMessage(Message paramMessage)
   {
     switch (paramMessage.what)
     {
     default: 
-    case 0: 
-    case 1: 
-      do
-      {
-        do
-        {
-          return true;
-          VideoPluginInstall.a(this.a, false);
-          VideoPluginInstall.a(this.a).removeMessages(0);
-        } while (VideoPluginInstall.a(this.a) == null);
-        VideoPluginInstall.a(this.a).c(true);
-        return true;
-        VideoPluginInstall.a(this.a, false);
-        VideoPluginInstall.a(this.a).removeMessages(1);
-      } while (VideoPluginInstall.a(this.a) == null);
-      VideoPluginInstall.a(this.a).c(false);
-      return true;
+      return;
     }
-    VideoPluginInstall.a(this.a, true);
-    return true;
+    mfb.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mfc
  * JD-Core Version:    0.7.0.1
  */

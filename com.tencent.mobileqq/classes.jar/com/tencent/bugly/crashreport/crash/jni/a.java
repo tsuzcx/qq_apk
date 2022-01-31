@@ -61,14 +61,14 @@ public final class a
           }
           paramString6 = paramArrayOfString[paramInt1];
           if (paramString6 == null) {
-            break label935;
+            break label933;
           }
           x.a("Extra message[%d]: %s", new Object[] { Integer.valueOf(paramInt1), paramString6 });
           localObject1 = paramString6.split("=");
           if (localObject1.length == 2)
           {
             ((Map)localObject2).put(localObject1[0], localObject1[1]);
-            break label935;
+            break label933;
           }
         }
         else
@@ -79,7 +79,7 @@ public final class a
             paramString6 = AppInfo.a(paramInt4);
           }
           if (paramString6.equals(String.valueOf(paramInt4))) {
-            break label924;
+            break label922;
           }
           paramString6 = paramString6 + "(" + paramInt4 + ")";
           paramString3 = paramString5;
@@ -162,7 +162,7 @@ public final class a
           return;
         }
         com.tencent.bugly.crashreport.crash.b.a("NATIVE_CRASH", z.a(), (String)localObject1, paramString6, paramString1 + "\n" + paramString2 + "\n" + str, paramString3);
-        if (!this.b.a(paramString3, paramInt3)) {}
+        if (!this.b.b(paramString3)) {}
         for (paramInt1 = 1;; paramInt1 = 0)
         {
           paramString1 = null;
@@ -174,15 +174,15 @@ public final class a
           if (paramInt1 != 0) {
             this.b.a(paramString3, 3000L, true);
           }
-          this.b.b(paramString3);
+          this.b.c(paramString3);
           return;
         }
       }
-      label924:
+      label922:
       paramString3 = paramString5;
       paramString5 = paramString6;
       continue;
-      label935:
+      label933:
       paramInt1 += 1;
     }
   }
@@ -196,7 +196,7 @@ public final class a
     CrashDetailBean localCrashDetailBean = new CrashDetailBean();
     localCrashDetailBean.b = 1;
     localCrashDetailBean.e = this.c.g();
-    localCrashDetailBean.f = this.c.l;
+    localCrashDetailBean.f = this.c.m;
     localCrashDetailBean.g = this.c.v();
     localCrashDetailBean.m = this.c.f();
     localCrashDetailBean.n = paramString3;
@@ -239,9 +239,9 @@ public final class a
       if (!paramBoolean1) {
         break label729;
       }
-      localCrashDetailBean.C = com.tencent.bugly.crashreport.common.info.b.h();
-      localCrashDetailBean.D = com.tencent.bugly.crashreport.common.info.b.f();
-      localCrashDetailBean.E = com.tencent.bugly.crashreport.common.info.b.j();
+      localCrashDetailBean.C = com.tencent.bugly.crashreport.common.info.b.k();
+      localCrashDetailBean.D = com.tencent.bugly.crashreport.common.info.b.i();
+      localCrashDetailBean.E = com.tencent.bugly.crashreport.common.info.b.m();
       if (localCrashDetailBean.w == null) {
         localCrashDetailBean.w = z.a(this.a, c.e, c.h);
       }
@@ -277,7 +277,7 @@ public final class a
       if (paramString1 == null) {
         localCrashDetailBean.A = this.c.d;
       }
-      this.b.c(localCrashDetailBean);
+      this.b.d(localCrashDetailBean);
     }
     label729:
     do

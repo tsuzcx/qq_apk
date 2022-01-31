@@ -1,46 +1,33 @@
-import com.tencent.biz.qqstory.newshare.StoryShare;
-import com.tencent.biz.qqstory.newshare.callback.OnShareListener;
-import com.tencent.biz.qqstory.newshare.callback.StoryShareCallback;
-import com.tencent.biz.qqstory.newshare.model.ShareData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
-public class nfw
-  implements StoryShareCallback
+public final class nfw
+  implements DialogInterface.OnClickListener
 {
-  public nfw(StoryShare paramStoryShare) {}
+  public nfw(int paramInt, QQAppInterface paramQQAppInterface, long paramLong, Handler paramHandler) {}
   
-  public void a(ShareData paramShareData)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).a(paramShareData.a);
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      aieq.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, true, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+      l = NetConnInfoCenter.getServerTimeMillis();
+      ((ambk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(31)).a(String.valueOf(this.jdField_a_of_type_Long), true, l);
+      return;
     }
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).a();
-    }
-  }
-  
-  public void b(ShareData paramShareData)
-  {
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).c(paramShareData.a);
-    }
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).a();
-    }
-  }
-  
-  public void c(ShareData paramShareData)
-  {
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).d(paramShareData.a);
-    }
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).a();
-    }
+    aieq.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, false, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    long l = NetConnInfoCenter.getServerTimeMillis();
+    ((ambk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(31)).a(String.valueOf(this.jdField_a_of_type_Long), false, l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nfw
  * JD-Core Version:    0.7.0.1
  */

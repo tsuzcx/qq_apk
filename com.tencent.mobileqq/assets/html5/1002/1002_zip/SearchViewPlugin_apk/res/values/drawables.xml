@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <item type="drawable" name="search_item_normal">#ffffffff</item>
-    <item type="drawable" name="search_item_pressed">#ffdedfe0</item>
-</resources>

@@ -1,35 +1,20 @@
-import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.PublicAccountManager.InitDoneObserver;
+import com.tencent.mobileqq.activity.PublicAccountChatActivity;
 
 public class daz
-  implements Runnable
+  implements PublicAccountManager.InitDoneObserver
 {
-  public daz(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
+  public daz(PublicAccountChatActivity paramPublicAccountChatActivity) {}
   
-  public void run()
+  public void a()
   {
-    try
-    {
-      if ((LoginVerifyCodeActivity.a(this.a) != null) && (LoginVerifyCodeActivity.a(this.a).isShowing()))
-      {
-        LoginVerifyCodeActivity.a(this.a).dismiss();
-        LoginVerifyCodeActivity.a(this.a).cancel();
-      }
-      LoginVerifyCodeActivity.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    PublicAccountChatActivity.a(this.a).sendEmptyMessage(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     daz
  * JD-Core Version:    0.7.0.1
  */

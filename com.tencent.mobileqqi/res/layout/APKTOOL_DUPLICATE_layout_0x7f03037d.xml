@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#ffffffff" />
-    <stroke android:width="1.0dip" android:color="#ffcfcfcf" />
-    <corners android:radius="3.0dip" />
-</shape>
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08088d" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginTop="4.0dip" android:scaleType="fitCenter" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08088f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f08088d" android:layout_centerHorizontal="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00af" />
+</RelativeLayout>

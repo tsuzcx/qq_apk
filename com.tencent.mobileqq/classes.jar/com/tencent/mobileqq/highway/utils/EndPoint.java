@@ -16,7 +16,7 @@ public class EndPoint
   public String keyOfAPN = "";
   public int port;
   public int protoType = 1;
-  public long timestampe;
+  public long timestamp;
   public int type;
   
   public EndPoint(String paramString, int paramInt)
@@ -34,7 +34,7 @@ public class EndPoint
   public EndPoint(String paramString, int paramInt, long paramLong)
   {
     this(paramString, paramInt, 0);
-    this.timestampe = paramLong;
+    this.timestamp = paramLong;
   }
   
   public EndPoint(String paramString, int paramInt, boolean paramBoolean)
@@ -44,7 +44,6 @@ public class EndPoint
   }
   
   public EndPoint clone()
-    throws CloneNotSupportedException
   {
     return (EndPoint)super.clone();
   }
@@ -61,7 +60,7 @@ public class EndPoint
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.highway.utils.EndPoint
  * JD-Core Version:    0.7.0.1
  */

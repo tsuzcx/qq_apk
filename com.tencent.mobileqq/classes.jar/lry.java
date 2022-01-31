@@ -1,19 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.SubscriptionInfoModule;
-
 public class lry
-  implements Runnable
 {
-  public lry(SubscriptionInfoModule paramSubscriptionInfoModule, int paramInt1, int paramInt2) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void run()
+  public lry(int paramInt, String paramString1, String paramString2)
   {
-    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_Int, this.b);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lry
  * JD-Core Version:    0.7.0.1
  */

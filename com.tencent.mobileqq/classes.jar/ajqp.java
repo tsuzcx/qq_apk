@@ -1,35 +1,48 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.troop.utils.TroopRobotManager;
-import com.tencent.mobileqq.troop.utils.TroopRobotManager.Callback;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
 public class ajqp
-  extends ProtoUtils.TroopProtocolObserver
+  extends OrientationEventListener
 {
-  public ajqp(TroopRobotManager paramTroopRobotManager, TroopRobotManager.Callback paramCallback) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public ajqp(NewFlowCameraActivity paramNewFlowCameraActivity, Context paramContext)
   {
-    paramBundle = new cmd0x934.RspBody();
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
+    super(paramContext);
+  }
+  
+  public void onOrientationChanged(int paramInt)
+  {
+    NewFlowCameraActivity.a(this.a).a(paramInt);
+    if (this.a.i) {}
+    do
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopRobotManager$Callback.a(paramInt, paramBundle);
       return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
+      if (paramInt == -1)
       {
         if (QLog.isColorLevel()) {
-          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(paramArrayOfByte));
+          QLog.d("PTV.NewFlowCameraActivity", 2, "OrientationEventListener unknown");
         }
+        this.a.o = 90;
+        return;
       }
-    }
+      if ((paramInt > 315) || (paramInt < 45))
+      {
+        this.a.o = 90;
+        return;
+      }
+      if ((paramInt > 45) && (paramInt < 135))
+      {
+        this.a.o = 180;
+        return;
+      }
+      if ((paramInt > 135) && (paramInt < 225))
+      {
+        this.a.o = 270;
+        return;
+      }
+    } while ((paramInt <= 225) || (paramInt >= 315));
+    this.a.o = 0;
   }
 }
 

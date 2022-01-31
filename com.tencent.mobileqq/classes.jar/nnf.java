@@ -1,20 +1,20 @@
-import android.support.v4.view.ViewPager;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibilityDialog;
-import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
-public class nnf
-  implements TabBarView.OnTabChangeListener
+class nnf
+  implements DialogInterface.OnClickListener
 {
-  public nnf(MyVideoVisibilityDialog paramMyVideoVisibilityDialog) {}
+  nnf(nmx paramnmx, JsResult paramJsResult) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.setCurrentItem(paramInt2);
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nnf
  * JD-Core Version:    0.7.0.1
  */

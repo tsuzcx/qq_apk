@@ -1,15 +1,15 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
 
-public class ebs
+class ebs
   implements Runnable
 {
-  public ebs(AioAnimationDetector paramAioAnimationDetector, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, int paramInt) {}
+  ebs(ebq paramebq, long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a(2, 300, new Object[] { this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, Integer.valueOf(this.jdField_a_of_type_Int) });
+    if (ebp.c(this.jdField_a_of_type_Ebq.a) != null) {
+      ((AIOGalleryScene)ebp.d(this.jdField_a_of_type_Ebq.a)).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.jdField_b_of_type_Long);
+    }
   }
 }
 

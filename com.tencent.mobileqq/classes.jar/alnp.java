@@ -1,32 +1,88 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.qidian.plugin.QidianWpaWebviewPlugin;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class alnp
-  extends BroadcastReceiver
 {
-  public alnp(QidianWpaWebviewPlugin paramQidianWpaWebviewPlugin) {}
+  public SessionInfo a;
+  public List<allz> a;
+  public Context b;
+  public int c = 0;
+  public int d;
+  public int e;
+  protected int f = -1;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public int a()
   {
-    if ((paramIntent.getAction().equalsIgnoreCase("com.tencent.mobileqq.qidian.openactionsheet")) && (this.a.mRuntime.a() != null))
-    {
-      paramContext = (ActionSheet)ActionSheetHelper.a((Activity)paramContext, null);
-      paramContext.b(2131438730);
-      paramContext.c(2131433015);
-      paramContext.a(new alnq(this, paramIntent, paramContext));
-      paramContext.show();
+    return 0;
+  }
+  
+  public int a(int paramInt)
+  {
+    return 0;
+  }
+  
+  public allz a(String paramString)
+  {
+    return null;
+  }
+  
+  public View a()
+  {
+    return null;
+  }
+  
+  public View a(int paramInt)
+  {
+    View localView = a();
+    a(localView, paramInt);
+    return localView;
+  }
+  
+  public ArrayList<allz> a(int paramInt)
+  {
+    return null;
+  }
+  
+  public void a() {}
+  
+  public void a(View paramView, int paramInt) {}
+  
+  public void b(int paramInt)
+  {
+    this.c = paramInt;
+  }
+  
+  public void c(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloViewBinder", 2, new Object[] { "[setHighlightItemIndex] highlightItemIndex=", Integer.valueOf(paramInt) });
     }
+    if ((this.a == null) || (this.a.size() == 0)) {
+      QLog.e("ApolloViewBinder", 1, "[setHighlightItemIndex] no panel data, set failed");
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while ((paramInt < 0) || (paramInt >= this.a.size()));
+      this.f = paramInt;
+    } while (!QLog.isColorLevel());
+    QLog.d("ApolloViewBinder", 2, new Object[] { "[setHighlightItemIndex] set success, highlightItemIndex=", Integer.valueOf(paramInt) });
+  }
+  
+  public void c_(List<allz> paramList)
+  {
+    this.a = paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alnp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,43 @@
-import com.tencent.biz.troop.VideoCombineHelper;
-import com.tencent.biz.troop.VideoCombineHelper.Task;
-import com.tencent.biz.troop.VideoCombineHelper.TaskListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.Manager;
 
 public class oxd
-  extends VideoCombineHelper.Task
+  implements Manager
 {
-  public oxd(VideoCombineHelper paramVideoCombineHelper, VideoCombineHelper.TaskListener paramTaskListener, String paramString)
+  private AppInterface a;
+  
+  public oxd(AppInterface paramAppInterface)
   {
-    super(paramVideoCombineHelper, paramTaskListener, paramString);
+    QLog.i("ReadInJoyLogicManager", 1, "[ReadInJoyLogicManager] constructed.");
+    this.a = paramAppInterface;
+    a();
+  }
+  
+  public owy a()
+  {
+    return owy.a();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.b(this);
+    osv.a();
+    owy.a().a(this.a);
+  }
+  
+  public void b()
+  {
+    owy.a().a(false);
+  }
+  
+  public void onDestroy()
+  {
+    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oxd
  * JD-Core Version:    0.7.0.1
  */

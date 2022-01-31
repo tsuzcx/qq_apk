@@ -1,59 +1,63 @@
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
-import com.tencent.mobileqq.utils.httputils.PkgTools;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.MeasureSpec;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.widget.InteractContainerLayout;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.File;
+import java.net.URI;
 
-public class vil
-  implements View.OnClickListener
+class vil
+  implements wec
 {
-  public vil(TextItemBuilder paramTextItemBuilder) {}
+  vil(vik paramvik) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    Object localObject = AIOUtils.a(paramView);
-    if (!(localObject instanceof MessageForText)) {
-      if (QLog.isColorLevel()) {
-        QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: AIOUtils.getMessage(v) is not MessageForText");
-      }
+    paramString = BaseApplicationImpl.getContext();
+    Object localObject = new InteractContainerLayout(paramString);
+    ((InteractContainerLayout)localObject).a(this.a.a);
+    FrameLayout localFrameLayout = new FrameLayout(paramString);
+    localFrameLayout.setBackgroundDrawable(new BitmapDrawable(paramString.getResources(), paramBitmap));
+    localFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(paramBitmap.getWidth(), paramBitmap.getHeight()));
+    localFrameLayout.addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
+    localFrameLayout.measure(View.MeasureSpec.makeMeasureSpec(paramBitmap.getWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(paramBitmap.getHeight(), 1073741824));
+    localFrameLayout.layout(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
+    ((InteractContainerLayout)localObject).a(this.a.a);
+    localObject = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), paramBitmap.getConfig());
+    Canvas localCanvas = new Canvas((Bitmap)localObject);
+    localCanvas.drawBitmap(paramBitmap, new Matrix(), null);
+    localFrameLayout.draw(localCanvas);
+    paramString = paramString.getCacheDir().getAbsolutePath() + "/" + System.currentTimeMillis() + ".png";
+    if (xqw.a((Bitmap)localObject, paramString)) {
+      this.a.a("result", new File(paramString).toURI().toString());
     }
-    do
+    for (;;)
     {
-      do
-      {
-        do
-        {
-          return;
-          localObject = (MessageForText)localObject;
-        } while (TextItemBuilder.a(this.a));
-        if (((MessageForText)localObject).msgtype == -1003)
-        {
-          AIOUtils.m = true;
-          localObject = PkgTools.a(((MessageForText)localObject).action);
-          localObject = JumpParser.a(this.a.a, paramView.getContext(), (String)localObject);
-          if (localObject != null) {
-            ((JumpAction)localObject).b();
-          }
-        }
-      } while (!(paramView instanceof ETTextView));
-      paramView = (ETTextView)paramView;
-      if (paramView.c())
-      {
-        paramView.a(true);
-        return;
-      }
-    } while (!paramView.b());
-    paramView.b(true);
+      ((Bitmap)localObject).recycle();
+      vik.a(this.a, true);
+      return;
+      this.a.a("result", this.a.a.mVideoThumbnailUrl);
+    }
+  }
+  
+  public void a(String paramString, Throwable paramThrowable)
+  {
+    this.a.a("result", this.a.a.mVideoThumbnailUrl);
+    vik.b(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vil
  * JD-Core Version:    0.7.0.1
  */

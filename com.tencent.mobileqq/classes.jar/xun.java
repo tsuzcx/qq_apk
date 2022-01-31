@@ -1,65 +1,24 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
-import com.tencent.biz.qqstory.takevideo.music.QQStoryMusicInfo;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog.IP2VMusicEditListener;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.view.NeoVideoRecordButton;
 
 public class xun
-  extends BroadcastReceiver
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public xun(P2VEditMusicDialog paramP2VEditMusicDialog) {}
+  public xun(NeoVideoRecordButton paramNeoVideoRecordButton) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramContext = paramIntent.getAction();
-    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext))
-    {
-      paramContext = paramIntent.getStringExtra("data");
-      paramIntent = paramIntent.getStringExtra("event");
-      if ((!TextUtils.isEmpty(paramIntent)) && (paramIntent.equals("kTribeSelectMusic"))) {}
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("zivonchen", 2, "onReceive:" + paramContext);
-        }
-      } while (TextUtils.isEmpty(paramContext));
-      paramContext = new QQStoryMusicInfo(paramContext);
-      this.a.a();
-      if (!TextUtils.isEmpty(paramContext.d))
-      {
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramContext.b);
-        this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      }
-      P2VEditMusicDialog.a(this.a).a(paramContext);
-      this.a.a(paramContext.d);
-      VideoEditReport.a("0X80076D6");
-      return;
-      if ("action_music_start".equals(paramContext))
-      {
-        this.a.f();
-        this.a.d();
-        return;
-      }
-    } while (!"action_music_refresh_list".equals(paramContext));
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    this.a.a.a(((Integer)paramValueAnimator.getAnimatedValue("border")).intValue(), 0.0F);
+    this.a.a.b(((Integer)paramValueAnimator.getAnimatedValue("ring")).intValue(), 0.0F);
+    this.a.b.a(((Integer)paramValueAnimator.getAnimatedValue("center")).intValue(), 0.0F);
+    this.a.b.e = ((Integer)paramValueAnimator.getAnimatedValue("color")).intValue();
+    NeoVideoRecordButton.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xun
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,18 @@
 package com.tencent.token.ui;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.token.cw;
 
-final class afs
-  implements DialogInterface.OnCancelListener
+class afs
+  implements DialogInterface.OnClickListener
 {
-  afs(UtilsModSetMobileStep2SmsActivity paramUtilsModSetMobileStep2SmsActivity) {}
+  afs(afr paramafr) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    cw.a().a(WtLoginAccountInput.access$500(this.a.a));
+  }
 }
 
 

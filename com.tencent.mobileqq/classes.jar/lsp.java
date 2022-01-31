@@ -1,21 +1,51 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyHeaderPresenter;
-import com.tencent.widget.KandianPopupWindow.OnUninterestConfirmListener;
-import java.util.ArrayList;
+import com.tencent.av.VideoController;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.qphone.base.util.QLog;
 
-class lsp
-  implements KandianPopupWindow.OnUninterestConfirmListener
+public class lsp
 {
-  lsp(lso paramlso) {}
-  
-  public void a(View paramView, int paramInt, ArrayList paramArrayList, Object paramObject)
+  public static void a(boolean paramBoolean)
   {
-    ReadInJoyHeaderPresenter.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPresenterReadInJoyHeaderPresenter, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelIReadInJoyModel, paramInt, paramArrayList, paramObject);
+    VideoController.a().k(paramBoolean);
+    if (VideoController.a().j() == VideoController.r)
+    {
+      QLog.i("RenderUtils", 1, "setAEDetectInited, init FaceSDK falied.");
+      lvz.a();
+    }
+  }
+  
+  public static boolean a(PendantItem paramPendantItem1, PendantItem paramPendantItem2)
+  {
+    if ((paramPendantItem1 == null) && (paramPendantItem2 == null)) {}
+    do
+    {
+      return true;
+      if ((paramPendantItem1 == null) || (paramPendantItem2 == null)) {
+        break;
+      }
+    } while ((paramPendantItem1.getId() == null) || (paramPendantItem2.getId() == null) || (paramPendantItem1.getId().equalsIgnoreCase(paramPendantItem2.getId())));
+    return false;
+    return false;
+  }
+  
+  public static boolean a(FilterDesc paramFilterDesc1, FilterDesc paramFilterDesc2)
+  {
+    if ((paramFilterDesc1 == null) && (paramFilterDesc2 == null)) {}
+    do
+    {
+      return true;
+      if ((paramFilterDesc1 == null) || (paramFilterDesc2 == null)) {
+        break;
+      }
+    } while ((paramFilterDesc1.name == null) || (paramFilterDesc2.name == null) || (paramFilterDesc1.name.equalsIgnoreCase(paramFilterDesc2.name)));
+    return false;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lsp
  * JD-Core Version:    0.7.0.1
  */

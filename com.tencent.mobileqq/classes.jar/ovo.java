@@ -1,41 +1,97 @@
-import android.widget.FrameLayout;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.util.Timer;
+import android.content.res.Resources;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.cgi.ReadInJoyCGIDynamicChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.pull2refresh.XRecyclerView;
+import java.util.List;
 
 public class ovo
+  extends ovy
 {
-  private double jdField_a_of_type_Double;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-  private String jdField_a_of_type_JavaLangString;
-  private Timer jdField_a_of_type_JavaUtilTimer;
-  private ovm jdField_a_of_type_Ovm;
-  private boolean jdField_a_of_type_Boolean;
-  private double jdField_b_of_type_Double;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private double jdField_c_of_type_Double;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private double jdField_d_of_type_Double;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean;
-  private double jdField_e_of_type_Double;
-  private int jdField_e_of_type_Int;
-  private boolean jdField_e_of_type_Boolean;
-  private double jdField_f_of_type_Double;
-  private int jdField_f_of_type_Int;
-  private int g;
-  private int h;
+  public ovo(ReadInJoyCGIDynamicChannelFragment paramReadInJoyCGIDynamicChannelFragment) {}
+  
+  public void a(int paramInt, List<DynamicChannelDataModel> paramList)
+  {
+    if (paramInt != ReadInJoyCGIDynamicChannelFragment.a(this.a)) {
+      return;
+    }
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      ReadInJoyCGIDynamicChannelFragment.a(this.a).a(paramList);
+      ReadInJoyCGIDynamicChannelFragment.a(this.a).a(true, true);
+      return;
+    }
+    ReadInJoyCGIDynamicChannelFragment.b(this.a).b();
+  }
+  
+  public void a(int paramInt1, boolean paramBoolean, List<owf> paramList, int paramInt2)
+  {
+    int i = 0;
+    if (paramInt1 != ReadInJoyCGIDynamicChannelFragment.d(this.a)) {
+      return;
+    }
+    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0)) {
+      ReadInJoyCGIDynamicChannelFragment.a(this.a, paramInt1, paramList);
+    }
+    if (paramList != null) {
+      i = paramList.size();
+    }
+    QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "onHeaderRefreshed, channelID = ", Integer.valueOf(paramInt1), ", success = ", Boolean.valueOf(paramBoolean), ", size = ", Integer.valueOf(i), ", insertIndex = ", Integer.valueOf(paramInt2) });
+  }
+  
+  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList)
+  {
+    if (paramInt != ReadInJoyCGIDynamicChannelFragment.b(this.a)) {
+      return;
+    }
+    int i;
+    if (paramList != null)
+    {
+      i = paramList.size();
+      if ((!paramBoolean1) || (i <= 0)) {
+        break label175;
+      }
+    }
+    label175:
+    for (String str = String.format(this.a.getResources().getString(2131718733), new Object[] { Integer.valueOf(i) });; str = this.a.getResources().getString(2131718732))
+    {
+      ReadInJoyCGIDynamicChannelFragment.c(this.a).a(paramBoolean1, str);
+      if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0)) {
+        ReadInJoyCGIDynamicChannelFragment.a(this.a).a(paramList);
+      }
+      QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "onDataRefreshed, channelID = ", Integer.valueOf(paramInt), ", success = ", Boolean.valueOf(paramBoolean1), ", refreshSize = ", Integer.valueOf(i) });
+      ReadInJoyCGIDynamicChannelFragment.d(this.a).a(true, true);
+      return;
+      i = 0;
+      break;
+    }
+  }
+  
+  public void b(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList)
+  {
+    int i = 0;
+    if (paramInt != ReadInJoyCGIDynamicChannelFragment.c(this.a)) {
+      return;
+    }
+    if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0))
+    {
+      ReadInJoyCGIDynamicChannelFragment.a(this.a).b(paramList);
+      ReadInJoyCGIDynamicChannelFragment.e(this.a).a(true, paramBoolean2);
+    }
+    for (;;)
+    {
+      if (paramList != null) {
+        i = paramList.size();
+      }
+      QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "onLoadMoreData, channelID = ", Integer.valueOf(paramInt), ", success = ", Boolean.valueOf(paramBoolean1), ", size = ", Integer.valueOf(i), ", hasMore = ", Boolean.valueOf(paramBoolean2) });
+      return;
+      ReadInJoyCGIDynamicChannelFragment.f(this.a).a(false, true);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ovo
  * JD-Core Version:    0.7.0.1
  */

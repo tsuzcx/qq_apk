@@ -1,34 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.statistics.ReportController;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqcircle.widgets.QCircleExpandableTextView;
 
-public class ucu
-  implements View.OnClickListener
+class ucu
+  implements Animation.AnimationListener
 {
-  public ucu(TroopRequestActivity paramTroopRequestActivity) {}
+  ucu(uct paramuct) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (((FriendsManager)this.a.app.getManager(50)).b(TroopRequestActivity.a(this.a))) {}
-    for (paramView = new ProfileActivity.AllInOne(TroopRequestActivity.a(this.a), 1);; paramView = new ProfileActivity.AllInOne(TroopRequestActivity.a(this.a), 24))
-    {
-      ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, this.a.a.msg.group_code.get() + "", "3", "", "");
-      ProfileActivity.b(this.a, paramView);
-      return;
-    }
+    this.a.a.clearAnimation();
+    this.a.a.c = false;
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.a.c = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ucu
  * JD-Core Version:    0.7.0.1
  */

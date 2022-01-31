@@ -1,37 +1,46 @@
-import com.tencent.mobileqq.activity.LoginVerifyCodeActivity2;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.PublicAccountChatActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PublicAccountMenuEntity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.qphone.base.util.QLog;
 
 public class dbe
   implements Runnable
 {
-  public dbe(LoginVerifyCodeActivity2 paramLoginVerifyCodeActivity2) {}
+  public dbe(PublicAccountChatActivity paramPublicAccountChatActivity, SharedPreferences paramSharedPreferences, String paramString) {}
   
   public void run()
   {
     try
     {
-      if ((LoginVerifyCodeActivity2.a(this.a) == null) && (!this.a.isFinishing()))
-      {
-        LoginVerifyCodeActivity2.a(this.a, new QQProgressDialog(this.a.a(), this.a.d()));
-        LoginVerifyCodeActivity2.a(this.a).b(2131562645);
+      EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountChatActivity.b.a().createEntityManager();
+      PublicAccountMenuEntity localPublicAccountMenuEntity = (PublicAccountMenuEntity)localEntityManager.a(PublicAccountMenuEntity.class, this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountChatActivity.a.jdField_a_of_type_JavaLangString);
+      if (localPublicAccountMenuEntity != null) {
+        localEntityManager.b(localPublicAccountMenuEntity);
       }
-      if ((LoginVerifyCodeActivity2.a(this.a) != null) && (!LoginVerifyCodeActivity2.a(this.a).isShowing())) {
-        LoginVerifyCodeActivity2.a(this.a).show();
+      if (localEntityManager != null) {
+        localEntityManager.a();
       }
-      return;
     }
-    catch (Throwable localThrowable)
+    catch (Exception localException)
     {
       for (;;)
       {
-        localThrowable.printStackTrace();
+        if (QLog.isDevelopLevel()) {
+          QLog.d(PublicAccountChatActivity.e(), 4, localException.getMessage());
+        }
       }
     }
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dbe
  * JD-Core Version:    0.7.0.1
  */

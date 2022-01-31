@@ -1,7 +1,9 @@
 package com.tencent.ttpic.util;
 
 import android.graphics.PointF;
+import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.ttpic.model.FaceMoveItem;
+import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import java.util.List;
 
 public class FaceMoveUtil
@@ -12,7 +14,7 @@ public class FaceMoveUtil
   
   public static void adjustCoords(PointF[] paramArrayOfPointF1, PointF[] paramArrayOfPointF2, List<FaceMoveItem> paramList)
   {
-    if (VideoUtil.isEmpty(paramList)) {}
+    if (CollectionUtils.isEmpty(paramList)) {}
     for (;;)
     {
       return;
@@ -23,7 +25,7 @@ public class FaceMoveUtil
       float f2 = (float)Math.sqrt(localPointF1.x * localPointF1.x + localPointF1.y * localPointF1.y);
       float f3 = (float)Math.sqrt(localPointF2.x * localPointF2.x + localPointF2.y * localPointF2.y);
       localPointF1 = new PointF(localPointF1.x * f1 / f2, localPointF1.y * f1 / f2);
-      localPointF2 = new PointF(localPointF2.x * f1 / f3, localPointF2.y * f1 / f3);
+      localPointF2 = new PointF(localPointF2.x * f1 / f3, f1 * localPointF2.y / f3);
       int i = 0;
       while (i < paramList.size())
       {
@@ -32,8 +34,24 @@ public class FaceMoveUtil
         PointF localPointF5 = paramArrayOfPointF1[((FaceMoveItem)paramList.get(i)).pos2];
         PointF localPointF3 = paramArrayOfPointF1[((FaceMoveItem)paramList.get(i)).position];
         localPointF4 = new PointF(localPointF4.x * localFaceMoveItem.ratio1 + localPointF5.x * (1.0F - localFaceMoveItem.ratio1), localPointF4.y * localFaceMoveItem.ratio1 + localPointF5.y * (1.0F - localFaceMoveItem.ratio1));
-        localPointF3 = new PointF(localPointF4.x * localFaceMoveItem.ratio2 + localPointF3.x * (1.0F - localFaceMoveItem.ratio2), localPointF4.y * localFaceMoveItem.ratio2 + localPointF3.y * (1.0F - localFaceMoveItem.ratio2));
-        paramArrayOfPointF2[localFaceMoveItem.position] = new PointF(localPointF3.x + localPointF1.x * localFaceMoveItem.dx + localPointF2.x * localFaceMoveItem.dy, localPointF3.y + localPointF1.y * localFaceMoveItem.dx + localPointF2.y * localFaceMoveItem.dy);
+        f1 = localPointF4.x;
+        f2 = localFaceMoveItem.ratio2;
+        f3 = localPointF3.x;
+        float f4 = localFaceMoveItem.ratio2;
+        float f5 = localPointF4.y;
+        float f6 = localFaceMoveItem.ratio2;
+        localPointF3 = new PointF(f1 * f2 + f3 * (1.0F - f4), localPointF3.y * (1.0F - localFaceMoveItem.ratio2) + f5 * f6);
+        int j = localFaceMoveItem.position;
+        f1 = localPointF3.x;
+        f2 = localPointF1.x;
+        f3 = localFaceMoveItem.dx;
+        f4 = localPointF2.x;
+        f5 = localFaceMoveItem.dy;
+        f6 = localPointF3.y;
+        float f7 = localPointF1.y;
+        float f8 = localFaceMoveItem.dx;
+        float f9 = localPointF2.y;
+        paramArrayOfPointF2[j] = new PointF(f1 + f2 * f3 + f4 * f5, localFaceMoveItem.dy * f9 + (f6 + f7 * f8));
         i += 1;
       }
     }
@@ -89,8 +107,11 @@ public class FaceMoveUtil
     localPointF1 = (PointF)paramList.get(89);
     f1 = ((PointF)paramList.get(83)).y;
     localPointF1.y = (((PointF)paramList.get(83)).y - ((PointF)paramList.get(59)).y + f1);
-    f1 = (float)Math.atan((((PointF)paramList.get(9)).x - ((PointF)paramList.get(84)).x) / (-((PointF)paramList.get(9)).y + ((PointF)paramList.get(84)).y));
-    float f2 = AlgoUtils.getDistance((PointF)paramList.get(0), (PointF)paramList.get(1));
+    f1 = ((PointF)paramList.get(9)).x;
+    float f2 = ((PointF)paramList.get(84)).x;
+    float f3 = -((PointF)paramList.get(9)).y;
+    f1 = (float)Math.atan((f1 - f2) / (((PointF)paramList.get(84)).y + f3));
+    f2 = AlgoUtils.getDistance((PointF)paramList.get(0), (PointF)paramList.get(1));
     ((PointF)paramList.get(90)).x = ((float)(((PointF)paramList.get(1)).x + 2.0F * f2 * Math.sin(f1)));
     ((PointF)paramList.get(90)).y = ((float)(((PointF)paramList.get(1)).y - 2.0F * f2 * Math.cos(f1)));
     f2 = AlgoUtils.getDistance((PointF)paramList.get(17), (PointF)paramList.get(18));
@@ -98,31 +119,42 @@ public class FaceMoveUtil
     ((PointF)paramList.get(91)).y = ((float)(((PointF)paramList.get(17)).y - 2.0F * f2 * Math.cos(f1)));
     f2 = ((PointF)paramList.get(41)).x;
     f2 = (((PointF)paramList.get(51)).x + f2) / 2.0F;
-    float f3 = ((PointF)paramList.get(41)).y;
+    f3 = ((PointF)paramList.get(41)).y;
     localPointF1 = new PointF(f2, (((PointF)paramList.get(51)).y + f3) / 2.0F);
     f2 = AlgoUtils.getDistance((PointF)paramList.get(59), localPointF1);
     localPointF1 = (PointF)paramList.get(91);
     PointF localPointF2 = (PointF)paramList.get(90);
-    PointF localPointF3 = new PointF((float)(((PointF)paramList.get(59)).x + 2.0F * f2 * Math.sin(f1)), (float)(((PointF)paramList.get(59)).y - 2.0F * f2 * Math.cos(f1)));
+    f3 = (float)(((PointF)paramList.get(59)).x + 2.0F * f2 * Math.sin(f1));
+    double d1 = ((PointF)paramList.get(59)).y;
+    double d2 = 2.0F * f2;
+    PointF localPointF3 = new PointF(f3, (float)(d1 - Math.cos(f1) * d2));
     int i = 2;
     while (i >= 1)
     {
-      f1 = i * (30.0F / 180.0F * 3.14F);
+      f1 = i;
+      f1 = 30.0F / 180.0F * 3.14F * f1;
       ((PointF)paramList.get(94 - i)).x = ((float)(localPointF3.x - (localPointF3.x - localPointF1.x) * Math.cos(f1)));
-      ((PointF)paramList.get(94 - i)).y = ((float)(localPointF1.y - (localPointF1.y - localPointF3.y) * Math.sin(f1)));
+      localPointF4 = (PointF)paramList.get(94 - i);
+      d1 = localPointF1.y;
+      d2 = localPointF1.y - localPointF3.y;
+      localPointF4.y = ((float)(d1 - Math.sin(f1) * d2));
       i -= 1;
     }
     i = 3;
     while (i >= 1)
     {
-      f1 = i * (30.0F / 180.0F * 3.14F);
+      f1 = i;
+      f1 = 30.0F / 180.0F * 3.14F * f1;
       ((PointF)paramList.get(97 - i)).x = ((float)(localPointF3.x - (localPointF3.x - localPointF2.x) * Math.cos(f1)));
       ((PointF)paramList.get(97 - i)).y = ((float)(localPointF2.y - (localPointF2.y - localPointF3.y) * Math.sin(f1)));
       i -= 1;
     }
     localPointF1 = (PointF)paramList.get(64);
     localPointF2 = new PointF(((PointF)paramList.get(54)).x - ((PointF)paramList.get(44)).x, ((PointF)paramList.get(54)).y - ((PointF)paramList.get(44)).y);
-    localPointF2 = new PointF(localPointF2.x + localPointF2.x, localPointF2.y + localPointF2.y);
+    f1 = localPointF2.x;
+    f2 = localPointF2.x;
+    f3 = localPointF2.y;
+    localPointF2 = new PointF(f1 + f2, localPointF2.y + f3);
     localPointF3 = new PointF(-localPointF2.y, localPointF2.x);
     ((PointF)paramList.get(99)).x = (localPointF1.x - localPointF2.x - localPointF3.x);
     ((PointF)paramList.get(99)).y = (localPointF1.y - localPointF2.y - localPointF3.y);
@@ -137,7 +169,9 @@ public class FaceMoveUtil
     ((PointF)paramList.get(104)).x = (localPointF1.x + localPointF2.x);
     ((PointF)paramList.get(104)).y = (localPointF1.y + localPointF2.y);
     ((PointF)paramList.get(105)).x = (localPointF1.x + localPointF2.x - localPointF3.x);
-    ((PointF)paramList.get(105)).y = (localPointF1.y + localPointF2.y - localPointF3.y);
+    PointF localPointF4 = (PointF)paramList.get(105);
+    f1 = localPointF1.y;
+    localPointF4.y = (localPointF2.y + f1 - localPointF3.y);
     ((PointF)paramList.get(106)).x = (localPointF1.x - localPointF3.x);
     ((PointF)paramList.get(106)).y = (localPointF1.y - localPointF3.y);
   }
@@ -164,15 +198,18 @@ public class FaceMoveUtil
     float f1 = (float)Math.atan((paramArrayOfPointF[9].x - paramArrayOfPointF[84].x) / (-paramArrayOfPointF[9].y + paramArrayOfPointF[84].y));
     float f2 = AlgoUtils.getDistance(paramArrayOfPointF[0], paramArrayOfPointF[1]);
     paramArrayOfPointF[90].x = ((float)(paramArrayOfPointF[1].x + 2.0F * f2 * Math.sin(f1)));
-    paramArrayOfPointF[90].y = ((float)(paramArrayOfPointF[1].y - 2.0F * f2 * Math.cos(f1)));
+    paramArrayOfPointF[90].y = ((float)(paramArrayOfPointF[1].y - f2 * 2.0F * Math.cos(f1)));
     f2 = AlgoUtils.getDistance(paramArrayOfPointF[17], paramArrayOfPointF[18]);
     paramArrayOfPointF[91].x = ((float)(paramArrayOfPointF[17].x + 2.0F * f2 * Math.sin(f1)));
-    paramArrayOfPointF[91].y = ((float)(paramArrayOfPointF[17].y - 2.0F * f2 * Math.cos(f1)));
+    paramArrayOfPointF[91].y = ((float)(paramArrayOfPointF[17].y - f2 * 2.0F * Math.cos(f1)));
     PointF localPointF1 = new PointF((paramArrayOfPointF[41].x + paramArrayOfPointF[51].x) / 2.0F, (paramArrayOfPointF[41].y + paramArrayOfPointF[51].y) / 2.0F);
     f2 = AlgoUtils.getDistance(paramArrayOfPointF[59], localPointF1);
     localPointF1 = paramArrayOfPointF[91];
     PointF localPointF2 = paramArrayOfPointF[90];
-    PointF localPointF3 = new PointF((float)(paramArrayOfPointF[59].x + 2.0F * f2 * Math.sin(f1)), (float)(paramArrayOfPointF[59].y - 2.0F * f2 * Math.cos(f1)));
+    float f3 = (float)(paramArrayOfPointF[59].x + 2.0F * f2 * Math.sin(f1));
+    double d1 = paramArrayOfPointF[59].y;
+    double d2 = f2 * 2.0F;
+    PointF localPointF3 = new PointF(f3, (float)(d1 - Math.cos(f1) * d2));
     int i = 2;
     while (i >= 1)
     {
@@ -191,7 +228,10 @@ public class FaceMoveUtil
     }
     localPointF1 = paramArrayOfPointF[64];
     localPointF2 = new PointF(paramArrayOfPointF[54].x - paramArrayOfPointF[44].x, paramArrayOfPointF[54].y - paramArrayOfPointF[44].y);
-    localPointF2 = new PointF(localPointF2.x + localPointF2.x, localPointF2.y + localPointF2.y);
+    f1 = localPointF2.x;
+    f2 = localPointF2.x;
+    f3 = localPointF2.y;
+    localPointF2 = new PointF(f1 + f2, localPointF2.y + f3);
     localPointF3 = new PointF(-localPointF2.y, localPointF2.x);
     paramArrayOfPointF[99].x = (localPointF1.x - localPointF2.x - localPointF3.x);
     paramArrayOfPointF[99].y = (localPointF1.y - localPointF2.y - localPointF3.y);
@@ -206,7 +246,9 @@ public class FaceMoveUtil
     paramArrayOfPointF[104].x = (localPointF1.x + localPointF2.x);
     paramArrayOfPointF[104].y = (localPointF1.y + localPointF2.y);
     paramArrayOfPointF[105].x = (localPointF1.x + localPointF2.x - localPointF3.x);
-    paramArrayOfPointF[105].y = (localPointF1.y + localPointF2.y - localPointF3.y);
+    PointF localPointF4 = paramArrayOfPointF[105];
+    f1 = localPointF1.y;
+    localPointF4.y = (localPointF2.y + f1 - localPointF3.y);
     paramArrayOfPointF[106].x = (localPointF1.x - localPointF3.x);
     paramArrayOfPointF[106].y = (localPointF1.y - localPointF3.y);
   }
@@ -219,15 +261,12 @@ public class FaceMoveUtil
       return paramArrayOfInt;
     }
     PointF[] arrayOfPointF = new PointF[3];
-    int[] arrayOfInt;
-    int j;
-    int i;
-    if (paramArrayOfInt == null)
-    {
+    int[] arrayOfInt = paramArrayOfInt;
+    if (paramArrayOfInt == null) {
       arrayOfInt = FaceMeshTriangles;
-      j = 0;
-      i = 0;
     }
+    int i = 0;
+    int j = 0;
     for (;;)
     {
       paramArrayOfInt = paramArrayOfFloat;
@@ -238,17 +277,11 @@ public class FaceMoveUtil
       arrayOfPointF[1] = paramArrayOfPointF[arrayOfInt[(i + 1)]];
       arrayOfPointF[2] = paramArrayOfPointF[arrayOfInt[(i + 2)]];
       int k = 0;
-      for (;;)
+      while (k < 3)
       {
-        if (k < 3)
-        {
-          paramArrayOfFloat[(k * 2 + j)] = (arrayOfPointF[k].x / paramInt1 * 2.0F - 1.0F);
-          paramArrayOfFloat[(k * 2 + j + 1)] = (arrayOfPointF[k].y / paramInt2 * 2.0F - 1.0F);
-          k += 1;
-          continue;
-          arrayOfInt = paramArrayOfInt;
-          break;
-        }
+        paramArrayOfFloat[(k * 2 + j)] = (arrayOfPointF[k].x / paramInt1 * 2.0F - 1.0F);
+        paramArrayOfFloat[(k * 2 + j + 1)] = (arrayOfPointF[k].y / paramInt2 * 2.0F - 1.0F);
+        k += 1;
       }
       j += 6;
       i += 3;
@@ -263,15 +296,12 @@ public class FaceMoveUtil
       return paramArrayOfInt;
     }
     PointF[] arrayOfPointF = new PointF[3];
-    int[] arrayOfInt;
-    int j;
-    int i;
-    if (paramArrayOfInt == null)
-    {
+    int[] arrayOfInt = paramArrayOfInt;
+    if (paramArrayOfInt == null) {
       arrayOfInt = FaceMeshTriangles;
-      j = 0;
-      i = 0;
     }
+    int i = 0;
+    int j = 0;
     for (;;)
     {
       paramArrayOfInt = paramArrayOfFloat;
@@ -282,17 +312,11 @@ public class FaceMoveUtil
       arrayOfPointF[1] = paramArrayOfPointF[arrayOfInt[(i + 1)]];
       arrayOfPointF[2] = paramArrayOfPointF[arrayOfInt[(i + 2)]];
       int k = 0;
-      for (;;)
+      while (k < 3)
       {
-        if (k < 3)
-        {
-          paramArrayOfFloat[(k * 2 + j)] = (arrayOfPointF[k].x / paramInt1);
-          paramArrayOfFloat[(k * 2 + j + 1)] = (arrayOfPointF[k].y / paramInt2);
-          k += 1;
-          continue;
-          arrayOfInt = paramArrayOfInt;
-          break;
-        }
+        paramArrayOfFloat[(k * 2 + j)] = (arrayOfPointF[k].x / paramInt1);
+        paramArrayOfFloat[(k * 2 + j + 1)] = (arrayOfPointF[k].y / paramInt2);
+        k += 1;
       }
       j += 6;
       i += 3;
@@ -301,7 +325,7 @@ public class FaceMoveUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.util.FaceMoveUtil
  * JD-Core Version:    0.7.0.1
  */

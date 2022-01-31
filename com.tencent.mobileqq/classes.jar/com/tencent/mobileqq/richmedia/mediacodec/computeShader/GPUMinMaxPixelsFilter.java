@@ -1,0 +1,76 @@
+package com.tencent.mobileqq.richmedia.mediacodec.computeShader;
+
+import android.annotation.SuppressLint;
+import android.opengl.GLES20;
+import android.opengl.GLES30;
+import android.opengl.GLES31;
+
+@SuppressLint({"NewApi"})
+public class GPUMinMaxPixelsFilter
+  extends GPUComputeShaderFilter
+{
+  private static final String TAG = "GPUMinMaxPixelsFilter";
+  public static final String VIDEO_IMG_FILTER_COMPUTE_SHADER = "    #version 310 es                                                                             \n                                                                                                \n    layout (local_size_x = 8, local_size_y = 8, local_size_z = 1) in;                           \n    layout (rgba8, binding = 0) readonly  uniform  highp image2D inputImage;                    \n    layout (std430,binding = 1) buffer TransmissionData{                                              \n        float transmission[];                                                                        \n    };                                                                                          \n    uniform int r;                                                                              \n    uniform int imageHeight;                                                                    \n    uniform int imageWidth;                                                                     \n    uniform float avgLight;                                                                              \n                                                                                                \n    void main(){                                                                                \n       int outputRowIndex = int(gl_GlobalInvocationID.y);                                        \n       int outputColumnIndex = int(gl_GlobalInvocationID.x);                                  \n       if(outputRowIndex >= imageHeight || outputColumnIndex >= imageWidth){                   \n            return;                                                                           \n       }                                                                                            \n       vec4 inputValue = imageLoad(inputImage, ivec2(gl_GlobalInvocationID.xy));                   \n       barrier();                                                                                          \n       int startX =  outputColumnIndex - r;                                                         \n       int startY =  outputRowIndex - r;                                                            \n       int endX =  outputColumnIndex + r;                                                              \n       int endY =  outputRowIndex + r;                                                          \n       float maxChanel = max(inputValue.r, max(inputValue.b, inputValue.g));                       \n       float minChanel = min(inputValue.r, min(inputValue.b, inputValue.g));                           \n       for(int i= startX; i<=endX; i++){                                                            \n           for(int j= startY; j<=endY; j++){                                                           \n               if(i >=0 && i<imageWidth && j >= 0 && j<imageHeight){                 \n                   vec4 arroundValue = imageLoad(inputImage, ivec2(i,j));                                  \n                   maxChanel = max(maxChanel,max(arroundValue.r, max(arroundValue.b, arroundValue.g))); \n                   minChanel = min(minChanel,min(arroundValue.r, min(arroundValue.b, arroundValue.g))); \n               }                                                                                        \n           }                                                                                            \n       }                                                                                                \n       int index = outputRowIndex*imageWidth+outputColumnIndex;                  \n                                                                                                        \n       float maxImg =  maxChanel * 255.0;                                                           \n       float darkImg  = minChanel * 255.0;                                                           \n       if(darkImg < 130.0) {                                                                               \n             transmission[index] = 1.0 - (maxImg * 0.8 / 256.0)* 0.9 * darkImg / avgLight;           \n             if(transmission[index] > 1.0){                                                             \n                  transmission[index] = 1.0;                                                               \n             }                                                                                               \n       }                                                                                             \n       else if (darkImg >= 130.0 && darkImg<200.0) {                                                       \n            transmission[index] = 1.0 - (1.8 - 0.01*darkImg)* 0.9 * darkImg/ avgLight;                   \n            if(transmission[index] > 1.0){                                                                   \n                 transmission[index] = 1.0f;                                                                 \n            }                                                                                                \n       }                                                                                                   \n       else {                                                                                            \n            transmission[index] = 1.0f;                                                                         \n       }                                                                                                     \n   }                                                        ";
+  
+  public GPUMinMaxPixelsFilter()
+  {
+    super("    #version 310 es                                                                             \n                                                                                                \n    layout (local_size_x = 8, local_size_y = 8, local_size_z = 1) in;                           \n    layout (rgba8, binding = 0) readonly  uniform  highp image2D inputImage;                    \n    layout (std430,binding = 1) buffer TransmissionData{                                              \n        float transmission[];                                                                        \n    };                                                                                          \n    uniform int r;                                                                              \n    uniform int imageHeight;                                                                    \n    uniform int imageWidth;                                                                     \n    uniform float avgLight;                                                                              \n                                                                                                \n    void main(){                                                                                \n       int outputRowIndex = int(gl_GlobalInvocationID.y);                                        \n       int outputColumnIndex = int(gl_GlobalInvocationID.x);                                  \n       if(outputRowIndex >= imageHeight || outputColumnIndex >= imageWidth){                   \n            return;                                                                           \n       }                                                                                            \n       vec4 inputValue = imageLoad(inputImage, ivec2(gl_GlobalInvocationID.xy));                   \n       barrier();                                                                                          \n       int startX =  outputColumnIndex - r;                                                         \n       int startY =  outputRowIndex - r;                                                            \n       int endX =  outputColumnIndex + r;                                                              \n       int endY =  outputRowIndex + r;                                                          \n       float maxChanel = max(inputValue.r, max(inputValue.b, inputValue.g));                       \n       float minChanel = min(inputValue.r, min(inputValue.b, inputValue.g));                           \n       for(int i= startX; i<=endX; i++){                                                            \n           for(int j= startY; j<=endY; j++){                                                           \n               if(i >=0 && i<imageWidth && j >= 0 && j<imageHeight){                 \n                   vec4 arroundValue = imageLoad(inputImage, ivec2(i,j));                                  \n                   maxChanel = max(maxChanel,max(arroundValue.r, max(arroundValue.b, arroundValue.g))); \n                   minChanel = min(minChanel,min(arroundValue.r, min(arroundValue.b, arroundValue.g))); \n               }                                                                                        \n           }                                                                                            \n       }                                                                                                \n       int index = outputRowIndex*imageWidth+outputColumnIndex;                  \n                                                                                                        \n       float maxImg =  maxChanel * 255.0;                                                           \n       float darkImg  = minChanel * 255.0;                                                           \n       if(darkImg < 130.0) {                                                                               \n             transmission[index] = 1.0 - (maxImg * 0.8 / 256.0)* 0.9 * darkImg / avgLight;           \n             if(transmission[index] > 1.0){                                                             \n                  transmission[index] = 1.0;                                                               \n             }                                                                                               \n       }                                                                                             \n       else if (darkImg >= 130.0 && darkImg<200.0) {                                                       \n            transmission[index] = 1.0 - (1.8 - 0.01*darkImg)* 0.9 * darkImg/ avgLight;                   \n            if(transmission[index] > 1.0){                                                                   \n                 transmission[index] = 1.0f;                                                                 \n            }                                                                                                \n       }                                                                                                   \n       else {                                                                                            \n            transmission[index] = 1.0f;                                                                         \n       }                                                                                                     \n   }                                                        ", 3553);
+    init();
+  }
+  
+  public void glDisPatchGPUMinMaxPixelsFilterCompute(int paramInt1, int paramInt2, int paramInt3, int[] paramArrayOfInt, float paramFloat, int paramInt4)
+  {
+    int i = useComputeProgram();
+    GLES31.glBindImageTexture(0, paramInt1, 0, true, 0, 35000, 32856);
+    checkGlError("fill inputImage texture");
+    GLES20.glBindBuffer(37074, paramArrayOfInt[1]);
+    GLES20.glBufferData(37074, paramInt2 * paramInt3 * 4, null, 35049);
+    GLES30.glBindBufferBase(37074, 1, paramArrayOfInt[1]);
+    GLES20.glBindBuffer(37074, 0);
+    checkGlError("fill TransmissionData buffer");
+    paramInt1 = GLES20.glGetUniformLocation(i, "r");
+    checkLocation(paramInt1, "r");
+    GLES20.glUniform1i(paramInt1, (paramInt4 - 1) / 2);
+    checkGlError("fill uniform  r");
+    paramInt1 = GLES20.glGetUniformLocation(i, "imageHeight");
+    checkLocation(paramInt1, "imageHeight");
+    GLES20.glUniform1i(paramInt1, paramInt3);
+    checkGlError("fill uniform  imageHeight");
+    paramInt1 = GLES20.glGetUniformLocation(i, "imageWidth");
+    checkLocation(paramInt1, "imageWidth");
+    GLES20.glUniform1i(paramInt1, paramInt2);
+    checkGlError("fill uniform  imageWidth");
+    paramInt4 = GLES20.glGetUniformLocation(i, "avgLight");
+    checkLocation(paramInt1, "avgLight");
+    GLES20.glUniform1f(paramInt4, paramFloat);
+    checkGlError("fill uniform  avgLight");
+    paramInt1 = getAlignment16(paramInt2);
+    paramInt2 = getAlignment16(paramInt3);
+    if (paramInt1 % 8 == 0)
+    {
+      paramInt1 /= 8;
+      if (paramInt2 % 8 != 0) {
+        break label250;
+      }
+      paramInt2 /= 8;
+    }
+    for (;;)
+    {
+      GLES31.glDispatchCompute(paramInt1, paramInt2, 1);
+      checkGlError("glDispatchCompute");
+      GLES31.glMemoryBarrier(32);
+      checkGlError("glMemoryBarrier");
+      return;
+      paramInt1 = paramInt1 / 8 + 1;
+      break;
+      label250:
+      paramInt2 = paramInt2 / 8 + 1;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     com.tencent.mobileqq.richmedia.mediacodec.computeShader.GPUMinMaxPixelsFilter
+ * JD-Core Version:    0.7.0.1
+ */

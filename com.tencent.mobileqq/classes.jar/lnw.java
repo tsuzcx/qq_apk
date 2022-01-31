@@ -1,30 +1,24 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySubscribeFragement;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.av.core.VcControllerImpl;
 
 public class lnw
-  implements ActionSheet.OnButtonClickListener
 {
-  public lnw(ReadInJoySubscribeFragement paramReadInJoySubscribeFragement, String paramString, ActionSheet paramActionSheet) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
   
-  public void OnClick(View paramView, int paramInt)
+  public lnw(VcControllerImpl paramVcControllerImpl) {}
+  
+  public String toString()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySubscribeFragement.getActivity());
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" uin : " + this.jdField_a_of_type_Long + " operation : " + this.jdField_a_of_type_Int + " opvalue : " + this.b + " nickname : " + this.jdField_a_of_type_JavaLangString);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lnw
  * JD-Core Version:    0.7.0.1
  */

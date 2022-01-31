@@ -1,44 +1,22 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
 
 public class oaq
-  implements INetInfoHandler
+  implements TopGestureLayout.OnGestureListener
 {
-  public oaq(FeedSegment paramFeedSegment) {}
+  public oaq(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
   
-  public void onNetMobile2None()
+  public void flingLToR()
   {
-    FeedSegment.b(this.a, FeedSegment.a(3));
+    ReadInJoyVideoSubChannelActivity.a(this.a, true);
+    this.a.finish();
   }
   
-  public void onNetMobile2Wifi(String paramString)
-  {
-    FeedSegment.b(this.a, FeedSegment.a(1));
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    FeedSegment.b(this.a, FeedSegment.a(2));
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    FeedSegment.b(this.a, FeedSegment.a(1));
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    FeedSegment.b(this.a, FeedSegment.a(2));
-  }
-  
-  public void onNetWifi2None()
-  {
-    FeedSegment.b(this.a, FeedSegment.a(3));
-  }
+  public void flingRToL() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oaq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,31 @@
-import android.view.animation.AlphaAnimation;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.FilePreviewAnim;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class acme
-  implements Runnable
+  extends Handler
 {
-  public acme(FilePreviewActivity paramFilePreviewActivity) {}
+  public acme(ChatHistory paramChatHistory) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.b == null) {
-      this.a.b = new FilePreviewAnimQueue(this.a.a);
+    if (paramMessage.what == 1)
+    {
+      if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
+        this.a.a.dismiss();
+      }
+      this.a.a = new bety(this.a, this.a.getTitleBarHeight());
+      this.a.a.setCancelable(false);
+      this.a.a.c(2131691584);
+      if (!this.a.isFinishing()) {
+        this.a.a.show();
+      }
     }
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setFillAfter(true);
-    FilePreviewAnimQueue.FilePreviewAnim localFilePreviewAnim = new FilePreviewAnimQueue.FilePreviewAnim();
-    localFilePreviewAnim.jdField_a_of_type_JavaLangObject = localAlphaAnimation;
-    localFilePreviewAnim.jdField_a_of_type_Boolean = false;
-    localFilePreviewAnim.jdField_a_of_type_Int = FilePreviewAnimQueue.jdField_a_of_type_Int;
-    localFilePreviewAnim.b = 1500;
-    this.a.b.a(localFilePreviewAnim);
-    this.a.b.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acme
  * JD-Core Version:    0.7.0.1
  */

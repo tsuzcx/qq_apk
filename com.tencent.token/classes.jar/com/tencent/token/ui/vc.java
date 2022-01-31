@@ -1,17 +1,30 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.token.af;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class vc
-  implements DialogInterface.OnClickListener
+class vc
+  implements View.OnClickListener
 {
-  vc(ux paramux) {}
+  vc(RealNameFindActivity paramRealNameFindActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    af.a().g(RealNameFindActivity.access$300(this.a.a), 1, RealNameFindActivity.access$400(this.a.a));
+    paramView = new Intent(this.a, FaceRecognitionCameraActivity.class);
+    paramView.putExtra("flag", 3);
+    paramView.putExtra("istry", 5);
+    paramView.putExtra("ish5zzb", RealNameFindActivity.access$1900(this.a));
+    paramView.putExtra("real_uin", RealNameFindActivity.access$900(this.a));
+    if (RealNameFindActivity.access$700(this.a)) {
+      paramView.putExtra("scene", 13);
+    }
+    for (;;)
+    {
+      this.a.startActivityForResult(paramView, 1);
+      return;
+      paramView.putExtra("scene", 3);
+    }
   }
 }
 

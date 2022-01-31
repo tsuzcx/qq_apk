@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:background="@drawable/bg_texture_theme_version2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/jo9" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_alignParentTop="true" layout="@layout/is" />
+    <LinearLayout android:orientation="vertical" android:id="@id/imj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/jo9">
+        <RelativeLayout android:id="@id/jsp" android:background="@drawable/cin" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/jsq" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/e36" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/t9n" />
+            <TextView android:textSize="14.0dip" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/jsr" android:paddingLeft="10.0dip" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/t9x" android:maxLines="2" android:includeFontPadding="false" android:layout_toLeftOf="@id/jsq" android:layout_alignParentLeft="true" style="@style/my" />
+        </RelativeLayout>
+        <TextView android:textSize="13.0dip" android:textColor="@color/skin_gray2_theme_version2" android:gravity="center|left" android:id="@id/im1" android:background="@drawable/skin_group_list_sub_entry" android:paddingLeft="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="40.0dip" android:singleLine="true" android:layout_above="@id/imi" />
+        <com.tencent.mobileqq.activity.SelectedAndSearchBar android:id="@id/imi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip" />
+    </LinearLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/ac1" android:layout_below="@id/imj">
+        <LinearLayout android:orientation="vertical" android:id="@id/ebk" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.common.app.InnerFrameManager android:id="@id/kwa" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <ViewStub android:id="@id/coq" android:layout="@layout/byb" android:inflatedId="@id/cop" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <ViewStub android:id="@id/b8g" android:layout="@layout/by5" android:inflatedId="@id/b8f" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <ViewStub android:id="@id/jzp" android:layout="@layout/byj" android:inflatedId="@id/jzm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <ViewStub android:id="@id/bm8" android:layout="@layout/byi" android:inflatedId="@id/bm7" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <ViewStub android:id="@id/i17" android:layout="@layout/byf" android:inflatedId="@id/i16" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <ViewStub android:id="@id/cnz" android:layout="@layout/bya" android:inflatedId="@id/cny" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <ViewStub android:id="@id/k07" android:layout="@layout/bym" android:inflatedId="@id/k05" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <ViewStub android:id="@id/bm_" android:layout="@layout/by9" android:inflatedId="@id/bm9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <ViewStub android:id="@id/cno" android:layout="@layout/by_" android:inflatedId="@id/bm9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <ViewStub android:id="@id/jwn" android:layout="@layout/c0y" android:inflatedId="@id/jwm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            </com.tencent.common.app.InnerFrameManager>
+        </LinearLayout>
+    </FrameLayout>
+    <FrameLayout android:id="@id/result_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/ac1" android:layout_below="@id/imj" />
+    <FrameLayout android:id="@id/ac1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <FrameLayout android:id="@id/bbu" android:background="@drawable/skin_group_list_item_normal_theme_version2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:id="@id/bbt" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="10.0dip" android:text="@string/t9f" style="@style/b9" />
+        </FrameLayout>
+        <FrameLayout android:id="@id/cc8" android:background="@drawable/skin_group_list_item_normal_theme_version2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="60.0dip">
+            <Button android:layout_gravity="center" android:id="@id/aii" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="8.0dip" style="@style/b9" />
+        </FrameLayout>
+    </FrameLayout>
+</RelativeLayout>

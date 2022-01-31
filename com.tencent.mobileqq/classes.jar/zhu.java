@@ -1,16 +1,70 @@
-import com.tencent.mobileqq.app.NearbyGrayTipsManager;
-import com.tencent.mobileqq.app.NearbyGrayTipsManager.GreetWording;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.HashMap;
 
-public class zhu
-  implements Runnable
+public abstract class zhu
 {
-  public zhu(NearbyGrayTipsManager.GreetWording paramGreetWording1, NearbyGrayTipsManager.GreetWording paramGreetWording2) {}
+  public HashMap<String, Integer> a = new HashMap();
   
-  public void run()
+  public static long a(long paramLong)
   {
-    String str = NearbyGrayTipsManager.GreetWording.getPath(this.a.id);
-    NearbyGrayTipsManager.a(this.a, str);
+    Object localObject = new ByteArrayOutputStream(8);
+    DataOutputStream localDataOutputStream = new DataOutputStream((OutputStream)localObject);
+    try
+    {
+      localDataOutputStream.writeLong(paramLong);
+      localObject = ((ByteArrayOutputStream)localObject).toByteArray();
+      localObject[0] = 0;
+      localObject[1] = 0;
+      paramLong = new DataInputStream(new ByteArrayInputStream((byte[])localObject)).readLong();
+      return paramLong;
+    }
+    catch (IOException localIOException) {}
+    return 0L;
   }
+  
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    return null;
+  }
+  
+  public final <T> T a(byte[] paramArrayOfByte, String paramString, T paramT)
+  {
+    UniPacket localUniPacket = new UniPacket(true);
+    try
+    {
+      localUniPacket.setEncodeName("utf-8");
+      localUniPacket.decode(paramArrayOfByte);
+      return localUniPacket.getByClass(paramString, paramT);
+    }
+    catch (Exception paramArrayOfByte) {}
+    return null;
+  }
+  
+  public void a() {}
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg) {}
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public abstract boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket);
+  
+  public byte[] a(ToServiceMsg paramToServiceMsg)
+  {
+    return null;
+  }
+  
+  public abstract String[] a();
 }
 
 

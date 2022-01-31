@@ -1,13 +1,19 @@
-import com.tencent.biz.game.SensorAPIJavaScript;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.widgets.ShareResultDialog;
 
-class bpn
-  implements Runnable
+public class bpn
+  implements View.OnClickListener
 {
-  bpn(bpm parambpm, String paramString1, String paramString2) {}
+  public bpn(ShareResultDialog paramShareResultDialog, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bpm.a.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.b });
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog, -2);
+    }
+    this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.dismiss();
   }
 }
 

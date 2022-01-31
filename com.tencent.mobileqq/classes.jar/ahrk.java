@@ -1,72 +1,35 @@
-import com.tencent.mobileqq.search.ISearchable;
-import com.tencent.mobileqq.search.SearchTask;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.Callable;
+import android.view.View;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class ahrk
-  implements Callable
+class ahrk
+  implements bhuk
 {
-  public ahrk(SearchTask paramSearchTask, int paramInt1, int paramInt2) {}
+  ahrk(ahri paramahri, boolean paramBoolean, Friends paramFriends, bhuf parambhuf) {}
   
-  public List a()
+  public void OnClick(View paramView, int paramInt)
   {
-    Object localObject = SearchTask.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask).subList(this.jdField_a_of_type_Int, this.b);
-    ArrayList localArrayList = new ArrayList();
-    ISearchable localISearchable;
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      if (((Iterator)localObject).hasNext())
-      {
-        localISearchable = (ISearchable)((Iterator)localObject).next();
-        if (!this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask.isCancelled()) {
-          break label141;
-        }
-      }
-      if (!SearchTask.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask).equals(SearchTask.b(this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask))) {
-        localObject = localArrayList.iterator();
-      }
+    if (!bdin.g(ahri.a(this.jdField_a_of_type_Ahri))) {
+      QQToast.a(ahri.a(this.jdField_a_of_type_Ahri), 1, 2131692398, 0).a();
     }
     for (;;)
     {
-      if (((Iterator)localObject).hasNext())
-      {
-        localISearchable = (ISearchable)((Iterator)localObject).next();
-        if (!this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask.isCancelled()) {}
-      }
-      else
-      {
-        return localArrayList;
-        label141:
-        localISearchable.a(SearchTask.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask));
-        if (localISearchable.c() == -9223372036854775808L) {
-          break;
-        }
-        int i = localArrayList.indexOf(localISearchable);
-        if (-1 == i)
-        {
-          localArrayList.add(localISearchable);
-          break;
-        }
-        if (((ISearchable)localArrayList.get(i)).c() >= localISearchable.c()) {
-          break;
-        }
-        localArrayList.set(i, localISearchable);
-        break;
-      }
-      long l = localISearchable.c();
-      localISearchable.a(SearchTask.b(this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask));
-      if (localISearchable.c() == -9223372036854775808L) {
-        localISearchable.a(l);
+      this.jdField_a_of_type_Bhuf.e();
+      return;
+      paramView = (FriendListHandler)ahri.a(this.jdField_a_of_type_Ahri).a(1);
+      if (this.jdField_a_of_type_Boolean) {
+        paramView.b(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { false });
+      } else {
+        paramView.b(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { true });
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahrk
  * JD-Core Version:    0.7.0.1
  */

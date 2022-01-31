@@ -232,9 +232,9 @@ public class WtloginMsfListener
   public int SendData(byte[] paramArrayOfByte, int paramInt)
   {
     Object localObject;
-    if (!t.ar)
+    if (!t.aw)
     {
-      localObject = t.l();
+      localObject = t.m();
       util.LOGI("mqq process: " + (String)localObject, "");
       if (!((String)localObject).endsWith(":MSF")) {
         paramInt = sendRPCData(paramArrayOfByte, paramInt);

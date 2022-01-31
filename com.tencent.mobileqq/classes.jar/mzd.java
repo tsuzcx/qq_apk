@@ -1,35 +1,24 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
-import java.util.Iterator;
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.PoiMapActivity;
 
 public class mzd
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public mzd(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager) {}
+  public mzd(PoiMapActivity paramPoiMapActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ??? = PublicAccountImageCollectionPreloadManager.a(this.a).iterator();
-    while (((Iterator)???).hasNext())
-    {
-      String str = (String)((Iterator)???).next();
-      PublicAccountImageCollectionPreloadManager.a(this.a, str);
+    if (paramMotionEvent.getAction() == 1) {
+      this.a.b();
     }
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      PublicAccountImageCollectionPreloadManager.a(this.a).clear();
-      if (PublicAccountImageCollectionPreloadManager.b(this.a).size() > 0)
-      {
-        PublicAccountImageCollectionPreloadManager.a(this.a);
-        return;
-      }
-      this.a.jdField_a_of_type_Boolean = false;
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mzd
  * JD-Core Version:    0.7.0.1
  */

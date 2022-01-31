@@ -1,23 +1,33 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager;
+import com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager.PreDownloadNotAlreadyVideoTask;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
 
 public class thv
-  implements View.OnTouchListener
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  public thv(PublicAccountListActivity paramPublicAccountListActivity, InputMethodManager paramInputMethodManager) {}
+  public thv(WSVideoPreDownloadManager paramWSVideoPreDownloadManager) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    if (QLog.isColorLevel()) {
+      tlo.a("WS_VIDEO_WSVideoPreDownloadManager", 2, "预下载回调 videoUrl:" + WSVideoPreDownloadManager.a(this.a) + " ERROR code: " + paramInt);
+    }
+    ThreadManager.post(new WSVideoPreDownloadManager.PreDownloadNotAlreadyVideoTask(this.a, false), 5, null, true);
+  }
+  
+  public void onPreLoadSucess(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      tlo.a("WS_VIDEO_WSVideoPreDownloadManager", 2, "预下载回调 videoUrl:" + WSVideoPreDownloadManager.a(this.a) + " SUCCESS");
+    }
+    ThreadManager.post(new WSVideoPreDownloadManager.PreDownloadNotAlreadyVideoTask(this.a, true), 5, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     thv
  * JD-Core Version:    0.7.0.1
  */

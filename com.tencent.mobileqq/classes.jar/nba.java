@@ -1,49 +1,104 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.meta.StoryVideoFileObject;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pic.UpCallBack;
-import com.tencent.mobileqq.pic.UpCallBack.SendResult;
-import com.tencent.mobileqq.transfile.StoryUploadProcessor;
-import java.util.concurrent.atomic.AtomicInteger;
-import tencent.im.msg.im_msg_body.RichText;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.anonymous.QQAnonymousDialog.2;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class nba
-  implements UpCallBack
+  extends Dialog
 {
-  public nba(StoryVideoFileObject paramStoryVideoFileObject) {}
+  public int a;
+  public Context a;
+  public Handler a;
+  public LayoutInflater a;
+  public View a;
+  public ImageView a;
+  public TextView a;
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public nba(Context paramContext)
   {
-    return null;
+    super(paramContext, 2131755801);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(new nbb(this));
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560404, null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369775));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369786));
   }
   
-  public void a(UpCallBack.SendResult paramSendResult) {}
-  
-  public void b(UpCallBack.SendResult paramSendResult)
+  public void a()
   {
-    if (paramSendResult.jdField_b_of_type_Int == 0)
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    localLayoutParams.width = ((int)bdgz.a(this.jdField_a_of_type_AndroidContentContext, 44.0F));
+    localLayoutParams.height = ((int)bdgz.a(this.jdField_a_of_type_AndroidContentContext, 44.0F));
+    super.show();
+    this.jdField_a_of_type_AndroidViewView.postDelayed(new QQAnonymousDialog.2(this), 1000L);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    switch (paramInt)
     {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadUploadResult.c = paramSendResult.jdField_b_of_type_JavaLangString;
-      this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadUploadResult.a = paramSendResult.c;
-      this.a.b();
-      StoryVideoFileObject.a(this.a, new ErrorMessage());
+    default: 
+    case 1: 
+    case 3: 
+      do
+      {
+        do
+        {
+          return;
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843249);
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+        } while (!AppSetting.c);
+        QQAppInterface.f(paramString);
+        return;
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843243);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+      } while (!AppSetting.c);
+      QQAppInterface.f(paramString);
       return;
     }
-    if ((paramSendResult.jdField_b_of_type_Int == StoryUploadProcessor.a(940010)) && (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement() < 2))
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843248);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131696533));
+  }
+  
+  public void dismiss()
+  {
+    try
     {
-      StoryVideoFileObject.a(this.a);
-      SLog.d("Q.qqstory.publish.upload:StoryVideoFileObject  ", "retry load file");
+      super.dismiss();
       return;
     }
-    this.a.b();
-    paramSendResult = new ErrorMessage(paramSendResult.jdField_b_of_type_Int, paramSendResult.a);
-    StoryVideoFileObject.a(this.a, paramSendResult);
+    catch (Exception localException) {}
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    paramBundle = getWindow();
+    paramBundle.setContentView(this.jdField_a_of_type_AndroidViewView);
+    WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
+    localLayoutParams.width = -2;
+    localLayoutParams.height = -2;
+    localLayoutParams.gravity = 17;
+    paramBundle.setAttributes(localLayoutParams);
+    setCanceledOnTouchOutside(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nba
  * JD-Core Version:    0.7.0.1
  */

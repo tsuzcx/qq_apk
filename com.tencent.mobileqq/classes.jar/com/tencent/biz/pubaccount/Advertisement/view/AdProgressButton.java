@@ -19,7 +19,7 @@ public class AdProgressButton
     super(paramContext, paramAttributeSet);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
     getPaddingLeft();
     getPaddingRight();
@@ -36,7 +36,7 @@ public class AdProgressButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.view.AdProgressButton
  * JD-Core Version:    0.7.0.1
  */

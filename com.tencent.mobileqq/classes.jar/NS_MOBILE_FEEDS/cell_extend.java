@@ -9,8 +9,8 @@ import java.util.Map;
 public final class cell_extend
   extends JceStruct
 {
-  static Map cache_mapEx = new HashMap();
-  public Map mapEx;
+  static Map<String, String> cache_mapEx = new HashMap();
+  public Map<String, String> mapEx;
   
   static
   {
@@ -19,7 +19,7 @@ public final class cell_extend
   
   public cell_extend() {}
   
-  public cell_extend(Map paramMap)
+  public cell_extend(Map<String, String> paramMap)
   {
     this.mapEx = paramMap;
   }
@@ -38,7 +38,7 @@ public final class cell_extend
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_extend
  * JD-Core Version:    0.7.0.1
  */

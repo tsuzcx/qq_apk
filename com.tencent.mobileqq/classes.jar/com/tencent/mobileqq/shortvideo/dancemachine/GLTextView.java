@@ -11,102 +11,102 @@ import java.util.Iterator;
 public class GLTextView
   extends GLImageView
 {
-  private int jdField_a_of_type_Int = 0;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private float b = 0.0F;
+  private Bitmap mBitmap;
+  private Canvas mCanvas;
+  private boolean mNeedDrawText;
+  private ArrayList<GLTextView.StringItem> mStringList = new ArrayList();
+  private Paint paint = new Paint();
+  private int pixelHeightSize = 0;
+  private float totalWidth = 0.0F;
   
   public GLTextView(GLViewContext paramGLViewContext, String paramString)
   {
     super(paramGLViewContext, paramString);
-    f(4);
+    initView(4);
   }
   
-  private void g()
+  private void drawText()
   {
-    float f1 = a();
-    if (this.jdField_a_of_type_Int == 0) {
+    float f1 = getTextWidth();
+    if (this.pixelHeightSize == 0) {
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap((int)f1, this.jdField_a_of_type_Int, Bitmap.Config.ARGB_8888);
-    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
-    float f2 = Math.abs(this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics().ascent);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    this.mBitmap = Bitmap.createBitmap((int)f1, this.pixelHeightSize, Bitmap.Config.ARGB_8888);
+    this.mCanvas = new Canvas(this.mBitmap);
+    this.paint.setTextSize(this.pixelHeightSize);
+    this.paint.setAntiAlias(true);
+    this.paint.setDither(true);
+    float f2 = Math.abs(this.paint.getFontMetrics().ascent);
+    Iterator localIterator = this.mStringList.iterator();
     GLTextView.StringItem localStringItem;
-    for (f1 = 0.0F; localIterator.hasNext(); f1 = localStringItem.jdField_a_of_type_Float + f1)
+    for (f1 = 0.0F; localIterator.hasNext(); f1 = localStringItem.measureSize + f1)
     {
       localStringItem = (GLTextView.StringItem)localIterator.next();
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(localStringItem.b);
-      this.jdField_a_of_type_AndroidGraphicsCanvas.drawText(localStringItem.jdField_a_of_type_JavaLangString, f1, f2, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.paint.setColor(localStringItem.color);
+      this.mCanvas.drawText(localStringItem.data, f1, f2, this.paint);
     }
-    super.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_Boolean = false;
+    super.setImageBitmap(this.mBitmap);
+    this.mNeedDrawText = false;
   }
   
-  public float a()
+  public void clearTextCache()
   {
-    if (this.b == 0.0F)
+    this.mStringList.clear();
+    this.totalWidth = 0.0F;
+  }
+  
+  public void draw()
+  {
+    if (this.mNeedDrawText) {
+      drawText();
+    }
+    super.draw();
+  }
+  
+  public int getTextHeight()
+  {
+    return this.pixelHeightSize;
+  }
+  
+  public float getTextWidth()
+  {
+    if (this.totalWidth == 0.0F)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_Int);
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      this.paint.setTextSize(this.pixelHeightSize);
+      Iterator localIterator = this.mStringList.iterator();
       while (localIterator.hasNext())
       {
         GLTextView.StringItem localStringItem = (GLTextView.StringItem)localIterator.next();
-        localStringItem.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(localStringItem.jdField_a_of_type_JavaLangString);
-        float f = this.b;
-        this.b = (localStringItem.jdField_a_of_type_Float + f);
+        localStringItem.measureSize = this.paint.measureText(localStringItem.data);
+        float f = this.totalWidth;
+        this.totalWidth = (localStringItem.measureSize + f);
       }
     }
-    return this.b;
+    return this.totalWidth;
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
+  public void setImageBitmap(Bitmap paramBitmap) {}
   
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      g();
-    }
-    super.a();
-  }
+  public void setImageRes(String paramString) {}
   
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(Bitmap paramBitmap) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public void setText(String paramString, int paramInt1, int paramInt2)
   {
     GLTextView.StringItem localStringItem = new GLTextView.StringItem(this);
-    localStringItem.jdField_a_of_type_JavaLangString = paramString;
-    localStringItem.jdField_a_of_type_Int = paramInt1;
-    localStringItem.b = paramInt2;
-    this.jdField_a_of_type_JavaUtilArrayList.add(localStringItem);
-    this.jdField_a_of_type_Boolean = true;
+    localStringItem.data = paramString;
+    localStringItem.count = paramInt1;
+    localStringItem.color = paramInt2;
+    this.mStringList.add(localStringItem);
+    this.mNeedDrawText = true;
   }
   
-  public void f()
+  public void setTextSize(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.b = 0.0F;
+    this.pixelHeightSize = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.GLTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class acsu
-  implements View.OnClickListener
+  extends aqbl
 {
-  public acsu(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  public acsu(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean)
   {
-    if (paramView == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "qfilebaserecenttabview del error, tag is null");
-      }
-      return;
+    if (this.a.a != null) {
+      this.a.a.b();
     }
-    FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.getTag();
-    if (localFileManagerEntity != null)
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.a(null);
-      }
-      this.a.jdField_a_of_type_Long = localFileManagerEntity.nSessionId;
-      if (QfileBaseRecentFileTabView.m(this.a).a().b(this.a.jdField_a_of_type_Long)) {
-        this.a.a(localFileManagerEntity);
-      }
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.a(Integer.valueOf(-1));
-    paramView.setVisibility(4);
-    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acsu
  * JD-Core Version:    0.7.0.1
  */

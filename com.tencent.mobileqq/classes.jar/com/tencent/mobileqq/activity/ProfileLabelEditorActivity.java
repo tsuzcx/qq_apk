@@ -1,5 +1,14 @@
 package com.tencent.mobileqq.activity;
 
+import adoj;
+import adok;
+import adol;
+import adom;
+import adon;
+import adop;
+import alpk;
+import alpq;
+import alto;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -9,10 +18,12 @@ import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import awvn;
+import azqs;
+import bdgm;
+import bdhb;
+import bdjz;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -20,11 +31,6 @@ import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.profile.ProfileLabelInfo;
 import com.tencent.mobileqq.profile.ProfileLabelTypeInfo;
 import com.tencent.mobileqq.profile.view.ProfileLabelPanel;
-import com.tencent.mobileqq.profile.view.ProfileLabelPanel.LabelStatusManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayInputStream;
@@ -35,54 +41,48 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.List<Lcom.tencent.mobileqq.profile.ProfileLabelInfo;>;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tgx;
-import tgy;
-import tgz;
-import thb;
-import thc;
-import thd;
-import thf;
 
 public class ProfileLabelEditorActivity
   extends IphoneTitleBarActivity
 {
   public float a;
+  public adop a;
+  private alpq a;
   public Context a;
   public GridView a;
   public LinearLayout a;
   public TextView a;
-  private CardObserver a;
+  public awvn a;
   public Card a;
-  public ProfileLabelPanel.LabelStatusManager a;
   public ProfileLabelPanel a;
-  public List a;
-  public thf a;
+  public List<ProfileLabelInfo> a;
   public boolean a;
-  public List b = new ArrayList();
-  public List c = new ArrayList();
+  public List<ProfileLabelTypeInfo> b = new ArrayList();
+  public List<Long> c = new ArrayList();
   
   public ProfileLabelEditorActivity()
   {
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqAppCardObserver = new tgx(this);
+    this.jdField_a_of_type_Alpq = new adoj(this);
   }
   
   /* Error */
   private String a(String paramString)
   {
     // Byte code:
-    //   0: new 47	java/io/ByteArrayOutputStream
+    //   0: new 50	java/io/ByteArrayOutputStream
     //   3: dup
-    //   4: invokespecial 48	java/io/ByteArrayOutputStream:<init>	()V
+    //   4: invokespecial 51	java/io/ByteArrayOutputStream:<init>	()V
     //   7: astore 5
     //   9: aload_0
-    //   10: getfield 50	com/tencent/mobileqq/activity/ProfileLabelEditorActivity:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   13: invokevirtual 56	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   10: getfield 53	com/tencent/mobileqq/activity/ProfileLabelEditorActivity:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   13: invokevirtual 59	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   16: aload_1
-    //   17: invokevirtual 62	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   17: invokevirtual 65	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   20: astore_3
     //   21: aload_3
     //   22: astore_1
@@ -95,7 +95,7 @@ public class ProfileLabelEditorActivity
     //   33: aload 4
     //   35: iconst_0
     //   36: sipush 4096
-    //   39: invokevirtual 68	java/io/InputStream:read	([BII)I
+    //   39: invokevirtual 71	java/io/InputStream:read	([BII)I
     //   42: istore_2
     //   43: iload_2
     //   44: iconst_m1
@@ -106,55 +106,55 @@ public class ProfileLabelEditorActivity
     //   52: aload 4
     //   54: iconst_0
     //   55: iload_2
-    //   56: invokevirtual 72	java/io/ByteArrayOutputStream:write	([BII)V
+    //   56: invokevirtual 75	java/io/ByteArrayOutputStream:write	([BII)V
     //   59: goto -29 -> 30
     //   62: astore 4
     //   64: aload_3
     //   65: astore_1
-    //   66: ldc 74
+    //   66: ldc 77
     //   68: iconst_1
-    //   69: ldc 76
+    //   69: ldc 79
     //   71: aload 4
-    //   73: invokestatic 82	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   73: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   76: aload_3
     //   77: ifnull +7 -> 84
     //   80: aload_3
-    //   81: invokevirtual 85	java/io/InputStream:close	()V
+    //   81: invokevirtual 88	java/io/InputStream:close	()V
     //   84: aload 5
-    //   86: invokevirtual 86	java/io/ByteArrayOutputStream:close	()V
+    //   86: invokevirtual 89	java/io/ByteArrayOutputStream:close	()V
     //   89: aconst_null
     //   90: areturn
     //   91: aload_3
     //   92: astore_1
-    //   93: new 88	java/lang/String
+    //   93: new 91	java/lang/String
     //   96: dup
     //   97: aload 5
-    //   99: invokevirtual 92	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   102: ldc 94
-    //   104: invokespecial 97	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   99: invokevirtual 95	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   102: ldc 97
+    //   104: invokespecial 100	java/lang/String:<init>	([BLjava/lang/String;)V
     //   107: astore 4
     //   109: aload_3
     //   110: ifnull +7 -> 117
     //   113: aload_3
-    //   114: invokevirtual 85	java/io/InputStream:close	()V
+    //   114: invokevirtual 88	java/io/InputStream:close	()V
     //   117: aload 5
-    //   119: invokevirtual 86	java/io/ByteArrayOutputStream:close	()V
+    //   119: invokevirtual 89	java/io/ByteArrayOutputStream:close	()V
     //   122: aload 4
     //   124: areturn
     //   125: astore_1
-    //   126: ldc 74
+    //   126: ldc 77
     //   128: iconst_1
-    //   129: ldc 76
+    //   129: ldc 79
     //   131: aload_1
-    //   132: invokestatic 82	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   132: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   135: aload 4
     //   137: areturn
     //   138: astore_1
-    //   139: ldc 74
+    //   139: ldc 77
     //   141: iconst_1
-    //   142: ldc 76
+    //   142: ldc 79
     //   144: aload_1
-    //   145: invokestatic 82	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   145: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   148: goto -59 -> 89
     //   151: astore_3
     //   152: aconst_null
@@ -162,17 +162,17 @@ public class ProfileLabelEditorActivity
     //   154: aload_1
     //   155: ifnull +7 -> 162
     //   158: aload_1
-    //   159: invokevirtual 85	java/io/InputStream:close	()V
+    //   159: invokevirtual 88	java/io/InputStream:close	()V
     //   162: aload 5
-    //   164: invokevirtual 86	java/io/ByteArrayOutputStream:close	()V
+    //   164: invokevirtual 89	java/io/ByteArrayOutputStream:close	()V
     //   167: aload_3
     //   168: athrow
     //   169: astore_1
-    //   170: ldc 74
+    //   170: ldc 77
     //   172: iconst_1
-    //   173: ldc 76
+    //   173: ldc 79
     //   175: aload_1
-    //   176: invokestatic 82	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   176: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   179: goto -12 -> 167
     //   182: astore_3
     //   183: goto -29 -> 154
@@ -215,9 +215,9 @@ public class ProfileLabelEditorActivity
     //   9	21	186	java/io/IOException
   }
   
-  private List a(String paramString)
+  private List<ProfileLabelInfo> a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataCard = ((FriendsManager)this.app.getManager(50)).a(paramString);
+    this.jdField_a_of_type_ComTencentMobileqqDataCard = ((alto)this.app.getManager(51)).b(paramString);
     if (this.jdField_a_of_type_ComTencentMobileqqDataCard != null)
     {
       this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentMobileqqDataCard.getLabelList();
@@ -261,7 +261,7 @@ public class ProfileLabelEditorActivity
     }
   }
   
-  private void a(List paramList)
+  private void a(List<ProfileLabelInfo> paramList)
   {
     this.c.clear();
     paramList = paramList.iterator();
@@ -272,9 +272,9 @@ public class ProfileLabelEditorActivity
     }
   }
   
-  private void a(List paramList1, List paramList2)
+  private void a(List<ProfileLabelInfo> paramList, List<ProfileLabelTypeInfo> paramList1)
   {
-    Iterator localIterator1 = paramList2.iterator();
+    Iterator localIterator1 = paramList1.iterator();
     while (localIterator1.hasNext())
     {
       Iterator localIterator2 = ((ProfileLabelTypeInfo)localIterator1.next()).labels.iterator();
@@ -282,12 +282,12 @@ public class ProfileLabelEditorActivity
       {
         ProfileLabelInfo localProfileLabelInfo = (ProfileLabelInfo)localIterator2.next();
         localProfileLabelInfo.labelStatus = ProfileLabelInfo.STATUS_NORMAL;
-        if (a(localProfileLabelInfo.labelId, paramList1)) {
+        if (a(localProfileLabelInfo.labelId, paramList)) {
           localProfileLabelInfo.labelStatus = ProfileLabelInfo.STATUS_CHECKED;
         }
       }
     }
-    c(paramList2);
+    c(paramList1);
   }
   
   private void b()
@@ -296,25 +296,25 @@ public class ProfileLabelEditorActivity
     {
       if (this.jdField_a_of_type_Boolean)
       {
-        b(2131434978);
+        b(2131720597);
         return;
       }
       if (QLog.isColorLevel()) {
         QLog.d("ProfileLabelEditorActivity", 2, "saveEdit save labes num = " + this.jdField_a_of_type_JavaUtilList.size());
       }
       this.jdField_a_of_type_Boolean = true;
-      ((CardHandler)this.app.a(2)).a(this.jdField_a_of_type_JavaUtilList);
+      ((alpk)this.app.a(2)).a(this.jdField_a_of_type_JavaUtilList);
       return;
     }
     finish();
   }
   
-  private void b(List paramList)
+  private void b(List<ProfileLabelInfo> paramList)
   {
     if (this.jdField_a_of_type_JavaUtilList != null)
     {
-      this.jdField_a_of_type_Thf = new thf(this, this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Thf);
+      this.jdField_a_of_type_Adop = new adop(this, this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Adop);
       a(this.jdField_a_of_type_JavaUtilList.size());
     }
     Object localObject = new File(BaseApplicationImpl.getApplication().getFilesDir(), "labelList");
@@ -324,7 +324,7 @@ public class ProfileLabelEditorActivity
     for (;;)
     {
       return;
-      localObject = new ByteArrayInputStream(FileUtils.a((File)localObject));
+      localObject = new ByteArrayInputStream(bdhb.a((File)localObject));
       try
       {
         ObjectInputStream localObjectInputStream = new ObjectInputStream((InputStream)localObject);
@@ -368,12 +368,12 @@ public class ProfileLabelEditorActivity
   
   private void c()
   {
-    ThreadManager.post(new tgz(this), 8, null, true);
+    ThreadManager.post(new ProfileLabelEditorActivity.3(this), 8, null, true);
   }
   
-  private void c(List paramList)
+  private void c(List<ProfileLabelTypeInfo> paramList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel = new ProfileLabelPanel(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager, paramList, new thb(this));
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel = new ProfileLabelPanel(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Awvn, paramList, new adol(this));
     paramList = new LinearLayout.LayoutParams(-1, (int)(202.0F * this.jdField_a_of_type_Float));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel, paramList);
   }
@@ -396,7 +396,7 @@ public class ProfileLabelEditorActivity
     }
   }
   
-  public ProfileLabelInfo a(Long paramLong, List paramList)
+  public ProfileLabelInfo a(Long paramLong, List<ProfileLabelInfo> paramList)
   {
     Object localObject1 = null;
     Object localObject2 = null;
@@ -411,7 +411,7 @@ public class ProfileLabelEditorActivity
         if (!((ProfileLabelInfo)localObject1).labelId.equals(paramLong)) {
           break label61;
         }
-        paramList = (List)localObject1;
+        paramList = (List<ProfileLabelInfo>)localObject1;
       }
     }
     label61:
@@ -424,13 +424,13 @@ public class ProfileLabelEditorActivity
   
   public void a()
   {
-    super.setContentView(2130969194);
+    super.setContentView(2131559455);
     getWindow().setBackgroundDrawable(null);
-    super.setTitle(getString(2131434977));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131362840));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131365557));
-    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131365558));
-    setRightButton(2131434558, new tgy(this));
+    super.setTitle(getString(2131720594));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131376034));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131377407));
+    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131377404));
+    setRightButton(2131719310, new adok(this));
     enableRightHighlight(true);
   }
   
@@ -439,10 +439,10 @@ public class ProfileLabelEditorActivity
     if (paramInt > 7) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131434975) + " (" + paramInt + "/" + 7 + ")");
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131720593) + " (" + paramInt + "/" + 7 + ")");
   }
   
-  public void a(ProfileLabelInfo paramProfileLabelInfo, List paramList)
+  public void a(ProfileLabelInfo paramProfileLabelInfo, List<ProfileLabelInfo> paramList)
   {
     if (paramList != null)
     {
@@ -452,7 +452,7 @@ public class ProfileLabelEditorActivity
         if (((ProfileLabelInfo)paramList.get(i)).labelId.equals(paramProfileLabelInfo.labelId))
         {
           paramList.remove(i);
-          ReportController.b(this.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "2", "", "", "");
+          azqs.b(this.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "2", "", "", "");
         }
         i += 1;
       }
@@ -475,53 +475,53 @@ public class ProfileLabelEditorActivity
     return true;
   }
   
-  public boolean a(Long paramLong, List paramList)
+  public boolean a(Long paramLong, List<ProfileLabelInfo> paramList)
   {
     return a(paramLong, paramList) != null;
   }
   
-  public boolean a(List paramList)
+  public boolean a(List<ProfileLabelInfo> paramList)
   {
     return paramList.size() >= 7;
   }
   
   public void b(int paramInt)
   {
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, paramInt, 1).b(getResources().getDimensionPixelSize(2131558448));
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, paramInt, 1).b(getResources().getDimensionPixelSize(2131298914));
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    addObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
+    addObserver(this.jdField_a_of_type_Alpq);
     this.jdField_a_of_type_AndroidContentContext = this;
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager = new ProfileLabelPanel.LabelStatusManager();
+    this.jdField_a_of_type_Awvn = new awvn();
     getResources();
     a();
     c();
-    ReportController.b(this.app, "CliOper", "", "", "card_mall", "0X80066C8", 0, 0, "", "", "", "");
+    azqs.b(this.app, "CliOper", "", "", "card_mall", "0X80066C8", 0, 0, "", "", "", "");
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.app.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.a();
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager = null;
+    this.app.removeObserver(this.jdField_a_of_type_Alpq);
+    this.jdField_a_of_type_Awvn.a();
+    this.jdField_a_of_type_Awvn = null;
   }
   
-  protected boolean isWrapContent()
+  public boolean isWrapContent()
   {
     return false;
   }
   
-  protected boolean onBackEvent()
+  public boolean onBackEvent()
   {
     if (a())
     {
-      DialogUtil.a(this, 230).setMessage(getString(2131434986)).setPositiveButton(2131433011, new thd(this)).setNegativeButton(2131433012, new thc(this)).show();
+      bdgm.a(this, 230).setMessage(getString(2131720592)).setPositiveButton(2131721503, new adon(this)).setNegativeButton(2131694806, new adom(this)).show();
       return true;
     }
     finish();
@@ -530,7 +530,7 @@ public class ProfileLabelEditorActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ProfileLabelEditorActivity
  * JD-Core Version:    0.7.0.1
  */

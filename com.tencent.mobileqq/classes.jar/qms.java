@@ -1,45 +1,23 @@
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.views.image.GdtDrawableLoader;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-
 public class qms
-  implements URLDrawable.URLDrawableListener
 {
-  public qms(GdtDrawableLoader paramGdtDrawableLoader) {}
+  public int a;
+  public long a;
+  public String a;
+  public qmt a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public String toString()
   {
-    GdtDrawableLoader.a(this.a, paramURLDrawable);
-    GdtLog.b("GdtDrawableLoader", "onLoadCanceled " + GdtDrawableLoader.a(this.a));
-    GdtDrawableLoader.a(this.a, false);
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    GdtDrawableLoader.a(this.a, paramURLDrawable);
-    GdtLog.d("GdtDrawableLoader", "onLoadFialed " + GdtDrawableLoader.a(this.a), paramThrowable);
-    if (!GdtDrawableLoader.a(this.a)) {
-      GdtDrawableLoader.a(this.a, false);
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    GdtDrawableLoader.a(this.a, paramURLDrawable);
-    GdtLog.b("GdtDrawableLoader", "onLoadProgressed " + paramInt + " " + GdtDrawableLoader.a(this.a));
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    GdtDrawableLoader.a(this.a, paramURLDrawable);
-    GdtLog.b("GdtDrawableLoader", "onLoadSuccessed " + GdtDrawableLoader.a(this.a));
-    GdtDrawableLoader.a(this.a, true);
+    return "PGCPicInfo{pic_width=" + this.jdField_a_of_type_Int + ", pic_height=" + this.jdField_b_of_type_Int + ", pic_md5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", pic_url='" + this.jdField_b_of_type_JavaLangString + '\'' + ", thumbnail_url='" + this.jdField_c_of_type_JavaLangString + '\'' + ", is_animation=" + this.jdField_c_of_type_Int + ", picDesc='" + this.d + '\'' + ", galleryIndex=" + this.jdField_a_of_type_Long + ", pgcVideoInfo=" + this.jdField_a_of_type_Qmt + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qms
  * JD-Core Version:    0.7.0.1
  */

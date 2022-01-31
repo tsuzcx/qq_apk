@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class sso_svrr$QLSSsoBSvrOpenId2UinRsp
-  extends MessageMicro
+  extends MessageMicro<QLSSsoBSvrOpenId2UinRsp>
 {
   public static final int APPID_FIELD_NUMBER = 2;
   public static final int HEADER_FIELD_NUMBER = 1;
@@ -23,7 +23,7 @@ public final class sso_svrr$QLSSsoBSvrOpenId2UinRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.qlsBusiness.sso_svrr.QLSSsoBSvrOpenId2UinRsp
  * JD-Core Version:    0.7.0.1
  */

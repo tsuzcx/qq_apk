@@ -1,21 +1,14 @@
 package com.tencent.token.ui;
 
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.os.Handler;
 
-final class et
-  implements Animation.AnimationListener
+public class et
+  extends Handler
 {
-  et(es parames) {}
-  
-  public final void onAnimationEnd(Animation paramAnimation)
+  public et(FaceChangeMobileActivity paramFaceChangeMobileActivity)
   {
-    FaceRecognitionCameraActivity.access$800(this.a.a);
+    super(FaceChangeMobileActivity.access$800(paramFaceChangeMobileActivity));
   }
-  
-  public final void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public final void onAnimationStart(Animation paramAnimation) {}
 }
 
 

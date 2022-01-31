@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class NowLiveGallary$RspBody$PhotoInfo
-  extends MessageMicro
+  extends MessageMicro<PhotoInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField cover = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -24,7 +24,7 @@ public final class NowLiveGallary$RspBody$PhotoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.ilive.photo.NowLiveGallary.RspBody.PhotoInfo
  * JD-Core Version:    0.7.0.1
  */

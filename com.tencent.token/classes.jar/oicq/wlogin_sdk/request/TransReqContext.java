@@ -3,15 +3,19 @@ package oicq.wlogin_sdk.request;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import oicq.wlogin_sdk.sharemem.WloginSigInfo;
 
 public class TransReqContext
   implements Parcelable
 {
-  public static final Parcelable.Creator<TransReqContext> CREATOR = new TransReqContext.1();
+  public static final Parcelable.Creator CREATOR = new TransReqContext.1();
   public byte[] _body;
   public int _subcmd = 0;
   public int _type = 0;
   public long _uin = 0L;
+  public oicq_request.EncryptionMethod requestEm = oicq_request.EncryptionMethod.EM_ECDH;
+  public byte[] wtSessionTicket = new byte[0];
+  public byte[] wtSessionTicketKey = new byte[0];
   
   public TransReqContext() {}
   
@@ -71,6 +75,21 @@ public class TransReqContext
     this._type = paramParcel.readInt();
     this._subcmd = paramParcel.readInt();
     this._uin = paramParcel.readLong();
+  }
+  
+  public void setSTEncryptMethod()
+  {
+    this.requestEm = oicq_request.EncryptionMethod.EM_ST;
+  }
+  
+  public void setWtST(WloginSigInfo paramWloginSigInfo)
+  {
+    if (true == paramWloginSigInfo.isWtSessionTicketExpired()) {}
+    while ((paramWloginSigInfo.wtSessionTicket == null) || (paramWloginSigInfo.wtSessionTicketKey == null)) {
+      return;
+    }
+    this.wtSessionTicket = ((byte[])paramWloginSigInfo.wtSessionTicket.clone());
+    this.wtSessionTicketKey = ((byte[])paramWloginSigInfo.wtSessionTicketKey.clone());
   }
   
   public void set_body(byte[] paramArrayOfByte)

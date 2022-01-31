@@ -1,54 +1,57 @@
-import android.content.Context;
-import android.view.View;
-import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import java.util.ArrayList;
+import android.graphics.drawable.Drawable;
 
 public class mdh
-  implements Runnable
+  extends mdf
 {
-  public mdh(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  protected Drawable a;
+  protected String b;
+  protected int k = 0;
   
-  public void run()
+  public mdh(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
   {
-    TranslateAnimation localTranslateAnimation = this.a.a;
-    RelativeLayout.LayoutParams localLayoutParams;
-    int i;
-    if (localTranslateAnimation != null)
-    {
-      VideoFeedsPlayActivity.b(this.a).setVisibility(0);
-      VideoFeedsPlayActivity.b(this.a).findViewById(2131365654).setVisibility(0);
-      VideoFeedsPlayActivity.b(this.a).findViewById(2131365588).setVisibility(0);
-      VideoFeedsPlayActivity.b(this.a).findViewById(2131365589).setVisibility(0);
-      VideoFeedsPlayActivity.b(this.a).bringToFront();
-      localLayoutParams = (RelativeLayout.LayoutParams)VideoFeedsPlayActivity.b(this.a).getLayoutParams();
-      if (!VideoFeedsPlayActivity.i(this.a)) {
-        break label152;
-      }
-      i = AIOUtils.a(130.0F, this.a.getApplicationContext().getResources());
-    }
-    for (;;)
-    {
-      localLayoutParams.setMargins(0, 0, 0, i);
-      VideoFeedsPlayActivity.b(this.a).setLayoutParams(localLayoutParams);
-      VideoFeedsPlayActivity.b(this.a).startAnimation(localTranslateAnimation);
-      return;
-      label152:
-      if (((VideoInfo)VideoFeedsPlayActivity.a(this.a).get(0)).a(this.a)) {
-        i = AIOUtils.a(65.0F, this.a.getApplicationContext().getResources());
-      } else {
-        i = AIOUtils.a(25.0F, this.a.getApplicationContext().getResources());
-      }
-    }
+    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString);
+  }
+  
+  public mdh(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, int paramInt5, String paramString2)
+  {
+    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString1);
+    this.b = paramString2;
+    this.k = paramInt5;
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public Drawable a()
+  {
+    return this.a;
+  }
+  
+  public void a(Drawable paramDrawable)
+  {
+    this.a = paramDrawable;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.k = paramInt;
+  }
+  
+  public int k()
+  {
+    return this.k;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mdh
  * JD-Core Version:    0.7.0.1
  */

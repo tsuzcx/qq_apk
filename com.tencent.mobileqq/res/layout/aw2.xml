@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@drawable/skin_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/rj" android:textColor="@color/skin_gray2" android:gravity="center_horizontal" android:id="@id/bwv" android:paddingTop="80.0dip" android:visibility="gone" android:layout_width="180.0dip" android:layout_height="wrap_content" android:text="@string/c2v" android:drawableTop="@drawable/f5v" android:layout_centerInParent="true" />
+    <com.tencent.widget.PullToZoomListView android:id="@id/ei1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" />
+    <com.tencent.widget.immersive.ImmersiveTitleBar2 android:id="@id/jq6" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_alignParentTop="true" />
+    <RelativeLayout android:id="@id/title" android:padding="0.0px" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_below="@id/jq6">
+        <View android:id="@id/joh" android:background="@drawable/skin_header_bar_bg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <TextView android:textSize="19.0dip" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center" android:id="@id/ivTitleName" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/fla" android:singleLine="true" android:layout_centerInParent="true" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/bless_btn_text" android:gravity="center" android:id="@id/ivTitleBtnLeft" android:background="@drawable/gd" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="8.0dip" android:maxWidth="88.0dip" android:minWidth="55.0dip" android:text="@string/button_back" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</RelativeLayout>

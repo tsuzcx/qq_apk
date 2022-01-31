@@ -1,380 +1,532 @@
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable.FrameAnimationState;
-import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.Holder;
-import com.tencent.mobileqq.activity.aio.item.PokeItemAnimationManager;
-import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks.UnlimitedState;
-import com.tencent.mobileqq.apollo.script.SpriteCommFunc;
-import com.tencent.mobileqq.apollo.script.SpriteContext;
-import com.tencent.mobileqq.apollo.script.SpriteUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.utils.PokeBigResHandler;
-import com.tencent.mobileqq.data.MessageForPoke;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.FitSystemWindowsRelativeLayout;
-import java.util.Vector;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.MsgTabNodeEntity;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabHaloEntity;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.MsgTabNodeInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.MsgTabNodeVideoInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class uyg
-  implements View.OnClickListener
+  implements ulj
 {
-  private uyg(GivingHeartItemBuilder paramGivingHeartItemBuilder) {}
+  public int a;
+  public long a;
+  public String a;
+  public List<uyy> a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public List<vlp> b;
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public boolean c;
+  public int d;
+  public long d;
+  public String d;
+  public boolean d;
+  public int e;
+  public long e;
+  public String e;
+  public int f;
+  public long f;
+  public String f;
+  public int g;
+  public String g;
+  public String h = "";
+  public String i = "";
+  public String j;
+  public String k;
   
-  public void onClick(View paramView)
+  public uyg()
   {
-    if ((paramView.getContext() instanceof ChatHistoryForC2C)) {}
-    GivingHeartItemBuilder.Holder localHolder;
-    MessageForPoke localMessageForPoke;
-    Object localObject2;
-    label1544:
-    label1654:
-    label1663:
-    do
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_d_of_type_Boolean = true;
+  }
+  
+  public uyg(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_d_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public int a()
+  {
+    if (this.jdField_b_of_type_Boolean) {
+      return 1;
+    }
+    if (this.jdField_d_of_type_Int > 0) {
+      return 2;
+    }
+    return 0;
+  }
+  
+  public long a(String paramString)
+  {
+    try
     {
-      do
+      Object[] arrayOfObject = this.jdField_a_of_type_JavaUtilList.toArray();
+      if (arrayOfObject != null)
       {
-        do
+        int n = arrayOfObject.length;
+        m = 0;
+        if (m < n)
         {
-          return;
-          AIOUtils.m = true;
-        } while (GivingHeartItemBuilder.a(this.a));
-        localHolder = (GivingHeartItemBuilder.Holder)AIOUtils.a(paramView);
-        localMessageForPoke = (MessageForPoke)localHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-        if (QLog.isColorLevel()) {
-          QLog.d("GivingHeart", 2, "poke onClick() is called, type:" + localMessageForPoke.interactType);
-        }
-        if (126 == localMessageForPoke.interactType)
-        {
-          if (paramView.findViewById(2131362361).getVisibility() == 0) {}
-          for (i = 1; i != 0; i = 0)
-          {
-            if (!PokeItemHelper.c.contains(Integer.valueOf(localMessageForPoke.subId))) {
-              PokeItemHelper.c.add(Integer.valueOf(localMessageForPoke.subId));
-            }
-            if (!PokeItemHelper.d.contains(Integer.valueOf(localMessageForPoke.subId))) {
-              PokeItemHelper.d.add(Integer.valueOf(localMessageForPoke.subId));
-            }
-            if (!PokeItemHelper.b.contains(Integer.valueOf(localMessageForPoke.subId))) {
-              PokeItemHelper.b.add(Integer.valueOf(localMessageForPoke.subId));
-            }
-            localHolder.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-            localHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-            paramView = (VasQuickUpdateManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(183);
-            paramView.a(21L, "poke.item.effect." + localMessageForPoke.subId, "getbubbleview");
-            paramView.a(21L, "poke.item.res." + localMessageForPoke.subId, "getbubbleview");
-            paramView.a(this.a.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
-            return;
-          }
-          if (!PokeItemHelper.a("bubble", localMessageForPoke.subId))
-          {
-            QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 0, "资源下载不完整，请下载后再试。", 0).a();
-            return;
-          }
-          if (SpriteUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).c == 1) {}
-          for (i = 0;; i = 1)
-          {
-            if (i != 0)
-            {
-              SpriteCommFunc.a(this.a.b, "vas_poke", true);
-              if (QLog.isColorLevel()) {
-                QLog.i("GivingHeart.sprite", 2, "hide sprite (normal) in click.");
-              }
-            }
-            PokeItemHelper.a(this.a.b, this.a.jdField_a_of_type_AndroidContentContext, localHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView, localHolder, localMessageForPoke.subId, "bubble");
-            return;
+          uyy localuyy = (uyy)arrayOfObject[m];
+          if (TextUtils.equals(paramString, localuyy.jdField_a_of_type_JavaLangString)) {
+            return localuyy.jdField_b_of_type_Long;
           }
         }
-        if (PokeBigResHandler.a) {
-          break;
-        }
-        localHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
-        localHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
-        localHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 0, "资源下载中，请稍候再试。", 0).a();
-        paramView = (PokeBigResHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(117);
-        if ((paramView != null) && (!PokeBigResHandler.a())) {
-          paramView.a(true);
-        }
-      } while (!localMessageForPoke.isSend());
-      localMessageForPoke.setPlayed(this.a.b);
-      return;
-      int i = 0;
-      Object localObject3;
-      switch (localMessageForPoke.interactType)
-      {
-      default: 
-        paramView = PokeItemAnimationManager.jdField_a_of_type_JavaLangString + "/chuo_icon/chuo_icon_";
-        localObject3 = GivingHeartItemBuilder.a(this.a, localMessageForPoke.interactType);
-        if ((localMessageForPoke.interactType == 1) || (localMessageForPoke.interactType <= 0) || (localMessageForPoke.interactType > 6)) {
-          if (localHolder.jdField_a_of_type_Float == 2.0F)
-          {
-            paramView = new BitmapFactory.Options();
-            paramView.inSampleSize = 1;
-            paramView.inMutable = true;
-          }
-        }
-        break;
       }
+    }
+    catch (Exception localException)
+    {
       for (;;)
       {
+        int m;
+        wxe.c("Q.qqstory.msgTab.nodeList.MsgTabNodeInfo", "getRecommendIdByVid:%s", localException);
+        Object localObject = null;
+        continue;
+        m += 1;
+      }
+    }
+    return 0L;
+  }
+  
+  public MsgTabNodeEntity a()
+  {
+    MsgTabNodeEntity localMsgTabNodeEntity = new MsgTabNodeEntity();
+    localMsgTabNodeEntity.nodeType = this.jdField_a_of_type_Int;
+    localMsgTabNodeEntity.uid = this.jdField_b_of_type_Long;
+    localMsgTabNodeEntity.unionId = this.jdField_a_of_type_JavaLangString;
+    localMsgTabNodeEntity.nodeVid = this.jdField_e_of_type_JavaLangString;
+    localMsgTabNodeEntity.nodeFeedId = this.jdField_f_of_type_JavaLangString;
+    localMsgTabNodeEntity.title = this.jdField_c_of_type_JavaLangString;
+    localMsgTabNodeEntity.headUrl = this.jdField_b_of_type_JavaLangString;
+    localMsgTabNodeEntity.recommendId = this.jdField_e_of_type_Long;
+    localMsgTabNodeEntity.jumpUrl = this.jdField_d_of_type_JavaLangString;
+    localMsgTabNodeEntity.nodePosition = this.jdField_c_of_type_Int;
+    JSONArray localJSONArray = new JSONArray();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      localJSONArray.put(((uyy)localIterator.next()).a());
+    }
+    localMsgTabNodeEntity.videoInfoList = localJSONArray.toString();
+    localMsgTabNodeEntity.reqTimeStamp = this.jdField_c_of_type_Long;
+    localMsgTabNodeEntity.nodeInfoTimeStamp = this.jdField_d_of_type_Long;
+    localMsgTabNodeEntity.videoCover = this.jdField_g_of_type_JavaLangString;
+    if (this.jdField_b_of_type_JavaUtilList != null)
+    {
+      localJSONArray = new JSONArray();
+      localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        localJSONArray.put(((vlp)localIterator.next()).a());
+      }
+      localMsgTabNodeEntity.localSuccessVideoList = localJSONArray.toString();
+    }
+    localMsgTabNodeEntity.recommandNameIconUrl = this.j;
+    localMsgTabNodeEntity.cacheSeq = this.jdField_f_of_type_Long;
+    localMsgTabNodeEntity.passthrough = this.k;
+    localMsgTabNodeEntity.redPoint = this.jdField_c_of_type_Boolean;
+    return localMsgTabNodeEntity;
+  }
+  
+  public MsgTabHaloEntity a()
+  {
+    MsgTabHaloEntity localMsgTabHaloEntity = new MsgTabHaloEntity();
+    localMsgTabHaloEntity.nodeType = this.jdField_a_of_type_Int;
+    localMsgTabHaloEntity.uid = this.jdField_b_of_type_Long;
+    localMsgTabHaloEntity.unionId = this.jdField_a_of_type_JavaLangString;
+    localMsgTabHaloEntity.nodeVid = this.jdField_e_of_type_JavaLangString;
+    localMsgTabHaloEntity.title = this.jdField_c_of_type_JavaLangString;
+    localMsgTabHaloEntity.headUrl = this.jdField_b_of_type_JavaLangString;
+    localMsgTabHaloEntity.recommendId = this.jdField_e_of_type_Long;
+    localMsgTabHaloEntity.jumpUrl = this.jdField_d_of_type_JavaLangString;
+    JSONArray localJSONArray = new JSONArray();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      localJSONArray.put(((uyy)localIterator.next()).a());
+    }
+    localMsgTabHaloEntity.videoInfoList = localJSONArray.toString();
+    localMsgTabHaloEntity.reqTimeStamp = this.jdField_c_of_type_Long;
+    localMsgTabHaloEntity.nodeInfoTimeStamp = this.jdField_d_of_type_Long;
+    localMsgTabHaloEntity.videoCover = this.jdField_g_of_type_JavaLangString;
+    if (this.jdField_b_of_type_JavaUtilList != null)
+    {
+      localJSONArray = new JSONArray();
+      localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        localJSONArray.put(((vlp)localIterator.next()).a());
+      }
+      localMsgTabHaloEntity.localSuccessVideoList = localJSONArray.toString();
+    }
+    localMsgTabHaloEntity.noUpdate = this.jdField_e_of_type_Int;
+    return localMsgTabHaloEntity;
+  }
+  
+  public void a(MsgTabNodeEntity paramMsgTabNodeEntity)
+  {
+    int n = 0;
+    this.jdField_a_of_type_Int = paramMsgTabNodeEntity.nodeType;
+    this.jdField_b_of_type_Long = paramMsgTabNodeEntity.uid;
+    this.jdField_a_of_type_JavaLangString = paramMsgTabNodeEntity.unionId;
+    this.jdField_c_of_type_JavaLangString = paramMsgTabNodeEntity.title;
+    this.jdField_b_of_type_JavaLangString = paramMsgTabNodeEntity.headUrl;
+    this.jdField_e_of_type_Long = paramMsgTabNodeEntity.recommendId;
+    this.jdField_d_of_type_JavaLangString = paramMsgTabNodeEntity.jumpUrl;
+    this.jdField_e_of_type_JavaLangString = paramMsgTabNodeEntity.nodeVid;
+    this.jdField_f_of_type_JavaLangString = paramMsgTabNodeEntity.nodeFeedId;
+    this.jdField_g_of_type_JavaLangString = paramMsgTabNodeEntity.videoCover;
+    this.jdField_c_of_type_Int = paramMsgTabNodeEntity.nodePosition;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_Int = 0;
+    try
+    {
+      JSONArray localJSONArray1 = new JSONArray(paramMsgTabNodeEntity.videoInfoList);
+      int i1 = localJSONArray1.length();
+      m = 0;
+      JSONObject localJSONObject;
+      Object localObject;
+      while (m < i1)
+      {
+        localJSONObject = localJSONArray1.getJSONObject(m);
+        localObject = new uyy();
+        ((uyy)localObject).a(localJSONObject);
+        this.jdField_a_of_type_JavaUtilList.add(localObject);
+        if (!((uyy)localObject).jdField_a_of_type_Boolean) {
+          this.jdField_b_of_type_Int += 1;
+        }
+        m += 1;
+      }
+      JSONArray localJSONArray2;
+      if (this.jdField_a_of_type_Int == 11) {
+        break label360;
+      }
+    }
+    catch (JSONException localJSONException1)
+    {
+      wxe.c("Q.qqstory.msgTab.nodeList.MsgTabNodeInfo", "convertFrom(entity) errors", localJSONException1);
+      this.jdField_c_of_type_Long = paramMsgTabNodeEntity.reqTimeStamp;
+      this.jdField_d_of_type_Long = paramMsgTabNodeEntity.nodeInfoTimeStamp;
+      if ((!TextUtils.isEmpty(paramMsgTabNodeEntity.localSuccessVideoList)) && (!paramMsgTabNodeEntity.localSuccessVideoList.equals("null"))) {
         try
         {
-          paramView = ImageUtil.a(PokeBigResHandler.b + "/chuo_caidan/chuo_caidan_" + "01.png", paramView);
-          localObject1 = new CustomFrameAnimationDrawable(this.a.jdField_a_of_type_AndroidContentContext.getResources(), paramView, PokeItemAnimationManager.a().jdField_a_of_type_MqqOsMqqHandler, localMessageForPoke.mFrameState, (String)localObject3, PokeItemHelper.a(this.a.b));
-          GivingHeartItemBuilder.a(this.a, (CustomFrameAnimationDrawable)localObject1);
-          ((CustomFrameAnimationDrawable)localObject1).a(1);
-          if (!localMessageForPoke.isSend())
+          localJSONArray2 = new JSONArray(paramMsgTabNodeEntity.localSuccessVideoList);
+          this.jdField_b_of_type_JavaUtilList = new ArrayList();
+          i1 = localJSONArray2.length();
+          m = 0;
+          while (m < i1)
           {
-            if (localMessageForPoke.interactType == 5) {
-              break label1654;
-            }
-            ((CustomFrameAnimationDrawable)localObject1).b();
+            localJSONObject = localJSONArray2.getJSONObject(m);
+            localObject = new vlp();
+            ((vlp)localObject).a(localJSONObject);
+            this.jdField_b_of_type_JavaUtilList.add(localObject);
+            m += 1;
           }
-          ((CustomFrameAnimationDrawable)localObject1).g();
-          ((CustomFrameAnimationDrawable)localObject1).a(new uyh(this, localHolder, localMessageForPoke));
-          if (localMessageForPoke.interactType == 6) {
-            break label1952;
+          if (this.jdField_a_of_type_Int == 10) {
+            break label360;
           }
-          if ((localMessageForPoke.interactType != 5) || (localHolder.jdField_a_of_type_Float != 2.0F)) {
-            break label1663;
-          }
-          localHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-          localHolder.c.setVisibility(8);
-          paramView = ((FitSystemWindowsRelativeLayout)((ViewGroup)((Activity)this.a.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView()).getChildAt(0).findViewById(2131363491)).a();
-          localHolder.jdField_b_of_type_AndroidViewView.setVisibility(0);
-          paramView.a(localHolder);
-          paramView.setListener(this.a);
-          return;
-          paramView = PokeBigResHandler.c + "/chuo_motion/chuo_motion_";
-          i = 35;
-          break;
-          paramView = PokeBigResHandler.c + "/bixin_motion/bixin_motion_";
-          i = 67;
-          break;
-          paramView = PokeBigResHandler.c + "/zan_motion/zan_motion_";
-          i = 20;
-          break;
-          paramView = PokeBigResHandler.c + "/xinsui_motion/xinsui_motion_";
-          i = 50;
-          break;
-          if (localMessageForPoke.isSend())
-          {
-            paramView = PokeBigResHandler.c + "/666send_motion/666send_motion_";
-            i = 57;
-            break;
-          }
-          paramView = PokeBigResHandler.c + "/666receive_motion/666receive_motion_";
-          continue;
-          paramView = PokeItemAnimationManager.jdField_a_of_type_JavaLangString + "/dazhao_icon/dazhao_icon_";
         }
-        catch (OutOfMemoryError paramView)
+        catch (JSONException localJSONException2)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("GivingHeart", 2, paramView.toString());
-          }
-          paramView = null;
-          continue;
+          localJSONException2.printStackTrace();
         }
-        paramView = ImageUtil.a(this.a.jdField_a_of_type_AndroidContentContext.getResources(), 2130838528);
-        Object localObject1 = new CustomFrameAnimationDrawable(this.a.jdField_a_of_type_AndroidContentContext.getResources(), paramView, PokeItemAnimationManager.a().jdField_a_of_type_MqqOsMqqHandler, localMessageForPoke.mFrameState, (String)localObject3, PokeItemHelper.a(this.a.b));
-        GivingHeartItemBuilder.a((CustomFrameAnimationDrawable)localObject1);
-        continue;
-        localObject1 = new BitmapFactory.Options();
-        ((BitmapFactory.Options)localObject1).inScaled = true;
-        ((BitmapFactory.Options)localObject1).inSampleSize = 1;
-        ((BitmapFactory.Options)localObject1).inMutable = true;
-        int j;
-        for (;;)
-        {
-          try
-          {
-            localObject1 = ImageUtil.a(paramView + "01.png", (BitmapFactory.Options)localObject1);
-            localObject3 = new CustomFrameAnimationDrawable(this.a.jdField_a_of_type_AndroidContentContext.getResources(), (Bitmap)localObject1, PokeItemAnimationManager.a().jdField_a_of_type_MqqOsMqqHandler, localMessageForPoke.mFrameState, (String)localObject3, PokeItemHelper.a(this.a.b));
-            ((CustomFrameAnimationDrawable)localObject3).h();
-            j = 40;
-            if (localMessageForPoke.interactType == 2) {
-              j = 30;
-            }
-            if ((localMessageForPoke.interactType != 4) || (localHolder.jdField_a_of_type_Float != 2.0F)) {
-              break label1544;
-            }
-            k = 0;
-            if (k < 20) {
-              if (k + 1 < 10)
-              {
-                ((CustomFrameAnimationDrawable)localObject3).a(k, j, paramView + "0" + (k + 1) + ".png");
-                k += 1;
-                continue;
-              }
-            }
-          }
-          catch (OutOfMemoryError localOutOfMemoryError)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("GivingHeart", 2, localOutOfMemoryError.toString());
-            }
-            localObject2 = null;
-            continue;
-            ((CustomFrameAnimationDrawable)localObject3).a(k, j, paramView + (k + 1) + ".png");
-            continue;
-            k = 20;
-            localObject2 = localObject3;
-          }
-          if (k >= i) {
-            break;
-          }
-          ((CustomFrameAnimationDrawable)localObject3).a(k, j, paramView + 21 + ".png");
-          k += 1;
-        }
-        int k = 0;
-        localObject2 = localObject3;
-        if (k < i)
-        {
-          if (k + 1 < 10) {
-            ((CustomFrameAnimationDrawable)localObject3).a(k, j, paramView + "0" + (k + 1) + ".png");
-          }
-          for (;;)
-          {
-            k += 1;
-            break;
-            ((CustomFrameAnimationDrawable)localObject3).a(k, j, paramView + (k + 1) + ".png");
-          }
-          ((CustomFrameAnimationDrawable)localObject2).a(2);
-        }
-      }
-      localHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable((Drawable)localObject2);
-      localHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
-      localHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      localHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-      localHolder.c.setVisibility(8);
-      localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
-      localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
-      if (!localMessageForPoke.mFrameState.a) {
-        break;
-      }
-      ((CustomFrameAnimationDrawable)localObject2).d();
-    } while (!QLog.isColorLevel());
-    QLog.d("GivingHeart", 2, "[click]resume to play");
-    return;
-    ((CustomFrameAnimationDrawable)localObject2).c();
-    label1806:
-    boolean bool2;
-    if (localHolder.jdField_a_of_type_Float == 2.0F)
-    {
-      if (localMessageForPoke.interactType == 2)
-      {
-        PokeItemAnimationManager.a().a(1);
-        PokeItemAnimationManager.a().a(2, 1500L, localMessageForPoke.isSend());
       }
     }
-    else if ((localMessageForPoke.interactType == 1) || (localMessageForPoke.interactType == 0))
-    {
-      paramView = this.a;
-      localObject2 = (Activity)this.a.jdField_a_of_type_AndroidContentContext;
-      bool2 = localMessageForPoke.isSend();
-      if (localHolder.jdField_a_of_type_Float != 2.0F) {
-        break label1946;
+    if (this.jdField_a_of_type_Int == 3) {
+      label360:
+      if (!uyz.b(this)) {
+        break label423;
       }
     }
-    label1946:
-    for (boolean bool1 = true;; bool1 = false)
+    label423:
+    for (int m = n;; m = 1)
     {
-      GivingHeartItemBuilder.a(paramView, (Activity)localObject2, bool2, bool1);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("GivingHeart", 2, "[click]start to play");
+      this.jdField_b_of_type_Int = m;
+      this.j = paramMsgTabNodeEntity.recommandNameIconUrl;
+      this.jdField_f_of_type_Long = paramMsgTabNodeEntity.cacheSeq;
+      this.k = paramMsgTabNodeEntity.passthrough;
+      this.jdField_c_of_type_Boolean = paramMsgTabNodeEntity.redPoint;
+      this.jdField_g_of_type_Int = paramMsgTabNodeEntity.videoCoverType;
+      this.jdField_d_of_type_Boolean = paramMsgTabNodeEntity.firstExp;
       return;
-      if (localMessageForPoke.interactType == 3)
+    }
+  }
+  
+  public void a(MsgTabHaloEntity paramMsgTabHaloEntity)
+  {
+    int n = 0;
+    this.jdField_a_of_type_Int = paramMsgTabHaloEntity.nodeType;
+    this.jdField_b_of_type_Long = paramMsgTabHaloEntity.uid;
+    this.jdField_a_of_type_JavaLangString = paramMsgTabHaloEntity.unionId;
+    this.jdField_c_of_type_JavaLangString = paramMsgTabHaloEntity.title;
+    this.jdField_b_of_type_JavaLangString = paramMsgTabHaloEntity.headUrl;
+    this.jdField_e_of_type_Long = paramMsgTabHaloEntity.recommendId;
+    this.jdField_d_of_type_JavaLangString = paramMsgTabHaloEntity.jumpUrl;
+    this.jdField_e_of_type_JavaLangString = paramMsgTabHaloEntity.nodeVid;
+    this.jdField_g_of_type_JavaLangString = paramMsgTabHaloEntity.videoCover;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_Int = 0;
+    try
+    {
+      JSONArray localJSONArray1 = new JSONArray(paramMsgTabHaloEntity.videoInfoList);
+      int i1 = localJSONArray1.length();
+      m = 0;
+      JSONObject localJSONObject;
+      Object localObject;
+      while (m < i1)
       {
-        PokeItemAnimationManager.a().a(4);
-        PokeItemAnimationManager.a().a(5, 700L);
-        break label1806;
+        localJSONObject = localJSONArray1.getJSONObject(m);
+        localObject = new uyy();
+        ((uyy)localObject).a(localJSONObject);
+        this.jdField_a_of_type_JavaUtilList.add(localObject);
+        if (!((uyy)localObject).jdField_a_of_type_Boolean) {
+          this.jdField_b_of_type_Int += 1;
+        }
+        m += 1;
       }
-      if (localMessageForPoke.interactType != 4) {
-        break label1806;
-      }
-      PokeItemAnimationManager.a().a(13);
-      PokeItemAnimationManager.a().a(14, 800L);
-      break label1806;
-    }
-    label1952:
-    if ((PokeBigResHandler.a) && (!localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.a()))
-    {
-      paramView = localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks;
-      localObject2 = this.a.jdField_a_of_type_AndroidContentContext;
-      if (!localMessageForPoke.isSend())
-      {
-        bool1 = true;
-        label1995:
-        paramView.a((Context)localObject2, bool1, PokeItemHelper.a(this.a.b), localHolder.jdField_a_of_type_Float);
+      JSONArray localJSONArray2;
+      if (this.jdField_a_of_type_Int == 11) {
+        break label340;
       }
     }
-    else
+    catch (JSONException localJSONException1)
     {
-      paramView = localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks;
-      if (localMessageForPoke.isSend()) {
-        break label2190;
-      }
-      bool1 = true;
-      label2035:
-      paramView.setParams(bool1);
-      paramView = localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks;
-      if (localMessageForPoke.isSend()) {
-        break label2196;
+      localJSONException1.printStackTrace();
+      this.jdField_c_of_type_Long = paramMsgTabHaloEntity.reqTimeStamp;
+      this.jdField_d_of_type_Long = paramMsgTabHaloEntity.nodeInfoTimeStamp;
+      if ((!TextUtils.isEmpty(paramMsgTabHaloEntity.localSuccessVideoList)) && (!paramMsgTabHaloEntity.localSuccessVideoList.equals("null"))) {
+        try
+        {
+          localJSONArray2 = new JSONArray(paramMsgTabHaloEntity.localSuccessVideoList);
+          this.jdField_b_of_type_JavaUtilList = new ArrayList();
+          i1 = localJSONArray2.length();
+          m = 0;
+          while (m < i1)
+          {
+            localJSONObject = localJSONArray2.getJSONObject(m);
+            localObject = new vlp();
+            ((vlp)localObject).a(localJSONObject);
+            this.jdField_b_of_type_JavaUtilList.add(localObject);
+            m += 1;
+          }
+          if (this.jdField_a_of_type_Int == 10) {
+            break label340;
+          }
+        }
+        catch (JSONException localJSONException2)
+        {
+          localJSONException2.printStackTrace();
+        }
       }
     }
-    label2190:
-    label2196:
-    for (bool1 = true;; bool1 = false)
+    if (this.jdField_a_of_type_Int == 3) {
+      label340:
+      if (!uyz.b(this)) {
+        break label368;
+      }
+    }
+    label368:
+    for (int m = n;; m = 1)
     {
-      paramView.setMirror(bool1);
-      localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(0);
-      localHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
-      localHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
-      localHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
-      localHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      localHolder.c.setVisibility(8);
-      localHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-      localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setEndListener(new uyi(this, localHolder, localMessageForPoke));
-      if (localMessageForPoke.mUnlimitedState.a) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("fangdazhao", 2, "[click]start to play");
-      }
-      localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.c();
+      this.jdField_b_of_type_Int = m;
+      this.jdField_e_of_type_Int = paramMsgTabHaloEntity.noUpdate;
+      this.jdField_f_of_type_Int = 1;
       return;
-      bool1 = false;
-      break label1995;
-      bool1 = false;
-      break label2035;
     }
+  }
+  
+  public void a(qqstory_service.MsgTabNodeInfo paramMsgTabNodeInfo)
+  {
+    this.jdField_a_of_type_Int = paramMsgTabNodeInfo.uint32_node_type.get();
+    this.jdField_b_of_type_Long = paramMsgTabNodeInfo.uint64_uid.get();
+    this.jdField_a_of_type_JavaLangString = paramMsgTabNodeInfo.bytes_union_id.get().toStringUtf8();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList(paramMsgTabNodeInfo.rpt_msg_video_info_list.size());
+    this.jdField_b_of_type_Int = 0;
+    ArrayDeque localArrayDeque = new ArrayDeque(3);
+    Iterator localIterator = paramMsgTabNodeInfo.rpt_msg_video_info_list.get().iterator();
+    while (localIterator.hasNext())
+    {
+      qqstory_service.MsgTabNodeVideoInfo localMsgTabNodeVideoInfo = (qqstory_service.MsgTabNodeVideoInfo)localIterator.next();
+      uyy localuyy = new uyy();
+      localuyy.a(localMsgTabNodeVideoInfo, localArrayDeque);
+      this.jdField_a_of_type_JavaUtilList.add(localuyy);
+      if (!localuyy.jdField_a_of_type_Boolean) {
+        this.jdField_b_of_type_Int += 1;
+      }
+    }
+    this.jdField_c_of_type_Long = paramMsgTabNodeInfo.uint64_req_time_stamp.get();
+    this.jdField_d_of_type_Long = paramMsgTabNodeInfo.uint64_node_info_time_stamp.get();
+    this.jdField_e_of_type_Long = paramMsgTabNodeInfo.recommend_id.get();
+    if (paramMsgTabNodeInfo.bytes_title.has()) {
+      this.jdField_c_of_type_JavaLangString = paramMsgTabNodeInfo.bytes_title.get().toStringUtf8();
+    }
+    if (paramMsgTabNodeInfo.bytes_icon_url.has()) {
+      this.jdField_b_of_type_JavaLangString = paramMsgTabNodeInfo.bytes_icon_url.get().toStringUtf8();
+    }
+    if (paramMsgTabNodeInfo.link_url.has()) {
+      this.jdField_d_of_type_JavaLangString = paramMsgTabNodeInfo.link_url.get().toStringUtf8();
+    }
+    if (paramMsgTabNodeInfo.node_vid.has()) {
+      this.jdField_e_of_type_JavaLangString = paramMsgTabNodeInfo.node_vid.get().toStringUtf8();
+    }
+    if (paramMsgTabNodeInfo.video_cover.has()) {
+      this.jdField_g_of_type_JavaLangString = paramMsgTabNodeInfo.video_cover.get().toStringUtf8();
+    }
+    if (paramMsgTabNodeInfo.node_position.has()) {
+      this.jdField_c_of_type_Int = paramMsgTabNodeInfo.node_position.get();
+    }
+    if ((this.jdField_a_of_type_Int == 10) || (this.jdField_a_of_type_Int == 11) || (this.jdField_a_of_type_Int == 3)) {
+      if (!uyz.b(this)) {
+        break label603;
+      }
+    }
+    label603:
+    for (int m = 0;; m = 1)
+    {
+      this.jdField_b_of_type_Int = m;
+      if ((this.jdField_a_of_type_Int == 12) && (paramMsgTabNodeInfo.rpt_msg_video_info_list.size() > 0))
+      {
+        this.jdField_e_of_type_JavaLangString = ((qqstory_service.MsgTabNodeVideoInfo)paramMsgTabNodeInfo.rpt_msg_video_info_list.get(0)).vid.get().toStringUtf8();
+        this.jdField_f_of_type_JavaLangString = ((qqstory_service.MsgTabNodeVideoInfo)paramMsgTabNodeInfo.rpt_msg_video_info_list.get(0)).feed_id.get().toStringUtf8();
+      }
+      this.jdField_e_of_type_Int = paramMsgTabNodeInfo.no_update.get();
+      if (paramMsgTabNodeInfo.recommend_name_icon.has()) {
+        this.j = paramMsgTabNodeInfo.recommend_name_icon.get().toStringUtf8();
+      }
+      if (paramMsgTabNodeInfo.uint64_cache_seq.has()) {
+        this.jdField_f_of_type_Long = paramMsgTabNodeInfo.uint64_cache_seq.get();
+      }
+      if (paramMsgTabNodeInfo.passthrough.has()) {
+        this.k = paramMsgTabNodeInfo.passthrough.get().toStringUtf8();
+      }
+      if (paramMsgTabNodeInfo.redpoint.has())
+      {
+        this.jdField_c_of_type_Boolean = paramMsgTabNodeInfo.redpoint.get();
+        wxe.a("Q.qqstory.msgTab.nodeList.MsgTabNodeInfo", "MsgTabNodeInfo convertFrom, unionId:%s, uid:%s, redPoint:%s", this.jdField_a_of_type_JavaLangString, Long.valueOf(this.jdField_b_of_type_Long), Boolean.valueOf(this.jdField_c_of_type_Boolean));
+      }
+      if (paramMsgTabNodeInfo.video_cover_type.has()) {
+        this.jdField_g_of_type_Int = paramMsgTabNodeInfo.video_cover_type.get();
+      }
+      if (this.jdField_a_of_type_Int == 13) {
+        uyz.a(QQStoryContext.a()).c(this);
+      }
+      return;
+    }
+  }
+  
+  public void a(uyg paramuyg)
+  {
+    this.jdField_d_of_type_Int = paramuyg.jdField_d_of_type_Int;
+    this.jdField_b_of_type_Boolean = paramuyg.jdField_b_of_type_Boolean;
+    this.h = paramuyg.h;
+  }
+  
+  public boolean a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      uyy localuyy = (uyy)localIterator.next();
+      if ((TextUtils.isEmpty(localuyy.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(localuyy.jdField_b_of_type_JavaLangString))) {
+        return false;
+      }
+    }
+    if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
+  }
+  
+  public void copy(Object paramObject)
+  {
+    if ((paramObject instanceof uyg))
+    {
+      paramObject = (uyg)paramObject;
+      this.jdField_a_of_type_Int = paramObject.jdField_a_of_type_Int;
+      this.jdField_b_of_type_Long = paramObject.jdField_b_of_type_Long;
+      this.jdField_a_of_type_JavaLangString = paramObject.jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_JavaUtilList = new ArrayList(paramObject.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_Boolean = paramObject.jdField_a_of_type_Boolean;
+      this.jdField_c_of_type_Long = paramObject.jdField_c_of_type_Long;
+      this.jdField_d_of_type_Long = paramObject.jdField_d_of_type_Long;
+      this.jdField_b_of_type_Int = paramObject.jdField_b_of_type_Int;
+      this.jdField_e_of_type_Long = paramObject.jdField_e_of_type_Long;
+      this.jdField_b_of_type_JavaLangString = paramObject.jdField_b_of_type_JavaLangString;
+      this.jdField_c_of_type_JavaLangString = paramObject.jdField_c_of_type_JavaLangString;
+      this.jdField_d_of_type_JavaLangString = paramObject.jdField_d_of_type_JavaLangString;
+      this.jdField_e_of_type_JavaLangString = paramObject.jdField_e_of_type_JavaLangString;
+      this.jdField_f_of_type_JavaLangString = paramObject.jdField_f_of_type_JavaLangString;
+      this.jdField_d_of_type_Int = paramObject.jdField_d_of_type_Int;
+      this.jdField_b_of_type_Boolean = paramObject.jdField_b_of_type_Boolean;
+      this.jdField_b_of_type_JavaUtilList = paramObject.jdField_b_of_type_JavaUtilList;
+      this.h = paramObject.h;
+      this.jdField_c_of_type_Int = paramObject.jdField_c_of_type_Int;
+      this.jdField_e_of_type_Int = paramObject.jdField_e_of_type_Int;
+      this.i = paramObject.i;
+      this.j = paramObject.j;
+      this.jdField_f_of_type_Long = paramObject.jdField_f_of_type_Long;
+      this.k = paramObject.k;
+      this.jdField_c_of_type_Boolean = paramObject.jdField_c_of_type_Boolean;
+      this.jdField_g_of_type_Int = paramObject.jdField_g_of_type_Int;
+      this.jdField_d_of_type_Boolean = paramObject.jdField_d_of_type_Boolean;
+    }
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if (!(paramObject instanceof uyg)) {
+        return false;
+      }
+      paramObject = (uyg)paramObject;
+      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
+        return false;
+      }
+      if (this.jdField_a_of_type_JavaLangString != null) {
+        return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
+      }
+    } while (paramObject.jdField_a_of_type_JavaLangString == null);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    int n = this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_JavaLangString != null) {}
+    for (int m = this.jdField_a_of_type_JavaLangString.hashCode();; m = 0) {
+      return m + (n + 629) * 37;
+    }
+  }
+  
+  public String toString()
+  {
+    return "MsgTabNodeInfo{nodeType=" + this.jdField_a_of_type_Int + ", title='" + this.jdField_c_of_type_JavaLangString + '\'' + ", uid=" + this.jdField_b_of_type_Long + ", unionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", unreadCount=" + this.jdField_b_of_type_Int + ", nodePosition=" + this.jdField_c_of_type_Int + ", videoInfoList.size=" + this.jdField_a_of_type_JavaUtilList.size() + ", nodeVid='" + this.jdField_e_of_type_JavaLangString + '\'' + ", nodeFeedId='" + this.jdField_f_of_type_JavaLangString + '\'' + ", reqTimeStamp=" + this.jdField_c_of_type_Long + ", nodeInfoTimeStamp=" + this.jdField_d_of_type_Long + ", unUploadVideoCount=" + this.jdField_d_of_type_Int + ", id=" + this.jdField_a_of_type_Long + ", noUpdate=" + this.jdField_e_of_type_Int + '\'' + ", recommendId=" + this.jdField_e_of_type_Long + ", isUploading=" + this.jdField_b_of_type_Boolean + ", headerUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", jumpUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + ", videoCover='" + this.jdField_g_of_type_JavaLangString + '\'' + ", uploadingCover=" + this.h + ", recommandNameIconUrl=" + this.j + ", cacheSeq='" + this.jdField_f_of_type_Long + '\'' + ", passthrough=" + this.k + ", redPoint=" + this.jdField_c_of_type_Boolean + ", videoCoverType=" + this.jdField_g_of_type_Int + ", firstExp=" + this.jdField_d_of_type_Boolean + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uyg
  * JD-Core Version:    0.7.0.1
  */

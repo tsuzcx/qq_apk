@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBSInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class submsgtype0x26$MsgBody$SubCmd0x4UpdateApp
-  extends MessageMicro
+  extends MessageMicro<SubCmd0x4UpdateApp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "msg_app_id", "uint64_group_code", "sint32_unread_num" }, new Object[] { null, Long.valueOf(0L), Integer.valueOf(0) }, SubCmd0x4UpdateApp.class);
   public submsgtype0x26.AppID msg_app_id = new submsgtype0x26.AppID();

@@ -1,18 +1,20 @@
 package com.tencent.token.ui;
 
-import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.token.cy;
+import com.tencent.token.global.RqdApplication;
 
-final class aam
+class aam
   implements DialogInterface.OnClickListener
 {
-  aam(aal paramaal) {}
+  aam(StartPwdGestureVerifyActivity paramStartPwdGestureVerifyActivity, Context paramContext) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SmsActitivity.access$000(this.a.a).dismiss();
-    this.a.a.finish();
+    cy.a().a(this.a);
+    RqdApplication.i();
   }
 }
 

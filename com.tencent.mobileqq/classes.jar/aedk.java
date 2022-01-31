@@ -1,40 +1,37 @@
 import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emoticonview.EmoticonUtils;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager.RandomDrawableParam;
-import com.tencent.mobileqq.magicface.drawable.PngGifEngine;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderInterface;
-import java.io.File;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.QLog;
 
 public class aedk
-  implements Runnable
+  extends altm
 {
-  public aedk(PngFrameManager paramPngFrameManager, String paramString, PngFrameManager.RandomDrawableParam paramRandomDrawableParam) {}
+  public aedk(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void run()
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if (FileUtils.a(this.jdField_a_of_type_JavaLangString))
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!bdeu.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin))) {}
+    String str;
+    do
     {
-      ??? = PngGifEngine.a(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_JavaLangObject = ???;
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager)
+      return;
+      this.a.b = false;
+      str = bdgc.j(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
+      if (!TextUtils.isEmpty(str))
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_AndroidOsHandler != null) {
-          this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_AndroidOsHandler.obtainMessage(227, this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam).sendToTarget();
-        }
-        return;
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopOwnerNick = str;
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
       }
+    } while (!QLog.isColorLevel());
+    QLog.i("Q.troopinfo", 2, "onUpdateFriendInfo|uin = " + paramString + ", tmpNickName = " + str);
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (bdeu.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin))) {
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
     }
-    ??? = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.a.eId;
-    ??? = new DownloadTask(EmoticonUtils.j.replace("[eIdSub]", ((String)???).substring(0, 2)).replace("[eId]", (CharSequence)???).replace("[width]", "200").replace("[height]", "200"), new File(this.jdField_a_of_type_JavaLangString));
-    ((DownloadTask)???).l = true;
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.a((DownloadTask)???, new aedl(this), null);
   }
 }
 

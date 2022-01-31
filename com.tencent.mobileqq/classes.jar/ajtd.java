@@ -1,101 +1,79 @@
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.widget.TroopAvatarBigPhotoAdapter;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
-import java.lang.ref.WeakReference;
-import java.net.URL;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager.VideoFilterPageChangeListener.1;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajtd
-  implements URLDrawableDownListener
+  implements ViewPager.OnPageChangeListener
 {
-  public ajtd(TroopAvatarBigPhotoAdapter paramTroopAvatarBigPhotoAdapter, ImageProgressCircle paramImageProgressCircle, URLImageView paramURLImageView) {}
+  public ajtd(VideoFilterViewPager paramVideoFilterViewPager) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFilterViewPager", 2, "onPageScrollStateChanged state: " + paramInt);
     }
-    ReportController.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_cancel", 0, 1, 0, paramView, "", "", "");
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFilterViewPager", 2, "onPageScrolled position: " + paramInt1 + ", positionOffset: " + paramFloat + ", positionOffsetPixels: " + paramInt2);
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFilterViewPager", 2, "onPageSelected position: " + paramInt);
+    }
+    int i = VideoFilterViewPager.a(this.a).a(paramInt);
+    if ((VideoFilterViewPager.a(this.a) != null) && (i != 0))
     {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
+      VideoFilterViewPager.a(this.a).a(0);
+      VideoFilterViewPager.a(this.a, i);
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFilterViewPager", 2, "OnViewPagerItemVisiableChangeListener state: 0");
       }
     }
-    if (paramThrowable == null) {}
-    for (paramURLDrawable = "";; paramURLDrawable = paramThrowable.getMessage())
+    for (;;)
     {
-      ReportController.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_failed", 0, 1, 0, paramView, paramURLDrawable, "", "");
+      ajpy.a("", "0X8007804", "", "", "", "");
+      Object localObject1 = VideoFilterViewPager.a(this.a).a(paramInt);
+      ajsv.a().a((FilterDesc)localObject1);
+      localObject1 = VideoFilterViewPager.a(this.a).a(paramInt);
+      if (localObject1 != null)
+      {
+        localObject2 = new VideoFilterViewPager.VideoFilterPageChangeListener.1(this, paramInt, (View)localObject1);
+        ((View)localObject1).setVisibility(0);
+        ((View)localObject1).postDelayed((Runnable)localObject2, 1800L);
+        ((View)localObject1).setTag(localObject2);
+        VideoFilterViewPager.a(this.a, (View)localObject1, paramInt, false);
+      }
+      localObject1 = VideoFilterViewPager.a(this.a).a(paramInt - 1);
+      Object localObject2 = VideoFilterViewPager.a(this.a).a(paramInt + 1);
+      if (localObject1 != null)
+      {
+        ((View)localObject1).removeCallbacks((Runnable)((View)localObject1).getTag());
+        ((View)localObject1).clearAnimation();
+      }
+      if (localObject2 != null)
+      {
+        ((View)localObject2).removeCallbacks((Runnable)((View)localObject2).getTag());
+        ((View)localObject2).clearAnimation();
+      }
       return;
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
+      if ((VideoFilterViewPager.a(this.a) != null) && (VideoFilterViewPager.a(this.a).a(paramInt) == 0) && (VideoFilterViewPager.a(this.a) != 0))
+      {
+        VideoFilterViewPager.a(this.a).a(0);
+        VideoFilterViewPager.a(this.a, 0);
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoFilterViewPager", 2, "OnViewPagerItemVisiableChangeListener state-check: 0");
+        }
       }
     }
-    if (paramInterruptedException == null) {}
-    for (paramURLDrawable = "";; paramURLDrawable = paramInterruptedException.getMessage())
-    {
-      ReportController.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_interrupt", 0, 1, 0, paramView, paramURLDrawable, "", "");
-      return;
-    }
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.getVisibility() != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setVisibility(0);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setProgress(paramInt / 100);
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter.a != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter.a.get() != null)) {
-      ((TextView)this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter.a.get()).setText(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.a());
-    }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter.a(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramURLDrawable);
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter.a != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter.a.get() != null)) {
-      ((TextView)this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter.a.get()).setVisibility(8);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter.a = null;
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter.c = false;
-    ReportController.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_success", 0, 1, 0, paramView, "", "", "");
   }
 }
 

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class UinList$UinListFetchReq
-  extends MessageMicro
+  extends MessageMicro<UinListFetchReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_store_key = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -20,7 +20,7 @@ public final class UinList$UinListFetchReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     msg.uin_list.UinList.UinListFetchReq
  * JD-Core Version:    0.7.0.1
  */

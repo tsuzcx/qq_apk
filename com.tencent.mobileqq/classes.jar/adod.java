@@ -1,38 +1,60 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.fragment.NowLiveFragment;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import mqq.os.MqqHandler;
 
-public final class adod
-  implements Runnable
+public class adod
+  implements bhuk
 {
-  public void run()
+  public adod(ProfileCardMoreActivity paramProfileCardMoreActivity, String paramString, bhuf parambhuf) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    Object localObject = BaseApplicationImpl.getApplication().waitAppRuntime(null).getAppRuntime("module_nearby");
-    if ((localObject instanceof NearbyAppInterface))
+    switch (paramInt)
     {
-      localObject = (NearbyProcManager)((NearbyAppInterface)localObject).getManager(213);
-      if (localObject != null)
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.e();
+      return;
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app, "CliOper", "", "", "P_prof", "Pp_more_delete", ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h), 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), "", "", "");
+      if (bdin.d(BaseApplication.getContext()))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("NowLiveFragment", 2, "pre login now plugin!");
+        ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app.a(1)).c(this.jdField_a_of_type_JavaLangString, (byte)2);
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app.getHandler(ChatActivity.class);
+        if (paramView != null) {
+          paramView.sendMessage(paramView.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
         }
-        ((NearbyProcManager)localObject).d();
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app.getHandler(ChatSettingActivity.class);
+        if (paramView != null) {
+          paramView.sendMessage(paramView.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
+        }
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent == null) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent = new Intent();
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent.putExtra("finchat", true);
+        this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.setResult(-1, this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent);
+        if (bdeu.b(this.jdField_a_of_type_JavaLangString)) {
+          azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app, "dc00898", "", "", "0X8007FDF", "0X8007FDF", 0, 0, "", "", "", "");
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.finish();
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.a(2131691543, 1);
+        continue;
+        if (bdeu.b(this.jdField_a_of_type_JavaLangString)) {
+          azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app, "dc00898", "", "", "0X8007FE0", "0X8007FE0", 0, 0, "", "", "", "");
+        }
       }
     }
-    while (!QLog.isColorLevel())
-    {
-      NowLiveFragment.a(true);
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("NowLiveFragment", 2, "pre login now plugin! err npb null;");
-      return;
-    }
-    QLog.d("NowLiveFragment", 2, "pre login now plugin! err runtime null or wrong! app = " + localObject);
   }
 }
 

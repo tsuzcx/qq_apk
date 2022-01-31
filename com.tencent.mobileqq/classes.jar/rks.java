@@ -1,29 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.mobileqq.ark.ArkAppDataReport;
-import com.tencent.mobileqq.utils.QQCustomArkDialog.AppInfo;
-import com.tencent.qphone.base.util.QLog;
-
-public class rks
-  implements View.OnClickListener
+class rks
+  implements rrv
 {
-  public rks(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
+  rks(rkp paramrkp) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (ArkFullScreenAppActivity.a(this.a) != null) {
-      ArkAppDataReport.c(this.a.app, ArkFullScreenAppActivity.a(this.a).a, ArkAppDataReport.b);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkFullScreenAppActivity", 2, "click to close");
-    }
-    this.a.finish();
+    this.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rks
  * JD-Core Version:    0.7.0.1
  */

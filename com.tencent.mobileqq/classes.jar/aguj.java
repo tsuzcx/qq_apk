@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class aguj
-  implements ActionSheet.OnDismissListener
+class aguj
+  extends altm
 {
-  public aguj(QCallDetailActivity paramQCallDetailActivity) {}
+  aguj(agti paramagti, ImageView paramImageView) {}
   
-  public void onDismiss()
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004E70", "0X8004E70", 0, 0, "", "", "", "");
+    if ((paramBoolean) && (paramString.equals(this.jdField_a_of_type_Agti.a().a))) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(bdbk.a(this.jdField_a_of_type_Agti.a, paramString, (byte)3));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aguj
  * JD-Core Version:    0.7.0.1
  */

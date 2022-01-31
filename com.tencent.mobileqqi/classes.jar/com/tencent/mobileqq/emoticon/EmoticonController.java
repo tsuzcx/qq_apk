@@ -24,11 +24,11 @@ import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import fsf;
-import fsg;
-import fsh;
-import fsi;
-import fsj;
+import fns;
+import fnt;
+import fnu;
+import fnv;
+import fnw;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -54,7 +54,7 @@ public class EmoticonController
   public static final String f = "http://imgcache.qq.com/club/item/parcel/android_magictab.json";
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private Client jdField_a_of_type_ComTencentMobileqqEmosmClient;
-  private MessengerService.EmoDataInfo jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService$EmoDataInfo = new fsf(this);
+  private MessengerService.EmoDataInfo jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService$EmoDataInfo = new fns(this);
   public Integer a;
   public ArrayList a;
   ArrayList b;
@@ -401,7 +401,7 @@ public class EmoticonController
     }
     paramString = new Object();
     EmosmHandler localEmosmHandler = (EmosmHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11);
-    Object localObject = new fsh(this, paramProgressHandler, localEmosmHandler, paramBoolean, paramArrayList, paramString);
+    Object localObject = new fnu(this, paramProgressHandler, localEmosmHandler, paramBoolean, paramArrayList, paramString);
     localEmosmHandler.a((EmosmHandler.EmosmHandlerListener)localObject);
     this.h.add(localObject);
     int k = this.jdField_e_of_type_Int;
@@ -650,7 +650,7 @@ public class EmoticonController
     {
       if (this.jdField_a_of_type_JavaLangInteger.intValue() < 1)
       {
-        new fsj(this).start();
+        new fnw(this).start();
         if (QLog.isColorLevel()) {
           QLog.d("Q.emoji.EmoDown", 2, "startEPThread| start ep thread");
         }
@@ -681,7 +681,7 @@ public class EmoticonController
     if ((paramEmoticonPackage == null) || (paramEmoticonPackage.epId == null) || (paramEmoticonPackage.jobType != 1)) {
       return;
     }
-    new fsi(this, EmosmUtils.getQFaceMaterialFolderPath(paramEmoticonPackage.epId, false)).start();
+    new fnv(this, EmosmUtils.getQFaceMaterialFolderPath(paramEmoticonPackage.epId, false)).start();
   }
   
   public float a(String paramString)
@@ -982,7 +982,7 @@ public class EmoticonController
       if (QLog.isColorLevel()) {
         QLog.d("Q.emoji.EmosmDetailActivity", 2, "startDownloadEmosmJson| add queue suc epId:" + localEmoticonPackage1.epId);
       }
-      paramString = new fsg(this, paramInt);
+      paramString = new fnt(this, paramInt);
       if (paramBoolean)
       {
         new Thread(paramString).start();

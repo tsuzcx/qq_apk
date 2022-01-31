@@ -1,42 +1,89 @@
-import com.tencent.biz.common.util.ZipUtils;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.io.File;
-import java.io.IOException;
 
-class aooq
-  implements INetEngine.INetEngineListener
+public class aooq
+  extends aokh<aoop>
 {
-  aooq(aoop paramaoop) {}
+  private static aoop a;
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  public static aoop a()
+  {
+    aoop localaoop2 = (aoop)aoks.a().a(524);
+    aoop localaoop1 = localaoop2;
+    if (localaoop2 == null) {
+      localaoop1 = aoop.a();
+    }
+    return localaoop1;
+  }
   
-  public void a(NetResp paramNetResp)
+  public int a()
+  {
+    return 524;
+  }
+  
+  @NonNull
+  public aoop a(int paramInt)
+  {
+    if (a != null) {
+      return a;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("MutualMarkConfProcessor", 2, "migrateOldOrDefaultContent ");
+    }
+    a = aoop.a();
+    return a;
+  }
+  
+  @Nullable
+  public aoop a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    {
+      paramArrayOfaoko = aoop.a(paramArrayOfaoko[0].a);
+      a = null;
+      return paramArrayOfaoko;
+    }
+    return aoop.a();
+  }
+  
+  public Class<aoop> a()
+  {
+    return aoop.class;
+  }
+  
+  public void a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("PtvTemplateManager", 2, "onResp url: " + this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl + " resultcode: " + paramNetResp.c);
+      QLog.d("MutualMarkConfProcessor", 2, "onReqFailed failCode:" + paramInt);
     }
-    this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.a(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
-    if (this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable) {}
-    try
-    {
-      ZipUtils.a(new File(PtvTemplateManager.jdField_a_of_type_JavaIoFile, this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name), PtvTemplateManager.jdField_a_of_type_JavaLangString);
-      return;
+  }
+  
+  public void a(aoop paramaoop)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MutualMarkConfProcessor", 2, "onUpdate newConf:" + paramaoop);
     }
-    catch (IOException paramNetResp)
-    {
-      while (!QLog.isColorLevel()) {}
-      paramNetResp.printStackTrace();
-    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aooq
  * JD-Core Version:    0.7.0.1
  */

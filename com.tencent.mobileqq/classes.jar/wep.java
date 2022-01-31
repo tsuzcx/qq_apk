@@ -1,21 +1,31 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wep
-  implements Runnable
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, vct>
 {
-  public wep(BlessActivity paramBlessActivity, Bitmap paramBitmap) {}
-  
-  public void run()
+  public wep(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    BlessActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    BlessActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity).setVisibility(0);
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull vct paramvct)
+  {
+    if (!paramQQStoryShareGroupProfileActivity.g) {
+      return;
+    }
+    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramvct);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vct.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wep
  * JD-Core Version:    0.7.0.1
  */

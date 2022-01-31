@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class BnrReport$BNReportGroupInfo
-  extends MessageMicro
+  extends MessageMicro<BNReportGroupInfo>
 {
   public static final int ID_FIELD_NUMBER = 1;
   public static final int SEQNO_FIELD_NUMBER = 2;
@@ -16,7 +16,7 @@ public final class BnrReport$BNReportGroupInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.bnr.BnrReport.BNReportGroupInfo
  * JD-Core Version:    0.7.0.1
  */

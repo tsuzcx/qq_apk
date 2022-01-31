@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.ar.aidl;
 
-import aaen;
+import amth;
+import amzc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -18,10 +19,10 @@ import java.util.ArrayList;
 public class ArCloudConfigInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aaen();
+  public static final Parcelable.Creator<ArCloudConfigInfo> CREATOR = new amzc();
   public static int f = 3;
   public int a;
-  public ArCloudConfigInfo.WorldCupResPath a;
+  public amth a;
   public ARRelationShip a;
   public ArAwardInfo a;
   public ArFeatureInfo a;
@@ -29,7 +30,7 @@ public class ArCloudConfigInfo
   public ArModelResource a;
   public ArWebInfo a;
   public String a;
-  public ArrayList a;
+  public ArrayList<ArVideoResourceInfo> a;
   public boolean a;
   public int b;
   public String b;
@@ -114,12 +115,12 @@ public class ArCloudConfigInfo
   
   public boolean b()
   {
-    return this.d == 88;
+    return (this.g == 1) && (this.d == 7);
   }
   
   public boolean c()
   {
-    return (this.g == 1) && (this.d == 7);
+    return this.d == 8;
   }
   
   public boolean d()
@@ -249,7 +250,7 @@ public class ArCloudConfigInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo
  * JD-Core Version:    0.7.0.1
  */

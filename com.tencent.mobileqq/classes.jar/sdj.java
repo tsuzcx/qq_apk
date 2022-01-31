@@ -1,85 +1,129 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerBigPicItemData;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerTriplePicItemData;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerVideoItemData;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusInnerData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendAdData;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.troopinfo.TroopUnreadMsgInfo;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneHelper;
-import java.util.List;
 
 public class sdj
-  extends TroopObserver
 {
-  public sdj(ChatSettingForTroop paramChatSettingForTroop) {}
+  private static bhym a;
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, List paramList, int paramInt)
+  public static void a()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {}
-    while ((!paramBoolean1) || (paramList == null) || (paramList.size() <= 0)) {
-      return;
+    if ((a != null) && (a.isShowing())) {
+      a.dismiss();
     }
-    paramInt = 0;
-    label31:
-    TroopUnreadMsgInfo localTroopUnreadMsgInfo;
-    if (paramInt < paramList.size())
-    {
-      localTroopUnreadMsgInfo = (TroopUnreadMsgInfo)paramList.get(paramInt);
-      if ((localTroopUnreadMsgInfo != null) && (Utils.a(localTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin)))
-      {
-        if (localTroopUnreadMsgInfo.jdField_a_of_type_Long != 2L) {
-          break label206;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nNewPhotoNum = localTroopUnreadMsgInfo.b;
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nUnreadMsgNum = localTroopUnreadMsgInfo.jdField_a_of_type_Int;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-        if (paramBoolean2) {
-          QZoneHelper.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nUnreadMsgNum);
-        }
-      }
+    a = null;
+  }
+  
+  public static void a(Activity paramActivity, AdData paramAdData)
+  {
+    if (paramAdData.jdField_b_of_type_Boolean) {
+      a(paramActivity, paramAdData.r);
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.chatopttroop", 2, "onUpdateTroopUnreadMsg| isPush = " + paramBoolean2 + ", " + localTroopUnreadMsgInfo);
+      paramActivity = (QQAppInterface)ors.a();
+      if (paramActivity != null) {
+        noy.c(paramActivity, paramAdData);
       }
-      paramInt += 1;
-      break label31;
-      break;
-      label206:
-      if (localTroopUnreadMsgInfo.jdField_a_of_type_Long == 1L)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nUnreadFileMsgnum = localTroopUnreadMsgInfo.jdField_a_of_type_Int;
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nNewFileMsgNum = localTroopUnreadMsgInfo.b;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
+      return;
+      if (paramAdData.d == 12) {
+        a(paramActivity, paramAdData.p, paramAdData.n);
+      } else {
+        a(paramActivity, paramAdData.n);
       }
-      else if (localTroopUnreadMsgInfo.jdField_a_of_type_Long == 1101236949L)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mNewTroopNotificationNum = localTroopUnreadMsgInfo.b;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
+    }
+  }
+  
+  public static void a(Activity paramActivity, String paramString)
+  {
+    Intent localIntent = new Intent();
+    localIntent.putExtra("param_ad_json", paramString);
+    PublicTransFragmentActivity.b(paramActivity, localIntent, ReadInJoyNativeAdFragment.class);
+  }
+  
+  public static void a(Context paramContext, String paramString)
+  {
+    String str = paramString;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      str = paramString;
+      if (bdin.h(paramContext)) {
+        str = paramString + "&acttype=42";
       }
-      else if (localTroopUnreadMsgInfo.jdField_a_of_type_Long == 1106611799L)
+    }
+    ors.a(paramContext, str);
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    String str = paramString2;
+    if (!TextUtils.isEmpty(paramString2)) {
+      if (!paramString2.contains("?")) {
+        break label70;
+      }
+    }
+    label70:
+    for (str = paramString2 + "?"; noy.a(paramContext, paramString1); str = paramString2 + "&")
+    {
+      ors.a(paramContext, str + "_wv=33554437");
+      return;
+    }
+    a(paramContext, str + "_wv=1");
+  }
+  
+  public static void a(BaseData paramBaseData, View paramView, Context paramContext)
+  {
+    Object localObject;
+    if ((paramBaseData != null) && ((paramBaseData.s == 10) || (paramBaseData.s == 17) || (paramBaseData.s == 22) || (paramBaseData.s == 24) || (paramBaseData.s == 9)))
+    {
+      if (paramBaseData.s != 17) {
+        break label147;
+      }
+      localObject = (ProteusBannerVideoItemData)paramBaseData;
+    }
+    for (;;)
+    {
+      if (a == null) {
+        a = new bhym((Activity)paramContext);
+      }
+      if (!a.a()) {
+        a.a();
+      }
+      paramBaseData = new sdk(paramContext, paramBaseData, (AdData)localObject);
+      if (a.a(0, ((AdData)localObject).jdField_b_of_type_JavaUtilArrayList))
       {
-        Object localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(20);
-        ((Message)localObject).arg1 = localTroopUnreadMsgInfo.b;
-        ((Message)localObject).sendToTarget();
-        if ((localTroopUnreadMsgInfo.b == -1) || (localTroopUnreadMsgInfo.b > 0))
-        {
-          localObject = (TroopHandler)this.a.app.a(20);
-          if (localObject != null) {
-            ((TroopHandler)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, true, this.a.m, 3);
-          }
-        }
+        a.a(paramView, paramBaseData);
+        a.a(new sdl(paramContext, (AdData)localObject));
+      }
+      return;
+      label147:
+      if (paramBaseData.s == 10) {
+        localObject = (ProteusBannerBigPicItemData)paramBaseData;
+      } else if (paramBaseData.s == 24) {
+        localObject = (ProteusBannerTriplePicItemData)paramBaseData;
+      } else if (paramBaseData.s == 9) {
+        localObject = (RecommendAdData)paramBaseData;
+      } else {
+        localObject = (ProteusInnerData)paramBaseData;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sdj
  * JD-Core Version:    0.7.0.1
  */

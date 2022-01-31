@@ -1,15 +1,22 @@
 package com.tencent.mobileqq.data;
 
+import alto;
 import android.text.TextUtils;
+import awge;
+import awhp;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.gamecenter.message.TinyInfo;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 @uniqueConstraints(clause=ConflictClause.FAIL, columnNames="uin,type")
 public class ConversationInfo
-  extends Entity
+  extends awge
 {
+  @awhp
+  public static boolean publicaccountTypeErrorReported = false;
   private static final String tableName = "conversation_info";
   public byte[] extData;
   public int extInt1;
@@ -18,6 +25,8 @@ public class ConversationInfo
   public String extString;
   public boolean isImax;
   public long lastread;
+  @awhp
+  public TinyInfo tinyInfo;
   public int type;
   public String uin;
   public int unreadCount;
@@ -30,6 +39,7 @@ public class ConversationInfo
   {
     this.uin = paramString;
     this.type = paramInt;
+    reportPublicaccoutTypeError(paramString, paramInt);
   }
   
   public ConversationInfo(String paramString, int paramInt1, long paramLong, int paramInt2)
@@ -38,6 +48,7 @@ public class ConversationInfo
     this.type = paramInt1;
     this.lastread = paramLong;
     this.unreadCount = paramInt2;
+    reportPublicaccoutTypeError(paramString, paramInt1);
   }
   
   public static String getConversationInfoTableName()
@@ -45,9 +56,47 @@ public class ConversationInfo
     return "conversation_info";
   }
   
+  public static boolean reportPublicaccoutTypeError(String paramString, int paramInt)
+  {
+    if ((paramInt == 1008) && (!publicaccountTypeErrorReported))
+    {
+      Object localObject = BaseApplicationImpl.getApplication();
+      if (localObject != null)
+      {
+        localObject = ((BaseApplicationImpl)localObject).getRuntime();
+        if (localObject != null)
+        {
+          paramString = ((alto)((AppRuntime)localObject).getManager(51)).c(paramString);
+          if ((paramString != null) && (paramString.isFriend()))
+          {
+            publicaccountTypeErrorReported = true;
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
+  
   public String getTableName()
   {
     return getConversationInfoTableName();
+  }
+  
+  public void postRead()
+  {
+    super.postRead();
+    if (!TextUtils.isEmpty(this.extString)) {
+      this.tinyInfo = new TinyInfo(this.extString);
+    }
+  }
+  
+  public void prewrite()
+  {
+    super.prewrite();
+    if (this.tinyInfo != null) {
+      this.extString = this.tinyInfo.toJsonStr();
+    }
   }
   
   public String toString()
@@ -59,7 +108,7 @@ public class ConversationInfo
     for (;;)
     {
       StringBuilder localStringBuilder = new StringBuilder("--ConversationInfo--");
-      localStringBuilder.append(",shortUin:").append(str).append(",type:").append(this.type).append(",lastread:").append(this.lastread).append(",unreadCount:").append(this.unreadCount).append(",unreadGiftCount:").append(this.unreadGiftCount).append(",unreadRedPacketCount:").append(this.extInt1).append(",unreadMark:").append(this.unreadMark);
+      localStringBuilder.append(",shortUin:").append(str).append(",type:").append(this.type).append(",lastread:").append(this.lastread).append(",unreadCount:").append(this.unreadCount).append(",unreadGiftCount:").append(this.unreadGiftCount).append(",unreadRedPacketCount:").append(this.extInt1).append(",subAccountTroopunReadMsg:").append(this.extInt2).append(",unreadMark:").append(this.unreadMark).append(", extStr:").append(this.extString);
       return localStringBuilder.toString();
       if ((TextUtils.isEmpty(this.uin)) || (this.uin.length() < 4)) {
         str = this.uin;
@@ -71,7 +120,7 @@ public class ConversationInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.ConversationInfo
  * JD-Core Version:    0.7.0.1
  */

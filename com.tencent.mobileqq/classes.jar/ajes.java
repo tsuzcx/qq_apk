@@ -1,20 +1,12 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.data.TroopFileInfo;
-import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajes
-  implements ThreadExcutor.IThreadListener
 {
-  public ajes(TroopFileItemOperation paramTroopFileItemOperation, TroopFileTransferManager paramTroopFileTransferManager, TroopFileInfo paramTroopFileInfo) {}
-  
-  public void a() {}
-  
-  public void b()
+  public static void a(String paramString)
   {
-    ThreadManager.getUIHandler().post(new ajet(this));
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QWalletPerTrace", 2, "markTimeStamp " + paramString);
+    }
   }
 }
 

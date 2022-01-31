@@ -1,45 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.List;
 
-public final class pwp
-  implements Parcelable.Creator
+class pwp
+  extends pvj
 {
-  public DeviceInfo a(Parcel paramParcel)
-  {
-    DeviceInfo localDeviceInfo = new DeviceInfo();
-    localDeviceInfo.osPlatform = paramParcel.readString();
-    localDeviceInfo.osVersion = paramParcel.readString();
-    localDeviceInfo.netType = paramParcel.readInt();
-    localDeviceInfo.netDetail = paramParcel.readString();
-    localDeviceInfo.netAddress = paramParcel.readString();
-    localDeviceInfo.netAPN = paramParcel.readString();
-    localDeviceInfo.name = paramParcel.readString();
-    localDeviceInfo.remark = paramParcel.readString();
-    localDeviceInfo.type = paramParcel.readString();
-    localDeviceInfo.serialNum = paramParcel.readString();
-    localDeviceInfo.productId = paramParcel.readInt();
-    localDeviceInfo.appSecret = paramParcel.readString();
-    localDeviceInfo.din = paramParcel.readLong();
-    localDeviceInfo.isAdmin = paramParcel.readInt();
-    localDeviceInfo.status = ((short)paramParcel.readInt());
-    localDeviceInfo.userStatus = ((short)paramParcel.readInt());
-    localDeviceInfo.productType = ((short)paramParcel.readInt());
-    localDeviceInfo.displayName = paramParcel.readString();
-    localDeviceInfo.productVer = paramParcel.readInt();
-    localDeviceInfo.SSOBid_Platform = paramParcel.readInt();
-    localDeviceInfo.SSOBid_Version = paramParcel.readString();
-    return localDeviceInfo;
-  }
+  pwp(pwo parampwo) {}
   
-  public DeviceInfo[] a(int paramInt)
+  public void a(int paramInt, List<Long> paramList, boolean paramBoolean1, boolean paramBoolean2, ToServiceMsg paramToServiceMsg)
   {
-    return new DeviceInfo[paramInt];
+    pwo.a(this.a, paramInt, paramList, paramBoolean1, paramBoolean2, paramToServiceMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pwp
  * JD-Core Version:    0.7.0.1
  */

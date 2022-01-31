@@ -1,21 +1,26 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
 public class spk
-  implements Runnable
+  extends syv
 {
-  public spk(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public spk(BridgeModule paramBridgeModule) {}
   
-  public void run()
+  public ShareActionSheetBuilder.ActionSheetItem a(Integer paramInteger)
   {
-    ((FriendsManager)this.a.app.getManager(50)).a(this.a.a.a);
+    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = super.a(paramInteger);
+    if ((paramInteger.intValue() == 11) && (localActionSheetItem != null))
+    {
+      localActionSheetItem.icon = 2130843856;
+      localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131693497);
+    }
+    return localActionSheetItem;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     spk
  * JD-Core Version:    0.7.0.1
  */

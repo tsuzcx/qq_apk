@@ -1,18 +1,22 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class akbt
-  implements MediaPlayer.OnCompletionListener
+class akbt
+  extends ameq
 {
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  akbt(akbr paramakbr) {}
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    paramMediaPlayer.release();
-    com.tencent.mobileqq.utils.AudioUtil.a = null;
+    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
+    if (localBitmap != null) {
+      akbr.a(this.a, paramString, localBitmap);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akbt
  * JD-Core Version:    0.7.0.1
  */

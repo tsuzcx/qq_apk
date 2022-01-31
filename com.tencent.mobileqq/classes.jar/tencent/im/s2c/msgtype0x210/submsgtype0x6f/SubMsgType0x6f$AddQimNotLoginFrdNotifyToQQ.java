@@ -10,13 +10,13 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0x6f$AddQimNotLoginFrdNotifyToQQ
-  extends MessageMicro
+  extends MessageMicro<AddQimNotLoginFrdNotifyToQQ>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_coverstory = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_nick = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_wording = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_msg_video_info = PBField.initRepeatMessage(SubMsgType0x6f.VideoInfo.class);
+  public final PBRepeatMessageField<SubMsgType0x6f.VideoInfo> rpt_msg_video_info = PBField.initRepeatMessage(SubMsgType0x6f.VideoInfo.class);
   public final PBUInt32Field uint32_age = PBField.initUInt32(0);
   public final PBUInt32Field uint32_gender = PBField.initUInt32(0);
   public final PBUInt64Field uint64_qq_uin = PBField.initUInt64(0L);

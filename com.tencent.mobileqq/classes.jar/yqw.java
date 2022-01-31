@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler;
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.troop.EditUniqueTitleActivity;
 
 public class yqw
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public yqw(CmGameAvHandler paramCmGameAvHandler, boolean paramBoolean) {}
+  public yqw(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    CmGameAvHandler.b(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameAvHandler, this.jdField_a_of_type_Boolean);
-    AVEngineWalper.a().b(this.jdField_a_of_type_Boolean);
+    EditUniqueTitleActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yqw
  * JD-Core Version:    0.7.0.1
  */

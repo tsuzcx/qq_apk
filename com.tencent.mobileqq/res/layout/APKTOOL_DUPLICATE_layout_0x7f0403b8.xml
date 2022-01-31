@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13b3" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <com.tencent.biz.ui.TouchWebView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13b4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a13b3" />
-</RelativeLayout>

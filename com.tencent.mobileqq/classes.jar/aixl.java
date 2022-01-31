@@ -1,23 +1,79 @@
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
-import com.tencent.biz.qqstory.utils.FileUtils;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import Wallet.RedPackGrapInfo;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
 import com.tencent.qphone.base.util.QLog;
 
-class aixl
-  implements VideoCompositeHelper.VideoCompositeCallBack
+public class aixl
+  extends FrameLayout
 {
-  aixl(aixk paramaixk, String paramString1, String paramString2) {}
+  afzb jdField_a_of_type_Afzb;
+  Context jdField_a_of_type_AndroidContentContext;
+  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public aixl(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList, @NonNull Context paramContext, afzb paramafzb)
   {
-    FileUtils.f(this.jdField_a_of_type_JavaLangString);
-    if (paramInt != 0)
+    super(paramContext);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Afzb = paramafzb;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setClickable(true);
+    addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+    paramTroopUnAccalimedRedPacketList = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
+    paramTroopUnAccalimedRedPacketList.width = -2;
+    paramTroopUnAccalimedRedPacketList.height = -2;
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(paramContext);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130847017);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
+    paramTroopUnAccalimedRedPacketList = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
+    paramTroopUnAccalimedRedPacketList.width = xsm.a(paramContext, 29.0F);
+    paramTroopUnAccalimedRedPacketList.height = xsm.a(paramContext, 29.0F);
+    paramTroopUnAccalimedRedPacketList.gravity = 1;
+    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView);
+    paramTroopUnAccalimedRedPacketList = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    paramTroopUnAccalimedRedPacketList.width = xsm.a(paramContext, 28.0F);
+    paramTroopUnAccalimedRedPacketList.height = xsm.a(paramContext, 28.0F);
+    paramTroopUnAccalimedRedPacketList.gravity = 17;
+  }
+  
+  public void a(RedPackGrapInfo paramRedPackGrapInfo)
+  {
+    Object localObject;
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
-      QLog.i("tribe_publish_TroopBarPublishActivity", 1, "merge music failed. merge file path:" + this.jdField_a_of_type_JavaLangString + " merge result:" + paramInt);
-      this.jdField_a_of_type_Aixk.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.a(null, this.jdField_a_of_type_Aixk.jdField_a_of_type_Long);
+      localObject = bdbk.a(TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), String.valueOf(paramRedPackGrapInfo.lUin), (byte)3);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+    }
+    if (this.jdField_a_of_type_Afzb != null)
+    {
+      this.jdField_a_of_type_Afzb.a(paramRedPackGrapInfo);
+      localObject = this.jdField_a_of_type_Afzb.a(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+      if (localObject == null) {
+        break label120;
+      }
+      localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
+      localLayoutParams.topMargin = xsm.a(this.jdField_a_of_type_AndroidContentContext, 11.5F);
+      localLayoutParams.gravity = 16;
+      ((FrameLayout)localObject).setLayoutParams(localLayoutParams);
+      this.jdField_a_of_type_Afzb.a((FrameLayout)localObject, paramRedPackGrapInfo, new aixm(this));
+    }
+    label120:
+    while (!QLog.isColorLevel())
+    {
+      LinearLayout.LayoutParams localLayoutParams;
       return;
     }
-    this.jdField_a_of_type_Aixk.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.a(this.b, this.jdField_a_of_type_Aixk.jdField_a_of_type_Long);
+    QLog.w(TroopUnAccalimedRedPacketList.b(), 2, "red packet item layout is null");
   }
 }
 

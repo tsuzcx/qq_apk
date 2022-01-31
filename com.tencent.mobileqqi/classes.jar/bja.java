@@ -1,28 +1,54 @@
-import android.os.Handler.Callback;
+import android.media.AudioRecord;
+import android.os.Handler;
 import android.os.Message;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.VideoControlUI;
+import android.text.TextUtils;
+import com.tencent.biz.game.SensorAPIJavaScript;
 
-class bja
-  implements Handler.Callback
+public class bja
+  implements Runnable
 {
-  bja(biy parambiy) {}
+  public bja(SensorAPIJavaScript paramSensorAPIJavaScript, int paramInt, String paramString) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void run()
   {
-    if (this.a.a.jdField_a_of_type_ComTencentAvUiVideoControlUI != null)
+    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_AndroidMediaAudioRecord.startRecording();
+    short[] arrayOfShort = new short[this.jdField_a_of_type_Int];
+    if (this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_Boolean)
     {
-      if ((this.a.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.a.jdField_a_of_type_ComTencentAvVideoController.a().h) && (!this.a.a.jdField_a_of_type_ComTencentAvVideoController.c())) {
-        this.a.a.jdField_a_of_type_ComTencentAvUiVideoControlUI.a(2131232201, this.a.a.jdField_a_of_type_ComTencentAvVideoController.a().f);
+      int j = this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_AndroidMediaAudioRecord.read(arrayOfShort, 0, this.jdField_a_of_type_Int);
+      long l = 0L;
+      int i = 0;
+      while (i < arrayOfShort.length)
+      {
+        l += arrayOfShort[i] * arrayOfShort[i];
+        i += 1;
+      }
+      double d = Math.log10(Math.sqrt(l / j));
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      {
+        ??? = new Message();
+        ((Message)???).what = 0;
+        ((Message)???).obj = ("javascript: " + this.jdField_a_of_type_JavaLangString + "(" + true + "," + d * 20.0D + ")");
+        this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)???);
+      }
+      try
+      {
+        synchronized (this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_JavaLangObject)
+        {
+          this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_JavaLangObject.wait(100L);
+        }
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        for (;;)
+        {
+          localInterruptedException.printStackTrace();
+        }
       }
     }
-    else {
-      return false;
-    }
-    this.a.a.jdField_a_of_type_ComTencentAvUiVideoControlUI.a(2131232201, true);
-    return false;
+    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_AndroidMediaAudioRecord.stop();
+    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_AndroidMediaAudioRecord.release();
+    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_AndroidMediaAudioRecord = null;
   }
 }
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/dialog_bg" android:layout_width="288.0dip" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="20.0sp" android:textColor="@color/gl" android:gravity="center_vertical" android:id="@id/bkg" android:paddingLeft="12.0dip" android:layout_width="fill_parent" android:layout_height="48.0dip" android:text="" />
+    <View android:id="@id/e_2" android:background="#ffc2c8cd" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/bkg" />
+    <LinearLayout android:id="@id/e2b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/e_2">
+        <TextView android:textSize="16.0sp" android:textColor="@color/fl" android:id="@id/bk7" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:text="@string/b0l" />
+    </LinearLayout>
+    <LinearLayout android:id="@id/e2c" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginTop="26.0dip" android:layout_below="@id/e2b">
+        <Button android:textSize="16.0sp" android:textColor="@color/fl" android:gravity="center" android:id="@id/dialog_button_cancel" android:background="@drawable/bqv" android:layout_width="122.0dip" android:layout_height="fill_parent" android:layout_marginRight="8.0dip" android:text="@string/b10" />
+        <Button android:textSize="16.0sp" android:textColor="@color/fl" android:gravity="center" android:id="@id/dialog_button_ok" android:background="@drawable/bqv" android:layout_width="122.0dip" android:layout_height="fill_parent" android:text="@string/a1p" />
+    </LinearLayout>
+</RelativeLayout>

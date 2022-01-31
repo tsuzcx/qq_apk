@@ -1,14 +1,39 @@
-import android.app.Application;
-import com.tencent.mobileqq.unifiedebug.UnifiedDebugManager;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import com.tencent.mobileqq.activity.selectable.TextPreviewMenu;
 
-public final class ajyg
-  implements Runnable
+public class ajyg
+  implements bers
 {
-  public ajyg(Application paramApplication) {}
+  public ajyg(TextPreviewMenu paramTextPreviewMenu, TextPreviewActivity paramTextPreviewActivity) {}
   
-  public void run()
+  public void a()
   {
-    UnifiedDebugManager.a(this.a);
+    TextPreviewMenu.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu);
+  }
+  
+  public void a(String paramString)
+  {
+    banj.a(paramString, "OCR_Participle_copy");
+  }
+  
+  public void b(String paramString)
+  {
+    banj.a(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, paramString);
+  }
+  
+  public void c(String paramString)
+  {
+    banj.a(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity.app, paramString);
+  }
+  
+  public void d(String paramString)
+  {
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, TextPreviewTranslateActivity.class);
+    localIntent.putExtra("TranslateText", paramString);
+    localIntent.putExtra("WhereAreYouFrom", "AIO_TEXTPREVIEW");
+    TextPreviewMenu.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu, localIntent);
   }
 }
 

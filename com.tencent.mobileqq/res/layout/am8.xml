@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="72.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/dpr" android:background="@drawable/je" android:paddingTop="@dimen/aln" android:paddingBottom="@dimen/all" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.filemanager.widget.AsyncImageView android:id="@id/image" android:focusable="false" android:clickable="false" android:layout_width="@dimen/abu" android:layout_height="@dimen/abu" android:layout_marginLeft="@dimen/ajk" android:layout_marginRight="@dimen/aji" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@null" app:cornerRadius="18.0dip" />
+        <TextView android:textSize="@dimen/ayp" android:textColor="@color/skin_unite_search_text_black_000000_6991b8" android:ellipsize="end" android:id="@id/iww" android:visibility="gone" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toRightOf="@id/image" android:layout_centerVertical="true" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ajk" android:layout_toLeftOf="@id/i_m" android:layout_toRightOf="@id/image" android:layout_centerVertical="true">
+            <TextView android:textSize="@dimen/alu" android:textColor="@color/skin_dark_gray" android:ellipsize="end" android:id="@id/title" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+            <com.tencent.image.URLImageView android:id="@id/jpr" android:paddingRight="2.0dip" android:duplicateParentState="true" android:layout_width="40.0dip" android:layout_height="12.0dip" android:layout_marginLeft="3.0dip" android:layout_marginTop="6.0dip" android:scaleType="centerCrop" android:layout_toRightOf="@id/title" />
+            <TextView android:textColor="#ff878b99" android:ellipsize="end" android:gravity="center|left" android:id="@id/bgt" android:paddingRight="6.0dip" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/abv" android:maxLines="2" android:singleLine="true" android:layout_below="@id/title" />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

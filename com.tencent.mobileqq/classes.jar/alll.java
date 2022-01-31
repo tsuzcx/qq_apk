@@ -1,28 +1,19 @@
 import android.view.View;
-import com.tencent.qidian.PhotoWallViewForQiDianProfile;
-import com.tencent.qidian.PhotoWallViewForQiDianProfile.PhotoWallCallback;
-import com.tencent.qidian.data.CompanyShowCaseInfo;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.List;
+import android.view.View.OnClickListener;
 
-public class alll
-  implements AdapterView.OnItemClickListener
+class alll
+  implements View.OnClickListener
 {
-  public alll(PhotoWallViewForQiDianProfile paramPhotoWallViewForQiDianProfile) {}
+  alll(allk paramallk) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    paramAdapterView = (CompanyShowCaseInfo)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (this.a.jdField_a_of_type_ComTencentQidianPhotoWallViewForQiDianProfile$PhotoWallCallback == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentQidianPhotoWallViewForQiDianProfile$PhotoWallCallback.a(paramAdapterView);
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alll
  * JD-Core Version:    0.7.0.1
  */

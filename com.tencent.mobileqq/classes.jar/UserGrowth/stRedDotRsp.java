@@ -1,0 +1,76 @@
+package UserGrowth;
+
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
+
+public final class stRedDotRsp
+  extends JceStruct
+{
+  static ArrayList<stRedDotMenu> cache_menu;
+  static stNewsRedDot cache_newsReddot;
+  static ArrayList<stNotificationRedDot> cache_notificationReddot;
+  static int cache_reddotAction = 0;
+  static stSimpleMetaPerson cache_user;
+  public ArrayList<stRedDotMenu> menu;
+  public stNewsRedDot newsReddot;
+  public ArrayList<stNotificationRedDot> notificationReddot;
+  public int reddotAction;
+  public stSimpleMetaPerson user;
+  
+  static
+  {
+    cache_notificationReddot = new ArrayList();
+    Object localObject = new stNotificationRedDot();
+    cache_notificationReddot.add(localObject);
+    cache_newsReddot = new stNewsRedDot();
+    cache_user = new stSimpleMetaPerson();
+    cache_menu = new ArrayList();
+    localObject = new stRedDotMenu();
+    cache_menu.add(localObject);
+  }
+  
+  public stRedDotRsp() {}
+  
+  public stRedDotRsp(int paramInt, ArrayList<stNotificationRedDot> paramArrayList, stNewsRedDot paramstNewsRedDot, stSimpleMetaPerson paramstSimpleMetaPerson, ArrayList<stRedDotMenu> paramArrayList1)
+  {
+    this.reddotAction = paramInt;
+    this.notificationReddot = paramArrayList;
+    this.newsReddot = paramstNewsRedDot;
+    this.user = paramstSimpleMetaPerson;
+    this.menu = paramArrayList1;
+  }
+  
+  public void readFrom(JceInputStream paramJceInputStream)
+  {
+    this.reddotAction = paramJceInputStream.read(this.reddotAction, 0, false);
+    this.notificationReddot = ((ArrayList)paramJceInputStream.read(cache_notificationReddot, 1, false));
+    this.newsReddot = ((stNewsRedDot)paramJceInputStream.read(cache_newsReddot, 2, false));
+    this.user = ((stSimpleMetaPerson)paramJceInputStream.read(cache_user, 3, false));
+    this.menu = ((ArrayList)paramJceInputStream.read(cache_menu, 4, false));
+  }
+  
+  public void writeTo(JceOutputStream paramJceOutputStream)
+  {
+    paramJceOutputStream.write(this.reddotAction, 0);
+    if (this.notificationReddot != null) {
+      paramJceOutputStream.write(this.notificationReddot, 1);
+    }
+    if (this.newsReddot != null) {
+      paramJceOutputStream.write(this.newsReddot, 2);
+    }
+    if (this.user != null) {
+      paramJceOutputStream.write(this.user, 3);
+    }
+    if (this.menu != null) {
+      paramJceOutputStream.write(this.menu, 4);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+ * Qualified Name:     UserGrowth.stRedDotRsp
+ * JD-Core Version:    0.7.0.1
+ */

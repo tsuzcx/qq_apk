@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajnv;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -16,17 +15,20 @@ import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+import arrr;
+import bclh;
+import bclk;
+import bcnt;
+import bdhj;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class RollangleImageView
   extends ImageView
 {
-  public static MQLruCache a;
-  ajnv jdField_a_of_type_Ajnv = null;
+  public static MQLruCache<String, Object> a;
+  bclk jdField_a_of_type_Bclk = null;
   public String a;
   boolean jdField_a_of_type_Boolean = false;
   public String b;
@@ -72,24 +74,24 @@ public class RollangleImageView
     }
     try
     {
-      localObject1 = BitmapFactory.decodeResource((Resources)localObject5, 2130840552);
+      localObject1 = BitmapFactory.decodeResource((Resources)localObject5, 2130842151);
       jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put("troopfilerollangleimage://", localObject1);
       localObject3 = localObject1;
       localObject2 = localObject4;
       if (localObject4 == null)
       {
-        localObject2 = BitmapFactory.decodeResource((Resources)localObject5, 2130840551);
+        localObject2 = BitmapFactory.decodeResource((Resources)localObject5, 2130842150);
         jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put("troopfilerollangleimageborder://", localObject2);
         localObject3 = localObject1;
       }
-      localObject1 = ImageUtil.a(new BitmapFactory.Options(), paramString, 128);
+      localObject1 = bdhj.a(new BitmapFactory.Options(), paramString, 128);
       i = paramString.getWidth();
     }
     catch (OutOfMemoryError paramString)
     {
       try
       {
-        paramString = ImageUtil.a(paramString, (BitmapFactory.Options)localObject1);
+        paramString = bdhj.a(paramString, (BitmapFactory.Options)localObject1);
         if (paramString != null) {
           break label181;
         }
@@ -154,37 +156,37 @@ public class RollangleImageView
     if (!TextUtils.isEmpty(this.b))
     {
       if (paramBoolean) {
-        localBitmap = RollangleImageView.ImageCache.a().b(this.b, this);
+        localBitmap = bclh.a().b(this.b, this);
       }
     }
     else {
       return localBitmap;
     }
-    return RollangleImageView.ImageCache.a().a(this.b, this);
+    return bclh.a().a(this.b, this);
   }
   
   public static void setSuspendLoad(boolean paramBoolean)
   {
-    RollangleImageView.ImageCache.a().a(paramBoolean);
+    bclh.a().a(paramBoolean);
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Ajnv != null)
+    if (this.jdField_a_of_type_Bclk != null)
     {
-      this.jdField_a_of_type_Ajnv.cancel(true);
-      this.jdField_a_of_type_Ajnv = null;
+      this.jdField_a_of_type_Bclk.cancel(true);
+      this.jdField_a_of_type_Bclk = null;
     }
-    this.jdField_a_of_type_Ajnv = new ajnv(this);
-    this.jdField_a_of_type_Ajnv.execute(new Boolean[] { Boolean.valueOf(paramBoolean) });
+    this.jdField_a_of_type_Bclk = new bclk(this);
+    this.jdField_a_of_type_Bclk.execute(new Boolean[] { Boolean.valueOf(paramBoolean) });
   }
   
   public void setParams(String paramString1, String paramString2)
   {
-    if ((TroopFileUtils.a(paramString1, this.jdField_a_of_type_JavaLangString)) && (TroopFileUtils.a(paramString2, this.b))) {
+    if ((bcnt.a(paramString1, this.jdField_a_of_type_JavaLangString)) && (bcnt.a(paramString2, this.b))) {
       return;
     }
-    if (RollangleImageView.ImageCache.a().jdField_a_of_type_Boolean)
+    if (bclh.a().jdField_a_of_type_Boolean)
     {
       setParamsOnScrolling(paramString1, paramString2);
       return;
@@ -196,10 +198,10 @@ public class RollangleImageView
   
   public void setParamsOnScrolling(String paramString1, String paramString2)
   {
-    Bitmap localBitmap = RollangleImageView.ImageCache.a().a(paramString2, this);
+    Bitmap localBitmap = bclh.a().a(paramString2, this);
     if (localBitmap == null)
     {
-      setImageResource(FileManagerUtil.b(paramString1));
+      setImageResource(arrr.b(paramString1));
       return;
     }
     this.jdField_a_of_type_JavaLangString = paramString1;
@@ -209,7 +211,7 @@ public class RollangleImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.RollangleImageView
  * JD-Core Version:    0.7.0.1
  */

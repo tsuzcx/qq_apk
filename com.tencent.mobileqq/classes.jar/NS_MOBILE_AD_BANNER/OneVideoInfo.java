@@ -9,14 +9,14 @@ import java.util.Map;
 public final class OneVideoInfo
   extends JceStruct
 {
-  static Map cache_extendinfo = new HashMap();
+  static Map<String, String> cache_extendinfo = new HashMap();
   public int actiontype;
   public String actionurl = "";
   public String clientkey = "";
   public int commentCount;
   public String coverurl = "";
   public long createtime;
-  public Map extendinfo;
+  public Map<String, String> extendinfo;
   public int filetype;
   public int height;
   public int ifLiked;
@@ -44,7 +44,7 @@ public final class OneVideoInfo
   
   public OneVideoInfo() {}
   
-  public OneVideoInfo(String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, byte paramByte1, long paramLong1, long paramLong2, byte paramByte2, int paramInt3, String paramString6, Map paramMap, String paramString7, String paramString8, int paramInt4, int paramInt5, String paramString9, int paramInt6, String paramString10, String paramString11, int paramInt7, int paramInt8, String paramString12, String paramString13)
+  public OneVideoInfo(String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, byte paramByte1, long paramLong1, long paramLong2, byte paramByte2, int paramInt3, String paramString6, Map<String, String> paramMap, String paramString7, String paramString8, int paramInt4, int paramInt5, String paramString9, int paramInt6, String paramString10, String paramString11, int paramInt7, int paramInt8, String paramString12, String paramString13)
   {
     this.videoid = paramString1;
     this.videourl = paramString2;
@@ -164,7 +164,7 @@ public final class OneVideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_AD_BANNER.OneVideoInfo
  * JD-Core Version:    0.7.0.1
  */

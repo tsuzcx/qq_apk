@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/b3m" app:layout_constraintDimensionRatio="366:205" app:layout_constraintStart_toStartOf="dn" app:layout_constraintTop_toTopOf="dn" style="@style/fd" />
+    <android.support.constraint.Barrier android:id="@id/b48" android:layout_width="wrap_content" android:layout_height="wrap_content" app:barrierDirection="dk" app:constraint_referenced_ids="biz_slot_show_desc_tv,biz_slot_title_neat_tv,biz_slot_pic_cnt_icon,biz_slot_pic_cnt" />
+    <include layout="@layout/qx" />
+    <ImageView android:id="@id/biz_slot_pic_cnt_icon" android:background="@raw/biz_time_line_pic_icon" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="@dimen/dl" app:layout_constraintBottom_toBottomOf="@id/biz_slot_pic_cnt" app:layout_constraintRight_toLeftOf="@id/biz_slot_pic_cnt" app:layout_constraintTop_toTopOf="@id/biz_slot_pic_cnt" />
+    <TextView android:textSize="@dimen/na" android:textColor="@color/a6q" android:id="@id/biz_slot_pic_cnt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/n_" android:layout_marginBottom="@dimen/n_" app:layout_constraintBottom_toBottomOf="@id/b3m" app:layout_constraintRight_toRightOf="@id/b3m" />
+</android.support.constraint.ConstraintLayout>

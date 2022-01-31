@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class im_msg_body$MarketTrans
-  extends MessageMicro
+  extends MessageMicro<MarketTrans>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_msg_resid = PBField.initBytes(ByteStringMicro.EMPTY);

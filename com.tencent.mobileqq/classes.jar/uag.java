@@ -1,30 +1,56 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.method.BaseMovementMethod;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ListAdapter;
 
 public class uag
-  implements View.OnClickListener
+  extends BaseMovementMethod
 {
-  public uag(TroopMemberListActivity paramTroopMemberListActivity) {}
+  private static uag a;
   
-  public void onClick(View paramView)
+  public static uag a()
   {
-    this.a.c = false;
-    this.a.t = "";
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.a.b.setVisibility(0);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.a();
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new uag();
+      }
+      return a;
     }
+    finally {}
+  }
+  
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  {
+    int i = paramMotionEvent.getAction();
+    if ((i == 1) || (i == 0))
+    {
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      int m = paramTextView.getTotalPaddingLeft();
+      int n = paramTextView.getTotalPaddingTop();
+      int i1 = paramTextView.getScrollX();
+      int i2 = paramTextView.getScrollY();
+      paramMotionEvent = paramTextView.getLayout();
+      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
+      paramSpannable = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
+      if (paramSpannable.length != 0)
+      {
+        paramSpannable = paramSpannable[0];
+        if (i == 1) {
+          paramSpannable.onClick(paramTextView);
+        }
+      }
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uag
  * JD-Core Version:    0.7.0.1
  */

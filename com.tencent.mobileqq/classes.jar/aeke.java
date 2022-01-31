@@ -1,12 +1,16 @@
-import android.media.MediaPlayer;
-import android.os.Looper;
-import com.tencent.mobileqq.music.SongInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class aeke
+  implements DialogInterface.OnClickListener
 {
-  public MediaPlayer a;
-  public Looper a;
-  public SongInfo a;
+  public aeke(UpgradeActivity paramUpgradeActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.finish();
+  }
 }
 
 

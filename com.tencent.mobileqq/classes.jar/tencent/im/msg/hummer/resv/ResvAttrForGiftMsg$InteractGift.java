@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class ResvAttrForGiftMsg$InteractGift
-  extends MessageMicro
+  extends MessageMicro<InteractGift>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_interact_id = PBField.initBytes(ByteStringMicro.EMPTY);

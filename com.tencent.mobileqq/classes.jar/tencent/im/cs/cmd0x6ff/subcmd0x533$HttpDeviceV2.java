@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class subcmd0x533$HttpDeviceV2
-  extends MessageMicro
+  extends MessageMicro<HttpDeviceV2>
 {
   public static final int Android = 1;
   public static final int IOS = 0;
@@ -15,7 +15,7 @@ public final class subcmd0x533$HttpDeviceV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.cmd0x6ff.subcmd0x533.HttpDeviceV2
  * JD-Core Version:    0.7.0.1
  */

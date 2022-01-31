@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.webview.sonic.SonicPreloadData;
-
-public final class akmo
-  implements Parcelable.Creator
+public abstract interface akmo
 {
-  public SonicPreloadData a(Parcel paramParcel)
-  {
-    return new SonicPreloadData(paramParcel);
-  }
-  
-  public SonicPreloadData[] a(int paramInt)
-  {
-    return new SonicPreloadData[paramInt];
-  }
+  public abstract int c();
 }
 
 

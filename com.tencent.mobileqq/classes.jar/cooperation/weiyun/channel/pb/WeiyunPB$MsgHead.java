@@ -13,7 +13,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class WeiyunPB$MsgHead
-  extends MessageMicro
+  extends MessageMicro<MsgHead>
 {
   public static final int APPID_FIELD_NUMBER = 5;
   public static final int AUTH_CODE_FIELD_NUMBER = 31;
@@ -86,7 +86,7 @@ public final class WeiyunPB$MsgHead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.weiyun.channel.pb.WeiyunPB.MsgHead
  * JD-Core Version:    0.7.0.1
  */

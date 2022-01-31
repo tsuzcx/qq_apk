@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.v7.widget.RecyclerView android:id="@id/bgc" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="132.0dip" android:paddingEnd="132.0dip" />
+    <View android:background="@drawable/emoji_capture_sticker_select_frame" android:layout_width="@dimen/a0o" android:layout_height="@dimen/a0o" android:layout_centerHorizontal="true" />
+</merge>

@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import eme;
+import ehb;
 import java.io.File;
 
 public class ScreenCapture
@@ -20,7 +20,7 @@ public class ScreenCapture
       return;
     }
     QLog.i("sethmao", 4, "path is " + paramString);
-    new eme(paramView).execute(new String[] { paramString });
+    new ehb(paramView).execute(new String[] { paramString });
   }
   
   public static boolean clearSnapCacheFile(Context paramContext)

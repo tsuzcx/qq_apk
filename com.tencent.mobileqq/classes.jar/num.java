@@ -1,34 +1,22 @@
-import com.tencent.biz.qqstory.channel.CmdTaskManger;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailLikeListLoader.GetLikeListRequest;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.parallel.ParallelJobSegment;
-
 public class num
-  extends ParallelJobSegment
+  implements alpg
 {
-  public int a;
+  public void a(Object paramObject) {}
   
-  public num(DetailFeedAllInfoPullSegment paramDetailFeedAllInfoPullSegment, int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  protected void a(JobContext paramJobContext, String paramString)
-  {
-    DetailLikeListLoader.GetLikeListRequest localGetLikeListRequest = new DetailLikeListLoader.GetLikeListRequest();
-    localGetLikeListRequest.jdField_a_of_type_JavaLangString = paramString;
-    localGetLikeListRequest.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Int != -1) {
-      localGetLikeListRequest.c = this.jdField_a_of_type_Int;
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      return;
     }
-    CmdTaskManger.a().a(localGetLikeListRequest, new nun(this, paramJobContext, paramString));
+    a(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     num
  * JD-Core Version:    0.7.0.1
  */

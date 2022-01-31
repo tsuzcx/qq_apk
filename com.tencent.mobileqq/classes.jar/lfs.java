@@ -1,23 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.VideoController.AnyChatReqTimeoutRunnable;
+import com.tencent.av.app.VideoAppInterface;
 
-class lfs
-  implements View.OnClickListener
+public class lfs
+  implements DialogInterface.OnClickListener
 {
-  lfs(lfq paramlfq, lft paramlft) {}
+  public lfs(VideoController.AnyChatReqTimeoutRunnable paramAnyChatReqTimeoutRunnable) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_Lfq.a, lft.c(this.jdField_a_of_type_Lft));
-    PublicAccountReportUtils.a(null, "CliOper", "", lft.c(this.jdField_a_of_type_Lft), "0X80078A8", "0X80078A8", 0, 0, "", "", "", ReadInJoyUtils.c(), false);
+    if (this.a.this$0.a().d == null) {
+      this.a.this$0.a().d = this.a.this$0.a().a.c;
+    }
+    this.a.this$0.a(this.a.a, 2131230741, 1, this.a.this$0.b);
+    this.a.this$0.a().a("AnyChatReqTimeoutRunnable", 6);
+    this.a.this$0.a.a(new Object[] { Integer.valueOf(14), Integer.valueOf(9), this.a.this$0.a().d, Long.valueOf(this.a.a) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lfs
  * JD-Core Version:    0.7.0.1
  */

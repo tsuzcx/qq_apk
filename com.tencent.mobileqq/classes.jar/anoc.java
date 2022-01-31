@@ -1,25 +1,20 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.troop.utils.TroopFileUtils;
-import dov.com.qq.im.capture.text.JourneyTextItem;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class anoc
-  implements annx
+final class anoc
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  public anoc(JourneyTextItem paramJourneyTextItem) {}
-  
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    String str = paramString;
-    if (paramInt == 0) {
-      str = TroopFileUtils.b(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkApp.ArkAppCenterUtil", 2, new Object[] { "preDownloadArkApp download complete,retCode: ", Integer.valueOf(paramInt), ";msg: ", paramString });
     }
-    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anoc
  * JD-Core Version:    0.7.0.1
  */

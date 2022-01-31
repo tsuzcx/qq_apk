@@ -1,19 +1,22 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class acog
-  implements Runnable
+public abstract interface acog
 {
-  acog(acod paramacod) {}
+  public abstract void a();
   
-  public void run()
-  {
-    UniformDownloadActivity.b(this.a.a).setVisibility(4);
-  }
+  public abstract void a(agkf paramagkf);
+  
+  public abstract void a(ChatMessage paramChatMessage);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(agkf paramagkf);
+  
+  public abstract void b(ChatMessage paramChatMessage);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acog
  * JD-Core Version:    0.7.0.1
  */

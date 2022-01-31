@@ -1,21 +1,22 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
-import com.tencent.mobileqq.app.ContactSorter;
-import java.util.Comparator;
+import com.tencent.biz.pubaccount.CustomWebView;
 
 public class nnk
-  implements Comparator
 {
-  public nnk(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public int a(QQUserUIItem paramQQUserUIItem1, QQUserUIItem paramQQUserUIItem2)
+  public nnk(CustomWebView paramCustomWebView)
   {
-    return ContactSorter.a(paramQQUserUIItem1.mComparePartInt, paramQQUserUIItem1.mCompareSpell, paramQQUserUIItem2.mComparePartInt, paramQQUserUIItem2.mCompareSpell);
+    this.jdField_a_of_type_Int = 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nnk
  * JD-Core Version:    0.7.0.1
  */

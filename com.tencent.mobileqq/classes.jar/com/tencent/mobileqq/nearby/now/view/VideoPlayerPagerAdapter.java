@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.nearby.now.view;
 
-import aeyg;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -11,12 +10,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import avft;
+import avfv;
+import avfw;
+import avgh;
 import com.tencent.image.RegionDrawable;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.nearby.now.StoryPlayController;
 import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.logic.VideoInfoListenerImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.security.InvalidParameterException;
@@ -29,17 +31,17 @@ import java.util.Set;
 
 public class VideoPlayerPagerAdapter
   extends PagerAdapter
-  implements View.OnClickListener, VideoPlayerView.ShowLoadingWhenLoadingCoverListener
+  implements View.OnClickListener
 {
   public int a;
-  public SparseArray a;
+  public SparseArray<avfw> a;
   protected LayoutInflater a;
+  private avft a;
   public QQAppInterface a;
   public StoryPlayController a;
-  private StuffContainerView.OnCloseListener a;
-  public List a;
+  public List<VideoData> a;
   public boolean a;
-  public SparseArray b;
+  public SparseArray<View> b;
   private boolean b;
   private boolean c;
   
@@ -71,6 +73,11 @@ public class VideoPlayerPagerAdapter
     return (View)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
   }
   
+  public avfw a(int paramInt)
+  {
+    return (avfw)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+  }
+  
   public VideoData a(int paramInt)
   {
     if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
@@ -79,19 +86,14 @@ public class VideoPlayerPagerAdapter
     return null;
   }
   
-  public VideoPlayerPagerAdapter.VideoViewHolder a(int paramInt)
-  {
-    return (VideoPlayerPagerAdapter.VideoViewHolder)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-  }
-  
   public void a()
   {
     int i = 0;
     while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
     {
-      VideoPlayerPagerAdapter.VideoViewHolder localVideoViewHolder = (VideoPlayerPagerAdapter.VideoViewHolder)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i));
-      if ((localVideoViewHolder != null) && (localVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView != null)) {
-        localVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.c();
+      avfw localavfw = (avfw)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i));
+      if ((localavfw != null) && (localavfw.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView != null)) {
+        localavfw.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.c();
       }
       i += 1;
     }
@@ -111,13 +113,13 @@ public class VideoPlayerPagerAdapter
     while (i >= 0)
     {
       int j = ((Integer)localObject[i]).intValue();
-      localHashMap.put(Integer.valueOf(j + paramInt), (VideoInfoListenerImpl)localHashMap.get(Integer.valueOf(j)));
+      localHashMap.put(Integer.valueOf(j + paramInt), (avgh)localHashMap.get(Integer.valueOf(j)));
       localHashMap.remove(Integer.valueOf(j));
       i -= 1;
     }
   }
   
-  public void a(int paramInt, List paramList)
+  public void a(int paramInt, List<VideoData> paramList)
   {
     if (paramInt == 0)
     {
@@ -138,9 +140,9 @@ public class VideoPlayerPagerAdapter
       while (paramInt >= 0)
       {
         j = ((Integer)localObject1[paramInt]).intValue();
-        localObject2 = (VideoPlayerPagerAdapter.VideoViewHolder)this.jdField_a_of_type_AndroidUtilSparseArray.get(j);
-        ((VideoPlayerPagerAdapter.VideoViewHolder)localObject2).jdField_a_of_type_Int += i;
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(((VideoPlayerPagerAdapter.VideoViewHolder)this.jdField_a_of_type_AndroidUtilSparseArray.get(j)).jdField_a_of_type_Int, this.jdField_a_of_type_AndroidUtilSparseArray.get(j));
+        localObject2 = (avfw)this.jdField_a_of_type_AndroidUtilSparseArray.get(j);
+        ((avfw)localObject2).jdField_a_of_type_Int += i;
+        this.jdField_a_of_type_AndroidUtilSparseArray.put(((avfw)this.jdField_a_of_type_AndroidUtilSparseArray.get(j)).jdField_a_of_type_Int, this.jdField_a_of_type_AndroidUtilSparseArray.get(j));
         this.jdField_a_of_type_AndroidUtilSparseArray.delete(j);
         paramInt -= 1;
       }
@@ -176,15 +178,15 @@ public class VideoPlayerPagerAdapter
     this.jdField_a_of_type_JavaUtilList.addAll(paramList);
   }
   
+  public void a(avft paramavft)
+  {
+    this.jdField_a_of_type_Avft = paramavft;
+  }
+  
   public void a(StoryPlayController paramStoryPlayController, Bundle paramBundle)
   {
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController = paramStoryPlayController;
     this.jdField_b_of_type_Boolean = false;
-  }
-  
-  public void a(StuffContainerView.OnCloseListener paramOnCloseListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView$OnCloseListener = paramOnCloseListener;
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
@@ -195,13 +197,13 @@ public class VideoPlayerPagerAdapter
       do
       {
         return;
-      } while ((VideoPlayerPagerAdapter.VideoViewHolder)((View)paramObject).getTag() == null);
+      } while ((avfw)((View)paramObject).getTag() == null);
       View localView = (View)paramObject;
-      ((VideoPlayerPagerAdapter.VideoViewHolder)((View)paramObject).getTag()).jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.c();
+      ((avfw)((View)paramObject).getTag()).jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.c();
       paramViewGroup.removeView(localView);
     } while (((ShortVideoCommentsView)paramObject).jdField_a_of_type_AndroidViewView == null);
-    a((ImageView)((ShortVideoCommentsView)paramObject).jdField_a_of_type_AndroidViewView.findViewById(2131366378));
-    a((ImageView)((ShortVideoCommentsView)paramObject).jdField_a_of_type_AndroidViewView.findViewById(2131370642));
+    a((ImageView)((ShortVideoCommentsView)paramObject).jdField_a_of_type_AndroidViewView.findViewById(2131368753));
+    a((ImageView)((ShortVideoCommentsView)paramObject).jdField_a_of_type_AndroidViewView.findViewById(2131365401));
   }
   
   public int getCount()
@@ -214,7 +216,7 @@ public class VideoPlayerPagerAdapter
     if (paramObject == null) {
       return -2;
     }
-    paramObject = (VideoPlayerPagerAdapter.VideoViewHolder)((View)paramObject).getTag();
+    paramObject = (avfw)((View)paramObject).getTag();
     if (paramObject == null) {
       return -2;
     }
@@ -243,27 +245,27 @@ public class VideoPlayerPagerAdapter
       return null;
     }
     VideoData localVideoData = (VideoData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    VideoPlayerPagerAdapter.VideoViewHolder localVideoViewHolder = new VideoPlayerPagerAdapter.VideoViewHolder(this);
+    avfw localavfw = new avfw(this);
     ShortVideoCommentsView localShortVideoCommentsView = new ShortVideoCommentsView(paramViewGroup.getContext());
     localShortVideoCommentsView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    localShortVideoCommentsView.a(localVideoViewHolder, localVideoData);
-    localVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setOnCloseListener(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView$OnCloseListener);
-    localVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setOnCommentClickListener(new aeyg(this, localShortVideoCommentsView));
-    localVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData = localVideoData;
+    localShortVideoCommentsView.a(localavfw, localVideoData);
+    localavfw.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setOnCloseListener(this.jdField_a_of_type_Avft);
+    localavfw.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setOnCommentClickListener(new avfv(this, localShortVideoCommentsView));
+    localavfw.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData = localVideoData;
     if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.a(this.jdField_a_of_type_AndroidViewLayoutInflater, this, localVideoViewHolder);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.a(this.jdField_a_of_type_AndroidViewLayoutInflater, this, localavfw);
     }
-    localVideoViewHolder.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localVideoViewHolder);
+    localavfw.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localavfw);
     this.jdField_b_of_type_AndroidUtilSparseArray.put(paramInt, localShortVideoCommentsView);
-    localShortVideoCommentsView.setTag(localVideoViewHolder);
+    localShortVideoCommentsView.setTag(localavfw);
     if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController != null)
     {
       StoryPlayController localStoryPlayController = this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController;
       if (paramInt == this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.c) {}
       for (;;)
       {
-        localStoryPlayController.a(localVideoViewHolder, localVideoData, bool, localShortVideoCommentsView);
+        localStoryPlayController.a(localavfw, localVideoData, bool, localShortVideoCommentsView);
         if (paramInt == this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.jdField_a_of_type_Int) {
           this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.a(paramInt);
         }
@@ -289,7 +291,7 @@ public class VideoPlayerPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

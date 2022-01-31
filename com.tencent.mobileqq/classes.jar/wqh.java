@@ -1,25 +1,29 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyProxy;
-import com.tencent.mobileqq.observer.GetRedPointExObserver;
+import android.support.annotation.NonNull;
 
 public class wqh
-  extends GetRedPointExObserver
+  extends umf<wpr, uvf>
 {
-  public wqh(MainAssistObserver paramMainAssistObserver) {}
-  
-  protected void a(Object paramObject)
+  public wqh(wpr paramwpr)
   {
-    this.a.g();
-    if ((this.a.a != null) && (this.a.a.app != null) && (this.a.a.app.a() != null)) {
-      this.a.a.app.a().e();
-    }
+    super(paramwpr);
   }
+  
+  public void a(@NonNull wpr paramwpr, @NonNull uvf paramuvf)
+  {
+    wxe.a("Q.qqstory.home.data.HomeFeedPresenter", "upload status change event:%s", paramuvf);
+    wpr.a(paramwpr, paramuvf.a);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uvf.class;
+  }
+  
+  public void b(@NonNull wpr paramwpr, @NonNull uvf paramuvf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wqh
  * JD-Core Version:    0.7.0.1
  */

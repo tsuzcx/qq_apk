@@ -1,28 +1,22 @@
-import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
 
-public class aerz
-  extends Handler
+class aerz
+  extends bayj
 {
-  public aerz(StoryPlayController paramStoryPlayController) {}
+  aerz(aery paramaery, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      StoryPlayController.a(this.a, this.a.a);
-    }
+    this.a.a(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aerz
  * JD-Core Version:    0.7.0.1
  */

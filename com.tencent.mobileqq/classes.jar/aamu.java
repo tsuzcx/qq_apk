@@ -1,15 +1,6 @@
-import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
-
-public class aamu
-  implements Runnable
+public abstract interface aamu
 {
-  public aamu(ARGreetingCardListManager paramARGreetingCardListManager) {}
-  
-  public void run()
-  {
-    ARGreetingCardListManager.c(this.a);
-    ARGreetingCardListManager.d(this.a);
-  }
+  public abstract void onResponse(aamt paramaamt);
 }
 
 

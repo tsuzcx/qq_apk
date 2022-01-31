@@ -1,120 +1,100 @@
-import AvatarInfo.QQHeadInfo;
-import com.tencent.mobileqq.app.FaceDownloader;
-import com.tencent.mobileqq.app.FaceHandler;
-import com.tencent.mobileqq.app.NearByFaceDownloader;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.util.FaceInfo;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.view.View;
+import com.tencent.biz.widgets.ViewFinderView.1;
 
 public class zhp
-  implements Runnable
+  extends View
 {
+  protected double a;
   int jdField_a_of_type_Int = 0;
   long jdField_a_of_type_Long;
-  FaceInfo jdField_a_of_type_ComTencentMobileqqUtilFaceInfo;
-  String jdField_a_of_type_JavaLangString;
-  int b;
-  int c;
-  int d;
+  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
+  Rect jdField_a_of_type_AndroidGraphicsRect;
+  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842864);
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int = 0;
+  Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842881);
+  protected int c;
+  protected int d = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
   
-  public zhp(NearByFaceDownloader paramNearByFaceDownloader, int paramInt1, FaceInfo paramFaceInfo, int paramInt2, int paramInt3, String paramString, int paramInt4, long paramLong)
+  public zhp(Context paramContext)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.d = paramInt4;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo = paramFaceInfo;
+    super(paramContext);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(1275068416);
   }
   
-  public void run()
+  public void a()
   {
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo.dstUsrType + "_" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b + "_" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqAppNearByFaceDownloader.jdField_a_of_type_ComTencentMobileqqAppFaceHandler.a(str1, false);
-    if (NetworkUtil.d(BaseApplication.getContext())) {
-      if ((this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.m] <= 0L) || (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.l] <= 0L)) {
-        break label770;
-      }
-    }
-    label770:
-    for (long l1 = this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.m] - this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.l];; l1 = 0L)
+    if (!this.jdField_a_of_type_Boolean)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.n] > this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.m]) && (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.m] > 0L)) {}
-      for (long l2 = this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.n] - this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.m];; l2 = 0L)
-      {
-        if ((this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.o] > 0L) && (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.n] > 0L)) {}
-        for (long l3 = this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.o] - this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.n];; l3 = 0L)
-        {
-          Object localObject1 = new HashMap();
-          ((HashMap)localObject1).put("key", str1);
-          ((HashMap)localObject1).put("totalTime", String.valueOf((float)this.jdField_a_of_type_Long / 1000.0F));
-          ((HashMap)localObject1).put("downInfo_time", String.valueOf(l1));
-          ((HashMap)localObject1).put("downInfo_stime", String.valueOf((float)l1 / 1000.0F));
-          ((HashMap)localObject1).put("interval_time", String.valueOf(l2));
-          ((HashMap)localObject1).put("downPic_time", String.valueOf(l3));
-          ((HashMap)localObject1).put("downPic_stime", String.valueOf((float)l3 / 1000.0F));
-          ((HashMap)localObject1).put("downPic_size", String.valueOf(this.c));
-          ((HashMap)localObject1).put("download_url", this.jdField_a_of_type_JavaLangString);
-          ((HashMap)localObject1).put("param_FailCode", Integer.toString(this.jdField_a_of_type_Int));
-          ((HashMap)localObject1).put("fail_reason", Integer.toString(this.d));
-          ((HashMap)localObject1).put("ssoAndHttp", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.e));
-          Object localObject2 = FaceDownloader.a(32);
-          Object localObject3 = StatisticCollector.a(BaseApplication.getContext());
-          String str2 = this.jdField_a_of_type_ComTencentMobileqqAppNearByFaceDownloader.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin();
-          boolean bool;
-          if (this.jdField_a_of_type_Int == 0)
-          {
-            bool = true;
-            ((StatisticCollector)localObject3).a(str2, (String)localObject2, bool, this.jdField_a_of_type_Long, 0L, (HashMap)localObject1, "");
-            localObject2 = StatisticCollector.a(BaseApplication.getContext());
-            localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppNearByFaceDownloader.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin();
-            if (this.jdField_a_of_type_Int != 0) {
-              break label747;
-            }
-            bool = true;
-            label528:
-            ((StatisticCollector)localObject2).a((String)localObject3, "actGetNearbyHead", bool, this.jdField_a_of_type_Long, 0L, (HashMap)localObject1, "");
-            if ((QLog.isColorLevel()) || (this.jdField_a_of_type_Long > 3000L))
-            {
-              localObject1 = new StringBuffer(200);
-              ((StringBuffer)localObject1).append("NearByFaceDownloader resultCode=").append(this.jdField_a_of_type_Int);
-              ((StringBuffer)localObject1).append(", key=").append(str1);
-              ((StringBuffer)localObject1).append(", totalTime=").append(String.format("%-5s", new Object[] { Long.valueOf(this.jdField_a_of_type_Long) }));
-              ((StringBuffer)localObject1).append(", downInfoTime=").append(l1);
-              ((StringBuffer)localObject1).append(", intervalTime=").append(l2);
-              ((StringBuffer)localObject1).append(", picSize=").append(String.valueOf(this.c));
-              ((StringBuffer)localObject1).append(", downPicTime=").append(l3);
-              ((StringBuffer)localObject1).append(", reasonCode=").append(this.d);
-              ((StringBuffer)localObject1).append(", downUrl=").append(this.jdField_a_of_type_JavaLangString);
-              if (!QLog.isColorLevel()) {
-                break label753;
-              }
-            }
-          }
-          label747:
-          label753:
-          for (int i = 2;; i = 1)
-          {
-            QLog.i("Q.qqhead.NearByFaceDownloader", i, ((StringBuffer)localObject1).toString());
-            return;
-            bool = false;
-            break;
-            bool = false;
-            break label528;
-          }
-        }
-      }
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.jdField_a_of_type_Boolean = true;
+      invalidate();
     }
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    Rect localRect = new Rect(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(localRect);
+    this.c = (paramInt4 - paramInt2 - this.d);
+    this.jdField_a_of_type_Double = (this.c / 5000.0D);
+    this.jdField_a_of_type_AndroidGraphicsRect = localRect;
+    invalidate();
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  protected void onDraw(Canvas paramCanvas)
+  {
+    Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+    if ((localRect == null) || (localRect.width() == 0) || (localRect.height() == 0)) {
+      paramCanvas.drawRect(0.0F, 0.0F, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+    do
+    {
+      return;
+      paramCanvas.drawRect(0.0F, 0.0F, this.jdField_a_of_type_Int, localRect.top, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawRect(0.0F, localRect.top, localRect.left, localRect.bottom, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawRect(localRect.right, localRect.top, this.jdField_a_of_type_Int, localRect.bottom, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawRect(0.0F, localRect.bottom, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+    } while (!this.jdField_a_of_type_Boolean);
+    int i = (int)((System.currentTimeMillis() - this.jdField_a_of_type_Long) * this.jdField_a_of_type_Double) % this.c;
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(localRect.left, localRect.top + i, localRect.right, i + localRect.top + this.d);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+    postInvalidateDelayed(20L, localRect.left, localRect.top, localRect.right, localRect.bottom);
+  }
+  
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    invalidate();
+  }
+  
+  public void postInvalidateDelayed(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if (Build.VERSION.SDK_INT >= 14)
+    {
+      super.postInvalidateDelayed(paramLong, paramInt1, paramInt2, paramInt3, paramInt4);
+      return;
+    }
+    postDelayed(new ViewFinderView.1(this, paramInt1, paramInt2, paramInt3, paramInt4), paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     zhp
  * JD-Core Version:    0.7.0.1
  */

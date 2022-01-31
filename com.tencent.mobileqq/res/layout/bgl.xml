@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/klt" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/klp" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <FrameLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/km0" android:layout_width="0.0dip" android:layout_height="66.0dip" android:layout_weight="1.0">
+            <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="@color/qzone_skin_summarypanel_num_color" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/km1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ihh" android:maxLines="1" />
+                <TextView android:textSize="12.0sp" android:textColor="@color/qzone_skin_summarypanel_name_color" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/km2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/caf" android:maxLines="1" />
+            </LinearLayout>
+        </FrameLayout>
+        <FrameLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/klu" android:layout_width="0.0dip" android:layout_height="66.0dip" android:layout_weight="1.0">
+            <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="@color/qzone_skin_summarypanel_num_color" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/klv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ihh" android:maxLines="1" />
+                <TextView android:textSize="12.0sp" android:textColor="@color/qzone_skin_summarypanel_name_color" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/klw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wl" android:maxLines="1" />
+            </LinearLayout>
+            <ImageView android:layout_gravity="center|right|top" android:id="@id/hkt" android:background="@drawable/dzm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginRight="10.0dip" />
+        </FrameLayout>
+        <FrameLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/km3" android:layout_width="0.0dip" android:layout_height="66.0dip" android:layout_weight="1.0">
+            <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="@color/qzone_skin_summarypanel_num_color" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/km4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:maxLines="1" />
+                <TextView android:textSize="12.0sp" android:textColor="@color/qzone_skin_summarypanel_name_color" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/km5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bpn" android:maxLines="1" />
+            </LinearLayout>
+            <ImageView android:layout_gravity="center|right|top" android:id="@id/hku" android:background="@drawable/dzm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginRight="10.0dip" />
+        </FrameLayout>
+        <FrameLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/klx" android:layout_width="0.0dip" android:layout_height="66.0dip" android:layout_weight="1.0">
+            <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="@color/qzone_skin_summarypanel_num_color" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/kly" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ihh" android:maxLines="1" />
+                <TextView android:textSize="12.0sp" android:textColor="@color/qzone_skin_summarypanel_name_color" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/klz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/c89" android:maxLines="1" />
+            </LinearLayout>
+        </FrameLayout>
+        <FrameLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/km6" android:layout_width="0.0dip" android:layout_height="66.0dip" android:layout_weight="1.0">
+            <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="@color/qzone_skin_summarypanel_num_color" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/km7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ihh" android:maxLines="1" />
+                <TextView android:textSize="12.0sp" android:textColor="@color/qzone_skin_summarypanel_name_color" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/km8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/if9" android:maxLines="1" />
+            </LinearLayout>
+            <com.qzone.widget.ScrollingNumTextView android:textSize="12.0sp" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center|right|top" android:id="@id/hkv" android:background="@drawable/g4b" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_marginRight="4.0dip" android:text="1" />
+        </FrameLayout>
+    </LinearLayout>
+    <com.qzone.homepage.ui.component.newpanel.CommonBtmLine android:id="@id/h9x" android:layout_width="fill_parent" android:layout_height="@dimen/xo" android:layout_alignParentBottom="true" />
+</LinearLayout>

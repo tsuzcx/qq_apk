@@ -1,6 +1,6 @@
 package android.support.v4.util;
 
-public class SparseArrayCompat
+public class SparseArrayCompat<E>
   implements Cloneable
 {
   private static final Object DELETED = new Object();
@@ -55,11 +55,11 @@ public class SparseArrayCompat
     this.mSize = j;
   }
   
-  public void append(int paramInt, Object paramObject)
+  public void append(int paramInt, E paramE)
   {
     if ((this.mSize != 0) && (paramInt <= this.mKeys[(this.mSize - 1)]))
     {
-      put(paramInt, paramObject);
+      put(paramInt, paramE);
       return;
     }
     if ((this.mGarbage) && (this.mSize >= this.mKeys.length)) {
@@ -77,7 +77,7 @@ public class SparseArrayCompat
       this.mValues = arrayOfObject;
     }
     this.mKeys[i] = paramInt;
-    this.mValues[i] = paramObject;
+    this.mValues[i] = paramE;
     this.mSize = (i + 1);
   }
   
@@ -95,7 +95,7 @@ public class SparseArrayCompat
     this.mGarbage = false;
   }
   
-  public SparseArrayCompat clone()
+  public SparseArrayCompat<E> clone()
   {
     try
     {
@@ -126,16 +126,16 @@ public class SparseArrayCompat
     }
   }
   
-  public Object get(int paramInt)
+  public E get(int paramInt)
   {
     return get(paramInt, null);
   }
   
-  public Object get(int paramInt, Object paramObject)
+  public E get(int paramInt, E paramE)
   {
     paramInt = ContainerHelpers.binarySearch(this.mKeys, this.mSize, paramInt);
     if ((paramInt < 0) || (this.mValues[paramInt] == DELETED)) {
-      return paramObject;
+      return paramE;
     }
     return this.mValues[paramInt];
   }
@@ -148,7 +148,7 @@ public class SparseArrayCompat
     return ContainerHelpers.binarySearch(this.mKeys, this.mSize, paramInt);
   }
   
-  public int indexOfValue(Object paramObject)
+  public int indexOfValue(E paramE)
   {
     if (this.mGarbage) {
       gc();
@@ -156,7 +156,7 @@ public class SparseArrayCompat
     int i = 0;
     while (i < this.mSize)
     {
-      if (this.mValues[i] == paramObject) {
+      if (this.mValues[i] == paramE) {
         return i;
       }
       i += 1;
@@ -172,19 +172,19 @@ public class SparseArrayCompat
     return this.mKeys[paramInt];
   }
   
-  public void put(int paramInt, Object paramObject)
+  public void put(int paramInt, E paramE)
   {
     int i = ContainerHelpers.binarySearch(this.mKeys, this.mSize, paramInt);
     if (i >= 0)
     {
-      this.mValues[i] = paramObject;
+      this.mValues[i] = paramE;
       return;
     }
     int j = i ^ 0xFFFFFFFF;
     if ((j < this.mSize) && (this.mValues[j] == DELETED))
     {
       this.mKeys[j] = paramInt;
-      this.mValues[j] = paramObject;
+      this.mValues[j] = paramE;
       return;
     }
     i = j;
@@ -213,7 +213,7 @@ public class SparseArrayCompat
       System.arraycopy(this.mValues, i, this.mValues, i + 1, this.mSize - i);
     }
     this.mKeys[i] = paramInt;
-    this.mValues[i] = paramObject;
+    this.mValues[i] = paramE;
     this.mSize += 1;
   }
   
@@ -241,12 +241,12 @@ public class SparseArrayCompat
     }
   }
   
-  public void setValueAt(int paramInt, Object paramObject)
+  public void setValueAt(int paramInt, E paramE)
   {
     if (this.mGarbage) {
       gc();
     }
-    this.mValues[paramInt] = paramObject;
+    this.mValues[paramInt] = paramE;
   }
   
   public int size()
@@ -287,7 +287,7 @@ public class SparseArrayCompat
     return localStringBuilder.toString();
   }
   
-  public Object valueAt(int paramInt)
+  public E valueAt(int paramInt)
   {
     if (this.mGarbage) {
       gc();
@@ -297,7 +297,7 @@ public class SparseArrayCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     android.support.v4.util.SparseArrayCompat
  * JD-Core Version:    0.7.0.1
  */

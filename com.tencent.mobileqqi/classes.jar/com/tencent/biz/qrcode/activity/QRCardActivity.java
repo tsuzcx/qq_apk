@@ -23,14 +23,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import brs;
-import brt;
-import bru;
-import brw;
-import brx;
-import bry;
-import brz;
-import bsa;
+import blo;
+import blp;
+import blq;
+import bls;
+import blt;
+import blu;
+import blv;
+import blw;
 import com.tencent.biz.qrcode.util.QRCard;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.utils.DialogUtil;
@@ -69,7 +69,7 @@ public class QRCardActivity
   private Dialog jdField_a_of_type_AndroidAppDialog;
   protected Resources a;
   public Handler a;
-  private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener = new bsa(this);
+  private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener = new blw(this);
   protected Button a;
   public ImageView a;
   protected LinearLayout a;
@@ -104,7 +104,7 @@ public class QRCardActivity
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = false;
     this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new brs(this);
+    this.jdField_a_of_type_AndroidOsHandler = new blo(this);
   }
   
   private ViewGroup a()
@@ -159,9 +159,9 @@ public class QRCardActivity
       this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131562263, 1);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.a(String.format(paramContext.getString(2131561504), new Object[] { paramString1 }));
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new bru(this, arrayOfBoolean, paramString2, paramContext, paramString1));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new blq(this, arrayOfBoolean, paramString2, paramContext, paramString1));
     this.jdField_a_of_type_ComTencentWidgetActionSheet.d(2131561746);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new brw(this));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new bls(this));
     if (!this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())
     {
       this.jdField_c_of_type_Boolean = false;
@@ -225,7 +225,7 @@ public class QRCardActivity
                 break;
               }
               localObject5 = localObject4[i3];
-              localObject6 = ((LayoutInflater)localObject1).inflate(2130903435, null);
+              localObject6 = ((LayoutInflater)localObject1).inflate(2130903437, null);
               ((View)localObject6).setTag(Integer.valueOf(0));
               localTextView = (TextView)((View)localObject6).findViewById(2131231118);
               ((TextView)((View)localObject6).findViewById(2131230941)).setText((CharSequence)localObject3);
@@ -243,7 +243,7 @@ public class QRCardActivity
             i1 = this.jdField_a_of_type_ComTencentBizQrcodeUtilQRCard.a.size() + (i1 + i5 + i6);
             break;
           }
-          localObject4 = ((LayoutInflater)localObject1).inflate(2130903435, null);
+          localObject4 = ((LayoutInflater)localObject1).inflate(2130903437, null);
           ((View)localObject4).setTag(Integer.valueOf(0));
           localObject6 = (TextView)((View)localObject4).findViewById(2131231118);
           ((TextView)((View)localObject4).findViewById(2131230941)).setText((CharSequence)localObject3);
@@ -280,7 +280,7 @@ public class QRCardActivity
                 break;
               }
               localObject5 = localObject4[i1];
-              localObject6 = ((LayoutInflater)localObject1).inflate(2130903433, null);
+              localObject6 = ((LayoutInflater)localObject1).inflate(2130903435, null);
               localTextView = (TextView)((View)localObject6).findViewById(2131231118);
               ((TextView)((View)localObject6).findViewById(2131230941)).setText((CharSequence)localObject3);
               localTextView.setText((CharSequence)localObject5);
@@ -289,7 +289,7 @@ public class QRCardActivity
               i1 += 1;
             }
           }
-          localObject4 = ((LayoutInflater)localObject1).inflate(2130903433, null);
+          localObject4 = ((LayoutInflater)localObject1).inflate(2130903435, null);
           localObject6 = (TextView)((View)localObject4).findViewById(2131231118);
           ((TextView)((View)localObject4).findViewById(2131230941)).setText((CharSequence)localObject3);
           ((TextView)localObject6).setText((CharSequence)localObject5);
@@ -306,7 +306,7 @@ public class QRCardActivity
         {
           localObject2 = this.m;
           localObject3 = (String)this.jdField_a_of_type_ComTencentBizQrcodeUtilQRCard.f.get(this.m);
-          localObject4 = ((LayoutInflater)localObject1).inflate(2130903435, null);
+          localObject4 = ((LayoutInflater)localObject1).inflate(2130903437, null);
           ((View)localObject4).setTag(Integer.valueOf(2));
           localObject5 = (TextView)((View)localObject4).findViewById(2131231118);
           ((TextView)((View)localObject4).findViewById(2131230941)).setText((CharSequence)localObject2);
@@ -319,7 +319,7 @@ public class QRCardActivity
         {
           localObject2 = this.l;
           localObject3 = (String)this.jdField_a_of_type_ComTencentBizQrcodeUtilQRCard.e.get(this.l);
-          localObject4 = ((LayoutInflater)localObject1).inflate(2130903433, null);
+          localObject4 = ((LayoutInflater)localObject1).inflate(2130903435, null);
           localObject5 = (TextView)((View)localObject4).findViewById(2131231118);
           ((TextView)((View)localObject4).findViewById(2131230941)).setText((CharSequence)localObject2);
           ((TextView)localObject5).setText((CharSequence)localObject3);
@@ -333,7 +333,7 @@ public class QRCardActivity
           if (!Pattern.compile(t).matcher((CharSequence)localObject3).matches()) {
             break label1202;
           }
-          localObject4 = ((LayoutInflater)localObject1).inflate(2130903435, null);
+          localObject4 = ((LayoutInflater)localObject1).inflate(2130903437, null);
           ((View)localObject4).setTag(Integer.valueOf(1));
           localObject5 = (TextView)((View)localObject4).findViewById(2131231118);
           ((TextView)((View)localObject4).findViewById(2131230941)).setText((CharSequence)localObject2);
@@ -342,7 +342,7 @@ public class QRCardActivity
         }
         while (!this.jdField_a_of_type_ComTencentBizQrcodeUtilQRCard.a.isEmpty())
         {
-          localObject1 = ((LayoutInflater)localObject1).inflate(2130903433, null);
+          localObject1 = ((LayoutInflater)localObject1).inflate(2130903435, null);
           localObject2 = (TextView)((View)localObject1).findViewById(2131231118);
           localObject3 = (TextView)((View)localObject1).findViewById(2131230941);
           ((TextView)localObject2).setMovementMethod(LinkMovementMethod.getInstance());
@@ -360,7 +360,7 @@ public class QRCardActivity
               {
                 ((SpannableString)localObject4).setSpan(new QRCardActivity.NumberSpan(this, ((String)localObject3).toString().substring(paramInt, i2)), paramInt, i2, 33);
                 continue;
-                localObject4 = ((LayoutInflater)localObject1).inflate(2130903433, null);
+                localObject4 = ((LayoutInflater)localObject1).inflate(2130903435, null);
                 localObject5 = (TextView)((View)localObject4).findViewById(2131231118);
                 ((TextView)((View)localObject4).findViewById(2131230941)).setText((CharSequence)localObject2);
                 ((TextView)localObject5).setText((CharSequence)localObject3);
@@ -380,7 +380,7 @@ public class QRCardActivity
           if (i1 != 1) {
             break label1356;
           }
-          ((View)localObject1).setBackgroundResource(2130837875);
+          ((View)localObject1).setBackgroundResource(2130837877);
         }
       }
     }
@@ -389,7 +389,7 @@ public class QRCardActivity
       paramViewGroup.addView((View)localObject1);
       return;
       label1356:
-      ((View)localObject1).setBackgroundResource(2130837877);
+      ((View)localObject1).setBackgroundResource(2130837879);
     }
   }
   
@@ -421,7 +421,7 @@ public class QRCardActivity
     {
       if ((this.jdField_b_of_type_Boolean) && (i1 != 0))
       {
-        this.jdField_a_of_type_JavaLangThread = new Thread(new brt(this));
+        this.jdField_a_of_type_JavaLangThread = new Thread(new blp(this));
         this.jdField_a_of_type_JavaLangThread.start();
       }
       e();
@@ -469,24 +469,24 @@ public class QRCardActivity
   public void a(int paramInt1, int paramInt2, View paramView, ViewGroup paramViewGroup, int paramInt3)
   {
     if (paramInt1 == 0) {
-      paramView.setBackgroundResource(2130837880);
+      paramView.setBackgroundResource(2130837882);
     }
     for (;;)
     {
       if (paramInt2 == 1) {
-        paramView.setBackgroundResource(2130837875);
+        paramView.setBackgroundResource(2130837877);
       }
       if (paramInt3 == 1)
       {
-        paramView.setOnClickListener(new brz(this));
+        paramView.setOnClickListener(new blv(this));
         paramView.setOnLongClickListener(this.jdField_a_of_type_AndroidViewView$OnLongClickListener);
       }
       paramViewGroup.addView(paramView);
       return;
       if (paramInt1 == paramInt2 - 1) {
-        paramView.setBackgroundResource(2130837877);
-      } else {
         paramView.setBackgroundResource(2130837879);
+      } else {
+        paramView.setBackgroundResource(2130837881);
       }
     }
   }
@@ -1058,9 +1058,9 @@ public class QRCardActivity
     QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230);
     localQQCustomDialog.setTitle(2131560527);
     localQQCustomDialog.setMessage(paramString);
-    brx localbrx = new brx(this);
-    localQQCustomDialog.setPositiveButton(2131562539, new bry(this, paramString));
-    localQQCustomDialog.setNegativeButton(2131561746, localbrx);
+    blt localblt = new blt(this);
+    localQQCustomDialog.setPositiveButton(2131562539, new blu(this, paramString));
+    localQQCustomDialog.setNegativeButton(2131561746, localblt);
     localQQCustomDialog.show();
   }
   
@@ -1077,7 +1077,7 @@ public class QRCardActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2130903438);
+    super.setContentView(2130903440);
     paramBundle = super.getIntent();
     a();
     String str = paramBundle.getStringExtra("QRCARDSTR");

@@ -1,19 +1,28 @@
-import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.lang.reflect.Method;
 
 public class ajer
-  implements Runnable
 {
-  public ajer(TroopFileItemOperation paramTroopFileItemOperation, TroopFileTransferManager paramTroopFileTransferManager) {}
-  
-  public void run()
+  public static void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.c();
+    try
+    {
+      ClassLoader localClassLoader = BaseApplicationImpl.sApplication.getClassLoader();
+      if (localClassLoader == null) {
+        return;
+      }
+      localClassLoader.loadClass("cooperation.qwallet.plugin.QWalletPluginProxyActivity").getMethod("handleNoCatchCrash", new Class[] { String.class }).invoke(null, new Object[] { paramString });
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajer
  * JD-Core Version:    0.7.0.1
  */

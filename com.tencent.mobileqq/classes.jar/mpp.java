@@ -1,32 +1,38 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoPlayParam;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.ui.funchat.filter.EffectFilterTextPager;
 import java.lang.ref.WeakReference;
-import java.util.TimerTask;
-import mqq.os.MqqHandler;
 
-class mpp
-  extends TimerTask
+public class mpp
+  extends Handler
 {
-  mpp(mpo parammpo, WeakReference paramWeakReference1, WeakReference paramWeakReference2) {}
+  WeakReference<EffectFilterTextPager> a;
   
-  public void run()
+  public mpp(EffectFilterTextPager paramEffectFilterTextPager)
   {
-    VideoPlayerWrapper localVideoPlayerWrapper = (VideoPlayerWrapper)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    FastWebVideoFeedsPlayManager.VideoPlayParam localVideoPlayParam = (FastWebVideoFeedsPlayManager.VideoPlayParam)this.b.get();
-    if ((localVideoPlayerWrapper != null) && (localVideoPlayerWrapper.a()) && (!FastWebVideoFeedsPlayManager.d(this.jdField_a_of_type_Mpo.a)))
+    this.a = new WeakReference(paramEffectFilterTextPager);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    EffectFilterTextPager localEffectFilterTextPager = (EffectFilterTextPager)this.a.get();
+    if (localEffectFilterTextPager == null) {
+      return;
+    }
+    switch (paramMessage.what)
     {
-      long l1 = localVideoPlayerWrapper.a();
-      long l2 = localVideoPlayerWrapper.b();
-      long l3 = localVideoPlayerWrapper.b();
-      ThreadManager.getUIHandler().post(new mpq(this, localVideoPlayParam, l3, l1, l2));
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      localEffectFilterTextPager.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mpp
  * JD-Core Version:    0.7.0.1
  */

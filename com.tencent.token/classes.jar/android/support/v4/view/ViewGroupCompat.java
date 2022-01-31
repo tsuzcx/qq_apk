@@ -1,73 +1,66 @@
 package android.support.v4.view;
 
 import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityEvent;
 
-public class ViewGroupCompat
+public final class ViewGroupCompat
 {
-  static final ViewGroupCompatImpl IMPL = new ViewGroupCompatStubImpl();
+  static final ViewGroupCompat.ViewGroupCompatBaseImpl IMPL = new ViewGroupCompat.ViewGroupCompatBaseImpl();
+  public static final int LAYOUT_MODE_CLIP_BOUNDS = 0;
+  public static final int LAYOUT_MODE_OPTICAL_BOUNDS = 1;
   
   static
   {
-    int i = Build.VERSION.SDK_INT;
-    if (i >= 14)
+    if (Build.VERSION.SDK_INT >= 21)
     {
-      IMPL = new ViewGroupCompatIcsImpl();
+      IMPL = new ViewGroupCompat.ViewGroupCompatApi21Impl();
       return;
     }
-    if (i >= 11)
+    if (Build.VERSION.SDK_INT >= 18)
     {
-      IMPL = new ViewGroupCompatHCImpl();
+      IMPL = new ViewGroupCompat.ViewGroupCompatApi18Impl();
       return;
     }
   }
   
+  public static int getLayoutMode(ViewGroup paramViewGroup)
+  {
+    return IMPL.getLayoutMode(paramViewGroup);
+  }
+  
+  public static int getNestedScrollAxes(@NonNull ViewGroup paramViewGroup)
+  {
+    return IMPL.getNestedScrollAxes(paramViewGroup);
+  }
+  
+  public static boolean isTransitionGroup(ViewGroup paramViewGroup)
+  {
+    return IMPL.isTransitionGroup(paramViewGroup);
+  }
+  
+  @Deprecated
   public static boolean onRequestSendAccessibilityEvent(ViewGroup paramViewGroup, View paramView, AccessibilityEvent paramAccessibilityEvent)
   {
-    return IMPL.onRequestSendAccessibilityEvent(paramViewGroup, paramView, paramAccessibilityEvent);
+    return paramViewGroup.onRequestSendAccessibilityEvent(paramView, paramAccessibilityEvent);
   }
   
+  public static void setLayoutMode(ViewGroup paramViewGroup, int paramInt)
+  {
+    IMPL.setLayoutMode(paramViewGroup, paramInt);
+  }
+  
+  @Deprecated
   public static void setMotionEventSplittingEnabled(ViewGroup paramViewGroup, boolean paramBoolean)
   {
-    IMPL.setMotionEventSplittingEnabled(paramViewGroup, paramBoolean);
+    paramViewGroup.setMotionEventSplittingEnabled(paramBoolean);
   }
   
-  static class ViewGroupCompatHCImpl
-    extends ViewGroupCompat.ViewGroupCompatStubImpl
+  public static void setTransitionGroup(ViewGroup paramViewGroup, boolean paramBoolean)
   {
-    public void setMotionEventSplittingEnabled(ViewGroup paramViewGroup, boolean paramBoolean)
-    {
-      ViewGroupCompatHC.setMotionEventSplittingEnabled(paramViewGroup, paramBoolean);
-    }
-  }
-  
-  static class ViewGroupCompatIcsImpl
-    extends ViewGroupCompat.ViewGroupCompatHCImpl
-  {
-    public boolean onRequestSendAccessibilityEvent(ViewGroup paramViewGroup, View paramView, AccessibilityEvent paramAccessibilityEvent)
-    {
-      return ViewGroupCompatIcs.onRequestSendAccessibilityEvent(paramViewGroup, paramView, paramAccessibilityEvent);
-    }
-  }
-  
-  static abstract interface ViewGroupCompatImpl
-  {
-    public abstract boolean onRequestSendAccessibilityEvent(ViewGroup paramViewGroup, View paramView, AccessibilityEvent paramAccessibilityEvent);
-    
-    public abstract void setMotionEventSplittingEnabled(ViewGroup paramViewGroup, boolean paramBoolean);
-  }
-  
-  static class ViewGroupCompatStubImpl
-    implements ViewGroupCompat.ViewGroupCompatImpl
-  {
-    public boolean onRequestSendAccessibilityEvent(ViewGroup paramViewGroup, View paramView, AccessibilityEvent paramAccessibilityEvent)
-    {
-      return true;
-    }
-    
-    public void setMotionEventSplittingEnabled(ViewGroup paramViewGroup, boolean paramBoolean) {}
+    IMPL.setTransitionGroup(paramViewGroup, paramBoolean);
   }
 }
 

@@ -1,65 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.av.ui.AVActivity;
 
 public class mdn
-  extends FriendListObserver
+  implements bhuk
 {
-  public mdn(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  public mdn(AVActivity paramAVActivity) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    int i = 0;
-    if (TextUtils.isEmpty(paramString)) {}
-    label142:
-    label143:
-    label149:
-    for (;;)
+    if (this.a.a != null)
     {
-      return;
-      if (paramBoolean)
-      {
-        Object localObject = VideoFeedsPlayActivity.a(this.a);
-        if (localObject != null) {}
-        for (localObject = ContactUtils.b((QQAppInterface)localObject, paramString, false);; localObject = null)
-        {
-          if (TextUtils.isEmpty((CharSequence)localObject)) {
-            break label149;
-          }
-          Iterator localIterator = VideoFeedsPlayActivity.a(this.a).iterator();
-          if (localIterator.hasNext())
-          {
-            VideoInfo localVideoInfo = (VideoInfo)localIterator.next();
-            if ((!paramString.equals(localVideoInfo.j)) || (((String)localObject).equals(localVideoInfo.k))) {
-              break label142;
-            }
-            localVideoInfo.k = ((String)localObject);
-            i = 1;
-          }
-          for (;;)
-          {
-            break;
-            if ((i == 0) || (VideoFeedsPlayActivity.a(this.a) == null)) {
-              break label143;
-            }
-            VideoFeedsPlayActivity.a(this.a).a(paramString);
-            return;
-          }
-          break;
-        }
-      }
+      this.a.a.a();
+      this.a.a.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mdn
  * JD-Core Version:    0.7.0.1
  */

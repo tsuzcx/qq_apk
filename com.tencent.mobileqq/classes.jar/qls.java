@@ -1,18 +1,32 @@
-import java.lang.ref.WeakReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfoTitle;
 
-final class qls
-  implements Runnable
+public final class qls
+  implements Parcelable.Creator<RecommendFollowInfoTitle>
 {
-  qls(WeakReference paramWeakReference) {}
-  
-  public void run()
+  public RecommendFollowInfoTitle a(Parcel paramParcel)
   {
-    qlr.b(this.a);
+    boolean bool = true;
+    RecommendFollowInfoTitle localRecommendFollowInfoTitle = new RecommendFollowInfoTitle();
+    localRecommendFollowInfoTitle.title = paramParcel.readString();
+    if (paramParcel.readInt() == 1) {}
+    for (;;)
+    {
+      localRecommendFollowInfoTitle.isAllFollowed = bool;
+      return localRecommendFollowInfoTitle;
+      bool = false;
+    }
+  }
+  
+  public RecommendFollowInfoTitle[] a(int paramInt)
+  {
+    return new RecommendFollowInfoTitle[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qls
  * JD-Core Version:    0.7.0.1
  */

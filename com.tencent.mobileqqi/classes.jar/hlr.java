@@ -1,24 +1,28 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.RotateableView;
+import android.widget.Toast;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.base.ToastUtil;
 
 public class hlr
-  extends Handler
+  implements Runnable
 {
-  public hlr(RotateableView paramRotateableView) {}
+  public hlr(ToastUtil paramToastUtil, String paramString, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    RotateableView.a(this.a, 8.0F);
-    if (RotateableView.a(this.a) >= 360.0F) {
-      RotateableView.b(this.a, 360.0F);
+    if (this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a == null)
+    {
+      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a = Toast.makeText(CommonDataAdapter.a().a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.show();
+      return;
     }
-    this.a.invalidate();
+    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.setText(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.setDuration(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hlr
  * JD-Core Version:    0.7.0.1
  */

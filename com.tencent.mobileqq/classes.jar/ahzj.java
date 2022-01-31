@@ -1,23 +1,18 @@
-import com.tencent.mobileqq.shortvideo.ShortVideoPreDownloader;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
 
 public class ahzj
-  implements Runnable
+  implements bhwy
 {
-  public ahzj(ShortVideoPreDownloader paramShortVideoPreDownloader) {}
+  public ahzj(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if (!this.a.a.get())
-    {
-      this.a.a.set(true);
-      ShortVideoPreDownloader.a("openRunnable", "Timer count off, mIsPreDownloaderOpen=" + this.a.a.get());
-    }
+    azqs.b(this.a.a, "dc00898", "", "", "0X800AC87", "0X800AC87", 3, 0, "1", "1", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahzj
  * JD-Core Version:    0.7.0.1
  */

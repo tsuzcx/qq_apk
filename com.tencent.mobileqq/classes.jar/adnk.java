@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.webview.webso.WebSoService;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adnk
-  implements Runnable
+class adnk
+  implements DialogInterface.OnClickListener
 {
-  public adnk(NearbyHybridFragment paramNearbyHybridFragment) {}
+  adnk(adnj paramadnj) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyHybridFragment.webloading", 2, "startWebSoRequest, url=" + this.a.c);
-    }
-    WebSoService.a().a(this.a.c, null);
+    paramDialogInterface.dismiss();
   }
 }
 

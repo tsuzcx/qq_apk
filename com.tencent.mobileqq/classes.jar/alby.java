@@ -1,21 +1,22 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.open.agent.FriendChooser.SearchResultAdapter;
-import com.tencent.open.agent.datamodel.ImageLoader.ImageLoadListener;
+import android.os.Bundle;
 
-public class alby
-  implements ImageLoader.ImageLoadListener
+public abstract interface alby
 {
-  public alby(FriendChooser.SearchResultAdapter paramSearchResultAdapter, ImageView paramImageView) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-  }
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  
+  public abstract void a(String paramString, int paramInt1, int paramInt2, int paramInt3, Bundle paramBundle);
+  
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alby
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.FavEmosmManageActivity;
 
-class acii
-  implements View.OnTouchListener
+public class acii
+  implements DialogInterface.OnClickListener
 {
-  acii(acih paramacih, ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
+  public acii(BaseChatPie paramBaseChatPie) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Acih.a.onTouchEvent(paramMotionEvent);
-    return false;
+    Intent localIntent = new Intent(this.a.a, FavEmosmManageActivity.class);
+    this.a.a.startActivity(localIntent);
+    paramDialogInterface.dismiss();
   }
 }
 

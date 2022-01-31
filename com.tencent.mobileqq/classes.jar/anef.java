@@ -1,18 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.widget.RedTouchExtendButton.RedInfo;
-
-public final class anef
-  implements Parcelable.Creator
+public class anef
 {
-  public RedTouchExtendButton.RedInfo a(Parcel paramParcel)
+  public int a()
   {
-    return new RedTouchExtendButton.RedInfo(paramParcel);
+    return 0;
   }
   
-  public RedTouchExtendButton.RedInfo[] a(int paramInt)
+  public void a() {}
+  
+  public void a(aneg paramaneg) {}
+  
+  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean)
   {
-    return new RedTouchExtendButton.RedInfo[paramInt];
+    return false;
+  }
+  
+  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    return false;
   }
 }
 

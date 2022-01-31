@@ -1,35 +1,10 @@
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import cooperation.qzone.networkedmodule.QzoneModuleConfigManager;
-import cooperation.qzone.patch.QZonePatchRequest;
-import cooperation.qzone.plugin.PluginIntent.OnResultListner;
-import cooperation.qzone.plugin.QZonePluginUpdater;
-import cooperation.qzone.plugin.QZonePluginUpdater.OnUpdateListner;
-
-public class amyb
-  implements PluginIntent.OnResultListner
+public abstract interface amyb
 {
-  public amyb(QZonePluginUpdater paramQZonePluginUpdater) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
-    {
-      paramIntent = QZonePatchRequest.a(paramFromServiceMsg.getWupBuffer());
-      QZonePluginUpdater.a(this.a, paramIntent);
-      QZonePluginUpdater.a(this.a, paramIntent, null);
-      QzoneModuleConfigManager.a().a(paramIntent);
-      if (this.a.a != null) {
-        this.a.a.a(true);
-      }
-    }
-    do
-    {
-      return;
-      QZonePluginUpdater.a(this.a, null, null);
-    } while (this.a.a == null);
-    this.a.a.a(false);
-  }
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract void k_(int paramInt);
 }
 
 

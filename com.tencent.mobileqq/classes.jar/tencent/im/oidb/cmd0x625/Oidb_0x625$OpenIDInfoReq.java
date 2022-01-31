@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class Oidb_0x625$OpenIDInfoReq
-  extends MessageMicro
+  extends MessageMicro<OpenIDInfoReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_openid = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -23,7 +23,7 @@ public final class Oidb_0x625$OpenIDInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x625.Oidb_0x625.OpenIDInfoReq
  * JD-Core Version:    0.7.0.1
  */

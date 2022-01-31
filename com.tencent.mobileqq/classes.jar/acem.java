@@ -1,22 +1,17 @@
-import android.content.Context;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
-class acem
-  implements Runnable
+public class acem
+  implements View.OnClickListener
 {
-  acem(acel paramacel) {}
+  public acem(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void run()
-  {
-    if (this.a.a.a != null) {
-      QQToast.a(this.a.a.a, this.a.a.a.getString(2131438028), 1).b(this.a.a.g);
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acem
  * JD-Core Version:    0.7.0.1
  */

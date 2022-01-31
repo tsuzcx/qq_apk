@@ -9,9 +9,9 @@ import java.util.ArrayList;
 public class AccountDetailBannerViewWrapper$ViewPagerAdapter
   extends PagerAdapter
 {
-  protected ArrayList a = new ArrayList();
+  protected ArrayList<View> a = new ArrayList();
   
-  public void a(ArrayList paramArrayList)
+  public void a(ArrayList<View> paramArrayList)
   {
     this.a = paramArrayList;
   }

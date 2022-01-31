@@ -1,31 +1,35 @@
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import cooperation.weiyun.sdk.download.WyDownloader;
-import cooperation.weiyun.sdk.download.WyDownloader.IDownloadListener;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class anhw
-  implements INetEngine.INetEngineListener
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public anhw(WyDownloader paramWyDownloader, WyDownloader.IDownloadListener paramIDownloadListener, String paramString1, String paramString2) {}
+  public anhw(QRScanEntryView paramQRScanEntryView, String paramString, Activity paramActivity) {}
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader$IDownloadListener.a(this.jdField_a_of_type_JavaLangString, paramLong2, (float)paramLong1);
-  }
-  
-  public void a(NetResp paramNetResp)
-  {
-    if (paramNetResp.jdField_a_of_type_Int == 3) {
-      return;
-    }
-    if (paramNetResp.jdField_a_of_type_Int == 0) {}
-    for (boolean bool = true;; bool = false)
+    if (paramBoolean)
     {
-      int i = paramNetResp.b;
-      this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader$IDownloadListener.a(this.jdField_a_of_type_JavaLangString, this.b, bool, paramNetResp.jdField_a_of_type_JavaLangString, i);
+      paramBundle = new Intent();
+      paramBundle.putExtra("detectType", 2);
+      paramBundle.putExtra("scannerResult", this.jdField_a_of_type_JavaLangString.trim());
+      this.jdField_a_of_type_AndroidAppActivity.setResult(13, paramBundle);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+      this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 0);
+      QRScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView, null);
+      QRScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView, 0L);
       return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("AREngine_QRScanEntryView", 2, "onLaunchResult 1 false " + this.jdField_a_of_type_JavaLangString);
+    }
+    QRScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView, this.jdField_a_of_type_JavaLangString);
+    QRScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView, System.currentTimeMillis());
+    ((anfy)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.a).b(false);
   }
 }
 

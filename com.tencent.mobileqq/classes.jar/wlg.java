@@ -1,51 +1,30 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.data.TroopCreateLogic;
-import com.tencent.widget.PopupMenuDialog.MenuItem;
-import com.tencent.widget.PopupMenuDialog.OnClickActionListener;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
+import java.util.List;
+import java.util.Map;
 
-public class wlg
-  implements PopupMenuDialog.OnClickActionListener
+class wlg
+  implements bhxs
 {
-  public wlg(TroopActivity paramTroopActivity) {}
+  wlg(wlf paramwlf, StoryHomeHorizontalListView paramStoryHomeHorizontalListView, wlc paramwlc) {}
   
-  public void a(PopupMenuDialog.MenuItem paramMenuItem)
+  public void onScrollStateChanged(int paramInt)
   {
-    switch (paramMenuItem.a)
+    if (paramInt == 4097)
     {
-    default: 
-    case 0: 
-      do
-      {
-        return;
-        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_create", 0, 0, "", "", "", "");
-        ReportController.b(this.a.app, "CliOper", "", "", "0X8006622", "0X8006622", 0, 0, "", "", "", "");
-        paramMenuItem = (TroopCreateLogic)this.a.app.getManager(31);
-      } while (paramMenuItem == null);
-      paramMenuItem.a(this.a, 0);
-      return;
-    case 1: 
-      ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_join", 0, 0, "", "", "", "");
-      ReportController.b(this.a.app, "CliOper", "", "", "Grp", "grplist_plus_join", 47, 0, "", "", "", "");
-      AddContactsActivity.a(this.a, 1);
-      return;
-    case 2: 
-      ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_msgset", 0, 0, "", "", "", "");
-      ReportController.b(this.a.app, "CliOper", "", "", "Grp", "grplist_plus_setting", 0, 0, "", "", "", "");
-      paramMenuItem = new Intent(this.a, TroopAssisSettingActivity.class);
-      this.a.startActivity(paramMenuItem);
-      return;
+      int i = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getFirstVisiblePosition();
+      paramInt = i;
+      if (i < 0) {
+        paramInt = 0;
+      }
+      wlf.a(this.jdField_a_of_type_Wlf).a.put("2_" + this.jdField_a_of_type_Wlf.a.a.feedId, ((StoryVideoItem)this.jdField_a_of_type_Wlc.a.get(paramInt)).mVid);
     }
-    TroopActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wlg
  * JD-Core Version:    0.7.0.1
  */

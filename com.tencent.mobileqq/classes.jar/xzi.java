@@ -1,22 +1,20 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactSelectActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
-class xzi
-  implements DialogInterface.OnClickListener
+public class xzi
+  implements DialogInterface.OnDismissListener
 {
-  xzi(xzg paramxzg) {}
+  public xzi(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface.dismiss();
-    ReportController.b(this.a.a.app, "CliOper", "", "", "0X8006405", "0X8006405", 0, 0, "", "", "", "");
+    this.a.f = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xzi
  * JD-Core Version:    0.7.0.1
  */

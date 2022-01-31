@@ -1,23 +1,18 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRenderDriver;
-import com.tencent.mobileqq.apollo.IApolloRenderView;
-import com.tencent.mobileqq.apollo.script.SpriteAioScript;
-
-public class yrv
-  implements Runnable
+class yrv
+  implements bkcu
 {
-  public yrv(SpriteAioScript paramSpriteAioScript, IApolloRenderView paramIApolloRenderView, String paramString) {}
+  yrv(yrr paramyrr, amdu paramamdu, String paramString1, int paramInt, String paramString2) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloIApolloRenderView != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloIApolloRenderView.getWorker() != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloIApolloRenderView.getWorker().a != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloIApolloRenderView.getWorker().a.a(this.jdField_a_of_type_JavaLangString);
+    if ((paramInt == 0) && (this.jdField_a_of_type_Amdu != null)) {
+      this.jdField_a_of_type_Amdu.a(Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), 510, 0, this.jdField_a_of_type_Int, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yrv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,36 @@
-import android.content.res.Resources;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.maproam.activity.RoamingActivity;
-import com.tencent.mobileqq.maproam.widget.RoamingMapView;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.view.View;
+import com.tencent.mobileqq.remind.widget.IosTimepicker;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
 
-class gga
-  implements Runnable
+public class gga
+  implements AdapterView.OnItemSelectedListener
 {
-  gga(gfz paramgfz, long paramLong1, long paramLong2, long paramLong3, String paramString) {}
+  public gga(IosTimepicker paramIosTimepicker) {}
   
-  public void run()
+  public void a(AdapterView paramAdapterView) {}
+  
+  public void a_(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    Object localObject;
-    if ((this.jdField_a_of_type_Long >= this.b * 1000L) && (this.jdField_a_of_type_Long <= this.c * 1000L))
+    IosTimepicker.a(this.a, paramView, 1);
+    if (paramView.getTag() != null)
     {
-      this.jdField_a_of_type_Gfz.a.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
-      if (this.jdField_a_of_type_Gfz.a.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamingMapView.a() == 1) {
-        this.jdField_a_of_type_Gfz.a.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+      int i = Integer.parseInt(paramView.getTag().toString());
+      int j = paramAdapterView.getChildCount();
+      paramInt = 0;
+      while (paramInt < j)
+      {
+        if (i != paramInt) {
+          IosTimepicker.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
+        }
+        paramInt += 1;
       }
-      TextView localTextView = this.jdField_a_of_type_Gfz.a.d;
-      if (!VipUtils.a(this.jdField_a_of_type_Gfz.a.b)) {
-        break label182;
-      }
-      localObject = this.jdField_a_of_type_JavaLangString;
-      label109:
-      localTextView.setText((CharSequence)localObject);
-      localObject = this.jdField_a_of_type_Gfz.a.jdField_a_of_type_AndroidWidgetButton;
-      if (!VipUtils.a(this.jdField_a_of_type_Gfz.a.b)) {
-        break label201;
-      }
-    }
-    label182:
-    label201:
-    for (int i = 2131562171;; i = 2131562277)
-    {
-      ((Button)localObject).setText(i);
-      return;
-      this.jdField_a_of_type_Gfz.a.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-      this.jdField_a_of_type_Gfz.a.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-      break;
-      localObject = this.jdField_a_of_type_Gfz.a.getResources().getText(2131562017);
-      break label109;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gga
  * JD-Core Version:    0.7.0.1
  */

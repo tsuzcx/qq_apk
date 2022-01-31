@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.app.message.C2CMessageProcessor;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.Comparator;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.QQPhotoInfo;
 
-public class fnk
-  implements Comparator
+public final class fnk
+  implements Parcelable.Creator
 {
-  public fnk(C2CMessageProcessor paramC2CMessageProcessor) {}
-  
-  public int a(msg_comm.Msg paramMsg1, msg_comm.Msg paramMsg2)
+  public QQPhotoInfo a(Parcel paramParcel)
   {
-    return ((msg_comm.MsgHead)paramMsg1.msg_head.get()).msg_time.get() - ((msg_comm.MsgHead)paramMsg2.msg_head.get()).msg_time.get();
+    return new QQPhotoInfo(paramParcel, null);
+  }
+  
+  public QQPhotoInfo[] a(int paramInt)
+  {
+    return new QQPhotoInfo[paramInt];
   }
 }
 

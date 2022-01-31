@@ -1,35 +1,22 @@
-import android.content.res.Resources;
-import android.graphics.Xfermode;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.widget.DrawableContainer;
-import com.tencent.mobileqq.widget.DrawableContainer.ContainerState;
-import com.tencent.mobileqq.widget.XfermodeDrawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import com.tencent.open.downloadnew.DownloadApi;
 
-public class hmh
-  extends DrawableContainer.ContainerState
+public final class hmh
+  implements DialogInterface.OnClickListener
 {
-  public Xfermode a;
+  public hmh(Bundle paramBundle, int paramInt, ApkUpdateDetail paramApkUpdateDetail) {}
   
-  public hmh(Drawable paramDrawable, DrawableContainer paramDrawableContainer, Xfermode paramXfermode)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramDrawable, paramDrawableContainer);
-    this.a = paramXfermode;
-  }
-  
-  hmh(hmh paramhmh, DrawableContainer paramDrawableContainer, Resources paramResources)
-  {
-    super(paramhmh, paramDrawableContainer, paramResources);
-    this.a = paramhmh.a;
-  }
-  
-  public Drawable newDrawable()
-  {
-    return new XfermodeDrawable(this, null, null);
+    DownloadApi.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hmh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,29 @@
-import com.tencent.av.ui.MultiVideoMembersHolderUI;
-import com.tencent.av.utils.ScrollListener;
-import com.tencent.av.widget.ScrollLayout;
+import com.tencent.biz.pubaccount.PublicAccountManager;
+import com.tencent.mobileqq.app.LBSHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
 
 public class bkk
-  implements ScrollListener
+  implements Runnable
 {
-  public bkk(MultiVideoMembersHolderUI paramMultiVideoMembersHolderUI) {}
+  public bkk(PublicAccountManager paramPublicAccountManager) {}
   
-  public void a()
+  public void run()
   {
-    if (this.a.jdField_a_of_type_Int != this.a.jdField_a_of_type_ComTencentAvWidgetScrollLayout.a())
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((this.a.jdField_a_of_type_AndroidContentContext != null) && (localQQAppInterface != null))
     {
-      this.a.jdField_a_of_type_Int = this.a.jdField_a_of_type_ComTencentAvWidgetScrollLayout.a();
-      this.a.a(false);
+      localQQAppInterface.a(this.a.jdField_a_of_type_ComTencentMobileqqAppLBSObserver);
+      arrayOfByte = localQQAppInterface.b();
+      ((LBSHandler)localQQAppInterface.a(3)).a(arrayOfByte);
     }
-    this.a.a(this.a.jdField_a_of_type_Int);
+    while (localQQAppInterface == null)
+    {
+      byte[] arrayOfByte;
+      return;
+    }
+    this.a.a(this.a.jdField_a_of_type_AndroidContentContext, localQQAppInterface, this.a.p, this.a.q, false, 0.0D, 0.0D, (BusinessObserver)PublicAccountManager.a(this.a).get());
   }
 }
 

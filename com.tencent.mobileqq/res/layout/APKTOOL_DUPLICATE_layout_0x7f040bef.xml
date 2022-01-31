@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0221b6" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3470" android:visibility="invisible" android:layout_width="1.0dip" android:layout_height="54.0dip" android:layout_alignTop="@id/APKTOOL_DUPLICATE_id_0x7f0a0c4a" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="10.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c01f3" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3471" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c4a" android:paddingTop="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" app:logo_width="29.0dip" app:logo_height="29.0dip" app:logo_gravity="name" />
-    <com.tencent.mobileqq.activity.recent.cur.DragTextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c4b" android:layout_marginLeft="5.0dip" android:layout_marginTop="3.0dip" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a3470" android:layout_alignTop="@id/APKTOOL_DUPLICATE_id_0x7f0a0c4a" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02d4" />
-</RelativeLayout>

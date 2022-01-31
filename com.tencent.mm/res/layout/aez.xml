@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.constraint.Placeholder android:id="@id/dcu" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="dn" app:layout_constraintLeft_toLeftOf="dn" app:layout_constraintRight_toRightOf="dn" app:layout_constraintTop_toTopOf="dn" />
+    <android.support.constraint.Placeholder android:id="@id/dcv" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="dn" app:layout_constraintTop_toTopOf="dn" />
+    <android.support.constraint.Placeholder android:id="@id/dcw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.5dip" app:layout_constraintLeft_toLeftOf="dn" app:layout_constraintTop_toBottomOf="@id/dcv" />
+    <android.support.constraint.Placeholder android:id="@id/dcx" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="@id/dcv" app:layout_constraintRight_toRightOf="dn" />
+    <android.support.constraint.Placeholder android:id="@id/dcy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.5dip" app:layout_constraintRight_toRightOf="dn" app:layout_constraintTop_toBottomOf="@id/dcv" />
+    <com.tencent.mm.ui.widget.MMNeat7extView android:ellipsize="end" android:id="@id/b2z" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="dn" app:layout_constraintRight_toRightOf="dn" app:layout_constraintTop_toTopOf="dn" />
+    <TextView android:ellipsize="end" android:id="@id/dcz" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="dn" app:layout_constraintRight_toRightOf="dn" app:layout_constraintTop_toTopOf="dn" />
+    <TextView android:id="@id/ct9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bkn" android:includeFontPadding="false" app:layout_constraintLeft_toLeftOf="dn" app:layout_constraintTop_toBottomOf="@id/b2z" />
+    <ImageView android:id="@id/dd0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:adjustViewBounds="true" app:layout_constraintLeft_toLeftOf="dn" app:layout_constraintTop_toBottomOf="@id/b2z" />
+</merge>

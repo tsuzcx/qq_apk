@@ -7,15 +7,15 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class group_activity$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "uint32_error_code", "act_list" }, new Object[] { Integer.valueOf(0), null }, RspBody.class);
-  public final PBRepeatMessageField act_list = PBField.initRepeatMessage(group_activity.GroupAct.class);
+  public final PBRepeatMessageField<group_activity.GroupAct> act_list = PBField.initRepeatMessage(group_activity.GroupAct.class);
   public final PBUInt32Field uint32_error_code = PBField.initUInt32(0);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.qun.group_activity.group_activity.RspBody
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
-class adju
-  implements Runnable
+public class adju
+  implements DialogInterface.OnClickListener
 {
-  adju(adjt paramadjt) {}
+  public adju(NotificationActivity paramNotificationActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.stopAnim();
-    }
-    this.a.b.playAnim();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adju
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
 import com.tencent.mobileqq.utils.httputils.HttpMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import frk;
+import fmx;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -181,9 +181,9 @@ public class PicAndAdConf
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 4
+    //   1: astore 5
     //   3: aconst_null
-    //   4: astore 5
+    //   4: astore 4
     //   6: iconst_1
     //   7: istore_3
     //   8: new 28	java/io/File
@@ -257,7 +257,7 @@ public class PicAndAdConf
     //   155: pop
     //   156: goto -47 -> 109
     //   159: astore_1
-    //   160: aload 5
+    //   160: aload 4
     //   162: astore_1
     //   163: iconst_0
     //   164: istore_3
@@ -278,7 +278,7 @@ public class PicAndAdConf
     //   187: iconst_1
     //   188: ireturn
     //   189: astore_1
-    //   190: aload 4
+    //   190: aload 5
     //   192: astore_2
     //   193: aload_2
     //   194: ifnull +7 -> 201
@@ -302,8 +302,8 @@ public class PicAndAdConf
     //   0	221	1	paramArrayOfByte	byte[]
     //   0	221	2	paramString	String
     //   7	158	3	bool	boolean
-    //   1	190	4	localObject1	java.lang.Object
-    //   4	157	5	localObject2	java.lang.Object
+    //   4	157	4	localObject1	java.lang.Object
+    //   1	190	5	localObject2	java.lang.Object
     //   42	50	6	localFile	File
     // Exception table:
     //   from	to	target	type
@@ -327,7 +327,7 @@ public class PicAndAdConf
     if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
       return 0L;
     }
-    frk localfrk = (frk)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    fmx localfmx = (fmx)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     switch (this.a_)
     {
     case 2: 
@@ -340,9 +340,9 @@ public class PicAndAdConf
       return 0L;
     case 6: 
     case 10: 
-      return localfrk.jdField_a_of_type_Long;
+      return localfmx.jdField_a_of_type_Long;
     }
-    return localfrk.jdField_a_of_type_Long & 0xFFFFFFFF | this.jdField_a_of_type_Short << 32;
+    return localfmx.jdField_a_of_type_Long & 0xFFFFFFFF | this.jdField_a_of_type_Short << 32;
   }
   
   /* Error */
@@ -370,10 +370,10 @@ public class PicAndAdConf
     //   30: getfield 153	com/tencent/mobileqq/config/struct/PicAndAdConf:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   33: iload_1
     //   34: invokevirtual 163	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   37: checkcast 165	frk
+    //   37: checkcast 165	fmx
     //   40: astore 6
     //   42: aload 6
-    //   44: getfield 182	frk:jdField_a_of_type_Byte	B
+    //   44: getfield 182	fmx:jdField_a_of_type_Byte	B
     //   47: istore_2
     //   48: aload_3
     //   49: astore 4
@@ -381,7 +381,7 @@ public class PicAndAdConf
     //   52: tableswitch	default:+28 -> 80, 1:+30->82, 2:+-26->26, 3:+41->93
     //   81: areturn
     //   82: aload 6
-    //   84: getfield 184	frk:b	Ljava/lang/String;
+    //   84: getfield 184	fmx:b	Ljava/lang/String;
     //   87: invokestatic 189	com/tencent/mobileqq/util/BitmapManager:a	(Ljava/lang/String;)Landroid/graphics/Bitmap;
     //   90: astore_3
     //   91: aload_3
@@ -390,15 +390,15 @@ public class PicAndAdConf
     //   94: getfield 153	com/tencent/mobileqq/config/struct/PicAndAdConf:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   97: iload_1
     //   98: invokevirtual 163	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   101: checkcast 165	frk
-    //   104: getfield 192	frk:jdField_a_of_type_ArrayOfByte	[B
+    //   101: checkcast 165	fmx
+    //   104: getfield 192	fmx:jdField_a_of_type_ArrayOfByte	[B
     //   107: astore 7
     //   109: aload_0
     //   110: getfield 153	com/tencent/mobileqq/config/struct/PicAndAdConf:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   113: iload_1
     //   114: invokevirtual 163	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   117: checkcast 165	frk
-    //   120: getfield 195	frk:c	Ljava/lang/String;
+    //   117: checkcast 165	fmx
+    //   120: getfield 195	fmx:c	Ljava/lang/String;
     //   123: astore 4
     //   125: aload 4
     //   127: ifnull +31 -> 158
@@ -432,20 +432,20 @@ public class PicAndAdConf
     //   191: aload_3
     //   192: ifnonnull +115 -> 307
     //   195: aload 6
-    //   197: getfield 205	frk:jdField_a_of_type_Boolean	Z
+    //   197: getfield 205	fmx:jdField_a_of_type_Boolean	Z
     //   200: ifeq +107 -> 307
     //   203: aload 6
     //   205: iconst_0
-    //   206: putfield 205	frk:jdField_a_of_type_Boolean	Z
+    //   206: putfield 205	fmx:jdField_a_of_type_Boolean	Z
     //   209: aload_0
     //   210: aload 6
-    //   212: getfield 184	frk:b	Ljava/lang/String;
+    //   212: getfield 184	fmx:b	Ljava/lang/String;
     //   215: invokevirtual 207	com/tencent/mobileqq/config/struct/PicAndAdConf:a_	(Ljava/lang/String;)V
     //   218: aload_3
     //   219: areturn
     //   220: aload_0
     //   221: aload 6
-    //   223: getfield 184	frk:b	Ljava/lang/String;
+    //   223: getfield 184	fmx:b	Ljava/lang/String;
     //   226: invokevirtual 207	com/tencent/mobileqq/config/struct/PicAndAdConf:a_	(Ljava/lang/String;)V
     //   229: aconst_null
     //   230: astore_3
@@ -507,7 +507,7 @@ public class PicAndAdConf
     //   275	1	4	localObject3	java.lang.Object
     //   1	286	5	localObject4	java.lang.Object
     //   296	1	5	localThrowable3	java.lang.Throwable
-    //   40	182	6	localfrk	frk
+    //   40	182	6	localfmx	fmx
     //   107	150	7	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
@@ -523,38 +523,38 @@ public class PicAndAdConf
     //   253	263	304	java/lang/Throwable
   }
   
-  public frk a(long paramLong, String paramString1, byte paramByte, String paramString2, String paramString3, String paramString4, String paramString5, short paramShort)
+  public fmx a(long paramLong, String paramString1, byte paramByte, String paramString2, String paramString3, String paramString4, String paramString5, short paramShort)
   {
-    frk localfrk = new frk(this);
-    localfrk.jdField_a_of_type_Long = paramLong;
-    localfrk.jdField_a_of_type_JavaLangString = paramString1;
-    localfrk.b = paramString2;
-    localfrk.d = paramString3;
-    localfrk.jdField_a_of_type_Byte = paramByte;
-    localfrk.c = paramString4;
-    localfrk.e = paramString5;
-    localfrk.jdField_a_of_type_Short = paramShort;
-    return localfrk;
+    fmx localfmx = new fmx(this);
+    localfmx.jdField_a_of_type_Long = paramLong;
+    localfmx.jdField_a_of_type_JavaLangString = paramString1;
+    localfmx.b = paramString2;
+    localfmx.d = paramString3;
+    localfmx.jdField_a_of_type_Byte = paramByte;
+    localfmx.c = paramString4;
+    localfmx.e = paramString5;
+    localfmx.jdField_a_of_type_Short = paramShort;
+    return localfmx;
   }
   
-  public frk a(long paramLong, String paramString1, byte paramByte, String paramString2, byte[] paramArrayOfByte, String paramString3)
+  public fmx a(long paramLong, String paramString1, byte paramByte, String paramString2, byte[] paramArrayOfByte, String paramString3)
   {
-    frk localfrk = new frk(this);
-    localfrk.jdField_a_of_type_Long = paramLong;
-    localfrk.jdField_a_of_type_JavaLangString = paramString1;
-    localfrk.b = paramString2;
-    localfrk.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    localfrk.d = paramString3;
-    localfrk.jdField_a_of_type_Byte = paramByte;
-    return localfrk;
+    fmx localfmx = new fmx(this);
+    localfmx.jdField_a_of_type_Long = paramLong;
+    localfmx.jdField_a_of_type_JavaLangString = paramString1;
+    localfmx.b = paramString2;
+    localfmx.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    localfmx.d = paramString3;
+    localfmx.jdField_a_of_type_Byte = paramByte;
+    return localfmx;
   }
   
-  public frk a(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, short paramShort)
+  public fmx a(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, short paramShort)
   {
     return a(paramLong, paramString1, (byte)3, paramString2, paramString3, paramString4, paramString5, paramShort);
   }
   
-  public frk a(long paramLong, String paramString1, String paramString2, byte[] paramArrayOfByte, String paramString3)
+  public fmx a(long paramLong, String paramString1, String paramString2, byte[] paramArrayOfByte, String paramString3)
   {
     return a(paramLong, paramString1, (byte)3, paramString2, paramArrayOfByte, paramString3);
   }
@@ -564,7 +564,7 @@ public class PicAndAdConf
     if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
       return "";
     }
-    return ((frk)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString;
+    return ((fmx)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString;
   }
   
   public String a(String paramString, byte paramByte)
@@ -627,7 +627,7 @@ public class PicAndAdConf
     if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
       return -1;
     }
-    return ((frk)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Short;
+    return ((fmx)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Short;
   }
   
   public void a()
@@ -684,9 +684,9 @@ public class PicAndAdConf
       int j = 0;
       while (j < k)
       {
-        frk localfrk = new frk(this);
-        localfrk.a(paramDataInputStream);
-        a(localfrk);
+        fmx localfmx = new fmx(this);
+        localfmx.a(paramDataInputStream);
+        a(localfmx);
         j += 1;
       }
     }
@@ -710,7 +710,7 @@ public class PicAndAdConf
       int j = 0;
       while (j < k)
       {
-        ((frk)this.jdField_a_of_type_JavaUtilArrayList.get(j)).a(paramDataOutputStream);
+        ((fmx)this.jdField_a_of_type_JavaUtilArrayList.get(j)).a(paramDataOutputStream);
         j += 1;
       }
     }
@@ -732,13 +732,13 @@ public class PicAndAdConf
         if (j >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
           break label234;
         }
-        frk localfrk = (frk)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-        if (paramString.startsWith(localfrk.b))
+        fmx localfmx = (fmx)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+        if (paramString.startsWith(localfmx.b))
         {
           if (this.a_ == 1)
           {
-            localfrk.c = (BaseApplication.getContext().getFilesDir().getAbsolutePath() + "/" + "flashlogo.png");
-            a(paramArrayOfByte, localfrk.c, this.b);
+            localfmx.c = (BaseApplication.getContext().getFilesDir().getAbsolutePath() + "/" + "flashlogo.png");
+            a(paramArrayOfByte, localfmx.c, this.b);
             if (localArrayList == null) {
               break;
             }
@@ -751,7 +751,7 @@ public class PicAndAdConf
           if (this.a_ != 0) {
             break;
           }
-          a(paramArrayOfByte, String.valueOf(localfrk.jdField_a_of_type_Long));
+          a(paramArrayOfByte, String.valueOf(localfmx.jdField_a_of_type_Long));
           if (localArrayList == null) {
             break;
           }
@@ -805,7 +805,7 @@ public class PicAndAdConf
     if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
       return "";
     }
-    return ((frk)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).e;
+    return ((fmx)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).e;
   }
   
   public void b(int paramInt)
@@ -821,7 +821,7 @@ public class PicAndAdConf
     int j = 0;
     while (j < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      paramHttpMsg2 = (frk)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+      paramHttpMsg2 = (fmx)this.jdField_a_of_type_JavaUtilArrayList.get(j);
       if (paramHttpMsg1.a().startsWith(paramHttpMsg2.b))
       {
         paramHttpMsg2 = Config.a();
@@ -842,7 +842,7 @@ public class PicAndAdConf
     if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
       return "";
     }
-    return ((frk)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).d;
+    return ((fmx)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).d;
   }
   
   public void c()

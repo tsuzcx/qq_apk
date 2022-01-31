@@ -1,25 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.MixedImageOnclickListener;
-import com.tencent.mobileqq.activity.aio.item.MixedMsgItemBuilder;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class vby
-  implements View.OnClickListener
+  extends vbw
 {
-  public vby(MixedMsgItemBuilder paramMixedMsgItemBuilder) {}
+  protected TextView c = (TextView)a(2131379324);
   
-  public void onClick(View paramView)
+  public vby(ViewGroup paramViewGroup, int paramInt)
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
-    if (MixedMsgItemBuilder.a(this.a)) {
+    super(paramViewGroup, paramInt);
+  }
+  
+  public void a(uyg paramuyg)
+  {
+    if (paramuyg.b > 99)
+    {
+      this.c.setText("99+");
       return;
     }
-    MixedMsgItemBuilder.a(this.a).onClick(paramView);
+    this.c.setText(String.valueOf(paramuyg.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vby
  * JD-Core Version:    0.7.0.1
  */

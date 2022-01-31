@@ -10,11 +10,11 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.trunk.Qworkflow.Qworkflow.WorkflowBrief;
 
 public final class oidb_0x4d4$SetWorkflowsIgnoreStateRsp
-  extends MessageMicro
+  extends MessageMicro<SetWorkflowsIgnoreStateRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_error_msg = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_msg_failure_list = PBField.initRepeatMessage(Qworkflow.WorkflowBrief.class);
+  public final PBRepeatMessageField<Qworkflow.WorkflowBrief> rpt_msg_failure_list = PBField.initRepeatMessage(Qworkflow.WorkflowBrief.class);
   public final PBUInt32Field uint32_result = PBField.initUInt32(0);
   
   static
@@ -25,7 +25,7 @@ public final class oidb_0x4d4$SetWorkflowsIgnoreStateRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x4d4.oidb_0x4d4.SetWorkflowsIgnoreStateRsp
  * JD-Core Version:    0.7.0.1
  */

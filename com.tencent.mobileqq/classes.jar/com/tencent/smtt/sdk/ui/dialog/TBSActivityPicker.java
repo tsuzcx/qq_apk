@@ -2,13 +2,10 @@ package com.tencent.smtt.sdk.ui.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -18,7 +15,6 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.WindowManager;
@@ -53,15 +49,17 @@ public class TBSActivityPicker
   protected Map<Integer, Object> mProperties;
   private TextView mTitle;
   private SharedPreferences preferfences = null;
+  private String sourceKey;
   
-  public TBSActivityPicker(Context paramContext, String paramString1, Intent paramIntent, ValueCallback<String> paramValueCallback, String paramString2)
+  public TBSActivityPicker(Context paramContext, String paramString1, Intent paramIntent, ValueCallback<String> paramValueCallback, String paramString2, String paramString3)
   {
     super(paramContext, 16973835);
-    List localList = paramContext.getPackageManager().queryIntentActivities(paramIntent, 65536);
-    if (((localList == null) || (localList.size() == 0)) && (MttLoader.isBrowserInstalled(paramContext))) {
+    this.sourceKey = paramString3;
+    paramString3 = paramContext.getPackageManager().queryIntentActivities(paramIntent, 65536);
+    if (((paramString3 == null) || (paramString3.size() == 0)) && (MttLoader.isBrowserInstalled(paramContext))) {
       com.tencent.smtt.sdk.QbSdk.isDefaultDialog = true;
     }
-    if (("com.tencent.rtxlite".equalsIgnoreCase(paramContext.getApplicationContext().getPackageName())) && ((localList == null) || ((localList != null) && (localList.size() == 0)))) {
+    if (("com.tencent.rtxlite".equalsIgnoreCase(paramContext.getApplicationContext().getPackageName())) && ((paramString3 == null) || ((paramString3 != null) && (paramString3.size() == 0)))) {
       com.tencent.smtt.sdk.QbSdk.isDefaultDialog = true;
     }
     initDensity(paramContext.getApplicationContext());
@@ -212,55 +210,8 @@ public class TBSActivityPicker
   {
     setContentView(createWXLayout(getContext()));
     resetListView();
-    this.mButtonAlways.setOnClickListener(new View.OnClickListener()
-    {
-      public void onClick(View paramAnonymousView)
-      {
-        Object localObject = TBSActivityPicker.this.mAdapter.getCheckedActivityInfo();
-        if ((localObject == null) || (((BrowsingActivityInfo)localObject).getResolveInfo() == null)) {
-          return;
-        }
-        paramAnonymousView = TBSActivityPicker.this.mIntent;
-        Context localContext = TBSActivityPicker.this.getContext();
-        localObject = ((BrowsingActivityInfo)localObject).getResolveInfo().activityInfo.packageName;
-        paramAnonymousView.setPackage((String)localObject);
-        if ("com.tencent.mtt".equals(localObject))
-        {
-          paramAnonymousView.putExtra("ChannelID", localContext.getApplicationContext().getPackageName());
-          paramAnonymousView.putExtra("PosID", "4");
-        }
-        localContext.startActivity(paramAnonymousView);
-        if (TBSActivityPicker.mIntentCallback.get() != null) {
-          ((ValueCallback)TBSActivityPicker.mIntentCallback.get()).onReceiveValue("always");
-        }
-        TBSActivityPicker.this.setTBSPickedDefaultBrowser((String)localObject);
-        TBSActivityPicker.this.dismiss();
-      }
-    });
-    this.mButtonOnce.setOnClickListener(new View.OnClickListener()
-    {
-      public void onClick(View paramAnonymousView)
-      {
-        Object localObject = TBSActivityPicker.this.mAdapter.getCheckedActivityInfo();
-        if ((localObject == null) || (((BrowsingActivityInfo)localObject).getResolveInfo() == null)) {
-          return;
-        }
-        paramAnonymousView = TBSActivityPicker.this.mIntent;
-        Context localContext = TBSActivityPicker.this.getContext();
-        localObject = ((BrowsingActivityInfo)localObject).getResolveInfo().activityInfo.packageName;
-        paramAnonymousView.setPackage((String)localObject);
-        if ("com.tencent.mtt".equals(localObject))
-        {
-          paramAnonymousView.putExtra("ChannelID", localContext.getApplicationContext().getPackageName());
-          paramAnonymousView.putExtra("PosID", "4");
-        }
-        localContext.startActivity(paramAnonymousView);
-        if (TBSActivityPicker.mIntentCallback.get() != null) {
-          ((ValueCallback)TBSActivityPicker.mIntentCallback.get()).onReceiveValue("once");
-        }
-        TBSActivityPicker.this.dismiss();
-      }
-    });
+    this.mButtonAlways.setOnClickListener(new TBSActivityPicker.1(this));
+    this.mButtonOnce.setOnClickListener(new TBSActivityPicker.2(this));
   }
   
   public void onCreate(Bundle paramBundle)
@@ -281,24 +232,10 @@ public class TBSActivityPicker
       this.preferfences.edit().putString("key_tbs_picked_default_browser_" + this.mMimeType, paramString).commit();
     }
   }
-  
-  public static class DialogButton
-  {
-    public DialogInterface.OnClickListener diListener;
-    public String label;
-    public int which;
-    
-    public DialogButton(int paramInt, String paramString, DialogInterface.OnClickListener paramOnClickListener)
-    {
-      this.which = paramInt;
-      this.label = paramString;
-      this.diListener = paramOnClickListener;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.sdk.ui.dialog.TBSActivityPicker
  * JD-Core Version:    0.7.0.1
  */

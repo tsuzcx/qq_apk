@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/ea5" android:visibility="invisible" android:layout_centerHorizontal="true" style="@style/rb" />
+    <TextView android:id="@id/ea6" android:layout_below="@id/ea5" android:layout_centerHorizontal="true" style="@style/ra" />
+    <TextView android:id="@id/ea2" android:text="@string/e25" android:layout_centerHorizontal="true" style="@style/rd" />
+</RelativeLayout>

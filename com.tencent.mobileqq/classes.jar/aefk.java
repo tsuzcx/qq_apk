@@ -1,24 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopRemindSettingData;
-import com.tencent.mobileqq.managers.TroopRemindSettingManager;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class aefk
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aefk(TroopRemindSettingManager paramTroopRemindSettingManager, QQAppInterface paramQQAppInterface, String paramString) {}
+  public aefk(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    if ((TroopRemindSettingData)localEntityManager.a(TroopRemindSettingData.class, this.jdField_a_of_type_JavaLangString) == null)
-    {
-      TroopRemindSettingData localTroopRemindSettingData = new TroopRemindSettingData();
-      localTroopRemindSettingData.troopUin = this.jdField_a_of_type_JavaLangString;
-      localTroopRemindSettingData.isOpenState = 0;
-      localEntityManager.b(localTroopRemindSettingData);
-    }
+    paramView = new Intent(this.a, QQBrowserActivity.class);
+    paramView.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
+    this.a.startActivity(paramView);
   }
 }
 

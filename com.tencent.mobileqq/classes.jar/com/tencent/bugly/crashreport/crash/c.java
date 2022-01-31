@@ -1,16 +1,14 @@
 package com.tencent.bugly.crashreport.crash;
 
 import android.content.Context;
+import android.os.Build.VERSION;
 import com.tencent.bugly.crashreport.common.strategy.StrategyBean;
 import com.tencent.bugly.crashreport.crash.jni.NativeCrashHandler;
 import com.tencent.bugly.crashreport.crash.jni.NativeExceptionHandler;
 import com.tencent.bugly.proguard.p;
 import com.tencent.bugly.proguard.u;
 import com.tencent.bugly.proguard.w;
-import com.tencent.bugly.proguard.x;
 import com.tencent.bugly.proguard.z;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public final class c
@@ -33,24 +31,26 @@ public final class c
   private static c r;
   public final b p;
   private final Context q;
-  private final d s;
+  private final e s;
   private final NativeCrashHandler t;
   private com.tencent.bugly.crashreport.common.strategy.a u;
   private w v;
   private final com.tencent.bugly.crashreport.crash.anr.b w;
+  private int x = 31;
+  private boolean y = false;
   
-  private c(int paramInt, Context paramContext, w paramw, boolean paramBoolean, com.tencent.bugly.proguard.a parama, e parame, String paramString)
+  private c(int paramInt, Context paramContext, w paramw, boolean paramBoolean, com.tencent.bugly.proguard.a parama, f paramf, String paramString)
   {
     a = paramInt;
     paramContext = z.a(paramContext);
     this.q = paramContext;
     this.u = com.tencent.bugly.crashreport.common.strategy.a.a();
     this.v = paramw;
-    this.p = new b(paramInt, paramContext, u.a(), p.a(), this.u, parama, parame);
+    this.p = new b(paramInt, paramContext, u.a(), p.a(), this.u, parama, paramf);
     parama = com.tencent.bugly.crashreport.common.info.a.a(paramContext);
-    this.s = new d(paramContext, this.p, this.u, parama);
+    this.s = new e(paramContext, this.p, this.u, parama);
     this.t = NativeCrashHandler.getInstance(paramContext, parama, this.p, this.u, paramw, paramBoolean, paramString);
-    parama.E = this.t;
+    parama.G = this.t;
     this.w = new com.tencent.bugly.crashreport.crash.anr.b(paramContext, this.u, parama, paramw, this.p);
   }
   
@@ -68,12 +68,12 @@ public final class c
     }
   }
   
-  public static c a(int paramInt, Context paramContext, boolean paramBoolean, com.tencent.bugly.proguard.a parama, e parame, String paramString)
+  public static c a(int paramInt, Context paramContext, boolean paramBoolean, com.tencent.bugly.proguard.a parama, f paramf, String paramString)
   {
     try
     {
       if (r == null) {
-        r = new c(1003, paramContext, w.a(), paramBoolean, null, parame, null);
+        r = new c(1003, paramContext, w.a(), paramBoolean, null, paramf, null);
       }
       paramContext = r;
       return paramContext;
@@ -81,128 +81,53 @@ public final class c
     finally {}
   }
   
+  public final void a(int paramInt)
+  {
+    this.x = paramInt;
+  }
+  
   public final void a(long paramLong)
   {
-    w.a().a(new Thread()
-    {
-      public final void run()
-      {
-        if (!z.a(c.b(c.this), "local_crash_lock", 10000L)) {
-          return;
-        }
-        List localList = c.this.p.a();
-        if ((localList != null) && (localList.size() > 0))
-        {
-          int j = localList.size();
-          if (j > 100L)
-          {
-            ArrayList localArrayList = new ArrayList();
-            Collections.sort(localList);
-            int i = 0;
-            for (;;)
-            {
-              localObject = localArrayList;
-              if (i >= 100L) {
-                break;
-              }
-              localArrayList.add(localList.get(j - 1 - i));
-              i += 1;
-            }
-          }
-          Object localObject = localList;
-          c.this.p.a((List)localObject, 0L, false, false, false);
-        }
-        z.b(c.b(c.this), "local_crash_lock");
-      }
-    }, paramLong);
+    w.a().a(new c.2(this), paramLong);
   }
   
   public final void a(StrategyBean paramStrategyBean)
   {
     this.s.a(paramStrategyBean);
     this.t.onStrategyChanged(paramStrategyBean);
-    this.w.a(paramStrategyBean);
-    w.a().a(new Thread()
-    {
-      public final void run()
-      {
-        if (!z.a(c.b(c.this), "local_crash_lock", 10000L)) {
-          return;
-        }
-        List localList = c.this.p.a();
-        if ((localList != null) && (localList.size() > 0))
-        {
-          int j = localList.size();
-          if (j > 100L)
-          {
-            ArrayList localArrayList = new ArrayList();
-            Collections.sort(localList);
-            int i = 0;
-            for (;;)
-            {
-              localObject = localArrayList;
-              if (i >= 100L) {
-                break;
-              }
-              localArrayList.add(localList.get(j - 1 - i));
-              i += 1;
-            }
-          }
-          Object localObject = localList;
-          c.this.p.a((List)localObject, 0L, false, false, false);
-        }
-        z.b(c.b(c.this), "local_crash_lock");
-      }
-    }, 3000L);
+    this.w.c();
+    w.a().a(new c.2(this), 3000L);
   }
   
   public final void a(CrashDetailBean paramCrashDetailBean)
   {
-    this.p.d(paramCrashDetailBean);
+    this.p.e(paramCrashDetailBean);
   }
   
-  public final void a(e parame)
+  public final void a(f paramf)
   {
     try
     {
       if (this.p != null) {
-        this.p.a = parame;
+        this.p.a = paramf;
       }
       return;
     }
     finally
     {
-      parame = finally;
-      throw parame;
+      paramf = finally;
+      throw paramf;
     }
   }
   
-  public final void a(final Thread paramThread, final Throwable paramThrowable, boolean paramBoolean1, final String paramString, final byte[] paramArrayOfByte, boolean paramBoolean2)
+  public final void a(Thread paramThread, Throwable paramThrowable, boolean paramBoolean1, String paramString, byte[] paramArrayOfByte, boolean paramBoolean2)
   {
-    this.v.a(new Runnable()
-    {
-      public final void run()
-      {
-        try
-        {
-          x.c("post a throwable %b", new Object[] { Boolean.valueOf(this.a) });
-          c.a(c.this).a(paramThread, paramThrowable, false, paramString, paramArrayOfByte);
-          if (this.f)
-          {
-            x.a("clear user datas", new Object[0]);
-            com.tencent.bugly.crashreport.common.info.a.a(c.b(c.this)).B();
-          }
-          return;
-        }
-        catch (Throwable localThrowable)
-        {
-          if (x.b(localThrowable) != true) {
-            localThrowable.printStackTrace();
-          }
-          x.e("java catch error: %s", new Object[] { paramThrowable.toString() });
-        }
-      }
-    });
+    this.v.a(new c.1(this, false, paramThread, paramThrowable, paramString, paramArrayOfByte, false));
+  }
+  
+  public final void a(boolean paramBoolean)
+  {
+    this.y = paramBoolean;
   }
   
   public final void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
@@ -224,11 +149,6 @@ public final class c
     this.s.b();
   }
   
-  public final void b(long paramLong)
-  {
-    this.t.checkUploadRecordCrash(0L);
-  }
-  
   public final void c()
   {
     this.s.a();
@@ -246,12 +166,22 @@ public final class c
   
   public final void f()
   {
-    this.w.a(true);
+    if (Build.VERSION.SDK_INT <= 19)
+    {
+      this.w.a(true);
+      return;
+    }
+    this.w.d();
   }
   
   public final void g()
   {
-    this.w.a(false);
+    if (Build.VERSION.SDK_INT < 19)
+    {
+      this.w.a(false);
+      return;
+    }
+    this.w.e();
   }
   
   public final boolean h()
@@ -277,6 +207,41 @@ public final class c
   public final NativeExceptionHandler k()
   {
     return this.t.getNativeExceptionHandler();
+  }
+  
+  public final void l()
+  {
+    this.t.checkUploadRecordCrash();
+  }
+  
+  public final boolean m()
+  {
+    return this.y;
+  }
+  
+  public final boolean n()
+  {
+    return (this.x & 0x10) > 0;
+  }
+  
+  public final boolean o()
+  {
+    return (this.x & 0x8) > 0;
+  }
+  
+  public final boolean p()
+  {
+    return (this.x & 0x4) > 0;
+  }
+  
+  public final boolean q()
+  {
+    return (this.x & 0x2) > 0;
+  }
+  
+  public final boolean r()
+  {
+    return (this.x & 0x1) > 0;
   }
 }
 

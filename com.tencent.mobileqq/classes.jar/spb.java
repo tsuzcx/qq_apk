@@ -1,76 +1,52 @@
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.utils.AlbumUtil;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.QZoneHelper.UserInfo;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.protofile.cmd0xe36.cmd0xe36.RspBody;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class spb
-  implements ActionSheet.OnButtonClickListener
+  extends nac
 {
-  public spb(FriendProfileCardActivity paramFriendProfileCardActivity, ActionSheet paramActionSheet) {}
+  public spb(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    switch (paramInt)
-    {
+    QLog.i(BridgeModule.TAG, 1, "yyy_0xe36 error code: " + paramInt);
+    if (paramInt == 0) {
+      paramBundle = new cmd0xe36.RspBody();
     }
-    for (;;)
+    try
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramInt = 0;
+      paramArrayOfByte = "";
+      if (paramBundle.code.has()) {
+        paramInt = paramBundle.code.get();
+      }
+      if (paramBundle.wording.has()) {
+        paramArrayOfByte = paramBundle.wording.get();
+      }
+      QLog.i(BridgeModule.TAG, 1, "yyy_0xe36 code: " + paramInt + "\nwording: " + paramArrayOfByte);
+      if ((paramInt != 0) && (!TextUtils.isEmpty(paramArrayOfByte)))
+      {
+        paramBundle = new JSONObject();
+        paramBundle.put("wording", paramArrayOfByte);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramBundle);
+      }
       return;
-      ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getCurrentAccountUin(), "inside.myCardButton", 1, 3, 1, "", true);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "card_mall", "0X8004DBF", 0, 0, "", "", "", "");
-      continue;
-      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, PhotoListActivity.class);
-      paramView.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getClass().getName());
-      paramView.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
-      paramView.putExtra("PhotoConst.IS_RECODE_LAST_ALBUMPATH", false);
-      paramView.putExtra("PhotoConst.IS_SINGLE_MODE", true);
-      paramView.putExtra("PhotoConst.IS_SINGLE_NEED_EDIT", true);
-      paramView.putExtra("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", true);
-      paramView.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
-      paramInt = ProfileCardUtil.c(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity);
-      int i = ProfileCardUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity);
-      paramView.putExtra("PhotoConst.CLIP_WIDTH", paramInt);
-      paramView.putExtra("PhotoConst.CLIP_HEIGHT", i);
-      paramView.putExtra("PhotoConst.32_Bit_Config", true);
-      paramView.putExtra("PhotoConst.TARGET_WIDTH", paramInt);
-      paramView.putExtra("PhotoConst.TARGET_HEIGHT", i);
-      paramView.putExtra("PhotoConst.TARGET_PATH", ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app));
-      paramView.putExtra("PhotoConst.MAXUM_SELECTED_NUM", 1);
-      paramView.putExtra("action_cover_pick_gallery", true);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity(paramView);
-      AlbumUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, false, true);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8006A87", "0X8006A87", 0, 0, "", "", "", "");
-      continue;
-      paramView = new Bundle();
-      paramView.putInt("key_personal_album_enter_model", 2);
-      paramView.putInt("_input_max", 1);
-      paramView.putBoolean("key_multiple_model_need_download_img", true);
-      QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.a();
-      localUserInfo.a = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getCurrentAccountUin();
-      paramView.putString("keyAction", "actionSelectPicture");
-      paramView.putBoolean("key_need_change_to_jpg", true);
-      QZoneHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, localUserInfo, paramView, 1020);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8006A88", "0X8006A88", 0, 0, "", "", "", "");
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b = ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, 1021);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8006A89", "0X8006A89", 0, 0, "", "", "", "");
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      QLog.i(BridgeModule.TAG, 1, "yyy_0xe36 error: " + paramArrayOfByte.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     spb
  * JD-Core Version:    0.7.0.1
  */

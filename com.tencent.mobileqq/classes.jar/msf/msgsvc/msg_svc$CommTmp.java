@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class msg_svc$CommTmp
-  extends MessageMicro
+  extends MessageMicro<CommTmp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field c2c_type = PBField.initUInt32(0);
@@ -27,7 +27,7 @@ public final class msg_svc$CommTmp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     msf.msgsvc.msg_svc.CommTmp
  * JD-Core Version:    0.7.0.1
  */

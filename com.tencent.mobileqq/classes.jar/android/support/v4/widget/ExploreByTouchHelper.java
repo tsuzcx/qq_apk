@@ -285,9 +285,9 @@ public abstract class ExploreByTouchHelper
     return this.mFocusedVirtualViewId;
   }
   
-  public abstract int getVirtualViewAt(float paramFloat1, float paramFloat2);
+  protected abstract int getVirtualViewAt(float paramFloat1, float paramFloat2);
   
-  public abstract void getVisibleVirtualViews(List paramList);
+  protected abstract void getVisibleVirtualViews(List<Integer> paramList);
   
   public void invalidateRoot()
   {
@@ -299,11 +299,11 @@ public abstract class ExploreByTouchHelper
     sendEventForVirtualView(paramInt, 2048);
   }
   
-  public abstract boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle);
+  protected abstract boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle);
   
-  public abstract void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent);
+  protected abstract void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent);
   
-  public abstract void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat);
+  protected abstract void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat);
   
   public boolean sendEventForVirtualView(int paramInt1, int paramInt2)
   {
@@ -320,7 +320,7 @@ public abstract class ExploreByTouchHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     android.support.v4.widget.ExploreByTouchHelper
  * JD-Core Version:    0.7.0.1
  */

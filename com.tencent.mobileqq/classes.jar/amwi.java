@@ -1,16 +1,19 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-import java.util.ArrayList;
+import android.opengl.GLES20;
 
-public class amwi
-  implements Runnable
+class amwi
+  implements anfd
 {
-  public amwi(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, int paramInt, ArrayList paramArrayList) {}
+  amwi(amwh paramamwh) {}
   
-  public void run()
+  public void a()
   {
-    RemoteHandleManager.a().a().a(QzoneWebMusicJsPlugin.access$200(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin), 2, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList);
+    GLES20.glUniform1i(amwh.a(this.a), amwh.b(this.a));
+  }
+  
+  public void a(int paramInt)
+  {
+    amwh.a(this.a, GLES20.glGetUniformLocation(paramInt, "uDisplayType"));
+    amwp.a("glGetUniformLocation uDisplayType");
   }
 }
 

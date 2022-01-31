@@ -1,26 +1,14 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI;
-import com.tencent.av.utils.TipsManager;
-import com.tencent.av.utils.TipsManager.TYPE;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import org.json.JSONObject;
 
 public class bkc
   implements Runnable
 {
-  bkc(MultiVideoCtrlLayerUI paramMultiVideoCtrlLayerUI) {}
+  public bkc(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, String paramString2, JSONObject paramJSONObject) {}
   
   public void run()
   {
-    boolean bool = false;
-    this.a.M();
-    MultiVideoCtrlLayerUI.a(this.a);
-    VideoAppInterface localVideoAppInterface = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-    if (this.a.c == 2) {
-      bool = true;
-    }
-    localVideoAppInterface.a(new Object[] { Integer.valueOf(111), Boolean.valueOf(bool) });
-    if (this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager != null) {
-      this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager.a(TipsManager.TYPE.TYPE_REQUEST_REMOTE_VIDEO.ordinal());
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_OrgJsonJSONObject);
   }
 }
 

@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper;
-import com.tencent.mobileqq.data.MessageRecord;
-
-public final class xem
-  implements Runnable
+public class xem
 {
-  public xem(MessageRecord paramMessageRecord, boolean paramBoolean) {}
+  public int a;
+  public xek a;
+  public int b;
   
-  public void run()
+  private xem(xeo paramxeo)
   {
-    GoldMsgChatHelper.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Xek = xeo.a(paramxeo);
+    this.jdField_a_of_type_Int = xeo.a(paramxeo);
+    this.b = xeo.b(paramxeo);
+  }
+  
+  public String toString()
+  {
+    return "DoodleConfig{doodleStrategy=" + this.jdField_a_of_type_Xek + ", maxBitmapWidth=" + this.jdField_a_of_type_Int + ", maxBitmapHeight=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xem
  * JD-Core Version:    0.7.0.1
  */

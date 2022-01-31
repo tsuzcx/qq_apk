@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
@@ -17,27 +18,27 @@ public class ViewFactory
   private static final int[] jdField_a_of_type_ArrayOfInt = { 80000000, 80000001, 80000002, 80000004, 80000003 };
   private static final int[] b = { 80000001, 80000000, 80000002, 80000004, 80000003 };
   private static final int[] c = { 80000002, 80000000, 80000001, 80000004, 80000003 };
-  private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap(5);
+  private HashMap<Integer, WeakReference<View>> jdField_a_of_type_JavaUtilHashMap = new HashMap(5);
   
   public static int a(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      return 2131435486;
+      return 2131689740;
     case 80000000: 
-      return 2131434364;
+      return 2131689715;
     case 80000001: 
-      return 2131435487;
+      return 2131689771;
     case 80000002: 
       if (UniteSearchActivity.d == 12) {
-        return 2131435509;
+        return 2131689767;
       }
-      return 2131435508;
+      return 2131689765;
     case 80000003: 
-      return 2131435489;
+      return 2131689722;
     }
-    return 2131434945;
+    return 2131720579;
   }
   
   private View a(Context paramContext)
@@ -46,14 +47,14 @@ public class ViewFactory
     localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
     localLinearLayout.setOrientation(1);
     TextView localTextView = new TextView(paramContext);
-    localTextView.setText("没有找到相关结果");
-    localTextView.setTextSize(0, paramContext.getResources().getDimension(2131558464));
-    localTextView.setPadding(0, paramContext.getResources().getDimensionPixelSize(2131559041), 0, 0);
-    localTextView.setTextColor(paramContext.getResources().getColor(2131494265));
+    localTextView.setText(alud.a(2131716854));
+    localTextView.setTextSize(0, paramContext.getResources().getDimension(2131298848));
+    localTextView.setPadding(0, paramContext.getResources().getDimensionPixelSize(2131298207), 0, 0);
+    localTextView.setTextColor(paramContext.getResources().getColor(2131166978));
     paramContext = new LinearLayout.LayoutParams(-2, -2);
     paramContext.gravity = 1;
     localLinearLayout.addView(localTextView, paramContext);
-    localLinearLayout.setContentDescription("没有找到相关结果");
+    localLinearLayout.setContentDescription(alud.a(2131716855));
     return localLinearLayout;
   }
   
@@ -135,7 +136,7 @@ public class ViewFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ViewFactory
  * JD-Core Version:    0.7.0.1
  */

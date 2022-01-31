@@ -1,41 +1,24 @@
+import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.troop.widget.TroopAvatarBigPhotoAdapter;
-import com.tencent.mobileqq.troop.widget.TroopAvatarBigPhotoAdapter.ViewHolder;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomSplitDialog;
 
 public class hdp
-  implements URLDrawableDownListener
+  implements View.OnClickListener
 {
-  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter$ViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
+  public hdp(QQCustomSplitDialog paramQQCustomSplitDialog, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public hdp(TroopAvatarBigPhotoAdapter paramTroopAvatarBigPhotoAdapter, TroopAvatarBigPhotoAdapter.ViewHolder paramViewHolder) {}
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.getVisibility() != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setVisibility(0);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSplitDialog, 0);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setProgress(paramInt / 100);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter.a(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter$ViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramURLDrawable);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSplitDialog.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hdp
  * JD-Core Version:    0.7.0.1
  */

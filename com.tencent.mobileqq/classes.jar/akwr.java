@@ -1,24 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.RotateableView;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import org.json.JSONObject;
 
-public class akwr
-  extends Handler
+class akwr
+  implements MediaPlayer.OnPreparedListener
 {
-  public akwr(RotateableView paramRotateableView) {}
+  akwr(akwn paramakwn, JSONObject paramJSONObject, akxn paramakxn) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    RotateableView.a(this.a, RotateableView.a(this.a) + 8.0F);
-    if (RotateableView.a(this.a) >= 360.0F) {
-      RotateableView.a(this.a, RotateableView.a(this.a) - 360.0F);
+    this.jdField_a_of_type_Akwn.a(3);
+    if (akwn.a(this.jdField_a_of_type_Akwn)) {
+      this.jdField_a_of_type_Akwn.b(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Akxn);
     }
-    this.a.invalidate();
+    if (this.jdField_a_of_type_OrgJsonJSONObject != null) {
+      akwn.a(this.jdField_a_of_type_Akwn, this.jdField_a_of_type_Akxn, this.jdField_a_of_type_OrgJsonJSONObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akwr
  * JD-Core Version:    0.7.0.1
  */

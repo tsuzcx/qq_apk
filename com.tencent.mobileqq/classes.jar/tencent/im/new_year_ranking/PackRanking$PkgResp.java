@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class PackRanking$PkgResp
-  extends MessageMicro
+  extends MessageMicro<PkgResp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field cmdtype = PBField.initUInt32(0);
@@ -28,7 +28,7 @@ public final class PackRanking$PkgResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.new_year_ranking.PackRanking.PkgResp
  * JD-Core Version:    0.7.0.1
  */

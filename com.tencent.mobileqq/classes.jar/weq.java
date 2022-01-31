@@ -1,26 +1,34 @@
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.mobileqq.activity.bless.BlessActivity.AnimationDrawable2;
-import com.tencent.mobileqq.activity.bless.BlessActivity.IAnimationFinishListener;
-import com.tencent.mobileqq.activity.bless.BlessManager;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class weq
-  implements BlessActivity.IAnimationFinishListener
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, vsu>
 {
-  public weq(BlessActivity paramBlessActivity) {}
-  
-  public void a()
+  public weq(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    if (BlessActivity.a(this.a) < this.a.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager.m())
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull vsu paramvsu)
+  {
+    if ((paramQQStoryShareGroupProfileActivity.a().equals(paramvsu.jdField_a_of_type_JavaLangString)) && ((paramvsu.jdField_a_of_type_Vpm instanceof vpx)))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2.a();
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2.start();
-      BlessActivity.b(this.a);
+      paramvsu = ((vpx)paramvsu.jdField_a_of_type_Vpm).a;
+      if (paramvsu != null) {
+        paramQQStoryShareGroupProfileActivity.a(paramvsu.jdField_a_of_type_JavaLangString);
+      }
     }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vsu.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     weq
  * JD-Core Version:    0.7.0.1
  */

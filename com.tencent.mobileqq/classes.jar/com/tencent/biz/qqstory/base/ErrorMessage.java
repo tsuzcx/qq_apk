@@ -1,5 +1,6 @@
 package com.tencent.biz.qqstory.base;
 
+import alud;
 import android.annotation.TargetApi;
 
 @TargetApi(14)
@@ -53,7 +54,7 @@ public class ErrorMessage
     }
     else
     {
-      str = "无法连接网络,请稍后重试";
+      str = alud.a(2131704602);
     }
     return String.format("%s(%d)", new Object[] { str, Integer.valueOf(this.errorCode) });
   }
@@ -81,7 +82,7 @@ public class ErrorMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.ErrorMessage
  * JD-Core Version:    0.7.0.1
  */

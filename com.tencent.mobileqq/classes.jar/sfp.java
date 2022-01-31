@@ -1,20 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
 
 public class sfp
-  implements DialogInterface.OnCancelListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public sfp(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
+  public sfp(ZImageView paramZImageView) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.finish();
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.setAlpha(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sfp
  * JD-Core Version:    0.7.0.1
  */

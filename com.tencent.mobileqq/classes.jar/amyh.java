@@ -1,19 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.remote.RecvMsg;
-
-public final class amyh
-  implements Parcelable.Creator
+public class amyh
 {
-  public RecvMsg a(Parcel paramParcel)
-  {
-    return new RecvMsg(paramParcel);
-  }
+  public int a;
+  long jdField_a_of_type_Long;
+  public int b;
   
-  public RecvMsg[] a(int paramInt)
-  {
-    return new RecvMsg[paramInt];
-  }
+  public amyh(amyg paramamyg) {}
 }
 
 

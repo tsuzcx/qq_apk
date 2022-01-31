@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class RspGetAreaList
   extends JceStruct
 {
-  static ArrayList cache_vGroupArea;
-  public ArrayList vGroupArea;
+  static ArrayList<GroupArea> cache_vGroupArea;
+  public ArrayList<GroupArea> vGroupArea;
   
   public RspGetAreaList() {}
   
-  public RspGetAreaList(ArrayList paramArrayList)
+  public RspGetAreaList(ArrayList<GroupArea> paramArrayList)
   {
     this.vGroupArea = paramArrayList;
   }
@@ -38,7 +38,7 @@ public final class RspGetAreaList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NearbyGroup.RspGetAreaList
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,12 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemTextButton;
-
-public class aijs
+class aijs
+  implements bdnk
 {
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public ImageView b = null;
+  aijs(aijq paramaijq) {}
   
-  public aijs(StructMsgItemTextButton paramStructMsgItemTextButton)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
+    aijq.a(this.a, bdni.a(paramInt));
+    this.a.a.height = aijq.a(this.a);
   }
 }
 

@@ -2,10 +2,10 @@ package com.tencent.mobileqq.emosm.web;
 
 import java.util.HashMap;
 
-final class IPCConstants$1
-  extends HashMap
+public final class IPCConstants$1
+  extends HashMap<String, Integer>
 {
-  IPCConstants$1()
+  public IPCConstants$1()
   {
     put("queryFontInfo", Integer.valueOf(2));
     put("setupChatFont", Integer.valueOf(1));
@@ -25,11 +25,12 @@ final class IPCConstants$1
     put("sendEmojiToAIO", Integer.valueOf(20));
     put("getCollectEmojiStatus", Integer.valueOf(21));
     put("collectEmoji", Integer.valueOf(22));
+    put("fontBubblePaySuccess", Integer.valueOf(23));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.IPCConstants.1
  * JD-Core Version:    0.7.0.1
  */

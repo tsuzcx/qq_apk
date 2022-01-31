@@ -1,60 +1,31 @@
-import android.os.Handler;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.troop.homework.config.BeginnerGuideDownloadManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.widget.TipsBar;
 
-public class ajgj
-  implements INetEngine.INetEngineListener
+class ajgj
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private boolean jdField_a_of_type_Boolean;
+  ajgj(ajgb paramajgb, TipsBar paramTipsBar) {}
   
-  public ajgj(BeginnerGuideDownloadManager paramBeginnerGuideDownloadManager, Handler paramHandler, int paramInt, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener Dowloading " + paramLong1 + "/" + paramLong2 + " " + 100L * paramLong1 / paramLong2);
-    }
-  }
-  
-  public void a(NetResp paramNetResp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener onResp: " + paramNetResp.jdField_a_of_type_Int + ", desc: " + paramNetResp.jdField_a_of_type_JavaLangString);
-    }
-    if (paramNetResp.jdField_a_of_type_Int == 3) {
-      return;
-    }
-    if (paramNetResp.jdField_a_of_type_Int == 0)
+    if (!arso.a(arho.a().b()))
     {
-      paramNetResp = BeginnerGuideDownloadManager.a(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c);
-      if (BeginnerGuideDownloadManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkConfigBeginnerGuideDownloadManager).equalsIgnoreCase(paramNetResp))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener download success");
-        }
-        BeginnerGuideDownloadManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkConfigBeginnerGuideDownloadManager, this.jdField_a_of_type_AndroidOsHandler, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener download success, md5 check failed");
-      }
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1112);
+      arho.a().c();
+      this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(8);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener onResp error");
-    }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1113);
+    paramView = new ForwardFileInfo();
+    paramView.b(10008);
+    Intent localIntent = new Intent(ajgb.a(this.jdField_a_of_type_Ajgb), FileBrowserActivity.class);
+    localIntent.putExtra("fileinfo", paramView);
+    ajgb.a(this.jdField_a_of_type_Ajgb).startActivity(localIntent);
+    arrp.a("0X8004BFE");
+    azqs.a(ajgb.a(this.jdField_a_of_type_Ajgb).app, "dc00898", "", "", "0X8009EE5", "0X8009EE5", 2, 0, "", "", "", "");
   }
 }
 

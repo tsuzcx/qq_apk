@@ -1,26 +1,14 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.token.ai;
-import com.tencent.token.global.RqdApplication;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-final class kl
-  implements Animation.AnimationListener
+class kl
+  implements DialogInterface.OnCancelListener
 {
-  kl(kk paramkk, FaceStartVryCameraActivity paramFaceStartVryCameraActivity) {}
+  kl(GeneralVerifyMobileUpActivity paramGeneralVerifyMobileUpActivity) {}
   
-  public final void onAnimationEnd(Animation paramAnimation)
-  {
-    kk.a(this.b).setVisibility(4);
-    kk.b(this.b).startAnimation(FaceStartVryCameraActivity.access$2900(this.b.a));
-    ai.a(RqdApplication.i()).a();
-  }
-  
-  public final void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public final void onAnimationStart(Animation paramAnimation) {}
+  public void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 

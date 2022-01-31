@@ -9,9 +9,9 @@ import java.util.Map;
 public final class User_Info
   extends JceStruct
 {
-  static Map cache_extendInfo = new HashMap();
+  static Map<String, String> cache_extendInfo = new HashMap();
   public int eStarState;
-  public Map extendInfo;
+  public Map<String, String> extendInfo;
   
   static
   {
@@ -20,7 +20,7 @@ public final class User_Info
   
   public User_Info() {}
   
-  public User_Info(int paramInt, Map paramMap)
+  public User_Info(int paramInt, Map<String, String> paramMap)
   {
     this.eStarState = paramInt;
     this.extendInfo = paramMap;
@@ -42,7 +42,7 @@ public final class User_Info
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_NEWEST_FEEDS.User_Info
  * JD-Core Version:    0.7.0.1
  */

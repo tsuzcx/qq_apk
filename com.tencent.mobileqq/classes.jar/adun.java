@@ -1,14 +1,15 @@
-import com.tencent.biz.common.offline.HtmlOffline;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
 
-public final class adun
-  implements Runnable
+public class adun
+  implements View.OnClickListener
 {
-  public adun(AppRuntime paramAppRuntime) {}
+  public adun(RegisterNewBaseActivity paramRegisterNewBaseActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    HtmlOffline.b("3136", this.a, true, new aduo(this));
+    this.a.onBackEvent();
   }
 }
 

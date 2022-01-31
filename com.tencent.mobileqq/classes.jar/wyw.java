@@ -1,58 +1,123 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.SendPhotoActivity.sendPhotoTask;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pic.compress.Utils;
-import com.tencent.mobileqq.utils.AlbumConstants;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.support.v4.util.LruCache;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class wyw
-  implements Runnable
+  extends BaseAdapter
 {
-  public wyw(SendPhotoActivity.sendPhotoTask paramsendPhotoTask) {}
+  int jdField_a_of_type_Int;
+  Context jdField_a_of_type_AndroidContentContext;
+  LruCache<String, Bitmap> jdField_a_of_type_AndroidSupportV4UtilLruCache;
+  List<xcz> jdField_a_of_type_JavaUtilList;
+  int b;
+  public int c = -1;
   
-  public void run()
+  public wyw(EditVideoArtFilter paramEditVideoArtFilter, Context paramContext)
   {
-    try
-    {
-      this.a.a();
-      this.a.jdField_a_of_type_AndroidContentIntent.removeExtra("PhotoConst.SEND_BUSINESS_TYPE");
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra(AlbumConstants.h, 2);
-      if (!this.a.jdField_a_of_type_AndroidContentIntent.hasExtra("extra_image_sender_tag")) {
-        this.a.jdField_a_of_type_AndroidContentIntent.putExtra("extra_image_sender_tag", "SendPhotoActivity.handlePhoto");
-      }
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("open_chatfragment_fromphoto", true);
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("param_selNum", this.a.jdField_b_of_type_JavaUtilArrayList.size());
-      if (!this.a.jdField_c_of_type_Boolean)
-      {
-        ((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).setResult(-1, this.a.jdField_a_of_type_AndroidContentIntent);
-        ((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
-        ((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).overridePendingTransition(0, 2131034124);
-        if (!this.a.jdField_b_of_type_Boolean)
-        {
-          String str1 = this.a.jdField_a_of_type_AndroidContentIntent.getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
-          String str2 = this.a.jdField_a_of_type_AndroidContentIntent.getStringExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME");
-          this.a.jdField_a_of_type_AndroidContentIntent.setClassName(str2, str1);
-          this.a.jdField_a_of_type_AndroidContentIntent.addFlags(603979776);
-          ((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).startActivity(this.a.jdField_a_of_type_AndroidContentIntent);
-        }
-      }
-      Utils.a(BaseApplication.getContext(), this.a.jdField_c_of_type_JavaUtilArrayList);
-      return;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Int = xin.b(this.jdField_a_of_type_AndroidContentContext, 130.0F);
+    this.b = xin.b(this.jdField_a_of_type_AndroidContentContext, 96.0F);
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(20);
+  }
+  
+  public xcz a(int paramInt)
+  {
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
+      return (xcz)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    catch (Exception localException)
+    return null;
+  }
+  
+  public void a(List<xcz> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    xcz localxcz = new xcz();
+    this.jdField_a_of_type_JavaUtilList.add(localxcz);
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.c = 0;
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView1;
+    if (paramView == null)
     {
-      for (;;)
+      paramViewGroup = new wyx(this);
+      localView1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559235, null);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView1.findViewById(2131377822));
+      paramViewGroup.jdField_a_of_type_AndroidViewView = localView1.findViewById(2131376371);
+      localView1.setTag(paramViewGroup);
+    }
+    xcz localxcz;
+    for (;;)
+    {
+      localxcz = a(paramInt);
+      if (localxcz != null) {
+        break;
+      }
+      return localView1;
+      paramViewGroup = (wyx)paramView.getTag();
+      localView1 = paramView;
+    }
+    paramView = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(localxcz.jdField_a_of_type_Int + localxcz.b);
+    View localView2 = paramView;
+    if (paramView == null)
+    {
+      if (paramInt != 0) {
+        break label249;
+      }
+      paramView = bdal.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_a_of_type_AndroidContentContext.getResources(), 2130841174, this.b, this.jdField_a_of_type_Int);
+      localView2 = paramView;
+      if (paramView != null)
       {
-        localException.printStackTrace();
+        this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(localxcz.jdField_a_of_type_Int + localxcz.b, paramView);
+        localView2 = paramView;
       }
     }
+    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localView2);
+    if (paramInt == 0) {
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131704179));
+    }
+    for (;;)
+    {
+      if (paramInt != this.c) {
+        break label305;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      return localView1;
+      label249:
+      paramView = bdal.a(localxcz.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
+      break;
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131704328) + localxcz.c);
+    }
+    label305:
+    paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    return localView1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wyw
  * JD-Core Version:    0.7.0.1
  */

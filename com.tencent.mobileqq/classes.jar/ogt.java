@@ -1,21 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoSyncStoryGuide;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyCutImageView;
 
-public class ogt
-  implements DialogInterface.OnClickListener
+class ogt
+  implements View.OnTouchListener
 {
-  public ogt(EditVideoSyncStoryGuide paramEditVideoSyncStoryGuide, QQCustomDialog paramQQCustomDialog) {}
+  ogt(ogr paramogr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    if (paramMotionEvent.getAction() == 1) {
+      ogr.a(this.a).performClick();
+    }
+    if (ogr.a(this.a, paramMotionEvent.getX(), paramMotionEvent.getY()).booleanValue()) {}
+    for (int i = 101;; i = 102)
+    {
+      int j = ogr.a(this.a, ogr.a(this.a));
+      ogr.a(this.a, i, j + 1);
+      return false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ogt
  * JD-Core Version:    0.7.0.1
  */

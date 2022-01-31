@@ -722,7 +722,7 @@ public class o
     while (!e()) {
       return;
     }
-    c.b.a.a.a().b(new p(this), "checkDoRegist");
+    com.tencent.token.f.a().b(new p(this), "checkDoRegist");
   }
 }
 

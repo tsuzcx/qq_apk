@@ -1,56 +1,50 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.teamwork.ReSendCmd;
-import com.tencent.mobileqq.teamwork.TeamWorkHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import mqq.manager.TicketManager;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 
 public class aimn
-  implements WtTicketPromise
+  implements aimo
 {
-  public aimn(TeamWorkHandler paramTeamWorkHandler, TicketManager paramTicketManager, ReSendCmd paramReSendCmd) {}
+  private int jdField_a_of_type_Int = 2;
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void Done(Ticket paramTicket)
+  public aimn(QQAppInterface paramQQAppInterface)
   {
-    int i;
-    if (paramTicket == null) {
-      i = 1;
-    }
-    for (;;)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+  }
+  
+  public void a(Context paramContext, boolean paramBoolean)
+  {
+    if (!paramBoolean)
     {
-      QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey from server : Done, result: " + i);
-      paramTicket = this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkHandler.a.getCurrentAccountUin(), "docs.qq.com");
-      if ((!TextUtils.isEmpty(paramTicket)) && (paramTicket.length() > 0))
+      if (bhtb.k())
       {
-        TeamWorkHandler.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkHandler, 0);
-        QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey from server success!");
-      }
-      TeamWorkHandler.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkHandler, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
-      return;
-      if ((paramTicket != null) && (paramTicket._pskey_map == null)) {
-        i = 2;
-      } else if ((paramTicket != null) && (paramTicket._pskey_map != null) && (paramTicket._pskey_map.get("docs.qq.com") == null)) {
-        i = 3;
-      } else {
-        i = 0;
+        QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (localQQAppInterface != null) {
+          ((PhoneContactManagerImp)localQQAppInterface.getManager(11)).b(true);
+        }
+        paramContext = new awhz(paramContext, paramContext.getPackageName());
       }
     }
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey from server : Failed, " + paramErrMsg);
-    TeamWorkHandler.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkHandler, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey from server : Timeout, " + paramErrMsg);
-    TeamWorkHandler.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkHandler, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
+    else {
+      try
+      {
+        paramContext.a();
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+        paramContext.b();
+        return;
+      }
+    }
+    Intent localIntent = new Intent(paramContext, GuideBindPhoneActivity.class);
+    localIntent.putExtra("fromKeyForContactBind", this.jdField_a_of_type_Int);
+    paramContext.startActivity(localIntent);
   }
 }
 

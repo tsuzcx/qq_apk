@@ -1,22 +1,25 @@
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.shortvideo.common.GloableValue;
+import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import com.tencent.mobileqq.conditionsearch.LocationSelectActivity.2;
+import mqq.app.QQPermissionCallback;
 
-public final class aohs
-  implements Runnable
+public class aohs
+  implements QQPermissionCallback
 {
-  public aohs(String paramString) {}
+  public aohs(LocationSelectActivity.2 param2) {}
   
-  public void run()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    String str = GloableValue.a();
-    if ((str != null) && (!"".equals(str)) && (str.contains("/Android/data/com.tencent.mobileqq/qq/video"))) {
-      RMVideoStateMgr.a(str, this.a, false);
-    }
+    bdgm.a(this.a.this$0, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    LocationSelectActivity.a(this.a.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aohs
  * JD-Core Version:    0.7.0.1
  */

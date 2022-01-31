@@ -1,20 +1,14 @@
-import com.tencent.component.media.image.ImageKey;
-import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
-import com.tencent.component.media.image.UICallbackTask;
-
-public class phq
-  implements Runnable
+public abstract interface phq<BEAN>
 {
-  public phq(UICallbackTask paramUICallbackTask, ImageKey paramImageKey) {}
+  public abstract void a(pht<BEAN> parampht);
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.listener.onImageCanceled(UICallbackTask.a(this.jdField_a_of_type_ComTencentComponentMediaImageUICallbackTask, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey), this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options);
-  }
+  public abstract void a(boolean paramBoolean, php<BEAN> paramphp);
+  
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     phq
  * JD-Core Version:    0.7.0.1
  */

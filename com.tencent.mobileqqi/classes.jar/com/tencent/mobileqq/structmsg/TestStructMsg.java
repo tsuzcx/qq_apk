@@ -201,7 +201,7 @@ public class TestStructMsg
         ((Intent)localObject).putExtra("load_from_third_app", true);
         ((Intent)localObject).putExtra("param_plugin_gesturelock", true);
         ((Intent)localObject).putExtra("clsUploader", "com.tencent.mobileqq.statistics.PluginStatisticsCollector");
-        str3 = PluginUtils.installPlugin(paramContext, paramString2, "24935");
+        str3 = PluginUtils.installPlugin(paramContext, paramString2, "master");
         if (str3 != null) {
           break label217;
         }

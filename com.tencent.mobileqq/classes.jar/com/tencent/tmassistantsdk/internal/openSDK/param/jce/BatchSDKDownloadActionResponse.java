@@ -8,14 +8,14 @@ import java.util.ArrayList;
 public final class BatchSDKDownloadActionResponse
   extends JceStruct
 {
-  static ArrayList<IPCSDKDownloadInfo> a = new ArrayList();
+  static ArrayList<IPCSDKDownloadInfo> cache_batchData = new ArrayList();
   public ArrayList<IPCSDKDownloadInfo> batchData = null;
   public int batchRequestType = 0;
   
   static
   {
     IPCSDKDownloadInfo localIPCSDKDownloadInfo = new IPCSDKDownloadInfo();
-    a.add(localIPCSDKDownloadInfo);
+    cache_batchData.add(localIPCSDKDownloadInfo);
   }
   
   public BatchSDKDownloadActionResponse() {}
@@ -29,7 +29,7 @@ public final class BatchSDKDownloadActionResponse
   public void readFrom(JceInputStream paramJceInputStream)
   {
     this.batchRequestType = paramJceInputStream.read(this.batchRequestType, 0, true);
-    this.batchData = ((ArrayList)paramJceInputStream.read(a, 1, false));
+    this.batchData = ((ArrayList)paramJceInputStream.read(cache_batchData, 1, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -42,7 +42,7 @@ public final class BatchSDKDownloadActionResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.param.jce.BatchSDKDownloadActionResponse
  * JD-Core Version:    0.7.0.1
  */

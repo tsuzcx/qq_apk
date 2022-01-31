@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class C2CType0x211_SubC2CType0x8$ConnType
-  extends MessageMicro
+  extends MessageMicro<ConnType>
 {
   public static final int STR_DESRIPTION_FIELD_NUMBER = 2;
   public static final int TYPE_FIELD_NUMBER = 1;

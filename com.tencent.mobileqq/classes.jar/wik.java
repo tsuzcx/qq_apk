@@ -1,113 +1,49 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PublicRecommendAccountInfo;
-import com.tencent.mobileqq.utils.DisplayUtils;
-import com.tencent.widget.FormMultiLineItem;
-import com.tencent.widget.MultiImageTextView;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.util.Iterator;
+import java.util.List;
 
-public class wik
-  extends FacePreloadBaseAdapter
+class wik
+  implements urr<vfj, vhg>
 {
-  public wik(PublicView paramPublicView, Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView)
-  {
-    super(paramContext, paramQQAppInterface, paramXListView, 1, true);
-    paramXListView.setAdapter(this);
-  }
+  wik(wij paramwij, JobContext paramJobContext, String paramString) {}
   
-  public PublicRecommendAccountInfo a(int paramInt)
+  public void a(@NonNull vfj paramvfj, @Nullable vhg paramvhg, @NonNull ErrorMessage paramErrorMessage)
   {
-    if ((PublicView.a(this.a) != null) && (paramInt >= 0) && (paramInt < PublicView.a(this.a).size())) {
-      return (PublicRecommendAccountInfo)PublicView.a(this.a).get(paramInt);
-    }
-    return null;
-  }
-  
-  public int getCount()
-  {
-    if ((PublicView.a(this.a) != null) && (PublicView.a(this.a).size() > 0)) {
-      return PublicView.a(this.a).size();
-    }
-    return 0;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      paramView = new FormMultiLineItem(this.a.a);
-      paramView.setId(2131367499);
-      paramViewGroup = new wim();
-      paramViewGroup.c = ((FormMultiLineItem)paramView).a();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((FormMultiLineItem)paramView).a(0);
-      paramViewGroup.b = ((FormMultiLineItem)paramView).a(1);
-      paramView.setTag(paramViewGroup);
-      paramView.setOnClickListener(this.a);
+      wxe.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "segment cancel on net respond");
+      return;
     }
-    Object localObject;
-    for (;;)
+    if ((paramvhg == null) || (paramErrorMessage.isFail()))
     {
-      localObject = a(paramInt);
-      if (localObject != null) {
-        break;
-      }
-      return paramView;
-      paramViewGroup = (wim)paramView.getTag();
+      wxe.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for feature request");
+      wij.a(this.jdField_a_of_type_Wij, paramErrorMessage);
+      return;
     }
-    if (((PublicRecommendAccountInfo)localObject).mSource == 1)
+    if (paramvhg.a != null)
     {
-      paramViewGroup.jdField_a_of_type_JavaLangString = ((PublicRecommendAccountInfo)localObject).mEqqNameAccount;
-      label124:
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataPublicRecommendAccountInfo = ((PublicRecommendAccountInfo)localObject);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      paramViewGroup.b.setVisibility(0);
-      paramViewGroup.c.setImageBitmap(a(1, paramViewGroup.jdField_a_of_type_JavaLangString));
-      if (((PublicRecommendAccountInfo)localObject).mSource != 1) {
-        break label367;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((PublicRecommendAccountInfo)localObject).mEqqCs);
-      paramViewGroup.b.setText(((PublicRecommendAccountInfo)localObject).mEqqSi);
-    }
-    for (;;)
-    {
-      if ((((PublicRecommendAccountInfo)localObject).mIsVerified != null) && (((PublicRecommendAccountInfo)localObject).mIsVerified.equalsIgnoreCase("1")))
+      paramvfj = paramvhg.a.iterator();
+      do
       {
-        localObject = this.a.getResources().getDrawable(2130839751);
-        paramInt = (int)DisplayUtils.a(this.a.a, 15.0F);
-        ((Drawable)localObject).setBounds(0, 0, paramInt, paramInt);
-        ((MultiImageTextView)paramViewGroup.jdField_a_of_type_AndroidWidgetTextView).a(6.0F);
-        ((MultiImageTextView)paramViewGroup.jdField_a_of_type_AndroidWidgetTextView).a((Drawable)localObject, paramInt, paramInt);
-        ((MultiImageTextView)paramViewGroup.jdField_a_of_type_AndroidWidgetTextView).a();
-      }
-      if (!AppSetting.b) {
-        break;
-      }
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.getText().toString());
-      ((StringBuilder)localObject).append(paramViewGroup.b.getText().toString());
-      paramView.setContentDescription(((StringBuilder)localObject).toString());
-      return paramView;
-      paramViewGroup.jdField_a_of_type_JavaLangString = String.valueOf(((PublicRecommendAccountInfo)localObject).mPublicuin);
-      break label124;
-      label367:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((PublicRecommendAccountInfo)localObject).mPublicname);
-      paramViewGroup.b.setText(((PublicRecommendAccountInfo)localObject).mPublicdesc);
+        if (!paramvfj.hasNext()) {
+          break;
+        }
+        paramvhg = (uxd)paramvfj.next();
+      } while (!paramvhg.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString));
+    }
+    for (int i = paramvhg.c;; i = 0)
+    {
+      wij.a(this.jdField_a_of_type_Wij, Integer.valueOf(i));
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wik
  * JD-Core Version:    0.7.0.1
  */

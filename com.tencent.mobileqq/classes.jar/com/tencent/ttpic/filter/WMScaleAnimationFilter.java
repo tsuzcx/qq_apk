@@ -1,7 +1,7 @@
 package com.tencent.ttpic.filter;
 
-import com.tencent.filter.Param.FloatParam;
-import com.tencent.ttpic.model.WMElement;
+import com.tencent.aekit.openrender.UniformParam.FloatParam;
+import com.tencent.ttpic.openapi.model.WMElement;
 import java.util.List;
 
 public class WMScaleAnimationFilter
@@ -28,14 +28,14 @@ public class WMScaleAnimationFilter
     this.mAnimationTimePoints.add(new WMAnimationFilterBase.AnimationTimePoint(this, 992L, 1.0F));
   }
   
-  protected void setAnimationParams()
+  protected void setAnimationParams(long paramLong)
   {
-    addParam(new Param.FloatParam("texScale", getAnimationValue()));
+    addParam(new UniformParam.FloatParam("texScale", getAnimationValue(paramLong)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.filter.WMScaleAnimationFilter
  * JD-Core Version:    0.7.0.1
  */

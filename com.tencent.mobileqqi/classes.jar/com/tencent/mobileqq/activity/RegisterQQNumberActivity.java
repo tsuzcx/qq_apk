@@ -18,12 +18,12 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import dly;
-import dma;
-import dmb;
-import dmc;
-import dmd;
-import dme;
+import dgh;
+import dgj;
+import dgk;
+import dgl;
+import dgm;
+import dgn;
 import mqq.observer.WtloginObserver;
 
 public class RegisterQQNumberActivity
@@ -33,9 +33,9 @@ public class RegisterQQNumberActivity
   private static final String jdField_a_of_type_JavaLangString = "RegisterQQNumberActivity";
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new dmc(this);
+  ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new dgl(this);
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new dmb(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new dgk(this);
   private boolean jdField_a_of_type_Boolean = false;
   private byte[] jdField_a_of_type_ArrayOfByte = null;
   private Dialog jdField_b_of_type_AndroidAppDialog;
@@ -44,13 +44,13 @@ public class RegisterQQNumberActivity
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233288));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233290));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233290));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233292));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233289));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233291));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString + "");
     this.jdField_a_of_type_AndroidWidgetTextView.setClickable(true);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnLongClickListener(new dly(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnLongClickListener(new dgh(this));
   }
   
   private void f()
@@ -74,12 +74,12 @@ public class RegisterQQNumberActivity
   
   private void j()
   {
-    this.jdField_b_of_type_AndroidOsHandler.post(new dmd(this));
+    this.jdField_b_of_type_AndroidOsHandler.post(new dgm(this));
   }
   
   private void k()
   {
-    this.jdField_b_of_type_AndroidOsHandler.post(new dme(this));
+    this.jdField_b_of_type_AndroidOsHandler.post(new dgn(this));
   }
   
   protected boolean a()
@@ -105,7 +105,7 @@ public class RegisterQQNumberActivity
     this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new dma(this));
+      this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new dgj(this));
       return;
     }
     LoginActivity.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
@@ -152,7 +152,7 @@ public class RegisterQQNumberActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)c(2130903654));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)c(2130903656));
     setTitle(2131562989);
     this.c = getIntent().getStringExtra("phonenum");
     this.d = getIntent().getStringExtra("key");

@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.c.k;
 import com.tencent.mobileqq.msf.service.MsfService;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -34,7 +34,7 @@ public class d
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
-        a locala = (a)localEntry.getValue();
+        d.a locala = (d.a)localEntry.getValue();
         if (SystemClock.elapsedRealtime() - locala.d >= 1800000L)
         {
           if (locala.f > 0L) {
@@ -54,7 +54,7 @@ public class d
     }
   }
   
-  private static void a(a parama, boolean paramBoolean)
+  private static void a(d.a parama, boolean paramBoolean)
   {
     if (parama != null)
     {
@@ -74,7 +74,7 @@ public class d
   {
     if (paramToServiceMsg != null)
     {
-      a locala = new a();
+      d.a locala = new d.a();
       locala.a = paramToServiceMsg.getUin();
       locala.b = paramToServiceMsg.getRequestSsoSeq();
       locala.c = paramToServiceMsg.getServiceCmd();
@@ -88,7 +88,7 @@ public class d
     long l = SystemClock.elapsedRealtime();
     if ((paramToServiceMsg != null) && (this.a.containsKey(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()))))
     {
-      paramFromServiceMsg = (a)this.a.get(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()));
+      paramFromServiceMsg = (d.a)this.a.get(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()));
       if (paramFromServiceMsg.f > 0L)
       {
         paramFromServiceMsg.e = l;
@@ -109,7 +109,7 @@ public class d
   public void b(ToServiceMsg paramToServiceMsg)
   {
     if ((paramToServiceMsg != null) && (this.a.containsKey(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq())))) {
-      ((a)this.a.get(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()))).f = SystemClock.elapsedRealtime();
+      ((d.a)this.a.get(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()))).f = SystemClock.elapsedRealtime();
     }
   }
   
@@ -118,7 +118,7 @@ public class d
     long l = SystemClock.elapsedRealtime();
     if ((paramToServiceMsg != null) && (this.a.containsKey(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()))))
     {
-      paramFromServiceMsg = (a)this.a.get(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()));
+      paramFromServiceMsg = (d.a)this.a.get(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()));
       if (paramFromServiceMsg.f > 0L)
       {
         paramFromServiceMsg.g = l;
@@ -134,17 +134,6 @@ public class d
       this.a.remove(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()));
       return;
     }
-  }
-  
-  static class a
-  {
-    public String a;
-    public int b;
-    public String c;
-    public long d;
-    public long e;
-    public long f;
-    public long g;
   }
 }
 

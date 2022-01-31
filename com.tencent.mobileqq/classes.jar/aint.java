@@ -1,16 +1,15 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import com.tencent.mobileqq.text.QzoneTextBuilder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
 
-public final class aint
-  extends Editable.Factory
+public class aint
+  implements DialogInterface.OnCancelListener
 {
-  public Editable newEditable(CharSequence paramCharSequence)
+  public aint(CameraPreviewActivity paramCameraPreviewActivity) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((paramCharSequence instanceof QzoneTextBuilder)) {
-      return (Editable)paramCharSequence;
-    }
-    return new QzoneTextBuilder(paramCharSequence, 3, 20);
+    this.a.a = null;
   }
 }
 

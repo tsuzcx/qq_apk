@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
-import com.tencent.mobileqq.activity.qwallet.preload.QWalletIPCModule;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.AppRuntime;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
 public class xgi
-  implements Runnable
+  implements xoo
 {
-  public xgi(QWalletIPCModule paramQWalletIPCModule, AppRuntime paramAppRuntime) {}
+  public xgi(DoodleLayout paramDoodleLayout) {}
   
-  public void run()
+  public void a()
   {
-    ((QWalletConfigManager)((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).getManager(244)).a(1L, new xgj(this), null);
+    this.a.c();
+    if ((this.a.a != null) && (this.a.a.a == 3)) {
+      LpReportInfo_pf00064.allReport(615, 1, 3);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xgi
  * JD-Core Version:    0.7.0.1
  */

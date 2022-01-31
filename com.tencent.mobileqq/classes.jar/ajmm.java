@@ -1,70 +1,59 @@
 import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.qqstory.utils.PBUtils;
-import com.tencent.biz.qqstory.utils.UIUtils.StoryProgressUI;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
-import com.tencent.mobileqq.util.TroopReportor;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import tencent.im.troop.homework.ErrorInfo;
-import tencent.im.troop.homework.ReqSend1V1Msg;
-import tencent.im.troop.homework.RspSend1V1Msg;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ajmm
-  extends TroopObserver
+  extends ajlr
 {
-  public ajmm(BulkSendMessageFragment paramBulkSendMessageFragment) {}
-  
-  protected void a(boolean paramBoolean, homework.RspSend1V1Msg paramRspSend1V1Msg, homework.ReqSend1V1Msg paramReqSend1V1Msg)
+  public ajmm(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      if (paramRspSend1V1Msg != null) {
-        break label97;
-      }
-    }
-    label97:
-    for (Object localObject = "null";; localObject = PBUtils.a(paramRspSend1V1Msg))
+    this.jdField_a_of_type_JavaLangString = ("[" + paramContext.getString(2131699994) + "]");
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
     {
-      QLog.d(".troop.troop_app.BulkSendMessageFragment", 2, new Object[] { "Receive response succ=", Boolean.valueOf(paramBoolean), "resp: ", localObject });
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryUtilsUIUtils$StoryProgressUI != null)
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
+      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
+      if (this.jdField_a_of_type_Bbpe == null) {
+        this.jdField_a_of_type_Bbpe = new bbpe();
+      }
+      this.jdField_a_of_type_Bbpe.a(paramArrayOfByte.getString("messageNavInfo"));
+      return;
+    }
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+  }
+  
+  public byte[] a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
+      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      if (this.jdField_a_of_type_Bbpe != null) {
+        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bbpe.a());
+      }
+      return localJSONObject.toString().getBytes();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
       {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryUtilsUIUtils$StoryProgressUI.a();
-        this.a.jdField_a_of_type_ComTencentBizQqstoryUtilsUIUtils$StoryProgressUI = null;
+        localJSONException.printStackTrace();
       }
-      localObject = this.a.getActivity();
-      if (localObject != null) {
-        break;
-      }
-      QLog.e(".troop.troop_app.BulkSendMessageFragment", 2, "onBulkSendMessage() Error: getActivity == null");
-      return;
     }
-    if (paramRspSend1V1Msg == null)
-    {
-      QQToast.a((Context)localObject, 1, "系统繁忙，请稍后再试。", 1).a();
-      return;
-    }
-    if (paramRspSend1V1Msg.result.error_code.get() != 0)
-    {
-      QQToast.a((Context)localObject, 1, paramRspSend1V1Msg.result.error_desc.get().toStringUtf8(), 1).a();
-      return;
-    }
-    QQToast.a((Context)localObject, 2, "消息已群发成功", 1).a();
-    ((FragmentActivity)localObject).finish();
-    ((FragmentActivity)localObject).overridePendingTransition(0, 2131034135);
-    paramRspSend1V1Msg = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
-    if (paramRspSend1V1Msg != null) {
-      paramRspSend1V1Msg.sendEmptyMessage(1009);
-    }
-    paramRspSend1V1Msg = TroopReportor.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString);
-    TroopReportor.a("Grp_edu", "MassMessage", "CreateMessage_Send", 0, 0, new String[] { this.a.jdField_a_of_type_JavaLangString, paramRspSend1V1Msg, paramReqSend1V1Msg.text.get().toStringUtf8(), String.valueOf(paramReqSend1V1Msg.to_uins.size()) });
   }
 }
 

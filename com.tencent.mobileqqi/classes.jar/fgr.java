@@ -1,52 +1,23 @@
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.ShieldOperationItem;
 
-public class fgr
-  extends fhi
+public final class fgr
+  implements Parcelable.Creator
 {
-  private String a;
-  
-  public fgr()
+  public ShieldOperationItem a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = null;
+    ShieldOperationItem localShieldOperationItem = new ShieldOperationItem();
+    localShieldOperationItem.jdField_a_of_type_Int = paramParcel.readInt();
+    localShieldOperationItem.b = paramParcel.readInt();
+    localShieldOperationItem.c = paramParcel.readInt();
+    localShieldOperationItem.jdField_a_of_type_ArrayOfLong = paramParcel.createLongArray();
+    return localShieldOperationItem;
   }
   
-  protected void a()
+  public ShieldOperationItem[] a(int paramInt)
   {
-    this.b += 1L;
-    this.jdField_a_of_type_Long += 1L;
-    if (this.b >= 4L)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(new String[] { "com.tencent.mobileqq:qzone", this.jdField_a_of_type_JavaLangString });
-      this.b = 0L;
-    }
-  }
-  
-  protected void a(String paramString)
-  {
-    if (!"com.tencent.mobileqqi".equals(paramString)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(3, paramString);
-    }
-  }
-  
-  protected void b(String paramString)
-  {
-    this.b = 0L;
-    this.jdField_a_of_type_Long = 0L;
-    CoreService.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.d();
-  }
-  
-  protected void c(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  protected void d(String paramString)
-  {
-    if ("com.tencent.mobileqqi".equals(paramString)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, null);
-    }
+    return null;
   }
 }
 

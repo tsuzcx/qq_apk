@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.app.BaseActivity;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StEntry;
+import java.util.List;
 
-class ycz
-  implements Runnable
+public abstract interface ycz
+  extends ybx<ycy>
 {
-  ycz(ycw paramycw) {}
+  public abstract void a();
   
-  public void run()
-  {
-    this.a.a.setResult(0);
-    this.a.a.finish();
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(CertifiedAccountMeta.StEntry paramStEntry, List<ydn> paramList, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ycz
  * JD-Core Version:    0.7.0.1
  */

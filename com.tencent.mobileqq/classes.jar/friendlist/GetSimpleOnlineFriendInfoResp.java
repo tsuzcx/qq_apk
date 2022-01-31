@@ -9,18 +9,18 @@ public final class GetSimpleOnlineFriendInfoResp
   extends JceStruct
 {
   static int cache_result;
-  static ArrayList cache_vecFriendInfo;
+  static ArrayList<SimpleOnlineFriendInfo> cache_vecFriendInfo;
   public byte cShowPcIcon;
   public short errorCode;
   public byte intervalTimeMin;
   public int result;
   public short shClickInterval = 30;
   public long uin;
-  public ArrayList vecFriendInfo;
+  public ArrayList<SimpleOnlineFriendInfo> vecFriendInfo;
   
   public GetSimpleOnlineFriendInfoResp() {}
   
-  public GetSimpleOnlineFriendInfoResp(long paramLong, ArrayList paramArrayList, int paramInt, short paramShort1, byte paramByte1, byte paramByte2, short paramShort2)
+  public GetSimpleOnlineFriendInfoResp(long paramLong, ArrayList<SimpleOnlineFriendInfo> paramArrayList, int paramInt, short paramShort1, byte paramByte1, byte paramByte2, short paramShort2)
   {
     this.uin = paramLong;
     this.vecFriendInfo = paramArrayList;
@@ -61,7 +61,7 @@ public final class GetSimpleOnlineFriendInfoResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     friendlist.GetSimpleOnlineFriendInfoResp
  * JD-Core Version:    0.7.0.1
  */

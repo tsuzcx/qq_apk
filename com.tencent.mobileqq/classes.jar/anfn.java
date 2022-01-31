@@ -1,14 +1,18 @@
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import cooperation.troop_homework.jsp.TroopHWFileDownloadManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArDefaultSetting;
 
-public class anfn
-  implements Runnable
+public final class anfn
+  implements Parcelable.Creator<ArDefaultSetting>
 {
-  public anfn(TroopHWFileDownloadManager paramTroopHWFileDownloadManager, String paramString1, String paramString2) {}
-  
-  public void run()
+  public ArDefaultSetting a(Parcel paramParcel)
   {
-    TroopHWFileDownloadManager.a(this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWFileDownloadManager).startDownloadTask(this.jdField_a_of_type_JavaLangString, "resource/tm.android.unknown", this.b);
+    return new ArDefaultSetting(paramParcel);
+  }
+  
+  public ArDefaultSetting[] a(int paramInt)
+  {
+    return new ArDefaultSetting[paramInt];
   }
 }
 

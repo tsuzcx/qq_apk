@@ -1,26 +1,23 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class ddw
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public ddw(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public ddw(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    NotifyPushSettingActivity.f(this.a).setContentDescription("消息列表显示共享相册助手");
-    paramCompoundButton = this.a.b;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    ReportController.b(this.a.b, "CliOper", "", "", "Setting_tab", "Clk_clean_msg", 0, 0, "", "", "", "");
+    if (!this.a.isFinishing())
     {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "0X800403D", "0X800403D", 0, i, "", "", "", "");
-      QZoneShareAlbumAssistantManager.a().a(this.a.b, paramBoolean);
-      return;
+      paramDialogInterface.dismiss();
+      this.a.showDialog(1);
     }
+    ThreadManager.b(new ddx(this));
   }
 }
 

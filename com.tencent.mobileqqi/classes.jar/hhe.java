@@ -1,89 +1,62 @@
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import android.widget.EditText;
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonInfo;
-import com.tencent.mobileqq.emoticonview.SystemEmoticonInfo;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput;
+import android.os.Handler;
+import com.tencent.mobileqq.widget.QQMapView;
+import com.tencent.tencentmap.mapsdk.map.GeoPoint;
 
 public class hhe
-  implements EmoticonCallback
+  extends Thread
 {
-  public hhe(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput) {}
-  
-  public void a()
+  public hhe(QQMapView paramQQMapView, String paramString)
   {
-    if (QQCustomDialogWtihEmoticonInput.a(this.a).getSelectionStart() == 0) {}
-    for (;;)
-    {
-      return;
+    super(paramString);
+  }
+  
+  public void run()
+  {
+    if (this.a.e <= 0) {
       try
       {
-        Editable localEditable = QQCustomDialogWtihEmoticonInput.a(this.a).getText();
-        int i = QQCustomDialogWtihEmoticonInput.a(this.a).getSelectionStart();
-        int j = android.text.TextUtils.getOffsetBefore(QQCustomDialogWtihEmoticonInput.a(this.a).getText(), i);
-        if (i != j)
-        {
-          localEditable.delete(Math.min(i, j), Math.max(i, j));
-          return;
+        while (this.a.jdField_a_of_type_JavaLangThread != null) {
+          synchronized (this.a.jdField_a_of_type_JavaLangThread)
+          {
+            this.a.e = 0;
+            this.a.b = true;
+            wait();
+          }
+        }
+        return;
+      }
+      catch (InterruptedException localInterruptedException) {}
+    }
+    this.a.b = false;
+    GeoPoint localGeoPoint = this.a.getMapCenter();
+    if ((this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint != null) && (localGeoPoint != null))
+    {
+      if ((Math.abs(this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint.getLatitudeE6() - localGeoPoint.getLatitudeE6()) >= 1) || (Math.abs(this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint.getLongitudeE6() - localGeoPoint.getLongitudeE6()) >= 1)) {
+        break label213;
+      }
+      if ((this.a.d) && (!this.a.c))
+      {
+        this.a.d = false;
+        if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
+          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(this.a.a(0, localGeoPoint));
         }
       }
-      catch (Exception localException)
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint = localGeoPoint;
+      this.a.e = 0;
+      break;
+      label213:
+      if ((!this.a.d) && (this.a.c))
       {
-        localException.printStackTrace();
+        this.a.d = true;
+        if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
+          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(this.a.a(1, localGeoPoint));
+        }
       }
     }
   }
-  
-  public void a(EmoticonInfo paramEmoticonInfo)
-  {
-    int i;
-    int j;
-    if ((paramEmoticonInfo instanceof SystemEmoticonInfo))
-    {
-      i = QQCustomDialogWtihEmoticonInput.a(this.a).getSelectionStart();
-      j = QQCustomDialogWtihEmoticonInput.a(this.a).getSelectionEnd();
-      if ((i < 0) || (j < 0) || (j < i)) {}
-    }
-    int k;
-    int m;
-    do
-    {
-      QQCustomDialogWtihEmoticonInput.a(this.a).getEditableText().replace(i, j, com.tencent.mobileqq.text.TextUtils.b(((SystemEmoticonInfo)paramEmoticonInfo).a));
-      do
-      {
-        return;
-      } while (!(paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo));
-      paramEmoticonInfo = (SystemAndEmojiEmoticonInfo)paramEmoticonInfo;
-      i = QQCustomDialogWtihEmoticonInput.a(this.a).getSelectionStart();
-      j = QQCustomDialogWtihEmoticonInput.a(this.a).getSelectionEnd();
-      k = paramEmoticonInfo.e;
-      m = paramEmoticonInfo.f;
-    } while ((i < 0) || (j < 0) || (j < i) || ((k == 2) && (m == -1)));
-    if (k == 1) {}
-    for (paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.b(m);; paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.a(m))
-    {
-      QQCustomDialogWtihEmoticonInput.a(this.a).getEditableText().replace(i, j, paramEmoticonInfo);
-      QQCustomDialogWtihEmoticonInput.a(this.a).requestFocus();
-      return;
-    }
-  }
-  
-  public void a(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
-  
-  public boolean a(EmoticonInfo paramEmoticonInfo)
-  {
-    return true;
-  }
-  
-  public void b() {}
-  
-  public void b(EmoticonInfo paramEmoticonInfo) {}
-  
-  public void d() {}
-  
-  public void u_() {}
 }
 
 

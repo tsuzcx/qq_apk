@@ -1,17 +1,17 @@
 package cooperation.qzone.model;
 
 import NS_MOBILE_FEEDS.stPhotoTag;
-import amup;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bjkw;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ImageTagInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amup();
+  public static final Parcelable.Creator<ImageTagInfo> CREATOR = new bjkw();
   public int a;
   public String a;
   public int b;
@@ -63,7 +63,7 @@ public class ImageTagInfo
     this.jdField_d_of_type_JavaLangString = paramParcel.readString();
   }
   
-  public static ArrayList a(ArrayList paramArrayList)
+  public static ArrayList<ImageTagInfo> a(ArrayList<stPhotoTag> paramArrayList)
   {
     ArrayList localArrayList = new ArrayList();
     if (paramArrayList != null)
@@ -80,7 +80,7 @@ public class ImageTagInfo
     return localArrayList;
   }
   
-  public static ArrayList b(ArrayList paramArrayList)
+  public static ArrayList<stPhotoTag> b(ArrayList<ImageTagInfo> paramArrayList)
   {
     ArrayList localArrayList = new ArrayList();
     if (paramArrayList != null)
@@ -140,7 +140,7 @@ public class ImageTagInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.model.ImageTagInfo
  * JD-Core Version:    0.7.0.1
  */

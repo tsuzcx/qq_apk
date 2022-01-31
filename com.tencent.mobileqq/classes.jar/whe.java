@@ -1,13 +1,11 @@
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.biz.pubaccount.util.PADetailReportUtil;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView.IAddContactContext;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
 
 public class whe
   extends Handler
 {
-  public whe(AddContactsActivity paramAddContactsActivity) {}
+  private whe(QQStoryMainController paramQQStoryMainController) {}
   
   public void handleMessage(Message paramMessage)
   {
@@ -15,17 +13,13 @@ public class whe
     {
     default: 
       return;
-    case 0: 
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext.b();
-      this.a.jdField_a_of_type_Boolean = false;
-      return;
     }
-    PADetailReportUtil.a().a(300);
+    this.a.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     whe
  * JD-Core Version:    0.7.0.1
  */

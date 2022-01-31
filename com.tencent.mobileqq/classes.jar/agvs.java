@@ -1,21 +1,15 @@
-import com.tencent.mobileqq.qzonealbumreddot.QzoneAlbumRedTouchManager;
-import com.tencent.mobileqq.qzonealbumreddot.QzonePhotoGuideNotifyService;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
 public class agvs
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public agvs(QzonePhotoGuideNotifyService paramQzonePhotoGuideNotifyService) {}
+  public agvs(TroopChatPie paramTroopChatPie) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QzonePhotoGuideNotifyServlet", 2, "sendRedRunnable");
-    }
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
-    this.a.b();
+    this.a.I();
   }
 }
 

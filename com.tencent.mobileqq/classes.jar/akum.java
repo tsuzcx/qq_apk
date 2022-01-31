@@ -1,24 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.GuideViewBuilder;
-import java.util.ArrayList;
-
-public class akum
+public abstract interface akum
+  extends akrx
 {
-  public View.OnClickListener a;
-  public View a;
-  public ArrayList a;
-  public int[] a;
+  public abstract void a(int paramInt, String paramString1, String paramString2);
   
-  private akum(GuideViewBuilder paramGuideViewBuilder)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = null;
-  }
+  public abstract void a(Object paramObject);
+  
+  public abstract void b();
+  
+  public abstract void b(String paramString1, String paramString2);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akum
  * JD-Core Version:    0.7.0.1
  */

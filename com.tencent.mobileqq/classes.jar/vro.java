@@ -1,57 +1,83 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qidian.QidianManager;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import java.util.List;
 
 public class vro
-  implements View.OnClickListener
+  extends xvp
 {
-  public vro(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
+  public static final String KEY = "PlayerCommentEmptySegment";
+  private View jdField_a_of_type_AndroidViewView;
+  private vrd jdField_a_of_type_Vrd;
+  public wiq a;
+  private boolean b = true;
   
-  public void onClick(View paramView)
+  public vro(Context paramContext)
   {
-    boolean bool = true;
-    paramView = paramView.getTag();
-    if ((paramView == null) || (!(paramView instanceof Integer))) {
-      return;
+    super(paramContext);
+  }
+  
+  private boolean b()
+  {
+    return (this.jdField_a_of_type_Vrd == null) || (this.jdField_a_of_type_Vrd.a());
+  }
+  
+  public int a()
+  {
+    if ((this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_Wiq == null) || (this.jdField_a_of_type_Wiq.a(b()).size() == 0))) {
+      return 1;
     }
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    switch (((Integer)paramView).intValue())
+    return 0;
+  }
+  
+  public View a(int paramInt, wtq paramwtq, ViewGroup paramViewGroup)
+  {
+    if (this.b) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
+    for (;;)
     {
-    default: 
-      return;
-    case 1: 
-      ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, (String)localObject, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, true);
-      return;
-    case 2: 
-      ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, (String)localObject, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, false);
-      return;
+      return paramwtq.a();
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
-    if (this.a.jdField_a_of_type_ComTencentQidianQidianManager.f(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
-    {
-      paramView = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-      String str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433698);
-      if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("param_return_addr") != null) {}
-      for (;;)
-      {
-        ChatActivityUtils.a(paramView, (SessionInfo)localObject, str, bool);
-        return;
-        bool = false;
-      }
+  }
+  
+  public String a()
+  {
+    return "PlayerCommentEmptySegment";
+  }
+  
+  public wtq a(int paramInt, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561535, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131369793);
+    if (QQStoryContext.a()) {
+      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166398));
     }
-    this.a.ba();
+    return new wtq(paramViewGroup);
+  }
+  
+  public void a(vrd paramvrd)
+  {
+    this.jdField_a_of_type_Vrd = paramvrd;
+  }
+  
+  public void a(wiq paramwiq)
+  {
+    this.jdField_a_of_type_Wiq = paramwiq;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vro
  * JD-Core Version:    0.7.0.1
  */

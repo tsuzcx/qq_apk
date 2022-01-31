@@ -1,34 +1,132 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.widget.ActionSheet;
+import android.app.Activity;
+import android.app.Dialog;
+import android.view.View;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-public class acos
-  implements DialogInterface.OnKeyListener
+public final class acos
+  implements beoy
 {
-  public acos(UniformDownloadActivity paramUniformDownloadActivity) {}
+  public acos(acpa paramacpa, QQAppInterface paramQQAppInterface, String paramString, int paramInt, Activity paramActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
   {
-    boolean bool = false;
-    if (paramInt == 4)
+    if (this.jdField_a_of_type_Acpa != null)
     {
-      if (this.a.a != null)
+      if (paramBoolean)
       {
-        this.a.a.dismiss();
-        this.a.a = null;
+        this.jdField_a_of_type_Acpa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
+        this.jdField_a_of_type_Acpa.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
       }
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-      bool = true;
+      this.jdField_a_of_type_Acpa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
+      this.jdField_a_of_type_Acpa.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
     }
-    return bool;
+    paramDialog = new StringBuilder();
+    paramView = (alxa)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(92);
+    paramView.a(this.jdField_a_of_type_JavaLangString);
+    int i = paramView.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramDialog);
+    if ((paramDialog != null) && (paramDialog.length() > 0)) {}
+    for (paramDialog = paramDialog.toString();; paramDialog = null)
+    {
+      if (i <= 0)
+      {
+        QQToast.a(BaseApplication.getContext(), 2, 2131691566, 1).a();
+        if (this.jdField_a_of_type_Acpa != null) {
+          this.jdField_a_of_type_Acpa.a(this.jdField_a_of_type_AndroidAppActivity);
+        }
+      }
+      label356:
+      do
+      {
+        return;
+        long l2 = 0L;
+        List localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+        long l1 = l2;
+        if (localList != null)
+        {
+          l1 = l2;
+          if (!localList.isEmpty())
+          {
+            if (!((MessageRecord)localList.get(localList.size() - 1)).isSendFromLocal()) {
+              break label356;
+            }
+            l1 = ((MessageRecord)localList.get(localList.size() - 1)).time + 2L;
+          }
+        }
+        if (FriendsStatusUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int))
+        {
+          FriendsStatusUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true, false);
+        }
+        for (;;)
+        {
+          alaz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "chat_history_c2c_start_del_msg");
+          if (!paramBoolean) {
+            break label442;
+          }
+          if (bdin.d(BaseApplication.getContext())) {
+            break label405;
+          }
+          QQToast.a(BaseApplication.getContext(), 2131691563, 1).a();
+          return;
+          l1 = ((MessageRecord)localList.get(localList.size() - 1)).time;
+          break;
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+        }
+        ((alxa)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(92)).i();
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+        paramView.n();
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+        if (paramDialog != null) {
+          l2 = 0L;
+        }
+        try
+        {
+          long l3 = Long.parseLong(paramDialog);
+          l2 = l3;
+        }
+        catch (Exception paramDialog)
+        {
+          for (;;)
+          {
+            paramDialog.printStackTrace();
+          }
+        }
+        l1 = Math.max(l2, l1);
+        if (l1 > 0L) {
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, l1);
+        }
+        paramView.a().e();
+        paramView.b();
+        if (paramBoolean) {
+          paramView.n();
+        }
+        paramDialog = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+        if (paramDialog != null)
+        {
+          paramView = paramDialog.obtainMessage(1017);
+          paramView.obj = this.jdField_a_of_type_JavaLangString;
+          paramView.arg1 = this.jdField_a_of_type_Int;
+          paramDialog.sendMessage(paramView);
+        }
+      } while (this.jdField_a_of_type_Acpa == null);
+      label405:
+      label442:
+      this.jdField_a_of_type_Acpa.a(this.jdField_a_of_type_AndroidAppActivity);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acos
  * JD-Core Version:    0.7.0.1
  */

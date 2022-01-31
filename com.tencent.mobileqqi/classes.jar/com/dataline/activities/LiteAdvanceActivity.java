@@ -10,9 +10,9 @@ import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import bs;
-import bt;
-import bu;
+import ca;
+import cb;
+import cc;
 import com.dataline.util.DataLineReportUtil;
 import com.tencent.mobileqq.activity.qfileJumpActivity;
 import com.tencent.mobileqq.app.AppConstants;
@@ -61,22 +61,23 @@ public class LiteAdvanceActivity
   
   private void d()
   {
-    setContentView(2130903176);
+    setContentView(2130903177);
     setTitle(2131560533);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131231509);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131231510);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131231511);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131231512);
+    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    this.c = findViewById(2131231512);
+    this.c = findViewById(2131231513);
     this.c.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231510));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231511));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(AppConstants.as);
-    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131231507));
+    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131231508));
     this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new bs(this));
-    this.jdField_b_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131231508));
+    this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new ca(this));
+    this.jdField_b_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131231509));
     this.jdField_b_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_b_of_type_Boolean);
-    this.jdField_b_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new bt(this));
+    this.jdField_b_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new cb(this));
     String str2 = this.k.getText().toString();
     String str1 = str2;
     if (!getString(2131560958).equals(str2)) {
@@ -92,7 +93,7 @@ public class LiteAdvanceActivity
     localActionSheet.a(str);
     localActionSheet.a(getResources().getString(2131558501), 3);
     localActionSheet.d(2131561746);
-    localActionSheet.a(new bu(this, localActionSheet));
+    localActionSheet.a(new cc(this, localActionSheet));
     localActionSheet.show();
   }
   
@@ -133,7 +134,7 @@ public class LiteAdvanceActivity
   
   private void h()
   {
-    QQUtils.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, 2130838588, qfileJumpActivity.class.getName(), getString(2131558496), d(), this.jdField_a_of_type_AndroidOsHandler, 500);
+    QQUtils.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, 2130838590, qfileJumpActivity.class.getName(), getString(2131558496), d(), this.jdField_a_of_type_AndroidOsHandler, 500);
     DataLineReportUtil.q(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
@@ -151,14 +152,14 @@ public class LiteAdvanceActivity
   {
     switch (paramView.getId())
     {
-    case 2131231510: 
+    case 2131231511: 
     default: 
       return;
-    case 2131231509: 
+    case 2131231510: 
       StatisticAssist.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), "dl_ckviewrecvfile");
       f();
       return;
-    case 2131231511: 
+    case 2131231512: 
       h();
       return;
     }

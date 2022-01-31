@@ -6,12 +6,12 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.data.TroopInfo;
-import fpd;
+import fkq;
 
 public class TroopInfoProxy
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new fpd();
+  public static final Parcelable.Creator CREATOR = new fkq();
   public static final int a = 0;
   public static final int b = 64;
   public static final int c = 65;

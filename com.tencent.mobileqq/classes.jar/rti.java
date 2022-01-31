@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.model.QueryCallback;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import java.util.List;
 
-class rti
-  implements QueryCallback
+public class rti
+  extends pdi
 {
-  rti(rth paramrth, int paramInt1, int paramInt2, String paramString) {}
-  
-  public void a(Emoticon paramEmoticon)
+  public rti(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, boolean paramBoolean1, int paramInt, List paramList, boolean paramBoolean2)
   {
-    MarketFaceItemBuilder.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Rth.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Rth.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticon, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Rth.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    super(paramString);
+  }
+  
+  public void a(pdc parampdc)
+  {
+    parampdc.b(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rti
  * JD-Core Version:    0.7.0.1
  */

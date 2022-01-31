@@ -3,13 +3,12 @@ package com.tencent.component.media.image.drawable;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import com.tencent.component.media.annotation.Public;
-import pif;
 
 @Public
 public class SpecifiedDrawable
   extends DrawableContainer
 {
-  private pif a;
+  private SpecifiedDrawable.SpecificState mState;
   
   @Public
   public SpecifiedDrawable(Drawable paramDrawable)
@@ -20,21 +19,21 @@ public class SpecifiedDrawable
   @Public
   public SpecifiedDrawable(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    this.a = new pif(paramDrawable, this);
-    this.a.b = paramInt1;
-    this.a.c = paramInt2;
-    setConstantState(this.a);
+    this.mState = new SpecifiedDrawable.SpecificState(paramDrawable, this);
+    this.mState.mWidth = paramInt1;
+    this.mState.mHeight = paramInt2;
+    setConstantState(this.mState);
   }
   
-  private SpecifiedDrawable(pif parampif, Resources paramResources)
+  private SpecifiedDrawable(SpecifiedDrawable.SpecificState paramSpecificState, Resources paramResources)
   {
-    this.a = new pif(parampif, this, paramResources);
-    setConstantState(this.a);
+    this.mState = new SpecifiedDrawable.SpecificState(paramSpecificState, this, paramResources);
+    setConstantState(this.mState);
   }
   
   public int getIntrinsicHeight()
   {
-    int i = this.a.c;
+    int i = this.mState.mHeight;
     if (i > 0) {
       return i;
     }
@@ -43,7 +42,7 @@ public class SpecifiedDrawable
   
   public int getIntrinsicWidth()
   {
-    int i = this.a.b;
+    int i = this.mState.mWidth;
     if (i > 0) {
       return i;
     }
@@ -63,17 +62,17 @@ public class SpecifiedDrawable
   @Public
   public void resize(int paramInt1, int paramInt2)
   {
-    if ((this.a.b != paramInt1) || (this.a.c != paramInt2))
+    if ((this.mState.mWidth != paramInt1) || (this.mState.mHeight != paramInt2))
     {
-      this.a.b = paramInt1;
-      this.a.c = paramInt2;
+      this.mState.mWidth = paramInt1;
+      this.mState.mHeight = paramInt2;
       invalidateSelf();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.image.drawable.SpecifiedDrawable
  * JD-Core Version:    0.7.0.1
  */

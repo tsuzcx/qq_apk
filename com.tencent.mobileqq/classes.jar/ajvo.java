@@ -1,15 +1,6 @@
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
-
-public class ajvo
-  implements Action.OnActionEndListener
+public abstract interface ajvo
 {
-  public ajvo(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
-  
-  public void a()
-  {
-    this.a.b(TroopGiftToAllSurfaceView.a(this.a));
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 

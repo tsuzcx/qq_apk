@@ -1,7 +1,8 @@
 package oicq.wlogin_sdk.request;
 
-import oicq.wlogin_sdk.b.g;
+import oicq.wlogin_sdk.tlv_type.tlv_t105;
 import oicq.wlogin_sdk.tools.ErrMsg;
+import oicq.wlogin_sdk.tools.util;
 
 class WtloginHelper$HelperThread$3
   implements Runnable
@@ -14,9 +15,14 @@ class WtloginHelper$HelperThread$3
     if (this.val$cancel != 0) {
       return;
     }
+    if (WtloginHelper.access$100(this.this$1.mHelper) == null)
+    {
+      util.LOGW("login helper listener is null", this.this$1.mUserAccount);
+      return;
+    }
     async_context localasync_context = t.b(this.this$1.mUserSigInfo._seqence);
     ErrMsg localErrMsg = localasync_context._last_err_msg;
-    this.this$1.mPictureData = localasync_context._t105.f();
+    this.this$1.mPictureData = localasync_context._t105.get_pic();
     WtloginHelper.access$100(this.this$1.mHelper).OnRefreshPictureData(this.this$1.mUserAccount, this.this$1.mUserSigInfo, this.this$1.mPictureData, this.val$ret, localErrMsg);
   }
 }

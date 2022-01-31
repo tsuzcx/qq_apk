@@ -1,24 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SwipeUpAndDragListener;
+import com.tencent.biz.qqstory.playvideo.entrance.MemorySelectVideoPlayInfo;
 
-class vpy
-  implements Animation.AnimationListener
+public class vpy
+  extends vpv
 {
-  vpy(vpw paramvpw, PhotoListPanel.SwipeUpAndDragListener paramSwipeUpAndDragListener) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public vpy(MemorySelectVideoPlayInfo paramMemorySelectVideoPlayInfo)
   {
-    this.jdField_a_of_type_Vpw.a();
+    super(paramMemorySelectVideoPlayInfo.childPlayInfo);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vpy
  * JD-Core Version:    0.7.0.1
  */

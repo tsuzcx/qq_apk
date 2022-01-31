@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="#ffebf0f3" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:custom="http://schemas.android.com/apk/res/com.tencent.mobileqq">
-    <cooperation.qqreader.QRNumberCircleProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a28a7" android:layout_width="130.0dip" android:layout_height="130.0dip" android:layout_marginTop="100.0dip" android:layout_centerHorizontal="true" custom:progress="0" custom:max="100" custom:progress_unreached_color="#ff18b4ed" custom:progress_reached_color="#ff18b4ed" custom:progress_text_size="15.0sp" custom:progress_text_color="#ffebf0f3" custom:progress_circle_radius="65.0dip" custom:progress_text_visibility="APKTOOL_DUPLICATE_id_0x7f0a0021" custom:progress_fill_mode="APKTOOL_DUPLICATE_id_0x7f0a0024" />
-    <TextView android:textSize="14.0dip" android:textColor="#ff999999" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a28a8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:text="一大波颜如玉正在赶过来…" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a28a7" android:layout_centerHorizontal="true" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a28a9" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040929" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
-</RelativeLayout>

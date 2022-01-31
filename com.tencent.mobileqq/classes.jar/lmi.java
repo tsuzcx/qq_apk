@@ -1,35 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
+import com.tencent.av.camera.CameraUtils;
+import java.util.Observable;
 
-public final class lmi
-  implements Runnable
+public class lmi
+  extends Observable
 {
-  public lmi(long paramLong) {}
+  public lmi(CameraUtils paramCameraUtils) {}
   
-  public void run()
+  public void a(Object[] paramArrayOfObject)
   {
-    if (ReadinjoySPEventReport.b(23))
+    try
     {
-      oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
-      localAttributeList.att_id.set(1);
-      localAttributeList.att_name.set("time");
-      localAttributeList.att_value.set(String.valueOf(this.a / 1000L));
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(localAttributeList);
-      PublicAccountUtil.a(23, "LeaveQQ", localArrayList);
+      super.setChanged();
+      super.notifyObservers(paramArrayOfObject);
+      return;
     }
-    ThreadManager.executeOnSubThread(new lmj(this));
+    finally
+    {
+      paramArrayOfObject = finally;
+      throw paramArrayOfObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lmi
  * JD-Core Version:    0.7.0.1
  */

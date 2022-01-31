@@ -1,65 +1,189 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.equipmentlock.DevlockPhoneStatus;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
+import com.tencent.biz.pubaccount.util.ShareUtils.ShareImageUtils.2;
+import com.tencent.biz.pubaccount.util.ShareUtils.ShareImageUtils.3;
+import com.tencent.biz.pubaccount.util.ShareUtils.ShareImageUtils.4;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import java.util.ArrayList;
+import java.util.Calendar;
+import mqq.os.MqqHandler;
 
 public class tae
-  extends WtloginObserver
 {
-  public tae(LoginInfoActivity paramLoginInfoActivity) {}
+  private static Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private static bfah jdField_a_of_type_Bfah = new taf();
+  private static String jdField_a_of_type_JavaLangString;
   
-  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public static void a()
   {
-    if (this.a.isFinishing()) {
+    WXShareHelper.a().a(jdField_a_of_type_Bfah);
+  }
+  
+  public static void a(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareImageUtils", 2, "launchFriendPicker path = " + jdField_a_of_type_JavaLangString);
+    }
+    if (jdField_a_of_type_JavaLangString == null)
+    {
+      QLog.e("ShareImageUtils", 1, "currentPath is null");
       return;
     }
-    if ((paramInt == 0) && (paramDevlockInfo != null))
+    Intent localIntent = new Intent(paramActivity, ForwardRecentActivity.class);
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("key_help_forward_pic", true);
+    localIntent.putExtras(localBundle);
+    localIntent.putExtra("forward_type", 1);
+    localIntent.putExtra("key_allow_multiple_forward_from_limit", false);
+    localIntent.putExtra("key_share_from_screen_shot", true);
+    localIntent.putExtra("key_share_from_screen_need_finish", true);
+    localIntent.setData(Uri.parse(jdField_a_of_type_JavaLangString));
+    paramActivity.startActivityForResult(localIntent, 3);
+  }
+  
+  public static void a(Context paramContext)
+  {
+    if (jdField_a_of_type_AndroidGraphicsBitmap == null)
     {
-      if (QLog.isColorLevel())
+      QLog.e("ShareImageUtils", 1, "bitmap is null");
+      return;
+    }
+    ThreadManager.getFileThreadHandler().post(new ShareImageUtils.2(paramContext));
+  }
+  
+  public static void a(Bitmap paramBitmap)
+  {
+    jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+  }
+  
+  public static void a(BaseActivity paramBaseActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareImageUtils", 2, "shareToQzone");
+    }
+    if (jdField_a_of_type_JavaLangString == null)
+    {
+      QLog.e("ShareImageUtils", 1, "currentPath is null");
+      return;
+    }
+    paramBaseActivity = (QQAppInterface)paramBaseActivity.getAppRuntime();
+    Bundle localBundle = new Bundle();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(jdField_a_of_type_JavaLangString);
+    localBundle.putStringArrayList("images", localArrayList);
+    bjev.a(paramBaseActivity, BaseApplicationImpl.getContext(), localBundle, null, 2);
+  }
+  
+  public static void a(String paramString)
+  {
+    jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public static void b()
+  {
+    jdField_a_of_type_JavaLangString = null;
+    jdField_a_of_type_AndroidGraphicsBitmap = null;
+    WXShareHelper.a().b(jdField_a_of_type_Bfah);
+  }
+  
+  public static void b(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareImageUtils", 2, "ScreenShotShareFragment shareToWXFriend");
+    }
+    if ((jdField_a_of_type_JavaLangString == null) || (jdField_a_of_type_AndroidGraphicsBitmap == null))
+    {
+      QLog.e("ShareImageUtils", 1, "currentPath or bitmap is null");
+      return;
+    }
+    int i;
+    if (!WXShareHelper.a().a()) {
+      i = 2131721491;
+    }
+    for (;;)
+    {
+      if (i != -1)
       {
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "OnCheckDevLockStatus ret = " + paramInt);
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo devSetup:" + paramDevlockInfo.DevSetup + " countryCode:" + paramDevlockInfo.CountryCode + " mobile:" + paramDevlockInfo.Mobile + " MbItemSmsCodeStatus:" + paramDevlockInfo.MbItemSmsCodeStatus + " TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount + " AllowSet:" + paramDevlockInfo.AllowSet);
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo.ProtectIntro:" + paramDevlockInfo.ProtectIntro + "  info.MbGuideType:" + paramDevlockInfo.MbGuideType);
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo.MbGuideMsg:" + paramDevlockInfo.MbGuideMsg);
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo.MbGuideInfoType:" + paramDevlockInfo.MbGuideInfoType);
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo.MbGuideInfo:" + paramDevlockInfo.MbGuideInfo);
+        QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getString(i), 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298914));
+        return;
+        if (!WXShareHelper.a().b()) {
+          i = 2131721492;
+        }
       }
-      DevlockPhoneStatus.a().a(paramDevlockInfo.TransferInfo);
-      LoginInfoActivity.a(this.a, paramDevlockInfo);
-      LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
+      else
+      {
+        WxShareHelperFromReadInjoy.a().a(jdField_a_of_type_JavaLangString, jdField_a_of_type_AndroidGraphicsBitmap, 0, false);
+        return;
+      }
+      i = -1;
+    }
+  }
+  
+  public static void c(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareImageUtils", 2, "shareToFriendCircle");
+    }
+    if ((jdField_a_of_type_JavaLangString == null) || (jdField_a_of_type_AndroidGraphicsBitmap == null))
+    {
+      QLog.e("ShareImageUtils", 1, "currentPath or bitmap is null");
       return;
     }
-    if (QLog.isColorLevel())
-    {
-      QLog.d("LoginInfoActivity.AccDevSec", 2, "OnCheckDevLockStatus ret = " + paramInt);
-      if (paramErrMsg != null) {
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "OnCheckDevLockStatus errMsg:" + paramErrMsg.getMessage());
-      }
-      if (paramDevlockInfo == null) {
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "OnCheckDevLockStatus DevlockInfo is null");
-      }
+    int i;
+    if (!WXShareHelper.a().a()) {
+      i = 2131721491;
     }
-    LoginInfoActivity.b(this.a);
-    paramDevlockInfo = this.a.getString(2131436582);
-    paramWUserSigInfo = paramDevlockInfo;
-    if (paramErrMsg != null)
+    for (;;)
     {
-      paramWUserSigInfo = paramDevlockInfo;
-      if (!TextUtils.isEmpty(paramErrMsg.getMessage())) {
-        paramWUserSigInfo = paramErrMsg.getMessage();
+      if (i != -1)
+      {
+        QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getString(i), 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298914));
+        return;
+        if (!WXShareHelper.a().b()) {
+          i = 2131721492;
+        }
       }
+      else
+      {
+        WxShareHelperFromReadInjoy.a().a(jdField_a_of_type_JavaLangString, jdField_a_of_type_AndroidGraphicsBitmap, 1, false);
+        return;
+      }
+      i = -1;
     }
-    QQToast.a(this.a.getApplicationContext(), paramWUserSigInfo, 0).b(this.a.getTitleBarHeight());
+  }
+  
+  private static void d()
+  {
+    String str = alof.aW + "/Tencent/QQ_Images/" + Calendar.getInstance().getTime() + ".png";
+    if (bdhb.a(jdField_a_of_type_AndroidGraphicsBitmap, str))
+    {
+      QLog.d("ShareImageUtils", 1, "save to sdcard success");
+      bdhj.a(BaseApplicationImpl.getContext(), str);
+      str = BaseApplicationImpl.getContext().getString(2131695351) + " " + str;
+      ThreadManager.getUIHandler().post(new ShareImageUtils.3(str));
+      return;
+    }
+    QLog.d("ShareImageUtils", 1, "save to sdcard fail");
+    ThreadManager.getUIHandler().post(new ShareImageUtils.4());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tae
  * JD-Core Version:    0.7.0.1
  */

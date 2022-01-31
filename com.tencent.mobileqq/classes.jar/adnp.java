@@ -1,37 +1,44 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.util.UniformDownloader.IUniformDownloaderListener;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import com.tencent.mobileqq.activity.PortraitImageview;
 
 public class adnp
-  implements UniformDownloader.IUniformDownloaderListener
+  extends adns
 {
-  public adnp(NearbyHybridFragment paramNearbyHybridFragment) {}
+  private adnp(PortraitImageview paramPortraitImageview) {}
   
-  public void a(int paramInt, Bundle paramBundle) {}
-  
-  public void a(int paramInt, String paramString, Bundle paramBundle) {}
-  
-  public void a(String paramString, long paramLong, Bundle paramBundle)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    QLog.i("NearbyHybridFragment", 2, "onDownloadSucess() called with: filePath = [" + paramString + "], fileSize = [" + paramLong + "], extData = [" + paramBundle + "]");
-    paramBundle = BaseApplicationImpl.getContext().getSharedPreferences("now_down_apk", 4);
-    paramBundle.edit().putInt("state", 1);
-    paramBundle.edit().putString("filePath", paramString);
+    if (this.a.a() > this.a.c()) {
+      this.a.a(this.a.c());
+    }
+    for (;;)
+    {
+      return true;
+      this.a.a(this.a.c() * 3.0F, paramMotionEvent.getX(), paramMotionEvent.getY(), 350.0F);
+    }
   }
   
-  public void b(int paramInt, Bundle paramBundle)
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    QLog.i("NearbyHybridFragment", 2, "onDownloadProgress() called with: progress = [" + paramInt + "], extData = [" + paramBundle + "]");
+    if (((paramMotionEvent1 != null) && (paramMotionEvent1.getPointerCount() > 1)) || ((paramMotionEvent2 != null) && (paramMotionEvent2.getPointerCount() > 1)) || ((this.a.jdField_a_of_type_AndroidViewScaleGestureDetector != null) && (this.a.jdField_a_of_type_AndroidViewScaleGestureDetector.isInProgress()))) {
+      return false;
+    }
+    this.a.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    this.a.a(-paramFloat1, -paramFloat2);
+    this.a.setImageMatrix(this.a.a());
+    return true;
   }
   
-  public void c(int paramInt, Bundle paramBundle) {}
-  
-  public void d(int paramInt, Bundle paramBundle) {}
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    if (this.a.jdField_a_of_type_Adnq != null)
+    {
+      this.a.jdField_a_of_type_Adnq.a();
+      return false;
+    }
+    return super.onSingleTapConfirmed(paramMotionEvent);
+  }
 }
 
 

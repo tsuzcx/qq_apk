@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.intervideo.od.ODLoadingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
 
 public class advk
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public advk(ODLoadingActivity paramODLoadingActivity) {}
+  public advk(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ODLoadingActivity.a(this.a);
+    this.a.a(this.a.a);
   }
 }
 

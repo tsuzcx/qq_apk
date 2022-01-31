@@ -1,27 +1,29 @@
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import com.tencent.mobileqq.activity.ChatHistoryImageView.DownloadAndSaveTask;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class acoc
-  implements FMDialogUtil.FMDialogInterface
+public class acoc
+  implements DialogInterface.OnClickListener
 {
-  acoc(acob paramacob) {}
+  public acoc(ChatHistoryImageView paramChatHistoryImageView) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    UniformDownloadActivity.a(this.a.a);
-    this.a.a.finish();
-    this.a.a.overridePendingTransition(0, 0);
-  }
-  
-  public void b()
-  {
-    this.a.a.finish();
-    this.a.a.overridePendingTransition(0, 0);
+    paramDialogInterface = this.a;
+    ChatHistoryImageView.DownloadAndSaveTask localDownloadAndSaveTask = new ChatHistoryImageView.DownloadAndSaveTask(this.a, this.a.jdField_a_of_type_JavaUtilArrayList, true, false);
+    paramDialogInterface.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView$DownloadAndSaveTask = localDownloadAndSaveTask;
+    ThreadManager.post(localDownloadAndSaveTask, 5, null, true);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acoc
  * JD-Core Version:    0.7.0.1
  */

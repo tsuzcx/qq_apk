@@ -1,36 +1,39 @@
-import android.os.Handler;
+import android.text.Editable;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.data.FilePreviewDataReporter;
-import java.util.Random;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class acmr
   implements View.OnClickListener
 {
-  public acmr(FilePreviewActivity paramFilePreviewActivity) {}
+  public acmr(ChatHistory paramChatHistory) {}
   
   public void onClick(View paramView)
   {
-    this.a.startTitleProgress();
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.a.jdField_b_of_type_AndroidWidgetTextView.setText(2131436130);
-    this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter != null)
+    if (this.a.d > 1)
     {
-      paramView = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter;
-      paramView.a += 1;
+      this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(true);
+      this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838930);
+      paramView = this.a;
+      paramView.d -= 1;
+      if (this.a.d <= 1)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840288);
+      }
+      this.a.e = ((this.a.d - 1) * 8);
+      this.a.jdField_a_of_type_Acms.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.a.d));
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+      this.a.t();
     }
-    int i = new Random(System.currentTimeMillis()).nextInt(1500);
-    new Handler().postDelayed(new acms(this), i % 1001 + 500);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acmr
  * JD-Core Version:    0.7.0.1
  */

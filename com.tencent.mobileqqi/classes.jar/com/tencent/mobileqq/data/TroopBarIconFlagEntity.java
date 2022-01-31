@@ -56,7 +56,7 @@ public class TroopBarIconFlagEntity
     if (!TextUtils.isEmpty(paramString)) {}
     try
     {
-      paramResources = (GradientDrawable)paramResources.getDrawable(2130838426);
+      paramResources = (GradientDrawable)paramResources.getDrawable(2130838428);
       paramResources.setColor(Color.parseColor(paramString));
       paramView.setBackgroundDrawable(paramResources);
       return;

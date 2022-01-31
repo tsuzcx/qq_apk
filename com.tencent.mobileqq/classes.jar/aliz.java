@@ -1,37 +1,25 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.UpdateManager;
-import java.io.File;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
-public class aliz
-  implements Runnable
+class aliz
+  implements Comparator<ApolloActionData>
 {
-  public aliz(UpdateManager paramUpdateManager, String paramString, DownloadInfo paramDownloadInfo) {}
+  aliz(aliw paramaliw) {}
   
-  public void run()
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    try
-    {
-      File localFile = new File(this.jdField_a_of_type_JavaLangString);
-      if (localFile.exists())
-      {
-        long l = localFile.length();
-        DownloadManager.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, l);
-        return;
-      }
-      LogUtility.c(UpdateManager.jdField_a_of_type_JavaLangString, "patchNewApk report file not exists");
-      return;
+    if (paramApolloActionData2.version == paramApolloActionData1.version) {
+      return 0;
     }
-    catch (Exception localException)
-    {
-      LogUtility.c(UpdateManager.jdField_a_of_type_JavaLangString, "patchNewApk report>>>", localException);
+    if (paramApolloActionData2.version > paramApolloActionData1.version) {
+      return 1;
     }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aliz
  * JD-Core Version:    0.7.0.1
  */

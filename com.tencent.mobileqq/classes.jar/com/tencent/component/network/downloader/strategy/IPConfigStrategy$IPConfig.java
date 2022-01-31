@@ -8,42 +8,31 @@ import java.util.Random;
 
 public class IPConfigStrategy$IPConfig
 {
-  private int a;
-  public ArrayList a;
+  private int failCount = -1;
+  public ArrayList<IPInfo> ipInfos = new ArrayList();
   
-  public IPConfigStrategy$IPConfig()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {
-      return;
-    }
-    this.jdField_a_of_type_Int = (Math.abs(new Random(System.currentTimeMillis()).nextInt()) % this.jdField_a_of_type_JavaUtilArrayList.size());
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(IPInfo paramIPInfo)
+  public void appendIP(IPInfo paramIPInfo)
   {
     if (paramIPInfo == null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramIPInfo);
+    this.ipInfos.add(paramIPInfo);
   }
   
-  public void a(String paramString)
+  public int getCurrFailCount()
+  {
+    return this.failCount;
+  }
+  
+  public int getFailCount()
+  {
+    if (this.failCount < 0) {
+      initStrarIndex();
+    }
+    return this.failCount;
+  }
+  
+  public void initFailCount(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
     IPInfo localIPInfo;
@@ -54,27 +43,32 @@ public class IPConfigStrategy$IPConfig
       Iterator localIterator;
       while (!localIterator.hasNext())
       {
-        localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        localIterator = this.ipInfos.iterator();
         i = -1;
       }
       localIPInfo = (IPInfo)localIterator.next();
       j = i + 1;
       int i = j;
-    } while (!paramString.endsWith(localIPInfo.a));
-    this.jdField_a_of_type_Int = j;
+    } while (!paramString.endsWith(localIPInfo.ip));
+    this.failCount = j;
   }
   
-  public int b()
+  public void initStrarIndex()
   {
-    if (this.jdField_a_of_type_Int < 0) {
-      a();
+    if ((this.ipInfos == null) || (this.ipInfos.size() <= 0)) {
+      return;
     }
-    return this.jdField_a_of_type_Int;
+    this.failCount = (Math.abs(new Random(System.currentTimeMillis()).nextInt()) % this.ipInfos.size());
+  }
+  
+  public void setFailCount(int paramInt)
+  {
+    this.failCount = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.downloader.strategy.IPConfigStrategy.IPConfig
  * JD-Core Version:    0.7.0.1
  */

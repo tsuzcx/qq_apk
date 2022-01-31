@@ -1,48 +1,51 @@
 package com.tencent.filter;
 
+import com.tencent.aekit.openrender.UniformParam.FloatParam;
+import com.tencent.aekit.openrender.UniformParam.IntParam;
+
 public class HSVColorChannelFilter
   extends BaseFilter
 {
-  int channelflag = -1;
-  float fh = 0.5F;
-  float flb = -1.0F;
-  float fld = -1.0F;
-  float frb = -1.0F;
-  float frd = -1.0F;
-  float fs = 0.5F;
-  float fv = 0.5F;
+  private int channelflag = -1;
+  private float fh = 0.5F;
+  private float flb = -1.0F;
+  private float fld = -1.0F;
+  private float frb = -1.0F;
+  private float frd = -1.0F;
+  private float fs = 0.5F;
+  private float fv = 0.5F;
   
   public HSVColorChannelFilter()
   {
-    super(GLSLRender.FILTER_SHADER_HSVCOLOR_ALL);
+    super(BaseFilter.getFragmentShader(133));
   }
   
-  public void ApplyGLSLFilter(boolean paramBoolean, float paramFloat1, float paramFloat2)
+  public void applyFilterChain(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
     switch (this.channelflag)
     {
     default: 
-      this.glsl_programID = GLSLRender.FILTER_SHADER_HSVCOLOR_ALL;
+      this.glslProgramShader = BaseFilter.getFragmentShader(133);
     }
     for (;;)
     {
-      addParam(new Param.FloatParam("fh", this.fh));
-      addParam(new Param.FloatParam("fs", this.fs));
-      addParam(new Param.FloatParam("fv", this.fv));
-      addParam(new Param.FloatParam("flb", this.flb));
-      addParam(new Param.FloatParam("fld", this.fld));
-      addParam(new Param.FloatParam("frd", this.frd));
-      addParam(new Param.FloatParam("frb", this.frb));
-      addParam(new Param.IntParam("channelflag", this.channelflag));
-      super.ApplyGLSLFilter(paramBoolean, paramFloat1, paramFloat2);
+      addParam(new UniformParam.FloatParam("fh", this.fh));
+      addParam(new UniformParam.FloatParam("fs", this.fs));
+      addParam(new UniformParam.FloatParam("fv", this.fv));
+      addParam(new UniformParam.FloatParam("flb", this.flb));
+      addParam(new UniformParam.FloatParam("fld", this.fld));
+      addParam(new UniformParam.FloatParam("frd", this.frd));
+      addParam(new UniformParam.FloatParam("frb", this.frb));
+      addParam(new UniformParam.IntParam("channelflag", this.channelflag));
+      super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
       return;
-      this.glsl_programID = GLSLRender.FILTER_SHADER_HSVCOLOR_0;
+      this.glslProgramShader = BaseFilter.getFragmentShader(129);
       continue;
-      this.glsl_programID = GLSLRender.FILTER_SHADER_HSVCOLOR_1;
+      this.glslProgramShader = BaseFilter.getFragmentShader(130);
       continue;
-      this.glsl_programID = GLSLRender.FILTER_SHADER_HSVCOLOR_2;
+      this.glslProgramShader = BaseFilter.getFragmentShader(131);
       continue;
-      this.glsl_programID = GLSLRender.FILTER_SHADER_HSVCOLOR_3;
+      this.glslProgramShader = BaseFilter.getFragmentShader(132);
     }
   }
   
@@ -92,20 +95,20 @@ public class HSVColorChannelFilter
     this.fs = (paramFloat2 / 100.0F);
     this.fv = (paramFloat3 / 100.0F);
     this.channelflag = checkColorRange(paramFloat4, paramFloat5, paramFloat6, paramFloat7);
-    addParam(new Param.FloatParam("fh", this.fh));
-    addParam(new Param.FloatParam("fs", this.fs));
-    addParam(new Param.FloatParam("fv", this.fv));
-    addParam(new Param.FloatParam("flb", this.flb));
-    addParam(new Param.FloatParam("fld", this.fld));
-    addParam(new Param.FloatParam("frd", this.frd));
-    addParam(new Param.FloatParam("frb", this.frb));
-    addParam(new Param.IntParam("channelflag", this.channelflag));
-    this.glsl_programID = GLSLRender.FILTER_SHADER_HSVCOLOR_ALL;
+    addParam(new UniformParam.FloatParam("fh", this.fh));
+    addParam(new UniformParam.FloatParam("fs", this.fs));
+    addParam(new UniformParam.FloatParam("fv", this.fv));
+    addParam(new UniformParam.FloatParam("flb", this.flb));
+    addParam(new UniformParam.FloatParam("fld", this.fld));
+    addParam(new UniformParam.FloatParam("frd", this.frd));
+    addParam(new UniformParam.FloatParam("frb", this.frb));
+    addParam(new UniformParam.IntParam("channelflag", this.channelflag));
+    this.glslProgramShader = BaseFilter.getFragmentShader(133);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.filter.HSVColorChannelFilter
  * JD-Core Version:    0.7.0.1
  */

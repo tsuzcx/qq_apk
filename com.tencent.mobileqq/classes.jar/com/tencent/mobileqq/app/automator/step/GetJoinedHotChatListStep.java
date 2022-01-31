@@ -1,37 +1,36 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import com.tencent.mobileqq.app.HotChatHandler;
+import aluj;
+import aluu;
+import amie;
 import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.HotChatObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import zqx;
 
 public class GetJoinedHotChatListStep
   extends AsyncStep
 {
-  private HotChatObserver a;
+  private aluu a;
   
-  protected int a()
+  public int a()
   {
-    if (!HotChatManager.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b)) {
+    if (!HotChatManager.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app)) {
       return 7;
     }
-    HotChatHandler localHotChatHandler = (HotChatHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.a(35);
-    localHotChatHandler.c();
-    this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver = new zqx(this, null);
-    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver);
-    localHotChatHandler.b();
+    aluj localaluj = (aluj)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(35);
+    this.jdField_a_of_type_Aluu = new amie(this, null);
+    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Aluu);
+    localaluj.a();
     return 2;
   }
   
-  public void c()
+  public void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver != null)
+    if (this.jdField_a_of_type_Aluu != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Aluu);
+      this.jdField_a_of_type_Aluu = null;
     }
   }
 }

@@ -1,98 +1,79 @@
-import android.app.Activity;
-import android.view.View;
-import com.etrump.mixlayout.ETFont;
-import com.etrump.mixlayout.ETLayout;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
-import com.tencent.mobileqq.emoticonview.EmoticonUtils;
-import com.tencent.mobileqq.text.QQText;
-import com.tencent.mobileqq.text.QQText.EmoticonSpan;
-import com.tencent.mobileqq.widget.AnimationTextView;
-import com.tencent.mobileqq.widget.AnimationTextView.OnSingleClick;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import java.io.File;
+import java.util.Map;
 
 public class vio
-  implements AnimationTextView.OnSingleClick
+  extends vkh
 {
-  public vio(TextItemBuilder paramTextItemBuilder, boolean paramBoolean) {}
+  private String a;
+  public web a;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean;
   
-  public void a(View paramView)
+  public vio()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TextItemBuilder", 2, "SingleTap invoked!");
-    }
-    Object localObject = (AnimationTextView)paramView;
-    float f1 = ((AnimationTextView)localObject).a - TextItemBuilder.f;
-    float f2 = ((AnimationTextView)localObject).b;
-    float f3 = TextItemBuilder.d;
-    if (this.jdField_a_of_type_Boolean) {
-      f1 = ((AnimationTextView)localObject).a - TextItemBuilder.g;
-    }
-    localObject = ((AnimationTextView)localObject).getText();
-    int k;
-    boolean bool2;
-    int j;
-    boolean bool1;
-    if ((localObject instanceof QQText))
+    this("", null, false);
+  }
+  
+  public vio(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    a(false, true);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_c_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a()
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      localObject = (QQText)localObject;
-      localObject = (QQText.EmoticonSpan[])((QQText)localObject).getSpans(0, ((QQText)localObject).length(), QQText.EmoticonSpan.class);
-      if (!(paramView instanceof ETTextView)) {
-        break label325;
+      a(this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    b(false);
+  }
+  
+  public void a(String paramString)
+  {
+    File localFile1 = new File(this.jdField_c_of_type_JavaLangString);
+    try
+    {
+      File localFile2 = localFile1.getParentFile();
+      if ((localFile2 != null) && (!localFile2.exists())) {
+        localFile2.mkdirs();
       }
-      paramView = (ETTextView)paramView;
-      k = paramView.b;
-      int m = paramView.c;
-      if ((paramView.a == null) || (paramView.a.mFontId == 0) || (paramView.a.mFontType != 1)) {
-        break label307;
-      }
-      bool2 = true;
-      i = k;
-      j = m;
-      bool1 = bool2;
-      if (bool2)
-      {
-        i = k;
-        j = m;
-        bool1 = bool2;
-        if (paramView.a() != null)
-        {
-          paramView = paramView.a();
-          if (QLog.isColorLevel()) {
-            QLog.d("ChatItemBuilder", 2, "isHanYiFont, onlyEmoji: " + paramView.jdField_a_of_type_Boolean);
-          }
-          if (paramView.jdField_a_of_type_Boolean) {
-            break label313;
-          }
-          bool1 = true;
-          label241:
-          j = m;
-        }
+      if (localFile1.exists()) {
+        localFile1.delete();
       }
     }
-    for (int i = k;; i = -1)
+    catch (Exception localException)
     {
-      if ((i != -1) && (j != -1)) {}
-      for (bool2 = true;; bool2 = false)
-      {
-        EmoticonUtils.a((QQText.EmoticonSpan[])localObject, f1, f2 - f3, bool2, i, j, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.jdField_a_of_type_AndroidContentContext, bool1);
-        return;
-        label307:
-        bool2 = false;
-        break;
-        label313:
-        bool1 = false;
-        break label241;
+      label45:
+      break label45;
+    }
+    this.jdField_a_of_type_Web = new wdy();
+    this.jdField_a_of_type_Web.a(paramString, 0, 0, new vip(this, paramString));
+  }
+  
+  protected void a(Map<String, Object> paramMap)
+  {
+    if ((paramMap != null) && (!paramMap.isEmpty()))
+    {
+      if (paramMap.containsKey("DownloadPic2FileJob_iiu")) {
+        this.jdField_a_of_type_JavaLangString = ((String)a("DownloadPic2FileJob_iiu"));
       }
-      label325:
-      bool1 = false;
-      j = -1;
+      if (paramMap.containsKey("DownloadPic2FileJob_isfp")) {
+        this.jdField_c_of_type_JavaLangString = ((String)a("DownloadPic2FileJob_isfp"));
+      }
+      if (paramMap.containsKey("DownloadPic2FileJob_IN_ROUND")) {
+        this.jdField_c_of_type_Boolean = ((Boolean)a("DownloadPic2FileJob_IN_ROUND")).booleanValue();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vio
  * JD-Core Version:    0.7.0.1
  */

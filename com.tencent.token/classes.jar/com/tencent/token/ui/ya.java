@@ -1,21 +1,19 @@
 package com.tencent.token.ui;
 
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.os.Handler;
+import android.os.Message;
+import java.util.TimerTask;
 
-final class ya
-  implements TextWatcher
+class ya
+  extends TimerTask
 {
-  ya(RealNameStep1InputNameIdActivity paramRealNameStep1InputNameIdActivity) {}
+  ya(RealNameTakeIDPhotoPreview paramRealNameTakeIDPhotoPreview) {}
   
-  public final void afterTextChanged(Editable paramEditable) {}
-  
-  public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void run()
   {
-    RealNameStep1InputNameIdActivity.access$2802(this.a, false);
-    RealNameStep1InputNameIdActivity.access$1000(this.a);
+    Message localMessage = RealNameTakeIDPhotoPreview.a(this.a).obtainMessage(0);
+    localMessage.what = 3;
+    localMessage.sendToTarget();
   }
 }
 

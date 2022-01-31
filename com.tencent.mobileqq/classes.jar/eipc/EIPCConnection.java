@@ -2,68 +2,63 @@ package eipc;
 
 import android.os.Bundle;
 import android.os.IBinder;
-import android.os.RemoteException;
 import mqq.app.MobileQQ;
 
 public class EIPCConnection
 {
-  String a = "";
-  boolean b = true;
-  EIPCModuleManager c;
+  boolean active = true;
+  EIPCModuleManager callbackManager;
+  EIPCChannel channel;
   public int clientId;
-  EIPCChannel d;
-  int e;
+  String logMark = "";
   public String procName;
+  int remoteIndex;
   
   public EIPCConnection(EIPCChannel paramEIPCChannel, String paramString)
   {
-    this.d = paramEIPCChannel;
+    this.channel = paramEIPCChannel;
     this.procName = paramString;
   }
   
   public EIPCResult callModule(String paramString1, String paramString2, Bundle paramBundle)
-    throws RemoteException
   {
     if (paramBundle != null) {
       paramBundle.setClassLoader(MobileQQ.sMobileQQ.getClassLoader());
     }
-    return this.d.sync(paramString1, paramString2, paramBundle, -99999);
+    return this.channel.sync(paramString1, paramString2, paramBundle, -99999);
   }
   
   public EIPCResult callModule(String paramString1, String paramString2, Bundle paramBundle, int paramInt)
-    throws RemoteException
   {
     if (paramBundle != null) {
       paramBundle.setClassLoader(MobileQQ.sMobileQQ.getClassLoader());
     }
-    return this.d.sync(paramString1, paramString2, paramBundle, paramInt);
+    return this.channel.sync(paramString1, paramString2, paramBundle, paramInt);
   }
   
   public EIPCResult callModuleAsync(String paramString1, String paramString2, Bundle paramBundle, EIPCResultCallback paramEIPCResultCallback)
-    throws RemoteException
   {
     if (paramBundle != null) {
       paramBundle.setClassLoader(MobileQQ.sMobileQQ.getClassLoader());
     }
-    int i = this.c.a(paramEIPCResultCallback);
-    return this.d.async(paramString1, paramString2, paramBundle, i, this.e);
+    int i = this.callbackManager.registerCallback(paramEIPCResultCallback);
+    return this.channel.async(paramString1, paramString2, paramBundle, i, this.remoteIndex);
   }
   
   public boolean isAvailable()
   {
-    IBinder localIBinder = this.d.asBinder();
-    return (this.b) && (localIBinder.isBinderAlive()) && (localIBinder.pingBinder());
+    IBinder localIBinder = this.channel.asBinder();
+    return (this.active) && (localIBinder.isBinderAlive()) && (localIBinder.pingBinder());
   }
   
   public IBinder setStubBinder(int paramInt, IBinder paramIBinder)
-    throws RemoteException
   {
-    return this.d.setStubBinder(paramInt, paramIBinder);
+    return this.channel.setStubBinder(paramInt, paramIBinder);
   }
   
   public String toString()
   {
-    return this.a + ", EIPCConnection[procName=" + this.procName + ", clientId=" + this.clientId + "]";
+    return this.logMark + ", EIPCConnection[procName=" + this.procName + ", clientId=" + this.clientId + "]";
   }
 }
 

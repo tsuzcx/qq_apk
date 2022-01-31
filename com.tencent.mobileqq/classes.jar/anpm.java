@@ -1,44 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ValueAnimator;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.QIMCircleProgress;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.ark.browser.ArkBrowserFragment;
 
 public class anpm
-  extends AnimatorListenerAdapter
+  implements beix
 {
-  public anpm(QIMCircleProgress paramQIMCircleProgress) {}
+  public anpm(ArkBrowserFragment paramArkBrowserFragment) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(String paramString)
   {
-    this.a.a = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] capturedSegmentBlinkAnimator cancel");
-    }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.a = false;
-    if ((this.a.c) && (this.a.b != null)) {
-      this.a.b.start();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] capturedSegmentBlinkAnimator end");
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.a = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "capturedSegmentBlinkAnimator start");
+    this.a.a = paramString;
+    paramString = this.a.getWebView();
+    if (paramString != null) {
+      paramString.callJs("NativeApi.lightappGetShareData();");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpm
  * JD-Core Version:    0.7.0.1
  */

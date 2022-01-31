@@ -1,24 +1,31 @@
-import android.graphics.PointF;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
-import com.tencent.mobileqq.profile.view.VipTagView;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
-import com.tencent.mobileqq.widget.RatioLayout;
+import android.view.View;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
 
-public class agrz
-  implements ValueAnimation.AnimationUpdateListener
+class agrz
+  implements bhzf
 {
-  public agrz(ProfileTagView paramProfileTagView, VipTagView paramVipTagView) {}
+  agrz(agrn paramagrn) {}
   
-  public void a(ValueAnimation paramValueAnimation, float paramFloat, PointF paramPointF, Transformation paramTransformation)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView, paramPointF.x, paramPointF.y);
+    agrn.a(this.a).setPullType(0);
+    agrn.a(this.a).c(agrn.i);
+    agrn.a(this.a, 0, this.a.a.a());
   }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    return false;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView) {}
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agrz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,13 @@
 package com.tencent.av.business.manager.filter;
 
-import com.tencent.av.business.manager.EffectConfigBase.ItemBase;
+import ljo;
 
 public class FilterItem
-  extends EffectConfigBase.ItemBase
+  extends ljo
 {
   private String desc;
   private String filterid;
+  private int filtertype;
   private String iconmd5;
   private String iconurl;
   private String md5;
@@ -23,6 +24,11 @@ public class FilterItem
   public String getFilterId()
   {
     return this.filterid;
+  }
+  
+  public int getFiltertype()
+  {
+    return this.filtertype;
   }
   
   public String getIconMd5()
@@ -86,6 +92,11 @@ public class FilterItem
   public void setUsable(boolean paramBoolean)
   {
     this.usable = paramBoolean;
+  }
+  
+  public String toString()
+  {
+    return "filterid[" + this.filterid + "], desc[" + this.desc + "], name[" + this.name + "], isDownloading[" + this.isDownloading + "], filtertype[" + this.filtertype + "]";
   }
 }
 

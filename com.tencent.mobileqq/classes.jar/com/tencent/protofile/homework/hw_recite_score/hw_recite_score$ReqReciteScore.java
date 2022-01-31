@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class hw_recite_score$ReqReciteScore
-  extends MessageMicro
+  extends MessageMicro<ReqReciteScore>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32 }, new String[] { "error_times", "remind_times", "total_time", "total_word" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, ReqReciteScore.class);
   public final PBUInt32Field error_times = PBField.initUInt32(0);
@@ -16,7 +16,7 @@ public final class hw_recite_score$ReqReciteScore
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.protofile.homework.hw_recite_score.hw_recite_score.ReqReciteScore
  * JD-Core Version:    0.7.0.1
  */

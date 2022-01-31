@@ -1,43 +1,41 @@
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class uzt
-  extends ClickableSpan
+class uzt
+  implements vaa
 {
-  public uzt(GrayTipsItemBuilder paramGrayTipsItemBuilder, String paramString) {}
+  uzt(uzq paramuzq) {}
   
-  public void onClick(View paramView)
+  public void a(@Nullable uyg paramuyg, Error paramError)
   {
-    paramView = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X800491B", "0X800491B", 0, 0, "", "", "", "");
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.e("MsgTabStoryVideoPreloader", 2, "MsgTabVideoPreloaderDataProvider load video info error", paramError);
     }
-    catch (ActivityNotFoundException paramView)
-    {
-      paramView.printStackTrace();
-    }
+    this.a.b();
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void a(@Nullable uyg paramuyg, @NonNull List<StoryVideoItem> paramList)
   {
-    paramTextPaint.setColor(-16732929);
-    paramTextPaint.setUnderlineText(false);
+    if (!paramList.isEmpty())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("MsgTabStoryVideoPreloader", 2, "start download video list, list = " + paramList.size() + "\n" + paramList);
+      }
+      uzq.a(this.a, paramList);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.w("MsgTabStoryVideoPreloader", 2, "can not find first unread video");
+    }
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uzt
  * JD-Core Version:    0.7.0.1
  */

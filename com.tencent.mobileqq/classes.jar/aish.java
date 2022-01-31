@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aish
-  implements Runnable
+class aish
+  implements DialogInterface.OnClickListener
 {
-  public aish(AbsPreDownloadTask paramAbsPreDownloadTask) {}
+  aish(aisf paramaisf, Runnable paramRunnable) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a();
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 

@@ -1,46 +1,63 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
-import com.tencent.widget.XListView;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPuller.1;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPuller.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import com.tribe.async.async.ThreadOffFunction;
+import com.tribe.async.reactive.Stream;
+import mqq.os.MqqHandler;
 
 public class wil
-  extends Handler
 {
-  private WeakReference a;
+  private Stream<wiq> jdField_a_of_type_ComTribeAsyncReactiveStream;
+  private String jdField_a_of_type_JavaLangString;
+  private wio jdField_a_of_type_Wio;
+  private wiq jdField_a_of_type_Wiq = new wiq();
+  public boolean a;
+  private boolean b = true;
   
-  public wil(PublicView paramPublicView)
+  public wil(@NonNull String paramString, @NonNull wio paramwio, boolean paramBoolean)
   {
-    this.a = new WeakReference(paramPublicView);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Wio = paramwio;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void handleMessage(Message paramMessage)
+  private void a(wiq paramwiq, boolean paramBoolean, ErrorMessage paramErrorMessage)
   {
-    PublicView localPublicView = (PublicView)this.a.get();
-    if (localPublicView == null) {
-      return;
+    ThreadManager.getUIHandler().post(new DetailFeedAllInfoPuller.2(this, paramwiq, paramBoolean, paramErrorMessage));
+  }
+  
+  public void a()
+  {
+    Bosses.get().postLightWeightJob(new DetailFeedAllInfoPuller.1(this), 0);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTribeAsyncReactiveStream != null) {
+      this.jdField_a_of_type_ComTribeAsyncReactiveStream.cancel();
     }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      PublicView.a(localPublicView).springBackOverScrollHeaderView();
-      return;
-    case 2: 
-      PublicView.a(localPublicView).springBackOverScrollHeaderView();
-      PublicView.a(localPublicView, 1, 2131434349);
-      return;
-    case 3: 
-      PublicView.a(localPublicView, true);
-      return;
+    this.jdField_a_of_type_ComTribeAsyncReactiveStream = Stream.of(this.jdField_a_of_type_JavaLangString).map(new ThreadOffFunction("Q.qqstory.detail.DetailFeedAllInfoPuller", 2)).map(new wim(this, this.jdField_a_of_type_JavaLangString));
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTribeAsyncReactiveStream = this.jdField_a_of_type_ComTribeAsyncReactiveStream.map(new wib());
     }
-    PublicView.b(localPublicView);
+    this.jdField_a_of_type_ComTribeAsyncReactiveStream.subscribe(new wip(this));
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_ComTribeAsyncReactiveStream != null) {
+      this.jdField_a_of_type_ComTribeAsyncReactiveStream.cancel();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wil
  * JD-Core Version:    0.7.0.1
  */

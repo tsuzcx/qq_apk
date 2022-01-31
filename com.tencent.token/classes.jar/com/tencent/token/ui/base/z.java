@@ -1,10 +1,23 @@
 package com.tencent.token.ui.base;
 
-public abstract interface z
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.ui.FacePwdIndexActivity;
+import com.tencent.token.utils.x;
+
+class z
+  implements View.OnClickListener
 {
-  public abstract void a();
+  z(y paramy, QQUser paramQQUser) {}
   
-  public abstract void a(int paramInt);
+  public void onClick(View paramView)
+  {
+    x.b(this.a.mRealUin);
+    y.a(this.b).dismiss();
+    y.b(this.b).refreshList();
+  }
 }
 
 

@@ -1,19 +1,9 @@
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteEvaluateViewHolder;
+import android.view.MotionEvent;
+import android.view.View;
 
-public class ajij
-  implements URLDrawable.DownloadListener
+public abstract interface ajij
 {
-  public ajij(ReciteEvaluateViewHolder paramReciteEvaluateViewHolder) {}
-  
-  public void onFileDownloadFailed(int paramInt) {}
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    ReciteEvaluateViewHolder.a(this.a);
-  }
+  public abstract boolean interceptDrawer(View paramView, MotionEvent paramMotionEvent);
 }
 
 

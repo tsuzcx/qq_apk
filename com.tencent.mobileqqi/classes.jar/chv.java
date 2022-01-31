@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class chv
-  implements DialogInterface.OnClickListener
+  extends FriendListObserver
 {
-  public chv(ChatHistory paramChatHistory) {}
+  public chv(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    new chw(this).start();
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

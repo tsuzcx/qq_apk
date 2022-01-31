@@ -1,21 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.troopreward.OrientationAdapterImageView;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.richmedia.view.RotationSeekBar;
 
 public class ajxh
-  extends Handler
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ajxh(OrientationAdapterImageView paramOrientationAdapterImageView) {}
+  public ajxh(RotationSeekBar paramRotationSeekBar) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.a.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      this.a.invalidate();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("OrientationAdapterImageView", 2, "handleMessage:" + this.a.jdField_a_of_type_Int + "," + this.a.jdField_a_of_type_AndroidGraphicsBitmap);
-    }
+    RotationSeekBar.b(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
   }
 }
 

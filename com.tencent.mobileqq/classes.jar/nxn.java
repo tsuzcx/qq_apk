@@ -1,21 +1,34 @@
-import com.tencent.biz.qqstory.storyHome.memory.model.StoryQQ2UidConverter;
-import com.tencent.biz.qqstory.storyHome.memory.model.StoryQQ2UidConverter.StoryQQ2UidCallback;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
 class nxn
-  implements Runnable
+  extends Handler
 {
-  nxn(nxm paramnxm, String paramString) {}
+  private WeakReference<nxl> a;
   
-  public void run()
+  public nxn(nxl paramnxl)
   {
-    if (StoryQQ2UidConverter.a(this.jdField_a_of_type_Nxm.a) != null) {
-      StoryQQ2UidConverter.a(this.jdField_a_of_type_Nxm.a).a(this.jdField_a_of_type_JavaLangString, false);
+    this.a = new WeakReference(paramnxl);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    nxl localnxl = (nxl)this.a.get();
+    if ((localnxl == null) || (!localnxl.b())) {
+      return;
     }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    localnxl.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nxn
  * JD-Core Version:    0.7.0.1
  */

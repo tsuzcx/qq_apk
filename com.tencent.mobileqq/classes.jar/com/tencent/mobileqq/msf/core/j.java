@@ -19,19 +19,19 @@ final class j
     paramContext = paramIntent.getAction();
     if (TextUtils.isEmpty(paramContext)) {
       if (QLog.isColorLevel()) {
-        QLog.d(h.a, 2, "onReceive broadcastreceiver.action null");
+        QLog.d(h.b, 2, "onReceive broadcastreceiver.action null");
       }
     }
     for (;;)
     {
       return;
-      QLog.d(h.a, 1, "onReceive broadcastreceiver.action = " + paramContext);
+      QLog.d(h.b, 1, "onReceive broadcastreceiver.action = " + paramContext);
       boolean bool;
       if (paramContext.equals("android.intent.action.SCREEN_OFF"))
       {
-        h.b = false;
-        af.T = -1;
-        af.U.set(false);
+        h.c = false;
+        ag.V = -1;
+        ag.W.set(false);
         if ((com.tencent.mobileqq.msf.core.a.a.r()) || (h.f()))
         {
           h.g().removeMessages(10000);
@@ -41,58 +41,58 @@ final class j
         {
           try
           {
-            bool = com.tencent.mobileqq.msf.core.a.a.aP();
+            bool = com.tencent.mobileqq.msf.core.a.a.aQ();
             if (!bool) {
               break;
             }
             try
             {
-              MsfService.core.sender.J.c().c();
+              MsfService.core.sender.I.c().c();
               return;
             }
             catch (Exception paramContext) {}
             if (!QLog.isColorLevel()) {
               break;
             }
-            QLog.d(h.a, 2, "failed to call adaptorcontroller screenoff ", paramContext);
+            QLog.d(h.b, 2, "failed to call adaptorcontroller screenoff ", paramContext);
             return;
           }
           catch (Exception paramContext)
           {
-            QLog.d(h.a, 1, "onReceive ScreenOff to controller failed " + paramContext.toString(), paramContext);
+            QLog.d(h.b, 1, "onReceive ScreenOff to controller failed " + paramContext.toString(), paramContext);
             return;
           }
-          h.c += 1;
-          if (h.c == BaseConstants.checkExpiresLogScreenOffCount) {
+          h.d += 1;
+          if (h.d == BaseConstants.checkExpiresLogScreenOffCount) {
             h.h();
           }
         }
       }
       if (paramContext.equals("android.intent.action.SCREEN_ON"))
       {
-        h.b = true;
+        h.c = true;
         h.g().removeMessages(10000);
         try
         {
-          bool = com.tencent.mobileqq.msf.core.a.a.aP();
+          bool = com.tencent.mobileqq.msf.core.a.a.aQ();
           if (bool)
           {
             try
             {
-              MsfService.core.sender.J.c().d();
+              MsfService.core.sender.I.c().d();
               return;
             }
             catch (Exception paramContext) {}
             if (QLog.isColorLevel())
             {
-              QLog.d(h.a, 2, "failed to call adaptorcontroller screenon ", paramContext);
+              QLog.d(h.b, 2, "failed to call adaptorcontroller screenon ", paramContext);
               return;
             }
           }
         }
         catch (Exception paramContext)
         {
-          QLog.d(h.a, 1, "onReceive ScreenOn to controller failed " + paramContext.toString(), paramContext);
+          QLog.d(h.b, 1, "onReceive ScreenOn to controller failed " + paramContext.toString(), paramContext);
         }
       }
     }

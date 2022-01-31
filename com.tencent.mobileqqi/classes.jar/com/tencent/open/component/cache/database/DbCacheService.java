@@ -1,21 +1,21 @@
 package com.tencent.open.component.cache.database;
 
 import android.content.Context;
-import hqi;
-import hqj;
+import hme;
+import hmf;
 import java.util.HashMap;
 
 public class DbCacheService
 {
   protected static DbCacheService a;
   protected Context a;
-  protected hqi a;
+  protected hme a;
   public final HashMap a;
   
   protected DbCacheService(Context paramContext)
   {
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_Hqi = new hqj(this);
+    this.jdField_a_of_type_Hme = new hmf(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
   }
   
@@ -52,7 +52,7 @@ public class DbCacheService
     if (localDbCacheManager == null)
     {
       localObject = new DbCacheManager(this.jdField_a_of_type_AndroidContentContext, paramClass, paramLong, paramString);
-      ((DbCacheManager)localObject).a(this.jdField_a_of_type_Hqi);
+      ((DbCacheManager)localObject).a(this.jdField_a_of_type_Hme);
       this.jdField_a_of_type_JavaUtilHashMap.put(((DbCacheManager)localObject).a(), localObject);
     }
     return localObject;

@@ -1,47 +1,15 @@
-import com.tencent.mobileqq.data.EmoticonTab;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
-import java.util.Iterator;
-import java.util.List;
+import android.app.ProgressDialog;
+import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
 
 public class aeia
-  implements Runnable
+  implements alqc
 {
-  public aeia(EmoticonManager paramEmoticonManager) {}
+  public aeia(TroopRobotPickerActivity paramTroopRobotPickerActivity) {}
   
-  public void run()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    String str;
-    synchronized (this.a)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(EmoticonTab.class.getSimpleName());
-      EntityTransaction localEntityTransaction = this.a.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a();
-      try
-      {
-        localEntityTransaction.a();
-        Iterator localIterator1 = this.a.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator1.hasNext())
-        {
-          str = (String)localIterator1.next();
-          EmoticonManager.a(this.a, str, true, false);
-          continue;
-          localObject1 = finally;
-        }
-      }
-      finally
-      {
-        localEntityTransaction.b();
-      }
-    }
-    Iterator localIterator2 = this.a.b.iterator();
-    while (localIterator2.hasNext())
-    {
-      str = (String)localIterator2.next();
-      EmoticonManager.a(this.a, str, false, true);
-    }
-    localObject1.c();
-    localObject1.b();
+    TroopRobotPickerActivity.a(this.a);
+    this.a.a.dismiss();
   }
 }
 

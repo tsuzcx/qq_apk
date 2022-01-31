@@ -1,97 +1,98 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.DownloadResult.Status;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewplugin.sound.QzoneSoundPlugin;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-public class andy
-  implements Downloader.DownloadListener
+class andy
+  implements nbs
 {
-  public andy(QzoneSoundPlugin paramQzoneSoundPlugin, String paramString) {}
+  andy(andw paramandw, andz paramandz, ArrayList paramArrayList, andv paramandv) {}
   
-  public void onDownloadCanceled(String paramString)
+  public void loaded(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneSoundPlugin", 2, "onDownloadCanceled:" + paramString);
-    }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("code", -1);
-      localJSONObject.put("message", paramString);
-      QzoneSoundPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginSoundQzoneSoundPlugin).callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-      return;
-    }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("QzoneSoundPlugin", 2, "DownloaderFactory onDownloadCanceled : " + paramString.getMessage());
-    }
-  }
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneSoundPlugin", 2, "onDownloadFailed:" + paramString);
-    }
-    for (;;)
-    {
-      try
-      {
-        paramString = new JSONObject();
-        if (paramDownloadResult == null) {
-          continue;
+    QLog.d("AREngine_ARResourceManagerTools", 2, "Load offline package finish, code = " + paramInt + "param1" + paramString);
+    if (paramInt == 0) {
+      if (paramString == null) {
+        if (this.jdField_a_of_type_Andz != null)
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_Andv);
+          if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+          {
+            this.jdField_a_of_type_Andz.a(true);
+            this.jdField_a_of_type_Andz.a(4, true);
+            this.jdField_a_of_type_Andw.a();
+          }
         }
-        DownloadResult.Status localStatus = paramDownloadResult.getStatus();
-        if (localStatus == null) {
-          continue;
-        }
-        paramString.put("code", localStatus.failReason);
-        paramString.put("message", paramDownloadResult.getDetailDownloadInfo());
       }
-      catch (Exception paramString)
+    }
+    label244:
+    do
+    {
+      do
       {
-        if (!QLog.isColorLevel()) {
+        do
+        {
+          do
+          {
+            do
+            {
+              for (;;)
+              {
+                return;
+                try
+                {
+                  paramString = new JSONObject(paramString);
+                  if (!paramString.has("data")) {
+                    break label244;
+                  }
+                  paramString = paramString.getJSONArray("data");
+                  if (((paramString.length() == 0) || (!paramString.getJSONObject(0).has("bid"))) || (this.jdField_a_of_type_Andz != null))
+                  {
+                    this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_Andv);
+                    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+                    {
+                      this.jdField_a_of_type_Andz.a(true);
+                      this.jdField_a_of_type_Andz.a(4, true);
+                      this.jdField_a_of_type_Andw.a();
+                      return;
+                    }
+                  }
+                }
+                catch (JSONException paramString)
+                {
+                  paramString.printStackTrace();
+                }
+              }
+            } while (this.jdField_a_of_type_Andz == null);
+            this.jdField_a_of_type_Andz.a(false);
+            this.jdField_a_of_type_Andz.a(4, false);
+            this.jdField_a_of_type_Andw.a();
+            return;
+            paramString = this.jdField_a_of_type_Andz;
+          } while (paramString == null);
           return;
-        }
-        QLog.i("QzoneSoundPlugin", 2, "DownloaderFactory onDownloadFailed : " + paramString.getMessage());
-        return;
-        paramString.put("code", -1);
-        paramString.put("message", "DownloadFailed");
-        continue;
-      }
-      QzoneSoundPlugin.b(this.jdField_a_of_type_CooperationQzoneWebviewpluginSoundQzoneSoundPlugin).callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+          if (paramInt != 7) {
+            break;
+          }
+        } while (this.jdField_a_of_type_Andz == null);
+        this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_Andv);
+      } while (this.jdField_a_of_type_JavaUtilArrayList.size() != 0);
+      this.jdField_a_of_type_Andz.a(true);
+      this.jdField_a_of_type_Andz.a(4, true);
+      this.jdField_a_of_type_Andw.a();
       return;
-      paramString.put("code", -1);
-    }
+    } while (this.jdField_a_of_type_Andz == null);
+    this.jdField_a_of_type_Andz.a(false);
+    this.jdField_a_of_type_Andz.a(4, false);
+    this.jdField_a_of_type_Andw.a();
   }
   
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
+  public void progress(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneSoundPlugin", 2, new Object[] { "onDownloadProgress: ", paramString + " : " + paramLong + " : " + paramFloat });
-    }
-  }
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneSoundPlugin", 2, "onDownloadSucceed");
-    }
-    try
-    {
-      paramString = new JSONObject();
-      paramString.put("code", 0);
-      paramString.put("message", "success");
-      QzoneSoundPlugin.c(this.jdField_a_of_type_CooperationQzoneWebviewpluginSoundQzoneSoundPlugin).callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
-      return;
-    }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("QzoneSoundPlugin", 2, "DownloaderFactory onDownloadSucceed : " + paramString.getMessage());
+    QLog.d("AREngine_ARResourceManagerTools", 2, "Load offline progress  = " + paramInt);
+    if (this.jdField_a_of_type_Andz != null) {
+      this.jdField_a_of_type_Andz.a(andw.a(this.jdField_a_of_type_Andw, 0L, paramInt));
     }
   }
 }

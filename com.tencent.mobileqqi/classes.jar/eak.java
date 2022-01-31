@@ -1,28 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.VerifyCodeActivity2;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.QzoneFeedItemBuilder;
 
 public class eak
-  implements View.OnClickListener
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  public eak(VerifyCodeActivity2 paramVerifyCodeActivity2) {}
+  public long a;
+  public ViewGroup a;
+  public ImageView a;
+  public URLImageView a;
+  public String a;
+  public ViewGroup b;
+  public TextView b;
+  public String b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  public TextView f;
+  public TextView g;
   
-  public void onClick(View paramView)
-  {
-    paramView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    if ((paramView == null) || (paramView.length() == 0)) {
-      Toast.makeText(this.a, this.a.getString(2131562031), 0).show();
-    }
-    while (paramView == null) {
-      return;
-    }
-    this.a.a(paramView);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-    VerifyCodeActivity2.b(this.a, false);
-  }
+  public eak(QzoneFeedItemBuilder paramQzoneFeedItemBuilder) {}
 }
 
 

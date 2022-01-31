@@ -1,21 +1,10 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
-
-public class ory
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface ory
 {
-  public ory(RotateCircleImageView paramRotateCircleImageView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    RotateCircleImageView.c(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidate();
-  }
+  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ory
  * JD-Core Version:    0.7.0.1
  */

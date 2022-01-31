@@ -9,15 +9,16 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import com.tencent.tmassistant.st.SDKReportManager2;
-import com.tencent.tmassistantbase.util.f;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistant.st.b;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.k;
 import java.util.ArrayList;
 
 public class PackageInstallReceiver
   extends BroadcastReceiver
 {
   private static PackageInstallReceiver d = null;
-  protected final String a = "PackageInstallReceiver";
+  protected final String a = "DLSDK_PackageInstallReceiver";
   protected boolean b = false;
   ArrayList<PackageInstallReceiver.IPackageInstallObserver> c = new ArrayList();
   
@@ -52,17 +53,28 @@ public class PackageInstallReceiver
   public void a(String paramString)
   {
     long l = System.currentTimeMillis() / 1000L;
-    paramString = l + "|" + "" + "|" + paramString + "|" + Build.MANUFACTURER + "|" + Build.MODEL;
-    r.c("PackageInstallReceiver", "<installReport>reportLog installTest type=" + 9 + ",postReport.data: " + paramString);
-    SDKReportManager2.getInstance().postReport(9, paramString);
+    String str = l + "|" + "" + "|" + paramString + "|" + Build.MANUFACTURER + "|" + Build.MODEL;
+    ab.c("DLSDK_PackageInstallReceiver", "<installReport>reportLog installTest type=" + 9 + ",postReport.data: " + str);
+    SDKReportManager2.getInstance().postReport(9, str);
+    b.a().a(paramString);
+  }
+  
+  public void b(Context paramContext)
+  {
+    if (paramContext == null) {}
+    while (!this.b) {
+      return;
+    }
+    paramContext.unregisterReceiver(this);
+    this.b = false;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    r.b("PackageInstallReceiver", "halleytest intent Action" + paramIntent.getAction());
+    ab.b("DLSDK_PackageInstallReceiver", "halleytest intent Action" + paramIntent.getAction());
     paramContext = paramIntent.getDataString();
     if (TextUtils.isEmpty(paramContext)) {
-      r.e("PackageInstallReceiver", "intentPkgNameString == null ");
+      ab.e("DLSDK_PackageInstallReceiver", "intentPkgNameString == null ");
     }
     Object localObject;
     Message localMessage;
@@ -77,30 +89,30 @@ public class PackageInstallReceiver
         localMessage.obj = localObject;
         if (paramIntent.getAction().equals("android.intent.action.PACKAGE_REMOVED"))
         {
-          r.b("PackageInstallReceiver", "ACTION_PACKAGE_REMOVED >> " + paramContext);
+          ab.b("DLSDK_PackageInstallReceiver", "ACTION_PACKAGE_REMOVED >> " + paramContext);
           localMessage.what = 2;
         }
       }
       else
       {
-        r.e("PackageInstallReceiver", "packageName == null " + paramIntent.getDataString());
+        ab.e("DLSDK_PackageInstallReceiver", "packageName == null " + paramIntent.getDataString());
         return;
       }
       if (paramIntent.getAction().equals("android.intent.action.PACKAGE_REPLACED"))
       {
-        r.b("PackageInstallReceiver", "ACTION_PACKAGE_REPLACED >> " + paramContext);
+        ab.b("DLSDK_PackageInstallReceiver", "ACTION_PACKAGE_REPLACED >> " + paramContext);
         localMessage.what = 3;
         return;
       }
     } while (!paramIntent.getAction().equals("android.intent.action.PACKAGE_ADDED"));
-    r.b("PackageInstallReceiver", "ACTION_PACKAGE_ADDED >> " + paramContext);
+    ab.b("DLSDK_PackageInstallReceiver", "ACTION_PACKAGE_ADDED >> " + paramContext);
     localMessage.what = 1;
-    f.a().post(new a(this, (String)localObject));
+    k.a().post(new a(this, (String)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmassistant.common.PackageInstallReceiver
  * JD-Core Version:    0.7.0.1
  */

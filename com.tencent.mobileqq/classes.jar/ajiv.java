@@ -1,29 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout.OnReciteListener;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.widget.XListView;
 
-public class ajiv
-  implements DialogInterface.OnClickListener
+class ajiv
+  implements vdr
 {
-  public ajiv(ReciteRecordLayout paramReciteRecordLayout) {}
+  ajiv(ajit paramajit) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    }
-    if (!NetworkUtil.g(this.a.jdField_a_of_type_AndroidContentContext)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-    }
-    do
-    {
-      return;
-      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    } while (ReciteRecordLayout.a(this.a) == null);
-    ReciteRecordLayout.a(this.a).e();
+    this.a.a.invalidateViews();
   }
 }
 

@@ -1,35 +1,50 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceAndTextItem;
+import com.tencent.commonsdk.cache.QQLruCache;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Map;
 
 public class anxb
-  implements Animator.AnimatorListener
+  extends QQLruCache<Integer, anwo>
 {
-  public anxb(FaceLayer.FaceAndTextItem paramFaceAndTextItem) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public anxb(BubbleManager paramBubbleManager, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.a = false;
+    super(paramInt1, paramInt2, paramInt3);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a()
   {
-    this.a.a = false;
+    Map localMap = snapshot();
+    if (localMap != null)
+    {
+      Iterator localIterator = localMap.values().iterator();
+      while (localIterator.hasNext()) {
+        ((anwo)localIterator.next()).a();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("BubbleManager", 2, "BubbleInfoLruCache cleared, size = " + localMap.size());
+      }
+    }
   }
   
-  public void onAnimationRepeat(Animator paramAnimator)
+  protected void a(boolean paramBoolean, Integer paramInteger, anwo paramanwo1, anwo paramanwo2)
   {
-    this.a.a = true;
+    super.entryRemoved(paramBoolean, paramInteger, paramanwo1, paramanwo2);
+    if (QLog.isColorLevel()) {
+      QLog.d("BubbleManager", 2, "entryRemoved key=" + paramInteger);
+    }
+    paramanwo1.a();
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public boolean a(int paramInt)
   {
-    this.a.a = true;
+    return get(Integer.valueOf(paramInt)) != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anxb
  * JD-Core Version:    0.7.0.1
  */

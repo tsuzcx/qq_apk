@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <HorizontalScrollView android:id="@id/iig" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
+        <ImageView android:id="@id/iij" android:layout_width="wrap_content" android:layout_height="fill_parent" android:scaleType="centerCrop" android:adjustViewBounds="true" />
+    </HorizontalScrollView>
+    <com.tencent.mobileqq.troop.homework.entry.ui.view.GuideViewPager android:id="@id/d02" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.troopgift.RadioButtonIndicator android:id="@id/hv3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="30.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/bp" android:id="@id/akb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:layout_marginRight="9.0dip" android:text="@string/rcl" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</merge>

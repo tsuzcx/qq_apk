@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.ar;
 
-import aadf;
-import aadg;
-import aadh;
-import aadi;
-import aadj;
+import alud;
+import amxp;
+import amxu;
+import amyf;
+import amyi;
+import amyj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -31,9 +32,9 @@ import android.util.DisplayMetrics;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
+import awaw;
+import azqs;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager;
-import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -48,23 +49,23 @@ public class ObjectSurfaceView
 {
   private float jdField_a_of_type_Float = 1.0F;
   private long jdField_a_of_type_Long = 50L;
+  public amxu a;
   BlurMaskFilter jdField_a_of_type_AndroidGraphicsBlurMaskFilter;
   Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   SweepGradient jdField_a_of_type_AndroidGraphicsSweepGradient;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   private SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder;
-  public FaceUIController a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new aadf(this);
-  private List jdField_a_of_type_JavaUtilList;
-  private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private CopyOnWriteArrayList jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private Runnable jdField_a_of_type_JavaLangRunnable = new ObjectSurfaceView.1(this);
+  private List<amxp> jdField_a_of_type_JavaUtilList;
+  private ConcurrentHashMap<String, ObjectBaseData> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private CopyOnWriteArrayList<ObjectBaseData> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
   private boolean jdField_a_of_type_Boolean;
   float[] jdField_a_of_type_ArrayOfFloat = { 0.0F, 0.5F };
   int[] jdField_a_of_type_ArrayOfInt = { Color.argb(255, 30, 255, 236), Color.argb(255, 0, 191, 255) };
   private Handler jdField_b_of_type_AndroidOsHandler;
   private HandlerThread jdField_b_of_type_AndroidOsHandlerThread;
-  private CopyOnWriteArrayList jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private CopyOnWriteArrayList<String> jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
   private boolean jdField_b_of_type_Boolean;
   
   public ObjectSurfaceView(Context paramContext)
@@ -182,7 +183,7 @@ public class ObjectSurfaceView
       m = 0;
       j = 1;
       if (m >= this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size()) {
-        break label6511;
+        break label6529;
       }
       localObjectBaseData2 = (ObjectBaseData)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(m);
       if (localObjectBaseData2 != null) {
@@ -190,7 +191,9 @@ public class ObjectSurfaceView
       }
     }
     label48:
-    label246:
+    label247:
+    label4473:
+    label6522:
     while (j == 0)
     {
       ObjectBaseData localObjectBaseData2;
@@ -199,17 +202,17 @@ public class ObjectSurfaceView
       Object localObject2;
       if (!localObjectBaseData2.jdField_h_of_type_Boolean)
       {
-        this.jdField_a_of_type_AndroidOsHandler.post(new aadg(this, localObjectBaseData2, localObjectBaseData1));
+        this.jdField_a_of_type_AndroidOsHandler.post(new ObjectSurfaceView.2(this, localObjectBaseData2, localObjectBaseData1));
         if ((localObjectBaseData2.jdField_a_of_type_Boolean) && (!localObjectBaseData2.jdField_b_of_type_Boolean) && (localObjectBaseData2.jdField_g_of_type_Boolean) && (!localObjectBaseData2.jdField_e_of_type_Boolean))
         {
           if (TextUtils.isEmpty(localObjectBaseData2.jdField_d_of_type_JavaLangString)) {
-            break label3609;
+            break label3620;
           }
           if (!this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(localObjectBaseData2.jdField_d_of_type_JavaLangString))
           {
             localObject1 = localObjectBaseData2.jdField_d_of_type_JavaLangString;
             localObject2 = localObjectBaseData2.jdField_b_of_type_JavaLangString;
-            this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aadh(this, (String)localObject1, (String)localObject2), 4000L);
+            this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ObjectSurfaceView.3(this, (String)localObject1, (String)localObject2), 4000L);
           }
         }
       }
@@ -229,26 +232,26 @@ public class ObjectSurfaceView
         f1 = localObjectBaseData2.jdField_f_of_type_Float * localObjectBaseData2.jdField_g_of_type_Float + localObjectBaseData2.jdField_i_of_type_Float;
         localObject1 = new RectF(localObjectBaseData2.jdField_a_of_type_Float - f1, localObjectBaseData2.jdField_b_of_type_Float - f1, localObjectBaseData2.jdField_a_of_type_Float + f1, f1 + localObjectBaseData2.jdField_b_of_type_Float);
         if ((localObjectBaseData2.jdField_e_of_type_Int != -1) && (localObjectBaseData2.jdField_a_of_type_Boolean) && (!localObjectBaseData2.jdField_e_of_type_Boolean)) {
-          break label3666;
+          break label3678;
         }
         localObjectBaseData2.jdField_a_of_type_AndroidGraphicsPaint.setShader(null);
         if (localObjectBaseData2.aA == 0.0F) {
-          break label3754;
+          break label3766;
         }
         this.jdField_a_of_type_AndroidGraphicsBlurMaskFilter = new BlurMaskFilter(localObjectBaseData2.aB * localObjectBaseData2.aA, BlurMaskFilter.Blur.SOLID);
         if (this.jdField_a_of_type_AndroidGraphicsBlurMaskFilter == null) {
-          break label3762;
+          break label3774;
         }
         localObjectBaseData2.jdField_a_of_type_AndroidGraphicsPaint.setMaskFilter(this.jdField_a_of_type_AndroidGraphicsBlurMaskFilter);
         localObjectBaseData2.jdField_a_of_type_AndroidGraphicsPaint.setShader(null);
         f1 = localObjectBaseData2.jdField_j_of_type_Float;
         paramCanvas.drawArc((RectF)localObject1, localObjectBaseData2.jdField_h_of_type_Float + f1, a(localObjectBaseData2.jdField_j_of_type_Float + localObjectBaseData2.jdField_h_of_type_Float, localObjectBaseData2.jdField_k_of_type_Float + localObjectBaseData2.jdField_h_of_type_Float), false, localObjectBaseData2.jdField_a_of_type_AndroidGraphicsPaint);
         if ((localObjectBaseData2.jdField_e_of_type_Int != -1) && (localObjectBaseData2.jdField_a_of_type_Boolean) && (!localObjectBaseData2.jdField_e_of_type_Boolean)) {
-          break label3775;
+          break label3787;
         }
         localObjectBaseData2.jdField_a_of_type_AndroidGraphicsPaint.setShader(null);
         if (this.jdField_a_of_type_AndroidGraphicsBlurMaskFilter == null) {
-          break label3886;
+          break label3898;
         }
         localObjectBaseData2.jdField_a_of_type_AndroidGraphicsPaint.setMaskFilter(this.jdField_a_of_type_AndroidGraphicsBlurMaskFilter);
         localObjectBaseData2.jdField_a_of_type_AndroidGraphicsPaint.setShader(null);
@@ -390,14 +393,14 @@ public class ObjectSurfaceView
           i = 2;
         }
         if ((!localObjectBaseData2.jdField_f_of_type_Boolean) || (localObjectBaseData2.aV <= 0.0F) || (localObjectBaseData2.jdField_e_of_type_Boolean) || (i != 1)) {
-          break label4874;
+          break label4888;
         }
         localObjectBaseData2.jdField_j_of_type_AndroidGraphicsPaint.setAlpha((int)(localObjectBaseData2.aV * 255.0F));
         localObjectBaseData2.jdField_j_of_type_AndroidGraphicsPaint.setStrokeWidth(localObjectBaseData2.aI);
         localObjectBaseData2.jdField_i_of_type_AndroidGraphicsPaint.setStrokeWidth(localObjectBaseData2.aH);
         localObjectBaseData2.jdField_i_of_type_AndroidGraphicsPaint.setAlpha((int)(localObjectBaseData2.aV * 255.0F));
         if ((!localObjectBaseData2.jdField_a_of_type_Boolean) || (localObjectBaseData2.C == 0.0F)) {
-          break label3899;
+          break label3911;
         }
         localObjectBaseData2.aC = ((localObjectBaseData2.B * localObjectBaseData2.C + localObjectBaseData2.E) * 2.0F / 3.6F);
         if (localObjectBaseData2.aC > localObjectBaseData2.aD) {
@@ -409,9 +412,9 @@ public class ObjectSurfaceView
         localObjectBaseData2.aF = (localObjectBaseData2.jdField_a_of_type_Float - localObjectBaseData2.jdField_f_of_type_Float * localObjectBaseData2.jdField_g_of_type_Float - localObjectBaseData2.jdField_i_of_type_Float - localObjectBaseData2.aS);
         localObjectBaseData2.aG = (localObjectBaseData2.jdField_b_of_type_Float - localObjectBaseData2.jdField_f_of_type_Float * localObjectBaseData2.jdField_g_of_type_Float - localObjectBaseData2.jdField_i_of_type_Float - localObjectBaseData2.aT * localObjectBaseData2.bg);
         if ((!localObjectBaseData2.jdField_a_of_type_Boolean) || (!localObjectBaseData2.jdField_f_of_type_Boolean) || (localObjectBaseData2.C == 0.0F)) {
-          break label3930;
+          break label3942;
         }
-        localObjectBaseData2.aF = (localObjectBaseData2.jdField_a_of_type_Float - localObjectBaseData2.jdField_f_of_type_Float * localObjectBaseData2.jdField_g_of_type_Float - localObjectBaseData2.jdField_i_of_type_Float - localObjectBaseData2.aS - ObjectBaseData.Dip2PxCache.jdField_e_of_type_Int);
+        localObjectBaseData2.aF = (localObjectBaseData2.jdField_a_of_type_Float - localObjectBaseData2.jdField_f_of_type_Float * localObjectBaseData2.jdField_g_of_type_Float - localObjectBaseData2.jdField_i_of_type_Float - localObjectBaseData2.aS - amyi.jdField_e_of_type_Int);
         localObjectBaseData2.x = (localObjectBaseData2.aG - localObjectBaseData2.aC);
         localObjectBaseData2.z = (localObjectBaseData2.jdField_b_of_type_Float + localObjectBaseData2.B * localObjectBaseData2.C + localObjectBaseData2.E);
         localObjectBaseData2.A = (localObjectBaseData2.jdField_a_of_type_Float + localObjectBaseData2.B * localObjectBaseData2.C + localObjectBaseData2.E);
@@ -423,13 +426,13 @@ public class ObjectSurfaceView
         f7 = localObjectBaseData2.bI;
         f8 = localObjectBaseData2.bJ;
         if ((TextUtils.isEmpty(localObjectBaseData2.jdField_f_of_type_JavaLangString)) || (TextUtils.isEmpty(localObjectBaseData2.jdField_g_of_type_JavaLangString))) {
-          break label4459;
+          break label4473;
         }
         localObjectBaseData2.jdField_g_of_type_JavaLangString = localObjectBaseData2.jdField_g_of_type_JavaLangString.toUpperCase();
         localObjectBaseData2.jdField_j_of_type_AndroidGraphicsPaint.setTextSize(localObjectBaseData2.aO * localObjectBaseData2.bg);
         localObjectBaseData2.jdField_j_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.LEFT);
         if (localObjectBaseData2.aV == 0.0F) {
-          break label4015;
+          break label4027;
         }
         localObjectBaseData2.jdField_j_of_type_AndroidGraphicsPaint.setShadowLayer(localObjectBaseData2.aX, 0.0F, localObjectBaseData2.aY, localObjectBaseData2.jdField_m_of_type_Int);
       }
@@ -442,7 +445,7 @@ public class ObjectSurfaceView
         f1 = localObjectBaseData2.aG;
         f9 = ((Paint.FontMetrics)localObject1).bottom + f1;
         if (localObjectBaseData2.aK != 0.0F) {
-          break label4042;
+          break label4054;
         }
         f10 = localObjectBaseData2.y;
         f1 = localObjectBaseData2.aJ;
@@ -455,34 +458,34 @@ public class ObjectSurfaceView
         if (!localObjectBaseData2.jdField_g_of_type_Boolean) {
           break;
         }
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aadi(this, localObjectBaseData2), 4000L);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ObjectSurfaceView.4(this, localObjectBaseData2), 4000L);
         break;
         localObjectBaseData2.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(localObjectBaseData2.v * 255.0F * 0.5D));
-        break label246;
+        break label247;
         this.jdField_a_of_type_AndroidGraphicsSweepGradient = new SweepGradient(localObjectBaseData2.jdField_a_of_type_Float, localObjectBaseData2.jdField_b_of_type_Float, this.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_ArrayOfFloat);
         this.jdField_a_of_type_AndroidGraphicsMatrix.setRotate(localObjectBaseData2.jdField_j_of_type_Float + localObjectBaseData2.jdField_h_of_type_Float - 5.0F, localObjectBaseData2.jdField_a_of_type_Float, localObjectBaseData2.jdField_b_of_type_Float);
         this.jdField_a_of_type_AndroidGraphicsSweepGradient.setLocalMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
         localObjectBaseData2.jdField_a_of_type_AndroidGraphicsPaint.setShader(this.jdField_a_of_type_AndroidGraphicsSweepGradient);
-        break label336;
+        break label337;
         this.jdField_a_of_type_AndroidGraphicsBlurMaskFilter = null;
-        break label371;
+        break label372;
         localObjectBaseData2.jdField_a_of_type_AndroidGraphicsPaint.setMaskFilter(null);
-        break label401;
+        break label402;
         this.jdField_a_of_type_ArrayOfInt = new int[] { localObjectBaseData2.jdField_b_of_type_Int, localObjectBaseData2.jdField_a_of_type_Int };
         this.jdField_a_of_type_AndroidGraphicsSweepGradient = new SweepGradient(localObjectBaseData2.jdField_a_of_type_Float, localObjectBaseData2.jdField_b_of_type_Float, this.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_ArrayOfFloat);
         this.jdField_a_of_type_AndroidGraphicsMatrix.setRotate(localObjectBaseData2.jdField_l_of_type_Float + localObjectBaseData2.jdField_h_of_type_Float - 5.0F, localObjectBaseData2.jdField_a_of_type_Float, localObjectBaseData2.jdField_b_of_type_Float);
         this.jdField_a_of_type_AndroidGraphicsSweepGradient.setLocalMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
         localObjectBaseData2.jdField_a_of_type_AndroidGraphicsPaint.setShader(this.jdField_a_of_type_AndroidGraphicsSweepGradient);
-        break label487;
+        break label488;
         localObjectBaseData2.jdField_a_of_type_AndroidGraphicsPaint.setMaskFilter(null);
-        break label517;
+        break label518;
         localObjectBaseData2.aC = ((localObjectBaseData2.jdField_f_of_type_Float * localObjectBaseData2.jdField_g_of_type_Float + localObjectBaseData2.jdField_i_of_type_Float) * 2.0F / 3.6F);
-        break label3061;
+        break label3072;
         localObjectBaseData2.x = (localObjectBaseData2.aG - localObjectBaseData2.aC);
         localObjectBaseData2.z = (localObjectBaseData2.jdField_b_of_type_Float + localObjectBaseData2.jdField_f_of_type_Float * localObjectBaseData2.jdField_g_of_type_Float + localObjectBaseData2.jdField_i_of_type_Float);
         localObjectBaseData2.A = (localObjectBaseData2.jdField_a_of_type_Float + localObjectBaseData2.jdField_f_of_type_Float * localObjectBaseData2.jdField_g_of_type_Float + localObjectBaseData2.jdField_i_of_type_Float);
         localObjectBaseData2.y = localObjectBaseData2.aF;
-        break label3330;
+        break label3341;
         localObjectBaseData2.jdField_j_of_type_AndroidGraphicsPaint.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
       }
       localObjectBaseData2.aK = (f1 / localObjectBaseData2.jdField_c_of_type_Float);
@@ -498,13 +501,13 @@ public class ObjectSurfaceView
       {
         localObjectBaseData2.jdField_i_of_type_AndroidGraphicsPaint.setFakeBoldText(true);
         if (localObjectBaseData2.aV == 0.0F) {
-          break label4670;
+          break label4684;
         }
         localObjectBaseData2.jdField_i_of_type_AndroidGraphicsPaint.setShadowLayer(localObjectBaseData2.aX, 0.0F, localObjectBaseData2.aY, localObjectBaseData2.jdField_m_of_type_Int);
         paramCanvas.drawText(localObjectBaseData2.jdField_g_of_type_JavaLangString, localObjectBaseData2.aF, localObjectBaseData2.aG, localObjectBaseData2.jdField_j_of_type_AndroidGraphicsPaint);
         i = localObjectBaseData2.jdField_f_of_type_JavaLangString.length();
         if (i >= 9) {
-          break label4685;
+          break label4699;
         }
         paramCanvas.drawText(localObjectBaseData2.jdField_f_of_type_JavaLangString, localObjectBaseData2.aF, localObjectBaseData2.aG - localObjectBaseData2.aU - (f9 - f2), localObjectBaseData2.jdField_i_of_type_AndroidGraphicsPaint);
         localObjectBaseData2.jdField_k_of_type_AndroidGraphicsPaint.setAlpha((int)(localObjectBaseData2.bc * 255.0F));
@@ -523,48 +526,48 @@ public class ObjectSurfaceView
         paramCanvas.drawCircle(f4, f5, localObjectBaseData2.bh, localObjectBaseData2.jdField_l_of_type_AndroidGraphicsPaint);
         k = j;
         if (localObjectBaseData2.bk <= 0.0F) {
-          break label6504;
+          break label6522;
         }
         if (!localObjectBaseData2.jdField_a_of_type_Boolean)
         {
           k = j;
           if (!localObjectBaseData2.jdField_c_of_type_Boolean) {
-            break label6504;
+            break label6522;
           }
         }
         k = j;
         if (localObjectBaseData2.jdField_e_of_type_Boolean) {
-          break label6504;
+          break label6522;
         }
         if (!localObjectBaseData2.jdField_f_of_type_Boolean) {
-          break label6444;
+          break label6462;
         }
         if ((TextUtils.isEmpty(localObjectBaseData2.jdField_h_of_type_JavaLangString)) || (TextUtils.isEmpty(localObjectBaseData2.jdField_i_of_type_JavaLangString))) {
-          break label6438;
+          break label6456;
         }
         i = 1;
         k = j;
         if (i == 0) {
-          break label6504;
+          break label6522;
         }
         i = 0;
-        j = this.jdField_a_of_type_ComTencentMobileqqArFaceUIController.a.a();
+        j = this.jdField_a_of_type_Amxu.a.a();
         if (!localObjectBaseData2.jdField_f_of_type_Boolean) {
-          break label6473;
+          break label6491;
         }
         k = i;
         if (j == 3) {
-          break label6504;
+          break label6522;
         }
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqArFaceUIController.a;
+        localObject1 = this.jdField_a_of_type_Amxu.a;
         localObject2 = localObjectBaseData2.jdField_h_of_type_JavaLangString;
         str = localObjectBaseData2.jdField_i_of_type_JavaLangString;
-        aadj localaadj = new aadj(this, localObjectBaseData2);
+        amyj localamyj = new amyj(this, localObjectBaseData2);
         if (TextUtils.isEmpty(localObjectBaseData2.jdField_c_of_type_JavaLangString)) {
-          break label6467;
+          break label6485;
         }
         bool = true;
-        ((ARTipsManager)localObject1).a((String)localObject2, str, localaadj, bool);
+        ((awaw)localObject1).a((String)localObject2, str, localamyj, bool);
       }
       for (int i = 0;; i = k)
       {
@@ -572,9 +575,9 @@ public class ObjectSurfaceView
         j = i;
         break;
         localObjectBaseData2.jdField_i_of_type_AndroidGraphicsPaint.setFakeBoldText(false);
-        break label4125;
+        break label4137;
         localObjectBaseData2.jdField_i_of_type_AndroidGraphicsPaint.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
-        break label4159;
+        break label4171;
         str = localObjectBaseData2.jdField_f_of_type_JavaLangString.substring(0, 7);
         localObject2 = localObjectBaseData2.jdField_f_of_type_JavaLangString.substring(7, i);
         localObject1 = localObject2;
@@ -588,9 +591,9 @@ public class ObjectSurfaceView
         paramCanvas.drawText((String)localObject1, localObjectBaseData2.aF, localObjectBaseData2.aG - (f9 - f2), localObjectBaseData2.jdField_i_of_type_AndroidGraphicsPaint);
         i = (int)(i + (f9 - f2 + 20.0F));
         paramCanvas.drawText(str, localObjectBaseData2.aF, localObjectBaseData2.aG - i, localObjectBaseData2.jdField_i_of_type_AndroidGraphicsPaint);
-        break label4235;
+        break label4247;
         if ((!localObjectBaseData2.jdField_f_of_type_Boolean) || (localObjectBaseData2.aV <= 0.0F) || (localObjectBaseData2.jdField_e_of_type_Boolean) || (i != 2)) {
-          break label4459;
+          break label4473;
         }
         localObjectBaseData2.jdField_j_of_type_AndroidGraphicsPaint.setAlpha((int)(localObjectBaseData2.aV * 255.0F));
         localObjectBaseData2.jdField_j_of_type_AndroidGraphicsPaint.setStrokeWidth(localObjectBaseData2.aI);
@@ -608,9 +611,9 @@ public class ObjectSurfaceView
           localObjectBaseData2.aF = (localObjectBaseData2.jdField_a_of_type_Float - localObjectBaseData2.jdField_f_of_type_Float * localObjectBaseData2.jdField_g_of_type_Float - localObjectBaseData2.jdField_i_of_type_Float - localObjectBaseData2.aS);
           localObjectBaseData2.aG = (localObjectBaseData2.jdField_b_of_type_Float + localObjectBaseData2.jdField_f_of_type_Float * localObjectBaseData2.jdField_g_of_type_Float + localObjectBaseData2.jdField_i_of_type_Float + localObjectBaseData2.aT * localObjectBaseData2.bg);
           if ((!localObjectBaseData2.jdField_a_of_type_Boolean) || (!localObjectBaseData2.jdField_f_of_type_Boolean) || (localObjectBaseData2.C == 0.0F)) {
-            break label5591;
+            break label5607;
           }
-          localObjectBaseData2.aF = (localObjectBaseData2.jdField_a_of_type_Float - localObjectBaseData2.jdField_f_of_type_Float * localObjectBaseData2.jdField_g_of_type_Float - localObjectBaseData2.jdField_i_of_type_Float - localObjectBaseData2.aS - ObjectBaseData.Dip2PxCache.jdField_e_of_type_Int);
+          localObjectBaseData2.aF = (localObjectBaseData2.jdField_a_of_type_Float - localObjectBaseData2.jdField_f_of_type_Float * localObjectBaseData2.jdField_g_of_type_Float - localObjectBaseData2.jdField_i_of_type_Float - localObjectBaseData2.aS - amyi.jdField_e_of_type_Int);
           localObjectBaseData2.x = (localObjectBaseData2.jdField_b_of_type_Float + localObjectBaseData2.B * localObjectBaseData2.C + localObjectBaseData2.E);
           localObjectBaseData2.z = (localObjectBaseData2.aG + localObjectBaseData2.aC);
           localObjectBaseData2.A = (localObjectBaseData2.jdField_a_of_type_Float + localObjectBaseData2.B * localObjectBaseData2.C + localObjectBaseData2.E);
@@ -622,13 +625,13 @@ public class ObjectSurfaceView
           f8 = localObjectBaseData2.bI;
           f9 = localObjectBaseData2.bJ;
           if ((TextUtils.isEmpty(localObjectBaseData2.jdField_f_of_type_JavaLangString)) || (TextUtils.isEmpty(localObjectBaseData2.jdField_g_of_type_JavaLangString))) {
-            break label4459;
+            break label4473;
           }
           localObjectBaseData2.jdField_g_of_type_JavaLangString = localObjectBaseData2.jdField_g_of_type_JavaLangString.toUpperCase();
           localObjectBaseData2.jdField_j_of_type_AndroidGraphicsPaint.setTextSize(localObjectBaseData2.aO * localObjectBaseData2.bg);
           localObjectBaseData2.jdField_j_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.LEFT);
           if (localObjectBaseData2.aV == 0.0F) {
-            break label5676;
+            break label5692;
           }
           localObjectBaseData2.jdField_j_of_type_AndroidGraphicsPaint.setShadowLayer(localObjectBaseData2.aX, 0.0F, localObjectBaseData2.aY, localObjectBaseData2.jdField_m_of_type_Int);
         }
@@ -639,7 +642,7 @@ public class ObjectSurfaceView
           f1 = localObjectBaseData2.aG;
           f3 = ((Paint.FontMetrics)localObject1).bottom + f1;
           if (localObjectBaseData2.aK != 0.0F) {
-            break label5703;
+            break label5719;
           }
           f10 = localObjectBaseData2.y;
           f1 = localObjectBaseData2.aJ;
@@ -655,7 +658,7 @@ public class ObjectSurfaceView
           localObjectBaseData2.z = (localObjectBaseData2.jdField_b_of_type_Float + localObjectBaseData2.jdField_f_of_type_Float * localObjectBaseData2.jdField_g_of_type_Float + localObjectBaseData2.jdField_i_of_type_Float);
           localObjectBaseData2.A = (localObjectBaseData2.jdField_a_of_type_Float + localObjectBaseData2.jdField_f_of_type_Float * localObjectBaseData2.jdField_g_of_type_Float + localObjectBaseData2.jdField_i_of_type_Float);
           localObjectBaseData2.y = localObjectBaseData2.aF;
-          break label5281;
+          break label5297;
           localObjectBaseData2.jdField_j_of_type_AndroidGraphicsPaint.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
         }
         localObjectBaseData2.aK = (f1 / localObjectBaseData2.jdField_c_of_type_Float);
@@ -670,13 +673,13 @@ public class ObjectSurfaceView
         {
           localObjectBaseData2.jdField_i_of_type_AndroidGraphicsPaint.setFakeBoldText(true);
           if (localObjectBaseData2.aV == 0.0F) {
-            break label6371;
+            break label6389;
           }
           localObjectBaseData2.jdField_i_of_type_AndroidGraphicsPaint.setShadowLayer(localObjectBaseData2.aX, 0.0F, localObjectBaseData2.aY, localObjectBaseData2.jdField_m_of_type_Int);
           i = localObjectBaseData2.jdField_f_of_type_JavaLangString.length();
           k = (int)(f3 - f2);
           if (i < 9) {
-            break label6386;
+            break label6404;
           }
           str = localObjectBaseData2.jdField_f_of_type_JavaLangString.substring(0, 7);
           localObject2 = localObjectBaseData2.jdField_f_of_type_JavaLangString.substring(7, i);
@@ -713,49 +716,46 @@ public class ObjectSurfaceView
           paramCanvas.drawCircle(f4, f5, localObjectBaseData2.bh, localObjectBaseData2.jdField_l_of_type_AndroidGraphicsPaint);
           break;
           localObjectBaseData2.jdField_i_of_type_AndroidGraphicsPaint.setFakeBoldText(false);
-          break label5786;
+          break label5802;
           localObjectBaseData2.jdField_i_of_type_AndroidGraphicsPaint.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
-          break label5820;
+          break label5836;
           localObject1 = localObjectBaseData2.jdField_f_of_type_JavaLangString;
           f1 = localObjectBaseData2.aF;
           f4 = localObjectBaseData2.aG;
           paramCanvas.drawText((String)localObject1, f1, k + f4, localObjectBaseData2.jdField_i_of_type_AndroidGraphicsPaint);
         }
         i = 0;
-        break label4538;
+        break label4552;
         if (!TextUtils.isEmpty(localObjectBaseData2.jdField_h_of_type_JavaLangString))
         {
           i = 1;
-          break label4538;
+          break label4552;
         }
         i = 0;
-        break label4538;
+        break label4552;
         bool = false;
-        break label4629;
+        break label4643;
         k = i;
         if (j != 2)
         {
-          this.jdField_a_of_type_ComTencentMobileqqArFaceUIController.a.a(2, localObjectBaseData2.jdField_h_of_type_JavaLangString, false);
+          this.jdField_a_of_type_Amxu.a.a(2, localObjectBaseData2.jdField_h_of_type_JavaLangString, false);
           k = i;
         }
       }
     }
-    label336:
-    label371:
-    label3061:
-    this.jdField_a_of_type_ComTencentMobileqqArFaceUIController.a.a();
-    label401:
-    label487:
-    label4459:
-    label6386:
-    this.jdField_a_of_type_ComTencentMobileqqArFaceUIController.a.a();
-    label517:
-    label3609:
-    label3666:
-    label3930:
-    label6371:
-    label6504:
-    label6511:
+    label337:
+    label372:
+    label6389:
+    this.jdField_a_of_type_Amxu.a.a();
+    label402:
+    label488:
+    this.jdField_a_of_type_Amxu.a.a();
+    label518:
+    label3341:
+    label3620:
+    label3678:
+    label3942:
+    label5607:
     return;
   }
   
@@ -777,9 +777,9 @@ public class ObjectSurfaceView
       localIntent.putExtra("finish_animation_up_down", true);
       getContext().startActivity(localIntent);
       if ((getContext() instanceof Activity)) {
-        ((Activity)getContext()).overridePendingTransition(2131034134, 0);
+        ((Activity)getContext()).overridePendingTransition(2130771997, 0);
       }
-      ReportController.b(null, "dc00898", "", "", "0X800899A", "0X800899A", 0, 0, "", "", "", "");
+      azqs.b(null, "dc00898", "", "", "0X800899A", "0X800899A", 0, 0, "", "", "", "");
       return;
     }
     catch (Exception paramString)
@@ -788,7 +788,7 @@ public class ObjectSurfaceView
     }
   }
   
-  private void a(List paramList)
+  private void a(List<ObjectBaseData> paramList)
   {
     if ((paramList == null) || (paramList.size() == 0)) {}
     for (;;)
@@ -956,56 +956,56 @@ public class ObjectSurfaceView
     Object localObject2;
     int k;
     Object localObject1;
-    DrawView2.FaceData localFaceData;
+    amxp localamxp;
     RectF localRectF;
     if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
     {
       if (a() == null)
       {
         if (this.jdField_a_of_type_JavaUtilList.get(0) != null) {}
-        for (f1 = ((DrawView2.FaceData)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_Float;; f1 = 0.0F)
+        for (f1 = ((amxp)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_Float;; f1 = 0.0F)
         {
           i = 1;
           for (j = 0; i < this.jdField_a_of_type_JavaUtilList.size(); j = k)
           {
-            localObject2 = (DrawView2.FaceData)this.jdField_a_of_type_JavaUtilList.get(i);
+            localObject2 = (amxp)this.jdField_a_of_type_JavaUtilList.get(i);
             k = j;
             if (localObject2 != null)
             {
               k = j;
-              if (((DrawView2.FaceData)localObject2).jdField_a_of_type_Float > f1) {
+              if (((amxp)localObject2).jdField_a_of_type_Float > f1) {
                 k = i;
               }
             }
             if ((localObject2 != null) && (QLog.isColorLevel()))
             {
-              localObject1 = "普通人";
-              if (!TextUtils.isEmpty(((DrawView2.FaceData)localObject2).jdField_a_of_type_JavaLangString)) {
-                localObject1 = ((DrawView2.FaceData)localObject2).jdField_a_of_type_JavaLangString;
+              localObject1 = alud.a(2131708084);
+              if (!TextUtils.isEmpty(((amxp)localObject2).jdField_a_of_type_JavaLangString)) {
+                localObject1 = ((amxp)localObject2).jdField_a_of_type_JavaLangString;
               }
-              QLog.d("ObjectSurfaceView", 2, "name = " + (String)localObject1 + ",confidence = " + ((DrawView2.FaceData)localObject2).jdField_a_of_type_Float + ",faceId = " + ((DrawView2.FaceData)localObject2).jdField_a_of_type_Int + ",isTmpFace = " + ((DrawView2.FaceData)localObject2).jdField_e_of_type_Boolean);
+              QLog.d("ObjectSurfaceView", 2, "name = " + (String)localObject1 + ",confidence = " + ((amxp)localObject2).jdField_a_of_type_Float + ",faceId = " + ((amxp)localObject2).jdField_a_of_type_Int + ",isTmpFace = " + ((amxp)localObject2).jdField_e_of_type_Boolean);
             }
             i += 1;
           }
         }
-        localObject1 = (DrawView2.FaceData)this.jdField_a_of_type_JavaUtilList.get(j);
+        localObject1 = (amxp)this.jdField_a_of_type_JavaUtilList.get(j);
         if (localObject1 != null) {
-          ((DrawView2.FaceData)localObject1).jdField_a_of_type_Boolean = true;
+          ((amxp)localObject1).jdField_a_of_type_Boolean = true;
         }
       }
       j = 0;
       if (j < this.jdField_a_of_type_JavaUtilList.size())
       {
-        localFaceData = (DrawView2.FaceData)this.jdField_a_of_type_JavaUtilList.get(j);
-        if (localFaceData != null)
+        localamxp = (amxp)this.jdField_a_of_type_JavaUtilList.get(j);
+        if (localamxp != null)
         {
-          localRectF = localFaceData.a();
+          localRectF = localamxp.a();
           i = 0;
           if (i >= this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size()) {
-            break label1493;
+            break label1496;
           }
           localObject2 = (ObjectBaseData)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(i);
-          if ((localObject2 != null) && (((ObjectBaseData)localObject2).jdField_e_of_type_JavaLangString.equals(localFaceData.jdField_a_of_type_JavaLangString)) && (((ObjectBaseData)localObject2).jdField_e_of_type_Boolean == localFaceData.jdField_e_of_type_Boolean)) {
+          if ((localObject2 != null) && (((ObjectBaseData)localObject2).jdField_e_of_type_JavaLangString.equals(localamxp.jdField_a_of_type_JavaLangString)) && (((ObjectBaseData)localObject2).jdField_e_of_type_Boolean == localamxp.jdField_e_of_type_Boolean)) {
             i = 1;
           }
         }
@@ -1015,7 +1015,7 @@ public class ObjectSurfaceView
     {
       localObject1 = localObject2;
       k = i;
-      if (!localFaceData.jdField_e_of_type_Boolean)
+      if (!localamxp.jdField_e_of_type_Boolean)
       {
         localObject1 = localObject2;
         k = i;
@@ -1023,15 +1023,15 @@ public class ObjectSurfaceView
         {
           localObject1 = localObject2;
           k = i;
-          if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(localFaceData.jdField_a_of_type_Int)))
+          if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(localamxp.jdField_a_of_type_Int)))
           {
-            localObject2 = (ObjectBaseData)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(localFaceData.jdField_a_of_type_Int));
+            localObject2 = (ObjectBaseData)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(localamxp.jdField_a_of_type_Int));
             localObject1 = localObject2;
             k = i;
             if (localObject2 != null)
             {
               b((ObjectBaseData)localObject2);
-              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(localFaceData.jdField_a_of_type_Int));
+              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(localamxp.jdField_a_of_type_Int));
               k = 1;
               localObject1 = localObject2;
             }
@@ -1040,25 +1040,25 @@ public class ObjectSurfaceView
       }
       if (k == 0)
       {
-        localObject1 = new MainObjectScanningData(getContext());
-        ((ObjectBaseData)localObject1).jdField_e_of_type_Boolean = localFaceData.jdField_e_of_type_Boolean;
-        ((ObjectBaseData)localObject1).jdField_e_of_type_JavaLangString = localFaceData.jdField_a_of_type_JavaLangString;
-        if (!localFaceData.jdField_e_of_type_Boolean)
+        localObject1 = new amyf(getContext());
+        ((ObjectBaseData)localObject1).jdField_e_of_type_Boolean = localamxp.jdField_e_of_type_Boolean;
+        ((ObjectBaseData)localObject1).jdField_e_of_type_JavaLangString = localamxp.jdField_a_of_type_JavaLangString;
+        if (!localamxp.jdField_e_of_type_Boolean)
         {
-          ((ObjectBaseData)localObject1).jdField_a_of_type_Boolean = localFaceData.jdField_a_of_type_Boolean;
+          ((ObjectBaseData)localObject1).jdField_a_of_type_Boolean = localamxp.jdField_a_of_type_Boolean;
           if (QLog.isColorLevel()) {
             QLog.d("ObjectSurfaceView", 2, "1=" + ((ObjectBaseData)localObject1).jdField_a_of_type_Boolean);
           }
-          ((ObjectBaseData)localObject1).jdField_d_of_type_JavaLangString = localFaceData.jdField_b_of_type_JavaLangString;
-          ((ObjectBaseData)localObject1).jdField_f_of_type_JavaLangString = localFaceData.jdField_a_of_type_JavaLangString;
-          ((ObjectBaseData)localObject1).jdField_b_of_type_JavaLangString = localFaceData.jdField_f_of_type_JavaLangString;
-          ((ObjectBaseData)localObject1).jdField_f_of_type_Boolean = localFaceData.jdField_b_of_type_Boolean;
-          ((ObjectBaseData)localObject1).jdField_g_of_type_Boolean = localFaceData.jdField_c_of_type_Boolean;
+          ((ObjectBaseData)localObject1).jdField_d_of_type_JavaLangString = localamxp.jdField_b_of_type_JavaLangString;
+          ((ObjectBaseData)localObject1).jdField_f_of_type_JavaLangString = localamxp.jdField_a_of_type_JavaLangString;
+          ((ObjectBaseData)localObject1).jdField_b_of_type_JavaLangString = localamxp.jdField_f_of_type_JavaLangString;
+          ((ObjectBaseData)localObject1).jdField_f_of_type_Boolean = localamxp.jdField_b_of_type_Boolean;
+          ((ObjectBaseData)localObject1).jdField_g_of_type_Boolean = localamxp.jdField_c_of_type_Boolean;
           ((ObjectBaseData)localObject1).jdField_a_of_type_AndroidGraphicsRectF = localRectF;
-          ((ObjectBaseData)localObject1).jdField_a_of_type_JavaLangString = localFaceData.jdField_h_of_type_JavaLangString;
-          ((ObjectBaseData)localObject1).jdField_c_of_type_JavaLangString = localFaceData.jdField_g_of_type_JavaLangString;
-          ((ObjectBaseData)localObject1).jdField_h_of_type_JavaLangString = localFaceData.jdField_d_of_type_JavaLangString;
-          ((ObjectBaseData)localObject1).jdField_i_of_type_JavaLangString = localFaceData.jdField_e_of_type_JavaLangString;
+          ((ObjectBaseData)localObject1).jdField_a_of_type_JavaLangString = localamxp.jdField_h_of_type_JavaLangString;
+          ((ObjectBaseData)localObject1).jdField_c_of_type_JavaLangString = localamxp.jdField_g_of_type_JavaLangString;
+          ((ObjectBaseData)localObject1).jdField_h_of_type_JavaLangString = localamxp.jdField_d_of_type_JavaLangString;
+          ((ObjectBaseData)localObject1).jdField_i_of_type_JavaLangString = localamxp.jdField_e_of_type_JavaLangString;
           if ((!((ObjectBaseData)localObject1).jdField_d_of_type_Boolean) && (QLog.isColorLevel()))
           {
             ((ObjectBaseData)localObject1).jdField_d_of_type_Boolean = true;
@@ -1070,7 +1070,7 @@ public class ObjectSurfaceView
       for (;;)
       {
         ((ObjectBaseData)localObject1).jdField_a_of_type_AndroidGraphicsRectF = localRectF;
-        ((ObjectBaseData)localObject1).jdField_g_of_type_JavaLangString = localFaceData.jdField_c_of_type_JavaLangString;
+        ((ObjectBaseData)localObject1).jdField_g_of_type_JavaLangString = localamxp.jdField_c_of_type_JavaLangString;
         if (((ObjectBaseData)localObject1).jdField_a_of_type_Boolean)
         {
           i = 0;
@@ -1093,7 +1093,7 @@ public class ObjectSurfaceView
         {
           f1 = localRectF.centerX();
           float f2 = localRectF.centerY();
-          if ((Math.abs(f1 - ((ObjectBaseData)localObject1).jdField_a_of_type_Float) > ObjectBaseData.Dip2PxCache.jdField_j_of_type_Int) || (Math.abs(f2 - ((ObjectBaseData)localObject1).jdField_b_of_type_Float) > ObjectBaseData.Dip2PxCache.jdField_j_of_type_Int))
+          if ((Math.abs(f1 - ((ObjectBaseData)localObject1).jdField_a_of_type_Float) > amyi.jdField_j_of_type_Int) || (Math.abs(f2 - ((ObjectBaseData)localObject1).jdField_b_of_type_Float) > amyi.jdField_j_of_type_Int))
           {
             ((ObjectBaseData)localObject1).jdField_a_of_type_Float = f1;
             ((ObjectBaseData)localObject1).jdField_b_of_type_Float = f2;
@@ -1123,14 +1123,14 @@ public class ObjectSurfaceView
         {
           localObject1 = (ObjectBaseData)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(i);
           j = 0;
-          label1275:
+          label1278:
           if (j >= this.jdField_a_of_type_JavaUtilList.size()) {
-            break label1484;
+            break label1487;
           }
-          localObject2 = (DrawView2.FaceData)this.jdField_a_of_type_JavaUtilList.get(j);
-          if ((localObject2 == null) || (localObject1 == null) || (!((ObjectBaseData)localObject1).jdField_e_of_type_JavaLangString.equals(((DrawView2.FaceData)localObject2).jdField_a_of_type_JavaLangString)) || (((ObjectBaseData)localObject1).jdField_e_of_type_Boolean != ((DrawView2.FaceData)localObject2).jdField_e_of_type_Boolean)) {}
+          localObject2 = (amxp)this.jdField_a_of_type_JavaUtilList.get(j);
+          if ((localObject2 == null) || (localObject1 == null) || (!((ObjectBaseData)localObject1).jdField_e_of_type_JavaLangString.equals(((amxp)localObject2).jdField_a_of_type_JavaLangString)) || (((ObjectBaseData)localObject1).jdField_e_of_type_Boolean != ((amxp)localObject2).jdField_e_of_type_Boolean)) {}
         }
-        label1484:
+        label1487:
         for (j = 1;; j = 0)
         {
           if (j == 0)
@@ -1142,7 +1142,7 @@ public class ObjectSurfaceView
           i += 1;
           break;
           j += 1;
-          break label1275;
+          break label1278;
           this.jdField_a_of_type_Boolean = false;
           if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() > 0))
           {
@@ -1155,12 +1155,12 @@ public class ObjectSurfaceView
           return;
           b();
           QLog.e("ObjectSurfaceView", 1, "lost the face data.");
-          this.jdField_a_of_type_ComTencentMobileqqArFaceUIController.a.a();
-          this.jdField_a_of_type_ComTencentMobileqqArFaceUIController.a.a();
+          this.jdField_a_of_type_Amxu.a.a();
+          this.jdField_a_of_type_Amxu.a.a();
           return;
         }
       }
-      label1493:
+      label1496:
       i = 0;
       localObject2 = null;
     }
@@ -1172,12 +1172,12 @@ public class ObjectSurfaceView
     this.jdField_b_of_type_Boolean = false;
     a(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
     this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-    this.jdField_a_of_type_ComTencentMobileqqArFaceUIController.a.a();
-    this.jdField_a_of_type_ComTencentMobileqqArFaceUIController.a.a();
+    this.jdField_a_of_type_Amxu.a.a();
+    this.jdField_a_of_type_Amxu.a.a();
     QLog.d("ObjectSurfaceView", 1, "clear the animation and face data.");
   }
   
-  public void setFaceData(List paramList)
+  public void setFaceData(List<amxp> paramList)
   {
     try
     {
@@ -1215,7 +1215,7 @@ public class ObjectSurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ObjectSurfaceView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,60 +1,94 @@
-import com.tencent.av.AVLog;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.SecUtil;
-import dov.com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
-import dov.com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager.OnResourceDownloadListener;
-import java.io.IOException;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aolp
-  implements INetEngine.INetEngineListener
+  extends aokh<aolq>
 {
-  public aolp(CaptureVideoFilterManager paramCaptureVideoFilterManager) {}
-  
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
-  
-  public void a(NetResp paramNetResp)
+  public int a()
   {
-    Object localObject = (FilterDesc)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a();
-    if (paramNetResp.jdField_a_of_type_Int != 0) {
-      AVLog.c("CaptureVideoFilterManager", "download file failed. errorCode: " + paramNetResp.b + ", errorMsg: " + paramNetResp.jdField_a_of_type_JavaLangString + ", file: " + ((FilterDesc)localObject).jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
+    return 597;
+  }
+  
+  @NonNull
+  public aolq a(int paramInt)
+  {
+    return new aolq();
+  }
+  
+  @Nullable
+  public aolq a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null))
     {
-      return;
-      if (!((FilterDesc)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c)))
-      {
-        AVLog.c("CaptureVideoFilterManager", "download file failed: md5 is not match.");
-        FileUtils.d(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c);
-        return;
+      aolq localaolq = aolq.a(paramArrayOfaoko[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletNotificationConfProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
       }
-      AVLog.c("CaptureVideoFilterManager", "download resFile success. file: " + ((FilterDesc)localObject).jdField_a_of_type_JavaLangString);
-      try
-      {
-        localObject = CaptureVideoFilterManager.b;
-        FileUtils.a(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c, (String)localObject, false);
-        FileUtils.d(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c);
-        if ((CaptureVideoFilterManager.a(this.a).decrementAndGet() == 0) && (CaptureVideoFilterManager.a(this.a) != null))
-        {
-          CaptureVideoFilterManager.a(this.a).a(true);
-          return;
-        }
-      }
-      catch (IOException paramNetResp)
-      {
-        paramNetResp.printStackTrace();
-        AVLog.c("CaptureVideoFilterManager", "unzip file failed.");
-      }
+      return localaolq;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletNotificationConfProcessor", 2, "onParsed is null");
+    }
+    ajfv.a(true);
+    return null;
+  }
+  
+  public Class<aolq> a()
+  {
+    return aolq.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletNotificationConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+    ajfv.a(true);
+  }
+  
+  public void a(aolq paramaolq)
+  {
+    if (paramaolq == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletNotificationConfProcessor", 2, "onUpdate but newConf==null");
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletNotificationConfProcessor", 2, "onUpdate " + paramaolq.toString());
+    }
+    ajfv.a(true);
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletNotificationConfProcessor", 2, "migrateOldVersion");
+    }
+    ajfv.a(true);
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aolp
  * JD-Core Version:    0.7.0.1
  */

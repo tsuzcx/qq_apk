@@ -1,40 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyActivityHelper;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.av.redpacket.AVRedPacketManager.LocalEmojiInfo;
+import com.tencent.av.redpacket.AVRedPacketManager.LocalFrameSyncInfo;
+import java.util.List;
 
-public class lwg
-  implements View.OnClickListener
+public abstract interface lwg
 {
-  public lwg(ComponentJump paramComponentJump, ArticleInfo paramArticleInfo) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    int i = 0;
-    ReadInJoyActivityHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoName, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoType, 1);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.hasChannelInfo()) {
-      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId;
-    }
-    try
-    {
-      paramView = new JSONObject();
-      paramView.put("feeds_channel_entrance", i);
-      PublicAccountReportUtils.a(null, "CliOper", "", "", "0X8006DF3", "0X8006DF3", 0, 0, "", "", "", paramView.toString(), false);
-      return;
-    }
-    catch (JSONException paramView)
-    {
-      paramView.printStackTrace();
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, List<AVRedPacketManager.LocalEmojiInfo> paramList);
+  
+  public abstract void a(int paramInt, lwh paramlwh);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void a(AVRedPacketManager.LocalFrameSyncInfo paramLocalFrameSyncInfo);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void b(AVRedPacketManager.LocalFrameSyncInfo paramLocalFrameSyncInfo);
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lwg
  * JD-Core Version:    0.7.0.1
  */

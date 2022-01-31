@@ -1,21 +1,13 @@
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager.IInformationPasterResDownloaderCallback;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager.InformationPasterResDownloader;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage.Item;
+import java.lang.ref.WeakReference;
 
 public class anmz
-  implements Runnable
 {
-  public anmz(QIMInformationPasterManager paramQIMInformationPasterManager, InfomationFacePackage.Item paramItem, QIMInformationPasterManager.IInformationPasterResDownloaderCallback paramIInformationPasterResDownloaderCallback) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager.a.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceInfomationFacePackage$Item, this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager$IInformationPasterResDownloaderCallback);
-  }
+  public WeakReference<bbaa> a;
+  public boolean a = false;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmz
  * JD-Core Version:    0.7.0.1
  */

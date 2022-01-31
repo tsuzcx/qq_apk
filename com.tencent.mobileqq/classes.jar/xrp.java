@@ -1,19 +1,22 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-
 public class xrp
-  implements Runnable
 {
-  public xrp(NewFlowCameraActivity paramNewFlowCameraActivity) {}
-  
-  public void run()
+  public static long a(String paramString, long paramLong)
   {
-    this.a.c.setVisibility(8);
+    try
+    {
+      long l = Long.valueOf(paramString).longValue();
+      return l;
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      wxe.d("NumberUtils", "Invalid num string " + paramString + ", return default number " + paramLong);
+    }
+    return paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xrp
  * JD-Core Version:    0.7.0.1
  */

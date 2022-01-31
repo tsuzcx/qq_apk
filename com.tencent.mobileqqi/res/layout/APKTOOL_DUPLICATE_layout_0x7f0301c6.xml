@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020158" android:layout_width="fill_parent" android:layout_height="60.0dip"
+<merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.filemanager.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0807d8" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" />
-    <TextView android:textSize="15.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a012d" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0807d9" android:duplicateParentState="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0807da" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/common_arrow_right_selector" />
-    <ImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0807db" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201aa" />
-</LinearLayout>
+    <com.tencent.mobileqq.widget.ShaderAnimLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f08010b" android:visibility="gone" android:clickable="true" android:layout_width="64.0dip" android:layout_height="34.0dip" android:layout_margin="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <Button android:textSize="14.0dip" android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803d5" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020858" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0dbd" android:shadowColor="#7f000000" android:shadowDx="1.5" android:shadowDy="1.5" android:shadowRadius="1.5" android:layout_centerInParent="true" />
+    </com.tencent.mobileqq.widget.ShaderAnimLayout>
+</merge>

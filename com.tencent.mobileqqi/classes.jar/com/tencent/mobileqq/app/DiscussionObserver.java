@@ -16,7 +16,7 @@ import java.util.Set;
 public class DiscussionObserver
   implements BusinessObserver
 {
-  protected void a() {}
+  public void a() {}
   
   public void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
@@ -123,45 +123,45 @@ public class DiscussionObserver
     a(paramBoolean, (String)paramObject[0], ((Boolean)paramObject[1]).booleanValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue());
   }
   
-  protected void a(boolean paramBoolean) {}
+  public void a(boolean paramBoolean) {}
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2) {}
+  public void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2) {}
   
-  protected void a(boolean paramBoolean, int paramInt, RespGetDiscussInfo paramRespGetDiscussInfo) {}
+  public void a(boolean paramBoolean, int paramInt, RespGetDiscussInfo paramRespGetDiscussInfo) {}
   
-  protected void a(boolean paramBoolean, long paramLong) {}
+  public void a(boolean paramBoolean, long paramLong) {}
   
-  protected void a(boolean paramBoolean, long paramLong, int paramInt) {}
+  public void a(boolean paramBoolean, long paramLong, int paramInt) {}
   
-  protected void a(boolean paramBoolean, long paramLong, ArrayList paramArrayList) {}
+  public void a(boolean paramBoolean, long paramLong, ArrayList paramArrayList) {}
   
-  protected void a(boolean paramBoolean, Long paramLong) {}
+  public void a(boolean paramBoolean, Long paramLong) {}
   
-  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2) {}
+  public void a(boolean paramBoolean, Long paramLong1, Long paramLong2) {}
   
-  protected void a(boolean paramBoolean, String paramString) {}
+  public void a(boolean paramBoolean, String paramString) {}
   
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, int paramInt1, int paramInt2) {}
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, int paramInt1, int paramInt2) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString) {}
+  public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString) {}
   
-  protected void a(boolean paramBoolean, Object[] paramArrayOfObject) {}
+  public void a(boolean paramBoolean, Object[] paramArrayOfObject) {}
   
-  protected void a(Object[] paramArrayOfObject) {}
+  public void a(Object[] paramArrayOfObject) {}
   
-  protected void b() {}
+  public void b() {}
   
-  protected void b(boolean paramBoolean, long paramLong) {}
+  public void b(boolean paramBoolean, long paramLong) {}
   
-  protected void b(boolean paramBoolean, Long paramLong) {}
+  public void b(boolean paramBoolean, Long paramLong) {}
   
-  protected void b(boolean paramBoolean, String paramString) {}
+  public void b(boolean paramBoolean, String paramString) {}
   
   protected void c() {}
   
-  protected void c(boolean paramBoolean, String paramString) {}
+  public void c(boolean paramBoolean, String paramString) {}
   
-  protected void d(boolean paramBoolean, String paramString) {}
+  public void d(boolean paramBoolean, String paramString) {}
 }
 
 

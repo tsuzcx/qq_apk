@@ -1,17 +1,27 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Intent;
+import com.tencent.token.ui.base.da;
+import com.tencent.token.utils.w;
 
-final class aci
-  implements View.OnClickListener
+class aci
+  implements da
 {
-  aci(TakeIDPhotoComfirmActivity paramTakeIDPhotoComfirmActivity) {}
+  aci(ach paramach) {}
   
-  public final void onClick(View paramView)
+  public void a(int paramInt)
   {
-    this.a.setResult(10);
-    this.a.finish();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      Intent localIntent = new Intent(this.a.a, AssistantRecommendFriendQrcode.class);
+      localIntent.putExtra("page_id", 9);
+      this.a.a.startActivity(localIntent);
+      return;
+    }
+    w.b(this.a.a, this.a.a.getString(2131231483));
   }
 }
 

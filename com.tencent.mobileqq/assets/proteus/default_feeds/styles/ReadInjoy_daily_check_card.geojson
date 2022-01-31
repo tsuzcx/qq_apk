@@ -1,0 +1,43 @@
+{
+    "ReadInjoy_daily_check_card": {
+        "view_type": "UIView",
+        "view_id": "id_daily_check_container",
+        "default_visible": "YES",
+        "direction": "vertical",
+        "event_type":"cmd_do_nothing",
+        "padding_top": "6",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "data_attributes":{
+            "setRemoteInfo:":"$card_report_params"
+        },
+        "subviews": [
+            {
+                "view_type": "ProteusCollectionView",
+                "view_id": "id_proteus_collection_view",
+                "height": {
+                    "type": "wrap_content"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "375"
+                },
+                "attributes": {
+                    "setCellArray:": "$datas",
+                    "setScrollTypeString:": "1",
+                    "setScrollBounceString:": "1",
+                    "setScrollIndicatorString:": "1",
+                    "setScrollIndicatorString:colors:": ["1", ["#33000000", "#000000"]],
+                    "setScrollIndicatorSizeType:width:height:radius:interval:marginBottom:": ["relative", "16", "3", "1.5", "6", "16"],
+                    "setScrollInfiniteRoll:": "1",
+                    "setAutoRollTime:":"4500"
+                }
+            }
+        ]
+    }
+}

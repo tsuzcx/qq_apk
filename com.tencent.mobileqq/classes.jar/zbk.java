@@ -1,47 +1,38 @@
-import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.LinkedList;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.TextView;
+import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
 
-class zbk
-  implements Runnable
+public class zbk
+  extends AnimatorListenerAdapter
 {
-  zbk(zbj paramzbj) {}
+  public zbk(SingleLyricView paramSingleLyricView, String paramString) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    ConditionSearchManager.a(this.a.a, false);
-    if (this.a.a.c)
+    super.onAnimationCancel(paramAnimator);
+    if (SingleLyricView.a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricSingleLyricView) != null) {
+      SingleLyricView.a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricSingleLyricView).setText(this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (SingleLyricView.a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricSingleLyricView) != null)
     {
-      if (this.a.a.jdField_a_of_type_JavaUtilLinkedList != null)
-      {
-        Iterator localIterator = this.a.a.jdField_a_of_type_JavaUtilLinkedList.iterator();
-        if (localIterator.hasNext())
-        {
-          ConditionSearchManager.IConfigListener localIConfigListener = (ConditionSearchManager.IConfigListener)localIterator.next();
-          if (ConditionSearchManager.a(this.a.a) != null) {}
-          for (boolean bool = true;; bool = false)
-          {
-            localIConfigListener.a(2, bool);
-            break;
-          }
-        }
-      }
-      if (this.a.a.d) {
-        this.a.a.a(this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard);
-      }
-      return;
+      SingleLyricView.a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricSingleLyricView).setText(this.jdField_a_of_type_JavaLangString);
+      SingleLyricView.a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricSingleLyricView).setAlpha(0.3F);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearch.Manager", 2, "updateLocal | SearchActivity is not running");
-    }
-    ConditionSearchManager.a(this.a.a, null);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator, boolean paramBoolean)
+  {
+    SingleLyricView.a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricSingleLyricView).setAlpha(1.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zbk
  * JD-Core Version:    0.7.0.1
  */

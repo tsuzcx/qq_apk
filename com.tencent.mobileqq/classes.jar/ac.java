@@ -1,49 +1,68 @@
-import com.dataline.activities.LiteActivity;
-import com.dataline.util.DatalineSessionAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.DatalineMessageManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
+import com.dataline.activities.DLFilesViewerActivity;
+import com.dataline.activities.DLFilesViewerActivity.2.1;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.DataLineMsgSet;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class ac
-  implements Runnable
+public class ac
+  extends alqv
 {
-  ac(ab paramab, int paramInt, long paramLong, String paramString) {}
+  public ac(DLFilesViewerActivity paramDLFilesViewerActivity) {}
   
-  public void run()
+  protected void a(long paramLong, float paramFloat)
   {
-    Object localObject = this.jdField_a_of_type_Ab.a.app.a().a(this.jdField_a_of_type_Int).a(this.jdField_a_of_type_Long);
-    DataLineMsgSet localDataLineMsgSet = this.jdField_a_of_type_Ab.a.app.a(this.jdField_a_of_type_Int).a(this.jdField_a_of_type_Long);
-    if ((localDataLineMsgSet != null) && (!localDataLineMsgSet.isSingle())) {
-      if (!this.jdField_a_of_type_Ab.a.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Ab.a.jdField_a_of_type_ComTencentWidgetXListView)) {
-        this.jdField_a_of_type_Ab.a.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.notifyDataSetChanged();
-      }
-    }
-    for (;;)
+    super.a(paramLong, paramFloat);
+    this.a.runOnUiThread(new DLFilesViewerActivity.2.1(this, paramLong, paramFloat));
+  }
+  
+  protected void a(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
+  {
+    super.a(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
+    DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
+    DLFilesViewerActivity.b(this.a);
+  }
+  
+  protected void a(String paramString)
+  {
+    super.a(paramString);
+    Iterator localIterator = DLFilesViewerActivity.a(this.a).values().iterator();
+    while (localIterator.hasNext())
     {
-      if ((localObject != null) && (((DataLineMsgRecord)localObject).fileFrom == 0) && (((DataLineMsgRecord)localObject).path != null) && (((DataLineMsgRecord)localObject).thumbPath != null) && (((DataLineMsgRecord)localObject).path.equals(this.jdField_a_of_type_JavaLangString)))
+      DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
+      if (paramString.equals(localDataLineMsgRecord.strMoloKey))
       {
-        localObject = new File(((DataLineMsgRecord)localObject).thumbPath);
-        if (((File)localObject).exists()) {
-          ((File)localObject).delete();
-        }
-      }
-      return;
-      this.jdField_a_of_type_Ab.a.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.notifyDataSetChanged();
-      if ((localObject != null) && (!((DataLineMsgRecord)localObject).bIsResendOrRecvFile))
-      {
-        LiteActivity.a(this.jdField_a_of_type_Ab.a.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.jdField_a_of_type_Ab.a.jdField_a_of_type_ComTencentWidgetXListView);
-        LiteActivity.a(this.jdField_a_of_type_Ab.a.jdField_a_of_type_ComTencentWidgetXListView);
+        localDataLineMsgRecord.nAppStatus = 1;
+        DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
       }
     }
+    DLFilesViewerActivity.b(this.a);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  {
+    super.a(paramBoolean, paramLong, paramString);
+    DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
+    DLFilesViewerActivity.b(this.a);
+  }
+  
+  protected void b(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
+  {
+    super.b(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
+    DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
+    DLFilesViewerActivity.b(this.a);
+  }
+  
+  protected void b(boolean paramBoolean, long paramLong, String paramString)
+  {
+    super.a(paramBoolean, paramLong, paramString);
+    DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
+    DLFilesViewerActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ac
  * JD-Core Version:    0.7.0.1
  */

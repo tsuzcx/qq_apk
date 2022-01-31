@@ -1,74 +1,170 @@
-import android.os.IBinder;
-import cooperation.wadl.ipc.IWadlServiceCallBack;
+import android.graphics.SurfaceTexture;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
+import java.nio.ByteBuffer;
 
 public class angi
-  implements IWadlServiceCallBack
+  implements IVideoViewBase
 {
-  private IBinder a;
+  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+  private angj jdField_a_of_type_Angj;
   
-  public angi(IBinder paramIBinder)
+  public angi(SurfaceTexture paramSurfaceTexture)
   {
-    this.a = paramIBinder;
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = paramSurfaceTexture;
   }
   
-  /* Error */
-  public void a(java.lang.String paramString, android.os.Bundle paramBundle)
+  public void a(angj paramangj)
   {
-    // Byte code:
-    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_3
-    //   4: aload_3
-    //   5: ldc 25
-    //   7: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   10: aload_3
-    //   11: aload_1
-    //   12: invokevirtual 32	android/os/Parcel:writeString	(Ljava/lang/String;)V
-    //   15: aload_2
-    //   16: ifnull +33 -> 49
-    //   19: aload_3
-    //   20: iconst_1
-    //   21: invokevirtual 36	android/os/Parcel:writeInt	(I)V
-    //   24: aload_2
-    //   25: aload_3
-    //   26: iconst_0
-    //   27: invokevirtual 42	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
-    //   30: aload_0
-    //   31: getfield 15	angi:a	Landroid/os/IBinder;
-    //   34: iconst_1
-    //   35: aload_3
-    //   36: aconst_null
-    //   37: iconst_1
-    //   38: invokeinterface 48 5 0
-    //   43: pop
-    //   44: aload_3
-    //   45: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   48: return
-    //   49: aload_3
-    //   50: iconst_0
-    //   51: invokevirtual 36	android/os/Parcel:writeInt	(I)V
-    //   54: goto -24 -> 30
-    //   57: astore_1
-    //   58: aload_3
-    //   59: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   62: aload_1
-    //   63: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	64	0	this	angi
-    //   0	64	1	paramString	java.lang.String
-    //   0	64	2	paramBundle	android.os.Bundle
-    //   3	56	3	localParcel	android.os.Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   4	15	57	finally
-    //   19	30	57	finally
-    //   30	44	57	finally
-    //   49	54	57	finally
+    this.jdField_a_of_type_Angj = paramangj;
   }
   
-  public IBinder asBinder()
+  public void addViewCallBack(IVideoViewBase.IVideoViewCallBack paramIVideoViewCallBack)
   {
-    return this.a;
+    QLog.d("AROnlineVideoView", 1, "addViewCallBack");
+  }
+  
+  public void chooseDisplayView(int paramInt)
+  {
+    QLog.d("AROnlineVideoView", 1, "chooseDisplayView");
+  }
+  
+  public void doCacheSurfaceTexture() {}
+  
+  public void doRecoverSurfaceTexture() {}
+  
+  public void doRotate(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    QLog.d("AROnlineVideoView", 1, "doRotate");
+  }
+  
+  public void drawFrame(ByteBuffer paramByteBuffer1, ByteBuffer paramByteBuffer2, ByteBuffer paramByteBuffer3, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat, boolean paramBoolean)
+  {
+    QLog.d("AROnlineVideoView", 1, "drawFrame-hardware");
+  }
+  
+  public void drawFrame(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat, boolean paramBoolean, int paramInt5, int paramInt6)
+  {
+    if (this.jdField_a_of_type_Angj != null) {
+      this.jdField_a_of_type_Angj.a(paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramInt1, paramInt2, paramInt3, paramInt4, paramFloat, paramBoolean);
+    }
+  }
+  
+  public View getCurrentDisplayView()
+  {
+    QLog.d("AROnlineVideoView", 1, "getCurrentDisplayView");
+    return null;
+  }
+  
+  public Object getRenderObject()
+  {
+    QLog.d("AROnlineVideoView", 1, "getRenderObject");
+    return this.jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+  }
+  
+  public String getSeriableNO()
+  {
+    QLog.d("AROnlineVideoView", 1, "getSeriableNO");
+    return null;
+  }
+  
+  public int getViewHeight()
+  {
+    QLog.d("AROnlineVideoView", 1, "getViewHeight, h=0");
+    return 0;
+  }
+  
+  public int getViewWidth()
+  {
+    QLog.d("AROnlineVideoView", 1, "getViewWidth, w=0");
+    return 0;
+  }
+  
+  public int getXOnScreen()
+  {
+    return 0;
+  }
+  
+  public int getYOnScreen()
+  {
+    return 0;
+  }
+  
+  public boolean isSurfaceReady()
+  {
+    QLog.d("AROnlineVideoView", 1, "isSurfaceReady");
+    return this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null;
+  }
+  
+  public void onResume()
+  {
+    QLog.d("AROnlineVideoView", 1, "onResume");
+  }
+  
+  public void removeViewCallBack(IVideoViewBase.IVideoViewCallBack paramIVideoViewCallBack)
+  {
+    QLog.d("AROnlineVideoView", 1, "removeViewCallBack");
+  }
+  
+  public void resetView()
+  {
+    QLog.d("AROnlineVideoView", 1, "resetView");
+  }
+  
+  public void setDegree(int paramInt)
+  {
+    QLog.d("AROnlineVideoView", 1, "setDegree");
+  }
+  
+  public void setEnableAntDis(boolean paramBoolean)
+  {
+    QLog.d("AROnlineVideoView", 1, "setEnableAntDis");
+  }
+  
+  public void setEnableVREyeControl(boolean paramBoolean)
+  {
+    QLog.d("AROnlineVideoView", 1, "setEnableVREyeControl");
+  }
+  
+  public void setFixedSize(int paramInt1, int paramInt2)
+  {
+    QLog.d("AROnlineVideoView", 1, "setFixedSize");
+  }
+  
+  public void setGypSensor(boolean paramBoolean)
+  {
+    QLog.d("AROnlineVideoView", 1, "setGypSensor");
+  }
+  
+  public void setLogTag(String paramString) {}
+  
+  public void setRadio(int paramInt1, int paramInt2) {}
+  
+  public void setScaleParam(int paramInt1, int paramInt2, float paramFloat)
+  {
+    QLog.d("AROnlineVideoView", 1, "setScaleParam");
+  }
+  
+  public void setSubtitleString(String paramString)
+  {
+    QLog.d("AROnlineVideoView", 1, "setSubtitleString");
+  }
+  
+  public void setVREnable(boolean paramBoolean)
+  {
+    QLog.d("AROnlineVideoView", 1, "setVREnable");
+  }
+  
+  public void setVrViewPattern(int paramInt)
+  {
+    QLog.d("AROnlineVideoView", 1, "setVrViewPattern");
+  }
+  
+  public void setXYaxis(int paramInt)
+  {
+    QLog.d("AROnlineVideoView", 1, "setXYaxis");
   }
 }
 

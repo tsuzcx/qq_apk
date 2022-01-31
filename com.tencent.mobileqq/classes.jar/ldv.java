@@ -1,24 +1,40 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 public class ldv
-  implements Runnable
+  implements BusinessObserver
 {
-  public ldv(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity, GuideData paramGuideData) {}
+  public ldw a;
   
-  public void run()
+  public ldv(ldw paramldw)
   {
-    if ("operation_guide".equals(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.business))
+    this.a = paramldw;
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    aase.b("GdtSSOLoadAD", "onReceive i " + paramInt + " success " + paramBoolean + " bundle " + paramBundle);
+    switch (paramInt)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a(270, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.business, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData);
-      return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a(260, "", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData);
+    do
+    {
+      do
+      {
+        return;
+        if (!paramBoolean) {
+          break;
+        }
+      } while (this.a == null);
+      this.a.a(paramBundle);
+      return;
+    } while (this.a == null);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ldv
  * JD-Core Version:    0.7.0.1
  */

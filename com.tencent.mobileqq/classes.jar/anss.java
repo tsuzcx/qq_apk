@@ -1,21 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.armap.POIInfo;
 
-public class anss
-  implements View.OnClickListener
+public final class anss
+  implements Parcelable.Creator<POIInfo>
 {
-  public anss(EditVideoButton paramEditVideoButton) {}
-  
-  public void onClick(View paramView)
+  public POIInfo a(Parcel paramParcel)
   {
-    this.a.a.a(34);
+    return new POIInfo(paramParcel);
+  }
+  
+  public POIInfo[] a(int paramInt)
+  {
+    return new POIInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anss
  * JD-Core Version:    0.7.0.1
  */

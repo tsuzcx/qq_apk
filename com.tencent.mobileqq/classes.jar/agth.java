@@ -1,29 +1,24 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.ptt.LSRecordAnimations.LSRecordAnimationCallback;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.qphone.base.util.QLog;
 
-public class agth
-  extends LSRecordAnimations.LSRecordAnimationCallback
+class agth
+  extends altm
 {
-  public agth(LSRecordPanel paramLSRecordPanel) {}
+  agth(agsy paramagsy) {}
   
-  public void a(Animation paramAnimation, float paramFloat)
+  protected void onAddFriend(String paramString)
   {
-    if ((this.a.c == null) && (this.a.a != null) && (paramFloat >= 0.5F)) {
-      this.a.f();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString))
+    {
+      Intent localIntent = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent();
+      localIntent.putExtra("uintype", 0);
+      agsy.b(this.a, localIntent);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString + "Q.nearby.follow", 2, "onAddFriend, addUin:" + paramString + "|updateSession");
+      }
     }
-  }
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS startExpandAnimation onAnimationEnd");
-    }
-    if (paramAnimation == this.a.a) {
-      this.a.h();
-    }
-    this.a.a = null;
   }
 }
 

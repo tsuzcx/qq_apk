@@ -1,27 +1,14 @@
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import java.util.ArrayList;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
 
 public class aiyg
-  implements AbsListView.OnScrollListener
+  extends aiym
 {
-  int jdField_a_of_type_Int = 0;
+  public aiyg(QzoneHbFragment paramQzoneHbFragment) {}
   
-  public aiyg(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt == 0) && (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a != null) && (this.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a.size() - 1))
-    {
-      paramInt = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a.size();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a(paramInt, false);
-    }
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+    QzoneHbFragment.a(this.a).setEnabled(QzoneHbFragment.a(this.a));
   }
 }
 

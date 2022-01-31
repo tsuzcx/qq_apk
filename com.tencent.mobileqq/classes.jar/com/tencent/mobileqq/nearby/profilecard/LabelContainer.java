@@ -11,7 +11,7 @@ public class LabelContainer
   extends FrameLayout
 {
   protected int a;
-  protected SparseArray a;
+  protected SparseArray<ArrayList<View>> a;
   protected int b;
   
   public LabelContainer(Context paramContext, AttributeSet paramAttributeSet)
@@ -111,7 +111,7 @@ public class LabelContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.LabelContainer
  * JD-Core Version:    0.7.0.1
  */

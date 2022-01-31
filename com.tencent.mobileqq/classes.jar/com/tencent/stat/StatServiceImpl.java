@@ -220,7 +220,7 @@ public class StatServiceImpl
   {
     boolean bool2 = false;
     long l1 = StatPreferences.getLong(paramContext, StatConfig.c, 0L);
-    long l2 = StatCommonHelper.getSDKLongVersion("2.2.4");
+    long l2 = StatCommonHelper.getSDKLongVersion("2.4.2");
     boolean bool1 = true;
     if (l2 <= l1)
     {
@@ -488,7 +488,6 @@ public class StatServiceImpl
   }
   
   public static boolean startStatService(Context paramContext, String paramString1, String paramString2, StatSpecifyReportedInfo paramStatSpecifyReportedInfo)
-    throws Exception
   {
     for (;;)
     {
@@ -502,7 +501,7 @@ public class StatServiceImpl
         if (!StatConfig.isDebugEnable()) {
           break label204;
         }
-        q.d("MTA SDK version, current: " + "2.2.4" + " ,required: " + paramString2);
+        q.d("MTA SDK version, current: " + "2.4.2" + " ,required: " + paramString2);
       }
       catch (Throwable paramContext)
       {
@@ -515,9 +514,9 @@ public class StatServiceImpl
       label204:
       do
       {
-        if (StatCommonHelper.getSDKLongVersion("2.2.4") < StatCommonHelper.getSDKLongVersion(paramString2))
+        if (StatCommonHelper.getSDKLongVersion("2.4.2") < StatCommonHelper.getSDKLongVersion(paramString2))
         {
-          paramContext = "MTA SDK version conflicted, current: " + "2.2.4" + ",required: " + paramString2;
+          paramContext = "MTA SDK version conflicted, current: " + "2.4.2" + ",required: " + paramString2;
           paramContext = paramContext + ". please delete the current SDK and download the latest one. official website: http://mta.qq.com/ or http://mta.oa.com/";
           q.error(paramContext);
           StatConfig.setEnableStatService(false);

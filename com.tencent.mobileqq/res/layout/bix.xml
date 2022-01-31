@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/ejl" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_weight="1.0">
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/fx3" android:scaleType="fitXY" />
+        <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="#ff03081a" android:layout_gravity="center_vertical" android:id="@id/ejk" android:clickable="false" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:text="233" android:includeFontPadding="false" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/eja" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginLeft="10.0dip" android:layout_weight="1.0">
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/fx5" android:scaleType="fitXY" />
+        <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="#ff03081a" android:layout_gravity="center_vertical" android:id="@id/ej_" android:clickable="false" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="233" android:includeFontPadding="false" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/ekr" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginLeft="10.0dip" android:layout_weight="1.0">
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/fx4" android:scaleType="fitXY" />
+        <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="#ff03081a" android:layout_gravity="center_vertical" android:id="@id/ekq" android:clickable="false" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="233" android:includeFontPadding="false" />
+    </LinearLayout>
+</LinearLayout>

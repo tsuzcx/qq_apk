@@ -1,32 +1,18 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.device.ble.QFindGattManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.pts.nativemodule.IPTSHandleJSException;
 
 public class pwi
-  extends MqqHandler
+  implements IPTSHandleJSException
 {
-  public pwi(QFindGattManager paramQFindGattManager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  private final String a = "PTSHandleJSException";
   
-  public void handleMessage(Message paramMessage)
+  public void handleJSException(int paramInt1, int paramInt2, String paramString)
   {
-    if (paramMessage.what == 100)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("DeviceBLE2", 2, "QFindGattManager write data timeout bleSN " + (String)paramMessage.obj);
-      }
-      QFindGattManager.a(this.a, paramMessage.arg1);
-      this.a.a((String)paramMessage.obj);
-    }
+    pwx.a("0X800A7C6", "", "", "", new pwy().a("type", "1").a("line", "" + paramInt1).a("column", "" + paramInt2).a("msg", paramString).a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pwi
  * JD-Core Version:    0.7.0.1
  */

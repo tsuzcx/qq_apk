@@ -1,10 +1,14 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
-public class aiti
+class aiti
+  implements bezx
 {
-  public RelativeLayout a;
-  public TextView a;
+  aiti(aitg paramaitg, Runnable paramRunnable) {}
+  
+  public void a(int paramInt)
+  {
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
+  }
 }
 
 

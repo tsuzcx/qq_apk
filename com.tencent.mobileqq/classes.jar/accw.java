@@ -1,63 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmojiListenerManager;
-import com.tencent.mobileqq.emoticon.EmojiManager;
-import com.tencent.mobileqq.emoticon.EmotionJsonUtils;
-import com.tencent.mobileqq.vas.VasReportUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class accw
-  extends DownloadListener
+  implements DialogInterface.OnClickListener
 {
-  public accw(EmojiManager paramEmojiManager, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  public accw(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString, int paramInt) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Bundle localBundle;
-    EmoticonPackage localEmoticonPackage;
-    try
-    {
-      localBundle = paramDownloadTask.a();
-      localEmoticonPackage = (EmoticonPackage)localBundle.getSerializable("emoticonPackage");
-      if (localEmoticonPackage == null) {
-        return;
-      }
-      if ((QLog.isColorLevel()) && (localEmoticonPackage != null)) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "jsonDownloadListener : onDone epid = " + localEmoticonPackage.epId + ";task status = " + paramDownloadTask.a());
-      }
-      if (paramDownloadTask.a() != 3) {
-        break label189;
-      }
-      boolean bool = localBundle.getBoolean("isSmallEmotion");
-      String str = EmotionJsonUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDownloadTask, bool);
-      if (str != null)
-      {
-        QLog.e(this.a.jdField_a_of_type_JavaLangString, 1, "jsonDownloadListener : parse json error : = " + str);
-        this.a.a(localEmoticonPackage, 11008, 0L, paramDownloadTask.d);
-        return;
-      }
-    }
-    catch (Exception paramDownloadTask)
-    {
-      QLog.e(this.a.jdField_a_of_type_JavaLangString, 1, "json download fail", paramDownloadTask);
-      return;
-    }
-    EmojiManager.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a(localEmoticonPackage, 0, localBundle);
-    return;
-    label189:
-    QLog.e(this.a.jdField_a_of_type_JavaLangString, 1, "jsonDownloadListener : ondone error , reportCode = " + paramDownloadTask.a);
-    EmojiManager.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a(localEmoticonPackage, -1, localBundle);
-    VasReportUtils.a("emotionType", "emotionActionDownload", "3", localEmoticonPackage.epId, "", "", paramDownloadTask.a + "", "", "", "");
+    bdun.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, "mvip.n.a.gnew_apply", this.jdField_a_of_type_JavaLangString, 3, false, false, "", "", true, true);
+    azqs.b(null, "dc00898", "", "", "qq_vip", "0X800A4FB", this.jdField_a_of_type_Int, 0, "", "", "", "");
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     accw
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class apollo_game_status$STCMGameMessage$STGameCancel
-  extends MessageMicro
+  extends MessageMicro<STGameCancel>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField str_game_cancel_info = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -20,7 +20,7 @@ public final class apollo_game_status$STCMGameMessage$STGameCancel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.apollo_game_status.STCMGameMessage.STGameCancel
  * JD-Core Version:    0.7.0.1
  */

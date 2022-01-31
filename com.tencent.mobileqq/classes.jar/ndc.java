@@ -1,38 +1,26 @@
-import com.tencent.biz.qqstory.model.TroopNickNameManager;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopObserver;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.net.URL;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
 
-public class ndc
-  extends TroopObserver
+final class ndc
+  implements HostnameVerifier
 {
-  public ndc(TroopNickNameManager paramTroopNickNameManager) {}
+  ndc(URL paramURL) {}
   
-  protected void a(boolean paramBoolean, ArrayList paramArrayList)
+  public boolean verify(String paramString, SSLSession paramSSLSession)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onGetTroopMemberCardInfoResult suc=").append(paramBoolean).append(" size=");
-      if (paramArrayList != null) {
-        break label78;
-      }
+    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.a.getHost(), paramSSLSession);
+    if (bool) {
+      QLog.d("URLUtil", 1, new Object[] { "OpenVirtual.HostnameVerifier.host:", this.a.getHost(), ",address:", paramSSLSession.getPeerHost(), ",isverify:", Boolean.valueOf(bool) });
     }
-    label78:
-    for (int i = 0;; i = paramArrayList.size())
-    {
-      QLog.d("TroopNickNameManager", 2, i);
-      if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
-        ThreadManager.executeOnSubThread(new ndd(this, paramArrayList));
-      }
-      return;
-    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ndc
  * JD-Core Version:    0.7.0.1
  */

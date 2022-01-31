@@ -7,17 +7,24 @@ import com.qq.taf.jce.JceStruct;
 public final class QzmallCustomBanner
   extends JceStruct
 {
+  static BannerStyleConf cache_stBannerStyle = new BannerStyleConf();
+  public int iBannerConfType;
   public int iBannerType;
+  public BannerStyleConf stBannerStyle;
   public String strBannerUrl = "";
   public String strJumpUrl = "";
+  public String strQbossTraceinfo = "";
   
   public QzmallCustomBanner() {}
   
-  public QzmallCustomBanner(int paramInt, String paramString1, String paramString2)
+  public QzmallCustomBanner(int paramInt1, String paramString1, String paramString2, int paramInt2, BannerStyleConf paramBannerStyleConf, String paramString3)
   {
-    this.iBannerType = paramInt;
+    this.iBannerType = paramInt1;
     this.strBannerUrl = paramString1;
     this.strJumpUrl = paramString2;
+    this.iBannerConfType = paramInt2;
+    this.stBannerStyle = paramBannerStyleConf;
+    this.strQbossTraceinfo = paramString3;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -25,6 +32,9 @@ public final class QzmallCustomBanner
     this.iBannerType = paramJceInputStream.read(this.iBannerType, 0, false);
     this.strBannerUrl = paramJceInputStream.readString(1, false);
     this.strJumpUrl = paramJceInputStream.readString(2, false);
+    this.iBannerConfType = paramJceInputStream.read(this.iBannerConfType, 3, false);
+    this.stBannerStyle = ((BannerStyleConf)paramJceInputStream.read(cache_stBannerStyle, 4, false));
+    this.strQbossTraceinfo = paramJceInputStream.readString(5, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -35,6 +45,13 @@ public final class QzmallCustomBanner
     }
     if (this.strJumpUrl != null) {
       paramJceOutputStream.write(this.strJumpUrl, 2);
+    }
+    paramJceOutputStream.write(this.iBannerConfType, 3);
+    if (this.stBannerStyle != null) {
+      paramJceOutputStream.write(this.stBannerStyle, 4);
+    }
+    if (this.strQbossTraceinfo != null) {
+      paramJceOutputStream.write(this.strQbossTraceinfo, 5);
     }
   }
 }

@@ -1,21 +1,21 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class ocn
-  implements View.OnClickListener
+class ocn
+  implements ViewFactory.FoundClickableViewListener
 {
-  public ocn(DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment paramDanceMachineQQBrowserFragment) {}
+  ocn(ocm paramocm, BaseData paramBaseData, Context paramContext) {}
   
-  public void onClick(View paramView)
+  public void onFound(ViewBase paramViewBase)
   {
-    this.a.getActivity().finish();
+    paramViewBase.setOnClickListener(new oco(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ocn
  * JD-Core Version:    0.7.0.1
  */

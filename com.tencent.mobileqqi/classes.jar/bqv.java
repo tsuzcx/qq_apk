@@ -1,28 +1,18 @@
-import com.tencent.biz.pubaccount.assistant.PubAccountAssistantManager;
-import com.tencent.mobileqq.data.PubAccountAssistantData;
-import java.util.Comparator;
+import com.tencent.litetransfersdk.LiteTransferWrapper;
 
 public class bqv
-  implements Comparator
+  implements Runnable
 {
-  public bqv(PubAccountAssistantManager paramPubAccountAssistantManager) {}
+  public bqv(LiteTransferWrapper paramLiteTransferWrapper, int paramInt1, long paramLong, int paramInt2, boolean paramBoolean) {}
   
-  public int a(PubAccountAssistantData paramPubAccountAssistantData1, PubAccountAssistantData paramPubAccountAssistantData2)
+  public void run()
   {
-    long l1 = Math.max(paramPubAccountAssistantData1.mLastMsgTime, paramPubAccountAssistantData1.mLastDraftTime);
-    long l2 = Math.max(paramPubAccountAssistantData2.mLastMsgTime, paramPubAccountAssistantData2.mLastDraftTime);
-    if (l1 < l2) {
-      return 1;
-    }
-    if (l1 == l2) {
-      return 0;
-    }
-    return -1;
+    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.CancelGroupToJNI(LiteTransferWrapper.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.b, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bqv
  * JD-Core Version:    0.7.0.1
  */

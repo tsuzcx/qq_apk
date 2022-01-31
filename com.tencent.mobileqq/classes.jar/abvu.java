@@ -1,19 +1,35 @@
-import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import java.util.HashMap;
+import java.util.Observable;
 
-class abvu
-  implements Runnable
+public class abvu
+  extends Observable
 {
-  abvu(abvr paramabvr) {}
+  private static abvu a;
+  public HashMap<String, String> a;
   
-  public void run()
+  public static abvu a()
   {
-    QQToast.a(this.a.a.getApplicationContext(), "损坏数据库构造完成", 1).a();
+    if (jdField_a_of_type_Abvu == null) {}
+    try
+    {
+      if (jdField_a_of_type_Abvu == null) {
+        jdField_a_of_type_Abvu = new abvu();
+      }
+      return jdField_a_of_type_Abvu;
+    }
+    finally {}
+  }
+  
+  public void a(HashMap<String, String> paramHashMap)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    setChanged();
+    notifyObservers();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abvu
  * JD-Core Version:    0.7.0.1
  */

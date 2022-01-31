@@ -1,19 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
-
 public class amtg
-  implements View.OnClickListener
 {
-  public amtg(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
+  public int a;
+  public int b;
+  public int c;
   
-  public void onClick(View paramView)
+  public amtg(amtf paramamtf, int paramInt1, int paramInt2)
   {
-    if (!QzoneVerticalVideoDownloadActivity.a(this.a))
-    {
-      QzoneVerticalVideoDownloadActivity.a(this.a, false, false);
-      QzoneVerticalVideoDownloadActivity.a(this.a);
-    }
+    this.b = paramInt1;
+    this.c = paramInt2;
+  }
+  
+  public boolean a()
+  {
+    return this.c == 1;
+  }
+  
+  public boolean b()
+  {
+    return this.c == 2;
+  }
+  
+  public boolean c()
+  {
+    return this.c == 3;
   }
 }
 

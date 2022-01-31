@@ -1,24 +1,27 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.qphone.base.util.QLog;
-
-class ylk
-  implements Runnable
+public class ylk
 {
-  ylk(ylj paramylj, byte[] paramArrayOfByte, int paramInt) {}
-  
-  public void run()
-  {
-    if ((QLog.isColorLevel()) && (this.jdField_a_of_type_ArrayOfByte != null)) {
-      QLog.d("ApolloRender", 2, "httpLog httpCallBack data.len=" + this.jdField_a_of_type_ArrayOfByte.length);
-    }
-    ((ApolloSurfaceView)this.jdField_a_of_type_Ylj.jdField_a_of_type_AndroidViewView).getRender().getSavaWrapper().a(this.jdField_a_of_type_Ylj.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfByte);
-  }
+  public String a = "";
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public String j = "";
+  public String k = "";
+  public String l = "";
+  public String m = "";
+  public String n = "";
+  public String o = "";
+  public String p = "";
+  public String q = "";
+  public String r = "";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ylk
  * JD-Core Version:    0.7.0.1
  */

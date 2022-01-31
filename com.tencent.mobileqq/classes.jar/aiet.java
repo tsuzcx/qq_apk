@@ -1,19 +1,14 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.leba.QzoneFrame;
 
-class aiet
-  implements Runnable
+public abstract class aiet
 {
-  aiet(aies paramaies, String paramString) {}
+  public aiet(QzoneFrame paramQzoneFrame) {}
   
-  public void run()
-  {
-    QQToast.a(BaseApplicationImpl.sApplication, this.jdField_a_of_type_JavaLangString + "泄漏，正在生成dump文件", 2000).a();
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiet
  * JD-Core Version:    0.7.0.1
  */

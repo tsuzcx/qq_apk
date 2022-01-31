@@ -1,30 +1,37 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationRule;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationRule.BussinessData;
+import java.util.HashMap;
 
-public class unh
-  implements Runnable
+class unh
+  implements bauf
 {
-  public unh(AioAnimationDetector paramAioAnimationDetector, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, int paramInt, AioAnimationRule paramAioAnimationRule) {}
+  unh(unf paramunf) {}
   
-  public void run()
+  public void a(bave parambave, bavf parambavf)
   {
-    AIOAnimationConatiner localAIOAnimationConatiner = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner;
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    int j = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule.a == null) {}
-    for (int i = -1;; i = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule.a.jdField_a_of_type_Int)
-    {
-      localAIOAnimationConatiner.a(2, 300, new Object[] { localDrawable, Integer.valueOf(j), Integer.valueOf(i) });
+    if ((parambave == null) || (parambavf == null)) {}
+    while (!(parambave instanceof baub)) {
       return;
     }
+    baub localbaub = (baub)parambave;
+    localbaub.jdField_a_of_type_Long += parambavf.c;
+    parambavf.c = 0L;
+    parambavf = "bytes=" + localbaub.jdField_a_of_type_Long + "-";
+    localbaub.jdField_a_of_type_JavaUtilHashMap.put("Range", parambavf);
+    String str1 = localbaub.jdField_a_of_type_JavaLangString;
+    if (str1.contains("range="))
+    {
+      String str2 = str1.substring(0, str1.lastIndexOf("range="));
+      localbaub.jdField_a_of_type_JavaLangString = (str2 + "range=" + localbaub.jdField_a_of_type_Long);
+    }
+    parambave = parambave.a();
+    if ((parambave != null) && ((parambave instanceof unj))) {
+      ((unj)parambave).b = true;
+    }
+    wxe.b("AsyncFileDownloader", String.format("breakDown , range = %s , url = %s", new Object[] { parambavf, str1 }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     unh
  * JD-Core Version:    0.7.0.1
  */

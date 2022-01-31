@@ -1,34 +1,48 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder.Holder;
-import com.tencent.mobileqq.activity.aio.item.SignatureView;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.ArrayList;
+import java.util.List;
 
 public class vet
-  implements View.OnTouchListener
 {
-  public vet(RichStatItemBuilder paramRichStatItemBuilder, RichStatItemBuilder.Holder paramHolder) {}
+  public int a;
+  public String a;
+  public List<CommentEntry> a;
+  public int b;
+  public String b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public vet()
   {
-    if (((SignatureView)paramView).a((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
     {
-      switch (paramMotionEvent.getAction())
-      {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
       }
-      for (;;)
-      {
-        return true;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder$Holder);
+      paramObject = (vet)paramObject;
+      if (this.jdField_a_of_type_JavaLangString != null) {
+        return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
       }
-    }
+    } while (paramObject.jdField_a_of_type_JavaLangString == null);
     return false;
+  }
+  
+  public int hashCode()
+  {
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      return this.jdField_a_of_type_JavaLangString.hashCode();
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vet
  * JD-Core Version:    0.7.0.1
  */

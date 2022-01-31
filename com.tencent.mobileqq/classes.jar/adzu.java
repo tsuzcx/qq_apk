@@ -1,17 +1,22 @@
-import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
-import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import com.tencent.util.Pair;
 
 class adzu
-  implements WebProcessManager.WebProcessStartListener
+  implements DialogInterface.OnClickListener
 {
-  adzu(adzt paramadzt) {}
+  adzu(adzt paramadzt, bacu parambacu, Pair paramPair) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {
-      LebaWithFeeds.a(this.a.a.a).a();
+    this.jdField_a_of_type_Bacu.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
+    if (!bacu.a(this.jdField_a_of_type_Adzt.a.app))
+    {
+      this.jdField_a_of_type_Adzt.a.setTitle("");
+      bact.a(this.jdField_a_of_type_Adzt.a.app, this.jdField_a_of_type_Adzt.a, null);
     }
+    this.jdField_a_of_type_Adzt.a.finish();
   }
 }
 

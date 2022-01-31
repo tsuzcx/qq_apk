@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class appoint_define$AppointInfo
-  extends MessageMicro
+  extends MessageMicro<AppointInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 48, 56, 64, 72, 82, 88, 96, 106 }, new String[] { "msg_appoint_id", "msg_appointment", "uint32_appoint_status", "str_join_wording", "str_view_wording", "uint32_unread_count", "uint32_owner", "uint32_join", "uint32_view", "str_comment_wording", "uint32_comment_num", "uint32_attend_status", "msg_appointment_ex" }, new Object[] { null, null, Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), null }, AppointInfo.class);
   public appoint_define.AppointID msg_appoint_id = new appoint_define.AppointID();
@@ -26,7 +26,7 @@ public final class appoint_define$AppointInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     appoint.define.appoint_define.AppointInfo
  * JD-Core Version:    0.7.0.1
  */

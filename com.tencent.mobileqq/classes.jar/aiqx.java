@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.transfile.ShortVideoDownloadProcessor;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
 
 public class aiqx
-  implements Runnable
 {
-  public aiqx(ShortVideoDownloadProcessor paramShortVideoDownloadProcessor) {}
+  public ImageView a;
+  public URLDrawable a;
+  public URLImageView a;
+  public ImageView b;
   
-  public void run()
-  {
-    this.a.f();
-  }
+  public aiqx(aiqw paramaiqw) {}
 }
 
 

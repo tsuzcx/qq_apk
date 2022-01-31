@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.utils;
 
-import akfq;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.AudioRecord;
@@ -9,16 +8,22 @@ import android.os.Build.VERSION;
 import android.os.Environment;
 import android.os.StatFs;
 import android.text.TextUtils;
+import awyp;
+import awyt;
+import azri;
+import bdhb;
+import bdmd;
+import bdmf;
+import bdml;
+import bhtb;
+import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForPtt;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.ptt.processor.PttCompositeProcessor;
-import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.VersionUtils;
 import java.io.File;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -27,18 +32,19 @@ import java.util.Random;
 public class QQRecorder
 {
   public static int a;
-  private static String jdField_a_of_type_JavaLangString;
   private static int[] jdField_a_of_type_ArrayOfInt = { 13, 14, 16, 18, 20, 21, 27, 32 };
-  public akfq a;
+  private static String jdField_b_of_type_JavaLangString;
   private Context jdField_a_of_type_AndroidContentContext;
-  public AudioManager a;
+  AudioManager jdField_a_of_type_AndroidMediaAudioManager;
   private AudioRecord jdField_a_of_type_AndroidMediaAudioRecord;
-  private PttCompositeProcessor jdField_a_of_type_ComTencentMobileqqPttProcessorPttCompositeProcessor;
-  private QQRecorder.OnQQRecorderListener jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$OnQQRecorderListener;
+  private awyt jdField_a_of_type_Awyt;
+  private bdmd jdField_a_of_type_Bdmd;
+  private bdmf jdField_a_of_type_Bdmf;
+  public QQRecorder.RecordThread a;
   public QQRecorder.RecorderParam a;
-  private QQRecorder.RecorderProcessorListener jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderProcessorListener;
+  private String jdField_a_of_type_JavaLangString;
   boolean jdField_a_of_type_Boolean = false;
-  private int b;
+  private int jdField_b_of_type_Int = 20480;
   public boolean b;
   private int jdField_c_of_type_Int = 800;
   private boolean jdField_c_of_type_Boolean = true;
@@ -53,10 +59,9 @@ public class QQRecorder
   
   public QQRecorder(Context paramContext)
   {
-    this.jdField_b_of_type_Int = 20480;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)paramContext.getSystemService("audio"));
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam = new QQRecorder.RecorderParam(RecordParams.jdField_a_of_type_Int, 0, 0);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam = new QQRecorder.RecorderParam(bdml.jdField_a_of_type_Int, 0, 0);
     paramContext = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.qq_audio_record.name());
     if (QLog.isColorLevel()) {
       QLog.d("QQRecorder", 2, "Init | dpc config = " + paramContext);
@@ -70,7 +75,7 @@ public class QQRecorder
         if (paramContext.length > 4) {
           a(Integer.parseInt(paramContext[2]), Integer.parseInt(paramContext[3]), Integer.parseInt(paramContext[4]));
         }
-        if ((!VersionUtils.e()) && ((this.e == 3) || (this.f == 7))) {
+        if ((!bhtb.e()) && ((this.e == 3) || (this.f == 7))) {
           throw new RuntimeException("Illegal dpc config");
         }
       }
@@ -102,7 +107,7 @@ public class QQRecorder
     paramByte = 0;
     while (paramInputStream.read(arrayOfByte) > 0)
     {
-      int i = RecordParams.a(arrayOfByte);
+      int i = bdml.a(arrayOfByte);
       byte b1 = paramByte + 20;
       paramByte = b1;
       if (i > 0)
@@ -187,54 +192,54 @@ public class QQRecorder
     //   3: astore 7
     //   5: aconst_null
     //   6: astore 6
-    //   8: new 236	java/io/FileInputStream
+    //   8: new 234	java/io/FileInputStream
     //   11: dup
     //   12: aload_0
-    //   13: invokespecial 237	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   13: invokespecial 235	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   16: astore_0
-    //   17: new 239	java/io/DataInputStream
+    //   17: new 237	java/io/DataInputStream
     //   20: dup
     //   21: aload_0
-    //   22: invokespecial 242	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   22: invokespecial 240	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
     //   25: astore 7
     //   27: aload_0
-    //   28: invokevirtual 246	java/io/FileInputStream:available	()I
+    //   28: invokevirtual 244	java/io/FileInputStream:available	()I
     //   31: istore 4
     //   33: bipush 10
     //   35: newarray byte
     //   37: astore 8
     //   39: aload 7
     //   41: aload 8
-    //   43: invokevirtual 247	java/io/DataInputStream:read	([B)I
+    //   43: invokevirtual 245	java/io/DataInputStream:read	([B)I
     //   46: aload 8
     //   48: arraylength
     //   49: if_icmpne +234 -> 283
     //   52: aload 8
-    //   54: invokestatic 250	com/tencent/mobileqq/utils/RecordParams:a	([B)Z
+    //   54: invokestatic 248	bdml:a	([B)Z
     //   57: ifeq +54 -> 111
     //   60: aload 8
     //   62: iconst_0
     //   63: baload
     //   64: aload 7
-    //   66: invokestatic 252	com/tencent/mobileqq/utils/QQRecorder:a	(BLjava/io/InputStream;)I
+    //   66: invokestatic 250	com/tencent/mobileqq/utils/QQRecorder:a	(BLjava/io/InputStream;)I
     //   69: i2d
     //   70: ldc2_w 184
     //   73: ddiv
     //   74: dstore_1
     //   75: aload 7
-    //   77: invokevirtual 255	java/io/DataInputStream:close	()V
+    //   77: invokevirtual 253	java/io/DataInputStream:close	()V
     //   80: aload_0
-    //   81: invokevirtual 256	java/io/FileInputStream:close	()V
+    //   81: invokevirtual 254	java/io/FileInputStream:close	()V
     //   84: aconst_null
     //   85: astore_0
     //   86: aload_0
     //   87: ifnull +7 -> 94
     //   90: aload_0
-    //   91: invokevirtual 256	java/io/FileInputStream:close	()V
+    //   91: invokevirtual 254	java/io/FileInputStream:close	()V
     //   94: aload 6
     //   96: ifnull +8 -> 104
     //   99: aload 6
-    //   101: invokevirtual 255	java/io/DataInputStream:close	()V
+    //   101: invokevirtual 253	java/io/DataInputStream:close	()V
     //   104: dload_1
     //   105: invokestatic 187	com/tencent/mobileqq/utils/QQRecorder:b	(D)I
     //   108: istore_3
@@ -258,12 +263,12 @@ public class QQRecorder
     //   134: iaload
     //   135: istore 4
     //   137: dload_1
-    //   138: ldc2_w 257
+    //   138: ldc2_w 255
     //   141: dsub
     //   142: iload 4
     //   144: i2d
     //   145: ddiv
-    //   146: ldc2_w 259
+    //   146: ldc2_w 257
     //   149: ddiv
     //   150: dstore_1
     //   151: goto -76 -> 75
@@ -273,15 +278,15 @@ public class QQRecorder
     //   158: aload 7
     //   160: astore 6
     //   162: aload 8
-    //   164: invokevirtual 263	java/lang/Exception:printStackTrace	()V
+    //   164: invokevirtual 261	java/lang/Exception:printStackTrace	()V
     //   167: aload 6
     //   169: ifnull +8 -> 177
     //   172: aload 6
-    //   174: invokevirtual 256	java/io/FileInputStream:close	()V
+    //   174: invokevirtual 254	java/io/FileInputStream:close	()V
     //   177: aload_0
     //   178: ifnull -69 -> 109
     //   181: aload_0
-    //   182: invokevirtual 255	java/io/DataInputStream:close	()V
+    //   182: invokevirtual 253	java/io/DataInputStream:close	()V
     //   185: iconst_0
     //   186: ireturn
     //   187: astore_0
@@ -295,11 +300,11 @@ public class QQRecorder
     //   197: aload_0
     //   198: ifnull +7 -> 205
     //   201: aload_0
-    //   202: invokevirtual 256	java/io/FileInputStream:close	()V
+    //   202: invokevirtual 254	java/io/FileInputStream:close	()V
     //   205: aload 7
     //   207: ifnull +8 -> 215
     //   210: aload 7
-    //   212: invokevirtual 255	java/io/DataInputStream:close	()V
+    //   212: invokevirtual 253	java/io/DataInputStream:close	()V
     //   215: aload 6
     //   217: athrow
     //   218: astore_0
@@ -384,9 +389,14 @@ public class QQRecorder
     //   99	104	279	java/lang/Exception
   }
   
+  public static QQRecorder.RecorderParam a()
+  {
+    return new QQRecorder.RecorderParam(bdml.jdField_a_of_type_Int, 0, 0);
+  }
+  
   public static String a()
   {
-    return jdField_a_of_type_JavaLangString;
+    return jdField_b_of_type_JavaLangString;
   }
   
   public static boolean a(int paramInt)
@@ -394,12 +404,12 @@ public class QQRecorder
     if (paramInt == 0) {
       if (!AmrInputStreamWrapper.a()) {}
     }
-    while ((SilkCodecWrapper.a()) || (FileUtils.a() > 1310720.0F))
+    while ((SilkCodecWrapper.a()) || (bdhb.a() > 1310720.0F))
     {
       do
       {
         return true;
-      } while (FileUtils.a() > 327680.0F);
+      } while (bdhb.a() > 327680.0F);
       return false;
     }
     return false;
@@ -460,21 +470,21 @@ public class QQRecorder
         throw new QQRecorder.RecordInitException("mRecorder.getState is not STATE_INITIALIZED, state = " + i);
       }
       this.jdField_a_of_type_AndroidMediaAudioRecord.startRecording();
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$OnQQRecorderListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$OnQQRecorderListener.a();
+      if (this.jdField_a_of_type_Bdmd != null) {
+        this.jdField_a_of_type_Bdmd.a();
       }
       return;
     }
   }
   
-  private static void b(String paramString, boolean paramBoolean, HashMap paramHashMap)
+  private static void b(String paramString, boolean paramBoolean, HashMap<String, String> paramHashMap)
   {
     if (new Random().nextInt(1000) == 521)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQRecorder", 2, "real do report");
       }
-      StatisticCollector.a(BaseApplication.getContext()).a("", paramString, paramBoolean, 0L, 0L, paramHashMap, "");
+      azri.a(BaseApplication.getContext()).a("", paramString, paramBoolean, 0L, 0L, paramHashMap, "");
     }
   }
   
@@ -485,36 +495,39 @@ public class QQRecorder
   
   private void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqPttProcessorPttCompositeProcessor = new PttCompositeProcessor();
-    this.jdField_a_of_type_ComTencentMobileqqPttProcessorPttCompositeProcessor.a(new WechatNsWrapper(this.jdField_a_of_type_AndroidContentContext));
+    this.jdField_a_of_type_Awyt = new awyt();
+    Object localObject = new WechatNsWrapper(this.jdField_a_of_type_AndroidContentContext);
+    if (WechatNsWrapper.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Awyt.a((awyp)localObject);
+    }
     if (this.jdField_c_of_type_Boolean)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam.jdField_c_of_type_Int != 0) {
-        break label211;
+        break label219;
       }
-      this.jdField_a_of_type_ComTencentMobileqqPttProcessorPttCompositeProcessor.a(new AmrInputStreamWrapper(this.jdField_a_of_type_AndroidContentContext));
+      this.jdField_a_of_type_Awyt.a(new AmrInputStreamWrapper(this.jdField_a_of_type_AndroidContentContext));
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPttProcessorPttCompositeProcessor.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam.jdField_c_of_type_Int);
+      this.jdField_a_of_type_Awyt.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam.jdField_c_of_type_Int);
       if (QLog.isColorLevel())
       {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("mAudioType=" + this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam.jdField_c_of_type_Int + ", mSampleRate=" + this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam.jdField_a_of_type_Int + " ,mBitRate=" + this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam.jdField_b_of_type_Int + " ,Codec=" + this.jdField_a_of_type_ComTencentMobileqqPttProcessorPttCompositeProcessor).append(" ,processor = ").append(" ,time is :").append(System.currentTimeMillis());
-        QLog.d("QQRecorder", 2, localStringBuilder.toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("mAudioType=" + this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam.jdField_c_of_type_Int + ", mSampleRate=" + this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam.jdField_a_of_type_Int + " ,mBitRate=" + this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam.jdField_b_of_type_Int + " ,Codec=" + this.jdField_a_of_type_Awyt).append(" ,processor = ").append(" ,time is :").append(System.currentTimeMillis());
+        QLog.d("QQRecorder", 2, ((StringBuilder)localObject).toString());
       }
       return;
-      label211:
-      this.jdField_a_of_type_ComTencentMobileqqPttProcessorPttCompositeProcessor.a(new SilkCodecWrapper(this.jdField_a_of_type_AndroidContentContext));
+      label219:
+      this.jdField_a_of_type_Awyt.a(new SilkCodecWrapper(this.jdField_a_of_type_AndroidContentContext));
     }
   }
   
   private void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqPttProcessorPttCompositeProcessor != null)
+    if (this.jdField_a_of_type_Awyt != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPttProcessorPttCompositeProcessor.a();
-      this.jdField_a_of_type_ComTencentMobileqqPttProcessorPttCompositeProcessor = null;
+      this.jdField_a_of_type_Awyt.a();
+      this.jdField_a_of_type_Awyt = null;
     }
   }
   
@@ -525,10 +538,10 @@ public class QQRecorder
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Akfq != null) && (this.jdField_a_of_type_Akfq.a())) {}
-    synchronized (this.jdField_a_of_type_Akfq)
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecordThread != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecordThread.a())) {}
+    synchronized (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecordThread)
     {
-      this.jdField_a_of_type_Akfq.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecordThread.jdField_b_of_type_Boolean = false;
     }
   }
   
@@ -553,9 +566,14 @@ public class QQRecorder
     }
   }
   
-  public void a(QQRecorder.OnQQRecorderListener paramOnQQRecorderListener)
+  public void a(bdmd parambdmd)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$OnQQRecorderListener = paramOnQQRecorderListener;
+    this.jdField_a_of_type_Bdmd = parambdmd;
+  }
+  
+  public void a(bdmf parambdmf)
+  {
+    this.jdField_a_of_type_Bdmf = parambdmf;
   }
   
   public void a(QQRecorder.RecorderParam paramRecorderParam)
@@ -564,26 +582,18 @@ public class QQRecorder
       this.jdField_a_of_type_Boolean = true;
     }
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam = paramRecorderParam;
-    int i = AudioRecord.getMinBufferSize(this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam.jdField_a_of_type_Int, 2, 2);
-    if (this.jdField_b_of_type_Int < i) {
-      this.jdField_b_of_type_Int = i;
-    }
-  }
-  
-  public void a(QQRecorder.RecorderProcessorListener paramRecorderProcessorListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderProcessorListener = paramRecorderProcessorListener;
+    ThreadManager.excute(new QQRecorder.1(this), 16, null, false);
   }
   
   public void a(String paramString)
   {
-    a(paramString, true);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
   public void a(String paramString, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ChatActivity", 2, "thread is:" + this.jdField_a_of_type_Akfq + ",time is:" + System.currentTimeMillis());
+      QLog.d("ChatActivity", 2, "thread is:" + this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecordThread + ", time is:" + System.currentTimeMillis());
     }
     if (this.jdField_a_of_type_AndroidMediaAudioManager != null) {}
     try
@@ -605,13 +615,14 @@ public class QQRecorder
         }
       }
       if (!QLog.isColorLevel()) {
-        break label192;
+        break label199;
       }
       QLog.d("QQRecorder", 2, "start, RecordThread exist , notify ");
-      synchronized (this.jdField_a_of_type_Akfq)
+      synchronized (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecordThread)
       {
-        this.jdField_a_of_type_Akfq.jdField_b_of_type_Boolean = true;
-        this.jdField_a_of_type_Akfq.jdField_a_of_type_JavaLangString = paramString;
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecordThread.jdField_b_of_type_Boolean = true;
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecordThread.jdField_a_of_type_JavaLangString = paramString;
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecordThread.a();
         try
         {
           notifyAll();
@@ -621,20 +632,21 @@ public class QQRecorder
       }
     }
     this.jdField_c_of_type_Boolean = paramBoolean;
-    jdField_a_of_type_JavaLangString = paramString;
-    if ((this.jdField_a_of_type_Akfq == null) || (!this.jdField_a_of_type_Akfq.a()))
+    jdField_b_of_type_JavaLangString = paramString;
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecordThread == null) || (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecordThread.a()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQRecorder", 2, "QQRecorder.start, new RecordThread ");
       }
-      this.jdField_a_of_type_Akfq = new akfq(this);
-      this.jdField_a_of_type_Akfq.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_Akfq.start();
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecordThread = new QQRecorder.RecordThread(this);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecordThread.jdField_a_of_type_JavaLangString = paramString;
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecordThread.a();
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecordThread.start();
       return;
     }
   }
   
-  public void a(Throwable paramThrowable)
+  void a(Throwable paramThrowable)
   {
     int i = 7;
     try
@@ -695,23 +707,28 @@ public class QQRecorder
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Akfq != null) && (this.jdField_a_of_type_Akfq.jdField_a_of_type_Boolean);
+    return (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecordThread != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecordThread.jdField_a_of_type_Boolean);
+  }
+  
+  public void b(String paramString)
+  {
+    a(paramString, true);
   }
   
   public boolean b()
   {
-    return (this.jdField_a_of_type_Akfq == null) || (!this.jdField_a_of_type_Akfq.jdField_a_of_type_Boolean);
+    return (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecordThread == null) || (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecordThread.jdField_a_of_type_Boolean);
   }
   
   public boolean c()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ChatActivity", 2, "thread is:" + this.jdField_a_of_type_Akfq + ",time is:" + System.currentTimeMillis());
+      QLog.d("ChatActivity", 2, "thread is:" + this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecordThread + ",time is:" + System.currentTimeMillis());
     }
-    if (this.jdField_a_of_type_Akfq != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecordThread != null)
     {
-      boolean bool = this.jdField_a_of_type_Akfq.jdField_a_of_type_Boolean;
-      this.jdField_a_of_type_Akfq.jdField_a_of_type_Boolean = false;
+      boolean bool = this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecordThread.jdField_a_of_type_Boolean;
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecordThread.jdField_a_of_type_Boolean = false;
       return bool;
     }
     return false;
@@ -719,7 +736,7 @@ public class QQRecorder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQRecorder
  * JD-Core Version:    0.7.0.1
  */

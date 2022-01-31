@@ -1,10 +1,23 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.DevlockPushActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
 
-public class cmt
-  extends Handler
+class cmt
+  implements Runnable
 {
-  public cmt(DevlockPushActivity paramDevlockPushActivity) {}
+  cmt(cms paramcms) {}
+  
+  public void run()
+  {
+    Card localCard = ((FriendsManager)this.a.a.b.getManager(46)).a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
+    this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataCard = localCard;
+    if (localCard != null) {
+      this.a.a.runOnUiThread(new cmu(this));
+    }
+  }
 }
 
 

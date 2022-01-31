@@ -1,26 +1,19 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.view.View;
 
 public class aapp
-  extends WtloginObserver
+  extends aapr
 {
-  public aapp(ArkAppModuleReg.ModuleQQ paramModuleQQ, long paramLong) {}
+  public int a;
+  public View a;
   
-  public void OnGetOpenKeyWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2, ErrMsg paramErrMsg)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkApp", 2, "OnGetOpenKeyWithoutPasswd userAccount=" + paramString + ", dwSrcAppid=" + paramLong1 + ", dwDstAppid=" + paramLong2 + ", dwMainSigMap=" + paramInt1 + ", ret=" + paramInt2);
-    }
-    ArkAppCenter.a().post(new aapq(this, paramInt2, paramArrayOfByte1, paramArrayOfByte2, paramLong2, paramString));
+    return " \nlpcYby " + this.jdField_a_of_type_Int + " videoViewScaleXby " + this.jdField_a_of_type_Float + " videoViewScaleYby " + this.b + " videoViewXBy " + this.l + " videoViewYBy " + this.m + " btnTopMarginOffset " + this.j + " btnLeftMarginOffset " + this.k;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aapp
  * JD-Core Version:    0.7.0.1
  */

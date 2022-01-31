@@ -1,5 +1,6 @@
 package NS_MOBILE_PHOTO;
 
+import NS_MOBILE_FEEDS.s_arkshare;
 import NS_MOBILE_MATERIAL.MaterialItem;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
@@ -12,16 +13,21 @@ import photo_share_struct.client_attr;
 public final class Album
   extends JceStruct
 {
-  static ArrayList cache_album_white_list = new ArrayList();
-  static Map cache_busi_param;
-  static ArrayList cache_lover_events;
+  static ArrayList<Long> cache_album_white_list = new ArrayList();
+  static s_arkshare cache_ark_sharedata;
+  static Map<Integer, String> cache_busi_param;
+  static ArrayList<TimeEventOp> cache_lover_events;
   static MaterialItem cache_material;
-  static ArrayList cache_shareattrs;
-  public ArrayList album_white_list;
+  static int cache_recommend_album_type;
+  static s_arkshare cache_share_album_invate_ark = new s_arkshare();
+  static ArrayList<client_attr> cache_shareattrs;
+  static int cache_sort_type;
+  public ArrayList<Long> album_white_list;
   public String albumid = "";
   public String albumowner = "";
   public int allow_share;
   public String answer = "";
+  public s_arkshare ark_sharedata;
   public long birth_day;
   public long birth_month;
   public String birth_nickname = "";
@@ -30,17 +36,20 @@ public final class Album
   public long birth_type;
   public long birth_year;
   public String bitmap = "";
-  public Map busi_param;
+  public Map<Integer, String> busi_param;
   public String coverurl = "";
   public int createtime;
   public String desc = "";
+  public int game_album_flag;
   public long individual;
   public boolean isSubscribe = true;
+  public int is_allow_share;
+  public int is_allow_sharer_upload;
   public int is_share;
   public int lastuploadtime;
   public long love_time;
   public long love_value;
-  public ArrayList lover_events;
+  public ArrayList<TimeEventOp> lover_events;
   public MaterialItem material;
   public int moditytime;
   public String name = "";
@@ -50,9 +59,12 @@ public final class Album
   public int priv;
   public String question = "";
   public long recoded_days;
-  public int recommend_type = 0;
-  public ArrayList shareattrs;
+  public int recommend_album_type = 0;
+  public s_arkshare share_album_invate_ark;
+  public ArrayList<client_attr> shareattrs;
+  public int sort_type = 3;
   public long svrtime;
+  public int top_flag;
   public int total;
   public int type;
   public long uin;
@@ -70,11 +82,14 @@ public final class Album
     cache_lover_events = new ArrayList();
     localObject = new TimeEventOp();
     cache_lover_events.add(localObject);
+    cache_recommend_album_type = 0;
+    cache_ark_sharedata = new s_arkshare();
+    cache_sort_type = 0;
   }
   
   public Album() {}
   
-  public Album(long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString4, String paramString5, int paramInt6, ArrayList paramArrayList1, long paramLong2, Map paramMap, long paramLong3, int paramInt7, boolean paramBoolean, int paramInt8, String paramString6, String paramString7, int paramInt9, String paramString8, long paramLong4, long paramLong5, long paramLong6, long paramLong7, long paramLong8, MaterialItem paramMaterialItem, String paramString9, ArrayList paramArrayList2, int paramInt10, long paramLong9, long paramLong10, ArrayList paramArrayList3, long paramLong11, long paramLong12, int paramInt11, int paramInt12, int paramInt13)
+  public Album(long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString4, String paramString5, int paramInt6, ArrayList<Long> paramArrayList, long paramLong2, Map<Integer, String> paramMap, long paramLong3, int paramInt7, boolean paramBoolean, int paramInt8, String paramString6, String paramString7, int paramInt9, String paramString8, long paramLong4, long paramLong5, long paramLong6, long paramLong7, long paramLong8, MaterialItem paramMaterialItem, String paramString9, ArrayList<client_attr> paramArrayList1, int paramInt10, long paramLong9, long paramLong10, ArrayList<TimeEventOp> paramArrayList2, long paramLong11, long paramLong12, int paramInt11, int paramInt12, int paramInt13, s_arkshare params_arkshare1, int paramInt14, int paramInt15, int paramInt16, int paramInt17, int paramInt18, s_arkshare params_arkshare2)
   {
     this.uin = paramLong1;
     this.albumid = paramString1;
@@ -88,7 +103,7 @@ public final class Album
     this.question = paramString4;
     this.answer = paramString5;
     this.allow_share = paramInt6;
-    this.album_white_list = paramArrayList1;
+    this.album_white_list = paramArrayList;
     this.svrtime = paramLong2;
     this.busi_param = paramMap;
     this.birth_time = paramLong3;
@@ -106,16 +121,23 @@ public final class Album
     this.individual = paramLong8;
     this.material = paramMaterialItem;
     this.albumowner = paramString9;
-    this.shareattrs = paramArrayList2;
+    this.shareattrs = paramArrayList1;
     this.is_share = paramInt10;
     this.owner = paramLong9;
     this.love_time = paramLong10;
-    this.lover_events = paramArrayList3;
+    this.lover_events = paramArrayList2;
     this.love_value = paramLong11;
     this.recoded_days = paramLong12;
     this.video_num = paramInt11;
     this.photo_num = paramInt12;
-    this.recommend_type = paramInt13;
+    this.recommend_album_type = paramInt13;
+    this.ark_sharedata = params_arkshare1;
+    this.sort_type = paramInt14;
+    this.top_flag = paramInt15;
+    this.game_album_flag = paramInt16;
+    this.is_allow_sharer_upload = paramInt17;
+    this.is_allow_share = paramInt18;
+    this.share_album_invate_ark = params_arkshare2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -159,7 +181,14 @@ public final class Album
     this.recoded_days = paramJceInputStream.read(this.recoded_days, 36, false);
     this.video_num = paramJceInputStream.read(this.video_num, 37, false);
     this.photo_num = paramJceInputStream.read(this.photo_num, 38, false);
-    this.recommend_type = paramJceInputStream.read(this.recommend_type, 39, false);
+    this.recommend_album_type = paramJceInputStream.read(this.recommend_album_type, 39, false);
+    this.ark_sharedata = ((s_arkshare)paramJceInputStream.read(cache_ark_sharedata, 40, false));
+    this.sort_type = paramJceInputStream.read(this.sort_type, 41, false);
+    this.top_flag = paramJceInputStream.read(this.top_flag, 42, false);
+    this.game_album_flag = paramJceInputStream.read(this.game_album_flag, 43, false);
+    this.is_allow_sharer_upload = paramJceInputStream.read(this.is_allow_sharer_upload, 44, false);
+    this.is_allow_share = paramJceInputStream.read(this.is_allow_share, 45, false);
+    this.share_album_invate_ark = ((s_arkshare)paramJceInputStream.read(cache_share_album_invate_ark, 46, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -225,7 +254,18 @@ public final class Album
     paramJceOutputStream.write(this.recoded_days, 36);
     paramJceOutputStream.write(this.video_num, 37);
     paramJceOutputStream.write(this.photo_num, 38);
-    paramJceOutputStream.write(this.recommend_type, 39);
+    paramJceOutputStream.write(this.recommend_album_type, 39);
+    if (this.ark_sharedata != null) {
+      paramJceOutputStream.write(this.ark_sharedata, 40);
+    }
+    paramJceOutputStream.write(this.sort_type, 41);
+    paramJceOutputStream.write(this.top_flag, 42);
+    paramJceOutputStream.write(this.game_album_flag, 43);
+    paramJceOutputStream.write(this.is_allow_sharer_upload, 44);
+    paramJceOutputStream.write(this.is_allow_share, 45);
+    if (this.share_album_invate_ark != null) {
+      paramJceOutputStream.write(this.share_album_invate_ark, 46);
+    }
   }
 }
 

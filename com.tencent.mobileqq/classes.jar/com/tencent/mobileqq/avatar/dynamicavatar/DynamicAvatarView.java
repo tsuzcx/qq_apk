@@ -1,25 +1,26 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import abka;
-import abkb;
 import android.content.Context;
+import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Looper;
 import android.util.AttributeSet;
+import anug;
+import anur;
+import bdar;
+import bdbk;
+import bdbl;
+import bdbm;
+import bdcx;
+import bibv;
+import bibw;
 import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.ApngDrawable;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.VideoDrawable;
 import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.DynamicAvatar;
-import com.tencent.mobileqq.util.DynamicFaceDrawable;
-import com.tencent.mobileqq.util.FaceDrawable;
-import com.tencent.mobileqq.util.FaceDrawable.OnLoadingStateChangeListener;
-import com.tencent.mobileqq.util.FaceDrawableImpl;
-import com.tencent.mobileqq.util.NearByFaceDrawable;
 import com.tencent.mobileqq.widget.URLTextImageView;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
@@ -27,16 +28,17 @@ import mqq.util.WeakReference;
 
 public class DynamicAvatarView
   extends URLTextImageView
+  implements bibw
 {
   public int a;
-  private VideoDrawable.OnPlayRepeatListener jdField_a_of_type_ComTencentImageVideoDrawable$OnPlayRepeatListener = new abkb(this);
-  public DynamicFaceDrawable a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new abka(this);
+  public bdar a;
+  public bibv a;
+  private VideoDrawable.OnPlayRepeatListener jdField_a_of_type_ComTencentImageVideoDrawable$OnPlayRepeatListener = new anur(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new DynamicAvatarView.1(this);
   public String a;
   public boolean a;
   public String b;
   public boolean b;
-  public String c;
   
   public DynamicAvatarView(Context paramContext)
   {
@@ -53,50 +55,6 @@ public class DynamicAvatarView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void a(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString, byte paramByte, int paramInt3, boolean paramBoolean1, Drawable paramDrawable1, Drawable paramDrawable2, FaceDrawable.OnLoadingStateChangeListener paramOnLoadingStateChangeListener, int paramInt4, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, int paramInt5)
-  {
-    this.jdField_a_of_type_Int = paramInt5;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Boolean = paramBoolean3;
-    String str = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable != null) {
-      str = DynamicAvatarManager.a(this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable, false);
-    }
-    if (DynamicAvatarManager.b(paramInt1, paramInt2, paramString, paramInt4).equals(str))
-    {
-      boolean bool = this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.a();
-      this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.a(paramAppInterface, null, paramInt1, paramInt2, paramString, paramInt4, paramInt3, paramBoolean3, paramInt5, paramBoolean2, paramBoolean5, paramBoolean1, null, true);
-      if ((paramAppInterface instanceof QQAppInterface)) {}
-      for (this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new FaceDrawableImpl(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramInt4, paramBoolean1, paramDrawable1, paramDrawable2, paramOnLoadingStateChangeListener, paramBoolean4);; this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new NearByFaceDrawable(paramAppInterface, paramInt1, paramInt2, paramString, (byte)1, paramInt3, paramBoolean1, paramDrawable1, paramDrawable2, paramOnLoadingStateChangeListener, paramBoolean4))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.a(paramAppInterface, paramBoolean4, null);
-        if (!bool) {
-          setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.a());
-        }
-        return;
-      }
-    }
-    this.jdField_a_of_type_JavaLangString = "";
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.a(paramAppInterface, null, paramInt1, paramInt2, paramString, paramInt4, paramInt3, paramBoolean3, paramInt5, paramBoolean2, paramBoolean5, paramBoolean1, null, false);
-      if ((paramAppInterface instanceof QQAppInterface))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new FaceDrawableImpl(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramInt4, paramBoolean1, paramDrawable1, paramDrawable2, paramOnLoadingStateChangeListener, paramBoolean4);
-        this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.a(paramAppInterface, paramBoolean4, null);
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(this);
-      setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.a());
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new NearByFaceDrawable(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramBoolean1, paramDrawable1, paramDrawable2, paramOnLoadingStateChangeListener, paramBoolean4);
-      break;
-      this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable = new DynamicFaceDrawable(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramBoolean1, paramDrawable1, paramDrawable2, paramOnLoadingStateChangeListener, paramInt4, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5, paramInt5);
-    }
-  }
-  
   private void a(AppInterface paramAppInterface, Drawable paramDrawable, int paramInt1, int paramInt2, String paramString, boolean paramBoolean1, int paramInt3, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, int paramInt4)
   {
     setFaceDrawable(paramAppInterface, paramDrawable, paramInt1, paramInt2, paramString, paramInt3, paramBoolean3, null, paramBoolean1, paramBoolean4, paramBoolean5, paramBoolean2, paramInt4);
@@ -104,13 +62,13 @@ public class DynamicAvatarView
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable == null) || (!this.jdField_a_of_type_Boolean))
+    if ((this.jdField_a_of_type_Bdar == null) || (!this.jdField_a_of_type_Boolean))
     {
       StringBuilder localStringBuilder;
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder().append("updateImageDrawable null == mDynamicFaceDrawable: ");
-        if (this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable != null) {
+        if (this.jdField_a_of_type_Bdar != null) {
           break label69;
         }
       }
@@ -123,7 +81,7 @@ public class DynamicAvatarView
     }
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.a());
+      setImageDrawable(this.jdField_a_of_type_Bdar.a());
       return;
     }
     ThreadManager.getUIHandler().post(this.jdField_a_of_type_JavaLangRunnable);
@@ -131,23 +89,28 @@ public class DynamicAvatarView
   
   public void a(Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable != null)
+    if (this.jdField_a_of_type_Bdar != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.a() != this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.jdField_a_of_type_ComTencentImageURLDrawable) {
-        setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.a());
+      this.jdField_a_of_type_Bdar.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+      if (this.jdField_a_of_type_Bdar.a() != this.jdField_a_of_type_Bdar.jdField_a_of_type_ComTencentImageURLDrawable) {
+        setImageDrawable(this.jdField_a_of_type_Bdar.a());
       }
       return;
     }
     setImageDrawable(paramDrawable);
   }
   
+  public void a_(Canvas paramCanvas)
+  {
+    super.onDraw(paramCanvas);
+  }
+  
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable != null) {
-      setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.a());
+    if (this.jdField_a_of_type_Bdar != null) {
+      setImageDrawable(this.jdField_a_of_type_Bdar.a());
     }
   }
   
@@ -156,8 +119,8 @@ public class DynamicAvatarView
     Drawable localDrawable = getDrawable();
     if (((localDrawable instanceof URLDrawable)) && ((((URLDrawable)localDrawable).getCurrDrawable() instanceof VideoDrawable)))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable != null) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.a(this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable, true);
+      if (this.jdField_a_of_type_Bdar != null) {
+        this.jdField_a_of_type_Bdar.jdField_a_of_type_Anug.a(this.jdField_a_of_type_Bdar, true);
       }
       if (QLog.isColorLevel()) {
         QLog.e("Q.dynamicAvatar", 2, "removeOnPlayRepeatListener.01");
@@ -166,6 +129,26 @@ public class DynamicAvatarView
     super.onDetachedFromWindow();
     removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     this.jdField_a_of_type_Boolean = false;
+  }
+  
+  protected void onDraw(Canvas paramCanvas)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Bibv != null)
+      {
+        this.jdField_a_of_type_Bibv.a(paramCanvas, this);
+        return;
+      }
+      super.onDraw(paramCanvas);
+      return;
+    }
+    catch (Exception paramCanvas)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("DynamicAvatarView", 2, QLog.getStackTraceString(paramCanvas));
+      }
+    }
   }
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
@@ -181,22 +164,63 @@ public class DynamicAvatarView
     if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Boolean) && (VideoDrawable.class.isInstance(paramURLDrawable))) {
       ((VideoDrawable)paramURLDrawable).setOnPlayRepeatListener(this.jdField_a_of_type_ComTencentImageVideoDrawable$OnPlayRepeatListener);
     }
-    if ((ApngDrawable.class.isInstance(paramURLDrawable)) && ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))) {
-      VasFaceManager.a((ApngDrawable)paramURLDrawable, this);
-    }
     QLog.i("Q.dynamicAvatar", 1, "onLoadSuccessed, curDrawable " + paramURLDrawable);
+  }
+  
+  public void setFaceDrawable(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString, byte paramByte, int paramInt3, boolean paramBoolean1, Drawable paramDrawable1, Drawable paramDrawable2, bdbl parambdbl, int paramInt4, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, int paramInt5)
+  {
+    this.jdField_a_of_type_Int = paramInt5;
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Boolean = paramBoolean3;
+    String str = null;
+    if (this.jdField_a_of_type_Bdar != null) {
+      str = anug.a(this.jdField_a_of_type_Bdar, false);
+    }
+    if (anug.b(paramInt1, paramInt2, paramString, paramInt4).equals(str))
+    {
+      boolean bool = this.jdField_a_of_type_Bdar.a();
+      this.jdField_a_of_type_Bdar.a(paramAppInterface, null, paramInt1, paramInt2, paramString, paramInt4, paramInt3, paramBoolean3, paramInt5, paramBoolean2, paramBoolean5, paramBoolean1, null, true);
+      if ((paramAppInterface instanceof QQAppInterface)) {}
+      for (this.jdField_a_of_type_Bdar.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new bdbm(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramInt4, paramBoolean1, paramDrawable1, paramDrawable2, parambdbl, paramBoolean4);; this.jdField_a_of_type_Bdar.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new bdcx(paramAppInterface, paramInt1, paramInt2, paramString, (byte)1, paramInt3, paramBoolean1, paramDrawable1, paramDrawable2, parambdbl, paramBoolean4))
+      {
+        this.jdField_a_of_type_Bdar.a(paramBoolean4, null);
+        if (!bool) {
+          setImageDrawable(this.jdField_a_of_type_Bdar.a());
+        }
+        return;
+      }
+    }
+    this.jdField_a_of_type_JavaLangString = "";
+    if (this.jdField_a_of_type_Bdar != null)
+    {
+      this.jdField_a_of_type_Bdar.a(paramAppInterface, null, paramInt1, paramInt2, paramString, paramInt4, paramInt3, paramBoolean3, paramInt5, paramBoolean2, paramBoolean5, paramBoolean1, null, false);
+      if ((paramAppInterface instanceof QQAppInterface))
+      {
+        this.jdField_a_of_type_Bdar.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new bdbm(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramInt4, paramBoolean1, paramDrawable1, paramDrawable2, parambdbl, paramBoolean4);
+        this.jdField_a_of_type_Bdar.a(paramBoolean4, null);
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bdar.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(this);
+      setImageDrawable(this.jdField_a_of_type_Bdar.a());
+      return;
+      this.jdField_a_of_type_Bdar.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new bdcx(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramBoolean1, paramDrawable1, paramDrawable2, parambdbl, paramBoolean4);
+      break;
+      this.jdField_a_of_type_Bdar = new bdar(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramBoolean1, paramDrawable1, paramDrawable2, parambdbl, paramInt4, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5, paramInt5);
+    }
   }
   
   public void setFaceDrawable(AppInterface paramAppInterface, int paramInt1, String paramString, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, int paramInt3)
   {
-    Drawable localDrawable = FaceDrawable.a(paramInt1, 3);
-    a(paramAppInterface, paramInt1, 200, paramString, (byte)0, 3, false, localDrawable, localDrawable, null, paramInt2, false, paramBoolean1, paramBoolean2, false, paramInt3);
+    Drawable localDrawable = bdbk.a(paramInt1, 3);
+    setFaceDrawable(paramAppInterface, paramInt1, 200, paramString, (byte)0, 3, false, localDrawable, localDrawable, null, paramInt2, false, paramBoolean1, paramBoolean2, false, paramInt3);
   }
   
   public void setFaceDrawable(AppInterface paramAppInterface, int paramInt1, String paramString, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, int paramInt3)
   {
-    Drawable localDrawable = FaceDrawable.a(paramInt1, 3);
-    a(paramAppInterface, paramInt1, 200, paramString, (byte)0, 3, false, localDrawable, localDrawable, null, paramInt2, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramInt3);
+    Drawable localDrawable = bdbk.a(paramInt1, 3);
+    setFaceDrawable(paramAppInterface, paramInt1, 200, paramString, (byte)0, 3, false, localDrawable, localDrawable, null, paramInt2, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramInt3);
   }
   
   public void setFaceDrawable(AppInterface paramAppInterface, Drawable paramDrawable, int paramInt1, int paramInt2, String paramString, int paramInt3, boolean paramBoolean1, DynamicAvatar paramDynamicAvatar, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, int paramInt4)
@@ -205,16 +229,16 @@ public class DynamicAvatarView
     this.jdField_b_of_type_JavaLangString = paramString;
     this.jdField_b_of_type_Boolean = paramBoolean1;
     String str = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable != null) {
-      str = DynamicAvatarManager.a(this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable, false);
+    if (this.jdField_a_of_type_Bdar != null) {
+      str = anug.a(this.jdField_a_of_type_Bdar, false);
     }
-    if (DynamicAvatarManager.b(paramInt1, paramInt2, paramString, paramInt3).equals(str))
+    if (anug.b(paramInt1, paramInt2, paramString, paramInt3).equals(str))
     {
-      boolean bool = this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.a();
-      this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.a(paramAppInterface, paramDrawable, paramInt1, paramInt2, paramString, paramInt3, 3, paramBoolean1, paramInt4, paramBoolean5, paramBoolean4, paramBoolean2, paramDynamicAvatar, true);
-      this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.a(paramAppInterface, paramBoolean3, paramDynamicAvatar);
+      boolean bool = this.jdField_a_of_type_Bdar.a();
+      this.jdField_a_of_type_Bdar.a(paramAppInterface, paramDrawable, paramInt1, paramInt2, paramString, paramInt3, 3, paramBoolean1, paramInt4, paramBoolean5, paramBoolean4, paramBoolean2, paramDynamicAvatar, true);
+      this.jdField_a_of_type_Bdar.a(paramBoolean3, paramDynamicAvatar);
       if (!bool) {
-        setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.a());
+        setImageDrawable(this.jdField_a_of_type_Bdar.a());
       }
       if (QLog.isDevelopLevel()) {
         QLog.w("Q.dynamicAvatar", 2, "setFaceDrwable bitmapDrawable is: " + paramDrawable + " id: " + paramString);
@@ -222,34 +246,23 @@ public class DynamicAvatarView
       return;
     }
     this.jdField_a_of_type_JavaLangString = "";
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable == null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable = new DynamicFaceDrawable(paramAppInterface, paramDrawable, paramInt1, paramInt2, paramString, paramInt3, paramBoolean1, paramDynamicAvatar, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5, paramInt4, 0L);
+    if (this.jdField_a_of_type_Bdar == null) {
+      this.jdField_a_of_type_Bdar = new bdar(paramAppInterface, paramDrawable, paramInt1, paramInt2, paramString, paramInt3, paramBoolean1, paramDynamicAvatar, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5, paramInt4);
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(this);
-      setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.a());
+      this.jdField_a_of_type_Bdar.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(this);
+      setImageDrawable(this.jdField_a_of_type_Bdar.a());
       break;
-      this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.a(paramAppInterface, paramDrawable, paramInt1, paramInt2, paramString, paramInt3, 3, paramBoolean1, paramInt4, paramBoolean5, paramBoolean4, paramBoolean2, paramDynamicAvatar, false);
-      this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.a(paramAppInterface, paramBoolean3, paramDynamicAvatar);
+      this.jdField_a_of_type_Bdar.a(paramAppInterface, paramDrawable, paramInt1, paramInt2, paramString, paramInt3, 3, paramBoolean1, paramInt4, paramBoolean5, paramBoolean4, paramBoolean2, paramDynamicAvatar, false);
+      this.jdField_a_of_type_Bdar.a(paramBoolean3, paramDynamicAvatar);
     }
   }
   
   public void setFaceDrawable(AppInterface paramAppInterface, Drawable paramDrawable, int paramInt1, String paramString, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, int paramInt3)
   {
-    FaceDrawable.a(paramInt1, 3);
+    bdbk.a(paramInt1, 3);
     a(paramAppInterface, paramDrawable, paramInt1, 200, paramString, false, paramInt2, false, paramBoolean1, paramBoolean2, false, paramInt3);
-  }
-  
-  public void setFaceDrawable(DynamicFaceDrawable paramDynamicFaceDrawable)
-  {
-    this.jdField_a_of_type_Int = paramDynamicFaceDrawable.e;
-    this.jdField_b_of_type_JavaLangString = paramDynamicFaceDrawable.jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_Boolean = paramDynamicFaceDrawable.f;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable = paramDynamicFaceDrawable;
-    this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(this);
-    setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.a());
   }
   
   public void setImageDrawable(Drawable paramDrawable)
@@ -288,7 +301,6 @@ public class DynamicAvatarView
       }
       for (;;)
       {
-        label100:
         Object localObject2;
         boolean bool;
         if (QLog.isDevelopLevel())
@@ -299,18 +311,18 @@ public class DynamicAvatarView
           if (n >= 0) {
             localObject2 = ((String)localObject3).substring(n);
           }
-          if (this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable == null) {
-            break label459;
+          if (this.jdField_a_of_type_Bdar == null) {
+            break label418;
           }
-          localObject2 = (String)localObject2 + this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.d;
+          localObject2 = (String)localObject2 + this.jdField_a_of_type_Bdar.d;
           localObject3 = new StringBuilder().append("setImageDrawable isStatic: ");
-          if (paramDrawable == this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.jdField_a_of_type_AndroidGraphicsDrawableDrawable)
+          if (paramDrawable == this.jdField_a_of_type_Bdar.jdField_a_of_type_AndroidGraphicsDrawableDrawable)
           {
             bool = true;
             label203:
             localObject3 = ((StringBuilder)localObject3).append(bool).append(" isDynamic: ");
-            if (paramDrawable != this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.jdField_a_of_type_ComTencentImageURLDrawable) {
-              break label453;
+            if (paramDrawable != this.jdField_a_of_type_Bdar.jdField_a_of_type_ComTencentImageURLDrawable) {
+              break label412;
             }
             bool = true;
             label232:
@@ -321,23 +333,23 @@ public class DynamicAvatarView
         {
           label259:
           if (m == 0) {
-            break label529;
+            break label488;
           }
           if (j == 0) {
-            break label502;
+            break label461;
           }
         }
         for (;;)
         {
-          if (((k != 0) && (i == 0)) || ((localDrawable == null) && (this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable != null))) {
-            this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.a(this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable, false);
+          if (((k != 0) && (i == 0)) || ((localDrawable == null) && (this.jdField_a_of_type_Bdar != null))) {
+            this.jdField_a_of_type_Bdar.jdField_a_of_type_Anug.a(this.jdField_a_of_type_Bdar, false);
           }
-          if ((this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable != null) && (paramDrawable != this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.jdField_a_of_type_ComTencentImageURLDrawable) && (paramDrawable != this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.jdField_a_of_type_AndroidGraphicsDrawableDrawable))
+          if ((this.jdField_a_of_type_Bdar != null) && (paramDrawable != this.jdField_a_of_type_Bdar.jdField_a_of_type_ComTencentImageURLDrawable) && (paramDrawable != this.jdField_a_of_type_Bdar.jdField_a_of_type_AndroidGraphicsDrawableDrawable))
           {
             this.jdField_b_of_type_JavaLangString = "";
             this.jdField_a_of_type_JavaLangString = "";
             this.jdField_b_of_type_Boolean = false;
-            this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable = null;
+            this.jdField_a_of_type_Bdar = null;
           }
           super.setImageDrawable(paramDrawable);
           if (!QLog.isDevelopLevel()) {
@@ -345,33 +357,30 @@ public class DynamicAvatarView
           }
           QLog.w("Q.dynamicAvatar", 2, "setImageDrawable drawable is: " + paramDrawable + " id: " + this.jdField_b_of_type_JavaLangString);
           return;
-          if ((ApngDrawable.class.isInstance(localObject1)) && ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))) {
-            VasFaceManager.a((ApngDrawable)localObject1, this);
-          }
-          localObject1 = null;
-          i = 1;
-          j = 0;
-          break label100;
           bool = false;
           break label203;
-          label453:
+          label412:
           bool = false;
           break label232;
-          label459:
+          label418:
           QLog.d("Q.dynamicAvatar", 2, "setImageDrawable isNotDynamicDrawable. " + (String)localObject2 + " " + this.jdField_b_of_type_JavaLangString);
           break label259;
-          label502:
+          label461:
           localVideoDrawable.removeOnPlayRepeatListener(this.jdField_a_of_type_ComTencentImageVideoDrawable$OnPlayRepeatListener);
           if (QLog.isColorLevel())
           {
             QLog.e("Q.dynamicAvatar", 2, "removeOnPlayRepeatListener.02");
             continue;
-            label529:
+            label488:
             if ((j != 0) && (!this.jdField_b_of_type_Boolean)) {
               ((VideoDrawable)localObject1).setOnPlayRepeatListener(this.jdField_a_of_type_ComTencentImageVideoDrawable$OnPlayRepeatListener);
             }
           }
         }
+        localObject1 = null;
+        i = 1;
+        j = 0;
+        continue;
         j = 0;
         localObject1 = null;
         i = 0;
@@ -381,13 +390,13 @@ public class DynamicAvatarView
   
   public void setStrangerFaceDrawable(AppInterface paramAppInterface, int paramInt1, String paramString, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, int paramInt3)
   {
-    Drawable localDrawable = FaceDrawable.a(32, 3);
-    a(paramAppInterface, 32, paramInt1, paramString, (byte)1, 3, paramBoolean1, localDrawable, localDrawable, null, paramInt2, false, paramBoolean2, paramBoolean3, paramBoolean4, paramInt3);
+    Drawable localDrawable = bdbk.a(32, 3);
+    setFaceDrawable(paramAppInterface, 32, paramInt1, paramString, (byte)1, 3, paramBoolean1, localDrawable, localDrawable, null, paramInt2, false, paramBoolean2, paramBoolean3, paramBoolean4, paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView
  * JD-Core Version:    0.7.0.1
  */

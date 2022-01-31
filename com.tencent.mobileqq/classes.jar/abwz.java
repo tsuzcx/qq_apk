@@ -1,44 +1,38 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
 public class abwz
-  implements Runnable
 {
-  public abwz(HotChatFlashPicActivity paramHotChatFlashPicActivity) {}
-  
-  public void run()
+  public static abwy a(Class<? extends abwy> paramClass, abwx paramabwx)
   {
-    SharedPreferences.Editor localEditor = this.a.getSharedPreferences(HotChatFlashPicActivity.f(this.a), 4).edit();
-    if (HotChatFlashPicActivity.b(this.a))
-    {
-      localEditor.putInt("HOTCHAT_FLASHPIC_SHOT", HotChatFlashPicActivity.a(this.a));
-      if (HotChatFlashPicActivity.a(this.a) != 1) {
-        break label115;
-      }
-      ReportController.b(this.a.app, "CliOper", "", "", "0X800597A", "0X800597A", 0, 0, "", "", "", "");
+    if (paramClass == abxy.class) {
+      paramClass = new abxy();
     }
     for (;;)
     {
-      localEditor.commit();
-      return;
-      localEditor.putInt("commen_flashpic_shot", HotChatFlashPicActivity.a(this.a));
-      break;
-      label115:
-      if (HotChatFlashPicActivity.a(this.a) == 2)
-      {
-        if (!HotChatFlashPicActivity.b(this.a)) {
-          localEditor.putLong("commen_flashpic_shot_deadlineday", HotChatFlashPicActivity.b(this.a) + 518400000L);
+      if (paramClass != null) {
+        paramClass.a(paramabwx);
+      }
+      return paramClass;
+      if (paramClass == abye.class) {
+        paramClass = new abye();
+      } else {
+        try
+        {
+          abwy localabwy = (abwy)paramClass.newInstance();
+          paramClass = localabwy;
         }
-        ReportController.b(this.a.app, "CliOper", "", "", "0X800597B", "0X800597B", 0, 0, "", "", "", "");
+        catch (Exception localException)
+        {
+          QLog.e("DoraemonOpenAPI.moduleFactory", 1, "newInstance error module=" + paramClass, localException);
+          paramClass = null;
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abwz
  * JD-Core Version:    0.7.0.1
  */

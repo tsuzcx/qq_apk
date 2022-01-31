@@ -31,8 +31,8 @@ import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
 import com.tencent.mobileqq.transfile.TransFileController;
 import com.tencent.mobileqq.transfile.TransferRequest;
 import com.tencent.qphone.base.util.QLog;
-import goy;
-import gpi;
+import gkr;
+import glb;
 import java.io.File;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
@@ -44,7 +44,7 @@ public class StructMsgForImageShare
   extends AbsShareMsg
 {
   private static final int F = 288;
-  private static View.OnClickListener a = new gpi();
+  private static View.OnClickListener a = new glb();
   public int mIsSend = 1;
   public int mMsgType = 0;
   public long mUniseq = 0L;
@@ -281,7 +281,7 @@ public class StructMsgForImageShare
     paramView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
     paramView.setMinimumHeight(i * 120);
     paramView.setContentDescription(paramContext.getString(2131558458));
-    paramContext = ((Resources)localObject1).getDrawable(2130840239);
+    paramContext = ((Resources)localObject1).getDrawable(2130840241);
     localObject1 = getFirstImageElement();
     if ((localObject1 != null) && (((StructMsgItemImage)localObject1).h != null))
     {
@@ -466,11 +466,11 @@ public class StructMsgForImageShare
     this.mCompatibleText = paramObjectInput.readUTF();
   }
   
-  protected void toContentXml(goy paramgoy)
+  protected void toContentXml(gkr paramgkr)
   {
     Iterator localIterator = iterator();
     while (localIterator.hasNext()) {
-      ((AbsStructMsgElement)localIterator.next()).a(paramgoy);
+      ((AbsStructMsgElement)localIterator.next()).a(paramgkr);
     }
   }
   

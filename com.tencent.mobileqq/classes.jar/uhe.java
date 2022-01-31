@@ -1,31 +1,44 @@
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.biz.qqcircle.QCircleInitBean.QCircleActionBean;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StNotice;
+import feedcloud.FeedCloudMeta.StOperation;
+import feedcloud.FeedCloudMeta.StReply;
+import java.util.List;
+import qqcircle.QQCircleFeedBase.StBusiInfoCommentListData;
 
 public class uhe
-  implements Runnable
+  extends uhb
 {
-  public uhe(VipProfileCardDiyActivity paramVipProfileCardDiyActivity, File paramFile, String paramString) {}
-  
-  public void run()
+  public uhe(int paramInt)
   {
-    DownloadTask localDownloadTask = new DownloadTask(this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile);
-    localDownloadTask.f = "profileCardDownload";
-    localDownloadTask.e = "VIP_profilecard";
-    int i = DownloaderFactory.a(localDownloadTask, this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.app);
-    if (i == 0)
+    super(paramInt);
+  }
+  
+  public void a(tqo paramtqo)
+  {
+    QQCircleFeedBase.StBusiInfoCommentListData localStBusiInfoCommentListData = new QQCircleFeedBase.StBusiInfoCommentListData();
+    Object localObject = (FeedCloudMeta.StComment)this.a.operation.comment.get();
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.c(this.jdField_a_of_type_JavaLangString);
-      return;
+      localStBusiInfoCommentListData.comment.set((MessageMicro)localObject);
+      localObject = ((FeedCloudMeta.StComment)localObject).vecReply.get();
+      if ((localObject != null) && (((List)localObject).size() > 0))
+      {
+        int i = ((List)localObject).size();
+        localStBusiInfoCommentListData.reply.set((MessageMicro)((List)localObject).get(i - 1));
+      }
+      localObject = new QCircleInitBean.QCircleActionBean();
+      ((QCircleInitBean.QCircleActionBean)localObject).mShowInputKeyboard = false;
+      paramtqo.a(localStBusiInfoCommentListData.toByteArray());
+      paramtqo.a((QCircleInitBean.QCircleActionBean)localObject);
     }
-    QLog.e("VipProfileCardDiyActivity", 1, "download card background failed. errorCode=" + i + ", url=" + this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uhe
  * JD-Core Version:    0.7.0.1
  */

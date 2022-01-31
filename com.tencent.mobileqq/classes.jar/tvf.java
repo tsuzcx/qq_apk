@@ -1,22 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
-import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StReply;
 
-public class tvf
-  implements View.OnClickListener
+class tvf
+  implements DialogInterface.OnShowListener
 {
-  public tvf(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  tvf(tuz paramtuz, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply) {}
   
-  public void onClick(View paramView)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    this.a.onClick(this.a.a.a);
-    this.a.a(0);
+    if (tuz.a(this.jdField_a_of_type_Tuz) != null) {
+      tuz.a(this.jdField_a_of_type_Tuz).a(paramDialogInterface);
+    }
+    paramDialogInterface = uax.a().a(tuz.a(this.jdField_a_of_type_Tuz), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply);
+    tuz.a(this.jdField_a_of_type_Tuz).a(paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tvf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
+import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
 public class acrd
-  implements View.OnClickListener
+  extends awhw
 {
-  public acrd(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  public acrd(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.f();
+    if (paramBoolean1)
+    {
+      int i = ContactSyncJumpActivity.a(this.a).d();
+      if ((i == 1) || (i == 5))
+      {
+        this.a.startActivity(new Intent(this.a, PhoneFrameActivity.class));
+        this.a.finish();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acrd
  * JD-Core Version:    0.7.0.1
  */

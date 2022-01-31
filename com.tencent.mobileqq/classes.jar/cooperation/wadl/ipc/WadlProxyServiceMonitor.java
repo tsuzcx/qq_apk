@@ -1,23 +1,24 @@
 package cooperation.wadl.ipc;
 
 import android.os.Bundle;
-import angt;
-import com.tencent.open.wadl.WLog;
+import bfrz;
+import bkic;
+import bkil;
 import com.tencent.qphone.base.util.QLog;
 
 public class WadlProxyServiceMonitor
-  implements IWadlProxyServiceMonitor
+  implements bkic
 {
   private static String jdField_a_of_type_JavaLangString = "WadlProxyServiceMonitor";
   private long jdField_a_of_type_Long = 10000L;
-  private angt jdField_a_of_type_Angt;
-  private WadlProxyServiceManager jdField_a_of_type_CooperationWadlIpcWadlProxyServiceManager;
+  private bkil jdField_a_of_type_Bkil;
+  private WadlProxyServiceMonitor.MonitorWorkingThread jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor$MonitorWorkingThread;
   private volatile boolean jdField_a_of_type_Boolean;
   private long b;
   
-  public WadlProxyServiceMonitor(WadlProxyServiceManager paramWadlProxyServiceManager)
+  public WadlProxyServiceMonitor(bkil parambkil)
   {
-    this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceManager = paramWadlProxyServiceManager;
+    this.jdField_a_of_type_Bkil = parambkil;
   }
   
   private boolean c()
@@ -27,14 +28,19 @@ public class WadlProxyServiceMonitor
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      WLog.b(jdField_a_of_type_JavaLangString, "##@stopMonitoring(), isAnyTaskActive:" + this.jdField_a_of_type_Boolean);
+    try
+    {
+      if (QLog.isColorLevel()) {
+        bfrz.c(jdField_a_of_type_JavaLangString, "##@stopMonitoring(), isAnyTaskActive:" + this.jdField_a_of_type_Boolean);
+      }
+      if (this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor$MonitorWorkingThread != null) {
+        this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor$MonitorWorkingThread.jdField_a_of_type_Boolean = false;
+      }
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor$MonitorWorkingThread = null;
+      return;
     }
-    if (this.jdField_a_of_type_Angt != null) {
-      this.jdField_a_of_type_Angt.jdField_a_of_type_Boolean = false;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Angt = null;
+    finally {}
   }
   
   public void a(Bundle paramBundle)
@@ -46,7 +52,7 @@ public class WadlProxyServiceMonitor
       return;
       this.jdField_a_of_type_Boolean = paramBundle.getBoolean("WADL_UNFINISHED_RUNING_TASK_FLAG");
     } while (!QLog.isColorLevel());
-    WLog.b(jdField_a_of_type_JavaLangString, "##@onReportFromDownloadTask(), isAnyTaskActive:" + this.jdField_a_of_type_Boolean);
+    bfrz.c(jdField_a_of_type_JavaLangString, "##@onReportFromDownloadTask(), isAnyTaskActive:" + this.jdField_a_of_type_Boolean);
   }
   
   public boolean a()
@@ -56,41 +62,45 @@ public class WadlProxyServiceMonitor
   
   public void b()
   {
-    try
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        WLog.b(jdField_a_of_type_JavaLangString, "##@startMonitoring()");
-      }
-      if (b())
+      try
       {
         if (QLog.isColorLevel()) {
-          WLog.b(jdField_a_of_type_JavaLangString, "##@startMonitoring():Monitor is running");
+          bfrz.c(jdField_a_of_type_JavaLangString, "##@startMonitoring()");
+        }
+        if (!b()) {
+          continue;
+        }
+        if (QLog.isColorLevel()) {
+          bfrz.c(jdField_a_of_type_JavaLangString, "##@startMonitoring():Monitor is running");
         }
       }
-      else
+      catch (Throwable localThrowable)
       {
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Angt = new angt(this, null);
-        this.jdField_a_of_type_Angt.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Angt.setName("WadlProxyService.Monitor.Thread");
-        this.jdField_a_of_type_Angt.start();
-        return;
+        continue;
       }
+      finally {}
+      return;
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor$MonitorWorkingThread = new WadlProxyServiceMonitor.MonitorWorkingThread(this, null);
+      this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor$MonitorWorkingThread.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor$MonitorWorkingThread.setName("WadlProxyService.Monitor.Thread");
+      this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor$MonitorWorkingThread.start();
     }
-    catch (Exception localException) {}
   }
   
   public boolean b()
   {
-    if (this.jdField_a_of_type_Angt != null) {
-      return this.jdField_a_of_type_Angt.jdField_a_of_type_Boolean;
+    if (this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor$MonitorWorkingThread != null) {
+      return this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor$MonitorWorkingThread.jdField_a_of_type_Boolean;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.wadl.ipc.WadlProxyServiceMonitor
  * JD-Core Version:    0.7.0.1
  */

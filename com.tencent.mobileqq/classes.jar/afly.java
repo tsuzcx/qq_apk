@@ -1,24 +1,21 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.model.PicFeedUploadInfo;
-import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader.UploadListener;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import com.tencent.mobileqq.data.MessageForFile;
 
-public final class afly
-  implements ImageFeedsUploader.UploadListener
+class afly
+  implements arrh
 {
-  public void a(PicFeedUploadInfo paramPicFeedUploadInfo) {}
+  afly(aflw paramaflw, MessageForFile paramMessageForFile, Context paramContext) {}
   
-  public void a(PicFeedUploadInfo paramPicFeedUploadInfo, VideoFeedsUploader.UploadResult paramUploadResult)
+  public void a()
   {
-    ThreadManager.getUIHandler().post(new aflz(this, paramPicFeedUploadInfo, paramUploadResult));
+    arrr.a(this.jdField_a_of_type_Aflw.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
   }
   
-  public void b(PicFeedUploadInfo paramPicFeedUploadInfo) {}
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afly
  * JD-Core Version:    0.7.0.1
  */

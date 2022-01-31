@@ -11,12 +11,12 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import msf.msgcomm.msg_comm.Msg;
 
 public final class subcmd0x51b$GetSingleRoamMsgRsp
-  extends MessageMicro
+  extends MessageMicro<GetSingleRoamMsgRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_error_msg = PBField.initBytes(ByteStringMicro.copyFromUtf8(""));
   public final PBEnumField ret_code = PBField.initEnum(0);
-  public final PBRepeatMessageField rpt_msg_msg_list = PBField.initRepeatMessage(msg_comm.Msg.class);
+  public final PBRepeatMessageField<msg_comm.Msg> rpt_msg_msg_list = PBField.initRepeatMessage(msg_comm.Msg.class);
   public final PBUInt64Field uint64_puin = PBField.initUInt64(0L);
   
   static
@@ -27,7 +27,7 @@ public final class subcmd0x51b$GetSingleRoamMsgRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.cmd0x6ff.subcmd0x51b.GetSingleRoamMsgRsp
  * JD-Core Version:    0.7.0.1
  */

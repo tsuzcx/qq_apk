@@ -1,14 +1,12 @@
-import com.tencent.mobileqq.vashealth.SSOHttpUtils;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.List;
 
-class akkc
-  implements Runnable
+public abstract interface akkc
+  extends akkb
 {
-  akkc(akkb paramakkb, int paramInt, String paramString) {}
+  public abstract void a(String paramString);
   
-  public void run()
-  {
-    SSOHttpUtils.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a(List<MayKnowRecommend> paramList);
 }
 
 

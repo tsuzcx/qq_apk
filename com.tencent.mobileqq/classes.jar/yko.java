@@ -1,72 +1,78 @@
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_COMM.COMM.StCommonExt;
+import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.utils.ApolloListenerManager;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.Packet;
 
 public class yko
-  extends DownloadListener
+  extends ykm
 {
-  public yko(ApolloManager paramApolloManager) {}
-  
-  public void onDone(DownloadTask paramDownloadTask)
+  public void a(Intent paramIntent, Bundle paramBundle, byte[] paramArrayOfByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloManager", 2, "download panel json done httpCode: " + paramDownloadTask.e + ", status: " + paramDownloadTask.a());
-    }
+    paramBundle.putByteArray("key_data", paramArrayOfByte);
+    notifyObserver(paramIntent, this.a, true, paramBundle, null);
   }
   
-  public void onDoneFile(DownloadTask paramDownloadTask)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    int i = 0;
-    if (paramDownloadTask == null) {}
-    Bundle localBundle;
-    do
-    {
-      return;
-      localBundle = paramDownloadTask.a();
-    } while (localBundle == null);
-    int j = localBundle.getInt(paramDownloadTask.c);
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloManager", 2, "[onDoneFile], taskType:" + j + ",httpCode: " + paramDownloadTask.e + ", status: " + paramDownloadTask.a() + ",task.currUrl:" + paramDownloadTask.c);
-    }
-    if (1 == j) {}
-    for (;;)
-    {
-      try
+    Object localObject3 = null;
+    Object localObject1 = null;
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("key_ext");
+    if (arrayOfByte != null) {}
+    for (Object localObject2 = new COMM.StCommonExt();; localObject2 = null) {
+      for (;;)
       {
-        super.onDone(paramDownloadTask);
-        if (paramDownloadTask.a() != 3) {
-          this.a.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloListenerManager.a(Boolean.valueOf(false));
+        try
+        {
+          ((COMM.StCommonExt)localObject2).mergeFrom(arrayOfByte);
+          i = paramIntent.getIntExtra("key_index", -1);
+          arrayOfByte = paramIntent.getByteArrayExtra("key_request_feed_bytes");
+          if (arrayOfByte == null) {}
         }
-        this.a.b();
-        VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "json_download_success", i, 0, new String[0]);
-        return;
-      }
-      catch (Exception paramDownloadTask)
-      {
-        QLog.e("ApolloManager", 1, "read apollo panel json content fail", paramDownloadTask);
-        return;
-      }
-      if (2 == j)
-      {
-        if (paramDownloadTask.a() != 3) {
-          this.a.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloListenerManager.a(Boolean.valueOf(false));
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
+        {
+          try
+          {
+            localObject1 = new CertifiedAccountMeta.StFeed();
+          }
+          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
+          {
+            int i;
+            localObject1 = localObject3;
+          }
+          try
+          {
+            ((CertifiedAccountMeta.StFeed)localObject1).mergeFrom(arrayOfByte);
+            localObject2 = new ykn((COMM.StCommonExt)localObject2, (CertifiedAccountMeta.StFeed)localObject1).a(paramIntent, i, a());
+            localObject1 = localObject2;
+            if (localObject2 == null) {
+              localObject1 = new byte[4];
+            }
+            paramPacket.setSSOCommand("CertifiedAccountSvc.certified_account_write.ModifyFeed");
+            paramPacket.putSendData(bdpd.a((byte[])localObject1));
+            paramPacket.setTimeout(paramIntent.getLongExtra("key_timeout", 30000L));
+            super.onSend(paramIntent, paramPacket);
+            return;
+          }
+          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException3)
+          {
+            break label166;
+          }
+          localInvalidProtocolBufferMicroException1 = localInvalidProtocolBufferMicroException1;
+          QLog.e("CertifiedAccountModifyFeedServlet", 2, QLog.getStackTraceString(localInvalidProtocolBufferMicroException1));
+          continue;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloManager", 2, "try to parse game json");
-        }
-        this.a.c();
-        i = 1;
+        label166:
+        QLog.e("CertifiedAccountModifyFeedServlet", 2, QLog.getStackTraceString(localInvalidProtocolBufferMicroException2));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yko
  * JD-Core Version:    0.7.0.1
  */

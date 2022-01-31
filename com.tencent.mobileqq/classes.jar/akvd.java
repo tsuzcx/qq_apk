@@ -1,63 +1,52 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageView;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
-import com.tencent.mobileqq.widget.NewStyleDropdownView.DropdownCallback;
+import android.os.Build.VERSION;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReq;
+import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReqComm;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
+import org.json.JSONObject;
 
 public class akvd
-  implements View.OnClickListener
 {
-  public akvd(NewStyleDropdownView paramNewStyleDropdownView) {}
-  
-  public void onClick(View paramView)
+  public static void a(AppInterface paramAppInterface, int paramInt, String paramString, akve paramakve)
   {
-    this.a.jdField_a_of_type_Akvg.clearFocus();
-    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_Akvg.getWindowToken(), 0);
-    Drawable localDrawable;
-    StringBuilder localStringBuilder;
-    if ((this.a.jdField_a_of_type_Akvg.getAdapter() != null) && (this.a.jdField_a_of_type_Akvg.getAdapter().getCount() > 0))
-    {
-      localDrawable = ((ImageView)paramView).getDrawable();
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append("arrow clicked, drawable is down=");
-        if (localDrawable != this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) {
-          break label248;
-        }
-      }
-    }
-    label248:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("NewStyleDropdownView", 2, bool + ", isLastDropDown=" + this.a.jdField_a_of_type_Boolean);
-      if ((localDrawable != this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) || (this.a.jdField_a_of_type_Boolean)) {
-        break;
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback.c(false);
-      }
-      NewStyleDropdownView.a(this.a).postDelayed(new akve(this, paramView), 500L);
-      paramView = paramView.getContext();
-      if ((paramView != null) && ((paramView instanceof LoginActivity))) {
-        ReportController.a(((LoginActivity)paramView).app, "dc00898", "", "", "0X8007367", "0X8007367", 0, 0, "", "", "", "");
-      }
+    if (paramAppInterface == null) {
       return;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback.c(true);
+    try
+    {
+      Object localObject = new WebSSOAgent.UniSsoServerReqComm();
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.3.5");
+      WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
+      localUniSsoServerReq.comm.set((MessageMicro)localObject);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("cmd", "apollo_aio_game.get_playing_usernum");
+      ((JSONObject)localObject).put("from", paramString);
+      ((JSONObject)localObject).put("gameId", paramInt);
+      localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
+      paramString = new NewIntent(BaseApplicationImpl.getContext(), aksh.class);
+      paramString.putExtra("timeout", 10000L);
+      paramString.putExtra("cmd", "apollo_aio_game.get_playing_usernum");
+      paramString.putExtra("data", localUniSsoServerReq.toByteArray());
+      paramString.setObserver(paramakve);
+      paramAppInterface.startServlet(paramString);
+      return;
     }
-    this.a.jdField_a_of_type_Akvg.dismissDropDown();
+    catch (Exception paramAppInterface)
+    {
+      QLog.e("cmgame_process._CmGameSSOReq", 1, "[queryUserAudioStatus] failed ", paramAppInterface);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akvd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,27 @@
-import com.tencent.mobileqq.apollo.ApolloResponseManager;
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
+import java.lang.ref.WeakReference;
 
-public class yml
-  implements Comparator
+class yml
+  extends alzr
 {
-  public yml(ApolloResponseManager paramApolloResponseManager) {}
+  WeakReference<ymm> a;
   
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public yml(ymm paramymm)
   {
-    return this.a.a(paramApolloActionData2) - this.a.a(paramApolloActionData1);
+    this.a = new WeakReference(paramymm);
+  }
+  
+  public void b(boolean paramBoolean, String paramString)
+  {
+    super.a(paramBoolean, paramString);
+    ymm localymm = (ymm)this.a.get();
+    if (localymm != null) {
+      localymm.a(paramBoolean, paramString, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yml
  * JD-Core Version:    0.7.0.1
  */

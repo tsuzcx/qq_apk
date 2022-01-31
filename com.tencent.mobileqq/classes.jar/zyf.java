@@ -1,38 +1,39 @@
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewPresenter;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.device.msg.data.MessageForDevShortVideo;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-public class zyf
-  implements Runnable
+public final class zyf
+  implements Parcelable.Creator<MessageForShortVideo>
 {
-  public zyf(ARVideoRecordUIControllerImpl paramARVideoRecordUIControllerImpl) {}
-  
-  public void run()
+  public MessageForDevShortVideo a(Parcel paramParcel)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("showVideoRecordButton inner run +");
-      if (ARVideoRecordUIControllerImpl.a(this.a) == null) {
-        break label81;
-      }
-    }
-    label81:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.i("ARVideoRecordUIControllerImpl", 2, bool);
-      if (ARVideoRecordUIControllerImpl.a(this.a) != null)
-      {
-        ARVideoRecordUIControllerImpl.a(this.a).a();
-        ARVideoRecordUIControllerImpl.a(this.a).a(0);
-      }
-      return;
-    }
+    MessageForDevShortVideo localMessageForDevShortVideo = new MessageForDevShortVideo();
+    localMessageForDevShortVideo.uuid = paramParcel.readString();
+    localMessageForDevShortVideo.md5 = paramParcel.readString();
+    localMessageForDevShortVideo.videoFileName = paramParcel.readString();
+    localMessageForDevShortVideo.videoFileSize = paramParcel.readInt();
+    localMessageForDevShortVideo.videoFileFormat = paramParcel.readInt();
+    localMessageForDevShortVideo.videoFileTime = paramParcel.readInt();
+    localMessageForDevShortVideo.thumbWidth = paramParcel.readInt();
+    localMessageForDevShortVideo.thumbHeight = paramParcel.readInt();
+    localMessageForDevShortVideo.videoFileStatus = paramParcel.readInt();
+    localMessageForDevShortVideo.videoFileProgress = paramParcel.readInt();
+    localMessageForDevShortVideo.fileType = paramParcel.readInt();
+    localMessageForDevShortVideo.thumbMD5 = paramParcel.readString();
+    localMessageForDevShortVideo.fileSource = paramParcel.readString();
+    localMessageForDevShortVideo.lastModified = paramParcel.readLong();
+    return localMessageForDevShortVideo;
+  }
+  
+  public MessageForDevShortVideo[] a(int paramInt)
+  {
+    return new MessageForDevShortVideo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     zyf
  * JD-Core Version:    0.7.0.1
  */

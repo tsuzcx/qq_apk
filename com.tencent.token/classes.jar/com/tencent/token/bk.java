@@ -1,11 +1,10 @@
 package com.tencent.token;
 
-import java.util.concurrent.Callable;
-
-final class bk
-  implements Callable
+public abstract interface bk
 {
-  bk(fs paramfs) {}
+  public abstract bh a(String paramString);
+  
+  public abstract void a(bh parambh);
 }
 
 

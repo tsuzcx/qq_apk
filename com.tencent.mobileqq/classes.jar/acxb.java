@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import android.widget.ImageView;
 
-public class acxb
-  implements Runnable
+class acxb
 {
-  public acxb(OnlineFileSessionCenter paramOnlineFileSessionCenter, int paramInt) {}
+  acwz jdField_a_of_type_Acwz;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  String jdField_a_of_type_JavaLangString;
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionCenter.a(this.jdField_a_of_type_Int);
-  }
+  acxb(acxa paramacxa) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acxb
  * JD-Core Version:    0.7.0.1
  */

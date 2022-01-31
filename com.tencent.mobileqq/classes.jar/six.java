@@ -1,33 +1,55 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout.OnDragModeChangedListener;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class six
-  implements DragFrameLayout.OnDragModeChangedListener
+class six
+  implements sjc
 {
-  private final int jdField_a_of_type_Int = -2147483648;
+  six(siw paramsiw) {}
   
-  private six(Conversation paramConversation) {}
-  
-  public void a(int paramInt, List paramList) {}
-  
-  public void a(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout)
+  public void a(boolean paramBoolean, String paramString)
   {
-    if (paramDragFrameLayout.a() == -1)
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityConversation.b.sendEmptyMessage(10);
-      FrameHelperActivity.b(true);
+      if (siw.a(this.a) != null)
+      {
+        paramString = (Animation)siw.a(this.a).getTag(2131369027);
+        paramString.setAnimationListener(new siy(this));
+        siw.a(this.a).startAnimation(paramString);
+      }
       return;
     }
-    FrameHelperActivity.b(false);
+    QQToast.a(this.a.a, 1, 2131718894, 0).a();
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  {
+    if (paramBoolean)
+    {
+      siw.a(this.a).a(siw.a(this.a), siw.a(this.a, paramInt), this.a.a, "", "", paramString2);
+      return;
+    }
+    QQToast.a(this.a.a, 1, 2131718898, 0).a();
+  }
+  
+  public void b(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean)
+    {
+      if (siw.a(this.a) != null)
+      {
+        paramString = (Animation)siw.a(this.a).getTag(2131369027);
+        paramString.setAnimationListener(new siz(this));
+        siw.a(this.a).startAnimation(paramString);
+      }
+      return;
+    }
+    QQToast.a(this.a.a, 1, 2131718901, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     six
  * JD-Core Version:    0.7.0.1
  */

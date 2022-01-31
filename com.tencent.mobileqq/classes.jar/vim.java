@@ -1,35 +1,41 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
-import com.tencent.util.LRULinkedHashMap;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Map;
 
 public class vim
-  implements Runnable
+  extends vkh
 {
-  public vim(TextItemBuilder paramTextItemBuilder, CharSequence paramCharSequence, long paramLong1, long paramLong2) {}
+  StoryVideoItem a;
+  public web a;
   
-  public void run()
+  public vim(StoryVideoItem paramStoryVideoItem)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.a(this.jdField_a_of_type_JavaLangCharSequence, this.jdField_a_of_type_Long);
-    if (localObject1 != null) {}
-    synchronized (TextItemBuilder.a)
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
     {
-      TextItemBuilder.a.put(Long.valueOf(this.b), localObject1);
-      ??? = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.b.obtainMessage();
-      ((Message)???).what = 1;
-      ((Message)???).obj = localObject1;
-      localObject1 = new Bundle();
-      ((Bundle)localObject1).putLong("msg_id", this.b);
-      ((Message)???).setData((Bundle)localObject1);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.b.sendMessage((Message)???);
+      wxe.c(this.b, "Error: ", new IllegalStateException("这里VideoItem为空, 临时保护, 可能存在逻辑异常"));
+      b(false);
       return;
     }
+    uxk localuxk = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getPollLayout();
+    if (localuxk != null)
+    {
+      this.jdField_a_of_type_Web = new wdy();
+      this.jdField_a_of_type_Web.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl, 0, 0, new vin(this, localuxk));
+      return;
+    }
+    a("result", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
+    b(true);
   }
+  
+  protected void a(Map<String, Object> paramMap) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vim
  * JD-Core Version:    0.7.0.1
  */

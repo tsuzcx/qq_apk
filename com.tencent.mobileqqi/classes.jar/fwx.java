@@ -1,15 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.LocalFileCategoryBrowserActivity;
+import android.os.HandlerThread;
+import android.os.Looper;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadNfn;
+import com.tencent.qphone.base.util.QLog;
 
 public class fwx
-  implements View.OnClickListener
+  implements Runnable
 {
-  public fwx(LocalFileCategoryBrowserActivity paramLocalFileCategoryBrowserActivity) {}
+  public fwx(UniformDownloadNfn paramUniformDownloadNfn) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    LocalFileCategoryBrowserActivity.a(this.a, paramView);
+    this.a.jdField_a_of_type_AndroidOsHandlerThread.getLooper().quit();
+    this.a.jdField_a_of_type_AndroidOsHandlerThread = null;
+    this.a.jdField_a_of_type_AndroidOsHandler = null;
+    QLog.i(UniformDownloadNfn.jdField_a_of_type_JavaLangString, 1, "[UniformDL] >>>stop thread:D_NFThread...");
   }
 }
 

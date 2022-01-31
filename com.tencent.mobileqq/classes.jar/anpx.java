@@ -1,43 +1,35 @@
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import dov.com.qq.im.capture.util.QIMProviderViewBuilder;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
 
-class anpx
-  implements Runnable
+public class anpx
+  implements CompoundButton.OnCheckedChangeListener
 {
-  anpx(anpw paramanpw, int paramInt, Drawable[] paramArrayOfDrawable) {}
+  public anpx(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_Int)
+    if (paramBoolean)
     {
-      if (QIMProviderContainerView.a(this.jdField_a_of_type_Anpw.a).a(i))
-      {
-        Object localObject = (ImageView)this.jdField_a_of_type_Anpw.a.a.getChildAt(i);
-        ((Integer)((ImageView)localObject).getTag()).intValue();
-        if (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[i] != null)
-        {
-          ((ImageView)localObject).setImageDrawable(this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[i]);
-          if ((((ImageView)localObject).getDrawable() instanceof AnimationDrawable))
-          {
-            localObject = (AnimationDrawable)((ImageView)localObject).getDrawable();
-            ((AnimationDrawable)localObject).stop();
-            ((AnimationDrawable)localObject).setOneShot(true);
-            ((AnimationDrawable)localObject).start();
-          }
-        }
+      AboutActivity.a(5);
+      if (!this.a.b().equals("close")) {
+        this.a.b();
       }
-      i += 1;
+      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ArkDebug switch is opened and IDE debug is also open ,state=%s", new Object[] { AboutActivity.b() }));
+      ArkAppCenter.a(true);
+      return;
     }
+    AboutActivity.a(0);
+    this.a.c();
+    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ArkDebug switch is closed and IDE debug is also closed,state=%s", new Object[] { AboutActivity.b() }));
+    ArkAppCenter.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpx
  * JD-Core Version:    0.7.0.1
  */

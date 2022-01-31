@@ -1,73 +1,49 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.StoryProtocolObserver;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.DeleteStoryVideoEvent;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupVideoDelete;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
-import com.tencent.biz.qqstory.storyHome.model.FeedVideoManager;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
+import android.os.AsyncTask;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.util.WeakReference;
 
-class nkw
-  extends ProtoUtils.StoryProtocolObserver
+public class nkw
 {
-  nkw(nkv paramnkv) {}
+  adbt jdField_a_of_type_Adbt;
+  WeakReference<AccountDetailActivity> jdField_a_of_type_MqqUtilWeakReference;
+  nky jdField_a_of_type_Nky;
   
-  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public nkw(QQAppInterface paramQQAppInterface, AccountDetailActivity paramAccountDetailActivity)
   {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.r();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.player.NewFriendsPlayMode", 2, "troop story delete result, code=" + paramInt);
+    this.jdField_a_of_type_Adbt = new adbt(paramQQAppInterface);
+    this.jdField_a_of_type_Adbt.b = paramAccountDetailActivity.d;
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAccountDetailActivity);
+    this.jdField_a_of_type_Nky = new nky(paramAccountDetailActivity);
+  }
+  
+  public void a()
+  {
+    adbx localadbx = new adbx();
+    localadbx.d = this.jdField_a_of_type_Adbt.b;
+    localadbx.a = null;
+    if (this.jdField_a_of_type_MqqUtilWeakReference.get() == null) {
+      return;
     }
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    label307:
-    for (;;)
+    this.jdField_a_of_type_Adbt.a((BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get(), localadbx);
+    this.jdField_a_of_type_Adbt.a(this.jdField_a_of_type_Nky);
+    this.jdField_a_of_type_Adbt.b((BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get());
+    new nkx(this, localadbx).execute(new Void[0]);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_MqqUtilWeakReference.get() != null)
     {
-      try
-      {
-        paramBundle = this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.g;
-        if (paramBundle != null) {
-          break label307;
-        }
-        Object localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a(this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.b);
-        if (localObject == null) {
-          break label307;
-        }
-        paramBundle = ((VideoListFeedItem)localObject).feedId;
-        localObject = new qqstory_group.RspGroupVideoDelete();
-        ((qqstory_group.RspGroupVideoDelete)localObject).mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = (qqstory_struct.ErrorInfo)((qqstory_group.RspGroupVideoDelete)localObject).result.get();
-        this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a.a(paramBundle, this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.p, this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-        localObject = new DeleteStoryVideoEvent(new ErrorMessage(), this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, false);
-        ((DeleteStoryVideoEvent)localObject).jdField_b_of_type_JavaLangString = this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
-        ((DeleteStoryVideoEvent)localObject).d = paramBundle;
-        ((DeleteStoryVideoEvent)localObject).jdField_b_of_type_Boolean = false;
-        ((DeleteStoryVideoEvent)localObject).c = this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a();
-        ((DeleteStoryVideoEvent)localObject).a = this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoIndex;
-        if (((DeleteStoryVideoEvent)localObject).a == 0L) {
-          ((DeleteStoryVideoEvent)localObject).a = this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime;
-        }
-        Bosses.get().scheduleJobDelayed(new nkx(this, (DeleteStoryVideoEvent)localObject), 400);
-        return paramArrayOfByte;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.player.NewFriendsPlayMode", 2, "parse RspGroupVideoDelete error", paramArrayOfByte);
-        }
-      }
-      return null;
+      this.jdField_a_of_type_Adbt.a(null);
+      this.jdField_a_of_type_Adbt.a((BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nkw
  * JD-Core Version:    0.7.0.1
  */

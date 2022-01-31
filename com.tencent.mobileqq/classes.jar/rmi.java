@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryInfo;
 
-class rmi
-  implements Runnable
+public final class rmi
+  implements Parcelable.Creator<DiscoveryInfo>
 {
-  rmi(rmh paramrmh) {}
-  
-  public void run()
+  public DiscoveryInfo a(Parcel paramParcel)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.springBackOverScrollHeaderView();
-    }
+    return new DiscoveryInfo(paramParcel);
+  }
+  
+  public DiscoveryInfo[] a(int paramInt)
+  {
+    return new DiscoveryInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rmi
  * JD-Core Version:    0.7.0.1
  */

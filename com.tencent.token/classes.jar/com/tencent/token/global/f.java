@@ -1,49 +1,138 @@
 package com.tencent.token.global;
 
-import com.tencent.token.ah;
-import com.tencent.token.utils.s;
+import android.content.Context;
+import android.content.res.Resources;
 
-final class f
-  extends Thread
+public class f
 {
-  f(RqdApplication paramRqdApplication) {}
+  public int a;
+  public String b;
+  public String c;
+  public Object d;
   
-  public final void run()
+  public f()
   {
+    a();
+  }
+  
+  public f(int paramInt)
+  {
+    this();
+    b(paramInt);
+  }
+  
+  public f(int paramInt, String paramString1, String paramString2)
+  {
+    this();
+    a(paramInt, paramString1, paramString2);
+  }
+  
+  public static void a(Resources paramResources, f paramf)
+  {
+    if ((paramf.c != null) && (paramf.c.length() > 0)) {
+      return;
+    }
+    String str1 = null;
+    switch (paramf.a)
+    {
+    }
     for (;;)
     {
-      try
-      {
-        if (!ah.a().d()) {
-          break label74;
+      String str2 = str1;
+      if (str1 == null) {
+        str2 = paramResources.getString(2131230963) + "(" + paramf.a + ")";
+      }
+      paramf.c = str2;
+      return;
+      str1 = paramResources.getString(2131230960) + "(" + paramf.a + ")";
+      continue;
+      str1 = paramResources.getString(2131230963) + "(" + paramf.a + ")";
+      continue;
+      str1 = paramResources.getString(2131230962);
+      continue;
+      str1 = paramResources.getString(2131230961) + "(" + paramf.a + ")";
+    }
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    }
+    return true;
+  }
+  
+  public void a()
+  {
+    this.a = -1;
+    this.b = "";
+    this.c = "";
+    this.d = null;
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    a(paramInt, paramString, null);
+  }
+  
+  public void a(int paramInt, String paramString1, String paramString2)
+  {
+    this.a = paramInt;
+    if (paramString1 != null)
+    {
+      this.b = paramString1;
+      if (paramString2 == null) {
+        break label106;
+      }
+      paramString1 = paramString2;
+      label20:
+      this.c = paramString1;
+      if ((this.c.indexOf("(") == -1) && (this.c.indexOf(")") == -1)) {
+        if (paramString2 == null) {
+          break label112;
         }
-        if (RqdApplication.d < 120)
-        {
-          RqdApplication.c = 1;
-          Thread.sleep(120000L);
-          RqdApplication.d = 120;
-          continue;
-        }
-        Thread.sleep(1000L);
-      }
-      catch (Exception localException)
-      {
-        e.b(localException.toString());
-        localException.printStackTrace();
-        return;
-      }
-      if (s.d())
-      {
-        RqdApplication.c = 1;
-      }
-      else
-      {
-        RqdApplication.c = 0;
-        continue;
-        label74:
-        Thread.sleep(120000L);
       }
     }
+    label106:
+    label112:
+    for (paramString1 = paramString2 + "(" + paramInt + ")";; paramString1 = "")
+    {
+      this.c = paramString1;
+      a(RqdApplication.l().getResources(), this);
+      return;
+      paramString1 = "";
+      break;
+      paramString1 = "";
+      break label20;
+    }
+  }
+  
+  public void a(f paramf)
+  {
+    a(paramf.a, paramf.b, paramf.c);
+  }
+  
+  public void a(String paramString)
+  {
+    c();
+    this.c = paramString;
+  }
+  
+  public void b(int paramInt)
+  {
+    a(paramInt, null, null);
+  }
+  
+  public boolean b()
+  {
+    return this.a == 0;
+  }
+  
+  public void c()
+  {
+    this.a = 0;
   }
 }
 

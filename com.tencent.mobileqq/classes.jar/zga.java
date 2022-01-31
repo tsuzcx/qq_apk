@@ -1,67 +1,61 @@
-import android.os.Process;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.MemoryManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.predownload.schedule.PreDownloadScheduler;
-import mqq.app.AppRuntime;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
-public class zga
-  extends zeq
+class zga
+  implements bfah
 {
-  protected void a()
-  {
-    super.a();
-    if (this.c >= zeo.a().a(this.a.jdField_a_of_type_Array2dOfLong, this.a.jdField_a_of_type_Int, this.a.b, MemoryManager.a(Process.myPid())) / 12000L) {
-      this.a.a(7, null);
-    }
-    Object localObject;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (this.d != 1L);
-        MemoryManager.a().a("LITE_GUARD");
-        localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      } while (localObject == null);
-      localObject = (PreDownloadScheduler)((QQAppInterface)localObject).getManager(232);
-    } while (localObject == null);
-    ((PreDownloadScheduler)localObject).a(true);
-  }
+  zga(zfy paramzfy, String paramString) {}
   
-  protected void a(String paramString)
+  public void a(BaseResp paramBaseResp)
   {
-    GuardManager localGuardManager = this.a;
-    if ("com.tencent.mobileqq".equals(paramString)) {}
-    for (int i = 2;; i = 3)
+    if ((this.jdField_a_of_type_Zfy.o == null) || (!this.jdField_a_of_type_Zfy.o.equals(paramBaseResp.transaction))) {}
+    int i;
+    String str1;
+    String str2;
+    String str3;
+    for (;;)
     {
-      localGuardManager.a(i, paramString);
       return;
+      BaseApplicationImpl.getContext();
+      switch (paramBaseResp.errCode)
+      {
+      case -2: 
+      case -1: 
+      default: 
+        ybk.a(1, 2131720031);
+        return;
+      }
+      ybk.a(2, 2131720050);
+      if ((this.jdField_a_of_type_Zfy.a instanceof begc))
+      {
+        paramBaseResp = ((begc)this.jdField_a_of_type_Zfy.a).b();
+        if (this.jdField_a_of_type_Zfy.e == 1) {}
+        for (i = 1009; paramBaseResp != null; i = 1004)
+        {
+          str1 = paramBaseResp.j;
+          str2 = paramBaseResp.i;
+          str3 = AccountDetailActivity.a(paramBaseResp.g);
+          String str4 = paramBaseResp.k;
+          if ((str4 == null) || ("".equals(str4))) {
+            break label200;
+          }
+          nrt.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B07", "0X8005B07", i, 0, str4, str1, paramBaseResp.g, str3, false);
+          return;
+        }
+      }
     }
-  }
-  
-  protected void b()
-  {
-    if (this.c > 2L) {
-      this.c -= 2L;
+    label200:
+    if (this.jdField_a_of_type_Zfy.e == 1) {
+      i = 1003;
     }
-  }
-  
-  protected void b(String paramString)
-  {
-    super.b(paramString);
-    CoreService.startCoreService(zeo.a().a);
-    this.a.b();
-    BaseApplicationImpl.sApplication.getRuntime().onGuardEvent(3, 0L, 0L);
+    nrt.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X80059DC", "0X80059DC", i, 0, str2, str1, this.jdField_a_of_type_JavaLangString, str3, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     zga
  * JD-Core Version:    0.7.0.1
  */

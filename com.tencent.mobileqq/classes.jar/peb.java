@@ -1,20 +1,39 @@
-import com.tencent.biz.widgets.ScannerView;
+import android.os.Bundle;
+import android.text.TextUtils;
+import eipc.EIPCResult;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class peb
-  implements Runnable
+class peb
+  implements spj
 {
-  public peb(ScannerView paramScannerView) {}
+  peb(pea parampea, int paramInt, oik paramoik) {}
   
-  public void run()
+  public void a(String paramString, JSONObject paramJSONObject)
   {
-    ScannerView.a(this.a, false);
-    ScannerView.a(this.a, ScannerView.a(this.a));
-    this.a.a(ScannerView.c(this.a));
+    if ((!TextUtils.isEmpty(paramString)) && (paramJSONObject != null)) {}
+    try
+    {
+      paramJSONObject.put("arg_callback", paramString);
+      paramString = new Bundle();
+      paramString.putString("action_update_biu_and_comment_request_string", paramJSONObject.toString());
+      paramString = EIPCResult.createResult(0, paramString);
+      this.jdField_a_of_type_Pea.callbackResult(this.jdField_a_of_type_Int, paramString);
+      this.jdField_a_of_type_Oik.a();
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     peb
  * JD-Core Version:    0.7.0.1
  */

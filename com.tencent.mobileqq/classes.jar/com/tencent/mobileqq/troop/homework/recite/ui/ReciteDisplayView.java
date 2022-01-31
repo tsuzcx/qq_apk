@@ -13,11 +13,11 @@ import java.util.List;
 public class ReciteDisplayView
   extends ListView
 {
-  private long jdField_a_of_type_Long;
-  private ArticleInfo jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo;
+  protected long a;
+  protected ArticleInfo a;
   public WordInfo a;
-  private ReciteFragment jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment;
-  private boolean jdField_a_of_type_Boolean;
+  protected ReciteFragment a;
+  protected boolean a;
   
   public ReciteDisplayView(Context paramContext)
   {
@@ -48,21 +48,21 @@ public class ReciteDisplayView
     return this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo;
   }
   
-  public void a(float paramFloat)
+  public void a(int paramInt, float paramFloat)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment == null) || (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.b() == 0)) {}
+    if ((this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment == null) || (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.a() == 0)) {}
     do
     {
       do
       {
         return;
         if (QLog.isColorLevel()) {
-          QLog.i("ReciteDisplayView", 2, "背诵课文刷新, scrool2Y = " + paramFloat + ", mReciteDisplayView.getBottom() = " + getBottom() + ", mIsTouchMove = " + this.jdField_a_of_type_Boolean);
+          QLog.i("ReciteDetect.ReciteDisplayView", 2, "背诵课文刷新, scrool2Y = " + paramFloat + ", mReciteDisplayView.getBottom() = " + getBottom() + ", mIsTouchMove = " + this.jdField_a_of_type_Boolean);
         }
       } while ((this.jdField_a_of_type_Boolean) || (System.currentTimeMillis() - this.jdField_a_of_type_Long <= 3000L));
-      smoothScrollByOffset((int)paramFloat - getBottom());
+      smoothScrollBy((int)paramFloat, 100);
     } while (!QLog.isColorLevel());
-    QLog.i("ReciteDisplayView", 2, "背诵课文自动滚动到, scrool2Y：" + paramFloat);
+    QLog.i("ReciteDetect.ReciteDisplayView", 2, "背诵课文自动滚动到, scrool2Y：" + paramFloat);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -95,7 +95,7 @@ public class ReciteDisplayView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.recite.ui.ReciteDisplayView
  * JD-Core Version:    0.7.0.1
  */

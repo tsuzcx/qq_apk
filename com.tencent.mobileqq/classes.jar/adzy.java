@@ -1,16 +1,31 @@
 import android.view.View;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
-import com.tencent.mobileqq.leba.model.LebaGridItemInfo;
-import com.tencent.mobileqq.leba.model.pluginactions.PluginAction;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class adzy
-  implements Runnable
+  implements bhuk
 {
-  public adzy(LebaWithFeeds paramLebaWithFeeds, PluginAction paramPluginAction, LebaGridItemInfo paramLebaGridItemInfo, View paramView) {}
+  public adzy(SubAccountUgActivity paramSubAccountUgActivity, bhuf parambhuf) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLebaModelPluginactionsPluginAction.a(this.jdField_a_of_type_ComTencentMobileqqLebaModelLebaGridItemInfo, this.jdField_a_of_type_AndroidViewView);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.cancel();
+      do
+      {
+        return;
+      } while (!this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.c());
+      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.a(2131720473);
+      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.b = true;
+      paramView = (bada)this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app.getManager(28);
+      if (paramView != null) {
+        paramView.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.a);
+      }
+    }
   }
 }
 

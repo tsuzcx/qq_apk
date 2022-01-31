@@ -1,26 +1,32 @@
-import com.tencent.mobileqq.Doraemon.AppInfo;
-import com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAPIManager;
-import com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAppInfoHelper.OnGetAppInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
+import java.util.Iterator;
+import java.util.List;
 
-public class ree
-  implements DefaultDoraemonAppInfoHelper.OnGetAppInfo
+class ree
+  extends QIPCModule
 {
-  public ree(DefaultDoraemonAPIManager paramDefaultDoraemonAPIManager) {}
-  
-  public void a(AppInfo paramAppInfo)
+  ree(red paramred, String paramString)
   {
-    if (paramAppInfo != null)
+    super(paramString);
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    synchronized (red.a(this.a))
     {
-      DefaultDoraemonAPIManager.a(this.a, paramAppInfo);
-      DefaultDoraemonAPIManager.a(this.a, true);
-      return;
+      Iterator localIterator = red.a(this.a).iterator();
+      if (localIterator.hasNext()) {
+        ((ref)localIterator.next()).a(paramString, paramBundle);
+      }
     }
-    DefaultDoraemonAPIManager.b(this.a, false);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ree
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,21 @@
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.ApolloPanelManager;
-import com.tencent.mobileqq.apollo.script.SpriteActionMessage;
-import com.tencent.mobileqq.apollo.script.SpriteContext;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
 
-public class yru
-  implements Runnable
+class yru
+  implements beex
 {
-  public yru(SpriteActionMessage paramSpriteActionMessage, int paramInt, boolean paramBoolean) {}
+  yru(yrr paramyrr, int paramInt, String paramString) {}
   
-  public void run()
+  public void a(Bundle paramBundle)
   {
-    if ((SpriteActionMessage.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteActionMessage) != null) && (SpriteActionMessage.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteActionMessage).a() != null))
-    {
-      ApolloPanelManager localApolloPanelManager = ((ApolloManager)SpriteActionMessage.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteActionMessage).a().getManager(152)).a();
-      if (localApolloPanelManager != null)
-      {
-        localApolloPanelManager.a.set(this.jdField_a_of_type_Int);
-        localApolloPanelManager.a(this.jdField_a_of_type_Int, true, this.jdField_a_of_type_Boolean);
-      }
-    }
+    paramBundle.putInt("seq", this.jdField_a_of_type_Int);
+    paramBundle.putString("processName", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Yrr.a.a(146, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yru
  * JD-Core Version:    0.7.0.1
  */

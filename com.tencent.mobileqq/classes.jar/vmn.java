@@ -1,12 +1,19 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import android.content.DialogInterface;
+import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
 
-public abstract interface vmn
+public class vmn
+  extends bdgx
 {
-  public abstract void a(AIOImageData paramAIOImageData, boolean paramBoolean);
+  public vmn(FollowCaptureLauncher paramFollowCaptureLauncher) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vmn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,23 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry.BannerInfo;
 
-class uup
-  implements Runnable
+public final class uup
+  implements Parcelable.Creator<DiscoverBannerVideoEntry.BannerInfo>
 {
-  uup(uuo paramuuo, String paramString) {}
-  
-  public void run()
+  public DiscoverBannerVideoEntry.BannerInfo a(Parcel paramParcel)
   {
-    if (this.jdField_a_of_type_JavaLangString != null)
-    {
-      this.jdField_a_of_type_Uuo.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.jdField_a_of_type_Uuo.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_Uuo.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-    }
+    return new DiscoverBannerVideoEntry.BannerInfo(paramParcel);
+  }
+  
+  public DiscoverBannerVideoEntry.BannerInfo[] a(int paramInt)
+  {
+    return new DiscoverBannerVideoEntry.BannerInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uup
  * JD-Core Version:    0.7.0.1
  */

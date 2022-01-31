@@ -1,27 +1,22 @@
-import com.tencent.mobileqq.Doraemon.APICallback;
-import com.tencent.mobileqq.Doraemon.APIParam;
-import com.tencent.mobileqq.Doraemon.DoraemonAPIManager;
-import java.util.Iterator;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
-public class rea
-  implements Runnable
+final class rea
+  extends AnimatorListenerAdapter
 {
-  public rea(DoraemonAPIManager paramDoraemonAPIManager, List paramList) {}
+  rea(View paramView) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      Object[] arrayOfObject = (Object[])localIterator.next();
-      DoraemonAPIManager.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, (String)arrayOfObject[0], (APIParam)arrayOfObject[1], (APICallback)arrayOfObject[2]);
-    }
+    this.a.setAlpha(1.0F);
+    this.a.setLayerType(0, null);
+    this.a.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rea
  * JD-Core Version:    0.7.0.1
  */

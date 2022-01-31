@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Povolit</string>
+    <string name="b">Ke spuštění aplikace %1$s je třeba aktivovat služby Google Play.</string>
+    <string name="c">Aktivace služeb Google Play</string>
+    <string name="d">Instalovat</string>
+    <string name="e">Ke spuštění aplikace %1$s jsou potřeba služby Google Play, které v zařízení nemáte.</string>
+    <string name="f">Instalace služeb Google Play</string>
+    <string name="g">Chyba služeb Google Play</string>
+    <string name="h">Aplikace %1$s má potíže se službami Google Play. Zkuste to prosím znovu.</string>
+    <string name="i">Ke spuštění aplikace %1$s jsou potřeba služby Google Play, které v tomto zařízení nejsou podporovány.</string>
+    <string name="j">Aktualizovat</string>
+    <string name="k">Ke spuštění aplikace %1$s je třeba aktualizovat služby Google Play.</string>
+    <string name="l">Aktualizace služeb Google Play</string>
+    <string name="m">Ke spuštění aplikace %1$s jsou potřeba služby Google Play, které jsou právě aktualizovány.</string>
+    <string name="n">Je vyžadována nová verze služeb Google Play. Nová verze se brzy sama nainstaluje.</string>
+    <string name="o">Otevřít v telefonu</string>
+    <string name="p">Přihlásit se</string>
+    <string name="q">Přihlásit se k účtu Google</string>
+    <string name="r">999+</string>
+    <string name="t">Ukončit</string>
+</resources>

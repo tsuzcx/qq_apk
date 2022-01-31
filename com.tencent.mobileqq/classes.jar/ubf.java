@@ -1,25 +1,30 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.app.Activity;
+import android.content.res.Resources;
+import com.tencent.biz.qqcircle.utils.QCircleSlidBottomView;
 
 public class ubf
-  implements View.OnClickListener
+  implements Animator.AnimatorListener
 {
-  public ubf(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public ubf(QCircleSlidBottomView paramQCircleSlidBottomView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (this.a.d == 11) {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8006216", "0X8006216", 0, 0, "", "", "", "");
+    if (this.a.getContext() != null) {
+      tra.a((Activity)this.a.getContext(), this.a.getResources().getColor(2131166179));
     }
-    this.a.b.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ubf
  * JD-Core Version:    0.7.0.1
  */

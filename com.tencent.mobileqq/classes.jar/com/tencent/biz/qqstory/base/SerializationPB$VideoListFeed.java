@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SerializationPB$VideoListFeed
-  extends MessageMicro
+  extends MessageMicro<VideoListFeed>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public SerializationPB.CommentLikeFeed commet_like_feed = new SerializationPB.CommentLikeFeed();
@@ -34,7 +34,7 @@ public final class SerializationPB$VideoListFeed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.SerializationPB.VideoListFeed
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/bxk" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:paddingLeft="@dimen/ft" android:paddingRight="@dimen/dj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/eb" style="@style/mo" />
+    <LinearLayout android:background="@drawable/a13" android:paddingLeft="@dimen/ft" android:paddingRight="@dimen/dj" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.base.MaskLayout android:layout_gravity="center_vertical" android:id="@id/bxm" android:layout_width="@dimen/ez" android:layout_height="@dimen/ez">
+            <ImageView android:id="@id/k6" android:layout_width="@dimen/ey" android:layout_height="@dimen/ey" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
+        </com.tencent.mm.ui.base.MaskLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bxl" android:background="@drawable/abk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m1">
+            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp" android:minHeight="@dimen/f2">
+                <TextView android:id="@id/bxr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{nick}" android:singleLine="true" style="@style/ln" />
+                <TextView android:id="@id/bxs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ne" android:text="{lastmsg}" android:singleLine="true" style="@style/lm" />
+            </LinearLayout>
+            <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <TextView android:id="@id/bxn" android:visibility="visible" android:layout_marginRight="@dimen/n_" style="@style/v8" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

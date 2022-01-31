@@ -1,0 +1,12 @@
+public abstract interface bfvj
+{
+  public abstract boolean isMultiVideoMsgSupport(int paramInt);
+  
+  public abstract boolean isSharpVideoMsgSupport(int paramInt);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+ * Qualified Name:     bfvj
+ * JD-Core Version:    0.7.0.1
+ */

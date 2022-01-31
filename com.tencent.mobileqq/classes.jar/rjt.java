@@ -1,58 +1,50 @@
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.biz.lebasearch.SearchProtocol;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
-public class rjt
-  implements Runnable
+class rjt
+  implements TVK_SDKMgr.OnLogListener
 {
-  private long jdField_a_of_type_Long = System.currentTimeMillis();
-  private String jdField_a_of_type_JavaLangString;
-  
-  public rjt(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString)
+  public int d(String paramString1, String paramString2)
   {
-    if (paramAddFriendVerifyActivity.getIntent().getIntExtra("friend_setting", 0) != 0) {
-      i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
     }
-    this.jdField_a_of_type_JavaLangString = (paramString + "?_wv=1031&troopUin=" + paramAddFriendVerifyActivity.b + "&isVerify=" + i);
+    return 0;
   }
   
-  public void run()
+  public int e(String paramString1, String paramString2)
   {
-    if (SearchProtocol.a != -1.0F) {}
-    for (long l1 = (SearchProtocol.a * 1000000.0F);; l1 = -1L)
-    {
-      if (SearchProtocol.b != -1.0F) {}
-      for (long l2 = (SearchProtocol.b * 1000000.0F);; l2 = -1L)
-      {
-        if ((System.currentTimeMillis() - this.jdField_a_of_type_Long < 2000L) && (l1 == -1L) && (l2 == -1L))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.postDelayed(this, 100L);
-          return;
-        }
-        if ((l1 != -1L) && (l2 != -1L)) {
-          this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "&lat=" + l1 + "&lon=" + l2);
-        }
-        Intent localIntent = new Intent();
-        localIntent.setAction("start_recomend_page");
-        this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.sendBroadcast(localIntent);
-        localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, QQBrowserActivity.class);
-        localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-        localIntent.putExtra("hide_left_button", true);
-        localIntent.putExtra("show_right_close_button", true);
-        localIntent.putExtra("finish_animation_up_down", true);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.startActivity(localIntent);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.overridePendingTransition(2131034134, 2131034131);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.finish();
-        return;
-      }
+    QLog.e(paramString1, 1, paramString2);
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
     }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2);
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rjt
  * JD-Core Version:    0.7.0.1
  */

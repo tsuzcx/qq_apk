@@ -1,19 +1,25 @@
-import android.view.View;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.NormalFaceAdapter;
+import android.annotation.TargetApi;
+import android.hardware.Camera;
+import android.hardware.Camera.PreviewCallback;
+import android.os.Handler;
+import com.tencent.mobileqq.camera.CameraManagerImpl.PreviewCallbackForward.1;
 
 public class aoaz
-  implements Runnable
+  implements Camera.PreviewCallback
 {
-  public aoaz(NormalFaceAdapter paramNormalFaceAdapter, View paramView) {}
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final aoap jdField_a_of_type_Aoap;
+  private final aoaq jdField_a_of_type_Aoaq;
   
-  public void run()
+  @TargetApi(8)
+  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    NormalFaceAdapter.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterNormalFaceAdapter, this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.PreviewCallbackForward.1(this, paramArrayOfByte));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoaz
  * JD-Core Version:    0.7.0.1
  */

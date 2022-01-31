@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class QTimedMessage$C2CMessage$RichText
-  extends MessageMicro
+  extends MessageMicro<RichText>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_template_1 = PBField.initBytes(ByteStringMicro.EMPTY);

@@ -1,24 +1,16 @@
 package com.tencent.token.ui.base;
 
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import java.util.List;
 
-final class bu
-  implements Animation.AnimationListener
+public abstract interface bu
 {
-  bu(LockPatternVerifyView paramLockPatternVerifyView) {}
+  public abstract void a();
   
-  public final void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.setVisibility(8);
-    if (LockPatternVerifyView.a(this.a) != null) {
-      LockPatternVerifyView.a(this.a).a();
-    }
-  }
+  public abstract void a(List paramList);
   
-  public final void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract void b();
   
-  public final void onAnimationStart(Animation paramAnimation) {}
+  public abstract void b(List paramList);
 }
 
 

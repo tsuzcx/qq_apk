@@ -1,15 +1,18 @@
-import cooperation.qzone.font.FontManager;
-import java.io.File;
-import java.io.FileFilter;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.ARRecognition;
 
-public class amug
-  implements FileFilter
+public final class amug
+  implements Parcelable.Creator<ARRecognition>
 {
-  public amug(FontManager paramFontManager) {}
-  
-  public boolean accept(File paramFile)
+  public ARRecognition a(Parcel paramParcel)
   {
-    return paramFile.getName().endsWith(".ftf");
+    return new ARRecognition(paramParcel);
+  }
+  
+  public ARRecognition[] a(int paramInt)
+  {
+    return new ARRecognition[paramInt];
   }
 }
 

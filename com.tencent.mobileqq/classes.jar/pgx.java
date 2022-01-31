@@ -1,18 +1,15 @@
-import com.tencent.component.media.image.ImageManager;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import java.util.List;
 
-public class pgx
-  implements Runnable
+public abstract interface pgx
 {
-  public pgx(ImageManager paramImageManager) {}
+  public abstract void a(SelectPositionModule.PositionData paramPositionData);
   
-  public void run()
-  {
-    ImageManager.a(this.a, ImageManager.b());
-  }
+  public abstract void a(List<pio> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pgx
  * JD-Core Version:    0.7.0.1
  */

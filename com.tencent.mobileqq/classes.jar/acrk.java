@@ -1,64 +1,26 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.app.upgrade.UpgradeTIMManager;
+import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
 
 public class acrk
-  extends FMObserver
+  implements DialogInterface.OnClickListener
 {
-  public acrk(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  public acrk(Conversation paramConversation, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
   
-  protected void a(int paramInt, long paramLong, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.a(paramInt, paramLong, paramString);
-    FileManagerUtil.a(paramLong, paramInt, paramString);
-  }
-  
-  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
-  {
-    super.a(paramLong, paramString1, paramInt, paramString2);
-    FileManagerUtil.a(paramLong);
-  }
-  
-  protected void a(ThumbnailInfo paramThumbnailInfo)
-  {
-    if (paramThumbnailInfo == null) {}
-    FileManagerEntity localFileManagerEntity;
-    do
-    {
-      do
-      {
-        return;
-      } while (!(paramThumbnailInfo.a instanceof FileManagerEntity));
-      localFileManagerEntity = (FileManagerEntity)paramThumbnailInfo.a;
-    } while ((paramThumbnailInfo.b == null) || (paramThumbnailInfo.b.length() <= 0));
-    localFileManagerEntity.strThumbPath = paramThumbnailInfo.b;
-    QfileBaseLocalFileTabView.a(this.a).a().c(localFileManagerEntity);
-    this.a.i();
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    QfileBaseLocalFileTabView.a(this.a, new acrl(this));
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    QfileBaseLocalFileTabView.b(this.a, new acrm(this, paramLong2, paramBoolean, paramInt2, paramString2));
-  }
-  
-  protected void b()
-  {
-    super.b();
-    QfileBaseLocalFileTabView.c(this.a, new acrn(this));
+    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation, null);
+    ((UpgradeTIMManager)this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.getManager(256)).a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper.c);
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a, "CliOper", "", "", "0X800815D", "0X800815D", 0, 0, "", "", "", "");
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a, "CliOper", "", "", "0X8008657", "0X8008657", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acrk
  * JD-Core Version:    0.7.0.1
  */

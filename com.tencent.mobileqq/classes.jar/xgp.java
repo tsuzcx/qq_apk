@@ -1,32 +1,28 @@
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfig.ConfigInfo;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
-import com.tencent.mobileqq.activity.qwallet.red.QWRedConfig;
-import com.tencent.mobileqq.activity.qwallet.red.QWalletRedManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
 
-public class xgp
-  implements Runnable
+public abstract interface xgp
 {
-  public xgp(QWalletRedManager paramQWalletRedManager) {}
+  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
   
-  public void run()
-  {
-    Object localObject = (QWalletConfigManager)QWalletRedManager.a(this.a).getManager(244);
-    if (localObject != null)
-    {
-      ((QWalletConfigManager)localObject).a("redPoint", this.a);
-      localObject = ((QWalletConfigManager)localObject).a("redPoint");
-      QWalletRedManager.a(this.a).parseConfig((QWalletConfig.ConfigInfo)localObject);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletRedManager", 2, "synDataFromMoggy" + QWalletRedManager.a(this.a));
-    }
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void a(xhv paramxhv);
+  
+  public abstract void a(byte[] paramArrayOfByte);
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract void b(int paramInt, Object paramObject);
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void i();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xgp
  * JD-Core Version:    0.7.0.1
  */

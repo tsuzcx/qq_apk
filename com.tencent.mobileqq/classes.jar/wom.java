@@ -1,20 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.List;
 
-public class wom
-  implements View.OnClickListener
+class wom
+  extends SimpleObserver<whz>
 {
-  public wom(SimpleSlidingIndicator paramSimpleSlidingIndicator, int paramInt) {}
+  wom(wol paramwol) {}
   
-  public void onClick(View paramView)
+  public void a(whz paramwhz)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.a(this.jdField_a_of_type_Int, true, true);
+    super.onNext(paramwhz);
+    if (paramwhz.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      uux localuux = (uux)uwa.a(17);
+      localuux.a(paramwhz.jdField_a_of_type_JavaUtilList, paramwhz.jdField_a_of_type_JavaLangString, false, false);
+      paramwhz.jdField_a_of_type_JavaUtilList.addAll(localuux.b(paramwhz.jdField_a_of_type_JavaLangString, false));
+    }
+    umc.a().dispatch(paramwhz);
+    this.a.b();
+    wxe.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull next");
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    this.a.b();
+    wxe.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull error", paramError);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wom
  * JD-Core Version:    0.7.0.1
  */

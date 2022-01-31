@@ -1,15 +1,7 @@
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-
 public class akje
-  implements Runnable
+  extends akit
 {
-  public akje(HealthBusinessPlugin paramHealthBusinessPlugin) {}
-  
-  public void run()
-  {
-    this.a.a.setVisibility(8);
-  }
+  public Object a;
 }
 
 

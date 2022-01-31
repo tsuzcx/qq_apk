@@ -1,39 +1,24 @@
-import com.google.zxing.common.BitMatrix;
+import java.util.Comparator;
 
-abstract class fk
+public class fk
+  implements Comparator
 {
-  private static final fk[] a = { new fm(null), new fn(null), new fo(null), new fp(null), new fq(null), new fr(null), new fs(null), new ft(null) };
-  
-  static fk a(int paramInt)
+  public int a(fl paramfl1, fl paramfl2)
   {
-    if ((paramInt < 0) || (paramInt > 7)) {
-      throw new IllegalArgumentException();
+    if (paramfl1.a != paramfl2.a) {
+      if (paramfl1.a <= paramfl2.a) {}
     }
-    return a[paramInt];
-  }
-  
-  final void a(BitMatrix paramBitMatrix, int paramInt)
-  {
-    int i = 0;
-    while (i < paramInt)
+    while (paramfl1.b > paramfl2.b)
     {
-      int j = 0;
-      while (j < paramInt)
-      {
-        if (a(i, j)) {
-          paramBitMatrix.b(j, i);
-        }
-        j += 1;
-      }
-      i += 1;
+      return 1;
+      return -1;
     }
+    return -1;
   }
-  
-  abstract boolean a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     fk
  * JD-Core Version:    0.7.0.1
  */

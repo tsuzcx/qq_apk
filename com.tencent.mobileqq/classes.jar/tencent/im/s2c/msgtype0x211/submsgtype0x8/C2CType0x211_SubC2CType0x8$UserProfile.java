@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class C2CType0x211_SubC2CType0x8$UserProfile
-  extends MessageMicro
+  extends MessageMicro<UserProfile>
 {
   public static final int BYTES_EXTRA_FIELD_NUMBER = 11;
   public static final int BYTES_TIP_FIELD_NUMBER = 10;

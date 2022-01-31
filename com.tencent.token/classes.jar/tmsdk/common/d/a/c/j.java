@@ -7,8 +7,8 @@ import android.content.IntentFilter;
 import android.net.NetworkInfo;
 import android.net.NetworkInfo.State;
 import android.os.Bundle;
-import c.b.a.a;
-import c.b.a.b;
+import com.tencent.token.f;
+import com.tencent.token.g;
 import java.util.LinkedList;
 
 public class j
@@ -84,7 +84,7 @@ public class j
         break label74;
       }
       if (this.b.compareTo(NetworkInfo.State.DISCONNECTED) == 0) {
-        a.a().a(new k(this), "无网络 -> 有网络");
+        f.a().a(new k(this), "无网络 -> 有网络");
       }
       this.b = paramContext;
     }
@@ -93,7 +93,7 @@ public class j
       return;
     }
     if (this.b.compareTo(NetworkInfo.State.CONNECTED) == 0) {
-      a.a().a(new l(this), "有网络 -> 无网络");
+      f.a().a(new l(this), "有网络 -> 无网络");
     }
     this.b = paramContext;
   }

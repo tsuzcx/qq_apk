@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/b0e" android:background="#cc000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <Button android:textSize="@dimen/mw" android:textColor="@color/al3" android:gravity="center" android:id="@id/b0d" android:background="@drawable/ht" android:layout_width="120.0dip" android:layout_height="36.0dip" android:text="gameConsole" />
+    <RelativeLayout android:id="@id/b0f" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="100.0dip">
+        <com.tencent.widget.HorizontalListView android:orientation="horizontal" android:id="@id/b0g" android:background="#fff0f0f3" android:layout_width="fill_parent" android:layout_height="40.0dip" />
+        <View android:id="@id/j_2" android:background="#ffd9d9d9" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_below="@id/b0g" />
+        <FrameLayout android:id="@id/b0c" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/j_2" />
+    </RelativeLayout>
+</FrameLayout>

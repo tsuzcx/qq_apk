@@ -1,63 +1,55 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.recent.RecentTroopMenuOption;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.voip.VoipAddressBookView;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.lang.ref.WeakReference;
 
 public class etm
-  implements ActionSheet.OnButtonClickListener
+  extends Handler
 {
-  public etm(RecentTroopMenuOption paramRecentTroopMenuOption, int paramInt, String paramString, ActionSheet paramActionSheet) {}
+  private WeakReference a;
   
-  public void OnClick(View paramView, int paramInt)
+  public etm(VoipAddressBookView paramVoipAddressBookView)
   {
-    if (!NetworkUtil.e(BaseApplication.getContext()))
+    this.a = new WeakReference(paramVoipAddressBookView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    VoipAddressBookView localVoipAddressBookView = (VoipAddressBookView)this.a.get();
+    if (localVoipAddressBookView == null) {}
+    do
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentTroopMenuOption.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentTroopMenuOption.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(RecentTroopMenuOption.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentTroopMenuOption));
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentTroopMenuOption.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, 2131562449, 1500);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      }
       return;
-      switch (paramInt)
+      switch (paramMessage.what)
       {
       default: 
-        paramInt = -1;
+        throw new RuntimeException("Unknown message: " + paramMessage.what);
+      case 1: 
+        localVoipAddressBookView.k();
+        return;
+      case 2: 
+        if ((VoipAddressBookView.a(localVoipAddressBookView)) && (!VoipAddressBookView.e(localVoipAddressBookView).i()))
+        {
+          VoipAddressBookView.i(localVoipAddressBookView);
+          VoipAddressBookView.a(localVoipAddressBookView, false);
+        }
+        localVoipAddressBookView.j();
+        localVoipAddressBookView.a.notifyDataSetChanged();
+        return;
       }
-      while ((paramInt != this.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentTroopMenuOption.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentTroopMenuOption.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt));
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentTroopMenuOption.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_msg", "", "data_page", "Clk_setmsg", 0, 0, this.jdField_a_of_type_JavaLangString, String.valueOf(paramInt - 1), "", "");
-        break;
-        paramInt = 1;
-        continue;
-        paramInt = 4;
-        continue;
-        paramInt = 2;
-        continue;
-        paramInt = 3;
-      }
-    }
-    catch (Exception paramView)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("RecentTroopMenuOption", 2, paramView.toString());
-    }
+      localVoipAddressBookView.j();
+      localVoipAddressBookView.a.notifyDataSetChanged();
+    } while (NetworkUtil.e(localVoipAddressBookView.getContext()));
+    VoipAddressBookView.j(localVoipAddressBookView);
+    VoipAddressBookView.a(localVoipAddressBookView, localVoipAddressBookView.getContext().getString(2131558968));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     etm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,9 @@
 package dov.com.qq.im.capture.banner;
 
 import android.text.TextUtils;
-import anlf;
-import com.tencent.mobileqq.app.QQAppInterface;
+import ansd;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.armap.ArMapUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.HashMap;
@@ -44,101 +43,101 @@ public class QIMCaptureBannerConfig
   private static final long serialVersionUID = 1L;
   public QIMCaptureBannerConfig.AnimItem mAnimItem;
   public boolean mBannerEnable;
-  public HashMap mBannerList = new HashMap();
+  public HashMap<String, QIMCaptureBannerConfig.BannerItem> mBannerList = new HashMap();
   public long mBeginTime;
   public long mEndTime;
   public String mJumpUrl;
-  public Map mNewUserTipsItems = new LinkedHashMap();
+  public Map<Integer, Object> mNewUserTipsItems = new LinkedHashMap();
   public QIMCaptureBannerConfig.RedDotItem mRedDotItem;
   public transient boolean update = false;
   
   /* Error */
-  public static QIMCaptureBannerConfig getBannerConfigFromFile(QQAppInterface paramQQAppInterface, String paramString)
+  public static QIMCaptureBannerConfig getBannerConfigFromFile(AppInterface paramAppInterface, String paramString)
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokestatic 115	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1: invokestatic 117	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   4: ifne +7 -> 11
     //   7: aload_0
     //   8: ifnonnull +5 -> 13
     //   11: aconst_null
     //   12: areturn
-    //   13: new 117	java/io/File
+    //   13: new 119	java/io/File
     //   16: dup
     //   17: aload_1
-    //   18: new 119	java/lang/StringBuilder
+    //   18: new 121	java/lang/StringBuilder
     //   21: dup
-    //   22: invokespecial 120	java/lang/StringBuilder:<init>	()V
+    //   22: invokespecial 122	java/lang/StringBuilder:<init>	()V
     //   25: aload_0
-    //   26: invokevirtual 126	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   29: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: invokevirtual 128	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   29: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   32: ldc 53
-    //   34: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   40: invokespecial 136	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   34: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   37: invokevirtual 135	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   40: invokespecial 138	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   43: astore_3
-    //   44: invokestatic 142	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   44: invokestatic 144	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   47: ifeq +43 -> 90
     //   50: ldc 62
     //   52: iconst_2
-    //   53: new 119	java/lang/StringBuilder
+    //   53: new 121	java/lang/StringBuilder
     //   56: dup
-    //   57: invokespecial 120	java/lang/StringBuilder:<init>	()V
-    //   60: ldc 144
-    //   62: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   57: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   60: ldc 146
+    //   62: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   65: aload_3
-    //   66: invokevirtual 147	java/io/File:getPath	()Ljava/lang/String;
-    //   69: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   72: ldc 149
-    //   74: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   66: invokevirtual 149	java/io/File:getPath	()Ljava/lang/String;
+    //   69: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   72: ldc 151
+    //   74: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   77: aload_3
-    //   78: invokevirtual 152	java/io/File:exists	()Z
-    //   81: invokevirtual 155	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   84: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   87: invokestatic 159	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   78: invokevirtual 154	java/io/File:exists	()Z
+    //   81: invokevirtual 157	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   84: invokevirtual 135	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   87: invokestatic 161	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   90: aload_3
-    //   91: invokevirtual 152	java/io/File:exists	()Z
+    //   91: invokevirtual 154	java/io/File:exists	()Z
     //   94: ifeq -83 -> 11
-    //   97: new 161	java/io/ObjectInputStream
+    //   97: new 163	java/io/ObjectInputStream
     //   100: dup
-    //   101: new 163	java/io/BufferedInputStream
+    //   101: new 165	java/io/BufferedInputStream
     //   104: dup
-    //   105: new 165	java/io/FileInputStream
+    //   105: new 167	java/io/FileInputStream
     //   108: dup
     //   109: aload_3
-    //   110: invokespecial 168	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   113: invokespecial 171	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   116: invokespecial 172	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   110: invokespecial 170	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   113: invokespecial 173	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   116: invokespecial 174	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   119: astore_1
     //   120: aload_1
     //   121: astore_0
     //   122: aload_1
-    //   123: invokevirtual 176	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   123: invokevirtual 178	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
     //   126: checkcast 2	dov/com/qq/im/capture/banner/QIMCaptureBannerConfig
     //   129: astore_2
     //   130: aload_1
     //   131: astore_0
-    //   132: invokestatic 142	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   132: invokestatic 144	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   135: ifeq +30 -> 165
     //   138: aload_1
     //   139: astore_0
     //   140: ldc 62
     //   142: iconst_2
-    //   143: new 119	java/lang/StringBuilder
+    //   143: new 121	java/lang/StringBuilder
     //   146: dup
-    //   147: invokespecial 120	java/lang/StringBuilder:<init>	()V
-    //   150: ldc 178
-    //   152: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   147: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   150: ldc 180
+    //   152: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   155: aload_2
-    //   156: invokevirtual 181	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   159: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   162: invokestatic 159	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   156: invokevirtual 183	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   159: invokevirtual 135	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   162: invokestatic 161	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   165: aload_2
     //   166: astore_0
     //   167: aload_1
     //   168: ifnull +9 -> 177
     //   171: aload_1
-    //   172: invokevirtual 184	java/io/ObjectInputStream:close	()V
+    //   172: invokevirtual 186	java/io/ObjectInputStream:close	()V
     //   175: aload_2
     //   176: astore_0
     //   177: aload_0
@@ -149,30 +148,30 @@ public class QIMCaptureBannerConfig
     //   182: aload_1
     //   183: astore_0
     //   184: aload_3
-    //   185: invokevirtual 187	java/io/File:delete	()Z
+    //   185: invokevirtual 189	java/io/File:delete	()Z
     //   188: pop
     //   189: aload_1
     //   190: astore_0
-    //   191: invokestatic 142	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   191: invokestatic 144	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   194: ifeq +33 -> 227
     //   197: aload_1
     //   198: astore_0
     //   199: ldc 62
     //   201: iconst_2
-    //   202: new 119	java/lang/StringBuilder
+    //   202: new 121	java/lang/StringBuilder
     //   205: dup
-    //   206: invokespecial 120	java/lang/StringBuilder:<init>	()V
-    //   209: ldc 189
-    //   211: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   206: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   209: ldc 191
+    //   211: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   214: aload_2
-    //   215: invokevirtual 192	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   218: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   221: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   224: invokestatic 159	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   215: invokevirtual 194	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   218: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   221: invokevirtual 135	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   224: invokestatic 161	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   227: aload_1
     //   228: ifnull +49 -> 277
     //   231: aload_1
-    //   232: invokevirtual 184	java/io/ObjectInputStream:close	()V
+    //   232: invokevirtual 186	java/io/ObjectInputStream:close	()V
     //   235: aconst_null
     //   236: astore_0
     //   237: goto -60 -> 177
@@ -186,7 +185,7 @@ public class QIMCaptureBannerConfig
     //   249: aload_0
     //   250: ifnull +7 -> 257
     //   253: aload_0
-    //   254: invokevirtual 184	java/io/ObjectInputStream:close	()V
+    //   254: invokevirtual 186	java/io/ObjectInputStream:close	()V
     //   257: aload_1
     //   258: athrow
     //   259: astore_0
@@ -204,7 +203,7 @@ public class QIMCaptureBannerConfig
     //   279: goto -102 -> 177
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	282	0	paramQQAppInterface	QQAppInterface
+    //   0	282	0	paramAppInterface	AppInterface
     //   0	282	1	paramString	String
     //   129	47	2	localQIMCaptureBannerConfig	QIMCaptureBannerConfig
     //   179	82	2	localException1	java.lang.Exception
@@ -254,8 +253,8 @@ public class QIMCaptureBannerConfig
         }
         bool = true;
         paramQIMCaptureBannerConfig.mBannerEnable = bool;
-        paramQIMCaptureBannerConfig.mBeginTime = ArMapUtil.c(((JSONObject)localObject2).optString("begin_time"));
-        paramQIMCaptureBannerConfig.mEndTime = ArMapUtil.c(((JSONObject)localObject2).optString("end_time"));
+        paramQIMCaptureBannerConfig.mBeginTime = ansd.b(((JSONObject)localObject2).optString("begin_time"));
+        paramQIMCaptureBannerConfig.mEndTime = ansd.b(((JSONObject)localObject2).optString("end_time"));
         paramQIMCaptureBannerConfig.mJumpUrl = ((JSONObject)localObject2).optString("jmp_url");
         paramString = ((JSONObject)localObject2).optJSONObject("red_point");
         if (paramString == null)
@@ -281,8 +280,8 @@ public class QIMCaptureBannerConfig
           str1 = ((JSONObject)localObject3).optString("wording");
           str2 = ((JSONObject)localObject3).optString("img_md5");
           str3 = ((JSONObject)localObject3).optString("jmp_url");
-          l1 = ArMapUtil.c(((JSONObject)localObject3).optString("begin_time"));
-          l2 = ArMapUtil.c(((JSONObject)localObject3).optString("end_time"));
+          l1 = ansd.b(((JSONObject)localObject3).optString("begin_time"));
+          l2 = ansd.b(((JSONObject)localObject3).optString("end_time"));
           if ((TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2)) || (TextUtils.isEmpty(str3)) || (l1 < 0L) || (l2 < 0L)) {
             break label794;
           }
@@ -406,15 +405,15 @@ public class QIMCaptureBannerConfig
     }
   }
   
-  public static void saveBannerConfig(QQAppInterface paramQQAppInterface, QIMCaptureBannerConfig paramQIMCaptureBannerConfig, String paramString)
+  public static void saveBannerConfig(AppInterface paramAppInterface, QIMCaptureBannerConfig paramQIMCaptureBannerConfig, String paramString)
   {
-    if ((paramQIMCaptureBannerConfig == null) || (TextUtils.isEmpty(paramString)) || (paramQQAppInterface == null)) {
+    if ((paramQIMCaptureBannerConfig == null) || (TextUtils.isEmpty(paramString)) || (paramAppInterface == null)) {
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("QIMCaptureBannerConfig", 2, "saveBannerConfig|config= " + paramQIMCaptureBannerConfig);
     }
-    ThreadManager.getFileThreadHandler().post(new anlf(paramString, paramQQAppInterface, paramQIMCaptureBannerConfig));
+    ThreadManager.getFileThreadHandler().post(new QIMCaptureBannerConfig.1(paramString, paramAppInterface, paramQIMCaptureBannerConfig));
   }
   
   public String toString()
@@ -433,7 +432,7 @@ public class QIMCaptureBannerConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.banner.QIMCaptureBannerConfig
  * JD-Core Version:    0.7.0.1
  */

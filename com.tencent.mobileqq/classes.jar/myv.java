@@ -1,30 +1,31 @@
+import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
-import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.view.View.OnKeyListener;
+import android.widget.TextView;
+import com.tencent.biz.PoiMapActivity;
 
 public class myv
-  implements Runnable
+  implements View.OnKeyListener
 {
-  public myv(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  public myv(PoiMapActivity paramPoiMapActivity) {}
   
-  public void run()
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    TranslateAnimation localTranslateAnimation = PublicAccountImageCollectionMainActivity.b(this.a);
-    if (localTranslateAnimation != null)
+    if ((66 == paramInt) && (paramKeyEvent.getAction() == 0))
     {
-      this.a.a.setVisibility(0);
-      this.a.a.findViewById(2131365654).setVisibility(0);
-      this.a.a.findViewById(2131365588).setVisibility(0);
-      this.a.a.findViewById(2131365589).setVisibility(0);
-      this.a.a.bringToFront();
-      this.a.a.startAnimation(localTranslateAnimation);
+      paramView = ((TextView)paramView).getText().toString();
+      if (!TextUtils.isEmpty(paramView)) {
+        this.a.a(paramView);
+      }
+      return true;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     myv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,25 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.token.er;
 
-final class sy
+class sy
   implements View.OnClickListener
 {
-  sy(OpMsgDisplayActivity paramOpMsgDisplayActivity) {}
+  private sy(OpreateMsgActivity paramOpreateMsgActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, IndexActivity.class);
-    paramView.putExtra("index_from", 17);
-    this.a.startActivity(paramView);
-    this.a.finish();
+    if (this.a.mIsSelectAll) {
+      OpreateMsgActivity.access$200(this.a).c();
+    }
+    for (;;)
+    {
+      this.a.mAdapter.notifyDataSetChanged();
+      return;
+      OpreateMsgActivity.access$200(this.a).b();
+    }
   }
 }
 

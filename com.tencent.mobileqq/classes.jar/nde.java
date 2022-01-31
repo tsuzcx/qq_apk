@@ -1,39 +1,23 @@
-import com.tencent.biz.qqstory.model.TroopNickNameManager;
-import com.tencent.biz.qqstory.model.TroopNickNameManager.TroopNickNameUpdateEvent;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
-import java.util.ArrayList;
+import org.apache.http.conn.ssl.AbstractVerifier;
 
-public class nde
-  implements Runnable
+final class nde
+  extends AbstractVerifier
 {
-  public nde(TroopNickNameManager paramTroopNickNameManager, String paramString, QQUserUIItem paramQQUserUIItem, boolean paramBoolean1, boolean paramBoolean2) {}
+  nde(String paramString) {}
   
-  public void run()
+  public final String toString()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelTroopNickNameManager.a.c(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq) != null)
-    {
-      localTroopNickNameUpdateEvent = new TroopNickNameManager.TroopNickNameUpdateEvent();
-      localArrayList = new ArrayList();
-      localArrayList.add(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq);
-      localTroopNickNameUpdateEvent.jdField_a_of_type_JavaUtilList = localArrayList;
-      localTroopNickNameUpdateEvent.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      Dispatchers.get().dispatch(localTroopNickNameUpdateEvent);
-    }
-    while (this.jdField_a_of_type_Boolean)
-    {
-      TroopNickNameManager.TroopNickNameUpdateEvent localTroopNickNameUpdateEvent;
-      ArrayList localArrayList;
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryModelTroopNickNameManager.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem, this.jdField_a_of_type_JavaLangString, this.b);
+    return "CUSTOM_COMPATIBLE";
+  }
+  
+  public final void verify(String paramString, String[] paramArrayOfString1, String[] paramArrayOfString2)
+  {
+    verify(this.a, paramArrayOfString1, paramArrayOfString2, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     nde
  * JD-Core Version:    0.7.0.1
  */

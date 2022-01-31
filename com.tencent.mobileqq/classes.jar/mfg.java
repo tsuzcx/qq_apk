@@ -1,24 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ThirdVideoManager.UUIDToUrlCallback;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class mfg
-  implements ThirdVideoManager.UUIDToUrlCallback
+public final class mfg
+  implements DialogInterface.OnClickListener
 {
-  public mfg(VideoPreDownloadMgr paramVideoPreDownloadMgr, int paramInt) {}
-  
-  public void a(String paramString1, String paramString2, int paramInt, boolean paramBoolean, String paramString3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      return;
-    }
-    ThreadManager.post(new mfh(this, paramString2, paramString1, paramInt), 5, null, true);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mfg
  * JD-Core Version:    0.7.0.1
  */

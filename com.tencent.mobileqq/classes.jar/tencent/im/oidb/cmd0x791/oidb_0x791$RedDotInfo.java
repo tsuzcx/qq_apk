@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x791$RedDotInfo
-  extends MessageMicro
+  extends MessageMicro<RedDotInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField bool_display_reddot = PBField.initBool(false);
@@ -34,7 +34,7 @@ public final class oidb_0x791$RedDotInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo
  * JD-Core Version:    0.7.0.1
  */

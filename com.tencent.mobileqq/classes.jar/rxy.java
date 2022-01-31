@@ -1,25 +1,12 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView.SpanClickListener;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
-
-public final class rxy
-  implements ClickableColorSpanTextView.SpanClickListener
+public abstract interface rxy
 {
-  public rxy(Context paramContext) {}
+  public abstract void a();
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
-  {
-    paramClickableColorSpanTextView = new Intent(this.a, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.a.startActivity(paramClickableColorSpanTextView);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rxy
  * JD-Core Version:    0.7.0.1
  */

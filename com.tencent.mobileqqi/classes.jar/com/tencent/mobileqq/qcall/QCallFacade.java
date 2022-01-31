@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.av.gaudio.GAudioNotifyCenter;
 import com.tencent.mobileqq.activity.aio.AbilityUtils;
 import com.tencent.mobileqq.app.DiscussionObserver;
 import com.tencent.mobileqq.app.FriendListObserver;
@@ -23,8 +22,8 @@ import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.MsgUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import gkb;
-import gkc;
+import gfs;
+import gft;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -36,8 +35,8 @@ public class QCallFacade
   implements Manager
 {
   private static final String jdField_a_of_type_JavaLangString = QCallFacade.class.getSimpleName();
-  private DiscussionObserver jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new gkc(this);
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new gkb(this);
+  private DiscussionObserver jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new gft(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new gfs(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
   public QCallFacade(QQAppInterface paramQQAppInterface)
@@ -138,124 +137,85 @@ public class QCallFacade
   
   private QCallRecord a(MessageForVideo paramMessageForVideo)
   {
-    if (paramMessageForVideo == null)
-    {
+    if (paramMessageForVideo == null) {
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "getMessageToCallRecord message is null");
       }
-      return null;
     }
-    QCallRecord localQCallRecord = new QCallRecord();
-    localQCallRecord.friendUin = paramMessageForVideo.frienduin;
-    localQCallRecord.time = paramMessageForVideo.time;
-    localQCallRecord.uinType = paramMessageForVideo.istroop;
-    localQCallRecord.senderuin = paramMessageForVideo.senderuin;
-    localQCallRecord.issend = paramMessageForVideo.issend;
-    localQCallRecord.uniseq = paramMessageForVideo.uniseq;
-    if ((localQCallRecord.uinType == 1000) || (localQCallRecord.uinType == 1020) || (localQCallRecord.uinType == 1004)) {
-      localQCallRecord.troopUin = paramMessageForVideo.senderuin;
-    }
-    Object localObject = paramMessageForVideo.msg;
-    if (localObject == null)
+    QCallRecord localQCallRecord;
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "getMessageToCallRecord message's msg is null");
-      }
       return null;
-    }
-    String[] arrayOfString = ((String)localObject).split("\\|");
+      localQCallRecord = new QCallRecord();
+      localQCallRecord.friendUin = paramMessageForVideo.frienduin;
+      localQCallRecord.time = paramMessageForVideo.time;
+      localQCallRecord.uinType = paramMessageForVideo.istroop;
+      localQCallRecord.senderuin = paramMessageForVideo.senderuin;
+      localQCallRecord.issend = paramMessageForVideo.issend;
+      localQCallRecord.uniseq = paramMessageForVideo.uniseq;
+      if ((localQCallRecord.uinType == 1000) || (localQCallRecord.uinType == 1020) || (localQCallRecord.uinType == 1004)) {
+        localQCallRecord.troopUin = paramMessageForVideo.senderuin;
+      }
+      paramMessageForVideo = paramMessageForVideo.msg;
+      if (paramMessageForVideo != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d(jdField_a_of_type_JavaLangString, 2, "getMessageToCallRecord message's msg is null");
+    return null;
+    Object localObject = paramMessageForVideo.split("\\|");
     int i;
-    label195:
-    String str;
-    if ((arrayOfString != null) && (arrayOfString.length > 3)) {
-      if ("1".equals(arrayOfString[3]))
+    if ((localObject != null) && (localObject.length > 3)) {
+      if ("1".equals(localObject[3]))
       {
         i = 1;
         localQCallRecord.isVideo = i;
-        if (arrayOfString.length <= 3) {
-          break label506;
+        if (localObject.length <= 3) {
+          break label390;
         }
-        str = arrayOfString[0].trim();
+        localObject[0].trim();
       }
     }
-    try
+    for (;;)
     {
-      localQCallRecord.state = Integer.parseInt(arrayOfString[1]);
-      paramMessageForVideo = str;
-    }
-    catch (Exception paramMessageForVideo)
-    {
-      for (;;)
+      try
       {
-        label224:
-        if ((localObject != null) && (((String)localObject).length() > 0) && (((String)localObject).charAt(0) == '\026'))
+        localQCallRecord.state = Integer.parseInt(localObject[1]);
+        if (QLog.isColorLevel())
         {
-          paramMessageForVideo = str;
-          if (QLog.isColorLevel())
-          {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "getMessageToCallRecord java.lang.NumberFormatException: Invalid int: " + arrayOfString[1] + " msg is " + (String)localObject);
-            paramMessageForVideo = str;
+          localObject = jdField_a_of_type_JavaLangString;
+          StringBuilder localStringBuilder = new StringBuilder().append("getMessageToCallRecord:");
+          if (localQCallRecord == null) {
+            break label393;
           }
+          paramMessageForVideo = localQCallRecord.toString();
+          QLog.d((String)localObject, 2, paramMessageForVideo);
         }
-        else
-        {
-          localQCallRecord.state = 5;
-          paramMessageForVideo = str;
-          if (QLog.isColorLevel())
-          {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "getMessageToCallRecord java.lang.NumberFormatException: Invalid int: " + arrayOfString[1] + " msg byte " + Utils.a((String)localObject));
-            paramMessageForVideo = str;
-          }
-        }
+        return localQCallRecord;
+        i = 0;
+        break;
+        localQCallRecord.isVideo = 1;
       }
-    }
-    if (((localQCallRecord.state == 0) || (localQCallRecord.state == 2) || (localQCallRecord.state == 46) || (localQCallRecord.state == 47) || (localQCallRecord.state == 48)) && (paramMessageForVideo != null))
-    {
-      paramMessageForVideo = paramMessageForVideo.split(" ");
-      if (paramMessageForVideo != null)
+      catch (Exception localException)
       {
-        if (paramMessageForVideo.length <= 1) {
-          break label519;
+        if ((paramMessageForVideo != null) && (paramMessageForVideo.length() > 0) && (paramMessageForVideo.charAt(0) == '\026'))
+        {
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "getMessageToCallRecord java.lang.NumberFormatException: Invalid int: " + localObject[1] + " msg is " + paramMessageForVideo);
+          continue;
         }
-        localQCallRecord.talkTime = paramMessageForVideo[1];
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "getMessageToCallRecord java.lang.NumberFormatException: Invalid int: " + localObject[1] + " msg byte " + Utils.a(paramMessageForVideo));
+        continue;
       }
-    }
-    label300:
-    if (QLog.isColorLevel())
-    {
-      str = jdField_a_of_type_JavaLangString;
-      localObject = new StringBuilder().append("getMessageToCallRecord:");
-      if (localQCallRecord == null) {
-        break label562;
-      }
-    }
-    label519:
-    label562:
-    for (paramMessageForVideo = localQCallRecord.toString();; paramMessageForVideo = "")
-    {
-      QLog.d(str, 2, paramMessageForVideo);
-      return localQCallRecord;
-      i = 0;
-      break;
-      localQCallRecord.isVideo = 1;
-      break label195;
-      label506:
+      label390:
+      continue;
+      label393:
       paramMessageForVideo = "";
-      localQCallRecord.state = 5;
-      break label224;
-      if (paramMessageForVideo.length != 1) {
-        break label300;
-      }
-      if (2 == localQCallRecord.state)
-      {
-        localQCallRecord.state = 12;
-        break label300;
-      }
-      if (localQCallRecord.state != 0) {
-        break label300;
-      }
-      localQCallRecord.state = 12;
-      break label300;
     }
   }
   
@@ -424,7 +384,6 @@ public class QCallFacade
     localQCallRecent.type = 3000;
     localQCallRecent.sendFlag = paramInt;
     localQCallRecent.troopUin = String.valueOf(paramLong);
-    localQCallRecent.memberCount = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong);
     localQCallRecent.missedCallCount = a(String.valueOf(paramLong), 3000);
     if (paramInt == 1) {
       localQCallRecent.state = 4;
@@ -584,7 +543,6 @@ public class QCallFacade
     paramString2.type = 3000;
     paramString2.sendFlag = 0;
     paramString2.troopUin = String.valueOf(paramString1);
-    paramString2.memberCount = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(Long.parseLong(paramString1));
     paramString2.state = 2;
     paramString2.missedCallCount = a(paramString1, 3000);
     a(paramString2);

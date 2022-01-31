@@ -2,6 +2,7 @@ package com.tencent.upload.uinterface.data;
 
 import SLICE_UPLOAD.AuthToken;
 import SLICE_UPLOAD.CheckType;
+import SLICE_UPLOAD.DumpBussinessReq;
 import SLICE_UPLOAD.FileBatchControlRsp;
 import SLICE_UPLOAD.FileControlReq;
 import SLICE_UPLOAD.FileControlRsp;
@@ -9,12 +10,20 @@ import SLICE_UPLOAD.UploadModel;
 import SLICE_UPLOAD.stResult;
 import android.text.TextUtils;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.upload.b.g;
-import com.tencent.upload.common.Const.UploadRetCode;
-import com.tencent.upload.common.FileUtils;
+import com.tencent.upload.impl.UploadTaskManager;
+import com.tencent.upload.network.session.IUploadSession;
+import com.tencent.upload.network.session.SessionPool;
+import com.tencent.upload.request.UploadRequest;
+import com.tencent.upload.request.UploadResponse;
+import com.tencent.upload.request.impl.BatchControlRequest;
+import com.tencent.upload.request.impl.FileControlRequest;
+import com.tencent.upload.task.TaskState;
 import com.tencent.upload.uinterface.AbstractUploadTask;
-import com.tencent.upload.uinterface.IUploadConfig;
 import com.tencent.upload.uinterface.TaskTypeConfig;
+import com.tencent.upload.uinterface.token.TokenProvider;
+import com.tencent.upload.utils.Const.UploadRetCode;
+import com.tencent.upload.utils.FileUtils;
+import com.tencent.upload.utils.UploadLog;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,7 +39,7 @@ public class BatchControlTask
   private List<String> mFilePaths;
   private BatchControlResult mResult;
   long mStartTime;
-  g mTaskManager;
+  UploadTaskManager mTaskManager;
   List<AbstractUploadTask> mTasks;
   
   public BatchControlTask(String paramString)
@@ -39,19 +48,18 @@ public class BatchControlTask
     this.mFilePaths = new ArrayList();
   }
   
-  public BatchControlTask(List<AbstractUploadTask> paramList, g paramg)
+  public BatchControlTask(List<AbstractUploadTask> paramList, UploadTaskManager paramUploadTaskManager)
   {
     super(new byte[0]);
     this.flowId = this.mTaskId;
-    this.mTaskManager = paramg;
+    this.mTaskManager = paramUploadTaskManager;
     this.mFilePaths = new ArrayList();
     this.mTasks = new ArrayList(paramList);
     paramList = (AbstractUploadTask)this.mTasks.get(0);
     this.uploadEntrance = paramList.uploadEntrance;
     this.sRefer = paramList.sRefer;
     this.iUin = paramList.iUin;
-    this.mAppid = paramList.getProtocalAppid();
-    this.b2Gt = paramList.b2Gt;
+    this.mAppid = paramList.getProtocolAppid();
     this.vLoginData = paramList.vLoginData;
     this.vLoginKey = paramList.vLoginKey;
     this.preupload = paramList.preupload;
@@ -66,85 +74,82 @@ public class BatchControlTask
     this.mFilePaths.add(paramString);
   }
   
-  protected com.tencent.upload.c.b getBatchControlRequest()
+  protected UploadRequest getBatchControlRequest()
   {
-    com.tencent.upload.common.b.c("BatchControlTask", "taskId:" + getTaskId() + " ! ---------------getBatchControlRequest-------------- !");
-    Object localObject1 = this.vLoginData;
-    AuthToken localAuthToken = new AuthToken(2, (byte[])localObject1, this.vLoginKey, com.tencent.upload.common.a.b().getAppId());
-    Object localObject2 = new StringBuilder().append(" vLoginData.size:");
-    int i;
-    label150:
-    Object localObject3;
-    Object localObject4;
-    if (localObject1 == null)
-    {
-      localObject1 = "null";
-      com.tencent.upload.common.b.c("BatchControlTask", localObject1 + " vLoginKey.size:" + this.vLoginKey.length);
-      buildEnv();
-      this.mModel = UploadModel.MODEL_NORMAL;
-      if (this.preupload == 1) {
-        this.mModel = UploadModel.MODEL_PRE_UPLOAD;
-      }
-      localObject1 = new HashMap();
-      i = 0;
-      if (i >= this.mTasks.size()) {
-        break label569;
-      }
-      localObject2 = (AbstractUploadTask)this.mTasks.get(i);
-      localObject3 = ((AbstractUploadTask)localObject2).getFilePath();
-      if (!TextUtils.isEmpty((CharSequence)localObject3))
-      {
-        if (!this.mAppid.equalsIgnoreCase("video_qzone")) {
-          break label283;
-        }
-        this.mCheckType = CheckType.TYPE_SHA1;
-        localObject4 = FileUtils.getFileSha1(new File((String)localObject3));
-        this.sha1 = ((String)localObject4);
-        this.mChecksum = ((String)localObject4);
-      }
-      label238:
-      if (!TextUtils.isEmpty(this.mChecksum)) {
-        break label319;
-      }
-      ((AbstractUploadTask)localObject2).onError(Const.UploadRetCode.FILE_NOT_EXIST.getCode(), Const.UploadRetCode.FILE_NOT_EXIST.getDesc());
+    UploadLog.i("BatchControlTask", "taskId:" + getTaskId() + " ! ---------------getBatchControlRequest-------------- !");
+    AuthToken localAuthToken = TokenProvider.getAuthToken(this.vLoginData, this.vLoginKey);
+    buildEnv();
+    this.mModel = UploadModel.MODEL_NORMAL;
+    if (this.preupload == 1) {
+      this.mModel = UploadModel.MODEL_PRE_UPLOAD;
     }
-    for (;;)
+    HashMap localHashMap = new HashMap();
+    int i = 0;
+    if (i < this.mTasks.size())
     {
-      i += 1;
-      break label150;
-      localObject1 = Integer.valueOf(localObject1.length);
-      break;
-      label283:
-      this.mCheckType = CheckType.TYPE_MD5;
-      localObject4 = FileUtils.getMd5ByFile_REAL(new File((String)localObject3));
-      this.md5 = ((String)localObject4);
-      this.mChecksum = ((String)localObject4);
-      break label238;
-      label319:
-      com.tencent.upload.common.b.b("BatchControlTask", "batchControlId:" + getTaskId() + ", index: " + i + ", taskId:" + ((AbstractUploadTask)localObject2).getTaskId() + ", path:" + (String)localObject3 + ", mCheckType:" + this.mCheckType + ", mChecksum:" + this.mChecksum);
-      long l = FileUtils.getFileLength((String)localObject3);
-      localObject3 = new com.tencent.upload.c.a.c(this.iUin + "", this.mAppid, localAuthToken, this.mChecksum, this.mCheckType, l, this.mStEnv, this.mModel, "", this.mNeedIpRedirect, true, ((AbstractUploadTask)localObject2).iSync);
-      localObject4 = ((AbstractUploadTask)localObject2).buildExtra();
-      if (localObject4 == null)
+      AbstractUploadTask localAbstractUploadTask = (AbstractUploadTask)this.mTasks.get(i);
+      Object localObject1 = localAbstractUploadTask.getFilePath();
+      Object localObject2;
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        ((AbstractUploadTask)localObject2).onError(Const.UploadRetCode.DATA_ENCODE_EXCEPTION.getCode(), Const.UploadRetCode.DATA_ENCODE_EXCEPTION.getDesc());
+        if (this.mAppid.equalsIgnoreCase("video_qzone"))
+        {
+          this.mCheckType = CheckType.TYPE_SHA1;
+          localObject2 = FileUtils.getFileSha1(new File((String)localObject1));
+          this.sha1 = ((String)localObject2);
+          this.mChecksum = ((String)localObject2);
+        }
       }
       else
       {
-        ((com.tencent.upload.c.a.c)localObject3).a((byte[])localObject4);
-        localObject2 = (FileControlReq)((com.tencent.upload.c.a.c)localObject3).h();
-        ((Map)localObject1).put(i + 1 + "", localObject2);
+        label170:
+        if (!TextUtils.isEmpty(this.mChecksum)) {
+          break label240;
+        }
+        localAbstractUploadTask.onError(Const.UploadRetCode.FILE_NOT_EXIST.getCode(), Const.UploadRetCode.FILE_NOT_EXIST.getDesc());
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        this.mCheckType = CheckType.TYPE_MD5;
+        localObject2 = FileUtils.getMd5ByFile_REAL(new File((String)localObject1));
+        this.md5 = ((String)localObject2);
+        this.mChecksum = ((String)localObject2);
+        break label170;
+        label240:
+        UploadLog.d("BatchControlTask", "batchControlId:" + getTaskId() + ", index: " + i + ", taskId:" + localAbstractUploadTask.getTaskId() + ", path:" + (String)localObject1 + ", mCheckType:" + this.mCheckType + ", mChecksum:" + this.mChecksum);
+        long l = FileUtils.getFileLength((String)localObject1);
+        localObject1 = null;
+        if (localAbstractUploadTask.isSyncWeishi)
+        {
+          localObject1 = new HashMap();
+          localObject2 = new DumpBussinessReq();
+          ((DumpBussinessReq)localObject2).IMEI = localAbstractUploadTask.sDevIMEI;
+          ((Map)localObject1).put(Integer.valueOf(1), localObject2);
+        }
+        localObject1 = new FileControlRequest(this.iUin + "", this.mAppid, localAuthToken, this.mChecksum, this.mCheckType, l, this.mStEnv, this.mModel, "", this.mNeedIpRedirect, true, localAbstractUploadTask.iSync, (Map)localObject1);
+        localObject2 = localAbstractUploadTask.buildExtra();
+        if (localObject2 == null)
+        {
+          localAbstractUploadTask.onError(Const.UploadRetCode.DATA_ENCODE_EXCEPTION.getCode(), Const.UploadRetCode.DATA_ENCODE_EXCEPTION.getDesc());
+        }
+        else
+        {
+          ((FileControlRequest)localObject1).setExtraParam((byte[])localObject2);
+          localObject1 = (FileControlReq)((FileControlRequest)localObject1).createJceRequest();
+          localHashMap.put(i + 1 + "", localObject1);
+        }
       }
     }
-    label569:
-    if (((Map)localObject1).size() == 0)
+    if (localHashMap.size() == 0)
     {
-      setTaskStatus(com.tencent.upload.d.c.e);
+      setTaskStatus(TaskState.CANCEL);
       onTaskFinished(0, "Damn shit, no file need to upload !");
-      com.tencent.upload.common.b.b("BatchControlTask", "Damn shit, no file need to upload !");
+      UploadLog.d("BatchControlTask", "Damn shit, no file need to upload !");
       return null;
     }
-    return new com.tencent.upload.c.a.b((Map)localObject1);
+    return new BatchControlRequest(localHashMap);
   }
   
   public int getBatchCount()
@@ -167,60 +172,60 @@ public class BatchControlTask
     return TaskTypeConfig.ImageUploadTaskType;
   }
   
-  protected void onFileControlResponse(JceStruct paramJceStruct, com.tencent.upload.c.c paramc)
+  public void onFileControlResponse(JceStruct paramJceStruct, UploadResponse paramUploadResponse)
   {
-    paramc = (FileBatchControlRsp)paramJceStruct;
+    paramUploadResponse = (FileBatchControlRsp)paramJceStruct;
     this.mEndTime = System.currentTimeMillis();
-    com.tencent.upload.common.b.b("BatchControlTask", "[speed] batch control pkg cost: " + getCostTime());
-    if ((paramc == null) || (paramc.control_rsp == null) || (paramc.control_rsp.size() <= 0)) {
+    UploadLog.d("BatchControlTask", "[speed] batch control pkg cost: " + getCostTime());
+    if ((paramUploadResponse == null) || (paramUploadResponse.control_rsp == null) || (paramUploadResponse.control_rsp.size() <= 0)) {
       return;
     }
     paramJceStruct = new BatchControlResult();
     int i = 1;
     Object localObject;
-    while (i <= paramc.control_rsp.size())
+    while (i <= paramUploadResponse.control_rsp.size())
     {
-      localObject = (FileControlRsp)paramc.control_rsp.get(i + "");
+      localObject = (FileControlRsp)paramUploadResponse.control_rsp.get(i + "");
       paramJceStruct.mMap.put(this.mFilePaths.get(i - 1), localObject);
       i += 1;
     }
     this.mResult = paramJceStruct;
-    com.tencent.upload.common.b.b("BatchControlTask", "Num:" + paramJceStruct.mMap.size());
+    UploadLog.d("BatchControlTask", "Num:" + paramJceStruct.mMap.size());
     long l = getCostTime();
     if (!this.mTasks.isEmpty()) {
       l /= this.mTasks.size();
     }
     for (;;)
     {
-      paramc = this.mTasks.iterator();
-      while (paramc.hasNext())
+      paramUploadResponse = this.mTasks.iterator();
+      while (paramUploadResponse.hasNext())
       {
-        localObject = (AbstractUploadTask)paramc.next();
+        localObject = (AbstractUploadTask)paramUploadResponse.next();
         FileControlRsp localFileControlRsp = (FileControlRsp)paramJceStruct.mMap.get(((AbstractUploadTask)localObject).getFilePath());
         if ((localFileControlRsp != null) && (localFileControlRsp.result != null))
         {
-          com.tencent.upload.common.b.b("BatchControlTask", "flowid:" + ((AbstractUploadTask)localObject).flowId + " FileControlRsp rsp ret:" + localFileControlRsp.result.ret + " flag:" + localFileControlRsp.result.flag);
+          UploadLog.d("BatchControlTask", "flowid:" + ((AbstractUploadTask)localObject).flowId + " FileControlRsp rsp ret:" + localFileControlRsp.result.ret + " flag:" + localFileControlRsp.result.flag + " rsp.session:" + localFileControlRsp.session + " path:" + ((AbstractUploadTask)localObject).getFilePath());
           if (localFileControlRsp.result.ret == 0)
           {
             if (localFileControlRsp.result.flag != 1) {
-              break label433;
+              break label461;
             }
             ((AbstractUploadTask)localObject).setSecondUpload(localFileControlRsp);
           }
         }
-        label433:
+        label461:
         while (localFileControlRsp.result.flag != 2)
         {
           ((AbstractUploadTask)localObject).setSessionId(localFileControlRsp.session);
           ((AbstractUploadTask)localObject).setSliceSize((int)localFileControlRsp.slice_size);
-          if (((AbstractUploadTask)localObject).getTaskState() != com.tencent.upload.d.c.e) {
-            this.mTaskManager.a((AbstractUploadTask)localObject);
+          if (((AbstractUploadTask)localObject).getTaskState() != TaskState.CANCEL) {
+            this.mTaskManager.sendAsync((AbstractUploadTask)localObject);
           }
           ((AbstractUploadTask)localObject).getReportObj().batchCtrlCostAvg = l;
           break;
         }
       }
-      setTaskStatus(com.tencent.upload.d.c.g);
+      setTaskStatus(TaskState.SUCCEED);
       onTaskFinished(Const.UploadRetCode.SUCCEED.getCode(), Const.UploadRetCode.SUCCEED.getDesc());
       return;
     }
@@ -228,32 +233,36 @@ public class BatchControlTask
   
   public boolean onRun()
   {
+    UploadLog.d("BatchControlTask", "BatchControlTask onRun() is start !! taskId:" + getTaskId());
     this.mFinish = false;
-    com.tencent.upload.c.b localb = getBatchControlRequest();
-    if (localb == null) {
+    UploadRequest localUploadRequest = getBatchControlRequest();
+    if (localUploadRequest == null)
+    {
+      UploadLog.e("BatchControlTask", " onRun(), req == null !! taskId:" + getTaskId());
       return false;
     }
-    setState(com.tencent.upload.d.c.b);
-    com.tencent.upload.network.a.a locala = this.mSessionPool.c();
-    this.mSavedSession = locala;
-    this.mSession = locala;
     if (this.mFinish)
     {
-      com.tencent.upload.common.b.e("BatchControlTask", "BatchControlTask onRun(), task is finished already !");
+      UploadLog.e("BatchControlTask", "BatchControlTask onRun(), task is finished already ! taskId:" + getTaskId());
       return false;
     }
-    if (this.mSession == null)
+    IUploadSession localIUploadSession = this.mSessionPool.poll();
+    if (localIUploadSession == null)
     {
-      com.tencent.upload.common.b.e("BatchControlTask", "BatchControlTask onRun(), get session return null !");
+      UploadLog.e("BatchControlTask", "BatchControlTask onRun(), get session return null ! taskId:" + getTaskId());
       retryPollSession();
       return false;
     }
+    UploadLog.d("BatchControlTask", "BatchControlTask onRun() session is not null. ready to send taskId:" + getTaskId());
+    setState(TaskState.CONNECTING);
+    this.mSavedSession = localIUploadSession;
+    this.mSession = localIUploadSession;
     this.mStartTime = System.currentTimeMillis();
     this.mFlagError = false;
-    return this.mSession.a(localb, this);
+    return this.mSession.send(localUploadRequest, this);
   }
   
-  protected void onUploadError(int paramInt, String paramString)
+  public void onUploadError(int paramInt, String paramString)
   {
     if ((this.mTasks != null) && (this.mTasks.size() > 0))
     {
@@ -269,11 +278,27 @@ public class BatchControlTask
     return true;
   }
   
-  protected void report(int paramInt, String paramString) {}
+  public String printAllTaskInBatchControl()
+  {
+    if ((this.mTasks == null) || (this.mTasks.size() == 0)) {
+      return "no task in batchControlTask";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    while (i < this.mTasks.size())
+    {
+      AbstractUploadTask localAbstractUploadTask = (AbstractUploadTask)this.mTasks.get(i);
+      localStringBuilder.append("index:").append(i).append(" taskId:").append(localAbstractUploadTask.getTaskId()).append("\n");
+      i += 1;
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public void report(int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.upload.uinterface.data.BatchControlTask
  * JD-Core Version:    0.7.0.1
  */

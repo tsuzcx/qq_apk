@@ -1,18 +1,29 @@
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment;
-
 public class aolt
-  implements Runnable
+  extends aolr
 {
-  public aolt(CaptureQmcfSoDownloadFragment paramCaptureQmcfSoDownloadFragment) {}
+  private aomk jdField_a_of_type_Aomk;
+  private aomu jdField_a_of_type_Aomu;
   
-  public void run()
+  public aolt(String paramString, aomk paramaomk, aomu paramaomu)
   {
-    this.a.a();
+    super(paramString);
+    this.jdField_a_of_type_Aomk = paramaomk;
+    this.jdField_a_of_type_Aomu = paramaomu;
+  }
+  
+  public aomk a()
+  {
+    return this.jdField_a_of_type_Aomk;
+  }
+  
+  public aomu a()
+  {
+    return this.jdField_a_of_type_Aomu;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aolt
  * JD-Core Version:    0.7.0.1
  */

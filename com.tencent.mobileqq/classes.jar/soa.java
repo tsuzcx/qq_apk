@@ -1,35 +1,33 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.open.agent.report.ReportCenter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class soa
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public soa(ForwardRecentActivity paramForwardRecentActivity) {}
+  public soa(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramView = new Bundle();
-    paramView.putString("uin", String.valueOf(AppConstants.J));
-    paramView.putInt("uintype", -1);
-    paramView.putBoolean("forward_report_confirm", true);
-    paramView.putString("forward_report_confirm_action_name", "0X8005A13");
-    paramView.putString("forward_report_confirm_reverse2", "2");
-    this.a.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.a(ForwardAbility.ForwardAbilityType.g.intValue(), paramView);
-    if (this.a.jdField_a_of_type_Boolean) {
-      ReportCenter.a().a(this.a.app.getAccount(), "", this.a.b, "1000", "35", "0", false);
+    paramDialogInterface = new JSONObject();
+    try
+    {
+      paramDialogInterface.put("type", -1);
+      paramDialogInterface.put("action", "close");
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
+      }
+      return;
     }
+    catch (JSONException paramDialogInterface) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     soa
  * JD-Core Version:    0.7.0.1
  */

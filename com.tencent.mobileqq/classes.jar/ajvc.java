@@ -1,14 +1,6 @@
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
-
-class ajvc
-  implements Runnable
+public abstract interface ajvc
 {
-  ajvc(ajvb paramajvb) {}
-  
-  public void run()
-  {
-    this.a.a.b();
-  }
+  public abstract boolean a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4);
 }
 
 

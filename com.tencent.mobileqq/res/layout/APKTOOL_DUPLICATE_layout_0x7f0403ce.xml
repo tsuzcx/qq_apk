@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1406" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0403c8" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d04fa" android:textColor="@android:color/black" android:ellipsize="end" android:id="@id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d04ff" android:layout_marginTop="15.0dip" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0500" android:includeFontPadding="false" android:lineSpacingExtra="1.5dip" />
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13ed" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d04ff" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0503" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0501" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0403c6" />
-</LinearLayout>

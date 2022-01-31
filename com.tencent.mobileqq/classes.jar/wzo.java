@@ -1,57 +1,59 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper.GoldMsgChatState;
-import com.tencent.mobileqq.activity.qwallet.widget.NumAnim;
-import com.tencent.mobileqq.widget.FormEditItem;
+import com.tencent.biz.qqstory.takevideo.EditVideoFilter;
 
 public class wzo
-  extends wzn
+  implements wzq
 {
-  private View.OnFocusChangeListener jdField_a_of_type_AndroidViewView$OnFocusChangeListener = new wzp(this);
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  private EditText b;
+  private long jdField_a_of_type_Long;
   
-  public wzo(GoldMsgSettingActivity paramGoldMsgSettingActivity, Context paramContext, Intent paramIntent, String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    super(paramGoldMsgSettingActivity, paramContext, paramIntent, paramString1, paramString2, paramString3, paramInt);
-  }
+  public wzo(EditVideoFilter paramEditVideoFilter) {}
   
-  void a(View paramView)
+  public void a(MotionEvent paramMotionEvent)
   {
-    Object localObject = (FormEditItem)paramView.findViewById(2131364746);
-    paramView = (FormEditItem)paramView.findViewById(2131364747);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((FormEditItem)localObject).a();
-    this.b = paramView.a();
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(this.jdField_a_of_type_AndroidViewView$OnFocusChangeListener);
-    this.b.setOnFocusChangeListener(this.jdField_a_of_type_AndroidViewView$OnFocusChangeListener);
-    this.jdField_a_of_type_AndroidWidgetEditText.setInputType(8194);
-    this.b.setInputType(2);
-    paramView = GoldMsgChatHelper.a().a(this.jdField_a_of_type_Int, this.c);
-    if (paramView != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(NumAnim.formatNumber(paramView.b / 100.0D, false));
-      localObject = paramView.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener((TextWatcher)localObject);
-      localObject = paramView.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
-      this.b.setText(String.valueOf(paramView.c));
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener((TextWatcher)localObject);
+    wxs localwxs = (wxs)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(wxs.class);
+    if (localwxs != null) {
+      localwxs.a(paramMotionEvent);
     }
   }
   
-  boolean a()
+  public boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2)
   {
-    return GoldMsgChatHelper.a().a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.d, this.c, this.jdField_a_of_type_AndroidWidgetEditText, this.b);
+    if (paramMotionEvent2 != null)
+    {
+      wxs localwxs = (wxs)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(wxs.class);
+      if (localwxs != null) {}
+      for (boolean bool = localwxs.a(paramMotionEvent2);; bool = false)
+      {
+        if (bool)
+        {
+          a(paramMotionEvent1);
+          a(paramMotionEvent2);
+        }
+        return bool;
+      }
+    }
+    return false;
+  }
+  
+  public void onClick(View paramView)
+  {
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long > 300L)
+    {
+      this.jdField_a_of_type_Long = l;
+      paramView = (wxs)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(wxs.class);
+      if (paramView != null) {
+        paramView.d_();
+      }
+      return;
+    }
+    wxe.b("Q.qqstory.publish.edit.EditVideoFilter", "repeat viewpager click.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wzo
  * JD-Core Version:    0.7.0.1
  */

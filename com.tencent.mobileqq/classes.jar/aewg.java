@@ -1,62 +1,39 @@
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.send.PublishManager;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadInfo;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
 
-public class aewg
-  implements Runnable
+class aewg
+  implements ImageAssetDelegate
 {
-  public aewg(VideoFeedsUploader paramVideoFeedsUploader, VideoFeedsUploader.UploadResult paramUploadResult) {}
+  aewg(aewe paramaewe) {}
   
-  public void run()
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult != null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("VideoFeedsUploader", 2, "upload result: " + this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.a());
-      }
-    }
-    for (;;)
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inScaled = true;
+    localOptions.inDensity = 320;
+    try
     {
-      synchronized (PublishManager.jdField_a_of_type_JavaLangObject)
-      {
-        PublishManager.jdField_a_of_type_JavaUtilHashMap.remove(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.jdField_a_of_type_JavaLangString);
-        ??? = VideoCompositeHelper.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.jdField_a_of_type_JavaLangString);
-        ??? = VideoFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader, this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult, (PublishVideoEntry)???);
-        ((PublishVideoEntry)???).setStatus(1001);
-        if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.jdField_a_of_type_Int == 0)
-        {
-          ((PublishVideoEntry)???).publishState = 0;
-          PublishManager.a((PublishVideoEntry)???);
-          PublishManager.a((PublishVideoEntry)???);
-          if (QLog.isColorLevel()) {
-            QLog.i("VideoFeedsUploader arendgx", 2, "updatePublishVideo called");
-          }
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.e = (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.c);
-          if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.d > 0L) {
-            this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.f = (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.d);
-          }
-          ??? = new VideoFeedsUploader.UploadInfo(VideoFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader));
-          VideoFeedsUploader.UploadResult localUploadResult = new VideoFeedsUploader.UploadResult(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult);
-          ThreadManager.getUIHandler().post(new aewh(this, (VideoFeedsUploader.UploadInfo)???, localUploadResult));
-          VideoFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader).a();
-          VideoFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader).a();
-          VideoFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader, false);
-          return;
-        }
-      }
-      ((PublishVideoEntry)???).publishState = 2;
+      paramLottieImageAsset = bdhj.a(aewe.a(this.a) + "images/" + paramLottieImageAsset.getFileName(), localOptions);
+      return paramLottieImageAsset;
     }
+    catch (Exception paramLottieImageAsset)
+    {
+      QLog.e("FriendShipAnimDirector", 1, "Delegate decode bitmap error");
+      return null;
+    }
+    catch (OutOfMemoryError paramLottieImageAsset)
+    {
+      QLog.e("FriendShipAnimDirector", 1, "Delegate decode bitmap OOM");
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aewg
  * JD-Core Version:    0.7.0.1
  */

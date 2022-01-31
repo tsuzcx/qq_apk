@@ -1,32 +1,20 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
 
 public class mgk
-  extends AccessibilityDelegateCompat
+  implements View.OnClickListener
 {
-  public mgk(BaseTabbar paramBaseTabbar) {}
+  public mgk(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public void onClick(View paramView)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (BaseTabbar.a(this.a, paramView) == BaseTabbar.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramAccessibilityNodeInfoCompat.setSelected(bool);
-      return;
-    }
-  }
-  
-  public void sendAccessibilityEvent(View paramView, int paramInt)
-  {
-    super.sendAccessibilityEvent(paramView, paramInt);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mgk
  * JD-Core Version:    0.7.0.1
  */

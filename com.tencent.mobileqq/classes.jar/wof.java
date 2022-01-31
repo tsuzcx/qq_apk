@@ -1,39 +1,36 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.eqq.CrmUtils;
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment.ListAdapter;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wof
-  implements View.OnClickListener
+  extends QQUIEventReceiver<StoryMessageListActivity, vdl>
 {
-  public wof(PublicAccountFragment.ListAdapter paramListAdapter) {}
-  
-  public void onClick(View paramView)
+  public wof(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
   {
-    switch (paramView.getId())
+    super(paramStoryMessageListActivity);
+  }
+  
+  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull vdl paramvdl)
+  {
+    if (paramvdl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-    }
-    String str;
-    do
-    {
-      return;
-      str = (String)paramView.getTag(-1);
-      paramView = (String)paramView.getTag(-2);
-      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramView))) {
-        break;
+      if (QLog.isDevelopLevel()) {
+        QLog.i(this.TAG, 2, "get userinfo come back. >>>>>> " + paramvdl.jdField_a_of_type_JavaUtilList);
       }
-    } while (!QLog.isColorLevel());
-    QLog.w("Contacts.PublicAccountFragment", 2, "onClick - uin = " + str + ", name = " + paramView);
-    return;
-    CrmUtils.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramView, str, "IvrEnterpriseDetailEngineFalse");
+      paramStoryMessageListActivity.g();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vdl.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wof
  * JD-Core Version:    0.7.0.1
  */

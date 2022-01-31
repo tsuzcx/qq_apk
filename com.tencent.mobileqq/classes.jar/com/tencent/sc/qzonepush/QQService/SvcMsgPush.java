@@ -10,10 +10,10 @@ import java.util.ArrayList;
 public final class SvcMsgPush
   extends JceStruct
 {
-  static ArrayList cache_vecMsgInfos;
+  static ArrayList<SvcMsgInfo> cache_vecMsgInfos;
   public byte cMore;
   public int iUnread;
-  public ArrayList vecMsgInfos;
+  public ArrayList<SvcMsgInfo> vecMsgInfos;
   
   static
   {
@@ -27,7 +27,7 @@ public final class SvcMsgPush
   
   public SvcMsgPush() {}
   
-  public SvcMsgPush(byte paramByte, int paramInt, ArrayList paramArrayList)
+  public SvcMsgPush(byte paramByte, int paramInt, ArrayList<SvcMsgInfo> paramArrayList)
   {
     this.cMore = paramByte;
     this.iUnread = paramInt;
@@ -91,7 +91,7 @@ public final class SvcMsgPush
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.sc.qzonepush.QQService.SvcMsgPush
  * JD-Core Version:    0.7.0.1
  */

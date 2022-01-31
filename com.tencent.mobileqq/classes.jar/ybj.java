@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.activity.selectmember.SelectMemberBuddyListAdapter;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
+import java.util.HashMap;
 
 public class ybj
-  implements BubblePopupWindow.OnDismissListener
 {
-  public ybj(SelectMemberBuddyListAdapter paramSelectMemberBuddyListAdapter) {}
-  
-  public void a() {}
+  public HashMap<String, String> a = new HashMap();
+  public HashMap<String, String> b = new HashMap();
+  public HashMap<String, String> c = new HashMap();
+  public HashMap<String, String> d = new HashMap();
+  public HashMap<String, String> e = new HashMap();
+  public HashMap<String, String> f = new HashMap();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ybj
  * JD-Core Version:    0.7.0.1
  */

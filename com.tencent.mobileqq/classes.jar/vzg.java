@@ -1,90 +1,122 @@
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.ConversationFacade;
-import com.tencent.mobileqq.troop.data.TroopEntranceBar;
-import com.tencent.mobileqq.utils.SendMessageHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.view.View;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.IEventReceiver;
+import com.tribe.async.dispatch.Subscriber;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public class vzg
-  extends MessageObserver
+public abstract class vzg
+  implements IEventReceiver
 {
-  public vzg(PublicAccountChatPie paramPublicAccountChatPie) {}
+  private long a;
+  protected Map<Subscriber, String> a;
+  protected Set<vrx> a;
+  public vzd a;
+  protected boolean a;
+  public boolean b;
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  public Map<Subscriber, String> a()
   {
-    if ((paramString1 == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.BaseChatPie", 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, "onUpdateSendMsgError uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
-    }
-    this.a.b(196608);
+    return null;
   }
   
-  protected void a(boolean paramBoolean, String paramString)
+  public Set<vrx> a()
   {
-    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
-    {
-      ChatActivityUtils.b();
-      if (paramBoolean) {
-        this.a.k();
-      }
-    }
+    return null;
   }
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  public void a()
   {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    while (!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    this.a.q = true;
-    this.a.a(262144, null, paramLong);
-  }
-  
-  protected void a(boolean paramBoolean, String[] paramArrayOfString)
-  {
-    if ((paramBoolean) && (paramArrayOfString != null))
+    Iterator localIterator;
+    Object localObject;
+    if ((this.jdField_a_of_type_JavaUtilMap != null) && (!this.jdField_a_of_type_JavaUtilMap.isEmpty()))
     {
-      paramArrayOfString = paramArrayOfString[0];
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar.b.contains(paramArrayOfString))
+      localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      while (localIterator.hasNext())
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar.a.put(paramArrayOfString, Integer.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramArrayOfString, 1)));
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar.d();
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar.e();
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar.c();
+        localObject = (Subscriber)((Map.Entry)localIterator.next()).getKey();
+        umc.a().unRegisterSubscriber((Subscriber)localObject);
       }
+      this.jdField_a_of_type_JavaUtilMap.clear();
     }
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
+    if ((this.jdField_a_of_type_JavaUtilSet != null) && (!this.jdField_a_of_type_JavaUtilSet.isEmpty()))
     {
-      ChatActivityUtils.b();
-      if (paramBoolean) {
-        this.a.k();
+      localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+      while (localIterator.hasNext())
+      {
+        localObject = (vrx)localIterator.next();
+        this.jdField_a_of_type_Vzd.b((vrx)localObject);
       }
+      this.jdField_a_of_type_JavaUtilSet.clear();
     }
   }
   
-  protected void c(boolean paramBoolean, String paramString)
+  public final void a(@NonNull vzd paramvzd, int paramInt, @NonNull vtt paramvtt)
   {
-    this.a.b(65536);
+    vzd.a(paramvzd, paramInt);
+    this.jdField_a_of_type_Vzd = paramvzd;
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      Object localObject1 = a();
+      if ((localObject1 != null) && (!((Map)localObject1).isEmpty()))
+      {
+        Iterator localIterator = ((Map)localObject1).entrySet().iterator();
+        while (localIterator.hasNext())
+        {
+          Object localObject2 = (Map.Entry)localIterator.next();
+          Subscriber localSubscriber = (Subscriber)((Map.Entry)localObject2).getKey();
+          localObject2 = (String)((Map.Entry)localObject2).getValue();
+          umc.a().registerSubscriber((String)localObject2, localSubscriber);
+        }
+        if (this.jdField_a_of_type_JavaUtilMap == null) {
+          this.jdField_a_of_type_JavaUtilMap = new HashMap();
+        }
+        this.jdField_a_of_type_JavaUtilMap.putAll((Map)localObject1);
+      }
+      localObject1 = a();
+      if ((localObject1 != null) && (!((Set)localObject1).isEmpty()))
+      {
+        if (this.jdField_a_of_type_JavaUtilSet == null) {
+          this.jdField_a_of_type_JavaUtilSet = new HashSet();
+        }
+        this.jdField_a_of_type_JavaUtilSet.addAll((Collection)localObject1);
+      }
+      this.jdField_a_of_type_Boolean = true;
+    }
+    a(paramvzd.a, paramvtt);
+  }
+  
+  public final void a(vzh paramvzh, vtt paramvtt)
+  {
+    paramvzh.a();
+    b(paramvzh, paramvtt);
+  }
+  
+  public boolean a(View paramView)
+  {
+    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {
+      return false;
+    }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    return true;
+  }
+  
+  public abstract void b(vzh paramvzh, vtt paramvtt);
+  
+  public boolean isValidate()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vzg
  * JD-Core Version:    0.7.0.1
  */

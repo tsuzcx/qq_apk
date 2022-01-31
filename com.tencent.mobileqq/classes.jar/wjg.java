@@ -1,38 +1,25 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
-import com.tencent.widget.OverScrollViewListener;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
-public class wjg
-  implements OverScrollViewListener
+class wjg
+  implements TextView.OnEditorActionListener
 {
-  public wjg(TroopView paramTroopView) {}
+  wjg(wjf paramwjf) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    TroopView.a(this.a).c(0L);
+    if (paramInt == 4)
+    {
+      this.a.d();
+      return true;
+    }
+    return false;
   }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    TroopView.a(this.a).a(0L);
-    TroopView.a(this.a, false);
-    TroopView.a(this.a);
-    TroopView.a(this.a, true);
-    return true;
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    TroopView.a(this.a).b(0L);
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wjg
  * JD-Core Version:    0.7.0.1
  */

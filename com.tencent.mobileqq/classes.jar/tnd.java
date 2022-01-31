@@ -1,24 +1,21 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class tnd
-  implements Runnable
+  implements View.OnClickListener
 {
-  tnd(tnc paramtnc, tni paramtni) {}
+  tnd(tnc paramtnc) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    SharedPreferences.Editor localEditor = this.jdField_a_of_type_Tnc.a.app.getPreferences().edit();
-    localEditor.putString("chatHistoryEventName", this.jdField_a_of_type_Tni.a);
-    localEditor.putBoolean("chatHistoryEventEntryFirstShow", true);
-    localEditor.commit();
+    this.a.g();
+    this.a.i();
+    tnc.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tnd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a198a" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a59" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-        <com.tencent.mobileqq.widget.BubbleImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a5a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" />
-        <View android:layout_width="1.0dip" android:layout_height="8.0dip" />
-    </LinearLayout>
-    <com.tencent.mobileqq.widget.BubbleImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a5b" android:layout_width="82.0dip" android:layout_height="82.0dip" android:scaleType="centerCrop" android:layout_alignParentBottom="true" />
-</RelativeLayout>

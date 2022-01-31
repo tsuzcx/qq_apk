@@ -1,28 +1,24 @@
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.ApolloTicker;
-import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
 
 public class yrn
-  implements Runnable
+  extends altm
 {
-  public yrn(CmGameLauncher paramCmGameLauncher) {}
+  public yrn(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public void run()
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
   {
-    if ((CmGameLauncher.a(this.a) != null) && (CmGameLauncher.a(this.a).getRender() != null) && (CmGameLauncher.a(this.a).getRender().mApolloTicker != null))
-    {
-      ApolloRender.tickerPause(CmGameLauncher.a(this.a).getRender().mApolloTicker.ticker);
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameLauncher", 2, "mPauseTickerTask");
-      }
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 30);
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putSerializable("data", new Object[] { paramString });
+    localBundle.putSerializable("observer_type", Integer.valueOf(2));
+    this.a.a(3, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yrn
  * JD-Core Version:    0.7.0.1
  */

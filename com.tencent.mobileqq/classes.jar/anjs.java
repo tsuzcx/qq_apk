@@ -1,19 +1,11 @@
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-import dov.com.tencent.mobileqq.richmedia.capture.view.GuideVideoView.OnCloseListener;
-
-public class anjs
-  implements GuideVideoView.OnCloseListener
+public abstract interface anjs
+  extends anjv
 {
-  public anjs(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
-  
-  public void a()
-  {
-    QIMEffectCameraCaptureUnit.e(this.a);
-  }
+  public abstract void a(boolean paramBoolean, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anjs
  * JD-Core Version:    0.7.0.1
  */

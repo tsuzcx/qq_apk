@@ -1,24 +1,26 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.mybusiness.MyBusinessServlet;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 import com.tencent.qphone.base.util.QLog;
 
 public class aeli
-  extends SosoInterface.OnLocationListener
+  extends VasQuickUpdateManager.CallBacker
 {
-  public aeli(MyBusinessServlet paramMyBusinessServlet, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public aeli(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MyBusinessServlet", 2, "onLocationFinish() errCode=" + paramInt);
+    if ((paramLong == 15L) && (paramString1.startsWith("card.")))
+    {
+      if ((paramInt1 == 0) && (!TextUtils.isEmpty(this.a.g))) {
+        this.a.c(this.a.g);
+      }
     }
-    if ((paramInt == 0) && (paramSosoLbsInfo != null)) {
-      MyBusinessServlet.a(this.a, paramSosoLbsInfo);
+    else {
+      return;
     }
+    QLog.e("VipProfileCardDiyActivity", 1, "download card background failed. errorCode=" + paramInt1 + ", url=" + this.a.b);
   }
 }
 

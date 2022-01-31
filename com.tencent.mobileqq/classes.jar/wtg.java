@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class wtg
-  implements View.OnClickListener
+class wtg
+  implements DialogInterface.OnDismissListener
 {
-  public wtg(BindNumberActivity paramBindNumberActivity) {}
+  wtg(wtd paramwtd) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.doOnBackPressed();
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wtg
  * JD-Core Version:    0.7.0.1
  */

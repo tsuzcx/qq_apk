@@ -1,30 +1,43 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.ChannelCoverInfoModule;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-
 public class lqq
-  implements Runnable
 {
-  public lqq(ChannelCoverInfoModule paramChannelCoverInfoModule, int paramInt, List paramList) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e;
+  public boolean f;
   
-  public void run()
+  public lqq()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChannelCoverInfoModule", 2, "notifyUIToRefresh channelId=" + this.jdField_a_of_type_Int + " ;size = " + this.jdField_a_of_type_JavaUtilList.size());
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Long = 4L;
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject != null) && ((paramObject instanceof lqq)))
+    {
+      paramObject = (lqq)paramObject;
+      if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long) {
+        return true;
+      }
     }
-    if (this.jdField_a_of_type_Int == 0) {
-      ReadInJoyLogicEngineEventDispatcher.a().e(true, this.jdField_a_of_type_JavaUtilList);
-    }
-    while (this.jdField_a_of_type_Int != 56) {
-      return;
-    }
-    ReadInJoyLogicEngineEventDispatcher.a().f(true, this.jdField_a_of_type_JavaUtilList);
+    return false;
+  }
+  
+  public String toString()
+  {
+    return "Uin[" + this.jdField_a_of_type_Long + "], VideoSrcType[" + this.jdField_a_of_type_Int + "], isBig[" + this.jdField_a_of_type_Boolean + "], isRender[" + this.jdField_b_of_type_Boolean + "], isNeedRequest[" + this.c + "], hasRecvData[" + this.d + "], inviteId[" + this.jdField_a_of_type_JavaLangString + "], isMirror[" + this.f + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lqq
  * JD-Core Version:    0.7.0.1
  */

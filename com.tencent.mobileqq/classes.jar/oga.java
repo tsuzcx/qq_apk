@@ -1,21 +1,19 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
-import com.tencent.mobileqq.shortvideo.hwcodec.VideoSourceHelper;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class oga
-  implements Runnable
+class oga
+  implements View.OnClickListener
 {
-  public oga(EditVideoPlayer paramEditVideoPlayer, int paramInt) {}
+  oga(ofx paramofx) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    SLog.a("Q.qqstory.record.EditVideoPlayer", "setPlayMode %d", Integer.valueOf(this.jdField_a_of_type_Int));
-    VideoSourceHelper.nativeSetPlayMode(this.jdField_a_of_type_Int);
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oga
  * JD-Core Version:    0.7.0.1
  */

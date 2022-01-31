@@ -1,51 +1,25 @@
-import android.view.MotionEvent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
 public class aidd
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public aidd(RedBagVideoManager paramRedBagVideoManager) {}
+  public aidd(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
-      bool1 = false;
+    this.a.getActivity().setResult(0, this.a.getActivity().getIntent());
+    this.a.getActivity().finish();
+    if (this.a.d == 11) {
+      azqs.b(this.a.getActivity().app, "CliOper", "", "", "0X8006215", "0X8006215", 0, 0, "1", "", "", "");
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return bool1;
-          bool1 = bool2;
-        } while (RedBagVideoManager.a(this.a) == null);
-        paramView = RedBagVideoManager.a(this.a).getText().toString().trim();
-        bool1 = bool2;
-      } while ("红包已发".trim().equals(paramView));
-      RedBagVideoManager.a(this.a).setAlpha(0.5F);
-      return true;
-      if (RedBagVideoManager.a(this.a) != null) {
-        RedBagVideoManager.a(this.a).setAlpha(1.0F);
-      }
-      RedBagVideoManager.a(this.a, RedBagVideoManager.a(this.a));
-      RedBagVideoManager.b(this.a, System.currentTimeMillis());
-      bool1 = bool2;
-    } while (RedBagVideoManager.a(this.a) - RedBagVideoManager.b(this.a) < 300L);
-    RedBagVideoManager.a(this.a);
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aidd
  * JD-Core Version:    0.7.0.1
  */

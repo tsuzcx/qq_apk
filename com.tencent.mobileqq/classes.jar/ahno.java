@@ -1,27 +1,21 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.richmedia.dc.DCShortVideo;
-import com.tencent.mobileqq.richmedia.dc.DataReport;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectionsExplorationFragment;
 
 public class ahno
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ahno(DCShortVideo paramDCShortVideo, AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString) {}
+  public ahno(ConnectionsExplorationFragment paramConnectionsExplorationFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject = new ahnu();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaDcDCShortVideo.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString, (ahnt)localObject);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("DCShortVideo", 4, "[reportSave]shortVideoType=" + ((ahnu)localObject).f + ",uinType = " + ((ahnu)localObject).b + ",groupMemCount = " + ((ahnu)localObject).c + ",age = " + ((ahnu)localObject).d + ",gender = " + ((ahnu)localObject).e + ",reprotHour = " + ((ahnu)localObject).g + ",netType = " + ((ahnu)localObject).h);
-    }
-    localObject = new ahnz("ShortVideo.Save", ((ahnu)localObject).a("ShortVideo.Save"));
-    DataReport.a().a((ahnz)localObject);
+    this.a.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahno
  * JD-Core Version:    0.7.0.1
  */

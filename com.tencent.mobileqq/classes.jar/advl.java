@@ -1,41 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.intervideo.IVPluginInfo;
-import com.tencent.mobileqq.intervideo.huayang.HuayangJsPlugin;
-import com.tencent.mobileqq.intervideo.huayang.Monitor;
-import com.tencent.mobileqq.intervideo.od.LoadingUI;
-import com.tencent.mobileqq.intervideo.od.ODLoadingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
 
 public class advl
-  extends BroadcastReceiver
+  implements DialogInterface.OnDismissListener
 {
-  public advl(ODLoadingActivity paramODLoadingActivity) {}
+  public advl(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals(HuayangJsPlugin.a("com.tencent.huayang"))) {
-      switch (paramIntent.getIntExtra("key_state", -1))
-      {
-      }
-    }
-    while (!HuayangJsPlugin.b(this.a.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.c).equals(paramContext))
+    if (this.a.getActivity() != null)
     {
-      return;
-      int i = paramIntent.getIntExtra("key_progress", 0);
-      this.a.jdField_a_of_type_ComTencentMobileqqIntervideoOdLoadingUI.a(i);
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqIntervideoOdLoadingUI.a("正在努力加载...", true);
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqIntervideoOdLoadingUI.a("下载失败，请重试!");
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqIntervideoOdLoadingUI.a("加载失败，请重试!");
-      Monitor.a("2694153");
-      return;
-      Monitor.a("2694152");
-      this.a.finish();
-      return;
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
     }
   }
 }

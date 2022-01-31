@@ -1,25 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import cooperation.qlink.QlinkStandardDialogActivity;
-
 public class amny
-  extends BroadcastReceiver
 {
-  public amny(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
+  public void a() {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(int paramInt)
   {
-    if ("com.tencent.qlink.finishdlg".equalsIgnoreCase(paramIntent.getAction()))
+    switch (paramInt)
     {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
+    default: 
+      return;
+    case 1000: 
+      a();
+      return;
     }
+    b();
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amny
  * JD-Core Version:    0.7.0.1
  */

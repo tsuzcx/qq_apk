@@ -1,29 +1,30 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class tto
-  implements Runnable
+class tto
+  implements bfah
 {
-  public tto(SplashActivity paramSplashActivity) {}
+  tto(ttl paramttl) {}
   
-  public void run()
+  public void a(BaseResp paramBaseResp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SplashActivity", 2, "VideoRedbag, SplashActivity doOnResume, sendRealNameCheckReq");
+    if ((ttl.a(this.a) == null) || (!ttl.a(this.a).equals(paramBaseResp.transaction))) {
+      return;
     }
-    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      RedBagVideoManager.a((QQAppInterface)localAppRuntime);
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      QQToast.a(this.a.a(), 1, alud.a(2131715039), 0).a();
+      return;
     }
+    QQToast.a(this.a.a(), 2, alud.a(2131715041), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tto
  * JD-Core Version:    0.7.0.1
  */

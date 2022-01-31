@@ -1,19 +1,13 @@
 package com.tencent.token.ui;
 
-import android.view.View;
+import android.app.Activity;
 import android.view.View.OnClickListener;
-import com.tencent.token.global.e;
 
-final class aax
-  implements View.OnClickListener
+public abstract interface aax
 {
-  aax(SmsContentTipActivity paramSmsContentTipActivity) {}
+  public abstract void dismissDialog();
   
-  public final void onClick(View paramView)
-  {
-    e.c("removeTimeTask showProgressDialog");
-    this.a.removeTimeTask(5);
-  }
+  public abstract void showProDialog(Activity paramActivity, int paramInt, View.OnClickListener paramOnClickListener);
 }
 
 

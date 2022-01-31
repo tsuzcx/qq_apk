@@ -1,25 +1,15 @@
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarDownloadManager;
-import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.ImageView;
 
 public class afby
-  implements Runnable
+  extends afcd
 {
-  public afby(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment, String paramString) {}
-  
-  public void run()
-  {
-    if (NearbyAuthVideoPlayerFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment) != null)
-    {
-      NearbyAuthVideoPlayerFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment).a(this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    QLog.i("NearbyAuthVideoPlayerFragment", 1, "mDynamicAvatarDownloadManager is NULL!!!");
-  }
+  public View a;
+  public ImageView a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afby
  * JD-Core Version:    0.7.0.1
  */

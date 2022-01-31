@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public final class ProfUsrQryReq
   extends JceStruct
 {
-  static ArrayList cache_vUin;
+  static ArrayList<Long> cache_vUin;
   public byte cGetBusiCardFlag;
   public byte cGetDateNick;
   public byte cGetSig;
@@ -20,11 +20,11 @@ public final class ProfUsrQryReq
   public int iReloadFlag;
   public int iRetIncomPlete;
   public String strSessionKey = "";
-  public ArrayList vUin;
+  public ArrayList<Long> vUin;
   
   public ProfUsrQryReq() {}
   
-  public ProfUsrQryReq(int paramInt1, String paramString, ArrayList paramArrayList, int paramInt2, int paramInt3, byte paramByte1, int paramInt4, int paramInt5, byte paramByte2, byte paramByte3, byte paramByte4, int paramInt6)
+  public ProfUsrQryReq(int paramInt1, String paramString, ArrayList<Long> paramArrayList, int paramInt2, int paramInt3, byte paramByte1, int paramInt4, int paramInt5, byte paramByte2, byte paramByte3, byte paramByte4, int paramInt6)
   {
     this.iAppId = paramInt1;
     this.strSessionKey = paramString;
@@ -79,7 +79,7 @@ public final class ProfUsrQryReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     KQQ.ProfUsrQryReq
  * JD-Core Version:    0.7.0.1
  */

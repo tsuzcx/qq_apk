@@ -1,24 +1,13 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.smartdevice.ipc.SmartDeviceIPCHost;
+import java.util.List;
 
-public class anen
-  extends Handler
+public abstract interface anen
+  extends aneg
 {
-  public anen(SmartDeviceIPCHost paramSmartDeviceIPCHost, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract void a(long paramLong);
   
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 1)
-    {
-      this.a.jdField_a_of_type_CooperationSmartdeviceIpcISmartDeviceService = null;
-      this.a.jdField_a_of_type_Boolean = false;
-    }
-  }
+  public abstract void a(List<aned> paramList, long paramLong);
+  
+  public abstract void a(boolean paramBoolean1, String paramString, boolean paramBoolean2);
 }
 
 

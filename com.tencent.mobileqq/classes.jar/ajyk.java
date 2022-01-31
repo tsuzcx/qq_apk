@@ -1,35 +1,67 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.view.View;
+import com.tencent.TMG.utils.QLog;
 
-public final class ajyk
-  implements DownloadParams.DecodeHandler
+public class ajyk
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  private static final int b = Color.rgb(123, 113, 30);
+  private static final int c = Color.argb(64, 125, 113, 30);
+  private static final int d = Color.rgb(162, 116, 4);
+  private static final int e = Color.argb(64, 213, 185, 118);
+  public int a = 0;
+  
+  private ajyb a(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("URLDrawableDecodeHandler", 4, "ROUND_FACE_DECODER");
-    }
-    if (paramBitmap == null) {
-      return null;
-    }
-    paramDownloadParams = paramDownloadParams.tag;
-    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 2))
+    if (paramView == null) {}
+    do
     {
-      paramDownloadParams = (int[])paramDownloadParams;
-      float f2 = DeviceInfoUtil.a();
-      float f1 = f2;
-      if (f2 < 0.01F) {
-        f1 = 1.0F;
+      return null;
+      if ((paramView.getParent() instanceof ajyb)) {
+        return (ajyb)paramView.getParent();
       }
-      paramDownloadParams[0] = ((int)(paramDownloadParams[0] / f1));
-      paramDownloadParams[1] = ((int)(paramDownloadParams[1] / f1));
-      return ImageUtil.c(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
+    } while (!(paramView instanceof ajyb));
+    return (ajyb)paramView;
+  }
+  
+  void a(View paramView, ajxt paramajxt)
+  {
+    ajyb localajyb = a(paramView);
+    if (localajyb == null) {}
+    ajyd localajyd;
+    do
+    {
+      return;
+      localajyd = localajyb.delegate();
+    } while ((localajyd == null) || (!localajyd.b()) || (localajyb.hasSelected()));
+    if (this.a == 2)
+    {
+      localajyd.c(d);
+      localajyd.b(e);
     }
-    return ImageUtil.c(paramBitmap, 50, 50);
+    for (;;)
+    {
+      localajyd.a(paramajxt);
+      localajyb.doSelecting(null);
+      return;
+      if (this.a == 1)
+      {
+        localajyd.c(b);
+        localajyd.b(c);
+      }
+      else
+      {
+        paramView = paramView.getResources();
+        int i = paramView.getColorStateList(2131166880).getDefaultColor();
+        int j = paramView.getColorStateList(2131166882).getDefaultColor();
+        localajyd.c(i);
+        localajyd.b(j);
+        if (QLog.isColorLevel()) {
+          QLog.d("ChatAdapterSelectableHelper", 0, "Load Select color, cursor=" + i + ", component=" + j);
+        }
+      }
+    }
   }
 }
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/j1w" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+    <FrameLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:id="@id/bcw" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:gravity="center" android:orientation="vertical" android:id="@id/ina" android:background="#b2000000" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <RelativeLayout android:background="@drawable/a43" android:layout_width="320.0dip" android:layout_height="480.0dip" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
+                <ImageView android:background="@drawable/dye" android:layout_width="fill_parent" android:layout_height="126.0dip" />
+                <ImageButton android:id="@id/in8" android:background="@drawable/dws" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginRight="15.0dip" android:layout_alignParentRight="true" />
+                <ImageView android:id="@id/dcg" android:background="@drawable/fq3" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginTop="40.0dip" android:layout_below="@id/in8" android:layout_centerHorizontal="true" />
+                <TextView android:textSize="36.0sp" android:textColor="@color/uo" android:ellipsize="end" android:gravity="center" android:id="@id/i0j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:text="@string/e8a" android:singleLine="true" android:layout_below="@id/dcg" android:layout_centerHorizontal="true" />
+                <Button android:enabled="true" android:textSize="18.0sp" android:textColor="#ffc3304a" android:id="@id/in9" android:background="@drawable/a3r" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="24.0dip" android:text="@string/e8e" android:layout_alignParentBottom="true" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </FrameLayout>
+</LinearLayout>

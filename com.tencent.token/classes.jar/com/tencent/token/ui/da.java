@@ -1,23 +1,27 @@
 package com.tencent.token.ui;
 
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 
-final class da
-  implements Animation.AnimationListener
+class da
+  implements SensorEventListener
 {
-  da(cz paramcz) {}
+  da(CorrectTokenActivity paramCorrectTokenActivity) {}
   
-  public final void onAnimationEnd(Animation paramAnimation)
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    DetectIDPhotoActivity.access$1500(this.a.a).setVisibility(0);
-    DetectIDPhotoActivity.access$1600(this.a.a).setVisibility(0);
+    CorrectTokenActivity.access$102(this.a, paramSensorEvent.values[0]);
+    CorrectTokenActivity.access$202(this.a, paramSensorEvent.values[1]);
+    CorrectTokenActivity.access$302(this.a, paramSensorEvent.values[2]);
+    if (System.currentTimeMillis() - CorrectTokenActivity.access$400(this.a) > 100L)
+    {
+      this.a.didAccelerate(new h(CorrectTokenActivity.access$100(this.a), CorrectTokenActivity.access$200(this.a), CorrectTokenActivity.access$300(this.a)));
+      CorrectTokenActivity.access$402(this.a, System.currentTimeMillis());
+    }
   }
-  
-  public final void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public final void onAnimationStart(Animation paramAnimation) {}
 }
 
 

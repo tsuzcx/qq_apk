@@ -1,17 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.database.corrupt.DBFixLoadingDialog;
-
-public class abwf
-  implements DialogInterface.OnKeyListener
+class abwf
 {
-  public abwf(DBFixLoadingDialog paramDBFixLoadingDialog) {}
+  private long jdField_a_of_type_Long = 9223372036854775807L;
+  private long b = 9223372036854775807L;
+  private long c = 9223372036854775807L;
+  private long d = 9223372036854775807L;
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    return (paramInt == 84) || (paramInt == 4);
-  }
+  private abwf(abwd paramabwd) {}
 }
 
 

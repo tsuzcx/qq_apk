@@ -1,20 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public class tpq
-  implements View.OnClickListener
+final class tpq
+  implements bfah
 {
-  public tpq(RegisterNewBaseActivity paramRegisterNewBaseActivity) {}
+  tpq(String paramString) {}
   
-  public void onClick(View paramView)
+  public void a(BaseResp paramBaseResp)
   {
-    this.a.onBackEvent();
+    if ((this.a == null) || (!this.a.equals(paramBaseResp.transaction))) {
+      return;
+    }
+    BaseApplicationImpl.getContext();
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      ybk.a(1, 2131720031);
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      ybk.a(2, 2131720050);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tpq
  * JD-Core Version:    0.7.0.1
  */

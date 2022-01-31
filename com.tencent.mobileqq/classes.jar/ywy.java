@@ -1,98 +1,82 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.troop.utils.AvatarTroopUtil;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import java.util.HashSet;
 
-public final class ywy
-  implements Runnable
+public class ywy
+  extends bici
 {
-  public void run()
+  private HashSet<Integer> a = new HashSet();
+  
+  private void a(View paramView)
   {
-    for (;;)
+    if ((paramView instanceof ProteusItemView))
     {
-      try
-      {
-        SharedPreferences localSharedPreferences = ApolloUtil.a();
-        Object localObject = new File(ApolloConstant.n);
-        if (!((File)localObject).exists()) {
-          break;
-        }
-        if (!((File)localObject).isDirectory()) {
-          return;
-        }
-        if (FileUtils.b(ApolloConstant.n) <= 104857600L) {
-          break;
-        }
-        localObject = ((File)localObject).listFiles();
-        if (localObject == null) {
-          break;
-        }
-        localObject = Arrays.asList((Object[])localObject);
-        Collections.sort((List)localObject, ApolloUtil.a);
-        Iterator localIterator = ((List)localObject).iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        File localFile = (File)localIterator.next();
-        int i = 0;
-        if ((localFile != null) && (localFile.exists()))
-        {
-          String str = localFile.getName();
-          if ((str.endsWith(".patch")) || (str.endsWith(".patched")))
-          {
-            localFile.delete();
-            i = 1;
-          }
-          localObject = str;
-          if (str.endsWith(".zip")) {
-            localObject = str.substring(0, str.indexOf("."));
-          }
-          if (AvatarTroopUtil.b((String)localObject))
-          {
-            long l1 = localSharedPreferences.getLong((String)localObject, 0L);
-            long l2 = NetConnInfoCenter.getServerTimeMillis();
-            if ((l2 - l1 > 2592000000L) && (l2 - localFile.lastModified() > 2592000000L))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.i("ApolloUtil", 2, "time limit delete file:" + localFile.getName());
-              }
-              localFile.delete();
-              i = 1;
-              if (i != 0)
-              {
-                l1 = FileUtils.b(ApolloConstant.n);
-                if (l1 < 104857600L)
-                {
-                  if (!QLog.isColorLevel()) {
-                    break;
-                  }
-                  QLog.i("ApolloUtil", 2, "delete finish,new size:" + l1);
-                  return;
-                }
-              }
-            }
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.e("ApolloUtil", 1, "deleteGameResIfNeed error:", localException);
-        return;
-      }
+      paramView = ((ProteusItemView)paramView).a();
+      localValueAnimator = ValueAnimator.ofInt(new int[] { -paramView.getHeight(), 0 });
+      localValueAnimator.setDuration(300L);
+      localValueAnimator.addUpdateListener(new yxa(this, paramView));
+      localValueAnimator.start();
     }
+    do
+    {
+      return;
+      paramView = paramView.findViewById(2131376034);
+    } while (paramView == null);
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { -paramView.getHeight(), 0 });
+    localValueAnimator.setDuration(500L);
+    localValueAnimator.addUpdateListener(new yxb(this, paramView));
+    localValueAnimator.start();
+  }
+  
+  protected View a(View paramView, int paramInt)
+  {
+    View localView;
+    if (paramView == null) {
+      localView = null;
+    }
+    do
+    {
+      return localView;
+      localView = paramView;
+    } while (!this.a.contains(Integer.valueOf(paramInt)));
+    this.a.remove(Integer.valueOf(paramInt));
+    paramView.getViewTreeObserver().addOnPreDrawListener(new ywz(this, paramView));
+    return paramView;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.a.add(Integer.valueOf(paramInt));
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ywy
  * JD-Core Version:    0.7.0.1
  */

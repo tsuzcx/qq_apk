@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class GetDownloadProgressResponse
   extends JceStruct
 {
-  static IPCBaseParam a;
+  static IPCBaseParam cache_requestParam;
   public long allTaskTotalLength = 0L;
   public long allTaskTotalProgress = 0L;
   public long receivedLen = 0L;
@@ -27,10 +27,10 @@ public final class GetDownloadProgressResponse
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
-    if (a == null) {
-      a = new IPCBaseParam();
+    if (cache_requestParam == null) {
+      cache_requestParam = new IPCBaseParam();
     }
-    this.requestParam = ((IPCBaseParam)paramJceInputStream.read(a, 0, true));
+    this.requestParam = ((IPCBaseParam)paramJceInputStream.read(cache_requestParam, 0, true));
     this.receivedLen = paramJceInputStream.read(this.receivedLen, 1, false);
     this.totalLen = paramJceInputStream.read(this.totalLen, 2, false);
     this.allTaskTotalProgress = paramJceInputStream.read(this.allTaskTotalProgress, 3, false);
@@ -48,7 +48,7 @@ public final class GetDownloadProgressResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.param.jce.GetDownloadProgressResponse
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,29 @@
-import com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter.Callback;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.widget.XListView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class xkn
-  implements RecentTabHaloPresenter.Callback
+class xkn
+  implements View.OnClickListener
 {
-  public xkn(RecentAdapter paramRecentAdapter) {}
+  xkn(xkm paramxkm, xkp paramxkp) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.a.invalidateViews();
+    if (!this.jdField_a_of_type_Xkp.a()) {
+      this.jdField_a_of_type_Xkp.b();
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Xkm.a != null) {
+        this.jdField_a_of_type_Xkm.a.a(this.jdField_a_of_type_Xkm);
+      }
+      return;
+      this.jdField_a_of_type_Xkp.c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xkn
  * JD-Core Version:    0.7.0.1
  */

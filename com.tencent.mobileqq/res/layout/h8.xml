@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="#cc000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/b0t" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <Button android:textColor="@color/al3" android:id="@id/b0i" android:background="@drawable/hw" android:layout_width="90.0dip" android:layout_height="35.0dip" android:layout_marginBottom="50.0dip" android:text="@string/kqa" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

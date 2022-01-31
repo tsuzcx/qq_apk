@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/bgx" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="16.0sp" android:textColor="@color/w_" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/qx" android:shadowDx="2.0" />
+        <ImageView android:layout_gravity="center" android:background="@drawable/alz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="17.0dip" android:layout_marginBottom="17.0dip" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/w_" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_marginLeft="19.0dip" android:layout_marginRight="19.0dip" android:text="@string/f0v" android:layout_weight="1.0" />
+        <Button android:id="@id/f2o" android:layout_width="200.0dip" android:layout_marginTop="17.0dip" android:layout_marginBottom="20.0dip" android:text="@string/g8x" style="@style/nq" />
+    </LinearLayout>
+</LinearLayout>

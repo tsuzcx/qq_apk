@@ -1,39 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.logic.DiandianTopConfigManager;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.oidb_0xb7e.RspBody;
+import com.tencent.av.AVFunDrawing.MessageBody;
+import com.tencent.mobileqq.utils.AudioHelper;
 
 class loe
-  implements Runnable
 {
-  loe(lod paramlod, byte[] paramArrayOfByte) {}
+  long jdField_a_of_type_Long = AudioHelper.a();
+  AVFunDrawing.MessageBody jdField_a_of_type_ComTencentAvAVFunDrawing$MessageBody;
   
-  public void run()
+  loe(AVFunDrawing.MessageBody paramMessageBody)
   {
-    if (this.jdField_a_of_type_ArrayOfByte == null)
-    {
-      ReadInJoyLogicEngineEventDispatcher.a().a(false, null);
-      return;
-    }
-    oidb_0xb7e.RspBody localRspBody = new oidb_0xb7e.RspBody();
-    try
-    {
-      localRspBody.mergeFrom(this.jdField_a_of_type_ArrayOfByte);
-      DiandianTopConfigManager.a(this.jdField_a_of_type_Lod.a, localRspBody);
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e(DiandianTopConfigManager.a, 2, "loadDiandianTopConfig, e = " + localException);
-      }
-      ReadInJoyLogicEngineEventDispatcher.a().a(false, null);
-    }
+    this.jdField_a_of_type_ComTencentAvAVFunDrawing$MessageBody = paramMessageBody;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     loe
  * JD-Core Version:    0.7.0.1
  */

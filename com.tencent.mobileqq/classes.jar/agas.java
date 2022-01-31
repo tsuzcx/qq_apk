@@ -1,40 +1,45 @@
-import android.os.Bundle;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.now.enter.widget.NowAnswerPreloadManager;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.customviews.VideoProgressView;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.videoplatform.view.CropBubbleVideoView;
+import java.util.concurrent.CopyOnWriteArraySet;
 
-public final class agas
-  implements BusinessObserver
+public class agas
+  extends aeqi
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public ImageView a;
+  public ProgressBar a;
+  public RelativeLayout a;
+  public TextView a;
+  public URLDrawable a;
+  public VideoProgressView a;
+  public CropBubbleVideoView a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  
+  public agas(agai paramagai) {}
+  
+  public void a()
   {
-    if (paramBoolean) {}
-    try
+    if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView != null)
     {
-      QLog.i("NowAnswerPreloadManager", 3, "reqNowLiveStatusAndOpenRoom----SSO request Success");
-      Object localObject = paramBundle.getByteArray("data");
-      if (localObject == null) {
-        return;
+      long l = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getCurPlayingPos();
+      if (l > 0L)
+      {
+        MessageForShortVideo localMessageForShortVideo = bdew.a().a(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getId()));
+        if (localMessageForShortVideo != null) {
+          agai.a(this.jdField_a_of_type_Agai, localMessageForShortVideo, l);
+        }
       }
-      paramBundle = new WebSsoBody.WebSsoResponseBody();
-      paramBundle.mergeFrom((byte[])localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("data", paramBundle.data.get());
-      ((JSONObject)localObject).put("retcode", paramBundle.ret.get());
-      ((JSONObject)localObject).put("cret", 0);
-      NowAnswerPreloadManager.a((JSONObject)localObject);
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.releasePlayer(true);
+      agai.a().remove(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView);
     }
-    catch (Exception paramBundle)
-    {
-      QLog.i("NowAnswerPreloadManager", 3, "reqNowLiveStatusAndOpenRoom----SSO request Exception e = " + paramBundle.getMessage());
-    }
-    QLog.i("NowAnswerPreloadManager", 3, "reqNowLiveStatusAndOpenRoom----SSO requset Error");
-    return;
   }
 }
 

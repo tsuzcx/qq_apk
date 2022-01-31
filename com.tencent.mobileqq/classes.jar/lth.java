@@ -1,36 +1,24 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnLastReadRefreshListener;
-import java.util.Map;
+import com.tencent.ttpic.facedetect.TTFaceOriginDataModel;
+import java.util.List;
 
 public class lth
-  implements FeedItemCell.CellListener
 {
-  public lth(FeedItemCell paramFeedItemCell) {}
+  public int a;
+  public List<TTFaceOriginDataModel> a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public void a(View paramView, Map paramMap)
+  public boolean a()
   {
-    if (paramView.getId() == 2131366879) {
-      this.a.a(paramView);
-    }
-    do
-    {
-      return;
-      if (paramView != this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead) {
-        break;
-      }
-      paramView = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
-    } while (paramView == null);
-    paramView.a();
-    return;
-    this.a.a(paramView, paramMap);
+    return (this.d != 0) && (this.e != 0) && (this.a != null) && (!this.a.isEmpty());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lth
  * JD-Core Version:    0.7.0.1
  */

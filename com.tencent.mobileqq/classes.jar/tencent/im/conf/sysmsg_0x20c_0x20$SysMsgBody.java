@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class sysmsg_0x20c_0x20$SysMsgBody
-  extends MessageMicro
+  extends MessageMicro<SysMsgBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34 }, new String[] { "u32_cmd", "msg_convert_to_group", "msg_mem_num_remind", "msg_upload_file_remind" }, new Object[] { Integer.valueOf(0), null, null, null }, SysMsgBody.class);
   public sysmsg_0x20c_0x20.Convert2Group msg_convert_to_group = new sysmsg_0x20c_0x20.Convert2Group();
@@ -16,7 +16,7 @@ public final class sysmsg_0x20c_0x20$SysMsgBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.conf.sysmsg_0x20c_0x20.SysMsgBody
  * JD-Core Version:    0.7.0.1
  */

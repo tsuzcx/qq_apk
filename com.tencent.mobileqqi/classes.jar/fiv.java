@@ -1,25 +1,25 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.NewFriendManager;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.SystemMessageProcessor;
-import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.message.BaseMessageProcessor;
+import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 
 public class fiv
-  implements Runnable
+  extends SendMessageHandler.SendMessageRunnable
 {
-  public fiv(NewFriendManager paramNewFriendManager) {}
+  public fiv(BaseMessageProcessor paramBaseMessageProcessor, fiw paramfiw, long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = this.a.a;
-    if ((localQQAppInterface == null) || (this.a.a.getManager(10) == null)) {
-      return;
+    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_Fiw.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "prepareRetryRunnable cmd=" + localToServiceMsg.getServiceCmd() + ",reqSeq=" + this.jdField_a_of_type_Long);
     }
-    ((PhoneContactManagerImp)localQQAppInterface.getManager(10)).l();
-    localQQAppInterface.a().a().b();
-    FriendSystemMsgController.a().a(this.a.a, 0);
-    FriendSystemMsgController.a().c(this.a.a);
+    localToServiceMsg.extraData.putLong("timeOut", this.e);
+    localToServiceMsg.extraData.putLong("startTime", this.jdField_b_of_type_Long);
+    localToServiceMsg.extraData.putInt("retryIndex", this.jdField_a_of_type_Int);
+    localToServiceMsg.setTimeout(this.e);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageProcessor.a(localToServiceMsg, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean);
   }
 }
 

@@ -8,10 +8,10 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 
 public final class EmosmPb$SubCmd0x3RspFetchBq
-  extends MessageMicro
+  extends MessageMicro<SubCmd0x3RspFetchBq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatField rpt_bytes_key = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> rpt_bytes_key = PBField.initRepeat(PBBytesField.__repeatHelper__);
   
   static
   {
@@ -21,7 +21,7 @@ public final class EmosmPb$SubCmd0x3RspFetchBq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.emosm.EmosmPb.SubCmd0x3RspFetchBq
  * JD-Core Version:    0.7.0.1
  */

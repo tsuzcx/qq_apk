@@ -3,7 +3,7 @@ package com.tencent.tmassistantbase.common;
 class b {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmassistantbase.common.b
  * JD-Core Version:    0.7.0.1
  */

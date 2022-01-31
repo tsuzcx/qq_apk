@@ -1,20 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.mobileqq.activity.LebaListMgrActivity.4.1;
+import com.tencent.qphone.base.util.QLog;
 
-public final class adgs
-  implements DialogInterface.OnClickListener
+public class adgs
+  extends ambl
 {
-  public adgs(FMDialogUtil.FMDialogInterface paramFMDialogInterface) {}
+  public adgs(LebaListMgrActivity paramLebaListMgrActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    this.a.a();
+    if (QLog.isDevelopLevel()) {
+      QLog.i("Q.lebatab.mgr", 4, "notifyLebaViewItemsReloaded");
+    }
+    if ((LebaListMgrActivity.a(this.a) == null) || (!this.a.isResume())) {
+      return;
+    }
+    paramObject = aieq.a().a();
+    this.a.runOnUiThread(new LebaListMgrActivity.4.1(this, paramObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adgs
  * JD-Core Version:    0.7.0.1
  */

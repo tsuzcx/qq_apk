@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class subcmd0x519$GetNavigationMenuRspBody
-  extends MessageMicro
+  extends MessageMicro<GetNavigationMenuRspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32 }, new String[] { "msg_ret", "int32_is_show", "str_struct_msg", "uint32_ver_no" }, new Object[] { null, Integer.valueOf(0), "", Integer.valueOf(0) }, GetNavigationMenuRspBody.class);
   public final PBInt32Field int32_is_show = PBField.initInt32(0);
@@ -18,7 +18,7 @@ public final class subcmd0x519$GetNavigationMenuRspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.cmd0x6ff.subcmd0x519.GetNavigationMenuRspBody
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,16 @@
-import com.tencent.mobileqq.filemanager.activity.fileviewer.qfile.QfileWeiyunFileController;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class fyc
-  implements FMDialogUtil.FMDialogInterface
+public final class fyc
+  implements Runnable
 {
-  public fyc(QfileWeiyunFileController paramQfileWeiyunFileController) {}
+  public fyc(String paramString) {}
   
-  public void a()
+  public void run()
   {
-    this.a.e();
+    QQToast.a(BaseApplicationImpl.getContext(), 2, this.a, 1).b(FMToastUtil.a());
   }
-  
-  public void b() {}
 }
 
 

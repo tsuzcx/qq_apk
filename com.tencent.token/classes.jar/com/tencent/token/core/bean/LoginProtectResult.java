@@ -28,7 +28,7 @@ public class LoginProtectResult
       int j = ((JSONObject)localObject).getInt("id");
       if ((j == 80) || (j == 82))
       {
-        localObject = new e(this, (JSONObject)localObject);
+        localObject = new f(this, (JSONObject)localObject);
         this.mLists.add(localObject);
       }
       i += 1;

@@ -1,36 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.webviewplugin.HotchatPlugin;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
 
 public class pbi
-  extends Client.onRemoteRespObserver
+  implements View.OnTouchListener
 {
-  public pbi(HotchatPlugin paramHotchatPlugin) {}
+  public pbi(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, GestureDetector paramGestureDetector) {}
   
-  public void onBindedToClient() {}
-  
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == HotchatPlugin.a(this.a).key))
-    {
-      String str1 = paramBundle.getString("cmd");
-      String str2 = paramBundle.getString("callbackid");
-      paramBundle = paramBundle.getBundle("request");
-      if ((str1 != null) && ("ipc_hotchat_plugin".equals(str1)) && (paramBundle.getString("key_action").endsWith("updateFavoriteFlag")))
-      {
-        int i = paramBundle.getInt("result", 1);
-        this.a.callJs(str2, new String[] { Integer.toString(i) });
-      }
-    }
+    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pbi
  * JD-Core Version:    0.7.0.1
  */

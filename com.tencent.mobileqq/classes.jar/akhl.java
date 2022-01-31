@@ -1,16 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.vas.ColorRingPlayer;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class akhl
-  implements DialogInterface.OnClickListener
 {
-  public akhl(ColorRingPlayer paramColorRingPlayer, long paramLong, int paramInt, String paramString) {}
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public ImageView b;
+  public ImageView c;
+  public ImageView d;
+  public ImageView e;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqVasColorRingPlayer.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-  }
+  public akhl(akhk paramakhk) {}
 }
 
 

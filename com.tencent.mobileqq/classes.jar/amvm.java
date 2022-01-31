@@ -1,15 +1,10 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-
-public class amvm
-  implements Runnable
+public abstract class amvm
 {
-  public amvm(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
+  public int b;
   
-  public void run()
+  public amvm(int paramInt)
   {
-    RemoteHandleManager.a().a().c();
+    this.b = paramInt;
   }
 }
 

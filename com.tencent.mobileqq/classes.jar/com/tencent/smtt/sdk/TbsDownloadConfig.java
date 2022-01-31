@@ -168,7 +168,7 @@ public class TbsDownloadConfig
   private static TbsDownloadConfig mInstance;
   private Context mAppContext;
   public SharedPreferences mPreferences;
-  Map<String, Object> mSyncMap = new HashMap();
+  public Map<String, Object> mSyncMap = new HashMap();
   
   private TbsDownloadConfig(Context paramContext)
   {
@@ -295,43 +295,43 @@ public class TbsDownloadConfig
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 348	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
-    //   6: ldc_w 466
-    //   9: invokeinterface 470 2 0
+    //   3: getfield 345	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
+    //   6: ldc_w 463
+    //   9: invokeinterface 467 2 0
     //   14: istore_3
     //   15: iload_3
     //   16: ifne +129 -> 145
-    //   19: new 472	java/io/File
+    //   19: new 469	java/io/File
     //   22: dup
-    //   23: new 472	java/io/File
+    //   23: new 469	java/io/File
     //   26: dup
     //   27: aload_0
-    //   28: getfield 354	com/tencent/smtt/sdk/TbsDownloadConfig:mAppContext	Landroid/content/Context;
-    //   31: invokevirtual 476	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   34: ldc_w 478
-    //   37: invokespecial 481	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   40: ldc_w 307
-    //   43: invokespecial 481	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   46: invokevirtual 484	java/io/File:exists	()Z
+    //   28: getfield 351	com/tencent/smtt/sdk/TbsDownloadConfig:mAppContext	Landroid/content/Context;
+    //   31: invokevirtual 473	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   34: ldc_w 475
+    //   37: invokespecial 478	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   40: ldc_w 304
+    //   43: invokespecial 478	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   46: invokevirtual 481	java/io/File:exists	()Z
     //   49: istore_3
     //   50: iload_3
     //   51: ifne +57 -> 108
     //   54: bipush 159
     //   56: istore_1
     //   57: aload_0
-    //   58: getfield 354	com/tencent/smtt/sdk/TbsDownloadConfig:mAppContext	Landroid/content/Context;
+    //   58: getfield 351	com/tencent/smtt/sdk/TbsDownloadConfig:mAppContext	Landroid/content/Context;
     //   61: ifnull +163 -> 224
-    //   64: ldc_w 486
+    //   64: ldc_w 483
     //   67: aload_0
-    //   68: getfield 354	com/tencent/smtt/sdk/TbsDownloadConfig:mAppContext	Landroid/content/Context;
-    //   71: invokevirtual 490	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
-    //   74: getfield 495	android/content/pm/ApplicationInfo:packageName	Ljava/lang/String;
-    //   77: invokevirtual 499	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   68: getfield 351	com/tencent/smtt/sdk/TbsDownloadConfig:mAppContext	Landroid/content/Context;
+    //   71: invokevirtual 487	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
+    //   74: getfield 492	android/content/pm/ApplicationInfo:packageName	Ljava/lang/String;
+    //   77: invokevirtual 496	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   80: ifeq +144 -> 224
-    //   83: ldc_w 501
-    //   86: invokestatic 507	java/util/Locale:getDefault	()Ljava/util/Locale;
-    //   89: invokevirtual 511	java/util/Locale:getCountry	()Ljava/lang/String;
-    //   92: invokevirtual 499	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   83: ldc_w 498
+    //   86: invokestatic 504	java/util/Locale:getDefault	()Ljava/util/Locale;
+    //   89: invokevirtual 508	java/util/Locale:getCountry	()Ljava/lang/String;
+    //   92: invokevirtual 496	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   95: istore_3
     //   96: iload_3
     //   97: ifne +127 -> 224
@@ -342,9 +342,9 @@ public class TbsDownloadConfig
     //   106: iload_1
     //   107: ireturn
     //   108: aload_0
-    //   109: getfield 348	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
-    //   112: ldc_w 513
-    //   115: invokeinterface 470 2 0
+    //   109: getfield 345	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
+    //   112: ldc_w 510
+    //   115: invokeinterface 467 2 0
     //   120: istore_3
     //   121: iload_3
     //   122: ifne +9 -> 131
@@ -359,10 +359,10 @@ public class TbsDownloadConfig
     //   141: istore_1
     //   142: goto -85 -> 57
     //   145: aload_0
-    //   146: getfield 348	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
-    //   149: ldc_w 466
+    //   146: getfield 345	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
+    //   149: ldc_w 463
     //   152: bipush 157
-    //   154: invokeinterface 461 3 0
+    //   154: invokeinterface 458 3 0
     //   159: istore_1
     //   160: iload_1
     //   161: bipush 137
@@ -373,33 +373,33 @@ public class TbsDownloadConfig
     //   169: bipush 135
     //   171: if_icmpne +18 -> 189
     //   174: aload_0
-    //   175: getfield 348	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
-    //   178: ldc_w 515
+    //   175: getfield 345	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
+    //   178: ldc_w 512
     //   181: bipush 137
-    //   183: invokeinterface 461 3 0
+    //   183: invokeinterface 458 3 0
     //   188: istore_2
     //   189: iload_2
     //   190: istore_1
-    //   191: invokestatic 520	java/lang/System:currentTimeMillis	()J
+    //   191: invokestatic 517	java/lang/System:currentTimeMillis	()J
     //   194: aload_0
-    //   195: getfield 348	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
-    //   198: ldc_w 522
+    //   195: getfield 345	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
+    //   198: ldc_w 519
     //   201: lconst_0
-    //   202: invokeinterface 526 4 0
+    //   202: invokeinterface 523 4 0
     //   207: lsub
-    //   208: ldc2_w 198
+    //   208: ldc2_w 195
     //   211: lcmp
     //   212: ifle -155 -> 57
     //   215: iload_2
-    //   216: ldc_w 527
+    //   216: ldc_w 524
     //   219: isub
     //   220: istore_1
     //   221: goto -164 -> 57
     //   224: aload_0
-    //   225: getfield 348	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
-    //   228: ldc_w 529
+    //   225: getfield 345	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
+    //   228: ldc_w 526
     //   231: iconst_m1
-    //   232: invokeinterface 461 3 0
+    //   232: invokeinterface 458 3 0
     //   237: istore_2
     //   238: iload_1
     //   239: sipush 1000
@@ -463,10 +463,10 @@ public class TbsDownloadConfig
     //   2: aload_0
     //   3: monitorenter
     //   4: aload_0
-    //   5: getfield 348	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
-    //   8: ldc_w 537
+    //   5: getfield 345	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
+    //   8: ldc_w 534
     //   11: iconst_0
-    //   12: invokeinterface 461 3 0
+    //   12: invokeinterface 458 3 0
     //   17: istore_2
     //   18: iload_2
     //   19: ifne +18 -> 37
@@ -478,7 +478,7 @@ public class TbsDownloadConfig
     //   29: aload_0
     //   30: monitorexit
     //   31: lload_3
-    //   32: ldc2_w 533
+    //   32: ldc2_w 530
     //   35: lmul
     //   36: lreturn
     //   37: iload_2
@@ -543,21 +543,21 @@ public class TbsDownloadConfig
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: invokestatic 549	com/tencent/smtt/sdk/TbsDownloader:getRetryIntervalInSeconds	()J
+    //   2: invokestatic 546	com/tencent/smtt/sdk/TbsDownloader:getRetryIntervalInSeconds	()J
     //   5: lconst_0
     //   6: lcmp
     //   7: iflt +11 -> 18
-    //   10: invokestatic 549	com/tencent/smtt/sdk/TbsDownloader:getRetryIntervalInSeconds	()J
+    //   10: invokestatic 546	com/tencent/smtt/sdk/TbsDownloader:getRetryIntervalInSeconds	()J
     //   13: lstore_1
     //   14: aload_0
     //   15: monitorexit
     //   16: lload_1
     //   17: lreturn
     //   18: aload_0
-    //   19: getfield 348	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
-    //   22: ldc_w 551
-    //   25: ldc2_w 71
-    //   28: invokeinterface 526 4 0
+    //   19: getfield 345	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
+    //   22: ldc_w 548
+    //   25: ldc2_w 68
+    //   28: invokeinterface 523 4 0
     //   33: lstore_1
     //   34: goto -20 -> 14
     //   37: astore_3
@@ -585,10 +585,50 @@ public class TbsDownloadConfig
     //   2: aload_0
     //   3: monitorenter
     //   4: aload_0
-    //   5: getfield 348	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
-    //   8: ldc_w 554
+    //   5: getfield 345	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
+    //   8: ldc_w 551
     //   11: iconst_1
-    //   12: invokeinterface 558 3 0
+    //   12: invokeinterface 555 3 0
+    //   17: istore_2
+    //   18: iload_2
+    //   19: istore_1
+    //   20: aload_0
+    //   21: monitorexit
+    //   22: iload_1
+    //   23: ireturn
+    //   24: astore_3
+    //   25: aload_0
+    //   26: monitorexit
+    //   27: aload_3
+    //   28: athrow
+    //   29: astore_3
+    //   30: goto -10 -> 20
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	33	0	this	TbsDownloadConfig
+    //   1	22	1	bool1	boolean
+    //   17	2	2	bool2	boolean
+    //   24	4	3	localObject	Object
+    //   29	1	3	localException	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   4	18	24	finally
+    //   4	18	29	java/lang/Exception
+  }
+  
+  /* Error */
+  public boolean getTbsCoreLoadRenameFileLockWaitEnable()
+  {
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore_1
+    //   2: aload_0
+    //   3: monitorenter
+    //   4: aload_0
+    //   5: getfield 345	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
+    //   8: ldc_w 558
+    //   11: iconst_1
+    //   12: invokeinterface 555 3 0
     //   17: istore_2
     //   18: iload_2
     //   19: istore_1
@@ -637,21 +677,21 @@ public class TbsDownloadConfig
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 348	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
-    //   6: invokeinterface 375 1 0
+    //   3: getfield 345	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
+    //   6: invokeinterface 372 1 0
     //   11: astore_2
     //   12: aload_2
-    //   13: ldc_w 466
+    //   13: ldc_w 463
     //   16: iload_1
-    //   17: invokeinterface 444 3 0
+    //   17: invokeinterface 441 3 0
     //   22: pop
     //   23: aload_2
-    //   24: ldc_w 522
-    //   27: invokestatic 520	java/lang/System:currentTimeMillis	()J
-    //   30: invokeinterface 434 4 0
+    //   24: ldc_w 519
+    //   27: invokestatic 517	java/lang/System:currentTimeMillis	()J
+    //   30: invokeinterface 431 4 0
     //   35: pop
     //   36: aload_2
-    //   37: invokeinterface 383 1 0
+    //   37: invokeinterface 380 1 0
     //   42: pop
     //   43: aload_0
     //   44: monitorexit
@@ -699,16 +739,16 @@ public class TbsDownloadConfig
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 348	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
-    //   6: invokeinterface 375 1 0
+    //   3: getfield 345	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
+    //   6: invokeinterface 372 1 0
     //   11: astore_2
     //   12: aload_2
-    //   13: ldc_w 554
+    //   13: ldc_w 551
     //   16: iload_1
-    //   17: invokeinterface 424 3 0
+    //   17: invokeinterface 421 3 0
     //   22: pop
     //   23: aload_2
-    //   24: invokeinterface 383 1 0
+    //   24: invokeinterface 380 1 0
     //   29: pop
     //   30: aload_0
     //   31: monitorexit
@@ -733,57 +773,224 @@ public class TbsDownloadConfig
     //   2	30	38	java/lang/Exception
   }
   
-  public static abstract interface TbsConfigKey
+  /* Error */
+  public void setTbsCoreLoadRenameFileLockWaitEnable(boolean paramBoolean)
   {
-    public static final String KEY_APP_METADATA = "app_metadata";
-    public static final String KEY_APP_VERSIONCODE = "app_versioncode";
-    public static final String KEY_APP_VERSIONCODE_FOR_SWITCH = "app_versioncode_for_switch";
-    public static final String KEY_APP_VERSIONNAME = "app_versionname";
-    public static final String KEY_BACKUPCORE_DELFILELIST = "backupcore_delfilelist";
-    public static final String KEY_COUNT_REQUEST_FAIL_IN_24HOURS = "count_request_fail_in_24hours";
-    public static final String KEY_DECOUPLECOREVERSION = "tbs_decouplecoreversion";
-    public static final String KEY_DESkEY_TOKEN = "tbs_deskey_token";
-    public static final String KEY_DEVICE_CPUABI = "device_cpuabi";
-    public static final String KEY_DOWNLOADDECOUPLECORE = "tbs_downloaddecouplecore";
-    public static final String KEY_DOWNLOADURL_LIST = "tbs_downloadurl_list";
-    public static final String KEY_DOWNLOAD_FAILED_MAX_RETRYTIMES = "tbs_download_failed_max_retrytimes";
-    public static final String KEY_DOWNLOAD_FAILED_RETRYTIMES = "tbs_download_failed_retrytimes";
-    public static final String KEY_DOWNLOAD_INTERRUPT_CODE = "tbs_download_interrupt_code";
-    public static final String KEY_DOWNLOAD_INTERRUPT_CODE_REASON = "tbs_download_interrupt_code_reason";
-    public static final String KEY_DOWNLOAD_INTERRUPT_TIME = "tbs_download_interrupt_time";
-    public static final String KEY_DOWNLOAD_MAXFLOW = "tbs_download_maxflow";
-    public static final String KEY_DOWNLOAD_MIN_FREE_SPACE = "tbs_download_min_free_space";
-    public static final String KEY_DOWNLOAD_SINGLE_TIMEOUT = "tbs_single_timeout";
-    public static final String KEY_DOWNLOAD_SUCCESS_MAX_RETRYTIMES = "tbs_download_success_max_retrytimes";
-    public static final String KEY_DOWNLOAD_SUCCESS_RETRYTIMES = "tbs_download_success_retrytimes";
-    public static final String KEY_FULL_PACKAGE = "request_full_package";
-    public static final String KEY_INSTALL_INTERRUPT_CODE = "tbs_install_interrupt_code";
-    public static final String KEY_IS_OVERSEA = "is_oversea";
-    public static final String KEY_LAST_CHECK = "last_check";
-    public static final String KEY_LAST_DOWNLOAD_DECOUPLE_CORE = "last_download_decouple_core";
-    public static final String KEY_LAST_REQUEST_SUCCESS = "last_request_success";
-    public static final String KEY_LAST_THIRDAPP_SENDREQUEST_COREVERSION = "last_thirdapp_sendrequest_coreversion";
-    public static final String KEY_NEEDDOWNLOAD = "tbs_needdownload";
-    public static final String KEY_REQUEST_FAIL = "request_fail";
-    public static final String KEY_RESPONSECODE = "tbs_responsecode";
-    public static final String KEY_RETRY_INTERVAL = "retry_interval";
-    public static final String KEY_STOP_PRE_OAT = "tbs_stop_preoat";
-    public static final String KEY_SWITCH_BACKUPCORE_ENABLE = "switch_backupcore_enable";
-    public static final String KEY_TBSAPKFILESIZE = "tbs_apkfilesize";
-    public static final String KEY_TBSAPK_MD5 = "tbs_apk_md5";
-    public static final String KEY_TBSDOWNLOADURL = "tbs_downloadurl";
-    public static final String KEY_TBSDOWNLOAD_FLOW = "tbs_downloadflow";
-    public static final String KEY_TBSDOWNLOAD_STARTTIME = "tbs_downloadstarttime";
-    public static final String KEY_TBS_CORE_LOAD_RENAME_FILE_LOCK_ENABLE = "tbs_core_load_rename_file_lock_enable";
-    public static final String KEY_TBS_DOWNLOAD_V = "tbs_download_version";
-    public static final String KEY_TBS_DOWNLOAD_V_TYPE = "tbs_download_version_type";
-    public static final String KEY_USE_BACKUP_VERSION = "use_backup_version";
-    public static final String KEY_USE_BUGLY = "tbs_use_bugly";
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 345	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
+    //   6: invokeinterface 372 1 0
+    //   11: astore_2
+    //   12: aload_2
+    //   13: ldc_w 558
+    //   16: iload_1
+    //   17: invokeinterface 421 3 0
+    //   22: pop
+    //   23: aload_2
+    //   24: invokeinterface 380 1 0
+    //   29: pop
+    //   30: aload_0
+    //   31: monitorexit
+    //   32: return
+    //   33: astore_2
+    //   34: aload_0
+    //   35: monitorexit
+    //   36: aload_2
+    //   37: athrow
+    //   38: astore_2
+    //   39: goto -9 -> 30
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	42	0	this	TbsDownloadConfig
+    //   0	42	1	paramBoolean	boolean
+    //   11	13	2	localEditor	SharedPreferences.Editor
+    //   33	4	2	localObject	Object
+    //   38	1	2	localException	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   2	30	33	finally
+    //   2	30	38	java/lang/Exception
+  }
+  
+  /* Error */
+  public void uploadDownloadInterruptCodeIfNeeded(Context paramContext)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: ifnull +147 -> 150
+    //   6: ldc_w 570
+    //   9: aload_1
+    //   10: invokevirtual 349	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   13: invokevirtual 487	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
+    //   16: getfield 492	android/content/pm/ApplicationInfo:packageName	Ljava/lang/String;
+    //   19: invokevirtual 496	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   22: ifeq +128 -> 150
+    //   25: aload_0
+    //   26: getfield 345	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
+    //   29: ldc_w 463
+    //   32: invokeinterface 467 2 0
+    //   37: istore 5
+    //   39: iload 5
+    //   41: ifne +153 -> 194
+    //   44: new 469	java/io/File
+    //   47: dup
+    //   48: new 469	java/io/File
+    //   51: dup
+    //   52: aload_0
+    //   53: getfield 351	com/tencent/smtt/sdk/TbsDownloadConfig:mAppContext	Landroid/content/Context;
+    //   56: invokevirtual 473	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   59: ldc_w 475
+    //   62: invokespecial 478	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   65: ldc_w 304
+    //   68: invokespecial 478	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   71: invokevirtual 481	java/io/File:exists	()Z
+    //   74: istore 5
+    //   76: iload 5
+    //   78: ifne +75 -> 153
+    //   81: bipush 159
+    //   83: istore_2
+    //   84: iconst_1
+    //   85: istore 4
+    //   87: iload_2
+    //   88: istore_3
+    //   89: iload 4
+    //   91: istore_2
+    //   92: iload_2
+    //   93: ifeq +57 -> 150
+    //   96: aload_1
+    //   97: invokestatic 575	com/tencent/smtt/sdk/TbsLogReport:getInstance	(Landroid/content/Context;)Lcom/tencent/smtt/sdk/TbsLogReport;
+    //   100: invokevirtual 579	com/tencent/smtt/sdk/TbsLogReport:tbsLogInfo	()Lcom/tencent/smtt/sdk/TbsLogReport$TbsLogInfo;
+    //   103: astore 6
+    //   105: aload 6
+    //   107: sipush 128
+    //   110: invokevirtual 584	com/tencent/smtt/sdk/TbsLogReport$TbsLogInfo:setErrorCode	(I)V
+    //   113: aload 6
+    //   115: new 586	java/lang/StringBuilder
+    //   118: dup
+    //   119: invokespecial 587	java/lang/StringBuilder:<init>	()V
+    //   122: ldc_w 589
+    //   125: invokevirtual 593	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   128: iload_3
+    //   129: invokevirtual 596	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   132: invokevirtual 599	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   135: invokevirtual 603	com/tencent/smtt/sdk/TbsLogReport$TbsLogInfo:setFailDetail	(Ljava/lang/String;)V
+    //   138: aload_1
+    //   139: invokestatic 575	com/tencent/smtt/sdk/TbsLogReport:getInstance	(Landroid/content/Context;)Lcom/tencent/smtt/sdk/TbsLogReport;
+    //   142: getstatic 609	com/tencent/smtt/sdk/TbsLogReport$EventType:TYPE_DOWNLOAD	Lcom/tencent/smtt/sdk/TbsLogReport$EventType;
+    //   145: aload 6
+    //   147: invokevirtual 613	com/tencent/smtt/sdk/TbsLogReport:eventReport	(Lcom/tencent/smtt/sdk/TbsLogReport$EventType;Lcom/tencent/smtt/sdk/TbsLogReport$TbsLogInfo;)V
+    //   150: aload_0
+    //   151: monitorexit
+    //   152: return
+    //   153: aload_0
+    //   154: getfield 345	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
+    //   157: ldc_w 510
+    //   160: invokeinterface 467 2 0
+    //   165: istore 5
+    //   167: iload 5
+    //   169: ifne +9 -> 178
+    //   172: bipush 160
+    //   174: istore_2
+    //   175: goto -91 -> 84
+    //   178: bipush 155
+    //   180: istore_2
+    //   181: goto -97 -> 84
+    //   184: astore 6
+    //   186: bipush 161
+    //   188: istore_3
+    //   189: iconst_1
+    //   190: istore_2
+    //   191: goto -99 -> 92
+    //   194: aload_0
+    //   195: getfield 345	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
+    //   198: ldc_w 463
+    //   201: bipush 157
+    //   203: invokeinterface 458 3 0
+    //   208: istore_2
+    //   209: iload_2
+    //   210: sipush -206
+    //   213: if_icmpgt +21 -> 234
+    //   216: iload_2
+    //   217: sipush -219
+    //   220: if_icmplt +14 -> 234
+    //   223: iconst_1
+    //   224: istore 4
+    //   226: iload_2
+    //   227: istore_3
+    //   228: iload 4
+    //   230: istore_2
+    //   231: goto -139 -> 92
+    //   234: iload_2
+    //   235: sipush -302
+    //   238: if_icmpgt +21 -> 259
+    //   241: iload_2
+    //   242: sipush -316
+    //   245: if_icmplt +14 -> 259
+    //   248: iconst_1
+    //   249: istore 4
+    //   251: iload_2
+    //   252: istore_3
+    //   253: iload 4
+    //   255: istore_2
+    //   256: goto -164 -> 92
+    //   259: iload_2
+    //   260: sipush -318
+    //   263: if_icmpgt +21 -> 284
+    //   266: iload_2
+    //   267: sipush -322
+    //   270: if_icmplt +14 -> 284
+    //   273: iconst_1
+    //   274: istore 4
+    //   276: iload_2
+    //   277: istore_3
+    //   278: iload 4
+    //   280: istore_2
+    //   281: goto -189 -> 92
+    //   284: iconst_0
+    //   285: istore 4
+    //   287: iload_2
+    //   288: istore_3
+    //   289: iload 4
+    //   291: istore_2
+    //   292: goto -200 -> 92
+    //   295: astore_1
+    //   296: aload_0
+    //   297: monitorexit
+    //   298: aload_1
+    //   299: athrow
+    //   300: astore_1
+    //   301: goto -151 -> 150
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	304	0	this	TbsDownloadConfig
+    //   0	304	1	paramContext	Context
+    //   83	209	2	i	int
+    //   88	201	3	j	int
+    //   85	205	4	k	int
+    //   37	131	5	bool	boolean
+    //   103	43	6	localTbsLogInfo	TbsLogReport.TbsLogInfo
+    //   184	1	6	localThrowable	java.lang.Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   44	76	184	java/lang/Throwable
+    //   153	167	184	java/lang/Throwable
+    //   6	39	295	finally
+    //   44	76	295	finally
+    //   96	150	295	finally
+    //   153	167	295	finally
+    //   194	209	295	finally
+    //   6	39	300	java/lang/Throwable
+    //   96	150	300	java/lang/Throwable
+    //   194	209	300	java/lang/Throwable
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsDownloadConfig
  * JD-Core Version:    0.7.0.1
  */

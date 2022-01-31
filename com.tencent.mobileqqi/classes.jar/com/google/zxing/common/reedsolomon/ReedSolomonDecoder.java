@@ -1,6 +1,6 @@
 package com.google.zxing.common.reedsolomon;
 
-import fh;
+import fp;
 
 public final class ReedSolomonDecoder
 {
@@ -11,19 +11,19 @@ public final class ReedSolomonDecoder
     this.a = paramGenericGF;
   }
   
-  private int[] a(fh paramfh)
+  private int[] a(fp paramfp)
   {
     int j = 0;
     int i = 1;
-    int m = paramfh.a();
+    int m = paramfp.a();
     if (m == 1) {
-      return new int[] { paramfh.a(1) };
+      return new int[] { paramfp.a(1) };
     }
     int[] arrayOfInt = new int[m];
     while ((i < this.a.a()) && (j < m))
     {
       int k = j;
-      if (paramfh.b(i) == 0)
+      if (paramfp.b(i) == 0)
       {
         arrayOfInt[j] = this.a.c(i);
         k = j + 1;
@@ -37,7 +37,7 @@ public final class ReedSolomonDecoder
     return arrayOfInt;
   }
   
-  private int[] a(fh paramfh, int[] paramArrayOfInt, boolean paramBoolean)
+  private int[] a(fp paramfp, int[] paramArrayOfInt, boolean paramBoolean)
   {
     int n = paramArrayOfInt.length;
     int[] arrayOfInt = new int[n];
@@ -73,7 +73,7 @@ public final class ReedSolomonDecoder
       break label39;
       m &= 0xFFFFFFFE;
       break label81;
-      arrayOfInt[j] = this.a.b(paramfh.b(i1), this.a.c(i));
+      arrayOfInt[j] = this.a.b(paramfp.b(i1), this.a.c(i));
       if (paramBoolean) {
         arrayOfInt[j] = this.a.b(arrayOfInt[j], i1);
       }
@@ -83,52 +83,52 @@ public final class ReedSolomonDecoder
     }
   }
   
-  private fh[] a(fh paramfh1, fh paramfh2, int paramInt)
+  private fp[] a(fp paramfp1, fp paramfp2, int paramInt)
   {
-    if (paramfh1.a() < paramfh2.a()) {}
+    if (paramfp1.a() < paramfp2.a()) {}
     for (;;)
     {
       Object localObject = this.a.a();
-      fh localfh1 = this.a.b();
-      while (paramfh1.a() >= paramInt / 2)
+      fp localfp1 = this.a.b();
+      while (paramfp1.a() >= paramInt / 2)
       {
-        if (paramfh1.a()) {
+        if (paramfp1.a()) {
           throw new ReedSolomonException("r_{i-1} was zero");
         }
-        fh localfh2 = this.a.a();
-        int i = paramfh1.a(paramfh1.a());
+        fp localfp2 = this.a.a();
+        int i = paramfp1.a(paramfp1.a());
         i = this.a.c(i);
-        while ((paramfh2.a() >= paramfh1.a()) && (!paramfh2.a()))
+        while ((paramfp2.a() >= paramfp1.a()) && (!paramfp2.a()))
         {
-          int j = paramfh2.a() - paramfh1.a();
-          int k = this.a.b(paramfh2.a(paramfh2.a()), i);
-          localfh2 = localfh2.a(this.a.a(j, k));
-          paramfh2 = paramfh2.a(paramfh1.a(j, k));
+          int j = paramfp2.a() - paramfp1.a();
+          int k = this.a.b(paramfp2.a(paramfp2.a()), i);
+          localfp2 = localfp2.a(this.a.a(j, k));
+          paramfp2 = paramfp2.a(paramfp1.a(j, k));
         }
-        localObject = localfh2.b(localfh1).a((fh)localObject);
-        localfh2 = paramfh1;
-        paramfh1 = paramfh2;
-        paramfh2 = (fh)localObject;
-        localObject = localfh1;
-        localfh1 = paramfh2;
-        paramfh2 = localfh2;
+        localObject = localfp2.b(localfp1).a((fp)localObject);
+        localfp2 = paramfp1;
+        paramfp1 = paramfp2;
+        paramfp2 = (fp)localObject;
+        localObject = localfp1;
+        localfp1 = paramfp2;
+        paramfp2 = localfp2;
       }
-      paramInt = localfh1.a(0);
+      paramInt = localfp1.a(0);
       if (paramInt == 0) {
         throw new ReedSolomonException("sigmaTilde(0) was zero");
       }
       paramInt = this.a.c(paramInt);
-      return new fh[] { localfh1.a(paramInt), paramfh1.a(paramInt) };
-      localfh1 = paramfh1;
-      paramfh1 = paramfh2;
-      paramfh2 = localfh1;
+      return new fp[] { localfp1.a(paramInt), paramfp1.a(paramInt) };
+      localfp1 = paramfp1;
+      paramfp1 = paramfp2;
+      paramfp2 = localfp1;
     }
   }
   
   public void a(int[] paramArrayOfInt, int paramInt)
   {
     int m = 0;
-    Object localObject1 = new fh(this.a, paramArrayOfInt);
+    Object localObject1 = new fp(this.a, paramArrayOfInt);
     Object localObject2 = new int[paramInt];
     boolean bool = this.a.equals(GenericGF.f);
     int i = 0;
@@ -141,7 +141,7 @@ public final class ReedSolomonDecoder
       {
         k = i + 1;
         label60:
-        k = ((fh)localObject1).b(localGenericGF.a(k));
+        k = ((fp)localObject1).b(localGenericGF.a(k));
         localObject2[(localObject2.length - 1 - i)] = k;
         if (k == 0) {
           break label239;
@@ -160,12 +160,12 @@ public final class ReedSolomonDecoder
       for (;;)
       {
         return;
-        localObject1 = new fh(this.a, (int[])localObject2);
-        localObject2 = a(this.a.a(paramInt, 1), (fh)localObject1, paramInt);
+        localObject1 = new fp(this.a, (int[])localObject2);
+        localObject2 = a(this.a.a(paramInt, 1), (fp)localObject1, paramInt);
         localObject1 = localObject2[0];
         localObject2 = localObject2[1];
-        localObject1 = a((fh)localObject1);
-        localObject2 = a((fh)localObject2, (int[])localObject1, bool);
+        localObject1 = a((fp)localObject1);
+        localObject2 = a((fp)localObject2, (int[])localObject1, bool);
         paramInt = m;
         while (paramInt < localObject1.length)
         {

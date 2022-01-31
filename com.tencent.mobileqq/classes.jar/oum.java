@@ -1,46 +1,21 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.view.View;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.biz.qrcode.ipc.QrImageScan;
-import com.tencent.biz.widgets.ScannerView.FileDecodeListener;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.biz.pubaccount.readinjoy.daily.DailyTipsFoldUtils.1;
 
 public class oum
-  implements ScannerView.FileDecodeListener
+  extends AnimatorListenerAdapter
 {
-  public oum(ScannerActivity paramScannerActivity) {}
+  public oum(DailyTipsFoldUtils.1 param1, View paramView) {}
   
-  public void a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.a.d = false;
-    ScannerActivity.a(this.a).setVisibility(8);
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.a, 230);
-    localQQCustomDialog.setMessage(2131429974);
-    oun localoun = new oun(this);
-    localQQCustomDialog.setPositiveButton(2131433016, localoun);
-    localQQCustomDialog.setOnCancelListener(localoun);
-    localQQCustomDialog.show();
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.a.d = false;
-    String str = "QR_CODE";
-    if (ScannerActivity.a(this.a) != null) {
-      str = ScannerActivity.a(this.a).a();
-    }
-    ScannerActivity.a(this.a, str, paramString);
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oum
  * JD-Core Version:    0.7.0.1
  */

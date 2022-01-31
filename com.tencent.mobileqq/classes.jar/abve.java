@@ -1,23 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.QQPhotoInfo;
-
-public final class abve
-  implements Parcelable.Creator
+public class abve
 {
-  public QQPhotoInfo a(Parcel paramParcel)
-  {
-    return new QQPhotoInfo(paramParcel, null);
-  }
-  
-  public QQPhotoInfo[] a(int paramInt)
-  {
-    return new QQPhotoInfo[paramInt];
-  }
+  long a;
+  long b;
+  long c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abve
  * JD-Core Version:    0.7.0.1
  */

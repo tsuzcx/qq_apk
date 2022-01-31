@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
 public class acfa
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public acfa(EmoticonMainPanel paramEmoticonMainPanel) {}
+  public acfa(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    EmoticonMainPanel.b(this.a);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acfa
  * JD-Core Version:    0.7.0.1
  */

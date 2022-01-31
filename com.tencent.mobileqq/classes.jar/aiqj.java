@@ -1,14 +1,8 @@
-import com.tencent.mobileqq.transfile.MultiMsgUpProcessor;
-
-public class aiqj
-  implements Runnable
+public abstract interface aiqj
 {
-  public aiqj(MultiMsgUpProcessor paramMultiMsgUpProcessor) {}
+  public abstract void a(long paramLong, float paramFloat, String paramString);
   
-  public void run()
-  {
-    this.a.ap_();
-  }
+  public abstract void b(long paramLong);
 }
 
 

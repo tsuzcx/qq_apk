@@ -9,15 +9,15 @@ public final class RespFaceInfo
   extends JceStruct
 {
   static RespHead cache_stHeader;
-  static ArrayList cache_vFaceInfo;
+  static ArrayList<FaceInfo> cache_vFaceInfo;
   public int iFaceNum;
   public RespHead stHeader;
   public int uFaceTimeStamp;
-  public ArrayList vFaceInfo;
+  public ArrayList<FaceInfo> vFaceInfo;
   
   public RespFaceInfo() {}
   
-  public RespFaceInfo(RespHead paramRespHead, int paramInt1, ArrayList paramArrayList, int paramInt2)
+  public RespFaceInfo(RespHead paramRespHead, int paramInt1, ArrayList<FaceInfo> paramArrayList, int paramInt2)
   {
     this.stHeader = paramRespHead;
     this.uFaceTimeStamp = paramInt1;

@@ -1,18 +1,12 @@
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import android.view.View;
 
-class aezu
-  implements Runnable
+public abstract interface aezu
 {
-  aezu(aezt paramaezt) {}
-  
-  public void run()
-  {
-    PlayOperationViewModel.a(this.a.a);
-  }
+  public abstract void a(View paramView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aezu
  * JD-Core Version:    0.7.0.1
  */

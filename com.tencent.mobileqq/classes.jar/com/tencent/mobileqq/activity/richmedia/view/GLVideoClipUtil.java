@@ -1,23 +1,25 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
+import ajpx;
+import ajwx;
+import ajwz;
+import ajxb;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.opengl.GLES20;
 import android.opengl.Matrix;
 import android.os.SystemClock;
+import azhf;
+import azhg;
+import azhj;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraConstant;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraCompatibleList;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraControl;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraControl.CustomSize;
 import com.tencent.qphone.base.util.QLog;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicBoolean;
-import xxt;
 
 public class GLVideoClipUtil
 {
@@ -30,8 +32,8 @@ public class GLVideoClipUtil
   private static final int jdField_c_of_type_Int;
   private static int q = -1;
   public int a;
+  private ajxb jdField_a_of_type_Ajxb = new ajxb(this, null);
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private xxt jdField_a_of_type_Xxt = new xxt(this, null);
   private int[] jdField_a_of_type_ArrayOfInt = new int[1];
   private ByteBuffer[] jdField_a_of_type_ArrayOfJavaNioByteBuffer = new ByteBuffer[2];
   public int b;
@@ -119,9 +121,9 @@ public class GLVideoClipUtil
     float[] tmp77_72 = tmp72_67;
     tmp77_72[15] = 1.0F;
     tmp77_72;
-    boolean bool1 = CameraCompatibleList.d(CameraCompatibleList.e);
-    boolean bool2 = CameraCompatibleList.b(CameraCompatibleList.f);
-    if ((paramBoolean) && ((bool1) || (bool2)) && (FlowCameraConstant.jdField_a_of_type_Int == 1)) {
+    boolean bool1 = azhf.d(azhf.e);
+    boolean bool2 = azhf.b(azhf.f);
+    if ((paramBoolean) && ((bool1) || (bool2)) && (ajpx.jdField_a_of_type_Int == 1)) {
       System.arraycopy(arrayOfFloat, 0, this.jdField_c_of_type_ArrayOfFloat, 0, arrayOfFloat.length);
     }
     for (;;)
@@ -134,11 +136,11 @@ public class GLVideoClipUtil
       paramInt1 = jdField_b_of_type_ArrayOfFloat.length;
       System.arraycopy(new float[] { f1, f4, f2, f4, f2, f3, f1, f3 }, 0, arrayOfFloat, 0, paramInt1);
       return;
-      bool1 = CameraCompatibleList.d(CameraCompatibleList.g);
+      bool1 = azhf.d(azhf.g);
       if (bool1) {
         paramBoolean = false;
       }
-      if ((bool1) && (FlowCameraConstant.jdField_a_of_type_Int == 2)) {
+      if ((bool1) && (ajpx.jdField_a_of_type_Int == 2)) {
         Matrix.multiplyMM(this.jdField_c_of_type_ArrayOfFloat, 0, new float[] { -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F }, 0, arrayOfFloat, 0);
       } else if (paramBoolean) {
         Matrix.multiplyMM(this.jdField_c_of_type_ArrayOfFloat, 0, new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F }, 0, arrayOfFloat, 0);
@@ -176,16 +178,16 @@ public class GLVideoClipUtil
       long l1 = this.r * this.s * 3 / 2;
       if (l1 != paramInt)
       {
-        xxt localxxt = this.jdField_a_of_type_Xxt;
-        localxxt.jdField_a_of_type_Int += 1;
+        ajxb localajxb = this.jdField_a_of_type_Ajxb;
+        localajxb.jdField_a_of_type_Int += 1;
         bool = true;
-        if (this.jdField_a_of_type_Xxt.jdField_a_of_type_Int >= 3) {
+        if (this.jdField_a_of_type_Ajxb.jdField_a_of_type_Int >= 3) {
           throw new GLVideoClipUtil.GLClipOldLibException("checkDataLength: dataSize=" + l1 + " length=" + paramInt + "prev*preh=" + this.r + " * " + this.s);
         }
       }
       else
       {
-        this.jdField_a_of_type_Xxt.jdField_a_of_type_Int = 0;
+        this.jdField_a_of_type_Ajxb.jdField_a_of_type_Int = 0;
       }
     }
     return bool;
@@ -213,9 +215,10 @@ public class GLVideoClipUtil
     }
   }
   
-  public static boolean b()
+  private boolean b()
   {
-    return q > 0;
+    QLog.d("GLVideoClipUtil", 2, "checkPreviewSize: mPreviewWidth=" + this.r + " mPreviewHeight=" + this.s);
+    return (this.r > 0) && (this.s > 0);
   }
   
   public static void c()
@@ -225,12 +228,6 @@ public class GLVideoClipUtil
     if (QLog.isColorLevel()) {
       QLog.d("GLVideoClipUtil", 2, "refreshTimer " + q);
     }
-  }
-  
-  private boolean c()
-  {
-    QLog.d("GLVideoClipUtil", 2, "checkPreviewSize: mPreviewWidth=" + this.r + " mPreviewHeight=" + this.s);
-    return (this.r > 0) && (this.s > 0);
   }
   
   private void d()
@@ -297,48 +294,48 @@ public class GLVideoClipUtil
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
   {
-    CameraControl.CustomSize localCustomSize = CameraControl.a().a();
+    azhj localazhj = azhg.a().a();
     int i4 = paramInt1;
     int i3 = paramInt2;
     int i2 = paramInt3;
     int i1 = paramInt4;
-    if (localCustomSize != null)
+    if (localazhj != null)
     {
-      QLog.d("GLVideoClipUtil", 2, "allocateNativeBuffer[CameraControl-]: Width=" + localCustomSize.jdField_a_of_type_Int + " Height=" + localCustomSize.jdField_b_of_type_Int + " width1" + paramInt1 + " height1" + paramInt2);
+      QLog.d("GLVideoClipUtil", 2, "allocateNativeBuffer[CameraControl-]: Width=" + localazhj.jdField_a_of_type_Int + " Height=" + localazhj.jdField_b_of_type_Int + " width1" + paramInt1 + " height1" + paramInt2);
       i4 = paramInt1;
       i3 = paramInt2;
       i2 = paramInt3;
       i1 = paramInt4;
-      if (localCustomSize.jdField_a_of_type_Int > 0)
+      if (localazhj.jdField_a_of_type_Int > 0)
       {
         i4 = paramInt1;
         i3 = paramInt2;
         i2 = paramInt3;
         i1 = paramInt4;
-        if (localCustomSize.jdField_b_of_type_Int > 0) {
-          if (localCustomSize.jdField_a_of_type_Int == paramInt1)
+        if (localazhj.jdField_b_of_type_Int > 0) {
+          if (localazhj.jdField_a_of_type_Int == paramInt1)
           {
             i4 = paramInt1;
             i3 = paramInt2;
             i2 = paramInt3;
             i1 = paramInt4;
-            if (localCustomSize.jdField_b_of_type_Int == paramInt2) {}
+            if (localazhj.jdField_b_of_type_Int == paramInt2) {}
           }
           else
           {
             if ((paramInt1 != paramInt4) || (paramInt2 != paramInt3)) {
               break label283;
             }
-            paramInt2 = localCustomSize.jdField_b_of_type_Int;
-            paramInt1 = localCustomSize.jdField_a_of_type_Int;
+            paramInt2 = localazhj.jdField_b_of_type_Int;
+            paramInt1 = localazhj.jdField_a_of_type_Int;
           }
         }
       }
     }
     for (;;)
     {
-      i4 = localCustomSize.jdField_a_of_type_Int;
-      i3 = localCustomSize.jdField_b_of_type_Int;
+      i4 = localazhj.jdField_a_of_type_Int;
+      i3 = localazhj.jdField_b_of_type_Int;
       QLog.d("GLVideoClipUtil", 2, "allocateNativeBuffer[Adjust]: clipwidth=" + paramInt2 + " clipheight=" + paramInt1);
       i1 = paramInt1;
       i2 = paramInt2;
@@ -349,15 +346,15 @@ public class GLVideoClipUtil
         {
           throw new GLVideoClipUtil.GLClipOldLibException("initClipSpec:err=" + paramInt1);
           label283:
-          if (paramInt4 * 1.0F / paramInt3 > localCustomSize.jdField_a_of_type_Int * 1.0F / localCustomSize.jdField_b_of_type_Int)
+          if (paramInt4 * 1.0F / paramInt3 > localazhj.jdField_a_of_type_Int * 1.0F / localazhj.jdField_b_of_type_Int)
           {
-            paramInt1 = (int)(localCustomSize.jdField_a_of_type_Int * paramInt3 * 1.0F / paramInt4);
+            paramInt1 = (int)(localazhj.jdField_a_of_type_Int * paramInt3 * 1.0F / paramInt4);
             paramInt2 = paramInt1 - paramInt1 % 16;
-            paramInt1 = localCustomSize.jdField_a_of_type_Int;
+            paramInt1 = localazhj.jdField_a_of_type_Int;
             continue;
           }
-          paramInt2 = localCustomSize.jdField_b_of_type_Int;
-          paramInt1 = (int)(localCustomSize.jdField_b_of_type_Int * paramInt4 * 1.0F / paramInt3);
+          paramInt2 = localazhj.jdField_b_of_type_Int;
+          paramInt1 = (int)(localazhj.jdField_b_of_type_Int * paramInt4 * 1.0F / paramInt3);
           paramInt1 -= paramInt1 % 16;
         }
       }
@@ -372,7 +369,7 @@ public class GLVideoClipUtil
         this.s = i3;
         this.t = i2;
         this.u = i1;
-        c();
+        b();
         this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true);
         g();
         a(i2, i1, paramBoolean);
@@ -397,7 +394,7 @@ public class GLVideoClipUtil
       return;
       i1 = -1;
       break;
-      boolean bool = c();
+      boolean bool = b();
       QLog.d("GLVideoClipUtil", 2, "checkPreviewSize[copyDataToByteBuffer]: success=" + bool);
       if (a(i1))
       {
@@ -548,7 +545,7 @@ public class GLVideoClipUtil
     GLES20.glFrontFace(2305);
     GLES20.glCullFace(1029);
     f();
-    this.jdField_a_of_type_Int = GLSurfaceUtil.GLVideoHelper.a("precision highp float;\nattribute vec4 position;\nattribute vec4 textureCoordinateIn;\nuniform   mat4 uSTMatrix;\nvarying   vec2 texturecoordinateOut;\nvoid main()\n{\ntexturecoordinateOut = (uSTMatrix * textureCoordinateIn).xy;\ngl_Position = position;\n}\n", jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Int = ajwz.a("precision highp float;\nattribute vec4 position;\nattribute vec4 textureCoordinateIn;\nuniform   mat4 uSTMatrix;\nvarying   vec2 texturecoordinateOut;\nvoid main()\n{\ntexturecoordinateOut = (uSTMatrix * textureCoordinateIn).xy;\ngl_Position = position;\n}\n", jdField_a_of_type_JavaLangString);
     if (this.jdField_a_of_type_Int == 0)
     {
       CameraGLSurfaceView.a("GLVideoHelper.createShaderProgram: mGLProgram=" + this.jdField_a_of_type_Int);
@@ -601,7 +598,7 @@ public class GLVideoClipUtil
       i1 = GLES20.glGetError();
       paramBoolean = bool;
     } while (i1 == 0);
-    GLSurfaceUtil.a("glDrawFrame:err=" + i1 + " errname=" + GLSurfaceUtil.a(i1));
+    ajwx.a("glDrawFrame:err=" + i1 + " errname=" + ajwx.a(i1));
     return bool;
   }
   
@@ -609,7 +606,7 @@ public class GLVideoClipUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.view.GLVideoClipUtil
  * JD-Core Version:    0.7.0.1
  */

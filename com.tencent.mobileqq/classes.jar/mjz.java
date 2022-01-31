@@ -1,24 +1,25 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.ScaleAnimation;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.VideoLayerUI;
 
 class mjz
-  extends AnimateUtils.AnimationAdapter
+  implements View.OnClickListener
 {
-  mjz(mjy parammjy) {}
+  mjz(mjs parammjs) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    paramAnimation = new ScaleAnimation(0.72F, 1.05F, 0.72F, 1.05F, 1, 0.5F, 1, 0.5F);
-    paramAnimation.setDuration(120L);
-    paramAnimation.setAnimationListener(new mka(this));
-    this.a.a.startAnimation(paramAnimation);
+    if (!mjs.a(this.a))
+    {
+      this.a.c();
+      mjs.a(this.a).a.f(0L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mjz
  * JD-Core Version:    0.7.0.1
  */

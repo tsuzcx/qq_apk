@@ -1,23 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.search.fragment.PublicAcntSearchFragment;
-import java.util.List;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
 
-class ahto
-  implements Runnable
+public class ahto
+  extends altm
 {
-  ahto(ahtn paramahtn, boolean paramBoolean) {}
+  public ahto(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void run()
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Ahtn.a.c.setVisibility(8);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ahtn.a.b != null) && (this.jdField_a_of_type_Ahtn.a.b.size() > 0)) {
-      this.jdField_a_of_type_Ahtn.a.b(true);
+    if (paramBoolean) {
+      this.a.i();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahto
  * JD-Core Version:    0.7.0.1
  */

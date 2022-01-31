@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.ar.ARRecord.ARRecordReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
-
 public class zxv
-  implements Runnable
 {
-  public zxv(ARRecordReport paramARRecordReport) {}
+  public int a;
+  public long a;
+  public String a;
   
-  public void run()
+  public zxv(zxt paramzxt, String paramString, int paramInt, long paramLong)
   {
-    HashMap localHashMap = new HashMap();
-    StatisticCollector.a(BaseApplication.getContext()).a("", "ar_record_pre_record_start", true, 0L, 0L, localHashMap, "");
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     zxv
  * JD-Core Version:    0.7.0.1
  */

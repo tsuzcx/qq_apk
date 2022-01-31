@@ -2,8 +2,8 @@
 <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <com.tencent.mobileqq.widget.UpScrollHideView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08025b" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02017c" android:layout_width="fill_parent" android:layout_height="44.0dip">
-            <View android:layout_gravity="center_vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201f5" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="10.0dip" />
+        <LinearLayout android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02017e" android:layout_width="fill_parent" android:layout_height="44.0dip">
+            <View android:layout_gravity="center_vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201f7" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="10.0dip" />
             <TextView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08025c" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="5.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d1244" android:singleLine="true" android:layout_weight="1.0" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0d1244" style="@style/APKTOOL_DUPLICATE_style_0x7f0e008c" />
             <Button android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08025d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0c68" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0183" />
         </LinearLayout>

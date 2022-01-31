@@ -1,17 +1,14 @@
-import com.dataline.activities.LiteVideoActivity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.dataline.activities.LiteMutiPicViewerActivity;
 
-public class ch
-  implements FMDialogUtil.FMDialogInterface
+class ch
+  implements Runnable
 {
-  public ch(LiteVideoActivity paramLiteVideoActivity) {}
+  ch(cf paramcf) {}
   
-  public void a()
+  public void run()
   {
-    LiteVideoActivity.b(this.a);
+    LiteMutiPicViewerActivity.a(this.a.a);
   }
-  
-  public void b() {}
 }
 
 

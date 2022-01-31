@@ -1,14 +1,8 @@
-import com.tencent.mobileqq.javahook.TimeoutExceptionHooker;
-import com.tencent.mobileqq.javahooksdk.MethodHookParam;
-import com.tencent.mobileqq.javahooksdk.ReplaceMethodCallback;
+import android.view.View;
 
-public class advw
-  implements ReplaceMethodCallback
+public abstract interface advw
 {
-  public void replaceMethod(MethodHookParam paramMethodHookParam)
-  {
-    TimeoutExceptionHooker.a(true);
-  }
+  public abstract void a(View paramView, int paramInt);
 }
 
 

@@ -1,24 +1,20 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.profile.view.ProfilePhotoView;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantActivity;
 
-class gjn
-  implements Runnable
+public class gjn
+  implements View.OnClickListener
 {
-  gjn(gjm paramgjm, Bitmap paramBitmap) {}
+  public gjn(QZoneShareAlbumAssistantActivity paramQZoneShareAlbumAssistantActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_Gjm.a.a.get("map_key_face");
-    if (localImageView != null) {
-      localImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    }
+    QZoneShareAlbumAssistantActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gjn
  * JD-Core Version:    0.7.0.1
  */

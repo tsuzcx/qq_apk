@@ -1,26 +1,34 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.playmode.child.SelectVideosPlayMode;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import java.util.ArrayList;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class nld
-  implements Runnable
+public class nld
+  implements bhuk
 {
-  nld(nlc paramnlc, ArrayList paramArrayList) {}
+  public nld(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Nlc.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.setVisibility(8);
-    this.jdField_a_of_type_Nlc.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Nlc.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.notifyDataSetChanged();
-    this.jdField_a_of_type_Nlc.a.jdField_a_of_type_AndroidOsHandler.post(new nle(this));
+    PublicAccountAdvertisementActivity.a(this.a).dismiss();
+    if (paramView != null)
+    {
+      paramView = PublicAccountAdvertisementActivity.a(this.a).a(paramInt);
+      if (QLog.isColorLevel()) {
+        QLog.i("PublicAccountAdvertisementActivity", 2, "action" + paramView);
+      }
+      if ((!TextUtils.isEmpty(paramView)) && (paramView.equals(this.a.getResources().getString(2131693472))))
+      {
+        asya.a().a(PublicAccountAdvertisementActivity.a(this.a), null, 3, 2);
+        azqs.a(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X80090FC", "0X80090FC", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nld
  * JD-Core Version:    0.7.0.1
  */

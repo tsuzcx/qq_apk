@@ -39,14 +39,14 @@ public class KandianTextView
     {
       paramInt2 = super.getLayout().getLineVisibleEnd(0);
       paramInt3 = super.getLayout().getLineVisibleEnd(1);
-      if ((paramInt3 - paramInt2 == 1) || (paramInt3 - paramInt2 == 2))
+      if ((paramInt2 - 1 >= 0) && ((paramInt3 - paramInt2 == 1) || (paramInt3 - paramInt2 == 2)))
       {
         str2 = super.getText().toString();
         if (paramInt3 - paramInt2 != 2) {
-          break label180;
+          break label186;
         }
         if ((str2.charAt(paramInt2 - 1) < '一') || (str2.charAt(paramInt2 - 1) > 40869)) {
-          break label212;
+          break label218;
         }
         paramInt1 = 1;
       }
@@ -61,11 +61,11 @@ public class KandianTextView
       }
       this.a = true;
       return;
-      label180:
+      label186:
       if ((str2.charAt(paramInt2 - 1) >= '一') && (str2.charAt(paramInt2 - 1) <= 40869)) {
         paramInt1 = 1;
       } else {
-        label212:
+        label218:
         paramInt1 = 0;
       }
     }
@@ -79,7 +79,7 @@ public class KandianTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.widgets.KandianTextView
  * JD-Core Version:    0.7.0.1
  */

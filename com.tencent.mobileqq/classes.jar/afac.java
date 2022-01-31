@@ -1,36 +1,35 @@
 import android.content.Context;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.ReportCallback;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 import com.tencent.mobileqq.widget.QQToast;
 
-class afac
-  implements NearbyMomentProtocol.ReportCallback
+public class afac
+  implements aezs
 {
-  afac(afab paramafab) {}
+  public afac(DoodlePanel paramDoodlePanel) {}
   
-  public void a(boolean paramBoolean)
+  public void a(int paramInt)
   {
-    Context localContext = this.a.a;
-    int i;
-    if (paramBoolean)
+    DoodlePanel.a(this.a);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == 2)
     {
-      i = 2;
-      if (!paramBoolean) {
-        break label40;
+      if (!DoodlePanel.a(this.a))
+      {
+        DoodlePanel.a(this.a, true);
+        afad localafad = new afad(this);
+        bdgm.a(this.a.getContext(), 230, null, this.a.getContext().getString(2131689945), null, this.a.getContext().getString(2131689934), localafad, null).show();
       }
-    }
-    label40:
-    for (String str = "举报成功";; str = "举报失败")
-    {
-      QQToast.a(localContext, i, str, 0).a();
       return;
-      i = 1;
-      break;
     }
+    QQToast.a(this.a.getContext(), this.a.getContext().getString(2131689937), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afac
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.PrivacyDeclareViewActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.PrivacyDeclareHelper;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.international.LocaleUtil;
+import mqq.app.MobileQQ;
 
-class dfn
-  implements DialogInterface.OnClickListener
+public class dfn
+  implements View.OnClickListener
 {
-  dfn(dfm paramdfm) {}
+  public dfn(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      paramDialogInterface.dismiss();
-      paramDialogInterface = new Intent(this.a.a, QQBrowserActivity.class);
-      paramDialogInterface.putExtra("url", PrivacyDeclareHelper.a(this.a.a));
+    paramView = new Intent(this.a, QQBrowserActivity.class);
+    int i = LocaleUtil.a(this.a.b.getApplication().getApplicationContext());
+    if ((i == 2) || (i == 3)) {
+      paramView.putExtra("url", "http://zc.qq.com/chs/agreement1_chs.html");
     }
-    try
+    for (;;)
     {
-      this.a.a.startActivity(paramDialogInterface);
-      label76:
-      PrivacyDeclareViewActivity.a(this.a.a);
+      paramView.putExtra("title", this.a.getString(2131559804));
+      this.a.startActivity(paramView);
       return;
-      paramDialogInterface.dismiss();
-      PrivacyDeclareViewActivity.a(this.a.a);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      break label76;
+      paramView.putExtra("url", "http://passport.imqq.com/App/MobileQQ/safety.html?_wv=2");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dfn
  * JD-Core Version:    0.7.0.1
  */

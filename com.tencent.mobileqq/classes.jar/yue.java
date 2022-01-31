@@ -1,40 +1,50 @@
-import android.os.Message;
-import android.util.DisplayMetrics;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.OnApolloViewListener;
-import com.tencent.mobileqq.apollo.store.ApolloViewController;
-import com.tencent.mobileqq.apollo.store.ApolloViewController.PlayActionData;
-import com.tencent.util.WeakReferenceHandler;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.MoveFileRspBody;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
 
-public class yue
-  implements OnApolloViewListener
+public abstract class yue
+  extends nac
 {
-  public yue(ApolloViewController paramApolloViewController, DisplayMetrics paramDisplayMetrics, ApolloViewController.PlayActionData paramPlayActionData) {}
-  
-  public void onNotifyLongTouch(String paramString) {}
-  
-  public void onNotifyStatusChanged(int paramInt, String paramString) {}
-  
-  public void onSurfaceReady(int paramInt1, int paramInt2)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController.jdField_c_of_type_Boolean = true;
-    float f = this.jdField_a_of_type_AndroidUtilDisplayMetrics.density;
-    this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController.jdField_c_of_type_Float = (paramInt1 / 2 / f);
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController.b != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController.a != null) && (ApolloViewController.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController) != null))
+    if (paramInt != 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController.b.onExecDispose();
-      this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController.a.onExecDispose();
-      Message localMessage = ApolloViewController.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController).obtainMessage(19, this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController$PlayActionData.c, this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController$PlayActionData.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController$PlayActionData.a) {
-        localMessage.obj = Float.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController$PlayActionData.jdField_b_of_type_Float);
-      }
-      ApolloViewController.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController).sendMessageDelayed(localMessage, 100L);
+      a(false, paramInt, null);
+      return;
     }
+    paramBundle = new oidb_0x6d6.RspBody();
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d6.MoveFileRspBody)paramBundle.move_file_rsp.get();
+      if (!paramArrayOfByte.int32_ret_code.has()) {
+        break label94;
+      }
+      if (paramArrayOfByte.int32_ret_code.get() == 0)
+      {
+        a(true, 0, paramArrayOfByte.str_parent_folder_id.get());
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      a(false, -1, null);
+      return;
+    }
+    a(false, paramArrayOfByte.int32_ret_code.get(), null);
+    return;
+    label94:
+    a(false, -1, null);
   }
+  
+  protected abstract void a(boolean paramBoolean, int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yue
  * JD-Core Version:    0.7.0.1
  */

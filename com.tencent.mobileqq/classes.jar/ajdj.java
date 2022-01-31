@@ -1,16 +1,15 @@
-import java.nio.ByteBuffer;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment.4.1;
 
 public class ajdj
+  implements ajcx
 {
-  public final int a;
-  public final long a;
-  public final long b;
+  public ajdj(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
   
-  public ajdj(ByteBuffer paramByteBuffer)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = (paramByteBuffer.get() & 0xFFFF);
-    this.jdField_a_of_type_Long = (paramByteBuffer.getInt() & 0xFFFFFFFF);
-    this.b = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+    DrawRedpacketPannelPreviewFragment.a(this.a).post(new DrawRedpacketPannelPreviewFragment.4.1(this, paramBoolean));
   }
 }
 

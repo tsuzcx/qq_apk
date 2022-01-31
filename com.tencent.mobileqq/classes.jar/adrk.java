@@ -1,15 +1,12 @@
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adrk
-  implements Runnable
+class adrk
+  implements DialogInterface.OnClickListener
 {
-  public adrk(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout, int paramInt) {}
+  adrk(adrj paramadrj) {}
   
-  public void run()
-  {
-    HotVideoMongoliaRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout, this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

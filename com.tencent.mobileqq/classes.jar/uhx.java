@@ -1,28 +1,10 @@
-import android.view.animation.Transformation;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
-
-public class uhx
-  implements ValueAnimation.AnimationUpdateListener
+public abstract interface uhx
 {
-  public uhx(VisitorsActivity paramVisitorsActivity) {}
-  
-  public void a(ValueAnimation paramValueAnimation, float paramFloat, Integer paramInteger, Transformation paramTransformation)
-  {
-    this.a.c.setText(paramInteger + "");
-    if (paramInteger.intValue() > 9999)
-    {
-      this.a.c.setTextSize(36.0F);
-      return;
-    }
-    this.a.c.setTextSize(44.0F);
-  }
+  public abstract void a(float paramFloat1, float paramFloat2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uhx
  * JD-Core Version:    0.7.0.1
  */

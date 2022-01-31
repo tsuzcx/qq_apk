@@ -9,7 +9,7 @@ import com.qq.taf.jce.JceUtil;
 public final class i
   extends JceStruct
 {
-  public int a;
+  public int a = 0;
   
   static
   {

@@ -18,20 +18,20 @@ public class VideoDrawable
   private static final String TAG = VideoDrawable.class.getSimpleName();
   private boolean mApplyGravity;
   private final Rect mDstRect = new Rect();
-  private OnPlayerOneFrameListener mFrameDrawListener = null;
+  private VideoDrawable.OnPlayerOneFrameListener mFrameDrawListener = null;
   public boolean mPlayVideoFrame = true;
   private int mTargetDensity = 160;
   private int mVideoHeight;
-  private VideoState mVideoState;
+  private VideoDrawable.VideoState mVideoState;
   private int mVideoWidth;
   
   public VideoDrawable(AbstractVideoImage paramAbstractVideoImage, Resources paramResources)
   {
-    this(new VideoState(paramAbstractVideoImage), paramResources);
+    this(new VideoDrawable.VideoState(paramAbstractVideoImage), paramResources);
     this.mVideoState.mTargetDensity = this.mTargetDensity;
   }
   
-  public VideoDrawable(VideoState paramVideoState, Resources paramResources)
+  public VideoDrawable(VideoDrawable.VideoState paramVideoState, Resources paramResources)
   {
     this.mVideoState = paramVideoState;
     this.mVideoState.mVideo.attachDrawable(this);
@@ -143,7 +143,7 @@ public class VideoDrawable
     this.mApplyGravity = true;
   }
   
-  public void removeOnPlayRepeatListener(OnPlayRepeatListener paramOnPlayRepeatListener)
+  public void removeOnPlayRepeatListener(VideoDrawable.OnPlayRepeatListener paramOnPlayRepeatListener)
   {
     if ((this.mVideoState != null) && (this.mVideoState.mVideo != null)) {
       this.mVideoState.mVideo.removeOnPlayRepeatListener(paramOnPlayRepeatListener);
@@ -193,21 +193,21 @@ public class VideoDrawable
     this.mApplyGravity = true;
   }
   
-  public void setOnAudioPlayOnceListener(OnAudioPlayOnceListener paramOnAudioPlayOnceListener)
+  public void setOnAudioPlayOnceListener(VideoDrawable.OnAudioPlayOnceListener paramOnAudioPlayOnceListener)
   {
     if ((this.mVideoState != null) && (this.mVideoState.mVideo != null)) {
       this.mVideoState.mVideo.setOnAudioPlayOnceListener(paramOnAudioPlayOnceListener);
     }
   }
   
-  public void setOnPlayRepeatListener(OnPlayRepeatListener paramOnPlayRepeatListener)
+  public void setOnPlayRepeatListener(VideoDrawable.OnPlayRepeatListener paramOnPlayRepeatListener)
   {
     if ((this.mVideoState != null) && (this.mVideoState.mVideo != null)) {
       this.mVideoState.mVideo.setOnPlayRepeatListener(paramOnPlayRepeatListener);
     }
   }
   
-  public void setOnPlayerOneFrameListener(OnPlayerOneFrameListener paramOnPlayerOneFrameListener)
+  public void setOnPlayerOneFrameListener(VideoDrawable.OnPlayerOneFrameListener paramOnPlayerOneFrameListener)
   {
     this.mFrameDrawListener = paramOnPlayerOneFrameListener;
   }
@@ -229,85 +229,6 @@ public class VideoDrawable
   public void stopAudio()
   {
     this.mVideoState.mVideo.stopPlayAudio();
-  }
-  
-  public static abstract interface OnAudioPlayOnceListener
-  {
-    public abstract void onFinish();
-  }
-  
-  public static abstract interface OnPlayRepeatListener
-  {
-    public abstract void onPlayRepeat(int paramInt);
-  }
-  
-  public static abstract interface OnPlayerOneFrameListener
-  {
-    public abstract void oneFrameDrawed();
-  }
-  
-  public static class VideoDrawableParams
-  {
-    public String mAfPath;
-    public int mDecodeType = 0;
-    public boolean mEnableAntiAlias = false;
-    public boolean mEnableFilter = false;
-    public boolean mPlayAudioFrame = false;
-    public boolean mPlayVideoFrame = true;
-    public int mRequestedFPS = -1;
-    public int mTotalTime;
-    public String mVfPath;
-    public int mVideoFrames;
-    public int mVideoRoundCorner;
-    
-    public String toString()
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[");
-      localStringBuilder.append(" mVideoRoundCorner: " + this.mVideoRoundCorner);
-      localStringBuilder.append(" mPlayVideoFrame: " + this.mPlayVideoFrame);
-      localStringBuilder.append(" mPlayAudioFrame: " + this.mPlayAudioFrame);
-      localStringBuilder.append(" mEnableAntiAlias: " + this.mEnableAntiAlias);
-      localStringBuilder.append(" mEnableFilter: " + this.mEnableFilter);
-      localStringBuilder.append(" mRequestedFPS: " + this.mRequestedFPS);
-      localStringBuilder.append(" mDecodeType: " + this.mDecodeType);
-      localStringBuilder.append(" mVfPath: " + this.mVfPath);
-      localStringBuilder.append(" mAfPath: " + this.mAfPath);
-      localStringBuilder.append(" mTotalTime: " + this.mTotalTime);
-      localStringBuilder.append(" mVideoFrames: " + this.mVideoFrames);
-      localStringBuilder.append("] ");
-      return localStringBuilder.toString();
-    }
-  }
-  
-  static class VideoState
-    extends Drawable.ConstantState
-  {
-    int mChangingConfigurations;
-    int mGravity = 119;
-    Paint mPaint = new Paint();
-    int mTargetDensity = 160;
-    AbstractVideoImage mVideo;
-    
-    public VideoState(AbstractVideoImage paramAbstractVideoImage)
-    {
-      this.mVideo = paramAbstractVideoImage;
-    }
-    
-    public int getChangingConfigurations()
-    {
-      return this.mChangingConfigurations;
-    }
-    
-    public Drawable newDrawable()
-    {
-      return new VideoDrawable(this, null);
-    }
-    
-    public Drawable newDrawable(Resources paramResources)
-    {
-      return new VideoDrawable(this, paramResources);
-    }
   }
 }
 

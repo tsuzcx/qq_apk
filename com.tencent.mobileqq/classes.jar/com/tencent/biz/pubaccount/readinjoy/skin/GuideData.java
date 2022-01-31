@@ -15,10 +15,11 @@ import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="id,uin,business")
 public class GuideData
-  extends BaseResData
+  extends BaseResData<oidb_0x5bd.GuideInfo>
 {
   public int guideType;
   public SkinData skinData;
+  public int source;
   
   public GuideData()
   {
@@ -47,10 +48,11 @@ public class GuideData
     this.beginTime = paramJSONObject.optInt("beginTime");
     this.endTime = paramJSONObject.optInt("endTime");
     this.guideType = paramJSONObject.optInt("guideType");
+    this.source = paramJSONObject.optInt("source");
     this.skinData = new SkinData(paramJSONObject.optJSONObject("skinInfo"));
   }
   
-  public GuideData(oidb_0x5bd.GuideInfo paramGuideInfo)
+  public GuideData(oidb_0x5bd.GuideInfo paramGuideInfo, int paramInt)
   {
     super(paramGuideInfo);
     this.id = paramGuideInfo.bytes_id.get().toStringUtf8();
@@ -61,17 +63,20 @@ public class GuideData
     this.endTime = paramGuideInfo.uint32_end_timestamp.get();
     this.guideType = paramGuideInfo.uint32_guide_type.get();
     this.skinData = new SkinData((oidb_0x5bd.SkinInfo)paramGuideInfo.msg_skin_info.get());
+    this.source = paramInt;
   }
   
-  protected void postRead()
+  public void postRead()
   {
     super.postRead();
     if (this.resData != null) {}
     try
     {
-      JSONObject localJSONObject = new JSONObject(new String(this.resData));
-      this.guideType = localJSONObject.optInt("guideType");
-      this.skinData = new SkinData(localJSONObject.optJSONObject("skinInfo"));
+      JSONObject localJSONObject1 = new JSONObject(new String(this.resData));
+      this.guideType = localJSONObject1.optInt("guideType");
+      JSONObject localJSONObject2 = localJSONObject1.optJSONObject("skinInfo");
+      this.source = localJSONObject1.optInt("source");
+      this.skinData = new SkinData(localJSONObject2);
       return;
     }
     catch (JSONException localJSONException)
@@ -80,7 +85,7 @@ public class GuideData
     }
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     super.prewrite();
     try
@@ -90,6 +95,7 @@ public class GuideData
       {
         localJSONObject.put("guideType", this.guideType);
         localJSONObject.put("skinInfo", this.skinData.toJson());
+        localJSONObject.put("source", this.source);
         this.resData = localJSONObject.toString().getBytes();
         return;
       }
@@ -139,12 +145,12 @@ public class GuideData
   
   public String toString()
   {
-    return super.toString() + "GuideData{beginTime=" + this.beginTime + ", endTime=" + this.endTime + ", guideType=" + this.guideType + ", skinData=" + this.skinData + '}';
+    return super.toString() + "GuideData{beginTime=" + this.beginTime + ", endTime=" + this.endTime + ", guideType=" + this.guideType + ", source=" + this.source + ", skinData=" + this.skinData + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.skin.GuideData
  * JD-Core Version:    0.7.0.1
  */

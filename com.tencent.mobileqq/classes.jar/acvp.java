@@ -1,55 +1,63 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
-import com.tencent.mobileqq.filemanager.offlinefile.OfflineFileUpload.OfflineFileUploadPara;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
+import ColorNick.QC.GroupNickEmoji;
+import ColorNick.QC.GroupNickItem;
+import ColorNick.QC.readItemInfoRsp;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class acvp
-  implements Runnable
+  extends amcd
 {
-  public acvp(FileManagerRSWorker paramFileManagerRSWorker) {}
+  public acvp(EditInfoActivity paramEditInfoActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FileManagerRSWorker<FileAssistant>", 1, "running OfflineFileHitReq:" + MessageCache.a());
-    }
-    OfflineFileUploadPara localOfflineFileUploadPara = new OfflineFileUploadPara();
-    localOfflineFileUploadPara.jdField_a_of_type_JavaLangString = this.a.e;
-    localOfflineFileUploadPara.jdField_a_of_type_Long = this.a.d;
-    this.a.jdField_a_of_type_ArrayOfByte = FileManagerUtil.c(this.a.jdField_b_of_type_JavaLangString);
-    this.a.jdField_b_of_type_ArrayOfByte = FileManagerUtil.a(this.a.jdField_b_of_type_JavaLangString);
-    this.a.c = FileManagerUtil.b(this.a.jdField_b_of_type_JavaLangString);
-    if ((this.a.jdField_a_of_type_ArrayOfByte == null) || (this.a.jdField_b_of_type_ArrayOfByte == null) || (this.a.c == null))
+    Object localObject1;
+    if ((paramBoolean) && ((paramObject instanceof readItemInfoRsp)))
     {
-      this.a.a(null, 0);
-      return;
-    }
-    localOfflineFileUploadPara.c = this.a.jdField_a_of_type_ArrayOfByte;
-    localOfflineFileUploadPara.d = this.a.jdField_b_of_type_ArrayOfByte;
-    localOfflineFileUploadPara.e = this.a.c;
-    try
-    {
-      localOfflineFileUploadPara.jdField_b_of_type_ArrayOfByte = FileManagerUtil.a(this.a.jdField_b_of_type_JavaLangString).getBytes("utf-8");
-      localOfflineFileUploadPara.jdField_a_of_type_ArrayOfByte = this.a.jdField_b_of_type_JavaLangString.getBytes("utf-8");
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(localOfflineFileUploadPara, FileManagerRSWorker.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      return;
-    }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
-    {
-      for (;;)
+      paramObject = (readItemInfoRsp)paramObject;
+      EditInfoActivity.a(this.a, paramObject.index);
+      localObject1 = paramObject.urlprefix;
+      Iterator localIterator;
+      Object localObject2;
+      if ((paramObject.emojilist != null) && (paramObject.emojilist.size() > 0) && (EditInfoActivity.a(this.a).size() == 0))
       {
-        localUnsupportedEncodingException.printStackTrace();
+        localIterator = paramObject.emojilist.iterator();
+        while (localIterator.hasNext())
+        {
+          localObject2 = (GroupNickEmoji)localIterator.next();
+          EditInfoActivity.a(this.a).add(Integer.valueOf(((GroupNickEmoji)localObject2).itemid));
+        }
+        this.a.a.sendEmptyMessage(260);
       }
+      if ((paramObject.itemlist != null) && (paramObject.itemlist.size() > 0))
+      {
+        localIterator = paramObject.itemlist.iterator();
+        while (localIterator.hasNext())
+        {
+          localObject2 = (GroupNickItem)localIterator.next();
+          String str = (String)localObject1 + ((GroupNickItem)localObject2).url;
+          localObject2 = new bdro(3, null, ((GroupNickItem)localObject2).itemid, str);
+          EditInfoActivity.b(this.a).add(localObject2);
+        }
+        localObject1 = this.a;
+        if (paramObject.left != 1) {
+          break label257;
+        }
+      }
+    }
+    label257:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      EditInfoActivity.a((EditInfoActivity)localObject1, paramBoolean);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acvp
  * JD-Core Version:    0.7.0.1
  */

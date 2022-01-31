@@ -1,28 +1,43 @@
-import com.tencent.biz.widgets.ElasticHorScrView;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
+import java.util.HashMap;
+import java.util.List;
 
-public class akgb
-  implements Runnable
+class akgb
+  implements akfb
 {
-  public akgb(ShareActionSheetBuilder paramShareActionSheetBuilder) {}
+  akgb(akga paramakga, String paramString) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.a.jdField_a_of_type_Int) {
-      this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
-    }
-    while (this.a.b.getWidth() < ShareActionSheetBuilder.a(this.a))
+    if (paramBoolean) {}
+    try
     {
-      this.a.b.setMove(true);
+      Object localObject = "key_special_sound_list" + this.jdField_a_of_type_Akga.mRuntime.a().getCurrentAccountUin();
+      localObject = (List)QvipSpecialSoundManager.a.get(localObject);
+      akga.a(this.jdField_a_of_type_Akga, this.jdField_a_of_type_JavaLangString, (List)localObject);
       return;
-      this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
     }
-    this.a.b.setMove(false);
+    catch (Exception localException1)
+    {
+      localException1.printStackTrace();
+      try
+      {
+        akga.a(this.jdField_a_of_type_Akga, this.jdField_a_of_type_JavaLangString, null);
+        return;
+      }
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
+      }
+    }
+    akga.a(this.jdField_a_of_type_Akga, this.jdField_a_of_type_JavaLangString, null);
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akgb
  * JD-Core Version:    0.7.0.1
  */

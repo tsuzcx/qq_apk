@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.app.HotChatManager;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import com.tencent.image.URLImageView;
 
-public class zff
-  implements Runnable
+class zff
+  implements Animation.AnimationListener
 {
-  public zff(HotChatManager paramHotChatManager) {}
+  zff(zfa paramzfa, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    HotChatManager.a(this.a);
+    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zff
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.util.List;
 
-public final class ammk
-  implements DialogInterface.OnClickListener
+public abstract interface ammk
 {
-  public ammk(DialogInterface.OnClickListener paramOnClickListener) {}
+  public abstract void a(String paramString, awge paramawge);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.onClick(paramDialogInterface, paramInt);
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(String paramString, List<? extends awge> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ammk
  * JD-Core Version:    0.7.0.1
  */

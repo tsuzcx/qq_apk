@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_group$RspGetGroupDynamicEntrancePicture
-  extends MessageMicro
+  extends MessageMicro<RspGetGroupDynamicEntrancePicture>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField cover_url = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -23,7 +23,7 @@ public final class qqstory_group$RspGetGroupDynamicEntrancePicture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_group.RspGetGroupDynamicEntrancePicture
  * JD-Core Version:    0.7.0.1
  */

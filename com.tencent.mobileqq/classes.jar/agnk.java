@@ -1,20 +1,27 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
-import java.util.Comparator;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class agnk
-  implements Comparator
+class agnk
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public agnk(PersonalityLabel paramPersonalityLabel) {}
+  agnk(agnj paramagnj) {}
   
-  public int a(PersonalityLabelInfo paramPersonalityLabelInfo1, PersonalityLabelInfo paramPersonalityLabelInfo2)
+  public void onGlobalLayout()
   {
-    return -(int)(paramPersonalityLabelInfo1.modTime - paramPersonalityLabelInfo2.modTime);
+    if (this.a.T)
+    {
+      this.a.T = false;
+      agnj.a(this.a).sendEmptyMessageDelayed(23, 100L);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.a, 2, " doOnCreate_initUI onGlobalLayout");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agnk
  * JD-Core Version:    0.7.0.1
  */

@@ -8,14 +8,14 @@ import java.util.ArrayList;
 public final class mobile_sub_getRecommend_rsp
   extends JceStruct
 {
-  static ArrayList cache_datalist;
+  static ArrayList<s_user> cache_datalist;
   public int allnum;
   public String attach_info = "";
-  public ArrayList datalist;
+  public ArrayList<s_user> datalist;
   
   public mobile_sub_getRecommend_rsp() {}
   
-  public mobile_sub_getRecommend_rsp(int paramInt, ArrayList paramArrayList, String paramString)
+  public mobile_sub_getRecommend_rsp(int paramInt, ArrayList<s_user> paramArrayList, String paramString)
   {
     this.allnum = paramInt;
     this.datalist = paramArrayList;

@@ -1,33 +1,26 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.lbs.BasicLocation;
-import com.tencent.biz.qqstory.model.lbs.LbsManager;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.LbsUpdateListener;
-import com.tencent.biz.qqstory.storyHome.discover.model.DiscoverPagerLoader;
-import com.tencent.biz.qqstory.storyHome.discover.view.DiscoverPresenter;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public class nvy
-  implements LbsManager.LbsUpdateListener
+class nvy
+  implements QQPermissionCallback
 {
-  public nvy(DiscoverPresenter paramDiscoverPresenter, LbsManager paramLbsManager) {}
+  nvy(nvp paramnvp, Runnable paramRunnable) {}
   
-  public void a(boolean paramBoolean, @Nullable BasicLocation paramBasicLocation)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    SLog.e("Q.qqstory.discover.DiscoverPresenter", "lbs update %b %s", new Object[] { Boolean.valueOf(paramBoolean), paramBasicLocation });
-    this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager.b(this);
-    if (DiscoverPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewDiscoverPresenter).get())
-    {
-      SLog.d("Q.qqstory.discover.DiscoverPresenter", "is destroy");
-      return;
-    }
-    DiscoverPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewDiscoverPresenter).a = paramBasicLocation;
-    DiscoverPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewDiscoverPresenter).a(null, 0);
+    QLog.i("DailyHeaderViewController", 1, "[deny] ACCESS_FINE_LOCATION");
+    nvp.a(this.jdField_a_of_type_Nvp, 3);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.i("DailyHeaderViewController", 1, "[grant] ACCESS_FINE_LOCATION");
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nvy
  * JD-Core Version:    0.7.0.1
  */

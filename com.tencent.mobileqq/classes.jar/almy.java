@@ -1,24 +1,21 @@
-import com.tencent.image.URLImageView;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.QidianProfileCardActivity.PaGroupStruct;
-import com.tencent.qidian.data.GroupItem;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.apollo.view.ApolloPanel.36.1;
+import com.tencent.qphone.base.util.QLog;
 
-class almy
-  implements Runnable
+public class almy
+  implements akoj
 {
-  almy(almx paramalmx, GroupItem paramGroupItem, URLImageView paramURLImageView) {}
+  public almy(ApolloPanel paramApolloPanel) {}
   
-  public void run()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    String str = String.valueOf(this.jdField_a_of_type_ComTencentQidianDataGroupItem.a);
-    this.jdField_a_of_type_Almx.a.a.put(str, new QidianProfileCardActivity.PaGroupStruct(this.jdField_a_of_type_ComTencentImageURLImageView, 3, str));
-    this.jdField_a_of_type_Almx.a.a(3, this.jdField_a_of_type_ComTencentImageURLImageView, str, false);
+    QLog.d("ApolloPanel", 2, "onStatusUpdate, currentStatus=" + paramInt + "， is3dAvailable=" + paramBoolean);
+    this.a.post(new ApolloPanel.36.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     almy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,31 @@
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.app.HotchatSCHelper;
-import com.tencent.mobileqq.app.HotchatSCHelper.OnShowNoteListener;
-import com.tencent.mobileqq.app.HotchatSCMng.HotchatNote;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.troop.logic.TroopFeedsCenterLogic;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class vur
-  implements HotchatSCHelper.OnShowNoteListener
+  implements View.OnClickListener
 {
-  public vur(HotChatPie paramHotChatPie) {}
+  public vur(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public boolean a(HotchatSCMng.HotchatNote paramHotchatNote)
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      NearbyUtils.a("Q.aio.BaseTroopChatPie", "onShowHotchatNote", new Object[] { paramHotchatNote });
-    }
-    if (paramHotchatNote == null)
+    if (!bdin.g(this.a.jdField_a_of_type_AndroidViewView.getContext()))
     {
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppHotchatSCHelper.b) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, null, null);
-      }
-      return false;
+      QQToast.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), 1, 2131694766, 0).a();
+      return;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic == null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic = new TroopFeedsCenterLogic(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, HotChatPie.a(this.a), HotChatPie.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips, this.a.Q, null);
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramHotchatNote.a, paramHotchatNote.b);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppHotchatSCHelper.b = true;
-    return true;
+    wxe.d(this.a.jdField_a_of_type_JavaLangString, "video view error, retry, show loading view");
+    this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
+    this.a.a(10, true, "retry play");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vur
  * JD-Core Version:    0.7.0.1
  */

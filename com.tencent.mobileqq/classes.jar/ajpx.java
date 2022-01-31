@@ -1,41 +1,98 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopGiftProtocolObserver;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
-import com.tencent.mobileqq.troop.utils.TroopGiftManager;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x9e9.cmd0x9e9.RspBody;
+import java.io.File;
+import java.util.Calendar;
 
-public class ajpx
-  extends ProtoUtils.TroopGiftProtocolObserver
+public abstract class ajpx
 {
-  public ajpx(TroopGiftManager paramTroopGiftManager, TroopGiftCallback paramTroopGiftCallback) {}
+  public static float a;
+  public static int a;
+  public static int b = 3;
+  public static int c = 2;
+  public static int d = 1;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  static
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    jdField_a_of_type_Float = 0.75F;
+    jdField_a_of_type_Int = 2;
+  }
+  
+  public static String a()
+  {
+    Calendar localCalendar = Calendar.getInstance();
+    StringBuilder localStringBuilder = new StringBuilder(ajrx.b);
+    localStringBuilder.append("IMG");
+    localStringBuilder.append(localCalendar.get(1));
+    int i = localCalendar.get(2) + 1;
+    if (i < 10)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_gift", 2, "requestGiftPoint. onResult error=" + paramInt + " data=" + paramArrayOfByte);
+      localObject = "0" + i;
+      localStringBuilder.append(localObject);
+      i = localCalendar.get(5);
+      if (i >= 10) {
+        break label300;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(paramInt, "sso request error or callback is null.");
+      localObject = "0" + i;
+      label108:
+      localStringBuilder.append(localObject);
+      i = localCalendar.get(11);
+      if (i >= 10) {
+        break label308;
+      }
+      localObject = "0" + i;
+      label148:
+      localStringBuilder.append(localObject);
+      i = localCalendar.get(12);
+      if (i >= 10) {
+        break label316;
+      }
+      localObject = "0" + i;
+      label188:
+      localStringBuilder.append(localObject);
+      i = localCalendar.get(13);
+      if (i >= 10) {
+        break label324;
       }
     }
-    do
+    label300:
+    label308:
+    label316:
+    label324:
+    for (Object localObject = "0" + i;; localObject = Integer.valueOf(i))
     {
-      return;
-      paramBundle = new cmd0x9e9.RspBody();
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(paramBundle.int64_total_point.get() / 100L);
-        return;
+      localStringBuilder.append(localObject);
+      if (new File(localStringBuilder.toString() + ".jpg").exists()) {
+        break label332;
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
-    } while (!QLog.isColorLevel());
-    QLog.i(".troop.send_gift", 2, "requestGiftPoint. error=" + QLog.getStackTraceString(paramArrayOfByte));
+      return localStringBuilder.toString() + ".jpg";
+      localObject = Integer.valueOf(i);
+      break;
+      localObject = Integer.valueOf(i);
+      break label108;
+      localObject = Integer.valueOf(i);
+      break label148;
+      localObject = Integer.valueOf(i);
+      break label188;
+    }
+    label332:
+    localObject = new StringBuilder(localStringBuilder);
+    int j = localStringBuilder.length();
+    i = 1;
+    for (;;)
+    {
+      if (i < 2147483647)
+      {
+        ((StringBuilder)localObject).append('(');
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(')');
+        ((StringBuilder)localObject).append(".jpg");
+        if (new File(((StringBuilder)localObject).toString()).exists()) {}
+      }
+      else
+      {
+        return ((StringBuilder)localObject).toString();
+      }
+      ((StringBuilder)localObject).delete(j, ((StringBuilder)localObject).length());
+      i += 1;
+    }
   }
 }
 

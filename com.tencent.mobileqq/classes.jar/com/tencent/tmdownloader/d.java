@@ -1,7 +1,7 @@
 package com.tencent.tmdownloader;
 
 import android.content.Context;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ab;
 
 class d
   implements Runnable
@@ -10,7 +10,7 @@ class d
   
   public void run()
   {
-    r.c("BaseIPCClient", "unInitTMAssistantDownloadSDK,clientKey:" + this.a.mClientKey + ",mServiceInterface:" + this.a.mServiceInterface + ",threadId:" + Thread.currentThread().getId());
+    ab.c("BaseIPCClient", "unInitTMAssistantDownloadSDK,clientKey:" + this.a.mClientKey + ",mServiceInterface:" + this.a.mServiceInterface + ",threadId:" + Thread.currentThread().getId());
     if ((this.a.mServiceInterface != null) && (this.a.mServiceCallback != null)) {}
     try
     {
@@ -32,7 +32,7 @@ class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmdownloader.d
  * JD-Core Version:    0.7.0.1
  */

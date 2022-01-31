@@ -10,18 +10,18 @@ import com.tencent.component.media.image.RawImageProcessor;
 public class CropByPivotRawProcessor
   extends RawImageProcessor
 {
-  private static final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(3);
-  private final float jdField_a_of_type_Float;
-  private final int jdField_a_of_type_Int;
-  private final float jdField_b_of_type_Float;
-  private final int jdField_b_of_type_Int;
+  private static final Paint sPaint = new Paint(3);
+  private final int mHeight;
+  private final float mPivotX;
+  private final float mPivotY;
+  private final int mWidth;
   
   public CropByPivotRawProcessor(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
+    this.mWidth = paramInt1;
+    this.mHeight = paramInt2;
+    this.mPivotX = paramFloat1;
+    this.mPivotY = paramFloat2;
   }
   
   public static boolean isGoldenCudgel(int paramInt1, int paramInt2)
@@ -31,7 +31,7 @@ public class CropByPivotRawProcessor
   
   public String id()
   {
-    return this.jdField_a_of_type_Int + "#" + this.jdField_b_of_type_Int + "#" + this.jdField_a_of_type_Float + "#" + this.jdField_b_of_type_Float;
+    return this.mWidth + "#" + this.mHeight + "#" + this.mPivotX + "#" + this.mPivotY;
   }
   
   public BitmapReference process(BitmapReference paramBitmapReference)
@@ -41,8 +41,8 @@ public class CropByPivotRawProcessor
     }
     int k = paramBitmapReference.getWidth();
     int m = paramBitmapReference.getHeight();
-    int i = Math.min(this.jdField_a_of_type_Int, k);
-    int j = (int)Math.min(this.jdField_b_of_type_Int, i / k * m);
+    int i = Math.min(this.mWidth, k);
+    int j = (int)Math.min(this.mHeight, i / k * m);
     float f3;
     int i1;
     float f1;
@@ -51,8 +51,8 @@ public class CropByPivotRawProcessor
       f3 = i / k;
       k = (int)(k * f3);
       m = (int)(m * f3);
-      int n = (int)(this.jdField_a_of_type_Float * k);
-      i1 = (int)(this.jdField_b_of_type_Float * m);
+      int n = (int)(this.mPivotX * k);
+      i1 = (int)(this.mPivotY * m);
       if (k <= i) {
         break label270;
       }
@@ -76,7 +76,7 @@ public class CropByPivotRawProcessor
         Canvas localCanvas = new Canvas(localBitmapReference.getBitmap());
         localCanvas.translate(-f1, -f2);
         localCanvas.scale(f3, f3);
-        localCanvas.drawBitmap(paramBitmapReference.getBitmap(), 0.0F, 0.0F, jdField_a_of_type_AndroidGraphicsPaint);
+        localCanvas.drawBitmap(paramBitmapReference.getBitmap(), 0.0F, 0.0F, sPaint);
         return localBitmapReference;
         f3 = 1.0F;
         break;
@@ -90,7 +90,7 @@ public class CropByPivotRawProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.image.processor.CropByPivotRawProcessor
  * JD-Core Version:    0.7.0.1
  */

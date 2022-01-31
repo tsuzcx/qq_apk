@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
-class ajvs
-  implements Action.OnActionEndListener
+public class ajvs
+  implements MediaPlayer.OnCompletionListener
 {
-  ajvs(ajvr paramajvr) {}
+  public ajvs(FixedSizeVideoView paramFixedSizeVideoView) {}
   
-  public void a()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
+    if (this.a.a != null)
+    {
+      if (FixedSizeVideoView.a(this.a) != null) {
+        FixedSizeVideoView.a(this.a).removeMessages(0);
+      }
+      this.a.a.a(paramMediaPlayer);
     }
   }
 }

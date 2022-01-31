@@ -1,40 +1,24 @@
-import android.os.Handler;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-
 public class mfd
-  implements TVK_SDKMgr.InstallListener
 {
-  private Handler a;
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
   
-  public mfd(Handler paramHandler)
+  public mfd()
   {
-    this.a = paramHandler;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public void onInstallProgress(float paramFloat)
+  public boolean a()
   {
-    if (this.a != null) {
-      this.a.sendEmptyMessage(2);
-    }
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    if (this.a != null) {
-      this.a.sendEmptyMessage(1);
-    }
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    if (this.a != null) {
-      this.a.sendEmptyMessage(0);
-    }
+    long l = System.currentTimeMillis();
+    return (this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Long + this.b > l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mfd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,21 @@
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.util.InputMethodUtil;
+import android.text.Editable;
+import android.util.SparseArray;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment.IdiomHbBundleInfo;
+import java.util.List;
 
 public class aiyx
-  implements Runnable
+  implements aiyz
 {
-  public aiyx(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  public aiyx(WordChainHbFragment paramWordChainHbFragment) {}
   
-  public void run()
+  public void a(boolean paramBoolean, List<String> paramList)
   {
-    InputMethodUtil.b(this.a.a);
+    paramList = WordChainHbFragment.a(this.a, true);
+    this.a.c.setText(paramList);
+    WordChainHbFragment.a(this.a).put(WordChainHbFragment.a(this.a).currSelectedSubChannel, paramList);
+    this.a.c.setSelection(this.a.c.getText().length());
   }
 }
 

@@ -1,36 +1,17 @@
-import android.graphics.Canvas;
-import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
 
-public class aiej
+class aiej
+  implements bett
 {
-  public boolean d = true;
-  public boolean e = true;
-  public int f;
-  public boolean f;
-  public int g;
+  aiej(aiei paramaiei) {}
   
-  aiej(TCProgressBar paramTCProgressBar)
-  {
-    this.jdField_f_of_type_Boolean = false;
-  }
+  public void a(Bundle paramBundle) {}
   
-  void a(Canvas paramCanvas)
-  {
-    this.jdField_f_of_type_Boolean = false;
-  }
-  
-  boolean a(float paramFloat)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TCProgressBar", 2, "checkBounds,x = " + paramFloat + ",x_coord = " + this.jdField_f_of_type_Int + ",x_coord + length = " + (this.jdField_f_of_type_Int + this.g));
-    }
-    return (paramFloat > this.jdField_f_of_type_Int) && (paramFloat < this.jdField_f_of_type_Int + this.g);
-  }
+  public void b(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiej
  * JD-Core Version:    0.7.0.1
  */

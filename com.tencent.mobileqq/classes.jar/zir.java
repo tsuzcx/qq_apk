@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-
-class zir
-  implements Runnable
+public abstract interface zir
 {
-  zir(ziq paramziq) {}
+  public abstract int a();
   
-  public void run()
-  {
-    if (this.a.a.b)
-    {
-      this.a.a.b = false;
-      this.a.a();
-    }
-  }
+  public abstract zjd a();
+  
+  public abstract zjd a(int paramInt);
+  
+  public abstract void a(int paramInt);
+  
+  public abstract int b();
 }
 
 

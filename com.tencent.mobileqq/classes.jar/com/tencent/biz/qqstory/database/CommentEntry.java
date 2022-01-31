@@ -1,21 +1,28 @@
 package com.tencent.biz.qqstory.database;
 
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.biz.bmqq.util.BmqqSegmentUtil;
-import com.tencent.biz.qqstory.base.Copyable;
+import awge;
+import awhp;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoCommentInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.persistence.Entity;
+import nbp;
+import org.json.JSONException;
+import org.json.JSONObject;
+import ulj;
+import wxe;
 
 public class CommentEntry
-  extends Entity
-  implements Copyable
+  extends awge
+  implements ulj
 {
+  public static final int COMMENT_TYPE_CAPTURE_TOGETHER = 5;
   public static final int COMMENT_TYPE_COMMON = 0;
+  public static final int COMMENT_TYPE_GAME_PK = 4;
   public static final int COMMENT_TYPE_RATE = 2;
   public static final int COMMENT_TYPE_VOTE = 1;
   public static final int ROLE_NORMAL = 0;
@@ -30,6 +37,7 @@ public class CommentEntry
   public static final int TYPE_FEED_COMMENT = 3;
   public static final int TYPE_FEED_OPEN_COMMENT = 4;
   public static final int TYPE_MORE_ITEM = 1;
+  public int atVideoShootTime;
   public String authorName;
   public int authorRole;
   public String authorUin;
@@ -37,6 +45,9 @@ public class CommentEntry
   public int commentId = (int)(this.fakeId / 1000L - 1400000000.0D);
   public int commentType = 0;
   public String content;
+  @awhp
+  private JSONObject extraJson;
+  public String extras;
   public long fakeId = System.currentTimeMillis();
   public String feedId;
   public int pbType = -1;
@@ -46,6 +57,8 @@ public class CommentEntry
   public long replyTime;
   public String replyUin;
   public int status = 0;
+  public String togetherFeedId;
+  public String togetherVid;
   public int type = 3;
   public String vid;
   
@@ -66,6 +79,10 @@ public class CommentEntry
     localCommentEntry.replierRole = paramStoryVideoCommentInfo.reply_role.get();
     localCommentEntry.replierUnionId = paramStoryVideoCommentInfo.reply_union_id.get();
     localCommentEntry.commentType = paramStoryVideoCommentInfo.type.get();
+    localCommentEntry.extras = paramStoryVideoCommentInfo.extras.get().toStringUtf8();
+    localCommentEntry.togetherVid = paramStoryVideoCommentInfo.vid.get().toStringUtf8();
+    localCommentEntry.togetherFeedId = paramStoryVideoCommentInfo.feed_id.get().toStringUtf8();
+    localCommentEntry.atVideoShootTime = paramStoryVideoCommentInfo.at_video_shoot_time.get();
     return localCommentEntry;
   }
   
@@ -90,6 +107,11 @@ public class CommentEntry
     this.type = paramObject.type;
     this.commentType = paramObject.commentType;
     this.pbType = paramObject.pbType;
+    this.extras = paramObject.extras;
+    this.extraJson = paramObject.extraJson;
+    this.togetherVid = paramObject.togetherVid;
+    this.togetherFeedId = paramObject.togetherFeedId;
+    this.atVideoShootTime = paramObject.atVideoShootTime;
   }
   
   public boolean equals(Object paramObject)
@@ -106,6 +128,34 @@ public class CommentEntry
     return false;
   }
   
+  @NonNull
+  public JSONObject getExtraJson()
+  {
+    try
+    {
+      if (this.extraJson == null) {
+        if (TextUtils.isEmpty(this.extras)) {
+          break label43;
+        }
+      }
+      label43:
+      for (this.extraJson = new JSONObject(this.extras);; this.extraJson = new JSONObject())
+      {
+        JSONObject localJSONObject = this.extraJson;
+        return localJSONObject;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        wxe.c("CommentEntry", "getExtraJson error", localException);
+        this.extraJson = new JSONObject();
+      }
+    }
+    finally {}
+  }
+  
   public int hashCode()
   {
     return (int)(this.fakeId ^ this.fakeId >>> 32);
@@ -113,7 +163,23 @@ public class CommentEntry
   
   public boolean isReply()
   {
-    return ((!TextUtils.isEmpty(this.replierUnionId)) && (!this.replierUnionId.equals("0"))) || (BmqqSegmentUtil.a(this.replyUin));
+    return ((!TextUtils.isEmpty(this.replierUnionId)) && (!this.replierUnionId.equals("0"))) || (nbp.a(this.replyUin));
+  }
+  
+  public boolean putExtra(String paramString, Object paramObject)
+  {
+    try
+    {
+      JSONObject localJSONObject = getExtraJson();
+      localJSONObject.putOpt(paramString, paramObject);
+      this.extras = localJSONObject.toString();
+      return true;
+    }
+    catch (JSONException paramString)
+    {
+      wxe.c("PublishVideoEntry", "putStringExtra error", paramString);
+    }
+    return false;
   }
   
   public String toString()
@@ -136,13 +202,17 @@ public class CommentEntry
     localStringBuilder.append(", replierUnionId=").append(this.replierUnionId);
     localStringBuilder.append(", type=").append(this.type);
     localStringBuilder.append(", commentType=").append(this.commentType);
-    localStringBuilder.append(", pbType=").append(this.pbType).append("}");
+    localStringBuilder.append(", pbType=").append(this.pbType);
+    localStringBuilder.append(", togetherVid=").append(this.togetherVid);
+    localStringBuilder.append(", togetherFeedId=").append(this.togetherFeedId);
+    localStringBuilder.append(", atShootTime=").append(this.atVideoShootTime);
+    localStringBuilder.append(", extras=").append(this.extras).append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.CommentEntry
  * JD-Core Version:    0.7.0.1
  */

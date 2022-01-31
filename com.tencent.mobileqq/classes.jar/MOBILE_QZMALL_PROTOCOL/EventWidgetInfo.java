@@ -15,6 +15,7 @@ public final class EventWidgetInfo
   public DescInfo stDescInfo;
   public VideoInfo stVideoInfo;
   public String strBubbleDesc = "";
+  public String strDownloadAppPackageName = "";
   public String strJumpUrl = "";
   public String strMaterialUrl = "";
   public String strTraceInfo = "";
@@ -22,7 +23,7 @@ public final class EventWidgetInfo
   
   public EventWidgetInfo() {}
   
-  public EventWidgetInfo(boolean paramBoolean1, int paramInt, String paramString1, DescInfo paramDescInfo, VideoInfo paramVideoInfo, String paramString2, boolean paramBoolean2, String paramString3, String paramString4)
+  public EventWidgetInfo(boolean paramBoolean1, int paramInt, String paramString1, DescInfo paramDescInfo, VideoInfo paramVideoInfo, String paramString2, boolean paramBoolean2, String paramString3, String paramString4, String paramString5)
   {
     this.bShow = paramBoolean1;
     this.type = paramInt;
@@ -33,6 +34,7 @@ public final class EventWidgetInfo
     this.bIsPreload = paramBoolean2;
     this.strBubbleDesc = paramString3;
     this.strTraceInfo = paramString4;
+    this.strDownloadAppPackageName = paramString5;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -46,6 +48,7 @@ public final class EventWidgetInfo
     this.bIsPreload = paramJceInputStream.read(this.bIsPreload, 6, false);
     this.strBubbleDesc = paramJceInputStream.readString(7, false);
     this.strTraceInfo = paramJceInputStream.readString(8, false);
+    this.strDownloadAppPackageName = paramJceInputStream.readString(9, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -70,6 +73,9 @@ public final class EventWidgetInfo
     }
     if (this.strTraceInfo != null) {
       paramJceOutputStream.write(this.strTraceInfo, 8);
+    }
+    if (this.strDownloadAppPackageName != null) {
+      paramJceOutputStream.write(this.strDownloadAppPackageName, 9);
     }
   }
 }

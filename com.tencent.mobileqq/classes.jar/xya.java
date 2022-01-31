@@ -1,20 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.richmedia.view.RotationSeekBar;
-
-public class xya
-  implements ValueAnimator.AnimatorUpdateListener
+final class xya
 {
-  public xya(RotationSeekBar paramRotationSeekBar) {}
+  public float a;
+  public float b;
+  public float c;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public xya(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    RotationSeekBar.b(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xya
  * JD-Core Version:    0.7.0.1
  */

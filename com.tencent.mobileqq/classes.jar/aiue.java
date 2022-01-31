@@ -1,14 +1,39 @@
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import android.os.SystemClock;
 
-public class aiue
-  implements Runnable
+public abstract class aiue
 {
-  public aiue(MediaPreviewActivity paramMediaPreviewActivity) {}
+  private long jdField_a_of_type_Long;
+  private aiud jdField_a_of_type_Aiud;
+  private long b;
   
-  public void run()
+  public aiue(long paramLong)
   {
-    this.a.b = false;
+    a(paramLong);
   }
+  
+  public final void a()
+  {
+    long l = this.jdField_a_of_type_Long - SystemClock.elapsedRealtime();
+    if (l > 1000L)
+    {
+      b(l);
+      return;
+    }
+    b();
+  }
+  
+  public void a(long paramLong)
+  {
+    if (this.jdField_a_of_type_Aiud != null) {
+      this.jdField_a_of_type_Aiud.a(paramLong);
+    }
+    this.b = paramLong;
+    this.jdField_a_of_type_Long = (SystemClock.elapsedRealtime() + 1000L * paramLong);
+  }
+  
+  public abstract void b();
+  
+  public abstract void b(long paramLong);
 }
 
 

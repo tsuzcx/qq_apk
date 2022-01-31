@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/b2n" android:id="@id/ii_" android:background="@drawable/bg_texture" android:focusable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <LinearLayout android:orientation="vertical" android:id="@id/f1b" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/lkz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al1" formItem:bgType="abp" formItem:leftText="@string/ixy" formItem:showArrow="true">
+            <TextView android:textSize="11.0dip" android:textColor="@color/skin_qq_conversation_unread_gray_text_color" android:gravity="center" android:id="@id/kik" android:background="@drawable/skin_tips_newmessage_gray" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="30.0dip" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </com.tencent.mobileqq.widget.FormSimpleItem>
+        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/qq_setting_sync_msg_switch" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al1" formItem:bgType="jsv" formItem:switchChecked="true" formItem:switchText="@string/fta" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/eqs" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="abp" formItem:leftText="@string/c8l" formItem:rightTextColor="ab6" formItem:showArrow="true" />
+        <TextView android:textColor="@color/skin_gray2" android:id="@id/jjt" android:paddingLeft="@dimen/al3" android:paddingRight="@dimen/al3" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al0" android:text="@string/c8m" android:contentDescription="@string/c8m" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/delRecentList" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al3" formItem:bgType="jsv" formItem:leftText="@string/ajt" formItem:leftTextColor="ab6" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/delChatHistory" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="evy" formItem:leftText="@string/ajf" formItem:leftTextColor="ab6" />
+    </LinearLayout>
+</com.tencent.mobileqq.widget.BounceScrollView>

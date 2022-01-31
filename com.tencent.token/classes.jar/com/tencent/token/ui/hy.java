@@ -1,27 +1,19 @@
 package com.tencent.token.ui;
 
-import com.tencent.service.e;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 
-final class hy
-  implements Runnable
+class hy
+  implements DialogInterface.OnClickListener
 {
-  hy(hx paramhx) {}
+  hy(hs paramhs) {}
   
-  public final void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    synchronized (this.a.d)
-    {
-      if (hx.a(this.a) == null)
-      {
-        hx.a(this.a, true);
-        long l = System.currentTimeMillis();
-        hx.b(this.a);
-        com.tencent.token.cv.f = (int)(System.currentTimeMillis() - l);
-        hx.a(this.a, new e(hx.c(this.a), this.a, hx.d(this.a)));
-        hx.a(this.a, false);
-      }
-      return;
-    }
+    paramDialogInterface = new Intent(this.a.a, FaceRecognitionCreateActivity.class);
+    this.a.a.startActivity(paramDialogInterface);
+    this.a.a.finish();
   }
 }
 

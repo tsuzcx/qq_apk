@@ -1,29 +1,19 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.view.DragSortAdapter;
-import com.tencent.mobileqq.emosm.view.DragSortListView.DropListener;
-import com.tencent.mobileqq.emoticon.EmoticonController;
-import com.tencent.mobileqq.statistics.StatisticAssist;
-import mqq.app.MobileQQ;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import com.tencent.mobileqq.activity.IndividuationSetActivity;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
-public class cqy
-  implements DragSortListView.DropListener
+class cqy
+  implements Runnable
 {
-  public cqy(EmosmActivity paramEmosmActivity) {}
+  cqy(cqx paramcqx, Bitmap paramBitmap) {}
   
-  public void a_(int paramInt1, int paramInt2)
+  public void run()
   {
-    if (paramInt1 != paramInt2)
-    {
-      EmoticonPackage localEmoticonPackage = (EmoticonPackage)EmosmActivity.a(this.a).getItem(paramInt1);
-      EmosmActivity.a(this.a).remove(localEmoticonPackage);
-      EmosmActivity.a(this.a).setNotifyOnChange(true);
-      EmosmActivity.a(this.a).insert(localEmoticonPackage, paramInt2);
-      EmoticonController.a(this.a.b).a(localEmoticonPackage, paramInt1, paramInt2);
-      this.a.c = true;
-      StatisticAssist.a(this.a.b.getApplication().getApplicationContext(), this.a.b.a(), "Ep_order");
-    }
+    BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    int i = this.jdField_a_of_type_Cqx.a.getResources().getDimensionPixelSize(2131427612);
+    IndividuationSetActivity.a(this.jdField_a_of_type_Cqx.a).setRightIcon(localBitmapDrawable, i, i);
   }
 }
 

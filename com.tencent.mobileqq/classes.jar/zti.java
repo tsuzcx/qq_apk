@@ -1,31 +1,36 @@
-import com.tencent.mobileqq.app.message.MsgProxy;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.persistence.qslowtable.QSlowTableManager;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.device.datadef.ProductInfo;
 
-public class zti
-  implements Runnable
+public final class zti
+  implements Parcelable.Creator<ProductInfo>
 {
-  public zti(MsgProxy paramMsgProxy, QSlowTableManager paramQSlowTableManager, String paramString, int paramInt) {}
-  
-  public void run()
+  public ProductInfo a(Parcel paramParcel)
   {
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager != null) {
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager.a(MessageRecord.getTableName(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int), null, null);
-      }
-      return;
-    }
-    catch (RuntimeException localRuntimeException)
-    {
-      QLog.e("Q.msg.MsgProxy", 1, "delete slowtable excep :", localRuntimeException);
-    }
+    ProductInfo localProductInfo = new ProductInfo();
+    localProductInfo.productId = paramParcel.readInt();
+    localProductInfo.deviceType = paramParcel.readInt();
+    localProductInfo.bindType = paramParcel.readInt();
+    localProductInfo.supportMainMsgType = paramParcel.readInt();
+    localProductInfo.supportFuncMsgType = paramParcel.readInt();
+    localProductInfo.deviceName = paramParcel.readString();
+    localProductInfo.uConnectType = paramParcel.readInt();
+    localProductInfo.deviceOSType = paramParcel.readInt();
+    localProductInfo.regType = paramParcel.readInt();
+    localProductInfo.linkStateDesc = paramParcel.readString();
+    localProductInfo.linkStepDesc = paramParcel.readString();
+    localProductInfo.linkDescImg = paramParcel.readString();
+    return localProductInfo;
+  }
+  
+  public ProductInfo[] a(int paramInt)
+  {
+    return new ProductInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     zti
  * JD-Core Version:    0.7.0.1
  */

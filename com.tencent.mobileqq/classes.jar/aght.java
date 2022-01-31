@@ -1,19 +1,30 @@
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.VideoListener.1;
 
-class aght
-  implements Runnable
+public class aght
+  implements VideoDrawable.OnPlayRepeatListener
 {
-  aght(aghs paramaghs, int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong) {}
+  public AIOGalleryAdapter a;
   
-  public void run()
+  public aght(AIOGalleryAdapter paramAIOGalleryAdapter)
   {
-    ScanTorchActivity.a(this.jdField_a_of_type_Aghs.a, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
+    this.a = paramAIOGalleryAdapter;
+  }
+  
+  public void onPlayRepeat(int paramInt)
+  {
+    if (paramInt != 1) {
+      return;
+    }
+    new Handler(Looper.getMainLooper()).post(new AIOGalleryAdapter.VideoListener.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aght
  * JD-Core Version:    0.7.0.1
  */

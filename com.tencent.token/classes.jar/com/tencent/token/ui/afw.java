@@ -1,22 +1,33 @@
 package com.tencent.token.ui;
 
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.token.ba;
-import com.tencent.token.core.bean.g;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.cp;
+import com.tencent.token.cw;
+import com.tencent.token.cx;
+import com.tencent.token.do;
 
-final class afw
-  implements CompoundButton.OnCheckedChangeListener
+class afw
+  implements View.OnClickListener
 {
-  afw(UtilsQbQdProtectActivity paramUtilsQbQdProtectActivity) {}
+  afw(WtLoginAccountInput paramWtLoginAccountInput) {}
   
-  public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    paramCompoundButton = ba.a().g();
-    if ((paramCompoundButton == null) || (!ba.a().o()) || (paramBoolean != paramCompoundButton.c)) {
+    WtLoginAccountInput.access$602(this.a, true);
+    if (cx.c().g())
+    {
+      cw.a().a(WtLoginAccountInput.access$500(this.a));
       return;
     }
-    UtilsQbQdProtectActivity.access$600(this.a);
+    if ((do.a().d() >= 3) && (do.a().d(WtLoginAccountInput.access$700(this.a)) == null))
+    {
+      this.a.showUserDialog(2131230935, this.a.getResources().getString(2131230877), 2131230897, null);
+      return;
+    }
+    cp.a(this.a.getApplicationContext()).a(this.a, 523005419L, WtLoginAccountInput.access$500(this.a));
+    this.a.showProDialog(this.a, 2131230843, 2131231298, null);
   }
 }
 

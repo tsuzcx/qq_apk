@@ -1,18 +1,23 @@
-import android.app.Dialog;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.RegisterBaseActivity;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.StrangerManageActivity;
+import com.tencent.widget.XListView;
 
 public class dky
-  implements Runnable
+  implements Handler.Callback
 {
-  public dky(RegisterBaseActivity paramRegisterBaseActivity, int paramInt) {}
+  public dky(StrangerManageActivity paramStrangerManageActivity) {}
   
-  public void run()
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a = new Dialog(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity, 2131624405);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a.setContentView(2130903073);
-    ((TextView)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a.findViewById(2131231029)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.getString(this.jdField_a_of_type_Int));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a.show();
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      this.a.a.B();
+    }
   }
 }
 

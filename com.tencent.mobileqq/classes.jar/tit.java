@@ -1,27 +1,23 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.QQLSActivity;
+import UserGrowth.stFeed;
+import com.tencent.widget.pull2refresh.XRecyclerView;
+import java.util.List;
 
-public class tit
-  implements Animation.AnimationListener
+public abstract interface tit
+  extends tiv<List<stFeed>>
 {
-  public tit(QQLSActivity paramQQLSActivity) {}
+  public abstract XRecyclerView a();
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QQLSActivity.a(this.a) != null) {
-      QQLSActivity.a(this.a).post(new tiu(this));
-    }
-  }
+  public abstract tbb a();
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract void a(List<stFeed> paramList, boolean paramBoolean);
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tit
  * JD-Core Version:    0.7.0.1
  */

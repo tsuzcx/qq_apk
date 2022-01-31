@@ -1,13 +1,4 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class ajxa
-  implements DialogInterface.OnClickListener
-{
-  ajxa(ajwy paramajwy) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
-}
+public class ajxa {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

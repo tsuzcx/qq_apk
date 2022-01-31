@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class WebSafe$CheckURLResp
-  extends MessageMicro
+  extends MessageMicro<CheckURLResp>
 {
   public static final int RESULT_FIELD_NUMBER = 2;
   public static final int RETCODE_FIELD_NUMBER = 1;
@@ -16,7 +16,7 @@ public final class WebSafe$CheckURLResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.websafe.WebSafe.CheckURLResp
  * JD-Core Version:    0.7.0.1
  */

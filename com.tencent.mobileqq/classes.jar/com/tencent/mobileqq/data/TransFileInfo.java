@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
+import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="mr_time,mr_seq,selfUin,friendUin")
 public class TransFileInfo
-  extends Entity
+  extends awge
 {
   public String fileName;
   public String friendUin;
@@ -19,7 +19,7 @@ public class TransFileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.TransFileInfo
  * JD-Core Version:    0.7.0.1
  */

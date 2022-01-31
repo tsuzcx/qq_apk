@@ -1,23 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class osy
-  implements View.OnClickListener
+public class osy
+  implements AladdinConfigHandler
 {
-  osy(osw paramosw) {}
-  
-  public void onClick(View paramView)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    paramView = (TextView)this.a.a.findViewById(2131363057);
-    if ((paramView.getText() instanceof String)) {
-      this.a.a((String)paramView.getText());
+    QLog.d("AdNativeProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = osq.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("AdNativeProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "commercialAdDetails_feeds")) {
+        bkbq.a("ad_native_proteus_offline_bid", str2);
+      }
     }
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    bkbq.a("ad_native_proteus_offline_bid", "0");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     osy
  * JD-Core Version:    0.7.0.1
  */

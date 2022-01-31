@@ -1,47 +1,14 @@
-import android.annotation.SuppressLint;
-import android.app.DownloadManager;
-import android.app.DownloadManager.Query;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
-import com.tencent.mobileqq.app.MQPIntChkHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.automator.step.GetGameCenterUnread;
+import com.tencent.mobileqq.observer.GameCenterObserver;
 
 public class fhz
-  extends BroadcastReceiver
+  extends GameCenterObserver
 {
-  public fhz(MQPIntChkHandler paramMQPIntChkHandler, DownloadManager paramDownloadManager) {}
+  private fhz(GetGameCenterUnread paramGetGameCenterUnread) {}
   
-  @SuppressLint({"NewApi"})
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    long l = paramIntent.getLongExtra("extra_download_id", -1L);
-    if (MQPIntChkHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMQPIntChkHandler) == l)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("IntChk", 4, "download complete.");
-      }
-      paramIntent = "";
-      Object localObject = new DownloadManager.Query();
-      ((DownloadManager.Query)localObject).setFilterById(new long[] { l });
-      localObject = this.jdField_a_of_type_AndroidAppDownloadManager.query((DownloadManager.Query)localObject);
-      if (((Cursor)localObject).moveToFirst()) {
-        paramIntent = ((Cursor)localObject).getString(((Cursor)localObject).getColumnIndex("local_filename"));
-      }
-      ((Cursor)localObject).close();
-      if ((paramIntent != null) && (paramIntent != ""))
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("IntChk", 4, "install downloaded package:" + paramIntent);
-        }
-        localObject = new Intent("android.intent.action.VIEW");
-        ((Intent)localObject).setDataAndType(Uri.parse("file://" + paramIntent), "application/vnd.android.package-archive");
-        ((Intent)localObject).setFlags(268435456);
-        paramContext.startActivity((Intent)localObject);
-      }
-    }
+    this.a.a(7);
   }
 }
 

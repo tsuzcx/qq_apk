@@ -23,6 +23,8 @@ public class FaceDetector
     return NativeIdCardInitial(paramString);
   }
   
+  public static void IdCardReset() {}
+  
   public static boolean IsSupportNeon()
   {
     return NativeIsSupportNeon();
@@ -35,9 +37,9 @@ public class FaceDetector
   
   public static void LiveDestroy() {}
   
-  public static boolean LiveDetectInitial(String paramString)
+  public static boolean LiveDetectInitial(String paramString, LiveThreshold paramLiveThreshold)
   {
-    return NativeLiveDetectInitial(paramString);
+    return NativeLiveDetectInitial(paramString, paramLiveThreshold);
   }
   
   public static void LiveDetectReset() {}
@@ -49,9 +51,9 @@ public class FaceDetector
   
   private static native void NativeDestroy(long paramLong);
   
-  private static native int NativeFaceDetect(FaceInfo paramFaceInfo, long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int[] paramArrayOfInt, float[] paramArrayOfFloat, int paramInt4);
+  private static native int NativeFaceDetect(FaceInfo paramFaceInfo, long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int[] paramArrayOfInt, int paramInt4);
   
-  private static native int NativeFaceLightDetect(long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int[] paramArrayOfInt, float[] paramArrayOfFloat);
+  private static native int NativeFaceLightDetect(long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int[] paramArrayOfInt);
   
   private static native void NativeIdCardDestroy();
   
@@ -59,9 +61,11 @@ public class FaceDetector
   
   private static native boolean NativeIdCardInitial(String paramString);
   
-  private static native long NativeInitial(String paramString);
+  private static native void NativeIdCardReset();
   
-  private static native long NativeInitialMode(String paramString, int paramInt);
+  private static native long NativeInitial(String paramString, FaceThreshold paramFaceThreshold);
+  
+  private static native long NativeInitialMode(String paramString, int paramInt, FaceThreshold paramFaceThreshold);
   
   private static native boolean NativeIsSupportNeon();
   
@@ -69,7 +73,7 @@ public class FaceDetector
   
   private static native void NativeLiveDetectDestroy();
   
-  private static native boolean NativeLiveDetectInitial(String paramString);
+  private static native boolean NativeLiveDetectInitial(String paramString, LiveThreshold paramLiveThreshold);
   
   private static native void NativeLiveDetectReset();
   
@@ -82,9 +86,9 @@ public class FaceDetector
     return 0L;
   }
   
-  public FaceDetector.ErrorCode FaceLightDetect(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int[] paramArrayOfInt, float[] paramArrayOfFloat)
+  public FaceDetector.ErrorCode FaceLightDetect(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int[] paramArrayOfInt)
   {
-    switch (NativeFaceLightDetect(this.mNativeDetector, paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramArrayOfInt, paramArrayOfFloat))
+    switch (NativeFaceLightDetect(this.mNativeDetector, paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramArrayOfInt))
     {
     default: 
       return FaceDetector.ErrorCode.UNKNOW;
@@ -98,27 +102,27 @@ public class FaceDetector
     return FaceDetector.ErrorCode.BAD_PARAM;
   }
   
-  public int FaceRegister(FaceInfo paramFaceInfo, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int[] paramArrayOfInt, float[] paramArrayOfFloat)
+  public int FaceRegister(FaceInfo paramFaceInfo, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int[] paramArrayOfInt)
   {
-    return NativeFaceDetect(paramFaceInfo, this.mNativeDetector, paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramArrayOfInt, paramArrayOfFloat, 1);
+    return NativeFaceDetect(paramFaceInfo, this.mNativeDetector, paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramArrayOfInt, 1);
   }
   
-  public int FaceValidate(FaceInfo paramFaceInfo, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int[] paramArrayOfInt, float[] paramArrayOfFloat)
+  public int FaceValidate(FaceInfo paramFaceInfo, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int[] paramArrayOfInt)
   {
-    return NativeFaceDetect(paramFaceInfo, this.mNativeDetector, paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramArrayOfInt, paramArrayOfFloat, 0);
+    return NativeFaceDetect(paramFaceInfo, this.mNativeDetector, paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramArrayOfInt, 0);
   }
   
-  public long Initial(String paramString, FaceDetector.AlgMode paramAlgMode)
+  public long Initial(String paramString, FaceDetector.AlgMode paramAlgMode, FaceThreshold paramFaceThreshold)
   {
     if (FaceDetector.AlgMode.ALG_OPENCV == paramAlgMode) {}
-    for (this.mNativeDetector = NativeInitialMode(paramString, 0);; this.mNativeDetector = NativeInitialMode(paramString, 1)) {
+    for (this.mNativeDetector = NativeInitialMode(paramString, 0, paramFaceThreshold);; this.mNativeDetector = NativeInitialMode(paramString, 1, paramFaceThreshold)) {
       return 0L;
     }
   }
   
-  public boolean Initial(String paramString)
+  public boolean Initial(String paramString, FaceThreshold paramFaceThreshold)
   {
-    this.mNativeDetector = NativeInitial(paramString);
+    this.mNativeDetector = NativeInitial(paramString, paramFaceThreshold);
     return 0L != this.mNativeDetector;
   }
   

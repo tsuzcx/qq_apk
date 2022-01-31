@@ -1,31 +1,25 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import com.tencent.mobileqq.utils.AvatarPendantUtil;
-import com.tencent.util.MqqWeakReferenceHandler;
+import com.tencent.mobileqq.widget.QQToast;
+import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
 
-public class agrj
-  implements Runnable
+class agrj
+  implements bemh<oidb_0x8ed.RspBody>
 {
-  public agrj(ProfileHeaderView paramProfileHeaderView, ProfileCardInfo paramProfileCardInfo, boolean paramBoolean) {}
+  agrj(agqq paramagqq) {}
   
-  public void run()
+  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
   {
-    ExtensionInfo localExtensionInfo = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(50)).a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a);
-    Message localMessage = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(ProfileHeaderView.g, localExtensionInfo);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendMessage(localMessage);
-    if ((this.jdField_a_of_type_Boolean) && (localExtensionInfo != null) && (AvatarPendantUtil.b(localExtensionInfo.pendantId))) {
-      AvatarPendantUtil.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a);
+    if ((paramInt == 0) && (this.a.ac))
+    {
+      QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 2, alud.a(2131705511), 0).a();
+      bdne.f(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
+      this.a.jdField_a_of_type_Auxp.a(this.a.jdField_a_of_type_AndroidContentContext);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agrj
  * JD-Core Version:    0.7.0.1
  */

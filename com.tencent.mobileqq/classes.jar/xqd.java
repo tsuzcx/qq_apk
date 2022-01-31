@@ -1,31 +1,62 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.VideoProcessListener;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
 
 public class xqd
-  implements NewFlowCameraActivity.VideoProcessListener
+  extends xwu
 {
-  public xqd(NewFlowCameraActivity paramNewFlowCameraActivity) {}
-  
-  public void a(boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, String paramString2)
+  public View a(Context paramContext, View paramView, bibi parambibi, int paramInt)
   {
-    if (this.a.r == 10011)
+    parambibi.a = new bibj[this.b];
+    paramInt = 0;
+    while (paramInt < this.b)
     {
-      NewFlowCameraActivity.a(this.a, paramString1);
-      return;
+      parambibi.a[paramInt] = new bibj();
+      parambibi.a[paramInt].jdField_a_of_type_Int = -1;
+      parambibi.a[paramInt].c = 0;
+      parambibi.a[paramInt].jdField_a_of_type_AndroidViewView = null;
+      paramInt += 1;
     }
-    if (paramBoolean)
+    parambibi.g = paramView.findViewById(2131369147);
+    return paramView;
+  }
+  
+  public void a(int paramInt, Object paramObject, bibj[] paramArrayOfbibj)
+  {
+    paramArrayOfbibj[0].jdField_a_of_type_Int = 0;
+    paramArrayOfbibj[0].b = 0;
+    paramArrayOfbibj[1].jdField_a_of_type_Int = -1;
+    paramArrayOfbibj[1].b = -1;
+    String str = QQStoryContext.a().a();
+    if ((this.a.a) || (((TroopStoryItemInfo)paramObject).uin.equals(str)))
     {
-      NewFlowCameraActivity.b(this.a, paramString1);
-      return;
+      paramArrayOfbibj[1].jdField_a_of_type_Int = 1;
+      paramArrayOfbibj[1].b = 1;
     }
-    this.a.i(true);
-    QQToast.a(this.a, "对不起，GIF处理异常...", 0).a();
+  }
+  
+  protected void a(ViewGroup paramViewGroup, View paramView, bibj parambibj, int paramInt)
+  {
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
+    if (localLayoutParams == null) {
+      paramView.setLayoutParams(new LinearLayout.LayoutParams(parambibj.c, parambibj.d));
+    }
+    for (;;)
+    {
+      paramViewGroup.addView(paramView, paramInt);
+      return;
+      localLayoutParams.width = parambibj.c;
+      localLayoutParams.height = parambibj.d;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xqd
  * JD-Core Version:    0.7.0.1
  */

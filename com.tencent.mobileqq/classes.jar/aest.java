@@ -1,23 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
-import com.tencent.mobileqq.nearby.now.widget.CommonRecyclerView;
+import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
 
-public class aest
-  implements View.OnClickListener
+class aest
+  implements afhc
 {
-  public aest(SelectLocationFragment paramSelectLocationFragment) {}
+  aest(aesk paramaesk) {}
   
-  public void onClick(View paramView)
+  public void a(IntimateInfo.MemoryDayInfo paramMemoryDayInfo)
   {
-    if (SelectLocationFragment.a(this.a) != null) {
-      SelectLocationFragment.a(this.a).smoothScrollToPosition(0);
-    }
+    aesk.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aest
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,18 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
+import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-final class bg
+class bg
   implements View.OnClickListener
 {
-  bg(BaseActivity paramBaseActivity) {}
+  bg(BaseActivity paramBaseActivity, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = new Intent(BaseActivity.access$100(this.a), IndexActivity.class);
-    paramView.putExtra("index_from", 16);
-    BaseActivity.access$100(this.a).startActivity(paramView);
-    BaseActivity.access$100(this.a).finish();
+    this.b.dismissDialog();
+    this.a.onClick(BaseActivity.access$400(this.b), -1);
   }
 }
 

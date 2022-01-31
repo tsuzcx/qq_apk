@@ -1,18 +1,37 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.AbsListView.SavedState;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public final class amab
-  implements Parcelable.Creator
+public class amab
+  extends BroadcastReceiver
 {
-  public AbsListView.SavedState a(Parcel paramParcel)
-  {
-    return new AbsListView.SavedState(paramParcel, null);
-  }
+  public amab(QQAppInterface paramQQAppInterface) {}
   
-  public AbsListView.SavedState[] a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return new AbsListView.SavedState[paramInt];
+    if (this.a.l) {
+      QLog.i("QQAppInterface", 1, "qzoneBrocastReceiver release() has been called  ,return ", null);
+    }
+    do
+    {
+      int i;
+      do
+      {
+        return;
+        paramContext = paramIntent.getAction();
+        if (!"com.tencent.qzone.cleanunreadcount".equals(paramContext)) {
+          break;
+        }
+        i = paramIntent.getIntExtra("clean_unread_feed_type", -1);
+        paramContext = (azbw)this.a.getManager(10);
+      } while ((paramContext == null) || (i == -1));
+      paramContext.a(i, 0L, new ArrayList(), null, false, false, "");
+      return;
+    } while (!"com.tecent.qzone.clearAlbumRedTouch".equals(paramContext));
+    ((axbg)this.a.getManager(104)).b();
   }
 }
 

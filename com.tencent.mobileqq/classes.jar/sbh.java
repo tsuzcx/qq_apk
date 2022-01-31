@@ -1,43 +1,64 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.widget.AbsListView;
 
 public class sbh
-  extends AccountObserver
+  implements sai, sak
 {
-  public sbh(ChatHistoryForC2C paramChatHistoryForC2C, boolean paramBoolean) {}
+  private static boolean a;
   
-  public void onRefreshDA2(boolean paramBoolean, String paramString1, String paramString2)
+  public static void f()
   {
-    boolean bool2 = false;
-    if (QLog.isColorLevel())
-    {
-      paramString1 = new StringBuilder().append("onRefrshDA2 result: ").append(paramBoolean).append(", da2 length: ");
-      if (paramString2 != null) {
-        break label93;
-      }
-    }
-    label93:
-    for (int i = 0;; i = paramString2.length())
-    {
-      QLog.d("ChatHistoryForC2C", 2, i);
-      boolean bool1 = bool2;
-      if (paramBoolean)
-      {
-        bool1 = bool2;
-        if (!TextUtils.isEmpty(paramString2)) {
-          bool1 = true;
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.runOnUiThread(new sbi(this, bool1));
-      return;
+    a = false;
+    SharedPreferences.Editor localEditor = bkbq.a(ors.a(), true, false).edit();
+    localEditor.putBoolean("key_read_injoy_fast_web_share_guide", false);
+    localEditor.commit();
+  }
+  
+  public int a(BaseData paramBaseData)
+  {
+    return 17;
+  }
+  
+  public sah a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  {
+    paramContext = LayoutInflater.from(paramContext).inflate(2131560022, null);
+    ((TextView)paramContext.findViewById(2131378831)).setTextSize(0, Utils.dp2px(15.0D));
+    return new sbi(paramContext, paramBaseData);
+  }
+  
+  public void a() {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt) {}
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    return paramBaseData.s == 19;
+  }
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d()
+  {
+    if (a) {
+      f();
     }
   }
+  
+  public void e() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sbh
  * JD-Core Version:    0.7.0.1
  */

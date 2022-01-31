@@ -1,36 +1,58 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.SetFunctionFlagRequset;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
 
-public final class nhx
-  implements Parcelable.Creator
+public class nhx
 {
-  public StoryPushMsg a(Parcel paramParcel)
+  public static void a(QQAppInterface paramQQAppInterface, AccountDetail paramAccountDetail)
   {
-    int i = paramParcel.readInt();
-    Object localObject = paramParcel.readString();
-    String str1 = paramParcel.readString();
-    long l = paramParcel.readLong();
-    String str2 = paramParcel.readString();
-    String str3 = paramParcel.readString();
-    int j = paramParcel.readInt();
-    String str4 = paramParcel.readString();
-    String str5 = paramParcel.readString();
-    String str6 = paramParcel.readString();
-    paramParcel = paramParcel.readBundle();
-    localObject = new StoryPushMsg(i, (String)localObject, str1, l, str3, str4, j, str5, str6, str2);
-    ((StoryPushMsg)localObject).a = paramParcel;
-    return localObject;
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailBaseInfoModel", 2, "saveAccountDetailToDBAndCache");
+    }
+    awgf localawgf = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    if ((paramAccountDetail != null) && (paramAccountDetail.getId() != -1L)) {
+      if (!localawgf.a(paramAccountDetail)) {
+        localawgf.a(AccountDetail.class);
+      }
+    }
+    for (;;)
+    {
+      localawgf.a();
+      paramQQAppInterface = (alzl)paramQQAppInterface.getManager(56);
+      if ((paramQQAppInterface != null) && (paramAccountDetail != null))
+      {
+        paramQQAppInterface.a(paramAccountDetail);
+        if (paramAccountDetail.followType == 1) {
+          paramQQAppInterface.a(PublicAccountInfo.createPublicAccount(paramAccountDetail, 0L));
+        }
+      }
+      return;
+      localawgf.a(paramAccountDetail);
+    }
   }
   
-  public StoryPushMsg[] a(int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, npo paramnpo, int paramInt)
   {
-    return new StoryPushMsg[paramInt];
+    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), nrz.class);
+    localNewIntent.putExtra("cmd", "set_function_flag");
+    mobileqq_mp.SetFunctionFlagRequset localSetFunctionFlagRequset = new mobileqq_mp.SetFunctionFlagRequset();
+    localSetFunctionFlagRequset.version.set(1);
+    localSetFunctionFlagRequset.uin.set((int)Long.parseLong(paramString));
+    localSetFunctionFlagRequset.type.set(paramnpo.e);
+    localSetFunctionFlagRequset.value.set(paramInt);
+    localSetFunctionFlagRequset.account_type.set(1);
+    localNewIntent.putExtra("data", localSetFunctionFlagRequset.toByteArray());
+    localNewIntent.setObserver(new nhy(paramQQAppInterface, paramnpo, paramInt, paramString));
+    paramQQAppInterface.startServlet(localNewIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nhx
  * JD-Core Version:    0.7.0.1
  */

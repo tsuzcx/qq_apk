@@ -1,42 +1,36 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.view.View;
-import com.tencent.mobileqq.leba.view.LebaFeedsDislikeMaskView;
-import com.tencent.mobileqq.leba.view.LebaFeedsDislikeMaskView.Listener;
+import com.tencent.mobileqq.activity.ThemeNoviceGuideActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aebj
-  implements Animator.AnimatorListener
+  extends Handler
 {
-  public aebj(LebaFeedsDislikeMaskView paramLebaFeedsDislikeMaskView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public aebj(ThemeNoviceGuideActivity paramThemeNoviceGuideActivity, Looper paramLooper)
   {
-    LebaFeedsDislikeMaskView.a(this.a).setAlpha(0.0F);
-    LebaFeedsDislikeMaskView.a(this.a, 0);
-    this.a.invalidate();
-    LebaFeedsDislikeMaskView.a(this.a, false);
-    if (LebaFeedsDislikeMaskView.a(this.a) != null) {
-      LebaFeedsDislikeMaskView.a(this.a).f();
-    }
+    super(paramLooper);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    LebaFeedsDislikeMaskView.a(this.a).setAlpha(1.0F);
-    LebaFeedsDislikeMaskView.a(this.a).setScaleX(1.0F);
-    LebaFeedsDislikeMaskView.a(this.a).setScaleY(1.0F);
-    if (LebaFeedsDislikeMaskView.a(this.a) <= 0)
+    paramMessage = this.a.findViewById(2131377807);
+    if (paramMessage != null) {}
+    try
     {
-      int i = this.a.getWidth();
-      int j = this.a.getHeight();
-      LebaFeedsDislikeMaskView.b(this.a, (int)Math.sqrt(i * i + j * j));
+      paramMessage.setBackgroundResource(2130849977);
+      azqs.b(this.a.app, "CliOper", "", this.a.app.getCurrentAccountUin(), "theme_mall", "theme_popup", 0, 0, "", "", "", "");
+      return;
     }
-    LebaFeedsDislikeMaskView.a(this.a, LebaFeedsDislikeMaskView.a(this.a));
-    this.a.invalidate();
+    catch (OutOfMemoryError paramMessage)
+    {
+      for (;;)
+      {
+        QLog.e("ThemeNoviceGuideActivity", 1, "handleMessage oom e = " + paramMessage);
+      }
+    }
   }
 }
 

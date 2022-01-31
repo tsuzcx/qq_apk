@@ -28,7 +28,7 @@ public abstract class FragmentManager
   
   public abstract Fragment getFragment(Bundle paramBundle, String paramString);
   
-  public abstract List getFragments();
+  public abstract List<Fragment> getFragments();
   
   @Deprecated
   public FragmentTransaction openTransaction()

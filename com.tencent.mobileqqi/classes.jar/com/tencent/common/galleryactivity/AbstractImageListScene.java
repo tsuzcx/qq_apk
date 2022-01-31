@@ -19,10 +19,10 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bvz;
-import bwa;
-import bwb;
-import bwc;
+import bqb;
+import bqc;
+import bqd;
+import bqe;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.FakeTextView;
 import com.tencent.qphone.base.util.QLog;
@@ -35,22 +35,22 @@ public abstract class AbstractImageListScene
   implements AnimationLister
 {
   int jdField_a_of_type_Int;
-  protected Activity a;
-  protected Dialog a;
-  protected View a;
-  protected ImageView a;
+  public Activity a;
+  public Dialog a;
+  public View a;
+  public ImageView a;
   protected RelativeLayout a;
   protected TextView a;
   protected AbstractAnimationManager a;
   public AbstractImageAdapter a;
   protected AbstractImageListModel a;
-  AnimationLister jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister = new bwc(this);
-  protected QQCustomDialog a;
-  protected GestureSelectGridView a;
-  protected boolean a;
+  AnimationLister jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister = new bqe(this);
+  public QQCustomDialog a;
+  public GestureSelectGridView a;
+  public boolean a;
   int b;
-  protected ImageView b;
-  protected TextView b;
+  public ImageView b;
+  public TextView b;
   private int jdField_c_of_type_Int;
   private TextView jdField_c_of_type_AndroidWidgetTextView;
   private int d;
@@ -77,7 +77,7 @@ public abstract class AbstractImageListScene
   
   private void c(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130903541, null));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130903543, null));
     if (paramViewGroup == null) {
       this.jdField_a_of_type_AndroidAppActivity.addContentView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, new ViewGroup.LayoutParams(-1, -1));
     }
@@ -85,14 +85,14 @@ public abstract class AbstractImageListScene
     {
       b(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
       this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131230941));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131232869));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131232872));
       this.jdField_b_of_type_AndroidWidgetTextView = new FakeTextView(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_b_of_type_AndroidWidgetTextView.setId(2131232870);
+      this.jdField_b_of_type_AndroidWidgetTextView.setId(2131232873);
       this.jdField_b_of_type_AndroidWidgetTextView.setText(2131561810);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131232872));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131232873));
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131232871);
-      this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView = ((GestureSelectGridView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131232874));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131232875));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131232876));
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131232874);
+      this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView = ((GestureSelectGridView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131232877));
       this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setGravity(17);
       this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setScrollBarStyle(0);
       this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setNumColumns(4);
@@ -117,9 +117,9 @@ public abstract class AbstractImageListScene
   private void o()
   {
     Display localDisplay = ((WindowManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("window")).getDefaultDisplay();
-    this.e = this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131427458);
-    this.jdField_c_of_type_Int = this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131427456);
-    this.d = this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131427457);
+    this.e = this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131427461);
+    this.jdField_c_of_type_Int = this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131427459);
+    this.d = this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131427460);
     this.jdField_a_of_type_Int = ((localDisplay.getWidth() - this.e * 2 - this.jdField_c_of_type_Int * 3) / 4);
   }
   
@@ -128,7 +128,7 @@ public abstract class AbstractImageListScene
     if (this.jdField_a_of_type_AndroidWidgetTextView != null)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(2131561843);
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new bvz(this));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new bqb(this));
     }
     if (this.jdField_b_of_type_AndroidWidgetTextView != null)
     {
@@ -145,8 +145,8 @@ public abstract class AbstractImageListScene
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bwa(this));
-      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new bwb(this));
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bqc(this));
+      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new bqd(this));
       return;
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
@@ -163,13 +163,13 @@ public abstract class AbstractImageListScene
     return null;
   }
   
-  protected abstract View.OnClickListener a();
+  public abstract View.OnClickListener a();
   
-  protected abstract AbstractImageAdapter a(Activity paramActivity, int paramInt);
+  public abstract AbstractImageAdapter a(Activity paramActivity, int paramInt);
   
-  protected abstract AdapterView.OnItemClickListener a();
+  public abstract AdapterView.OnItemClickListener a();
   
-  protected abstract GestureSelectGridView.OnSelectListener a();
+  public abstract GestureSelectGridView.OnSelectListener a();
   
   public void a()
   {

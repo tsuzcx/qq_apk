@@ -1,20 +1,29 @@
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagDBManager;
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagInfo;
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
 
-public class wzx
-  implements Runnable
+class wzx
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public wzx(PasswdRedBagManager paramPasswdRedBagManager, PasswdRedBagInfo paramPasswdRedBagInfo) {}
+  wzx(wzv paramwzv, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    PasswdRedBagManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPasswdRedBagManager).a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPasswdRedBagInfo);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    int i = (int)((this.jdField_a_of_type_Int - this.b) * f);
+    int j = this.b;
+    int k = (int)(f * (this.c - this.d));
+    int m = this.d;
+    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramValueAnimator.leftMargin = (i + j);
+    paramValueAnimator.bottomMargin = (m + k);
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wzx
  * JD-Core Version:    0.7.0.1
  */

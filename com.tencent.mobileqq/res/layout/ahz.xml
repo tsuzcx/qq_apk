@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/content" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/df9" android:layout_width="70.0dip" android:layout_height="70.0dip" android:layout_marginLeft="14.0dip" android:layout_marginTop="15.0dip" android:layout_marginBottom="15.0dip" android:scaleType="centerCrop" android:contentDescription="@string/q6d" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/f97" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:text="" android:singleLine="true" android:shadowColor="#ff000000" android:shadowDx="1.0" android:shadowDy="1.0" android:shadowRadius="2.0" android:layout_toRightOf="@id/df9" android:layout_alignTop="@id/df9" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:id="@id/e1x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="" android:shadowColor="#ff000000" android:shadowDx="1.0" android:shadowDy="1.0" android:shadowRadius="2.0" android:layout_below="@id/f97" android:layout_alignLeft="@id/f97" />
+        <com.tencent.biz.ui.MultiLineLayout android:id="@id/jaf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_below="@id/e1x" android:layout_alignLeft="@id/f97" />
+    </RelativeLayout>
+    <View android:background="#33000000" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignBottom="@id/content" />
+</RelativeLayout>

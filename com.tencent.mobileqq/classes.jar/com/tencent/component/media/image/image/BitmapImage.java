@@ -6,8 +6,8 @@ import com.tencent.component.media.utils.AssertUtils;
 public class BitmapImage
   extends Image
 {
-  private final BitmapReference jdField_a_of_type_ComTencentComponentMediaImageBitmapReference;
-  private final Image.MetaInfo jdField_a_of_type_ComTencentComponentMediaImageImageImage$MetaInfo = new Image.MetaInfo();
+  private final BitmapReference mBitmap;
+  private final Image.MetaInfo mMetaInfo = new Image.MetaInfo();
   
   public BitmapImage(BitmapReference paramBitmapReference)
   {
@@ -15,51 +15,51 @@ public class BitmapImage
     for (boolean bool = true;; bool = false)
     {
       AssertUtils.assertTrue(bool);
-      this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference = paramBitmapReference;
-      a();
+      this.mBitmap = paramBitmapReference;
+      initMetaInfo();
       return;
     }
   }
   
-  private void a()
+  private void initMetaInfo()
   {
-    this.jdField_a_of_type_ComTencentComponentMediaImageImageImage$MetaInfo.width = this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference.getWidth();
-    this.jdField_a_of_type_ComTencentComponentMediaImageImageImage$MetaInfo.height = this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference.getHeight();
+    this.mMetaInfo.width = this.mBitmap.getWidth();
+    this.mMetaInfo.height = this.mBitmap.getHeight();
   }
   
   public BitmapReference getBitmap()
   {
-    return this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference;
+    return this.mBitmap;
   }
   
   public Image.MetaInfo getMetaInfo()
   {
-    return this.jdField_a_of_type_ComTencentComponentMediaImageImageImage$MetaInfo;
+    return this.mMetaInfo;
   }
   
   public boolean isRecycled()
   {
-    return this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference.isRecycled();
+    return this.mBitmap.isRecycled();
   }
   
   public void recycle()
   {
-    if (!this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference.isRecycled()) {
-      this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference.release();
+    if (!this.mBitmap.isRecycled()) {
+      this.mBitmap.release();
     }
   }
   
   public int size()
   {
-    if (this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference.isRecycled()) {
+    if (this.mBitmap.isRecycled()) {
       return 0;
     }
-    return this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference.getAllocSize();
+    return this.mBitmap.getAllocSize();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.image.image.BitmapImage
  * JD-Core Version:    0.7.0.1
  */

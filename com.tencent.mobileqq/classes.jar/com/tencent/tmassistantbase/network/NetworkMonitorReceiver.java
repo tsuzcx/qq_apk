@@ -7,45 +7,75 @@ import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ab;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class NetworkMonitorReceiver
   extends BroadcastReceiver
 {
-  protected static NetworkMonitorReceiver a = null;
-  protected static Handler c;
-  protected boolean b = false;
-  ArrayList<a> d = new ArrayList();
+  protected static final int MSG_DELAY_TIME = 3500;
+  protected static final int MSG_resumeDownloadTime = 67;
+  protected static final String TAG = "NetworkMonitorReceiver";
+  protected static NetworkMonitorReceiver mInstance = null;
+  protected static Handler mNetworkChangedHandler;
+  protected boolean isRegisterReceiver = false;
+  ArrayList<INetworkChangedObserver> mObs = new ArrayList();
   
-  public static NetworkMonitorReceiver a()
+  public static NetworkMonitorReceiver getInstance()
   {
     try
     {
-      if (a == null) {
-        a = new NetworkMonitorReceiver();
+      if (mInstance == null) {
+        mInstance = new NetworkMonitorReceiver();
       }
-      NetworkMonitorReceiver localNetworkMonitorReceiver = a;
+      NetworkMonitorReceiver localNetworkMonitorReceiver = mInstance;
       return localNetworkMonitorReceiver;
     }
     finally {}
   }
   
-  public void a(a parama)
+  public void addNetworkChangedObserver(INetworkChangedObserver paramINetworkChangedObserver)
   {
-    if ((!this.d.contains(parama)) && (parama != null)) {
-      this.d.add(parama);
+    if ((!this.mObs.contains(paramINetworkChangedObserver)) && (paramINetworkChangedObserver != null)) {
+      this.mObs.add(paramINetworkChangedObserver);
     }
   }
   
-  public void b()
+  public void notifyNetworkChanged()
   {
-    r.c("NetworkMonitorReceiver", "registerReceiver enter");
+    if (this.mObs != null)
+    {
+      Iterator localIterator = this.mObs.iterator();
+      while (localIterator.hasNext())
+      {
+        INetworkChangedObserver localINetworkChangedObserver = (INetworkChangedObserver)localIterator.next();
+        if (localINetworkChangedObserver != null) {
+          localINetworkChangedObserver.onNetworkChanged();
+        }
+      }
+    }
+  }
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    ab.c("NetworkMonitorReceiver", "network changed!");
+    if (mNetworkChangedHandler == null) {
+      mNetworkChangedHandler = new e(this);
+    }
+    mNetworkChangedHandler.removeMessages(67);
+    paramContext = Message.obtain();
+    paramContext.what = 67;
+    mNetworkChangedHandler.sendMessageDelayed(paramContext, 3500L);
+  }
+  
+  public void registerReceiver()
+  {
+    ab.c("NetworkMonitorReceiver", "registerReceiver enter");
     Context localContext = GlobalUtil.getInstance().getContext();
     if (localContext == null)
     {
-      r.c("NetworkMonitorReceiver", "registerReceiver context = null");
+      ab.c("NetworkMonitorReceiver", "registerReceiver context = null");
       return;
     }
     IntentFilter localIntentFilter = new IntentFilter();
@@ -53,32 +83,32 @@ public class NetworkMonitorReceiver
     try
     {
       localContext.registerReceiver(this, localIntentFilter);
-      this.b = true;
-      r.c("NetworkMonitorReceiver", "registerReceiver isRegisterReceiver = true");
-      r.c("NetworkMonitorReceiver", "registerReceiver exit");
+      this.isRegisterReceiver = true;
+      ab.c("NetworkMonitorReceiver", "registerReceiver isRegisterReceiver = true");
+      ab.c("NetworkMonitorReceiver", "registerReceiver exit");
       return;
     }
     catch (Throwable localThrowable)
     {
       for (;;)
       {
-        this.b = false;
-        r.c("NetworkMonitorReceiver", "registerReceiver isRegisterReceiver = false");
+        this.isRegisterReceiver = false;
+        ab.c("NetworkMonitorReceiver", "registerReceiver isRegisterReceiver = false");
         localThrowable.printStackTrace();
       }
     }
   }
   
-  public void b(a parama)
+  public void removeNetworkChangedObserver(INetworkChangedObserver paramINetworkChangedObserver)
   {
-    if (parama != null) {
-      this.d.remove(parama);
+    if (paramINetworkChangedObserver != null) {
+      this.mObs.remove(paramINetworkChangedObserver);
     }
   }
   
-  public void c()
+  public void unregisterReceiver()
   {
-    if (a == null) {}
+    if (mInstance == null) {}
     for (;;)
     {
       return;
@@ -86,10 +116,10 @@ public class NetworkMonitorReceiver
       if (localContext != null) {
         try
         {
-          if (this.b)
+          if (this.isRegisterReceiver)
           {
             localContext.unregisterReceiver(this);
-            this.b = false;
+            this.isRegisterReceiver = false;
             return;
           }
         }
@@ -100,37 +130,10 @@ public class NetworkMonitorReceiver
       }
     }
   }
-  
-  public void d()
-  {
-    if (this.d != null)
-    {
-      Iterator localIterator = this.d.iterator();
-      while (localIterator.hasNext())
-      {
-        a locala = (a)localIterator.next();
-        if (locala != null) {
-          locala.onNetworkChanged();
-        }
-      }
-    }
-  }
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    r.c("NetworkMonitorReceiver", "network changed!");
-    if (c == null) {
-      c = new b(this);
-    }
-    c.removeMessages(67);
-    paramContext = Message.obtain();
-    paramContext.what = 67;
-    c.sendMessageDelayed(paramContext, 3500L);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmassistantbase.network.NetworkMonitorReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aiho
-  implements Runnable
+class aiho
+  implements View.OnClickListener
 {
-  public aiho(StructMsgForAudioShare paramStructMsgForAudioShare, URLImageView paramURLImageView) {}
+  aiho(aihl paramaihl) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130842744);
+    this.a.dismiss();
   }
 }
 

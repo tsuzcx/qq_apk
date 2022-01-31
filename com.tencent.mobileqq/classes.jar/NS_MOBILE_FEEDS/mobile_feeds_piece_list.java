@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class mobile_feeds_piece_list
   extends JceStruct
 {
-  static ArrayList cache_all_feeds_data = new ArrayList();
-  public ArrayList all_feeds_data;
+  static ArrayList<single_feed> cache_all_feeds_data = new ArrayList();
+  public ArrayList<single_feed> all_feeds_data;
   public long offset;
   public String tlv_attach_info = "";
   
@@ -21,7 +21,7 @@ public final class mobile_feeds_piece_list
   
   public mobile_feeds_piece_list() {}
   
-  public mobile_feeds_piece_list(ArrayList paramArrayList, long paramLong, String paramString)
+  public mobile_feeds_piece_list(ArrayList<single_feed> paramArrayList, long paramLong, String paramString)
   {
     this.all_feeds_data = paramArrayList;
     this.offset = paramLong;
@@ -48,7 +48,7 @@ public final class mobile_feeds_piece_list
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_feeds_piece_list
  * JD-Core Version:    0.7.0.1
  */

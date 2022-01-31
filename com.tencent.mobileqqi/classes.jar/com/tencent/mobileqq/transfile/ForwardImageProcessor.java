@@ -8,7 +8,7 @@ import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.utils.httputils.HttpMsg;
 import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
 import com.tencent.qphone.base.util.BaseApplication;
-import grq;
+import gnj;
 import java.io.File;
 
 public class ForwardImageProcessor
@@ -17,7 +17,7 @@ public class ForwardImageProcessor
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new grq(this);
+  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new gnj(this);
   private String jdField_a_of_type_JavaLangString;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;

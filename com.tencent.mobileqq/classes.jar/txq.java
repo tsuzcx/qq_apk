@@ -1,140 +1,121 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.data.TroopMemberCardInfo;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.troop.utils.TroopAvatarManger;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
-import com.tencent.mobileqq.troopinfo.GroupCatalogBean;
-import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.utils.DBUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.arch.lifecycle.MutableLiveData;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.qqcircle.QCircleInitBean;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentImage;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentVideo;
+import com.tencent.biz.qqcircle.requests.QCircleGetFeedDetailRequest;
+import com.tencent.biz.qqcircle.requests.QCircleGetFeedListRequest;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import feedcloud.FeedCloudCommon.StCommonExt;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StUser;
+import feedcloud.FeedCloudRead.StGetFeedDetailReq;
+import feedcloud.FeedCloudRead.StGetFeedListReq;
 
 public class txq
-  implements Runnable
+  extends ubk
 {
-  public txq(TroopInfoActivity paramTroopInfoActivity) {}
+  private final MutableLiveData<tsb> jdField_a_of_type_AndroidArchLifecycleMutableLiveData = new MutableLiveData();
+  private RecyclerView.ViewHolder jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
+  private yii jdField_a_of_type_Yii = new yii();
   
-  public void run()
+  public txq()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.troopinfo", 2, "init mTroopInfoData == null");
-      }
-      return;
-    }
-    if (!TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin))
-    {
-      localObject1 = ContactUtils.l(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
-      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin)))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopOwnerNick = ((String)localObject1);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-      }
-    }
-    else
-    {
-      label109:
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppTroopHandler != null)
-      {
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isMember) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.pa == 2)) {
-          break label603;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.getStatOption());
-      }
-    }
-    label498:
-    while (!this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isMember)
-    {
-      this.a.app.d(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.troopinfo", 2, "init(),getTroopMemberCard,getMutiTroopInfo,refreshTroopFace");
-      }
-      localObject1 = GroupCatalogTool.a(BaseApplication.getContext()).a(this.a, Long.toString(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt));
-      if (localObject1 != null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopClass = ((GroupCatalogBean)localObject1).a();
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppTroopHandler != null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.f(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-      }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter == null) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.a == null)) {
-        break;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.a.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-      return;
-      str = null;
-      Object localObject2 = DBUtils.a().a(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
-      if (localObject2 == null)
-      {
-        localObject2 = DBUtils.a().a(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
-        localObject1 = str;
-        if (localObject2 != null)
-        {
-          if (TextUtils.isEmpty(((TroopMemberInfo)localObject2).friendnick)) {
-            break label498;
-          }
-          localObject1 = ((TroopMemberInfo)localObject2).friendnick;
-        }
-      }
-      for (;;)
-      {
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          break label562;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopOwnerNick = ((String)localObject1);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-        break;
-        localObject1 = str;
-        if (!TextUtils.isEmpty(((TroopMemberInfo)localObject2).troopnick))
-        {
-          localObject1 = ((TroopMemberInfo)localObject2).troopnick;
-          continue;
-          if (!TextUtils.isEmpty(((TroopMemberCardInfo)localObject2).nick))
-          {
-            localObject1 = ((TroopMemberCardInfo)localObject2).nick;
-          }
-          else
-          {
-            localObject1 = str;
-            if (!TextUtils.isEmpty(((TroopMemberCardInfo)localObject2).name)) {
-              localObject1 = ((TroopMemberCardInfo)localObject2).name;
-            }
-          }
-        }
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler == null) {
-        break label109;
-      }
-      this.a.b = true;
-      this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.b(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
-      break label109;
-    }
-    label562:
-    label603:
-    Object localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqAppTroopHandler;
-    String str = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.pa == 28) {}
+    this.jdField_a_of_type_Uae = uae.a(57);
+  }
+  
+  private void a(QCircleInitBean paramQCircleInitBean)
+  {
+    paramQCircleInitBean = new QCircleGetFeedDetailRequest(paramQCircleInitBean.getFeed().id.get(), paramQCircleInitBean.getFeed().poster.id.get(), paramQCircleInitBean.getFeed().createTime.get(), false);
+    paramQCircleInitBean.mRequest.extInfo.set(a(true));
+    a(paramQCircleInitBean, new txr(this, paramQCircleInitBean));
+  }
+  
+  private void b(QCircleInitBean paramQCircleInitBean, boolean paramBoolean)
+  {
+    paramQCircleInitBean = new QCircleGetFeedListRequest(paramQCircleInitBean, this.jdField_a_of_type_Yii.a(), this.jdField_a_of_type_Yii.b());
+    FeedCloudCommon.StCommonExt localStCommonExt = paramQCircleInitBean.mRequest.extInfo;
+    if (!paramBoolean) {}
     for (boolean bool = true;; bool = false)
     {
-      ((TroopHandler)localObject1).b(str, bool);
-      break;
+      localStCommonExt.set(a(bool));
+      a(paramQCircleInitBean, new txs(this, paramQCircleInitBean, paramBoolean));
+      return;
+    }
+  }
+  
+  public MutableLiveData<tsb> a()
+  {
+    return this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData;
+  }
+  
+  public RecyclerView.ViewHolder a()
+  {
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
+  }
+  
+  public FeedCloudCommon.StCommonExt a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Uae != null) {
+      return this.jdField_a_of_type_Uae.a(paramBoolean);
+    }
+    return new FeedCloudCommon.StCommonExt();
+  }
+  
+  public String a()
+  {
+    return "QCircleContentModel";
+  }
+  
+  public yii a()
+  {
+    return this.jdField_a_of_type_Yii;
+  }
+  
+  public void a()
+  {
+    RecyclerView.ViewHolder localViewHolder = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
+    if ((localViewHolder instanceof txm)) {
+      ((txm)localViewHolder).a.a();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = null;
+      a().postValue(null);
+      return;
+      if ((localViewHolder instanceof txn)) {
+        ((txn)localViewHolder).a.a();
+      }
+    }
+  }
+  
+  public void a(RecyclerView.ViewHolder paramViewHolder)
+  {
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = paramViewHolder;
+  }
+  
+  public void a(QCircleInitBean paramQCircleInitBean, boolean paramBoolean)
+  {
+    a().a(3);
+    if (paramQCircleInitBean.isSingleFeed)
+    {
+      a(paramQCircleInitBean);
+      return;
+    }
+    b(paramQCircleInitBean, paramBoolean);
+  }
+  
+  public void a(FeedCloudCommon.StCommonExt paramStCommonExt)
+  {
+    if (this.jdField_a_of_type_Uae != null) {
+      this.jdField_a_of_type_Uae.a(paramStCommonExt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     txq
  * JD-Core Version:    0.7.0.1
  */

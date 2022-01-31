@@ -1,16 +1,26 @@
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-import cooperation.qzone.webviewplugin.QzoneUiJsPlugin;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
-public class andg
-  implements Runnable
+public abstract interface andg
 {
-  public andg(QzoneUiJsPlugin paramQzoneUiJsPlugin, String paramString) {}
+  public abstract void a(int paramInt);
   
-  public void run()
-  {
-    RemoteHandleManager.a().a().g(this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a(boolean paramBoolean, int paramInt, ArCloudConfigInfo paramArCloudConfigInfo);
+  
+  public abstract void a(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void c(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 

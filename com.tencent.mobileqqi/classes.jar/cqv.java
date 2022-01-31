@@ -1,48 +1,24 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.EmosmUtils;
-import com.tencent.mobileqq.emosm.view.DragSortAdapter;
-import java.util.List;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.activity.IndividuationSetActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class cqv
-  implements AdapterView.OnItemClickListener
+  implements Runnable
 {
-  public cqv(EmosmActivity paramEmosmActivity) {}
+  public cqv(IndividuationSetActivity paramIndividuationSetActivity) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    if (this.a.a) {}
-    do
-    {
-      do
-      {
-        return;
-        paramAdapterView = (EmoticonPackage)EmosmActivity.a(this.a).getItem(paramInt);
-        if (this.a.b)
-        {
-          EmosmActivity.a(this.a).setSelected(paramInt);
-          EmosmActivity.a(this.a).notifyDataSetChanged();
-          paramAdapterView = EmosmActivity.a(this.a).getSelectedPackages();
-          if ((paramAdapterView != null) && (paramAdapterView.size() > 0))
-          {
-            EmosmActivity.a(this.a).setEnabled(true);
-            EmosmActivity.d(this.a).setEnabled(true);
-            return;
-          }
-          EmosmActivity.a(this.a).setEnabled(false);
-          EmosmActivity.e(this.a).setEnabled(false);
-          return;
-        }
-      } while (!EmosmUtils.showNetEnable(this.a));
-      this.a.a = true;
-      paramView = paramAdapterView.epId;
-    } while (paramAdapterView.jobType != 2);
-    paramAdapterView = paramAdapterView.kinId;
+    int i = (int)(this.a.getResources().getDisplayMetrics().density * 35.0F);
+    if (QLog.isColorLevel()) {
+      QLog.d("ThemeDownloadTrace", 2, "reqWidth is:" + i + ",reqHeight is:" + i);
+    }
+    Bitmap localBitmap = IndividuationSetActivity.a(this.a, i, i);
+    if (localBitmap != null) {
+      this.a.runOnUiThread(new cqw(this, localBitmap));
+    }
   }
 }
 

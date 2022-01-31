@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
 import com.tencent.mobileqq.service.MobileQQService;
 import com.tencent.mobileqq.service.message.MessageUtils;
 import com.tencent.qphone.base.util.QLog;
-import ifi;
+import iao;
 
 public class QQServiceForQlink
 {
@@ -43,7 +43,7 @@ public class QQServiceForQlink
       QLog.e("QQServiceForQlink", 1, "[QLINK] QQ - PluginCommunicationHandler.getInstance failed");
       return;
     }
-    localPluginCommunicationHandler.register(new ifi(this, "qlink.notify"));
+    localPluginCommunicationHandler.register(new iao(this, "qlink.notify"));
   }
   
   public void a(long paramLong)

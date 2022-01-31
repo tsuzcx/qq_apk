@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class GetBatchGeoRsp_V2
   extends JceStruct
 {
-  static ArrayList cache_vecGeoInfoCell;
-  public ArrayList vecGeoInfoCell;
+  static ArrayList<GeoInfoCell_V2> cache_vecGeoInfoCell;
+  public ArrayList<GeoInfoCell_V2> vecGeoInfoCell;
   
   public GetBatchGeoRsp_V2() {}
   
-  public GetBatchGeoRsp_V2(ArrayList paramArrayList)
+  public GetBatchGeoRsp_V2(ArrayList<GeoInfoCell_V2> paramArrayList)
   {
     this.vecGeoInfoCell = paramArrayList;
   }

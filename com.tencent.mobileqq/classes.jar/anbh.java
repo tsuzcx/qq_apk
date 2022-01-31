@@ -1,15 +1,14 @@
-import cooperation.qzone.video.QzoneLiveVideoGpuProxyActivity;
-import cooperation.qzone.video.QzoneLiveVideoPluginProxyActivity;
-import cooperation.qzone.video.QzoneLiveVideoTransparentActivity;
-
 public class anbh
 {
-  public static Class a(String paramString)
+  public String a;
+  public byte[] a;
+  public String b;
+  
+  public anbh(String paramString1, String paramString2, byte[] paramArrayOfByte)
   {
-    if (QzoneLiveVideoPluginProxyActivity.a(QzoneLiveVideoPluginProxyActivity.a(), paramString)) {
-      return QzoneLiveVideoTransparentActivity.class;
-    }
-    return QzoneLiveVideoGpuProxyActivity.class;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
   }
 }
 

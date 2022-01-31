@@ -1,29 +1,36 @@
-import android.graphics.drawable.AnimationDrawable;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.widget.RoundImageView;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class aogy
-  implements Animation.AnimationListener
+class aogy
+  implements ansr
 {
-  public aogy(VideoFilterViewPager paramVideoFilterViewPager, ImageView paramImageView) {}
+  aogy(aogx paramaogx) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    paramAnimation = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
-    if ((paramAnimation instanceof AnimationDrawable)) {
-      ((AnimationDrawable)paramAnimation).start();
+    paramString2 = (List)aogx.a(this.a).get(paramString1);
+    if ((paramString2 != null) && (paramString2.size() > 0))
+    {
+      paramString2 = paramString2.iterator();
+      while (paramString2.hasNext())
+      {
+        aohb localaohb = (aohb)paramString2.next();
+        if ((localaohb != null) && (localaohb.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView != null) && (localaohb.jdField_a_of_type_Apby != null))
+        {
+          localaohb.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageBitmap(paramBitmap);
+          localaohb.jdField_a_of_type_Apby.c(true);
+        }
+      }
     }
+    aogx.a(this.a).remove(paramString1);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aogy
  * JD-Core Version:    0.7.0.1
  */

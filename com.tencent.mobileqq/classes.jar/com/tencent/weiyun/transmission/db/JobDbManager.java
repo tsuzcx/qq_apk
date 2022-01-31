@@ -75,13 +75,7 @@ public final class JobDbManager
   public static final String COL_UP_WIDTH = "width";
   public static final String TBL_DOWNLOAD = "download";
   public static final String TBL_UPLOAD = "upload";
-  private static Singleton<JobDbManager, Void> sInstance = new Singleton()
-  {
-    protected JobDbManager create(Void paramAnonymousVoid)
-    {
-      return new JobDbManager(null);
-    }
-  };
+  private static Singleton<JobDbManager, Void> sInstance = new JobDbManager.1();
   private final JobDbHelper mJobDbHelper = new JobDbHelper(WeiyunTransmissionGlobal.getInstance().getContext());
   
   public static JobDbManager getInstance()
@@ -114,7 +108,7 @@ public final class JobDbManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.weiyun.transmission.db.JobDbManager
  * JD-Core Version:    0.7.0.1
  */

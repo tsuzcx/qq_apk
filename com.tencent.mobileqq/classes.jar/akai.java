@@ -1,21 +1,15 @@
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
-public final class akai
-  implements Runnable
+public class akai
+  implements View.OnClickListener
 {
-  public akai(String paramString1, String paramString2) {}
+  public akai(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    String str1 = CardHandler.a(this.a, CardHandler.b(BaseApplication.getContext()));
-    int i = CardHandler.c(BaseApplication.getContext());
-    String str2 = CardHandler.a(this.a, i);
-    ImageUtil.a(this.b, str1);
-    ImageUtil.a(this.b, str2, i, i);
-    FileUtils.a(this.b, true);
+    this.a.finish();
   }
 }
 

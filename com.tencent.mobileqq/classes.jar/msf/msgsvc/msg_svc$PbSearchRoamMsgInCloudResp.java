@@ -9,10 +9,10 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import msf.msgcomm.msg_comm.Msg;
 
 public final class msg_svc$PbSearchRoamMsgInCloudResp
-  extends MessageMicro
+  extends MessageMicro<PbSearchRoamMsgInCloudResp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatMessageField msg = PBField.initRepeatMessage(msg_comm.Msg.class);
+  public final PBRepeatMessageField<msg_comm.Msg> msg = PBField.initRepeatMessage(msg_comm.Msg.class);
   public final PBBytesField serialize_rspbody = PBField.initBytes(ByteStringMicro.EMPTY);
   
   static
@@ -23,7 +23,7 @@ public final class msg_svc$PbSearchRoamMsgInCloudResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     msf.msgsvc.msg_svc.PbSearchRoamMsgInCloudResp
  * JD-Core Version:    0.7.0.1
  */

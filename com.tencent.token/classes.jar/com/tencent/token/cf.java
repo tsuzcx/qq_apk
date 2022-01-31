@@ -1,50 +1,49 @@
 package com.tencent.token;
 
-import com.tencent.token.global.b;
-import com.tencent.token.global.d;
-import com.tencent.token.utils.s;
-import java.util.HashMap;
+import com.tencent.token.global.h;
+import com.tencent.token.utils.encrypt.a;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-public final class cf
-  extends bm
+public class cf
 {
-  private String c;
-  
-  protected final String a()
+  private String a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    ae.a();
-    if (ax.a().p()) {
-      ax.a();
-    }
-    String str2;
-    for (String str1 = ax.c;; str1 = null)
+    paramArrayOfByte1 = new a().b(paramArrayOfByte1, paramArrayOfByte2);
+    if (paramArrayOfByte1 == null)
     {
-      str2 = s.a(new Object[] { "uin", this.c });
-      if ((str1 != null) && (str2 != null)) {
-        break;
-      }
-      this.a.a(104, null, null);
+      h.c("encrypt pwd failed");
       return null;
     }
-    str1 = "?aq_base_sid=" + str1 + "&data=" + str2;
-    return b.c() + "/cn/mbtoken3/mbtoken3_del_unvfy_uin" + str1;
+    return dg.a(paramArrayOfByte1);
   }
   
-  protected final void a(fs paramfs)
+  protected String a(byte[] paramArrayOfByte, String... paramVarArgs)
   {
-    this.c = ("" + (Long)paramfs.c.get("param.realuin"));
-  }
-  
-  protected final void a(JSONObject paramJSONObject)
-  {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
+    if (paramVarArgs.length % 2 != 0)
     {
-      a(i, paramJSONObject.getString("info"));
-      return;
+      h.c("params count % 2 should be 0");
+      return null;
     }
-    this.a.a = 0;
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      int i = 0;
+      while (i < paramVarArgs.length)
+      {
+        localJSONObject.put(paramVarArgs[i], paramVarArgs[(i + 1)]);
+        i += 2;
+      }
+      paramVarArgs = localJSONObject.toString();
+      h.a("palin: " + paramVarArgs);
+      paramArrayOfByte = a(paramVarArgs.getBytes(), paramArrayOfByte);
+      return paramArrayOfByte;
+    }
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
   }
 }
 

@@ -1,26 +1,40 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.vipgift.VipGiftDownloadInfo;
-import com.tencent.mobileqq.vipgift.VipGiftManager;
-
-public class vif
-  implements Runnable
+class vif
+  implements vkw
 {
-  public vif(StructingMsgItemBuilder paramStructingMsgItemBuilder, VipGiftDownloadInfo paramVipGiftDownloadInfo, VipGiftManager paramVipGiftManager) {}
+  vif(vic paramvic) {}
   
-  public void run()
+  public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.d == 1L) && (this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.b.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftManager.a(6L, this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.a);
-      ((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_AndroidContentContext).runOnUiThread(new vig(this));
+    if (vic.a(this.a) != null) {
+      vic.a(this.a).c();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    vic.a(this.a).a(paramInt);
+    if (vic.a(this.a) != null) {
+      vic.a(this.a).b(paramInt);
+    }
+  }
+  
+  public void b()
+  {
+    if (vic.a(this.a) != null) {
+      vic.a(this.a).d();
+    }
+  }
+  
+  public void c()
+  {
+    if (vic.a(this.a) != null) {
+      vic.a(this.a).d(-1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vif
  * JD-Core Version:    0.7.0.1
  */

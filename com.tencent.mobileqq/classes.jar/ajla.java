@@ -1,17 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import java.util.List;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class ajla
-  implements DialogInterface.OnClickListener
+public class ajla
 {
-  public ajla(XMediaEditor paramXMediaEditor, List paramList) {}
+  private BaseActivity a;
+  public QQAppInterface a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ajla(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(this.jdField_a_of_type_JavaUtilList);
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public void a(RecentBaseData paramRecentBaseData, boolean paramBoolean)
+  {
+    if (paramRecentBaseData == null) {
+      return;
+    }
+    auam.a().b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBoolean);
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    String str = paramRecentBaseData.a();
+    if (paramBoolean) {}
+    for (paramRecentBaseData = "1";; paramRecentBaseData = "0")
+    {
+      azqs.b(localQQAppInterface, "P_CliOper", "Grp_msg", "", "Msglist", "Clk_top_right", 0, 0, str, "4", paramRecentBaseData, "");
+      return;
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
 }
 

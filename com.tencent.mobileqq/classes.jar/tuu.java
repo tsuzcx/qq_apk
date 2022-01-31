@@ -1,22 +1,17 @@
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
-
 class tuu
-  implements Runnable
 {
-  tuu(tus paramtus) {}
+  public String a;
+  public boolean a;
+  public boolean b;
   
-  public void run()
+  public String toString()
   {
-    String str = SubLoginActivity.a(this.a.a).getText().toString();
-    if ((str != null) && (str.equals("!@#ewaGbhkc$!!="))) {
-      SubLoginActivity.a(this.a.a).setText("");
-    }
+    return "CommentResponse{hasMore=" + this.jdField_a_of_type_Boolean + ", attachInfo='" + this.jdField_a_of_type_JavaLangString + '\'' + ", hasResponse='" + this.b + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tuu
  * JD-Core Version:    0.7.0.1
  */

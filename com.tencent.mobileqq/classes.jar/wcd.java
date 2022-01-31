@@ -1,12 +1,36 @@
-import android.view.View;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public abstract interface wcd
+public class wcd
+  extends QQUIEventReceiver<wcb, uow>
 {
-  public abstract void a(View paramView);
+  public wcd(@NonNull wcb paramwcb)
+  {
+    super(paramwcb);
+  }
+  
+  public void a(@NonNull wcb paramwcb, @NonNull uow paramuow)
+  {
+    if ((paramwcb.a == null) || (paramuow.a == null) || (!TextUtils.equals(paramwcb.a.a, paramuow.a.mVid))) {}
+    do
+    {
+      return;
+      paramwcb.i();
+      paramwcb = (vtv)paramwcb.a(vtv.class);
+    } while (paramwcb == null);
+    paramwcb.d();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uow.class;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wcd
  * JD-Core Version:    0.7.0.1
  */

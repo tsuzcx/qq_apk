@@ -1,58 +1,83 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.magicface.view.MagicfaceContainerView;
-import com.tencent.mobileqq.magicface.view.MagicfaceContainerView.MagicfaceGestureListener;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.drawable.BitmapDrawable;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profile.view.ProfilePhotoView;
+import com.tencent.mobileqq.util.BitmapManager;
+import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
 public class gfd
-  extends GestureDetector.SimpleOnGestureListener
+  implements Runnable
 {
-  public gfd(MagicfaceContainerView paramMagicfaceContainerView) {}
+  public gfd(ProfilePhotoView paramProfilePhotoView, int paramInt, ProfileActivity.AllInOne paramAllInOne, String paramString) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void run()
   {
-    if (MagicfaceContainerView.a(this.a) != null) {
-      MagicfaceContainerView.a(this.a).a(5);
+    int i = (int)(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfilePhotoView.getResources().getDisplayMetrics().density * 85.0F + 0.5F);
+    if (this.jdField_a_of_type_Int == 0) {
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 0) || (!ProfileCardUtil.a())) {}
     }
-    return false;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if (paramMotionEvent1.getX() - paramMotionEvent2.getX() > 150.0F) {
-      if (MagicfaceContainerView.a(this.a) != null) {
-        MagicfaceContainerView.a(this.a).a(0);
-      }
-    }
-    do
+    for (;;)
     {
-      do
+      try
       {
-        do
-        {
-          return false;
-          if (paramMotionEvent1.getX() - paramMotionEvent2.getX() >= -150.0F) {
-            break;
-          }
-        } while (MagicfaceContainerView.a(this.a) == null);
-        MagicfaceContainerView.a(this.a).a(1);
-        return false;
-        if (paramMotionEvent1.getY() - paramMotionEvent2.getY() <= 150.0F) {
-          break;
+        Object localObject1 = ProfileCardUtil.c();
+        Object localObject4 = new File((String)localObject1);
+        localObject3 = new BitmapFactory.Options();
+        localObject4 = new FileInputStream((File)localObject4);
+        ((BitmapFactory.Options)localObject3).inSampleSize = ((int)ImageUtil.a((InputStream)localObject4, i, i));
+        ((InputStream)localObject4).close();
+        localObject3 = BitmapManager.a((String)localObject1, (BitmapFactory.Options)localObject3);
+        localObject1 = localObject3;
+        if (localObject3 == null) {
+          localObject1 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfilePhotoView.a.b.a(this.jdField_a_of_type_JavaLangString, (byte)1, true);
         }
-      } while (MagicfaceContainerView.a(this.a) == null);
-      MagicfaceContainerView.a(this.a).a(2);
-      return false;
-    } while ((paramMotionEvent1.getY() - paramMotionEvent2.getY() >= -150.0F) || (MagicfaceContainerView.a(this.a) == null));
-    MagicfaceContainerView.a(this.a).a(3);
-    return false;
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    if (MagicfaceContainerView.a(this.a) != null) {
-      MagicfaceContainerView.a(this.a).a(4);
+        localObject3 = localObject1;
+        if (localObject1 != null) {
+          localObject3 = ImageUtil.a((Bitmap)localObject1, i / 2, i, i);
+        }
+        if (localObject3 != null) {
+          this.jdField_a_of_type_ComTencentMobileqqProfileViewProfilePhotoView.a.runOnUiThread(new gfe(this, (Bitmap)localObject3));
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.profilecard.FrdProfileCard", 2, localException.toString());
+        }
+      }
+      Object localObject3 = null;
+      continue;
+      if (1 == this.jdField_a_of_type_Int)
+      {
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfilePhotoView.a.b.a(this.jdField_a_of_type_JavaLangString, (byte)1);
+        if ((localObject2 instanceof BitmapDrawable)) {
+          localObject2 = ((BitmapDrawable)localObject2).getBitmap();
+        }
+      }
+      else
+      {
+        if (2 == this.jdField_a_of_type_Int)
+        {
+          localObject2 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfilePhotoView.getResources(), 2130838019);
+          continue;
+        }
+        localObject2 = ImageUtil.a();
+        continue;
+      }
+      Object localObject2 = null;
     }
-    return false;
   }
 }
 

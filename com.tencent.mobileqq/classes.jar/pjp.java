@@ -1,78 +1,53 @@
-import com.tencent.component.network.utils.FileUtils;
-import java.io.File;
-import java.util.Random;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONObject;
 
-public final class pjp
+public class pjp
 {
-  private static final Random a = new Random();
-  
-  public static int a(Object... paramVarArgs)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    int i = 17;
-    int k = i;
-    if (paramVarArgs != null)
+    JSONObject localJSONObject1 = new JSONObject();
+    localJSONObject1.put("id_test", new JSONObject());
+    JSONObject localJSONObject2 = new JSONObject();
+    Object localObject;
+    if (paramBaseArticleInfo.mSinglePicture != null)
     {
-      int m = paramVarArgs.length;
-      int j = 0;
-      k = i;
-      if (j < m)
-      {
-        Object localObject = paramVarArgs[j];
-        if (localObject == null) {}
-        for (;;)
-        {
-          j += 1;
-          break;
-          i = i * 31 + localObject.hashCode();
-        }
+      localObject = paramBaseArticleInfo.mSinglePicture.getFile();
+      localJSONObject2.put("article_large_imge_url", localObject);
+      localJSONObject1.put("id_article_large_imge", localJSONObject2);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("gallery_cn_text", paramBaseArticleInfo.mGalleryPicNumber + alud.a(2131713251));
+      localJSONObject1.put("id_gallery_cnt", localObject);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("gallery_icon", "qq_readinjoy_gallery_count");
+      localJSONObject1.put("id_gallery_img", localObject);
+      localJSONObject1.put("id_gallery_bg", new JSONObject());
+      pkm.a(paramBaseArticleInfo, localJSONObject1, true);
+      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
+        break label207;
       }
-    }
-    return k * 31 + a.nextInt();
-  }
-  
-  public static boolean a(File paramFile, boolean paramBoolean)
-  {
-    boolean bool2 = false;
-    boolean bool1;
-    if (paramFile == null) {
-      bool1 = bool2;
+      pkm.a(paramBaseArticleInfo, localJSONObject1);
+      pkm.b(paramBaseArticleInfo, localJSONObject1);
     }
     for (;;)
     {
-      return bool1;
-      try
-      {
-        File localFile = paramFile.getParentFile();
-        if ((localFile.exists()) && (localFile.isFile())) {
-          FileUtils.delete(localFile);
-        }
-        if (!localFile.exists())
-        {
-          bool1 = bool2;
-          if (!localFile.mkdirs()) {
-            continue;
-          }
-        }
-        if ((paramBoolean) && (paramFile.exists())) {
-          FileUtils.delete(paramFile);
-        }
-        if (!paramFile.exists())
-        {
-          paramBoolean = paramFile.createNewFile();
-          bool1 = bool2;
-          if (!paramBoolean) {
-            continue;
-          }
-        }
-        bool1 = true;
-      }
-      finally {}
+      pkm.l(paramBaseArticleInfo, localJSONObject1);
+      pkm.e(paramBaseArticleInfo, localJSONObject1);
+      pkm.g(paramBaseArticleInfo, localJSONObject1);
+      localJSONObject1.put("style_ID", "ReadInjoy_large_cell");
+      pkm.a(localJSONObject1, paramBaseArticleInfo);
+      return localJSONObject1;
+      localObject = null;
+      break;
+      label207:
+      pkm.d(paramBaseArticleInfo, localJSONObject1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pjp
  * JD-Core Version:    0.7.0.1
  */

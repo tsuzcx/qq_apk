@@ -19,9 +19,9 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.util.VersionUtils;
-import hdg;
-import hdh;
-import hdi;
+import gyz;
+import gza;
+import gzb;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -46,18 +46,18 @@ public class MessageSubtitleView
   Context jdField_a_of_type_AndroidContentContext;
   private Handler jdField_a_of_type_AndroidOsHandler = null;
   AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation;
-  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new hdi(this);
+  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new gzb(this);
   AnimationSet jdField_a_of_type_AndroidViewAnimationAnimationSet;
   TranslateAnimation jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
   protected LinearLayout a;
-  private final Runnable jdField_a_of_type_JavaLangRunnable = new hdg(this);
+  private final Runnable jdField_a_of_type_JavaLangRunnable = new gyz(this);
   String jdField_a_of_type_JavaLangString = null;
   protected ArrayList a;
   public Queue a;
   boolean jdField_a_of_type_Boolean = false;
   AlphaAnimation jdField_b_of_type_AndroidViewAnimationAlphaAnimation;
   AnimationSet jdField_b_of_type_AndroidViewAnimationAnimationSet;
-  private final Runnable jdField_b_of_type_JavaLangRunnable = new hdh(this);
+  private final Runnable jdField_b_of_type_JavaLangRunnable = new gza(this);
   boolean jdField_b_of_type_Boolean = false;
   int f = 0;
   int g = 0;
@@ -261,7 +261,7 @@ public class MessageSubtitleView
   void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130903381, this);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130903383, this);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131231118));
     this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidContentContext.getMainLooper());
     int i1 = 0;
@@ -274,12 +274,12 @@ public class MessageSubtitleView
       localTextView.setTextSize(18.0F);
       localTextView.setTextColor(-1);
       localTextView.setTag(Long.valueOf(0L));
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(paramContext.getResources().getDimensionPixelSize(2131427577), paramContext.getResources().getDimensionPixelSize(2131427579));
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(paramContext.getResources().getDimensionPixelSize(2131427580), paramContext.getResources().getDimensionPixelSize(2131427582));
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localTextView, localLayoutParams);
       this.jdField_a_of_type_JavaUtilArrayList.add(localTextView);
       i1 += 1;
     }
-    this.h = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131427579);
+    this.h = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131427582);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(200L);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setInterpolator(new AccelerateInterpolator(0.2F));

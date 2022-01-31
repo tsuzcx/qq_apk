@@ -1,50 +1,41 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity.ListItem;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.Friends;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StUser;
+import qqcircle.QQCircleDitto.StItemInfo;
 
-public class ufl
-  extends CardObserver
+class ufl
+  implements udy
 {
-  public ufl(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  ufl(ufk paramufk) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void a()
   {
-    if (!paramBoolean) {
-      return;
+    String str = "";
+    if ((ufk.a(this.a) instanceof QQCircleDitto.StItemInfo)) {
+      str = ((QQCircleDitto.StItemInfo)ufk.a(this.a)).id.get();
     }
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
+    tzs.a(str, 3, 1, 19, 2, ufk.a(this.a), ufk.a(this.a).poster.id.get(), "", ufk.a(this.a).id.get(), ufk.b(this.a), ufk.a(this.a), null);
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void b(int paramInt)
+  {
+    String str = "";
+    if ((ufk.a(this.a) instanceof QQCircleDitto.StItemInfo)) {
+      str = ((QQCircleDitto.StItemInfo)ufk.a(this.a)).id.get();
+    }
+    if (paramInt > 0) {}
+    for (paramInt = 18;; paramInt = 17)
     {
-      if ((paramObject != null) && (!TextUtils.isEmpty(paramObject.uin)))
-      {
-        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-        UncommonlyUsedContactsActivity.ListItem localListItem;
-        do
-        {
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localListItem = (UncommonlyUsedContactsActivity.ListItem)localIterator.next();
-        } while ((localListItem.a == null) || (!(localListItem.a instanceof Friends)) || (!paramObject.uin.equals(((Friends)localListItem.a).uin)));
-      }
-      for (int i = 1; i != 0; i = 0)
-      {
-        UncommonlyUsedContactsActivity.a(this.a);
-        this.a.jdField_a_of_type_Ufp.notifyDataSetChanged();
-        return;
-      }
-      break;
+      tzs.a(str, 3, 1, paramInt, 2, ufk.a(this.a), ufk.a(this.a).poster.id.get(), "", ufk.a(this.a).id.get(), ufk.b(this.a), ufk.a(this.a), null);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ufl
  * JD-Core Version:    0.7.0.1
  */

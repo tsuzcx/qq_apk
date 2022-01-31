@@ -2,11 +2,11 @@ package com.tencent.mobileqq.msf.core;
 
 import android.os.Build;
 import android.os.SystemClock;
-import com.tencent.mobileqq.msf.core.auth.b;
-import com.tencent.mobileqq.msf.core.c.d;
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.a.a;
+import com.tencent.mobileqq.msf.core.c.e;
 import com.tencent.mobileqq.msf.core.quic.QuicWrapper;
 import com.tencent.mobileqq.msf.sdk.utils.MonitorSocketStat;
+import com.tencent.mobileqq.msf.service.j;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Properties;
@@ -14,31 +14,45 @@ import java.util.Properties;
 class s
   extends Thread
 {
-  s(MsfCore paramMsfCore, j paramj, boolean paramBoolean, int paramInt1, int paramInt2) {}
+  s(MsfCore paramMsfCore, com.tencent.mobileqq.msf.core.c.k paramk, boolean paramBoolean, int paramInt1, int paramInt2) {}
   
   public void run()
   {
     long l = SystemClock.elapsedRealtime();
     NetConnInfoCenter.checkConnInfo(BaseApplication.getContext(), true);
-    this.e.netFlowStore = new d(MsfCore.sCore, BaseApplication.getContext());
+    this.e.netFlowStore = new e(MsfCore.sCore, BaseApplication.getContext());
     try
     {
       BaseApplication.monitor.start();
       QLog.d("MSF.C.MsfCore", 1, "init netflow monitor cost=" + (SystemClock.elapsedRealtime() - l));
       l = SystemClock.elapsedRealtime();
       this.a.f();
-      if (this.a.c()) {
+      if (this.a.c())
+      {
         this.e.statReporter = this.a;
+        if (j.f)
+        {
+          QLog.d("MSF.C.MsfCore", 1, "MSF_Alive_Log do report JobScheduler alive MSF to rdm in msfcore init");
+          j.a(true);
+        }
+        this.e.store.reportLoadCfgTempFile();
       }
       QLog.d("MSF.C.MsfCore", 1, "init beacon Cost=" + (SystemClock.elapsedRealtime() - l));
       l = SystemClock.elapsedRealtime();
-      Object localObject;
-      if (com.tencent.mobileqq.msf.core.c.a.a(BaseApplication.getContext(), false))
+      if (com.tencent.mobileqq.msf.service.k.a)
       {
-        localObject = com.tencent.mobileqq.msf.core.c.a.a(BaseApplication.getContext());
-        this.e.mtaReporter = ((com.tencent.mobileqq.msf.core.c.a)localObject);
+        QLog.d("MSF.C.MsfCore", 1, "MSF_Alive_REPORT_Log do report MSF alive to bigT in msfcore init");
+        com.tencent.mobileqq.msf.service.k.a(null);
       }
-      QLog.d("MSF.C.MsfCore", 1, "init mtaSupport=" + com.tencent.mobileqq.msf.core.c.a.a(BaseApplication.getContext()).isMtaSupported() + " mtaCost=" + (SystemClock.elapsedRealtime() - l));
+      QLog.d("MSF.C.MsfCore", 1, "init BigT Cost=" + (SystemClock.elapsedRealtime() - l));
+      l = SystemClock.elapsedRealtime();
+      Object localObject;
+      if (com.tencent.mobileqq.msf.core.c.b.a(BaseApplication.getContext(), false))
+      {
+        localObject = com.tencent.mobileqq.msf.core.c.b.a(BaseApplication.getContext());
+        this.e.mtaReporter = ((com.tencent.mobileqq.msf.core.c.b)localObject);
+      }
+      QLog.d("MSF.C.MsfCore", 1, "init mtaSupport=" + com.tencent.mobileqq.msf.core.c.b.a(BaseApplication.getContext()).isMtaSupported() + " mtaCost=" + (SystemClock.elapsedRealtime() - l));
       l = SystemClock.elapsedRealtime();
       Properties localProperties;
       if (MsfCore.access$000(this.e))
@@ -51,7 +65,7 @@ class s
         {
           localObject = "null";
           localProperties.setProperty("imei", (String)localObject);
-          com.tencent.mobileqq.msf.core.c.a.a(BaseApplication.getContext()).reportKVEvent("msf.core.EvtTxlibSoExist", localProperties);
+          com.tencent.mobileqq.msf.core.c.b.a(BaseApplication.getContext()).reportKVEvent("msf.core.EvtTxlibSoExist", localProperties);
         }
       }
       else if (this.e.bLoadUseTxlib)
@@ -61,21 +75,21 @@ class s
         localProperties.setProperty("newVersion", String.valueOf(this.c));
         localProperties.setProperty("oldVersion", String.valueOf(this.d));
         if (t.d() != null) {
-          break label620;
+          break label703;
         }
         localObject = "null";
         localProperties.setProperty("imei", (String)localObject);
         localProperties.setProperty("product", Build.MANUFACTURER + "_" + Build.MODEL);
         localProperties.setProperty("uin", String.valueOf(MsfCore.sCore.getAccountCenter().i()));
         localProperties.setProperty("platform", c.c(BaseApplication.getContext()));
-        com.tencent.mobileqq.msf.core.c.a.a(BaseApplication.getContext()).reportKVEvent("msf.core.EvtLoadUseTxlib", localProperties);
+        com.tencent.mobileqq.msf.core.c.b.a(BaseApplication.getContext()).reportKVEvent("msf.core.EvtLoadUseTxlib", localProperties);
       }
     }
     catch (Throwable localException1)
     {
       try
       {
-        x.a().a(MsfCore.sCore, true);
+        y.a().a(MsfCore.sCore, true);
         QLog.d("MSF.C.MsfCore", 1, "init wifiScan cost=" + (SystemClock.elapsedRealtime() - l));
         l = SystemClock.elapsedRealtime();
       }
@@ -83,14 +97,14 @@ class s
       {
         try
         {
-          label620:
+          label703:
           do
           {
             for (;;)
             {
-              x.a(x.O);
+              y.a(y.O);
               QLog.d("MSF.C.MsfCore", 1, "MsfCore init health step cost=" + (SystemClock.elapsedRealtime() - l));
-              QLog.i("MSF.C.MsfCore", 1, "init quic_enable=" + com.tencent.mobileqq.msf.core.a.a.e("quic_enable") + " version=" + QuicWrapper.getQuicResVersion() + " libpath=" + QuicWrapper.getQuicResLoadPath());
+              QLog.i("MSF.C.MsfCore", 1, "init quic_enable=" + a.e("quic_enable") + " version=" + QuicWrapper.getQuicResVersion() + " libpath=" + QuicWrapper.getQuicResLoadPath());
               return;
               localThrowable = localThrowable;
               QLog.d("MSF.C.MsfCore", 1, "", localThrowable);

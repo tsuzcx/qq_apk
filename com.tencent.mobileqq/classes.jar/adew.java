@@ -1,26 +1,28 @@
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import android.view.View;
+import android.view.animation.OvershootInterpolator;
+import com.tencent.mobileqq.activity.JDHongbaoActivity;
 
 public class adew
-  implements Runnable
+  extends OvershootInterpolator
 {
-  public adew(VideoFilePresenter paramVideoFilePresenter) {}
+  private boolean jdField_a_of_type_Boolean;
   
-  public void run()
+  public adew(JDHongbaoActivity paramJDHongbaoActivity) {}
+  
+  public float getInterpolation(float paramFloat)
   {
-    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
+    if ((!this.jdField_a_of_type_Boolean) && (paramFloat > 0.7D))
     {
-      VideoFilePresenter.a(this.a, this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration());
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.a(VideoFilePresenter.a(this.a));
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.b(false);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.f(true);
+      this.jdField_a_of_type_Boolean = true;
+      JDHongbaoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJDHongbaoActivity).setBackgroundColor(-16777216);
+      JDHongbaoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJDHongbaoActivity).startAnimation(this.jdField_a_of_type_ComTencentMobileqqActivityJDHongbaoActivity.a);
     }
+    return (float)(1.0D - Math.pow(2.718281828459045D, 5.0F * -paramFloat) * Math.cos(8.0F * paramFloat));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adew
  * JD-Core Version:    0.7.0.1
  */

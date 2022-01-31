@@ -1,13 +1,25 @@
-import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
+import android.text.TextUtils;
 
 public class anbt
-  implements Runnable
 {
-  public anbt(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, String[] paramArrayOfString) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void run()
+  public String a()
   {
-    QZoneSharePictureJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    if (TextUtils.isEmpty(this.b)) {
+      return "";
+    }
+    return this.b;
+  }
+  
+  public String b()
+  {
+    if (TextUtils.isEmpty(this.c)) {
+      return "";
+    }
+    return this.c;
   }
 }
 

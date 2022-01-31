@@ -1,26 +1,42 @@
-import com.tencent.open.appcommon.js.OpenJsBridge.OpenJsBridgeListener;
-import com.tencent.open.base.LogUtility;
-import com.tencent.smtt.sdk.WebView;
+import android.app.Activity;
+import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
+import java.util.ArrayList;
 
-public class aleo
-  implements Runnable
+public abstract interface aleo
 {
-  public aleo(OpenJsBridge.OpenJsBridgeListener paramOpenJsBridgeListener, String paramString, WebView paramWebView) {}
+  public abstract String a();
   
-  public void run()
-  {
-    LogUtility.b("Response", "AsyncInterface_end:javascript:window.JsBridge&&JsBridge.callback('interface." + this.jdField_a_of_type_JavaLangString + "',{guid:" + this.jdField_a_of_type_ComTencentOpenAppcommonJsOpenJsBridge$OpenJsBridgeListener.b + ",'r':-2,'data':'no such method'});");
-    try
-    {
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript:window.JsBridge&&JsBridge.callback('interface." + this.jdField_a_of_type_JavaLangString + "',{guid:" + this.jdField_a_of_type_ComTencentOpenAppcommonJsOpenJsBridge$OpenJsBridgeListener.b + ",'r':-2,'data':'no such method'});");
-      return;
-    }
-    catch (Exception localException) {}
-  }
+  public abstract String a(int paramInt, ApolloWebAvatarParam paramApolloWebAvatarParam);
+  
+  public abstract String a(alel paramalel);
+  
+  public abstract String a(String paramString);
+  
+  public abstract String a(ArrayList<ApolloWebAvatarParam> paramArrayList);
+  
+  public abstract String a(int[] paramArrayOfInt);
+  
+  public abstract void a(int paramInt, int[] paramArrayOfInt);
+  
+  public abstract void a(Activity paramActivity, String paramString1, String paramString2);
+  
+  public abstract void a(ArrayList<String> paramArrayList);
+  
+  public abstract void a(boolean paramBoolean, float paramFloat1, float paramFloat2);
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract String b(String paramString);
+  
+  public abstract void b();
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void d(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aleo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,38 @@
 package com.tencent.token.core.bean;
 
-public final class f
+import org.json.JSONObject;
+
+public class f
 {
-  public String a;
+  public int a;
   public String b;
-  public String c;
-  public String d;
-  public int e;
-  public int f;
-  public String g;
-  public int h;
+  public boolean c;
+  public boolean d = false;
+  public boolean e;
   
-  public f(OnlineDeviceResult paramOnlineDeviceResult) {}
+  public f(LoginProtectResult paramLoginProtectResult, JSONObject paramJSONObject)
+  {
+    this.a = paramJSONObject.getInt("id");
+    this.b = paramJSONObject.getString("title");
+    if (paramJSONObject.getInt("is_set") == 1)
+    {
+      bool1 = true;
+      this.c = bool1;
+      if (this.a == 80) {
+        if (paramJSONObject.getInt("is_device_set") != 1) {
+          break label87;
+        }
+      }
+    }
+    label87:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      this.e = bool1;
+      return;
+      bool1 = false;
+      break;
+    }
+  }
 }
 
 

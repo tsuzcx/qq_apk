@@ -1,37 +1,36 @@
-import android.text.Spanned;
-import android.text.method.NumberKeyListener;
-import com.tencent.widget.TCWNumberPicker;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.OvalProgress;
+import cooperation.qqfav.QfavUtil;
+import cooperation.qqfav.widget.QfavMicroPhoneDialog;
 
 public class ibp
-  extends NumberKeyListener
+  extends Handler
 {
-  private ibp(TCWNumberPicker paramTCWNumberPicker) {}
+  public ibp(QfavMicroPhoneDialog paramQfavMicroPhoneDialog) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void handleMessage(Message paramMessage)
   {
-    CharSequence localCharSequence2 = super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
-    CharSequence localCharSequence1 = localCharSequence2;
-    if (localCharSequence2 == null) {
-      localCharSequence1 = paramCharSequence.subSequence(paramInt1, paramInt2);
+    switch (paramMessage.what)
+    {
+    case 8: 
+    case 10: 
+    default: 
+      return;
+    case 7: 
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress.setProgressParams(0L, 0L);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839032);
+      return;
+    case 9: 
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839032);
+      return;
+    case 11: 
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(Integer.toString((int)Math.round(this.a.e * 1.0D / 1000.0D)) + "\"");
+      return;
     }
-    paramCharSequence = String.valueOf(paramSpanned.subSequence(0, paramInt3)) + localCharSequence1 + paramSpanned.subSequence(paramInt4, paramSpanned.length());
-    if ("".equals(paramCharSequence)) {
-      localCharSequence1 = paramCharSequence;
-    }
-    while (TCWNumberPicker.a(this.a, paramCharSequence) <= TCWNumberPicker.b(this.a)) {
-      return localCharSequence1;
-    }
-    return "";
-  }
-  
-  protected char[] getAcceptedChars()
-  {
-    return TCWNumberPicker.a();
-  }
-  
-  public int getInputType()
-  {
-    return 2;
+    QfavUtil.a(this.a.jdField_a_of_type_AndroidContentContext, 2131560833, 1);
   }
 }
 

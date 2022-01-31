@@ -1,34 +1,20 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.RegisterPersonalInfoActivity;
+import java.util.ArrayList;
 
 public class tpr
-  implements TextWatcher
 {
-  public tpr(RegisterPersonalInfoActivity paramRegisterPersonalInfoActivity) {}
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    if (paramEditable == null) {
-      return;
-    }
-    if (TextUtils.isEmpty(paramEditable.toString()))
-    {
-      RegisterPersonalInfoActivity.a(this.a).setEnabled(false);
-      return;
-    }
-    RegisterPersonalInfoActivity.a(this.a).setEnabled(true);
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public int a;
+  public String a;
+  public ArrayList<tpt> a;
+  public tps a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tpr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,21 @@
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-
-public class nwq
-  implements Runnable
+class nwq
+  implements oxx
 {
-  public nwq(StoryMemoriesFragment paramStoryMemoriesFragment) {}
+  nwq(nwm paramnwm) {}
   
-  public void run()
+  public void l()
   {
-    this.a.c();
+    nwm.d(this.a);
+  }
+  
+  public void m()
+  {
+    nwm.e(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nwq
  * JD-Core Version:    0.7.0.1
  */

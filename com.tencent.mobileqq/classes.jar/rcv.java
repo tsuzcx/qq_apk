@@ -1,20 +1,37 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
+import com.tencent.qphone.base.util.QLog;
 
-public class rcv
-  implements Runnable
+class rcv
+  extends oxe
 {
-  public rcv(LiteTransferWrapper paramLiteTransferWrapper, String paramString) {}
+  private rcv(rcp paramrcp) {}
   
-  public void run()
+  public void e(boolean paramBoolean)
   {
-    if (LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper) != 0L) {
-      this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SetDefaultPathToJNI(LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_JavaLangString);
+    rcp.b(this.a, paramBoolean);
+    if (paramBoolean) {
+      this.a.d();
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFeedsFloatWindowManager", 2, "onVideoFeedsFloatingWindowVisibilityChange: " + paramBoolean);
+      }
+      return;
+      this.a.e();
+    }
+  }
+  
+  public void i()
+  {
+    this.a.f();
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFeedsFloatWindowManager", 2, "onVideoFeedsFloatingWindowDismiss");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rcv
  * JD-Core Version:    0.7.0.1
  */

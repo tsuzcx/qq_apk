@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class AudioTransCommon$TranslateResult
-  extends MessageMicro
+  extends MessageMicro<TranslateResult>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_src_text = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -29,7 +29,7 @@ public final class AudioTransCommon$TranslateResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.audiotrans.AudioTransCommon.TranslateResult
  * JD-Core Version:    0.7.0.1
  */

@@ -1,55 +1,72 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Intent;
+import com.tencent.av.service.QQServiceForAV;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask2;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.manager.TicketManager;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class lzx
-  implements Runnable
+  extends altm
 {
-  public lzx(ReadInJoyWebDataManager paramReadInJoyWebDataManager, String paramString1, String paramString2, mac parammac, JSONObject paramJSONObject) {}
+  public lzx(QQServiceForAV paramQQServiceForAV) {}
   
-  public void run()
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    try
-    {
-      Object localObject3 = (QQAppInterface)ReadInJoyUtils.a();
-      if (localObject3 == null) {
-        return;
-      }
-      Object localObject1 = new Bundle();
-      TicketManager localTicketManager = (TicketManager)((QQAppInterface)localObject3).getManager(2);
-      Object localObject2 = ((QQAppInterface)localObject3).getAccount();
-      localObject3 = localTicketManager.getSkey(((QQAppInterface)localObject3).getCurrentAccountUin());
-      ((Bundle)localObject1).putString("Cookie", "uin=o" + (String)localObject2 + "; skey=" + (String)localObject3);
-      ((Bundle)localObject1).putString("User-Agent", ReadInJoyWebDataManager.d());
-      localObject2 = new HashMap();
-      ((HashMap)localObject2).put("BUNDLE", localObject1);
-      ((HashMap)localObject2).put("CONTEXT", BaseApplicationImpl.getApplication());
-      if (QLog.isColorLevel()) {
-        QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:url :" + this.jdField_a_of_type_JavaLangString);
-      }
-      localObject1 = new lzy(this);
-      new HttpWebCgiAsyncTask2(this.jdField_a_of_type_JavaLangString, "GET", (HttpWebCgiAsyncTask.Callback)localObject1, 0, null).execute(new HashMap[] { localObject2 });
-      return;
+    Intent localIntent = new Intent("com.tencent.qqhead.getheadresp2");
+    localIntent.putExtra("uin", paramString);
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
+    if (this.a.b.contains(paramString)) {
+      localQQAppInterface.getApp().sendBroadcast(localIntent);
     }
-    catch (Exception localException)
+    this.a.b.remove(paramString);
+    if (this.a.b()) {
+      localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Altm);
+    }
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:request err " + localException);
+      QLog.d("QQServiceForAV", 2, "onUpdateFriendInfo uin = " + paramString);
+      QLog.d("QQServiceForAV", 2, "onUpdateFriendInfo isSuccess = " + paramBoolean);
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
+    Intent localIntent;
+    if ((paramBoolean) && (paramString != null))
+    {
+      localIntent = new Intent();
+      localIntent.setAction("tencent.video.q2v.ACTION_ON_UPDATE_FRIEND_INFO");
+      localIntent.putExtra("uin", paramString);
+      localObject = (alto)QQServiceForAV.m(this.a).getManager(51);
+      if (localObject == null) {
+        break label205;
       }
+      localObject = ((alto)localObject).e(paramString);
+      if (localObject == null) {
+        break label205;
+      }
+    }
+    label205:
+    for (Object localObject = bdgc.a((Friends)localObject);; localObject = paramString)
+    {
+      localIntent.putExtra("nick", (String)localObject);
+      localIntent.setPackage(localQQAppInterface.getApplication().getPackageName());
+      localQQAppInterface.getApp().sendBroadcast(localIntent);
+      this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramString);
+      if (this.a.b()) {
+        localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Altm);
+      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lzx
  * JD-Core Version:    0.7.0.1
  */

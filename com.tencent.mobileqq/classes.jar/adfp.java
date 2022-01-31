@@ -1,22 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.ZipFilePresenter;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.LbsBaseActivity;
 
 public class adfp
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public adfp(ZipFilePresenter paramZipFilePresenter) {}
+  public adfp(LbsBaseActivity paramLbsBaseActivity, Runnable paramRunnable) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    FileManagerUtil.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.b());
+    if (!LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity.a();
+      return;
+    }
+    LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity, this.jdField_a_of_type_JavaLangRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adfp
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import com.tencent.mobileqq.app.TroopObserver;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.model.FriendManager;
 import com.tencent.mobileqq.widget.QQToast;
-import hbn;
+import gxg;
 
 public class AddTroopHelper
 {
@@ -27,7 +27,7 @@ public class AddTroopHelper
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler = ((TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(19));
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new hbn(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new gxg(this);
   }
   
   private final void a(TroopInfo paramTroopInfo)

@@ -1,16 +1,21 @@
 package com.tencent.token.ui;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-final class aet
+class aet
   implements View.OnClickListener
 {
-  aet(aer paramaer) {}
+  aet(VerifyMobilePhoneActivity paramVerifyMobilePhoneActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    this.a.dismiss();
+    paramView = new Intent(this.a, NetActiveVryOtherListActivity.class);
+    paramView.putExtra("intent.qquser", VerifyMobilePhoneActivity.access$100(this.a));
+    paramView.putExtra("intent.determin_factors_result", VerifyMobilePhoneActivity.access$300(this.a));
+    paramView.putExtra("intent.determin_verify_type", VerifyMobilePhoneActivity.access$200(this.a));
+    this.a.startActivity(paramView);
   }
 }
 

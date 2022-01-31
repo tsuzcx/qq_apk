@@ -1,34 +1,16 @@
-import android.graphics.Bitmap;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
-import com.tencent.qphone.base.util.QLog;
-
-class akyf
-  implements ImageAssetDelegate
+public class akyf
 {
-  akyf(akye paramakye) {}
-  
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public static String a(boolean paramBoolean)
   {
-    paramLottieImageAsset = this.a.a + paramLottieImageAsset.getFileName();
-    QLog.i("WorldCupShareFragment", 1, "initLoadingAnimation. fetchBitmap. imageFileName = " + paramLottieImageAsset);
-    try
-    {
-      paramLottieImageAsset = SafeBitmapFactory.decodeFile(paramLottieImageAsset);
-      if (paramLottieImageAsset != null) {}
-      return paramLottieImageAsset;
+    if (paramBoolean) {
+      return "apollo_router_game.ltgame_redpkg_plankinfo_linkcmd_check_game";
     }
-    catch (Exception paramLottieImageAsset)
-    {
-      QLog.i("WorldCupShareFragment", 2, "initLoadingAnimation failed. err = " + paramLottieImageAsset.getMessage());
-    }
-    return null;
+    return "ltgame_redpkg_plankinfo.check_game";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akyf
  * JD-Core Version:    0.7.0.1
  */

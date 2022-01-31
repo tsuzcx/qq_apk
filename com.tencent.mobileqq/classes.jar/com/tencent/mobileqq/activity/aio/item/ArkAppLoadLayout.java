@@ -19,6 +19,8 @@ public class ArkAppLoadLayout
   private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private ArkViewImplement jdField_a_of_type_ComTencentArkArkViewImplement;
+  public boolean a;
+  int c = -2565408;
   
   static
   {
@@ -44,9 +46,16 @@ public class ArkAppLoadLayout
   
   public void draw(Canvas paramCanvas)
   {
-    Paint localPaint = jdField_a_of_type_AndroidGraphicsPaint;
-    if (isPressed()) {}
-    for (int i = jdField_a_of_type_Int;; i = b)
+    Paint localPaint;
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      localPaint = jdField_a_of_type_AndroidGraphicsPaint;
+      if (!isPressed()) {
+        break label44;
+      }
+    }
+    label44:
+    for (int i = jdField_a_of_type_Int;; i = this.c)
     {
       localPaint.setColor(i);
       paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, jdField_a_of_type_AndroidGraphicsPaint);
@@ -58,9 +67,12 @@ public class ArkAppLoadLayout
   public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, View.MeasureSpec.getSize(paramInt1), View.MeasureSpec.getSize(paramInt2));
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_ComTencentArkArkViewImplement.makePath(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPath);
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, View.MeasureSpec.getSize(paramInt1), View.MeasureSpec.getSize(paramInt2));
+      this.jdField_a_of_type_AndroidGraphicsPath.reset();
+      this.jdField_a_of_type_ComTencentArkArkViewImplement.makePath(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPath);
+    }
   }
   
   public void setArkView(ArkViewImplement paramArkViewImplement)
@@ -68,10 +80,15 @@ public class ArkAppLoadLayout
     this.jdField_a_of_type_ComTencentArkArkViewImplement = paramArkViewImplement;
     setWillNotDraw(false);
   }
+  
+  public void setBkgColorNormal(int paramInt)
+  {
+    this.c = paramInt;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout
  * JD-Core Version:    0.7.0.1
  */

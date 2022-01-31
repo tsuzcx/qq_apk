@@ -1,34 +1,33 @@
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.store.ApolloBoxEnterView;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.io.File;
 
-public class ysp
-  implements Runnable
+class ysp
+  implements ysj
 {
-  public ysp(ApolloBoxEnterView paramApolloBoxEnterView) {}
+  ysp(yso paramyso, long paramLong) {}
   
-  public void run()
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    if (ApolloBoxEnterView.a(this.a) == null) {}
-    do
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        return;
-        localObject = (QQAppInterface)ApolloBoxEnterView.a(this.a).get();
-      } while ((ApolloBoxEnterView.a(this.a) == null) || (localObject == null));
-      Object localObject = (ApolloManager)((QQAppInterface)localObject).getManager(152);
-      ApolloBoxEnterView.a(this.a).hadStolen = 1;
-      ((ApolloManager)localObject).a(ApolloBoxEnterView.a(this.a));
-    } while (!QLog.isColorLevel());
-    QLog.d("ApolloBoxEnterView", 2, "updateApolloPandora");
+      QLog.d(".troop.VideoCombineHelper", 2, "combineWording end! isSuccess:" + paramBoolean + " path = " + paramString1);
+      QLog.d(".troop.trace_video_combine", 2, "combineWordingTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    }
+    File localFile = new File(paramString1);
+    if ((paramBoolean) && (localFile.exists()))
+    {
+      this.jdField_a_of_type_Yso.a.jdField_a_of_type_Ysl.e = paramString1;
+      this.jdField_a_of_type_Yso.a.jdField_a_of_type_Ysm.a.b(this.jdField_a_of_type_Yso.a.jdField_a_of_type_Ysm);
+      this.jdField_a_of_type_Yso.a.jdField_a_of_type_Ysm.b();
+      return;
+    }
+    this.jdField_a_of_type_Yso.a.jdField_a_of_type_Ysm.d = paramString2;
+    this.jdField_a_of_type_Yso.a.jdField_a_of_type_Ysm.a.a(this.jdField_a_of_type_Yso.a.jdField_a_of_type_Ysm);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ysp
  * JD-Core Version:    0.7.0.1
  */

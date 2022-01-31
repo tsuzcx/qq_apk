@@ -1,53 +1,25 @@
-import android.app.Activity;
-import android.graphics.Bitmap;
 import android.text.TextUtils;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.arcard.ARCardShareHelper;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.ad.tangram.Ad;
+import com.tencent.ad.tangram.canvas.report.AdRefreshCallback;
+import com.tencent.ad.tangram.canvas.report.AdReportAdapter;
+import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppBtnData;
+import com.tencent.gdtad.aditem.GdtAd;
 
-class aaml
-  implements Runnable
+public class aaml
+  implements AdReportAdapter
 {
-  aaml(aamk paramaamk, boolean paramBoolean, String paramString) {}
-  
-  public void run()
+  public void downloadReport(Ad paramAd, String paramString, int paramInt, boolean paramBoolean, AdAppBtnData paramAdAppBtnData)
   {
-    if (this.jdField_a_of_type_Aamk.jdField_a_of_type_Aamf.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
+    if ((!(paramAd instanceof GdtAd)) || (TextUtils.isEmpty(paramString))) {
       return;
     }
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      QRUtils.a(1, 2131433135);
-      return;
-    }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      QRUtils.a(1, 2131430004);
-      return;
-    }
-    Bitmap localBitmap = ARCardShareHelper.a(this.jdField_a_of_type_Aamk.jdField_a_of_type_Aamf.a);
-    if (this.jdField_a_of_type_Aamk.jdField_a_of_type_Int == 9)
-    {
-      if (this.jdField_a_of_type_Aamk.jdField_a_of_type_Aamf.a.jdField_a_of_type_Boolean) {
-        ReportController.b(null, "dc00898", "", "", "0X8008F1B", "0X8008F1B", 2, 0, "", "", "", "");
-      }
-      for (;;)
-      {
-        WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, localBitmap, 0);
-        return;
-        ReportController.b(null, "dc00898", "", "", "0X8008F27", "0X8008F27", 2, 0, "", "", "", "");
-      }
-    }
-    if (this.jdField_a_of_type_Aamk.jdField_a_of_type_Aamf.a.jdField_a_of_type_Boolean) {
-      ReportController.b(null, "dc00898", "", "", "0X8008F1B", "0X8008F1B", 4, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, localBitmap, 1);
-      return;
-      ReportController.b(null, "dc00898", "", "", "0X8008F27", "0X8008F27", 4, 0, "", "", "", "");
-    }
+    aatr.a().a(paramString, (GdtAd)paramAd, paramAdAppBtnData);
+    aatr.a().a((GdtAd)paramAd, paramInt, paramBoolean);
+  }
+  
+  public AdRefreshCallback getAdReportAdapter()
+  {
+    return aatr.a();
   }
 }
 

@@ -1,23 +1,25 @@
-import com.tencent.mobileqq.nearby.now.protocol.CsTask.OnCsError;
-import com.tencent.mobileqq.nearby.now.send.uploader.WordsCheck.OnResultListener;
 import com.tencent.qphone.base.util.QLog;
 
-public final class aewr
-  implements CsTask.OnCsError
+class aewr
+  implements aewt
 {
-  public aewr(WordsCheck.OnResultListener paramOnResultListener) {}
+  aewr(aewq paramaewq, aews paramaews) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public void a(boolean paramBoolean)
   {
-    QLog.e("WordsCheck", 1, "onError, code=" + paramInt);
-    if (this.a != null) {
-      this.a.a(0);
+    if (paramBoolean)
+    {
+      aewq.a(this.jdField_a_of_type_Aewq, this.jdField_a_of_type_Aews.a());
+      this.jdField_a_of_type_Aews.a();
+      return;
     }
+    QLog.e("FriendShipViewManager", 1, "director.prepare not ready, cannot play anim, type = " + this.jdField_a_of_type_Aews.a());
+    aewq.a(this.jdField_a_of_type_Aewq, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aewr
  * JD-Core Version:    0.7.0.1
  */

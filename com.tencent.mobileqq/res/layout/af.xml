@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/e" android:paddingTop="@dimen/f" android:paddingRight="@dimen/e" android:paddingBottom="@dimen/f" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="2.0">
+        <Button android:id="@id/ljp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="GetBaseInfo" />
+        <Button android:id="@id/m_o" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="初始化引擎" />
+        <Button android:id="@id/m_n" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="关闭引擎" />
+        <Button android:id="@id/m_p" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="发送数据" />
+        <Button android:id="@id/m_q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="发送图片" />
+    </LinearLayout>
+    <TextView android:id="@id/m5x" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+</LinearLayout>

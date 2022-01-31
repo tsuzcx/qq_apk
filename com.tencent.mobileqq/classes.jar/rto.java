@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class rto
-  implements Runnable
+  implements bicq
 {
-  public rto(BaseChatPie paramBaseChatPie) {}
+  public rto(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void run()
+  public void a()
   {
-    this.a.aV();
+    this.a.a(new rtp(this, "onListViewDrawFinished"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rto
  * JD-Core Version:    0.7.0.1
  */

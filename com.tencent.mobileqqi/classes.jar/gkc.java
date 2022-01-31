@@ -1,14 +1,11 @@
-import com.tencent.mobileqq.app.DiscussionObserver;
-import com.tencent.mobileqq.qcall.QCallFacade;
+import java.util.concurrent.ThreadFactory;
 
-public class gkc
-  extends DiscussionObserver
+public final class gkc
+  implements ThreadFactory
 {
-  public gkc(QCallFacade paramQCallFacade) {}
-  
-  protected void b(boolean paramBoolean, String paramString)
+  public Thread newThread(Runnable paramRunnable)
   {
-    this.a.a(paramString, 3000);
+    return new Thread(paramRunnable, "RDM-Service");
   }
 }
 

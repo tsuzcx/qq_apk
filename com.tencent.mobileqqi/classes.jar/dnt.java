@@ -1,22 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SetTroopAdminsActivity;
-import com.tencent.mobileqq.activity.SetTroopAdminsActivity.TroopAdmin;
-import com.tencent.widget.ActionSheet;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SubaccountUgActivity;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
 
 class dnt
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  dnt(dns paramdns, SetTroopAdminsActivity.TroopAdmin paramTroopAdmin) {}
+  dnt(dns paramdns) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = ActionSheet.a(this.jdField_a_of_type_Dns.a);
-    paramView.a(String.format(this.jdField_a_of_type_Dns.a.getString(2131561531), new Object[] { this.jdField_a_of_type_ComTencentMobileqqActivitySetTroopAdminsActivity$TroopAdmin.b }));
-    paramView.a(2131561758, 3);
-    paramView.d(2131561746);
-    paramView.a(new dnu(this, paramView));
-    paramView.show();
+    if (paramInt == 1)
+    {
+      this.a.a.d();
+      this.a.a.f = true;
+      SubAccountAssistantManager.a().a(this.a.a.b);
+      this.a.a.f();
+    }
   }
 }
 

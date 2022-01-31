@@ -1,24 +1,14 @@
-import android.annotation.TargetApi;
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import com.tencent.mobileqq.widget.LeftPopupMenuDialog;
-
-public class akut
-  extends View.AccessibilityDelegate
+public abstract interface akut
 {
-  public akut(LeftPopupMenuDialog paramLeftPopupMenuDialog) {}
+  public abstract void a();
   
-  @TargetApi(14)
-  public void sendAccessibilityEvent(View paramView, int paramInt)
-  {
-    if (paramInt != 32) {
-      super.sendAccessibilityEvent(paramView, paramInt);
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akut
  * JD-Core Version:    0.7.0.1
  */

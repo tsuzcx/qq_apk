@@ -1,23 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 
-public final class ahhu
-  implements Parcelable.Creator
+public class ahhu
+  implements View.OnClickListener
 {
-  public MusicItemInfo a(Parcel paramParcel)
-  {
-    return new MusicItemInfo(paramParcel);
-  }
+  public ahhu(SearchBaseActivity paramSearchBaseActivity) {}
   
-  public MusicItemInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new MusicItemInfo[0];
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    if (this.a.h != 1) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahhu
  * JD-Core Version:    0.7.0.1
  */

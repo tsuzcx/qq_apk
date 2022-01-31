@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.emosm;
 
-import abyy;
-import abyz;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
@@ -10,18 +8,20 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
-import com.tencent.mobileqq.emosm.web.IPCConstants;
+import apmf;
+import apmg;
+import appv;
+import aprh;
 import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
 import com.tencent.qphone.base.util.QLog;
 
 public class Client
-  implements IPCConstants
+  implements appv
 {
   public static final String tag = "Q.emoji.web.Client";
-  private ServiceConnection mConnection = new abyy(this);
+  private ServiceConnection mConnection = new apmf(this);
   public boolean mIsBound;
-  public final Messenger mMessenger = new Messenger(new abyz(this, Looper.getMainLooper()));
+  public final Messenger mMessenger = new Messenger(new apmg(this, Looper.getMainLooper()));
   public Messenger mService = null;
   
   public void doBindService(Context paramContext)
@@ -85,12 +85,12 @@ public class Client
   
   public void onDisconnectWithService()
   {
-    WebIPCOperator.a().b();
+    aprh.a().b();
   }
   
   public void onPushMsgFromServer(Bundle paramBundle)
   {
-    WebIPCOperator.a().d(paramBundle);
+    aprh.a().d(paramBundle);
   }
   
   public boolean onReqToServer(Bundle paramBundle)
@@ -133,7 +133,7 @@ public class Client
   {
     try
     {
-      WebIPCOperator.a().c(paramBundle);
+      aprh.a().c(paramBundle);
       return;
     }
     catch (IllegalArgumentException localIllegalArgumentException)
@@ -152,7 +152,7 @@ public class Client
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.Client
  * JD-Core Version:    0.7.0.1
  */

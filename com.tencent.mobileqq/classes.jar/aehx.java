@@ -1,16 +1,30 @@
-import android.util.Pair;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.model.QueryTask.Query;
+import android.view.View;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aehx
-  implements QueryTask.Query
+  implements bhuk
 {
-  public aehx(EmoticonManager paramEmoticonManager) {}
+  public aehx(TroopRequestActivity paramTroopRequestActivity, bhuf parambhuf) {}
   
-  public EmoticonPackage a(Pair paramPair)
+  public void OnClick(View paramView, int paramInt)
   {
-    return this.a.b((String)paramPair.first, ((Integer)paramPair.second).intValue());
+    switch (paramInt)
+    {
+    default: 
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+    }
+    if (bdin.d(BaseApplication.getContext())) {
+      TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity);
+    }
+    for (;;)
+    {
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.app, "P_CliOper", "Grp_sysmsg", "", "verify_msg", "black", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.t, "", "");
+      break;
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, 2131694768, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.getTitleBarHeight());
+    }
   }
 }
 

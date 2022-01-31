@@ -1,35 +1,101 @@
-import android.app.Dialog;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import android.graphics.Bitmap;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 public class nnn
-  extends GestureDetector.SimpleOnGestureListener
+  extends WebViewClient
 {
-  public nnn(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
+  protected WebViewPluginEngine a;
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public nnn(WebViewPluginEngine paramWebViewPluginEngine)
   {
-    return true;
+    this.a = paramWebViewPluginEngine;
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void onLoadResource(WebView paramWebView, String paramString)
   {
-    if ((paramMotionEvent2 != null) && (paramMotionEvent1 != null))
-    {
-      paramFloat1 = Math.abs(paramMotionEvent2.getX() - paramMotionEvent1.getX());
-      float f = Math.abs(paramMotionEvent2.getY() - paramMotionEvent1.getY());
-      double d = Math.abs(Math.asin(paramFloat1 / Math.sqrt(paramFloat1 * paramFloat1 + f * f)));
-      if ((paramFloat2 > 0.0F) && (d < 0.5235987755982988D) && (this.a.b == 0)) {
-        this.a.a.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("WEBVIEWCHECK", 2, "CustomWebView loadUrl url:" + paramString);
+    }
+    super.onLoadResource(paramWebView, paramString);
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    super.onPageFinished(paramWebView, paramString);
+    if (this.a != null) {
+      this.a.a(paramString, 8589934594L, null);
+    }
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+    if (this.a != null) {
+      this.a.a(paramString, 8589934593L, null);
+    }
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WEBVIEWCHECK", 2, "CustomWebViewClient onReceivedError errorCode:" + paramInt + ", description:" + paramString1 + ", failingUrl:" + paramString2);
+    }
+    if (this.a != null) {
+      this.a.a(paramString2, 8589934595L, paramInt);
+    }
+  }
+  
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
+  {
+    if (this.a != null) {
+      try
+      {
+        paramWebView = (WebResourceResponse)this.a.a(paramString, 8L);
+        return paramWebView;
+      }
+      catch (Exception paramWebView)
+      {
+        QLog.e("WEBVIEWCHECK", 1, "shouldInterceptRequest error:" + paramWebView.toString());
       }
     }
+    return null;
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    boolean bool2 = false;
+    boolean bool1;
+    if ((this.a != null) && (this.a.a(paramString))) {
+      bool1 = true;
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return bool1;
+          bool1 = bool2;
+        } while (paramString == null);
+        if (paramString.startsWith("http")) {
+          break;
+        }
+        bool1 = bool2;
+      } while (!paramString.startsWith("data:"));
+      bool1 = bool2;
+    } while (paramString.contains("/cgi-bin/httpconn?htcmd=0x6ff0080"));
+    CustomWebView.addContextLog(ndq.b(paramString, new String[0]));
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nnn
  * JD-Core Version:    0.7.0.1
  */

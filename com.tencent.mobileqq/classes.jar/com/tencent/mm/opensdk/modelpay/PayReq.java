@@ -13,7 +13,7 @@ public class PayReq
   public String appId;
   public String extData;
   public String nonceStr;
-  public Options options;
+  public PayReq.Options options;
   public String packageValue;
   public String partnerId;
   public String prepayId;
@@ -78,7 +78,7 @@ public class PayReq
     this.sign = a.b(paramBundle, "_wxapi_payreq_sign");
     this.extData = a.b(paramBundle, "_wxapi_payreq_extdata");
     this.signType = a.b(paramBundle, "_wxapi_payreq_sign_type");
-    this.options = new Options();
+    this.options = new PayReq.Options();
     this.options.fromBundle(paramBundle);
   }
   
@@ -103,29 +103,10 @@ public class PayReq
       this.options.toBundle(paramBundle);
     }
   }
-  
-  public static class Options
-  {
-    public static final int INVALID_FLAGS = -1;
-    public String callbackClassName;
-    public int callbackFlags = -1;
-    
-    public void fromBundle(Bundle paramBundle)
-    {
-      this.callbackClassName = a.b(paramBundle, "_wxapi_payoptions_callback_classname");
-      this.callbackFlags = a.a(paramBundle, "_wxapi_payoptions_callback_flags");
-    }
-    
-    public void toBundle(Bundle paramBundle)
-    {
-      paramBundle.putString("_wxapi_payoptions_callback_classname", this.callbackClassName);
-      paramBundle.putInt("_wxapi_payoptions_callback_flags", this.callbackFlags);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelpay.PayReq
  * JD-Core Version:    0.7.0.1
  */

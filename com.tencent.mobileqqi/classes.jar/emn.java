@@ -1,16 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.language.SelectLanguageActivity;
+import com.tencent.image.URLImageView;
 
 public class emn
-  implements View.OnClickListener
 {
-  public emn(SelectLanguageActivity paramSelectLanguageActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    SelectLanguageActivity.a(this.a, 6);
-  }
+  URLImageView a;
 }
 
 

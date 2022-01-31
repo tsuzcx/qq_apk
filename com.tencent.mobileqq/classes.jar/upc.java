@@ -1,19 +1,27 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgNumAnim;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class upc
-  implements Runnable
 {
-  public upc(GoldMsgNumAnim paramGoldMsgNumAnim) {}
+  public int a;
+  public ErrorMessage a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void run()
+  public upc()
   {
-    this.a.b.setVisibility(8);
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage();
+  }
+  
+  public String toString()
+  {
+    return "UploadResult{errorMessage=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", fileKey='" + this.jdField_a_of_type_JavaLangString + '\'' + ", fileId='" + this.b + '\'' + ", uploadServerIp='" + this.d + '\'' + ", mLastUploadOffset='" + this.jdField_a_of_type_Int + '\'' + ", cdnUrl='" + this.c + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     upc
  * JD-Core Version:    0.7.0.1
  */

@@ -16,17 +16,17 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.tencent.token.cp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.ui.IndexActivity;
-import com.tencent.token.utils.t;
-import com.tencent.token.x;
+import com.tencent.token.utils.x;
 
 public class WtloginCaptchaDialog
   extends Dialog
 {
   private static Handler g;
-  x a;
-  Handler b = new dx(this);
+  cp a;
+  Handler b = new do(this);
   private Activity c;
   private EditText d;
   private TextView e;
@@ -36,9 +36,9 @@ public class WtloginCaptchaDialog
   private String j;
   private Toast k;
   
-  public WtloginCaptchaDialog(Activity paramActivity, Handler paramHandler, String paramString)
+  public WtloginCaptchaDialog(Activity paramActivity, int paramInt, Handler paramHandler, String paramString)
   {
-    super(paramActivity, 2131427400);
+    super(paramActivity, paramInt);
     this.c = paramActivity;
     g = paramHandler;
     this.j = paramString;
@@ -51,11 +51,11 @@ public class WtloginCaptchaDialog
     if (localObject == null) {
       return;
     }
-    localObject = t.a((byte[])localObject);
+    localObject = x.a((byte[])localObject);
     this.h.setImageBitmap((Bitmap)localObject);
   }
   
-  public final void a(int paramInt)
+  public void a(int paramInt)
   {
     if (this.c.isFinishing()) {
       return;
@@ -63,7 +63,7 @@ public class WtloginCaptchaDialog
     a(this.c.getResources().getString(paramInt));
   }
   
-  public final void a(String paramString)
+  public void a(String paramString)
   {
     if ((paramString == null) || (paramString.length() == 0) || (this.c.isFinishing())) {
       return;
@@ -95,19 +95,21 @@ public class WtloginCaptchaDialog
       return;
     }
     super.onCreate(paramBundle);
-    this.a = x.a(RqdApplication.i());
-    setContentView(2130903260);
+    this.a = cp.a(RqdApplication.l());
+    setContentView(2130968826);
     paramBundle = getWindow();
-    paramBundle.setBackgroundDrawableResource(2130837639);
-    ((ViewGroup.MarginLayoutParams)findViewById(2131296461).getLayoutParams()).width = paramBundle.getWindowManager().getDefaultDisplay().getWidth();
-    this.i = findViewById(2131296464);
-    this.d = ((EditText)findViewById(2131296466));
-    this.d.clearFocus();
-    this.h = ((ImageView)findViewById(2131296463));
-    this.f = ((Button)findViewById(2131296467));
-    this.f.setOnClickListener(new dy(this));
-    this.e = ((TextView)findViewById(2131296465));
-    this.e.setOnClickListener(new dz(this));
+    paramBundle.setBackgroundDrawableResource(2130837730);
+    ((ViewGroup.MarginLayoutParams)findViewById(2131559508).getLayoutParams()).width = paramBundle.getWindowManager().getDefaultDisplay().getWidth();
+    this.i = findViewById(2131559511);
+    this.d = ((EditText)findViewById(2131559513));
+    if (this.d != null) {
+      this.d.clearFocus();
+    }
+    this.h = ((ImageView)findViewById(2131559510));
+    this.f = ((Button)findViewById(2131559514));
+    this.f.setOnClickListener(new dp(this));
+    this.e = ((TextView)findViewById(2131559512));
+    this.e.setOnClickListener(new dq(this));
     b();
   }
 }

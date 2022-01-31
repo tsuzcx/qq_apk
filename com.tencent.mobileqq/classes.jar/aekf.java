@@ -1,67 +1,16 @@
-import android.content.Intent;
-import android.media.MediaPlayer;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
-public final class aekf
-  extends Handler
+public class aekf
+  implements DialogInterface.OnClickListener
 {
-  public aekf(QQPlayerService paramQQPlayerService, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public aekf(UpgradeActivity paramUpgradeActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      QQPlayerService.a(this.a, (Intent)paramMessage.obj);
-    }
-    for (;;)
-    {
-      return;
-      try
-      {
-        BaseApplicationImpl.getContext().unregisterReceiver(QQPlayerService.a(this.a));
-        paramMessage = (aeke)paramMessage.obj;
-        if (paramMessage == null) {
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("QQPlayerService", 2, "release player");
-        }
-        if (paramMessage.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-        {
-          paramMessage.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-          if (QQPlayerService.a() == paramMessage.jdField_a_of_type_AndroidMediaMediaPlayer) {
-            QQPlayerService.a(null);
-          }
-        }
-        if (paramMessage.jdField_a_of_type_AndroidOsLooper != null) {
-          paramMessage.jdField_a_of_type_AndroidOsLooper.quit();
-        }
-        if (QQPlayerService.b() != paramMessage.jdField_a_of_type_ComTencentMobileqqMusicSongInfo) {
-          continue;
-        }
-        QQPlayerService.a(null);
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QQPlayerService", 2, "onDestroy unregisterReceiver exception ");
-          }
-        }
-      }
-    }
+    UpgradeActivity.a(this.a);
+    this.a.finish();
   }
 }
 

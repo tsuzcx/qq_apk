@@ -1,24 +1,27 @@
-import android.util.SparseArray;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHolder;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
 class nih
-  implements Runnable
+  extends BroadcastReceiver
 {
-  nih(nig paramnig) {}
+  nih(nic paramnic) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    VideoPlayerPagerAdapter.VideoViewHolder localVideoViewHolder = (VideoPlayerPagerAdapter.VideoViewHolder)this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.a.a.get(this.a.jdField_a_of_type_Int);
-    if ((localVideoViewHolder != null) && (localVideoViewHolder.c == this.a.jdField_a_of_type_Int)) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.d();
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailVideoManager", 2, "onReceive ===>" + paramContext);
+    }
+    if (("android.intent.action.SCREEN_OFF".equals(paramContext)) || ("tencent.av.v2q.StartVideoChat".equals(paramContext))) {
+      this.a.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nih
  * JD-Core Version:    0.7.0.1
  */

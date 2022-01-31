@@ -1,22 +1,32 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.InputMethodUtil;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.os.MqqHandler;
 
-public class ajgw
-  implements Runnable
+class ajgw
+  implements View.OnClickListener
 {
-  public ajgw(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  ajgw(ajgb paramajgb, long paramLong, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    EditText localEditText = PublishHomeWorkFragment.a(this.a, PublishHomeWorkFragment.a(this.a));
-    if (QLog.isColorLevel()) {
-      QLog.d("PublishHomeWorkFragment", 2, "弹起键盘");
+    if (ajgb.a(this.jdField_a_of_type_Ajgb) != null)
+    {
+      paramView = ajgb.a(this.jdField_a_of_type_Ajgb).obtainMessage(1134028);
+      ajgb.a(this.jdField_a_of_type_Ajgb).sendMessage(paramView);
     }
-    if (localEditText != null) {
-      InputMethodUtil.a(localEditText);
-    }
+    paramView = new Intent();
+    paramView.putExtra("bookid", this.jdField_a_of_type_Long);
+    paramView.putExtra("chapterid", this.jdField_a_of_type_JavaLangString);
+    paramView.putExtra("is_from_conversation", true);
+    Intent localIntent = new Intent();
+    localIntent.putExtras(paramView);
+    localIntent.putExtra("readtype", "15");
+    localIntent.setClassName(ajgb.a(this.jdField_a_of_type_Ajgb), "cooperation.qqreader.QRBridgeActivity");
+    localIntent.addFlags(268435456);
+    ajgb.a(this.jdField_a_of_type_Ajgb).startActivity(localIntent);
+    azqs.a(ajgb.a(this.jdField_a_of_type_Ajgb).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 1, 0, "", "", "", "");
   }
 }
 

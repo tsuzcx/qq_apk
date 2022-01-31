@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/j2"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:gravity="center_vertical" android:id="@id/gup" android:paddingLeft="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="10.0dip" android:layout_centerVertical="true" style="@style/w2" />
+    <TextView android:textSize="@dimen/j9" android:textColor="@color/skin_gray2" android:id="@id/gur" android:visibility="invisible" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="35.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <ProgressBar android:id="@id/guq" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="35.0dip" android:indeterminateDrawable="@drawable/jr" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <Button android:id="@id/gum" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="@string/crj" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/i9" />
+    <ImageView android:id="@id/gul" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:src="@drawable/skin_icon_arrow_right_normal" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+</RelativeLayout>

@@ -1,19 +1,12 @@
-import android.database.DataSetObserver;
-import com.tencent.widget.AdapterViewPagerAdapter;
-
-public class amap
-  extends DataSetObserver
+class amap
+  implements bipw
 {
-  public amap(AdapterViewPagerAdapter paramAdapterViewPagerAdapter) {}
+  amap(amai paramamai, byte[] paramArrayOfByte) {}
   
-  public void onChanged()
+  public void a(bipv parambipv)
   {
-    this.a.notifyDataSetChanged();
-  }
-  
-  public void onInvalidated()
-  {
-    super.onInvalidated();
+    parambipv.a(this.jdField_a_of_type_ArrayOfByte);
+    parambipv.a();
   }
 }
 

@@ -1,10 +1,13 @@
 package com.tencent.upload.network.base;
 
-import com.tencent.upload.uinterface.IUploadEnv;
+import com.tencent.upload.common.UploadGlobalConfig;
+import com.tencent.upload.uinterface.IUploadSoLoader;
+import com.tencent.upload.utils.UploadLog;
 import java.lang.ref.WeakReference;
 
 public class ConnectionImpl
 {
+  private static final String DEF_SO_VERSION = "v1.3";
   private static final int MSG_ID_ON_CONNECT = 1;
   private static final int MSG_ID_ON_DISCONNECT = 2;
   private static final int MSG_ID_ON_ERROR = 3;
@@ -16,44 +19,77 @@ public class ConnectionImpl
   private static final int MSG_ID_ON_TIMEOUT = 4;
   private static final int PROTOCOL_TYPE_HTTP = 2;
   private static final int PROTOCOL_TYPE_TCP = 1;
+  private static final String SO_LIB_C_SHARED = "c++_shared";
+  private static final String SO_LIB_NETBASE = "networkbase";
+  private static final String SO_LIB_UPLOAD = "uploadnetwork";
   private static final String TAG = "ConnectionImpl";
   private static volatile boolean sIsLibraryPrepared;
-  private a mCallback = null;
+  private IConnectionCallback mCallback = null;
   private final String mId;
-  private b mMsgCallback = null;
-  private int mNativeContext;
+  private IMsgCallback mMsgCallback = null;
+  private long mNativeContext;
   
   static
   {
     boolean bool3 = false;
     sIsLibraryPrepared = false;
-    try
+    for (;;)
     {
-      boolean bool2 = com.tencent.upload.common.a.e().loadLibrary("networkbase");
-      boolean bool4 = com.tencent.upload.common.a.e().loadLibrary("uploadnetwork");
-      boolean bool1 = bool2;
-      if (!bool2)
+      boolean bool2;
+      boolean bool5;
+      boolean bool1;
+      try
       {
-        bool1 = bool2;
-        if (bool4) {
-          bool1 = com.tencent.upload.common.a.e().loadLibrary("networkbase");
+        IUploadSoLoader localIUploadSoLoader = UploadGlobalConfig.getUploadSoLoader();
+        if (localIUploadSoLoader == null) {
+          break;
         }
+        boolean bool4 = localIUploadSoLoader.loadLibrary("c++_shared");
+        String str1;
+        if (localIUploadSoLoader.getSoVersion() != null)
+        {
+          str1 = "_" + localIUploadSoLoader.getSoVersion();
+          String str2 = "networkbase" + str1;
+          str1 = "uploadnetwork" + str1;
+          bool2 = localIUploadSoLoader.loadLibrary(str2);
+          bool5 = localIUploadSoLoader.loadLibrary(str1);
+          bool1 = bool2;
+          if (!bool2)
+          {
+            bool1 = bool2;
+            if (bool5)
+            {
+              bool1 = localIUploadSoLoader.loadLibrary(str2);
+              break label242;
+              sIsLibraryPrepared = bool2;
+              UploadLog.w("ConnectionImpl", "sIsLibraryPrepared = " + sIsLibraryPrepared + " isSharedLoaded = " + bool4 + " isLib1Loaded = " + bool1 + " isLib2Loaded = " + bool5);
+              if (!sIsLibraryPrepared) {
+                break;
+              }
+              native_init();
+            }
+          }
+        }
+        else
+        {
+          str1 = "_v1.3";
+          continue;
+        }
+        bool2 = bool3;
       }
-      native_init();
-      bool2 = bool3;
+      catch (Throwable localThrowable)
+      {
+        UploadLog.e("ConnectionImpl", localThrowable.toString());
+        return;
+      }
+      label242:
       if (bool1)
       {
         bool2 = bool3;
-        if (bool4) {
+        if (bool5) {
           bool2 = true;
         }
       }
-      sIsLibraryPrepared = bool2;
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      com.tencent.upload.common.b.e("ConnectionImpl", localThrowable.toString());
     }
   }
   
@@ -61,7 +97,7 @@ public class ConnectionImpl
   {
     this.mId = paramString;
     native_setup(new WeakReference(this), 1, paramInt);
-    com.tencent.upload.common.b.b("ConnectionImpl", "ConnectionImpl constructor : id = " + this.mId);
+    UploadLog.d("ConnectionImpl", "ConnectionImpl constructor : id = " + this.mId);
   }
   
   private static final String getActionNameById(int paramInt)
@@ -90,6 +126,8 @@ public class ConnectionImpl
     return "msgProc";
   }
   
+  public static native int getIpStack();
+  
   public static final boolean isLibraryPrepared()
   {
     return sIsLibraryPrepared;
@@ -104,63 +142,63 @@ public class ConnectionImpl
   private void onConnect(boolean paramBoolean, int paramInt, String paramString)
   {
     if (this.mCallback != null) {
-      this.mCallback.a(this.mCallback, paramBoolean, paramInt, paramString);
+      this.mCallback.onConnect(this.mCallback, paramBoolean, paramInt, paramString);
     }
   }
   
   private void onDisconnect()
   {
     if (this.mCallback != null) {
-      this.mCallback.b(this.mCallback);
+      this.mCallback.onDisconnect(this.mCallback);
     }
   }
   
   private void onError(int paramInt)
   {
     if (this.mCallback != null) {
-      this.mCallback.a(this.mCallback, paramInt);
+      this.mCallback.onError(this.mCallback, paramInt);
     }
   }
   
   private void onMsgProc(int paramInt1, Object paramObject, int paramInt2)
   {
     if (this.mMsgCallback != null) {
-      this.mMsgCallback.a(this.mMsgCallback, paramInt1, paramObject, paramInt2);
+      this.mMsgCallback.onMsgCallback(this.mMsgCallback, paramInt1, paramObject, paramInt2);
     }
   }
   
   private void onRecv(byte[] paramArrayOfByte)
   {
     if (this.mCallback != null) {
-      this.mCallback.a(this.mCallback, paramArrayOfByte);
+      this.mCallback.onRecv(this.mCallback, paramArrayOfByte);
     }
   }
   
   private void onSendBegin(int paramInt)
   {
     if (this.mCallback != null) {
-      this.mCallback.b(this.mCallback, paramInt);
+      this.mCallback.onSendBegin(this.mCallback, paramInt);
     }
   }
   
   private void onSendEnd(int paramInt)
   {
     if (this.mCallback != null) {
-      this.mCallback.c(this.mCallback, paramInt);
+      this.mCallback.onSendEnd(this.mCallback, paramInt);
     }
   }
   
   private void onStart()
   {
     if (this.mCallback != null) {
-      this.mCallback.a(this.mCallback);
+      this.mCallback.onStart(this.mCallback);
     }
   }
   
   private void onTimeOut(int paramInt1, int paramInt2)
   {
     if (this.mCallback != null) {
-      this.mCallback.a(this.mCallback, paramInt1, paramInt2);
+      this.mCallback.onSendTimeOut(this.mCallback, paramInt1, paramInt2);
     }
   }
   
@@ -168,22 +206,22 @@ public class ConnectionImpl
   {
     if (!(paramObject1 instanceof WeakReference))
     {
-      com.tencent.upload.common.b.d("ConnectionImpl", "fromNative: !(ConnectionImpl_ref instanceof WeakReference<?>)");
+      UploadLog.w("ConnectionImpl", "fromNative: !(ConnectionImpl_ref instanceof WeakReference<?>)");
       return;
     }
     paramObject1 = ((WeakReference)paramObject1).get();
     if (!(paramObject1 instanceof ConnectionImpl))
     {
-      com.tencent.upload.common.b.d("ConnectionImpl", "fromNative: !(ref instanceof ConnectionImpl)");
+      UploadLog.w("ConnectionImpl", "fromNative: !(ref instanceof ConnectionImpl)");
       return;
     }
     paramObject1 = (ConnectionImpl)paramObject1;
     String str = paramObject1.getHashCode();
-    com.tencent.upload.common.b.b("ConnectionImpl", str + " fromNative:" + getActionNameById(paramInt1));
+    UploadLog.d("ConnectionImpl", str + " fromNative:" + getActionNameById(paramInt1));
     switch (paramInt1)
     {
     default: 
-      com.tencent.upload.common.b.e("ConnectionImpl", str + " Unknown message type " + paramInt1);
+      UploadLog.e("ConnectionImpl", str + " Unknown message type " + paramInt1);
       return;
     case 0: 
       paramObject1.onStart();
@@ -219,7 +257,7 @@ public class ConnectionImpl
   
   public static void printLog(int paramInt, String paramString)
   {
-    com.tencent.upload.common.b.b("jni", paramString);
+    UploadLog.d("jni", paramString);
   }
   
   public native boolean PostMessage(int paramInt1, Object paramObject, int paramInt2);
@@ -232,7 +270,7 @@ public class ConnectionImpl
   
   protected void finalize()
   {
-    com.tencent.upload.common.b.d("ConnectionImpl", this.mId + " finalize");
+    UploadLog.w("ConnectionImpl", this.mId + " finalize");
     try
     {
       super.finalize();
@@ -254,14 +292,14 @@ public class ConnectionImpl
   
   public native void removeSendData(int paramInt);
   
-  public void setCallback(a parama)
+  public void setCallback(IConnectionCallback paramIConnectionCallback)
   {
-    this.mCallback = parama;
+    this.mCallback = paramIConnectionCallback;
   }
   
-  public void setMsgCallback(b paramb)
+  public void setMsgCallback(IMsgCallback paramIMsgCallback)
   {
-    this.mMsgCallback = paramb;
+    this.mMsgCallback = paramIMsgCallback;
   }
   
   public native boolean start();
@@ -272,7 +310,7 @@ public class ConnectionImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.upload.network.base.ConnectionImpl
  * JD-Core Version:    0.7.0.1
  */

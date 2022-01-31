@@ -1,175 +1,84 @@
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.ChatActivityFacade.SendMsgParams;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageForArkBabyqReply;
-import com.tencent.mobileqq.data.MessageForArkFlashChat;
-import com.tencent.mobileqq.data.MessageForLongMsg;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.mixedmsg.MixedMsgManager;
-import com.tencent.mobileqq.multimsg.MultiMsgManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
-import com.tencent.mobileqq.utils.ShareMsgHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class aejh
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public aejh(MultiMsgManager paramMultiMsgManager, ArrayList paramArrayList, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
+  public aejh(TroopTransferActivity paramTroopTransferActivity, TranslateAnimation paramTranslateAnimation1, TranslateAnimation paramTranslateAnimation2, int paramInt) {}
   
-  public void run()
+  /* Error */
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    long l = System.currentTimeMillis();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    int j = 0;
-    int i = 0;
-    Object localObject2;
-    Object localObject1;
-    if (localIterator.hasNext())
-    {
-      localObject2 = (ChatMessage)localIterator.next();
-      if (((ChatMessage)localObject2).msgtype == -2000)
-      {
-        localObject1 = (MessageForPic)localObject2;
-        ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageForPic)localObject1);
-        i += 1;
-        label75:
-        if (j >= MultiMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgManager)) {
-          break label835;
-        }
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        Thread.sleep(MultiMsgManager.b(this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgManager));
-        if (QLog.isColorLevel()) {
-          QLog.d("MultiMsg", 2, "sendMultuMsgSeperaterFromLocal delay  i = " + j + " mDelayTime = " + MultiMsgManager.b(this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgManager));
-        }
-        j += 1;
-        break;
-        if (((ChatMessage)localObject2).msgtype == -2011)
-        {
-          if (!(localObject2 instanceof MessageForStructing)) {
-            break label838;
-          }
-          localObject1 = ((MessageForStructing)localObject2).structingMsg;
-          if ((localObject1 == null) || (!(localObject1 instanceof StructMsgForImageShare))) {
-            break label838;
-          }
-          StructMsgForImageShare.sendAndUploadImageShare(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (StructMsgForImageShare)localObject1, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, 0);
-          k = 1;
-          if (k == 0) {
-            ShareMsgHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, ((MessageForStructing)localObject2).structingMsg, null);
-          }
-          break label75;
-        }
-        if (((ChatMessage)localObject2).msgtype == -5008)
-        {
-          ChatActivityFacade.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, ((MessageForArkApp)localObject2).ark_app_message);
-          break label75;
-        }
-        if (((ChatMessage)localObject2).msgtype == -5017)
-        {
-          ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, ((MessageForArkApp)localObject2).ark_app_message);
-          break label75;
-        }
-        if (((ChatMessage)localObject2).msgtype == -5016)
-        {
-          ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageForArkBabyqReply)localObject2, false, false);
-          break label75;
-        }
-        if (((ChatMessage)localObject2).msgtype == -5013)
-        {
-          ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, ((MessageForArkFlashChat)localObject2).ark_app_message);
-          break label75;
-        }
-        if ((((ChatMessage)localObject2).msgtype == -1035) || (((ChatMessage)localObject2).msgtype == -1036))
-        {
-          if (((ChatMessage)localObject2).msgtype == -1036)
-          {
-            localObject1 = (MessageForMixedMsg)((MessageForLongMsg)localObject2).rebuildLongMsg();
-            ((MessageForMixedMsg)localObject1).mForwardFromUniSeq = ((ChatMessage)localObject2).uniseq;
-            ((MixedMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(173)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageForMixedMsg)localObject1, false);
-            break label75;
-          }
-          localObject1 = (MessageForMixedMsg)localObject2;
-          continue;
-        }
-        if (((ChatMessage)localObject2).msgtype == -2022)
-        {
-          localObject1 = (MessageForShortVideo)localObject2;
-          ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageForShortVideo)localObject1);
-          break label75;
-        }
-        localObject1 = ((ChatMessage)localObject2).msg;
-        localObject2 = new ChatActivityFacade.SendMsgParams();
-        ((ChatActivityFacade.SendMsgParams)localObject2).f = true;
-        ((ChatActivityFacade.SendMsgParams)localObject2).h = true;
-        ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (String)localObject1, null, (ChatActivityFacade.SendMsgParams)localObject2);
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        localInterruptedException.printStackTrace();
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg", 2, "sendMultuMsgSeperaterFromLocal sendMsg cost = " + (System.currentTimeMillis() - l));
-      }
-      int k = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
-      ChatMessage localChatMessage = (ChatMessage)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-      if (localChatMessage != null) {}
-      for (j = localChatMessage.istroop;; j = 0)
-      {
-        if (j == 0) {
-          j = 1;
-        }
-        for (;;)
-        {
-          if (k == 0) {
-            k = 1;
-          }
-          for (;;)
-          {
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004876", "0X8004876", 0, 0, j + "", k + "", "" + this.jdField_a_of_type_JavaUtilArrayList.size(), "" + i + "");
-            return;
-            if (j == 3000)
-            {
-              j = 2;
-              break;
-            }
-            if (j != 1) {
-              break label825;
-            }
-            j = 3;
-            break;
-            if (k == 3000) {
-              k = 2;
-            } else if (k == 1) {
-              k = 3;
-            } else {
-              k = 4;
-            }
-          }
-          label825:
-          j = 4;
-        }
-      }
-      label835:
-      continue;
-      label838:
-      k = 0;
-    }
+    // Byte code:
+    //   0: aload_1
+    //   1: aload_0
+    //   2: getfield 17	aejh:jdField_a_of_type_AndroidViewAnimationTranslateAnimation	Landroid/view/animation/TranslateAnimation;
+    //   5: if_acmpne +49 -> 54
+    //   8: aload_0
+    //   9: getfield 15	aejh:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
+    //   12: getfield 34	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidAppDialog	Landroid/app/Dialog;
+    //   15: astore_1
+    //   16: aload_1
+    //   17: ifnull +91 -> 108
+    //   20: aload_0
+    //   21: getfield 15	aejh:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
+    //   24: getfield 34	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidAppDialog	Landroid/app/Dialog;
+    //   27: invokevirtual 39	android/app/Dialog:show	()V
+    //   30: aload_0
+    //   31: getfield 15	aejh:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
+    //   34: getfield 42	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   37: aconst_null
+    //   38: invokevirtual 47	android/widget/LinearLayout:setAnimation	(Landroid/view/animation/Animation;)V
+    //   41: aload_0
+    //   42: getfield 15	aejh:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
+    //   45: getfield 50	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidViewView	Landroid/view/View;
+    //   48: bipush 8
+    //   50: invokevirtual 56	android/view/View:setVisibility	(I)V
+    //   53: return
+    //   54: aload_1
+    //   55: aload_0
+    //   56: getfield 19	aejh:b	Landroid/view/animation/TranslateAnimation;
+    //   59: if_acmpne +49 -> 108
+    //   62: aload_0
+    //   63: getfield 15	aejh:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
+    //   66: getfield 42	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   69: aconst_null
+    //   70: invokevirtual 47	android/widget/LinearLayout:setAnimation	(Landroid/view/animation/Animation;)V
+    //   73: aload_0
+    //   74: getfield 15	aejh:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
+    //   77: getfield 42	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   80: aload_0
+    //   81: getfield 21	aejh:jdField_a_of_type_Int	I
+    //   84: invokevirtual 59	android/widget/LinearLayout:offsetTopAndBottom	(I)V
+    //   87: aload_0
+    //   88: getfield 15	aejh:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
+    //   91: getfield 42	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
+    //   94: invokevirtual 62	android/widget/LinearLayout:requestLayout	()V
+    //   97: return
+    //   98: astore_1
+    //   99: aload_1
+    //   100: invokevirtual 65	java/lang/Exception:printStackTrace	()V
+    //   103: return
+    //   104: astore_1
+    //   105: goto -75 -> 30
+    //   108: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	109	0	this	aejh
+    //   0	109	1	paramAnimation	Animation
+    // Exception table:
+    //   from	to	target	type
+    //   0	16	98	java/lang/Exception
+    //   30	53	98	java/lang/Exception
+    //   54	97	98	java/lang/Exception
+    //   20	30	104	java/lang/Exception
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

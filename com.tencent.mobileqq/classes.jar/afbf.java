@@ -1,28 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.widget.StoryNewGuideDialog;
-
-public class afbf
-  implements View.OnTouchListener
+final class afbf
+  implements afay<afbe>
 {
-  public afbf(StoryNewGuideDialog paramStoryNewGuideDialog) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public afbe a(afav paramafav)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.dismiss();
-    }
+    return new afbe(paramafav);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afbf
  * JD-Core Version:    0.7.0.1
  */

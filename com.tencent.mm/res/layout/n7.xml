@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/gf"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/m0" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gg">
+        <TextView android:id="@id/ox" android:visibility="gone" style="@style/gl" />
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip">
+            <FrameLayout android:id="@id/ar0" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <ImageView android:layout_gravity="center" android:id="@id/aso" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <ImageView android:id="@id/ass" android:background="@drawable/im" android:layout_width="@dimen/e9" android:layout_height="@dimen/e9" />
+                <ImageView android:layout_gravity="center" android:id="@id/asr" android:background="@null" android:layout_width="@dimen/ee" android:layout_height="@dimen/ee" />
+            </FrameLayout>
+        </LinearLayout>
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip">
+            <TextView android:ellipsize="end" android:id="@id/arq" android:layout_marginLeft="0.0dip" android:singleLine="true" style="@style/g8" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

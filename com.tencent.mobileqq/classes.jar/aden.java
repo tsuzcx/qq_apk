@@ -1,38 +1,32 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.SimpleFilePresenter;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportObserver;
-import com.tencent.mobileqq.widget.QQToast;
 
 public class aden
-  extends TeamWorkFileImportObserver
+  implements View.OnClickListener
 {
-  public aden(SimpleFilePresenter paramSimpleFilePresenter) {}
+  public aden(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  public void onClick(View paramView)
   {
-    super.a(paramTeamWorkFileImportInfo);
-    if (this.a.a != null) {
-      this.a.a.d();
+    if (System.currentTimeMillis() - this.a.a < 2000L) {
+      return;
     }
-    if ((paramTeamWorkFileImportInfo != null) && (paramTeamWorkFileImportInfo.d)) {
-      QQToast.a(((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).getApp(), 1, 2131439134, 0).a();
-    }
-  }
-  
-  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
-  {
-    super.a(paramString, paramTeamWorkFileImportInfo);
-    if (this.a.a != null) {
-      this.a.a.d();
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (HongbaoShowerActivity.a(this.a) == 0) {}
+    for (paramView = "1";; paramView = "2")
+    {
+      azqs.b(localQQAppInterface, "dc01440", "", "", "0X80077EA", "0X80077EA", 0, 0, paramView, "", "", "");
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aden
  * JD-Core Version:    0.7.0.1
  */

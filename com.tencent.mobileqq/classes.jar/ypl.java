@@ -1,33 +1,32 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
+import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
 
 public class ypl
-  implements Observer
+  implements View.OnClickListener
 {
-  public ypl(ApolloGameStateMachine paramApolloGameStateMachine) {}
+  public ypl(SubScribeDraftItemView paramSubScribeDraftItemView, SubscribeDraftBean paramSubscribeDraftBean) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void onClick(View paramView)
   {
-    if ((paramObject != null) && ((paramObject instanceof Bundle)))
+    if (!yxv.a("subscribe_draft_click"))
     {
-      paramObservable = (Bundle)paramObject;
-      long l1 = paramObservable.getLong("START_TIME_KEY");
-      long l2 = paramObservable.getLong("END_TIME_KEY");
-      paramObject = paramObservable.getString("MESSAGE");
-      int i = paramObservable.getInt("FROM");
-      int j = paramObservable.getInt("TO");
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGameStateMachine", 2, new Object[] { "[pipLineObserver] cost:[", Long.valueOf(l2 - l1), "ms] message:[", paramObject, "] from:[", Integer.valueOf(i), "] to:[", Integer.valueOf(j), "] start:[", Long.valueOf(l1), "] end:[", Long.valueOf(l2), "]" });
-      }
+      boolean bool = SubScribeDraftItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView);
+      paramView = new Intent();
+      paramView.putExtra("postUin", SubScribeDraftItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView));
+      paramView.putExtra("has_shop", bool);
+      paramView.putExtra("subscribeDraftID", String.valueOf(this.jdField_a_of_type_ComTencentBizSubscribeBeansSubscribeDraftBean.getDraftId()));
+      bjdt.a((Activity)this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView.getContext(), paramView, 0);
+      zaj.b(SubScribeDraftItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), "auth_pubish", "clk_draftclk", 0, 0, new String[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ypl
  * JD-Core Version:    0.7.0.1
  */

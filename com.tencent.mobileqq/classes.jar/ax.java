@@ -1,28 +1,24 @@
-import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.dataline.activities.LiteActivity;
-import com.tencent.widget.ListView;
-import com.tencent.widget.OverScrollViewListener;
+import com.tencent.mobileqq.activity.aio.InputLinearLayout;
+import com.tencent.widget.XListView;
 
 public class ax
-  implements OverScrollViewListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
   public ax(LiteActivity paramLiteActivity) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView) {}
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
+  public void onGlobalLayout()
   {
-    this.a.b();
-    return true;
+    int i = this.a.a.getBottom() - LiteActivity.a(this.a).getTop();
+    if ((LiteActivity.a(this.a).getVisibility() == 0) && (this.a.a.getPaddingBottom() != i)) {
+      this.a.a.setPadding(this.a.a.getPaddingLeft(), this.a.a.getPaddingTop(), this.a.a.getPaddingRight(), i);
+    }
   }
-  
-  public void b(int paramInt, View paramView, ListView paramListView) {}
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ax
  * JD-Core Version:    0.7.0.1
  */

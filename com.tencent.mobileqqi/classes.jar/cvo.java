@@ -1,25 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity2;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class cvo
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public cvo(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  public cvo(LoginVerifyCodeActivity2 paramLoginVerifyCodeActivity2) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.c();
-    GesturePWDUtils.setGestureUnlockFailedType(this.a, 1);
-    StatisticCollector.a(this.a.getBaseContext()).a(this.a.b, this.a.b.a(), "Gesture_pwd", "click_wrong_pwd", 0, 1, "0", null, null, null, null);
+    try
+    {
+      if ((LoginVerifyCodeActivity2.a(this.a) != null) && (LoginVerifyCodeActivity2.a(this.a).isShowing()))
+      {
+        LoginVerifyCodeActivity2.a(this.a).dismiss();
+        LoginVerifyCodeActivity2.a(this.a).cancel();
+      }
+      LoginVerifyCodeActivity2.a(this.a, null);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cvo
  * JD-Core Version:    0.7.0.1
  */

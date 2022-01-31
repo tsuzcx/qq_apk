@@ -1,37 +1,33 @@
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactSelectActivity;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberInnerFrame;
+import android.os.Bundle;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import java.util.List;
+import mqq.observer.BusinessObserver;
 
 public class xzl
-  implements View.OnFocusChangeListener
+  implements BusinessObserver
 {
-  public xzl(PhoneContactSelectActivity paramPhoneContactSelectActivity) {}
+  public xzl(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  protected void a(boolean paramBoolean, List<String> paramList1, List<String> paramList2) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((paramBoolean) && ((this.a.l == 0) || (this.a.l == 1) || (this.a.l == 2) || (this.a.l == 3) || (this.a.l != this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a())))
+    switch (paramInt)
     {
-      paramView = ((SelectMemberInnerFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).a();
-      if (paramView != null)
-      {
-        FragmentTransaction localFragmentTransaction = this.a.getSupportFragmentManager().beginTransaction();
-        if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
-          localFragmentTransaction.remove(this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment);
-        }
-        localFragmentTransaction.add(2131363923, paramView);
-        localFragmentTransaction.commit();
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment = paramView;
-      }
+    default: 
+      return;
     }
+    if (paramBoolean)
+    {
+      a(paramBoolean, paramBundle.getStringArrayList("nickname_list"), paramBundle.getStringArrayList("uin_list"));
+      return;
+    }
+    this.b.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xzl
  * JD-Core Version:    0.7.0.1
  */

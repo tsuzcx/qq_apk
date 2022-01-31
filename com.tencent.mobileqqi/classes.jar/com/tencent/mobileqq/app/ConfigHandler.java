@@ -49,16 +49,16 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import feu;
-import fev;
-import few;
-import fex;
-import fey;
-import fez;
-import ffa;
-import ffb;
-import ffc;
-import ffd;
+import fag;
+import fah;
+import fai;
+import faj;
+import fak;
+import fal;
+import fam;
+import fan;
+import fao;
+import fap;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
@@ -494,7 +494,7 @@ public class ConfigHandler
     {
       String str = paramGetResourceRespInfo.strResURL_big;
       if ((str != null) && (str.length() > 0)) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new feu(this, str, paramGetResourceRespInfo));
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fag(this, str, paramGetResourceRespInfo));
       }
       return;
     }
@@ -584,7 +584,7 @@ public class ConfigHandler
       return;
       str = paramGetResourceRespInfo.strResURL_big;
     } while ((str == null) || (str.length() <= 0));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new few(this, str, paramGetResourceRespInfo));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fai(this, str, paramGetResourceRespInfo));
   }
   
   public static boolean b(QQAppInterface paramQQAppInterface)
@@ -622,7 +622,7 @@ public class ConfigHandler
       }
       str = paramGetResourceRespInfo.strResURL_big;
     } while ((str == null) || (str.length() <= 0));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fex(this, str, paramGetResourceRespInfo));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new faj(this, str, paramGetResourceRespInfo));
   }
   
   private void d()
@@ -664,7 +664,7 @@ public class ConfigHandler
       a(7, false, Integer.valueOf(-1));
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fey(this, str, localStatusManager, paramGetResourceRespInfo));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fak(this, str, localStatusManager, paramGetResourceRespInfo));
   }
   
   private void e(GetResourceRespInfo paramGetResourceRespInfo)
@@ -684,9 +684,9 @@ public class ConfigHandler
       }
       paramGetResourceRespInfo = paramGetResourceRespInfo.strResURL_big;
     } while (TextUtils.isEmpty(paramGetResourceRespInfo));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fez(this, paramGetResourceRespInfo, l2));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fal(this, paramGetResourceRespInfo, l2));
     return;
-    ThreadManager.a().post(new ffa(this));
+    ThreadManager.a().post(new fam(this));
   }
   
   private void f(GetResourceRespInfo paramGetResourceRespInfo)
@@ -702,10 +702,10 @@ public class ConfigHandler
       if (TextUtils.isEmpty(paramGetResourceRespInfo)) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new ffb(this, paramGetResourceRespInfo, l2));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fan(this, paramGetResourceRespInfo, l2));
       return;
     }
-    ThreadManager.a().post(new ffc(this));
+    ThreadManager.a().post(new fao(this));
   }
   
   protected Class a()
@@ -977,7 +977,7 @@ public class ConfigHandler
   
   public void a(String paramString, File paramFile)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new ffd(this, paramString, paramFile));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fap(this, paramString, paramFile));
   }
   
   public void a(String paramString1, String paramString2)
@@ -991,7 +991,7 @@ public class ConfigHandler
     }
     finally {}
     a(paramString1);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fev(this, paramString2, paramString1));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fah(this, paramString2, paramString1));
   }
   
   public void a(GetResourceReqInfo... paramVarArgs)

@@ -1,44 +1,36 @@
-import cooperation.qzone.cache.FileCacheService;
-import cooperation.qzone.font.FontInterface.FontResult;
-import cooperation.qzone.font.FontManager;
-import java.io.File;
+import android.content.res.Resources;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class amud
-  implements Runnable
+class amud
+  extends bdno
 {
-  public amud(FontManager paramFontManager, int paramInt1, int paramInt2, FontInterface.FontResult paramFontResult, String paramString1, String paramString2) {}
+  PromotionConfigInfo jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo;
+  final String jdField_a_of_type_JavaLangString;
+  WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void run()
+  amud(String paramString1, String paramString2, AppInterface paramAppInterface)
   {
-    Object localObject1 = FontManager.a(this.jdField_a_of_type_CooperationQzoneFontFontManager);
-    Object localObject2 = new File((String)localObject1, FontManager.a(this.jdField_a_of_type_CooperationQzoneFontFontManager, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int));
-    if (((File)localObject2).exists())
-    {
-      if (this.jdField_a_of_type_CooperationQzoneFontFontInterface$FontResult == null) {
-        break label162;
-      }
-      FontManager.a().a(((File)localObject2).getAbsolutePath(), true);
-      this.jdField_a_of_type_CooperationQzoneFontFontInterface$FontResult.a(this.jdField_a_of_type_Int, ((File)localObject2).getAbsolutePath(), this.jdField_a_of_type_JavaLangString);
-    }
-    label162:
-    while ((FontManager.a(this.jdField_a_of_type_CooperationQzoneFontFontManager, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_CooperationQzoneFontFontInterface$FontResult)) || (this.jdField_a_of_type_CooperationQzoneFontFontInterface$FontResult == null))
-    {
-      return;
-      if (this.jdField_b_of_type_Int == 1)
-      {
-        localObject1 = new File((String)localObject1, FontManager.a(this.jdField_a_of_type_CooperationQzoneFontFontManager, this.jdField_a_of_type_Int, 0));
-        if (((File)localObject1).exists())
-        {
-          localObject2 = FontManager.b(this.jdField_a_of_type_CooperationQzoneFontFontManager, this.jdField_a_of_type_Int, 1);
-          if (FontManager.a(this.jdField_a_of_type_CooperationQzoneFontFontManager, ((File)localObject1).getAbsolutePath(), (String)localObject2))
-          {
-            this.jdField_a_of_type_CooperationQzoneFontFontInterface$FontResult.a(this.jdField_a_of_type_Int, (String)localObject2, this.jdField_a_of_type_JavaLangString);
-            return;
-          }
-        }
-      }
-    }
-    this.jdField_a_of_type_CooperationQzoneFontFontInterface$FontResult.a(this.jdField_a_of_type_Int, null, this.jdField_a_of_type_JavaLangString);
+    super(paramString1);
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
+  }
+  
+  public void innerClean()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = null;
+  }
+  
+  public boolean runOnSubThread(Resources paramResources)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = bdpg.a(this.jdField_a_of_type_JavaLangString, null);
+    QLog.w(this.TAG, 1, "ReadConfigTask,ConfigInfo[" + this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo + "]");
+    amtu.c();
+    AudioHelper.a((AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    return true;
   }
 }
 

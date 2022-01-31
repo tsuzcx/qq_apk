@@ -1,25 +1,27 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playmode.child.SelectVideosPlayMode;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class nlf
+public class nlf
   implements View.OnClickListener
 {
-  nlf(nlc paramnlc) {}
+  public nlf(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildSelectVideosPlayMode.a(this.a.jdField_a_of_type_AndroidOsBundle);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildSelectVideosPlayMode.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildSelectVideosPlayMode.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.i("PublicAccountAdvertisementActivity", 2, "action cancel");
+    }
+    azqs.a(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X80090FD", "0X80090FD", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
+    if ((PublicAccountAdvertisementActivity.a(this.a) != null) && (PublicAccountAdvertisementActivity.a(this.a).isShowing())) {
+      PublicAccountAdvertisementActivity.a(this.a).dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nlf
  * JD-Core Version:    0.7.0.1
  */

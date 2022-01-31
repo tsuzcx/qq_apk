@@ -1,28 +1,24 @@
-import com.tencent.component.network.utils.http.base.SniSSLSocketFactory;
-import java.security.cert.X509Certificate;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.SSLSocket;
-import org.apache.http.conn.ssl.X509HostnameVerifier;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class plf
-  implements X509HostnameVerifier
+class plf
+  implements ViewBase.OnClickListener
 {
-  public plf(SniSSLSocketFactory paramSniSSLSocketFactory) {}
+  plf(ple parample, Container paramContainer, pgd parampgd, int paramInt) {}
   
-  public void verify(String paramString, X509Certificate paramX509Certificate) {}
-  
-  public void verify(String paramString, SSLSocket paramSSLSocket) {}
-  
-  public void verify(String paramString, String[] paramArrayOfString1, String[] paramArrayOfString2) {}
-  
-  public boolean verify(String paramString, SSLSession paramSSLSession)
+  public void onClick(ViewBase paramViewBase)
   {
-    return false;
+    ple.a(this.jdField_a_of_type_Ple, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Pgd, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("BiuPgcProteusItem", 2, "click gallery summary for jumping to gallery articleinfo = " + this.jdField_a_of_type_Pgd.a() + " position = " + this.jdField_a_of_type_Int);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     plf
  * JD-Core Version:    0.7.0.1
  */

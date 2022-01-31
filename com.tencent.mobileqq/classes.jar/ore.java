@@ -1,25 +1,30 @@
-import com.tencent.biz.qqstory.view.widget.RateWidget;
-
 public class ore
-  implements Runnable
 {
-  public ore(RateWidget paramRateWidget) {}
+  public static int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public long b;
+  public boolean b;
+  public long c;
+  public long d;
   
-  public void run()
+  static
   {
-    RateWidget localRateWidget = this.a;
-    if (!RateWidget.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      RateWidget.a(localRateWidget, bool);
-      this.a.c(RateWidget.a(this.a));
-      return;
-    }
+    jdField_a_of_type_Int = 300000;
+  }
+  
+  public ore()
+  {
+    this.jdField_b_of_type_Long = -1L;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_b_of_type_Int = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ore
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.weiyun.transmission.utils.thread;
 
-import android.os.Process;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -20,19 +19,12 @@ public class PriorityThreadFactory
   
   public Thread newThread(Runnable paramRunnable)
   {
-    new Thread(paramRunnable, this.mName + '-' + this.mNumber.getAndIncrement() + " sub:")
-    {
-      public void run()
-      {
-        Process.setThreadPriority(PriorityThreadFactory.this.mPriority);
-        super.run();
-      }
-    };
+    return new PriorityThreadFactory.1(this, paramRunnable, this.mName + '-' + this.mNumber.getAndIncrement() + " sub:");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.weiyun.transmission.utils.thread.PriorityThreadFactory
  * JD-Core Version:    0.7.0.1
  */

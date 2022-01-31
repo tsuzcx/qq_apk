@@ -1,33 +1,53 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.ImageView;
+import android.widget.TableLayout;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public final class ajys
-  implements DownloadParams.DecodeHandler
+public class ajys
+  extends Handler
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public ajys(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("URLDrawableDecodeHandler", 2, "AVATAR_WALL_RECT__DECODER");
+    if (paramMessage.what == 0)
+    {
+      CreateFaceToFaceDiscussionActivity.a(this.a, 3);
+      paramMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(0);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, this.a.jdField_a_of_type_Long);
     }
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    Object localObject;
     do
     {
       do
       {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 3);
-    paramDownloadParams = (int[])localObject;
-    return ImageUtil.b(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
+        return;
+        if (1 != paramMessage.what) {
+          break;
+        }
+      } while (this.a.jdField_c_of_type_Boolean);
+      this.a.jdField_a_of_type_JavaLangStringBuffer.delete(0, this.a.jdField_a_of_type_JavaLangStringBuffer.length());
+      this.a.jdField_b_of_type_AndroidWidgetTableLayout.setContentDescription(this.a.a());
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844834);
+      this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844834);
+      this.a.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130844834);
+      this.a.d.setImageResource(2130844834);
+      this.a.e.setEnabled(true);
+      this.a.f.setEnabled(true);
+      this.a.g.setEnabled(true);
+      this.a.h.setEnabled(true);
+      this.a.i.setEnabled(true);
+      this.a.j.setEnabled(true);
+      this.a.k.setEnabled(true);
+      this.a.l.setEnabled(true);
+      this.a.m.setEnabled(true);
+      this.a.n.setEnabled(true);
+      this.a.o.setEnabled(true);
+      return;
+    } while (2 != paramMessage.what);
+    QQToast.a(BaseApplicationImpl.getContext(), paramMessage.arg1, paramMessage.arg2, 0).a();
   }
 }
 

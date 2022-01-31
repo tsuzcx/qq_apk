@@ -1,26 +1,87 @@
-import android.media.MediaCodec.BufferInfo;
-import java.nio.ByteBuffer;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class aoqk
+  extends aokh<blze>
 {
-  public int a;
-  public MediaCodec.BufferInfo a;
-  public ByteBuffer a;
-  public int b;
-  
-  private aoqk()
+  public int a()
   {
-    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
+    return 304;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  @NonNull
+  public blze a(int paramInt)
   {
-    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(paramInt1 * paramInt2 * 3 / 2);
+    return new blze();
+  }
+  
+  @Nullable
+  public blze a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko == null) || (paramArrayOfaoko.length == 0)) {
+      return null;
+    }
+    paramArrayOfaoko = paramArrayOfaoko[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMStickerConfigProcessor", 2, "handleGetQIMPasterConfig onParsed, content:" + paramArrayOfaoko);
+    }
+    return new blzb().a(paramArrayOfaoko, blvu.a.getAbsolutePath(), "temp_sticker_zip", new aoql(this));
+  }
+  
+  public Class<blze> a()
+  {
+    return blze.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMStickerConfigProcessor", 2, "handleGetQIMPasterConfig onReqFailed");
+    }
+  }
+  
+  public void a(blze paramblze)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMStickerConfigProcessor", 2, "handleGetQIMPasterConfig onUpdate");
+    }
+  }
+  
+  public int b()
+  {
+    if (!blvu.a()) {
+      return 0;
+    }
+    return bdne.D(BaseApplicationImpl.getContext());
+  }
+  
+  public int b(int paramInt)
+  {
+    if (!blvu.a())
+    {
+      QLog.i("QIMStickerConfigProcessor", 1, "config file not exist");
+      aoks.a().a(304, 0);
+      return 0;
+    }
+    return super.b(paramInt);
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoqk
  * JD-Core Version:    0.7.0.1
  */

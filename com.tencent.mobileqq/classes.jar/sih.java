@@ -1,31 +1,27 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.ShortVideoObserver;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
 
 public class sih
-  extends ShortVideoObserver
+  extends AnimatorListenerAdapter
 {
-  public sih(Conversation paramConversation) {}
+  public sih(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (!this.a.h) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent", 2, "VideoRedbag, onCheckRealNameRsp in conv");
-      }
-    } while ((!paramBoolean) || (paramInt != RedBagVideoManager.a));
-    DialogUtil.b(this.a.a(), 0, null, this.a.a(2131439124), 2131439126, 2131439125, new sii(this), new sij(this)).show();
+    ReadInJoyDynamicGridView.b(this.a, false);
+    ReadInJoyDynamicGridView.a(this.a);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    ReadInJoyDynamicGridView.b(this.a, true);
+    ReadInJoyDynamicGridView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sih
  * JD-Core Version:    0.7.0.1
  */

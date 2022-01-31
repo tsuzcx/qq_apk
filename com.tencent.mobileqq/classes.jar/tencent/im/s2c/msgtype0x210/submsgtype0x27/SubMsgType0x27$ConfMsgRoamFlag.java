@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0x27$ConfMsgRoamFlag
-  extends MessageMicro
+  extends MessageMicro<ConfMsgRoamFlag>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "uint64_confid", "uint32_flag", "uint64_timestamp" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L) }, ConfMsgRoamFlag.class);
   public final PBUInt32Field uint32_flag = PBField.initUInt32(0);

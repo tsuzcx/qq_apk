@@ -1,25 +1,27 @@
-import com.tencent.mobileqq.music.IQQPlayerCallback.Stub;
-import com.tencent.mobileqq.music.IQQPlayerService;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.activity.UpgradeActivity.15.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class aekj
-  extends IQQPlayerCallback.Stub
+  implements DialogInterface.OnClickListener
 {
-  public aekj(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin) {}
+  public aekj(UpgradeActivity paramUpgradeActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MusicGeneWebViewPlugin.a(this.a, paramInt);
-    if (paramInt == 2) {
-      MusicGeneWebViewPlugin.a(this.a, MusicGeneWebViewPlugin.a(this.a).c());
+    bflp.b("qqBaseActivity", bfiq.a(10010, 1, 3, 200));
+    bfio.a().a(17, bfiq.a(10010, 1, 3, 200));
+    if (!bfox.a().b()) {
+      bflz.a().a(alud.a(2131716305));
     }
-  }
-  
-  public void a(SongInfo paramSongInfo)
-  {
-    if (MusicGeneWebViewPlugin.a(this.a) != null) {
-      MusicGeneWebViewPlugin.a(this.a, MusicGeneWebViewPlugin.a(this.a).a());
+    for (;;)
+    {
+      ThreadManager.getSubThreadHandler().postDelayed(new UpgradeActivity.15.1(this), 500L);
+      return;
+      bdio.a(this.a);
     }
   }
 }

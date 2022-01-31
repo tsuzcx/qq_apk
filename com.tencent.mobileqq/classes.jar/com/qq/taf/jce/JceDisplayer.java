@@ -702,9 +702,8 @@ public final class JceDisplayer
       return this;
       this.sb.append("{");
       JceDisplayer localJceDisplayer = new JceDisplayer(this.sb, this._level + 2);
-      int i = 1;
       paramMap = paramMap.entrySet().iterator();
-      while (paramMap.hasNext())
+      for (int i = 1; paramMap.hasNext(); i = 0)
       {
         Map.Entry localEntry = (Map.Entry)paramMap.next();
         if (i == 0) {
@@ -712,7 +711,6 @@ public final class JceDisplayer
         }
         localJceDisplayer.displaySimple(localEntry.getKey(), true);
         localJceDisplayer.displaySimple(localEntry.getValue(), false);
-        i = 0;
       }
       this.sb.append("}");
     } while (!paramBoolean);

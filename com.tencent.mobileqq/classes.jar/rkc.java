@@ -1,18 +1,12 @@
-import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
-class rkc
-  implements Runnable
+public abstract interface rkc
 {
-  rkc(rkb paramrkb) {}
-  
-  public void run()
-  {
-    this.a.a.d();
-  }
+  public abstract void a(boolean paramBoolean, BaseArticleInfo paramBaseArticleInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rkc
  * JD-Core Version:    0.7.0.1
  */

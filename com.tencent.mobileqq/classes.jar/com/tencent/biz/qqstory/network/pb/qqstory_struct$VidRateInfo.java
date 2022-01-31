@@ -11,14 +11,14 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_struct$VidRateInfo
-  extends MessageMicro
+  extends MessageMicro<VidRateInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field self_rate_result = PBField.initInt32(0);
   public final PBUInt32Field total_rate_count = PBField.initUInt32(0);
   public final PBUInt64Field total_rate_score = PBField.initUInt64(0L);
   public final PBBytesField vid = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField video_rate_users = PBField.initRepeatMessage(qqstory_struct.UserInfo.class);
+  public final PBRepeatMessageField<qqstory_struct.UserInfo> video_rate_users = PBField.initRepeatMessage(qqstory_struct.UserInfo.class);
   
   static
   {
@@ -28,7 +28,7 @@ public final class qqstory_struct$VidRateInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.VidRateInfo
  * JD-Core Version:    0.7.0.1
  */

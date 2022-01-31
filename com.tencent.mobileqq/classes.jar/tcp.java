@@ -1,20 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
-
-public class tcp
-  implements DialogInterface.OnClickListener
+class tcp
 {
-  public tcp(NotificationActivity paramNotificationActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    NotificationActivity.a(this.a, NotificationActivity.b(this.a));
-  }
+  private static final tcn a = new tcn(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tcp
  * JD-Core Version:    0.7.0.1
  */

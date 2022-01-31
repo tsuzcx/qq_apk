@@ -1,31 +1,22 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.DotStyleNavBar;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class ajgf
-  implements ViewPager.OnPageChangeListener
+class ajgf
+  implements View.OnClickListener
 {
-  public ajgf(DotStyleNavBar paramDotStyleNavBar) {}
+  ajgf(ajgb paramajgb) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void onClick(View paramView)
   {
-    if (DotStyleNavBar.a(this.a) != null) {
-      DotStyleNavBar.a(this.a).onPageScrollStateChanged(paramInt);
+    paramView = akyn.a();
+    if (paramView != null)
+    {
+      paramView.a(ajgb.a(this.a));
+      paramView.a();
+      akyn.i();
     }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    if (DotStyleNavBar.a(this.a) != null) {
-      DotStyleNavBar.a(this.a).onPageScrolled(paramInt1, paramFloat, paramInt2);
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    this.a.setCurrent(paramInt);
-    if (DotStyleNavBar.a(this.a) != null) {
-      DotStyleNavBar.a(this.a).onPageSelected(paramInt);
-    }
+    azqs.a(ajgb.a(this.a).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 10, 0, "", "", "", "");
   }
 }
 

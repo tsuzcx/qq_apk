@@ -48,7 +48,7 @@ public class ReportHandler$DownloadReportObject
     }
   }
   
-  protected String getRefer()
+  public String getRefer()
   {
     if (this.appIdType == 10) {
       return "mqun";
@@ -90,8 +90,8 @@ public class ReportHandler$DownloadReportObject
       if (this.extend == null) {
         this.extend = new ExtendData();
       }
-      this.extend.a(10, this.strategyInfo);
-      localJSONObject.put("extend", this.extend.a());
+      this.extend.put(10, this.strategyInfo);
+      localJSONObject.put("extend", this.extend.getExtendString());
     }
     if (this.t != null)
     {
@@ -103,8 +103,8 @@ public class ReportHandler$DownloadReportObject
       if (!TextUtils.isEmpty(str2)) {
         str1 = str2.replaceAll("\n\t", "--");
       }
-      this.extend.a(11, str1);
-      str2 = this.extend.a();
+      this.extend.put(11, str1);
+      str2 = this.extend.getExtendString();
       str1 = str2;
       if (!TextUtils.isEmpty(str2)) {
         str1 = str2.replaceAll(",", ";");
@@ -131,7 +131,7 @@ public class ReportHandler$DownloadReportObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.downloader.handler.ReportHandler.DownloadReportObject
  * JD-Core Version:    0.7.0.1
  */

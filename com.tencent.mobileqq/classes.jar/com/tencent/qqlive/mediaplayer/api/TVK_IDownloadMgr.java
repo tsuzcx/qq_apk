@@ -44,7 +44,7 @@ public abstract interface TVK_IDownloadMgr
   
   public abstract int resumeStorageIO(int paramInt);
   
-  public abstract void setCallBackListener(int paramInt, ICallBackListener paramICallBackListener);
+  public abstract void setCallBackListener(int paramInt, TVK_IDownloadMgr.ICallBackListener paramICallBackListener);
   
   public abstract int setClipInfo(int paramInt1, int paramInt2, String paramString, long paramLong, int paramInt3);
   
@@ -75,15 +75,10 @@ public abstract interface TVK_IDownloadMgr
   public abstract void stopPlay(int paramInt1, int paramInt2);
   
   public abstract int stopPreLoad(int paramInt);
-  
-  public static abstract interface ICallBackListener
-  {
-    public abstract void downloadCallBack(String paramString);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqlive.mediaplayer.api.TVK_IDownloadMgr
  * JD-Core Version:    0.7.0.1
  */

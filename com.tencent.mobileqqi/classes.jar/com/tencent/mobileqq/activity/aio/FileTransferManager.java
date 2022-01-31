@@ -16,8 +16,8 @@ import com.tencent.mobileqq.transfile.LbsTransfileProcessor;
 import com.tencent.mobileqq.transfile.TransFileController;
 import com.tencent.mobileqq.transfile.TransProcessorHandler;
 import com.tencent.qphone.base.util.QLog;
-import ebg;
-import ebh;
+import dvp;
+import dvq;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -28,7 +28,7 @@ public class FileTransferManager
 {
   public static final String a = "FileTransferManager";
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new ebg(this, Looper.getMainLooper());
+  private final TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new dvp(this, Looper.getMainLooper());
   private final ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
   public FileTransferManager(QQAppInterface paramQQAppInterface)
@@ -72,9 +72,9 @@ public class FileTransferManager
     int i = 0;
     if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      Object localObject = (ebh)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      View localView = ((ebh)localObject).a();
-      localObject = ((ebh)localObject).a();
+      Object localObject = (dvq)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      View localView = ((dvq)localObject).a();
+      localObject = ((dvq)localObject).a();
       if ((localView != null) && (localObject != null)) {
         ((FileTransferManager.Callback)localObject).a(localView, (FileMsg)paramMessage.obj, paramMessage.what, paramMessage.arg1);
       }
@@ -93,14 +93,14 @@ public class FileTransferManager
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      ebh localebh = (ebh)localIterator.next();
-      if (localebh.a() == paramView)
+      dvq localdvq = (dvq)localIterator.next();
+      if (localdvq.a() == paramView)
       {
-        localebh.b = new WeakReference(paramCallback);
+        localdvq.b = new WeakReference(paramCallback);
         return;
       }
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(new ebh(this, paramView, paramCallback));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new dvq(this, paramView, paramCallback));
   }
   
   public void b()

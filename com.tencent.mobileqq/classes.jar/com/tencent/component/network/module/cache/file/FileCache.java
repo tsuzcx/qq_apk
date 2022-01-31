@@ -3,15 +3,15 @@ package com.tencent.component.network.module.cache.file;
 import com.tencent.component.network.module.cache.common.LruCache;
 import com.tencent.component.network.utils.FileUtils;
 
-public class FileCache
-  extends LruCache
+public class FileCache<K>
+  extends LruCache<K, String>
 {
   public FileCache(int paramInt)
   {
     super(paramInt);
   }
   
-  private static int a(String paramString)
+  private static int getFileSize(String paramString)
   {
     if ((paramString == null) || (paramString.length() == 0)) {
       return 0;
@@ -19,19 +19,7 @@ public class FileCache
     return 1;
   }
   
-  protected int a(Object paramObject, String paramString)
-  {
-    return a(paramString);
-  }
-  
-  public void a(String paramString)
-  {
-    if (paramString != null) {
-      FileUtils.delete(paramString);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject, String paramString1, String paramString2)
+  protected void entryRemoved(boolean paramBoolean, K paramK, String paramString1, String paramString2)
   {
     if (paramString1 == paramString2) {}
     while ((paramString1 != null) && (paramString1.equals(paramString2))) {
@@ -39,15 +27,27 @@ public class FileCache
     }
     try
     {
-      a(paramString1);
+      recycle(paramString1);
       return;
     }
     finally {}
   }
+  
+  public void recycle(String paramString)
+  {
+    if (paramString != null) {
+      FileUtils.delete(paramString);
+    }
+  }
+  
+  protected int sizeOf(K paramK, String paramString)
+  {
+    return getFileSize(paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.module.cache.file.FileCache
  * JD-Core Version:    0.7.0.1
  */

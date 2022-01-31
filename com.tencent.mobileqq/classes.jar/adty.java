@@ -1,20 +1,15 @@
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.CheckListener;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
-class adty
-  implements Runnable
+public class adty
+  implements DialogInterface.OnClickListener
 {
-  adty(adtx paramadtx, List paramList) {}
+  public adty(RegisterActivity paramRegisterActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GroupVideoManager.CheckListener localCheckListener = this.jdField_a_of_type_Adtx.a;
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localCheckListener.a(bool);
-      return;
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

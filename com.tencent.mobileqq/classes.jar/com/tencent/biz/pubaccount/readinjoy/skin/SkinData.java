@@ -9,7 +9,7 @@ import org.json.JSONObject;
 import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
 
 public class SkinData
-  extends BaseResData
+  extends BaseResData<oidb_0x5bd.SkinInfo>
 {
   public SkinData() {}
   
@@ -78,7 +78,7 @@ public class SkinData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.skin.SkinData
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,79 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.business.base.StaticAnalyz;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class alhm
-  implements Runnable
+class alhm
+  implements baug
 {
-  public alhm(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
+  alhm(alhl paramalhl, String paramString, alhj paramalhj) {}
   
-  public void run()
+  public void onResp(bavf parambavf)
   {
-    try
-    {
-      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_c_of_type_JavaLangString);
-      if (localTMAssistantDownloadTaskInfo != null)
-      {
-        LogUtility.c(DownloadManager.a, "onDownloadError taskInfo != null！info.writeCodeState = " + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_k_of_type_Int);
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_k_of_type_JavaLangString = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_c_of_type_JavaLangString).mSavePath;
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_c_of_type_Long = localTMAssistantDownloadTaskInfo.mTotalDataLen;
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.e(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-        if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_k_of_type_Int != 0) {
-          break label201;
-        }
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(4, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-        if (!this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b.equals("1101070898"))
-        {
-          long l = localTMAssistantDownloadTaskInfo.mTotalDataLen;
-          this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, l);
-        }
-      }
+    baub localbaub = (baub)parambavf.jdField_a_of_type_Bave;
+    if (this.jdField_a_of_type_Alhl.jdField_a_of_type_Baub == localbaub) {
+      this.jdField_a_of_type_Alhl.jdField_a_of_type_Baub = null;
     }
-    catch (Exception localException)
+    if (QLog.isColorLevel()) {
+      QLog.i("TMG_Downloader", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localbaub.jdField_a_of_type_JavaLangString, Integer.valueOf(parambavf.jdField_a_of_type_Int), Integer.valueOf(parambavf.c), this.jdField_a_of_type_JavaLangString }));
+    }
+    if (parambavf.jdField_a_of_type_Int == 0)
+    {
+      parambavf = new File(localbaub.c);
+      if (!parambavf.exists()) {}
+    }
+    do
     {
       for (;;)
       {
-        label201:
-        LogUtility.c(DownloadManager.a, "downloadSDKClient>>>", localException);
+        try
+        {
+          parambavf = parambavf.getParent();
+          bdhb.a(localbaub.c, parambavf, false);
+          alhk.a(this.jdField_a_of_type_Alhj.b);
+          i = 1;
+          if (i == 0) {
+            break;
+          }
+          if (this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn != null)
+          {
+            this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.a(100);
+            this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.a(0, "Download Complete!!!");
+          }
+          this.jdField_a_of_type_Alhl.jdField_a_of_type_Boolean = false;
+          return;
+        }
+        catch (Exception parambavf)
+        {
+          parambavf.printStackTrace();
+        }
+        int i = 0;
+      }
+    } while (this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn == null);
+    this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.a(2, "");
+  }
+  
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2)
+  {
+    int i;
+    if (paramLong2 == 0L) {
+      i = 0;
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn != null) {
+        this.jdField_a_of_type_Alhl.jdField_a_of_type_Alhn.a(i);
+      }
+      return;
+      if (paramLong1 >= paramLong2) {
+        i = 99;
+      } else {
+        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
       }
     }
-    StaticAnalyz.a("300", this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.m);
-    if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.a) {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.c(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-    }
-    return;
-    LogUtility.c(DownloadManager.a, "onDownloadError taskInfo == null");
-    DownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alhm
  * JD-Core Version:    0.7.0.1
  */

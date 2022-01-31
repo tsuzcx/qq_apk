@@ -1,24 +1,10 @@
-import android.widget.TextView;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.image.URLDrawable.DownloadListener;
-
-public class oyy
-  implements URLDrawable.DownloadListener
+public abstract interface oyy
 {
-  public oyy(TroopGiftPanel paramTroopGiftPanel, TextView paramTextView) {}
-  
-  public void onFileDownloadFailed(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-  }
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong) {}
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oyy
  * JD-Core Version:    0.7.0.1
  */

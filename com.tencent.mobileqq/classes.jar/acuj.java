@@ -1,37 +1,76 @@
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.mobileqq.data.DiscussionMemberInfo;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qphone.base.util.QLog;
 
 public class acuj
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public acuj(FileTransferHandler paramFileTransferHandler, long paramLong, int paramInt, String paramString1, String paramString2) {}
+  public acuj(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    QLog.i("FileTransferHandler<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Long + "] Handle upload failed notify. retCode =" + this.jdField_a_of_type_Int + "(1:cancel upload) reason=" + this.jdField_a_of_type_JavaLangString);
-    if (1 == this.jdField_a_of_type_Int)
+    if (AppSetting.c)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().a(this.b, this.jdField_a_of_type_Long);
-      return;
+      paramCompoundButton = this.a.getString(2131691932);
+      DiscussionInfoCardActivity.a(this.a).setContentDescription(paramCompoundButton);
     }
-    if (2 == this.jdField_a_of_type_Int)
+    paramCompoundButton = DiscussionInfoCardActivity.a(this.a).a(DiscussionInfoCardActivity.a(this.a), this.a.app.getCurrentAccountUin());
+    int i = paramCompoundButton.flag;
+    label171:
+    QQAppInterface localQQAppInterface;
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().a(this.b, this.jdField_a_of_type_Long);
-      return;
+      paramCompoundButton.flag = ((byte)(paramCompoundButton.flag | 0x1));
+      if (i != paramCompoundButton.flag)
+      {
+        byte b = (byte)(paramCompoundButton.flag & 0x1);
+        if (QLog.isDevelopLevel()) {
+          QLog.d("DiscussionInfoCardActivity", 4, "DiscussionMemberInfo.flag changed save now:" + paramCompoundButton.flag + " flag:" + b);
+        }
+        DiscussionInfoCardActivity.a(this.a).a(Long.valueOf(DiscussionInfoCardActivity.a(this.a)).longValue(), b, paramCompoundButton.flag);
+        if (!paramBoolean) {
+          break label341;
+        }
+        paramCompoundButton = "msg_open";
+        bdes.a("Grp_Dis_set", "Dis_info", paramCompoundButton, 0, 0, new String[] { DiscussionInfoCardActivity.a(this.a), bdes.a(this.a.app, this.a.a) });
+      }
+      localQQAppInterface = this.a.app;
+      if (!paramBoolean) {
+        break label347;
+      }
+      paramCompoundButton = "1";
+      label231:
+      azqs.b(localQQAppInterface, "CliOper", "", "", "0X800629B", "0X800629B", 0, 0, paramCompoundButton, "", "", "");
+      localQQAppInterface = this.a.app;
+      if (!paramBoolean) {
+        break label353;
+      }
     }
-    if (3 == this.jdField_a_of_type_Int)
+    label341:
+    label347:
+    label353:
+    for (paramCompoundButton = "1";; paramCompoundButton = "0")
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().c(this.b, this.jdField_a_of_type_Long);
+      azqs.b(localQQAppInterface, "CliOper", "", "", "0X8006679", "0X8006679", 0, 0, paramCompoundButton, "", "", "");
+      azqs.b(this.a.app, "CliOper", "", "", "0X8006668", "0X8006668", 0, 0, "", "", "", "");
       return;
+      paramCompoundButton.flag = ((byte)(paramCompoundButton.flag & 0xFFFFFFFE));
+      break;
+      paramCompoundButton = "msg_close";
+      break label171;
+      paramCompoundButton = "0";
+      break label231;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().a(this.b, this.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acuj
  * JD-Core Version:    0.7.0.1
  */

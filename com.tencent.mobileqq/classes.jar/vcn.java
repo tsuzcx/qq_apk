@@ -1,20 +1,25 @@
-import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
-import com.tencent.mobileqq.transfile.TransFileController.OnCancelListener;
 import java.util.ArrayList;
 
 public class vcn
-  implements TransFileController.OnCancelListener
+  extends uli
 {
-  public vcn(PicItemBuilder paramPicItemBuilder) {}
+  public final int a;
+  public ArrayList<vcm> a;
   
-  public void a(ArrayList paramArrayList)
+  public vcn(int paramInt)
   {
-    this.a.b();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public String toString()
+  {
+    return "UpdateMemoriesEvent{dateList=" + this.jdField_a_of_type_JavaUtilArrayList + ", source=" + this.jdField_a_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vcn
  * JD-Core Version:    0.7.0.1
  */

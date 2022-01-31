@@ -1,67 +1,83 @@
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.LebaQZoneFacePlayHelper;
-import com.tencent.mobileqq.activity.QZoneEntryReporterInLeba;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadRegulator;
-import com.tencent.mobileqq.config.struct.LebaViewItem;
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import cooperation.qzone.QZoneClickReport;
-import cooperation.qzone.QZoneClickReport.ReportInfo;
-import cooperation.qzone.report.lp.LinkReport;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class sxo
-  implements Runnable
+class sxo
+  implements yrb
 {
-  public sxo(Leba paramLeba, LebaViewItem paramLebaViewItem) {}
+  sxo(sxe paramsxe, boolean paramBoolean, String paramString1, String paramString2) {}
   
-  public void run()
+  public void callback(Bundle paramBundle)
   {
-    if ((Leba.b(this.jdField_a_of_type_ComTencentMobileqqActivityLeba) != null) && (Leba.b(this.jdField_a_of_type_ComTencentMobileqqActivityLeba).getVisibility() == 0)) {}
-    this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a(null, -1, this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem);
-    ThreadRegulator.a().a(4);
-    ThreadRegulator.a().a(4, 2000L);
-    Leba.c(this.jdField_a_of_type_ComTencentMobileqqActivityLeba, true);
-    Object localObject = (QZoneManagerImp)this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.getManager(9);
-    if (localObject != null)
+    String str2;
+    JSONObject localJSONObject;
+    if (paramBundle != null)
     {
-      if ((((QZoneManagerImp)localObject).a(1) > 0) || (((QZoneManagerImp)localObject).a(2) > 0)) {
-        break label241;
+      if (this.jdField_a_of_type_Sxe.a != null) {
+        this.jdField_a_of_type_Sxe.l();
       }
-      localObject = new QZoneClickReport.ReportInfo();
-      ((QZoneClickReport.ReportInfo)localObject).c = "1";
-      ((QZoneClickReport.ReportInfo)localObject).d = "0";
-      ((QZoneClickReport.ReportInfo)localObject).b = 4;
-      ((QZoneClickReport.ReportInfo)localObject).k = "3";
-      ((QZoneClickReport.ReportInfo)localObject).l = "mainEntrance";
-      ((QZoneClickReport.ReportInfo)localObject).m = "activefeed";
-      QZoneClickReport.report(this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.getAccount(), (QZoneClickReport.ReportInfo)localObject, false);
-      localObject = new HashMap();
-      ((HashMap)localObject).put("source_type", "3");
-      ((HashMap)localObject).put("source_from", "mainEntrance");
-      ((HashMap)localObject).put("source_to", "activefeed");
-      StatisticCollector.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.getAccount(), "actQZSourceDataReport", true, 0L, 0L, (HashMap)localObject, null);
-      QZoneEntryReporterInLeba.c(this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a);
+      str2 = paramBundle.getString("pic_local_id");
+      localJSONObject = new JSONObject();
     }
     for (;;)
     {
-      LinkReport.reportClickQZoneEntry(this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.c());
+      try
+      {
+        if (!"-1".equals(str2)) {
+          continue;
+        }
+        localJSONObject.put("retCode", -1);
+        localJSONObject.put("msg", "fail");
+        if (!this.jdField_a_of_type_Boolean) {
+          continue;
+        }
+        azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
+        paramBundle = str2;
+        localJSONObject.put("localId", paramBundle);
+      }
+      catch (JSONException paramBundle)
+      {
+        String str1;
+        paramBundle.printStackTrace();
+        continue;
+      }
+      this.jdField_a_of_type_Sxe.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_Sxe.c(this.b);
+      }
       return;
-      label241:
-      if (((QZoneManagerImp)localObject).a(1) > 0) {
-        QZoneEntryReporterInLeba.c(this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a, ((QZoneManagerImp)localObject).a(1));
-      } else if (Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba) != null) {
-        Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba).a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a);
+      azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, -1, "1", "", "", "");
+      paramBundle = str2;
+      continue;
+      str1 = str2;
+      if (this.jdField_a_of_type_Boolean) {
+        str1 = "mqqpa://resourceid/" + str2;
+      }
+      paramBundle = paramBundle.getString("pic_local_path");
+      sxe.b.put(str1, paramBundle);
+      localJSONObject.put("retCode", 0);
+      localJSONObject.put("msg", alud.a(2131709163) + str1);
+      if (QLog.isColorLevel()) {
+        QLog.i("PublicAccountH5AbilityPlugin", 2, "下载成功，localld为  " + str1);
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, 0, "1", "", "", "");
+        paramBundle = str1;
+      }
+      else
+      {
+        azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, 0, "1", "", "", "");
+        paramBundle = str1;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sxo
  * JD-Core Version:    0.7.0.1
  */

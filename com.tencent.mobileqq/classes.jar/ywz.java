@@ -1,24 +1,22 @@
-import java.io.File;
-import java.util.Comparator;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
 
-public final class ywz
-  implements Comparator
+class ywz
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public int a(File paramFile1, File paramFile2)
+  ywz(ywy paramywy, View paramView) {}
+  
+  public boolean onPreDraw()
   {
-    if ((paramFile1.exists()) && (paramFile2.exists()))
-    {
-      if (paramFile1.lastModified() - paramFile2.lastModified() > 0L) {
-        return 1;
-      }
-      return -1;
-    }
-    return 0;
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnPreDrawListener(this);
+    ywy.a(this.jdField_a_of_type_Ywy, this.jdField_a_of_type_AndroidViewView);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ywz
  * JD-Core Version:    0.7.0.1
  */

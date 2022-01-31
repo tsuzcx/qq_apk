@@ -2,12 +2,11 @@ package com.tencent.mobileqq.utils;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
+import baub;
+import baud;
+import bdqa;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.HttpNetReq.IFlowDecoder;
-import com.tencent.mobileqq.transfile.RichMediaUtil;
-import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.util.Cryptor;
 import com.tencent.qphone.base.util.QLog;
 import java.nio.ByteBuffer;
@@ -15,11 +14,11 @@ import java.security.MessageDigest;
 import java.util.HashMap;
 
 public class PicCryptor
-  implements HttpNetReq.IFlowDecoder
+  implements baud
 {
   private int jdField_a_of_type_Int;
   public long a;
-  public HttpNetReq a;
+  public baub a;
   private boolean jdField_a_of_type_Boolean = true;
   private byte[] jdField_a_of_type_ArrayOfByte;
   private int jdField_b_of_type_Int;
@@ -45,7 +44,7 @@ public class PicCryptor
   
   private int a()
   {
-    String str = (String)this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.a.get("Range");
+    String str = (String)this.jdField_a_of_type_Baub.a.get("Range");
     if (!TextUtils.isEmpty(str))
     {
       str = str.replace("bytes=", "");
@@ -59,16 +58,11 @@ public class PicCryptor
   
   public static String a(byte[] paramArrayOfByte)
   {
-    paramArrayOfByte = PkgTools.a(paramArrayOfByte);
+    paramArrayOfByte = bdqa.a(paramArrayOfByte);
     if (paramArrayOfByte == null) {
       throw new IllegalArgumentException("byte2Hex error, byte not null");
     }
     return paramArrayOfByte.toLowerCase();
-  }
-  
-  private void a(String paramString1, String paramString2)
-  {
-    QLog.i("T.Q.richmedia." + RichMediaUtil.b(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.g) + "." + RichMediaUtil.c(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.f) + ".PicDecoder", 1, "id:" + this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.e + " " + paramString1 + " : " + paramString2);
   }
   
   public static void a(boolean paramBoolean, String paramString)
@@ -80,7 +74,7 @@ public class PicCryptor
   
   public static byte[] a(String paramString)
   {
-    paramString = PkgTools.a(paramString);
+    paramString = bdqa.a(paramString);
     if (paramString == null) {
       throw new IllegalArgumentException("hex2byte error, hexStr length must even");
     }
@@ -131,7 +125,6 @@ public class PicCryptor
     }
     for (;;)
     {
-      a("XOR", "len=" + i);
       arrayOfByte1 = paramArrayOfByte;
       if (!this.jdField_a_of_type_Boolean) {
         break;
@@ -139,7 +132,6 @@ public class PicCryptor
       this.jdField_a_of_type_Boolean = false;
       arrayOfByte1 = new byte[Math.min(20, j)];
       System.arraycopy(paramArrayOfByte, 0, arrayOfByte1, 0, arrayOfByte1.length);
-      a("CheckAndLog", "hex:" + a(arrayOfByte1));
       return paramArrayOfByte;
       if (k != 0) {
         throw new IllegalArgumentException("Invalid encrypt data end format");
@@ -213,93 +205,108 @@ public class PicCryptor
   
   public byte[] b(byte[] paramArrayOfByte)
   {
-    ByteBuffer localByteBuffer = ByteBuffer.allocate(paramArrayOfByte.length);
-    localByteBuffer.put(paramArrayOfByte);
-    localByteBuffer.rewind();
-    if (localByteBuffer.get() == 40)
+    boolean bool2 = true;
+    ByteBuffer localByteBuffer1 = ByteBuffer.allocate(paramArrayOfByte.length);
+    localByteBuffer1.put(paramArrayOfByte);
+    localByteBuffer1.rewind();
+    if (localByteBuffer1.get() == 40)
     {
-      bool = true;
-      a(bool, "Invalid encrypt data start format");
-      this.jdField_a_of_type_Int = localByteBuffer.getInt();
-      this.jdField_b_of_type_Int = localByteBuffer.getInt();
+      bool1 = true;
+      a(bool1, "Invalid encrypt data start format");
+      this.jdField_a_of_type_Int = localByteBuffer1.getInt();
+      this.jdField_b_of_type_Int = localByteBuffer1.getInt();
       if ((this.jdField_a_of_type_Int <= 0) || (this.jdField_b_of_type_Int <= 0)) {
-        break label100;
+        break label102;
       }
     }
-    label100:
-    for (boolean bool = true;; bool = false)
+    label102:
+    for (boolean bool1 = true;; bool1 = false)
     {
-      a(bool, "head or body length is not negative");
+      a(bool1, "head or body length is not negative");
       if (this.jdField_a_of_type_Int + 1 + 8 <= paramArrayOfByte.length) {
-        break label105;
+        break label107;
       }
       return null;
-      bool = false;
+      bool1 = false;
       break;
     }
-    label105:
-    this.jdField_c_of_type_Int = localByteBuffer.getShort();
-    Object localObject;
+    label107:
+    this.jdField_c_of_type_Int = localByteBuffer1.getShort();
+    ByteBuffer localByteBuffer2;
     if (this.jdField_c_of_type_Int == 1)
     {
-      bool = true;
-      a(bool, "magic num not equal 1!");
+      bool1 = true;
+      a(bool1, "magic num not equal 1!");
       this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int - 2];
-      localByteBuffer.get(this.jdField_a_of_type_ArrayOfByte);
+      localByteBuffer1.get(this.jdField_a_of_type_ArrayOfByte);
       paramArrayOfByte = a(this.jdField_a_of_type_ArrayOfByte, this.jdField_c_of_type_ArrayOfByte);
-      localObject = ByteBuffer.allocate(paramArrayOfByte.length);
-      ((ByteBuffer)localObject).put(paramArrayOfByte);
-      ((ByteBuffer)localObject).rewind();
-      this.jdField_d_of_type_Int = ((ByteBuffer)localObject).getShort();
+      localByteBuffer2 = ByteBuffer.allocate(paramArrayOfByte.length);
+      localByteBuffer2.put(paramArrayOfByte);
+      localByteBuffer2.rewind();
+      this.jdField_d_of_type_Int = localByteBuffer2.getShort();
       if (this.jdField_d_of_type_Int <= 0) {
-        break label399;
+        break label450;
       }
     }
-    label399:
-    for (bool = true;; bool = false)
+    label450:
+    for (bool1 = bool2;; bool1 = false)
     {
-      a(bool, "seed len is no allow negative");
-      this.jdField_b_of_type_ArrayOfByte = new byte[this.jdField_d_of_type_Int];
-      ((ByteBuffer)localObject).get(this.jdField_b_of_type_ArrayOfByte);
-      this.jdField_d_of_type_ArrayOfByte = a(getISSACSequence(a(this.jdField_b_of_type_ArrayOfByte), this.jdField_b_of_type_Int + a()).substring(a() * 2));
-      this.f = 1;
-      this.jdField_e_of_type_Int = 0;
-      paramArrayOfByte = "";
+      a(bool1, "seed len is no allow negative");
       try
       {
-        localObject = MessageDigest.getInstance("MD5");
-        ((MessageDigest)localObject).update(this.jdField_d_of_type_ArrayOfByte);
-        localObject = a(((MessageDigest)localObject).digest());
-        paramArrayOfByte = (byte[])localObject;
+        this.jdField_b_of_type_ArrayOfByte = new byte[this.jdField_d_of_type_Int];
+        localByteBuffer2.get(this.jdField_b_of_type_ArrayOfByte);
+        paramArrayOfByte = getISSACSequence(a(this.jdField_b_of_type_ArrayOfByte), this.jdField_b_of_type_Int + a()).substring(a() * 2);
+        if (paramArrayOfByte == null) {
+          return null;
+        }
+        long l = Runtime.getRuntime().totalMemory();
+        l = Runtime.getRuntime().maxMemory() - (l - Runtime.getRuntime().freeMemory());
+        if (l < paramArrayOfByte.length() * 3)
+        {
+          QLog.e("PicCryptor", 1, "checkMemoryForEncrypt : memory is not enough ! remainMemory = " + l + ", flowKeyHexStr.length() = " + paramArrayOfByte.length());
+          throw new Exception("applying memory too large!");
+        }
       }
-      catch (Exception localException)
+      catch (OutOfMemoryError paramArrayOfByte)
+      {
+        paramArrayOfByte.printStackTrace();
+        return null;
+      }
+      this.jdField_d_of_type_ArrayOfByte = a(paramArrayOfByte);
+      this.f = 1;
+      this.jdField_e_of_type_Int = 0;
+      try
+      {
+        paramArrayOfByte = MessageDigest.getInstance("MD5");
+        paramArrayOfByte.update(this.jdField_d_of_type_ArrayOfByte);
+        a(paramArrayOfByte.digest());
+        int i = localByteBuffer1.capacity() - localByteBuffer1.position();
+        if (i > 0)
+        {
+          paramArrayOfByte = new byte[i];
+          localByteBuffer1.get(paramArrayOfByte);
+          return paramArrayOfByte;
+        }
+      }
+      catch (Exception paramArrayOfByte)
       {
         for (;;)
         {
-          int i;
-          localException.printStackTrace();
+          paramArrayOfByte.printStackTrace();
         }
       }
-      a("HeaderDec", "result: succ, mBodyLen=" + this.jdField_b_of_type_Int + ",mSeed=" + a(this.jdField_b_of_type_ArrayOfByte) + ",MD5:" + paramArrayOfByte);
-      i = localByteBuffer.capacity() - localByteBuffer.position();
-      if (i <= 0) {
-        break label414;
-      }
-      paramArrayOfByte = new byte[i];
-      localByteBuffer.get(paramArrayOfByte);
-      return paramArrayOfByte;
-      bool = false;
+      return null;
+      bool1 = false;
       break;
     }
-    label414:
-    return null;
   }
   
   public native String getISSACSequence(String paramString, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.PicCryptor
  * JD-Core Version:    0.7.0.1
  */

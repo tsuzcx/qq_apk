@@ -1,27 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.vipcomic.VipComicMqqManager;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.TroopManager;
 
 public class acei
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public acei(EmoticonMainPanel paramEmoticonMainPanel) {}
+  public acei(AssistantSettingActivity paramAssistantSettingActivity, TroopManager paramTroopManager) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.a.a != null)
-    {
-      ((VipComicMqqManager)this.a.a.getManager(140)).a();
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonMainPanel", 2, "vipComicMqqManager.uploadInitComicEmoStructMsgInfo");
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.c(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acei
  * JD-Core Version:    0.7.0.1
  */

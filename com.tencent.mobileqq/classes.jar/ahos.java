@@ -1,37 +1,72 @@
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.FilterFactory;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUDrawPartFilter;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.GpuImagePartsFilterGroup;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class ahos
-  implements Runnable
+  implements ahpq
 {
-  public ahos(GpuImagePartsFilterGroup paramGpuImagePartsFilterGroup, int paramInt1, int paramInt2, int paramInt3) {}
+  public ahos(NotificationView paramNotificationView) {}
   
-  public void run()
+  public void a(String paramString, structmsg.StructMsg paramStructMsg, int paramInt)
   {
-    GPUDrawPartFilter localGPUDrawPartFilter1 = null;
-    GPUDrawPartFilter localGPUDrawPartFilter2 = GpuImagePartsFilterGroup.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup);
-    GpuImagePartsFilterGroup.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup, null);
-    if ((GpuImagePartsFilterGroup.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup) == null) || (GpuImagePartsFilterGroup.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup).b() != this.jdField_a_of_type_Int))
+    int i;
+    if ((TroopInfo.hasPayPrivilege(paramInt, 128)) && (TroopInfo.hasPayPrivilege(paramInt, 512)))
     {
-      localGPUDrawPartFilter1 = GpuImagePartsFilterGroup.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup);
-      GpuImagePartsFilterGroup.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup, (GPUDrawPartFilter)FilterFactory.a(this.jdField_a_of_type_Int));
-      GpuImagePartsFilterGroup.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup).a();
-      GpuImagePartsFilterGroup.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup).a(this.b, this.c);
+      i = 1;
+      if (i == 0) {
+        break label131;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("NotificationView", 2, "onTroopPrivilege payTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt);
+      }
+      ahpp.a(this.a.jdField_a_of_type_AndroidContentContext, paramString);
+      ahpp.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if ((this.a.jdField_a_of_type_Bety != null) && (this.a.jdField_a_of_type_Bety.isShowing())) {
+        this.a.jdField_a_of_type_Bety.dismiss();
+      }
     }
-    GpuImagePartsFilterGroup.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup).a(false, 0.0F);
-    GpuImagePartsFilterGroup.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup, 0.0F);
-    if (localGPUDrawPartFilter2 != null) {
-      localGPUDrawPartFilter2.c();
+    label131:
+    do
+    {
+      return;
+      i = 0;
+      break;
+      paramStructMsg = ahpp.a(paramString);
+      if (paramStructMsg == null) {
+        break label269;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("NotificationView", 2, "onTroopPrivilege normalTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt + ", sendSystemMsgAction-----");
+      }
+      NotificationView.a(this.a, 1, (structmsg.StructMsg)paramStructMsg.get());
+    } while (paramStructMsg.msg.group_msg_type.get() != 2);
+    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_contacts", "", "notice", "agree_invite", 0, 0, paramString, "", "0", "0");
+    azqs.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "normal_troop", "", "", "");
+    return;
+    label269:
+    if (QLog.isColorLevel()) {
+      QLog.e("NotificationView", 2, "NotificationView onTroopPrivilege cache error--------------");
     }
-    if (localGPUDrawPartFilter1 != null) {
-      localGPUDrawPartFilter1.c();
+    azqs.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "normal_troop_error", "", "", "");
+  }
+  
+  public void a(String paramString1, structmsg.StructMsg paramStructMsg, int paramInt1, int paramInt2, String paramString2)
+  {
+    if ((this.a.jdField_a_of_type_Bety != null) && (this.a.jdField_a_of_type_Bety.isShowing())) {
+      this.a.jdField_a_of_type_Bety.dismiss();
     }
+    if (QLog.isColorLevel()) {
+      QLog.e("NotificationView", 2, "NotificationView onTroopPrivilege network! error rspTroopUin = " + paramString1);
+    }
+    azqs.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "err", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahos
  * JD-Core Version:    0.7.0.1
  */

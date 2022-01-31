@@ -1,104 +1,67 @@
-import android.os.Bundle;
-import android.util.Pair;
-import com.tencent.mobileqq.app.CardObserver;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.contactsync.syncadapter.SyncService;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.music.QQPlayerService;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import cooperation.qwallet.plugin.PatternLockUtils;
 
 public class acbb
-  extends CardObserver
+  implements View.OnClickListener
 {
-  public acbb(MessengerService paramMessengerService) {}
+  public acbb(AccountManageActivity paramAccountManageActivity, Dialog paramDialog) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    long l2 = 0L;
-    if (QLog.isColorLevel()) {
-      QLog.d("MessengerService.onCardDownload", 2, "received onCardDownload");
-    }
-    Object localObject;
-    long l1;
-    int i;
-    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Card)))
+    QLog.flushLog();
+    boolean bool = ((CheckBox)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131364244)).isChecked();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.d = bool;
+    SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getString(2131719121), "qqsetting_receivemsg_whenexit_key", bool);
+    SyncService.a(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.d);
+    int i = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.a().b();
+    int j = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.a().a();
+    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity().getSharedPreferences("unreadcount", 4).edit();
+    paramView.putInt("unread", i + j);
+    paramView.commit();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.i();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.a = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.d;
+    com.tencent.mobileqq.activity.MainFragment.c = true;
+    if (QQPlayerService.a())
     {
-      paramObject = (Card)paramObject;
-      localObject = (QQAppInterface)MessengerService.h(this.a);
-      if ((localObject != null) && (Utils.a(((QQAppInterface)localObject).getCurrentAccountUin(), paramObject.uin))) {
-        if ((paramObject.templateRet == 0) || (paramObject.templateRet == 101107) || (paramObject.templateRet == 101108))
-        {
-          l1 = paramObject.lCurrentBgId;
-          l2 = paramObject.lCurrentStyleId;
-          i = 0;
-        }
-      }
+      paramView = new Intent();
+      paramView.setAction("qqplayer_exit_action");
+      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity().sendBroadcast(paramView);
     }
-    for (;;)
+    PatternLockUtils.setFirstEnterAfterLoginState(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.getCurrentAccountUin(), true);
+    paramView = new Intent("QQ_ACTION_MENU_QUIT");
+    paramView.setClass(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity(), SplashActivity.class);
+    paramView.addFlags(67108864);
+    try
     {
-      paramObject = new Bundle();
-      paramObject.putLong("currentId", l1);
-      paramObject.putLong("styleId", l2);
-      paramObject.putInt("result", i);
-      if ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0))
-      {
-        localObject = (Bundle)this.a.jdField_a_of_type_JavaUtilList.remove(0);
-        ((Bundle)localObject).putBundle("response", paramObject);
-        this.a.a((Bundle)localObject);
-      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.startActivity(paramView);
+      label265:
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app, "CliOper", "", "", "0X800932A", "0X800932A", 0, 0, "0", "", "", "");
       return;
-      i = -1;
-      l1 = 0L;
-      continue;
-      i = -1;
-      l1 = 0L;
-      continue;
-      QLog.e("Q.emoji.web.MessengerService", 1, "onCardDownload fail isSuccess = " + paramBoolean + "data = " + paramObject);
-      i = -1;
-      l1 = 0L;
     }
-  }
-  
-  public void e(boolean paramBoolean, Object paramObject)
-  {
-    int i = -1;
-    String str = "";
-    if ((paramBoolean) && (paramObject != null)) {
-      if ((paramObject instanceof Card)) {
-        i = 0;
-      }
-    }
-    for (;;)
+    catch (Exception paramView)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.emoji.web.MessengerService", 2, "onSetCardTemplateReturn...resultCode=" + i);
-      }
-      if (this.a.jdField_a_of_type_AndroidOsBundle != null)
-      {
-        paramObject = new Bundle();
-        this.a.jdField_a_of_type_AndroidOsBundle.putString("cmd", "card_setSummaryCard");
-        paramObject.putInt("result", i);
-        paramObject.putString("message", str);
-        this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramObject);
-        this.a.a(this.a.jdField_a_of_type_AndroidOsBundle);
-        this.a.jdField_a_of_type_AndroidOsBundle = null;
-      }
-      return;
-      if ((paramObject instanceof Pair))
-      {
-        paramObject = (Pair)paramObject;
-        i = ((Integer)paramObject.first).intValue();
-        str = (String)paramObject.second;
-        continue;
-        QLog.e("Q.emoji.web.MessengerService", 1, "onSetCardTemplateReturn fail isSuccess = " + paramBoolean + "obj = " + paramObject);
-      }
+      break label265;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acbb
  * JD-Core Version:    0.7.0.1
  */

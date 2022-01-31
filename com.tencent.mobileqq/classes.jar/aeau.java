@@ -1,41 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.leba.QZoneEntryController;
-import com.tencent.mobileqq.leba.header.LebaGridShowManager;
-import com.tencent.mobileqq.leba.model.LebaGridItemInfo;
-import com.tencent.mobileqq.leba.model.PluginInfo;
-import com.tencent.mobileqq.leba.model.pluginactions.PluginAction;
-import com.tencent.mobileqq.leba.model.pluginactions.QzonePluginAction;
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.widget.AnimationTextView;
+import com.tencent.mobileqq.widget.ContainerView;
 
 public class aeau
-  implements View.OnClickListener
+  extends Handler
 {
-  public aeau(QZoneEntryController paramQZoneEntryController) {}
-  
-  public void onClick(View paramView)
+  public aeau(TextPreviewActivity paramTextPreviewActivity, Looper paramLooper)
   {
-    QZoneEntryController.c(this.a);
-    paramView = LebaGridShowManager.a().a(10000);
-    QzonePluginAction localQzonePluginAction = new QzonePluginAction(this.a.jdField_a_of_type_AndroidContentContext);
-    if (paramView == null) {
-      QLog.i("UndealCount.QZoneEntryController", 1, "user clicked qzone feed entry. lebaGridItemInfo is null");
-    }
-    for (;;)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      localQzonePluginAction.c(paramView);
-      paramView = (QZoneManagerImp)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(9);
-      if (QZoneEntryController.a(this.a) == 4) {
-        ThreadManager.post(new aeav(this, paramView), 5, null, false);
-      }
-      QZoneEntryController.a(this.a, true);
-      paramView.a(true);
+    default: 
+    case 100: 
+    case 16: 
+    case 18: 
+    case 19: 
+      do
+      {
+        do
+        {
+          return;
+          if (this.a.jdField_a_of_type_JavaLangCharSequence != null) {
+            this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setText(this.a.jdField_a_of_type_JavaLangCharSequence);
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.a.setMovementMethod(beoj.a());
+          return;
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.jdField_a_of_type_Fx.a(this.a.e));
+          return;
+        } while (!(paramMessage.obj instanceof Drawable));
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)paramMessage.obj);
+        return;
+      } while (!(paramMessage.obj instanceof Bitmap));
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)paramMessage.obj);
       return;
-      QLog.i("UndealCount.QZoneEntryController", 1, "user clicked qzone feed entry. hasNew:" + localQzonePluginAction.a(paramView.a.isNew, paramView.a.pluginId));
     }
+    this.a.a();
   }
 }
 

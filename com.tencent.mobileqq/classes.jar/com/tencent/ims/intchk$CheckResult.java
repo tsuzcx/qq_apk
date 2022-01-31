@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class intchk$CheckResult
-  extends MessageMicro
+  extends MessageMicro<CheckResult>
 {
   public static final int BYTES_MEMREPORT_RESULT_FIELD_NUMBER = 4;
   public static final int UINT32_CHECK_ITEM_ID_FIELD_NUMBER = 1;
@@ -28,7 +28,7 @@ public final class intchk$CheckResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ims.intchk.CheckResult
  * JD-Core Version:    0.7.0.1
  */

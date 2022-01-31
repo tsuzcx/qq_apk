@@ -1,43 +1,30 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.widget.TCWNumberPicker;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class amdw
-  implements InputFilter
+class amdw
+  extends ampn
 {
-  private amdw(TCWNumberPicker paramTCWNumberPicker) {}
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  amdw(amdu paramamdu, String paramString1, long paramLong, String paramString2)
   {
-    int i = 0;
-    if (TCWNumberPicker.a(this.a) == null)
-    {
-      paramCharSequence = TCWNumberPicker.a(this.a).filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
-      return paramCharSequence;
+    super(paramString1);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    long l = SystemClock.uptimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopHandler", 2, "onLocationFinish, time=" + (l - this.jdField_a_of_type_Long) + "ms");
     }
-    String str = String.valueOf(paramCharSequence.subSequence(paramInt1, paramInt2));
-    paramSpanned = String.valueOf(String.valueOf(paramSpanned.subSequence(0, paramInt3)) + str + paramSpanned.subSequence(paramInt4, paramSpanned.length())).toLowerCase();
-    String[] arrayOfString = TCWNumberPicker.a(this.a);
-    paramInt2 = arrayOfString.length;
-    paramInt1 = i;
-    for (;;)
-    {
-      if (paramInt1 >= paramInt2) {
-        break label154;
-      }
-      paramCharSequence = str;
-      if (arrayOfString[paramInt1].toLowerCase().startsWith(paramSpanned)) {
-        break;
-      }
-      paramInt1 += 1;
+    if (paramInt != 0) {
+      QLog.i("TroopHandler", 1, "getDetailOnlineMemberList, startLocation, errorCode=" + paramInt);
     }
-    label154:
-    return "";
+    amdu.a(this.jdField_a_of_type_Amdu, this.jdField_a_of_type_JavaLangString, paramSosoLbsInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amdw
  * JD-Core Version:    0.7.0.1
  */

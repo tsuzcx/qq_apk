@@ -1,5 +1,7 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
+import aepi;
+import alzr;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -16,33 +18,32 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.PublicAccountObserver;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.SingleLineTextView;
 import java.net.URLDecoder;
-import kzq;
-import kzr;
-import kzs;
+import nts;
+import ntt;
+import ntu;
+import nup;
+import syb;
 
 public class BusinessBrowser$BusinessBrowserFragment
   extends WebViewFragment
   implements Animation.AnimationListener
 {
   int jdField_a_of_type_Int = -1;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new kzr(this);
+  alzr jdField_a_of_type_Alzr = new ntu(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ntt(this);
   public View a;
   public Animation a;
   public ImageView a;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   public TextView a;
-  PublicAccountObserver jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver = new kzs(this);
   public String a;
   public boolean a;
   public int b;
@@ -62,18 +63,18 @@ public class BusinessBrowser$BusinessBrowserFragment
     this.jdField_c_of_type_Boolean = true;
   }
   
-  protected int a(Bundle paramBundle)
+  public int a(Bundle paramBundle)
   {
     int i = super.a(paramBundle);
     if (!this.jdField_b_of_type_Boolean) {
       return i;
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.getActivity().findViewById(2131366769));
-    this.jdField_b_of_type_AndroidViewView = super.getActivity().findViewById(2131362573);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.getActivity().findViewById(2131380185));
+    this.jdField_b_of_type_AndroidViewView = super.getActivity().findViewById(2131380175);
     if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_b_of_type_AndroidViewView != null))
     {
-      this.jdField_a_of_type_AndroidViewView = View.inflate(super.getActivity(), 2130970946, null);
-      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365597);
+      this.jdField_a_of_type_AndroidViewView = View.inflate(super.getActivity(), 2131561703, null);
+      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131370086);
       if (this.jdField_c_of_type_AndroidViewView != null)
       {
         if (!ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentCommonAppAppInterface)) {
@@ -85,20 +86,20 @@ public class BusinessBrowser$BusinessBrowserFragment
     for (;;)
     {
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      ((SingleLineTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362754)).setText(String.valueOf(this.jdField_b_of_type_JavaLangString));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362719));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365294));
+      ((SingleLineTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370977)).setText(String.valueOf(this.jdField_b_of_type_JavaLangString));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367819));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366626));
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362727));
-      paramBundle = new RelativeLayout.LayoutParams(-1, AIOUtils.a(44.0F, super.getResources()));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369767));
+      paramBundle = new RelativeLayout.LayoutParams(-1, aepi.a(44.0F, super.getResources()));
       paramBundle.addRule(10);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidViewView, paramBundle);
       a(this.jdField_b_of_type_AndroidViewView, this.jdField_c_of_type_Int);
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setOnScrollChangedListener(new kzq(this));
+      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setOnScrollChangedListener(new nts(this));
       paramBundle = new Intent("action_get_PA_head");
       paramBundle.putExtra("uin", this.jdField_a_of_type_JavaLangString);
       super.getActivity().sendBroadcast(paramBundle);
-      w_();
+      u_();
       return i;
       label294:
       this.jdField_c_of_type_AndroidViewView.setVisibility(8);
@@ -115,12 +116,12 @@ public class BusinessBrowser$BusinessBrowserFragment
     }
   }
   
-  protected boolean a(Bundle paramBundle)
+  public boolean a(Bundle paramBundle)
   {
     this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("jump_from", -1);
     this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("msg_id");
-    this.jdField_c_of_type_Int = AIOUtils.a(44.0F, super.getResources());
-    Object localObject = Uri.parse(super.d());
+    this.jdField_c_of_type_Int = aepi.a(44.0F, super.getResources());
+    Object localObject = Uri.parse(super.e());
     boolean bool;
     if (((Uri)localObject).isHierarchical())
     {
@@ -197,9 +198,9 @@ public class BusinessBrowser$BusinessBrowserFragment
   {
     super.onClick(paramView);
     int i = paramView.getId();
-    if (i == 2131365294)
+    if (i == 2131366626)
     {
-      paramView = (EcshopReportHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(0);
+      paramView = (nup)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(0);
       if (paramView != null)
       {
         if (this.jdField_a_of_type_Int != 1) {
@@ -209,10 +210,10 @@ public class BusinessBrowser$BusinessBrowserFragment
       }
     }
     label79:
-    while (i != 2131372307) {
+    while (i != 2131364050) {
       for (;;)
       {
-        PublicAccountUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, super.getActivity(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver);
+        syb.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, super.getActivity(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Alzr);
         return;
         if (this.jdField_a_of_type_Int == 2) {
           paramView.a(134249251, this.jdField_a_of_type_JavaLangString, null, null, null, 0L, false);
@@ -248,7 +249,7 @@ public class BusinessBrowser$BusinessBrowserFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver = null;
+    this.jdField_a_of_type_Alzr = null;
     try
     {
       BaseApplicationImpl.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
@@ -260,10 +261,10 @@ public class BusinessBrowser$BusinessBrowserFragment
   public void onResume()
   {
     super.onResume();
-    w_();
+    u_();
   }
   
-  void w_()
+  void u_()
   {
     Intent localIntent = new Intent("action_follow_status");
     localIntent.putExtra("puin", this.jdField_a_of_type_JavaLangString);
@@ -272,7 +273,7 @@ public class BusinessBrowser$BusinessBrowserFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

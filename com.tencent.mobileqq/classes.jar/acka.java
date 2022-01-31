@@ -1,15 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class acka
-  implements Runnable
+public final class acka
+  implements DialogInterface.OnClickListener
 {
-  acka(acjz paramacjz) {}
+  public acka(acln paramacln) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (ExtendFriendVoiceView.a(this.a.a) != null) {
-      ExtendFriendVoiceView.a(this.a.a).setBackgroundDrawable(ExtendFriendVoiceView.a(this.a.a));
+    if (this.a != null) {
+      this.a.a();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }

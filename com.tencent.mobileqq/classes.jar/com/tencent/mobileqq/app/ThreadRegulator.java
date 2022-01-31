@@ -1,21 +1,23 @@
 package com.tencent.mobileqq.app;
 
+import amdr;
+import amds;
+import amdt;
 import android.os.SystemClock;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.pool.RecyclablePool;
+import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 import mqq.os.MqqRegulatorCallback;
-import znx;
-import zny;
 
 public class ThreadRegulator
   implements MqqRegulatorCallback
 {
   private static ThreadRegulator jdField_a_of_type_ComTencentMobileqqAppThreadRegulator;
-  private final RecyclablePool jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool = new RecyclablePool(ThreadRegulator.CpuBusyness.class, 2);
-  private volatile ThreadRegulator.CpuBusyness jdField_a_of_type_ComTencentMobileqqAppThreadRegulator$CpuBusyness;
-  Runnable jdField_a_of_type_JavaLangRunnable = new zny(this);
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new znx(this, ThreadManager.getSubThreadLooper());
+  private volatile amdt jdField_a_of_type_Amdt;
+  private final RecyclablePool jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool = new RecyclablePool(amdt.class, 2);
+  Runnable jdField_a_of_type_JavaLangRunnable = new ThreadRegulator.2(this);
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new amds(this, ThreadManager.getSubThreadLooper());
   
   public static ThreadRegulator a()
   {
@@ -38,14 +40,22 @@ public class ThreadRegulator
   
   public void a(int paramInt)
   {
-    if (!ThreadOptimizer.a().a()) {}
-    while (this.jdField_a_of_type_ComTencentMobileqqAppThreadRegulator$CpuBusyness != null) {
+    if (!amdr.a().a()) {}
+    while (this.jdField_a_of_type_Amdt != null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppThreadRegulator$CpuBusyness = ((ThreadRegulator.CpuBusyness)this.jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool.obtain(ThreadRegulator.CpuBusyness.class));
-    this.jdField_a_of_type_ComTencentMobileqqAppThreadRegulator$CpuBusyness.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqAppThreadRegulator$CpuBusyness.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    ThreadExcutor.a().a(true);
+    this.jdField_a_of_type_Amdt = ((amdt)this.jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool.obtain(amdt.class));
+    this.jdField_a_of_type_Amdt.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Amdt.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    try
+    {
+      ThreadExcutor.getInstance().shrinkMaxPoolSize(true);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("ThreadManager.Regulaotr", 1, "markBusyState: invoked. ", localThrowable);
+    }
   }
   
   public void a(int paramInt, long paramLong)
@@ -60,10 +70,10 @@ public class ThreadRegulator
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppThreadRegulator$CpuBusyness == null) {
+    if (this.jdField_a_of_type_Amdt == null) {
       return;
     }
-    while (this.jdField_a_of_type_ComTencentMobileqqAppThreadRegulator$CpuBusyness != null) {
+    while (this.jdField_a_of_type_Amdt != null) {
       try
       {
         Thread.sleep(100L);
@@ -93,7 +103,7 @@ public class ThreadRegulator
         if (!"MSF-Receiver".equals(paramThread.getName())) {
           break;
         }
-      } while (!ThreadOptimizer.a().b());
+      } while (!amdr.a().b());
       paramThread.setPriority(1);
       return true;
     } while ("Rejected_Handler".equals(paramThread.getName()));

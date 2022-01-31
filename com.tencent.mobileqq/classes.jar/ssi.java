@@ -1,47 +1,72 @@
-import com.tencent.mobileqq.activity.FriendProfileImageAvatar;
-import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.View;
+import android.widget.RadioGroup;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderBaseTabFragment;
+import java.util.ArrayList;
 
 public class ssi
-  implements Runnable
+  implements ViewPager.OnPageChangeListener
 {
-  public ssi(FriendProfileImageAvatar paramFriendProfileImageAvatar, FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo) {}
+  public ssi(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
   
-  public void run()
+  private void a(int paramInt)
   {
-    localEntityManager = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.a.getEntityManagerFactory().createEntityManager();
-    if (localEntityManager != null) {}
-    try
+    if (paramInt == FolderBaseTabFragment.a)
     {
-      Setting localSetting = (Setting)localEntityManager.a(Setting.class, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.d);
-      if ((localSetting != null) && ((localSetting.headImgTimestamp != 0L) || (localSetting.updateTimestamp != 0L)))
+      if (ServiceAccountFolderActivityNew.a(this.a)) {}
+      for (str = "1";; str = "2")
       {
-        localSetting.headImgTimestamp = 0L;
-        localSetting.updateTimestamp = 0L;
-        localEntityManager.a(localSetting);
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.a.a(localSetting);
+        zaj.b("auth_discover", "tofollow", 0, 0, new String[] { str });
+        return;
       }
     }
-    catch (Exception localException)
+    if (ServiceAccountFolderActivityNew.a(this.a)) {}
+    for (String str = "1";; str = "2")
     {
-      for (;;)
-      {
-        localEntityManager.a();
+      zaj.b("auth_follow", "todiscover", 0, 0, new String[] { str });
+      return;
+    }
+  }
+  
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
+  {
+    ybm.a();
+    a(paramInt);
+    if ((ServiceAccountFolderActivityNew.a(this.a) != null) && (ServiceAccountFolderActivityNew.a(this.a).getChildCount() > paramInt))
+    {
+      ServiceAccountFolderActivityNew.a(this.a).getChildAt(paramInt).performClick();
+      ServiceAccountFolderActivityNew.a(this.a, false);
+    }
+    ((FolderBaseTabFragment)ServiceAccountFolderActivityNew.a(this.a).get(paramInt)).a(this.a, paramInt);
+    long l1;
+    long l2;
+    if (ServiceAccountFolderActivityNew.a(this.a) > 0L)
+    {
+      l1 = System.currentTimeMillis();
+      l2 = ServiceAccountFolderActivityNew.a(this.a);
+      if (ServiceAccountFolderActivityNew.a(this.a) != FolderBaseTabFragment.a) {
+        break label173;
       }
     }
-    finally
+    label173:
+    for (String str = "auth_follow";; str = "auth_discover")
     {
-      localEntityManager.a();
+      zaj.a(str, "exp", 0, 0, new String[] { String.valueOf(l1 - l2) });
+      ServiceAccountFolderActivityNew.a(this.a, 0L);
+      ServiceAccountFolderActivityNew.a(this.a, System.currentTimeMillis());
+      ServiceAccountFolderActivityNew.a(this.a, paramInt);
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.a.e(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ssi
  * JD-Core Version:    0.7.0.1
  */

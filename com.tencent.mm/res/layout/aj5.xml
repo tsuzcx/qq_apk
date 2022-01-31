@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.plugin.bizui.widget.BizKeyboardLinearLayout android:background="#99000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="bottom" android:id="@id/diu" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="300.0dip">
+        <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/div" android:background="@drawable/g2" android:paddingLeft="@dimen/a6n" android:paddingTop="@dimen/a6n" android:paddingRight="@dimen/a6n" android:paddingBottom="@dimen/a6n" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/n5" android:textColor="@color/a95" android:id="@id/diw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="@string/ast" android:layout_alignParentLeft="true" />
+            <TextView android:textSize="@dimen/n5" android:textColor="@color/rx" android:id="@id/dix" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="@string/aar" android:layout_centerHorizontal="true" />
+            <Button android:textSize="@dimen/n5" android:id="@id/diy" android:text="@string/aaa" android:layout_alignParentRight="true" style="@style/fg" />
+        </RelativeLayout>
+        <ScrollView android:id="@id/diz" android:background="@color/h1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/div">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/m2" android:textColor="@color/h5" android:textColorHint="#4cffffff" android:gravity="center|left|top" android:id="@id/dj0" android:background="@color/h1" android:paddingLeft="@dimen/a6n" android:paddingRight="@dimen/a6n" android:paddingBottom="@dimen/a6n" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/aat" android:minLines="5" android:maxLength="600" />
+                <TextView android:textSize="15.0dip" android:textColor="@color/rx" android:id="@id/dj1" android:paddingLeft="@dimen/a6n" android:paddingTop="20.0dip" android:paddingBottom="4.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/aaf" />
+                <com.tencent.mm.ui.base.MaxListView android:id="@id/dj2" android:paddingLeft="@dimen/a6n" android:paddingRight="@dimen/a6n" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/g7" />
+            </LinearLayout>
+        </ScrollView>
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+            <com.tencent.mm.plugin.brandservice.ui.widget.MPSmileyFooter android:id="@id/dj3" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </RelativeLayout>
+</com.tencent.mm.plugin.bizui.widget.BizKeyboardLinearLayout>

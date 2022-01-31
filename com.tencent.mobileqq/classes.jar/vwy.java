@@ -1,31 +1,22 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
-public class vwy
-  implements Animation.AnimationListener
+class vwy
+  implements DialogInterface.OnClickListener
 {
-  public vwy(PublicAccountChatPie paramPublicAccountChatPie) {}
+  vwy(vwx paramvwx) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.R = false;
-    this.a.jdField_o_of_type_Int = 0;
-    this.a.S = false;
-    this.a.ab = false;
-    this.a.aa = false;
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.a(this.a.jdField_o_of_type_AndroidViewView, PublicAccountChatPie.a(this.a));
+    if (this.a.a.jdField_a_of_type_Vyk != null) {
+      this.a.a.jdField_a_of_type_Vyk.a(this.a.a.jdField_a_of_type_Vyi);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vwy
  * JD-Core Version:    0.7.0.1
  */

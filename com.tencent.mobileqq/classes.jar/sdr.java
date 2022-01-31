@@ -1,39 +1,28 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troop.utils.TroopAvatarManger;
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread.UploadState;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.Observable;
-import java.util.Observer;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class sdr
-  implements Observer
+class sdr
+  implements yrb
 {
-  public sdr(ChatSettingForTroop paramChatSettingForTroop) {}
+  sdr(sdq paramsdq, boolean paramBoolean) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void callback(Bundle paramBundle)
   {
-    if (this.a.isFinishing()) {}
-    while ((!(paramObject instanceof TroopUploadingThread.UploadState)) || (((TroopUploadingThread.UploadState)paramObject).a != 1)) {
+    int j = paramBundle.getInt("readinjoy_to_wx_config");
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 1;; i = 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("", 2, "config = " + j + ", scene" + i);
+      }
+      this.jdField_a_of_type_Sdq.a(j, i);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.a.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.hasSetNewTroopHead = true;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.hasSetNewTroopName) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isNewTroop = false;
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.hasSetNewTroopHead = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.hasSetNewTroopHead;
-      this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isNewTroop = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isNewTroop;
-      this.a.u();
-    }
-    this.a.runOnUiThread(new sds(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sdr
  * JD-Core Version:    0.7.0.1
  */

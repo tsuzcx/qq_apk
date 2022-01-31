@@ -1,30 +1,21 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySubscriptionListViewGroup;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnLayoutChangeListener;
 
-public class mjl
-  implements ActionSheet.OnButtonClickListener
+class mjl
+  implements View.OnLayoutChangeListener
 {
-  public mjl(ReadInJoySubscriptionListViewGroup paramReadInJoySubscriptionListViewGroup, String paramString, ActionSheet paramActionSheet) {}
+  mjl(mjk parammjk) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySubscriptionListViewGroup.a());
+    if (paramInt4 - paramInt2 != paramInt8 - paramInt6) {
+      this.a.notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mjl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,14 @@
-import com.tencent.mobileqq.activity.Contacts;
-import com.tencent.mobileqq.app.CardObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class cks
-  extends CardObserver
+public final class cks
+  implements DialogInterface.OnClickListener
 {
-  private cks(Contacts paramContacts) {}
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && (this.a.a)) {
-      this.a.a(1400L, true);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cks
  * JD-Core Version:    0.7.0.1
  */

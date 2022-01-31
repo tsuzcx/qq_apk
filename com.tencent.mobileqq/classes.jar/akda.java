@@ -1,29 +1,20 @@
-import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.utils.NewUpgradeDialog;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class akda
-  implements DialogInterface.OnKeyListener
+  implements DialogInterface.OnClickListener
 {
-  public akda(NewUpgradeDialog paramNewUpgradeDialog) {}
+  public akda(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 4)
-    {
-      this.a.dismiss();
-      ((Activity)this.a.a.get()).finish();
-      return true;
-    }
-    return false;
+    this.a.s();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akda
  * JD-Core Version:    0.7.0.1
  */

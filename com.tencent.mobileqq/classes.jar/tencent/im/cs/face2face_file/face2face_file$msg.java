@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class face2face_file$msg
-  extends MessageMicro
+  extends MessageMicro<msg>
 {
   public static final int RESULT_FIELD_NUMBER = 2;
   public static final int VERSION_FIELD_NUMBER = 1;
@@ -16,7 +16,7 @@ public final class face2face_file$msg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.face2face_file.face2face_file.msg
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class DynamicSearch$Meaning
-  extends MessageMicro
+  extends MessageMicro<Meaning>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field eflag = PBField.initUInt32(0);
@@ -22,7 +22,7 @@ public final class DynamicSearch$Meaning
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pb.unite.search.DynamicSearch.Meaning
  * JD-Core Version:    0.7.0.1
  */

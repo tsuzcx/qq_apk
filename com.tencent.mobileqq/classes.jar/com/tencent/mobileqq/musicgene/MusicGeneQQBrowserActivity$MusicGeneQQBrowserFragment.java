@@ -6,7 +6,7 @@ import com.tencent.mobileqq.webview.swift.WebViewFragment;
 public class MusicGeneQQBrowserActivity$MusicGeneQQBrowserFragment
   extends WebViewFragment
 {
-  protected int a(Bundle paramBundle)
+  public int a(Bundle paramBundle)
   {
     int i = super.a(paramBundle);
     super.a(false);
@@ -15,7 +15,7 @@ public class MusicGeneQQBrowserActivity$MusicGeneQQBrowserFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity.MusicGeneQQBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

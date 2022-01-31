@@ -17,14 +17,14 @@ import com.tencent.component.media.image.drawable.BitmapRefDrawable;
 public class BubbleProcessor
   extends ImageProcessor
 {
-  private Bitmap a;
+  private Bitmap mMask;
   
   public BubbleProcessor(Bitmap paramBitmap)
   {
     if (paramBitmap == null) {
       throw new IllegalArgumentException("mask bitmap can not be null for BubbleProcessor");
     }
-    this.a = paramBitmap;
+    this.mMask = paramBitmap;
   }
   
   public int getType()
@@ -35,12 +35,12 @@ public class BubbleProcessor
   public Drawable process(Drawable paramDrawable)
   {
     BitmapReference localBitmapReference = ImageManagerEnv.g().drawableToBitmap(paramDrawable);
-    if ((localBitmapReference == null) || (this.a == null)) {
+    if ((localBitmapReference == null) || (this.mMask == null)) {
       return paramDrawable;
     }
     try
     {
-      localBitmapReference = BitmapReference.getBitmapReference(Bitmap.createScaledBitmap(localBitmapReference.getBitmap(), this.a.getWidth(), this.a.getHeight(), true));
+      localBitmapReference = BitmapReference.getBitmapReference(Bitmap.createScaledBitmap(localBitmapReference.getBitmap(), this.mMask.getWidth(), this.mMask.getHeight(), true));
       try
       {
         paramDrawable = ImageManager.getInstance().getBitmap(localBitmapReference.getWidth(), localBitmapReference.getHeight(), Bitmap.Config.ARGB_8888);
@@ -48,7 +48,7 @@ public class BubbleProcessor
         RectF localRectF = new RectF(0.0F, 0.0F, localBitmapReference.getWidth(), localBitmapReference.getHeight());
         Paint localPaint = new Paint();
         localPaint.setAntiAlias(true);
-        localCanvas.drawBitmap(this.a, null, localRectF, localPaint);
+        localCanvas.drawBitmap(this.mMask, null, localRectF, localPaint);
         localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
         localCanvas.drawBitmap(localBitmapReference.getBitmap(), null, localRectF, localPaint);
         return new BitmapRefDrawable(paramDrawable);
@@ -67,7 +67,7 @@ public class BubbleProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.image.processor.BubbleProcessor
  * JD-Core Version:    0.7.0.1
  */

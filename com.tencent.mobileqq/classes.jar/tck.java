@@ -1,20 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewStub;
 
-public class tck
-  implements DialogInterface.OnClickListener
+public abstract class tck<T>
+  extends tcj<T>
 {
-  public tck(NotificationActivity paramNotificationActivity) {}
+  protected int c = 1;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public tck(Context paramContext)
   {
-    this.a.finish();
+    super(paramContext);
   }
+  
+  protected View a(int paramInt)
+  {
+    if (this.a != null) {
+      return this.a.findViewById(paramInt);
+    }
+    return null;
+  }
+  
+  public void a(ViewStub paramViewStub)
+  {
+    paramViewStub.setLayoutResource(b());
+    this.a = paramViewStub.inflate();
+    e();
+  }
+  
+  protected abstract int b();
+  
+  protected abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tck
  * JD-Core Version:    0.7.0.1
  */

@@ -1,67 +1,87 @@
-import android.annotation.TargetApi;
-import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppContentView;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.smtt.sdk.WebView;
 
 public class nph
-  implements Runnable
+  extends aave
 {
-  public nph(TrimTextureVideoView paramTrimTextureVideoView) {}
-  
-  @TargetApi(14)
-  public void run()
+  public nph(ReadInJoyNativeAdAppContentView paramReadInJoyNativeAdAppContentView, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
   {
-    if (!this.a.jdField_i_of_type_Boolean)
+    super(paramContext, paramActivity, paramIntent, paramAppInterface);
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    super.onPageFinished(paramWebView, paramString);
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    paramWebView = this.a.findViewById(2131362681);
+    if ((paramWebView != null) && (ReadInJoyNativeAdAppContentView.a(this.a) != null))
     {
-      SLog.a(this.a.jdField_a_of_type_JavaLangString, "[%d]not attach! not schedule!", Integer.valueOf(this.a.jdField_i_of_type_Int));
-      return;
+      ReadInJoyNativeAdAppContentView.a(this.a).setVisibility(8);
+      paramWebView.setVisibility(0);
     }
-    int i = this.a.getCurrentPosition();
-    SLog.a(this.a.jdField_a_of_type_JavaLangString, "[%d]mRestartRunnable check enter! isPlaying = %b, mEndTime = %d, pos = %d", Integer.valueOf(this.a.jdField_i_of_type_Int), Boolean.valueOf(this.a.isPlaying()), Integer.valueOf(this.a.l), Integer.valueOf(i));
-    TrimTextureVideoView localTrimTextureVideoView;
-    if (this.a.l != 0)
+  }
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    super.onReceivedTitle(paramWebView, paramString);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    aase.b("AbsWebView", "shouldOverrideUrlLoading:" + paramString);
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
+    Object localObject;
+    do
     {
-      if (!this.a.isPlaying()) {
-        break label216;
-      }
-      if (i == this.a.p)
+      return true;
+      localObject = ((CustomWebView)paramWebView).getPluginEngine();
+      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
       {
-        localTrimTextureVideoView = this.a;
-        localTrimTextureVideoView.q += 1;
-        this.a.p = i;
+        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
+        for (boolean bool = true;; bool = false) {
+          return bool;
+        }
       }
-    }
-    else
+      paramString = Uri.parse(paramString);
+      localObject = paramString.getScheme();
+    } while (!myl.a().a(paramWebView.getUrl(), (String)localObject).booleanValue());
+    paramWebView = new Intent("android.intent.action.VIEW", paramString);
+    paramWebView.addFlags(268435456);
+    try
     {
-      if ((!this.a.isPlaying()) || (this.a.l <= 0) || (i < this.a.l)) {
-        break label264;
-      }
-      this.a.a(true);
+      this.mContext.startActivity(paramWebView);
+      return true;
     }
-    for (;;)
+    catch (ActivityNotFoundException paramWebView)
     {
-      SLog.b(this.a.jdField_a_of_type_JavaLangString, "schedule next!");
-      this.a.postDelayed(this, 200L);
-      return;
-      this.a.q = 0;
-      break;
-      label216:
-      if (i == this.a.n) {}
-      for (this.a.o = 0;; localTrimTextureVideoView.o += 1)
-      {
-        this.a.n = i;
-        break;
-        localTrimTextureVideoView = this.a;
-      }
-      label264:
-      if (this.a.jdField_a_of_type_Int == 5) {
-        this.a.a(true);
-      }
+      aase.d("AbsWebView", paramWebView.toString());
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nph
  * JD-Core Version:    0.7.0.1
  */

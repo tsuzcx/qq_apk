@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class bankcode_info$ElemPos
-  extends MessageMicro
+  extends MessageMicro<ElemPos>
 {
   public static final int END_OFFSET_FIELD_NUMBER = 2;
   public static final int START_OFFSET_FIELD_NUMBER = 1;
@@ -16,7 +16,7 @@ public final class bankcode_info$ElemPos
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ims.bankcode_info.ElemPos
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,67 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Build.VERSION;
+import android.view.KeyEvent;
 import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemVideo;
+import android.view.View.OnKeyListener;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
 class aijw
-  implements DialogInterface.OnClickListener
+  implements View.OnKeyListener, TextView.OnEditorActionListener
 {
-  aijw(aijv paramaijv, Context paramContext, View paramView) {}
+  private aijw(aijq paramaijq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    StructMsgItemVideo.a(this.jdField_a_of_type_Aijv.a, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView);
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) {
-      ReportController.b(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app, "CliOper", "", "", "0X8005BA3", "0X8005BA3", 0, 0, "", "", "", "");
+    return false;
+  }
+  
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramKeyEvent.getKeyCode() == 67)
+    {
+      bool1 = bool2;
+      if (paramKeyEvent.getAction() == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "on delete, start: " + this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart() + ", end: " + this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionEnd() + ", span: " + this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131373121));
+        }
+        if ((this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart() != 0) || (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionEnd() != 0)) {
+          break label243;
+        }
+        bool1 = bool2;
+        if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131373121) != null)
+        {
+          paramKeyEvent = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getCompoundDrawables();
+          this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setCompoundDrawables(paramKeyEvent[0], null, paramKeyEvent[2], paramKeyEvent[3]);
+          this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(2131373121, null);
+          this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(0);
+          this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setMinHeight(aepi.a(36.0F, paramView.getResources()));
+          this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo = null;
+          bool1 = true;
+        }
+      }
     }
-    paramDialogInterface.dismiss();
+    label243:
+    do
+    {
+      do
+      {
+        do
+        {
+          return bool1;
+          bool1 = bool2;
+        } while (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131373121) == null);
+        bool1 = bool2;
+      } while (Build.VERSION.SDK_INT < 21);
+      bool1 = bool2;
+    } while (aepi.a(36.0F, paramView.getResources()) != this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getMinHeight());
+    paramInt = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getMeasuredHeight();
+    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setMinHeight(paramInt);
+    return false;
   }
 }
 

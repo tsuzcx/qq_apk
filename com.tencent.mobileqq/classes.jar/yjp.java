@@ -1,19 +1,28 @@
-import com.tencent.TMG.sdk.AVVideoCtrl.EnableCameraCompleteCallback;
-import com.tencent.TMG.utils.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
+import com.tencent.mobileqq.pb.PBStringField;
 
-class yjp
-  extends AVVideoCtrl.EnableCameraCompleteCallback
+public class yjp
+  implements View.OnClickListener
 {
-  yjp(yjk paramyjk) {}
+  public yjp(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment, yiz paramyiz) {}
   
-  protected void onComplete(boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    QLog.d("AVCameraCaptureModel", 0, "EnableCameraCompleteCallback.OnComplete. result = " + paramInt);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Yiz.a.poster.registerCertifiedAccountUrl.get()))
+    {
+      ybt.a(this.jdField_a_of_type_Yiz.a.poster.registerCertifiedAccountUrl.get());
+      zaj.b(this.jdField_a_of_type_Yiz.a.poster.id.get(), "auth_person", "apply_clk", 0, 0, new String[0]);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yjp
  * JD-Core Version:    0.7.0.1
  */

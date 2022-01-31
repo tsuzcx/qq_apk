@@ -1,16 +1,32 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.do;
 
-final class jq
-  implements DialogInterface.OnClickListener
+class jq
+  implements View.OnClickListener
 {
-  jq(jl paramjl) {}
+  jq(FreezeStatusActivity paramFreezeStatusActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    FaceStartVryCameraActivity.access$1300(this.a.a);
+    paramView = do.a().e();
+    if ((paramView == null) || (FreezeStatusActivity.access$000(this.a) == null))
+    {
+      this.a.finish();
+      return;
+    }
+    if ((paramView != null) && (!paramView.mIsBinded))
+    {
+      this.a.showNoAccountTipDialog(this.a, 25, 1);
+      return;
+    }
+    paramView = new Intent(this.a, ModifyQQPwdActivity.class);
+    paramView.putExtra("source_id", 1);
+    pg.a().a(this.a, paramView, pg.b);
   }
 }
 

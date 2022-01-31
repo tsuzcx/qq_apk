@@ -1,10 +1,6 @@
 package cooperation.qzone;
 
-import amsu;
-import amsv;
-import amsw;
-import amsx;
-import amta;
+import alud;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -13,28 +9,38 @@ import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Process;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.widget.CheckBox;
+import asta;
+import azrq;
+import bdgm;
+import bdjz;
+import bdoo;
+import bjdt;
+import bjfz;
+import bjga;
+import bjgb;
+import bjgc;
+import bjge;
+import bjhg;
+import bjpz;
+import bjuz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
-import com.tencent.mobileqq.hitrate.PreloadProcHitPluginSession;
 import com.tencent.mobileqq.pluginsdk.IPluginActivity;
+import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.mobileqq.pluginsdk.PluginProxyFragmentActivity;
 import com.tencent.mobileqq.pluginsdk.PluginStatic;
-import com.tencent.mobileqq.statistics.StatisticHitRateCollector;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
-import cooperation.qzone.plugin.QZonePluginUtils;
-import cooperation.qzone.util.QZoneExceptionReport;
 import cooperation.qzone.util.exception.QZoneStartupFailException;
 import java.util.Iterator;
 import java.util.List;
@@ -43,14 +49,21 @@ public class QzonePluginProxyActivity
   extends PluginProxyFragmentActivity
   implements QzoneJumpQBrowserInterface
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "com.qzone.preview.QzonePictureViewer", "com.qzone.preview.LocalPictureViewer", "com.qzone.preview.QZonePanoramaActivity" };
-  private static final String[] b = { "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity", "com.qzone.common.activities.QzoneAdaptVideoActivity", "com.qzone.log.CrashNotificationActivity", "com.qzone.common.activities.NotificationActivity", "com.qzone.cover.ui.activity.QZoneCoverSetCustomActivity", "com.qzone.web.QZoneTranslucentActivity", "com.qzone.bulletscreen.BulletScreenActivity", "com.qzone.album.business.dlna.activity.DLNAActivity", "com.qzone.bulletscreen.BulletScreenActivity", "com.qzone.common.activities.base.QzoneWebGifHotPicActivity" };
+  public static volatile ClassLoader a;
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "com.qzone.preview.QzonePictureViewer", "com.qzone.preview.LocalPictureViewer", "com.qzone.preview.QZonePanoramaActivity", "com.qzone.preview.QzonePictureSelectViewer" };
+  private static final String[] b = { "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity", "com.qzone.common.activities.QzoneAdaptVideoActivity", "com.qzone.log.CrashNotificationActivity", "com.qzone.common.activities.NotificationActivity", "com.qzone.cover.ui.activity.QZoneCoverSetCustomActivity", "com.qzone.misc.web.QZoneTranslucentActivity", "com.qzone.misc.web.QZoneTranslucentActivity2", "com.qzone.bulletscreen.BulletScreenActivity", "com.qzone.album.business.dlna.activity.DLNAActivity", "com.qzone.bulletscreen.BulletScreenActivity", "com.qzone.common.activities.base.QzoneGiftPanelActivity", "com.qzone.common.activities.QzoneDualWarmActivity" };
+  private bjhg jdField_a_of_type_Bjhg = new bjhg();
   private TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
-  private WatchActivityManager jdField_a_of_type_CooperationQzoneWatchActivityManager = new WatchActivityManager();
+  
+  public static ClassLoader a()
+  {
+    return jdField_a_of_type_JavaLangClassLoader;
+  }
   
   public static ClassLoader a(Context paramContext)
   {
-    return PluginStatic.getOrCreateClassLoader(paramContext, "qzone_plugin.apk");
+    jdField_a_of_type_JavaLangClassLoader = PluginStatic.getOrCreateClassLoader(paramContext, "qzone_plugin.apk");
+    return jdField_a_of_type_JavaLangClassLoader;
   }
   
   public static String a()
@@ -72,24 +85,29 @@ public class QzonePluginProxyActivity
     sendBroadcast(localIntent);
   }
   
-  public static void a(Activity paramActivity, String paramString, Intent paramIntent, int paramInt)
+  public static void a(Activity paramActivity, String paramString, Intent paramIntent, int paramInt, boolean paramBoolean)
   {
-    a(paramActivity, paramString, paramIntent, paramInt, null);
+    a(paramActivity, paramString, paramIntent, paramInt, null, true, null, paramBoolean);
   }
   
-  public static void a(Activity paramActivity, String paramString, Intent paramIntent, int paramInt, DialogInterface.OnDismissListener paramOnDismissListener, boolean paramBoolean)
+  public static void a(Context paramContext, String paramString, Intent paramIntent, int paramInt)
   {
-    a(paramActivity, paramString, paramIntent, paramInt, paramOnDismissListener, paramBoolean, null);
+    a(paramContext, paramString, paramIntent, paramInt, null);
   }
   
-  public static void a(Activity paramActivity, String paramString, Intent paramIntent, int paramInt, DialogInterface.OnDismissListener paramOnDismissListener, boolean paramBoolean, PreloadProcHitPluginSession paramPreloadProcHitPluginSession)
+  public static void a(Context paramContext, String paramString, Intent paramIntent, int paramInt, DialogInterface.OnDismissListener paramOnDismissListener, boolean paramBoolean)
   {
-    b(paramActivity, paramString, paramIntent, paramInt, paramOnDismissListener, paramBoolean, paramPreloadProcHitPluginSession);
+    a(paramContext, paramString, paramIntent, paramInt, paramOnDismissListener, paramBoolean, null, false);
   }
   
-  public static void a(Activity paramActivity, String paramString, Intent paramIntent, int paramInt, PreloadProcHitPluginSession paramPreloadProcHitPluginSession)
+  public static void a(Context paramContext, String paramString, Intent paramIntent, int paramInt, DialogInterface.OnDismissListener paramOnDismissListener, boolean paramBoolean1, asta paramasta, boolean paramBoolean2)
   {
-    a(paramActivity, paramString, paramIntent, paramInt, null, true, paramPreloadProcHitPluginSession);
+    b(paramContext, paramString, paramIntent, paramInt, paramOnDismissListener, paramBoolean1, paramasta, paramBoolean2);
+  }
+  
+  public static void a(Context paramContext, String paramString, Intent paramIntent, int paramInt, asta paramasta)
+  {
+    a(paramContext, paramString, paramIntent, paramInt, null, true, paramasta, false);
   }
   
   public static void a(Intent paramIntent, String paramString)
@@ -132,30 +150,30 @@ public class QzonePluginProxyActivity
     return PluginStatic.getOrCreateClassLoader(paramContext, "Photoplus.apk");
   }
   
-  private static void b(Activity paramActivity, String paramString, Intent paramIntent, int paramInt, DialogInterface.OnDismissListener paramOnDismissListener, boolean paramBoolean, PreloadProcHitPluginSession paramPreloadProcHitPluginSession)
+  private static void b(Context paramContext, String paramString, Intent paramIntent, int paramInt, DialogInterface.OnDismissListener paramOnDismissListener, boolean paramBoolean1, asta paramasta, boolean paramBoolean2)
   {
-    if ((QZoneHelper.a) && ((paramActivity instanceof SplashActivity)))
+    if ((bjdt.a) && ((paramContext instanceof SplashActivity)))
     {
       paramInt = LocalMultiProcConfig.getInt("qzapp_vercode", 84);
       if (!LocalMultiProcConfig.getBool("qz_safe_mode_no_tip", false))
       {
-        paramActivity = DialogUtil.a(paramActivity, 230, 2130971340, "启用空间保护模式", "空间出问题了，启用空间保护模式点\"确定\"；点击\"取消\"，保护模式不会生效。", "取消", "确定", new amsu(paramActivity, paramInt, paramString, paramIntent), new amsv());
-        ((CheckBox)paramActivity.findViewById(2131374317)).setOnCheckedChangeListener(new amsw());
-        paramActivity.show();
+        paramContext = bdgm.a(paramContext, 230, 2131562338, alud.a(2131712571), "空间出问题了，启用空间保护模式点\"确定\"；点击\"取消\"，保护模式不会生效。", alud.a(2131712583), alud.a(2131712567), new bjfz(paramContext, paramInt, paramString, paramIntent), new bjga());
+        ((CheckBox)paramContext.findViewById(2131365269)).setOnCheckedChangeListener(new bjgb());
+        paramContext.show();
       }
-      while (QZoneHelper.a(paramActivity, paramInt, Long.valueOf(paramString).longValue(), "com.qzonex.app.tab.QZoneTabActivity")) {
+      while (bjdt.a(paramContext, paramInt, Long.valueOf(paramString).longValue(), "com.qzonex.app.tab.QZoneTabActivity")) {
         return;
       }
-      QZoneHelper.a(paramIntent.getStringExtra("sid"), paramActivity);
+      bjdt.a(paramIntent.getStringExtra("sid"), paramContext);
       return;
     }
-    if ((paramActivity instanceof FriendProfileCardActivity)) {
-      StatisticHitRateCollector.a().c(paramString);
+    if ((paramContext instanceof FriendProfileCardActivity)) {
+      azrq.a().c(paramString);
     }
     if (QLog.isColorLevel()) {
-      QLog.d("PluginDebug", 2, "launchPluingActivityForResult.isPluginInstalled start， showProgressDialog：" + paramBoolean);
+      QLog.d("PluginDebug", 2, "launchPluingActivityForResult.isPluginInstalled start， showProgressDialog：" + paramBoolean1);
     }
-    QZoneHelper.a(paramBoolean, new amsx(paramIntent, paramString, paramPreloadProcHitPluginSession, paramInt, paramActivity, paramOnDismissListener));
+    bjdt.a(paramBoolean1, new bjgc(paramIntent, paramString, paramasta, paramInt, paramBoolean2, paramContext, paramOnDismissListener));
   }
   
   private static boolean b(String[] paramArrayOfString, String paramString)
@@ -179,7 +197,7 @@ public class QzonePluginProxyActivity
   public static ClassLoader c(Context paramContext)
   {
     ClassLoader localClassLoader = null;
-    String str = QZonePluginUtils.a();
+    String str = bjpz.a();
     if (str.equals("qzone_live_video_plugin_hack.apk")) {
       localClassLoader = PluginStatic.getOrCreateClassLoader(paramContext, str);
     }
@@ -204,14 +222,23 @@ public class QzonePluginProxyActivity
     return paramContext;
   }
   
+  public static ClassLoader e(Context paramContext)
+  {
+    paramContext = PluginStatic.getOrCreateClassLoader(paramContext, "qzone_weishi_feeds_plugin.apk");
+    if (QLog.isColorLevel()) {
+      QLog.i("patch", 2, "getQzoneWeishiFeedsClassLoader classsloader: " + paramContext);
+    }
+    return paramContext;
+  }
+  
+  public bjhg a()
+  {
+    return this.jdField_a_of_type_Bjhg;
+  }
+  
   public IPluginActivity a()
   {
     return this.mPluginActivity;
-  }
-  
-  public WatchActivityManager a()
-  {
-    return this.jdField_a_of_type_CooperationQzoneWatchActivityManager;
   }
   
   public String getPluginID()
@@ -219,22 +246,28 @@ public class QzonePluginProxyActivity
     return "qzone_plugin.apk";
   }
   
-  protected int getPluginResType()
+  public int getPluginResType()
   {
     return 1;
   }
   
-  protected Class getProxyActivity(String paramString)
+  public Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
   {
-    return amta.a(paramString);
+    return bjge.a(paramString);
   }
   
-  protected int getThemeResId()
+  public int getThemeResId()
   {
     return 0;
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    bdoo.a();
+    super.onConfigurationChanged(paramConfiguration);
+  }
+  
+  public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     if ((this.mFlingHandler != null) && ((this.mFlingHandler instanceof FlingGestureHandler)))
@@ -248,10 +281,10 @@ public class QzonePluginProxyActivity
       for (;;)
       {
         paramBundle = paramBundle.getString("pluginsdk_launchActivity");
-        localObject = new StringBuffer("[插件启动失败] ");
+        localObject = new StringBuffer(alud.a(2131712585));
         ((StringBuffer)localObject).append(paramBundle).append(" ").append(this.mCreateErrorInfo);
         QLog.e("QZLog", 1, ((StringBuffer)localObject).toString());
-        QZoneExceptionReport.a(new QZoneStartupFailException(this.mCreateErrorInfo), "空间启动失败:" + getPluginActivity());
+        bjuz.a(new QZoneStartupFailException(this.mCreateErrorInfo), alud.a(2131712572) + getPluginActivity());
         a();
         return;
         paramBundle = getIntent().getExtras();
@@ -267,18 +300,18 @@ public class QzonePluginProxyActivity
         a(this, (String)localObject, getIntent(), 1000);
       }
     }
-    this.jdField_a_of_type_CooperationQzoneWatchActivityManager.a(this);
+    this.jdField_a_of_type_Bjhg.a(this);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
-    this.jdField_a_of_type_CooperationQzoneWatchActivityManager.c();
+    this.jdField_a_of_type_Bjhg.c();
     super.onDestroy();
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_CooperationQzoneWatchActivityManager.a(paramInt, paramKeyEvent);
+    this.jdField_a_of_type_Bjhg.a(paramInt, paramKeyEvent);
     return super.onKeyDown(paramInt, paramKeyEvent);
   }
   
@@ -287,19 +320,19 @@ public class QzonePluginProxyActivity
     super.onNewIntent(paramIntent);
   }
   
-  protected void onResume()
+  public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_CooperationQzoneWatchActivityManager.a();
+    this.jdField_a_of_type_Bjhg.a();
   }
   
-  protected void onStop()
+  public void onStop()
   {
     super.onStop();
-    this.jdField_a_of_type_CooperationQzoneWatchActivityManager.b();
+    this.jdField_a_of_type_Bjhg.b();
   }
   
-  protected boolean shouldHandleStartPluginFailed(String paramString)
+  public boolean shouldHandleStartPluginFailed(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
     int i;
@@ -352,7 +385,7 @@ public class QzonePluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.QzonePluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

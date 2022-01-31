@@ -1,126 +1,56 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.support.v4.util.LruCache;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import com.tencent.biz.qqstory.takevideo.artfilter.FilterTemplate;
-import com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
-import com.tencent.mobileqq.util.BitmapManager;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoyBiuButton;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButton;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class odw
-  extends BaseAdapter
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  LruCache jdField_a_of_type_AndroidSupportV4UtilLruCache;
-  List jdField_a_of_type_JavaUtilList;
-  int b;
-  public int c = -1;
-  
-  public odw(EditVideoArtFilter paramEditVideoArtFilter, Context paramContext)
+  public static int a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 130.0F);
-    this.b = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 96.0F);
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(20);
-  }
-  
-  public FilterTemplate a(int paramInt)
-  {
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-      return (FilterTemplate)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public void a(List paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    FilterTemplate localFilterTemplate = new FilterTemplate();
-    this.jdField_a_of_type_JavaUtilList.add(localFilterTemplate);
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    this.c = 0;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView1;
-    if (paramView == null)
+    switch (paramInt)
     {
-      paramViewGroup = new odx(this);
-      localView1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969055, null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView1.findViewById(2131364878));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = localView1.findViewById(2131364877);
-      localView1.setTag(paramViewGroup);
+    default: 
+      return -1;
+    case 11: 
+      return 1;
+    case 12: 
+      return 2;
+    case 13: 
+      return 3;
     }
-    FilterTemplate localFilterTemplate;
-    for (;;)
+    return 4;
+  }
+  
+  public static void a(ViewBase paramViewBase, ArticleInfo paramArticleInfo, boolean paramBoolean)
+  {
+    if ((!szl.a(paramArticleInfo)) || (paramViewBase == null)) {}
+    do
     {
-      localFilterTemplate = a(paramInt);
-      if (localFilterTemplate != null) {
-        break;
-      }
-      return localView1;
-      paramViewGroup = (odx)paramView.getTag();
-      localView1 = paramView;
-    }
-    paramView = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(localFilterTemplate.jdField_a_of_type_Int + localFilterTemplate.b);
-    View localView2 = paramView;
-    if (paramView == null)
-    {
-      if (paramInt != 0) {
-        break label246;
-      }
-      paramView = BitmapManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_a_of_type_AndroidContentContext.getResources(), 2130839560, this.b, this.jdField_a_of_type_Int);
-      localView2 = paramView;
-      if (paramView != null)
+      return;
+      if ((paramViewBase instanceof prf))
       {
-        this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(localFilterTemplate.jdField_a_of_type_Int + localFilterTemplate.b, paramView);
-        localView2 = paramView;
+        noy.a(new obk().a(BaseApplication.getContext()).a(11).b(3).a((AdvertisementInfo)paramArticleInfo).a());
+        return;
       }
-    }
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localView2);
-    if (paramInt == 0) {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("无滤镜");
-    }
-    for (;;)
+      if ((paramViewBase instanceof ReadInJoyBiuButton))
+      {
+        noy.a(new obk().a(BaseApplication.getContext()).a(13).b(3).a((AdvertisementInfo)paramArticleInfo).a());
+        return;
+      }
+    } while (!(paramViewBase instanceof NativeButton));
+    if (paramBoolean)
     {
-      if (paramInt != this.c) {
-        break label299;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      return localView1;
-      label246:
-      paramView = BitmapManager.a(localFilterTemplate.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
-      break;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("滤镜" + localFilterTemplate.c);
+      noy.a(new obk().a(BaseApplication.getContext()).a(14).b(3).a((AdvertisementInfo)paramArticleInfo).a());
+      return;
     }
-    label299:
-    paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    return localView1;
+    noy.a(new obk().a(BaseApplication.getContext()).a(12).b(3).a((AdvertisementInfo)paramArticleInfo).a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     odw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,27 @@
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
-import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import android.view.TouchDelegate;
+import android.view.View;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
 public class ajln
-  implements Runnable
+  extends TouchDelegate
 {
-  public ajln(HWReciteItem paramHWReciteItem, HWReciteInfo paramHWReciteInfo) {}
-  
-  public void run()
+  public ajln(DragTextView paramDragTextView, Rect paramRect, View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.a.b();
+    super(paramRect, paramView);
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent)
+  {
+    if (this.a.getVisibility() != 0) {
+      return false;
+    }
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    boolean bool = super.onTouchEvent(paramMotionEvent);
+    paramMotionEvent.setLocation(f1, f2);
+    return bool;
   }
 }
 

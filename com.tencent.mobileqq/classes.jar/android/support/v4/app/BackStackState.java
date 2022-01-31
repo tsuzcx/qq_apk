@@ -9,7 +9,7 @@ import java.util.ArrayList;
 final class BackStackState
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new BackStackState.1();
+  public static final Parcelable.Creator<BackStackState> CREATOR = new BackStackState.1();
   final int mBreadCrumbShortTitleRes;
   final CharSequence mBreadCrumbShortTitleText;
   final int mBreadCrumbTitleRes;

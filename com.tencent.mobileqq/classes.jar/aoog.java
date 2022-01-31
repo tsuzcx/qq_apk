@@ -1,89 +1,78 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
-import dov.com.tencent.mobileqq.shortvideo.PendantVersionManager;
-import java.io.File;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aoog
-  implements Runnable
+public class aoog
+  extends aokh<aoof>
 {
-  public void run()
+  public int a()
   {
-    String str1 = PtvFilterSoLoad.a(VideoEnvironment.a());
-    String str2 = PendantVersionManager.a();
-    File[] arrayOfFile = new File(str1).listFiles();
-    int i = PendantVersionManager.a().length;
-    int j;
-    Object localObject1;
-    Object localObject2;
-    Object localObject3;
-    int m;
-    if ((arrayOfFile != null) && (arrayOfFile.length > i + 2))
+    return 575;
+  }
+  
+  @NonNull
+  public aoof a(int paramInt)
+  {
+    return new aoof();
+  }
+  
+  @Nullable
+  public aoof a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null))
     {
-      j = 2147483647;
-      localObject1 = "unknown";
-      int k = 0;
-      i = 0;
-      if (k < arrayOfFile.length)
-      {
-        if (arrayOfFile[k] == null) {}
-        for (;;)
-        {
-          k += 1;
-          break;
-          localObject2 = arrayOfFile[k].getName();
-          if ((!str2.equalsIgnoreCase((String)localObject2)) && (!PendantVersionManager.a((String)localObject2)))
-          {
-            localObject3 = aopo.a((String)localObject2);
-            m = ((aopp)localObject3).a();
-            if (m == 0) {
-              break label218;
-            }
-            VideoEnvironment.a("[executeClearHistoryPendantCache] errorCodec=" + m + " filename=" + (String)localObject2, null);
-            localObject2 = new File(str1 + (String)localObject2);
-            if ((((File)localObject2).exists()) && (((File)localObject2).isFile())) {
-              ((File)localObject2).delete();
-            }
-          }
-        }
-        label218:
-        localObject3 = ((aopp)localObject3).a();
+      aoof localaoof = aoof.a(paramArrayOfaoko[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationEasterEggConfProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
       }
+      return localaoof;
     }
-    label418:
-    for (;;)
-    {
-      try
-      {
-        m = Integer.parseInt((String)localObject3);
-        if (m >= j) {
-          break label418;
-        }
-        j = m;
-        localObject1 = localObject2;
-        i += 1;
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        VideoEnvironment.a("[executeClearHistorySOLibFile] filename=" + (String)localObject2 + "  tempVersion=" + (String)localObject3, localNumberFormatException);
-      }
-      break;
-      VideoEnvironment.a("[executeClearHistoryPendantCache] deleteName=" + (String)localObject1 + "  validNumPendantCache=" + i + " leastVersion=" + j, null);
-      if (i >= 2)
-      {
-        localObject1 = new File(str1 + (String)localObject1);
-        if ((((File)localObject1).exists()) && (((File)localObject1).isFile()))
-        {
-          VideoEnvironment.a("[executeClearHistoryPendantCache] deletePath=" + ((File)localObject1).getAbsolutePath(), null);
-          ((File)localObject1).delete();
-        }
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationEasterEggConfProcessor", 2, "onParsed is null");
     }
+    return null;
+  }
+  
+  public Class<aoof> a()
+  {
+    return aoof.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationEasterEggConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public void a(aoof paramaoof)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationEasterEggConfProcessor", 2, "onUpdate " + paramaoof.toString());
+    }
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationEasterEggConfProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoog
  * JD-Core Version:    0.7.0.1
  */

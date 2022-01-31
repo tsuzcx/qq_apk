@@ -1,48 +1,38 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.fileviewer.controller.IUploadController;
-import com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel;
-import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
-import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileUtils;
-import java.util.UUID;
+import android.view.View;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.qphone.base.util.QLog;
 
 public class addt
-  implements IUploadController
+  implements bhuk
 {
-  public addt(TroopFileModel paramTroopFileModel) {}
+  public addt(GroupManagerActivity paramGroupManagerActivity, byte paramByte) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
-    TroopFileStatusInfo localTroopFileStatusInfo = TroopFileUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity);
-    if ((TextUtils.isEmpty(TroopFileModel.a(this.a))) && (localTroopFileStatusInfo.a != null)) {
-      TroopFileModel.a(this.a, localTroopFileStatusInfo.a.toString());
-    }
-    TroopFileItemOperation localTroopFileItemOperation = new TroopFileItemOperation(localFileManagerEntity.TroopUin, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidAppActivity);
-    if (((localTroopFileStatusInfo.b == 3) || (localTroopFileStatusInfo.b == 2)) && (localTroopFileStatusInfo.a != null)) {
-      localTroopFileItemOperation.a(localTroopFileStatusInfo.a);
-    }
-    localFileManagerEntity.status = 2;
-  }
-  
-  public void b()
-  {
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((FileManagerEntity)localObject).TroopUin);
-    localObject = TroopFileUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (FileManagerEntity)localObject);
-    if (!TextUtils.isEmpty(TroopFileModel.a(this.a)))
+    this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.c();
+    if (paramInt == 0)
     {
-      localTroopFileTransferManager.c(UUID.fromString(TroopFileModel.a(this.a)));
-      TroopFileModel.a(this.a, (TroopFileStatusInfo)localObject);
+      GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity).setDragEnabled(true);
+      GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity, this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a(this.jdField_a_of_type_Byte));
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupManagerActivity", 2, "DeleteFriendGroup :" + this.jdField_a_of_type_Byte + ", " + GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity));
+      }
+      if (!GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity)) {
+        break label110;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a(2131693334);
     }
+    label110:
+    while (GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity) == null) {
+      return;
+    }
+    GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity).notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     addt
  * JD-Core Version:    0.7.0.1
  */

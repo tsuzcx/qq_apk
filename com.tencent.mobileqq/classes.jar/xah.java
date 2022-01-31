@@ -1,30 +1,47 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.qwallet.PayCodeEntryActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 
-public class xah
-  extends BroadcastReceiver
+class xah
+  implements View.OnClickListener
 {
-  private xah(PayCodeEntryActivity paramPayCodeEntryActivity) {}
+  xah(xae paramxae) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    paramContext = paramIntent.getAction();
-    if ((paramContext == null) || (paramContext.length() == 0)) {}
-    while (!paramContext.equals("wlx.plugin.paycode.enterpage.exit")) {
+    if (!TextUtils.isEmpty(this.a.jdField_a_of_type_Xjg.jdField_a_of_type_JavaLangString))
+    {
+      this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_Xjg.jdField_a_of_type_JavaLangString;
+      paramView = this.a.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
+      if ((paramView.equals("##")) || (TextUtils.isEmpty(paramView)) || (!paramView.equals("# " + this.a.jdField_a_of_type_JavaLangString)))
+      {
+        xan localxan = this.a.jdField_a_of_type_Xan;
+        if (this.a.jdField_a_of_type_Xan.a())
+        {
+          paramView = "2";
+          localxan.a("use_custom_tag", 0, 0, new String[] { paramView });
+        }
+      }
+      else
+      {
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("# " + this.a.jdField_a_of_type_JavaLangString);
+      }
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Xan.a(0);
       return;
+      paramView = "1";
+      break;
+      this.a.jdField_a_of_type_JavaLangString = "";
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("");
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("PayCodeEntryActivity", 2, "receive broadcast, exit paycode entry activity");
-    }
-    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xah
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,28 @@
-import android.graphics.Rect;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
 
-public final class akgm
-  implements akgp
+class akgm
+  implements DialogInterface.OnClickListener
 {
-  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
+  akgm(akgl paramakgl) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new Rect(paramRect1.left + (int)((paramRect2.left - paramRect1.left) * paramFloat), paramRect1.top + (int)((paramRect2.top - paramRect1.top) * paramFloat), paramRect1.right + (int)((paramRect2.right - paramRect1.right) * paramFloat), paramRect1.bottom + (int)((paramRect2.bottom - paramRect1.bottom) * paramFloat));
+    azqs.b(null, "dc00898", "", "", "0X800A0C7", "0X800A0C7", 0, 0, String.valueOf(SessionClearFragment.b(this.a.a)), String.valueOf(SessionClearFragment.c(this.a.a)), "", "");
+    SessionClearFragment.a(this.a.a);
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("extra_delete_total_file_size", SessionClearFragment.a(this.a.a).a());
+    Activity localActivity = SessionClearFragment.a(this.a.a);
+    SessionClearFragment.a(this.a.a);
+    localActivity.setResult(-1, paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akgm
  * JD-Core Version:    0.7.0.1
  */

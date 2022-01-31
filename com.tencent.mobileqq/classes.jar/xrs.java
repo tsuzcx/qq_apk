@@ -1,28 +1,47 @@
-import android.os.Handler;
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.storyHome.QQStoryTakeVideoHelper.GenerateManifestCallback;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import java.util.List;
 
-public class xrs
-  implements QQStoryTakeVideoHelper.GenerateManifestCallback
+public abstract interface xrs
 {
-  public xrs(NewFlowCameraActivity paramNewFlowCameraActivity, long paramLong, int paramInt) {}
+  public abstract int a();
   
-  public void a()
-  {
-    SLog.c("PTV.NewFlowCameraActivity", "generate manifest file success. cost = " + (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a.post(new xrt(this));
-  }
+  public abstract Bitmap a();
   
-  public void b()
-  {
-    SLog.e("PTV.NewFlowCameraActivity", "generate manifest file failed. cost = " + (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long));
-  }
+  public abstract View a();
+  
+  public abstract xrx a(int paramInt);
+  
+  public abstract xry a();
+  
+  public abstract void a();
+  
+  public abstract void a(List<QQUserUIItem> paramList, int paramInt);
+  
+  public abstract void a(uxk paramuxk, float paramFloat1, float paramFloat2);
+  
+  public abstract void a(xru paramxru);
+  
+  public abstract void a(xrw paramxrw);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(int[] paramArrayOfInt);
+  
+  public abstract xsa[] a();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void d(boolean paramBoolean);
+  
+  public abstract void e(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xrs
  * JD-Core Version:    0.7.0.1
  */

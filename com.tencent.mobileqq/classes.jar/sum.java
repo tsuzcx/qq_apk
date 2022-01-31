@@ -1,20 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
-public class sum
-  implements DialogInterface.OnDismissListener
+class sum
+  extends alzr
 {
-  public sum(GroupManagerActivity paramGroupManagerActivity) {}
+  sum(suk paramsuk) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
   {
-    GroupManagerActivity.b(this.a, null);
+    if (paramInt == 0) {
+      this.a.h();
+    }
+  }
+  
+  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    if (paramInt == 0) {
+      this.a.h();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sum
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.teamwork.spread.ConfigSetting;
+import android.view.View;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
 
 public class aini
+  implements bhuk
 {
-  public String a;
-  public String[] a;
-  public String b;
-  public String[] b;
+  public aini(SettingActivity2 paramSettingActivity2, bhuf parambhuf) {}
   
-  private aini(ConfigSetting paramConfigSetting) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    this.jdField_a_of_type_Bhuf.cancel();
+    bdgm.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2, 230, alud.a(2131714253), alud.a(2131714250), alud.a(2131714251), alud.a(2131714249), new ainj(this), new aink(this)).show();
+  }
 }
 
 

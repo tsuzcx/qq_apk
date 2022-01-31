@@ -1,19 +1,14 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.view.View;
 
-class agfd
-  implements Runnable
+public abstract interface agfd
 {
-  agfd(agfb paramagfb) {}
+  public abstract void a(View paramView);
   
-  public void run()
-  {
-    ScanTorchActivity.a(this.a.a).setVisibility(0);
-  }
+  public abstract void b(View paramView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agfd
  * JD-Core Version:    0.7.0.1
  */

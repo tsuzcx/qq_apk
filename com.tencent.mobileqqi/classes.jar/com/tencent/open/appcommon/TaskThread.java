@@ -11,7 +11,7 @@ import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.open.base.FileUtils;
 import com.tencent.open.base.LogUtility;
 import com.tencent.open.base.img.ImageCache;
-import hoo;
+import hkk;
 import java.io.File;
 
 public class TaskThread
@@ -61,7 +61,7 @@ public class TaskThread
   
   public void a(int paramInt)
   {
-    ThreadManager.b().post(new hoo(this, paramInt));
+    ThreadManager.b().post(new hkk(this, paramInt));
   }
   
   public void a(Handler paramHandler)

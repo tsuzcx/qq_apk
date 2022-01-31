@@ -3,11 +3,11 @@ package com.tencent.mobileqq.app;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import atzx;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import mqq.app.QQBroadcastReceiver;
-import zkh;
-import zki;
 
 public class PushBroadcastReceiver
   extends QQBroadcastReceiver
@@ -15,16 +15,21 @@ public class PushBroadcastReceiver
   private void a(QQAppInterface paramQQAppInterface, Intent paramIntent)
   {
     if (paramIntent.getAction().equals("tencent.notify.background")) {
-      ThreadManager.post(new zkh(this, paramIntent, paramQQAppInterface), 10, null, false);
+      ThreadManager.post(new PushBroadcastReceiver.1(this, paramIntent, paramQQAppInterface), 10, null, false);
     }
     for (;;)
     {
-      if ((paramIntent.getAction().equals("com.tencent.mobileqq.PCONLINE_CLICK_NOTIFICATION")) || (paramIntent.getAction().equals("com.tencent.mobileqq.IPADONLINE_CLICK_NOTIFICATION"))) {
+      if ((paramIntent.getAction().equals("com.tencent.mobileqq.PCONLINE_CLICK_NOTIFICATION")) || (paramIntent.getAction().equals("com.tencent.mobileqq.IPADONLINE_CLICK_NOTIFICATION")))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("notification", 2, "PushBroadcastReceiver processIntent event : " + paramIntent.getAction());
+        }
         ((MessageHandler)paramQQAppInterface.a(0)).a(BaseApplication.getContext(), paramIntent);
+        atzx.a(paramIntent);
       }
       return;
       if (paramIntent.getAction().equals("tencent.notify.foreground")) {
-        ThreadManager.post(new zki(this, paramQQAppInterface), 10, null, false);
+        ThreadManager.post(new PushBroadcastReceiver.2(this, paramQQAppInterface), 10, null, false);
       }
     }
   }

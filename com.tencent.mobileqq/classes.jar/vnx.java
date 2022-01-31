@@ -1,27 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import android.os.Process;
-import com.tencent.qphone.base.util.QLog;
+import android.media.AudioManager.OnAudioFocusChangeListener;
 
-public final class vnx
-  extends Handler
+class vnx
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public void handleMessage(Message paramMessage)
+  vnx(vnu paramvnu) {}
+  
+  public void onAudioFocusChange(int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    if (((paramInt == -1) || (paramInt == -2) || (paramInt == -3)) && (vnu.a(this.a))) {
+      this.a.a();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("PEAK", 2, "self-destory BOOM!!!!");
-    }
-    Process.killProcess(Process.myPid());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vnx
  * JD-Core Version:    0.7.0.1
  */

@@ -5,24 +5,27 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewTreeObserver;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
-import com.tencent.av.SessionMgr;
 import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.av.opengl.effects.EffectController;
-import com.tencent.av.utils.TipsManager;
-import com.tencent.av.widget.BidirectionSeekBar;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import jqs;
-import jqt;
+import lfb;
+import lid;
+import ljs;
+import lrz;
+import lsa;
+import mdd;
+import mej;
+import mek;
+import mel;
 
 public class BeautyToolbar
   extends BaseToolbar
@@ -30,13 +33,12 @@ public class BeautyToolbar
   static final String TAG = "BeautyToolbar";
   RelativeLayout mBeautySeekBar = null;
   public int mBeautyValue = 0;
-  int mBeautyValueInit = 0;
-  public Context mContext = null;
+  Context mContext = null;
   private VideoControlUI mControlUI;
   public boolean mIs1stShow = false;
   boolean mIsShown = false;
-  SeekBar.OnSeekBarChangeListener mOnSeekBarChangeListener = new jqs(this);
-  public BidirectionSeekBar mSeek = null;
+  SeekBar.OnSeekBarChangeListener mOnSeekBarChangeListener = new mek(this);
+  public SeekBar mSeek = null;
   int mThumbWidth;
   public Drawable mThumb_0;
   public Drawable mThumb_100;
@@ -44,29 +46,32 @@ public class BeautyToolbar
   public Drawable mThumb_60;
   TextView mTip;
   int mTipLayoutMargin;
-  LinearLayout.LayoutParams mTipLayoutParams;
-  BaseToolbar.UIInfo mUIInfo = null;
+  RelativeLayout.LayoutParams mTipLayoutParams;
+  mej mUIInfo = null;
   
   public BeautyToolbar(VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity)
   {
     super(paramVideoAppInterface, paramAVActivity);
   }
   
-  public void applyBeautyValue(int paramInt)
+  static boolean checkShowBeauty(VideoController paramVideoController, VideoAppInterface paramVideoAppInterface)
   {
-    this.mApp.a().a(this.mContext.getApplicationContext()).a(paramInt);
+    if ((paramVideoController.a().n) || (!paramVideoController.a().j) || (!AVNotifyCenter.e(paramVideoAppInterface.getCurrentAccountUin())) || (!paramVideoController.a().o)) {}
+    for (int i = 1; i == 0; i = 0) {
+      return true;
+    }
+    return false;
   }
   
-  protected BaseToolbar.UIInfo getUIInfo()
+  protected mej getUIInfo()
   {
     if (this.mUIInfo == null)
     {
-      this.mUIInfo = new BaseToolbar.UIInfo();
+      this.mUIInfo = new mej();
       this.mUIInfo.d = 4;
-      this.mUIInfo.g = 2130969360;
-      this.mUIInfo.e = 103415;
-      this.mUIInfo.f = 2130840126;
-      this.mUIInfo.a = this.mApp.getApp().getResources().getString(2131428730);
+      this.mUIInfo.f = 2131559639;
+      this.mUIInfo.e = 2130841644;
+      this.mUIInfo.a = this.mApp.getApp().getString(2131696377);
     }
     return this.mUIInfo;
   }
@@ -74,115 +79,89 @@ public class BeautyToolbar
   public String getUnableInfo()
   {
     if (this.mActivity.get() != null) {
-      return ((AVActivity)this.mActivity.get()).getResources().getString(2131428737);
+      return ((AVActivity)this.mActivity.get()).getResources().getString(2131695934);
     }
     return "";
   }
   
   public boolean isEffectBtnEnable()
   {
-    return AVNotifyCenter.e(this.mApp.getCurrentAccountUin());
+    return ljs.a(this.mContext);
   }
   
-  protected void onCreate(AVActivity paramAVActivity)
+  protected void onCreate(long paramLong, AVActivity paramAVActivity)
   {
-    this.mBeautySeekBar = ((RelativeLayout)this.toolbarView.findViewById(2131366277));
-    this.mSeek = ((BidirectionSeekBar)this.toolbarView.findViewById(2131366280));
-    this.mTip = ((TextView)this.toolbarView.findViewById(2131366279));
+    this.mBeautySeekBar = ((RelativeLayout)this.toolbarView.findViewById(2131372905));
+    this.mSeek = ((SeekBar)this.toolbarView.findViewById(2131372906));
+    this.mTip = ((TextView)this.toolbarView.findViewById(2131372907));
     this.mTipLayoutParams = null;
     this.mContext = paramAVActivity;
-    this.mThumb_0 = this.mContext.getResources().getDrawable(2130840093);
-    this.mThumb_30 = this.mContext.getResources().getDrawable(2130840095);
-    this.mThumb_60 = this.mContext.getResources().getDrawable(2130840096);
-    this.mThumb_100 = this.mContext.getResources().getDrawable(2130840094);
+    this.mThumb_0 = this.mContext.getResources().getDrawable(2130841605);
+    this.mThumb_30 = this.mContext.getResources().getDrawable(2130841607);
+    this.mThumb_60 = this.mContext.getResources().getDrawable(2130841608);
+    this.mThumb_100 = this.mContext.getResources().getDrawable(2130841606);
     this.mSeek.setMax(100);
     this.mSeek.setOnSeekBarChangeListener(this.mOnSeekBarChangeListener);
-    this.mSeek.getViewTreeObserver().addOnGlobalLayoutListener(new jqt(this));
+    this.mSeek.getViewTreeObserver().addOnGlobalLayoutListener(new mel(this));
     if ((paramAVActivity instanceof AVActivity)) {
-      this.mControlUI = paramAVActivity.jdField_a_of_type_ComTencentAvUiVideoControlUI;
+      this.mControlUI = paramAVActivity.a;
     }
     if (AudioHelper.a(0) == 1)
     {
       this.toolbarView.setBackgroundColor(-16711936);
-      this.toolbarView.findViewById(2131366277).setBackgroundColor(-256);
-      this.toolbarView.findViewById(2131366278).setBackgroundColor(-16711681);
-      this.toolbarView.findViewById(2131366280).setBackgroundColor(-65281);
+      this.toolbarView.findViewById(2131372905).setBackgroundColor(-256);
+      this.toolbarView.findViewById(2131372909).setBackgroundColor(-16711681);
+      this.toolbarView.findViewById(2131372906).setBackgroundColor(-65281);
     }
+    this.mBeautySeekBar.setVisibility(4);
   }
   
-  protected void onDestroy(VideoAppInterface paramVideoAppInterface)
-  {
-    super.onDestroy(paramVideoAppInterface);
-    AVNotifyCenter.a(this.mApp.getCurrentAccountUin(), this.mBeautyValue);
-  }
-  
-  public void onHide()
+  public void onHide(long paramLong)
   {
     this.mBeautySeekBar.setVisibility(8);
     this.mIsShown = false;
-    AVNotifyCenter.a(this.mApp.getCurrentAccountUin(), this.mBeautyValue);
+    this.mApp.a("BEAUTY_SKIN", this.mBeautyValue, true);
     if (this.mBeautyValue > 0)
     {
-      SessionInfo localSessionInfo = SessionMgr.a().a();
-      if (localSessionInfo != null) {
-        localSessionInfo.s = true;
+      lid locallid = lfb.a().a();
+      if (locallid != null) {
+        locallid.u = true;
       }
     }
-    this.mControlUI.ad();
+    this.mControlUI.C(paramLong);
   }
   
-  public void onShow(int paramInt, boolean paramBoolean)
+  public void onShow(long paramLong, int paramInt, boolean paramBoolean)
   {
-    AVNotifyCenter.f(this.mApp.getCurrentAccountUin());
-    this.mBeautySeekBar.setVisibility(0);
     this.mIsShown = true;
     this.mIs1stShow = true;
-    paramInt = AVNotifyCenter.b(this.mApp.getCurrentAccountUin());
-    this.mBeautyValueInit = paramInt;
-    this.mBeautyValue = paramInt;
-    if (this.mBeautyValue == -1)
-    {
-      this.mBeautyValue = AVNotifyCenter.e;
-      this.mBeautyValueInit = 0;
-    }
-    applyBeautyValue(this.mBeautyValue);
+    this.mBeautyValue = this.mApp.b("BEAUTY_SKIN");
     this.mSeek.setProgress(this.mBeautyValue);
-    this.mSeek.setContentDescription(this.mContext.getResources().getString(2131429260));
-    this.mControlUI.z();
-    Object localObject = VideoController.a().a(((AVActivity)this.mActivity.get()).getApplicationContext());
-    if (localObject != null)
+    this.mControlUI.K();
+    lsa locallsa = VideoController.a().a(((AVActivity)this.mActivity.get()).getApplicationContext());
+    if (locallsa != null)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("EffectSettingUi", 1, "onShow clear state");
+      if (AudioHelper.e()) {
+        QLog.w("BeautyToolbar", 1, "onShow, seq[" + paramLong + "]");
       }
-      ((EffectController)localObject).b();
-      if ((this.mContext instanceof AVActivity))
-      {
-        localObject = (AVActivity)this.mContext;
-        ((AVActivity)localObject).jdField_a_of_type_ComTencentAvUtilsTipsManager.i();
-        ((AVActivity)localObject).jdField_a_of_type_ComTencentAvUtilsTipsManager.f();
-      }
+      locallsa.a(paramLong);
+      mdd.a(paramLong, this.mApp);
     }
-  }
-  
-  int process2beautyLevel(int paramInt)
-  {
-    return (paramInt + 9) / 10;
   }
   
   public void updateTip(int paramInt)
   {
     if (this.mTipLayoutParams == null)
     {
-      this.mTipLayoutParams = ((LinearLayout.LayoutParams)this.mTip.getLayoutParams());
+      this.mTipLayoutParams = ((RelativeLayout.LayoutParams)this.mTip.getLayoutParams());
       this.mThumbWidth = this.mThumb_60.getIntrinsicWidth();
-      this.mTipLayoutMargin = (((LinearLayout.LayoutParams)this.mSeek.getLayoutParams()).leftMargin + this.mThumbWidth / 2);
+      this.mTipLayoutMargin = (((RelativeLayout.LayoutParams)this.mSeek.getLayoutParams()).leftMargin + this.mThumbWidth / 2);
     }
+    this.mTip.setText(paramInt + "%");
     int i = this.mTip.getWidth();
     int j = this.mSeek.getWidth();
     this.mTipLayoutParams.leftMargin = (this.mTipLayoutMargin - i / 2 + (j - this.mThumbWidth) * paramInt / 100);
     this.mTip.requestLayout();
-    this.mTip.setText(this.mContext.getResources().getString(2131429260) + paramInt + "%");
   }
 }
 

@@ -1,29 +1,20 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.VideoItemHolder;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.share.AVSchema;
 
 public class mam
-  extends AnimatorListenerAdapter
+  implements DialogInterface.OnClickListener
 {
-  public mam(VideoFeedsAdapter paramVideoFeedsAdapter, VideoFeedsAdapter.VideoItemHolder paramVideoItemHolder, ImageView paramImageView) {}
+  public mam(AVSchema paramAVSchema, String paramString) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onAnimationEnd(paramAnimator);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter$VideoItemHolder.a.removeView(this.jdField_a_of_type_AndroidWidgetImageView);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
+    this.jdField_a_of_type_ComTencentAvShareAVSchema.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mam
  * JD-Core Version:    0.7.0.1
  */

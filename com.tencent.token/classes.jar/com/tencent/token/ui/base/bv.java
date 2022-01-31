@@ -1,15 +1,6 @@
 package com.tencent.token.ui.base;
 
-import android.os.Handler;
-import android.os.Message;
-
-final class bv
-  extends Handler
-{
-  bv(LockPatternVerifyView paramLockPatternVerifyView) {}
-  
-  public final void handleMessage(Message paramMessage) {}
-}
+public abstract interface bv {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

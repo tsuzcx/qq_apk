@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class device_lock_query_status$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   public static final int U32_APP_ID_FIELD_NUMBER = 3;
   public static final int U32_SEQ_FIELD_NUMBER = 1;
@@ -18,7 +18,7 @@ public final class device_lock_query_status$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ims.device_lock_query_status.ReqBody
  * JD-Core Version:    0.7.0.1
  */

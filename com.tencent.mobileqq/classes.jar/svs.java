@@ -1,52 +1,26 @@
-import QQService.DiscussMemberInfo;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
 
-public class svs
-  extends FriendListObserver
+class svs
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  private svs(JoinDiscussionActivity paramJoinDiscussionActivity) {}
+  svs(svp paramsvp) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    if ((!paramBoolean) || (this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.app.getCurrentAccountUin().equals(paramString))) {}
-    label192:
-    for (;;)
+    if (Build.VERSION.SDK_INT >= 19) {}
+    for (paramInt = 5894;; paramInt = 1799)
     {
+      svl.a(this.a.a).getWindow().getDecorView().setSystemUiVisibility(paramInt);
       return;
-      Object localObject = this.a.jdField_a_of_type_JavaUtilList.iterator();
-      do
-      {
-        if (!((Iterator)localObject).hasNext()) {
-          break;
-        }
-      } while (!String.valueOf(((DiscussMemberInfo)((Iterator)localObject).next()).Uin).equals(paramString));
-      for (int i = 1;; i = 0)
-      {
-        if ((i == 0) || (this.a.jdField_a_of_type_JavaUtilArrayList.contains(paramString))) {
-          break label192;
-        }
-        this.a.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-        localObject = new StringBuilder();
-        JoinDiscussionActivity localJoinDiscussionActivity = this.a;
-        localJoinDiscussionActivity.f = (localJoinDiscussionActivity.f + paramString + ";");
-        if (this.a.jdField_a_of_type_JavaUtilArrayList.size() != this.a.b) {
-          break;
-        }
-        ThreadManager.post(new svt(this), 8, null, true);
-        return;
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     svs
  * JD-Core Version:    0.7.0.1
  */

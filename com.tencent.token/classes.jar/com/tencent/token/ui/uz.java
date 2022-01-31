@@ -1,15 +1,24 @@
 package com.tencent.token.ui;
 
-import com.tencent.token.af;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
-final class uz
-  implements Runnable
+class uz
+  implements TextView.OnEditorActionListener
 {
-  uz(uy paramuy) {}
+  uz(RealNameFindActivity paramRealNameFindActivity) {}
   
-  public final void run()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    af.a().a(0L, RealNameFindActivity.access$300(this.a.a.a), RealNameFindActivity.access$000(this.a.a.a), "", "", RealNameFindActivity.access$1000(this.a.a.a), RealNameFindActivity.access$1600(this.a.a.a, RealNameFindActivity.access$1500(this.a.a.a)), RealNameFindActivity.access$1600(this.a.a.a, RealNameFindActivity.access$1700(this.a.a.a)), RealNameFindActivity.access$800(this.a.a.a), RealNameFindActivity.access$900(this.a.a.a), RealNameFindActivity.access$400(this.a.a.a));
+    if (paramInt == 6)
+    {
+      if (!RealNameFindActivity.access$300(this.a)) {
+        RealNameFindActivity.access$3100(this.a);
+      }
+      return true;
+    }
+    return false;
   }
 }
 

@@ -1,22 +1,20 @@
-import com.tencent.mobileqq.apollo.script.SpriteAioScript;
-import com.tencent.mobileqq.apollo.utils.ApolloGameBasicEventUtil.NotifyDressReady;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
 
-public class yrw
-  implements ApolloGameBasicEventUtil.NotifyDressReady
+class yrw
+  extends bead
 {
-  public yrw(SpriteAioScript paramSpriteAioScript, boolean paramBoolean) {}
+  yrw(yrr paramyrr, Bundle paramBundle) {}
   
-  public void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void onDone(beae parambeae)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteAioScript.a(paramQQAppInterface, paramString1, paramInt1, paramArrayOfInt, paramInt2);
-    }
+    this.jdField_a_of_type_AndroidOsBundle.putBoolean("down", true);
+    this.jdField_a_of_type_Yrr.a.a(86, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yrw
  * JD-Core Version:    0.7.0.1
  */

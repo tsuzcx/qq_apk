@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.hotpic.VideoBaseItem;
-import com.tencent.mobileqq.hotpic.VideoBaseItem.OnInnerStateChangeListener;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
-class adsh
-  implements Runnable
+public class adsh
+  implements aybu
 {
-  adsh(adsg paramadsg) {}
+  public adsh(QQSettingMe paramQQSettingMe) {}
   
-  public void run()
+  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject)
   {
-    this.a.a.c = 4;
-    if (VideoBaseItem.a(this.a.a) != null) {
-      VideoBaseItem.a(this.a.a).d(VideoBaseItem.a(this.a.a));
+    if (this.a.c)
+    {
+      if (paramInt != 100) {
+        this.a.a(2131690719);
+      }
+      this.a.z();
     }
   }
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 

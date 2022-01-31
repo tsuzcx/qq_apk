@@ -11,8 +11,8 @@ import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
 import com.tencent.mobileqq.pluginsdk.PluginManagerHelper;
 import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
 import com.tencent.mobileqq.pluginsdk.PluginStatic;
-import iga;
-import igb;
+import ibg;
+import ibh;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Iterator;
@@ -20,7 +20,7 @@ import java.util.List;
 import mqq.app.AppRuntime;
 
 public final class QfavHelper
-  implements iga
+  implements ibg
 {
   public static final String X = "com.qqfav.QfavAppInterface";
   public static PluginManagerHelper.OnPluginManagerLoadedListener a = null;
@@ -138,7 +138,7 @@ public final class QfavHelper
     if (paramContext == null) {
       localContext = BaseApplicationImpl.a().getApplicationContext();
     }
-    a = new igb(paramOnPluginInstallListener);
+    a = new ibh(paramOnPluginInstallListener);
     PluginManagerHelper.getPluginInterface(localContext, a);
   }
   

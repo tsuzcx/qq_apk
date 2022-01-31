@@ -15,7 +15,7 @@ import java.util.Map;
 
 public final class b
 {
-  public static boolean a;
+  public static boolean a = true;
   public static List<a> b = new ArrayList();
   public static boolean c;
   private static p d;
@@ -23,35 +23,33 @@ public final class b
   
   public static void a(Context paramContext, String paramString, boolean paramBoolean, BuglyStrategy paramBuglyStrategy)
   {
+    label61:
     Context localContext;
     com.tencent.bugly.crashreport.common.info.a locala1;
     com.tencent.bugly.crashreport.common.strategy.a locala;
     n localn;
     int i;
-    label295:
-    do
+    for (;;)
     {
-      for (;;)
+      try
       {
-        try
+        if (e)
         {
-          if (e)
-          {
-            x.d("[init] initial Multi-times, ignore this.", new Object[0]);
-            return;
-          }
-          if (paramContext == null)
-          {
-            Log.w(x.b, "[init] context is null, check it.");
-            continue;
-          }
-          if (paramString != null) {
-            break;
-          }
+          x.d("[init] initial Multi-times, ignore this.", new Object[0]);
+          return;
         }
-        finally {}
-        Log.e(x.b, "init arg 'crashReportAppID' should not be null!");
+        if (paramContext == null)
+        {
+          Log.w(x.b, "[init] context is null, check it.");
+          continue;
+        }
+        if (paramString != null) {
+          break label61;
+        }
       }
+      finally {}
+      Log.e(x.b, "init arg 'crashReportAppID' should not be null!");
+      continue;
       e = true;
       if (paramBoolean)
       {
@@ -66,10 +64,9 @@ public final class b
         x.e("--------------------------------------------------------------------------------------------", new Object[0]);
         x.b("[init] Open debug mode of Bugly.", new Object[0]);
       }
-      x.a("[init] Bugly version: v%s", new Object[] { "2.7.4" });
       x.a(" crash report start initializing...", new Object[0]);
       x.b("[init] Bugly start initializing...", new Object[0]);
-      x.a("[init] Bugly complete version: v%s", new Object[] { "2.7.4" });
+      x.a("[init] Bugly complete version: v%s", new Object[] { "3.1.7" });
       localContext = z.a(paramContext);
       locala1 = com.tencent.bugly.crashreport.common.info.a.a(localContext);
       locala1.s();
@@ -78,13 +75,18 @@ public final class b
       u.a(localContext);
       locala = com.tencent.bugly.crashreport.common.strategy.a.a(localContext, b);
       localn = n.a(localContext);
-      paramContext = locala1.q;
+      paramContext = locala1.r;
       locala1.getClass();
       if ((paramContext == null) || (!paramContext.contains("bugly"))) {
-        break;
+        break label877;
       }
       i = 1;
-    } while (i != 0);
+      label280:
+      if (i == 0) {
+        break;
+      }
+      a = false;
+    }
     locala1.a(paramString);
     x.a("[param] Set APP ID:%s", new Object[] { paramString });
     if (paramBuglyStrategy != null)
@@ -93,123 +95,122 @@ public final class b
       if (!TextUtils.isEmpty(paramContext))
       {
         if (paramContext.length() <= 100) {
-          break label888;
+          break label874;
         }
         paramString = paramContext.substring(0, 100);
         x.d("appVersion %s length is over limit %d substring to %s", new Object[] { paramContext, Integer.valueOf(100), paramString });
         paramContext = paramString;
+        label373:
+        locala1.m = paramContext;
+        x.a("[param] Set App version: %s", new Object[] { paramBuglyStrategy.getAppVersion() });
       }
     }
-    label842:
-    label879:
-    label882:
-    label885:
-    label888:
     for (;;)
     {
-      for (;;)
+      try
       {
-        locala1.l = paramContext;
-        x.a("[param] Set App version: %s", new Object[] { paramBuglyStrategy.getAppVersion() });
-        try
+        if (paramBuglyStrategy.isReplaceOldChannel())
         {
-          if (paramBuglyStrategy.isReplaceOldChannel())
+          paramContext = paramBuglyStrategy.getAppChannel();
+          if (!TextUtils.isEmpty(paramContext))
           {
-            paramContext = paramBuglyStrategy.getAppChannel();
-            if (!TextUtils.isEmpty(paramContext))
-            {
-              if (paramContext.length() <= 100) {
-                break label885;
-              }
-              paramString = paramContext.substring(0, 100);
-              x.d("appChannel %s length is over limit %d substring to %s", new Object[] { paramContext, Integer.valueOf(100), paramString });
-              paramContext = paramString;
-              d.a(556, "app_channel", paramContext.getBytes(), null, false);
-              locala1.n = paramContext;
+            if (paramContext.length() <= 100) {
+              continue;
             }
-            x.a("[param] Set App channel: %s", new Object[] { locala1.n });
-            paramContext = paramBuglyStrategy.getAppPackageName();
-            if (!TextUtils.isEmpty(paramContext))
-            {
-              if (paramContext.length() <= 100) {
-                break label882;
-              }
-              paramString = paramContext.substring(0, 100);
-              x.d("appPackageName %s length is over limit %d substring to %s", new Object[] { paramContext, Integer.valueOf(100), paramString });
-              paramContext = paramString;
-              locala1.c = paramContext;
-              x.a("[param] Set App package: %s", new Object[] { paramBuglyStrategy.getAppPackageName() });
-            }
-            paramContext = paramBuglyStrategy.getDeviceID();
-            if (paramContext != null)
-            {
-              if (paramContext.length() <= 100) {
-                break label879;
-              }
-              paramString = paramContext.substring(0, 100);
-              x.d("deviceId %s length is over limit %d substring to %s", new Object[] { paramContext, Integer.valueOf(100), paramString });
-              paramContext = paramString;
-              locala1.c(paramContext);
-              x.a("[param] Set device ID: %s", new Object[] { paramContext });
-            }
-            locala1.f = paramBuglyStrategy.isUploadProcess();
-            y.a = paramBuglyStrategy.isBuglyLogUpload();
-            com.tencent.bugly.crashreport.biz.b.a(localContext, paramBuglyStrategy);
-            i = 0;
-            int j = b.size();
-            if (i >= j) {
-              break label842;
-            }
+            paramString = paramContext.substring(0, 100);
+            x.d("appChannel %s length is over limit %d substring to %s", new Object[] { paramContext, Integer.valueOf(100), paramString });
+            paramContext = paramString;
+            d.a(556, "app_channel", paramContext.getBytes(), null, false);
+            locala1.o = paramContext;
           }
-        }
-        catch (Exception paramContext)
-        {
-          for (;;)
+          x.a("[param] Set App channel: %s", new Object[] { locala1.o });
+          paramContext = paramBuglyStrategy.getAppPackageName();
+          if (!TextUtils.isEmpty(paramContext))
           {
-            try
-            {
-              if (localn.a(((a)b.get(i)).id)) {
-                ((a)b.get(i)).init(localContext, paramBoolean, paramBuglyStrategy);
-              }
-              i += 1;
-              continue;
-              i = 0;
-              break label295;
-              paramContext = d.a(556, null, true);
-              if (paramContext == null) {
-                continue;
-              }
-              paramContext = (byte[])paramContext.get("app_channel");
-              if (paramContext == null) {
-                continue;
-              }
-              locala1.n = new String(paramContext);
-              continue;
-              paramContext = paramContext;
-              if (!c) {
-                continue;
-              }
-              paramContext.printStackTrace();
-            }
-            catch (Throwable paramContext)
-            {
-              if (x.a(paramContext)) {
-                continue;
-              }
-              paramContext.printStackTrace();
+            if (paramContext.length() <= 100) {
               continue;
             }
-            if (paramBuglyStrategy != null) {}
-            for (long l = paramBuglyStrategy.getAppReportDelay();; l = 0L)
-            {
-              locala.a(l);
-              x.b("[init] Bugly initialization finished.", new Object[0]);
-              break;
+            paramString = paramContext.substring(0, 100);
+            x.d("appPackageName %s length is over limit %d substring to %s", new Object[] { paramContext, Integer.valueOf(100), paramString });
+            paramContext = paramString;
+            locala1.c = paramContext;
+            x.a("[param] Set App package: %s", new Object[] { paramBuglyStrategy.getAppPackageName() });
+          }
+          paramContext = paramBuglyStrategy.getDeviceID();
+          if (paramContext != null)
+          {
+            if (paramContext.length() <= 100) {
+              continue;
             }
+            paramString = paramContext.substring(0, 100);
+            x.d("deviceId %s length is over limit %d substring to %s", new Object[] { paramContext, Integer.valueOf(100), paramString });
+            paramContext = paramString;
+            locala1.c(paramContext);
+            x.a("[param] Set device ID: %s", new Object[] { paramContext });
+          }
+          locala1.f = paramBuglyStrategy.isUploadProcess();
+          y.a = paramBuglyStrategy.isBuglyLogUpload();
+          break label883;
+          int j = b.size();
+          if (i >= j) {
             continue;
           }
         }
       }
+      catch (Exception paramContext)
+      {
+        try
+        {
+          if (localn.a(((a)b.get(i)).id)) {
+            ((a)b.get(i)).init(localContext, paramBoolean, paramBuglyStrategy);
+          }
+          i += 1;
+          continue;
+          paramContext = d.a(556, null, true);
+          if (paramContext == null) {
+            continue;
+          }
+          paramContext = (byte[])paramContext.get("app_channel");
+          if (paramContext == null) {
+            continue;
+          }
+          locala1.o = new String(paramContext);
+          continue;
+          paramContext = paramContext;
+          if (!c) {
+            continue;
+          }
+          paramContext.printStackTrace();
+        }
+        catch (Throwable paramContext)
+        {
+          if (x.a(paramContext)) {
+            continue;
+          }
+          paramContext.printStackTrace();
+          continue;
+        }
+        com.tencent.bugly.crashreport.biz.b.a(localContext, paramBuglyStrategy);
+        if (paramBuglyStrategy != null)
+        {
+          l = paramBuglyStrategy.getAppReportDelay();
+          locala.a(l);
+          x.b("[init] Bugly initialization finished.", new Object[0]);
+          break;
+        }
+        long l = 0L;
+        continue;
+        continue;
+        continue;
+        continue;
+      }
+      label874:
+      break label373;
+      label877:
+      i = 0;
+      break label280;
+      label883:
+      i = 0;
     }
   }
   

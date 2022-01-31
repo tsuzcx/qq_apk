@@ -1,20 +1,31 @@
-import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
 
-class aclc
-  implements DialogInterface.OnClickListener
+public final class aclc
+  implements beac
 {
-  aclc(acla paramacla) {}
+  public aclc(DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void callback(int paramInt)
   {
-    acla.a(this.a).dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatActivityUtils", 2, "showDlgWithCuOpenCheck type = " + paramInt);
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+    case 2: 
+      this.a.onClick(null, 0);
+      return;
+    }
+    this.b.onClick(null, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aclc
  * JD-Core Version:    0.7.0.1
  */

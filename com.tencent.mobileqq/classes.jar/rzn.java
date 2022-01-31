@@ -1,27 +1,23 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
-import com.tencent.mobileqq.activity.ChatHistory.Holder;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.utils.MsgUtils;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
 public class rzn
-  implements Runnable
+  extends aobz
 {
-  public rzn(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, int paramInt, String paramString, ChatHistory.Holder paramHolder, TextView paramTextView) {}
+  public rzn(FastWebActivity paramFastWebActivity) {}
   
-  public void run()
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    String str = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.app, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a, MsgUtils.a(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$Holder.b.equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$Holder.jdField_a_of_type_JavaLangString = str;
+    super.onAddColorNote(paramBundle, paramBoolean);
+    sdn.a(FastWebActivity.a(this.a), FastWebActivity.a(this.a), this.a.getApplicationContext());
+    if (paramBundle.getInt("color_note_curd_from_type") != 1) {
+      this.a.finish();
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.runOnUiThread(new rzo(this, str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rzn
  * JD-Core Version:    0.7.0.1
  */

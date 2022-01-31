@@ -10,19 +10,19 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.ConstantState;
 import android.util.DisplayMetrics;
 import com.tencent.component.media.image.BitmapReference;
-import phx;
 
 public class ImageDrawable
   extends Drawable
 {
-  private int jdField_a_of_type_Int;
-  private BitmapReference jdField_a_of_type_ComTencentComponentMediaImageBitmapReference;
-  private phx jdField_a_of_type_Phx;
-  private boolean jdField_a_of_type_Boolean;
-  private int b = -1;
-  private int c = -1;
-  private int d;
-  private int e;
+  private static final int DEFAULT_PAINT_FLAGS = 6;
+  private BitmapReference mBitmap;
+  private int mHeight = -1;
+  private ImageDrawable.ImageState mImageState;
+  private boolean mMutated;
+  private int mOriginalHeight;
+  private int mOriginalWidth;
+  private int mTargetDensity;
+  private int mWidth = -1;
   
   public ImageDrawable(Resources paramResources, BitmapReference paramBitmapReference)
   {
@@ -31,9 +31,9 @@ public class ImageDrawable
   
   public ImageDrawable(Resources paramResources, BitmapReference paramBitmapReference, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Phx = new phx(paramBitmapReference, paramInt1, paramInt2);
+    this.mImageState = new ImageDrawable.ImageState(paramBitmapReference, paramInt1, paramInt2);
     if (paramResources != null) {
-      this.jdField_a_of_type_Int = paramResources.getDisplayMetrics().densityDpi;
+      this.mTargetDensity = paramResources.getDisplayMetrics().densityDpi;
     }
     setBitmapInternal(paramBitmapReference);
   }
@@ -48,39 +48,39 @@ public class ImageDrawable
     this(null, paramBitmapReference, paramInt1, paramInt2);
   }
   
-  private ImageDrawable(phx paramphx, Resources paramResources)
+  private ImageDrawable(ImageDrawable.ImageState paramImageState, Resources paramResources)
   {
-    this.jdField_a_of_type_Phx = new phx(paramphx);
+    this.mImageState = new ImageDrawable.ImageState(paramImageState);
     if (paramResources != null)
     {
-      this.jdField_a_of_type_Int = paramResources.getDisplayMetrics().densityDpi;
-      if (paramphx == null) {
+      this.mTargetDensity = paramResources.getDisplayMetrics().densityDpi;
+      if (paramImageState == null) {
         break label71;
       }
     }
     label71:
-    for (paramphx = paramphx.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference;; paramphx = null)
+    for (paramImageState = paramImageState.mBitmap;; paramImageState = null)
     {
-      setBitmapInternal(paramphx);
+      setBitmapInternal(paramImageState);
       return;
-      if (paramphx == null) {
+      if (paramImageState == null) {
         break;
       }
-      this.jdField_a_of_type_Int = paramphx.d;
+      this.mTargetDensity = paramImageState.mTargetDensity;
       break;
     }
   }
   
-  private void a()
+  private void computeBitmapSize()
   {
-    Bitmap localBitmap = this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference.getBitmap();
+    Bitmap localBitmap = this.mBitmap.getBitmap();
     if (localBitmap == null)
     {
-      this.c = -1;
-      this.b = -1;
+      this.mHeight = -1;
+      this.mWidth = -1;
       return;
     }
-    int j = this.jdField_a_of_type_Int;
+    int j = this.mTargetDensity;
     int i;
     if (j == 0)
     {
@@ -93,8 +93,8 @@ public class ImageDrawable
     for (j = localBitmap.getHeight();; j = localBitmap.getScaledHeight(j))
     {
       long l = computeProperSize(i, j);
-      this.b = extractRangeStartFromLong(l);
-      this.c = extractRangeEndFromLong(l);
+      this.mWidth = extractRangeStartFromLong(l);
+      this.mHeight = extractRangeEndFromLong(l);
       return;
       i = localBitmap.getScaledWidth(j);
       break;
@@ -144,19 +144,19 @@ public class ImageDrawable
   
   protected final long computeProperSize(int paramInt1, int paramInt2)
   {
-    return computeProperScale(paramInt1, paramInt2, this.jdField_a_of_type_Phx.jdField_a_of_type_Int, this.jdField_a_of_type_Phx.b);
+    return computeProperScale(paramInt1, paramInt2, this.mImageState.mClipWidth, this.mImageState.mClipHeight);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference;
+    Object localObject = this.mBitmap;
     if (localObject != null) {}
     for (localObject = ((BitmapReference)localObject).getBitmap();; localObject = null)
     {
       if (localObject != null)
       {
-        phx localphx = this.jdField_a_of_type_Phx;
-        paramCanvas.drawBitmap((Bitmap)localObject, null, getBounds(), localphx.jdField_a_of_type_AndroidGraphicsPaint);
+        ImageDrawable.ImageState localImageState = this.mImageState;
+        paramCanvas.drawBitmap((Bitmap)localObject, null, getBounds(), localImageState.mPaint);
       }
       return;
     }
@@ -164,15 +164,15 @@ public class ImageDrawable
   
   public Bitmap getBitmap()
   {
-    if (this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference != null) {
-      return this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference.getBitmap();
+    if (this.mBitmap != null) {
+      return this.mBitmap.getBitmap();
     }
     return null;
   }
   
   public int getBitmapHeight()
   {
-    BitmapReference localBitmapReference = this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference;
+    BitmapReference localBitmapReference = this.mBitmap;
     if (localBitmapReference == null) {
       return -1;
     }
@@ -181,12 +181,12 @@ public class ImageDrawable
   
   public BitmapReference getBitmapRef()
   {
-    return this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference;
+    return this.mBitmap;
   }
   
   public int getBitmapWidth()
   {
-    BitmapReference localBitmapReference = this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference;
+    BitmapReference localBitmapReference = this.mBitmap;
     if (localBitmapReference == null) {
       return -1;
     }
@@ -195,39 +195,39 @@ public class ImageDrawable
   
   public int getChangingConfigurations()
   {
-    return super.getChangingConfigurations() | this.jdField_a_of_type_Phx.c;
+    return super.getChangingConfigurations() | this.mImageState.mChangingConfigurations;
   }
   
   public int getClipHeight()
   {
-    return this.jdField_a_of_type_Phx.b;
+    return this.mImageState.mClipHeight;
   }
   
   public int getClipWidth()
   {
-    return this.jdField_a_of_type_Phx.jdField_a_of_type_Int;
+    return this.mImageState.mClipWidth;
   }
   
   public final Drawable.ConstantState getConstantState()
   {
-    this.jdField_a_of_type_Phx.c = getChangingConfigurations();
-    return this.jdField_a_of_type_Phx;
+    this.mImageState.mChangingConfigurations = getChangingConfigurations();
+    return this.mImageState;
   }
   
   public int getIntrinsicHeight()
   {
-    return this.c;
+    return this.mHeight;
   }
   
   public int getIntrinsicWidth()
   {
-    return this.b;
+    return this.mWidth;
   }
   
   public int getOpacity()
   {
-    BitmapReference localBitmapReference = this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference;
-    if ((localBitmapReference == null) || (localBitmapReference.hasAlpha()) || (this.jdField_a_of_type_Phx.jdField_a_of_type_AndroidGraphicsPaint.getAlpha() < 255)) {
+    BitmapReference localBitmapReference = this.mBitmap;
+    if ((localBitmapReference == null) || (localBitmapReference.hasAlpha()) || (this.mImageState.mPaint.getAlpha() < 255)) {
       return -3;
     }
     return -1;
@@ -235,31 +235,31 @@ public class ImageDrawable
   
   public int getOriginalHeight()
   {
-    if (this.e > 0) {
-      return this.e;
+    if (this.mOriginalHeight > 0) {
+      return this.mOriginalHeight;
     }
     return getIntrinsicHeight();
   }
   
   public int getOriginalWidth()
   {
-    if (this.d > 0) {
-      return this.d;
+    if (this.mOriginalWidth > 0) {
+      return this.mOriginalWidth;
     }
     return getIntrinsicWidth();
   }
   
   public final Paint getPaint()
   {
-    return this.jdField_a_of_type_Phx.jdField_a_of_type_AndroidGraphicsPaint;
+    return this.mImageState.mPaint;
   }
   
   public Drawable mutate()
   {
-    if ((!this.jdField_a_of_type_Boolean) && (super.mutate() == this))
+    if ((!this.mMutated) && (super.mutate() == this))
     {
-      this.jdField_a_of_type_Phx = new phx(this.jdField_a_of_type_Phx);
-      this.jdField_a_of_type_Boolean = true;
+      this.mImageState = new ImageDrawable.ImageState(this.mImageState);
+      this.mMutated = true;
     }
     return this;
   }
@@ -271,26 +271,26 @@ public class ImageDrawable
   
   public void resize(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_Phx.jdField_a_of_type_Int != paramInt1) || (this.jdField_a_of_type_Phx.b != paramInt2))
+    if ((this.mImageState.mClipWidth != paramInt1) || (this.mImageState.mClipHeight != paramInt2))
     {
-      this.jdField_a_of_type_Phx.jdField_a_of_type_Int = paramInt1;
-      this.jdField_a_of_type_Phx.b = paramInt2;
-      a();
+      this.mImageState.mClipWidth = paramInt1;
+      this.mImageState.mClipHeight = paramInt2;
+      computeBitmapSize();
     }
   }
   
   public void setAlpha(int paramInt)
   {
-    if (paramInt != this.jdField_a_of_type_Phx.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
+    if (paramInt != this.mImageState.mPaint.getAlpha())
     {
-      this.jdField_a_of_type_Phx.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+      this.mImageState.mPaint.setAlpha(paramInt);
       invalidateSelf();
     }
   }
   
   public void setAntiAlias(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Phx.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(paramBoolean);
+    this.mImageState.mPaint.setAntiAlias(paramBoolean);
     invalidateSelf();
   }
   
@@ -301,10 +301,10 @@ public class ImageDrawable
   
   protected final void setBitmapInternal(BitmapReference paramBitmapReference, boolean paramBoolean)
   {
-    if (paramBitmapReference != this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference)
+    if (paramBitmapReference != this.mBitmap)
     {
-      this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference = paramBitmapReference;
-      a();
+      this.mBitmap = paramBitmapReference;
+      computeBitmapSize();
       if (paramBoolean) {
         invalidateSelf();
       }
@@ -318,43 +318,43 @@ public class ImageDrawable
   
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    this.jdField_a_of_type_Phx.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    this.mImageState.mPaint.setColorFilter(paramColorFilter);
     invalidateSelf();
   }
   
   public void setDither(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Phx.jdField_a_of_type_AndroidGraphicsPaint.setDither(paramBoolean);
+    this.mImageState.mPaint.setDither(paramBoolean);
     invalidateSelf();
   }
   
   public void setFilterBitmap(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Phx.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(paramBoolean);
+    this.mImageState.mPaint.setFilterBitmap(paramBoolean);
     invalidateSelf();
   }
   
   public void setOriginalHeight(int paramInt)
   {
-    this.e = paramInt;
+    this.mOriginalHeight = paramInt;
   }
   
   public void setOriginalWidth(int paramInt)
   {
-    this.d = paramInt;
+    this.mOriginalWidth = paramInt;
   }
   
   public void setTargetDensity(int paramInt)
   {
-    if (this.jdField_a_of_type_Int != paramInt)
+    if (this.mTargetDensity != paramInt)
     {
       int i = paramInt;
       if (paramInt == 0) {
         i = 160;
       }
-      this.jdField_a_of_type_Int = i;
-      if (this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference != null) {
-        a();
+      this.mTargetDensity = i;
+      if (this.mBitmap != null) {
+        computeBitmapSize();
       }
       invalidateSelf();
     }
@@ -372,7 +372,7 @@ public class ImageDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.image.drawable.ImageDrawable
  * JD-Core Version:    0.7.0.1
  */

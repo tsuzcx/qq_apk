@@ -1,36 +1,49 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.AddRequestActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class caq
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public caq(AddRequestActivity paramAddRequestActivity, ActionSheet paramActionSheet) {}
+  public caq(ChatBackgroundSettingActivity paramChatBackgroundSettingActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    this.a.b();
+    Object localObject = this.a.jdField_b_of_type_JavaLangString;
+    this.a.jdField_b_of_type_JavaLangString = "null";
+    paramView.findViewById(2131231327).setVisibility(0);
+    this.a.jdField_b_of_type_Int = -1;
+    if (localObject != null)
     {
-    default: 
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
+      paramView = (View)localObject;
+      if (((String)localObject).trim().length() != 0) {}
     }
-    if (NetworkUtil.e(BaseApplication.getContext()))
+    else
     {
-      Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.b.a()).longValue();
-      AddRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity);
+      paramView = "null";
     }
-    for (;;)
+    String str = this.a.jdField_b_of_type_JavaLangString;
+    if (str != null)
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.b, "CliOper", "", "", "Verification_msg", "Vfc_shield_clk", 0, 0, "", "", "", "");
-      break;
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131562449, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.d());
+      localObject = str;
+      if (str.trim().length() != 0) {}
+    }
+    else
+    {
+      localObject = "null";
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(ChatBackgroundSettingActivity.c(), 2, "oldPicPath is:" + paramView + ",newPicPath is:" + (String)localObject);
+    }
+    if (!paramView.equals(localObject))
+    {
+      if ((ChatBackgroundSettingActivity.a(this.a) == null) || (ChatBackgroundSettingActivity.a(this.a).trim().length() == 0)) {
+        ChatBackgroundSettingActivity.a(this.a, this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a());
+      }
+      this.a.v_();
     }
   }
 }

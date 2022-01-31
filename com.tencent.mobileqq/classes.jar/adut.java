@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.intervideo.now.NowDataReporter;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View;
+import android.view.View.OnCreateContextMenuListener;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
 public class adut
-  implements Runnable
+  implements View.OnCreateContextMenuListener
 {
-  public adut(NowDataReporter paramNowDataReporter, long paramLong) {}
+  public adut(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void run()
+  public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowDataReporter.a(this.jdField_a_of_type_Long);
+    paramContextMenu.clear();
   }
 }
 

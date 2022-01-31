@@ -1,20 +1,16 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.widget.RelativeLayout;
 
-final class pd
-  implements DialogInterface.OnCancelListener
+class pd
+  implements Runnable
 {
-  pd(LogoActivity paramLogoActivity) {}
+  pd(ModifyQQPwdActivity paramModifyQQPwdActivity) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if (paramDialogInterface != null)
-    {
-      paramDialogInterface.dismiss();
-      LogoActivity.access$100(this.a);
-    }
+    ModifyQQPwdActivity.access$300(this.a).setVisibility(8);
+    ModifyQQPwdActivity.access$402(this.a, false);
   }
 }
 

@@ -78,7 +78,7 @@ public class SegmentedControlView
     getChildAt(0).setBackgroundDrawable(this.d);
   }
   
-  protected void a()
+  public void a()
   {
     super.a();
     b();
@@ -106,7 +106,7 @@ public class SegmentedControlView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.SegmentedControlView
  * JD-Core Version:    0.7.0.1
  */

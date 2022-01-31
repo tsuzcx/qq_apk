@@ -1,23 +1,18 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoBusiManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoDownloadInfo;
-import com.tencent.mobileqq.shortvideo.ShortVideoPreDownloader;
-import com.tencent.mobileqq.shortvideo.ShortVideoReq;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
 
 public class ahzk
-  implements Runnable
+  implements bhwz
 {
-  public ahzk(ShortVideoPreDownloader paramShortVideoPreDownloader, ShortVideoDownloadInfo paramShortVideoDownloadInfo, MessageForShortVideo paramMessageForShortVideo, ShortVideoReq paramShortVideoReq) {}
+  public ahzk(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    ShortVideoPreDownloader.a("consumeShortVideoThumb", "start download thumb, fileType=" + this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoDownloadInfo.e + ", uniseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
-    ShortVideoBusiManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq, this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoPreDownloader.a);
+    azqs.b(this.a.a, "dc00898", "", "", "0X800AC87", "0X800AC87", 3, 0, "1", "2", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahzk
  * JD-Core Version:    0.7.0.1
  */

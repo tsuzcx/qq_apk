@@ -152,39 +152,39 @@ public class LBSObserver
   
   protected void a(boolean paramBoolean) {}
   
-  protected void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2) {}
+  public void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2) {}
   
   protected void a(boolean paramBoolean1, long paramLong, boolean paramBoolean2) {}
   
-  protected void a(boolean paramBoolean1, RspGetAreaList paramRspGetAreaList, boolean paramBoolean2) {}
+  public void a(boolean paramBoolean1, RspGetAreaList paramRspGetAreaList, boolean paramBoolean2) {}
   
-  protected void a(boolean paramBoolean, RspGetGroupInArea paramRspGetGroupInArea) {}
+  public void a(boolean paramBoolean, RspGetGroupInArea paramRspGetGroupInArea) {}
   
-  protected void a(boolean paramBoolean1, String paramString, int paramInt1, RespGetEncounterV2 paramRespGetEncounterV2, boolean paramBoolean2, int paramInt2, int paramInt3) {}
+  public void a(boolean paramBoolean1, String paramString, int paramInt1, RespGetEncounterV2 paramRespGetEncounterV2, boolean paramBoolean2, int paramInt2, int paramInt3) {}
   
   protected void a(boolean paramBoolean1, String paramString, RespGetNeighbors paramRespGetNeighbors, boolean paramBoolean2, int paramInt) {}
   
   protected void a(boolean paramBoolean, String paramString, RespFaceInfo paramRespFaceInfo) {}
   
-  protected void a(boolean paramBoolean, List paramList, int paramInt) {}
+  public void a(boolean paramBoolean, List paramList, int paramInt) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2) {}
+  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, RspGetNearbyGroup paramRspGetNearbyGroup) {}
+  public void a(boolean paramBoolean1, boolean paramBoolean2, RspGetNearbyGroup paramRspGetNearbyGroup) {}
   
-  protected void a(boolean paramBoolean, byte[] paramArrayOfByte) {}
+  public void a(boolean paramBoolean, byte[] paramArrayOfByte) {}
   
-  protected void a(boolean paramBoolean, byte[] paramArrayOfByte, String paramString1, String paramString2, String paramString3) {}
+  public void a(boolean paramBoolean, byte[] paramArrayOfByte, String paramString1, String paramString2, String paramString3) {}
   
-  protected void a(boolean paramBoolean, Object[] paramArrayOfObject) {}
+  public void a(boolean paramBoolean, Object[] paramArrayOfObject) {}
   
-  protected void a(boolean paramBoolean, String[] paramArrayOfString) {}
+  public void a(boolean paramBoolean, String[] paramArrayOfString) {}
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2) {}
+  public void b(boolean paramBoolean1, boolean paramBoolean2) {}
   
-  protected void b(boolean paramBoolean, Object[] paramArrayOfObject) {}
+  public void b(boolean paramBoolean, Object[] paramArrayOfObject) {}
   
-  protected void c(boolean paramBoolean, Object[] paramArrayOfObject) {}
+  public void c(boolean paramBoolean, Object[] paramArrayOfObject) {}
 }
 
 

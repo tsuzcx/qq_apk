@@ -1,31 +1,29 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wur
-  implements Animation.AnimationListener
+  extends QQUIEventReceiver<wub, uve>
 {
-  public wur(NewStyleCountryActivity paramNewStyleCountryActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public wur(@NonNull wub paramwub)
   {
-    if (!this.a.isFinishing())
-    {
-      this.a.jdField_a_of_type_Wuy.show();
-      this.a.b.setAnimation(null);
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      NewStyleCountryActivity.a(this.a).setVisibility(8);
+    super(paramwub);
+  }
+  
+  public void a(@NonNull wub paramwub, @NonNull uve paramuve)
+  {
+    if (paramuve.a) {
+      wub.d(paramwub);
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public Class acceptEventClass()
+  {
+    return uve.class;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wur
  * JD-Core Version:    0.7.0.1
  */

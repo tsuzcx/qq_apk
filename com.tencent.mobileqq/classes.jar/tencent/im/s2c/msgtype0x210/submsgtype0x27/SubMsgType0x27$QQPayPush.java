@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0x27$QQPayPush
-  extends MessageMicro
+  extends MessageMicro<QQPayPush>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "uint64_uin", "bool_pay_ok" }, new Object[] { Long.valueOf(0L), Boolean.valueOf(false) }, QQPayPush.class);
   public final PBBoolField bool_pay_ok = PBField.initBool(false);

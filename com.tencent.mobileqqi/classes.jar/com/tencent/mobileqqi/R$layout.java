@@ -1005,6 +1005,8 @@ public final class R$layout
   public static final int sT = 2130904073;
   public static final int sU = 2130904074;
   public static final int sV = 2130904075;
+  public static final int sW = 2130904076;
+  public static final int sX = 2130904077;
   public static final int sa = 2130904028;
   public static final int sb = 2130904029;
   public static final int sc = 2130904030;

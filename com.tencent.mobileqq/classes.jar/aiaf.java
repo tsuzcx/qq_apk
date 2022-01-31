@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment.ShortVideoDownload;
+import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
 
-public final class aiaf
-  implements Runnable
+class aiaf
+  implements aupv
 {
-  public aiaf(VideoEnvironment.ShortVideoDownload paramShortVideoDownload, int paramInt) {}
+  aiaf(aiae paramaiae) {}
   
-  public void run()
+  public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoEnvironment$ShortVideoDownload != null) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoEnvironment$ShortVideoDownload.a(this.jdField_a_of_type_Int);
-    }
+    this.a.jdField_a_of_type_Auqc.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
+    this.a.jdField_a_of_type_Auqc.a();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.u();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiaf
  * JD-Core Version:    0.7.0.1
  */

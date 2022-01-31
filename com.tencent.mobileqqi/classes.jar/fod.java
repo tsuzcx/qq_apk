@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.DataLineMsgSet;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.emoticonview.EmoticonGridViewAdapter;
 
 public class fod
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public fod(QQMessageFacade paramQQMessageFacade, DataLineMsgSet paramDataLineMsgSet) {}
+  public fod(EmoticonGridViewAdapter paramEmoticonGridViewAdapter) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet);
+    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
+      this.a.a();
+    }
+    return false;
   }
 }
 

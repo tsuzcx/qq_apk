@@ -1,28 +1,39 @@
-import android.widget.ImageView;
-import com.tencent.map.lbsapi.api.SOSOMapLBSApiResult;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.tencentmap.mapsdk.map.GeoPoint;
-import com.tencent.tencentmap.mapsdk.map.MapController;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.net.Uri;
+import android.os.SystemClock;
+import android.preference.PreferenceManager;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.SnapScreenActivity;
+import java.io.File;
 
 class dis
   implements Runnable
 {
-  dis(dir paramdir, SOSOMapLBSApiResult paramSOSOMapLBSApiResult, String paramString) {}
+  dis(dir paramdir, File paramFile) {}
   
   public void run()
   {
-    GeoPoint localGeoPoint = new GeoPoint((int)(this.jdField_a_of_type_ComTencentMapLbsapiApiSOSOMapLBSApiResult.Latitude * 1000000.0D), (int)(this.jdField_a_of_type_ComTencentMapLbsapiApiSOSOMapLBSApiResult.Longitude * 1000000.0D));
-    this.jdField_a_of_type_Dir.a.a.setCenter(localGeoPoint);
-    if (this.jdField_a_of_type_Dir.a.h) {}
+    if (this.jdField_a_of_type_Dir.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Dir.jdField_a_of_type_Dip.k = this.jdField_a_of_type_Dir.jdField_a_of_type_Dip.f;
+      this.jdField_a_of_type_Dir.jdField_a_of_type_Dip.a.a(false);
+      this.jdField_a_of_type_Dir.jdField_a_of_type_Dip.invalidate();
+      this.jdField_a_of_type_Dir.jdField_a_of_type_Dip.scheduleDrawable(null, new dit(this), SystemClock.uptimeMillis() + 1000L);
+      String str = this.jdField_a_of_type_Dir.jdField_a_of_type_Dip.a.jdField_a_of_type_AndroidContentContext.getString(2131562807).replace("${path}", SnapScreenActivity.jdField_a_of_type_JavaLangString);
+      SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_Dir.jdField_a_of_type_Dip.a.jdField_a_of_type_AndroidContentContext).edit();
+      localEditor.putString("LastScreenShotUri", Uri.fromFile(this.jdField_a_of_type_JavaIoFile).toString());
+      localEditor.commit();
+      this.jdField_a_of_type_Dir.jdField_a_of_type_Dip.a.jdField_a_of_type_AndroidContentContext.sendBroadcast(new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", Uri.fromFile(this.jdField_a_of_type_JavaIoFile)));
+      Toast.makeText(this.jdField_a_of_type_Dir.jdField_a_of_type_Dip.a.jdField_a_of_type_AndroidContentContext, str, 1).show();
+    }
     for (;;)
     {
-      this.jdField_a_of_type_Dir.a.a(localGeoPoint, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Dir.a.h();
+      this.jdField_a_of_type_Dir.jdField_a_of_type_Dip.a.a();
       return;
-      this.jdField_a_of_type_Dir.a.j = this.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_Dir.a.b.setVisibility(0);
-      this.jdField_a_of_type_Dir.a.c.setVisibility(0);
-      this.jdField_a_of_type_Dir.a.a(localGeoPoint);
+      Toast.makeText(this.jdField_a_of_type_Dir.jdField_a_of_type_Dip.a.jdField_a_of_type_AndroidContentContext, 2131562817, 1).show();
     }
   }
 }

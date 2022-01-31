@@ -4,17 +4,16 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-final class tv
+class tv
   implements View.OnClickListener
 {
-  tv(PCMobileQQVerifyedDevicesActivity paramPCMobileQQVerifyedDevicesActivity) {}
+  tv(RealNameActivity paramRealNameActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, WtLoginAccountInput.class);
-    paramView.putExtra("page_id", 4);
+    paramView = new Intent(this.a, RealNameDetailActivity.class);
+    paramView.putExtra("index", 1);
     this.a.startActivity(paramView);
-    this.a.finish();
   }
 }
 

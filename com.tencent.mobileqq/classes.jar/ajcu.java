@@ -1,25 +1,22 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.troop.data.TroopAioMsgNavigateBar;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajcu
-  extends Handler
+class ajcu
+  implements ajdx
 {
-  public ajcu(TroopAioMsgNavigateBar paramTroopAioMsgNavigateBar, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  ajcu(ajct paramajct, ajcw paramajcw) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
+    if (QLog.isColorLevel()) {
+      QLog.d("DrawClassifier", 2, "TensorFlow init:" + paramBoolean);
+    }
+    if (paramBoolean) {
+      ajct.a(this.jdField_a_of_type_Ajct, ajct.a(this.jdField_a_of_type_Ajct), this.jdField_a_of_type_Ajcw, true);
+    }
+    while (this.jdField_a_of_type_Ajcw == null) {
       return;
     }
-    this.a.g();
+    this.jdField_a_of_type_Ajcw.a(false);
   }
 }
 

@@ -1,29 +1,25 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
-import com.tencent.mobileqq.observer.GameCenterObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class cyo
-  extends GameCenterObserver
+  implements View.OnClickListener
 {
-  public cyo(LebaListMgrActivity paramLebaListMgrActivity) {}
+  public cyo(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.mgr", 2, "onGameCenterMsgReceive. notifyData.");
-    }
-    if ((this.a.isResume()) && (paramBoolean1) && (paramInt != 2) && (LebaListMgrActivity.a(this.a) != null))
-    {
-      List localList = LebaShowListManager.a().a();
-      this.a.runOnUiThread(new cyp(this, localList));
-    }
+    paramView = new Intent(this.a.a(), SoundAndVibrateActivity.class);
+    this.a.startActivity(paramView);
+    ReportController.b(this.a.b, "CliOper", "", "", "0X800403C", "0X800403C", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cyo
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_cmd0x59a$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "uint32_category_id", "msg_expert_info" }, new Object[] { Integer.valueOf(0), null }, RspBody.class);
   public oidb_cmd0x59a.ExpertInfo msg_expert_info = new oidb_cmd0x59a.ExpertInfo();
@@ -14,7 +14,7 @@ public final class oidb_cmd0x59a$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x59a.oidb_cmd0x59a.RspBody
  * JD-Core Version:    0.7.0.1
  */

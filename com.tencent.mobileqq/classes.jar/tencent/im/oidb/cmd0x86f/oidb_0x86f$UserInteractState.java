@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x86f$UserInteractState
-  extends MessageMicro
+  extends MessageMicro<UserInteractState>
 {
   public static final int STATE_TYPE_AWARD_POST = 3;
   public static final int STATE_TYPE_FACE_SCORE_DOT_LIKE = 1001;
@@ -44,7 +44,7 @@ public final class oidb_0x86f$UserInteractState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x86f.oidb_0x86f.UserInteractState
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,42 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoStatusListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.config.ConfigInfo;
 
 class met
-  implements Runnable
+  extends BroadcastReceiver
 {
-  met(meq parammeq) {}
+  met(mes parammes) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (VideoPlayManager.a(this.a.a) != null) {
-      VideoPlayManager.a(this.a.a).a(VideoPlayManager.a(this.a.a));
-    }
-    VideoPlayManager.a(this.a.a, VideoPlayManager.a(this.a.a), VideoPlayManager.a(this.a.a), 7, null);
-    if (VideoPlayManager.a(this.a.a) != null)
+    paramIntent = paramIntent.getAction();
+    if (paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE"))
     {
-      VideoPlayManager.a(this.a.a).d = -1;
-      VideoPlayManager.a(this.a.a).b = 0L;
-      VideoPlayManager.a(this.a.a, null);
+      if (!mes.a(this.a))
+      {
+        mes.a(this.a, true);
+        if (mes.b(this.a)) {
+          mes.a(this.a);
+        }
+      }
+      int i = ConfigInfo.getSharpConfigVersionFromFile(paramContext);
+      lyf.a().a("update", i);
     }
-    if (VideoPlayManager.a(this.a.a) != null)
+    do
     {
-      VideoPlayManager.a(this.a.a).h();
-      VideoPlayManager.a(this.a.a, null);
-    }
+      do
+      {
+        return;
+      } while ((!paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD")) || (mes.b(this.a)));
+      mes.b(this.a, true);
+    } while (!mes.a(this.a));
+    mes.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     met
  * JD-Core Version:    0.7.0.1
  */

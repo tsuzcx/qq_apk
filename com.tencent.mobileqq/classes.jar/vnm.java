@@ -1,23 +1,20 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
 class vnm
-  implements EIPCResultCallback
+  extends AnimatorListenerAdapter
 {
-  vnm(vnk paramvnk) {}
+  vnm(vnl paramvnl) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (-102 == paramEIPCResult.code) {
-      AIOGalleryScene.M(this.a.a).finish();
-    }
+    super.onAnimationEnd(paramAnimator);
+    this.a.a.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vnm
  * JD-Core Version:    0.7.0.1
  */

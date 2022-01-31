@@ -2,7 +2,7 @@ package com.tencent.mobileqq.filemanager.util;
 
 import android.view.View;
 import android.view.animation.Animation;
-import gcx;
+import fyl;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class FilePreviewAnimQueue
   {
     Animation localAnimation = (Animation)paramFilePreviewAnim.jdField_a_of_type_JavaLangObject;
     localAnimation.setDuration(paramFilePreviewAnim.jdField_a_of_type_Int);
-    localAnimation.setAnimationListener(new gcx(this, paramFilePreviewAnim));
+    localAnimation.setAnimationListener(new fyl(this, paramFilePreviewAnim));
   }
   
   public void a()

@@ -1,34 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.AlbumUtil;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
-public class wyc
-  implements View.OnClickListener
+class wyc
+  implements xjl<Boolean, xjr>
 {
-  public wyc(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  wyc(wyb paramwyb) {}
   
-  public void onClick(View paramView)
+  public Void a(Boolean paramBoolean, xjr paramxjr)
   {
-    if (PhotoPreviewActivity.c(this.a))
+    if (paramBoolean.booleanValue())
     {
-      this.a.i();
-      return;
+      wxe.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult succ=%b size=%d", paramBoolean, Integer.valueOf(Math.max(paramxjr.b.size(), paramxjr.jdField_a_of_type_JavaUtilList.size())));
+      this.a.a.setEnabled(true);
     }
-    if (this.a.x) {
-      ReportController.b(null, "CliOper", "", "", "0X8004D94", "0X8004D94", 0, 0, "", "", "", "");
+    for (;;)
+    {
+      return null;
+      wxe.e("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult error!!! errorCode=" + paramxjr.jdField_a_of_type_Int);
+      QQToast.a(this.a.a(), 1, alud.a(2131704038) + paramxjr.jdField_a_of_type_Int, 1);
     }
-    if (("FROM_PHOTO_LIST_FLOW".equals(this.a.e)) && (this.a.v)) {
-      this.a.setResult(-1);
-    }
-    this.a.finish();
-    AlbumUtil.a(this.a, true, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wyc
  * JD-Core Version:    0.7.0.1
  */

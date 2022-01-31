@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Įgalinti</string>
+    <string name="b">„%1$s“ neveiks, jei neįgalinsite „Google Play“ paslaugų.</string>
+    <string name="c">Įgalinkite „Google Play“ paslaugas</string>
+    <string name="d">Įdiegti</string>
+    <string name="e">Programa „%1$s“ nebus paleidžiama be „Google Play“ paslaugų, kurių nėra įrenginyje.</string>
+    <string name="f">Gaukite „Google Play“ paslaugas</string>
+    <string name="g">„Google Play“ paslaugų klaida</string>
+    <string name="h">Naudojant programą „%1$s“ kilo problemų dėl „Google Play“ paslaugų. Bandykite dar kartą.</string>
+    <string name="i">Programa „%1$s“ nebus paleidžiama be „Google Play“ paslaugų, kurių jūsų įrenginys nepalaiko.</string>
+    <string name="j">Atnaujinti</string>
+    <string name="k">„%1$s“ nebus paleidžiama, jei neatnaujinsite „Google Play“ paslaugų.</string>
+    <string name="l">Atnaujinkite „Google Play“ paslaugas</string>
+    <string name="m">„%1$s“ nebus paleidžiama be „Google Play“ paslaugų, kurios šiuo metu atnaujinamos.</string>
+    <string name="n">Reikia naujos versijos „Google Play“ paslaugų. Jos netrukus bus atnaujintos.</string>
+    <string name="o">Atidaryti telefone</string>
+    <string name="p">Prisijungti</string>
+    <string name="q">Prisijungti naudojant „Google“</string>
+    <string name="r">999+</string>
+</resources>

@@ -1,33 +1,47 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Iterator;
+import java.util.List;
 
 public class stg
-  implements ConditionSearchManager.IConfigListener
+  implements bhuk
 {
-  public stg(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public stg(SubscriptFeedsActivity paramSubscriptFeedsActivity, String paramString, bhuf parambhuf) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((this.a.a == 1) || (this.a.a == 2))
+    switch (paramInt)
     {
-      if (paramBoolean) {
-        break label55;
-      }
-      FriendProfileMoreInfoActivity.a(this.a);
-      QQToast.a(this.a, 2131437298, 0).b(this.a.getTitleBarHeight());
-    }
-    label55:
-    while (paramInt != 2) {
+    default: 
+      this.jdField_a_of_type_Bhuf.dismiss();
       return;
     }
-    FriendProfileMoreInfoActivity.a(this.a);
-    FriendProfileMoreInfoActivity.a(this.a, this.a.a);
+    suv.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.app, this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity, null);
+    paramInt = syb.b(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.app, this.jdField_a_of_type_JavaLangString);
+    ajlb.b(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.app, this.jdField_a_of_type_JavaLangString, paramInt);
+    this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.app.a().c(this.jdField_a_of_type_JavaLangString, 1008);
+    nrt.a(null, "CliOper", "", "", "0X8006113", "0X8006113", 0, 0, "", "", "", "");
+    paramView = SubscriptFeedsActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity).iterator();
+    sut localsut;
+    do
+    {
+      if (!paramView.hasNext()) {
+        break;
+      }
+      localsut = (sut)paramView.next();
+    } while ((localsut.jdField_a_of_type_JavaLangString == null) || (!localsut.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)));
+    for (paramInt = localsut.b;; paramInt = 0)
+    {
+      azqs.b(null, "dc00899", "Pb_account_lifeservice", this.jdField_a_of_type_JavaLangString, "0X80064CF", "0X80064CF", 0, 0, "" + paramInt, "", "", "");
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     stg
  * JD-Core Version:    0.7.0.1
  */

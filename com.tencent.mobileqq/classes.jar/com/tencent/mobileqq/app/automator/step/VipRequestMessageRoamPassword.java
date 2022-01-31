@@ -8,9 +8,9 @@ import com.tencent.mobileqq.app.automator.Automator;
 public class VipRequestMessageRoamPassword
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
-    this.a.b.a().l();
+    this.a.app.a().k();
     return 7;
   }
 }

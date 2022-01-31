@@ -1,45 +1,40 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
-import com.tencent.mobileqq.app.BizTroopHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.database.MemoryInfoEntry;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
 
-public class wmi
-  implements ActionSheet.OnButtonClickListener
+class wmi
+  extends SimpleJob<Object>
 {
-  public wmi(ContactsTroopAdapter paramContactsTroopAdapter, boolean paramBoolean, TroopInfo paramTroopInfo, ActionSheet paramActionSheet) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  wmi(wmf paramwmf, String paramString1, String paramString2)
   {
-    if (!NetworkUtil.g(this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsTroopAdapter.jdField_a_of_type_AndroidContentContext)) {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsTroopAdapter.jdField_a_of_type_AndroidContentContext, 1, 2131433009, 0).a();
-    }
-    for (;;)
+    super(paramString1);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    paramJobContext = (uvn)uwa.a(19);
+    paramVarArgs = paramJobContext.a(vcg.a(this.jdField_a_of_type_Wmf.b));
+    wmk localwmk = new wmk(this.jdField_a_of_type_Wmf.c);
+    ArrayList localArrayList = new ArrayList();
+    localwmk.jdField_a_of_type_JavaUtilList = paramJobContext.a(this.jdField_a_of_type_JavaLangString, localArrayList);
+    localwmk.jdField_a_of_type_JavaUtilArrayList = localArrayList;
+    if ((paramVarArgs != null) && (paramVarArgs.isEnd == 1)) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
-      return;
-      paramView = (BizTroopHandler)this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsTroopAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22);
-      if (this.jdField_a_of_type_Boolean)
-      {
-        paramView.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, 1);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsTroopAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800808D", "0X800808D", 0, 0, "", "", "", "");
-      }
-      else
-      {
-        paramView.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, 0);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsTroopAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800808C", "0X800808C", 0, 0, "", "", "", "");
-      }
+      localwmk.jdField_a_of_type_Boolean = bool;
+      umc.a().dispatch(localwmk);
+      wxe.a("Q.qqstory.memories:MemoryDataPuller", "Get memory key list %s", localwmk.jdField_a_of_type_JavaUtilList);
+      return null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wmi
  * JD-Core Version:    0.7.0.1
  */

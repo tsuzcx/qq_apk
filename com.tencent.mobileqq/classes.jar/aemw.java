@@ -1,24 +1,31 @@
-import com.tencent.mobileqq.nearby.NearbyProxy;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.nearby.ipc.NearbyProxyObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 public class aemw
-  extends NearbyProxyObserver
+  implements Comparator<MessageRecord>
 {
-  public aemw(NearbyProxy paramNearbyProxy, int paramInt) {}
+  public aemw(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  protected void a()
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    if (QLog.isColorLevel()) {
-      NearbyUtils.a("realHasUnreadMsg", new Object[] { "onNearbyProcStart" });
+    long l2 = paramMessageRecord1.time - paramMessageRecord2.time;
+    long l1 = l2;
+    if (l2 == 0L) {
+      l1 = paramMessageRecord1.getId() - paramMessageRecord2.getId();
     }
-    NearbyProxy.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyProxy, 4100, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    if (l1 > 0L) {
+      return -1;
+    }
+    if (l1 < 0L) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aemw
  * JD-Core Version:    0.7.0.1
  */

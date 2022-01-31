@@ -1,19 +1,18 @@
 package com.tencent.token.ui;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.af;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.UpgradeDeterminResult;
 
-final class sg
+class sg
   implements View.OnClickListener
 {
-  sg(NoCheckWithAuthActivity paramNoCheckWithAuthActivity) {}
+  sg(OpMsgDisplayActivity paramOpMsgDisplayActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    af.a().c(NoCheckWithAuthActivity.access$100(this.a).mRealUin, NoCheckWithAuthActivity.access$200(this.a).a(), "", "", NoCheckWithAuthActivity.access$300(this.a));
+    paramView = new Intent(this.a, UtilsAccountLockActivity.class);
+    this.a.startActivity(paramView);
   }
 }
 

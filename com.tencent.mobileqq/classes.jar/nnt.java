@@ -1,36 +1,7 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.playvideo.ProgressControler;
-import com.tencent.biz.qqstory.playvideo.player.IVideoView;
-import java.lang.ref.WeakReference;
-
-public class nnt
-  implements Runnable
-{
-  public nnt(ProgressControler paramProgressControler) {}
-  
-  public void run()
-  {
-    if (this.a.jdField_a_of_type_Boolean) {}
-    IVideoView localIVideoView;
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.jdField_a_of_type_JavaLangRefWeakReference == null);
-      localIVideoView = (IVideoView)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localIVideoView == null);
-    if (localIVideoView.b() > 0L)
-    {
-      this.a.a(this.a.jdField_a_of_type_Int, localIVideoView.a(), localIVideoView.b(), localIVideoView);
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 50L);
-  }
-}
+public class nnt {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nnt
  * JD-Core Version:    0.7.0.1
  */

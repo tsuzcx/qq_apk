@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.pubaccount.PublicAccountBrowser;
 import com.tencent.common.app.BaseApplicationImpl;
-import eqa;
+import elm;
 
 public class MyBusinessActivity
   extends PublicAccountBrowser
@@ -44,7 +44,7 @@ public class MyBusinessActivity
     {
       this.m.setVisibility(0);
       this.m.setText(getResources().getString(2131558971));
-      this.m.setOnClickListener(new eqa(this));
+      this.m.setOnClickListener(new elm(this));
       return;
     }
     this.m.setVisibility(8);

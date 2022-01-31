@@ -1,52 +1,12 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.transfile.dns.InnerDns;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
-import java.util.HashMap;
-import java.util.Map;
-
-public class aisg
-  implements Runnable
+class aisg
+  implements bezx
 {
-  public aisg(InnerDns paramInnerDns) {}
+  aisg(aisf paramaisf, Runnable paramRunnable) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("InnerDns", 1, "syncAddressData called, mServerProcName=" + InnerDns.a(this.a) + ", mConnected=" + InnerDns.a(this.a));
-    }
-    if (InnerDns.a(this.a)) {
-      try
-      {
-        Object localObject1 = new Bundle();
-        localObject1 = QIPCClientHelper.getInstance().getClient().callServer("InnerDnsModule", "syncAddressData", (Bundle)localObject1);
-        if (((EIPCResult)localObject1).isSuccess())
-        {
-          localObject1 = ((EIPCResult)localObject1).data.getString("addressData");
-          if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            return;
-          }
-          localObject1 = InnerDns.a((String)localObject1);
-          if (localObject1 == null) {
-            return;
-          }
-          try
-          {
-            InnerDns.a(this.a, new HashMap((Map)localObject1));
-            return;
-          }
-          finally {}
-        }
-        QLog.e("InnerDns", 1, "syncAddressData fail, mServerProcName=" + InnerDns.a(this.a));
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("InnerDns", 1, "syncAddressData error:" + localThrowable.getMessage());
-        return;
-      }
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
     }
   }
 }

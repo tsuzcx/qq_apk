@@ -1,42 +1,30 @@
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.troop.browser.TroopWebviewPlugin;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class ajaq
-  implements TroopMemberApiClient.Callback
+class ajaq
+  implements EIPCResultCallback
 {
-  public ajaq(TroopWebviewPlugin paramTroopWebviewPlugin, String paramString) {}
+  ajaq(ajao paramajao, ajal paramajal, DownloadParam paramDownloadParam) {}
   
-  public void a(Bundle paramBundle)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    long l = paramBundle.getLong("lastMsgTime");
-    paramBundle = paramBundle.getString("lastMsgContent");
-    try
+    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()) && (paramEIPCResult.data != null))
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("lastMsgTime", l);
-      localJSONObject.put("lastMsgContent", paramBundle);
-      if (!TextUtils.isEmpty(paramBundle))
-      {
-        localJSONObject.put("ret", 0);
-        localJSONObject.put("errorMsg", "");
+      i = paramEIPCResult.data.getInt("result_code");
+      paramEIPCResult = (PreloadManager.PathResult)paramEIPCResult.data.getSerializable("path_result");
+      if (this.jdField_a_of_type_Ajal != null) {
+        this.jdField_a_of_type_Ajal.onResult(i, paramEIPCResult);
       }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTroopBrowserTroopWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        return;
-        localJSONObject.put("ret", -1);
-        localJSONObject.put("errorMsg", "lastSpeakMsg is empty");
-      }
+    }
+    while (this.jdField_a_of_type_Ajal == null)
+    {
+      int i;
       return;
     }
-    catch (JSONException paramBundle)
-    {
-      paramBundle.printStackTrace();
-    }
+    this.jdField_a_of_type_Ajal.onResult(1, PreloadManager.PathResult.getFailRes(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.url));
   }
 }
 

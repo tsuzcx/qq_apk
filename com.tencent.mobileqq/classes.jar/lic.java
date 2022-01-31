@@ -1,19 +1,33 @@
-import android.widget.Button;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyEffectsCameraCaptureFragment;
+import java.util.HashMap;
 
 public class lic
-  implements Runnable
 {
-  public lic(ReadInJoyEffectsCameraCaptureFragment paramReadInJoyEffectsCameraCaptureFragment) {}
+  public int a;
+  protected HashMap<String, Integer> a;
   
-  public void run()
+  public static int a(lic paramlic, String paramString)
   {
-    this.a.a.setVisibility(8);
+    if (paramlic == null) {}
+    while ((paramlic.a == null) || (!paramlic.a.containsKey(paramString))) {
+      return 0;
+    }
+    return ((Integer)paramlic.a.get(paramString)).intValue();
+  }
+  
+  public static void a(lic paramlic, String paramString, int paramInt)
+  {
+    if (paramlic == null) {
+      return;
+    }
+    if (paramlic.a == null) {
+      paramlic.a = new HashMap();
+    }
+    paramlic.a.put(paramString, Integer.valueOf(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lic
  * JD-Core Version:    0.7.0.1
  */

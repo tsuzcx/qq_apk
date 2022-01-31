@@ -1,53 +1,45 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.data.NoC2CExtensionInfo;
-import com.tencent.mobileqq.ptt.PttVoiceChangePreSender;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.concurrent.atomic.AtomicInteger;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class upx
-  implements Runnable
+class upx
+  implements awkh
 {
-  public upx(ListenChangeVoicePanel paramListenChangeVoicePanel) {}
+  upx(upw paramupw) {}
   
-  public void run()
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    Object localObject = (FriendsManager)ListenChangeVoicePanel.a(this.a).getManager(50);
-    int i;
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.m())
+    return null;
+  }
+  
+  public void a(awki paramawki) {}
+  
+  public void b(awki paramawki)
+  {
+    if (paramawki.jdField_b_of_type_Int == 0)
     {
-      localObject = ((FriendsManager)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.jdField_a_of_type_Int, true);
-      if (localObject == null) {
-        break label142;
-      }
-      i = ((NoC2CExtensionInfo)localObject).pttChangeVoiceType;
-    }
-    for (;;)
-    {
-      if (i != -1)
-      {
-        ListenChangeVoicePanel.a(this.a, i);
-        ListenChangeVoicePanel.a(this.a)[i] = 1;
-      }
-      if (ListenChangeVoicePanel.jdField_a_of_type_ComTencentMobileqqPttPttVoiceChangePreSender == null) {
-        ListenChangeVoicePanel.jdField_a_of_type_ComTencentMobileqqPttPttVoiceChangePreSender = new PttVoiceChangePreSender();
-      }
+      this.a.jdField_a_of_type_Upc.c = paramawki.jdField_b_of_type_JavaLangString;
+      this.a.jdField_a_of_type_Upc.a = paramawki.c;
+      this.a.b();
+      upw.a(this.a, new ErrorMessage());
       return;
-      localObject = ((FriendsManager)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.jdField_a_of_type_JavaLangString, true);
-      if (localObject != null) {
-        i = ((ExtensionInfo)localObject).pttChangeVoiceType;
-      } else {
-        label142:
-        i = -1;
-      }
     }
+    if ((paramawki.jdField_b_of_type_Int == baxx.a(940010)) && (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement() < 2))
+    {
+      upw.a(this.a);
+      wxe.d("Q.qqstory.publish.upload:StoryVideoFileObject  ", "retry load file");
+      return;
+    }
+    this.a.b();
+    paramawki = new ErrorMessage(paramawki.jdField_b_of_type_Int, paramawki.a);
+    paramawki.extraMsg = "upload";
+    upw.a(this.a, paramawki);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     upx
  * JD-Core Version:    0.7.0.1
  */

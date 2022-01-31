@@ -1,18 +1,40 @@
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.subscribe.widget.commodity.CommodityItemView;
+import com.tencent.biz.subscribe.widget.commodity.CommodityListView;
+import java.util.ArrayList;
 
 public class yoq
-  implements Runnable
+  extends yhw
 {
-  public yoq(ApolloCmdChannel paramApolloCmdChannel, String paramString1, String paramString2, int paramInt, long paramLong) {}
+  public yoq(CommodityListView paramCommodityListView) {}
   
-  public void run()
+  public yhx a(ViewGroup paramViewGroup, int paramInt)
   {
-    ApolloCmdChannel.access$100(this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+    paramViewGroup = new CommodityItemView(this.a.getContext());
+    paramViewGroup.setIsPublishUI(CommodityListView.a(this.a));
+    paramViewGroup.setCurrentFeed(CommodityListView.a(this.a));
+    return new yhx(this, paramViewGroup);
+  }
+  
+  public int getItemCount()
+  {
+    return this.mDataList.size();
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if (!bhrz.a(paramInt, this.mDataList))
+    {
+      ((CommodityItemView)paramViewHolder.itemView).setData(this.mDataList.get(paramInt));
+      ((CommodityItemView)paramViewHolder.itemView).b().setOnClickListener(new yor(this, paramInt));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yoq
  * JD-Core Version:    0.7.0.1
  */

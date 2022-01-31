@@ -10,16 +10,16 @@ public final class stPhotoPoiAreaList
   implements Cloneable
 {
   static stPhotoPoiArea cache_album_poi;
-  static ArrayList cache_poi_areas;
+  static ArrayList<stPhotoPoiArea> cache_poi_areas;
   public stPhotoPoiArea album_poi;
   public String end_description = "";
-  public ArrayList poi_areas;
+  public ArrayList<stPhotoPoiArea> poi_areas;
   public String start_description = "";
   public long start_shoot_time;
   
   public stPhotoPoiAreaList() {}
   
-  public stPhotoPoiAreaList(stPhotoPoiArea paramstPhotoPoiArea, String paramString1, String paramString2, ArrayList paramArrayList, long paramLong)
+  public stPhotoPoiAreaList(stPhotoPoiArea paramstPhotoPoiArea, String paramString1, String paramString2, ArrayList<stPhotoPoiArea> paramArrayList, long paramLong)
   {
     this.album_poi = paramstPhotoPoiArea;
     this.start_description = paramString1;

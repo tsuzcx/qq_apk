@@ -1,18 +1,14 @@
 package c.t.m.g;
 
-final class w
-  implements Runnable
+import java.util.List;
+
+public abstract interface w
 {
-  w(v paramv) {}
-  
-  public final void run()
-  {
-    this.a.a();
-  }
+  public abstract List<v> a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.w
  * JD-Core Version:    0.7.0.1
  */

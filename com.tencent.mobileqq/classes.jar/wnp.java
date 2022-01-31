@@ -1,22 +1,17 @@
-import com.tencent.mobileqq.activity.contacts.adapter.PhoneContactAdapter;
-import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
-
 class wnp
-  implements Runnable
+  extends xwf
 {
-  wnp(wno paramwno, boolean paramBoolean) {}
+  wnp(wno paramwno) {}
   
-  public void run()
+  public boolean a(boolean paramBoolean)
   {
-    PhoneContactFragment.a(this.jdField_a_of_type_Wno.a, this.jdField_a_of_type_Boolean);
-    if (this.jdField_a_of_type_Wno.a.a != null) {
-      this.jdField_a_of_type_Wno.a.a.notifyDataSetChanged();
-    }
+    this.a.b();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wnp
  * JD-Core Version:    0.7.0.1
  */

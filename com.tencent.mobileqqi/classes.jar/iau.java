@@ -1,38 +1,31 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.FastScroller;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qlink.IQlinkService.Stub;
+import cooperation.qlink.QlinkServiceProxy;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class iau
-  implements Runnable
+  implements ServiceConnection
 {
-  public iau(FastScroller paramFastScroller) {}
+  public iau(QlinkServiceProxy paramQlinkServiceProxy) {}
   
-  public void run()
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    int k;
-    int j;
-    int i;
-    if (this.a.jdField_a_of_type_ComTencentWidgetAbsListView.l)
-    {
-      this.a.f();
-      k = this.a.jdField_a_of_type_ComTencentWidgetAbsListView.getHeight();
-      j = (int)this.a.jdField_a_of_type_Float - this.a.jdField_a_of_type_Int + 10;
-      if (j >= 0) {
-        break label100;
-      }
-      i = 0;
-    }
-    for (;;)
-    {
-      this.a.c = i;
-      this.a.a(this.a.c / (k - this.a.jdField_a_of_type_Int));
-      this.a.b = false;
-      return;
-      label100:
-      i = j;
-      if (this.a.jdField_a_of_type_Int + j > k) {
-        i = k - this.a.jdField_a_of_type_Int;
-      }
-    }
+    QLog.d("QlinkServiceProxy", 1, "onServiceConnected service:" + paramComponentName);
+    QlinkServiceProxy.a(this.a, IQlinkService.Stub.a(paramIBinder));
+    QlinkServiceProxy.a(this.a, false);
+    QlinkServiceProxy.a(this.a);
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    QLog.d("QlinkServiceProxy", 1, "onServiceDisconnected " + paramComponentName);
+    QlinkServiceProxy.a(this.a).getApplication().unbindService(QlinkServiceProxy.a(this.a));
+    QlinkServiceProxy.a(this.a, null);
+    QlinkServiceProxy.a(this.a, false);
   }
 }
 

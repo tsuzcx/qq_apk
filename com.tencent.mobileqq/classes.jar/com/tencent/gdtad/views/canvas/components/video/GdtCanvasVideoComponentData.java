@@ -1,19 +1,24 @@
 package com.tencent.gdtad.views.canvas.components.video;
 
 import android.text.TextUtils;
-import com.tencent.gdtad.views.canvas.components.GdtCanvasComponentData;
+import com.tencent.ad.tangram.canvas.views.canvas.components.AdCanvasComponentData;
 
 public class GdtCanvasVideoComponentData
-  extends GdtCanvasComponentData
+  extends AdCanvasComponentData
 {
   public long duration;
   public int height;
-  public boolean loop;
+  private boolean loop = true;
   public long size;
   public String thumbUrl;
   public String url;
   public String videoId;
   public int width;
+  
+  public boolean isLoop()
+  {
+    return this.loop;
+  }
   
   public boolean isValid()
   {
@@ -22,7 +27,7 @@ public class GdtCanvasVideoComponentData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.components.video.GdtCanvasVideoComponentData
  * JD-Core Version:    0.7.0.1
  */

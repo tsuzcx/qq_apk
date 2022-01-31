@@ -1,39 +1,33 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.jsp.DataApiPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import java.io.IOException;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.qphone.base.util.QLog;
 
-public class advz
-  implements Runnable
+class advz
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  public advz(DataApiPlugin paramDataApiPlugin, String paramString1, String paramString2, Bundle paramBundle1, Bundle paramBundle2, String paramString3) {}
+  advw jdField_a_of_type_Advw;
+  Button jdField_a_of_type_AndroidWidgetButton;
   
-  public void run()
+  public advz(advy paramadvy, View paramView, advw paramadvw)
   {
-    i = 200;
-    Object localObject1 = null;
-    try
-    {
-      localObject2 = HttpUtil.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle, this.jdField_b_of_type_AndroidOsBundle);
-      localObject1 = localObject2;
+    super(paramView);
+    this.jdField_a_of_type_Advw = paramadvw;
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131373980));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Advw != null) {
+      this.jdField_a_of_type_Advw.a(paramView, getPosition());
     }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        Object localObject2;
-        i = 0;
-        localIOException.printStackTrace();
-      }
+    while (!QLog.isColorLevel()) {
+      return;
     }
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqJspDataApiPlugin.mRuntime.a();
-    if ((!TextUtils.isEmpty(this.c)) && (localObject2 != null)) {
-      ((Activity)localObject2).runOnUiThread(new adwa(this, (Activity)localObject2, localObject1, i));
-    }
+    QLog.d("ScoreActivity", 2, "mOnItemClickListener is null!");
   }
 }
 

@@ -7,11 +7,13 @@ public class MessageForNearbyLiveTip
   extends ChatMessage
 {
   public String c2cMsgWording;
+  public int endLiveWordingType;
   public String headUrl;
   public boolean isLiving;
   public String jumpingUrl;
   public String liveEndWording;
   public String nickName;
+  public int startLiveWordingType;
   
   public static boolean isGroupVideoTip(String paramString)
   {
@@ -37,6 +39,8 @@ public class MessageForNearbyLiveTip
     this.msg = paramObjectInput.readUTF();
     this.liveEndWording = paramObjectInput.readUTF();
     this.c2cMsgWording = paramObjectInput.readUTF();
+    this.startLiveWordingType = paramObjectInput.readInt();
+    this.endLiveWordingType = paramObjectInput.readInt();
   }
   
   private void writeExternal(ObjectOutput paramObjectOutput)
@@ -48,57 +52,59 @@ public class MessageForNearbyLiveTip
     paramObjectOutput.writeUTF(this.msg);
     paramObjectOutput.writeUTF(this.liveEndWording);
     paramObjectOutput.writeUTF(this.c2cMsgWording);
+    paramObjectOutput.writeInt(this.startLiveWordingType);
+    paramObjectOutput.writeInt(this.endLiveWordingType);
   }
   
   /* Error */
   protected void doParse()
   {
     // Byte code:
-    //   0: new 77	java/io/ObjectInputStream
+    //   0: new 92	java/io/ObjectInputStream
     //   3: dup
-    //   4: new 79	java/io/ByteArrayInputStream
+    //   4: new 94	java/io/ByteArrayInputStream
     //   7: dup
     //   8: aload_0
-    //   9: getfield 83	com/tencent/mobileqq/data/MessageForNearbyLiveTip:msgData	[B
-    //   12: invokespecial 86	java/io/ByteArrayInputStream:<init>	([B)V
-    //   15: invokespecial 89	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   9: getfield 98	com/tencent/mobileqq/data/MessageForNearbyLiveTip:msgData	[B
+    //   12: invokespecial 101	java/io/ByteArrayInputStream:<init>	([B)V
+    //   15: invokespecial 104	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   18: astore_2
     //   19: aload_2
     //   20: astore_1
     //   21: aload_0
     //   22: aload_2
-    //   23: invokespecial 91	com/tencent/mobileqq/data/MessageForNearbyLiveTip:readExternal	(Ljava/io/ObjectInput;)V
+    //   23: invokespecial 106	com/tencent/mobileqq/data/MessageForNearbyLiveTip:readExternal	(Ljava/io/ObjectInput;)V
     //   26: aload_2
     //   27: ifnull +7 -> 34
     //   30: aload_2
-    //   31: invokevirtual 94	java/io/ObjectInputStream:close	()V
+    //   31: invokevirtual 109	java/io/ObjectInputStream:close	()V
     //   34: return
     //   35: astore_1
     //   36: aload_1
-    //   37: invokevirtual 97	java/lang/Exception:printStackTrace	()V
+    //   37: invokevirtual 112	java/lang/Exception:printStackTrace	()V
     //   40: return
     //   41: astore_3
     //   42: aconst_null
     //   43: astore_2
     //   44: aload_2
     //   45: astore_1
-    //   46: invokestatic 102	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   46: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   49: ifeq +14 -> 63
     //   52: aload_2
     //   53: astore_1
-    //   54: ldc 104
+    //   54: ldc 119
     //   56: iconst_2
-    //   57: ldc 106
+    //   57: ldc 121
     //   59: aload_3
-    //   60: invokestatic 110	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   60: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   63: aload_2
     //   64: ifnull -30 -> 34
     //   67: aload_2
-    //   68: invokevirtual 94	java/io/ObjectInputStream:close	()V
+    //   68: invokevirtual 109	java/io/ObjectInputStream:close	()V
     //   71: return
     //   72: astore_1
     //   73: aload_1
-    //   74: invokevirtual 97	java/lang/Exception:printStackTrace	()V
+    //   74: invokevirtual 112	java/lang/Exception:printStackTrace	()V
     //   77: return
     //   78: astore_2
     //   79: aconst_null
@@ -106,12 +112,12 @@ public class MessageForNearbyLiveTip
     //   81: aload_1
     //   82: ifnull +7 -> 89
     //   85: aload_1
-    //   86: invokevirtual 94	java/io/ObjectInputStream:close	()V
+    //   86: invokevirtual 109	java/io/ObjectInputStream:close	()V
     //   89: aload_2
     //   90: athrow
     //   91: astore_1
     //   92: aload_1
-    //   93: invokevirtual 97	java/lang/Exception:printStackTrace	()V
+    //   93: invokevirtual 112	java/lang/Exception:printStackTrace	()V
     //   96: goto -7 -> 89
     //   99: astore_2
     //   100: goto -19 -> 81
@@ -149,7 +155,7 @@ public class MessageForNearbyLiveTip
     prewrite();
   }
   
-  protected void postRead()
+  public void postRead()
   {
     parse();
   }
@@ -158,97 +164,97 @@ public class MessageForNearbyLiveTip
   public void prewrite()
   {
     // Byte code:
-    //   0: new 120	java/io/ByteArrayOutputStream
+    //   0: new 135	java/io/ByteArrayOutputStream
     //   3: dup
-    //   4: invokespecial 121	java/io/ByteArrayOutputStream:<init>	()V
+    //   4: invokespecial 136	java/io/ByteArrayOutputStream:<init>	()V
     //   7: astore 4
-    //   9: new 123	java/io/ObjectOutputStream
+    //   9: new 138	java/io/ObjectOutputStream
     //   12: dup
     //   13: aload 4
-    //   15: invokespecial 126	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   15: invokespecial 141	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   18: astore_2
     //   19: aload_2
     //   20: astore_1
     //   21: aload_0
     //   22: aload_2
-    //   23: invokespecial 128	com/tencent/mobileqq/data/MessageForNearbyLiveTip:writeExternal	(Ljava/io/ObjectOutput;)V
+    //   23: invokespecial 143	com/tencent/mobileqq/data/MessageForNearbyLiveTip:writeExternal	(Ljava/io/ObjectOutput;)V
     //   26: aload_2
     //   27: astore_1
     //   28: aload_2
-    //   29: invokevirtual 129	java/io/ObjectOutputStream:close	()V
+    //   29: invokevirtual 144	java/io/ObjectOutputStream:close	()V
     //   32: aload_2
     //   33: astore_1
     //   34: aload_0
     //   35: aload 4
-    //   37: invokevirtual 133	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   40: putfield 83	com/tencent/mobileqq/data/MessageForNearbyLiveTip:msgData	[B
+    //   37: invokevirtual 148	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   40: putfield 98	com/tencent/mobileqq/data/MessageForNearbyLiveTip:msgData	[B
     //   43: aload_2
     //   44: ifnull +7 -> 51
     //   47: aload_2
-    //   48: invokevirtual 129	java/io/ObjectOutputStream:close	()V
+    //   48: invokevirtual 144	java/io/ObjectOutputStream:close	()V
     //   51: aload 4
     //   53: ifnull +8 -> 61
     //   56: aload 4
-    //   58: invokevirtual 134	java/io/ByteArrayOutputStream:close	()V
+    //   58: invokevirtual 149	java/io/ByteArrayOutputStream:close	()V
     //   61: return
     //   62: astore_1
-    //   63: invokestatic 102	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   63: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   66: ifeq -15 -> 51
-    //   69: ldc 104
+    //   69: ldc 119
     //   71: iconst_2
-    //   72: ldc 136
+    //   72: ldc 151
     //   74: aload_1
-    //   75: invokestatic 110	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   75: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   78: goto -27 -> 51
     //   81: astore_1
-    //   82: invokestatic 102	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   82: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   85: ifeq -24 -> 61
-    //   88: ldc 104
+    //   88: ldc 119
     //   90: iconst_2
-    //   91: ldc 136
+    //   91: ldc 151
     //   93: aload_1
-    //   94: invokestatic 110	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   94: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   97: return
     //   98: astore_3
     //   99: aconst_null
     //   100: astore_2
     //   101: aload_2
     //   102: astore_1
-    //   103: invokestatic 102	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   103: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   106: ifeq +14 -> 120
     //   109: aload_2
     //   110: astore_1
-    //   111: ldc 104
+    //   111: ldc 119
     //   113: iconst_2
-    //   114: ldc 136
+    //   114: ldc 151
     //   116: aload_3
-    //   117: invokestatic 110	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   117: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   120: aload_2
     //   121: ifnull +7 -> 128
     //   124: aload_2
-    //   125: invokevirtual 129	java/io/ObjectOutputStream:close	()V
+    //   125: invokevirtual 144	java/io/ObjectOutputStream:close	()V
     //   128: aload 4
     //   130: ifnull -69 -> 61
     //   133: aload 4
-    //   135: invokevirtual 134	java/io/ByteArrayOutputStream:close	()V
+    //   135: invokevirtual 149	java/io/ByteArrayOutputStream:close	()V
     //   138: return
     //   139: astore_1
-    //   140: invokestatic 102	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   140: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   143: ifeq -82 -> 61
-    //   146: ldc 104
+    //   146: ldc 119
     //   148: iconst_2
-    //   149: ldc 136
+    //   149: ldc 151
     //   151: aload_1
-    //   152: invokestatic 110	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   152: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   155: return
     //   156: astore_1
-    //   157: invokestatic 102	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   157: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   160: ifeq -32 -> 128
-    //   163: ldc 104
+    //   163: ldc 119
     //   165: iconst_2
-    //   166: ldc 136
+    //   166: ldc 151
     //   168: aload_1
-    //   169: invokestatic 110	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   169: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   172: goto -44 -> 128
     //   175: astore_2
     //   176: aconst_null
@@ -256,30 +262,30 @@ public class MessageForNearbyLiveTip
     //   178: aload_1
     //   179: ifnull +7 -> 186
     //   182: aload_1
-    //   183: invokevirtual 129	java/io/ObjectOutputStream:close	()V
+    //   183: invokevirtual 144	java/io/ObjectOutputStream:close	()V
     //   186: aload 4
     //   188: ifnull +8 -> 196
     //   191: aload 4
-    //   193: invokevirtual 134	java/io/ByteArrayOutputStream:close	()V
+    //   193: invokevirtual 149	java/io/ByteArrayOutputStream:close	()V
     //   196: aload_2
     //   197: athrow
     //   198: astore_1
-    //   199: invokestatic 102	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   199: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   202: ifeq -16 -> 186
-    //   205: ldc 104
+    //   205: ldc 119
     //   207: iconst_2
-    //   208: ldc 136
+    //   208: ldc 151
     //   210: aload_1
-    //   211: invokestatic 110	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   211: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   214: goto -28 -> 186
     //   217: astore_1
-    //   218: invokestatic 102	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   218: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   221: ifeq -25 -> 196
-    //   224: ldc 104
+    //   224: ldc 119
     //   226: iconst_2
-    //   227: ldc 136
+    //   227: ldc 151
     //   229: aload_1
-    //   230: invokestatic 110	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   230: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   233: goto -37 -> 196
     //   236: astore_2
     //   237: goto -59 -> 178
@@ -325,7 +331,7 @@ public class MessageForNearbyLiveTip
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForNearbyLiveTip
  * JD-Core Version:    0.7.0.1
  */

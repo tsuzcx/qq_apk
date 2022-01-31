@@ -1,85 +1,26 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyWebRenderEngine;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInjoyWebRenderSoLoader;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.earlydownload.handler.ViolaLibHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.av.VideoController;
+import com.tencent.av.camera.CameraUtils;
 
-public final class lmf
-  implements Runnable
+public class lmf
+  implements lmc
 {
-  public lmf(String paramString) {}
+  public lmf(CameraUtils paramCameraUtils) {}
   
-  public void run()
+  public void a(long paramLong1, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong2, boolean paramBoolean)
   {
-    localStringBuilder = new StringBuilder("native_render loadLibrary from: ").append(this.a);
-    l1 = System.currentTimeMillis();
-    for (;;)
+    if (this.a.jdField_a_of_type_ComTencentAvVideoController != null)
     {
-      try
-      {
-        if (ViolaLibHandler.c()) {
-          continue;
-        }
-        localStringBuilder.append("viola lib not exist");
-        localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("readinjoy_web_render_sp", 0);
-        long l2 = localSharedPreferences.getLong("js_lib", 0L);
-        if (l2 <= 0L) {
-          continue;
-        }
-        if (System.currentTimeMillis() - l2 > 120000L)
-        {
-          ViolaLibHandler.a();
-          localSharedPreferences.edit().putLong("js_lib", System.currentTimeMillis()).commit();
-        }
-        ReadInJoyWebRenderEngine.a(1);
+      this.a.a("onPreviewData_" + paramLong1);
+      if (this.a.jdField_a_of_type_Boolean) {
+        this.a.a(-1019L, "onPreviewData_" + paramLong1);
       }
-      catch (Throwable localThrowable)
-      {
-        SharedPreferences localSharedPreferences;
-        ReadInJoyWebRenderEngine.a(false);
-        localStringBuilder.append(localThrowable.getMessage());
-        return;
-        String str1 = ReadInjoyWebRenderSoLoader.a();
-        String[] arrayOfString = ViolaLibHandler.a;
-        int j = arrayOfString.length;
-        int i = 0;
-        if (i >= j) {
-          continue;
-        }
-        String str2 = arrayOfString[i];
-        File localFile = new File(str1, str2);
-        if (!localFile.exists()) {
-          continue;
-        }
-        System.load(localFile.getAbsolutePath());
-        i += 1;
-        continue;
-        localStringBuilder.append(str2).append(" not exist");
-        ReadInJoyWebRenderEngine.a(1);
-        ReadInJoyWebRenderEngine.a(true);
-        continue;
-      }
-      finally
-      {
-        ReadInJoyWebRenderEngine.a().set(false);
-        localStringBuilder.append(", isLoaded: ").append(ReadInJoyWebRenderEngine.b()).append(", cost: ").append(System.currentTimeMillis() - l1);
-        QLog.i("viola.ReadInJoyWebRenderEngine", 1, localStringBuilder.toString());
-      }
-      ReadInJoyWebRenderEngine.a().set(false);
-      localStringBuilder.append(", isLoaded: ").append(ReadInJoyWebRenderEngine.b()).append(", cost: ").append(System.currentTimeMillis() - l1);
-      QLog.i("viola.ReadInJoyWebRenderEngine", 1, localStringBuilder.toString());
-      return;
-      localSharedPreferences.edit().putLong("js_lib", System.currentTimeMillis()).commit();
+      this.a.jdField_a_of_type_ComTencentAvVideoController.a(paramLong1, paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramLong2, paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lmf
  * JD-Core Version:    0.7.0.1
  */

@@ -16,10 +16,13 @@ import java.util.Map;
 public class DexLoader
 {
   private static final String JAVACORE_PACKAGE_PREFIX = "org.chromium";
+  private static final String TAF_PACKAGE_PREFIX = "com.taf";
   private static final String TAG = "DexLoader";
   private static final String TBS_FUSION_DEX = "tbs_jars_fusion_dex";
   private static final String TBS_WEBVIEW_DEX = "webview_dex";
+  private static final String TENCENT_PACKAGE_PREFIX = "com.tencent";
   static boolean mCanUseDexLoaderProviderService = true;
+  private static boolean mMttClassUseCorePrivate = false;
   private static boolean mUseSpeedyClassLoader;
   private static boolean mUseTbsCorePrivateClassLoader = false;
   private DexClassLoader mClassLoader;
@@ -82,6 +85,7 @@ public class DexLoader
     if (localClassLoader == null) {
       paramMap = paramContext.getClassLoader();
     }
+    Log.d("dexloader", "Set base classLoader for DexClassLoader: " + paramMap);
     int i = 0;
     while (i < paramArrayOfString.length)
     {
@@ -93,26 +97,40 @@ public class DexLoader
   
   private DexClassLoader createDexClassLoader(String paramString1, String paramString2, String paramString3, ClassLoader paramClassLoader, Context paramContext)
   {
+    Log.d("dexloader", "createDexClassLoader: " + paramString1);
     if (shouldUseTbsCorePrivateClassLoader(paramString1)) {
-      return new TbsCorePrivateClassLoader(paramString1, paramString2, paramString3, paramClassLoader);
+      paramString1 = new DexLoader.TbsCorePrivateClassLoader(paramString1, paramString2, paramString3, paramClassLoader);
     }
-    if ((Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT <= 25) && (mUseSpeedyClassLoader)) {
-      try
+    for (;;)
+    {
+      Log.d("dexloader", "createDexClassLoader result: " + paramString1);
+      return paramString1;
+      if ((Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT <= 25) && (mUseSpeedyClassLoader))
       {
-        paramContext = DexClassLoaderProvider.createDexClassLoader(paramString1, paramString2, paramString3, paramClassLoader, paramContext);
-        return paramContext;
+        Log.d("dexloader", "async odex...DexClassLoaderProvider.createDexClassLoader");
+        try
+        {
+          paramContext = DexClassLoaderProvider.createDexClassLoader(paramString1, paramString2, paramString3, paramClassLoader, paramContext);
+          paramString1 = paramContext;
+        }
+        catch (Throwable paramContext)
+        {
+          Log.e("dexloader", "createDexClassLoader exception: " + paramContext);
+          Log.d("dexloader", "sync odex...new DexClassLoader#2");
+          paramString1 = new DexClassLoader(paramString1, paramString2, paramString3, paramClassLoader);
+        }
       }
-      catch (Throwable paramContext)
+      else
       {
-        Log.e("dexloader", "createDexClassLoader exception: " + paramContext);
-        return new DexClassLoader(paramString1, paramString2, paramString3, paramClassLoader);
+        Log.d("dexloader", "sync odex...new DexClassLoader");
+        paramString1 = new DexClassLoader(paramString1, paramString2, paramString3, paramClassLoader);
       }
     }
-    return new DexClassLoader(paramString1, paramString2, paramString3, paramClassLoader);
   }
   
   public static void initTbsSettings(Map<String, Object> paramMap)
   {
+    Log.d("DexLoader", "initTbsSettings - " + paramMap);
     if (paramMap != null) {}
     try
     {
@@ -124,9 +142,13 @@ public class DexLoader
       if ((localObject instanceof Boolean)) {
         mUseSpeedyClassLoader = ((Boolean)localObject).booleanValue();
       }
-      paramMap = paramMap.get("use_dexloader_service");
+      localObject = paramMap.get("use_dexloader_service");
+      if ((localObject instanceof Boolean)) {
+        mCanUseDexLoaderProviderService = ((Boolean)localObject).booleanValue();
+      }
+      paramMap = paramMap.get("use_mtt_classes");
       if ((paramMap instanceof Boolean)) {
-        mCanUseDexLoaderProviderService = ((Boolean)paramMap).booleanValue();
+        mMttClassUseCorePrivate = ((Boolean)paramMap).booleanValue();
       }
       return;
     }
@@ -264,53 +286,10 @@ public class DexLoader
       Log.e(getClass().getSimpleName(), "'" + paramString1 + "' set field '" + paramString2 + "' failed", paramObject);
     }
   }
-  
-  private static class TbsCorePrivateClassLoader
-    extends DexClassLoader
-  {
-    public TbsCorePrivateClassLoader(String paramString1, String paramString2, String paramString3, ClassLoader paramClassLoader)
-    {
-      super(paramString2, paramString3, paramClassLoader);
-    }
-    
-    protected Class<?> loadClass(String paramString, boolean paramBoolean)
-      throws ClassNotFoundException
-    {
-      Object localObject2;
-      if ((paramString != null) && (paramString.startsWith("org.chromium")))
-      {
-        localObject2 = findLoadedClass(paramString);
-        localObject1 = localObject2;
-        if (localObject2 != null) {}
-      }
-      try
-      {
-        localObject1 = findClass(paramString);
-        localObject2 = localObject1;
-      }
-      catch (ClassNotFoundException localClassNotFoundException)
-      {
-        label37:
-        ClassLoader localClassLoader;
-        break label37;
-      }
-      Object localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        localClassLoader = getParent();
-        localObject1 = localObject2;
-        if (localClassLoader != null) {
-          localObject1 = localClassLoader.loadClass(paramString);
-        }
-      }
-      return localObject1;
-      return super.loadClass(paramString, paramBoolean);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.export.external.DexLoader
  * JD-Core Version:    0.7.0.1
  */

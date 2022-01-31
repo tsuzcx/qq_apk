@@ -1,24 +1,18 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.mixedmsg.MixedMsgManager;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.activity.TroopRequestActivity.14.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class aehh
-  extends MessageObserver
+  extends altm
 {
-  public aehh(MixedMsgManager paramMixedMsgManager, QQAppInterface paramQQAppInterface, String paramString, int paramInt, MessageForMixedMsg paramMessageForMixedMsg) {}
+  public aehh(TroopRequestActivity paramTroopRequestActivity) {}
   
-  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgData);
-    if (paramBoolean)
-    {
-      MixedMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, false);
+    if ((!paramBoolean) || (paramString == null)) {
       return;
     }
-    MixedMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, false, "send Msg fail : errCode = " + paramStatictisInfo.b);
+    ThreadManager.post(new TroopRequestActivity.14.1(this, paramString), 5, null, true);
   }
 }
 

@@ -1,19 +1,20 @@
 package com.tencent.mobileqq.activity.book;
 
+import ahdo;
+import ahdp;
 import android.content.Context;
 import android.text.InputFilter;
 import android.util.AttributeSet;
 import android.widget.EditText;
 import java.io.UnsupportedEncodingException;
-import wfx;
 
 public class BookEditText
   extends EditText
 {
   private int jdField_a_of_type_Int = 80;
-  private BookEditText.BookEditTextInputListener jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText$BookEditTextInputListener;
+  private ahdp jdField_a_of_type_Ahdp;
   private boolean jdField_a_of_type_Boolean;
-  private InputFilter[] jdField_a_of_type_ArrayOfAndroidTextInputFilter = { new wfx(this) };
+  private InputFilter[] jdField_a_of_type_ArrayOfAndroidTextInputFilter = { new ahdo(this) };
   
   public BookEditText(Context paramContext)
   {
@@ -51,9 +52,9 @@ public class BookEditText
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setInputListener(BookEditText.BookEditTextInputListener paramBookEditTextInputListener)
+  public void setInputListener(ahdp paramahdp)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText$BookEditTextInputListener = paramBookEditTextInputListener;
+    this.jdField_a_of_type_Ahdp = paramahdp;
   }
   
   public void setTextLengthLimit(int paramInt)
@@ -63,7 +64,7 @@ public class BookEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.book.BookEditText
  * JD-Core Version:    0.7.0.1
  */

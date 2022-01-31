@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import abvb;
-import abvd;
+import aeox;
+import ambz;
 import android.annotation.TargetApi;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
@@ -9,8 +9,9 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.AIOInputTypeHelper;
-import com.tencent.mobileqq.persistence.TableBuilder;
+import apfk;
+import apfm;
+import awhf;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -28,14 +29,14 @@ public class QQEntityManagerFactory$SQLiteOpenHelperImpl
   
   public QQEntityManagerFactory$SQLiteOpenHelperImpl(QQEntityManagerFactory paramQQEntityManagerFactory, String paramString, SQLiteDatabase.CursorFactory paramCursorFactory, int paramInt)
   {
-    super(BaseApplication.getContext(), paramString, new abvb(paramQQEntityManagerFactory, null), paramInt);
+    super(BaseApplication.getContext(), paramString, new apfk(paramQQEntityManagerFactory, null), paramInt);
     this.databaseName = paramString;
   }
   
   @TargetApi(11)
-  public QQEntityManagerFactory$SQLiteOpenHelperImpl(QQEntityManagerFactory paramQQEntityManagerFactory, String paramString, SQLiteDatabase.CursorFactory paramCursorFactory, int paramInt, abvd paramabvd)
+  public QQEntityManagerFactory$SQLiteOpenHelperImpl(QQEntityManagerFactory paramQQEntityManagerFactory, String paramString, SQLiteDatabase.CursorFactory paramCursorFactory, int paramInt, apfm paramapfm)
   {
-    super(BaseApplication.getContext(), paramString, new abvb(paramQQEntityManagerFactory, null), paramInt, paramabvd);
+    super(BaseApplication.getContext(), paramString, new apfk(paramQQEntityManagerFactory, null), paramInt, paramapfm);
     this.databaseName = paramString;
   }
   
@@ -54,18 +55,15 @@ public class QQEntityManagerFactory$SQLiteOpenHelperImpl
         {
           i += 1;
           break;
-          if (!"sqlite_sequence".equals(str))
-          {
+          if (!"sqlite_sequence".equals(str)) {
             try
             {
-              paramSQLiteDatabase.execSQL(TableBuilder.a(str));
+              paramSQLiteDatabase.execSQL(awhf.a(str));
             }
             catch (SQLiteException localSQLiteException)
             {
-              localSQLiteException.printStackTrace();
-            }
-            if (QLog.isColorLevel()) {
-              QLog.w(this.this$0.TAG, 2, "[DB] dropAllTable " + str, localSQLiteException);
+              QLog.e(this.this$0.TAG, 1, "[DB] dropAllTable " + str, localSQLiteException);
+              ambz.a(localSQLiteException);
             }
           }
         }
@@ -81,21 +79,21 @@ public class QQEntityManagerFactory$SQLiteOpenHelperImpl
     //   0: iconst_0
     //   1: istore_2
     //   2: aload_1
-    //   3: ldc 111
+    //   3: ldc 109
     //   5: aconst_null
-    //   6: invokevirtual 115	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   6: invokevirtual 113	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
     //   9: astore 4
     //   11: aload 4
-    //   13: ifnull +161 -> 174
+    //   13: ifnull +180 -> 193
     //   16: aload 4
     //   18: astore 5
     //   20: aload 4
-    //   22: invokeinterface 120 1 0
-    //   27: ifeq +147 -> 174
+    //   22: invokeinterface 119 1 0
+    //   27: ifeq +166 -> 193
     //   30: aload 4
     //   32: astore 5
     //   34: aload 4
-    //   36: invokeinterface 124 1 0
+    //   36: invokeinterface 123 1 0
     //   41: anewarray 53	java/lang/String
     //   44: astore_1
     //   45: aload 4
@@ -104,22 +102,22 @@ public class QQEntityManagerFactory$SQLiteOpenHelperImpl
     //   50: iload_2
     //   51: aload 4
     //   53: iconst_0
-    //   54: invokeinterface 128 2 0
-    //   59: invokestatic 133	com/tencent/mobileqq/utils/SecurityUtile:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   54: invokeinterface 127 2 0
+    //   59: invokestatic 132	com/tencent/mobileqq/utils/SecurityUtile:b	(Ljava/lang/String;)Ljava/lang/String;
     //   62: aastore
     //   63: aload 4
     //   65: astore 5
     //   67: aload 4
-    //   69: invokeinterface 136 1 0
+    //   69: invokeinterface 135 1 0
     //   74: istore_3
     //   75: iload_3
-    //   76: ifne +91 -> 167
+    //   76: ifne +110 -> 186
     //   79: aload_1
     //   80: astore 5
     //   82: aload 4
     //   84: ifnull +13 -> 97
     //   87: aload 4
-    //   89: invokeinterface 139 1 0
+    //   89: invokeinterface 138 1 0
     //   94: aload_1
     //   95: astore 5
     //   97: aload 5
@@ -131,65 +129,75 @@ public class QQEntityManagerFactory$SQLiteOpenHelperImpl
     //   106: astore_1
     //   107: aload 4
     //   109: astore 5
-    //   111: aload 6
-    //   113: invokevirtual 140	java/lang/Exception:printStackTrace	()V
-    //   116: aload_1
-    //   117: astore 5
-    //   119: aload 4
-    //   121: ifnull -24 -> 97
-    //   124: aload 4
-    //   126: invokeinterface 139 1 0
-    //   131: aload_1
-    //   132: areturn
-    //   133: astore_1
-    //   134: aconst_null
-    //   135: astore 5
-    //   137: aload 5
-    //   139: ifnull +10 -> 149
-    //   142: aload 5
-    //   144: invokeinterface 139 1 0
-    //   149: aload_1
-    //   150: athrow
-    //   151: astore_1
-    //   152: goto -15 -> 137
-    //   155: astore 6
-    //   157: aconst_null
-    //   158: astore_1
-    //   159: goto -52 -> 107
-    //   162: astore 6
-    //   164: goto -57 -> 107
-    //   167: iload_2
-    //   168: iconst_1
-    //   169: iadd
-    //   170: istore_2
-    //   171: goto -126 -> 45
-    //   174: aconst_null
-    //   175: astore_1
-    //   176: goto -97 -> 79
+    //   111: aload_0
+    //   112: getfield 16	com/tencent/mobileqq/data/QQEntityManagerFactory$SQLiteOpenHelperImpl:this$0	Lcom/tencent/mobileqq/data/QQEntityManagerFactory;
+    //   115: getfield 76	com/tencent/mobileqq/data/QQEntityManagerFactory:TAG	Ljava/lang/String;
+    //   118: iconst_1
+    //   119: ldc 139
+    //   121: aload 6
+    //   123: invokestatic 97	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   126: aload 4
+    //   128: astore 5
+    //   130: aload 6
+    //   132: invokestatic 102	ambz:a	(Ljava/lang/Exception;)V
+    //   135: aload_1
+    //   136: astore 5
+    //   138: aload 4
+    //   140: ifnull -43 -> 97
+    //   143: aload 4
+    //   145: invokeinterface 138 1 0
+    //   150: aload_1
+    //   151: areturn
+    //   152: astore_1
+    //   153: aconst_null
+    //   154: astore 5
+    //   156: aload 5
+    //   158: ifnull +10 -> 168
+    //   161: aload 5
+    //   163: invokeinterface 138 1 0
+    //   168: aload_1
+    //   169: athrow
+    //   170: astore_1
+    //   171: goto -15 -> 156
+    //   174: astore 6
+    //   176: aconst_null
+    //   177: astore_1
+    //   178: goto -71 -> 107
+    //   181: astore 6
+    //   183: goto -76 -> 107
+    //   186: iload_2
+    //   187: iconst_1
+    //   188: iadd
+    //   189: istore_2
+    //   190: goto -145 -> 45
+    //   193: aconst_null
+    //   194: astore_1
+    //   195: goto -116 -> 79
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	179	0	this	SQLiteOpenHelperImpl
-    //   0	179	1	paramSQLiteDatabase	SQLiteDatabase
-    //   1	170	2	i	int
+    //   0	198	0	this	SQLiteOpenHelperImpl
+    //   0	198	1	paramSQLiteDatabase	SQLiteDatabase
+    //   1	189	2	i	int
     //   74	2	3	bool	boolean
-    //   9	116	4	localCursor	android.database.Cursor
-    //   18	125	5	localObject	Object
-    //   100	12	6	localException1	Exception
-    //   155	1	6	localException2	Exception
-    //   162	1	6	localException3	Exception
+    //   9	135	4	localCursor	android.database.Cursor
+    //   18	144	5	localObject	Object
+    //   100	31	6	localException1	Exception
+    //   174	1	6	localException2	Exception
+    //   181	1	6	localException3	Exception
     // Exception table:
     //   from	to	target	type
     //   2	11	100	java/lang/Exception
-    //   2	11	133	finally
-    //   20	30	151	finally
-    //   34	45	151	finally
-    //   49	63	151	finally
-    //   67	75	151	finally
-    //   111	116	151	finally
-    //   20	30	155	java/lang/Exception
-    //   34	45	155	java/lang/Exception
-    //   49	63	162	java/lang/Exception
-    //   67	75	162	java/lang/Exception
+    //   2	11	152	finally
+    //   20	30	170	finally
+    //   34	45	170	finally
+    //   49	63	170	finally
+    //   67	75	170	finally
+    //   111	126	170	finally
+    //   130	135	170	finally
+    //   20	30	174	java/lang/Exception
+    //   34	45	174	java/lang/Exception
+    //   49	63	181	java/lang/Exception
+    //   67	75	181	java/lang/Exception
   }
   
   public void close()
@@ -209,7 +217,10 @@ public class QQEntityManagerFactory$SQLiteOpenHelperImpl
       }
       return;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      QLog.e(this.this$0.TAG, 1, "close", localException);
+    }
   }
   
   public void dropAllTable()
@@ -229,7 +240,8 @@ public class QQEntityManagerFactory$SQLiteOpenHelperImpl
     {
       for (;;)
       {
-        localException.printStackTrace();
+        QLog.e(this.this$0.TAG, 1, "getReadableDatabase", localException);
+        ambz.a(localException);
       }
     }
     finally {}
@@ -248,7 +260,8 @@ public class QQEntityManagerFactory$SQLiteOpenHelperImpl
     {
       for (;;)
       {
-        localException.printStackTrace();
+        QLog.e(this.this$0.TAG, 1, "getWritableDatabase", localException);
+        ambz.a(localException);
       }
     }
     finally {}
@@ -286,11 +299,11 @@ public class QQEntityManagerFactory$SQLiteOpenHelperImpl
       int j = arrayOfMethod.length;
       i = 0;
       if (i >= j) {
-        break label576;
+        break label577;
       }
       paramSQLiteDatabase = arrayOfMethod[i];
       if (!TextUtils.equals(paramSQLiteDatabase.getName(), "reconfigure")) {
-        break label305;
+        break label306;
       }
     }
     catch (NoSuchFieldException paramSQLiteDatabase)
@@ -354,7 +367,7 @@ public class QQEntityManagerFactory$SQLiteOpenHelperImpl
         paramSQLiteDatabase.delete();
       }
       return;
-      label305:
+      label306:
       i += 1;
       break;
       if (QLog.isColorLevel()) {
@@ -369,7 +382,7 @@ public class QQEntityManagerFactory$SQLiteOpenHelperImpl
       QLog.i(this.this$0.TAG, 2, "[DB]" + this.databaseName + " onUpgrade oldVersion: " + paramInt1 + " newVersion: " + paramInt2);
     }
     this.this$0.upgradeDatabase(paramSQLiteDatabase, paramInt1, paramInt2);
-    AIOInputTypeHelper.a();
+    aeox.a();
     if (QLog.isColorLevel()) {
       QLog.i(this.this$0.TAG, 2, "[DB] onUpgrade end");
     }

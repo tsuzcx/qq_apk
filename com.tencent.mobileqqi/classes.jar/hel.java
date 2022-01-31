@@ -1,52 +1,14 @@
-import com.tencent.mobileqq.util.FaceDecodeTask;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import com.tencent.mobileqq.utils.httputils.HttpMsg;
 
 public class hel
-  extends Thread
+  implements Runnable
 {
-  private boolean a = true;
-  
-  public void a()
-  {
-    this.a = false;
-  }
+  public hel(HttpCommunicator paramHttpCommunicator, HttpMsg paramHttpMsg, hen paramhen) {}
   
   public void run()
   {
-    setName("FaceDecodeThread" + getId());
-    Object localObject1 = null;
-    while (this.a) {
-      synchronized (FaceDecodeTask.a())
-      {
-        int i = FaceDecodeTask.a().size();
-        if (i == 0) {}
-        try
-        {
-          FaceDecodeTask.a().wait();
-          localObject3 = localObject1;
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          for (;;)
-          {
-            Object localObject3;
-            Object localObject4 = localObject2;
-          }
-        }
-        localObject1 = localObject3;
-        if (localObject3 != null)
-        {
-          FaceDecodeTask.b((FaceDecodeTask)localObject3);
-          localObject1 = null;
-          continue;
-          localObject3 = (FaceDecodeTask)FaceDecodeTask.a().remove(0);
-        }
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqhead.FaceDecodeTask", 2, "FaceDecodeThread thread exit. isRunning=" + this.a + ", id=" + getId());
-    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg, this.jdField_a_of_type_Hen);
   }
 }
 

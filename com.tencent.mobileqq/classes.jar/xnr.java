@@ -1,26 +1,49 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import android.media.MediaFormat;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
 import com.tencent.qphone.base.util.QLog;
 
-public class xnr
-  implements Runnable
+public abstract class xnr
 {
-  public xnr(EditLocalVideoActivity paramEditLocalVideoActivity, float paramFloat) {}
+  protected int a;
+  protected axvw a;
+  protected String a;
+  protected String b;
   
-  public void run()
+  protected void a(int paramInt, String paramString1, String paramString2, MediaFormat paramMediaFormat, SlideItemInfo paramSlideItemInfo, xnq paramxnq)
   {
-    if (EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity) != null)
+    if (paramxnq != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("EditLocalVideoActivity", 2, "onCurrentRangeTimeChanged, time=" + this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity.b((int)this.jdField_a_of_type_Float));
+      xmp localxmp = new xmp();
+      localxmp.jdField_a_of_type_Long = paramxnq.b;
+      localxmp.jdField_a_of_type_Int = paramInt;
+      localxmp.jdField_b_of_type_JavaLangString = paramString2;
+      localxmp.jdField_a_of_type_JavaLangString = paramString1;
+      localxmp.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
+      localxmp.c = this.jdField_b_of_type_JavaLangString;
+      localxmp.jdField_a_of_type_Boolean = false;
+      localxmp.jdField_b_of_type_Int = 1;
+      if (paramSlideItemInfo != null)
+      {
+        localxmp.jdField_a_of_type_Boolean = paramSlideItemInfo.jdField_a_of_type_Boolean;
+        localxmp.jdField_b_of_type_Int = paramSlideItemInfo.c;
       }
-      EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).setText(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity.b((int)this.jdField_a_of_type_Float));
+      if (paramxnq.a != null) {
+        paramxnq.a.a(localxmp);
+      }
     }
+  }
+  
+  protected boolean a(xnq paramxnq)
+  {
+    if ((!paramxnq.d) && (QLog.isColorLevel())) {
+      QLog.d("ToVideoConverter", 2, "run exit:" + paramxnq.b + " currContext.isRun:" + paramxnq.d);
+    }
+    return !paramxnq.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xnr
  * JD-Core Version:    0.7.0.1
  */

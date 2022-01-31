@@ -1,8 +1,8 @@
 package com.tencent.biz.common.util;
 
 import android.os.Handler;
-import bny;
-import bnz;
+import bhu;
+import bhv;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.qphone.base.util.QLog;
@@ -118,8 +118,8 @@ public class OfflineSecurity
   public static void a(String paramString1, OfflineSecurity.VerifyListener paramVerifyListener, String paramString2)
   {
     jdField_a_of_type_ComTencentBizCommonUtilOfflineSecurity$VerifyListener = paramVerifyListener;
-    jdField_a_of_type_AndroidOsHandler = new bny();
-    new Thread(new bnz(paramString1, paramString2)).start();
+    jdField_a_of_type_AndroidOsHandler = new bhu();
+    new Thread(new bhv(paramString1, paramString2)).start();
   }
   
   public static boolean a(String paramString)

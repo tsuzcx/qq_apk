@@ -16,16 +16,24 @@ public class Apn
   
   public static String getApnInfo(Context paramContext)
   {
-    paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
-    if ((paramContext != null) && (paramContext.isConnectedOrConnecting())) {}
-    switch (paramContext.getType())
+    try
     {
-    default: 
-      return "unknown";
-    case 1: 
-      return "wifi";
+      paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+      if ((paramContext != null) && (paramContext.isConnectedOrConnecting())) {
+        switch (paramContext.getType())
+        {
+        case 0: 
+          paramContext = paramContext.getExtraInfo();
+          return paramContext;
+        }
+      }
     }
-    return paramContext.getExtraInfo();
+    catch (Exception paramContext)
+    {
+      return "unknown";
+    }
+    return "unknown";
+    return "wifi";
   }
   
   public static int getApnType(Context paramContext)
@@ -96,7 +104,7 @@ public class Apn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.utils.Apn
  * JD-Core Version:    0.7.0.1
  */

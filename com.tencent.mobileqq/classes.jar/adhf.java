@@ -1,35 +1,36 @@
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil.GetApkPackageInfoCallback;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import QQService.SvcDevLoginInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
-public final class adhf
-  implements Runnable
+public class adhf
+  implements View.OnClickListener
 {
-  public adhf(String paramString, FileCategoryUtil.GetApkPackageInfoCallback paramGetApkPackageInfoCallback) {}
+  public adhf(LoginInfoActivity paramLoginInfoActivity, Button paramButton, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject = BaseApplicationImpl.getContext().getPackageManager();
-    PackageInfo localPackageInfo = ((PackageManager)localObject).getPackageArchiveInfo(this.jdField_a_of_type_JavaLangString, 1);
-    if (localPackageInfo != null)
+    if (!bdin.d(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity))
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileCategoryUtil$GetApkPackageInfoCallback.b(localPackageInfo.applicationInfo.packageName);
-      localObject = localPackageInfo.applicationInfo.loadLabel((PackageManager)localObject).toString();
-      localObject = (String)localObject + ".apk";
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileCategoryUtil$GetApkPackageInfoCallback.a((String)localObject);
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getString(2131692398), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getTitleBarHeight());
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileCategoryUtil$GetApkPackageInfoCallback.b(FileManagerUtil.a(this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileCategoryUtil$GetApkPackageInfoCallback.a(FileManagerUtil.a(this.jdField_a_of_type_JavaLangString));
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app, "CliOper", "", "", "My_eq", "Kick_off_PC", 0, 0, "", "", "", "");
+    paramView = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetButton.getTag();
+    if (paramView != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app.getSubAccountKey(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app.getAccount(), this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app.getAccount(), new adhg(this, paramView));
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getString(2131694648), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adhf
  * JD-Core Version:    0.7.0.1
  */

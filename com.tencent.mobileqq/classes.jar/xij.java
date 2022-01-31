@@ -1,24 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qlink.QQProxyForQlink;
-
-public class xij
-  implements View.OnClickListener
+public abstract interface xij
 {
-  public xij(BannerManager paramBannerManager) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    BannerManager.a(this.a).app.a().a("0X800474F", 1);
-    QQProxyForQlink.a(BannerManager.a(this.a), 4, null);
-  }
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xij
  * JD-Core Version:    0.7.0.1
  */

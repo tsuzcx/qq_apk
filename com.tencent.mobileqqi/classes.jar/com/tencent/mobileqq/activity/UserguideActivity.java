@@ -33,14 +33,14 @@ public class UserguideActivity
   public static boolean a(Context paramContext)
   {
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).getString("qq_version", null);
-    if (!"6500".equals(paramContext)) {}
+    if (!"6602".equals(paramContext)) {}
     for (e = true;; e = false)
     {
       if (jdField_b_of_type_Boolean) {
         e = false;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("UserGuide", 2, "sIsUserguidShowed: " + e + " old qqversion = " + paramContext + " new qqversion = " + "6500" + "isNeed " + e);
+        QLog.d("UserGuide", 2, "sIsUserguidShowed: " + e + " old qqversion = " + paramContext + " new qqversion = " + "6602" + "isNeed " + e);
       }
       e = false;
       return e;
@@ -75,14 +75,14 @@ public class UserguideActivity
     long l = System.currentTimeMillis();
     this.c = true;
     super.doOnCreate(paramBundle);
-    setContentView(2130903648);
+    setContentView(2130903650);
     this.jdField_b_of_type_Int = getIntent().getIntExtra("userguide_type", 1);
     this.jdField_b_of_type_Int = 0;
     if (this.jdField_b_of_type_Int == 0) {
       this.jdField_a_of_type_ComTencentMobileqqActivityQquserguideUserguideFragment = new UserguideVideoFragment(this);
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityQquserguideUserguideFragment.a(null);
-    paramBundle = (FrameLayout)findViewById(2131233234);
+    paramBundle = (FrameLayout)findViewById(2131233236);
     try
     {
       paramBundle.addView(this.jdField_a_of_type_ComTencentMobileqqActivityQquserguideUserguideFragment.a(getLayoutInflater(), paramBundle, null));

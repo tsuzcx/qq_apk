@@ -9,14 +9,14 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_group$CommentLikeCount
-  extends MessageMicro
+  extends MessageMicro<CommentLikeCount>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field comment_count = PBField.initUInt32(0);
   public final PBUInt32Field error = PBField.initUInt32(0);
   public final PBUInt32Field is_has_like = PBField.initUInt32(0);
   public final PBUInt32Field like_count = PBField.initUInt32(0);
-  public final PBRepeatMessageField newly_three_like = PBField.initRepeatMessage(qqstory_group.NewlyLikeInfo.class);
+  public final PBRepeatMessageField<qqstory_group.NewlyLikeInfo> newly_three_like = PBField.initRepeatMessage(qqstory_group.NewlyLikeInfo.class);
   public final PBBytesField story_id = PBField.initBytes(ByteStringMicro.EMPTY);
   
   static
@@ -27,7 +27,7 @@ public final class qqstory_group$CommentLikeCount
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_group.CommentLikeCount
  * JD-Core Version:    0.7.0.1
  */

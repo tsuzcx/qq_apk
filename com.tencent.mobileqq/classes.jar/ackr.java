@@ -1,76 +1,23 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.io.UnsupportedEncodingException;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Map;
 
-public class ackr
-  implements TextWatcher
+public final class ackr
+  implements DialogInterface.OnClickListener
 {
-  public ackr(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  public ackr(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean, Map paramMap) {}
   
-  private int a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    byte[] arrayOfByte = new byte[0];
-    try
-    {
-      paramString = paramString.getBytes("utf-8");
-      if (paramString.length % 3 == 0) {
-        return paramString.length / 3;
-      }
-    }
-    catch (UnsupportedEncodingException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = arrayOfByte;
-      }
-    }
-    return paramString.length / 3 + 1;
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilMap);
   }
-  
-  private String a(String paramString)
-  {
-    while (a(paramString) > 32)
-    {
-      int i = paramString.length();
-      if ((i >= 2) && (Character.isHighSurrogate(paramString.charAt(i - 2)))) {
-        paramString = paramString.substring(0, i - 2);
-      } else {
-        paramString = paramString.substring(0, i - 1);
-      }
-    }
-    return paramString;
-  }
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    paramEditable = this.a.a.getText().toString();
-    if (a(paramEditable) > 32)
-    {
-      int i = this.a.a.getSelectionStart();
-      paramEditable = a(paramEditable);
-      this.a.a.setText(paramEditable);
-      if (i >= paramEditable.length()) {
-        this.a.a.setSelection(paramEditable.length());
-      }
-    }
-    if (this.a.h)
-    {
-      ReportController.b(null, "CliOper", "", "", "0X80050F0", "0X80050F0", 0, 0, "", "", "", "");
-      this.a.h = false;
-    }
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ackr
  * JD-Core Version:    0.7.0.1
  */

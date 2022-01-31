@@ -27,19 +27,19 @@ public class a
     this.c = new i();
   }
   
-  public static ag a(int paramInt)
+  public static aj a(int paramInt)
   {
     if (paramInt == 1) {
-      return new af();
+      return new ai();
     }
     if (paramInt == 3) {
-      return new ae();
+      return new ah();
     }
     return null;
   }
   
   /* Error */
-  public static am a(android.content.Context paramContext, int paramInt, byte[] paramArrayOfByte)
+  public static ap a(android.content.Context paramContext, int paramInt, byte[] paramArrayOfByte)
   {
     // Byte code:
     //   0: invokestatic 49	com/tencent/bugly/crashreport/common/info/a:b	()Lcom/tencent/bugly/crashreport/common/info/a;
@@ -58,453 +58,463 @@ public class a
     //   32: pop
     //   33: aconst_null
     //   34: areturn
-    //   35: new 67	com/tencent/bugly/proguard/am
+    //   35: new 67	com/tencent/bugly/proguard/ap
     //   38: dup
-    //   39: invokespecial 68	com/tencent/bugly/proguard/am:<init>	()V
+    //   39: invokespecial 68	com/tencent/bugly/proguard/ap:<init>	()V
     //   42: astore 4
     //   44: aload 5
     //   46: monitorenter
     //   47: aload 4
     //   49: iconst_1
-    //   50: putfield 71	com/tencent/bugly/proguard/am:a	I
+    //   50: putfield 71	com/tencent/bugly/proguard/ap:a	I
     //   53: aload 4
     //   55: aload 5
     //   57: invokevirtual 74	com/tencent/bugly/crashreport/common/info/a:e	()Ljava/lang/String;
-    //   60: putfield 75	com/tencent/bugly/proguard/am:b	Ljava/lang/String;
+    //   60: putfield 75	com/tencent/bugly/proguard/ap:b	Ljava/lang/String;
     //   63: aload 4
     //   65: aload 5
     //   67: getfield 77	com/tencent/bugly/crashreport/common/info/a:c	Ljava/lang/String;
-    //   70: putfield 78	com/tencent/bugly/proguard/am:c	Ljava/lang/String;
+    //   70: putfield 78	com/tencent/bugly/proguard/ap:c	Ljava/lang/String;
     //   73: aload 4
     //   75: aload 5
-    //   77: getfield 81	com/tencent/bugly/crashreport/common/info/a:l	Ljava/lang/String;
-    //   80: putfield 83	com/tencent/bugly/proguard/am:d	Ljava/lang/String;
+    //   77: getfield 81	com/tencent/bugly/crashreport/common/info/a:m	Ljava/lang/String;
+    //   80: putfield 83	com/tencent/bugly/proguard/ap:d	Ljava/lang/String;
     //   83: aload 4
     //   85: aload 5
-    //   87: getfield 86	com/tencent/bugly/crashreport/common/info/a:n	Ljava/lang/String;
-    //   90: putfield 88	com/tencent/bugly/proguard/am:e	Ljava/lang/String;
-    //   93: aload 5
-    //   95: invokevirtual 92	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   98: pop
-    //   99: aload 4
-    //   101: ldc 94
-    //   103: putfield 97	com/tencent/bugly/proguard/am:f	Ljava/lang/String;
-    //   106: aload 4
-    //   108: iload_1
-    //   109: putfield 100	com/tencent/bugly/proguard/am:g	I
-    //   112: aload_2
-    //   113: ifnonnull +778 -> 891
-    //   116: ldc 102
-    //   118: invokevirtual 108	java/lang/String:getBytes	()[B
-    //   121: astore_3
-    //   122: aload 4
-    //   124: aload_3
-    //   125: putfield 112	com/tencent/bugly/proguard/am:h	[B
-    //   128: aload 4
-    //   130: aload 5
-    //   132: getfield 114	com/tencent/bugly/crashreport/common/info/a:h	Ljava/lang/String;
-    //   135: putfield 117	com/tencent/bugly/proguard/am:i	Ljava/lang/String;
-    //   138: aload 4
-    //   140: aload 5
-    //   142: getfield 118	com/tencent/bugly/crashreport/common/info/a:i	Ljava/lang/String;
-    //   145: putfield 121	com/tencent/bugly/proguard/am:j	Ljava/lang/String;
-    //   148: aload 4
-    //   150: new 19	java/util/HashMap
-    //   153: dup
-    //   154: invokespecial 20	java/util/HashMap:<init>	()V
-    //   157: putfield 125	com/tencent/bugly/proguard/am:k	Ljava/util/Map;
-    //   160: aload 4
-    //   162: aload 5
-    //   164: invokevirtual 127	com/tencent/bugly/crashreport/common/info/a:d	()Ljava/lang/String;
-    //   167: putfield 128	com/tencent/bugly/proguard/am:l	Ljava/lang/String;
-    //   170: aload 4
-    //   172: aload 6
-    //   174: getfield 134	com/tencent/bugly/crashreport/common/strategy/StrategyBean:o	J
-    //   177: putfield 137	com/tencent/bugly/proguard/am:m	J
-    //   180: aload 4
-    //   182: aload 5
-    //   184: invokevirtual 139	com/tencent/bugly/crashreport/common/info/a:g	()Ljava/lang/String;
-    //   187: putfield 141	com/tencent/bugly/proguard/am:o	Ljava/lang/String;
-    //   190: aload 4
-    //   192: aload_0
-    //   193: invokestatic 146	com/tencent/bugly/crashreport/common/info/b:f	(Landroid/content/Context;)Ljava/lang/String;
-    //   196: putfield 149	com/tencent/bugly/proguard/am:p	Ljava/lang/String;
-    //   199: aload 4
-    //   201: invokestatic 155	java/lang/System:currentTimeMillis	()J
-    //   204: putfield 158	com/tencent/bugly/proguard/am:q	J
-    //   207: aload 4
-    //   209: new 160	java/lang/StringBuilder
-    //   212: dup
-    //   213: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   216: aload 5
-    //   218: invokevirtual 163	com/tencent/bugly/crashreport/common/info/a:j	()Ljava/lang/String;
-    //   221: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   224: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   227: putfield 173	com/tencent/bugly/proguard/am:r	Ljava/lang/String;
-    //   230: aload 4
-    //   232: aload 5
-    //   234: invokevirtual 175	com/tencent/bugly/crashreport/common/info/a:i	()Ljava/lang/String;
-    //   237: putfield 178	com/tencent/bugly/proguard/am:s	Ljava/lang/String;
-    //   240: aload 4
-    //   242: new 160	java/lang/StringBuilder
-    //   245: dup
-    //   246: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   249: aload 5
-    //   251: invokevirtual 180	com/tencent/bugly/crashreport/common/info/a:l	()Ljava/lang/String;
-    //   254: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   257: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   260: putfield 183	com/tencent/bugly/proguard/am:t	Ljava/lang/String;
-    //   263: aload 4
-    //   265: aload 5
-    //   267: invokevirtual 185	com/tencent/bugly/crashreport/common/info/a:k	()Ljava/lang/String;
-    //   270: putfield 188	com/tencent/bugly/proguard/am:u	Ljava/lang/String;
-    //   273: aload 4
-    //   275: new 160	java/lang/StringBuilder
-    //   278: dup
-    //   279: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   282: aload 5
-    //   284: invokevirtual 190	com/tencent/bugly/crashreport/common/info/a:m	()Ljava/lang/String;
-    //   287: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   290: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   293: putfield 193	com/tencent/bugly/proguard/am:v	Ljava/lang/String;
-    //   296: aload 4
-    //   298: aload 4
-    //   300: getfield 149	com/tencent/bugly/proguard/am:p	Ljava/lang/String;
-    //   303: putfield 196	com/tencent/bugly/proguard/am:w	Ljava/lang/String;
-    //   306: aload 5
-    //   308: invokevirtual 92	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   311: pop
-    //   312: aload 4
-    //   314: ldc 198
-    //   316: putfield 199	com/tencent/bugly/proguard/am:n	Ljava/lang/String;
-    //   319: aload 4
-    //   321: getfield 125	com/tencent/bugly/proguard/am:k	Ljava/util/Map;
-    //   324: ldc 201
-    //   326: new 160	java/lang/StringBuilder
-    //   329: dup
-    //   330: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   333: aload 5
-    //   335: invokevirtual 204	com/tencent/bugly/crashreport/common/info/a:x	()Ljava/lang/String;
-    //   338: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   341: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   344: invokeinterface 210 3 0
-    //   349: pop
-    //   350: aload 4
-    //   352: getfield 125	com/tencent/bugly/proguard/am:k	Ljava/util/Map;
-    //   355: ldc 212
-    //   357: new 160	java/lang/StringBuilder
-    //   360: dup
-    //   361: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   364: aload 5
-    //   366: invokevirtual 215	com/tencent/bugly/crashreport/common/info/a:y	()Ljava/lang/String;
-    //   369: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   372: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   375: invokeinterface 210 3 0
-    //   380: pop
-    //   381: aload 4
-    //   383: getfield 125	com/tencent/bugly/proguard/am:k	Ljava/util/Map;
-    //   386: ldc 217
-    //   388: new 160	java/lang/StringBuilder
-    //   391: dup
-    //   392: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   395: aload 5
-    //   397: invokevirtual 220	com/tencent/bugly/crashreport/common/info/a:z	()Ljava/lang/String;
-    //   400: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   403: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   406: invokeinterface 210 3 0
-    //   411: pop
-    //   412: aload 4
-    //   414: getfield 125	com/tencent/bugly/proguard/am:k	Ljava/util/Map;
-    //   417: ldc 222
-    //   419: new 160	java/lang/StringBuilder
-    //   422: dup
-    //   423: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   426: aload 5
-    //   428: invokevirtual 226	com/tencent/bugly/crashreport/common/info/a:Q	()Z
-    //   431: invokevirtual 229	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   434: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   437: invokeinterface 210 3 0
-    //   442: pop
-    //   443: aload 4
-    //   445: getfield 125	com/tencent/bugly/proguard/am:k	Ljava/util/Map;
-    //   448: ldc 231
-    //   450: new 160	java/lang/StringBuilder
-    //   453: dup
-    //   454: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   457: aload 5
-    //   459: invokevirtual 234	com/tencent/bugly/crashreport/common/info/a:R	()Z
-    //   462: invokevirtual 229	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   465: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   468: invokeinterface 210 3 0
-    //   473: pop
-    //   474: aload 4
-    //   476: getfield 125	com/tencent/bugly/proguard/am:k	Ljava/util/Map;
-    //   479: ldc 236
-    //   481: new 160	java/lang/StringBuilder
-    //   484: dup
-    //   485: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   488: aload 5
-    //   490: getfield 240	com/tencent/bugly/crashreport/common/info/a:A	Z
-    //   493: invokevirtual 229	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   496: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   499: invokeinterface 210 3 0
-    //   504: pop
-    //   505: aload 4
-    //   507: getfield 125	com/tencent/bugly/proguard/am:k	Ljava/util/Map;
-    //   510: ldc 242
-    //   512: new 160	java/lang/StringBuilder
-    //   515: dup
-    //   516: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   519: aload 5
-    //   521: getfield 244	com/tencent/bugly/crashreport/common/info/a:z	Z
-    //   524: invokevirtual 229	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   527: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   530: invokeinterface 210 3 0
-    //   535: pop
-    //   536: aload 4
-    //   538: getfield 125	com/tencent/bugly/proguard/am:k	Ljava/util/Map;
-    //   541: ldc 246
-    //   543: new 160	java/lang/StringBuilder
-    //   546: dup
-    //   547: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   550: aload 5
-    //   552: invokevirtual 248	com/tencent/bugly/crashreport/common/info/a:t	()Ljava/lang/String;
-    //   555: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   558: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   561: invokeinterface 210 3 0
-    //   566: pop
-    //   567: aload 5
-    //   569: getfield 251	com/tencent/bugly/crashreport/common/info/a:B	Z
-    //   572: ifeq +197 -> 769
-    //   575: aload 4
-    //   577: getfield 125	com/tencent/bugly/proguard/am:k	Ljava/util/Map;
-    //   580: ldc 253
-    //   582: new 160	java/lang/StringBuilder
-    //   585: dup
-    //   586: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   589: aload 5
-    //   591: invokevirtual 256	com/tencent/bugly/crashreport/common/info/a:K	()Ljava/lang/String;
-    //   594: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   597: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   600: invokeinterface 210 3 0
-    //   605: pop
-    //   606: aload 4
-    //   608: getfield 125	com/tencent/bugly/proguard/am:k	Ljava/util/Map;
-    //   611: ldc_w 258
-    //   614: new 160	java/lang/StringBuilder
-    //   617: dup
-    //   618: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   621: aload 5
-    //   623: invokevirtual 261	com/tencent/bugly/crashreport/common/info/a:L	()Ljava/lang/String;
-    //   626: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   629: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   632: invokeinterface 210 3 0
-    //   637: pop
-    //   638: aload 4
-    //   640: getfield 125	com/tencent/bugly/proguard/am:k	Ljava/util/Map;
-    //   643: ldc_w 263
-    //   646: new 160	java/lang/StringBuilder
-    //   649: dup
-    //   650: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   653: aload 5
-    //   655: invokevirtual 266	com/tencent/bugly/crashreport/common/info/a:M	()Ljava/lang/String;
-    //   658: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   661: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   664: invokeinterface 210 3 0
-    //   669: pop
-    //   670: aload 4
-    //   672: getfield 125	com/tencent/bugly/proguard/am:k	Ljava/util/Map;
-    //   675: ldc_w 268
-    //   678: new 160	java/lang/StringBuilder
-    //   681: dup
-    //   682: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   685: aload 5
-    //   687: invokevirtual 271	com/tencent/bugly/crashreport/common/info/a:N	()Ljava/lang/String;
-    //   690: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   693: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   696: invokeinterface 210 3 0
-    //   701: pop
-    //   702: aload 4
-    //   704: getfield 125	com/tencent/bugly/proguard/am:k	Ljava/util/Map;
-    //   707: ldc_w 273
-    //   710: new 160	java/lang/StringBuilder
-    //   713: dup
-    //   714: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   717: aload 5
-    //   719: invokevirtual 276	com/tencent/bugly/crashreport/common/info/a:O	()Ljava/lang/String;
-    //   722: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   725: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   728: invokeinterface 210 3 0
-    //   733: pop
-    //   734: aload 4
-    //   736: getfield 125	com/tencent/bugly/proguard/am:k	Ljava/util/Map;
-    //   739: ldc_w 278
-    //   742: new 160	java/lang/StringBuilder
-    //   745: dup
-    //   746: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   749: aload 5
-    //   751: invokevirtual 281	com/tencent/bugly/crashreport/common/info/a:P	()J
-    //   754: invokestatic 286	java/lang/Long:toString	(J)Ljava/lang/String;
-    //   757: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   760: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   763: invokeinterface 210 3 0
-    //   768: pop
-    //   769: aload 4
-    //   771: getfield 125	com/tencent/bugly/proguard/am:k	Ljava/util/Map;
-    //   774: ldc_w 288
-    //   777: new 160	java/lang/StringBuilder
-    //   780: dup
-    //   781: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   784: aload 5
-    //   786: getfield 290	com/tencent/bugly/crashreport/common/info/a:m	Ljava/lang/String;
-    //   789: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   792: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   795: invokeinterface 210 3 0
-    //   800: pop
-    //   801: getstatic 295	com/tencent/bugly/b:b	Ljava/util/List;
-    //   804: ifnull +92 -> 896
-    //   807: getstatic 295	com/tencent/bugly/b:b	Ljava/util/List;
-    //   810: invokeinterface 301 1 0
-    //   815: astore_0
-    //   816: aload_0
-    //   817: invokeinterface 306 1 0
-    //   822: ifeq +74 -> 896
-    //   825: aload_0
-    //   826: invokeinterface 310 1 0
-    //   831: checkcast 312	com/tencent/bugly/a
-    //   834: astore_3
-    //   835: aload_3
-    //   836: getfield 315	com/tencent/bugly/a:versionKey	Ljava/lang/String;
-    //   839: ifnull -23 -> 816
-    //   842: aload_3
-    //   843: getfield 318	com/tencent/bugly/a:version	Ljava/lang/String;
-    //   846: ifnull -30 -> 816
-    //   849: aload 4
-    //   851: getfield 125	com/tencent/bugly/proguard/am:k	Ljava/util/Map;
-    //   854: aload_3
-    //   855: getfield 315	com/tencent/bugly/a:versionKey	Ljava/lang/String;
-    //   858: aload_3
-    //   859: getfield 318	com/tencent/bugly/a:version	Ljava/lang/String;
-    //   862: invokeinterface 210 3 0
-    //   867: pop
-    //   868: goto -52 -> 816
-    //   871: astore_0
-    //   872: aload 5
-    //   874: monitorexit
-    //   875: aload_0
-    //   876: athrow
-    //   877: astore_0
-    //   878: aload_0
-    //   879: invokestatic 321	com/tencent/bugly/proguard/x:b	(Ljava/lang/Throwable;)Z
-    //   882: ifne +7 -> 889
-    //   885: aload_0
-    //   886: invokevirtual 324	java/lang/Throwable:printStackTrace	()V
-    //   889: aconst_null
-    //   890: areturn
-    //   891: aload_2
-    //   892: astore_3
-    //   893: goto -771 -> 122
-    //   896: aload 4
-    //   898: getfield 125	com/tencent/bugly/proguard/am:k	Ljava/util/Map;
-    //   901: ldc_w 326
-    //   904: ldc_w 326
-    //   907: ldc 102
-    //   909: invokestatic 331	com/tencent/bugly/proguard/z:b	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   912: invokeinterface 210 3 0
-    //   917: pop
-    //   918: aload 4
-    //   920: getfield 125	com/tencent/bugly/proguard/am:k	Ljava/util/Map;
-    //   923: ldc_w 333
-    //   926: ldc_w 333
-    //   929: ldc_w 335
-    //   932: invokestatic 331	com/tencent/bugly/proguard/z:b	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   935: invokeinterface 210 3 0
-    //   940: pop
-    //   941: aload 5
-    //   943: monitorexit
-    //   944: invokestatic 340	com/tencent/bugly/proguard/u:a	()Lcom/tencent/bugly/proguard/u;
-    //   947: astore_0
-    //   948: aload_0
-    //   949: ifnull +55 -> 1004
-    //   952: aload_0
-    //   953: getfield 342	com/tencent/bugly/proguard/u:b	Z
-    //   956: ifne +48 -> 1004
-    //   959: aload_2
-    //   960: ifnull +44 -> 1004
-    //   963: aload 4
-    //   965: aload 4
-    //   967: getfield 112	com/tencent/bugly/proguard/am:h	[B
-    //   970: iconst_2
-    //   971: iconst_1
-    //   972: aload 6
-    //   974: getfield 343	com/tencent/bugly/crashreport/common/strategy/StrategyBean:t	Ljava/lang/String;
-    //   977: invokestatic 346	com/tencent/bugly/proguard/z:a	([BIILjava/lang/String;)[B
-    //   980: putfield 112	com/tencent/bugly/proguard/am:h	[B
-    //   983: aload 4
-    //   985: getfield 112	com/tencent/bugly/proguard/am:h	[B
-    //   988: ifnonnull +16 -> 1004
-    //   991: ldc_w 348
-    //   994: iconst_0
-    //   995: anewarray 4	java/lang/Object
-    //   998: invokestatic 65	com/tencent/bugly/proguard/x:e	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   1001: pop
-    //   1002: aconst_null
-    //   1003: areturn
-    //   1004: aload 5
-    //   1006: invokevirtual 352	com/tencent/bugly/crashreport/common/info/a:E	()Ljava/util/Map;
-    //   1009: astore_0
-    //   1010: aload_0
-    //   1011: ifnull +60 -> 1071
-    //   1014: aload_0
-    //   1015: invokeinterface 356 1 0
-    //   1020: invokeinterface 359 1 0
-    //   1025: astore_0
-    //   1026: aload_0
-    //   1027: invokeinterface 306 1 0
-    //   1032: ifeq +39 -> 1071
-    //   1035: aload_0
-    //   1036: invokeinterface 310 1 0
-    //   1041: checkcast 361	java/util/Map$Entry
-    //   1044: astore_2
-    //   1045: aload 4
-    //   1047: getfield 125	com/tencent/bugly/proguard/am:k	Ljava/util/Map;
-    //   1050: aload_2
-    //   1051: invokeinterface 364 1 0
-    //   1056: aload_2
-    //   1057: invokeinterface 367 1 0
-    //   1062: invokeinterface 210 3 0
-    //   1067: pop
-    //   1068: goto -42 -> 1026
-    //   1071: aload 4
-    //   1073: areturn
+    //   87: getfield 86	com/tencent/bugly/crashreport/common/info/a:o	Ljava/lang/String;
+    //   90: putfield 88	com/tencent/bugly/proguard/ap:e	Ljava/lang/String;
+    //   93: aload 4
+    //   95: aload 5
+    //   97: getfield 91	com/tencent/bugly/crashreport/common/info/a:g	Ljava/lang/String;
+    //   100: putfield 94	com/tencent/bugly/proguard/ap:f	Ljava/lang/String;
+    //   103: aload 4
+    //   105: iload_1
+    //   106: putfield 96	com/tencent/bugly/proguard/ap:g	I
+    //   109: aload_2
+    //   110: ifnonnull +810 -> 920
+    //   113: ldc 98
+    //   115: invokevirtual 104	java/lang/String:getBytes	()[B
+    //   118: astore_3
+    //   119: aload 4
+    //   121: aload_3
+    //   122: putfield 108	com/tencent/bugly/proguard/ap:h	[B
+    //   125: aload 4
+    //   127: aload 5
+    //   129: getfield 111	com/tencent/bugly/crashreport/common/info/a:i	Ljava/lang/String;
+    //   132: putfield 112	com/tencent/bugly/proguard/ap:i	Ljava/lang/String;
+    //   135: aload 4
+    //   137: aload 5
+    //   139: getfield 115	com/tencent/bugly/crashreport/common/info/a:j	Ljava/lang/String;
+    //   142: putfield 116	com/tencent/bugly/proguard/ap:j	Ljava/lang/String;
+    //   145: aload 4
+    //   147: new 19	java/util/HashMap
+    //   150: dup
+    //   151: invokespecial 20	java/util/HashMap:<init>	()V
+    //   154: putfield 120	com/tencent/bugly/proguard/ap:k	Ljava/util/Map;
+    //   157: aload 4
+    //   159: aload 5
+    //   161: invokevirtual 122	com/tencent/bugly/crashreport/common/info/a:d	()Ljava/lang/String;
+    //   164: putfield 125	com/tencent/bugly/proguard/ap:l	Ljava/lang/String;
+    //   167: aload 4
+    //   169: aload 6
+    //   171: getfield 131	com/tencent/bugly/crashreport/common/strategy/StrategyBean:p	J
+    //   174: putfield 133	com/tencent/bugly/proguard/ap:m	J
+    //   177: aload 4
+    //   179: aload 5
+    //   181: invokevirtual 135	com/tencent/bugly/crashreport/common/info/a:g	()Ljava/lang/String;
+    //   184: putfield 136	com/tencent/bugly/proguard/ap:o	Ljava/lang/String;
+    //   187: aload 4
+    //   189: aload_0
+    //   190: invokestatic 141	com/tencent/bugly/crashreport/common/info/b:c	(Landroid/content/Context;)Ljava/lang/String;
+    //   193: putfield 143	com/tencent/bugly/proguard/ap:p	Ljava/lang/String;
+    //   196: aload 4
+    //   198: invokestatic 149	java/lang/System:currentTimeMillis	()J
+    //   201: putfield 152	com/tencent/bugly/proguard/ap:q	J
+    //   204: aload 4
+    //   206: new 154	java/lang/StringBuilder
+    //   209: dup
+    //   210: invokespecial 155	java/lang/StringBuilder:<init>	()V
+    //   213: aload 5
+    //   215: invokevirtual 157	com/tencent/bugly/crashreport/common/info/a:j	()Ljava/lang/String;
+    //   218: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   221: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   224: putfield 167	com/tencent/bugly/proguard/ap:r	Ljava/lang/String;
+    //   227: aload 4
+    //   229: aload 5
+    //   231: invokevirtual 169	com/tencent/bugly/crashreport/common/info/a:i	()Ljava/lang/String;
+    //   234: putfield 172	com/tencent/bugly/proguard/ap:s	Ljava/lang/String;
+    //   237: aload 4
+    //   239: new 154	java/lang/StringBuilder
+    //   242: dup
+    //   243: invokespecial 155	java/lang/StringBuilder:<init>	()V
+    //   246: aload 5
+    //   248: invokevirtual 174	com/tencent/bugly/crashreport/common/info/a:l	()Ljava/lang/String;
+    //   251: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   254: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   257: putfield 177	com/tencent/bugly/proguard/ap:t	Ljava/lang/String;
+    //   260: aload 4
+    //   262: aload 5
+    //   264: invokevirtual 179	com/tencent/bugly/crashreport/common/info/a:k	()Ljava/lang/String;
+    //   267: putfield 182	com/tencent/bugly/proguard/ap:u	Ljava/lang/String;
+    //   270: aload 4
+    //   272: new 154	java/lang/StringBuilder
+    //   275: dup
+    //   276: invokespecial 155	java/lang/StringBuilder:<init>	()V
+    //   279: aload 5
+    //   281: invokevirtual 184	com/tencent/bugly/crashreport/common/info/a:m	()Ljava/lang/String;
+    //   284: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   287: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   290: putfield 187	com/tencent/bugly/proguard/ap:v	Ljava/lang/String;
+    //   293: aload 4
+    //   295: aload 4
+    //   297: getfield 143	com/tencent/bugly/proguard/ap:p	Ljava/lang/String;
+    //   300: putfield 190	com/tencent/bugly/proguard/ap:w	Ljava/lang/String;
+    //   303: aload 5
+    //   305: invokevirtual 194	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   308: pop
+    //   309: aload 4
+    //   311: ldc 196
+    //   313: putfield 199	com/tencent/bugly/proguard/ap:n	Ljava/lang/String;
+    //   316: aload 4
+    //   318: getfield 120	com/tencent/bugly/proguard/ap:k	Ljava/util/Map;
+    //   321: ldc 201
+    //   323: new 154	java/lang/StringBuilder
+    //   326: dup
+    //   327: invokespecial 155	java/lang/StringBuilder:<init>	()V
+    //   330: aload 5
+    //   332: invokevirtual 204	com/tencent/bugly/crashreport/common/info/a:x	()Ljava/lang/String;
+    //   335: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   338: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   341: invokeinterface 210 3 0
+    //   346: pop
+    //   347: aload 4
+    //   349: getfield 120	com/tencent/bugly/proguard/ap:k	Ljava/util/Map;
+    //   352: ldc 212
+    //   354: new 154	java/lang/StringBuilder
+    //   357: dup
+    //   358: invokespecial 155	java/lang/StringBuilder:<init>	()V
+    //   361: aload 5
+    //   363: invokevirtual 215	com/tencent/bugly/crashreport/common/info/a:y	()Ljava/lang/String;
+    //   366: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   369: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   372: invokeinterface 210 3 0
+    //   377: pop
+    //   378: aload 4
+    //   380: getfield 120	com/tencent/bugly/proguard/ap:k	Ljava/util/Map;
+    //   383: ldc 217
+    //   385: new 154	java/lang/StringBuilder
+    //   388: dup
+    //   389: invokespecial 155	java/lang/StringBuilder:<init>	()V
+    //   392: aload 5
+    //   394: invokevirtual 220	com/tencent/bugly/crashreport/common/info/a:z	()Ljava/lang/String;
+    //   397: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   400: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   403: invokeinterface 210 3 0
+    //   408: pop
+    //   409: aload 4
+    //   411: getfield 120	com/tencent/bugly/proguard/ap:k	Ljava/util/Map;
+    //   414: ldc 222
+    //   416: new 154	java/lang/StringBuilder
+    //   419: dup
+    //   420: invokespecial 155	java/lang/StringBuilder:<init>	()V
+    //   423: aload 5
+    //   425: invokevirtual 226	com/tencent/bugly/crashreport/common/info/a:Q	()Z
+    //   428: invokevirtual 229	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   431: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   434: invokeinterface 210 3 0
+    //   439: pop
+    //   440: aload 4
+    //   442: getfield 120	com/tencent/bugly/proguard/ap:k	Ljava/util/Map;
+    //   445: ldc 231
+    //   447: new 154	java/lang/StringBuilder
+    //   450: dup
+    //   451: invokespecial 155	java/lang/StringBuilder:<init>	()V
+    //   454: aload 5
+    //   456: invokevirtual 234	com/tencent/bugly/crashreport/common/info/a:R	()Z
+    //   459: invokevirtual 229	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   462: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   465: invokeinterface 210 3 0
+    //   470: pop
+    //   471: aload 4
+    //   473: getfield 120	com/tencent/bugly/proguard/ap:k	Ljava/util/Map;
+    //   476: ldc 236
+    //   478: new 154	java/lang/StringBuilder
+    //   481: dup
+    //   482: invokespecial 155	java/lang/StringBuilder:<init>	()V
+    //   485: aload 5
+    //   487: getfield 240	com/tencent/bugly/crashreport/common/info/a:C	Z
+    //   490: invokevirtual 229	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   493: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   496: invokeinterface 210 3 0
+    //   501: pop
+    //   502: aload 4
+    //   504: getfield 120	com/tencent/bugly/proguard/ap:k	Ljava/util/Map;
+    //   507: ldc 242
+    //   509: new 154	java/lang/StringBuilder
+    //   512: dup
+    //   513: invokespecial 155	java/lang/StringBuilder:<init>	()V
+    //   516: aload 5
+    //   518: getfield 245	com/tencent/bugly/crashreport/common/info/a:B	Z
+    //   521: invokevirtual 229	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   524: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   527: invokeinterface 210 3 0
+    //   532: pop
+    //   533: aload 4
+    //   535: getfield 120	com/tencent/bugly/proguard/ap:k	Ljava/util/Map;
+    //   538: ldc 247
+    //   540: new 154	java/lang/StringBuilder
+    //   543: dup
+    //   544: invokespecial 155	java/lang/StringBuilder:<init>	()V
+    //   547: aload 5
+    //   549: invokevirtual 249	com/tencent/bugly/crashreport/common/info/a:t	()Ljava/lang/String;
+    //   552: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   555: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   558: invokeinterface 210 3 0
+    //   563: pop
+    //   564: aload 4
+    //   566: getfield 120	com/tencent/bugly/proguard/ap:k	Ljava/util/Map;
+    //   569: ldc 251
+    //   571: new 154	java/lang/StringBuilder
+    //   574: dup
+    //   575: invokespecial 155	java/lang/StringBuilder:<init>	()V
+    //   578: aload 5
+    //   580: invokevirtual 254	com/tencent/bugly/crashreport/common/info/a:S	()Ljava/lang/String;
+    //   583: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   586: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   589: invokeinterface 210 3 0
+    //   594: pop
+    //   595: aload 5
+    //   597: getfield 257	com/tencent/bugly/crashreport/common/info/a:D	Z
+    //   600: ifeq +198 -> 798
+    //   603: aload 4
+    //   605: getfield 120	com/tencent/bugly/proguard/ap:k	Ljava/util/Map;
+    //   608: ldc_w 259
+    //   611: new 154	java/lang/StringBuilder
+    //   614: dup
+    //   615: invokespecial 155	java/lang/StringBuilder:<init>	()V
+    //   618: aload 5
+    //   620: invokevirtual 262	com/tencent/bugly/crashreport/common/info/a:K	()Ljava/lang/String;
+    //   623: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   626: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   629: invokeinterface 210 3 0
+    //   634: pop
+    //   635: aload 4
+    //   637: getfield 120	com/tencent/bugly/proguard/ap:k	Ljava/util/Map;
+    //   640: ldc_w 264
+    //   643: new 154	java/lang/StringBuilder
+    //   646: dup
+    //   647: invokespecial 155	java/lang/StringBuilder:<init>	()V
+    //   650: aload 5
+    //   652: invokevirtual 267	com/tencent/bugly/crashreport/common/info/a:L	()Ljava/lang/String;
+    //   655: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   658: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   661: invokeinterface 210 3 0
+    //   666: pop
+    //   667: aload 4
+    //   669: getfield 120	com/tencent/bugly/proguard/ap:k	Ljava/util/Map;
+    //   672: ldc_w 269
+    //   675: new 154	java/lang/StringBuilder
+    //   678: dup
+    //   679: invokespecial 155	java/lang/StringBuilder:<init>	()V
+    //   682: aload 5
+    //   684: invokevirtual 272	com/tencent/bugly/crashreport/common/info/a:M	()Ljava/lang/String;
+    //   687: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   690: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   693: invokeinterface 210 3 0
+    //   698: pop
+    //   699: aload 4
+    //   701: getfield 120	com/tencent/bugly/proguard/ap:k	Ljava/util/Map;
+    //   704: ldc_w 274
+    //   707: new 154	java/lang/StringBuilder
+    //   710: dup
+    //   711: invokespecial 155	java/lang/StringBuilder:<init>	()V
+    //   714: aload 5
+    //   716: invokevirtual 277	com/tencent/bugly/crashreport/common/info/a:N	()Ljava/lang/String;
+    //   719: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   722: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   725: invokeinterface 210 3 0
+    //   730: pop
+    //   731: aload 4
+    //   733: getfield 120	com/tencent/bugly/proguard/ap:k	Ljava/util/Map;
+    //   736: ldc_w 279
+    //   739: new 154	java/lang/StringBuilder
+    //   742: dup
+    //   743: invokespecial 155	java/lang/StringBuilder:<init>	()V
+    //   746: aload 5
+    //   748: invokevirtual 282	com/tencent/bugly/crashreport/common/info/a:O	()Ljava/lang/String;
+    //   751: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   754: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   757: invokeinterface 210 3 0
+    //   762: pop
+    //   763: aload 4
+    //   765: getfield 120	com/tencent/bugly/proguard/ap:k	Ljava/util/Map;
+    //   768: ldc_w 284
+    //   771: new 154	java/lang/StringBuilder
+    //   774: dup
+    //   775: invokespecial 155	java/lang/StringBuilder:<init>	()V
+    //   778: aload 5
+    //   780: invokevirtual 287	com/tencent/bugly/crashreport/common/info/a:P	()J
+    //   783: invokestatic 292	java/lang/Long:toString	(J)Ljava/lang/String;
+    //   786: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   789: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   792: invokeinterface 210 3 0
+    //   797: pop
+    //   798: aload 4
+    //   800: getfield 120	com/tencent/bugly/proguard/ap:k	Ljava/util/Map;
+    //   803: ldc_w 294
+    //   806: new 154	java/lang/StringBuilder
+    //   809: dup
+    //   810: invokespecial 155	java/lang/StringBuilder:<init>	()V
+    //   813: aload 5
+    //   815: getfield 295	com/tencent/bugly/crashreport/common/info/a:n	Ljava/lang/String;
+    //   818: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   821: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   824: invokeinterface 210 3 0
+    //   829: pop
+    //   830: getstatic 300	com/tencent/bugly/b:b	Ljava/util/List;
+    //   833: ifnull +92 -> 925
+    //   836: getstatic 300	com/tencent/bugly/b:b	Ljava/util/List;
+    //   839: invokeinterface 306 1 0
+    //   844: astore_0
+    //   845: aload_0
+    //   846: invokeinterface 311 1 0
+    //   851: ifeq +74 -> 925
+    //   854: aload_0
+    //   855: invokeinterface 315 1 0
+    //   860: checkcast 317	com/tencent/bugly/a
+    //   863: astore_3
+    //   864: aload_3
+    //   865: getfield 320	com/tencent/bugly/a:versionKey	Ljava/lang/String;
+    //   868: ifnull -23 -> 845
+    //   871: aload_3
+    //   872: getfield 323	com/tencent/bugly/a:version	Ljava/lang/String;
+    //   875: ifnull -30 -> 845
+    //   878: aload 4
+    //   880: getfield 120	com/tencent/bugly/proguard/ap:k	Ljava/util/Map;
+    //   883: aload_3
+    //   884: getfield 320	com/tencent/bugly/a:versionKey	Ljava/lang/String;
+    //   887: aload_3
+    //   888: getfield 323	com/tencent/bugly/a:version	Ljava/lang/String;
+    //   891: invokeinterface 210 3 0
+    //   896: pop
+    //   897: goto -52 -> 845
+    //   900: astore_0
+    //   901: aload 5
+    //   903: monitorexit
+    //   904: aload_0
+    //   905: athrow
+    //   906: astore_0
+    //   907: aload_0
+    //   908: invokestatic 326	com/tencent/bugly/proguard/x:b	(Ljava/lang/Throwable;)Z
+    //   911: ifne +7 -> 918
+    //   914: aload_0
+    //   915: invokevirtual 329	java/lang/Throwable:printStackTrace	()V
+    //   918: aconst_null
+    //   919: areturn
+    //   920: aload_2
+    //   921: astore_3
+    //   922: goto -803 -> 119
+    //   925: aload 4
+    //   927: getfield 120	com/tencent/bugly/proguard/ap:k	Ljava/util/Map;
+    //   930: ldc_w 331
+    //   933: ldc_w 331
+    //   936: ldc 98
+    //   938: invokestatic 336	com/tencent/bugly/proguard/z:b	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   941: invokeinterface 210 3 0
+    //   946: pop
+    //   947: aload 4
+    //   949: getfield 120	com/tencent/bugly/proguard/ap:k	Ljava/util/Map;
+    //   952: ldc_w 338
+    //   955: ldc_w 338
+    //   958: ldc_w 340
+    //   961: invokestatic 336	com/tencent/bugly/proguard/z:b	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   964: invokeinterface 210 3 0
+    //   969: pop
+    //   970: aload 5
+    //   972: monitorexit
+    //   973: invokestatic 345	com/tencent/bugly/proguard/u:a	()Lcom/tencent/bugly/proguard/u;
+    //   976: astore_0
+    //   977: aload_0
+    //   978: ifnull +55 -> 1033
+    //   981: aload_0
+    //   982: getfield 347	com/tencent/bugly/proguard/u:b	Z
+    //   985: ifne +48 -> 1033
+    //   988: aload_2
+    //   989: ifnull +44 -> 1033
+    //   992: aload 4
+    //   994: aload 4
+    //   996: getfield 108	com/tencent/bugly/proguard/ap:h	[B
+    //   999: iconst_2
+    //   1000: iconst_1
+    //   1001: aload 6
+    //   1003: getfield 348	com/tencent/bugly/crashreport/common/strategy/StrategyBean:u	Ljava/lang/String;
+    //   1006: invokestatic 351	com/tencent/bugly/proguard/z:a	([BIILjava/lang/String;)[B
+    //   1009: putfield 108	com/tencent/bugly/proguard/ap:h	[B
+    //   1012: aload 4
+    //   1014: getfield 108	com/tencent/bugly/proguard/ap:h	[B
+    //   1017: ifnonnull +16 -> 1033
+    //   1020: ldc_w 353
+    //   1023: iconst_0
+    //   1024: anewarray 4	java/lang/Object
+    //   1027: invokestatic 65	com/tencent/bugly/proguard/x:e	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   1030: pop
+    //   1031: aconst_null
+    //   1032: areturn
+    //   1033: aload 5
+    //   1035: invokevirtual 357	com/tencent/bugly/crashreport/common/info/a:E	()Ljava/util/Map;
+    //   1038: astore_0
+    //   1039: aload_0
+    //   1040: ifnull +60 -> 1100
+    //   1043: aload_0
+    //   1044: invokeinterface 361 1 0
+    //   1049: invokeinterface 364 1 0
+    //   1054: astore_0
+    //   1055: aload_0
+    //   1056: invokeinterface 311 1 0
+    //   1061: ifeq +39 -> 1100
+    //   1064: aload_0
+    //   1065: invokeinterface 315 1 0
+    //   1070: checkcast 366	java/util/Map$Entry
+    //   1073: astore_2
+    //   1074: aload 4
+    //   1076: getfield 120	com/tencent/bugly/proguard/ap:k	Ljava/util/Map;
+    //   1079: aload_2
+    //   1080: invokeinterface 369 1 0
+    //   1085: aload_2
+    //   1086: invokeinterface 372 1 0
+    //   1091: invokeinterface 210 3 0
+    //   1096: pop
+    //   1097: goto -42 -> 1055
+    //   1100: aload 4
+    //   1102: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1074	0	paramContext	android.content.Context
-    //   0	1074	1	paramInt	int
-    //   0	1074	2	paramArrayOfByte	byte[]
-    //   121	772	3	localObject	Object
-    //   42	1030	4	localam	am
-    //   3	1002	5	locala	com.tencent.bugly.crashreport.common.info.a
-    //   11	962	6	localStrategyBean	StrategyBean
+    //   0	1103	0	paramContext	android.content.Context
+    //   0	1103	1	paramInt	int
+    //   0	1103	2	paramArrayOfByte	byte[]
+    //   118	804	3	localObject	Object
+    //   42	1059	4	localap	ap
+    //   3	1031	5	locala	com.tencent.bugly.crashreport.common.info.a
+    //   11	991	6	localStrategyBean	StrategyBean
     // Exception table:
     //   from	to	target	type
-    //   47	112	871	finally
-    //   116	122	871	finally
-    //   122	769	871	finally
-    //   769	816	871	finally
-    //   816	868	871	finally
-    //   896	944	871	finally
-    //   35	47	877	java/lang/Throwable
-    //   872	877	877	java/lang/Throwable
-    //   944	948	877	java/lang/Throwable
-    //   952	959	877	java/lang/Throwable
-    //   963	1002	877	java/lang/Throwable
-    //   1004	1010	877	java/lang/Throwable
-    //   1014	1026	877	java/lang/Throwable
-    //   1026	1068	877	java/lang/Throwable
+    //   47	109	900	finally
+    //   113	119	900	finally
+    //   119	798	900	finally
+    //   798	845	900	finally
+    //   845	897	900	finally
+    //   925	973	900	finally
+    //   35	47	906	java/lang/Throwable
+    //   901	906	906	java/lang/Throwable
+    //   973	977	906	java/lang/Throwable
+    //   981	988	906	java/lang/Throwable
+    //   992	1031	906	java/lang/Throwable
+    //   1033	1039	906	java/lang/Throwable
+    //   1043	1055	906	java/lang/Throwable
+    //   1055	1097	906	java/lang/Throwable
   }
   
-  public static an a(byte[] paramArrayOfByte, boolean paramBoolean)
+  public static aq a(byte[] paramArrayOfByte, boolean paramBoolean)
   {
     if (paramArrayOfByte != null) {}
     for (;;)
@@ -515,11 +525,11 @@ public class a
         ((d)localObject).d();
         ((d)localObject).a("utf-8");
         ((d)localObject).a(paramArrayOfByte);
-        paramArrayOfByte = ((d)localObject).b("detail", new an());
-        if (!an.class.isInstance(paramArrayOfByte)) {
+        paramArrayOfByte = ((d)localObject).b("detail", new aq());
+        if (!aq.class.isInstance(paramArrayOfByte)) {
           break label171;
         }
-        paramArrayOfByte = (an)an.class.cast(paramArrayOfByte);
+        paramArrayOfByte = (aq)aq.class.cast(paramArrayOfByte);
         localObject = paramArrayOfByte;
         if (!paramBoolean)
         {
@@ -558,40 +568,40 @@ public class a
     }
   }
   
-  public static aq a(UserInfoBean paramUserInfoBean)
+  public static at a(UserInfoBean paramUserInfoBean)
   {
     if (paramUserInfoBean == null) {
       return null;
     }
-    aq localaq = new aq();
-    localaq.a = paramUserInfoBean.e;
-    localaq.e = paramUserInfoBean.j;
-    localaq.d = paramUserInfoBean.c;
-    localaq.c = paramUserInfoBean.d;
-    localaq.g = com.tencent.bugly.crashreport.common.info.a.b().h();
+    at localat = new at();
+    localat.a = paramUserInfoBean.e;
+    localat.e = paramUserInfoBean.j;
+    localat.d = paramUserInfoBean.c;
+    localat.c = paramUserInfoBean.d;
+    localat.g = com.tencent.bugly.crashreport.common.info.a.b().h();
     if (paramUserInfoBean.o == 1)
     {
       bool = true;
-      localaq.h = bool;
+      localat.h = bool;
       switch (paramUserInfoBean.b)
       {
       default: 
         if ((paramUserInfoBean.b < 10) || (paramUserInfoBean.b >= 20)) {
           break;
         }
-        localaq.b = ((byte)paramUserInfoBean.b);
+        localat.b = ((byte)paramUserInfoBean.b);
       }
     }
     else
     {
       for (;;)
       {
-        localaq.f = new HashMap();
+        localat.f = new HashMap();
         if (paramUserInfoBean.p >= 0) {
-          localaq.f.put("C01", paramUserInfoBean.p);
+          localat.f.put("C01", paramUserInfoBean.p);
         }
         if (paramUserInfoBean.q >= 0) {
-          localaq.f.put("C02", paramUserInfoBean.q);
+          localat.f.put("C02", paramUserInfoBean.q);
         }
         if ((paramUserInfoBean.r == null) || (paramUserInfoBean.r.size() <= 0)) {
           break label376;
@@ -600,17 +610,17 @@ public class a
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (Map.Entry)((Iterator)localObject1).next();
-          localaq.f.put("C03_" + (String)((Map.Entry)localObject2).getKey(), ((Map.Entry)localObject2).getValue());
+          localat.f.put("C03_" + (String)((Map.Entry)localObject2).getKey(), ((Map.Entry)localObject2).getValue());
         }
         bool = false;
         break;
-        localaq.b = 1;
+        localat.b = 1;
         continue;
-        localaq.b = 2;
+        localat.b = 2;
         continue;
-        localaq.b = 4;
+        localat.b = 4;
         continue;
-        localaq.b = 3;
+        localat.b = 3;
       }
     }
     x.e("unknown uinfo type %d ", new Object[] { Integer.valueOf(paramUserInfoBean.b) });
@@ -622,27 +632,27 @@ public class a
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (Map.Entry)((Iterator)localObject1).next();
-        localaq.f.put("C04_" + (String)((Map.Entry)localObject2).getKey(), ((Map.Entry)localObject2).getValue());
+        localat.f.put("C04_" + (String)((Map.Entry)localObject2).getKey(), ((Map.Entry)localObject2).getValue());
       }
     }
-    Object localObject1 = localaq.f;
+    Object localObject1 = localat.f;
     Object localObject2 = new StringBuilder();
     if (!paramUserInfoBean.l) {}
     for (boolean bool = true;; bool = false)
     {
       ((Map)localObject1).put("A36", bool);
-      localaq.f.put("F02", paramUserInfoBean.g);
-      localaq.f.put("F03", paramUserInfoBean.h);
-      localaq.f.put("F04", paramUserInfoBean.j);
-      localaq.f.put("F05", paramUserInfoBean.i);
-      localaq.f.put("F06", paramUserInfoBean.m);
-      localaq.f.put("F10", paramUserInfoBean.k);
-      x.c("summary type %d vm:%d", new Object[] { Byte.valueOf(localaq.b), Integer.valueOf(localaq.f.size()) });
-      return localaq;
+      localat.f.put("F02", paramUserInfoBean.g);
+      localat.f.put("F03", paramUserInfoBean.h);
+      localat.f.put("F04", paramUserInfoBean.j);
+      localat.f.put("F05", paramUserInfoBean.i);
+      localat.f.put("F06", paramUserInfoBean.m);
+      localat.f.put("F10", paramUserInfoBean.k);
+      x.c("summary type %d vm:%d", new Object[] { Byte.valueOf(localat.b), Integer.valueOf(localat.f.size()) });
+      return localat;
     }
   }
   
-  public static ar a(List<UserInfoBean> paramList, int paramInt)
+  public static au a(List<UserInfoBean> paramList, int paramInt)
   {
     if ((paramList == null) || (paramList.size() == 0)) {
       return null;
@@ -652,31 +662,31 @@ public class a
       return null;
     }
     ((com.tencent.bugly.crashreport.common.info.a)localObject).s();
-    ar localar = new ar();
-    localar.b = ((com.tencent.bugly.crashreport.common.info.a)localObject).d;
-    localar.c = ((com.tencent.bugly.crashreport.common.info.a)localObject).g();
+    au localau = new au();
+    localau.b = ((com.tencent.bugly.crashreport.common.info.a)localObject).d;
+    localau.c = ((com.tencent.bugly.crashreport.common.info.a)localObject).g();
     ArrayList localArrayList = new ArrayList();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      aq localaq = a((UserInfoBean)paramList.next());
-      if (localaq != null) {
-        localArrayList.add(localaq);
+      at localat = a((UserInfoBean)paramList.next());
+      if (localat != null) {
+        localArrayList.add(localat);
       }
     }
-    localar.d = localArrayList;
-    localar.e = new HashMap();
-    localar.e.put("A7", ((com.tencent.bugly.crashreport.common.info.a)localObject).g);
-    localar.e.put("A6", ((com.tencent.bugly.crashreport.common.info.a)localObject).r());
-    localar.e.put("A5", ((com.tencent.bugly.crashreport.common.info.a)localObject).q());
-    localar.e.put("A2", ((com.tencent.bugly.crashreport.common.info.a)localObject).o());
-    localar.e.put("A1", ((com.tencent.bugly.crashreport.common.info.a)localObject).o());
-    localar.e.put("A24", ((com.tencent.bugly.crashreport.common.info.a)localObject).i);
-    localar.e.put("A17", ((com.tencent.bugly.crashreport.common.info.a)localObject).p());
-    localar.e.put("A15", ((com.tencent.bugly.crashreport.common.info.a)localObject).v());
-    localar.e.put("A13", ((com.tencent.bugly.crashreport.common.info.a)localObject).w());
-    localar.e.put("F08", ((com.tencent.bugly.crashreport.common.info.a)localObject).w);
-    localar.e.put("F09", ((com.tencent.bugly.crashreport.common.info.a)localObject).x);
+    localau.d = localArrayList;
+    localau.e = new HashMap();
+    localau.e.put("A7", ((com.tencent.bugly.crashreport.common.info.a)localObject).h);
+    localau.e.put("A6", ((com.tencent.bugly.crashreport.common.info.a)localObject).r());
+    localau.e.put("A5", ((com.tencent.bugly.crashreport.common.info.a)localObject).q());
+    localau.e.put("A2", ((com.tencent.bugly.crashreport.common.info.a)localObject).o());
+    localau.e.put("A1", ((com.tencent.bugly.crashreport.common.info.a)localObject).o());
+    localau.e.put("A24", ((com.tencent.bugly.crashreport.common.info.a)localObject).j);
+    localau.e.put("A17", ((com.tencent.bugly.crashreport.common.info.a)localObject).p());
+    localau.e.put("A15", ((com.tencent.bugly.crashreport.common.info.a)localObject).v());
+    localau.e.put("A13", ((com.tencent.bugly.crashreport.common.info.a)localObject).w());
+    localau.e.put("F08", ((com.tencent.bugly.crashreport.common.info.a)localObject).x);
+    localau.e.put("F09", ((com.tencent.bugly.crashreport.common.info.a)localObject).y);
     paramList = ((com.tencent.bugly.crashreport.common.info.a)localObject).F();
     if ((paramList != null) && (paramList.size() > 0))
     {
@@ -684,7 +694,7 @@ public class a
       while (paramList.hasNext())
       {
         localObject = (Map.Entry)paramList.next();
-        localar.e.put("C04_" + (String)((Map.Entry)localObject).getKey(), ((Map.Entry)localObject).getValue());
+        localau.e.put("C04_" + (String)((Map.Entry)localObject).getKey(), ((Map.Entry)localObject).getValue());
       }
     }
     switch (paramInt)
@@ -693,8 +703,8 @@ public class a
       x.e("unknown up type %d ", new Object[] { Integer.valueOf(paramInt) });
       return null;
     }
-    for (localar.a = 1;; localar.a = 2) {
-      return localar;
+    for (localau.a = 1;; localau.a = 2) {
+      return localau;
     }
   }
   

@@ -1,28 +1,32 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
+import ajar;
+import ajeu;
 import android.net.Uri;
 import android.text.TextUtils;
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
-import com.tencent.mobileqq.vip.DownloadListener;
+import bead;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.app.AppRuntime;
+import nbv;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import xfy;
 
 public class PreloadModule
   implements Serializable
 {
+  public static final int DEFAULT_VALUE_RETRY_COUNT = 5;
+  public static final int DEFAULT_VALUE_RETRY_TIME_INTERVAL = 24;
   private static final long serialVersionUID = 1L;
   public boolean isForbidAutoDownload;
   public boolean mBackControl;
   public String mBaseUrl;
-  private CopyOnWriteArrayList mPreloadResources = new CopyOnWriteArrayList();
+  private CopyOnWriteArrayList<PreloadResource> mPreloadResources = new CopyOnWriteArrayList();
+  public int mRetryCount = 5;
+  public int mRetryTimeInterval = 24;
   public String mid;
   public String name;
   public int option;
@@ -38,12 +42,14 @@ public class PreloadModule
     this.option = paramPreloadModule.option;
     this.isForbidAutoDownload = paramPreloadModule.isForbidAutoDownload;
     this.mBaseUrl = paramPreloadModule.mBaseUrl;
-    paramPreloadModule = paramPreloadModule.mPreloadResources.iterator();
-    while (paramPreloadModule.hasNext())
+    Iterator localIterator = paramPreloadModule.mPreloadResources.iterator();
+    while (localIterator.hasNext())
     {
-      PreloadResource localPreloadResource = (PreloadResource)paramPreloadModule.next();
+      PreloadResource localPreloadResource = (PreloadResource)localIterator.next();
       this.mPreloadResources.add(new PreloadResource(localPreloadResource));
     }
+    this.mRetryTimeInterval = paramPreloadModule.mRetryTimeInterval;
+    this.mRetryCount = paramPreloadModule.mRetryCount;
   }
   
   private void a(String paramString, AppRuntime paramAppRuntime)
@@ -69,7 +75,7 @@ public class PreloadModule
       paramString.printStackTrace();
       return;
     }
-    HtmlOffline.b(paramString, paramAppRuntime, true, new xfy(this));
+    nbv.b(paramString, paramAppRuntime, true, new ajar(this));
   }
   
   private boolean a(String paramString)
@@ -87,25 +93,32 @@ public class PreloadModule
       try
       {
         if (paramJSONObject.optInt("back_control") != 1) {
-          break label195;
+          break label248;
         }
         bool1 = true;
         localPreloadModule.mBackControl = bool1;
-        if (paramBoolean) {
-          localPreloadModule.mBackControl = false;
+        if (!paramBoolean) {
+          break label240;
         }
-        localPreloadModule.name = paramJSONObject.optString("module_name");
-        Object localObject = paramJSONObject.optString("module_id");
-        if (TextUtils.isEmpty((CharSequence)localObject))
+        localPreloadModule.mBackControl = false;
+      }
+      catch (Exception paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+      }
+      Object localObject = paramJSONObject.optString("module_id");
+      if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localPreloadModule.mid = localPreloadModule.name;
+        localPreloadModule.option = paramJSONObject.optInt("option");
+        if (paramJSONObject.optInt("forbid_download") == 1)
         {
-          localPreloadModule.mid = localPreloadModule.name;
-          localPreloadModule.option = paramJSONObject.optInt("option");
-          if (paramJSONObject.optInt("forbid_download") != 1) {
-            break label189;
-          }
           bool1 = bool2;
           localPreloadModule.isForbidAutoDownload = bool1;
           localPreloadModule.mBaseUrl = paramJSONObject.optString("url_base");
+          localPreloadModule.mRetryTimeInterval = paramJSONObject.optInt("retry_t_interval", 24);
+          localPreloadModule.mRetryCount = paramJSONObject.optInt("retry_cnt", 5);
+          localPreloadModule.mRetryCount = Math.max(localPreloadModule.mRetryCount, 5);
           paramJSONObject = paramJSONObject.optJSONArray("resources");
           if (i < paramJSONObject.length())
           {
@@ -113,24 +126,49 @@ public class PreloadModule
             localPreloadModule.mPreloadResources.add(localObject);
             i += 1;
             continue;
+            localPreloadModule.name = paramJSONObject.optString("module_name");
+            continue;
           }
+          return localPreloadModule;
         }
-        else
-        {
-          localPreloadModule.mid = ((String)localObject);
-          continue;
-        }
-        return localPreloadModule;
       }
-      catch (Exception paramJSONObject)
+      else
       {
-        paramJSONObject.printStackTrace();
+        localPreloadModule.mid = ((String)localObject);
+        continue;
       }
-      label189:
       boolean bool1 = false;
       continue;
-      label195:
-      bool1 = false;
+      label240:
+      if (paramInt == 2)
+      {
+        continue;
+        label248:
+        bool1 = false;
+      }
+    }
+  }
+  
+  public void check()
+  {
+    if (TextUtils.isEmpty(this.mid)) {
+      this.mid = this.name;
+    }
+    if (this.mRetryTimeInterval <= 0)
+    {
+      i = 24;
+      this.mRetryTimeInterval = i;
+      if (this.mRetryCount > 0) {
+        break label56;
+      }
+    }
+    label56:
+    for (int i = 5;; i = this.mRetryCount)
+    {
+      this.mRetryCount = i;
+      return;
+      i = this.mRetryTimeInterval;
+      break;
     }
   }
   
@@ -146,7 +184,7 @@ public class PreloadModule
     }
   }
   
-  public void downloadModule(boolean paramBoolean1, DownloadListener paramDownloadListener, PreloadManager paramPreloadManager, boolean paramBoolean2)
+  public void downloadModule(boolean paramBoolean1, bead parambead, PreloadManager paramPreloadManager, boolean paramBoolean2)
   {
     if (this.name.equals("wallet_offline")) {
       handleHtmlOffline(paramPreloadManager.a);
@@ -165,9 +203,9 @@ public class PreloadModule
             localPreloadResource.deleteResFile(this, paramPreloadManager, 6);
             this.mPreloadResources.remove(localPreloadResource);
           }
-          else if (localPreloadResource.isTimeToDownload(paramPreloadManager, this))
+          else if ((localPreloadResource.isAbiMatch()) && (localPreloadResource.isTimeToDownload(paramPreloadManager)))
           {
-            localPreloadResource.startDownload(paramPreloadManager, this, paramDownloadListener, paramBoolean2);
+            localPreloadResource.startDownload(paramPreloadManager, this, parambead, paramBoolean2);
           }
         }
       }
@@ -197,9 +235,10 @@ public class PreloadModule
         localPreloadResource.deleteResFile(this, paramPreloadManager, 6);
         this.mPreloadResources.remove(localPreloadResource);
       }
-      else if (localPreloadResource.isNeedForceDeleteConfig(this))
+      else if (localPreloadResource.handleAbnormalRetry(this))
       {
         this.mPreloadResources.remove(localPreloadResource);
+        localPreloadResource.deleteResFile(this, paramPreloadManager, 9);
       }
     }
   }
@@ -211,7 +250,7 @@ public class PreloadModule
     return i;
   }
   
-  public List getResList()
+  public List<PreloadResource> getResList()
   {
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = this.mPreloadResources.iterator();
@@ -232,7 +271,7 @@ public class PreloadModule
     while (localIterator.hasNext())
     {
       PreloadResource localPreloadResource = (PreloadResource)localIterator.next();
-      if (QWalletTools.c(localPreloadResource.mResId, paramString)) {
+      if (ajeu.c(localPreloadResource.mResId, paramString)) {
         return localPreloadResource;
       }
     }
@@ -264,7 +303,7 @@ public class PreloadModule
   {
     boolean bool2 = false;
     boolean bool1;
-    if (!QWalletTools.c(this.mid, paramPreloadModule.mid))
+    if (!ajeu.c(this.mid, paramPreloadModule.mid))
     {
       bool1 = true;
       return bool1;
@@ -272,7 +311,7 @@ public class PreloadModule
     if (this.mBackControl != paramPreloadModule.mBackControl) {
       return true;
     }
-    if (!QWalletTools.c(this.name, paramPreloadModule.name)) {
+    if (!ajeu.c(this.name, paramPreloadModule.name)) {
       return true;
     }
     if (this.option != paramPreloadModule.option) {
@@ -281,7 +320,13 @@ public class PreloadModule
     if (this.isForbidAutoDownload != paramPreloadModule.isForbidAutoDownload) {
       return true;
     }
-    if (!QWalletTools.c(this.mBaseUrl, paramPreloadModule.mBaseUrl)) {
+    if (this.mRetryTimeInterval != paramPreloadModule.mRetryTimeInterval) {
+      return true;
+    }
+    if (this.mRetryCount != paramPreloadModule.mRetryCount) {
+      return true;
+    }
+    if (!ajeu.c(this.mBaseUrl, paramPreloadModule.mBaseUrl)) {
       return true;
     }
     List localList = getResList();
@@ -304,9 +349,9 @@ public class PreloadModule
   
   public boolean isModuleFinish(PreloadManager paramPreloadManager)
   {
-    Iterator localIterator = this.mPreloadResources.iterator();
-    while (localIterator.hasNext()) {
-      if (!((PreloadResource)localIterator.next()).isResFileExist(this, paramPreloadManager)) {
+    paramPreloadManager = this.mPreloadResources.iterator();
+    while (paramPreloadManager.hasNext()) {
+      if (!((PreloadResource)paramPreloadManager.next()).isResFileExist(this)) {
         return false;
       }
     }
@@ -353,6 +398,8 @@ public class PreloadModule
     this.option = paramPreloadModule.option;
     this.isForbidAutoDownload = paramPreloadModule.isForbidAutoDownload;
     this.mBaseUrl = paramPreloadModule.mBaseUrl;
+    this.mRetryTimeInterval = paramPreloadModule.mRetryTimeInterval;
+    this.mRetryCount = paramPreloadModule.mRetryCount;
     paramPreloadModule = paramPreloadModule.mPreloadResources.iterator();
     while (paramPreloadModule.hasNext())
     {
@@ -384,13 +431,15 @@ public class PreloadModule
         localPreloadResource2.mIsUnzipInside = localPreloadResource1.mIsUnzipInside;
         localPreloadResource2.mUnzipPrefix = localPreloadResource1.mUnzipPrefix;
         localPreloadResource2.mFromType = localPreloadResource1.mFromType;
+        localPreloadResource2.mFilePos = localPreloadResource1.mFilePos;
+        localPreloadResource2.mAbi = localPreloadResource1.mAbi;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.preload.PreloadModule
  * JD-Core Version:    0.7.0.1
  */

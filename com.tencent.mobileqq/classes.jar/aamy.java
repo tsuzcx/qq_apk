@@ -1,18 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.arcard.ARCardPageProcess;
-import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.gdtad.aditem.GdtHandler.Options;
 
-public class aamy
-  implements Runnable
+public final class aamy
+  implements Parcelable.Creator<GdtHandler.Options>
 {
-  public aamy(ARGreetingCardListManager paramARGreetingCardListManager) {}
-  
-  public void run()
+  public GdtHandler.Options a(Parcel paramParcel)
   {
-    if (ARGreetingCardListManager.e(this.a) > 0) {
-      ARGreetingCardListManager.a(this.a).b();
-    }
-    ARGreetingCardListManager.a(this.a).setVisibility(4);
+    return new GdtHandler.Options(paramParcel);
+  }
+  
+  public GdtHandler.Options[] a(int paramInt)
+  {
+    return new GdtHandler.Options[paramInt];
   }
 }
 

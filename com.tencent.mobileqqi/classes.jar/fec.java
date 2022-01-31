@@ -1,13 +1,24 @@
-import com.tencent.mobileqq.app.CircleManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class fec
-  implements Runnable
 {
-  public fec(CircleManager paramCircleManager) {}
+  public static final int a = 1;
+  public static final int b = 2;
+  public static final int c = 3;
+  public static final int d = 4;
+  public static final int e = 5;
+  public FromServiceMsg a;
+  public ToServiceMsg a;
+  public Object a;
+  public int f;
   
-  public void run()
+  public fec(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    CircleManager.a(this.a);
+    this.f = paramInt;
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
 }
 

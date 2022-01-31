@@ -9,11 +9,11 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_cmd0x97b$FollowCountInfo
-  extends MessageMicro
+  extends MessageMicro<FollowCountInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_buluo_name = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_fans_detail_info = PBField.initRepeatMessage(oidb_cmd0x97b.CountDetailInfo.class);
+  public final PBRepeatMessageField<oidb_cmd0x97b.CountDetailInfo> rpt_fans_detail_info = PBField.initRepeatMessage(oidb_cmd0x97b.CountDetailInfo.class);
   public final PBUInt32Field uint32_buluo_fans_count = PBField.initUInt32(0);
   public final PBUInt32Field uint32_buluo_id = PBField.initUInt32(0);
   public final PBUInt32Field uint32_is_buluo_vip = PBField.initUInt32(0);
@@ -28,7 +28,7 @@ public final class oidb_cmd0x97b$FollowCountInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x97b.oidb_cmd0x97b.FollowCountInfo
  * JD-Core Version:    0.7.0.1
  */

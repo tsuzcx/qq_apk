@@ -1,138 +1,38 @@
 package com.tencent.mobileqq.msf.sdk;
 
-import android.os.Bundle;
-import com.tencent.mobileqq.msf.core.c.o;
-import com.tencent.mobileqq.msf.core.c.o.a;
-import com.tencent.mobileqq.msf.sdk.handler.IErrorHandler;
-import com.tencent.mobileqq.msf.sdk.report.c;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.msf.sdk.handler.IMsfProxy;
+import com.tencent.mobileqq.msf.sdk.report.e.c;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.concurrent.LinkedBlockingQueue;
 
 class t
+  extends BroadcastReceiver
 {
-  private String _bootBroadcastName;
-  protected int appid;
-  IErrorHandler errorHandler;
-  protected final LinkedBlockingQueue highPriorityMessagePairs = new LinkedBlockingQueue();
-  protected String msfServiceName;
-  protected String processName;
-  protected final LinkedBlockingQueue serviceRespMessagePairs = new LinkedBlockingQueue();
-  private Object syncQueueLock = new Object();
+  t(MsfServiceSdk paramMsfServiceSdk) {}
   
-  public boolean addServicePushMsg(FromServiceMsg paramFromServiceMsg)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramFromServiceMsg == null) || (paramFromServiceMsg.getServiceCmd() == null)) {
-      return false;
-    }
-    boolean bool;
-    if (u.c.contains(paramFromServiceMsg.getServiceCmd()))
+    if ("com.tencent.mobileqq.msf.ACTION_MSF_IPC_EXCEPTION".equals(paramIntent.getAction()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ThreadSplit", 2, "addServicePushMsg, high priority added, " + paramFromServiceMsg.getServiceCmd());
-      }
-      paramFromServiceMsg.extraData.putInt(u.a, getQueueSize());
-      bool = this.highPriorityMessagePairs.add(new MsfMessagePair(null, paramFromServiceMsg));
+      paramContext = paramIntent.getStringExtra("process");
+      if ((paramContext != null) && (paramContext.equals(BaseApplication.processName))) {}
     }
-    for (;;)
+    else
     {
-      if (paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c")) {
-        o.a().a(o.a.e, paramFromServiceMsg.getWupBuffer(), 0);
-      }
-      synchronized (this.syncQueueLock)
-      {
-        this.syncQueueLock.notify();
-        c.a().onRespToApp(null, paramFromServiceMsg);
-        return bool;
-        bool = this.serviceRespMessagePairs.add(new MsfMessagePair(null, paramFromServiceMsg));
-      }
+      return;
     }
-  }
-  
-  public boolean addServiceRespMsg(MsfMessagePair paramMsfMessagePair)
-  {
-    boolean bool;
-    if ((paramMsfMessagePair.fromServiceMsg != null) && (paramMsfMessagePair.fromServiceMsg.getServiceCmd() != null) && (u.c.contains(paramMsfMessagePair.fromServiceMsg.getServiceCmd())))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ThreadSplit", 2, "addServiceRespMsg, high priority added, " + paramMsfMessagePair.fromServiceMsg.getServiceCmd());
-      }
-      paramMsfMessagePair.fromServiceMsg.extraData.putInt(u.a, getQueueSize());
-      paramMsfMessagePair.fromServiceMsg.extraData.putLong(u.b, System.currentTimeMillis());
-      bool = this.highPriorityMessagePairs.add(paramMsfMessagePair);
-    }
-    synchronized (this.syncQueueLock)
-    {
-      this.syncQueueLock.notify();
-      c.a().onRespToApp(paramMsfMessagePair.toServiceMsg, paramMsfMessagePair.fromServiceMsg);
-      return bool;
-      bool = this.serviceRespMessagePairs.add(paramMsfMessagePair);
-    }
-  }
-  
-  public String getBootBroadcastName()
-  {
-    return this._bootBroadcastName;
-  }
-  
-  public IErrorHandler getErrorHandler()
-  {
-    return this.errorHandler;
-  }
-  
-  public int getQueueSize()
-  {
-    return this.serviceRespMessagePairs.size() + this.highPriorityMessagePairs.size();
-  }
-  
-  public LinkedBlockingQueue getRespMsgQueue()
-  {
-    if (this.highPriorityMessagePairs.size() > 0) {
-      return this.highPriorityMessagePairs;
-    }
-    return this.serviceRespMessagePairs;
-  }
-  
-  public MsfMessagePair getServiceRespMsg()
-  {
-    if (this.highPriorityMessagePairs.size() > 0) {
-      return (MsfMessagePair)this.highPriorityMessagePairs.poll();
-    }
-    return (MsfMessagePair)this.serviceRespMessagePairs.poll();
-  }
-  
-  public void initSub(String paramString1, int paramInt, String paramString2, String paramString3, IErrorHandler paramIErrorHandler)
-  {
-    this.appid = paramInt;
-    this.msfServiceName = paramString2;
-    setBootBroadcastName(paramString3);
-    this.processName = paramString1;
-    this.errorHandler = paramIErrorHandler;
-  }
-  
-  public void queueWait()
-  {
-    try
-    {
-      synchronized (this.syncQueueLock)
-      {
-        if ((this.serviceRespMessagePairs.size() == 0) && (this.highPriorityMessagePairs.size() == 0)) {
-          this.syncQueueLock.wait();
-        }
-        label34:
-        return;
-      }
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      break label34;
-    }
-  }
-  
-  public void setBootBroadcastName(String paramString)
-  {
-    this._bootBroadcastName = paramString;
+    String str1 = paramIntent.getStringExtra("uin");
+    String str2 = paramIntent.getStringExtra("type");
+    String str3 = paramIntent.getStringExtra("exception");
+    String str4 = paramIntent.getStringExtra("isAppConnected");
+    String str5 = paramIntent.getStringExtra("halfCloseStatus");
+    paramIntent.getStringExtra("processStatus");
+    QLog.i("MsfServiceSdk", 1, "onReceive ACTION_MSF_IPC_EXCEPTION, type=" + str2 + " process=" + paramContext + " exception=" + str3 + " appConned=" + str4 + " halfClose=" + str5);
+    MsfServiceSdk.access$000(this.a).registerMsfService(true, true);
+    e.c.b().a(str1, str2, str3, paramContext);
   }
 }
 

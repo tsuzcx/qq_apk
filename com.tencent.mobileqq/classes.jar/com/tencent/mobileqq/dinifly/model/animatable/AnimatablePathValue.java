@@ -1,100 +1,49 @@
 package com.tencent.mobileqq.dinifly.model.animatable;
 
 import android.graphics.PointF;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.animation.Keyframe;
 import com.tencent.mobileqq.dinifly.animation.keyframe.BaseKeyframeAnimation;
-import com.tencent.mobileqq.dinifly.animation.keyframe.PathKeyframe;
-import com.tencent.mobileqq.dinifly.animation.keyframe.PathKeyframe.Factory;
 import com.tencent.mobileqq.dinifly.animation.keyframe.PathKeyframeAnimation;
-import com.tencent.mobileqq.dinifly.animation.keyframe.StaticKeyframeAnimation;
-import com.tencent.mobileqq.dinifly.utils.JsonUtils;
-import java.util.ArrayList;
+import com.tencent.mobileqq.dinifly.animation.keyframe.PointKeyframeAnimation;
+import com.tencent.mobileqq.dinifly.value.Keyframe;
+import java.util.Collections;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class AnimatablePathValue
   implements AnimatableValue<PointF, PointF>
 {
-  private PointF initialPoint;
-  private final List<PathKeyframe> keyframes = new ArrayList();
+  private final List<Keyframe<PointF>> keyframes;
   
-  AnimatablePathValue()
+  public AnimatablePathValue()
   {
-    this.initialPoint = new PointF(0.0F, 0.0F);
+    this.keyframes = Collections.singletonList(new Keyframe(new PointF(0.0F, 0.0F)));
   }
   
-  AnimatablePathValue(Object paramObject, LottieComposition paramLottieComposition)
+  public AnimatablePathValue(List<Keyframe<PointF>> paramList)
   {
-    if (hasKeyframes(paramObject))
-    {
-      paramObject = (JSONArray)paramObject;
-      int j = paramObject.length();
-      int i = 0;
-      while (i < j)
-      {
-        PathKeyframe localPathKeyframe = PathKeyframe.Factory.newInstance(paramObject.optJSONObject(i), paramLottieComposition, ValueFactory.INSTANCE);
-        this.keyframes.add(localPathKeyframe);
-        i += 1;
-      }
-      Keyframe.setEndFrames(this.keyframes);
-      return;
-    }
-    this.initialPoint = JsonUtils.pointFromJsonArray((JSONArray)paramObject, paramLottieComposition.getDpScale());
-  }
-  
-  public static AnimatableValue<PointF, PointF> createAnimatablePathOrSplitDimensionPath(JSONObject paramJSONObject, LottieComposition paramLottieComposition)
-  {
-    if (paramJSONObject.has("k")) {
-      return new AnimatablePathValue(paramJSONObject.opt("k"), paramLottieComposition);
-    }
-    return new AnimatableSplitDimensionPathValue(AnimatableFloatValue.Factory.newInstance(paramJSONObject.optJSONObject("x"), paramLottieComposition), AnimatableFloatValue.Factory.newInstance(paramJSONObject.optJSONObject("y"), paramLottieComposition));
-  }
-  
-  private boolean hasKeyframes(Object paramObject)
-  {
-    if (!(paramObject instanceof JSONArray)) {}
-    do
-    {
-      return false;
-      paramObject = ((JSONArray)paramObject).opt(0);
-    } while ((!(paramObject instanceof JSONObject)) || (!((JSONObject)paramObject).has("t")));
-    return true;
+    this.keyframes = paramList;
   }
   
   public BaseKeyframeAnimation<PointF, PointF> createAnimation()
   {
-    if (!hasAnimation()) {
-      return new StaticKeyframeAnimation(this.initialPoint);
+    if (((Keyframe)this.keyframes.get(0)).isStatic()) {
+      return new PointKeyframeAnimation(this.keyframes);
     }
     return new PathKeyframeAnimation(this.keyframes);
   }
   
-  public boolean hasAnimation()
+  public List<Keyframe<PointF>> getKeyframes()
   {
-    return !this.keyframes.isEmpty();
+    return this.keyframes;
   }
   
-  public String toString()
+  public boolean isStatic()
   {
-    return "initialPoint=" + this.initialPoint;
-  }
-  
-  private static class ValueFactory
-    implements AnimatableValue.Factory<PointF>
-  {
-    private static final AnimatableValue.Factory<PointF> INSTANCE = new ValueFactory();
-    
-    public PointF valueFromObject(Object paramObject, float paramFloat)
-    {
-      return JsonUtils.pointFromJsonArray((JSONArray)paramObject, paramFloat);
-    }
+    return (this.keyframes.size() == 1) && (((Keyframe)this.keyframes.get(0)).isStatic());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.model.animatable.AnimatablePathValue
  * JD-Core Version:    0.7.0.1
  */

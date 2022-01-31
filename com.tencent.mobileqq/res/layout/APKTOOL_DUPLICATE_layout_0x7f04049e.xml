@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merge android:gravity="center" android:orientation="vertical" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="13.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0317" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0f15" />
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip">
-        <TextView android:textSize="13.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0317" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0f16" />
-        <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c04cf" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1765" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b101f" />
-    </LinearLayout>
-</merge>

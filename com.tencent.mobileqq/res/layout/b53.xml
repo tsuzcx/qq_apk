@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/bmt" android:background="#ffc6c6c7" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <com.tencent.mobileqq.activity.aio.InputLinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/i7j" android:background="#fff7f7f7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="56.0dip" android:layout_below="@id/bmt">
+        <View android:id="@id/ix5" android:layout_width="0.0dip" android:layout_height="0.0dip" />
+        <LinearLayout android:gravity="bottom|center|left" android:orientation="horizontal" android:id="@id/acx" android:background="@drawable/ako" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:layout_weight="1.0">
+            <com.tencent.widget.XEditTextEx android:textSize="18.0dip" android:textColor="@color/skin_black" android:textColorHint="#ffcccccc" android:gravity="center|left|top" android:id="@id/byr" android:background="@null" android:paddingLeft="10.0dip" android:paddingTop="7.5dip" android:paddingRight="10.0dip" android:paddingBottom="7.5dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxHeight="101.0dip" android:maxLength="200" android:inputType="textMultiLine" android:imeOptions="actionSend" android:textSelectHandle="@drawable/h57" />
+        </LinearLayout>
+        <ImageButton android:layout_gravity="center_vertical" android:id="@id/bva" android:background="@drawable/trans" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/bu" android:contentDescription="@string/dty" />
+    </com.tencent.mobileqq.activity.aio.InputLinearLayout>
+    <RelativeLayout android:id="@id/bvt" android:background="#fff7f7f7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/i7j">
+        <FrameLayout android:id="@id/emotion_panel" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <RelativeLayout android:id="@id/container_secondary_tab" android:background="#fff7f7f7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_below="@id/emotion_panel">
+            <RelativeLayout android:background="#ffdedede" android:layout_width="50.0dip" android:layout_height="fill_parent" android:layout_alignParentLeft="true">
+                <ImageView android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/c0p" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <View android:background="@drawable/al1" android:layout_width="7.5dip" android:layout_height="fill_parent" android:layout_toLeftOf="@id/fun_btn" />
+            <com.tencent.widget.PatchedButton android:textSize="16.0dip" android:textColor="@color/skin_aio_send_button" android:layout_gravity="center_vertical" android:id="@id/fun_btn" android:background="@drawable/al0" android:layout_width="76.0dip" android:layout_height="fill_parent" android:text="@string/a1p" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

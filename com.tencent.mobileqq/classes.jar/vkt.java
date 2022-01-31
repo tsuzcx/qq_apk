@@ -1,35 +1,48 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder.IOnOfflineResCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public final class vkt
-  implements AsyncBack
+class vkt
+  implements AdapterView.OnItemClickListener
 {
-  public void a(int paramInt) {}
+  vkt(vks paramvks) {}
   
-  public void a(String paramString, int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopSignItemBuilder", 2, "checkUpByBusinessId:2833|param:" + paramString + "|code:" + paramInt);
+    if (vks.a(this.a).getActionSheet().isShowing()) {
+      vks.a(this.a).getActionSheet().dismiss();
     }
-    if ((paramInt == 0) && (paramString == null))
-    {
-      paramString = TroopSignItemBuilder.TroopSignVideoItemBuilder.a.entrySet().iterator();
-      while (paramString.hasNext()) {
-        ((TroopSignItemBuilder.TroopSignVideoItemBuilder.IOnOfflineResCallback)((Map.Entry)paramString.next()).getValue()).a(paramInt);
+    int i = ((bdmy)paramView.getTag()).a.action;
+    if ((i == 9) || (i == 10)) {
+      if (!WXShareHelper.a().a()) {
+        paramInt = 2131721491;
       }
-      TroopSignItemBuilder.TroopSignVideoItemBuilder.a.clear();
+    }
+    for (;;)
+    {
+      if (paramInt != -1)
+      {
+        ybk.a(1, paramInt);
+        return;
+        if (!WXShareHelper.a().b()) {
+          paramInt = 2131721492;
+        }
+      }
+      else
+      {
+        this.a.a(i);
+        return;
+      }
+      paramInt = -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vkt
  * JD-Core Version:    0.7.0.1
  */

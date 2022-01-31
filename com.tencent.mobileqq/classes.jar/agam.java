@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.now.enter.NowHongbaoPushManager;
+import android.text.TextUtils;
+import com.tencent.mobileqq.customviews.VideoProgressView;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agam
-  implements Runnable
+class agam
+  implements beqw
 {
-  public agam(NowHongbaoPushManager paramNowHongbaoPushManager) {}
+  agam(agai paramagai, agas paramagas) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    NowHongbaoPushManager.a(this.a, null);
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Agas.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Agas.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+      this.jdField_a_of_type_Agas.jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setVisibility(8);
+    }
   }
 }
 

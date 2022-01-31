@@ -1,21 +1,38 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.open.agent.FriendChooser.GridViewAdapter;
-import com.tencent.open.agent.datamodel.ImageLoader.ImageLoadListener;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class albx
-  implements ImageLoader.ImageLoadListener
+public final class albx
+  implements EIPCResultCallback
 {
-  public albx(FriendChooser.GridViewAdapter paramGridViewAdapter, ImageView paramImageView) {}
+  public albx(albz paramalbz) {}
   
-  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+    boolean bool = true;
+    QLog.i("CmShow_CmShowRenderView", 1, "changeApolloStatus ipc code:" + paramEIPCResult.code);
+    ApolloUtil.b("changeApolloStatus code:" + paramEIPCResult.code);
+    albz localalbz;
+    if (this.a != null)
+    {
+      localalbz = this.a;
+      if (paramEIPCResult.code != 0) {
+        break label82;
+      }
+    }
+    for (;;)
+    {
+      localalbz.a(bool);
+      return;
+      label82:
+      bool = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     albx
  * JD-Core Version:    0.7.0.1
  */

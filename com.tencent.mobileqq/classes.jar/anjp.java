@@ -1,26 +1,40 @@
-import android.os.Handler;
-import android.widget.ImageView;
-import android.widget.TextView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.1.1;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.1.2;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.qphone.base.util.QLog;
 
 public class anjp
-  implements Runnable
+  extends ampt
 {
-  public anjp(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
-  
-  public void run()
+  anjp(anjo paramanjo, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    QIMEffectCameraCaptureUnit.b(this.a).setVisibility(8);
-    QIMEffectCameraCaptureUnit.b(this.a).setEnabled(false);
-    QIMEffectCameraCaptureUnit.a(this.a, 0);
-    QIMEffectCameraCaptureUnit.a(this.a, QIMEffectCameraCaptureUnit.a(this.a));
-    QIMEffectCameraCaptureUnit.f(this.a).setVisibility(0);
-    this.a.a.postDelayed(QIMEffectCameraCaptureUnit.a(this.a), 500L);
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onConsecutiveFailure(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppEventObserverManager", 2, "onConsecutiveFailure errCode=" + paramInt1 + ", failCount=" + paramInt2);
+    }
+    if (paramInt2 < 3) {
+      return;
+    }
+    ArkAppCenter.a().post(anjo.a(this.a), new ArkAppEventObserverManager.1.2(this));
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppEventObserverManager", 2, "onLocationFinish errCode=" + paramInt);
+    }
+    ArkAppCenter.a().post(anjo.a(this.a), new ArkAppEventObserverManager.1.1(this, paramSosoLbsInfo, paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anjp
  * JD-Core Version:    0.7.0.1
  */

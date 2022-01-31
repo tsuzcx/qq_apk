@@ -1,17 +1,62 @@
-import android.widget.ImageButton;
-import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.model.TroopInfoManager;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.GeneralClickHandler;
+import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
+import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class gwt
-  implements Runnable
+  extends AsyncTask
 {
-  public gwt(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public gwt(VideoPlayLogic paramVideoPlayLogic, TroopInfoManager paramTroopInfoManager) {}
   
-  public void run()
+  protected Void a(Void... paramVarArgs)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130839368);
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(this.a.getString(2131558490));
+    if (this.jdField_a_of_type_ComTencentMobileqqModelTroopInfoManager != null) {
+      this.jdField_a_of_type_ComTencentMobileqqModelTroopInfoManager.a();
+    }
+    return null;
+  }
+  
+  protected void a(Void paramVoid)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqModelTroopInfoManager.a(VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic)))
+    {
+      if (TroopFileUtils.a(VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic)) == 0)
+      {
+        if ((VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic) != null) && (VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic).isShowing() == true)) {
+          VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic).dismiss();
+        }
+        QQToast.a(VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic), VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic).getResources().getString(2131560679), 1).a();
+        return;
+      }
+      if (TroopFileUtils.a(VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic)) != 2)
+      {
+        if ((VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic) != null) && (VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic).isShowing() == true)) {
+          VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic).dismiss();
+        }
+        DialogUtil.a(VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic), 230, VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic).getString(2131560332), VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic).getString(2131560430), 2131561746, 2131560431, new gwu(this), new gwv(this)).show();
+        return;
+      }
+      VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic);
+      return;
+    }
+    if ((VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic) != null) && (VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic).isShowing() == true)) {
+      VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic).dismiss();
+    }
+    new StructMsgForGeneralShare.GeneralClickHandler(VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic), VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic), VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic)).a(VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic));
+  }
+  
+  protected void onCancelled()
+  {
+    if ((VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic) != null) && (VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic).isShowing() == true)) {
+      VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic).dismiss();
+    }
   }
 }
 

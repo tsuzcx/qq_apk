@@ -1,23 +1,15 @@
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
-import cooperation.weiyun.sdk.download.WyDownloader;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView;
 
 public class ania
-  implements ThreadPool.Job
+  implements anib
 {
-  public ania(WyDownloader paramWyDownloader, List paramList) {}
+  public ania(ScanEntryProviderContainerView paramScanEntryProviderContainerView) {}
   
-  public Void a(ThreadPool.JobContext paramJobContext)
+  public void a(int paramInt)
   {
-    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramJobContext.hasNext())
-    {
-      long l = ((Long)paramJobContext.next()).longValue();
-      this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader.a(l);
+    if (ScanEntryProviderContainerView.a(this.a) != null) {
+      ScanEntryProviderContainerView.a(this.a).c(paramInt);
     }
-    return null;
   }
 }
 

@@ -1,19 +1,12 @@
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie;
+import android.support.v4.view.PagerAdapter;
 
-public class vvp
-  implements Runnable
+public abstract interface vvp
 {
-  public vvp(MultiForwardChatPie paramMultiForwardChatPie) {}
-  
-  public void run()
-  {
-    MultiForwardChatPie.a(this.a).notifyDataSetChanged();
-  }
+  public abstract void a(PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vvp
  * JD-Core Version:    0.7.0.1
  */

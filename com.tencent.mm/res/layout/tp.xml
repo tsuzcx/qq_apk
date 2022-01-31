@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.downloader_app.ui.TaskManagerHeaderView android:id="@id/adc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mm.plugin.downloader_app.ui.DeleteTaskFooterView android:id="@id/bcw" android:background="@color/a6q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <com.tencent.mm.plugin.downloader_app.ui.TaskListView android:id="@id/lo" android:background="@color/mw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/bcw" android:layout_below="@id/adc" />
+    <ViewStub android:id="@id/bcx" android:layout="@layout/akh" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/uz" android:layout="@layout/tm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

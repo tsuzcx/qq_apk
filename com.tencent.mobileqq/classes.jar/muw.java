@@ -1,27 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.util.ProfileParams;
-import com.tencent.biz.pubaccount.util.ProfileParams.Builder;
-import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
-
-public final class muw
-  implements Parcelable.Creator
+public abstract interface muw
 {
-  public ProfileParams a(Parcel paramParcel)
-  {
-    ProfileParams.Builder localBuilder = new ProfileParams.Builder();
-    localBuilder.a(paramParcel.readString()).a(paramParcel.readInt()).b(paramParcel.readString()).c(paramParcel.readString()).d(paramParcel.readString()).a((ProfileParams.CurLoginUsr)paramParcel.readParcelable(ProfileParams.CurLoginUsr.CREATOR.getClass().getClassLoader()));
-    return localBuilder.a();
-  }
-  
-  public ProfileParams[] a(int paramInt)
-  {
-    return new ProfileParams[paramInt];
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     muw
  * JD-Core Version:    0.7.0.1
  */

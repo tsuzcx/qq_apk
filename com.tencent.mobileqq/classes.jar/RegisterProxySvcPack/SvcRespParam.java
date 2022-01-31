@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public final class SvcRespParam
   extends JceStruct
 {
-  public static ArrayList cache_vOnlineInfo;
+  public static ArrayList<OnlineInfos> cache_vOnlineInfo;
   public int PCstat;
   public int iIsSupportC2CRoamMsg;
   public int iIsSupportDataLine;
@@ -17,13 +17,13 @@ public final class SvcRespParam
   public int iIsSupportViewPCFile;
   public int iPCClientType;
   public int iPcVersion;
-  public ArrayList onlineInfos;
-  public ArrayList onlineinfos;
+  public ArrayList<OnlineInfo> onlineInfos;
+  public ArrayList<OnlineInfos> onlineinfos;
   public long uRoamFlag;
   
   public SvcRespParam() {}
   
-  public SvcRespParam(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong, ArrayList paramArrayList, int paramInt7)
+  public SvcRespParam(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong, ArrayList<OnlineInfo> paramArrayList, int paramInt7)
   {
     this.PCstat = paramInt1;
     this.iIsSupportC2CRoamMsg = paramInt2;
@@ -81,7 +81,7 @@ public final class SvcRespParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     RegisterProxySvcPack.SvcRespParam
  * JD-Core Version:    0.7.0.1
  */

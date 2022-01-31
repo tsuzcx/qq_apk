@@ -1,104 +1,46 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyVideoCompositeManager;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
-import org.json.JSONObject;
 
 public class lyk
-  extends ReadInJoyObserver
 {
-  public lyk(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  public int a;
+  public final lyh a;
+  public int b;
+  public int c;
+  private int d;
   
-  public void b(int paramInt1, long paramLong, String paramString1, int paramInt2, String paramString2)
+  lyk()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverVideoActivity", 2, "onDeliverUpMasterResult retCode=" + paramInt1 + ", feedsId=" + paramLong + ", rowkey=" + paramString1 + ", status=" + paramInt2 + ", comment=" + paramString2);
-    }
-    ReadInJoyDeliverVideoActivity.b(this.a, true);
-    ReadInJoyDeliverVideoActivity.a(this.a, paramInt1);
-    ReadInJoyDeliverVideoActivity.b(this.a, paramInt1);
-    if (paramInt1 == 0)
-    {
-      ReadInJoyDeliverVideoActivity.a(this.a, 100.0F);
-      if (ReadInJoyDeliverVideoActivity.a(this.a))
+    this.jdField_a_of_type_Lyh = new lyh();
+  }
+  
+  public void a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, lyh paramlyh)
+  {
+    this.d += 1;
+    StringBuilder localStringBuilder;
+    if ((this.jdField_a_of_type_Int != paramInt1) || (this.b != paramInt2) || (!this.jdField_a_of_type_Lyh.equals(paramlyh)) || (this.c != paramInt3)) {
+      if (QLog.isColorLevel())
       {
-        ThreadManager.post(new lyl(this), 5, null, false);
-        ReadInJoyDeliverVideoActivity.a(this.a);
-        ReadInJoyDeliverVideoActivity.a(this.a, -1);
-        ReadInJoyDeliverVideoActivity.c(this.a, true);
-      }
-      for (;;)
-      {
-        try
-        {
-          localJSONObject = new JSONObject();
-          if (!TextUtils.isEmpty(paramString2)) {
-            continue;
-          }
-          paramString2 = "";
-          localJSONObject.put("type", 4);
-          localJSONObject.put("comment", new String(Base64Util.encode(paramString2.getBytes(), 0)));
-          localJSONObject.put("feedsId", String.valueOf(paramLong));
-          localJSONObject.put("status", paramInt2);
-          localJSONObject.put("ugcVideoCoverUrl", ReadInJoyDeliverVideoActivity.a(this.a));
-          localJSONObject.put("ugcVideoDuration", ReadInJoyDeliverVideoActivity.a(this.a));
-          localJSONObject.put("ugcVideoRowkey", paramString1);
-          localJSONObject.put("ugcVideoWidth", ReadInJoyDeliverVideoActivity.a(this.a));
-          localJSONObject.put("ugcVideoHeight", ReadInJoyDeliverVideoActivity.b(this.a));
-          if (ReadInJoyDeliverVideoActivity.c(this.a) != 12) {
-            continue;
-          }
-          localJSONObject.put("feedsType", 4);
-          paramString1 = localJSONObject.toString();
-          this.a.getIntent().putExtra("arg_result_json", paramString1);
-          if (QLog.isColorLevel()) {
-            QLog.d("ReadInJoyDeliverVideoActivity", 2, "onDeliverUpMasterResult resultJson=" + paramString1);
-          }
-        }
-        catch (Exception paramString1)
-        {
-          JSONObject localJSONObject;
-          continue;
-        }
-        if (!ReadInJoyDeliverVideoActivity.a(this.a)) {
-          this.a.finish();
-        }
-        ReadInJoyDeliverVideoActivity.c(this.a, 0);
-        ReadInJoyLogicEngine.a().b(true);
-        ReadInJoyHelper.z(this.a.app, 1);
-        ReadInJoyDeliverVideoActivity.a(this.a).a(ReadInJoyDeliverVideoActivity.b(this.a));
-        return;
-        ReadInJoyDeliverVideoActivity.b(this.a);
-        ReadInJoyDeliverVideoActivity.a(this.a, 2, this.a.getString(2131438883));
-        break;
-        localJSONObject.put("type", 5);
-        continue;
-        if (ReadInJoyDeliverVideoActivity.c(this.a) == 13) {
-          localJSONObject.put("feedsType", 5);
+        localStringBuilder = new StringBuilder().append("updateFrame, frameIndex[").append(this.d).append("], data[");
+        if (paramArrayOfByte != null) {
+          break label198;
         }
       }
     }
-    if (paramInt1 == 33)
+    label198:
+    for (paramArrayOfByte = "null";; paramArrayOfByte = Integer.valueOf(paramArrayOfByte.length))
     {
-      ReadInJoyDeliverVideoActivity.b(this.a);
-      ReadInJoyDeliverVideoActivity.b(this.a, 1, this.a.getString(2131438869));
-      ReadInJoyDeliverVideoActivity.c(this.a, 1006);
+      QLog.i("AVShare", 2, paramArrayOfByte + "], imgFormat[" + this.b + "-->" + paramInt2 + "], recordParam[" + this.jdField_a_of_type_Lyh + "--->" + paramlyh + "], angle[" + this.c + "-->" + paramInt3 + "]");
+      this.jdField_a_of_type_Int = paramInt1;
+      this.b = paramInt2;
+      this.jdField_a_of_type_Lyh.a(paramlyh);
+      this.c = paramInt3;
       return;
     }
-    ReadInJoyDeliverVideoActivity.b(this.a);
-    ReadInJoyDeliverVideoActivity.c(this.a, 1, this.a.getString(2131438884));
-    ReadInJoyDeliverVideoActivity.c(this.a, 1006);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lyk
  * JD-Core Version:    0.7.0.1
  */

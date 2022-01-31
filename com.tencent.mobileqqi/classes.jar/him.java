@@ -1,22 +1,58 @@
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.ThreadPoolExecutor.CallerRunsPolicy;
-import java.util.concurrent.TimeUnit;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.open.agent.AuthorityActivity.AccountInfo;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import mqq.observer.BusinessObserver;
 
 public class him
-  extends ThreadPoolExecutor
+  implements BusinessObserver
 {
-  private static int a = 0;
-  public static final String a = "InfiniteTaskThread_";
+  public him(AuthorityActivity paramAuthorityActivity) {}
   
-  public him(int paramInt, long paramLong)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super(paramInt, 2147483647, paramLong, TimeUnit.SECONDS, new LinkedBlockingQueue(), new hin(), new ThreadPoolExecutor.CallerRunsPolicy());
+    Object localObject = paramBundle.getString("ssoAccount");
+    if (!this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.a.equals(localObject)) {}
+    for (;;)
+    {
+      return;
+      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+      if (paramBoolean)
+      {
+        GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
+        try
+        {
+          localObject = paramBundle.getByteArray("data");
+          paramBundle = (Bundle)localObject;
+          if (!this.a.i) {
+            paramBundle = this.a.b((byte[])localObject);
+          }
+          if (paramBundle != null)
+          {
+            localGetAppinfoResponse.mergeFrom(paramBundle);
+            if ((localGetAppinfoResponse.has()) && (localGetAppinfoResponse.ret.get() == 0))
+            {
+              paramBundle = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+              paramBundle.what = 3;
+              paramBundle.obj = localGetAppinfoResponse;
+              this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramBundle);
+              return;
+            }
+          }
+        }
+        catch (Exception paramBundle)
+        {
+          paramBundle.printStackTrace();
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     him
  * JD-Core Version:    0.7.0.1
  */

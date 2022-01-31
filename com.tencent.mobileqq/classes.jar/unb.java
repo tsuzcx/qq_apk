@@ -1,30 +1,33 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationRule;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationRule.BussinessData;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
+import java.util.Map;
 
-public class unb
-  implements Runnable
+class unb
+  extends Job<Object, Object, Object>
 {
-  public unb(AioAnimationDetector paramAioAnimationDetector, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, int paramInt, AioAnimationRule paramAioAnimationRule) {}
-  
-  public void run()
+  unb(una paramuna, String paramString, unj paramunj)
   {
-    AIOAnimationConatiner localAIOAnimationConatiner = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner;
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    int j = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule.a == null) {}
-    for (int i = -1;; i = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule.a.jdField_a_of_type_Int)
-    {
-      localAIOAnimationConatiner.a(2, 300, new Object[] { localDrawable, Integer.valueOf(j), Integer.valueOf(i) });
-      return;
-    }
+    super(paramString);
+  }
+  
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  {
+    this.jdField_a_of_type_Unj.jdField_a_of_type_Uni.a(this.jdField_a_of_type_Unj);
+    this.jdField_a_of_type_Una.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Unj.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Una.jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_Unj.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Unj);
+    return null;
+  }
+  
+  public int getJobType()
+  {
+    return 16;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     unb
  * JD-Core Version:    0.7.0.1
  */

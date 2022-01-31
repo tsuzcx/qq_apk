@@ -1,34 +1,34 @@
 import android.os.Handler;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.utils.QualityReporter;
-import com.tencent.mobileqq.nearby.now.view.VideoPlayerView;
-import com.tencent.mobileqq.nearby.now.view.VideoPlayerView.VideoInfoListener;
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView;
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnCompletionListener;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aeyj
-  implements IVideoView.OnCompletionListener
+  extends Handler
 {
-  public aeyj(VideoPlayerView paramVideoPlayerView) {}
-  
-  public void a(IVideoView paramIVideoView)
+  public aeyj(RecordSoundPanel paramRecordSoundPanel, Looper paramLooper)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView$VideoInfoListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView$VideoInfoListener.a();
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
-    paramIVideoView = VideoPlayerView.a(this.a).a;
-    if (this.a.c()) {}
-    for (int i = 1;; i = 2)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      QualityReporter.a(paramIVideoView, i);
+    default: 
       return;
     }
+    this.a.a.j(1);
+    this.a.b();
+    QQToast.a(this.a.a.a(), this.a.a.a().getString(2131698860), 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeyj
  * JD-Core Version:    0.7.0.1
  */

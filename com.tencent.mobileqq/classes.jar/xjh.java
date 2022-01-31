@@ -1,18 +1,28 @@
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import android.view.KeyEvent;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
 class xjh
-  implements Runnable
+  implements TextView.OnEditorActionListener
 {
   xjh(xjg paramxjg) {}
   
-  public void run()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    BannerManager.a(this.a.a, true);
+    if (paramInt == 6)
+    {
+      paramTextView = this.a.jdField_a_of_type_AndroidViewView$OnClickListener;
+      if (paramTextView != null) {
+        paramTextView.onClick(this.a.jdField_a_of_type_AndroidWidgetTextView);
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xjh
  * JD-Core Version:    0.7.0.1
  */

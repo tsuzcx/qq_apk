@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
 
-public class zcg
-  implements Runnable
+public abstract interface zcg
 {
-  public zcg(DataLineHandler paramDataLineHandler, long paramLong, int paramInt1, int paramInt2) {}
+  public abstract void a(int paramInt, VsMusicItemInfo paramVsMusicItemInfo);
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.OnSessionComplete(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b);
-  }
+  public abstract void a(int paramInt, zck paramzck);
+  
+  public abstract void a(VsMusicItemInfo paramVsMusicItemInfo, int paramInt, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zcg
  * JD-Core Version:    0.7.0.1
  */

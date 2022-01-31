@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.portal;
 
-import agmn;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -10,7 +9,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Transformation;
-import com.tencent.mobileqq.utils.ValueAnimation;
+import awmx;
+import bdob;
 
 public class ImageAlphaSwitchView
   extends View
@@ -21,7 +21,7 @@ public class ImageAlphaSwitchView
   Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   public Transformation a;
-  public ValueAnimation a;
+  public bdob<Float> a;
   int b;
   public Bitmap b;
   int c = 3;
@@ -30,7 +30,7 @@ public class ImageAlphaSwitchView
   {
     super(paramContext);
     this.jdField_a_of_type_AndroidViewAnimationTransformation = new Transformation();
-    this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation = null;
+    this.jdField_a_of_type_Bdob = null;
     this.jdField_a_of_type_Float = 0.0F;
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
   }
@@ -39,20 +39,20 @@ public class ImageAlphaSwitchView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_AndroidViewAnimationTransformation = new Transformation();
-    this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation = null;
+    this.jdField_a_of_type_Bdob = null;
     this.jdField_a_of_type_Float = 0.0F;
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
   }
   
   private void a()
   {
-    ValueAnimation localValueAnimation = new ValueAnimation(Float.valueOf(0.0F), Float.valueOf(255.0F), new agmn(this));
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation != null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.cancel();
+    bdob localbdob = new bdob(Float.valueOf(0.0F), Float.valueOf(255.0F), new awmx(this));
+    if (this.jdField_a_of_type_Bdob != null) {
+      this.jdField_a_of_type_Bdob.cancel();
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation = localValueAnimation;
-    localValueAnimation.setDuration(500L);
-    localValueAnimation.start();
+    this.jdField_a_of_type_Bdob = localbdob;
+    localbdob.setDuration(500L);
+    localbdob.start();
     invalidate();
   }
   
@@ -126,8 +126,8 @@ public class ImageAlphaSwitchView
             this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(255 - (int)this.jdField_a_of_type_Float);
             this.jdField_a_of_type_AndroidGraphicsRect.set(i, k, m + i, j);
             paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-            if (this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation != null) {
-              bool = this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation);
+            if (this.jdField_a_of_type_Bdob != null) {
+              bool = this.jdField_a_of_type_Bdob.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation);
             }
             if (bool) {
               invalidate();
@@ -169,8 +169,8 @@ public class ImageAlphaSwitchView
   
   public void setImage(Bitmap paramBitmap)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation != null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.cancel();
+    if (this.jdField_a_of_type_Bdob != null) {
+      this.jdField_a_of_type_Bdob.cancel();
     }
     this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
     this.jdField_b_of_type_AndroidGraphicsBitmap = null;
@@ -180,7 +180,7 @@ public class ImageAlphaSwitchView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ImageAlphaSwitchView
  * JD-Core Version:    0.7.0.1
  */

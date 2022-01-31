@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.startup.step;
 
-import aifn;
 import android.os.Looper;
 import android.os.SystemClock;
+import atvd;
+import azqh;
+import azri;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.log.ReportLog;
-import com.tencent.mobileqq.statistics.MTAReportController;
-import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneCrashHandler;
@@ -25,16 +25,17 @@ public class Rdm
       return;
     }
     long l = SystemClock.uptimeMillis();
-    MTAReportController localMTAReportController = MTAReportController.a(BaseApplicationImpl.sApplication);
-    localMTAReportController.a(false);
-    localMTAReportController.initMtaConfig("2017", "AGU36HSC29K4");
+    azqh localazqh = azqh.a(BaseApplicationImpl.sApplication);
+    localazqh.a(false);
+    localazqh.initMtaConfig(AppSetting.c(), "AGU36HSC29K4");
+    localazqh.b("MTA_" + paramString1.replace(':', '_'));
     if (!paramString1.endsWith(":openSdk")) {
-      localMTAReportController.a(paramString2);
+      localazqh.a(paramString2);
     }
     QLog.d("AutoMonitor", 1, "MTA, cost=" + (SystemClock.uptimeMillis() - l) + " results: true");
   }
   
-  protected boolean a()
+  protected boolean doStep()
   {
     String str = BaseApplicationImpl.processName;
     QLog.d("RdmInit", 1, "doStep process=" + str + ", sRdmState=" + a.get());
@@ -65,15 +66,15 @@ public class Rdm
       {
         if ((BaseApplicationImpl.sProcessId == 1) || (BaseApplicationImpl.sProcessId == 7))
         {
-          Thread.setDefaultUncaughtExceptionHandler(new ReportLog());
-          StatisticCollector.a(BaseApplicationImpl.sApplication).c((String)localObject1);
+          Thread.setDefaultUncaughtExceptionHandler(new atvd());
+          azri.a(BaseApplicationImpl.sApplication).c((String)localObject1);
           Object localObject2 = localObject1;
           if (!str.endsWith(":openSdk"))
           {
-            StatisticCollector.a(BaseApplicationImpl.sApplication).a((String)localObject1);
+            azri.a(BaseApplicationImpl.sApplication).a((String)localObject1);
             localObject2 = localObject1;
           }
-          localObject1 = new aifn(this, str);
+          localObject1 = new Rdm.1(this, str);
           if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
             continue;
           }
@@ -99,7 +100,7 @@ public class Rdm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.Rdm
  * JD-Core Version:    0.7.0.1
  */

@@ -32,12 +32,12 @@ import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import dnf;
-import dng;
-import dnh;
-import dni;
-import dnj;
-import dnk;
+import dho;
+import dhp;
+import dhq;
+import dhr;
+import dhs;
+import dht;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -49,20 +49,20 @@ public class SendMultiPictureHelper
   static final String jdField_a_of_type_JavaLangString = "SendMultiPictureHelper";
   public int a;
   BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new dnh(this);
+  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new dhq(this);
   public Bundle a;
   protected SendMultiPictureHelper.SendingFileInfo a;
   public BaseActivity a;
   public QQAppInterface a;
   public FMObserver a;
-  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new dnf(this);
+  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new dho(this);
   public QQCustomDialog a;
   public ArrayList a;
   public List a;
   public boolean a;
   public int b;
   BroadcastReceiver jdField_b_of_type_AndroidContentBroadcastReceiver = null;
-  DialogInterface.OnClickListener jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new dni(this);
+  DialogInterface.OnClickListener jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new dhr(this);
   protected String b;
   public boolean b;
   public int c;
@@ -84,8 +84,8 @@ public class SendMultiPictureHelper
     this.jdField_c_of_type_Boolean = false;
     this.jdField_d_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilList = null;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new dng(this);
-    this.jdField_c_of_type_AndroidContentDialogInterface$OnClickListener = new dnj(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new dhp(this);
+    this.jdField_c_of_type_AndroidContentDialogInterface$OnClickListener = new dhs(this);
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime());
     this.f = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131562879);
@@ -410,7 +410,7 @@ public class SendMultiPictureHelper
         ((SendMultiPictureHelper.SendingFileInfo)this.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long = l;
       }
       if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-        this.jdField_a_of_type_AndroidContentBroadcastReceiver = new dnk(this);
+        this.jdField_a_of_type_AndroidContentBroadcastReceiver = new dht(this);
       }
       paramString1 = new IntentFilter();
       paramString1.addAction("android.net.conn.CONNECTIVITY_CHANGE");

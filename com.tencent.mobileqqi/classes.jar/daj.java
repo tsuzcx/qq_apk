@@ -1,45 +1,22 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import com.tencent.mobileqq.activity.PublicAccountActivity;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import java.util.List;
 
 public class daj
-  implements CompoundButton.OnCheckedChangeListener
+  extends SearchResultDialog
 {
-  public daj(LoginInfoActivity paramLoginInfoActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public daj(PublicAccountActivity paramPublicAccountActivity, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    int j = 1;
-    int i = 1;
-    if (paramCompoundButton == LoginInfoActivity.a(this.a).a())
-    {
-      paramCompoundButton = this.a.b;
-      if (paramBoolean)
-      {
-        ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Mobile_pc_online", 0, i, "", "", "", "");
-        SettingCloneUtil.writeValue(this.a, this.a.b.a(), "login_accounts", "qqsetting_bothonline_key", paramBoolean);
-        this.a.b.m();
-      }
-    }
-    while (paramCompoundButton != LoginInfoActivity.b(this.a).a()) {
-      for (;;)
-      {
-        return;
-        i = 0;
-      }
-    }
-    paramCompoundButton = this.a.b;
-    if (paramBoolean) {}
-    for (i = j;; i = 0)
-    {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Security_check", 0, i, "", "", "", "");
-      SettingCloneUtil.writeValue(this.a, null, "security_scan_key", "qqsetting_security_scan_key", paramBoolean);
-      return;
-    }
+    super(paramContext, paramQQAppInterface, paramInt);
+  }
+  
+  @SuppressLint({"UseSparseArrays"})
+  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    return a(paramContext, paramQQAppInterface, 0L, 0);
   }
 }
 

@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0x40$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   public static final int BYTES_VUUID_FIELD_NUMBER = 1;
   public static final int STR_FROMPHONENUM_FIELD_NUMBER = 12;

@@ -62,13 +62,14 @@ public class AndroidFaceDetect
     paramPointF = new Rect(paramPointF);
     localFaceParam.mRightEye = paramPointF;
     paramPointF.left += localRect2.width() * 2 / 3;
-    paramPointF.right += localRect2.width() * 2 / 3;
+    int i = paramPointF.right;
+    paramPointF.right = (localRect2.width() * 2 / 3 + i);
     localFaceParam.mRightEyeCenter = new Point(paramPointF.centerX(), paramPointF.centerY());
     paramPointF = new Rect();
     localFaceParam.mMouth = paramPointF;
     paramPointF.left = ((int)(localRect1.left + localRect1.width() * (1.0D - 0.4D) / 2.0D));
     paramPointF.top = ((int)(localRect1.top + localRect1.height() * 0.72D));
-    paramPointF.right = ((int)(localRect1.width() * 0.4D) + paramPointF.left);
+    paramPointF.right = ((int)(0.4D * localRect1.width()) + paramPointF.left);
     paramPointF.bottom = ((int)(localRect1.height() * (0.88D - 0.72D)) + paramPointF.top);
     localFaceParam.width = paramInt1;
     localFaceParam.height = paramInt2;
@@ -106,18 +107,18 @@ public class AndroidFaceDetect
         if (i >= this.faceCount) {
           break label376;
         }
-        int m = i;
         paramBitmap = localObject[i];
         f1 = paramBitmap.eyesDistance();
         int j = i + 1;
+        int m = i;
         while (j < this.faceCount)
         {
           float f3 = localObject[j].eyesDistance();
           float f2 = f1;
           if (f3 > f1)
           {
-            m = j;
             f2 = f3;
+            m = j;
           }
           j += 1;
           f1 = f2;
@@ -177,7 +178,7 @@ public class AndroidFaceDetect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.faceBeauty.AndroidFaceDetect
  * JD-Core Version:    0.7.0.1
  */

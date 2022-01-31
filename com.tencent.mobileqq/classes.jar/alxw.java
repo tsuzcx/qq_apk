@@ -1,44 +1,40 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qqprotect.qsec.QSecLibMgr;
-import com.tencent.qqprotect.qsec.QSecLibMgr.LibEventListener;
-import java.util.List;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
-public class alxw
-  extends Handler
+class alxw
+  implements Comparator<Object>
 {
-  public alxw(QSecLibMgr paramQSecLibMgr, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  alxw(alxr paramalxr) {}
   
-  public void handleMessage(Message paramMessage)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    switch (paramMessage.what)
-    {
+    if ((paramObject1 == null) && (paramObject2 == null)) {
+      return 0;
     }
-    do
-    {
-      do
-      {
-        return;
-        QSecLibMgr.a(this.a);
-        return;
-      } while (paramMessage.obj == null);
-      QSecLibMgr.a(this.a, (List)paramMessage.obj);
-      return;
-      QSecLibMgr.b(this.a);
-      return;
-      QSecLibMgr.c(this.a);
-      return;
-    } while (paramMessage.obj == null);
-    QSecLibMgr.a(this.a, (QSecLibMgr.LibEventListener)paramMessage.obj);
+    if (paramObject1 == null) {
+      return -1;
+    }
+    if (paramObject2 == null) {
+      return 1;
+    }
+    if (((paramObject1 instanceof avun)) && ((paramObject2 instanceof avun))) {
+      return (int)(((avun)paramObject2).a - ((avun)paramObject1).a);
+    }
+    if (((paramObject1 instanceof avun)) && ((paramObject2 instanceof PhoneContact))) {
+      return (int)(((PhoneContact)paramObject2).lastScanTime - ((avun)paramObject1).a * 1000L);
+    }
+    if (((paramObject1 instanceof PhoneContact)) && ((paramObject2 instanceof PhoneContact))) {
+      return (int)(((PhoneContact)paramObject2).lastScanTime - ((PhoneContact)paramObject1).lastScanTime);
+    }
+    if (((paramObject1 instanceof PhoneContact)) && ((paramObject2 instanceof avun))) {
+      return (int)(((avun)paramObject2).a * 1000L - ((PhoneContact)paramObject1).lastScanTime);
+    }
+    return paramObject1.hashCode() - paramObject2.hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alxw
  * JD-Core Version:    0.7.0.1
  */

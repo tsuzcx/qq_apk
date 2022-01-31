@@ -1,28 +1,50 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.utils.FileUtils;
-import java.util.Map;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetFeedVisitor;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetFeedVisitor;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 
 public class vgi
-  implements Runnable
+  extends urt
 {
-  public vgi(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, String paramString) {}
+  public static final String a = uqn.a("StorySvc.feed_visitor_list");
+  public String b;
   
-  public void run()
+  public String a()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    return a;
+  }
+  
+  public uro a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetFeedVisitor localRspGetFeedVisitor = new qqstory_service.RspGetFeedVisitor();
+    try
     {
-      if (ShortVideoRealItemBuilder.a().size() == 0) {
-        RMVideoStateMgr.c(this.jdField_a_of_type_JavaLangString);
-      }
-      FileUtils.a(this.jdField_a_of_type_JavaLangString);
+      localRspGetFeedVisitor.mergeFrom(paramArrayOfByte);
+      return new vht(this.b, localRspGetFeedVisitor);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wxe.d("Q.qqstory:GetVideoWatcherListRequest", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetFeedVisitor localReqGetFeedVisitor = new qqstory_service.ReqGetFeedVisitor();
+    localReqGetFeedVisitor.feed_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    return localReqGetFeedVisitor.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetVideoWatcherListRequest{, feedId='" + this.b + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vgi
  * JD-Core Version:    0.7.0.1
  */

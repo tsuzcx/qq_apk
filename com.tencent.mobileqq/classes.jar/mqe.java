@@ -1,21 +1,32 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController;
-import com.tencent.biz.pubaccount.util.GifPlayTimeHttpDownloader.OnPlayFinish;
-import com.tencent.image.URLImageView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.funchat.record.QavRecordButtonView;
 
 public class mqe
-  implements GifPlayTimeHttpDownloader.OnPlayFinish
+  implements View.OnTouchListener
 {
-  public mqe(ReadInJoyFeedsHeaderViewController paramReadInJoyFeedsHeaderViewController, ChannelCoverInfo paramChannelCoverInfo) {}
+  public mqe(QavRecordButtonView paramQavRecordButtonView) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ReadInJoyFeedsHeaderViewController.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyFeedsHeaderViewController).setImageDrawable(ReadInJoyFeedsHeaderViewController.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyFeedsHeaderViewController, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo, false));
+    if (QavRecordButtonView.a(this.a) != 1) {
+      switch (paramMotionEvent.getAction())
+      {
+      }
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mqe
  * JD-Core Version:    0.7.0.1
  */

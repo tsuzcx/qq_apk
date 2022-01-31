@@ -1,19 +1,11 @@
-import com.tencent.mobileqq.ar.ScanningSurfaceView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-
-public class agft
-  implements Runnable
+class agft
+  extends aepm
 {
-  public agft(ScanTorchActivity paramScanTorchActivity) {}
-  
-  public void run()
-  {
-    this.a.a.setVisibility(0);
-  }
+  agft(agfs paramagfs) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agft
  * JD-Core Version:    0.7.0.1
  */

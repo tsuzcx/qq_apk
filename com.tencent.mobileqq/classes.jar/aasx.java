@@ -1,54 +1,51 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCGI;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
-import com.tencent.mobileqq.vip.DownloaderInterface;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
 public class aasx
-  implements Runnable
+  extends QzoneExternalRequest
 {
-  public aasx(ArkAppCGI paramArkAppCGI, aati paramaati) {}
+  private JceStruct jdField_a_of_type_ComQqTafJceJceStruct;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public void run()
+  public aasx(String paramString1, JceStruct paramJceStruct, String paramString2, String paramString3)
   {
-    try
-    {
-      Object localObject = (QQAppInterface)ArkAppCGI.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI).get();
-      if (localObject == null)
-      {
-        ArkAppCenter.b("ArkApp.ArkAppCGI", "runTask_retry, app is null, return");
-        return;
-      }
-      localObject = ((DownloaderFactory)((QQAppInterface)localObject).getManager(46)).a(1);
-      File localFile = new File(ArkAppCGI.a());
-      this.jdField_a_of_type_Aati.jdField_a_of_type_JavaIoFile = localFile;
-      DownloadTask localDownloadTask = new DownloadTask(this.jdField_a_of_type_Aati.jdField_a_of_type_JavaLangString, localFile);
-      localDownloadTask.l = true;
-      localDownloadTask.n = true;
-      if (this.jdField_a_of_type_Aati.b != null) {
-        localDownloadTask.a("Cookie", this.jdField_a_of_type_Aati.b);
-      }
-      if (this.jdField_a_of_type_Aati.c != null) {
-        localDownloadTask.a("Referer", this.jdField_a_of_type_Aati.c);
-      }
-      Bundle localBundle = new Bundle();
-      ((DownloaderInterface)localObject).a(localDownloadTask, new aasy(this, localFile), localBundle);
-      return;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.b = paramString3;
+    long l = Long.parseLong(paramString1);
+    super.setHostUin(l);
+    super.setLoginUserId(l);
+    this.needCompress = false;
+    this.jdField_a_of_type_ComQqTafJceJceStruct = paramJceStruct;
+  }
+  
+  public static JceStruct a(byte[] paramArrayOfByte, String paramString)
+  {
+    JceStruct localJceStruct = null;
+    if (paramArrayOfByte != null) {
+      localJceStruct = decode(paramArrayOfByte, paramString);
     }
-    catch (Exception localException)
-    {
-      ArkAppCenter.b("ArkApp.ArkAppCGI", String.format("runTask fail, url=%s, msg=%s", new Object[] { this.jdField_a_of_type_Aati.jdField_a_of_type_JavaLangString, localException.getMessage() }));
-      ArkAppCGI.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI, this.jdField_a_of_type_Aati, false, null);
-    }
+    return localJceStruct;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService." + this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.jdField_a_of_type_ComQqTafJceJceStruct;
+  }
+  
+  public String uniKey()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aasx
  * JD-Core Version:    0.7.0.1
  */

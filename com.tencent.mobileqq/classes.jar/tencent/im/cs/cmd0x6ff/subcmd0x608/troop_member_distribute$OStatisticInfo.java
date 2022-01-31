@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class troop_member_distribute$OStatisticInfo
-  extends MessageMicro
+  extends MessageMicro<OStatisticInfo>
 {
   public static final int STATISTIC_TYPE_CITY = 4;
   public static final int STATISTIC_TYPE_GENDER = 1;
@@ -27,7 +27,7 @@ public final class troop_member_distribute$OStatisticInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.cmd0x6ff.subcmd0x608.troop_member_distribute.OStatisticInfo
  * JD-Core Version:    0.7.0.1
  */

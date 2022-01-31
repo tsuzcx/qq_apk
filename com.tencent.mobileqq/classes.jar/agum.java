@@ -1,31 +1,86 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.qcall.LightalkShieldHandler;
-import com.tencent.mobileqq.qcall.LightalkSwitchHanlder;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.qcall.UinUtils;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.RspBody;
 
 class agum
-  implements DialogInterface.OnClickListener
+  extends amrx
 {
-  agum(aguk paramaguk, QQCustomDialog paramQQCustomDialog) {}
+  boolean jdField_a_of_type_Boolean;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  agum(agti paramagti) {}
+  
+  public int a()
   {
-    if (paramInt == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    return 4;
+  }
+  
+  public void a(Object paramObject)
+  {
+    if ((paramObject instanceof oidb_cmd0xc96.RspBody))
+    {
+      paramObject = (oidb_cmd0xc96.RspBody)paramObject;
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_Agti.jdField_a_of_type_JavaLangString, 2, new Object[] { "0xc96 responseBody success, wording=", paramObject.wording.get() });
+      }
+      nrt.a(this.jdField_a_of_type_Agti.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0x8005750", "0x8005750", 0, 0, this.jdField_a_of_type_Agti.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "", false);
+      paramObject = (alzl)this.jdField_a_of_type_Agti.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
+      if (paramObject == null) {
+        break label256;
+      }
+      paramObject = paramObject.a(this.jdField_a_of_type_Agti.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      if (paramObject == null) {
+        break label240;
+      }
+      if (this.jdField_a_of_type_Agti.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler == null) {
+        this.jdField_a_of_type_Agti.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler = ((PublicAccountHandler)this.jdField_a_of_type_Agti.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11));
+      }
+      this.jdField_a_of_type_Agti.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.a(paramObject);
     }
-    while (paramInt != 1) {
+    for (;;)
+    {
+      this.jdField_a_of_type_Agti.T = true;
+      this.jdField_a_of_type_Agti.Y = true;
+      this.jdField_a_of_type_Agti.bt();
+      if ((this.jdField_a_of_type_Agti.an) && (agti.c(this.jdField_a_of_type_Agti) != null)) {
+        agti.d(this.jdField_a_of_type_Agti).d();
+      }
+      this.jdField_a_of_type_Agti.c(this.jdField_a_of_type_Agti.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent());
       return;
+      label240:
+      this.jdField_a_of_type_Agti.E();
+      this.jdField_a_of_type_Boolean = false;
+      continue;
+      label256:
+      this.jdField_a_of_type_Agti.E();
+      this.jdField_a_of_type_Boolean = false;
     }
-    QCallDetailActivity.a(this.jdField_a_of_type_Aguk.a).b(10, UinUtils.a(QCallDetailActivity.a(this.jdField_a_of_type_Aguk.a)));
-    QCallDetailActivity.a(this.jdField_a_of_type_Aguk.a).a((byte)0);
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject)
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void b(Object paramObject)
+  {
+    this.jdField_a_of_type_Agti.B(2131695729);
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Agti.bs();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agum
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,8 @@ package com.tencent.biz.qqstory.storyHome.memory.view;
 import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
-import com.tencent.biz.qqstory.storyHome.memory.view.segment.MemoriesPlaceHolderSegment;
 import com.tencent.biz.qqstory.view.segment.SegmentList;
+import wnl;
 
 public class StoryMemoriesReloadListView
   extends SegmentList
@@ -26,9 +26,9 @@ public class StoryMemoriesReloadListView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void a()
+  public void a()
   {
-    a(new MemoriesPlaceHolderSegment(this.a));
+    a(new wnl(this.a));
     super.setDivider(null);
     super.setVerticalScrollBarEnabled(false);
     super.setHorizontalScrollBarEnabled(false);
@@ -42,7 +42,7 @@ public class StoryMemoriesReloadListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.view.StoryMemoriesReloadListView
  * JD-Core Version:    0.7.0.1
  */

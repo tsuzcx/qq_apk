@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.utils;
 
-import hft;
-import hfu;
+import hbm;
+import hbn;
 import java.io.UnsupportedEncodingException;
 
 public class Base64Util
@@ -61,15 +61,15 @@ public class Base64Util
   
   public static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    hft localhft = new hft(paramInt3, new byte[paramInt2 * 3 / 4]);
-    if (!localhft.a(paramArrayOfByte, paramInt1, paramInt2, true)) {
+    hbm localhbm = new hbm(paramInt3, new byte[paramInt2 * 3 / 4]);
+    if (!localhbm.a(paramArrayOfByte, paramInt1, paramInt2, true)) {
       throw new IllegalArgumentException("bad base-64");
     }
-    if (localhft.jdField_a_of_type_Int == localhft.jdField_a_of_type_ArrayOfByte.length) {
-      return localhft.jdField_a_of_type_ArrayOfByte;
+    if (localhbm.jdField_a_of_type_Int == localhbm.jdField_a_of_type_ArrayOfByte.length) {
+      return localhbm.jdField_a_of_type_ArrayOfByte;
     }
-    paramArrayOfByte = new byte[localhft.jdField_a_of_type_Int];
-    System.arraycopy(localhft.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte, 0, localhft.jdField_a_of_type_Int);
+    paramArrayOfByte = new byte[localhbm.jdField_a_of_type_Int];
+    System.arraycopy(localhbm.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte, 0, localhbm.jdField_a_of_type_Int);
     return paramArrayOfByte;
   }
   
@@ -80,23 +80,23 @@ public class Base64Util
   
   public static byte[] b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    hfu localhfu = new hfu(paramInt3, null);
+    hbn localhbn = new hbn(paramInt3, null);
     int i = paramInt2 / 3 * 4;
     int j;
-    if (localhfu.jdField_a_of_type_Boolean)
+    if (localhbn.jdField_a_of_type_Boolean)
     {
       paramInt3 = i;
       if (paramInt2 % 3 > 0) {
         paramInt3 = i + 4;
       }
       i = paramInt3;
-      if (localhfu.b)
+      if (localhbn.b)
       {
         i = paramInt3;
         if (paramInt2 > 0)
         {
           j = (paramInt2 - 1) / 57;
-          if (!localhfu.c) {
+          if (!localhbn.c) {
             break label186;
           }
         }
@@ -106,9 +106,9 @@ public class Base64Util
     for (i = 2;; i = 1)
     {
       i = paramInt3 + i * (j + 1);
-      localhfu.jdField_a_of_type_ArrayOfByte = new byte[i];
-      localhfu.a(paramArrayOfByte, paramInt1, paramInt2, true);
-      if ((jdField_a_of_type_Boolean) || (localhfu.jdField_a_of_type_Int == i)) {
+      localhbn.jdField_a_of_type_ArrayOfByte = new byte[i];
+      localhbn.a(paramArrayOfByte, paramInt1, paramInt2, true);
+      if ((jdField_a_of_type_Boolean) || (localhbn.jdField_a_of_type_Int == i)) {
         break label192;
       }
       throw new AssertionError();
@@ -128,7 +128,7 @@ public class Base64Util
       }
     }
     label192:
-    return localhfu.jdField_a_of_type_ArrayOfByte;
+    return localhbn.jdField_a_of_type_ArrayOfByte;
   }
 }
 

@@ -1,16 +1,11 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARBaseRender;
-import com.tencent.mobileqq.arcard.ARCardRender;
+import com.tencent.ad.tangram.device.AdImeiAdapter;
 
 public class aamc
-  implements Runnable
+  implements AdImeiAdapter
 {
-  public aamc(ARCardRender paramARCardRender, ARBaseRender paramARBaseRender) {}
-  
-  public void run()
+  public String getIMEI()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender != null) && (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender != this.jdField_a_of_type_ComTencentMobileqqArcardARCardRender.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender)) {
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.d();
-    }
+    return bhsp.a("f4c66e");
   }
 }
 

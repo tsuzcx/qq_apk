@@ -1,41 +1,19 @@
-import com.tencent.biz.helper.TroopCardAppInfoHelper.IGetAppInfoCB;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopAppInfo;
-import com.tencent.mobileqq.model.TroopInfoManager;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import java.util.List;
 
-public class scr
-  implements TroopCardAppInfoHelper.IGetAppInfoCB
+final class scr
+  implements scv
 {
-  public scr(ChatSettingForTroop paramChatSettingForTroop) {}
+  scr(sct paramsct) {}
   
-  public void a() {}
-  
-  public void a(ArrayList paramArrayList)
+  public void a(boolean paramBoolean, List<BaseData> paramList)
   {
-    if ((this.a.isFinishing()) || (paramArrayList == null) || (paramArrayList.size() == 0)) {}
-    do
-    {
-      return;
-      ArrayList localArrayList = new ArrayList();
-      TroopInfoManager localTroopInfoManager = (TroopInfoManager)this.a.app.getManager(36);
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        TroopAppInfo localTroopAppInfo = (TroopAppInfo)paramArrayList.next();
-        localTroopInfoManager.a(Long.valueOf(localTroopAppInfo.appId), localTroopAppInfo);
-        localArrayList.add(Long.valueOf(localTroopAppInfo.appId));
-      }
-      localTroopInfoManager.a(this.a.a.troopUin, localArrayList);
-    } while (this.a.k);
+    this.a.b(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     scr
  * JD-Core Version:    0.7.0.1
  */

@@ -9,9 +9,9 @@ public final class BroadcastAudio
   extends JceStruct
 {
   static BroadcastUrl cache_masterUrl = new BroadcastUrl();
-  static ArrayList cache_slaveUrl = new ArrayList();
+  static ArrayList<BroadcastUrl> cache_slaveUrl = new ArrayList();
   public BroadcastUrl masterUrl;
-  public ArrayList slaveUrl;
+  public ArrayList<BroadcastUrl> slaveUrl;
   
   static
   {
@@ -21,7 +21,7 @@ public final class BroadcastAudio
   
   public BroadcastAudio() {}
   
-  public BroadcastAudio(BroadcastUrl paramBroadcastUrl, ArrayList paramArrayList)
+  public BroadcastAudio(BroadcastUrl paramBroadcastUrl, ArrayList<BroadcastUrl> paramArrayList)
   {
     this.masterUrl = paramBroadcastUrl;
     this.slaveUrl = paramArrayList;

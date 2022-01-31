@@ -1,24 +1,19 @@
-import com.tencent.biz.qqstory.model.StoryManager;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class ncx
-  implements Runnable
+class ncx
+  implements DialogInterface.OnCancelListener
 {
-  public ncx(StoryManager paramStoryManager, String paramString) {}
+  ncx(ncv paramncv) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    StoryVideoItem localStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryModelStoryManager.a(this.jdField_a_of_type_JavaLangString);
-    if (localStoryVideoItem != null)
-    {
-      localStoryVideoItem.mHadRead = 1;
-      this.jdField_a_of_type_ComTencentBizQqstoryModelStoryManager.a(this.jdField_a_of_type_JavaLangString, localStoryVideoItem);
-    }
+    ncv.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ncx
  * JD-Core Version:    0.7.0.1
  */

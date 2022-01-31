@@ -1,49 +1,31 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.activity.AccountManageActivity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
 
-public class rhh
-  extends AccountObserver
+class rhh
+  implements rsd
 {
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  rhh(rhf paramrhf, VideoInfo paramVideoInfo) {}
   
-  public rhh(AccountManageActivity paramAccountManageActivity, String paramString, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void onDeleteAccount(boolean paramBoolean)
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Switch_Account", 2, "DelHistoryAccountObserver onDeleteAccount isSuccess " + paramBoolean + ",peerUin:" + this.jdField_a_of_type_JavaLangString + ",isDeleteHistory:" + this.jdField_a_of_type_Boolean);
+      QLog.d("VideoFeedsShareController", 2, "onDislikeDialogViewForAdComplain");
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity;
-    if (Build.VERSION.SDK_INT > 10) {}
-    for (int i = 4;; i = 0)
-    {
-      localObject = ((AccountManageActivity)localObject).getSharedPreferences("Last_Login", i);
-      if ((paramBoolean) && (localObject != null) && (((SharedPreferences)localObject).contains("uin")) && (((SharedPreferences)localObject).getString("uin", "").equals(this.jdField_a_of_type_JavaLangString)))
-      {
-        ((SharedPreferences)localObject).edit().remove("uin").commit();
-        if (QLog.isColorLevel()) {
-          QLog.d("Switch_Account", 2, "delete Last_Login");
-        }
-      }
-      if ((paramBoolean) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_JavaLangString);
-      }
-      return;
+    Intent localIntent = new Intent();
+    localIntent.putExtra("key_from_type", 2);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null) {
+      localIntent.putExtra("key_ad_info", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
     }
+    PublicFragmentActivity.a(rhf.a(this.jdField_a_of_type_Rhf), localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
+    rhf.a(this.jdField_a_of_type_Rhf).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rhh
  * JD-Core Version:    0.7.0.1
  */

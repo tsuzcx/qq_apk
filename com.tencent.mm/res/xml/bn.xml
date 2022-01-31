@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <PreferenceTitleCategory android:title="@string/e9t" />
+    <CheckBoxPreference android:title="@string/ec8" android:key="settings_need_verify" android:layout="@layout/afi" />
+    <CheckBoxPreference android:summary="@string/edu" android:title="@string/b12" android:key="settings_recommend_mobilefriends_to_me" />
+    <CheckBoxPreference android:summary="@string/edt" android:title="@string/ea8" android:key="settings_find_google_contact" />
+    <Preference android:title="@string/e9o" android:key="settings_add_me_way" android:layout="@layout/afi" />
+    <Preference android:title="@string/edp" android:key="settings_about_blacklist" android:layout="@layout/afi" />
+    <Preference android:title="@string/egm" android:key="settings_unfamiliar_contact" android:layout="@layout/afi" />
+    <PreferenceTitleCategory android:title="@string/e9u" android:key="settings_add_friends_timeline_tip" />
+    <Preference android:title="@string/eru" android:key="timline_outside_permiss" />
+    <Preference android:title="@string/eo7" android:key="timeline_black_permiss" />
+    <Preference android:title="@string/edn" android:key="edit_timeline_group" />
+    <CheckBoxPreference android:title="@string/ay4" android:key="timeline_stranger_show" android:layout="@layout/afi" />
+    <IconPreference android:title="@string/axz" android:key="timeline_recent_show_select" />
+    <CheckBoxPreference android:summary="@string/eez" android:title="@string/eey" android:key="settings_sns_notify" android:dependency="settings_new_sns_notify" android:defaultValue="true" />
+    <PreferenceSmallCategory />
+    <Preference android:title="@string/e9r" android:key="settings_auth_manage" />
+    <PreferenceCategory />
+    <Preference android:key="settings_privacy_agreements" android:layout="@layout/ah7" />
+</PreferenceScreen>

@@ -1,47 +1,36 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.ClipboardManager;
 import android.view.View;
-import com.tencent.mobileqq.activity.AddFriendActivity;
-import com.tencent.mobileqq.text.QQText;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import java.util.ArrayList;
 
-public final class ainq
-  implements ActionSheet.OnButtonClickListener
+public class ainq
+  implements View.OnClickListener
 {
-  public ainq(int paramInt, String paramString, Context paramContext, ActionSheet paramActionSheet) {}
+  public ainq(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    if (!CameraPreviewActivity.a(this.a))
     {
+      if (this.a.b) {
+        azqs.b(this.a.app, "CliOper", "", "", "0X8004D93", "0X8004D93", 0, 0, "", "", "", "");
+      }
+      if (!this.a.b) {
+        break label133;
+      }
+      aips.d();
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      if ((CameraPreviewActivity.a(this.a) != null) && (CameraPreviewActivity.a(this.a).size() > 0)) {
+        bhsb.a((String)CameraPreviewActivity.a(this.a).get(0), true);
+      }
+      PhotoUtils.a(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 0, true);
+      paramView.setClickable(false);
       return;
-      if (this.jdField_a_of_type_Int == 2)
-      {
-        paramView = new Intent("android.intent.action.SENDTO", Uri.parse("mailto:" + this.jdField_a_of_type_JavaLangString));
-        this.jdField_a_of_type_AndroidContentContext.startActivity(Intent.createChooser(paramView, this.jdField_a_of_type_AndroidContentContext.getString(2131435112)));
-      }
-      else
-      {
-        paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-        this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-        QQText.a("1", "2");
-        continue;
-        ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
-        QQText.a("2", "1");
-        continue;
-        AddFriendActivity.a(this.jdField_a_of_type_AndroidContentContext, false, this.jdField_a_of_type_JavaLangString, true);
-        QQText.a("3", "1");
-        continue;
-        AddFriendActivity.a(this.jdField_a_of_type_AndroidContentContext, true, this.jdField_a_of_type_JavaLangString, true);
-        QQText.a("4", "1");
-      }
+      label133:
+      aips.b();
     }
   }
 }

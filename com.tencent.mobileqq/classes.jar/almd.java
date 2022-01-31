@@ -1,21 +1,25 @@
-import android.text.ClipboardManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
+import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
 
 class almd
-  implements View.OnClickListener
+  implements ImageAssetDelegate
 {
   almd(almc paramalmc) {}
   
-  public void onClick(View paramView)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    ((ClipboardManager)this.a.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getSystemService("clipboard")).setText(this.a.jdField_a_of_type_JavaLangString);
+    if (this.a.a.a() == null) {
+      return null;
+    }
+    return (Bitmap)this.a.a.a().get(paramLottieImageAsset.getKey());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     almd
  * JD-Core Version:    0.7.0.1
  */

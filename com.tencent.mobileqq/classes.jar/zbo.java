@@ -1,80 +1,63 @@
-import SummaryCard.RespCondSearch;
-import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class zbo
-  extends FriendListObserver
 {
-  public zbo(ConditionSearchManager paramConditionSearchManager) {}
+  private static final zbq jdField_a_of_type_Zbq = new zbq(null);
+  private CopyOnWriteArrayList<zbg> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private boolean jdField_a_of_type_Boolean;
   
-  protected void onCondSearchFriendResult(long paramLong, boolean paramBoolean, Object paramObject, int paramInt1, int paramInt2)
+  public static zbo a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearch.Manager", 2, "searchseq = " + this.a.jdField_a_of_type_Long + " | seq = " + paramLong + ", isSuccess=" + paramBoolean + ", ret=" + paramInt1 + ", searchFrom=" + paramInt2);
-    }
-    if (this.a.jdField_a_of_type_Long != paramLong) {
-      return;
-    }
-    if ((paramBoolean) && (paramInt1 == 0))
+    return (zbo)jdField_a_of_type_Zbq.getInstance();
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null)
     {
-      paramObject = (RespCondSearch)paramObject;
-      ConditionSearchManager localConditionSearchManager = this.a;
-      if (paramObject.cEndFlag == 0)
-      {
-        paramBoolean = true;
-        localConditionSearchManager.jdField_e_of_type_Boolean = paramBoolean;
-        this.a.jdField_f_of_type_Int = paramObject.iPage;
-        this.a.jdField_b_of_type_Long = paramObject.dwSessionID;
-        if (this.a.jdField_b_of_type_JavaUtilList != null) {
-          break label342;
-        }
-        this.a.jdField_b_of_type_JavaUtilList = paramObject.vUserList;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      while (localIterator.hasNext()) {
+        ((zbg)localIterator.next()).b();
       }
-      for (;;)
-      {
-        if ((this.a.jdField_g_of_type_Int >= 2) || ((this.a.jdField_b_of_type_JavaUtilList != null) && (this.a.jdField_b_of_type_JavaUtilList.size() >= 10)) || (!this.a.jdField_e_of_type_Boolean)) {
-          break label382;
-        }
-        paramObject = this.a;
-        paramObject.jdField_g_of_type_Int += 1;
-        ((FriendListHandler)ConditionSearchManager.a(this.a).a(1)).a(this.a.jdField_a_of_type_Long, this.a.jdField_f_of_type_Int + 1, this.a.jdField_b_of_type_Long, this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_Int, this.a.c, this.a.jdField_f_of_type_ArrayOfJavaLangString, this.a.jdField_g_of_type_ArrayOfJavaLangString, this.a.d, this.a.jdField_e_of_type_Int, paramInt2);
-        return;
-        paramBoolean = false;
-        break;
-        label342:
-        if ((paramObject.vUserList != null) && (!paramObject.vUserList.isEmpty())) {
-          this.a.jdField_b_of_type_JavaUtilList.addAll(paramObject.vUserList);
-        }
-      }
-      label382:
-      if ((this.a.jdField_b_of_type_JavaUtilList == null) || (this.a.jdField_b_of_type_JavaUtilList.size() < 6)) {
-        this.a.jdField_e_of_type_Boolean = false;
-      }
-      this.a.a(true, this.a.jdField_b_of_type_JavaUtilList, this.a.jdField_e_of_type_Boolean, paramInt2);
-      return;
     }
-    if ((paramBoolean) && (paramInt1 != 0))
+  }
+  
+  public void a(long paramLong)
+  {
+    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (!this.jdField_a_of_type_Boolean))
     {
-      this.a.jdField_e_of_type_Boolean = false;
-      this.a.a(true, this.a.jdField_b_of_type_JavaUtilList, this.a.jdField_e_of_type_Boolean, paramInt2);
-      return;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      while (localIterator.hasNext()) {
+        ((zbg)localIterator.next()).a(paramLong);
+      }
     }
-    if (this.a.jdField_g_of_type_Int == 0)
+  }
+  
+  public void a(zbg paramzbg)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramzbg);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null)
     {
-      this.a.a(false, null, this.a.jdField_e_of_type_Boolean, paramInt2);
-      return;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      while (localIterator.hasNext()) {
+        ((zbg)localIterator.next()).a();
+      }
     }
-    this.a.a(true, this.a.jdField_b_of_type_JavaUtilList, this.a.jdField_e_of_type_Boolean, paramInt2);
+  }
+  
+  public void b(zbg paramzbg)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramzbg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zbo
  * JD-Core Version:    0.7.0.1
  */

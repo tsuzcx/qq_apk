@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class adnc
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  adnc(adna paramadna) {}
+  adnc(admx paramadmx) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.j();
+    paramDialogInterface.dismiss();
   }
 }
 

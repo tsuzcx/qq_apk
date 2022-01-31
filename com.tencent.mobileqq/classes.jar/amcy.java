@@ -1,35 +1,32 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.widget.ExpandableListView;
-import com.tencent.widget.ExpandableListView.OnGroupClickListener;
-import com.tencent.widget.PinnedHeadAndFootExpandableListView;
-import com.tencent.widget.PinnedHeadAndFootExpandableListView.ExpandableListAdapter;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.util.Queue;
 
-public class amcy
-  implements View.OnTouchListener
+class amcy
+  extends Handler
 {
-  public amcy(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  amcy(amcw paramamcw, Looper paramLooper)
   {
-    if (paramMotionEvent.getAction() == 1)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      long l = this.a.a(this.a.getFirstVisiblePosition());
-      if ((ExpandableListView.b(l) == 0) || (ExpandableListView.b(l) == 1))
-      {
-        int i = ExpandableListView.c(l);
-        if ((this.a.jdField_a_of_type_ComTencentWidgetExpandableListView$OnGroupClickListener == null) || (!this.a.jdField_a_of_type_ComTencentWidgetExpandableListView$OnGroupClickListener.a(this.a, paramView, i, this.a.jdField_a_of_type_ComTencentWidgetPinnedHeadAndFootExpandableListView$ExpandableListAdapter.getGroupId(i)))) {
-          this.a.b(i);
-        }
-      }
+    default: 
+      return;
     }
-    return true;
+    paramMessage = (amda)paramMessage.obj;
+    this.a.a.remove(paramMessage);
+    paramMessage.jdField_a_of_type_AndroidContentContext.startActivity(paramMessage.jdField_a_of_type_AndroidContentIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amcy
  * JD-Core Version:    0.7.0.1
  */

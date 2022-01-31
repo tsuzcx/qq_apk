@@ -12,7 +12,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class group_feeds$GroupFeedsMessage$MessageContent
-  extends MessageMicro
+  extends MessageMicro<MessageContent>
 {
   public static final int CONTENT_TYPE_CONTROL = 14;
   public static final int CONTENT_TYPE_C_VOTE = 9;
@@ -89,7 +89,7 @@ public final class group_feeds$GroupFeedsMessage$MessageContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.trunk.group_feeds.group_feeds.GroupFeedsMessage.MessageContent
  * JD-Core Version:    0.7.0.1
  */

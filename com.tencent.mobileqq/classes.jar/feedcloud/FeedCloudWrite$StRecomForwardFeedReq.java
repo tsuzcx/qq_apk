@@ -1,0 +1,31 @@
+package feedcloud;
+
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+
+public final class FeedCloudWrite$StRecomForwardFeedReq
+  extends MessageMicro<StRecomForwardFeedReq>
+{
+  static final MessageMicro.FieldMap __fieldMap__;
+  public final PBBytesField busiReqData = PBField.initBytes(ByteStringMicro.EMPTY);
+  public FeedCloudMeta.StComment comment = new FeedCloudMeta.StComment();
+  public FeedCloudCommon.StCommonExt extInfo = new FeedCloudCommon.StCommonExt();
+  public FeedCloudMeta.StFeed feed = new FeedCloudMeta.StFeed();
+  public final PBInt32Field from = PBField.initInt32(0);
+  
+  static
+  {
+    ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 42 }, new String[] { "extInfo", "feed", "busiReqData", "from", "comment" }, new Object[] { null, null, localByteStringMicro, Integer.valueOf(0), null }, StRecomForwardFeedReq.class);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+ * Qualified Name:     feedcloud.FeedCloudWrite.StRecomForwardFeedReq
+ * JD-Core Version:    0.7.0.1
+ */

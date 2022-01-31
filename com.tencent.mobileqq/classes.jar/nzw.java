@@ -1,18 +1,29 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.Switch;
 
 public class nzw
-  implements Runnable
+  implements bhum
 {
-  public nzw(MystoryListView paramMystoryListView) {}
+  public nzw(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void run()
+  public void onDismiss()
   {
-    this.a.i();
+    boolean bool = true;
+    ReadInJoySettingActivity.a(this.a, true);
+    Switch localSwitch = ReadInJoySettingActivity.a(this.a);
+    if (!ReadInJoySettingActivity.a(this.a)) {}
+    for (;;)
+    {
+      localSwitch.setChecked(bool);
+      ReadInJoySettingActivity.a(this.a).cancel();
+      return;
+      bool = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nzw
  * JD-Core Version:    0.7.0.1
  */

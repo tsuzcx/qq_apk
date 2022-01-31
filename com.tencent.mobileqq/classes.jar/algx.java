@@ -1,32 +1,22 @@
-import android.app.Activity;
-import android.app.AlertDialog.Builder;
-import android.app.Dialog;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.TMG.sdk.AVAudioCtrl.EnableMicCompleteCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class algx
-  implements Runnable
+class algx
+  extends AVAudioCtrl.EnableMicCompleteCallback
 {
-  public algx(DownloadManager paramDownloadManager, Bundle paramBundle, Activity paramActivity, int paramInt1, ApkUpdateDetail paramApkUpdateDetail, int paramInt2) {}
+  algx(algt paramalgt) {}
   
-  public void run()
+  public void onComplete(boolean paramBoolean, int paramInt)
   {
-    Object localObject = new algy(this);
-    algz localalgz = new algz(this);
-    LogUtility.b(DownloadManager.a, "dialog create and show");
-    localObject = new AlertDialog.Builder(this.jdField_a_of_type_AndroidAppActivity).setMessage(this.jdField_a_of_type_AndroidAppActivity.getString(2131428555)).setPositiveButton(2131428552, localalgz).setNegativeButton(2131428553, (DialogInterface.OnClickListener)localObject).create();
-    ((Dialog)localObject).setCanceledOnTouchOutside(false);
-    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-      ((Dialog)localObject).show();
+    QLog.d("AVEngineWalper", 1, "StartOpenMic.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
+    if (this.a.a != null) {
+      this.a.a.a(paramBoolean, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     algx
  * JD-Core Version:    0.7.0.1
  */

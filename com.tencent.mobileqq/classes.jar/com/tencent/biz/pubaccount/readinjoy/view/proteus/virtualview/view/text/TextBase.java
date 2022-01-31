@@ -1,115 +1,261 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text;
 
+import android.content.Context;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.JsonUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtil.QLog;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
 
 public abstract class TextBase
   extends ViewBase
 {
-  public int B = -16777216;
-  public int C = Utils.b(20.0D);
-  public int D = 0;
-  protected int E = -1;
-  protected int F = -1;
-  protected int G = TextUtils.TruncateAt.END.ordinal();
-  public String e = "";
-  public String f;
+  private static final String TAG = "TextBase";
+  private static final String TEXT_ALIGNMENT_CENTER = "1";
+  private static final String TEXT_ALIGNMENT_LEFT = "0";
+  private static final String TEXT_ALIGNMENT_RIGHT = "2";
+  protected String drawableLeftPath;
+  protected int mEllipsize = TextUtils.TruncateAt.END.ordinal();
+  protected Boolean mEnableClickSpan;
+  protected Boolean mEnableMarquee;
+  protected float mLineSpaceExtra = 0.0F;
+  protected float mLineSpaceMultipiler = 1.0F;
+  protected int mLines = -1;
+  protected int mMaxLines = -1;
+  protected int mMaxWidth;
+  public CharSequence mText = "";
+  protected int mTextColor = -16777216;
+  public int mTextSize = Utils.dp2px(20.0D);
+  protected int mTextStyle = 0;
+  protected Typeface mTypeface;
+  protected String mTypefacePath;
   
   public TextBase(VafContext paramVafContext)
   {
     super(paramVafContext);
-    this.s |= 0x20;
+    this.mGravity = 32;
   }
   
-  public void a(String paramString)
+  public String getText()
   {
-    if (!TextUtils.equals(paramString, this.e))
+    if (this.mText != null) {
+      return this.mText.toString();
+    }
+    return "";
+  }
+  
+  public int getTextColor()
+  {
+    return this.mTextColor;
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    if (!super.setAttribute(paramInt, paramObject))
     {
-      this.e = paramString;
-      f();
+      String str;
+      switch (paramInt)
+      {
+      default: 
+        return false;
+      case 18: 
+        if ((paramObject instanceof JSONArray))
+        {
+          str = JsonUtils.getStringValue((JSONArray)paramObject, 1);
+          if (str == null) {
+            break;
+          }
+        }
+      case 64: 
+        for (;;)
+        {
+          try
+          {
+            this.mLineSpaceExtra = Float.valueOf(str).floatValue();
+            this.mLineSpaceExtra = Utils.dp2px(this.mLineSpaceExtra);
+            this.mText = JsonUtils.getStringValue(paramObject, 0);
+            if (this.mText != null) {
+              break;
+            }
+            LogUtil.QLog.d("TextBase", 2, "setAttribute: invalid value for STR_ID_TEXT, type: " + paramObject.getClass().getSimpleName() + "  value : " + paramObject);
+            return false;
+          }
+          catch (Exception localException)
+          {
+            LogUtil.QLog.e("TextBase", 1, "setAttribute: invalid value for STR_ID_TEXT, type: ", localException);
+            continue;
+          }
+          if ((paramObject instanceof CharSequence))
+          {
+            this.mText = ((CharSequence)paramObject);
+            continue;
+            if ((paramObject instanceof JSONArray))
+            {
+              paramObject = (JSONArray)paramObject;
+              if (paramObject.length() < 3) {
+                break;
+              }
+            }
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      Object localObject;
+      try
+      {
+        localObject = Utils.toDouble(paramObject.getString(2));
+        if (localObject != null) {
+          this.mTextSize = Utils.dp2px(((Double)localObject).doubleValue());
+        }
+        this.mTypefacePath = paramObject.getString(0);
+        this.mTypeface = Typeface.createFromAsset(this.mContext.getContext().getAssets(), this.mTypefacePath);
+      }
+      catch (Exception paramObject)
+      {
+        LogUtil.QLog.d("TextBase", 1, "", paramObject);
+        continue;
+      }
+      return true;
+      if ((paramObject instanceof JSONArray))
+      {
+        paramObject = (JSONArray)paramObject;
+        if (paramObject.length() >= 2)
+        {
+          double d;
+          try
+          {
+            localObject = paramObject.optString(1, "relative");
+            d = Double.valueOf(paramObject.getString(0)).doubleValue();
+            if (!"absolutely".equals(localObject)) {
+              break label351;
+            }
+            this.mMaxWidth = Utils.dp2px(d);
+          }
+          catch (Exception paramObject)
+          {
+            LogUtil.QLog.d("TextBase", 1, "", paramObject);
+          }
+          continue;
+          label351:
+          this.mMaxWidth = Utils.rp2px(d);
+        }
+      }
     }
   }
   
-  public boolean a(int paramInt, String paramString)
+  public boolean setAttribute(int paramInt, String paramString)
   {
-    boolean bool2 = super.a(paramInt, paramString);
+    boolean bool2 = super.setAttribute(paramInt, paramString);
     boolean bool1 = bool2;
-    if (!bool2) {}
-    Object localObject;
-    switch (paramInt)
-    {
-    default: 
-      bool1 = false;
-      return bool1;
-    case 16: 
-      this.e = paramString;
-      return bool2;
-    case 17: 
-      localObject = Utils.a(paramString);
-      if (localObject != null)
+    if (!bool2) {
+      switch (paramInt)
       {
-        this.C = Utils.a(((Double)localObject).doubleValue());
-        return bool2;
+      default: 
+        bool1 = false;
       }
-      QLog.d("TextBase", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
-      return bool2;
-    case 18: 
-      this.B = Utils.a(paramString);
-      return bool2;
-    case 19: 
-      localObject = Utils.a(paramString);
-      if (localObject != null)
-      {
-        this.C = Utils.a(((Double)localObject).doubleValue());
-        this.D = 1;
-        return bool2;
-      }
-      QLog.d("TextBase", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
-      return bool2;
-    case 20: 
-      localObject = Utils.a(paramString);
-      if (localObject != null)
-      {
-        this.F = ((Integer)localObject).intValue();
-        return bool2;
-      }
-      QLog.d("TextBase", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
-      return bool2;
-    case 39: 
-      if ("CenterVerticle".equals(paramString))
-      {
-        this.s |= 0x20;
-        return bool2;
-      }
-      this.s |= 0x4;
-      this.s |= 0x20;
-      return bool2;
     }
-    this.f = paramString;
-    c(this.f);
+    do
+    {
+      do
+      {
+        do
+        {
+          return bool1;
+          this.mText = paramString;
+          return bool2;
+          Object localObject = Utils.toDouble(paramString);
+          if (localObject != null)
+          {
+            this.mTextSize = Utils.dp2px(((Double)localObject).doubleValue());
+            return bool2;
+          }
+          LogUtil.QLog.d("TextBase", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
+          return bool2;
+          this.mTextColor = Utils.parseColor(paramString);
+          return bool2;
+          localObject = Utils.toDouble(paramString);
+          if (localObject != null)
+          {
+            this.mTextSize = Utils.dp2px(((Double)localObject).doubleValue());
+            this.mTextStyle = 1;
+            return bool2;
+          }
+          LogUtil.QLog.d("TextBase", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
+          return bool2;
+          localObject = Utils.toInteger(paramString);
+          if (localObject != null)
+          {
+            this.mMaxLines = ((Integer)localObject).intValue();
+            return bool2;
+          }
+          LogUtil.QLog.d("TextBase", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
+          return bool2;
+          if ("CenterVerticle".equals(paramString))
+          {
+            this.mGravity |= 0x20;
+            return bool2;
+          }
+          this.mGravity |= 0x4;
+          this.mGravity |= 0x20;
+          return bool2;
+          if ("0".equals(paramString))
+          {
+            this.mGravity |= 0x1;
+            return bool2;
+          }
+          if ("1".equals(paramString))
+          {
+            this.mGravity |= 0x4;
+            return bool2;
+          }
+          bool1 = bool2;
+        } while (!"2".equals(paramString));
+        this.mGravity |= 0x2;
+        return bool2;
+        this.drawableLeftPath = paramString;
+        setDrawableLeft(this.drawableLeftPath);
+        return bool2;
+        bool1 = bool2;
+      } while (TextUtils.isEmpty(paramString));
+      this.mEnableMarquee = Boolean.valueOf(TextUtils.equals("1", paramString));
+      return bool2;
+      bool1 = bool2;
+    } while (TextUtils.isEmpty(paramString));
+    this.mEnableClickSpan = Boolean.valueOf(TextUtils.equals("1", paramString));
     return bool2;
   }
   
-  public void c(int paramInt)
+  protected void setDrawableLeft(String paramString) {}
+  
+  public void setText(CharSequence paramCharSequence)
   {
-    if (this.B != paramInt)
+    if (!TextUtils.equals(paramCharSequence, this.mText))
     {
-      this.B = paramInt;
-      this.a.setColor(this.B);
-      f();
+      this.mText = paramCharSequence;
+      refresh();
     }
   }
   
-  public void c(String paramString) {}
+  public void setTextColor(int paramInt)
+  {
+    if (this.mTextColor != paramInt)
+    {
+      this.mTextColor = paramInt;
+      this.mPaint.setColor(this.mTextColor);
+      refresh();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.TextBase
  * JD-Core Version:    0.7.0.1
  */

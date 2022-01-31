@@ -1,22 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountMessageActivity;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-class dru
-  implements DialogInterface.OnClickListener
+public class dru
+  implements View.OnClickListener
 {
-  dru(drs paramdrs) {}
+  public dru(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1)
-    {
-      this.a.a.d();
-      SubAccountMessageActivity.c(this.a.a, true);
-      SubAccountAssistantManager.a().a(this.a.a.b);
-      this.a.a.f();
-    }
+    this.a.finish();
   }
 }
 

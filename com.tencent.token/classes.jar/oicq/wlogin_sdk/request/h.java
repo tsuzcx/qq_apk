@@ -1,51 +1,22 @@
 package oicq.wlogin_sdk.request;
 
-import java.net.HttpURLConnection;
+import android.content.Context;
 import oicq.wlogin_sdk.tools.util;
 
 public class h
-  implements Runnable
+  extends Thread
 {
-  private HttpURLConnection a;
-  private boolean b = false;
+  private Context a;
   
-  public h(HttpURLConnection paramHttpURLConnection)
+  public h(Context paramContext)
   {
-    this.a = paramHttpURLConnection;
-  }
-  
-  public static boolean a(HttpURLConnection paramHttpURLConnection, long paramLong)
-  {
-    try
-    {
-      paramHttpURLConnection = new h(paramHttpURLConnection);
-      Thread localThread = new Thread(paramHttpURLConnection);
-      localThread.start();
-      localThread.join(paramLong);
-      boolean bool = paramHttpURLConnection.a();
-      return bool;
-    }
-    catch (Throwable paramHttpURLConnection) {}
-    return false;
-  }
-  
-  public boolean a()
-  {
-    return this.b;
+    this.a = paramContext;
+    setName("WtCleanThread");
   }
   
   public void run()
   {
-    try
-    {
-      this.a.connect();
-      this.b = true;
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      util.printThrowable(localThrowable, "");
-    }
+    util.deleteExpireLog(this.a);
   }
 }
 

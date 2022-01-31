@@ -1,19 +1,40 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.viola.bridge.ViolaBridgeManager;
+import com.tencent.viola.core.ViolaInstance;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class spf
-  implements Runnable
+public class spf
+  implements smy
 {
-  spf(spe paramspe) {}
+  public spf(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    ReportController.b(this.a.a.app, "CliOper", "", "", "personal_profile", "copy_uin", 0, 0, "", "", "", "");
+    if ((BridgeModule.access$000(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule) != paramInt) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance() != null)) {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        if ((paramInt == CommonSuspensionGestureLayout.c) || (paramInt == CommonSuspensionGestureLayout.e)) {
+          localJSONObject.put("state", 1);
+        }
+        for (;;)
+        {
+          BridgeModule.access$002(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, paramInt);
+          ViolaBridgeManager.getInstance().callbackJavascript(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getInstanceId(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getModuleName(), "callback", this.jdField_a_of_type_JavaLangString, localJSONObject, true);
+          return;
+          localJSONObject.put("state", 0);
+        }
+        return;
+      }
+      catch (JSONException localJSONException) {}
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     spf
  * JD-Core Version:    0.7.0.1
  */

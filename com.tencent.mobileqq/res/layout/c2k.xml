@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_gravity="center|right" android:layout_width="fill_parent" android:layout_height="50.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.AsynAutoGifImageView android:layout_gravity="center" android:id="@id/fek" android:layout_width="fill_parent" android:layout_height="50.0dip" android:src="@drawable/dfu" />
+    <ImageView android:layout_gravity="center|right" android:id="@id/feb" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" android:scaleType="centerCrop" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

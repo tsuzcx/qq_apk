@@ -26,7 +26,7 @@ public class GridLayoutManager
   final SparseIntArray mPreLayoutSpanSizeCache = new SparseIntArray();
   View[] mSet;
   int mSpanCount = -1;
-  SpanSizeLookup mSpanSizeLookup = new DefaultSpanSizeLookup();
+  GridLayoutManager.SpanSizeLookup mSpanSizeLookup = new GridLayoutManager.DefaultSpanSizeLookup();
   
   public GridLayoutManager(Context paramContext, int paramInt)
   {
@@ -48,16 +48,16 @@ public class GridLayoutManager
   
   private void assignSpans(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    int j;
     int i;
+    int j;
     int k;
     label43:
-    LayoutParams localLayoutParams;
+    GridLayoutManager.LayoutParams localLayoutParams;
     if (paramBoolean)
     {
+      i = 1;
       paramInt2 = 0;
       j = paramInt1;
-      i = 1;
       paramInt1 = paramInt2;
       if ((this.mOrientation != 1) || (!isLayoutRTL())) {
         break label150;
@@ -68,28 +68,28 @@ public class GridLayoutManager
         return;
       }
       View localView = this.mSet[paramInt1];
-      localLayoutParams = (LayoutParams)localView.getLayoutParams();
-      LayoutParams.access$102(localLayoutParams, getSpanSize(paramRecycler, paramState, getPosition(localView)));
-      if ((k != -1) || (localLayoutParams.mSpanSize <= 1)) {
+      localLayoutParams = (GridLayoutManager.LayoutParams)localView.getLayoutParams();
+      GridLayoutManager.LayoutParams.access$102(localLayoutParams, getSpanSize(paramRecycler, paramState, getPosition(localView)));
+      if ((k != -1) || (GridLayoutManager.LayoutParams.access$100(localLayoutParams) <= 1)) {
         break label159;
       }
-      LayoutParams.access$002(localLayoutParams, paramInt2 - (localLayoutParams.mSpanSize - 1));
+      GridLayoutManager.LayoutParams.access$002(localLayoutParams, paramInt2 - (GridLayoutManager.LayoutParams.access$100(localLayoutParams) - 1));
     }
     for (;;)
     {
-      paramInt2 += localLayoutParams.mSpanSize * k;
+      paramInt2 += GridLayoutManager.LayoutParams.access$100(localLayoutParams) * k;
       paramInt1 += i;
       break label43;
       paramInt1 -= 1;
-      j = -1;
       i = -1;
+      j = -1;
       break;
       label150:
       paramInt2 = 0;
       k = 1;
       break label43;
       label159:
-      LayoutParams.access$002(localLayoutParams, paramInt2);
+      GridLayoutManager.LayoutParams.access$002(localLayoutParams, paramInt2);
     }
   }
   
@@ -99,7 +99,7 @@ public class GridLayoutManager
     int i = 0;
     while (i < j)
     {
-      LayoutParams localLayoutParams = (LayoutParams)getChildAt(i).getLayoutParams();
+      GridLayoutManager.LayoutParams localLayoutParams = (GridLayoutManager.LayoutParams)getChildAt(i).getLayoutParams();
       int k = localLayoutParams.getViewLayoutPosition();
       this.mPreLayoutSpanSizeCache.put(k, localLayoutParams.getSpanSize());
       this.mPreLayoutSpanIndexCache.put(k, localLayoutParams.getSpanIndex());
@@ -114,6 +114,7 @@ public class GridLayoutManager
   
   static int[] calculateItemBorders(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
+    int k = 0;
     int[] arrayOfInt;
     if ((paramArrayOfInt != null) && (paramArrayOfInt.length == paramInt1 + 1))
     {
@@ -125,32 +126,30 @@ public class GridLayoutManager
       arrayOfInt = new int[paramInt1 + 1];
     }
     arrayOfInt[0] = 0;
-    int n = paramInt2 / paramInt1;
-    int i2 = paramInt2 % paramInt1;
-    int j = 0;
-    paramInt2 = 0;
+    int m = paramInt2 / paramInt1;
+    int n = paramInt2 % paramInt1;
     int i = 1;
-    while (i <= paramInt1)
+    int j = 0;
+    paramInt2 = k;
+    if (i <= paramInt1)
     {
-      int k = n;
-      int i1 = paramInt2 + i2;
-      paramInt2 = i1;
-      int m = k;
-      if (i1 > 0)
-      {
-        paramInt2 = i1;
-        m = k;
-        if (paramInt1 - i1 < i2)
-        {
-          m = k + 1;
-          paramInt2 = i1 - paramInt1;
-        }
+      paramInt2 += n;
+      if ((paramInt2 <= 0) || (paramInt1 - paramInt2 >= n)) {
+        break label113;
       }
-      j += m;
+      k = m + 1;
+      paramInt2 -= paramInt1;
+    }
+    for (;;)
+    {
+      j += k;
       arrayOfInt[i] = j;
       i += 1;
+      break;
+      return arrayOfInt;
+      label113:
+      k = m;
     }
-    return arrayOfInt;
   }
   
   private void clearPreLayoutSpanMappingCache()
@@ -315,111 +314,111 @@ public class GridLayoutManager
   
   public boolean checkLayoutParams(RecyclerView.LayoutParams paramLayoutParams)
   {
-    return paramLayoutParams instanceof LayoutParams;
+    return paramLayoutParams instanceof GridLayoutManager.LayoutParams;
   }
   
   View findReferenceChild(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState, int paramInt1, int paramInt2, int paramInt3)
   {
-    ensureLayoutState();
     Object localObject2 = null;
-    Object localObject1 = null;
+    ensureLayoutState();
     int j = this.mOrientationHelper.getStartAfterPadding();
     int k = this.mOrientationHelper.getEndAfterPadding();
     int i;
-    View localView;
+    Object localObject1;
+    label37:
     Object localObject3;
-    Object localObject4;
     if (paramInt2 > paramInt1)
     {
       i = 1;
+      localObject1 = null;
       if (paramInt1 == paramInt2) {
-        break label221;
+        break label197;
       }
-      localView = getChildAt(paramInt1);
-      int m = getPosition(localView);
+      localObject3 = getChildAt(paramInt1);
+      int m = getPosition((View)localObject3);
+      if ((m < 0) || (m >= paramInt3)) {
+        break label216;
+      }
+      if (getSpanIndex(paramRecycler, paramState, m) == 0) {
+        break label119;
+      }
       localObject3 = localObject2;
-      localObject4 = localObject1;
-      if (m >= 0)
-      {
-        localObject3 = localObject2;
-        localObject4 = localObject1;
-        if (m < paramInt3)
-        {
-          if (getSpanIndex(paramRecycler, paramState, m) == 0) {
-            break label127;
-          }
-          localObject4 = localObject1;
-          localObject3 = localObject2;
-        }
-      }
+      localObject2 = localObject1;
+      localObject1 = localObject3;
     }
     for (;;)
     {
       paramInt1 += i;
-      localObject2 = localObject3;
-      localObject1 = localObject4;
-      break;
+      localObject3 = localObject2;
+      localObject2 = localObject1;
+      localObject1 = localObject3;
+      break label37;
       i = -1;
       break;
-      label127:
-      if (((RecyclerView.LayoutParams)localView.getLayoutParams()).isItemRemoved())
+      label119:
+      if (((RecyclerView.LayoutParams)((View)localObject3).getLayoutParams()).isItemRemoved())
       {
-        localObject3 = localObject2;
-        localObject4 = localObject1;
-        if (localObject2 == null)
+        if (localObject1 == null)
         {
-          localObject3 = localView;
-          localObject4 = localObject1;
+          localObject1 = localObject2;
+          localObject2 = localObject3;
         }
       }
       else
       {
-        if (this.mOrientationHelper.getDecoratedStart(localView) < k)
+        Object localObject4;
+        if (this.mOrientationHelper.getDecoratedStart((View)localObject3) < k)
         {
-          localObject3 = localView;
-          if (this.mOrientationHelper.getDecoratedEnd(localView) >= j) {
-            break label230;
+          localObject4 = localObject3;
+          if (this.mOrientationHelper.getDecoratedEnd((View)localObject3) >= j) {}
+        }
+        else
+        {
+          if (localObject2 != null) {
+            break label216;
+          }
+          localObject2 = localObject1;
+          localObject1 = localObject3;
+          continue;
+          if (localObject2 == null) {
+            break label209;
           }
         }
-        localObject3 = localObject2;
-        localObject4 = localObject1;
-        if (localObject1 == null)
+        for (;;)
         {
-          localObject3 = localObject2;
-          localObject4 = localView;
+          localObject4 = localObject2;
+          return localObject4;
+          localObject2 = localObject1;
         }
       }
-    }
-    label221:
-    if (localObject1 != null) {}
-    for (;;)
-    {
+      label197:
+      label209:
+      label216:
       localObject3 = localObject1;
-      label230:
-      return localObject3;
       localObject1 = localObject2;
+      localObject2 = localObject3;
     }
   }
   
   public RecyclerView.LayoutParams generateDefaultLayoutParams()
   {
     if (this.mOrientation == 0) {
-      return new LayoutParams(-2, -1);
+      return new GridLayoutManager.LayoutParams(-2, -1);
     }
-    return new LayoutParams(-1, -2);
+    return new GridLayoutManager.LayoutParams(-1, -2);
   }
   
   public RecyclerView.LayoutParams generateLayoutParams(Context paramContext, AttributeSet paramAttributeSet)
   {
-    return new LayoutParams(paramContext, paramAttributeSet);
+    return new GridLayoutManager.LayoutParams(paramContext, paramAttributeSet);
   }
   
   public RecyclerView.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     if ((paramLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-      return new LayoutParams((ViewGroup.MarginLayoutParams)paramLayoutParams);
+      return new GridLayoutManager.LayoutParams((ViewGroup.MarginLayoutParams)paramLayoutParams);
     }
-    return new LayoutParams(paramLayoutParams);
+    return new GridLayoutManager.LayoutParams(paramLayoutParams);
   }
   
   public int getColumnCountForAccessibility(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
@@ -449,7 +448,7 @@ public class GridLayoutManager
     return this.mSpanCount;
   }
   
-  public SpanSizeLookup getSpanSizeLookup()
+  public GridLayoutManager.SpanSizeLookup getSpanSizeLookup()
   {
     return this.mSpanSizeLookup;
   }
@@ -457,9 +456,12 @@ public class GridLayoutManager
   void layoutChunk(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState, LinearLayoutManager.LayoutState paramLayoutState, LinearLayoutManager.LayoutChunkResult paramLayoutChunkResult)
   {
     int i3 = this.mOrientationHelper.getModeInOther();
+    int j;
+    int k;
     label38:
     boolean bool;
     label58:
+    int i1;
     int i2;
     int n;
     if (i3 != 1073741824)
@@ -526,10 +528,10 @@ public class GridLayoutManager
       this.mSet[n] = localView;
       n += 1;
     }
-    int i = 0;
-    float f1 = 0.0F;
     assignSpans(paramRecycler, paramState, n, m, bool);
     int m = 0;
+    float f1 = 0.0F;
+    int i = 0;
     if (m < n)
     {
       paramRecycler = this.mSet[m];
@@ -538,11 +540,11 @@ public class GridLayoutManager
         {
           addView(paramRecycler);
           label352:
-          paramState = (LayoutParams)paramRecycler.getLayoutParams();
-          i2 = this.mCachedBorders[(paramState.mSpanIndex + paramState.mSpanSize)];
-          int i4 = this.mCachedBorders[paramState.mSpanIndex];
+          paramState = (GridLayoutManager.LayoutParams)paramRecycler.getLayoutParams();
+          i2 = this.mCachedBorders[(GridLayoutManager.LayoutParams.access$000(paramState) + GridLayoutManager.LayoutParams.access$100(paramState))];
+          int i4 = this.mCachedBorders[GridLayoutManager.LayoutParams.access$000(paramState)];
           if (this.mOrientation != 0) {
-            break label588;
+            break label572;
           }
           i1 = paramState.height;
           label400:
@@ -550,32 +552,36 @@ public class GridLayoutManager
           i4 = this.mOrientationHelper.getTotalSpace();
           int i5 = this.mOrientationHelper.getMode();
           if (this.mOrientation != 1) {
-            break label597;
+            break label581;
           }
           i1 = paramState.height;
           label448:
           i1 = getChildMeasureSpec(i4, i5, 0, i1, true);
           if (this.mOrientation != 1) {
-            break label606;
+            break label590;
           }
           measureChildWithDecorationsAndMargin(paramRecycler, i2, i1, false, false);
+          label480:
+          i1 = this.mOrientationHelper.getDecoratedMeasurement(paramRecycler);
+          if (i1 <= i) {
+            break label1427;
+          }
+          i = i1;
         }
+      }
+    }
+    label775:
+    label1421:
+    label1427:
+    for (;;)
+    {
+      float f2 = 1.0F * this.mOrientationHelper.getDecoratedMeasurementInOther(paramRecycler) / GridLayoutManager.LayoutParams.access$100(paramState);
+      if (f2 > f1) {
+        f1 = f2;
       }
       for (;;)
       {
-        i2 = this.mOrientationHelper.getDecoratedMeasurement(paramRecycler);
-        i1 = i;
-        if (i2 > i) {
-          i1 = i2;
-        }
-        float f3 = 1.0F * this.mOrientationHelper.getDecoratedMeasurementInOther(paramRecycler) / paramState.mSpanSize;
-        float f2 = f1;
-        if (f3 > f1) {
-          f2 = f3;
-        }
         m += 1;
-        i = i1;
-        f1 = f2;
         break;
         addView(paramRecycler, 0);
         break label352;
@@ -586,168 +592,183 @@ public class GridLayoutManager
         }
         addDisappearingView(paramRecycler, 0);
         break label352;
-        label588:
+        label572:
         i1 = paramState.width;
         break label400;
-        label597:
+        label581:
         i1 = paramState.width;
         break label448;
-        label606:
+        label590:
         measureChildWithDecorationsAndMargin(paramRecycler, i1, i2, false, false);
-      }
-    }
-    m = i;
-    if (j != 0)
-    {
-      guessMeasurement(f1, k);
-      i = 0;
-      j = 0;
-      m = i;
-      if (j < n)
-      {
-        paramRecycler = this.mSet[j];
-        paramState = (LayoutParams)paramRecycler.getLayoutParams();
-        m = this.mCachedBorders[(paramState.mSpanIndex + paramState.mSpanSize)];
-        i1 = this.mCachedBorders[paramState.mSpanIndex];
-        if (this.mOrientation == 0)
+        break label480;
+        m = i;
+        if (j != 0)
         {
-          k = paramState.height;
-          label710:
-          m = getChildMeasureSpec(m - i1, 1073741824, 0, k, false);
-          i1 = this.mOrientationHelper.getTotalSpace();
-          i2 = this.mOrientationHelper.getMode();
-          if (this.mOrientation != 1) {
-            break label838;
+          guessMeasurement(f1, k);
+          i = 0;
+          j = 0;
+          m = i;
+          if (j < n)
+          {
+            paramRecycler = this.mSet[j];
+            paramState = (GridLayoutManager.LayoutParams)paramRecycler.getLayoutParams();
+            m = this.mCachedBorders[(GridLayoutManager.LayoutParams.access$000(paramState) + GridLayoutManager.LayoutParams.access$100(paramState))];
+            i1 = this.mCachedBorders[GridLayoutManager.LayoutParams.access$000(paramState)];
+            if (this.mOrientation == 0)
+            {
+              k = paramState.height;
+              label694:
+              m = getChildMeasureSpec(m - i1, 1073741824, 0, k, false);
+              i1 = this.mOrientationHelper.getTotalSpace();
+              i2 = this.mOrientationHelper.getMode();
+              if (this.mOrientation != 1) {
+                break label814;
+              }
+              k = paramState.height;
+              label743:
+              k = getChildMeasureSpec(i1, i2, 0, k, true);
+              if (this.mOrientation != 1) {
+                break label823;
+              }
+              measureChildWithDecorationsAndMargin(paramRecycler, m, k, false, true);
+              k = this.mOrientationHelper.getDecoratedMeasurement(paramRecycler);
+              if (k <= i) {
+                break label1421;
+              }
+              i = k;
+            }
           }
-          k = paramState.height;
-          label759:
-          k = getChildMeasureSpec(i1, i2, 0, k, true);
-          if (this.mOrientation != 1) {
-            break label847;
-          }
-          measureChildWithDecorationsAndMargin(paramRecycler, m, k, false, true);
         }
         for (;;)
         {
-          m = this.mOrientationHelper.getDecoratedMeasurement(paramRecycler);
-          k = i;
-          if (m > i) {
-            k = m;
-          }
           j += 1;
-          i = k;
           break;
           k = paramState.width;
-          break label710;
-          label838:
+          break label694;
+          label814:
           k = paramState.width;
-          break label759;
-          label847:
+          break label743;
+          label823:
           measureChildWithDecorationsAndMargin(paramRecycler, k, m, false, true);
+          break label775;
+          k = View.MeasureSpec.makeMeasureSpec(m, 1073741824);
+          i = 0;
+          if (i < n)
+          {
+            paramRecycler = this.mSet[i];
+            if (this.mOrientationHelper.getDecoratedMeasurement(paramRecycler) != m)
+            {
+              paramState = (GridLayoutManager.LayoutParams)paramRecycler.getLayoutParams();
+              i1 = this.mCachedBorders[(GridLayoutManager.LayoutParams.access$000(paramState) + GridLayoutManager.LayoutParams.access$100(paramState))];
+              i2 = this.mCachedBorders[GridLayoutManager.LayoutParams.access$000(paramState)];
+              if (this.mOrientation != 0) {
+                break label971;
+              }
+              j = paramState.height;
+              label926:
+              j = getChildMeasureSpec(i1 - i2, 1073741824, 0, j, false);
+              if (this.mOrientation != 1) {
+                break label980;
+              }
+              measureChildWithDecorationsAndMargin(paramRecycler, j, k, true, true);
+            }
+            for (;;)
+            {
+              i += 1;
+              break;
+              label971:
+              j = paramState.width;
+              break label926;
+              label980:
+              measureChildWithDecorationsAndMargin(paramRecycler, k, j, true, true);
+            }
+          }
+          paramLayoutChunkResult.mConsumed = m;
+          j = 0;
+          k = 0;
+          if (this.mOrientation == 1) {
+            if (paramLayoutState.mLayoutDirection == -1)
+            {
+              k = paramLayoutState.mOffset;
+              m = k - m;
+              i = 0;
+              j = 0;
+              i3 = 0;
+              i1 = i;
+              i2 = k;
+              k = i3;
+              i = j;
+              j = i1;
+              i1 = i2;
+              label1069:
+              if (k >= n) {
+                break label1412;
+              }
+              paramRecycler = this.mSet[k];
+              paramState = (GridLayoutManager.LayoutParams)paramRecycler.getLayoutParams();
+              if (this.mOrientation != 1) {
+                break label1364;
+              }
+              if (!isLayoutRTL()) {
+                break label1328;
+              }
+              j = getPaddingLeft() + this.mCachedBorders[(GridLayoutManager.LayoutParams.access$000(paramState) + GridLayoutManager.LayoutParams.access$100(paramState))];
+              i2 = this.mOrientationHelper.getDecoratedMeasurementInOther(paramRecycler);
+              i = j;
+              j -= i2;
+            }
+          }
+          for (;;)
+          {
+            layoutDecorated(paramRecycler, j + paramState.leftMargin, m + paramState.topMargin, i - paramState.rightMargin, i1 - paramState.bottomMargin);
+            if ((paramState.isItemRemoved()) || (paramState.isItemChanged())) {
+              paramLayoutChunkResult.mIgnoreConsumed = true;
+            }
+            paramLayoutChunkResult.mFocusable |= paramRecycler.isFocusable();
+            i2 = k + 1;
+            k = j;
+            j = i;
+            i = k;
+            k = i2;
+            break label1069;
+            i = paramLayoutState.mOffset;
+            k = i + m;
+            i1 = 0;
+            j = 0;
+            m = i;
+            i = i1;
+            break;
+            if (paramLayoutState.mLayoutDirection == -1)
+            {
+              i = paramLayoutState.mOffset;
+              i1 = i - m;
+              m = j;
+              j = i1;
+              break;
+            }
+            i1 = paramLayoutState.mOffset;
+            i = m + i1;
+            m = j;
+            j = i1;
+            break;
+            label1328:
+            i = getPaddingLeft();
+            j = this.mCachedBorders[GridLayoutManager.LayoutParams.access$000(paramState)] + i;
+            i = this.mOrientationHelper.getDecoratedMeasurementInOther(paramRecycler) + j;
+            continue;
+            label1364:
+            m = getPaddingTop();
+            m = this.mCachedBorders[GridLayoutManager.LayoutParams.access$000(paramState)] + m;
+            i1 = this.mOrientationHelper.getDecoratedMeasurementInOther(paramRecycler) + m;
+            i2 = i;
+            i = j;
+            j = i2;
+          }
+          Arrays.fill(this.mSet, null);
+          return;
         }
       }
     }
-    int k = View.MeasureSpec.makeMeasureSpec(m, 1073741824);
-    i = 0;
-    if (i < n)
-    {
-      paramRecycler = this.mSet[i];
-      if (this.mOrientationHelper.getDecoratedMeasurement(paramRecycler) != m)
-      {
-        paramState = (LayoutParams)paramRecycler.getLayoutParams();
-        i1 = this.mCachedBorders[(paramState.mSpanIndex + paramState.mSpanSize)];
-        i2 = this.mCachedBorders[paramState.mSpanIndex];
-        if (this.mOrientation != 0) {
-          break label995;
-        }
-        j = paramState.height;
-        label950:
-        j = getChildMeasureSpec(i1 - i2, 1073741824, 0, j, false);
-        if (this.mOrientation != 1) {
-          break label1004;
-        }
-        measureChildWithDecorationsAndMargin(paramRecycler, j, k, true, true);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        label995:
-        j = paramState.width;
-        break label950;
-        label1004:
-        measureChildWithDecorationsAndMargin(paramRecycler, k, j, true, true);
-      }
-    }
-    paramLayoutChunkResult.mConsumed = m;
-    int j = 0;
-    k = 0;
-    int i1 = 0;
-    i = 0;
-    if (this.mOrientation == 1) {
-      if (paramLayoutState.mLayoutDirection == -1)
-      {
-        i = paramLayoutState.mOffset;
-        m = i - m;
-        i1 = 0;
-        i2 = k;
-        i3 = j;
-        k = i1;
-        i1 = i;
-        label1085:
-        if (k >= n) {
-          break label1382;
-        }
-        paramRecycler = this.mSet[k];
-        paramState = (LayoutParams)paramRecycler.getLayoutParams();
-        if (this.mOrientation != 1) {
-          break label1342;
-        }
-        if (!isLayoutRTL()) {
-          break label1310;
-        }
-        j = getPaddingLeft() + this.mCachedBorders[(paramState.mSpanIndex + paramState.mSpanSize)];
-        i = j - this.mOrientationHelper.getDecoratedMeasurementInOther(paramRecycler);
-      }
-    }
-    for (;;)
-    {
-      layoutDecorated(paramRecycler, i + paramState.leftMargin, m + paramState.topMargin, j - paramState.rightMargin, i1 - paramState.bottomMargin);
-      if ((paramState.isItemRemoved()) || (paramState.isItemChanged())) {
-        paramLayoutChunkResult.mIgnoreConsumed = true;
-      }
-      paramLayoutChunkResult.mFocusable |= paramRecycler.isFocusable();
-      k += 1;
-      i3 = i;
-      i2 = j;
-      break label1085;
-      i1 = paramLayoutState.mOffset;
-      i = i1 + m;
-      m = i1;
-      break;
-      if (paramLayoutState.mLayoutDirection == -1)
-      {
-        k = paramLayoutState.mOffset;
-        j = k - m;
-        m = i1;
-        break;
-      }
-      j = paramLayoutState.mOffset;
-      k = j + m;
-      m = i1;
-      break;
-      label1310:
-      i = getPaddingLeft() + this.mCachedBorders[paramState.mSpanIndex];
-      j = i + this.mOrientationHelper.getDecoratedMeasurementInOther(paramRecycler);
-      continue;
-      label1342:
-      m = getPaddingTop() + this.mCachedBorders[paramState.mSpanIndex];
-      i1 = m + this.mOrientationHelper.getDecoratedMeasurementInOther(paramRecycler);
-      i = i3;
-      j = i2;
-    }
-    label1382:
-    Arrays.fill(this.mSet, null);
   }
   
   void onAnchorReady(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState, LinearLayoutManager.AnchorInfo paramAnchorInfo, int paramInt)
@@ -763,145 +784,146 @@ public class GridLayoutManager
   public View onFocusSearchFailed(View paramView, int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
   {
     View localView = findContainingItemView(paramView);
-    if (localView == null) {
-      paramRecycler = null;
-    }
-    LayoutParams localLayoutParams;
-    int i4;
-    int i5;
-    label83:
-    label100:
-    int k;
-    label118:
-    int n;
-    int i1;
-    label159:
-    label164:
-    label178:
-    label201:
-    int i6;
-    int i7;
-    do
+    if (localView == null)
     {
+      paramRecycler = null;
       return paramRecycler;
-      localLayoutParams = (LayoutParams)localView.getLayoutParams();
-      i4 = localLayoutParams.mSpanIndex;
-      i5 = localLayoutParams.mSpanIndex + localLayoutParams.mSpanSize;
-      if (super.onFocusSearchFailed(paramView, paramInt, paramRecycler, paramState) == null) {
-        return null;
+    }
+    GridLayoutManager.LayoutParams localLayoutParams = (GridLayoutManager.LayoutParams)localView.getLayoutParams();
+    int i4 = GridLayoutManager.LayoutParams.access$000(localLayoutParams);
+    int i5 = GridLayoutManager.LayoutParams.access$000(localLayoutParams) + GridLayoutManager.LayoutParams.access$100(localLayoutParams);
+    if (super.onFocusSearchFailed(paramView, paramInt, paramRecycler, paramState) == null) {
+      return null;
+    }
+    int i8;
+    label83:
+    int m;
+    int k;
+    if (convertFocusDirectionToLayoutDirection(paramInt) == 1)
+    {
+      i8 = 1;
+      if (i8 == this.mShouldReverseLayout) {
+        break label162;
       }
-      int i8;
-      int i;
-      int j;
-      int m;
-      if (convertFocusDirectionToLayoutDirection(paramInt) == 1)
-      {
-        i8 = 1;
-        if (i8 == this.mShouldReverseLayout) {
-          break label159;
-        }
-        paramInt = 1;
-        if (paramInt == 0) {
-          break label164;
-        }
-        paramInt = getChildCount() - 1;
-        i = -1;
-        j = -1;
-        if ((this.mOrientation != 1) || (!isLayoutRTL())) {
-          break label178;
-        }
-        k = 1;
-        paramState = null;
-        n = -1;
-        i1 = 0;
-        m = paramInt;
-      }
-      for (;;)
-      {
-        if (m != j)
-        {
-          paramView = getChildAt(m);
-          if (paramView != localView) {}
-        }
-        else
-        {
-          return paramState;
-          i8 = 0;
-          break;
-          paramInt = 0;
-          break label83;
-          paramInt = 0;
-          i = 1;
-          j = getChildCount();
-          break label100;
-          k = 0;
-          break label118;
-        }
-        if (paramView.isFocusable()) {
-          break label201;
-        }
-        m += i;
-      }
-      localLayoutParams = (LayoutParams)paramView.getLayoutParams();
-      i6 = localLayoutParams.mSpanIndex;
-      i7 = localLayoutParams.mSpanIndex + localLayoutParams.mSpanSize;
-      if (i6 != i4) {
-        break;
-      }
-      paramRecycler = paramView;
-    } while (i7 == i5);
-    int i3 = 0;
-    if (paramState == null) {
       paramInt = 1;
+      if (paramInt == 0) {
+        break label167;
+      }
+      paramInt = getChildCount() - 1;
+      m = -1;
+      k = -1;
+      label100:
+      if ((this.mOrientation != 1) || (!isLayoutRTL())) {
+        break label181;
+      }
+    }
+    int j;
+    int i;
+    int i1;
+    label132:
+    label162:
+    label167:
+    label181:
+    for (int n = 1;; n = 0)
+    {
+      paramView = null;
+      j = -1;
+      i = 0;
+      i1 = paramInt;
+      paramInt = j;
+      if (i1 != k)
+      {
+        paramState = getChildAt(i1);
+        if (paramState != localView) {
+          break label187;
+        }
+      }
+      return paramView;
+      i8 = 0;
+      break;
+      paramInt = 0;
+      break label83;
+      k = getChildCount();
+      paramInt = 0;
+      m = 1;
+      break label100;
+    }
+    label187:
+    if (!paramState.isFocusable())
+    {
+      j = i;
+      i = paramInt;
+      paramInt = j;
     }
     for (;;)
     {
-      label256:
-      if (paramInt != 0)
+      i1 += m;
+      j = i;
+      i = paramInt;
+      paramInt = j;
+      break label132;
+      localLayoutParams = (GridLayoutManager.LayoutParams)paramState.getLayoutParams();
+      int i6 = GridLayoutManager.LayoutParams.access$000(localLayoutParams);
+      int i7 = GridLayoutManager.LayoutParams.access$000(localLayoutParams) + GridLayoutManager.LayoutParams.access$100(localLayoutParams);
+      if (i6 == i4)
       {
-        n = localLayoutParams.mSpanIndex;
-        i1 = Math.min(i7, i5) - Math.max(i6, i4);
-        paramState = paramView;
-        break;
-        paramInt = Math.max(i6, i4);
-        i2 = Math.min(i7, i5) - paramInt;
-        if (i2 > i1)
-        {
-          paramInt = 1;
+        paramRecycler = paramState;
+        if (i7 == i5) {
+          break;
         }
-        else
+      }
+      int i3 = 0;
+      if (paramView == null) {
+        j = 1;
+      }
+      for (;;)
+      {
+        if (j != 0)
         {
-          paramInt = i3;
-          if (i2 == i1) {
-            if (i6 <= n) {
-              break label356;
+          i = GridLayoutManager.LayoutParams.access$000(localLayoutParams);
+          paramInt = Math.min(i7, i5) - Math.max(i6, i4);
+          paramView = paramState;
+          break;
+          j = Math.max(i6, i4);
+          int i2 = Math.min(i7, i5) - j;
+          if (i2 > i)
+          {
+            j = 1;
+          }
+          else
+          {
+            j = i3;
+            if (i2 == i)
+            {
+              if (i6 > paramInt) {}
+              for (i2 = 1;; i2 = 0)
+              {
+                j = i3;
+                if (n != i2) {
+                  break;
+                }
+                j = 1;
+                break;
+              }
             }
           }
         }
       }
-    }
-    label356:
-    for (int i2 = 1;; i2 = 0)
-    {
-      paramInt = i3;
-      if (k != i2) {
-        break label256;
-      }
-      paramInt = 1;
-      break label256;
-      break;
+      j = paramInt;
+      paramInt = i;
+      i = j;
     }
   }
   
   public void onInitializeAccessibilityNodeInfoForItem(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState, View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
     ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-    if (!(localLayoutParams instanceof LayoutParams))
+    if (!(localLayoutParams instanceof GridLayoutManager.LayoutParams))
     {
       super.onInitializeAccessibilityNodeInfoForItem(paramView, paramAccessibilityNodeInfoCompat);
       return;
     }
-    paramView = (LayoutParams)localLayoutParams;
+    paramView = (GridLayoutManager.LayoutParams)localLayoutParams;
     int i = getSpanGroupIndex(paramRecycler, paramState, paramView.getViewLayoutPosition());
     if (this.mOrientation == 0)
     {
@@ -980,21 +1002,21 @@ public class GridLayoutManager
     if (this.mCachedBorders == null) {
       super.setMeasuredDimension(paramRect, paramInt1, paramInt2);
     }
-    int j = getPaddingLeft() + getPaddingRight();
+    int i = getPaddingLeft();
+    int j = getPaddingRight() + i;
     int k = getPaddingTop() + getPaddingBottom();
-    int i;
     if (this.mOrientation == 1)
     {
-      i = chooseSize(paramInt2, paramRect.height() + k, getMinimumHeight());
-      paramInt2 = chooseSize(paramInt1, this.mCachedBorders[(this.mCachedBorders.length - 1)] + j, getMinimumWidth());
+      i = chooseSize(paramInt2, k + paramRect.height(), getMinimumHeight());
+      paramInt2 = chooseSize(paramInt1, j + this.mCachedBorders[(this.mCachedBorders.length - 1)], getMinimumWidth());
       paramInt1 = i;
     }
     for (;;)
     {
       setMeasuredDimension(paramInt2, paramInt1);
       return;
-      i = chooseSize(paramInt1, paramRect.width() + j, getMinimumWidth());
-      paramInt1 = chooseSize(paramInt2, this.mCachedBorders[(this.mCachedBorders.length - 1)] + k, getMinimumHeight());
+      i = chooseSize(paramInt1, j + paramRect.width(), getMinimumWidth());
+      paramInt1 = chooseSize(paramInt2, k + this.mCachedBorders[(this.mCachedBorders.length - 1)], getMinimumHeight());
       paramInt2 = i;
     }
   }
@@ -1012,7 +1034,7 @@ public class GridLayoutManager
     this.mSpanSizeLookup.invalidateSpanIndexCache();
   }
   
-  public void setSpanSizeLookup(SpanSizeLookup paramSpanSizeLookup)
+  public void setSpanSizeLookup(GridLayoutManager.SpanSizeLookup paramSpanSizeLookup)
   {
     this.mSpanSizeLookup = paramSpanSizeLookup;
   }
@@ -1028,213 +1050,6 @@ public class GridLayoutManager
   public boolean supportsPredictiveItemAnimations()
   {
     return (this.mPendingSavedState == null) && (!this.mPendingSpanCountChange);
-  }
-  
-  public static final class DefaultSpanSizeLookup
-    extends GridLayoutManager.SpanSizeLookup
-  {
-    public int getSpanIndex(int paramInt1, int paramInt2)
-    {
-      return paramInt1 % paramInt2;
-    }
-    
-    public int getSpanSize(int paramInt)
-    {
-      return 1;
-    }
-  }
-  
-  public static class LayoutParams
-    extends RecyclerView.LayoutParams
-  {
-    public static final int INVALID_SPAN_ID = -1;
-    private int mSpanIndex = -1;
-    private int mSpanSize = 0;
-    
-    public LayoutParams(int paramInt1, int paramInt2)
-    {
-      super(paramInt2);
-    }
-    
-    public LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
-    {
-      super(paramAttributeSet);
-    }
-    
-    public LayoutParams(RecyclerView.LayoutParams paramLayoutParams)
-    {
-      super();
-    }
-    
-    public LayoutParams(ViewGroup.LayoutParams paramLayoutParams)
-    {
-      super();
-    }
-    
-    public LayoutParams(ViewGroup.MarginLayoutParams paramMarginLayoutParams)
-    {
-      super();
-    }
-    
-    public int getSpanIndex()
-    {
-      return this.mSpanIndex;
-    }
-    
-    public int getSpanSize()
-    {
-      return this.mSpanSize;
-    }
-  }
-  
-  public static abstract class SpanSizeLookup
-  {
-    private boolean mCacheSpanIndices = false;
-    final SparseIntArray mSpanIndexCache = new SparseIntArray();
-    
-    int findReferenceIndexFromCache(int paramInt)
-    {
-      int i = 0;
-      int j = this.mSpanIndexCache.size() - 1;
-      while (i <= j)
-      {
-        int k = i + j >>> 1;
-        if (this.mSpanIndexCache.keyAt(k) < paramInt) {
-          i = k + 1;
-        } else {
-          j = k - 1;
-        }
-      }
-      paramInt = i - 1;
-      if ((paramInt >= 0) && (paramInt < this.mSpanIndexCache.size())) {
-        return this.mSpanIndexCache.keyAt(paramInt);
-      }
-      return -1;
-    }
-    
-    int getCachedSpanIndex(int paramInt1, int paramInt2)
-    {
-      int i;
-      if (!this.mCacheSpanIndices) {
-        i = getSpanIndex(paramInt1, paramInt2);
-      }
-      int j;
-      do
-      {
-        return i;
-        j = this.mSpanIndexCache.get(paramInt1, -1);
-        i = j;
-      } while (j != -1);
-      paramInt2 = getSpanIndex(paramInt1, paramInt2);
-      this.mSpanIndexCache.put(paramInt1, paramInt2);
-      return paramInt2;
-    }
-    
-    public int getSpanGroupIndex(int paramInt1, int paramInt2)
-    {
-      int i = 0;
-      int j = 0;
-      int i2 = getSpanSize(paramInt1);
-      int m = 0;
-      if (m < paramInt1)
-      {
-        int n = getSpanSize(m);
-        int i1 = i + n;
-        int k;
-        if (i1 == paramInt2)
-        {
-          i = 0;
-          k = j + 1;
-        }
-        for (;;)
-        {
-          m += 1;
-          j = k;
-          break;
-          k = j;
-          i = i1;
-          if (i1 > paramInt2)
-          {
-            i = n;
-            k = j + 1;
-          }
-        }
-      }
-      paramInt1 = j;
-      if (i + i2 > paramInt2) {
-        paramInt1 = j + 1;
-      }
-      return paramInt1;
-    }
-    
-    public int getSpanIndex(int paramInt1, int paramInt2)
-    {
-      int n = getSpanSize(paramInt1);
-      if (n == paramInt2) {
-        paramInt1 = 0;
-      }
-      int i;
-      do
-      {
-        return paramInt1;
-        int k = 0;
-        int m = 0;
-        i = k;
-        int j = m;
-        if (this.mCacheSpanIndices)
-        {
-          i = k;
-          j = m;
-          if (this.mSpanIndexCache.size() > 0)
-          {
-            int i1 = findReferenceIndexFromCache(paramInt1);
-            i = k;
-            j = m;
-            if (i1 >= 0)
-            {
-              i = this.mSpanIndexCache.get(i1) + getSpanSize(i1);
-              j = i1 + 1;
-            }
-          }
-        }
-        if (j < paramInt1)
-        {
-          k = getSpanSize(j);
-          m = i + k;
-          if (m == paramInt2) {
-            i = 0;
-          }
-          for (;;)
-          {
-            j += 1;
-            break;
-            i = m;
-            if (m > paramInt2) {
-              i = k;
-            }
-          }
-        }
-        paramInt1 = i;
-      } while (i + n <= paramInt2);
-      return 0;
-    }
-    
-    public abstract int getSpanSize(int paramInt);
-    
-    public void invalidateSpanIndexCache()
-    {
-      this.mSpanIndexCache.clear();
-    }
-    
-    public boolean isSpanIndexCacheEnabled()
-    {
-      return this.mCacheSpanIndices;
-    }
-    
-    public void setSpanIndexCacheEnabled(boolean paramBoolean)
-    {
-      this.mCacheSpanIndices = paramBoolean;
-    }
   }
 }
 

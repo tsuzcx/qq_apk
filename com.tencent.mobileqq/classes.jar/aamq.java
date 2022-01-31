@@ -1,66 +1,64 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.arcard.ARCardPageProcess;
-import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Context;
+import com.tencent.ad.tangram.AdError;
+import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasData;
+import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasDataBuilderV2;
+import com.tencent.ad.tangram.videoceiling.AdVideoCeilingAdapter;
+import com.tencent.ad.tangram.videoceiling.AdVideoCeilingAdapter.Params;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.jsbridge.GdtVideoCeilingFragmentForJS;
+import com.tencent.gdtad.views.video.GdtVideoData;
+import com.tencent.gdtad.views.videoceiling.GdtBaseVideoCeilingFragment;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingData;
+import java.lang.ref.WeakReference;
 
-public class aamq
-  implements Runnable
+public final class aamq
+  implements AdVideoCeilingAdapter
 {
-  public aamq(ARGreetingCardListManager paramARGreetingCardListManager) {}
-  
-  public void run()
+  public AdError show(AdVideoCeilingAdapter.Params paramParams)
   {
-    try
+    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
     {
-      LayoutInflater.from(ARGreetingCardListManager.a(this.a)).inflate(2130968698, ARGreetingCardListManager.a(this.a));
-      ARGreetingCardListManager.a(this.a).setOnTouchListener(new aamr(this));
-      ViewParent localViewParent = ARGreetingCardListManager.a(this.a).getParent();
-      if ((localViewParent instanceof ViewGroup))
+      aase.d("GdtVideoCeilingAdapter", "show error");
+      return new AdError(4);
+    }
+    Object localObject = new GdtVideoData();
+    ((GdtVideoData)localObject).setUrl(paramParams.videoUrl);
+    ((GdtVideoData)localObject).setStartPositionMillis(paramParams.videoStartPositionMillis);
+    ((GdtVideoData)localObject).setLoop(paramParams.videoLoop);
+    ((GdtVideoData)localObject).setDirectPlay(paramParams.videoPlayForced);
+    GdtVideoCeilingData localGdtVideoCeilingData = new GdtVideoCeilingData();
+    localGdtVideoCeilingData.setAd((GdtAd)GdtAd.class.cast(paramParams.ad));
+    localGdtVideoCeilingData.setWebUrl(paramParams.webUrl);
+    localGdtVideoCeilingData.setVideoData((GdtVideoData)localObject);
+    switch (paramParams.style)
+    {
+    default: 
+      return new AdError(4);
+    case 1: 
+      localGdtVideoCeilingData.setStyle(1);
+    }
+    while (!localGdtVideoCeilingData.isValid())
+    {
+      aase.d("GdtVideoCeilingAdapter", "show error");
+      return new AdError(4);
+      localGdtVideoCeilingData.setStyle(2);
+      continue;
+      localGdtVideoCeilingData.setStyle(3);
+      continue;
+      localObject = AdCanvasDataBuilderV2.build((Context)paramParams.activity.get(), paramParams.ad, paramParams.autodownload);
+      if ((localObject == null) || (!((AdCanvasData)localObject).isValid()))
       {
-        ARGreetingCardListManager.a(this.a, (ViewGroup)((ViewGroup)localViewParent).findViewById(2131362594));
-        if (ARGreetingCardListManager.b(this.a) != null) {
-          ARGreetingCardListManager.b(this.a).setVisibility(4);
-        }
+        localGdtVideoCeilingData.setStyle(1);
       }
-      ARGreetingCardListManager.a(this.a, (ImageView)ARGreetingCardListManager.a(this.a).findViewById(2131363261));
-      ARGreetingCardListManager.a(this.a, (TextView)ARGreetingCardListManager.a(this.a).findViewById(2131363262));
-      ARGreetingCardListManager.b(this.a, (TextView)ARGreetingCardListManager.a(this.a).findViewById(2131363263));
-      ARGreetingCardListManager.a(this.a, (Button)ARGreetingCardListManager.a(this.a).findViewById(2131363264));
-      ARGreetingCardListManager.a(this.a).setOnClickListener(this.a);
-      ARGreetingCardListManager.a(this.a).setOnTouchListener(ARGreetingCardListManager.a(this.a));
-      ARGreetingCardListManager.c(this.a, (TextView)ARGreetingCardListManager.a(this.a).findViewById(2131363265));
-      ARGreetingCardListManager.a(this.a).setOnClickListener(this.a);
-      ARGreetingCardListManager.a(this.a).setOnTouchListener(ARGreetingCardListManager.a(this.a));
-      ARGreetingCardListManager.a(this.a, (ARCardPageProcess)ARGreetingCardListManager.a(this.a).findViewById(2131363267));
-      ARGreetingCardListManager.a(this.a).a(ARGreetingCardListManager.a(this.a), 0);
-      ARGreetingCardListManager.b(this.a, (Button)ARGreetingCardListManager.a(this.a).findViewById(2131363268));
-      ARGreetingCardListManager.b(this.a).setOnClickListener(this.a);
-      ARGreetingCardListManager.c(this.a, (Button)ARGreetingCardListManager.a(this.a).findViewById(2131363270));
-      ARGreetingCardListManager.c(this.a).setOnClickListener(this.a);
-      ARGreetingCardListManager.d(this.a, (Button)ARGreetingCardListManager.a(this.a).findViewById(2131363269));
-      ARGreetingCardListManager.d(this.a).setOnClickListener(this.a);
-      ARGreetingCardListManager.a(this.a, ARGreetingCardListManager.a(this.a).findViewById(2131363266));
-      ARGreetingCardListManager.a(this.a).setOnClickListener(this.a);
-      ARGreetingCardListManager.a(this.a).setOnTouchListener(ARGreetingCardListManager.a(this.a));
-      ARGreetingCardListManager.a(this.a).setVisibility(4);
-      ARGreetingCardListManager.c(this.a);
-      ARGreetingCardListManager.d(this.a);
-      ARGreetingCardListManager.a(this.a).setVisibility(4);
-      ARGreetingCardListManager.b(this.a).setVisibility(8);
-      ARGreetingCardListManager.c(this.a).setVisibility(8);
-      ARGreetingCardListManager.d(this.a).setVisibility(8);
-      return;
+      else
+      {
+        localGdtVideoCeilingData.setCanvasData((AdCanvasData)localObject);
+        localGdtVideoCeilingData.setStyle(4);
+      }
     }
-    catch (Exception localException)
-    {
-      QLog.d("ARGreetingCardListManager", 1, "initCardListUI fail.", localException);
-    }
+    GdtBaseVideoCeilingFragment.a((Activity)paramParams.activity.get(), GdtVideoCeilingFragmentForJS.class, localGdtVideoCeilingData, paramParams.extrasForIntent);
+    return new AdError(0);
   }
 }
 

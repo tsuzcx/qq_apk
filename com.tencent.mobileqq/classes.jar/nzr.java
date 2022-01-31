@@ -1,25 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.IMyStoryListView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.GuideInfoDialog;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySubChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
 
 public class nzr
-  implements View.OnClickListener
+  implements row
 {
-  public nzr(StoryListPresenter paramStoryListPresenter, GuideInfoDialog paramGuideInfoDialog) {}
+  public nzr(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    StoryReportor.a("home_page", "guide_shoot", 0, 0, new String[0]);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistPresenterStoryListPresenter.a.a(false, true, 13, null);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetGuideInfoDialog.dismiss();
+    if ((ReadInJoyNewFeedsActivity.a(this.a).a(paramInt) != null) && (ReadInJoyNewFeedsActivity.a(this.a).a(paramInt).a() != null)) {
+      ReadInJoyNewFeedsActivity.a(this.a).a(paramInt).a().k();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == paramInt2) {
+      szp.a(false);
+    }
+    if (paramInt2 == 1) {
+      this.a.getIntent().putExtra("channel_from", 7);
+    }
+    if ((paramInt1 == paramInt2) && (paramInt2 == 0) && ((this.a.a() instanceof ReadInJoySubChannelFragment)))
+    {
+      this.a.a().f();
+      return;
+    }
+    this.a.a(paramInt2, 256, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nzr
  * JD-Core Version:    0.7.0.1
  */

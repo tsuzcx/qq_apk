@@ -1,34 +1,22 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.plugin.QZonePluginManager;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
-class amya
-  extends Handler
+public abstract interface amya
 {
-  amya(amxz paramamxz, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract void a();
   
-  public void handleMessage(Message paramMessage)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginPreInstaller", 2, "handleMessage, retryInstallNum=" + amxz.a());
-    }
-    if (paramMessage.what == 1) {}
-    try
-    {
-      paramMessage = (String)paramMessage.obj;
-      amxz.a(this.a).a(paramMessage, this.a, 2);
-      return;
-    }
-    catch (Exception paramMessage)
-    {
-      QLog.e("QZonePluginPreInstaller", 1, paramMessage, new Object[0]);
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void a(ARCommonConfigInfo paramARCommonConfigInfo);
+  
+  public abstract void a(ArConfigInfo paramArConfigInfo);
+  
+  public abstract void a(ArEffectConfig paramArEffectConfig);
+  
+  public abstract void b();
 }
 
 

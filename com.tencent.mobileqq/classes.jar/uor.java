@@ -1,25 +1,38 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipWaveView;
-import com.tencent.mobileqq.surfaceviewaction.action.Action;
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.surfaceviewaction.action.ScaleAction;
-import com.tencent.mobileqq.surfaceviewaction.action.SequenceAction;
-import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class uor
-  implements Action.OnActionEndListener
+class uor
+  extends Job<Object, Object, Object>
 {
-  public uor(FriendShipWaveView paramFriendShipWaveView) {}
-  
-  public void a()
+  uor(uom paramuom, String paramString1, String paramString2, StoryVideoItem paramStoryVideoItem)
   {
-    SequenceAction localSequenceAction = new SequenceAction(new Action[] { new ScaleAction(300, 0.1F, 1.1F), new ScaleAction(100, 1.2F, 0.9F), new ScaleAction(100, 0.9F, 1.0F) });
-    this.a.c.a(new Action[] { localSequenceAction });
-    this.a.b.a(new Action[] { new ScaleAction(300, 0.0F, 1.0F) });
+    super(paramString1);
+  }
+  
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  {
+    paramJobContext = new uvf(new ErrorMessage(), this.jdField_a_of_type_JavaLangString, true);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)
+    {
+      paramJobContext.b = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
+      paramJobContext.c = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.shareGroupId;
+      paramJobContext.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoIndex;
+      if (paramJobContext.a == 0L) {
+        paramJobContext.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime;
+      }
+    }
+    umc.a().dispatch(paramJobContext);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uor
  * JD-Core Version:    0.7.0.1
  */

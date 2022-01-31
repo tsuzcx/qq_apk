@@ -139,7 +139,7 @@ public class libwebp
       Log.e("[image]", "Load WebP Library Error...");
       return null;
     }
-    switch (1.$SwitchMap$android$graphics$Bitmap$Config[paramConfig.ordinal()])
+    switch (libwebp.1.$SwitchMap$android$graphics$Bitmap$Config[paramConfig.ordinal()])
     {
     default: 
       this.mBitmapType = 2;
@@ -193,7 +193,7 @@ public class libwebp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.export.external.libwebp
  * JD-Core Version:    0.7.0.1
  */

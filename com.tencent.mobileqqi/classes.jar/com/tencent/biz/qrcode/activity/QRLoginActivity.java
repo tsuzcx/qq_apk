@@ -12,10 +12,10 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import bst;
-import bsu;
-import bsv;
-import bsw;
+import bmp;
+import bmq;
+import bmr;
+import bms;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.biz.qrcode.util.QRUtils;
@@ -51,7 +51,7 @@ public class QRLoginActivity
   public TextView a;
   public QQProgressDialog a;
   private WtloginManager jdField_a_of_type_MqqManagerWtloginManager;
-  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new bst(this);
+  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new bmp(this);
   protected boolean a;
   protected byte[] a;
   protected Button b;
@@ -65,7 +65,7 @@ public class QRLoginActivity
   public QRLoginActivity()
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new bsw(this);
+    this.jdField_a_of_type_AndroidOsHandler = new bms(this);
   }
   
   public static byte[] a(byte[] paramArrayOfByte, int paramInt)
@@ -176,7 +176,7 @@ public class QRLoginActivity
     {
       localObject = DialogUtil.a(this, 230);
       ((QQCustomDialog)localObject).setMessage(2131560464);
-      ((QQCustomDialog)localObject).setPositiveButton(2131562539, new bsv(this));
+      ((QQCustomDialog)localObject).setPositiveButton(2131562539, new bmr(this));
       ((QQCustomDialog)localObject).show();
     }
     if (paramString != null)
@@ -201,7 +201,7 @@ public class QRLoginActivity
   {
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, super.d());
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131560529);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnCancelListener(new bsu(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnCancelListener(new bmq(this));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
     byte[] arrayOfByte = QRUtils.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a());
     Object localObject1 = ByteBuffer.allocate(arrayOfByte.length + 4);
@@ -261,7 +261,7 @@ public class QRLoginActivity
     {
     default: 
       return;
-    case 2131232590: 
+    case 2131232593: 
       if (this.jdField_a_of_type_Boolean)
       {
         paramView = new Intent(this, ScannerActivity.class);
@@ -278,16 +278,16 @@ public class QRLoginActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2130903436);
+    super.setContentView(2130903438);
     super.setTitle(2131560466);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131232586));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131232590));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131232591));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232588));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232589));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131232587));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131232584));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131232592));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131232589));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131232593));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131232594));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232591));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232592));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131232590));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131232587));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131232595));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a();

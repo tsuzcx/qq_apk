@@ -1,54 +1,23 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.network.handler.GetUserGroupUnionIDHandler.GetUserGroupUnionIDEvent;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.model.GroupID;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoAdInfo;
 
-public class nsg
-  extends QQUIEventReceiver
+public final class nsg
+  implements Parcelable.Creator<VideoAdInfo>
 {
-  public nsg(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  public VideoAdInfo a(Parcel paramParcel)
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    return new VideoAdInfo(paramParcel);
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull GetUserGroupUnionIDHandler.GetUserGroupUnionIDEvent paramGetUserGroupUnionIDEvent)
+  public VideoAdInfo[] a(int paramInt)
   {
-    if ((TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.b)) && (!TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.c)) && (paramGetUserGroupUnionIDEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (!paramGetUserGroupUnionIDEvent.jdField_a_of_type_JavaUtilList.isEmpty()))
-    {
-      paramGetUserGroupUnionIDEvent = paramGetUserGroupUnionIDEvent.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramGetUserGroupUnionIDEvent.hasNext())
-      {
-        GroupID localGroupID = (GroupID)paramGetUserGroupUnionIDEvent.next();
-        if (paramQQStoryShareGroupProfileActivity.c.equals(localGroupID.a))
-        {
-          paramQQStoryShareGroupProfileActivity.b = localGroupID.b;
-          if (QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity)) {
-            break label111;
-          }
-        }
-      }
-    }
-    label111:
-    for (boolean bool = true;; bool = false)
-    {
-      QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, bool);
-      return;
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return GetUserGroupUnionIDHandler.GetUserGroupUnionIDEvent.class;
+    return new VideoAdInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nsg
  * JD-Core Version:    0.7.0.1
  */

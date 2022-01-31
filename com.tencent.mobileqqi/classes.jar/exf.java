@@ -1,41 +1,25 @@
 import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundActivity;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
-import java.io.File;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.voip.VoipTencentPayActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.unipay.plugsdk.IUnipayServiceCallBack.Stub;
 
 public class exf
-  implements Runnable
+  extends IUnipayServiceCallBack.Stub
 {
-  public exf(QvipSpecialSoundActivity paramQvipSpecialSoundActivity, String paramString, File paramFile) {}
+  public exf(VoipTencentPayActivity paramVoipTencentPayActivity) {}
   
-  public void run()
+  public void UnipayCallBack(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString1, String paramString2)
   {
-    boolean bool = QvipSpecialSoundActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity).a(this.jdField_a_of_type_JavaLangString);
-    Object localObject;
-    if (QvipSpecialSoundActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity) != null)
+    QLog.d("UnipayPlugAPI", 2, "UnipayCallBack \n\nresultCode = " + paramInt1 + "\npayChannel = " + paramInt2 + "\npayState = " + paramInt3 + "\nproviderState = " + paramInt4 + "\nnpayMsg =" + paramString1);
+    if ((paramInt1 == 0) || (paramInt1 == 2))
     {
-      localObject = Message.obtain(QvipSpecialSoundActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity), 0);
-      ((Message)localObject).obj = Boolean.valueOf(bool);
-      QvipSpecialSoundActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity).sendMessage((Message)localObject);
-    }
-    if (bool)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-      localObject = new File(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity.getFilesDir(), this.jdField_a_of_type_JavaLangString);
-      if (localObject == null) {
-        break label136;
-      }
-    }
-    label136:
-    for (long l = ((File)localObject).length();; l = 0L)
-    {
-      QvipSpecialSoundActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity).a(l);
-      QvipSpecialSoundActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity).remove(this.jdField_a_of_type_JavaLangString);
+      VoipTencentPayActivity.a().post(new exg(this));
       return;
     }
+    VoipTencentPayActivity.a(this.a);
   }
+  
+  public void UnipayNeedLogin() {}
 }
 
 

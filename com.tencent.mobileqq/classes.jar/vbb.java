@@ -1,22 +1,52 @@
-import android.content.Context;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
 
-public final class vbb
-  implements Runnable
+class vbb
+  extends ulw
 {
-  public vbb(Context paramContext, QQAppInterface paramQQAppInterface, Emoticon paramEmoticon, Handler paramHandler) {}
+  vbb(vaw paramvaw) {}
   
-  public void run()
+  public void a()
   {
-    MarketFaceItemBuilder.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, this.jdField_a_of_type_AndroidOsHandler);
+    wxe.b(vaw.b(), "msg: MSG_ON_STORY_MSGTAB_DATA_LOADED");
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      wxe.e(vaw.b(), "[ERROR] onMsgTabStoryDataLoaded() app is null!");
+    }
+    uyz localuyz = (uyz)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(251);
+    if (localuyz.a()) {
+      if (this.a.a()) {
+        this.a.jdField_a_of_type_Vai.a("exp_story", 3);
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (!localuyz.b()) {
+          break;
+        }
+      } while (!this.a.a());
+      this.a.jdField_a_of_type_Vai.a("exp_story", 2);
+      return;
+      if (!this.a.jdField_a_of_type_Vbg.a()) {
+        break;
+      }
+    } while (!this.a.a());
+    this.a.jdField_a_of_type_Vai.a("exp_story", 5);
+    return;
+    if (localuyz.c())
+    {
+      this.a.h();
+      localuyz.a();
+      this.a.jdField_a_of_type_Vai.a("exp_hide", 0);
+      return;
+    }
+    this.a.jdField_a_of_type_Vai.a("exp_hide", 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vbb
  * JD-Core Version:    0.7.0.1
  */

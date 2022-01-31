@@ -1,21 +1,30 @@
 package com.tencent.token.ui;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
 
-final class wf
-  implements View.OnClickListener
+class wf
+  implements DialogInterface.OnCancelListener
 {
-  wf(RealNameSmsContentTipActivity paramRealNameSmsContentTipActivity) {}
+  wf(RealNameStep0VerifyMobileDownActivity paramRealNameStep0VerifyMobileDownActivity) {}
   
-  public final void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    paramView = new Intent(this.a, IndexActivity.class);
-    paramView.putExtra("index_from", 16);
-    paramView.putExtra("ish5zzb", RealNameSmsContentTipActivity.access$900(this.a));
-    this.a.startActivity(paramView);
-    this.a.finish();
+    paramDialogInterface = new Intent(this.a, RealNameFindActivity.class);
+    paramDialogInterface.putExtra("result", RealNameStep0VerifyMobileDownActivity.access$1500(this.a));
+    paramDialogInterface.putExtra("real_uin", RealNameStep0VerifyMobileDownActivity.access$100(this.a));
+    paramDialogInterface.putExtra("source_id", this.a.mSourceId);
+    paramDialogInterface.putExtra("mFrontPath", this.a.mFrontPath);
+    paramDialogInterface.putExtra("mBackPath", this.a.mBackPath);
+    paramDialogInterface.putExtra("mFaceData", this.a.mFaceData);
+    paramDialogInterface.putExtra("frontphotoinfo", this.a.frontphotoinfo);
+    paramDialogInterface.putExtra("backphotoinfo", this.a.backphotoinfo);
+    paramDialogInterface.putExtra("ish5zzb", RealNameStep0VerifyMobileDownActivity.access$000(this.a));
+    paramDialogInterface.putExtra("canchange_uin", RealNameStep0VerifyMobileDownActivity.access$300(this.a));
+    paramDialogInterface.addFlags(67108864);
+    paramDialogInterface.putExtra("reupload", true);
+    this.a.startActivity(paramDialogInterface);
   }
 }
 

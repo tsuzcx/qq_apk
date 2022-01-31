@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="62.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/eq5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:contentDescription="@null" />
+    <TextView android:textSize="12.0dip" android:textColor="@color/skin_notification" android:gravity="center" android:id="@id/is3" android:background="@drawable/skin_tips_newmessage" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-10.0dip" android:layout_marginTop="-5.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/eq5" android:layout_alignTop="@id/eq5" />
+    <TextView android:textSize="7.0dip" android:textColor="@color/skin_notification" android:gravity="center" android:id="@id/i58" android:background="@drawable/h1w" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-10.0dip" android:layout_marginTop="-5.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/eq5" android:layout_alignTop="@id/eq5" />
+    <ImageView android:id="@id/f0m" android:background="@drawable/skin_tips_dot" android:visibility="invisible" android:layout_width="9.0dip" android:layout_height="9.0dip" android:layout_marginLeft="-5.0dip" android:layout_toRightOf="@id/eq5" android:layout_alignTop="@id/eq5" />
+    <TextView android:textSize="11.0dip" android:textColor="@color/akw" android:gravity="center" android:id="@id/eqc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.5dip" android:layout_below="@id/eq5" android:layout_centerHorizontal="true" />
+</RelativeLayout>

@@ -8,15 +8,15 @@ import java.util.ArrayList;
 public final class RespCondSearch
   extends JceStruct
 {
-  static ArrayList cache_vUserList;
+  static ArrayList<CondFitUser> cache_vUserList;
   public byte cEndFlag;
   public long dwSessionID;
   public int iPage;
-  public ArrayList vUserList;
+  public ArrayList<CondFitUser> vUserList;
   
   public RespCondSearch() {}
   
-  public RespCondSearch(byte paramByte, int paramInt, long paramLong, ArrayList paramArrayList)
+  public RespCondSearch(byte paramByte, int paramInt, long paramLong, ArrayList<CondFitUser> paramArrayList)
   {
     this.cEndFlag = paramByte;
     this.iPage = paramInt;

@@ -1,26 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ChannelInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import java.util.Comparator;
+import android.app.Notification;
+import android.os.IInterface;
 
-public class lqr
-  implements Comparator
+public abstract interface lqr
+  extends IInterface
 {
-  public lqr(ChannelInfoModule paramChannelInfoModule) {}
+  public abstract int a(long paramLong, int paramInt);
   
-  public int a(ChannelInfo paramChannelInfo1, ChannelInfo paramChannelInfo2)
-  {
-    if (paramChannelInfo1.mSortOrder == paramChannelInfo2.mSortOrder) {
-      return 0;
-    }
-    if (paramChannelInfo1.mSortOrder < paramChannelInfo2.mSortOrder) {
-      return -1;
-    }
-    return 1;
-  }
+  public abstract void a();
+  
+  public abstract void a(lyx paramlyx);
+  
+  public abstract void a(boolean paramBoolean, Notification paramNotification);
+  
+  public abstract void a(byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lqr
  * JD-Core Version:    0.7.0.1
  */

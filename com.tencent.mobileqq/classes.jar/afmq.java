@@ -1,25 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.widget.ButtonInfo;
-import com.tencent.mobileqq.nearby.widget.NearbyCustomDialog;
-import com.tencent.mobileqq.nearby.widget.NearbyCustomDialog.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
 
 public class afmq
-  implements View.OnClickListener
+  implements bayi
 {
-  public afmq(NearbyCustomDialog paramNearbyCustomDialog, ButtonInfo paramButtonInfo) {}
+  public afmq(FlashPicItemBuilder paramFlashPicItemBuilder) {}
   
-  public void onClick(View paramView)
+  public void a(ArrayList<MessageRecord> paramArrayList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetNearbyCustomDialog.dismiss();
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetButtonInfo.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetButtonInfo.a.a(paramView);
-    }
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afmq
  * JD-Core Version:    0.7.0.1
  */

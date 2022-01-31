@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.troop.data.TroopFileInfo.FileStatus;
+import awge;
+import awhp;
+import bbsb;
 import java.util.UUID;
 
 public class TroopFileTansferItemEntity
-  extends Entity
+  extends awge
 {
   public int BusId;
   public int ErrorCode;
@@ -28,6 +29,7 @@ public class TroopFileTansferItemEntity
   public int RandomNum;
   public int SafeCheckRes;
   public byte[] Sha;
+  public String Sha3;
   public int Status;
   public long ThumbnailFileTimeMS_Large;
   public long ThumbnailFileTimeMS_Middle;
@@ -35,12 +37,27 @@ public class TroopFileTansferItemEntity
   public int UploadTime;
   public String _sId;
   public String _sStatus;
+  public int duration;
   public long entrySessionID;
+  public int height;
+  @awhp
+  public boolean isCheckPrivateDir;
   public boolean isFromAIO;
+  public boolean isZipInnerFile;
+  public String largeThumbnailFile;
   public String mParentId;
+  public String middleThumbnailFile;
+  public long origLastModifyTime;
+  public String smallThumbFile;
+  public String strQRUrl;
   public long troopuin;
+  public int width;
+  public int zipBusId;
+  public String zipFilePath;
+  public String zipInnerPath;
+  public int zipType;
   
-  protected Class getClassForTable()
+  public Class<? extends awge> getClassForTable()
   {
     return TroopFileTansferItemEntity.class;
   }
@@ -50,23 +67,28 @@ public class TroopFileTansferItemEntity
     return "TroopFileTansferItemEntity" + this.troopuin;
   }
   
-  protected void postRead()
+  public void postRead()
   {
-    this.Status = TroopFileInfo.FileStatus.a(this._sStatus);
+    this.Status = bbsb.a(this._sStatus);
     this._sStatus = null;
     this.Id = UUID.fromString(this._sId);
     this._sId = null;
   }
   
-  protected void prewrite()
+  public void preupdate()
   {
-    this._sStatus = TroopFileInfo.FileStatus.a(this.Status);
+    prewrite();
+  }
+  
+  public void prewrite()
+  {
+    this._sStatus = bbsb.a(this.Status);
     this._sId = this.Id.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.TroopFileTansferItemEntity
  * JD-Core Version:    0.7.0.1
  */

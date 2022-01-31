@@ -1,21 +1,22 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FontSettingActivity;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import javax.annotation.Nullable;
 
-public class snb
-  implements View.OnClickListener
+class snb
+  implements sna
 {
-  public snb(FontSettingActivity paramFontSettingActivity) {}
-  
-  public void onClick(View paramView)
+  public InputStream a(@Nullable InputStream paramInputStream)
   {
-    FontSettingActivity.a(this.a).dismiss();
+    return paramInputStream;
   }
+  
+  public void a() {}
+  
+  public void a(HttpURLConnection paramHttpURLConnection, @Nullable String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     snb
  * JD-Core Version:    0.7.0.1
  */

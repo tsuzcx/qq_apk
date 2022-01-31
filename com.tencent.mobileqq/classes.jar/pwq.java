@@ -1,36 +1,76 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.device.datadef.ProductInfo;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.pts.ui.PTSImageView;
+import com.tencent.pts.core.PTSAppInstance;
+import com.tencent.pts.ui.PTSNodeInfo;
+import com.tencent.pts.ui.PTSNodeStyle;
+import com.tencent.pts.ui.vnode.PTSNodeVirtual;
+import com.tencent.pts.utils.PTSLog;
+import com.tencent.pts.utils.PTSTimeCostUtil;
+import com.tencent.qphone.base.util.QLog;
 
-public final class pwq
-  implements Parcelable.Creator
+public class pwq
+  extends PTSNodeVirtual<PTSImageView>
 {
-  public ProductInfo a(Parcel paramParcel)
+  public final String a = "PTSNodeImage";
+  
+  private pwq(PTSAppInstance paramPTSAppInstance)
   {
-    ProductInfo localProductInfo = new ProductInfo();
-    localProductInfo.productId = paramParcel.readInt();
-    localProductInfo.deviceType = paramParcel.readInt();
-    localProductInfo.bindType = paramParcel.readInt();
-    localProductInfo.supportMainMsgType = paramParcel.readInt();
-    localProductInfo.supportFuncMsgType = paramParcel.readInt();
-    localProductInfo.deviceName = paramParcel.readString();
-    localProductInfo.uConnectType = paramParcel.readInt();
-    localProductInfo.deviceOSType = paramParcel.readInt();
-    localProductInfo.regType = paramParcel.readInt();
-    localProductInfo.linkStateDesc = paramParcel.readString();
-    localProductInfo.linkStepDesc = paramParcel.readString();
-    localProductInfo.linkDescImg = paramParcel.readString();
-    return localProductInfo;
+    super(paramPTSAppInstance);
   }
   
-  public ProductInfo[] a(int paramInt)
+  private String a(String paramString)
   {
-    return new ProductInfo[paramInt];
+    int i = getNodeInfo().getStyle().getWidth();
+    int j = getNodeInfo().getStyle().getHeight();
+    String str = paramString;
+    if (i > 0)
+    {
+      str = paramString;
+      if (j > 0) {
+        str = ors.a(paramString, i, j);
+      }
+    }
+    return str;
+  }
+  
+  private void a(String paramString)
+  {
+    PTSTimeCostUtil.start("image-" + paramString);
+    if ((!TextUtils.isEmpty(paramString)) && ((paramString.startsWith("http")) || (paramString.startsWith("pubaccount"))))
+    {
+      String str = a(paramString);
+      PTSLog.i("PTSNodeImage", "[setImageSrc], cropUrl = " + str);
+      ((PTSImageView)getView()).setImageSrc(str);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("PTSNodeImage", 2, "[setImageSrc], path = " + paramString);
+    }
+    PTSTimeCostUtil.end("image-" + paramString);
+  }
+  
+  public PTSImageView a()
+  {
+    return new PTSImageView(this);
+  }
+  
+  public void resetAll() {}
+  
+  public boolean setAttribute(String paramString, Object paramObject)
+  {
+    if (super.setAttribute(paramString, paramObject)) {
+      return true;
+    }
+    if (("src".equals(paramString)) && ((paramObject instanceof String)))
+    {
+      a((String)paramObject);
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pwq
  * JD-Core Version:    0.7.0.1
  */

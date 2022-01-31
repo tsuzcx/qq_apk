@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class FeedsProtocol$LbsInfo
-  extends MessageMicro
+  extends MessageMicro<LbsInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField city = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -26,7 +26,7 @@ public final class FeedsProtocol$LbsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.FeedsProtocol.LbsInfo
  * JD-Core Version:    0.7.0.1
  */

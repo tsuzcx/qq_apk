@@ -1,47 +1,46 @@
-import com.squareup.okhttp.Request.Builder;
-import com.tencent.component.network.downloader.Downloader;
-import com.tencent.component.network.downloader.impl.ImageDownloaderInitializer;
-import com.tencent.component.network.downloader.strategy.DownloadPreprocessStrategy;
-import com.tencent.component.network.downloader.strategy.DownloadPreprocessStrategy.DownloadPool;
-import com.tencent.component.network.downloader.strategy.KeepAliveStrategy;
-import com.tencent.component.network.module.base.Config;
-import org.apache.http.HttpRequest;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONObject;
 
-public final class pju
-  implements DownloadPreprocessStrategy
+public class pju
 {
-  public pju(Downloader paramDownloader) {}
-  
-  public DownloadPreprocessStrategy.DownloadPool a(String paramString1, String paramString2)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    if (Config.a(paramString2)) {
-      return DownloadPreprocessStrategy.DownloadPool.HTTP2;
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    String str;
+    if (paramBaseArticleInfo.mSinglePicture != null)
+    {
+      str = paramBaseArticleInfo.mSinglePicture.getFile();
+      localJSONObject2.put("article_small_imge_url", str);
+      localJSONObject1.put("id_article_small_imge", localJSONObject2);
+      pkm.a(paramBaseArticleInfo, localJSONObject1, true);
+      oee.b(paramBaseArticleInfo, localJSONObject1);
+      pkm.b(paramBaseArticleInfo, localJSONObject1);
+      pkm.e(paramBaseArticleInfo, localJSONObject1);
+      pkm.l(paramBaseArticleInfo, localJSONObject1);
+      pkm.g(paramBaseArticleInfo, localJSONObject1);
+      pkm.Z(paramBaseArticleInfo, localJSONObject1);
+      if (!noy.a(paramBaseArticleInfo)) {
+        break label125;
+      }
+      localJSONObject1.put("style_ID", "ReadInjoy_ad_small_location_cell");
     }
-    if (ImageDownloaderInitializer.a(paramString2)) {
-      return DownloadPreprocessStrategy.DownloadPool.SPECIFIC1;
-    }
-    paramString1 = this.a.getKeepAliveStrategy();
-    if ((paramString1 != null) && (paramString1.a(paramString2))) {
-      return DownloadPreprocessStrategy.DownloadPool.SPECIFIC;
-    }
-    return DownloadPreprocessStrategy.DownloadPool.COMMON;
-  }
-  
-  public String a(String paramString)
-  {
-    return paramString;
-  }
-  
-  public void a(String paramString1, String paramString2, HttpRequest paramHttpRequest, Request.Builder paramBuilder, int paramInt)
-  {
-    if ((paramHttpRequest != null) && (paramString2 != null) && (ImageDownloaderInitializer.b(paramString2))) {
-      paramHttpRequest.addHeader("Cookie", "uin=o" + Config.a() + ";");
+    for (;;)
+    {
+      localJSONObject1.put("id_small_cell_container", new JSONObject());
+      pkm.a(localJSONObject1, paramBaseArticleInfo);
+      return localJSONObject1;
+      str = null;
+      break;
+      label125:
+      localJSONObject1.put("style_ID", "ReadInjoy_ad_small_cell");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pju
  * JD-Core Version:    0.7.0.1
  */

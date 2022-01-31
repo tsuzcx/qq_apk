@@ -1,26 +1,22 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import java.lang.ref.WeakReference;
+import java.util.Comparator;
 
-public class mdy
-  implements Runnable
+class mdy
+  implements Comparator<lqq>
 {
-  public mdy(VideoFeedsPlayManager paramVideoFeedsPlayManager) {}
+  mdy(mdw parammdw) {}
   
-  public void run()
+  public int a(lqq paramlqq1, lqq paramlqq2)
   {
-    if (VideoFeedsPlayManager.a(this.a) == null) {
-      return;
+    if (paramlqq1.a) {}
+    while (paramlqq2.a) {
+      return -1;
     }
-    VideoFeedsPlayManager.a(this.a).removeMessages(-2);
-    new WeakReference(VideoFeedsPlayManager.a(this.a));
-    new WeakReference(VideoFeedsPlayManager.a(this.a));
-    VideoFeedsPlayManager.a(this.a).sendEmptyMessage(-2);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mdy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,6 @@
-public class anfw
+public abstract interface anfw
 {
-  public String a;
-  public String b;
-  public String c;
-  
-  public anfw(String paramString1, String paramString2, String paramString3)
-  {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-  }
+  public abstract boolean a(byte[] paramArrayOfByte);
 }
 
 

@@ -1,16 +1,10 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import cooperation.qzone.webviewplugin.QZoneFeedActionJsPlugin;
-
 public class anbl
-  extends BroadcastReceiver
 {
-  public anbl(QZoneFeedActionJsPlugin paramQZoneFeedActionJsPlugin) {}
+  public int a = 3000;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public String toString()
   {
-    QZoneFeedActionJsPlugin.a(this.a, paramContext, paramIntent);
+    return "ARCloudRecogReqSceneRecogInfo{timeout = " + this.a + '}';
   }
 }
 

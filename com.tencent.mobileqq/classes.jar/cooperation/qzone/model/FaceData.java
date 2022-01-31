@@ -23,7 +23,7 @@ public class FaceData
   public String photo_id = "";
   public String quanid = "";
   public int quanstate;
-  public ArrayList recommend_infos;
+  public ArrayList<FaceRecommendInfo> recommend_infos;
   public String targetGroupid;
   public String targetnick = "";
   public long targetuin;
@@ -118,7 +118,7 @@ public class FaceData
     return localFaceData;
   }
   
-  public static ArrayList toFaceDataList(ArrayList paramArrayList, String paramString, long paramLong)
+  public static ArrayList<FaceData> toFaceDataList(ArrayList<stFaceItem> paramArrayList, String paramString, long paramLong)
   {
     if (paramArrayList == null)
     {
@@ -173,7 +173,7 @@ public class FaceData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.model.FaceData
  * JD-Core Version:    0.7.0.1
  */

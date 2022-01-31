@@ -1,23 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.qcall.PstnCardInfo;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.27.1;
 
-public final class agub
-  implements Parcelable.Creator
+public class agub
+  implements Animation.AnimationListener
 {
-  public PstnCardInfo a(Parcel paramParcel)
+  agub(agti paramagti) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new PstnCardInfo(paramParcel);
+    agti.g(this.a).post(new PublicAccountChatPie.27.1(this));
   }
   
-  public PstnCardInfo[] a(int paramInt)
-  {
-    return new PstnCardInfo[paramInt];
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agub
  * JD-Core Version:    0.7.0.1
  */

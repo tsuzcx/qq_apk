@@ -1,5 +1,14 @@
 package com.tencent.mobileqq.activity;
 
+import acln;
+import acqz;
+import acra;
+import acrb;
+import acrc;
+import acrd;
+import aepi;
+import altm;
+import alto;
 import android.app.Dialog;
 import android.app.KeyguardManager;
 import android.content.DialogInterface.OnCancelListener;
@@ -16,46 +25,38 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.biz.eqq.CrmUtils;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import apac;
+import apak;
+import awhw;
+import azqs;
+import bdbk;
+import bdgc;
+import bdin;
+import bfyh;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
-import com.tencent.mobileqq.contactsync.SimplePhoneContact;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.data.PhoneContact;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.FaceDrawable;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qidian.QidianManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import sfm;
-import sfn;
-import sfo;
-import sfp;
-import sfq;
+import ndv;
 
 public class ContactSyncJumpActivity
   extends BaseActivity
   implements View.OnClickListener
 {
   public int a;
+  private acln jdField_a_of_type_Acln = new acqz(this);
+  private altm jdField_a_of_type_Altm = new acra(this);
   public Dialog a;
-  private DialogInterface.OnCancelListener jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener = new sfp(this);
-  private Handler jdField_a_of_type_AndroidOsHandler = new sfo(this);
-  private ChatActivityUtils.StartVideoListener jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener = new sfm(this);
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new sfn(this);
+  private DialogInterface.OnCancelListener jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener = new acrc(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new acrb(this);
+  private apac jdField_a_of_type_Apac;
+  private awhw jdField_a_of_type_Awhw = new acrd(this);
   private PhoneContactManagerImp jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp;
-  private ContactSyncManager jdField_a_of_type_ComTencentMobileqqContactsyncContactSyncManager;
-  private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new sfq(this);
   private String jdField_a_of_type_JavaLangString;
   private int jdField_b_of_type_Int;
   private String jdField_b_of_type_JavaLangString;
@@ -71,45 +72,45 @@ public class ContactSyncJumpActivity
   
   private Dialog a()
   {
-    Dialog localDialog = new Dialog(this, 2131624516);
-    localDialog.setContentView(2130970303);
-    Object localObject2 = (ImageView)localDialog.findViewById(2131369991);
+    Dialog localDialog = new Dialog(this, 2131755801);
+    localDialog.setContentView(2131560907);
+    Object localObject2 = (ImageView)localDialog.findViewById(2131365255);
     if (this.d.equals("0")) {}
-    for (Object localObject1 = FaceDrawable.a(this.app, 11, this.jdField_b_of_type_JavaLangString + this.c);; localObject1 = FaceDrawable.a(this.app, 1, this.d))
+    for (Object localObject1 = bdbk.a(this.app, 11, this.jdField_b_of_type_JavaLangString + this.c);; localObject1 = bdbk.a(this.app, 1, this.d))
     {
       ((ImageView)localObject2).setImageDrawable((Drawable)localObject1);
-      Object localObject3 = (TextView)localDialog.findViewById(2131369992);
-      localObject1 = (TextView)localDialog.findViewById(2131369993);
-      TextView localTextView = (TextView)localDialog.findViewById(2131369989);
-      localObject2 = (TextView)localDialog.findViewById(2131369990);
+      Object localObject3 = (TextView)localDialog.findViewById(2131365261);
+      localObject1 = (TextView)localDialog.findViewById(2131365268);
+      TextView localTextView = (TextView)localDialog.findViewById(2131365258);
+      localObject2 = (TextView)localDialog.findViewById(2131365264);
       ((TextView)localObject3).setText(this.e);
-      localTextView.setText(2131437030);
+      localTextView.setText(2131699040);
       localTextView.setOnClickListener(this);
-      ((TextView)localObject2).setText(String.format(getResources().getString(2131437038), new Object[] { "" }));
-      if (!NetworkUtil.d(this)) {
+      ((TextView)localObject2).setText(String.format(getResources().getString(2131699036), new Object[] { "" }));
+      if (!bdin.d(this)) {
         break;
       }
-      localObject3 = getResources().getDrawable(2130838600);
+      localObject3 = getResources().getDrawable(2130839229);
       ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds((Drawable)localObject3, null, null, null);
       ((TextView)localObject1).setCompoundDrawablePadding(10);
       ((Animatable)localObject3).start();
       ((TextView)localObject2).setOnClickListener(this);
       return localDialog;
     }
-    ((TextView)localObject1).setText(2131437040);
-    ((TextView)localObject2).setTextColor(getResources().getColor(2131493063));
+    ((TextView)localObject1).setText(2131699038);
+    ((TextView)localObject2).setTextColor(getResources().getColor(2131165576));
     ((TextView)localObject2).setEnabled(false);
     return localDialog;
   }
   
   private Dialog a(int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
-    Dialog localDialog = new Dialog(this, 2131624516);
-    localDialog.setContentView(2130970302);
-    TextView localTextView1 = (TextView)localDialog.findViewById(2131369987);
-    TextView localTextView2 = (TextView)localDialog.findViewById(2131369988);
-    TextView localTextView3 = (TextView)localDialog.findViewById(2131369989);
-    TextView localTextView4 = (TextView)localDialog.findViewById(2131369990);
+    Dialog localDialog = new Dialog(this, 2131755801);
+    localDialog.setContentView(2131560906);
+    TextView localTextView1 = (TextView)localDialog.findViewById(2131365271);
+    TextView localTextView2 = (TextView)localDialog.findViewById(2131365260);
+    TextView localTextView3 = (TextView)localDialog.findViewById(2131365258);
+    TextView localTextView4 = (TextView)localDialog.findViewById(2131365264);
     localTextView1.setText(paramInt1);
     localTextView2.setText(paramString);
     if (paramInt2 == 0) {
@@ -127,20 +128,20 @@ public class ContactSyncJumpActivity
   
   private void a()
   {
-    ReportController.b(this.app, "CliOper", "", "", "System_contact", "Contact_msg", 0, 0, "", "", "", "");
+    azqs.b(this.app, "CliOper", "", "", "System_contact", "Contact_msg", 0, 0, "", "", "", "");
     if (!this.d.equals("0"))
     {
-      localIntent = AIOUtils.a(new Intent(this, SplashActivity.class), new int[] { 2 });
+      localIntent = aepi.a(new Intent(this, SplashActivity.class), new int[] { 2 });
       localIntent.putExtra("uin", this.d);
-      localObject = (FriendsManager)this.app.getManager(50);
+      localObject = (alto)this.app.getManager(51);
       if (localObject != null)
       {
-        localObject = ((FriendsManager)localObject).c(this.d);
+        localObject = ((alto)localObject).e(this.d);
         if (localObject != null)
         {
           localIntent.putExtra("cSpecialFlag", ((Friends)localObject).cSpecialFlag);
-          localIntent.putExtra("uinname", ContactUtils.a((Friends)localObject));
-          if ((CrmUtils.a(((Friends)localObject).cSpecialFlag)) || (QidianManager.b(((Friends)localObject).cSpecialFlag)))
+          localIntent.putExtra("uinname", bdgc.a((Friends)localObject));
+          if ((ndv.a(((Friends)localObject).cSpecialFlag)) || (bfyh.b(((Friends)localObject).cSpecialFlag)))
           {
             localIntent.setClass(this, SplashActivity.class);
             localIntent.putExtra("chat_subType", 1);
@@ -154,7 +155,7 @@ public class ContactSyncJumpActivity
       finish();
       return;
     }
-    Intent localIntent = AIOUtils.a(new Intent(this, SplashActivity.class), new int[] { 2 });
+    Intent localIntent = aepi.a(new Intent(this, SplashActivity.class), new int[] { 2 });
     localIntent.putExtra("entrance", 0);
     localIntent.putExtra("uin", this.jdField_b_of_type_JavaLangString + this.c);
     localIntent.putExtra("uintype", 1006);
@@ -193,9 +194,9 @@ public class ContactSyncJumpActivity
         this.jdField_a_of_type_AndroidAppDialog.show();
       }
       return;
-      this.jdField_a_of_type_AndroidAppDialog = a(2131437026, paramString, 2131437030, 2131437031);
+      this.jdField_a_of_type_AndroidAppDialog = a(2131699043, paramString, 2131699040, 2131699042);
       continue;
-      this.jdField_a_of_type_AndroidAppDialog = a(2131437033, paramString, 0, 2131437035);
+      this.jdField_a_of_type_AndroidAppDialog = a(2131699029, paramString, 0, 2131699028);
       continue;
       this.jdField_a_of_type_AndroidAppDialog = a();
     }
@@ -203,15 +204,15 @@ public class ContactSyncJumpActivity
   
   private boolean a(int paramInt)
   {
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqContactsyncContactSyncManager.a();
+    String str2 = this.jdField_a_of_type_Apac.a();
     String str3 = this.app.getCurrentAccountUin();
     if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.JumpActivity", 2, "dealWithUnbind | syncUin = " + ContactSyncManager.b(str2) + " | loginUin = " + ContactSyncManager.b(str3) + " | bindState = " + paramInt);
+      QLog.d("ContactSync.JumpActivity", 2, "dealWithUnbind | syncUin = " + apac.b(str2) + " | loginUin = " + apac.b(str3) + " | bindState = " + paramInt);
     }
     if ((paramInt == 5) || (paramInt == 1) || (paramInt == 0)) {}
-    for (String str1 = getResources().getString(2131437027);; str1 = getResources().getString(2131437028))
+    for (String str1 = getResources().getString(2131699044);; str1 = getResources().getString(2131699045))
     {
-      a(0, String.format(str1, new Object[] { ContactSyncManager.d(str3), ContactSyncManager.d(str2) }));
+      a(0, String.format(str1, new Object[] { apac.d(str3), apac.d(str2) }));
       return true;
     }
   }
@@ -285,13 +286,13 @@ public class ContactSyncJumpActivity
       finish();
       return false;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp = ((PhoneContactManagerImp)this.app.getManager(10));
-    this.jdField_a_of_type_ComTencentMobileqqContactsyncContactSyncManager = ((ContactSyncManager)this.app.getManager(40));
+    this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp = ((PhoneContactManagerImp)this.app.getManager(11));
+    this.jdField_a_of_type_Apac = ((apac)this.app.getManager(41));
     int i;
     String str;
     try
     {
-      this.f = this.jdField_a_of_type_ComTencentMobileqqContactsyncContactSyncManager.a(getIntent().getData());
+      this.f = this.jdField_a_of_type_Apac.a(getIntent().getData());
       if ((this.f == null) || ((!this.f.equals("vnd.android.cursor.item/vnd.com.tencent.mobileqq.zchat")) && (!this.f.equals("vnd.android.cursor.item/vnd.com.tencent.mobileqq.voicecall.profile"))))
       {
         if (QLog.isColorLevel()) {
@@ -309,11 +310,11 @@ public class ContactSyncJumpActivity
           QLog.d("ContactSync.JumpActivity", 2, "doJump | e = ", localException2);
         }
       }
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqContactsyncContactSyncManager.b(getIntent().getData());
-      i = this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.c();
-      str = this.jdField_a_of_type_ComTencentMobileqqContactsyncContactSyncManager.a();
+      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Apac.b(getIntent().getData());
+      i = this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.d();
+      str = this.jdField_a_of_type_Apac.a();
       if (QLog.isColorLevel()) {
-        QLog.d("ContactSync.JumpActivity", 2, "doJump | check user is login | bind state is " + i + " | currentUin = " + ContactSyncManager.b(this.app.getCurrentAccountUin()) + " | syncUin = " + ContactSyncManager.b(str));
+        QLog.d("ContactSync.JumpActivity", 2, "doJump | check user is login | bind state is " + i + " | currentUin = " + apac.b(this.app.getCurrentAccountUin()) + " | syncUin = " + apac.b(str));
       }
       if (i != 0) {
         break label674;
@@ -352,7 +353,7 @@ public class ContactSyncJumpActivity
       }
       str = "0";
       label26:
-      ReportController.b(localQQAppInterface, "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "16", str, "", "");
+      azqs.b(localQQAppInterface, "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "16", str, "", "");
       if (i == 0) {
         break label132;
       }
@@ -361,7 +362,7 @@ public class ContactSyncJumpActivity
     for (int i = 0;; i = 1006)
     {
       str = this.jdField_b_of_type_JavaLangString + this.c;
-      if (ChatActivityUtils.a(this.app, this, i, this.d, this.e, str, true, null, true, true, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener, "from_app_contact")) {
+      if (ChatActivityUtils.a(this.app, this, i, this.d, this.e, str, true, null, true, true, this.jdField_a_of_type_Acln, "from_app_contact")) {
         finish();
       }
       return;
@@ -376,7 +377,7 @@ public class ContactSyncJumpActivity
   private boolean b()
   {
     boolean bool2 = true;
-    this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
+    this.app.registObserver(this.jdField_a_of_type_Awhw);
     Uri localUri = getIntent().getData();
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
     for (Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.b(this.jdField_a_of_type_JavaLangString);; localObject = null)
@@ -384,7 +385,7 @@ public class ContactSyncJumpActivity
       boolean bool1;
       if (QLog.isColorLevel())
       {
-        StringBuilder localStringBuilder = new StringBuilder().append("dealWithBindOK | getTargetPhoneContact | uri = ").append(localUri).append(" | mobileNo = ").append(ContactSyncManager.c(this.jdField_a_of_type_JavaLangString)).append(" | pc = ");
+        StringBuilder localStringBuilder = new StringBuilder().append("dealWithBindOK | getTargetPhoneContact | uri = ").append(localUri).append(" | mobileNo = ").append(apac.c(this.jdField_a_of_type_JavaLangString)).append(" | pc = ");
         if (localObject != null)
         {
           bool1 = true;
@@ -417,7 +418,7 @@ public class ContactSyncJumpActivity
         return bool1;
         bool1 = false;
         break;
-        localObject = this.jdField_a_of_type_ComTencentMobileqqContactsyncContactSyncManager.a(localUri);
+        localObject = this.jdField_a_of_type_Apac.a(localUri);
         if (QLog.isColorLevel()) {
           QLog.d("ContactSync.JumpActivity", 2, "dealWithBindOK | pc is null | simplePc = " + localObject);
         }
@@ -425,22 +426,22 @@ public class ContactSyncJumpActivity
           break label158;
         }
         this.d = "0";
-        this.jdField_b_of_type_JavaLangString = ((SimplePhoneContact)localObject).jdField_b_of_type_JavaLangString;
-        this.c = ((SimplePhoneContact)localObject).c;
-        this.e = ((SimplePhoneContact)localObject).jdField_a_of_type_JavaLangString;
-        this.jdField_b_of_type_Int = ((SimplePhoneContact)localObject).jdField_a_of_type_Int;
+        this.jdField_b_of_type_JavaLangString = ((apak)localObject).jdField_b_of_type_JavaLangString;
+        this.c = ((apak)localObject).c;
+        this.e = ((apak)localObject).jdField_a_of_type_JavaLangString;
+        this.jdField_b_of_type_Int = ((apak)localObject).jdField_a_of_type_Int;
         break label158;
         a(2, null);
         bool1 = bool2;
-      } while (!NetworkUtil.d(this));
+      } while (!bdin.d(this));
       label304:
       localObject = (FriendListHandler)this.app.a(1);
-      this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+      this.app.addObserver(this.jdField_a_of_type_Altm);
       ((FriendListHandler)localObject).c(this.jdField_b_of_type_JavaLangString + this.c, true);
       return true;
       label373:
-      localObject = String.format(getResources().getString(2131437034), new Object[] { this.e });
-      this.jdField_a_of_type_ComTencentMobileqqContactsyncContactSyncManager.a(this.jdField_a_of_type_JavaLangString);
+      localObject = String.format(getResources().getString(2131699027), new Object[] { this.e });
+      this.jdField_a_of_type_Apac.a(this.jdField_a_of_type_JavaLangString);
       a(1, (String)localObject);
       return true;
     }
@@ -451,30 +452,30 @@ public class ContactSyncJumpActivity
     return ((KeyguardManager)getSystemService("keyguard")).inKeyguardRestrictedInputMode();
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     return a(true);
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.app.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    this.app.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
+    this.app.removeObserver(this.jdField_a_of_type_Altm);
+    this.app.unRegistObserver(this.jdField_a_of_type_Awhw);
   }
   
-  protected void doOnNewIntent(Intent paramIntent)
+  public void doOnNewIntent(Intent paramIntent)
   {
     super.doOnNewIntent(paramIntent);
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.app.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
+    this.app.unRegistObserver(this.jdField_a_of_type_Awhw);
     setIntent(paramIntent);
     a(true);
   }
   
-  protected void doOnStop()
+  public void doOnStop()
   {
     super.doOnStop();
     finish();
@@ -493,7 +494,7 @@ public class ContactSyncJumpActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131369989: 
+    case 2131365258: 
       do
       {
         return;
@@ -515,7 +516,7 @@ public class ContactSyncJumpActivity
       paramView.setClass(this, LoginActivity.class);
       paramView.putExtra("IS_ADD_ACCOUNT", true);
       paramView.putExtra("key_req_by_contact_sync", true);
-      paramView.putExtra("key_uin_to_login", this.jdField_a_of_type_ComTencentMobileqqContactsyncContactSyncManager.a());
+      paramView.putExtra("key_uin_to_login", this.jdField_a_of_type_Apac.a());
       paramView.putExtra("key_orginal_intent", getIntent());
       paramView.addFlags(67108864);
       paramView.addFlags(536870912);
@@ -531,7 +532,7 @@ public class ContactSyncJumpActivity
     finish();
   }
   
-  protected void requestWindowFeature(Intent paramIntent)
+  public void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }

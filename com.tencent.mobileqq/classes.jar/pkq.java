@@ -1,60 +1,59 @@
-import com.tencent.component.network.NetworkManager;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
 public class pkq
+  implements poa
 {
-  public boolean a = false;
-  public boolean b = false;
-  
-  public pkq()
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    if (NetworkManager.isWap())
-    {
-      this.a = true;
-      this.b = true;
-      return;
-    }
-    this.a = false;
-    this.b = false;
+    return null;
   }
   
-  public boolean equals(Object paramObject)
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    if (this == paramObject) {}
-    do
+    return pjq.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pgd parampgd, int paramInt2)
+  {
+    paramContainer = paramContainer.getVirtualView();
+    Object localObject;
+    if ((parampgd != null) && (parampgd.a() != null) && (AdvertisementInfo.isAdvertisementInfo(parampgd.a())))
     {
-      return true;
-      if ((paramObject == null) || (!(paramObject instanceof pkq))) {
-        return false;
+      localObject = paramContainer.findViewBaseByName("id_article_brand_optimization");
+      TemplateBean localTemplateBean = parampgd.a().mProteusTemplateBean;
+      paramContainer = null;
+      if (localTemplateBean != null) {
+        paramContainer = localTemplateBean.findViewById("id_top_left_mask");
       }
-      paramObject = (pkq)paramObject;
-    } while ((this.a == paramObject.a) && (this.b) && (paramObject.b));
+      if ((localObject instanceof ofn))
+      {
+        localObject = (ofn)localObject;
+        ((ofn)localObject).a(parampgd);
+        if (paramContainer == null) {
+          break label96;
+        }
+        ((ofn)localObject).a(true);
+      }
+    }
+    return;
+    label96:
+    ((ofn)localObject).a(false);
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, pgd parampgd, ViewBase paramViewBase)
+  {
     return false;
-  }
-  
-  public int hashCode()
-  {
-    int j = 1;
-    int i;
-    if (this.a)
-    {
-      i = 1;
-      if (!this.b) {
-        break label34;
-      }
-    }
-    for (;;)
-    {
-      return (i + 527) * 31 + j;
-      i = 0;
-      break;
-      label34:
-      j = 0;
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pkq
  * JD-Core Version:    0.7.0.1
  */

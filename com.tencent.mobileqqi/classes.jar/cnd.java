@@ -1,17 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
+import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
+import mqq.app.permission.PermissionCallback;
 
 class cnd
-  implements DialogInterface.OnClickListener
+  implements PermissionCallback
 {
   cnd(cnc paramcnc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.a.a();
-    DevlockQuickLoginActivity.c(this.a.a);
-    DevlockQuickLoginActivity.b(this.a.a, 0, 2130968599);
+    new PermissionsDialog().a(this.a.jdField_a_of_type_Cnb.a, paramInt, paramArrayOfString, new cne(this));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.jdField_a_of_type_Cnb.OnClick(this.a.jdField_a_of_type_AndroidViewView, this.a.jdField_a_of_type_Int);
   }
 }
 

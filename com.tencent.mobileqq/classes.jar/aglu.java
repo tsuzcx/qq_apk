@@ -1,46 +1,19 @@
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.portal.ConversationHongBao;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class aglu
-  implements Animator.AnimatorListener
+class aglu
+  implements Animation.AnimationListener
 {
-  public aglu(ConversationHongBao paramConversationHongBao, View paramView1, View paramView2) {}
+  aglu(agls paramagls, agln paramagln) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramAnimator = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
-    paramAnimator.topMargin = (-ConversationHongBao.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao));
-    this.b.setLayoutParams(paramAnimator);
-    if (this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.f)
-    {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
+    this.jdField_a_of_type_Agls.b();
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    paramAnimator = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
-    paramAnimator.topMargin = (-ConversationHongBao.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao));
-    this.b.setLayoutParams(paramAnimator);
-    if (this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.f)
-    {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (!this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.f) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

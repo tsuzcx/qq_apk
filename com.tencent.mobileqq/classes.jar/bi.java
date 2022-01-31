@@ -1,28 +1,30 @@
-import android.os.Build.VERSION;
+import android.os.Bundle;
 import com.dataline.activities.LiteActivity;
-import com.dataline.util.DatalineSessionAdapter;
-import com.tencent.mobileqq.app.proxy.DataLineMsgProxy.LoadMoreAioMessageCb;
-import com.tencent.widget.XListView;
+import java.util.ArrayList;
 
 public class bi
-  implements DataLineMsgProxy.LoadMoreAioMessageCb
+  implements arrh
 {
-  public bi(LiteActivity paramLiteActivity) {}
+  public bi(LiteActivity paramLiteActivity, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
   
-  public void a(int paramInt)
+  public void a()
   {
-    if (this.a.isFinishing()) {}
-    while ((Build.VERSION.SDK_INT >= 17) && (this.a.isDestroyed())) {
-      return;
-    }
-    if (paramInt > 0)
+    Bundle localBundle;
+    if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
     {
-      this.a.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.b();
-      this.a.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.notifyDataSetChanged();
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.setSelectionFromBottom(paramInt, 0);
+      localBundle = new Bundle();
+      localBundle.putStringArrayList("PhotoConst.PHOTO_PATHS", this.jdField_a_of_type_JavaUtilArrayList);
+      new cd(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).execute(new Bundle[] { localBundle });
     }
-    this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
+    if (!this.b.isEmpty())
+    {
+      localBundle = new Bundle();
+      localBundle.putStringArrayList("PhotoConst.PHOTO_PATHS", this.b);
+      new ce(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).execute(new Bundle[] { localBundle });
+    }
   }
+  
+  public void b() {}
 }
 
 

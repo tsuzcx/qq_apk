@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class signature$SignatureResult
-  extends MessageMicro
+  extends MessageMicro<SignatureResult>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 50, 58, 66, 72, 80, 88 }, new String[] { "u64_uin", "str_packname", "u32_check_result", "str_title", "str_content", "str_left_button", "str_right_button", "str_url", "u32_timeout", "u32_protocol_version", "u32_cache_time" }, new Object[] { Long.valueOf(0L), "", Integer.valueOf(0), "", "", "", "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, SignatureResult.class);
   public final PBStringField str_content = PBField.initString("");
@@ -25,7 +25,7 @@ public final class signature$SignatureResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ims.signature.SignatureResult
  * JD-Core Version:    0.7.0.1
  */

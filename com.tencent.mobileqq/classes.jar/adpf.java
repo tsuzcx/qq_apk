@@ -1,43 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.hiboom.HiBoomPanelView;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 public class adpf
-  extends VasQuickUpdateManager.CallBacker
 {
-  public adpf(HiBoomPanelView paramHiBoomPanelView) {}
+  public PublicAccountInfo a;
+  public String a;
+  public String b = "";
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public adpf(PublicAccountInfo paramPublicAccountInfo)
   {
-    if ((paramLong == 5L) && (paramString1.startsWith("font.hifont.android.")))
-    {
-      paramString1 = paramString1.substring("font.hifont.android.".length(), paramString1.length());
-      if (TextUtils.isDigitsOnly(paramString1))
-      {
-        paramInt2 = Integer.parseInt(paramString1);
-        if (this.a.a != null) {
-          ThreadManager.getUIHandler().post(new adpg(this, paramInt1, paramInt2));
-        }
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
   }
   
-  public void onProgress(long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
+  public void a(String paramString)
   {
-    if ((paramLong1 == 5L) && (paramString1.startsWith("font.hifont.android.")))
-    {
-      paramString1 = paramString1.substring("font.hifont.android.".length(), paramString1.length());
-      if (TextUtils.isDigitsOnly(paramString1))
-      {
-        int i = Integer.parseInt(paramString1);
-        if (this.a.a != null) {
-          ThreadManager.getUIHandler().post(new adph(this, i, paramLong2, paramLong3));
-        }
-      }
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
+    this.jdField_a_of_type_JavaLangString = str;
+  }
+  
+  public void b(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.b = str;
   }
 }
 

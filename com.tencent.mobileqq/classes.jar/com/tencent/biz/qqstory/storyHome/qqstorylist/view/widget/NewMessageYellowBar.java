@@ -1,5 +1,6 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget;
 
+import alud;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -8,15 +9,14 @@ import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import obu;
-import obv;
+import wwo;
 
 public class NewMessageYellowBar
   extends FrameLayout
 {
   protected int a;
   protected AlphaAnimation a;
-  public AnimationSet a;
+  protected AnimationSet a;
   protected TranslateAnimation a;
   public TextView a;
   
@@ -50,11 +50,11 @@ public class NewMessageYellowBar
       if (paramInt1 > 0)
       {
         setVisibility(0);
-        post(new obv(this, paramInt1));
+        post(new NewMessageYellowBar.2(this, paramInt1));
         return;
       }
       setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText("没有更新");
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131707900));
       this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.0F);
     } while (this.jdField_a_of_type_AndroidViewAnimationAnimationSet.hasEnded());
     this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
@@ -62,21 +62,21 @@ public class NewMessageYellowBar
   
   public void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    LayoutInflater.from(getContext()).inflate(2130970909, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372174));
+    LayoutInflater.from(getContext()).inflate(2131561657, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380368));
     this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setDuration(1000L);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setStartOffset(1000L);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(3000L);
     this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
     this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
     this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setAnimationListener(new obu(this));
+    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setAnimationListener(new wwo(this));
     setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/a6q" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:layout_width="fill_parent" android:layout_height="@dimen/ut" android:layout_marginTop="38.0dip" android:src="#ffe5e5e5" />
+        <android.support.v7.widget.RecyclerView android:gravity="center" android:id="@id/te" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="always" />
+        <TextView android:gravity="center_vertical" android:id="@id/tf" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/wf" />
+        <ImageView android:id="@id/tg" android:layout_width="fill_parent" android:layout_height="@dimen/ut" android:src="#ffe5e5e5" />
+        <TextView android:gravity="center" android:id="@id/th" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/wg" />
+    </LinearLayout>
+    <TextView android:gravity="center" android:id="@id/ti" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="60.0dip" android:layout_alignParentBottom="true" />
+</RelativeLayout>

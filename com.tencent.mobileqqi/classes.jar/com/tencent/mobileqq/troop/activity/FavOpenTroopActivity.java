@@ -24,8 +24,8 @@ import com.tencent.mobileqq.widget.ShaderAnimLayout;
 import com.tencent.mobileqq.widget.SlideDetectListView;
 import com.tencent.mobileqq.widget.SlideDetectListView.OnSlideListener;
 import com.tencent.widget.BubblePopupWindow;
-import gtv;
-import gtw;
+import gpo;
+import gpp;
 import java.util.ArrayList;
 
 public class FavOpenTroopActivity
@@ -46,8 +46,8 @@ public class FavOpenTroopActivity
   public FavOpenTroopActivity()
   {
     this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new gtv(this);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new gtw(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new gpo(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new gpp(this);
   }
   
   public CharSequence a(FavOpenTroopInfo paramFavOpenTroopInfo)
@@ -56,7 +56,7 @@ public class FavOpenTroopActivity
       return "";
     }
     paramFavOpenTroopInfo = new SpannableString("[icon]" + " " + paramFavOpenTroopInfo.troopLocation);
-    paramFavOpenTroopInfo.setSpan(new ImageSpan(this, 2130840355, 1), 0, "[icon]".length(), 17);
+    paramFavOpenTroopInfo.setSpan(new ImageSpan(this, 2130840357, 1), 0, "[icon]".length(), 17);
     return paramFavOpenTroopInfo;
   }
   
@@ -93,10 +93,10 @@ public class FavOpenTroopActivity
   public void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
   {
     this.jdField_b_of_type_Int = paramInt;
-    paramSlideDetectListView = paramView.findViewById(2131232311);
+    paramSlideDetectListView = paramView.findViewById(2131232314);
     if (paramSlideDetectListView != null)
     {
-      ((Button)paramSlideDetectListView.findViewById(2131232312)).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      ((Button)paramSlideDetectListView.findViewById(2131232315)).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       ((ShaderAnimLayout)paramSlideDetectListView).a();
       this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setDeleteAreaWidth(paramSlideDetectListView.getLayoutParams().width);
     }
@@ -105,25 +105,25 @@ public class FavOpenTroopActivity
   public void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
   {
     this.jdField_b_of_type_Int = -1;
-    paramSlideDetectListView = paramView.findViewById(2131232311);
+    paramSlideDetectListView = paramView.findViewById(2131232314);
     if (paramSlideDetectListView != null)
     {
       ((ShaderAnimLayout)paramSlideDetectListView).d();
-      ((Button)paramSlideDetectListView.findViewById(2131232312)).setOnClickListener(null);
+      ((Button)paramSlideDetectListView.findViewById(2131232315)).setOnClickListener(null);
     }
   }
   
   View c()
   {
-    View localView = getLayoutInflater().inflate(2130903370, null);
+    View localView = getLayoutInflater().inflate(2130903372, null);
     FavOpenTroopActivity.CustomViewHolder localCustomViewHolder = new FavOpenTroopActivity.CustomViewHolder();
-    localCustomViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131232313));
-    localCustomViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131232315));
-    localCustomViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131232317));
-    localCustomViewHolder.c = ((TextView)localView.findViewById(2131232318));
-    localCustomViewHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131232316));
-    localCustomViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout = ((ShaderAnimLayout)localView.findViewById(2131232311));
-    localCustomViewHolder.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131232312));
+    localCustomViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131232316));
+    localCustomViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131232318));
+    localCustomViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131232320));
+    localCustomViewHolder.c = ((TextView)localView.findViewById(2131232321));
+    localCustomViewHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131232319));
+    localCustomViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout = ((ShaderAnimLayout)localView.findViewById(2131232314));
+    localCustomViewHolder.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131232315));
     localView.setTag(localCustomViewHolder);
     return localView;
   }
@@ -131,7 +131,7 @@ public class FavOpenTroopActivity
   public void d()
   {
     setTitle(getString(2131560290));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131232310));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131232313));
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setContentBackground(2130837729);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnSlideListener(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setTranscriptMode(0);
@@ -199,7 +199,7 @@ public class FavOpenTroopActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    e(2130903369);
+    e(2130903371);
     if ((getAppRuntime() instanceof QQAppInterface)) {
       paramBundle = (QQAppInterface)getAppRuntime();
     }

@@ -1,29 +1,23 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.view.View;
-import android.widget.ImageButton;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.nearby.now.send.capturepart.StoryLocalPublishPart;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.anim.ComboAnimation3.3.1;
 
-class aevd
-  implements Runnable
+public class aevd
+  extends bhry
 {
-  aevd(aevc paramaevc, Bitmap paramBitmap) {}
+  aevd(aeva paramaeva) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      StoryLocalPublishPart.a(this.jdField_a_of_type_Aevc.jdField_a_of_type_ComTencentMobileqqNearbyNowSendCapturepartStoryLocalPublishPart).setImageDrawable(new BitmapDrawable(this.jdField_a_of_type_Aevc.jdField_a_of_type_AndroidViewView.getResources(), this.jdField_a_of_type_AndroidGraphicsBitmap));
-      StoryLocalPublishPart.a(this.jdField_a_of_type_Aevc.jdField_a_of_type_ComTencentMobileqqNearbyNowSendCapturepartStoryLocalPublishPart).setOnClickListener(StoryLocalPublishPart.a(this.jdField_a_of_type_Aevc.jdField_a_of_type_ComTencentMobileqqNearbyNowSendCapturepartStoryLocalPublishPart));
-      return;
+    if ((aeva.a(this.a) != null) && (aeva.a(this.a).isShown())) {
+      this.a.a.post(new ComboAnimation3.3.1(this));
     }
-    SLog.d("story.publish.StoryLocalPublishPart", "queryFirstMediaThumbnail return null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aevd
  * JD-Core Version:    0.7.0.1
  */

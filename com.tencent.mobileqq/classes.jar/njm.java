@@ -1,26 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.lang.ref.WeakReference;
 
-public class njm
-  implements DialogInterface.OnDismissListener
+class njm
+  implements View.OnClickListener
 {
-  public njm(FeedsPlayModeBase paramFeedsPlayModeBase, Boolean[] paramArrayOfBoolean) {}
+  njm(nin paramnin, npo paramnpo) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FeedsPlayModeBase", 2, "[az]isResumeVideoPlaySelf === >" + this.jdField_a_of_type_ArrayOfJavaLangBoolean);
-    }
-    if (!this.jdField_a_of_type_ArrayOfJavaLangBoolean[0].booleanValue()) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.s();
-    }
+    paramView = new Intent((Context)this.jdField_a_of_type_Nin.a.get(), ScannerActivity.class);
+    paramView.putExtra("from", this.jdField_a_of_type_Nin.a.getClass().getName());
+    paramView.putExtra("finishAfterSucc", true);
+    ((BaseActivity)this.jdField_a_of_type_Nin.a.get()).startActivity(paramView);
+    nin.a(this.jdField_a_of_type_Nin, this.jdField_a_of_type_Npo.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     njm
  * JD-Core Version:    0.7.0.1
  */

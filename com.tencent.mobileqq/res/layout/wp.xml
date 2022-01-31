@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/root" android:background="#fff7f7f9" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.open.widget.MaxHeightScrollView android:id="@id/arc" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.open.agent.CardContainer android:id="@id/arb" android:background="@drawable/b8c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+            <RelativeLayout android:id="@id/aqw" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <include android:id="@id/j8" layout="@layout/wn" />
+                <include android:id="@id/j9" layout="@layout/wm" />
+            </RelativeLayout>
+            <FrameLayout android:id="@id/jq0" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:id="@id/jpz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/d9b" android:scaleType="fitXY" />
+                <LinearLayout android:orientation="vertical" android:id="@id/jpy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+                    <com.tencent.widget.immersive.ImmersiveTitleBar2 android:id="@id/jq6" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+                    <RelativeLayout android:gravity="center_vertical" android:id="@id/jp7" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height">
+                        <TextView android:textColor="#ff000000" android:ellipsize="end" android:gravity="center" android:id="@id/ivTitleName" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:singleLine="true" android:layout_centerInParent="true" style="@style/TitleBtn" />
+                        <TextView android:textColor="#ff242322" android:gravity="center" android:id="@id/ivTitleBtnLeft" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="8.0dip" android:maxWidth="99.0dip" android:minWidth="40.0dip" android:maxLines="1" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
+                        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true">
+                            <ImageView android:id="@id/ivTitleBtnRightImage" android:visibility="gone" android:layout_width="29.0dip" android:layout_height="29.0dip" android:layout_marginRight="12.0dip" android:scaleType="center" android:includeFontPadding="false" />
+                            <TextView android:textColor="@color/pj" android:id="@id/ivTitleBtnRightText" android:clickable="true" android:text="@string/cancel" style="@style/cd" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+            </FrameLayout>
+            <com.tencent.open.agent.AuthorityAccountView android:id="@id/bt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/jq0" />
+            <com.tencent.mobileqq.widget.FixedBounceScrollView android:id="@id/a18" android:background="#fff7f7f9" android:scrollbars="none" android:fadingEdgeLength="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/bt" android:requiresFadingEdge="vertical">
+                <RelativeLayout android:id="@id/a0x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/o" android:layout_marginTop="@dimen/t" android:layout_marginRight="20.0dip">
+                    <TextView android:textSize="14.0sp" android:textColor="#ff000000" android:id="@id/j2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/f9s" />
+                    <TextView android:textSize="12.0sp" android:textColor="#ff777777" android:id="@id/fdu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_below="@id/j2" android:lineSpacingExtra="11.0dip" />
+                    <ListView android:id="@id/fdt" android:visibility="gone" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:listSelector="@null" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" android:layout_below="@id/j2" />
+                </RelativeLayout>
+            </com.tencent.mobileqq.widget.FixedBounceScrollView>
+        </com.tencent.open.agent.CardContainer>
+    </com.tencent.open.widget.MaxHeightScrollView>
+    <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <com.tencent.open.widget.HalfScreenRelativelayout android:id="@id/aqx" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/agk" android:background="#fff7f7f7" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="56.0dip">
+            <Button android:id="@id/fds" android:layout_width="fill_parent" android:layout_height="40.0dip" android:text="@string/coz" style="@style/b9" />
+        </LinearLayout>
+    </com.tencent.open.widget.HalfScreenRelativelayout>
+</LinearLayout>

@@ -1,14 +1,17 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import ahwf;
-import ahwg;
-import ahwh;
+import ahhd;
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactSearchFacade;
+import aynt;
+import aypp;
+import aypr;
+import ayug;
+import ayuh;
+import ayul;
+import ayum;
+import ayuu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.search.net.parser.INetSearchResultParser;
-import com.tencent.mobileqq.search.net.parser.ParserFactory;
 import com.tencent.pb.profilecard.SummaryCardBusiEntry.comm;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,14 +22,14 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class NetSearchEngine
-  implements ISearchEngine
+  implements ayug<aynt>
 {
   public static double a;
   public static double b;
   private int jdField_a_of_type_Int = -1;
-  private ahwh jdField_a_of_type_Ahwh;
-  public ContactSearchFacade a;
+  ahhd jdField_a_of_type_Ahhd;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private NetSearchEngine.NetSearchRunnalbe jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine$NetSearchRunnalbe;
   private Future jdField_a_of_type_JavaUtilConcurrentFuture;
   private ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor;
   
@@ -38,8 +41,8 @@ public class NetSearchEngine
     if (paramThreadPoolExecutor == null) {
       this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(3, 5, 5L, TimeUnit.SECONDS, new LinkedBlockingQueue(128));
     }
-    SosoInterface.a(new ahwf(this, 0, true, false, 60000L, false, false, "SearchContacts"));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactSearchFacade = new ContactSearchFacade(paramQQAppInterface);
+    SosoInterface.a(new ayul(this, 0, true, false, 60000L, false, false, "SearchContacts"));
+    this.jdField_a_of_type_Ahhd = new ahhd(paramQQAppInterface);
   }
   
   private int[] a(int paramInt)
@@ -75,9 +78,9 @@ public class NetSearchEngine
     return arrayOfInt;
   }
   
-  public List a(SearchRequest paramSearchRequest)
+  public List<aynt> a(ayuu paramayuu)
   {
-    Object localObject = paramSearchRequest.jdField_a_of_type_AndroidOsBundle;
+    Object localObject = paramayuu.jdField_a_of_type_AndroidOsBundle;
     int i = ((Bundle)localObject).getInt("SEARCH_REQUEST_EXTRA_SEARCH_TYPE", -1);
     int j = ((Bundle)localObject).getInt("SEARCH_REQUEST_EXTRA_PAGE", 0);
     int[] arrayOfInt = a(i);
@@ -85,44 +88,44 @@ public class NetSearchEngine
       return null;
     }
     localObject = new ArrayList();
-    this.jdField_a_of_type_Ahwh = new ahwh(this, paramSearchRequest.jdField_a_of_type_JavaLangString, arrayOfInt, j, new ahwg(this, (List)localObject));
-    this.jdField_a_of_type_JavaUtilConcurrentFuture = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.submit(this.jdField_a_of_type_Ahwh);
+    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine$NetSearchRunnalbe = new NetSearchEngine.NetSearchRunnalbe(this, paramayuu.jdField_a_of_type_JavaLangString, arrayOfInt, j, new ayum(this, (List)localObject));
+    this.jdField_a_of_type_JavaUtilConcurrentFuture = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.submit(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine$NetSearchRunnalbe);
     try
     {
-      this.jdField_a_of_type_Ahwh.a.await();
+      this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine$NetSearchRunnalbe.a.await();
       return localObject;
     }
-    catch (InterruptedException paramSearchRequest)
+    catch (InterruptedException paramayuu)
     {
       for (;;)
       {
-        paramSearchRequest.printStackTrace();
+        paramayuu.printStackTrace();
       }
     }
   }
   
-  public List a(String paramString, int paramInt, SummaryCardBusiEntry.comm paramcomm, byte[] paramArrayOfByte)
+  List<aynt> a(String paramString, int paramInt, SummaryCardBusiEntry.comm paramcomm, byte[] paramArrayOfByte)
   {
-    INetSearchResultParser localINetSearchResultParser = ParserFactory.a(paramInt);
-    if (localINetSearchResultParser != null) {
-      return localINetSearchResultParser.a(new Object[] { paramcomm, paramArrayOfByte, paramString });
+    aypp localaypp = aypr.a(paramInt);
+    if (localaypp != null) {
+      return localaypp.a(new Object[] { paramcomm, paramArrayOfByte, paramString });
     }
     return null;
   }
   
   public void a() {}
   
-  public void a(SearchRequest paramSearchRequest, ISearchListener paramISearchListener)
+  public void a(ayuu paramayuu, ayuh<aynt> paramayuh)
   {
-    Object localObject = paramSearchRequest.jdField_a_of_type_AndroidOsBundle;
+    Object localObject = paramayuu.jdField_a_of_type_AndroidOsBundle;
     int i = ((Bundle)localObject).getInt("SEARCH_REQUEST_EXTRA_SEARCH_TYPE", -1);
     int j = ((Bundle)localObject).getInt("SEARCH_REQUEST_EXTRA_PAGE", 0);
     localObject = a(i);
     if (localObject == null) {
       return;
     }
-    this.jdField_a_of_type_Ahwh = new ahwh(this, paramSearchRequest.jdField_a_of_type_JavaLangString, (int[])localObject, j, paramISearchListener);
-    this.jdField_a_of_type_JavaUtilConcurrentFuture = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.submit(this.jdField_a_of_type_Ahwh);
+    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine$NetSearchRunnalbe = new NetSearchEngine.NetSearchRunnalbe(this, paramayuu.jdField_a_of_type_JavaLangString, (int[])localObject, j, paramayuh);
+    this.jdField_a_of_type_JavaUtilConcurrentFuture = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.submit(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine$NetSearchRunnalbe);
   }
   
   public void b()
@@ -134,8 +137,8 @@ public class NetSearchEngine
         this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.remove((Runnable)this.jdField_a_of_type_JavaUtilConcurrentFuture);
       }
     }
-    if (this.jdField_a_of_type_Ahwh != null) {
-      this.jdField_a_of_type_Ahwh.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine$NetSearchRunnalbe != null) {
+      this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine$NetSearchRunnalbe.a();
     }
   }
   
@@ -147,7 +150,7 @@ public class NetSearchEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.NetSearchEngine
  * JD-Core Version:    0.7.0.1
  */

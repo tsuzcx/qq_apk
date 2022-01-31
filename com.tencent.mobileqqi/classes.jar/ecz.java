@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import com.tencent.mobileqq.activity.contact.CircleMemberListActivity;
 
-public class ecz
+class ecz
   implements Runnable
 {
-  public ecz(PressToSpeakPanel paramPressToSpeakPanel) {}
+  ecz(ecy paramecy, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    this.a.d();
+    this.jdField_a_of_type_Ecy.a.a(this.jdField_a_of_type_Int, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ecz
  * JD-Core Version:    0.7.0.1
  */

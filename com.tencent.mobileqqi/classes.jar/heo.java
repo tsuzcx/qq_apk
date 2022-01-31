@@ -1,25 +1,14 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.util.FaceDecoder;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
 
 public class heo
-  extends FriendListObserver
+  extends Thread
 {
-  private heo(FaceDecoder paramFaceDecoder) {}
+  int jdField_a_of_type_Int = -1;
+  volatile boolean jdField_a_of_type_Boolean = false;
   
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    FaceDecoder.a(this.a, paramBoolean, (byte)1, paramString);
-  }
+  heo(HttpCommunicator paramHttpCommunicator) {}
   
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    FaceDecoder.a(this.a, paramBoolean, (byte)11, paramString);
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    FaceDecoder.a(this.a, paramBoolean, (byte)4, paramString);
-  }
+  public void run() {}
 }
 
 

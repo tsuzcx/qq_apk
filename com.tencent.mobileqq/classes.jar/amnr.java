@@ -1,22 +1,14 @@
-import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import cooperation.qlink.QQProxyForQlink;
-import cooperation.qlink.QlinkServiceManager;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class amnr
-  extends RemoteCommand
+  extends amns
 {
-  public amnr(QlinkServiceManager paramQlinkServiceManager, String paramString)
+  public amnr(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
   {
-    super(paramString);
-  }
-  
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    QlinkServiceManager.a(this.a).a().c(paramBundle);
-    return null;
+    super(paramQQAppInterface, paramProxyManager);
+    this.a = DataLineMsgRecord.tableName(0);
   }
 }
 

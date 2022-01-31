@@ -1,38 +1,46 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
-import com.tencent.mobileqq.webview.swift.utils.SwiftOfflineDataUtils;
-import com.tencent.mobileqq.webview.swift.utils.SwiftOfflineDataUtils.OfflineData;
-import com.tencent.smtt.sdk.QbSdk;
+import com.tencent.mobileqq.apollo.FriendCardApolloViewController;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class akqm
-  implements Runnable
+  extends bdul
 {
-  public akqm(SwiftBrowserTBSHandler paramSwiftBrowserTBSHandler, String paramString) {}
+  private java.lang.ref.WeakReference<FriendCardApolloViewController> a;
   
-  public void run()
+  public akqm(FriendCardApolloViewController paramFriendCardApolloViewController)
   {
-    if (QbSdk.getTbsVersion(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserTBSHandler.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity) >= 43810)
-    {
-      Object localObject2 = null;
-      Object localObject1 = localObject2;
-      if (SwiftOfflineDataUtils.a(this.jdField_a_of_type_JavaLangString))
+    this.a = new mqq.util.WeakReference(paramFriendCardApolloViewController);
+  }
+  
+  protected void onGetExploreMsg(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean) {
+      try
       {
-        SwiftOfflineDataUtils.OfflineData localOfflineData = SwiftOfflineDataUtils.a(this.jdField_a_of_type_JavaLangString);
-        localObject1 = localObject2;
-        if (localOfflineData != null) {
-          localObject1 = localOfflineData.b;
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendCardApolloViewController", 1, "[onGetExploreMsg] get info end");
         }
+        paramObject = new JSONObject((String)paramObject);
+        if (paramObject.optInt("entry_id", -1) != 2) {
+          return;
+        }
+        FriendCardApolloViewController localFriendCardApolloViewController = (FriendCardApolloViewController)this.a.get();
+        if (localFriendCardApolloViewController == null) {
+          return;
+        }
+        FriendCardApolloViewController.a(localFriendCardApolloViewController, paramObject.optString("icon_url"));
+        QLog.d("FriendCardApolloViewController", 2, "[onGetExploreMsg] iconUrl:" + FriendCardApolloViewController.a(localFriendCardApolloViewController));
+        return;
       }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        SwiftBrowserTBSHandler.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserTBSHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.a, this.jdField_a_of_type_JavaLangString, (String)localObject1);
-      }
+      catch (Exception paramObject) {}
+    } else if (QLog.isColorLevel()) {
+      QLog.d("FriendCardApolloViewController", 2, "[onGetExploreMsg] result:" + paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akqm
  * JD-Core Version:    0.7.0.1
  */

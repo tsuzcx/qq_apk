@@ -1,21 +1,22 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.EnterTroopChatItemBuilder;
-import java.util.List;
+import com.tencent.image.URLDrawable;
 
 public class uwh
-  extends AbstractChatItemBuilder.ViewHolder
+  implements uvj
 {
-  public LinearLayout a;
-  public List a;
-  public TextView b;
-  
-  public uwh(EnterTroopChatItemBuilder paramEnterTroopChatItemBuilder) {}
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    }
+    URLDrawable.clearMemoryCache();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uwh
  * JD-Core Version:    0.7.0.1
  */

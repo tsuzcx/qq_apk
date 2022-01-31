@@ -1,105 +1,90 @@
-import com.tencent.mobileqq.activity.aio.AIOReporterGetDeviceInfo;
-import com.tencent.mobileqq.activity.aio.AIOTimeReporter;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.StartupTracker;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class ujl
-  implements Runnable
+  extends JobSegment<Integer, List<uja>>
 {
-  public ujl(AIOTimeReporter paramAIOTimeReporter) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ujn jdField_a_of_type_Ujn;
   
-  public void run()
+  public ujl(Context paramContext, ujn paramujn)
   {
-    AIOReporterGetDeviceInfo localAIOReporterGetDeviceInfo = AIOReporterGetDeviceInfo.a();
-    AIOTimeReporter.a(this.a, localAIOReporterGetDeviceInfo.a());
-    if (StartupTracker.a <= 0L)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Ujn = paramujn;
+  }
+  
+  protected void a(JobContext paramJobContext, Integer paramInteger)
+  {
+    wxe.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.GalleryScanSegment", "start GalleryScanSegment");
+    paramInteger = (uvt)uwa.a(10);
+    paramJobContext = new uif();
+    long l2 = ((Long)paramInteger.b("key_last_pic_scan_time", Long.valueOf(-1L))).longValue();
+    long l1 = ((Long)paramInteger.b("key_last_date_album_time", Long.valueOf(-1L))).longValue();
+    if ((l2 != -1L) && (l1 != -1L))
     {
-      AIOTimeReporter.a(this.a);
-      return;
-    }
-    String str = "";
-    switch (AIOTimeReporter.a(this.a))
-    {
-    default: 
-      return;
-    case 1: 
-      switch (localAIOReporterGetDeviceInfo.a)
+      this.jdField_a_of_type_Ujn.a(true);
+      paramInteger = paramJobContext.a(this.jdField_a_of_type_AndroidContentContext, 1L + l2, true, 10);
+      if (paramInteger.isEmpty())
       {
-      }
-      for (;;)
-      {
-        StatisticCollector.a(BaseApplication.getContext()).a(null, str, true, StartupTracker.a, 0L, null, "");
-        if (QLog.isDevelopLevel()) {
-          QLog.d(this.a.a, 4, "reportAIOTime: " + str + " cost : " + StartupTracker.a);
-        }
-        AIOTimeReporter.a(this.a);
+        wxe.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.GalleryScanSegment", "No new picture scanned.");
+        notifyResult(paramInteger);
         return;
-        if (!AIOTimeReporter.a(this.a).equalsIgnoreCase("0"))
-        {
-          str = AIOTimeReporter.a();
-        }
-        else
-        {
-          str = AIOTimeReporter.b();
-          continue;
-          if (!AIOTimeReporter.a(this.a).equalsIgnoreCase("0")) {
-            str = AIOTimeReporter.c();
-          } else {
-            str = AIOTimeReporter.d();
-          }
-        }
       }
-    case 2: 
-      switch (localAIOReporterGetDeviceInfo.a)
-      {
-      }
-      for (;;)
-      {
-        break;
-        if (!AIOTimeReporter.a(this.a).equalsIgnoreCase("0"))
-        {
-          str = AIOTimeReporter.e();
-        }
-        else
-        {
-          str = AIOTimeReporter.f();
-          continue;
-          if (!AIOTimeReporter.a(this.a).equalsIgnoreCase("0")) {
-            str = AIOTimeReporter.g();
-          } else {
-            str = AIOTimeReporter.h();
-          }
-        }
+      paramInteger = ((uio)uwa.a(30)).a();
+      if (!this.jdField_a_of_type_Ujn.a()) {
+        break label255;
       }
     }
-    switch (localAIOReporterGetDeviceInfo.a)
+    label255:
+    for (paramJobContext = paramJobContext.a(this.jdField_a_of_type_AndroidContentContext, l1 + 1L, true, paramInteger.a(true));; paramJobContext = paramJobContext.a(this.jdField_a_of_type_AndroidContentContext, l1, false, paramInteger.a(false)))
     {
-    }
-    for (;;)
-    {
+      if ((paramJobContext != null) && (!paramJobContext.isEmpty())) {
+        break label275;
+      }
+      wxe.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.GalleryScanSegment", "No picture scanned in your phone");
+      notifyResult(paramJobContext);
+      return;
+      wxe.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.GalleryScanSegment", "It is not inc scan :" + true + ",lastPicScanTime" + l2 + " ,lastDateAlbumTime=" + l1);
+      this.jdField_a_of_type_Ujn.a(false);
+      l1 = -1L;
       break;
-      if (!AIOTimeReporter.a(this.a).equalsIgnoreCase("0"))
-      {
-        str = AIOTimeReporter.i();
+    }
+    label275:
+    uio.b(paramJobContext);
+    this.jdField_a_of_type_Ujn.b(((uja)paramJobContext.get(paramJobContext.size() - 1)).d);
+    paramInteger = paramJobContext.iterator();
+    while (paramInteger.hasNext()) {
+      wxe.a("Q.qqstory.recommendAlbum.logic.StoryScanManager.GalleryScanSegment", "scan pic result=%s", (uja)paramInteger.next());
+    }
+    paramInteger = new ArrayList();
+    int i = 0;
+    while (i < paramJobContext.size() - 1)
+    {
+      if (((uja)paramJobContext.get(i + 1)).b - ((uja)paramJobContext.get(i)).b > 2L) {
+        paramInteger.add(paramJobContext.get(i));
       }
-      else
-      {
-        str = AIOTimeReporter.j();
-        continue;
-        if (!AIOTimeReporter.a(this.a).equalsIgnoreCase("0")) {
-          str = AIOTimeReporter.k();
-        } else {
-          str = AIOTimeReporter.l();
-        }
-      }
+      i += 1;
+    }
+    paramInteger.add(paramJobContext.get(paramJobContext.size() - 1));
+    i = paramJobContext.size() - paramInteger.size();
+    l2 = ((uja)paramJobContext.get(0)).b;
+    if (paramJobContext.size() > 1) {}
+    for (l1 = ((uja)paramJobContext.get(paramJobContext.size() - 1)).b;; l1 = l2)
+    {
+      wxe.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.GalleryScanSegment", "filter the similar last=%d repeatPicCount=%d time span=%d", new Object[] { Integer.valueOf(paramInteger.size()), Integer.valueOf(i), Long.valueOf(l1 - l2) });
+      wxj.a("video_shoot_slides", "same_reject", 0, 0, new String[] { "" + i, l1 - l2 + "" });
+      notifyResult(paramInteger);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ujl
  * JD-Core Version:    0.7.0.1
  */

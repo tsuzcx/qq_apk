@@ -5,11 +5,14 @@ import FileUpload.UploadUpsInfoRsp;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.util.Log;
-import com.tencent.upload.common.Const.UploadRetCode;
-import com.tencent.upload.common.FileUtils;
+import com.tencent.upload.network.session.cache.CacheUtil;
 import com.tencent.upload.uinterface.AbstractUploadTask;
-import com.tencent.upload.uinterface.IUploadConfig;
 import com.tencent.upload.uinterface.TaskTypeConfig;
+import com.tencent.upload.utils.BitmapUtils;
+import com.tencent.upload.utils.Const.UploadRetCode;
+import com.tencent.upload.utils.FileUtils;
+import com.tencent.upload.utils.JceEncoder;
+import com.tencent.upload.utils.UploadLog;
 import java.util.Map;
 
 public class UpsImageUploadTask
@@ -33,7 +36,6 @@ public class UpsImageUploadTask
   public static final int TYPE_NONE = 0;
   public static final int TYPE_SECRET_MOOD = 4;
   public static final int TYPE_SHAREALBUM_PHOTO = 1;
-  public final int appid = com.tencent.upload.common.a.b().getAppId();
   public int dataType;
   public String fileId;
   public long iBatchID;
@@ -71,13 +73,13 @@ public class UpsImageUploadTask
       localUploadUpsInfoReq.iBatUploadNum = this.iBatchUploadCount;
       localUploadUpsInfoReq.iCurUpload = this.iCurrentUploadOrder;
       localUploadUpsInfoReq.sWnsCmd = this.sCommand;
-      BitmapFactory.Options localOptions = com.tencent.upload.e.a.a();
+      BitmapFactory.Options localOptions = BitmapUtils.getOptions();
       localOptions.inJustDecodeBounds = true;
       BitmapFactory.decodeFile(this.uploadFilePath, localOptions);
       localUploadUpsInfoReq.iPicHight = localOptions.outHeight;
       localUploadUpsInfoReq.iPicWidth = localOptions.outWidth;
       localUploadUpsInfoReq.mapExt = this.mapExt;
-      return com.tencent.upload.e.b.a(localUploadUpsInfoReq);
+      return JceEncoder.encode(localUploadUpsInfoReq);
     }
   }
   
@@ -86,20 +88,20 @@ public class UpsImageUploadTask
     return TaskTypeConfig.UpsUploadTaskType;
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     if (!this.mKeepFileAfterUpload) {
       FileUtils.deleteTempFile(this.mFilePath);
     }
-    com.tencent.upload.a.a.b(this, this.mSessionId);
+    CacheUtil.deleteSessionId(this, this.mSessionId);
   }
   
-  protected void processFileUploadFinishRsp(byte[] paramArrayOfByte)
+  public void processFileUploadFinishRsp(byte[] paramArrayOfByte)
   {
     Object localObject2 = null;
     try
     {
-      localObject1 = (UploadUpsInfoRsp)com.tencent.upload.e.b.a(UploadUpsInfoRsp.class, paramArrayOfByte);
+      localObject1 = (UploadUpsInfoRsp)JceEncoder.decode(UploadUpsInfoRsp.class, paramArrayOfByte);
       localObject2 = localObject1;
       localObject1 = null;
     }
@@ -108,7 +110,7 @@ public class UpsImageUploadTask
       for (;;)
       {
         localObject1 = Log.getStackTraceString(localException);
-        com.tencent.upload.common.b.b("UpsImageUploadTask", "get rsp ", localException);
+        UploadLog.w("UpsImageUploadTask", "get rsp ", localException);
       }
       Object localObject1 = new UpsImageUploadResult();
       ((UpsImageUploadResult)localObject1).flowId = this.flowId;
@@ -140,7 +142,7 @@ public class UpsImageUploadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.upload.uinterface.data.UpsImageUploadTask
  * JD-Core Version:    0.7.0.1
  */

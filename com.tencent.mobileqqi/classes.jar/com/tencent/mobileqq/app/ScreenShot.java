@@ -22,11 +22,11 @@ import android.widget.Button;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import fku;
-import fkv;
-import fkw;
-import fkx;
-import fky;
+import fgi;
+import fgj;
+import fgk;
+import fgl;
+import fgm;
 import mqq.util.NativeUtil;
 
 public class ScreenShot
@@ -39,7 +39,7 @@ public class ScreenShot
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   public Window a;
   public Button a;
-  public final fky a;
+  public final fgm a;
   public Bitmap b;
   public Drawable b;
   public Button b;
@@ -60,18 +60,18 @@ public class ScreenShot
     }
     for (this.jdField_a_of_type_AndroidViewWindow = paramWindow.getWindow();; this.jdField_a_of_type_AndroidViewWindow = paramWindow)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839690);
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839689);
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2130903941, null));
-      this.jdField_a_of_type_Fky = new fky(this, this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_Fky, 0);
-      this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234394));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234395));
-      this.d = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234393));
-      this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234392));
-      this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(new fku(this));
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new fkv(this));
-      this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new fkw(this));
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839692);
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839691);
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2130903943, null));
+      this.jdField_a_of_type_Fgm = new fgm(this, this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_Fgm, 0);
+      this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234396));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234397));
+      this.d = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234395));
+      this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234394));
+      this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(new fgi(this));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new fgj(this));
+      this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new fgk(this));
       return;
     }
   }
@@ -149,7 +149,7 @@ public class ScreenShot
       localLayoutParams.type = 2003;
       localLayoutParams.format = 1;
       localLayoutParams.flags |= 0x100;
-      this.d.setOnClickListener(new fkx(this));
+      this.d.setOnClickListener(new fgl(this));
     }
     try
     {
@@ -197,8 +197,8 @@ public class ScreenShot
   
   public boolean b()
   {
-    this.jdField_a_of_type_Fky.k = 0;
-    this.jdField_a_of_type_Fky.a.setEmpty();
+    this.jdField_a_of_type_Fgm.k = 0;
+    this.jdField_a_of_type_Fgm.a.setEmpty();
     this.jdField_b_of_type_AndroidGraphicsBitmap = null;
     a(false);
     if (c()) {}

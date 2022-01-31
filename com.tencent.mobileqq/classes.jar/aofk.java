@@ -1,33 +1,21 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import dov.com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService;
 
 public class aofk
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public aofk(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public aofk(ColorNoteSmallScreenService paramColorNoteSmallScreenService) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.a.b != null) && (!this.a.b.isEnabled()))
-    {
-      this.a.b.setEnabled(true);
-      this.a.b.setText(2131438162);
-      this.a.b.setTextColor(-15550475);
-    }
-    int i = 0;
-    if (this.a.a != null) {
-      i = this.a.a.c();
-    }
-    if ((!this.a.i.isEnabled()) && (i > 0)) {
-      this.a.i.setEnabled(true);
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aofk
  * JD-Core Version:    0.7.0.1
  */

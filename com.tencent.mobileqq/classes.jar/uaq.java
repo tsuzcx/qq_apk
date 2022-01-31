@@ -1,29 +1,32 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.graphics.PointF;
+import android.graphics.RectF;
+import android.widget.ImageView.ScaleType;
 
 public class uaq
-  implements View.OnClickListener
 {
-  public uaq(TroopMemberListActivity paramTroopMemberListActivity, int paramInt1, int paramInt2) {}
+  float jdField_a_of_type_Float;
+  PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+  public RectF a;
+  public ImageView.ScaleType a;
+  public RectF b = new RectF();
+  public RectF c = new RectF();
+  RectF d = new RectF();
   
-  public void onClick(View paramView)
+  public uaq(RectF paramRectF1, RectF paramRectF2, RectF paramRectF3, RectF paramRectF4, PointF paramPointF, float paramFloat, ImageView.ScaleType paramScaleType)
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, TroopMemberListActivity.class);
-    paramView.putExtra("troop_uin", this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b);
-    paramView.putExtra("param_from", 15);
-    paramView.putExtra("param_seq_days", TroopMemberListActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity));
-    paramView.putExtra("param_seq_name", TroopMemberListActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity));
-    paramView.putExtra("TROOP_INFO_MEMBER_NUM", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.startActivityForResult(paramView, 4);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, "dc00899", "Grp_mber", "", "mber_list", "clk_inacentry", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b, "" + this.b, "", "");
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    this.jdField_a_of_type_AndroidGraphicsRectF.set(paramRectF1);
+    this.b.set(paramRectF2);
+    this.c.set(paramRectF3);
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_AndroidWidgetImageView$ScaleType = paramScaleType;
+    this.d.set(paramRectF4);
+    this.jdField_a_of_type_AndroidGraphicsPointF.set(paramPointF);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uaq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
+import bhum;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet.OnDismissListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class AvatarPendantJsPlugin$6
-  implements ActionSheet.OnDismissListener
+  implements bhum
 {
   AvatarPendantJsPlugin$6(AvatarPendantJsPlugin paramAvatarPendantJsPlugin, String paramString) {}
   
@@ -32,7 +32,7 @@ class AvatarPendantJsPlugin$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.AvatarPendantJsPlugin.6
  * JD-Core Version:    0.7.0.1
  */

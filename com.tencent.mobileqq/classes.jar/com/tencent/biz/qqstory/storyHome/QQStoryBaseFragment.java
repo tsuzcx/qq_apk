@@ -1,5 +1,6 @@
 package com.tencent.biz.qqstory.storyHome;
 
+import alud;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,7 +20,6 @@ import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
 import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
 import com.tribe.async.dispatch.IEventReceiver;
 import com.tribe.async.dispatch.Subscriber;
 import java.util.HashMap;
@@ -27,17 +27,17 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import ntk;
-import ntl;
+import umc;
 
 public abstract class QQStoryBaseFragment
   extends IphoneTitleBarFragment
   implements IEventReceiver
 {
-  public Dialog a;
+  protected Dialog a;
   protected Handler a;
+  protected QQStoryBaseFragment.ProgressView a;
   public AppInterface a;
-  protected Map a;
+  protected Map<Subscriber, String> a;
   protected final boolean b = false;
   protected boolean c;
   
@@ -47,12 +47,32 @@ public abstract class QQStoryBaseFragment
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   }
   
-  public View a(int paramInt)
+  public <T extends View> T a(int paramInt)
   {
-    return this.jdField_e_of_type_AndroidViewView.findViewById(paramInt);
+    return this.mContentView.findViewById(paramInt);
   }
   
-  public void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
+  public void a(String paramString, View.OnClickListener paramOnClickListener)
+  {
+    this.rightViewText.setVisibility(0);
+    this.rightViewText.setText(paramString);
+    this.rightViewText.setEnabled(true);
+    if (paramOnClickListener != null) {
+      this.rightViewText.setOnClickListener(paramOnClickListener);
+    }
+    if (AppSetting.c) {
+      this.rightViewText.setContentDescription(this.rightViewText.getText() + alud.a(2131711194));
+    }
+  }
+  
+  protected void a(@NonNull Map<Subscriber, String> paramMap) {}
+  
+  public boolean a()
+  {
+    return (getActivity() != null) && (getActivity().isFinishing());
+  }
+  
+  public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     QQStoryContext.a();
     Object localObject1 = new HashMap();
@@ -65,58 +85,38 @@ public abstract class QQStoryBaseFragment
       Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
       Subscriber localSubscriber = (Subscriber)((Map.Entry)localObject2).getKey();
       localObject2 = (String)((Map.Entry)localObject2).getValue();
-      Dispatchers.get().registerSubscriber((String)localObject2, localSubscriber);
+      umc.a().registerSubscriber((String)localObject2, localSubscriber);
     }
-    super.a(paramLayoutInflater, paramViewGroup, paramBundle);
+    super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     this.c = true;
     QQStoryContext.a();
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = QQStoryContext.a();
-    Bosses.get().postLightWeightJob(new ntk(this), 10);
+    Bosses.get().postLightWeightJob(new QQStoryBaseFragment.1(this), 10);
   }
   
-  public void a(String paramString, View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_e_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_e_of_type_AndroidWidgetTextView.setEnabled(true);
-    if (paramOnClickListener != null) {
-      this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
-    }
-    if (AppSetting.b) {
-      this.jdField_e_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_e_of_type_AndroidWidgetTextView.getText() + "按钮");
-    }
-  }
-  
-  public void a(@NonNull Map paramMap) {}
-  
-  public boolean e()
-  {
-    return (getActivity() != null) && (getActivity().isFinishing());
-  }
-  
-  public void f()
+  public void e()
   {
     if (this.jdField_a_of_type_AndroidAppDialog != null)
     {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler.post(new ntl(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new QQStoryBaseFragment.3(this));
     }
   }
   
   public boolean isValidate()
   {
-    return (this.c) && (!e());
+    return (this.c) && (!a());
   }
   
   public void onDestroyView()
   {
-    f();
+    e();
     this.c = false;
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Subscriber localSubscriber = (Subscriber)((Map.Entry)localIterator.next()).getKey();
-      Dispatchers.get().unRegisterSubscriber(localSubscriber);
+      umc.a().unRegisterSubscriber(localSubscriber);
     }
     super.onDestroyView();
   }
@@ -129,7 +129,7 @@ public abstract class QQStoryBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.QQStoryBaseFragment
  * JD-Core Version:    0.7.0.1
  */

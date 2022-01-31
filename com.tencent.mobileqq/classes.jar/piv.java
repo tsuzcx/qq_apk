@@ -1,28 +1,26 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.component.media.photogif.NewAnimationDrawable;
+import com.tencent.qphone.base.util.QLog;
 
-public class piv
-  extends Handler
+class piv
+  implements oxx
 {
-  public piv(NewAnimationDrawable paramNewAnimationDrawable, Looper paramLooper)
+  piv(piu parampiu) {}
+  
+  public void l()
   {
-    super(paramLooper);
+    if (!piy.b())
+    {
+      QLog.d("FeedsPreloadManager", 1, "foreground, feeds preload.");
+      this.a.a(false);
+      return;
+    }
+    QLog.d("FeedsPreloadManager", 1, "lock screen enter foreground, no need to preload.");
   }
   
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 0)
-    {
-      NewAnimationDrawable.a(this.a, NewAnimationDrawable.a(this.a));
-      this.a.invalidateSelf();
-    }
-  }
+  public void m() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     piv
  * JD-Core Version:    0.7.0.1
  */

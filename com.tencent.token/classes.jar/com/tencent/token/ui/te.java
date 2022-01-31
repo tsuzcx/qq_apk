@@ -1,18 +1,17 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.DeviceInfo;
 
-final class te
+class te
   implements View.OnClickListener
 {
-  te(OpMsgDisplayActivity paramOpMsgDisplayActivity) {}
+  te(PCMobileQQVerifyedDevicesActivity paramPCMobileQQVerifyedDevicesActivity, DeviceInfo paramDeviceInfo) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, ModifyQQPwdActivity.class);
-    pv.a().a(this.a, paramView, pv.b);
+    new tf(this.b, this.b, 2131362182, this.a).show();
   }
 }
 

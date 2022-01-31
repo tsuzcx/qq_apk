@@ -1,34 +1,32 @@
-import com.tencent.mobileqq.search.searchengine.ISearchListener;
-import com.tencent.mobileqq.search.searchengine.SearchRequest;
-import cooperation.qqfav.globalsearch.FavoriteSearchEngine;
-import java.util.List;
-
 public class amph
-  implements Runnable
+  implements alpg
 {
-  public ISearchListener a;
-  public SearchRequest a;
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
   
-  private amph(FavoriteSearchEngine paramFavoriteSearchEngine) {}
-  
-  public void run()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    SearchRequest localSearchRequest = this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest;
-    String str = this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest.a;
-    List localList = this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine.a(localSearchRequest);
-    try
+    switch (paramInt)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener != null) && (localSearchRequest == this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest) && (str.equals(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest.a))) {
-        this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(localList, 1);
-      }
-      return;
     }
-    finally {}
+    do
+    {
+      do
+      {
+        return;
+      } while (paramObject == null);
+      if (!paramBoolean) {
+        break;
+      }
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length < 2);
+    a(true, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue());
+    return;
+    a(false, false, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amph
  * JD-Core Version:    0.7.0.1
  */

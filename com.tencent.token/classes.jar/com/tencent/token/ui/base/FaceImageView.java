@@ -15,7 +15,7 @@ import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import com.tencent.token.global.e;
+import com.tencent.token.global.h;
 
 public class FaceImageView
   extends View
@@ -55,65 +55,26 @@ public class FaceImageView
     this.v = paramContext;
     paramAttributeSet = new BitmapFactory.Options();
     paramAttributeSet.inSampleSize = 2;
-    this.a = BitmapFactory.decodeResource(paramContext.getResources(), 2130837605, paramAttributeSet);
-    this.b = BitmapFactory.decodeResource(paramContext.getResources(), 2130837612);
+    this.a = BitmapFactory.decodeResource(paramContext.getResources(), 2130837691, paramAttributeSet);
+    this.b = BitmapFactory.decodeResource(paramContext.getResources(), 2130837697);
     this.i = paramContext.getResources().getDisplayMetrics().density;
     paramAttributeSet = paramContext.getResources().getDisplayMetrics();
     this.j = paramAttributeSet.heightPixels;
     this.k = paramAttributeSet.widthPixels;
-    e.c("msg.arg1 screenWidth=" + this.j + ",screenHeight=" + this.k);
+    h.c("msg.arg1 screenWidth=" + this.j + ",screenHeight=" + this.k);
     this.q = (140.0F * this.i);
     this.r = (320.0F * this.i);
-    this.c = BitmapFactory.decodeResource(paramContext.getResources(), 2130837616);
-    this.d = BitmapFactory.decodeResource(paramContext.getResources(), 2130837632);
-    this.g = BitmapFactory.decodeResource(paramContext.getResources(), 2130837634);
-    this.e = BitmapFactory.decodeResource(paramContext.getResources(), 2130837633);
-    this.f = BitmapFactory.decodeResource(paramContext.getResources(), 2130837635);
+    this.c = BitmapFactory.decodeResource(paramContext.getResources(), 2130837703);
+    this.d = BitmapFactory.decodeResource(paramContext.getResources(), 2130837717);
+    this.g = BitmapFactory.decodeResource(paramContext.getResources(), 2130837719);
+    this.e = BitmapFactory.decodeResource(paramContext.getResources(), 2130837718);
+    this.f = BitmapFactory.decodeResource(paramContext.getResources(), 2130837720);
     this.t = new RectF();
-    e.c("FaceImageView scale=" + this.i);
+    h.c("FaceImageView scale=" + this.i);
     this.p = (this.r / n);
   }
   
-  public final void a()
-  {
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inSampleSize = 2;
-    this.a = BitmapFactory.decodeResource(this.v.getResources(), 2130837617, localOptions);
-    this.b = BitmapFactory.decodeResource(this.v.getResources(), 2130837613);
-    invalidate();
-  }
-  
-  public final void a(int paramInt)
-  {
-    if (this.l == paramInt) {
-      return;
-    }
-    this.l = paramInt;
-    this.u = 0L;
-    invalidate();
-  }
-  
-  public final void a(int paramInt1, int paramInt2)
-  {
-    this.q = (paramInt2 * 420 / 1920);
-    this.r = (paramInt2 * 930 / 1920);
-    e.a("msg.arg1 set size beginY=" + this.q + ", width=" + paramInt1 + ", height=" + paramInt2);
-    if (paramInt2 != this.k) {}
-    for (this.w = true;; this.w = false)
-    {
-      this.j = paramInt1;
-      this.k = paramInt2;
-      this.p = (this.r / n);
-      if ((this.m == null) || (this.w))
-      {
-        e.c("msg.arg1 width=" + this.j + ", height=" + this.k);
-        this.m = new Rect(0, 0, this.j, this.k);
-      }
-      return;
-    }
-  }
-  
-  public final int b()
+  public int getStatus()
   {
     return this.l;
   }
@@ -171,6 +132,16 @@ public class FaceImageView
         paramCanvas.drawBitmap(this.f, (this.j - this.f.getWidth()) / 2, this.k - this.i * 130.0F, this.h);
       }
     }
+  }
+  
+  public void setStatus(int paramInt)
+  {
+    if (this.l == paramInt) {
+      return;
+    }
+    this.l = paramInt;
+    this.u = 0L;
+    invalidate();
   }
 }
 

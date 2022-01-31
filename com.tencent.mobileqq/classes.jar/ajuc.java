@@ -1,97 +1,235 @@
-import android.app.Activity;
-import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.activity.TroopTagViewActivity;
-import com.tencent.mobileqq.troop.widget.TroopMoreDetailView;
-import com.tencent.mobileqq.troopinfo.GroupCatalogBean;
-import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.richmedia.subtitles.EncodeRunnable;
+import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashMap;
 
-public class ajuc
-  implements Runnable
+class ajuc
+  extends axxt
 {
-  private final WeakReference a;
+  ajuc(ajua paramajua) {}
   
-  public ajuc(TroopMoreDetailView paramTroopMoreDetailView)
+  protected void a(long paramLong, int paramInt)
   {
-    this.a = new WeakReference(paramTroopMoreDetailView);
+    if (QLog.isColorLevel()) {
+      QLog.d(ajua.a(), 2, "onSessionClose sessionid:" + paramLong + " result:" + paramInt);
+    }
+    synchronized (this.a)
+    {
+      if (ajua.a(this.a) == null) {
+        return;
+      }
+      if (ajua.a(this.a).jdField_a_of_type_Long != paramLong) {
+        return;
+      }
+    }
+    ajua.a(this.a, false);
+    ajua.a(this.a).jdField_b_of_type_Int = 0;
+    ajua.c(this.a);
   }
   
-  public void run()
+  protected void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2)
   {
-    int j = 0;
-    TroopMoreDetailView localTroopMoreDetailView = (TroopMoreDetailView)this.a.get();
-    if (localTroopMoreDetailView == null) {}
-    Activity localActivity;
-    QQAppInterface localQQAppInterface;
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d(ajua.a(), 2, "onTranslate:  sessionid:" + paramLong + " startseq:" + paramInt1 + " endseq:" + paramInt2 + "[" + paramInt2 * 1.0F + "] status:" + paramInt3 + " CN:" + paramString1 + " EN:" + paramString2);
+    }
+    if ((TextUtils.isEmpty(paramString1)) && (TextUtils.isEmpty(paramString2))) {
+      return;
+    }
+    paramInt2 *= 2;
+    ajud localajud = null;
+    synchronized (this.a)
     {
-      do
-      {
+      if (ajua.a(this.a) == null) {
         return;
-        localActivity = TroopMoreDetailView.a(localTroopMoreDetailView);
-      } while (localActivity == null);
-      localQQAppInterface = TroopMoreDetailView.a(localTroopMoreDetailView);
-    } while (localQQAppInterface == null);
-    Object localObject1 = Long.toString(localTroopMoreDetailView.a.dwGroupClassExt);
-    GroupCatalogBean localGroupCatalogBean = GroupCatalogTool.a(localActivity).a(localActivity, (String)localObject1);
-    List localList = localTroopMoreDetailView.a.troopTags;
-    Intent localIntent = new Intent(localActivity, TroopTagViewActivity.class);
-    localIntent.putExtra("troopuin", localTroopMoreDetailView.a.troopUin);
-    localIntent.putExtra("isAdmin", false);
-    Object localObject2 = "";
-    int i;
-    if (!TextUtils.isEmpty(localTroopMoreDetailView.a.mTroopClassExtText))
+      }
+    }
+    if (ajua.a(this.a).jdField_a_of_type_Long != paramLong)
     {
-      localObject1 = localTroopMoreDetailView.a.mTroopClassExtText;
-      i = 1;
+      if (QLog.isColorLevel()) {
+        QLog.d(ajua.a(), 2, "onTranslate, session not match:" + paramLong + "-" + ajua.a(this.a).jdField_a_of_type_Long);
+      }
+      return;
+    }
+    if (!this.a.a()) {
+      return;
+    }
+    if (ajua.a(this.a).jdField_a_of_type_JavaLangRefWeakReference != null) {
+      localajud = (ajud)ajua.a(this.a).jdField_a_of_type_JavaLangRefWeakReference.get();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(ajua.a(), 2, "onTranslate, :  localtime:" + ajua.a(this.a).c);
+    }
+    ajvi localajvi = (ajvi)ajua.a(this.a).jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
+    long l1;
+    label460:
+    long l2;
+    if (localajvi == null)
+    {
+      l1 = (int)(paramInt2 * 1.0F) * 20 * ajua.a(this.a).jdField_a_of_type_Int - 500;
+      paramLong = System.currentTimeMillis() - ajua.a(this.a).c - 500L;
+      if (!QLog.isColorLevel()) {
+        break label751;
+      }
+      QLog.d(ajua.a(), 2, "onTranslate startiem: " + l1 + "-" + paramLong);
+      break label751;
+      localajvi = new ajvi(paramLong, paramInt1, paramInt2);
+      ajua.a(this.a).jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt1), localajvi);
+      l1 = paramLong;
+      paramLong = (int)(paramInt2 * 1.0F) * 20 * ajua.a(this.a).jdField_a_of_type_Int;
+      l2 = System.currentTimeMillis() - ajua.a(this.a).c - 500L;
+      if (!QLog.isColorLevel()) {
+        break label776;
+      }
+      QLog.d(ajua.a(), 2, "onTranslate endtime: " + paramLong + "-" + l2);
+      break label776;
     }
     for (;;)
     {
-      if (i != 0) {
-        localIntent.putExtra("subclass", (String)localObject1);
+      if (QLog.isColorLevel()) {
+        QLog.d(ajua.a(), 2, "onTranslate, starttime-endtime: " + l1 + "-" + l2);
       }
-      if ((localList == null) || (localList.size() <= 0)) {
-        break label302;
-      }
-      localObject1 = new StringBuilder();
-      localObject2 = localList.iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        ((StringBuilder)localObject1).append((String)((Iterator)localObject2).next()).append("\n");
-      }
-      localObject1 = localObject2;
-      i = j;
-      if (localGroupCatalogBean != null)
-      {
-        localObject1 = localObject2;
-        i = j;
-        if (!TextUtils.isEmpty(localGroupCatalogBean.a))
-        {
-          localObject1 = localObject2;
-          i = j;
-          if (!"其他".equals(localGroupCatalogBean.a))
-          {
-            localObject1 = localGroupCatalogBean.a;
-            i = 1;
-          }
+      if (localajud != null) {
+        if (paramInt3 != 2) {
+          break label739;
         }
       }
+      label739:
+      for (boolean bool = true;; bool = false)
+      {
+        localajud.a(l1, l2, paramString1, paramString2, bool);
+        if (!ajua.a(this.a)) {
+          break;
+        }
+        paramString1 = String.valueOf(System.currentTimeMillis() - ajua.a(this.a));
+        paramString2 = new HashMap();
+        paramString2.put("startTranslateCost", paramString1);
+        if (QLog.isColorLevel()) {
+          QLog.d("PeakAudioTransHandler", 2, "startTranslateCost:" + paramString1);
+        }
+        azri.a(BaseApplicationImpl.getApplication()).a(null, "actSubtitleTranslate", true, 0L, 0L, paramString2, null);
+        ajua.a(this.a, false);
+        return;
+        l1 = localajvi.jdField_a_of_type_Long;
+        break label460;
+      }
+      for (;;)
+      {
+        break label786;
+        for (;;)
+        {
+          break;
+          label751:
+          if (l1 > paramLong) {
+            l1 = paramLong;
+          }
+        }
+        paramLong = l1;
+        if (l1 >= 0L) {
+          break;
+        }
+        paramLong = 0L;
+        break;
+        label776:
+        if (paramLong > l2) {
+          paramLong = l2;
+        }
+      }
+      label786:
+      l2 = paramLong;
+      if (paramLong <= l1) {
+        l2 = 1000L + l1;
+      }
     }
-    ((StringBuilder)localObject1).deleteCharAt(((StringBuilder)localObject1).length() - 1);
-    localIntent.putExtra("tags", ((StringBuilder)localObject1).toString());
-    label302:
-    localIntent.putExtra("act_type", 1);
-    localIntent.putExtra("uin", localQQAppInterface.getCurrentAccountUin());
-    if (localTroopMoreDetailView.a.isOwnerOrAdim())
+  }
+  
+  protected void a(long paramLong, int paramInt1, int paramInt2, axsr paramaxsr)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(ajua.a(), 2, "onSessionOpen sessionid:" + paramLong + " combineNum:" + paramInt1 + " heratbeat:" + paramInt2 + ",endPoint = " + paramaxsr);
+    }
+    synchronized (this.a)
     {
-      localActivity.startActivityForResult(localIntent, 98);
+      if (ajua.a(this.a) == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(ajua.a(), 2, "TransContext is null");
+        }
+        return;
+      }
+      if (ajua.a(this.a).jdField_b_of_type_Int != 1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(ajua.a(), 2, "onSessionOpen state error:" + ajua.a(this.a).jdField_b_of_type_Int);
+        }
+        return;
+      }
+    }
+    if ((ajua.a(this.a).jdField_a_of_type_Long != -1L) && (QLog.isColorLevel())) {
+      QLog.d(ajua.a(), 2, "onSessionOpen, old session not closed " + ajua.a(this.a).jdField_a_of_type_Long);
+    }
+    ajua.a(this.a).jdField_a_of_type_Long = paramLong;
+    ajua.a(this.a).jdField_a_of_type_Int = paramInt1;
+    ajua.a(this.a).jdField_b_of_type_Int = 3;
+    ajua.a(this.a).jdField_a_of_type_Axsr = paramaxsr;
+    if (ajua.a(this.a).jdField_b_of_type_Boolean) {
+      ajua.b(this.a);
+    }
+    if (ajua.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesEncodeRunnable != null) {
+      ajua.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesEncodeRunnable.a(paramLong, paramInt1);
+    }
+    for (;;)
+    {
+      ajua.a(this.a, ajua.a(this.a), true, paramInt2);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d(ajua.a(), 2, "onSessionOpen encoderunnable error" + paramLong);
+      }
+    }
+  }
+  
+  protected void b(long paramLong, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(ajua.a(), 2, "onSessionChanged sessionid:" + paramLong + " combinenum:" + paramInt);
+    }
+    synchronized (this.a)
+    {
+      if (ajua.a(this.a) == null) {
+        return;
+      }
+      if ((ajua.a(this.a).jdField_a_of_type_Long == paramLong) && (ajua.a(this.a).jdField_a_of_type_Int != paramInt))
+      {
+        ajua.a(this.a).jdField_a_of_type_Int = paramInt;
+        if (ajua.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesEncodeRunnable != null) {
+          ajua.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesEncodeRunnable.a(paramLong, paramInt);
+        }
+      }
       return;
     }
-    localActivity.startActivity(localIntent);
+  }
+  
+  protected void c(long paramLong, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(ajua.a(), 2, "onSessionError sessionid:" + paramLong + " result:" + paramInt);
+    }
+    synchronized (this.a)
+    {
+      if (ajua.a(this.a) == null) {
+        return;
+      }
+      if ((ajua.a(this.a).jdField_a_of_type_Long != -1L) && (ajua.a(this.a).jdField_a_of_type_Long != paramLong)) {
+        return;
+      }
+    }
+    if ((ajua.a(this.a).jdField_a_of_type_Long != paramLong) && (ajua.a(this.a).jdField_a_of_type_JavaLangRefWeakReference == null)) {
+      return;
+    }
+    ajua.a(this.a).jdField_b_of_type_Int = 0;
+    ajua.c(this.a);
+    ajua.a(this.a, paramInt);
   }
 }
 

@@ -1,79 +1,83 @@
-import android.media.Image;
-import android.media.ImageReader;
-import android.media.ImageReader.OnImageAvailableListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.tracker.SimpleSurfaceStickerTracker;
 
 public class aonq
-  implements ImageReader.OnImageAvailableListener
+  extends aokh<aonp>
 {
-  public aonq(SimpleSurfaceStickerTracker paramSimpleSurfaceStickerTracker) {}
+  @NonNull
+  public static aonp a()
+  {
+    aonp localaonp2 = (aonp)aoks.a().a(455);
+    aonp localaonp1 = localaonp2;
+    if (localaonp2 == null) {
+      localaonp1 = new aonp();
+    }
+    return localaonp1;
+  }
   
-  public void onImageAvailable(ImageReader paramImageReader)
+  public int a()
+  {
+    return 455;
+  }
+  
+  @NonNull
+  public aonp a(int paramInt)
+  {
+    return new aonp();
+  }
+  
+  @Nullable
+  public aonp a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    {
+      aonp localaonp = aonp.a(paramArrayOfaoko[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendIntimateRelationshipConfProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
+      }
+      return localaonp;
+    }
+    return new aonp();
+  }
+  
+  public Class<aonp> a()
+  {
+    return aonp.class;
+  }
+  
+  public void a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("SimpleSurfaceStickerTracker", 2, "onImageAvailable , thread id=" + Thread.currentThread().getId());
+      QLog.d("FriendIntimateRelationshipConfProcessor", 2, "onReqFailed failCode:" + paramInt);
     }
-    if (SimpleSurfaceStickerTracker.a(this.a) >= SimpleSurfaceStickerTracker.b(this.a))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SimpleSurfaceStickerTracker", 2, "onFrameAvailable wait onDecodeFrame. mLastAvailableTimestamp = " + SimpleSurfaceStickerTracker.a(this.a) + " , mLastDecodeTimestamp " + SimpleSurfaceStickerTracker.b(this.a));
-      }
-      try
-      {
-        synchronized (SimpleSurfaceStickerTracker.b(this.a))
-        {
-          SimpleSurfaceStickerTracker.b(this.a).wait(5L);
-        }
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        for (;;)
-        {
-          localInterruptedException.printStackTrace();
-        }
-      }
+  }
+  
+  public void a(aonp paramaonp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendIntimateRelationshipConfProcessor", 2, "onUpdate newConf:" + paramaonp);
     }
-    synchronized (SimpleSurfaceStickerTracker.a(this.a))
-    {
-      if (SimpleSurfaceStickerTracker.b(this.a))
-      {
-        SimpleSurfaceStickerTracker.a(this.a, true);
-        SimpleSurfaceStickerTracker.a(this.a).notifyAll();
-        QLog.w("SimpleSurfaceStickerTracker", 2, "onFrameAvailable error= ; isStoped=" + SimpleSurfaceStickerTracker.b(this.a));
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("SimpleSurfaceStickerTracker", 2, "onFrameAvailable start");
-      }
-      if (SimpleSurfaceStickerTracker.a(this.a)) {
-        new RuntimeException("mFrameAvailable already set, frame could be dropped");
-      }
-      SimpleSurfaceStickerTracker.a(this.a, SimpleSurfaceStickerTracker.b(this.a));
-    }
-    try
-    {
-      paramImageReader = paramImageReader.acquireNextImage();
-      SimpleSurfaceStickerTracker.a(this.a, paramImageReader);
-      paramImageReader.close();
-      SimpleSurfaceStickerTracker.a(this.a, true);
-      SimpleSurfaceStickerTracker.a(this.a).notifyAll();
-      return;
-    }
-    catch (Exception paramImageReader)
-    {
-      paramImageReader.printStackTrace();
-      SimpleSurfaceStickerTracker.a(this.a, true);
-      SimpleSurfaceStickerTracker.a(this.a).notifyAll();
-      QLog.w("SimpleSurfaceStickerTracker", 2, "onFrameAvailable error= ; isStoped=" + SimpleSurfaceStickerTracker.b(this.a));
-    }
-    paramImageReader = finally;
-    throw paramImageReader;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aonq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,16 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.DrawerFrame;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-
-public class sil
-  implements Runnable
+public abstract interface sil
 {
-  public sil(Conversation paramConversation) {}
+  public abstract int a();
   
-  public void run()
-  {
-    if ((Conversation.c(this.a)) && (this.a.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a != null) && (!this.a.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a.b()) && (SubAccountControll.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sub.uin.all"))) {
-      this.a.a(new sim(this));
-    }
-  }
+  public abstract boolean a(int paramInt);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sil
  * JD-Core Version:    0.7.0.1
  */

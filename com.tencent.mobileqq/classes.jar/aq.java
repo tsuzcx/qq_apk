@@ -1,39 +1,63 @@
+import android.view.View;
 import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.DatalineMessageManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.data.DataLineMsgSet;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class aq
-  implements FMDialogUtil.FMDialogInterface
+public class aq
+  implements bhuk
 {
-  aq(an paraman, DataLineMsgRecord paramDataLineMsgRecord, FileManagerEntity paramFileManagerEntity, String paramString) {}
+  public aq(LiteActivity paramLiteActivity, DataLineMsgSet paramDataLineMsgSet, ef paramef, bhuf parambhuf) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    int i = DataLineMsgRecord.getDevTypeBySeId(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    switch (paramInt)
     {
-      FMToastUtil.b(FileManagerUtil.d(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_An.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getString(2131428194));
-      FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_An.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a().a(this.jdField_a_of_type_An.jdField_a_of_type_JavaLangString, null, this.jdField_a_of_type_An.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getAccount(), 0, false);
-      this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.nWeiyunSessionId = localFileManagerEntity.nSessionId;
-      this.jdField_a_of_type_An.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a().a(i).c(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgId);
-      return;
     }
-    FMToastUtil.b(FileManagerUtil.d(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_An.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getString(2131428194));
-    this.jdField_a_of_type_An.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a().a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.nWeiyunSessionId);
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.cancel();
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -1000)
+      {
+        paramView = this.jdField_a_of_type_Ef.a().jdField_a_of_type_JavaLangString;
+        this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(paramView, this.jdField_a_of_type_Ef.a().jdField_a_of_type_Long, -1);
+      }
+      else
+      {
+        DataLineMsgRecord localDataLineMsgRecord;
+        if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2000)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.setPaused(false);
+          paramView = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().iterator();
+          while (paramView.hasNext())
+          {
+            localDataLineMsgRecord = (DataLineMsgRecord)paramView.next();
+            if (DataLineMsgSet.isCanReciveOrResend(localDataLineMsgRecord)) {
+              this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(localDataLineMsgRecord.path, localDataLineMsgRecord.sessionid, 0);
+            }
+          }
+        }
+        else if ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2005) || (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2009))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.setPaused(false);
+          paramView = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().iterator();
+          while (paramView.hasNext())
+          {
+            localDataLineMsgRecord = (DataLineMsgRecord)paramView.next();
+            if (DataLineMsgSet.isCanReciveOrResend(localDataLineMsgRecord)) {
+              this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(localDataLineMsgRecord.path, localDataLineMsgRecord.sessionid, 2);
+            }
+          }
+        }
+      }
+    }
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aq
  * JD-Core Version:    0.7.0.1
  */

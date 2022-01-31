@@ -1,14 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.downloadnew.DownloadListener;
+import com.tencent.open.downloadnew.DownloadManager;
 
-class hmp
-  implements DialogInterface.OnClickListener
+public final class hmp
+  implements Runnable
 {
-  hmp(hmo paramhmo) {}
+  public hmp(DownloadListener paramDownloadListener) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    DownloadManager.a().b(this.a);
   }
 }
 

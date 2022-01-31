@@ -1,36 +1,22 @@
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.NormalFacePackage;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.NormalFaceAdapter;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.NormalFaceAdapter.CacheRefMap;
+import android.hardware.Camera.ShutterCallback;
+import android.os.Handler;
+import com.tencent.mobileqq.camera.CameraManagerImpl.ShutterCallbackForward.1;
 
 public class aoba
-  implements URLDrawable.URLDrawableListener
+  implements Camera.ShutterCallback
 {
-  public aoba(NormalFaceAdapter paramNormalFaceAdapter, String paramString1, NormalFacePackage paramNormalFacePackage, ImageView paramImageView, String paramString2) {}
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final aoaq jdField_a_of_type_Aoaq;
+  private final aoar jdField_a_of_type_Aoar;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onShutter()
   {
-    SLog.b("NormalFaceAdapter", "applyNormalPaster onLoadFialed path:" + this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    SLog.b("NormalFaceAdapter", "applyNormalPaster onLoadSuccessed path:" + this.jdField_a_of_type_JavaLangString);
-    paramURLDrawable.setBounds(0, 0, paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight());
-    NormalFaceAdapter.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterNormalFaceAdapter).a(this.jdField_a_of_type_JavaLangString, paramURLDrawable);
-    NormalFaceAdapter.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterNormalFaceAdapter, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceNormalFacePackage, paramURLDrawable, this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_JavaLangString, this.b, 1);
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.ShutterCallbackForward.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoba
  * JD-Core Version:    0.7.0.1
  */

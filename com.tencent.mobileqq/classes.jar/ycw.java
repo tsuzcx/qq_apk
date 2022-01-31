@@ -1,81 +1,133 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.shortvideo.SendVideoActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
-import com.tencent.mobileqq.transfile.ShortVideoUploadABTest;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StEntry;
+import android.support.v7.widget.RecyclerView;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.TopRecommendBannerAdapter.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.os.MqqHandler;
+import org.jetbrains.annotations.NotNull;
 
 public class ycw
-  implements Runnable
+  extends yci
 {
-  Intent jdField_a_of_type_AndroidContentIntent;
-  BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  boolean jdField_a_of_type_Boolean;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private boolean jdField_a_of_type_Boolean;
+  private List<ydn> b = new ArrayList();
   
-  public ycw(BaseActivity paramBaseActivity, Intent paramIntent)
+  public ycw(@NotNull RecyclerView paramRecyclerView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    if (paramIntent != null) {}
-    for (this.jdField_a_of_type_AndroidContentIntent = paramIntent;; this.jdField_a_of_type_AndroidContentIntent = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent())
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+  }
+  
+  private void a()
+  {
+    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null)
     {
-      this.jdField_a_of_type_Boolean = this.jdField_a_of_type_AndroidContentIntent.getExtras().getBoolean("send_in_background");
+      if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.isComputingLayout()) {
+        ThreadManager.getUIHandler().postDelayed(new TopRecommendBannerAdapter.1(this), 500L);
+      }
+    }
+    else {
       return;
+    }
+    notifyDataSetChanged();
+  }
+  
+  private void b()
+  {
+    this.b.clear();
+    this.b.addAll(this.jdField_a_of_type_JavaUtilList.subList(0, 10));
+    this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList.subList(10, this.jdField_a_of_type_JavaUtilList.size());
+  }
+  
+  public List<ydn> a()
+  {
+    return this.b;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt < this.b.size())
+    {
+      this.b.remove(paramInt);
+      notifyItemRemoved(a() + paramInt);
+      notifyItemRangeChanged(a() + paramInt, this.b.size() - paramInt);
     }
   }
   
-  public void run()
+  public void a(CertifiedAccountMeta.StEntry paramStEntry, List<ydn> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SendVideoActivity", 2, "#SendTask# run(): start");
+    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry = paramStEntry;
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
     }
-    SendVideoActivity.a(this.jdField_a_of_type_AndroidContentIntent);
-    CodecParam.z = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sv_total_frame_count", 0);
-    CodecParam.y = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sv_total_record_time", 0);
-    long l1 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("ab_test_send_btn_click_time", 0L);
-    long l2 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("ab_test_generate_thumb_cost_time", 0L);
-    if (ShortVideoUploadABTest.a())
+    for (;;)
     {
-      ShortVideoUploadABTest.b = l1;
-      ShortVideoUploadABTest.c = CodecParam.y;
-      ShortVideoUploadABTest.d = l2;
-    }
-    com.tencent.mobileqq.transfile.ShortVideoPresendStats.b = l1;
-    String str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("thumbfile_send_path");
-    if (FileUtils.b(str))
-    {
-      Object localObject = URLDrawable.URLDrawableOptions.obtain();
-      localObject = URLDrawable.getDrawable(new File(str), (URLDrawable.URLDrawableOptions)localObject);
-      ((URLDrawable)localObject).downloadImediatly();
-      if (((URLDrawable)localObject).getStatus() == 1) {
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new ycx(this));
-      }
-    }
-    do
-    {
-      do
+      if (this.jdField_a_of_type_JavaUtilList != null)
       {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("SendVideoActivity", 2, "#SendTask# run(): UrlDrawable status not success, path=" + str);
+        if (this.jdField_a_of_type_JavaUtilList.size() < 10) {
+          break;
         }
-      } while (this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new ycy(this));
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.e("SendVideoActivity", 2, "#SendTask# run(): thumb not exist, path=" + str);
+        b();
+        a();
       }
-    } while (this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new ycz(this));
+      return;
+      this.jdField_a_of_type_JavaUtilList = paramList;
+    }
+    this.b.addAll(paramList);
+    this.jdField_a_of_type_JavaUtilList.clear();
+    a();
+  }
+  
+  public boolean a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() >= 10))
+    {
+      b();
+      a();
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() < 10);
+  }
+  
+  public boolean c()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+      {
+        this.b.add(this.jdField_a_of_type_JavaUtilList.remove(0));
+        notifyItemInserted(this.b.size());
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public int getItemCount()
+  {
+    if (this.b != null) {
+      return this.b.size() + a();
+    }
+    return a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ycw
  * JD-Core Version:    0.7.0.1
  */

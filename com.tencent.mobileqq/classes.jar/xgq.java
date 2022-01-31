@@ -1,42 +1,64 @@
-import Wallet.RedInfoSyncRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.red.QWalletRedManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.util.SparseBooleanArray;
+import android.view.View;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
 public class xgq
-  implements BusinessObserver
+  implements xfo
 {
-  public xgq(QWalletRedManager paramQWalletRedManager) {}
+  private xgq(DoodleLayout paramDoodleLayout) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletRedManager", 2, "redInfoSyncReq onReceive" + paramBoolean);
-    }
-    StringBuilder localStringBuilder;
-    if ((paramBoolean) && (paramBundle != null))
+    this.a.a().c();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a.a().a(paramInt);
+  }
+  
+  public void a(boolean paramBoolean, xeq paramxeq)
+  {
+    xeb localxeb = this.a.a();
+    if (paramBoolean)
     {
-      paramBundle = (RedInfoSyncRsp)paramBundle.getSerializable("rsp");
-      if (QLog.isColorLevel())
+      localxeb.a(true);
+      switch (this.a.b)
       {
-        localStringBuilder = new StringBuilder().append("RedInfoSyncRsp|");
-        if (paramBundle == null) {
-          break label97;
-        }
+      }
+      for (;;)
+      {
+        this.a.c(3);
+        return;
+        this.a.a().b(false);
       }
     }
-    label97:
-    for (paramBundle = Integer.valueOf(paramBundle.result);; paramBundle = "")
+    if (paramxeq.jdField_a_of_type_Int != -1) {
+      this.a.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(this.a.jdField_a_of_type_Int, true);
+    }
+    for (;;)
     {
-      QLog.d("QWalletRedManager", 2, paramBundle);
+      localxeb.a(paramxeq);
+      localxeb.a(false);
+      this.a.a(new View[] { this.a.jdField_a_of_type_AndroidWidgetRelativeLayout });
+      this.a.c(0);
+      this.a.d(0);
+      this.a.jdField_a_of_type_Xgp.i();
       return;
+      this.a.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(this.a.jdField_a_of_type_Int, false);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.a.jdField_a_of_type_Xgp != null) {
+      this.a.jdField_a_of_type_Xgp.b(3, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xgq
  * JD-Core Version:    0.7.0.1
  */

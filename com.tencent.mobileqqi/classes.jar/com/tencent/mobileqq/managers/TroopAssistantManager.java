@@ -27,8 +27,8 @@ import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.utils.SharedPreferencesHandler;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import gfr;
-import gfs;
+import gbf;
+import gbg;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -157,7 +157,7 @@ public class TroopAssistantManager
     {
       localObject1 = ???.a(TroopAssistantData.class, false, null, null, null, null, "lastmsgtime desc", null);
       if ((localObject1 != null) && (((List)localObject1).size() > 0)) {
-        Collections.sort((List)localObject1, new gfs(this));
+        Collections.sort((List)localObject1, new gbg(this));
       }
     }
     catch (Exception ???)
@@ -366,7 +366,7 @@ public class TroopAssistantManager
     if (paramQQAppInterface == null) {
       return;
     }
-    ThreadManager.b(new gfr(this, paramQQAppInterface));
+    ThreadManager.b(new gbf(this, paramQQAppInterface));
   }
   
   private void l(QQAppInterface paramQQAppInterface)

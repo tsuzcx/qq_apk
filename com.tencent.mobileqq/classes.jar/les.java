@@ -1,26 +1,22 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyMsgManagerActivity;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class les
-  implements View.OnClickListener
 {
-  public les(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80078A6", "0X80078A6", 0, 0, "", "", "", ReadInJoyUtils.c(), false);
-    paramView = new Intent(this.a, ReadinjoyMsgManagerActivity.class);
-    this.a.startActivity(paramView);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<Integer> a;
+  public HashMap<String, ler> a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     les
  * JD-Core Version:    0.7.0.1
  */

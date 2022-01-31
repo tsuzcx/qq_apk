@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.qzoneplayer.video.VideoExtendedAnimationView android:background="#cc000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <ImageView android:layout_gravity="center" android:id="@id/c07" android:layout_width="22.5dip" android:layout_height="22.5dip" android:src="@drawable/g0w" />
+        <TextView android:textSize="10.0sp" android:textColor="#ff838383" android:layout_gravity="center" android:id="@id/c0a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="3s" />
+    </FrameLayout>
+    <com.qzone.commoncode.module.videorecommend.widget.QzoneLinearLayoutView android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/c08" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <ImageView android:layout_gravity="center" android:id="@id/c0c" android:visibility="gone" android:layout_width="57.0dip" android:layout_height="57.0dip" />
+            <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/c0d" android:layout_width="57.0dip" android:layout_height="57.0dip" />
+            <TextView android:textSize="18.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center" android:layout_gravity="center" android:id="@id/c0b" android:layout_width="126.0dip" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/sem" android:singleLine="true" android:layout_below="@id/db3" />
+        </LinearLayout>
+        <FrameLayout android:id="@id/c06" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center" android:id="@id/c09" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/g0x" />
+            <ImageView android:layout_gravity="center" android:id="@id/c0_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/g0y" />
+            <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center" android:layout_gravity="center" android:id="@id/c05" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="fill_parent" android:text="@string/sbx" android:singleLine="true" />
+        </FrameLayout>
+    </com.qzone.commoncode.module.videorecommend.widget.QzoneLinearLayoutView>
+</com.tencent.mobileqq.qzoneplayer.video.VideoExtendedAnimationView>

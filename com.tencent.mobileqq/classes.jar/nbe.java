@@ -1,24 +1,58 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.meta.ImageFileObject;
-import com.tencent.biz.qqstory.base.videoupload.meta.UploadObject;
-import com.tencent.biz.qqstory.base.videoupload.meta.UploadObject.UploadFinishListener;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoTaskInfo;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class nbe
-  implements UploadObject.UploadFinishListener
+class nbe
+  implements aurc
 {
-  public nbe(StoryVideoUploadTask paramStoryVideoUploadTask, StoryVideoTaskInfo paramStoryVideoTaskInfo) {}
+  nbe(nbd paramnbd) {}
   
-  public void a(UploadObject paramUploadObject)
+  public String getToken()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoTaskInfo.k = ((ImageFileObject)paramUploadObject).b;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoUploadTask.a(1, new ErrorMessage());
+    return QQPlayerService.a(5, "" + this.a.a);
+  }
+  
+  public void onPlaySongChanged(SongInfo paramSongInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QQMusicService", 2, "onPlaySongChanged:" + paramSongInfo.c);
+    }
+  }
+  
+  public void onPlayStateChanged(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QQMusicService", 2, "onPlayStateChanged:" + paramInt);
+    }
+    Object localObject = QQPlayerService.b();
+    localObject = nbd.a(this.a, (SongInfo)localObject);
+    if (localObject != null) {}
+    try
+    {
+      ((JSONObject)localObject).put("state", paramInt);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add("*.qq.com");
+      athj.a("qbrowserMusicStateChange", (JSONObject)localObject, localArrayList, null);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQMusicService", 2, "onPlayStateChanged:" + localJSONException.getStackTrace());
+        }
+        localJSONException.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nbe
  * JD-Core Version:    0.7.0.1
  */

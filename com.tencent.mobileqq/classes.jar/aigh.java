@@ -1,33 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.statistics.UEC.UECItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 
-public final class aigh
-  implements Parcelable.Creator
+class aigh
+  implements View.OnClickListener
 {
-  public UEC.UECItem a(Parcel paramParcel)
-  {
-    UEC.UECItem localUECItem = new UEC.UECItem();
-    localUECItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localUECItem.jdField_a_of_type_Int = paramParcel.readInt();
-    localUECItem.jdField_a_of_type_Long = paramParcel.readLong();
-    localUECItem.jdField_b_of_type_Int = paramParcel.readInt();
-    localUECItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localUECItem.c = paramParcel.readString();
-    localUECItem.d = paramParcel.readString();
-    localUECItem.e = paramParcel.readString();
-    localUECItem.f = paramParcel.readString();
-    return localUECItem;
-  }
+  aigh(aigf paramaigf) {}
   
-  public UEC.UECItem[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new UEC.UECItem[paramInt];
+    this.a.a.setText("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aigh
  * JD-Core Version:    0.7.0.1
  */

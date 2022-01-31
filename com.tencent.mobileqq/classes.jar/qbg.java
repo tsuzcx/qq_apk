@@ -1,138 +1,70 @@
-import android.os.Bundle;
-import com.tencent.device.file.DeviceFileObserver;
-import com.tencent.device.msg.data.DeviceMsgHandle;
-import com.tencent.litetransfersdk.ActionInfo;
-import com.tencent.litetransfersdk.Session;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcOriginalHeader;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcSource;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentDivider;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderNewSocial;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentLastRead;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTitle;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
 public class qbg
-  extends DeviceFileObserver
+  extends qbk
 {
-  public qbg(DeviceMsgHandle paramDeviceMsgHandle) {}
-  
-  private List a(Session paramSession)
+  public qbg(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    String str2 = "";
-    String str1 = str2;
-    if (paramSession != null)
-    {
-      str1 = str2;
-      if (paramSession.actionInfo != null) {
-        str1 = paramSession.actionInfo.strServiceName;
-      }
-    }
-    return a(str1);
+    super(paramContext, parambdbb, paramrqj);
   }
   
-  private List a(String paramString)
+  public pxl g()
   {
-    if (paramString != null) {}
-    for (;;)
-    {
-      if (paramString != null) {
-        return (List)this.a.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      }
-      return null;
-      paramString = "";
-    }
+    this.jdField_a_of_type_Pxk = new ComponentContentGridImage(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
   
-  public void a(Bundle paramBundle)
+  public pxl o()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(DeviceMsgHandle.jdField_a_of_type_JavaLangString, 4, "OnDataPointFileMsgProgress");
-    }
-    Object localObject = a("");
-    if (localObject != null)
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial != null)
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((DeviceFileObserver)((Iterator)localObject).next()).a(paramBundle);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.a(this.jdField_a_of_type_JavaLangObject);
+      if ((this.jdField_a_of_type_JavaLangObject instanceof pgd))
+      {
+        pgd localpgd = (pgd)this.jdField_a_of_type_JavaLangObject;
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.setReadedStatus(this.jdField_a_of_type_Rqj.a(localpgd.e(), localpgd.a().mArticleID));
       }
     }
-  }
-  
-  public void a(Session paramSession)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(DeviceMsgHandle.jdField_a_of_type_JavaLangString, 4, "onServiceSessionNew:" + paramSession.uSessionID);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader.a(this.jdField_a_of_type_JavaLangObject);
     }
-    Object localObject = a(paramSession);
-    if (localObject != null)
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    if (this.jdField_a_of_type_Pxk != null)
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((DeviceFileObserver)((Iterator)localObject).next()).a(paramSession);
+      if ((this.jdField_a_of_type_Pxk instanceof ComponentContentGridImage)) {
+        ((ComponentContentGridImage)this.jdField_a_of_type_Pxk).setMIReadInJoyModel(this.jdField_a_of_type_JavaLangObject);
       }
+      this.jdField_a_of_type_Pxk.a(ComponentContentGridImage.a(((pgd)this.jdField_a_of_type_JavaLangObject).a()));
     }
-  }
-  
-  public void a(Session paramSession, float paramFloat)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(DeviceMsgHandle.jdField_a_of_type_JavaLangString, 4, "onServiceSessionProgress:" + paramSession.uSessionID);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead.a(this.jdField_a_of_type_JavaLangObject);
     }
-    Object localObject = a(paramSession);
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((DeviceFileObserver)((Iterator)localObject).next()).a(paramSession, paramFloat);
-      }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
     }
-  }
-  
-  public void a(Session paramSession, boolean paramBoolean)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(DeviceMsgHandle.jdField_a_of_type_JavaLangString, 4, "onServiceSessionComplete:" + paramSession.uSessionID);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource.a(this.jdField_a_of_type_JavaLangObject);
     }
-    Object localObject = a(paramSession);
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((DeviceFileObserver)((Iterator)localObject).next()).a(paramSession, paramBoolean);
-      }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.a(this.jdField_a_of_type_JavaLangObject);
     }
-  }
-  
-  public void b(Bundle paramBundle)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(DeviceMsgHandle.jdField_a_of_type_JavaLangString, 4, "OnDataPointFileMsgSendRet");
-    }
-    Object localObject = a("");
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((DeviceFileObserver)((Iterator)localObject).next()).b(paramBundle);
-      }
-    }
-  }
-  
-  public void b(Session paramSession)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(DeviceMsgHandle.jdField_a_of_type_JavaLangString, 4, "onServiceSessionStart:" + paramSession.uSessionID);
-    }
-    Object localObject = a(paramSession);
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((DeviceFileObserver)((Iterator)localObject).next()).b(paramSession);
-      }
-    }
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qbg
  * JD-Core Version:    0.7.0.1
  */

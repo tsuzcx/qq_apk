@@ -1,47 +1,44 @@
 package com.tencent.tmassistantbase.util;
 
-import android.content.Context;
-import android.content.res.Resources;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class k
 {
-  protected Context a;
-  protected Resources b;
+  public static Map<l, Handler> a = new ConcurrentHashMap();
+  private static Handler b;
   
-  public k(Context paramContext)
+  public static Handler a()
   {
-    this.a = paramContext;
-    this.b = paramContext.getResources();
+    if (b == null) {
+      b = b(l.a);
+    }
+    return b;
   }
   
-  private int a(String paramString1, String paramString2)
+  public static Looper a(l paraml)
   {
-    return this.b.getIdentifier(paramString2, paramString1, this.a.getPackageName());
+    return b(paraml).getLooper();
   }
   
-  public int a(String paramString)
+  private static Handler b(l paraml)
   {
-    return a("string", paramString);
-  }
-  
-  public int b(String paramString)
-  {
-    return a("drawable", paramString);
-  }
-  
-  public int c(String paramString)
-  {
-    return a("layout", paramString);
-  }
-  
-  public int d(String paramString)
-  {
-    return a("id", paramString);
+    if (a.containsKey(paraml)) {
+      return (Handler)a.get(paraml);
+    }
+    Object localObject = new HandlerThread(paraml.name());
+    ((HandlerThread)localObject).start();
+    localObject = new Handler(((HandlerThread)localObject).getLooper());
+    a.put(paraml, localObject);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.k
  * JD-Core Version:    0.7.0.1
  */

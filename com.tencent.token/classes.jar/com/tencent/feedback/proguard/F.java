@@ -1,7 +1,6 @@
 package com.tencent.feedback.proguard;
 
 import java.security.Key;
-import java.security.NoSuchAlgorithmException;
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
@@ -26,7 +25,6 @@ public final class F
   }
   
   public final byte[] a(byte[] paramArrayOfByte)
-    throws Exception
   {
     int j = 0;
     if ((this.a == null) || (paramArrayOfByte == null))
@@ -63,7 +61,6 @@ public final class F
   }
   
   public final byte[] b(byte[] paramArrayOfByte)
-    throws Exception, NoSuchAlgorithmException
   {
     int j = 0;
     if ((this.a == null) || (paramArrayOfByte == null))

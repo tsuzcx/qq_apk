@@ -1,55 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.FlowControlDownloadStruct;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
-import java.util.LinkedList;
-
-public class xfv
-  extends Handler
+public abstract interface xfv
 {
-  private LinkedList jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private boolean jdField_a_of_type_Boolean;
+  public abstract void a();
   
-  public xfv(PreloadManager paramPreloadManager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract void a(int paramInt);
   
-  private void a()
-  {
-    PreloadManager.FlowControlDownloadStruct localFlowControlDownloadStruct = (PreloadManager.FlowControlDownloadStruct)this.jdField_a_of_type_JavaUtilLinkedList.getFirst();
-    this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
-    localFlowControlDownloadStruct.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.handleFlowConfig(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager, localFlowControlDownloadStruct.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule, localFlowControlDownloadStruct.jdField_a_of_type_ComTencentMobileqqVipDownloadListener);
-  }
+  public abstract void a(xeq paramxeq);
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 1: 
-      do
-      {
-        return;
-        this.jdField_a_of_type_JavaUtilLinkedList.addLast((PreloadManager.FlowControlDownloadStruct)paramMessage.obj);
-      } while (this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Boolean = true;
-      sendEmptyMessage(2);
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)
-    {
-      a();
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public abstract void a(boolean paramBoolean, xeq paramxeq);
+  
+  public abstract void b(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xfv
  * JD-Core Version:    0.7.0.1
  */

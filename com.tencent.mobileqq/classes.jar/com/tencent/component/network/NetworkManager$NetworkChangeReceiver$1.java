@@ -14,7 +14,7 @@ class NetworkManager$NetworkChangeReceiver$1
   {
     String str1 = this.this$0.getApnValue();
     if ((NetworkManager.isNetworkAvailable()) && (!str1.equals(NetworkManager.NetworkChangeReceiver.access$000(this.this$0)))) {
-      DnsService.a().a();
+      DnsService.getInstance().reset();
     }
     if (!str1.equals(NetworkManager.NetworkChangeReceiver.access$000(this.this$0))) {
       synchronized (NetworkManager.access$100())
@@ -34,7 +34,7 @@ class NetworkManager$NetworkChangeReceiver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.NetworkManager.NetworkChangeReceiver.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.QIMCameraCaptureUnit;
+import com.tencent.ark.ark.VariantWrapper;
 
-public class aniq
-  implements DialogInterface.OnClickListener
+class aniq
+  implements anjs
 {
-  public aniq(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
+  aniq(anii paramanii, long paramLong) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(long paramLong)
+  {
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Anii.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    anif.a(this.jdField_a_of_type_Anii.a, this.jdField_a_of_type_Long, paramBoolean, paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aniq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,30 @@
+import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
-import com.tencent.mobileqq.troop.widget.AvatarWallView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
 
 public class hcu
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public hcu(AvatarWallView paramAvatarWallView) {}
+  int jdField_a_of_type_Int;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public hcu(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, int paramInt)
   {
-    int i = 0;
-    paramAnimation = this.a;
-    paramAnimation.p -= 1;
-    if (this.a.p <= 0)
-    {
-      this.a.e = true;
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.c(this.a.jdField_a_of_type_Int, this.a.m);
-      if (this.a.d)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.e();
-        this.a.d = false;
-      }
-      int j = this.a.getChildCount();
-      while (i < j)
-      {
-        this.a.getChildAt(i).clearAnimation();
-        i += 1;
-      }
-      this.a.jdField_a_of_type_Int = this.a.m;
-    }
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.a != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.a.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.a(this.jdField_a_of_type_Int));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hcu
  * JD-Core Version:    0.7.0.1
  */

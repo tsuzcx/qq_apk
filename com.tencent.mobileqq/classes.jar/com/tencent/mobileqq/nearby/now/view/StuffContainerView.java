@@ -1,10 +1,5 @@
 package com.tencent.mobileqq.nearby.now.view;
 
-import aeyb;
-import aeyc;
-import aeyd;
-import aeye;
-import aeyf;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -20,13 +15,20 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.av.utils.UITools;
+import avbq;
+import avbt;
+import avfo;
+import avfp;
+import avfq;
+import avfr;
+import avfs;
+import avft;
+import avfu;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.ActCallBack;
-import com.tencent.mobileqq.nearby.now.ProgressControler;
 import com.tencent.mobileqq.nearby.now.StoryPlayController;
 import com.tencent.mobileqq.nearby.now.model.VideoData;
 import com.tencent.qphone.base.util.QLog;
+import mww;
 
 public class StuffContainerView
   extends RelativeLayout
@@ -36,15 +38,15 @@ public class StuffContainerView
   private long jdField_a_of_type_Long;
   public Activity a;
   public ImageView a;
+  public avbq a;
+  public avbt a;
+  public avfs a;
+  public avft a;
   public QQAppInterface a;
-  public ActCallBack a;
-  public ProgressControler a;
   public StoryPlayController a;
   public CustomViewPager a;
   public QQStoryVideoPlayerErrorView a;
   protected SplitedProgressBar a;
-  public StuffContainerView.GestureListener a;
-  public StuffContainerView.OnCloseListener a;
   public VideoPlayerPagerAdapter a;
   public boolean a;
   private long b;
@@ -87,29 +89,29 @@ public class StuffContainerView
   
   public void a(Context paramContext)
   {
-    View localView = LayoutInflater.from(paramContext).inflate(2130970459, this, true);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager = ((CustomViewPager)localView.findViewById(2131370639));
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewSplitedProgressBar = ((SplitedProgressBar)localView.findViewById(2131364810));
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView = ((QQStoryVideoPlayerErrorView)localView.findViewById(2131370640));
+    View localView = LayoutInflater.from(paramContext).inflate(2131561079, this, true);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager = ((CustomViewPager)localView.findViewById(2131379878));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewSplitedProgressBar = ((SplitedProgressBar)localView.findViewById(2131379822));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView = ((QQStoryVideoPlayerErrorView)localView.findViewById(2131371497));
     ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.getLayoutParams();
-    localLayoutParams.height = UITools.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.getContext());
-    localLayoutParams.width = UITools.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.getContext());
+    localLayoutParams.height = mww.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.getContext());
+    localLayoutParams.width = mww.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.getContext());
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setLayoutParams(localLayoutParams);
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.requestLayout();
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setOnClickListener(new aeyb(this));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131370631));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aeyc(this));
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowProgressControler = new ProgressControler(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewSplitedProgressBar);
-    paramContext = new GestureDetector(paramContext, new aeyf(this, null));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setOnClickListener(new avfo(this));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364343));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new avfp(this));
+    this.jdField_a_of_type_Avbt = new avbt(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewSplitedProgressBar);
+    paramContext = new GestureDetector(paramContext, new avfu(this, null));
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager.setClickable(true);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager.setOnTouchListener(new aeyd(this, paramContext));
-    ((Activity)getContext()).getWindow().getDecorView().addOnLayoutChangeListener(new aeye(this));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager.setOnTouchListener(new avfq(this, paramContext));
+    ((Activity)getContext()).getWindow().getDecorView().addOnLayoutChangeListener(new avfr(this));
     this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
   public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController = new StoryPlayController(getContext(), this, this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter, paramBundle, this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqNearbyNowActCallBack);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController = new StoryPlayController(getContext(), this, this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter, paramBundle, this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Avbq);
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager.setOnPageChangeListener(this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController);
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController, paramBundle);
     setGestureListener(this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController);
@@ -183,8 +185,8 @@ public class StuffContainerView
   
   public void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView$OnCloseListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView$OnCloseListener.a(0);
+    if (this.jdField_a_of_type_Avft != null) {
+      this.jdField_a_of_type_Avft.a(0);
     }
   }
   
@@ -192,8 +194,8 @@ public class StuffContainerView
   
   public void onClick(View paramView)
   {
-    if ((paramView.getId() == 2131370631) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView$OnCloseListener != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView$OnCloseListener.a(0);
+    if ((paramView.getId() == 2131364343) && (this.jdField_a_of_type_Avft != null)) {
+      this.jdField_a_of_type_Avft.a(0);
     }
   }
   
@@ -207,9 +209,9 @@ public class StuffContainerView
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public void setCallBack(ActCallBack paramActCallBack)
+  public void setCallBack(avbq paramavbq)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowActCallBack = paramActCallBack;
+    this.jdField_a_of_type_Avbq = paramavbq;
   }
   
   public void setCurrentItem(int paramInt, boolean paramBoolean)
@@ -217,16 +219,16 @@ public class StuffContainerView
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager.setCurrentItem(paramInt, paramBoolean);
   }
   
-  public void setGestureListener(StuffContainerView.GestureListener paramGestureListener)
+  public void setGestureListener(avfs paramavfs)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView$GestureListener = paramGestureListener;
+    this.jdField_a_of_type_Avfs = paramavfs;
   }
   
-  public void setOnCloseListener(StuffContainerView.OnCloseListener paramOnCloseListener)
+  public void setOnCloseListener(avft paramavft)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView$OnCloseListener = paramOnCloseListener;
+    this.jdField_a_of_type_Avft = paramavft;
     if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.a(paramOnCloseListener);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.a(paramavft);
     }
   }
   
@@ -240,7 +242,7 @@ public class StuffContainerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.StuffContainerView
  * JD-Core Version:    0.7.0.1
  */

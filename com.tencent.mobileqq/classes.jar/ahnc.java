@@ -1,20 +1,36 @@
-import com.tencent.mobileqq.richmedia.conn.ConnManager;
-import com.tencent.mobileqq.richmedia.server.ChannelStateManager;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ahnc
-  implements Runnable
+  extends Handler
 {
-  public ahnc(ConnManager paramConnManager, long paramLong) {}
+  public ahnc(SystemMsgListView paramSystemMsgListView) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    ConnManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager).b(10);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager.a(ConnManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager), this.jdField_a_of_type_Long);
+    switch (paramMessage.what)
+    {
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (SystemMsgListView.a(this.a) == null);
+      this.a.i();
+      SystemMsgListView.a(this.a).notifyDataSetChanged();
+      return;
+    }
+    paramMessage = SystemMsgListView.a(this.a).getResources().getString(2131720539);
+    QQToast.a(SystemMsgListView.a(this.a), 1, paramMessage, 0).b(this.a.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahnc
  * JD-Core Version:    0.7.0.1
  */

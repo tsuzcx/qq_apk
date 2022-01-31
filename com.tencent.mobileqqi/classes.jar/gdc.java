@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
 
 public class gdc
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public gdc(UniformDownloaderAppBabySdk paramUniformDownloaderAppBabySdk, String paramString) {}
+  public gdc(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloaderAppBabySdk, this.jdField_a_of_type_JavaLangString, 2);
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloaderAppBabySdk);
+    if ((paramIntent != null) && ("BROAD_CAST_CALL_PAGE_SHARE".equals(paramIntent.getAction()))) {
+      MusicGeneWebViewPlugin.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gdc
  * JD-Core Version:    0.7.0.1
  */

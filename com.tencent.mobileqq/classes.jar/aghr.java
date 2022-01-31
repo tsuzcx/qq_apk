@@ -1,18 +1,10 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-
-class aghr
-  implements Runnable
+public abstract interface aghr
 {
-  aghr(agho paramagho) {}
-  
-  public void run()
-  {
-    ScanTorchActivity.t(this.a.a);
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aghr
  * JD-Core Version:    0.7.0.1
  */

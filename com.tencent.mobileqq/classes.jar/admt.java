@@ -1,64 +1,31 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.fragment.HotChatFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class admt
-  extends BroadcastReceiver
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public admt(HotChatFragment paramHotChatFragment) {}
+  public admt(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((paramIntent != null) && ("com.tencent.mobileqq.get_banner_rect".equals(paramIntent.getAction())))
+    boolean bool = true;
+    if (!bdin.g(this.a))
     {
-      paramContext = paramIntent.getStringExtra("content");
-      if (!TextUtils.isEmpty(paramContext)) {
-        break label31;
+      QQToast.a(BaseApplication.getContext(), 1, 2131694832, 0).b(this.a.getTitleBarHeight());
+      paramCompoundButton = this.a.j;
+      if (!paramBoolean) {}
+      for (paramBoolean = bool;; paramBoolean = false)
+      {
+        paramCompoundButton.setChecked(paramBoolean);
+        return;
       }
     }
-    label31:
-    do
-    {
-      for (;;)
-      {
-        return;
-        try
-        {
-          paramContext = new JSONObject(paramContext).getJSONObject("params").getJSONArray("bannerHeight");
-          if (paramContext != null)
-          {
-            float f = this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources().getDisplayMetrics().density;
-            int j = paramContext.length();
-            this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-            int i = 0;
-            while (i < j)
-            {
-              paramIntent = paramContext.getJSONObject(i);
-              Rect localRect = new Rect();
-              localRect.top = ((int)(paramIntent.getInt("top") * f));
-              localRect.bottom = ((int)(paramIntent.getInt("bottom") * f));
-              this.a.jdField_a_of_type_JavaUtilArrayList.add(localRect);
-              i += 1;
-            }
-            this.a.d = true;
-            return;
-          }
-        }
-        catch (JSONException paramContext) {}
-      }
-    } while (!QLog.isDevelopLevel());
-    paramContext.printStackTrace();
+    ((alpk)this.a.app.a(2)).g(paramBoolean);
   }
 }
 

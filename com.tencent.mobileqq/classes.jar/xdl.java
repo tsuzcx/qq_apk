@@ -1,21 +1,40 @@
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
-import cooperation.qwallet.plugin.TenUtils;
 
+@TargetApi(14)
 public class xdl
-  implements View.OnClickListener
 {
-  public xdl(CommonHbFragment paramCommonHbFragment, String paramString) {}
-  
-  public void onClick(View paramView)
+  public static float a(View paramView)
   {
-    TenUtils.startQQBrowser(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment.getActivity(), this.jdField_a_of_type_JavaLangString);
+    if (paramView == null) {}
+    while (Build.VERSION.SDK_INT < 11) {
+      return 0.0F;
+    }
+    return paramView.getX();
+  }
+  
+  public static void a(View paramView, float paramFloat)
+  {
+    if (paramView == null) {}
+    while (Build.VERSION.SDK_INT < 11) {
+      return;
+    }
+    paramView.setAlpha(paramFloat);
+  }
+  
+  public static float b(View paramView)
+  {
+    if (paramView == null) {}
+    while (Build.VERSION.SDK_INT < 11) {
+      return 0.0F;
+    }
+    return paramView.getY();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xdl
  * JD-Core Version:    0.7.0.1
  */

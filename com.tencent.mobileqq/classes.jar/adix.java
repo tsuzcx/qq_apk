@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.MainFragment;
 
 public class adix
-  implements FMDialogUtil.FMDialogInterface
+  implements View.OnClickListener
 {
-  public adix(QfileEditBottomBar paramQfileEditBottomBar) {}
-  
-  public void a()
+  public void onClick(View paramView)
   {
-    QfileEditBottomBar.a(this.a);
+    MainFragment.b(true);
+    paramView = (ViewGroup)paramView.getParent();
+    if (!MainFragment.a()) {
+      paramView.callOnClick();
+    }
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adix
  * JD-Core Version:    0.7.0.1
  */

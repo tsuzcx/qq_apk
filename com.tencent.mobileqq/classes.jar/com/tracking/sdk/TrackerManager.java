@@ -17,28 +17,20 @@ public class TrackerManager
   
   public static TrackerManager newInstance()
   {
-    return ObjTrackHolder.instance;
+    return TrackerManager.ObjTrackHolder.instance;
   }
   
-  public void init()
-  {
-    System.loadLibrary("ObjectTracker");
-  }
+  public void init() {}
   
   public native boolean openTrack(byte[] paramArrayOfByte, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt3, int paramInt4, float paramFloat5);
   
   public native float[] processTrackFrame(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3);
   
   public native void release();
-  
-  private static class ObjTrackHolder
-  {
-    public static TrackerManager instance = new TrackerManager(null);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tracking.sdk.TrackerManager
  * JD-Core Version:    0.7.0.1
  */

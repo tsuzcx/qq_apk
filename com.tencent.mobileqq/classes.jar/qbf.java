@@ -1,29 +1,59 @@
-import com.tencent.device.msg.data.DeviceComnFileMsgProcessor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcSource;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentDivider;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentLastRead;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTitle;
 
 public class qbf
-  implements Runnable
+  extends qbh
 {
-  public qbf(DeviceComnFileMsgProcessor paramDeviceComnFileMsgProcessor, MessageForDeviceFile paramMessageForDeviceFile) {}
-  
-  public void run()
+  public qbf(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    if (DeviceComnFileMsgProcessor.a(this.jdField_a_of_type_ComTencentDeviceMsgDataDeviceComnFileMsgProcessor).containsKey(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile.uSessionID)))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile.nFileStatus = 23;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile.serial();
-      DeviceComnFileMsgProcessor.a(this.jdField_a_of_type_ComTencentDeviceMsgDataDeviceComnFileMsgProcessor).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile.frienduin, 9501, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile.msgData);
-      DeviceComnFileMsgProcessor.a(this.jdField_a_of_type_ComTencentDeviceMsgDataDeviceComnFileMsgProcessor, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
-      DeviceComnFileMsgProcessor.a(this.jdField_a_of_type_ComTencentDeviceMsgDataDeviceComnFileMsgProcessor).remove(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile.uSessionID));
+    super(paramContext, parambdbb, paramrqj);
+  }
+  
+  public pxl g()
+  {
+    this.jdField_a_of_type_Pxk = new ComponentContentGridImage(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
+  
+  public pxl o()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a(this.jdField_a_of_type_JavaLangObject);
     }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    if (this.jdField_a_of_type_Pxk != null)
+    {
+      if ((this.jdField_a_of_type_Pxk instanceof ComponentContentGridImage)) {
+        ((ComponentContentGridImage)this.jdField_a_of_type_Pxk).setMIReadInJoyModel(this.jdField_a_of_type_JavaLangObject);
+      }
+      this.jdField_a_of_type_Pxk.a(ComponentContentGridImage.a(((pgd)this.jdField_a_of_type_JavaLangObject).a()));
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qbf
  * JD-Core Version:    0.7.0.1
  */

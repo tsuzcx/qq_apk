@@ -1,73 +1,82 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.IBaseTabViewEvent;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import com.tencent.mobileqq.statistics.storage.StorageReport;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.activity.NearbyActivity.TabInfo;
+import com.tencent.mobileqq.fragment.NearbyBaseFragment;
+import com.tencent.mobileqq.widget.TabBarView;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Iterator;
-import java.util.List;
+import java.util.ArrayList;
 
-class adjj
-  extends AsyncTask
+public class adjj
+  implements ViewPager.OnPageChangeListener
 {
-  adjj(adji paramadji) {}
+  public adjj(NearbyActivity paramNearbyActivity) {}
   
-  protected Integer a(Object... paramVarArgs)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    paramVarArgs = FMDataCache.b().iterator();
-    int i = 0;
-    File localFile;
-    for (;;)
+    if (QLog.isColorLevel()) {
+      auwz.a("onPageSelected", new Object[] { Integer.valueOf(this.a.b), Integer.valueOf(this.a.jdField_h_of_type_Int), Integer.valueOf(paramInt) });
+    }
+    Object localObject = this.a;
+    int i = ((NearbyActivity.TabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).tabIndex;
+    ((NearbyActivity)localObject).b = i;
+    NearbyBaseFragment.b = i;
+    if ((this.a.jdField_h_of_type_Long == 0L) && (this.a.b == 2))
     {
-      if (!paramVarArgs.hasNext()) {
-        break label150;
+      this.a.jdField_h_of_type_Long = System.currentTimeMillis();
+      if (QLog.isDevelopLevel()) {
+        auwz.a("WebSpeedTrace", "mClickTime", new Object[] { "onPageSelected", Long.valueOf(this.a.jdField_h_of_type_Long) });
       }
-      FileInfo localFileInfo = (FileInfo)paramVarArgs.next();
-      if (!SendBottomBar.a(this.a.a).a().a(localFileInfo.c())) {
-        try
-        {
-          localFile = new File(localFileInfo.c());
-          if (!localFile.exists()) {
-            QLog.e("delDownloadFiles<FileAssistant>", 1, "local file can scan, is not existed? file:" + localFileInfo.c());
-          }
-        }
-        catch (Exception localException)
-        {
-          QLog.e("delDownloadFiles<FileAssistant>", 1, "del file error:" + localException.toString());
-        }
+    }
+    if ((this.a.jdField_a_of_type_Long == 0L) && (this.a.b == 1))
+    {
+      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+      if (QLog.isDevelopLevel()) {
+        auwz.a("WebSpeedTrace", "mNowClickTime", new Object[] { "onPageSelected", Long.valueOf(this.a.jdField_a_of_type_Long) });
       }
+    }
+    if (this.a.jdField_h_of_type_Int != paramInt) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(paramInt, true);
+    }
+    if (this.a.jdField_h_of_type_Int != -1)
+    {
+      i = this.a.jdField_h_of_type_Int;
+      if (this.a.jdField_h_of_type_Int != this.a.c) {
+        break label411;
+      }
+      i = 9;
     }
     for (;;)
     {
-      break;
-      localFile.delete();
+      if (TextUtils.equals(alud.a(2131707485), ((NearbyActivity.TabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).tabName)) {
+        i = 11;
+      }
+      int j = ((NearbyActivity.TabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).reportId;
+      if (j != 0)
+      {
+        if (QLog.isColorLevel()) {
+          auwz.a("report_switch_tab", new Object[] { ((NearbyActivity.TabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).tabName, Integer.valueOf(j) });
+        }
+        i = j;
+      }
+      auwz.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "switch_tab", i);
+      localObject = this.a.a(paramInt);
+      if (localObject != null) {
+        ((NearbyBaseFragment)localObject).aR_();
+      }
+      return;
+      label411:
       i += 1;
     }
-    label150:
-    StorageReport.a().a(true);
-    return Integer.valueOf(i);
-  }
-  
-  protected void a(Integer paramInteger)
-  {
-    super.onPostExecute(paramInteger);
-    this.a.a.d();
-    if (paramInteger.intValue() != FMDataCache.a()) {
-      FMToastUtil.a(2131428145);
-    }
-    FMDataCache.b();
-    this.a.a.a();
-    SendBottomBar.a(this.a.a).n();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adjj
  * JD-Core Version:    0.7.0.1
  */

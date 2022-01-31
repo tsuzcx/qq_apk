@@ -1,25 +1,26 @@
 package com.tencent.mobileqq.ar;
 
+import amsk;
+import amsl;
+import amzn;
 import android.content.Intent;
 import android.os.IBinder;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager.Stub;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppService;
-import zxh;
 
 public class ARGlobalConfigService
   extends AppService
 {
+  public amsk a;
+  private amzn jdField_a_of_type_Amzn = new amsl(this);
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  public ARGlobalConfigManager a;
-  private IArGlobalConfigManager.Stub jdField_a_of_type_ComTencentMobileqqArAidlIArGlobalConfigManager$Stub = new zxh(this);
   
   public void onAccountChanged()
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime());
-    this.jdField_a_of_type_ComTencentMobileqqArARGlobalConfigManager = ((ARGlobalConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(219));
+    this.jdField_a_of_type_Amsk = ((amsk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(220));
     if (QLog.isColorLevel()) {
       QLog.d("ARGlobalConfigService", 2, "onAccountChanged");
     }
@@ -30,7 +31,7 @@ public class ARGlobalConfigService
     if (QLog.isColorLevel()) {
       QLog.d("ARGlobalConfigService", 2, "onBind");
     }
-    return this.jdField_a_of_type_ComTencentMobileqqArAidlIArGlobalConfigManager$Stub;
+    return this.jdField_a_of_type_Amzn;
   }
   
   public void onCreate()
@@ -39,7 +40,7 @@ public class ARGlobalConfigService
     if ((this.app instanceof QQAppInterface))
     {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.app);
-      this.jdField_a_of_type_ComTencentMobileqqArARGlobalConfigManager = ((ARGlobalConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(219));
+      this.jdField_a_of_type_Amsk = ((amsk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(220));
     }
     if (QLog.isColorLevel()) {
       QLog.d("ARGlobalConfigService", 2, "onCreate");
@@ -64,7 +65,7 @@ public class ARGlobalConfigService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARGlobalConfigService
  * JD-Core Version:    0.7.0.1
  */

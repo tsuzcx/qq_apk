@@ -1,33 +1,21 @@
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
 
 public class yac
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public yac(SelectMemberActivity paramSelectMemberActivity) {}
+  public yac(QRLoginMgrActivity paramQRLoginMgrActivity, ybe paramybe) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    TroopHandler localTroopHandler = (TroopHandler)this.a.app.a(20);
-    if (localTroopHandler != null) {}
-    try
-    {
-      localTroopHandler.b(Long.valueOf(this.a.c));
-      localTroopHandler.a(Long.valueOf(this.a.c));
-      return;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("SelectMemberActivity", 2, "NumberFormatException : mGroupCode = " + this.a.c);
-    }
+    QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity, false, this.jdField_a_of_type_Ybe.a);
+    azqs.b(null, "dc00898", "", "", "0X800A474", "0X800A474", this.jdField_a_of_type_Ybe.c, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yac
  * JD-Core Version:    0.7.0.1
  */

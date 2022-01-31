@@ -1,24 +1,26 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.View;
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.activity.PublicAccountActivity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.EUCountryUtils;
 
-public class dgd
-  implements DialogInterface.OnDismissListener
+class dgd
+  implements DialogInterface.OnClickListener
 {
-  public dgd(PublicAccountActivity paramPublicAccountActivity, int paramInt, TranslateAnimation paramTranslateAnimation) {}
+  dgd(dgb paramdgb) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    PublicAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountActivity).offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    PublicAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountActivity).startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    PublicAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountActivity, null);
+    String str = RegisterPhoneNumActivity.a(this.a.a).getText().toString();
+    QLog.e("testt", 2, "Register cancel uin: " + str);
+    EUCountryUtils.a(str, false);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dgd
  * JD-Core Version:    0.7.0.1
  */

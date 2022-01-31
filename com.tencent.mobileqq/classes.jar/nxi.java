@@ -1,50 +1,28 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.MemoryManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.network.request.GetProfileYearNodeListRequest;
-import com.tencent.biz.qqstory.network.request.GetProfileYearNodeListRequest.GetProfileYearNodeListResponse;
-import com.tencent.biz.qqstory.storyHome.memory.controller.ProfileFeedPresenter;
-import com.tencent.biz.qqstory.storyHome.memory.controller.ProfileFeedPresenter.GetYearNodeListEvent;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.2;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
 
 public class nxi
-  implements CmdTaskManger.CommandCallback
+  implements Animation.AnimationListener
 {
-  public nxi(ProfileFeedPresenter paramProfileFeedPresenter, boolean paramBoolean) {}
+  public nxi(ReadInJoyNaviController.2 param2) {}
   
-  public void a(@NonNull GetProfileYearNodeListRequest paramGetProfileYearNodeListRequest, @Nullable GetProfileYearNodeListRequest.GetProfileYearNodeListResponse arg2, @NonNull ErrorMessage paramErrorMessage)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (ProfileFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter).get())
-    {
-      SLog.e("Q.qqstory.memories.ProfileFeedPresenter", "year node data back when activity has been destroyed.");
-      return;
-    }
-    SLog.a("Q.qqstory.memories.ProfileFeedPresenter", "on year node data back. is successful : %s.", Boolean.valueOf(paramErrorMessage.isSuccess()));
-    paramGetProfileYearNodeListRequest = new ProfileFeedPresenter.GetYearNodeListEvent(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter, paramErrorMessage);
-    paramGetProfileYearNodeListRequest.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    if ((??? == null) || (paramErrorMessage.isFail()))
-    {
-      Dispatchers.get().dispatch(paramGetProfileYearNodeListRequest);
-      return;
-    }
-    paramGetProfileYearNodeListRequest.jdField_a_of_type_JavaUtilList = ???.jdField_a_of_type_JavaUtilList;
-    ((MemoryManager)SuperManager.a(19)).a(???.jdField_a_of_type_JavaUtilList, true);
-    synchronized (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter)
-    {
-      Dispatchers.get().dispatch(paramGetProfileYearNodeListRequest);
-      return;
-    }
+    nxf.a(this.a.this$0, true);
+    nxf.a(this.a.this$0).setAlpha(0.0F);
+    nxf.a(this.a.this$0).removeView(nxf.a(this.a.this$0));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nxi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,37 @@
-import com.tencent.biz.ProtoUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.Doraemon.AppInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import tencent.im.oidb.oidb_0xb61.GetAppinfoReq;
-import tencent.im.oidb.oidb_0xb61.ReqBody;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import org.json.JSONObject;
 
-public class rep
-  extends JobSegment
+class rep
+  implements View.OnClickListener
 {
-  protected void a(JobContext paramJobContext, rem paramrem)
+  rep(rem paramrem) {}
+  
+  public void onClick(View paramView)
   {
-    paramJobContext = BaseApplicationImpl.getApplication().getRuntime();
-    if (paramJobContext == null)
-    {
-      notifyError(new ErrorMessage(-1, "DoraemonOpenAPI.permissionHelper.jobAppInfo|app is null"));
-      return;
+    if (rem.a(this.a) != null) {
+      rem.a(this.a).a(rem.a(this.a));
     }
+    rem.a(this.a).c.setVisibility(8);
+    paramView = new JSONObject();
     try
     {
-      int i = Integer.parseInt(paramrem.a.jdField_a_of_type_JavaLangString);
-      oidb_0xb61.ReqBody localReqBody = new oidb_0xb61.ReqBody();
-      localReqBody.get_appinfo_req.setHasFlag(true);
-      localReqBody.get_appinfo_req.appid.set(i);
-      localReqBody.get_appinfo_req.app_type.set(paramrem.a.jdField_a_of_type_Int);
-      if (QLog.isColorLevel()) {
-        QLog.i("DoraemonOpenAPI.permissionHelper.jobAppInfo", 2, "send type=" + paramrem.a.jdField_a_of_type_Int + ", appid=" + paramrem.a.jdField_a_of_type_JavaLangString);
-      }
-      ProtoUtils.a(paramJobContext, new req(this, paramrem), localReqBody.toByteArray(), "OidbSvc.0xb61_1", 2913, 1, null, 0L);
+      paramView.put("uin", rem.a(this.a).getCurrentAccountUin());
+      label67:
+      nrt.a(null, null, "0X8009BF1", "0X8009BF1", 0, 0, "", "", "", ntd.a(null, null, rem.a(this.a).a.a.a, rem.a(this.a).a.a.g, paramView), false);
       return;
     }
-    catch (NumberFormatException paramJobContext)
+    catch (Exception localException)
     {
-      notifyError(new ErrorMessage(-1, "DoraemonOpenAPI.permissionHelper.jobAppInfo|parse appid error"));
+      break label67;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rep
  * JD-Core Version:    0.7.0.1
  */

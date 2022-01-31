@@ -1,18 +1,21 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
 
-final class az
-  implements View.OnClickListener
+class az
+  extends Handler
 {
-  az(BaseActivity paramBaseActivity, DialogInterface.OnClickListener paramOnClickListener) {}
+  az(ax paramax) {}
   
-  public final void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.b.dismissDialog();
-    this.a.onClick(BaseActivity.access$400(this.b), -2);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    postDelayed(ax.a(this.a), 50L);
   }
 }
 

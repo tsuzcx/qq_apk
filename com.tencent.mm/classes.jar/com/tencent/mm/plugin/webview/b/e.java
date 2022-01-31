@@ -1,0 +1,28 @@
+package com.tencent.mm.plugin.webview.b;
+
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.e.j;
+
+public final class e
+  extends j<d>
+{
+  public static final String[] SQL_CREATE;
+  
+  static
+  {
+    AppMethodBeat.i(5648);
+    SQL_CREATE = new String[] { j.getCreateSQLs(d.info, "WebViewHistory") };
+    AppMethodBeat.o(5648);
+  }
+  
+  public e(com.tencent.mm.sdk.e.e parame)
+  {
+    super(parame, d.info, "WebViewHistory", null);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+ * Qualified Name:     com.tencent.mm.plugin.webview.b.e
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import akfw;
-import akfx;
+import bdmk;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,14 +9,14 @@ public class RandomAccessFileManager
 {
   private static RandomAccessFileManager jdField_a_of_type_ComTencentMobileqqUtilsRandomAccessFileManager = new RandomAccessFileManager();
   private Runnable jdField_a_of_type_JavaLangRunnable;
-  private Map jdField_a_of_type_JavaUtilMap = new HashMap();
+  private Map<String, bdmk> jdField_a_of_type_JavaUtilMap = new HashMap();
   private byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private Map jdField_b_of_type_JavaUtilMap = new HashMap();
+  private Map<String, bdmk> jdField_b_of_type_JavaUtilMap = new HashMap();
   private byte[] jdField_b_of_type_ArrayOfByte = new byte[0];
   
-  private akfx a(String paramString, Map paramMap)
+  private bdmk a(String paramString, Map<String, bdmk> paramMap)
   {
-    paramMap = (akfx)paramMap.get(paramString);
+    paramMap = (bdmk)paramMap.get(paramString);
     int i;
     if (paramMap != null)
     {
@@ -31,12 +30,12 @@ public class RandomAccessFileManager
       if (i != 0)
       {
         return paramString;
-        akfx localakfx = paramString.jdField_a_of_type_Akfx;
-        paramString = localakfx;
-        if (localakfx != paramMap) {
+        bdmk localbdmk = paramString.jdField_a_of_type_Bdmk;
+        paramString = localbdmk;
+        if (localbdmk != paramMap) {
           break;
         }
-        paramString = localakfx;
+        paramString = localbdmk;
         i = 0;
         continue;
       }
@@ -60,67 +59,67 @@ public class RandomAccessFileManager
     }
   }
   
-  private void a(akfx paramakfx1, akfx paramakfx2, String paramString, Map paramMap)
+  private void a(bdmk parambdmk1, bdmk parambdmk2, String paramString, Map<String, bdmk> paramMap)
   {
-    if (paramakfx1 == null) {
-      paramakfx1 = (akfx)paramMap.get(paramString);
+    if (parambdmk1 == null) {
+      parambdmk1 = (bdmk)paramMap.get(paramString);
     }
     for (;;)
     {
-      if ((paramakfx1 == null) || (paramakfx2 == null)) {
+      if ((parambdmk1 == null) || (parambdmk2 == null)) {
         return;
       }
-      if (paramakfx2 == paramakfx1)
+      if (parambdmk2 == parambdmk1)
       {
-        if ((paramakfx1.jdField_a_of_type_Akfx != paramakfx1) && (paramakfx1.jdField_a_of_type_Akfx != null)) {
+        if ((parambdmk1.jdField_a_of_type_Bdmk != parambdmk1) && (parambdmk1.jdField_a_of_type_Bdmk != null)) {
           break label87;
         }
         paramMap.remove(paramString);
       }
       for (;;)
       {
-        paramakfx2.jdField_b_of_type_Akfx.jdField_a_of_type_Akfx = paramakfx2.jdField_a_of_type_Akfx;
-        paramakfx2.jdField_a_of_type_Akfx.jdField_b_of_type_Akfx = paramakfx2.jdField_b_of_type_Akfx;
-        paramakfx2.jdField_a_of_type_Akfx = null;
-        paramakfx2.jdField_b_of_type_Akfx = null;
+        parambdmk2.jdField_b_of_type_Bdmk.jdField_a_of_type_Bdmk = parambdmk2.jdField_a_of_type_Bdmk;
+        parambdmk2.jdField_a_of_type_Bdmk.jdField_b_of_type_Bdmk = parambdmk2.jdField_b_of_type_Bdmk;
+        parambdmk2.jdField_a_of_type_Bdmk = null;
+        parambdmk2.jdField_b_of_type_Bdmk = null;
         return;
         label87:
-        paramMap.put(paramString, paramakfx1.jdField_a_of_type_Akfx);
+        paramMap.put(paramString, parambdmk1.jdField_a_of_type_Bdmk);
       }
     }
   }
   
-  private void a(akfx paramakfx, String paramString, Map paramMap)
+  private void a(bdmk parambdmk, String paramString, Map<String, bdmk> paramMap)
   {
-    akfx localakfx = (akfx)paramMap.get(paramString);
-    if (paramakfx == null) {
+    bdmk localbdmk = (bdmk)paramMap.get(paramString);
+    if (parambdmk == null) {
       return;
     }
-    if (localakfx == null)
+    if (localbdmk == null)
     {
-      paramakfx.jdField_b_of_type_Akfx = paramakfx;
-      paramakfx.jdField_a_of_type_Akfx = paramakfx;
-      paramMap.put(paramString, paramakfx);
+      parambdmk.jdField_b_of_type_Bdmk = parambdmk;
+      parambdmk.jdField_a_of_type_Bdmk = parambdmk;
+      paramMap.put(paramString, parambdmk);
       return;
     }
-    paramakfx.jdField_a_of_type_Akfx = localakfx;
-    paramakfx.jdField_b_of_type_Akfx = localakfx.jdField_b_of_type_Akfx;
-    localakfx.jdField_b_of_type_Akfx.jdField_a_of_type_Akfx = paramakfx;
-    localakfx.jdField_b_of_type_Akfx = paramakfx;
+    parambdmk.jdField_a_of_type_Bdmk = localbdmk;
+    parambdmk.jdField_b_of_type_Bdmk = localbdmk.jdField_b_of_type_Bdmk;
+    localbdmk.jdField_b_of_type_Bdmk.jdField_a_of_type_Bdmk = parambdmk;
+    localbdmk.jdField_b_of_type_Bdmk = parambdmk;
   }
   
-  private void a(String arg1, akfx paramakfx)
+  private void a(String arg1, bdmk parambdmk)
   {
-    paramakfx.jdField_b_of_type_Long = System.currentTimeMillis();
+    parambdmk.jdField_b_of_type_Long = System.currentTimeMillis();
     synchronized (this.jdField_a_of_type_ArrayOfByte)
     {
-      a(paramakfx, ???, this.jdField_b_of_type_JavaUtilMap);
+      a(parambdmk, ???, this.jdField_b_of_type_JavaUtilMap);
     }
     synchronized (this.jdField_b_of_type_ArrayOfByte)
     {
       if (this.jdField_a_of_type_JavaLangRunnable == null)
       {
-        this.jdField_a_of_type_JavaLangRunnable = new akfw(this);
+        this.jdField_a_of_type_JavaLangRunnable = new RandomAccessFileManager.CloseThread(this);
         ThreadManager.post(this.jdField_a_of_type_JavaLangRunnable, 8, null, false);
       }
       return;
@@ -138,23 +137,23 @@ public class RandomAccessFileManager
     //   2: aload_0
     //   3: aload_1
     //   4: aload_0
-    //   5: getfield 24	com/tencent/mobileqq/utils/RandomAccessFileManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   8: invokespecial 99	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Ljava/lang/String;Ljava/util/Map;)Lakfx;
+    //   5: getfield 25	com/tencent/mobileqq/utils/RandomAccessFileManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   8: invokespecial 104	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Ljava/lang/String;Ljava/util/Map;)Lbdmk;
     //   11: astore_3
     //   12: aload_3
     //   13: astore_2
     //   14: aload_3
     //   15: ifnonnull +55 -> 70
     //   18: aload_0
-    //   19: getfield 28	com/tencent/mobileqq/utils/RandomAccessFileManager:jdField_a_of_type_ArrayOfByte	[B
+    //   19: getfield 29	com/tencent/mobileqq/utils/RandomAccessFileManager:jdField_a_of_type_ArrayOfByte	[B
     //   22: astore_2
     //   23: aload_2
     //   24: monitorenter
     //   25: aload_0
     //   26: aload_1
     //   27: aload_0
-    //   28: getfield 26	com/tencent/mobileqq/utils/RandomAccessFileManager:jdField_b_of_type_JavaUtilMap	Ljava/util/Map;
-    //   31: invokespecial 99	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Ljava/lang/String;Ljava/util/Map;)Lakfx;
+    //   28: getfield 27	com/tencent/mobileqq/utils/RandomAccessFileManager:jdField_b_of_type_JavaUtilMap	Ljava/util/Map;
+    //   31: invokespecial 104	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Ljava/lang/String;Ljava/util/Map;)Lbdmk;
     //   34: astore_3
     //   35: aload_3
     //   36: ifnull +14 -> 50
@@ -163,8 +162,8 @@ public class RandomAccessFileManager
     //   41: aload_3
     //   42: aload_1
     //   43: aload_0
-    //   44: getfield 26	com/tencent/mobileqq/utils/RandomAccessFileManager:jdField_b_of_type_JavaUtilMap	Ljava/util/Map;
-    //   47: invokespecial 74	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Lakfx;Lakfx;Ljava/lang/String;Ljava/util/Map;)V
+    //   44: getfield 27	com/tencent/mobileqq/utils/RandomAccessFileManager:jdField_b_of_type_JavaUtilMap	Ljava/util/Map;
+    //   47: invokespecial 79	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Lbdmk;Lbdmk;Ljava/lang/String;Ljava/util/Map;)V
     //   50: aload_2
     //   51: monitorexit
     //   52: aload_3
@@ -175,60 +174,60 @@ public class RandomAccessFileManager
     //   59: aload_3
     //   60: aload_1
     //   61: aload_0
-    //   62: getfield 24	com/tencent/mobileqq/utils/RandomAccessFileManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   65: invokespecial 84	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Lakfx;Ljava/lang/String;Ljava/util/Map;)V
+    //   62: getfield 25	com/tencent/mobileqq/utils/RandomAccessFileManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   65: invokespecial 89	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Lbdmk;Ljava/lang/String;Ljava/util/Map;)V
     //   68: aload_3
     //   69: astore_2
     //   70: aload_2
     //   71: astore_3
     //   72: aload_2
     //   73: ifnonnull +85 -> 158
-    //   76: new 39	akfx
+    //   76: new 40	bdmk
     //   79: dup
     //   80: aload_0
-    //   81: invokespecial 100	akfx:<init>	(Lcom/tencent/mobileqq/utils/RandomAccessFileManager;)V
+    //   81: invokespecial 105	bdmk:<init>	(Lcom/tencent/mobileqq/utils/RandomAccessFileManager;)V
     //   84: astore_3
     //   85: aload_3
-    //   86: new 102	java/io/RandomAccessFile
+    //   86: new 107	java/io/RandomAccessFile
     //   89: dup
     //   90: aload_1
-    //   91: ldc 104
-    //   93: invokespecial 107	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   96: putfield 110	akfx:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
+    //   91: ldc 109
+    //   93: invokespecial 112	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   96: putfield 115	bdmk:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
     //   99: aload_3
-    //   100: invokestatic 48	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   103: invokevirtual 52	java/lang/Thread:getId	()J
-    //   106: putfield 42	akfx:jdField_a_of_type_Long	J
-    //   109: invokestatic 116	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   100: invokestatic 49	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   103: invokevirtual 53	java/lang/Thread:getId	()J
+    //   106: putfield 43	bdmk:jdField_a_of_type_Long	J
+    //   109: invokestatic 121	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   112: ifeq +36 -> 148
-    //   115: ldc 118
+    //   115: ldc 123
     //   117: iconst_2
-    //   118: invokestatic 123	com/tencent/mobileqq/activity/aio/AIOUtils:a	()Ljava/lang/StringBuilder;
-    //   121: ldc 125
-    //   123: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   118: invokestatic 128	aepi:a	()Ljava/lang/StringBuilder;
+    //   121: ldc 130
+    //   123: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   126: aload_1
-    //   127: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   130: ldc 133
-    //   132: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   127: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   130: ldc 138
+    //   132: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   135: aload_3
-    //   136: getfield 42	akfx:jdField_a_of_type_Long	J
-    //   139: invokevirtual 136	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   142: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   145: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   136: getfield 43	bdmk:jdField_a_of_type_Long	J
+    //   139: invokevirtual 141	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   142: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   145: invokestatic 149	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   148: aload_0
     //   149: aload_3
     //   150: aload_1
     //   151: aload_0
-    //   152: getfield 24	com/tencent/mobileqq/utils/RandomAccessFileManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   155: invokespecial 84	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Lakfx;Ljava/lang/String;Ljava/util/Map;)V
+    //   152: getfield 25	com/tencent/mobileqq/utils/RandomAccessFileManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   155: invokespecial 89	com/tencent/mobileqq/utils/RandomAccessFileManager:a	(Lbdmk;Ljava/lang/String;Ljava/util/Map;)V
     //   158: aload_3
     //   159: aload_3
-    //   160: getfield 147	akfx:jdField_a_of_type_Int	I
+    //   160: getfield 152	bdmk:jdField_a_of_type_Int	I
     //   163: iconst_1
     //   164: iadd
-    //   165: putfield 147	akfx:jdField_a_of_type_Int	I
+    //   165: putfield 152	bdmk:jdField_a_of_type_Int	I
     //   168: aload_3
-    //   169: getfield 110	akfx:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
+    //   169: getfield 115	bdmk:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
     //   172: astore_1
     //   173: aload_0
     //   174: monitorexit
@@ -268,14 +267,14 @@ public class RandomAccessFileManager
   {
     try
     {
-      akfx localakfx = a(paramString, this.jdField_a_of_type_JavaUtilMap);
-      if (localakfx != null)
+      bdmk localbdmk = a(paramString, this.jdField_a_of_type_JavaUtilMap);
+      if (localbdmk != null)
       {
-        localakfx.jdField_a_of_type_Int -= 1;
-        if (localakfx.jdField_a_of_type_Int == 0)
+        localbdmk.jdField_a_of_type_Int -= 1;
+        if (localbdmk.jdField_a_of_type_Int == 0)
         {
-          a(null, localakfx, paramString, this.jdField_a_of_type_JavaUtilMap);
-          a(paramString, localakfx);
+          a(null, localbdmk, paramString, this.jdField_a_of_type_JavaUtilMap);
+          a(paramString, localbdmk);
         }
       }
       return;
@@ -285,7 +284,7 @@ public class RandomAccessFileManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.RandomAccessFileManager
  * JD-Core Version:    0.7.0.1
  */

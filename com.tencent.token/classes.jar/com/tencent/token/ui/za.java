@@ -1,17 +1,37 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.AsyncTask;
+import com.tencent.token.fe;
+import java.util.Iterator;
+import java.util.List;
 
-final class za
-  implements View.OnClickListener
+class za
+  extends AsyncTask
 {
-  za(ScanLoginConfirmLoginActivity paramScanLoginConfirmLoginActivity) {}
+  private za(ShowLogActivity paramShowLogActivity) {}
   
-  public final void onClick(View paramView)
+  protected Void a(Void... paramVarArgs)
   {
-    new zb(this).a(new String[0]);
-    this.a.showUserDialog(11);
+    fe.h();
+    paramVarArgs = ShowLogActivity.access$400(this.a).iterator();
+    while (paramVarArgs.hasNext())
+    {
+      zf localzf = (zf)paramVarArgs.next();
+      localzf.a.b();
+      localzf.b = -1;
+    }
+    return null;
+  }
+  
+  protected void a(Void paramVoid)
+  {
+    ShowLogActivity.access$500(this.a, null);
+    this.a.dismissDialog();
+  }
+  
+  protected void onPreExecute()
+  {
+    this.a.showProDialog(this.a, 2131231424, new zb(this));
   }
 }
 

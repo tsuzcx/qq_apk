@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.extendfriend.utils.ExtendFriendReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class acjv
-  implements Runnable
+public final class acjv
+  implements DialogInterface.OnCancelListener
 {
-  public acjv(ExtendFriendReport paramExtendFriendReport, String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap paramHashMap, String paramString3) {}
+  public acjv(aclo paramaclo, acln paramacln) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    try
-    {
-      StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, this.c);
-      return;
+    if (this.jdField_a_of_type_Aclo.a) {
+      azqs.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
     }
-    catch (Exception localException) {}
+    if (this.jdField_a_of_type_Acln != null) {
+      this.jdField_a_of_type_Acln.a();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

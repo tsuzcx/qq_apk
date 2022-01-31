@@ -1,29 +1,28 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.activity.qwallet.RedPacketRecordFragment;
+import com.tencent.widget.AbsListView;
+import java.util.ArrayList;
 
-public class xbb
-  implements View.OnClickListener
+class xbb
+  implements bhtv
 {
-  public xbb(RedPacketRecordFragment paramRedPacketRecordFragment) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void onClick(View paramView)
+  xbb(xba paramxba) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((!this.a.e()) && (RedPacketRecordFragment.a(this.a) != null) && (paramView != null))
-    {
-      Intent localIntent = new Intent(paramView.getContext(), PayBridgeActivity.class);
-      localIntent.putExtras(RedPacketRecordFragment.a(this.a));
-      localIntent.putExtra("pay_requestcode", 5);
-      paramView.getContext().startActivity(localIntent);
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((paramInt == 0) && (this.jdField_a_of_type_Xba.a != null) && (this.jdField_a_of_type_Int == this.jdField_a_of_type_Xba.a.size() - 1)) {
+      this.jdField_a_of_type_Xba.f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xbb
  * JD-Core Version:    0.7.0.1
  */

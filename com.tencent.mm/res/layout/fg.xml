@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/q1">
+        <ImageView android:id="@id/a26" android:layout_width="160.0dip" android:layout_height="160.0dip" android:layout_marginTop="32.0dip" android:src="@raw/backup_move" android:scaleType="centerInside" />
+        <TextView android:textSize="18.0dip" android:textColor="@color/h6" android:id="@id/a2d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginTop="32.0dip" android:layout_marginRight="25.0dip" android:text="@string/a2a" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/w_" android:id="@id/a2e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="16.0dip" android:text="@string/a2_" />
+        <Button android:id="@id/a2f" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ft" android:layout_marginTop="32.0dip" android:layout_marginRight="@dimen/ft" android:text="@string/a28" style="@style/nq" />
+    </LinearLayout>
+</ScrollView>

@@ -1,57 +1,119 @@
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
-import com.tencent.mobileqq.nearby.now.model.PicFeedUploadInfo;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFailedAdapter;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.StructMsgSubImageVideo;
+import com.tencent.mobileqq.structmsg.StructMsgSubImageVideo.ImageItem;
+import com.tencent.mobileqq.structmsg.StructMsgSubImageVideo.VideoItem;
 
 class afke
-  implements Runnable
+  implements View.OnClickListener
 {
-  afke(afkd paramafkd, PicFeedUploadInfo paramPicFeedUploadInfo, VideoFeedsUploader.UploadResult paramUploadResult) {}
+  afke(afkd paramafkd) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    int i = 0;
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelPicFeedUploadInfo != null)
+    int j = 1;
+    paramView = paramView.getTag();
+    if (!(paramView instanceof afkf)) {}
+    afkf localafkf;
+    label42:
+    do
     {
-      ConnectNearbyProcService.a(4155, new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.a), NearbyMomentFailedAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelPicFeedUploadInfo, this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult) });
-      if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelPicFeedUploadInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.a == 0)) {
-        break label201;
+      do
+      {
+        return;
+        localafkf = (afkf)paramView;
+        paramView = afkf.a(localafkf);
+        if (!TextUtils.isEmpty(paramView)) {
+          break;
+        }
+        Log.i("AutoVideoItemBuilder", "onClick: empty schema");
+        paramView = bdib.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.a.jdField_a_of_type_AndroidContentContext, paramView);
+        if (paramView != null) {
+          paramView.c();
+        }
+      } while (!(localafkf.a instanceof MessageForStructing));
+      paramView = (MessageForStructing)localafkf.a;
+    } while (!(paramView.structingMsg instanceof StructMsgSubImageVideo));
+    paramView = (StructMsgSubImageVideo)paramView.structingMsg;
+    label125:
+    int i;
+    label195:
+    label213:
+    int k;
+    if (paramView.getVideoItem() != null)
+    {
+      paramView = paramView.getVideoItem().title;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+        break label461;
       }
-      QQToast.a(BaseApplicationImpl.getContext(), 1, "发表失败，请重试", 1).a();
-      QLog.i("NearbyMomentFailedAdapter", 1, "upload failed, errMsg=" + this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.i + "code=" + this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.a);
-      label124:
-      localObject = BaseApplicationImpl.getApplication().peekAppRuntime();
-      if (!(localObject instanceof QQAppInterface)) {
-        break label226;
+      azqs.b(null, "dc00898", "", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "auth_aio", "clk_content", 0, 0, "", "", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, paramView);
+      return;
+      if ((!paramView.contains("&width=")) && (!paramView.contains("?width=")))
+      {
+        i = 1;
+        if ((paramView.contains("&height=")) || (paramView.contains("?height="))) {
+          break label308;
+        }
+        if ((i == 0) && (j == 0)) {
+          break label469;
+        }
+        k = paramView.indexOf("?");
+        if (k >= 0) {
+          break label313;
+        }
+        paramView = paramView + "?width=" + localafkf.e + "&height=" + localafkf.f;
       }
     }
-    label201:
-    label226:
-    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
+    label275:
+    label308:
+    label313:
+    label461:
+    label469:
+    for (;;)
     {
-      NowVideoReporter localNowVideoReporter = new NowVideoReporter().h("video_public").i("re_republic").d("5").c("2");
-      if (i != 0) {}
-      for (String str = "1";; str = "2")
+      Log.i("AutoVideoItemBuilder", "onClick: " + paramView);
+      break label42;
+      i = 0;
+      break label195;
+      j = 0;
+      break label213;
+      if (k == paramView.length() - 1)
       {
-        localNowVideoReporter.e(str).b((QQAppInterface)localObject);
-        return;
-        QLog.i("NearbyMomentFailedAdapter", 1, "mImageUploadListener, sendIPCMessage failed, info == null");
-        break;
-        QQToast.a(BaseApplicationImpl.getContext(), 2, "发表成功", 1).a();
-        i = 1;
-        break label124;
+        paramView = paramView + "width=" + localafkf.e + "&height=" + localafkf.f;
+      }
+      else
+      {
+        if (i != 0) {}
+        for (Object localObject = paramView + "&width=" + localafkf.e;; localObject = paramView)
+        {
+          paramView = (View)localObject;
+          if (j == 0) {
+            break label275;
+          }
+          paramView = (String)localObject + "&height=" + localafkf.f;
+          break label275;
+          if (paramView.getImageItem() != null)
+          {
+            paramView = paramView.getImageItem().title;
+            break label125;
+          }
+          paramView = null;
+          break label125;
+          break;
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afke
  * JD-Core Version:    0.7.0.1
  */

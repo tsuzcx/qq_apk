@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class AudioTransInterfaceTranslate$IntTransReqBody
-  extends MessageMicro
+  extends MessageMicro<IntTransReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 66 }, new String[] { "msg_join_session_req", "msg_change_session_req", "msg_exit_session_req", "msg_raw_data_req", "msg_client_report_req", "msg_push_data_req", "msg_data_timeout_req", "msg_report_change_req" }, new Object[] { null, null, null, null, null, null, null, null }, IntTransReqBody.class);
   public AudioTransInterfaceTranslate.IntTransChangeSessionReq msg_change_session_req = new AudioTransInterfaceTranslate.IntTransChangeSessionReq();
@@ -18,7 +18,7 @@ public final class AudioTransInterfaceTranslate$IntTransReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.audiotrans.AudioTransInterfaceTranslate.IntTransReqBody
  * JD-Core Version:    0.7.0.1
  */

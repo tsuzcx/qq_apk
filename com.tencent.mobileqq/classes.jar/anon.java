@@ -1,23 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.text.TextParcelData;
-
-public final class anon
-  implements Parcelable.Creator
+public class anon
 {
-  public TextParcelData a(Parcel paramParcel)
-  {
-    return new TextParcelData(paramParcel);
-  }
+  public int a;
+  public String a;
   
-  public TextParcelData[] a(int paramInt)
+  public anon()
   {
-    return new TextParcelData[paramInt];
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anon
  * JD-Core Version:    0.7.0.1
  */

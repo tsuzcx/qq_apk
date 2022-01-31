@@ -1,25 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
-public class czd
-  implements DialogInterface.OnClickListener
+class czd
+  implements Runnable
 {
-  public czd(LoginActivity paramLoginActivity) {}
+  czd(czc paramczc, boolean paramBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      return;
-    }
-    catch (Exception paramDialogInterface) {}
+    PermisionPrivacyActivity.a(this.jdField_a_of_type_Czc.a, this.jdField_a_of_type_Czc.a.b.a(), this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     czd
  * JD-Core Version:    0.7.0.1
  */

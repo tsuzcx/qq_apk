@@ -1,14 +1,10 @@
-import com.tencent.mobileqq.fragment.NowLiveFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class adnw
-  implements Runnable
+public final class adnw
+  implements DialogInterface.OnClickListener
 {
-  adnw(adnv paramadnv) {}
-  
-  public void run()
-  {
-    this.a.a.e();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

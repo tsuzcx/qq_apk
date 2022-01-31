@@ -1,21 +1,21 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class noi
-  implements AudioManager.OnAudioFocusChangeListener
+class noi
+  implements View.OnClickListener
 {
-  public noi(StoryPlayVideoActivity paramStoryPlayVideoActivity) {}
+  noi(noe paramnoe) {}
   
-  public void onAudioFocusChange(int paramInt)
+  public void onClick(View paramView)
   {
-    if (((paramInt == -1) || (paramInt == -2) || (paramInt == -3)) && (this.a.isResume())) {
-      this.a.e();
-    }
+    this.a.a.dismiss();
+    noe.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     noi
  * JD-Core Version:    0.7.0.1
  */

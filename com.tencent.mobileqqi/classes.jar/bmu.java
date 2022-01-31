@@ -1,27 +1,16 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.PoiMapActivity;
+import com.tencent.biz.qrcode.activity.QRLoginActivity;
 
-public class bmu
-  implements Animation.AnimationListener
+class bmu
+  implements Runnable
 {
-  public bmu(PoiMapActivity paramPoiMapActivity) {}
+  bmu(bmt parambmt, Drawable paramDrawable) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    paramAnimation = (RelativeLayout.LayoutParams)this.a.d.getLayoutParams();
-    paramAnimation.bottomMargin = (this.a.k - this.a.j);
-    this.a.d.setLayoutParams(paramAnimation);
-    this.a.d.clearAnimation();
-    this.a.a.setImageResource(2130838342);
+    this.jdField_a_of_type_Bmt.a.a.b.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

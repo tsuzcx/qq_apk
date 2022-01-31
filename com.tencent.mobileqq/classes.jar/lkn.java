@@ -1,29 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-
-public final class lkn
-  implements Runnable
+public class lkn
 {
-  public lkn(QQAppInterface paramQQAppInterface) {}
+  int a;
+  int b;
   
-  public void run()
+  public lkn(int paramInt1, int paramInt2)
   {
-    if ((this.a == null) || (!this.a.isLogin())) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!ReadInJoyUtils.i());
-      ReadInJoyUtils.e(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.d("ReadInJoyUtils", 2, "handNet2Wifi is show conversation");
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lkn
  * JD-Core Version:    0.7.0.1
  */

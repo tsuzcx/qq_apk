@@ -1,34 +1,77 @@
-import com.tencent.mobileqq.richmedia.dc.DCShortVideo;
-import com.tencent.mobileqq.richmedia.dc.DataReport;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.Nullable;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ahnq
-  implements Runnable
 {
-  public ahnq(DCShortVideo paramDCShortVideo, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, long paramLong) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
   
-  public void run()
+  public static ahnq a(ahnq paramahnq)
   {
-    ahnw localahnw = new ahnw();
-    localahnw.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    localahnw.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localahnw.b = this.b;
-    localahnw.c = this.c;
-    localahnw.d = this.d;
-    localahnw.e = this.e;
-    localahnw.f = this.f;
-    localahnw.g = this.g;
-    localahnw.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    ahnz localahnz = new ahnz("actStreamingVideoPlay", localahnw.a("actStreamingVideoPlay"));
-    DataReport.a().a(localahnz);
-    if (QLog.isColorLevel()) {
-      QLog.d("DCShortVideo", 2, "reportProgressivePlayData():" + localahnw.toString());
+    ahnq localahnq = new ahnq();
+    if (paramahnq != null)
+    {
+      localahnq.jdField_a_of_type_Int = paramahnq.jdField_a_of_type_Int;
+      localahnq.jdField_a_of_type_JavaLangString = paramahnq.jdField_a_of_type_JavaLangString;
+      localahnq.jdField_b_of_type_Int = paramahnq.jdField_b_of_type_Int;
+      localahnq.jdField_b_of_type_JavaLangString = paramahnq.jdField_b_of_type_JavaLangString;
+      localahnq.c = paramahnq.c;
     }
+    return localahnq;
+  }
+  
+  public static ahnq a(JSONObject paramJSONObject)
+  {
+    ahnq localahnq = new ahnq();
+    if (paramJSONObject != null)
+    {
+      localahnq.jdField_a_of_type_Int = paramJSONObject.optInt("tab_id", -1);
+      localahnq.jdField_b_of_type_Int = paramJSONObject.optInt("recommend_count", 0);
+      localahnq.jdField_a_of_type_JavaLangString = paramJSONObject.optString("tab_name");
+      localahnq.jdField_b_of_type_JavaLangString = paramJSONObject.optString("icon_url_select");
+      localahnq.c = paramJSONObject.optString("icon_url_unselect");
+    }
+    return localahnq;
+  }
+  
+  public static JSONObject a(ahnq paramahnq)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    if (paramahnq != null) {}
+    try
+    {
+      localJSONObject.put("tab_id", paramahnq.jdField_a_of_type_Int);
+      localJSONObject.put("recommend_count", paramahnq.jdField_b_of_type_Int);
+      localJSONObject.put("tab_name", paramahnq.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("icon_url_select", paramahnq.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("icon_url_unselect", paramahnq.c);
+      return localJSONObject;
+    }
+    catch (JSONException paramahnq) {}
+    return localJSONObject;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if ((paramObject instanceof ahnq)) {
+      return this.jdField_a_of_type_Int == ((ahnq)paramObject).jdField_a_of_type_Int;
+    }
+    return super.equals(paramObject);
+  }
+  
+  public String toString()
+  {
+    return "tab_id=" + this.jdField_a_of_type_Int + " recommend_count=" + this.jdField_b_of_type_Int + " tab_name=" + this.jdField_a_of_type_JavaLangString + " icon_url_select=" + this.jdField_b_of_type_JavaLangString + " icon_url_unselect=" + this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahnq
  * JD-Core Version:    0.7.0.1
  */

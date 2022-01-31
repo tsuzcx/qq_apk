@@ -1,34 +1,22 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.util.VersionUtils;
-import com.tencent.widget.PatchedButton;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
 public class rsj
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements ViewFactory.FoundClickableViewListener
 {
-  public rsj(BaseChatPie paramBaseChatPie) {}
+  public rsj(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, ProteusItemData paramProteusItemData, FastWebActivity paramFastWebActivity) {}
   
-  public void onGlobalLayout()
+  public void onFound(ViewBase paramViewBase)
   {
-    int i = ((View)this.a.a.getParent()).getHeight() - this.a.a.getBottom();
-    this.a.e.setPadding(0, 0, 0, i);
-    if (i > 0)
-    {
-      if (VersionUtils.g()) {
-        this.a.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-      }
-    }
-    else {
-      return;
-    }
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    paramViewBase.setOnClickListener(new rsk(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rsj
  * JD-Core Version:    0.7.0.1
  */

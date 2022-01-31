@@ -1,31 +1,50 @@
+import android.graphics.Canvas;
 import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
-import com.tencent.mobileqq.activity.qwallet.widget.QwScrollView.OnQwScrollListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.InputMethodUtil;
-import com.tencent.widget.ScrollView;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
 
-public class xdm
-  implements QwScrollView.OnQwScrollListener
+public final class xdm
+  extends xeh
 {
-  public xdm(CommonHbFragment paramCommonHbFragment) {}
-  
-  public void onScrollChanged(Boolean paramBoolean, ScrollView paramScrollView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
-  
-  public void onTouch(ScrollView paramScrollView, MotionEvent paramMotionEvent)
+  public xdm(DoodleView paramDoodleView)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("CommonHbFragment", 2, "onScrollChanged...");
-      }
-      InputMethodUtil.a(this.a.a);
-    }
+    super(paramDoodleView);
+  }
+  
+  public String a()
+  {
+    return "EmptyLayer";
+  }
+  
+  public void a() {}
+  
+  protected void a(Canvas paramCanvas) {}
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public void b(Canvas paramCanvas) {}
+  
+  public boolean b(MotionEvent paramMotionEvent)
+  {
+    wxe.b("EmptyLayer", "EmptyLayer handle touch event.");
+    return false;
+  }
+  
+  public boolean c(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xdm
  * JD-Core Version:    0.7.0.1
  */

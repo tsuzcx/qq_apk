@@ -1,52 +1,24 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.SSOAccountObserver;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 
 public class adlr
-  extends SSOAccountObserver
+  implements View.OnClickListener
 {
-  WeakReference a;
+  public adlr(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public adlr(ForwardSdkBaseOption paramForwardSdkBaseOption)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramForwardSdkBaseOption);
-  }
-  
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardSdkBaseOption", 2, "-->onFailed--account = " + paramString + ", ret = " + paramInt2);
-    }
-    paramString = (ForwardSdkBaseOption)this.a.get();
-    if ((paramString != null) && (!paramString.k) && (ForwardSdkBaseOption.a(paramString) != null)) {
-      ForwardSdkBaseOption.a(paramString).sendEmptyMessage(0);
-    }
-  }
-  
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardSdkBaseOption", 2, "-->onGetTicketNoPasswd--recv g_t_n_p, account = " + paramString);
-    }
-    if (paramInt == 4096) {}
-    for (paramString = new String(paramArrayOfByte);; paramString = null)
-    {
-      paramArrayOfByte = (ForwardSdkBaseOption)this.a.get();
-      if (paramArrayOfByte != null)
-      {
-        paramArrayOfByte.i = paramString;
-        paramArrayOfByte.k = true;
-      }
-      return;
-    }
+    paramView = new Intent(this.a.getActivity(), SoundAndVibrateActivity.class);
+    this.a.startActivity(paramView);
+    azqs.b(this.a.app, "CliOper", "", "", "0X800403C", "0X800403C", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adlr
  * JD-Core Version:    0.7.0.1
  */

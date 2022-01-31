@@ -1,28 +1,14 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import com.tencent.TMG.sdk.AVContext.StartParam;
 
 public class algs
-  implements Runnable
+  extends AVContext.StartParam
 {
-  public algs(DownloadManager paramDownloadManager, String paramString) {}
-  
-  public void run()
-  {
-    try
-    {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().pauseDownloadTask(this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    catch (Exception localException)
-    {
-      LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "downloadSDKClient>>>", localException);
-    }
-  }
+  public int a;
+  public long a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     algs
  * JD-Core Version:    0.7.0.1
  */

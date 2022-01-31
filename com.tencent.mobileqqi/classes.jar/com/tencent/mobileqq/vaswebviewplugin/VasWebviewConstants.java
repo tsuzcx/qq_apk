@@ -68,13 +68,13 @@ public class VasWebviewConstants
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("http://imgcache.qq.com/club/themes/mobile/head_pendant/html/index.html").append("?client=androidQQ").append("&version=").append("6.0.0.6500").append("&system=").append(Build.VERSION.RELEASE).append("&device=").append(Build.DEVICE).append("&updateFlag=[updateFlag]").append("&_bid=160").append("&_wv=3");
+    localStringBuilder.append("http://imgcache.qq.com/club/themes/mobile/head_pendant/html/index.html").append("?client=androidQQ").append("&version=").append("6.0.2.6602").append("&system=").append(Build.VERSION.RELEASE).append("&device=").append(Build.DEVICE).append("&updateFlag=[updateFlag]").append("&_bid=160").append("&_wv=3");
     AVATAR_PENDANT_URL = localStringBuilder.toString();
     localStringBuilder = new StringBuilder("http://imgcache.qq.com/club/themes/mobile/font/index.html");
-    localStringBuilder.append("?client=androidQQ").append("&version=").append("6.0.0.6500").append("&system=").append(Build.VERSION.RELEASE).append("&device=").append(Build.DEVICE).append("&updateFlag=[updateFlag]").append("&_bid=182").append("&_wv=3");
+    localStringBuilder.append("?client=androidQQ").append("&version=").append("6.0.2.6602").append("&system=").append(Build.VERSION.RELEASE).append("&device=").append(Build.DEVICE).append("&updateFlag=[updateFlag]").append("&_bid=182").append("&_wv=3");
     CHAT_FONT_MARKET_HOME_URL = localStringBuilder.toString();
     localStringBuilder = new StringBuilder("http://imgcache.qq.com/club/themes/mobile/suit/index.html");
-    localStringBuilder.append("?client=androidQQ").append("&uin=[uin]").append("&version=").append("6.0.0.6500").append("&system=").append(Build.VERSION.RELEASE).append("&device=").append(Build.DEVICE).append("&density=[density]").append("&platformId=2").append("&updateFlag=[updateFlag]").append("&_bid=239").append("&adtag=mvip.gongneng.android.gxsuit").append("&_wv=5123");
+    localStringBuilder.append("?client=androidQQ").append("&uin=[uin]").append("&version=").append("6.0.2.6602").append("&system=").append(Build.VERSION.RELEASE).append("&device=").append(Build.DEVICE).append("&density=[density]").append("&platformId=2").append("&updateFlag=[updateFlag]").append("&_bid=239").append("&adtag=mvip.gongneng.android.gxsuit").append("&_wv=5123");
     PERSONALITY_QQ_SUIT_URL = localStringBuilder.toString();
   }
 }

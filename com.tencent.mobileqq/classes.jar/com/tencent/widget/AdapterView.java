@@ -1,11 +1,11 @@
 package com.tencent.widget;
 
-import amao;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.Resources.Theme;
+import android.os.Parcelable;
 import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.util.SparseArray;
@@ -20,11 +20,15 @@ import android.view.ViewParent;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.Adapter;
+import bhtb;
+import bhuw;
+import bhux;
+import bhuy;
+import biby;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.VersionUtils;
 import java.lang.reflect.Field;
 
-public abstract class AdapterView
+public abstract class AdapterView<T extends Adapter>
   extends ViewGroup
 {
   public static final boolean DEBUG = false;
@@ -50,18 +54,18 @@ public abstract class AdapterView
   int mLayoutHeight;
   public boolean mNeedSync = false;
   @ViewDebug.ExportedProperty(category="list")
-  int mNextSelectedPosition = -1;
-  long mNextSelectedRowId = -9223372036854775808L;
-  int mOldItemCount;
-  public int mOldSelectedPosition = -1;
+  public int mNextSelectedPosition = -1;
+  public long mNextSelectedRowId = -9223372036854775808L;
+  public int mOldItemCount;
+  protected int mOldSelectedPosition = -1;
   long mOldSelectedRowId = -9223372036854775808L;
-  AdapterView.OnItemClickListener mOnItemClickListener;
-  AdapterView.OnItemLongClickListener mOnItemLongClickListener;
-  AdapterView.OnItemSelectedListener mOnItemSelectedListener;
+  bhuw mOnItemClickListener;
+  bhux mOnItemLongClickListener;
+  bhuy mOnItemSelectedListener;
   @ViewDebug.ExportedProperty(category="list")
   public int mSelectedPosition = -1;
   public long mSelectedRowId = -9223372036854775808L;
-  private amao mSelectionNotifier;
+  private AdapterView<T>.SelectionNotifier mSelectionNotifier;
   int mSpecificBottom;
   int mSpecificTop;
   long mSyncHeight;
@@ -94,10 +98,10 @@ public abstract class AdapterView
     if (i >= 0)
     {
       View localView = getSelectedView();
-      this.mOnItemSelectedListener.b(this, localView, i, getAdapter().getItemId(i));
+      this.mOnItemSelectedListener.onItemSelected(this, localView, i, getAdapter().getItemId(i));
       return;
     }
-    this.mOnItemSelectedListener.a(this);
+    this.mOnItemSelectedListener.onNothingSelected(this);
   }
   
   protected static int getStyleableValue(String paramString)
@@ -148,7 +152,7 @@ public abstract class AdapterView
   
   public static void traceBegin(String paramString)
   {
-    TraceUtils.a(paramString);
+    biby.a(paramString);
   }
   
   public static void traceEnd() {}
@@ -205,7 +209,7 @@ public abstract class AdapterView
     return (super.canAnimate()) && (this.mItemCount > 0);
   }
   
-  void checkFocus()
+  public void checkFocus()
   {
     boolean bool2 = false;
     Adapter localAdapter = getAdapter();
@@ -273,12 +277,12 @@ public abstract class AdapterView
     return (localView != null) && (localView.getVisibility() == 0) && (localView.dispatchPopulateAccessibilityEvent(paramAccessibilityEvent));
   }
   
-  protected void dispatchRestoreInstanceState(SparseArray paramSparseArray)
+  protected void dispatchRestoreInstanceState(SparseArray<Parcelable> paramSparseArray)
   {
     dispatchThawSelfOnly(paramSparseArray);
   }
   
-  protected void dispatchSaveInstanceState(SparseArray paramSparseArray)
+  protected void dispatchSaveInstanceState(SparseArray<Parcelable> paramSparseArray)
   {
     dispatchFreezeSelfOnly(paramSparseArray);
   }
@@ -358,7 +362,7 @@ public abstract class AdapterView
     }
   }
   
-  public abstract Adapter getAdapter();
+  public abstract T getAdapter();
   
   @ViewDebug.CapturedViewProperty
   public int getCount()
@@ -399,17 +403,17 @@ public abstract class AdapterView
     return this.mFirstPosition + getChildCount() - 1;
   }
   
-  public final AdapterView.OnItemClickListener getOnItemClickListener()
+  public final bhuw getOnItemClickListener()
   {
     return this.mOnItemClickListener;
   }
   
-  public final AdapterView.OnItemLongClickListener getOnItemLongClickListener()
+  public final bhux getOnItemLongClickListener()
   {
     return this.mOnItemLongClickListener;
   }
   
-  public final AdapterView.OnItemSelectedListener getOnItemSelectedListener()
+  public final bhuy getOnItemSelectedListener()
   {
     return this.mOnItemSelectedListener;
   }
@@ -570,12 +574,12 @@ public abstract class AdapterView
   @TargetApi(11)
   protected void invalidateParentIfNeeded()
   {
-    if ((VersionUtils.e()) && (isHardwareAccelerated()) && ((getParent() instanceof View))) {
+    if ((bhtb.e()) && (isHardwareAccelerated()) && ((getParent() instanceof View))) {
       ((View)getParent()).invalidate();
     }
   }
   
-  public boolean isInFilterMode()
+  protected boolean isInFilterMode()
   {
     return false;
   }
@@ -583,7 +587,7 @@ public abstract class AdapterView
   @TargetApi(14)
   public boolean isInScrollingContainer()
   {
-    if (VersionUtils.d()) {
+    if (bhtb.d()) {
       for (ViewParent localViewParent = getParent(); (localViewParent != null) && ((localViewParent instanceof ViewGroup)); localViewParent = localViewParent.getParent()) {
         if (((ViewGroup)localViewParent).shouldDelayChildPressedState()) {
           return true;
@@ -598,7 +602,7 @@ public abstract class AdapterView
     return paramInt;
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     removeCallbacks(this.mSelectionNotifier);
@@ -641,7 +645,7 @@ public abstract class AdapterView
     }
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     this.mLayoutHeight = getHeight();
   }
@@ -676,13 +680,13 @@ public abstract class AdapterView
       if (paramView != null) {
         paramView.sendAccessibilityEvent(1);
       }
-      this.mOnItemClickListener.a(this, paramView, paramInt, paramLong);
+      this.mOnItemClickListener.onItemClick(this, paramView, paramInt, paramLong);
       bool = true;
     }
     return bool;
   }
   
-  void rememberSyncState()
+  public void rememberSyncState()
   {
     if (getChildCount() > 0)
     {
@@ -732,7 +736,7 @@ public abstract class AdapterView
     throw new UnsupportedOperationException("removeViewAt(int) is not supported in AdapterView");
   }
   
-  public void selectionChanged()
+  protected void selectionChanged()
   {
     if (this.mOnItemSelectedListener != null)
     {
@@ -740,7 +744,7 @@ public abstract class AdapterView
         break label78;
       }
       if (this.mSelectionNotifier == null) {
-        this.mSelectionNotifier = new amao(this, null);
+        this.mSelectionNotifier = new AdapterView.SelectionNotifier(this, null);
       }
       post(this.mSelectionNotifier);
     }
@@ -755,7 +759,7 @@ public abstract class AdapterView
     }
   }
   
-  public abstract void setAdapter(Adapter paramAdapter);
+  public abstract void setAdapter(T paramT);
   
   public void setEmptyView(View paramView)
   {
@@ -849,22 +853,22 @@ public abstract class AdapterView
     throw new RuntimeException("Don't call setOnClickListener for an AdapterView. You probably want setOnItemClickListener instead");
   }
   
-  public void setOnItemClickListener(AdapterView.OnItemClickListener paramOnItemClickListener)
+  public void setOnItemClickListener(bhuw parambhuw)
   {
-    this.mOnItemClickListener = paramOnItemClickListener;
+    this.mOnItemClickListener = parambhuw;
   }
   
-  public void setOnItemLongClickListener(AdapterView.OnItemLongClickListener paramOnItemLongClickListener)
+  public void setOnItemLongClickListener(bhux parambhux)
   {
     if (!isLongClickable()) {
       setLongClickable(true);
     }
-    this.mOnItemLongClickListener = paramOnItemLongClickListener;
+    this.mOnItemLongClickListener = parambhux;
   }
   
-  public void setOnItemSelectedListener(AdapterView.OnItemSelectedListener paramOnItemSelectedListener)
+  public void setOnItemSelectedListener(bhuy parambhuy)
   {
-    this.mOnItemSelectedListener = paramOnItemSelectedListener;
+    this.mOnItemSelectedListener = parambhuy;
   }
   
   public void setSelectedPositionInt(int paramInt)

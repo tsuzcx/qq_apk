@@ -1,27 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class affi
-  implements Runnable
+class affi
+  implements DialogInterface.OnClickListener
 {
-  public affi(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  affi(affg paramaffg, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    EntityManager localEntityManager = this.a.a.app.getEntityManagerFactory().createEntityManager();
-    if (localEntityManager != null)
-    {
-      localEntityManager.a(NearbyProfileDisplayTribePanel.a(this.a));
-      localEntityManager.a();
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     affi
  * JD-Core Version:    0.7.0.1
  */

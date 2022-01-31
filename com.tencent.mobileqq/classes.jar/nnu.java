@@ -1,30 +1,32 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.playvideo.ProgressControler;
-import java.util.Timer;
-import java.util.TimerTask;
+import android.support.v4.view.ViewPager.PageTransformer;
+import android.view.View;
+import com.tencent.biz.pubaccount.NativeAd.adapter.VerticleViewPager;
 
 public class nnu
-  extends TimerTask
+  implements ViewPager.PageTransformer
 {
-  public nnu(ProgressControler paramProgressControler) {}
+  private nnu(VerticleViewPager paramVerticleViewPager) {}
   
-  public void run()
+  public void transformPage(View paramView, float paramFloat)
   {
-    ProgressControler localProgressControler = this.a;
-    localProgressControler.c += 50L;
-    if (this.a.c >= this.a.b)
+    if (paramFloat < -1.0F)
     {
-      this.a.c = this.a.b;
-      if (this.a.jdField_a_of_type_JavaUtilTimer != null) {
-        this.a.jdField_a_of_type_JavaUtilTimer.cancel();
-      }
+      paramView.setAlpha(0.0F);
+      return;
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+    if (paramFloat <= 1.0F)
+    {
+      paramView.setAlpha(1.0F);
+      paramView.setTranslationX(paramView.getWidth() * -paramFloat);
+      paramView.setTranslationY(paramView.getHeight() * paramFloat);
+      return;
+    }
+    paramView.setAlpha(0.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nnu
  * JD-Core Version:    0.7.0.1
  */

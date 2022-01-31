@@ -1,58 +1,118 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.richstatus.IIconListener;
-import com.tencent.widget.XListView;
+import com.tencent.biz.qqstory.album.StoryAlbumResourceDownloader.3;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class uik
-  implements IIconListener
 {
-  public uik(VisitorsActivity paramVisitorsActivity) {}
+  public static int a;
+  private static uik jdField_a_of_type_Uik;
+  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  private String a(int paramInt)
   {
-    int i = 0;
-    if ((paramBitmap != null) && (paramInt2 == 200)) {
-      if (this.a.h == 0) {
-        paramBitmap = this.a.a;
-      }
+    if (paramInt == jdField_a_of_type_Int) {
+      return ncb.a("3408") + "3408" + File.separator + "loading" + File.separator;
     }
-    for (;;)
+    return "";
+  }
+  
+  public static uik a()
+  {
+    if (jdField_a_of_type_Uik == null) {
+      jdField_a_of_type_Uik = new uik();
+    }
+    return jdField_a_of_type_Uik;
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    wxe.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkResource , upzip : %s", Boolean.valueOf(paramBoolean));
+    nbv.b("3408", blqr.a(), new uim(this, paramBoolean), paramBoolean, 0, true);
+  }
+  
+  private void b()
+  {
+    wxe.b("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "unzip now");
+    this.jdField_a_of_type_Boolean = true;
+    ThreadManager.getFileThreadHandler().post(new StoryAlbumResourceDownloader.3(this));
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    HashMap localHashMap = new HashMap();
+    Object localObject1 = new File(a(jdField_a_of_type_Int));
+    Object localObject2;
+    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
     {
-      if (paramBitmap != null) {
-        paramInt2 = paramBitmap.getChildCount();
-      }
-      for (;;)
+      localObject1 = ((File)localObject1).listFiles();
+      if (localObject1 != null)
       {
-        if (i < paramInt2)
+        int j = localObject1.length;
+        i = 0;
+        while (i < j)
         {
-          Object localObject = paramBitmap.getChildAt(i).getTag();
-          if ((localObject != null) && ((localObject instanceof uil)))
-          {
-            localObject = (uil)localObject;
-            if ((((uil)localObject).a == paramInt1) && (((uil)localObject).e != null)) {
-              VisitorsActivity.a(this.a, ((uil)localObject).e, paramInt1);
-            }
-          }
+          localObject2 = localObject1[i];
+          localHashMap.put(((File)localObject2).getName(), localObject2);
           i += 1;
-          continue;
-          if (this.a.h != 1) {
-            break label145;
-          }
-          paramBitmap = this.a.b;
-          break;
         }
-        return;
-        paramInt2 = 0;
       }
-      label145:
-      paramBitmap = null;
     }
+    localObject1 = new ArrayList();
+    int i = 0;
+    while (i < 50)
+    {
+      localObject2 = (File)localHashMap.get(i + ".png");
+      if (localObject2 != null) {
+        ((List)localObject1).add(((File)localObject2).getAbsolutePath());
+      }
+      i += 1;
+    }
+    this.jdField_a_of_type_JavaUtilList = ((List)localObject1);
+  }
+  
+  public List<String> a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return new ArrayList();
+    }
+    if (paramInt == jdField_a_of_type_Int) {
+      return this.jdField_a_of_type_JavaUtilList;
+    }
+    return new ArrayList();
+  }
+  
+  public void a()
+  {
+    String str = a(jdField_a_of_type_Int);
+    boolean bool1 = nbv.d("3408");
+    boolean bool2 = new File(str).exists();
+    if (bool1)
+    {
+      wxe.d("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkAndUpdateResource , new version exist , unzip now !");
+      b();
+      return;
+    }
+    if (bool2)
+    {
+      wxe.d("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkAndUpdateResource , old file exist , check but not unzip now!");
+      Bosses.get().postJob(new uil(this));
+      return;
+    }
+    wxe.d("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkAndUpdateResource , old file not exist , check and unzip now!");
+    a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uik
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class QSecControlBitsQuery$QSecCbQuery
-  extends MessageMicro
+  extends MessageMicro<QSecCbQuery>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "cb_query_head", "cb_query_body" }, new Object[] { null, null }, QSecCbQuery.class);
   public QSecControlBitsQuery.QSecCbQueryBody cb_query_body = new QSecControlBitsQuery.QSecCbQueryBody();
@@ -12,7 +12,7 @@ public final class QSecControlBitsQuery$QSecCbQuery
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ims.QSecControlBitsQuery.QSecCbQuery
  * JD-Core Version:    0.7.0.1
  */

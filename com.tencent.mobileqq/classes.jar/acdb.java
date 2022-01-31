@@ -1,60 +1,47 @@
-import com.tencent.mobileqq.app.EmoticonHandler;
-import com.tencent.mobileqq.data.EmoticonResp;
-import com.tencent.mobileqq.emoticon.EmojiManager;
-import com.tencent.mobileqq.emoticon.EmojiManager.SyncFetchEmoticonKeyObserver;
-import com.tencent.mobileqq.emoticon.ReqInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class acdb
-  extends EmojiManager.SyncFetchEmoticonKeyObserver
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public acdb(EmojiManager paramEmojiManager, EmoticonHandler paramEmoticonHandler, ReqInfo paramReqInfo, Object paramObject)
-  {
-    super(paramEmojiManager, paramEmoticonHandler);
-  }
+  public acdb(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void a(boolean paramBoolean, int paramInt, EmoticonResp paramEmoticonResp)
+  public void onGlobalLayout()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
-      return;
-    }
-    ??? = (EmoticonHandler)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    int i = paramEmoticonResp.epId;
-    int j = paramEmoticonResp.timestamp;
-    Object localObject1 = (ArrayList)paramEmoticonResp.data;
-    if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonReqInfo.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonReqInfo.jdField_a_of_type_JavaLangString.equals(paramEmoticonResp.keySeq)))
+    Object localObject = new Rect();
+    this.a.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
+    DisplayMetrics localDisplayMetrics = this.a.getResources().getDisplayMetrics();
+    int i = Math.max(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
+    if (i - (((Rect)localObject).bottom - ((Rect)localObject).top) > i / 3)
     {
-      ((EmoticonHandler)???).b(this);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonReqInfo.jdField_a_of_type_Boolean = paramBoolean;
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonReqInfo.jdField_a_of_type_Int = paramEmoticonResp.resultcode;
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonReqInfo.b = paramEmoticonResp.timeoutReason;
-    }
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        this.jdField_a_of_type_JavaLangObject.notify();
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        ??? = this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.jdField_a_of_type_JavaLangString;
-        StringBuilder localStringBuilder = new StringBuilder().append("fetchEmoticonEncryptKeys|net get key backepId=").append(i).append(" tstamp=").append(j).append(" list.size=");
-        if (localObject1 == null)
-        {
-          localObject1 = "null";
-          QLog.d((String)???, 2, localObject1 + " encryptSuccess=" + paramBoolean + " type=" + paramInt + " er.resultCode=" + paramEmoticonResp.resultcode);
-          return;
-        }
+      i = 1;
+      localObject = this.a.getCurrentFocus();
+      if (i != 0) {
+        break label101;
       }
-      localObject1 = Integer.valueOf(((ArrayList)localObject1).size());
+      if ((localObject != null) && ((localObject instanceof EditText))) {
+        ((EditText)localObject).setCursorVisible(false);
+      }
     }
+    label101:
+    while ((localObject == null) || (!(localObject instanceof EditText)))
+    {
+      return;
+      i = 0;
+      break;
+    }
+    ((EditText)localObject).setCursorVisible(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acdb
  * JD-Core Version:    0.7.0.1
  */

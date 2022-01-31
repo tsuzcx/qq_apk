@@ -33,13 +33,13 @@ final class JpegError
   
   public static void throwException(int paramInt)
   {
-    int i = paramInt & 0xFFFF;
+    int i = 0xFFFF & paramInt;
     throw new RuntimeException("JpegError: errcode=" + i + " Subcode=" + (paramInt >>> 16) + " Msg=" + (String)map.get(i));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.pic.JpegError
  * JD-Core Version:    0.7.0.1
  */

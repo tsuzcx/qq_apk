@@ -1,30 +1,35 @@
 package com.tencent.mobileqq.app.automator.step;
 
+import alrr;
+import alzr;
+import amho;
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.SystemClock;
+import awgf;
+import awgg;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.PublicAccountObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import zqe;
+import mqq.app.MobileQQ;
 
 public class CheckPublicAccount
   extends AsyncStep
 {
-  PublicAccountObserver a;
+  alzr a;
   
-  protected int a()
+  public int a()
   {
-    Object localObject = (PublicAccountHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.a(11);
+    Object localObject = (PublicAccountHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(11);
     if (this.b == 6)
     {
       if (!this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.getBoolean("isPublicAccountListOK", false))
       {
         b();
-        ((PublicAccountHandler)localObject).c();
+        ((PublicAccountHandler)localObject).b();
         ((PublicAccountHandler)localObject).a();
         return 2;
       }
@@ -37,8 +42,18 @@ public class CheckPublicAccount
         b();
         ((PublicAccountHandler)localObject).a();
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.getEntityManagerFactory().createEntityManager();
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.a().a((EntityManager)localObject);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApplication().getApplicationContext().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getAccount(), 0);
+      long l = System.currentTimeMillis();
+      if (l - ((SharedPreferences)localObject).getLong("eqqlist_login_update_ts", 0L) > 86400000L)
+      {
+        alrr localalrr = (alrr)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(21);
+        if (localalrr != null) {
+          localalrr.a(SystemClock.uptimeMillis());
+        }
+        ((SharedPreferences)localObject).edit().putLong("eqqlist_login_update_ts", l);
+      }
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getEntityManagerFactory().createEntityManager();
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a().a((awgf)localObject);
       if (bool) {
         return 2;
       }
@@ -48,19 +63,19 @@ public class CheckPublicAccount
   
   void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver == null)
+    if (this.jdField_a_of_type_Alzr == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver = new zqe(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver);
+      this.jdField_a_of_type_Alzr = new amho(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Alzr);
     }
   }
   
-  public void c()
+  public void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null)
+    if (this.jdField_a_of_type_Alzr != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Alzr);
+      this.jdField_a_of_type_Alzr = null;
     }
   }
 }

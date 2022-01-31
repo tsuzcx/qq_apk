@@ -1,22 +1,18 @@
 package com.tencent.token.ui;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.token.ah;
-import com.tencent.token.global.RqdApplication;
+import android.content.Intent;
+import android.support.v4.content.LocalBroadcastManager;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class abo
-  implements DialogInterface.OnCancelListener
+class abo
+  implements View.OnClickListener
 {
-  abo(StartPwdGestureForgetActivity paramStartPwdGestureForgetActivity, Context paramContext) {}
+  abo(UtilsActivity paramUtilsActivity) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    ah.a().f();
-    RqdApplication.f();
-    this.b.setResult(35);
-    this.b.finish();
+    LocalBroadcastManager.getInstance(this.a).sendBroadcast(new Intent("com.tencent.token.open_menu"));
   }
 }
 

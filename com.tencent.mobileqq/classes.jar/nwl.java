@@ -1,23 +1,99 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverAdapter.OnHolderItemClickListener;
-import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverAdapter.StoryDiscoverViewHolder;
+import android.content.res.Configuration;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import java.util.List;
 
-public class nwl
-  implements View.OnClickListener
+class nwl
+  extends oxe
 {
-  public nwl(StoryDiscoverAdapter.StoryDiscoverViewHolder paramStoryDiscoverViewHolder, View paramView) {}
+  nwl(nwj paramnwj) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter$StoryDiscoverViewHolder.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter$OnHolderItemClickListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter$StoryDiscoverViewHolder.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter$OnHolderItemClickListener.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter$StoryDiscoverViewHolder.jdField_a_of_type_Int);
+    if ((nwj.a(this.a) != null) && ((nwj.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nwj.a(this.a)).a(paramInt);
+    }
+  }
+  
+  public void a(int paramInt, ArticleInfo paramArticleInfo, String paramString1, String paramString2)
+  {
+    if ((nwj.a(this.a) != null) && ((nwj.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nwj.a(this.a)).a(paramInt, paramArticleInfo, paramString1, paramString2);
+    }
+  }
+  
+  public void a(int paramInt, List<Long> paramList)
+  {
+    if ((nwj.a(this.a) != null) && ((nwj.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nwj.a(this.a)).a(paramInt, paramList);
+    }
+  }
+  
+  public void a(Configuration paramConfiguration)
+  {
+    if ((nwj.a(this.a) == 56) && (nwj.a(this.a) != null))
+    {
+      nwj.a(this.a).f();
+      nwj.a(this.a).g();
+    }
+    if ((nwj.a(this.a) != null) && ((nwj.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nwj.a(this.a)).a(paramConfiguration);
+    }
+  }
+  
+  public void a(TopBannerInfo paramTopBannerInfo)
+  {
+    if ((nwj.a(this.a) != null) && ((nwj.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nwj.a(this.a)).a(paramTopBannerInfo);
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, long paramLong, List<Long> paramList, List<ArticleInfo> paramList1)
+  {
+    if ((nwj.a(this.a) != null) && ((nwj.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nwj.a(this.a)).a(paramBoolean, paramInt, paramLong, paramList, paramList1);
+    }
+  }
+  
+  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if ((nwj.a(this.a) != null) && ((nwj.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nwj.a(this.a)).a(paramBoolean1, paramInt, paramList, paramBoolean2);
+    }
+  }
+  
+  public void au_()
+  {
+    if ((nwj.a(this.a) != null) && ((nwj.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nwj.a(this.a)).p();
+    }
+  }
+  
+  public void b(int paramInt, List<Long> paramList)
+  {
+    if ((nwj.a(this.a) != null) && ((nwj.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nwj.a(this.a)).c(paramInt, paramList);
+    }
+  }
+  
+  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if ((nwj.a(this.a) != null) && ((nwj.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nwj.a(this.a)).b(paramBoolean1, paramInt, paramList, paramBoolean2);
+    }
+  }
+  
+  public void c(int paramInt, List<Long> paramList)
+  {
+    if ((nwj.a(this.a) != null) && ((nwj.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nwj.a(this.a)).b(paramInt, paramList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nwl
  * JD-Core Version:    0.7.0.1
  */

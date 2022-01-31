@@ -11,12 +11,13 @@ public final class sweet_pair_check_rsp
   extends JceStruct
 {
   static int cache_host_state;
-  static ArrayList cache_lst_invite;
+  static ArrayList<invite_item> cache_lst_invite;
   static sweet_req_comm cache_req_comm;
   static int cache_right;
   static sweet_rsp_comm cache_rsp_comm = new sweet_rsp_comm();
   public int host_state;
-  public ArrayList lst_invite;
+  public boolean is_qqfriend = true;
+  public ArrayList<invite_item> lst_invite;
   public sweet_req_comm req_comm;
   public int right;
   public sweet_rsp_comm rsp_comm;
@@ -33,13 +34,14 @@ public final class sweet_pair_check_rsp
   
   public sweet_pair_check_rsp() {}
   
-  public sweet_pair_check_rsp(sweet_rsp_comm paramsweet_rsp_comm, sweet_req_comm paramsweet_req_comm, int paramInt1, int paramInt2, ArrayList paramArrayList)
+  public sweet_pair_check_rsp(sweet_rsp_comm paramsweet_rsp_comm, sweet_req_comm paramsweet_req_comm, int paramInt1, int paramInt2, ArrayList<invite_item> paramArrayList, boolean paramBoolean)
   {
     this.rsp_comm = paramsweet_rsp_comm;
     this.req_comm = paramsweet_req_comm;
     this.host_state = paramInt1;
     this.right = paramInt2;
     this.lst_invite = paramArrayList;
+    this.is_qqfriend = paramBoolean;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -49,6 +51,7 @@ public final class sweet_pair_check_rsp
     this.host_state = paramJceInputStream.read(this.host_state, 2, false);
     this.right = paramJceInputStream.read(this.right, 3, false);
     this.lst_invite = ((ArrayList)paramJceInputStream.read(cache_lst_invite, 4, false));
+    this.is_qqfriend = paramJceInputStream.read(this.is_qqfriend, 5, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -62,6 +65,7 @@ public final class sweet_pair_check_rsp
     if (this.lst_invite != null) {
       paramJceOutputStream.write(this.lst_invite, 4);
     }
+    paramJceOutputStream.write(this.is_qqfriend, 5);
   }
 }
 

@@ -1,38 +1,18 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyVideoUtils;
-import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
-import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-
 public class afcc
-  implements ActionSheet.OnButtonClickListener
 {
-  public afcc(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment, ActionSheet paramActionSheet) {}
+  public int a;
+  TItemViewHolder jdField_a_of_type_JavaLangObject;
   
-  public void OnClick(View paramView, int paramInt)
+  public afcc(int paramInt, TItemViewHolder paramTItemViewHolder)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      NearbyVideoUtils.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment.getActivity().app, 4);
-      continue;
-      paramView = (NearbyCardHandler)this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment.getActivity().app.a(60);
-      if (paramView != null) {
-        paramView.a("", 0, false);
-      }
-    }
+    this.jdField_a_of_type_Int = paramTItemViewHolder;
+    Object localObject;
+    this.jdField_a_of_type_JavaLangObject = localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afcc
  * JD-Core Version:    0.7.0.1
  */

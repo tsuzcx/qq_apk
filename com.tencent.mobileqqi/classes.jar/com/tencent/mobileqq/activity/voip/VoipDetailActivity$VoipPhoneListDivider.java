@@ -10,7 +10,7 @@ public class VoipDetailActivity$VoipPhoneListDivider
   public VoipDetailActivity$VoipPhoneListDivider(Context paramContext)
   {
     super(paramContext);
-    LayoutInflater.from(paramContext).inflate(2130904054, this);
+    LayoutInflater.from(paramContext).inflate(2130904056, this);
   }
 }
 

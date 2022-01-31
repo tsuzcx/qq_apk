@@ -1,38 +1,84 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
-class acvi
-  implements Runnable
+public class acvi
+  implements TextWatcher
 {
-  acvi(acve paramacve, String paramString) {}
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = true;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean = true;
+  String jdField_c_of_type_JavaLangString;
+  boolean jdField_c_of_type_Boolean = false;
   
-  public void run()
+  public acvi(EditActivity paramEditActivity) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    try
-    {
-      if (this.jdField_a_of_type_Acve.a.jdField_a_of_type_JavaIoOutputStream == null) {
-        this.jdField_a_of_type_Acve.a.jdField_a_of_type_JavaIoOutputStream = new FileOutputStream(this.jdField_a_of_type_Acve.a.d, true);
-      }
-      this.jdField_a_of_type_Acve.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Acve.a.c, 2002);
-      this.jdField_a_of_type_Acve.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
-      this.jdField_a_of_type_Acve.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_Acve.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      this.jdField_a_of_type_Acve.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 2;
-      this.jdField_a_of_type_Acve.a.h = this.jdField_a_of_type_JavaLangString;
-      FileManagerRSWorker.a(this.jdField_a_of_type_Acve.a, this.jdField_a_of_type_Acve.a.jdField_a_of_type_Long, this.jdField_a_of_type_Acve.a.h);
+    EditActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity, true);
+    if (!this.jdField_b_of_type_Boolean) {
       return;
     }
-    catch (FileNotFoundException localFileNotFoundException)
+    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (paramEditable = this.jdField_c_of_type_JavaLangString;; paramEditable = "")
     {
-      localFileNotFoundException.printStackTrace();
+      paramEditable = paramEditable + this.jdField_b_of_type_JavaLangString;
+      if (this.jdField_c_of_type_Boolean)
+      {
+        this.jdField_b_of_type_Boolean = false;
+        this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText(paramEditable);
+        this.jdField_b_of_type_Boolean = true;
+      }
+      int i = this.jdField_a_of_type_JavaLangString.length();
+      int j = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setSelection(i + j);
+      this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.f();
+      return;
     }
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (!this.jdField_b_of_type_Boolean) {
+      return;
+    }
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = paramCharSequence.toString().substring(0, paramInt1);
+    this.jdField_b_of_type_JavaLangString = paramCharSequence.toString().substring(paramInt1 + paramInt2);
+    if (paramInt3 > 0)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (!this.jdField_b_of_type_Boolean) {
+      return;
+    }
+    this.jdField_c_of_type_JavaLangString = paramCharSequence.toString().substring(paramInt1, paramInt1 + paramInt3);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.jdField_a_of_type_Int == 100) && (this.jdField_c_of_type_JavaLangString.contains("\n")))
+      {
+        this.jdField_c_of_type_Boolean = true;
+        this.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString.replace("\n", "");
+      }
+      this.jdField_a_of_type_Int = this.jdField_c_of_type_JavaLangString.length();
+      return;
+    }
+    this.jdField_a_of_type_Int = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acvi
  * JD-Core Version:    0.7.0.1
  */

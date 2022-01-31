@@ -1,60 +1,74 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.os.Vibrator;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicAniView;
+import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicLikePopWindow;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.AnimationView;
+import com.tencent.mobileqq.widget.QQToast;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StLike;
+import java.lang.ref.WeakReference;
+import qqcircle.QQCircleFeedBase.StLikeBusiData;
+import qqcircle.QQCircleFeedBase.StPolyLike;
 
 public class uem
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public uem(TroopTransferActivity paramTroopTransferActivity, String paramString, QQCustomDialog paramQQCustomDialog) {}
+  public uem(QCirclePolymorphicLikePopWindow paramQCirclePolymorphicLikePopWindow, QQCircleFeedBase.StPolyLike paramStPolyLike, AnimationView paramAnimationView, ueq paramueq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (!NetworkUtil.d(BaseApplication.getContext()))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, 2131433009, 1000);
+    if (QCirclePolymorphicLikePopWindow.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow) != null) {
+      QCirclePolymorphicLikePopWindow.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow).a();
+    }
+    if (!twe.a().a(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike.polySource.get())) {
+      QQToast.a((Context)QCirclePolymorphicLikePopWindow.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow).get(), 0, 2131698364, 0).a();
+    }
+    while (QCirclePolymorphicLikePopWindow.b(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow).get() == null) {
       return;
     }
-    paramDialogInterface = (TroopHandler)this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.a(20);
-    if (paramDialogInterface != null) {}
+    paramView = new int[2];
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.getLocationOnScreen(paramView);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow.dismiss();
+    Object localObject = this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow.getContentView().getContext();
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow.getContentView().getContext();
+    ((Vibrator)((Context)localObject).getSystemService("vibrator")).vibrate(50L);
     try
     {
-      long l1 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_JavaLangString);
-      long l2 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.getCurrentAccountUin());
-      long l3 = Long.parseLong(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Boolean = true;
-      paramDialogInterface.a(l1, l2, l3);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity);
+      localObject = new QQCircleFeedBase.StLikeBusiData();
+      ((QQCircleFeedBase.StLikeBusiData)localObject).mergeFrom(QCirclePolymorphicLikePopWindow.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow).likeInfo.busiData.get().toByteArray());
+      localObject = ((QQCircleFeedBase.StLikeBusiData)localObject).curPolyLikeInfo;
+      int i;
+      if (ueq.a(this.jdField_a_of_type_Ueq).polyLikeID.get().equals(((QQCircleFeedBase.StPolyLike)localObject).polyLikeID.get())) {
+        i = 0;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(0, 2131435285, 1000);
-    }
-    catch (Exception paramDialogInterface)
-    {
       for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.troopdisband.transfer", 2, paramDialogInterface.toString());
+        if (i != 0) {
+          this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow.a(QCirclePolymorphicLikePopWindow.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow), ueq.a(this.jdField_a_of_type_Ueq));
+        }
+        ((QCirclePolymorphicAniView)QCirclePolymorphicLikePopWindow.b(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow).get()).startZanAni(this.jdField_a_of_type_Ueq, (View)QCirclePolymorphicLikePopWindow.c(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow).get(), (View)QCirclePolymorphicLikePopWindow.d(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow).get(), paramView, QCirclePolymorphicLikePopWindow.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow), new uen(this, i, (QQCircleFeedBase.StPolyLike)localObject));
+        return;
+        boolean bool = TextUtils.isEmpty(((QQCircleFeedBase.StPolyLike)localObject).polyLikeID.get());
+        if (bool) {
+          i = 1;
+        } else {
+          i = 2;
         }
       }
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app, "CliOper", "", "", "Grp", "Transgrp_OK", 0, 0, "", "", "", "");
+    catch (Exception paramView) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uem
  * JD-Core Version:    0.7.0.1
  */

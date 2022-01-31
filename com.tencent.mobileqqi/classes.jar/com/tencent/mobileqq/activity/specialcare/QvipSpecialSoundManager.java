@@ -12,10 +12,10 @@ import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import exk;
-import exl;
-import exm;
-import exn;
+import esw;
+import esx;
+import esy;
+import esz;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -206,7 +206,7 @@ public class QvipSpecialSoundManager
   
   private void a(QvipSpecialSoundManager.CallBack paramCallBack, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new exn(this, paramCallBack, paramBoolean));
+    this.jdField_a_of_type_AndroidOsHandler.post(new esz(this, paramCallBack, paramBoolean));
   }
   
   private void a(String paramString1, String paramString2)
@@ -251,10 +251,10 @@ public class QvipSpecialSoundManager
       int i = 0;
       while (i < j)
       {
-        localObject1 = (exk)paramString2.get(i);
-        localObject2 = (exk)paramString1.get(i);
-        if ((((exk)localObject1).jdField_a_of_type_Int == ((exk)localObject2).jdField_a_of_type_Int) && (!((exk)localObject1).jdField_b_of_type_JavaLangString.equals(((exk)localObject2).jdField_b_of_type_JavaLangString))) {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new exl(this, (exk)localObject1));
+        localObject1 = (esw)paramString2.get(i);
+        localObject2 = (esw)paramString1.get(i);
+        if ((((esw)localObject1).jdField_a_of_type_Int == ((esw)localObject2).jdField_a_of_type_Int) && (!((esw)localObject1).jdField_b_of_type_JavaLangString.equals(((esw)localObject2).jdField_b_of_type_JavaLangString))) {
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new esx(this, (esw)localObject1));
         }
         i += 1;
       }
@@ -276,23 +276,23 @@ public class QvipSpecialSoundManager
       int i = 0;
       if (i < j)
       {
-        exk localexk = (exk)paramList.get(i);
-        if (!b.containsKey(String.valueOf(localexk.jdField_a_of_type_Int))) {
-          b.put(String.valueOf(localexk.jdField_a_of_type_Int), localexk);
+        esw localesw = (esw)paramList.get(i);
+        if (!b.containsKey(String.valueOf(localesw.jdField_a_of_type_Int))) {
+          b.put(String.valueOf(localesw.jdField_a_of_type_Int), localesw);
         }
-        localEditor.putString("special_sound_url" + localexk.jdField_a_of_type_Int, localexk.c);
-        if (!b(localexk.d)) {
+        localEditor.putString("special_sound_url" + localesw.jdField_a_of_type_Int, localesw.c);
+        if (!b(localesw.d)) {
           b("is white list.");
         }
         for (;;)
         {
           i += 1;
           break;
-          if (localexk.jdField_a_of_type_Int != 1) {
-            if (localexk.jdField_b_of_type_Int == 1) {
-              localArrayList1.add(localexk);
+          if (localesw.jdField_a_of_type_Int != 1) {
+            if (localesw.jdField_b_of_type_Int == 1) {
+              localArrayList1.add(localesw);
             } else {
-              localArrayList2.add(localexk);
+              localArrayList2.add(localesw);
             }
           }
         }
@@ -350,9 +350,9 @@ public class QvipSpecialSoundManager
   {
     if ((b != null) && (!b.isEmpty()))
     {
-      exk localexk = (exk)b.get(String.valueOf(paramInt));
-      if (localexk != null) {
-        return localexk.jdField_a_of_type_JavaLangString;
+      esw localesw = (esw)b.get(String.valueOf(paramInt));
+      if (localesw != null) {
+        return localesw.jdField_a_of_type_JavaLangString;
       }
     }
     return "";
@@ -534,7 +534,7 @@ public class QvipSpecialSoundManager
   
   public void a(QvipSpecialSoundManager.CallBack paramCallBack)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new exm(this, paramCallBack));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new esy(this, paramCallBack));
   }
   
   public void a(String paramString)

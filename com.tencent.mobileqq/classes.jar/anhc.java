@@ -1,24 +1,34 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.PBStringField;
-import cooperation.weiyun.channel.pb.WeiyunPB.WeiyunTrialCouponUseMsgReq;
-import cooperation.weiyun.sdk.api.WeiyunApi;
-import cooperation.weiyun.utils.PreferenceUtils;
-import mqq.app.AppRuntime;
+import android.content.Context;
+import android.graphics.Point;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
+import com.tencent.tencentmap.mapsdk.maps.MapView;
+import com.tencent.tencentmap.mapsdk.maps.Projection;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapLoadedCallback;
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
 
-public final class anhc
-  implements Runnable
+public class anhc
+  implements TencentMap.OnMapLoadedCallback
 {
-  public anhc(int paramInt) {}
+  public anhc(ARScanEntryView paramARScanEntryView) {}
   
-  public void run()
+  public void onMapLoaded()
   {
-    WeiyunPB.WeiyunTrialCouponUseMsgReq localWeiyunTrialCouponUseMsgReq = new WeiyunPB.WeiyunTrialCouponUseMsgReq();
-    localWeiyunTrialCouponUseMsgReq.business_id.set("upload_speed_up");
-    WeiyunApi.a(localWeiyunTrialCouponUseMsgReq, null);
-    if (this.a > 0)
+    this.a.j = true;
+    if (ARScanEntryView.a(this.a) != null)
     {
-      int i = this.a;
-      PreferenceUtils.a(BaseApplicationImpl.getApplication(), String.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin()), "upload_coupon_count", String.valueOf(i - 1));
+      Projection localProjection = ARScanEntryView.a(this.a).getMap().getProjection();
+      TencentMap localTencentMap = ARScanEntryView.a(this.a).getMap();
+      if ((localProjection != null) && (localTencentMap != null))
+      {
+        Point localPoint = localProjection.toScreenLocation(localTencentMap.getCameraPosition().target);
+        if (localPoint != null)
+        {
+          localPoint.offset(0, aepi.a(60.0F, this.a.a.getResources()) * -1);
+          localTencentMap.moveCamera(CameraUpdateFactory.newLatLng(localProjection.fromScreenLocation(localPoint)));
+        }
+      }
     }
   }
 }

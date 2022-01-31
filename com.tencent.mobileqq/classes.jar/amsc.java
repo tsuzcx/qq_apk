@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.QZoneShareData;
+import com.tencent.mobileqq.applets.data.AppletItem;
 
 public final class amsc
-  implements Parcelable.Creator
+  implements Parcelable.Creator<AppletItem>
 {
-  public QZoneShareData a(Parcel paramParcel)
+  public AppletItem a(Parcel paramParcel)
   {
-    return new QZoneShareData(paramParcel, null);
+    return new AppletItem(paramParcel);
   }
   
-  public QZoneShareData[] a(int paramInt)
+  public AppletItem[] a(int paramInt)
   {
-    return new QZoneShareData[paramInt];
+    return new AppletItem[paramInt];
   }
 }
 

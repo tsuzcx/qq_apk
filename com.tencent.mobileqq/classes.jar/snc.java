@@ -1,24 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import com.tencent.mobileqq.app.FontSettingManager;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.viola.adapter.IBridgeAdapter;
+import com.tencent.viola.adapter.IBridgeAdapter.OnInovkeCallback;
+import com.tencent.viola.core.ViolaInstance;
+import java.util.ArrayList;
 
 public class snc
-  implements View.OnClickListener
+  implements IBridgeAdapter
 {
-  public snc(FontSettingActivity paramFontSettingActivity) {}
-  
-  public void onClick(View paramView)
+  public snc()
   {
-    if (FontSettingManager.a(this.a, FontSettingActivity.a(this.a), true)) {
-      FontSettingManager.a();
+    registerModuleFunction();
+  }
+  
+  public ArrayList<String> getAdapterUnRegisterFunction()
+  {
+    return null;
+  }
+  
+  public void registerModuleFunction() {}
+  
+  public void titleUiInvoke(String paramString, Object paramObject, IBridgeAdapter.OnInovkeCallback paramOnInovkeCallback, ViolaInstance paramViolaInstance)
+  {
+    if (paramViolaInstance == null) {
+      break label5;
     }
-    this.a.finish();
+    for (;;)
+    {
+      label5:
+      return;
+      if (("change_title_transparent".equals(paramString)) && ((paramObject instanceof Boolean)))
+      {
+        paramString = paramViolaInstance.getFragment();
+        if (paramString == null) {
+          break;
+        }
+        if ((paramString instanceof ViolaFragment)) {}
+        for (paramString = ((ViolaFragment)paramString).a(); paramString != null; paramString = null)
+        {
+          paramString.a(((Boolean)paramObject).booleanValue());
+          return;
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     snc
  * JD-Core Version:    0.7.0.1
  */

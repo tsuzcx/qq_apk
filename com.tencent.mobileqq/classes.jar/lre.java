@@ -1,64 +1,61 @@
-import android.content.SharedPreferences;
-import android.util.Base64;
-import com.tencent.biz.pubaccount.readinjoy.model.FollowCoverInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo;
-import cooperation.readinjoy.ReadInJoyHelper;
-import java.util.HashMap;
-import java.util.Iterator;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.TopicRecommendFeedsInfo;
+import android.util.SparseArray;
+import com.tencent.smtt.utils.ByteUtils;
+import java.nio.ByteBuffer;
 
 public class lre
-  implements Runnable
 {
-  public lre(FollowCoverInfoModule paramFollowCoverInfoModule) {}
-  
-  public void run()
+  public static SparseArray<lrd> a(byte[] paramArrayOfByte)
   {
-    Object localObject1 = ReadInJoyHelper.a(FollowCoverInfoModule.a(this.a), true, false);
-    if (localObject1 != null) {
-      try
-      {
-        FollowCoverInfoModule.a(this.a, ((SharedPreferences)localObject1).getInt("follow_tab_topic_update_info_exists", 0));
-        if (FollowCoverInfoModule.a(this.a) == 1)
-        {
-          Object localObject2 = ((SharedPreferences)localObject1).getString("follow_tab_topic_update_info", null);
-          Object localObject3;
-          if (localObject2 != null)
-          {
-            localObject2 = Base64.decode((String)localObject2, 0);
-            localObject3 = new oidb_cmd0x68b.TopicRecommendFeedsInfo();
-            ((oidb_cmd0x68b.TopicRecommendFeedsInfo)localObject3).mergeFrom((byte[])localObject2);
-            FollowCoverInfoModule.a(this.a, TopicRecommendFeedsInfo.a((oidb_cmd0x68b.TopicRecommendFeedsInfo)localObject3));
-          }
-          localObject1 = ((SharedPreferences)localObject1).getString("follow_tab_topic_update_info_exposure", null);
-          if (localObject1 != null)
-          {
-            localObject1 = new JSONObject((String)localObject1);
-            localObject2 = ((JSONObject)localObject1).keys();
-            while (((Iterator)localObject2).hasNext())
-            {
-              localObject3 = (String)((Iterator)localObject2).next();
-              Long localLong = Long.valueOf(((JSONObject)localObject1).optLong((String)localObject3, 0L));
-              if (localLong.longValue() != 0L) {
-                FollowCoverInfoModule.a(this.a).put(Long.valueOf((String)localObject3), localLong);
-              }
-            }
-          }
-        }
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        FollowCoverInfoModule.a(this.a, 0);
-      }
+    ByteBuffer localByteBuffer = ByteBuffer.wrap(paramArrayOfByte);
+    SparseArray localSparseArray = new SparseArray();
+    int j = 0;
+    while (j < paramArrayOfByte.length)
+    {
+      short s = a(localByteBuffer, j);
+      j += 2;
+      int i = b(localByteBuffer, j);
+      j += 2;
+      byte[] arrayOfByte = a(paramArrayOfByte, j, i);
+      j += i;
+      localSparseArray.put(s, new lrd(s, i, arrayOfByte));
     }
+    return localSparseArray;
+  }
+  
+  private static short a(ByteBuffer paramByteBuffer, int paramInt)
+  {
+    return paramByteBuffer.getShort(paramInt);
+  }
+  
+  public static byte[] a(lrd paramlrd)
+  {
+    if (paramlrd != null)
+    {
+      short s1 = paramlrd.a();
+      short s2 = paramlrd.b();
+      paramlrd = paramlrd.a();
+      ByteBuffer localByteBuffer = ByteBuffer.allocate(s2 + 4);
+      localByteBuffer.putShort(s1);
+      localByteBuffer.putShort(s2);
+      localByteBuffer.put(paramlrd);
+      return localByteBuffer.array();
+    }
+    return null;
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    return ByteUtils.subByte(paramArrayOfByte, paramInt1, paramInt2);
+  }
+  
+  private static short b(ByteBuffer paramByteBuffer, int paramInt)
+  {
+    return paramByteBuffer.getShort(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lre
  * JD-Core Version:    0.7.0.1
  */

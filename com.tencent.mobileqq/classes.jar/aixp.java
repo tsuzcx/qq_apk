@@ -1,29 +1,89 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class aixp
-  implements View.OnClickListener
+public class aixp
 {
-  aixp(aixn paramaixn) {}
-  
-  public void onClick(View paramView)
+  public static int a(JSONObject paramJSONObject, int paramInt, String... paramVarArgs)
   {
-    paramView = new Intent();
-    paramView.putExtra("path", this.a.jdField_a_of_type_JavaLangString);
-    PublicFragmentActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity, paramView, TribeVideoPreviewFragment.class);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.overridePendingTransition(2131034403, 2131034404);
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b != null) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b.getVisibility() == 0)) {}
-    for (int i = 2;; i = 1)
-    {
-      ReportController.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_full_screen", i, 0, "", "", "", "");
-      return;
+    int i = paramInt;
+    if (paramJSONObject != null) {
+      i = 0;
     }
+    try
+    {
+      while (i < paramVarArgs.length - 1)
+      {
+        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
+        i += 1;
+      }
+      i = paramJSONObject.getInt(paramVarArgs[(paramVarArgs.length - 1)]);
+      return i;
+    }
+    catch (Throwable paramJSONObject) {}
+    return paramInt;
+  }
+  
+  public static String a(JSONObject paramJSONObject, String paramString, String... paramVarArgs)
+  {
+    String str = paramString;
+    int i;
+    if (paramJSONObject != null) {
+      i = 0;
+    }
+    try
+    {
+      while (i < paramVarArgs.length - 1)
+      {
+        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
+        i += 1;
+      }
+      str = paramJSONObject.getString(paramVarArgs[(paramVarArgs.length - 1)]);
+      return str;
+    }
+    catch (Throwable paramJSONObject) {}
+    return paramString;
+  }
+  
+  public static JSONArray a(JSONObject paramJSONObject, String... paramVarArgs)
+  {
+    JSONArray localJSONArray = null;
+    int i;
+    if (paramJSONObject != null) {
+      i = 0;
+    }
+    try
+    {
+      while (i < paramVarArgs.length - 1)
+      {
+        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
+        i += 1;
+      }
+      localJSONArray = paramJSONObject.getJSONArray(paramVarArgs[(paramVarArgs.length - 1)]);
+      return localJSONArray;
+    }
+    catch (Throwable paramJSONObject) {}
+    return null;
+  }
+  
+  public static JSONObject a(JSONObject paramJSONObject, String... paramVarArgs)
+  {
+    JSONObject localJSONObject = null;
+    int i;
+    if (paramJSONObject != null) {
+      i = 0;
+    }
+    try
+    {
+      while (i < paramVarArgs.length - 1)
+      {
+        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
+        i += 1;
+      }
+      localJSONObject = paramJSONObject.getJSONObject(paramVarArgs[(paramVarArgs.length - 1)]);
+      return localJSONObject;
+    }
+    catch (Throwable paramJSONObject) {}
+    return null;
   }
 }
 

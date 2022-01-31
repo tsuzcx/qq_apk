@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class C2CType0x211_SubC2CType0x9$MsgBody$SupportFileInfo
-  extends MessageMicro
+  extends MessageMicro<SupportFileInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "str_file_suffix", "uint32_copies", "uint32_duplex" }, new Object[] { "", Integer.valueOf(0), Integer.valueOf(0) }, SupportFileInfo.class);
   public final PBStringField str_file_suffix = PBField.initString("");

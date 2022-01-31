@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class submsgtype0xee$OrangeControlInfo
-  extends MessageMicro
+  extends MessageMicro<OrangeControlInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_color = PBField.initBytes(ByteStringMicro.EMPTY);

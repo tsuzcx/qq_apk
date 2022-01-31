@@ -1,71 +1,34 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.HBCustomizeStrategy;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.aio.qwallet.elem.BaseRedPkgElem;
-import com.tencent.mobileqq.activity.aio.qwallet.elem.BigAnimRedPkgElem;
-import com.tencent.mobileqq.activity.aio.qwallet.elem.ResPathRedPkgElem;
-import com.tencent.mobileqq.activity.aio.qwallet.elem.SkinRedPkgElem;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class uku
-  implements CustomizeStrategyFactory.HBCustomizeStrategy
+class uku
+  implements CompoundButton.OnCheckedChangeListener
 {
-  QWalletConfigManager jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager = null;
-  PreloadManager jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = null;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  uku(ukt paramukt) {}
   
-  public uku(QQAppInterface paramQQAppInterface)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(150));
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager = ((QWalletConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(244));
-    }
-  }
-  
-  public void a() {}
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    ThreadManager.post(new ukv(this, paramRedPacketInfo), 5, null, true);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, BaseRedPkgElem paramBaseRedPkgElem)
-  {
-    if (paramRedPacketInfo != null)
-    {
-      if (!(paramBaseRedPkgElem instanceof SkinRedPkgElem)) {
-        break label66;
+      ukt.a(this.a);
+      if (ukt.a(this.a)) {
+        wxj.a("video_shoot_slides", "clk_setting_on", 0, 0, new String[0]);
       }
-      paramBaseRedPkgElem = (SkinRedPkgElem)paramBaseRedPkgElem;
-      paramRedPacketInfo.background = paramBaseRedPkgElem.jdField_a_of_type_AndroidGraphicsBitmap;
-      paramRedPacketInfo.corner = paramBaseRedPkgElem.jdField_b_of_type_AndroidGraphicsBitmap;
-      paramRedPacketInfo.animInfo = paramBaseRedPkgElem.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo;
-      paramRedPacketInfo.title = paramBaseRedPkgElem.jdField_b_of_type_JavaLangString;
-      paramRedPacketInfo.icon = paramBaseRedPkgElem.a(paramRedPacketInfo);
-      paramRedPacketInfo.isHideTitle = paramBaseRedPkgElem.jdField_a_of_type_Int;
     }
-    label66:
-    do
+    for (;;)
     {
+      ukt.a(this.a, paramBoolean);
       return;
-      if ((paramBaseRedPkgElem instanceof BigAnimRedPkgElem))
-      {
-        paramBaseRedPkgElem = (BigAnimRedPkgElem)paramBaseRedPkgElem;
-        paramRedPacketInfo.specailBackgroundAnimInfo = paramBaseRedPkgElem.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo;
-        paramRedPacketInfo.specialBackground = paramBaseRedPkgElem.jdField_a_of_type_AndroidGraphicsBitmap;
-        return;
+      ukt.b(this.a);
+      if (ukt.a(this.a)) {
+        wxj.a("video_shoot_slides", "clk_setting_close", 0, 0, new String[0]);
       }
-    } while (!(paramBaseRedPkgElem instanceof ResPathRedPkgElem));
-    paramRedPacketInfo.resPath = ((ResPathRedPkgElem)paramBaseRedPkgElem).jdField_b_of_type_JavaLangString;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uku
  * JD-Core Version:    0.7.0.1
  */

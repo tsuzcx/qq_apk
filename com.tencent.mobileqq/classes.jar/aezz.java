@@ -1,25 +1,14 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
-
-public class aezz
-  extends GestureDetector.SimpleOnGestureListener
+public abstract interface aezz
 {
-  public aezz(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public abstract void a(int paramInt);
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return true;
-  }
+  public abstract void f();
   
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
+  public abstract void g();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aezz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,38 @@
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView;
-import com.tencent.mobileqq.filemanager.settings.FMSettings;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
-import java.util.HashMap;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.qphone.base.util.QLog;
 
 public class acro
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public acro(QfileLocalFileAppTabView paramQfileLocalFileAppTabView) {}
+  public acro(Conversation paramConversation) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    FileCategoryUtil.a(this.a.a, this.a);
-    HashMap localHashMap = new HashMap();
-    FileCategoryUtil.a(true, FMSettings.a().b(), ".apk", "", localHashMap, this.a);
-    String str = FMSettings.a().a();
-    if (str != null) {
-      FileCategoryUtil.a(true, str, ".apk", "", localHashMap, null);
+    if (QLog.isColorLevel())
+    {
+      paramView = new StringBuilder().append("statusTitle onTouch event :").append(paramMotionEvent.toString()).append(", mGestureDetector is null ");
+      if (this.a.a == null) {
+        break label81;
+      }
     }
-    FileCategoryUtil.a(localHashMap);
-    QfileLocalFileAppTabView.a(this.a, new acrp(this));
+    label81:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("Q.recent", 2, bool);
+      if (this.a.a != null) {
+        this.a.a.onTouchEvent(paramMotionEvent);
+      }
+      return true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acro
  * JD-Core Version:    0.7.0.1
  */

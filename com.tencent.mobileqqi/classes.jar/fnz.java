@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.app.message.OnLinePushMessageProcessor;
-import java.util.TimerTask;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.EmosmUtils;
+import com.tencent.mobileqq.emoticonview.BigEmoticonViewBinder;
 
 public class fnz
-  extends TimerTask
+  implements Runnable
 {
-  private fnz(OnLinePushMessageProcessor paramOnLinePushMessageProcessor) {}
+  public fnz(BigEmoticonViewBinder paramBigEmoticonViewBinder, ImageView paramImageView) {}
   
   public void run()
   {
-    this.a.a.cancel();
+    Bitmap localBitmap = EmosmUtils.getCoverBitmap(2, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmoticonViewBinder.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId);
+    if (localBitmap != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmoticonViewBinder.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap));
+    }
   }
 }
 

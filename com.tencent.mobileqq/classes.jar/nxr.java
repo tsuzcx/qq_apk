@@ -1,20 +1,21 @@
-import com.tencent.biz.qqstory.storyHome.memory.view.segment.MemoriesVideoListSegment;
-import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreSimpleListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-public class nxr
-  extends LoadingMoreHelper.OnLoadMoreSimpleListener
+class nxr
+  implements ptv
 {
-  public nxr(MemoriesVideoListSegment paramMemoriesVideoListSegment) {}
+  nxr(nxq paramnxq, ViewBase paramViewBase) {}
   
-  public boolean a(boolean paramBoolean)
+  public void a()
   {
-    this.a.b();
-    return true;
+    String str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getEventAttachedData();
+    ors.a(nxp.a(this.jdField_a_of_type_Nxq.jdField_a_of_type_Nxp).getContext(), str);
+    opy.a(this.jdField_a_of_type_Nxq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nxr
  * JD-Core Version:    0.7.0.1
  */

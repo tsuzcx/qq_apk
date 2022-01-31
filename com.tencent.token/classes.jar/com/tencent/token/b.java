@@ -1,263 +1,337 @@
 package com.tencent.token;
 
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.security.MessageDigest;
-import java.util.zip.GZIPOutputStream;
-import javax.crypto.Cipher;
-import javax.crypto.spec.SecretKeySpec;
+import a.e.a;
+import android.content.Context;
+import android.text.TextUtils;
+import tmsdk.common.c.a.h;
 
-public final class b
-  extends i
+public class b
 {
-  private String a = "AES";
-  private String b = "MD5";
-  private String c = "SHA1";
-  private byte[] d = new byte[16];
-  private String e;
+  private Context a;
+  private h b;
   
-  public b()
+  public b(Context paramContext)
   {
-    int i = 0;
-    for (;;)
-    {
-      if (i >= 16)
-      {
-        this.e = "UTF-8";
-        return;
-      }
-      this.d[i] = ((byte)(i % 8));
-      i += 1;
-    }
+    this.a = paramContext;
+    this.b = new h("sk");
   }
   
-  private static String d(byte[] paramArrayOfByte)
+  private void a(String paramString1, String paramString2)
   {
-    StringBuffer localStringBuffer = new StringBuffer();
-    int i = 0;
-    if (i >= paramArrayOfByte.length) {
-      return localStringBuffer.toString();
+    paramString2 = fs.a(this.a, paramString2);
+    if (paramString2 == null) {
+      return;
     }
-    if (Integer.toHexString(paramArrayOfByte[i] & 0xFF).length() == 1) {
-      localStringBuffer.append("0").append(Integer.toHexString(paramArrayOfByte[i] & 0xFF));
-    }
-    for (;;)
-    {
-      i += 1;
-      break;
-      localStringBuffer.append(Integer.toHexString(paramArrayOfByte[i] & 0xFF));
-    }
+    this.b.a(paramString1, paramString2, true);
   }
   
-  public final String a(String paramString)
+  private String b(String paramString1, String paramString2)
   {
-    if ((paramString != null) && (paramString.length() > 0)) {
-      try
-      {
-        if (paramString.length() > 0)
-        {
-          paramString = new FileInputStream(paramString);
-          BufferedInputStream localBufferedInputStream = new BufferedInputStream(paramString);
-          MessageDigest localMessageDigest = MessageDigest.getInstance(this.b);
-          localMessageDigest.reset();
-          byte[] arrayOfByte = new byte[1024];
-          for (;;)
-          {
-            int i = localBufferedInputStream.read(arrayOfByte);
-            if (i <= 0)
-            {
-              localBufferedInputStream.close();
-              paramString.close();
-              return d(localMessageDigest.digest());
-            }
-            localMessageDigest.update(arrayOfByte, 0, i);
-          }
-        }
-        return "";
-      }
-      catch (Throwable paramString)
-      {
-        a(paramString);
-      }
-    }
-  }
-  
-  public final String a(byte[] paramArrayOfByte)
-  {
-    try
-    {
-      paramArrayOfByte = e.a(paramArrayOfByte);
-      return paramArrayOfByte;
-    }
-    catch (Throwable paramArrayOfByte)
-    {
-      a(paramArrayOfByte);
-    }
-    return "";
-  }
-  
-  public final String b(String paramString)
-  {
-    if ((paramString != null) && (paramString.length() > 0)) {
-      try
-      {
-        if (paramString.length() > 0)
-        {
-          paramString = new FileInputStream(paramString);
-          BufferedInputStream localBufferedInputStream = new BufferedInputStream(paramString);
-          MessageDigest localMessageDigest = MessageDigest.getInstance(this.c);
-          localMessageDigest.reset();
-          byte[] arrayOfByte = new byte[1024];
-          for (;;)
-          {
-            int i = localBufferedInputStream.read(arrayOfByte);
-            if (i <= 0)
-            {
-              localBufferedInputStream.close();
-              paramString.close();
-              return d(localMessageDigest.digest());
-            }
-            localMessageDigest.update(arrayOfByte, 0, i);
-          }
-        }
-        return "";
-      }
-      catch (Throwable paramString)
-      {
-        a(paramString);
-      }
-    }
-  }
-  
-  public final byte[] b(byte[] paramArrayOfByte)
-  {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
+    paramString1 = this.b.a(paramString1, paramString2);
+    if (TextUtils.isEmpty(paramString1)) {
       return null;
     }
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    try
-    {
-      GZIPOutputStream localGZIPOutputStream = new GZIPOutputStream(localByteArrayOutputStream);
-      localGZIPOutputStream.write(paramArrayOfByte);
-      localGZIPOutputStream.close();
-      paramArrayOfByte = localByteArrayOutputStream.toByteArray();
-      return paramArrayOfByte;
-    }
-    catch (Throwable paramArrayOfByte)
-    {
-      a(paramArrayOfByte);
-    }
-    return null;
+    return fs.b(this.a, paramString1);
   }
   
-  public final String c(String paramString)
-  {
-    if ((paramString != null) && (paramString.length() > 0)) {
-      try
-      {
-        MessageDigest localMessageDigest = MessageDigest.getInstance(this.b);
-        localMessageDigest.reset();
-        localMessageDigest.update(paramString.getBytes(this.e));
-        paramString = d(localMessageDigest.digest());
-        return paramString;
-      }
-      catch (Throwable paramString)
-      {
-        a(paramString);
-      }
-    }
-    return "";
-  }
-  
-  public final byte[] c(byte[] paramArrayOfByte)
+  private long h(String paramString)
   {
     try
     {
-      SecretKeySpec localSecretKeySpec = new SecretKeySpec(this.d, this.a);
-      Cipher localCipher = Cipher.getInstance(this.a);
-      localCipher.init(1, localSecretKeySpec);
-      paramArrayOfByte = localCipher.doFinal(paramArrayOfByte);
-      return paramArrayOfByte;
+      long l = Long.parseLong(paramString);
+      return l;
     }
-    catch (Throwable paramArrayOfByte)
+    catch (Exception paramString) {}
+    return 0L;
+  }
+  
+  private int i(String paramString)
+  {
+    try
     {
-      a(paramArrayOfByte);
+      int i = Integer.parseInt(paramString);
+      return i;
     }
+    catch (Exception paramString) {}
+    return 0;
+  }
+  
+  private boolean j(String paramString)
+  {
+    try
+    {
+      boolean bool = Boolean.parseBoolean(paramString);
+      return bool;
+    }
+    catch (Exception paramString) {}
+    return false;
+  }
+  
+  public String a()
+  {
+    return b("key_ek", "");
+  }
+  
+  public void a(int paramInt)
+  {
+    String str = Integer.toString(paramInt);
+    if (str == null) {
+      return;
+    }
+    a("key_ha", str);
+  }
+  
+  public void a(long paramLong)
+  {
+    a("key_gd_ck_tm", Long.toString(paramLong));
+  }
+  
+  public void a(a parama)
+  {
+    a("key_gd_1", parama.a);
+    a("key_gd_2", parama.b);
+    a("key_gd_3", parama.c);
+    a("key_gd_4", parama.d);
+    a("key_gd_5", parama.e);
+    a("key_gd_6", Integer.toString(parama.f));
+    a("key_gd_7", parama.g);
+    a("key_gd_8", Integer.toString(parama.h));
+    a("key_gd_9", parama.i);
+    a("key_gd_10", Integer.toString(parama.j));
+    a("key_gd_11", Integer.toString(parama.k));
+    a("key_gd_12", Boolean.toString(parama.l));
+    a("key_gd_13", parama.m);
+    a("key_gd_14", parama.n);
+    a("key_gd_15", Integer.toString(parama.o));
+    a("key_gd_16", parama.p);
+    a("key_gd_17", Integer.toString(parama.q));
+    a("key_gd_18", Integer.toString(parama.r));
+    a("key_gd_19", parama.s);
+    a("key_gd_20", parama.t);
+    a("key_gd_21", Integer.toString(parama.u));
+    a("key_gd_22", parama.v);
+    a("key_gd_23", Long.toString(parama.w));
+    a("key_gd_24", Long.toString(parama.x));
+    a("key_gd_25", Long.toString(parama.y));
+    a("key_gd_26", parama.z);
+    a("key_gd_27", parama.A);
+    a("key_gd_28", parama.B);
+    a("key_gd_29", parama.P);
+    a("key_gd_30", Integer.toString(parama.Q));
+  }
+  
+  public void a(String paramString)
+  {
+    a("key_ek", paramString);
+  }
+  
+  public String b()
+  {
+    return b("key_sid", "");
+  }
+  
+  public void b(int paramInt)
+  {
+    String str = Integer.toString(paramInt);
+    if (str == null) {
+      return;
+    }
+    a("key_ha_sq", str);
+  }
+  
+  public void b(long paramLong)
+  {
+    String str = Long.toString(paramLong);
+    if (str == null) {
+      return;
+    }
+    a("key_gd_tm", str);
+  }
+  
+  public void b(String paramString)
+  {
+    a("key_sid", paramString);
+  }
+  
+  public String c()
+  {
+    return b("key_gd", "");
+  }
+  
+  public void c(int paramInt)
+  {
+    String str = Integer.toString(paramInt);
+    if (str == null) {
+      return;
+    }
+    a("key_itsc", str);
+  }
+  
+  public void c(long paramLong)
+  {
+    String str = Long.toString(paramLong);
+    if (str == null) {
+      return;
+    }
+    a("key_lt_tm", str);
+  }
+  
+  public void c(String paramString)
+  {
+    a("key_gd", paramString);
+  }
+  
+  public String d()
+  {
     return null;
   }
   
-  public final String d(String paramString)
+  public void d(String paramString)
   {
-    if ((paramString != null) && (paramString.length() > 0)) {}
-    for (;;)
+    a("key_pl", paramString);
+  }
+  
+  public long e()
+  {
+    String str = b("key_gd_ck_tm", "");
+    try
     {
-      int j;
-      int i;
-      char c1;
-      try
-      {
-        localObject = new StringBuffer();
-        j = 0;
-        i = 0;
-        if (j >= paramString.length())
-        {
-          paramString = ((StringBuffer)localObject).toString();
-          if (paramString.length() <= 0) {
-            break label143;
-          }
-          localObject = MessageDigest.getInstance(this.b);
-          ((MessageDigest)localObject).reset();
-          ((MessageDigest)localObject).update(paramString.getBytes(this.e));
-          paramString = ((MessageDigest)localObject).digest();
-          i = 0;
-          if (i < paramString.length) {
-            break label146;
-          }
-          return d(paramString);
-        }
-        c1 = paramString.charAt(j);
-        if (i != 0) {
-          break label183;
-        }
-        if (c1 != '=') {
-          break label171;
-        }
-        i = 61;
-      }
-      catch (Throwable paramString)
-      {
-        Object localObject;
-        a(paramString);
-      }
-      if (((StringBuffer)localObject).length() > 0)
-      {
-        continue;
-        ((StringBuffer)localObject).append(c1);
-        break label162;
-        label143:
-        return "";
-        label146:
-        paramString[i] = ((byte)(paramString[i] + 1));
-        i += 1;
-        continue;
-      }
-      for (;;)
-      {
-        label162:
-        j += 1;
-        break;
-        label171:
-        if (c1 == ':') {
-          i = 58;
-        }
-      }
-      label183:
-      if ((c1 >= '0') && (c1 <= 'f') && ((c1 <= '9') || (c1 >= 'A'))) {
-        if ((c1 <= 'F') || (c1 >= 'a')) {}
-      }
+      long l = Long.parseLong(str);
+      return l;
     }
+    catch (Exception localException) {}
+    return 0L;
+  }
+  
+  public void e(String paramString)
+  {
+    a("key_mc", paramString);
+  }
+  
+  public long f()
+  {
+    String str = b("key_gd_tm", "");
+    try
+    {
+      long l = Long.parseLong(str);
+      return l;
+    }
+    catch (Exception localException) {}
+    return 0L;
+  }
+  
+  public void f(String paramString)
+  {
+    a("key_nu", paramString);
+  }
+  
+  public int g()
+  {
+    String str = b("key_ha", "");
+    try
+    {
+      int i = Integer.parseInt(str);
+      return i;
+    }
+    catch (Exception localException) {}
+    return 0;
+  }
+  
+  public void g(String paramString)
+  {
+    a("key_tc", paramString);
+  }
+  
+  public int h()
+  {
+    String str = b("key_ha_sq", "");
+    try
+    {
+      int i = Integer.parseInt(str);
+      return i;
+    }
+    catch (Exception localException) {}
+    return 0;
+  }
+  
+  public long i()
+  {
+    String str = b("key_lt_tm", "");
+    try
+    {
+      long l = Long.parseLong(str);
+      return l;
+    }
+    catch (Exception localException) {}
+    return 0L;
+  }
+  
+  public a j()
+  {
+    a locala = new a();
+    locala.a = b("key_gd_1", "");
+    locala.b = b("key_gd_2", "");
+    locala.c = b("key_gd_3", "");
+    locala.d = b("key_gd_4", "");
+    locala.e = b("key_gd_5", "");
+    locala.f = i(b("key_gd_6", ""));
+    locala.g = b("key_gd_7", "");
+    locala.h = i(b("key_gd_8", ""));
+    locala.i = b("key_gd_9", "");
+    locala.j = i(b("key_gd_10", ""));
+    locala.k = i(b("key_gd_11", ""));
+    locala.l = j(b("key_gd_12", ""));
+    locala.m = b("key_gd_13", "");
+    locala.n = b("key_gd_14", "");
+    locala.o = i(b("key_gd_15", ""));
+    locala.p = b("key_gd_16", "");
+    locala.q = ((short)i(b("key_gd_17", "")));
+    locala.r = i(b("key_gd_18", ""));
+    locala.s = b("key_gd_19", "");
+    locala.t = b("key_gd_20", "");
+    locala.u = i(b("key_gd_21", ""));
+    locala.v = b("key_gd_22", "");
+    locala.w = h(b("key_gd_23", ""));
+    locala.x = h(b("key_gd_24", ""));
+    locala.y = h(b("key_gd_25", ""));
+    locala.z = b("key_gd_26", "");
+    locala.A = b("key_gd_27", "");
+    locala.B = b("key_gd_28", "");
+    locala.P = b("key_gd_29", "");
+    locala.Q = i(b("key_gd_30", ""));
+    return locala;
+  }
+  
+  public int k()
+  {
+    String str = b("key_itsc", "");
+    try
+    {
+      int i = Integer.parseInt(str);
+      return i;
+    }
+    catch (Exception localException) {}
+    return 0;
+  }
+  
+  public String l()
+  {
+    return b("key_pl", "");
+  }
+  
+  public String m()
+  {
+    return b("key_mc", "");
+  }
+  
+  public String n()
+  {
+    return b("key_nu", "");
+  }
+  
+  public String o()
+  {
+    return b("key_tc", "");
   }
 }
 

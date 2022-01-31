@@ -1,28 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
 
-public final class rvq
-  implements DialogInterface.OnClickListener
+class rvq
+  implements AdapterView.OnItemClickListener
 {
-  public rvq(QQAppInterface paramQQAppInterface, int paramInt) {}
+  rvq(rvp paramrvp, Context paramContext) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (this.jdField_a_of_type_Int == 6) {}
-    for (paramInt = 1;; paramInt = 4)
+    paramAdapterView = (pha)this.jdField_a_of_type_Rvp.getItem(paramInt);
+    if ((paramAdapterView != null) && (!TextUtils.isEmpty(paramAdapterView.b)))
     {
-      ReportController.b(paramDialogInterface, "CliOper", "", "", "0X80063FA", "0X80063FA", paramInt, 0, "", "", "", "");
+      if (!paramAdapterView.b.startsWith("mqq://")) {
+        break label154;
+      }
+      paramView = bdib.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_AndroidContentContext, paramAdapterView.b);
+      if (paramView != null) {
+        paramView.c();
+      }
+    }
+    for (;;)
+    {
+      paramView = new orz().b().a();
+      if (!TextUtils.isEmpty(paramView)) {
+        nrt.a(null, "CliOper", "", "", "0X80092FE", "0X80092FE", 0, 0, "" + paramAdapterView.c, "" + paramAdapterView.a, "", paramView, false);
+      }
       return;
+      label154:
+      ors.b(rvp.a(this.jdField_a_of_type_Rvp), paramAdapterView.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rvq
  * JD-Core Version:    0.7.0.1
  */

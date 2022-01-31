@@ -1,31 +1,34 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment.1.1;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public final class akgg
-  extends MessageObserver
+public class akgg
+  implements amml
 {
-  public void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
+  public akgg(SessionClearFragment paramSessionClearFragment) {}
+  
+  public void a()
   {
-    if (paramStatictisInfo != null)
+    if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder(256);
-      localStringBuilder.append("StatictisInfo[ ");
-      localStringBuilder.append("appSeq: " + paramStatictisInfo.jdField_a_of_type_Int);
-      localStringBuilder.append("errCode: " + paramStatictisInfo.b);
-      localStringBuilder.append("retryCount: " + paramStatictisInfo.c);
-      localStringBuilder.append("detailErrorReason: " + paramStatictisInfo.jdField_a_of_type_Long);
-      localStringBuilder.append("timeoutReason: " + paramStatictisInfo.jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(" ]");
-      QLog.d("RedPacketStructMsg", 1, "onNotifyResultAfterSendRich isSuccess:" + paramBoolean + "," + localStringBuilder.toString());
-      return;
+      QLog.d("SessionClearFragment", 2, "onLoadStart");
+      this.a.a();
     }
-    QLog.d("RedPacketStructMsg", 1, "onNotifyResultAfterSendRich isSuccess:" + paramBoolean + ",statictisInfo == null");
+  }
+  
+  public void a(List<ammf> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SessionClearFragment", 2, "onLoadFinish");
+    }
+    SessionClearFragment.a(this.a).runOnUiThread(new SessionClearFragment.1.1(this, paramList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akgg
  * JD-Core Version:    0.7.0.1
  */

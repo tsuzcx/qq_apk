@@ -8,45 +8,46 @@ import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.biz.common.offline.util.IOfflineDownloader;
-import com.tencent.biz.common.offline.util.IThreadManager;
-import com.tencent.biz.common.offline.util.OfflineDownloader;
-import com.tencent.biz.common.util.NetworkUtil;
-import com.tencent.biz.common.util.QQThreadManager;
-import com.tencent.biz.common.util.Util;
-import com.tencent.biz.common.util.ZipUtils;
+import bdhb;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.vas.LzmaUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import klb;
-import kld;
-import kle;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
+import nbs;
+import nbu;
+import nbv;
+import ncb;
+import ncj;
+import nck;
+import ncm;
+import ndk;
+import ndn;
+import ndq;
+import ndr;
 
 public class BidDownloader
   implements Handler.Callback
 {
   public static Context a;
   public static BidDownloader.WifiListener a;
-  public static IOfflineDownloader a;
-  public static IThreadManager a;
-  public static ArrayList a;
-  public static HashMap a;
+  public static ArrayList<BidDownloader> a;
+  public static HashMap<String, Integer> a;
+  public static ncj a;
+  public static nck a;
   public static String d;
   public static boolean g;
   public int a;
   public Handler a;
-  public AsyncBack a;
   public String a;
+  public nbs a;
   public boolean a;
   public int b;
-  public AsyncBack b;
   public String b;
+  public nbs b;
   public boolean b;
   public int c;
   public String c;
@@ -58,12 +59,12 @@ public class BidDownloader
   
   static
   {
-    jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager = new QQThreadManager();
-    jdField_a_of_type_ComTencentBizCommonOfflineUtilIOfflineDownloader = new OfflineDownloader();
+    jdField_a_of_type_Nck = new ndn();
+    jdField_a_of_type_Ncj = new ncm();
     jdField_d_of_type_JavaLangString = "BidDownloader";
   }
   
-  BidDownloader(String paramString, AppRuntime paramAppRuntime, AsyncBack paramAsyncBack, boolean paramBoolean, int paramInt)
+  public BidDownloader(String paramString, AppRuntime paramAppRuntime, nbs paramnbs, boolean paramBoolean, int paramInt)
   {
     this.jdField_a_of_type_Boolean = true;
     if (TextUtils.isEmpty(paramString)) {
@@ -75,14 +76,14 @@ public class BidDownloader
       jdField_a_of_type_JavaUtilHashMap = new HashMap();
       jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader$WifiListener = new BidDownloader.WifiListener();
     }
-    this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack = paramAsyncBack;
+    this.jdField_a_of_type_Nbs = paramnbs;
     jdField_a_of_type_AndroidContentContext = paramAppRuntime.getApplication().getApplicationContext();
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (paramInt == 1)
     {
       this.jdField_b_of_type_Boolean = true;
-      paramString = OfflineEnvHelper.b(this.jdField_a_of_type_JavaLangString);
+      paramString = ncb.b(this.jdField_a_of_type_JavaLangString);
       if (!TextUtils.isEmpty(paramString))
       {
         if (!this.e) {
@@ -129,67 +130,67 @@ public class BidDownloader
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokestatic 53	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1: invokestatic 55	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   4: ifeq +8 -> 12
-    //   7: ldc 142
+    //   7: ldc 144
     //   9: astore_2
     //   10: aload_2
     //   11: areturn
-    //   12: new 144	java/io/File
+    //   12: new 146	java/io/File
     //   15: dup
     //   16: aload_0
-    //   17: invokespecial 147	java/io/File:<init>	(Ljava/lang/String;)V
+    //   17: invokespecial 149	java/io/File:<init>	(Ljava/lang/String;)V
     //   20: astore_2
     //   21: aload_2
-    //   22: invokevirtual 151	java/io/File:exists	()Z
+    //   22: invokevirtual 153	java/io/File:exists	()Z
     //   25: ifne +38 -> 63
-    //   28: invokestatic 154	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   28: invokestatic 156	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   31: ifeq +29 -> 60
-    //   34: getstatic 42	com/tencent/biz/common/offline/BidDownloader:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   34: getstatic 44	com/tencent/biz/common/offline/BidDownloader:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   37: iconst_2
-    //   38: new 97	java/lang/StringBuilder
+    //   38: new 99	java/lang/StringBuilder
     //   41: dup
-    //   42: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   45: ldc 156
-    //   47: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: invokespecial 100	java/lang/StringBuilder:<init>	()V
+    //   45: ldc 158
+    //   47: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   50: aload_0
-    //   51: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   54: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   57: invokestatic 159	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   60: ldc 142
+    //   51: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   57: invokestatic 161	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   60: ldc 144
     //   62: areturn
-    //   63: ldc 142
+    //   63: ldc 144
     //   65: astore 4
-    //   67: new 161	java/io/RandomAccessFile
+    //   67: new 163	java/io/RandomAccessFile
     //   70: dup
     //   71: aload_2
-    //   72: ldc 163
-    //   74: invokespecial 166	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   72: ldc 165
+    //   74: invokespecial 168	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   77: astore_3
     //   78: aload_3
     //   79: astore_2
     //   80: aload_3
     //   81: lconst_0
-    //   82: invokevirtual 170	java/io/RandomAccessFile:seek	(J)V
+    //   82: invokevirtual 172	java/io/RandomAccessFile:seek	(J)V
     //   85: aload_3
     //   86: astore_2
     //   87: aload_3
-    //   88: invokevirtual 174	java/io/RandomAccessFile:readInt	()I
-    //   91: invokestatic 180	java/lang/Integer:reverseBytes	(I)I
+    //   88: invokevirtual 176	java/io/RandomAccessFile:readInt	()I
+    //   91: invokestatic 182	java/lang/Integer:reverseBytes	(I)I
     //   94: istore_1
     //   95: iload_1
     //   96: i2l
-    //   97: ldc2_w 181
+    //   97: ldc2_w 183
     //   100: lcmp
     //   101: ifne +21 -> 122
-    //   104: ldc 184
+    //   104: ldc 186
     //   106: astore_0
     //   107: aload_0
     //   108: astore_2
     //   109: aload_3
     //   110: ifnull -100 -> 10
     //   113: aload_3
-    //   114: invokevirtual 187	java/io/RandomAccessFile:close	()V
+    //   114: invokevirtual 189	java/io/RandomAccessFile:close	()V
     //   117: aload_0
     //   118: areturn
     //   119: astore_2
@@ -199,10 +200,10 @@ public class BidDownloader
     //   124: astore_0
     //   125: iload_1
     //   126: i2l
-    //   127: ldc2_w 188
+    //   127: ldc2_w 190
     //   130: lcmp
     //   131: ifne -24 -> 107
-    //   134: ldc 191
+    //   134: ldc 193
     //   136: astore_0
     //   137: goto -30 -> 107
     //   140: astore 5
@@ -210,32 +211,32 @@ public class BidDownloader
     //   143: astore_3
     //   144: aload_3
     //   145: astore_2
-    //   146: invokestatic 154	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   146: invokestatic 156	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   149: ifeq +33 -> 182
     //   152: aload_3
     //   153: astore_2
-    //   154: getstatic 42	com/tencent/biz/common/offline/BidDownloader:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   154: getstatic 44	com/tencent/biz/common/offline/BidDownloader:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   157: iconst_2
-    //   158: new 97	java/lang/StringBuilder
+    //   158: new 99	java/lang/StringBuilder
     //   161: dup
-    //   162: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   165: ldc 193
-    //   167: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   162: invokespecial 100	java/lang/StringBuilder:<init>	()V
+    //   165: ldc 195
+    //   167: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   170: aload_0
-    //   171: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   174: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   171: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   174: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   177: aload 5
-    //   179: invokestatic 196	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   179: invokestatic 198	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   182: aload 4
     //   184: astore_2
     //   185: aload_3
     //   186: ifnull -176 -> 10
     //   189: aload_3
-    //   190: invokevirtual 187	java/io/RandomAccessFile:close	()V
-    //   193: ldc 142
+    //   190: invokevirtual 189	java/io/RandomAccessFile:close	()V
+    //   193: ldc 144
     //   195: areturn
     //   196: astore_0
-    //   197: ldc 142
+    //   197: ldc 144
     //   199: areturn
     //   200: astore_0
     //   201: aconst_null
@@ -243,7 +244,7 @@ public class BidDownloader
     //   203: aload_2
     //   204: ifnull +7 -> 211
     //   207: aload_2
-    //   208: invokevirtual 187	java/io/RandomAccessFile:close	()V
+    //   208: invokevirtual 189	java/io/RandomAccessFile:close	()V
     //   211: aload_0
     //   212: athrow
     //   213: astore_2
@@ -292,12 +293,12 @@ public class BidDownloader
   
   private void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack != null) {
-      this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack.a(null, paramInt1);
+    if (this.jdField_a_of_type_Nbs != null) {
+      this.jdField_a_of_type_Nbs.loaded(null, paramInt1);
     }
   }
   
-  protected static void a(String paramString)
+  public static void a(String paramString)
   {
     if (jdField_a_of_type_JavaUtilHashMap == null) {
       jdField_a_of_type_JavaUtilHashMap = new HashMap();
@@ -316,7 +317,7 @@ public class BidDownloader
     return (paramInt == 0) || (paramInt == -1);
   }
   
-  protected static boolean a(String paramString)
+  public static boolean a(String paramString)
   {
     if (jdField_a_of_type_JavaUtilHashMap == null) {}
     while (jdField_a_of_type_JavaUtilHashMap.get(paramString) == null) {
@@ -335,13 +336,17 @@ public class BidDownloader
         do
         {
           return;
-          if (jdField_a_of_type_JavaUtilHashMap.get(paramString) != null) {
+          if (jdField_a_of_type_JavaUtilHashMap.get(paramString) != null)
+          {
             jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+            if (QLog.isColorLevel()) {
+              QLog.d(jdField_d_of_type_JavaLangString, 2, "removeDownloadingState:" + paramString);
+            }
           }
         } while ((jdField_a_of_type_JavaUtilArrayList == null) || (jdField_a_of_type_JavaUtilArrayList.isEmpty()));
         paramString = (BidDownloader)jdField_a_of_type_JavaUtilArrayList.get(0);
       } while (jdField_a_of_type_AndroidContentContext == null);
-      if ((paramString.f) && (NetworkUtil.a(jdField_a_of_type_AndroidContentContext) != 1) && (!g))
+      if ((paramString.f) && (ndk.a(jdField_a_of_type_AndroidContentContext) != 1) && (!g))
       {
         paramString = new IntentFilter();
         paramString.addAction("android.net.conn.CONNECTIVITY_CHANGE");
@@ -377,12 +382,12 @@ public class BidDownloader
       }
       a(this);
     } while (!QLog.isColorLevel());
-    QLog.i(jdField_d_of_type_JavaLangString, 2, jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(0)) + "," + this.jdField_a_of_type_JavaLangString + "add to queue");
+    QLog.i(jdField_d_of_type_JavaLangString, 2, jdField_a_of_type_JavaUtilHashMap + "," + this.jdField_a_of_type_JavaLangString + "add to queue");
     return;
-    HtmlOffline.a(jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_JavaLangString);
+    nbv.a(jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_JavaLangString);
     b();
     if (QLog.isColorLevel()) {
-      QLog.i(jdField_d_of_type_JavaLangString, 2, this.jdField_a_of_type_JavaLangString + this.jdField_c_of_type_JavaLangString + this.jdField_b_of_type_ComTencentBizCommonOfflineAsyncBack);
+      QLog.i(jdField_d_of_type_JavaLangString, 2, this.jdField_a_of_type_JavaLangString + this.jdField_c_of_type_JavaLangString + this.jdField_b_of_type_Nbs);
     }
     a(this.jdField_a_of_type_JavaLangString);
   }
@@ -409,14 +414,14 @@ public class BidDownloader
     if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
       return false;
     }
-    this.jdField_b_of_type_ComTencentBizCommonOfflineAsyncBack = new klb(this, l);
+    this.jdField_b_of_type_Nbs = new nbu(this, l);
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
     return true;
   }
   
   public void b()
   {
-    jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager.c(new kld(this));
+    jdField_a_of_type_Nck.c(new BidDownloader.2(this));
   }
   
   public boolean b()
@@ -438,7 +443,7 @@ public class BidDownloader
       {
         return bool2;
         bool2 = bool1;
-        if (!TextUtils.isEmpty(OfflineEnvHelper.b(str1)))
+        if (!TextUtils.isEmpty(ncb.b(str1)))
         {
           localObject1 = new File(str4);
           if (((File)localObject1).exists()) {
@@ -465,16 +470,16 @@ public class BidDownloader
     if (!TextUtils.isEmpty((CharSequence)localObject2)) {
       if (((String)localObject2).equals("zip"))
       {
-        i = ZipUtils.a(str4, str3);
+        i = ndr.a(str4, str3);
         label229:
         if (QLog.isColorLevel()) {
           QLog.i(jdField_d_of_type_JavaLangString, 2, "now delete original download offline zip, path: " + str4);
         }
-        Util.b(str4);
+        ndq.b(str4);
         if (i <= 0) {
           break label470;
         }
-        HtmlOffline.a(str2, 13, 0L, i, "lixian_update", "0");
+        nbv.a(str2, 13, 0L, i, "lixian_update", "0");
         bool1 = bool3;
         if (QLog.isColorLevel())
         {
@@ -486,7 +491,7 @@ public class BidDownloader
     label691:
     for (;;)
     {
-      Util.a(str3);
+      ndq.a(str3);
       bool2 = bool1;
       if (!QLog.isColorLevel()) {
         break;
@@ -501,7 +506,7 @@ public class BidDownloader
         QLog.w(jdField_d_of_type_JavaLangString, 1, "can not recognize download compress file format, " + this.jdField_b_of_type_JavaLangString);
         if (this.jdField_d_of_type_Boolean)
         {
-          i = ZipUtils.a(str4, str3);
+          i = ndr.a(str4, str3);
           break label229;
         }
         if (this.e)
@@ -520,19 +525,19 @@ public class BidDownloader
             bool2 = ((File)localObject2).renameTo(new File((String)localObject1));
             bool1 = bool2;
             if (!bool2) {
-              bool1 = FileUtils.b(str4, (String)localObject1);
+              bool1 = bdhb.b(str4, (String)localObject1);
             }
             if (!bool1)
             {
-              HtmlOffline.a(str2, 13, 0L, i, "lixian_update", "0");
+              nbv.a(str2, 13, 0L, i, "lixian_update", "0");
               bool1 = false;
               break label691;
             }
-            HtmlOffline.a(str2, 13, 0L, i, "lixian_time", "0");
+            nbv.a(str2, 13, 0L, i, "lixian_time", "0");
             bool1 = true;
             break label691;
           }
-          HtmlOffline.a(str2, 13, 0L, i, "lixian_update", "0");
+          nbv.a(str2, 13, 0L, i, "lixian_update", "0");
           bool1 = bool3;
           continue;
         }
@@ -551,7 +556,7 @@ public class BidDownloader
       }
       return;
     }
-    jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager.c(new kle(this));
+    jdField_a_of_type_Nck.c(new BidDownloader.4(this));
   }
   
   public boolean handleMessage(Message paramMessage)

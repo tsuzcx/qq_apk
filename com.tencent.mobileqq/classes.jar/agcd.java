@@ -1,24 +1,21 @@
-import android.graphics.drawable.ColorDrawable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import com.tencent.mobileqq.ocr.view.ScanOcrView;
+import android.content.Context;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class agcd
-  implements Runnable
+  extends StructingMsgItemBuilder
 {
-  public agcd(ScanOcrActivity paramScanOcrActivity) {}
-  
-  public void run()
+  public agcd(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    ScanOcrActivity.a(this.a).e();
-    ScanOcrActivity.b(this.a).setImageDrawable(new ColorDrawable(-16777216));
-    ScanOcrActivity.b(this.a).setVisibility(0);
-    ScanOcrActivity.b(this.a).postDelayed(new agce(this), 200L);
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agcd
  * JD-Core Version:    0.7.0.1
  */

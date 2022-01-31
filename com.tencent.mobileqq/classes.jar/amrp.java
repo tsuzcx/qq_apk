@@ -1,22 +1,10 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qzone.plugin.QZonePluginManager;
-
-public final class amrp
-  implements Runnable
+public abstract interface amrp
 {
-  public amrp(QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
-  {
-    QZonePluginManager localQZonePluginManager = (QZonePluginManager)this.a.getManager(174);
-    if (localQZonePluginManager != null) {
-      localQZonePluginManager.b();
-    }
-  }
+  public abstract void handleMessage(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amrp
  * JD-Core Version:    0.7.0.1
  */

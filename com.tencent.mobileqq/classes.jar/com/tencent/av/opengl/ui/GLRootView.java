@@ -6,6 +6,7 @@ import android.content.res.TypedArray;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.opengl.GLSurfaceView.Renderer;
+import android.os.Build;
 import android.os.Process;
 import android.os.SystemClock;
 import android.util.AttributeSet;
@@ -13,42 +14,49 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import com.tencent.av.camera.CameraUtils;
 import com.tencent.av.opengl.GraphicRenderMgr;
-import com.tencent.av.opengl.glrenderer.GLCanvas;
-import com.tencent.av.opengl.glrenderer.GLES20Canvas;
-import com.tencent.av.opengl.program.TextureProgramFactory;
-import com.tencent.av.opengl.texture.BasicTexture;
-import com.tencent.av.opengl.texture.UploadedTexture;
-import com.tencent.av.opengl.utils.Utils;
-import com.tencent.av.switchface.SwitchFaceView;
 import com.tencent.av.ui.VideoLayerUI;
 import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 import javax.microedition.khronos.opengles.GL11;
-import jjy;
+import lsa;
+import lsv;
+import lsw;
+import ltu;
+import lty;
+import lue;
+import lui;
+import luj;
+import lum;
+import lux;
+import mcr;
+import mqq.os.MqqHandler;
 
 public class GLRootView
   extends GLSurfaceView
   implements GLSurfaceView.Renderer
 {
+  private static int jdField_d_of_type_Int;
   final int jdField_a_of_type_Int = 20;
-  long jdField_a_of_type_Long = 0L;
-  private GLCanvas jdField_a_of_type_ComTencentAvOpenglGlrendererGLCanvas;
-  public GLView a;
-  private SwitchFaceView jdField_a_of_type_ComTencentAvSwitchfaceSwitchFaceView;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new jjy(this);
-  private final Condition jdField_a_of_type_JavaUtilConcurrentLocksCondition = this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.newCondition();
+  final long jdField_a_of_type_Long = AudioHelper.b();
+  private Runnable jdField_a_of_type_JavaLangRunnable = new GLRootView.1(this);
+  private final String jdField_a_of_type_JavaLangString = "GLRootView_" + this.jdField_a_of_type_Long;
   private final ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
+  private lsv jdField_a_of_type_Lsv;
+  public luj a;
+  private mcr jdField_a_of_type_Mcr;
   boolean jdField_a_of_type_Boolean = false;
   int jdField_b_of_type_Int = 0;
+  long jdField_b_of_type_Long = 0L;
   private volatile boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int = 2;
   private boolean jdField_c_of_type_Boolean;
-  private boolean d;
-  private boolean e = true;
+  private boolean jdField_d_of_type_Boolean = true;
+  private boolean e;
   
   public GLRootView(Context paramContext)
   {
@@ -58,9 +66,24 @@ public class GLRootView
   public GLRootView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    CameraUtils.a(paramContext);
-    GraphicRenderMgr.loadSo();
-    if (isInEditMode()) {
+    if (QLog.isDevelopLevel()) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "GLRootView, 构造");
+    }
+    boolean bool1 = bool2;
+    if (!Build.MODEL.equalsIgnoreCase("MI 9")) {
+      if (!Build.MODEL.equalsIgnoreCase("MI 9 Transparent Edition")) {
+        break label162;
+      }
+    }
+    label162:
+    for (bool1 = bool2;; bool1 = false)
+    {
+      this.e = bool1;
+      CameraUtils.a(paramContext);
+      GraphicRenderMgr.loadSo();
+      if (!isInEditMode()) {
+        break;
+      }
       return;
     }
     this.jdField_c_of_type_Int |= 0x1;
@@ -79,7 +102,7 @@ public class GLRootView
       for (;;)
       {
         if (QLog.isColorLevel()) {
-          QLog.e("GLRootView", 2, "GLRootView e = " + localException);
+          QLog.e(this.jdField_a_of_type_JavaLangString, 2, "GLRootView e = " + localException);
         }
         paramAttributeSet.recycle();
       }
@@ -88,7 +111,7 @@ public class GLRootView
     {
       paramAttributeSet.recycle();
     }
-    setEGLContextClientVersion(Utils.a(paramContext));
+    setEGLContextClientVersion(lux.a(paramContext));
     if (this.jdField_a_of_type_Boolean)
     {
       setEGLConfigChooser(8, 8, 8, 8, 16, 0);
@@ -97,9 +120,12 @@ public class GLRootView
     for (;;)
     {
       setRenderer(this);
-      this.jdField_a_of_type_ComTencentAvSwitchfaceSwitchFaceView = new SwitchFaceView();
+      if (!lsa.a()) {
+        break;
+      }
+      this.jdField_a_of_type_Mcr = new mcr();
       return;
-      if (Utils.jdField_b_of_type_Boolean)
+      if (lux.jdField_b_of_type_Boolean)
       {
         setEGLConfigChooser(8, 8, 8, 0, 0, 0);
         getHolder().setFormat(3);
@@ -112,19 +138,19 @@ public class GLRootView
     }
   }
   
-  private void c()
+  private void b()
   {
     this.jdField_c_of_type_Int &= 0xFFFFFFFD;
     int i = getWidth();
     int j = getHeight();
-    if ((this.jdField_a_of_type_ComTencentAvOpenglUiGLView != null) && (i != 0) && (j != 0)) {
-      this.jdField_a_of_type_ComTencentAvOpenglUiGLView.b(0, 0, i, j);
+    if ((this.jdField_a_of_type_Luj != null) && (i != 0) && (j != 0)) {
+      this.jdField_a_of_type_Luj.b(0, 0, i, j);
     }
   }
   
-  public SwitchFaceView a()
+  public mcr a()
   {
-    return this.jdField_a_of_type_ComTencentAvSwitchfaceSwitchFaceView;
+    return this.jdField_a_of_type_Mcr;
   }
   
   public void a()
@@ -132,7 +158,7 @@ public class GLRootView
     this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
     try
     {
-      if (this.jdField_a_of_type_ComTencentAvOpenglUiGLView != null)
+      if (this.jdField_a_of_type_Luj != null)
       {
         i = this.jdField_c_of_type_Int;
         if ((i & 0x2) == 0) {}
@@ -155,176 +181,241 @@ public class GLRootView
     }
   }
   
-  public void a(GL10 paramGL10)
+  protected void a(GL10 paramGL10)
   {
-    this.jdField_a_of_type_ComTencentAvOpenglGlrendererGLCanvas.d();
-    UploadedTexture.g();
+    this.jdField_a_of_type_Lsv.d();
+    lue.g();
     this.jdField_b_of_type_Boolean = false;
     if ((this.jdField_c_of_type_Int & 0x2) != 0) {
-      c();
+      b();
     }
-    if (this.jdField_a_of_type_ComTencentAvOpenglUiGLView != null) {
-      this.jdField_a_of_type_ComTencentAvOpenglUiGLView.c(this.jdField_a_of_type_ComTencentAvOpenglGlrendererGLCanvas);
+    if (this.jdField_a_of_type_Luj != null) {
+      this.jdField_a_of_type_Luj.a(this.jdField_a_of_type_Lsv);
     }
     for (;;)
     {
-      if (UploadedTexture.f()) {
+      if (lue.e()) {
         requestRender();
       }
       return;
-      this.jdField_a_of_type_ComTencentAvOpenglGlrendererGLCanvas.a();
+      this.jdField_a_of_type_Lsv.a();
     }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilConcurrentLocksCondition.signalAll();
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
   }
   
   public boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_ComTencentAvOpenglUiGLView != null) && ((this.jdField_a_of_type_ComTencentAvOpenglUiGLView instanceof VideoLayerUI)) && (((VideoLayerUI)this.jdField_a_of_type_ComTencentAvOpenglUiGLView).c(paramMotionEvent))) {
+    if ((this.jdField_a_of_type_Luj != null) && ((this.jdField_a_of_type_Luj instanceof VideoLayerUI)) && (((VideoLayerUI)this.jdField_a_of_type_Luj).c(paramMotionEvent))) {
       return true;
     }
     return super.dispatchHoverEvent(paramMotionEvent);
   }
   
+  /* Error */
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool2 = false;
-    if (!isEnabled()) {
-      return false;
-    }
-    int i = paramMotionEvent.getAction();
-    if ((i == 3) || (i == 1)) {
-      this.d = false;
-    }
-    do
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-      boolean bool1 = bool2;
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentAvOpenglUiGLView != null)
-        {
-          bool1 = bool2;
-          if (this.jdField_a_of_type_ComTencentAvOpenglUiGLView.b(paramMotionEvent)) {
-            bool1 = true;
-          }
-        }
-        if ((i == 0) && (bool1)) {
-          this.d = true;
-        }
-        return bool1;
-      }
-      finally
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-      }
-    } while ((this.d) || (i == 0));
-    return false;
+    // Byte code:
+    //   0: aload_0
+    //   1: invokevirtual 255	com/tencent/av/opengl/ui/GLRootView:isEnabled	()Z
+    //   4: ifne +5 -> 9
+    //   7: iconst_0
+    //   8: ireturn
+    //   9: aload_1
+    //   10: invokevirtual 260	android/view/MotionEvent:getAction	()I
+    //   13: istore_2
+    //   14: iload_2
+    //   15: iconst_3
+    //   16: if_icmpeq +8 -> 24
+    //   19: iload_2
+    //   20: iconst_1
+    //   21: if_icmpne +68 -> 89
+    //   24: aload_0
+    //   25: iconst_0
+    //   26: putfield 262	com/tencent/av/opengl/ui/GLRootView:jdField_c_of_type_Boolean	Z
+    //   29: aload_0
+    //   30: getfield 38	com/tencent/av/opengl/ui/GLRootView:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   33: ldc2_w 263
+    //   36: getstatic 270	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
+    //   39: invokevirtual 274	java/util/concurrent/locks/ReentrantLock:tryLock	(JLjava/util/concurrent/TimeUnit;)Z
+    //   42: istore_3
+    //   43: iload_3
+    //   44: ifeq +88 -> 132
+    //   47: aload_0
+    //   48: getfield 206	com/tencent/av/opengl/ui/GLRootView:jdField_a_of_type_Luj	Lluj;
+    //   51: ifnull +51 -> 102
+    //   54: aload_0
+    //   55: getfield 206	com/tencent/av/opengl/ui/GLRootView:jdField_a_of_type_Luj	Lluj;
+    //   58: aload_1
+    //   59: invokevirtual 276	luj:b	(Landroid/view/MotionEvent;)Z
+    //   62: ifeq +40 -> 102
+    //   65: iconst_1
+    //   66: istore_3
+    //   67: iload_2
+    //   68: ifne +12 -> 80
+    //   71: iload_3
+    //   72: ifeq +8 -> 80
+    //   75: aload_0
+    //   76: iconst_1
+    //   77: putfield 262	com/tencent/av/opengl/ui/GLRootView:jdField_c_of_type_Boolean	Z
+    //   80: aload_0
+    //   81: getfield 38	com/tencent/av/opengl/ui/GLRootView:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   84: invokevirtual 218	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   87: iload_3
+    //   88: ireturn
+    //   89: aload_0
+    //   90: getfield 262	com/tencent/av/opengl/ui/GLRootView:jdField_c_of_type_Boolean	Z
+    //   93: ifne -64 -> 29
+    //   96: iload_2
+    //   97: ifeq -68 -> 29
+    //   100: iconst_0
+    //   101: ireturn
+    //   102: iconst_0
+    //   103: istore_3
+    //   104: goto -37 -> 67
+    //   107: astore_1
+    //   108: aload_0
+    //   109: getfield 38	com/tencent/av/opengl/ui/GLRootView:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   112: invokevirtual 218	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   115: aload_1
+    //   116: athrow
+    //   117: astore_1
+    //   118: aload_0
+    //   119: getfield 80	com/tencent/av/opengl/ui/GLRootView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   122: iconst_1
+    //   123: ldc_w 278
+    //   126: aload_1
+    //   127: invokestatic 281	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   130: iconst_0
+    //   131: ireturn
+    //   132: aload_0
+    //   133: getfield 80	com/tencent/av/opengl/ui/GLRootView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   136: iconst_1
+    //   137: ldc_w 278
+    //   140: invokestatic 192	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   143: iconst_0
+    //   144: ireturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	145	0	this	GLRootView
+    //   0	145	1	paramMotionEvent	MotionEvent
+    //   13	84	2	i	int
+    //   42	62	3	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   47	65	107	finally
+    //   75	80	107	finally
+    //   29	43	117	java/lang/InterruptedException
+    //   80	87	117	java/lang/InterruptedException
+    //   108	117	117	java/lang/InterruptedException
+    //   132	143	117	java/lang/InterruptedException
   }
   
   /* Error */
   protected void finalize()
   {
     // Byte code:
-    //   0: invokestatic 238	com/tencent/av/opengl/program/TextureProgramFactory:a	()V
+    //   0: invokestatic 285	ltu:a	()V
     //   3: aload_0
-    //   4: invokevirtual 240	com/tencent/av/opengl/ui/GLRootView:b	()V
-    //   7: aload_0
-    //   8: invokespecial 242	android/opengl/GLSurfaceView:finalize	()V
-    //   11: return
-    //   12: astore_1
+    //   4: invokespecial 287	android/opengl/GLSurfaceView:finalize	()V
+    //   7: invokestatic 86	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   10: ifeq +14 -> 24
     //   13: aload_0
-    //   14: invokevirtual 240	com/tencent/av/opengl/ui/GLRootView:b	()V
-    //   17: aload_0
-    //   18: invokespecial 242	android/opengl/GLSurfaceView:finalize	()V
-    //   21: return
-    //   22: astore_1
-    //   23: aload_0
-    //   24: invokevirtual 240	com/tencent/av/opengl/ui/GLRootView:b	()V
-    //   27: aload_0
-    //   28: invokespecial 242	android/opengl/GLSurfaceView:finalize	()V
-    //   31: aload_1
-    //   32: athrow
+    //   14: getfield 80	com/tencent/av/opengl/ui/GLRootView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   17: iconst_1
+    //   18: ldc_w 289
+    //   21: invokestatic 92	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   24: return
+    //   25: astore_1
+    //   26: aload_0
+    //   27: invokespecial 287	android/opengl/GLSurfaceView:finalize	()V
+    //   30: goto -23 -> 7
+    //   33: astore_1
+    //   34: aload_0
+    //   35: invokespecial 287	android/opengl/GLSurfaceView:finalize	()V
+    //   38: aload_1
+    //   39: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	33	0	this	GLRootView
-    //   12	1	1	localException	Exception
-    //   22	10	1	localObject	Object
+    //   0	40	0	this	GLRootView
+    //   25	1	1	localException	Exception
+    //   33	6	1	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   0	3	12	java/lang/Exception
-    //   0	3	22	finally
+    //   0	3	25	java/lang/Exception
+    //   0	3	33	finally
   }
   
   protected void onDetachedFromWindow()
   {
-    b();
     super.onDetachedFromWindow();
   }
   
   public void onDrawFrame(GL10 paramGL10)
   {
-    long l = SystemClock.elapsedRealtime();
-    AnimationTime.a();
+    if (this.e)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+      if (jdField_d_of_type_Int != 1)
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+        QLog.e(this.jdField_a_of_type_JavaLangString, 1, "onDrawFrame failed. sCreatedSurfaceCnt = " + jdField_d_of_type_Int);
+        this.jdField_b_of_type_Boolean = false;
+        requestRender();
+        return;
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+    }
+    SystemClock.elapsedRealtime();
+    lui.a();
     if (this.jdField_a_of_type_Boolean) {}
     for (float f = 0.0F;; f = 1.0F)
     {
       GLES20.glClearColor(0.0F, 0.0F, 0.0F, f);
       GLES20.glClear(16640);
       this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-      while (this.jdField_c_of_type_Boolean) {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksCondition.awaitUninterruptibly();
-      }
-    }
-    label94:
-    try
-    {
-      if (this.jdField_b_of_type_Int > 0) {
-        this.jdField_b_of_type_Int -= 1;
-      }
-    }
-    finally {}
-    try
-    {
-      a(paramGL10);
-    }
-    catch (Exception paramGL10)
-    {
-      this.jdField_b_of_type_Boolean = false;
-      if (!QLog.isColorLevel()) {
-        break label287;
-      }
-      QLog.e("GLRootView", 2, "WL_DEBUG onDrawFrame e = " + paramGL10);
-      StackTraceElement[] arrayOfStackTraceElement = paramGL10.getStackTrace();
-      int j = arrayOfStackTraceElement.length;
-      paramGL10 = "";
-      int i = 0;
-      while (i < j)
+      label144:
+      try
       {
-        paramGL10 = paramGL10 + "WL_DEBUG onDrawFrame ste[" + i + "]" + arrayOfStackTraceElement[i].toString() + "\n";
-        i += 1;
+        if (this.jdField_b_of_type_Int > 0) {
+          this.jdField_b_of_type_Int -= 1;
+        }
       }
-      QLog.e("GLRootView", 2, paramGL10);
-      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-      break label94;
+      finally {}
+      try
+      {
+        a(paramGL10);
+      }
+      catch (Exception paramGL10)
+      {
+        this.jdField_b_of_type_Boolean = false;
+        if (!QLog.isColorLevel()) {
+          break label314;
+        }
+        QLog.e(this.jdField_a_of_type_JavaLangString, 2, "WL_DEBUG onDrawFrame e = " + paramGL10);
+        StackTraceElement[] arrayOfStackTraceElement = paramGL10.getStackTrace();
+        int j = arrayOfStackTraceElement.length;
+        paramGL10 = "";
+        int i = 0;
+        while (i < j)
+        {
+          paramGL10 = paramGL10 + "WL_DEBUG onDrawFrame ste[" + i + "]" + arrayOfStackTraceElement[i].toString() + "\n";
+          i += 1;
+        }
+        QLog.e(this.jdField_a_of_type_JavaLangString, 2, paramGL10);
+        this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+        break label144;
+      }
+      finally
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+      }
+      if ((this.jdField_d_of_type_Boolean) && (this.jdField_a_of_type_Luj != null))
+      {
+        this.jdField_d_of_type_Boolean = false;
+        this.jdField_a_of_type_Luj.e();
+      }
+      this.jdField_b_of_type_Long = SystemClock.elapsedRealtime();
+      return;
     }
-    finally
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-    }
-    if ((this.e) && (this.jdField_a_of_type_ComTencentAvOpenglUiGLView != null))
-    {
-      this.e = false;
-      this.jdField_a_of_type_ComTencentAvOpenglUiGLView.d();
-    }
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    QLog.e("GLRootView", 2, "WL_DEBUG onDrawFrame cost = " + (this.jdField_a_of_type_Long - l));
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -336,7 +427,9 @@ public class GLRootView
   
   public void onPause()
   {
-    b();
+    if ((this.jdField_a_of_type_Luj instanceof lum)) {
+      queueEvent(new GLRootView.2(this));
+    }
     super.onPause();
   }
   
@@ -349,10 +442,13 @@ public class GLRootView
   public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("GLRootView", 2, "onSurfaceChanged: " + paramInt1 + "x" + paramInt2 + ", gl10: " + paramGL10.toString());
+      QLog.i(this.jdField_a_of_type_JavaLangString, 2, "onSurfaceChanged: " + paramInt1 + "x" + paramInt2 + ", gl10: " + paramGL10.toString());
+    }
+    if ((paramInt1 == 0) || (paramInt2 == 0)) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onSurfaceChanged: error system callback - width or height is Zero value");
     }
     Process.setThreadPriority(-4);
-    this.jdField_a_of_type_ComTencentAvOpenglGlrendererGLCanvas.a(paramInt1, paramInt2);
+    this.jdField_a_of_type_Lsv.a(paramInt1, paramInt2);
   }
   
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
@@ -361,11 +457,16 @@ public class GLRootView
     this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
     try
     {
-      this.jdField_a_of_type_ComTencentAvOpenglGlrendererGLCanvas = new GLES20Canvas();
-      BasicTexture.d();
-      this.jdField_a_of_type_ComTencentAvSwitchfaceSwitchFaceView.a();
+      this.jdField_a_of_type_Lsv = new lsw();
+      lty.d();
+      if (this.jdField_a_of_type_Mcr != null) {
+        this.jdField_a_of_type_Mcr.a();
+      }
+      if ((this.jdField_a_of_type_Luj != null) && ((this.jdField_a_of_type_Luj instanceof lum))) {
+        ((lum)this.jdField_a_of_type_Luj).j();
+      }
       this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-      TextureProgramFactory.a();
+      ltu.a();
       setRenderMode(0);
       return;
     }
@@ -382,7 +483,7 @@ public class GLRootView
       return;
     }
     this.jdField_b_of_type_Boolean = true;
-    long l = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
+    long l = SystemClock.elapsedRealtime() - this.jdField_b_of_type_Long;
     if ((l > 0L) && (l < 20L))
     {
       try
@@ -396,49 +497,60 @@ public class GLRootView
       super.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 20L - l);
       return;
     }
-    post(this.jdField_a_of_type_JavaLangRunnable);
+    ThreadManager.getUIHandler().post(this.jdField_a_of_type_JavaLangRunnable);
   }
   
-  public void setContentPane(GLView paramGLView)
+  public void setContentPane(luj paramluj)
   {
-    if (this.jdField_a_of_type_ComTencentAvOpenglUiGLView == paramGLView) {}
+    if (this.jdField_a_of_type_Luj == paramluj) {}
     do
     {
       return;
-      if (this.jdField_a_of_type_ComTencentAvOpenglUiGLView != null)
+      if (this.jdField_a_of_type_Luj != null)
       {
-        if (this.d)
+        if (this.jdField_c_of_type_Boolean)
         {
           long l = SystemClock.uptimeMillis();
           MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
-          this.jdField_a_of_type_ComTencentAvOpenglUiGLView.b(localMotionEvent);
+          this.jdField_a_of_type_Luj.b(localMotionEvent);
           localMotionEvent.recycle();
-          this.d = false;
+          this.jdField_c_of_type_Boolean = false;
         }
-        this.jdField_a_of_type_ComTencentAvOpenglUiGLView.u();
-        BasicTexture.c();
+        this.jdField_a_of_type_Luj.a();
+        lty.c();
       }
-      this.jdField_a_of_type_ComTencentAvOpenglUiGLView = paramGLView;
-    } while (paramGLView == null);
-    paramGLView.a(this);
+      this.jdField_a_of_type_Luj = paramluj;
+    } while (paramluj == null);
+    paramluj.a(this);
     a();
   }
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
   {
-    b();
     super.surfaceChanged(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
   }
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    b();
+    if (this.e)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+      jdField_d_of_type_Int += 1;
+      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+    }
+    QLog.i(this.jdField_a_of_type_JavaLangString, 1, "STest. surfaceCreated. sCreatedSurfaceCnt = " + jdField_d_of_type_Int);
     super.surfaceCreated(paramSurfaceHolder);
   }
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
-    b();
+    if (this.e)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+      jdField_d_of_type_Int -= 1;
+      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+    }
+    QLog.i(this.jdField_a_of_type_JavaLangString, 1, "STest. surfaceDestroyed. sCreatedSurfaceCnt = " + jdField_d_of_type_Int);
     super.surfaceDestroyed(paramSurfaceHolder);
   }
 }

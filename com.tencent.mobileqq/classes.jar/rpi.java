@@ -1,26 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class rpi
-  implements DialogInterface.OnClickListener
+class rpi
+  implements View.OnClickListener
 {
-  public rpi(BaseChatPie paramBaseChatPie) {}
+  rpi(rph paramrph, ViewGroup paramViewGroup) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = new Intent(this.a.a, QQBrowserActivity.class);
-    paramDialogInterface.putExtra("url", ApolloConstant.O);
-    this.a.a.startActivityForResult(paramDialogInterface, 0);
+    int i = ((Integer)paramView.getTag()).intValue();
+    if (ChannelClassificationListView.a(this.jdField_a_of_type_Rph.a) != null) {
+      ChannelClassificationListView.a(this.jdField_a_of_type_Rph.a).onItemClick((AdapterView)this.jdField_a_of_type_AndroidViewViewGroup, paramView, i, this.jdField_a_of_type_Rph.getItemId(i));
+    }
+    paramView = new JSONObject();
+    try
+    {
+      paramView.put("subchannelid", this.jdField_a_of_type_Rph.a(i).b());
+      paramView.put("subchannelname", this.jdField_a_of_type_Rph.a(i).a());
+      paramView.put("channelid", ChannelClassificationListView.a(this.jdField_a_of_type_Rph.a));
+      nrt.a(null, ors.a() + "", "0X8009933", "0X8009933", 0, 0, "", "", "", paramView.toString(), false);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rpi
  * JD-Core Version:    0.7.0.1
  */

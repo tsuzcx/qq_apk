@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0x8d$CommentFeeds
-  extends MessageMicro
+  extends MessageMicro<CommentFeeds>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_comment_id = PBField.initBytes(ByteStringMicro.EMPTY);

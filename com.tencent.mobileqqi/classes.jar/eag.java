@@ -1,25 +1,27 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.item.PttItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPtt;
+import cooperation.qqfav.QfavBuilder;
+import cooperation.qqfav.QfavReport;
+import cooperation.qqfav.widget.QfavMicroPhoneDialog.Listener;
 
 public class eag
-  implements TextWatcher
+  implements QfavMicroPhoneDialog.Listener
 {
-  public eag(VerifyCodeActivity paramVerifyCodeActivity) {}
+  public eag(PttItemBuilder paramPttItemBuilder, MessageForPtt paramMessageForPtt) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    if (paramEditable.length() >= 4)
+    QfavBuilder.a(paramString1, paramInt, paramString2).b(PttItemBuilder.e(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt).a((Activity)PttItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder), PttItemBuilder.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder).getAccount());
+    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.length() > 0)) {}
+    for (paramInt = 1;; paramInt = 0)
     {
-      VerifyCodeActivity.c(this.a, true);
+      QfavReport.a(PttItemBuilder.f(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder), "User_AddFav", 4, 0, 6, paramInt, "", "");
       return;
     }
-    VerifyCodeActivity.d(this.a, false);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

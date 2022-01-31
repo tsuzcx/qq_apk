@@ -1,85 +1,84 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListAdapter;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.pubaccount.VideoColumnSubscribeHandler.1;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.QueryKdVideoColumnReq;
+import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.ReqBody;
+import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.SubscribeVideoColumnReq;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class nsi
-  extends QQUIEventReceiver
+  extends alpd
 {
-  public nsi(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  public static final String a = nsi.class.getSimpleName();
+  
+  public nsi(AppInterface paramAppInterface)
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    super(paramAppInterface);
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
+  private void b(int paramInt)
   {
-    if ((paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList != null) && (!paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.isEmpty()) && (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null))
+    oidb_0xd4b.ReqBody localReqBody = new oidb_0xd4b.ReqBody();
+    localReqBody.msg_subscribe_video_column_req.uint32_video_column_id.set(paramInt);
+    localReqBody.msg_query_kd_video_column_req.uint32_query_sub_status.set(1);
+    super.sendPbReq(super.makeOIDBPkg("OidbSvc.0xd4b", 3403, 1, localReqBody.toByteArray()));
+  }
+  
+  public void a(int paramInt)
+  {
+    ThreadManager.excute(new VideoColumnSubscribeHandler.1(this, paramInt), 16, null, true);
+  }
+  
+  protected Class<? extends alpg> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (!paramQQStoryShareGroupProfileActivity.g) {
-        break label54;
+      if (QLog.isColorLevel()) {
+        QLog.d(a, 2, "onReceive() isSuccess = " + bool);
       }
-      paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListView.a.notifyDataSetChanged();
-    }
-    label54:
-    int j;
-    do
-    {
-      return;
-      j = 0;
-      int i = j;
-      Object localObject;
-      if (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.headerUnionIdList != null)
+      if (bool)
       {
-        i = j;
-        if (!paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.headerUnionIdList.isEmpty())
+        paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
+        try
         {
-          localObject = paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.iterator();
-          QQUserUIItem localQQUserUIItem;
-          do
+          paramToServiceMsg.mergeFrom((byte[])paramObject);
+          if (paramToServiceMsg.uint32_result.has())
           {
-            i = j;
-            if (!((Iterator)localObject).hasNext()) {
-              break;
+            if (QLog.isColorLevel()) {
+              QLog.d(a, 2, "onReceive() pkg.uint32_result = " + paramToServiceMsg.uint32_result.get());
             }
-            localQQUserUIItem = (QQUserUIItem)((Iterator)localObject).next();
-          } while (!paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.headerUnionIdList.contains(localQQUserUIItem.uid));
-          i = 1;
+          }
+          else if (QLog.isColorLevel())
+          {
+            QLog.d(a, 2, "onReceive() pkg.uint32_result is null ");
+            return;
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramToServiceMsg)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(a, 2, "onReceive() exception = " + paramToServiceMsg.getMessage());
+          }
         }
       }
-      j = i;
-      if (!TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.d))
-      {
-        paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.iterator();
-        do
-        {
-          j = i;
-          if (!paramUpdateUserInfoEvent.hasNext()) {
-            break;
-          }
-          localObject = (QQUserUIItem)paramUpdateUserInfoEvent.next();
-        } while (!paramQQStoryShareGroupProfileActivity.d.equals(((QQUserUIItem)localObject).uid));
-        j = 1;
-      }
-    } while (j == 0);
-    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return GetUserInfoHandler.UpdateUserInfoEvent.class;
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nsi
  * JD-Core Version:    0.7.0.1
  */

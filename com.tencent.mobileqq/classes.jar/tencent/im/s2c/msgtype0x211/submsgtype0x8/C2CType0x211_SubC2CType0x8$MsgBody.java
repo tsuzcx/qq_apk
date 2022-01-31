@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class C2CType0x211_SubC2CType0x8$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   public static final int MSG_CCNF_ABI_QUERY_FIELD_NUMBER = 3;
   public static final int MSG_CCNF_FILESEND_REQ_FIELD_NUMBER = 5;

@@ -1,21 +1,44 @@
-import com.tencent.mobileqq.apollo.script.SpriteTaskHandler;
-import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+import com.tencent.biz.troop.VideoCombineHelper.2;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ysc
-  implements Runnable
+public class ysc
+  extends yta
 {
-  public ysc(SpriteTaskHandler paramSpriteTaskHandler, SpriteTaskParam paramSpriteTaskParam) {}
-  
-  public void run()
+  public ysc(VideoCombineHelper.2 param2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskHandler != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskHandler.b(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam);
+    super(param2.this$0);
+  }
+  
+  public void a(ysz paramysz)
+  {
+    if ((paramysz instanceof ysu)) {
+      this.a.jdField_a_of_type_Ysj.a("", false, "download failed! msg = " + paramysz.d);
+    }
+    do
+    {
+      return;
+      if ((paramysz instanceof ysm))
+      {
+        this.a.jdField_a_of_type_Ysj.a("", false, "combine failed! msg = " + paramysz.d);
+        return;
+      }
+    } while (!(paramysz instanceof ysx));
+    this.a.jdField_a_of_type_Ysj.a("", false, "sending failed! msg = " + paramysz.d);
+  }
+  
+  public void b(ysz paramysz)
+  {
+    if ((paramysz instanceof ysx))
+    {
+      paramysz = paramysz.a();
+      this.a.jdField_a_of_type_Ysj.a(paramysz.e, true, "seding success");
+      QLog.d(".troop.trace_video_combine", 2, "totalTime = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ysc
  * JD-Core Version:    0.7.0.1
  */

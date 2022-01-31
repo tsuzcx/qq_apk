@@ -1,40 +1,37 @@
-import com.tencent.mobileqq.filemanager.fileviewer.model.DatalineFileModel;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnTransEventListener;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
 
-class adcr
-  implements FMDialogUtil.FMDialogInterface
+public class adcr
+  extends zje
 {
-  adcr(adcq paramadcq) {}
+  public adcr(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity) {}
   
-  public void a()
+  public zil a(Activity paramActivity, zir paramzir)
   {
-    int i = this.a.a.g();
-    if (this.a.a.f() == 6000) {
-      if (i == 0) {
-        DatalineFileModel.a(this.a.a);
-      }
-    }
-    for (;;)
-    {
-      if (this.a.a.a != null) {
-        this.a.a.a.d();
-      }
-      return;
-      DatalineFileModel.c(this.a.a);
-      continue;
-      if (QLog.isColorLevel()) {
-        QLog.i("DatalineFileModel<FileAssistant>", 2, "DatalineFileModel doStartDownload : error, this file is not from dataline");
-      }
-    }
+    return super.a(paramActivity, paramzir);
   }
   
-  public void b() {}
+  public zin a(Activity paramActivity, zir paramzir)
+  {
+    this.a.a = new awos((FriendProfilePicBrowserActivity)paramActivity, paramzir);
+    return this.a.a;
+  }
+  
+  public zir a(Activity paramActivity)
+  {
+    paramActivity = new avjp(this.a, FriendProfilePicBrowserActivity.a(this.a));
+    paramActivity.a(FriendProfilePicBrowserActivity.a(this.a));
+    return paramActivity;
+  }
+  
+  public zis a(Activity paramActivity, zir paramzir)
+  {
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adcr
  * JD-Core Version:    0.7.0.1
  */

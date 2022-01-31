@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.structmsg;
 
-import aihf;
+import aepi;
+import afcu;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -15,30 +15,39 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import awkh;
+import axlk;
+import ayxz;
+import azaf;
+import azah;
+import azri;
+import azuo;
+import azur;
+import azus;
+import azut;
+import azux;
+import azvc;
+import azwj;
+import azwm;
+import azwv;
+import azwy;
+import azwz;
+import azxl;
+import azyc;
+import azyr;
+import azzm;
+import azzu;
+import basx;
+import bayf;
+import bayu;
 import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.receipt.ReceiptMsgManager;
-import com.tencent.mobileqq.service.MobileQQService;
-import com.tencent.mobileqq.service.message.MessageRecordFactory;
-import com.tencent.mobileqq.service.message.MessageUtils;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemCover;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout1;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout2;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout29;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayoutDefault;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemSummary;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemType;
 import com.tencent.mobileqq.structmsg.widget.HeightLimitedLinearLayout;
-import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
@@ -48,45 +57,50 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public abstract class AbsShareMsg
   extends AbsStructMsg
-  implements Iterable
+  implements Iterable<azus>
 {
   public static final int PACKAGE_NAME_INDEX = 0;
   public static final int URL_DATA_INDEX = 1;
   public int forwardType;
   public String mAdSourceIcon;
+  public String mAdSourceMenu;
   public String mAdSourceName;
   public String mContentCover;
   public int mContentLayout = -1;
   public String mContentSrc;
   public String mContentSummary;
   public String mContentTitle;
+  JSONObject mDatas = null;
   public boolean mHasAdSource;
-  boolean mHasSource;
+  public boolean mHasSource;
   public boolean mMsgException;
   public String mSourceAction;
   public String mSourceActionData;
   public long mSourceAppid = -1L;
   public String mSourceIcon;
   public String mSourceName;
-  protected View.OnClickListener mSourceOnClickListener = new aihf(this);
+  protected View.OnClickListener mSourceOnClickListener = new azuo(this);
   public String mSourceUrl;
   public String mSource_A_ActionData;
   public String mSource_I_ActionData;
-  public List mStructMsgItemLists = new ArrayList();
+  public List<azus> mStructMsgItemLists = new ArrayList();
   public AbsShareMsg.ShareData shareData = new AbsShareMsg.ShareData();
   
   AbsShareMsg()
   {
-    this.mVersion = 21;
+    this.mVersion = 28;
   }
   
   AbsShareMsg(Bundle paramBundle)
   {
     super(paramBundle);
-    this.mVersion = 21;
+    this.mVersion = 28;
     this.mContentCover = paramBundle.getString("image_url_remote");
     if (this.mContentCover != null)
     {
@@ -94,10 +108,10 @@ public abstract class AbsShareMsg
       this.mContentTitle = paramBundle.getString("title");
       this.mContentSummary = paramBundle.getString("desc");
       if (this.mContentTitle != null) {
-        this.mContentTitle = MessageUtils.a(this.mContentTitle, false);
+        this.mContentTitle = azah.a(this.mContentTitle, false);
       }
       if (this.mContentSummary != null) {
-        this.mContentSummary = MessageUtils.a(this.mContentSummary, false);
+        this.mContentSummary = azah.a(this.mContentSummary, false);
       }
       this.mMsgAction = paramBundle.getString("struct_share_key_content_action");
       this.mMsgActionData = paramBundle.getString("struct_share_key_content_action_DATA");
@@ -125,11 +139,11 @@ public abstract class AbsShareMsg
       if (TextUtils.isEmpty(this.mMsgBrief))
       {
         if (TextUtils.isEmpty(this.mSourceName)) {
-          break label1011;
+          break label1019;
         }
-        this.mMsgBrief = String.format("%s 的分享", new Object[] { this.mSourceName });
+        this.mMsgBrief = String.format(af, new Object[] { this.mSourceName });
       }
-      label431:
+      label437:
       this.mResid = paramBundle.getString("mm_resid");
       this.mFileName = paramBundle.getString("mm_file_name");
       this.mFileSize = paramBundle.getLong("mm_file_size");
@@ -140,13 +154,12 @@ public abstract class AbsShareMsg
       }
       if ((TextUtils.isEmpty(this.mContentTitle)) && (TextUtils.isEmpty(this.mContentSummary))) {
         if (!TextUtils.isEmpty(this.mSourceName)) {
-          break label1021;
+          break label1029;
         }
       }
     }
-    label1011:
-    label1021:
-    for (this.mContentTitle = "这个不错, 分享之";; this.mContentTitle = String.format("刚在%s看到, 分享之", new Object[] { this.mSourceName }))
+    label1029:
+    for (this.mContentTitle = ae;; this.mContentTitle = String.format(ad, new Object[] { this.mSourceName }))
     {
       this.mNeedRound = paramBundle.getString("icon_need_round");
       this.mFlag = paramBundle.getInt("flag");
@@ -160,22 +173,23 @@ public abstract class AbsShareMsg
       this.mContentCover = paramBundle.getString("image_url");
       this.shareData.imageUrlStatus = 2;
       break;
-      this.mMsgBrief = "应用分享";
-      break label431;
+      label1019:
+      this.mMsgBrief = DEFAULT_MSG_BRIEF;
+      break label437;
     }
   }
   
-  AbsShareMsg(StructMsgNode paramStructMsgNode)
+  AbsShareMsg(azwj paramazwj)
   {
-    super(paramStructMsgNode);
-    this.mVersion = 21;
-    int m = paramStructMsgNode.a();
+    super(paramazwj);
+    this.mVersion = 28;
+    int m = paramazwj.a();
     int i = 0;
     if (i < m)
     {
-      StructMsgNode localStructMsgNode = paramStructMsgNode.a(i);
+      azwj localazwj = paramazwj.a(i);
       int k;
-      if (localStructMsgNode == null) {
+      if (localazwj == null) {
         k = j;
       }
       for (;;)
@@ -183,9 +197,9 @@ public abstract class AbsShareMsg
         i += 1;
         j = k;
         break;
-        if (localStructMsgNode.b.equals("source"))
+        if (localazwj.b.equals("source"))
         {
-          parseSourceNode(localStructMsgNode);
+          parseSourceNode(localazwj);
           k = j;
           if (j != 0)
           {
@@ -193,15 +207,20 @@ public abstract class AbsShareMsg
             k = j;
           }
         }
-        else if (localStructMsgNode.b.equals("sourceAd"))
+        else if (localazwj.b.equals("sourceAd"))
         {
-          parseAdSourceNode(localStructMsgNode);
+          parseAdSourceNode(localazwj);
           k = j;
           if (j != 0)
           {
             parseDefaultContentNode();
             k = j;
           }
+        }
+        else if ((this.mMsgServiceID == 128) && (localazwj.b.equals("data")))
+        {
+          parseDataNode(localazwj);
+          k = j;
         }
         else
         {
@@ -209,7 +228,7 @@ public abstract class AbsShareMsg
           if (j == 0)
           {
             k = j;
-            if (!parseContentNode(localStructMsgNode))
+            if (!parseContentNode(localazwj))
             {
               this.mStructMsgItemLists.clear();
               k = 1;
@@ -220,9 +239,32 @@ public abstract class AbsShareMsg
     }
   }
   
+  private boolean a()
+  {
+    if (!TextUtils.isEmpty(this.mSourceAction)) {
+      return false;
+    }
+    if ((this.mStructMsgItemLists == null) || (this.mStructMsgItemLists.isEmpty())) {
+      return false;
+    }
+    Object localObject = (azus)this.mStructMsgItemLists.get(0);
+    if (!(localObject instanceof azyr)) {
+      return false;
+    }
+    localObject = (azyr)localObject;
+    if ((((azyr)localObject).a == null) || (((azyr)localObject).a.isEmpty())) {
+      return false;
+    }
+    localObject = (azus)((azyr)localObject).a.get(0);
+    if (!(localObject instanceof azwy)) {
+      return false;
+    }
+    return ((azwy)localObject).a();
+  }
+  
   public static final void doReport(QQAppInterface paramQQAppInterface, AbsShareMsg paramAbsShareMsg)
   {
-    StatisticCollector.a(BaseApplication.getContext()).a(paramQQAppInterface, paramAbsShareMsg.uin, "Structured_msg", "Clk_smsg", 0, 1, null, String.valueOf(paramAbsShareMsg.mSourceAppid), String.valueOf(paramAbsShareMsg.mMsgServiceID), paramAbsShareMsg.mMsgAction, null);
+    azri.a(BaseApplication.getContext()).a(paramQQAppInterface, paramAbsShareMsg.uin, "Structured_msg", "Clk_smsg", 0, 1, null, String.valueOf(paramAbsShareMsg.mSourceAppid), String.valueOf(paramAbsShareMsg.mMsgServiceID), paramAbsShareMsg.mMsgAction, null);
     if (QLog.isColorLevel()) {
       QLog.d("StructMsg", 2, "doReport msg:" + paramAbsShareMsg);
     }
@@ -257,16 +299,17 @@ public abstract class AbsShareMsg
   
   public static void resendSdkShareMessage(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, AbsShareMsg paramAbsShareMsg)
   {
-    paramMessageRecord = MessageRecordFactory.a(paramMessageRecord);
-    paramQQAppInterface.a().a(paramMessageRecord, MessageHandler.e);
-    paramMessageRecord = ForwardSdkShareProcessor.a(paramMessageRecord, paramAbsShareMsg);
+    paramMessageRecord = azaf.a(paramMessageRecord);
+    afcu.a().a(paramMessageRecord.uniseq, paramAbsShareMsg.parentUniseq, paramAbsShareMsg.forwardID);
+    paramQQAppInterface.a().a(paramMessageRecord, MessageHandler.f);
+    paramMessageRecord = basx.a(paramMessageRecord, paramAbsShareMsg);
     paramQQAppInterface.a().a(paramMessageRecord);
   }
   
   public static void sendSdkShareMessage(QQAppInterface paramQQAppInterface, AbsShareMsg paramAbsShareMsg, String paramString1, int paramInt, String paramString2)
   {
-    int i = MobileQQService.a;
-    MobileQQService.a = i + 1;
+    int i = ayxz.a;
+    ayxz.a = i + 1;
     long l = i;
     String str = paramQQAppInterface.getCurrentAccountUin();
     if (TextUtils.isEmpty(paramString2)) {
@@ -274,20 +317,40 @@ public abstract class AbsShareMsg
     }
     for (;;)
     {
-      paramString1 = MessageRecordFactory.a(paramQQAppInterface, str, paramString1, paramString2, paramInt, l, paramAbsShareMsg);
-      paramQQAppInterface.a().a(paramString1, MessageHandler.e);
-      paramAbsShareMsg = ForwardSdkShareProcessor.a(paramString1, paramAbsShareMsg);
+      paramString1 = azaf.a(paramQQAppInterface, str, paramString1, paramString2, paramInt, l, paramAbsShareMsg);
+      afcu.a().a(paramString1.uniseq, paramAbsShareMsg.parentUniseq, paramAbsShareMsg.forwardID);
+      paramQQAppInterface.a().a(paramString1, MessageHandler.f);
+      paramAbsShareMsg = basx.a(paramString1, paramAbsShareMsg);
       paramQQAppInterface.a().a(paramAbsShareMsg);
       return;
     }
   }
   
-  public void addItem(AbsStructMsgElement paramAbsStructMsgElement)
+  public static void sendSdkShareMessageByServer(QQAppInterface paramQQAppInterface, AbsShareMsg paramAbsShareMsg, String paramString1, int paramInt, String paramString2, awkh paramawkh)
   {
-    this.mStructMsgItemLists.add(paramAbsStructMsgElement);
+    int i = ayxz.a;
+    ayxz.a = i + 1;
+    long l = i;
+    String str = paramQQAppInterface.getCurrentAccountUin();
+    if (TextUtils.isEmpty(paramString2)) {
+      paramString2 = str;
+    }
+    for (;;)
+    {
+      paramString1 = azaf.a(paramQQAppInterface, str, paramString1, paramString2, paramInt, l, paramAbsShareMsg);
+      afcu.a().a(paramString1.uniseq, paramAbsShareMsg.parentUniseq, paramAbsShareMsg.forwardID);
+      paramAbsShareMsg = basx.a(paramString1, paramAbsShareMsg, paramawkh);
+      paramQQAppInterface.a().a(paramAbsShareMsg);
+      return;
+    }
   }
   
-  public void addItems(List paramList)
+  public void addItem(azus paramazus)
+  {
+    this.mStructMsgItemLists.add(paramazus);
+  }
+  
+  public void addItems(List<azus> paramList)
   {
     this.mStructMsgItemLists.addAll(paramList);
   }
@@ -297,7 +360,7 @@ public abstract class AbsShareMsg
     this.mStructMsgItemLists.clear();
   }
   
-  public AbsStructMsgElement findXmlNode(String paramString)
+  public azus findXmlNode(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
@@ -319,17 +382,17 @@ public abstract class AbsShareMsg
         {
           i += 1;
           break;
-          if (!(localObject instanceof AbsStructMsgItem)) {
+          if (!(localObject instanceof azut)) {
             break label98;
           }
-          localObject = ((AbsStructMsgItem)localObject).a.iterator();
+          localObject = ((azut)localObject).a.iterator();
         } while (!((Iterator)localObject).hasNext());
-        AbsStructMsgElement localAbsStructMsgElement = (AbsStructMsgElement)((Iterator)localObject).next();
-        if (!paramString.equals(localAbsStructMsgElement.a)) {
+        azus localazus = (azus)((Iterator)localObject).next();
+        if (!paramString.equals(localazus.a)) {
           break label32;
         }
-        return localAbsStructMsgElement;
-      } while (!paramString.equals(((AbsStructMsgElement)localObject).a));
+        return localazus;
+      } while (!paramString.equals(((azus)localObject).a));
       return localObject;
     }
     return null;
@@ -356,9 +419,9 @@ public abstract class AbsShareMsg
     return null;
   }
   
-  public AbsStructMsgElement getItemByIndex(int paramInt)
+  public azus getItemByIndex(int paramInt)
   {
-    return (AbsStructMsgElement)this.mStructMsgItemLists.get(paramInt);
+    return (azus)this.mStructMsgItemLists.get(paramInt);
   }
   
   public int getItemCount()
@@ -387,19 +450,19 @@ public abstract class AbsShareMsg
       for (;;)
       {
         if (!localIterator.hasNext()) {
-          break label260;
+          break label310;
         }
-        Object localObject2 = (AbsStructMsgElement)localIterator.next();
-        View localView = ((AbsStructMsgElement)localObject2).a(paramContext, paramView, (Bundle)localObject1);
-        if ((localView != null) && ((!(localObject2 instanceof StructMsgItemLayoutDefault)) || (((StructMsgItemLayoutDefault)localObject2).e != 1)))
+        Object localObject2 = (azus)localIterator.next();
+        View localView = ((azus)localObject2).a(paramContext, paramView, (Bundle)localObject1);
+        if ((localView != null) && ((!(localObject2 instanceof azyr)) || (((azyr)localObject2).k != 1)))
         {
-          if ((localObject2 instanceof StructMsgItemLayout2))
+          if ((localObject2 instanceof azxl))
           {
-            localTextView = (TextView)localView.findViewById(2131361926);
+            localTextView = (TextView)localView.findViewById(2131379043);
             if (localTextView != null)
             {
-              localObject2 = (StructMsgItemLayout2)localObject2;
-              if ((((StructMsgItemLayout2)localObject2).e != 1) && (((StructMsgItemLayout2)localObject2).e != 3)) {
+              localObject2 = (azxl)localObject2;
+              if ((((azxl)localObject2).k != 1) && (((azxl)localObject2).k != 3)) {
                 break;
               }
               localTextView.setTextColor(-8355712);
@@ -418,10 +481,18 @@ public abstract class AbsShareMsg
         {
           QLog.d("StructMsg", 2, "shareMsg preDialogView setMaxHeight error!");
           continue;
-          localTextView.setTextColor(Color.parseColor("#777777"));
+          localTextView.setGravity(16);
+          localTextView.setMaxLines(2);
+          localTextView.setTextSize(14.0F);
+          localTextView.setTextColor(paramContext.getResources().getColor(2131165619));
+          if (TextUtils.isEmpty(localTextView.getText()))
+          {
+            localTextView.setText("");
+            localTextView.setVisibility(0);
+          }
         }
       }
-      label260:
+      label310:
       if (QLog.isColorLevel()) {
         QLog.d("[@]", 2, "AbsShareMsg getPreDialogView end!");
       }
@@ -436,7 +507,11 @@ public abstract class AbsShareMsg
   
   public View getSourceView(Context paramContext, View paramView)
   {
-    if (!this.mHasSource) {
+    boolean bool = this.mHasSource;
+    if (this.mMsgServiceID == 35) {
+      bool = false;
+    }
+    if (!bool) {
       return null;
     }
     Resources localResources = paramContext.getResources();
@@ -448,7 +523,7 @@ public abstract class AbsShareMsg
       paramView.setEllipsize(TextUtils.TruncateAt.END);
       paramView.setTextColor(-1);
       paramView.setTextSize(2, 12.0F);
-      paramView.setBackgroundResource(2130840646);
+      paramView.setBackgroundResource(2130842259);
     }
     for (;;)
     {
@@ -458,15 +533,15 @@ public abstract class AbsShareMsg
       if (!TextUtils.isEmpty(this.mSourceIcon))
       {
         Object localObject = this.mSourceIcon;
-        Drawable localDrawable2 = localResources.getDrawable(2130846094);
-        localDrawable2.setBounds(0, 0, AIOUtils.a(12.0F, localResources), AIOUtils.a(12.0F, localResources));
-        localDrawable1 = localResources.getDrawable(2130846095);
-        localDrawable1.setBounds(0, 0, AIOUtils.a(12.0F, localResources), AIOUtils.a(12.0F, localResources));
+        Drawable localDrawable2 = localResources.getDrawable(2130849861);
+        localDrawable2.setBounds(0, 0, aepi.a(12.0F, localResources), aepi.a(12.0F, localResources));
+        localDrawable1 = localResources.getDrawable(2130849862);
+        localDrawable1.setBounds(0, 0, aepi.a(12.0F, localResources), aepi.a(12.0F, localResources));
         try
         {
           localObject = URLDrawable.getDrawable((String)localObject, localDrawable2, localDrawable1);
-          if (URLDrawableHelper.a(paramContext)) {
-            break label289;
+          if (bayu.a(paramContext)) {
+            break label324;
           }
           bool = true;
           ((URLDrawable)localObject).setAutoDownload(bool);
@@ -476,31 +551,38 @@ public abstract class AbsShareMsg
         {
           for (;;)
           {
-            boolean bool;
             QLog.e("StructMsg", 1, paramContext.getMessage(), paramContext);
             paramContext = localDrawable1;
           }
         }
-        paramContext = new BitmapDrawable(StructMsgItemCover.a(paramContext));
-        localTextView.setCompoundDrawablePadding(AIOUtils.a(3.0F, localResources));
-        paramContext.setBounds(0, 0, AIOUtils.a(14.0F, localResources), AIOUtils.a(14.0F, localResources));
+        paramContext = new BitmapDrawable(azwv.a(paramContext));
+        localTextView.setCompoundDrawablePadding(aepi.a(3.0F, localResources));
+        paramContext.setBounds(0, 0, aepi.a(14.0F, localResources), aepi.a(14.0F, localResources));
         localTextView.setCompoundDrawables(paramContext, null, null, null);
       }
       for (;;)
       {
-        localTextView.setPadding(AIOUtils.a(5.0F, localResources), 0, AIOUtils.a(5.0F, localResources), 0);
+        localTextView.setPadding(aepi.a(5.0F, localResources), 0, aepi.a(5.0F, localResources), 0);
         paramView.setTag(this);
         paramView.setOnClickListener(this.mSourceOnClickListener);
+        if (!a()) {
+          break label360;
+        }
+        paramView.setClickable(false);
+        QLog.d("StructMsg", 1, "mSourceOnClickListener =========forbidClickForImageShare ========= ");
         return paramView;
-        label289:
+        label324:
         bool = false;
         break;
         localTextView.setCompoundDrawables(null, null, null, null);
       }
+      label360:
+      paramView.setClickable(true);
+      return paramView;
     }
   }
   
-  public List getStructMsgItemLists()
+  public List<azus> getStructMsgItemLists()
   {
     return this.mStructMsgItemLists;
   }
@@ -508,7 +590,7 @@ public abstract class AbsShareMsg
   public String getTalkBackStr()
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    AbsStructMsgElement localAbsStructMsgElement;
+    azus localazus;
     label118:
     do
     {
@@ -521,18 +603,18 @@ public abstract class AbsShareMsg
             Iterator localIterator = this.mStructMsgItemLists.iterator();
             if (localIterator.hasNext())
             {
-              localObject = (AbsStructMsgElement)localIterator.next();
-              if (!(localObject instanceof StructMsgItemLayout1)) {
+              localObject = (azus)localIterator.next();
+              if (!(localObject instanceof azwz)) {
                 break label118;
               }
-              localObject = ((StructMsgItemLayout1)localObject).a.iterator();
+              localObject = ((azwz)localObject).a.iterator();
               if (((Iterator)localObject).hasNext())
               {
-                localAbsStructMsgElement = (AbsStructMsgElement)((Iterator)localObject).next();
-                if (!(localAbsStructMsgElement instanceof StructMsgItemTitle)) {
+                localazus = (azus)((Iterator)localObject).next();
+                if (!(localazus instanceof StructMsgItemTitle)) {
                   continue;
                 }
-                localStringBuffer.append(((StructMsgItemTitle)localAbsStructMsgElement).A);
+                localStringBuffer.append(((StructMsgItemTitle)localazus).Y);
                 continue;
               }
               continue;
@@ -541,32 +623,32 @@ public abstract class AbsShareMsg
           return localStringBuffer.toString();
         }
         catch (Exception localException) {}
-        if (!(localObject instanceof StructMsgItemLayout2)) {
+        if (!(localObject instanceof azxl)) {
           break;
         }
-        localObject = (StructMsgItemLayout2)localObject;
+        localObject = (azxl)localObject;
         localStringBuffer.append("链接");
-        localObject = ((StructMsgItemLayout2)localObject).a.iterator();
+        localObject = ((azxl)localObject).a.iterator();
         while (((Iterator)localObject).hasNext())
         {
-          localAbsStructMsgElement = (AbsStructMsgElement)((Iterator)localObject).next();
-          if ((localAbsStructMsgElement instanceof StructMsgItemTitle)) {
-            localStringBuffer.append(((StructMsgItemTitle)localAbsStructMsgElement).A);
-          } else if ((localAbsStructMsgElement instanceof StructMsgItemSummary)) {
-            localStringBuffer.append(((StructMsgItemSummary)localAbsStructMsgElement).A);
+          localazus = (azus)((Iterator)localObject).next();
+          if ((localazus instanceof StructMsgItemTitle)) {
+            localStringBuffer.append(((StructMsgItemTitle)localazus).Y);
+          } else if ((localazus instanceof azzm)) {
+            localStringBuffer.append(((azzm)localazus).Y);
           }
         }
       }
-    } while (!(localObject instanceof StructMsgItemLayout29));
-    Object localObject = (StructMsgItemLayout29)localObject;
+    } while (!(localObject instanceof azyc));
+    Object localObject = (azyc)localObject;
     int i = 0;
-    localObject = ((StructMsgItemLayout29)localObject).a.iterator();
+    localObject = ((azyc)localObject).a.iterator();
     label248:
     if (((Iterator)localObject).hasNext())
     {
-      localAbsStructMsgElement = (AbsStructMsgElement)((Iterator)localObject).next();
-      if (("type".equals(localAbsStructMsgElement.a)) && ((localAbsStructMsgElement instanceof StructMsgItemType))) {
-        i = ((StructMsgItemType)localAbsStructMsgElement).e;
+      localazus = (azus)((Iterator)localObject).next();
+      if (("type".equals(localazus.a)) && ((localazus instanceof azzu))) {
+        i = ((azzu)localazus).k;
       }
     }
     for (;;)
@@ -585,7 +667,7 @@ public abstract class AbsShareMsg
         localStringBuffer.append("语音");
       }
       label363:
-      if ("1".equals(ReceiptMsgManager.a(this.message)))
+      if ("1".equals(axlk.a(this.message)))
       {
         localStringBuffer.append(",已读");
         break;
@@ -604,54 +686,125 @@ public abstract class AbsShareMsg
     return ForwardUtils.a(this.forwardType, this.mMsgServiceID);
   }
   
-  public Iterator iterator()
+  public Iterator<azus> iterator()
   {
     return this.mStructMsgItemLists.iterator();
   }
   
-  protected void parseAdSourceNode(StructMsgNode paramStructMsgNode)
+  protected void parseAdSourceNode(azwj paramazwj)
   {
-    if (paramStructMsgNode == null) {}
+    if (paramazwj == null) {}
     do
     {
-      return;
-      this.mAdSourceName = paramStructMsgNode.a("name");
-    } while (this.mAdSourceName.equals(""));
-    this.mHasAdSource = true;
+      JSONObject localJSONObject1;
+      for (;;)
+      {
+        return;
+        this.mAdSourceName = paramazwj.a("name");
+        if (!this.mAdSourceName.equals("")) {
+          this.mHasAdSource = true;
+        }
+        try
+        {
+          if (this.mHasAdSource)
+          {
+            localJSONObject1 = new JSONObject();
+            JSONArray localJSONArray = new JSONArray();
+            paramazwj = paramazwj.a;
+            if ((paramazwj != null) && (!paramazwj.isEmpty()))
+            {
+              paramazwj = paramazwj.iterator();
+              while (paramazwj.hasNext())
+              {
+                Object localObject = ((azwj)paramazwj.next()).a;
+                if ((localObject != null) && (!((List)localObject).isEmpty()))
+                {
+                  localObject = ((List)localObject).iterator();
+                  while (((Iterator)localObject).hasNext())
+                  {
+                    azwj localazwj = (azwj)((Iterator)localObject).next();
+                    JSONObject localJSONObject2 = new JSONObject();
+                    localJSONObject2.put("icon_url", localazwj.a("icon_url"));
+                    localJSONObject2.put("action_type", localazwj.a("action_type"));
+                    localJSONObject2.put("title", localazwj.a("title"));
+                    localJSONObject2.put("action_url", localazwj.a("action_url"));
+                    localJSONArray.put(localJSONObject2);
+                  }
+                }
+              }
+            }
+            localJSONObject1.put("menus", localJSONArray);
+          }
+        }
+        catch (Exception paramazwj)
+        {
+          paramazwj.printStackTrace();
+          return;
+        }
+      }
+      this.mAdSourceMenu = localJSONObject1.toString();
+    } while (!QLog.isColorLevel());
+    QLog.d("StructMsg", 2, "mAdSourceMenu: " + this.mAdSourceMenu);
   }
   
-  protected abstract boolean parseContentNode(StructMsgNode paramStructMsgNode);
+  protected abstract boolean parseContentNode(azwj paramazwj);
+  
+  protected void parseDataNode(azwj paramazwj)
+  {
+    if (this.mDatas == null) {
+      this.mDatas = new JSONObject();
+    }
+    if (("data".equals(paramazwj.b)) && (this.mMsgServiceID == 128) && (TextUtils.equals("2", paramazwj.a("msgtype")))) {}
+    try
+    {
+      this.mDatas.put("groupcode", paramazwj.a("groupcode"));
+      this.mDatas.put("groupname", paramazwj.a("groupname"));
+      this.mDatas.put("msgseq", paramazwj.a("msgseq"));
+      this.mDatas.put("msgtype", paramazwj.a("msgtype"));
+      if (QLog.isColorLevel()) {
+        QLog.d("StructMsg", 2, "parseDataNode json:" + this.mDatas.toString());
+      }
+      return;
+    }
+    catch (JSONException paramazwj)
+    {
+      for (;;)
+      {
+        QLog.d("StructMsg", 1, "parseDataNode error:" + paramazwj.getMessage());
+      }
+    }
+  }
   
   protected void parseDefaultContentNode()
   {
-    AbsStructMsgItem localAbsStructMsgItem = StructMsgElementFactory.a(2);
-    localAbsStructMsgItem.a("", this.mMsgBrief, "出错了");
-    addItem(localAbsStructMsgItem);
+    azut localazut = azvc.a(2);
+    localazut.a("", this.mMsgBrief, ag);
+    addItem(localazut);
   }
   
-  protected void parseSourceNode(StructMsgNode paramStructMsgNode)
+  protected void parseSourceNode(azwj paramazwj)
   {
-    if (paramStructMsgNode == null) {
+    if (paramazwj == null) {
       return;
     }
-    this.mSourceAppid = StructMsgUtils.a(paramStructMsgNode.a("appid"));
-    this.mSourceName = paramStructMsgNode.a("name");
+    this.mSourceAppid = azwm.a(paramazwj.a("appid"));
+    this.mSourceName = paramazwj.a("name");
     if (TextUtils.isEmpty(this.mMsgBrief))
     {
       this.mEmptyMsgBriefModified = true;
       if (TextUtils.isEmpty(this.mSourceName)) {
-        break label174;
+        break label175;
       }
     }
-    label174:
-    for (this.mMsgBrief = String.format("%s 的分享", new Object[] { this.mSourceName });; this.mMsgBrief = "应用分享")
+    label175:
+    for (this.mMsgBrief = String.format(af, new Object[] { this.mSourceName });; this.mMsgBrief = DEFAULT_MSG_BRIEF)
     {
-      this.mSourceIcon = paramStructMsgNode.a("icon");
-      this.mSourceUrl = paramStructMsgNode.a("url");
-      this.mSourceAction = paramStructMsgNode.a("action");
-      this.mSourceActionData = paramStructMsgNode.a("actionData");
-      this.mSource_A_ActionData = paramStructMsgNode.a("a_actionData");
-      this.mSource_I_ActionData = paramStructMsgNode.a("i_actionData");
+      this.mSourceIcon = paramazwj.a("icon");
+      this.mSourceUrl = paramazwj.a("url");
+      this.mSourceAction = paramazwj.a("action");
+      this.mSourceActionData = paramazwj.a("actionData");
+      this.mSource_A_ActionData = paramazwj.a("a_actionData");
+      this.mSource_I_ActionData = paramazwj.a("i_actionData");
       if ((this.mHasSource) || ((TextUtils.isEmpty(this.mSourceName)) && (TextUtils.isEmpty(this.mSourceIcon)))) {
         break;
       }
@@ -660,168 +813,202 @@ public abstract class AbsShareMsg
     }
   }
   
-  public void setStructMsgItemLists(List paramList)
+  public abstract void report(Object paramObject);
+  
+  public void setHasSource(boolean paramBoolean)
+  {
+    this.mHasSource = paramBoolean;
+  }
+  
+  public void setSourceIcon(String paramString)
+  {
+    this.mSourceIcon = paramString;
+  }
+  
+  public void setSourceName(String paramString)
+  {
+    this.mSourceName = paramString;
+  }
+  
+  public void setStructMsgItemLists(List<azus> paramList)
   {
     this.mStructMsgItemLists = paramList;
   }
   
-  protected abstract void toContentXml(AbsStructMsg.XmlSerializerWithFilter paramXmlSerializerWithFilter);
+  protected abstract void toContentXml(azur paramazur);
   
-  public void toXml(ByteArrayOutputStream paramByteArrayOutputStream, String paramString)
+  protected void toXml(ByteArrayOutputStream paramByteArrayOutputStream, String paramString)
   {
-    AbsStructMsg.XmlSerializerWithFilter localXmlSerializerWithFilter = new AbsStructMsg.XmlSerializerWithFilter(this, new QQXmlSerializer());
+    int i = 1;
+    azur localazur = new azur(this, new azux());
+    label797:
+    label1064:
     try
     {
-      localXmlSerializerWithFilter.setOutput(paramByteArrayOutputStream, paramString);
-      localXmlSerializerWithFilter.startDocument(paramString, Boolean.valueOf(true));
-      localXmlSerializerWithFilter.startTag(null, "msg");
-      localXmlSerializerWithFilter.attribute(null, "serviceID", String.valueOf(this.mMsgServiceID));
-      localXmlSerializerWithFilter.attribute(null, "templateID", String.valueOf(this.mMsgTemplateID));
-      if (this.mMsgAction == null)
-      {
-        paramByteArrayOutputStream = "";
-        localXmlSerializerWithFilter.attribute(null, "action", paramByteArrayOutputStream);
-        if (!TextUtils.isEmpty(this.mMsgActionData)) {
-          localXmlSerializerWithFilter.attribute(null, "actionData", this.mMsgActionData);
-        }
-        if (!TextUtils.isEmpty(this.mMsg_A_ActionData)) {
-          localXmlSerializerWithFilter.attribute(null, "a_actionData", this.mMsg_A_ActionData);
-        }
-        if (!TextUtils.isEmpty(this.mMsg_I_ActionData)) {
-          localXmlSerializerWithFilter.attribute(null, "i_actionData", this.mMsg_I_ActionData);
-        }
-        if (this.mMsgBrief != null) {
-          break label893;
-        }
-        paramByteArrayOutputStream = "";
-        label173:
-        localXmlSerializerWithFilter.attribute(null, "brief", paramByteArrayOutputStream);
-        if (!TextUtils.isEmpty(this.mResid)) {
-          localXmlSerializerWithFilter.attribute(null, "m_resid", this.mResid);
-        }
-        if (!TextUtils.isEmpty(this.mFileName)) {
-          localXmlSerializerWithFilter.attribute(null, "m_fileName", this.mFileName);
-        }
-        if (this.mFileSize > 0L) {
-          localXmlSerializerWithFilter.attribute(null, "m_fileSize", String.valueOf(this.mFileSize));
-        }
-        if (!TextUtils.isEmpty(this.source_puin)) {
-          localXmlSerializerWithFilter.attribute(null, "sourcePublicUin", this.source_puin);
-        }
-        localXmlSerializerWithFilter.attribute(null, "sourceMsgId", String.valueOf(this.msgId));
-        if (this.fwFlag == 1) {
-          localXmlSerializerWithFilter.attribute(null, "fwflag", String.valueOf(this.fwFlag));
-        }
-        if (this.mMsgUrl != null) {
-          break label901;
-        }
-        paramByteArrayOutputStream = "";
-        label328:
-        localXmlSerializerWithFilter.attribute(null, "url", paramByteArrayOutputStream);
-        if (!TextUtils.isEmpty(this.rijAlbumActionData)) {
-          localXmlSerializerWithFilter.attribute(null, "rijAlbumActionData", this.rijAlbumActionData);
-        }
-        localXmlSerializerWithFilter.attribute(null, "flag", String.valueOf(this.mFlag));
-        if (!TextUtils.isEmpty(this.mSType)) {
-          localXmlSerializerWithFilter.attribute(null, "sType", this.mSType);
-        }
-        if (this.sourceAccoutType == SOURCE_ACCOUNT_TYPE_PA) {
-          localXmlSerializerWithFilter.attribute(null, "accostType", String.valueOf(SOURCE_ACCOUNT_TYPE_PA));
-        }
-        paramByteArrayOutputStream = String.valueOf(this.adverSign);
-        if (!TextUtils.isEmpty(paramByteArrayOutputStream)) {
-          localXmlSerializerWithFilter.attribute(null, "adverSign", paramByteArrayOutputStream);
-        }
-        if (!TextUtils.isEmpty(this.adverKey)) {
-          localXmlSerializerWithFilter.attribute(null, "adverKey", this.adverKey);
-        }
-        if (!TextUtils.isEmpty(this.mExtraData)) {
-          localXmlSerializerWithFilter.attribute(null, "extraData", this.mExtraData);
-        }
-        if (!TextUtils.isEmpty(this.mCreateTime)) {
-          localXmlSerializerWithFilter.attribute(null, "createTime", this.mCreateTime);
-        }
-        if (!TextUtils.isEmpty(this.mTagName)) {
-          localXmlSerializerWithFilter.attribute(null, "tagName", this.mTagName);
-        }
-        if (!TextUtils.isEmpty(this.mSourceThirdName)) {
-          localXmlSerializerWithFilter.attribute(null, "sourceName", this.mSourceThirdName);
-        }
-        if (!TextUtils.isEmpty(this.mQQStoryExtra)) {
-          localXmlSerializerWithFilter.attribute(null, "qqstoryExtra", this.mQQStoryExtra);
-        }
-        if (!TextUtils.isEmpty(this.mTribeShortVideoExtra)) {
-          localXmlSerializerWithFilter.attribute(null, "qqtribeVideoInfoExtra", this.mTribeShortVideoExtra);
-        }
-        if (!TextUtils.isEmpty(this.mNeedRound)) {
-          localXmlSerializerWithFilter.attribute(null, "needRoundView", this.mNeedRound);
-        }
-        if (!TextUtils.isEmpty(this.mCommonData)) {
-          localXmlSerializerWithFilter.attribute(null, "msgCommonData", this.mCommonData);
-        }
-        localXmlSerializerWithFilter.attribute(null, "multiMsgFlag", String.valueOf(this.multiMsgFlag));
-        toContentXml(localXmlSerializerWithFilter);
-        localXmlSerializerWithFilter.startTag(null, "source");
-        if (this.mSourceName != null) {
-          break label909;
-        }
-        paramByteArrayOutputStream = "";
-        label698:
-        localXmlSerializerWithFilter.attribute(null, "name", paramByteArrayOutputStream);
-        if (this.mSourceIcon != null) {
-          break label917;
-        }
-        paramByteArrayOutputStream = "";
-        label719:
-        localXmlSerializerWithFilter.attribute(null, "icon", paramByteArrayOutputStream);
-        if (!TextUtils.isEmpty(this.mSourceUrl)) {
-          localXmlSerializerWithFilter.attribute(null, "url", this.mSourceUrl);
-        }
-        if (this.mSourceAction != null) {
-          break label925;
-        }
+      localazur.setOutput(paramByteArrayOutputStream, paramString);
+      localazur.startDocument(paramString, Boolean.valueOf(true));
+      localazur.startTag(null, "msg");
+      localazur.attribute(null, "serviceID", String.valueOf(this.mMsgServiceID));
+      localazur.attribute(null, "templateID", String.valueOf(this.mMsgTemplateID));
+      if (this.mMsgAction != null) {
+        break label996;
       }
-      label901:
-      label909:
-      label917:
-      label925:
-      for (paramByteArrayOutputStream = "";; paramByteArrayOutputStream = this.mSourceAction)
-      {
-        localXmlSerializerWithFilter.attribute(null, "action", paramByteArrayOutputStream);
-        if (!TextUtils.isEmpty(this.mSourceActionData)) {
-          localXmlSerializerWithFilter.attribute(null, "actionData", this.mSourceActionData);
-        }
-        if (!TextUtils.isEmpty(this.mSource_A_ActionData)) {
-          localXmlSerializerWithFilter.attribute(null, "a_actionData", this.mSource_A_ActionData);
-        }
-        if (!TextUtils.isEmpty(this.mSource_I_ActionData)) {
-          localXmlSerializerWithFilter.attribute(null, "i_actionData", this.mSource_I_ActionData);
-        }
-        localXmlSerializerWithFilter.attribute(null, "appid", String.valueOf(this.mSourceAppid));
-        localXmlSerializerWithFilter.endTag(null, "source");
-        localXmlSerializerWithFilter.endTag(null, "msg");
-        localXmlSerializerWithFilter.endDocument();
-        localXmlSerializerWithFilter.flush();
-        return;
-        paramByteArrayOutputStream = this.mMsgAction;
-        break;
-        label893:
-        paramByteArrayOutputStream = this.mMsgBrief;
-        break label173;
-        paramByteArrayOutputStream = this.mMsgUrl;
-        break label328;
-        paramByteArrayOutputStream = this.mSourceName;
-        break label698;
-        paramByteArrayOutputStream = this.mSourceIcon;
-        break label719;
+      paramByteArrayOutputStream = "";
+      localazur.attribute(null, "action", paramByteArrayOutputStream);
+      if (!TextUtils.isEmpty(this.mMsgActionData)) {
+        localazur.attribute(null, "actionData", this.mMsgActionData);
       }
-      return;
+      if (!TextUtils.isEmpty(this.mMsg_A_ActionData)) {
+        localazur.attribute(null, "a_actionData", this.mMsg_A_ActionData);
+      }
+      if (!TextUtils.isEmpty(this.mMsg_I_ActionData)) {
+        localazur.attribute(null, "i_actionData", this.mMsg_I_ActionData);
+      }
+      if (this.mMsgBrief != null) {
+        break label1004;
+      }
+      paramByteArrayOutputStream = "";
+      label185:
+      localazur.attribute(null, "brief", paramByteArrayOutputStream);
+      if (!TextUtils.isEmpty(this.mResid)) {
+        localazur.attribute(null, "m_resid", this.mResid);
+      }
+      if (!TextUtils.isEmpty(this.mFileName)) {
+        localazur.attribute(null, "m_fileName", this.mFileName);
+      }
+      if (this.mTSum > 0) {
+        localazur.attribute(null, "tSum", String.valueOf(this.mTSum));
+      }
+      if (this.mFileSize > 0L) {
+        localazur.attribute(null, "m_fileSize", String.valueOf(this.mFileSize));
+      }
+      if (!TextUtils.isEmpty(this.source_puin)) {
+        localazur.attribute(null, "sourcePublicUin", this.source_puin);
+      }
+      localazur.attribute(null, "sourceMsgId", String.valueOf(this.msgId));
+      if (this.fwFlag == 1) {
+        localazur.attribute(null, "fwflag", String.valueOf(this.fwFlag));
+      }
+      if (this.mMsgUrl != null) {
+        break label1012;
+      }
+      paramByteArrayOutputStream = "";
+      label371:
+      localazur.attribute(null, "url", paramByteArrayOutputStream);
+      if (!TextUtils.isEmpty(this.rijAlbumActionData)) {
+        localazur.attribute(null, "rijAlbumActionData", this.rijAlbumActionData);
+      }
+      localazur.attribute(null, "flag", String.valueOf(this.mFlag));
+      if (!TextUtils.isEmpty(this.mSType)) {
+        localazur.attribute(null, "sType", this.mSType);
+      }
+      if (this.sourceAccoutType == SOURCE_ACCOUNT_TYPE_PA) {
+        localazur.attribute(null, "accostType", String.valueOf(SOURCE_ACCOUNT_TYPE_PA));
+      }
+      paramByteArrayOutputStream = String.valueOf(this.adverSign);
+      if (!TextUtils.isEmpty(paramByteArrayOutputStream)) {
+        localazur.attribute(null, "adverSign", paramByteArrayOutputStream);
+      }
+      if (!TextUtils.isEmpty(this.adverKey)) {
+        localazur.attribute(null, "adverKey", this.adverKey);
+      }
+      if (!TextUtils.isEmpty(this.mExtraData)) {
+        localazur.attribute(null, "extraData", this.mExtraData);
+      }
+      if (!TextUtils.isEmpty(this.mCreateTime)) {
+        localazur.attribute(null, "createTime", this.mCreateTime);
+      }
+      if (!TextUtils.isEmpty(this.mTagName)) {
+        localazur.attribute(null, "tagName", this.mTagName);
+      }
+      if (!TextUtils.isEmpty(this.mSourceThirdName)) {
+        localazur.attribute(null, "sourceName", this.mSourceThirdName);
+      }
+      if (!TextUtils.isEmpty(this.mQQStoryExtra)) {
+        localazur.attribute(null, "qqstoryExtra", this.mQQStoryExtra);
+      }
+      if (!TextUtils.isEmpty(this.mTribeShortVideoExtra)) {
+        localazur.attribute(null, "qqtribeVideoInfoExtra", this.mTribeShortVideoExtra);
+      }
+      if (!TextUtils.isEmpty(this.mNeedRound)) {
+        localazur.attribute(null, "needRoundView", this.mNeedRound);
+      }
+      if (!TextUtils.isEmpty(this.mCommonData)) {
+        localazur.attribute(null, "msgCommonData", this.mCommonData);
+      }
+      localazur.attribute(null, "multiMsgFlag", String.valueOf(this.multiMsgFlag));
+      if (!TextUtils.isEmpty(this.mQzoneExtraMsg)) {
+        localazur.attribute(null, "qzFloatExtra", this.mQzoneExtraMsg);
+      }
+      toContentXml(localazur);
+      if (this.mMsgServiceID != 128) {
+        break label1064;
+      }
     }
     catch (Exception paramByteArrayOutputStream)
     {
-      if (QLog.isColorLevel()) {
+      label819:
+      label996:
+      label1004:
+      label1012:
+      label1020:
+      while (QLog.isColorLevel())
+      {
         QLog.d("StructMsg", 2, paramByteArrayOutputStream.getMessage(), paramByteArrayOutputStream);
+        return;
+        i = 0;
       }
+    }
+    if (i == 0)
+    {
+      localazur.startTag(null, "source");
+      if (this.mSourceName != null) {
+        break label1020;
+      }
+      paramByteArrayOutputStream = "";
+      localazur.attribute(null, "name", paramByteArrayOutputStream);
+      if (this.mSourceIcon != null) {
+        break label1028;
+      }
+      paramByteArrayOutputStream = "";
+      localazur.attribute(null, "icon", paramByteArrayOutputStream);
+      if (!TextUtils.isEmpty(this.mSourceUrl)) {
+        localazur.attribute(null, "url", this.mSourceUrl);
+      }
+      if (this.mSourceAction != null) {
+        break label1036;
+      }
+    }
+    label1028:
+    label1036:
+    for (paramByteArrayOutputStream = "";; paramByteArrayOutputStream = this.mSourceAction)
+    {
+      localazur.attribute(null, "action", paramByteArrayOutputStream);
+      if (!TextUtils.isEmpty(this.mSourceActionData)) {
+        localazur.attribute(null, "actionData", this.mSourceActionData);
+      }
+      if (!TextUtils.isEmpty(this.mSource_A_ActionData)) {
+        localazur.attribute(null, "a_actionData", this.mSource_A_ActionData);
+      }
+      if (!TextUtils.isEmpty(this.mSource_I_ActionData)) {
+        localazur.attribute(null, "i_actionData", this.mSource_I_ActionData);
+      }
+      localazur.attribute(null, "appid", String.valueOf(this.mSourceAppid));
+      localazur.endTag(null, "source");
+      localazur.endTag(null, "msg");
+      localazur.endDocument();
+      localazur.flush();
+      return;
+      paramByteArrayOutputStream = this.mMsgAction;
+      break;
+      paramByteArrayOutputStream = this.mMsgBrief;
+      break label185;
+      paramByteArrayOutputStream = this.mMsgUrl;
+      break label371;
+      paramByteArrayOutputStream = this.mSourceName;
+      break label797;
+      paramByteArrayOutputStream = this.mSourceIcon;
+      break label819;
     }
   }
   
@@ -839,7 +1026,7 @@ public abstract class AbsShareMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.AbsShareMsg
  * JD-Core Version:    0.7.0.1
  */

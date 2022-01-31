@@ -1,25 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.businessCard.data.CardOCRInfo;
 
-public class anzz
-  implements Runnable
+public final class anzz
+  implements Parcelable.Creator<CardOCRInfo>
 {
-  public anzz(GLTextureView paramGLTextureView) {}
-  
-  public void run()
+  public CardOCRInfo a(Parcel paramParcel)
   {
-    GLTextureView.a(this.a).a(this.a.getWidth(), this.a.getHeight());
-    if (QLog.isColorLevel()) {
-      QLog.d("GLTextureView", 2, "TextureView mCheckAlphaTask,alpha:" + GLTextureView.a(this.a));
-    }
-    if (GLTextureView.a(this.a) != 1.0F) {
-      GLTextureView.a(this.a, 1.0F);
-    }
+    return new CardOCRInfo(paramParcel);
+  }
+  
+  public CardOCRInfo[] a(int paramInt)
+  {
+    return new CardOCRInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anzz
  * JD-Core Version:    0.7.0.1
  */

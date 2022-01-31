@@ -1,35 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter;
-import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter.ViewHolder;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wki
-  implements View.OnClickListener
+  extends QQUIEventReceiver<wjw, vdl>
 {
-  public wki(NotificationAdapter paramNotificationAdapter) {}
-  
-  public void onClick(View paramView)
+  public wki(@NonNull wjw paramwjw)
   {
-    NotificationAdapter.ViewHolder localViewHolder = (NotificationAdapter.ViewHolder)paramView.getTag();
-    if ((localViewHolder == null) || (!(localViewHolder instanceof NotificationAdapter.ViewHolder))) {
+    super(paramwjw);
+  }
+  
+  public void a(@NonNull wjw paramwjw, @NonNull vdl paramvdl)
+  {
+    if (wjw.a(paramwjw) == null)
+    {
+      wxe.b(this.TAG, "ignore this user info event. %s.", paramvdl.toString());
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
-    paramView = (View)paramView.getParent();
-    if ((paramView instanceof ShaderAnimLayout)) {
-      ((ShaderAnimLayout)paramView).d();
-    }
-    NotificationAdapter.a(this.a, localViewHolder.a);
-    this.a.jdField_a_of_type_JavaUtilList.add(NotificationAdapter.a(this.a).remove(this.a.getCount() - localViewHolder.b - 1));
-    this.a.notifyDataSetChanged();
+    wxe.a(this.TAG, "receive user info event. %s.", paramvdl.toString());
+    wjw.a(paramwjw).c();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vdl.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wki
  * JD-Core Version:    0.7.0.1
  */

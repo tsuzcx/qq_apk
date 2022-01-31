@@ -7,15 +7,17 @@ import com.qq.taf.jce.JceStruct;
 public final class AddFriendReq
   extends JceStruct
 {
-  static int cache_adduinsetting;
+  static int cache_adduinsetting = 0;
   static byte[] cache_friend_src_desc;
   static byte[] cache_name;
   static byte[] cache_name1;
   static byte[] cache_remark;
-  static byte[] cache_sig;
+  static byte[] cache_sig = (byte[])new byte[1];
   static int cache_sourceID;
   static int cache_sourceSubID;
   static byte[] cache_src_description;
+  static byte[] cache_token;
+  static byte[] cache_verify;
   public long adduin;
   public int adduinsetting;
   public byte autoSend = 1;
@@ -34,11 +36,34 @@ public final class AddFriendReq
   public int sourceSubID = 0;
   public byte srcFlag;
   public byte[] src_description;
+  public byte[] token;
   public long uin;
+  public byte[] verify;
+  
+  static
+  {
+    ((byte[])cache_sig)[0] = 0;
+    cache_sourceID = 0;
+    cache_sourceSubID = 0;
+    cache_name = (byte[])new byte[1];
+    ((byte[])cache_name)[0] = 0;
+    cache_src_description = (byte[])new byte[1];
+    ((byte[])cache_src_description)[0] = 0;
+    cache_friend_src_desc = (byte[])new byte[1];
+    ((byte[])cache_friend_src_desc)[0] = 0;
+    cache_remark = (byte[])new byte[1];
+    ((byte[])cache_remark)[0] = 0;
+    cache_name1 = (byte[])new byte[1];
+    ((byte[])cache_name1)[0] = 0;
+    cache_token = (byte[])new byte[1];
+    ((byte[])cache_token)[0] = 0;
+    cache_verify = (byte[])new byte[1];
+    ((byte[])cache_verify)[0] = 0;
+  }
   
   public AddFriendReq() {}
   
-  public AddFriendReq(long paramLong1, long paramLong2, int paramInt1, byte paramByte1, byte paramByte2, byte paramByte3, String paramString, byte paramByte4, byte paramByte5, byte[] paramArrayOfByte1, int paramInt2, int paramInt3, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, boolean paramBoolean, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, byte paramByte6)
+  public AddFriendReq(long paramLong1, long paramLong2, int paramInt1, byte paramByte1, byte paramByte2, byte paramByte3, String paramString, byte paramByte4, byte paramByte5, byte[] paramArrayOfByte1, int paramInt2, int paramInt3, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, boolean paramBoolean, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, byte paramByte6, byte[] paramArrayOfByte7, byte[] paramArrayOfByte8)
   {
     this.uin = paramLong1;
     this.adduin = paramLong2;
@@ -59,6 +84,8 @@ public final class AddFriendReq
     this.remark = paramArrayOfByte5;
     this.name1 = paramArrayOfByte6;
     this.showMyCard = paramByte6;
+    this.token = paramArrayOfByte7;
+    this.verify = paramArrayOfByte8;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -72,46 +99,18 @@ public final class AddFriendReq
     this.msg = paramJceInputStream.readString(6, false);
     this.srcFlag = paramJceInputStream.read(this.srcFlag, 7, false);
     this.autoSend = paramJceInputStream.read(this.autoSend, 8, false);
-    if (cache_sig == null)
-    {
-      cache_sig = (byte[])new byte[1];
-      ((byte[])cache_sig)[0] = 0;
-    }
     this.sig = ((byte[])paramJceInputStream.read(cache_sig, 9, false));
     this.sourceID = paramJceInputStream.read(this.sourceID, 10, false);
     this.sourceSubID = paramJceInputStream.read(this.sourceSubID, 11, false);
-    if (cache_name == null)
-    {
-      cache_name = (byte[])new byte[1];
-      ((byte[])cache_name)[0] = 0;
-    }
     this.name = ((byte[])paramJceInputStream.read(cache_name, 12, false));
-    if (cache_src_description == null)
-    {
-      cache_src_description = (byte[])new byte[1];
-      ((byte[])cache_src_description)[0] = 0;
-    }
     this.src_description = ((byte[])paramJceInputStream.read(cache_src_description, 13, false));
-    if (cache_friend_src_desc == null)
-    {
-      cache_friend_src_desc = (byte[])new byte[1];
-      ((byte[])cache_friend_src_desc)[0] = 0;
-    }
     this.friend_src_desc = ((byte[])paramJceInputStream.read(cache_friend_src_desc, 14, false));
     this.contact_bothway_friend = paramJceInputStream.read(this.contact_bothway_friend, 15, false);
-    if (cache_remark == null)
-    {
-      cache_remark = (byte[])new byte[1];
-      ((byte[])cache_remark)[0] = 0;
-    }
     this.remark = ((byte[])paramJceInputStream.read(cache_remark, 16, false));
-    if (cache_name1 == null)
-    {
-      cache_name1 = (byte[])new byte[1];
-      ((byte[])cache_name1)[0] = 0;
-    }
     this.name1 = ((byte[])paramJceInputStream.read(cache_name1, 17, false));
     this.showMyCard = paramJceInputStream.read(this.showMyCard, 18, false);
+    this.token = ((byte[])paramJceInputStream.read(cache_token, 19, false));
+    this.verify = ((byte[])paramJceInputStream.read(cache_verify, 20, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -149,11 +148,17 @@ public final class AddFriendReq
       paramJceOutputStream.write(this.name1, 17);
     }
     paramJceOutputStream.write(this.showMyCard, 18);
+    if (this.token != null) {
+      paramJceOutputStream.write(this.token, 19);
+    }
+    if (this.verify != null) {
+      paramJceOutputStream.write(this.verify, 20);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     friendlist.AddFriendReq
  * JD-Core Version:    0.7.0.1
  */

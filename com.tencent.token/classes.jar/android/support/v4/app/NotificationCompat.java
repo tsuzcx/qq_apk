@@ -1,523 +1,297 @@
 package android.support.v4.app;
 
 import android.app.Notification;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.net.Uri;
+import android.app.Notification.Action;
 import android.os.Build.VERSION;
-import android.widget.RemoteViews;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.support.annotation.ColorInt;
+import android.support.annotation.RequiresApi;
+import android.util.SparseArray;
 
 public class NotificationCompat
 {
+  public static final int BADGE_ICON_LARGE = 2;
+  public static final int BADGE_ICON_NONE = 0;
+  public static final int BADGE_ICON_SMALL = 1;
+  public static final String CATEGORY_ALARM = "alarm";
+  public static final String CATEGORY_CALL = "call";
+  public static final String CATEGORY_EMAIL = "email";
+  public static final String CATEGORY_ERROR = "err";
+  public static final String CATEGORY_EVENT = "event";
+  public static final String CATEGORY_MESSAGE = "msg";
+  public static final String CATEGORY_PROGRESS = "progress";
+  public static final String CATEGORY_PROMO = "promo";
+  public static final String CATEGORY_RECOMMENDATION = "recommendation";
+  public static final String CATEGORY_REMINDER = "reminder";
+  public static final String CATEGORY_SERVICE = "service";
+  public static final String CATEGORY_SOCIAL = "social";
+  public static final String CATEGORY_STATUS = "status";
+  public static final String CATEGORY_SYSTEM = "sys";
+  public static final String CATEGORY_TRANSPORT = "transport";
+  @ColorInt
+  public static final int COLOR_DEFAULT = 0;
+  public static final int DEFAULT_ALL = -1;
+  public static final int DEFAULT_LIGHTS = 4;
+  public static final int DEFAULT_SOUND = 1;
+  public static final int DEFAULT_VIBRATE = 2;
+  public static final String EXTRA_AUDIO_CONTENTS_URI = "android.audioContents";
+  public static final String EXTRA_BACKGROUND_IMAGE_URI = "android.backgroundImageUri";
+  public static final String EXTRA_BIG_TEXT = "android.bigText";
+  public static final String EXTRA_COMPACT_ACTIONS = "android.compactActions";
+  public static final String EXTRA_CONVERSATION_TITLE = "android.conversationTitle";
+  public static final String EXTRA_INFO_TEXT = "android.infoText";
+  public static final String EXTRA_LARGE_ICON = "android.largeIcon";
+  public static final String EXTRA_LARGE_ICON_BIG = "android.largeIcon.big";
+  public static final String EXTRA_MEDIA_SESSION = "android.mediaSession";
+  public static final String EXTRA_MESSAGES = "android.messages";
+  public static final String EXTRA_PEOPLE = "android.people";
+  public static final String EXTRA_PICTURE = "android.picture";
+  public static final String EXTRA_PROGRESS = "android.progress";
+  public static final String EXTRA_PROGRESS_INDETERMINATE = "android.progressIndeterminate";
+  public static final String EXTRA_PROGRESS_MAX = "android.progressMax";
+  public static final String EXTRA_REMOTE_INPUT_HISTORY = "android.remoteInputHistory";
+  public static final String EXTRA_SELF_DISPLAY_NAME = "android.selfDisplayName";
+  public static final String EXTRA_SHOW_CHRONOMETER = "android.showChronometer";
+  public static final String EXTRA_SHOW_WHEN = "android.showWhen";
+  public static final String EXTRA_SMALL_ICON = "android.icon";
+  public static final String EXTRA_SUB_TEXT = "android.subText";
+  public static final String EXTRA_SUMMARY_TEXT = "android.summaryText";
+  public static final String EXTRA_TEMPLATE = "android.template";
+  public static final String EXTRA_TEXT = "android.text";
+  public static final String EXTRA_TEXT_LINES = "android.textLines";
+  public static final String EXTRA_TITLE = "android.title";
+  public static final String EXTRA_TITLE_BIG = "android.title.big";
+  public static final int FLAG_AUTO_CANCEL = 16;
+  public static final int FLAG_FOREGROUND_SERVICE = 64;
+  public static final int FLAG_GROUP_SUMMARY = 512;
+  @Deprecated
   public static final int FLAG_HIGH_PRIORITY = 128;
-  private static final NotificationCompatImpl IMPL = new NotificationCompatImplBase();
+  public static final int FLAG_INSISTENT = 4;
+  public static final int FLAG_LOCAL_ONLY = 256;
+  public static final int FLAG_NO_CLEAR = 32;
+  public static final int FLAG_ONGOING_EVENT = 2;
+  public static final int FLAG_ONLY_ALERT_ONCE = 8;
+  public static final int FLAG_SHOW_LIGHTS = 1;
+  public static final int GROUP_ALERT_ALL = 0;
+  public static final int GROUP_ALERT_CHILDREN = 2;
+  public static final int GROUP_ALERT_SUMMARY = 1;
   public static final int PRIORITY_DEFAULT = 0;
   public static final int PRIORITY_HIGH = 1;
   public static final int PRIORITY_LOW = -1;
   public static final int PRIORITY_MAX = 2;
   public static final int PRIORITY_MIN = -2;
+  public static final int STREAM_DEFAULT = -1;
+  public static final int VISIBILITY_PRIVATE = 0;
+  public static final int VISIBILITY_PUBLIC = 1;
+  public static final int VISIBILITY_SECRET = -1;
   
-  static
+  public static NotificationCompat.Action getAction(Notification paramNotification, int paramInt)
   {
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      IMPL = new NotificationCompatImplJellybean();
-      return;
+    Object localObject = null;
+    Notification.Action localAction = null;
+    if (Build.VERSION.SDK_INT >= 20) {
+      localObject = getActionCompatFromAction(paramNotification.actions[paramInt]);
     }
-    if (Build.VERSION.SDK_INT >= 14)
+    do
     {
-      IMPL = new NotificationCompatImplIceCreamSandwich();
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 11)
-    {
-      IMPL = new NotificationCompatImplHoneycomb();
-      return;
-    }
-  }
-  
-  public static class Action
-  {
-    public PendingIntent actionIntent;
-    public int icon;
-    public CharSequence title;
-    
-    public Action(int paramInt, CharSequence paramCharSequence, PendingIntent paramPendingIntent)
-    {
-      this.icon = paramInt;
-      this.title = paramCharSequence;
-      this.actionIntent = paramPendingIntent;
-    }
-  }
-  
-  public static class BigPictureStyle
-    extends NotificationCompat.Style
-  {
-    Bitmap mBigLargeIcon;
-    boolean mBigLargeIconSet;
-    Bitmap mPicture;
-    
-    public BigPictureStyle() {}
-    
-    public BigPictureStyle(NotificationCompat.Builder paramBuilder)
-    {
-      setBuilder(paramBuilder);
-    }
-    
-    public BigPictureStyle bigLargeIcon(Bitmap paramBitmap)
-    {
-      this.mBigLargeIcon = paramBitmap;
-      this.mBigLargeIconSet = true;
-      return this;
-    }
-    
-    public BigPictureStyle bigPicture(Bitmap paramBitmap)
-    {
-      this.mPicture = paramBitmap;
-      return this;
-    }
-    
-    public BigPictureStyle setBigContentTitle(CharSequence paramCharSequence)
-    {
-      this.mBigContentTitle = paramCharSequence;
-      return this;
-    }
-    
-    public BigPictureStyle setSummaryText(CharSequence paramCharSequence)
-    {
-      this.mSummaryText = paramCharSequence;
-      this.mSummaryTextSet = true;
-      return this;
-    }
-  }
-  
-  public static class BigTextStyle
-    extends NotificationCompat.Style
-  {
-    CharSequence mBigText;
-    
-    public BigTextStyle() {}
-    
-    public BigTextStyle(NotificationCompat.Builder paramBuilder)
-    {
-      setBuilder(paramBuilder);
-    }
-    
-    public BigTextStyle bigText(CharSequence paramCharSequence)
-    {
-      this.mBigText = paramCharSequence;
-      return this;
-    }
-    
-    public BigTextStyle setBigContentTitle(CharSequence paramCharSequence)
-    {
-      this.mBigContentTitle = paramCharSequence;
-      return this;
-    }
-    
-    public BigTextStyle setSummaryText(CharSequence paramCharSequence)
-    {
-      this.mSummaryText = paramCharSequence;
-      this.mSummaryTextSet = true;
-      return this;
-    }
-  }
-  
-  public static class Builder
-  {
-    ArrayList<NotificationCompat.Action> mActions = new ArrayList();
-    CharSequence mContentInfo;
-    PendingIntent mContentIntent;
-    CharSequence mContentText;
-    CharSequence mContentTitle;
-    Context mContext;
-    PendingIntent mFullScreenIntent;
-    Bitmap mLargeIcon;
-    Notification mNotification = new Notification();
-    int mNumber;
-    int mPriority;
-    int mProgress;
-    boolean mProgressIndeterminate;
-    int mProgressMax;
-    NotificationCompat.Style mStyle;
-    CharSequence mSubText;
-    RemoteViews mTickerView;
-    boolean mUseChronometer;
-    
-    public Builder(Context paramContext)
-    {
-      this.mContext = paramContext;
-      this.mNotification.when = System.currentTimeMillis();
-      this.mNotification.audioStreamType = -1;
-      this.mPriority = 0;
-    }
-    
-    private void setFlag(int paramInt, boolean paramBoolean)
-    {
-      if (paramBoolean)
+      return localObject;
+      if (Build.VERSION.SDK_INT >= 19)
       {
-        localNotification = this.mNotification;
-        localNotification.flags |= paramInt;
-        return;
-      }
-      Notification localNotification = this.mNotification;
-      localNotification.flags &= (paramInt ^ 0xFFFFFFFF);
-    }
-    
-    public Builder addAction(int paramInt, CharSequence paramCharSequence, PendingIntent paramPendingIntent)
-    {
-      this.mActions.add(new NotificationCompat.Action(paramInt, paramCharSequence, paramPendingIntent));
-      return this;
-    }
-    
-    public Notification build()
-    {
-      return NotificationCompat.IMPL.build(this);
-    }
-    
-    @Deprecated
-    public Notification getNotification()
-    {
-      return NotificationCompat.IMPL.build(this);
-    }
-    
-    public Builder setAutoCancel(boolean paramBoolean)
-    {
-      setFlag(16, paramBoolean);
-      return this;
-    }
-    
-    public Builder setContent(RemoteViews paramRemoteViews)
-    {
-      this.mNotification.contentView = paramRemoteViews;
-      return this;
-    }
-    
-    public Builder setContentInfo(CharSequence paramCharSequence)
-    {
-      this.mContentInfo = paramCharSequence;
-      return this;
-    }
-    
-    public Builder setContentIntent(PendingIntent paramPendingIntent)
-    {
-      this.mContentIntent = paramPendingIntent;
-      return this;
-    }
-    
-    public Builder setContentText(CharSequence paramCharSequence)
-    {
-      this.mContentText = paramCharSequence;
-      return this;
-    }
-    
-    public Builder setContentTitle(CharSequence paramCharSequence)
-    {
-      this.mContentTitle = paramCharSequence;
-      return this;
-    }
-    
-    public Builder setDefaults(int paramInt)
-    {
-      this.mNotification.defaults = paramInt;
-      if ((paramInt & 0x4) != 0)
-      {
-        Notification localNotification = this.mNotification;
-        localNotification.flags |= 0x1;
-      }
-      return this;
-    }
-    
-    public Builder setDeleteIntent(PendingIntent paramPendingIntent)
-    {
-      this.mNotification.deleteIntent = paramPendingIntent;
-      return this;
-    }
-    
-    public Builder setFullScreenIntent(PendingIntent paramPendingIntent, boolean paramBoolean)
-    {
-      this.mFullScreenIntent = paramPendingIntent;
-      setFlag(128, paramBoolean);
-      return this;
-    }
-    
-    public Builder setLargeIcon(Bitmap paramBitmap)
-    {
-      this.mLargeIcon = paramBitmap;
-      return this;
-    }
-    
-    public Builder setLights(int paramInt1, int paramInt2, int paramInt3)
-    {
-      int i = 1;
-      this.mNotification.ledARGB = paramInt1;
-      this.mNotification.ledOnMS = paramInt2;
-      this.mNotification.ledOffMS = paramInt3;
-      Notification localNotification;
-      if ((this.mNotification.ledOnMS != 0) && (this.mNotification.ledOffMS != 0))
-      {
-        paramInt1 = 1;
-        localNotification = this.mNotification;
-        paramInt2 = this.mNotification.flags;
-        if (paramInt1 == 0) {
-          break label88;
+        localAction = paramNotification.actions[paramInt];
+        SparseArray localSparseArray = paramNotification.extras.getSparseParcelableArray("android.support.actionExtras");
+        paramNotification = (Notification)localObject;
+        if (localSparseArray != null) {
+          paramNotification = (Bundle)localSparseArray.get(paramInt);
         }
+        return NotificationCompatJellybean.readAction(localAction.icon, localAction.title, localAction.actionIntent, paramNotification);
       }
-      label88:
-      for (paramInt1 = i;; paramInt1 = 0)
+      localObject = localAction;
+    } while (Build.VERSION.SDK_INT < 16);
+    return NotificationCompatJellybean.getAction(paramNotification, paramInt);
+  }
+  
+  @RequiresApi(20)
+  static NotificationCompat.Action getActionCompatFromAction(Notification.Action paramAction)
+  {
+    boolean bool = false;
+    android.app.RemoteInput[] arrayOfRemoteInput1 = paramAction.getRemoteInputs();
+    RemoteInput[] arrayOfRemoteInput;
+    if (arrayOfRemoteInput1 == null) {
+      arrayOfRemoteInput = null;
+    }
+    for (;;)
+    {
+      if (Build.VERSION.SDK_INT >= 24) {
+        if ((!paramAction.getExtras().getBoolean("android.support.allowGeneratedReplies")) && (!paramAction.getAllowGeneratedReplies())) {}
+      }
+      for (bool = true;; bool = paramAction.getExtras().getBoolean("android.support.allowGeneratedReplies"))
       {
-        localNotification.flags = (paramInt1 | paramInt2 & 0xFFFFFFFE);
-        return this;
-        paramInt1 = 0;
-        break;
-      }
-    }
-    
-    public Builder setNumber(int paramInt)
-    {
-      this.mNumber = paramInt;
-      return this;
-    }
-    
-    public Builder setOngoing(boolean paramBoolean)
-    {
-      setFlag(2, paramBoolean);
-      return this;
-    }
-    
-    public Builder setOnlyAlertOnce(boolean paramBoolean)
-    {
-      setFlag(8, paramBoolean);
-      return this;
-    }
-    
-    public Builder setPriority(int paramInt)
-    {
-      this.mPriority = paramInt;
-      return this;
-    }
-    
-    public Builder setProgress(int paramInt1, int paramInt2, boolean paramBoolean)
-    {
-      this.mProgressMax = paramInt1;
-      this.mProgress = paramInt2;
-      this.mProgressIndeterminate = paramBoolean;
-      return this;
-    }
-    
-    public Builder setSmallIcon(int paramInt)
-    {
-      this.mNotification.icon = paramInt;
-      return this;
-    }
-    
-    public Builder setSmallIcon(int paramInt1, int paramInt2)
-    {
-      this.mNotification.icon = paramInt1;
-      this.mNotification.iconLevel = paramInt2;
-      return this;
-    }
-    
-    public Builder setSound(Uri paramUri)
-    {
-      this.mNotification.sound = paramUri;
-      this.mNotification.audioStreamType = -1;
-      return this;
-    }
-    
-    public Builder setSound(Uri paramUri, int paramInt)
-    {
-      this.mNotification.sound = paramUri;
-      this.mNotification.audioStreamType = paramInt;
-      return this;
-    }
-    
-    public Builder setStyle(NotificationCompat.Style paramStyle)
-    {
-      if (this.mStyle != paramStyle)
-      {
-        this.mStyle = paramStyle;
-        if (this.mStyle != null) {
-          this.mStyle.setBuilder(this);
-        }
-      }
-      return this;
-    }
-    
-    public Builder setSubText(CharSequence paramCharSequence)
-    {
-      this.mSubText = paramCharSequence;
-      return this;
-    }
-    
-    public Builder setTicker(CharSequence paramCharSequence)
-    {
-      this.mNotification.tickerText = paramCharSequence;
-      return this;
-    }
-    
-    public Builder setTicker(CharSequence paramCharSequence, RemoteViews paramRemoteViews)
-    {
-      this.mNotification.tickerText = paramCharSequence;
-      this.mTickerView = paramRemoteViews;
-      return this;
-    }
-    
-    public Builder setUsesChronometer(boolean paramBoolean)
-    {
-      this.mUseChronometer = paramBoolean;
-      return this;
-    }
-    
-    public Builder setVibrate(long[] paramArrayOfLong)
-    {
-      this.mNotification.vibrate = paramArrayOfLong;
-      return this;
-    }
-    
-    public Builder setWhen(long paramLong)
-    {
-      this.mNotification.when = paramLong;
-      return this;
-    }
-  }
-  
-  public static class InboxStyle
-    extends NotificationCompat.Style
-  {
-    ArrayList<CharSequence> mTexts = new ArrayList();
-    
-    public InboxStyle() {}
-    
-    public InboxStyle(NotificationCompat.Builder paramBuilder)
-    {
-      setBuilder(paramBuilder);
-    }
-    
-    public InboxStyle addLine(CharSequence paramCharSequence)
-    {
-      this.mTexts.add(paramCharSequence);
-      return this;
-    }
-    
-    public InboxStyle setBigContentTitle(CharSequence paramCharSequence)
-    {
-      this.mBigContentTitle = paramCharSequence;
-      return this;
-    }
-    
-    public InboxStyle setSummaryText(CharSequence paramCharSequence)
-    {
-      this.mSummaryText = paramCharSequence;
-      this.mSummaryTextSet = true;
-      return this;
-    }
-  }
-  
-  static abstract interface NotificationCompatImpl
-  {
-    public abstract Notification build(NotificationCompat.Builder paramBuilder);
-  }
-  
-  static class NotificationCompatImplBase
-    implements NotificationCompat.NotificationCompatImpl
-  {
-    public Notification build(NotificationCompat.Builder paramBuilder)
-    {
-      Notification localNotification = paramBuilder.mNotification;
-      localNotification.setLatestEventInfo(paramBuilder.mContext, paramBuilder.mContentTitle, paramBuilder.mContentText, paramBuilder.mContentIntent);
-      if (paramBuilder.mPriority > 0) {
-        localNotification.flags |= 0x80;
-      }
-      return localNotification;
-    }
-  }
-  
-  static class NotificationCompatImplHoneycomb
-    implements NotificationCompat.NotificationCompatImpl
-  {
-    public Notification build(NotificationCompat.Builder paramBuilder)
-    {
-      return NotificationCompatHoneycomb.add(paramBuilder.mContext, paramBuilder.mNotification, paramBuilder.mContentTitle, paramBuilder.mContentText, paramBuilder.mContentInfo, paramBuilder.mTickerView, paramBuilder.mNumber, paramBuilder.mContentIntent, paramBuilder.mFullScreenIntent, paramBuilder.mLargeIcon);
-    }
-  }
-  
-  static class NotificationCompatImplIceCreamSandwich
-    implements NotificationCompat.NotificationCompatImpl
-  {
-    public Notification build(NotificationCompat.Builder paramBuilder)
-    {
-      return NotificationCompatIceCreamSandwich.add(paramBuilder.mContext, paramBuilder.mNotification, paramBuilder.mContentTitle, paramBuilder.mContentText, paramBuilder.mContentInfo, paramBuilder.mTickerView, paramBuilder.mNumber, paramBuilder.mContentIntent, paramBuilder.mFullScreenIntent, paramBuilder.mLargeIcon, paramBuilder.mProgressMax, paramBuilder.mProgress, paramBuilder.mProgressIndeterminate);
-    }
-  }
-  
-  static class NotificationCompatImplJellybean
-    implements NotificationCompat.NotificationCompatImpl
-  {
-    public Notification build(NotificationCompat.Builder paramBuilder)
-    {
-      NotificationCompatJellybean localNotificationCompatJellybean = new NotificationCompatJellybean(paramBuilder.mContext, paramBuilder.mNotification, paramBuilder.mContentTitle, paramBuilder.mContentText, paramBuilder.mContentInfo, paramBuilder.mTickerView, paramBuilder.mNumber, paramBuilder.mContentIntent, paramBuilder.mFullScreenIntent, paramBuilder.mLargeIcon, paramBuilder.mProgressMax, paramBuilder.mProgress, paramBuilder.mProgressIndeterminate, paramBuilder.mUseChronometer, paramBuilder.mPriority, paramBuilder.mSubText);
-      Iterator localIterator = paramBuilder.mActions.iterator();
-      while (localIterator.hasNext())
-      {
-        NotificationCompat.Action localAction = (NotificationCompat.Action)localIterator.next();
-        localNotificationCompatJellybean.addAction(localAction.icon, localAction.title, localAction.actionIntent);
-      }
-      if (paramBuilder.mStyle != null)
-      {
-        if (!(paramBuilder.mStyle instanceof NotificationCompat.BigTextStyle)) {
-          break label172;
-        }
-        paramBuilder = (NotificationCompat.BigTextStyle)paramBuilder.mStyle;
-        localNotificationCompatJellybean.addBigTextStyle(paramBuilder.mBigContentTitle, paramBuilder.mSummaryTextSet, paramBuilder.mSummaryText, paramBuilder.mBigText);
-      }
-      for (;;)
-      {
-        return localNotificationCompatJellybean.build();
-        label172:
-        if ((paramBuilder.mStyle instanceof NotificationCompat.InboxStyle))
+        return new NotificationCompat.Action(paramAction.icon, paramAction.title, paramAction.actionIntent, paramAction.getExtras(), arrayOfRemoteInput, null, bool);
+        arrayOfRemoteInput = new RemoteInput[arrayOfRemoteInput1.length];
+        int i = 0;
+        while (i < arrayOfRemoteInput1.length)
         {
-          paramBuilder = (NotificationCompat.InboxStyle)paramBuilder.mStyle;
-          localNotificationCompatJellybean.addInboxStyle(paramBuilder.mBigContentTitle, paramBuilder.mSummaryTextSet, paramBuilder.mSummaryText, paramBuilder.mTexts);
-        }
-        else if ((paramBuilder.mStyle instanceof NotificationCompat.BigPictureStyle))
-        {
-          paramBuilder = (NotificationCompat.BigPictureStyle)paramBuilder.mStyle;
-          localNotificationCompatJellybean.addBigPictureStyle(paramBuilder.mBigContentTitle, paramBuilder.mSummaryTextSet, paramBuilder.mSummaryText, paramBuilder.mPicture, paramBuilder.mBigLargeIcon, paramBuilder.mBigLargeIconSet);
+          android.app.RemoteInput localRemoteInput = arrayOfRemoteInput1[i];
+          arrayOfRemoteInput[i] = new RemoteInput(localRemoteInput.getResultKey(), localRemoteInput.getLabel(), localRemoteInput.getChoices(), localRemoteInput.getAllowFreeFormInput(), localRemoteInput.getExtras(), null);
+          i += 1;
         }
       }
     }
   }
   
-  public static abstract class Style
+  public static int getActionCount(Notification paramNotification)
   {
-    CharSequence mBigContentTitle;
-    NotificationCompat.Builder mBuilder;
-    CharSequence mSummaryText;
-    boolean mSummaryTextSet = false;
-    
-    public Notification build()
-    {
-      Notification localNotification = null;
-      if (this.mBuilder != null) {
-        localNotification = this.mBuilder.build();
-      }
-      return localNotification;
-    }
-    
-    public void setBuilder(NotificationCompat.Builder paramBuilder)
-    {
-      if (this.mBuilder != paramBuilder)
-      {
-        this.mBuilder = paramBuilder;
-        if (this.mBuilder != null) {
-          this.mBuilder.setStyle(this);
-        }
+    int i = 0;
+    if (Build.VERSION.SDK_INT >= 19) {
+      if (paramNotification.actions != null) {
+        i = paramNotification.actions.length;
       }
     }
+    while (Build.VERSION.SDK_INT < 16) {
+      return i;
+    }
+    return NotificationCompatJellybean.getActionCount(paramNotification);
+  }
+  
+  public static int getBadgeIconType(Notification paramNotification)
+  {
+    if (Build.VERSION.SDK_INT >= 26) {
+      return paramNotification.getBadgeIconType();
+    }
+    return 0;
+  }
+  
+  public static String getCategory(Notification paramNotification)
+  {
+    if (Build.VERSION.SDK_INT >= 21) {
+      return paramNotification.category;
+    }
+    return null;
+  }
+  
+  public static String getChannelId(Notification paramNotification)
+  {
+    if (Build.VERSION.SDK_INT >= 26) {
+      return paramNotification.getChannelId();
+    }
+    return null;
+  }
+  
+  public static Bundle getExtras(Notification paramNotification)
+  {
+    if (Build.VERSION.SDK_INT >= 19) {
+      return paramNotification.extras;
+    }
+    if (Build.VERSION.SDK_INT >= 16) {
+      return NotificationCompatJellybean.getExtras(paramNotification);
+    }
+    return null;
+  }
+  
+  public static String getGroup(Notification paramNotification)
+  {
+    if (Build.VERSION.SDK_INT >= 20) {
+      return paramNotification.getGroup();
+    }
+    if (Build.VERSION.SDK_INT >= 19) {
+      return paramNotification.extras.getString("android.support.groupKey");
+    }
+    if (Build.VERSION.SDK_INT >= 16) {
+      return NotificationCompatJellybean.getExtras(paramNotification).getString("android.support.groupKey");
+    }
+    return null;
+  }
+  
+  public static int getGroupAlertBehavior(Notification paramNotification)
+  {
+    if (Build.VERSION.SDK_INT >= 26) {
+      return paramNotification.getGroupAlertBehavior();
+    }
+    return 0;
+  }
+  
+  public static boolean getLocalOnly(Notification paramNotification)
+  {
+    boolean bool = false;
+    if (Build.VERSION.SDK_INT >= 20) {
+      if ((paramNotification.flags & 0x100) != 0) {
+        bool = true;
+      }
+    }
+    do
+    {
+      return bool;
+      if (Build.VERSION.SDK_INT >= 19) {
+        return paramNotification.extras.getBoolean("android.support.localOnly");
+      }
+    } while (Build.VERSION.SDK_INT < 16);
+    return NotificationCompatJellybean.getExtras(paramNotification).getBoolean("android.support.localOnly");
+  }
+  
+  static Notification[] getNotificationArrayFromBundle(Bundle paramBundle, String paramString)
+  {
+    Parcelable[] arrayOfParcelable = paramBundle.getParcelableArray(paramString);
+    if (((arrayOfParcelable instanceof Notification[])) || (arrayOfParcelable == null)) {
+      return (Notification[])arrayOfParcelable;
+    }
+    Notification[] arrayOfNotification = new Notification[arrayOfParcelable.length];
+    int i = 0;
+    while (i < arrayOfParcelable.length)
+    {
+      arrayOfNotification[i] = ((Notification)arrayOfParcelable[i]);
+      i += 1;
+    }
+    paramBundle.putParcelableArray(paramString, arrayOfNotification);
+    return arrayOfNotification;
+  }
+  
+  public static String getShortcutId(Notification paramNotification)
+  {
+    if (Build.VERSION.SDK_INT >= 26) {
+      return paramNotification.getShortcutId();
+    }
+    return null;
+  }
+  
+  public static String getSortKey(Notification paramNotification)
+  {
+    if (Build.VERSION.SDK_INT >= 20) {
+      return paramNotification.getSortKey();
+    }
+    if (Build.VERSION.SDK_INT >= 19) {
+      return paramNotification.extras.getString("android.support.sortKey");
+    }
+    if (Build.VERSION.SDK_INT >= 16) {
+      return NotificationCompatJellybean.getExtras(paramNotification).getString("android.support.sortKey");
+    }
+    return null;
+  }
+  
+  public static long getTimeoutAfter(Notification paramNotification)
+  {
+    if (Build.VERSION.SDK_INT >= 26) {
+      return paramNotification.getTimeoutAfter();
+    }
+    return 0L;
+  }
+  
+  public static boolean isGroupSummary(Notification paramNotification)
+  {
+    boolean bool = false;
+    if (Build.VERSION.SDK_INT >= 20) {
+      if ((paramNotification.flags & 0x200) != 0) {
+        bool = true;
+      }
+    }
+    do
+    {
+      return bool;
+      if (Build.VERSION.SDK_INT >= 19) {
+        return paramNotification.extras.getBoolean("android.support.isGroupSummary");
+      }
+    } while (Build.VERSION.SDK_INT < 16);
+    return NotificationCompatJellybean.getExtras(paramNotification).getBoolean("android.support.isGroupSummary");
   }
 }
 

@@ -1,56 +1,32 @@
-import MyCarrier.Carrier;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.activity.phone.MyBusinessActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mybusiness.MyBusinessManager;
+import android.app.Activity;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
 public class wtu
-  implements View.OnClickListener
+  implements xvl
 {
-  public wtu(ContactListView paramContactListView) {}
-  
-  private void a()
+  public void a(SegmentList paramSegmentList)
   {
-    Context localContext = this.a.getContext();
-    Object localObject = ((MyBusinessManager)this.a.a.getManager(48)).a();
-    if ((localObject == null) || (TextUtils.isEmpty(((Carrier)localObject).carrierURL))) {
-      return;
+    if (!(paramSegmentList instanceof MystoryListView)) {
+      throw new IllegalArgumentException("arg should match type!");
     }
-    localObject = ((Carrier)localObject).carrierURL;
-    Intent localIntent = new Intent(localContext, MyBusinessActivity.class);
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("uin", this.a.a.getCurrentAccountUin());
-    localIntent.putExtra("title", localContext.getString(2131437122));
-    localIntent.putExtra("url", (String)localObject);
-    localIntent.putExtra("hideRightButton", true);
-    this.a.a(localIntent, 1000);
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    case 2131369974: 
-    default: 
-      return;
-    case 2131369975: 
-      ContactListView.a(this.a, true);
-      ContactListView.a(this.a, "P_CliOper", "QQwangting", "txl_close_bluebar", "close_bluebar");
-      return;
-    }
-    ContactListView.a(this.a, true);
-    ContactListView.a(this.a, "P_CliOper", "QQwangting", "txl_clk_bluebar", "clk_bluebar");
-    a();
+    paramSegmentList = (MystoryListView)paramSegmentList;
+    Activity localActivity = paramSegmentList.jdField_a_of_type_AndroidAppActivity;
+    Object localObject = paramSegmentList.jdField_a_of_type_Wtr;
+    boolean bool = paramSegmentList.a();
+    paramSegmentList.a(uqn.a(localActivity, 5));
+    paramSegmentList.a(new wvq(localActivity, (wtr)localObject));
+    paramSegmentList.a(new wvp(localActivity));
+    paramSegmentList.a(new wvg(localActivity));
+    localObject = new wub(localActivity, localActivity, 10, (wtr)localObject, bool);
+    paramSegmentList.a((xvp)localObject);
+    paramSegmentList.a(new wwj(localActivity, "FeedSegment", alud.a(2131707448) + ulg.a + "\n拍摄一段视频，分享眼前的世界", 2130846156, 2130846157));
+    ((wub)localObject).e_(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wtu
  * JD-Core Version:    0.7.0.1
  */

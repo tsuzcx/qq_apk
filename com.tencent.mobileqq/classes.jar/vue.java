@@ -1,37 +1,31 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class vue
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public vue(GameRoomChatPie paramGameRoomChatPie) {}
+  public vue(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    paramIntent.getStringExtra("peerUin");
-    paramIntent.getIntExtra("sessionType", -1);
-    paramContext = paramIntent.getStringExtra("sessionId");
-    if (TextUtils.isEmpty(paramContext)) {}
-    while (!paramContext.startsWith("10-")) {
+    if (!bdin.g(this.a.jdField_a_of_type_AndroidViewView.getContext()))
+    {
+      QQToast.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), 1, 2131694766, 0).a();
       return;
     }
-    this.a.a.c();
-    this.a.j.setEnabled(true);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.werewolf.GameRoomChatPie", 2, "onBind enter room setSoundDisable");
-    }
-    this.a.a.a(false);
+    VideoViewVideoHolder.a(this.a, 2);
+    this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vue
  * JD-Core Version:    0.7.0.1
  */

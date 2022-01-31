@@ -1,35 +1,29 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-
-class xsh
-  implements Animator.AnimatorListener
+public class xsh
 {
-  xsh(xsf paramxsf) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public static Throwable a(String paramString)
   {
-    if ((NewFlowCameraActivity.a(this.a.a) != null) && (NewFlowCameraActivity.b(this.a.a) != null) && (NewFlowCameraActivity.a(this.a.a) != null))
-    {
-      NewFlowCameraActivity.a(this.a.a).setVisibility(8);
-      NewFlowCameraActivity.b(this.a.a).setImageBitmap(this.a.b);
-      NewFlowCameraActivity.b(this.a.a).setVisibility(0);
-      NewFlowCameraActivity.a(this.a.a).setText(NewFlowCameraActivity.c(this.a.a) + "");
-      NewFlowCameraActivity.a(this.a.a).setVisibility(0);
-    }
+    return new NullPointerException(paramString);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public static Throwable a(String paramString, Throwable paramThrowable)
+  {
+    if (paramThrowable == null) {
+      return new IllegalStateException(paramString);
+    }
+    return new IllegalStateException(paramString, paramThrowable);
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public static Throwable b(String paramString, Throwable paramThrowable)
+  {
+    if (paramThrowable == null) {
+      return new Throwable(paramString);
+    }
+    return new Throwable(paramString, paramThrowable);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xsh
  * JD-Core Version:    0.7.0.1
  */

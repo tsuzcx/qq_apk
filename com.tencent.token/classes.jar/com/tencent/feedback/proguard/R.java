@@ -7,12 +7,12 @@ public final class R
   extends j
   implements Cloneable
 {
-  private static Map<String, String> g = new HashMap();
+  private static Map g = new HashMap();
   public long a = 0L;
   public byte b = 0;
   public String c = "";
   public String d = "";
-  public Map<String, String> e = null;
+  public Map e = null;
   private String f = "";
   
   static

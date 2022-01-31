@@ -6,14 +6,14 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class oidb_0x51d$GetAppNoticeRsp
-  extends MessageMicro
+  extends MessageMicro<GetAppNoticeRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "rpt_msg_app_notice" }, new Object[] { null }, GetAppNoticeRsp.class);
-  public final PBRepeatMessageField rpt_msg_app_notice = PBField.initRepeatMessage(oidb_0x51d.AppNoticeInfo.class);
+  public final PBRepeatMessageField<oidb_0x51d.AppNoticeInfo> rpt_msg_app_notice = PBField.initRepeatMessage(oidb_0x51d.AppNoticeInfo.class);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x51d.oidb_0x51d.GetAppNoticeRsp
  * JD-Core Version:    0.7.0.1
  */

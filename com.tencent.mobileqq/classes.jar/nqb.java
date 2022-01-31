@@ -1,22 +1,67 @@
-import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnErrorListener;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTextureImpl;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnErrorListener;
+import android.view.ViewStub;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
+import com.tencent.widget.FadeIconImageView;
 
 public class nqb
-  implements IMediaPlayer.OnErrorListener
+  implements qft
 {
-  public nqb(VideoViewTextureImpl paramVideoViewTextureImpl, IVideoView.OnErrorListener paramOnErrorListener, Object paramObject) {}
+  public nqb(PublicAccountBrowser paramPublicAccountBrowser, String paramString) {}
   
-  public boolean a(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView$OnErrorListener.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTextureImpl, 0, paramInt1, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTextureImpl.a.getCurrentPosition(), String.valueOf(paramInt2), this.jdField_a_of_type_JavaLangObject);
+    if (paramBoolean)
+    {
+      ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser.findViewById(2131375342);
+      if (localViewStub != null)
+      {
+        RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser.findViewById(2131375992);
+        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localRelativeLayout.getLayoutParams();
+        int i = xin.b(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser, 116.0F);
+        localLayoutParams.rightMargin = i;
+        localLayoutParams.leftMargin = i;
+        localRelativeLayout.setLayoutParams(localLayoutParams);
+        PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser, (RIJRedPacketProgressView)localViewStub.inflate());
+        PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser).setVisibility(0);
+        PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser).setOnClickListener(new nqc(this));
+      }
+      if (PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser) != null)
+      {
+        PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser).a();
+        PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser, this.jdField_a_of_type_JavaLangString);
+        PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser);
+        if (!this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser.a) {
+          break label284;
+        }
+        if ((PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser) != null) && (PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser).getVisibility() == 0)) {
+          break label247;
+        }
+        PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser).setImageResource(2130848937);
+        PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser).setVisibility(0);
+        PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser).setVisibility(8);
+      }
+    }
+    for (;;)
+    {
+      PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser).a(2, PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser), this.jdField_a_of_type_JavaLangString);
+      return;
+      label247:
+      PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser).setImageResource(2130848992);
+      PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser).setVisibility(0);
+      PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser).setVisibility(0);
+      continue;
+      label284:
+      PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser).setVisibility(8);
+      PublicAccountBrowser.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser).setVisibility(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nqb
  * JD-Core Version:    0.7.0.1
  */

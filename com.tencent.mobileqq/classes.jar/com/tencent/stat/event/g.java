@@ -5,7 +5,6 @@ import com.tencent.stat.StatSpecifyReportedInfo;
 import com.tencent.stat.common.DeviceInfo;
 import com.tencent.stat.common.StatCommonHelper;
 import com.tencent.stat.common.a;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class g
@@ -27,7 +26,6 @@ public class g
   }
   
   public boolean a(JSONObject paramJSONObject)
-    throws JSONException
   {
     if (this.e != null) {
       paramJSONObject.put("ut", this.e.getUserType());

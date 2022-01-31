@@ -1,16 +1,14 @@
 package com.tencent.token.ui.base;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class bl
-  implements DialogInterface.OnClickListener
+class bl
+  implements Runnable
 {
-  bl(bk parambk) {}
+  bl(LockPatternVerifyView paramLockPatternVerifyView) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    bh.d(this.a.a);
+    LockPatternVerifyView.b(this.a).a();
+    LockPatternVerifyView.b(this.a).c();
   }
 }
 

@@ -1,23 +1,30 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ocr.activity.ScanBaseActivity;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import java.util.HashMap;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.MessageForStarLeague;
 
-public class agcb
-  implements Runnable
+class agcb
+  implements View.OnClickListener
 {
-  public agcb(ScanBaseActivity paramScanBaseActivity) {}
+  agcb(agca paramagca) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(-1003));
-    StatisticCollector.a(BaseApplicationImpl.getContext()).a("", "ocr_entrance", true, 0L, 0L, localHashMap, "", false);
+    MessageForStarLeague localMessageForStarLeague = (MessageForStarLeague)((agcc)aepi.a(paramView)).a;
+    if (!auet.a((BaseActivity)paramView.getContext(), localMessageForStarLeague.actionUrl, localMessageForStarLeague))
+    {
+      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
+      localIntent.putExtra("url", localMessageForStarLeague.actionUrl);
+      paramView.getContext().startActivity(localIntent);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agcb
  * JD-Core Version:    0.7.0.1
  */

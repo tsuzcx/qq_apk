@@ -1,18 +1,30 @@
-import com.tencent.mobileqq.data.QCallRecord;
-import com.tencent.mobileqq.qcall.QCallProxy;
-import java.util.Comparator;
+import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
+import com.tencent.mobileqq.startup.director.StartupDirector;
+import com.tencent.mobileqq.startup.step.SetPermission;
+import java.io.PrintStream;
+import mqq.app.permission.PermissionCallback;
 
 public class gkd
-  implements Comparator
+  implements PermissionCallback
 {
-  public gkd(QCallProxy paramQCallProxy) {}
+  public gkd(SetPermission paramSetPermission) {}
   
-  public int a(QCallRecord paramQCallRecord1, QCallRecord paramQCallRecord2)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramQCallRecord1.type == QCallRecord.TYPE_DATE) {
-      return 0;
+    new PermissionsDialog().a(SetPermission.a(this.a), paramInt, paramArrayOfString, new gke(this));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    if (paramInt == 100) {
+      this.a.a.b();
     }
-    return (int)(paramQCallRecord2.time - paramQCallRecord1.time);
+    for (;;)
+    {
+      System.out.println("success  +++++++++++++++++++++++++++++++");
+      return;
+      this.a.a.a();
+    }
   }
 }
 

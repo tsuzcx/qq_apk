@@ -1,25 +1,24 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.troop.utils.TroopTopicMgr.DoLikeCallback;
-import org.json.JSONObject;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 
-class own
-  implements TroopTopicMgr.DoLikeCallback
+public class own
+  extends BroadcastReceiver
 {
-  own(owi paramowi, int paramInt1, int paramInt2) {}
+  public own(KandianMergeManager paramKandianMergeManager) {}
   
-  public void a(int paramInt, JSONObject paramJSONObject)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramJSONObject = new Bundle();
-    paramJSONObject.putInt("reqType", this.jdField_a_of_type_Int);
-    paramJSONObject.putInt("seq", this.b);
-    paramJSONObject.putInt("errorCode", paramInt);
-    this.jdField_a_of_type_Owi.a.a(60, paramJSONObject);
+    paramContext = owy.a().a();
+    if (paramContext != null) {
+      paramContext.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     own
  * JD-Core Version:    0.7.0.1
  */

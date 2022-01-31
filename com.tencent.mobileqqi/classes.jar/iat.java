@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.ExpandableListView.SavedState;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 public final class iat
-  implements Parcelable.Creator
+  implements DialogInterface.OnDismissListener
 {
-  public ExpandableListView.SavedState a(Parcel paramParcel)
-  {
-    return new ExpandableListView.SavedState(paramParcel, null);
-  }
+  public iat(DialogInterface.OnDismissListener paramOnDismissListener) {}
   
-  public ExpandableListView.SavedState[] a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new ExpandableListView.SavedState[paramInt];
+    if (this.a != null) {
+      this.a.onDismiss(paramDialogInterface);
+    }
   }
 }
 

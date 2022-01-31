@@ -90,56 +90,10 @@ public class WebStorage
     }
     android.webkit.WebStorage.getInstance().setQuotaForOrigin(paramString, paramLong);
   }
-  
-  public static class Origin
-  {
-    private String mOrigin = null;
-    private long mQuota = 0L;
-    private long mUsage = 0L;
-    
-    protected Origin(String paramString)
-    {
-      this.mOrigin = paramString;
-    }
-    
-    protected Origin(String paramString, long paramLong)
-    {
-      this.mOrigin = paramString;
-      this.mQuota = paramLong;
-    }
-    
-    protected Origin(String paramString, long paramLong1, long paramLong2)
-    {
-      this.mOrigin = paramString;
-      this.mQuota = paramLong1;
-      this.mUsage = paramLong2;
-    }
-    
-    public String getOrigin()
-    {
-      return this.mOrigin;
-    }
-    
-    public long getQuota()
-    {
-      return this.mQuota;
-    }
-    
-    public long getUsage()
-    {
-      return this.mUsage;
-    }
-  }
-  
-  @Deprecated
-  public static abstract interface QuotaUpdater
-  {
-    public abstract void updateQuota(long paramLong);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebStorage
  * JD-Core Version:    0.7.0.1
  */

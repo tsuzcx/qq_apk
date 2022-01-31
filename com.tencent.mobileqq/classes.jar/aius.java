@@ -1,17 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.QLifeCommentActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import Wallet.GetRandomHbIdiomReq;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.observer.BusinessObserver;
 
-public class aius
-  implements DialogInterface.OnClickListener
+class aius
+  implements ajfp
 {
-  public aius(QLifeCommentActivity paramQLifeCommentActivity, QQCustomDialog paramQQCustomDialog) {}
+  aius(aiul paramaiul, int paramInt1, int paramInt2, BusinessObserver paramBusinessObserver) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+    if (aiul.a(this.jdField_a_of_type_Aiul) != null)
+    {
+      GetRandomHbIdiomReq localGetRandomHbIdiomReq = new GetRandomHbIdiomReq();
+      localGetRandomHbIdiomReq.makeUin = aiul.a(this.jdField_a_of_type_Aiul).getLongAccountUin();
+      localGetRandomHbIdiomReq.subchannel = this.jdField_a_of_type_Int;
+      localGetRandomHbIdiomReq.sKey = paramString;
+      localGetRandomHbIdiomReq.appid = AppSetting.a();
+      localGetRandomHbIdiomReq.fromType = this.b;
+      localGetRandomHbIdiomReq.platform = 0;
+      localGetRandomHbIdiomReq.qqVersion = "8.3.5";
+      aivh.a(localGetRandomHbIdiomReq, this.jdField_a_of_type_MqqObserverBusinessObserver);
     }
   }
 }

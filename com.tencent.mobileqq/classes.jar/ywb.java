@@ -1,23 +1,29 @@
-import com.tencent.mobileqq.apollo.data.ApolloDress;
-import com.tencent.mobileqq.apollo.store.ApolloResDownloader.OnApolloDownLoadListener;
-import com.tencent.mobileqq.apollo.utils.ApolloGameBasicEventUtil.NotifyDressReady;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.Color;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.troopgift.TroopGiftPanel;
 
-public final class ywb
-  implements ApolloResDownloader.OnApolloDownLoadListener
+public class ywb
+  implements View.OnClickListener
 {
-  public ywb(ApolloGameBasicEventUtil.NotifyDressReady paramNotifyDressReady, long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, ApolloDress paramApolloDress, int[] paramArrayOfInt) {}
+  public ywb(TroopGiftPanel paramTroopGiftPanel) {}
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameBasicEventUtil$NotifyDressReady != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameBasicEventUtil$NotifyDressReady.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentMobileqqApolloDataApolloDress.a, this.jdField_a_of_type_ArrayOfInt, 22);
-    }
+    TroopGiftPanel.a(this.a).setSelected(false);
+    this.a.a.a(-1);
+    TroopGiftPanel.b(this.a).setSelected(true);
+    ((TextView)TroopGiftPanel.b(this.a).findViewById(2131378821)).setTextColor(Color.parseColor("#ffff5b84"));
+    TroopGiftPanel.b(this.a).findViewById(2131379929).setVisibility(0);
+    ((TextView)TroopGiftPanel.a(this.a).findViewById(2131378820)).setTextColor(Color.parseColor("#ff878b99"));
+    TroopGiftPanel.a(this.a).findViewById(2131379938).setVisibility(8);
+    this.a.onTabSelected(this.a.h, TroopGiftPanel.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ywb
  * JD-Core Version:    0.7.0.1
  */

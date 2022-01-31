@@ -1,18 +1,22 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.DeviceInfo;
+import com.tencent.token.cp;
+import com.tencent.token.cw;
+import com.tencent.token.global.RqdApplication;
+import com.tencent.token.utils.w;
 
-final class tg
+class tg
   implements View.OnClickListener
 {
-  tg(OpMsgDisplayActivity paramOpMsgDisplayActivity) {}
+  tg(tf paramtf) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, UtilsQbQdProtectActivity.class);
-    this.a.startActivity(paramView);
+    cw.a().a(0L, tf.a(this.a).dguid, tf.a(this.a).ddes, tf.a(this.a).dappid, tf.a(this.a).dsubappid, tf.a(this.a).dappname, 71, w.a(cp.a(RqdApplication.l()).b()), 523005419, 1, "com.tencent.token", PCMobileQQVerifyedDevicesActivity.access$000(this.a.a), PCMobileQQVerifyedDevicesActivity.access$200(this.a.a));
+    this.a.dismiss();
   }
 }
 

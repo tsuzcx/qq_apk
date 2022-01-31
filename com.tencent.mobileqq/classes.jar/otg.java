@@ -1,64 +1,41 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.util.TroopReportor;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class otg
-  implements AdapterView.OnItemClickListener
+  implements AladdinConfigHandler
 {
-  public otg(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    QRDisplayActivity.a(this.a).b();
-    int i;
-    if ((paramLong == 2L) || (paramLong == 3L)) {
-      if (!WXShareHelper.a().a()) {
-        i = 2131435319;
-      }
-    }
-    for (;;)
+    QLog.d("DefaultFeedsProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = osq.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      if (i != -1)
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("DefaultFeedsProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "default_feeds"))
       {
-        QQToast.a(this.a, this.a.getString(i), 0).b(this.a.getTitleBarHeight());
-        if (this.a.jdField_c_of_type_Int == 2) {
-          if (paramLong != 2L) {
-            break label165;
-          }
-        }
-        label165:
-        for (paramAdapterView = "qr_wechat";; paramAdapterView = "qr_circle")
-        {
-          TroopReportor.a("Grp_share", "grpData_admin", paramAdapterView, 0, 0, new String[] { this.a.jdField_c_of_type_JavaLangString, String.valueOf(this.a.a), "1" });
-          this.a.h = -1;
-          return;
-          if (WXShareHelper.a().b()) {
-            break label230;
-          }
-          i = 2131435320;
-          break;
-        }
+        bkbq.a("default_feeds_proteus_offline_bid", str2);
+        new sft().a("default_feeds");
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("QRDisplayActivity", 2, "onItemClick.chooseChannel: " + paramInt + "," + paramLong);
-      }
-      this.a.h = ((int)paramLong);
-      QRDisplayActivity.a(this.a);
-      return;
-      label230:
-      i = -1;
     }
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    QLog.d("DefaultFeedsProteusBidConfigHandler", 1, "[onWipeConfig]");
+    bkbq.a("default_feeds_proteus_offline_bid", "0");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     otg
  * JD-Core Version:    0.7.0.1
  */

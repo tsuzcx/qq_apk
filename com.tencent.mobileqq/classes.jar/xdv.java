@@ -1,90 +1,60 @@
-import android.text.TextUtils;
-import android.util.Base64;
-import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
-import com.tencent.mobileqq.util.HbThemeConfigManager;
-import java.io.File;
-import java.io.FileInputStream;
-import org.json.JSONObject;
+import android.graphics.PointF;
+import android.support.annotation.NonNull;
 
 public class xdv
-  implements Runnable
 {
-  public xdv(QzoneHbFragment paramQzoneHbFragment, String paramString) {}
+  public final float a;
+  public final int a;
+  public final PointF a;
+  public final String a;
+  public final float b;
+  public final int b;
+  public final float c;
+  public final int c;
+  public final float d;
+  public final int d;
   
-  public void run()
+  public xdv(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, int paramInt1, int paramInt2)
   {
-    Object localObject1 = HbThemeConfigManager.a().a();
-    if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
-    for (;;)
-    {
-      try
-      {
-        localObject1 = new JSONObject(new String(Base64.decode(((String)localObject1).toString(), 0)));
-        if (localObject1 != null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentQzoneHbFragment.a((JSONObject)localObject1);
-          return;
-        }
-      }
-      catch (Exception localException1)
-      {
-        HbThemeConfigManager.a().a("");
-        localException1.printStackTrace();
-      }
-      Object localObject2 = new File(this.jdField_a_of_type_JavaLangString);
-      if (!((File)localObject2).exists()) {
-        continue;
-      }
-      for (;;)
-      {
-        try
-        {
-          localObject4 = new byte[1024];
-          StringBuilder localStringBuilder = new StringBuilder();
-          localObject2 = new FileInputStream((File)localObject2);
-          try
-          {
-            int i = ((FileInputStream)localObject2).read((byte[])localObject4);
-            if (i > 0)
-            {
-              localStringBuilder.append(new String((byte[])localObject4, 0, i));
-              continue;
-              if (localObject2 == null) {}
-            }
-          }
-          catch (Exception localException2) {}
-        }
-        catch (Exception localException3)
-        {
-          Object localObject4;
-          Object localObject3 = null;
-          continue;
-        }
-        try
-        {
-          ((FileInputStream)localObject2).close();
-          localException2.printStackTrace();
-          return;
-          ((FileInputStream)localObject2).close();
-          localObject4 = new JSONObject(new String(Base64.decode(localException2.toString(), 0)));
-          if (localObject4 == null) {
-            break;
-          }
-          HbThemeConfigManager.a().a(localException2.toString());
-          this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentQzoneHbFragment.a((JSONObject)localObject4);
-          return;
-        }
-        catch (Exception localException4)
-        {
-          localException4.printStackTrace();
-        }
-      }
-    }
+    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(paramFloat1, paramFloat2);
+    this.jdField_a_of_type_Float = paramFloat3;
+    this.jdField_b_of_type_Float = paramFloat4;
+    this.jdField_c_of_type_Float = paramFloat5;
+    this.jdField_d_of_type_Float = paramFloat6;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_d_of_type_Int = 0;
+  }
+  
+  public xdv(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(paramFloat1, paramFloat2);
+    this.jdField_a_of_type_Float = paramFloat3;
+    this.jdField_b_of_type_Float = paramFloat4;
+    this.jdField_c_of_type_Float = paramFloat5;
+    this.jdField_d_of_type_Float = paramFloat6;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.jdField_d_of_type_Int = paramInt4;
+  }
+  
+  public static xdv a(@NonNull xdv paramxdv)
+  {
+    return new xdv(paramxdv.jdField_a_of_type_AndroidGraphicsPointF.x, paramxdv.jdField_a_of_type_AndroidGraphicsPointF.y, paramxdv.jdField_a_of_type_Float, paramxdv.jdField_b_of_type_Float, paramxdv.jdField_c_of_type_Float, paramxdv.jdField_d_of_type_Float, paramxdv.jdField_a_of_type_Int, paramxdv.jdField_b_of_type_Int, paramxdv.jdField_a_of_type_JavaLangString, paramxdv.jdField_c_of_type_Int, paramxdv.jdField_d_of_type_Int);
+  }
+  
+  public String toString()
+  {
+    return "LayerParams{centerP=" + this.jdField_a_of_type_AndroidGraphicsPointF + ", scale=" + this.jdField_a_of_type_Float + ", rotate=" + this.jdField_b_of_type_Float + ", translateXValue=" + this.jdField_c_of_type_Float + ", translateYValue=" + this.jdField_d_of_type_Float + ", width=" + this.jdField_a_of_type_Int + ", height=" + this.jdField_b_of_type_Int + ", text='" + this.jdField_a_of_type_JavaLangString + '\'' + ", textColor=" + this.jdField_c_of_type_Int + ", textSize=" + this.jdField_d_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xdv
  * JD-Core Version:    0.7.0.1
  */

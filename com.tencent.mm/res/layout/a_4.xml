@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/yd" android:paddingLeft="20.0dip" android:paddingTop="16.0dip" android:paddingRight="20.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentTop="true">
+        <RelativeLayout android:gravity="center_vertical" android:id="@id/cqi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
+            <com.tencent.mm.plugin.ipcall.ui.IPCallRoundUrlHeadImage android:id="@id/cqj" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="16.0dip" android:textColor="#ff000000" android:id="@id/cqk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="22.0dip" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cql" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_below="@id/cqi" android:layout_alignParentRight="true">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/cqm" android:background="#ffb2b2b2" android:layout_width="@dimen/fs" android:layout_height="38.0dip" android:layout_marginRight="16.0dip" />
+            <Button android:enabled="false" android:textColor="@drawable/s2" android:id="@id/cqn" android:background="@drawable/s1" android:padding="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="58.0dip" android:minHeight="29.0dip" android:text="@string/clr" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/cqo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="22.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="8.0dip" android:layout_toLeftOf="@id/cql" android:layout_below="@id/cqi" android:layout_alignLeft="@id/cqi">
+            <TextView android:textSize="38.0dip" android:textColor="#ff000000" android:id="@id/cqp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textSize="12.0dip" android:textColor="#ffb2b2b2" android:id="@id/cnb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" />
+            <TextView android:textSize="12.0dip" android:textColor="#ffb2b2b2" android:id="@id/cqq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

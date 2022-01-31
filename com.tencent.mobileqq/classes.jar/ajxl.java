@@ -1,47 +1,30 @@
 import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.mobileqq.troopshare.TroopShareUtility;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class ajxl
-  implements ActionSheet.OnButtonClickListener
+  extends ajxt
 {
-  public ajxl(TroopShareUtility paramTroopShareUtility) {}
+  protected final BaseChatPie a;
   
-  public void OnClick(View paramView, int paramInt)
+  public ajxl(BaseChatPie paramBaseChatPie)
   {
-    if (this.a.jdField_b_of_type_Boolean) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopShareUtility", 2, "OnClick.chooseLinkType: " + paramInt);
-    }
-    this.a.jdField_b_of_type_Boolean = true;
-    switch (paramInt)
+    this.a = paramBaseChatPie;
+  }
+  
+  void a(bdpi parambdpi, View paramView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((parambdpi != null) && (parambdpi.a() > 0))
     {
-    default: 
-      this.a.a(false);
-      this.a.jdField_a_of_type_Int = -1;
-      this.a.jdField_b_of_type_Int = -1;
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
-        ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
+      if (this.a == null) {
+        break label43;
       }
-      break;
+      if (this.a.g() < 8) {
+        a(paramView, paramInt1, paramInt2, parambdpi, paramInt3, false);
+      }
     }
-    for (;;)
-    {
-      this.a.jdField_b_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      this.a.a(true);
-      this.a.jdField_b_of_type_Int = 1;
-      TroopShareUtility.a(this.a);
-      continue;
-      this.a.a(true);
-      this.a.jdField_b_of_type_Int = 0;
-      TroopShareUtility.a(this.a);
-    }
+    return;
+    label43:
+    a(paramView, paramInt1, paramInt2, parambdpi, paramInt3, false);
   }
 }
 

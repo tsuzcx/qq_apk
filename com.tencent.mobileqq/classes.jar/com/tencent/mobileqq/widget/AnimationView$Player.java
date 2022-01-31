@@ -13,9 +13,10 @@ public class AnimationView$Player
 {
   public static final int MSG_PLAY = 1;
   final int a;
-  public Handler a;
-  public WeakReference a;
-  final int b = 1;
+  protected Handler a;
+  protected WeakReference<AnimationView> a;
+  final int jdField_b_of_type_Int = 1;
+  boolean jdField_b_of_type_Boolean = false;
   final int c = 2;
   int d = 0;
   int e = 0;
@@ -108,7 +109,7 @@ public class AnimationView$Player
     }
   }
   
-  public void a()
+  protected void a()
   {
     Object localObject = (AnimationView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if ((localObject == null) || (this.d == 2)) {
@@ -132,9 +133,15 @@ public class AnimationView$Player
       this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject, i);
       return;
       label98:
-      if ((this.e == 1) && (this.f == 0)) {
-        ((AnimationView)localObject).jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$MyAnimationListener.onAnimationStart((AnimationView)localObject);
-      } else if (this.d == 2) {
+      if ((this.e == 1) && (this.f == 0))
+      {
+        if (!this.jdField_b_of_type_Boolean)
+        {
+          this.jdField_b_of_type_Boolean = true;
+          ((AnimationView)localObject).jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$MyAnimationListener.onAnimationStart((AnimationView)localObject);
+        }
+      }
+      else if (this.d == 2) {
         ((AnimationView)localObject).jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$MyAnimationListener.onAnimationEnd((AnimationView)localObject);
       }
     }
@@ -180,6 +187,7 @@ public class AnimationView$Player
     this.e = 0;
     this.f = 0;
     this.d = 0;
+    this.jdField_b_of_type_Boolean = false;
   }
   
   public void resume()
@@ -203,7 +211,7 @@ public class AnimationView$Player
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AnimationView.Player
  * JD-Core Version:    0.7.0.1
  */

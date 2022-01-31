@@ -10,15 +10,15 @@ public final class RespGetVisitorList
 {
   static RespHead cache_stHeader;
   static UserCntlData cache_stUserData;
-  static ArrayList cache_vEncounterInfos;
+  static ArrayList<UserProfile> cache_vEncounterInfos;
   public long RespTime;
   public RespHead stHeader;
   public UserCntlData stUserData;
-  public ArrayList vEncounterInfos;
+  public ArrayList<UserProfile> vEncounterInfos;
   
   public RespGetVisitorList() {}
   
-  public RespGetVisitorList(RespHead paramRespHead, long paramLong, ArrayList paramArrayList, UserCntlData paramUserCntlData)
+  public RespGetVisitorList(RespHead paramRespHead, long paramLong, ArrayList<UserProfile> paramArrayList, UserCntlData paramUserCntlData)
   {
     this.stHeader = paramRespHead;
     this.RespTime = paramLong;

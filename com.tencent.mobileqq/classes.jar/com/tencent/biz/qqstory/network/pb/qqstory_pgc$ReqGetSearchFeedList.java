@@ -9,12 +9,12 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class qqstory_pgc$ReqGetSearchFeedList
-  extends MessageMicro
+  extends MessageMicro<ReqGetSearchFeedList>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField ignore_keyword = PBField.initBool(false);
   public final PBBytesField key_word = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField type_list = PBField.initRepeatMessage(qqstory_pgc.SearchType.class);
+  public final PBRepeatMessageField<qqstory_pgc.SearchType> type_list = PBField.initRepeatMessage(qqstory_pgc.SearchType.class);
   
   static
   {
@@ -24,7 +24,7 @@ public final class qqstory_pgc$ReqGetSearchFeedList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_pgc.ReqGetSearchFeedList
  * JD-Core Version:    0.7.0.1
  */

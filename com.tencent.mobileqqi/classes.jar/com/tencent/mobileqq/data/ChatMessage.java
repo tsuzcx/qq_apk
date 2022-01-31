@@ -17,7 +17,7 @@ public abstract class ChatMessage
   public boolean mPendantAnimatable;
   public im_msg_body.RichText richText = null;
   
-  protected abstract void doParse();
+  public abstract void doParse();
   
   public void parse()
   {

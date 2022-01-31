@@ -1,36 +1,20 @@
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebShareUtils;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.VideoInviteActivity;
 
-public class mmu
-  implements DialogInterface.OnDismissListener
+class mmu
+  implements DialogInterface.OnClickListener
 {
-  public mmu(FastWebActivity paramFastWebActivity) {}
+  mmu(mmt parammmt) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Context localContext;
-    if (!FastWebActivity.b(this.a))
-    {
-      localContext = this.a.getApplicationContext();
-      if (!FastWebActivity.a(this.a)) {
-        break label55;
-      }
-    }
-    label55:
-    for (paramDialogInterface = "0X8008994";; paramDialogInterface = "0X800898D")
-    {
-      FastWebShareUtils.a(localContext, paramDialogInterface, 11, FastWebActivity.a(this.a));
-      FastWebActivity.b(this.a, false);
-      return;
-    }
+    this.a.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a(this.a.jdField_a_of_type_Long, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mmu
  * JD-Core Version:    0.7.0.1
  */

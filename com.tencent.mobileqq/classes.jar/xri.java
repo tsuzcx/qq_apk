@@ -1,27 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.biz.qqstory.utils.FileUtils.1;
+import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
 
 public class xri
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public xri(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xri(FileUtils.1 param1) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (NewFlowCameraActivity.b(this.a) != null) {
-      NewFlowCameraActivity.b(this.a).setVisibility(4);
-    }
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new Intent(this.a.a, QQSettingMsgHistoryActivity.class);
+    this.a.a.startActivity(paramDialogInterface);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xri
  * JD-Core Version:    0.7.0.1
  */

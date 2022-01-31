@@ -1,35 +1,28 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.UpdateManager;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import com.tencent.qphone.base.util.QLog;
 
-public class algv
-  implements Runnable
+class algv
+  implements alhe
 {
-  public algv(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
+  algv(algt paramalgt) {}
   
-  public void run()
+  public void a(int paramInt, String paramString)
   {
-    try
+    if (paramInt == 0) {
+      QLog.e("AVEngineWalper", 1, "EnterRoom successfully!!!");
+    }
+    for (;;)
     {
-      if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.h) != null)
-      {
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.k = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.h).mSavePath;
-        UpdateManager.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+      if (this.a.a != null) {
+        this.a.a.b(paramInt, paramString);
       }
       return;
-    }
-    catch (Exception localException)
-    {
-      LogUtility.c(DownloadManager.a, "downloadSDKClient>>>", localException);
+      QLog.e("AVEngineWalper", 1, "enter room failed. result=" + paramInt + ", errorInfo=" + paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     algv
  * JD-Core Version:    0.7.0.1
  */

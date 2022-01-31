@@ -1,20 +1,25 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.utils.QQLSSensor;
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 
-public class til
-  implements Runnable
+class til
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public til(QQLSActivity paramQQLSActivity) {}
+  til(tij paramtij) {}
   
-  public void run()
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.a = new QQLSSensor(this.a.getApplicationContext(), this.a);
-    this.a.a.a();
+    StringBuilder localStringBuilder = new StringBuilder().append("launch mini program ");
+    if (paramBoolean) {}
+    for (String str = "success";; str = "fail")
+    {
+      tlo.d("WSHomeFragmentPresenter", str + ", bundle: " + paramBundle.toString());
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     til
  * JD-Core Version:    0.7.0.1
  */

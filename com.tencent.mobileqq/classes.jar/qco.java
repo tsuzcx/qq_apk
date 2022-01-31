@@ -1,37 +1,21 @@
-import android.bluetooth.BluetoothAdapter;
-import com.tencent.device.qfind.QFindBLEScanMgr;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentNoteCard;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentNotIntrest;
 
 public class qco
-  implements Runnable
+  implements View.OnClickListener
 {
-  public qco(QFindBLEScanMgr paramQFindBLEScanMgr) {}
+  public qco(ComponentContentNoteCard paramComponentContentNoteCard) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      this.a.jdField_a_of_type_Boolean = false;
-    }
-    try
-    {
-      if (this.a.jdField_a_of_type_AndroidBluetoothBluetoothAdapter != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("QFindBLE", 2, "call native mBluetoothAdapter.stopLeScan with cb=" + this.a.jdField_a_of_type_AndroidBluetoothBluetoothAdapter$LeScanCallback + ", mScanning=" + this.a.jdField_a_of_type_Boolean);
-        }
-        this.a.jdField_a_of_type_AndroidBluetoothBluetoothAdapter.stopLeScan(this.a.jdField_a_of_type_AndroidBluetoothBluetoothAdapter$LeScanCallback);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    ComponentContentNoteCard.a(this.a).onClick(ComponentContentNoteCard.a(this.a).a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qco
  * JD-Core Version:    0.7.0.1
  */

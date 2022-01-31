@@ -1,61 +1,80 @@
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
+import android.arch.lifecycle.MutableLiveData;
+import com.tencent.biz.qqcircle.requests.QCircleGetLightInteractRequest;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StLightInteractInfo;
+import feedcloud.FeedCloudRead.StGetLightInteractListRsp;
 import java.util.List;
-import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
-class ubt
-  implements Runnable
+public class ubt
+  extends ubk
 {
-  ubt(ubp paramubp, List paramList) {}
+  public static String a;
+  private MutableLiveData<ubz<List<FeedCloudMeta.StLightInteractInfo>>> a;
+  private String b = "";
   
-  public void run()
+  static
   {
-    Object localObject1 = (TroopManager)this.jdField_a_of_type_Ubp.a.app.getManager(51);
-    TroopInfo localTroopInfo = ((TroopManager)localObject1).a(this.jdField_a_of_type_Ubp.a.b);
-    if (localTroopInfo == null) {
+    jdField_a_of_type_JavaLangString = "QCirclePolyListViewModel";
+  }
+  
+  public ubt()
+  {
+    this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData = new MutableLiveData();
+  }
+  
+  public MutableLiveData<ubz<List<FeedCloudMeta.StLightInteractInfo>>> a()
+  {
+    return this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData;
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(FeedCloudMeta.StFeed paramStFeed, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!paramBoolean1) {
+      this.b = "";
+    }
+    paramStFeed = new QCircleGetLightInteractRequest(paramStFeed, this.b);
+    paramStFeed.setEnableCache(paramBoolean2);
+    this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.setValue(ubz.b());
+    a(paramStFeed, new ubu(this, paramStFeed, paramBoolean1));
+  }
+  
+  public void a(boolean paramBoolean1, long paramLong, boolean paramBoolean2, String paramString, FeedCloudRead.StGetLightInteractListRsp paramStGetLightInteractListRsp)
+  {
+    boolean bool1 = true;
+    boolean bool2 = VSNetworkHelper.a(paramString);
+    if ((!paramBoolean1) || (paramLong != 0L) || (paramStGetLightInteractListRsp == null))
+    {
+      this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.setValue(ubz.a(paramString).b(paramBoolean2));
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilList.size())
+    this.b = paramStGetLightInteractListRsp.attachInfo.get();
+    Object localObject = paramStGetLightInteractListRsp.listInfo.get();
+    if (((List)localObject).size() > 0)
     {
-      if (i == 1)
+      paramString = this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData;
+      localObject = ubz.a(bool2).a(paramBoolean2, localObject);
+      if (paramStGetLightInteractListRsp.isFinish.get() == 1) {}
+      for (paramBoolean1 = bool1;; paramBoolean1 = false)
       {
-        Object localObject2 = (oidb_0x899.memberlist)this.jdField_a_of_type_JavaUtilList.get(0);
-        if ((localObject2 == null) || (!((oidb_0x899.memberlist)localObject2).uint64_member_uin.has())) {
-          break;
-        }
-        localObject2 = String.valueOf(((oidb_0x899.memberlist)localObject2).uint64_member_uin.get());
-        if ((localObject2 != null) && (!"".equals(((String)localObject2).trim()))) {
-          localTroopInfo.troopowneruin = ((String)localObject2).trim();
-        }
-      }
-      ((TroopManager)localObject1).b(localTroopInfo);
-      localObject1 = (TroopHandler)this.jdField_a_of_type_Ubp.a.app.a(20);
-      if (localObject1 == null) {
-        break;
-      }
-      try
-      {
-        ((TroopHandler)localObject1).a(Long.parseLong(this.jdField_a_of_type_Ubp.a.b), 0L, 2, 0, 0);
+        paramString.setValue(((ubz)localObject).c(paramBoolean1));
         return;
       }
-      catch (Exception localException) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("TroopMemberListActivityget_troop_member", 2, localException.toString());
-      return;
     }
+    this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.setValue(ubz.a().b(paramBoolean2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ubt
  * JD-Core Version:    0.7.0.1
  */

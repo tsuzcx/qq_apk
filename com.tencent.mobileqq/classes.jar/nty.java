@@ -1,33 +1,28 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.QQStoryTakeVideoHelper;
-import com.tencent.biz.qqstory.storyHome.QQStoryTakeVideoHelper.GenerateManifestCallback;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.reactive.SimpleObserver;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class nty
-  extends SimpleObserver
+class nty
+  implements bdbc
 {
-  public nty(QQStoryTakeVideoHelper paramQQStoryTakeVideoHelper, QQStoryTakeVideoHelper.GenerateManifestCallback paramGenerateManifestCallback) {}
+  nty(ntw paramntw) {}
   
-  public void a(Void paramVoid)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    super.onNext(paramVoid);
-    SLog.b("QQStoryTakeVideoHelper", "generate video manifest success.");
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryTakeVideoHelper.a = 2;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryTakeVideoHelper$GenerateManifestCallback.a();
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    SLog.e("QQStoryTakeVideoHelper", "generate video manifest failed.");
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryTakeVideoHelper.a = -1;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryTakeVideoHelper$GenerateManifestCallback.b();
+    if ((!TextUtils.isEmpty(paramString)) && (paramBitmap != null))
+    {
+      Intent localIntent = new Intent("action_decode_finish");
+      localIntent.putExtra("bitmap", paramBitmap);
+      localIntent.putExtra("uin", paramString);
+      BaseApplicationImpl.getContext().sendBroadcast(localIntent);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nty
  * JD-Core Version:    0.7.0.1
  */

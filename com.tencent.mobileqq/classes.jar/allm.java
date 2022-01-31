@@ -1,17 +1,19 @@
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.qidian.PhotoWallViewForQiDianProfile.PhotoAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class allm
+class allm
+  implements View.OnClickListener
 {
-  public TextView a;
-  public URLImageView a;
+  allm(allk paramallk) {}
   
-  public allm(PhotoWallViewForQiDianProfile.PhotoAdapter paramPhotoAdapter) {}
+  public void onClick(View paramView)
+  {
+    this.a.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     allm
  * JD-Core Version:    0.7.0.1
  */

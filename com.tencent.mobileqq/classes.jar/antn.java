@@ -1,34 +1,78 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
-import com.tencent.biz.qqstory.network.request.GetLocationRequest;
-import com.tencent.biz.qqstory.network.response.GetLocationResponse;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
+import java.util.List;
 
 public class antn
-  implements CmdTaskManger.CommandCallback
+  extends antj
 {
-  public antn(EditVideoFilterNeo paramEditVideoFilterNeo) {}
+  private float a;
+  private float b = -1.0F;
+  private float c = -1.0F;
+  float[] d = new float[3];
+  private float[] e = new float[16];
   
-  public void a(@NonNull GetLocationRequest paramGetLocationRequest, @Nullable GetLocationResponse paramGetLocationResponse, @NonNull ErrorMessage paramErrorMessage)
+  public antn(Context paramContext, int paramInt, SensorManager paramSensorManager, antb paramantb)
   {
-    SLog.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress Cmd Respond.");
-    if ((paramErrorMessage.isSuccess()) && (paramGetLocationResponse != null))
+    super(paramContext, paramInt, paramSensorManager, paramantb);
+    this.jdField_a_of_type_Float = -1.0F;
+    if (paramSensorManager.getDefaultSensor(3) != null)
     {
-      SLog.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond success : %s .", paramGetLocationResponse.toString());
-      paramGetLocationRequest = new AddressDataProvider.AddressInfo(paramGetLocationResponse.a, paramGetLocationResponse.c, paramGetLocationResponse.d, paramGetLocationResponse.e, paramGetLocationResponse.f, paramGetLocationRequest.d, paramGetLocationRequest.e);
-      this.a.a(0, paramGetLocationRequest);
+      this.jdField_a_of_type_JavaUtilList.add(paramSensorManager.getDefaultSensor(3));
       return;
     }
-    SLog.e("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond failed : %s .", new Object[] { paramErrorMessage.toString() });
+    throw new OrientationProviderNotFound(String.valueOf(3));
+  }
+  
+  private void a(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    if (this.jdField_a_of_type_Antb == null) {
+      return;
+    }
+    if (Math.abs(paramFloat1 - this.jdField_a_of_type_Float) > 1.0F)
+    {
+      this.jdField_a_of_type_Float = paramFloat1;
+      this.jdField_a_of_type_Antb.updateAzimuth(paramFloat1);
+    }
+    if (Math.abs(paramFloat2 - this.b) > 1.0F)
+    {
+      this.b = paramFloat2;
+      this.jdField_a_of_type_Antb.updatePitch(paramFloat2);
+    }
+    if (Math.abs(paramFloat3 - this.c) > 1.0F)
+    {
+      this.c = paramFloat3;
+      this.jdField_a_of_type_Antb.updateRoll(paramFloat3);
+    }
+    this.jdField_a_of_type_Antb.updateSensor(paramFloat1, paramFloat2, paramFloat3);
+  }
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    if (paramSensorEvent.sensor.getType() == 3)
+    {
+      System.arraycopy(paramSensorEvent.values, 0, this.jdField_a_of_type_ArrayOfFloat, 0, 3);
+      if (this.jdField_a_of_type_Int != 1)
+      {
+        this.d[0] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[0]));
+        this.d[1] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[1]));
+        this.d[2] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[2]));
+        antd.a(antd.a(this.d), this.e);
+        super.a(this.e);
+      }
+    }
+    else
+    {
+      return;
+    }
+    a(this.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[2]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     antn
  * JD-Core Version:    0.7.0.1
  */

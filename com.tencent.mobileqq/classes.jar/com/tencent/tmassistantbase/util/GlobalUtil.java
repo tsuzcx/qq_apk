@@ -1,5 +1,7 @@
 package com.tencent.tmassistantbase.util;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -9,65 +11,72 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
+import android.net.Uri.Builder;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemProperties;
 import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import com.tencent.tmassistant.common.jce.BoutiqueGameConfig;
 import java.io.File;
 import java.io.IOException;
+import java.net.NetworkInterface;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collections;
+import java.util.Date;
 import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class GlobalUtil
 {
+  public static final String DEFAULT_MAC_ADDRESS = "02:00:00:00:00:00";
   public static final int DEF_INT = 0;
-  public static final long DEF_LONG = 0L;
   public static final String DEF_STRING = "empty";
   protected static final String SharedPreferencesName = "TMAssistantSDKSharedPreference";
   protected static final String TAG = GlobalUtil.class.getSimpleName();
   protected static final String UN_DEFINED = "NA";
-  protected static String mDevicedId = "NA";
+  protected static String mDevicedId;
   protected static GlobalUtil mInstance = null;
   protected static int mMemUUID = 0;
-  public final int JCE_CMDID_Empty = 0;
-  public final int JCE_CMDID_GetAppSimpleDetail = 5;
-  public final int JCE_CMDID_GetAppUpdate = 3;
-  public final int JCE_CMDID_GetAuthorized = 4;
-  public final int JCE_CMDID_GetCallerSetting = 6;
-  public final int JCE_CMDID_GetConfig = 7;
-  public final int JCE_CMDID_GetHalleyUrl = 10;
-  public final int JCE_CMDID_GetSettings = 2;
-  public final int JCE_CMDID_ReportLog = 1;
-  public final int JCE_CMDID_StatReport = 9;
+  private static String mQImei;
+  private static String mQadid;
+  private static long sUin;
+  public static ThreadLocal<SimpleDateFormat> yyyyMMddHHTimeFormat = new j();
+  public static ThreadLocal<SimpleDateFormat> yyyyMMddTimeFormat;
   protected Context mContext;
-  public HashMap<Integer, String> mJCECmdIdMap = null;
   private String mMACAdress = null;
   public String mQUA = "";
   
+  static
+  {
+    mDevicedId = "";
+    sUin = 0L;
+    mQImei = "";
+    mQadid = "";
+    yyyyMMddTimeFormat = new i();
+  }
+  
   protected GlobalUtil()
   {
-    this.mJCECmdIdMap.put(Integer.valueOf(1), "ReportLog");
-    this.mJCECmdIdMap.put(Integer.valueOf(2), "GetSettings");
-    this.mJCECmdIdMap.put(Integer.valueOf(3), "GetAppUpdate");
-    this.mJCECmdIdMap.put(Integer.valueOf(4), "GetAuthorized");
-    this.mJCECmdIdMap.put(Integer.valueOf(5), "GetAppSimpleDetail");
-    this.mJCECmdIdMap.put(Integer.valueOf(6), "GetCallerSetting");
-    this.mJCECmdIdMap.put(Integer.valueOf(7), "GetConfig");
-    this.mJCECmdIdMap.put(Integer.valueOf(9), "StatReport");
-    this.mJCECmdIdMap.put(Integer.valueOf(10), "GetHalleyUrl");
+    try
+    {
+      ab.c(TAG, "isMIUI:" + isMIUI());
+      return;
+    }
+    catch (Throwable localThrowable) {}
   }
   
   public static ArrayList<String> String2List(String paramString)
@@ -188,12 +197,12 @@ public class GlobalUtil
     try
     {
       paramString.delete();
-      r.c("GlobalUtil", "deleteDB");
+      ab.c("GlobalUtil", "deleteDB");
       return;
     }
     catch (Exception paramString)
     {
-      r.c("GlobalUtil", "deleteDB failed");
+      ab.c("GlobalUtil", "deleteDB failed");
     }
   }
   
@@ -241,6 +250,24 @@ public class GlobalUtil
     return 0;
   }
   
+  public static String getCurrentDay()
+  {
+    Date localDate = new Date();
+    return ((SimpleDateFormat)yyyyMMddTimeFormat.get()).format(localDate);
+  }
+  
+  public static String getDay(long paramLong)
+  {
+    Date localDate = new Date(paramLong);
+    return ((SimpleDateFormat)yyyyMMddTimeFormat.get()).format(localDate);
+  }
+  
+  public static String getDayAndHour(long paramLong)
+  {
+    Date localDate = new Date(paramLong);
+    return ((SimpleDateFormat)yyyyMMddHHTimeFormat.get()).format(localDate);
+  }
+  
   public static GlobalUtil getInstance()
   {
     try
@@ -260,6 +287,70 @@ public class GlobalUtil
       return 0;
     }
     return paramInteger.intValue();
+  }
+  
+  private String getMacAddressNew()
+  {
+    try
+    {
+      Object localObject1 = Collections.list(NetworkInterface.getNetworkInterfaces()).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        Object localObject2 = (NetworkInterface)((Iterator)localObject1).next();
+        if (((NetworkInterface)localObject2).getName().equalsIgnoreCase("wlan0"))
+        {
+          localObject1 = ((NetworkInterface)localObject2).getHardwareAddress();
+          if (localObject1 == null) {
+            return null;
+          }
+          localObject2 = new StringBuilder();
+          int j = localObject1.length;
+          int i = 0;
+          while (i < j)
+          {
+            ((StringBuilder)localObject2).append(String.format("%02X:", new Object[] { Byte.valueOf(localObject1[i]) }));
+            i += 1;
+          }
+          if (((StringBuilder)localObject2).length() > 0) {
+            ((StringBuilder)localObject2).deleteCharAt(((StringBuilder)localObject2).length() - 1);
+          }
+          localObject1 = ((StringBuilder)localObject2).toString();
+          return localObject1;
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return null;
+  }
+  
+  private String getMacAddressOld()
+  {
+    if (this.mContext == null) {
+      return null;
+    }
+    if (!TextUtils.isEmpty(this.mMACAdress)) {
+      return this.mMACAdress;
+    }
+    try
+    {
+      Object localObject = ((WifiManager)getContext().getSystemService("wifi")).getConnectionInfo();
+      if (localObject != null)
+      {
+        this.mMACAdress = ((WifiInfo)localObject).getMacAddress();
+        return this.mMACAdress;
+      }
+      this.mMACAdress = "EMPTY";
+      localObject = this.mMACAdress;
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      ab.c(TAG, "getMacAddress Exception:", localException);
+    }
+    return "";
   }
   
   public static int getMemUUID()
@@ -283,77 +374,77 @@ public class GlobalUtil
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: invokestatic 200	com/tencent/tmassistantbase/util/GlobalUtil:getInstance	()Lcom/tencent/tmassistantbase/util/GlobalUtil;
-    //   6: invokevirtual 204	com/tencent/tmassistantbase/util/GlobalUtil:getContext	()Landroid/content/Context;
+    //   3: invokestatic 183	com/tencent/tmassistantbase/util/GlobalUtil:getInstance	()Lcom/tencent/tmassistantbase/util/GlobalUtil;
+    //   6: invokevirtual 187	com/tencent/tmassistantbase/util/GlobalUtil:getContext	()Landroid/content/Context;
     //   9: astore_0
     //   10: aload_0
     //   11: ifnonnull +11 -> 22
-    //   14: ldc 65
+    //   14: ldc 53
     //   16: astore_0
     //   17: ldc 2
     //   19: monitorexit
     //   20: aload_0
     //   21: areturn
     //   22: aload_0
-    //   23: ldc_w 273
-    //   26: invokevirtual 277	android/content/Context:checkCallingOrSelfPermission	(Ljava/lang/String;)I
+    //   23: ldc_w 355
+    //   26: invokevirtual 359	android/content/Context:checkCallingOrSelfPermission	(Ljava/lang/String;)I
     //   29: ifeq +16 -> 45
-    //   32: ldc 65
+    //   32: ldc 53
     //   34: astore_0
     //   35: goto -18 -> 17
     //   38: astore_0
-    //   39: ldc 65
+    //   39: ldc 53
     //   41: astore_0
     //   42: goto -25 -> 17
     //   45: aload_0
-    //   46: ldc_w 279
-    //   49: invokevirtual 283	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   52: checkcast 285	android/net/ConnectivityManager
+    //   46: ldc_w 361
+    //   49: invokevirtual 333	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   52: checkcast 363	android/net/ConnectivityManager
     //   55: astore_0
     //   56: aload_0
-    //   57: invokevirtual 289	android/net/ConnectivityManager:getActiveNetworkInfo	()Landroid/net/NetworkInfo;
+    //   57: invokevirtual 367	android/net/ConnectivityManager:getActiveNetworkInfo	()Landroid/net/NetworkInfo;
     //   60: astore_0
     //   61: aload_0
     //   62: ifnonnull +25 -> 87
-    //   65: ldc 65
+    //   65: ldc 53
     //   67: astore_0
     //   68: goto -51 -> 17
     //   71: astore_0
-    //   72: getstatic 53	com/tencent/tmassistantbase/util/GlobalUtil:TAG	Ljava/lang/String;
+    //   72: getstatic 47	com/tencent/tmassistantbase/util/GlobalUtil:TAG	Ljava/lang/String;
     //   75: aload_0
-    //   76: invokevirtual 292	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   79: invokestatic 295	com/tencent/tmassistantbase/util/r:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   76: invokevirtual 370	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   79: invokestatic 373	com/tencent/tmassistantbase/util/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   82: aconst_null
     //   83: astore_0
     //   84: goto -23 -> 61
     //   87: aload_0
-    //   88: invokevirtual 300	android/net/NetworkInfo:getType	()I
+    //   88: invokevirtual 378	android/net/NetworkInfo:getType	()I
     //   91: iconst_1
     //   92: if_icmpne +10 -> 102
-    //   95: ldc_w 302
+    //   95: ldc_w 329
     //   98: astore_0
     //   99: goto -82 -> 17
     //   102: aload_0
-    //   103: invokevirtual 305	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
+    //   103: invokevirtual 381	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
     //   106: astore_0
     //   107: aload_0
     //   108: ifnonnull +9 -> 117
-    //   111: ldc 65
+    //   111: ldc 53
     //   113: astore_0
     //   114: goto -97 -> 17
     //   117: aload_0
-    //   118: invokevirtual 308	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   118: invokevirtual 384	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   121: astore_0
-    //   122: getstatic 53	com/tencent/tmassistantbase/util/GlobalUtil:TAG	Ljava/lang/String;
-    //   125: new 310	java/lang/StringBuilder
+    //   122: getstatic 47	com/tencent/tmassistantbase/util/GlobalUtil:TAG	Ljava/lang/String;
+    //   125: new 83	java/lang/StringBuilder
     //   128: dup
-    //   129: invokespecial 311	java/lang/StringBuilder:<init>	()V
-    //   132: ldc_w 313
-    //   135: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   129: invokespecial 84	java/lang/StringBuilder:<init>	()V
+    //   132: ldc_w 386
+    //   135: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   138: aload_0
-    //   139: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   142: invokevirtual 317	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   145: invokestatic 320	com/tencent/tmassistantbase/util/r:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   139: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   142: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   145: invokestatic 389	com/tencent/tmassistantbase/util/ab:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   148: goto -131 -> 17
     //   151: astore_0
     //   152: ldc 2
@@ -397,6 +488,24 @@ public class GlobalUtil
     return i + "";
   }
   
+  public static long getUin()
+  {
+    if (sUin != 0L) {
+      return sUin;
+    }
+    try
+    {
+      sUin = Long.valueOf((String)w.a(w.a(w.a("com.tencent.common.app.BaseApplicationImpl").b("sApplication")).d("getRuntime").a()).d("getAccount").a()).longValue();
+      long l = sUin;
+      return l;
+    }
+    catch (Throwable localThrowable)
+    {
+      ab.e(TAG, localThrowable.getMessage());
+    }
+    return 0L;
+  }
+  
   public static String getUserId(String paramString)
   {
     String str = paramString;
@@ -411,12 +520,29 @@ public class GlobalUtil
     return (getInstance().getContext() != null) && (getInstance().getContext().getDatabasePath(paramString).exists());
   }
   
+  public static boolean isMIUI()
+  {
+    try
+    {
+      if (!TextUtils.isEmpty(SystemProperties.get("ro.miui.ui.version.name", null))) {
+        return true;
+      }
+      if (Build.MANUFACTURER != null)
+      {
+        boolean bool = replaceBlank(Build.MANUFACTURER).toLowerCase().contains("xiaomi");
+        return bool;
+      }
+    }
+    catch (Throwable localThrowable) {}
+    return false;
+  }
+  
   public static boolean isNetworkConncted()
   {
     Object localObject1 = getInstance().getContext();
     if (localObject1 == null)
     {
-      r.d(TAG, "GlobalUtil.getInstance().getContext() == null.");
+      ab.d(TAG, "GlobalUtil.getInstance().getContext() == null.");
       return false;
     }
     localObject1 = (ConnectivityManager)((Context)localObject1).getSystemService("connectivity");
@@ -433,7 +559,7 @@ public class GlobalUtil
     {
       for (;;)
       {
-        r.e(TAG, localException.getMessage());
+        ab.e(TAG, localException.getMessage());
         Object localObject2 = null;
         continue;
         boolean bool = false;
@@ -470,6 +596,20 @@ public class GlobalUtil
     return true;
   }
   
+  public static boolean isRecommendGame(String paramString)
+  {
+    BoutiqueGameConfig localBoutiqueGameConfig = (BoutiqueGameConfig)com.tencent.tmdownloader.internal.storage.b.a().a("key_recommend_games_config", BoutiqueGameConfig.class);
+    if ((localBoutiqueGameConfig != null) && (localBoutiqueGameConfig.pkgList != null) && (localBoutiqueGameConfig.pkgList.size() != 0))
+    {
+      ab.c("nemo_bgg", "<isRecommendGame> CONFIG_RECOMMEND_GAMES  size = " + localBoutiqueGameConfig.pkgList.size() + "\ncontent=" + localBoutiqueGameConfig.pkgList);
+      boolean bool = localBoutiqueGameConfig.pkgList.contains(paramString);
+      ab.c("nemo_bgg", "<isRecommendGame> " + paramString + " is bgg：" + bool);
+      return bool;
+    }
+    ab.e("nemo_bgg", "<isRecommendGame> CONFIG_RECOMMEND_GAMES error, boutiqueGameConfig is null!");
+    return false;
+  }
+  
   public static boolean isVivo()
   {
     return replaceBlank((Build.MANUFACTURER + "-" + Build.MODEL).toLowerCase()).contains("vivo");
@@ -482,6 +622,55 @@ public class GlobalUtil
       str = Pattern.compile("\\s*|\t|\r|\n").matcher(paramString).replaceAll("");
     }
     return str;
+  }
+  
+  public static void setClipboardCMD(Context paramContext, String paramString, long paramLong1, long paramLong2)
+  {
+    com.tencent.tmassistantbase.util.b.b.a(TAG, "setClipboardCMD taskTmast:" + paramString + ", startTime=" + paramLong1 + ", endTime=" + paramLong2);
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    Object localObject = Uri.parse(paramString);
+    paramString = ((Uri)localObject).buildUpon();
+    paramLong2 -= paramLong1;
+    if (paramLong2 >= 300000L) {}
+    for (;;)
+    {
+      paramString.appendQueryParameter("clipboard_start_time", "" + paramLong1);
+      paramString.appendQueryParameter("clipboard_expiry_time", "" + paramLong2);
+      try
+      {
+        if (TextUtils.isEmpty(((Uri)localObject).getQueryParameter("hostpname")))
+        {
+          localObject = getAppPackageName(paramContext);
+          String str = "" + getAppVersionCode(paramContext);
+          paramString.appendQueryParameter("hostpname", (String)localObject);
+          paramString.appendQueryParameter("hostversioncode", str);
+        }
+        setPlainTextToClipboard(paramContext, "$" + paramString.build().toString() + "$");
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        for (;;)
+        {
+          com.tencent.tmassistantbase.util.b.b.a(TAG, "setClipboardCMD hostpname set failed.", localThrowable);
+        }
+      }
+      paramLong2 = 1800000L;
+    }
+  }
+  
+  public static void setPlainTextToClipboard(Context paramContext, String paramString)
+  {
+    paramContext = (ClipboardManager)paramContext.getSystemService("clipboard");
+    if (paramContext == null)
+    {
+      com.tencent.tmassistantbase.util.b.b.b(TAG, "cm is null!");
+      return;
+    }
+    paramContext.setPrimaryClip(ClipData.newPlainText("", paramString));
+    com.tencent.tmassistantbase.util.b.b.a(TAG, "setPlainTextToClipboard plainText:" + paramString);
   }
   
   public static void updateFilePathAuthorized(String paramString)
@@ -531,9 +720,24 @@ public class GlobalUtil
     }
     catch (Exception localException)
     {
-      r.c(TAG, "getAndroidIdInPhone Exception:", localException);
+      ab.c(TAG, "getAndroidIdInPhone Exception:", localException);
     }
     return "";
+  }
+  
+  public int getAppVersionCode()
+  {
+    if (this.mContext == null) {
+      return 0;
+    }
+    String str = this.mContext.getPackageName();
+    try
+    {
+      int i = this.mContext.getPackageManager().getPackageInfo(str, 0).versionCode;
+      return i;
+    }
+    catch (Exception localException) {}
+    return 0;
   }
   
   public String getBrand()
@@ -550,18 +754,15 @@ public class GlobalUtil
   {
     try
     {
-      if (this.mContext == null) {
-        return null;
-      }
-      if ((mDevicedId != null) && (mDevicedId.equals("NA"))) {
-        mDevicedId = ((TelephonyManager)getContext().getSystemService("phone")).getDeviceId();
+      if (TextUtils.isEmpty(mDevicedId)) {
+        mDevicedId = (String)w.a("com.tencent.open.appcommon.js.AppInterface").d("getImei").a();
       }
       String str = mDevicedId;
       return str;
     }
     catch (Exception localException)
     {
-      r.c(TAG, "getImei Exception:", localException);
+      ab.c(TAG, "getImei Exception:", localException);
     }
     return null;
   }
@@ -573,65 +774,31 @@ public class GlobalUtil
       if (this.mContext == null) {
         return null;
       }
-      String str = ((TelephonyManager)getContext().getSystemService("phone")).getSubscriberId();
+      String str = (String)w.a("com.tencent.open.appcommon.js.AppInterface").d("getImsi").a();
       return str;
     }
     catch (Exception localException)
     {
-      r.c(TAG, "getImsi Exception:", localException);
+      ab.c(TAG, "getImsi Exception:", localException);
     }
     return null;
   }
   
-  public int getJceCmdIdByClassName(String paramString)
-  {
-    if (paramString == null) {
-      return 0;
-    }
-    if (this.mJCECmdIdMap != null)
-    {
-      Iterator localIterator = this.mJCECmdIdMap.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (Map.Entry)localIterator.next();
-        if (localObject != null)
-        {
-          Integer localInteger = (Integer)((Map.Entry)localObject).getKey();
-          localObject = (String)((Map.Entry)localObject).getValue();
-          if ((localObject != null) && (((String)localObject).equals(paramString))) {
-            return localInteger.intValue();
-          }
-        }
-      }
-    }
-    return 0;
-  }
-  
   public String getMacAddress()
   {
-    if (this.mContext == null) {
-      return null;
-    }
-    if (!TextUtils.isEmpty(this.mMACAdress)) {
-      return this.mMACAdress;
-    }
-    try
+    String str2 = getMacAddressOld();
+    String str1;
+    if ((!TextUtils.isEmpty(str2)) && (!"02:00:00:00:00:00".equalsIgnoreCase(str2)))
     {
-      Object localObject = ((WifiManager)getContext().getSystemService("wifi")).getConnectionInfo();
-      if (localObject != null)
-      {
-        this.mMACAdress = ((WifiInfo)localObject).getMacAddress();
-        return this.mMACAdress;
-      }
-      this.mMACAdress = "EMPTY";
-      localObject = this.mMACAdress;
-      return localObject;
+      str1 = str2;
+      if (!"EMPTY".equalsIgnoreCase(str2)) {}
     }
-    catch (Exception localException)
+    else
     {
-      r.c(TAG, "getMacAddress Exception:", localException);
+      str1 = getMacAddressNew();
     }
-    return "";
+    ab.c(TAG, "address:" + str1);
+    return str1;
   }
   
   public String getManufacture()
@@ -656,7 +823,7 @@ public class GlobalUtil
     }
     catch (Exception localException)
     {
-      r.c(TAG, "getNetworkOperator Exception:", localException);
+      ab.c(TAG, "getNetworkOperator Exception:", localException);
     }
     return "";
   }
@@ -673,7 +840,7 @@ public class GlobalUtil
     }
     catch (Exception localException)
     {
-      r.c(TAG, "getNetworkType Exception:", localException);
+      ab.c(TAG, "getNetworkType Exception:", localException);
     }
     return 0;
   }
@@ -683,7 +850,7 @@ public class GlobalUtil
     if (this.mContext == null) {
       return "";
     }
-    SharedPreferences localSharedPreferences = this.mContext.getSharedPreferences("TMAssistantSDKSharedPreference", 0);
+    SharedPreferences localSharedPreferences = this.mContext.getSharedPreferences("TMAssistantSDKSharedPreference", 4);
     if (localSharedPreferences != null) {
       return localSharedPreferences.getString("TMAssistantSDKPhoneGUID", "");
     }
@@ -698,20 +865,20 @@ public class GlobalUtil
   public int getQQDownloaderAPILevel()
   {
     if (this.mContext == null) {
-      r.c("SelfUpdateSDK", "context == null");
+      ab.c("SelfUpdateSDK", "context == null");
     }
     for (;;)
     {
       return 0;
-      r.c("SelfUpdateSDK", "getQQDownloaderAPILevel");
+      ab.c("SelfUpdateSDK", "getQQDownloaderAPILevel");
       try
       {
         ApplicationInfo localApplicationInfo = this.mContext.getPackageManager().getApplicationInfo("com.tencent.android.qqdownloader", 128);
-        r.c("SelfUpdateSDK", "appInfo:" + localApplicationInfo);
+        ab.c("SelfUpdateSDK", "appInfo:" + localApplicationInfo);
         if ((localApplicationInfo != null) && (localApplicationInfo.metaData != null))
         {
           int i = localApplicationInfo.metaData.getInt("com.tencent.android.qqdownloader.sdk.apilevel");
-          r.c("SelfUpdateSDK", "apiLevel:" + i);
+          ab.c("SelfUpdateSDK", "apiLevel:" + i);
           return i;
         }
       }
@@ -723,20 +890,20 @@ public class GlobalUtil
   public int getQQDownloaderConnectLevel()
   {
     if (this.mContext == null) {
-      r.c("SelfUpdateSDK", "context == null");
+      ab.c("SelfUpdateSDK", "context == null");
     }
     for (;;)
     {
       return 0;
-      r.c("SelfUpdateSDK", "getQQDownloaderConnectLevel");
+      ab.c("SelfUpdateSDK", "getQQDownloaderConnectLevel");
       try
       {
         ApplicationInfo localApplicationInfo = this.mContext.getPackageManager().getApplicationInfo("com.tencent.android.qqdownloader", 128);
-        r.c("SelfUpdateSDK", "appInfo:" + localApplicationInfo);
+        ab.c("SelfUpdateSDK", "appInfo:" + localApplicationInfo);
         if ((localApplicationInfo != null) && (localApplicationInfo.metaData != null))
         {
           int i = localApplicationInfo.metaData.getInt("com.tencent.android.qqdownloader.sdk.connectlevel");
-          r.c("SelfUpdateSDK", "apiLevel:" + i);
+          ab.c("SelfUpdateSDK", "apiLevel:" + i);
           return i;
         }
       }
@@ -784,6 +951,41 @@ public class GlobalUtil
     }
   }
   
+  public String getQadid()
+  {
+    if ((!TextUtils.isEmpty(mQadid)) || (this.mContext == null))
+    {
+      ab.c(TAG, ">getQadid " + mQadid);
+      return mQadid;
+    }
+    mQadid = t.a(this.mContext.getApplicationContext());
+    ab.c(TAG, ">getQadid " + mQadid);
+    return mQadid;
+  }
+  
+  public String getQimei()
+  {
+    if ((!TextUtils.isEmpty(mQImei)) || (this.mContext == null))
+    {
+      ab.c(TAG, ">getQimei" + mQImei);
+      return mQImei;
+    }
+    try
+    {
+      w.a("com.tencent.beacon.event.UserAction").a("initUserAction", new Object[] { this.mContext.getApplicationContext() });
+      mQImei = (String)w.a("com.tencent.beacon.event.UserAction").d("getQIMEI").a();
+      ab.c(TAG, ">getQimei" + mQImei);
+      return mQImei;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        ab.e(TAG, ">getQimei" + localThrowable.getMessage());
+      }
+    }
+  }
+  
   public int getScreenHeight()
   {
     if (this.mContext != null) {
@@ -804,10 +1006,10 @@ public class GlobalUtil
   {
     if (getInstance().getContext() == null)
     {
-      r.d(TAG, "GlobalUtil.getInstance().getContext() == null.");
+      ab.d(TAG, "GlobalUtil.getInstance().getContext() == null.");
       return null;
     }
-    return getInstance().getContext().getSharedPreferences("TMAssistantSDKSharedPreference", 0);
+    return getInstance().getContext().getSharedPreferences("TMAssistantSDKSharedPreference", 4);
   }
   
   public void setContext(Context paramContext)
@@ -817,8 +1019,8 @@ public class GlobalUtil
       localContext = paramContext.getApplicationContext();
     }
     this.mContext = localContext;
-    this.mQUA = new o(localContext).a();
-    r.a(localContext);
+    this.mQUA = new v(localContext).a();
+    k.a().post(new h(this));
   }
   
   public void setNetTypeValue(byte paramByte) {}
@@ -833,14 +1035,14 @@ public class GlobalUtil
       {
         return;
       } while (TextUtils.isEmpty(paramString));
-      localSharedPreferences = this.mContext.getSharedPreferences("TMAssistantSDKSharedPreference", 0);
+      localSharedPreferences = this.mContext.getSharedPreferences("TMAssistantSDKSharedPreference", 4);
     } while (localSharedPreferences == null);
     localSharedPreferences.edit().putString("TMAssistantSDKPhoneGUID", paramString).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.GlobalUtil
  * JD-Core Version:    0.7.0.1
  */

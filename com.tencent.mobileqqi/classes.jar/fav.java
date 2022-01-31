@@ -1,25 +1,20 @@
-import android.media.AudioManager;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class fav
   implements Runnable
 {
-  public fav(VoipDialInterfaceActivity paramVoipDialInterfaceActivity, boolean paramBoolean) {}
+  public fav(DataLineHandler paramDataLineHandler, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
   
   public void run()
   {
-    AudioManager localAudioManager = (AudioManager)this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipDialInterfaceActivity.getSystemService("audio");
-    if (this.jdField_a_of_type_Boolean)
-    {
-      localAudioManager.setSpeakerphoneOn(true);
-      return;
-    }
-    localAudioManager.setSpeakerphoneOn(false);
+    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.g(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg, this.jdField_a_of_type_JavaLangObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     fav
  * JD-Core Version:    0.7.0.1
  */

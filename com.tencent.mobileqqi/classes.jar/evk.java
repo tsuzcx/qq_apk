@@ -1,34 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.adapter.ContactsSearchResultAdapter;
-import com.tencent.mobileqq.search.ContactsSearchableCircleBuddy;
-import com.tencent.mobileqq.search.ConversationSearchAdapter.SearchResultCallBack;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.media.SoundPool;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
-public class evk
-  implements ConversationSearchAdapter.SearchResultCallBack
+class evk
+  implements Runnable
 {
-  public evk(SelectMemberActivity paramSelectMemberActivity) {}
+  evk(evj paramevj) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    if (1 == paramInt)
-    {
-      if (SelectMemberActivity.a(this.a).getCount() != 0) {
-        break label71;
-      }
-      SelectMemberActivity.a(this.a).setVisibility(0);
-    }
-    for (;;)
-    {
-      if (ContactsSearchableCircleBuddy.a) {
-        ReportController.b(this.a.b, "CliOper", "", "", "Network_circle", "Search_circle_exp", 82, 0, "", "", "", "");
-      }
-      ContactsSearchableCircleBuddy.a = false;
-      return;
-      label71:
-      SelectMemberActivity.a(this.a).setVisibility(8);
-    }
+    VoipDialInterfaceActivity.a(this.a.a).play(VoipDialInterfaceActivity.f(this.a.a), 1.0F, 1.0F, 0, 0, 1.0F);
   }
 }
 

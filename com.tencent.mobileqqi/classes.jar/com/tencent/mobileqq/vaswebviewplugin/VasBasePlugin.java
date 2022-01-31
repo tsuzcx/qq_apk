@@ -21,12 +21,12 @@ public abstract class VasBasePlugin
     return new Intent();
   }
   
-  protected long getPluginBusiness()
+  public long getPluginBusiness()
   {
     return 0L;
   }
   
-  protected void onCreate()
+  public void onCreate()
   {
     this.startOpenPageTime = this.mRuntime.a().getIntent().getLongExtra("startOpenPageTime", 0L);
     this.business = this.mRuntime.a().getIntent().getLongExtra("business", 0L);

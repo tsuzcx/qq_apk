@@ -1,15 +1,17 @@
-import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.mobileqq.widget.MyGridView;
+import com.tencent.widget.SingleLineTextView;
 
-class ajle
-  implements Runnable
+public class ajle
+  extends ajjw
 {
-  ajle(ajld paramajld, View paramView) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_AndroidViewView.requestFocus();
-    this.jdField_a_of_type_AndroidViewView.findFocus();
-  }
+  public ImageView a;
+  public TextView a;
+  public DragTextView a;
+  public MyGridView a;
+  public SingleLineTextView a;
 }
 
 

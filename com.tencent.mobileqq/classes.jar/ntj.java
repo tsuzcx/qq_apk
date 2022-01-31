@@ -1,37 +1,41 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
-import com.tencent.biz.qqstory.utils.BitmapUtils.OutOfMemHandleCommand;
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-import com.tribe.async.dispatch.Subscriber;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class ntj
-  implements Subscriber
+class ntj
+  implements URLDrawableDownListener
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  ntj(nti paramnti) {}
   
-  public ntj(QQStoryBaseActivity paramQQStoryBaseActivity1, QQStoryBaseActivity paramQQStoryBaseActivity2)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQStoryBaseActivity2);
+    if (QLog.isColorLevel()) {
+      QLog.i("PubAccountTipsManager", 2, "img Load Failed.");
+    }
   }
   
-  public void accept(@NonNull List paramList)
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
   {
-    paramList.add(BitmapUtils.OutOfMemHandleCommand.class);
+    if (QLog.isColorLevel()) {
+      QLog.i("PubAccountTipsManager", 2, "img Load Interrupted.");
+    }
   }
   
-  public void handleDispatch(@NonNull Dispatcher.Dispatchable paramDispatchable)
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    paramDispatchable = (QQStoryBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramDispatchable != null) {
-      paramDispatchable.g();
+    if (nti.a(this.a) != null) {
+      nti.a(this.a).setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ntj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.profile.view.VipProfileSimpleView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class agsn
-  implements Animation.AnimationListener
+class agsn
+  implements View.OnClickListener
 {
-  public agsn(VipProfileSimpleView paramVipProfileSimpleView, Animation paramAnimation) {}
+  agsn(agse paramagse) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewVipProfileSimpleView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    if (!this.a.N) {
+      agse.c(this.a);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agsn
  * JD-Core Version:    0.7.0.1
  */

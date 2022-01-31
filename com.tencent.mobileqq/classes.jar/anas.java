@@ -1,23 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import com.tencent.mobileqq.statistics.MTAReportController;
-import cooperation.qzone.util.PanoramaUtil;
-import java.util.Properties;
-
-public class anas
-  implements Runnable
+public abstract interface anas
 {
-  public anas(PanoramaUtil paramPanoramaUtil, String paramString1, String paramString2, int paramInt) {}
+  public abstract long a();
   
-  public void run()
-  {
-    if ((this.jdField_a_of_type_JavaLangString != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-    {
-      Properties localProperties = new Properties();
-      localProperties.put(this.b, this.jdField_a_of_type_JavaLangString);
-      MTAReportController.a(BaseApplication.getContext()).reportTimeKVEvent("qzone_panorama", localProperties, this.jdField_a_of_type_Int);
-    }
-  }
+  public abstract void a(int paramInt, anbm paramanbm);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(anct paramanct);
+  
+  public abstract long b();
+  
+  public abstract void b();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
+  
+  public abstract void c(boolean paramBoolean);
 }
 
 

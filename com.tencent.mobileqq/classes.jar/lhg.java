@@ -1,21 +1,26 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
-import com.tencent.mobileqq.widget.CircleProgress;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.app.VideoAppInterface;
 
 class lhg
-  implements Runnable
+  extends BroadcastReceiver
 {
-  lhg(lhe paramlhe, int paramInt) {}
+  lhg(lhf paramlhf) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Lhe.a).setProgress(this.jdField_a_of_type_Int);
-    ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Lhe.a).setText(this.jdField_a_of_type_Int + "%");
+    int i = paramIntent.getIntExtra("level", 0);
+    if ((lhf.a(this.a) != null) && (lhf.a(this.a).a != null))
+    {
+      ((lkz)lhf.a(this.a).a(4)).a(i);
+      lkx.a(18, i);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lhg
  * JD-Core Version:    0.7.0.1
  */

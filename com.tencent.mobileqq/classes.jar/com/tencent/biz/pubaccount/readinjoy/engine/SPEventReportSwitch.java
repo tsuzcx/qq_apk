@@ -3,27 +3,27 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.SparseArray;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import bkbq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.TreeSet;
 import mqq.app.AppRuntime;
+import ors;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.ReportConditionParam;
 
 public class SPEventReportSwitch
 {
   private static int jdField_a_of_type_Int = -1;
   private static long jdField_a_of_type_Long;
-  private static SparseArray jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private static HashMap jdField_a_of_type_JavaUtilHashMap;
+  private static SparseArray<Boolean> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private static HashMap<Integer, SPEventReportSwitch.SPEventReportCondition> jdField_a_of_type_JavaUtilHashMap;
   private static int b = -2;
   private static int c = -1;
   private static int d = -2;
@@ -48,16 +48,11 @@ public class SPEventReportSwitch
     m = -1;
   }
   
-  public SPEventReportSwitch()
-  {
-    jdField_a_of_type_JavaUtilHashMap = (HashMap)ReadInJoyUtils.a(ReadInJoyUtils.a(), "idle_high_frequency_report_condition", true);
-  }
-  
   public static int a()
   {
     if (e == -1)
     {
-      SharedPreferences localSharedPreferences = ReadInJoyHelper.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, true);
+      SharedPreferences localSharedPreferences = bkbq.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, true);
       if (localSharedPreferences == null) {}
       for (e = f;; e = localSharedPreferences.getInt("kd_tab_click_push_algo_id", f)) {
         return e;
@@ -73,7 +68,7 @@ public class SPEventReportSwitch
     }
   }
   
-  public static void a(List paramList)
+  public static void a(List<oidb_cmd0x80a.ReportConditionParam> paramList)
   {
     if (paramList == null) {
       return;
@@ -164,7 +159,7 @@ public class SPEventReportSwitch
         if (i1 == 0) {
           break;
         }
-        ReadInJoyUtils.a("idle_high_frequency_report_condition", jdField_a_of_type_JavaUtilHashMap, true);
+        ors.a("idle_high_frequency_report_condition", jdField_a_of_type_JavaUtilHashMap, true);
         return;
         i4 = 0;
         break label292;
@@ -176,7 +171,7 @@ public class SPEventReportSwitch
   
   public static void a(AppRuntime paramAppRuntime, String paramString)
   {
-    paramAppRuntime = ReadInJoyHelper.a(paramAppRuntime, true, true);
+    paramAppRuntime = bkbq.a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
       QLog.d("SPEventReportSwitch", 1, "failed to update sp updateTabClickGapInSeconds");
@@ -187,7 +182,7 @@ public class SPEventReportSwitch
       int i1 = Integer.parseInt(paramString);
       paramAppRuntime = paramAppRuntime.edit();
       paramAppRuntime.putInt("kd_tab_click_gap_in_seconds", i1);
-      ReadInJoyHelper.a(paramAppRuntime, true);
+      bkbq.a(paramAppRuntime, true);
       b = i1;
       return;
     }
@@ -202,7 +197,7 @@ public class SPEventReportSwitch
     boolean bool = true;
     if (m == -1)
     {
-      SharedPreferences localSharedPreferences = ReadInJoyHelper.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, true);
+      SharedPreferences localSharedPreferences = bkbq.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, true);
       if (localSharedPreferences == null) {}
       for (m = n; m == 1; m = localSharedPreferences.getInt("kd_user_idle_report", n)) {
         return true;
@@ -237,13 +232,12 @@ public class SPEventReportSwitch
       else
       {
         if (!SPEventReportSwitch.SPEventReportCondition.access$000(localSPEventReportCondition)) {
-          break label271;
+          break label264;
         }
-        SPEventReportSwitch.SPEventReportCondition.access$002(localSPEventReportCondition, false);
       }
     }
-    label265:
-    label271:
+    label258:
+    label264:
     for (bool1 = true;; bool1 = false)
     {
       int i1 = Calendar.getInstance().get(11) * 3600 + Calendar.getInstance().get(12) * 60 + Calendar.getInstance().get(13);
@@ -255,7 +249,7 @@ public class SPEventReportSwitch
           TreeSet localTreeSet = (TreeSet)SPEventReportSwitch.SPEventReportCondition.access$100(localSPEventReportCondition).get(paramInt);
           Object localObject = (Integer)localTreeSet.floor(Integer.valueOf(i1));
           if (localObject == null) {
-            break label265;
+            break label258;
           }
           Integer localInteger;
           do
@@ -276,7 +270,7 @@ public class SPEventReportSwitch
       for (;;)
       {
         if (bool1) {
-          ReadInJoyUtils.a("idle_high_frequency_report_condition", jdField_a_of_type_JavaUtilHashMap, true);
+          ors.a("idle_high_frequency_report_condition", jdField_a_of_type_JavaUtilHashMap, true);
         }
         return bool1;
         break;
@@ -288,7 +282,7 @@ public class SPEventReportSwitch
   {
     if (i == -1)
     {
-      SharedPreferences localSharedPreferences = ReadInJoyHelper.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, true);
+      SharedPreferences localSharedPreferences = bkbq.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, true);
       if (localSharedPreferences == null) {}
       for (i = j;; i = localSharedPreferences.getInt("kd_fore_ground_gap_in_seconds", j)) {
         return i;
@@ -299,7 +293,7 @@ public class SPEventReportSwitch
   
   public static void b(AppRuntime paramAppRuntime, String paramString)
   {
-    paramAppRuntime = ReadInJoyHelper.a(paramAppRuntime, true, true);
+    paramAppRuntime = bkbq.a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
       QLog.d("SPEventReportSwitch", 1, "failed to update sp updateTabClickCountLimit");
@@ -310,7 +304,7 @@ public class SPEventReportSwitch
       int i1 = Integer.parseInt(paramString);
       paramAppRuntime = paramAppRuntime.edit();
       paramAppRuntime.putInt("kd_tab_click_count_limit", i1);
-      ReadInJoyHelper.a(paramAppRuntime, true);
+      bkbq.a(paramAppRuntime, true);
       c = i1;
       return;
     }
@@ -326,16 +320,16 @@ public class SPEventReportSwitch
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 61	com/tencent/biz/pubaccount/readinjoy/engine/SPEventReportSwitch:jdField_a_of_type_AndroidUtilSparseArray	Landroid/util/SparseArray;
+    //   3: getstatic 63	com/tencent/biz/pubaccount/readinjoy/engine/SPEventReportSwitch:jdField_a_of_type_AndroidUtilSparseArray	Landroid/util/SparseArray;
     //   6: iload_0
-    //   7: invokevirtual 300	android/util/SparseArray:get	(I)Ljava/lang/Object;
-    //   10: checkcast 302	java/lang/Boolean
+    //   7: invokevirtual 298	android/util/SparseArray:get	(I)Ljava/lang/Object;
+    //   10: checkcast 300	java/lang/Boolean
     //   13: ifnonnull +21 -> 34
-    //   16: getstatic 61	com/tencent/biz/pubaccount/readinjoy/engine/SPEventReportSwitch:jdField_a_of_type_AndroidUtilSparseArray	Landroid/util/SparseArray;
+    //   16: getstatic 63	com/tencent/biz/pubaccount/readinjoy/engine/SPEventReportSwitch:jdField_a_of_type_AndroidUtilSparseArray	Landroid/util/SparseArray;
     //   19: iload_0
     //   20: iconst_1
-    //   21: invokestatic 305	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   24: invokevirtual 308	android/util/SparseArray:put	(ILjava/lang/Object;)V
+    //   21: invokestatic 303	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   24: invokevirtual 306	android/util/SparseArray:put	(ILjava/lang/Object;)V
     //   27: iconst_1
     //   28: istore_1
     //   29: ldc 2
@@ -364,7 +358,7 @@ public class SPEventReportSwitch
   {
     if (k == -1)
     {
-      SharedPreferences localSharedPreferences = ReadInJoyHelper.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, true);
+      SharedPreferences localSharedPreferences = bkbq.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, true);
       if (localSharedPreferences == null) {}
       for (k = l;; k = localSharedPreferences.getInt("kd_screen_switch_in_seconds", l)) {
         return k;
@@ -375,7 +369,7 @@ public class SPEventReportSwitch
   
   public static void c(AppRuntime paramAppRuntime, String paramString)
   {
-    paramAppRuntime = ReadInJoyHelper.a(paramAppRuntime, true, true);
+    paramAppRuntime = bkbq.a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
       QLog.d("SPEventReportSwitch", 1, "failed to update sp updateTabClickCountLimit");
@@ -386,7 +380,7 @@ public class SPEventReportSwitch
       int i1 = Integer.parseInt(paramString);
       paramAppRuntime = paramAppRuntime.edit();
       paramAppRuntime.putInt("kd_tab_click_push_algo_id", i1);
-      ReadInJoyHelper.a(paramAppRuntime, true);
+      bkbq.a(paramAppRuntime, true);
       e = i1;
       return;
     }
@@ -398,7 +392,7 @@ public class SPEventReportSwitch
   
   public static void d(AppRuntime paramAppRuntime, String paramString)
   {
-    paramAppRuntime = ReadInJoyHelper.a(paramAppRuntime, true, true);
+    paramAppRuntime = bkbq.a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
       QLog.d("SPEventReportSwitch", 1, "failed to update sp updateTabClickCountLimit");
@@ -409,7 +403,7 @@ public class SPEventReportSwitch
       int i1 = Integer.parseInt(paramString);
       paramAppRuntime = paramAppRuntime.edit();
       paramAppRuntime.putInt("kd_tab_click_forbid_report_time_in_seconds", i1);
-      ReadInJoyHelper.a(paramAppRuntime, true);
+      bkbq.a(paramAppRuntime, true);
       g = i1;
       return;
     }
@@ -421,7 +415,7 @@ public class SPEventReportSwitch
   
   public static void e(AppRuntime paramAppRuntime, String paramString)
   {
-    paramAppRuntime = ReadInJoyHelper.a(paramAppRuntime, true, true);
+    paramAppRuntime = bkbq.a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
       QLog.d("SPEventReportSwitch", 1, "failed to update sp updateTabClickCountLimit");
@@ -432,7 +426,7 @@ public class SPEventReportSwitch
       int i1 = Integer.parseInt(paramString);
       paramAppRuntime = paramAppRuntime.edit();
       paramAppRuntime.putInt("kd_fore_ground_gap_in_seconds", i1);
-      ReadInJoyHelper.a(paramAppRuntime, true);
+      bkbq.a(paramAppRuntime, true);
       i = i1;
       return;
     }
@@ -444,7 +438,7 @@ public class SPEventReportSwitch
   
   public static void f(AppRuntime paramAppRuntime, String paramString)
   {
-    paramAppRuntime = ReadInJoyHelper.a(paramAppRuntime, true, true);
+    paramAppRuntime = bkbq.a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
       QLog.d("SPEventReportSwitch", 1, "failed to update sp updateTabClickCountLimit");
@@ -455,7 +449,7 @@ public class SPEventReportSwitch
       int i1 = Integer.parseInt(paramString);
       paramAppRuntime = paramAppRuntime.edit();
       paramAppRuntime.putInt("kd_screen_switch_in_seconds", i1);
-      ReadInJoyHelper.a(paramAppRuntime, true);
+      bkbq.a(paramAppRuntime, true);
       k = i1;
       return;
     }
@@ -467,7 +461,7 @@ public class SPEventReportSwitch
   
   public static void g(AppRuntime paramAppRuntime, String paramString)
   {
-    paramAppRuntime = ReadInJoyHelper.a(paramAppRuntime, true, true);
+    paramAppRuntime = bkbq.a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
       QLog.d("SPEventReportSwitch", 1, "failed to update sp updateTabClickCountLimit");
@@ -478,7 +472,7 @@ public class SPEventReportSwitch
       int i1 = Integer.parseInt(paramString);
       paramAppRuntime = paramAppRuntime.edit();
       paramAppRuntime.putInt("kd_user_idle_report", i1);
-      ReadInJoyHelper.a(paramAppRuntime, true);
+      bkbq.a(paramAppRuntime, true);
       m = i1;
       return;
     }
@@ -490,7 +484,7 @@ public class SPEventReportSwitch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.SPEventReportSwitch
  * JD-Core Version:    0.7.0.1
  */

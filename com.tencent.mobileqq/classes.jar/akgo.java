@@ -1,18 +1,21 @@
-import android.graphics.PointF;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
 
-public final class akgo
-  implements akgp
+public class akgo
+  implements View.OnClickListener
 {
-  public PointF a(float paramFloat, PointF paramPointF1, PointF paramPointF2)
+  public akgo(SessionClearFragment paramSessionClearFragment) {}
+  
+  public void onClick(View paramView)
   {
-    float f1 = paramPointF1.x;
-    float f2 = paramPointF1.y;
-    return new PointF(f1 + (paramPointF2.x - f1) * paramFloat, f2 + (paramPointF2.y - f2) * paramFloat);
+    SessionClearFragment.a(this.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akgo
  * JD-Core Version:    0.7.0.1
  */

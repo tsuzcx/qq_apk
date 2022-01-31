@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager;
-import java.util.ArrayList;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
 
 public class xxv
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public xxv(LbsFilterStatusManager paramLbsFilterStatusManager, int paramInt, boolean paramBoolean, ArrayList paramArrayList) {}
+  public xxv(RotateCircleImageView paramRotateCircleImageView) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    LbsFilterStatusManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilArrayList);
+    RotateCircleImageView.c(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xxv
  * JD-Core Version:    0.7.0.1
  */

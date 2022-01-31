@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class FeedsProtocol$VideoItem
-  extends MessageMicro
+  extends MessageMicro<VideoItem>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field anchor_type = PBField.initUInt32(0);
@@ -19,7 +19,7 @@ public final class FeedsProtocol$VideoItem
   public final PBUInt32Field live_duration_time = PBField.initUInt32(0);
   public final PBBytesField room_cover_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField room_name = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_msg_rich_title = PBField.initRepeatMessage(FeedsProtocol.RichTitleElement.class);
+  public final PBRepeatMessageField<FeedsProtocol.RichTitleElement> rpt_msg_rich_title = PBField.initRepeatMessage(FeedsProtocol.RichTitleElement.class);
   public final PBUInt32Field total_money = PBField.initUInt32(0);
   public final PBUInt32Field total_view = PBField.initUInt32(0);
   public FeedsProtocol.UserInfo user_info = new FeedsProtocol.UserInfo();
@@ -41,7 +41,7 @@ public final class FeedsProtocol$VideoItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.FeedsProtocol.VideoItem
  * JD-Core Version:    0.7.0.1
  */

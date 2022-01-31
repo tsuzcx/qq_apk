@@ -1,36 +1,27 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
 
 public class acau
-  extends FriendListObserver
+  implements DialogInterface.OnClickListener
 {
-  public acau(MessengerService paramMessengerService) {}
+  public acau(AccountManageActivity paramAccountManageActivity) {}
   
-  protected void onGetSigZanInfo(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.b != null)
-    {
-      this.a.b.putString("cmd", "ipc_signature_setlike");
-      paramObject = new Bundle();
-      if (!paramBoolean) {
-        break label81;
-      }
-    }
-    label81:
-    for (int i = 0;; i = 101)
-    {
-      paramObject.putInt("result", i);
-      this.a.b.putBundle("response", paramObject);
-      this.a.a(this.a.b);
-      this.a.b = null;
-      return;
-    }
+    paramDialogInterface = new Intent();
+    paramDialogInterface.setClass(this.a, SubAccountBindActivity.class);
+    paramDialogInterface.putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
+    this.a.startActivity(paramDialogInterface);
+    azqs.b(this.a.app, "CliOper", "", "", "0X80040A6", "0X80040A6", 0, 0, "", "", "", "");
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acau
  * JD-Core Version:    0.7.0.1
  */

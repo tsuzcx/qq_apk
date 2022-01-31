@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.e;
+import com.tencent.token.global.h;
 
 public class FaceRecognitionCreateActivity
   extends BaseActivity
@@ -28,48 +28,46 @@ public class FaceRecognitionCreateActivity
   {
     try
     {
-      boolean bool = RqdApplication.i().getSharedPreferences("create_notice_flag", 0).getBoolean("notice_flag", false);
+      boolean bool = RqdApplication.l().getSharedPreferences("create_notice_flag", 0).getBoolean("notice_flag", false);
       return bool;
     }
     catch (Exception localException)
     {
-      e.c("SharedPreferences msg " + localException.getMessage());
+      h.c("SharedPreferences msg " + localException.getMessage());
     }
     return false;
   }
   
   private void initNotice()
   {
-    setTitle(2131362242);
-    this.chk = ((CheckBox)findViewById(2131296599));
-    this.chk.setOnCheckedChangeListener(new il(this));
-    this.fr_btn_scan = ((Button)findViewById(2131296604));
-    this.fr_btn_scan.setOnClickListener(new im(this));
+    setTitle(2131231541);
+    this.fr_btn_scan = ((Button)findViewById(2131558891));
+    this.fr_btn_scan.setOnClickListener(new hj(this));
   }
   
   private void initReg()
   {
-    this.chk = ((CheckBox)findViewById(2131296599));
-    this.chk.setOnCheckedChangeListener(new ii(this));
-    this.tv_licence = ((TextView)findViewById(2131296600));
-    this.tv_licence.setText(Html.fromHtml(getResources().getString(2131362478)));
-    this.tv_licence.setOnClickListener(new ij(this));
-    this.btn_reg = ((Button)findViewById(2131296601));
-    this.btn_reg.setOnClickListener(new ik(this));
+    this.chk = ((CheckBox)findViewById(2131558884));
+    this.chk.setOnCheckedChangeListener(new hg(this));
+    this.tv_licence = ((TextView)findViewById(2131558885));
+    this.tv_licence.setText(Html.fromHtml(getResources().getString(2131231016)));
+    this.tv_licence.setOnClickListener(new hh(this));
+    this.btn_reg = ((Button)findViewById(2131558886));
+    this.btn_reg.setOnClickListener(new hi(this));
   }
   
   public static void saveFlag()
   {
     try
     {
-      SharedPreferences.Editor localEditor = RqdApplication.i().getSharedPreferences("create_notice_flag", 0).edit();
+      SharedPreferences.Editor localEditor = RqdApplication.l().getSharedPreferences("create_notice_flag", 0).edit();
       localEditor.putBoolean("notice_flag", true);
       localEditor.commit();
       return;
     }
     catch (Exception localException)
     {
-      e.c("SharedPreferences msg " + localException.getMessage());
+      h.c("SharedPreferences msg " + localException.getMessage());
     }
   }
   
@@ -80,6 +78,8 @@ public class FaceRecognitionCreateActivity
       Intent localIntent = new Intent(this, IndexActivity.class);
       localIntent.putExtra("index_from", 21);
       startActivity(localIntent);
+      finish();
+      return;
     }
     finish();
   }
@@ -89,7 +89,7 @@ public class FaceRecognitionCreateActivity
     super.onCreate(paramBundle);
     this.istry = getIntent().getIntExtra("istry", -1);
     this.fromspalsh = getIntent().getBooleanExtra("fromsplash", false);
-    setContentView(2130903094);
+    setContentView(2130968657);
     initReg();
   }
   
@@ -98,7 +98,7 @@ public class FaceRecognitionCreateActivity
     if ((this.mTitleBar.getVisibility() == 0) && (this.mBackArrow != null))
     {
       this.mBackArrow.setVisibility(0);
-      this.mBackArrow.setOnClickListener(new ih(this));
+      this.mBackArrow.setOnClickListener(new hf(this));
     }
   }
 }

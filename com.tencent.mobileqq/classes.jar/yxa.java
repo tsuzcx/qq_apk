@@ -1,22 +1,24 @@
-import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoManager;
-import com.tencent.mobileqq.apollo.view.ApolloDrawerInfoViewListener;
-import java.lang.ref.WeakReference;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 
-public class yxa
-  implements Runnable
+class yxa
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public yxa(ApolloDrawerInfoViewListener paramApolloDrawerInfoViewListener) {}
+  yxa(ywy paramywy, Container paramContainer) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (ApolloDrawerInfoViewListener.a(this.a).get() != null) {
-      ((SpriteDrawerInfoManager)ApolloDrawerInfoViewListener.a(this.a).get()).a(ApolloDrawerInfoViewListener.a(this.a));
-    }
+    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getLayoutParams();
+    localLayoutParams.topMargin = paramValueAnimator.intValue();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.setLayoutParams(localLayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yxa
  * JD-Core Version:    0.7.0.1
  */

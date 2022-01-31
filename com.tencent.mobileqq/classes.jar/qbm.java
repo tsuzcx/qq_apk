@@ -1,38 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.device.msg.data.MessageForDevShortVideo;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class qbm
-  implements Parcelable.Creator
+class qbm
+  implements View.OnClickListener
 {
-  public MessageForDevShortVideo a(Parcel paramParcel)
-  {
-    MessageForDevShortVideo localMessageForDevShortVideo = new MessageForDevShortVideo();
-    localMessageForDevShortVideo.uuid = paramParcel.readString();
-    localMessageForDevShortVideo.md5 = paramParcel.readString();
-    localMessageForDevShortVideo.videoFileName = paramParcel.readString();
-    localMessageForDevShortVideo.videoFileSize = paramParcel.readInt();
-    localMessageForDevShortVideo.videoFileFormat = paramParcel.readInt();
-    localMessageForDevShortVideo.videoFileTime = paramParcel.readInt();
-    localMessageForDevShortVideo.thumbWidth = paramParcel.readInt();
-    localMessageForDevShortVideo.thumbHeight = paramParcel.readInt();
-    localMessageForDevShortVideo.videoFileStatus = paramParcel.readInt();
-    localMessageForDevShortVideo.videoFileProgress = paramParcel.readInt();
-    localMessageForDevShortVideo.fileType = paramParcel.readInt();
-    localMessageForDevShortVideo.thumbMD5 = paramParcel.readString();
-    localMessageForDevShortVideo.fileSource = paramParcel.readString();
-    localMessageForDevShortVideo.lastModified = paramParcel.readLong();
-    return localMessageForDevShortVideo;
-  }
+  qbm(qbk paramqbk) {}
   
-  public MessageForDevShortVideo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new MessageForDevShortVideo[paramInt];
+    ors.a(this.a.jdField_a_of_type_AndroidContentContext, ((pgd)this.a.jdField_a_of_type_JavaLangObject).a(), 2, false, 2, false);
+    rqj.a(((pgd)this.a.jdField_a_of_type_JavaLangObject).a(), ((pgd)this.a.jdField_a_of_type_JavaLangObject).e());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qbm
  * JD-Core Version:    0.7.0.1
  */

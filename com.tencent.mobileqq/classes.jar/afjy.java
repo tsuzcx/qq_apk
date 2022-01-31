@@ -1,23 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFailedAdapter;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.data.PublishableMomentInfo;
+import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
+import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import java.lang.ref.WeakReference;
 
-public class afjy
-  implements DialogInterface.OnClickListener
+class afjy
+  implements afjs
 {
-  public afjy(NearbyMomentFailedAdapter paramNearbyMomentFailedAdapter, PublishableMomentInfo paramPublishableMomentInfo) {}
+  afjy(afjw paramafjw, MessageForArkFlashChat paramMessageForArkFlashChat) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    ((NearbyMomentManager)NearbyMomentFailedAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFailedAdapter).getManager(262)).a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataPublishableMomentInfo.c, new afjz(this));
+    AutoStartProgressBar localAutoStartProgressBar = (AutoStartProgressBar)this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat.mSendingProgress.get();
+    if ((localAutoStartProgressBar.getTag() == this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat) && (localAutoStartProgressBar != null))
+    {
+      localAutoStartProgressBar.b();
+      localAutoStartProgressBar.setVisibility(8);
+    }
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afjy
  * JD-Core Version:    0.7.0.1
  */

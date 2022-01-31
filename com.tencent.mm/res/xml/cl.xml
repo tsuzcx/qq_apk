@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <PreferenceSmallCategory />
+    <IconPreference android:title="@string/eo7" android:key="unlike" />
+    <Preference android:title="@string/f3r" android:key="unlike_desc" android:layout="@layout/ah2" />
+    <PreferenceSmallCategory />
+    <IconPreference android:title="@string/eru" android:key="black" />
+    <Preference android:title="@string/f3g" android:key="not_be_seen_desc" android:layout="@layout/ah2" />
+    <PreferenceSmallCategory />
+    <IconPreference android:title="@string/f3i" android:key="feedback" />
+</PreferenceScreen>

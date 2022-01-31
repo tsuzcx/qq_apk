@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.activity.NearbyActivity.3;
 
 public class adji
-  implements Runnable
+  implements atcp
 {
-  public adji(SendBottomBar paramSendBottomBar) {}
+  public adji(NearbyActivity.3 param3) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    new adjj(this).execute(new Object[0]);
+    this.a.this$0.d = paramInt;
+    NearbyActivity.a(this.a.this$0.b, this.a.this$0.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adji
  * JD-Core Version:    0.7.0.1
  */

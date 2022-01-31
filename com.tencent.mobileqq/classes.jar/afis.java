@@ -1,39 +1,51 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.widget.ActionSheet;
-import java.util.ArrayList;
+import android.annotation.TargetApi;
+import android.graphics.Rect;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.qphone.base.util.QLog;
 
-public class afis
-  implements View.OnClickListener
+class afis
+  implements ArkViewImplement.LoadCallback
 {
-  public afis(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel, int paramInt) {}
+  afis(afir paramafir, MessageForArkApp paramMessageForArkApp, afiv paramafiv) {}
   
-  public void onClick(View paramView)
+  @TargetApi(14)
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    PicInfo localPicInfo = (PicInfo)paramView.getTag();
-    if (localPicInfo == null) {
+    onLoadState(paramInt1);
+  }
+  
+  @TargetApi(14)
+  public void onLoadState(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppItemBubbleBuilder", 2, new Object[] { "onLoadFinish state=", Integer.valueOf(paramInt), ",app=", this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName });
+    }
+    if (paramInt == 1)
+    {
+      if (!bclg.b(this.jdField_a_of_type_Afir.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.senderuin)) {
+        this.jdField_a_of_type_Afiv.a(this.jdField_a_of_type_Afiv, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+      }
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.arkContainer.getContainerRect();
+      float f = anob.a();
+      paramInt = (int)((((Rect)localObject).right - ((Rect)localObject).left) * f);
+      int i = (int)((((Rect)localObject).bottom - ((Rect)localObject).top) * f);
+      localObject = this.jdField_a_of_type_Afiv.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getLayoutParams();
+      StringBuilder localStringBuilder = new StringBuilder("ArkFold.onLoadFinish arkContainer rect(");
+      localStringBuilder.append(paramInt).append(",").append(i).append(")").append(", arkView layout rect(").append(((ViewGroup.LayoutParams)localObject).width).append(",").append(((ViewGroup.LayoutParams)localObject).height).append(")").append(", init mArkWidth=").append(afir.b(this.jdField_a_of_type_Afir)).append(",mArkHeight=").append(afir.a(this.jdField_a_of_type_Afir)).append(",app=").append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName);
+      QLog.i("ArkAppItemBubbleBuilder", 1, localStringBuilder.toString());
       return;
     }
-    ActionSheet localActionSheet = ActionSheet.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
-    if (this.jdField_a_of_type_Int != 0) {
-      localActionSheet.c(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources().getString(2131437417));
-    }
-    localActionSheet.c("查看大图");
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.jdField_a_of_type_JavaUtilArrayList.size() > 1) {
-      localActionSheet.a("删除照片", 3);
-    }
-    localActionSheet.c(2131433015);
-    localActionSheet.a(new afit(this, paramView, localPicInfo, localActionSheet));
-    localActionSheet.show();
+    this.jdField_a_of_type_Afiv.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afis
  * JD-Core Version:    0.7.0.1
  */

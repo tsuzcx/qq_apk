@@ -1,26 +1,23 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditDoodleExport;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfoLoadObserver;
+import com.tencent.ark.open.delegate.IArkDelegateNetCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class anri
-  extends PtvTemplateManager.DoodleInfoLoadObserver
+class anri
+  extends bead
 {
-  public anri(EditPicActivity paramEditPicActivity) {}
+  anri(anre paramanre, String paramString, IArkDelegateNetCallback paramIArkDelegateNetCallback) {}
   
-  public void a()
+  public void onDone(beae parambeae)
   {
-    SLog.c("EditPicActivity", "DoodleInfoLoadObserver, onLoadSucc");
-    EditDoodleExport localEditDoodleExport = (EditDoodleExport)EditPicActivity.a(this.a).a(EditDoodleExport.class);
-    if (localEditDoodleExport != null) {
-      localEditDoodleExport.az_();
+    super.onDone(parambeae);
+    QLog.d("ArkApp.ArkMultiProcUtil", 1, String.format("download finish, url=%s, err=%d", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(parambeae.a) }));
+    if (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback != null) {
+      this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onDownload(parambeae.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anri
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ public class BaseAddress
   public static final int ADDRESS_TYPE_PROVINCE = 1;
   public int addressType;
   public String code;
-  public LinkedHashMap dataMap;
+  public LinkedHashMap<String, BaseAddress> dataMap;
   public boolean hasCity;
   public boolean hasDistrict;
   public boolean hasProvince;
@@ -60,7 +60,7 @@ public class BaseAddress
     return j;
   }
   
-  public ArrayList getDataList()
+  public ArrayList<BaseAddress> getDataList()
   {
     if (this.dataMap != null) {
       return new ArrayList(this.dataMap.values());
@@ -80,7 +80,7 @@ public class BaseAddress
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.data.BaseAddress
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,52 @@
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class lnq
-  implements View.OnClickListener
 {
-  public lnq(ReadInJoySelfFragment paramReadInJoySelfFragment, String paramString1, String paramString2) {}
+  static String jdField_a_of_type_JavaLangString = "smartdevice::sharp";
+  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
+  lnp jdField_a_of_type_Lnp = null;
+  lnr jdField_a_of_type_Lnr = null;
   
-  public void onClick(View paramView)
+  public lnq(lnp paramlnp, VideoAppInterface paramVideoAppInterface)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      paramView = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.getActivity(), QQBrowserActivity.class);
-      paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.getActivity().startActivity(paramView);
-      PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80092FF", "0X80092FF", 0, 0, "", "", "", ReadInJoyUtils.b(this.b), false);
+    this.jdField_a_of_type_Lnp = paramlnp;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_Lnr = new lnr(this);
+    paramlnp = new IntentFilter();
+    paramlnp.addAction("SmartDevice_ReceiveSharpMsg");
+    paramlnp.addAction("SmartDevice_ReceiveSharpAckMsg");
+    paramlnp.addAction("SmartDevice_DeviceUnBindRst");
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().registerReceiver(this.jdField_a_of_type_Lnr, paramlnp, "com.tencent.smartdevice.permission.broadcast", null);
+  }
+  
+  void a(byte[] paramArrayOfByte, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "send broadcast : smartdevice send sharp msg");
     }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("size", paramArrayOfByte.length);
+    localBundle.putLong("uin", paramLong);
+    localBundle.putByteArray("value", paramArrayOfByte);
+    paramArrayOfByte = new Intent();
+    paramArrayOfByte.putExtra("msgData", localBundle);
+    paramArrayOfByte.setAction("SmartDevice_SendSharpMsg");
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().sendBroadcast(paramArrayOfByte, "com.tencent.smartdevice.permission.broadcast");
+  }
+  
+  public void b(byte[] paramArrayOfByte, long paramLong)
+  {
+    a(paramArrayOfByte, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lnq
  * JD-Core Version:    0.7.0.1
  */

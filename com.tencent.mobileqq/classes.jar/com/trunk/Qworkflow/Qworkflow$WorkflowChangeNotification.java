@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Qworkflow$WorkflowChangeNotification
-  extends MessageMicro
+  extends MessageMicro<WorkflowChangeNotification>
 {
   public static final int DENY_END = 3;
   public static final int HASTEN_RECVED = 4;
@@ -41,7 +41,7 @@ public final class Qworkflow$WorkflowChangeNotification
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.trunk.Qworkflow.Qworkflow.WorkflowChangeNotification
  * JD-Core Version:    0.7.0.1
  */

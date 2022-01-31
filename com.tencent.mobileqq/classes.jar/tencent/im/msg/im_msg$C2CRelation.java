@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class im_msg$C2CRelation
-  extends MessageMicro
+  extends MessageMicro<C2CRelation>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26 }, new String[] { "c2c_type", "group_info", "token" }, new Object[] { Integer.valueOf(0), null, null }, C2CRelation.class);
   public final PBEnumField c2c_type = PBField.initEnum(0);

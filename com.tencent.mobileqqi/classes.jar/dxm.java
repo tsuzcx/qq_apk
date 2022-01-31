@@ -1,55 +1,48 @@
-import android.os.Handler;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.aio.anim.ComboAnimation3;
 
 public class dxm
-  implements Animation.AnimationListener
+  extends View
 {
-  public static final String a = "right";
-  public static final int b = 0;
-  public static final String b = "left";
-  public static final int c = 1;
-  public static final int d = 2;
-  public static final int e = 3;
-  public static final int f = 4;
-  public static final int g = 5;
-  public static final int h = 6;
-  int jdField_a_of_type_Int = -1;
-  View jdField_a_of_type_AndroidViewView;
-  
-  public dxm(TroopMemberListActivity paramTroopMemberListActivity, View paramView, int paramInt)
+  public dxm(ComboAnimation3 paramComboAnimation3, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramContext);
   }
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void draw(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.postDelayed(new dxn(this), 0L);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    paramAnimation = (String)this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((this.jdField_a_of_type_Int == 1) && (paramAnimation.equals("left")))
+    Drawable[] arrayOfDrawable = this.a.a;
+    int j = arrayOfDrawable.length;
+    int i = 0;
+    while (i < j)
     {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      this.jdField_a_of_type_Int = 6;
+      arrayOfDrawable[i].draw(paramCanvas);
+      i += 1;
     }
-    if ((this.jdField_a_of_type_Int == 0) && (paramAnimation.equals("right")))
+  }
+  
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    paramInt1 = 0;
+    paramInt3 = paramInt4 - paramInt2;
+    Drawable[] arrayOfDrawable = this.a.a;
+    paramInt4 = arrayOfDrawable.length;
+    paramInt2 = 0;
+    while (paramInt1 < paramInt4)
     {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      this.jdField_a_of_type_Int = 6;
+      Drawable localDrawable = arrayOfDrawable[paramInt1];
+      localDrawable.setBounds(paramInt2, paramInt3 - localDrawable.getIntrinsicHeight(), localDrawable.getIntrinsicWidth() + paramInt2, paramInt3);
+      paramInt2 += localDrawable.getIntrinsicWidth();
+      paramInt1 += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dxm
  * JD-Core Version:    0.7.0.1
  */

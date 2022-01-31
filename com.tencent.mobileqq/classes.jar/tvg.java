@@ -1,78 +1,40 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.av.utils.UITools;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import android.widget.TextView;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StReply;
 
-public class tvg
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class tvg
+  implements ucn
 {
-  public tvg(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  tvg(tuz paramtuz, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply) {}
   
-  public void onGlobalLayout()
+  public void a()
   {
-    Object localObject = new Rect();
-    this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b.getWindowVisibleDisplayFrame((Rect)localObject);
-    int i = this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b.getRootView().getHeight();
-    int j = i - ((Rect)localObject).bottom;
-    if ((this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.a.e != j))
+    tuz.a(this.jdField_a_of_type_Tuz, null);
+    if (tuz.a(this.jdField_a_of_type_Tuz) != null)
     {
-      localObject = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).setMargins(0, 0, 0, j);
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.a.e = j;
-    }
-    if (j > i / 3)
-    {
-      if (this.a.c) {
-        this.a.c(false);
+      tuz.a(this.jdField_a_of_type_Tuz).b("");
+      if ((tuz.c(this.jdField_a_of_type_Tuz)) && (tuz.b(this.jdField_a_of_type_Tuz) != null)) {
+        tuz.b(this.jdField_a_of_type_Tuz).setText(tuz.a(this.jdField_a_of_type_Tuz).a());
       }
-      for (;;)
-      {
-        if (this.a.jdField_a_of_type_Int == 2) {
-          this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-        }
-        i = (int)UITools.b(BaseApplicationImpl.getApplication(), this.a.b + j);
-        TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.c(this.a).c("setKeyboardHeight(" + i + ")");
-        if (!this.a.d)
-        {
-          TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.d(this.a).c("reLocateForNative()");
-          this.a.d = true;
-        }
-        return;
-        this.a.c(true);
-      }
+      uax.a().a(tuz.a(this.jdField_a_of_type_Tuz), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply, tuz.a(this.jdField_a_of_type_Tuz).a());
+      tuz.a(this.jdField_a_of_type_Tuz).a("");
     }
-    this.a.c(false);
-    if (this.a.jdField_a_of_type_Int == 2) {
-      this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-    }
-    if (this.a.jdField_a_of_type_Int == 2)
+    if ((tuz.d(this.jdField_a_of_type_Tuz)) && (tuz.a(this.jdField_a_of_type_Tuz) != 0L))
     {
-      i = (int)UITools.b(BaseApplicationImpl.getApplication(), this.a.b);
-      TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.e(this.a).c("setKeyboardHeight(" + i + ")");
+      tuz.a(this.jdField_a_of_type_Tuz, false);
+      tuz.c(this.jdField_a_of_type_Tuz, false);
     }
-    for (;;)
-    {
-      this.a.d = false;
-      return;
-      if (this.a.jdField_a_of_type_Int == 1) {
-        TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.f(this.a).c("setKeyboardHeight(0)");
-      }
+    if (tuz.a(this.jdField_a_of_type_Tuz) != null) {
+      tuz.a(this.jdField_a_of_type_Tuz).m();
     }
+    tuz.c(this.jdField_a_of_type_Tuz, null);
+    tuz.b(this.jdField_a_of_type_Tuz, null);
+    tuz.b(this.jdField_a_of_type_Tuz, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tvg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,32 @@
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.open.agent.AuthorityLoginView;
 
-public class alan
+class alan
   implements View.OnClickListener
 {
-  public alan(AuthorityLoginView paramAuthorityLoginView) {}
+  alan(alaj paramalaj) {}
   
   public void onClick(View paramView)
   {
-    paramView = this.a.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
-    View localView = this.a.jdField_a_of_type_AndroidViewView.findViewById(2131365727);
-    if (paramView == this.a.b)
+    if ((alaj.a(this.a).d()) || (alaj.b(this.a)))
     {
-      if (localView != null) {
-        localView.setVisibility(8);
-      }
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      alaj.b(this.a, false);
+      alaj.a(this.a).a();
+      alaj.c(this.a).setVisibility(8);
+      alaj.b(this.a).setVisibility(8);
     }
-    while (paramView != this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) {
+    while (!alaj.a(this.a).c()) {
       return;
     }
-    if (localView != null) {
-      localView.setVisibility(0);
-    }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.b);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    alaj.b(this.a, true);
+    alaj.a(this.a).b();
+    alaj.b(this.a).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alan
  * JD-Core Version:    0.7.0.1
  */

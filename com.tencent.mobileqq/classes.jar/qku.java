@@ -1,50 +1,64 @@
-import android.app.Activity;
-import com.tencent.gdtad.jsbridge.GdtAdWebPlugin;
-import com.tencent.gdtad.jsbridge.GdtJsCallHandler;
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.util.GdtDeviceUtil;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.articlesummary.articlesummary.FamilyCommentInfo;
 
 public class qku
-  implements GdtJsCallHandler
+  implements Cloneable
 {
-  public boolean a(GdtAdWebPlugin paramGdtAdWebPlugin, String paramString, String... paramVarArgs)
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  
+  public static qku a(articlesummary.FamilyCommentInfo paramFamilyCommentInfo)
   {
-    if ((paramGdtAdWebPlugin == null) || (paramGdtAdWebPlugin.mRuntime == null) || (paramGdtAdWebPlugin.mRuntime.a() == null))
-    {
-      GdtLog.d("GdtDeviceJsCallHandler", "handleJsCallRequest error");
-      return true;
-    }
-    Activity localActivity = paramGdtAdWebPlugin.mRuntime.a();
-    paramVarArgs = new JSONObject();
+    qku localqku = new qku();
+    localqku.jdField_a_of_type_JavaLangString = paramFamilyCommentInfo.icon_url.get().toStringUtf8();
+    localqku.jdField_b_of_type_JavaLangString = paramFamilyCommentInfo.jump_url.get().toStringUtf8();
+    localqku.jdField_a_of_type_Int = paramFamilyCommentInfo.medal_urls_width.get();
+    localqku.jdField_b_of_type_Int = paramFamilyCommentInfo.medal_urls_height.get();
+    return localqku;
+  }
+  
+  public qku a()
+  {
     try
     {
-      paramVarArgs.put("deviceId", GdtDeviceUtil.a(localActivity));
-      try
-      {
-        paramGdtAdWebPlugin.callJs(paramString, new String[] { paramVarArgs.toString() });
-        return true;
-      }
-      catch (Throwable paramGdtAdWebPlugin)
-      {
-        GdtLog.d("GdtDeviceJsCallHandler", "handleJsCallRequest error", paramGdtAdWebPlugin);
-        return true;
-      }
+      super.clone();
+      qku localqku = new qku();
+      localqku.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      localqku.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+      localqku.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+      localqku.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      return localqku;
     }
-    catch (JSONException localJSONException)
+    catch (CloneNotSupportedException localCloneNotSupportedException)
     {
       for (;;)
       {
-        GdtLog.d("GdtDeviceJsCallHandler", "handleJsCallRequest error", localJSONException);
+        if (QLog.isColorLevel()) {
+          QLog.d("FamilyCommentInfo", 2, new Object[] { "Clone not support: ", localCloneNotSupportedException.toString() });
+        }
       }
     }
+  }
+  
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+  }
+  
+  public String toString()
+  {
+    return "FamilyCommentInfo\n familyIconUrl " + this.jdField_a_of_type_JavaLangString + "\n familyJumpUrl " + this.jdField_b_of_type_JavaLangString + "\n width " + this.jdField_a_of_type_Int + "\n height " + this.jdField_b_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qku
  * JD-Core Version:    0.7.0.1
  */

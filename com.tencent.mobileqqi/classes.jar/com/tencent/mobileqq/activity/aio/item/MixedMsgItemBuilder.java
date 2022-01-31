@@ -43,7 +43,7 @@ import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qqfav.QfavBuilder;
 import cooperation.qqfav.QfavReport;
-import eex;
+import dzv;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -54,7 +54,7 @@ public class MixedMsgItemBuilder
 {
   private static final String b = MixedMsgItemBuilder.class.getSimpleName();
   private MixedImageOnclickListener jdField_a_of_type_ComTencentMobileqqActivityAioMixedImageOnclickListener = new MixedImageOnclickListener();
-  private AnimationTextView.OnDoubleClick jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick = new eex(this);
+  private AnimationTextView.OnDoubleClick jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick = new dzv(this);
   
   public MixedMsgItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
@@ -212,7 +212,7 @@ public class MixedMsgItemBuilder
       paramList.setFocusable(false);
       paramList.setClickable(true);
       paramList.setMinimumHeight(AIOUtils.a(44.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      paramList.setPadding(2131427461, 2131427459, 2131427462, 2131427460);
+      paramList.setPadding(2131427464, 2131427462, 2131427465, 2131427463);
       paramMixedMsgLinearLayout = new RelativeLayout.LayoutParams(-2, -2);
       paramMixedMsgLinearLayout.addRule(1, 2131230940);
       paramMixedMsgLinearLayout.addRule(3, 2131231294);
@@ -294,10 +294,10 @@ public class MixedMsgItemBuilder
     {
     default: 
       return;
-    case 2131234872: 
+    case 2131234874: 
       ChatActivityFacade.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
       return;
-    case 2131234877: 
+    case 2131234879: 
       ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(MessageForMixedMsg.getTextFromMixedMsg(paramChatMessage));
       return;
     case 2131231190: 
@@ -323,22 +323,22 @@ public class MixedMsgItemBuilder
       paramView = paramView.getResources();
       if (paramChatMessage.isSend())
       {
-        paramViewHolder = paramView.getColorStateList(2131362080);
+        paramViewHolder = paramView.getColorStateList(2131362090);
         if (!paramChatMessage.isSend()) {
           break label79;
         }
       }
       label79:
-      for (paramView = paramView.getColorStateList(2131362079);; paramView = paramView.getColorStateList(2131362078))
+      for (paramView = paramView.getColorStateList(2131362089);; paramView = paramView.getColorStateList(2131362088))
       {
         MixedMsgItemBuilder.MixedHolder.a(localMixedHolder).a(paramViewHolder, paramView);
         return;
-        paramViewHolder = paramView.getColorStateList(2131362077);
+        paramViewHolder = paramView.getColorStateList(2131362087);
         break;
       }
     }
     paramViewHolder = ColorStateList.valueOf(-16777216);
-    paramView = paramView.getResources().getColorStateList(2131362078);
+    paramView = paramView.getResources().getColorStateList(2131362088);
     if (paramBubbleInfo.b != 0) {
       paramViewHolder = ColorStateList.valueOf(paramBubbleInfo.b);
     }
@@ -352,7 +352,7 @@ public class MixedMsgItemBuilder
   {
     paramView = new QQCustomMenu();
     paramView.a(this.jdField_a_of_type_AndroidContentContext.getString(2131562176));
-    paramView.a(2131234877, this.jdField_a_of_type_AndroidContentContext.getString(2131561881));
+    paramView.a(2131234879, this.jdField_a_of_type_AndroidContentContext.getString(2131561881));
     paramView.a(2131231190, this.jdField_a_of_type_AndroidContentContext.getString(2131562129));
     paramView.a(2131231192, this.jdField_a_of_type_AndroidContentContext.getString(2131560772));
     ChatActivityFacade.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);

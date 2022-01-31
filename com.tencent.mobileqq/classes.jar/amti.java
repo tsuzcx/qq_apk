@@ -1,27 +1,12 @@
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
-import cooperation.qzone.plugin.IQZonePluginManager;
-
 public class amti
-  implements Runnable
 {
-  public amti(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity, PluginBaseInfo paramPluginBaseInfo) {}
-  
-  public void run()
-  {
-    try
-    {
-      if (QzoneVerticalVideoDownloadActivity.a(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity) != null) {
-        QzoneVerticalVideoDownloadActivity.a(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity).a(this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.mID, null, QzoneVerticalVideoDownloadActivity.a(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity));
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("QzoneVerticalVideoDownloadActivity", 1, localException, new Object[0]);
-    }
-  }
+  public int a = 2;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
 }
 
 

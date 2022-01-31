@@ -2,10 +2,10 @@ package com.tencent.biz.qqstory.utils.ffmpeg;
 
 import java.util.ArrayList;
 
-final class FFmpegUtils$4
-  extends ArrayList
+public final class FFmpegUtils$4
+  extends ArrayList<Object>
 {
-  FFmpegUtils$4(String paramString1, String paramString2)
+  public FFmpegUtils$4(String paramString1, String paramString2)
   {
     add(this.val$inputPicPath);
     add(this.val$outputVideoPath);
@@ -13,7 +13,7 @@ final class FFmpegUtils$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.ffmpeg.FFmpegUtils.4
  * JD-Core Version:    0.7.0.1
  */

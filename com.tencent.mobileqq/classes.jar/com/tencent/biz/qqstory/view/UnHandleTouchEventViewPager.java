@@ -8,6 +8,8 @@ import android.view.MotionEvent;
 public class UnHandleTouchEventViewPager
   extends ViewPager
 {
+  protected boolean a;
+  
   public UnHandleTouchEventViewPager(Context paramContext)
   {
     super(paramContext);
@@ -33,10 +35,25 @@ public class UnHandleTouchEventViewPager
   {
     return false;
   }
+  
+  public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
+  {
+    return (!this.a) && (super.onInterceptTouchEvent(paramMotionEvent));
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent)
+  {
+    return (!this.a) && (super.onTouchEvent(paramMotionEvent));
+  }
+  
+  public void setDisableScroll(boolean paramBoolean)
+  {
+    this.a = paramBoolean;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.UnHandleTouchEventViewPager
  * JD-Core Version:    0.7.0.1
  */

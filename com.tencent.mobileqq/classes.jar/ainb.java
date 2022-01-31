@@ -1,50 +1,22 @@
-import com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager;
-import com.tencent.mobileqq.teamwork.spread.BaseTimAIOTipsProcessor.ListResult;
-import com.tencent.mobileqq.teamwork.spread.ConfigSetting;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.phone.PhoneFrame;
+import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
 
-class ainb
-  implements BaseTimAIOTipsProcessor.ListResult
+public class ainb
+  implements View.OnClickListener
 {
-  ainb(aina paramaina, String paramString) {}
+  public ainb(PhoneFrameActivity paramPhoneFrameActivity) {}
   
-  public void a(List paramList)
+  public void onClick(View paramView)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      if (QLog.isDebugVersion())
-      {
-        if (paramList != null) {
-          break label34;
-        }
-        paramList = "lst is null";
-        QLog.i("AIOMessageSpreadManager", 1, paramList);
-      }
+    paramView = this.a.a.a();
+    if (paramView != null) {
+      paramView.a(false);
     }
-    label34:
-    float f1;
-    float f2;
-    do
-    {
-      return;
-      while (!paramList.hasNext())
-      {
-        paramList = "lst.size() = 0";
-        break;
-        f1 = AIOMessageSpreadManager.a(this.jdField_a_of_type_Aina.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).a();
-        paramList = paramList.iterator();
-      }
-      str = (String)paramList.next();
-      f2 = AIOMessageSpreadManager.a(this.jdField_a_of_type_Aina.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager, this.jdField_a_of_type_JavaLangString, str);
-      if (QLog.isColorLevel()) {
-        QLog.i("AIOMessageSpreadManager", 1, "file[" + this.jdField_a_of_type_JavaLangString + "] and [" + str + "], precentage[" + f2 + "]");
-      }
-    } while (f2 - f1 <= 0.0F);
-    String str = AIOMessageSpreadManager.a(this.jdField_a_of_type_Aina.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).b();
-    paramList = AIOMessageSpreadManager.a(this.jdField_a_of_type_Aina.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).c();
-    str = str + "。" + paramList;
-    AIOMessageSpreadManager.a(this.jdField_a_of_type_Aina.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager, this.jdField_a_of_type_Aina.jdField_a_of_type_ComTencentMobileqqDataChatMessage, str, paramList, "precent", null);
+    com.tencent.mobileqq.app.PhoneContactManagerImp.f = false;
+    this.a.setResult(1);
+    this.a.finish();
   }
 }
 

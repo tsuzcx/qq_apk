@@ -1,24 +1,20 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.utils.BatchAddFriendData;
-import com.tencent.mobileqq.troop.utils.TroopMemberGlobalLevelUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class vzo
-  implements Runnable
+class vzo
+  implements DialogInterface.OnDismissListener
 {
-  public vzo(TroopChatPie paramTroopChatPie) {}
+  vzo(vzl paramvzl, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    TroopMemberGlobalLevelUtils.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-    String str = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("uin");
-    BatchAddFriendData.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vzo
  * JD-Core Version:    0.7.0.1
  */

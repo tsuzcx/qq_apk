@@ -1,18 +1,30 @@
-import com.tencent.mobileqq.profile.view.ProfileTagView;
-
-public class agrv
-  implements Runnable
+class agrv
+  implements bcro
 {
-  public agrv(ProfileTagView paramProfileTagView) {}
+  agrv(agrn paramagrn) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString)
   {
-    this.a.a();
+    if ((paramBoolean) && (this.a.g.equals(paramString)))
+    {
+      this.a.X = true;
+      paramString = (afgn)this.a.a(23);
+      if (paramString != null) {
+        paramString.a(true);
+      }
+    }
+    do
+    {
+      return;
+      this.a.X = false;
+      paramString = (afgn)this.a.a(23);
+    } while (paramString == null);
+    paramString.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agrv
  * JD-Core Version:    0.7.0.1
  */

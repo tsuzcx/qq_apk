@@ -1,27 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.qphone.base.util.QLog;
 
 public class llk
-  implements Runnable
 {
-  public llk(KandianMergeManager paramKandianMergeManager, String paramString, int paramInt) {}
-  
-  public void run()
+  public static void a()
   {
-    SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_JavaLangString = AppConstants.ar;
-    localSessionInfo.jdField_a_of_type_Int = 1008;
-    ChatActivityFacade.a(KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager), localSessionInfo);
-    KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager).a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, false, false);
+    a("0X8009850");
+  }
+  
+  static void a(String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.w("VoiceRecogReport", 1, "report, key[" + paramString + "]");
+    }
+    azqs.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", null, null);
+  }
+  
+  public static void b()
+  {
+    a("0X8009851");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     llk
  * JD-Core Version:    0.7.0.1
  */

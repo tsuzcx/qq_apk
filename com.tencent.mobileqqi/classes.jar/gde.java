@@ -1,90 +1,34 @@
-import android.os.Handler;
-import com.tencent.mobileqq.filemanager.util.UniformDownloader;
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmassistantsdk.downloadclient.ITMAssistantDownloadSDKClientListener;
-import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
-import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.mobileqq.musicgene.BitmapBlur;
+import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
+import java.io.File;
 
 public class gde
-  implements ITMAssistantDownloadSDKClientListener
+  implements Runnable
 {
-  public gde(UniformDownloaderAppBabySdk paramUniformDownloaderAppBabySdk) {}
+  public gde(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin, String paramString, File paramFile) {}
   
-  public void OnDownloadSDKTaskProgressChanged(TMAssistantDownloadSDKClient paramTMAssistantDownloadSDKClient, String paramString, long paramLong1, long paramLong2)
+  public void run()
   {
-    UniformDownloaderAppBabySdk.b(this.a);
-    if (!UniformDownloaderAppBabySdk.a(this.a).post(new gdf(this, paramString, paramLong1, paramLong2))) {
-      QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. thread error!!");
-    }
-  }
-  
-  public void OnDownloadSDKTaskStateChanged(TMAssistantDownloadSDKClient paramTMAssistantDownloadSDKClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    int i = 0;
-    int j = 0;
-    Object localObject2 = null;
-    QLog.i(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] inPDownloadSDKTaskStateChanged  state:[" + paramInt1 + "] errcode:[" + paramInt2 + "] errStr:[" + paramString2 + "] url:[" + paramString1 + "]");
-    String str = "";
-    Object localObject1;
-    if ((paramTMAssistantDownloadSDKClient != null) && (4 == paramInt1))
+    Object localObject1 = MusicGeneWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicGeneWebViewPlugin, this.jdField_a_of_type_JavaLangString);
+    if (localObject1 != null)
     {
-      try
-      {
-        localObject1 = paramTMAssistantDownloadSDKClient.getDownloadTaskState(paramString1);
-        i = 0;
-        paramTMAssistantDownloadSDKClient = str;
-      }
-      catch (Exception paramTMAssistantDownloadSDKClient)
-      {
-        do
-        {
-          for (;;)
-          {
-            paramTMAssistantDownloadSDKClient.printStackTrace();
-            paramTMAssistantDownloadSDKClient = UniformDownloader.a(22);
-            localObject1 = null;
-            j = 22;
-            i = 1;
-            continue;
-            localObject1 = ((TMAssistantDownloadTaskInfo)localObject1).mSavePath;
-          }
-        } while (UniformDownloaderAppBabySdk.a(this.a).post(new gdh(this, paramString1, paramInt1, paramInt2, paramString2, (String)localObject1)));
-        QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. thread error!!");
-        return;
-      }
-      if (localObject1 == null) {
-        localObject1 = localObject2;
-      }
-    }
-    for (;;)
-    {
-      UniformDownloaderAppBabySdk.b(this.a);
-      if (i != 0)
-      {
-        if (!UniformDownloaderAppBabySdk.a(this.a).post(new gdg(this, paramString1, j, paramTMAssistantDownloadSDKClient))) {
-          QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. haveErr and thread error!!");
-        }
-        return;
-      }
-      localObject1 = null;
-      paramTMAssistantDownloadSDKClient = "";
-      j = 0;
-    }
-  }
-  
-  public void OnDwonloadSDKServiceInvalid(TMAssistantDownloadSDKClient paramTMAssistantDownloadSDKClient)
-  {
-    QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] ABSdkdownload service invalid ");
-    UniformDownloaderAppBabySdk.b(this.a);
-    if (!UniformDownloaderAppBabySdk.a(this.a).post(new gdi(this))) {
-      QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] OnDwonloadSDKServiceInvalid. thread error!!");
+      Object localObject2 = BitmapBlur.a((Bitmap)localObject1, 0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), true);
+      MusicGeneWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicGeneWebViewPlugin, (Bitmap)localObject2);
+      localObject1 = Message.obtain(MusicGeneWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicGeneWebViewPlugin));
+      ((Message)localObject1).obj = localObject2;
+      localObject2 = new Bundle();
+      ((Bundle)localObject2).putString("BUNDLE_KEY_FILE_PATH", this.jdField_a_of_type_JavaIoFile.getPath());
+      ((Message)localObject1).setData((Bundle)localObject2);
+      ((Message)localObject1).sendToTarget();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gde
  * JD-Core Version:    0.7.0.1
  */

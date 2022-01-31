@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager.FavEmotionDataInPanelCallback;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
 
-class abzq
-  implements Runnable
+public class abzq
+  implements DialogInterface.OnClickListener
 {
-  abzq(abzp paramabzp, List paramList) {}
+  public abzq(TestAppFragment paramTestAppFragment) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Abzp.a.a(this.jdField_a_of_type_JavaUtilList);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abzq
  * JD-Core Version:    0.7.0.1
  */

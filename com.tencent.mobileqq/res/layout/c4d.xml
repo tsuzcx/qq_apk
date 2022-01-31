@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:background="@color/nx" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <LinearLayout android:orientation="vertical" android:layout_width="320.0dip" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <RelativeLayout android:orientation="vertical" android:background="@color/al3" android:padding="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="18.0dip" android:textColor="@color/bp" android:gravity="center" android:id="@id/k_o" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/vnf" android:layout_alignParentTop="true" />
+            <TextView android:textSize="16.0dip" android:textColor="@color/bp" android:gravity="left" android:id="@id/k_n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/vnh" android:layout_below="@id/k_o" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="18.0sp" android:textColor="@color/z_" android:gravity="center" android:layout_gravity="center" android:id="@id/afz" android:background="@drawable/b87" android:layout_width="130.0dip" android:layout_height="36.0dip" android:layout_marginTop="24.0dip" android:text="@string/vni" android:layout_below="@id/k_n" android:layout_alignParentLeft="true" />
+            <TextView android:textSize="18.0sp" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center" android:id="@id/afp" android:background="@color/ki" android:layout_width="130.0dip" android:layout_height="36.0dip" android:layout_marginTop="24.0dip" android:text="@string/vng" android:layout_below="@id/k_n" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <ImageView android:layout_gravity="center" android:id="@id/aj7" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="40.0dip" android:src="@drawable/ahp" />
+    </LinearLayout>
+</RelativeLayout>

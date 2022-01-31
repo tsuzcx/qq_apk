@@ -1,32 +1,13 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.filemanager.widget.QfileHorizontalListView;
+import com.tencent.mobileqq.data.ResourcePluginInfo;
 
 public class adiz
-  extends DataSetObserver
 {
-  public adiz(QfileHorizontalListView paramQfileHorizontalListView) {}
-  
-  public void onChanged()
-  {
-    synchronized (this.a)
-    {
-      QfileHorizontalListView.a(this.a, true);
-      this.a.invalidate();
-      this.a.requestLayout();
-      return;
-    }
-  }
-  
-  public void onInvalidated()
-  {
-    QfileHorizontalListView.a(this.a);
-    this.a.invalidate();
-    this.a.requestLayout();
-  }
+  public ResourcePluginInfo a;
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adiz
  * JD-Core Version:    0.7.0.1
  */

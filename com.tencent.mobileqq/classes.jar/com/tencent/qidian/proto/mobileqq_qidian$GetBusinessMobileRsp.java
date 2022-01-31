@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class mobileqq_qidian$GetBusinessMobileRsp
-  extends MessageMicro
+  extends MessageMicro<GetBusinessMobileRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "msg_ret", "str_mobile" }, new Object[] { null, "" }, GetBusinessMobileRsp.class);
   public mobileqq_qidian.RetInfo msg_ret = new mobileqq_qidian.RetInfo();
@@ -14,7 +14,7 @@ public final class mobileqq_qidian$GetBusinessMobileRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qidian.proto.mobileqq_qidian.GetBusinessMobileRsp
  * JD-Core Version:    0.7.0.1
  */

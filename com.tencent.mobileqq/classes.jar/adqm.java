@@ -1,14 +1,24 @@
-import com.tencent.mobileqq.hotpic.HotPicPageView;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.QQLSActivity.17.1;
 
-class adqm
-  implements Runnable
+public class adqm
+  implements Animation.AnimationListener
 {
-  adqm(adql paramadql) {}
+  public adqm(QQLSActivity paramQQLSActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a(this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder, this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData);
+    if (QQLSActivity.a(this.a) != null) {
+      QQLSActivity.a(this.a).post(new QQLSActivity.17.1(this));
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

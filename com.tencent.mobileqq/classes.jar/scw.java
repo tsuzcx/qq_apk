@@ -1,26 +1,45 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.DBUtils;
-
 public class scw
-  implements Runnable
 {
-  public scw(ChatSettingForTroop paramChatSettingForTroop) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void run()
+  public String a(int paramInt)
   {
-    int i = DBUtils.a(this.a.app.getCurrentAccountUin(), "troop_game_feed", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(20);
-    localMessage.arg1 = i;
-    localMessage.sendToTarget();
+    if (paramInt == 2) {
+      return this.d;
+    }
+    if (paramInt == 3) {
+      return this.e;
+    }
+    if (paramInt == 6) {
+      return this.a;
+    }
+    if (paramInt == 4) {
+      return this.c;
+    }
+    if (paramInt == 5) {
+      return this.b;
+    }
+    return null;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    localStringBuilder.append("weibo : ").append(this.a).append("\n");
+    localStringBuilder.append("qq : ").append(this.d).append("\n");
+    localStringBuilder.append("wx : ").append(this.c).append("\n");
+    localStringBuilder.append("pyq : ").append(this.b).append("\n");
+    localStringBuilder.append("qzone : ").append(this.e).append("\n");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     scw
  * JD-Core Version:    0.7.0.1
  */

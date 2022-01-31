@@ -1,58 +1,33 @@
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.biz.TroopMemberLbs.TroopMemberLbsHelper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.IEventReceiver;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class umf
-  implements ActionSheet.OnButtonClickListener
+public abstract class umf<T extends IEventReceiver, EVENT extends uli>
+  extends QQUIEventReceiver<T, EVENT>
 {
-  public umf(PlusPanel paramPlusPanel, boolean paramBoolean, ActionSheet paramActionSheet) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public umf(T paramT)
   {
-    switch (paramInt)
+    super(paramT);
+  }
+  
+  public final void a(@NonNull T paramT, @NonNull EVENT paramEVENT)
+  {
+    if ((paramEVENT.a != null) && (paramEVENT.a.isFail()))
     {
-    default: 
-    case 0: 
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-        return;
-        PlusPanelUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().setCanLock(false);
-        }
-      }
-    }
-    if (!NetworkUtil.d(BaseApplicationImpl.getContext()))
-    {
-      QQToast.a(BaseApplicationImpl.getContext(), 2131433009, 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131558448));
+      c(paramT, paramEVENT);
       return;
     }
-    paramView = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).d(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      TroopMemberLbsHelper.a(paramView, bool, this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.getContext());
-      break;
-    }
+    b(paramT, paramEVENT);
   }
+  
+  public abstract void b(@NonNull T paramT, @NonNull EVENT paramEVENT);
+  
+  public abstract void c(@NonNull T paramT, @NonNull EVENT paramEVENT);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     umf
  * JD-Core Version:    0.7.0.1
  */

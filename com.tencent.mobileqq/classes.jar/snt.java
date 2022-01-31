@@ -1,20 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.viola.lottie.KdLottieView;
+import com.tencent.viola.ui.view.lottie.IVLottieViewProxy;
+import com.tencent.viola.ui.view.lottie.IVlottieViewCreater;
 
 public class snt
-  implements View.OnClickListener
+  implements IVlottieViewCreater
 {
-  public snt(ForwardRecentActivity paramForwardRecentActivity) {}
-  
-  public void onClick(View paramView)
+  public IVLottieViewProxy createLottieView(Context paramContext)
   {
-    this.a.a(ForwardRecentActivity.a(this.a), paramView, paramView.getId());
+    return new KdLottieView(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     snt
  * JD-Core Version:    0.7.0.1
  */

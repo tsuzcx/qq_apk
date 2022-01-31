@@ -19,44 +19,47 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView.ScaleType;
-import anqz;
-import anra;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
+import azri;
+import bayu;
+import bdhj;
+import bhtd;
+import bjvw;
+import bmiq;
+import bmla;
+import bmnh;
+import bmnj;
+import bmor;
+import bnaz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
-import cooperation.qzone.util.gifCoderWnsConfig;
 import cooperation.qzone.widget.FastAnimationDrawable;
-import dov.com.tencent.biz.qqstory.takevideo.publish.GenerateContext;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
+import wxe;
+import wxk;
 
 public class EditGifImage
-  extends EditVideoPart
+  extends bmnh
   implements Handler.Callback, View.OnTouchListener, Runnable
 {
   public static final int a;
   float jdField_a_of_type_Float;
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  public URLImageView a;
-  WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
+  public bhtd a;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   public FastAnimationDrawable a;
-  boolean jdField_a_of_type_Boolean = false;
+  public boolean a;
   float jdField_b_of_type_Float;
-  public FastAnimationDrawable b;
-  boolean jdField_b_of_type_Boolean = false;
+  FastAnimationDrawable jdField_b_of_type_CooperationQzoneWidgetFastAnimationDrawable;
+  public boolean b;
   boolean c = false;
   public boolean d = false;
   boolean e = false;
@@ -67,12 +70,15 @@ public class EditGifImage
   
   static
   {
-    jdField_a_of_type_Int = gifCoderWnsConfig.e;
+    jdField_a_of_type_Int = bjvw.e;
   }
   
-  public EditGifImage(@NonNull EditVideoPartManager paramEditVideoPartManager)
+  public EditGifImage(@NonNull bmnj parambmnj)
   {
-    super(paramEditVideoPartManager);
+    super(parambmnj);
+    this.jdField_a_of_type_Bhtd = new bhtd(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
   }
   
   public static int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
@@ -111,7 +117,7 @@ public class EditGifImage
     localHashMap.put("module_resetStatus", this.h + "");
     try
     {
-      StatisticCollector.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "GifAntishakeModule", true, 0L, 0L, localHashMap, null);
+      azri.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "GifAntishakeModule", true, 0L, 0L, localHashMap, null);
       return;
     }
     catch (Exception paramString1)
@@ -120,22 +126,22 @@ public class EditGifImage
     }
   }
   
-  private void c()
+  private void d()
   {
     if ((this.jdField_b_of_type_Boolean) && (!this.d))
     {
       if (this.jdField_b_of_type_CooperationQzoneWidgetFastAnimationDrawable == null)
       {
-        EditLocalGifSource localEditLocalGifSource = (EditLocalGifSource)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
+        EditLocalGifSource localEditLocalGifSource = (EditLocalGifSource)this.jdField_a_of_type_Bmnj.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
-        localURLDrawableOptions.mRequestHeight = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.b();
-        localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.a;
-        localURLDrawableOptions.mFailedDrawable = URLDrawableHelper.a;
+        localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_Bmnj.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
+        localURLDrawableOptions.mRequestHeight = this.jdField_a_of_type_Bmnj.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.b();
+        localURLDrawableOptions.mLoadingDrawable = bayu.a;
+        localURLDrawableOptions.mFailedDrawable = bayu.a;
         localURLDrawableOptions.mPlayGifImage = true;
         localEditLocalGifSource.jdField_a_of_type_JavaLangString = null;
       }
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new anqz(this));
+      this.jdField_a_of_type_Bhtd.post(new EditGifImage.1(this));
     }
   }
   
@@ -145,16 +151,16 @@ public class EditGifImage
     {
       if (this.jdField_b_of_type_CooperationQzoneWidgetFastAnimationDrawable == null)
       {
-        EditLocalGifSource localEditLocalGifSource = (EditLocalGifSource)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
+        EditLocalGifSource localEditLocalGifSource = (EditLocalGifSource)this.jdField_a_of_type_Bmnj.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
-        localURLDrawableOptions.mRequestHeight = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.b();
-        localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.a;
-        localURLDrawableOptions.mFailedDrawable = URLDrawableHelper.a;
+        localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_Bmnj.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
+        localURLDrawableOptions.mRequestHeight = this.jdField_a_of_type_Bmnj.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.b();
+        localURLDrawableOptions.mLoadingDrawable = bayu.a;
+        localURLDrawableOptions.mFailedDrawable = bayu.a;
         localURLDrawableOptions.mPlayGifImage = true;
         localEditLocalGifSource.jdField_a_of_type_JavaLangString = null;
       }
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new anra(this));
+      this.jdField_a_of_type_Bhtd.post(new EditGifImage.2(this));
     }
   }
   
@@ -164,7 +170,7 @@ public class EditGifImage
     float[] arrayOfFloat = new float[9];
     ((Matrix)localObject).getValues(arrayOfFloat);
     float f4 = arrayOfFloat[0];
-    localObject = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity().getResources().getDisplayMetrics();
+    localObject = this.jdField_a_of_type_Bmor.getActivity().getResources().getDisplayMetrics();
     int j = ((DisplayMetrics)localObject).widthPixels;
     int k = ((DisplayMetrics)localObject).heightPixels;
     int m = paramBitmap.getWidth();
@@ -181,7 +187,7 @@ public class EditGifImage
     for (;;)
     {
       paramBitmap = new RectF(0.0F, 0.0F, f3, f2);
-      SLog.c("EditPicActivity.EditGifImage", "getDisplayBounds " + paramBitmap + " scale " + f1 + " old scale " + f4);
+      wxe.c("EditPicActivity.EditGifImage", "getDisplayBounds " + paramBitmap + " scale " + f1 + " old scale " + f4);
       return paramBitmap;
       f3 = j;
       f1 = j / m;
@@ -192,15 +198,15 @@ public class EditGifImage
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)a(2131364409));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)a(2131367198));
     this.jdField_a_of_type_ComTencentImageURLImageView.setOnTouchListener(this);
     this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
     ThreadManager.post(this, 8, null, false);
   }
   
-  public void a(@NonNull GenerateContext paramGenerateContext)
+  public void a(@NonNull bnaz parambnaz)
   {
-    paramGenerateContext.a.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    parambnaz.a.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
     a("PublishBtn", this.d + "");
     if (this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable != null)
     {
@@ -209,11 +215,11 @@ public class EditGifImage
     }
   }
   
-  public void aB_()
+  public void aW_()
   {
-    super.aB_();
+    super.aW_();
     if (this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable != null) {
-      this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.start();
+      this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.stop();
     }
   }
   
@@ -227,21 +233,13 @@ public class EditGifImage
     this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
   }
   
-  public void ax_()
+  public void g()
   {
-    super.ax_();
-    if (this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable != null) {
-      this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.stop();
-    }
-  }
-  
-  public void h()
-  {
-    super.h();
+    super.g();
     if (QLog.isColorLevel()) {
       QLog.d("EditPicActivity.EditGifImage", 2, "EditGifImage onDestroy");
     }
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(999);
+    this.jdField_a_of_type_Bhtd.removeMessages(999);
     if (this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable != null)
     {
       this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.stop();
@@ -258,7 +256,7 @@ public class EditGifImage
   
   public boolean handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity().isFinishing()) {
+    if (this.jdField_a_of_type_Bmor.getActivity().isFinishing()) {
       QLog.e("EditPicActivity.EditGifImage", 1, "handleMessage isFinishing" + paramMessage.what);
     }
     do
@@ -273,8 +271,8 @@ public class EditGifImage
             return false;
             if (paramMessage.what == 998)
             {
-              QQToast.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity().getApplicationContext(), this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity().getResources().getString(2131438722), 0).a();
-              this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(0, null, 2131034158, 0);
+              QQToast.a(this.jdField_a_of_type_Bmor.getActivity().getApplicationContext(), this.jdField_a_of_type_Bmor.getActivity().getResources().getString(2131720898), 0).a();
+              this.jdField_a_of_type_Bmor.a(0, null, 2130772028, 0);
               return false;
             }
             if (paramMessage.what != 999) {
@@ -291,9 +289,9 @@ public class EditGifImage
               this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.a(((ViewGroup.LayoutParams)localObject).width, ((ViewGroup.LayoutParams)localObject).height);
               this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.start();
             }
-            localObject = (EditDoodleExport)a(EditDoodleExport.class);
+            localObject = (bmiq)a(bmiq.class);
           } while (localObject == null);
-          ((EditDoodleExport)localObject).a((int)paramMessage.width(), (int)paramMessage.height(), false);
+          ((bmiq)localObject).a((int)paramMessage.width(), (int)paramMessage.height(), false);
           return false;
           if (paramMessage.what != 995) {
             break;
@@ -308,18 +306,18 @@ public class EditGifImage
           break;
         }
         this.e = true;
-        c();
+        d();
       } while (this.g);
       a("AutoOptimizationBtn", "showAntishake");
       this.g = true;
       return false;
       if (paramMessage.what == 997)
       {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoButton.a(false, false);
+        this.jdField_a_of_type_Bmnj.jdField_a_of_type_Bmla.a(false, false);
         return false;
       }
     } while (paramMessage.what != 996);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoButton.a(true, false);
+    this.jdField_a_of_type_Bmnj.jdField_a_of_type_Bmla.a(true, false);
     a("AutoOptimizationBtn", "exposeAntishake");
     this.i = true;
     return false;
@@ -339,24 +337,16 @@ public class EditGifImage
       float f1 = paramMotionEvent.getX();
       float f2 = paramMotionEvent.getY();
       if ((Math.abs(f1 - this.jdField_a_of_type_Float) < 10.0F) && (Math.abs(f2 - this.jdField_b_of_type_Float) < 10.0F)) {
-        if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.b != 21)
+        if (this.jdField_a_of_type_Bmnj.jdField_a_of_type_Int != 21)
         {
-          if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int != 2)
+          if (this.jdField_a_of_type_Bmnj.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int != 2)
           {
-            this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(5);
-            VideoEditReport.b("0X80075D7");
-          }
-          else if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.b == 0)
-          {
-            this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(27);
-          }
-          else if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.b == 27)
-          {
-            this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
+            this.jdField_a_of_type_Bmnj.a(5);
+            wxk.b("0X80075D7");
           }
         }
         else {
-          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
+          this.jdField_a_of_type_Bmnj.a(0);
         }
       }
     }
@@ -366,15 +356,15 @@ public class EditGifImage
   {
     Object localObject1;
     Object localObject2;
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a() != null)
+    if (this.jdField_a_of_type_Bmnj.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a() != null)
     {
       this.jdField_a_of_type_Boolean = false;
-      localObject1 = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
+      localObject1 = this.jdField_a_of_type_Bmnj.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
       localObject2 = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
-      ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.b();
-      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = URLDrawableHelper.a;
-      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = URLDrawableHelper.a;
+      ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = this.jdField_a_of_type_Bmnj.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
+      ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = this.jdField_a_of_type_Bmnj.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.b();
+      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = bayu.a;
+      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = bayu.a;
       ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = true;
       localObject2 = URLDrawable.getDrawable(new File((String)localObject1), (URLDrawable.URLDrawableOptions)localObject2);
       this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject2);
@@ -387,28 +377,28 @@ public class EditGifImage
       if ((((BitmapFactory.Options)localObject2).outWidth < jdField_a_of_type_Int) || (((BitmapFactory.Options)localObject2).outHeight < jdField_a_of_type_Int))
       {
         QLog.e("EditPicActivity.EditGifImage", 1, "bitmapPath:" + (String)localObject1 + " too small width:" + ((BitmapFactory.Options)localObject2).outWidth + " height:" + ((BitmapFactory.Options)localObject2).outHeight);
-        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(998);
+        this.jdField_a_of_type_Bhtd.sendEmptyMessage(998);
         return;
-        if (((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalGifSource)) && (((EditLocalGifSource)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_JavaUtilArrayList != null) && (((EditLocalGifSource)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_JavaUtilArrayList.size() > 0))
+        if (((this.jdField_a_of_type_Bmnj.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalGifSource)) && (((EditLocalGifSource)this.jdField_a_of_type_Bmnj.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_JavaUtilArrayList != null) && (((EditLocalGifSource)this.jdField_a_of_type_Bmnj.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_JavaUtilArrayList.size() > 0))
         {
           this.jdField_a_of_type_Boolean = true;
-          localObject1 = (String)((EditLocalGifSource)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_JavaUtilArrayList.get(0);
+          localObject1 = (String)((EditLocalGifSource)this.jdField_a_of_type_Bmnj.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_JavaUtilArrayList.get(0);
           this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable);
         }
       }
       else
       {
-        DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity().getResources().getDisplayMetrics();
+        DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_Bmor.getActivity().getResources().getDisplayMetrics();
         int j = a((BitmapFactory.Options)localObject2, localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
         ((BitmapFactory.Options)localObject2).inJustDecodeBounds = false;
         ((BitmapFactory.Options)localObject2).inSampleSize = j;
         try
         {
-          localObject2 = ImageUtil.a((String)localObject1, (BitmapFactory.Options)localObject2);
+          localObject2 = bdhj.a((String)localObject1, (BitmapFactory.Options)localObject2);
           if (localObject2 == null)
           {
             QLog.e("EditPicActivity.EditGifImage", 1, "decode" + null);
-            this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(0, null, 2131034158, 0);
+            this.jdField_a_of_type_Bmor.a(0, null, 2130772028, 0);
             return;
           }
         }
@@ -423,14 +413,14 @@ public class EditGifImage
           if (QLog.isColorLevel()) {
             QLog.d("EditPicActivity.EditGifImage", 2, "sampleSize" + j + " w " + localBitmap.getWidth() + " h " + localBitmap.getHeight());
           }
-          j = ImageUtil.a((String)localObject1);
+          j = bdhj.b((String)localObject1);
           localObject1 = localBitmap;
           if (j != 0)
           {
             localObject1 = localBitmap;
             if (j % 90 == 0)
             {
-              this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.c = j;
+              this.jdField_a_of_type_Bmnj.b = j;
               if (QLog.isColorLevel()) {
                 QLog.d("EditPicActivity.EditGifImage", 2, "has exif rotate" + j);
               }
@@ -442,17 +432,25 @@ public class EditGifImage
             }
           }
           this.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject1);
-          this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage(999, localObject1).sendToTarget();
+          this.jdField_a_of_type_Bhtd.obtainMessage(999, localObject1).sendToTarget();
           return;
         }
       }
       localObject1 = null;
     }
   }
+  
+  public void z_()
+  {
+    super.z_();
+    if (this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable != null) {
+      this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.start();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditGifImage
  * JD-Core Version:    0.7.0.1
  */

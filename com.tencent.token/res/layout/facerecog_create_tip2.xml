@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:gravity="center" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/fr_rl_note" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="60.0dip" android:layout_centerHorizontal="true">
+    <RelativeLayout android:id="@id/fr_rl_note" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="47.0dip" android:layout_centerHorizontal="true">
         <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/face_create_note" android:layout_centerHorizontal="true" style="@style/text_view" />
     </RelativeLayout>
-    <RelativeLayout android:id="@id/fr_rl_chk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="35.0dip" android:layout_marginRight="23.0dip" android:layout_below="@id/fr_rl_note">
+    <RelativeLayout android:id="@id/fr_rl_tip_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="23.0dip" android:layout_marginRight="23.0dip" android:layout_below="@id/fr_rl_note">
+        <ImageView android:id="@id/icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/blue_circle_icon" />
+        <TextView android:textSize="@dimen/text_size_13" android:textColor="@color/utils_font_color_desc" android:id="@id/fr_tv_tip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/fr_tips_goal" android:layout_toRightOf="@id/icon" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/fr_rl_chk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="35.0dip" android:layout_marginRight="23.0dip" android:layout_below="@id/fr_rl_note">
         <CheckBox android:id="@id/fr_chk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:button="@drawable/ic_checkbox_light_bg" android:layout_alignParentLeft="true" />
         <TextView android:id="@id/fr_no_tips" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/fr_no_tips_again" android:layout_toRightOf="@id/fr_chk" android:layout_centerInParent="true" style="@style/text_view" />
     </RelativeLayout>
-    <Button android:gravity="center" android:id="@id/fr_btn_scan" android:background="@drawable/blue_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="23.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="23.0dip" android:text="@string/barcode_scan_start" android:layout_below="@id/fr_rl_chk" style="@style/text_view_white" />
+    <Button android:gravity="center" android:id="@id/fr_btn_scan" android:background="@drawable/blue_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="23.0dip" android:layout_marginTop="17.0dip" android:layout_marginRight="23.0dip" android:text="@string/start_photo" android:layout_below="@id/fr_rl_tip_layout" style="@style/text_view_white" />
 </RelativeLayout>

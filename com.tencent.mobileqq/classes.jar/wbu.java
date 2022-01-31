@@ -1,29 +1,44 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.activity.aio.stickerbubble.ItemStatus.Acceleration;
-import com.tencent.mobileqq.activity.aio.stickerbubble.ItemStatus.Velocity;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wbu
+  extends QQUIEventReceiver<wax, uvf>
 {
-  private int jdField_a_of_type_Int;
-  private Point jdField_a_of_type_AndroidGraphicsPoint;
-  private ItemStatus.Acceleration jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus$Acceleration;
-  private ItemStatus.Velocity jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus$Velocity;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public wbu(Point paramPoint, String paramString, boolean paramBoolean, ItemStatus.Velocity paramVelocity, ItemStatus.Acceleration paramAcceleration, int paramInt)
+  public wbu(@NonNull wax paramwax)
   {
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus$Velocity = paramVelocity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus$Acceleration = paramAcceleration;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramwax);
+  }
+  
+  public void a(@NonNull wax paramwax, @NonNull uvf paramuvf)
+  {
+    paramwax.l();
+    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)paramwax.a()).a();
+    if (localVideoViewVideoHolder != null) {
+      localVideoViewVideoHolder.c(false);
+    }
+    wxe.b(this.TAG, "delete onEvent");
+    if ((!paramuvf.jdField_a_of_type_Boolean) && (paramuvf.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()))
+    {
+      if (QLog.isColorLevel()) {
+        wxe.d(this.TAG, "删除失败：%s", new Object[] { paramuvf.a() });
+      }
+      QQToast.a(paramwax.b(), 1, alud.a(2131707271), 0).a();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uvf.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wbu
  * JD-Core Version:    0.7.0.1
  */

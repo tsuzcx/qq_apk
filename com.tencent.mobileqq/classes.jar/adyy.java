@@ -1,57 +1,43 @@
-import com.tencent.mobileqq.hotpic.VideoItemEventManager.onVideoItemEventListener;
-import com.tencent.mobileqq.leba.LebaFeedsVideoPlayController;
-import com.tencent.mobileqq.leba.LebaFeedsVideoPlayer;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import java.io.File;
 
 public class adyy
-  implements VideoItemEventManager.onVideoItemEventListener
+  implements View.OnClickListener
 {
-  public adyy(LebaFeedsVideoPlayController paramLebaFeedsVideoPlayController) {}
+  public adyy(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void a() {}
-  
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    LebaFeedsVideoPlayController.a(this.a, 1000L);
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("LebaFeedsVideoPlayController", 2, "onVolumChange");
-    }
-    boolean bool;
-    int i;
-    if ((LebaFeedsVideoPlayController.a(this.a) != null) && (LebaFeedsVideoPlayController.a(this.a)) && (LebaFeedsVideoPlayController.a(this.a) != null))
+    this.a.b(3);
+    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.b);
+    if (this.a.a().booleanValue())
     {
-      bool = LebaFeedsVideoPlayController.a(this.a).c();
-      if ((LebaFeedsVideoPlayController.a(this.a) == null) || (!LebaFeedsVideoPlayController.a(this.a).b())) {
-        break label115;
+      this.a.b();
+      paramView = ThemeUtil.getThemeVoiceRootPath();
+      if (paramView != null)
+      {
+        paramView = new File(paramView + File.separatorChar + "message.mp3");
+        if (paramView.exists())
+        {
+          this.a.b();
+          this.a.a(Uri.fromFile(paramView));
+        }
       }
-      i = 1;
-      if (i == 0) {
-        break label120;
-      }
-      LebaFeedsVideoPlayController.a(this.a).a(true);
-      LebaFeedsVideoPlayController.a(this.a, true);
-      LebaFeedsVideoPlayController.a(this.a, true);
     }
-    label115:
-    label120:
-    while (!bool)
+    else
     {
       return;
-      i = 0;
-      break;
     }
-    LebaFeedsVideoPlayController.a(this.a).a(false);
-    LebaFeedsVideoPlayController.a(this.a, false);
-    LebaFeedsVideoPlayController.a(this.a, false);
+    this.a.b();
+    this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230721));
   }
-  
-  public void b(boolean paramBoolean) {}
-  
-  public void c(boolean paramBoolean) {}
 }
 
 

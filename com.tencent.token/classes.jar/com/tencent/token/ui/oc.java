@@ -1,11 +1,14 @@
 package com.tencent.token.ui;
 
-import com.tencent.token.ui.base.cc;
-
-final class oc
-  implements cc
+class oc
+  implements Runnable
 {
-  oc(LoginMsgActivity paramLoginMsgActivity) {}
+  oc(LogoActivity paramLogoActivity) {}
+  
+  public void run()
+  {
+    this.a.nextPage();
+  }
 }
 
 

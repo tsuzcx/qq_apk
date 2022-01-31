@@ -1,25 +1,25 @@
-import com.tencent.biz.troopgift.TroopGiftPanel.OnShowOrHideListerner;
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.nearby.gift.NearbyGiftPanelDialog;
+import android.os.SystemClock;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class vvd
-  implements TroopGiftPanel.OnShowOrHideListerner
+class vvd
+  implements vwf
 {
-  public vvd(HotChatPie paramHotChatPie) {}
+  vvd(vva paramvva, StoryVideoItem paramStoryVideoItem) {}
   
-  public void a()
+  public void a(vwa paramvwa)
   {
-    this.a.a.a();
-  }
-  
-  public void b()
-  {
-    this.a.a.a(false, false, 4);
+    if (this.jdField_a_of_type_Vva.isCanceled()) {
+      return;
+    }
+    wxe.a(this.jdField_a_of_type_Vva.a.a, "onPrepared, [videoView=%d]", Integer.valueOf(System.identityHashCode(paramvwa)));
+    VideoViewVideoHolder.a(this.jdField_a_of_type_Vva.a, "VP", SystemClock.uptimeMillis());
+    this.jdField_a_of_type_Vva.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vvd
  * JD-Core Version:    0.7.0.1
  */

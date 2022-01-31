@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:background="@android:color/black" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/wu" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView android:id="@id/ign" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <Button android:id="@id/be7" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="229.0dip" android:text="debug" />
+</RelativeLayout>

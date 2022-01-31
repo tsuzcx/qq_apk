@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.arcard.ARVideoPreviewActivity;
+import com.tencent.gdtad.api.GdtAd;
 
-class aane
-  implements Runnable
+public abstract interface aane
 {
-  aane(aand paramaand) {}
+  public abstract void a(GdtAd paramGdtAd);
   
-  public void run()
-  {
-    ARVideoPreviewActivity.a(this.a.a.a);
-    ARVideoPreviewActivity.b(this.a.a.a);
-  }
+  public abstract void a(GdtAd paramGdtAd, aand paramaand);
+  
+  public abstract void b(GdtAd paramGdtAd);
+  
+  public abstract void c(GdtAd paramGdtAd);
+  
+  public abstract void d(GdtAd paramGdtAd);
 }
 
 

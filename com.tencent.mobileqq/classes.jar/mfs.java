@@ -1,34 +1,106 @@
 import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.plugin.PluginBaseActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.av.ui.funchat.filter.EffectFilterPanel;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class mfs
-  implements Runnable
+public class mfs
+  implements View.OnClickListener
 {
-  mfs(mfr parammfr) {}
+  public mfs(EffectSettingUi paramEffectSettingUi) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    VideoShareHelper.a(this.a.jdField_a_of_type_Mfq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper).a(this.a.jdField_a_of_type_Mfq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-    if ((VideoShareHelper.a(this.a.jdField_a_of_type_Mfq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper) instanceof BaseActivity)) {
-      QQToast.a(VideoShareHelper.a(this.a.jdField_a_of_type_Mfq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper), -1, VideoShareHelper.a(this.a.jdField_a_of_type_Mfq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper).getString(2131428476), 0).b(((BaseActivity)VideoShareHelper.a(this.a.jdField_a_of_type_Mfq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper)).getTitleBarHeight());
-    }
-    for (;;)
+    long l = AudioHelper.b();
+    int k = paramView.getId();
+    paramView = paramView.getTag(2131377415);
+    if ((paramView != null) && ((paramView instanceof Boolean))) {}
+    for (boolean bool = ((Boolean)paramView).booleanValue();; bool = false)
     {
-      VideoShareHelper.a(this.a.jdField_a_of_type_Mfq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper).a(VideoShareHelper.a(this.a.jdField_a_of_type_Mfq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper), this.a.jdField_a_of_type_Mfq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.a.jdField_a_of_type_JavaUtilArrayList);
-      return;
-      if ((VideoShareHelper.a(this.a.jdField_a_of_type_Mfq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper) instanceof PluginBaseActivity)) {
-        QQToast.a(VideoShareHelper.a(this.a.jdField_a_of_type_Mfq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper), -1, VideoShareHelper.a(this.a.jdField_a_of_type_Mfq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper).getString(2131428476), 0).b(((PluginBaseActivity)VideoShareHelper.a(this.a.jdField_a_of_type_Mfq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper)).g());
+      int m = this.a.jdField_a_of_type_Int;
+      bool = this.a.a(l, k, bool);
+      int i;
+      int j;
+      if (k == 4)
+      {
+        i = 1;
+        j = i;
+        if (i != 0)
+        {
+          paramView = ((AVActivity)this.a.getContext()).a;
+          if ((paramView != null) && ((paramView == null) || (paramView.getVisibility() != 8))) {
+            break label321;
+          }
+          j = 1;
+        }
+        label109:
+        if ((bool) && ((m != k) || (j != 0))) {
+          this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(6105), Integer.valueOf(k), Long.valueOf(l) });
+        }
+        if (bool)
+        {
+          paramView = VideoController.a().a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get());
+          if (paramView != null)
+          {
+            if (QLog.isDevelopLevel()) {
+              QLog.d("EffectSettingUi", 1, "onShow clear state");
+            }
+            paramView.b(k);
+          }
+        }
+        this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(165), Integer.valueOf(1) });
+        if (m != k)
+        {
+          if (k != 1) {
+            break label326;
+          }
+          meb.b((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().E, this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d, this.a.a(), bool);
+        }
       }
+      label321:
+      label326:
+      label372:
+      do
+      {
+        do
+        {
+          return;
+          i = 0;
+          break;
+          j = 0;
+          break label109;
+          if (k != 2) {
+            break label372;
+          }
+          meb.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.a.a(), bool);
+        } while (this.a.jdField_a_of_type_Mfp == null);
+        this.a.jdField_a_of_type_Mfp.a();
+        return;
+        if (k == 4)
+        {
+          meb.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().E, this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d, this.a.a(), bool);
+          return;
+        }
+        if (k == 3)
+        {
+          meb.a(this.a.a(), bool);
+          return;
+        }
+      } while (k != 5);
+      mtq.f();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mfs
  * JD-Core Version:    0.7.0.1
  */

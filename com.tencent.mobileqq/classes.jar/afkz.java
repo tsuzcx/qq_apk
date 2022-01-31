@@ -1,24 +1,10 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.MomentDataChangeObserver;
-import java.util.Iterator;
-import java.util.List;
-
-public class afkz
-  implements Runnable
+public abstract interface afkz
 {
-  public afkz(NearbyMomentManager paramNearbyMomentManager, String paramString) {}
-  
-  public void run()
-  {
-    Iterator localIterator = NearbyMomentManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager).iterator();
-    while (localIterator.hasNext()) {
-      ((NearbyMomentManager.MomentDataChangeObserver)localIterator.next()).c(this.jdField_a_of_type_JavaLangString);
-    }
-  }
+  public abstract String a(int paramInt1, int paramInt2, int paramInt3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afkz
  * JD-Core Version:    0.7.0.1
  */

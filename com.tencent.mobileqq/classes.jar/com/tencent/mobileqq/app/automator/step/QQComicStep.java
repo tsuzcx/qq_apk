@@ -1,20 +1,19 @@
 package com.tencent.mobileqq.app.automator.step;
 
+import amil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import mqq.os.MqqHandler;
-import zrg;
-import zrh;
 
 public class QQComicStep
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
-    this.a.a.addObserver(new zrg(this), true);
-    ThreadManager.getUIHandler().postDelayed(new zrh(this), 3000L);
+    this.a.mApp.addObserver(new amil(this), true);
+    ThreadManager.getUIHandler().postDelayed(new QQComicStep.2(this), 3000L);
     return 7;
   }
 }

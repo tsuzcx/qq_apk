@@ -1,61 +1,27 @@
 package com.tencent.token.ui;
 
 import android.os.Handler;
-import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.token.af;
-import com.tencent.token.bf;
-import com.tencent.token.core.bean.JLProtectionInfo.ProtectionInfoItem;
+import android.widget.ListView;
+import android.widget.TextView;
+import com.tencent.token.cg;
+import com.tencent.token.ui.base.bw;
 
-final class ns
-  implements CompoundButton.OnCheckedChangeListener
+class ns
+  implements bw
 {
-  private JLProtectionInfo.ProtectionInfoItem b;
-  private View c;
-  private int d;
+  private ns(LoginMsgReportLocationActivity paramLoginMsgReportLocationActivity) {}
   
-  public ns(JianLingActivity paramJianLingActivity, int paramInt, JLProtectionInfo.ProtectionInfoItem paramProtectionInfoItem, View paramView)
+  public void a(int paramInt)
   {
-    this.b = paramProtectionInfoItem;
-    this.c = paramView;
-    this.d = paramInt;
-  }
-  
-  public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    boolean bool = false;
-    int i = 1;
-    if (this.b.type == 2)
+    String[] arrayOfString = cg.a().f;
+    int[] arrayOfInt = cg.a().g;
+    if (paramInt < arrayOfString.length)
     {
-      if (this.b.value == 1) {
-        bool = true;
-      }
-      if ((paramBoolean == bool) && (!this.b.busy) && (!this.a.m2VerifyQuerying)) {}
-    }
-    for (;;)
-    {
-      return;
-      this.a.m2VerifyItem = this.b;
-      this.a.m2VerifyQuerying = true;
-      this.b.busy = true;
-      this.a.initListItem(this.c, this.d);
-      bf.a().a(3, this.a.mHandler);
-      return;
-      if (this.b.value == 1) {}
-      for (bool = true; (paramBoolean == bool) && (!this.b.busy); bool = false)
-      {
-        this.b.busy = true;
-        this.a.initListItem(this.c, this.d);
-        int j = this.b.id;
-        if (this.b.value == 1) {
-          i = 0;
-        }
-        paramCompoundButton = af.a();
-        Handler localHandler = this.a.mHandler;
-        paramCompoundButton.a(0L, new int[] { j }, new int[] { i }, "", localHandler);
-        return;
-      }
+      LoginMsgReportLocationActivity.access$700(this.a).setSelection(arrayOfInt[paramInt]);
+      LoginMsgReportLocationActivity.access$800(this.a).setText(arrayOfString[paramInt]);
+      LoginMsgReportLocationActivity.access$800(this.a).setVisibility(0);
+      this.a.mHandler.removeCallbacks(LoginMsgReportLocationActivity.access$900(this.a));
+      this.a.mHandler.postDelayed(LoginMsgReportLocationActivity.access$900(this.a), 1500L);
     }
   }
 }

@@ -1,15 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class aejb
   implements DialogInterface.OnClickListener
 {
-  public aejb(AIOShareActionSheet paramAIOShareActionSheet) {}
+  public aejb(TroopTransferActivity paramTroopTransferActivity, bdjz parambdjz) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Bdjz.cancel();
   }
 }
 

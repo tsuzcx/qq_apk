@@ -2,7 +2,7 @@ package com.tencent.component.network.utils;
 
 public class AssertUtil
 {
-  public static void a(boolean paramBoolean)
+  public static void assertTrue(boolean paramBoolean)
   {
     if (!paramBoolean) {
       throw new AssertionError();
@@ -11,7 +11,7 @@ public class AssertUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.utils.AssertUtil
  * JD-Core Version:    0.7.0.1
  */

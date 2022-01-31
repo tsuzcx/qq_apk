@@ -1,39 +1,94 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.widget.DynamicGridView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.RecentUser;
+import mqq.manager.Manager;
 
-class ambg
-  implements ViewTreeObserver.OnPreDrawListener
+public class ambg
+  implements Manager
 {
-  private final int jdField_a_of_type_Int;
-  private final int b;
+  private QQAppInterface a;
   
-  ambg(ambf paramambf, int paramInt1, int paramInt2)
+  public ambg(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    if (paramQQAppInterface == null) {
+      throw new NullPointerException("RecentManagerFor3rdPart, app is null");
+    }
+    this.a = paramQQAppInterface;
   }
   
-  public boolean onPreDraw()
+  public boolean a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Ambf.a.getViewTreeObserver().removeOnPreDrawListener(this);
-    DynamicGridView.a(this.jdField_a_of_type_Ambf.a, DynamicGridView.a(this.jdField_a_of_type_Ambf.a) + ambf.a(this.jdField_a_of_type_Ambf));
-    DynamicGridView.b(this.jdField_a_of_type_Ambf.a, DynamicGridView.b(this.jdField_a_of_type_Ambf.a) + ambf.b(this.jdField_a_of_type_Ambf));
-    if (DynamicGridView.a(this.jdField_a_of_type_Ambf.a) != null) {
-      DynamicGridView.a(this.jdField_a_of_type_Ambf.a).setVisibility(0);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.a != null)
+    {
+      bool1 = bool2;
+      if (this.a.e())
+      {
+        amnz localamnz = this.a.a().a();
+        paramString = localamnz.b(paramString, paramInt);
+        bool1 = bool2;
+        if (paramString != null)
+        {
+          localamnz.b(paramString);
+          bool1 = true;
+        }
+      }
     }
-    DynamicGridView.a(this.jdField_a_of_type_Ambf.a, this.jdField_a_of_type_Ambf.a.a(DynamicGridView.a(this.jdField_a_of_type_Ambf.a)));
-    if (DynamicGridView.a(this.jdField_a_of_type_Ambf.a) != null) {
-      DynamicGridView.a(this.jdField_a_of_type_Ambf.a).setVisibility(4);
+    return bool1;
+  }
+  
+  public boolean a(String paramString, int paramInt, long paramLong)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.a != null)
+    {
+      bool1 = bool2;
+      if (this.a.e())
+      {
+        amnz localamnz = this.a.a().a();
+        paramString = localamnz.b(paramString, paramInt);
+        bool1 = bool2;
+        if (paramString != null)
+        {
+          paramString.lastmsgtime = paramLong;
+          localamnz.a(paramString);
+          bool1 = true;
+        }
+      }
     }
-    DynamicGridView.a(this.jdField_a_of_type_Ambf.a, this.jdField_a_of_type_Int, this.b);
+    return bool1;
+  }
+  
+  public boolean a(String paramString1, int paramInt, String paramString2, long paramLong1, long paramLong2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return false;
+    }
+    if ((this.a != null) && (this.a.e()))
+    {
+      amnz localamnz = this.a.a().a();
+      RecentUser localRecentUser = localamnz.a(paramString1, paramInt);
+      localRecentUser.uin = paramString1;
+      localRecentUser.setType(paramInt);
+      localRecentUser.displayName = paramString2;
+      localRecentUser.lastmsgtime = paramLong1;
+      localRecentUser.lastmsgdrafttime = paramLong2;
+      localamnz.a(localRecentUser);
+    }
     return true;
+  }
+  
+  public void onDestroy()
+  {
+    this.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ambg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,44 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
-import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.DragGallery;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class airm
-  implements ITransCallbackForReport
+class airm
+  implements View.OnClickListener
 {
-  public airm(ShortVideoUploadProcessor paramShortVideoUploadProcessor) {}
+  airm(airj paramairj) {}
   
-  public void onFailed(int paramInt, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.a.a(false, this.a.j, paramString1, paramString2);
+    ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(false);
+    if (((NewPhotoPreviewActivity)this.a.mActivity).getIntent().getBooleanExtra("PhotoConst.IS_SEND_FILESIZE_LIMIT", false))
+    {
+      paramView = this.a.mPhotoCommonData.selectedPhotoList.iterator();
+      for (long l = 0L; paramView.hasNext(); l = bdhb.a((String)paramView.next()) + l) {}
+      if (this.a.mPhotoCommonData.selectedPhotoList.size() == 0)
+      {
+        int i = ((NewPhotoPreviewActivity)this.a.mActivity).gallery.getFirstVisiblePosition();
+        if (i < this.a.a.paths.size()) {
+          bdhb.a((String)this.a.a.paths.get(i));
+        }
+      }
+      if (arrr.a()) {
+        arre.a(this.a.mActivity, 2131692754, 2131692759, new airn(this));
+      }
+    }
+    for (;;)
+    {
+      LpReportInfo_pf00064.allReport(603, 1);
+      return;
+      this.a.c();
+      continue;
+      this.a.c();
+    }
   }
 }
 

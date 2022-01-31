@@ -1,67 +1,33 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.util.DisplayUtil;
-import com.tencent.mobileqq.widget.DraggableGridView;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Observable;
+import java.util.Observer;
 
 public class akuc
-  implements Runnable
+  implements Observer
 {
-  private int jdField_a_of_type_Int;
-  private DraggableGridView jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView;
-  public boolean a;
+  public akuc(ApolloGameStateMachine paramApolloGameStateMachine) {}
   
-  public akuc(DraggableGridView paramDraggableGridView)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView = paramDraggableGridView;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt != this.jdField_a_of_type_Int) {
-      DraggableGridView.c(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView, 0);
-    }
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Boolean)
+    if ((paramObject != null) && ((paramObject instanceof Bundle)))
     {
-      this.jdField_a_of_type_Boolean = false;
-      ThreadManager.post(this, 8, null, true);
-    }
-  }
-  
-  public void run()
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      int i = 0;
-      if (this.jdField_a_of_type_Int == 1) {
-        i = DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView.getContext(), 10.0F);
-      }
-      for (;;)
-      {
-        for (;;)
-        {
-          Message localMessage = new Message();
-          localMessage.arg1 = i;
-          DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).sendMessage(localMessage);
-          try
-          {
-            Thread.sleep(16L);
-          }
-          catch (InterruptedException localInterruptedException) {}
-        }
-        break;
-        if (this.jdField_a_of_type_Int == 2) {
-          i = -DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView.getContext(), 10.0F);
-        }
+      paramObservable = (Bundle)paramObject;
+      long l1 = paramObservable.getLong("START_TIME_KEY");
+      long l2 = paramObservable.getLong("END_TIME_KEY");
+      paramObject = paramObservable.getString("MESSAGE");
+      int i = paramObservable.getInt("FROM");
+      int j = paramObservable.getInt("TO");
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGameStateMachine", 2, new Object[] { "[pipLineObserver] cost:[", Long.valueOf(l2 - l1), "ms] message:[", paramObject, "] from:[", Integer.valueOf(i), "] to:[", Integer.valueOf(j), "] start:[", Long.valueOf(l1), "] end:[", Long.valueOf(l2), "]" });
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akuc
  * JD-Core Version:    0.7.0.1
  */

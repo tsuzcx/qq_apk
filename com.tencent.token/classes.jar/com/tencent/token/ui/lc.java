@@ -1,16 +1,18 @@
 package com.tencent.token.ui;
 
-import com.tencent.token.utils.UserTask;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class lc
-  extends UserTask
+class lc
+  implements View.OnClickListener
 {
-  lc(GetBarcodeVerifyMsgActivity paramGetBarcodeVerifyMsgActivity) {}
+  lc(HelpActivity paramHelpActivity) {}
   
-  public final void a()
+  public void onClick(View paramView)
   {
-    super.a();
-    GetBarcodeVerifyMsgActivity.access$102(this.a, false);
+    paramView = new Intent(this.a, SettingSubmitCommentActivity.class);
+    this.a.startActivity(paramView);
   }
 }
 

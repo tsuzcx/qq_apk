@@ -1,35 +1,49 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.widget.PagingScrollView;
-import com.tencent.qphone.base.util.QLog;
+import android.util.SparseArray;
+import com.tencent.mobileqq.data.ApolloGameData;
+import java.util.Comparator;
 
-public class akvm
-  implements View.OnTouchListener
+class akvm
+  implements Comparator<ApolloGameData>
 {
-  public akvm(PagingScrollView paramPagingScrollView) {}
+  SparseArray<Long> a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  akvm(SparseArray paramSparseArray)
   {
-    if (this.a.c)
+    this.a = paramSparseArray;
+  }
+  
+  public int a(ApolloGameData paramApolloGameData1, ApolloGameData paramApolloGameData2)
+  {
+    long l2 = 0L;
+    long l1;
+    if (this.a.get(paramApolloGameData1.gameId) == null)
     {
-      int i = paramMotionEvent.getAction();
-      if ((i == 1) || (i == 3))
-      {
-        this.a.c = false;
-        this.a.getParent().requestDisallowInterceptTouchEvent(false);
-        if (QLog.isDevelopLevel()) {
-          QLog.i("PageScrollView", 4, "C.TE ACT_UP or CANCEL");
-        }
+      l1 = 0L;
+      if (this.a.get(paramApolloGameData2.gameId) != null) {
+        break label63;
       }
     }
-    return false;
+    for (;;)
+    {
+      if (l1 <= l2) {
+        break label85;
+      }
+      return -1;
+      l1 = ((Long)this.a.get(paramApolloGameData1.gameId)).longValue();
+      break;
+      label63:
+      l2 = ((Long)this.a.get(paramApolloGameData2.gameId)).longValue();
+    }
+    label85:
+    if (l1 < l2) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akvm
  * JD-Core Version:    0.7.0.1
  */

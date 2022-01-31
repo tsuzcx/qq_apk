@@ -9,14 +9,11 @@ public class SoLoadUtilNew
   
   private static boolean getLoadResult(int paramInt)
   {
-    boolean bool = false;
-    if ((paramInt & 0x2) == 2) {
-      bool = true;
+    if ((paramInt & 0x2) == 2) {}
+    while ((paramInt & 0x40000) == 262144) {
+      return true;
     }
-    while ((paramInt & 0x40000) != 262144) {
-      return bool;
-    }
-    return true;
+    return false;
   }
   
   public static boolean loadSoByName(Context paramContext, String paramString)

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class hd_video_voip2$TelInfo
-  extends MessageMicro
+  extends MessageMicro<TelInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_mobile = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -33,7 +33,7 @@ public final class hd_video_voip2$TelInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.video.voip.hd_video_voip2.TelInfo
  * JD-Core Version:    0.7.0.1
  */

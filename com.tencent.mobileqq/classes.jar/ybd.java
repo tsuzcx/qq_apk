@@ -1,36 +1,29 @@
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberInnerFrame;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class ybd
-  implements AdapterView.OnItemClickListener
 {
-  public ybd(SelectMemberActivity paramSelectMemberActivity) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView c;
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public ybd(View paramView)
   {
-    paramAdapterView = (ResultRecord)paramView.getTag();
-    paramView = paramAdapterView.a;
-    if (this.a.a(paramView))
-    {
-      this.a.e(paramView);
-      this.a.a(paramAdapterView, false);
-      this.a.j();
-      paramInt = this.a.a.a();
-      if ((paramInt == 6) || (paramInt == 7) || (paramInt == 5) || (paramInt == 4) || (paramInt == 1) || (paramInt == 0) || (paramInt == 8) || (paramInt == 9)) {
-        ((SelectMemberInnerFrame)this.a.a.getCurrentView()).f();
-      }
-      this.a.b(false);
-    }
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365188));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366301));
+    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131706721));
+    this.c = ((ImageView)paramView.findViewById(2131364331));
+    this.c.setContentDescription(alud.a(2131706720));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370019));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372204));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ybd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,34 @@
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.common.app.AppInterface;
 
-public class akwx
-  implements AbsListView.OnScrollListener
+public abstract interface akwx
 {
-  public akwx(SlideDetectListView paramSlideDetectListView) {}
+  public abstract int a(int paramInt);
   
-  public void a(AbsListView paramAbsListView, int paramInt)
-  {
-    this.a.c = paramInt;
-    if (SlideDetectListView.a(this.a) != null) {
-      SlideDetectListView.a(this.a).a(paramAbsListView, paramInt);
-    }
-    if (SlideDetectListView.b(this.a) != null) {
-      SlideDetectListView.b(this.a).a(paramAbsListView, paramInt);
-    }
-  }
+  public abstract int a(akrx paramakrx, int paramInt1, int paramInt2, String paramString, long paramLong, int paramInt3, float paramFloat);
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (SlideDetectListView.a(this.a) != null) {
-      SlideDetectListView.a(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    }
-    if (SlideDetectListView.b(this.a) != null) {
-      SlideDetectListView.b(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    }
-  }
+  public abstract int a(AppInterface paramAppInterface);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt, AppInterface paramAppInterface);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract int b(int paramInt);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt, String paramString);
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akwx
  * JD-Core Version:    0.7.0.1
  */

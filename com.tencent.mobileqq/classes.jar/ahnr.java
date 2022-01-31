@@ -1,38 +1,66 @@
-import java.util.HashMap;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.newfriend.connections.TriangleView;
 
 public class ahnr
-  extends ahnt
 {
-  long a = 0L;
-  long b;
+  public ImageView a;
+  public TextView a;
+  public TriangleView a;
+  public ImageView b;
+  public TextView b;
   
-  ahnr()
+  public ahnr(View paramView)
   {
-    this.jdField_b_of_type_Long = -1L;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371121));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371118));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371122));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371120));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsTriangleView = ((TriangleView)paramView.findViewById(2131378285));
   }
   
-  public HashMap a(String paramString)
+  public void a()
   {
-    if ("ShortVideo.FullscreenPreview".equals(paramString))
-    {
-      paramString = new HashMap();
-      paramString.put("param_uinType", this.jdField_b_of_type_Int + "");
-      paramString.put("param_GroupMemberCount", this.c + "");
-      paramString.put("param_age", this.d + "");
-      paramString.put("param_gender", this.e + "");
-      paramString.put("param_shortVideoType", this.f + "");
-      paramString.put("param_duration", this.a + "");
-      paramString.put("param_reportHour", this.g + "");
-      paramString.put("param_netType", this.h + "");
-      paramString.put("param_playTimeCost", this.jdField_b_of_type_Long + "");
-      return paramString;
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setSelected(true);
     }
-    return null;
+    if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
+      this.jdField_b_of_type_AndroidWidgetImageView.setSelected(true);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setSelected(true);
+    }
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setSelected(true);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsTriangleView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsTriangleView.setVisibility(0);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setSelected(false);
+    }
+    if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
+      this.jdField_b_of_type_AndroidWidgetImageView.setSelected(false);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setSelected(false);
+    }
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setSelected(false);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsTriangleView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsTriangleView.setVisibility(4);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahnr
  * JD-Core Version:    0.7.0.1
  */

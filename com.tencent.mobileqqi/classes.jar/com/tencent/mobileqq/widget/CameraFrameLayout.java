@@ -13,13 +13,13 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.mobileqq.utils.CameraUtil;
 import com.tencent.qphone.base.util.QLog;
-import hjn;
-import hjo;
-import hjp;
-import hjq;
-import hjr;
-import hjt;
-import hju;
+import hfg;
+import hfh;
+import hfi;
+import hfj;
+import hfk;
+import hfm;
+import hfn;
 import java.util.concurrent.Executor;
 
 public class CameraFrameLayout
@@ -29,11 +29,11 @@ public class CameraFrameLayout
   private static final String jdField_a_of_type_JavaLangString = "CameraFrameLayout";
   private static final int jdField_b_of_type_Int = 2;
   private Camera jdField_a_of_type_AndroidHardwareCamera;
-  private Handler jdField_a_of_type_AndroidOsHandler = new hjn(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new hfg(this);
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private CameraPreview jdField_a_of_type_ComTencentMobileqqWidgetCameraPreview;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new hjr(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new hfk(this);
   Executor jdField_a_of_type_JavaUtilConcurrentExecutor = ThreadManager.a();
   boolean jdField_a_of_type_Boolean = false;
   private byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
@@ -88,7 +88,7 @@ public class CameraFrameLayout
     {
       QQToast.a(getContext(), 0, getContext().getString(2131561739), 0).b(((BaseActivity)getContext()).d());
       setDoubleClickFlag(false);
-      postDelayed(new hjt(this), 2000L);
+      postDelayed(new hfm(this), 2000L);
     }
     for (paramInt = 4500;; paramInt = 0)
     {
@@ -153,7 +153,7 @@ public class CameraFrameLayout
         }
         return;
       }
-      ??? = new hju(this);
+      ??? = new hfn(this);
       this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute((Runnable)???);
     }
   }
@@ -177,21 +177,21 @@ public class CameraFrameLayout
   
   public void d()
   {
-    hjp localhjp = new hjp(this);
-    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(localhjp);
+    hfi localhfi = new hfi(this);
+    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(localhfi);
   }
   
   public void e()
   {
     this.b = false;
-    hjq localhjq = new hjq(this);
-    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(localhjq);
+    hfj localhfj = new hfj(this);
+    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(localhfj);
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    new Handler().post(new hjo(this));
+    new Handler().post(new hfh(this));
   }
   
   public void setCloseBtnBlewViewResId(int paramInt)

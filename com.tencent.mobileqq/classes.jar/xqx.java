@@ -1,22 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.support.annotation.NonNull;
 
 public class xqx
-  implements DialogInterface.OnClickListener
 {
-  public xqx(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public void a(byte[] paramArrayOfByte) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @NonNull
+  public byte[] a(int paramInt)
   {
-    StoryReportor.a("video_shoot", "cancel_now", 0, 0, new String[0]);
-    paramDialogInterface.dismiss();
+    return new byte[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xqx
  * JD-Core Version:    0.7.0.1
  */

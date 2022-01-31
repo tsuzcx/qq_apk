@@ -1,18 +1,12 @@
-import com.tencent.mobileqq.utils.VoicePlayer;
+import android.os.Bundle;
 
-public class akgv
-  implements Runnable
+public abstract interface akgv
 {
-  public akgv(VoicePlayer paramVoicePlayer) {}
-  
-  public void run()
-  {
-    VoicePlayer.a(this.a, false);
-  }
+  public abstract void a(int paramInt, boolean paramBoolean, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akgv
  * JD-Core Version:    0.7.0.1
  */

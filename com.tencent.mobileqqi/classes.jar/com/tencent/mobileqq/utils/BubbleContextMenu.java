@@ -15,8 +15,8 @@ import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
 import com.tencent.widget.BubblePopupWindow;
 import com.tencent.widget.BubblePopupWindow.OnDismissListener;
-import hfv;
-import hfw;
+import hbo;
+import hbp;
 
 public class BubbleContextMenu
 {
@@ -38,8 +38,8 @@ public class BubbleContextMenu
         localObject = new Button(paramView.getContext());
         ((Button)localObject).setText(paramCharSequence);
         ((Button)localObject).setContentDescription(paramCharSequence);
-        ((Button)localObject).setBackgroundColor(paramView.getContext().getResources().getColor(2131361892));
-        ((Button)localObject).setTextColor(paramView.getContext().getResources().getColor(2131361890));
+        ((Button)localObject).setBackgroundColor(paramView.getContext().getResources().getColor(2131361902));
+        ((Button)localObject).setTextColor(paramView.getContext().getResources().getColor(2131361900));
         ((Button)localObject).setSingleLine(true);
         ((Button)localObject).setEllipsize(TextUtils.TruncateAt.END);
         ((Button)localObject).setIncludeFontPadding(true);
@@ -49,30 +49,30 @@ public class BubbleContextMenu
         localLinearLayout.addView((View)localObject);
         localObject = new View(paramView.getContext());
         ((View)localObject).setLayoutParams(new LinearLayout.LayoutParams(-2, 4));
-        ((View)localObject).setBackgroundColor(paramView.getContext().getResources().getColor(2131361895));
+        ((View)localObject).setBackgroundColor(paramView.getContext().getResources().getColor(2131361905));
         localLinearLayout.addView((View)localObject);
       }
       Object localObject = paramQQCustomMenu.a(i);
       Button localButton = new Button(paramView.getContext());
       localButton.setText(((QQCustomMenuItem)localObject).a());
       localButton.setContentDescription(((QQCustomMenuItem)localObject).a() + "操作");
-      localButton.setBackgroundDrawable(paramView.getContext().getResources().getDrawable(2130837948));
+      localButton.setBackgroundDrawable(paramView.getContext().getResources().getDrawable(2130837950));
       localButton.setId(((QQCustomMenuItem)localObject).a());
-      localButton.setTextColor(paramView.getContext().getResources().getColor(2131361891));
+      localButton.setTextColor(paramView.getContext().getResources().getColor(2131361901));
       localButton.setSingleLine(true);
       localButton.setIncludeFontPadding(true);
       localButton.setOnClickListener(paramOnClickListener);
       localButton.setTextSize(18.0F);
       localButton.setGravity(3);
       localButton.setPadding((int)(17.0F * f), (int)(11.0F * f), 0, (int)(11.0F * f));
-      localButton.postDelayed(new hfw(localButton), 1000L);
+      localButton.postDelayed(new hbp(localButton), 1000L);
       localButton.setSelected(true);
       localLinearLayout.addView(localButton);
       if (i != j - 1)
       {
         localObject = new ImageView(paramView.getContext());
         ((ImageView)localObject).setLayoutParams(new LinearLayout.LayoutParams(-2, 1));
-        ((ImageView)localObject).setBackgroundColor(paramView.getContext().getResources().getColor(2131361896));
+        ((ImageView)localObject).setBackgroundColor(paramView.getContext().getResources().getColor(2131361906));
         localLinearLayout.addView((View)localObject);
       }
       i += 1;
@@ -92,19 +92,19 @@ public class BubbleContextMenu
     if (i < j)
     {
       Object localObject = paramQQCustomMenu.a(i);
-      hfv localhfv = new hfv(paramContext, paramBubblePopupWindow);
+      hbo localhbo = new hbo(paramContext, paramBubblePopupWindow);
       if (((QQCustomMenuItem)localObject).a() != null) {
-        localhfv.setBackgroundDrawable(((QQCustomMenuItem)localObject).a());
+        localhbo.setBackgroundDrawable(((QQCustomMenuItem)localObject).a());
       }
       for (;;)
       {
-        localhfv.setContentDescription(((QQCustomMenuItem)localObject).a() + "操作");
-        localhfv.setId(((QQCustomMenuItem)localObject).a());
-        localhfv.setTextColor(-1);
-        localhfv.setIncludeFontPadding(true);
-        localhfv.setOnClickListener(paramOnClickListener);
-        localhfv.setGravity(17);
-        localLinearLayout.addView(localhfv, new LinearLayout.LayoutParams(-2, -2, 1.0F));
+        localhbo.setContentDescription(((QQCustomMenuItem)localObject).a() + "操作");
+        localhbo.setId(((QQCustomMenuItem)localObject).a());
+        localhbo.setTextColor(-1);
+        localhbo.setIncludeFontPadding(true);
+        localhbo.setOnClickListener(paramOnClickListener);
+        localhbo.setGravity(17);
+        localLinearLayout.addView(localhbo, new LinearLayout.LayoutParams(-2, -2, 1.0F));
         if (i != j - 1)
         {
           localObject = new ImageView(paramContext);
@@ -113,8 +113,8 @@ public class BubbleContextMenu
         }
         i += 1;
         break;
-        localhfv.setText(((QQCustomMenuItem)localObject).a());
-        localhfv.setBackgroundDrawable(null);
+        localhbo.setText(((QQCustomMenuItem)localObject).a());
+        localhbo.setBackgroundDrawable(null);
       }
     }
     return localLinearLayout;

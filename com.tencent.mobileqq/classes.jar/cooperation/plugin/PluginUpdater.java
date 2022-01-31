@@ -4,12 +4,15 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
+import azri;
+import biqh;
+import birf;
+import birw;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfoHelper;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfoHelper.PluginInfoParser;
 import com.tencent.mobileqq.startup.step.UpdatePluginVersion;
-import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
@@ -33,8 +36,8 @@ public class PluginUpdater
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private PluginUpdater.OnPluginInfoUpdateListener jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener;
-  private Map jdField_a_of_type_JavaUtilMap = new HashMap();
+  private birw jdField_a_of_type_Birw;
+  private Map<String, PluginInfo> jdField_a_of_type_JavaUtilMap = new HashMap();
   private boolean jdField_a_of_type_Boolean;
   
   public PluginUpdater(Context paramContext, Handler paramHandler)
@@ -42,8 +45,8 @@ public class PluginUpdater
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(paramHandler.getLooper(), this);
     paramContext = a(paramContext);
-    boolean bool = PluginInfoUtil.a(paramContext);
-    paramHandler = PluginInfoUtil.a(paramContext);
+    boolean bool = birf.a(paramContext);
+    paramHandler = birf.a(paramContext);
     if (paramHandler != null)
     {
       int n = paramHandler.length;
@@ -85,7 +88,7 @@ public class PluginUpdater
           j += 1;
           break label102;
           label181:
-          localObject = PluginInfoUtil.a(localFile);
+          localObject = birf.a(localFile);
           if (localObject != null) {
             this.jdField_a_of_type_JavaUtilMap.put(((PluginInfo)localObject).mID, localObject);
           } else {
@@ -95,7 +98,7 @@ public class PluginUpdater
       }
     }
     if (bool) {
-      PluginInfoUtil.a(paramContext);
+      birf.a(paramContext);
     }
     QLog.d("plugin_tag", 1, "init plugin updater :" + this.jdField_a_of_type_JavaUtilMap.size());
   }
@@ -197,7 +200,7 @@ public class PluginUpdater
             localHashMap.put(((PluginInfo)localObject1).mID, localObject5);
             break label1124;
           }
-          if ((this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener == null) || (!this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener.a((PluginInfo)localObject1))) {
+          if ((this.jdField_a_of_type_Birw == null) || (!this.jdField_a_of_type_Birw.a((PluginInfo)localObject1))) {
             break label1116;
           }
           ((Map)localObject3).remove(((PluginInfo)localObject1).mID);
@@ -248,14 +251,14 @@ public class PluginUpdater
         }
         else
         {
-          if (this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener != null) {
-            this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener.a(true);
+          if (this.jdField_a_of_type_Birw != null) {
+            this.jdField_a_of_type_Birw.a(true);
           }
           if (this.jdField_a_of_type_JavaUtilMap.isEmpty())
           {
             localObject1 = new HashMap();
-            StatisticCollector.a((Map)localObject1, AppSetting.a);
-            StatisticCollector.a(this.jdField_a_of_type_AndroidContentContext).a(String.valueOf(paramGetResourceRespV2.uin), "pluginUpdateEmpty", false, 0L, 0L, (HashMap)localObject1, "");
+            azri.a((Map)localObject1, AppSetting.a());
+            azri.a(this.jdField_a_of_type_AndroidContentContext).a(String.valueOf(paramGetResourceRespV2.uin), "pluginUpdateEmpty", false, 0L, 0L, (HashMap)localObject1, "");
           }
           if (i != 0) {
             a();
@@ -285,7 +288,7 @@ public class PluginUpdater
     PluginInfo localPluginInfo2 = (PluginInfo)this.jdField_a_of_type_JavaUtilMap.get(paramString);
     PluginInfo localPluginInfo1 = localPluginInfo2;
     if (localPluginInfo2 == null) {
-      localPluginInfo1 = BuiltinPluginManager.a(this.jdField_a_of_type_AndroidContentContext).a(paramString);
+      localPluginInfo1 = biqh.a(this.jdField_a_of_type_AndroidContentContext).a(paramString);
     }
     return localPluginInfo1;
   }
@@ -293,7 +296,7 @@ public class PluginUpdater
   public void a()
   {
     File localFile = a(this.jdField_a_of_type_AndroidContentContext);
-    Object localObject = PluginInfoUtil.a(localFile);
+    Object localObject = birf.a(localFile);
     if (localObject != null)
     {
       int i = 0;
@@ -305,8 +308,13 @@ public class PluginUpdater
     }
     localObject = this.jdField_a_of_type_JavaUtilMap.values().iterator();
     while (((Iterator)localObject).hasNext()) {
-      PluginInfoUtil.a((PluginInfo)((Iterator)localObject).next(), localFile);
+      birf.a((PluginInfo)((Iterator)localObject).next(), localFile);
     }
+  }
+  
+  public void a(birw parambirw)
+  {
+    this.jdField_a_of_type_Birw = parambirw;
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -341,12 +349,7 @@ public class PluginUpdater
     if (QLog.isColorLevel()) {
       QLog.d("plugin_tag", 2, "getPluginList: 128");
     }
-    ((ServerConfigManager)paramQQAppInterface.getManager(4)).getPluginConfig(128, localReqUserInfo, localArrayList, this, AppSetting.a);
-  }
-  
-  public void a(PluginUpdater.OnPluginInfoUpdateListener paramOnPluginInfoUpdateListener)
-  {
-    this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener = paramOnPluginInfoUpdateListener;
+    ((ServerConfigManager)paramQQAppInterface.getManager(4)).getPluginConfig(128, localReqUserInfo, localArrayList, this, AppSetting.a());
   }
   
   public void a(boolean paramBoolean, int paramInt, GetResourceRespV2 paramGetResourceRespV2)
@@ -355,8 +358,8 @@ public class PluginUpdater
       QLog.d("plugin_tag", 2, "onGetPluginConfig: " + paramBoolean);
     }
     if (paramInt != 128) {
-      if (this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener != null) {
-        this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener.a(false);
+      if (this.jdField_a_of_type_Birw != null) {
+        this.jdField_a_of_type_Birw.a(false);
       }
     }
     do
@@ -365,8 +368,8 @@ public class PluginUpdater
       if ((paramBoolean) && (paramGetResourceRespV2 != null)) {
         break;
       }
-    } while (this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener == null);
-    this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener.a(false);
+    } while (this.jdField_a_of_type_Birw == null);
+    this.jdField_a_of_type_Birw.a(false);
     return;
     a(paramGetResourceRespV2);
     this.jdField_a_of_type_Boolean = false;
@@ -449,7 +452,7 @@ public class PluginUpdater
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.plugin.PluginUpdater
  * JD-Core Version:    0.7.0.1
  */

@@ -163,7 +163,7 @@ public class CliNotifyPush
   
   private boolean a(QQAppInterface paramQQAppInterface)
   {
-    return QZoneHelper.LocalConfig.a(paramQQAppInterface.a().getApplicationContext().getString(2131563433) + paramQQAppInterface.getAccount(), true);
+    return QZoneHelper.LocalConfig.a(paramQQAppInterface.a().getApplicationContext().getString(2131563461) + paramQQAppInterface.getAccount(), true);
   }
   
   public String[] getPreferSSOCommands()

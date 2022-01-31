@@ -57,20 +57,10 @@ public class NetworkProvider
     }
     return 0;
   }
-  
-  public static abstract interface NETWORK_TYPE
-  {
-    public static final int TYPE_2G = 2;
-    public static final int TYPE_3G = 3;
-    public static final int TYPE_4G = 4;
-    public static final int TYPE_UNKNOWN = 0;
-    public static final int TYPE_WIFI = 1;
-    public static final int TYPE_WIRED = 5;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.TMG.ptt.NetworkProvider
  * JD-Core Version:    0.7.0.1
  */

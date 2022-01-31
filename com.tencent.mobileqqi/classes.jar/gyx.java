@@ -1,51 +1,43 @@
 import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.SearchTroopListActivity;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.activity.TroopSearchLogicActivity;
-import java.util.List;
-import tencent.im.kqq.searchgroup.SearchGroup.GroupInfo;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.MediaControllerX;
+import com.tencent.mobileqq.troop.widget.MediaControllerX.MediaPlayerControlX;
 
 public class gyx
-  extends Handler
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public gyx(TroopSearchLogicActivity paramTroopSearchLogicActivity) {}
+  public gyx(MediaControllerX paramMediaControllerX) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    boolean bool;
-    if (paramMessage.what == 1)
+    if (!paramBoolean) {}
+    long l;
+    do
     {
-      this.a.d();
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 != 1) {
-        break label183;
-      }
-      bool = true;
-      paramMessage = (List)paramMessage.obj;
-      if ((paramMessage == null) || (paramMessage.size() != 1)) {
-        break label188;
-      }
-      paramMessage = (SearchGroup.GroupInfo)paramMessage.get(0);
-      paramMessage = TroopInfoActivity.a(6, String.valueOf(paramMessage.dwGroupCode.get()), "", paramMessage.sGroupName.get(), String.valueOf(paramMessage.dwGroupOwnerId.get()), "", (byte)SearchTroopListActivity.a(paramMessage), paramMessage.dwGroupFlagExt.get(), (short)paramMessage.dwGroupFaceId.get(), paramMessage.sGroupFingerMem.get(), paramMessage.sGroupLocation.get(), paramMessage.bGroupIn.get(), null, paramMessage.dwGroupFlagExt.get(), paramMessage.dwAuthGroupType.get(), this.a.jdField_d_of_type_Int);
-      ChatSettingForTroop.a(this.a, paramMessage, 2);
-    }
-    for (;;)
-    {
-      this.a.finish();
       return;
-      label183:
-      bool = false;
-      break;
-      label188:
-      if ((paramMessage != null) && (paramMessage.size() > 1)) {
-        SearchTroopListActivity.a(this.a, this.a.jdField_d_of_type_JavaLangString, paramMessage, bool);
-      }
-    }
+      MediaControllerX.a(this.a).a();
+      l = MediaControllerX.a(this.a).a() * paramInt / 1000L;
+      MediaControllerX.a(this.a).a((int)l);
+    } while (MediaControllerX.a(this.a) == null);
+    MediaControllerX.a(this.a).setText(MediaControllerX.a(this.a, (int)l));
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    this.a.a(3600000);
+    MediaControllerX.b(this.a, true);
+    MediaControllerX.a(this.a).removeMessages(2);
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    MediaControllerX.b(this.a, false);
+    MediaControllerX.a(this.a);
+    this.a.d();
+    this.a.a(5000);
+    MediaControllerX.a(this.a).sendEmptyMessage(2);
   }
 }
 

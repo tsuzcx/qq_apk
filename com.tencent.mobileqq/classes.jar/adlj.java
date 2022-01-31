@@ -1,120 +1,46 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.webviewplugin.Share;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.contactsync.syncadapter.SyncService;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class adlj
-  implements BusinessObserver
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adlj(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
+  public adlj(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    for (;;)
+    if (AppSetting.c) {
+      NotifyPushSettingActivity.f(this.a).setContentDescription(alud.a(2131708045));
+    }
+    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131719121), "qqsetting_receivemsg_whenexit_key", paramBoolean);
+    SyncService.a(this.a, paramBoolean);
+    QQAppInterface localQQAppInterface = this.a.app;
+    int i;
+    if (paramBoolean)
     {
-      synchronized (ForwardSdkBaseOption.jdField_a_of_type_JavaLangObject)
-      {
-        this.a.j = false;
-        if (paramBoolean) {}
-        try
-        {
-          paramBundle = paramBundle.getByteArray("data");
-          if (paramBundle != null)
-          {
-            localObject1 = new GetAppInfoProto.GetAppinfoResponse();
-            ((GetAppInfoProto.GetAppinfoResponse)localObject1).mergeFrom(paramBundle);
-            this.a.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse = ((GetAppInfoProto.GetAppinfoResponse)localObject1);
-            if (QLog.isColorLevel()) {
-              QLog.d("ForwardOption.ForwardSdkBaseOption", 2, "get appinfo time = " + (System.currentTimeMillis() - this.a.c));
-            }
-            if ((this.a.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse != null) && (this.a.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse.androidInfo != null))
-            {
-              paramBundle = this.a.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse.androidInfo;
-              localObject1 = Share.a(this.a.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse.iconsURL, 16);
-              if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-                this.a.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_icon", (String)localObject1);
-              }
-              localObject1 = Share.a(this.a.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse.iconsURL, 100);
-              if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-                this.a.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_icon_big", (String)localObject1);
-              }
-              if ((paramBundle.sourceUrl.has()) && (this.a.b != Long.parseLong("1103584836"))) {
-                this.a.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_url", paramBundle.sourceUrl.get());
-              }
-              if (paramBundle.messagetail.has()) {
-                this.a.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_name", paramBundle.messagetail.get());
-              }
-              if (paramBundle.packName.has()) {
-                this.a.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_a_action_data", paramBundle.packName.get());
-              }
-              if (this.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null)
-              {
-                this.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceIcon = this.a.jdField_a_of_type_AndroidOsBundle.getString("struct_share_key_source_icon");
-                this.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceName = this.a.jdField_a_of_type_AndroidOsBundle.getString("struct_share_key_source_name");
-                if (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceName)) {
-                  this.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceName = this.a.jdField_a_of_type_AndroidOsBundle.getString("app_name");
-                }
-              }
-              this.a.jdField_a_of_type_AndroidOsBundle.putByte("struct_share_key_app_info_status", (byte)1);
-              ForwardSdkBaseOption.a(this.a);
-            }
-          }
-        }
-        catch (Exception paramBundle)
-        {
-          Object localObject1;
-          QQCustomDialog localQQCustomDialog;
-          StringBuilder localStringBuilder;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("ForwardOption.ForwardSdkBaseOption", 2, paramBundle.getMessage());
-          continue;
-        }
-        this.a.t();
-        if ((this.a.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse != null) && (this.a.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse.ret.get() != 0) && ((this.a instanceof ForwardSdkShareOption)))
-        {
-          localObject1 = this.a.jdField_a_of_type_AndroidOsBundle.getString("app_name");
-          localQQCustomDialog = DialogUtil.b(this.a.jdField_a_of_type_AndroidAppActivity, 230).setTitle(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131435589));
-          if (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse.msg.get()))
-          {
-            paramBundle = this.a.jdField_a_of_type_AndroidAppActivity.getString(2131435590);
-            localQQCustomDialog = localQQCustomDialog.setMessageWithUrl(paramBundle).setPositiveButton(2131430150, new adll(this));
-            localStringBuilder = new StringBuilder().append(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131433698));
-            paramBundle = (Bundle)localObject1;
-            if (TextUtils.isEmpty((CharSequence)localObject1)) {
-              paramBundle = "";
-            }
-            paramBundle = localQQCustomDialog.setNegativeButton(paramBundle, new adlk(this));
-            paramBundle.setCancelable(false);
-            paramBundle.show();
-          }
-        }
-        else
-        {
-          ForwardSdkBaseOption.jdField_a_of_type_JavaLangObject.notify();
-          return;
-        }
+      i = 1;
+      if (!paramBoolean) {
+        break label107;
       }
-      paramBundle = this.a.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse.msg.get();
+    }
+    label107:
+    for (paramCompoundButton = "1";; paramCompoundButton = "0")
+    {
+      azqs.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Logout_msg", 0, i, paramCompoundButton, "", "", "");
+      return;
+      i = 0;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adlj
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ public abstract class AbstractUnifiedMonitor
   public static final int FAMILY_FILE_TASK = 5;
   public static final int FAMILY_IMAGE_DRAWABLE = 2;
   public static final int FAMILY_IMAGE_VIEW = 3;
-  public static final int FAMILY_LAST = 20;
+  public static final int FAMILY_LAST = 21;
   public static final int FAMILY_LOOPER = 0;
   public static final int FAMILY_MSF_LIGHT_SENDER = 17;
   public static final int FAMILY_MSF_MSG = 7;
@@ -22,6 +22,7 @@ public abstract class AbstractUnifiedMonitor
   public static final int FAMILY_OBSERVER = 1;
   public static final int FAMILY_QZONE_LOOPER = 14;
   public static final int FAMILY_RECENT = 13;
+  public static final int FAMILY_SCENE_PERF = 20;
   public static final int FAMILY_SCENE_SMOOTH = 9;
   public static final int FAMILY_SUB_TASK = 4;
   public static final int FAMILY_TOOL_LOOPER = 19;
@@ -34,7 +35,7 @@ public abstract class AbstractUnifiedMonitor
   
   public abstract void reportStackIfTimeout(int paramInt);
   
-  public abstract boolean setMonitoredThread(int paramInt, Thread paramThread, ThreadMonitorCallback paramThreadMonitorCallback);
+  public abstract boolean setMonitoredThread(int paramInt, Thread paramThread, AbstractUnifiedMonitor.ThreadMonitorCallback paramThreadMonitorCallback);
   
   public abstract boolean whetherReportDuringThisStartup(int paramInt);
   
@@ -43,11 +44,6 @@ public abstract class AbstractUnifiedMonitor
   public abstract boolean whetherReportThisTime(int paramInt, boolean paramBoolean);
   
   public abstract boolean whetherStackEnabled(int paramInt);
-  
-  public static abstract interface ThreadMonitorCallback
-  {
-    public abstract void onThreadMonitorEnd(int paramInt);
-  }
 }
 
 

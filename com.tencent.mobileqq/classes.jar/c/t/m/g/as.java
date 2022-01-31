@@ -1,125 +1,40 @@
 package c.t.m.g;
 
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.os.Build;
-import android.os.Build.VERSION;
+import android.os.SystemClock;
 
-public final class as
+final class as
+  implements Runnable
 {
-  public static String a = "";
-  public static String b = "";
-  public static String c = "";
-  public static String d = "";
+  as(ar paramar, al paramal, long paramLong) {}
   
-  private static String a()
+  public final void run()
   {
+    boolean bool2 = false;
     try
     {
-      String str = Build.MODEL;
-      return str;
-    }
-    catch (Throwable localThrowable) {}
-    return "null";
-  }
-  
-  public static void a(Context paramContext)
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(a());
-    localStringBuffer.append(";Android ");
-    localStringBuffer.append(b());
-    localStringBuffer.append(",level ");
-    localStringBuffer.append(c());
-    a = localStringBuffer.toString();
-    b = b(paramContext);
-    paramContext.getPackageName();
-    c = d();
-    d = a();
-  }
-  
-  private static String b()
-  {
-    try
-    {
-      String str = Build.VERSION.RELEASE;
-      return str;
-    }
-    catch (Throwable localThrowable) {}
-    return "null";
-  }
-  
-  private static String b(Context paramContext)
-  {
-    int j = 0;
-    Object localObject = paramContext.getPackageName();
-    for (;;)
-    {
-      int i;
-      int k;
-      try
+      ao localao = this.a.a();
+      this.a.k = (SystemClock.elapsedRealtime() - this.b);
+      this.a.a(false);
+      boolean bool1 = bool2;
+      if (localao.a == 0)
       {
-        paramContext = paramContext.getPackageManager().getPackageInfo((String)localObject, 0);
-        localObject = paramContext.versionName;
-        int m = paramContext.versionCode;
-        if ((localObject == null) || (((String)localObject).trim().length() <= 0)) {
-          return m;
-        }
-        paramContext = ((String)localObject).trim().replace('\n', ' ').replace('\r', ' ').replace("|", "%7C");
-        localObject = paramContext.toCharArray();
-        i = 0;
-        if (i < localObject.length)
-        {
-          k = j;
-          if (localObject[i] != '.') {
-            break label161;
-          }
-          k = j + 1;
-          break label161;
-        }
-        if (j < 3)
-        {
-          paramContext = paramContext + "." + m;
-          return paramContext;
+        int i = localao.c;
+        bool1 = bool2;
+        if (i == 200) {
+          bool1 = true;
         }
       }
-      catch (Throwable paramContext)
-      {
-        return "";
-      }
-      return paramContext;
-      label161:
-      i += 1;
-      j = k;
+      return;
     }
-  }
-  
-  private static String c()
-  {
-    try
+    catch (Throwable localThrowable) {}finally
     {
-      String str = Build.VERSION.SDK;
-      return str;
+      ar.a(this.c, false);
     }
-    catch (Throwable localThrowable) {}
-    return "null";
-  }
-  
-  private static String d()
-  {
-    try
-    {
-      String str = Build.BRAND;
-      return str;
-    }
-    catch (Throwable localThrowable) {}
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.as
  * JD-Core Version:    0.7.0.1
  */

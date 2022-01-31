@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class mobileqq_qidian$VerifyWpaUinAndKeyReq
-  extends MessageMicro
+  extends MessageMicro<VerifyWpaUinAndKeyReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48 }, new String[] { "uint64_dst_uin", "str_key", "str_json_info", "str_rkey", "uint32_terminal_type", "uint32_terminal_version" }, new Object[] { Long.valueOf(0L), "", "", "", Integer.valueOf(0), Integer.valueOf(0) }, VerifyWpaUinAndKeyReq.class);
   public final PBStringField str_json_info = PBField.initString("");
@@ -20,7 +20,7 @@ public final class mobileqq_qidian$VerifyWpaUinAndKeyReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qidian.proto.mobileqq_qidian.VerifyWpaUinAndKeyReq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,16 @@
 package com.tencent.token.ui.base;
 
-import android.os.Handler;
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class ae
-  extends Handler
+class ae
+  implements View.OnClickListener
 {
-  private ae(byte paramByte) {}
+  ae(FreezeUinDialog paramFreezeUinDialog) {}
   
-  public final void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-    } while (paramMessage.obj == null);
-    ((Runnable)paramMessage.obj).run();
+    this.a.dismiss();
   }
 }
 

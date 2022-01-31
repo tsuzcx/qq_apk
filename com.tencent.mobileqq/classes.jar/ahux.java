@@ -1,21 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.model.ISearchResultModel;
-import com.tencent.mobileqq.search.presenter.TroopAddFrdsSrchResultPresenter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahux
-  implements View.OnClickListener
 {
-  public ahux(TroopAddFrdsSrchResultPresenter paramTroopAddFrdsSrchResultPresenter, ISearchResultModel paramISearchResultModel) {}
-  
-  public void onClick(View paramView)
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel.a(paramView);
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return;
+      auwq.a(paramQQAppInterface.getAccount(), "sp_key_card_redpoint_count", Integer.valueOf(paramInt));
+    } while (!QLog.isColorLevel());
+    QLog.i("CardUtil", 2, String.format("updateCardRedPoint count:%d", new Object[] { Integer.valueOf(paramInt) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahux
  * JD-Core Version:    0.7.0.1
  */

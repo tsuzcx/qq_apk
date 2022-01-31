@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class PersonalityTagComm$PraiseRec
-  extends MessageMicro
+  extends MessageMicro<PraiseRec>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "uint64_uin", "uint32_praise_time" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0) }, PraiseRec.class);
   public final PBUInt32Field uint32_praise_time = PBField.initUInt32(0);
@@ -15,7 +15,7 @@ public final class PersonalityTagComm$PraiseRec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.label.comm.PersonalityTagComm.PraiseRec
  * JD-Core Version:    0.7.0.1
  */

@@ -12,8 +12,8 @@ public final class NotifyRegisterInfo
 {
   static ArrayList cache_notifyIds;
   static Map cache_notifyProperties;
-  public ArrayList notifyIds;
-  public Map notifyProperties;
+  public ArrayList notifyIds = null;
+  public Map notifyProperties = null;
   public String uin = "";
   
   public NotifyRegisterInfo() {}

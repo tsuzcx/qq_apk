@@ -1,43 +1,23 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.DoodleActivity;
-import com.tencent.mobileqq.widget.DoodlePicView;
-import com.tencent.mobileqq.widget.DoodleTextView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 
 public class cpc
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public cpc(DoodleActivity paramDoodleActivity) {}
+  public cpc(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodlePicView.a()))
-    {
-      Toast.makeText(BaseApplicationImpl.getContext(), this.a.getString(2131561992) + "...", 0).show();
-      return;
+    if ((paramIntent != null) && (paramIntent.getLongExtra("timeid", 0L) > this.a.a) && (!this.a.isFinishing())) {
+      this.a.finish();
     }
-    if ((this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodleTextView.a()))
-    {
-      Toast.makeText(BaseApplicationImpl.getContext(), this.a.getString(2131563221) + "...", 0).show();
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.a.b.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
-    if (this.a.jdField_a_of_type_Boolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodleTextView.d();
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     cpc
  * JD-Core Version:    0.7.0.1
  */

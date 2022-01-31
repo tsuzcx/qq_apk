@@ -1,17 +1,16 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.utils.s;
-
-final class h
-  implements View.OnClickListener
+class h
 {
-  h(AboutActivity paramAboutActivity) {}
+  public float a;
+  public float b;
+  public float c;
   
-  public final void onClick(View paramView)
+  public h(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    s.a(this.a, this.a.getString(2131361970));
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
   }
 }
 

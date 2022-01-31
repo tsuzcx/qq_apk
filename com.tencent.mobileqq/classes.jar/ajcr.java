@@ -1,15 +1,29 @@
-import com.tencent.mobileqq.troop.data.TroopAioKeywordHelper;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
-import java.util.List;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleView;
 
-class ajcr
-  implements Runnable
+public class ajcr
+  implements ajdq
 {
-  ajcr(ajcq paramajcq, List paramList) {}
+  public ajcr(DoodleView paramDoodleView) {}
   
-  public void run()
+  public void a()
   {
-    TroopAioKeywordHelper.a(this.jdField_a_of_type_Ajcq.a.a, this.jdField_a_of_type_JavaUtilList);
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).a();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).a(paramInt1, paramInt2);
+    }
+  }
+  
+  public void b()
+  {
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).b();
+    }
   }
 }
 

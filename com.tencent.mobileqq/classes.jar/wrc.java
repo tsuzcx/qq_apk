@@ -1,68 +1,107 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.messagesearch.C2CMessageResultAdapter;
-import com.tencent.mobileqq.activity.messagesearch.MessageItem;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatHistorySearchData;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MqqWeakReferenceHandler;
-import java.util.HashMap;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import java.lang.ref.WeakReference;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class wrc
-  implements Runnable
+  extends xve
+  implements URLDrawable.URLDrawableListener
 {
-  public wrc(C2CMessageResultAdapter paramC2CMessageResultAdapter, String paramString, long paramLong, List paramList) {}
+  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  private wrb jdField_a_of_type_Wrb;
   
-  public void run()
+  public wrc(ImageView paramImageView, wrb paramwrb)
   {
-    int j = 0;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
-    int i;
-    MessageRecord localMessageRecord;
-    if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData1 != null) && (!((ChatHistorySearchData)localObject).mSearchData1.isEmpty()))
+    super(paramImageView);
+    this.jdField_a_of_type_Wrb = paramwrb;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_Wrb.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    wrk.c("Q.qqstory.newImageLoader", new Object[] { "runOnBackGround url= ", this.jdField_a_of_type_Wrb.jdField_a_of_type_JavaLangString });
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    try
     {
-      i = 0;
-      while (i < ((ChatHistorySearchData)localObject).mSearchData1.size())
+      new URL(this.jdField_a_of_type_Wrb.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_Wrb.jdField_a_of_type_JavaLangString, localURLDrawableOptions);
+      this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(this);
+      if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1)
       {
-        localMessageRecord = (MessageRecord)((ChatHistorySearchData)localObject).mSearchData1.get(i);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.a(localMessageRecord)) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.b.add(new MessageItem(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord));
-        }
-        i += 1;
+        wrk.c("Q.qqstory.newImageLoader", new Object[] { "drawable have urlDrawable cache" });
+        onLoadSuccessed(this.jdField_a_of_type_ComTencentImageURLDrawable);
+        return;
       }
     }
-    if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData2 != null) && (!((ChatHistorySearchData)localObject).mSearchData2.isEmpty()))
+    catch (MalformedURLException localMalformedURLException)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, ((ChatHistorySearchData)localObject).mSearchData2);
-      if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData1 != null))
+      localMalformedURLException.printStackTrace();
+      wrk.a("Q.qqstory.newImageLoader", new Object[] { localMalformedURLException.getMessage() });
+      a(this.jdField_a_of_type_Wrb.jdField_a_of_type_AndroidGraphicsDrawableDrawable, "url is error:" + localMalformedURLException);
+      return;
+    }
+    if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 2) || (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 3))
+    {
+      wrk.c("Q.qqstory.newImageLoader", new Object[] { "drawable restartDownload" });
+      this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
+      return;
+    }
+    wrk.c("Q.qqstory.newImageLoader", new Object[] { "drawable startDownload" });
+    this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload(true);
+  }
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  {
+    wrk.c("Q.qqstory.newImageLoader", new Object[] { "onLoadCanceled url= ", paramURLDrawable.getURL() });
+    super.a(paramURLDrawable, "task have been cancel!");
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    wrk.c("Q.qqstory.newImageLoader", new Object[] { "onLoadFialed url= ", paramURLDrawable.getURL() });
+    super.a(paramURLDrawable, paramThrowable.getMessage());
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    wrk.c("Q.qqstory.newImageLoader", new Object[] { "onLoadSuccessed url= ", paramURLDrawable.getURL() });
+    if (this.jdField_a_of_type_Boolean)
+    {
+      super.a(paramURLDrawable);
+      return;
+    }
+    if (this.jdField_a_of_type_Wrb.jdField_a_of_type_Wqx != null)
+    {
+      Bitmap localBitmap = wrl.a(paramURLDrawable.getCurrDrawable(), this.jdField_a_of_type_Wrb.jdField_a_of_type_Int, this.jdField_a_of_type_Wrb.b, xsm.a, this.jdField_a_of_type_Wrb.jdField_a_of_type_Wqx);
+      if ((localBitmap == null) || (localBitmap.isRecycled()))
       {
-        i = j;
-        while (i < ((ChatHistorySearchData)localObject).mSearchData1.size())
-        {
-          localMessageRecord = (MessageRecord)((ChatHistorySearchData)localObject).mSearchData1.get(i);
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.a(localMessageRecord)) {
-            this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.b.add(new MessageItem(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord));
-          }
-          i += 1;
-        }
+        super.a(paramURLDrawable, "drawable transform failed!");
+        return;
       }
+      paramURLDrawable = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramURLDrawable != null) {
+        paramURLDrawable.setTag(2131369087, localBitmap);
+      }
+      super.a(new BitmapDrawable(localBitmap));
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CMessageResultAdapter", 2, "localCacheMsgs size: " + this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.b.size());
-    }
-    localObject = new HashMap();
-    ((HashMap)localObject).put("keyword", this.jdField_a_of_type_JavaLangString);
-    ((HashMap)localObject).put("sequence", Long.valueOf(this.jdField_a_of_type_Long));
-    ((HashMap)localObject).put("data", this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(6, localObject).sendToTarget();
+    super.a(paramURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wrc
  * JD-Core Version:    0.7.0.1
  */

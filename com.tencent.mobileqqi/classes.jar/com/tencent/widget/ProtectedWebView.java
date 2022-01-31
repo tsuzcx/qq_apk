@@ -44,8 +44,11 @@ public class ProtectedWebView
   
   private void b()
   {
-    if (Build.VERSION.SDK_INT >= 11) {
+    if (Build.VERSION.SDK_INT >= 11)
+    {
       removeJavascriptInterface("searchBoxJavaBridge_");
+      removeJavascriptInterface("accessibility");
+      removeJavascriptInterface("accessibilityTraversal");
     }
     this.a = false;
   }

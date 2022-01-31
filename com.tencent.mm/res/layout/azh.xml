@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/dq" android:textStyle="bold" android:textColor="@color/h6" android:id="@id/evu" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ex2" />
+    <TextView android:id="@id/evv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ex1" android:layout_centerInParent="true" android:layout_marginStart="@dimen/l2" android:layout_marginEnd="@dimen/l2" />
+    <android.support.v7.widget.RecyclerView android:id="@id/evw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/evu" android:overScrollMode="never" />
+</merge>

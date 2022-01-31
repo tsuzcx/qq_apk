@@ -1,34 +1,20 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.search.adapter.BaseMvpFaceAdapter;
-import com.tencent.mobileqq.search.fragment.MessageSearchFragment;
-import com.tencent.mobileqq.search.presenter.IPresenter;
-import com.tencent.mobileqq.search.presenter.SearchResultPresenter;
-import com.tencent.mobileqq.search.view.IView;
-import com.tencent.mobileqq.search.view.SearchResultView;
-import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.widget.ListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
 
 public class ahtl
-  extends BaseMvpFaceAdapter
+  implements View.OnClickListener
 {
-  public ahtl(MessageSearchFragment paramMessageSearchFragment, ListView paramListView, FaceDecoder paramFaceDecoder)
-  {
-    super(paramListView, paramFaceDecoder);
-  }
+  public ahtl(PublicAccountFragment paramPublicAccountFragment) {}
   
-  protected IPresenter a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new SearchResultPresenter(this.a.a);
-  }
-  
-  protected IView a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new SearchResultView(paramViewGroup, 2130971539);
+    adpm.a(this.a.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahtl
  * JD-Core Version:    0.7.0.1
  */

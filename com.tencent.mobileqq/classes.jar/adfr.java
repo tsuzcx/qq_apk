@@ -1,24 +1,25 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.controller.IDownloadController;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.ZipFilePresenter;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.LbsBaseActivity;
 
 public class adfr
   implements View.OnClickListener
 {
-  public adfr(ZipFilePresenter paramZipFilePresenter) {}
+  public adfr(LbsBaseActivity paramLbsBaseActivity) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.a.a() != null) {
-      this.a.a.a().a();
+    auwq.a(this.a.getAppInterface().getAccount(), true);
+    if ((LbsBaseActivity.a(this.a) != null) && (LbsBaseActivity.a(this.a).isShowing())) {
+      this.a.a(LbsBaseActivity.a(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adfr
  * JD-Core Version:    0.7.0.1
  */

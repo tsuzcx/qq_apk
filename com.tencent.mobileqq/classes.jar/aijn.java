@@ -1,31 +1,15 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemPAAudio;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
 
 public class aijn
-  extends URLDrawableDownListener.Adapter
+  implements DialogInterface.OnCancelListener
 {
-  public aijn(StructMsgItemPAAudio paramStructMsgItemPAAudio) {}
+  public aijn(MiniMsgTabFragment paramMiniMsgTabFragment) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    paramView.setBackgroundDrawable(paramURLDrawable);
+    MiniMsgTabFragment.a(this.a, -1, null);
   }
 }
 

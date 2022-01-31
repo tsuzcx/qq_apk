@@ -1,0 +1,25 @@
+!!brut.androlib.meta.MetaInfo
+apkFileName: android_wear_micro_apk.apk
+compressionType: false
+doNotCompress:
+- png
+isFrameworkApk: false
+packageInfo:
+  forcedPackageId: '127'
+  renameManifestPackage: null
+sdkInfo:
+  minSdkVersion: '21'
+  targetSdkVersion: '23'
+sharedLibrary: false
+sparseResources: false
+unknownFiles:
+  build-data.properties: '8'
+  jsr305_annotations/Jsr305_annotations.gwt.xml: '8'
+usesFramework:
+  ids:
+  - 1
+  tag: null
+version: 2.6.0
+versionInfo:
+  versionCode: '1360'
+  versionName: 6.7.3

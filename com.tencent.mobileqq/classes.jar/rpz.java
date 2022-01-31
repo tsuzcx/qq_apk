@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.XEditTextEx.SizeChangedCallback;
+import android.os.Bundle;
 
-public class rpz
-  implements XEditTextEx.SizeChangedCallback
+public abstract interface rpz
 {
-  public rpz(BaseChatPie paramBaseChatPie) {}
+  public abstract void a(Bundle paramBundle);
+  
+  public abstract void a(String paramString, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rpz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 
 public class acnl
-  implements DialogInterface.OnCancelListener
+  implements bhuk
 {
-  public acnl(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public acnl(ChatHistoryFileActivity paramChatHistoryFileActivity, bhuf parambhuf) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.a.a(null);
-    LocalFileBrowserActivity.a(this.a);
+    if ((!this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a(3, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.c, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.d)) || (this.jdField_a_of_type_Bhuf.isShowing())) {
+      this.jdField_a_of_type_Bhuf.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acnl
  * JD-Core Version:    0.7.0.1
  */

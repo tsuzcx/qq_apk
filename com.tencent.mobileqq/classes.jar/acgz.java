@@ -1,47 +1,76 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.emoticonview.StickerGestureDetector;
-import com.tencent.mobileqq.vas.VasH5PayUtil;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import java.lang.ref.WeakReference;
+import mqq.manager.VerifyDevLockManager.NotifyType;
+import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class acgz
-  implements DialogInterface.OnClickListener
+  extends VerifyDevLockManager.VerifyDevLockObserver
 {
-  public acgz(StickerGestureDetector paramStickerGestureDetector) {}
+  private WeakReference<VerifyDevLockManager.VerifyDevLockObserver> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public acgz(VerifyDevLockManager.VerifyDevLockObserver paramVerifyDevLockObserver)
   {
-    paramDialogInterface = this.a.jdField_a_of_type_AndroidContentContext.getString(2131436943);
-    VasH5PayUtil.a(null, this.a.jdField_a_of_type_AndroidContentContext, "mvip.g.a.bq_tz", 3, "1450000515", "CJCLUBT", paramDialogInterface, "", false, true);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
+    this.a = new WeakReference(paramVerifyDevLockObserver);
+  }
+  
+  public void a()
+  {
+    this.a.clear();
+    this.a = null;
+  }
+  
+  public int getSeq()
+  {
+    if (this.a != null)
     {
-      if (EmojiStickerManager.a().a != 0) {
-        break label103;
-      }
-      paramInt = 1;
-    }
-    for (;;)
-    {
-      VasWebviewUtil.reportCommercialDrainage(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.c(), "Stick", "ClickSVIPTip", String.valueOf(paramInt), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
-      return;
-      label103:
-      if (EmojiStickerManager.a().a == 1) {
-        paramInt = 2;
-      } else if (EmojiStickerManager.a().a == 3000) {
-        paramInt = 3;
-      } else {
-        paramInt = -1;
+      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
+      if (localVerifyDevLockObserver != null) {
+        return localVerifyDevLockObserver.getSeq();
       }
     }
+    return super.getSeq();
+  }
+  
+  public void onRecvNotice(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
+  {
+    if (this.a != null)
+    {
+      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
+      if (localVerifyDevLockObserver != null) {
+        localVerifyDevLockObserver.onRecvNotice(paramNotifyType, paramInt1, paramString, paramInt2, paramErrMsg, paramDevlockInfo);
+      }
+    }
+  }
+  
+  public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg)
+  {
+    if (this.a != null)
+    {
+      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
+      if (localVerifyDevLockObserver != null) {
+        localVerifyDevLockObserver.onVerifyClose(paramInt1, paramString, paramInt2, paramErrMsg);
+      }
+    }
+  }
+  
+  public void setSeq(int paramInt)
+  {
+    if (this.a != null)
+    {
+      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
+      if (localVerifyDevLockObserver != null)
+      {
+        localVerifyDevLockObserver.setSeq(paramInt);
+        return;
+      }
+    }
+    super.setSeq(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acgz
  * JD-Core Version:    0.7.0.1
  */

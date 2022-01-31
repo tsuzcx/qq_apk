@@ -1,26 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.SplashActivityCore;
+import com.tencent.qphone.base.util.QLog;
 
-public class dkp
-  implements DialogInterface.OnKeyListener
+class dkp
+  implements MediaPlayer.OnErrorListener
 {
-  public dkp(RegisterActivity paramRegisterActivity) {}
+  dkp(dkl paramdkl) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1) && (!paramKeyEvent.isCanceled()))
-    {
-      RegisterActivity.b(this.a);
-      return true;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Splash.testCanPlayMp4", 4, "onError");
     }
+    this.a.a.handler.sendEmptyMessage(5);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dkp
  * JD-Core Version:    0.7.0.1
  */

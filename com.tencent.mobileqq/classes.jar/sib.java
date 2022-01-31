@@ -1,21 +1,50 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.app.Activity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
+import java.util.List;
 
 public class sib
-  implements Runnable
+  extends shz
 {
-  public sib(Conversation paramConversation, int paramInt1, int paramInt2, int paramInt3) {}
+  private List<String> jdField_a_of_type_JavaUtilList;
+  private sic jdField_a_of_type_Sic;
+  private List<String> b;
+  protected boolean b;
   
-  public void run()
+  public sib(Activity paramActivity, sic paramsic, List<String> paramList1, List<String> paramList2)
   {
-    long l = ServiceAccountFolderManager.a().a();
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a, "dc00899", "Pb_account_lifeservice", "", "0X8006E12", "0X8006E12", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.b), String.valueOf(this.c), String.valueOf(l));
+    super(paramActivity);
+    this.jdField_a_of_type_Sic = paramsic;
+    this.jdField_a_of_type_JavaUtilList = paramList1;
+    this.jdField_b_of_type_JavaUtilList = paramList2;
+  }
+  
+  public View a(LayoutInflater paramLayoutInflater)
+  {
+    paramLayoutInflater = (LinearLayout)paramLayoutInflater.inflate(2131559985, null);
+    RecyclerView localRecyclerView = (RecyclerView)paramLayoutInflater.findViewById(2131364687);
+    oqv localoqv = new oqv(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_Sic);
+    localRecyclerView.setLayoutManager(new LinearLayoutManager(this.jdField_a_of_type_AndroidAppActivity));
+    localRecyclerView.setAdapter(localoqv);
+    return paramLayoutInflater;
+  }
+  
+  public void b(View paramView)
+  {
+    if (!this.jdField_b_of_type_Boolean)
+    {
+      a();
+      this.jdField_b_of_type_Boolean = true;
+    }
+    a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sib
  * JD-Core Version:    0.7.0.1
  */

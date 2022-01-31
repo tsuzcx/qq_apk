@@ -1,21 +1,16 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.af;
-import com.tencent.token.global.e;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class acr
-  implements View.OnClickListener
+class acr
+  implements DialogInterface.OnClickListener
 {
-  acr(UnbindUinActivity paramUnbindUinActivity) {}
+  acr(acq paramacq) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.startTimeTask();
-    this.a.showProgressDialog();
-    af.a().a("", UnbindUinActivity.access$200(this.a), 1, 3, "", this.a.handler);
-    e.a("msg.what=, timetask=" + UnbindUinActivity.access$000(this.a));
+    UtilsLoginProtectActivity.access$100(this.a.a);
   }
 }
 

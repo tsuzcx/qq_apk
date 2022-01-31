@@ -1,27 +1,25 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.LoginActivity;
 
-class ctg
-  implements Runnable
+public class ctg
+  implements DialogInterface.OnClickListener
 {
-  ctg(ctf paramctf) {}
+  public ctg(LoginActivity paramLoginActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Card localCard = ((FriendsManager)this.a.a.b.getManager(46)).a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
-    this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataCard = localCard;
-    if (localCard != null) {
-      this.a.a.runOnUiThread(new cth(this));
+    try
+    {
+      paramDialogInterface.dismiss();
+      return;
     }
+    catch (Exception paramDialogInterface) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ctg
  * JD-Core Version:    0.7.0.1
  */

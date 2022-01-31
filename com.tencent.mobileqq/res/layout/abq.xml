@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/jqh" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/jqf" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <TextView android:textColor="@color/bp" android:gravity="center" android:id="@id/jos" android:background="@drawable/glf" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="5.0dip" android:maxWidth="88.0dip" android:minWidth="40.0dip" android:text="@string/pu8" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
+        <TextView android:textColor="@color/bp" android:ellipsize="end" android:gravity="center" android:id="@id/jq3" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minWidth="40.0dip" android:text="" android:singleLine="true" android:includeFontPadding="false" android:layout_centerInParent="true" style="@style/TitleText" />
+        <com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView android:id="@id/mqs" android:visibility="gone" android:layout_width="27.0dip" android:layout_height="27.0dip" android:layout_marginRight="6.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/jpw" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:src="@drawable/d8k" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/content" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/jqf">
+        <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView android:id="@id/ec1" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:divider="@null" android:dividerHeight="0.0dip" tencent:showFooterView="true" tencent:showHeaderView="true" />
+        <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/abp" />
+        <ViewStub android:id="@id/f7f" android:layout="@layout/a8o" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/gf4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ProgressBar android:layout_gravity="center" android:id="@id/gf5" android:layout_width="19.0dip" android:layout_height="19.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" />
+            <TextView android:textSize="16.0dip" android:textColor="@color/skin_gray3" android:gravity="center" android:layout_gravity="center" android:id="@id/hzb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/q10" />
+        </LinearLayout>
+        <ViewStub android:id="@id/i5r" android:layout="@layout/acn" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </RelativeLayout>
+</RelativeLayout>

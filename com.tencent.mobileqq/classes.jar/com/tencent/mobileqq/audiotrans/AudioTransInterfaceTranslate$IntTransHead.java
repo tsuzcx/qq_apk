@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class AudioTransInterfaceTranslate$IntTransHead
-  extends MessageMicro
+  extends MessageMicro<IntTransHead>
 {
   public static final int INT_TRANS_CHANGE_SESSION_REQ = 3;
   public static final int INT_TRANS_CHANGE_SESSION_RSP = 4;
@@ -35,7 +35,7 @@ public final class AudioTransInterfaceTranslate$IntTransHead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.audiotrans.AudioTransInterfaceTranslate.IntTransHead
  * JD-Core Version:    0.7.0.1
  */

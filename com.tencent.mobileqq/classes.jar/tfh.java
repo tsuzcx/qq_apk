@@ -1,19 +1,10 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-
-public class tfh
-  implements Runnable
+class tfh
 {
-  public tfh(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
-  
-  public void run()
-  {
-    this.a.e.setBackgroundDrawable(FormSwitchItem.a(this.a.getResources(), 0));
-  }
+  private static final tff a = new tff(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tfh
  * JD-Core Version:    0.7.0.1
  */

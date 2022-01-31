@@ -10,14 +10,14 @@ public final class RespGetFace
 {
   static RespHead cache_stHeader;
   static UserCntlData cache_stUserData;
-  static ArrayList cache_vFaceInfo;
+  static ArrayList<FaceInfo> cache_vFaceInfo;
   public RespHead stHeader;
   public UserCntlData stUserData;
-  public ArrayList vFaceInfo;
+  public ArrayList<FaceInfo> vFaceInfo;
   
   public RespGetFace() {}
   
-  public RespGetFace(RespHead paramRespHead, UserCntlData paramUserCntlData, ArrayList paramArrayList)
+  public RespGetFace(RespHead paramRespHead, UserCntlData paramUserCntlData, ArrayList<FaceInfo> paramArrayList)
   {
     this.stHeader = paramRespHead;
     this.stUserData = paramUserCntlData;

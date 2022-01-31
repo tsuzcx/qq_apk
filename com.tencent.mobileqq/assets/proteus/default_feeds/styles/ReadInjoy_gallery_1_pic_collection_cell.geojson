@@ -1,0 +1,112 @@
+{
+    "ReadInjoy_gallery_1_pic_collection_cell": {
+        "view_type": "UIView",
+        "view_id": "id_single_gallery_1pic_wrapper",
+        "event_type":"cmd_url_click_card_report",
+        "layout_type":"layout_relative",
+        "visible_depend_on_children":"YES",
+        "height": {
+            "type": "relative",
+            "value": "174"
+        },
+        "width": {
+            "type": "relative",
+            "value": "176"
+        },
+        "attributes": {
+            "setAttatchInfo:":"$url"
+        },
+        "data_attributes": {
+            "setLocalInfo:": {
+                "click_area":"2"
+            },
+            "setRemoteInfo:": {
+                "rowkey": "$rowkey",
+                "jump_src": "$jump_src_img",
+                "jump_page": "$jump_page_img"
+            }
+        },
+        "subviews": [
+            {
+                "view_type": "ReadInjoyAsynImageView",
+                "view_id": "id_big_pic",
+                "attributes": {
+                    "setImageWithURLString:lineup:": [
+                        "$article_large_imge_url",
+                        "0"
+                    ]
+                },
+                "height": {
+                    "type": "relative",
+                    "value": "174"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "174"
+                }
+            },
+            {
+                "view_type":"UIView",
+                "view_id": "id_pic_num_wrapper",
+                "layout_type":"layout_relative",
+                "align_parent_right":"YES",
+                "align_parent_bottom":"YES",
+                "default_visible":"YES",
+                "margin_right":"5",
+                "margin_bottom":"5",
+                "height":{
+                    "type":"relative",
+                    "value":"17"
+                },
+                "width":{
+                    "type":"wrap_content"
+                },
+                "attributes":{
+                    "setCornerRadiusString:":"2.0",
+                    "setBackgroundColorString:":"#68000000"
+                },
+                "subviews":[
+                    {
+                        "view_type":"UIImageView",
+                        "view_id":"id_gallery_img",
+                        "default_visible":"YES",
+                        "align_parent_left":"YES",
+                        "align_parent_center_vertical": "YES",
+                        "margin_left":"2",
+                        "height":{
+                            "type":"relative",
+                            "value":"11"
+                        },
+                        "width":{
+                            "type":"relative",
+                            "value":"12"
+                        },
+                        "attributes":{
+                            "loadImageWithPath:":"ReadInJoy/qq_readinjoy_gallery_count.png"
+                        }
+                    },
+                    {
+                        "view_type":"UILabel",
+                        "view_id":"id_pic1_gallery_cnt",
+                        "right_of_view":"id_gallery_img",
+                        "margin_left":"1",
+                        "margin_right":"2",
+                        "height":{
+                            "type":"relative",
+                            "value":"17"
+                        },
+                        "width":{
+                            "type":"wrap_content"
+                        },
+                        "attributes":{
+                            "setTextAlignmentString:":"2",
+                            "setTextColorString:":"#FFFFFF",
+                            "setText:":"$gallery_cnt",
+                            "setFontSizeString:":"10"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

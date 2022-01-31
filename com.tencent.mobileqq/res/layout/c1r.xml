@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/aik"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/icon" android:src="@drawable/qq_profilecard_item_charm" style="@style/bw" />
+    <TextView android:ellipsize="end" android:gravity="left" android:id="@id/dq6" android:maxLines="2" style="@style/bz" />
+    <ImageView android:id="@id/yw" style="@style/bv" />
+</LinearLayout>

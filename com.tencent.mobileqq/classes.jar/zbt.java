@@ -1,35 +1,22 @@
-import com.tencent.mobileqq.activity.weather.WeatherManager;
-import com.tencent.mobileqq.app.ConfigHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.MobileQQ;
-
-public class zbt
-  implements Runnable
+class zbt
+  implements zbu
 {
-  public zbt(ConfigHandler paramConfigHandler, String paramString, WeatherManager paramWeatherManager, long paramLong) {}
+  zbt(zbr paramzbr) {}
   
-  public void run()
+  public void a(yxz paramyxz)
   {
-    boolean bool = false;
-    File localFile = new File(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.b.getApplication().getFilesDir(), "WeatherResource.zip");
-    String str = MsfSdkUtils.insertMtype("ConfigCheck", this.jdField_a_of_type_JavaLangString);
-    int i = HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.b, str, localFile);
-    if (QLog.isColorLevel()) {
-      QLog.d("weatherManager", 2, "handleWeatherResources download: " + i + ",downloadpath" + localFile.getAbsolutePath());
+    int i = paramyxz.a();
+    if ((zbr.a(this.a)) && (i == 100))
+    {
+      this.a.a(true);
+      return;
     }
-    if (i == 0) {
-      bool = this.jdField_a_of_type_ComTencentMobileqqActivityWeatherWeatherManager.a(this.jdField_a_of_type_Long, localFile.getAbsolutePath());
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a(9, bool, null);
+    this.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zbt
  * JD-Core Version:    0.7.0.1
  */

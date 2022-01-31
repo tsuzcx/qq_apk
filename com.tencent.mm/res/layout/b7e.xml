@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/flz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l5" android:layout_marginTop="@dimen/n6" android:layout_marginRight="@dimen/l5" android:layout_centerHorizontal="true">
+            <ImageView android:layout_gravity="center" android:id="@id/fm0" android:background="@raw/offline_info_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:gravity="center" android:layout_gravity="center" android:id="@id/fm1" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="20.0dip" android:text="@string/frm" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+            <Button android:textSize="@dimen/fm" android:textColor="#ff02bb00" android:layout_gravity="center_horizontal" android:id="@id/f2o" android:paddingLeft="@dimen/m7" android:paddingRight="@dimen/m7" android:layout_width="wrap_content" android:layout_height="@dimen/li" android:layout_marginBottom="85.0dip" android:text="@string/frl" style="@style/pb" />
+            <TextView android:textSize="@dimen/ko" android:textColor="#ff586187" android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:id="@id/fm2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" android:text="@string/frn" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

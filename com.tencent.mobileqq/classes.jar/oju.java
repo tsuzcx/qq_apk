@@ -1,29 +1,27 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleBtnOperationHelper;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class oju
-  implements Animation.AnimationListener
+  implements ViewBase.OnClickListener
 {
-  oju(ojt paramojt) {}
+  oju(ojn paramojn) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(ViewBase paramViewBase)
   {
-    this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleBtnOperationHelper != null) {
-      this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleBtnOperationHelper.a(null);
-    }
+    if ((this.a.jdField_a_of_type_Omg.a() == null) || (this.a.jdField_a_of_type_Omt.a == null)) {}
+    do
+    {
+      return;
+      ors.a(this.a.jdField_a_of_type_Omg.a().getContext(), this.a.jdField_a_of_type_Omt.a.activityJumpUrl);
+    } while (this.a.jdField_a_of_type_Omg.a() == null);
+    this.a.jdField_a_of_type_Omg.a().e(this.a.jdField_a_of_type_Omt);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oju
  * JD-Core Version:    0.7.0.1
  */

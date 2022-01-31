@@ -1,38 +1,34 @@
-import com.tencent.biz.qqstory.model.lbs.LbsManager.OnLocationListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditVideoPoi;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView.WeakReferenceRunnable;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class ogg
-  extends LbsManager.OnLocationListener
+  implements TVK_SDKMgr.InstallListener
 {
-  public ogg(EditVideoPoi paramEditVideoPoi, String paramString, boolean paramBoolean)
+  public ogg(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView) {}
+  
+  public void onInstallProgress(float paramFloat)
   {
-    super(paramString);
+    aase.a("ReadInJoyArticleBottomVideoView", "installSDK onInstallProgress arg0=");
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onInstalledFailed(int paramInt)
   {
-    super.a(paramInt, paramSosoLbsInfo);
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.a = paramSosoLbsInfo.a.a;
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.b = paramSosoLbsInfo.a.b;
-      SLog.b("Q.qqstory.publish.edit.EditVideoPoi", "onLocationUpdate() latitude=" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.a + " longitude=" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.b);
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.e();
-      }
-      return;
+    aase.a("ReadInJoyArticleBottomVideoView", "installSDK onInstalledFailed arg0=");
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    aase.a("ReadInJoyArticleBottomVideoView", "installSDK onInstalledSuccessed");
+    if ((ReadInJoyArticleBottomVideoView.b()) && (ReadInJoyArticleBottomVideoView.a(this.a) != null)) {
+      ReadInJoyArticleBottomVideoView.a(this.a).post(new ReadInJoyArticleBottomVideoView.WeakReferenceRunnable(this.a, 4));
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.a = 0.0D;
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.b = 0.0D;
-    SLog.b("Q.qqstory.publish.edit.EditVideoPoi", "onLocationUpdate() error");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ogg
  * JD-Core Version:    0.7.0.1
  */

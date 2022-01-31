@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.game.ui.GameFeedMatchView android:orientation="vertical" android:padding="@dimen/jr" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.game.ui.GameFeedTitleDescView android:id="@id/c8q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/jw" />
+        <com.tencent.mm.plugin.game.ui.GameRoundImageView android:id="@id/c8w" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/ju" />
+        <com.tencent.mm.plugin.game.ui.GameFeedSubscriptView android:id="@id/c8v" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jw" />
+    </com.tencent.mm.plugin.game.ui.GameFeedMatchView>
+</FrameLayout>

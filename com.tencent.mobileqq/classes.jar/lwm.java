@@ -1,95 +1,154 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyModelImpl;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.CellFactory;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.CmpCtxt;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentPolymericView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.PolymericInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import android.media.SoundPool;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 public class lwm
-  extends BaseAdapter
 {
-  private lwm(ComponentPolymericView paramComponentPolymericView) {}
+  int jdField_a_of_type_Int;
+  SoundPool jdField_a_of_type_AndroidMediaSoundPool;
+  HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
+  HashSet<Integer> jdField_a_of_type_JavaUtilHashSet;
+  List<String> jdField_a_of_type_JavaUtilList;
+  int jdField_b_of_type_Int;
+  HashMap<String, Integer> jdField_b_of_type_JavaUtilHashMap;
+  int c;
   
-  public int getCount()
+  public lwm(List<String> paramList, int paramInt)
   {
-    return ComponentPolymericView.a(this.a).size();
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
+    this.jdField_b_of_type_Int = paramList.size();
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public Object getItem(int paramInt)
+  public void a()
   {
-    return ComponentPolymericView.a(this.a).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return ((BaseArticleInfo)ComponentPolymericView.a(this.a).get(paramInt)).mRecommendSeq;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)ComponentPolymericView.a(this.a).get(paramInt);
-    if (localBaseArticleInfo.mPolymericInfo != null) {}
-    switch (localBaseArticleInfo.mPolymericInfo.a)
+    if (QLog.isColorLevel()) {
+      QLog.d("SoundPoolHelper", 2, "releaseMusic");
+    }
+    if (this.jdField_a_of_type_AndroidMediaSoundPool != null)
     {
-    default: 
-      if (ReadInJoyUtils.a(localBaseArticleInfo)) {
-        return 51;
+      this.jdField_a_of_type_AndroidMediaSoundPool.release();
+      this.jdField_a_of_type_AndroidMediaSoundPool = null;
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      this.jdField_a_of_type_JavaUtilHashSet.clear();
+      this.jdField_b_of_type_JavaUtilHashMap.clear();
+      this.c = 0;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if (localInteger == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SoundPoolHelper", 2, "stopMusic fail soundID is null, path = " + paramString);
       }
-      break;
-    case 9: 
-      return 67;
-    case 11: 
-      return 69;
-    case 10: 
-      return 68;
     }
-    if (ReadInJoyUtils.b(localBaseArticleInfo)) {
-      return 52;
-    }
-    if (localBaseArticleInfo.mSinglePicture != null) {
-      return 50;
-    }
-    return 50;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = (BaseArticleInfo)ComponentPolymericView.a(this.a).get(paramInt);
-    Object localObject = ComponentPolymericView.a(this.a);
-    ArticleInfo localArticleInfo = (ArticleInfo)paramViewGroup;
-    int j = getItemViewType(paramInt);
-    int k = (int)paramViewGroup.mChannelID;
-    if (paramViewGroup.mChannelID == 3L) {}
-    for (int i = 1;; i = 0)
+    do
     {
-      localObject = new ReadInJoyModelImpl((Context)localObject, localArticleInfo, j, k, i, paramInt, false, getCount(), null, ComponentPolymericView.a(this.a).a.a());
-      paramView = CellFactory.a(paramInt, localObject, getItemViewType(paramInt), paramView, ComponentPolymericView.a(this.a), ComponentPolymericView.a(this.a).a.a(), ComponentPolymericView.a(this.a).a.a().a());
-      if (paramView != null)
+      do
       {
-        paramView.setTag(2131362079, localObject);
-        ComponentPolymericView.a(this.a).a.a().a(paramViewGroup, (IReadInJoyModel)localObject, System.currentTimeMillis(), paramInt);
+        do
+        {
+          return;
+          if (this.jdField_a_of_type_JavaUtilHashSet.contains(localInteger)) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("SoundPoolHelper", 2, "stopMusic fail soundID is not ready, path = " + paramString);
+        return;
+        localInteger = (Integer)this.jdField_b_of_type_JavaUtilHashMap.get(paramString);
+        if (localInteger != null) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("SoundPoolHelper", 2, "stopMusic fail steamID is null, path = " + paramString);
+      return;
+    } while (this.jdField_a_of_type_AndroidMediaSoundPool == null);
+    this.jdField_a_of_type_AndroidMediaSoundPool.stop(localInteger.intValue());
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SoundPoolHelper", 2, "playMusic, path = " + paramString + ",loop = " + paramBoolean);
+    }
+    if (TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SoundPoolHelper", 2, "playMusic fail path is empty ");
       }
-      return paramView;
+    }
+    Integer localInteger;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          localInteger = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+          if (localInteger != null) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("SoundPoolHelper", 2, "playMusic fail soundID is null, path = " + paramString + ",loop = " + paramBoolean);
+        return;
+        if (this.jdField_a_of_type_JavaUtilHashSet.contains(localInteger)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("SoundPoolHelper", 2, "playMusic fail soundID is not ready, path = " + paramString + ",loop = " + paramBoolean);
+      return;
+    } while (this.jdField_a_of_type_AndroidMediaSoundPool == null);
+    SoundPool localSoundPool = this.jdField_a_of_type_AndroidMediaSoundPool;
+    int j = localInteger.intValue();
+    if (paramBoolean) {}
+    for (int i = -1;; i = 0)
+    {
+      i = localSoundPool.play(j, 1.0F, 1.0F, 1, i, 1.0F);
+      this.jdField_b_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(i));
+      return;
     }
   }
   
-  public int getViewTypeCount()
+  public void a(lwo paramlwo)
   {
-    return 6;
+    if (QLog.isColorLevel()) {
+      QLog.d("SoundPoolHelper", 2, "loadMusic ,soundPool = " + this.jdField_a_of_type_AndroidMediaSoundPool);
+    }
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() < 1)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SoundPoolHelper", 2, "loadMusic fail filPathList is empty");
+      }
+    }
+    for (;;)
+    {
+      return;
+      if (this.jdField_a_of_type_AndroidMediaSoundPool == null)
+      {
+        this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(this.jdField_a_of_type_JavaUtilList.size(), this.jdField_a_of_type_Int, 0);
+        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new lwn(this, paramlwo));
+      }
+      paramlwo = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramlwo.hasNext())
+      {
+        String str = (String)paramlwo.next();
+        int i = this.jdField_a_of_type_AndroidMediaSoundPool.load(str, 1);
+        this.jdField_a_of_type_JavaUtilHashMap.put(str, Integer.valueOf(i));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lwm
  * JD-Core Version:    0.7.0.1
  */

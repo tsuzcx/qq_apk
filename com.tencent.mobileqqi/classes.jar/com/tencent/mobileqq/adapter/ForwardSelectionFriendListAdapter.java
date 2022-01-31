@@ -156,7 +156,7 @@ public class ForwardSelectionFriendListAdapter
   {
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903927, paramViewGroup, false);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903929, paramViewGroup, false);
       paramViewGroup = new ForwardSelectionFriendListAdapter.ViewTag();
       paramViewGroup.c = ((ImageView)paramView.findViewById(2131230940));
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(16908308));

@@ -1,51 +1,39 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendActivity;
-import com.tencent.mobileqq.app.LBSObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class bze
-  extends LBSObserver
+class bze
+  implements Animation.AnimationListener
 {
-  public bze(AddFriendActivity paramAddFriendActivity) {}
+  bze(bzc parambzc) {}
   
-  protected void a(boolean paramBoolean, List paramList, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_JavaUtilList = paramList;
-      if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.isEmpty()))
-      {
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        this.a.c.setText(2131561438);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatActivity", 2, "animSet onAnimationEnd is called,time is:" + System.currentTimeMillis());
     }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-      this.a.b(this.a.jdField_a_of_type_ComTencentMobileqqAppLBSObserver);
-      return;
-      paramList = (List)((ArrayList)this.a.jdField_a_of_type_JavaUtilList).clone();
-      this.a.b.a(new bzf(this, paramList));
-      AddFriendActivity.a(this.a);
-      continue;
-      if ((this.a.jdField_a_of_type_JavaUtilList != null) && (!this.a.jdField_a_of_type_JavaUtilList.isEmpty()))
-      {
-        AddFriendActivity.a(this.a);
-      }
-      else
-      {
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        this.a.c.setText(2131563113);
-      }
+    this.a.a.a.post(new bzf(this));
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatActivity", 2, "animSet onAnimationRepeat is called,time is:" + System.currentTimeMillis());
+    }
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatActivity", 2, "animSet onAnimationStart is called,time is:" + System.currentTimeMillis());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bze
  * JD-Core Version:    0.7.0.1
  */

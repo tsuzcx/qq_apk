@@ -1,35 +1,47 @@
-import android.util.Log;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView.EGLWindowSurfaceFactory;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
+import android.annotation.TargetApi;
+import android.view.View;
 
-public class aoad
-  implements GLTextureView.EGLWindowSurfaceFactory
+@TargetApi(11)
+final class aoad
 {
-  public EGLSurface a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, Object paramObject)
+  static void a(View paramView, float paramFloat)
   {
-    try
-    {
-      paramEGL10 = paramEGL10.eglCreateWindowSurface(paramEGLDisplay, paramEGLConfig, paramObject, null);
-      return paramEGL10;
-    }
-    catch (IllegalArgumentException paramEGL10)
-    {
-      Log.e("GLTextureView", "eglCreateWindowSurface", paramEGL10);
-    }
-    return null;
+    paramView.setPivotX(paramFloat);
   }
   
-  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface)
+  static void b(View paramView, float paramFloat)
   {
-    paramEGL10.eglDestroySurface(paramEGLDisplay, paramEGLSurface);
+    paramView.setPivotY(paramFloat);
+  }
+  
+  static void c(View paramView, float paramFloat)
+  {
+    paramView.setAlpha(paramFloat);
+  }
+  
+  static void d(View paramView, float paramFloat)
+  {
+    paramView.setScaleX(paramFloat);
+  }
+  
+  static void e(View paramView, float paramFloat)
+  {
+    paramView.setScaleY(paramFloat);
+  }
+  
+  static void f(View paramView, float paramFloat)
+  {
+    paramView.setTranslationY(paramFloat);
+  }
+  
+  static void g(View paramView, float paramFloat)
+  {
+    paramView.setX(paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoad
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,18 @@
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-
-public class tqf
-  implements Runnable
+class tqf
+  implements ymw
 {
-  public tqf(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  tqf(tqc paramtqc, ugu paramugu) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    try
-    {
-      if ((RegisterQQNumberActivity.a(this.a) == null) && (!this.a.isFinishing()))
-      {
-        RegisterQQNumberActivity.a(this.a, new QQProgressDialog(this.a.getActivity(), this.a.getTitleBarHeight()));
-        RegisterQQNumberActivity.a(this.a).c(2131435070);
-      }
-      if ((RegisterQQNumberActivity.a(this.a) != null) && (!RegisterQQNumberActivity.a(this.a).isShowing())) {
-        RegisterQQNumberActivity.a(this.a).show();
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+    if (!paramBoolean) {
+      tqc.a(this.jdField_a_of_type_Tqc, this.jdField_a_of_type_Ugu, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tqf
  * JD-Core Version:    0.7.0.1
  */

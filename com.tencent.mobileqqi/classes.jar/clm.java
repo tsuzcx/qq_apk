@@ -1,23 +1,18 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.activity.ForwardOperations;
 
 class clm
   implements Runnable
 {
-  clm(cli paramcli) {}
+  clm(clk paramclk) {}
   
   public void run()
   {
-    if (this.a.a.a != null)
-    {
-      this.a.a.a.a();
-      this.a.a.a.a(null);
-    }
+    this.a.a.a(1005, 1, null, 0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     clm
  * JD-Core Version:    0.7.0.1
  */

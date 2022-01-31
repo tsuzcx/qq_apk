@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class ReqGetDiscussInteRemark
   extends JceStruct
 {
-  static ArrayList cache_UinList;
+  static ArrayList<Long> cache_UinList;
   public long DiscussUin;
-  public ArrayList UinList;
+  public ArrayList<Long> UinList;
   
   public ReqGetDiscussInteRemark() {}
   
-  public ReqGetDiscussInteRemark(long paramLong, ArrayList paramArrayList)
+  public ReqGetDiscussInteRemark(long paramLong, ArrayList<Long> paramArrayList)
   {
     this.DiscussUin = paramLong;
     this.UinList = paramArrayList;

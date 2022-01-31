@@ -1,42 +1,68 @@
-import android.media.MediaPlayer;
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class ailt
-  implements Runnable
+  extends awhw
 {
-  public ailt(VideoSprite paramVideoSprite, String paramString, int paramInt) {}
+  public ailt(BindVerifyActivity paramBindVerifyActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (((this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.b == null) || (!this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.b.equals(this.jdField_a_of_type_JavaLangString)) || (!this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.g)) && (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.jdField_a_of_type_AndroidMediaMediaPlayer != null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
+    if (QLog.isColorLevel()) {
+      QLog.i("BindVerifyActivity", 2, "onBindMobile [" + paramBoolean + ", " + paramBundle + "]");
     }
-    try
+    this.a.b();
+    int i;
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.jdField_a_of_type_AndroidMediaMediaPlayer.prepare();
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.i = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.jdField_a_of_type_AndroidMediaMediaPlayer.getVideoWidth();
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.j = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.jdField_a_of_type_AndroidMediaMediaPlayer.getVideoHeight();
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.jdField_a_of_type_AndroidMediaMediaPlayer.setOnSeekCompleteListener(new ailu(this));
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.b = this.jdField_a_of_type_JavaLangString;
+      i = paramBundle.getInt("k_result");
+      if ((i == 104) || (i == 0)) {
+        this.a.b();
+      }
+    }
+    for (;;)
+    {
+      this.a.app.unRegistObserver(BindVerifyActivity.a(this.a));
+      BindVerifyActivity.a(this.a, null);
       return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      if (i == 107)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("VideoSprite", 2, "playVideo Exception: " + QLog.getStackTraceString(localException));
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener.a();
+        this.a.a(paramBundle);
+      }
+      else if (i == 106)
+      {
+        this.a.a();
+        if (this.a.getIntent().getBooleanExtra("k_is_block", false)) {
+          azqs.b(this.a.app, "CliOper", "", "", "0X80053D5", "0X80053D5", 2, 0, "", "", "", "");
         }
       }
+      else
+      {
+        this.a.a(1, a(i));
+        continue;
+        this.a.a(1, this.a.getString(2131719233));
+      }
+    }
+  }
+  
+  protected void b(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BindVerifyActivity", 2, "onRebindMobile [" + paramBoolean + ", " + paramBundle + "]");
+    }
+    this.a.b();
+    if (paramBoolean) {
+      this.a.b();
+    }
+    for (;;)
+    {
+      this.a.app.unRegistObserver(BindVerifyActivity.a(this.a));
+      BindVerifyActivity.a(this.a, null);
+      return;
+      this.a.a(1, this.a.getString(2131719233));
     }
   }
 }

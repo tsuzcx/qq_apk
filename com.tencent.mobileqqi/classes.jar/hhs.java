@@ -1,13 +1,21 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.QQCustomSingleChoiceDialog;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
 
 public class hhs
+  extends Animation
 {
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public hhs(ShaderAnimLayout paramShaderAnimLayout) {}
   
-  private hhs(QQCustomSingleChoiceDialog paramQQCustomSingleChoiceDialog) {}
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    if (this.a.jdField_a_of_type_Boolean == true) {}
+    for (this.a.jdField_a_of_type_Float = (1.0F - paramFloat);; this.a.jdField_a_of_type_Float = paramFloat)
+    {
+      this.a.invalidate();
+      return;
+    }
+  }
 }
 
 

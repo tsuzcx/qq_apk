@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import awge;
+import awhs;
 
 public class RecTroopBusinessItem
-  extends Entity
+  extends awge
 {
   public String btnText;
   public String des;
   public long endTime;
   public String iconUrl;
-  @unique
+  @awhs
   public String id;
   public String jumpParam;
   public int jumpType;
@@ -21,7 +21,7 @@ public class RecTroopBusinessItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.RecTroopBusinessItem
  * JD-Core Version:    0.7.0.1
  */

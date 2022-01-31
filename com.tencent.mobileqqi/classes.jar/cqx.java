@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.activity.IndividuationSetActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class cqx
-  extends EmoticonPackageDownloadListener
+  implements Runnable
 {
-  public cqx(EmosmActivity paramEmosmActivity) {}
+  public cqx(IndividuationSetActivity paramIndividuationSetActivity) {}
   
-  public void onCoverComplete(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
+  public void run()
   {
-    if ((paramEmoticonPackage == null) || (paramInt1 != 2) || (paramInt2 != 0)) {}
-    while (EmosmActivity.a(this.a) == null) {
-      return;
+    int i = (int)(this.a.getResources().getDisplayMetrics().density * 35.0F);
+    if (QLog.isColorLevel()) {
+      QLog.d("ThemeDownloadTrace", 2, "reqWidth is:" + i + ",reqHeight is:" + i);
     }
-    this.a.runOnUiThread(EmosmActivity.a(this.a));
+    Bitmap localBitmap = IndividuationSetActivity.a(this.a, i, i);
+    if (localBitmap != null) {
+      this.a.runOnUiThread(new cqy(this, localBitmap));
+    }
   }
 }
 

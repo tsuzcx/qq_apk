@@ -1,24 +1,24 @@
-import com.tencent.component.media.gif.AnimationListener;
-import com.tencent.component.media.gif.NewGifDrawable;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentLinkedQueue;
-
-class pgc
-  implements Runnable
+public class pgc
 {
-  pgc(pgb parampgb) {}
+  public int a;
+  public String a;
+  public boolean a;
   
-  public void run()
+  public void a()
   {
-    Iterator localIterator = this.a.b.a.iterator();
-    while (localIterator.hasNext()) {
-      ((AnimationListener)localIterator.next()).onAnimationCompleted();
-    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int == 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pgc
  * JD-Core Version:    0.7.0.1
  */

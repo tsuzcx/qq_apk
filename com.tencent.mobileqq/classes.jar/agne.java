@@ -1,35 +1,34 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
-public final class agne
-  implements INetEngine.IBreakDownFix
+public class agne
+  extends agmy
 {
-  public void a(NetReq paramNetReq, NetResp paramNetResp)
+  public aerc a;
+  public Bitmap a;
+  public boolean a;
+  public Drawable[] a;
+  
+  public agne(String paramString)
   {
-    if ((paramNetReq == null) || (paramNetResp == null)) {}
-    do
+    super(paramString);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo != null)
     {
-      do
-      {
-        return;
-      } while (!(paramNetReq instanceof HttpNetReq));
-      paramNetReq = (HttpNetReq)paramNetReq;
-      paramNetReq.jdField_a_of_type_Long += paramNetResp.c;
-      paramNetResp.c = 0L;
-      paramNetResp = "bytes=" + paramNetReq.jdField_a_of_type_Long + "-";
-      paramNetReq.jdField_a_of_type_JavaUtilHashMap.put("Range", paramNetResp);
-      paramNetResp = paramNetReq.jdField_a_of_type_JavaLangString;
-      if (paramNetResp.contains("range="))
-      {
-        String str = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
-        paramNetReq.jdField_a_of_type_JavaLangString = (str + "range=" + paramNetReq.jdField_a_of_type_Long);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("PrecoverResDownloader", 2, "IBreakDownFix, " + paramNetResp);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramRedPacketInfo.jdField_a_of_type_AndroidGraphicsBitmap;
+      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = paramRedPacketInfo.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
+      this.jdField_a_of_type_Aerc = paramRedPacketInfo.jdField_a_of_type_Aerc;
+      this.jdField_a_of_type_Boolean = paramRedPacketInfo.b;
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_AndroidGraphicsBitmap != null) || (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable != null);
   }
 }
 

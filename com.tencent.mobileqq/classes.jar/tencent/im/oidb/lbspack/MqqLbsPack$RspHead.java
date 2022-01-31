@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class MqqLbsPack$RspHead
-  extends MessageMicro
+  extends MessageMicro<RspHead>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_err_msg = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -22,7 +22,7 @@ public final class MqqLbsPack$RspHead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.lbspack.MqqLbsPack.RspHead
  * JD-Core Version:    0.7.0.1
  */
