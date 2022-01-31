@@ -1,36 +1,10 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideo;
-import com.tencent.viola.adapter.VComponentAdapter.OnVideoViewMethodListener;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class ryv
-  implements VComponentAdapter.OnVideoViewMethodListener
+public abstract interface ryv
 {
-  public ryv(VVideo paramVVideo) {}
+  public abstract void a();
   
-  public void OnMethodError(String paramString, JSONObject paramJSONObject)
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("code", paramString);
-      localJSONObject.put("extra", paramJSONObject);
-      this.a.videoFireEvent("error", localJSONObject);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
+  public abstract void b();
   
-  public void OnMethodSuccess(String paramString, Object paramObject)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      VVideo.access$000(this.a, paramString, paramObject);
-    }
-  }
+  public abstract void c();
 }
 
 

@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import com.tencent.qphone.base.util.QLog;
-import mpl;
+import mpi;
 
 public class GetRedBag$1
   extends ResultReceiver
 {
-  public GetRedBag$1(mpl parammpl, Handler paramHandler)
+  public GetRedBag$1(mpi parammpi, Handler paramHandler)
   {
     super(paramHandler);
   }
@@ -22,7 +22,7 @@ public class GetRedBag$1
       this.a.a(-6, 5000L);
       return;
     }
-    mpl.a(this.a, paramInt, paramBundle);
+    mpi.a(this.a, paramInt, paramBundle);
   }
 }
 

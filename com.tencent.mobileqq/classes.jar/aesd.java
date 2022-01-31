@@ -1,18 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import android.os.Handler;
 
 class aesd
-  implements View.OnClickListener
+  implements noj
 {
-  aesd(aerv paramaerv) {}
+  aesd(aesc paramaesc) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg != null) {
-      axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8004EFC", "0X8004EFC", 0, 0, "", "", "" + this.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.msgId, "");
-    }
-    this.a.x();
+    aert.b(this.a.a, false);
+    this.a.a.a.sendEmptyMessage(1);
   }
 }
 

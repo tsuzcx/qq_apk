@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.search.fragment;
 
 import android.os.Handler;
-import awpx;
-import awus;
+import awpz;
+import awuu;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class GroupSearchFragment$2
@@ -14,14 +14,14 @@ class GroupSearchFragment$2
   {
     if (!this.this$0.d)
     {
-      this.this$0.jdField_a_of_type_Awus.a();
+      this.this$0.jdField_a_of_type_Awuu.a();
       this.this$0.d = true;
     }
     if (!GroupSearchFragment.a(this.this$0))
     {
-      awpx localawpx = (awpx)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(318);
-      if (localawpx != null) {
-        localawpx.a();
+      awpz localawpz = (awpz)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(318);
+      if (localawpz != null) {
+        localawpz.a();
       }
       GroupSearchFragment.a(this.this$0, true);
     }

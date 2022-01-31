@@ -1,28 +1,64 @@
+import android.app.Activity;
 import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface qxs
+public class qxs
 {
-  public abstract int a();
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private qpv jdField_a_of_type_Qpv;
+  private qwy jdField_a_of_type_Qwy;
+  private siu jdField_a_of_type_Siu;
   
-  public abstract VideoInfo a();
+  qxs(Activity paramActivity, qwy paramqwy)
+  {
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Qwy = paramqwy;
+    this.jdField_a_of_type_Siu = ((siu)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(126));
+    this.jdField_a_of_type_Qpv = new qpv(paramActivity, 1);
+  }
   
-  public abstract qqo a();
+  void a()
+  {
+    this.jdField_a_of_type_Qpv.a();
+  }
   
-  public abstract void a(float paramFloat);
+  void a(VideoInfo paramVideoInfo)
+  {
+    int i = 0;
+    boolean bool;
+    if (!paramVideoInfo.l)
+    {
+      bool = true;
+      paramVideoInfo.l = bool;
+      if (!paramVideoInfo.l) {
+        break label53;
+      }
+      i = paramVideoInfo.u + 1;
+    }
+    for (;;)
+    {
+      paramVideoInfo.u = i;
+      this.jdField_a_of_type_Siu.a(paramVideoInfo, paramVideoInfo.l);
+      return;
+      bool = false;
+      break;
+      label53:
+      if (paramVideoInfo.u > 0) {
+        i = paramVideoInfo.u - 1;
+      }
+    }
+  }
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(VideoInfo paramVideoInfo);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c(boolean paramBoolean);
-  
-  public abstract void d();
-  
-  public abstract void e();
+  void a(VideoInfo paramVideoInfo, int paramInt1, int paramInt2)
+  {
+    if (!paramVideoInfo.l) {
+      a(paramVideoInfo);
+    }
+    if ((paramInt1 >= 0) && (paramInt2 >= 0)) {
+      this.jdField_a_of_type_Qpv.a(paramInt1, paramInt2);
+    }
+  }
 }
 
 

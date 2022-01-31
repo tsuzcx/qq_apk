@@ -1,12 +1,41 @@
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyChannelViewPager;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+
 class nti
-  implements ree
+  implements View.OnClickListener
 {
   nti(nth paramnth) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_Rhp != null) {
-      this.a.jdField_a_of_type_Rhp.a(paramInt, this.a.jdField_a_of_type_Int);
+    if (ooq.a())
+    {
+      nth.a(this.a).a();
+      return;
+    }
+    paramView = new Intent();
+    paramView.putExtra("currentIndex", nth.a(this.a).getCurrentItem());
+    PublicTransFragmentActivity.b(nth.a(this.a), paramView, ReadInJoyChannelPanelFragment.class);
+    try
+    {
+      ReadInJoyChannelPanelFragment.a("0X8009497", new ono().b().c(this.a.a()).a());
+      nth.a(this.a, false);
+      nth.a(this.a).setVisibility(8);
+      return;
+    }
+    catch (JSONException paramView)
+    {
+      for (;;)
+      {
+        QLog.e("ReadInJoyChannelViewPagerController", 1, QLog.getStackTraceString(paramView));
+      }
     }
   }
 }

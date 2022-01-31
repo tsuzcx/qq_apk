@@ -1,11 +1,8 @@
-import android.view.MotionEvent;
-import android.view.View;
+import com.tencent.mobileqq.data.ChatMessage;
 
 public abstract interface acum
 {
-  public abstract void a(View paramView, MotionEvent paramMotionEvent);
-  
-  public abstract void a(View paramView, boolean paramBoolean);
+  public abstract void a_(ChatMessage paramChatMessage);
 }
 
 

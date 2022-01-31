@@ -1,8 +1,10 @@
-import android.view.View;
-
 public abstract interface bfsh
 {
-  public abstract void a(View paramView);
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void g();
 }
 
 

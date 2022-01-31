@@ -1,52 +1,50 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tribe.async.async.JobContext;
-import java.util.List;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.widget.AbsListView.LayoutParams;
 
-class tym
-  implements syt<tlz, tma>
+public class tym
+  extends wco
 {
-  tym(tyl paramtyl, JobContext paramJobContext, ups paramups) {}
+  public static final String KEY = "EmptyPlaceHolderSegment";
+  private final int jdField_a_of_type_Int;
+  private vap jdField_a_of_type_Vap;
   
-  public void a(@NonNull tlz paramtlz, @Nullable tma paramtma, @NonNull ErrorMessage paramErrorMessage)
+  public tym(Context paramContext, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      veg.d("Q.qqstory.player.CommentFloatDialogController", "pull commentLikeFeedItem cancel on net respond");
-      return;
-    }
-    if ((paramErrorMessage.isFail()) || (paramtma == null))
-    {
-      veg.a("Q.qqstory.player.CommentFloatDialogController", "pull commentLikeFeedItem fail %s", paramErrorMessage.toString());
-      tyl.a(this.jdField_a_of_type_Tyl, paramErrorMessage);
-      return;
-    }
-    paramtlz = (uwa)tdc.a(11);
-    if (paramtma.a.size() < 1)
-    {
-      veg.e("Q.qqstory.player.CommentFloatDialogController", "pull feedItem return null. maybe it's a share group feed and it has been dissolved.");
-      paramtlz.a(tyf.a(this.jdField_a_of_type_Tyl.a));
-      paramtlz = new ErrorMessage(2222, "no feed data back.");
-      tyl.b(this.jdField_a_of_type_Tyl, paramtlz);
-      return;
-    }
-    paramtma = (uvk)paramtma.a.get(0);
-    if ((paramtma instanceof uxr))
-    {
-      paramErrorMessage = (uxr)paramtma;
-      this.jdField_a_of_type_Ups.a = paramtma.a();
-      this.jdField_a_of_type_Ups.a(paramtlz.a(tyf.a(this.jdField_a_of_type_Tyl.a), paramErrorMessage.a(), true), true);
-      ((uwg)tdc.a(12)).a(2, this.jdField_a_of_type_Ups.a.feedId, this.jdField_a_of_type_Ups.a().mVideoSeq, this.jdField_a_of_type_Ups.a(), this.jdField_a_of_type_Ups.a().mVideoNextCookie, this.jdField_a_of_type_Ups.a().mIsVideoEnd, this.jdField_a_of_type_Ups.a().mVideoPullType, true);
+    super(paramContext);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public View a(int paramInt, vap paramvap, ViewGroup paramViewGroup)
+  {
+    return paramvap.a();
+  }
+  
+  public String a()
+  {
+    return "EmptyPlaceHolderSegment";
+  }
+  
+  public vap a(int paramInt, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = new View(this.jdField_a_of_type_AndroidContentContext);
+    paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, this.jdField_a_of_type_Int));
+    if (QQStoryContext.a()) {
+      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166349));
     }
     for (;;)
     {
-      this.jdField_a_of_type_Ups.a = ((CommentLikeFeedItem)paramtlz.a(tyf.a(this.jdField_a_of_type_Tyl.a).a));
-      tyl.a(this.jdField_a_of_type_Tyl, this.jdField_a_of_type_Ups);
-      return;
-      this.jdField_a_of_type_Ups.a = paramtma.a();
+      this.jdField_a_of_type_Vap = new vap(paramViewGroup);
+      return this.jdField_a_of_type_Vap;
+      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165473));
     }
   }
 }

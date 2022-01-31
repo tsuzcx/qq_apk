@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.fileviewer.viewer;
 
-import apiz;
-import apjf;
+import apjd;
+import apjj;
 
 class SimpleFileViewer$5
   implements Runnable
 {
-  SimpleFileViewer$5(SimpleFileViewer paramSimpleFileViewer, String paramString, apjf paramapjf) {}
+  SimpleFileViewer$5(SimpleFileViewer paramSimpleFileViewer, String paramString, apjj paramapjj) {}
   
   public void run()
   {
-    apiz localapiz = apiz.a();
-    SimpleFileViewer.a(this.this$0, localapiz.a(this.this$0.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apjf));
+    apjd localapjd = apjd.a();
+    SimpleFileViewer.a(this.this$0, localapjd.a(this.this$0.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apjj));
     SimpleFileViewer.a(this.this$0, null, SimpleFileViewer.a(this.this$0), true);
     SimpleFileViewer.a(this.this$0);
   }

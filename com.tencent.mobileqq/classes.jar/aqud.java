@@ -1,62 +1,85 @@
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageForPubAccount;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aqud
-  extends WebViewPlugin
+  extends QIPCModule
 {
-  public static String a = "QQGameWebViewJsPlugin";
+  private static volatile aqud a;
   
-  public aqud()
+  public aqud(String paramString)
   {
-    this.mPluginNameSpace = a;
+    super(paramString);
   }
   
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  public static aqud a()
   {
-    super.handleEvent(paramString, paramLong, paramMap);
-    if (paramLong == 8589934621L)
+    if (a == null) {}
+    try
     {
-      paramString = new JSONObject();
-      if (paramMap != null) {}
+      if (a == null) {
+        a = new aqud("QQGameIPCModule");
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    paramBundle = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramBundle == null) || (!(paramBundle instanceof QQAppInterface))) {}
+    while (!"findMessage".equals(paramString)) {
+      return null;
+    }
+    for (;;)
+    {
+      int i;
       try
       {
-        paramString.put("action", paramMap.get("action"));
-        if (paramMap.containsKey("height")) {
-          paramString.put("height", paramMap.get("height"));
+        paramBundle = ((QQAppInterface)paramBundle).a().a("2747277822", 1008, 10);
+        if ((paramBundle == null) || (paramBundle.size() <= 0)) {
+          break;
         }
-        if (paramMap.containsKey("index")) {
-          paramString.put("index", paramMap.get("index"));
-        }
-        if (paramMap.containsKey("gameData")) {
-          paramString.put("gameData", paramMap.get("gameData"));
-        }
-      }
-      catch (ClassCastException paramMap)
-      {
-        for (;;)
+        paramString = new ArrayList();
+        i = paramBundle.size() - 1;
+        if (i >= 0)
         {
-          paramMap.printStackTrace();
+          Object localObject = (MessageRecord)paramBundle.get(i);
+          if (("2747277822".equals(((MessageRecord)localObject).frienduin)) && (((localObject instanceof MessageForArkApp)) || ((localObject instanceof MessageForPubAccount)) || ((localObject instanceof MessageForStructing))))
+          {
+            localObject = QQGameMsgInfo.parseMessageRecord((MessageRecord)localObject);
+            if (localObject != null) {
+              paramString.add(localObject);
+            }
+          }
+          if (paramString.size() != 3) {}
         }
-      }
-      catch (JSONException paramMap)
-      {
-        for (;;)
+        else
         {
-          paramMap.printStackTrace();
+          paramBundle = new Bundle();
+          paramBundle.putSerializable("key_get_msg", paramString);
+          callbackResult(paramInt, EIPCResult.createSuccessResult(paramBundle));
+          return null;
         }
       }
-      dispatchJsEvent("gameFeedsEvent", paramString, null);
-      return true;
+      catch (Throwable paramString)
+      {
+        paramString.printStackTrace();
+        return null;
+      }
+      i -= 1;
     }
-    return super.handleEvent(paramString, paramLong, paramMap);
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
   }
 }
 

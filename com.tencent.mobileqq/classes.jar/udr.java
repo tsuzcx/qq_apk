@@ -1,18 +1,36 @@
-import android.util.SparseArray;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
-final class udr
-  extends SparseArray<String>
+public class udr
+  implements TVK_SDKMgr.OnLogListener
 {
-  udr()
+  public int d(String paramString1, String paramString2)
   {
-    put(31, "PLAYER_INFO_PLAYER_TYPE");
-    put(24, "PLAYER_INFO_SUCC_SET_DECODER_MODE");
-    put(33, "PLAYER_INFO_START_GET_VINFO");
-    put(21, ajyc.a(2131714547));
-    put(34, "PLAYER_INFO_END_GET_VINFO");
-    put(22, ajyc.a(2131714551));
-    put(23, "PLAYER_INFO_START_RENDERING");
-    put(39, "PLAYER_INFO_HW_DECODE_FAILED");
+    ved.b(paramString1, paramString2);
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2)
+  {
+    ved.e(paramString1, paramString2);
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    ved.c(paramString1, paramString2);
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    ved.b(paramString1, paramString2);
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    ved.d(paramString1, paramString2);
+    return 0;
   }
 }
 

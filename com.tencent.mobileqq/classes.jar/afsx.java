@@ -1,8 +1,8 @@
-import android.view.View;
-
 public abstract interface afsx
 {
-  public abstract View a();
+  public abstract void a(String paramString, int paramInt, float paramFloat);
+  
+  public abstract void c(boolean paramBoolean);
 }
 
 

@@ -36,8 +36,8 @@ public class QZoneCrashHandler
     //   1: astore 5
     //   3: new 30	java/io/File
     //   6: dup
-    //   7: getstatic 35	ajsf:bb	Ljava/lang/String;
-    //   10: invokestatic 41	bbuv:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   7: getstatic 35	ajsd:bb	Ljava/lang/String;
+    //   10: invokestatic 41	bbvj:a	(Ljava/lang/String;)Ljava/lang/String;
     //   13: invokespecial 44	java/io/File:<init>	(Ljava/lang/String;)V
     //   16: astore 4
     //   18: aload 4
@@ -51,12 +51,12 @@ public class QZoneCrashHandler
     //   36: new 53	java/lang/StringBuilder
     //   39: dup
     //   40: invokespecial 54	java/lang/StringBuilder:<init>	()V
-    //   43: getstatic 35	ajsf:bb	Ljava/lang/String;
+    //   43: getstatic 35	ajsd:bb	Ljava/lang/String;
     //   46: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   49: ldc 60
     //   51: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   54: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   57: invokestatic 41	bbuv:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   57: invokestatic 41	bbvj:a	(Ljava/lang/String;)Ljava/lang/String;
     //   60: invokespecial 44	java/io/File:<init>	(Ljava/lang/String;)V
     //   63: astore 4
     //   65: aload 4

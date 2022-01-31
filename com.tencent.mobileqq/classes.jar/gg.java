@@ -1,5 +1,5 @@
 class gg
-  implements bfps
+  implements bfqj
 {
   gg(ge paramge) {}
   

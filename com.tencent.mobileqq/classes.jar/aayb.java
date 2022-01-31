@@ -1,10 +1,20 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aayb
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public aayb(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
+  public aayb(DialogActivity paramDialogActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface = this.a.app.a();
+    paramDialogInterface.e();
+    paramDialogInterface.d();
+    this.a.finish();
+  }
 }
 
 

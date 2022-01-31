@@ -1,18 +1,16 @@
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 class aesz
-  implements QQPermissionCallback
+  implements View.OnClickListener
 {
-  aesz(aerv paramaerv) {}
+  aesz(aert paramaert, RelativeLayout paramRelativeLayout, LinearLayout paramLinearLayout) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    bbcv.a(this.a.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    aerv.d(this.a);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
   }
 }
 

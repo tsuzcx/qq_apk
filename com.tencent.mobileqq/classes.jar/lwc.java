@@ -1,19 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.AVRedPacketConfig.ExpressionInfo;
 
-final class lwc
-  extends mru
+public final class lwc
+  implements Parcelable.Creator<AVRedPacketConfig.ExpressionInfo>
 {
-  lwc(String paramString1, String paramString2, String paramString3)
+  public AVRedPacketConfig.ExpressionInfo a(Parcel paramParcel)
   {
-    super(paramString1, paramString2, paramString3);
+    return new AVRedPacketConfig.ExpressionInfo(paramParcel);
   }
   
-  protected void a(String paramString)
+  public AVRedPacketConfig.ExpressionInfo[] a(int paramInt)
   {
-    lwb.a(null);
-    if (QLog.isColorLevel()) {
-      QLog.d("AVPushReport", 2, "onAvReportPush SimpleHttpPostTask rsp = " + paramString);
-    }
+    return new AVRedPacketConfig.ExpressionInfo[paramInt];
   }
 }
 

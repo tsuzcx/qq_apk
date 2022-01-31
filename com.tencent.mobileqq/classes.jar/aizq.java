@@ -1,15 +1,8 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
-
-class aizq
+public class aizq
 {
-  public ImageView a;
-  public TextView a;
-  public CornerImageView a;
-  public CornerImageView b;
-  
-  aizq(aizp paramaizp) {}
+  public int a;
+  public CharSequence a;
+  public int b;
 }
 
 

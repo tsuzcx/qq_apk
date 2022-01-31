@@ -2,16 +2,16 @@ package com.tencent.biz.qqstory.settings;
 
 import android.os.Bundle;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import sxp;
-import sxy;
-import syd;
-import ujx;
-import vel;
+import sxm;
+import sxv;
+import sya;
+import uju;
+import vei;
 
 public class QQStoryFriendSettings
   extends IphoneTitleBarActivity
 {
-  protected sxy<QQStoryFriendSettings> a = sxp.a(ujx.class, syd.a(sxy.class), new Object[0]);
+  protected sxv<QQStoryFriendSettings> a = sxm.a(uju.class, sya.a(sxv.class), new Object[0]);
   
   public boolean doOnCreate(Bundle paramBundle)
   {
@@ -29,7 +29,7 @@ public class QQStoryFriendSettings
   public void doOnPause()
   {
     super.doOnPause();
-    vel.a(7, this.currentActivityStayTime);
+    vei.a(7, this.currentActivityStayTime);
   }
 }
 

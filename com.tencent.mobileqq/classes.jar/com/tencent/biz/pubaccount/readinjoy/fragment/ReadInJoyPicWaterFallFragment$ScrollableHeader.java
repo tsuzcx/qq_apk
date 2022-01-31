@@ -7,11 +7,11 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
-import rgk;
+import rgh;
 
 class ReadInJoyPicWaterFallFragment$ScrollableHeader
   extends FrameLayout
-  implements rgk
+  implements rgh
 {
   Rect a = new Rect();
   

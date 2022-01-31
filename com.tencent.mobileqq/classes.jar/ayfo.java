@@ -1,25 +1,43 @@
+import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class ayfo
-  implements View.OnClickListener
+public class ayfo
+  extends Dialog
 {
-  ayfo(ayfm paramayfm, DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
+  public ayfo(Context paramContext, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Ayfm, 0);
-    }
-    try
+    super(paramContext, 2131755791);
+    setContentView(2131562509);
+    paramContext = (TextView)findViewById(2131377350);
+    if (!TextUtils.isEmpty(paramString1))
     {
-      if (this.jdField_a_of_type_Ayfm.isShowing()) {
-        this.jdField_a_of_type_Ayfm.dismiss();
+      paramContext.setVisibility(0);
+      paramContext.setText(paramString1);
+      paramContext = (TextView)findViewById(2131364691);
+      if (TextUtils.isEmpty(paramString2)) {
+        break label142;
       }
-      return;
+      paramContext.setVisibility(0);
+      paramContext.setMovementMethod(LinkMovementMethod.getInstance());
+      paramContext.setText(new aydx(paramString2, 8));
     }
-    catch (Exception paramView) {}
+    for (;;)
+    {
+      ((Button)findViewById(2131364615)).setOnClickListener(new ayfp(this, paramOnClickListener1));
+      ((ImageView)findViewById(2131364268)).setOnClickListener(new ayfq(this, paramOnClickListener2));
+      setCanceledOnTouchOutside(false);
+      return;
+      paramContext.setVisibility(8);
+      break;
+      label142:
+      paramContext.setVisibility(8);
+    }
   }
 }
 

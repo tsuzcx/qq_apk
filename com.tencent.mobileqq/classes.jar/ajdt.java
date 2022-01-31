@@ -1,18 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.content.DialogInterface.OnClickListener;
 
 class ajdt
-  implements DialogInterface.OnKeyListener
+  implements DialogInterface.OnClickListener
 {
-  ajdt(ajds paramajds, ajea paramajea) {}
+  ajdt(ajdq paramajdq, ajdy paramajdy) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 4) {
-      this.jdField_a_of_type_Ajds.a(this.jdField_a_of_type_Ajea);
+    if (this.jdField_a_of_type_Ajdy != null) {
+      this.jdField_a_of_type_Ajdy.a(this.jdField_a_of_type_Ajdq.a(), "sc.xy_alert_show_success.local", "{\"cancel\":1}");
     }
-    return true;
   }
 }
 

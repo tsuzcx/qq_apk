@@ -1,66 +1,42 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import java.io.File;
-import java.net.HttpURLConnection;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class anvo
+class anvo
+  extends WtloginObserver
 {
-  public final int a;
-  public final File a;
-  public final String a;
-  public HttpURLConnection a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public String f = "";
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
+  anvo(anuq paramanuq, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public anvo(String paramString, File paramFile, int paramInt)
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith(HttpDownloadUtil.jdField_a_of_type_JavaLangString))) {
-      this.jdField_b_of_type_Boolean = true;
+    boolean bool2 = true;
+    paramWUserSigInfo = new Bundle();
+    if ((paramInt == 0) && (paramDevlockInfo != null))
+    {
+      if (paramDevlockInfo.DevSetup != 1) {
+        break label90;
+      }
+      bool1 = true;
+      paramWUserSigInfo.putBoolean("auth_dev_open", bool1);
+      if (paramDevlockInfo.AllowSet != 1) {
+        break label96;
+      }
     }
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + ".tmp";
-  }
-  
-  public void a()
-  {
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_e_of_type_Int = 0;
-    this.h = null;
-    this.i = null;
-    this.g = null;
-    this.k = null;
-    this.j = null;
-    this.d = null;
-    this.jdField_a_of_type_Boolean = false;
+    label90:
+    label96:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      paramWUserSigInfo.putBoolean("allow_set", bool1);
+      paramWUserSigInfo.putString("phone_num", paramDevlockInfo.Mobile);
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramWUserSigInfo);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
+      bool1 = false;
+      break;
+    }
   }
 }
 

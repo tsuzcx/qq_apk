@@ -5,7 +5,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBa
 import org.json.JSONObject;
 
 public class pes
-  implements phs
+  implements php
 {
   public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
@@ -14,12 +14,12 @@ public class pes
   
   public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    return pdu.a(paramBaseArticleInfo);
+    return pdt.a(paramBaseArticleInfo);
   }
   
-  public void a(int paramInt1, Container paramContainer, pax parampax, int paramInt2) {}
+  public void a(int paramInt1, Container paramContainer, pau parampau, int paramInt2) {}
   
-  public boolean a(int paramInt, Container paramContainer, pax parampax, ViewBase paramViewBase)
+  public boolean a(int paramInt, Container paramContainer, pau parampau, ViewBase paramViewBase)
   {
     return false;
   }

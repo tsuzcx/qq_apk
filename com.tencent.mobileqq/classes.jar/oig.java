@@ -1,37 +1,33 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.AnchorData;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public final class oig
-  implements Parcelable.Creator<AnchorData>
+class oig
+  extends ClickableSpan
 {
-  public AnchorData a(Parcel paramParcel)
+  oig(oif paramoif, SubCommentData paramSubCommentData) {}
+  
+  public void onClick(View paramView)
   {
-    boolean bool2 = true;
-    AnchorData localAnchorData = new AnchorData();
-    localAnchorData.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localAnchorData.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    if (paramParcel.readByte() != 0)
-    {
-      bool1 = true;
-      localAnchorData.jdField_a_of_type_Boolean = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label67;
-      }
-    }
-    label67:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localAnchorData.jdField_b_of_type_Boolean = bool1;
-      return localAnchorData;
-      bool1 = false;
-      break;
-    }
+    ohf.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.uin, BaseActivity.sTopActivity);
+    paramView = new ofs(this.jdField_a_of_type_Oif).a().a();
+    nol.a(null, ohf.a(this.jdField_a_of_type_Oif.a), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.jdField_a_of_type_Oif.a.mArticleID), String.valueOf(this.jdField_a_of_type_Oif.a.mAlgorithmID), this.jdField_a_of_type_Oif.a.innerUniqueID, paramView, false);
   }
   
-  public AnchorData[] a(int paramInt)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    return new AnchorData[paramInt];
+    super.updateDrawState(paramTextPaint);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.isAuthorSelection()) {}
+    for (String str = "#FF8444";; str = "#737373")
+    {
+      paramTextPaint.setColor(Color.parseColor(str));
+      paramTextPaint.setUnderlineText(false);
+      return;
+    }
   }
 }
 

@@ -6,13 +6,13 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
-import begy;
-import bekg;
-import beki;
-import belj;
-import besl;
-import beuc;
-import bffm;
+import behp;
+import bekx;
+import bekz;
+import bema;
+import betc;
+import beut;
+import bfgd;
 import com.tencent.qqmini.sdk.core.MiniAppEnv;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsBoxAdView;
@@ -36,15 +36,15 @@ class AppBoxPlugin$MiniAppBox
   private String appId;
   private WeakReference<Activity> mActivity;
   private volatile boolean mIsRequestingAd;
-  private begy mJsService;
+  private behp mJsService;
   
-  AppBoxPlugin$MiniAppBox(AppBoxPlugin paramAppBoxPlugin, Activity paramActivity, int paramInt, String paramString1, String paramString2, begy parambegy)
+  AppBoxPlugin$MiniAppBox(AppBoxPlugin paramAppBoxPlugin, Activity paramActivity, int paramInt, String paramString1, String paramString2, behp parambehp)
   {
     this.mActivity = new WeakReference(paramActivity);
     this.appBoxId = paramInt;
     this.adUnitId = paramString1;
     this.appId = paramString2;
-    this.mJsService = parambegy;
+    this.mJsService = parambehp;
   }
   
   private void callbackJs(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3)
@@ -55,10 +55,10 @@ class AppBoxPlugin$MiniAppBox
       }
     }
     label75:
-    for (paramString = bekg.a(paramString, getResultObj(paramInt1, paramInt2));; paramString = bekg.a(paramString, getResultObj(paramInt1, paramInt2), (String)AppBoxPlugin.S_CodeMsg_Map.get(Integer.valueOf(paramInt2))))
+    for (paramString = bekx.a(paramString, getResultObj(paramInt1, paramInt2));; paramString = bekx.a(paramString, getResultObj(paramInt1, paramInt2), (String)AppBoxPlugin.S_CodeMsg_Map.get(Integer.valueOf(paramInt2))))
     {
       paramString = paramString.toString();
-      besl.b("SDK_MiniAppBox", "evaluateCallbackJs callbackId: " + paramInt3 + " content:" + paramString);
+      betc.b("SDK_MiniAppBox", "evaluateCallbackJs callbackId: " + paramInt3 + " content:" + paramString);
       this.mJsService.a(paramInt3, paramString);
       return;
     }
@@ -78,7 +78,7 @@ class AppBoxPlugin$MiniAppBox
     catch (Throwable localThrowable)
     {
       localThrowable = localThrowable;
-      besl.d("SDK_MiniAppBox", "getResultObj e:", localThrowable);
+      betc.d("SDK_MiniAppBox", "getResultObj e:", localThrowable);
       return localJSONObject;
     }
     finally {}
@@ -87,10 +87,10 @@ class AppBoxPlugin$MiniAppBox
   
   private boolean initAdParam(int paramInt1, int paramInt2)
   {
-    String str3 = beuc.a().a();
+    String str3 = beut.a().a();
     if (TextUtils.isEmpty(this.appId))
     {
-      besl.d("SDK_MiniAppBox", "TextUtils.isEmpty(appid)");
+      betc.d("SDK_MiniAppBox", "TextUtils.isEmpty(appid)");
       return false;
     }
     int i;
@@ -112,7 +112,7 @@ class AppBoxPlugin$MiniAppBox
         break label419;
       }
       i = 90;
-      besl.b("SDK_MiniAppBox", "handle initAdParam appId = " + this.appId + "， deviceOrient = " + i);
+      betc.b("SDK_MiniAppBox", "handle initAdParam appId = " + this.appId + "， deviceOrient = " + i);
       if ((this.this$0.mMiniAppInfo == null) || (!this.this$0.mMiniAppInfo.isEngineTypeMiniApp())) {
         break label424;
       }
@@ -144,8 +144,8 @@ class AppBoxPlugin$MiniAppBox
       if ((localObject3 != null) && (((MiniAppInfo)localObject3).via != null))
       {
         str2 = ((MiniAppInfo)localObject3).via;
-        str4 = bffm.a(j);
-        belj.a("QZoneSetting", "MiniGameShareRate", 53);
+        str4 = bfgd.a(j);
+        bema.a("QZoneSetting", "MiniGameShareRate", 53);
         if (this.mActivity == null) {
           break label461;
         }
@@ -225,9 +225,9 @@ class AppBoxPlugin$MiniAppBox
     this.mActivity = new WeakReference(paramActivity);
   }
   
-  void setJsService(begy parambegy)
+  void setJsService(behp parambehp)
   {
-    this.mJsService = parambegy;
+    this.mJsService = parambehp;
   }
   
   boolean show(int paramInt1, int paramInt2)
@@ -235,7 +235,7 @@ class AppBoxPlugin$MiniAppBox
     if (this.adBox == null) {
       return false;
     }
-    beki.a(new AppBoxPlugin.MiniAppBox.1(this, paramInt1, paramInt2));
+    bekz.a(new AppBoxPlugin.MiniAppBox.1(this, paramInt1, paramInt2));
     return true;
   }
 }

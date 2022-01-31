@@ -1,29 +1,10 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
-
-class bifw
-  extends Handler
+public final class bifw
 {
-  public bifw(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public final byte[] a;
   
-  public void handleMessage(Message paramMessage)
+  bifw(byte[] paramArrayOfByte)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 3000: 
-      bifs.c((Activity)paramMessage.obj, paramMessage.arg1);
-      return;
-    }
-    bifs.a(null);
-    bifs.a(SystemClock.uptimeMillis());
+    this.a = paramArrayOfByte;
   }
 }
 

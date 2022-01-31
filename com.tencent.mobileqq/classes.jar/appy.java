@@ -1,17 +1,52 @@
+import android.annotation.TargetApi;
 import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.7.1;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
-public class appy
-  implements TVK_IMediaPlayer.OnCompletionListener
+class appy
+  implements SeekBar.OnSeekBarChangeListener
 {
-  appy(appp paramappp) {}
+  appy(appt paramappt) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    new Handler(Looper.getMainLooper()).post(new VideoFilePresenter.7.1(this));
+    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null))
+    {
+      appt.a(this.a, appt.b(this.a, paramInt));
+      this.a.jdField_a_of_type_Aprb.b(appt.a(this.a));
+      if (QLog.isDevelopLevel()) {
+        QLog.d("#@#@", 1, "onProgressChanged userPos[" + appt.a(this.a) + "]");
+      }
+    }
+  }
+  
+  @TargetApi(16)
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) || (!this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()))
+    {
+      this.a.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    appt.c(this.a);
+    appt.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    this.a.jdField_a_of_type_Boolean = this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying();
+    this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.pause();
+    this.a.jdField_a_of_type_Aprb.a(null);
+    appt.a(this.a, true);
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) {
+      return;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("##########", 1, "mMediaPlayer sekTo [" + appt.a(this.a) + "]");
+    }
+    this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.seekTo(appt.a(this.a));
   }
 }
 
