@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:gravity="center_vertical" android:background="@drawable/a4j" android:layout_width="fill_parent" android:layout_height="55.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/ggo" android:layout_marginLeft="15.0dip" style="@style/ta" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/root_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="15.0dip">
+        <ImageView android:id="@id/eh4" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_marginRight="8.0dip" android:contentDescription="@null" />
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_weight="1.0">
+            <TextView android:textColor="#ff000000" android:id="@id/title" style="@style/sz" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textColor="#ffbbbbbb" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/j64" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e4g" android:singleLine="true" style="@style/sy" />
+                <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/ggu" android:paddingLeft="5.0dip" android:paddingTop="2.0dip" android:paddingRight="8.0dip" android:paddingBottom="2.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:id="@id/ghg" android:layout_width="12.0dip" android:layout_height="12.0dip" android:src="@drawable/dyj" android:layout_centerVertical="true" />
+                    <TextView android:textColor="#ff12b7f5" android:id="@id/ghf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e4g" android:layout_centerVertical="true" style="@style/sy" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <TextView android:textSize="16.0sp" android:textColor="@color/tx" android:id="@id/ggq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" style="@style/sy" />
+        <ImageView android:id="@id/bcf" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.0dip" android:src="@drawable/dzm" />
+        <ImageView android:id="@id/i_m" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:src="@drawable/dvh" />
+    </LinearLayout>
+    <ImageView android:id="@id/j25" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:scaleType="fitXY" />
+</FrameLayout>

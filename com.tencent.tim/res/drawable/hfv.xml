@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/skin_qq_aio_listentogether_join_btn" />
+            <corners android:radius="50.0dip" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/skin_qq_aio_listentogether_join_btn" />
+            <corners android:radius="50.0dip" />
+        </shape>
+    </item>
+</selector>

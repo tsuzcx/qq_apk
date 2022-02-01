@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/hh0" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.qzone.widget.AsyncImageView android:id="@id/hh3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <TextView android:textSize="10.0sp" android:textColor="#eeffff00" android:gravity="center" android:id="@id/hh5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="13.0sp" android:textColor="#eeffff00" android:gravity="center" android:id="@id/hh1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.0dip" android:singleLine="true" android:layout_below="@id/hh5" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_centerHorizontal="true" />
+    <com.qzone.widget.AsyncImageView android:id="@id/hh2" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="25.0dip" android:src="@drawable/g1o" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</RelativeLayout>

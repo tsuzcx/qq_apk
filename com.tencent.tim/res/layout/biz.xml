@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/ar3" android:layout_width="113.0dip" android:layout_height="157.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.component.media.image.view.ExtendImageView android:id="@id/r5" android:layout_width="89.0dip" android:layout_height="88.0dip" android:layout_marginTop="7.0dip" android:scaleType="centerCrop" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <com.tencent.component.media.image.view.ExtendImageView android:id="@id/r6" android:layout_width="43.0dip" android:layout_height="43.0dip" android:layout_marginTop="3.0dip" android:scaleType="centerCrop" android:layout_below="@id/r5" android:layout_alignLeft="@id/r5" />
+    <com.tencent.component.media.image.view.ExtendImageView android:id="@id/r7" android:layout_width="43.0dip" android:layout_height="43.0dip" android:layout_marginTop="3.0dip" android:scaleType="centerCrop" android:layout_below="@id/r5" android:layout_alignRight="@id/r5" />
+</RelativeLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/mzs" android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.moai.nativepages.view.PagesScrollView android:id="@id/ni5" android:background="@color/al3" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/ni6" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </com.tencent.moai.nativepages.view.PagesScrollView>
+    <ImageView android:layout_gravity="top" android:id="@id/o03" android:background="@raw/q" android:layout_width="fill_parent" android:layout_height="42.0dip" />
+    <ImageView android:id="@id/o02" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:src="@drawable/io9" />
+    <ImageView android:layout_gravity="right" android:id="@id/o0d" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/io_" />
+    <ImageView android:layout_gravity="bottom|center" android:id="@id/o0f" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="35.0dip" android:layout_marginBottom="15.0dip" android:src="@drawable/irq" android:scaleType="centerInside" />
+</FrameLayout>

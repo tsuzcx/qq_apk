@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="24.0sp" android:textStyle="bold" android:textColor="@color/bp" android:id="@id/ivTitleName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="@string/yn_" android:layout_alignParentLeft="true" android:layout_centerInParent="true" />
+    <com.tencent.widget.FadeIconImageView android:id="@id/mnd" android:background="@drawable/top_button_right_selector" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/header_btn_add" android:scaleType="center" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/ac6" />
+    <ImageView android:id="@id/ms7" android:background="@drawable/skin_tips_dot" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignTop="@id/mnd" android:layout_alignRight="@id/mnd" />
+</RelativeLayout>

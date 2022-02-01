@@ -1,0 +1,80 @@
+{
+	"view_type": "UIView",
+	"view_id": "daily_module_theme_bottom",
+	"event_type": "cmd_url_click_no_card_report",
+	"margin_top": "8",
+	"layout_type": "layout_relative",
+	"height": {
+		"type": "relative",
+		"value": "44"
+	},
+	"width": {
+		"type": "relative",
+		"value": "375"
+	},
+	"attributes": {
+		"setAttatchInfo:": "$theme_bottom_jump_url"
+	},
+	"data_attributes": {
+		"setLocalInfo:": {
+			"click_T": "0X8009CB8"
+		},
+		"setRemoteInfo:": "$bottom_module_report_params"
+	},
+	"subviews": [{
+			"view_type": "UIView",
+			"view_id": "id_theme_separator",
+			"default_visible": "YES",
+			"margin_left": "6",
+			"margin_right": "6",
+			"height": {
+				"type": "absolutely",
+				"value": "0.5"
+			},
+			"width": {
+				"type": "match_parent"
+			},
+			"attributes": {
+				"setBackgroundColorString:": "#E5E5E5"
+			}
+		},
+		{
+			"view_type": "ReadInjoyAsynImageView",
+			"view_id": "id_theme_bottom_icon",
+			"margin_left": "8",
+			"align_parent_center_vertical": "YES",
+			"height": {
+				"type": "relative",
+				"value": "16"
+			},
+			"width": {
+				"type": "relative",
+				"value": "16"
+			},
+			"attributes": {
+				"setImageWithURLString:lineup:": [
+					"$theme_bottom_icon",
+					"0"
+				]
+			}
+		},
+		{
+			"view_type": "UILabel",
+			"view_id": "id_theme_bottom_title",
+			"margin_left": "4",
+			"align_parent_center_vertical": "YES",
+			"right_of_view": "id_theme_bottom_icon",
+			"height": {
+				"type": "wrap_content"
+			},
+			"width": {
+				"type": "wrap_content"
+			},
+			"attributes": {
+				"setText:": "$theme_bottom_title",
+				"setTextColorString:": "#262626",
+				"setFontSizeString:": "14"
+			}
+		}
+	]
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="100.0dip" android:minHeight="60.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/hrk" android:background="#ffededed" android:layout_width="fill_parent" android:layout_height="40.0dip">
+        <TextView android:textSize="12.0dip" android:textColor="#ff777777" android:id="@id/hrm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginBottom="5.0dip" android:text="@string/s8w" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_below="@id/hrk">
+        <com.qzone.module.feedcomponent.view.AvatarImageView android:id="@id/hrc" android:layout_width="@dimen/arj" android:layout_height="@dimen/arj" android:layout_marginLeft="@dimen/ark" android:src="@drawable/bvj" android:layout_centerVertical="true" />
+        <RelativeLayout android:id="@id/hrg" android:layout_width="88.0dip" android:layout_height="40.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <ImageView android:id="@id/hrf" android:layout_width="18.0dip" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:src="@drawable/fvo" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:id="@id/hrb" android:background="@drawable/fxk" android:paddingLeft="16.0dip" android:paddingTop="8.0dip" android:paddingRight="16.0dip" android:paddingBottom="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="@string/s96" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/hre" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/arm" android:layout_marginRight="@dimen/arm" android:layout_toLeftOf="@id/hrg" android:layout_toRightOf="@id/hrc" android:layout_centerVertical="true">
+            <TextView android:textSize="16.0dip" android:textColor="#ff000000" android:id="@id/hrh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:maxLines="1" />
+            <View android:id="@id/hri" android:layout_width="1.0dip" android:layout_height="5.0dip" />
+            <TextView android:textSize="12.0dip" android:textColor="#ff777777" android:id="@id/hrj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="上传了xx张" android:maxLines="1" />
+        </LinearLayout>
+        <ImageView android:id="@id/hrd" android:background="#ffe0e0e0" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_alignLeft="@id/hre" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</RelativeLayout>

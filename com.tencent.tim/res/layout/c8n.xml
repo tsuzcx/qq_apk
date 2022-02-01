@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/lm_" android:clickable="false" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/coo" android:layout_centerVertical="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/lma" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_toLeftOf="@id/lmc" android:layout_toRightOf="@id/lm_" android:layout_centerVertical="true">
+        <TextView android:textSize="18.0sp" android:textColor="@color/intimate_relationship_text_color" android:id="@id/lmb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/yq2" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/ayk" android:textColor="@color/intimate_relationship_text_gray_color" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/lme" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ir5" />
+            <View android:layout_gravity="center_vertical" android:id="@id/lm9" android:background="#ff979797" android:layout_width="1.0dip" android:layout_height="9.0dip" android:layout_marginLeft="6.0dip" />
+            <com.tencent.widget.ThemeImageView android:layout_gravity="center_vertical" android:id="@id/lm8" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="4.0dip" android:layout_marginRight="4.0dip" android:src="@drawable/com" />
+            <TextView android:textSize="@dimen/ayk" android:textColor="@color/intimate_relationship_text_gray_color" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/lmd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ir2" />
+        </LinearLayout>
+    </LinearLayout>
+    <Button android:textStyle="bold" android:gravity="center_vertical" android:id="@id/lmc" android:background="@drawable/hc6" android:paddingLeft="16.0dip" android:paddingTop="8.0dip" android:paddingRight="16.0dip" android:paddingBottom="8.0dip" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bzk" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

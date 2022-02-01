@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center_horizontal" android:id="@id/e2e" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:id="@id/l0l" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="1.0dip" android:layout_marginBottom="1.0dip" android:scaleType="fitCenter" />
+            <TextView android:textSize="@dimen/mr" android:textColor="@color/al3" android:gravity="center" android:id="@id/l0g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" />
+        </LinearLayout>
+        <FrameLayout android:id="@id/i4x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="1.0dip" android:scaleX="0.7" android:scaleY="0.7">
+            <TextView android:textSize="@dimen/mr" android:textColor="@color/al3" android:id="@id/i4y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" />
+        </FrameLayout>
+    </FrameLayout>
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:id="@id/e2d" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/f5e" />
+        <TextView android:textSize="@dimen/mr" android:textColor="#ff989eb4" android:gravity="center" android:id="@id/fj4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cqs" android:includeFontPadding="false" />
+    </LinearLayout>
+</merge>

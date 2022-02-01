@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/fxe" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/fxb" android:layout_width="fill_parent" android:layout_height="164.0dip">
+        <com.qzone.widget.AsyncImageView android:id="@id/fxa" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/fgo" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/fx8" android:layout_width="fill_parent" android:layout_height="16.0dip">
+        <View android:id="@id/fx9" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="0.0" />
+        <ImageView android:id="@id/fx_" android:layout_width="0.0dip" android:layout_height="8.0dip" android:src="@drawable/gcp" android:scaleType="centerInside" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

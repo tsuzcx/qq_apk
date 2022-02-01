@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/b9b" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/b9c" android:background="@drawable/ap7" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/a0i" android:layout_alignParentBottom="true">
+        <ImageView android:id="@id/dgi" android:layout_width="@dimen/zz" android:layout_height="@dimen/zz" android:layout_marginLeft="@dimen/zt" android:layout_marginTop="@dimen/zu" android:src="@drawable/com" android:scaleType="fitCenter" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:contentDescription="@null" />
+        <ImageView android:id="@id/dfv" android:layout_width="@dimen/zy" android:layout_height="@dimen/zv" android:layout_marginLeft="@dimen/zw" android:layout_marginTop="@dimen/zx" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <TextView android:textSize="20.0sp" android:textColor="@color/al3" android:id="@id/ji8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/zt" android:text="@string/g7c" android:layout_toRightOf="@id/dgi" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/dfu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/zt" android:src="@drawable/fsl" android:scaleType="fitCenter" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+    </RelativeLayout>
+</RelativeLayout>

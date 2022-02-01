@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/g6m" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/g7c" android:background="@drawable/wb" android:layout_width="fill_parent" android:layout_height="@dimen/a81" android:layout_alignParentBottom="true" />
+    <RelativeLayout android:id="@id/g6o" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageButton android:id="@id/g73" android:background="@drawable/ux" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a2_" android:layout_marginBottom="20.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:contentDescription="@string/bhd" />
+        <RelativeLayout android:id="@id/g6n" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <FrameLayout android:id="@id/g6s" android:visibility="invisible" android:layout_width="@dimen/a1r" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="@dimen/a2_" android:layout_marginBottom="@dimen/a7y" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true">
+                <Button android:textSize="12.0dip" android:textColor="@color/qn" android:layout_gravity="center" android:id="@id/g6r" android:background="@color/ajr" android:layout_width="@dimen/a1r" android:layout_height="wrap_content" android:text="@string/dl4" android:drawableTop="@drawable/d_g" android:onClick="BtnOnClick" />
+            </FrameLayout>
+            <FrameLayout android:id="@id/g7b" android:visibility="invisible" android:layout_width="@dimen/a1r" android:layout_height="wrap_content" android:layout_marginLeft="22.0dip" android:layout_marginTop="@dimen/a2_" android:layout_marginBottom="@dimen/a7y" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true">
+                <Button android:textSize="12.0dip" android:textColor="@color/qn" android:layout_gravity="center" android:id="@id/g7a" android:background="@color/ajr" android:layout_width="@dimen/a1r" android:layout_height="wrap_content" android:text="@string/dlb" android:drawableTop="@drawable/da8" />
+            </FrameLayout>
+            <FrameLayout android:id="@id/g77" android:visibility="invisible" android:layout_width="@dimen/a1r" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a2_" android:layout_marginBottom="@dimen/a7y" android:layout_toRightOf="@id/g6s" android:layout_alignParentBottom="true">
+                <Button android:textSize="12.0dip" android:textColor="@color/qn" android:layout_gravity="center" android:id="@id/g76" android:background="@color/ajr" android:visibility="invisible" android:layout_width="@dimen/a1r" android:layout_height="wrap_content" android:text="@string/dla" android:drawableTop="@drawable/da0" android:contentDescription="@string/sf" />
+            </FrameLayout>
+            <FrameLayout android:id="@id/g7_" android:layout_width="@dimen/a1r" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginBottom="@dimen/a7y" android:layout_above="@id/g6s" android:layout_alignParentLeft="true">
+                <Button android:textSize="12.0dip" android:textColor="@color/qn" android:layout_gravity="center" android:id="@id/g79" android:background="@color/ajr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/icg" android:drawableTop="@drawable/da5" android:contentDescription="@string/sh" />
+            </FrameLayout>
+            <FrameLayout android:id="@id/g6y" android:layout_width="@dimen/a1r" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/a7y" android:layout_toRightOf="@id/g7_" android:layout_above="@id/g6s">
+                <Button android:textSize="12.0dip" android:textColor="@color/qn" android:layout_gravity="center" android:id="@id/g6x" android:background="@color/ajr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ica" android:drawableTop="@drawable/d_o" android:contentDescription="@string/sk" />
+            </FrameLayout>
+            <FrameLayout android:id="@id/g72" android:layout_width="@dimen/a1r" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/a7y" android:layout_toRightOf="@id/g6y" android:layout_above="@id/g6s">
+                <Button android:textSize="12.0dip" android:textColor="@color/qn" android:layout_gravity="center" android:id="@id/g71" android:background="@color/ajr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d_j" android:drawableTop="@drawable/d_v" android:contentDescription="@string/sw" />
+            </FrameLayout>
+            <FrameLayout android:id="@id/g70" android:layout_width="@dimen/a1r" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/a7y" android:layout_toRightOf="@id/g72" android:layout_above="@id/g6s">
+                <Button android:textSize="12.0dip" android:textColor="@color/qn" android:layout_gravity="center" android:id="@id/g6z" android:background="@color/ajr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dlf" android:drawableTop="@drawable/dag" android:contentDescription="@string/dlf" />
+            </FrameLayout>
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/g6p" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/g73">
+            <Button android:textSize="12.0dip" android:textColor="@color/qn" android:gravity="center_horizontal" android:id="@id/g6v" android:background="@color/ajr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="60.0dip" android:layout_marginBottom="28.0dip" android:text="@string/ic_" android:drawableTop="@drawable/daa" android:layout_alignParentLeft="true" android:contentDescription="@string/d9t" />
+            <Button android:textSize="12.0dip" android:textColor="@color/qn" android:gravity="center_horizontal" android:id="@id/g78" android:background="@color/ajr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="60.0dip" android:layout_marginBottom="28.0dip" android:text="@string/dlw" android:drawableTop="@drawable/dam" android:layout_alignParentRight="true" android:contentDescription="@string/dlw" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

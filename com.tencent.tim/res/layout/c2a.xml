@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/chat_item_content_layout" android:layout_width="183.5dip" android:layout_height="171.5dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.troop.widget.TroopSignVideoView android:id="@id/bat" android:layout_width="151.5dip" android:layout_height="151.5dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" app:viewMode="jjj" />
+    <RelativeLayout android:id="@id/loading" android:layout_width="151.5dip" android:layout_height="151.5dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip">
+        <ImageView android:id="@id/efn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/jt" android:scaleType="center" />
+    </RelativeLayout>
+    <TextView android:textSize="12.0dip" android:textColor="#ff777777" android:ellipsize="end" android:gravity="center" android:id="@id/j8_" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="27.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:singleLine="true" android:layout_alignBottom="@id/bat" />
+    <FrameLayout android:id="@id/emk" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginTop="7.0dip" android:layout_marginRight="17.0dip" android:layout_alignParentRight="true">
+        <ImageView android:id="@id/emj" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
+        <TextView android:textSize="20.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:layout_gravity="center" android:id="@id/emm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:lineSpacingExtra="0.0dip" />
+    </FrameLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/emn" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textSize="28.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:layout_gravity="center" android:id="@id/emo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:lineSpacingExtra="0.0dip" />
+        <TextView android:textSize="10.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:layout_gravity="center" android:id="@id/emi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:lineSpacingExtra="0.0dip" />
+    </LinearLayout>
+</RelativeLayout>

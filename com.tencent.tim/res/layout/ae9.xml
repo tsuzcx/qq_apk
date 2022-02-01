@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.richstatus.comment.widget.LikesView android:textSize="14.0sp" android:textColor="#ff123a68" android:id="@id/bmw" android:layout_width="fill_parent" android:layout_height="wrap_content" app:like_item_color="#ff123a68" />
+    <com.tencent.mobileqq.richstatus.comment.widget.CommentsView android:textSize="14.0sp" android:orientation="vertical" android:id="@id/a3s" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" app:comment_item_color="#ff123a68" />
+</merge>

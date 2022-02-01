@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" style="@style/ra"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.pay.ui.common.APHead android:id="@id/euf" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:layout_height="0.0dip" android:layout_weight="100.0" style="@style/midas_linear">
+        <LinearLayout style="@style/ov">
+            <View style="@style/q1" />
+            <TextView android:textColor="@color/nd" android:id="@id/evc" android:text="@string/o4h" style="@style/r1" />
+        </LinearLayout>
+        <View style="@style/qc" />
+        <LinearLayout style="@style/qo">
+            <LinearLayout style="@style/qf">
+                <LinearLayout style="@style/ou">
+                    <TextView android:textSize="16.0sp" android:gravity="left" android:layout_width="0.0dip" android:text="@string/o4d" android:layout_weight="100.0" style="@style/r8" />
+                    <TextView android:textSize="16.0sp" android:id="@id/eui" android:text="0个月黄钻贵族" style="@style/r8" />
+                </LinearLayout>
+                <LinearLayout android:id="@id/euk" android:visibility="gone" style="@style/ou">
+                    <TextView android:textSize="14.0sp" android:gravity="left" android:visibility="invisible" android:layout_width="0.0dip" android:text="@string/o4i" android:layout_weight="100.0" style="@style/r8" />
+                    <TextView android:textSize="14.0sp" android:id="@id/euj" android:text="00Q币" style="@style/r8" />
+                </LinearLayout>
+            </LinearLayout>
+            <View style="@style/pj" />
+            <LinearLayout style="@style/qf">
+                <LinearLayout style="@style/ou">
+                    <TextView android:textSize="16.0sp" android:gravity="left" android:text="@string/o4b" android:layout_weight="100.0" style="@style/r8" />
+                    <TextView android:id="@id/eug" android:text="60.00" style="@style/r4" />
+                    <TextView android:id="@id/euh" android:text="@string/o5n" style="@style/r4" />
+                </LinearLayout>
+            </LinearLayout>
+            <View android:id="@id/eud" android:visibility="gone" style="@style/pj" />
+            <LinearLayout android:id="@id/eua" android:visibility="gone" style="@style/qf">
+                <LinearLayout style="@style/ou">
+                    <TextView android:textSize="14.0sp" android:gravity="left" android:text="@string/o5p" android:layout_weight="100.0" style="@style/r8" />
+                    <TextView android:id="@id/eub" style="@style/r4" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:id="@id/eul" android:paddingTop="20.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="14.0sp" android:layout_gravity="center" android:id="@id/eum" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/r8" />
+        </LinearLayout>
+        <com.pay.ui.common.APComponentFollow android:layout_gravity="center" android:id="@id/eue" android:background="#ffffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="35.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip">
+            <Button android:textSize="17.0sp" android:id="@id/evb" android:layout_width="0.0dip" android:layout_height="44.0dip" android:layout_marginLeft="0.0dip" android:layout_marginRight="0.0dip" android:text="@string/o4j" android:layout_weight="1.0" style="@style/oy" />
+            <Button android:textSize="17.0sp" android:id="@id/eva" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="44.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="0.0dip" android:text="@string/o5q" android:layout_weight="1.0" style="@style/oy" />
+        </LinearLayout>
+        <Button android:textSize="17.0sp" android:textColor="@color/ng" android:id="@id/eu_" android:background="@drawable/qvip_pay_common_btn_white" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:text="@string/o5l" />
+    </LinearLayout>
+    <LinearLayout android:layout_gravity="center" android:layout_marginBottom="15.0dip" style="@style/pw">
+        <TextView android:textSize="12.0sp" android:layout_width="fill_parent" android:text="@string/c_d" style="@style/r8" />
+        <LinearLayout style="@style/ot">
+            <TextView android:textSize="12.0sp" android:text="@string/c_e" style="@style/r8" />
+            <TextView android:textSize="12.0sp" android:id="@id/euc" android:layout_width="105.0dip" android:text="@string/c_f" style="@style/r9" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

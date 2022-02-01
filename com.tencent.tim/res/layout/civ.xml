@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="right" android:id="@id/iep" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.cloudfile.anima.DynamicButton android:textSize="16.0sp" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="bottom" android:id="@id/nxx" android:background="@drawable/ri" android:paddingTop="0.0dip" android:paddingBottom="0.0dip" android:visibility="visible" android:layout_width="124.0dip" android:layout_height="49.0dip" android:text="@string/wt8" />
+</LinearLayout>

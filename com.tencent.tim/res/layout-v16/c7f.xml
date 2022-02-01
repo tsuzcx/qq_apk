@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/lcj" android:background="@color/al3" android:layout_width="375.0dip" android:layout_height="701.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="64.0dip">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="19.0dip" android:layout_centerVertical="true">
+            <com.tencent.mobileqq.widget.SquareImageView android:layout_gravity="center" android:id="@id/lcg" android:layout_width="20.0dip" android:layout_height="20.0dip" android:scaleType="fitXY" app:round_radius="10.0dip" />
+            <TextView android:textSize="12.0dip" android:textColor="#ff3a3a3a" android:ellipsize="end" android:layout_gravity="center" android:id="@id/lcl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:text="HOHO老师" android:maxLines="2" android:includeFontPadding="false" android:fontFamily="PingFangSC-Regular" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <ImageView android:layout_gravity="right" android:id="@id/cav" android:background="#ffb1b1b1" android:layout_width="12.0dip" android:layout_height="2.0dip" android:scaleType="fitXY" />
+            <TextView android:textSize="10.0dip" android:textColor="#ff8a8a8a" android:ellipsize="end" android:layout_gravity="center" android:id="@id/c2l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="QQ订阅号" android:maxLines="2" android:includeFontPadding="false" android:fontFamily="PingFangSC-Regular" />
+        </LinearLayout>
+    </RelativeLayout>
+    <FrameLayout android:layout_gravity="center_horizontal" android:id="@id/c2k" android:layout_width="wrap_content" android:layout_height="533.0dip">
+        <RelativeLayout android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.biz.subscribe.widget.textview.AsyncRichTextView android:textSize="22.0dip" android:textColor="#ff3a3a3a" android:ellipsize="end" android:gravity="center|left|top" android:id="@id/lcm" android:layout_width="266.0dip" android:layout_height="wrap_content" android:text="这一期我们讲建筑设计中常见错误" android:maxLines="2" android:fontFamily="PingFangSC-Semibold" />
+            <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_below="@id/lcm">
+                <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:layout_gravity="center" android:id="@id/lcn" android:layout_width="311.0dip" android:layout_height="415.0dip" android:scaleType="centerCrop" />
+                <ImageView android:layout_gravity="center" android:id="@id/cj6" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="60.0dip" android:src="@drawable/dhl" />
+            </FrameLayout>
+        </RelativeLayout>
+    </FrameLayout>
+    <RelativeLayout android:id="@id/iiu" android:layout_width="fill_parent" android:layout_height="104.0dip">
+        <ImageView android:id="@id/ik0" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginLeft="34.0dip" android:layout_marginTop="25.0dip" android:src="@drawable/a_a" />
+        <TextView android:textSize="15.0dip" android:textColor="@color/bp" android:id="@id/ik1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="25.0dip" android:text="@string/dyv" android:layout_toRightOf="@id/ik0" />
+        <FrameLayout android:id="@id/hxk" android:background="@drawable/a_c" android:layout_width="72.0dip" android:layout_height="72.0dip" android:layout_marginRight="32.0dip" android:layout_marginBottom="15.0dip" android:layout_alignParentRight="true">
+            <ImageView android:layout_gravity="center" android:id="@id/ijz" android:layout_width="71.0dip" android:layout_height="71.0dip" android:scaleType="centerCrop" />
+            <ImageView android:layout_gravity="center" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/hm_" />
+        </FrameLayout>
+        <TextView android:textSize="10.0dip" android:textColor="#ff9a9a9a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/vsh" android:layout_alignLeft="@id/ik0" android:layout_alignBottom="@id/hxk" />
+    </RelativeLayout>
+</LinearLayout>

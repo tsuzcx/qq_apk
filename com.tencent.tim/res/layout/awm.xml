@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:scrollbars="none" android:fadingEdge="none" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@color/a1s" android:paddingLeft="30.0dip" android:paddingRight="30.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:layout_gravity="center_horizontal" android:background="@drawable/eyc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" />
+        <TextView android:textSize="20.0dip" android:textColor="@color/skin_color_white" android:ellipsize="end" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:text="@string/qxu" android:singleLine="true" android:contentDescription="@string/qy0" />
+        <RelativeLayout android:id="@id/idw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+            <TextView android:textSize="15.0dip" android:textColor="@color/skin_color_white" android:ellipsize="end" android:gravity="left" android:id="@id/kfm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qxo" android:singleLine="true" android:drawableLeft="@drawable/ae9" android:drawablePadding="10.0dip" android:contentDescription="@string/qxz" />
+            <TextView android:textSize="12.0dip" android:textColor="#ffcdeffb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginTop="8.0dip" android:text="@string/qxt" android:layout_below="@id/kfm" android:contentDescription="@string/qxv" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/idx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+            <TextView android:textSize="15.0dip" android:textColor="@color/skin_color_white" android:ellipsize="end" android:gravity="left" android:id="@id/kfn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qy1" android:singleLine="true" android:drawableLeft="@drawable/ae9" android:drawablePadding="10.0dip" android:contentDescription="@string/qxx" />
+            <TextView android:textSize="12.0dip" android:textColor="#ffcdeffb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginTop="8.0dip" android:text="@string/qxw" android:layout_below="@id/kfn" android:contentDescription="@string/qxp" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+            <TextView android:textSize="15.0dip" android:textColor="@color/skin_color_white" android:ellipsize="end" android:gravity="left" android:id="@id/kfo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qxq" android:singleLine="true" android:drawableLeft="@drawable/ae9" android:drawablePadding="10.0dip" android:contentDescription="@string/qxr" />
+            <TextView android:textSize="12.0dip" android:textColor="#ffcdeffb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginTop="8.0dip" android:text="@string/qy3" android:layout_below="@id/kfo" android:contentDescription="@string/qxs" />
+        </RelativeLayout>
+        <Button android:id="@id/nearby_ok" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="35.0dip" android:text="@string/qy2" android:contentDescription="@string/qxy" style="@style/bd" />
+        <View android:layout_width="1.0dip" android:layout_height="30.0dip" />
+    </LinearLayout>
+</ScrollView>

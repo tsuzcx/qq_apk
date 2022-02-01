@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/bl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip">
+        <TextView android:textSize="10.0sp" android:id="@id/av5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" android:layout_marginTop="5.5dip" android:text="@string/ps4" />
+        <ImageView android:id="@id/av0" android:background="@drawable/sg" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="4.0dip" android:layout_below="@id/av5" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/auz" android:paddingBottom="9.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.5dip" android:layout_marginTop="7.5dip" android:layout_marginRight="10.5dip" android:layout_below="@id/av0">
+            <FrameLayout android:layout_width="55.0dip" android:layout_height="55.0dip">
+                <ImageView android:id="@id/av1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <ImageView android:background="@drawable/brk" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            </FrameLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/av2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="12.0dip">
+                <TextView android:textSize="14.0dip" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/av4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/ps3" android:singleLine="true" />
+                <TextView android:textSize="10.0dip" android:ellipsize="end" android:id="@id/av3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/ps5" android:maxLines="2" android:lineSpacingExtra="4.0dip" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,369 @@
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
+import android.app.Application;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import android.util.Log;
+import com.tencent.commonsdk.classload.DexClassLoaderUtil;
+import com.tencent.qphone.base.util.QLog;
+import dalvik.system.DexClassLoader;
+import dalvik.system.PathClassLoader;
+import java.io.File;
+import java.lang.reflect.Array;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
+public class acmg
+{
+  public static String a(Application paramApplication, int paramInt)
+  {
+    try
+    {
+      Class.forName("dalvik.system.LexClassLoader");
+      String str = b(paramApplication, paramInt);
+      return str;
+    }
+    catch (ClassNotFoundException localClassNotFoundException1)
+    {
+      int i = 1;
+      try
+      {
+        Class.forName("dalvik.system.BaseDexClassLoader");
+        if (i == 0) {
+          return c(paramApplication, paramInt);
+        }
+      }
+      catch (ClassNotFoundException localClassNotFoundException2)
+      {
+        for (;;)
+        {
+          i = 0;
+        }
+      }
+    }
+    return d(paramApplication, paramInt);
+  }
+  
+  public static String a(Application paramApplication, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    try
+    {
+      Class.forName("dalvik.system.LexClassLoader");
+      String str = b(paramApplication, paramString1, paramString2, paramBoolean);
+      return str;
+    }
+    catch (ClassNotFoundException localClassNotFoundException1)
+    {
+      int i = 1;
+      try
+      {
+        Class.forName("dalvik.system.BaseDexClassLoader");
+        if (i == 0) {
+          return c(paramApplication, paramString1, paramString2, paramBoolean);
+        }
+      }
+      catch (ClassNotFoundException localClassNotFoundException2)
+      {
+        for (;;)
+        {
+          i = 0;
+        }
+      }
+    }
+    return d(paramApplication, paramString1, paramString2, paramBoolean);
+  }
+  
+  private static Object appendArray(Object paramObject1, Object paramObject2, boolean paramBoolean)
+  {
+    int k = 1;
+    Object localObject1 = paramObject1.getClass().getComponentType();
+    int j = Array.getLength(paramObject1);
+    int i;
+    label33:
+    Object localObject2;
+    if (paramBoolean)
+    {
+      i = j;
+      if (!paramBoolean) {
+        break label99;
+      }
+      j = k;
+      k = i + j;
+      localObject2 = Array.newInstance((Class)localObject1, k);
+      j = 0;
+      label51:
+      if (j >= k) {
+        break label140;
+      }
+      if (j >= i) {
+        break label108;
+      }
+      if (!paramBoolean) {
+        break label102;
+      }
+    }
+    label99:
+    label102:
+    for (localObject1 = Array.get(paramObject1, j);; localObject1 = paramObject2)
+    {
+      Array.set(localObject2, j, localObject1);
+      j += 1;
+      break label51;
+      i = 1;
+      break;
+      break label33;
+    }
+    label108:
+    if (paramBoolean) {}
+    for (localObject1 = paramObject2;; localObject1 = Array.get(paramObject1, j - i))
+    {
+      Array.set(localObject2, j, localObject1);
+      break;
+    }
+    label140:
+    return localObject2;
+  }
+  
+  private static String b(Application paramApplication, int paramInt)
+  {
+    paramApplication = (PathClassLoader)paramApplication.getClassLoader();
+    try
+    {
+      setField(paramApplication, PathClassLoader.class, "mPaths", removeElementFromArray(getField(paramApplication, PathClassLoader.class, "mPaths"), paramInt));
+      setField(paramApplication, PathClassLoader.class, "mFiles", removeElementFromArray(getField(paramApplication, PathClassLoader.class, "mFiles"), paramInt));
+      setField(paramApplication, PathClassLoader.class, "mZips", removeElementFromArray(getField(paramApplication, PathClassLoader.class, "mZips"), paramInt));
+      setField(paramApplication, PathClassLoader.class, "mLexs", removeElementFromArray(getField(paramApplication, PathClassLoader.class, "mLexs"), paramInt));
+      return "Success";
+    }
+    catch (Throwable paramApplication)
+    {
+      paramApplication.printStackTrace();
+    }
+    return "unloadDexInAliyunOs error: " + Log.getStackTraceString(paramApplication);
+  }
+  
+  private static String b(Application paramApplication, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    PathClassLoader localPathClassLoader = (PathClassLoader)paramApplication.getClassLoader();
+    new DexClassLoader(paramString1, paramApplication.getDir("dex", 0).getAbsolutePath(), paramString1, localPathClassLoader);
+    String str = new File(paramString1).getName().replaceAll("\\.[a-zA-Z0-9]+", ".lex");
+    try
+    {
+      Class localClass = Class.forName("dalvik.system.LexClassLoader");
+      paramApplication = localClass.getConstructor(new Class[] { String.class, String.class, String.class, ClassLoader.class }).newInstance(new Object[] { paramApplication.getDir("dex", 0).getAbsolutePath() + File.separator + str, paramApplication.getDir("dex", 0).getAbsolutePath(), paramString1, localPathClassLoader });
+      paramString1 = localClass.getMethod("loadClass", new Class[] { String.class });
+      if (!TextUtils.isEmpty(paramString2)) {
+        paramString1.invoke(paramApplication, new Object[] { paramString2 });
+      }
+      setField(localPathClassLoader, PathClassLoader.class, "mPaths", appendArray(getField(localPathClassLoader, PathClassLoader.class, "mPaths"), getField(paramApplication, localClass, "mRawDexPath"), paramBoolean));
+      setField(localPathClassLoader, PathClassLoader.class, "mFiles", combineArray(getField(localPathClassLoader, PathClassLoader.class, "mFiles"), getField(paramApplication, localClass, "mFiles"), paramBoolean));
+      setField(localPathClassLoader, PathClassLoader.class, "mZips", combineArray(getField(localPathClassLoader, PathClassLoader.class, "mZips"), getField(paramApplication, localClass, "mZips"), paramBoolean));
+      setField(localPathClassLoader, PathClassLoader.class, "mLexs", combineArray(getField(localPathClassLoader, PathClassLoader.class, "mLexs"), getField(paramApplication, localClass, "mDexs"), paramBoolean));
+      return "Success";
+    }
+    catch (Throwable paramApplication)
+    {
+      paramApplication.printStackTrace();
+    }
+    return "injectInAliyunOs error: " + Log.getStackTraceString(paramApplication);
+  }
+  
+  @TargetApi(14)
+  private static String c(Application paramApplication, int paramInt)
+  {
+    paramApplication = (PathClassLoader)paramApplication.getClassLoader();
+    try
+    {
+      setField(paramApplication, PathClassLoader.class, "mPaths", removeElementFromArray(getField(paramApplication, PathClassLoader.class, "mPaths"), paramInt));
+      setField(paramApplication, PathClassLoader.class, "mFiles", removeElementFromArray(getField(paramApplication, PathClassLoader.class, "mFiles"), paramInt));
+      setField(paramApplication, PathClassLoader.class, "mZips", removeElementFromArray(getField(paramApplication, PathClassLoader.class, "mZips"), paramInt));
+      setField(paramApplication, PathClassLoader.class, "mDexs", removeElementFromArray(getField(paramApplication, PathClassLoader.class, "mDexs"), paramInt));
+      return "Success";
+    }
+    catch (Throwable paramApplication)
+    {
+      paramApplication.printStackTrace();
+    }
+    return "unloadDexBelowApiLevel14 error: " + Log.getStackTraceString(paramApplication);
+  }
+  
+  @TargetApi(14)
+  private static String c(Application paramApplication, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    PathClassLoader localPathClassLoader = (PathClassLoader)paramApplication.getClassLoader();
+    paramApplication = DexClassLoaderUtil.createDexClassLoader(paramString1, paramApplication.getDir("dex", 0).getAbsolutePath(), paramString1, paramApplication.getClassLoader());
+    try
+    {
+      if (Build.VERSION.SDK_INT <= 8)
+      {
+        paramString1 = paramApplication.getClass().getDeclaredMethod("ensureInit", new Class[0]);
+        paramString1.setAccessible(true);
+        paramString1.invoke(paramApplication, new Object[0]);
+      }
+      if (!TextUtils.isEmpty(paramString2)) {
+        paramApplication.loadClass(paramString2);
+      }
+      setField(localPathClassLoader, PathClassLoader.class, "mPaths", appendArray(getField(localPathClassLoader, PathClassLoader.class, "mPaths"), getField(paramApplication, DexClassLoader.class, "mRawDexPath"), paramBoolean));
+      setField(localPathClassLoader, PathClassLoader.class, "mFiles", combineArray(getField(localPathClassLoader, PathClassLoader.class, "mFiles"), getField(paramApplication, DexClassLoader.class, "mFiles"), paramBoolean));
+      setField(localPathClassLoader, PathClassLoader.class, "mZips", combineArray(getField(localPathClassLoader, PathClassLoader.class, "mZips"), getField(paramApplication, DexClassLoader.class, "mZips"), paramBoolean));
+      setField(localPathClassLoader, PathClassLoader.class, "mDexs", combineArray(getField(localPathClassLoader, PathClassLoader.class, "mDexs"), getField(paramApplication, DexClassLoader.class, "mDexs"), paramBoolean));
+      return "Success";
+    }
+    catch (Throwable paramApplication)
+    {
+      paramApplication.printStackTrace();
+    }
+    return "injectBelowApiLevel14 error: " + Log.getStackTraceString(paramApplication);
+  }
+  
+  private static Object combineArray(Object paramObject1, Object paramObject2, boolean paramBoolean)
+  {
+    Object localObject1 = paramObject1.getClass().getComponentType();
+    int j = Array.getLength(paramObject1);
+    int k = Array.getLength(paramObject2);
+    int i;
+    label32:
+    Object localObject2;
+    if (paramBoolean)
+    {
+      i = j;
+      if (!paramBoolean) {
+        break label99;
+      }
+      k = i + k;
+      localObject2 = Array.newInstance((Class)localObject1, k);
+      j = 0;
+      label50:
+      if (j >= k) {
+        break label144;
+      }
+      if (j >= i) {
+        break label112;
+      }
+      if (!paramBoolean) {
+        break label106;
+      }
+    }
+    label99:
+    label106:
+    for (localObject1 = paramObject1;; localObject1 = paramObject2)
+    {
+      Array.set(localObject2, j, Array.get(localObject1, j));
+      j += 1;
+      break label50;
+      i = k;
+      break;
+      k = j;
+      break label32;
+    }
+    label112:
+    if (paramBoolean) {}
+    for (localObject1 = paramObject2;; localObject1 = paramObject1)
+    {
+      Array.set(localObject2, j, Array.get(localObject1, j - i));
+      break;
+    }
+    label144:
+    return localObject2;
+  }
+  
+  @SuppressLint({"NewApi"})
+  private static String d(Application paramApplication, int paramInt)
+  {
+    Object localObject = (PathClassLoader)paramApplication.getClassLoader();
+    try
+    {
+      paramApplication = removeElementFromArray(getDexElements(getPathList(localObject)), paramInt);
+      localObject = getPathList(localObject);
+      setField(localObject, localObject.getClass(), "dexElements", paramApplication);
+      return "Success";
+    }
+    catch (Throwable paramApplication) {}
+    return "unloadDexAboveEqualApiLevel14 error: " + Log.getStackTraceString(paramApplication);
+  }
+  
+  @SuppressLint({"NewApi"})
+  private static String d(Application paramApplication, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    PathClassLoader localPathClassLoader = (PathClassLoader)paramApplication.getClassLoader();
+    paramApplication = DexClassLoaderUtil.createDexClassLoader(paramString1, paramApplication.getDir("dex", 0).getAbsolutePath(), paramString1, paramApplication.getClassLoader());
+    try
+    {
+      if (!TextUtils.isEmpty(paramString2)) {
+        paramApplication.loadClass(paramString2);
+      }
+      paramApplication = combineArray(getDexElements(getPathList(localPathClassLoader)), getDexElements(getPathList(paramApplication)), paramBoolean);
+      paramString1 = getPathList(localPathClassLoader);
+      setField(paramString1, paramString1.getClass(), "dexElements", paramApplication);
+      return "Success";
+    }
+    catch (Throwable paramApplication)
+    {
+      QLog.e("harlan", 1, "err", paramApplication);
+    }
+    return "injectAboveEqualApiLevel14 error: " + Log.getStackTraceString(paramApplication);
+  }
+  
+  public static Object getDexElements(Object paramObject)
+    throws IllegalArgumentException, NoSuchFieldException, IllegalAccessException
+  {
+    return getField(paramObject, paramObject.getClass(), "dexElements");
+  }
+  
+  private static Object getField(Object paramObject, Class<?> paramClass, String paramString)
+    throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException
+  {
+    paramClass = paramClass.getDeclaredField(paramString);
+    paramClass.setAccessible(true);
+    return paramClass.get(paramObject);
+  }
+  
+  public static Object getPathList(Object paramObject)
+    throws IllegalArgumentException, NoSuchFieldException, IllegalAccessException, ClassNotFoundException
+  {
+    return getField(paramObject, Class.forName("dalvik.system.BaseDexClassLoader"), "pathList");
+  }
+  
+  private static Object removeElementFromArray(Object paramObject, int paramInt)
+  {
+    Object localObject = paramObject.getClass().getComponentType();
+    int m = Array.getLength(paramObject);
+    if ((paramInt < 0) || (paramInt >= m)) {
+      return paramObject;
+    }
+    localObject = Array.newInstance((Class)localObject, m - 1);
+    int j = 0;
+    int i = 0;
+    if (j < m)
+    {
+      if (j == paramInt) {
+        break label82;
+      }
+      int k = i + 1;
+      Array.set(localObject, i, Array.get(paramObject, j));
+      i = k;
+    }
+    label82:
+    for (;;)
+    {
+      j += 1;
+      break;
+      return localObject;
+    }
+  }
+  
+  private static void setField(Object paramObject1, Class<?> paramClass, String paramString, Object paramObject2)
+    throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException
+  {
+    paramClass = paramClass.getDeclaredField(paramString);
+    paramClass.setAccessible(true);
+    paramClass.set(paramObject1, paramObject2);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes.jar
+ * Qualified Name:     acmg
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center" android:background="@color/al3" android:padding="0.0dip" android:layout_width="@dimen/bgq" android:layout_height="fill_parent" style="@style/abe"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/o4o" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" android:contentDescription="@string/pb" />
+    <ImageView android:id="@id/obc" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_marginBottom="2.0dip" android:src="@drawable/i6w" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    <View android:id="@id/enc" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.qqmail.view.KeepPressedCheckBox android:id="@id/n4f" android:background="@drawable/eh3" android:focusable="false" android:clickable="false" android:layout_width="50.0dip" android:layout_height="50.0dip" android:button="@null" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</RelativeLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:background="@drawable/je" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="72.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_weight="1.0">
+        <TextView android:textSize="17.0sp" android:textColor="#ff4d94ff" android:ellipsize="end" android:id="@id/me6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" android:singleLine="true" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:ellipsize="end" android:id="@id/me7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:maxLines="1" android:singleLine="true" />
+    </LinearLayout>
+    <com.tencent.mobileqq.widget.AutoBgImageView android:layout_gravity="center_vertical" android:id="@id/ln2" android:focusable="false" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/hwe" android:scaleType="centerInside" android:contentDescription="@string/rj6" />
+</LinearLayout>

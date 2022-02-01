@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false" android:color="#4cff596a" />
+    <item android:state_pressed="true" android:color="#7fff596a" />
+    <item android:color="#ffff596a" />
+</selector>

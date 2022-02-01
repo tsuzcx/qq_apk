@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="a1l" parent="@style/a1j" />
+    <style name="a1s" parent="@style/a1q" />
+</resources>

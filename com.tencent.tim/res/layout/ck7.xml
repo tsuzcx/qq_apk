@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:paddingLeft="0.0dip" android:paddingRight="@dimen/bho" style="@style/aef"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/mqw" style="@style/ac2" />
+    <TextView android:ellipsize="end" android:id="@id/mqm" android:paddingLeft="0.0dip" android:duplicateParentState="false" android:singleLine="true" android:layout_toRightOf="@id/mqw" android:layout_alignParentRight="true" style="@style/ac4" />
+</RelativeLayout>

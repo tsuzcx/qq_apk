@@ -1,0 +1,34 @@
+package com.qq.ac.sdk.e.a;
+
+import com.b.a.a.l;
+import com.b.a.o.a;
+import com.b.a.o.b;
+import com.qq.ac.sdk.e.b;
+import java.util.Map;
+
+final class a$3
+  extends l
+{
+  a$3(a parama, int paramInt, String paramString, o.b paramb, o.a parama1, b paramb1)
+  {
+    super(1, paramString, paramb, parama1);
+  }
+  
+  public final Map<String, String> g()
+    throws com.b.a.a
+  {
+    return this.a.b();
+  }
+  
+  public final Map<String, String> i()
+    throws com.b.a.a
+  {
+    return this.a.c();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes5.jar
+ * Qualified Name:     com.qq.ac.sdk.e.a.a.3
+ * JD-Core Version:    0.7.0.1
+ */

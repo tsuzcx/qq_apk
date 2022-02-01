@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/if5" android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/jqb" android:layout_width="fill_parent" android:layout_height="44.0dip">
+        <TextView android:gravity="center" android:id="@id/a47" android:background="@drawable/intimate_relationship_back_btn" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginLeft="16.0dip" android:maxWidth="88.0dip" android:minWidth="40.0dip" android:text="@null" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
+        <TextView android:textSize="17.0sp" android:textColor="@color/skin_color_intimate_relationship_multicard_title" android:ellipsize="end" android:id="@id/k9t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="88.0dip" android:layout_marginRight="88.0dip" android:text="@string/vto" android:singleLine="true" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/li5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/jqb">
+        <com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator android:textSize="16.0dip" android:id="@id/ixv" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_centerInParent="true" app:checkTextColor="@color/skin_blue_item" app:indicatorAlpha="25" app:indicatorColor="@color/skin_blue_item" app:indicatorMarginLeftRight="8.0dip" app:indicatorMarginTopBottom="2.0dip" app:indicatorRoundRectX="16.0dip" app:indicatorRoundRectY="16.0dip" app:tabPaddingLeftRight="12.0dip" app:tabWidth="138.0dip" app:uncheckTextColor="@color/skin_gray2_theme_version2" />
+    </RelativeLayout>
+    <FrameLayout android:id="@id/lhw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/li5">
+        <TextView android:textSize="14.0sp" android:textColor="@color/skin_color_intimate_relationship_multicard_title" android:layout_gravity="center" android:id="@id/mca" android:paddingBottom="70.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/vtn" android:singleLine="true" />
+    </FrameLayout>
+</RelativeLayout>

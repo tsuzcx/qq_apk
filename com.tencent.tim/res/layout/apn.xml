@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/j3e" android:layout_width="72.0dip" android:layout_height="72.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

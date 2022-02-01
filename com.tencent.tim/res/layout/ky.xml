@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center" android:id="@id/jhm" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.AnimationTextView android:textSize="@dimen/c0" android:textColor="@color/skin_chat_buble" android:id="@id/jfb" android:paddingLeft="@dimen/bu" android:paddingTop="@dimen/bw" android:paddingRight="@dimen/bt" android:paddingBottom="@dimen/bv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
+</RelativeLayout>

@@ -1,0 +1,17 @@
+package moai.oss.annotation;
+
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Target;
+import moai.oss.ReportType;
+
+@Target({java.lang.annotation.ElementType.FIELD})
+public @interface UploadType
+{
+  ReportType value();
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes14.jar
+ * Qualified Name:     moai.oss.annotation.UploadType
+ * JD-Core Version:    0.7.0.1
+ */

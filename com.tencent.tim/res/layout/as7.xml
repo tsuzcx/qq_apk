@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/eyh" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:id="@id/eyg" android:background="@drawable/skin_setting_strip_top_unpressed" android:layout_marginRight="-1.0dip" android:text="@string/f_u" style="@style/b8" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/eyi" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <EditText android:id="@id/eyb" android:background="@drawable/skin_setting_strip_top_unpressed" android:paddingLeft="28.0dip" android:paddingRight="@dimen/gy" android:hint="@string/f_t" android:singleLine="true" android:inputType="number" style="@style/b7" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:id="@id/eyc" android:text="@string/f_7" android:layout_below="@id/eyh" style="@style/b5" />
+    <View android:background="@drawable/qq_business_card_line" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/eyc" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/grb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/gt" android:layout_below="@id/eyc">
+        <TextView android:id="@id/gtc" android:background="@drawable/skin_setting_strip_top_unpressed" android:layout_marginRight="-1.0dip" android:text="@string/f_z" style="@style/b8" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/gra" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <include android:id="@id/gr_" android:layout_width="fill_parent" android:layout_height="@dimen/gr" layout="@layout/asc" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:id="@id/gn0" android:text="@string/f__" android:layout_below="@id/grb" style="@style/b5" />
+    <View android:background="@drawable/qq_business_card_line" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/gn0" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/bgy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/gt" android:layout_below="@id/gn0">
+        <TextView android:id="@id/bgq" android:background="@drawable/skin_setting_strip_top_unpressed" android:layout_marginRight="-1.0dip" android:text="@string/f_n" style="@style/b8" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/bgl" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <EditText android:id="@id/bgk" android:background="@drawable/skin_setting_strip_top_unpressed" android:paddingLeft="28.0dip" android:paddingTop="@dimen/gz" android:paddingRight="@dimen/gy" android:paddingBottom="@dimen/gw" android:layout_height="wrap_content" android:minHeight="@dimen/gr" android:hint="@string/f_m" style="@style/b7" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:id="@id/bgc" android:text="@string/f_6" android:layout_below="@id/bgy" style="@style/b5" />
+    <View android:background="@drawable/qq_business_card_line" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/bgc" />
+</RelativeLayout>

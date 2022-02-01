@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/aos" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.qqmail.view.QMTopBar android:id="@id/o6g" android:layout_width="fill_parent" android:layout_height="@dimen/btw" />
+    <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/btw">
+        <LinearLayout android:orientation="vertical" android:background="@color/aos" android:paddingTop="@dimen/bew" android:paddingBottom="@dimen/bev" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/bf1" android:textColor="@color/aon" android:id="@id/mkc" android:paddingLeft="@dimen/bfu" android:paddingRight="@dimen/bfu" android:paddingBottom="@dimen/bg3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/wr7" />
+            <com.tencent.qqmail.qmui.layout.QMUIFloatLayout android:id="@id/mka" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <FrameLayout android:id="@id/mvk" android:background="@drawable/er6" android:layout_width="fill_parent" android:layout_height="@dimen/ben">
+                <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <TextView android:textSize="@dimen/bep" android:textColor="@color/aoq" android:id="@id/bzj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wqu" />
+                    <ImageView android:id="@id/mvl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/beo" android:src="@drawable/gog" />
+                </LinearLayout>
+            </FrameLayout>
+            <moai.view.SafeWebView android:id="@id/webview" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bfu" android:layout_marginTop="@dimen/bg2" android:layout_marginRight="@dimen/bfu" />
+        </LinearLayout>
+    </ScrollView>
+    <com.tencent.qqmail.view.QMContentLoadingView android:id="@id/loading" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/btw" />
+</FrameLayout>

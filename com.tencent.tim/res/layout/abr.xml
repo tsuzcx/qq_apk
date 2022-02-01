@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/d4p" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="73.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/d4e" android:paddingTop="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="12.0dip" android:layout_alignParentBottom="true">
+        <TextView android:textSize="22.0sp" android:textColor="#ff07d0b0" android:id="@id/d4n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="\#" android:layout_alignParentLeft="true" />
+        <TextView android:textSize="22.0sp" android:textColor="#ff000000" android:id="@id/d4o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginTop="5.0dip" android:text="@string/q0q" android:layout_toRightOf="@id/d4n" />
+        <TextView android:textSize="12.0sp" android:textColor="#ff9d9d9d" android:id="@id/d4h" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="xx人正在关注" android:layout_below="@id/d4n" android:layout_alignParentLeft="true" />
+        <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="#ffffffff" android:gravity="center" android:id="@id/d4i" android:background="@drawable/a0p" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:clickable="true" android:layout_width="wrap_content" android:layout_height="28.0dip" android:text="@string/pvw" android:singleLine="true" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</RelativeLayout>

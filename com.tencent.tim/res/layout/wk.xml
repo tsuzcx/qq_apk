@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/a0v" android:background="@drawable/uc" android:clickable="true" android:layout_width="fill_parent" android:layout_height="72.0dip">
+        <ImageView android:id="@id/a0u" android:background="@drawable/chatoption_item_add_new" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_centerVertical="true" />
+        <TextView android:textSize="17.0sp" android:textColor="#ff40a0ff" android:id="@id/a0w" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/cp6" android:layout_toRightOf="@id/a0u" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <com.tencent.mobileqq.widget.BounceScrollView android:id="@id/b9" android:background="@drawable/b8c" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/aa" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" />
+    </com.tencent.mobileqq.widget.BounceScrollView>
+</LinearLayout>

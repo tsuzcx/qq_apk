@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="94.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/iv9" android:layout_width="70.0dip" android:layout_height="70.0dip" android:layout_marginLeft="20.0dip" android:layout_marginTop="11.0dip" android:layout_marginRight="25.0dip" android:layout_marginBottom="13.0dip" android:src="@color/bp" android:layout_centerVertical="true" android:contentDescription="@string/tpt" />
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toRightOf="@id/iv9">
+        <TextView android:textSize="16.0dip" android:textColor="#ff000000" android:id="@id/iv_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="19.0dip" android:text="@null" android:singleLine="true" android:layout_toLeftOf="@id/iva" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <ImageView android:id="@id/iv7" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginBottom="8.0dip" android:src="@drawable/ftj" android:layout_above="@id/iv8" android:layout_below="@id/iv_" android:contentDescription="@null" />
+        <TextView android:textSize="14.0dip" android:textColor="#ff777777" android:id="@id/iv8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:text="@null" android:layout_alignParentBottom="true" />
+        <TextView android:textSize="12.0dip" android:textColor="#ff808080" android:ellipsize="end" android:gravity="center" android:id="@id/iva" android:background="@null" android:padding="2.0dip" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginRight="4.0dip" android:text="@null" android:maxLines="3" android:singleLine="false" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <ImageView android:id="@id/acp" android:background="@drawable/e8" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginBottom="0.0dip" android:layout_toRightOf="@id/iv9" android:layout_alignParentBottom="true" />
+</RelativeLayout>

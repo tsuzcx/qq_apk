@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/nx5" android:background="@color/au4" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.qqmail.search.view.SearchToggleView android:id="@id/nx_" android:background="@color/au4" android:layout_marginTop="@dimen/brp" style="@style/ahe" />
+    <ListView android:id="@id/n1r" android:background="@color/atl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/brp" android:divider="@null" />
+    <RelativeLayout android:id="@id/nx7" android:background="@color/au4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/brp">
+        <LinearLayout android:id="@id/nxd" style="@style/ahg">
+            <com.tencent.qqmail.qmui.alpha.QMUIAlphaButton android:id="@id/nxe" android:visibility="gone" android:text="@string/yao" style="@style/ahf" />
+            <com.tencent.qqmail.qmui.alpha.QMUIAlphaButton android:id="@id/nxi" android:text="@string/yax" style="@style/ahf" />
+            <com.tencent.qqmail.qmui.alpha.QMUIAlphaButton android:id="@id/nxh" android:text="@string/yau" style="@style/ahf" />
+            <com.tencent.qqmail.qmui.alpha.QMUIAlphaButton android:id="@id/nxj" android:text="@string/yay" style="@style/ahf" />
+            <com.tencent.qqmail.qmui.alpha.QMUIAlphaButton android:id="@id/nxb" android:text="@string/yak" style="@style/ahf" />
+        </LinearLayout>
+        <ListView android:id="@id/nxn" android:background="@color/au4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" android:layout_below="@id/nxd" />
+    </RelativeLayout>
+</RelativeLayout>

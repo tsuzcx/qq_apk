@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:id="@id/cqg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.troop.widget.BorderURLImageView android:layout_gravity="center" android:id="@id/dce" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ProgressBar android:layout_gravity="center" android:id="@id/dea" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:progress="0" style="?android:progressBarStyleHorizontal" />
+    <ImageView android:layout_gravity="center" android:id="@id/gd" android:background="#26ffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/qb_troup_group_avatar_add" android:scaleType="center" />
+    <ViewStub android:id="@id/knj" android:layout="@layout/a1f" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

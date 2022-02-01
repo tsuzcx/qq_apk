@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:cacheColorHint="#00000000"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/fo3" android:background="@android:color/transparent" android:visibility="gone" android:layout_width="110.0dip" android:layout_height="wrap_content">
+        <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/bp" android:id="@id/fo6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/yo" android:text="@string/rn9" />
+        <RelativeLayout android:id="@id/fo0" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginLeft="@dimen/yn" android:layout_marginTop="@dimen/yo" android:layout_toRightOf="@id/fo6">
+            <com.qzone.album.ui.widget.NumberShiftingView android:id="@id/fnx" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/fo4" android:background="@android:color/transparent" android:visibility="gone" android:layout_width="110.0dip" android:layout_height="wrap_content">
+        <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/bp" android:id="@id/fo7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/yo" android:text="@string/roe" />
+        <RelativeLayout android:id="@id/fo1" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginLeft="@dimen/yn" android:layout_marginTop="@dimen/yo" android:layout_toRightOf="@id/fo7">
+            <com.qzone.album.ui.widget.NumberShiftingView android:id="@id/fny" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/fo5" android:background="@android:color/transparent" android:visibility="gone" android:layout_width="110.0dip" android:layout_height="wrap_content">
+        <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/bp" android:id="@id/fo8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/yo" android:text="@string/rnb" />
+        <RelativeLayout android:id="@id/fo2" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginLeft="@dimen/yn" android:layout_marginTop="@dimen/yo" android:layout_toRightOf="@id/fo8">
+            <com.qzone.album.ui.widget.NumberShiftingView android:id="@id/fnz" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

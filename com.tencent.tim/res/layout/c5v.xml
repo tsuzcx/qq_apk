@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/lc3" android:layout_width="250.0dip" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <EditText android:textSize="20.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/btb" android:background="@color/ajr" android:layout_width="200.0dip" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="10.0dip" android:singleLine="true" android:layout_centerInParent="true" android:textCursorDrawable="@drawable/hkh"
+          xmlns:android="http://schemas.android.com/apk/res/android" />
+        <Button android:id="@id/m5u" android:background="@drawable/hkd" android:visibility="invisible" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="2.0pt" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <ImageView android:id="@id/bmt" android:background="@drawable/hkg" android:layout_width="180.0dip" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_alignParentBottom="true" />
+</RelativeLayout>

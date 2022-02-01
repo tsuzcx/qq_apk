@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.qqmail.view.QMTopBar android:layout_gravity="center|left|top" android:id="@id/mh3" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <EditText android:textSize="@dimen/bd9" android:textColor="@color/aii" android:textColorHint="@color/aw2" android:gravity="center|left|top" android:layout_gravity="center|left|top" android:id="@id/mh2" android:background="@drawable/bkk" android:padding="@dimen/bd3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/btw" android:layout_marginBottom="@dimen/bdh" android:hint="@string/wkt" android:minLines="5" android:lineSpacingExtra="5.0dip" android:inputType="textMultiLine" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="bottom|center|left" android:orientation="horizontal" android:id="@id/mgy" android:paddingLeft="@dimen/bdi" android:paddingRight="@dimen/bdi" android:layout_width="fill_parent" android:layout_height="@dimen/bdh">
+        <TextView android:textSize="15.0sp" android:textColor="@color/aii" android:gravity="center|left" android:id="@id/mh0" android:layout_width="0.0dip" android:layout_height="fill_parent" android:drawableLeft="@drawable/g3o" android:drawablePadding="5.0dip" android:layout_weight="1.0" />
+        <TextView android:textSize="15.0sp" android:gravity="center|right" android:id="@id/mgr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="0.0" />
+    </LinearLayout>
+</FrameLayout>

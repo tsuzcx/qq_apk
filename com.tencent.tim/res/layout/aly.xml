@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/skin_searchbar_bg_theme_version2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/gku" android:background="@drawable/skin_searchbar_input_theme_version2" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="12.0dip">
+        <TextView android:textSize="17.0sp" android:textColor="@color/skin_hint_input_theme_version2" android:gravity="center" android:id="@id/gkv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/a14" android:drawableLeft="@drawable/skin_searchbar_icon_theme_version2" android:drawablePadding="3.0dip" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <View android:background="@drawable/qfile_file_activity_div" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+</LinearLayout>

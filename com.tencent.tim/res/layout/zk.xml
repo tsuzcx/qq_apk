@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/kqu" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.av.ui.funchat.filter.EffectFilterTextPager android:id="@id/kqt" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/g80" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a43" android:src="@drawable/db4" android:scaleType="center" android:layout_centerHorizontal="true" android:contentDescription="@null" />
+</RelativeLayout>

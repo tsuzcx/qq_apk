@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="100" android:drawable="@drawable/gwi" />
+    <item android:duration="100" android:drawable="@drawable/gwj" />
+    <item android:duration="100" android:drawable="@drawable/gwk" />
+    <item android:duration="100" android:drawable="@drawable/gwl" />
+    <item android:duration="100" android:drawable="@drawable/gwm" />
+    <item android:duration="100" android:drawable="@drawable/gwn" />
+    <item android:duration="100" android:drawable="@drawable/gwo" />
+    <item android:duration="100" android:drawable="@drawable/gwq" />
+</animation-list>

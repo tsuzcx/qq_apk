@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/e_w" android:paddingLeft="@dimen/bho" android:paddingTop="@dimen/bhp" android:paddingRight="@dimen/bho" android:paddingBottom="@dimen/bhp" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qm="http://schemas.android.com/apk/res-auto">
+    <com.tencent.qqmail.view.QMAvatarView android:id="@id/mqh" qm:avatar_view_type="n8u" style="@style/a_u" />
+    <TextView android:id="@id/mqi" android:layout_width="wrap_content" android:layout_marginLeft="@dimen/bhr" android:layout_marginRight="@dimen/bhs" style="@style/ac1" />
+    <ImageView android:id="@id/mqk" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:src="@drawable/grg" android:contentDescription="@string/wz0" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <EditText android:textColorHint="@color/aw2" android:id="@id/mqj" android:background="@null" android:layout_width="fill_parent" android:hint="@string/wzm" android:layout_toLeftOf="@id/mqs" style="@style/ac1" />
+        <ImageView android:id="@id/mqs" android:paddingLeft="4.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gze" android:scaleType="center" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/ajx" />
+    </RelativeLayout>
+</LinearLayout>

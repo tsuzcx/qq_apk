@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="bottom" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:layout_alignParentBottom="false" style="@style/p0">
+            <include layout="@layout/rm" />
+            <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/wj" android:layout_marginTop="@dimen/wn" android:layout_marginBottom="@dimen/wn" android:text="@string/o4k" style="@style/qr" />
+            </LinearLayout>
+            <LinearLayout android:paddingRight="0.0dip" android:layout_marginLeft="@dimen/wj" android:layout_marginRight="@dimen/wj" android:layout_marginBottom="10.0dip" style="@style/q6">
+                <EditText android:id="@id/etw" android:hint="@string/o4y" style="@style/qa" />
+                <ImageButton android:id="@id/etx" android:visibility="invisible" style="@style/midas_input_cell_button_clear" />
+                <View style="@style/qd" />
+                <ImageView android:id="@id/etv" android:background="@null" android:layout_width="115.0dip" android:layout_height="44.0dip" android:layout_margin="1.0dip" android:src="@drawable/czz" android:scaleType="fitXY" />
+            </LinearLayout>
+            <Button android:id="@id/ety" android:layout_marginTop="30.0dip" android:text="@string/o4g" style="@style/oy" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

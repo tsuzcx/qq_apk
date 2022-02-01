@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bitmap android:src="@drawable/skin_chat_background" android:antialias="true" android:dither="true" android:tileMode="disabled"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0dip" android:textColor="@color/bp" android:id="@id/a05" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:text="@string/r3z" />
+    <RelativeLayout android:orientation="vertical" android:id="@id/gw_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView android:id="@id/gw7" android:layout_width="205.0dip" android:layout_height="332.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="7.0dip" />
+        <TextView android:textSize="12.0sp" android:id="@id/gw9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="23:46" android:layout_below="@id/gw7" android:layout_alignLeft="@id/gw7" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/skin_gray_group_item" android:id="@id/gw8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:text="vianhuang" android:singleLine="true" android:layout_toRightOf="@id/gw9" android:layout_below="@id/gw7" />
+    </RelativeLayout>
+    <com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView android:id="@id/a04" android:paddingLeft="@dimen/amm" android:paddingRight="@dimen/amn" android:visibility="gone" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_below="@id/a05" />
+    <com.tencent.biz.qqstory.view.widget.QQStoryLoadingView android:textSize="16.0dip" android:textColor="#ff777777" android:id="@id/efs" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fxg" android:drawablePadding="15.0dip" android:layout_centerInParent="true" />
+    <include android:id="@id/gvk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/b5e" />
+</RelativeLayout>

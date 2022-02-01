@@ -1,0 +1,605 @@
+{
+    "ReadInJoy_live_double_video_cell": {
+        "view_id": "id_live_double_video_container",
+        "view_type": "UIView",
+        "direction": "vertical",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "default_visible": "YES",
+        "subviews": [
+            {
+                "view_id": "id_live_video_container",
+                "view_type": "UIView",
+                "layout_type": "layout_relative",
+                "height": {
+                    "type": "relative",
+                    "value": "253"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "375"
+                },
+                "default_visible": "YES",
+                "subviews": [
+                    {
+                        "view_id": "id_live_left_video_container",
+                        "view_type": "UIView",
+                        "layout_type": "layout_relative",
+                        "height": {
+                            "type": "relative",
+                            "value": "237"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "180.5"
+                        },
+                        "default_visible": "YES",
+                        "align_parent_left": "YES",
+                        "margin_left": "6",
+                        "margin_top": "8",
+                        "margin_bottom": "8",
+                        "align_parent_center_vertical": "YES",
+                        "event_type": "cmd_url_click_card_report",
+                        "attributes": {
+                            "setAttatchInfo:": "$left_jump_url"
+                        },
+                        "data_attributes": {
+                            "setLocalInfo:": {
+                                "feeds_type": "2007"
+                            },
+                            "setRemoteInfo:": "$left_jump_report_info"
+                        },
+                        "subviews": [
+                            {
+                                "view_id": "id_left_video_bg",
+                                "view_type": "UIView",
+                                "height": {
+                                    "type": "match_parent"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "default_visible": "YES",
+                                "attributes": {
+                                    "setBackgroundColorString:": "#e5e5e5"
+                                }
+                            },
+                            {
+                                "view_id": "id_left_video_cover",
+                                "view_type": "ReadInjoyAsynImageView",
+                                "default_visible": "YES",
+                                "height": {
+                                    "type": "match_parent"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "attributes":{
+                                    "setImageWithURLString:lineup:":["$left_video_bg_url","1"],
+                                    "setAttatchInfo:": "$left_video_jump_url"
+                                }
+                            },
+                            {
+                                "view_id": "id_left_video_shadow",
+                                "view_type": "UIView",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "100"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "align_parent_bottom": "YES",
+                                "default_visible": "YES",
+                                "attributes": {
+                                    "setGradientWithStartAlpha:endAlpha:color:direction:": [
+                                        "0",
+                                        "1",
+                                        "#000000",
+                                        "1"
+                                    ]
+                                }
+                            },
+                            {
+                                "view_id": "id_left_live_status_container",
+                                "view_type": "UIView",
+                                "layout_type": "layout_linear",
+                                "direction": "horizontal",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "19"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "align_parent_top": "YES",
+                                "align_parent_left": "YES",
+                                "margin_top": "8",
+                                "margin_left": "8",
+                                "attributes": {
+                                    "setCornerRadiusString:": "3",
+                                    "setBackgroundColorString:": "#4D000000"
+                                },
+                                "default_visible": "YES",
+                                "subviews": [
+                                    {
+                                        "view_id": "id_left_live_status_cell",
+                                        "view_type": "UIView",
+                                        "layout_type": "layout_relative",
+                                        "height": {
+                                            "type": "match_parent"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "default_visible": "YES",
+                                        "align_parent_center_vertical": "YES",
+                                        "subviews": [
+                                            {
+                                                "view_id": "id_left_live_status_bg",
+                                                "view_type": "ReadInjoyAsynImageView",
+                                                "height": {
+                                                    "type": "match_parent"
+                                                },
+                                                "width": {
+                                                    "type": "match_parent"
+                                                },
+                                                "attributes": {
+                                                    "setImageWithURLString:lineup:": [
+                                                        "$left_live_status_bg_url",
+                                                        "1"
+                                                    ],
+                                                    "setCornerRadiusArray:type:": [
+                                                        ["3", "0", "0", "3"],
+                                                        "absolutely"
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "view_id": "id_left_live_status_cell",
+                                                "view_type": "container",
+                                                "layout_type": "layout_linear",
+                                                "direction": "horizontal",
+                                                "height": {
+                                                    "type": "match_parent"
+                                                },
+                                                "width": {
+                                                    "type": "wrap_content"
+                                                },
+                                                "subviews": [
+                                                    {
+                                                        "view_id": "id_left_live_status_padding",
+                                                        "view_type": "UIView",
+                                                        "default_visible": "YES",
+                                                        "height": {
+                                                            "type": "match_parent"
+                                                        },
+                                                        "width": {
+                                                            "type": "relative",
+                                                            "value": "7"
+                                                        }
+                                                    },
+                                                    {
+                                                        "view_id": "id_left_live_status_icon",
+                                                        "view_type": "ReadInJoyGifView",
+                                                        "height": {
+                                                            "type": "absolutely",
+                                                            "value": "12"
+                                                        },
+                                                        "width": {
+                                                            "type": "absolutely",
+                                                            "value": "12"
+                                                        },
+                                                        "default_visible": "NO",
+                                                        "align_parent_center_vertical": "YES",
+                                                        "align_parent_left": "YES",
+                                                        "margin_right": "1",
+                                                        "attributes": {
+                                                            "setGifUrl:": "$left_live_status_icon_url"
+                                                        }
+                                                    },
+                                                    {
+                                                        "view_id": "id_left_live_status_text",
+                                                        "view_type": "UILabel",
+                                                        "height": {
+                                                            "type": "wrap_content"
+                                                        },
+                                                        "width": {
+                                                            "type": "wrap_content"
+                                                        },
+                                                        "align_parent_center_vertical": "YES",
+                                                        "margin_right": "10",
+                                                        "attributes": {
+                                                            "setTextColorString:": "#FFFFFF",
+                                                            "setFontSizeString:": "11",
+                                                            "setText:": "$left_live_status_text",
+                                                            "setNumberOfLinesString:": "1"
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "view_id": "id_left_live_hot_icon",
+                                        "view_type": "ReadInjoyAsynImageView",
+                                        "height": {
+                                            "type": "absolutely",
+                                            "value": "10"
+                                        },
+                                        "width": {
+                                            "type": "absolutely",
+                                            "value": "10"
+                                        },
+                                        "align_parent_center_vertical": "YES",
+                                        "margin_left": "5",
+                                        "attributes": {
+                                            "setImageWithURLString:lineup:": [
+                                                "$left_live_hot_icon_url",
+                                                "1"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "view_id": "id_left_live_hot_text",
+                                        "view_type": "UILabel",
+                                        "height": {
+                                            "type": "wrap_content"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "align_parent_center_vertical": "YES",
+                                        "margin_left": "2",
+                                        "margin_right": "8",
+                                        "attributes": {
+                                            "setTextColorString:": "#FFFFFF",
+                                            "setFontSizeString:": "11",
+                                            "setText:": "$left_live_hot_text",
+                                            "setNumberOfLinesString:": "1"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "view_id": "id_left_user_name",
+                                "view_type": "UILabel",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "margin_left": "8",
+                                "margin_right": "18",
+                                "margin_bottom": "8",
+                                "align_parent_left": "YES",
+                                "align_parent_bottom": "YES",
+                                "attributes": {
+                                    "setText:": "$left_user_name_text",
+                                    "setTextColorString:": "#FFFFFF",
+                                    "setFontSizeString:": "12",
+                                    "setNumberOfLinesString:": "1"
+                                }
+                            },
+                            {
+                                "view_id": "id_left_video_title",
+                                "view_type": "UILabel",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "align_parent_left": "YES",
+                                "align_parent_right": "YES",
+                                "margin_left": "8",
+                                "margin_right": "18",
+                                "margin_bottom": "4",
+                                "above_of_view": "id_left_user_name",
+                                "attributes": {
+                                    "setText:": "$left_video_title_text",
+                                    "setTextColorString:": "#FFFFFF",
+                                    "setBoldFontSizeString:": "16",
+                                    "setNumberOfLinesString:": "2"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "view_id": "id_live_right_video_container",
+                        "view_type": "UIView",
+                        "layout_type": "layout_relative",
+                        "height": {
+                            "type": "relative",
+                            "value": "237"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "180.5"
+                        },
+                        "default_visible": "YES",
+                        "align_parent_right": "YES",
+                        "margin_right": "6",
+                        "margin_top": "8",
+                        "margin_bottom": "8",
+                        "align_parent_center_vertical": "YES",
+                        "event_type": "cmd_url_click_card_report",
+                        "attributes": {
+                            "setAttatchInfo:": "$right_jump_url"
+                        },
+                        "data_attributes": {
+                            "setLocalInfo:": {
+                                "feeds_type": "2007"
+                            },
+                            "setRemoteInfo:": "$right_jump_report_info"
+                        },
+                        "subviews": [
+                            {
+                                "view_id": "id_right_video_bg",
+                                "view_type": "UIView",
+                                "height": {
+                                    "type": "match_parent"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "default_visible": "YES",
+                                "attributes": {
+                                    "setBackgroundColorString:": "#e5e5e5"
+                                }
+                            },
+                            {
+                                "view_id": "id_right_video_cover",
+                                "view_type": "ReadInjoyAsynImageView",
+                                "height": {
+                                    "type": "match_parent"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "attributes":{
+                                    "setImageWithURLString:lineup:":["$right_video_bg_url","1"],
+                                    "setAttatchInfo:": "$right_video_jump_url"
+                                }
+                            },
+                            {
+                                "view_id": "id_right_video_shadow",
+                                "view_type": "UIView",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "100"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "align_parent_bottom": "YES",
+                                "default_visible": "YES",
+                                "attributes": {
+                                    "setGradientWithStartAlpha:endAlpha:color:direction:": [
+                                        "0",
+                                        "1",
+                                        "#000000",
+                                        "1"
+                                    ]
+                                }
+                            },
+                            {
+                                "view_id": "id_right_live_status_container",
+                                "view_type": "UIView",
+                                "layout_type": "layout_linear",
+                                "direction": "horizontal",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "19"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "align_parent_top": "YES",
+                                "align_parent_left": "YES",
+                                "margin_top": "8",
+                                "margin_left": "8",
+                                "attributes": {
+                                    "setCornerRadiusString:": "3",
+                                    "setBackgroundColorString:": "#4D000000"
+                                },
+                                "default_visible": "YES",
+                                "subviews": [
+                                    {
+                                        "view_id": "id_right_live_status_cell",
+                                        "view_type": "UIView",
+                                        "layout_type": "layout_relative",
+                                        "height": {
+                                            "type": "match_parent"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "default_visible": "YES",
+                                        "align_parent_center_vertical": "YES",
+                                        "subviews": [
+                                            {
+                                                "view_id": "id_right_live_status_bg",
+                                                "view_type": "ReadInjoyAsynImageView",
+                                                "height": {
+                                                    "type": "match_parent"
+                                                },
+                                                "width": {
+                                                    "type": "match_parent"
+                                                },
+                                                "attributes": {
+                                                    "setImageWithURLString:lineup:": [
+                                                        "$right_live_status_bg_url",
+                                                        "1"
+                                                    ],
+                                                    "setCornerRadiusArray:type:": [
+                                                        ["3", "0", "0", "3"],
+                                                        "absolutely"
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "view_id": "id_right_live_status_cell",
+                                                "view_type": "container",
+                                                "layout_type": "layout_linear",
+                                                "direction": "horizontal",
+                                                "height": {
+                                                    "type": "match_parent"
+                                                },
+                                                "width": {
+                                                    "type": "wrap_content"
+                                                },
+                                                "subviews": [
+                                                    {
+                                                        "view_id": "id_right_live_status_padding",
+                                                        "view_type": "UIView",
+                                                        "default_visible": "YES",
+                                                        "height": {
+                                                            "type": "match_parent"
+                                                        },
+                                                        "width": {
+                                                            "type": "relative",
+                                                            "value": "7"
+                                                        }
+                                                    },
+                                                    {
+                                                        "view_id": "id_right_live_status_icon",
+                                                        "view_type": "ReadInJoyGifView",
+                                                        "height": {
+                                                            "type": "absolutely",
+                                                            "value": "12"
+                                                        },
+                                                        "width": {
+                                                            "type": "absolutely",
+                                                            "value": "12"
+                                                        },
+                                                        "default_visible": "NO",
+                                                        "align_parent_center_vertical": "YES",
+                                                        "align_parent_left": "YES",
+                                                        "margin_right": "1",
+                                                        "attributes": {
+                                                            "setGifUrl:": "$right_live_status_icon_url"
+                                                        }
+                                                    },
+                                                    {
+                                                        "view_id": "id_right_live_status_text",
+                                                        "view_type": "UILabel",
+                                                        "height": {
+                                                            "type": "wrap_content"
+                                                        },
+                                                        "width": {
+                                                            "type": "wrap_content"
+                                                        },
+                                                        "align_parent_center_vertical": "YES",
+                                                        "margin_right": "10",
+                                                        "attributes": {
+                                                            "setTextColorString:": "#FFFFFF",
+                                                            "setFontSizeString:": "11",
+                                                            "setText:": "$right_live_status_text",
+                                                            "setNumberOfLinesString:": "1"
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "view_id": "id_right_live_hot_icon",
+                                        "view_type": "ReadInjoyAsynImageView",
+                                        "height": {
+                                            "type": "absolutely",
+                                            "value": "10"
+                                        },
+                                        "width": {
+                                            "type": "absolutely",
+                                            "value": "10"
+                                        },
+                                        "align_parent_center_vertical": "YES",
+                                        "margin_left": "5",
+                                        "attributes": {
+                                            "setImageWithURLString:lineup:": [
+                                                "$right_live_hot_icon_url",
+                                                "1"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "view_id": "id_right_live_hot_text",
+                                        "view_type": "UILabel",
+                                        "height": {
+                                            "type": "wrap_content"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "align_parent_center_vertical": "YES",
+                                        "margin_left": "2",
+                                        "margin_right": "8",
+                                        "attributes": {
+                                            "setTextColorString:": "#FFFFFF",
+                                            "setFontSizeString:": "11",
+                                            "setText:": "$right_live_hot_text",
+                                            "setNumberOfLinesString:": "1"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "view_id": "id_right_user_name",
+                                "view_type": "UILabel",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "margin_left": "8",
+                                "margin_right": "18",
+                                "margin_bottom": "8",
+                                "align_parent_left": "YES",
+                                "align_parent_bottom": "YES",
+                                "attributes": {
+                                    "setText:": "$right_user_name_text",
+                                    "setTextColorString:": "#FFFFFF",
+                                    "setFontSizeString:": "12",
+                                    "setNumberOfLinesString:": "1"
+                                }
+                            },
+                            {
+                                "view_id": "id_right_video_title",
+                                "view_type": "UILabel",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "align_parent_left": "YES",
+                                "align_parent_right": "YES",
+                                "margin_left": "8",
+                                "margin_right": "18",
+                                "margin_bottom": "4",
+                                "above_of_view": "id_right_user_name",
+                                "attributes": {
+                                    "setText:": "$right_video_title_text",
+                                    "setTextColorString:": "#FFFFFF",
+                                    "setBoldFontSizeString:": "16",
+                                    "setNumberOfLinesString:": "2"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "$includeComponet": "componet/separator.geojson"
+            }
+        ]
+    }
+}

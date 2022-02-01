@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="172.0dip" android:layout_height="120.0dip" android:layout_marginLeft="13.0dip" android:layout_toLeftOf="@id/bmt" android:layout_centerVertical="true">
+        <ImageView android:layout_gravity="center" android:id="@id/a0s" android:clickable="false" android:duplicateParentState="false" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/ilm" android:scaleType="fitXY" android:contentDescription="@null" />
+        <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:ellipsize="end" android:layout_gravity="center" android:id="@id/a0t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:text="@string/ppv" android:singleLine="true" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/pi" android:ellipsize="end" android:layout_gravity="center" android:id="@id/ao" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/cpe" android:singleLine="true" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:ellipsize="end" android:layout_gravity="center" android:id="@id/ac" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="QQ帐号" android:singleLine="true" />
+    </LinearLayout>
+    <ImageView android:id="@id/ae" android:background="@drawable/eww" android:layout_width="32.0dip" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:layout_centerHorizontal="true" />
+    <View android:id="@id/bmt" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_centerHorizontal="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/b3" android:layout_width="172.0dip" android:layout_height="120.0dip" android:layout_marginRight="13.0dip" android:layout_toRightOf="@id/bmt" android:layout_centerVertical="true">
+        <com.tencent.mobileqq.widget.RoundImageView android:layout_gravity="center" android:id="@id/b2" android:clickable="false" android:duplicateParentState="false" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/dl0" android:scaleType="fitXY" android:contentDescription="@null" app:qwRadius="6.0dip" />
+        <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:ellipsize="end" android:layout_gravity="center" android:id="@id/ad" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:text="@string/ppk" android:singleLine="true" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:ellipsize="end" android:layout_gravity="center" android:id="@id/ab" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/ppp" android:singleLine="true" />
+    </LinearLayout>
+</RelativeLayout>

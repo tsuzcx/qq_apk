@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto">
+    <com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView android:id="@id/f2p" android:layout_width="@dimen/ask" android:layout_height="@dimen/asj" android:layout_marginRight="1.5dip" android:scaleType="centerCrop" tencent:view_height_weight="0.71774" tencent:view_width_weight="1.0" />
+    <com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView android:id="@id/f2o" android:layout_width="@dimen/ask" android:layout_height="@dimen/asj" android:layout_marginRight="1.5dip" android:scaleType="centerCrop" tencent:view_height_weight="0.71774" tencent:view_width_weight="1.0" />
+    <com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView android:id="@id/f2q" android:layout_width="@dimen/ask" android:layout_height="@dimen/asj" android:scaleType="centerCrop" tencent:view_height_weight="0.71774" tencent:view_width_weight="1.0" />
+</LinearLayout>

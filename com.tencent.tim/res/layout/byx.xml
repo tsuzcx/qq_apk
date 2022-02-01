@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.SkinPullRefreshHeader android:id="@id/content" android:layout_width="fill_parent" android:layout_height="@dimen/auf"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/i5o" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" android:contentDescription="@string/image" />
+        <View android:layout_gravity="bottom" android:id="@id/i5k" android:layout_width="fill_parent" android:layout_height="66.0dip" />
+        <TextView android:textSize="11.0dip" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="end|bottom|center" android:id="@id/m5k" android:background="@drawable/hio" android:layout_width="30.0dip" android:layout_height="17.0dip" android:layout_marginRight="6.0dip" android:layout_marginBottom="6.0dip" android:text="@string/d55" />
+        <FrameLayout android:layout_gravity="bottom" android:layout_width="fill_parent" android:layout_height="@dimen/auf">
+            <ProgressBar android:layout_gravity="center" android:id="@id/i5n" android:visibility="invisible" android:layout_width="18.0dip" android:layout_height="18.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading5" android:indeterminateBehavior="repeat" />
+        </FrameLayout>
+        <TextView android:textSize="14.0dip" android:textColor="@color/skin_over_header" android:gravity="center" android:layout_gravity="bottom" android:id="@id/i5m" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/auf" android:text="@string/hqh" />
+    </FrameLayout>
+</com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.SkinPullRefreshHeader>

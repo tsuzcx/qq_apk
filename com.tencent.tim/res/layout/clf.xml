@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/bjo" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:padding="@dimen/bjo" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:id="@id/mz0" android:layout_width="@dimen/bjq" android:layout_height="@dimen/bjq" android:scaleType="centerCrop" android:contentDescription="@string/x4z" />
+                <TextView android:textSize="16.0sp" android:textColor="@color/aii" android:ellipsize="end" android:gravity="center|left" android:id="@id/myx" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:maxLines="3" android:layout_toRightOf="@id/mz0" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <RelativeLayout android:background="@drawable/e_w" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/adl">
+                <TextView android:id="@id/myu" android:text="@string/x8a" style="@style/adm" />
+                <TextView android:id="@id/myt" android:layout_toRightOf="@id/myu" style="@style/adk" />
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/adl">
+                <TextView android:id="@id/mz2" android:text="@string/x8c" style="@style/adm" />
+                <TextView android:id="@id/mz1" android:layout_toRightOf="@id/mz2" style="@style/adk" />
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/adl">
+                <TextView android:id="@id/myz" android:text="@string/x8d" style="@style/adm" />
+                <TextView android:id="@id/myy" android:layout_toRightOf="@id/myz" style="@style/adk" />
+            </RelativeLayout>
+            <RelativeLayout android:background="@drawable/e_i" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/adl">
+                <TextView android:id="@id/myw" android:text="@string/x8b" style="@style/adm" />
+                <TextView android:id="@id/myv" android:layout_toRightOf="@id/myw" style="@style/adk" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</merge>

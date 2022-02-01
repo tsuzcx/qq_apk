@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="200.0dip" android:layout_height="200.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.location.window.FloatMapWidget android:id="@id/lrc" android:background="@drawable/k3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

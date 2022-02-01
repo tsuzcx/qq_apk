@@ -1,0 +1,401 @@
+{"style": [
+    {
+      "animation": 2,
+      "asset_id": {
+        "frame_black": 49321,
+        "frame_blackmax": 49325,
+        "frame_blackmin": 49323,
+        "frame_blacksmall": 49327,
+        "frame_white": 49320,
+        "frame_whitemax": 49324,
+        "frame_whitemin": 49322,
+        "frame_whitesmall": 49326,
+        "image_black": 49313,
+        "image_blackmax": 49317,
+        "image_blackmin": 49315,
+        "image_blacksmall": 49319,
+        "image_white": 49312,
+        "image_whitemax": 49316,
+        "image_whitemin": 49314,
+        "image_whitesmall": 49318
+      },
+      "auth": 0,
+      "category": null,
+      "custom_auth": 4,
+      "frame_black": "http://appimg.qq.com/club/mobile/profile/template/labeltwob6_v_1.png",
+      "frame_blackmax": "http://appimg.qq.com/club/mobile/profile/template/labeltwob7_v_1.png",
+      "frame_blackmin": "http://appimg.qq.com/club/mobile/profile/template/labeltwob4_v_1.png",
+      "frame_blacksmall": "http://appimg.qq.com/club/mobile/profile/template/labeltwob3_v_1.png",
+      "frame_white": "http://appimg.qq.com/club/mobile/profile/template/labeltwow6_v_1.png",
+      "frame_whitemax": "http://appimg.qq.com/club/mobile/profile/template/labeltwow7_v_1.png",
+      "frame_whitemin": "http://appimg.qq.com/club/mobile/profile/template/labeltwow4_v_1.png",
+      "frame_whitesmall": "http://appimg.qq.com/club/mobile/profile/template/labeltwow3_v_1.png",
+      "hide": 0,
+      "id": 7,
+      "image_black": "http://appimg.qq.com/club/mobile/profile/template/labeloneb6_v_1.png",
+      "image_blackmax": "http://appimg.qq.com/club/mobile/profile/template/labeloneb7_v_1.png",
+      "image_blackmin": "http://appimg.qq.com/club/mobile/profile/template/labeloneb4_v_1.png",
+      "image_blacksmall": "http://appimg.qq.com/club/mobile/profile/template/labeloneb3_v_1.png",
+      "image_white": "http://appimg.qq.com/club/mobile/profile/template/labelonew6_v_1.png",
+      "image_whitemax": "http://appimg.qq.com/club/mobile/profile/template/labelonew7_v_1.png",
+      "image_whitemin": "http://appimg.qq.com/club/mobile/profile/template/labelonew4_v_1.png",
+      "image_whitesmall": "http://appimg.qq.com/club/mobile/profile/template/labelonew3_v_1.png",
+      "limitefree_btime": 1412067601,
+      "limitefree_etime": 1721313887,
+      "limitefree_type": 0,
+      "name": "标签模板",
+      "order": 100,
+      "sc_style": [
+        {
+          "qq_version": "5.2",
+          "sc_id": "10001-26-6"
+        },
+        {
+          "qq_version": "5.3",
+          "sc_id": "10001-26-6"
+        },
+        {
+          "qq_version": "5.4",
+          "sc_id": "10001-26-6"
+        },
+        {
+          "qq_version": "5.5",
+          "sc_id": "10001-26-6"
+        },
+        {
+          "qq_version": "5.6",
+          "sc_id": "10001-26-6"
+        }
+      ],
+      "tag": 0,
+      "tag_btime": 1407749300,
+      "tag_etime": 1407749300,
+      "template_btime": 1407749300,
+      "template_etime": 1723368500,
+      "user_order": null,
+      "user_type": null
+    },
+    {
+      "animation": 1,
+      "asset_id": {
+        "image_black": 49329,
+        "image_blackmax": 49333,
+        "image_blackmin": 49331,
+        "image_blacksmall": 49335,
+        "image_white": 49328,
+        "image_whitemax": 49332,
+        "image_whitemin": 49330,
+        "image_whitesmall": 49334
+      },
+      "auth": 0,
+      "category": null,
+      "custom_auth": 4,
+      "hide": 0,
+      "id": 8,
+      "image_black": "http://appimg.qq.com/club/mobile/profile/template/ebriefb6_v_2.png",
+      "image_blackmax": "http://appimg.qq.com/club/mobile/profile/template/ebriefb7_v_2.png",
+      "image_blackmin": "http://appimg.qq.com/club/mobile/profile/template/ebriefb4_v_1.png",
+      "image_blacksmall": "http://appimg.qq.com/club/mobile/profile/template/ebriefb3_v_2.png",
+      "image_white": "http://appimg.qq.com/club/mobile/profile/template/ebriefw6_v_2.png",
+      "image_whitemax": "http://appimg.qq.com/club/mobile/profile/template/ebriefw7_v_2.png",
+      "image_whitemin": "http://appimg.qq.com/club/mobile/profile/template/ebriefw4_v_1.png",
+      "image_whitesmall": "http://appimg.qq.com/club/mobile/profile/template/ebriefw3_v_2.png",
+      "limitefree_btime": 1411871373,
+      "limitefree_etime": 1721313887,
+      "limitefree_type": 0,
+      "name": "极简模板",
+      "order": 10,
+      "sc_style": [
+        {
+          "qq_version": "5.3",
+          "sc_id": "10001-26-7"
+        },
+        {
+          "qq_version": "5.4",
+          "sc_id": "10001-26-7"
+        },
+        {
+          "qq_version": "5.5",
+          "sc_id": "10001-26-7"
+        },
+        {
+          "qq_version": "5.6",
+          "sc_id": "10001-26-7"
+        }
+      ],
+      "tag": 0,
+      "tag_btime": 1411871373,
+      "tag_etime": 1411871373,
+      "template_btime": 1411871373,
+      "template_etime": 1727490573,
+      "user_order": null,
+      "user_type": null
+    },
+    {
+      "animation": 0,
+      "asset_id": {
+        "image_black": 55917,
+        "image_blackmax": 55921,
+        "image_blackmin": 55919,
+        "image_blacksmall": 55923,
+        "image_white": 55916,
+        "image_whitemax": 55920,
+        "image_whitemin": 55918,
+        "image_whitesmall": 55922
+      },
+      "auth": 0,
+      "category": null,
+      "custom_auth": 4,
+      "hide": 0,
+      "id": 1,
+      "image_black": "http://appimg.qq.com/club/mobile/profile/template/qingxin54b640x1136_v_1.png",
+      "image_blackmax": "http://appimg.qq.com/club/mobile/profile/template/qingxin54b720x1280_v_1.png",
+      "image_blackmin": "http://appimg.qq.com/club/mobile/profile/template/qingxin54b480x800_v_1.png",
+      "image_blacksmall": "http://appimg.qq.com/club/mobile/profile/template/qingxin54b360x640_v_1.png",
+      "image_white": "http://appimg.qq.com/club/mobile/profile/template/qingxin54w640x1136_v_1.png",
+      "image_whitemax": "http://appimg.qq.com/club/mobile/profile/template/qingxin54w720x1280_v_1.png",
+      "image_whitemin": "http://appimg.qq.com/club/mobile/profile/template/qingxin54w480x800_v_1.png",
+      "image_whitesmall": "http://appimg.qq.com/club/mobile/profile/template/qingxin54w360x640_v_1.png",
+      "limitefree_btime": 1407834000,
+      "limitefree_etime": 1720514094,
+      "limitefree_type": 0,
+      "name": "清新模板",
+      "order": 4,
+      "sc_style": [
+        {
+          "qq_version": "5.1",
+          "sc_id": "10001-26-1"
+        },
+        {
+          "qq_version": "5.2",
+          "sc_id": "10001-26-1"
+        },
+        {
+          "qq_version": "5.3",
+          "sc_id": "10001-26-1"
+        },
+        {
+          "qq_version": "5.4",
+          "sc_id": "10001-26-8"
+        },
+        {
+          "qq_version": "5.5",
+          "sc_id": "10001-26-8"
+        },
+        {
+          "qq_version": "5.6",
+          "sc_id": "10001-26-8"
+        }
+      ],
+      "tag": 0,
+      "tag_btime": 1417522653,
+      "tag_etime": 1417522653,
+      "template_btime": 1417522653,
+      "template_etime": 1720514094,
+      "user_order": null,
+      "user_type": null
+    },
+    {
+      "animation": 0,
+      "asset_id": "",
+      "auth": 0,
+      "category": null,
+      "custom_auth": 4,
+      "hide": 1,
+      "id": 5,
+      "limitefree_btime": 1417523034,
+      "limitefree_etime": 1721313887,
+      "limitefree_type": 0,
+      "name": "游戏模板",
+      "order": 3,
+      "sc_style": [
+        {
+          "qq_version": "5.1",
+          "sc_id": "10001-26-4"
+        },
+        {
+          "qq_version": "5.2",
+          "sc_id": "10001-26-4"
+        },
+        {
+          "qq_version": "5.3",
+          "sc_id": "10001-26-4"
+        },
+        {
+          "qq_version": "5.4",
+          "sc_id": "10001-26-10"
+        },
+        {
+          "qq_version": "5.5",
+          "sc_id": "10001-26-10"
+        },
+        {
+          "qq_version": "5.6",
+          "sc_id": "10001-26-10"
+        }
+      ],
+      "tag": 0,
+      "tag_btime": 1417523034,
+      "tag_etime": 1417523034,
+      "template_btime": 1417523034,
+      "template_etime": 1721313565,
+      "user_order": null,
+      "user_type": null
+    },
+    {
+      "animation": 0,
+      "asset_id": {
+        "image_black": 48003,
+        "image_blackmax": 49169,
+        "image_blackmin": 48005,
+        "image_blacksmall": 48007,
+        "image_white": 48002,
+        "image_whitemax": 49168,
+        "image_whitemin": 48004,
+        "image_whitesmall": 48006
+      },
+      "auth": 0,
+      "category": null,
+      "custom_auth": 4,
+      "hide": 0,
+      "id": 6,
+      "image_black": "http://appimg.qq.com/club/mobile/profile/template/photob6_v_7.png",
+      "image_blackmax": "http://appimg.qq.com/club/mobile/profile/template/photob7_v_7.png",
+      "image_blackmin": "http://appimg.qq.com/club/mobile/profile/template/photob4_v_7.png",
+      "image_blacksmall": "http://appimg.qq.com/club/mobile/profile/template/photob3_v_7.png",
+      "image_white": "http://appimg.qq.com/club/mobile/profile/template/photow6_v_7.png",
+      "image_whitemax": "http://appimg.qq.com/club/mobile/profile/template/photow7_v_7.png",
+      "image_whitemin": "http://appimg.qq.com/club/mobile/profile/template/photow4_v_7.png",
+      "image_whitesmall": "http://appimg.qq.com/club/mobile/profile/template/photow3_v_7.png",
+      "limitefree_btime": 1405694685,
+      "limitefree_etime": 1721313885,
+      "limitefree_type": 0,
+      "name": "社交模板",
+      "order": 2,
+      "sc_style": [
+        {
+          "qq_version": "5.1",
+          "sc_id": "10001-26-5"
+        },
+        {
+          "qq_version": "5.2",
+          "sc_id": "10001-26-5"
+        },
+        {
+          "qq_version": "5.3",
+          "sc_id": "10001-26-5"
+        },
+        {
+          "qq_version": "5.4",
+          "sc_id": "10001-26-11"
+        },
+        {
+          "qq_version": "5.5",
+          "sc_id": "10001-26-11"
+        },
+        {
+          "qq_version": "5.6",
+          "sc_id": "10001-26-11"
+        }
+      ],
+      "tag": 0,
+      "tag_btime": 1418372348,
+      "tag_etime": 1418372348,
+      "template_btime": 1418372348,
+      "template_etime": 1721313887,
+      "user_order": null,
+      "user_type": null
+    },
+    {
+      "animation": 0,
+      "asset_id": "",
+      "auth": 0,
+      "category": null,
+      "custom_auth": 4,
+      "hide": 1,
+      "id": 4,
+      "limitefree_btime": 1417522802,
+      "limitefree_etime": 1417522802,
+      "limitefree_type": 0,
+      "name": "简约模板",
+      "order": 1,
+      "sc_style": [
+        {
+          "qq_version": "5.1",
+          "sc_id": "10001-26-2"
+        },
+        {
+          "qq_version": "5.2",
+          "sc_id": "10001-26-2"
+        },
+        {
+          "qq_version": "5.3",
+          "sc_id": "10001-26-2"
+        },
+        {
+          "qq_version": "5.4",
+          "sc_id": "10001-26-9"
+        },
+        {
+          "qq_version": "5.5",
+          "sc_id": "10001-26-9"
+        },
+        {
+          "qq_version": "5.6",
+          "sc_id": "10001-26-9"
+        }
+      ],
+      "tag": 0,
+      "tag_btime": 1417522802,
+      "tag_etime": 1417522802,
+      "template_btime": 1417522802,
+      "template_etime": 1720514546,
+      "user_order": null,
+      "user_type": null
+    },
+    {
+      "animation": 1,
+      "asset_id": {
+        "image_black": 59107,
+        "image_blackmax": 59109,
+        "image_blackmin": 59108,
+        "image_blacksmall": 59297,
+        "image_white": 59138,
+        "image_whitemax": 59056,
+        "image_whitemin": 59139,
+        "image_whitesmall": 59296
+      },
+      "auth": 0,
+      "category": null,
+      "custom_auth": 4,
+      "hide": 0,
+      "id": 9,
+      "image_black": "http://appimg.qq.com/club/mobile/profile/template/w5_b_v_4.png",
+      "image_blackmax": "http://appimg.qq.com/club/mobile/profile/template/w6_b_v_4.png",
+      "image_blackmin": "http://appimg.qq.com/club/mobile/profile/template/w4_b_v_4.png",
+      "image_blacksmall": "http://appimg.qq.com/club/mobile/profile/template/w3_bxd_v_2.png",
+      "image_white": "http://appimg.qq.com/club/mobile/profile/template/w5_t1_v_2.png",
+      "image_whitemax": "http://appimg.qq.com/club/mobile/profile/template/w6_t_v_4.png",
+      "image_whitemin": "http://appimg.qq.com/club/mobile/profile/template/w4_t1_v_2.png",
+      "image_whitesmall": "http://appimg.qq.com/club/mobile/profile/template/w3_xd_v_2.png",
+      "limitefree_btime": 1437729008,
+      "limitefree_etime": 1879578608,
+      "limitefree_type": 0,
+      "name": "小店模板",
+      "order": 0,
+      "sc_style": [
+        {
+          "qq_version": "5.9",
+          "sc_id": "10001-26-12"
+        }
+      ],
+      "tag": 0,
+      "tag_btime": 1437729008,
+      "tag_etime": 1879578608,
+      "template_btime": 1437729008,
+      "template_etime": 1879578608,
+      "user_order": null,
+      "user_type": null
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.qqmail.activity.media.QMMediaBottom android:layout_gravity="bottom" android:layout_alignParentBottom="true" style="@style/afj"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:enabled="false" android:layout_gravity="center" android:id="@id/km9" android:minWidth="124.0dip" android:text="@string/wbi" style="@style/aa4" />
+</com.tencent.qqmail.activity.media.QMMediaBottom>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/it8" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/e4a" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerInParent="true">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/f06" android:background="@drawable/g51" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="4.0dip" android:scaleType="centerInside" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/a8a" android:gravity="center_vertical" android:id="@id/f0q" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/sfm" android:contentDescription="@string/sg5" />
+        <com.qzone.homepage.ui.component.newpanel.SafeTextView android:textSize="@dimen/tg" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center|right|top" android:id="@id/f0n" android:background="@drawable/g50" android:visibility="gone" android:layout_width="9.0dip" android:layout_height="9.0dip" android:layout_marginLeft="2.0dip" android:layout_marginTop="-8.5dip" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.wifisdk.ui.view.WifiCommonView android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/jr5" android:layout_width="245.0dip" android:layout_height="165.0dip" android:layout_marginTop="75.0dip" android:src="@drawable/h5m" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="28.0sp" android:textColor="@color/aj7" android:id="@id/jr_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="50.0dip" android:layout_below="@id/jr5" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="20.0sp" android:textColor="@color/aj7" android:id="@id/jr4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_below="@id/jr_" android:layout_centerHorizontal="true" />
+    <FrameLayout android:id="@id/jqv" android:layout_width="238.0dip" android:layout_height="40.0dip" android:layout_marginTop="65.0dip" android:layout_below="@id/jr4" android:layout_centerHorizontal="true">
+        <TextView android:textSize="@dimen/b0f" android:textColor="@color/aj5" android:gravity="center" android:id="@id/jr2" android:background="@drawable/b6g" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ProgressBar android:id="@id/jr7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:progressDrawable="@drawable/b6h" style="?android:progressBarStyleHorizontal" />
+        <TextView android:textSize="@dimen/b0f" android:textColor="@color/aj5" android:gravity="center" android:id="@id/jr8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+    <TextView android:textSize="11.0sp" android:textColor="#ff8c8c8c" android:layout_gravity="center_horizontal" android:id="@id/jr9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/i26" android:layout_below="@id/jqv" android:layout_centerHorizontal="true" />
+    <ImageView android:layout_width="89.0dip" android:layout_height="17.0dip" android:layout_marginBottom="25.0dip" android:src="@drawable/h5n" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</com.wifisdk.ui.view.WifiCommonView>

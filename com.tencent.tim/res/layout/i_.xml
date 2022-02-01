@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2" android:id="@id/k8u" android:background="@drawable/skin_group_list_sub_entry" android:paddingLeft="15.0dip" android:paddingTop="3.0dip" android:paddingBottom="3.0dip" android:focusable="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <RelativeLayout android:id="@id/icx" android:background="@drawable/jj" android:layout_width="fill_parent" android:layout_height="66.0dip">
+        <CheckBox android:id="@id/axa" android:background="@drawable/nj" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_marginLeft="15.0dip" android:checked="false" android:button="@null" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <FrameLayout android:gravity="center_vertical" android:id="@id/head" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="15.0dip" android:layout_toRightOf="@id/axa" android:layout_centerVertical="true">
+            <ImageView android:id="@id/icon" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" android:contentDescription="@null" />
+            <TextView android:textSize="18.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/k8l" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </FrameLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="35.0dip" android:layout_toRightOf="@id/head" android:layout_centerVertical="true">
+            <TextView android:textSize="16.0sp" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/f5e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/skin_gray3_item" android:ellipsize="end" android:id="@id/k9z" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" />
+        </LinearLayout>
+        <View android:id="@id/bll" android:background="#80ffffff" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+</FrameLayout>

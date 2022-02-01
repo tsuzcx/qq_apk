@@ -1,0 +1,114 @@
+@charset "UTF-8";
+
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-touch-callout: none;
+}
+.QMUIEditor {
+    position: relative;
+    padding: 16px 16px 20px;
+    min-height: 100%;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    word-break: break-word;
+    outline: none;
+    -webkit-user-select: auto !important;
+    user-select: auto !important;
+    -webkit-user-modify: read-write !important;
+    font-size: 17px;
+    line-height: 22px;
+    color: #000000;
+}
+.QMUIEditor *:last-child {
+    margin-bottom: 0;
+}
+.QMUIEditor_empty[placeholder]:before {
+    content: attr(placeholder);
+    opacity: 0.5;
+    position: absolute;
+}
+.QMUIEditor font[size="3"]{
+    font-size: 15px;
+}
+.QMUIEditor,
+.QMUIEditor font[size="4"]{
+    font-size: 17px;
+}
+.QMUIEditor font[size="5"]{
+    font-size: 21px;
+}
+.QMUIEditor font[size="6"]{
+    font-size: 28px;
+}
+
+.QMUIEditor h1,
+.QMUIEditor h2,
+.QMUIEditor h3,
+.QMUIEditor h4,
+.QMUIEditor h5,
+.QMUIEditor h6 {
+    margin: 0 0 10px;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: bold;
+}
+.QMUIEditor p, .QMUIEditor div {
+    margin: 0 0 10px;
+}
+.QMUIEditor img {
+    max-width: 100%;
+    height: auto;
+}
+.QMUIEditor blockquote {
+    margin: 0 0 10px;
+    padding: 14px 16px;
+    color: #959595;
+    background-color: #f5f6fa;
+    border-left: 3px solid #d8d8d8;
+}
+.QMUIEditor ul {
+    margin: 0 0 10px;
+    padding: 0px;
+}
+.QMUIEditor ul {
+    list-style-type: none;
+}
+.QMUIEditor ul li {
+    position: relative;
+    margin-bottom: 5px;
+    padding: 0px 0px 0px 25px;
+}
+.QMUIEditor ul li:last-child {
+    margin-bottom: 0;
+}
+.QMUIEditor ul li:before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    background-color: #6c6c6c;
+    border-radius: 50%;
+    position: absolute;
+    top: 0.56em;
+    left: 5px;
+}
+.QMUIEditor blockquote ul li {
+    padding-left: 16px;
+}
+.QMUIEditor blockquote ul li:before {
+    left: 0;
+    background-color: #959595;
+}
+
+/** hack掉系统产生的奇怪span **/
+.QMUIEditor span[style] {
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    font-size: inherit !important;
+    color: inherit !important;
+}

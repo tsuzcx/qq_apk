@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/hea" android:background="@drawable/g18" android:visibility="invisible" android:clickable="true" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:gravity="center_vertical" android:id="@id/hed" android:visibility="visible" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="12.0dip" />
+    <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/heb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:maxWidth="220.0dip" android:text="你已经30天未更换头像装扮" android:maxLines="1" />
+    <View android:id="@id/hec" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    <TextView android:textSize="12.0dip" android:textColor="#ffa64800" android:gravity="center" android:id="@id/hqw" android:background="@drawable/as_" android:layout_width="72.0dip" android:layout_height="30.0dip" android:layout_marginRight="12.0dip" android:text="@string/rpq" />
+</LinearLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/e2a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/b9w" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.av.ui.chatroom.VideoChatRoomListView android:id="@android:id/list" android:scrollbars="none" android:fadingEdgeLength="28.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/b8r" android:layout_marginLeft="@dimen/a4l" android:layout_marginRight="@dimen/a4m" android:layout_marginBottom="10.0dip" android:listSelector="@android:color/transparent" android:stackFromBottom="true" android:transcriptMode="normal" android:cacheColorHint="@android:color/transparent" android:divider="@null" android:dividerHeight="6.0dip" android:requiresFadingEdge="vertical" />
+        <RelativeLayout android:id="@id/dmo" android:layout_width="fill_parent" android:layout_height="@dimen/b8q" android:layout_marginBottom="5.0dip">
+            <EditText android:textSize="@dimen/a4i" android:textColor="@android:color/white" android:textColorHint="#80ffffff" android:gravity="center_vertical" android:id="@id/dmg" android:background="@drawable/vg" android:paddingLeft="@dimen/a4g" android:paddingRight="@dimen/b8u" android:layout_width="fill_parent" android:layout_height="@dimen/a4e" android:layout_marginLeft="@dimen/a4l" android:layout_marginRight="@dimen/a4l" android:hint="@string/dab" android:singleLine="true" android:maxLength="500" android:lineSpacingExtra="0.0dip" android:inputType="text" android:imeOptions="actionSend" android:textCursorDrawable="@drawable/m_" />
+            <ImageView android:id="@id/a75" android:clickable="true" android:layout_width="@dimen/a4e" android:layout_height="@dimen/a4e" android:src="@drawable/skin_aio_panel_emotion_simple_nor" android:scaleType="centerInside" android:layout_alignRight="@id/dmg" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/bvt" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/b8p" />
+</LinearLayout>

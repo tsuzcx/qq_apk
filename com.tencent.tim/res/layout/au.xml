@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/i3_" android:paddingLeft="16.0dip" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginTop="8.0dip">
+        <TextView android:textSize="14.0dip" android:textColor="@color/skin_black_theme_version2" android:ellipsize="end" android:id="@id/i38" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="180.0dip" android:text="@string/gw" android:singleLine="true" android:includeFontPadding="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <RelativeLayout android:id="@id/ho" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray_group_item" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/hp" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="180.0dip" android:text="@string/gu" android:singleLine="true" android:includeFontPadding="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/i3" android:layout_width="9.0dip" android:layout_height="15.0dip" android:layout_marginLeft="4.0dip" android:src="@drawable/skin_icon_arrow_right_normal" android:layout_toRightOf="@id/hp" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <com.tencent.widget.HorizontalListView android:id="@id/eo2" android:paddingLeft="16.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" />
+    <com.tencent.widget.SwipListView android:id="@id/i31" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@null" android:divider="@null" />
+</merge>

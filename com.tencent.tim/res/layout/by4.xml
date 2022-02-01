@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/im8" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/idl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="55.0dip" android:layout_alignParentBottom="true">
+        <View android:id="@id/ioe" android:background="@drawable/skin_setting_strip_line_theme_version2" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_alignParentTop="true" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/ee_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_centerVertical="true">
+            <CheckBox android:id="@id/as2" android:background="@drawable/nj" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" android:button="@null" />
+            <TextView android:textSize="@dimen/ayo" android:textColor="@color/skin_blue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:text="@string/a7k" />
+        </LinearLayout>
+    </RelativeLayout>
+    <com.tencent.mobileqq.widget.PinnedDividerListView android:id="@id/atu" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" android:dividerHeight="0.0dip" android:layout_above="@id/idl" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <com.tencent.mobileqq.widget.IndexView android:id="@id/djh" android:background="@drawable/o8" android:paddingLeft="8.0dip" android:paddingTop="8.0dip" android:paddingRight="8.0dip" android:paddingBottom="8.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="5.0dip" android:layout_marginRight="2.0dip" android:layout_marginBottom="5.0dip" android:layout_above="@id/idl" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/bwi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="16.0dip" android:textColor="@color/ia" android:gravity="center" android:id="@id/k9v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" android:text="@string/hd8" android:drawableTop="@drawable/daz" android:drawablePadding="20.0dip" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/skin_blue" android:id="@id/kbw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18.0dip" android:text="@string/a9q" android:layout_below="@id/k9v" android:layout_centerHorizontal="true" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/jzs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ProgressBar android:id="@id/d7z" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="56.0dip" android:layout_marginRight="56.0dip" android:layout_marginBottom="15.0dip" android:maxHeight="4.0dip" android:max="100" android:progressDrawable="@drawable/am" android:minHeight="4.0dip" android:layout_centerInParent="true" style="?android:progressBarStyleHorizontal" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/j4" android:id="@id/efr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:text="@string/t_d" android:layout_above="@id/d7z" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</RelativeLayout>

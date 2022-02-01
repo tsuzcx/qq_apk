@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/cfi" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="60.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginTop="20.0dip">
+        <ImageView android:id="@id/aot" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ee5" />
+        <dov.com.qq.im.capture.view.PressScaleTextView android:textSize="17.0dip" android:textColor="@color/if" android:gravity="center" android:id="@id/cancel" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/yq3" android:shadowColor="@color/by" android:shadowRadius="3.0" />
+    </LinearLayout>
+    <Button android:id="@id/at2" android:background="@drawable/d1" android:focusable="true" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginTop="7.5dip" android:layout_marginRight="7.5dip" android:layout_alignParentRight="true" android:contentDescription="@string/qd_" />
+    <Button android:id="@id/ccr" android:background="@drawable/a88" android:focusable="true" android:layout_width="49.0dip" android:layout_height="49.0dip" android:layout_marginTop="7.5dip" android:layout_toLeftOf="@id/at2" android:contentDescription="@string/qdd" />
+    <Button android:id="@id/bdd" android:background="@drawable/a8_" android:focusable="true" android:visibility="gone" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginTop="7.5dip" android:layout_toLeftOf="@id/ccr" android:contentDescription="@string/qda" />
+</RelativeLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/chat_item_content_layout" android:focusable="false" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/icon"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/e97" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/c_t" android:paddingLeft="@dimen/t7" android:paddingTop="@dimen/t8" android:paddingRight="@dimen/t7" android:paddingBottom="@dimen/t8" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mobileqq.filemanager.widget.AsyncImageView android:id="@id/aud" android:layout_width="@dimen/t6" android:layout_height="@dimen/t6" android:layout_marginRight="10.0dip" android:scaleType="centerCrop" />
+            <com.tencent.mobileqq.troop.widget.EllipsizingTextView android:textSize="16.0dip" android:textColor="@color/skin_chat_buble" android:ellipsize="middle" android:id="@id/auf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:singleLine="false" android:layout_toRightOf="@id/aud" />
+            <TextView android:textSize="12.0dip" android:textColor="#ff777777" android:id="@id/auc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignLeft="@id/auf" android:layout_alignBottom="@id/aud" android:alpha="0.75" />
+            <View android:id="@id/kwz" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_toRightOf="@id/auc" />
+            <TextView android:textSize="12.0dip" android:textColor="#ff777777" android:gravity="right" android:id="@id/auh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toRightOf="@id/kwz" android:layout_alignBottom="@id/aud" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <ProgressBar android:id="@id/aug" android:paddingLeft="@dimen/t7" android:paddingRight="@dimen/t7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/t9" android:maxHeight="4.0dip" android:progress="30" android:progressDrawable="@drawable/am" android:minHeight="4.0dip" android:layout_alignBottom="@id/c_t" style="?android:progressBarStyleHorizontal" />
+    </RelativeLayout>
+</RelativeLayout>

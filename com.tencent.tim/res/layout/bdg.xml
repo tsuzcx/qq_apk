@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@drawable/aoz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/h5n" android:visibility="gone" android:layout_width="36.0dip" android:layout_height="36.0dip" android:scaleType="fitCenter" android:contentDescription="@null" />
+    <com.tencent.mobileqq.widget.AnimationView android:layout_gravity="right" android:id="@id/h5f" android:layout_width="70.0dip" android:layout_height="70.0dip" android:scaleType="fitXY" android:contentDescription="@null" />
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="13.0dip" android:textColor="#ff333333" android:ellipsize="end" android:id="@id/h5p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:maxEms="6" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/h5i" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:src="@drawable/skin_tips_dot" android:scaleType="center" android:contentDescription="@null" />
+        </LinearLayout>
+        <TextView android:textSize="11.0dip" android:textColor="#ffbbbbbb" android:gravity="center" android:id="@id/h5h" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" />
+    </LinearLayout>
+</FrameLayout>

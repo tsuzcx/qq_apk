@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="296.0dip" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:layout_width="fill_parent" android:layout_height="80.0dip" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/n12" android:background="@drawable/b6n" android:paddingLeft="30.0dip" android:paddingRight="30.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center" android:background="@drawable/igl" android:layout_width="78.0dip" android:layout_height="78.0dip" android:layout_marginTop="28.0dip" />
+            <TextView android:textSize="17.0dip" android:textColor="#ff03081a" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/xyl" />
+            <TextView android:textSize="14.0dip" android:textColor="#ff03081a" android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:layout_marginBottom="20.0dip" android:text="@string/xyi" android:lineSpacingExtra="3.0dip" />
+            <TextView android:textSize="17.0dip" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center" android:id="@id/in0" android:background="@drawable/i5" android:layout_width="fill_parent" android:layout_height="41.0dip" android:layout_marginBottom="33.0dip" android:text="@string/xyk" />
+        </LinearLayout>
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/nzd" android:background="@drawable/b6n" android:paddingLeft="30.0dip" android:paddingRight="30.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center" android:id="@id/a2o" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginTop="32.0dip" />
+            <TextView android:textSize="14.0dip" android:textColor="#ff03081a" android:ellipsize="end" android:layout_gravity="center" android:id="@id/f97" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" android:singleLine="true" />
+            <TextView android:textSize="12.0dip" android:textColor="#ff878b99" android:ellipsize="end" android:gravity="center" android:layout_gravity="center" android:id="@id/nwb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-1.0dip" android:text="" android:singleLine="true" />
+            <TextView android:textSize="17.0dip" android:textColor="#ff03081a" android:layout_gravity="center" android:id="@id/mtd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginBottom="16.0dip" android:text="" />
+            <com.tencent.mobileqq.extendfriend.wiget.LabelLayout android:layout_gravity="center" android:id="@id/gfz" android:layout_width="@dimen/bq1" android:layout_height="wrap_content" />
+            <com.tencent.mobileqq.extendfriend.wiget.LabelLayout android:layout_gravity="center" android:id="@id/gg0" android:layout_width="@dimen/bq1" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" />
+            <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center" android:id="@id/nvt" android:background="@drawable/i5" android:layout_width="fill_parent" android:layout_height="41.0dip" android:layout_marginTop="22.0dip" android:layout_marginBottom="25.0dip" android:text="@string/xyj" />
+        </LinearLayout>
+        <View android:id="@id/o4f" android:background="#88000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+    <Button android:layout_gravity="center" android:id="@id/az1" android:background="@drawable/igk" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="40.0dip" />
+</LinearLayout>

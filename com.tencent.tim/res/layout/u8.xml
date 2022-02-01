@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/fmy" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="18.0dip" android:textColor="#ff4a4a4a" android:gravity="center" android:id="@id/k6_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="90.0dip" android:layout_centerHorizontal="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/da8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="90.0dip" android:layout_marginTop="32.0dip" android:layout_marginRight="90.0dip" android:layout_below="@id/k6_" android:layout_centerHorizontal="true">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_width="31.0dip" android:layout_height="31.0dip" android:src="@drawable/eqb" android:scaleType="fitCenter" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/om" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="@string/p3k" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_width="31.0dip" android:layout_height="31.0dip" android:src="@drawable/eqc" android:scaleType="fitCenter" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/om" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="@string/p3d" />
+        </LinearLayout>
+    </LinearLayout>
+    <Button android:id="@id/afy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="75.0dip" android:layout_marginRight="10.0dip" android:text="@string/p3c" android:layout_below="@id/da8" style="@style/bd" />
+</RelativeLayout>

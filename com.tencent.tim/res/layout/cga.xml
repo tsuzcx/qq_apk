@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/n_0" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:background="@drawable/hg8" android:layout_width="@dimen/bc1" android:layout_height="@dimen/bc1">
+        <com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout android:layout_gravity="center" android:id="@id/nri" android:layout_width="@dimen/bby" android:layout_height="@dimen/bby" android:layout_marginLeft="15.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="15.0dip" app:qqArMapGuideRadius="3">
+            <ImageView android:id="@id/n75" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+            <FrameLayout android:id="@id/mx0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <ImageView android:layout_gravity="center" android:id="@id/n77" android:visibility="gone" android:layout_width="37.0dip" android:layout_height="37.0dip" android:src="@drawable/hc7" />
+                <ImageView android:layout_gravity="center" android:id="@id/n76" android:visibility="gone" android:layout_width="37.0dip" android:layout_height="37.0dip" android:src="@drawable/wx" />
+            </FrameLayout>
+        </com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout>
+    </FrameLayout>
+    <TextView android:textSize="11.0sp" android:ellipsize="end" android:gravity="center" android:layout_gravity="center" android:id="@id/o9h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-7.0dip" android:maxLines="1" />
+</LinearLayout>

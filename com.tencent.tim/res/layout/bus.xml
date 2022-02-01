@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/l33" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="8.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.proxy.feedcomponent.widget.AsynAutoGifImageView android:id="@id/cw3" android:background="@color/a81" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:scaleType="fitXY" android:layout_weight="1.0" />
+    <RelativeLayout android:id="@id/b95" android:background="#fff8f8f8" android:paddingLeft="11.25dip" android:paddingTop="6.5dip" android:paddingBottom="16.875dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <TextView android:textSize="18.0sp" android:textColor="#ff303030" android:ellipsize="end" android:id="@id/jh4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/sgp" android:singleLine="true" />
+        <TextView android:textSize="12.0sp" android:textColor="#ff707070" android:id="@id/jh3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="@string/sgu" android:singleLine="false" android:layout_below="@id/jh4" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/a_h" android:gravity="center" android:id="@id/aml" android:background="@drawable/azq" android:layout_width="115.875dip" android:layout_height="33.75dip" android:text="@string/sh2" android:layout_alignParentBottom="true" />
+        <TextView android:textSize="30.0sp" android:textColor="#ffcf0000" android:id="@id/jgs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-4.0dip" android:layout_marginBottom="4.0dip" android:text="￥30." android:layout_above="@id/aml" />
+        <TextView android:textSize="14.0sp" android:textColor="#ffcf0000" android:id="@id/jgt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="99" android:layout_toRightOf="@id/jgs" android:layout_alignTop="@id/jgs" />
+        <TextView android:textSize="12.0sp" android:textColor="#ff707070" android:id="@id/jij" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="@string/sfy" android:layout_toRightOf="@id/jgt" android:layout_alignBaseline="@id/jgs" />
+    </RelativeLayout>
+</LinearLayout>

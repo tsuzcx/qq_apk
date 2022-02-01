@@ -1,0 +1,15 @@
+!!brut.androlib.meta.MetaInfo
+apkFileName: KingkongPatch.apk
+compressionType: false
+doNotCompress: null
+isFrameworkApk: false
+packageInfo: null
+sdkInfo: null
+sharedLibrary: false
+sparseResources: false
+unknownFiles:
+  libkkfixerdriver.so: '8'
+  libPatchDispatcher.so: '8'
+usesFramework: null
+version: 2.6.0
+versionInfo: null

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/root_layout" android:background="@color/gg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView android:layout_gravity="center_vertical" android:id="@id/dvo" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="9.5dip" android:layout_marginBottom="9.5dip" android:src="@drawable/f_h" />
+        <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView android:textSize="15.0sp" android:textColor="@color/bp" android:layout_gravity="center_vertical" android:id="@id/k9t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/q0j" />
+    </LinearLayout>
+</LinearLayout>

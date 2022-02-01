@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:background="@drawable/b6u" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="3.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.FadeIconImageView android:gravity="center" android:id="@id/dsr" android:layout_width="@dimen/ars" android:layout_height="fill_parent" android:src="@drawable/skin_qzone_camer_icon" android:scaleType="fitCenter" />
+</LinearLayout>

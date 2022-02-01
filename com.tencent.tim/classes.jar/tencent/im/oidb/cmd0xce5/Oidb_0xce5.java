@@ -1,0 +1,79 @@
+package tencent.im.oidb.cmd0xce5;
+
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
+import com.tencent.mobileqq.pb.PBField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+
+public final class Oidb_0xce5
+{
+  public static final class ReqBody
+    extends MessageMicro<ReqBody>
+  {
+    static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "group_id", "robot_info" }, new Object[] { Long.valueOf(0L), null }, ReqBody.class);
+    public final PBUInt64Field group_id = PBField.initUInt64(0L);
+    public final PBRepeatMessageField<Oidb_0xce5.RobotInfo> robot_info = PBField.initRepeatMessage(Oidb_0xce5.RobotInfo.class);
+  }
+  
+  public static final class RobotInfo
+    extends MessageMicro<RobotInfo>
+  {
+    static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 48, 58, 66, 72, 80, 90, 98, 104, 112, 120, 128, 136, 144, 154 }, new String[] { "robot_uin", "name", "status", "desc", "enabled_groups", "welcome_msg", "call_name", "show_invite", "offline", "verify", "fallback", "join_time", "order", "appid", "api_mark", "miniapp_ids", "robot_type", "extra_info" }, new Object[] { Long.valueOf(0L), "", Integer.valueOf(0), "", Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), "" }, RobotInfo.class);
+    public final PBUInt64Field api_mark = PBField.initUInt64(0L);
+    public final PBUInt64Field appid = PBField.initUInt64(0L);
+    public final PBStringField call_name = PBField.initString("");
+    public final PBStringField desc = PBField.initString("");
+    public final PBUInt32Field enabled_groups = PBField.initUInt32(0);
+    public final PBStringField extra_info = PBField.initString("");
+    public final PBRepeatField<String> fallback = PBField.initRepeat(PBStringField.__repeatHelper__);
+    public final PBUInt32Field join_time = PBField.initUInt32(0);
+    public final PBRepeatField<Long> miniapp_ids = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+    public final PBStringField name = PBField.initString("");
+    public final PBUInt32Field offline = PBField.initUInt32(0);
+    public final PBUInt32Field order = PBField.initUInt32(0);
+    public final PBUInt32Field robot_type = PBField.initUInt32(0);
+    public final PBUInt64Field robot_uin = PBField.initUInt64(0L);
+    public final PBUInt32Field show_invite = PBField.initUInt32(0);
+    public final PBUInt32Field status = PBField.initUInt32(0);
+    public final PBStringField verify = PBField.initString("");
+    public final PBStringField welcome_msg = PBField.initString("");
+  }
+  
+  public static final class RobotRedPoint
+    extends MessageMicro<RobotRedPoint>
+  {
+    static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "robot_uin", "end_ts", "role" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0) }, RobotRedPoint.class);
+    public final PBUInt64Field end_ts = PBField.initUInt64(0L);
+    public final PBUInt64Field robot_uin = PBField.initUInt64(0L);
+    public final PBUInt32Field role = PBField.initUInt32(0);
+  }
+  
+  public static final class RobotRedPointList
+    extends MessageMicro<RobotRedPointList>
+  {
+    static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "redpoint", "cache_time", "role" }, new Object[] { null, Long.valueOf(0L), Integer.valueOf(0) }, RobotRedPointList.class);
+    public final PBUInt64Field cache_time = PBField.initUInt64(0L);
+    public final PBRepeatMessageField<Oidb_0xce5.RobotRedPoint> redpoint = PBField.initRepeatMessage(Oidb_0xce5.RobotRedPoint.class);
+    public final PBUInt32Field role = PBField.initUInt32(0);
+  }
+  
+  public static final class RspBody
+    extends MessageMicro<RspBody>
+  {
+    static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 42 }, new String[] { "robot_info", "role", "max_robot_num", "robot_redpoint_list" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(0), null }, RspBody.class);
+    public final PBUInt32Field max_robot_num = PBField.initUInt32(0);
+    public final PBRepeatMessageField<Oidb_0xce5.RobotInfo> robot_info = PBField.initRepeatMessage(Oidb_0xce5.RobotInfo.class);
+    public Oidb_0xce5.RobotRedPointList robot_redpoint_list = new Oidb_0xce5.RobotRedPointList();
+    public final PBUInt32Field role = PBField.initUInt32(0);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes15.jar
+ * Qualified Name:     tencent.im.oidb.cmd0xce5.Oidb_0xce5
+ * JD-Core Version:    0.7.0.1
+ */

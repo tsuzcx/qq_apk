@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rotate android:visible="true" android:drawable="@drawable/b23" android:fromDegrees="45.0"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

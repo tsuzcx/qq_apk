@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/mrt" android:background="@drawable/di4" android:paddingLeft="15.0dip" android:paddingTop="12.0dip" android:paddingRight="15.0dip" android:paddingBottom="13.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/fvo" android:layout_width="@dimen/bkk" android:layout_height="@dimen/bkk" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/fvt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:text="测试123456" android:lines="1" />
+        <TextView android:textSize="12.0dip" android:textColor="#ff878b99" android:ellipsize="end" android:id="@id/njb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="123456" android:singleLine="true" />
+    </LinearLayout>
+    <ImageView android:id="@id/nja" android:layout_width="@dimen/bkl" android:layout_height="@dimen/bkl" android:layout_marginLeft="37.0dip" android:layout_marginTop="8.0dip" android:src="@drawable/skin_tips_dot" />
+</RelativeLayout>

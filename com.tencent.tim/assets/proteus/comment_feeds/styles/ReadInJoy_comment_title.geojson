@@ -1,0 +1,124 @@
+{
+    "ReadInJoy_comment_title": {
+        "view_type": "container",
+        "layout_type":"layout_linear",
+        "direction": "vertical",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "subviews":[
+            {
+                "view_type": "UIView",
+                "view_id": "id_comment_title_top_gray",
+                "align_parent_top": "YES",
+                "padding_bottom":"4",
+                "height": {
+                    "type": "relative",
+                    "value": "0.5"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "375"
+                },
+                "attributes": {
+                    "setBackgroundColorString:": "#e5e5e5"
+                }
+            },
+            {
+                "view_type": "container",
+                "layout_type":"layout_relative",
+                "default_visible":"YES",
+                "below_of_view":"id_comment_title_top_gray",
+                "margin_top": "14",
+                "height": {
+                    "type": "relative",
+                    "value": "40"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "375"
+                },
+                "subviews":[
+                    {
+                        "view_type": "UIImageView",
+                        "view_id": "id_comment_title_icon",
+                        "margin_left": "16",
+                        "align_parent_center_vertical": "YES",
+                        "height": {
+                            "type": "relative",
+                            "value":"22.5"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value":"72"
+                        },
+                        "attributes":{
+                            "loadImageWithPath:": "$comment_title_icon_url"
+                        }
+                    },
+                    {
+                        "view_type": "UILabel",
+                        "view_id": "id_comment_count",
+                        "align_parent_center_vertical": "YES",
+                        "right_of_view": "id_comment_title_icon",
+                        "margin_left":"4",
+                        "height": {
+                            "type": "relative",
+                            "value": "40"
+                        },
+                        "width": {
+                            "type": "wrap_content"
+                        },
+                        "attributes": {
+                            "setText:": "$comment_count",
+                            "setTextColorString:": "#282828",
+                            "setNumberOfLinesString:": "1",
+                            "setAndroidFontFilePath:iOSFontName:size:":[
+                                "",
+                                "PingFangSC-Regular",
+                                "14"
+                            ]
+                        }
+                    },
+                    {
+                        "view_type": "UIButton",
+                        "event_type": "cmd_choose_comment_type_click",
+                        "view_id": "id_comment_type_choose_icon",
+                        "default_visible":"NO",
+                        "align_parent_right": "YES",
+                        "align_parent_center_vertical": "YES",
+                        "event_type": "cmd_choose_comment_type_click",
+                        "margin_right":"18",
+                        "height": {
+                            "type": "relative",
+                            "value": "40"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "24"
+                        },
+                        "attributes": {
+                            "setScaleType:":"1",
+                            "setImages:forStates:": [
+                                [
+                                    "$commnet_menu_icon_url",
+                                    "$comment_menu_icon_high_light_url",
+                                    "$comment_menu_icon_high_light_url"
+                                ],
+                                [
+                                    "0",
+                                    "1",
+                                    "4"
+                                ]
+                            ]
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

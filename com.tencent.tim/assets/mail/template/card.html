@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf8">
+	<meta name="viewport" content="width=device-width"/>
+	<title></title>
+</head>
+<style type="text/css">
+	/*$card_replace_css$*/
+</style>
+<body style="margin:0;padding:0">
+<style type="text/css">
+	/*这里是贺卡二倍图的url，因此在QQMail、163等支持<style>标签又不会过滤图片宽高属性的邮箱里就会加载更清晰的二倍图而非一倍图*/
+	.greetingCard_mobi_img {
+		content: url("$card_replace_url_2x$");
+	}
+
+</style>
+<div id="head" style="height: 10px;"> </div>
+
+<div class="qmbox qqmailapp_h5_card">
+	<div class="greetingCard_desktop_div" style="height:0;overflow:hidden;display:none;">
+		<table class="greetingCard_desktop_table" width="" cellspacing="0" cellpadding="0" style="vertical-align:top;table-layout:fixed;margin: 0 auto;box-shadow: 0 2px 8px 0 rgba(0,0,0,0.13);border: 1px solid #e5e5e5;display: none;">
+			<tbody>
+			<tr>
+				<td width="" style="padding: 18px;border-right: 1px dashed #D6D6D6;text-align: center;">
+					<!-- webmail会将这里的<a>标签替换为iframe，从而实现贺卡自动播放，webmail对接人：@princeli -->
+					<a href="$card_replace_readmail_play_url$" name="qqmailapp_h5_card_url">
+						<!-- 这里应该是动态的贺卡代码 -->
+						<img width="360" height="auto" style="width: 360px;height: auto;" src="$card_replace_url_1x$" alt="Greeting Card">
+					</a>
+				</td>
+				<td width="265" style="vertical-align: top;padding: 0 30px;">
+					<table class="greetingCard_desktop_table" width="100%" cellspacing="0" cellpadding="0" style="vertical-align:top;table-layout:fixed;margin: 0 auto;display: none;">
+						<tbody>
+						<tr>
+							<td style="padding-top: 72px;padding-bottom:20px;color: #898989;font-size: 16px;word-wrap: break-word;word-break: break-word;line-height: 2.2;vertical-align:top;">
+								<div style="height:270px;overflow:auto;">
+									<div>
+										$card_replace_content$
+									</div>
+									<div style="text-align: right;padding-top:15px;">$card_replace_sign$</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:center;font-size:16px;color:#1F8DE4;padding:10px 0;border-top:1px solid #EBEBEB;border-bottom:1px solid #EBEBEB;"><a class="qqmail_newcard_reply_thanksbtn" href="$card_replace_thank$&email=1" email="$card_replace_sender$" style="text-decoration:none;color:#1F8DE4;font-size:16px;">感谢</a></td>
+						</tr>
+						<tr>
+							<td style="text-align:center;font-size:16px;color:#1F8DE4;padding:10px 0;border-bottom:1px solid #EBEBEB;"><a class="qqmail_card_reply_btn" href="$card_replace_send$" style="text-decoration:none;color:#1F8DE4;font-size:16px;">发贺卡</a></td>
+						</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<table class="greetingCard_mobi" cellspacing="0" cellpadding="0" style="vertical-align:top;table-layout:fixed;margin: 0 auto;border-radius:4px;max-width: 375px; width:100%">
+		<tbody>
+		<tr>
+			<td style="padding-bottom: 16px;">
+				<table width="100%" cellspacing="0" cellpadding="0" style="vertical-align:top;table-layout:fixed;margin: 0 auto;border-radius:4px;overflow:hidden;border:1px solid #e5e5e5;box-shadow: 0px 1px 4px 0 rgba(0,0,0,0.13)">
+					<tbody>
+					<tr>
+						<td style="padding: 18px 18px 0 18px;position:relative;">
+							<!-- 这里是一倍图的url而非二倍图，以避免Tencent等外域邮箱过滤掉图片宽高后造成布局错乱 -->
+							<a href="$card_replace_readmail_play_url$" target="_blank">
+								<img class="greetingCard_mobi_img" width="100%" style="width: 100%;height: auto;" src="$card_replace_url_1x$" alt="Greeting Card">
+								<img class="greetingCard_playBtn" src="http://app.mail.qq.com/zh_CN/htmledition/images/greetingcard/qm_greetingcard_play_btn.png" width="34" height="34" style="position: absolute;right: 28px;bottom: 12px;">
+							</a>
+
+						</td>
+					</tr>
+					<tr>
+						<td style="padding: 24px 17px 0 17px;font-size: 14px;color: #898989;text-align: left;line-height: 1.5;">
+							$card_replace_content$
+						</td>
+					</tr>
+					<tr>
+						<td style="color:#898989;text-align: right;padding: 29px 17px  17px 20px;font-size:14px;">$card_replace_sign$</td>
+					</tr>
+					<tr>
+						<td>
+							<table class="greetingCard_thanksBtn" width="100%" cellspacing="0" cellpadding="0" style="vertical-align:top;table-layout:fixed;margin: 0 auto;text-align:center;border-top:1px solid #EEEEEE;">
+								<tbody>
+									<tr>
+											<td height="48" width="49%"><a class="qqmail_newcard_reply_thanksbtn" href="$card_replace_thank$&email=1" email="$card_replace_sender$" style="font-size:16px;color:#4A90E2;text-decoration:none;" target="_blank"><div style="padding:16px 0;">感谢</div></a></td>
+											<td width="1" style="padding:6px 0;"><div style="border-right:1px solid #EEEEEE;height:36px;">&nbsp;</div></td>
+											<td height="48" width="49%"><a class="qqmail_card_reply_btn" href="$card_replace_send$" style="font-size:16px;color:#4A90E2;text-decoration:none;" target="_blank"><div style="padding:16px 0;">发贺卡</div></a></td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+
+
+
+
+<script type="text/javascript" src="file:///android_asset/template/card.js"></script>
+</body>
+
+
+</html>

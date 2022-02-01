@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:paddingLeft="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="9.0sp" android:textColor="@color/al3" android:layout_gravity="center_vertical" android:id="@id/m3g" android:background="#ff000000" android:paddingLeft="4.0dip" android:paddingTop="2.0dip" android:paddingRight="4.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="16.0dip" android:text="@string/rrl" android:textAlignment="center" />
+        <com.qzone.widget.ClickableHorizontalScrollView android:id="@id/h96" android:paddingRight="12.0dip" android:scrollbars="none" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="14.0sp" android:textColor="@color/qzone_skin_feed_content_text_color" android:id="@id/h97" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" android:layout_marginBottom="9.0dip" />
+        </com.qzone.widget.ClickableHorizontalScrollView>
+    </LinearLayout>
+    <View android:layout_gravity="bottom" android:id="@id/h98" android:background="@drawable/aap" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="0.0dip" />
+    <ImageView android:layout_gravity="center" android:id="@id/m3f" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginTop="7.0dip" android:layout_marginBottom="7.0dip" android:src="@drawable/common_loading2_0" android:tint="#ffb0b3bf" />
+</FrameLayout>

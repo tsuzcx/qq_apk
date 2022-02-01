@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/ik9" android:background="@drawable/skin_searchbar_bg" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include android:clickable="true" layout="@layout/b1x" />
+    </LinearLayout>
+    <FrameLayout android:id="@id/fid" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.widget.BounceScrollView android:id="@id/d01" android:background="@drawable/skin_searchbar_bg" android:focusable="true" android:visibility="visible" android:scrollbars="none" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:id="@id/result_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/search_box" android:layout_alignParentBottom="true">
+            <com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView android:id="@id/searchList" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:cacheColorHint="@android:color/transparent" android:divider="@drawable/jq" android:dividerHeight="1.0px" android:footerDividersEnabled="false" />
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/ikj" android:background="@drawable/bg_texture" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <TextView android:textSize="16.0dip" android:textColor="#ff777777" android:id="@id/ikk" android:background="@drawable/bg_texture" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="35.0dip" android:text="@string/r9a" android:drawableTop="@drawable/e3n" android:drawablePadding="15.0dip" android:layout_centerInParent="true" />
+                <TextView android:textSize="16.0dip" android:textColor="@color/bp" android:id="@id/kw2" android:background="@drawable/kd" android:paddingLeft="45.0dip" android:paddingTop="9.0dip" android:paddingRight="45.0dip" android:paddingBottom="9.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/r9f" />
+            </LinearLayout>
+        </RelativeLayout>
+    </FrameLayout>
+</LinearLayout>

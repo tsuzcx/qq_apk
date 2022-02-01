@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/ae8" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ViewStub android:id="@id/ae_" android:layout="@layout/ea" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
+    <include android:id="@id/cq6" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/a3r" />
+    <ProgressBar android:layout_gravity="center" android:id="@id/i5n" android:visibility="gone" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_marginTop="-25.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" android:layout_centerInParent="true" />
+    <ViewStub android:id="@id/cda" android:layout="@layout/a3t" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/jbz" android:layout="@layout/c0c" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

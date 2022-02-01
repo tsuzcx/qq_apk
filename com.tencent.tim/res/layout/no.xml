@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:custom="http://schemas.android.com/apk/res-auto">
+    <View android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <com.tencent.widget.RangeButtonView android:id="@id/ci0" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="120.0dip" android:layout_alignParentBottom="true" custom:barLeftPadding="26.0dip" custom:barRightPadding="26.0dip" custom:lineColor="#ff939393" custom:lineHeight="8.0dip" custom:lineOffset="30.0dip" custom:lineWeight="1.0dip" custom:thumbSrcId="@drawable/h_4" custom:titleColor="@color/bp" custom:titleTopPadding="8.0dip" />
+</LinearLayout>

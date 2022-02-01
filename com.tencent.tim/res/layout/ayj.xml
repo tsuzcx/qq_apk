@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/fn2" android:background="@drawable/jj" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="140.0dip" android:minHeight="140.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:id="@id/fnc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip">
+        <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2" android:ellipsize="end" android:id="@id/fn1" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="有0位手机通讯录好友也在使用QQ" android:singleLine="true" android:layout_weight="1.0" />
+        <TextView android:textSize="12.0dip" android:id="@id/kik" android:visibility="gone" style="@style/cg" />
+        <ImageView android:id="@id/ezt" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginRight="4.0dip" android:src="@drawable/common_arrow_right_selector" android:scaleType="centerInside" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/fn8" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <com.tencent.widget.FixSizeImageView android:id="@id/d3b" android:duplicateParentState="false" android:layout_width="50.0dip" android:layout_height="50.0dip" android:src="@drawable/com" android:scaleType="fitXY" android:contentDescription="@null" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/f9e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:maxWidth="65.0dip" android:text="@null" android:singleLine="true" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/fn9" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <com.tencent.widget.FixSizeImageView android:id="@id/d3c" android:duplicateParentState="false" android:layout_width="50.0dip" android:layout_height="50.0dip" android:src="@drawable/com" android:scaleType="fitXY" android:contentDescription="@null" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/f9f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:maxWidth="65.0dip" android:text="@null" android:singleLine="true" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/fn_" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <com.tencent.widget.FixSizeImageView android:id="@id/d3d" android:duplicateParentState="false" android:layout_width="50.0dip" android:layout_height="50.0dip" android:src="@drawable/com" android:scaleType="fitXY" android:contentDescription="@null" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/f9g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:maxWidth="60.0dip" android:text="@null" android:singleLine="true" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/fna" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <com.tencent.widget.FixSizeImageView android:id="@id/d3e" android:duplicateParentState="false" android:layout_width="50.0dip" android:layout_height="50.0dip" android:src="@drawable/com" android:scaleType="fitXY" android:contentDescription="@null" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/f9h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:maxWidth="65.0dip" android:text="@null" android:singleLine="true" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/fnb" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <com.tencent.widget.FixSizeImageView android:id="@id/d3f" android:duplicateParentState="false" android:layout_width="50.0dip" android:layout_height="50.0dip" android:src="@drawable/com" android:scaleType="fitXY" android:contentDescription="@null" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/f9i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:maxWidth="65.0dip" android:text="@null" android:singleLine="true" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

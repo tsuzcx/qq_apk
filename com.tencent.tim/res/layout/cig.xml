@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/mmw" android:background="@drawable/jj" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="40.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.GridView android:gravity="center" android:id="@id/n0t" android:layout_width="fill_parent" android:layout_height="wrap_content" android:horizontalSpacing="2.0dip" android:verticalSpacing="3.0dip" />
+</LinearLayout>

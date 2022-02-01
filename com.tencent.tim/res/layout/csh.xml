@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:orientation="horizontal" android:id="@id/nns" android:background="@color/ajr" android:layout_width="45.0dip" android:layout_height="45.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center" android:id="@id/nnp" android:background="@drawable/ibs" android:visibility="invisible" android:layout_width="45.0dip" android:layout_height="45.0dip">
+        <com.tencent.image.URLImageView android:layout_gravity="center" android:id="@id/no3" android:layout_width="19.0dip" android:layout_height="19.0dip" android:scaleType="centerCrop" />
+    </FrameLayout>
+    <ImageView android:layout_gravity="center" android:id="@id/no6" android:layout_width="45.0dip" android:layout_height="45.0dip" android:src="@drawable/ibz" />
+</merge>

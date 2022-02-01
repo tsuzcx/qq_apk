@@ -1,0 +1,105 @@
+{
+    "ReadInJoy_comment_operation_banner": {
+        "view_type": "UIView",
+        "view_id": "id_banner_view",
+        "layout_type":"layout_relative",
+        "default_visible":"YES",
+        "event_type": "cmd_operation_banner_click",
+        "height": {
+            "type": "relative",
+            "value":"44"
+        },
+        "width": {
+            "type": "relative",
+            "value":"375"
+        },
+        "subviews":[
+            {
+                "view_type": "UIView",
+                "view_id": "id_banner_bg",
+                "margin_top":"4",
+                "margin_bottom":"4",
+                "margin_left":"16",
+                "margin_right":"16",
+                "align_parent_left":"YES",
+                "default_visible":"YES",
+                "event_type": "cmd_operation_banner_click",
+                "height": {
+                    "type": "relative",
+                    "value":"36"
+                },
+                "width": {
+                    "type": "relative",
+                    "value":"343"
+                    
+                },
+                "attributes": {
+                    "setCornerRadiusString:": "18",
+                    "setBackgroundColorString:": "#FFF5EB"
+                }
+            },
+            {
+                "view_type": "UIImageView",
+                "view_id": "id_operation_banner_icon",
+                "align_parent_left":"YES",
+                "right_of_view": "id_banner_bg",
+                "align_parent_center_vertical": "YES",
+                "event_type": "cmd_operation_banner_click",
+                "margin_left":"24",
+                "height": {
+                    "type": "relative",
+                    "value":"18"
+                },
+                "width": {
+                    "type": "relative",
+                    "value":"46"
+                },
+                "attributes": {
+                    "setFrameString:": "-1",
+                    "loadImageWithPath:": "$operation_banner_icon"
+                }
+            },
+            {
+                "view_type": "UIView",
+                "view_id": "id_divider",
+                "default_visible":"YES",
+                "right_of_view": "id_operation_banner_icon",
+                "align_parent_center_vertical": "YES",
+                "margin_left":"8",
+                "height": {
+                    "type": "relative",
+                    "value": "15"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "1"
+                },
+                "attributes": {
+                    "setBackgroundColorString:": "#FFDBB7"
+                }
+            },
+            {
+                "view_type": "UILabel",
+                "view_id": "id_operation_banner_title",
+                "default_visible":"YES",
+                "align_parent_center_vertical": "YES",
+                "event_type": "cmd_operation_banner_click",
+                "right_of_view": "id_divider",
+                "margin_left":"8",
+                "height": {
+                    "type": "wrap_content"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "256"
+                },
+                "attributes": {
+                    "setText:": "$operation_banner_title",
+                    "setTextColorString:": "#262626",
+                    "setFontSizeString:": "14",
+                    "setNumberOfLinesString:": "1"
+                }
+            }
+        ]
+    }
+}

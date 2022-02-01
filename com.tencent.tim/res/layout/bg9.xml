@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/h9w" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="44.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.homepage.ui.component.newpanel.ShowMoreView android:id="@id/it_" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.qzone.homepage.ui.component.newpanel.CommonBtmLine android:id="@id/h9x" android:layout_width="fill_parent" android:layout_height="@dimen/xo" android:layout_alignParentBottom="true" />
+</RelativeLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/dm9" android:background="@drawable/skin_list_item_normal_theme_version2" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:background="#ffe0e0e0" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentTop="true" />
+        <ImageView android:id="@id/n1w" android:clickable="false" android:duplicateParentState="true" android:layout_width="@dimen/bj6" android:layout_height="@dimen/bj4" android:layout_marginTop="30.0dip" android:src="@drawable/ig3" android:scaleType="fitCenter" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="@dimen/bj5" android:textColor="#ff333333" android:id="@id/o8b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:text="@string/wqg" android:layout_below="@id/n1w" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="14.0dip" android:textColor="#ff9fa5aa" android:id="@id/npl" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:text="@string/wqh" android:singleLine="true" android:layout_below="@id/o8b" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

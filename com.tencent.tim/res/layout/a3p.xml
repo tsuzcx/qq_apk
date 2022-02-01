@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:orientation="vertical" android:id="@id/root" android:background="#fff8f9fa" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <LinearLayout android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+            <View android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:id="@id/bi1" android:layout_width="@dimen/y1" android:layout_height="@dimen/y1" android:layout_margin="@dimen/y0" android:src="@drawable/ck5" android:contentDescription="@string/cox" />
+                <RelativeLayout android:gravity="fill_vertical" android:layout_width="fill_parent" android:layout_height="@dimen/y1" android:layout_marginTop="@dimen/y0">
+                    <TextView android:textSize="@dimen/ayo" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/bi4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+                    <TextView android:textSize="@dimen/ayo" android:textColor="@color/ob" android:ellipsize="end" android:id="@id/bi2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerInParent="true" />
+                    <TextView android:textSize="@dimen/ayo" android:textColor="@color/ob" android:ellipsize="end" android:id="@id/bi3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+                </RelativeLayout>
+            </LinearLayout>
+            <View android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <TextView android:textSize="13.0sp" android:textColor="#ffa6a6a6" android:gravity="center_vertical" android:id="@id/irk" android:background="#fff8f9fa" android:paddingLeft="15.0dip" android:clickable="true" android:layout_width="fill_parent" android:layout_height="38.0dip" android:text="@string/t7" />
+        </LinearLayout>
+        <View android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginRight="0.0dip">
+            <com.tencent.mobileqq.widget.MyGridView android:gravity="center" android:id="@id/cx6" android:background="#ffffffff" android:paddingLeft="10.0dip" android:paddingTop="20.0dip" android:paddingRight="10.0dip" android:paddingBottom="20.0dip" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@color/ajr" android:horizontalSpacing="3.0dip" android:verticalSpacing="15.0dip" android:stretchMode="spacingWidth" android:columnWidth="66.0dip" android:numColumns="auto_fit" />
+        </RelativeLayout>
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/bfv" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="abp" formItem:leftText="@string/atl" formItem:showArrow="true" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/rf" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="abp" formItem:leftText="@string/m4" formItem:showArrow="true" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/htz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_alignParentRight="true" />
+    <ImageView android:id="@id/htx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/ho6" android:background="#33000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true">
+        <TextView android:textSize="12.0sp" android:textColor="#e6ffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/ho7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="38.0dip" android:layout_marginRight="1.5dip" android:text="@string/se9" />
+        <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/ho8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.5dip" android:layout_marginTop="38.0dip" android:text="@string/sd7" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:id="@id/hii" android:background="@drawable/ghx" android:visibility="gone" android:layout_width="114.0dip" android:layout_height="44.0dip" android:layout_centerInParent="true">
+        <ImageView android:layout_width="17.0dip" android:layout_height="14.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/ghy" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/gl3" />
+    </LinearLayout>
+</RelativeLayout>

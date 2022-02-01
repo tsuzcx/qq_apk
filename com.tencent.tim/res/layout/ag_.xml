@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:background="@color/x0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/jo9" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:id="@id/j1w" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+        <RelativeLayout android:gravity="center_vertical" android:id="@id/rlCommenTitle" android:padding="0.0px" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height">
+            <TextView android:textSize="19.0dip" android:textColor="@color/a4n" android:ellipsize="end" android:gravity="center" android:id="@id/ivTitleName" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="2.0dip" android:text="@null" android:singleLine="true" android:layout_centerInParent="true" />
+            <TextView android:textSize="17.0dip" android:textColor="@color/a4n" android:gravity="center" android:id="@id/ivTitleBtnLeft" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="8.0dip" android:maxWidth="88.0dip" android:minWidth="55.0dip" android:singleLine="true" android:includeFontPadding="false" android:drawableLeft="@drawable/dvn" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

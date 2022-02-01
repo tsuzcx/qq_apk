@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/dyr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <View android:background="@color/bx" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/cq5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="11.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/cq2" android:background="@drawable/dry" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <Button android:textSize="14.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/ajf" android:background="@color/ajr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="18.0dip" android:layout_marginBottom="12.0dip" android:text="" android:drawableLeft="@drawable/dui" android:drawablePadding="5.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="@color/al3" android:gravity="center" android:id="@id/kbr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:layout_centerInParent="true" />
+    <Button android:textSize="14.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/aiy" android:background="@drawable/y6" android:paddingLeft="17.0dip" android:paddingRight="17.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:minHeight="40.0dip" android:text="14M流量" android:drawableLeft="@drawable/dug" android:drawablePadding="6.0dip" android:layout_below="@id/kbr" android:layout_centerHorizontal="true" />
+    <LinearLayout android:visibility="gone" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginTop="25.0dip" android:layout_below="@id/ajf" android:layout_centerHorizontal="true">
+        <ImageView android:id="@id/dy2" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/du1" />
+        <ImageView android:id="@id/dy3" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="24.0dip" android:src="@drawable/du2" />
+        <ImageView android:id="@id/dy4" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="24.0dip" android:layout_marginRight="24.0dip" android:src="@drawable/du3" />
+        <ImageView android:id="@id/dy5" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="24.0dip" android:src="@drawable/du4" />
+        <ImageView android:id="@id/dy6" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/du5" />
+    </LinearLayout>
+</RelativeLayout>

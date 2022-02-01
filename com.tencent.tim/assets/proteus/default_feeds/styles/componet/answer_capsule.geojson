@@ -1,0 +1,59 @@
+{
+  "view_type": "UIView",
+  "view_id": "id_capsule_answer",
+  "layout_type": "layout_linear",
+  "direction": "horizontal",
+  "event_type":"cmd_answer_capsule_click",
+  "margin_left": "0",
+  "height": {
+    "type": "wrap_content"
+  },
+  "width": {
+    "type": "relative",
+    "value": "375"
+  },
+  "attributes": {
+      "setAttatchInfo:":"-1"
+  },
+  "subviews": [
+    {
+      "view_type": "UILabel",
+      "view_id": "id_capsule_answer_pre",
+      "margin_left": "12",
+      "margin_right": "10",
+      "margin_bottom": "10",
+      "height": {
+        "type": "wrap_content"
+      },
+      "width": {
+        "type": "wrap_content"
+      },
+      "attributes": {
+        "setFrameString": "-1",
+        "setText:": "-1",
+        "setTextColorString:": "#8C000000",
+        "setFontSizeString:": "14",
+        "setNumberOfLinesString:": "1"
+      }
+    },
+    {
+      "view_type": "UILabel",
+      "view_id": "id_capsule_answer_content",
+      "margin_right": "12",
+      "margin_bottom": "10",
+      "height": {
+        "type": "wrap_content"
+      },
+      "width": {
+        "type": "wrap_content"
+      },
+      "attributes": {
+        "setFrameString": "-1",
+        "setText:": "-1",
+        "setTextColorString:": "#D9000000",
+        "setFontSizeString:": "14",
+        "setNumberOfLinesString:": "1"
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="#00000000" android:layout_width="fill_parent" android:layout_height="150.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:background="@drawable/bun" android:layout_width="fill_parent" android:layout_height="130.0dip" android:layout_centerInParent="true" />
+    <RelativeLayout android:id="@id/hce" android:background="@drawable/aq1" android:layout_width="fill_parent" android:layout_height="115.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:layout_centerInParent="true">
+        <com.qzone.album.ui.widget.CornerImageView android:id="@id/hap" android:layout_width="160.0dip" android:layout_height="fill_parent" android:layout_alignParentLeft="true" />
+        <cooperation.qzone.widget.LocalPhotoLinearGradientView android:id="@id/haq" android:layout_width="160.0dip" android:layout_height="fill_parent" android:layout_alignParentLeft="true" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="8.0dip" android:layout_toRightOf="@id/hap">
+            <ImageView android:id="@id/hcg" android:paddingLeft="6.0dip" android:paddingTop="6.0dip" android:paddingRight="9.0dip" android:paddingBottom="6.0dip" android:layout_width="25.0dip" android:layout_height="25.0dip" android:src="@drawable/bum" android:scaleType="centerInside" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:contentDescription="@string/ro0" />
+            <TextView android:textSize="17.0dip" android:textColor="@color/bp" android:id="@id/hci" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18.0dip" />
+            <TextView android:textSize="11.0dip" android:textColor="#ff777777" android:id="@id/hch" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="@string/gbz" android:layout_below="@id/hci" />
+            <TextView android:textSize="14.0dip" android:textColor="#ff12b7f5" android:gravity="center" android:id="@id/hcf" android:background="@drawable/ar7" android:layout_width="75.0dip" android:layout_height="28.0dip" android:layout_marginTop="9.0dip" android:text="@string/gbb" android:layout_below="@id/hch" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

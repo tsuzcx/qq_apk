@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <FrameLayout android:id="@id/l23" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.qqmail.view.QMContentLoadingView android:layout_gravity="center" android:id="@id/loading" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/my2" android:background="@drawable/es_" android:layout_width="fill_parent" android:layout_height="@dimen/bjk">
+        <ImageView android:id="@id/nyc" android:layout_width="0.0dip" android:layout_height="wrap_content" android:src="@drawable/gew" android:layout_weight="1.0" />
+        <ImageView android:id="@id/cjt" android:layout_width="0.0dip" android:layout_height="wrap_content" android:src="@drawable/gev" android:layout_weight="1.0" />
+        <ImageView android:id="@id/msr" android:layout_width="0.0dip" android:layout_height="wrap_content" android:src="@drawable/ggy" android:layout_weight="1.0" />
+        <ImageView android:id="@id/ezr" android:layout_width="0.0dip" android:layout_height="wrap_content" android:src="@drawable/gh1" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

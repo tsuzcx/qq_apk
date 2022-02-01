@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.widget.AlphaClickableRelativeLayout android:id="@id/dr6" android:layout_width="48.0dip" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.FixSizeImageView android:id="@id/icon" android:focusable="false" android:clickable="false" android:layout_width="40.0dip" android:layout_height="40.0dip" android:scaleType="fitXY" android:layout_centerHorizontal="true" android:contentDescription="@null" />
+    <com.tencent.mobileqq.activity.recent.cur.DragTextView android:id="@id/unreadmsg" android:visibility="gone" android:duplicateParentState="true" android:includeFontPadding="true" android:layout_alignParentTop="true" android:layout_alignParentRight="true" style="@style/cg" />
+    <com.tencent.widget.SingleLineTextView android:textSize="12.0dip" android:textColor="@color/skin_black" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:includeFontPadding="true" android:layout_below="@id/icon" android:layout_centerHorizontal="true" />
+</com.tencent.widget.AlphaClickableRelativeLayout>

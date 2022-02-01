@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.presseffect.PressEffectLinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@drawable/aji" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="6.0dip">
+        <com.tencent.image.URLImageView android:id="@id/dv1" android:layout_width="42.0dip" android:layout_height="42.0dip" android:scaleType="fitXY" />
+    </LinearLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="14.0dip" android:textColor="@color/bp" android:id="@id/k79" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="\#" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/k7a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="@string/q1h" android:singleLine="true" android:layout_toRightOf="@id/k79" android:layout_alignParentTop="true" />
+        <TextView android:textSize="12.0dip" android:textColor="#ff737373" android:ellipsize="end" android:id="@id/k7_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="@string/q1f" android:singleLine="true" android:layout_below="@id/k7a" />
+    </RelativeLayout>
+</com.tencent.mobileqq.widget.presseffect.PressEffectLinearLayout>

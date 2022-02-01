@@ -1,0 +1,163 @@
+{
+    "RIJ_biucomment_with_social_header": {
+        "view_type": "container",
+        "direction": "vertical",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "subviews": [
+            {
+                "view_type":"container",
+                "layout_type":"layout_relative",
+                "height": {
+                    "type":"wrap_content"
+                },
+                "width": {
+                    "type":"wrap_content"
+                },
+                "subviews": [
+                    {
+                        "view_type":"UIImageView",
+                        "default_visible":"YES",
+                        "view_id":"id_background_imageView",
+                        "height": {
+                            "type": "match_parent"
+                        },
+                        "width":{
+                            "type":"match_parent"
+                        },
+                        "attributes" :{
+                            "setAlphaString:":"0",
+                            "loadImageWithPath:":"rij_commentBiu_backgroundColor"
+                        }
+                    },
+                    {
+                        "view_type": "container",
+                        "direction": "vertical",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "375"
+                        },
+                        "subviews": [
+                            {
+                                "$includeComponet": "componet/social_header.geojson"
+                            },
+                            {
+                                "$includeComponet": "componet/RIJ_social_header_padding_view.geojson"
+                            },
+                            {
+                                "$includeComponet": "componet/RIJ_feeds_social_header.geojson"
+                            },
+                            {
+                                "$includeComponet": "componet/socialize_recommend_follow.geojson"
+                            },
+                            {
+                                "view_type": "ReadInJoyBiuCommentView",
+                                "view_id": "id_biu_comment",
+                                "margin_left": "12",
+                                "margin_bottom": "6",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "relative",
+                                    "value": "351"
+                                },
+                                "attributes": {
+                                    "setFrameString:": "-1",
+                                    "setArticleModel:": "-1",
+                                    "setPreAccountUin:": "$feeds_pre_account_uin"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "$includeComponet": "componet/RIJ_biu_small_image_article.geojson"
+            },
+            {
+                "view_type": "UIView",
+                "view_id": "id_middle_body_wrapper",
+                "direction": "vertical",
+                "padding_top": "12",
+                "margin_left": "12",
+                "margin_right": "12",
+                "margin_bottom": "10",
+                "visible_depend_on_children": "YES",
+                "height": {
+                    "type": "wrap_content"
+                },
+                "width": {
+                    "type": "match_parent"
+                },
+                "attributes": {
+                    "setBackgroundColorString:": "#F5F6FA"
+                },
+                "subviews": [
+                    {
+                        "view_type": "ReadInJoySummaryView",
+                        "view_id": "id_summary",
+                        "margin_left": "12",
+                        "margin_right": "12",
+                        "margin_bottom": "12",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "match_parent"
+                        },
+                        "attributes": {
+                            "setArticleModel:": "-1"
+                        }
+                    },
+                    {
+                        "$includeComponet": "componet/RIJ_biu_more_image.geojson"
+                    },
+                    {
+                        "$includeComponet": "componet/RIJ_biu_big_video.geojson"
+                    }
+                ]
+            },
+            {
+                "$includeComponet": "componet/RIJ_column_capsule.geojson"
+            },
+            {
+              "$includeComponet": "componet/social_bottom_share_style_a.geojson"
+            },
+            {
+                "view_type":"UIView",
+                "view_id":"id_flow_guide_separator",
+                "default_visible":"NO",
+                "margin_left":"6",
+                "margin_right":"6",
+                "margin_top":"0",
+                "height":{
+                    "type":"absolutely","value":"0.5"
+                },
+                "width":{
+                    "type":"relative",
+                    "type": "match_parent"
+                },
+                "attributes":{
+                    "setFrameString:":"-1",
+                    "setBackgroundColorString:":"#E5E5E5",
+                    "setAttatchInfo:":"$separatorShouldShould"
+                }
+            },
+            {
+                "$includeComponet": "componet/flow_guide_bottom_1_2_3.geojson"
+            },
+            {
+                "$includeComponet": "componet/separator.geojson"
+            }
+        ]
+    }
+}

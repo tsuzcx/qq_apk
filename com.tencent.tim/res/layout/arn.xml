@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/z7" android:visibility="gone" android:layout_width="@dimen/ez" android:layout_height="@dimen/et" android:layout_marginLeft="@dimen/ew" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/z9" android:visibility="gone" android:layout_width="@dimen/ez" android:layout_height="@dimen/ez" android:layout_marginLeft="@dimen/eu" android:layout_marginTop="@dimen/ex" android:scaleType="fitStart" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <ImageView android:id="@id/zd" android:visibility="gone" android:layout_width="@dimen/ez" android:layout_height="@dimen/ez" android:layout_marginTop="@dimen/ey" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/zc" android:visibility="gone" android:layout_width="@dimen/ez" android:layout_height="@dimen/ez" android:layout_marginTop="@dimen/ex" android:layout_marginRight="@dimen/eu" android:scaleType="fitStart" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <ImageView android:id="@id/za" android:visibility="gone" android:layout_width="@dimen/ez" android:layout_height="@dimen/et" android:layout_marginRight="@dimen/ev" android:scaleType="fitStart" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/zb" android:visibility="gone" android:layout_width="@dimen/ez" android:layout_height="@dimen/ez" android:layout_marginRight="@dimen/eu" android:layout_marginBottom="@dimen/ex" android:scaleType="fitEnd" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/z2" android:visibility="gone" android:layout_width="@dimen/ez" android:layout_height="@dimen/ez" android:layout_marginBottom="@dimen/ey" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/z8" android:visibility="gone" android:layout_width="@dimen/ez" android:layout_height="@dimen/ez" android:layout_marginLeft="@dimen/eu" android:layout_marginBottom="@dimen/ex" android:scaleType="fitEnd" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+</merge>

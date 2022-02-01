@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/ga0" android:layout_width="164.0dip" android:layout_height="58.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.particle.ParticleTextView android:textSize="16.0dip" android:textColor="@android:color/black" android:gravity="center" android:id="@id/fik" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_marginTop="7.0dip" android:text="@string/s1a" android:textAlignment="center" />
+    <com.qzone.widget.particle.ParticleTextSurfaceView android:id="@id/fil" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_marginTop="7.0dip" />
+</RelativeLayout>

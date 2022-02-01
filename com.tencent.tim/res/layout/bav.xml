@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/e2b" android:background="@color/mi" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:mobileqq="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/gmo" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ProgressBar android:id="@id/i6i" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxHeight="5.0dip" android:max="100" android:progressDrawable="@drawable/ana" android:minHeight="5.0dip" style="?android:progressBarStyleHorizontal" />
+        <TextView android:textSize="@dimen/ayp" android:textColor="@color/a3r" android:gravity="center" android:id="@id/an9" android:background="@drawable/b2f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="17.0dip" android:maxLines="1" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/i6i" android:layout_alignParentLeft="true" />
+    </RelativeLayout>
+    <com.tencent.widget.ScrollView android:id="@id/if5" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <RelativeLayout android:id="@id/h0l" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/h0w" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="27.5dip" android:layout_marginTop="9.0dip" android:layout_alignParentTop="true">
+                <ImageView android:id="@id/h0v" android:visibility="gone" android:layout_width="37.0dip" android:layout_height="37.0dip" android:src="@drawable/fl4" />
+                <TextView android:textSize="@dimen/az1" android:textColor="#ff000000" android:id="@id/ke5" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/aym" android:textColor="#ff777777" android:id="@id/kem" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="27.5dip" android:layout_marginTop="3.0dip" android:layout_marginRight="27.5dip" android:text="@string/g14" android:layout_below="@id/h0w" />
+            <com.tencent.mobileqq.widget.ClearableEditText android:textSize="@dimen/ays" android:textColor="@color/a3q" android:textColorHint="#ffbbbbbb" android:gravity="center_vertical" android:id="@id/f9x" android:background="@null" android:longClickable="false" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="27.5dip" android:layout_marginTop="10.0dip" android:layout_marginRight="27.5dip" android:hint="@string/nickname" android:maxLines="1" android:singleLine="true" android:maxLength="24" android:layout_below="@id/kem" android:inputType="text" android:textCursorDrawable="@drawable/b3j" mobileqq:clearBtnDrawable="@drawable/fl6" mobileqq:clearBtnDrawableHeight="25.0dip" mobileqq:clearBtnDrawableWidth="25.0dip" />
+            <View android:id="@id/e_n" android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="27.5dip" android:layout_marginRight="27.5dip" android:layout_below="@id/f9x" />
+            <Button android:enabled="false" android:id="@id/ahd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="27.5dip" android:layout_marginTop="35.0dip" android:layout_marginRight="27.5dip" android:text="@string/g0d" android:layout_below="@id/e_n" style="@style/hs" />
+            <FrameLayout android:id="@id/kz1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/ahd" />
+        </RelativeLayout>
+    </com.tencent.widget.ScrollView>
+</LinearLayout>

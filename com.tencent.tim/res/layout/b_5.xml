@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/bz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/enc" android:layout_width="fill_parent" android:layout_height="100.0dip" />
+    <com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialogTopGestureLayout android:orientation="vertical" android:id="@id/content" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/enc">
+        <RelativeLayout android:id="@id/jp7" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="43.0dip">
+            <ImageView android:id="@id/az7" android:background="@drawable/fcv" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="12.0dip" android:layout_centerVertical="true" />
+            <TextView android:textSize="17.0dip" android:textColor="@color/skin_black" android:ellipsize="middle" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="250.0dip" android:text="@string/rae" android:singleLine="true" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView android:id="@id/b4p" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0dip" android:listSelector="#00000000" android:divider="@null" android:layout_weight="1.0" />
+        <View android:background="@drawable/b4w" android:layout_width="fill_parent" android:layout_height="60.0dip" />
+    </com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialogTopGestureLayout>
+    <FrameLayout android:visibility="visible" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <include android:id="@id/b8q" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/b53" />
+    </FrameLayout>
+</RelativeLayout>

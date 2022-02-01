@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.FeedImageView android:id="@id/haj" android:layout_width="0.0dip" android:layout_height="wrap_content" android:scaleType="centerCrop" android:adjustViewBounds="true" />
+    <ImageView android:id="@id/a8l" android:layout_alignLeft="@id/haj" android:layout_alignRight="@id/haj" android:layout_alignBottom="@id/haj" android:layout_alignParentBottom="true" style="@style/au" />
+    <ImageView android:id="@id/a8m" android:layout_centerInParent="true" style="@style/av" />
+    <TextView android:id="@id/a8n" android:visibility="gone" android:layout_alignLeft="@id/haj" android:layout_alignBottom="@id/haj" style="@style/aw" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignRight="@id/haj" android:layout_alignBottom="@id/haj">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/fxs" android:paddingRight="@dimen/aop" android:paddingBottom="7.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <View android:id="@id/fxq" android:background="@drawable/ay0" android:clickable="false" android:duplicateParentState="true" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+            <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:gravity="center_vertical" android:id="@id/fxr" android:clickable="false" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="1.0dip" android:text="0" android:includeFontPadding="false" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/b3j" android:paddingRight="15.0dip" android:paddingBottom="7.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <View android:id="@id/b31" android:background="@drawable/fvm" android:clickable="false" android:duplicateParentState="true" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+            <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:gravity="center_vertical" android:id="@id/b3e" android:clickable="false" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="1.0dip" android:text="0" android:includeFontPadding="false" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

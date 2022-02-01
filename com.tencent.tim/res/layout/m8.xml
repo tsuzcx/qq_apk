@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/jj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/j2"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.ThemeImageView android:id="@id/icon" android:clickable="true" android:layout_width="@dimen/j6" android:layout_height="@dimen/j6" android:layout_marginLeft="@dimen/is" android:layout_centerVertical="true" android:contentDescription="@null" />
+    <TextView android:textSize="@dimen/j1" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/text1" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/is" android:maxWidth="210.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/icon" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/j9" android:textColor="@color/skin_gray2" android:id="@id/text2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toRightOf="@id/text1" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/blw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/iu" android:src="@drawable/common_arrow_right_selector" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+    <com.tencent.mobileqq.widget.ShaderAnimLayout android:id="@id/blq" android:visibility="gone" android:clickable="true" android:layout_width="130.0dip" android:layout_height="fill_parent" android:minHeight="@dimen/j2" android:layout_alignParentRight="true">
+        <Button android:textSize="14.0dip" android:textColor="#ffffffff" android:id="@id/blp" android:background="@drawable/cjb" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="@dimen/j2" android:text="@string/dsq" android:layout_centerVertical="true" />
+    </com.tencent.mobileqq.widget.ShaderAnimLayout>
+</RelativeLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:paddingBottom="14.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.RandomCoverView android:id="@id/dkn" android:layout_width="fill_parent" android:layout_height="@dimen/a0m" android:layout_alignParentTop="true" />
+    <View android:id="@id/dk0" android:background="@drawable/qq_profilecard_info_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/dkn" />
+    <View android:id="@id/d37" android:layout_width="fill_parent" android:layout_height="@dimen/a01" android:layout_alignBottom="@id/dkn" />
+    <FrameLayout android:id="@id/dk9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignTop="@id/d37" />
+    <com.tencent.mobileqq.hotchat.anim.HeartLayout android:id="@id/d53" android:clickable="false" android:layout_width="fill_parent" android:layout_height="165.0dip" android:layout_marginBottom="5.0dip" android:layout_alignBottom="@id/dkn" />
+</RelativeLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@drawable/ar3" android:layout_width="109.0dip" android:layout_height="153.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.component.media.image.view.ExtendImageView android:id="@id/p9" android:layout_width="89.0dip" android:layout_height="133.0dip" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    <com.tencent.component.media.image.view.ExtendImageView android:id="@id/hb2" android:layout_width="57.0dip" android:layout_height="57.0dip" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/dwq" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/hax" android:layout_width="52.0dip" android:layout_height="23.0dip" android:layout_above="@id/hb2" android:layout_centerHorizontal="true" />
+    <RelativeLayout android:background="@drawable/fup" android:layout_width="67.5dip" android:layout_height="17.5dip" android:layout_marginTop="9.0dip" android:layout_below="@id/hb2" android:layout_centerHorizontal="true">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <TextView android:textSize="7.0dip" android:textColor="@color/al3" android:ellipsize="none" android:gravity="center" android:id="@id/hb0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="55.0dip" android:maxLines="1" />
+            <TextView android:textSize="3.5dip" android:textColor="@color/al3" android:ellipsize="none" android:id="@id/hb1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:maxEms="13" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.qqmail.view.QMListItemView android:paddingLeft="@dimen/bp2" android:paddingRight="@dimen/bp2" style="@style/ado"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="@dimen/biv" android:paddingBottom="@dimen/biv" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/mtp" android:layout_width="@dimen/bq8" android:layout_height="@dimen/bq8" android:layout_marginRight="@dimen/bp2" android:src="@drawable/iqa" android:scaleType="centerCrop" />
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/bix" android:textColor="@color/atq" android:ellipsize="middle" android:id="@id/mtr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textSize="@dimen/biu" android:textColor="@color/ats" android:ellipsize="end" android:id="@id/mts" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:singleLine="true" />
+        </LinearLayout>
+        <ViewStub android:id="@id/mtq" android:layout="@layout/ckz" android:layout_width="@dimen/biw" android:layout_height="@dimen/biw" android:layout_marginLeft="@dimen/bp2" />
+    </LinearLayout>
+</com.tencent.qqmail.view.QMListItemView>

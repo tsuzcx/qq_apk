@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.activity.history.widget.DispatchTouchEventLinearLayout android:orientation="vertical" android:id="@id/root_layout" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent" tencent:skintype="contact_list_bg"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto">
+    <include android:id="@id/search_box" layout="@layout/search_box" />
+    <com.tencent.mobileqq.bubble.ChatXListView android:scrollbarThumbVertical="@drawable/b2n" android:id="@id/listViewHistory" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:divider="@color/d7" android:dividerHeight="0.0dip" />
+    <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:gravity="center" android:layout_gravity="center" android:id="@id/bwv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/b82" android:drawableTop="@drawable/e99" android:drawablePadding="6.0dip" android:layout_centerInParent="true" />
+</com.tencent.mobileqq.activity.history.widget.DispatchTouchEventLinearLayout>

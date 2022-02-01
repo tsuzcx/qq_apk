@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/ns8" style="@style/agc"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qm="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/lrw" android:layout_width="@dimen/bq8" android:layout_height="@dimen/bq8" android:layout_centerVertical="true">
+        <ImageView android:layout_gravity="center" android:id="@id/lvc" style="@style/agb" />
+        <com.tencent.qqmail.view.DownloadThumbProgressBar android:id="@id/g1f" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:layout_gravity="bottom|center|right" android:id="@id/mtw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/i69" />
+    </FrameLayout>
+    <com.tencent.qqmail.utilities.ui.PressableImageView android:id="@id/lva" android:duplicateParentState="false" android:layout_width="48.0dip" android:layout_height="@dimen/bjq" android:layout_marginRight="21.0dip" android:src="@drawable/gh1" android:scaleType="center" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <View android:id="@id/lrz" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_centerVertical="true" />
+    <TextView android:id="@id/f5e" android:layout_marginTop="2.0dip" android:layout_toLeftOf="@id/lva" android:layout_toRightOf="@id/lrw" android:layout_above="@id/lrz" style="@style/adp" />
+    <RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/lva" android:layout_below="@id/f5e" android:layout_alignLeft="@id/f5e">
+        <TextView android:id="@id/ix0" android:layout_marginTop="0.0dip" android:layout_centerVertical="true" style="@style/adq" />
+        <com.tencent.qqmail.view.FontFitTextView android:gravity="center_vertical" android:id="@id/jl7" android:visibility="gone" android:layout_marginLeft="10.0dip" android:layout_marginTop="0.0dip" android:layout_toRightOf="@id/ix0" android:layout_alignParentRight="true" android:layout_centerVertical="true" qm:maxTextSize="@dimen/blk" qm:minTextSize="6.0dip" style="@style/adq" />
+        <com.tencent.qqmail.view.FontFitTextView android:gravity="center_vertical" android:id="@id/nz6" android:visibility="gone" android:layout_marginLeft="10.0dip" android:layout_marginTop="0.0dip" android:layout_toRightOf="@id/ix0" android:layout_alignParentRight="true" android:layout_centerVertical="true" qm:maxTextSize="@dimen/blk" qm:minTextSize="6.0dip" style="@style/adq" />
+    </RelativeLayout>
+</RelativeLayout>

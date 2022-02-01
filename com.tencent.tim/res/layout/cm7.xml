@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.qqmail.view.GmailAuthWebView android:id="@id/webview" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/a4f" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/loading" android:visibility="gone" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <ProgressBar android:id="@id/g2e" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxHeight="3.0dip" android:progressDrawable="@drawable/s6" android:minHeight="3.0dip" style="?android:progressBarStyleHorizontal" />
+</FrameLayout>

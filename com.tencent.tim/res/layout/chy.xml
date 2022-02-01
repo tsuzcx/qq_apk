@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.qqmail.calendar.view.WeekView android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="55.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:gravity="center" android:id="@id/textView1" android:background="@color/ao4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    <TextView android:gravity="center" android:id="@id/jfq" android:background="@color/ao4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    <TextView android:gravity="center" android:id="@id/jfr" android:background="@color/ao4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    <TextView android:gravity="center" android:id="@id/jfs" android:background="@color/ao4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    <TextView android:gravity="center" android:id="@id/jft" android:background="@color/ao4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    <TextView android:gravity="center" android:id="@id/jfu" android:background="@color/ao4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    <TextView android:gravity="center" android:id="@id/o4_" android:background="@color/ao4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+</com.tencent.qqmail.calendar.view.WeekView>

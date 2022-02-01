@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/local_search" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:clickable="true" layout="@layout/b1y" />
+    <RelativeLayout android:id="@id/result_layout" android:background="@drawable/bg_texture" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.widget.XListView android:id="@id/search_result_list" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scrollingCache="false" android:transcriptMode="disabled" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0dip" />
+        <LinearLayout android:gravity="center_horizontal" android:id="@id/ef4" android:background="@drawable/bg_texture" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="15.0sp" android:textColor="@color/skin_gray3" android:gravity="center_horizontal" android:id="@id/ef6" android:paddingTop="100.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:text="@string/cuy" android:drawableLeft="@drawable/jt" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

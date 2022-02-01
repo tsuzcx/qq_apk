@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.theme.diy.PageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/e5f" android:background="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <View android:id="@id/kl1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <View android:id="@id/ene" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <View android:id="@id/isn" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+</com.tencent.mobileqq.theme.diy.PageView>

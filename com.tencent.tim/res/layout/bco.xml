@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/h3k" android:background="@drawable/ao7" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/h3j" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginLeft="11.0dip" android:layout_centerVertical="true" android:contentDescription="@null" />
+    <ImageView android:id="@id/h3m" android:layout_width="6.0dip" android:layout_height="6.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="4.0dip" android:src="@drawable/skin_tips_dot" android:layout_alignTop="@id/h3j" android:layout_alignRight="@id/h3j" android:contentDescription="@null" />
+    <ImageView android:layout_gravity="center" android:id="@id/h3n" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-20.0dip" android:layout_marginTop="-2.0dip" android:maxHeight="12.5dip" android:layout_toRightOf="@id/h3j" android:layout_alignTop="@id/h3j" android:contentDescription="@null" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/a46" android:id="@id/h3l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:singleLine="true" android:layout_toRightOf="@id/h3j" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/h3t" android:background="@drawable/fp8" android:layout_width="9.0dip" android:layout_height="15.0dip" android:layout_marginRight="11.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/a4_" android:ellipsize="end" android:gravity="right" android:id="@id/h3o" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:singleLine="true" android:layout_toLeftOf="@id/h3t" android:layout_toRightOf="@id/h3l" android:layout_centerVertical="true" />
+</RelativeLayout>

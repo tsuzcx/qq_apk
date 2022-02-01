@@ -1,0 +1,143 @@
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+public final class apis
+{
+  private static int duf = 4000;
+  private static final Map<String, apis.a> mz = new ConcurrentHashMap(2);
+  
+  public static void Of(String paramString)
+  {
+    ST(paramString);
+  }
+  
+  private static void ST(String paramString)
+  {
+    apis.a locala = (apis.a)mz.get(paramString);
+    if ((locala == null) || (locala.g != null)) {}
+    try
+    {
+      locala.g.close();
+      label31:
+      if (locala.j != null) {}
+      try
+      {
+        locala.j.close();
+        label45:
+        locala.j = null;
+        mz.remove(paramString);
+        return;
+      }
+      catch (Exception localException1)
+      {
+        break label45;
+      }
+    }
+    catch (Exception localException2)
+    {
+      break label31;
+    }
+  }
+  
+  private static void a(apis.a parama, boolean paramBoolean)
+    throws IOException
+  {
+    if ((parama != null) && (parama.g != null))
+    {
+      if (parama.g.size() > 0)
+      {
+        if (parama.mFile == null)
+        {
+          File localFile = new File(parama.mKey);
+          if (!localFile.exists()) {
+            localFile.createNewFile();
+          }
+          parama.j = new FileOutputStream(localFile, true);
+          parama.mFile = localFile;
+        }
+        parama.g.writeTo(parama.j);
+      }
+      if (paramBoolean)
+      {
+        if (parama.j != null)
+        {
+          parama.j.flush();
+          parama.j.close();
+          parama.j = null;
+        }
+        parama.mFile = null;
+      }
+    }
+  }
+  
+  public static boolean a(String paramString, byte[] paramArrayOfByte, int paramInt)
+  {
+    paramString = (apis.a)mz.get(paramString);
+    if (paramString != null)
+    {
+      if (paramString.g == null) {
+        paramString.g = new ByteArrayOutputStream(paramInt << 1);
+      }
+      paramString.g.write(paramArrayOfByte, 0, paramInt);
+      if (paramString.g.size() < duf) {}
+    }
+    try
+    {
+      a(paramString, false);
+      label66:
+      paramString.g.reset();
+      return true;
+    }
+    catch (IOException paramArrayOfByte)
+    {
+      break label66;
+    }
+  }
+  
+  public static boolean nY(String paramString)
+  {
+    if ((apis.a)mz.get(paramString) == null)
+    {
+      apis.a locala = new apis.a();
+      locala.mKey = paramString;
+      mz.put(paramString, locala);
+    }
+    return true;
+  }
+  
+  public static boolean nZ(String paramString)
+  {
+    apis.a locala = (apis.a)mz.get(paramString);
+    if ((locala != null) && (locala.g != null)) {}
+    try
+    {
+      a(locala, true);
+      label29:
+      locala.g.reset();
+      ST(paramString);
+      return true;
+    }
+    catch (IOException localIOException)
+    {
+      break label29;
+    }
+  }
+  
+  public static class a
+  {
+    public ByteArrayOutputStream g;
+    public FileOutputStream j;
+    public File mFile;
+    public String mKey;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes4.jar
+ * Qualified Name:     apis
+ * JD-Core Version:    0.7.0.1
+ */

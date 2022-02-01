@@ -1,0 +1,26 @@
+package dov.com.tencent.mobileqq.shortvideo.ptvfilter.material;
+
+import android.content.res.AssetManager;
+import azbk;
+
+public class GameplayEngine
+{
+  private azbk a = new azbk(new Game3DNativeEvent());
+  private long alV = 0L;
+  
+  private native int createEngineContext(AssetManager paramAssetManager);
+  
+  private native void nativeOnOrientationChanged(long paramLong, int paramInt);
+  
+  private native void nativeOnSensorChanged(long paramLong1, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, long paramLong2);
+  
+  private native int onEngineOperateNative(long paramLong, int paramInt, String paramString);
+  
+  private native int onSurfaceOperateNative(long paramLong, int paramInt1, int paramInt2, int paramInt3);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes13.jar
+ * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.ptvfilter.material.GameplayEngine
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,0 +1,231 @@
+{
+    "tag": "page",
+    "content": "",
+    "attributes": {
+        "viewID": "0"
+    },
+    "styles": {
+        "flex-direction": "column",
+        "display": "flex",
+        "box-sizing": "border-box"
+    },
+    "children": [
+        {
+            "tag": "view",
+            "content": "\n  \n  \n  \n",
+            "attributes": {
+                "viewID": "1",
+                "class": "popup-wrp"
+            },
+            "styles": {
+                "display": "flex",
+                "box-sizing": "border-box",
+                "position": "relative",
+                "width": "750rpx",
+                "height": "732rpx"
+            },
+            "children": [
+                {
+                    "tag": "img",
+                    "content": "",
+                    "attributes": {
+                        "viewID": "2",
+                        "class": "bg-img",
+                        "mode": "scaleToFill",
+                        "src": "http://pub.idqqimg.com/pc/misc/files/20200416/1263e35cec174f0db53e0fc3bb8e7df2.png"
+                    },
+                    "styles": {
+                        "width": "572rpx",
+                        "height": "628rpx",
+                        "position": "absolute",
+                        "left": "89rpx",
+                        "top": "104rpx",
+                        "border-radius": "12rpx"
+                    },
+                    "children": []
+                },
+                {
+                    "tag": "img",
+                    "content": "",
+                    "attributes": {
+                        "viewID": "3",
+                        "class": "avatar-img",
+                        "mode": "scaleToFill",
+                        "src": "{{accountUin}}"
+                    },
+                    "styles": {
+                        "width": "150rpx",
+                        "height": "150rpx",
+                        "position": "absolute",
+                        "left": "300rpx",
+                        "top": "4rpx",
+                        "border-radius": "75rpx"
+                    },
+                    "children": []
+                },
+                {
+                    "tag": "view",
+                    "content": "\n    \n    \n    \n    \n    \n  ",
+                    "attributes": {
+                        "viewID": "4",
+                        "class": "content-wrp"
+                    },
+                    "styles": {
+                        "display": "flex",
+                        "box-sizing": "border-box",
+                        "width": "572rpx",
+                        "height": "732rpx",
+                        "position": "absolute",
+                        "left": "89rpx",
+                        "flex-direction": "column",
+                        "align-items": "center"
+                    },
+                    "children": [
+                        {
+                            "tag": "img",
+                            "content": "",
+                            "attributes": {
+                                "viewID": "5",
+                                "class": "account-img",
+                                "mode": "scaleToFill",
+                                "src": "http://pub.idqqimg.com/pc/misc/files/20200416/3c376048a60b488d998e1ef31153db5e.png"
+                            },
+                            "styles": {
+                                "width": "552rpx",
+                                "height": "192rpx",
+                                "position": "relative",
+                                "top": "-1rpx"
+                            },
+                            "children": []
+                        },
+                        {
+                            "tag": "img",
+                            "content": "",
+                            "attributes": {
+                                "viewID": "6",
+                                "class": "title-img",
+                                "mode": "scaleToFill",
+                                "src": "http://pub.idqqimg.com/pc/misc/files/20200416/54aaad879a4042899540fafd969395f6.png"
+                            },
+                            "styles": {
+                                "width": "176rpx",
+                                "height": "90rpx",
+                                "margin-top": "28rpx",
+                                "margin-bottom": "42rpx"
+                            },
+                            "children": []
+                        },
+                        {
+                            "tag": "text",
+                            "content": "{{tips}}",
+                            "attributes": {
+                                "viewID": "7",
+                                "class": "tips"
+                            },
+                            "styles": {
+                                "box-sizing": "border-box",
+                                "display": "-webkit-box",
+                                "overflow": "hidden",
+                                "color": "rgb(255, 255, 255)",
+                                "font-size": "14px",
+                                "-webkit-line-clamp": "4",
+                                "margin-left": "85rpx",
+                                "margin-right": "85rpx",
+                                "height": "160rpx"
+                            },
+                            "children": []
+                        },
+                        {
+                            "tag": "view",
+                            "content": "\n      \n      \n    ",
+                            "attributes": {
+                                "viewID": "8",
+                                "class": "btn-wrp",
+                                "pts:on-tap": "{{'editPersonalProfile'}}"
+                            },
+                            "styles": {
+                                "display": "flex",
+                                "box-sizing": "border-box",
+                                "width": "456rpx",
+                                "height": "72rpx",
+                                "position": "relative",
+                                "margin-top": "40rpx"
+                            },
+                            "children": [
+                                {
+                                    "tag": "img",
+                                    "content": "",
+                                    "attributes": {
+                                        "viewID": "10",
+                                        "class": "btn-img",
+                                        "mode": "scaleToFill",
+                                        "src": "http://pub.idqqimg.com/pc/misc/files/20200416/8b787675714740eeb21c7fc5b15712c0.png"
+                                    },
+                                    "styles": {
+                                        "width": "456rpx",
+                                        "height": "72rpx",
+                                        "position": "absolute"
+                                    },
+                                    "children": []
+                                },
+                                {
+                                    "tag": "view",
+                                    "content": "\n        \n      ",
+                                    "attributes": {
+                                        "viewID": "11",
+                                        "class": "edit-text-wrp"
+                                    },
+                                    "styles": {
+                                        "display": "flex",
+                                        "box-sizing": "border-box",
+                                        "width": "456rpx",
+                                        "height": "72rpx",
+                                        "position": "absolute",
+                                        "align-items": "center",
+                                        "justify-content": "center"
+                                    },
+                                    "children": [
+                                        {
+                                            "tag": "text",
+                                            "content": "{{edit_profile_text}}",
+                                            "attributes": {
+                                                "viewID": "12",
+                                                "class": "edit-profile-text"
+                                            },
+                                            "styles": {
+                                                "box-sizing": "border-box",
+                                                "display": "-webkit-box",
+                                                "overflow": "hidden",
+                                                "color": "rgb(19, 16, 12)",
+                                                "font-size": "17px"
+                                            },
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "tag": "text",
+                            "content": "{{use_origin_account_text}}",
+                            "attributes": {
+                                "viewID": "9",
+                                "class": "use-origin-account-text",
+                                "pts:on-tap": "{{'useOriginalAccount'}}"
+                            },
+                            "styles": {
+                                "box-sizing": "border-box",
+                                "display": "-webkit-box",
+                                "overflow": "hidden",
+                                "color": "rgb(210, 185, 129)",
+                                "font-size": "14px",
+                                "margin-top": "24rpx"
+                            },
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

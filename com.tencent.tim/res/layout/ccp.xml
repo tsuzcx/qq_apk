@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/m1u" android:layout_width="fill_parent" android:layout_height="200.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/di_" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/lla" android:layout_width="200.0dip" android:layout_height="fill_parent" android:layout_alignParentRight="true" />
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/b_y" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height">
+        <TextView android:textSize="17.0dip" android:ellipsize="end" android:gravity="center" android:id="@id/ivTitleName" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hvn" android:singleLine="true" android:layout_centerInParent="true" style="@style/TitleText" />
+        <ImageView android:id="@id/ba3" android:background="@drawable/top_button_right_selector" android:paddingLeft="6.0dip" android:paddingTop="3.0dip" android:paddingRight="6.0dip" android:paddingBottom="3.0dip" android:layout_width="36.0dip" android:layout_height="30.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/header_btn_add" android:scaleType="center" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/ac6" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/lpk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_below="@id/b_y">
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="27.0dip" android:layout_centerVertical="true">
+            <TextView android:textSize="14.0dip" android:ellipsize="end" android:id="@id/k9g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textSize="14.0dip" android:ellipsize="end" android:id="@id/kai" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        </LinearLayout>
+        <ImageView android:id="@id/dij" android:clickable="false" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/fyw" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/yq4" />
+    </RelativeLayout>
+</RelativeLayout>

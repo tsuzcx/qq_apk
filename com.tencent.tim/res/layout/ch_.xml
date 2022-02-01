@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/axi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/nu2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/nu4" android:background="@color/axi" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginTop="0.0dip">
+            <TextView android:textSize="14.0sp" android:textColor="@color/apv" android:id="@id/nu3" android:paddingLeft="30.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="26.0dip" android:text="@string/xpb" android:layout_alignParentBottom="true" android:layout_centerInParent="true" />
+            <ImageView android:id="@id/nkq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="-24.0dip" android:layout_marginBottom="26.0dip" android:src="@drawable/guh" android:layout_toLeftOf="@id/nu3" android:layout_alignParentBottom="true" android:layout_centerInParent="true" />
+            <View android:layout_gravity="bottom" android:layout_alignParentBottom="true" style="@style/acc" />
+        </RelativeLayout>
+    </LinearLayout>
+    <FrameLayout android:layout_gravity="center|left|top" android:id="@id/nu6" android:padding="@dimen/bdg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <EditText android:textSize="@dimen/bd9" android:textColor="@color/aii" android:textColorHint="@color/aw2" android:gravity="center|left|top" android:layout_gravity="center|left|top" android:id="@id/nu5" android:background="@drawable/bkj" android:paddingLeft="@dimen/bdb" android:paddingTop="@dimen/bdc" android:paddingRight="@dimen/bdb" android:paddingBottom="@dimen/bdc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/wju" android:maxLines="4" android:minLines="2" android:inputType="textMultiLine" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff434343" android:layout_gravity="center|right|top" android:id="@id/nu7" android:background="#e6ffffff" android:paddingLeft="3.0dip" android:paddingTop="2.0dip" android:paddingRight="4.0dip" android:paddingBottom="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </FrameLayout>
+    <View android:layout_gravity="bottom" android:id="@id/nks" android:background="@color/ah2" android:layout_width="fill_parent" android:layout_height="1.0px" />
+</FrameLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.qqmail.activity.compose.QMComposeHeader android:orientation="vertical" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/mp_" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <include android:id="@id/mpa" layout="@layout/cjf" />
+            <include android:id="@id/mpb" layout="@layout/cju" />
+            <include android:id="@id/mp4" layout="@layout/cju" />
+            <include android:id="@id/mp3" layout="@layout/cjf" />
+            <include android:id="@id/mp2" layout="@layout/cjf" />
+            <include android:id="@id/mpc" layout="@layout/cju" />
+        </LinearLayout>
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/mp5" android:background="@color/al3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include android:id="@id/mpc" layout="@layout/cju" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/mp6" android:background="@color/al3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.qqmail.activity.compose.QQMailUILabel style="@style/abq">
+            <TextView android:textColor="@color/bp" android:id="@id/mpv" android:paddingRight="15.0dip" android:text="@string/yhe" style="@style/abp" />
+            <EditText android:textColorHint="@color/ava" android:id="@id/mpu" android:background="@null" android:hint="@string/yhd" style="@style/abm" />
+            <Button android:id="@id/mkq" android:layout_marginBottom="3.0dip" style="@style/af0" />
+        </com.tencent.qqmail.activity.compose.QQMailUILabel>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/mp7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include android:id="@id/mp8" layout="@layout/cjo" />
+    </LinearLayout>
+    <include android:id="@id/mpd" layout="@layout/cjt" />
+    <TextView android:id="@id/mp9" android:visibility="gone" style="@style/abt" />
+</com.tencent.qqmail.activity.compose.QMComposeHeader>

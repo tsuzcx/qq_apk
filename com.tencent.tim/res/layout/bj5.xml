@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:orientation="vertical" android:background="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.album.business.photolist.ui.listitem.NoShootTimeTitleLayout android:id="@id/hcd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.5dip" android:layout_marginTop="20.0dip" android:layout_marginRight="@dimen/yv" android:layout_marginBottom="15.0dip" />
+    <LinearLayout android:orientation="vertical" android:id="@id/he2" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/he1" android:layout_width="fill_parent" android:layout_height="96.0dip">
+            <FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+                <ImageView android:layout_gravity="center_horizontal" android:background="@drawable/hx9" android:layout_width="74.0dip" android:layout_height="74.0dip" />
+                <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="19.0sp" android:textStyle="bold" android:textColor="@color/a6g" android:gravity="bottom" android:layout_gravity="bottom|center" android:id="@id/he0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-4.0dip" android:layout_marginBottom="-4.0dip" android:text="01" android:includeFontPadding="false" />
+            </FrameLayout>
+        </RelativeLayout>
+        <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/frf" android:paddingLeft="@dimen/yv" android:paddingRight="@dimen/yv" android:layout_width="fill_parent" android:layout_height="@dimen/ap0" android:layout_marginTop="@dimen/ap2" android:layout_marginBottom="@dimen/ap2">
+            <ImageView android:id="@id/fw6" android:background="@drawable/fws" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="3.0dip" android:layout_centerVertical="true" />
+            <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="16.0sp" android:textColor="#ff03081a" android:ellipsize="end" android:id="@id/fwe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:text="地点" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/fw6" android:layout_centerVertical="true" />
+            <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="16.0sp" android:textColor="#ff03081a" android:ellipsize="end" android:id="@id/fvz" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:text="address" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/fwe" android:layout_centerVertical="true" />
+            <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="#ff03081a" android:gravity="top" android:id="@id/jlb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2015.4.28" android:layout_toRightOf="@id/fvz" />
+            <com.qzone.album.business.photolist.ui.SharingOwnersListBar android:id="@id/he3" android:layout_width="wrap_content" android:layout_height="@dimen/ap0" android:layout_marginLeft="11.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <Button android:textSize="14.0dip" android:textColor="@color/a8t" android:id="@id/frc" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="选择" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/fw7" android:background="@drawable/ay5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_toLeftOf="@id/frc" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ll8" android:paddingLeft="@dimen/yv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip">
+            <View android:background="@drawable/hx8" android:layout_width="14.0dip" android:layout_height="14.0dip" />
+            <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="12.0sp" android:textColor="#ffb0b3bf" android:id="@id/dav" android:paddingRight="@dimen/yv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="大事件大事件" />
+        </LinearLayout>
+        <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="12.0sp" android:textColor="@color/bp" android:id="@id/daw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/yv" android:layout_marginRight="@dimen/yv" android:layout_marginBottom="@dimen/ap2" android:text="图片描述" />
+    </LinearLayout>
+</merge>

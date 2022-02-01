@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.QQTabHost android:id="@android:id/tabhost" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.activity.recent.cur.DragFrameLayout android:id="@id/b9o" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:id="@android:id/tabcontent" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mobileqq.widget.QQBlurView android:layout_gravity="bottom" android:id="@id/kmr" android:layout_width="fill_parent" android:layout_height="54.0dip" />
+        <com.tencent.mobileqq.widget.QQTabWidget android:layout_gravity="bottom" android:id="@android:id/tabs" android:background="@drawable/skin_bottom_bar_background_theme_version2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:showDividers="none" />
+        <include android:layout_gravity="center|left|top" android:id="@id/e3u" android:layout_width="wrap_content" android:layout_height="@dimen/title_bar_height" layout="@layout/ati" />
+        <ImageView android:id="@id/wr" android:visibility="gone" android:layout_width="660.0dip" android:layout_height="60.0dip" android:layout_marginLeft="-230.0dip" android:layout_marginTop="24.0dip" />
+    </com.tencent.mobileqq.activity.recent.cur.DragFrameLayout>
+</com.tencent.mobileqq.widget.QQTabHost>

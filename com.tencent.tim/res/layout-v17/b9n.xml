@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingTop="6.0dip" android:paddingBottom="@dimen/am5" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/gvy" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="20.0sp" android:textColor="@color/skin_black" android:layout_gravity="center" android:id="@id/gvx" android:paddingTop="@dimen/am3" android:paddingBottom="@dimen/am2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/am4" android:layout_marginRight="@dimen/am4" android:text="3月21日" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/gw0" android:paddingTop="35.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/fc6" android:layout_toRightOf="@id/gvx" android:layout_toEndOf="@id/gvx" />
+        <ImageView android:id="@id/gvz" android:paddingTop="35.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/fc4" android:layout_toLeftOf="@id/gvx" android:layout_toStartOf="@id/gvx" />
+    </RelativeLayout>
+    <include layout="@layout/c58" />
+    <RelativeLayout android:id="@id/gw6" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/gzo" android:layout_width="@dimen/am_" android:layout_height="@dimen/am_" android:layout_marginLeft="@dimen/ama" android:src="@drawable/fj3" />
+        <Button android:textSize="@dimen/aym" android:textColor="@color/skin_black" android:gravity="center" android:id="@id/gzp" android:background="@drawable/akt" android:paddingLeft="13.0dip" android:paddingTop="3.0dip" android:paddingRight="13.0dip" android:paddingBottom="3.0dip" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginRight="15.0dip" android:text="@string/ra_" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/amf" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/gzs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ame" android:layout_marginTop="0.0dip" android:layout_marginRight="1.0dip" android:text="@string/ra9" android:maxLines="1" android:singleLine="true" android:layout_toLeftOf="@id/gzp" android:layout_toRightOf="@id/gzo" />
+        <TextView android:textSize="11.0dip" android:textColor="@color/skin_gray_group_item" android:ellipsize="end" android:id="@id/gzr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="@string/ra7" android:maxLines="1" android:singleLine="true" android:layout_below="@id/gzs" android:layout_alignLeft="@id/gzs" android:layout_alignRight="@id/gzs" />
+    </RelativeLayout>
+    <com.tencent.biz.qqstory.storyHome.qqstorylist.view.VideoListLayout android:id="@id/gwn" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <TextView android:textSize="14.0dip" android:textColor="#ff12b8f6" android:id="@id/gzu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="15.0dip" android:text="@string/ra8" />
+    <ImageView android:id="@id/gvr" android:background="#ffcccccc" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="20.0dip" />
+</LinearLayout>

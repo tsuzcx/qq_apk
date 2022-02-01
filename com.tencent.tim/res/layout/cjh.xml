@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.qqmail.activity.compose.QMComposeAttachItem android:gravity="center_horizontal" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qm="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bhk" android:layout_marginRight="@dimen/bhk">
+            <FrameLayout android:id="@id/ln3" style="@style/a_h">
+                <ImageView android:id="@id/llu" android:scaleType="centerCrop" android:contentDescription="@string/pb" style="@style/a_f" />
+                <View android:id="@id/ln6" style="@style/a_g" />
+                <RelativeLayout android:layout_gravity="center" android:id="@id/lnp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <ImageView android:layout_gravity="bottom|center|left" android:id="@id/moh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginBottom="4.0dip" android:src="@drawable/i6w" />
+            </FrameLayout>
+            <TextView android:textSize="12.0sp" android:textColor="@color/aii" android:ellipsize="middle" android:gravity="center" android:id="@id/c_g" android:layout_width="@dimen/bh9" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textSize="9.0sp" android:textColor="@color/air" android:ellipsize="middle" android:gravity="center" android:id="@id/c_j" android:layout_width="@dimen/bh9" android:layout_height="wrap_content" android:singleLine="true" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/bhb" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center|right|top" android:id="@id/mof" android:background="@drawable/bu_" android:layout_width="@dimen/bha" android:layout_height="@dimen/bha" android:text="@string/xk0" />
+    </FrameLayout>
+</com.tencent.qqmail.activity.compose.QMComposeAttachItem>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/jm" android:layout_width="fill_parent" android:layout_height="60.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/d_b" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
+        <com.tencent.widget.FixSizeImageView android:id="@id/icon" android:layout_width="40.0dip" android:layout_height="40.0dip" />
+        <ImageView android:layout_gravity="end|bottom|center" android:id="@id/n7c" android:layout_width="13.0dip" android:layout_height="13.0dip" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/result_layout" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_marginRight="16.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <Button android:textSize="14.0dip" android:gravity="center" android:layout_gravity="center|right" android:id="@id/i8s" android:focusable="false" android:visibility="visible" android:duplicateParentState="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ypy" android:lines="1" android:includeFontPadding="false" style="@style/i9" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2_theme_version2" android:gravity="center" android:layout_gravity="center|right" android:id="@id/i92" android:visibility="gone" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="60.0dip" android:text="@string/l23" android:includeFontPadding="false" style="@style/vp" />
+    </FrameLayout>
+    <com.tencent.widget.SingleLineTextView android:textSize="@dimen/j_" android:textColor="@color/skin_gray2_theme_version2" android:id="@id/k_1" android:visibility="gone" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="17.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="32.0dip" android:layout_marginRight="12.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_toLeftOf="@id/result_layout" android:layout_toRightOf="@id/d_b" />
+    <com.tencent.widget.SingleLineTextView android:textSize="@dimen/j1" android:textColor="@color/skin_black_theme_version2" android:ellipsize="end" android:gravity="start|center" android:id="@id/text1" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="22.0dip" android:layout_marginLeft="12.0dip" android:maxWidth="@dimen/ka" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/d_b" android:layout_centerVertical="true" />
+    <com.tencent.widget.FixSizeImageView android:gravity="center_vertical" android:id="@id/dyk" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="10.5dip" android:layout_marginRight="16.0dip" android:scaleType="fitCenter" android:layout_alignParentRight="true" />
+</RelativeLayout>

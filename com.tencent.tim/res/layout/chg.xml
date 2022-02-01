@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:paddingLeft="@dimen/be0" android:paddingRight="@dimen/be0" android:layout_width="fill_parent" android:layout_height="@dimen/bdx"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.qqmail.view.AttachNamesHandlerTextView android:textSize="13.0dip" android:textColor="@color/k8" android:layout_gravity="center_vertical" android:id="@id/mhp" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

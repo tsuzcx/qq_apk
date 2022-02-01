@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/j2"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/j1" android:textColor="@color/skin_black" android:id="@id/f5e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/q5o" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/yw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:src="@drawable/common_arrow_right_selector" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_toLeftOf="@id/yw" android:layout_centerVertical="true">
+        <ImageView android:id="@id/e83" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:src="@drawable/skin_tips_dot" />
+        <TextView android:textSize="@dimen/j9" android:ellipsize="end" android:id="@id/j63" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="hahafadfsfsd" android:maxLines="1" />
+        <RelativeLayout android:id="@id/iaj" android:layout_width="36.0dip" android:layout_height="40.0dip">
+            <com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView android:id="@id/image" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="6.0dip" android:src="@drawable/com" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+            <ImageView android:id="@id/dec" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="0.0dip" android:src="@drawable/skin_tips_dot" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

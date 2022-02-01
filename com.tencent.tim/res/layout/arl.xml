@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/b2n" android:focusable="true" android:focusableInTouchMode="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/akk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:bgType="iwf" formItem:leftText="切换测试环境" formItem:showArrow="true" />
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/ak7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:bgType="jsv" formItem:leftText="开启真机调试" formItem:showArrow="true" />
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/ajs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:bgType="jsv" formItem:leftText="扫码分享" formItem:showArrow="true" />
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/ag5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:bgType="jsv" formItem:leftText="删除本地APP" formItem:showArrow="true" />
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/ag9" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:leftText="重新下载词典" formItem:showArrow="true" />
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/al1" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:leftText="加载本地词典（目录根据轻APP环境）" formItem:showArrow="true" />
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/akl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:bgType="iwf" formItem:leftText="调试APP更新" formItem:showArrow="true" />
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/akp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:bgType="jsv" formItem:leftText="通用代码测试" formItem:showArrow="true" />
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/akq" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:leftText="通用代码测试2" formItem:showArrow="true" />
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/afk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:bgType="jsv" formItem:leftText="ArkAi切换合并Action模式" formItem:showArrow="true" />
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/ag4" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:leftText="清除APP与APP配置" formItem:showArrow="true" />
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/akm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:bgType="iwf" formItem:leftText="测试异步分享--添加异步回调" formItem:showArrow="true" />
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/akn" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:leftText="测试异步分享--card模式" formItem:showArrow="true" />
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/ako" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:leftText="测试异步分享--normal模式" formItem:showArrow="true" />
+            <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="3.0dip" android:layout_marginBottom="@dimen/avd">
+                    <EditText android:textSize="@dimen/mp" android:id="@id/bt_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="3.0dip" android:layout_marginBottom="5.0dip" android:layout_weight="2.0" />
+                    <Button android:id="@id/ak_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/qm9" android:layout_weight="1.0" />
+                </LinearLayout>
+            </LinearLayout>
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/afd" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="jsv" formItem:switchChecked="false" formItem:switchText="AIO语义分析Crash测试" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/aff" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="jsv" formItem:switchChecked="true" formItem:switchText="开启本地语义分析" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/afg" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="jsv" formItem:switchChecked="true" formItem:switchText="开启后台语义分析" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/afh" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="jsv" formItem:switchChecked="false" formItem:switchText="显示fps" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/afi" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="jsv" formItem:switchChecked="false" formItem:switchText="使用单线程模式（默认为多线程）" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/afe" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="jsv" formItem:switchChecked="false" formItem:switchText="关闭硬件渲染" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/afj" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="jsv" formItem:switchChecked="false" formItem:switchText="使用虚拟上下文（点两次关闭）" />
+            <LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <LinearLayout android:orientation="horizontal" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="3.0dip" android:layout_marginBottom="3.0dip">
+                    <EditText android:textSize="@dimen/mp" android:id="@id/brn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="3.0dip" android:layout_marginBottom="5.0dip" android:layout_weight="2.0" />
+                    <Button android:id="@id/af1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/qm_" android:layout_weight="3.0" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="3.0dip" android:layout_marginBottom="3.0dip">
+                    <EditText android:textSize="@dimen/mp" android:id="@id/brs" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="3.0dip" android:layout_marginBottom="5.0dip" android:layout_weight="2.0" />
+                    <Button android:id="@id/af2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/qm7" android:layout_weight="3.0" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="3.0dip" android:layout_marginBottom="3.0dip">
+                    <EditText android:textSize="@dimen/mp" android:id="@id/brk" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="3.0dip" android:layout_marginBottom="5.0dip" android:hint="0.001 - 1.0" android:layout_weight="4.0" />
+                    <Button android:id="@id/aeq" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="设置ark页卡滑动阻尼系数" android:layout_weight="1.0" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="3.0dip" android:layout_marginBottom="3.0dip">
+                    <EditText android:textSize="@dimen/mp" android:id="@id/brl" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="3.0dip" android:layout_marginBottom="5.0dip" android:hint="2 - 10" android:layout_weight="4.0" />
+                    <Button android:id="@id/aer" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="设置ark页卡滑动速度减小倍数因子" android:layout_weight="1.0" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="3.0dip" android:layout_marginBottom="3.0dip">
+                    <EditText android:textSize="@dimen/mp" android:id="@id/brj" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="3.0dip" android:layout_marginBottom="5.0dip" android:hint="1 - 30" android:layout_weight="4.0" />
+                    <Button android:id="@id/aep" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="设置ark边缘滑动宽度比例" android:layout_weight="1.0" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:background="@color/k8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:layout_marginTop="@dimen/avd" android:layout_marginRight="3.0dip" android:layout_marginBottom="@dimen/avd">
+                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="40.0dip">
+                    <TextView android:textSize="@dimen/aw5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="模板ID:" />
+                    <EditText android:textSize="@dimen/aw5" android:id="@id/jcv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="com.tencent.sample" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="40.0dip">
+                    <TextView android:textSize="@dimen/aw5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qm8" />
+                    <EditText android:textSize="@dimen/aw5" android:id="@id/jcw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="sample" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="80.0dip">
+                    <TextView android:textSize="@dimen/aw5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="meta:" />
+                    <EditText android:textSize="@dimen/aw5" android:id="@id/jcu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{}" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="40.0dip">
+                    <TextView android:textSize="@dimen/aw5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="config:" />
+                    <EditText android:textSize="@dimen/aw5" android:id="@id/jct" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="40.0dip">
+                    <TextView android:textSize="@dimen/aw5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="desc:" />
+                    <EditText android:textSize="@dimen/aw5" android:id="@id/jcy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/qma" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <Button android:id="@id/ak1" android:layout_width="wrap_content" android:layout_height="40.0dip" android:text="发送app" />
+                    <Button android:id="@id/lay" android:layout_width="wrap_content" android:layout_height="40.0dip" android:text="@string/qmb" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </com.tencent.mobileqq.widget.BounceScrollView>
+</LinearLayout>

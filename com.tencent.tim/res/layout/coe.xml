@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/bu2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="38.0dip">
+        <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:layout_gravity="center_vertical" android:paddingLeft="@dimen/aii" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/d0r" />
+    </FrameLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/i6" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <FrameLayout android:id="@id/ihf" android:background="@drawable/common_strip_setting_middle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="44.0dip">
+        <com.tencent.mobileqq.widget.PressAlphaTextView android:textSize="16.0sp" android:textColor="@color/skin_blue" android:gravity="center" android:layout_gravity="center|left" android:id="@id/ihe" android:padding="@dimen/aii" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/d0t" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/ihj" android:background="@drawable/common_strip_setting_middle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="44.0dip">
+        <com.tencent.mobileqq.widget.PressAlphaTextView android:textSize="16.0sp" android:textColor="@color/skin_blue" android:gravity="center" android:layout_gravity="center|left" android:id="@id/ihi" android:padding="@dimen/aii" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/d0v" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/ihh" android:background="@drawable/common_strip_setting_bottom" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="44.0dip">
+        <com.tencent.mobileqq.widget.PressAlphaTextView android:textSize="16.0sp" android:textColor="@color/skin_blue" android:gravity="center" android:layout_gravity="center|left" android:id="@id/ihg" android:padding="@dimen/aii" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/d0u" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/ihd" android:background="@drawable/common_strip_setting_bottom" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="44.0dip">
+        <com.tencent.mobileqq.widget.PressAlphaTextView android:textSize="16.0sp" android:textColor="@color/skin_blue" android:gravity="center" android:layout_gravity="center|left" android:id="@id/ihc" android:padding="@dimen/aii" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/d0s" />
+    </FrameLayout>
+</LinearLayout>

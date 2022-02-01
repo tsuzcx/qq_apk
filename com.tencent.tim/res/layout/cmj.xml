@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/axi" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="top" android:orientation="vertical" android:paddingTop="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/btw">
+        <LinearLayout android:orientation="horizontal" style="@style/ae_">
+            <EditText android:textColorHint="@color/aw2" android:layout_gravity="center_vertical" android:id="@id/arm" android:background="@null" android:layout_width="0.0dip" android:layout_marginLeft="0.0dip" android:layout_marginRight="5.0dip" android:hint="@string/xkt" android:layout_weight="1.0" android:imeOptions="actionDone" style="@style/aez" />
+            <Button android:layout_gravity="center_vertical" android:id="@id/mkr" style="@style/af0" />
+        </LinearLayout>
+    </LinearLayout>
+    <com.tencent.qqmail.view.QMTopBar android:id="@id/nph" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</FrameLayout>

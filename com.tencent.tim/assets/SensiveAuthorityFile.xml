@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<list>
+    <!--只有id有用，增加可读性，先加上几个属性，relase版本时，可以去除其他几个属性。-->
+	<business id="1d76c6" path="" author="" info="weishi"/>
+	<business id="d059d3" path="" author="" info="kandian" level="5"/>
+	<business id="d059d4" path="" author="" info="kandian_ad" level="4"/>
+	<business id="b84cf5" path="" author="" info="gamecenter"/>
+	<business id="a8b781" path="" author="" info="fight"/>
+	<business id="62ad83" path="" author="" info="QQ音视频"/>
+	<business id="35e972" path="" author="" info="" level="4"/>
+	<business id="b94d1a" path="" author="" info="" level="4"/>
+	<business id="2240ca" path="" author="" info=""/>
+	<business id="ecd027" path="" author="" info=""/>
+	<business id="f5cc92" path="" author="" info=""/>
+	<business id="73f9b3" path="" author="" info=""/>
+    <business id="0" path="" author="" info="test"/>
+	 <business id="641d5d" path="" author="" info=""/>
+	 <business id="7ef1aa" path="" author="" info=""/>
+	 <business id="52b7f2" path="" author="" info="" level="4"/>
+	 <business id="ea6862" path="" author="" info=""/>
+	 <business id="a4bd32" path="" author="" info="增值"/>
+	 <business id="0e8bd1" path="" author="" info="" level="4"/>
+	
+	 
+	 <business id="a28ca9" path="" author="" info=""/>
+	 <business id="f66737" path="" author="" info=""/>
+	 <business id="338d83" path="" author="" info=""/>
+	 <business id="5076bf" path="" author="" info="" level="4"/>
+	 <business id="62b331" path="" author="" info=""/>
+	 <business id="7411ce" path="" author="" info=""/>
+	 <business id="0db4c4" path="" author="" info=""/>
+	 <business id="1d76c6" path="" author="" info="" level="4"/>
+	<business id="d66e8c" path="" author="" info="" level="3"/>
+	<business id="674ef4" path="" author="" info="" level="4"/>
+	<business id="6973c4" path="" author="eddyyao" info="" level="4" />
+	<business id="07aa5e" path="" author="" info="" level="4" />
+	<business id="f4c66e" path="" author="" info="" level="4" />
+	<business id="ef0716" path="" author="allanlin" info="realname" level="4" />
+
+</list>

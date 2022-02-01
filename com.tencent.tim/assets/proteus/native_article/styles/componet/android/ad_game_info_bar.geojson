@@ -1,0 +1,154 @@
+{
+  "view_type": "UIView",
+  "view_id": "id_game_operate_area",
+  "layout_type": "layout_relative",
+  "direction": "horizontal",
+  "height": {
+    "type": "relative",
+    "value": "60"
+  },
+  "width": {
+    "type": "match_parent"
+  },
+  "attributes": {
+    "setBackgroundColorString:": "#f7f7f7"
+  },
+  "event_type": "cmd_native_detail_ad_click",
+  "subviews": [
+    {
+      "view_type": "ReadinjoyNativeArticleAdDownloadView",
+      "view_id": "id_view_AdDownloadView",
+      "height": {
+        "type": "relative",
+        "value": "30"
+      },
+      "width": {
+        "type": "relative",
+        "value": "76"
+      },
+      "align_parent_center_vertical": "YES",
+      "align_parent_right": "YES",
+      "event_type": "cmd_native_inner_game_button_click",
+      "margin_right": "15",
+      "attributes": {
+        "setFrameString:": "-1",
+        "setFeedsModel:": "$innerGameModel",
+        "setDownloadBtnStyle:": {
+          "buttonTextColor": "#12B7F5 ",
+          "buttonTextSize": "13",
+          "buttonCornerSize": "3",
+          "buttonWidth": "70",
+          "buttonHeight": "28",
+          "buttonBackgroundColor": "",
+          "buttonBorderSize": "1",
+          "buttonBorderColor": "#12B7F5",
+          "buttonHorizontalPadding": "8",
+          "buttonVerticalPadding": "6",
+          "buttonAlignment": "3",
+          "clickTextColor": "#A5A7B3",
+          "clickBackgroundColor": "",
+          "clickBorderColor": "#A5A7B3"
+        },
+        "progressStyle:": {
+          "style": "1",
+          "showProgress": "1",
+          "width": "68",
+          "height": "27",
+          "minWidth": "68",
+          "maxHeight": "30",
+          "textColor": "#00CAFC",
+          "textSize": "12",
+          "corner": "3",
+          "background": "",
+          "buttonBorderSize": "1",
+          "buttonBorderColor": "#00CAFC",
+          "progressBg": "#f7f7f7",
+          "secondaryProgressBg": "#f7f7f7",
+          "progressColor": "#3300CAFC"
+        }
+      }
+    },
+    {
+      "view_type": "ReadInjoyAsynImageView",
+      "view_id": "id_game_small_img",
+      "margin_top": "10",
+      "margin_left": "15",
+      "height": {
+        "type": "relative",
+        "value": "40"
+      },
+      "width": {
+        "type": "relative",
+        "value": "40"
+      },
+      "align_parent_left": "YES",
+      "event_type": "cmd_native_inner_ad_cover_click",
+      "attributes": {
+        "setImageWithURLString:lineup:": [
+          "$image_url",
+          "-1"
+        ]
+      }
+    },
+    {
+      "view_type": "container",
+      "layout_type": "layout_linear",
+      "direction": "vertical",
+      "align_parent_center_vertical": "YES",
+      "right_of_view": "id_game_small_img",
+      "margin_left": "10",
+      "height": {
+        "type": "wrap_content"
+      },
+      "width": {
+        "type": "relative",
+        "value": "191"
+      },
+      "subviews": [
+        {
+          "view_type": "UILabel",
+          "view_id": "id_tv_author",
+          "margin_top": "0",
+          "height": {
+            "type": "wrap_content"
+          },
+          "width": {
+            "type": "relative",
+            "value": "255"
+          },
+          "attributes": {
+            "setText:lineSpace:": [
+              "$text",
+              "0"
+            ],
+            "setTextColorString:": "#262626",
+            "setFontSizeString:": "15",
+            "setNumberOfLinesString:": "1"
+          }
+        },
+        {
+          "view_type": "UILabel",
+          "view_id": "id_tv_title",
+          "margin_bottom": "0",
+          "margin_top": "4",
+          "height": {
+            "type": "wrap_content"
+          },
+          "width": {
+            "type": "relative",
+            "value": "255"
+          },
+          "attributes": {
+            "setText:lineSpace:": [
+              "$text",
+              "0"
+            ],
+            "setTextColorString:": "#A6A6A6",
+            "setFontSizeString:": "12",
+            "setNumberOfLinesString:": "1"
+          }
+        }
+      ]
+    }
+  ]
+}

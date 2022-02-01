@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/qq_profilecard_foot_bg" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i4" android:layout_marginTop="@dimen/i6" android:layout_marginRight="@dimen/i4" android:layout_marginBottom="@dimen/i3" android:layout_centerInParent="true">
+        <Button android:id="@id/ga9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/dbs" style="@style/bd" />
+    </LinearLayout>
+</RelativeLayout>

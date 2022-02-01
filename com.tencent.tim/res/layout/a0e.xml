@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingTop="@dimen/aln" android:paddingBottom="@dimen/all" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:SquareImageView="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/alu" android:textColor="@color/skin_unite_search_text_black_000000_6991b8" android:ellipsize="end" android:id="@id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/alm" android:layout_marginRight="@dimen/alm" android:layout_marginBottom="10.0dip" android:maxLines="2" android:singleLine="false" android:includeFontPadding="false" android:layout_centerVertical="true" />
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/alm">
+        <RelativeLayout android:id="@id/e7m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip">
+            <com.tencent.mobileqq.widget.ThemeSquareImageView android:id="@id/dce" android:layout_width="@dimen/ajq" android:layout_height="@dimen/ajq" android:scaleType="centerCrop" SquareImageView:filter_color="#ff777777" />
+            <com.tencent.widget.ThemeImageView android:id="@id/bb6" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_centerInParent="true" />
+            <TextView android:textSize="9.0dip" android:textColor="@color/ahb" android:gravity="center" android:id="@id/jb7" android:background="@color/lx" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="12.0dip" android:layout_alignParentTop="true" />
+        </RelativeLayout>
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/alp" android:textColor="#ff737373" android:ellipsize="end" android:id="@id/j8b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="@dimen/alm" android:maxLines="2" android:singleLine="false" android:includeFontPadding="false" />
+            <TextView android:textSize="@dimen/alt" android:textColor="#ff737373" android:ellipsize="end" android:id="@id/bgt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/aju" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

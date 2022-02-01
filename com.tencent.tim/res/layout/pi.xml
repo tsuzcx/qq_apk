@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.multicard.MultiCardCustomLayout android:id="@id/if5" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/m1" />
+    <com.tencent.mobileqq.widget.BounceScrollView android:id="@id/iig" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/jqb">
+        <include layout="@layout/m0" />
+    </com.tencent.mobileqq.widget.BounceScrollView>
+</com.tencent.mobileqq.multicard.MultiCardCustomLayout>

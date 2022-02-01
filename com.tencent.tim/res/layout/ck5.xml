@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/bhx" android:textColor="@color/atq" android:ellipsize="end" android:gravity="center|left" android:id="@id/mqm" android:paddingLeft="0.0dip" android:paddingRight="@dimen/bho" android:duplicateParentState="false" android:layout_width="fill_parent" android:layout_height="@dimen/blf" android:singleLine="true" android:layout_toLeftOf="@id/mqq" />
+    <ImageView android:id="@id/mqq" android:paddingRight="@dimen/bho" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</merge>

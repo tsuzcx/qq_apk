@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:id="@id/cqg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/dce" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/knj" android:layout="@layout/a1f" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

@@ -1,0 +1,23 @@
+package com.tencent.mobileqq.microapp.out.activity;
+
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+final class h
+  implements View.OnClickListener
+{
+  h(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.e();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes9.jar
+ * Qualified Name:     com.tencent.mobileqq.microapp.out.activity.h
+ * JD-Core Version:    0.7.0.1
+ */

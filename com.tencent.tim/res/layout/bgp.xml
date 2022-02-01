@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/b4_" android:addStatesFromChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="50.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="8.0sp" android:textColor="@color/aes" android:ellipsize="end" android:id="@id/e6r" android:visibility="invisible" android:layout_width="43.0dip" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="DAY" android:singleLine="true" android:layout_centerVertical="true" />
+    <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="16.0sp" android:textColor="@color/aer" android:ellipsize="end" android:id="@id/e6s" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="@string/rl7" android:singleLine="true" android:layout_toRightOf="@id/e6r" android:layout_centerVertical="true" />
+    <com.qzone.widget.CommonLine android:layout_width="310.0dip" android:layout_height="1.0px" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

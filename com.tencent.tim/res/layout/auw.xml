@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/ce1" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="116.0dip" android:layout_alignParentBottom="true">
+        <View android:id="@id/kwh" android:layout_width="0.0px" android:layout_height="0.0px" android:layout_alignParentBottom="true" />
+        <Button android:layout_gravity="center_vertical" android:id="@id/cdp" android:background="@drawable/ai2" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@string/qpg" />
+        <com.tencent.mobileqq.widget.CircleProgress android:id="@id/bbg" android:visibility="visible" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_centerInParent="true" />
+        <Button android:id="@id/cds" android:background="@drawable/ai6" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/qq6" />
+    </RelativeLayout>
+    <TextView android:textSize="17.0sp" android:textColor="#ffffffff" android:gravity="center_horizontal" android:id="@id/cg8" android:layout_width="wrap_content" android:layout_height="20.0dip" android:text="@string/qpz" android:layout_above="@id/ce1" android:layout_centerHorizontal="true" android:contentDescription="@string/qq_" />
+</RelativeLayout>

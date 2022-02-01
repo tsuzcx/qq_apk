@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="40.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="30.0dip" android:typeface="monospace" android:textStyle="bold" android:textColor="#ff91a0cc" android:id="@id/ltj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" android:layout_centerVertical="true" />
+    <FrameLayout android:id="@id/lth" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_toRightOf="@id/ltj" android:layout_centerVertical="true">
+        <ImageView android:id="@id/ltg" android:visibility="invisible" android:layout_width="42.0dip" android:layout_height="35.0dip" android:layout_marginLeft="4.0dip" android:src="@drawable/hy0" />
+        <ImageView android:id="@id/ltf" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="9.0dip" android:layout_marginTop="0.5dip" />
+    </FrameLayout>
+    <TextView android:textSize="15.0dip" android:textColor="@android:color/black" android:ellipsize="end" android:id="@id/lti" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:layout_marginRight="20.0dip" android:maxLines="1" android:layout_toLeftOf="@id/ltl" android:layout_toRightOf="@id/lth" android:layout_centerVertical="true" />
+    <RelativeLayout android:id="@id/ltl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <TextView android:textSize="25.0dip" android:textStyle="bold" android:textColor="#ff4e5776" android:id="@id/ltk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="2.5dip" android:includeFontPadding="false" android:scaleX="0.8" />
+        <TextView android:textSize="10.0dip" android:textColor="#ff4e5776" android:id="@id/ltb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/ltk" android:layout_alignBaseline="@id/ltk" />
+    </RelativeLayout>
+</RelativeLayout>

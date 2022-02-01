@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="35.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="18.0sp" android:textColor="@color/qzone_skin_feed_second_content_text_color" android:id="@id/c6g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/c6f" android:paddingLeft="20.0dip" android:paddingTop="13.0dip" android:paddingRight="12.0dip" android:paddingBottom="2.0dip" android:layout_width="52.0dip" android:layout_height="35.0dip" android:src="@drawable/qzone_skin_feed_date_header_calendar" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

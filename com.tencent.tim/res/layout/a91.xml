@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.presseffect.PressEffectRelativeLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textSize="12.0dip" android:textColor="#ff737373" android:gravity="center" android:id="@id/djf" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="13.0dip" android:includeFontPadding="false" />
+        <TextView android:textSize="17.0dip" android:textColor="#ff262626" android:ellipsize="end" android:id="@id/jq2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_weight="1.0" />
+    </LinearLayout>
+</com.tencent.mobileqq.widget.presseffect.PressEffectRelativeLayout>

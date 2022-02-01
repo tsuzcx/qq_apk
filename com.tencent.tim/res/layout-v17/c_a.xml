@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/lzd" android:background="#7f000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/lo0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/lny" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <ImageView android:id="@id/lnz" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <RelativeLayout android:id="@id/lzb" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.vpng.view.VPNGImageView android:id="@id/los" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+        <View android:id="@id/lou" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+        <RelativeLayout android:id="@id/lzc" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.widget.immersive.ImmersiveTitleBar2 android:id="@id/mb6" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+            <TextView android:textSize="11.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/lov" android:background="@drawable/hiz" android:visibility="gone" android:layout_width="72.0dip" android:layout_height="27.0dip" android:layout_marginTop="60.0dip" android:layout_marginRight="20.0dip" android:text="跳过广告" android:layout_alignParentRight="true" android:layout_marginEnd="20.0dip" />
+            <ImageView android:id="@id/lza" android:background="@drawable/hiy" android:visibility="gone" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginRight="2.0dip" android:src="@drawable/hzf" android:scaleType="center" android:layout_toLeftOf="@id/lov" android:layout_alignTop="@id/lov" android:layout_alignBottom="@id/lov" />
+        </RelativeLayout>
+    </RelativeLayout>
+</merge>

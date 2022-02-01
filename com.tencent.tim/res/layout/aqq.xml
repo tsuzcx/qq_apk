@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel android:orientation="vertical" android:id="@id/a0n" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <com.tencent.mobileqq.activity.aio.audiopanel.AudioPanelViewPager android:id="@id/fho" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:gravity="center_vertical" android:id="@id/m1a" android:background="@drawable/skin_panel_background" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mobileqq.activity.aio.audiopanel.PttTextTransitionAnim android:id="@id/nk8" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginTop="8.0dip" android:layout_centerHorizontal="true" />
+            <ImageView android:id="@id/lxp" android:background="@drawable/skin_aio_audio_panel_record_start_bg" android:layout_width="122.0dip" android:layout_height="122.0dip" android:layout_marginTop="38.0dip" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </FrameLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/fhm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip">
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/ay1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/skin_aio_audio_panel_indicate_panel" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/fhl" android:layout_width="fill_parent" android:layout_height="20.0dip">
+            <TextView android:textSize="15.0sp" android:textColor="#ff878b99" android:gravity="center_vertical" android:id="@id/izk" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/qlf" />
+            <TextView android:textSize="13.0sp" android:textColor="@color/skin_gray2_theme_version2" android:gravity="center_vertical" android:id="@id/i3t" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="18.0dip" android:layout_marginRight="18.0dip" android:text="@string/qlo" />
+        </LinearLayout>
+    </LinearLayout>
+</com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel>

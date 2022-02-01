@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:id="@id/my9" android:layout_width="fill_parent" android:layout_height="@dimen/br6"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/mu1" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:src="@drawable/i6e" android:scaleType="center" android:layout_weight="1.0" />
+        <ImageView android:id="@id/mu0" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:src="@drawable/i6b" android:scaleType="center" android:layout_weight="1.0" />
+        <ImageView android:id="@id/mtz" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:src="@drawable/eoe" android:scaleType="center" android:layout_weight="1.0" />
+        <ImageView android:id="@id/mu3" android:visibility="gone" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:src="@drawable/eol" android:scaleType="center" android:layout_weight="1.0" />
+        <ImageView android:id="@id/mu5" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:src="@drawable/eou" android:scaleType="center" android:layout_weight="1.0" />
+        <ImageView android:id="@id/mu2" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:src="@drawable/eok" android:scaleType="center" android:layout_weight="1.0" />
+        <ImageView android:id="@id/mu4" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:src="@drawable/eor" android:scaleType="center" android:layout_weight="1.0" />
+    </LinearLayout>
+    <View android:id="@id/mzq" android:background="@color/au1" android:visibility="gone" android:layout_width="@dimen/buj" android:layout_height="fill_parent" android:layout_marginLeft="4.0dip" android:layout_marginTop="14.0dip" android:layout_marginRight="4.0dip" android:layout_marginBottom="14.0dip" />
+    <TextView android:textSize="16.0sp" android:textColor="@color/anr" android:gravity="center" android:id="@id/my0" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/x2y" />
+    <TextView android:textSize="17.0sp" android:textColor="@color/anr" android:gravity="center" android:id="@id/mxz" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/x2w" />
+    <TextView android:textSize="18.0sp" android:textColor="@color/anr" android:gravity="center" android:id="@id/mxr" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/x2x" />
+    <com.tencent.qqmail.activity.compose.richeditor.ColorStyleView android:layout_gravity="center_vertical" android:id="@id/mnk" android:visibility="gone" android:layout_width="@dimen/bj3" android:layout_height="@dimen/bj3" app:themeColor="@color/aph" />
+    <com.tencent.qqmail.activity.compose.richeditor.ColorStyleView android:layout_gravity="center_vertical" android:id="@id/mnl" android:visibility="gone" android:layout_width="@dimen/bj3" android:layout_height="@dimen/bj3" app:themeColor="@color/api" />
+    <com.tencent.qqmail.activity.compose.richeditor.ColorStyleView android:layout_gravity="center_vertical" android:id="@id/mnn" android:visibility="gone" android:layout_width="@dimen/bj3" android:layout_height="@dimen/bj3" app:themeColor="@color/apk" />
+    <com.tencent.qqmail.activity.compose.richeditor.ColorStyleView android:layout_gravity="center_vertical" android:id="@id/mnm" android:visibility="gone" android:layout_width="@dimen/bj3" android:layout_height="@dimen/bj3" app:themeColor="@color/apj" />
+</merge>

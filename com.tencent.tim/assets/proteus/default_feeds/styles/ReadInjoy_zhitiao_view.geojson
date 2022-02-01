@@ -1,0 +1,189 @@
+{
+    "ReadInjoy_zhitiao_view":{
+        "view_type":"UIView",
+        "default_visible": "YES",
+        "layout_type": "layout_relative",
+        "view_id":"id_zhitiao_container",
+        "event_type":"cmd_cover_click",
+        "height":{
+            "type":"relative",
+            "value":"211"
+        },
+        "width":{
+            "type":"relative",
+            "value":"375"
+        },
+        "subviews":[
+            {
+                "view_type": "ReadInjoyAsynImageView",
+                "view_id": "id_bg_image_view",
+                "height": {
+                    "type": "match_parent"
+                },
+                "width": {
+                    "type": "match_parent"
+                },
+                "attributes": {
+                    "setImageWithURLString:lineup:": ["$bg_image_url", "1"]
+                }
+            },
+            {
+                "view_type": "ReadInJoyLottieView",
+                "view_id": "id_lottie_view",
+                "height": {
+                    "type": "match_parent"
+                },
+                "width": {
+                    "type": "match_parent"
+                },
+                "attributes": {
+                    "setAnimationUrl:": "$animation_url"
+                }
+            },
+            {
+                "view_type":"UILabel",
+                "view_id":"id_main_title",
+                "margin_left":"18.5",
+                "margin_top":"43",
+                "height":{
+                    "type":"wrap_content"
+                },
+                "width":{
+                    "type":"wrap_content"
+                },
+                "attributes":{
+                    "setFrameString:":"-1",
+                    "setRichText:": "$main_title_rich",
+                    "setText:": "$main_title",
+                    "setFontSizeString:":"18",
+                    "setNumberOfLinesString:":"0",
+                    "setTextColorString:":"#FFFFFF"
+                }
+            },
+            {
+                "view_type":"UILabel",
+                "view_id":"id_sub_title",
+                "margin_left":"18.5",
+                "margin_top":"77",
+                "event_type":"cmd_zhitiao_guide_click",
+                "height":{
+                    "type":"wrap_content"
+                },
+                "width":{
+                    "type":"wrap_content"
+                },
+                "attributes":{
+                    "setFrameString:":"-1",
+                    "setRichText:": "$sub_title_rich",
+                    "setText:": "$sub_title",
+                    "setFontSizeString:":"15",
+                    "setNumberOfLinesString:":"0",
+                    "setTextColorString:":"#FFFFFF"
+                }
+            },
+            {
+                "view_type": "ReadInjoyAsynImageView",
+                "view_id": "id_zhitiao_icon",
+                "margin_left":"17.85",
+                "margin_bottom":"14.25",
+                "align_parent_bottom": "YES",
+                "align_parent_left": "YES",
+                "height": {
+                    "type":"relative",
+                    "value":"14.55"
+                },
+                "width": {
+                    "type":"relative",
+                    "value":"14.35"
+                },
+                "attributes": {
+                    "setImageWithURLString:lineup:": ["$icon_image_url", "1"]
+                }
+            },
+            {
+                "view_type":"UILabel",
+                "view_id":"id_privacy_view",
+                "margin_left":"7.8",
+                "margin_bottom":"13.5",
+                "right_of_view":"id_zhitiao_icon",
+                "align_parent_bottom": "YES",
+                "height":{
+                    "type":"wrap_content"
+                },
+                "width":{
+                    "type":"wrap_content"
+                },
+                "attributes":{
+                    "setFrameString:":"-1",
+                    "setRichText:": "$privacy_text_rich",
+                    "setText:": "$privacy_text",
+                    "setFontSizeString:":"13",
+                    "setTextColorString:":"#FFFFFF"
+                }
+            },
+            {
+                "view_type":"UIButton",
+                "view_id":"id_dislike_button",
+                "align_parent_right":"YES",
+                "event_type":"cmd_zhitiao_dislike_click",
+                "default_visible":"YES",
+                "margin_right":"8",
+                "margin_bottom":"12.5",
+                "align_parent_bottom": "YES",
+                "align_parent_right": "YES",
+                "height":{
+                    "type":"relative",
+                    "value":"18"
+                },
+                "width":{
+                    "type":"relative",
+                    "value":"18"
+                },
+                "attributes":{
+                    "setImage:":"feeds_dislike"
+                }
+            },
+            {
+                "view_type":"UILabel",
+                "view_id":"id_tips_view",
+                "margin_right":"5",
+                "margin_bottom":"12.5",
+                "left_of_view": "id_dislike_button",
+                "event_type":"cmd_zhitiao_tips_click",
+                "align_parent_bottom": "YES",
+                "height":{
+                    "type":"wrap_content"
+                },
+                "width":{
+                    "type":"wrap_content"
+                },
+                "attributes":{
+                    "setFrameString:":"-1",
+                    "setRichText:": "$tips_text_rich",
+                    "setText:": "$tips_text",
+                    "setFontSizeString:":"12",
+                    "setTextColorString:":"#FFFFFF"
+                }
+            },
+            {
+                "view_type":"UIView",
+                "view_id":"id_separator",
+                "margin_left":"6",
+                "margin_top":"7",
+                "height":{
+                    "type":"absolutely","value":"0.5"
+                },
+                "width":{
+                    "type":"relative",
+                    "value":"363"
+                },
+                "attributes":{
+                    "setFrameString:":"-1",
+                    "setBackgroundColorString:":"#E5E5E5"
+                }
+            }
+
+        ]
+    }
+}
+

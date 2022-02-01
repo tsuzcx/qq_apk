@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.XListView android:id="@id/fz8" android:focusable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="1.0dip" android:listSelector="@android:color/transparent" android:transcriptMode="normal" android:divider="@null" />
+    <LinearLayout android:orientation="vertical" android:id="@id/bwl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true" android:contentDescription="@string/l8n">
+        <ImageView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="130.0dip" android:src="@drawable/cju" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff999999" android:gravity="center_horizontal" android:id="@id/jty" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="23.0dip" android:text="@string/l8o" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff999999" android:gravity="center_horizontal" android:id="@id/ado" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/l8h" />
+    </LinearLayout>
+</RelativeLayout>

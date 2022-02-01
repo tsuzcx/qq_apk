@@ -1,0 +1,176 @@
+{
+    "ReadInjoy_article_header_cell": {
+        "view_type": "container",
+        "direction": "vertical",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "wrap_content"
+        },
+        "subviews": [
+
+            {
+                "view_type": "container",
+                "layout_type":"layout_relative",
+                "margin_top": "12",
+                "height": {
+                    "type": "relative",
+                    "value": "35"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "375"
+                },
+                "subviews": [
+                    {
+                        "view_type":"ReadInJoyAvatarView",
+                        "view_id":"id_info_avator",
+                        "align_parent_left":"YES",
+                        "align_parent_top":"YES",
+                        "event_type":"cmd_avatar_click",
+                        "margin_top":"-3.5",
+                        "margin_left":"12",
+                        "height":{
+                            "type":"relative",
+                            "value":"37"
+                        },
+                        "width":{
+                            "type":"relative",
+                            "value":"37"
+                        },
+                        "attributes":{
+                            "loadAvatarByUin:": "$avatar_uin",
+                            "setFrameString:": "-1"
+                        }
+                    },
+                    {
+                        "view_type": "container",
+                        "layout_type":"layout_relative",
+                        "margin_left": "12",
+                        "right_of_view":"id_info_avator",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "43"
+                        },
+                        "width": {
+                            "type": "wrap_content"
+                        },
+
+                        "subviews": [
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_nickname",
+                                "event_type": "cmd_avatar_click",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "attributes": {
+                                    "setFrameString:": "-1",
+                                    "setText:": "$nickname_text",
+                                    "setTextColorString:": "#000000",
+                                    "setFontSizeString:": "13",
+                                    "setNumberOfLinesString:": "1"
+                                }
+                            },
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_timestamp",
+                                "below_of_view":"id_nickname",
+                                "margin_top": "3",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "attributes": {
+                                    "setFrameString:": "-1",
+                                    "setText:": "$timestamp_text",
+                                    "setTextColorString:": "#8C000000",
+                                    "setFontSizeString:": "11",
+                                    "setNumberOfLinesString:": "1"
+                                }
+                            },
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_read_amount",
+                                "right_of_view": "id_timestamp",
+                                "below_of_view":"id_nickname",
+                                "margin_left": "12",
+                                "margin_top": "3",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "attributes": {
+                                    "setFrameString:": "-1",
+                                    "setText:": "$read_amount_text",
+                                    "setTextColorString:": "#8C000000",
+                                    "setFontSizeString:": "11",
+                                    "setNumberOfLinesString:": "1"
+                                }
+                            }
+                        ]
+                    },
+
+
+                    {
+                        "view_type": "UIButton",
+                        "view_id": "id_article_header_follow_button",
+                        "align_parent_center_vertical": "YES",
+                        "align_parent_right": "YES",
+                        "margin_right": "20",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "23"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "50"
+                        },
+                        "event_type": "cmd_social_header_follow_click",
+                        "attributes": {
+                            "setSelectedString:": "$selected_status",
+                            "setTitle:": "$button_status",
+                            "setFontSizeString:": "11",
+                            "setImages:colors:direction:forStates:": [
+                                [
+                                    "",
+                                    ""
+                                ],
+                                [
+                                    "#FFFFFF",
+                                    "#8C000000"
+                                ],
+                                [
+                                    "0",
+                                    "0"
+                                ],
+                                [
+                                    "0",
+                                    "4"
+                                ]
+                            ],
+                            "setBackgroundImages:forStates:": [
+                                [
+                                    "Base_Blue",
+                                    "Base_Grey"
+                                ],
+                                [
+                                    "0",
+                                    "4"
+                                ]
+                            ]
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

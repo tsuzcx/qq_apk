@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.qqmail.activity.contacts.view.ContactsScrollItemView android:id="@id/nwr" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center_vertical" android:paddingLeft="0.0dip" android:paddingRight="@dimen/bho" style="@style/aef">
+        <RelativeLayout android:id="@id/mqt" android:paddingLeft="@dimen/bho" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <ImageView android:background="@drawable/buc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="center" android:layout_centerVertical="true" android:contentDescription="@string/ajx" />
+        </RelativeLayout>
+        <RelativeLayout android:gravity="center_vertical" android:id="@id/mqv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toRightOf="@id/mqt">
+            <include layout="@layout/ck3" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <Button android:textColor="@color/av4" android:id="@id/mqp" android:background="@color/av2" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minWidth="0.0dip" android:minHeight="0.0dip" android:text="@string/ajx" />
+</com.tencent.qqmail.activity.contacts.view.ContactsScrollItemView>

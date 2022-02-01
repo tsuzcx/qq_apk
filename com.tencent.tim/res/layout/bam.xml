@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:background="#ffffcd78" android:layout_width="fill_parent" android:layout_height="60.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="44.0dip">
+        <TextView android:textColor="@color/al3" android:gravity="center" android:id="@id/l6n" android:background="#d912b7f5" android:layout_width="fill_parent" android:layout_height="44.0dip" android:text="99个小视频" />
+    </FrameLayout>
+</merge>

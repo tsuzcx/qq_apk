@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/e3u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="7.0dip" android:layout_centerHorizontal="true" layout="@layout/asr" />
+    <ViewStub android:layout_gravity="center_horizontal" android:id="@id/ky3" android:layout="@layout/asp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/ky5" android:layout="@layout/asq" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <View android:layout_width="fill_parent" android:layout_height="10.0dip" />
+</LinearLayout>

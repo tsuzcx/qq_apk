@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/gwy" android:background="#2612b7f5" android:visibility="invisible" android:layout_width="26.0dip" android:layout_height="fill_parent" android:layout_alignParentLeft="true">
+        <View android:background="#ff12b7f5" android:layout_width="2.0px" android:layout_height="fill_parent" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/gx1" android:background="#2612b7f5" android:visibility="invisible" android:layout_width="26.0dip" android:layout_height="fill_parent" android:layout_alignParentRight="true">
+        <View android:background="#ff12b7f5" android:layout_width="2.0px" android:layout_height="fill_parent" android:layout_alignParentLeft="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/gws" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip">
+            <LinearLayout android:orientation="horizontal" android:id="@id/kma" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/axv" android:layout_marginRight="@dimen/axv">
+                <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/klq" android:layout_width="42.0dip" android:layout_height="42.0dip">
+                    <com.tencent.biz.qqstory.view.PressDarkImageView android:layout_gravity="center_vertical" android:id="@id/gvj" android:background="@drawable/ak2" android:padding="1.0dip" android:layout_width="42.0dip" android:layout_height="42.0dip" android:contentDescription="@string/b2q" />
+                    <com.tencent.biz.qqstory.view.widget.StoryUserBadgeView android:id="@id/gyr" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginLeft="28.0dip" android:layout_marginTop="28.0dip" android:src="@drawable/btl" />
+                </RelativeLayout>
+                <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/kru" android:layout_width="wrap_content" android:layout_height="48.0dip" android:layout_marginLeft="8.0dip">
+                    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="25.0dip">
+                        <TextView android:textSize="15.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center" android:id="@id/gyl" android:layout_width="wrap_content" android:layout_height="fill_parent" android:maxWidth="200.0dip" android:text="QQ用户" android:singleLine="true" />
+                    </LinearLayout>
+                    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="23.0dip" android:layout_marginTop="1.0dip">
+                        <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center" android:id="@id/gyq" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/trl" android:maxLines="1" android:singleLine="true" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/jaq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/axv" android:layout_marginTop="10.0dip" android:layout_marginRight="@dimen/axv">
+                <TextView android:textSize="11.0dip" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center" android:id="@id/j3x" android:background="@drawable/amn" android:paddingLeft="6.0dip" android:paddingRight="9.0dip" android:layout_width="wrap_content" android:layout_height="23.0dip" android:singleLine="true" android:drawableLeft="@drawable/fjs" android:drawablePadding="2.0dip" />
+            </LinearLayout>
+        </LinearLayout>
+        <include android:id="@id/dj9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/axq" android:layout_marginLeft="@dimen/axv" android:layout_marginRight="@dimen/axv" android:layout_marginBottom="6.0dip" layout="@layout/b_e" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/g1q" android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_marginLeft="@dimen/axv" android:layout_marginRight="@dimen/axv" android:layout_marginBottom="6.0dip">
+            <View android:background="#7fffffff" android:layout_width="fill_parent" android:layout_height="1.5dip" />
+        </LinearLayout>
+        <include android:id="@id/dj_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6.0dip" android:layout_alignParentBottom="true" layout="@layout/b7r" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/gwt" android:background="#2612b7f5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="136.5dip" android:layout_alignTop="@id/gws" android:layout_alignParentBottom="true">
+        <View android:background="#ff12b7f5" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_alignParentTop="true" />
+    </RelativeLayout>
+</RelativeLayout>

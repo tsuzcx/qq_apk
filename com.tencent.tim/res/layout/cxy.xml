@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/o6g" style="@style/ai3"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/o6y" style="@style/ai5">
+        <ImageButton android:id="@id/o6h" android:visibility="gone" style="@style/aas" />
+        <Button android:id="@id/o6j" android:visibility="gone" style="@style/aax" />
+        <Button android:id="@id/o6i" android:visibility="gone" style="@style/aau" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/o70" style="@style/ai6">
+        <ImageButton android:id="@id/o6o" android:visibility="gone" style="@style/aay" />
+        <ImageButton android:id="@id/o6m" android:visibility="gone" android:layout_toRightOf="@id/o6o" style="@style/aaw" />
+        <ImageButton android:id="@id/o6l" android:visibility="gone" android:contentDescription="@string/xm_" style="@style/aav" />
+        <Button android:id="@id/o6n" android:visibility="gone" style="@style/aax" />
+        <Button android:id="@id/o6k" android:visibility="gone" style="@style/aau" />
+    </RelativeLayout>
+    <LinearLayout android:id="@id/o6x" style="@style/ai4">
+        <RelativeLayout android:id="@id/o6z" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" />
+        <TextView android:id="@id/o71" style="@style/ai7" />
+        <TextView android:id="@id/o73" android:visibility="gone" style="@style/ai7" />
+        <ImageView android:id="@id/o72" android:visibility="gone" android:contentDescription="@string/xm_" style="@style/ai8" />
+        <ImageView android:id="@id/n_m" android:visibility="gone" android:layout_width="@dimen/bot" android:layout_height="fill_parent" android:layout_marginLeft="4.0dip" />
+    </LinearLayout>
+</RelativeLayout>

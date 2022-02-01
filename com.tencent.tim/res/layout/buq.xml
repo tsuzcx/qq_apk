@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/cn4" android:paddingLeft="12.0dip" android:paddingTop="12.0dip" android:paddingRight="15.0dip" android:paddingBottom="19.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.module.feedcomponent.ui.FeedFriendBirthdayGiftView android:orientation="vertical" android:id="@id/cmz" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <com.qzone.proxy.feedcomponent.widget.SafeTextView android:id="@id/cn7" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    <com.qzone.module.feedcomponent.ui.FeedFriendBirthdayGiftView android:orientation="vertical" android:id="@id/cn0" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <com.qzone.proxy.feedcomponent.widget.SafeTextView android:id="@id/cn8" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    <com.qzone.module.feedcomponent.ui.FeedFriendBirthdayGiftView android:orientation="vertical" android:id="@id/cn1" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <com.qzone.proxy.feedcomponent.widget.SafeTextView android:id="@id/cn9" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    <com.qzone.module.feedcomponent.ui.FeedFriendBirthdayGiftView android:orientation="vertical" android:id="@id/cn5" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</LinearLayout>

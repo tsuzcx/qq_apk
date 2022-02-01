@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:paddingBottom="24.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.QZoneFeedSkinAsyncImageView android:id="@id/cqb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <com.tencent.component.media.image.view.AsyncImageView android:id="@id/cqc" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginTop="13.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/qzone_skin_feed_icon_feedback_delete" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="17.0sp" android:id="@id/cqe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="40.0dip" android:layout_marginTop="11.0dip" android:layout_marginRight="40.0dip" android:layout_below="@id/cqb" android:layout_centerHorizontal="true" />
+    <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="14.0sp" android:textColor="#ff878b99" android:id="@id/cqd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="40.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="40.0dip" android:layout_below="@id/cqe" android:layout_centerHorizontal="true" />
+    <LinearLayout android:gravity="center" android:id="@id/cqa" android:background="@drawable/aio" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="wrap_content" android:layout_height="29.0dip" android:layout_marginTop="16.0dip" android:layout_below="@id/cqd" android:layout_centerHorizontal="true">
+        <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="14.0sp" android:gravity="center" android:id="@id/cq_" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>

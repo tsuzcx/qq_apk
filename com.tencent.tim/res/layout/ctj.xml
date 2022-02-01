@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/mk5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/h51" android:background="@color/a_p" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/bg_texture" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/head" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginTop="24.0dip" android:src="@drawable/igq" />
+        <TextView android:textSize="@dimen/ayq" android:textColor="@color/bp" android:id="@id/f97" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:text="用户名" />
+        <TextView android:textSize="@dimen/aym" android:textColor="@color/e7" android:id="@id/nq0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="QQ:12345678" />
+        <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:layout_marginBottom="24.0dip">
+            <Button android:id="@id/mk4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="切换帐号" style="@style/a4f" />
+            <Button android:id="@id/mvi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="  退出  " style="@style/a4g" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/ayq" android:textColor="@color/bp" android:gravity="center" android:id="@id/cancel" android:background="@drawable/clg" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="取消" />
+    </LinearLayout>
+</LinearLayout>

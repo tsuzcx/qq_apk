@@ -1,0 +1,170 @@
+package com.tencent.ttpic.filter.blurmaskfilter;
+
+import android.graphics.Bitmap;
+import com.tencent.aekit.api.standard.AEModule;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import com.tencent.ttpic.baseutils.io.FileUtils;
+import com.tencent.ttpic.model.ImageMaskItem;
+import com.tencent.ttpic.openapi.PTFaceAttr;
+import com.tencent.ttpic.openapi.PTSegAttr;
+import com.tencent.ttpic.openapi.config.MediaConfig;
+import com.tencent.view.RendererUtils;
+import java.io.File;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+
+public class ImageMaskFactory
+  implements BlurMaskFilter.IBlurMaskFactory
+{
+  private static final int HEIGHT_IMAGE = 480;
+  public static final String TAG = ImageMaskFactory.class.getSimpleName();
+  private static final int WIDTH_IMAGE = 360;
+  private String mDataPath;
+  private int mDuration = 0;
+  private int mFrameIndex = 0;
+  private HashMap<Integer, Frame> mFrameMap = new HashMap();
+  private int mFramesCount = 0;
+  private boolean mIsPaused = false;
+  private int mLastFrameIndex = 0;
+  private long mLastTimestamp = 0L;
+  private String mMaskId;
+  private int mPlayCount = 0;
+  
+  public ImageMaskFactory(ImageMaskItem paramImageMaskItem)
+  {
+    if (paramImageMaskItem == null) {}
+    int i;
+    label97:
+    do
+    {
+      return;
+      this.mDuration = paramImageMaskItem.getFrameDurationn();
+      this.mPlayCount = paramImageMaskItem.getPlayCount();
+      this.mFramesCount = paramImageMaskItem.getFrames();
+      this.mDataPath = paramImageMaskItem.getDataPath();
+      this.mMaskId = paramImageMaskItem.getMaskId();
+      i = 0;
+      if (i >= 1) {
+        break;
+      }
+      localObject = paramImageMaskItem.getDataPath() + File.separator + this.mMaskId + File.separator + this.mMaskId + "_" + i + ".png";
+    } while (!FileUtils.exists((String)localObject));
+    if (((String)localObject).startsWith("assets://")) {}
+    for (Object localObject = BitmapUtils.decodeSampledBitmapFromAssets(AEModule.getContext(), FileUtils.getRealPath((String)localObject), MediaConfig.VIDEO_IMAGE_WIDTH, MediaConfig.VIDEO_IMAGE_HEIGHT);; localObject = BitmapUtils.decodeSampledBitmapFromFile((String)localObject, 360, 480))
+    {
+      if (BitmapUtils.isLegal((Bitmap)localObject))
+      {
+        Frame localFrame = new Frame(0, RendererUtils.createTexture((Bitmap)localObject), ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
+        this.mFrameMap.put(Integer.valueOf(i), localFrame);
+        this.mLastFrameIndex = i;
+      }
+      if (localObject != null) {
+        ((Bitmap)localObject).recycle();
+      }
+      i += 1;
+      break label97;
+      break;
+    }
+  }
+  
+  public void apply() {}
+  
+  public void clear()
+  {
+    Iterator localIterator = this.mFrameMap.values().iterator();
+    while (localIterator.hasNext())
+    {
+      Frame localFrame = (Frame)localIterator.next();
+      RendererUtils.clearTexture(localFrame.getTextureId());
+      localFrame.clear();
+    }
+    this.mFrameMap.clear();
+  }
+  
+  public Frame getNextFrame(long paramLong)
+  {
+    int i = 0;
+    if (this.mLastTimestamp == 0L) {
+      this.mLastTimestamp = paramLong;
+    }
+    for (this.mFrameIndex = 0;; this.mFrameIndex += 1)
+    {
+      do
+      {
+        if (this.mFramesCount != 0) {
+          i = this.mFrameIndex % this.mFramesCount;
+        }
+        if (((this.mFrameIndex == 0) || (i != 0)) && (i <= this.mFrameMap.size())) {
+          break;
+        }
+        return loadImage(this.mLastFrameIndex);
+        if ((this.mPlayCount != 0) && (this.mPlayCount * this.mFramesCount <= this.mFrameIndex)) {
+          return loadImage(this.mLastFrameIndex);
+        }
+      } while ((paramLong - this.mLastTimestamp < this.mDuration) || (this.mIsPaused));
+      this.mLastTimestamp = paramLong;
+    }
+    return loadImage(i);
+  }
+  
+  public Frame loadImage(int paramInt)
+  {
+    if (this.mFrameMap.size() == 0) {
+      return null;
+    }
+    if (this.mFrameMap.containsKey(Integer.valueOf(paramInt))) {
+      return (Frame)this.mFrameMap.get(Integer.valueOf(paramInt));
+    }
+    Object localObject = this.mDataPath + File.separator + this.mMaskId + File.separator + this.mMaskId + "_" + paramInt + ".png";
+    if (!FileUtils.exists((String)localObject)) {
+      return (Frame)this.mFrameMap.get(Integer.valueOf(this.mFrameMap.size() - 1));
+    }
+    if (((String)localObject).startsWith("assets://")) {}
+    for (localObject = BitmapUtils.decodeSampledBitmapFromAssets(AEModule.getContext(), FileUtils.getRealPath((String)localObject), MediaConfig.VIDEO_IMAGE_WIDTH, MediaConfig.VIDEO_IMAGE_HEIGHT); BitmapUtils.isLegal((Bitmap)localObject); localObject = BitmapUtils.decodeSampledBitmapFromFile((String)localObject, MediaConfig.VIDEO_IMAGE_WIDTH, MediaConfig.VIDEO_IMAGE_HEIGHT))
+    {
+      Frame localFrame = new Frame(0, RendererUtils.createTexture((Bitmap)localObject), ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
+      this.mFrameMap.put(Integer.valueOf(paramInt), localFrame);
+      this.mLastFrameIndex = paramInt;
+      if (((Bitmap)localObject).isRecycled()) {
+        ((Bitmap)localObject).recycle();
+      }
+      return localFrame;
+    }
+    if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
+      ((Bitmap)localObject).recycle();
+    }
+    return (Frame)this.mFrameMap.get(Integer.valueOf(this.mLastFrameIndex));
+  }
+  
+  public void pause()
+  {
+    if (!this.mIsPaused) {
+      this.mIsPaused = true;
+    }
+  }
+  
+  public Frame renderMask(PTFaceAttr paramPTFaceAttr, PTSegAttr paramPTSegAttr)
+  {
+    if (this.mFrameMap != null) {
+      return getNextFrame(paramPTFaceAttr.getTimeStamp());
+    }
+    return null;
+  }
+  
+  public void resume()
+  {
+    if (this.mIsPaused) {
+      this.mIsPaused = false;
+    }
+  }
+  
+  public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble) {}
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes12.jar
+ * Qualified Name:     com.tencent.ttpic.filter.blurmaskfilter.ImageMaskFactory
+ * JD-Core Version:    0.7.0.1
+ */

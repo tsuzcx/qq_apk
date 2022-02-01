@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:padding="1.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.filemanager.widget.AsyncImageView android:id="@id/image" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <ImageView android:id="@id/occ" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ifn" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/dc6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/ag7" android:scaleType="centerCrop" />
+    <TextView android:textSize="18.0dip" android:textStyle="bold" android:textColor="#ffffffff" android:gravity="center" android:id="@id/oea" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/fq8" android:visibility="gone" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
+        <com.tencent.mobileqq.widget.NumberCheckBox android:id="@id/fq9" android:background="@drawable/f3t" android:clickable="false" android:layout_margin="4.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_centerInParent="true" style="@style/hy" />
+    </RelativeLayout>
+</RelativeLayout>

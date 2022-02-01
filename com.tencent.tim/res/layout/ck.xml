@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture_theme_version2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.TabBarView android:id="@id/j_a" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="40.0dip" />
+    <com.tencent.mobileqq.widget.QQViewPager android:id="@id/kxy" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

@@ -1,0 +1,26 @@
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.17.1.1;
+import java.util.ArrayList;
+
+public class ndo
+  implements Animation.AnimationListener
+{
+  ndo(ndn paramndn, ArrayList paramArrayList, Object paramObject) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a.itemView.post(new ReadInJoyBaseAdapter.17.1.1(this));
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes14.jar
+ * Qualified Name:     ndo
+ * JD-Core Version:    0.7.0.1
+ */

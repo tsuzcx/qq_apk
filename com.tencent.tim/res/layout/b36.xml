@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:gravity="center_horizontal" android:id="@id/jsg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/r4l" android:shadowColor="#34000000" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="9.0" android:layout_centerHorizontal="true" />
+</RelativeLayout>

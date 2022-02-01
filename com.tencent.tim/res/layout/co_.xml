@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/lwn" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/lvu" android:layout_width="@dimen/bok" android:layout_height="@dimen/bok" android:layout_marginLeft="23.0dip" android:src="@drawable/get" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/lvu" android:layout_centerVertical="true">
+        <com.tencent.qqmail.view.AttachNamesHandlerTextView android:textSize="13.0sp" android:textColor="@color/aii" android:id="@id/lvy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip" />
+        <TextView android:textSize="13.0sp" android:textColor="@color/air" android:id="@id/lvx" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>

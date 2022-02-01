@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="#fff2f4f7" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/e4o" android:background="@drawable/b0q" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="12.0dip">
+        <TextView android:textSize="16.0dip" android:textColor="@android:color/black" android:gravity="center|left" android:id="@id/fik" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="12.0dip" android:text="@string/s1d" android:drawablePadding="8.0px" />
+        <ImageView android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="4.0dip" android:src="@drawable/gk0" android:layout_toRightOf="@id/fik" android:layout_centerVertical="true" />
+        <Button android:id="@id/hlk" android:background="@drawable/arx" android:layout_width="80.0dip" android:layout_height="32.0dip" android:layout_marginTop="9.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="9.0dip" android:text="@string/s1b" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/e5p" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="12.0dip">
+        <TextView android:textSize="16.0dip" android:textColor="@android:color/black" android:gravity="center|left" android:id="@id/j8f" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="12.0dip" android:text="@string/s1e" />
+        <ImageView android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="4.0dip" android:src="@drawable/gk0" android:layout_toRightOf="@id/j8f" android:layout_centerVertical="true" />
+        <Button android:id="@id/hsb" android:background="@drawable/arx" android:layout_width="80.0dip" android:layout_height="32.0dip" android:layout_marginTop="9.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="9.0dip" android:text="@string/s1c" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <com.qzone.widget.AsyncImageView android:id="@id/hgl" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" />
+</LinearLayout>

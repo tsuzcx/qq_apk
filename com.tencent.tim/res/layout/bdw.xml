@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_gravity="center" android:id="@id/gty" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="22.0dip" android:layout_marginTop="32.0dip" android:layout_marginRight="22.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="center" android:id="@id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_centerVertical="true">
+        <RelativeLayout android:orientation="horizontal" android:background="#bf000000" android:layout_width="fill_parent" android:layout_height="44.0dip">
+            <ImageView android:layout_gravity="center" android:id="@id/gr7" android:layout_width="27.0dip" android:layout_height="27.0dip" android:layout_marginLeft="15.0dip" android:src="@drawable/cck" android:layout_centerVertical="true" />
+            <TextView android:textColor="#ffffffff" android:layout_gravity="center" android:id="@id/jo4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="QQ" android:layout_toRightOf="@id/gr7" android:layout_centerVertical="true" />
+            <RelativeLayout android:id="@id/aga" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+                <ImageView android:layout_gravity="center|right" android:paddingLeft="10.0dip" android:paddingTop="10.0dip" android:paddingRight="15.0dip" android:paddingBottom="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/adt" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/iwt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/title">
+        <RelativeLayout android:id="@id/grj" android:background="@drawable/ads" android:longClickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="40.0dip" android:layout_centerVertical="true">
+            <RelativeLayout android:id="@id/dpr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="45.0dip" android:layout_marginBottom="15.0dip" android:layout_toRightOf="@id/grg">
+                <TextView android:textSize="16.0sp" android:textColor="@color/al3" android:id="@id/grh" android:paddingRight="30.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/voy" android:singleLine="true" />
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginRight="15.0dip">
+                <TextView android:textSize="11.0sp" android:textColor="#ffbebfbf" android:id="@id/grm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ri3" android:layout_alignParentRight="true" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

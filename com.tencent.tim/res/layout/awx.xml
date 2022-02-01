@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="35.0dip" android:layout_height="35.0dip">
+        <ImageView android:id="@id/d3z" android:layout_width="35.0dip" android:layout_height="35.0dip" android:src="@drawable/com" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/d4j" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/f5e" android:layout_width="65.0dip" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:maxLines="1" android:singleLine="true" />
+    <Button android:textSize="12.0dip" android:textColor="#ff12b7f5" android:id="@id/doc" android:background="@drawable/r9" android:paddingLeft="8.0dip" android:paddingTop="3.0dip" android:paddingRight="8.0dip" android:paddingBottom="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/qwe" />
+</LinearLayout>

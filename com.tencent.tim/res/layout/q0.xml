@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.widget.XExpandableListView android:scrollbarThumbVertical="@drawable/b2n" android:layout_gravity="center|left|top" android:id="@id/ec6" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:layout_weight="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

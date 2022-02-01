@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/axi" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.qqmail.view.QMTopBar android:id="@id/nph" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ScrollView android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/btw">
+        <LinearLayout android:orientation="vertical" android:paddingTop="20.0dip" android:paddingBottom="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:id="@id/kls" android:tag="qqmail" android:background="@drawable/e_w" android:layout_width="fill_parent" style="@style/a_b">
+                <ImageView android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/gzn" android:scaleType="center" android:layout_centerInParent="true" android:contentDescription="@string/wa7" />
+            </RelativeLayout>
+            <RelativeLayout android:id="@id/khm" android:tag="exmail" android:layout_width="fill_parent" style="@style/a_b">
+                <ImageView android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/gzj" android:scaleType="center" android:layout_centerInParent="true" android:contentDescription="@string/w_p" />
+            </RelativeLayout>
+            <RelativeLayout android:id="@id/kg7" android:tag="exchange" android:layout_width="fill_parent" style="@style/a_b">
+                <View android:id="@id/n2e" style="@style/a_d" />
+                <ImageView android:src="@drawable/gzi" android:layout_toLeftOf="@id/n2e" android:contentDescription="@string/w_n" style="@style/a_c" />
+                <TextView android:text="@string/w_n" android:layout_toRightOf="@id/n2e" style="@style/a_e" />
+            </RelativeLayout>
+            <RelativeLayout android:id="@id/ke0" android:tag="mail163" android:layout_width="fill_parent" style="@style/a_b">
+                <View android:id="@id/n2d" style="@style/a_d" />
+                <ImageView android:src="@drawable/gzh" android:layout_toLeftOf="@id/n2d" android:contentDescription="@string/w_d" style="@style/a_c" />
+                <TextView android:text="@string/w_d" android:layout_toRightOf="@id/n2d" style="@style/a_e" />
+            </RelativeLayout>
+            <RelativeLayout android:id="@id/kdx" android:tag="mail126" android:layout_width="fill_parent" style="@style/a_b">
+                <View android:id="@id/n2c" style="@style/a_d" />
+                <ImageView android:src="@drawable/gzg" android:layout_toLeftOf="@id/n2c" android:contentDescription="@string/w_c" style="@style/a_c" />
+                <TextView android:text="@string/w_c" android:layout_toRightOf="@id/n2c" style="@style/a_e" />
+            </RelativeLayout>
+            <RelativeLayout android:id="@id/kip" android:tag="gmail" android:layout_width="fill_parent" style="@style/a_b">
+                <ImageView android:id="@id/n_y" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/i77" android:scaleType="centerInside" />
+                <View android:id="@id/n2f" style="@style/a_d" />
+                <ImageView android:src="@drawable/gzk" android:layout_toLeftOf="@id/n2f" android:contentDescription="@string/w_r" style="@style/a_c" />
+                <TextView android:text="@string/w_r" android:layout_toRightOf="@id/n2f" style="@style/a_e" />
+            </RelativeLayout>
+            <RelativeLayout android:id="@id/klr" android:tag="outlook" android:layout_width="fill_parent" style="@style/a_b">
+                <View android:id="@id/n2h" style="@style/a_d" />
+                <ImageView android:src="@drawable/gzm" android:layout_toLeftOf="@id/n2h" android:contentDescription="@string/wa5" style="@style/a_c" />
+                <TextView android:text="@string/wa5" android:layout_toRightOf="@id/n2h" style="@style/a_e" />
+            </RelativeLayout>
+            <RelativeLayout android:id="@id/kks" android:tag="other" android:background="@drawable/e_i" android:layout_width="fill_parent" style="@style/a_b">
+                <View android:id="@id/n2g" style="@style/a_d" />
+                <ImageView android:src="@drawable/gzl" android:layout_toLeftOf="@id/n2g" android:contentDescription="@string/wa3" style="@style/a_c" />
+                <TextView android:text="@string/wa3" android:layout_toRightOf="@id/n2g" style="@style/a_e" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+    <ListView android:scrollbarStyle="outsideOverlay" android:id="@id/kj1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/btw" />
+</RelativeLayout>

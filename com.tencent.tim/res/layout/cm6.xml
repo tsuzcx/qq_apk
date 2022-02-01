@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout style="@style/aea"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:text="@string/w_e" style="@style/af1" />
+    <com.tencent.qqmail.view.EmailEditText android:id="@id/jot" android:text="" android:hint="@string/df" android:inputType="textEmailAddress" style="@style/aez" />
+    <TextView android:textColor="@color/aw3" android:gravity="center_vertical" android:id="@id/jsc" android:visibility="gone" style="@style/aez" />
+    <Button android:id="@id/mkj" style="@style/af0" />
+    <ImageView android:id="@id/jqj" android:visibility="gone" android:contentDescription="@string/b9f" style="@style/aew" />
+</RelativeLayout>

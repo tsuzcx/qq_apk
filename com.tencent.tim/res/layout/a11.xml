@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/jj" android:layout_width="fill_parent" android:layout_height="77.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/ddt" android:layout_width="38.0dip" android:layout_height="57.0dip" android:layout_marginLeft="14.0dip" android:scaleType="fitXY" />
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="57.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip">
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_above="@id/ea7">
+            <TextView android:textSize="13.0dip" android:textColor="@color/ia" android:ellipsize="end" android:id="@id/jj6" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@null" android:maxLines="2" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/ea7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+            <TextView android:textSize="13.0dip" android:textColor="@color/ia" android:ellipsize="end" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pt" android:singleLine="true" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/ia" android:ellipsize="end" android:id="@id/jg4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="@null" android:singleLine="true" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

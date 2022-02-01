@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/a_8" android:background="@drawable/gvm" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/f0p" android:scaleType="fitXY" android:adjustViewBounds="true" />
+</LinearLayout>

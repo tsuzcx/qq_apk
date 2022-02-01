@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:id="@id/ch2" android:background="#ffececec" android:layout_width="fill_parent" android:layout_height="35.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.module.feedcomponent.ui.VisitAndPraiseAvatarsView android:id="@id/ch1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/fuc" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/ch0" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/qzone_skin_feed_arrow_unfold" android:scaleType="center" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="12.0sp" android:textColor="@color/qzone_skin_feed_content_text_color" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/ch6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sgm" android:singleLine="true" android:layout_toLeftOf="@id/ch0" android:layout_toRightOf="@id/ch1" android:layout_centerVertical="true" />
+</RelativeLayout>

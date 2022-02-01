@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/c4b" android:background="@drawable/jm" android:layout_width="fill_parent" android:layout_height="@dimen/au0" android:minHeight="@dimen/au0">
+        <com.tencent.widget.FixSizeImageView android:id="@id/icon" android:focusable="false" android:clickable="false" android:scaleType="fitXY" android:contentDescription="@null" style="@style/hp" />
+        <com.tencent.widget.SingleLineTextView android:id="@id/title" android:paddingRight="12.0dip" android:duplicateParentState="true" android:layout_toRightOf="@id/icon" style="@style/hq" />
+        <com.tencent.mobileqq.activity.recent.cur.DragTextView android:id="@id/unreadmsg" android:duplicateParentState="true" android:layout_marginTop="3.0dip" android:layout_marginRight="12.0dip" android:layout_below="@id/title" android:layout_alignParentRight="true" style="@style/cg" />
+        <com.tencent.widget.SingleLineTextView android:textColor="@color/skin_gray2_theme_version2" android:id="@id/bgt" android:paddingRight="10.0dip" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ado" android:layout_marginTop="3.0dip" android:layout_marginRight="12.0dip" android:layout_toLeftOf="@id/unreadmsg" android:layout_below="@id/title" android:layout_alignParentLeft="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <Button android:textSize="17.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/eqm" android:background="#ffff9c00" android:layout_width="@dimen/aai" android:layout_height="fill_parent" android:text="@string/e0n" />
+        <Button android:textSize="17.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/eq0" android:background="#ffff3b30" android:layout_width="@dimen/aag" android:layout_height="fill_parent" android:text="@string/e0l" />
+    </LinearLayout>
+</LinearLayout>

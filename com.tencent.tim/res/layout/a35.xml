@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto">
+    <com.tencent.widget.SegmentedControlView android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/d92" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="110.0dip" android:layout_marginRight="97.0dip" android:divider="@null" android:checkedButton="@id/i13" android:dividerPadding="0.0dip" tencent:firstButtonBackground="@drawable/b2x" tencent:lastButtonBackground="@drawable/b2y" tencent:middleButtonBackground="@null" tencent:uniqueButtonBackground="@null">
+        <com.tencent.mobileqq.troop.widget.RedDotRadioButton android:textSize="14.0dip" android:gravity="center" android:id="@id/d90" android:background="@null" android:layout_width="60.0dip" android:layout_height="30.0dip" android:button="@null" android:text="@string/bps" style="@style/j4" />
+        <com.tencent.mobileqq.troop.widget.RedDotRadioButton android:textSize="14.0dip" android:gravity="center" android:id="@id/d91" android:background="@null" android:layout_width="60.0dip" android:layout_height="30.0dip" android:button="@null" android:text="@string/bpt" style="@style/j4" />
+    </com.tencent.widget.SegmentedControlView>
+</LinearLayout>

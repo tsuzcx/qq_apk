@@ -1,0 +1,146 @@
+{
+	"view_type": "UIView",
+	"view_id": "id_comment_expose_like_person",
+	"visible_depend_on_children": "YES",
+	"layout_type": "layout_relative",
+	"margin_left": "65",
+	"margin_top":"11",
+	"height": {
+		"type": "relative",
+		"value": "28"
+	},
+	"width": {
+		"type": "match_parent"
+	},
+	"subviews": [{
+			"view_type": "ReadInjoyAsynImageView",
+			"view_id": "id_header_one",
+			"event_type": "cmd_header_medal_click",
+			"align_parent_center_vertical": "YES",
+			"height": {
+				"type": "absolutely",
+				"value": "24"
+			},
+			"width": {
+				"type": "absolutely",
+				"value": "24"
+			},
+			"attributes": {
+				"setImageWithURLString:lineup:": ["$like_header_one_url", "1"],
+				"setCornerRadiusString:": "12",
+				"setAttatchInfo:": "$like_header_one_url"
+			}
+		},
+		{
+			"view_type": "ReadInjoyAsynImageView",
+			"view_id": "id_header_two",
+			"event_type": "cmd_header_medal_click",
+			"right_of_view": "id_header_one",
+			"align_parent_center_vertical": "YES",
+			"margin_left": "4",
+			"height": {
+				"type": "absolutely",
+				"value": "24"
+			},
+			"width": {
+				"type": "absolutely",
+				"value": "24"
+			},
+			"attributes": {
+				"setImageWithURLString:lineup:": ["$like_header_two_url", "1"],
+				"setCornerRadiusString:": "12",
+				"setAttatchInfo:": "$like_header_two_url"
+			}
+		},
+		{
+			"view_type": "ReadInjoyAsynImageView",
+			"view_id": "id_header_three",
+			"event_type": "cmd_header_medal_click",
+			"right_of_view": "id_header_two",
+			"align_parent_center_vertical": "YES",
+			"margin_left": "4",
+			"height": {
+				"type": "absolutely",
+				"value": "24"
+			},
+			"width": {
+				"type": "absolutely",
+				"value": "24"
+			},
+			"attributes": {
+				"setImageWithURLString:lineup:": ["$like_header_three_url", "1"],
+				"setCornerRadiusString:": "12",
+				"setAttatchInfo:": "$like_header_three_url"
+			}
+		},
+		{
+			"view_type": "ReadInjoyAsynImageView",
+			"view_id": "id_header_four",
+			"event_type": "cmd_header_medal_click",
+			"right_of_view": "id_header_three",
+			"align_parent_center_vertical": "YES",
+			"margin_left": "4",
+			"height": {
+				"type": "absolutely",
+				"value": "24"
+			},
+			"width": {
+				"type": "absolutely",
+				"value": "24"
+			},
+			"attributes": {
+				"setImageWithURLString:lineup:": ["$like_header_four_url", "1"],
+				"setCornerRadiusString:": "12",
+				"setAttatchInfo:": "$like_header_four_url"
+			}
+		},
+		{
+			"view_type": "UILabel",
+			"view_id": "id_comment_expose_like_person_num",
+			"margin_left": "8",
+			"align_parent_center_vertical": "YES",
+			"right_of_view": "id_header_four",
+			"height": {
+				"type": "relative",
+				"value": "24"
+			},
+			"width": {
+				"type": "wrap_content"
+			},
+			"attributes": {
+				"setText:": "$like_person_num",
+				"setTextColorString:": "#262626",
+				"setFontSizeString:": "12",
+				"setNumberOfLinesString:": "1"
+			}
+		},
+		{
+			"view_type": "UIButton",
+			"event_type": "cmd_comment_dot_click",
+			"view_id": "id_like_3dot_comment_button",
+			"align_parent_right": "YES",
+			"align_parent_center_vertical": "YES",
+			"margin_right": "17",
+			"margin_top": "5",
+			"height": {
+				"type": "relative",
+				"value": "18"
+			},
+			"width": {
+				"type": "relative",
+				"value": "18"
+			},
+			"attributes": {
+				"setImages:forStates:": [
+					[
+						"rij_comment_3dot"
+					],
+					[
+						"0"
+					]
+				]
+			}
+		}
+
+	]
+}

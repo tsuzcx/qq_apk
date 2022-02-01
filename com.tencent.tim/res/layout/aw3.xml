@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/bb0" android:layout_width="fill_parent" android:layout_height="225.0dip">
+        <com.tencent.image.URLImageView android:id="@id/duw" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <View android:background="@color/es" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+    <RelativeLayout android:paddingTop="75.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:id="@id/dux" android:background="@drawable/adm" android:padding="2.0dip" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginTop="3.0dip" android:scaleType="fitXY" android:layout_centerHorizontal="true" />
+        <com.tencent.mobileqq.widget.CircleProgress android:id="@id/duy" android:padding="2.0dip" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginTop="3.0dip" android:scaleType="fitXY" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/dud" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ewj" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="#ffffffff" android:id="@id/k66" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="1.5dip" android:text="@string/qtt" android:layout_alignBottom="@id/dud" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:id="@id/k6x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="@string/qtv" android:layout_below="@id/dud" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

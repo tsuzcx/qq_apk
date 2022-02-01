@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="@dimen/nu" android:layout_height="@dimen/nw"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/ezu" android:background="@drawable/emo_tabitem_sel" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="7.0dip" android:layout_marginBottom="8.0dip">
+        <com.tencent.image.URLImageView android:id="@id/tabView" android:background="@null" android:layout_width="@dimen/nt" android:layout_height="@dimen/nt" android:scaleType="centerCrop" android:adjustViewBounds="false" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/i54" android:background="@drawable/skin_tips_dot" android:visibility="gone" android:layout_width="9.0dip" android:layout_height="9.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+</LinearLayout>

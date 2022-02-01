@@ -1,0 +1,19 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class aypa
+  implements DialogInterface.OnClickListener
+{
+  aypa(ayoy paramayoy) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes5.jar
+ * Qualified Name:     aypa
+ * JD-Core Version:    0.7.0.1
+ */

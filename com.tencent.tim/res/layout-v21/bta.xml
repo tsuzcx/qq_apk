@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="@dimen/ap4" android:layout_height="@dimen/ap3"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.AsyncImageView android:id="@id/hf2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/hf6" android:visibility="gone" android:layout_width="70.0dip" android:layout_height="19.0dip" android:layout_marginLeft="12.0dip" android:layout_alignParentBottom="true">
+        <com.qzone.widget.AsyncImageView android:id="@id/hf7" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/bp" android:gravity="center" android:id="@id/hf3" android:layout_width="31.0dip" android:layout_height="fill_parent" android:layout_marginLeft="3.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:letterSpacing="0.2" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/bp" android:gravity="center" android:id="@id/hf4" android:layout_width="31.0dip" android:layout_height="fill_parent" android:layout_marginRight="3.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:letterSpacing="0.2" />
+    </RelativeLayout>
+</RelativeLayout>

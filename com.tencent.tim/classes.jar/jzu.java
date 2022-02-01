@@ -1,0 +1,907 @@
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.ac.ArticleComment.ArticleLikeRequest;
+import com.tencent.mobileqq.ac.ArticleComment.ArticleLikeRespond;
+import com.tencent.mobileqq.ac.ArticleComment.CheckArticleLikeRequest;
+import com.tencent.mobileqq.ac.ArticleComment.CheckArticleLikeRespond;
+import com.tencent.mobileqq.ac.ArticleComment.CreateArticleCommentRequest;
+import com.tencent.mobileqq.ac.ArticleComment.CreateArticleCommentRespond;
+import com.tencent.mobileqq.ac.ArticleComment.GetArticleCommentCountRequest;
+import com.tencent.mobileqq.ac.ArticleComment.GetArticleCommentCountRespond;
+import com.tencent.mobileqq.ac.ArticleComment.GetArticleLikeCountRequest;
+import com.tencent.mobileqq.ac.ArticleComment.GetArticleLikeCountRespond;
+import com.tencent.mobileqq.ac.ArticleComment.GetPhotoCollectionInfoRequest;
+import com.tencent.mobileqq.ac.ArticleComment.GetPhotoCollectionInfoResponse;
+import com.tencent.mobileqq.ac.ArticleComment.GetRecommendInfoRequest;
+import com.tencent.mobileqq.ac.ArticleComment.GetRecommendInfoResponse;
+import com.tencent.mobileqq.ac.ArticleComment.LikeRet;
+import com.tencent.mobileqq.ac.ArticleComment.PhotoFirstItemInfo;
+import com.tencent.mobileqq.ac.ArticleComment.PhotoItemInfo;
+import com.tencent.mobileqq.ac.ArticleComment.RecommendInfo;
+import com.tencent.mobileqq.ac.ArticleComment.RecommendItemInfo;
+import com.tencent.mobileqq.ac.ArticleComment.ReportGalleryInfoRequest;
+import com.tencent.mobileqq.ac.ArticleComment.ReportGalleryInfoResponse;
+import com.tencent.mobileqq.ac.ArticleComment.RetInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import tencent.im.oidb.cmd0x6a6.oidb_0x6a6.ReqBody;
+import tencent.im.oidb.cmd0x6a6.oidb_0x6a6.RspBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+
+public class jzu
+  extends accg
+{
+  public String Vr = "image_collection_article_id";
+  jzv a;
+  protected Set<String> allowCmdSet;
+  private final long rg = 30000L;
+  
+  public jzu(AppInterface paramAppInterface)
+  {
+    super(paramAppInterface);
+  }
+  
+  public jzu(QQAppInterface paramQQAppInterface)
+  {
+    super(paramQQAppInterface);
+  }
+  
+  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int j = 0;
+    String str = "";
+    Bundle localBundle = new Bundle();
+    boolean bool;
+    ArticleComment.GetArticleLikeCountRequest localGetArticleLikeCountRequest;
+    ArticleComment.GetArticleLikeCountRespond localGetArticleLikeCountRespond;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      bool = true;
+      localGetArticleLikeCountRequest = new ArticleComment.GetArticleLikeCountRequest();
+      localGetArticleLikeCountRespond = new ArticleComment.GetArticleLikeCountRespond();
+    }
+    for (;;)
+    {
+      try
+      {
+        localGetArticleLikeCountRequest.mergeFrom(paramToServiceMsg.getWupBuffer(), 4, paramToServiceMsg.getWupBuffer().length - 4);
+        localGetArticleLikeCountRespond.mergeFrom((byte[])paramObject);
+        paramToServiceMsg = str;
+        i = j;
+        if (!localGetArticleLikeCountRespond.ret.has()) {
+          break label258;
+        }
+        if ((!localGetArticleLikeCountRespond.ret.ret_code.has()) || (localGetArticleLikeCountRespond.ret.ret_code.get() != 0))
+        {
+          bool = false;
+          i = 0;
+          paramToServiceMsg = "";
+          if (this.a == null) {
+            break label261;
+          }
+          this.a.d(bool, paramToServiceMsg, i);
+          return;
+        }
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("Q.pubaccount.video.PublicAccountArticleHandler", 2, "handleQueryArticleLikeCount() ERROR e=" + paramToServiceMsg.getMessage());
+        return;
+      }
+      paramFromServiceMsg = str;
+      if (localGetArticleLikeCountRequest.article_id.has())
+      {
+        paramFromServiceMsg = localGetArticleLikeCountRequest.article_id.get().toStringUtf8();
+        localBundle.putString("VALUE_ARTICLE_ID", paramFromServiceMsg);
+      }
+      paramToServiceMsg = paramFromServiceMsg;
+      int i = j;
+      if (localGetArticleLikeCountRespond.count.has())
+      {
+        i = localGetArticleLikeCountRespond.count.get();
+        localBundle.putInt("VALUE_ARTICLE_LIKE_COUNT", i);
+        paramToServiceMsg = paramFromServiceMsg;
+      }
+      label258:
+      continue;
+      label261:
+      super.notifyUI(2, bool, localBundle);
+      return;
+      bool = false;
+      i = 0;
+      paramToServiceMsg = "";
+    }
+  }
+  
+  private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    boolean bool2 = false;
+    Bundle localBundle = new Bundle();
+    String str = "";
+    ArticleComment.CheckArticleLikeRequest localCheckArticleLikeRequest;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      localCheckArticleLikeRequest = new ArticleComment.CheckArticleLikeRequest();
+      paramFromServiceMsg = new ArticleComment.CheckArticleLikeRespond();
+    }
+    for (;;)
+    {
+      boolean bool1;
+      try
+      {
+        localCheckArticleLikeRequest.mergeFrom(paramToServiceMsg.getWupBuffer(), 4, paramToServiceMsg.getWupBuffer().length - 4);
+        paramFromServiceMsg.mergeFrom((byte[])paramObject);
+        if (!paramFromServiceMsg.ret.has()) {
+          break label315;
+        }
+        if ((!paramFromServiceMsg.ret.ret_code.has()) || (paramFromServiceMsg.ret.ret_code.get() != 0))
+        {
+          paramToServiceMsg = "";
+          bool1 = false;
+          if (this.a == null) {
+            break label296;
+          }
+          this.a.c(bool2, paramToServiceMsg, bool1);
+          return;
+        }
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("Q.pubaccount.video.PublicAccountArticleHandler", 2, "handleCheckIsArticleLiked() ERROR e=" + paramToServiceMsg.getMessage());
+        return;
+      }
+      paramToServiceMsg = str;
+      if (localCheckArticleLikeRequest.article_id.has())
+      {
+        paramToServiceMsg = localCheckArticleLikeRequest.article_id.get().toStringUtf8();
+        localBundle.putString("VALUE_ARTICLE_ID", paramToServiceMsg);
+      }
+      if ((paramFromServiceMsg.data.has()) && (paramFromServiceMsg.data.size() > 0) && (((ArticleComment.LikeRet)paramFromServiceMsg.data.get(0)).like.has()))
+      {
+        if (((ArticleComment.LikeRet)paramFromServiceMsg.data.get(0)).like.get() == 0)
+        {
+          localBundle.putBoolean("VALUE_ARTICLE_IS_LIKED", false);
+          bool1 = false;
+          bool2 = true;
+        }
+        else
+        {
+          localBundle.putBoolean("VALUE_ARTICLE_IS_LIKED", true);
+          bool1 = true;
+          bool2 = true;
+          continue;
+          label296:
+          super.notifyUI(1, bool2, localBundle);
+        }
+      }
+      else
+      {
+        bool1 = false;
+        bool2 = true;
+        continue;
+        label315:
+        paramToServiceMsg = "";
+        bool1 = false;
+        bool2 = true;
+        continue;
+        paramToServiceMsg = "";
+        bool1 = false;
+      }
+    }
+  }
+  
+  private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    boolean bool1 = true;
+    boolean bool2 = true;
+    String str = "";
+    Bundle localBundle = new Bundle();
+    ArticleComment.ArticleLikeRespond localArticleLikeRespond;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      paramFromServiceMsg = new ArticleComment.ArticleLikeRequest();
+      localArticleLikeRespond = new ArticleComment.ArticleLikeRespond();
+    }
+    for (;;)
+    {
+      try
+      {
+        paramFromServiceMsg.mergeFrom(paramToServiceMsg.getWupBuffer(), 4, paramToServiceMsg.getWupBuffer().length - 4);
+        localArticleLikeRespond.mergeFrom((byte[])paramObject);
+        paramToServiceMsg = str;
+        if (localArticleLikeRespond.ret.has())
+        {
+          if ((localArticleLikeRespond.ret.ret_code.has()) && (localArticleLikeRespond.ret.ret_code.get() != 0)) {
+            break label217;
+          }
+          localBundle.putBoolean("VALUE_ARTICLE_IS_LIKE_SUCCESS", true);
+          bool1 = bool2;
+          paramToServiceMsg = str;
+          if (paramFromServiceMsg.article_id.has())
+          {
+            paramToServiceMsg = paramFromServiceMsg.article_id.get().toStringUtf8();
+            localBundle.putString("VALUE_ARTICLE_ID", paramToServiceMsg);
+            bool1 = bool2;
+          }
+        }
+        if (this.a == null) {
+          break label231;
+        }
+        this.a.n(bool1, paramToServiceMsg);
+        return;
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("Q.pubaccount.video.PublicAccountArticleHandler", 2, "handleSendArticleLikeReq() ERROR e=" + paramToServiceMsg.getMessage());
+        return;
+      }
+      label217:
+      localBundle.putBoolean("VALUE_ARTICLE_IS_LIKE_SUCCESS", false);
+      bool2 = false;
+      continue;
+      label231:
+      super.notifyUI(0, bool1, localBundle);
+      return;
+      paramToServiceMsg = "";
+      bool1 = false;
+    }
+  }
+  
+  private void f(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramFromServiceMsg.isSuccess()) {
+      paramToServiceMsg = new ArticleComment.ReportGalleryInfoResponse();
+    }
+    try
+    {
+      paramToServiceMsg.mergeFrom((byte[])paramObject);
+      bool1 = bool2;
+      if (paramToServiceMsg.ret.has()) {
+        if (paramToServiceMsg.ret.ret_code.has())
+        {
+          bool1 = bool2;
+          if (paramToServiceMsg.ret.ret_code.get() != 0) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
+      }
+      if (this.a != null) {
+        this.a.lI(bool1);
+      }
+      return;
+    }
+    catch (Exception paramToServiceMsg)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("Q.pubaccount.video.PublicAccountArticleHandler", 2, "handleReportReadPhotoCollectionReq() ERROR e=" + paramToServiceMsg.getMessage());
+    }
+  }
+  
+  private void g(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    boolean bool2 = false;
+    int j = -1;
+    int i = j;
+    boolean bool1 = bool2;
+    if (paramFromServiceMsg.isSuccess()) {
+      paramToServiceMsg = new ArticleComment.CreateArticleCommentRespond();
+    }
+    try
+    {
+      paramToServiceMsg.mergeFrom((byte[])paramObject);
+      i = j;
+      bool1 = bool2;
+      if (paramToServiceMsg.ret.has())
+      {
+        i = j;
+        bool1 = bool2;
+        if (paramToServiceMsg.ret.ret_code.has())
+        {
+          j = paramToServiceMsg.ret.ret_code.get();
+          i = j;
+          bool1 = bool2;
+          if (j == 0)
+          {
+            bool1 = true;
+            i = j;
+          }
+        }
+      }
+      if (this.a != null) {
+        this.a.L(bool1, i);
+      }
+      return;
+    }
+    catch (Exception paramToServiceMsg)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("Q.pubaccount.video.PublicAccountArticleHandler", 2, "handleCreateArticleCommentReq() ERROR e=" + paramToServiceMsg.getMessage());
+    }
+  }
+  
+  private void h(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int i = 0;
+    if (paramFromServiceMsg.isSuccess()) {
+      paramToServiceMsg = new ArticleComment.GetArticleCommentCountRespond();
+    }
+    for (;;)
+    {
+      try
+      {
+        paramToServiceMsg.mergeFrom((byte[])paramObject);
+        if (!paramToServiceMsg.ret.has()) {
+          break label157;
+        }
+        if ((!paramToServiceMsg.ret.ret_code.has()) || (paramToServiceMsg.ret.ret_code.get() == 0))
+        {
+          bool1 = true;
+          bool2 = bool1;
+          if (paramToServiceMsg.count.has())
+          {
+            i = paramToServiceMsg.count.get();
+            bool2 = bool1;
+          }
+          if (this.a != null) {
+            this.a.M(bool2, i);
+          }
+          return;
+        }
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("Q.pubaccount.video.PublicAccountArticleHandler", 2, "handleGetArticleCommentCountReq() ERROR e=" + paramToServiceMsg.getMessage());
+        return;
+      }
+      boolean bool1 = false;
+      continue;
+      label157:
+      boolean bool2 = false;
+    }
+  }
+  
+  private void i(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int i = 0;
+    oub.a locala = new oub.a();
+    oub.c localc = null;
+    boolean bool;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      paramFromServiceMsg = new ArticleComment.GetPhotoCollectionInfoResponse();
+      try
+      {
+        paramFromServiceMsg.mergeFrom((byte[])paramObject);
+        locala.articleId = ((String)paramToServiceMsg.extraData.get(this.Vr));
+        paramToServiceMsg = locala.articleId;
+        if (paramFromServiceMsg.ret.has()) {
+          if ((!paramFromServiceMsg.ret.ret_code.has()) || (paramFromServiceMsg.ret.ret_code.get() == 0))
+          {
+            bool = true;
+            if (paramFromServiceMsg.article_share_url.has()) {
+              locala.articleUrl = paramFromServiceMsg.article_share_url.get().toStringUtf8();
+            }
+            if (paramFromServiceMsg.puin.has()) {
+              locala.puin = (paramFromServiceMsg.puin.get() + "");
+            }
+            if (paramFromServiceMsg.article_img_url.has()) {
+              locala.imgUrl = paramFromServiceMsg.article_img_url.get().toStringUtf8();
+            }
+            if (paramFromServiceMsg.article_title.has()) {
+              locala.title = paramFromServiceMsg.article_title.get().toStringUtf8();
+            }
+            if (paramFromServiceMsg.enable_comment.has()) {
+              locala.enable = paramFromServiceMsg.enable_comment.get();
+            }
+            if (paramFromServiceMsg.comment_url.has()) {
+              locala.ari = paramFromServiceMsg.comment_url.get().toStringUtf8();
+            }
+            if (paramFromServiceMsg.firstItem.has())
+            {
+              locala.a = new oub.b();
+              locala.a.url = paramFromServiceMsg.firstItem.url.get().toStringUtf8();
+              locala.a.arl = paramFromServiceMsg.firstItem.photo_author_name.get().toStringUtf8();
+              locala.a.ark = paramFromServiceMsg.firstItem.photo_time.get().toStringUtf8();
+              locala.a.arj = paramFromServiceMsg.firstItem.publicaccount_name.get().toStringUtf8();
+            }
+            if ((!paramFromServiceMsg.item.has()) || (paramFromServiceMsg.item.get().size() <= 0)) {
+              break label628;
+            }
+            locala.infos = new ArrayList();
+            int j = paramFromServiceMsg.item.get().size();
+            while (i < j)
+            {
+              localc = new oub.c();
+              localc.url = ((ArticleComment.PhotoItemInfo)paramFromServiceMsg.item.get(i)).url.get().toStringUtf8();
+              localc.content = ((ArticleComment.PhotoItemInfo)paramFromServiceMsg.item.get(i)).content.get().toStringUtf8();
+              localc.arm = ((ArticleComment.PhotoItemInfo)paramFromServiceMsg.item.get(i)).static_url.get().toStringUtf8();
+              localc.width = ((ArticleComment.PhotoItemInfo)paramFromServiceMsg.item.get(i)).width.get();
+              localc.height = ((ArticleComment.PhotoItemInfo)paramFromServiceMsg.item.get(i)).height.get();
+              locala.infos.add(localc);
+              i += 1;
+              continue;
+              return;
+            }
+          }
+        }
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.pubaccount.video.PublicAccountArticleHandler", 2, "handleGetPhotoCollectionInfoReq() ERROR e=" + paramToServiceMsg.getMessage());
+        }
+      }
+    }
+    for (;;)
+    {
+      bool = false;
+      break;
+      label628:
+      while (this.a != null)
+      {
+        this.a.a(bool, locala, (byte[])paramObject, paramToServiceMsg);
+        return;
+        bool = false;
+        continue;
+        bool = false;
+        paramToServiceMsg = localc;
+      }
+    }
+  }
+  
+  private void j(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    boolean bool = false;
+    paramToServiceMsg = new ArrayList();
+    if (paramFromServiceMsg.isSuccess())
+    {
+      paramFromServiceMsg = new ArticleComment.GetRecommendInfoResponse();
+      try
+      {
+        paramFromServiceMsg.mergeFrom((byte[])paramObject);
+        if ((paramFromServiceMsg.ret.has()) && (((!paramFromServiceMsg.ret.ret_code.has()) || (paramFromServiceMsg.ret.ret_code.get() != 0)) || ((paramFromServiceMsg.item.has()) && (paramFromServiceMsg.item.get().size() > 0))))
+        {
+          int j = paramFromServiceMsg.item.get().size();
+          int i = 0;
+          while (i < j)
+          {
+            paramObject = new oub.d();
+            paramObject.arn = ((ArticleComment.RecommendItemInfo)paramFromServiceMsg.item.get(i)).article_id.get().toStringUtf8();
+            paramObject.source = ((ArticleComment.RecommendItemInfo)paramFromServiceMsg.item.get(i)).recommend_source.get().toStringUtf8();
+            paramObject.title = ((ArticleComment.RecommendItemInfo)paramFromServiceMsg.item.get(i)).title.get().toStringUtf8();
+            paramObject.url = ((ArticleComment.RecommendItemInfo)paramFromServiceMsg.item.get(i)).url.get().toStringUtf8();
+            paramToServiceMsg.add(paramObject);
+            i += 1;
+            continue;
+            return;
+          }
+        }
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.pubaccount.video.PublicAccountArticleHandler", 2, "handleGetRecommendInfoReq ERROR e=" + paramToServiceMsg.getMessage());
+        }
+      }
+    }
+    do
+    {
+      bool = true;
+      if ((paramToServiceMsg != null) && (QLog.isColorLevel())) {
+        QLog.e("Q.pubaccount.video.PublicAccountArticleHandler", 2, "handleGetRecommendInfoReq success, size " + paramToServiceMsg.size());
+      }
+    } while (this.a == null);
+    this.a.a(bool, paramToServiceMsg);
+  }
+  
+  private void k(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int j = 0;
+    boolean bool;
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
+    {
+      bool = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.pubaccount.video.PublicAccountArticleHandler", 2, "handleArticleReadCount:" + bool);
+      }
+      if (!bool) {
+        break label319;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
+        paramToServiceMsg.mergeFrom((byte[])paramObject);
+        paramToServiceMsg = paramToServiceMsg.bytes_bodybuffer.get().toByteArray();
+        paramFromServiceMsg = new oidb_0x6a6.RspBody();
+        paramFromServiceMsg.mergeFrom(paramToServiceMsg);
+        if ((paramFromServiceMsg.uint32_ret_code.has()) && (paramFromServiceMsg.uint32_ret_code.get() == 0))
+        {
+          if (paramFromServiceMsg.uint32_read_count.has())
+          {
+            i = paramFromServiceMsg.uint32_read_count.get();
+            if (QLog.isColorLevel()) {
+              QLog.d("Q.pubaccount.video.PublicAccountArticleHandler", 2, "handleArticleReadCount playCount :" + i);
+            }
+            if (this.a != null) {
+              this.a.N(bool, i);
+            }
+            return;
+            bool = false;
+            break;
+          }
+          if (paramFromServiceMsg.uint64_read_count.has())
+          {
+            i = (int)paramFromServiceMsg.uint64_read_count.get();
+            continue;
+          }
+          i = j;
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.e("Q.pubaccount.video.PublicAccountArticleHandler", 2, "handleArticleReadCount 获取失败, read_count 为空");
+          i = j;
+          continue;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
+      {
+        i = j;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("Q.pubaccount.video.PublicAccountArticleHandler", 2, "handleArticleReadCount, ERROR e=" + paramToServiceMsg.getMessage());
+        i = j;
+        continue;
+        i = j;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("Q.pubaccount.video.PublicAccountArticleHandler", 2, "handleArticleReadCount 获取失败, ret_code 为空或 ret_code == 1");
+        i = j;
+        continue;
+      }
+      label319:
+      int i = j;
+      if (QLog.isColorLevel())
+      {
+        QLog.e("Q.pubaccount.video.PublicAccountArticleHandler", 2, "handleArticleReadCount, 返回直接出错了");
+        i = j;
+      }
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, int paramInt3, ArrayList<oub.d> paramArrayList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.pubaccount.video.PublicAccountArticleHandler", 2, "reportReadPhotoCollection() articleId = " + paramString1);
+    }
+    ArticleComment.ReportGalleryInfoRequest localReportGalleryInfoRequest = new ArticleComment.ReportGalleryInfoRequest();
+    String str = AccountDetailActivity.dX(paramString3);
+    localReportGalleryInfoRequest.article_id.set(Integer.valueOf(str).intValue());
+    localReportGalleryInfoRequest.uin.set(Long.valueOf(getCurrentAccountUin()).longValue());
+    localReportGalleryInfoRequest.puin.set(Long.valueOf(paramString2).longValue());
+    paramString2 = ByteStringMicro.copyFromUtf8(paramString3);
+    localReportGalleryInfoRequest.article_url.set(paramString2);
+    paramString2 = ByteStringMicro.copyFromUtf8("Android");
+    localReportGalleryInfoRequest.os.set(paramString2);
+    localReportGalleryInfoRequest.is_qq.set(1);
+    paramString2 = ByteStringMicro.copyFromUtf8("3.4.4");
+    localReportGalleryInfoRequest.mv.set(paramString2);
+    paramString2 = ByteStringMicro.copyFromUtf8("3058");
+    localReportGalleryInfoRequest.subv.set(paramString2);
+    paramString2 = ByteStringMicro.copyFromUtf8(acbn.dQ[aqiw.getSystemNetwork(this.mApp.getApp().getBaseContext())]);
+    localReportGalleryInfoRequest.network.set(paramString2);
+    paramString1 = ByteStringMicro.copyFromUtf8(paramString1);
+    localReportGalleryInfoRequest.rowkey.set(paramString1);
+    localReportGalleryInfoRequest.ts.set((int)(System.currentTimeMillis() / 1000L));
+    localReportGalleryInfoRequest.site_id.set(paramInt1);
+    if (paramInt1 == 2)
+    {
+      localReportGalleryInfoRequest.recommend_index.set(paramInt2);
+      paramString1 = ByteStringMicro.copyFromUtf8(paramString4);
+      localReportGalleryInfoRequest.echo_info.set(paramString1);
+    }
+    localReportGalleryInfoRequest.browse_time.set(paramInt3);
+    if ((paramArrayList != null) && (paramArrayList.size() > 0) && (paramInt1 == 2))
+    {
+      paramString1 = new ArticleComment.RecommendInfo();
+      paramString2 = paramArrayList.iterator();
+      while (paramString2.hasNext())
+      {
+        paramString3 = (oub.d)paramString2.next();
+        paramString4 = ByteStringMicro.copyFromUtf8(paramString3.arn);
+        paramString1.rowkey.set(paramString4);
+        paramString3 = ByteStringMicro.copyFromUtf8(paramString3.source);
+        paramString1.echo_info.set(paramString3);
+        localReportGalleryInfoRequest.recommend_info.add(paramString1);
+      }
+    }
+    paramString1 = createToServiceMsg("PubAccountArticleCenter.GalleryReport");
+    paramString1.putWupBuffer(localReportGalleryInfoRequest.toByteArray());
+    paramString1.setTimeout(30000L);
+    super.sendPbReq(paramString1);
+  }
+  
+  public void a(jzv paramjzv)
+  {
+    this.a = paramjzv;
+  }
+  
+  public void aBx()
+  {
+    this.a = null;
+  }
+  
+  public void b(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.pubaccount.video.PublicAccountArticleHandler", 2, "getPhotoCollectionInfo() articleId = " + paramString1);
+    }
+    ArticleComment.GetPhotoCollectionInfoRequest localGetPhotoCollectionInfoRequest = new ArticleComment.GetPhotoCollectionInfoRequest();
+    ByteStringMicro localByteStringMicro = ByteStringMicro.copyFromUtf8(paramString1);
+    localGetPhotoCollectionInfoRequest.article_id.set(localByteStringMicro);
+    localGetPhotoCollectionInfoRequest.cuin.set(Long.valueOf(getCurrentAccountUin()).longValue());
+    localGetPhotoCollectionInfoRequest.versionInfo.set("3.4.4,3,3058");
+    localGetPhotoCollectionInfoRequest.click_source.set(paramInt2);
+    localGetPhotoCollectionInfoRequest.recommend_position.set(paramInt1);
+    localGetPhotoCollectionInfoRequest.recommend_source.set(paramString2);
+    paramString2 = createToServiceMsg("PubAccountArticleCenter.PictureInfo");
+    paramString2.putWupBuffer(localGetPhotoCollectionInfoRequest.toByteArray());
+    paramString2.setTimeout(30000L);
+    paramString2.extraData.putString(this.Vr, paramString1);
+    super.sendPbReq(paramString2);
+  }
+  
+  public void b(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    ArticleComment.ArticleLikeRequest localArticleLikeRequest = new ArticleComment.ArticleLikeRequest();
+    paramString = ByteStringMicro.copyFromUtf8(paramString);
+    localArticleLikeRequest.article_id.set(paramString);
+    localArticleLikeRequest.uin.set(Long.valueOf(getCurrentAccountUin()).longValue());
+    if (paramBoolean1)
+    {
+      localArticleLikeRequest.like.set(1);
+      if (!paramBoolean2) {
+        break label109;
+      }
+      localArticleLikeRequest.pin.set(1);
+    }
+    for (;;)
+    {
+      paramString = createToServiceMsg("PubAccountArticleCenter.ArticleLike");
+      paramString.putWupBuffer(localArticleLikeRequest.toByteArray());
+      paramString.setTimeout(30000L);
+      super.sendPbReq(paramString);
+      return;
+      localArticleLikeRequest.like.set(0);
+      break;
+      label109:
+      localArticleLikeRequest.pin.set(0);
+    }
+  }
+  
+  public void h(String paramString1, String paramString2, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString1)) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.pubaccount.video.PublicAccountArticleHandler", 2, "createArticleComment() articleId = " + paramString1);
+      }
+      localObject = AccountDetailActivity.dX(paramString1);
+    } while (TextUtils.isEmpty((CharSequence)localObject));
+    paramString1 = new ArticleComment.CreateArticleCommentRequest();
+    Object localObject = ByteStringMicro.copyFromUtf8((String)localObject);
+    paramString1.article_id.set((ByteStringMicro)localObject);
+    paramString2 = ByteStringMicro.copyFromUtf8(paramString2);
+    paramString1.comment.set(paramString2);
+    paramString1.uin.set(Long.valueOf(getCurrentAccountUin()).longValue());
+    paramString1.hide_name.set(paramInt);
+    paramString2 = createToServiceMsg("PubAccountArticleCenter.CreateArticleComment");
+    paramString2.putWupBuffer(paramString1.toByteArray());
+    paramString2.setTimeout(30000L);
+    super.sendPbReq(paramString2);
+  }
+  
+  public void lB(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return;
+      localObject = AccountDetailActivity.dX(paramString);
+    } while (TextUtils.isEmpty((CharSequence)localObject));
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.pubaccount.video.PublicAccountArticleHandler", 2, "getArticleCommentCount() articleId = " + (String)localObject);
+    }
+    paramString = new ArticleComment.GetArticleCommentCountRequest();
+    Object localObject = ByteStringMicro.copyFromUtf8((String)localObject);
+    paramString.article_id.set((ByteStringMicro)localObject);
+    localObject = createToServiceMsg("PubAccountArticleCenter.GetArticleCommentCount");
+    ((ToServiceMsg)localObject).putWupBuffer(paramString.toByteArray());
+    ((ToServiceMsg)localObject).setTimeout(30000L);
+    super.sendPbReq((ToServiceMsg)localObject);
+  }
+  
+  public void lC(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.pubaccount.video.PublicAccountArticleHandler", 2, "getRecommendInfo() articleId = " + paramString);
+    }
+    ArticleComment.GetRecommendInfoRequest localGetRecommendInfoRequest = new ArticleComment.GetRecommendInfoRequest();
+    paramString = ByteStringMicro.copyFromUtf8(paramString);
+    localGetRecommendInfoRequest.article_id.set(paramString);
+    localGetRecommendInfoRequest.cuin.set(Long.valueOf(getCurrentAccountUin()).longValue());
+    localGetRecommendInfoRequest.versionInfo.set("3.4.4,3,3058");
+    paramString = createToServiceMsg("PubAccountArticleCenter.GetRecommendInfo");
+    paramString.putWupBuffer(localGetRecommendInfoRequest.toByteArray());
+    paramString.setTimeout(30000L);
+    super.sendPbReq(paramString);
+  }
+  
+  public void lD(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.pubaccount.video.PublicAccountArticleHandler", 2, "queryArticleLikeCount() articleId = " + paramString);
+    }
+    ArticleComment.GetArticleLikeCountRequest localGetArticleLikeCountRequest = new ArticleComment.GetArticleLikeCountRequest();
+    paramString = ByteStringMicro.copyFromUtf8(paramString);
+    localGetArticleLikeCountRequest.article_id.set(paramString);
+    paramString = createToServiceMsg("PubAccountArticleCenter.GetArticleLikeCount");
+    paramString.putWupBuffer(localGetArticleLikeCountRequest.toByteArray());
+    paramString.setTimeout(30000L);
+    super.sendPbReq(paramString);
+  }
+  
+  public void lE(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.pubaccount.video.PublicAccountArticleHandler", 2, "queryArticleReadCount()  articleId" + paramString);
+    }
+    oidb_0x6a6.ReqBody localReqBody = new oidb_0x6a6.ReqBody();
+    paramString = ByteStringMicro.copyFromUtf8(paramString);
+    localReqBody.bytes_article_id.set(paramString);
+    localReqBody.uint32_req_type.set(0);
+    super.sendPbReq(super.makeOIDBPkg("OidbSvc.0x6a6", 1702, 0, localReqBody.toByteArray()));
+  }
+  
+  public void lF(String paramString)
+  {
+    ArticleComment.CheckArticleLikeRequest localCheckArticleLikeRequest = new ArticleComment.CheckArticleLikeRequest();
+    paramString = ByteStringMicro.copyFromUtf8(paramString);
+    localCheckArticleLikeRequest.article_id.set(paramString);
+    localCheckArticleLikeRequest.uins.add(Long.valueOf(getCurrentAccountUin()));
+    paramString = createToServiceMsg("PubAccountArticleCenter.CheckArticleLike");
+    paramString.putWupBuffer(localCheckArticleLikeRequest.toByteArray());
+    paramString.setTimeout(30000L);
+    super.sendPbReq(paramString);
+  }
+  
+  protected boolean msgCmdFilter(String paramString)
+  {
+    if (this.allowCmdSet == null)
+    {
+      this.allowCmdSet = new HashSet();
+      this.allowCmdSet.add("PubAccountArticleCenter.ArticleLike");
+      this.allowCmdSet.add("PubAccountArticleCenter.CheckArticleLike");
+      this.allowCmdSet.add("PubAccountArticleCenter.GetArticleLikeCount");
+      this.allowCmdSet.add("PubAccountArticleCenter.CreateArticleComment");
+      this.allowCmdSet.add("PubAccountArticleCenter.GetArticleCommentCount");
+      this.allowCmdSet.add("PubAccountArticleCenter.PictureInfo");
+      this.allowCmdSet.add("PubAccountArticleCenter.GetRecommendInfo");
+      this.allowCmdSet.add("PubAccountArticleCenter.GalleryReport");
+      this.allowCmdSet.add("OidbSvc.0x6a6");
+    }
+    return !this.allowCmdSet.contains(paramString);
+  }
+  
+  protected Class<? extends acci> observerClass()
+  {
+    return jzv.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.pubaccount.video.PublicAccountArticleHandler", 2, "onReceive() getServiceCmd=" + paramFromServiceMsg.getServiceCmd());
+    }
+    if (msgCmdFilter(paramFromServiceMsg.getServiceCmd())) {}
+    do
+    {
+      do
+      {
+        return;
+        try
+        {
+          if (!paramFromServiceMsg.getServiceCmd().equals("PubAccountArticleCenter.GetArticleLikeCount")) {
+            break;
+          }
+          c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+          return;
+        }
+        catch (Exception paramToServiceMsg) {}
+      } while (!QLog.isColorLevel());
+      QLog.e("Q.pubaccount.video.PublicAccountArticleHandler", 2, "onReceive ERROR e=" + paramToServiceMsg.getMessage() + paramFromServiceMsg.getServiceCmd());
+      return;
+      if (paramFromServiceMsg.getServiceCmd().equals("PubAccountArticleCenter.CheckArticleLike"))
+      {
+        d(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+      if (paramFromServiceMsg.getServiceCmd().equals("PubAccountArticleCenter.ArticleLike"))
+      {
+        e(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+      if (paramFromServiceMsg.getServiceCmd().equals("PubAccountArticleCenter.GalleryReport"))
+      {
+        f(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+      if (paramFromServiceMsg.getServiceCmd().equals("PubAccountArticleCenter.CreateArticleComment"))
+      {
+        g(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+      if (paramFromServiceMsg.getServiceCmd().equals("PubAccountArticleCenter.GetArticleCommentCount"))
+      {
+        h(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+      if (paramFromServiceMsg.getServiceCmd().equals("PubAccountArticleCenter.PictureInfo"))
+      {
+        i(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+      if (paramFromServiceMsg.getServiceCmd().equals("PubAccountArticleCenter.GetRecommendInfo"))
+      {
+        j(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+    } while (!paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0x6a6"));
+    k(paramToServiceMsg, paramFromServiceMsg, paramObject);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes13.jar
+ * Qualified Name:     jzu
+ * JD-Core Version:    0.7.0.1
+ */

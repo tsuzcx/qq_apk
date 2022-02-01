@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/ofl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:id="@id/ofb" style="@style/aig" />
+        <TextView android:layout_marginBottom="160.0dip" android:text="@string/yuq" android:layout_above="@id/ofb" style="@style/ail" />
+        <ImageView android:id="@id/ofg" android:layout_marginTop="-140.0dip" android:src="@drawable/h3q" android:layout_below="@id/ofb" style="@style/aii" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/ofm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:id="@id/ofc" style="@style/aig" />
+        <TextView android:layout_marginBottom="160.0dip" android:text="@string/yur" android:layout_above="@id/ofc" style="@style/ail" />
+        <ImageView android:id="@id/ofh" android:layout_marginTop="-140.0dip" android:src="@drawable/h3r" android:layout_below="@id/ofc" style="@style/aii" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/ofn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:id="@id/ofd" style="@style/aig" />
+        <TextView android:layout_marginBottom="160.0dip" android:text="@string/yus" android:layout_above="@id/ofd" style="@style/ail" />
+        <ImageView android:id="@id/ofi" android:layout_marginTop="-140.0dip" android:src="@drawable/h3s" android:layout_below="@id/ofd" style="@style/aii" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/ofo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:id="@id/ofe" style="@style/aig" />
+        <TextView android:layout_marginBottom="130.0dip" android:text="@string/yut" android:layout_above="@id/ofe" style="@style/ail" />
+        <ImageView android:id="@id/ofj" android:layout_marginTop="-50.0dip" android:src="@drawable/io8" android:layout_below="@id/ofe" style="@style/aii" />
+        <Button android:id="@id/ofk" android:layout_marginTop="112.0dip" android:text="@string/yuu" android:layout_below="@id/ofe" style="@style/aij" />
+    </RelativeLayout>
+</FrameLayout>

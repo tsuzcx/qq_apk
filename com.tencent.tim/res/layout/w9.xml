@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:id="@id/dbn" android:layout_width="78.0dip" android:layout_height="78.0dip" android:src="@drawable/d8y" android:scaleType="centerInside" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="18.0dip" android:textColor="#ff2c2c2c" android:ellipsize="middle" android:id="@id/key" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="40.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="40.0dip" android:text="QQ" android:singleLine="true" android:layout_below="@id/dbn" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="12.0dip" android:textColor="#ffa6a7a7" android:id="@id/kex" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="34.58MB" android:layout_below="@id/key" android:layout_centerHorizontal="true" />
+        <RelativeLayout android:id="@id/jql" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="39.299988dip" android:layout_marginTop="29.0dip" android:layout_marginRight="39.299988dip" android:layout_below="@id/kex" android:layout_centerHorizontal="true">
+            <com.tencent.open.filedownload.ui.SafeDownloadButton android:id="@id/ajp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <com.tencent.open.filedownload.ui.NormalDownloadButton android:id="@id/aio" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <com.tencent.open.filedownload.ui.WhiteListDownloadButton android:id="@id/al8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <TextView android:textSize="16.0dip" android:textColor="@color/pl" android:id="@id/kfd" android:padding="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="27.0dip" android:text="@string/poz" android:layout_below="@id/jql" android:layout_centerHorizontal="true" />
+        <View android:layout_width="fill_parent" android:layout_height="80.0dip" android:layout_below="@id/kfd" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/idm" android:layout_width="wrap_content" android:layout_height="16.699982dip" android:layout_marginBottom="20.699982dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/d98" />
+        <TextView android:textSize="12.0dip" android:textColor="#ffcecece" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pp4" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.widget.BounceScrollView android:orientation="vertical" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="0.0dip" android:fillViewport="true" android:layout_weight="1.0">
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/eqr" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </com.tencent.mobileqq.widget.BounceScrollView>
+        <RelativeLayout android:id="@id/ac1" android:background="@drawable/d9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="45.0dip">
+            <View android:background="@drawable/da" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentTop="true" />
+            <ImageView android:id="@id/efg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/common_loading6" android:layout_toLeftOf="@id/hwa" android:layout_centerInParent="true" />
+            <Button android:textColor="@color/skin_qq_aio_receipt_message_detail_bottom_text_color" android:id="@id/hwa" android:background="@drawable/trans" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </LinearLayout>
+    <TextView android:textSize="16.0dip" android:textColor="@color/skin_hint_input" android:id="@id/byi" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/f8b" android:layout_centerInParent="true" />
+</RelativeLayout>

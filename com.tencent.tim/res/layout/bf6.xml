@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <TableLayout android:layout_width="200.0dip" android:layout_height="wrap_content" android:stretchColumns="1"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <TableRow>
+            <TextView android:textSize="24.0sp" android:padding="3.0dip" android:layout_column="1" android:text="Speed" />
+            <Spinner android:entries="@array/bd" android:id="@id/j0k" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </TableRow>
+    </TableLayout>
+    <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/g3c" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="@dimen/akz" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="开启ptt自动转文本" />
+    <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/m0q" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="@dimen/akz" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="开启ptt分片转文本" />
+</LinearLayout>

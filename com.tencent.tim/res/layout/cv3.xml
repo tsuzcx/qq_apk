@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.qqmail.view.ReadMailDetailView android:paddingLeft="@dimen/bqh" android:paddingRight="@dimen/bqh" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.qqmail.view.ReadMailDetailInformationView android:id="@id/nrr" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:layout_gravity="center|right|top" android:orientation="horizontal" android:id="@id/mt3" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/o5t" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:layout_marginRight="1.0dip" android:src="@drawable/gvb" android:contentDescription="@string/pb" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/o5q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:layout_marginTop="0.0dip" android:layout_marginRight="0.0dip" android:src="@drawable/gva" android:contentDescription="@string/pb" style="@style/acd" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/o5s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:src="@drawable/i6z" />
+        <com.tencent.qqmail.qmui.alpha.QMUIAlphaButton android:textSize="@dimen/bqe" android:textColor="@color/aty" android:gravity="center" android:id="@id/nz5" android:background="@null" android:paddingLeft="@dimen/bqd" android:paddingRight="@dimen/bqd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="0.0dip" android:minHeight="0.0dip" android:text="@string/y4x" />
+    </LinearLayout>
+</com.tencent.qqmail.view.ReadMailDetailView>

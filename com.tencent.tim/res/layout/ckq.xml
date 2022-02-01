@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/e_l" android:paddingLeft="@dimen/bpq" android:paddingRight="@dimen/bpq" android:duplicateParentState="false" android:layout_width="fill_parent" android:layout_height="56.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/n2x" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/ic_launcher" android:layout_centerVertical="true" android:contentDescription="@string/xm_" />
+    <LinearLayout android:orientation="vertical" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/i_b" android:layout_toRightOf="@id/n2x" android:layout_centerVertical="true">
+        <TextView android:textSize="15.0sp" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/o4b" android:background="@null" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        <TextView android:textSize="13.0sp" android:ellipsize="end" android:id="@id/o4a" android:background="@null" android:visibility="gone" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+    </LinearLayout>
+    <FrameLayout android:id="@id/i_b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <ImageView android:layout_gravity="center|right" android:id="@id/n2y" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gos" android:contentDescription="@string/xm_" />
+        <Button android:textSize="14.0sp" android:textColor="@color/atq" android:gravity="center" android:layout_gravity="center|right" android:id="@id/miu" android:background="@drawable/ekm" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="48.0dip" android:minHeight="32.0dip" android:text="@string/wga" />
+    </FrameLayout>
+</RelativeLayout>

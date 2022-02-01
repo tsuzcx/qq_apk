@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/gfu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/q3v" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_alignParentStart="true" />
+    <TextView android:gravity="right" android:id="@id/gfv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/vmu" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_alignParentEnd="true" />
+</merge>

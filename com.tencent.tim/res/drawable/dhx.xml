@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="@color/aqg" />
+        </shape>
+    </item>
+    <item android:left="@dimen/bkz" android:right="@dimen/bkz">
+        <shape>
+            <solid android:color="@color/aqh" />
+        </shape>
+    </item>
+    <item android:left="@dimen/bkz" android:right="@dimen/bkz" android:bottom="@dimen/buj">
+        <shape>
+            <solid android:color="@color/aqg" />
+        </shape>
+    </item>
+</layer-list>

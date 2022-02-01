@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/content" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="22.0dip" android:textColor="@color/a1g" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/flk" android:drawableLeft="@drawable/ext" android:drawableRight="@drawable/ext" android:drawablePadding="8.0dip" />
+    <com.tencent.image.URLImageView android:id="@id/eo8" android:layout_width="@dimen/ago" android:layout_height="@dimen/ago" android:layout_marginTop="20.0dip" android:scaleType="centerInside" />
+    <TextView android:textSize="28.0dip" android:textColor="@color/a1g" android:id="@id/eo9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/qv1" android:drawableRight="@drawable/exo" android:drawablePadding="7.0dip" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/cf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="17.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="17.0dip">
+        <Button android:textSize="18.0dip" android:textColor="@color/a1l" android:gravity="center" android:id="@id/iqr" android:background="@drawable/adv" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/i1" android:text="@string/flj" android:layout_weight="1.0" />
+        <Button android:textSize="18.0dip" android:textColor="@color/a1l" android:gravity="center" android:id="@id/bxg" android:background="@drawable/adv" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:minHeight="@dimen/i1" android:text="@string/fli" android:layout_weight="1.0" />
+    </LinearLayout>
+    <ImageButton android:id="@id/close" android:background="@android:color/transparent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:src="@drawable/ady" android:contentDescription="@string/flh" />
+</LinearLayout>

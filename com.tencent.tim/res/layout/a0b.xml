@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/wn" android:paddingLeft="@dimen/ajj" android:paddingTop="@dimen/ajj" android:paddingRight="@dimen/ajj" android:paddingBottom="@dimen/ajj" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:SquareImageView="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.widget.SquareImageView android:id="@id/a36" android:layout_width="18.0dip" android:layout_height="18.0dip" android:scaleType="centerCrop" />
+        <TextView android:textSize="12.0dip" android:textColor="#ff737373" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/f5e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:maxLines="1" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/a36" />
+        <TextView android:textSize="12.0dip" android:textColor="#ff737373" android:gravity="center_vertical" android:id="@id/fxv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <TextView android:textSize="15.0dip" android:textColor="#ff262626" android:ellipsize="end" android:id="@id/bgt" android:paddingRight="6.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/aju" android:maxLines="3" />
+    <FrameLayout android:id="@id/iwn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+        <include android:layout_width="wrap_content" android:layout_height="wrap_content" layout="@layout/a0l" />
+    </FrameLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/fsi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+        <FrameLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <include android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/a0l" />
+        </FrameLayout>
+        <FrameLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_weight="1.0">
+            <include android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/a0l" />
+        </FrameLayout>
+        <FrameLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_weight="1.0">
+            <include android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/a0l" />
+        </FrameLayout>
+        <FrameLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_weight="1.0">
+            <include android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/a0l" />
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

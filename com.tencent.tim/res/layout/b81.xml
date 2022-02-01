@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/ixt" android:paddingRight="2.0dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="62.0dip" android:layout_height="62.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView android:id="@id/ixp" android:layout_width="62.0dip" android:layout_height="62.0dip" android:scaleType="centerCrop" />
+    <TextView android:id="@id/a6j" android:layout_width="62.0dip" android:layout_height="62.0dip" android:layout_alignTop="@id/ixp" android:layout_alignBottom="@id/ixp" />
+    <RelativeLayout android:id="@id/ixq" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true">
+        <ImageView android:background="@drawable/cgy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_marginBottom="2.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <ImageView android:id="@id/ixr" android:background="@drawable/am_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <TextView android:textSize="13.0dip" android:textColor="@color/al3" android:id="@id/ixs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="1.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

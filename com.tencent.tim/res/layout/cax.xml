@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/os" android:background="@color/fm" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.XFrameLayout android:id="@id/ebg" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/b8v">
+        <com.tencent.mobileqq.widget.BounceScrollView android:id="@id/ot" android:focusable="true" android:focusableInTouchMode="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.widget.XListView android:scrollbarStyle="insideOverlay" android:id="@id/album_list" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scrollingCache="false" android:divider="@drawable/s1" android:dividerHeight="1.0dip" />
+        </com.tencent.mobileqq.widget.BounceScrollView>
+        <ImageView android:layout_gravity="bottom" android:id="@id/or" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="60.0dip" android:src="@drawable/id" />
+    </com.tencent.widget.XFrameLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="495.0dip">
+        <TextView android:textSize="15.0sp" android:textColor="@color/skin_gray2_theme_version2" android:gravity="center" android:layout_gravity="center" android:id="@id/bww" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/cuq" android:drawableTop="@drawable/hap" android:drawablePadding="10.0dip" />
+    </FrameLayout>
+</FrameLayout>

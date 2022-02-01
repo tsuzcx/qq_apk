@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="5.0dip">
+        <com.tencent.image.URLImageView android:id="@id/icon" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="2.0px" android:src="@drawable/f6n" />
+        <ImageView android:id="@id/dj0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/f6m" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:id="@id/cah" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:maxLines="1" android:lines="1" android:shadowColor="#7f000000" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="3.0" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <com.tencent.mobileqq.richmedia.capture.view.CaptureCommonLoadingView android:id="@id/cak" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+    <ImageView android:id="@id/bab" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/f6q" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <com.tencent.image.URLImageView android:id="@id/io" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</RelativeLayout>

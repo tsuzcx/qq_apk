@@ -1,0 +1,21 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class oyw
+  implements View.OnClickListener
+{
+  oyw(oyu paramoyu) {}
+  
+  public void onClick(View paramView)
+  {
+    oyu.a(this.this$0);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes14.jar
+ * Qualified Name:     oyw
+ * JD-Core Version:    0.7.0.1
+ */

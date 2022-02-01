@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/obk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bs3" android:layout_marginBottom="@dimen/bs2"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/na0" android:background="@drawable/d0e" android:paddingRight="0.0dip" android:clickable="false" android:minHeight="44.0dip" style="@style/v6">
+        <TextView android:id="@id/obg" android:layout_width="@dimen/bsk" android:text="@string/yty" android:layout_weight="0.0" style="@style/ahq" />
+        <EditText android:textSize="17.0sp" android:textColor="@color/aii" android:textColorHint="@color/aw2" android:layout_gravity="center_horizontal" android:id="@id/obf" android:background="@drawable/f89" android:layout_width="0.0dip" android:layout_height="fill_parent" android:hint="@string/y8f" android:singleLine="true" android:layout_weight="1.0" android:imeOptions="actionGo" />
+        <Button android:layout_gravity="center|right" android:id="@id/mks" android:paddingRight="0.0dip" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="10.0dip" style="@style/ae3" />
+        <FrameLayout android:background="#ffeeeeee" android:paddingTop="1.0dip" android:paddingBottom="1.0dip" android:layout_width="@dimen/bu6" android:layout_height="fill_parent">
+            <ImageView android:id="@id/obe" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" android:contentDescription="@string/pb" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/air" android:layout_gravity="center" android:id="@id/obj" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ws4" />
+        </FrameLayout>
+        <FrameLayout android:layout_width="30.0dip" android:layout_height="fill_parent">
+            <ImageButton android:id="@id/obi" android:background="@drawable/f89" android:layout_width="30.0dip" android:layout_height="fill_parent" android:src="@drawable/i6v" android:scaleType="center" />
+            <RelativeLayout android:layout_gravity="center" android:id="@id/obh" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </FrameLayout>
+    </LinearLayout>
+    <TextView android:text="@string/xfm" android:layout_below="@id/na0" style="@style/ahs" />
+</RelativeLayout>

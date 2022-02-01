@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/eeb" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/jo9" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" layout="@layout/is" />
+    <RelativeLayout android:id="@id/icy" android:background="@drawable/skin_setting_strip_middle_unpressed" android:layout_width="fill_parent" android:layout_height="150.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip">
+        <RelativeLayout android:gravity="center_vertical" android:id="@id/ie5" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_marginLeft="14.0dip" android:layout_alignParentBottom="true">
+            <Button android:id="@id/af9" android:background="@drawable/qzone_skin_toolbar_btn_at_click" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <ScrollView android:id="@id/j8m" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/ie5">
+            <com.tencent.open.widget.CursorEditText android:textSize="16.0sp" android:textColor="#ff757575" android:gravity="top" android:id="@id/bz9" android:background="#00000000" android:paddingLeft="10.0dip" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/a6_" android:singleLine="false" />
+        </ScrollView>
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/eef" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginRight="6.0dip">
+            <TextView android:textSize="16.0sp" android:textColor="#ff757575" android:id="@id/kaz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textSize="16.0sp" android:textColor="#ff757575" android:id="@id/kay" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <ImageView android:id="@id/dyh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:adjustViewBounds="true" android:maxHeight="190.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

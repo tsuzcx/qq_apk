@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:background="@drawable/hu" android:layout_width="65.0dip" android:layout_height="40.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textColor="#ff000000" android:gravity="center" android:layout_gravity="center" android:id="@id/b0h" android:layout_width="72.0dip" android:layout_height="fill_parent" android:text="Log" />
+    <View android:background="#ffd9d9d9" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+</LinearLayout>

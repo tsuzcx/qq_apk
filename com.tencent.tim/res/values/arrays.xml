@@ -1,0 +1,4703 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="a">
+        <item>仅删除帐号</item>
+        <item>删除帐号和本地记录</item>
+    </string-array>
+    <string-array name="b">
+        <item>添加到桌面</item>
+    </string-array>
+    <string-array name="c">
+        <item>@string/cvy</item>
+        <item>@string/cvz</item>
+    </string-array>
+    <string-array name="bk">
+        <item>哈哈哈</item>
+        <item>在吗</item>
+        <item>宝贝</item>
+        <item>拜拜</item>
+        <item>为什么</item>
+        <item>我不知道</item>
+        <item>笑死我了</item>
+        <item>爱你</item>
+    </string-array>
+    <integer-array name="bl">
+        <item>4</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </integer-array>
+    <string-array name="bm">
+        <item>好友</item>
+        <item>情侣</item>
+        <item>闺蜜</item>
+        <item>基友</item>
+    </string-array>
+    <string-array name="d">
+        <item>屏蔽所有群消息</item>
+    </string-array>
+    <string-array name="e">
+        <item>接收所有群消息</item>
+    </string-array>
+    <string-array name="f">
+        <item>热映电影</item>
+        <item>附近美食</item>
+        <item>新歌推荐</item>
+        <item>热门漫画</item>
+    </string-array>
+    <string-array name="g">
+        <item>拨打电话</item>
+        <item>拨打免费电话</item>
+        <item>发送短信</item>
+        <item>取消</item>
+    </string-array>
+    <string-array name="h">
+        <item>拨打电话</item>
+        <item>拨打免费电话</item>
+        <item>取消</item>
+    </string-array>
+    <string-array name="i">
+        <item>让我们在谈人生、聊理想之前，先看完这本《%s》吧！</item>
+        <item>凭我对你的了解，这本《%s》很适合你，你怎么能不读？</item>
+        <item>知道你和我的差距在哪吗？看完这本《%s》就知道了。</item>
+        <item>我精挑细选才送你这本《%s》，一定要好好研读哦！</item>
+        <item>与其在别处浪费光阴，不如好好品味这本《%s》。</item>
+        <item>别让你的心灵长满枯草，请用这本《%s》来拯救你。</item>
+        <item>学无止境，送你《%s》继续进步吧！</item>
+    </string-array>
+    <string-array name="bn">
+        <item>天了噜，太感人了，谢谢你的贺卡！</item>
+        <item>收到你的贺卡，真是太开心啦！！</item>
+        <item>好开心哦，谢谢你的贺卡哦！</item>
+        <item>谢谢你的贺卡，常联系！</item>
+        <item>有人惦记的感觉真好，感谢有你！</item>
+        <item>谢谢你在这个美好的日子记得我！常联系！</item>
+        <item>收到你的贺卡啦，感动得不要不要的。。。</item>
+        <item>嘿，我收到贺卡了哦，好棒喔，谢谢你！</item>
+        <item>谢谢你的贺卡，我的朋友！</item>
+        <item>谢谢你的贺卡，也祝你幸福快乐！</item>
+    </string-array>
+    <integer-array name="j">
+        <item>0</item>
+        <item>1</item>
+        <item>20</item>
+        <item>21</item>
+    </integer-array>
+    <string-array name="k">
+        <item>添加新分组</item>
+    </string-array>
+    <string-array name="l">
+        <item>删除表情</item>
+        <item>发送表情</item>
+    </string-array>
+    <string-array name="m">
+        <item>已成功约到人</item>
+        <item>时间冲突</item>
+        <item>约不到人</item>
+        <item>约会内容不满意</item>
+        <item>其他</item>
+    </string-array>
+    <integer-array name="n">
+        <item>14082801</item>
+        <item>14082802</item>
+        <item>14082803</item>
+        <item>14082804</item>
+        <item>14082805</item>
+    </integer-array>
+    <string-array name="o">
+        <item>自驾</item>
+        <item>飞机</item>
+        <item>火车/高铁</item>
+        <item>汽车</item>
+        <item>邮轮</item>
+        <item>骑行</item>
+        <item>其他交通工具</item>
+        <item>交通工具不限</item>
+    </string-array>
+    <string-array name="p">
+        <item>@string/fgb</item>
+        <item>@string/fhs</item>
+        <item>@string/fez</item>
+    </string-array>
+    <string-array name="q">
+        <item>限男生</item>
+        <item>限妹子</item>
+        <item>不限</item>
+    </string-array>
+    <string-array name="r">
+        <item>孤独寂寞求饭友</item>
+        <item>交个朋友，吃饭聊天</item>
+        <item>饭量小，求喂饱</item>
+        <item>这家餐厅不错，一起去吧</item>
+    </string-array>
+    <integer-array name="s">
+        <item>1408280101</item>
+        <item>1408280102</item>
+        <item>1408280103</item>
+        <item>1408280104</item>
+    </integer-array>
+    <integer-array name="t">
+        <item>1111110100</item>
+        <item>1111110200</item>
+        <item>1111110300</item>
+        <item>1111110400</item>
+        <item>1111110500</item>
+    </integer-array>
+    <string-array name="u">
+        <item>以歌会友</item>
+        <item>麦霸求PK</item>
+        <item>唱到下一个天亮</item>
+        <item>把我喜欢的歌唱给你听</item>
+    </string-array>
+    <integer-array name="v">
+        <item>1408280301</item>
+        <item>1408280302</item>
+        <item>1408280303</item>
+        <item>1408280304</item>
+    </integer-array>
+    <string-array name="w">
+        <item>看看电影，聊聊人生</item>
+        <item>找个人安静地看场电影</item>
+        <item>寻最佳影友</item>
+        <item>新片上映，走起</item>
+    </string-array>
+    <integer-array name="x">
+        <item>1408280201</item>
+        <item>1408280202</item>
+        <item>1408280203</item>
+        <item>1408280204</item>
+    </integer-array>
+    <string-array name="y">
+        <item>小白求指导</item>
+        <item>寻个同伴，互相监督</item>
+        <item>不运动会死星人</item>
+        <item>拒绝宅，挥洒汗水</item>
+    </string-array>
+    <integer-array name="z">
+        <item>1408280401</item>
+        <item>1408280402</item>
+        <item>1408280403</item>
+        <item>1408280404</item>
+    </integer-array>
+    <string-array name="a0">
+        <item>搭伴回家，同路求捡</item>
+        <item>一次说走就走的旅行</item>
+        <item>陪你看遍世间风景</item>
+        <item>文艺青年的行走，爱拍照的来</item>
+    </string-array>
+    <integer-array name="a1">
+        <item>1412150501</item>
+        <item>1412150502</item>
+        <item>1412150503</item>
+        <item>1412150504</item>
+    </integer-array>
+    <string-array name="a2">
+        <item>不限</item>
+        <item>2人</item>
+        <item>3-5人</item>
+        <item>6-8人</item>
+        <item>8人以上</item>
+    </string-array>
+    <string-array name="a3">
+        <item>吃饭</item>
+        <item>看电影</item>
+        <item>唱歌</item>
+        <item>出行</item>
+        <item>运动</item>
+    </string-array>
+    <integer-array name="a4">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>5</item>
+        <item>4</item>
+    </integer-array>
+    <string-array name="a5">
+        <item>约人吃饭</item>
+        <item>约人看电影</item>
+        <item>约人唱歌</item>
+        <item>约人运动</item>
+    </string-array>
+    <string-array name="a6">
+        <item>我买单</item>
+        <item>求请客</item>
+        <item>AA</item>
+    </string-array>
+    <string-array name="a7">
+        <item>不限</item>
+        <item>自驾</item>
+        <item>飞机</item>
+        <item>火车/高铁</item>
+        <item>汽车</item>
+        <item>邮轮</item>
+        <item>骑行</item>
+        <item>其他</item>
+    </string-array>
+    <string-array name="a8">
+        <item>清空所有验证消息</item>
+    </string-array>
+    <string-array name="a9">
+        <item>删除消息</item>
+        <item>清空所有广播消息</item>
+    </string-array>
+    <string-array name="a_">
+        <item>查看名片</item>
+        <item>删除好友</item>
+        <item>移至分组</item>
+        <item>添加到桌面</item>
+    </string-array>
+    <string-array name="aa">
+        <item>查看名片</item>
+        <item>删除好友</item>
+        <item>添加到桌面</item>
+    </string-array>
+    <string-array name="ab">
+        <item>从打招呼列表中移除</item>
+    </string-array>
+    <string-array name="ac">
+        <item>删除消息</item>
+        <item>清空所有验证消息</item>
+    </string-array>
+    <string-array name="ad">
+        <item>清空会话列表</item>
+    </string-array>
+    <string-array name="ae">
+        <item>从会话列表中移除</item>
+        <item>清空会话列表</item>
+    </string-array>
+    <string-array name="af">
+        <item>男</item>
+        <item>女</item>
+        <item>取消</item>
+    </string-array>
+    <string-array name="ag">
+        <item>拍照</item>
+        <item>从相册选择</item>
+    </string-array>
+    <string-array name="ah">
+        <item>China 中国大陆 86 11 常用地区</item>
+        <item>Hong Kong 中国香港 852 8 常用地区</item>
+        <item>Macau 中国澳门 853 8 常用地区</item>
+        <item>Taiwan 中国台湾 886 10 常用地区</item>
+        <item>Japan 日本 81 11 常用地区</item>
+        <item>USA 美国 1 10 常用地区</item>
+        <item>United Kingdom 英国 44 10 常用地区</item>
+        <item>Australia 澳大利亚 61 10 常用地区</item>
+        <item>Canada 加拿大 1 7 常用地区</item>
+    </string-array>
+    <string-array name="ai">
+        <item>常用地区</item>
+    </string-array>
+    <string-array name="aj">
+        <item>.mp2</item>
+        <item>.mp3</item>
+        <item>.wav</item>
+        <item>.ogg</item>
+        <item>.mid</item>
+        <item>.midi</item>
+        <item>.m3u</item>
+        <item>.m4a</item>
+        <item>.m4b</item>
+        <item>.m4p</item>
+        <item>.mpga</item>
+        <item>.wma</item>
+        <item>.amr</item>
+    </string-array>
+    <string-array name="ak">
+        <item>.chm</item>
+    </string-array>
+    <string-array name="al">
+        <item>.xls</item>
+        <item>.xlsx</item>
+    </string-array>
+    <string-array name="am">
+        <item>.png</item>
+        <item>.gif</item>
+        <item>.jpg</item>
+        <item>.jpeg</item>
+        <item>.bmp</item>
+        <item>.ico</item>
+    </string-array>
+    <string-array name="an">
+        <item>.ppt</item>
+        <item>.pptx</item>
+    </string-array>
+    <string-array name="ao">
+        <item>.apk</item>
+        <item>.jar</item>
+        <item>.zip</item>
+        <item>.rar</item>
+        <item>.gz</item>
+        <item>.tar</item>
+        <item>.img</item>
+    </string-array>
+    <string-array name="ap">
+        <item>.pdf</item>
+    </string-array>
+    <string-array name="aq">
+        <item>.txt</item>
+        <item>.java</item>
+        <item>.c</item>
+        <item>.cpp</item>
+        <item>.py</item>
+        <item>.xml</item>
+        <item>.json</item>
+        <item>.log</item>
+    </string-array>
+    <string-array name="ar">
+        <item>.wmv</item>
+        <item>.mp4</item>
+        <item>.rmvb</item>
+        <item>.avi</item>
+        <item>.flv</item>
+        <item>.rm</item>
+        <item>.asf</item>
+        <item>.mov</item>
+        <item>.mpg</item>
+        <item>.3gp</item>
+        <item>.m4u</item>
+        <item>.mpeg</item>
+        <item>.m4v</item>
+        <item>.vob</item>
+        <item>.mkv</item>
+        <item>.mpe</item>
+    </string-array>
+    <string-array name="as">
+        <item>.htm</item>
+        <item>.html</item>
+        <item>.php</item>
+        <item>.jsp</item>
+    </string-array>
+    <string-array name="at">
+        <item>.doc</item>
+        <item>.docx</item>
+        <item>.dot</item>
+    </string-array>
+    <string-array name="au">
+        <item>删除所选记录</item>
+        <item>删除所选文件</item>
+        <item>转发</item>
+        <item>存到微云</item>
+    </string-array>
+    <string-array name="av">
+        <item>查看更多资料</item>
+        <item>修改备注</item>
+        <item>移动分组</item>
+        <item>删除好友</item>
+        <item>举报</item>
+        <item>屏蔽此人</item>
+        <item>取消屏蔽</item>
+        <item>呼叫联系人</item>
+        <item>发送短信</item>
+        <item>设为备注名</item>
+        <item>复制帐号</item>
+        <item>更换头像</item>
+        <item>查看大头像</item>
+        <item>拍照</item>
+        <item>从相册选择</item>
+        <item>设置好友动态权限</item>
+        <item>取消</item>
+        <item>设置头像挂件</item>
+        <item></item>
+        <item></item>
+        <item>从手机相册选择</item>
+        <item>从空间相册选择</item>
+        <item>拍摄动态头像</item>
+        <item>查看大图</item>
+        <item>从相册选择图片</item>
+        <item>从手机相册选择图片</item>
+        <item>从空间相册选择图片</item>
+        <item>查看头像</item>
+        <item>手机相册</item>
+        <item>空间相册</item>
+        <item></item>
+        <item>资料卡设置</item>
+        <item>消息列表</item>
+    </string-array>
+    <string-array name="aw">
+        <item>未填写</item>
+        <item>老师</item>
+        <item>家长</item>
+        <item>学生</item>
+    </string-array>
+    <string-array name="ax">
+        <item>授权给好友</item>
+        <item>修改设备备注</item>
+        <item>检查设备更新</item>
+        <item>设备锁(已启用)</item>
+        <item>打开%s</item>
+        <item>成员脸部管理</item>
+        <item>解除绑定</item>
+        <item>分享</item>
+        <item>举报</item>
+        <item>购买智能设备</item>
+    </string-array>
+    <string-array name="ay">
+        <item>图片</item>
+        <item>视频</item>
+        <item>文件</item>
+        <item>文字</item>
+    </string-array>
+    <array name="az">
+        <item>@drawable/ct8</item>
+        <item>@drawable/ct9</item>
+        <item>@drawable/ct_</item>
+        <item>@drawable/cta</item>
+        <item>@drawable/ctb</item>
+        <item>@drawable/ctc</item>
+        <item>@drawable/ctd</item>
+        <item>@drawable/cte</item>
+        <item>@drawable/ctf</item>
+        <item>@drawable/ctg</item>
+        <item>@drawable/cth</item>
+    </array>
+    <array name="b0">
+        <item>@drawable/cti</item>
+        <item>@drawable/ctj</item>
+        <item>@drawable/ctk</item>
+        <item>@drawable/ctl</item>
+        <item>@drawable/ctm</item>
+        <item>@drawable/ctn</item>
+        <item>@drawable/cto</item>
+        <item>@drawable/ctp</item>
+        <item>@drawable/ctq</item>
+        <item>@drawable/ctr</item>
+        <item>@drawable/cts</item>
+    </array>
+    <array name="b1">
+        <item>@drawable/ctt</item>
+        <item>@drawable/ctu</item>
+        <item>@drawable/ctv</item>
+        <item>@drawable/ctw</item>
+        <item>@drawable/ctx</item>
+        <item>@drawable/cty</item>
+        <item>@drawable/ctz</item>
+        <item>@drawable/cu0</item>
+        <item>@drawable/cu1</item>
+        <item>@drawable/cu2</item>
+        <item>@drawable/cu3</item>
+        <item>@drawable/cu4</item>
+        <item>@drawable/cu5</item>
+        <item>@drawable/cu6</item>
+        <item>@drawable/cu7</item>
+        <item>@drawable/cu8</item>
+        <item>@drawable/cu9</item>
+        <item>@drawable/cu_</item>
+        <item>@drawable/cua</item>
+        <item>@drawable/cub</item>
+        <item>@drawable/cuc</item>
+        <item>@drawable/cud</item>
+        <item>@drawable/cue</item>
+        <item>@drawable/cuf</item>
+        <item>@drawable/cug</item>
+        <item>@drawable/cuh</item>
+        <item>@drawable/cui</item>
+        <item>@drawable/cuj</item>
+        <item>@drawable/cuk</item>
+    </array>
+    <array name="b2">
+        <item>@drawable/cul</item>
+        <item>@drawable/cum</item>
+        <item>@drawable/cun</item>
+        <item>@drawable/cuo</item>
+        <item>@drawable/cup</item>
+        <item>@drawable/cuq</item>
+        <item>@drawable/cur</item>
+        <item>@drawable/cus</item>
+        <item>@drawable/cut</item>
+        <item>@drawable/cuu</item>
+        <item>@drawable/cuv</item>
+        <item>@drawable/cuw</item>
+        <item>@drawable/cux</item>
+        <item>@drawable/cuy</item>
+        <item>@drawable/cuz</item>
+        <item>@drawable/cv0</item>
+        <item>@drawable/cv1</item>
+        <item>@drawable/cv2</item>
+        <item>@drawable/cv3</item>
+        <item>@drawable/cv4</item>
+        <item>@drawable/cv5</item>
+        <item>@drawable/cv6</item>
+        <item>@drawable/cv7</item>
+        <item>@drawable/cv8</item>
+        <item>@drawable/cv9</item>
+        <item>@drawable/cv_</item>
+        <item>@drawable/cva</item>
+        <item>@drawable/cvb</item>
+        <item>@drawable/cvc</item>
+    </array>
+    <array name="b3">
+        <item>@drawable/cvd</item>
+        <item>@drawable/cve</item>
+        <item>@drawable/cvf</item>
+        <item>@drawable/cvg</item>
+        <item>@drawable/cvh</item>
+        <item>@drawable/cvi</item>
+        <item>@drawable/cvj</item>
+        <item>@drawable/cvk</item>
+        <item>@drawable/cvl</item>
+        <item>@drawable/cvm</item>
+        <item>@drawable/cvn</item>
+    </array>
+    <array name="b4">
+        <item>@drawable/cvo</item>
+        <item>@drawable/cvp</item>
+        <item>@drawable/cvq</item>
+        <item>@drawable/cvr</item>
+        <item>@drawable/cvs</item>
+        <item>@drawable/cvt</item>
+        <item>@drawable/cvu</item>
+        <item>@drawable/cvv</item>
+        <item>@drawable/cvw</item>
+        <item>@drawable/cvx</item>
+        <item>@drawable/cvy</item>
+        <item>@drawable/cvz</item>
+        <item>@drawable/cw0</item>
+        <item>@drawable/cw1</item>
+        <item>@drawable/cw2</item>
+        <item>@drawable/cw3</item>
+        <item>@drawable/cw4</item>
+        <item>@drawable/cw5</item>
+        <item>@drawable/cw6</item>
+        <item>@drawable/cw7</item>
+        <item>@drawable/cw8</item>
+        <item>@drawable/cw9</item>
+        <item>@drawable/cw_</item>
+        <item>@drawable/cwa</item>
+        <item>@drawable/cwb</item>
+        <item>@drawable/cwc</item>
+        <item>@drawable/cwd</item>
+        <item>@drawable/cwe</item>
+        <item>@drawable/cwf</item>
+    </array>
+    <array name="b5">
+        <item>@drawable/cwg</item>
+        <item>@drawable/cwh</item>
+        <item>@drawable/cwi</item>
+        <item>@drawable/cwj</item>
+        <item>@drawable/cwk</item>
+        <item>@drawable/cwl</item>
+        <item>@drawable/cwm</item>
+        <item>@drawable/cwn</item>
+        <item>@drawable/cwo</item>
+        <item>@drawable/cwp</item>
+    </array>
+    <array name="b6">
+        <item>@drawable/cwq</item>
+        <item>@drawable/cwr</item>
+        <item>@drawable/cws</item>
+        <item>@drawable/cwt</item>
+        <item>@drawable/cwu</item>
+        <item>@drawable/cwv</item>
+        <item>@drawable/cww</item>
+        <item>@drawable/cwx</item>
+        <item>@drawable/cwy</item>
+        <item>@drawable/cwz</item>
+        <item>@drawable/cx0</item>
+        <item>@drawable/cx1</item>
+        <item>@drawable/cx2</item>
+        <item>@drawable/cx3</item>
+        <item>@drawable/cx4</item>
+        <item>@drawable/cx5</item>
+        <item>@drawable/cx6</item>
+        <item>@drawable/cx7</item>
+        <item>@drawable/cx8</item>
+        <item>@drawable/cx9</item>
+        <item>@drawable/cx_</item>
+        <item>@drawable/cxa</item>
+        <item>@drawable/cxb</item>
+        <item>@drawable/cxc</item>
+        <item>@drawable/cxd</item>
+        <item>@drawable/cxe</item>
+        <item>@drawable/cxf</item>
+        <item>@drawable/cxg</item>
+        <item>@drawable/cxh</item>
+        <item>@drawable/cxi</item>
+    </array>
+    <array name="b7">
+        <item>@drawable/cxj</item>
+        <item>@drawable/cxk</item>
+        <item>@drawable/cxl</item>
+        <item>@drawable/cxm</item>
+        <item>@drawable/cxn</item>
+        <item>@drawable/cxo</item>
+        <item>@drawable/cxp</item>
+        <item>@drawable/cxq</item>
+        <item>@drawable/cxr</item>
+        <item>@drawable/cxs</item>
+        <item>@drawable/cxt</item>
+    </array>
+    <array name="b8">
+        <item>@drawable/cxu</item>
+        <item>@drawable/cxv</item>
+        <item>@drawable/cxw</item>
+        <item>@drawable/cxx</item>
+        <item>@drawable/cxy</item>
+        <item>@drawable/cxz</item>
+        <item>@drawable/cy0</item>
+        <item>@drawable/cy1</item>
+        <item>@drawable/cy2</item>
+        <item>@drawable/cy3</item>
+        <item>@drawable/cy4</item>
+        <item>@drawable/cy5</item>
+        <item>@drawable/cy6</item>
+        <item>@drawable/cy7</item>
+        <item>@drawable/cy8</item>
+        <item>@drawable/cy9</item>
+        <item>@drawable/cy_</item>
+        <item>@drawable/cya</item>
+        <item>@drawable/cyb</item>
+        <item>@drawable/cyc</item>
+        <item>@drawable/cyd</item>
+        <item>@drawable/cye</item>
+        <item>@drawable/cyf</item>
+        <item>@drawable/cyg</item>
+        <item>@drawable/cyh</item>
+        <item>@drawable/cyi</item>
+        <item>@drawable/cyj</item>
+        <item>@drawable/cyk</item>
+        <item>@drawable/cyl</item>
+    </array>
+    <string-array name="b9">
+        <item>筛选</item>
+        <item>我的资料</item>
+        <item>清除位置信息并退出</item>
+    </string-array>
+    <string-array name="b_">
+        <item>@string/cgd</item>
+        <item>@string/cge</item>
+        <item>取消</item>
+    </string-array>
+    <string-array name="ba">
+        <item>Algeria 阿尔及利亚 213 6 A</item>
+        <item>Afghanistan 阿富汗 93 6 A</item>
+        <item>Argentina 阿根廷 54 7 A</item>
+        <item>United Arab Emirates 阿拉伯联合酋长国 971 11 A</item>
+        <item>Aruba 阿鲁巴岛 297 7 A</item>
+        <item>Azerbaija 阿塞拜疆 994 9 A</item>
+        <item>Ascension 阿森松 247 4 A</item>
+        <item>Egypt 埃及 20 8 A</item>
+        <item>Ethiopia 埃塞俄比亚 251 7 A</item>
+        <item>Ireland 爱尔兰 353 9 A</item>
+        <item>Estonia 爱沙尼亚 372 7|8 A</item>
+        <item>Andorra 安道尔共和国 376 6 A</item>
+        <item>Angola 安哥拉 244 6 A</item>
+        <item>Anguilla 安圭拉岛 1-264 7 A</item>
+        <item>Antigua and Barbuda 安提瓜和巴布达 1268 7 A</item>
+        <item>Austria 奥地利 43 8 A</item>
+        <item>Barbados 巴巴多斯 1246 7 B</item>
+        <item>Papua New Guinea 巴布亚新几内亚 675 7 B</item>
+        <item>Bahamas 巴哈马 1242 7 B</item>
+        <item>Pakistan 巴基斯坦 92 11 B</item>
+        <item>Bahrain 巴林 973 8 B</item>
+        <item>Panama 巴拿马 507 7 B</item>
+        <item>Brazil 巴西 55 8 B</item>
+        <item>Belarus 白俄罗斯 375 9 B</item>
+        <item>Bermuda 百慕大群岛 1441 7 B</item>
+        <item>Bulgaria 保加利亚 359 7 B</item>
+        <item>Benin 贝宁 229 8 B</item>
+        <item>Belgium 比利时 32 8 B</item>
+        <item>Iceland 冰岛 354 7 B</item>
+        <item>Puerto Rico 波多黎各 1-787/939 7 B</item>
+        <item>Poland 波兰 48 10 B</item>
+        <item>Bolivia 玻利维亚 591 7 B</item>
+        <item>Belize 伯利兹 501 7 B</item>
+        <item>Botswana 博茨瓦纳 267 7 B</item>
+        <item>Bhutan 不丹 975 5 B</item>
+        <item>Burkina Faso 布基纳法索 226 6 B</item>
+        <item>Burundi 布隆迪 257 8 B</item>
+        <item>Denmark 丹麦 45 8 D</item>
+        <item>Germany 德国 49 11 D</item>
+        <item>East Samoa 东萨摩亚(美) 1684 7 D</item>
+        <item>Togo 多哥 228 7 D</item>
+        <item>Dominican Republic 多米尼加共和国 1890 7 D</item>
+        <item>Russia 俄罗斯 7 10 E</item>
+        <item>Ecuador 厄瓜多尔 593 7 E</item>
+        <item>France 法国 33 10 F</item>
+        <item>French Polynesia 法属波利尼西亚 689 6 F</item>
+        <item>French Guiana 法属圭亚那 594 10 F</item>
+        <item>Philippines 菲律宾 63 11 F</item>
+        <item>Fiji 斐济 679 7 F</item>
+        <item>Finland 芬兰 358 7 F</item>
+        <item>Gambia 冈比亚 220 7 G</item>
+        <item>Congo 刚果 242 7 G</item>
+        <item>Colombia 哥伦比亚 57 10 G</item>
+        <item>Costa Rica 哥斯达黎加 506 8 G</item>
+        <item>Grenada 格林纳达 1473 7 G</item>
+        <item>Georgia 格鲁吉亚 995 8 G</item>
+        <item>Cuba 古巴 53 7 G</item>
+        <item>Guam 关岛 1671 7 G</item>
+        <item>Guyana 圭亚那 592 12 G</item>
+        <item>Kazakhstan 哈萨克斯坦 7 10 H</item>
+        <item>Haiti 海地 509 8 H</item>
+        <item>Korea 韩国 82 11 H</item>
+        <item>Honduras 洪都拉斯 504 7 H</item>
+        <item>Djibouti 吉布提 253 6 J</item>
+        <item>Kyrgyzstan 吉尔吉斯坦 996 9 J</item>
+        <item>Guinea 几内亚 224 6 J</item>
+        <item>Ghana 加纳 233 10 J</item>
+        <item>Gabon 加蓬 241 6 J</item>
+        <item>Cambodia 柬埔寨 855 9 J</item>
+        <item>Czech 捷克 420 9 J</item>
+        <item>Zimbabwe 津巴布韦 263 9 J</item>
+        <item>Cameroon 喀麦隆 237 8 K</item>
+        <item>Qatar 卡塔尔 974 7 K</item>
+        <item>Cayman Islands 开曼群岛 1345 7 K</item>
+        <item>Ivorian 科特迪瓦 225 8 K</item>
+        <item>Kuwait 科威特 965 8 K</item>
+        <item>Kenya 肯尼亚 254 7 K</item>
+        <item>Cook Islands 库克群岛 682 5 K</item>
+        <item>Latvia 拉脱维亚 371 8 L</item>
+        <item>Lesotho 莱索托 266 8 L</item>
+        <item>Laos 老挝 856 10 L</item>
+        <item>Lebanon 黎巴嫩 961 7 L</item>
+        <item>Lithuania 立陶宛 370 5 L</item>
+        <item>Liberia 利比里亚 231 7|8 L</item>
+        <item>Libya 利比亚 218 10 L</item>
+        <item>Liechtenstein 列支敦士登 423 7 L</item>
+        <item>Reunion 留尼汪 262 6 L</item>
+        <item>Luxembourg 卢森堡 352 9 L</item>
+        <item>Romania 罗马尼亚 40 9 L</item>
+        <item>Madagascar 马达加斯加 261 7 M</item>
+        <item>Maldives 马尔代夫 960 7 M</item>
+        <item>Malta 马耳他 356 8 M</item>
+        <item>Malawi 马拉维 265 9 M</item>
+        <item>Malaysia 马来西亚 60 10 M</item>
+        <item>Mali 马里 223 8 M</item>
+        <item>Mariana Islands 马里亚那群岛 596 10 M</item>
+        <item>Martinique 马提尼克 596 10 M</item>
+        <item>Mauritius 毛里求斯 230 7 M</item>
+        <item>Samoa 美属萨摩亚 1684 7 M</item>
+        <item>Bangladesh 孟加拉国 880 7 M</item>
+        <item>Myanmar 缅甸 95 6 M</item>
+        <item>Moldova 摩尔多瓦 373 5 M</item>
+        <item>Monaco 摩纳哥 377 8 M</item>
+        <item>Mozambique 莫桑比克 258 9 M</item>
+        <item>Mexico 墨西哥 52 8 M</item>
+        <item>South Africa 南非 27 9 N</item>
+        <item>Nauru 瑙鲁 674 7 N</item>
+        <item>Niger 尼日尔 227 6 N</item>
+        <item>Nigeria 尼日利亚 234 11 N</item>
+        <item>Norway 挪威 47 8 N</item>
+        <item>Portugal 葡萄牙 351 9 P</item>
+        <item>Sweden 瑞典 46 6 R</item>
+        <item>Switzerland 瑞士 41 10 R</item>
+        <item>Salvador 萨尔瓦多 503 7 S</item>
+        <item>Sierra Leone 塞拉利昂 232 6 S</item>
+        <item>Senegal 塞内加尔 221 7 S</item>
+        <item>Cyprus 塞浦路斯 357 6 S</item>
+        <item>Seychelles 塞舌尔 248 6 S</item>
+        <item>Saudi Arabia 沙特阿拉伯 966 9 S</item>
+        <item>Sao Tome and Principe 圣多美和普林西比 239 6 S</item>
+        <item>Lucia 圣卢西亚 1758 7 S</item>
+        <item>San Marino 圣马力诺 378 10 S</item>
+        <item>St.Vincent 圣文森特 1784 7 S</item>
+        <item>Sri Lanka 斯里兰卡 94 7|8 S</item>
+        <item>Slovakia 斯洛伐克 421 7 S</item>
+        <item>Slovenia 斯洛文尼亚 386 7 S</item>
+        <item>Swaziland 斯威士兰 268 7 S</item>
+        <item>Sudan 苏丹 249 9 S</item>
+        <item>Suriname 苏里南 597 6 S</item>
+        <item>Solomon Islands 所罗门群岛 677 7 S</item>
+        <item>Somalia 索马里 252 7 S</item>
+        <item>Tajikistan 塔吉克斯坦 992 6 T</item>
+        <item>Thailand 泰国 66 10 T</item>
+        <item>Tanzania 坦桑尼亚 255 11 T</item>
+        <item>Tonga 汤加 676 7 T</item>
+        <item>Trinidad and Tobago 特立尼达和多巴哥 1868 7 T</item>
+        <item>Tunisia 突尼斯 216 8 T</item>
+        <item>Turkey 土耳其 90 10 T</item>
+        <item>Turkmenistan 土库曼斯坦 993 6 T</item>
+        <item>Guatemala 危地马拉 502 8 W</item>
+        <item>Venezuela 委内瑞拉 58 7 W</item>
+        <item>Brunei 文莱 673 7 W</item>
+        <item>Uganda 乌干达 256 9 W</item>
+        <item>Ukraine 乌克兰 380 10 W</item>
+        <item>Uruguay 乌拉圭 598 7 W</item>
+        <item>Uzbekistan 乌兹别克斯坦 998 7 W</item>
+        <item>Spain 西班牙 34 9 X</item>
+        <item>Western Samoa 西萨摩亚 685 7 X</item>
+        <item>Greece 希腊 30 10 X</item>
+        <item>Singapor 新加坡 65 8 X</item>
+        <item>New Zealand 新西兰 64 9 X</item>
+        <item>Hungary 匈牙利 36 9 X</item>
+        <item>Syria 叙利亚 963 9 X</item>
+        <item>Jamaica 牙买加 1876 7 Y</item>
+        <item>Armenia 亚美尼亚 374 8 Y</item>
+        <item>Yemen 也门 967 6 Y</item>
+        <item>Iraq 伊拉克 964 8 Y</item>
+        <item>Iran 伊朗 98 8 Y</item>
+        <item>Israel 以色列 972 9 Y</item>
+        <item>Italy 意大利 39 10 Y</item>
+        <item>India 印度 91 10 Y</item>
+        <item>Indonesia 印尼 62 10|11|12 Y</item>
+        <item>Jordan 约旦 962 7 Y</item>
+        <item>Vietnam 越南 84 10 Y</item>
+        <item>Zambia 赞比亚 260 9 Z</item>
+        <item>Zaire 扎伊尔 243 7 Z</item>
+        <item>Chad 乍得 235 7 Z</item>
+        <item>Gibraltar 直布罗陀 350 8 Z</item>
+        <item>Chile 智利 56 7 Z</item>
+        <item>Central African Republic 中非共和国 236 6 Z</item>
+    </string-array>
+    <string-array name="bb">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+        <item>H</item>
+        <item>I</item>
+        <item>J</item>
+        <item>K</item>
+        <item>L</item>
+        <item>M</item>
+        <item>N</item>
+        <item>O</item>
+        <item>P</item>
+        <item>Q</item>
+        <item>R</item>
+        <item>S</item>
+        <item>T</item>
+        <item>U</item>
+        <item>V</item>
+        <item>W</item>
+        <item>X</item>
+        <item>Y</item>
+        <item>Z</item>
+    </string-array>
+    <string-array name="bc">
+        <item>从相册选择</item>
+        <item>拍照</item>
+    </string-array>
+    <string-array name="bd">
+        <item>0.5</item>
+        <item>1.0</item>
+        <item>1.5</item>
+        <item>2</item>
+        <item>2.5</item>
+        <item>3.0</item>
+    </string-array>
+    <array name="be">
+        <item>@drawable/db1</item>
+        <item>@drawable/db2</item>
+    </array>
+    <array name="bf">
+        <item>@drawable/db0</item>
+    </array>
+    <string-array name="bg">
+        <item>被选为约会对象</item>
+        <item>收到的报名</item>
+        <item>收到的评论</item>
+        <item>已结束的约会</item>
+    </string-array>
+    <string-array name="c_">
+        <item>\#33C573FF</item>
+        <item>\#33FF80CA</item>
+        <item>\#33FF5967</item>
+        <item>\#33FF9F40</item>
+        <item>\#33FFC619</item>
+        <item>\#330BE076</item>
+        <item>\#3321D9C9</item>
+        <item>\#3300CAFC</item>
+        <item>\#3340A0FF</item>
+    </string-array>
+    <string-array name="ca">
+        <item>\#AB6ADB</item>
+        <item>\#F173BC</item>
+        <item>\#E85D69</item>
+        <item>\#EE9338</item>
+        <item>\#DAA60B</item>
+        <item>\#3DB87B</item>
+        <item>\#18BCAE</item>
+        <item>\#02B2DD</item>
+        <item>\#318CE6</item>
+    </string-array>
+    <string-array name="bh">
+        <item>发布广告</item>
+        <item>内容涉黄</item>
+        <item>恶意骚扰</item>
+    </string-array>
+    <string-array name="bi">
+        <item>个人头像违规</item>
+        <item>昵称违规</item>
+        <item>内容违规</item>
+    </string-array>
+    <string-array name="bj">
+        <item>" · "</item>
+        <item>"  "</item>
+    </string-array>
+    <string-array name="cb">
+        <item>日</item>
+    </string-array>
+    <string-array name="cc">
+        <item>年</item>
+    </string-array>
+    <string-array name="cd">
+        <item>月</item>
+    </string-array>
+    <string-array name="ce">
+        <item>取消</item>
+    </string-array>
+    <string-array name="cf">
+        <item>取消</item>
+    </string-array>
+    <string-array name="cg">
+        <item>删除</item>
+    </string-array>
+    <string-array name="ch">
+        <item>确定</item>
+    </string-array>
+    <string-array name="ci">
+        <item>视频正在转码中,请刷新后重试</item>
+    </string-array>
+    <string-array name="cj">
+        <item>取消</item>
+    </string-array>
+    <string-array name="ck">
+        <item>视频下载链接有问题,请刷新后重试</item>
+    </string-array>
+    <string-array name="cl">
+        <item>取消</item>
+    </string-array>
+    <string-array name="cm">
+        <item>标题</item>
+    </string-array>
+    <string-array name="cn">
+        <item>按钮</item>
+    </string-array>
+    <string-array name="co">
+        <item>按钮,</item>
+    </string-array>
+    <string-array name="cp">
+        <item>启程前</item>
+    </string-array>
+    <string-array name="cq">
+        <item>天</item>
+    </string-array>
+    <string-array name="cr">
+        <item>请先开启缓存广告选项，缓存所需要的广告</item>
+    </string-array>
+    <string-array name="cs">
+        <item>83167651:方形多图-外链-赞转评</item>
+    </string-array>
+    <string-array name="ct">
+        <item>78475795:品牌页卡视频-外链</item>
+    </string-array>
+    <string-array name="cu">
+        <item>78472823:开放赞转评品牌页卡-日迹-外链</item>
+    </string-array>
+    <string-array name="cv">
+        <item>78613555:无赞转评-圆圈切换 and app</item>
+    </string-array>
+    <string-array name="cw">
+        <item>81771624:方形多图-外链</item>
+    </string-array>
+    <string-array name="cx">
+        <item>78607265:单广告主集装箱-and app应用直达</item>
+    </string-array>
+    <string-array name="cy">
+        <item>78769580:开放赞转评品牌页卡单图文-and app应用直达</item>
+    </string-array>
+    <string-array name="cz">
+        <item>feeds 外链广告(点击展开)</item>
+    </string-array>
+    <string-array name="d0">
+        <item>78474263:开放赞转评品牌页卡-日迹-and-app</item>
+    </string-array>
+    <string-array name="d1">
+        <item>78470038:品牌页卡单图文赞转评外链</item>
+    </string-array>
+    <string-array name="d2">
+        <item>83165352:长方形多图-外链-赞转评</item>
+    </string-array>
+    <string-array name="d3">
+        <item>78477881:开放赞转评品牌页卡-视频-and-app</item>
+    </string-array>
+    <string-array name="d4">
+        <item>feeds app广告(点击展开)</item>
+    </string-array>
+    <string-array name="d5">
+        <item>78470257:品牌页卡单图文外链</item>
+    </string-array>
+    <string-array name="d6">
+        <item>62337998:单图文-and app</item>
+    </string-array>
+    <string-array name="d7">
+        <item>78607265:单广告主集装箱-and app</item>
+    </string-array>
+    <string-array name="d8">
+        <item>78703201:开放赞转评-圆圈切换 and app</item>
+    </string-array>
+    <string-array name="d9">
+        <item>78473369:品牌页卡日迹-外链</item>
+    </string-array>
+    <string-array name="d_">
+        <item>78607265:单广告主集装箱正方形-and app</item>
+    </string-array>
+    <string-array name="da">
+        <item>78608002:品牌页卡-视频置顶-and app</item>
+    </string-array>
+    <string-array name="db">
+        <item>78607265:开放赞转评品牌页卡-视频置顶-and-app</item>
+    </string-array>
+    <string-array name="dc">
+        <item>78614365:无赞转评 and app应用直达</item>
+    </string-array>
+    <string-array name="dd">
+        <item>78613440:无赞转评-平行切换 and app</item>
+    </string-array>
+    <string-array name="de">
+        <item>78475350:开放赞转评品牌页卡-视频-外链</item>
+    </string-array>
+    <string-array name="df">
+        <item>78473978:品牌页卡日迹-and app</item>
+    </string-array>
+    <string-array name="dg">
+        <item>78608301:开放赞转评品牌页卡-视频置顶-外链</item>
+    </string-array>
+    <string-array name="dh">
+        <item>62442741:单图文外链</item>
+    </string-array>
+    <string-array name="di">
+        <item>78769639:开放赞转评品牌页卡-日迹-and app应用直达</item>
+    </string-array>
+    <string-array name="dj">
+        <item>78471574:品牌页卡单图文-and-app</item>
+    </string-array>
+    <string-array name="dk">
+        <item>78471222:开放赞转评品牌页卡单图文-and-app</item>
+    </string-array>
+    <string-array name="dl">
+        <item>78700295:圆圈切换-外链-赞转评</item>
+    </string-array>
+    <string-array name="dm">
+        <item>78614293:无赞转评-圆圈切换-外链</item>
+    </string-array>
+    <string-array name="dn">
+        <item>77932847:单图文-and app应用直达</item>
+    </string-array>
+    <string-array name="do">
+        <item>78478636:品牌页卡视频-and app</item>
+    </string-array>
+    <string-array name="dp">
+        <item>77849060:长方形多图-外链</item>
+    </string-array>
+    <string-array name="dq">
+        <item>78608135:品牌页卡-视频置顶-外链</item>
+    </string-array>
+    <string-array name="dr">
+        <item>照片/视频</item>
+    </string-array>
+    <string-array name="ds">
+        <item>取消</item>
+    </string-array>
+    <string-array name="dt">
+        <item>确定</item>
+    </string-array>
+    <string-array name="du">
+        <item>男</item>
+    </string-array>
+    <string-array name="dv">
+        <item>女</item>
+    </string-array>
+    <string-array name="dw">
+        <item>开启提醒</item>
+    </string-array>
+    <string-array name="dx">
+        <item>为你智能整理手机照片并及时提醒你上传空间相册~</item>
+    </string-array>
+    <string-array name="dy">
+        <item>照片智能整理</item>
+    </string-array>
+    <string-array name="dz">
+        <item>动感影集</item>
+    </string-array>
+    <string-array name="e0">
+        <item>已分享</item>
+    </string-array>
+    <string-array name="e1">
+        <item>动感影集•</item>
+    </string-array>
+    <string-array name="e2">
+        <item>已分享</item>
+    </string-array>
+    <string-array name="e3">
+        <item>个精彩瞬间</item>
+    </string-array>
+    <string-array name="e4">
+        <item>相册链接</item>
+    </string-array>
+    <string-array name="e5">
+        <item>搜索</item>
+    </string-array>
+    <string-array name="e6">
+        <item>动态</item>
+    </string-array>
+    <string-array name="e7">
+        <item>应用宝</item>
+    </string-array>
+    <string-array name="e8">
+        <item>返回</item>
+    </string-array>
+    <string-array name="e9">
+        <item>应用宝</item>
+    </string-array>
+    <string-array name="e_">
+        <item>请点击左上角退出^_^</item>
+    </string-array>
+    <string-array name="ea">
+        <item>应用详情</item>
+    </string-array>
+    <string-array name="eb">
+        <item>暂不支持该详情的获取</item>
+    </string-array>
+    <string-array name="ec">
+        <item>应用宝</item>
+    </string-array>
+    <string-array name="ed">
+        <item>应用详情</item>
+    </string-array>
+    <string-array name="ee">
+        <item>应用详情</item>
+    </string-array>
+    <string-array name="ef">
+        <item>索引出界</item>
+    </string-array>
+    <string-array name="eg">
+        <item>索引出界</item>
+    </string-array>
+    <string-array name="eh">
+        <item>索引出界</item>
+    </string-array>
+    <string-array name="ei">
+        <item>没有设置过single_feeds协议数据自动保存!!!!试</item>
+    </string-array>
+    <string-array name="ej">
+        <item>或</item>
+    </string-array>
+    <string-array name="ek">
+        <item>是否cap app 没有设置</item>
+    </string-array>
+    <string-array name="el">
+        <item>还在测试中，请查看日志!!</item>
+    </string-array>
+    <string-array name="em">
+        <item>没找到数据!! 无法开始测试</item>
+    </string-array>
+    <string-array name="en">
+        <item>开始测试</item>
+    </string-array>
+    <string-array name="eo">
+        <item>开始测试</item>
+    </string-array>
+    <string-array name="ep" formatted="false">
+        <item>测试结束,成功/总数:%s/%s</item>
+    </string-array>
+    <string-array name="eq">
+        <item>协议数据自动拦截？</item>
+    </string-array>
+    <string-array name="er">
+        <item>更多工具</item>
+    </string-array>
+    <string-array name="es">
+        <item>环境切换</item>
+    </string-array>
+    <string-array name="et">
+        <item>我也说一句</item>
+    </string-array>
+    <string-array name="eu">
+        <item>回复</item>
+    </string-array>
+    <string-array name="ev">
+        <item>绿钻</item>
+    </string-array>
+    <string-array name="ew">
+        <item>复制成功</item>
+    </string-array>
+    <string-array name="ex">
+        <item>获取更多评论失败(</item>
+    </string-array>
+    <string-array name="ey">
+        <item>黄钻</item>
+    </string-array>
+    <string-array name="ez">
+        <item>回复</item>
+    </string-array>
+    <string-array name="f0">
+        <item>回复</item>
+    </string-array>
+    <string-array name="f1">
+        <item>共</item>
+    </string-array>
+    <string-array name="f2">
+        <item>共</item>
+    </string-array>
+    <string-array name="f3">
+        <item>张</item>
+    </string-array>
+    <string-array name="f4">
+        <item>张</item>
+    </string-array>
+    <string-array name="f5">
+        <item>设置失败（</item>
+    </string-array>
+    <string-array name="f6">
+        <item>的照片</item>
+    </string-array>
+    <string-array name="f7">
+        <item>正在保存...</item>
+    </string-array>
+    <string-array name="f8">
+        <item>正在保存...</item>
+    </string-array>
+    <string-array name="f9">
+        <item>照片</item>
+    </string-array>
+    <string-array name="f_">
+        <item>照片</item>
+    </string-array>
+    <string-array name="fa">
+        <item>照片</item>
+    </string-array>
+    <string-array name="fb">
+        <item>照片</item>
+    </string-array>
+    <string-array name="fc">
+        <item>照片</item>
+    </string-array>
+    <string-array name="fd">
+        <item>照片</item>
+    </string-array>
+    <string-array name="fe">
+        <item>确定</item>
+    </string-array>
+    <string-array name="ff">
+        <item>转载</item>
+    </string-array>
+    <string-array name="fg">
+        <item>转载(</item>
+    </string-array>
+    <string-array name="fh">
+        <item>确定(</item>
+    </string-array>
+    <string-array name="fi">
+        <item>已特别关心</item>
+    </string-array>
+    <string-array name="fj">
+        <item>粉丝 | 已特别关心</item>
+    </string-array>
+    <string-array name="fk">
+        <item>粉丝</item>
+    </string-array>
+    <string-array name="fl">
+        <item>的头像</item>
+    </string-array>
+    <string-array name="fm">
+        <item>的头像</item>
+    </string-array>
+    <string-array name="fn">
+        <item>取消</item>
+    </string-array>
+    <string-array name="fo">
+        <item>下载</item>
+    </string-array>
+    <string-array name="fp">
+        <item>抽样上报</item>
+    </string-array>
+    <string-array name="fq">
+        <item>全量上报</item>
+    </string-array>
+    <string-array name="fr">
+        <item>,没命中,今天命中的QQ尾号是：</item>
+    </string-array>
+    <string-array name="fs">
+        <item>点击统计上报信息:</item>
+    </string-array>
+    <string-array name="ft">
+        <item>回复</item>
+    </string-array>
+    <string-array name="fu">
+        <item>当前评论</item>
+    </string-array>
+    <string-array name="fv">
+        <item>回复</item>
+    </string-array>
+    <string-array name="fw">
+        <item>复制</item>
+    </string-array>
+    <string-array name="fx">
+        <item>复制</item>
+    </string-array>
+    <string-array name="fy">
+        <item>取消</item>
+    </string-array>
+    <string-array name="fz">
+        <item>确认</item>
+    </string-array>
+    <string-array name="g0">
+        <item>取消</item>
+    </string-array>
+    <string-array name="g1">
+        <item>initFirstDanmaku() 弹幕位标越界：</item>
+    </string-array>
+    <string-array name="g2">
+        <item>initFirstDanmaku() 初始化第一条弹幕： mCurVideoId =</item>
+    </string-array>
+    <string-array name="g3">
+        <item>弹幕曝光不上报 videoId =</item>
+    </string-array>
+    <string-array name="g4">
+        <item>保存弹幕播放进度 : videoIndex =</item>
+    </string-array>
+    <string-array name="g5">
+        <item>handleUpdate() 当前状态非 UPDATE 态</item>
+    </string-array>
+    <string-array name="g6">
+        <item>initFirstDanmaku() 弹幕已经播放完毕：</item>
+    </string-array>
+    <string-array name="g7">
+        <item>updateDanmaku() 回调加载更多数据</item>
+    </string-array>
+    <string-array name="g8">
+        <item>弹幕曝光上报 videoId =</item>
+    </string-array>
+    <string-array name="g9">
+        <item>handleStartInMain() 暂无数据， 进入挂起状态</item>
+    </string-array>
+    <string-array name="g_">
+        <item>已移除所有 View</item>
+    </string-array>
+    <string-array name="ga">
+        <item>handleStartInMain() 开始 update</item>
+    </string-array>
+    <string-array name="gb">
+        <item>updateDanmaku() 找不到合适弹幕， 进入挂起状态</item>
+    </string-array>
+    <string-array name="gc">
+        <item>一</item>
+    </string-array>
+    <string-array name="gd">
+        <item>二</item>
+    </string-array>
+    <string-array name="ge">
+        <item>天</item>
+    </string-array>
+    <string-array name="gf">
+        <item>日</item>
+    </string-array>
+    <string-array name="gg">
+        <item>四</item>
+    </string-array>
+    <string-array name="gh">
+        <item>五</item>
+    </string-array>
+    <string-array name="gi">
+        <item>星期</item>
+    </string-array>
+    <string-array name="gj">
+        <item>六</item>
+    </string-array>
+    <string-array name="gk">
+        <item>三</item>
+    </string-array>
+    <string-array name="gl">
+        <item>月</item>
+    </string-array>
+    <string-array name="gm">
+        <item>年</item>
+    </string-array>
+    <string-array name="gn">
+        <item>至</item>
+    </string-array>
+    <string-array name="go">
+        <item>年前</item>
+    </string-array>
+    <string-array name="gp">
+        <item>点</item>
+    </string-array>
+    <string-array name="gq">
+        <item>刚刚</item>
+    </string-array>
+    <string-array name="gr">
+        <item>月</item>
+    </string-array>
+    <string-array name="gs">
+        <item>日</item>
+    </string-array>
+    <string-array name="gt">
+        <item>天前</item>
+    </string-array>
+    <string-array name="gu">
+        <item>年</item>
+    </string-array>
+    <string-array name="gv">
+        <item>年</item>
+    </string-array>
+    <string-array name="gw" formatted="false">
+        <item>照片%d，创建时间：%d年%d月%d日%d点%d分%d秒</item>
+    </string-array>
+    <string-array name="gx">
+        <item>年</item>
+    </string-array>
+    <string-array name="gy">
+        <item>月</item>
+    </string-array>
+    <string-array name="gz">
+        <item>年</item>
+    </string-array>
+    <string-array name="h0">
+        <item>分</item>
+    </string-array>
+    <string-array name="h1">
+        <item>日</item>
+    </string-array>
+    <string-array name="h2">
+        <item>日</item>
+    </string-array>
+    <string-array name="h3">
+        <item>前</item>
+    </string-array>
+    <string-array name="h4">
+        <item>小时前</item>
+    </string-array>
+    <string-array name="h5">
+        <item>月</item>
+    </string-array>
+    <string-array name="h6">
+        <item>日</item>
+    </string-array>
+    <string-array name="h7">
+        <item>月</item>
+    </string-array>
+    <string-array name="h8">
+        <item>照片%d</item>
+    </string-array>
+    <string-array name="h9">
+        <item>月</item>
+    </string-array>
+    <string-array name="h_">
+        <item>分钟前</item>
+    </string-array>
+    <string-array name="ha">
+        <item>日</item>
+    </string-array>
+    <string-array name="hb">
+        <item>今天</item>
+    </string-array>
+    <string-array name="hc">
+        <item>时</item>
+    </string-array>
+    <string-array name="hd">
+        <item>月</item>
+    </string-array>
+    <string-array name="he">
+        <item>天前</item>
+    </string-array>
+    <string-array name="hf">
+        <item>昨天</item>
+    </string-array>
+    <string-array name="hg">
+        <item>月前</item>
+    </string-array>
+    <string-array name="hh">
+        <item>昨天</item>
+    </string-array>
+    <string-array name="hi">
+        <item>日</item>
+    </string-array>
+    <string-array name="hj">
+        <item>前天</item>
+    </string-array>
+    <string-array name="hk">
+        <item>今天</item>
+    </string-array>
+    <string-array name="hl">
+        <item>开启线程耗时监控</item>
+    </string-array>
+    <string-array name="hm">
+        <item>微视浮层体验</item>
+    </string-array>
+    <string-array name="hn">
+        <item>天气预警设置</item>
+    </string-array>
+    <string-array name="ho">
+        <item>调试工具</item>
+    </string-array>
+    <string-array name="hp">
+        <item>将使用最近七天的照片，来生成节日运营推荐!</item>
+    </string-array>
+    <string-array name="hq">
+        <item>视频浮层使用底部栏</item>
+    </string-array>
+    <string-array name="hr">
+        <item>开启广告缓存</item>
+    </string-array>
+    <string-array name="hs">
+        <item>已开启 WIFI强制为4G网络</item>
+    </string-array>
+    <string-array name="ht">
+        <item>开启广告上报数据缓存</item>
+    </string-array>
+    <string-array name="hu">
+        <item>请稍候</item>
+    </string-array>
+    <string-array name="hv">
+        <item>banner的事件推荐只使用视频/影集数据</item>
+    </string-array>
+    <string-array name="hw">
+        <item>已取消定时任务</item>
+    </string-array>
+    <string-array name="hx">
+        <item>事件引导设置</item>
+    </string-array>
+    <string-array name="hy">
+        <item>卡慢监控</item>
+    </string-array>
+    <string-array name="hz">
+        <item>将使用最近一天的照片，来生成那年今日!</item>
+    </string-array>
+    <string-array name="i0">
+        <item>节日运营事件体验</item>
+    </string-array>
+    <string-array name="i1">
+        <item>展示编译信息</item>
+    </string-array>
+    <string-array name="i2">
+        <item>编译时间：</item>
+    </string-array>
+    <string-array name="i3">
+        <item>发说说新样式</item>
+    </string-array>
+    <string-array name="i4">
+        <item>视频压缩质量</item>
+    </string-array>
+    <string-array name="i5">
+        <item>那年今日体验</item>
+    </string-array>
+    <string-array name="i6">
+        <item>统计上报</item>
+    </string-array>
+    <string-array name="i7">
+        <item>正在收集信息</item>
+    </string-array>
+    <string-array name="i8">
+        <item>请选择模拟wifi为4g方可启用此项设置[模拟大王卡]</item>
+    </string-array>
+    <string-array name="i9">
+        <item>编译版本：</item>
+    </string-array>
+    <string-array name="i_">
+        <item>已开启 模拟大王卡</item>
+    </string-array>
+    <string-array name="ia">
+        <item>打印请求信息</item>
+    </string-array>
+    <string-array name="ib">
+        <item>已关闭 模拟大王卡</item>
+    </string-array>
+    <string-array name="ic">
+        <item>广告单元测试</item>
+    </string-array>
+    <string-array name="id">
+        <item>上传环境</item>
+    </string-array>
+    <string-array name="ie">
+        <item>已关闭 WIFI强制为4G网络</item>
+    </string-array>
+    <string-array name="if">
+        <item>视频/影集推荐体验</item>
+    </string-array>
+    <string-array name="ig">
+        <item>线程日志</item>
+    </string-array>
+    <string-array name="ih">
+        <item>设置此项会导致wns配置失效，进程重启后设置失效</item>
+    </string-array>
+    <string-array name="ii">
+        <item>环境切换</item>
+    </string-array>
+    <string-array name="ij">
+        <item>查看装扮</item>
+    </string-array>
+    <string-array name="ik">
+        <item>查看装扮</item>
+    </string-array>
+    <string-array name="il">
+        <item>结束</item>
+    </string-array>
+    <string-array name="im">
+        <item>取消</item>
+    </string-array>
+    <string-array name="in">
+        <item>下载完成</item>
+    </string-array>
+    <string-array name="io">
+        <item>开始下载</item>
+    </string-array>
+    <string-array name="ip">
+        <item>已取消下载</item>
+    </string-array>
+    <string-array name="iq" formatted="false">
+        <item>正在下载（%s/%s）</item>
+    </string-array>
+    <string-array name="ir">
+        <item>下载已暂停</item>
+    </string-array>
+    <string-array name="is">
+        <item>%d个媒体·下载失败</item>
+    </string-array>
+    <string-array name="it">
+        <item>插件已保存：</item>
+    </string-array>
+    <string-array name="iu">
+        <item>照片视频正在下载中</item>
+    </string-array>
+    <string-array name="iv">
+        <item>失败</item>
+    </string-array>
+    <string-array name="iw">
+        <item>成功</item>
+    </string-array>
+    <string-array name="ix">
+        <item>删除</item>
+    </string-array>
+    <string-array name="iy">
+        <item>一</item>
+    </string-array>
+    <string-array name="iz">
+        <item>, 点击移除</item>
+    </string-array>
+    <string-array name="j0">
+        <item>/金钱</item>
+    </string-array>
+    <string-array name="j1">
+        <item>/钱</item>
+    </string-array>
+    <string-array name="j2">
+        <item>超出</item>
+    </string-array>
+    <string-array name="j3">
+        <item>/美女</item>
+    </string-array>
+    <string-array name="j4">
+        <item>还可以输入</item>
+    </string-array>
+    <string-array name="j5">
+        <item>字</item>
+    </string-array>
+    <string-array name="j6">
+        <item>字</item>
+    </string-array>
+    <string-array name="j7">
+        <item>/美女</item>
+    </string-array>
+    <string-array name="j8">
+        <item>/钱</item>
+    </string-array>
+    <string-array name="j9">
+        <item>/嘘</item>
+    </string-array>
+    <string-array name="j_">
+        <item>/金钱</item>
+    </string-array>
+    <string-array name="ja">
+        <item>照片</item>
+    </string-array>
+    <string-array name="jb">
+        <item>评论字数超过上限</item>
+    </string-array>
+    <string-array name="jc">
+        <item>人</item>
+    </string-array>
+    <string-array name="jd">
+        <item>人</item>
+    </string-array>
+    <string-array name="je">
+        <item>等</item>
+    </string-array>
+    <string-array name="jf">
+        <item>我</item>
+    </string-array>
+    <string-array name="jg">
+        <item>等</item>
+    </string-array>
+    <string-array name="jh">
+        <item>我</item>
+    </string-array>
+    <string-array name="ji">
+        <item>人</item>
+    </string-array>
+    <string-array name="jj">
+        <item>人</item>
+    </string-array>
+    <string-array name="jk">
+        <item>人</item>
+    </string-array>
+    <string-array name="jl">
+        <item>万</item>
+    </string-array>
+    <string-array name="jm">
+        <item>等</item>
+    </string-array>
+    <string-array name="jn">
+        <item>我</item>
+    </string-array>
+    <string-array name="jo">
+        <item>人</item>
+    </string-array>
+    <string-array name="jp">
+        <item>数据返回为空</item>
+    </string-array>
+    <string-array name="jq">
+        <item>服务异常:</item>
+    </string-array>
+    <string-array name="jr">
+        <item>确认</item>
+    </string-array>
+    <string-array name="js">
+        <item>打赏</item>
+    </string-array>
+    <string-array name="jt">
+        <item>发红包</item>
+    </string-array>
+    <string-array name="ju">
+        <item>快评</item>
+    </string-array>
+    <string-array name="jv">
+        <item>我</item>
+    </string-array>
+    <string-array name="jw">
+        <item>取消</item>
+    </string-array>
+    <string-array name="jx">
+        <item>查看装扮</item>
+    </string-array>
+    <string-array name="jy">
+        <item>取消</item>
+    </string-array>
+    <string-array name="jz">
+        <item>[DEBUG]警告：漂浮物配置不对! iMinSize(</item>
+    </string-array>
+    <string-array name="k0">
+        <item>) 应该比 iMaxSize(</item>
+    </string-array>
+    <string-array name="k1">
+        <item>)要小才对。</item>
+    </string-array>
+    <string-array name="k2">
+        <item>refreshRunnable 如果调用stop()，暂停这里绘制操作</item>
+    </string-array>
+    <string-array name="k3">
+        <item>开始播放</item>
+    </string-array>
+    <string-array name="k4">
+        <item>停止播放</item>
+    </string-array>
+    <string-array name="k5">
+        <item>正在下载</item>
+    </string-array>
+    <string-array name="k6">
+        <item>测试全部</item>
+    </string-array>
+    <string-array name="k7">
+        <item>下载</item>
+    </string-array>
+    <string-array name="k8">
+        <item>去看看</item>
+    </string-array>
+    <string-array name="k9">
+        <item>打开</item>
+    </string-array>
+    <string-array name="k_">
+        <item>她</item>
+    </string-array>
+    <string-array name="ka">
+        <item>已关注</item>
+    </string-array>
+    <string-array name="kb">
+        <item>他</item>
+    </string-array>
+    <string-array name="kc">
+        <item>加关注</item>
+    </string-array>
+    <string-array name="kd">
+        <item>他</item>
+    </string-array>
+    <string-array name="ke">
+        <item>她</item>
+    </string-array>
+    <string-array name="kf">
+        <item>已关注</item>
+    </string-array>
+    <string-array name="kg">
+        <item>加关注</item>
+    </string-array>
+    <string-array name="kh">
+        <item>取消</item>
+    </string-array>
+    <string-array name="ki">
+        <item>背景商城</item>
+    </string-array>
+    <string-array name="kj">
+        <item>关闭</item>
+    </string-array>
+    <string-array name="kk">
+        <item>组</item>
+    </string-array>
+    <string-array name="kl">
+        <item>年</item>
+    </string-array>
+    <string-array name="km">
+        <item>正在下载</item>
+    </string-array>
+    <string-array name="kn">
+        <item>首</item>
+    </string-array>
+    <string-array name="ko">
+        <item>开始播放</item>
+    </string-array>
+    <string-array name="kp">
+        <item>首</item>
+    </string-array>
+    <string-array name="kq">
+        <item>首</item>
+    </string-array>
+    <string-array name="kr">
+        <item>停止播放</item>
+    </string-array>
+    <string-array name="ks">
+        <item>年</item>
+    </string-array>
+    <string-array name="kt">
+        <item>开始播放</item>
+    </string-array>
+    <string-array name="ku">
+        <item>停止播放</item>
+    </string-array>
+    <string-array name="kv">
+        <item>首</item>
+    </string-array>
+    <string-array name="kw">
+        <item>首</item>
+    </string-array>
+    <string-array name="kx">
+        <item>好友生日</item>
+    </string-array>
+    <string-array name="ky">
+        <item>我的关注</item>
+    </string-array>
+    <string-array name="kz">
+        <item>个性化</item>
+    </string-array>
+    <string-array name="l0">
+        <item>那年今日</item>
+    </string-array>
+    <string-array name="l1">
+        <item>一</item>
+    </string-array>
+    <string-array name="l2">
+        <item>后端超时</item>
+    </string-array>
+    <string-array name="l3">
+        <item>图片已删除</item>
+    </string-array>
+    <string-array name="l4">
+        <item>图片不能查看(安全打击)</item>
+    </string-array>
+    <string-array name="l5">
+        <item>/美女</item>
+    </string-array>
+    <string-array name="l6">
+        <item>/钱</item>
+    </string-array>
+    <string-array name="l7">
+        <item>/金钱</item>
+    </string-array>
+    <string-array name="l8">
+        <item>取消</item>
+    </string-array>
+    <string-array name="l9">
+        <item>万</item>
+    </string-array>
+    <string-array name="l_">
+        <item>万</item>
+    </string-array>
+    <string-array name="la">
+        <item>继续下拉进入拔河彩蛋</item>
+    </string-array>
+    <string-array name="lb">
+        <item>松手回弹</item>
+    </string-array>
+    <string-array name="lc">
+        <item>微信聊天图片</item>
+    </string-array>
+    <string-array name="ld">
+        <item>/相机/</item>
+    </string-array>
+    <string-array name="le">
+        <item>你有</item>
+    </string-array>
+    <string-array name="lf">
+        <item>中午</item>
+    </string-array>
+    <string-array name="lg" formatted="false">
+        <item>like %/相机/%)</item>
+    </string-array>
+    <string-array name="lh">
+        <item>星期五</item>
+    </string-array>
+    <string-array name="li">
+        <item>星期六</item>
+    </string-array>
+    <string-array name="lj">
+        <item>空间相册可智能整理你需要上传的照片,发表前仅自己可见</item>
+    </string-array>
+    <string-array name="lk">
+        <item>晚上</item>
+    </string-array>
+    <string-array name="ll">
+        <item>要发表照片视频吗？[debug]</item>
+    </string-array>
+    <string-array name="lm">
+        <item>照片智能整理</item>
+    </string-array>
+    <string-array name="ln">
+        <item>根据手机图片自动生成的动图</item>
+    </string-array>
+    <string-array name="lo">
+        <item>的影像</item>
+    </string-array>
+    <string-array name="lp">
+        <item>星期日</item>
+    </string-array>
+    <string-array name="lq">
+        <item>选择照片[debug]</item>
+    </string-array>
+    <string-array name="lr">
+        <item>推荐上传的本地精彩照片集</item>
+    </string-array>
+    <string-array name="ls">
+        <item>已为你整理了</item>
+    </string-array>
+    <string-array name="lt">
+        <item>下午</item>
+    </string-array>
+    <string-array name="lu">
+        <item>选择照片，轻松制作视频[debug]</item>
+    </string-array>
+    <string-array name="lv">
+        <item>查看视频</item>
+    </string-array>
+    <string-array name="lw">
+        <item>的影像</item>
+    </string-array>
+    <string-array name="lx">
+        <item>张新的影像待制作</item>
+    </string-array>
+    <string-array name="ly">
+        <item>星期一</item>
+    </string-array>
+    <string-array name="lz">
+        <item>深夜</item>
+    </string-array>
+    <string-array name="m0">
+        <item>星期三</item>
+    </string-array>
+    <string-array name="m1">
+        <item>个</item>
+    </string-array>
+    <string-array name="m2">
+        <item>星期四</item>
+    </string-array>
+    <string-array name="m3">
+        <item>星期二</item>
+    </string-array>
+    <string-array name="m4">
+        <item>与好友分享[debug]</item>
+    </string-array>
+    <string-array name="m5">
+        <item>上午</item>
+    </string-array>
+    <string-array name="m6">
+        <item>开启智能整理</item>
+    </string-array>
+    <string-array name="m7">
+        <item>视频[debug]</item>
+    </string-array>
+    <string-array name="m8">
+        <item>解码失败</item>
+    </string-array>
+    <string-array name="m9">
+        <item>结束超分</item>
+    </string-array>
+    <string-array name="m_">
+        <item>开始请求</item>
+    </string-array>
+    <string-array name="ma">
+        <item>开始超分</item>
+    </string-array>
+    <string-array name="mb">
+        <item>开始解码</item>
+    </string-array>
+    <string-array name="mc">
+        <item>下载失败</item>
+    </string-array>
+    <string-array name="md">
+        <item>结束下载</item>
+    </string-array>
+    <string-array name="me">
+        <item>结束解码</item>
+    </string-array>
+    <string-array name="mf">
+        <item>开始下载</item>
+    </string-array>
+    <string-array name="mg">
+        <item>取消请求</item>
+    </string-array>
+    <string-array name="mh">
+        <item>结束请求</item>
+    </string-array>
+    <string-array name="mi">
+        <item>下载超时</item>
+    </string-array>
+    <string-array name="mj">
+        <item>解码失败</item>
+    </string-array>
+    <string-array name="mk">
+        <item>下载失败</item>
+    </string-array>
+    <string-array name="ml">
+        <item>下载、解码都超时</item>
+    </string-array>
+    <string-array name="mm">
+        <item>解码超时</item>
+    </string-array>
+    <string-array name="mn">
+        <item>照片加载信息</item>
+    </string-array>
+    <string-array name="mo">
+        <item>选择</item>
+    </string-array>
+    <string-array name="mp">
+        <item>取消选择</item>
+    </string-array>
+    <string-array name="mq">
+        <item>今天</item>
+    </string-array>
+    <string-array name="mr">
+        <item>周年</item>
+    </string-array>
+    <string-array name="ms">
+        <item>相恋</item>
+    </string-array>
+    <string-array name="mt">
+        <item>照片</item>
+    </string-array>
+    <string-array name="mu">
+        <item>相恋</item>
+    </string-array>
+    <string-array name="mv">
+        <item>推荐视频</item>
+    </string-array>
+    <string-array name="mw">
+        <item>动感影集</item>
+    </string-array>
+    <string-array name="mx">
+        <item>照片视频</item>
+    </string-array>
+    <string-array name="my">
+        <item>手账日志</item>
+    </string-array>
+    <string-array name="mz">
+        <item>上传到</item>
+    </string-array>
+    <string-array name="n0">
+        <item>选择</item>
+    </string-array>
+    <string-array name="n1">
+        <item>取消选择</item>
+    </string-array>
+    <string-array name="n2">
+        <item>照片</item>
+    </string-array>
+    <string-array name="n3">
+        <item>回复</item>
+    </string-array>
+    <string-array name="n4">
+        <item>回复</item>
+    </string-array>
+    <string-array name="n5">
+        <item>有更新</item>
+    </string-array>
+    <string-array name="n6">
+        <item>有更新</item>
+    </string-array>
+    <string-array name="n7">
+        <item>我</item>
+    </string-array>
+    <string-array name="n8">
+        <item>曝光上报</item>
+    </string-array>
+    <string-array name="n9">
+        <item>曝光过了 不再次上报</item>
+    </string-array>
+    <string-array name="n_">
+        <item>本地存的 不曝光上报 isNeedToExposureReport = false</item>
+    </string-array>
+    <string-array name="na">
+        <item>取消选择</item>
+    </string-array>
+    <string-array name="nb">
+        <item>选择</item>
+    </string-array>
+    <string-array name="nc">
+        <item>年</item>
+    </string-array>
+    <string-array name="nd">
+        <item>照片</item>
+    </string-array>
+    <string-array name="ne">
+        <item>千万</item>
+    </string-array>
+    <string-array name="nf">
+        <item>千万</item>
+    </string-array>
+    <string-array name="ng">
+        <item>亿</item>
+    </string-array>
+    <string-array name="nh">
+        <item>万</item>
+    </string-array>
+    <string-array name="ni">
+        <item>亿</item>
+    </string-array>
+    <string-array name="nj">
+        <item>保存失败,</item>
+    </string-array>
+    <string-array name="nk">
+        <item>保存成功!</item>
+    </string-array>
+    <string-array name="nl">
+        <item>当前菜单不可编辑！</item>
+    </string-array>
+    <string-array name="nm">
+        <item>她</item>
+    </string-array>
+    <string-array name="nn">
+        <item>我</item>
+    </string-array>
+    <string-array name="no">
+        <item>他</item>
+    </string-array>
+    <string-array name="np">
+        <item>他</item>
+    </string-array>
+    <string-array name="nq">
+        <item>天</item>
+    </string-array>
+    <string-array name="nr">
+        <item>选择</item>
+    </string-array>
+    <string-array name="ns">
+        <item>取消选择</item>
+    </string-array>
+    <string-array name="nt">
+        <item>岁</item>
+    </string-array>
+    <string-array name="nu">
+        <item>出生</item>
+    </string-array>
+    <string-array name="nv">
+        <item>今天</item>
+    </string-array>
+    <string-array name="nw">
+        <item>照片</item>
+    </string-array>
+    <string-array name="nx">
+        <item>出生</item>
+    </string-array>
+    <string-array name="ny">
+        <item>加载补丁包</item>
+    </string-array>
+    <string-array name="nz">
+        <item>/月</item>
+    </string-array>
+    <string-array name="o0">
+        <item>查看更多字体</item>
+    </string-array>
+    <string-array name="o1">
+        <item>字体</item>
+    </string-array>
+    <string-array name="o2">
+        <item>个字</item>
+    </string-array>
+    <string-array name="o3">
+        <item>炫彩字</item>
+    </string-array>
+    <string-array name="o4">
+        <item>键盘</item>
+    </string-array>
+    <string-array name="o5">
+        <item>超出</item>
+    </string-array>
+    <string-array name="o6">
+        <item>移除</item>
+    </string-array>
+    <string-array name="o7">
+        <item>取消</item>
+    </string-array>
+    <string-array name="o8">
+        <item>张</item>
+    </string-array>
+    <string-array name="o9">
+        <item>取消</item>
+    </string-array>
+    <string-array name="o_">
+        <item>确定</item>
+    </string-array>
+    <string-array name="oa">
+        <item>返回</item>
+    </string-array>
+    <string-array name="ob">
+        <item>确定</item>
+    </string-array>
+    <string-array name="oc">
+        <item>更多</item>
+    </string-array>
+    <string-array name="od">
+        <item>已选择(</item>
+    </string-array>
+    <string-array name="oe">
+        <item>确定(</item>
+    </string-array>
+    <string-array name="of">
+        <item>空间相册支持按照人脸分类照片 快来看看我相册里有你的照片吧</item>
+    </string-array>
+    <string-array name="og">
+        <item>确定</item>
+    </string-array>
+    <string-array name="oh">
+        <item>取消</item>
+    </string-array>
+    <string-array name="oi">
+        <item>[一-龥]</item>
+    </string-array>
+    <string-array name="oj">
+        <item>[一-龥]</item>
+    </string-array>
+    <string-array name="ok">
+        <item>[一-龥]</item>
+    </string-array>
+    <string-array name="ol">
+        <item>查看原画 (</item>
+    </string-array>
+    <string-array name="om">
+        <item>内存不足，你可以清理内存后再试</item>
+    </string-array>
+    <string-array name="on">
+        <item>选择我的好友</item>
+    </string-array>
+    <string-array name="oo">
+        <item>收起推荐</item>
+    </string-array>
+    <string-array name="op">
+        <item>加载so失败，无法播放apng，请切换到正式环境</item>
+    </string-array>
+    <string-array name="oq">
+        <item>更多推荐</item>
+    </string-array>
+    <string-array name="or">
+        <item>widget_category_unfold=true &amp;widget_category_name=最新 &amp;widget_item_id=607</item>
+    </string-array>
+    <string-array name="os">
+        <item>更多推荐</item>
+    </string-array>
+    <string-array name="ot">
+        <item>filter_category_unfold=true &amp;filter_category_name=滤镜 &amp;filter_item_id=NUANYANG_100</item>
+    </string-array>
+    <string-array name="ou">
+        <item>收起推荐</item>
+    </string-array>
+    <string-array name="ov">
+        <item>关闭</item>
+    </string-array>
+    <string-array name="ow">
+        <item>更多推荐</item>
+    </string-array>
+    <string-array name="ox">
+        <item>多态赞资源加载失败，请重试</item>
+    </string-array>
+    <string-array name="oy">
+        <item>长按连发心情</item>
+    </string-array>
+    <string-array name="oz">
+        <item>滑动选择</item>
+    </string-array>
+    <string-array name="p0">
+        <item>松开即可取消</item>
+    </string-array>
+    <string-array name="p1">
+        <item>上传成功</item>
+    </string-array>
+    <string-array name="p2">
+        <item>趣味配图</item>
+    </string-array>
+    <string-array name="p3">
+        <item>地点</item>
+    </string-array>
+    <string-array name="p4">
+        <item>照片/视频</item>
+    </string-array>
+    <string-array name="p5">
+        <item>地点</item>
+    </string-array>
+    <string-array name="p6">
+        <item>标签</item>
+    </string-array>
+    <string-array name="p7">
+        <item>地点</item>
+    </string-array>
+    <string-array name="p8">
+        <item>制作照片小视频</item>
+    </string-array>
+    <string-array name="p9">
+        <item>录声音</item>
+    </string-array>
+    <string-array name="p_">
+        <item>照片/视频</item>
+    </string-array>
+    <string-array name="pa">
+        <item>地点</item>
+    </string-array>
+    <string-array name="pb">
+        <item>标签</item>
+    </string-array>
+    <string-array name="pc">
+        <item>制作照片小视频</item>
+    </string-array>
+    <string-array name="pd">
+        <item>拼成长图</item>
+    </string-array>
+    <string-array name="pe">
+        <item>列表循环</item>
+    </string-array>
+    <string-array name="pf">
+        <item>列表循环随机</item>
+    </string-array>
+    <string-array name="pg">
+        <item>单曲播放（非循环）</item>
+    </string-array>
+    <string-array name="ph">
+        <item>列表播放（不循环）</item>
+    </string-array>
+    <string-array name="pi">
+        <item>单曲循环</item>
+    </string-array>
+    <string-array name="pj">
+        <item>请填写标题</item>
+    </string-array>
+    <string-array name="pk">
+        <item>取消</item>
+    </string-array>
+    <string-array name="pl">
+        <item>个字</item>
+    </string-array>
+    <string-array name="pm">
+        <item>超出</item>
+    </string-array>
+    <string-array name="pn">
+        <item>有</item>
+    </string-array>
+    <string-array name="po">
+        <item>条状态视频未读</item>
+    </string-array>
+    <string-array name="pp">
+        <item>拍摄视频</item>
+    </string-array>
+    <string-array name="pq">
+        <item>更多</item>
+    </string-array>
+    <string-array name="pr">
+        <item>取消</item>
+    </string-array>
+    <string-array name="ps">
+        <item>个素材</item>
+    </string-array>
+    <string-array name="pt">
+        <item>个影像待整理</item>
+    </string-array>
+    <string-array name="pu">
+        <item>张</item>
+    </string-array>
+    <string-array name="pv">
+        <item>天</item>
+    </string-array>
+    <string-array name="pw">
+        <item>应用宝</item>
+    </string-array>
+    <string-array name="px">
+        <item>应用宝</item>
+    </string-array>
+    <string-array name="py">
+        <item>动态</item>
+    </string-array>
+    <string-array name="pz">
+        <item>应用宝</item>
+    </string-array>
+    <string-array name="q0">
+        <item>我的黄钻</item>
+    </string-array>
+    <string-array name="q1">
+        <item>我的黄钻</item>
+    </string-array>
+    <string-array name="q2">
+        <item>取消</item>
+    </string-array>
+    <string-array name="q3">
+        <item>回复</item>
+    </string-array>
+    <string-array name="q4">
+        <item>回复</item>
+    </string-array>
+    <string-array name="q5">
+        <item>回复</item>
+    </string-array>
+    <string-array name="q6">
+        <item>视频合成服务连接丢失</item>
+    </string-array>
+    <string-array name="q7">
+        <item>条回复</item>
+    </string-array>
+    <string-array name="q8">
+        <item>回复</item>
+    </string-array>
+    <string-array name="q9">
+        <item>视频宽高不正确，设置失败</item>
+    </string-array>
+    <string-array name="q_">
+        <item>视频时间不能超过%ds，请重新选择</item>
+    </string-array>
+    <string-array name="qa">
+        <item>取消</item>
+    </string-array>
+    <string-array name="qb">
+        <item>视频封面地址为空，设置失败</item>
+    </string-array>
+    <string-array name="qc">
+        <item>视频上传中</item>
+    </string-array>
+    <string-array name="qd">
+        <item>获取视频时间长度失败</item>
+    </string-array>
+    <string-array name="qe">
+        <item>未知视频类型，设置失败</item>
+    </string-array>
+    <string-array name="qf">
+        <item>由于性能限制，你当前的机型不支持选择本地视频</item>
+    </string-array>
+    <string-array name="qg">
+        <item>由于性能限制，你当前的机型无法使用视频背景</item>
+    </string-array>
+    <string-array name="qh">
+        <item>支付成功，可以使用自定义视频背景啦</item>
+    </string-array>
+    <string-array name="qi">
+        <item>已关注</item>
+    </string-array>
+    <string-array name="qj">
+        <item>拔河彩蛋加载失败</item>
+    </string-array>
+    <string-array name="qk">
+        <item>点赞</item>
+    </string-array>
+    <string-array name="ql">
+        <item>关注</item>
+    </string-array>
+    <string-array name="qm">
+        <item>回复</item>
+    </string-array>
+    <string-array name="qn">
+        <item>回复</item>
+    </string-array>
+    <string-array name="qo">
+        <item>日志《</item>
+    </string-array>
+    <string-array name="qp">
+        <item>没有访问操作权限</item>
+    </string-array>
+    <string-array name="qq">
+        <item>评论失败！</item>
+    </string-array>
+    <string-array name="qr">
+        <item>回复</item>
+    </string-array>
+    <string-array name="qs">
+        <item>评论成功！</item>
+    </string-array>
+    <string-array name="qt">
+        <item>回复</item>
+    </string-array>
+    <string-array name="qu">
+        <item>取消</item>
+    </string-array>
+    <string-array name="qv">
+        <item>回复</item>
+    </string-array>
+    <string-array name="qw">
+        <item>转发</item>
+    </string-array>
+    <string-array name="qx">
+        <item>转载</item>
+    </string-array>
+    <string-array name="qy">
+        <item>继续</item>
+    </string-array>
+    <string-array name="qz">
+        <item>取消</item>
+    </string-array>
+    <string-array name="r0">
+        <item>取消</item>
+    </string-array>
+    <string-array name="r1">
+        <item>取消</item>
+    </string-array>
+    <string-array name="r2">
+        <item>下拉刷新</item>
+    </string-array>
+    <string-array name="r3">
+        <item>返回封面</item>
+    </string-array>
+    <string-array name="r4">
+        <item>愿你的身后 总有力量 愿你成为自己的太阳 愿你永驻时光 爱上彼此的模样</item>
+    </string-array>
+    <string-array name="r5">
+        <item>要坚强，要勇敢，不要让绝望和庸俗的忧愁压倒你，要保持伟大的灵魂在经受苦难时的豁达与平静。</item>
+    </string-array>
+    <string-array name="r6">
+        <item>运营推荐</item>
+    </string-array>
+    <string-array name="r7">
+        <item>永远相信美好的事即将发生！</item>
+    </string-array>
+    <string-array name="r8">
+        <item>最近使用</item>
+    </string-array>
+    <string-array name="r9">
+        <item>愿你活成自己喜爱的模样，不必取悦任何人也不无故讨厌某个人。</item>
+    </string-array>
+    <string-array name="r_">
+        <item>漫漫人生，祝你可爱的不像话</item>
+    </string-array>
+    <string-array name="ra">
+        <item>♡ 四海八荒 千秋万世 我只中意你</item>
+    </string-array>
+    <string-array name="rb">
+        <item>去爱吧，像不曾受过一次伤一样</item>
+    </string-array>
+    <string-array name="rc">
+        <item>最近使用</item>
+    </string-array>
+    <string-array name="rd">
+        <item>默认标签</item>
+    </string-array>
+    <string-array name="re">
+        <item>愿你三冬暖 愿你春不寒</item>
+    </string-array>
+    <string-array name="rf">
+        <item>听闻远方有你，我跋涉千里</item>
+    </string-array>
+    <string-array name="rg">
+        <item>酒要一口一口喝，路要一步一步走，步子迈得太大，容易扯着蛋。</item>
+    </string-array>
+    <string-array name="rh">
+        <item>太阳当空照花儿对我笑</item>
+    </string-array>
+    <string-array name="ri">
+        <item>愿你活成最好的样子</item>
+    </string-array>
+    <string-array name="rj">
+        <item>你怎么连发个说说都这么好看呢 ♡</item>
+    </string-array>
+    <string-array name="rk">
+        <item>愿你所有的情深意重都能换来岁月温柔</item>
+    </string-array>
+    <string-array name="rl">
+        <item>愿你天黑有灯 雨天有伞 余生有良人作伴</item>
+    </string-array>
+    <string-array name="rm">
+        <item>终是庄周梦了蝶，你是恩赐也是劫</item>
+    </string-array>
+    <string-array name="rn">
+        <item>要善良要勇敢要像小星星一样努力发光</item>
+    </string-array>
+    <string-array name="ro">
+        <item>人情世故，冷暖自知</item>
+    </string-array>
+    <string-array name="rp">
+        <item>终是李白醉了酒，你是孤独也是愁</item>
+    </string-array>
+    <string-array name="rq">
+        <item>一支穿云箭，千军万马来相见！</item>
+    </string-array>
+    <string-array name="rr">
+        <item>智能推荐</item>
+    </string-array>
+    <string-array name="rs">
+        <item>预览</item>
+    </string-array>
+    <string-array name="rt">
+        <item>关闭</item>
+    </string-array>
+    <string-array name="ru">
+        <item>取消使用</item>
+    </string-array>
+    <string-array name="rv">
+        <item>启用</item>
+    </string-array>
+    <string-array name="rw">
+        <item>预览</item>
+    </string-array>
+    <string-array name="rx">
+        <item>使用一次</item>
+    </string-array>
+    <string-array name="ry">
+        <item>载入中，请稍候...</item>
+    </string-array>
+    <string-array name="rz">
+        <item>派对已打烊</item>
+    </string-array>
+    <string-array name="s0">
+        <item>刷新成功 (｡･∀･)ﾉﾞ</item>
+    </string-array>
+    <string-array name="s1">
+        <item>评论失败！</item>
+    </string-array>
+    <string-array name="s2">
+        <item>进行中</item>
+    </string-array>
+    <string-array name="s3">
+        <item>99+条新消息</item>
+    </string-array>
+    <string-array name="s4">
+        <item>等2名好友 有了新动态</item>
+    </string-array>
+    <string-array name="s5">
+        <item>嘤嘤嘤刷新失败了(/▽＼)</item>
+    </string-array>
+    <string-array name="s6">
+        <item>我的派对</item>
+    </string-array>
+    <string-array name="s7">
+        <item>已超出字符限制</item>
+    </string-array>
+    <string-array name="s8">
+        <item>扩列好友加一个呗</item>
+    </string-array>
+    <string-array name="s9">
+        <item>刷新成功 (｡･∀･)ﾉﾞ</item>
+    </string-array>
+    <string-array name="s_">
+        <item>等</item>
+    </string-array>
+    <string-array name="sa">
+        <item>加载失败，点击重试</item>
+    </string-array>
+    <string-array name="sb">
+        <item>有了新动态</item>
+    </string-array>
+    <string-array name="sc">
+        <item>已打烊</item>
+    </string-array>
+    <string-array name="sd">
+        <item>刷新成功 (｡･∀･)ﾉﾞ</item>
+    </string-array>
+    <string-array name="se">
+        <item>载入中，请稍候...</item>
+    </string-array>
+    <string-array name="sf">
+        <item>标题不能为空</item>
+    </string-array>
+    <string-array name="sg">
+        <item>个</item>
+    </string-array>
+    <string-array name="sh">
+        <item>人</item>
+    </string-array>
+    <string-array name="si">
+        <item>目前正处于测试环境</item>
+    </string-array>
+    <string-array name="sj">
+        <item>加载失败，点击重试</item>
+    </string-array>
+    <string-array name="sk">
+        <item>嘤嘤嘤刷新失败了(/▽＼)</item>
+    </string-array>
+    <string-array name="sl">
+        <item>我的派对</item>
+    </string-array>
+    <string-array name="sm">
+        <item>评论成功！</item>
+    </string-array>
+    <string-array name="sn">
+        <item>暂无更多的派对啦~</item>
+    </string-array>
+    <string-array name="so">
+        <item>名好友 有了新动态</item>
+    </string-array>
+    <string-array name="sp">
+        <item>校园</item>
+    </string-array>
+    <string-array name="sq">
+        <item>人</item>
+    </string-array>
+    <string-array name="sr">
+        <item>已删除</item>
+    </string-array>
+    <string-array name="ss">
+        <item>条新消息</item>
+    </string-array>
+    <string-array name="st">
+        <item>创建派对</item>
+    </string-array>
+    <string-array name="su">
+        <item>嘤嘤嘤刷新失败了(/▽＼)</item>
+    </string-array>
+    <string-array name="sv">
+        <item>嘤嘤嘤刷新失败了(/▽＼)</item>
+    </string-array>
+    <string-array name="sw">
+        <item>已超出字符限制</item>
+    </string-array>
+    <string-array name="sx">
+        <item>没有网络耶</item>
+    </string-array>
+    <string-array name="sy">
+        <item>数据为空</item>
+    </string-array>
+    <string-array name="sz">
+        <item>已退出</item>
+    </string-array>
+    <string-array name="t0">
+        <item>已打烊</item>
+    </string-array>
+    <string-array name="t1">
+        <item>嘤嘤嘤刷新失败了(/▽＼)</item>
+    </string-array>
+    <string-array name="t2">
+        <item>网络设置不可用，请检查网络设置</item>
+    </string-array>
+    <string-array name="t3">
+        <item>没有网络耶，下拉试试看</item>
+    </string-array>
+    <string-array name="t4">
+        <item>已关注</item>
+    </string-array>
+    <string-array name="t5">
+        <item>关注</item>
+    </string-array>
+    <string-array name="t6">
+        <item>已关注</item>
+    </string-array>
+    <string-array name="t7">
+        <item>关注</item>
+    </string-array>
+    <string-array name="t8">
+        <item>已关注</item>
+    </string-array>
+    <string-array name="t9">
+        <item>关注</item>
+    </string-array>
+    <string-array name="t_">
+        <item>留言纪念</item>
+    </string-array>
+    <string-array name="ta">
+        <item>空白</item>
+    </string-array>
+    <string-array name="tb">
+        <item>你和{type:txt,text:大鱼luei小鱼测试名很长很hh,uin:1273558410}相识{text:1,color:F9E24C,bold:1}年</item>
+    </string-array>
+    <string-array name="tc">
+        <item>添加图片</item>
+    </string-array>
+    <string-array name="td">
+        <item>确认</item>
+    </string-array>
+    <string-array name="te">
+        <item>取消</item>
+    </string-array>
+    <string-array name="tf">
+        <item>亲，木有文件管理器啊-_-!!</item>
+    </string-array>
+    <string-array name="tg">
+        <item>张照片</item>
+    </string-array>
+    <string-array name="th">
+        <item>1年前的今天，你与大...成为好友</item>
+    </string-array>
+    <string-array name="ti">
+        <item>背景商城</item>
+    </string-array>
+    <string-array name="tj">
+        <item>分享给你</item>
+    </string-array>
+    <string-array name="tk">
+        <item>已取消收藏</item>
+    </string-array>
+    <string-array name="tl">
+        <item>取消收藏失败</item>
+    </string-array>
+    <string-array name="tm">
+        <item>留言纪念</item>
+    </string-array>
+    <string-array name="tn">
+        <item>说点什么吧</item>
+    </string-array>
+    <string-array name="to">
+        <item>好友纪念日</item>
+    </string-array>
+    <string-array name="tp">
+        <item>添加到表情</item>
+    </string-array>
+    <string-array name="tq">
+        <item>已到达触发天台指定高度[</item>
+    </string-array>
+    <string-array name="tr">
+        <item>说点什么吧</item>
+    </string-array>
+    <string-array name="ts">
+        <item>进入校园扩列</item>
+    </string-array>
+    <string-array name="tt">
+        <item>保存测试数据失败!</item>
+    </string-array>
+    <string-array name="tu">
+        <item>保存失败，输入的行号不存在？</item>
+    </string-array>
+    <string-array name="tv">
+        <item>选择文件</item>
+    </string-array>
+    <string-array name="tw">
+        <item>复制</item>
+    </string-array>
+    <string-array name="tx">
+        <item>分享给你</item>
+    </string-array>
+    <string-array name="ty">
+        <item>张照片</item>
+    </string-array>
+    <string-array name="tz">
+        <item>保存到手机</item>
+    </string-array>
+    <string-array name="u0">
+        <item>打个招呼</item>
+    </string-array>
+    <string-array name="u1">
+        <item>打个招呼</item>
+    </string-array>
+    <string-array name="u2">
+        <item>留言纪念</item>
+    </string-array>
+    <string-array name="u3">
+        <item>保存测试数据失败!</item>
+    </string-array>
+    <string-array name="u4">
+        <item>点击拍摄视频</item>
+    </string-array>
+    <string-array name="u5">
+        <item>]，当前[</item>
+    </string-array>
+    <string-array name="u6">
+        <item>取消</item>
+    </string-array>
+    <string-array name="u7">
+        <item>今天</item>
+    </string-array>
+    <string-array name="u8">
+        <item>K，是否要使用数据流量进行下载？</item>
+    </string-array>
+    <string-array name="u9">
+        <item>查看更多</item>
+    </string-array>
+    <string-array name="u_">
+        <item>该字体大小为</item>
+    </string-array>
+    <string-array name="ua">
+        <item>h5url 不合法 h5url=</item>
+    </string-array>
+    <string-array name="ub">
+        <item>单击两侧回顶刷新</item>
+    </string-array>
+    <string-array name="uc">
+        <item>「我的状态」数据迁移中，请稍后到相册查看</item>
+    </string-array>
+    <string-array name="ud">
+        <item>搞笑</item>
+    </string-array>
+    <string-array name="ue">
+        <item>条新消息</item>
+    </string-array>
+    <string-array name="uf">
+        <item>请输入</item>
+    </string-array>
+    <string-array name="ug">
+        <item>取消</item>
+    </string-array>
+    <string-array name="uh">
+        <item>目前正处于测试环境</item>
+    </string-array>
+    <string-array name="ui">
+        <item>等</item>
+    </string-array>
+    <string-array name="uj">
+        <item>等2名好友 有了新动态</item>
+    </string-array>
+    <string-array name="uk">
+        <item>返回动态</item>
+    </string-array>
+    <string-array name="ul">
+        <item>好友</item>
+    </string-array>
+    <string-array name="um">
+        <item>确定</item>
+    </string-array>
+    <string-array name="un">
+        <item>名好友 有了新动态</item>
+    </string-array>
+    <string-array name="uo">
+        <item>dynBannerJsonData 不合法</item>
+    </string-array>
+    <string-array name="up">
+        <item>发表</item>
+    </string-array>
+    <string-array name="uq">
+        <item>低端机不显示 h5 banner</item>
+    </string-array>
+    <string-array name="ur">
+        <item>有了新动态</item>
+    </string-array>
+    <string-array name="us">
+        <item>99+条新消息</item>
+    </string-array>
+    <string-array name="ut">
+        <item>「我的状态」内容收到相册里了哦</item>
+    </string-array>
+    <string-array name="uu">
+        <item>搜索</item>
+    </string-array>
+    <string-array name="uv">
+        <item>秒</item>
+    </string-array>
+    <string-array name="uw">
+        <item>录制语音</item>
+    </string-array>
+    <string-array name="ux">
+        <item>发表前仅自己可见</item>
+    </string-array>
+    <string-array name="uy">
+        <item>设置</item>
+    </string-array>
+    <string-array name="uz">
+        <item>返回</item>
+    </string-array>
+    <string-array name="v0">
+        <item>推荐上传的相册集</item>
+    </string-array>
+    <string-array name="v1">
+        <item>来自</item>
+    </string-array>
+    <string-array name="v2">
+        <item>来自</item>
+    </string-array>
+    <string-array name="v3">
+        <item>来自</item>
+    </string-array>
+    <string-array name="v4">
+        <item>来自</item>
+    </string-array>
+    <string-array name="v5">
+        <item>发送</item>
+    </string-array>
+    <string-array name="v6">
+        <item>例过程错误</item>
+    </string-array>
+    <string-array name="v7">
+        <item>例下载超过</item>
+    </string-array>
+    <string-array name="v8">
+        <item>例解码超过</item>
+    </string-array>
+    <string-array name="v9">
+        <item>张照片</item>
+    </string-array>
+    <string-array name="v_">
+        <item>张图片加载，其中有</item>
+    </string-array>
+    <string-array name="va">
+        <item>图片信息</item>
+    </string-array>
+    <string-array name="vb">
+        <item>日志数据加载中,请稍等..</item>
+    </string-array>
+    <string-array name="vc">
+        <item>共</item>
+    </string-array>
+    <string-array name="vd">
+        <item>发生了什么事？</item>
+    </string-array>
+    <string-array name="ve">
+        <item>毫秒</item>
+    </string-array>
+    <string-array name="vf">
+        <item>张照片。</item>
+    </string-array>
+    <string-array name="vg">
+        <item>浏览器打开</item>
+    </string-array>
+    <string-array name="vh">
+        <item>毫秒</item>
+    </string-array>
+    <string-array name="vi">
+        <item>共</item>
+    </string-array>
+    <string-array name="vj">
+        <item>共</item>
+    </string-array>
+    <string-array name="vk">
+        <item>个</item>
+    </string-array>
+    <string-array name="vl">
+        <item>第</item>
+    </string-array>
+    <string-array name="vm">
+        <item>合成中</item>
+    </string-array>
+    <string-array name="vn">
+        <item>第</item>
+    </string-array>
+    <string-array name="vo">
+        <item>动图</item>
+    </string-array>
+    <string-array name="vp">
+        <item>第</item>
+    </string-array>
+    <string-array name="vq">
+        <item>个</item>
+    </string-array>
+    <string-array name="vr">
+        <item>个视频压缩失败</item>
+    </string-array>
+    <string-array name="vs">
+        <item>压缩失败</item>
+    </string-array>
+    <string-array name="vt">
+        <item>视频</item>
+    </string-array>
+    <string-array name="vu">
+        <item>合成中</item>
+    </string-array>
+    <string-array name="vv">
+        <item>压缩失败</item>
+    </string-array>
+    <string-array name="vw">
+        <item>加载so失败，无法播放apng，请切换到正式环境</item>
+    </string-array>
+    <string-array name="vx">
+        <item>启程前</item>
+    </string-array>
+    <string-array name="vy">
+        <item>天</item>
+    </string-array>
+    <string-array name="vz">
+        <item>爸爸</item>
+    </string-array>
+    <string-array name="w0">
+        <item>爷爷</item>
+    </string-array>
+    <string-array name="w1">
+        <item>爸爸</item>
+    </string-array>
+    <string-array name="w2">
+        <item>妈妈</item>
+    </string-array>
+    <string-array name="w3" formatted="false">
+        <item>时间不能晚于%d年%d月%d日</item>
+    </string-array>
+    <string-array name="w4">
+        <item>爸爸</item>
+    </string-array>
+    <string-array name="w5">
+        <item>奶奶</item>
+    </string-array>
+    <string-array name="w6">
+        <item>爸爸</item>
+    </string-array>
+    <string-array name="w7">
+        <item>妈妈</item>
+    </string-array>
+    <string-array name="w8">
+        <item>奶奶</item>
+    </string-array>
+    <string-array name="w9">
+        <item>爸爸</item>
+    </string-array>
+    <string-array name="w_">
+        <item>妈妈</item>
+    </string-array>
+    <string-array name="wa">
+        <item>妈妈</item>
+    </string-array>
+    <string-array name="wb">
+        <item>爷爷</item>
+    </string-array>
+    <string-array name="wc">
+        <item>妈妈</item>
+    </string-array>
+    <string-array name="wd">
+        <item>爷爷</item>
+    </string-array>
+    <string-array name="we">
+        <item>奶奶</item>
+    </string-array>
+    <string-array name="wf">
+        <item>暖友 %d</item>
+    </string-array>
+    <string-array name="wg">
+        <item>个人主页</item>
+    </string-array>
+    <string-array name="wh">
+        <item>暖友动态</item>
+    </string-array>
+    <string-array name="wi">
+        <item>互相点赞或评论即可成为暖友</item>
+    </string-array>
+    <string-array name="wj">
+        <item>已互暖 %d天</item>
+    </string-array>
+    <string-array name="wk">
+        <item>(点赞或评论均可记为暖说说)</item>
+    </string-array>
+    <string-array name="wl">
+        <item>暖友动态</item>
+    </string-array>
+    <string-array name="wm">
+        <item>互暖说说可成为暖友</item>
+    </string-array>
+    <string-array name="wn">
+        <item>已经 %d天未互暖</item>
+    </string-array>
+    <string-array name="wo">
+        <item>动态 %d</item>
+    </string-array>
+    <string-array name="wp">
+        <item>照片</item>
+    </string-array>
+    <string-array name="wq">
+        <item>检索</item>
+    </string-array>
+    <string-array name="wr">
+        <item>共%d个</item>
+    </string-array>
+    <string-array name="ws">
+        <item>长图</item>
+    </string-array>
+    <string-array name="wt">
+        <item>更多</item>
+    </string-array>
+    <string-array name="wu">
+        <item>「我的状态」数据迁移中，请稍后到相册查看</item>
+    </string-array>
+    <string-array name="wv">
+        <item>在这里看到「我的状态」内容哦</item>
+    </string-array>
+    <string-array name="ww">
+        <item>已选择</item>
+    </string-array>
+    <string-array name="wx">
+        <item>全选</item>
+    </string-array>
+    <string-array name="wy">
+        <item>的其他相册</item>
+    </string-array>
+    <string-array name="wz">
+        <item>张图片</item>
+    </string-array>
+    <string-array name="x0">
+        <item>取消全选</item>
+    </string-array>
+    <string-array name="x1">
+        <item>最多只能选择</item>
+    </string-array>
+    <string-array name="x2">
+        <item>的其他相册</item>
+    </string-array>
+    <string-array name="x3">
+        <item>张图片</item>
+    </string-array>
+    <string-array name="x4">
+        <item>全部</item>
+    </string-array>
+    <string-array name="x5">
+        <item>张图片</item>
+    </string-array>
+    <string-array name="x6">
+        <item>已显示全部</item>
+    </string-array>
+    <string-array name="x7">
+        <item>...吗？</item>
+    </string-array>
+    <string-array name="x8">
+        <item>取消全选</item>
+    </string-array>
+    <string-array name="x9">
+        <item>最多只能选择</item>
+    </string-array>
+    <string-array name="x_">
+        <item>他是</item>
+    </string-array>
+    <string-array name="xa">
+        <item>最多只能选择</item>
+    </string-array>
+    <string-array name="xb">
+        <item>个好友</item>
+    </string-array>
+    <string-array name="xc">
+        <item>他是</item>
+    </string-array>
+    <string-array name="xd">
+        <item>返回</item>
+    </string-array>
+    <string-array name="xe">
+        <item>最多选择</item>
+    </string-array>
+    <string-array name="xf">
+        <item>儿童节</item>
+    </string-array>
+    <string-array name="xg">
+        <item>全选</item>
+    </string-array>
+    <string-array name="xh">
+        <item>吗？</item>
+    </string-array>
+    <string-array name="xi">
+        <item>张</item>
+    </string-array>
+    <string-array name="xj">
+        <item>万</item>
+    </string-array>
+    <string-array name="xk">
+        <item>取消</item>
+    </string-array>
+    <string-array name="xl">
+        <item>点赞</item>
+    </string-array>
+    <string-array name="xm">
+        <item>已完成</item>
+    </string-array>
+    <string-array name="xn">
+        <item>亿</item>
+    </string-array>
+    <string-array name="xo">
+        <item>已完成</item>
+    </string-array>
+    <string-array name="xp">
+        <item>取消点赞</item>
+    </string-array>
+    <string-array name="xq">
+        <item>千万</item>
+    </string-array>
+    <string-array name="xr">
+        <item>我</item>
+    </string-array>
+    <string-array name="xs">
+        <item>评论</item>
+    </string-array>
+    <string-array name="xt">
+        <item>我</item>
+    </string-array>
+    <string-array name="xu">
+        <item>由</item>
+    </string-array>
+    <string-array name="xv">
+        <item>查看原图 (</item>
+    </string-array>
+    <string-array name="xw">
+        <item>已完成</item>
+    </string-array>
+    <string-array name="xx">
+        <item>删除</item>
+    </string-array>
+    <string-array name="xy">
+        <item>上传</item>
+    </string-array>
+    <string-array name="xz">
+        <item>点赞</item>
+    </string-array>
+    <string-array name="y0">
+        <item>添加描述...</item>
+    </string-array>
+    <string-array name="y1">
+        <item>资源下载中</item>
+    </string-array>
+    <string-array name="y2">
+        <item>替换</item>
+    </string-array>
+    <string-array name="y3">
+        <item>该插件不适用本版本,请更新手q体验</item>
+    </string-array>
+    <string-array name="y4">
+        <item>提示</item>
+    </string-array>
+    <string-array name="y5">
+        <item>取消</item>
+    </string-array>
+    <string-array name="y6">
+        <item>此功能仅debug版本存在，替换之后如果引起功能异常，请重启qq或者升级qq</item>
+    </string-array>
+    <string-array name="y7">
+        <item>查看装扮</item>
+    </string-array>
+    <string-array name="y8">
+        <item>分享给微信好友</item>
+    </string-array>
+    <string-array name="y9">
+        <item>分享到朋友圈</item>
+    </string-array>
+    <string-array name="y_">
+        <item>上传成功</item>
+    </string-array>
+    <string-array name="ya">
+        <item>取消</item>
+    </string-array>
+    <string-array name="yb">
+        <item>取消</item>
+    </string-array>
+    <string-array name="yc">
+        <item>日</item>
+    </string-array>
+    <string-array name="yd">
+        <item>取消</item>
+    </string-array>
+    <string-array name="ye">
+        <item>取消</item>
+    </string-array>
+    <string-array name="yf">
+        <item>已发表到空间 同步微信中...</item>
+    </string-array>
+    <string-array name="yg">
+        <item>五</item>
+    </string-array>
+    <string-array name="yh">
+        <item>立即发表</item>
+    </string-array>
+    <string-array name="yi">
+        <item>三</item>
+    </string-array>
+    <string-array name="yj">
+        <item>一</item>
+    </string-array>
+    <string-array name="yk">
+        <item>同步微信已终止</item>
+    </string-array>
+    <string-array name="yl">
+        <item>自动删除</item>
+    </string-array>
+    <string-array name="ym">
+        <item>已发表到空间 同步微信中...</item>
+    </string-array>
+    <string-array name="yn">
+        <item>星期</item>
+    </string-array>
+    <string-array name="yo">
+        <item>定时发表/自动删除</item>
+    </string-array>
+    <string-array name="yp">
+        <item>六</item>
+    </string-array>
+    <string-array name="yq">
+        <item>返回</item>
+    </string-array>
+    <string-array name="yr">
+        <item>同步微信已终止</item>
+    </string-array>
+    <string-array name="ys">
+        <item>月</item>
+    </string-array>
+    <string-array name="yt">
+        <item>取消</item>
+    </string-array>
+    <string-array name="yu">
+        <item>确认</item>
+    </string-array>
+    <string-array name="yv">
+        <item>二</item>
+    </string-array>
+    <string-array name="yw">
+        <item>我</item>
+    </string-array>
+    <string-array name="yx">
+        <item>定时发表</item>
+    </string-array>
+    <string-array name="yy">
+        <item>获取活动信息失败(</item>
+    </string-array>
+    <string-array name="yz">
+        <item>天</item>
+    </string-array>
+    <string-array name="z0">
+        <item>四</item>
+    </string-array>
+    <string-array name="z1">
+        <item>取消</item>
+    </string-array>
+    <string-array name="z2">
+        <item>取消</item>
+    </string-array>
+    <string-array name="z3">
+        <item>取消</item>
+    </string-array>
+    <string-array name="z4">
+        <item>我</item>
+    </string-array>
+    <string-array name="z5">
+        <item>群动态</item>
+    </string-array>
+    <string-array name="z6">
+        <item>转载至《</item>
+    </string-array>
+    <string-array name="z7">
+        <item>转载至《</item>
+    </string-array>
+    <string-array name="z8">
+        <item>转载至《</item>
+    </string-array>
+    <string-array name="z9">
+        <item>起点搜索</item>
+    </string-array>
+    <string-array name="z_">
+        <item>操作失败</item>
+    </string-array>
+    <string-array name="za">
+        <item>搜索</item>
+    </string-array>
+    <string-array name="zb">
+        <item>张</item>
+    </string-array>
+    <string-array name="zc">
+        <item>取消关注</item>
+    </string-array>
+    <string-array name="zd">
+        <item>上传了</item>
+    </string-array>
+    <string-array name="ze">
+        <item>分享给你</item>
+    </string-array>
+    <string-array name="zf">
+        <item>取消关注</item>
+    </string-array>
+    <string-array name="zg">
+        <item>/钱</item>
+    </string-array>
+    <string-array name="zh">
+        <item>关注</item>
+    </string-array>
+    <string-array name="zi">
+        <item>张</item>
+    </string-array>
+    <string-array name="zj">
+        <item>相册成员</item>
+    </string-array>
+    <string-array name="zk">
+        <item>分享给你</item>
+    </string-array>
+    <string-array name="zl">
+        <item>上传了</item>
+    </string-array>
+    <string-array name="zm">
+        <item>/金钱</item>
+    </string-array>
+    <string-array name="zn">
+        <item>张照片</item>
+    </string-array>
+    <string-array name="zo">
+        <item>/美女</item>
+    </string-array>
+    <string-array name="zp">
+        <item>上传了</item>
+    </string-array>
+    <string-array name="zq">
+        <item>张照片</item>
+    </string-array>
+    <string-array name="zr">
+        <item>关注</item>
+    </string-array>
+    <string-array name="zs">
+        <item>, step: STEP_UPLOAD_TASK_上传照片,语音</item>
+    </string-array>
+    <string-array name="zt">
+        <item>复制</item>
+    </string-array>
+    <string-array name="zu">
+        <item>个视频</item>
+    </string-array>
+    <string-array name="zv">
+        <item>已选中</item>
+    </string-array>
+    <string-array name="zw">
+        <item>· 共享</item>
+    </string-array>
+    <string-array name="zx">
+        <item>不能上传超过</item>
+    </string-array>
+    <string-array name="zy">
+        <item>已选中</item>
+    </string-array>
+    <string-array name="zz">
+        <item>已选中</item>
+    </string-array>
+    <string-array name="a00">
+        <item>上传照片到《</item>
+    </string-array>
+    <string-array name="a01">
+        <item>, step: STEP_UPLOAD_PHOTO_WITH_MOOD_单图说说,[后台发说说]</item>
+    </string-array>
+    <string-array name="a02">
+        <item>取消</item>
+    </string-array>
+    <string-array name="a03">
+        <item>我</item>
+    </string-array>
+    <string-array name="a04">
+        <item>原图</item>
+    </string-array>
+    <string-array name="a05">
+        <item>原图</item>
+    </string-array>
+    <string-array name="a06">
+        <item>已选中</item>
+    </string-array>
+    <string-array name="a07">
+        <item>已选中</item>
+    </string-array>
+    <string-array name="a08">
+        <item>月</item>
+    </string-array>
+    <string-array name="a09">
+        <item>设置</item>
+    </string-array>
+    <string-array name="a0_">
+        <item>他</item>
+    </string-array>
+    <string-array name="a0a">
+        <item>她</item>
+    </string-array>
+    <string-array name="a0b">
+        <item>更多</item>
+    </string-array>
+    <string-array name="a0c">
+        <item>年</item>
+    </string-array>
+    <string-array name="a0d">
+        <item>【仅debug版出现】本地插件</item>
+    </string-array>
+    <string-array name="a0e">
+        <item>分享参数错误</item>
+    </string-array>
+    <string-array name="a0f">
+        <item>无效播放链接</item>
+    </string-array>
+    <string-array name="a0g">
+        <item>【仅debug版出现】网络插件，版本号:</item>
+    </string-array>
+    <string-array name="a0h">
+        <item>参数错误，请稍后再试</item>
+    </string-array>
+    <string-array name="a0i">
+        <item>赞</item>
+    </string-array>
+    <string-array name="a0j">
+        <item>评论失败(</item>
+    </string-array>
+    <string-array name="a0k">
+        <item>转发失败(</item>
+    </string-array>
+    <string-array name="a0l">
+        <item>照片</item>
+    </string-array>
+    <string-array name="a0m">
+        <item>下载</item>
+    </string-array>
+    <string-array name="a0n">
+        <item>关注</item>
+    </string-array>
+    <string-array name="a0o">
+        <item>取消点赞</item>
+    </string-array>
+    <string-array name="a0p">
+        <item>评论失败(</item>
+    </string-array>
+    <string-array name="a0q">
+        <item>赞</item>
+    </string-array>
+    <string-array name="a0r">
+        <item>上传</item>
+    </string-array>
+    <string-array name="a0s">
+        <item>评</item>
+    </string-array>
+    <string-array name="a0t">
+        <item>关注</item>
+    </string-array>
+    <string-array name="a0u">
+        <item>HeaderView 状态改变：</item>
+    </string-array>
+    <string-array name="a0v">
+        <item>关注</item>
+    </string-array>
+    <string-array name="a0w">
+        <item>已关注</item>
+    </string-array>
+    <string-array name="a0x">
+        <item>转发失败(</item>
+    </string-array>
+    <string-array name="a0y">
+        <item>点赞失败(</item>
+    </string-array>
+    <string-array name="a0z">
+        <item>关注</item>
+    </string-array>
+    <string-array name="a10">
+        <item>赞</item>
+    </string-array>
+    <string-array name="a11">
+        <item>亿</item>
+    </string-array>
+    <string-array name="a12">
+        <item>已关注</item>
+    </string-array>
+    <string-array name="a13">
+        <item>发表</item>
+    </string-array>
+    <string-array name="a14">
+        <item>弹幕状态：</item>
+    </string-array>
+    <string-array name="a15">
+        <item>取消点赞</item>
+    </string-array>
+    <string-array name="a16">
+        <item>万</item>
+    </string-array>
+    <string-array name="a17">
+        <item>已赞</item>
+    </string-array>
+    <string-array name="a18">
+        <item>设置弹幕显隐成功～</item>
+    </string-array>
+    <string-array name="a19">
+        <item>取消关注失败(</item>
+    </string-array>
+    <string-array name="a1_">
+        <item>评</item>
+    </string-array>
+    <string-array name="a1a">
+        <item>设置弹幕显隐失败</item>
+    </string-array>
+    <string-array name="a1b">
+        <item>已关注</item>
+    </string-array>
+    <string-array name="a1c">
+        <item>关注失败(</item>
+    </string-array>
+    <string-array name="a1d">
+        <item>点赞</item>
+    </string-array>
+    <string-array name="a1e">
+        <item>已关注</item>
+    </string-array>
+    <string-array name="a1f">
+        <item>赞</item>
+    </string-array>
+    <string-array name="a1g">
+        <item>去看看</item>
+    </string-array>
+    <string-array name="a1h">
+        <item>已关注</item>
+    </string-array>
+    <string-array name="a1i">
+        <item>弹幕状态获取失败</item>
+    </string-array>
+    <string-array name="a1j">
+        <item>赞</item>
+    </string-array>
+    <string-array name="a1k">
+        <item>已赞</item>
+    </string-array>
+    <string-array name="a1l">
+        <item>转</item>
+    </string-array>
+    <string-array name="a1m">
+        <item>取消</item>
+    </string-array>
+    <string-array name="a1n">
+        <item>评</item>
+    </string-array>
+    <string-array name="a1o">
+        <item>点赞</item>
+    </string-array>
+    <string-array name="a1p">
+        <item>已关注</item>
+    </string-array>
+    <string-array name="a1q">
+        <item>赞</item>
+    </string-array>
+    <string-array name="a1r">
+        <item>关注</item>
+    </string-array>
+    <string-array name="a1s">
+        <item>进度条状态改变：</item>
+    </string-array>
+    <string-array name="a1t">
+        <item>去看看</item>
+    </string-array>
+    <string-array name="a1u">
+        <item>点赞失败(</item>
+    </string-array>
+    <string-array name="a1v">
+        <item>下载</item>
+    </string-array>
+    <string-array name="a1w">
+        <item>取消关注失败(</item>
+    </string-array>
+    <string-array name="a1x">
+        <item>微视</item>
+    </string-array>
+    <string-array name="a1y">
+        <item>视频已切换， 重置相关数据</item>
+    </string-array>
+    <string-array name="a1z">
+        <item>已赞</item>
+    </string-array>
+    <string-array name="a20">
+        <item>转</item>
+    </string-array>
+    <string-array name="a21">
+        <item>赞</item>
+    </string-array>
+    <string-array name="a22">
+        <item>赞</item>
+    </string-array>
+    <string-array name="a23">
+        <item>关注失败(</item>
+    </string-array>
+    <string-array name="a24">
+        <item>打开</item>
+    </string-array>
+    <string-array name="a25">
+        <item>广告</item>
+    </string-array>
+    <string-array name="a26">
+        <item>视频开始播放， adapter.mIsDanmakuDataInited =</item>
+    </string-array>
+    <string-array name="a27">
+        <item>上传</item>
+    </string-array>
+    <string-array name="a28">
+        <item>评论</item>
+    </string-array>
+    <string-array name="a29">
+        <item>关注</item>
+    </string-array>
+    <string-array name="a2_">
+        <item>评论</item>
+    </string-array>
+    <string-array name="a2a">
+        <item>我的黄钻</item>
+    </string-array>
+    <string-array name="a2b">
+        <item>他</item>
+    </string-array>
+    <string-array name="a2c">
+        <item>我的黄钻</item>
+    </string-array>
+    <string-array name="a2d">
+        <item>他</item>
+    </string-array>
+    <string-array name="a2e">
+        <item>我的黄钻</item>
+    </string-array>
+    <string-array name="a2f">
+        <item>级，点击可续费</item>
+    </string-array>
+    <string-array name="a2g">
+        <item>级，点击可续费</item>
+    </string-array>
+    <string-array name="a2h">
+        <item>黄钻会员，等级</item>
+    </string-array>
+    <string-array name="a2i">
+        <item>她</item>
+    </string-array>
+    <string-array name="a2j">
+        <item>黄钻会员，等级</item>
+    </string-array>
+    <string-array name="a2k">
+        <item>我的黄钻</item>
+    </string-array>
+    <string-array name="a2l">
+        <item>提供</item>
+    </string-array>
+    <string-array name="a2m">
+        <item>网页由</item>
+    </string-array>
+    <string-array name="a2n">
+        <item>取消</item>
+    </string-array>
+    <string-array name="a2o">
+        <item>确认</item>
+    </string-array>
+    <string-array name="a2p">
+        <item>一级/二级 key不能为空</item>
+    </string-array>
+    <string-array name="a2q" formatted="false">
+        <item>确定删除此项？一级key:%s 二级key:%s</item>
+    </string-array>
+    <string-array name="a2r">
+        <item>删除成功</item>
+    </string-array>
+    <string-array name="a2s">
+        <item>确定</item>
+    </string-array>
+    <string-array name="a2t">
+        <item>提示</item>
+    </string-array>
+    <string-array name="a2u">
+        <item>添加／修改失败</item>
+    </string-array>
+    <string-array name="a2v">
+        <item>删除失败</item>
+    </string-array>
+    <string-array name="a2w">
+        <item>取消</item>
+    </string-array>
+    <string-array name="a2x">
+        <item>修改</item>
+    </string-array>
+    <string-array name="a2y">
+        <item>添加／修改成功</item>
+    </string-array>
+    <string-array name="a2z">
+        <item>我</item>
+    </string-array>
+    <string-array name="a30">
+        <item>关注成功</item>
+    </string-array>
+    <string-array name="a31">
+        <item>已取消关注</item>
+    </string-array>
+    <string-array name="a32">
+        <item>年</item>
+    </string-array>
+    <string-array name="a33">
+        <item>前天</item>
+    </string-array>
+    <string-array name="a34">
+        <item>今天</item>
+    </string-array>
+    <string-array name="a35">
+        <item>昨天</item>
+    </string-array>
+    <string-array name="a36">
+        <item>一键制作</item>
+    </string-array>
+    <string-array name="a37">
+        <item>推荐制作本地照片</item>
+    </string-array>
+    <string-array name="a38">
+        <item>智能视频已开启，将利用照片时间、地点等信息，自动为你聚合视频。</item>
+    </string-array>
+    <string-array name="a39">
+        <item>推荐制作本地照片</item>
+    </string-array>
+    <string-array name="a3_">
+        <item>建议开启智能视频功能，利用照片时间、地点等信息，帮你聚合视频，轻松记录回忆。</item>
+    </string-array>
+    <string-array name="a3a">
+        <item>影集已发表</item>
+    </string-array>
+    <string-array name="a3b">
+        <item>建议开启智能影集功能，利用照片时间、地点等信息，帮你聚合影集，轻松记录回忆。</item>
+    </string-array>
+    <string-array name="a3c">
+        <item>视频已发表</item>
+    </string-array>
+    <string-array name="a3d">
+        <item>智能影集已开启，将利用照片时间、地点等信息，自动为你聚合影集。</item>
+    </string-array>
+    <string-array name="a3e">
+        <item>与好友分享你的瞬间。（发表前仅自己可见）</item>
+    </string-array>
+    <string-array name="a3f">
+        <item>千</item>
+    </string-array>
+    <string-array name="a3g">
+        <item>还未记录的旅行影像(上传前仅自己可见)</item>
+    </string-array>
+    <string-array name="a3h">
+        <item>还未记录的活动影像(上传前仅自己可见)</item>
+    </string-array>
+    <string-array name="a3i">
+        <item>百</item>
+    </string-array>
+    <string-array name="a3j">
+        <item>万</item>
+    </string-array>
+    <string-array name="a3k">
+        <item>还未记录的宝宝影像(上传前仅自己可见)</item>
+    </string-array>
+    <string-array name="a3l">
+        <item>个匹配</item>
+    </string-array>
+    <string-array name="a3m">
+        <item>数据返回为空</item>
+    </string-array>
+    <string-array name="a3n">
+        <item>服务异常:</item>
+    </string-array>
+    <string-array name="a3o">
+        <item>分享成功</item>
+    </string-array>
+    <string-array name="a3p">
+        <item>[图片]</item>
+    </string-array>
+    <string-array name="a3q">
+        <item>抱歉，你未安装微信客户端，无法分享</item>
+    </string-array>
+    <string-array name="a3r">
+        <item>应用头条</item>
+    </string-array>
+    <string-array name="a3s">
+        <item>抱歉，你的微信版本过低，请更新</item>
+    </string-array>
+    <string-array name="a3t">
+        <item>返回应用头条</item>
+    </string-array>
+    <string-array name="a3u">
+        <item>应用头条</item>
+    </string-array>
+    <string-array name="a3v">
+        <item>应用头条</item>
+    </string-array>
+    <string-array name="a3w">
+        <item>应用头条</item>
+    </string-array>
+    <string-array name="a3x" formatted="false">
+        <item>like %/相机/%)</item>
+    </string-array>
+    <string-array name="a3y">
+        <item>旅行拍摄</item>
+    </string-array>
+    <string-array name="a3z">
+        <item>旅途记录</item>
+    </string-array>
+    <string-array name="a40">
+        <item>儿童</item>
+    </string-array>
+    <string-array name="a41">
+        <item>旅游途中</item>
+    </string-array>
+    <string-array name="a42">
+        <item>宝宝</item>
+    </string-array>
+    <string-array name="a43">
+        <item>已分享</item>
+    </string-array>
+    <string-array name="a44">
+        <item>来空间和我一起玩耍吧</item>
+    </string-array>
+    <string-array name="a45">
+        <item>万</item>
+    </string-array>
+    <string-array name="a46">
+        <item>万+</item>
+    </string-array>
+    <string-array name="a47">
+        <item>张照片</item>
+    </string-array>
+    <string-array name="a48">
+        <item>[视频]</item>
+    </string-array>
+    <string-array name="a49">
+        <item>个视频</item>
+    </string-array>
+    <string-array name="a4_">
+        <item>[视频]</item>
+    </string-array>
+    <string-array name="a4a">
+        <item>张照片</item>
+    </string-array>
+    <string-array name="a4b">
+        <item>取消</item>
+    </string-array>
+    <string-array name="a4c">
+        <item>个视频</item>
+    </string-array>
+    <string-array name="a4d">
+        <item>悄悄分享给你一</item>
+    </string-array>
+    <string-array name="a4e">
+        <item>操作</item>
+    </string-array>
+    <string-array name="a4f">
+        <item>确定</item>
+    </string-array>
+    <string-array name="a4g">
+        <item>对</item>
+    </string-array>
+    <string-array name="a4h">
+        <item>取消</item>
+    </string-array>
+    <string-array name="a4i">
+        <item>取消</item>
+    </string-array>
+    <string-array name="a4j">
+        <item>确定</item>
+    </string-array>
+    <string-array name="a4k">
+        <item>个人</item>
+    </string-array>
+    <string-array name="a4l">
+        <item>人像</item>
+    </string-array>
+    <string-array name="a4m">
+        <item>自拍</item>
+    </string-array>
+    <string-array name="a4n">
+        <item>添加至说说</item>
+    </string-array>
+    <string-array name="a4o">
+        <item>截图</item>
+    </string-array>
+    <string-array name="a4p">
+        <item>截屏</item>
+    </string-array>
+    <string-array name="a4q">
+        <item>确认</item>
+    </string-array>
+    <string-array name="a4r">
+        <item>原图一秒变大片</item>
+    </string-array>
+    <string-array name="a4s">
+        <item>特别关心</item>
+    </string-array>
+    <string-array name="a4t">
+        <item>好友将收到你对 ta 发出的踩空间消息，快来试试吧</item>
+    </string-array>
+    <string-array name="a4u">
+        <item>欢迎来玩踩空间！</item>
+    </string-array>
+    <string-array name="a4v">
+        <item>给你发送了</item>
+    </string-array>
+    <string-array name="a4w">
+        <item>知道了</item>
+    </string-array>
+    <string-array name="a4x">
+        <item>相册</item>
+    </string-array>
+    <string-array name="a4y">
+        <item>亿</item>
+    </string-array>
+    <string-array name="a4z">
+        <item>万</item>
+    </string-array>
+    <string-array name="a50">
+        <item>一</item>
+    </string-array>
+    <string-array name="a51">
+        <item>更多</item>
+    </string-array>
+    <string-array name="a52">
+        <item>关注</item>
+    </string-array>
+    <string-array name="a53">
+        <item>关注</item>
+    </string-array>
+    <string-array name="a54">
+        <item>点赞</item>
+    </string-array>
+    <string-array name="a55">
+        <item>已关注</item>
+    </string-array>
+    <string-array name="a56">
+        <item>取消点赞</item>
+    </string-array>
+    <string-array name="a57">
+        <item>孕期</item>
+    </string-array>
+    <string-array name="a58">
+        <item>天</item>
+    </string-array>
+    <string-array name="a59">
+        <item>相恋</item>
+    </string-array>
+    <string-array name="a5_">
+        <item>周</item>
+    </string-array>
+    <string-array name="a5a">
+        <item>天</item>
+    </string-array>
+    <string-array name="a5b">
+        <item>出生</item>
+    </string-array>
+    <string-array name="a5c">
+        <item>一个月纪念日</item>
+    </string-array>
+    <string-array name="a5d">
+        <item>岁生日</item>
+    </string-array>
+    <string-array name="a5e">
+        <item>满月</item>
+    </string-array>
+    <string-array name="a5f">
+        <item>天</item>
+    </string-array>
+    <string-array name="a5g">
+        <item>周年</item>
+    </string-array>
+    <string-array name="a5h">
+        <item>相识</item>
+    </string-array>
+    <string-array name="a5i">
+        <item>个月</item>
+    </string-array>
+    <string-array name="a5j">
+        <item>周</item>
+    </string-array>
+    <string-array name="a5k">
+        <item>相恋</item>
+    </string-array>
+    <string-array name="a5l">
+        <item>相识</item>
+    </string-array>
+    <string-array name="a5m">
+        <item>禁用预启动</item>
+    </string-array>
+    <string-array name="a5n">
+        <item>选择</item>
+    </string-array>
+    <string-array name="a5o">
+        <item>取消选择</item>
+    </string-array>
+    <string-array name="a5p">
+        <item>选择</item>
+    </string-array>
+    <string-array name="a5q">
+        <item>选择</item>
+    </string-array>
+    <string-array name="a5r">
+        <item>照片</item>
+    </string-array>
+    <string-array name="a5s">
+        <item>天</item>
+    </string-array>
+    <string-array name="a5t">
+        <item>启程前</item>
+    </string-array>
+    <string-array name="a5u">
+        <item>编辑地点</item>
+    </string-array>
+    <string-array name="a5v">
+        <item>取消</item>
+    </string-array>
+    <string-array name="a5w">
+        <item>彩蛋拼命加载中</item>
+    </string-array>
+    <string-array name="a5x">
+        <item>分享彩蛋</item>
+    </string-array>
+    <string-array name="a5y">
+        <item>分享图片生成失败，请检查内存空间</item>
+    </string-array>
+    <string-array name="a5z">
+        <item>我发现了一个大秘密，这里居然藏着一个拔河彩蛋，快去试试吧！</item>
+    </string-array>
+    <string-array name="a60">
+        <item>炫耀一下</item>
+    </string-array>
+    <string-array name="a61">
+        <item>分享到空间</item>
+    </string-array>
+    <string-array name="a62">
+        <item>给你一根绳子，你能拽动整个地球</item>
+    </string-array>
+    <string-array name="a63">
+        <item>再接再厉</item>
+    </string-array>
+    <string-array name="a64">
+        <item>大获全胜</item>
+    </string-array>
+    <string-array name="a65">
+        <item>很不幸，你遇到了手速更快的敌人</item>
+    </string-array>
+    <string-array name="a66">
+        <item>地点</item>
+    </string-array>
+    <string-array name="a67">
+        <item>地点</item>
+    </string-array>
+    <string-array name="a68">
+        <item>未知</item>
+    </string-array>
+    <string-array name="a69" formatted="false">
+        <item>like %/相机/%)</item>
+    </string-array>
+    <string-array name="a6_">
+        <item>网页链接</item>
+    </string-array>
+    <string-array name="a6a">
+        <item>|(?:δοκιμή|испытание|рф|срб|טעסט|آزمایشی|إختبار|الاردن|الجزائر|السعودية|المغرب|امارات|بھارت|تونس|سورية|فلسطين|قطر|مصر|परीक्षा|भारत|ভারত|ਭਾਰਤ|ભારત|இந்தியா|இலங்கை|சிங்கப்பூர்|பரிட்சை|భారత్|ලංකා|ไทย|テスト|中国|中國|台湾|台灣|新加坡|测试|測試|香港|테스트|한국|xn--0zwm56d|xn--11b5bs3a9aj6g|xn--3e0b707e|xn--45brj9c|xn--80akhbyknj4f|xn--90a3ac|xn--9t4b11yi5a|xn--clchc0ea0b2g2a9gcd|xn--deba0ad|xn--fiqs8s|xn--fiqz9s|xn--fpcrj9c3d|xn--fzc2c9e2c|xn--g6w251d|xn--gecrj9c|xn--h2brj9c|xn--hgbk6aj7f53bba|xn--hlcj6aya9esc7a|xn--j6w193g|xn--jxalpdlp|xn--kgbechtv|xn--kprw13d|xn--kpry57d|xn--lgbbat1ad8j|xn--mgbaam7a8h|xn--mgbayh7gpa|xn--mgbbh1a71e|xn--mgbc0a9azcg|xn--mgberp4a5d4ar|xn--o3cw4h|xn--ogbpf8fl|xn--p1ai|xn--pgbs0dh|xn--s9brj9c|xn--wgbh1c|xn--wgbl6a|xn--xkc2al3hye2a|xn--xkc2dl3a5ee0h|xn--yfro4i67o|xn--ygbi2ammx|xn--zckzah|xxx)</item>
+    </string-array>
+    <string-array name="a6b">
+        <item>的空间</item>
+    </string-array>
+    <string-array name="a6c">
+        <item>万</item>
+    </string-array>
+    <string-array name="a6d">
+        <item>[视频]</item>
+    </string-array>
+    <string-array name="a6e">
+        <item>分享失败</item>
+    </string-array>
+    <string-array name="a6f">
+        <item>分享失败</item>
+    </string-array>
+    <string-array name="a6g">
+        <item>分享失败</item>
+    </string-array>
+    <string-array name="a6h">
+        <item>[视频]</item>
+    </string-array>
+    <string-array name="a6i">
+        <item>网络无连接</item>
+    </string-array>
+    <string-array name="a6j">
+        <item>SD卡已被拔出，传文件、图片视频相关等部分功能将不能正常使用！</item>
+    </string-array>
+    <string-array name="a6k">
+        <item>微信版本太低，请下载最新版本</item>
+    </string-array>
+    <string-array name="a6l">
+        <item>请安装微信后再进行分享</item>
+    </string-array>
+    <string-array name="a6m">
+        <item>视频压缩失败,</item>
+    </string-array>
+    <string-array name="a6n">
+        <item>已关注</item>
+    </string-array>
+    <string-array name="a6o">
+        <item>关注</item>
+    </string-array>
+    <string-array name="a6p">
+        <item>目录下</item>
+    </string-array>
+    <string-array name="a6q">
+        <item>评论</item>
+    </string-array>
+    <string-array name="a6r">
+        <item>评论失败(</item>
+    </string-array>
+    <string-array name="a6s">
+        <item>取消关注失败(</item>
+    </string-array>
+    <string-array name="a6t">
+        <item>关注失败(</item>
+    </string-array>
+    <string-array name="a6u">
+        <item>点赞失败(</item>
+    </string-array>
+    <string-array name="a6v">
+        <item>转发失败(</item>
+    </string-array>
+    <string-array name="a6w">
+        <item>取消</item>
+    </string-array>
+    <string-array name="a6x">
+        <item>视频播放异常(%d)</item>
+    </string-array>
+    <string-array name="a6y" formatted="false">
+        <item>视频播放遇到了问题(%d,%d)</item>
+    </string-array>
+    <string-array name="a6z">
+        <item>取消</item>
+    </string-array>
+    <string-array name="a70">
+        <item>网络有点异常(%d)</item>
+    </string-array>
+    <string-array name="a71">
+        <item>立即下载</item>
+    </string-array>
+    <string-array name="a72">
+        <item>视频转码中，请稍候</item>
+    </string-array>
+    <string-array name="a73">
+        <item>了解详情</item>
+    </string-array>
+    <string-array name="a74">
+        <item>我也要推广</item>
+    </string-array>
+    <string-array name="a75">
+        <item>转码失败,请重新上传</item>
+    </string-array>
+    <string-array name="a76">
+        <item>屏蔽广告</item>
+    </string-array>
+    <string-array name="a77">
+        <item>审核视频失败,请修改后上传</item>
+    </string-array>
+    <string-array name="a78">
+        <item>的状态</item>
+    </string-array>
+    <string-array name="a79">
+        <item>加载更多</item>
+    </string-array>
+    <string-array name="a7_">
+        <item>视频</item>
+    </string-array>
+    <string-array name="a7a">
+        <item>加载中</item>
+    </string-array>
+    <string-array name="a7b">
+        <item>月</item>
+    </string-array>
+    <string-array name="a7c">
+        <item>加载失败</item>
+    </string-array>
+    <string-array name="a7d">
+        <item>加载失败，点击重试</item>
+    </string-array>
+    <string-array name="a7e">
+        <item>个视频</item>
+    </string-array>
+    <string-array name="a7f">
+        <item>网络异常，推荐视频拉取失败</item>
+    </string-array>
+    <string-array name="a7g">
+        <item>正在加载中</item>
+    </string-array>
+    <string-array name="a7h">
+        <item>已加载全部</item>
+    </string-array>
+    <string-array name="a7i">
+        <item>无法打开权限，请手动前往系统设置</item>
+    </string-array>
+    <string-array name="a7j">
+        <item>无法打开权限，请手动前往系统设置</item>
+    </string-array>
+    <string-array name="a7k">
+        <item>加入共享相册成功. albumId=</item>
+    </string-array>
+    <string-array name="a7l">
+        <item>用时</item>
+    </string-array>
+    <string-array name="a7m">
+        <item>秒</item>
+    </string-array>
+    <string-array name="a7n">
+        <item>的头像</item>
+    </string-array>
+    <string-array name="a7o">
+        <item>高清 360P</item>
+    </string-array>
+    <string-array name="a7p">
+        <item>流畅 180P</item>
+    </string-array>
+    <string-array name="a7q">
+        <item>标清 270P</item>
+    </string-array>
+    <string-array name="a7r">
+        <item>高清 360P</item>
+    </string-array>
+    <string-array name="a7s">
+        <item>超清 720P</item>
+    </string-array>
+    <string-array name="a7t">
+        <item>蓝光 1080P</item>
+    </string-array>
+    <string-array name="a7u">
+        <item>群相册</item>
+    </string-array>
+    <string-array name="a7v">
+        <item>去下载</item>
+    </string-array>
+    <string-array name="a7w">
+        <item>下载中</item>
+    </string-array>
+    <string-array name="a7x">
+        <item>去下载</item>
+    </string-array>
+    <string-array name="a7y">
+        <item>去下载</item>
+    </string-array>
+    <string-array name="a7z">
+        <item>去下载</item>
+    </string-array>
+    <string-array name="a80">
+        <item>下载完成</item>
+    </string-array>
+    <string-array name="a81">
+        <item>去下载</item>
+    </string-array>
+    <string-array name="a82">
+        <item>去看看</item>
+    </string-array>
+    <string-array name="a83">
+        <item>去看看</item>
+    </string-array>
+    <string-array name="a84">
+        <item>去下载</item>
+    </string-array>
+    <string-array name="a85">
+        <item>保存成功</item>
+    </string-array>
+    <string-array name="a86">
+        <item>清理成功</item>
+    </string-array>
+    <string-array name="a87">
+        <item>沙尘暴</item>
+    </string-array>
+    <string-array name="a88">
+        <item>选中了</item>
+    </string-array>
+    <string-array name="a89">
+        <item>台风</item>
+    </string-array>
+    <string-array name="a8_">
+        <item>大雾</item>
+    </string-array>
+    <string-array name="a8a">
+        <item>寒潮</item>
+    </string-array>
+    <string-array name="a8b">
+        <item>高温</item>
+    </string-array>
+    <string-array name="a8c">
+        <item>经度格式错误</item>
+    </string-array>
+    <string-array name="a8d">
+        <item>暴雪</item>
+    </string-array>
+    <string-array name="a8e">
+        <item>请输入经度,格式如：116.85</item>
+    </string-array>
+    <string-array name="a8f">
+        <item>精度:</item>
+    </string-array>
+    <string-array name="a8g">
+        <item>冰雹</item>
+    </string-array>
+    <string-array name="a8h">
+        <item>请输入维度,格式如: 40.37</item>
+    </string-array>
+    <string-array name="a8i">
+        <item>清理</item>
+    </string-array>
+    <string-array name="a8j">
+        <item>雷电</item>
+    </string-array>
+    <string-array name="a8k">
+        <item>维度:</item>
+    </string-array>
+    <string-array name="a8l">
+        <item>暴雨</item>
+    </string-array>
+    <string-array name="a8m">
+        <item>保存</item>
+    </string-array>
+    <string-array name="a8n">
+        <item>维度格式错误</item>
+    </string-array>
+    <string-array name="a8o">
+        <item>北风</item>
+    </string-array>
+    <string-array name="a8p">
+        <item>风向不定</item>
+    </string-array>
+    <string-array name="a8q">
+        <item>西北风</item>
+    </string-array>
+    <string-array name="a8r">
+        <item>级</item>
+    </string-array>
+    <string-array name="a8s">
+        <item>东南风</item>
+    </string-array>
+    <string-array name="a8t">
+        <item>西南风</item>
+    </string-array>
+    <string-array name="a8u">
+        <item>南风</item>
+    </string-array>
+    <string-array name="a8v">
+        <item>西风</item>
+    </string-array>
+    <string-array name="a8w">
+        <item>东北风</item>
+    </string-array>
+    <string-array name="a8x">
+        <item>东风</item>
+    </string-array>
+    <string-array name="a8y">
+        <item>赠送成功!</item>
+    </string-array>
+    <string-array name="bo">
+        <item>添加到桌面</item>
+        <item>从会话列表中移除</item>
+        <item>清空会话列表</item>
+    </string-array>
+    <string-array name="bp">
+        <item>去过的地方</item>
+        <item>爱吃的美食</item>
+        <item>常用的品牌</item>
+        <item>喜欢的运动</item>
+        <item>喜欢的电影</item>
+        <item>喜欢的明星</item>
+        <item>喜欢的游戏</item>
+    </string-array>
+    <string-array name="bq">
+        <item>旅游</item>
+        <item>美食</item>
+        <item>时尚</item>
+        <item>运动</item>
+        <item>电影</item>
+        <item>音乐</item>
+        <item>游戏</item>
+    </string-array>
+    <string-array name="br">
+        <item>发送截图</item>
+        <item>从相册选择</item>
+    </string-array>
+    <string-array name="bs">
+        <item>@string/h1_</item>
+        <item>@string/e8</item>
+    </string-array>
+    <string-array name="bt">
+        <item>@string/h1_</item>
+        <item>@string/h13</item>
+        <item>@string/e8</item>
+    </string-array>
+    <string-array name="bu">
+        <item>确定解除</item>
+    </string-array>
+    <string-array name="a8z">
+        <item>本地文件</item>
+        <item>微云文件</item>
+        <item>取消</item>
+    </string-array>
+    <string-array name="bv">
+        <item>从本设备中删除</item>
+        <item>从群文件中删除</item>
+        <item>取消</item>
+    </string-array>
+    <string-array name="bw">
+        <item>@string/duy</item>
+        <item>@string/dut</item>
+        <item>@string/duv</item>
+        <item>取消</item>
+    </string-array>
+    <string-array name="bx">
+        <item>倔强青铜</item>
+        <item>秩序白银</item>
+        <item>荣耀黄金</item>
+        <item>尊贵铂金</item>
+        <item>永恒钻石</item>
+        <item>至尊星耀</item>
+        <item>最强王者</item>
+    </string-array>
+    <string-array name="by">
+        <item>成员分布</item>
+        <item>邀请好友加入</item>
+        <item>删除成员</item>
+    </string-array>
+    <string-array name="bz">
+        <item>成员分布</item>
+        <item>批量加好友</item>
+        <item>邀请新成员</item>
+        <item>删除成员</item>
+    </string-array>
+    <string-array name="c0">
+        <item>默认排序</item>
+        <item>按职务排序</item>
+        <item>礼物榜</item>
+        <item>发起多人聊天</item>
+        <item>邀请新成员</item>
+        <item>删除群成员</item>
+    </string-array>
+    <string-array name="c1">
+        <item>删除未付款成员</item>
+    </string-array>
+    <string-array name="c2">
+        <item>今天</item>
+        <item>一周内</item>
+        <item>一周前</item>
+        <item>一个月前</item>
+        <item>三个月前</item>
+        <item>半年前</item>
+        <item>一年前</item>
+        <item>从未发言</item>
+    </string-array>
+    <string-array name="c3">
+        <item>今天</item>
+        <item>一周内</item>
+        <item>一周前</item>
+        <item>一个月前</item>
+        <item>三个月前</item>
+        <item>半年前</item>
+        <item>一年前</item>
+        <item>两年前</item>
+        <item>三年前</item>
+        <item>五年前</item>
+        <item>七年前</item>
+        <item>十年前</item>
+    </string-array>
+    <string-array name="c4">
+        <item>潜水</item>
+        <item>冒泡</item>
+        <item>吐槽</item>
+        <item>活跃</item>
+        <item>话唠</item>
+        <item>传说</item>
+    </string-array>
+    <string-array name="c5">
+        <item>≤5km</item>
+        <item>≤10km</item>
+        <item>≤50km</item>
+        <item>≤500km</item>
+        <item>≤1000km</item>
+        <item>≤2000km</item>
+        <item>≤10000km</item>
+        <item>远在天边</item>
+        <item>未知</item>
+    </string-array>
+    <string-array name="c6">
+        <item>默认排序</item>
+        <item>优先在线成员</item>
+        <item>按活跃时间排序</item>
+        <item>按加群时间排序</item>
+    </string-array>
+    <string-array name="c7">
+        <item>默认排序</item>
+        <item>优先在线成员</item>
+        <item>按活跃时间</item>
+        <item>按加群时间</item>
+    </string-array>
+    <string-array name="c8">
+        <item>屏蔽群消息</item>
+    </string-array>
+    <string-array name="c9">
+        <item>接收群消息</item>
+    </string-array>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/axl" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="top" android:id="@id/ng8" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/btw">
+        <com.tencent.qqmail.utilities.ui.ItemScrollListView android:id="@id/ng6" android:visibility="gone" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/brp" android:listSelector="@null" android:divider="@null" android:dividerHeight="0.0dip" />
+        <com.tencent.qqmail.utilities.ui.ItemScrollListView android:id="@id/ng_" android:visibility="gone" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/brp" android:listSelector="@null" android:divider="@null" android:dividerHeight="0.0dip" />
+        <com.tencent.qqmail.view.QMContentLoadingView android:id="@id/ng7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/brp" />
+        <com.tencent.qqmail.utilities.ui.QMSideIndexer android:gravity="center_horizontal" android:layout_gravity="center|right" android:orientation="vertical" android:id="@id/nga" android:background="@drawable/e94" android:clickable="true" android:layout_width="@dimen/bhe" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:layout_marginRight="@dimen/bhd" />
+    </FrameLayout>
+    <com.tencent.qqmail.view.QMTopBar android:id="@id/ngb" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <View android:id="@id/ng9" android:visibility="gone" style="@style/ahx" />
+</FrameLayout>

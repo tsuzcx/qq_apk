@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/axi" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qm="http://schemas.android.com/apk/res-auto">
+    <com.tencent.qqmail.view.QMTopBar android:id="@id/nph" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ScrollView android:id="@id/jow" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/btw" android:fillViewport="true">
+        <LinearLayout style="@style/ah8">
+            <RelativeLayout android:id="@id/nth" style="@style/ah1">
+                <TextView android:id="@id/ntg" android:layout_marginRight="48.0dip" android:text="@string/y70" android:layout_alignParentLeft="true" style="@style/agx" />
+                <EditText android:id="@id/ntc" android:hint="@string/y6o" android:maxLength="16" android:layout_toRightOf="@id/ntg" android:inputType="textPassword" style="@style/agu" />
+                <ImageButton android:id="@id/ntj" android:visibility="gone" android:layout_marginLeft="8.0dip" android:layout_alignParentRight="true" style="@style/agy" />
+            </RelativeLayout>
+            <TextView android:id="@id/nti" android:visibility="gone" android:text="@string/y71" style="@style/ah5" />
+            <TextView android:textColor="@color/ab3" android:id="@id/ni8" android:paddingTop="0.0dip" android:visibility="gone" android:text="@string/y6f" style="@style/ah5" />
+            <RelativeLayout android:id="@id/nte" style="@style/agz">
+                <TextView android:id="@id/ntd" android:layout_marginRight="48.0dip" android:text="@string/y6y" android:layout_alignParentLeft="true" style="@style/agx" />
+                <EditText android:id="@id/ntb" android:hint="@string/y6n" android:maxLength="32" android:layout_toLeftOf="@id/nta" android:layout_toRightOf="@id/ntd" style="@style/agu" />
+                <Button android:id="@id/nta" android:layout_alignParentRight="true" style="@style/agt" />
+            </RelativeLayout>
+            <TextView android:id="@id/ntf" android:visibility="gone" android:text="@string/y6z" style="@style/ah2" />
+            <include layout="@layout/cy1" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:background="@drawable/ghc" android:layout_width="159.0dip" android:layout_height="55.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.AsyncImageView android:id="@id/hti" android:layout_width="55.0dip" android:layout_height="55.0dip" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip">
+        <TextView android:textSize="@dimen/ayk" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/htm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sa1" android:lines="1" android:scrollHorizontally="true" />
+        <TextView android:textSize="@dimen/ayk" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/htk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="粉丝XXX 访客XXX" android:lines="1" android:scrollHorizontally="true" />
+    </LinearLayout>
+</LinearLayout>

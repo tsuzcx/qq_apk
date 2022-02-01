@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="b_g">24.0dip</dimen>
+    <dimen name="b_h">80.0dip</dimen>
+    <dimen name="b_i">64.0dip</dimen>
+    <dimen name="b_j">8.0dip</dimen>
+    <dimen name="b_k">8.0dip</dimen>
+    <dimen name="ba3">580.0dip</dimen>
+    <dimen name="bbh">16.0dip</dimen>
+    <dimen name="bbj">20.0dip</dimen>
+</resources>

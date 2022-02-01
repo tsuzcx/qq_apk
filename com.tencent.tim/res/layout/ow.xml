@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/b2n" android:background="@drawable/bg_texture" android:focusable="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/cu0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" formItem:bgType="jsv" formItem:switchChecked="false" formItem:switchText="@string/bid" />
+        <RelativeLayout android:id="@id/ctl" android:background="@drawable/common_strip_setting_top" android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_marginTop="20.0dip">
+            <ImageView android:id="@id/ctn" android:duplicateParentState="true" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="10.0dip" android:src="@drawable/b73" android:layout_centerVertical="true" android:contentDescription="@null" />
+            <TextView android:id="@id/cto" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="38.0dip" android:layout_marginTop="8.0dip" android:text="@string/bi7" style="@style/ap" />
+            <TextView android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="38.0dip" android:layout_marginTop="4.0dip" android:text="@string/bi8" android:layout_below="@id/cto" style="@style/bh" />
+            <ImageView android:id="@id/ctm" android:duplicateParentState="true" android:layout_width="48.0dip" android:layout_height="fill_parent" android:layout_marginRight="0.0dip" android:src="@drawable/ad0" android:scaleType="center" android:layout_alignParentRight="true" android:contentDescription="@null" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/cti" android:background="@drawable/common_strip_setting_bottom" android:layout_width="fill_parent" android:layout_height="60.0dip">
+            <ImageView android:id="@id/ctj" android:duplicateParentState="true" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="10.0dip" android:src="@drawable/b73" android:layout_centerVertical="true" />
+            <TextView android:id="@id/ctk" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="38.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="10.0dip" android:text="@string/bi5" style="@style/ap" />
+            <TextView android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="38.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="10.0dip" android:text="@string/bi6" android:layout_below="@id/ctk" style="@style/bh" />
+        </RelativeLayout>
+        <Button android:gravity="center" android:id="@id/ctz" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="15.0dip" android:text="@string/bi9" style="@style/bd" />
+    </LinearLayout>
+</com.tencent.mobileqq.widget.BounceScrollView>

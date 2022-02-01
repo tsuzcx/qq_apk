@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/bx4" />
+    <FrameLayout android:id="@id/ixi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="148.0dip" android:layout_marginBottom="12.0dip">
+        <FrameLayout android:background="@drawable/jh" android:layout_width="fill_parent" android:layout_height="28.0dip">
+            <com.tencent.widget.AlphaClickableRelativeLayout android:id="@id/i32" android:layout_width="wrap_content" android:layout_height="28.0dip">
+                <TextView android:textSize="12.0dip" android:textColor="@color/skin_gray2_theme_version2" android:id="@id/i38" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="@string/gw" android:layout_centerVertical="true" />
+                <ImageView android:id="@id/i3" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginTop="8.5dip" android:src="@drawable/skin_icon_arrow_right_normal" android:layout_toRightOf="@id/i38" />
+            </com.tencent.widget.AlphaClickableRelativeLayout>
+        </FrameLayout>
+        <com.tencent.widget.XListView android:scrollbarStyle="outsideOverlay" android:id="@id/eo1" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="28.0dip" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" />
+    </FrameLayout>
+    <View android:id="@id/bmu" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="0.0dip" android:layout_marginRight="0.0dip" />
+    <RelativeLayout android:id="@id/f7j" android:background="@drawable/jh" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginBottom="12.0dip" android:contentDescription="@string/hwl">
+        <android.support.v7.widget.RecyclerView android:id="@id/h0h" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="0.0dip" android:layout_marginBottom="16.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+        <RelativeLayout android:id="@id/h0o" android:layout_width="wrap_content" android:layout_height="28.0dip">
+            <TextView android:textSize="12.0dip" android:textColor="@color/skin_gray2_theme_version2" android:id="@id/h0m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="@string/cil" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/h0n" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginTop="8.5dip" android:src="@drawable/skin_icon_arrow_right_normal" android:layout_toRightOf="@id/h0m" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/h50" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_marginLeft="68.0dip" android:layout_marginBottom="16.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true">
+            <com.tencent.widget.SingleLineTextView android:textSize="@dimen/j1" android:textColor="@color/skin_black_theme_version2" android:ellipsize="end" android:gravity="center|left" android:id="@id/nickname" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="22.0dip" android:maxWidth="@dimen/ka" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+            <com.tencent.widget.SingleLineTextView android:textSize="@dimen/j_" android:textColor="@color/skin_gray2_theme_version2" android:ellipsize="end" android:id="@id/i5e" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="17.0dip" android:maxWidth="@dimen/ka" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/i5b" android:background="@drawable/jh" android:layout_width="52.0dip" android:layout_height="fill_parent" android:layout_alignParentRight="true">
+            <TextView android:textSize="10.0dip" android:id="@id/k1t" android:visibility="visible" android:layout_marginRight="16.0dip" android:layout_marginBottom="26.5dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" style="@style/cg" />
+        </RelativeLayout>
+        <com.tencent.widget.SingleLineTextView android:textSize="17.0dip" android:textColor="@color/skin_black_theme_version2" android:layout_gravity="center_vertical" android:id="@id/h0p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="6.0dip" android:text="@string/cil" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/h0q" android:duplicateParentState="true" android:layout_width="10.5dip" android:layout_height="12.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="17.5dip" android:src="@drawable/common_arrow_right_selector" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="10.0dip" android:id="@id/ngu" android:visibility="visible" android:layout_marginRight="-8.0dip" android:layout_toLeftOf="@id/h0q" android:layout_centerVertical="true" style="@style/cg" />
+    </RelativeLayout>
+    <View android:id="@id/bmv" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="0.0dip" android:layout_marginRight="0.0dip" />
+</LinearLayout>

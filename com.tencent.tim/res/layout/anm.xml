@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/cg_" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/cga" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/apq" android:layout_width="169.0dip" android:layout_height="169.0dip" android:layout_marginTop="153.5dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+            <com.tencent.mobileqq.richmedia.capture.view.SimpleEffectsCaptureView android:id="@id/aog" android:layout_width="160.0dip" android:layout_height="160.0dip" android:layout_centerInParent="true" />
+            <ImageView android:visibility="gone" android:layout_width="160.0dip" android:layout_height="160.0dip" android:src="@drawable/eca" android:layout_centerInParent="true" />
+            <dov.com.qq.im.ptv.LightWeightCaptureShadow android:id="@id/apr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+            <dov.com.qq.im.ptv.LightWeightProgress android:id="@id/g2d" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <com.tencent.biz.qqstory.takevideo.CameraFocusView android:id="@id/aoj" android:paddingLeft="50.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/f7n" />
+        <dov.com.qq.im.ptv.LightWeightCaptureButtonHorizontalLayout android:id="@id/an8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <dov.com.qq.im.ptv.LightWeightCaptureButtonCornerLayout android:id="@id/an7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/a48" android:visibility="gone" android:layout_width="45.0dip" android:layout_height="45.0dip" android:layout_marginLeft="5.0dip" android:layout_marginTop="19.0dip" android:src="@drawable/a9e" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:contentDescription="@string/button_back" />
+    </RelativeLayout>
+</RelativeLayout>

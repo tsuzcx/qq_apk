@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/eqp" android:background="@color/ah1" android:layout_width="0.5dip" android:layout_height="fill_parent" android:layout_marginTop="@dimen/ms" android:layout_marginBottom="@dimen/ms" android:layout_alignParentLeft="true" />
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toRightOf="@id/eqp"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <ImageView android:layout_gravity="center" android:id="@id/eq5" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/qb_pubaccount_custom_menu_text" android:ellipsize="end" android:gravity="center" android:layout_gravity="center" android:id="@id/eqi" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:maxLength="9" />
+        <ImageView android:id="@id/j6m" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" />
+    </LinearLayout>
+</RelativeLayout>

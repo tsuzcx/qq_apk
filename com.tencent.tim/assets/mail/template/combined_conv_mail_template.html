@@ -1,0 +1,238 @@
+<!doctype html>
+<html>
+	<head>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" id="viewport" content="initial-scale=1.0 ,user-scalable=yes, maximum-scale=3.0, minimum-scale=1.0">
+    <style>
+    	html, body {margin:0;padding:0;}
+    	body > #head{
+    		width:100%;
+    	}
+    	body > #tail{
+	    	width:100%;
+    	}
+    	body > #content{
+	    	min-height:300px;
+    		width:100%;
+    		display:none;
+    	}
+    </style>
+    </head>
+    
+    <body>
+    	<div id="head"></div>
+	    <div id="content">
+	    $content$
+	    </div> 
+    	<div id="tail"></div>
+    </body>
+    
+    <script>    
+   	window.onerror = function(){
+		client.log("js",[].join.apply(arguments,["__"]));
+	}; 
+	</script>
+	
+	<script>
+	var noop = function(){
+	};
+	
+	var client = window.client || {
+		log:function(){
+			console.log.apply(console,arguments);
+		},
+		repositionItem:noop
+	};
+	
+	
+	var S = function(_asId) {
+		return document.getElementById(_asId);
+	};
+	
+	
+   </script>
+    
+   <script>
+    //replace content
+    function replaceContent(escapedStr){
+		client.log("js","unescape start");
+		S("content").style.display= "block";
+		var original = unescape(escapedStr);
+		client.log("js","unescape end " + original);
+		S("content").innerHTML = original;
+		client.log("js","unescape done");
+		resetScale();
+		fixScale();
+	}
+	
+	
+	function hideError(){
+		client.log("js","hideerror");
+	}
+	
+	function showError(){
+		client.log("js","showerror");
+	}
+	
+	function hideLoading(){
+		client.log("js","hideloading");
+	}
+    
+    function showLoading(){
+	    client.log("js","showloading start");
+	    //TODO
+	    client.log("js","showloading end");
+    }
+    
+    
+    function getElementTop(element){
+		var actualTop = element.offsetTop;
+		var current = element.offsetParent;
+		while (current !== null){
+			actualTop += current.offsetTop;
+			current = current.offsetParent;
+		}
+		return actualTop;
+	}
+	
+	function alignItem(blockName,alignPosition){
+		var ele = S(blockName);
+		var position = 0;
+		if(alignPosition == "top"){
+			position = getElementTop(ele);
+		}else{
+			position = getElementTop(ele) + ele.clientHeight;
+		}
+		client.log("align",[blockName,alignPosition,position].join(" "));
+		client.alignItemCallback(blockName,alignPosition,position);
+		client.log("align","done");
+	}
+	
+	
+    
+    //for java call 
+    function resizePlaceholderHeight(eleId,newHeight,alignPosition){
+    	client.log("js","route resizeplaceholderheight satrt");
+    	var item = null;
+    	client.log("js","xxxxxx");
+    	if((item = document.getElementById(eleId)) != null){
+    		item.style.height = newHeight + "px";
+	    	client.log("js","route resizeplaceholderheight mid");
+    		repositionItem(eleId,alignPosition);
+	    	client.log("js","route resizeplaceholderheight end");
+    	}else{
+    		client.log("js","setnewHeight error");
+    	}
+    }
+    
+    function repositionItem(eleId,alignPosition){
+    	client.log("js","route repositionItemstart");
+	    var item = null;
+    	if((item = document.getElementById(eleId)) != null){
+	    	var newPos = 0;
+    		if(alignPosition == "bottom"){
+    			newPos = getElementTop(item) + item.clientHeight;
+    		}else{
+    			newPos = getElementTop(item);
+    		}
+    		client.repositionItem(eleId,newPos,alignPosition);
+    		client.log("js","route repositionItemdone");
+    	}else{
+    		client.log("js","error no such element " + eleId);
+    	}
+    }
+    
+    
+    function requestPlaceholderReset(){
+    	client.setHtmlScale(HTML_SCALE);
+    	client.requestPlaceholderReset();
+    }
+    
+    </script>
+    
+    <script>
+    	"forEach map reduce".split(/\s+/).forEach(function(fnName){
+    		NodeList.prototype[fnName] = NodeList.prototype[fnName] || Array.prototype[fnName];
+    	});
+    </script>
+    
+    <script>
+    //TODO remove mock
+    /*var curScale =  $curScale$ || 1.0; */
+    
+    var HTML_SCALE = 1.0;
+    var PAGE_WIDTH = $pageWidth$ || 540;
+    var CONTENT_MINHEIGHT = 300;
+    
+    
+    function resetScale(){
+    	S("viewport").content = "initial-scale=1.0 ,width="+ PAGE_WIDTH+", user-scalable=yes, maximum-scale=3.0, minimum-scale=1.0";
+    	HTML_SCALE = 1.0;
+    	expandContentMinHeight();
+    	client.setHtmlScale(HTML_SCALE);
+    }
+    
+    //for fix scale
+    function fixScale(){
+	   	var imgs = document.getElementsByTagName("img");
+	   	var maxWidth = PAGE_WIDTH - 5;
+	   	imgs.forEach(function(img){
+		   	if(img.width || ( img.style && img.style.width)){
+		   		var curWidth =  img.width || img.style.width;
+		   		var curHeight =  img.height || img.style.height;
+		    	client.log("js","neko4.3 " + curHeight + "curHeight" + curHeight + "curWidth" + curWidth);
+			   	if(parseInt(curHeight) != 0){
+				   	img.style.maxHeight = (curHeight * (maxWidth/parseInt(curWidth))) + "px";
+					client.log("js","scalestart1.5");
+			   	}
+		   		img.style.maxWidth = maxWidth + "px";
+		   	}
+	   	});
+	   	
+	   	
+	   
+		client.log("js","scaleoriginal " + S("viewport").content);
+		client.log("js","scriptdogscrollWidth" + document.body.scrollWidth + " :PAGE_WIDTH: " + PAGE_WIDTH);
+	   	if(document.body.scrollWidth > PAGE_WIDTH){
+	   		imgs.forEach(function(img){
+	   			img.style.maxWidth = "none";
+	   			img.style.maxHeight = "none";
+	   		});
+	   		var scrollWidth = document.body.scrollWidth;
+	   		client.log("js","scalepage_width : " + PAGE_WIDTH + "SCROLL: " + document.body.scrollWidth);
+		   	var scale = PAGE_WIDTH / (scrollWidth);
+	   		var viewport = S("viewport");
+		   	viewport.content = "initial-scale=" + scale + ",width=" +
+		   	 (scrollWidth ) + 
+		   	", user-scalable=yes, maximum-scale=2.0, minimum-scale=" + scale;
+		   	client.log("js","scalenew " + viewport.content);
+		   	HTML_SCALE = scale;
+		}
+		expandContentMinHeight();
+		client.log("js","test1");
+		requestPlaceholderReset();
+		client.log("js","test2");
+    	client.log("js","scalestart3");
+    }
+    
+    
+    function expandContentMinHeight(){
+    	var scaledContentMinHeight = CONTENT_MINHEIGHT / HTML_SCALE;
+    	client.log("js","minHeight:" + scaledContentMinHeight);
+    	S("content").style.minHeight = scaledContentMinHeight + "px";
+    }
+    
+    window.onload = function(){
+    	fixScale();
+    };
+    
+    document.addEventListener("DOMContentLoaded",function(){
+    	if(document.readyState == "complete"){
+    		fixScale();
+    	}
+    });
+    
+    
+   </script>
+    
+</html>

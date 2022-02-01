@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/bja" android:background="@drawable/mt" android:layout_width="@dimen/md" android:layout_height="wrap_content" android:layout_centerInParent="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/idy" android:layout_width="fill_parent" android:layout_height="@dimen/rk" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip">
+        <ImageView android:id="@id/did" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@drawable/mv" android:layout_centerVertical="true" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/ja" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/kfu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip" android:text="@string/l64" android:maxLines="1" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <View android:id="@id/biw" android:background="#ffe8edf5" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_below="@id/idy" />
+    <com.tencent.widget.MaxHeightRelativelayout android:id="@id/ic3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:layout_below="@id/biw" />
+    <RelativeLayout android:id="@id/icw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignTop="@id/ic3" android:layout_alignBottom="@id/ic3">
+        <TextView android:textColor="@color/skin_hint_input" android:gravity="center" android:id="@id/kfa" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/l61" />
+    </RelativeLayout>
+</RelativeLayout>

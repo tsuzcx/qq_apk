@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:background="@color/au4" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.qqmail.view.QMTopBar android:id="@id/o6g" android:layout_width="fill_parent" android:layout_height="@dimen/btw" />
+    <com.tencent.qqmail.utilities.ui.ItemScrollListView android:id="@id/ebs" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/btw" android:fadeScrollbars="true" />
+    <com.tencent.qqmail.view.QMContentLoadingView android:id="@id/efs" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/btw" />
+</FrameLayout>

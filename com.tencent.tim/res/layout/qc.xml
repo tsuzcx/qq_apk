@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/root" android:background="@drawable/b8c" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/ebp" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:id="@id/edo" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="Jad标记此处为集合点" />
+        <TextView android:textSize="20.0sp" android:textStyle="bold" android:textColor="@color/zx" android:id="@id/ed4" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="集合点：南山文体中心体育馆" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/zx" android:id="@id/eba" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="深圳市南山区南山大道文体中心12302号" />
+        <LinearLayout android:orientation="horizontal" android:paddingTop="20.0dip" android:paddingBottom="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="14.0sp" android:textColor="@color/zx" android:gravity="center" android:id="@id/ebz" android:background="@drawable/ll" android:paddingLeft="12.0dip" android:focusable="true" android:clickable="true" android:layout_width="75.0dip" android:layout_height="30.0dip" android:text="@string/hhl" android:drawableLeft="@drawable/bge" android:drawablePadding="-10.0dip" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/edk" android:background="@drawable/hfv" android:paddingLeft="12.0dip" android:focusable="true" android:clickable="true" android:layout_width="75.0dip" android:layout_height="30.0dip" android:layout_marginLeft="16.0dip" android:text="@string/hho" android:drawableLeft="@drawable/bgh" android:drawablePadding="-10.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/do6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:gravity="center_vertical" android:padding="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="20.0sp" android:textStyle="bold" android:textColor="@color/zx" android:id="@id/dsz" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="集合点：南山文体中心体育馆" android:layout_toLeftOf="@id/do5" android:layout_alignParentLeft="true" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/zx" android:id="@id/dsu" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="深圳市南山区南山大道文体中心12302号" android:layout_toLeftOf="@id/do5" android:layout_below="@id/dsz" android:layout_alignParentLeft="true" />
+            <ImageView android:id="@id/do5" android:background="@drawable/bgd" android:focusable="true" android:clickable="true" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/c1n" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/yq4" />
+        </RelativeLayout>
+        <View android:id="@id/efl" android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="80.0dip">
+            <RelativeLayout android:gravity="center_vertical" android:id="@id/dsh" android:padding="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="20.0sp" android:textStyle="bold" android:textColor="@color/zx" android:id="@id/dsm" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="12分钟" android:layout_toLeftOf="@id/dr9" android:layout_alignParentLeft="true" />
+                <TextView android:textSize="14.0sp" android:textColor="@color/zx" android:id="@id/dpp" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="全程4.5公里" android:layout_toLeftOf="@id/dr9" android:layout_below="@id/dsm" android:layout_alignParentLeft="true" />
+                <TextView android:textSize="14.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/dr9" android:background="@drawable/hfv" android:paddingLeft="12.0dip" android:focusable="true" android:clickable="true" android:layout_width="75.0dip" android:layout_height="30.0dip" android:layout_marginLeft="16.0dip" android:text="@string/gyz" android:drawableLeft="@drawable/bga" android:drawablePadding="-10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <TextView android:textSize="16.0sp" android:textColor="#ffb0b3bf" android:gravity="center" android:layout_gravity="center" android:id="@id/do4" android:focusable="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/h_i" />
+            <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/dpu" android:focusable="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:contentDescription="@string/vu2">
+                <ProgressBar android:layout_width="20.0dip" android:layout_height="20.0dip" android:indeterminateDrawable="@drawable/common_loading6" />
+                <TextView android:textSize="16.0sp" android:textColor="#ffb0b3bf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/vu2" />
+            </LinearLayout>
+        </FrameLayout>
+        <View android:id="@id/ei9" android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="55.0dip">
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/dsb" android:background="@drawable/l0" android:focusable="true" android:clickable="true" android:layout_width="0.0dip" android:layout_height="32.0dip" android:layout_weight="4.0">
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/kb" />
+                <TextView android:textSize="16.0dip" android:textColor="@color/bl" android:gravity="center" android:id="@id/icc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/hgs" android:layout_centerVertical="true" />
+            </LinearLayout>
+            <View android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/ds_" android:background="@drawable/l0" android:focusable="true" android:clickable="true" android:layout_width="0.0dip" android:layout_height="32.0dip" android:layout_weight="4.0">
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/k8" />
+                <TextView android:textSize="16.0dip" android:textColor="@color/bl" android:gravity="center" android:id="@id/ic7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/hgr" android:layout_centerVertical="true" />
+            </LinearLayout>
+            <View android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/dsd" android:background="@drawable/l0" android:focusable="true" android:clickable="true" android:layout_width="0.0dip" android:layout_height="32.0dip" android:layout_weight="4.0">
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ky" />
+                <TextView android:textSize="16.0dip" android:textColor="@color/bl" android:gravity="center" android:id="@id/icg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/hgt" android:layout_centerVertical="true" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

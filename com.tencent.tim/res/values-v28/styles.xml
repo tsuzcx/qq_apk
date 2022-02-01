@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="a1f" parent="@style/aja" />
+    <style name="a1m" parent="@style/ajb" />
+    <style name="aja" parent="@style/aj8">
+        <item name="a3w">?android:dialogCornerRadius</item>
+    </style>
+    <style name="ajb" parent="@style/aj9">
+        <item name="a3w">?android:dialogCornerRadius</item>
+    </style>
+</resources>

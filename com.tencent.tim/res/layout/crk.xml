@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/nkx" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:background="@drawable/ibt" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/nl2" android:layout="@layout/crj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="17.0dip" />
+        <ViewStub android:id="@id/nl0" android:layout="@layout/crh" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <com.tencent.biz.qqcircle.widgets.QCircleDoubleClickLayout android:id="@id/nkz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+            <ViewStub android:id="@id/nl3" android:layout="@layout/crl" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <ViewStub android:id="@id/nl7" android:layout="@layout/cro" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <ViewStub android:layout_gravity="bottom|center|right" android:id="@id/nl6" android:layout="@layout/crm" android:inflatedId="@id/nlk" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <ViewStub android:id="@id/nl1" android:layout="@layout/cri" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.biz.qqcircle.widgets.QCircleDoubleClickLayout>
+        <ViewStub android:id="@id/nmx" android:layout="@layout/crn" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/nky" android:layout="@layout/crf" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ImageView android:background="@drawable/ibr" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <ViewStub android:id="@id/nkw" android:layout="@layout/crc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</merge>

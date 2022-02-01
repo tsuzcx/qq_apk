@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@id/c_q" android:background="@drawable/skin_entry_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/o39" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <View android:id="@id/jo7" android:background="@color/aj3" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" />
+            <LinearLayout android:orientation="vertical" android:id="@id/o6c" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <RelativeLayout android:id="@id/elg" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <include android:id="@id/mn7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/cj8" />
+                <include android:id="@id/nx2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_below="@id/mn7" layout="@layout/cxk" />
+                <include android:id="@id/ob3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/nx2" layout="@layout/cj3" />
+                <include android:id="@id/lam" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/ob3" layout="@layout/cj7" />
+                <com.tencent.tim.filemanager.widget.QfileTabBarView android:id="@id/c_l" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/lam" />
+                <FrameLayout android:id="@id/oev" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/lam" />
+            </RelativeLayout>
+        </LinearLayout>
+        <RelativeLayout android:gravity="center_vertical" android:id="@id/idz" android:background="@color/aj3" android:padding="0.0px" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height">
+            <TextView android:gravity="center" android:id="@id/efy" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="8.0dip" android:maxWidth="88.0dip" android:minWidth="40.0dip" android:text="@null" android:singleLine="true" android:includeFontPadding="false" android:drawableLeft="@drawable/f7z" android:drawablePadding="7.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
+            <Spinner android:gravity="center" android:id="@id/i14" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" android:popupBackground="@drawable/bx6" android:layout_centerInParent="true" android:dropDownVerticalOffset="0.0dip" android:spinnerMode="dropdown" />
+            <TextView android:id="@id/ily" android:text="@string/yq3" style="@style/cd" />
+        </RelativeLayout>
+    </FrameLayout>
+</LinearLayout>

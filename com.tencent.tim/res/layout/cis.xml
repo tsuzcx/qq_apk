@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/a4f" android:visibility="invisible" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/i6r" android:background="#7f000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="vertical" android:id="@id/ejb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+        <LinearLayout android:orientation="horizontal" android:clickable="true" android:layout_width="fill_parent" android:layout_height="121.0dip">
+            <TextView android:textSize="14.0dip" android:textColor="@color/gm" android:gravity="center_horizontal" android:id="@id/mwm" android:background="@drawable/bue" android:paddingTop="28.0dip" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/hxl" android:drawableTop="@drawable/ili" android:drawablePadding="12.0dip" android:layout_weight="1.0" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/gm" android:gravity="center_horizontal" android:id="@id/nxl" android:background="@drawable/bue" android:paddingTop="28.0dip" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/hxm" android:drawableTop="@drawable/ilj" android:drawablePadding="12.0dip" android:layout_weight="1.0" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:background="@drawable/buf" android:clickable="true" android:layout_width="fill_parent" android:layout_height="121.0dip">
+            <TextView android:textSize="14.0dip" android:textColor="@color/gm" android:gravity="center_horizontal" android:id="@id/o4l" android:background="@drawable/bue" android:paddingTop="28.0dip" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/wtn" android:drawableTop="@drawable/ili" android:drawablePadding="12.0dip" android:layout_weight="1.0" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/gm" android:gravity="center_horizontal" android:id="@id/mya" android:background="@drawable/bue" android:paddingTop="28.0dip" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/wtm" android:drawableTop="@drawable/ilj" android:drawablePadding="12.0dip" android:layout_weight="1.0" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

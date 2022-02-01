@@ -1,0 +1,81 @@
+{
+    "view_type": "UIView",
+    "view_id": "id_live_info_video_common_cell",
+    "layout_type": "layout_relative",
+    "height": {
+        "type": "relative",
+        "value": "72"
+    },
+    "width": {
+        "type": "match_parent"
+    },
+    "attributes": {
+        "setAttatchInfo:": "$video_info_visibility"
+    },
+    "subviews": [
+        {
+            "view_id": "id_user_name1",
+            "view_type": "UILabel",
+            "align_parent_bottom": "YES",
+            "align_parent_left": "YES",
+            "margin_left": "8",
+            "margin_right": "38",
+            "margin_bottom": "8",
+            "height": {
+                "type": "wrap_content"
+            },
+            "width": {
+                "type": "wrap_content"
+            },
+            "attributes": {
+                "setText:": "$user_name_text",
+                "setTextColorString:": "#FFFFFF",
+                "setFontSizeString:": "12",
+                "setNumberOfLinesString:": "1"
+            }
+        },
+        {
+            "view_id": "id_user_info1",
+            "view_type": "UILabel",
+            "align_parent_left": "YES",
+            "align_parent_right": "YES",
+            "above_of_view": "id_user_name1",
+            "margin_left": "8",
+            "margin_right": "8",
+            "margin_bottom": "4",
+            "height": {
+                "type": "wrap_content"
+            },
+            "width": {
+                "type": "match_parent"
+            },
+            "attributes": {
+                "setText:": "$user_info_text",
+                "setTextColorString:": "#FFFFFF",
+                "setFontSizeString:": "17",
+                "setNumberOfLinesString:": "2"
+            }
+        },
+        {
+            "view_type": "UIButton",
+            "view_id": "id_dislike_button_1",
+            "event_type": "cmd_dislike_click",
+            "margin_right": "-3",
+            "margin_bottom": "2",
+            "align_parent_right": "YES",
+            "align_parent_bottom": "YES",
+            "default_visible": "YES",
+            "height": {
+                "type": "absolutely",
+                "value": "30"
+            },
+            "width": {
+                "type": "absolutely",
+                "value": "41"
+            },
+            "attributes":{
+                "setImage:":"feeds_dislike_grey"
+            }
+        }
+    ]
+}

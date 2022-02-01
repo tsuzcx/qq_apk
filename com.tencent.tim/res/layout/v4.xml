@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/g46" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/ad9"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/c0h" android:background="@drawable/trans" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/skin_aio_public_account_icon" />
+    <ImageButton android:id="@id/emo_btn" android:background="@drawable/trans" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bu" android:contentDescription="@string/d58" />
+    <ImageButton android:id="@id/plus_btn" android:background="@drawable/trans" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ci" android:contentDescription="@string/d59" />
+    <ImageView android:layout_gravity="center_horizontal" android:id="@id/audio_btn" android:background="@drawable/trans" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/a6" />
+</LinearLayout>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/n1s" android:background="@color/axl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@color/al3" />
+    <com.tencent.qqmail.view.QMContentLoadingView android:id="@id/n9d" android:background="@color/axl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

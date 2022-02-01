@@ -1,0 +1,22 @@
+package tencent.im.s2c.msgtype0x210.submsgtype0x122;
+
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
+import com.tencent.mobileqq.pb.PBField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+
+public final class gray_tips_resv
+{
+  public static final class ResvAttr
+    extends MessageMicro<ResvAttr>
+  {
+    static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8 }, new String[] { "uint32_friend_banned_flag" }, new Object[] { Integer.valueOf(0) }, ResvAttr.class);
+    public final PBUInt32Field uint32_friend_banned_flag = PBField.initUInt32(0);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes.jar
+ * Qualified Name:     tencent.im.s2c.msgtype0x210.submsgtype0x122.gray_tips_resv
+ * JD-Core Version:    0.7.0.1
+ */

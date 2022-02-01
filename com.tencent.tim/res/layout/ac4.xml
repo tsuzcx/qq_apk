@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/e0h" android:background="@drawable/jm" android:layout_width="fill_parent" android:layout_height="46.0dip">
+        <TextView android:textSize="16.0dip" android:textColor="#fff35c4c" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/fwb" android:drawableLeft="@drawable/f_h" android:drawablePadding="5.0dip" />
+        <View android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2_theme_version2" android:gravity="center_vertical" android:id="@id/e0i" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="15.0dip" android:text="@string/ay1" android:drawableRight="@drawable/cak" android:drawablePadding="5.0dip" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include android:id="@id/e02" android:layout_width="0.0dip" android:layout_height="10.0dip" android:layout_marginRight="2.0dip" android:layout_weight="1.0" layout="@layout/ac5" />
+        <include android:id="@id/e03" android:layout_width="0.0dip" android:layout_height="10.0dip" android:layout_weight="1.0" layout="@layout/ac5" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip">
+        <include android:id="@id/e04" android:layout_width="0.0dip" android:layout_height="10.0dip" android:layout_marginRight="2.0dip" android:layout_weight="1.0" layout="@layout/ac5" />
+        <include android:id="@id/e05" android:layout_width="0.0dip" android:layout_height="10.0dip" android:layout_weight="1.0" layout="@layout/ac5" />
+    </LinearLayout>
+</LinearLayout>

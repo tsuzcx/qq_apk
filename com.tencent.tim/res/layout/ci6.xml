@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/arb" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/ab2"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qm="http://schemas.android.com/apk/res-auto">
+    <FrameLayout style="@style/ab0">
+        <FrameLayout android:layout_gravity="top" android:id="@id/ms1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/bfm">
+            <ImageView android:id="@id/aq6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:adjustViewBounds="true" />
+            <TextView android:textSize="@dimen/bff" android:textColor="@color/aos" android:gravity="center_vertical" android:layout_gravity="bottom|center|left" android:id="@id/mjq" android:background="@drawable/ble" android:paddingLeft="@dimen/bfd" android:paddingRight="@dimen/bfd" android:layout_width="wrap_content" android:layout_height="@dimen/bfc" android:layout_marginLeft="@dimen/bfh" android:layout_marginBottom="@dimen/bfg" android:drawableLeft="@drawable/gp0" android:drawablePadding="@dimen/bfb" />
+        </FrameLayout>
+        <com.tencent.qqmail.utilities.ui.DividerTextView android:layout_gravity="bottom|center" android:id="@id/mjp" android:layout_height="@dimen/bfm" qm:lineStyle="o0i" style="@style/ab1" />
+        <LinearLayout android:layout_gravity="bottom|center" android:orientation="vertical" android:id="@id/mhb" android:layout_width="fill_parent" android:layout_height="@dimen/bfm">
+            <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <com.tencent.qqmail.utilities.ui.DividerTextView android:id="@id/aqs" android:layout_marginTop="@dimen/bfr" qm:lineStyle="o0i" style="@style/ab1" />
+            <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/o4e" android:background="@drawable/dhv" android:paddingTop="@dimen/bg7" android:paddingBottom="@dimen/bg7" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="@dimen/bgb" android:textColor="@color/aov" android:id="@id/njo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/bga" />
+                <com.tencent.qqmail.card.view.CollapsingAvatarsView android:id="@id/njn" android:layout_width="wrap_content" android:layout_height="wrap_content" qm:avatar_type="mjo" />
+            </LinearLayout>
+            <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        </LinearLayout>
+    </FrameLayout>
+</RelativeLayout>

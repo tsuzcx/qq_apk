@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:paddingTop="0.0dip" android:paddingBottom="0.0dip" android:fadingEdge="none" android:fillViewport="true" style="@style/afa"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/ny7" android:text="@string/wah" style="@style/af_" />
+    <LinearLayout android:orientation="vertical" android:id="@id/nyb" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout style="@style/aea">
+            <TextView android:text="@string/wa9" style="@style/af1" />
+            <EditText android:id="@id/ny4" android:hint="@string/wa8" android:inputType="textWebEmailAddress" style="@style/aez" />
+            <Button android:id="@id/mkn" style="@style/af0" />
+            <ImageView android:id="@id/ny6" android:visibility="gone" android:contentDescription="@string/b9f" style="@style/aew" />
+        </RelativeLayout>
+        <RelativeLayout style="@style/ae9">
+            <TextView android:text="@string/w_e" style="@style/af1" />
+            <EditText android:id="@id/oao" android:hint="@string/y8f" android:inputType="textWebEmailAddress" style="@style/aez" />
+            <Button android:id="@id/mkp" style="@style/af0" />
+            <ImageView android:id="@id/oap" android:visibility="gone" android:contentDescription="@string/b9f" style="@style/aew" />
+        </RelativeLayout>
+        <RelativeLayout style="@style/ae8">
+            <TextView android:text="@string/password" style="@style/af1" />
+            <EditText android:id="@id/password_input" android:hint="@string/y8f" android:inputType="textPassword" style="@style/aez" />
+            <ImageButton android:id="@id/ni_" android:visibility="gone" style="@style/af4" />
+            <ImageView android:id="@id/ni9" android:visibility="gone" android:contentDescription="@string/b9f" style="@style/aew" />
+        </RelativeLayout>
+        <RelativeLayout style="@style/ae9">
+            <TextView android:id="@id/ny5" android:text="@string/wag" style="@style/af1" />
+            <EditText android:id="@id/njl" android:hint="@string/y8f" android:inputType="number" style="@style/aez" />
+            <Button android:id="@id/mkm" style="@style/af0" />
+            <ImageView android:id="@id/njm" android:visibility="gone" android:contentDescription="@string/b9f" style="@style/aew" />
+        </RelativeLayout>
+        <RelativeLayout style="@style/ae8">
+            <TextView android:text="@string/wak" style="@style/af1" />
+            <CheckBox android:id="@id/o13" style="@style/aex" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

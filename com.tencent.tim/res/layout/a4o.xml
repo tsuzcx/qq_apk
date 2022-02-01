@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root_layout" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/fx3" android:background="#ffffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="140.5dip" android:layout_centerHorizontal="true">
+        <RelativeLayout android:id="@id/fx2" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true">
+            <ImageView android:id="@id/fx4" android:layout_width="8.0dip" android:layout_height="8.0dip" android:src="@drawable/dmg" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <com.tencent.mobileqq.widget.WebViewProgressBar android:id="@id/g1p" android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_below="@id/fx2" />
+        <RelativeLayout android:id="@id/fx5" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/fx2" />
+    </RelativeLayout>
+</RelativeLayout>

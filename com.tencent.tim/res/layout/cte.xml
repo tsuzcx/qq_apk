@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/i0x" android:background="@drawable/jj" android:layout_width="fill_parent" android:layout_height="50.0dip"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <CheckBox android:id="@id/c_i" android:background="@drawable/f3t" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginLeft="10.0dip" android:button="@null" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <FrameLayout android:id="@id/mw1" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="14.0dip" android:layout_marginRight="14.0dip" android:layout_toRightOf="@id/c_i" android:layout_centerVertical="true">
+            <com.tencent.mobileqq.filemanager.widget.AsyncImageView android:id="@id/c_5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+            <ImageView android:layout_gravity="bottom|center|right" android:id="@id/mw3" android:visibility="gone" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginBottom="0.0dip" android:src="@drawable/bxx" android:scaleType="centerCrop" android:baselineAlignBottom="@id/c_5" />
+        </FrameLayout>
+        <TextView android:textSize="9.0dip" android:textColor="@color/skin_gray3" android:ellipsize="end" android:id="@id/lastMsgTime" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:singleLine="true" android:layout_alignTop="@id/mw1" android:layout_alignParentRight="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/skin_dark_gray" android:ellipsize="middle" android:id="@id/c_g" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginRight="6.0dip" android:singleLine="true" android:layout_toLeftOf="@id/lastMsgTime" android:layout_toRightOf="@id/mw1" />
+        <RelativeLayout android:id="@id/i_g" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <RelativeLayout android:id="@id/muu" android:layout_width="50.0dip" android:layout_height="fill_parent" android:layout_centerVertical="true">
+                <ImageView android:id="@id/mut" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:src="@drawable/dl" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <com.tencent.mobileqq.widget.ShaderAnimLayout android:id="@id/iqk" android:visibility="gone" android:clickable="true" android:layout_width="64.0dip" android:layout_height="34.0dip" android:layout_margin="10.0dip" android:layout_centerVertical="true">
+                <Button android:textSize="14.0dip" android:textColor="#ffffffff" android:id="@id/bf0" android:background="@drawable/bla" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/ak3" android:shadowColor="#7f000000" android:shadowDx="1.5" android:shadowDy="1.5" android:shadowRadius="1.5" android:layout_centerInParent="true" />
+            </com.tencent.mobileqq.widget.ShaderAnimLayout>
+        </RelativeLayout>
+        <TextView android:textSize="10.0dip" android:textColor="@color/skin_gray2" android:ellipsize="end" android:id="@id/c_3" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="555fileDescription" android:singleLine="true" android:layout_toLeftOf="@id/i_g" android:layout_toRightOf="@id/mw1" android:layout_below="@id/c_g" android:layout_alignLeft="@id/c_g" />
+        <ProgressBar android:id="@id/c_h" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="3.0dip" android:maxHeight="3.0dip" android:max="100" android:progress="30" android:progressDrawable="@drawable/am" android:minHeight="3.0dip" android:layout_toRightOf="@id/mw1" android:layout_alignLeft="@id/c_g" android:layout_alignParentBottom="true" style="?android:progressBarStyleHorizontal" />
+    </RelativeLayout>
+</RelativeLayout>

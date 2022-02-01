@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/iq" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/dv" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/g62" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/fq" />
+    <RelativeLayout android:layout_gravity="bottom|center|right" android:id="@id/ec" android:background="@drawable/bu5" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:visibility="gone" android:layout_width="102.0dip" android:layout_height="19.0dip">
+        <ImageView android:id="@id/ed" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/bu4" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="12.0dip" android:id="@id/eb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/ed" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</FrameLayout>

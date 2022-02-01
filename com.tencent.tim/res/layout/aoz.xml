@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout android:layout_gravity="bottom" android:id="@id/bkk" android:layout_width="fill_parent" android:layout_height="216.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TableRow android:layout_height="fill_parent" android:layout_weight="1.0">
+        <TextView android:textSize="28.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/fd1" android:background="@drawable/bzw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="1" android:layout_weight="1.0" android:contentDescription="1" />
+        <TextView android:textSize="28.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/kcn" android:background="@drawable/bzw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="2" android:layout_weight="1.0" android:contentDescription="2" />
+        <TextView android:textSize="28.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/jkn" android:background="@drawable/bzw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="3" android:layout_weight="1.0" android:contentDescription="3" />
+    </TableRow>
+    <TableRow android:layout_height="0.0px" android:layout_weight="1.0">
+        <TextView android:textSize="28.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/ckh" android:background="@drawable/bzw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="4" android:layout_weight="1.0" android:contentDescription="4" />
+        <TextView android:textSize="28.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/cbm" android:background="@drawable/bzw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="5" android:layout_weight="1.0" android:contentDescription="5" />
+        <TextView android:textSize="28.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/iwy" android:background="@drawable/bzw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="6" android:layout_weight="1.0" android:contentDescription="6" />
+    </TableRow>
+    <TableRow android:layout_height="0.0px" android:layout_weight="1.0">
+        <TextView android:textSize="28.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/iqf" android:background="@drawable/bzw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="7" android:layout_weight="1.0" android:contentDescription="7" />
+        <TextView android:textSize="28.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/bu_" android:background="@drawable/bzw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="8" android:layout_weight="1.0" android:contentDescription="8" />
+        <TextView android:textSize="28.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/f_6" android:background="@drawable/bzw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="9" android:layout_weight="1.0" android:contentDescription="9" />
+    </TableRow>
+    <TableRow android:layout_height="0.0px" android:layout_weight="1.0">
+        <TextView android:gravity="center" android:id="@id/j15" android:background="@drawable/bzw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+        <TextView android:textSize="28.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/l7b" android:background="@drawable/bzw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="0" android:layout_weight="1.0" android:contentDescription="0" />
+        <TextView android:gravity="center" android:id="@id/bfl" android:background="@drawable/bzo" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" android:contentDescription="@string/t9a" />
+    </TableRow>
+</TableLayout>

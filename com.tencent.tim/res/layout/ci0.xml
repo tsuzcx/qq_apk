@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:background="@color/aos" android:paddingTop="@dimen/bg1" android:layout_width="wrap_content" android:layout_height="@dimen/bfv"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qm="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_gravity="center_horizontal" android:layout_width="@dimen/bfx" android:layout_height="@dimen/bck">
+        <com.tencent.qqmail.view.QMAvatarView android:layout_gravity="left" android:id="@id/a2o" qm:avatar_view_type="mjo" style="@style/a_v" />
+        <ImageView android:layout_gravity="bottom|center|right" android:id="@id/axa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/enw" />
+    </FrameLayout>
+    <TextView android:textSize="@dimen/bfz" android:textColor="@color/aon" android:ellipsize="middle" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/ob_" android:layout_width="@dimen/bfw" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bfy" android:singleLine="true" />
+</merge>

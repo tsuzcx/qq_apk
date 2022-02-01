@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/wy" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@color/w_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="35.0dip" />
+    <ScrollView android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="100.0dip">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:id="@id/lka" android:background="@drawable/hhl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/b7r" android:layout_marginRight="@dimen/b7r">
+                <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/ccg" />
+                <RelativeLayout android:paddingLeft="@dimen/b7q" android:paddingRight="@dimen/b7q" android:layout_width="fill_parent" android:layout_height="70.0dip">
+                    <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/tr" android:id="@id/md2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rgk" android:layout_centerVertical="true" />
+                    <EditText android:textSize="15.0sp" android:textColor="@color/tr" android:textColorHint="@color/wb" android:ellipsize="end" android:gravity="right" android:id="@id/ep1" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/rgj" android:singleLine="true" android:maxLength="14" android:layout_toRightOf="@id/md2" android:layout_centerVertical="true" />
+                </RelativeLayout>
+            </LinearLayout>
+            <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/lka" layout="@layout/c_v" />
+        </LinearLayout>
+    </ScrollView>
+    <Button android:textColor="@color/ue" android:id="@id/b7m" android:layout_height="40.0dip" android:layout_marginLeft="@dimen/b7r" android:layout_marginRight="@dimen/b7r" android:layout_marginBottom="42.0dip" android:layout_alignParentBottom="true" style="@style/t8" />
+</RelativeLayout>

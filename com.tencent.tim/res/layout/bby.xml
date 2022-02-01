@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:background="@color/el" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="#fffafafa" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="1.0dip" android:layout_weight="1.0">
+        <ImageView android:id="@id/dh0" android:padding="22.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:cropToPadding="true" />
+        <com.tencent.mobileqq.widget.NumberCheckBox android:id="@id/axb" android:clickable="false" android:layout_margin="4.0dip" android:layout_alignTop="@id/dh0" android:layout_alignRight="@id/dh0" style="@style/e_" />
+        <ImageView android:id="@id/dht" android:background="@drawable/co_" android:clickable="false" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_margin="4.0dip" android:layout_alignTop="@id/dh0" android:layout_alignRight="@id/dh0" />
+    </RelativeLayout>
+    <RelativeLayout android:background="#fffafafa" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="1.0dip" android:layout_weight="1.0">
+        <ImageView android:id="@id/dh1" android:padding="22.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:cropToPadding="true" />
+        <com.tencent.mobileqq.widget.NumberCheckBox android:id="@id/axc" android:clickable="false" android:layout_margin="4.0dip" android:layout_alignTop="@id/dh1" android:layout_alignRight="@id/dh1" style="@style/e_" />
+        <ImageView android:id="@id/dhu" android:background="@drawable/co_" android:clickable="false" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_margin="4.0dip" android:layout_alignTop="@id/dh1" android:layout_alignRight="@id/dh1" />
+    </RelativeLayout>
+    <RelativeLayout android:background="#fffafafa" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="1.0dip" android:layout_weight="1.0">
+        <ImageView android:id="@id/dh2" android:padding="22.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:cropToPadding="true" />
+        <com.tencent.mobileqq.widget.NumberCheckBox android:id="@id/axd" android:clickable="false" android:layout_margin="4.0dip" android:layout_alignTop="@id/dh2" android:layout_alignRight="@id/dh2" style="@style/e_" />
+        <ImageView android:id="@id/dhv" android:background="@drawable/co_" android:clickable="false" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_margin="4.0dip" android:layout_alignTop="@id/dh2" android:layout_alignRight="@id/dh2" />
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="ba3">440.0dip</dimen>
+    <item type="dimen" name="ba8">60.000004%</item>
+    <item type="dimen" name="ba9">90.0%</item>
+    <item type="dimen" name="ba_">60.000004%</item>
+    <item type="dimen" name="baa">90.0%</item>
+    <item type="dimen" name="bad">55.000008%</item>
+    <item type="dimen" name="bae">79.99999%</item>
+</resources>

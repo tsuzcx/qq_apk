@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/dpq" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center" android:id="@id/d_8" android:layout_width="24.0dip" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip">
+        <com.qzone.widget.CommonLine android:id="@id/d_q" android:background="@drawable/b4i" android:layout_width="@dimen/mm" android:layout_height="fill_parent" android:layout_above="@id/da3" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/da3" android:background="@drawable/gtw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_marginBottom="2.0dip" android:layout_centerInParent="true" />
+        <com.qzone.widget.CommonLine android:id="@id/d_p" android:background="@drawable/b4i" android:layout_width="@dimen/mm" android:layout_height="fill_parent" android:layout_below="@id/da3" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/jg5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="8.0dip" android:layout_toRightOf="@id/d_8">
+        <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="15.0sp" android:textColor="@color/bp" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/jik" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sgs" android:singleLine="true" />
+        <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="16.0sp" android:textColor="@color/bp" android:gravity="center_vertical" android:id="@id/jgk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="DAY1" />
+        <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="12.0sp" android:textColor="@color/bp" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/jh1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginBottom="1.0dip" android:text="2014.8.29" android:singleLine="true" android:layout_toRightOf="@id/jgk" android:layout_alignBottom="@id/jgk" />
+    </RelativeLayout>
+</RelativeLayout>

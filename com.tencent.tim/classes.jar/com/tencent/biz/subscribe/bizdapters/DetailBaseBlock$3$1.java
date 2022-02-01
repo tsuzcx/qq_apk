@@ -1,0 +1,81 @@
+package com.tencent.biz.subscribe.bizdapters;
+
+import android.graphics.drawable.AnimationDrawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.PopupWindow;
+import com.tencent.biz.subscribe.animation.PopViewAnimationDrawableHelper;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import riw;
+import ryy;
+import sat;
+import saw;
+import sax;
+import sgm;
+import shp;
+
+public class DetailBaseBlock$3$1
+  implements Runnable
+{
+  public DetailBaseBlock$3$1(saw paramsaw, AnimationDrawable paramAnimationDrawable) {}
+  
+  public void run()
+  {
+    for (;;)
+    {
+      try
+      {
+        Object localObject = LayoutInflater.from(sat.b(this.a.this$0)).inflate(2131558857, null, false);
+        ((View)localObject).measure(0, 0);
+        ((View)localObject).getMeasuredWidth();
+        i = ((View)localObject).getMeasuredHeight();
+        ImageView localImageView = (ImageView)((View)localObject).findViewById(2131369757);
+        sat.a(this.a.this$0, new PopViewAnimationDrawableHelper(this.val$animationDrawable));
+        sat.a(this.a.this$0).a(new sax(this));
+        this.val$animationDrawable.setOneShot(true);
+        localImageView.setImageDrawable(this.val$animationDrawable);
+        this.a.this$0.mPopupWindow = new PopupWindow((View)localObject, -2, -2);
+        this.a.this$0.mPopupWindow.setOutsideTouchable(true);
+        this.a.this$0.mPopupWindow.setTouchable(true);
+        localObject = new int[2];
+        if ((sat.a(this.a.this$0) == null) || (this.a.this$0.a == null)) {
+          break;
+        }
+        if ((this.a.this$0.a.My()) || (this.a.this$0.a.Mz()))
+        {
+          sat.a(this.a.this$0, true);
+          QLog.i(sat.TAG, 1, "isShowCommentList or isAddCommentMode");
+          return;
+        }
+        sat.a(this.a.this$0).getLocationOnScreen((int[])localObject);
+        this.val$animationDrawable.setOneShot(true);
+        if (sat.a(this.a.this$0))
+        {
+          i = localObject[1] - i + riw.dip2px(sat.c(this.a.this$0), 100.0F);
+          this.a.this$0.mPopupWindow.showAtLocation(sat.a(this.a.this$0), 53, 0, i);
+          sat.a(this.a.this$0).start();
+          sat.a(this.a.this$0, false);
+          shp.a().j(sat.d(this.a.this$0), "subscribe_sp_key_show_follow_guide", 1);
+          shp.a().j(sat.e(this.a.this$0), "subscribe_freshman_interaction_guide", 1);
+          sgm.a().tf((String)ryy.eQ.get("follow_guide_pics"));
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return;
+      }
+      int i = localException[1];
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes7.jar
+ * Qualified Name:     com.tencent.biz.subscribe.bizdapters.DetailBaseBlock.3.1
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/bk4" android:background="#80000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/elk" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <TextView android:textSize="14.0dip" android:textColor="#ff777777" android:id="@id/jqe" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/dmr" android:layout_centerInParent="true" />
+        <GridView android:gravity="center" android:id="@id/kzu" android:fadingEdge="none" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="230.0dip" android:layout_marginTop="15.0dip" android:stretchMode="columnWidth" android:columnWidth="60.0dip" android:numColumns="4" android:overScrollMode="never" />
+        <View android:id="@id/j0s" android:background="#ff919191" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="3.0dip" android:layout_marginRight="3.0dip" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="50.0dip">
+            <Button android:textSize="@dimen/ii" android:id="@id/atb" android:background="@color/ajr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/dmn" android:drawableLeft="@drawable/dej" android:drawablePadding="6.0dip" android:layout_centerVertical="true" android:contentDescription="@string/dmn" />
+            <Button android:textSize="@dimen/ii" android:gravity="center" android:id="@id/ata" android:layout_width="60.0dip" android:layout_height="30.0dip" android:layout_marginRight="12.0dip" android:text="@string/prb" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/e0" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

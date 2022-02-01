@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout android:id="@id/dg_" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.image.URLImageView android:id="@id/dga" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
+        <com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout android:id="@id/agk" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="16.0dip" android:layout_alignParentBottom="true">
+            <Button android:textSize="18.0dip" android:textColor="@color/al3" android:id="@id/af4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="button" />
+        </com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout>
+        <com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout android:id="@id/ef_" android:background="#a5111111" android:visibility="gone" android:layout_width="130.0dip" android:layout_height="110.0dip" android:layout_centerInParent="true">
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                <ProgressBar android:layout_width="25.0dip" android:layout_height="25.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading5" android:indeterminateBehavior="repeat" />
+                <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/l63" />
+            </LinearLayout>
+        </com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout>
+    </com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout>
+    <ImageView android:id="@id/dg4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:src="@drawable/fcl" />
+</LinearLayout>

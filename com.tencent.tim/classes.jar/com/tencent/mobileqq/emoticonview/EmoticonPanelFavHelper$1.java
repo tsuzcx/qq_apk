@@ -1,0 +1,43 @@
+package com.tencent.mobileqq.emoticonview;
+
+import afna;
+import afoo;
+import java.util.List;
+
+public class EmoticonPanelFavHelper$1
+  implements Runnable
+{
+  public EmoticonPanelFavHelper$1(afna paramafna) {}
+  
+  public void run()
+  {
+    List localList = this.this$0.a.zZ;
+    int i;
+    afoo localafoo;
+    if (localList != null)
+    {
+      i = 0;
+      if (i < localList.size())
+      {
+        localafoo = (afoo)localList.get(i);
+        if ((localafoo == null) || (localafoo.type != 4)) {}
+      }
+    }
+    for (;;)
+    {
+      if ((localafoo != null) && (this.this$0.a.a != null)) {
+        this.this$0.a.a.d(localafoo);
+      }
+      return;
+      i += 1;
+      break;
+      localafoo = null;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes8.jar
+ * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelFavHelper.1
+ * JD-Core Version:    0.7.0.1
+ */

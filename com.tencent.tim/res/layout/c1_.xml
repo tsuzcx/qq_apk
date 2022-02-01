@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/k15" android:background="@drawable/bg_texture_theme_version2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.SwipListView android:id="@id/jzm" android:background="@drawable/bg_texture_theme_version2" android:visibility="gone" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0px" />
+    <LinearLayout android:orientation="vertical" android:id="@id/jxc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <include android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/c1b" />
+        <com.tencent.widget.XListView android:id="@id/jxd" android:background="@drawable/bg_texture_theme_version2" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0px" />
+        <LinearLayout android:paddingLeft="@dimen/i4" android:paddingTop="@dimen/i6" android:paddingRight="@dimen/i4" android:paddingBottom="@dimen/i3" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:id="@id/jxa" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i2" android:text="@string/i5b" android:layout_weight="1.0" style="@style/bd" />
+            <Button android:id="@id/jx7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/i5a" android:layout_weight="1.0" style="@style/b9" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

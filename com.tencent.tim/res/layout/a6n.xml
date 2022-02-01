@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/hyz" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/e73" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/as_" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/i_b" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

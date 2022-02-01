@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/jwo" android:background="@drawable/h79" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="45.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.URLThemeImageView android:layout_gravity="center_vertical" android:id="@id/jwq" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="5.0dip" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="4.0dip" android:layout_marginTop="5.0dip" android:layout_marginBottom="5.0dip">
+        <TextView android:textSize="14.0dip" android:textColor="@color/skin_black" android:id="@id/jwt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="128.0dip" android:minWidth="75.0dip" android:singleLine="true" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/skin_gray_group_item" android:id="@id/jws" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:maxWidth="128.0dip" android:minWidth="75.0dip" android:singleLine="true" />
+    </LinearLayout>
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/jwp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:layout_marginRight="9.0dip" />
+</LinearLayout>

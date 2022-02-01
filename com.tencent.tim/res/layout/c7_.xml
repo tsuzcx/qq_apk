@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.5dip">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/m5b" android:background="@drawable/hm8" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="5.0dip" android:layout_toLeftOf="@id/m5c" android:layout_centerVertical="true" />
+        <TextView android:textSize="12.0dip" android:textColor="#ff989eb4" android:gravity="center" android:id="@id/m5c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/kac" android:layout_toLeftOf="@id/bn3" android:layout_centerVertical="true" />
+        <View android:id="@id/bn3" android:background="#ffe0e0e0" android:layout_width="1.0dip" android:layout_height="12.0dip" android:layout_marginLeft="11.5dip" android:layout_toLeftOf="@id/lne" android:layout_centerVertical="true" />
+        <FrameLayout android:id="@id/lne" android:paddingLeft="11.5dip" android:paddingTop="2.5dip" android:paddingRight="11.5dip" android:paddingBottom="2.5dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <ImageView android:id="@id/dum" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/cfp" android:scaleType="fitCenter" />
+        </FrameLayout>
+        <TextView android:textSize="16.0dip" android:textColor="#ff989eb4" android:id="@id/i38" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="@string/vsf" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView android:id="@id/a5c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/title" />
+</merge>

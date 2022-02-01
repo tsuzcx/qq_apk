@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true" android:state_pressed="true">
+        <bitmap android:src="@drawable/i_r" android:alpha="0.5" />
+    </item>
+    <item android:state_enabled="false" android:drawable="@drawable/i_q" />
+    <item android:state_selected="true" android:state_pressed="false" android:drawable="@drawable/i_r" />
+    <item android:state_selected="false" android:state_pressed="true">
+        <bitmap android:src="@drawable/i_q" android:alpha="0.5" />
+    </item>
+    <item android:state_selected="false" android:drawable="@drawable/i_q" />
+    <item android:drawable="@drawable/i_r" />
+</selector>

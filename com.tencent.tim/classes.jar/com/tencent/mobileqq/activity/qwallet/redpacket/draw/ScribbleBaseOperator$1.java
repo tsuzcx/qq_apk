@@ -1,0 +1,24 @@
+package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
+
+import aafd;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForScribble;
+import com.tencent.qphone.base.util.QLog;
+
+public class ScribbleBaseOperator$1
+  implements Runnable
+{
+  public void run()
+  {
+    this.this$0.mApp.b().b(this.b, this.this$0.mApp.getCurrentAccountUin());
+    this.this$0.a(this.b, this.b.localFildPath, null);
+    QLog.i("SCRIBBLEMSG", 2, "!!!addMessage uniseq:" + this.b.uniseq);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes8.jar
+ * Qualified Name:     com.tencent.mobileqq.activity.qwallet.redpacket.draw.ScribbleBaseOperator.1
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/h70" android:background="#fff8f9fa" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:mobileqq="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/j1w" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+    <include android:id="@id/rlCommenTitle" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" layout="@layout/bct" />
+    <ImageView android:id="@id/kn8" android:layout_width="130.0dip" android:layout_height="53.0dip" android:layout_marginTop="12.0dip" android:scaleType="fitXY" android:contentDescription="@null" />
+    <RelativeLayout android:id="@id/l0v" android:visibility="gone" android:layout_width="100.0dip" android:layout_height="wrap_content" android:layout_marginTop="12.0dip">
+        <ProgressBar android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <TextView android:id="@id/i5i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="22.0dip" android:text="@string/b5g" style="@style/ei" />
+    <com.tencent.mobileqq.widget.ClearableEditText android:textColorHint="#ffcacbcc" android:gravity="center" android:id="@id/dn2" android:background="@drawable/l" android:paddingLeft="10.0dip" android:paddingTop="14.0dip" android:paddingRight="10.0dip" android:paddingBottom="14.0dip" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:maxLines="1" android:singleLine="true" android:maxLength="20" android:inputType="text" mobileqq:clearBtnDrawable="@drawable/common_input_box_clear" mobileqq:clearBtnDrawableHeight="19.0dip" mobileqq:clearBtnDrawableWidth="19.0dip" style="@style/am" />
+    <TextView android:layout_gravity="left" android:id="@id/fax" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/ic1" style="@style/bi" />
+</LinearLayout>

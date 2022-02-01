@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.qqmail.activity.compose.ComposeGroupAddrView android:layout_height="@dimen/bh5" style="@style/abq"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/mo5" android:text="@string/x_4" style="@style/abp" />
+    <TextView android:id="@id/mo6" android:focusable="false" android:layout_toRightOf="@id/mo5" style="@style/abm" />
+</com.tencent.qqmail.activity.compose.ComposeGroupAddrView>

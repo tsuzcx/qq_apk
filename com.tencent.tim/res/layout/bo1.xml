@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/hiu" android:background="@drawable/axy" android:visibility="gone" android:layout_width="@dimen/aog" android:layout_height="@dimen/aof" android:layout_marginTop="20.0dip">
+        <ImageView android:id="@id/hau" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/fum" />
+        <TextView android:textSize="16.0sp" android:textColor="#ff878b99" android:id="@id/hav" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="@string/gb0" android:singleLine="true" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/pv" android:background="@android:color/transparent" android:layout_width="@dimen/aog" android:layout_height="@dimen/aof" android:layout_marginTop="20.0dip">
+        <View android:id="@id/pt" android:layout_width="fill_parent" android:layout_height="@dimen/ao7" android:layout_marginBottom="@dimen/ao8" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+        <View android:id="@id/q5" android:layout_width="fill_parent" android:layout_height="@dimen/ao7" android:layout_marginBottom="@dimen/ao8" android:layout_below="@id/pt" android:layout_centerHorizontal="true" />
+        <RelativeLayout android:id="@id/q3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+            <com.qzone.misc.localphoto.ui.QZoneImageSwitchView android:id="@id/q1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <View android:id="@id/px" android:background="@drawable/fxj" android:paddingTop="@dimen/aoc" android:visibility="gone" android:layout_width="@dimen/aoe" android:layout_height="@dimen/aoa" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+            <com.qzone.widget.AsyncImageView android:id="@id/pr" android:visibility="gone" android:layout_width="@dimen/ao4" android:layout_height="@dimen/ao3" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+        <LinearLayout android:gravity="center|left" android:id="@id/pj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_below="@id/q3">
+            <TextView android:textSize="@dimen/ao1" android:textStyle="bold" android:textColor="#ff03081a" android:ellipsize="end" android:id="@id/pn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" />
+            <ImageView android:id="@id/pp" android:layout_width="28.0dip" android:layout_height="16.0dip" android:layout_marginLeft="@dimen/ao5" />
+        </LinearLayout>
+        <TextView android:textSize="12.0sp" android:textColor="#ff878b99" android:id="@id/pz" android:paddingBottom="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/pj" android:layout_alignParentLeft="true" />
+        <TextView android:textSize="12.0sp" android:textColor="#ff878b99" android:id="@id/pl" android:paddingBottom="4.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="3.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/pz" android:layout_below="@id/pj" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/pw" android:layout_width="@dimen/aog" android:layout_height="@dimen/aof" android:layout_marginTop="20.0dip">
+        <View android:id="@id/pu" android:layout_width="fill_parent" android:layout_height="@dimen/ao7" android:layout_marginBottom="@dimen/ao8" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+        <View android:id="@id/q6" android:layout_width="fill_parent" android:layout_height="@dimen/ao7" android:layout_marginBottom="@dimen/ao8" android:layout_below="@id/pu" android:layout_centerHorizontal="true" />
+        <RelativeLayout android:id="@id/q4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+            <com.qzone.misc.localphoto.ui.QZoneImageSwitchView android:id="@id/q2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <View android:gravity="center_horizontal" android:id="@id/py" android:background="@drawable/fxj" android:paddingTop="@dimen/aoc" android:visibility="gone" android:layout_width="@dimen/aoe" android:layout_height="@dimen/aoa" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+            <com.qzone.widget.AsyncImageView android:id="@id/ps" android:visibility="gone" android:layout_width="@dimen/ao4" android:layout_height="@dimen/ao3" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+        <LinearLayout android:gravity="center|left" android:id="@id/pk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_below="@id/q4">
+            <TextView android:textSize="@dimen/ao1" android:textStyle="bold" android:textColor="#ff03081a" android:ellipsize="end" android:id="@id/po" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" />
+            <ImageView android:id="@id/pq" android:layout_width="32.0dip" android:layout_height="16.0dip" android:layout_marginLeft="@dimen/ao5" />
+        </LinearLayout>
+        <TextView android:textSize="12.0sp" android:textColor="#ff878b99" android:id="@id/q0" android:paddingBottom="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/pk" android:layout_alignParentLeft="true" />
+        <TextView android:textSize="12.0sp" android:textColor="#ff878b99" android:id="@id/pm" android:paddingBottom="4.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="3.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/q0" android:layout_below="@id/pk" />
+    </RelativeLayout>
+</LinearLayout>

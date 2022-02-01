@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="b_i">48.0dip</dimen>
+    <dimen name="bbh">12.0dip</dimen>
+    <dimen name="bbj">14.0dip</dimen>
+</resources>

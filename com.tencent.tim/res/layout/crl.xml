@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.qqcircle.widgets.QCircleMultiPicViewPager android:id="@id/nnm" android:layout_width="fill_parent" android:layout_height="375.0dip" />
+    <FrameLayout android:layout_gravity="center|right|top" android:id="@id/no8" android:background="@drawable/e5n" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="11.0dip">
+        <TextView android:textSize="@dimen/ayk" android:textColor="@color/al3" android:layout_gravity="center" android:id="@id/no9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" />
+    </FrameLayout>
+</FrameLayout>

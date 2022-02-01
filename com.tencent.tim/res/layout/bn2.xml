@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center_horizontal" android:layout_width="28.0dip" android:layout_height="28.0dip">
+        <com.qzone.widget.AsyncImageView android:id="@id/ezo" android:layout_width="28.0dip" android:layout_height="28.0dip" android:scaleType="fitXY" />
+        <ViewStub android:id="@id/l31" android:layout_width="28.0dip" android:layout_height="28.0dip" />
+    </FrameLayout>
+    <TextView android:textSize="@dimen/ayk" android:textColor="#ff000000" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/ezp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+</LinearLayout>

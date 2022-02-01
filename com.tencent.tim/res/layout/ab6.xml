@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/gf_" android:background="@drawable/a27" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/itl" android:layout_width="32.0dip" android:layout_height="32.0dip" />
+    <TextView android:textSize="11.0sp" android:textColor="@color/bp" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/itm" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="8.0dip" android:layout_marginRight="10.0dip" android:maxLines="1" />
+</LinearLayout>

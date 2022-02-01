@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/bqd" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/n0u" android:layout_marginTop="0.0dip" style="@style/ach">
+        <TextView android:id="@id/n8p" android:text="@string/wxd" style="@style/ace" />
+        <LinearLayout android:orientation="vertical" android:id="@id/kn2" style="@style/agd" />
+    </LinearLayout>
+    <LinearLayout android:id="@id/mye" style="@style/ach">
+        <TextView android:id="@id/myf" android:text="@string/wxg" style="@style/ace" />
+        <LinearLayout android:orientation="vertical" android:id="@id/myh" style="@style/agd" />
+    </LinearLayout>
+    <LinearLayout android:id="@id/ny1" style="@style/ach">
+        <TextView android:id="@id/n8p" android:text="@string/wxe" style="@style/ace" />
+        <LinearLayout android:orientation="vertical" android:id="@id/kn2" style="@style/agd" />
+    </LinearLayout>
+    <LinearLayout android:id="@id/mk0" style="@style/ach">
+        <TextView android:id="@id/n8p" android:text="@string/y4v" style="@style/ace" />
+        <LinearLayout android:orientation="vertical" android:id="@id/kn2" style="@style/agd" />
+    </LinearLayout>
+    <LinearLayout android:id="@id/ny3" style="@style/ach">
+        <TextView android:id="@id/n8p" android:text="@string/wxi" style="@style/ace" />
+        <LinearLayout android:orientation="vertical" android:id="@id/kn2" style="@style/agd" />
+    </LinearLayout>
+    <LinearLayout android:id="@id/jl7" style="@style/ach">
+        <TextView android:id="@id/n8p" android:text="@string/y5a" style="@style/ace" />
+        <TextView android:textSize="@dimen/bqc" android:textColor="@color/atu" android:layout_gravity="center_vertical" android:id="@id/kn2" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout android:id="@id/ll1" style="@style/ach">
+        <TextView android:id="@id/n8p" android:layout_marginTop="0.0dip" android:text="@string/y4q" style="@style/ace" />
+        <TextView android:id="@id/kn2" style="@style/age" />
+    </LinearLayout>
+</LinearLayout>

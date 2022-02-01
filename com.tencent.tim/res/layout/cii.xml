@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:background="@drawable/jj" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.widget.PinnedDividerSwipListView android:id="@id/eap" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0dip" android:layout_weight="1.0" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/l0q" android:background="@drawable/bg_texture" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ProgressBar android:layout_gravity="center_vertical" android:id="@id/l20" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_marginRight="10.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" />
+            <TextView android:textSize="15.0dip" android:textColor="@color/ei" android:id="@id/l2_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hyw" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/kxt" android:background="@drawable/bg_texture" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/kwd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ch2" />
+            <TextView android:textSize="15.0dip" android:textColor="@color/ei" android:gravity="center" android:id="@id/kwt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="12.0dip" android:text="@string/hyu" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/kun" android:background="@drawable/bg_texture" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/kuq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ild" />
+            <TextView android:textSize="15.0dip" android:textColor="@color/ei" android:gravity="center" android:id="@id/kvv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="12.0dip" android:lineSpacingExtra="8.0dip" />
+        </LinearLayout>
+        <com.tencent.mobileqq.filemanager.widget.CloudSendBottomBar android:id="@id/imz" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="49.0dip" />
+    </LinearLayout>
+    <ViewStub android:id="@id/mtg" android:layout="@layout/cis" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

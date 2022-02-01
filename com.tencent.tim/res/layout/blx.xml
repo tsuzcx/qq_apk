@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="40.0dip">
+        <TextView android:textSize="14.0sp" android:textColor="@android:color/black" android:gravity="center" android:id="@id/apy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/gc_" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/abf" android:id="@id/apz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:text="@string/gc5" android:layout_toRightOf="@id/apy" android:layout_alignBottom="@id/apy" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/abf" android:id="@id/apx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.0dip" android:text="0组" android:layout_toLeftOf="@id/aqu" android:layout_alignBottom="@id/apy" />
+        <ImageView android:id="@id/aqv" android:visibility="gone" android:layout_width="6.0dip" android:layout_height="6.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/g0f" android:layout_alignParentRight="true" />
+        <ImageView android:id="@id/aqu" android:paddingTop="2.0dip" android:paddingBottom="2.0dip" android:layout_width="8.0dip" android:layout_height="16.0dip" android:src="@drawable/fxf" android:scaleType="centerCrop" android:layout_alignBottom="@id/apy" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/aqz" android:paddingTop="1.0dip" android:paddingBottom="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ImageView android:background="#fff5f5f5" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="1.0dip" android:layout_marginRight="1.0dip" />
+</LinearLayout>

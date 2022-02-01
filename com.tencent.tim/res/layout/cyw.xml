@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/evt" android:paddingLeft="@dimen/bua" android:paddingRight="@dimen/bua" android:layout_width="fill_parent" android:layout_height="@dimen/bue">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/koa" android:padding="@dimen/buf" android:layout_width="@dimen/bug" android:layout_height="@dimen/bug" android:src="@drawable/eql" android:layout_weight="1.0" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/kqj" android:padding="@dimen/buf" android:layout_width="@dimen/bug" android:layout_height="@dimen/bug" android:src="@drawable/eqn" android:layout_weight="1.0" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/knw" android:padding="@dimen/buf" android:layout_width="@dimen/bug" android:layout_height="@dimen/bug" android:src="@drawable/eqi" android:layout_weight="1.0" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/kn0" android:padding="@dimen/buf" android:layout_width="@dimen/bug" android:layout_height="@dimen/bug" android:src="@drawable/eqh" android:layout_weight="1.0" />
+    </LinearLayout>
+    <ListView android:id="@id/nh0" android:background="@color/axc" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@color/k8" android:dividerHeight="0.100000024dip" android:footerDividersEnabled="false" android:overScrollFooter="@android:color/transparent" />
+</LinearLayout>

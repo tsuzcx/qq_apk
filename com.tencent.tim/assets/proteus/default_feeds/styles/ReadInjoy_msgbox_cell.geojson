@@ -1,0 +1,158 @@
+{
+    "ReadInjoy_msgbox_cell":
+    {
+        "view_type":"container",
+        "view_id": "id_msg_view",
+        "direction":"vertical",
+        "default_visible": "YES",
+        "height":{
+            "type":"relative",
+            "value":"85"
+        },
+        "width":{
+            "type":"relative",
+            "value":"375"
+        },
+        "subviews":[
+            {
+                "view_type": "UIView",
+                "view_id": "msgbox_container",
+                "visible_depend_on_children":"YES",
+                "layout_type": "layout_relative",
+                "height":{
+                    "type": "match_parent"
+                },
+                "width": {
+                    "type": "match_parent"
+                },
+                "subviews": [
+                    {
+                        "view_type":"UIImageView",
+                        "view_id":"id_bg_view",
+                        "default_visible": "YES",
+                        "height":{
+                            "type": "match_parent"
+                        },
+                        "width":{
+                            "type": "match_parent"
+                        },
+                        "attributes":{
+                            "loadImageWithPath:": "msg_bg_card"
+                        }
+                    },
+                    {
+                        "view_type":"UILabel",
+                        "view_id":"id_count",
+                        "margin_top":"24",
+                        "margin_left":"28",
+                        "align_parent_left": "YES",
+                        "align_parent_top": "YES",
+                        "height":{
+                            "type": "wrap_content"
+                        },
+                        "width":{
+                            "type": "wrap_content"
+                        },
+                        "attributes":{
+                            "setText:": "$msgbox_redpoint_count",
+                            "setTextColorString:": "#A6A6A6",
+                            "setFontSizeString:": "12",
+                            "setNumberOfLinesString:": "1"
+                        }
+                    },
+                    {
+                        "view_type":"UIImageView",
+                        "view_id":"id_count_icon",
+                        "margin_top":"26",
+                        "margin_left":"4",
+                        "default_visible": "YES",
+                        "right_of_view":"id_count",
+                        "height":{
+                            "type": "relative",
+                            "value": "10"
+                        },
+                        "width":{
+                            "type": "relative",
+                            "value": "6"
+                        },
+                        "attributes":{
+                            "loadImageWithPath:": "iconarrow"
+                        }
+                    },
+                    {
+                        "view_type": "PTSAvatarView",
+                        "view_id": "id_info_avator",
+                        "margin_left":"28",
+                        "margin_top": "46",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "15"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "15"
+                        },
+                        "attributes": {
+                            "loadAvatarByUrl:": "$msgbox_redpoint_icon"
+                        }
+                    },
+                    {
+                        "view_type": "ReadInjoyAsynImageView",
+                        "view_id": "id_msg_image",
+                        "margin_right": "21",
+                        "margin_top": "17.5",
+                        "align_parent_right": "YES",
+                        "height": {
+                            "type": "relative",
+                            "value": "50"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "50"
+                        },
+                        "attributes": {
+                            "setImageWithURLString:lineup:": ["$msgbox_redpoint_image", "1"]
+                        }
+                    },
+                    {
+                        "view_type":"ProteusMarqueeLabel",
+                        "view_id":"id_info_content",
+                        "margin_left":"2.5",
+                        "margin_top": "45",
+                        "margin_right": "16",
+                        "right_of_view":"id_info_avator",
+                        "left_of_view": "id_msg_image",
+                        "height":{
+                            "type": "wrap_content"
+                        },
+                        "width":{
+                            "type": "wrap_content"
+                        },
+                        "attributes":{
+                            "setText:": "$msgbox_redpoint_content",
+                            "setTextColorString:": "#232323",
+                            "setFontSizeString:": "15",
+                            "setNumberOfLinesString:": "1",
+                            "setMarqueeEnable" : "1"
+                        }
+                    }
+
+                ]
+            }
+        ],
+
+        "data_attributes":{
+            "setLocalInfo:": {
+                "feeds_type": "1037"
+            },
+            "setRemoteInfo:":{
+                "message_type": "$message_type",
+                "feedsid": "$feedsid",
+                "feedstype": "$feedstype",
+                "sys_msg_from": "$sys_msg_from",
+                "sys_msg_id": "$sys_msg_id",
+                "reddot_num":"$reddot_num"
+            }
+        }
+    }
+}

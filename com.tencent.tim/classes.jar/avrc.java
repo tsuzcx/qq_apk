@@ -1,0 +1,16 @@
+class avrc
+  implements avra.b
+{
+  avrc(avrb paramavrb, avra paramavra) {}
+  
+  public void dvw()
+  {
+    this.b.release();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes4.jar
+ * Qualified Name:     avrc
+ * JD-Core Version:    0.7.0.1
+ */

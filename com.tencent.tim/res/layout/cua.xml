@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/mvs" android:paddingBottom="3.0dip" android:visibility="invisible" android:layout_width="@dimen/bkm" android:layout_height="@dimen/b66" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/nze" android:layout_width="@dimen/bkn" android:layout_height="@dimen/bkn" android:layout_marginLeft="@dimen/bko" android:scaleType="fitCenter" android:layout_toRightOf="@id/mvs" android:layout_alignTop="@id/mvs" />
+    <ImageView android:id="@id/mgj" android:background="@drawable/ig8" android:visibility="invisible" android:layout_width="@dimen/bkv" android:layout_height="@dimen/bkt" android:layout_marginLeft="@dimen/bku" android:layout_alignLeft="@id/nze" android:layout_alignTop="@id/mvs" />
+    <ImageView android:id="@id/nzh" android:layout_width="@dimen/bks" android:layout_height="@dimen/bks" android:layout_marginTop="@dimen/bkp" android:layout_marginRight="@dimen/bkr" android:layout_alignRight="@id/mgj" />
+    <View android:id="@id/mvr" android:background="@drawable/ig8" android:visibility="invisible" android:layout_width="@dimen/bkv" android:layout_height="@dimen/bkt" android:layout_marginTop="@dimen/bkq" android:layout_alignTop="@id/nzh" android:layout_alignRight="@id/mgj" />
+</RelativeLayout>

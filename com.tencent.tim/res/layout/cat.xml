@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/m2a" android:background="@drawable/kg" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/c8" android:contentDescription="@null"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.widget.QQBlurView android:id="@id/m25" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/c8" />
+    <LinearLayout android:id="@id/m2_" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_centerVertical="true">
+        <com.tencent.mobileqq.widget.RoundImageView android:id="@id/m27" android:visibility="gone" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@drawable/d80" android:contentDescription="@null" app:qwRadius="100.0dip" />
+        <com.tencent.mobileqq.widget.RoundImageView android:id="@id/m28" android:visibility="gone" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="-5.0dip" android:src="@drawable/d80" android:contentDescription="@null" app:qwRadius="100.0dip" />
+        <com.tencent.mobileqq.widget.RoundImageView android:id="@id/m29" android:visibility="gone" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="-5.0dip" android:src="@drawable/d80" android:contentDescription="@null" app:qwRadius="100.0dip" />
+    </LinearLayout>
+    <ImageView android:id="@id/m24" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/hjj" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/yw" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/m26" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:singleLine="true" android:layout_toLeftOf="@id/m24" android:layout_toRightOf="@id/m2_" android:layout_centerVertical="true" />
+</RelativeLayout>

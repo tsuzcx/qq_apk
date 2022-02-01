@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.widget.FadeIconImageView android:gravity="center" android:visibility="visible" android:layout_width="44.0dip" android:layout_height="wrap_content" android:src="@drawable/car" android:scaleType="center" android:includeFontPadding="false" tencent:skintype="title_right_view"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto" />

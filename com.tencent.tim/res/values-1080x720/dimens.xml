@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="nn">93.0dip</dimen>
+    <dimen name="us">82.0dip</dimen>
+    <dimen name="ut">50.0dip</dimen>
+    <dimen name="uu">53.0dip</dimen>
+    <dimen name="uv">68.0dip</dimen>
+    <dimen name="uw">74.0dip</dimen>
+    <dimen name="ux">64.0dip</dimen>
+    <dimen name="uy">70.0dip</dimen>
+    <dimen name="uz">75.0dip</dimen>
+    <dimen name="v0">64.0dip</dimen>
+    <dimen name="v1">14.0dip</dimen>
+    <dimen name="v2">10.0dip</dimen>
+    <dimen name="v3">18.0dip</dimen>
+    <dimen name="v4">22.0sp</dimen>
+    <dimen name="v5">12.0dip</dimen>
+    <dimen name="v6">130.0dip</dimen>
+    <dimen name="v7">40.0dip</dimen>
+    <dimen name="v8">15.0sp</dimen>
+    <dimen name="apu">402.0dip</dimen>
+    <dimen name="apv">50.0dip</dimen>
+</resources>

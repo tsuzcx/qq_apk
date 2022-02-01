@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/af9"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:id="@id/n34" android:text="@string/wad" style="@style/af6" />
+    <Button android:id="@id/njj" android:text="@string/waf" style="@style/af7" />
+    <Button android:id="@id/mvh" android:text="@string/w_n" style="@style/af8" />
+</LinearLayout>

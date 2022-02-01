@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingTop="1.0px" android:paddingBottom="1.0px" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qm="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/bse" android:paddingTop="@dimen/bre" android:paddingRight="@dimen/bsf" android:paddingBottom="@dimen/bre" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/brh" android:textColor="@color/bp" android:id="@id/n42" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <LinearLayout android:gravity="top" android:orientation="horizontal" android:id="@id/n3u" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/brg">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:src="@drawable/gup" />
+            <TextView android:textSize="16.0sp" android:textColor="@color/air" android:id="@id/n3t" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_weight="1.0" />
+        </LinearLayout>
+        <com.tencent.qqmail.calendar.view.ScheduleTimeReadView android:id="@id/dlp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bre" qm:issingleday="true" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:background="@drawable/ew1" android:paddingLeft="@dimen/bse" android:paddingTop="@dimen/bre" android:paddingRight="@dimen/bsf" android:paddingBottom="@dimen/bre" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/bri" android:textColor="@color/air" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wnp" />
+            <TextView android:textSize="@dimen/bri" android:textColor="@color/air" android:id="@id/n3z" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/brf" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/brg">
+            <TextView android:textSize="@dimen/bri" android:textColor="@color/air" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wnr" />
+            <TextView android:textSize="@dimen/bri" android:textColor="@color/air" android:id="@id/n3y" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/brf" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/n3k" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/brg">
+            <TextView android:textSize="@dimen/bri" android:textColor="@color/air" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wnt" />
+            <TextView android:textSize="@dimen/bri" android:textColor="@color/air" android:id="@id/n3j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/brf" android:singleLine="true" android:drawablePadding="3.0dip" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/n41" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/brg">
+            <TextView android:textSize="@dimen/bri" android:textColor="@color/air" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wns" />
+            <TextView android:textSize="@dimen/bri" android:textColor="@color/air" android:id="@id/n40" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/brf" android:singleLine="true" android:drawablePadding="3.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/n3i" android:background="@drawable/ev_" android:paddingLeft="@dimen/bse" android:paddingTop="@dimen/bre" android:paddingRight="@dimen/bsf" android:paddingBottom="@dimen/bre" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/bri" android:textColor="@color/aii" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/xaf" android:layout_weight="1.0" />
+        <TextView android:textSize="@dimen/bri" android:textColor="@color/air" android:id="@id/n3h" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:src="@drawable/gf0" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/n3x" android:background="@drawable/ev_" android:paddingLeft="@dimen/bse" android:paddingTop="@dimen/bre" android:paddingRight="@dimen/bsf" android:paddingBottom="@dimen/bre" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/bri" android:textColor="@color/aii" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/wnq" android:layout_weight="1.0" />
+            <ImageView android:id="@id/n3w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:src="@drawable/gf0" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/bri" android:textColor="@color/air" android:ellipsize="end" android:id="@id/n3v" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:maxLines="4" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,59 @@
+{
+    "ReadInjoy_article_video_cell": {
+        "view_type": "container",
+        "layout_type":"layout_relative",
+        "height": {
+            "type": "relative",
+            "value": "212"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "subviews": [
+            {
+                "view_type": "ReadInjoyAsynImageView",
+                "view_id": "id_article_img",
+                "margin_left":"12",
+                "margin_top":"16",
+                "event_type":"cmd_article_video_click",
+                "height": {
+                    "type": "relative",
+                    "value": "200"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "345"
+                },
+                "attributes": {
+                    "setFrameString:": "-1",
+                    "setImageWithURLString:lineup:": [
+                        "$articleImageUrl",
+                        "$lineup"
+                    ]
+                }
+            },
+            
+            {
+                "view_type": "UIImageView",
+                "view_id": "id_paly_icon_imageview",
+                "default_visible": "YES",
+                "align_parent_center_vertical": "YES",
+                "align_parent_center_horizontal": "YES",
+                "event_type":"cmd_article_video_click",
+                "height": {
+                    "type":"relative",
+                    "value":"50"
+                },
+                "width": {
+                    "type":"relative",
+                    "value":"50"
+                },
+                "attributes": { 
+                    "setFrameString:": "-1",
+                    "loadImageWithPath:": "$play_icon"
+                }
+            }
+        ]
+    }
+}

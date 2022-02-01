@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qzone.commoncode.module.videorecommend.widget.QzoneRelativeLayoutView android:gravity="center" android:orientation="horizontal" android:id="@id/htv" android:background="#66000000" android:visibility="gone" android:layout_width="@dimen/apl" android:layout_height="@dimen/apk"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/fiy" android:background="#ffe3e3e3" android:layout_width="fill_parent" android:layout_height="33.0dip" android:layout_alignParentBottom="true">
+        <TextView android:textSize="@dimen/ms" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/fj0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/nd" android:layout_marginRight="80.0dip" android:maxLines="1" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <Button android:textSize="12.5dip" android:textColor="@color/a_v" android:id="@id/fiz" android:background="@drawable/ib" android:paddingLeft="@dimen/mp" android:paddingRight="@dimen/mp" android:layout_width="wrap_content" android:layout_height="25.0dip" android:layout_marginRight="5.0dip" android:minWidth="60.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <com.qzone.widget.AsyncImageView android:id="@id/fix" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" android:layout_above="@id/fiy" />
+    <com.qzone.widget.AsyncImageView android:id="@id/fiw" android:padding="@dimen/nd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</com.qzone.commoncode.module.videorecommend.widget.QzoneRelativeLayoutView>

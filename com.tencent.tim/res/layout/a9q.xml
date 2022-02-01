@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/content" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:id="@id/f74" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/drp" />
+        <LinearLayout android:id="@id/eln" android:background="@drawable/aic" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:id="@id/elr" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <include android:id="@id/f6z" android:layout_width="wrap_content" android:layout_height="@dimen/at0" layout="@layout/a9r" />
+                <include android:id="@id/f76" android:layout_width="wrap_content" android:layout_height="@dimen/at0" layout="@layout/a9r" />
+                <include android:id="@id/f72" android:layout_width="wrap_content" android:layout_height="@dimen/at0" layout="@layout/a9r" />
+                <include android:id="@id/f6x" android:layout_width="wrap_content" android:layout_height="@dimen/at0" layout="@layout/a9r" />
+            </LinearLayout>
+            <com.tencent.widget.NegativeChildrenLayout android:id="@id/axk" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <ImageView android:id="@id/f75" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/drn" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/d_n" android:layout_width="@dimen/b6f" android:layout_height="@dimen/b6e"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/lwi" android:background="@drawable/qq_aio_listentogether_lyrics_music_bg" android:layout_width="84.0dip" android:layout_height="84.0dip" android:layout_centerInParent="true" />
+    <RelativeLayout android:id="@id/m7_" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_centerInParent="true">
+        <com.tencent.widget.AlphaClickableImageView android:id="@id/lwk" android:layout_width="40.0dip" android:layout_height="40.0dip" android:scaleType="fitCenter" />
+        <ImageView android:id="@id/lwl" android:background="@drawable/qq_aio_listentogether_lyrics_icon_mask" android:layout_width="40.0dip" android:layout_height="40.0dip" />
+        <ImageView android:id="@id/lws" android:layout_width="14.0dip" android:layout_height="14.0dip" android:src="@drawable/qq_aio_listentogether_lyrics_music_dot" android:scaleType="fitCenter" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <View android:id="@id/lwo" android:background="@drawable/qq_aio_listentogether_lyrics_music_point" android:layout_width="20.0dip" android:layout_height="34.0dip" android:layout_marginLeft="50.0dip" android:layout_marginTop="12.0dip" />
+    <com.tencent.widget.AlphaClickableImageView android:id="@id/azb" android:layout_width="21.0dip" android:layout_height="21.0dip" android:layout_marginLeft="58.0dip" android:layout_marginTop="0.0dip" android:src="@drawable/qq_aio_listentogether_lyrics_music_close" android:scaleType="fitCenter" />
+</RelativeLayout>

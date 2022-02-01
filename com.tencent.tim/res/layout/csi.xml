@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="horizontal" android:id="@id/nny" android:layout_width="fill_parent" android:layout_height="64.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/nnx" android:layout_width="42.0dip" android:layout_height="42.0dip" android:layout_marginLeft="16.0dip" android:layout_centerVertical="true">
+        <com.tencent.biz.qqcircle.widgets.QCircleAvatarView android:id="@id/nnu" android:layout_width="40.0dip" android:layout_height="40.0dip" app:authIconEnable="false" />
+        <com.tencent.image.URLImageView android:layout_gravity="end|bottom|center" android:id="@id/nnv" android:layout_width="18.0dip" android:layout_height="18.0dip" />
+        <com.tencent.image.URLImageView android:layout_gravity="end|bottom|center" android:id="@id/no2" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginRight="2.0dip" android:layout_marginBottom="2.0dip" />
+    </FrameLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/nnz" android:layout_width="200.0dip" android:layout_height="fill_parent" android:layout_marginLeft="9.0dip" android:layout_toRightOf="@id/nnx">
+        <TextView android:textSize="15.0dip" android:textColor="@color/bp" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/no0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="140.0dip" android:text="" android:singleLine="true" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/no1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" />
+    </LinearLayout>
+    <com.tencent.biz.qqcircle.widgets.QCircleFollowView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/nnw" android:background="@drawable/ib5" android:layout_width="80.0dip" android:layout_height="47.0dip" android:layout_marginRight="5.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

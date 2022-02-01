@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.ark.ArkAppManagerPanel android:id="@id/panelLayout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="196.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.QQViewPager android:id="@id/icon_viewPager" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/d_j" android:layout_centerHorizontal="true" />
+    <com.tencent.mobileqq.emoticonview.EmoticonPagerRadioGroup android:orientation="horizontal" android:id="@id/d_j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/loading" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ProgressBar android:layout_gravity="center" android:id="@id/g1f" android:layout_width="16.0dip" android:layout_height="16.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/jt" android:indeterminateBehavior="repeat" android:layout_centerInParent="true" />
+        <TextView android:textSize="15.0sp" android:textColor="@color/bh" android:id="@id/efo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/s3" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/i5h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <View android:layout_gravity="center" android:id="@id/i5l" android:background="@drawable/c_j" android:layout_width="45.0dip" android:layout_height="45.0dip" />
+        <TextView android:textSize="15.0sp" android:textColor="@color/bh" android:gravity="center" android:layout_gravity="center" android:id="@id/i5p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/qp" />
+    </LinearLayout>
+</com.tencent.mobileqq.ark.ArkAppManagerPanel>

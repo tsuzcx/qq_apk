@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/bjm" android:background="@drawable/gb2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:layout_marginRight="3.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="10.0sp" android:textColor="#ff000000" android:ellipsize="end" android:gravity="left" android:id="@id/fnn" android:layout_width="@dimen/yl" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ym" android:layout_marginRight="@dimen/ym" android:text="@string/cah" android:singleLine="false" />
+    <com.qzone.widget.AsyncImageView android:layout_gravity="center_vertical" android:id="@id/ale" android:layout_width="@dimen/yl" android:layout_height="@dimen/yl" android:layout_marginLeft="@dimen/ym" android:layout_marginRight="@dimen/ym" android:src="@drawable/b9s" android:scaleType="centerCrop" />
+</LinearLayout>

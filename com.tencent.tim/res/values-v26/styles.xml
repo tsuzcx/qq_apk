@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="a1f" parent="@style/aj8" />
+    <style name="a1m" parent="@style/aj9" />
+    <style name="a3q" parent="@style/aj_" />
+    <style name="gi" parent="@style/gh">
+        <item name="android:textAppearance">@style/ac7</item>
+        <item name="android:buttonStyle">@style/aio</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:autoCompleteTextViewStyle">@style/n0</item>
+        <item name="android:editTextStyle">@style/n4</item>
+        <item name="android:textViewStyle">@style/air</item>
+        <item name="android:windowDisablePreview">true</item>
+    </style>
+    <style name="aj8" parent="@style/aj4">
+        <item name="a2y">?android:colorError</item>
+    </style>
+    <style name="aj9" parent="@style/aj5">
+        <item name="a2y">?android:colorError</item>
+    </style>
+    <style name="aj_" parent="@style/a27">
+        <item name="android:touchscreenBlocksFocus">true</item>
+        <item name="android:keyboardNavigationCluster">true</item>
+    </style>
+</resources>

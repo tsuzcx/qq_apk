@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/hxt" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:orientation="horizontal" android:id="@id/ge_" android:layout_width="fill_parent" android:layout_height="325.0dip">
+        <RelativeLayout android:id="@id/hy3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+            <com.qzone.component.StrokeTextView android:gravity="center" android:id="@id/hy2" android:layout_width="fill_parent" android:layout_height="70.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/fbc" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:layout_marginTop="220.0dip">
+            <View android:id="@id/fb6" android:background="@drawable/ce3" android:layout_width="wrap_content" android:layout_height="16.0dip" android:layout_marginLeft="14.0dip" android:layout_alignRight="@id/fb9" android:layout_alignBottom="@id/fb7" />
+            <ImageView android:id="@id/fb7" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/cfh" />
+            <com.qzone.component.StrokeTextView android:textSize="20.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/fb9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-12.0dip" android:layout_marginTop="6.0dip" android:text="1" android:layout_toRightOf="@id/fb7" android:layout_alignTop="@id/fb7" android:layout_alignBottom="@id/fb7" />
+        </RelativeLayout>
+        <com.tencent.component.media.image.view.AsyncImageView android:id="@id/mwl" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="9.0dip" android:scaleType="centerCrop" android:layout_below="@id/fbc" android:layout_alignRight="@id/fbc" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/g0o" android:focusable="true" android:visibility="invisible" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:baselineAligned="false">
+        <RelativeLayout android:id="@id/g0r" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="60.0dip" android:layout_weight="1.0" android:layout_marginStart="60.0dip">
+            <com.qzone.homepage.diy.ShadowViewGroup android:layout_gravity="center_horizontal" android:id="@id/n8b" android:padding="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" app:containerCornerRadius="20.0dip" app:containerDeltaLength="11.0dip" app:containerShadowColor="#0f000000" app:containerShadowRadius="5.0dip" app:deltaX="0.0dip" app:deltaY="0.0dip" app:enable="true">
+                <com.tencent.component.media.image.view.AsyncImageView android:id="@id/g0p" android:background="@drawable/eek" android:focusable="true" android:clickable="true" android:layout_width="54.0dip" android:layout_height="54.0dip" android:layout_centerHorizontal="true" />
+            </com.qzone.homepage.diy.ShadowViewGroup>
+            <ImageView android:id="@id/g3j" android:visibility="gone" android:layout_width="21.0dip" android:layout_height="21.0dip" android:src="@drawable/dfp" android:layout_alignRight="@id/n8b" android:layout_alignBottom="@id/n8b" />
+            <TextView android:textSize="14.0sp" android:textColor="#ff03081a" android:id="@id/g0v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="@string/w5y" android:layout_below="@id/n8b" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/g11" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <com.qzone.homepage.diy.ShadowViewGroup android:layout_gravity="center_horizontal" android:id="@id/n8d" android:padding="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" app:containerCornerRadius="20.0dip" app:containerDeltaLength="11.0dip" app:containerShadowColor="#0f000000" app:containerShadowRadius="5.0dip" app:deltaX="0.0dip" app:deltaY="0.0dip" app:enable="true">
+                <com.tencent.component.media.image.view.AsyncImageView android:id="@id/g10" android:background="@drawable/eek" android:focusable="true" android:clickable="true" android:layout_width="54.0dip" android:layout_height="54.0dip" android:layout_centerHorizontal="true" />
+            </com.qzone.homepage.diy.ShadowViewGroup>
+            <ImageView android:id="@id/g8y" android:visibility="gone" android:layout_width="21.0dip" android:layout_height="21.0dip" android:src="@drawable/dfp" android:layout_alignRight="@id/n8d" android:layout_alignBottom="@id/n8d" />
+            <TextView android:textSize="14.0sp" android:textColor="#ff03081a" android:id="@id/g12" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="@string/w60" android:layout_below="@id/n8d" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/g0y" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginRight="60.0dip" android:layout_weight="1.0" android:layout_marginEnd="60.0dip">
+            <com.qzone.homepage.diy.ShadowViewGroup android:layout_gravity="center_horizontal" android:id="@id/n8c" android:padding="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" app:containerCornerRadius="20.0dip" app:containerDeltaLength="11.0dip" app:containerShadowColor="#0f000000" app:containerShadowRadius="5.0dip" app:deltaX="0.0dip" app:deltaY="0.0dip" app:enable="true">
+                <com.tencent.component.media.image.view.AsyncImageView android:id="@id/g0x" android:background="@drawable/eek" android:focusable="true" android:clickable="true" android:layout_width="54.0dip" android:layout_height="54.0dip" android:layout_centerHorizontal="true" />
+            </com.qzone.homepage.diy.ShadowViewGroup>
+            <ImageView android:id="@id/g6l" android:visibility="gone" android:layout_width="21.0dip" android:layout_height="21.0dip" android:src="@drawable/dfp" android:layout_alignRight="@id/n8c" android:layout_alignBottom="@id/n8c" />
+            <TextView android:textSize="14.0sp" android:textColor="#ff03081a" android:id="@id/g0z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="@string/w5z" android:layout_below="@id/n8c" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/ga8" android:focusable="true" android:visibility="invisible" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="39.0dip">
+        <RelativeLayout android:gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <ImageView android:id="@id/g1b" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="20.0dip" android:src="@drawable/dbn" />
+            <View android:id="@id/g1d" android:background="#33989eb4" android:layout_width="1.0dip" android:layout_height="12.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="6.0dip" android:layout_toRightOf="@id/g1b" android:layout_marginStart="10.0dip" android:layout_toEndOf="@id/g1b" />
+            <ImageView android:id="@id/g2k" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="10.0dip" android:src="@drawable/dbx" android:layout_toRightOf="@id/g1d" android:layout_marginStart="10.0dip" android:layout_toEndOf="@id/g1d" />
+        </RelativeLayout>
+        <ImageView android:id="@id/g0n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/dec" />
+    </LinearLayout>
+</LinearLayout>

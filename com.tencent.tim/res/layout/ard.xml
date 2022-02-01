@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.ar.view.ViewfinderView android:id="@id/h0x" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/jo9" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height">
+        <TextView android:layout_gravity="center|left" android:id="@id/jo_" android:background="@drawable/a39" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:includeFontPadding="false" />
+        <TextView android:textSize="18.0dip" android:textColor="@android:color/white" android:layout_gravity="center" android:id="@id/joc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/h63" />
+        <ImageView android:gravity="center" android:layout_gravity="center|right" android:id="@id/b_s" android:background="@drawable/aaq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:layout_alignParentRight="true" />
+        <TextView android:layout_gravity="center|right" android:id="@id/joa" android:background="@drawable/a36" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:includeFontPadding="false" />
+    </FrameLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/h0u" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="400.0dip" android:layout_centerHorizontal="true">
+            <FrameLayout android:layout_gravity="center_horizontal" android:layout_width="60.0dip" android:layout_height="60.0dip">
+                <TextView android:textSize="@dimen/ms" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/h0i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/f9x" android:includeFontPadding="false" android:shadowColor="#34000000" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="9.0" android:drawableTop="@drawable/emy" android:drawablePadding="4.0dip" />
+            </FrameLayout>
+            <TextView android:textSize="@dimen/mu" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/h0t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:text="@string/dzv" android:includeFontPadding="false" android:shadowColor="#34000000" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="9.0" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/b_t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_below="@id/h0u" android:layout_centerHorizontal="true">
+            <ImageView android:layout_gravity="center" android:id="@id/dwh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/dv_" />
+            <TextView android:textSize="@dimen/ms" android:textColor="#ff1e6fff" android:layout_gravity="center" android:id="@id/k9o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="@string/dzu" android:includeFontPadding="false" />
+        </LinearLayout>
+        <CheckBox android:id="@id/axe" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="200.0dip" android:checked="false" android:text="@string/qml" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</merge>

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView android:id="@id/gw7" android:layout_width="205.0dip" android:layout_height="332.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="7.0dip" android:layout_below="@id/gw4"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

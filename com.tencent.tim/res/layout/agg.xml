@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:control="http://www.tencent.com/tenpay/android/qqwallet">
+    <View android:layout_marginBottom="15.0dip" style="@style/ta" />
+    <com.tenpay.sdk.view.NameValueText android:gravity="center_vertical" android:id="@id/jeu" android:layout_width="fill_parent" android:layout_height="35.0dip" control:nameText="提现金额" control:nameTextColor="777777" control:nameTextSize="16" control:valueLinePosition="32" control:valueText="" control:valueTextColor="0" control:valueTextSize="23" />
+    <com.tenpay.sdk.view.NameValueText android:gravity="center_vertical" android:id="@id/jet" android:layout_width="fill_parent" android:layout_height="35.0dip" control:nameText="手续费" control:nameTextColor="777777" control:nameTextSize="16" control:valueLinePosition="32" control:valueText="" control:valueTextColor="777777" control:valueTextSize="16" />
+    <com.tenpay.sdk.view.NameValueText android:gravity="center_vertical" android:id="@id/fj8" android:layout_width="fill_parent" android:layout_height="35.0dip" control:nameText="实扣余额" control:nameTextColor="777777" control:nameTextSize="16" control:valueLinePosition="32" control:valueText="" control:valueTextColor="777777" control:valueTextSize="16" />
+    <View android:layout_marginTop="13.0dip" android:layout_marginBottom="18.0dip" style="@style/ta" />
+    <com.tenpay.sdk.view.NameValueText android:id="@id/l4d" android:layout_width="fill_parent" android:layout_height="wrap_content" control:defaultTextColor="777777" control:defaultTextSize="16" control:nameText="提现银行卡" control:valueText="" />
+    <com.tenpay.sdk.view.NameValueText android:id="@id/gi6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginBottom="18.0dip" control:defaultTextColor="777777" control:defaultTextSize="16" control:nameText="交易订单" control:valueText="" control:valueTextSize="14" />
+</merge>

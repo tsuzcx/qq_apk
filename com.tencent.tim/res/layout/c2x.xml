@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.pubaccount.PublicAccountMenuBar android:orientation="horizontal" android:id="@id/nbd" android:background="@drawable/eym" android:layout_width="fill_parent" android:layout_height="46.0dip" android:layout_marginLeft="18.5dip" android:layout_marginTop="12.0dip" android:layout_marginRight="18.5dip" />
+</LinearLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/f8h" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/f8i" android:background="@drawable/gkq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="12.0sp" android:textColor="#ff777777" android:id="@id/f8j" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="11.0dip" android:layout_marginBottom="11.0dip" android:text="@string/py_" android:includeFontPadding="false" android:layout_toLeftOf="@id/f8i" android:layout_alignParentLeft="true" />
+        <View android:id="@id/f8k" android:background="#ffe6e6e6" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_below="@id/f8j" />
+    </RelativeLayout>
+    <FrameLayout android:id="@id/f8g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/f8h">
+        <include layout="@layout/a6t" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/f8e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/f8g">
+        <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyYAFolderTextView android:textSize="17.0sp" android:id="@id/f8f" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="1.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="8.0dip" android:includeFontPadding="false" android:lineSpacingMultiplier="1.2" />
+    </FrameLayout>
+</LinearLayout>

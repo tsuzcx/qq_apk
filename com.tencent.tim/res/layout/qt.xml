@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2_item" android:gravity="bottom" android:id="@id/d3z" android:background="@drawable/jj" android:paddingLeft="15.0dip" android:paddingBottom="5.0dip" android:layout_width="fill_parent" android:layout_height="34.0dip" />
+    <com.tencent.widget.XListView android:id="@id/eap" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:scrollingCache="false" android:cacheColorHint="@android:color/transparent" android:divider="@null" android:dividerHeight="0.0dip" />
+</LinearLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/f57" android:background="#b3000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/kxz" android:layout_width="fill_parent" android:layout_height="34.0dip" android:layout_alignParentBottom="true" />
+    <com.qzone.module.feedcomponent.ui.ViewPagerMatchParent android:layout_gravity="center" android:id="@id/i1x" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:gravity="top" android:id="@id/ky0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignLeft="@id/i1x" android:layout_alignParentTop="true">
+        <TextView android:textSize="14.0sp" android:textColor="#b3ffffff" android:id="@id/ky1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rvu" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center|right" android:id="@id/i7a" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <ImageView android:id="@id/i7d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:src="@drawable/g3k" />
+        <TextView android:textSize="14.0sp" android:textColor="#b3ffffff" android:id="@id/i7e" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rva" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/je" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/alh"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/bn3" android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="12.0dip" android:layout_alignParentTop="true" />
+    <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/aln" android:layout_marginBottom="@dimen/all">
+        <com.tencent.widget.FixSizeImageView android:id="@id/image" android:focusable="false" android:clickable="false" android:layout_width="@dimen/ajm" android:layout_height="@dimen/ajm" android:layout_marginLeft="@dimen/ajj" android:layout_marginTop="@dimen/ajl" android:layout_marginRight="@dimen/ajj" android:layout_marginBottom="@dimen/ajl" android:scaleType="fitXY" android:contentDescription="@null" />
+        <TextView android:textSize="@dimen/alp" android:textColor="@color/skin_gray2_item" android:ellipsize="end" android:id="@id/bgt" android:paddingRight="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ajn" android:layout_marginRight="10.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentRight="true" />
+        <TextView android:textSize="@dimen/alu" android:textColor="@color/skin_black_item" android:ellipsize="end" android:id="@id/title" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ajn" android:maxWidth="@dimen/aj9" android:singleLine="true" android:layout_toRightOf="@id/image" />
+        <TextView android:textSize="@dimen/alp" android:textColor="@color/skin_gray2_item" android:ellipsize="end" android:id="@id/j64" android:paddingRight="10.0dip" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ajw" android:singleLine="true" android:layout_below="@id/title" android:layout_alignLeft="@id/title" />
+    </RelativeLayout>
+</LinearLayout>

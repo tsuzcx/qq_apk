@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/bwc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <FrameLayout android:layout_gravity="left" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="17.0sp" android:textColor="#ffcdcdcd" android:gravity="left" android:layout_gravity="center_horizontal" android:id="@id/bwj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/goq" android:includeFontPadding="false" />
+            <ProgressBar android:layout_gravity="center" android:id="@id/bwm" android:visibility="gone" android:layout_width="19.0dip" android:layout_height="19.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" />
+        </FrameLayout>
+        <com.qzone.widget.AsyncImageView android:layout_gravity="center_horizontal" android:id="@id/bwf" android:layout_width="225.0dip" android:layout_height="200.0dip" />
+        <TextView android:textSize="17.0sp" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/k7p" android:layout_width="180.0dip" android:layout_height="40.0dip" android:text="@string/gor" style="@style/uk" />
+    </LinearLayout>
+</RelativeLayout>

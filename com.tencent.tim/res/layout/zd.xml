@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:id="@id/gcq" android:layout_width="fill_parent" android:layout_height="@dimen/a49">
+        <Button android:textSize="@dimen/ii" android:textColor="@color/rm" android:gravity="center|left" android:id="@id/atb" android:background="@drawable/wd" android:padding="4.0dip" android:visibility="invisible" android:layout_width="126.0dip" android:layout_height="30.0dip" android:layout_marginLeft="15.0dip" android:text="@string/dmn" android:drawableLeft="@drawable/dej" android:drawablePadding="4.0dip" android:contentDescription="@string/dmn" />
+    </LinearLayout>
+    <com.tencent.widget.HorizontalListView android:id="@id/d9m" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0dip" android:layout_below="@id/gcq" />
+</RelativeLayout>

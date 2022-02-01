@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/if" android:background="#fff4f4f4" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:orientation="vertical" android:id="@id/cx" android:background="@drawable/cf4" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_gravity="center_vertical" android:id="@id/cv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="@dimen/n0" android:layout_marginBottom="@dimen/n0" android:text="@string/wmx" android:lineSpacingMultiplier="1.3" style="@style/y7" />
+            <View android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/co" android:layout_width="@dimen/n4" android:layout_height="@dimen/n4" android:layout_marginRight="12.0dip" android:src="@drawable/cg_" android:contentDescription="@string/vyy" />
+        </LinearLayout>
+        <View android:id="@id/cw" android:layout_width="fill_parent" android:layout_height="15.0dip" />
+        <com.tencent.biz.widgets.ElasticHorScrView android:id="@id/iih" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginTop="0.0dip" android:overScrollMode="never">
+            <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <GridView android:id="@id/cx3" android:scrollbars="none" android:fadingEdge="none" android:layout_width="wrap_content" android:layout_height="wrap_content" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:horizontalSpacing="0.0dip" android:verticalSpacing="0.0dip" android:stretchMode="none" android:columnWidth="60.0dip" android:numColumns="1" />
+            </LinearLayout>
+        </com.tencent.biz.widgets.ElasticHorScrView>
+        <com.tencent.biz.widgets.ElasticHorScrView android:id="@id/iii" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip">
+            <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <GridView android:id="@id/cx4" android:scrollbars="none" android:fadingEdge="none" android:layout_width="wrap_content" android:layout_height="wrap_content" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:horizontalSpacing="0.0dip" android:verticalSpacing="0.0dip" android:stretchMode="none" android:columnWidth="60.0dip" android:numColumns="1" />
+            </LinearLayout>
+        </com.tencent.biz.widgets.ElasticHorScrView>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/axi" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/ngr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="-20.0dip" android:layout_centerInParent="true">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gyh" android:contentDescription="@string/xde" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/xde" style="@style/ahw" />
+        <Button android:gravity="center" android:id="@id/kqp" android:paddingLeft="70.0dip" android:paddingRight="70.0dip" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_marginTop="14.0dip" android:text="@string/xdd" style="@style/aa4" />
+    </LinearLayout>
+    <com.tencent.qqmail.view.QMContentLoadingView android:id="@id/n9d" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/btw" />
+    <ListView android:scrollbarStyle="outsideOverlay" android:id="@id/oec" android:background="@color/axi" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/btw" android:divider="@null" android:dividerHeight="0.0dip" />
+    <com.tencent.qqmail.view.QMTopBar android:id="@id/nph" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</RelativeLayout>

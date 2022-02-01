@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="#cc000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/b0v" android:layout_width="320.0dip" android:layout_height="420.0dip" android:scaleType="fitXY" android:layout_centerInParent="true" />
+    <Button android:textColor="#ffffffff" android:id="@id/b0k" android:background="@drawable/hv" android:layout_width="298.0dip" android:layout_height="40.0dip" android:layout_marginBottom="16.0dip" android:text="@string/kq9" android:layout_alignBottom="@id/b0v" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/b0l" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="40.0dip" android:src="@drawable/cey" android:layout_below="@id/b0v" android:layout_centerHorizontal="true" />
+</RelativeLayout>

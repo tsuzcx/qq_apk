@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/axi" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="top" android:orientation="vertical" android:paddingTop="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/btw">
+        <LinearLayout android:id="@id/o3b" android:visibility="visible" style="@style/af9">
+            <Button android:id="@id/o3c" android:text="@string/x7p" style="@style/af6" />
+            <Button android:id="@id/o3d" android:text="@string/hvv" style="@style/af8" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" style="@style/ae_">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/mxe" android:visibility="gone" android:layout_width="@dimen/bm2" android:layout_height="@dimen/bm2" android:layout_marginLeft="7.0dip" android:layout_marginRight="17.0dip" android:contentDescription="@string/x7l" />
+            <EditText android:layout_gravity="center_vertical" android:id="@id/mxl" android:background="@null" android:layout_width="0.0dip" android:layout_marginLeft="0.0dip" android:layout_marginRight="5.0dip" android:layout_weight="1.0" android:imeOptions="actionDone" style="@style/aez" />
+            <Button android:layout_gravity="center_vertical" android:id="@id/mkr" style="@style/af0" />
+        </LinearLayout>
+        <Button android:textColor="@color/aw6" android:id="@id/msq" android:background="@drawable/e_w" android:layout_marginTop="20.0dip" android:text="@string/x1_" style="@style/ae_" />
+    </LinearLayout>
+    <com.tencent.qqmail.view.QMTopBar android:id="@id/nph" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</FrameLayout>

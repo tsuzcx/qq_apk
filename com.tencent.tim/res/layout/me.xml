@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/b2u" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="12.0dip" android:layout_marginTop="99.0dip" android:layout_marginRight="12.0dip">
+        <TextView android:textSize="44.0sp" android:textColor="@color/al3" android:id="@id/b2w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lqb" android:shadowColor="#7f000000" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="4.0" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <TextView android:textSize="13.0sp" android:textColor="@color/al3" android:id="@id/b2v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" " android:shadowColor="#7f000000" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="2.0" android:layout_alignParentLeft="true" />
+        <ImageView android:id="@id/b2t" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="24.0dip" android:layout_marginTop="4.0dip" android:scaleType="fitXY" android:layout_below="@id/b2w" android:layout_alignParentRight="true" />
+    </LinearLayout>
+</FrameLayout>

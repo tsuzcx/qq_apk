@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RadioButton android:textSize="15.0sp" android:id="@id/hv4" android:focusable="false" android:clickable="false" android:button="@null" android:drawableRight="@drawable/enx" style="@style/aaz" />
+</RelativeLayout>

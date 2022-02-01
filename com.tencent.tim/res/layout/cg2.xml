@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/l5" android:layout_width="fill_parent" android:layout_height="44.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/kts" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginLeft="5.0dip" android:src="@drawable/b8v" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <dov.com.qq.im.aeeditor.view.AEEditorClipIndexView android:id="@id/ktt" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginRight="15.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

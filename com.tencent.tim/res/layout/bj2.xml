@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.album.business.photolist.ui.listitem.NoShootTimeTitleLayout android:id="@id/hcd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.5dip" android:layout_marginTop="30.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="15.0dip" />
+    <RelativeLayout android:gravity="center_vertical" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/fre" android:paddingLeft="@dimen/yv" android:paddingRight="@dimen/yv" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="12.0dip" android:layout_marginBottom="7.0dip">
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true">
+            <com.qzone.proxy.feedcomponent.widget.FeedDate android:textSize="16.0sp" android:textColor="@color/a_j" android:id="@id/jlb" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <Button android:textSize="16.0dip" android:textColor="@color/n" android:id="@id/frc" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="@string/rop" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/fqd" android:paddingBottom="6.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:id="@id/fqe" android:layout_width="fill_parent" android:layout_height="6.0dip" />
+        <com.qzone.module.feedcomponent.view.AvatarImageView android:id="@id/fqf" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="12.0dip" android:src="@drawable/bvj" android:layout_below="@id/fqe" />
+        <TextView android:textSize="14.0dip" android:textColor="#ff777777" android:id="@id/fqg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:singleLine="true" android:maxLength="15" android:layout_toRightOf="@id/fqf" android:layout_alignBottom="@id/fqf" />
+        <Button android:textSize="16.0dip" android:textColor="@color/n" android:id="@id/frd" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="@string/roq" android:layout_alignBottom="@id/fqf" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="14.0sp" android:textColor="@color/a_j" android:id="@id/fob" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/yv" android:layout_marginRight="@dimen/yv" android:layout_marginBottom="10.0dip" android:text="" />
+</LinearLayout>

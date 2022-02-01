@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.pubaccount.NativeAd.adapter.VerticleViewPager android:id="@id/eyn" android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:layout_width="fill_parent" android:layout_height="64.0dip" android:src="@drawable/s_" android:layout_alignParentTop="true" />
+    <ImageView android:id="@id/az2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="15.0dip" android:src="@drawable/dq_" android:layout_alignParentLeft="true" android:contentDescription="@string/button_back" />
+    <ImageView android:id="@id/c9b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/dqa" android:layout_alignParentRight="true" />
+</RelativeLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true" android:drawable="@drawable/qq_pic_img_checkbox_select" />
+    <item android:drawable="@drawable/ckp" android:state_activated="true" />
+    <item android:drawable="@drawable/qq_pic_img_checkbox_deselect" />
+</selector>

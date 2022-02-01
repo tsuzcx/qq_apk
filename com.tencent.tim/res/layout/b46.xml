@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="18.0dip" android:textColor="@color/skin_black_group_item" android:id="@id/eor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="12.0dip" android:text="@string/ds7" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/c0x" android:paddingTop="12.0dip" android:paddingBottom="12.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/eor">
+        <ImageView android:id="@id/k0b" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" />
+        <ImageView android:id="@id/k0c" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="2.0dip" />
+        <ImageView android:id="@id/k0d" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="2.0dip" />
+        <ImageView android:id="@id/k0e" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="2.0dip" />
+        <ImageView android:id="@id/k0f" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="2.0dip" />
+        <ImageView android:id="@id/k0g" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="2.0dip" />
+    </LinearLayout>
+    <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray_group_item" android:id="@id/eom" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="16.0dip" android:drawableRight="@drawable/common_arrow_right_selector" android:drawablePadding="12.0dip" android:layout_alignBaseline="@id/eor" android:layout_alignParentRight="true" />
+    <com.tencent.mobileqq.widget.MyGridView android:gravity="center" android:id="@id/eok" android:paddingLeft="16.0dip" android:paddingTop="5.0dip" android:paddingRight="16.0dip" android:paddingBottom="17.0dip" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@color/ajr" android:horizontalSpacing="3.0dip" android:verticalSpacing="15.0dip" android:stretchMode="spacingWidth" android:columnWidth="56.0dip" android:numColumns="5" android:layout_below="@id/eor" android:layout_alignParentBottom="true" />
+</RelativeLayout>

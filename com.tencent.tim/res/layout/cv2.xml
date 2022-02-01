@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@drawable/eey" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/bql" android:baselineAligned="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:id="@id/nrk" android:paddingTop="6.0dip" android:paddingBottom="6.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_weight="1.0">
+        <TextView android:textSize="16.0sp" android:textColor="@color/aul" android:id="@id/nrl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xae" android:drawableLeft="@drawable/gqp" android:drawablePadding="2.0dip" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:id="@id/nro" android:paddingTop="6.0dip" android:paddingBottom="6.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_weight="1.0">
+        <TextView android:textSize="16.0sp" android:textColor="@color/auk" android:id="@id/nrp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xal" android:drawableLeft="@drawable/gr9" android:drawablePadding="2.0dip" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:id="@id/nrm" android:paddingTop="6.0dip" android:paddingBottom="6.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_weight="1.0">
+        <TextView android:textSize="16.0sp" android:textColor="@color/aun" android:id="@id/nrn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xah" android:drawableLeft="@drawable/gqt" android:drawablePadding="2.0dip" />
+    </LinearLayout>
+</LinearLayout>

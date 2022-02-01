@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/ab7" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tipsBar="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.widget.TipsBar android:id="@id/f79" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" tipsBar:barType="i4p" tipsBar:tipsIcon="@drawable/c3g" />
+    <com.tencent.mobileqq.widget.TipsBar android:id="@id/jmq" android:layout_width="fill_parent" android:layout_height="wrap_content" tipsBar:barType="l2w" tipsBar:tipsIcon="@drawable/fov" />
+</LinearLayout>

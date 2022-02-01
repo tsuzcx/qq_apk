@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="16.0sp" android:textColor="#ff333333" android:id="@id/h86" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <RelativeLayout android:id="@id/h7x" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/h86" android:layout_alignParentLeft="true">
+        <TextView android:textSize="14.0sp" android:textColor="#ff777777" android:id="@id/h7w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="12.0dip" android:text="@string/g9k" android:layout_alignParentLeft="true" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff000000" android:id="@id/h7y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignBaseline="@id/h7w" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/h80" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/h7x" android:layout_alignParentLeft="true">
+        <TextView android:textSize="14.0sp" android:textColor="#ff777777" android:id="@id/h7z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="12.0dip" android:text="@string/g9n" android:layout_alignParentLeft="true" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff000000" android:id="@id/h81" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignBaseline="@id/h7z" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+</RelativeLayout>

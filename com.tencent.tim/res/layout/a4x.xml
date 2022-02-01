@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@android:color/white" android:paddingLeft="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="#ffe2e3e4" android:layout_width="fill_parent" android:layout_height="@dimen/asx" android:layout_alignParentTop="true" />
+    <TextView android:textSize="@dimen/asw" android:textColor="@drawable/zv" android:gravity="center_vertical" android:id="@id/dzr" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="@dimen/asu" android:text="@string/q1i" />
+    <View android:id="@id/dzs" android:background="#ff000000" android:visibility="visible" android:layout_width="0.5dip" android:layout_height="14.0dip" android:layout_marginLeft="11.0dip" android:layout_toRightOf="@id/dzr" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/asw" android:textColor="@drawable/zv" android:gravity="center_vertical" android:id="@id/dzt" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="@dimen/asu" android:layout_marginLeft="11.0dip" android:text="@string/pvb" android:layout_toRightOf="@id/dzs" />
+    <View android:id="@id/dzu" android:background="#ff000000" android:visibility="visible" android:layout_width="0.5dip" android:layout_height="14.0dip" android:layout_marginLeft="11.0dip" android:layout_toRightOf="@id/dzt" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/asw" android:textColor="@drawable/zv" android:gravity="center_vertical" android:id="@id/dzv" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="@dimen/asu" android:layout_marginLeft="11.0dip" android:text="@string/q0a" android:layout_toRightOf="@id/dzu" />
+    <TextView android:textSize="@dimen/asw" android:textColor="@drawable/zv" android:gravity="center_vertical" android:id="@id/dzw" android:layout_width="wrap_content" android:layout_height="@dimen/asu" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:text="@string/q08" android:drawableRight="@drawable/gkw" android:drawablePadding="@dimen/asv" android:layout_alignParentRight="true" />
+</RelativeLayout>

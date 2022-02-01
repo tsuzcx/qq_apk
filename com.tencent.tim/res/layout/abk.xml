@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/d0_" android:background="@drawable/b6n" android:layout_width="253.0dip" android:layout_height="425.0dip">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginLeft="18.0dip" android:layout_marginRight="18.0dip">
+            <com.tencent.mobileqq.filemanager.widget.AsyncImageView android:id="@id/cxy" android:layout_width="48.0dip" android:layout_height="48.0dip" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="9.0dip">
+                <TextView android:textSize="13.0dip" android:textColor="#ff03081a" android:id="@id/cy6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="false" />
+                <TextView android:textSize="12.0dip" android:textColor="#ff878b99" android:id="@id/cx9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+        <View android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="18.0dip" android:layout_marginTop="35.0dip" android:layout_marginRight="18.0dip" />
+        <com.tencent.mobileqq.filemanager.widget.AsyncImageView android:id="@id/h0d" android:layout_width="184.0dip" android:layout_height="184.0dip" android:layout_marginTop="35.0dip" />
+        <TextView android:textSize="14.0dip" android:textColor="#ff878b99" android:gravity="center" android:id="@id/d10" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:text="@string/vv0" />
+    </LinearLayout>
+</RelativeLayout>

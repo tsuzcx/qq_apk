@@ -1,0 +1,32 @@
+package com.tencent.mobileqq.ar.codeEngine;
+
+import adjn;
+import adjv;
+
+public class MiniCodeController$1
+  implements Runnable
+{
+  public MiniCodeController$1(adjn paramadjn, int paramInt, long paramLong) {}
+  
+  public void run()
+  {
+    long l1 = adjv.h("report_tag_detect_supporttype", 0L);
+    long l2 = System.currentTimeMillis();
+    if (l2 - l1 > 86400000L)
+    {
+      adjv.hs(adjn.a(this.this$0), this.cHk);
+      adjv.af("report_tag_detect_supporttype", l2);
+    }
+    if ((this.Ui > 0L) && (this.Ui < 15000L) && (l2 - adjv.h("report_tag_detect_init_internal_cost", 0L) > 86400000L))
+    {
+      adjv.hv(adjn.a(this.this$0), (int)this.Ui);
+      adjv.af("report_tag_detect_init_internal_cost", l2);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes8.jar
+ * Qualified Name:     com.tencent.mobileqq.ar.codeEngine.MiniCodeController.1
+ * JD-Core Version:    0.7.0.1
+ */

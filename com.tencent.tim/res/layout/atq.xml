@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/l01" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.mini.ui.RoundImageView android:id="@id/gm_" android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginTop="100.0dip" android:src="@drawable/com" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="40.0sp" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center" android:id="@id/gma" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="40.0dip" android:layout_marginTop="26.0dip" android:layout_marginRight="40.0dip" android:maxLines="3" android:singleLine="false" android:layout_below="@id/gm_" android:layout_centerInParent="true" />
+        <RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_below="@id/gma">
+            <TextView android:textSize="17.0sp" android:textColor="@color/al3" android:id="@id/gmb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="匹配中" android:layout_centerInParent="true" />
+            <View android:id="@id/goo" android:clickable="false" android:layout_width="23.0dip" android:layout_height="5.0dip" android:layout_marginLeft="2.0dip" android:layout_toRightOf="@id/gmb" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</merge>

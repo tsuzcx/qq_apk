@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:layout_gravity="center|right" android:id="@id/dt4" android:background="@drawable/qzone_skin_mood_list_timer" android:visibility="gone" android:layout_width="25.099976dip" android:layout_height="25.099976dip" android:layout_marginRight="5.0dip" />
+    <Button android:layout_gravity="center|right" android:id="@id/dsx" android:background="@drawable/qzone_skin_titlebar_search_icon_black" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" />
+    <ImageView android:id="@id/lmz" android:visibility="gone" android:layout_width="22.0dip" android:layout_height="22.0dip" android:src="@drawable/qzone_skin_feeds_msg_white" android:scaleType="center" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</LinearLayout>

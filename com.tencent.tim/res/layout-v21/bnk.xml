@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/jle" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/cjs" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="5.0dip" android:layout_marginTop="47.0dip" android:layout_marginRight="25.0dip" android:src="@drawable/g_7" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/jlf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="45.0dip" android:layout_toLeftOf="@id/cjs" android:elevation="12.0dip">
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="135.0dip" android:layout_weight="1.0">
+                <ImageView android:id="@id/a2o" android:layout_width="54.0dip" android:layout_height="54.0dip" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="135.0dip" android:layout_weight="1.0">
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+                    <cooperation.qzone.widget.DinTypeFaceTextView android:id="@id/hqv" android:lines="1" style="@style/wu" />
+                </LinearLayout>
+                <TextView android:text="@string/s0b" style="@style/wv" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="135.0dip" android:layout_weight="1.0">
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+                    <cooperation.qzone.widget.DinTypeFaceTextView android:id="@id/hew" android:lines="1" style="@style/wu" />
+                </LinearLayout>
+                <TextView android:text="@string/s0_" style="@style/wv" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/e66" android:layout_width="0.0dip" android:layout_height="135.0dip" android:layout_weight="1.0">
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <cooperation.qzone.widget.DinTypeFaceTextView android:id="@id/hso" style="@style/wu" />
+                </LinearLayout>
+                <TextView android:text="@string/s0c" style="@style/wv" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</merge>

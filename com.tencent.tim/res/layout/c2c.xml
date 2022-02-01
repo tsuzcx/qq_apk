@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.BounceScrollView android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="70.0dip" android:layout_height="58.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="70.0dip">
+            <ImageView android:id="@id/k1x" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginTop="0.0dip" android:src="@drawable/h6n" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+            <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:gravity="center" android:id="@id/k1z" android:background="@drawable/skin_tips_newmessage" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="99+" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <TextView android:layout_gravity="center_horizontal" android:id="@id/k1y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" style="@style/TitleText" />
+        <TextView android:gravity="center_horizontal" android:id="@id/k1w" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="25.0dip" android:layout_marginRight="20.0dip" android:text="@string/i99" style="@style/bl" />
+        <Button android:id="@id/k1v" android:layout_width="fill_parent" android:layout_height="46.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="35.0dip" android:layout_marginRight="15.0dip" android:text="@string/i97" style="@style/b9" />
+        <Button android:id="@id/k1u" android:layout_width="fill_parent" android:layout_height="46.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="10.0dip" android:text="@string/i96" style="@style/bd" />
+    </LinearLayout>
+</com.tencent.mobileqq.widget.BounceScrollView>

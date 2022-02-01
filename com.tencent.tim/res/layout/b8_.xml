@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_horizontal" android:layout_width="@dimen/axn" android:layout_height="@dimen/axm"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.qqstory.playvideo.VideoCoverImgBorder android:id="@id/abi" android:layout_width="@dimen/axn" android:layout_height="@dimen/axm" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    <TextView android:textSize="10.0dip" android:textColor="@color/al3" android:id="@id/jl7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip" android:text="20:01" android:layout_alignBottom="@id/abi" android:layout_centerHorizontal="true" />
+</RelativeLayout>

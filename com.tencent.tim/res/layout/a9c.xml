@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:paddingTop="10.0dip" android:clipToPadding="false" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView android:layout_gravity="center_horizontal" android:id="@id/dvu" android:background="@color/al3" android:layout_width="33.0dip" android:layout_height="33.0dip" android:scaleType="centerCrop" android:layerType="software" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/ea4" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_marginLeft="4.5dip" android:layout_marginTop="29.0dip" android:layout_marginRight="4.5dip" android:layout_marginBottom="4.5dip">
+        <com.tencent.mobileqq.widget.AutoFitTextView android:textSize="14.0dip" android:textColor="#ff000000" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/ato" android:layout_width="wrap_content" android:layout_height="wrap_content" android:lines="1" />
+    </LinearLayout>
+    <ImageView android:layout_gravity="center|right|top" android:id="@id/bfr" android:layout_width="wrap_content" android:layout_height="15.0dip" android:layout_marginTop="-8.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/do7" />
+    <TextView android:textSize="8.0dip" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center|right|top" android:id="@id/i50" android:background="@drawable/y7" android:paddingLeft="3.0dip" android:paddingRight="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="12.0dip" android:layout_marginTop="-6.0dip" android:layout_marginRight="6.0dip" android:text="@string/puu" />
+    <ImageView android:layout_gravity="center|right|top" android:id="@id/i4v" android:background="@drawable/yt" android:visibility="gone" android:layout_width="9.0dip" android:layout_height="9.0dip" android:layout_marginTop="-5.0dip" android:layout_marginRight="14.0dip" />
+</FrameLayout>

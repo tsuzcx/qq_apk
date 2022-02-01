@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingBottom="7.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.album.business.photolist.ui.listitem.TravelHeaderCell android:id="@id/jvy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" />
+    <com.qzone.album.business.photolist.ui.listitem.BigPhotoView android:id="@id/hak" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

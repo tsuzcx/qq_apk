@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/m2" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="16.0sp" android:textColor="#ff03081a" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/m6" android:layout_width="wrap_content" android:layout_height="23.0dip" android:layout_marginLeft="11.0dip" android:layout_marginTop="16.0dip" android:text="@string/kfi" android:maxLines="1" />
+    <TextView android:textSize="14.0sp" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/m3" android:paddingTop="5.0dip" android:paddingRight="7.0dip" android:paddingBottom="4.0dip" android:visibility="visible" android:layout_width="231.0dip" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" android:layout_marginTop="45.0dip" android:maxHeight="90.0dip" android:text="青电饭锅符合沟沟壑壑刚刚也和交互发过火风格如果发过火春可爱的下大雪按时吃水电费十多个dddddd" android:maxLines="4" android:lineSpacingExtra="9.0dip" />
+</RelativeLayout>

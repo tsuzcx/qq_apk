@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/lt0" android:layout_width="fill_parent" android:layout_height="0.0dip" android:scaleType="fitXY" android:layout_alignBottom="@id/lt1" android:layout_alignParentTop="true" />
+    <ImageView android:id="@id/lt9" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="11.0dip" android:layout_alignTop="@id/lt8" android:layout_alignBottom="@id/lt8" android:layout_alignParentLeft="true" />
+    <TextView android:textSize="13.0dip" android:textColor="@android:color/black" android:gravity="center_vertical" android:id="@id/lt8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:layout_marginTop="13.0dip" android:text="好友PK" android:layout_toRightOf="@id/lt9" android:layout_alignParentTop="true" />
+    <ImageView android:id="@id/lt_" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="40.0dip" android:layout_height="20.0dip" android:layout_marginRight="0.0dip" android:src="@drawable/hxz" android:layout_alignTop="@id/lt8" android:layout_alignParentRight="true" />
+    <ImageView android:id="@id/lta" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginTop="15.0dip" android:layout_below="@id/lt9" android:layout_alignLeft="@id/lt9" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/lte" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_marginLeft="14.0dip" android:layout_toRightOf="@id/lta" android:layout_alignTop="@id/lta" android:layout_alignBottom="@id/lta">
+        <TextView android:textSize="14.0dip" android:textColor="@android:color/black" android:id="@id/ltd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/o6x" />
+        <TextView android:textSize="10.0dip" android:textColor="@android:color/black" android:id="@id/ltc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="8位好友在玩" android:alpha="0.6" />
+    </LinearLayout>
+    <ImageView android:id="@id/lt3" android:layout_width="0.0dip" android:layout_height="10.0dip" android:layout_marginLeft="24.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="50.0dip" android:src="@drawable/hi_" android:scaleType="fitXY" android:layout_below="@id/lte" android:layout_alignLeft="@id/lta" android:layout_alignRight="@id/lt2" />
+    <ImageView android:id="@id/lt2" android:layout_width="70.0dip" android:layout_height="65.0dip" android:layout_marginTop="45.0dip" android:layout_marginRight="20.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <include android:id="@id/lt4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_below="@id/lta" layout="@layout/c8w" />
+    <include android:id="@id/lt5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_below="@id/lt4" layout="@layout/c8w" />
+    <include android:id="@id/lt6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_below="@id/lt5" layout="@layout/c8w" />
+    <include android:id="@id/lt7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_below="@id/lt6" layout="@layout/c8w" />
+    <View android:id="@id/lt1" android:layout_width="fill_parent" android:layout_height="25.0dip" android:layout_below="@id/lt7" />
+</RelativeLayout>

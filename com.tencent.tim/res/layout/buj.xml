@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/bqc" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <com.qzone.widget.AsyncImageView android:layout_gravity="center_vertical" android:id="@id/e7j" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginLeft="14.0dip" android:layout_marginTop="13.0dip" android:layout_marginBottom="13.0dip" />
+        <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="16.0sp" android:textColor="@color/qzone_skin_feed_content_text_color" android:id="@id/eq7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="13.0dip" android:layout_marginBottom="13.0dip" android:maxLines="1" android:maxLength="16" android:drawablePadding="10.0dip" />
+        <TextView android:id="@id/e81" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:layout_weight="1.0" />
+        <FrameLayout android:id="@id/bqh" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:layout_weight="2.0">
+            <ImageView android:layout_gravity="center" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qzone_icon_action_sheet_share_to_qq" />
+        </FrameLayout>
+        <FrameLayout android:id="@id/bqi" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:layout_weight="2.0">
+            <ImageView android:layout_gravity="center" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qzone_icon_action_sheet_share_to_wx" />
+        </FrameLayout>
+        <FrameLayout android:id="@id/bqg" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:layout_weight="2.0">
+            <ImageView android:layout_gravity="center" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qzone_icon_action_sheet_share_to_wx_circle" />
+        </FrameLayout>
+        <TextView android:id="@id/iah" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:layout_weight="1.0" />
+    </LinearLayout>
+    <com.qzone.widget.CommonLine android:id="@id/bqe" android:background="@drawable/b46" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="51.0dip" />
+</LinearLayout>

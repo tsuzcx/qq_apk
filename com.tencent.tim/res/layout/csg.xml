@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/idz" android:background="@color/at9" android:layout_width="fill_parent" android:layout_height="50.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/oe_" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/n7w" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="5.0dip" android:src="@drawable/ien" android:layout_centerVertical="true" />
+    <TextView android:textSize="18.0dip" android:textStyle="bold" android:textColor="#ff03081a" android:ellipsize="end" android:id="@id/o_s" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:maxLines="1" android:layout_toLeftOf="@id/n_a" android:layout_toRightOf="@id/n7w" android:layout_centerVertical="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/n_a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true">
+        <include android:layout_gravity="center_vertical" android:id="@id/nob" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginRight="-2.0dip" android:layout_toLeftOf="@id/n80" layout="@layout/csn" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/n80" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginRight="-2.0dip" android:src="@drawable/e7o" android:layout_toLeftOf="@id/n7z" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/n7z" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginRight="-2.0dip" android:src="@drawable/e7n" android:layout_toLeftOf="@id/n7y" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/n7y" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginRight="3.5dip" android:src="@drawable/ier" />
+    </LinearLayout>
+</RelativeLayout>

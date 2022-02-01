@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/bwp" android:background="@drawable/bg_texture" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/image" android:layout_width="100.0dip" android:layout_height="100.0dip" android:src="@drawable/d3g" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="16.0sp" android:textColor="#ff333333" android:id="@id/jjc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/ps7" android:layout_below="@id/image" android:layout_centerHorizontal="true" />
+            <Button android:id="@id/bbl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="35.0dip" android:layout_marginRight="10.0dip" android:text="@string/ps6" android:layout_below="@id/jjc" style="@style/b9" />
+        </RelativeLayout>
+    </LinearLayout>
+    <com.tencent.mobileqq.widget.SlideDetectListView android:id="@id/lv_discussion" android:background="@drawable/common_list_overscoll_top_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" />
+    <TextView android:textSize="13.0dip" android:textColor="@color/skin_gray2" android:gravity="center|left" android:id="@id/k1f" android:background="@drawable/skin_group_list_sub_entry" android:paddingLeft="10.0dip" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/b14" android:singleLine="true" />
+</RelativeLayout>

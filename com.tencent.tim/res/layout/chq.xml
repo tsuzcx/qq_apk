@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/bem" android:textColor="@color/atu" android:id="@id/jjl" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_height="wrap_content" android:includeFontPadding="false" style="@style/aaz" />
+</LinearLayout>

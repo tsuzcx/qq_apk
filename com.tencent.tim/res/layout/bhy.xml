@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.AsyncImageView android:layout_gravity="center_horizontal" android:id="@id/bwf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="215.0dip" android:src="@drawable/g74" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="18.0dip" android:textStyle="bold" android:textColor="@color/bp" android:id="@id/bwu" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="" android:layout_below="@id/bwf" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="14.0dip" android:textColor="#ff666666" android:id="@id/bwd" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="" android:layout_below="@id/bwu" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/k7p" android:background="@drawable/aq4" android:visibility="gone" android:layout_width="170.0dip" android:layout_height="41.0dip" android:layout_marginLeft="23.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="23.0dip" android:text="" android:layout_below="@id/bwd" android:layout_centerHorizontal="true" />
+</RelativeLayout>

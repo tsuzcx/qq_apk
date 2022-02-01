@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/hki" android:paddingTop="8.0dip" android:paddingBottom="14.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <HorizontalScrollView android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:id="@id/hbl" android:paddingTop="@dimen/mp" android:paddingBottom="@dimen/mp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </HorizontalScrollView>
+    <LinearLayout android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip">
+        <View android:layout_gravity="center_vertical" android:background="@drawable/b0u" android:layout_width="15.0dip" android:layout_height="2.5dip" />
+        <TextView android:textSize="12.0sp" android:textColor="#ffa0a0a0" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginRight="6.0dip" android:text="@string/rny" />
+        <View android:layout_gravity="center_vertical" android:background="@drawable/b0u" android:layout_width="15.0dip" android:layout_height="2.5dip" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:id="@id/ggv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@color/w9" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:paddingLeft="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:text="@string/ebf" android:includeFontPadding="false" style="@style/tk" />
+        <LinearLayout android:orientation="vertical" android:background="@drawable/dw1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip">
+            <LinearLayout android:orientation="vertical" android:id="@id/ib" android:background="@drawable/a3q" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <View style="@style/sr" />
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="46.0dip">
+                    <TextView android:layout_width="92.0dip" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/q51" style="@style/tl" />
+                    <TextView android:textSize="17.0sp" android:textColor="@color/tr" android:id="@id/ia" android:layout_width="0.0dip" android:layout_height="wrap_content" android:hint="@string/q2q" android:singleLine="true" android:layout_weight="1.0" style="@style/to" />
+                    <ImageView android:id="@id/i_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:src="@drawable/dvh" />
+                </LinearLayout>
+                <View android:layout_marginLeft="12.0dip" style="@style/sr" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="46.0dip">
+                <TextView android:layout_width="92.0dip" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/q3x" style="@style/tl" />
+                <com.tenpay.sdk.view.ClearableEditText android:id="@id/i5" android:layout_width="fill_parent" android:hint="@string/e3g" android:singleLine="true" android:maxLength="30" style="@style/to" />
+            </LinearLayout>
+            <View android:layout_marginLeft="12.0dip" style="@style/sr" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/ggn" android:background="@drawable/a3q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
+            <View style="@style/sr" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="46.0dip">
+                <TextView android:layout_width="92.0dip" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/q2i" style="@style/tl" />
+                <TextView android:textSize="17.0sp" android:textColor="@color/tr" android:id="@id/ggl" android:layout_width="0.0dip" android:layout_height="wrap_content" android:hint="@string/q25" android:singleLine="true" android:layout_weight="1.0" style="@style/to" />
+                <ImageView android:id="@id/ggm" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:src="@drawable/dvh" />
+            </LinearLayout>
+            <View style="@style/sr" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/dw1" android:layout_width="fill_parent" android:layout_height="46.0dip" android:layout_marginTop="15.0dip">
+            <TextView android:layout_width="92.0dip" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/e3i" style="@style/tl" />
+            <com.tenpay.sdk.view.ClearableEditText android:textSize="17.0sp" android:textColorHint="@color/wb" android:id="@id/flk" android:layout_width="0.0dip" android:hint="@string/e3h" android:singleLine="true" android:maxLength="11" android:layout_weight="1.0" android:inputType="number" android:imeOptions="actionDone" style="@style/to" />
+            <Button android:id="@id/fll" android:background="@drawable/dyg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" />
+        </LinearLayout>
+        <Button android:id="@id/flj" android:layout_marginLeft="12.0dip" android:layout_marginTop="17.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="9.0dip" android:text="@string/e_u" style="@style/sv" />
+    </LinearLayout>
+</ScrollView>

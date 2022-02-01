@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.qqmail.view.keeppressed.KeepPressedRelativeLayout android:background="@drawable/e_x" android:paddingLeft="@dimen/bka" android:paddingTop="@dimen/bk_" android:paddingRight="@dimen/bka" android:paddingBottom="@dimen/bk_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="75.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cb6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+        <TextView android:textSize="@dimen/bkf" android:textColor="@color/atq" android:ellipsize="end" android:id="@id/n44" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
+        <TextView android:textSize="@dimen/bk8" android:textColor="@color/ats" android:id="@id/n43" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bk7" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/bke" android:textColor="@color/atq" android:ellipsize="end" android:id="@id/n46" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bkd" android:singleLine="true" android:layout_below="@id/cb6" />
+    <TextView android:textSize="@dimen/bkc" android:textColor="@color/ats" android:ellipsize="end" android:id="@id/n45" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bkb" android:singleLine="true" android:layout_below="@id/n46" />
+</com.tencent.qqmail.view.keeppressed.KeepPressedRelativeLayout>

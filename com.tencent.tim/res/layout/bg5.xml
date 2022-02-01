@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/h9z" android:background="@color/al3" android:paddingLeft="@dimen/ms" android:paddingRight="@dimen/ms" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:gravity="center" android:id="@id/em_" android:visibility="visible" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/apt" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <RelativeLayout android:id="@id/h9v" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/tf" />
+    <RelativeLayout android:id="@id/h9y" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/tf">
+        <com.tencent.component.media.image.view.AsyncImageView android:gravity="center" android:id="@id/fhz" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/x4" android:textColor="@color/aer" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/fi3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/cqi" android:layout_toRightOf="@id/fhz" android:layout_centerVertical="true" />
+        <RelativeLayout android:id="@id/iag" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="@dimen/tf" android:layout_alignParentRight="true">
+            <com.qzone.homepage.ui.component.newpanel.ExtendViewFlipper android:id="@id/fhw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:layout_toLeftOf="@id/fhx" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/fhx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/aug" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

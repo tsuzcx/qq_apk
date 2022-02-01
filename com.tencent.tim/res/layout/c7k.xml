@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/jm" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/search_box" android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_alignParentTop="true" layout="@layout/search_box" />
+    <com.tencent.widget.XListView android:id="@id/j4g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0dip" android:layout_below="@id/search_box" />
+    <com.tencent.mobileqq.dating.widget.DatingCommentTextView android:textSize="14.0sp" android:textColor="#ff878b99" android:gravity="center" android:id="@id/md9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawableTop="@drawable/e99" android:drawablePadding="6.0dip" android:layout_centerInParent="true" />
+</RelativeLayout>

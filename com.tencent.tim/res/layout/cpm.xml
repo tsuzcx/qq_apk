@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/odw" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ViewStub android:id="@id/ody" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalVideoRelativeLayout android:id="@id/odq" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:background="@drawable/f8r" android:layout_width="fill_parent" android:layout_height="105.0dip" />
+        <View android:layout_gravity="bottom" android:background="@drawable/f8p" android:layout_width="fill_parent" android:layout_height="260.0dip" android:layout_alignParentBottom="true" />
+        <ViewStub android:id="@id/odx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
+        <ViewStub android:layout_gravity="top" android:id="@id/n0e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
+        <LinearLayout android:orientation="vertical" android:id="@id/mh_" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/nuf" android:layout_above="@id/mha" android:layout_alignParentLeft="true">
+            <ViewStub android:id="@id/odz" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <ViewStub android:id="@id/odn" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <ViewStub android:id="@id/odm" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/mha" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+            <ViewStub android:id="@id/odl" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <ViewStub android:id="@id/odt" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <ViewStub android:id="@id/odo" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/nuf" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_above="@id/mha" android:layout_alignParentRight="true">
+            <ViewStub android:layout_gravity="center_horizontal" android:id="@id/odk" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <ViewStub android:layout_gravity="center_horizontal" android:id="@id/odv" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <ViewStub android:id="@id/ocr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+        <ViewStub android:id="@id/odr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+        <ViewStub android:id="@id/odp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="90.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalVideoRelativeLayout>
+    <ViewStub android:id="@id/odu" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="vertical_layer_video_container_stub" />
+</RelativeLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/ie_" android:background="#efffffff" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/ic3" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/idy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_centerHorizontal="true">
+            <TextView android:textSize="38.0sp" android:textStyle="bold" android:textColor="#ff000000" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/nlp" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="19.0sp" android:textColor="#ff000000" android:id="@id/j64" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/nlo" android:layout_below="@id/title" android:layout_centerHorizontal="true" /> > </RelativeLayout>
+        <RelativeLayout android:id="@id/ict" android:background="@drawable/csd" android:layout_width="322.0dip" android:layout_height="100.0dip" android:layout_below="@id/idy" android:layout_centerHorizontal="true" />
+        <RelativeLayout android:id="@id/icu" android:background="@drawable/csd" android:layout_width="338.0dip" android:layout_height="100.0dip" android:layout_below="@id/idy" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/duw" android:background="@drawable/csd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:layout_below="@id/idy" android:layout_centerHorizontal="true" />
+        <Button android:textSize="17.0sp" android:textColor="@color/a23" android:id="@id/ah_" android:background="@drawable/xh" android:layout_width="211.0dip" android:layout_height="38.0dip" android:layout_marginTop="16.0dip" android:text="@string/nln" android:layout_below="@id/icu" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

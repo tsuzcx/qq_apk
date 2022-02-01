@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="#fff2f2f2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.pay.ui.common.APHead android:id="@id/eu0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/eu0">
+        <TextView android:id="@id/eu3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="5.0dip" android:text="@string/o4c" style="@style/qs" />
+        <com.pay.ui.common.APEditText android:id="@id/etz" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <Button android:id="@id/eu2" android:layout_marginTop="30.0dip" android:text="@string/o49" style="@style/oy" />
+    </LinearLayout>
+    <com.tenpay.api.MyKeyboardWindow android:id="@id/eu1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+</RelativeLayout>

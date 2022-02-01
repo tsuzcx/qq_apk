@@ -1,0 +1,21 @@
+package com.google.common.util.concurrent;
+
+final class AbstractService$1
+  extends ListenerCallQueue.Callback<Service.Listener>
+{
+  AbstractService$1(String paramString)
+  {
+    super(paramString);
+  }
+  
+  void call(Service.Listener paramListener)
+  {
+    paramListener.starting();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes5.jar
+ * Qualified Name:     com.google.common.util.concurrent.AbstractService.1
+ * JD-Core Version:    0.7.0.1
+ */

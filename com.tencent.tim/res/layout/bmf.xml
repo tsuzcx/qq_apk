@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/h_2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="11.0dip">
+        <com.qzone.widget.FlexiableProcessImageView android:id="@id/h_3" android:layout_width="@dimen/yp" android:layout_height="@dimen/yp" android:layout_marginRight="7.0dip" android:scaleType="fitXY" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/h_1" android:layout_width="12.0dip" android:layout_height="12.0dip" android:src="@drawable/bvw" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="16.0sp" android:textColor="#ffbbbbbb" android:id="@id/h_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_toLeftOf="@id/h_1" android:layout_centerVertical="true" />
+        <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/h_4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="47.5dip" android:maxLines="1" android:layout_toLeftOf="@id/h_5" android:layout_toRightOf="@id/h_3" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <com.qzone.widget.TriangleView android:id="@id/ham" android:visibility="gone" android:layout_width="@dimen/app" android:layout_height="@dimen/apo" android:layout_marginLeft="28.0dip" android:layout_marginTop="-10.0dip" android:layout_below="@id/h_2" />
+    <ViewStub android:id="@id/hb8" android:layout="@layout/bi0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="-5.0dip" android:layout_below="@id/h_2" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/h_6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/h_2" />
+</RelativeLayout>

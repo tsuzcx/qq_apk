@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout android:id="@id/yu" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.search.rich.ArkAppView android:id="@id/yk" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="0.0dip" />
+    <LinearLayout android:orientation="vertical" android:id="@id/i5h" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true">
+        <View android:layout_gravity="center" android:id="@id/i5l" android:background="@drawable/c_j" android:layout_width="75.0dip" android:layout_height="75.0dip" />
+        <TextView android:textSize="15.0sp" android:textColor="@color/bh" android:gravity="center" android:layout_gravity="center" android:id="@id/i5p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/s5" />
+    </LinearLayout>
+</com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout>

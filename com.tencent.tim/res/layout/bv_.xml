@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/jm0" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@drawable/g5e" android:layout_width="6.0dip" android:layout_height="fill_parent" android:layout_alignParentLeft="true" />
+    <RelativeLayout android:background="@drawable/b56" android:layout_width="85.0dip" android:layout_height="fill_parent" android:layout_alignParentRight="true">
+        <com.tencent.widget.ListView android:gravity="center" android:id="@id/jm1" android:background="@color/ajr" android:scrollbars="none" android:fadingEdge="none" android:layout_width="85.0dip" android:layout_height="fill_parent" android:layout_marginTop="75.0dip" android:listSelector="@color/ajr" android:scrollingCache="false" android:cacheColorHint="@color/ajr" android:divider="@null" android:layout_alignParentRight="true" />
+        <LinearLayout android:orientation="vertical" android:layout_width="85.0dip" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
+            <TextView android:textSize="18.0sp" android:textColor="@color/qzone_skin_homepage_timeline_text_color_normal" android:gravity="center" android:id="@id/jm2" android:paddingTop="25.0dip" android:paddingBottom="12.0dip" android:layout_width="fill_parent" android:layout_height="75.0dip" android:text="2016年" />
+            <View android:background="#ffe3e3e3" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/m0" android:layout_width="fill_parent" android:layout_height="@dimen/axq" android:layout_marginLeft="@dimen/axv" android:layout_marginRight="@dimen/axv"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/eal" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/cl1" android:scaleType="centerCrop" />
+    <TextView android:textSize="12.0dip" android:textColor="@color/bp" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/eae" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:maxLines="1" android:layout_weight="1.0" />
+    <TextView android:textSize="10.0dip" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/c5" android:background="@drawable/amq" android:paddingLeft="7.5dip" android:paddingRight="7.5dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="22.0dip" android:layout_marginLeft="7.0dip" android:layout_marginRight="10.0dip" android:maxWidth="60.0dip" android:text="@string/raq" android:maxLines="1" />
+</LinearLayout>

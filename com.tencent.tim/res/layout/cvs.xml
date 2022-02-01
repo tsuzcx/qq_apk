@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/e9_" android:paddingLeft="@dimen/bic" android:paddingTop="@dimen/bng" android:paddingRight="@dimen/bic" android:paddingBottom="@dimen/bng" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/ngw" android:layout_marginBottom="4.0dip" android:layout_alignParentLeft="true" style="@style/aca" />
+    <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bnf" android:layout_toRightOf="@id/ngw" android:layout_alignParentRight="true">
+        <TextView android:enabled="false" android:textColor="@color/bp" android:gravity="center" android:layout_gravity="right" android:id="@id/ngv" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="4.0dip" android:drawablePadding="4.0dip" style="@style/aca" />
+    </FrameLayout>
+    <ImageView android:id="@id/o5q" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bnh" android:layout_marginTop="@dimen/bni" android:layout_marginBottom="4.0dip" android:src="@drawable/gva" android:layout_below="@id/ngw" android:layout_alignParentRight="true" android:contentDescription="@string/pb" style="@style/acd" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/nrv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bnj" android:layout_toLeftOf="@id/o5q" android:layout_below="@id/ngw" android:layout_alignParentLeft="true">
+        <TextView android:id="@id/nru" style="@style/acb" />
+        <EditText android:textColorHint="@color/ats" android:id="@id/mpm" android:background="@null" android:visibility="gone" android:layout_width="fill_parent" android:hint="@string/yn0" android:inputType="textMultiLine" android:imeOptions="actionNext" style="@style/acb" />
+    </LinearLayout>
+</RelativeLayout>

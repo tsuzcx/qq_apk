@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/b2g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+        <include android:id="@id/eoc" layout="@layout/yf" />
+        <include android:id="@id/eod" layout="@layout/yf" />
+        <include android:id="@id/eoe" layout="@layout/yf" />
+        <include android:id="@id/eof" layout="@layout/yf" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/b2h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_below="@id/b2g" android:layout_centerHorizontal="true">
+        <include android:id="@id/eog" layout="@layout/yf" />
+        <include android:id="@id/eoh" layout="@layout/yf" />
+        <include android:id="@id/eoi" layout="@layout/yf" />
+        <include android:id="@id/eoj" layout="@layout/yf" />
+    </LinearLayout>
+</RelativeLayout>

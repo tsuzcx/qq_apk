@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="130.0dip" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/ix1" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="195.0dip">
+            <ImageView android:id="@id/d1t" android:background="@drawable/a4r" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="3.0dip" android:src="@drawable/htd" android:scaleType="fitStart" />
+            <com.tencent.mobileqq.widget.AnimationView android:id="@id/d1v" android:padding="3.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitEnd" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/d1w" android:background="@drawable/fq3" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginTop="35.0dip" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="21.0sp" android:textColor="@color/uo" android:gravity="center" android:id="@id/d1x" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/e8q" android:singleLine="true" />
+            <ImageView android:id="@id/d1s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="3.0dip" />
+            <View android:id="@id/ls5" android:background="#7ff5f6fa" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="3.0dip" />
+        </RelativeLayout>
+        <TextView android:textSize="14.0sp" android:textColor="@color/wv" android:gravity="center" android:id="@id/d1u" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/q21" android:singleLine="true" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/ix2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:background="#ffefefef" android:padding="25.0dip" android:layout_width="fill_parent" android:layout_height="136.0dip" android:src="@drawable/dzt" />
+        <TextView android:textSize="14.0sp" android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/q3k" android:singleLine="true" />
+    </LinearLayout>
+</FrameLayout>

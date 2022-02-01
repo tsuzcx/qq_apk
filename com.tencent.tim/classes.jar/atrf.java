@@ -1,0 +1,52 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.tim.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.tim.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+
+public class atrf
+  implements View.OnClickListener
+{
+  public atrf(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  
+  public void onClick(View paramView)
+  {
+    if (paramView == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e(QfileBaseLocalFileTabView.TAG, 2, "qfilebaserecenttabview del error, tag is null");
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    FileInfo localFileInfo = (FileInfo)paramView.getTag();
+    if (localFileInfo != null)
+    {
+      if (this.this$0.a != null) {
+        this.this$0.a.bk(null);
+      }
+      if (!aueh.deleteFile(localFileInfo.getPath())) {
+        break label108;
+      }
+      this.this$0.b(localFileInfo);
+    }
+    for (;;)
+    {
+      this.this$0.a.bk(Integer.valueOf(-1));
+      paramView.setVisibility(4);
+      this.this$0.refreshList();
+      break;
+      label108:
+      String str = QfileBaseLocalFileTabView.a(this.this$0).getString(2131693521);
+      auds.JD(audx.kY(localFileInfo.getName()) + str);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes4.jar
+ * Qualified Name:     atrf
+ * JD-Core Version:    0.7.0.1
+ */

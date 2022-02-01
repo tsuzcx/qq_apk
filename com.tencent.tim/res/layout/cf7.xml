@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.qqmail.view.QMTopBar android:id="@id/nph" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ScrollView android:id="@id/ii8" android:background="@color/axi" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/btw">
+        <LinearLayout android:orientation="vertical" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="16.0sp" android:textColor="@color/aii" android:gravity="center" android:id="@id/jmp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" android:layout_marginBottom="20.0dip" android:text="@string/y12" />
+            <com.tencent.qqmail.activity.qrcode.QrTextView android:textSize="19.0sp" android:textColor="@color/aii" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/info" android:background="@drawable/eea" android:padding="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textIsSelectable="true" />
+            <TextView android:textSize="16.0sp" android:textColor="@color/air" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/y13" />
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

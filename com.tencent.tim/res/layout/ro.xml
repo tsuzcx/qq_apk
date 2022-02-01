@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:layout_gravity="center" style="@style/po"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView style="@style/pp" />
+    <TextView android:id="@id/evj" android:visibility="gone" android:text="@string/o6b" style="@style/pr" />
+    <TextView android:gravity="left" android:id="@id/evh" android:paddingBottom="20.0dip" android:text="@string/o62" style="@style/pq" />
+    <com.pay.ui.common.APComponentFollow android:layout_gravity="center" android:id="@id/evg" android:tag="mode=small" android:paddingBottom="0.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout style="@style/pn">
+        <Button android:id="@id/evf" android:text="@string/o65" style="@style/pl" />
+        <Button android:id="@id/evi" android:text="@string/o68" style="@style/pm" />
+    </LinearLayout>
+</LinearLayout>

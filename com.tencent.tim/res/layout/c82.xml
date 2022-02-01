@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.customviews.NonFocusingScrollView android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/a4f" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:layout_width="fill_parent" android:layout_height="12.0dip" />
+        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/m8j" android:focusable="true" android:layout_width="fill_parent" android:layout_height="@dimen/j2" android:contentDescription="@string/vr0" formItem:bgType="iwf" formItem:switchChecked="true" formItem:switchText="@string/vr0" />
+        <TextView android:id="@id/i75" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="@dimen/al0" android:layout_marginRight="@dimen/al3" android:layout_marginBottom="@dimen/akz" android:text="@string/mrr" android:contentDescription="@string/mrq" style="@style/w4" />
+        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/m8k" android:layout_width="fill_parent" android:layout_height="@dimen/j2" android:contentDescription="@string/vr1" formItem:bgType="jsv" formItem:switchChecked="true" formItem:switchText="@string/vr1" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/m8l" android:focusable="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/j2" android:contentDescription="@string/mrs" formItem:bgType="evy" formItem:leftText="提示音" formItem:rightText="默认" formItem:rightTextColor="cwg" formItem:showArrow="true" />
+        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/m8m" android:focusable="true" android:layout_width="fill_parent" android:layout_height="@dimen/j2" android:contentDescription="@string/vr4" formItem:bgType="abp" formItem:switchChecked="true" formItem:switchText="@string/vr4" />
+    </LinearLayout>
+</com.tencent.mobileqq.customviews.NonFocusingScrollView>

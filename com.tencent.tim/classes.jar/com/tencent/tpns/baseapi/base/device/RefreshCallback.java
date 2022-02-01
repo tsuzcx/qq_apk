@@ -1,0 +1,14 @@
+package com.tencent.tpns.baseapi.base.device;
+
+public abstract interface RefreshCallback
+{
+  public abstract void onFailure(int paramInt, String paramString);
+  
+  public abstract void onSuccess();
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes12.jar
+ * Qualified Name:     com.tencent.tpns.baseapi.base.device.RefreshCallback
+ * JD-Core Version:    0.7.0.1
+ */

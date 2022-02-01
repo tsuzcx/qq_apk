@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/ixn" android:background="#e60c0c0c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="17.0dip" android:textColor="@color/if" android:id="@id/ixm" android:padding="2.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginTop="20.0dip" android:text="@string/yq3" android:shadowColor="@color/by" android:shadowRadius="3.0" android:layout_alignParentLeft="true" android:contentDescription="@string/yq3" />
+    <ImageView android:layout_width="30.0dip" android:layout_height="26.0dip" android:layout_marginTop="166.5dip" android:src="@drawable/fih" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="31.0dip" android:textColor="@color/al3" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="214.0dip" android:text="@string/qed" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="320.0dip" android:text="@string/qec" android:layout_centerHorizontal="true" />
+    <Button android:textSize="18.0dip" android:textColor="@color/al3" android:id="@id/akc" android:background="@drawable/an0" android:layout_width="220.0dip" android:layout_height="40.0dip" android:layout_marginBottom="65.0dip" android:text="@string/qef" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:contentDescription="@string/qee" style="?android:borderlessButtonStyle" />
+</RelativeLayout>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/jxs" android:paddingLeft="@dimen/vh" android:paddingRight="@dimen/vh" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/jxy" android:background="@drawable/common_strip_setting_top" android:layout_width="fill_parent" android:layout_height="@dimen/j2" android:layout_marginTop="20.0dip" android:contentDescription="@string/rck">
+        <TextView android:textSize="@dimen/j1" android:textColor="@color/skin_black" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/k0a" android:duplicateParentState="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/b0p" android:layout_marginRight="@dimen/b0p" android:layout_weight="1.0" />
+        <TextView android:textSize="@dimen/j9" android:textColor="@color/skin_gray2_item" android:layout_gravity="center_vertical" android:id="@id/jxx" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:text="3人" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/jxw" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/b0p" android:src="@drawable/common_arrow_right_selector" />
+    </LinearLayout>
+    <FrameLayout android:id="@id/jxu" android:background="@drawable/common_strip_setting_bottom" android:paddingLeft="@dimen/b0p" android:paddingTop="@dimen/b0q" android:paddingRight="@dimen/b0p" android:paddingBottom="@dimen/b0o" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <GridView android:layout_gravity="center|left|top" android:id="@id/jxv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@color/ajr" android:horizontalSpacing="@dimen/b0n" android:verticalSpacing="0.0dip" android:stretchMode="spacingWidth" android:numColumns="6" android:overScrollMode="never" />
+    </FrameLayout>
+    <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2_item" android:gravity="center" android:id="@id/jxz" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" />
+    <LinearLayout android:orientation="vertical" android:paddingLeft="2.0dip" android:paddingTop="@dimen/i5" android:paddingRight="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:gravity="center" android:id="@id/k1n" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/i4o" style="@style/b9" />
+        <Button android:gravity="center" android:id="@id/jxt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i2" android:text="@string/arv" style="@style/bb" />
+    </LinearLayout>
+</LinearLayout>

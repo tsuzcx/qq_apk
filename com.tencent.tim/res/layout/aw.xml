@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="15.0dip">
+        <TextView android:id="@id/eo0" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/j4d" android:layout_alignParentLeft="true" style="@style/fk" />
+        <TextView android:id="@id/f0t" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/j4n" android:drawablePadding="7.0dip" android:layout_alignParentRight="true" android:contentDescription="@string/j3v" style="@style/fz" />
+    </RelativeLayout>
+    <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="8.0dip" android:src="@drawable/cyn" android:scaleType="fitXY" />
+    <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/i2a" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip">
+        <ImageView android:id="@id/i2_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/cyo" android:layout_centerVertical="true" />
+        <TextView android:id="@id/i2b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="@string/j3x" android:layout_toRightOf="@id/i2_" android:layout_centerVertical="true" style="@style/bj" />
+    </RelativeLayout>
+    <com.tencent.widget.GridView android:gravity="center" android:id="@id/i2q" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:listSelector="@drawable/bg_texture" android:horizontalSpacing="15.0dip" android:verticalSpacing="10.0dip" android:stretchMode="columnWidth" android:numColumns="4" />
+</LinearLayout>

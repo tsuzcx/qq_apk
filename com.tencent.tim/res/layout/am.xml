@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <RadioGroup android:id="@id/e5m" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip">
+        <RadioButton android:textColor="@color/aii" android:id="@id/l2z" android:padding="@dimen/aes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/j2o" />
+        <RadioButton android:textColor="@color/aii" android:id="@id/cwl" android:padding="@dimen/aes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/j2u" />
+    </RadioGroup>
+</LinearLayout>

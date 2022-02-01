@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/e2n" android:background="@drawable/common_strip_setting_bg" android:paddingLeft="16.0dip" android:paddingTop="12.0dip" android:paddingRight="16.0dip" android:paddingBottom="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBox android:id="@id/f2x" android:visibility="gone" android:clickable="false" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="16.0dip" android:button="@drawable/h_" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/vl" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_toRightOf="@id/f2x" />
+    <ImageView android:id="@id/eng" android:background="#80000000" android:visibility="gone" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_toRightOf="@id/f2x" />
+    <TextView android:textSize="17.0sp" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/w1" android:paddingBottom="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:singleLine="true" android:layout_toRightOf="@id/vl" />
+    <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:ellipsize="end" android:id="@id/w8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:singleLine="true" android:layout_toRightOf="@id/vl" android:layout_below="@id/w1" />
+    <ImageView android:id="@id/d5t" android:layout_width="7.0dip" android:layout_height="11.5dip" android:src="@drawable/skin_icon_arrow_right_normal" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

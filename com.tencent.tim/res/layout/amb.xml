@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/group_item_layout" android:background="@drawable/jh" android:layout_width="fill_parent" android:layout_height="34.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ProgressBar android:id="@id/dx0" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="wrap_content" android:layout_marginLeft="17.0dip" android:indeterminateDrawable="@drawable/jt" />
+    <TextView android:textSize="@dimen/aw5" android:textColor="@color/skin_gray2_theme_version2" android:ellipsize="end" android:gravity="center|left" android:id="@id/group_name" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="16.0dip" android:layout_marginTop="11.0dip" android:layout_marginRight="17.0dip" android:layout_marginBottom="7.0dip" android:text="7天内" android:maxLines="1" android:maxEms="11" android:singleLine="true" android:includeFontPadding="false" />
+    <TextView android:textSize="12.0sp" android:textColor="@color/skin_gray2" android:gravity="center|right" android:id="@id/contact_count" android:layout_width="100.0dip" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:maxLines="1" android:layout_alignParentRight="true" />
+</LinearLayout>

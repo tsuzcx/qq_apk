@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/a02"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/b64" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/aik">
+        <View android:id="@id/icon" android:background="@drawable/i1l" style="@style/bw" />
+        <LinearLayout android:orientation="horizontal" style="@style/by">
+            <TextView android:textSize="@dimen/uj" android:textColor="@color/skin_black_theme_version2" android:ellipsize="middle" android:id="@id/jj7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" />
+        </LinearLayout>
+        <ImageView android:id="@id/dcv" style="@style/bv" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/llx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/a06" android:layout_marginRight="@dimen/a03">
+        <com.tencent.image.URLImageView android:id="@id/lly" android:layout_width="72.0dip" android:layout_height="72.0dip" android:scaleType="centerCrop" />
+        <ImageView android:layout_width="2.0dip" android:layout_height="fill_parent" />
+        <com.tencent.image.URLImageView android:id="@id/llz" android:layout_width="72.0dip" android:layout_height="72.0dip" android:scaleType="centerCrop" />
+        <ImageView android:layout_width="2.0dip" android:layout_height="fill_parent" />
+        <com.tencent.image.URLImageView android:id="@id/lm0" android:layout_width="72.0dip" android:layout_height="72.0dip" android:scaleType="centerCrop" />
+        <ImageView android:layout_width="2.0dip" android:layout_height="fill_parent" />
+        <com.tencent.image.URLImageView android:id="@id/lm1" android:layout_width="72.0dip" android:layout_height="72.0dip" android:scaleType="centerCrop" />
+    </LinearLayout>
+</LinearLayout>

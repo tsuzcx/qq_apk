@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/skin_group_list_sub_entry" android:layout_width="fill_parent" android:layout_height="@dimen/xu" android:minHeight="@dimen/xu"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="16.0dip" android:text="@string/cim" android:includeFontPadding="false" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/lgf" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginRight="16.0dip" android:layout_alignParentRight="true">
+        <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2" android:layout_gravity="center_vertical" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/iyr" android:singleLine="true" android:includeFontPadding="false" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/yw" android:duplicateParentState="true" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="4.0dip" android:src="@drawable/common_arrow_right_selector" />
+    </LinearLayout>
+</RelativeLayout>

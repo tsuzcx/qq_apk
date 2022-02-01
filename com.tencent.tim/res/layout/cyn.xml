@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/n3e" android:background="@drawable/evt" android:paddingLeft="@dimen/bua" android:layout_width="fill_parent" android:layout_height="@dimen/bue">
+        <TextView android:textSize="@dimen/buh" android:textColor="@color/awu" android:ellipsize="end" android:id="@id/n3g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/x6o" android:singleLine="true" android:layout_toLeftOf="@id/n3f" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/n3f" android:padding="@dimen/buf" android:layout_width="@dimen/bug" android:layout_height="@dimen/bug" android:layout_marginLeft="8.0dip" android:src="@drawable/eqm" android:scaleType="centerInside" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <ListView android:id="@id/n3d" android:background="@color/axc" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/bue" android:divider="@color/k8" android:dividerHeight="0.100000024dip" android:footerDividersEnabled="false" android:overScrollFooter="@android:color/transparent" />
+</FrameLayout>

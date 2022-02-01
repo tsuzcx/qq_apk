@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/ab5"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.qqmail.view.QMContentLoadingView android:layout_gravity="top" android:id="@id/mun" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <GridView android:layout_gravity="center|top" android:id="@id/n2u" android:fadingEdge="none" android:clipChildren="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="0.0dip" android:layout_marginTop="@dimen/btw" android:layout_marginRight="0.0dip" android:layout_marginBottom="@dimen/bjl" android:listSelector="@drawable/eko" android:horizontalSpacing="@dimen/bgr" android:verticalSpacing="@dimen/bgr" android:stretchMode="columnWidth" android:columnWidth="@dimen/bjs" android:numColumns="auto_fit" />
+    <TextView android:textSize="13.0sp" android:textColor="#fff3f3f3" android:id="@id/jlz" android:background="#80000000" android:paddingLeft="12.0dip" android:paddingTop="1.0dip" android:paddingRight="12.0dip" android:paddingBottom="1.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/btw" android:text="时间" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/big_image_layout" android:background="@null" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="0.0dip" android:layout_marginBottom="@dimen/biy">
+            <ImageView android:background="@color/axj" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/biz" />
+            <com.tencent.qqmail.activity.media.ImageViewPager android:id="@id/n30" android:background="@color/axj" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/btw" android:layout_marginBottom="@dimen/biz" />
+            <CheckBox android:id="@id/mfp" android:layout_marginRight="20.0dip" android:layout_marginBottom="82.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" style="@style/ab3" />
+            <ImageView android:id="@id/mg2" android:background="@drawable/i6r" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+    </LinearLayout>
+    <com.tencent.qqmail.view.QMTopBar android:id="@id/nph" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.qqmail.activity.media.QMMediaBottom android:id="@id/nb3" style="@style/afj">
+        <TextView android:textSize="14.0sp" android:textColor="@color/aii" android:layout_gravity="center|left" android:id="@id/nxw" android:paddingLeft="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:enabled="false" android:layout_gravity="center|right" android:id="@id/km9" android:minWidth="124.0dip" android:text="@string/wbi" style="@style/aa4" />
+    </com.tencent.qqmail.activity.media.QMMediaBottom>
+</FrameLayout>

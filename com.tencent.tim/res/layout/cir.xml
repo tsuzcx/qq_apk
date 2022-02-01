@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/mm7" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <View android:id="@id/azw" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <View android:id="@id/azx" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <View android:id="@id/mm8" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <View android:id="@id/mm4" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <View android:id="@id/mm_" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <View android:id="@id/mma" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <View android:id="@id/mmb" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <View android:id="@id/azy" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <View android:id="@id/mm9" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <View android:id="@id/mm6" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <View android:id="@id/mm5" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <View android:id="@id/o65" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</LinearLayout>

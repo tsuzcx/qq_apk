@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="46.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/bf9" android:visibility="gone" android:layout_width="40.0dip" android:layout_height="fill_parent" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
+        <ImageView android:id="@id/bf_" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/bxk" android:layout_centerInParent="true" android:contentDescription="@string/ua2" />
+    </RelativeLayout>
+    <ImageView android:id="@id/dv9" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginLeft="10.0dip" android:layout_toRightOf="@id/bf9" android:layout_centerVertical="true" android:layout_alignWithParentIfMissing="true" />
+    <TextView android:textSize="@dimen/ri" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/tv_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:maxLines="1" android:layout_toLeftOf="@id/k_u" android:layout_toRightOf="@id/dv9" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/rj" android:textColor="@color/skin_gray6" android:ellipsize="end" android:id="@id/k_u" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:singleLine="true" android:drawableRight="@drawable/common_arrow_right_selector" android:drawablePadding="8.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>
