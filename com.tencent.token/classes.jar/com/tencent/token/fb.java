@@ -1,31 +1,12 @@
 package com.tencent.token;
 
-public abstract class fb
-  implements Runnable
+public abstract interface fb
 {
-  protected final String b;
+  public abstract void a(fa paramfa, String paramString);
   
-  public fb(String paramString, Object... paramVarArgs)
-  {
-    this.b = fc.a(paramString, paramVarArgs);
-  }
+  public abstract void a(fa paramfa, byte[] paramArrayOfByte);
   
-  protected abstract void c();
-  
-  public final void run()
-  {
-    String str = Thread.currentThread().getName();
-    Thread.currentThread().setName(this.b);
-    try
-    {
-      c();
-      return;
-    }
-    finally
-    {
-      Thread.currentThread().setName(str);
-    }
-  }
+  public abstract boolean a(fa paramfa, int paramInt);
 }
 
 

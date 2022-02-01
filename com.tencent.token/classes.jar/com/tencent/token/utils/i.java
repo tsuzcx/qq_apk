@@ -9,14 +9,14 @@ import com.tencent.token.global.RqdApplication;
 public class i
 {
   private static final String a;
-  private static SharedPreferences b = RqdApplication.l().getSharedPreferences(a, 0);
+  private static SharedPreferences b = RqdApplication.n().getSharedPreferences(a, 0);
   private static SharedPreferences.Editor c = b.edit();
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("SharedPreferencesHelper.for.");
-    localStringBuilder.append(RqdApplication.l().getPackageName());
+    localStringBuilder.append(RqdApplication.n().getPackageName());
     a = localStringBuilder.toString();
   }
   

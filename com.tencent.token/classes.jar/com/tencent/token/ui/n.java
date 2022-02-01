@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.tencent.token.core.bean.MbInfoResult;
 import com.tencent.token.core.bean.MbInfoResult.MbInfoItem;
 import com.tencent.token.core.bean.MbInfoResult.MbInfoItemDetail;
-import com.tencent.token.dj;
+import com.tencent.token.dk;
 import java.util.ArrayList;
 
 class n
@@ -28,7 +28,7 @@ class n
   
   private void a(View paramView, final int paramInt)
   {
-    Object localObject = dj.a().c();
+    Object localObject = dk.a().c();
     if ((localObject == null) && (!this.a.mIsIniting))
     {
       this.a.getMbInfo();
@@ -40,9 +40,9 @@ class n
         return;
       }
       localObject = (MbInfoResult.MbInfoItem)((MbInfoResult)localObject).mMbInfoItems.get(paramInt);
-      TextView localTextView1 = (TextView)paramView.findViewById(2131166222);
-      TextView localTextView2 = (TextView)paramView.findViewById(2131166221);
-      TextView localTextView3 = (TextView)paramView.findViewById(2131166223);
+      TextView localTextView1 = (TextView)paramView.findViewById(2131166224);
+      TextView localTextView2 = (TextView)paramView.findViewById(2131166223);
+      TextView localTextView3 = (TextView)paramView.findViewById(2131166225);
       if (((MbInfoResult.MbInfoItem)localObject).mName != null) {
         localTextView1.setText(((MbInfoResult.MbInfoItem)localObject).mName);
       }
@@ -60,7 +60,7 @@ class n
           {
             paramAnonymousView = new Intent(n.a(n.this), UtilsModSetMobileStep1Activity.class);
             StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append(n.a(n.this).getResources().getString(2131493571));
+            localStringBuilder.append(n.a(n.this).getResources().getString(2131493572));
             localStringBuilder.append(this.a.mName);
             paramAnonymousView.putExtra("title", localStringBuilder.toString());
             paramAnonymousView.putExtra("op_type", 1);
@@ -79,7 +79,7 @@ class n
   
   public int getCount()
   {
-    MbInfoResult localMbInfoResult = dj.a().c();
+    MbInfoResult localMbInfoResult = dk.a().c();
     if ((localMbInfoResult != null) && (localMbInfoResult.mMbInfoItems != null)) {
       return localMbInfoResult.mMbInfoItems.size();
     }

@@ -9,7 +9,7 @@ public class UtilsMbInfoFeedbackMobileUsingSuccActivity
 {
   private void initUI()
   {
-    findViewById(2131165489).setOnClickListener(new View.OnClickListener()
+    findViewById(2131165491).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {

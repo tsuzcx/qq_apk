@@ -1,12 +1,12 @@
 package com.tencent.token.core.protocolcenter;
 
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.e;
 import java.util.concurrent.Callable;
 
 public class h
 {
-  public static Callable<e> a(do paramdo)
+  public static Callable<e> a(dp paramdp)
   {
     new Callable()
     {

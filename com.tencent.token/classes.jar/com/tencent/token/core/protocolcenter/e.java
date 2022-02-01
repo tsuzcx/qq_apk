@@ -5,9 +5,9 @@ import android.os.HandlerThread;
 import android.os.Message;
 import android.os.SystemClock;
 import android.view.MotionEvent;
-import com.tencent.token.by;
-import com.tencent.token.do;
+import com.tencent.token.bz;
 import com.tencent.token.dp;
+import com.tencent.token.dq;
 import com.tencent.token.upload.useraction.a;
 import com.tencent.token.utils.l;
 import java.util.Collections;
@@ -24,18 +24,18 @@ public class e
   private b b = new b("");
   private a c = new a()
   {
-    public void a(do paramAnonymousdo)
+    public void a(dp paramAnonymousdp)
     {
       MotionEvent localMotionEvent = a.a().b();
       if (localMotionEvent != null)
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("cginame:");
-        localStringBuilder.append(paramAnonymousdo.a);
+        localStringBuilder.append(paramAnonymousdp.a);
         com.tencent.token.global.g.c(localStringBuilder.toString());
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("pagename:");
-        localStringBuilder.append(paramAnonymousdo.i);
+        localStringBuilder.append(paramAnonymousdp.i);
         com.tencent.token.global.g.c(localStringBuilder.toString());
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("getRawX:");
@@ -55,48 +55,48 @@ public class e
         localStringBuilder.append("touch_type:");
         localStringBuilder.append(i);
         com.tencent.token.global.g.c(localStringBuilder.toString());
-        a.a().a(i, paramAnonymousdo.a, paramAnonymousdo.i, "", "", "", (int)localMotionEvent.getRawX(), (int)localMotionEvent.getRawY(), l);
+        a.a().a(i, paramAnonymousdp.a, paramAnonymousdp.i, "", "", "", (int)localMotionEvent.getRawX(), (int)localMotionEvent.getRawY(), l);
         a.a().d();
       }
     }
     
-    public void a(do paramAnonymousdo, com.tencent.token.global.e paramAnonymouse)
+    public void a(dp paramAnonymousdp, com.tencent.token.global.e paramAnonymouse)
     {
       if (paramAnonymouse.b())
       {
-        by.a().a(System.currentTimeMillis(), 0, paramAnonymousdo.a, 0, "", l.k());
-        if ((!paramAnonymousdo.e) && (paramAnonymousdo.d != null))
+        bz.a().a(System.currentTimeMillis(), 0, paramAnonymousdp.a, 0, "", l.k());
+        if ((!paramAnonymousdp.e) && (paramAnonymousdp.d != null))
         {
-          paramAnonymouse = paramAnonymousdo.d.obtainMessage(paramAnonymousdo.f);
+          paramAnonymouse = paramAnonymousdp.d.obtainMessage(paramAnonymousdp.f);
           paramAnonymouse.arg1 = 0;
           paramAnonymouse.sendToTarget();
-          paramAnonymousdo.e = true;
+          paramAnonymousdp.e = true;
         }
       }
       else
       {
         if (paramAnonymouse.a < 10000) {
-          by.a().a(System.currentTimeMillis(), 0, paramAnonymousdo.a, 0, "", l.k());
+          bz.a().a(System.currentTimeMillis(), 0, paramAnonymousdp.a, 0, "", l.k());
         } else {
-          by.a().a(System.currentTimeMillis(), by.a(paramAnonymouse.a), paramAnonymousdo.a, 1, paramAnonymouse.b, l.k());
+          bz.a().a(System.currentTimeMillis(), bz.a(paramAnonymouse.a), paramAnonymousdp.a, 1, paramAnonymouse.b, l.k());
         }
-        if ((!paramAnonymousdo.e) && (paramAnonymousdo.d != null))
+        if ((!paramAnonymousdp.e) && (paramAnonymousdp.d != null))
         {
-          Message localMessage = paramAnonymousdo.d.obtainMessage(paramAnonymousdo.f);
+          Message localMessage = paramAnonymousdp.d.obtainMessage(paramAnonymousdp.f);
           localMessage.arg1 = paramAnonymouse.a;
           localMessage.obj = paramAnonymouse;
           localMessage.sendToTarget();
-          paramAnonymousdo.e = true;
+          paramAnonymousdp.e = true;
         }
       }
-      e.a(e.this).b(paramAnonymousdo);
+      e.a(e.this).b(paramAnonymousdp);
     }
   };
   
-  public int a(do paramdo)
+  public int a(dp paramdp)
   {
-    paramdo.l = this.c;
-    this.b.a(paramdo);
+    paramdp.l = this.c;
+    this.b.a(paramdp);
     return 0;
   }
   
@@ -106,59 +106,59 @@ public class e
     return 0;
   }
   
-  public dp b(do paramdo)
+  public dq b(dp paramdp)
   {
-    d locald = b.a(paramdo.a);
+    d locald = b.a(paramdp.a);
     if (locald == null) {
       return null;
     }
-    return locald.d(paramdo);
+    return locald.d(paramdp);
   }
   
   public static abstract interface a
   {
-    public abstract void a(do paramdo);
+    public abstract void a(dp paramdp);
     
-    public abstract void a(do paramdo, com.tencent.token.global.e parame);
+    public abstract void a(dp paramdp, com.tencent.token.global.e parame);
   }
   
   class b
     extends HandlerThread
   {
     private Handler b = new Handler();
-    private Map<do, Future<com.tencent.token.global.e>> c = Collections.synchronizedMap(new HashMap());
+    private Map<dp, Future<com.tencent.token.global.e>> c = Collections.synchronizedMap(new HashMap());
     
     public b(String paramString)
     {
       super();
     }
     
-    public void a(final do paramdo)
+    public void a(final dp paramdp)
     {
-      paramdo.l.a(paramdo);
+      paramdp.l.a(paramdp);
       this.b.post(new Runnable()
       {
         public void run()
         {
           Object localObject;
-          switch (paramdo.b)
+          switch (paramdp.b)
           {
           default: 
             localObject = null;
             break;
           case 3: 
-            localObject = c.a(paramdo);
+            localObject = c.a(paramdp);
             break;
           case 2: 
-            localObject = g.a(paramdo);
+            localObject = g.a(paramdp);
             break;
           case 1: 
-            localObject = h.a(paramdo);
+            localObject = h.a(paramdp);
           }
           if (localObject != null)
           {
             localObject = e.b(e.this).submit((Callable)localObject);
-            e.b.a(e.b.this).put(paramdo, localObject);
+            e.b.a(e.b.this).put(paramdp, localObject);
           }
         }
       });
@@ -172,7 +172,7 @@ public class e
           //   1: getfield 20	com/tencent/token/core/protocolcenter/e$b$2:b	Lcom/tencent/token/core/protocolcenter/e$b;
           //   4: invokestatic 38	com/tencent/token/core/protocolcenter/e$b:a	(Lcom/tencent/token/core/protocolcenter/e$b;)Ljava/util/Map;
           //   7: aload_0
-          //   8: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
+          //   8: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
           //   11: invokeinterface 44 2 0
           //   16: checkcast 46	java/util/concurrent/Future
           //   19: astore_2
@@ -192,20 +192,20 @@ public class e
           //   47: checkcast 52	com/tencent/token/global/e
           //   50: astore_2
           //   51: aload_0
-          //   52: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
-          //   55: getfield 63	com/tencent/token/do:e	Z
+          //   52: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
+          //   55: getfield 63	com/tencent/token/dp:e	Z
           //   58: ifne +520 -> 578
           //   61: aload_0
-          //   62: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
-          //   65: getfield 67	com/tencent/token/do:d	Landroid/os/Handler;
+          //   62: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
+          //   65: getfield 67	com/tencent/token/dp:d	Landroid/os/Handler;
           //   68: ifnonnull +4 -> 72
           //   71: return
           //   72: aload_0
-          //   73: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
-          //   76: getfield 67	com/tencent/token/do:d	Landroid/os/Handler;
+          //   73: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
+          //   76: getfield 67	com/tencent/token/dp:d	Landroid/os/Handler;
           //   79: aload_0
-          //   80: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
-          //   83: getfield 71	com/tencent/token/do:f	I
+          //   80: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
+          //   83: getfield 71	com/tencent/token/dp:f	I
           //   86: invokevirtual 77	android/os/Handler:obtainMessage	(I)Landroid/os/Message;
           //   89: astore_1
           //   90: aload_1
@@ -218,9 +218,9 @@ public class e
           //   103: aload_1
           //   104: invokevirtual 91	android/os/Message:sendToTarget	()V
           //   107: aload_0
-          //   108: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
+          //   108: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
           //   111: iconst_1
-          //   112: putfield 63	com/tencent/token/do:e	Z
+          //   112: putfield 63	com/tencent/token/dp:e	Z
           //   115: return
           //   116: astore_2
           //   117: goto +462 -> 579
@@ -235,8 +235,8 @@ public class e
           //   135: pop
           //   136: aload_3
           //   137: aload_0
-          //   138: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
-          //   141: getfield 104	com/tencent/token/do:i	Ljava/lang/String;
+          //   138: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
+          //   141: getfield 104	com/tencent/token/dp:i	Ljava/lang/String;
           //   144: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
           //   147: pop
           //   148: aload_3
@@ -261,20 +261,20 @@ public class e
           //   184: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
           //   187: invokevirtual 119	com/tencent/token/global/e:a	(ILjava/lang/String;)V
           //   190: aload_0
-          //   191: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
-          //   194: getfield 63	com/tencent/token/do:e	Z
+          //   191: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
+          //   194: getfield 63	com/tencent/token/dp:e	Z
           //   197: ifne +381 -> 578
           //   200: aload_0
-          //   201: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
-          //   204: getfield 67	com/tencent/token/do:d	Landroid/os/Handler;
+          //   201: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
+          //   204: getfield 67	com/tencent/token/dp:d	Landroid/os/Handler;
           //   207: ifnonnull +4 -> 211
           //   210: return
           //   211: aload_0
-          //   212: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
-          //   215: getfield 67	com/tencent/token/do:d	Landroid/os/Handler;
+          //   212: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
+          //   215: getfield 67	com/tencent/token/dp:d	Landroid/os/Handler;
           //   218: aload_0
-          //   219: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
-          //   222: getfield 71	com/tencent/token/do:f	I
+          //   219: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
+          //   222: getfield 71	com/tencent/token/dp:f	I
           //   225: invokevirtual 77	android/os/Handler:obtainMessage	(I)Landroid/os/Message;
           //   228: astore_2
           //   229: aload_2
@@ -297,8 +297,8 @@ public class e
           //   263: pop
           //   264: aload_2
           //   265: aload_0
-          //   266: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
-          //   269: getfield 104	com/tencent/token/do:i	Ljava/lang/String;
+          //   266: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
+          //   269: getfield 104	com/tencent/token/dp:i	Ljava/lang/String;
           //   272: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
           //   275: pop
           //   276: aload_2
@@ -308,20 +308,20 @@ public class e
           //   284: sipush 200
           //   287: invokevirtual 124	com/tencent/token/global/e:b	(I)V
           //   290: aload_0
-          //   291: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
-          //   294: getfield 63	com/tencent/token/do:e	Z
+          //   291: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
+          //   294: getfield 63	com/tencent/token/dp:e	Z
           //   297: ifne +281 -> 578
           //   300: aload_0
-          //   301: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
-          //   304: getfield 67	com/tencent/token/do:d	Landroid/os/Handler;
+          //   301: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
+          //   304: getfield 67	com/tencent/token/dp:d	Landroid/os/Handler;
           //   307: ifnonnull +4 -> 311
           //   310: return
           //   311: aload_0
-          //   312: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
-          //   315: getfield 67	com/tencent/token/do:d	Landroid/os/Handler;
+          //   312: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
+          //   315: getfield 67	com/tencent/token/dp:d	Landroid/os/Handler;
           //   318: aload_0
-          //   319: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
-          //   322: getfield 71	com/tencent/token/do:f	I
+          //   319: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
+          //   322: getfield 71	com/tencent/token/dp:f	I
           //   325: invokevirtual 77	android/os/Handler:obtainMessage	(I)Landroid/os/Message;
           //   328: astore_2
           //   329: aload_2
@@ -345,8 +345,8 @@ public class e
           //   364: pop
           //   365: aload_3
           //   366: aload_0
-          //   367: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
-          //   370: getfield 104	com/tencent/token/do:i	Ljava/lang/String;
+          //   367: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
+          //   370: getfield 104	com/tencent/token/dp:i	Ljava/lang/String;
           //   373: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
           //   376: pop
           //   377: aload_3
@@ -371,20 +371,20 @@ public class e
           //   413: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
           //   416: invokevirtual 119	com/tencent/token/global/e:a	(ILjava/lang/String;)V
           //   419: aload_0
-          //   420: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
-          //   423: getfield 63	com/tencent/token/do:e	Z
+          //   420: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
+          //   423: getfield 63	com/tencent/token/dp:e	Z
           //   426: ifne +152 -> 578
           //   429: aload_0
-          //   430: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
-          //   433: getfield 67	com/tencent/token/do:d	Landroid/os/Handler;
+          //   430: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
+          //   433: getfield 67	com/tencent/token/dp:d	Landroid/os/Handler;
           //   436: ifnonnull +4 -> 440
           //   439: return
           //   440: aload_0
-          //   441: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
-          //   444: getfield 67	com/tencent/token/do:d	Landroid/os/Handler;
+          //   441: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
+          //   444: getfield 67	com/tencent/token/dp:d	Landroid/os/Handler;
           //   447: aload_0
-          //   448: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
-          //   451: getfield 71	com/tencent/token/do:f	I
+          //   448: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
+          //   451: getfield 71	com/tencent/token/dp:f	I
           //   454: invokevirtual 77	android/os/Handler:obtainMessage	(I)Landroid/os/Message;
           //   457: astore_2
           //   458: aload_2
@@ -407,8 +407,8 @@ public class e
           //   492: pop
           //   493: aload_2
           //   494: aload_0
-          //   495: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
-          //   498: getfield 104	com/tencent/token/do:i	Ljava/lang/String;
+          //   495: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
+          //   498: getfield 104	com/tencent/token/dp:i	Ljava/lang/String;
           //   501: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
           //   504: pop
           //   505: aload_2
@@ -418,20 +418,20 @@ public class e
           //   513: sipush 200
           //   516: invokevirtual 124	com/tencent/token/global/e:b	(I)V
           //   519: aload_0
-          //   520: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
-          //   523: getfield 63	com/tencent/token/do:e	Z
+          //   520: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
+          //   523: getfield 63	com/tencent/token/dp:e	Z
           //   526: ifne +52 -> 578
           //   529: aload_0
-          //   530: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
-          //   533: getfield 67	com/tencent/token/do:d	Landroid/os/Handler;
+          //   530: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
+          //   533: getfield 67	com/tencent/token/dp:d	Landroid/os/Handler;
           //   536: ifnonnull +4 -> 540
           //   539: return
           //   540: aload_0
-          //   541: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
-          //   544: getfield 67	com/tencent/token/do:d	Landroid/os/Handler;
+          //   541: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
+          //   544: getfield 67	com/tencent/token/dp:d	Landroid/os/Handler;
           //   547: aload_0
-          //   548: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
-          //   551: getfield 71	com/tencent/token/do:f	I
+          //   548: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
+          //   551: getfield 71	com/tencent/token/dp:f	I
           //   554: invokevirtual 77	android/os/Handler:obtainMessage	(I)Landroid/os/Message;
           //   557: astore_2
           //   558: aload_2
@@ -446,20 +446,20 @@ public class e
           //   575: goto -468 -> 107
           //   578: return
           //   579: aload_0
-          //   580: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
-          //   583: getfield 63	com/tencent/token/do:e	Z
+          //   580: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
+          //   583: getfield 63	com/tencent/token/dp:e	Z
           //   586: ifne +57 -> 643
           //   589: aload_0
-          //   590: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
-          //   593: getfield 67	com/tencent/token/do:d	Landroid/os/Handler;
+          //   590: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
+          //   593: getfield 67	com/tencent/token/dp:d	Landroid/os/Handler;
           //   596: ifnonnull +4 -> 600
           //   599: return
           //   600: aload_0
-          //   601: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
-          //   604: getfield 67	com/tencent/token/do:d	Landroid/os/Handler;
+          //   601: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
+          //   604: getfield 67	com/tencent/token/dp:d	Landroid/os/Handler;
           //   607: aload_0
-          //   608: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
-          //   611: getfield 71	com/tencent/token/do:f	I
+          //   608: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
+          //   611: getfield 71	com/tencent/token/dp:f	I
           //   614: invokevirtual 77	android/os/Handler:obtainMessage	(I)Landroid/os/Message;
           //   617: astore_3
           //   618: aload_3
@@ -472,9 +472,9 @@ public class e
           //   631: aload_3
           //   632: invokevirtual 91	android/os/Message:sendToTarget	()V
           //   635: aload_0
-          //   636: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/do;
+          //   636: getfield 22	com/tencent/token/core/protocolcenter/e$b$2:a	Lcom/tencent/token/dp;
           //   639: iconst_1
-          //   640: putfield 63	com/tencent/token/do:e	Z
+          //   640: putfield 63	com/tencent/token/dp:e	Z
           //   643: aload_2
           //   644: athrow
           //   645: astore_2
@@ -525,7 +525,7 @@ public class e
           //   579	599	655	java/lang/Exception
           //   600	643	655	java/lang/Exception
         }
-      }, paramdo.h);
+      }, paramdp.h);
     }
     
     public void a(final String paramString)
@@ -555,16 +555,16 @@ public class e
           //   46: astore 4
           //   48: aload_1
           //   49: invokeinterface 70 1 0
-          //   54: checkcast 72	com/tencent/token/do
+          //   54: checkcast 72	com/tencent/token/dp
           //   57: astore_1
           //   58: aload_1
-          //   59: getfield 75	com/tencent/token/do:i	Ljava/lang/String;
+          //   59: getfield 75	com/tencent/token/dp:i	Ljava/lang/String;
           //   62: ifnull -44 -> 18
           //   65: aload_0
           //   66: getfield 22	com/tencent/token/core/protocolcenter/e$b$3:a	Ljava/lang/String;
           //   69: ifnull -51 -> 18
           //   72: aload_1
-          //   73: getfield 75	com/tencent/token/do:i	Ljava/lang/String;
+          //   73: getfield 75	com/tencent/token/dp:i	Ljava/lang/String;
           //   76: aload_0
           //   77: getfield 22	com/tencent/token/core/protocolcenter/e$b$3:a	Ljava/lang/String;
           //   80: invokevirtual 81	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
@@ -585,13 +585,13 @@ public class e
           //   119: checkcast 90	com/tencent/token/global/e
           //   122: astore 4
           //   124: aload_1
-          //   125: getfield 98	com/tencent/token/do:e	Z
+          //   125: getfield 98	com/tencent/token/dp:e	Z
           //   128: ifne -110 -> 18
           //   131: aload_1
-          //   132: getfield 102	com/tencent/token/do:d	Landroid/os/Handler;
+          //   132: getfield 102	com/tencent/token/dp:d	Landroid/os/Handler;
           //   135: ifnull -117 -> 18
           //   138: aload_1
-          //   139: getfield 102	com/tencent/token/do:d	Landroid/os/Handler;
+          //   139: getfield 102	com/tencent/token/dp:d	Landroid/os/Handler;
           //   142: sipush 2002
           //   145: invokevirtual 108	android/os/Handler:obtainMessage	(I)Landroid/os/Message;
           //   148: astore_3
@@ -606,7 +606,7 @@ public class e
           //   165: invokevirtual 123	android/os/Message:sendToTarget	()V
           //   168: aload_1
           //   169: iconst_1
-          //   170: putfield 98	com/tencent/token/do:e	Z
+          //   170: putfield 98	com/tencent/token/dp:e	Z
           //   173: goto -155 -> 18
           //   176: astore_2
           //   177: goto +271 -> 448
@@ -630,10 +630,10 @@ public class e
           //   216: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
           //   219: invokevirtual 140	com/tencent/token/global/e:a	(ILjava/lang/String;)V
           //   222: aload_1
-          //   223: getfield 98	com/tencent/token/do:e	Z
+          //   223: getfield 98	com/tencent/token/dp:e	Z
           //   226: ifne -208 -> 18
           //   229: aload_1
-          //   230: getfield 102	com/tencent/token/do:d	Landroid/os/Handler;
+          //   230: getfield 102	com/tencent/token/dp:d	Landroid/os/Handler;
           //   233: ifnull -215 -> 18
           //   236: goto +118 -> 354
           //   239: new 125	java/lang/StringBuilder
@@ -646,7 +646,7 @@ public class e
           //   255: pop
           //   256: aload 4
           //   258: aload_1
-          //   259: getfield 75	com/tencent/token/do:i	Ljava/lang/String;
+          //   259: getfield 75	com/tencent/token/dp:i	Ljava/lang/String;
           //   262: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
           //   265: pop
           //   266: aload 4
@@ -656,10 +656,10 @@ public class e
           //   275: sipush 10024
           //   278: invokevirtual 149	com/tencent/token/global/e:b	(I)V
           //   281: aload_1
-          //   282: getfield 98	com/tencent/token/do:e	Z
+          //   282: getfield 98	com/tencent/token/dp:e	Z
           //   285: ifne -267 -> 18
           //   288: aload_1
-          //   289: getfield 102	com/tencent/token/do:d	Landroid/os/Handler;
+          //   289: getfield 102	com/tencent/token/dp:d	Landroid/os/Handler;
           //   292: ifnull -274 -> 18
           //   295: goto +59 -> 354
           //   298: astore 4
@@ -682,13 +682,13 @@ public class e
           //   334: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
           //   337: invokevirtual 140	com/tencent/token/global/e:a	(ILjava/lang/String;)V
           //   340: aload_1
-          //   341: getfield 98	com/tencent/token/do:e	Z
+          //   341: getfield 98	com/tencent/token/dp:e	Z
           //   344: ifne -326 -> 18
           //   347: aload_1
-          //   348: getfield 102	com/tencent/token/do:d	Landroid/os/Handler;
+          //   348: getfield 102	com/tencent/token/dp:d	Landroid/os/Handler;
           //   351: ifnull -333 -> 18
           //   354: aload_1
-          //   355: getfield 102	com/tencent/token/do:d	Landroid/os/Handler;
+          //   355: getfield 102	com/tencent/token/dp:d	Landroid/os/Handler;
           //   358: sipush 2002
           //   361: invokevirtual 108	android/os/Handler:obtainMessage	(I)Landroid/os/Message;
           //   364: astore 4
@@ -712,7 +712,7 @@ public class e
           //   405: pop
           //   406: aload 4
           //   408: aload_1
-          //   409: getfield 75	com/tencent/token/do:i	Ljava/lang/String;
+          //   409: getfield 75	com/tencent/token/dp:i	Ljava/lang/String;
           //   412: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
           //   415: pop
           //   416: aload 4
@@ -722,20 +722,20 @@ public class e
           //   425: sipush 10024
           //   428: invokevirtual 149	com/tencent/token/global/e:b	(I)V
           //   431: aload_1
-          //   432: getfield 98	com/tencent/token/do:e	Z
+          //   432: getfield 98	com/tencent/token/dp:e	Z
           //   435: ifne -417 -> 18
           //   438: aload_1
-          //   439: getfield 102	com/tencent/token/do:d	Landroid/os/Handler;
+          //   439: getfield 102	com/tencent/token/dp:d	Landroid/os/Handler;
           //   442: ifnull -424 -> 18
           //   445: goto -91 -> 354
           //   448: aload_1
-          //   449: getfield 98	com/tencent/token/do:e	Z
+          //   449: getfield 98	com/tencent/token/dp:e	Z
           //   452: ifne +47 -> 499
           //   455: aload_1
-          //   456: getfield 102	com/tencent/token/do:d	Landroid/os/Handler;
+          //   456: getfield 102	com/tencent/token/dp:d	Landroid/os/Handler;
           //   459: ifnull +40 -> 499
           //   462: aload_1
-          //   463: getfield 102	com/tencent/token/do:d	Landroid/os/Handler;
+          //   463: getfield 102	com/tencent/token/dp:d	Landroid/os/Handler;
           //   466: sipush 2002
           //   469: invokevirtual 108	android/os/Handler:obtainMessage	(I)Landroid/os/Message;
           //   472: astore 4
@@ -750,7 +750,7 @@ public class e
           //   491: invokevirtual 123	android/os/Message:sendToTarget	()V
           //   494: aload_1
           //   495: iconst_1
-          //   496: putfield 98	com/tencent/token/do:e	Z
+          //   496: putfield 98	com/tencent/token/dp:e	Z
           //   499: aload_2
           //   500: athrow
           //   501: return
@@ -788,14 +788,14 @@ public class e
       });
     }
     
-    public void b(final do paramdo)
+    public void b(final dp paramdp)
     {
       this.b.post(new Runnable()
       {
         public void run()
         {
-          e.b.a(e.b.this).remove(paramdo);
-          paramdo.a();
+          e.b.a(e.b.this).remove(paramdp);
+          paramdp.a();
         }
       });
     }

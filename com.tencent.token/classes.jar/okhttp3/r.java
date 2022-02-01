@@ -1,6 +1,6 @@
 package okhttp3;
 
-import com.tencent.token.fc;
+import com.tencent.token.ff;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -127,7 +127,7 @@ public final class r
             if ((k > 32) && (k < 127)) {
               i += 1;
             } else {
-              throw new IllegalArgumentException(fc.a("Unexpected char %#04x at %d in header name: %s", new Object[] { Integer.valueOf(k), Integer.valueOf(i), paramString1 }));
+              throw new IllegalArgumentException(ff.a("Unexpected char %#04x at %d in header name: %s", new Object[] { Integer.valueOf(k), Integer.valueOf(i), paramString1 }));
             }
           }
           if (paramString2 != null)
@@ -140,7 +140,7 @@ public final class r
               if (((k > 31) || (k == 9)) && (k < 127)) {
                 i += 1;
               } else {
-                throw new IllegalArgumentException(fc.a("Unexpected char %#04x at %d in %s value: %s", new Object[] { Integer.valueOf(k), Integer.valueOf(i), paramString1, paramString2 }));
+                throw new IllegalArgumentException(ff.a("Unexpected char %#04x at %d in %s value: %s", new Object[] { Integer.valueOf(k), Integer.valueOf(i), paramString1, paramString2 }));
               }
             }
             return;

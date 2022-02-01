@@ -14,8 +14,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.cx;
 import com.tencent.token.cy;
+import com.tencent.token.cz;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.ui.BaseActivity;
 import com.tencent.token.upload.i;
@@ -43,16 +43,16 @@ public class QQPimActivity
         {
           if (i.a())
           {
-            if (!cy.f().g()) {
-              cy.f().a();
+            if (!cz.f().g()) {
+              cz.f().a();
             }
           }
-          else if (cy.f().g())
+          else if (cz.f().g())
           {
-            cy.f().c();
+            cz.f().c();
             QQPimActivity.this.tvDownload.setVisibility(0);
             QQPimActivity.this.flProgress.setVisibility(4);
-            QQPimActivity.this.tvDownload.setText(QQPimActivity.this.getResources().getText(2131493453));
+            QQPimActivity.this.tvDownload.setText(QQPimActivity.this.getResources().getText(2131493454));
           }
         }
         else {
@@ -70,7 +70,7 @@ public class QQPimActivity
   private void downloadApk()
   {
     TMSDKContext.saveActionData(170010);
-    cy.f().a(new cx()
+    cz.f().a(new cy()
     {
       public void a()
       {
@@ -79,8 +79,8 @@ public class QQPimActivity
         {
           public void run()
           {
-            QQPimActivity.this.tvDownload.setText(QQPimActivity.this.getResources().getText(2131493445));
-            Toast.makeText(QQPimActivity.this, QQPimActivity.this.getResources().getText(2131493449), 0).show();
+            QQPimActivity.this.tvDownload.setText(QQPimActivity.this.getResources().getText(2131493446));
+            Toast.makeText(QQPimActivity.this, QQPimActivity.this.getResources().getText(2131493450), 0).show();
             a.a(QQPimActivity.this, QQPimActivity.this.filePath);
             QQPimActivity.access$402(QQPimActivity.this, true);
             QQPimActivity.this.tvDownload.setVisibility(0);
@@ -129,7 +129,7 @@ public class QQPimActivity
           {
             QQPimActivity.this.tvDownload.setVisibility(0);
             QQPimActivity.this.flProgress.setVisibility(4);
-            QQPimActivity.this.tvDownload.setText(QQPimActivity.this.getResources().getText(2131493448));
+            QQPimActivity.this.tvDownload.setText(QQPimActivity.this.getResources().getText(2131493449));
           }
         });
       }
@@ -142,30 +142,30 @@ public class QQPimActivity
           {
             QQPimActivity.this.tvDownload.setVisibility(0);
             QQPimActivity.this.flProgress.setVisibility(4);
-            QQPimActivity.this.tvDownload.setText(QQPimActivity.this.getResources().getText(2131493453));
+            QQPimActivity.this.tvDownload.setText(QQPimActivity.this.getResources().getText(2131493454));
           }
         });
         Log.i("QQPimActivity", "onCancel: ");
         QQPimActivity.access$502(QQPimActivity.this, 0.0F);
       }
     });
-    cy.f().a();
+    cz.f().a();
   }
   
   private void initStatus()
   {
-    this.isApkDownload = cy.f().d();
+    this.isApkDownload = cz.f().d();
     this.isInstall = a.b(this, "com.tencent.qqpim");
-    this.filePath = cy.f().e();
+    this.filePath = cz.f().e();
   }
   
   private void initView()
   {
-    this.pbProgress = ((ProgressBar)findViewById(2131165855));
-    this.flProgress = ((FrameLayout)findViewById(2131165853));
-    this.tvProgress = ((ProgressTextView)findViewById(2131165857));
-    this.ivBack = ((ImageView)findViewById(2131165851));
-    this.tvDownload = ((TextView)findViewById(2131166171));
+    this.pbProgress = ((ProgressBar)findViewById(2131165857));
+    this.flProgress = ((FrameLayout)findViewById(2131165855));
+    this.tvProgress = ((ProgressTextView)findViewById(2131165859));
+    this.ivBack = ((ImageView)findViewById(2131165853));
+    this.tvDownload = ((TextView)findViewById(2131166173));
     this.tvDownload.setOnClickListener(this);
     this.flProgress.setOnClickListener(this);
     this.ivBack.setOnClickListener(new View.OnClickListener()
@@ -183,7 +183,7 @@ public class QQPimActivity
     localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
     localIntentFilter.addAction("android.net.wifi.WIFI_STATE_CHANGED");
     localIntentFilter.addAction("android.net.wifi.STATE_CHANGE");
-    RqdApplication.l().registerReceiver(this.mNetworkMsgReceiver, localIntentFilter);
+    RqdApplication.n().registerReceiver(this.mNetworkMsgReceiver, localIntentFilter);
   }
   
   private void registerInstallReceiver()
@@ -207,7 +207,7 @@ public class QQPimActivity
   
   private void startDownload()
   {
-    this.tvDownload.setText(getResources().getText(2131493454).toString());
+    this.tvDownload.setText(getResources().getText(2131493455).toString());
     downloadApk();
   }
   
@@ -229,18 +229,18 @@ public class QQPimActivity
   
   private void unregistReceiver()
   {
-    RqdApplication.l().unregisterReceiver(this.mNetworkMsgReceiver);
+    RqdApplication.n().unregisterReceiver(this.mNetworkMsgReceiver);
   }
   
   private void updateBtnState()
   {
-    this.tvDownload.setText(getResources().getText(2131493049));
+    this.tvDownload.setText(getResources().getText(2131493050));
   }
   
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if ((i == 2131166171) || (i == 2131165853))
+    if ((i == 2131166173) || (i == 2131165855))
     {
       if (this.isInstall)
       {
@@ -254,15 +254,15 @@ public class QQPimActivity
       }
       if (i.a())
       {
-        if (cy.f().g())
+        if (cz.f().g())
         {
-          cy.f().c();
+          cz.f().c();
           return;
         }
         startDownload();
         return;
       }
-      Toast.makeText(this, getResources().getText(2131493451), 0).show();
+      Toast.makeText(this, getResources().getText(2131493452), 0).show();
     }
   }
   

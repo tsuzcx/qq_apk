@@ -1,64 +1,170 @@
 package com.tencent.token;
 
+import com.tencent.token.global.g;
+
 public class cl
+  implements fb
 {
-  public short a(byte[] paramArrayOfByte)
+  private ez a = null;
+  private cm b = null;
+  private int c = 0;
+  private cg d = null;
+  
+  public cl(cg paramcg)
   {
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length >= 2) && (paramArrayOfByte[0] == 2) && (paramArrayOfByte[(paramArrayOfByte.length - 1)] == 3)) {
-      return cj.a(paramArrayOfByte, 20);
+    this.d = paramcg;
+    this.b = new cm();
+  }
+  
+  private String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(cd.a());
+    localStringBuilder.append("/cn/manage/token/gprs_get_svr_time_req");
+    return localStringBuilder.toString();
+  }
+  
+  private String a(ci paramci)
+  {
+    if ((paramci.c != null) && (paramci.c.length() != 0)) {
+      return paramci.c;
     }
-    return -1;
-  }
-  
-  public void a(cg paramcg)
-  {
-    paramcg.a = cj.b(paramcg.f, 0, 32);
-  }
-  
-  public void a(ch paramch, byte[] paramArrayOfByte)
-  {
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length >= 2) && (paramArrayOfByte[0] == 2))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("其它错误：");
+    ((StringBuilder)localObject).append(paramci.b);
+    localObject = ((StringBuilder)localObject).toString();
+    int i = paramci.b;
+    switch (i)
     {
-      if (paramArrayOfByte[(paramArrayOfByte.length - 1)] != 3) {
-        return;
-      }
-      paramch.g = cj.b(paramArrayOfByte, 1);
-      paramch.h = cj.a(paramArrayOfByte, 5);
-      paramch.i = paramArrayOfByte[7];
-      paramch.j = cj.a(paramArrayOfByte, 8);
-      paramch.k = cj.a(paramArrayOfByte, 10);
-      paramch.l = ((int)cj.b(paramArrayOfByte, 12));
-      paramch.m = ((int)cj.b(paramArrayOfByte, 16));
-      paramch.n = cj.a(paramArrayOfByte, 20);
-      paramch.o = cj.a(paramArrayOfByte, 22);
-      paramch.p = cj.a(paramArrayOfByte, 24);
-      paramch.q = cj.a(paramArrayOfByte, 26);
-      paramch.r = cj.b(paramArrayOfByte, 28, 64);
-      paramch.b = ((int)cj.b(paramArrayOfByte, 92));
-      paramch.c = cj.b(paramArrayOfByte, 96, 256);
-      paramch.d = ((int)cj.b(paramArrayOfByte, 352));
-      paramch.e = cj.a(paramArrayOfByte, 356);
-      cj.a(paramch.t, 0, paramArrayOfByte, 358, paramch.t.length);
-      int j = 358 + paramch.t.length;
-      int k = paramArrayOfByte.length - 1 - paramch.s.length - j;
-      int i = j;
-      if (k > 0)
+    default: 
+      switch (i)
       {
-        paramch.f = new byte[k];
-        cj.a(paramch.f, 0, paramArrayOfByte, j, paramch.f.length);
-        i = j + paramch.f.length;
+      default: 
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("其它错误：");
+        ((StringBuilder)localObject).append(paramci.b);
+        g.b(((StringBuilder)localObject).toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("其它错误：");
+        ((StringBuilder)localObject).append(paramci.b);
+        return ((StringBuilder)localObject).toString();
+      case 101: 
+        g.b("如果客户端收到此错误，测等待一段时间重新尝试请求。");
+        return "如果客户端收到此错误，测等待一段时间重新尝试请求。";
       }
-      cj.a(paramch.s, 0, paramArrayOfByte, i, paramch.s.length);
-      i = paramch.s.length;
+      g.b("预留的错误码，如果客户端收到该错误码则无条件终止，并提示错误");
+      return "预留的错误码，如果客户端收到该错误码则无条件终止，并提示错误";
+    case 9: 
+      g.b("已经到令牌的最大绑定个数");
+      return "已经到令牌的最大绑定个数";
+    case 8: 
+      g.b("令牌序列号不存在");
+      return "令牌序列号不存在";
+    case 7: 
+      g.b("客户端输入错误");
+      return "客户端输入错误";
+    case 6: 
+      g.b("还没有密保手机");
+      return "还没有密保手机";
+    case 5: 
+      g.b("密保手机不正确");
+      return "密保手机不正确";
+    case 4: 
+      g.b("解除绑定时该号码还没有绑定qq");
+      return "解除绑定时该号码还没有绑定qq";
+    case 3: 
+      g.b("该号码已经绑定令牌");
+      return "该号码已经绑定令牌";
+    case 2: 
+      g.b("六位验证码验证错误");
+      return "六位验证码验证错误";
+    case 1: 
+      g.b("短信没有到达");
+      return "短信没有到达";
+    }
+    return localObject;
+  }
+  
+  public void a(long paramLong)
+  {
+    Object localObject = this.b.a(paramLong, this.c);
+    localObject = new fa(a(), (byte[])localObject, this, true);
+    ((fa)localObject).a("POST");
+    this.a.a((fa)localObject);
+    this.c += 1;
+  }
+  
+  public void a(ez paramez)
+  {
+    this.a = paramez;
+  }
+  
+  public void a(fa paramfa, String paramString)
+  {
+    this.d.c();
+  }
+  
+  public void a(fa paramfa, byte[] paramArrayOfByte)
+  {
+    int i = this.b.a(paramArrayOfByte);
+    if (i == -1) {
       return;
     }
+    paramfa = new ci();
+    switch (i)
+    {
+    case 103: 
+    case 104: 
+    default: 
+      return;
+    case 106: 
+      this.b.a(paramfa, paramArrayOfByte);
+      if (paramfa.b == 0)
+      {
+        cs.a().n();
+        this.d.b();
+        return;
+      }
+      this.d.b(paramfa.b, a(paramfa));
+      return;
+    case 105: 
+      this.b.a(paramfa, paramArrayOfByte);
+      if (paramfa.b == 0)
+      {
+        cs.a().n();
+        this.d.a();
+        return;
+      }
+      this.d.a(paramfa.b, a(paramfa));
+      return;
+    case 102: 
+      paramfa = new ch();
+      this.b.a(paramfa, paramArrayOfByte);
+      this.b.a(paramfa);
+      if (paramfa.b == 0)
+      {
+        this.d.b(paramfa.a);
+        return;
+      }
+      this.d.c(a(paramfa));
+      return;
+    }
+    this.b.a(paramfa, paramArrayOfByte);
+    if (paramfa.b == 0)
+    {
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("服务器时间:");
+      paramArrayOfByte.append(paramfa.d);
+      g.b(paramArrayOfByte.toString());
+      this.d.a(paramfa.d);
+      return;
+    }
+    this.d.a(a(paramfa));
   }
   
-  public byte[] a(long paramLong, int paramInt)
+  public boolean a(fa paramfa, int paramInt)
   {
-    ci localci = new ci();
-    localci.a(paramLong, paramInt, (int)(System.currentTimeMillis() / 1000L), (short)1);
-    return localci.a();
+    return false;
   }
 }
 

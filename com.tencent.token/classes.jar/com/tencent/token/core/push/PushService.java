@@ -20,8 +20,8 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.support.v4.app.NotificationCompat.Builder;
 import android.support.v4.content.LocalBroadcastManager;
-import com.tencent.token.cb;
-import com.tencent.token.cp;
+import com.tencent.token.cc;
+import com.tencent.token.cq;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.g;
 import com.tencent.token.ui.BaseActivity;
@@ -51,7 +51,7 @@ public class PushService
         PushService.a(PushService.this, paramAnonymousMessage);
         return;
       }
-      if ((paramAnonymousMessage.arg1 == 0) && (cp.a().b() > 0))
+      if ((paramAnonymousMessage.arg1 == 0) && (cq.a().b() > 0))
       {
         paramAnonymousMessage = new StringBuilder();
         paramAnonymousMessage.append("push:getIsAppForeground");
@@ -168,7 +168,7 @@ public class PushService
     {
       if ((BaseActivity.getIsAppForeground()) && (paramf.d == 2))
       {
-        cb.a().a(0L, cp.e, this.a);
+        cc.a().a(0L, cq.e, this.a);
         g.c("dualmsg::pushservice: query=true");
         return;
       }
@@ -176,7 +176,7 @@ public class PushService
       this.d.removeExtra("com.tencent.input_param");
       this.e.removeExtra("com.tencent.input_param");
       if (!l.b()) {
-        RqdApplication.e();
+        RqdApplication.g();
       }
       if (paramf.d == 1)
       {
@@ -186,7 +186,7 @@ public class PushService
           ((Bundle)localObject).putLong("uin", Long.parseLong(new String(paramf.b)));
           this.f.putExtra("com.tencent.input_param", (Bundle)localObject);
           localObject = PendingIntent.getActivity(this, 0, this.f, 134217728);
-          new a(this).a(1, getResources().getString(2131492986), new String(paramf.h), (PendingIntent)localObject);
+          new a(this).a(1, getResources().getString(2131492987), new String(paramf.h), (PendingIntent)localObject);
           if (BaseActivity.getIsAppForeground())
           {
             this.h.putExtra("uin", new String(paramf.b));
@@ -198,7 +198,7 @@ public class PushService
           IndexActivity.isShowAccountTip = true;
           return;
         }
-        if ((BaseActivity.getIsAppForeground()) && ("com.tencent.token.ui.IndexActivity".equals(m.a(RqdApplication.l()))))
+        if ((BaseActivity.getIsAppForeground()) && ("com.tencent.token.ui.IndexActivity".equals(m.a(RqdApplication.n()))))
         {
           LocalBroadcastManager.getInstance(this).sendBroadcast(this.i);
           return;
@@ -209,17 +209,17 @@ public class PushService
         ((Bundle)localObject).putLong("uin", Long.parseLong(new String(paramf.b)));
         this.d.putExtra("com.tencent.input_param", (Bundle)localObject);
         localObject = PendingIntent.getActivity(this, 0, this.d, 134217728);
-        new a(this).a(1, getResources().getString(2131492986), new String(paramf.h), (PendingIntent)localObject);
+        new a(this).a(1, getResources().getString(2131492987), new String(paramf.h), (PendingIntent)localObject);
         return;
       }
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("push time=");
       ((StringBuilder)localObject).append(paramf.f);
       g.c(((StringBuilder)localObject).toString());
-      if (cp.a().d() < paramf.f)
+      if (cq.a().d() < paramf.f)
       {
         localObject = PendingIntent.getActivity(this, 0, this.e, 134217728);
-        new a(this).a(2, getResources().getString(2131492986), new String(paramf.h), (PendingIntent)localObject);
+        new a(this).a(2, getResources().getString(2131492987), new String(paramf.h), (PendingIntent)localObject);
         this.l = SystemClock.elapsedRealtime();
       }
     }

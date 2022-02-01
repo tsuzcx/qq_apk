@@ -2,8 +2,8 @@ package tmsdk.common.d.a.b;
 
 import android.os.Process;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.ef;
-import com.tencent.token.eg;
+import com.tencent.token.eh;
+import com.tencent.token.ei;
 import java.lang.ref.WeakReference;
 import tmsdk.common.a.b;
 
@@ -25,19 +25,19 @@ public class y
     localStringBuilder.toString();
   }
   
-  public eg a(int paramInt1, int paramInt2)
+  public ei a(int paramInt1, int paramInt2)
   {
     return this.b.a(paramInt1, paramInt2);
   }
   
-  public WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, ef paramef)
+  public WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, eh parameh)
   {
-    return this.b.a(this.a, paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramef);
+    return this.b.a(this.a, paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, parameh);
   }
   
-  public WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, ef paramef, long paramLong)
+  public WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, eh parameh, long paramLong)
   {
-    return this.b.a(this.a, paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramef, paramLong);
+    return this.b.a(this.a, paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, parameh, paramLong);
   }
   
   public void a(int paramInt)
@@ -45,9 +45,9 @@ public class y
     this.b.a(paramInt);
   }
   
-  public void a(int paramInt1, JceStruct paramJceStruct, int paramInt2, eg parameg)
+  public void a(int paramInt1, JceStruct paramJceStruct, int paramInt2, ei paramei)
   {
-    this.b.a(paramInt1, paramJceStruct, paramInt2, parameg);
+    this.b.a(paramInt1, paramJceStruct, paramInt2, paramei);
   }
   
   public void b(int paramInt)

@@ -1,25 +1,10 @@
 package com.tencent.token;
 
-import com.tencent.token.global.g;
+import tmsdk.common.d.a.b.x;
 
-public class el
-{
-  public static void a(String paramString)
-  {
-    try
-    {
-      er.a(paramString);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("delete database table failed: ");
-      localStringBuilder.append(paramString.toString());
-      g.c(localStringBuilder.toString());
-    }
-  }
-}
+public abstract interface el
+  extends x
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

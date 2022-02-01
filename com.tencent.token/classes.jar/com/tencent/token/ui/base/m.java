@@ -34,7 +34,7 @@ public class m
     {
       this.c = this.b.inflate(2131296422, null);
       addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
-      this.d = ((CheckBox)findViewById(2131165363));
+      this.d = ((CheckBox)findViewById(2131165365));
       h.a(paramInt, false);
       this.d.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
       {
@@ -49,7 +49,7 @@ public class m
       this.c = this.b.inflate(2131296423, null);
       addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
     }
-    findViewById(2131165939).setOnClickListener(new View.OnClickListener()
+    findViewById(2131165941).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {

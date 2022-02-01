@@ -15,8 +15,8 @@ import android.os.Build.VERSION;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
-import com.tencent.token.gi;
-import com.tencent.token.gj;
+import com.tencent.token.gl;
+import com.tencent.token.gm;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -35,11 +35,11 @@ public class e
   private static final String d = "e";
   f a;
   d b;
-  gi c;
+  gl c;
   private final Matrix e = new Matrix();
   private final Matrix f = new Matrix();
   private a g;
-  private final gj h = new gj();
+  private final gm h = new gm();
   private float i = 1.0F;
   private float j = 0.0F;
   private float k = 1.0F;
@@ -267,9 +267,9 @@ public class e
     a(paramInt / locala.i());
   }
   
-  public void a(gi paramgi)
+  public void a(gl paramgl)
   {
-    this.c = paramgi;
+    this.c = paramgl;
   }
   
   public void a(String paramString)
@@ -410,7 +410,7 @@ public class e
     } else {
       bool = false;
     }
-    ((gj)localObject).a(bool);
+    ((gm)localObject).a(bool);
     localObject = this.g;
     if (localObject != null) {
       this.h.setDuration(((float)((a)localObject).c() / Math.abs(paramFloat)));
@@ -419,14 +419,14 @@ public class e
   
   public void c(boolean paramBoolean)
   {
-    gj localgj = this.h;
+    gm localgm = this.h;
     int i1;
     if (paramBoolean) {
       i1 = -1;
     } else {
       i1 = 0;
     }
-    localgj.setRepeatCount(i1);
+    localgm.setRepeatCount(i1);
   }
   
   public h d()
@@ -553,7 +553,7 @@ public class e
     return (this.b == null) && (this.g.f().size() > 0);
   }
   
-  public gi k()
+  public gl k()
   {
     return this.c;
   }

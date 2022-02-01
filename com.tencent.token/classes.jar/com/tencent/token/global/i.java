@@ -86,9 +86,9 @@ public class i
     {
       paramViewGroup = new a();
       paramView = LayoutInflater.from(this.c).inflate(2131296420, null);
-      paramViewGroup.a = ((TextView)paramView.findViewById(2131165761));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131165274));
-      paramViewGroup.c = paramView.findViewById(2131165762);
+      paramViewGroup.a = ((TextView)paramView.findViewById(2131165763));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131165276));
+      paramViewGroup.c = paramView.findViewById(2131165764);
       paramView.setTag(paramViewGroup);
     }
     else
@@ -107,8 +107,8 @@ public class i
     else if (paramInt == 0)
     {
       paramViewGroup.b.setVisibility(0);
-      paramViewGroup.b.setText(this.c.getString(2131493298));
-      if ((paramViewGroup.b.getText() != null) && (paramViewGroup.b.getText().toString().equals(this.c.getString(2131493298))))
+      paramViewGroup.b.setText(this.c.getString(2131493299));
+      if ((paramViewGroup.b.getText() != null) && (paramViewGroup.b.getText().toString().equals(this.c.getString(2131493299))))
       {
         localObject = new RelativeLayout.LayoutParams(-1, -2);
         ((RelativeLayout.LayoutParams)localObject).setMargins(0, (int)IndexActivity.S_DENSITY * 20, 0, (int)IndexActivity.S_DENSITY * 7);

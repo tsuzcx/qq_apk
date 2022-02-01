@@ -1,6 +1,6 @@
 package okhttp3.internal.http2;
 
-import com.tencent.token.fc;
+import com.tencent.token.ff;
 import java.io.IOException;
 import okio.ByteString;
 
@@ -24,7 +24,7 @@ public final class c
       if (i >= localObject1.length) {
         break;
       }
-      localObject1[i] = fc.a("%8s", new Object[] { Integer.toBinaryString(i) }).replace(' ', '0');
+      localObject1[i] = ff.a("%8s", new Object[] { Integer.toBinaryString(i) }).replace(' ', '0');
       i += 1;
     }
     Object localObject2 = b;
@@ -105,7 +105,7 @@ public final class c
   
   static IllegalArgumentException a(String paramString, Object... paramVarArgs)
   {
-    throw new IllegalArgumentException(fc.a(paramString, paramVarArgs));
+    throw new IllegalArgumentException(ff.a(paramString, paramVarArgs));
   }
   
   static String a(byte paramByte1, byte paramByte2)
@@ -150,7 +150,7 @@ public final class c
     if (paramByte1 < localObject.length) {
       localObject = localObject[paramByte1];
     } else {
-      localObject = fc.a("0x%02x", new Object[] { Byte.valueOf(paramByte1) });
+      localObject = ff.a("0x%02x", new Object[] { Byte.valueOf(paramByte1) });
     }
     String str2 = a(paramByte1, paramByte2);
     String str1;
@@ -159,12 +159,12 @@ public final class c
     } else {
       str1 = ">>";
     }
-    return fc.a("%s 0x%08x %5d %-13s %s", new Object[] { str1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), localObject, str2 });
+    return ff.a("%s 0x%08x %5d %-13s %s", new Object[] { str1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), localObject, str2 });
   }
   
   static IOException b(String paramString, Object... paramVarArgs)
   {
-    throw new IOException(fc.a(paramString, paramVarArgs));
+    throw new IOException(ff.a(paramString, paramVarArgs));
   }
 }
 

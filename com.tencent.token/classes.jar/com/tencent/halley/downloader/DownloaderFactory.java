@@ -2,10 +2,10 @@ package com.tencent.halley.downloader;
 
 import com.tencent.halley.DownloaderConfig;
 import com.tencent.halley.common.HalleyInitException;
-import com.tencent.token.ag;
-import com.tencent.token.aj;
-import com.tencent.token.u;
+import com.tencent.token.ah;
+import com.tencent.token.ak;
 import com.tencent.token.v;
+import com.tencent.token.w;
 
 public class DownloaderFactory
 {
@@ -17,11 +17,11 @@ public class DownloaderFactory
     if (paramDownloaderConfig == null) {
       localDownloaderConfig = DownloaderConfig.DEFAULT_DOWNLOADERCONFIG;
     }
-    v.a(localDownloaderConfig);
+    w.a(localDownloaderConfig);
     if (a == null) {
-      a = new u();
+      a = new v();
     }
-    aj.a(ag.a());
+    ak.a(ah.a());
   }
   
   public static a getDownloader()

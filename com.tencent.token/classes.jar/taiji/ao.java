@@ -1,7 +1,7 @@
 package taiji;
 
 import android.graphics.PointF;
-import com.tencent.token.gm;
+import com.tencent.token.gp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,7 +58,7 @@ public class ao
     }
     Object localObject1 = paramao1.a();
     PointF localPointF1 = paramao2.a();
-    a(gm.a(((PointF)localObject1).x, localPointF1.x, paramFloat), gm.a(((PointF)localObject1).y, localPointF1.y, paramFloat));
+    a(gp.a(((PointF)localObject1).x, localPointF1.x, paramFloat), gp.a(((PointF)localObject1).y, localPointF1.y, paramFloat));
     int i = this.a.size() - 1;
     while (i >= 0)
     {
@@ -70,9 +70,9 @@ public class ao
       PointF localPointF2 = ((aa)localObject2).a();
       PointF localPointF3 = ((aa)localObject2).b();
       localObject2 = ((aa)localObject2).c();
-      ((aa)this.a.get(i)).a(gm.a(((PointF)localObject1).x, localPointF2.x, paramFloat), gm.a(((PointF)localObject1).y, localPointF2.y, paramFloat));
-      ((aa)this.a.get(i)).b(gm.a(localPointF1.x, localPointF3.x, paramFloat), gm.a(localPointF1.y, localPointF3.y, paramFloat));
-      ((aa)this.a.get(i)).c(gm.a(((PointF)localObject3).x, ((PointF)localObject2).x, paramFloat), gm.a(((PointF)localObject3).y, ((PointF)localObject2).y, paramFloat));
+      ((aa)this.a.get(i)).a(gp.a(((PointF)localObject1).x, localPointF2.x, paramFloat), gp.a(((PointF)localObject1).y, localPointF2.y, paramFloat));
+      ((aa)this.a.get(i)).b(gp.a(localPointF1.x, localPointF3.x, paramFloat), gp.a(localPointF1.y, localPointF3.y, paramFloat));
+      ((aa)this.a.get(i)).c(gp.a(((PointF)localObject3).x, ((PointF)localObject2).x, paramFloat), gp.a(((PointF)localObject3).y, ((PointF)localObject2).y, paramFloat));
       i -= 1;
     }
   }

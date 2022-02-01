@@ -1,10 +1,10 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
-import com.tencent.token.ca;
 import com.tencent.token.cb;
 import com.tencent.token.cc;
+import com.tencent.token.cd;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
 import com.tencent.token.global.g;
@@ -20,15 +20,15 @@ public class ProtoDoSendFeedback
   private int e;
   private long f;
   
-  public static void a(do paramdo, long paramLong, String paramString)
+  public static void a(dp paramdp, long paramLong, String paramString)
   {
-    paramdo.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramdo.c.put("param.feedback.comment", paramString);
+    paramdp.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdp.c.put("param.feedback.comment", paramString);
   }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     Object localObject1 = null;
     if (str == null)
     {
@@ -38,11 +38,11 @@ public class ProtoDoSendFeedback
     try
     {
       Object localObject2 = new JSONObject();
-      int i = cb.a + 1;
-      cb.a = i;
+      int i = cc.a + 1;
+      cc.a = i;
       this.e = i;
       ((JSONObject)localObject2).put("seq_id", this.e);
-      ((JSONObject)localObject2).put("op_time", cc.c().s() / 1000L);
+      ((JSONObject)localObject2).put("op_time", cd.c().s() / 1000L);
       ((JSONObject)localObject2).put("net_type", l.k());
       ((JSONObject)localObject2).put("comment", this.d);
       ((JSONObject)localObject2).put("uin", this.f);
@@ -74,10 +74,10 @@ public class ProtoDoSendFeedback
     return localStringBuilder1.toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.f = ((Long)paramdo.c.get("param.uinhash")).longValue();
-    this.d = ((String)paramdo.c.get("param.feedback.comment"));
+    this.f = ((Long)paramdp.c.get("param.uinhash")).longValue();
+    this.d = ((String)paramdp.c.get("param.feedback.comment"));
   }
   
   protected void a(JSONObject paramJSONObject)

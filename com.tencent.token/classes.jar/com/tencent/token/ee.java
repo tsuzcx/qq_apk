@@ -1,8 +1,14 @@
 package com.tencent.token;
 
+import android.content.Context;
+import android.os.Debug.MemoryInfo;
+
 public class ee
 {
-  public static int a;
+  public static int a(Context paramContext)
+  {
+    return ((android.app.ActivityManager)paramContext.getSystemService("activity")).getProcessMemoryInfo(new int[] { android.os.Process.myPid() })[0].getTotalPrivateDirty();
+  }
 }
 
 

@@ -11,11 +11,11 @@ import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.SparseArray;
+import com.tencent.token.ex;
 import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.NetworkInterface;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -1874,16 +1874,16 @@ public class cm
   {
     try
     {
-      Object localObject1 = NetworkInterface.getNetworkInterfaces();
+      Object localObject1 = ex.a();
       if (localObject1 != null)
       {
         localObject1 = Collections.list((Enumeration)localObject1).iterator();
         while (((Iterator)localObject1).hasNext())
         {
-          Object localObject2 = (NetworkInterface)((Iterator)localObject1).next();
-          if ((((NetworkInterface)localObject2).isUp()) && (((NetworkInterface)localObject2).getInterfaceAddresses().size() != 0))
+          Object localObject2 = (ex)((Iterator)localObject1).next();
+          if ((((ex)localObject2).b()) && (((ex)localObject2).c().size() != 0))
           {
-            localObject2 = ((NetworkInterface)localObject2).getName();
+            localObject2 = ((ex)localObject2).d();
             boolean bool = ((String)localObject2).matches("tun\\d+");
             if (bool) {
               return true;
@@ -1926,20 +1926,20 @@ public class cm
     //   5: new 373	java/io/FileInputStream
     //   8: dup
     //   9: aload_0
-    //   10: invokespecial 745	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   10: invokespecial 741	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   13: astore_3
     //   14: new 681	java/io/ByteArrayOutputStream
     //   17: dup
     //   18: aload_3
-    //   19: invokevirtual 748	java/io/FileInputStream:available	()I
-    //   22: invokespecial 751	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   19: invokevirtual 744	java/io/FileInputStream:available	()I
+    //   22: invokespecial 747	java/io/ByteArrayOutputStream:<init>	(I)V
     //   25: astore_0
     //   26: sipush 4096
     //   29: newarray byte
     //   31: astore_2
     //   32: aload_3
     //   33: aload_2
-    //   34: invokevirtual 754	java/io/InputStream:read	([B)I
+    //   34: invokevirtual 750	java/io/InputStream:read	([B)I
     //   37: istore_1
     //   38: iconst_m1
     //   39: iload_1
@@ -1948,7 +1948,7 @@ public class cm
     //   44: aload_2
     //   45: iconst_0
     //   46: iload_1
-    //   47: invokevirtual 758	java/io/OutputStream:write	([BII)V
+    //   47: invokevirtual 754	java/io/OutputStream:write	([BII)V
     //   50: goto -18 -> 32
     //   53: aload_0
     //   54: invokevirtual 690	java/io/ByteArrayOutputStream:toByteArray	()[B
@@ -1957,7 +1957,7 @@ public class cm
     //   59: ifnull +6 -> 65
     //   62: goto +9 -> 71
     //   65: ldc 73
-    //   67: invokevirtual 760	java/lang/String:getBytes	()[B
+    //   67: invokevirtual 756	java/lang/String:getBytes	()[B
     //   70: astore_2
     //   71: aload_3
     //   72: invokestatic 186	com/tencent/turingfd/sdk/base/cm:b	(Ljava/io/Closeable;)V
@@ -1988,7 +1988,7 @@ public class cm
     //   113: astore_3
     //   114: new 250	java/io/IOException
     //   117: dup
-    //   118: invokespecial 761	java/io/IOException:<init>	()V
+    //   118: invokespecial 757	java/io/IOException:<init>	()V
     //   121: athrow
     //   122: astore_0
     //   123: aload_3
@@ -2040,24 +2040,24 @@ public class cm
     //   4: aload_0
     //   5: invokespecial 491	java/io/ByteArrayInputStream:<init>	([B)V
     //   8: astore_0
-    //   9: new 763	java/util/zip/InflaterInputStream
+    //   9: new 759	java/util/zip/InflaterInputStream
     //   12: dup
     //   13: aload_0
-    //   14: invokespecial 766	java/util/zip/InflaterInputStream:<init>	(Ljava/io/InputStream;)V
+    //   14: invokespecial 762	java/util/zip/InflaterInputStream:<init>	(Ljava/io/InputStream;)V
     //   17: astore_2
     //   18: new 681	java/io/ByteArrayOutputStream
     //   21: dup
     //   22: invokespecial 682	java/io/ByteArrayOutputStream:<init>	()V
     //   25: astore_3
     //   26: aload_2
-    //   27: invokevirtual 768	java/util/zip/InflaterInputStream:read	()I
+    //   27: invokevirtual 764	java/util/zip/InflaterInputStream:read	()I
     //   30: istore_1
     //   31: iload_1
     //   32: iconst_m1
     //   33: if_icmpeq +11 -> 44
     //   36: aload_3
     //   37: iload_1
-    //   38: invokevirtual 770	java/io/ByteArrayOutputStream:write	(I)V
+    //   38: invokevirtual 766	java/io/ByteArrayOutputStream:write	(I)V
     //   41: goto -15 -> 26
     //   44: aload_3
     //   45: invokevirtual 690	java/io/ByteArrayOutputStream:toByteArray	()[B
@@ -2065,7 +2065,7 @@ public class cm
     //   50: aload_0
     //   51: invokevirtual 511	java/io/ByteArrayInputStream:close	()V
     //   54: aload_2
-    //   55: invokevirtual 771	java/util/zip/InflaterInputStream:close	()V
+    //   55: invokevirtual 767	java/util/zip/InflaterInputStream:close	()V
     //   58: aload_3
     //   59: invokevirtual 691	java/io/ByteArrayOutputStream:close	()V
     //   62: aload 4
@@ -2079,7 +2079,7 @@ public class cm
     //   75: aload_0
     //   76: invokevirtual 511	java/io/ByteArrayInputStream:close	()V
     //   79: aload_2
-    //   80: invokevirtual 771	java/util/zip/InflaterInputStream:close	()V
+    //   80: invokevirtual 767	java/util/zip/InflaterInputStream:close	()V
     //   83: aload_3
     //   84: invokevirtual 691	java/io/ByteArrayOutputStream:close	()V
     //   87: goto +8 -> 95
@@ -2091,7 +2091,7 @@ public class cm
     //   98: aload_0
     //   99: invokevirtual 511	java/io/ByteArrayInputStream:close	()V
     //   102: aload_2
-    //   103: invokevirtual 771	java/util/zip/InflaterInputStream:close	()V
+    //   103: invokevirtual 767	java/util/zip/InflaterInputStream:close	()V
     //   106: aload_3
     //   107: invokevirtual 691	java/io/ByteArrayOutputStream:close	()V
     //   110: aconst_null

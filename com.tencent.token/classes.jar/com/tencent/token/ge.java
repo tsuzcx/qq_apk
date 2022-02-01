@@ -1,77 +1,150 @@
 package com.tencent.token;
 
-import java.security.PublicKey;
-import java.security.cert.X509Certificate;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.Map;
-import java.util.Set;
-import javax.security.auth.x500.X500Principal;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
-public final class ge
-  implements gh
+class ge<T>
 {
-  private final Map<X500Principal, Set<X509Certificate>> a = new LinkedHashMap();
+  private final Class<?> a;
+  private final String b;
+  private final Class[] c;
   
-  public ge(X509Certificate... paramVarArgs)
+  ge(Class<?> paramClass, String paramString, Class... paramVarArgs)
   {
-    int j = paramVarArgs.length;
-    int i = 0;
-    while (i < j)
+    this.a = paramClass;
+    this.b = paramString;
+    this.c = paramVarArgs;
+  }
+  
+  private Method a(Class<?> paramClass)
+  {
+    String str = this.b;
+    Method localMethod = null;
+    if (str != null)
     {
-      X509Certificate localX509Certificate = paramVarArgs[i];
-      X500Principal localX500Principal = localX509Certificate.getSubjectX500Principal();
-      Set localSet = (Set)this.a.get(localX500Principal);
-      Object localObject = localSet;
-      if (localSet == null)
+      localMethod = a(paramClass, str, this.c);
+      if (localMethod != null)
       {
-        localObject = new LinkedHashSet(1);
-        this.a.put(localX500Principal, localObject);
+        paramClass = this.a;
+        if ((paramClass != null) && (!paramClass.isAssignableFrom(localMethod.getReturnType()))) {
+          return null;
+        }
       }
-      ((Set)localObject).add(localX509Certificate);
-      i += 1;
+    }
+    return localMethod;
+  }
+  
+  private static Method a(Class<?> paramClass, String paramString, Class[] paramArrayOfClass)
+  {
+    try
+    {
+      paramClass = paramClass.getMethod(paramString, paramArrayOfClass);
+      int i;
+      return paramClass;
+    }
+    catch (NoSuchMethodException paramClass)
+    {
+      for (;;)
+      {
+        try
+        {
+          i = paramClass.getModifiers();
+          if ((i & 0x1) == 0)
+          {
+            return null;
+            paramClass = null;
+          }
+          return paramClass;
+        }
+        catch (NoSuchMethodException paramString) {}
+        paramClass = paramClass;
+      }
     }
   }
   
-  public X509Certificate a(X509Certificate paramX509Certificate)
+  public Object a(T paramT, Object... paramVarArgs)
   {
-    Object localObject = paramX509Certificate.getIssuerX500Principal();
-    localObject = (Set)this.a.get(localObject);
-    if (localObject == null) {
+    Method localMethod = a(paramT.getClass());
+    if (localMethod == null) {
       return null;
     }
-    localObject = ((Set)localObject).iterator();
-    for (;;)
+    try
     {
-      X509Certificate localX509Certificate;
-      PublicKey localPublicKey;
-      if (((Iterator)localObject).hasNext())
-      {
-        localX509Certificate = (X509Certificate)((Iterator)localObject).next();
-        localPublicKey = localX509Certificate.getPublicKey();
+      paramT = localMethod.invoke(paramT, paramVarArgs);
+      return paramT;
+    }
+    catch (IllegalAccessException paramT) {}
+    return null;
+  }
+  
+  public boolean a(T paramT)
+  {
+    return a(paramT.getClass()) != null;
+  }
+  
+  public Object b(T paramT, Object... paramVarArgs)
+  {
+    try
+    {
+      paramT = a(paramT, paramVarArgs);
+      return paramT;
+    }
+    catch (InvocationTargetException paramT)
+    {
+      paramT = paramT.getTargetException();
+      if ((paramT instanceof RuntimeException)) {
+        throw ((RuntimeException)paramT);
       }
+      paramVarArgs = new AssertionError("Unexpected exception");
+      paramVarArgs.initCause(paramT);
+      throw paramVarArgs;
+    }
+  }
+  
+  public Object c(T paramT, Object... paramVarArgs)
+  {
+    Method localMethod = a(paramT.getClass());
+    if (localMethod != null) {
       try
       {
-        paramX509Certificate.verify(localPublicKey);
-        return localX509Certificate;
+        paramT = localMethod.invoke(paramT, paramVarArgs);
+        return paramT;
       }
-      catch (Exception localException) {}
-      return null;
+      catch (IllegalAccessException paramT)
+      {
+        paramVarArgs = new StringBuilder();
+        paramVarArgs.append("Unexpectedly could not call: ");
+        paramVarArgs.append(localMethod);
+        paramVarArgs = new AssertionError(paramVarArgs.toString());
+        paramVarArgs.initCause(paramT);
+        throw paramVarArgs;
+      }
     }
+    paramVarArgs = new StringBuilder();
+    paramVarArgs.append("Method ");
+    paramVarArgs.append(this.b);
+    paramVarArgs.append(" not supported for object ");
+    paramVarArgs.append(paramT);
+    throw new AssertionError(paramVarArgs.toString());
   }
   
-  public boolean equals(Object paramObject)
+  public Object d(T paramT, Object... paramVarArgs)
   {
-    if (paramObject == this) {
-      return true;
+    try
+    {
+      paramT = c(paramT, paramVarArgs);
+      return paramT;
     }
-    return ((paramObject instanceof ge)) && (((ge)paramObject).a.equals(this.a));
-  }
-  
-  public int hashCode()
-  {
-    return this.a.hashCode();
+    catch (InvocationTargetException paramT)
+    {
+      paramT = paramT.getTargetException();
+      if ((paramT instanceof RuntimeException)) {
+        throw ((RuntimeException)paramT);
+      }
+      paramVarArgs = new AssertionError("Unexpected exception");
+      paramVarArgs.initCause(paramT);
+      throw paramVarArgs;
+    }
   }
 }
 

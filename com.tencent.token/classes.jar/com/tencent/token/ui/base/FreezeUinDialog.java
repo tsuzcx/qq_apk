@@ -43,14 +43,14 @@ public class FreezeUinDialog
     WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
     localLayoutParams.width = ((int)(((Activity)this.e).getWindowManager().getDefaultDisplay().getWidth() - IndexActivity.S_DENSITY * 46.0F));
     paramBundle.setAttributes(localLayoutParams);
-    this.c = ((TextView)findViewById(2131165534));
-    paramBundle = String.format(this.e.getString(2131493188), new Object[] { this.b });
+    this.c = ((TextView)findViewById(2131165536));
+    paramBundle = String.format(this.e.getString(2131493189), new Object[] { this.b });
     this.c.setText(paramBundle);
-    this.d = ((TextView)findViewById(2131165533));
-    paramBundle = String.format(this.e.getString(2131493186), new Object[] { Integer.valueOf(this.a) });
+    this.d = ((TextView)findViewById(2131165535));
+    paramBundle = String.format(this.e.getString(2131493187), new Object[] { Integer.valueOf(this.a) });
     this.d.setText(paramBundle);
-    paramBundle = (CheckBox)findViewById(2131165538);
-    ((TextView)findViewById(2131165531)).setOnClickListener(new View.OnClickListener()
+    paramBundle = (CheckBox)findViewById(2131165540);
+    ((TextView)findViewById(2131165533)).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
@@ -68,7 +68,7 @@ public class FreezeUinDialog
         }
       }
     });
-    ((TextView)findViewById(2131165530)).setOnClickListener(new View.OnClickListener()
+    ((TextView)findViewById(2131165532)).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {

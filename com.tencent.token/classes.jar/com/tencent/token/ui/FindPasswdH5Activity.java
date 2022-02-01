@@ -26,7 +26,7 @@ public class FindPasswdH5Activity
     default: 
       localObject = this.mWebView;
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(getResources().getString(2131493443));
+      localStringBuilder.append(getResources().getString(2131493444));
       localStringBuilder.append("&key=");
       localStringBuilder.append(paramBundle);
       ((WebView)localObject).loadUrl(localStringBuilder.toString());
@@ -34,7 +34,7 @@ public class FindPasswdH5Activity
     case 3: 
       localObject = this.mWebView;
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(getResources().getString(2131493260));
+      localStringBuilder.append(getResources().getString(2131493261));
       localStringBuilder.append("&key=");
       localStringBuilder.append(paramBundle);
       ((WebView)localObject).loadUrl(localStringBuilder.toString());
@@ -42,7 +42,7 @@ public class FindPasswdH5Activity
     case 2: 
       localObject = this.mWebView;
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(getResources().getString(2131493113));
+      localStringBuilder.append(getResources().getString(2131493114));
       localStringBuilder.append("&key=");
       localStringBuilder.append(paramBundle);
       ((WebView)localObject).loadUrl(localStringBuilder.toString());
@@ -50,7 +50,7 @@ public class FindPasswdH5Activity
     case 1: 
       localObject = this.mWebView;
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(getResources().getString(2131493443));
+      localStringBuilder.append(getResources().getString(2131493444));
       localStringBuilder.append("&key=");
       localStringBuilder.append(paramBundle);
       ((WebView)localObject).loadUrl(localStringBuilder.toString());
@@ -58,7 +58,7 @@ public class FindPasswdH5Activity
     }
     localObject = this.mWebView;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(getResources().getString(2131493602));
+    localStringBuilder.append(getResources().getString(2131493603));
     localStringBuilder.append("&key=");
     localStringBuilder.append(paramBundle);
     ((WebView)localObject).loadUrl(localStringBuilder.toString());

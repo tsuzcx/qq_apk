@@ -51,8 +51,8 @@ class g
     if (paramView == null) {
       localView = this.c.inflate(2131296330, paramViewGroup, false);
     }
-    paramViewGroup = (TextView)localView.findViewById(2131166065);
-    paramView = (ImageView)localView.findViewById(2131165965);
+    paramViewGroup = (TextView)localView.findViewById(2131166067);
+    paramView = (ImageView)localView.findViewById(2131165967);
     Object localObject = this.a;
     if (localObject != null)
     {

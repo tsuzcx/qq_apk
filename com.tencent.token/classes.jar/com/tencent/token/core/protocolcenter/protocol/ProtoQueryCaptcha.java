@@ -3,10 +3,10 @@ package com.tencent.token.core.protocolcenter.protocol;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.ca;
+import com.tencent.token.cb;
 import com.tencent.token.core.bean.QueryCaptchaResult;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -22,15 +22,15 @@ public class ProtoQueryCaptcha
   private long e;
   private int f;
   
-  public static void a(do paramdo, long paramLong, int paramInt)
+  public static void a(dp paramdp, long paramLong, int paramInt)
   {
-    paramdo.c.put("param.realuin", Long.valueOf(paramLong));
-    paramdo.c.put("param.scene.id", Integer.valueOf(paramInt));
+    paramdp.c.put("param.realuin", Long.valueOf(paramLong));
+    paramdp.c.put("param.scene.id", Integer.valueOf(paramInt));
   }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     if (str == null)
     {
       this.a.b(104);
@@ -59,10 +59,10 @@ public class ProtoQueryCaptcha
     return ((StringBuilder)localObject).toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.e = ((Long)paramdo.c.get("param.realuin")).longValue();
-    this.f = ((Integer)paramdo.c.get("param.scene.id")).intValue();
+    this.e = ((Long)paramdp.c.get("param.realuin")).longValue();
+    this.f = ((Integer)paramdp.c.get("param.scene.id")).intValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -87,7 +87,7 @@ public class ProtoQueryCaptcha
     localStringBuilder.append("parseJSON error decodeData=");
     localStringBuilder.append(paramJSONObject);
     g.c(localStringBuilder.toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
   
   protected void b()

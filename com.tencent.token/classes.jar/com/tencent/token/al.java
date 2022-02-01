@@ -1,11 +1,12 @@
 package com.tencent.token;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public final class al
+public abstract interface al
 {
-  public List a = new ArrayList();
+  public abstract List a(String paramString, int paramInt, long paramLong, boolean paramBoolean);
+  
+  public abstract void a(List paramList);
 }
 
 

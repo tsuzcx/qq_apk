@@ -1,11 +1,11 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.ca;
 import com.tencent.token.cb;
 import com.tencent.token.cc;
+import com.tencent.token.cd;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -21,28 +21,28 @@ public class ProtoModifyQQPwd
   public long e;
   public int f;
   
-  public static void a(do paramdo, long paramLong, String paramString, int paramInt)
+  public static void a(dp paramdp, long paramLong, String paramString, int paramInt)
   {
-    paramdo.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramdo.c.put("param.qqpwd", paramString);
-    paramdo.c.put("param.scene.id", Integer.valueOf(paramInt));
+    paramdp.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdp.c.put("param.qqpwd", paramString);
+    paramdp.c.put("param.scene.id", Integer.valueOf(paramInt));
   }
   
   protected String a()
   {
-    Object localObject = ca.a().b();
+    Object localObject = cb.a().b();
     if (localObject == null)
     {
       this.a.b(104);
       return null;
     }
-    int i = cb.a + 1;
-    cb.a = i;
+    int i = cc.a + 1;
+    cc.a = i;
     this.c = i;
     if (this.f == 0) {
-      str = l.a(new Object[] { "uin", Long.valueOf(this.e), "seq_id", Integer.valueOf(this.c), "pwd", this.d, "op_time", Long.valueOf(cc.c().s() / 1000L) });
+      str = l.a(new Object[] { "uin", Long.valueOf(this.e), "seq_id", Integer.valueOf(this.c), "pwd", this.d, "op_time", Long.valueOf(cd.c().s() / 1000L) });
     } else {
-      str = l.a(new Object[] { "uin", Long.valueOf(this.e), "seq_id", Integer.valueOf(this.c), "pwd", this.d, "op_time", Long.valueOf(cc.c().s() / 1000L), "scene_id", Integer.valueOf(this.f) });
+      str = l.a(new Object[] { "uin", Long.valueOf(this.e), "seq_id", Integer.valueOf(this.c), "pwd", this.d, "op_time", Long.valueOf(cd.c().s() / 1000L), "scene_id", Integer.valueOf(this.f) });
     }
     if (str == null)
     {
@@ -62,11 +62,11 @@ public class ProtoModifyQQPwd
     return ((StringBuilder)localObject).toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.e = ((Long)paramdo.c.get("param.uinhash")).longValue();
-    this.d = ((String)paramdo.c.get("param.qqpwd"));
-    this.f = ((Integer)paramdo.c.get("param.scene.id")).intValue();
+    this.e = ((Long)paramdp.c.get("param.uinhash")).longValue();
+    this.d = ((String)paramdp.c.get("param.qqpwd"));
+    this.f = ((Integer)paramdp.c.get("param.scene.id")).intValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -95,7 +95,7 @@ public class ProtoModifyQQPwd
       this.a.c();
       return;
     }
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
 }
 

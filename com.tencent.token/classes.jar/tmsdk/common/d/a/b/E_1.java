@@ -3,10 +3,10 @@ package tmsdk.common.d.a.b;
 import a.a.e;
 import android.util.Pair;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.eg;
+import com.tencent.token.ei;
 
 class E
-  implements eg
+  implements ei
 {
   E(z paramz) {}
   

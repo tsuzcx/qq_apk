@@ -1,7 +1,7 @@
 package okhttp3;
 
-import com.tencent.token.fc;
-import com.tencent.token.fm;
+import com.tencent.token.ff;
+import com.tencent.token.fp;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -195,7 +195,7 @@ public final class l
             {
               if ((i2 >= 0) && (i2 <= 59))
               {
-                paramString = new GregorianCalendar(fc.g);
+                paramString = new GregorianCalendar(ff.g);
                 paramString.setLenient(false);
                 paramString.set(1, paramInt1);
                 paramString.set(2, n - 1);
@@ -249,16 +249,16 @@ public final class l
   static l a(long paramLong, s params, String paramString)
   {
     int i1 = paramString.length();
-    int n = fc.a(paramString, 0, i1, ';');
-    int i2 = fc.a(paramString, 0, n, '=');
+    int n = ff.a(paramString, 0, i1, ';');
+    int i2 = ff.a(paramString, 0, n, '=');
     if (i2 == n) {
       return null;
     }
-    String str1 = fc.c(paramString, 0, i2);
-    if ((!str1.isEmpty()) && (fc.b(str1) == -1))
+    String str1 = ff.c(paramString, 0, i2);
+    if ((!str1.isEmpty()) && (ff.b(str1) == -1))
     {
-      String str2 = fc.c(paramString, i2 + 1, n);
-      if (fc.b(str2) != -1) {
+      String str2 = ff.c(paramString, i2 + 1, n);
+      if (ff.b(str2) != -1) {
         return null;
       }
       n += 1;
@@ -271,11 +271,11 @@ public final class l
       bool2 = true;
       for (bool3 = false; n < i1; bool3 = bool1)
       {
-        i2 = fc.a(paramString, n, i1, ';');
-        int i3 = fc.a(paramString, n, i2, '=');
-        String str3 = fc.c(paramString, n, i3);
+        i2 = ff.a(paramString, n, i1, ';');
+        int i3 = ff.a(paramString, n, i2, '=');
+        String str3 = ff.c(paramString, n, i3);
         if (i3 < i2) {
-          localObject3 = fc.c(paramString, i3 + 1, i2);
+          localObject3 = ff.c(paramString, i3 + 1, i2);
         } else {
           localObject3 = "";
         }
@@ -444,7 +444,7 @@ public final class l
     if (paramString1.equals(paramString2)) {
       return true;
     }
-    return (paramString1.endsWith(paramString2)) && (paramString1.charAt(paramString1.length() - paramString2.length() - 1) == '.') && (!fc.c(paramString1));
+    return (paramString1.endsWith(paramString2)) && (paramString1.charAt(paramString1.length() - paramString2.length() - 1) == '.') && (!ff.c(paramString1));
   }
   
   private static String b(String paramString)
@@ -455,7 +455,7 @@ public final class l
       if (paramString.startsWith(".")) {
         str = paramString.substring(1);
       }
-      paramString = fc.a(str);
+      paramString = ff.a(str);
       if (paramString != null) {
         return paramString;
       }
@@ -483,7 +483,7 @@ public final class l
       else
       {
         localStringBuilder.append("; expires=");
-        localStringBuilder.append(fm.a(new Date(this.g)));
+        localStringBuilder.append(fp.a(new Date(this.g)));
       }
     }
     if (!this.m)

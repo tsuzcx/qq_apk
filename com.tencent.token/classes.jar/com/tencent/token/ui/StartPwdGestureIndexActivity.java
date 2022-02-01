@@ -8,10 +8,10 @@ import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.token.bv;
-import com.tencent.token.cd;
+import com.tencent.token.bw;
+import com.tencent.token.ce;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cr;
+import com.tencent.token.cs;
 import com.tencent.token.global.e;
 import com.tencent.token.utils.l;
 import com.tencent.token.utils.m;
@@ -42,7 +42,7 @@ public class StartPwdGestureIndexActivity
       StartPwdGestureIndexActivity.this.dismissDialog();
       paramAnonymousMessage = (e)paramAnonymousMessage.obj;
       e.a(StartPwdGestureIndexActivity.this.getResources(), paramAnonymousMessage);
-      StartPwdGestureIndexActivity.this.showUserDialog(2131492909, paramAnonymousMessage.c, 2131493039, null);
+      StartPwdGestureIndexActivity.this.showUserDialog(2131492910, paramAnonymousMessage.c, 2131493040, null);
     }
   };
   private View.OnClickListener mManageGesturePwdListener = new View.OnClickListener()
@@ -64,11 +64,11 @@ public class StartPwdGestureIndexActivity
   
   private void initUI()
   {
-    this.mGesturePwdView = findViewById(2131165973);
-    this.mFacePwdView = findViewById(2131165971);
-    this.mDividerView = findViewById(2131165443);
-    this.mGesturePwdTxt = ((TextView)findViewById(2131165974));
-    this.mFacePwdTxt = ((TextView)findViewById(2131165972));
+    this.mGesturePwdView = findViewById(2131165975);
+    this.mFacePwdView = findViewById(2131165973);
+    this.mDividerView = findViewById(2131165445);
+    this.mGesturePwdTxt = ((TextView)findViewById(2131165976));
+    this.mFacePwdTxt = ((TextView)findViewById(2131165974));
     this.mFacePwdView.setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
@@ -77,7 +77,7 @@ public class StartPwdGestureIndexActivity
         StartPwdGestureIndexActivity.this.startActivity(paramAnonymousView);
       }
     });
-    if (cr.a().e() == null)
+    if (cs.a().e() == null)
     {
       this.mFacePwdView.setVisibility(8);
       return;
@@ -86,7 +86,7 @@ public class StartPwdGestureIndexActivity
   
   private void refreshFacePwd()
   {
-    if (cr.a().h())
+    if (cs.a().h())
     {
       QQUser localQQUser = m.f();
       if ((localQQUser != null) && (localQQUser.mIsRegisterFacePwd))
@@ -102,7 +102,7 @@ public class StartPwdGestureIndexActivity
       }
       else
       {
-        this.mFacePwdTxt.setText(2131493585);
+        this.mFacePwdTxt.setText(2131493586);
         this.mFacePwdTxt.setTextColor(getResources().getColor(2130968769));
       }
       if (m.n())
@@ -129,19 +129,19 @@ public class StartPwdGestureIndexActivity
   public void onResume()
   {
     super.onResume();
-    if (cr.a().k) {
+    if (cs.a().k) {
       refreshFacePwd();
-    } else if (cr.a().e() != null) {
-      bv.a().e(this.mHandler);
+    } else if (cs.a().e() != null) {
+      bw.a().e(this.mHandler);
     }
-    if (cd.a().c())
+    if (ce.a().c())
     {
-      this.mGesturePwdTxt.setText(2131493586);
+      this.mGesturePwdTxt.setText(2131493587);
       this.mGesturePwdTxt.setTextColor(getResources().getColor(2130968669));
       this.mGesturePwdView.setOnClickListener(this.mManageGesturePwdListener);
       return;
     }
-    this.mGesturePwdTxt.setText(2131493585);
+    this.mGesturePwdTxt.setText(2131493586);
     this.mGesturePwdView.setOnClickListener(this.mNewGesturePwdListener);
     this.mGesturePwdTxt.setTextColor(getResources().getColor(2130968769));
   }

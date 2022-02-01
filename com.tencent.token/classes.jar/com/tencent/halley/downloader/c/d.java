@@ -2,8 +2,8 @@ package com.tencent.halley.downloader.c;
 
 import android.text.TextUtils;
 import com.tencent.halley.common.b;
-import com.tencent.token.ab;
-import com.tencent.token.k;
+import com.tencent.token.ac;
+import com.tencent.token.l;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -52,10 +52,10 @@ public final class d
           int k = arrayOfString.length;
           while (j < k)
           {
-            ab localab = new ab(this, arrayOfString[j]);
-            if (localab.a)
+            ac localac = new ac(this, arrayOfString[j]);
+            if (localac.a)
             {
-              this.i.add(localab);
+              this.i.add(localac);
               j += 1;
             }
             else
@@ -92,15 +92,15 @@ public final class d
     synchronized (this.i)
     {
       Iterator localIterator = this.i.iterator();
-      ab localab;
-      for (long l = 0L; localIterator.hasNext(); l += localab.e - localab.d) {
-        localab = (ab)localIterator.next();
+      ac localac;
+      for (long l = 0L; localIterator.hasNext(); l += localac.e - localac.d) {
+        localac = (ac)localIterator.next();
       }
       return l;
     }
   }
   
-  public final ab a()
+  public final ac a()
   {
     label238:
     label244:
@@ -109,43 +109,43 @@ public final class d
     {
       synchronized (this.i)
       {
-        ab localab1;
+        ac localac1;
         if (this.i.size() == 0)
         {
-          localab1 = new ab(this, 0L, 0L, 0L, -1L);
+          localac1 = new ac(this, 0L, 0L, 0L, -1L);
         }
         else
         {
-          ab localab2 = (ab)this.i.get(0);
+          ac localac2 = (ac)this.i.get(0);
           Iterator localIterator = this.i.iterator();
           if (!localIterator.hasNext()) {
             break label238;
           }
-          localab1 = (ab)localIterator.next();
-          if ((localab1.h) || (localab1.a(this.a) <= 0L))
+          localac1 = (ac)localIterator.next();
+          if ((localac1.h) || (localac1.a(this.a) <= 0L))
           {
-            if (localab1.a(this.a) <= localab2.a(this.a)) {
+            if (localac1.a(this.a) <= localac2.a(this.a)) {
               continue;
             }
-            localab2 = localab1;
+            localac2 = localac1;
             continue;
           }
-          if (localab1 != null) {
+          if (localac1 != null) {
             break label250;
           }
-          long l1 = localab2.a(this.a);
-          long l2 = localab2.f;
-          if (l1 <= k.e() << 1) {
+          long l1 = localac2.a(this.a);
+          long l2 = localac2.f;
+          if (l1 <= l.e() << 1) {
             break label244;
           }
           l1 = l2 + l1 / 2L;
-          localab1 = new ab(this, l1, l1, l1, localab2.g);
-          localab1.c = localab2.b;
+          localac1 = new ac(this, l1, l1, l1, localac2.g);
+          localac1.c = localac2.b;
         }
-        if (localab1 != null) {
-          localab1.h = true;
+        if (localac1 != null) {
+          localac1.h = true;
         }
-        return localab1;
+        return localac1;
       }
       Object localObject2 = null;
       continue;
@@ -153,15 +153,15 @@ public final class d
     }
   }
   
-  public final ab a(int paramInt)
+  public final ac a(int paramInt)
   {
     synchronized (this.i)
     {
       try
       {
-        ab localab = (ab)this.i.get(paramInt);
-        if (localab != null) {
-          return localab;
+        ac localac = (ac)this.i.get(paramInt);
+        if (localac != null) {
+          return localac;
         }
       }
       catch (Exception localException)
@@ -188,15 +188,15 @@ public final class d
     }
   }
   
-  public final boolean a(ab paramab)
+  public final boolean a(ac paramac)
   {
-    if (paramab.b == -1) {}
+    if (paramac.b == -1) {}
     for (;;)
     {
-      ab localab;
+      ac localac;
       synchronized (this.i)
       {
-        if (paramab.c == -1)
+        if (paramac.c == -1)
         {
           if (this.i.size() != 0)
           {
@@ -204,19 +204,19 @@ public final class d
           }
           else
           {
-            paramab.b = 0;
-            paramab.g = this.a;
-            this.i.add(paramab);
+            paramac.b = 0;
+            paramac.g = this.a;
+            this.i.add(paramac);
             return true;
           }
         }
         else
         {
-          if (paramab.c < this.i.size()) {
+          if (paramac.c < this.i.size()) {
             continue;
           }
           localObject = new StringBuilder("parent id:");
-          ((StringBuilder)localObject).append(paramab.c);
+          ((StringBuilder)localObject).append(paramac.c);
           ((StringBuilder)localObject).append(" wrong!!!");
           b.d("TaskDivider", ((StringBuilder)localObject).toString());
         }
@@ -225,18 +225,18 @@ public final class d
         Iterator localIterator = this.i.iterator();
         if (localIterator.hasNext())
         {
-          localab = (ab)localIterator.next();
-          if (localab.b == paramab.c)
+          localac = (ac)localIterator.next();
+          if (localac.b == paramac.c)
           {
-            if (localab.f >= localab.g) {
+            if (localac.f >= localac.g) {
               return false;
             }
-            if (localab.f + k.e() <= paramab.d) {
+            if (localac.f + l.e() <= paramac.d) {
               break label334;
             }
             return false;
           }
-          if ((localab.g <= paramab.d) || (localab.d >= paramab.g)) {
+          if ((localac.g <= paramac.d) || (localac.d >= paramac.g)) {
             continue;
           }
           return false;
@@ -244,18 +244,18 @@ public final class d
         if (localObject == null) {
           return false;
         }
-        paramab.b = this.i.size();
-        ((ab)localObject).g = paramab.d;
-        this.i.add(paramab);
+        paramac.b = this.i.size();
+        ((ac)localObject).g = paramac.d;
+        this.i.add(paramac);
         return true;
       }
       Object localObject = new StringBuilder("addRealSection of id ");
-      ((StringBuilder)localObject).append(paramab.b);
+      ((StringBuilder)localObject).append(paramac.b);
       ((StringBuilder)localObject).append(" should not happen!!!");
       b.d("TaskDivider", ((StringBuilder)localObject).toString());
       return false;
       label334:
-      localObject = localab;
+      localObject = localac;
     }
   }
   
@@ -276,7 +276,7 @@ public final class d
       Iterator localIterator = this.i.iterator();
       while (localIterator.hasNext())
       {
-        localStringBuilder.append(((ab)localIterator.next()).a());
+        localStringBuilder.append(((ac)localIterator.next()).a());
         localStringBuilder.append(";");
       }
       if (this.i.size() > 0) {
@@ -333,9 +333,9 @@ public final class d
     synchronized (this.i)
     {
       Iterator localIterator = this.i.iterator();
-      ab localab;
-      for (long l = 0L; localIterator.hasNext(); l += localab.f - localab.d) {
-        localab = (ab)localIterator.next();
+      ac localac;
+      for (long l = 0L; localIterator.hasNext(); l += localac.f - localac.d) {
+        localac = (ac)localIterator.next();
       }
       return l;
     }

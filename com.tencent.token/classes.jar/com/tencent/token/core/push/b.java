@@ -3,10 +3,10 @@ package com.tencent.token.core.push;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
-import com.tencent.token.cc;
-import com.tencent.token.cj;
-import com.tencent.token.cq;
-import com.tencent.token.dq;
+import com.tencent.token.cd;
+import com.tencent.token.ck;
+import com.tencent.token.cr;
+import com.tencent.token.dr;
 import com.tencent.token.utils.UserTask;
 import com.tencent.token.utils.encrypt.a;
 import java.io.IOException;
@@ -33,8 +33,8 @@ public class b
   HandlerThread e;
   Handler f;
   private final long g = 2L;
-  private final dq h = new dq("B8008767A628A4F53BCB84C13C961A55BF87607DAA5BE0BA3AC2E0CB778E494579BD444F699885F4968CD9028BB3FC6FA657D532F1718F581669BDC333F83DC3", 16);
-  private dq i = new dq("-1");
+  private final dr h = new dr("B8008767A628A4F53BCB84C13C961A55BF87607DAA5BE0BA3AC2E0CB778E494579BD444F699885F4968CD9028BB3FC6FA657D532F1718F581669BDC333F83DC3", 16);
+  private dr i = new dr("-1");
   private byte[] j;
   private String k = "";
   private final int l = 0;
@@ -71,7 +71,7 @@ public class b
           arrayOfByte = new byte[5];
           paramInputStream.read(arrayOfByte);
           i2 = 1;
-          i3 = cj.a(arrayOfByte, 1);
+          i3 = ck.a(arrayOfByte, 1);
           if (i3 <= 42)
           {
             paramInputStream = new StringBuilder();
@@ -80,7 +80,7 @@ public class b
             com.tencent.token.global.g.c(paramInputStream.toString());
             return -1;
           }
-          i4 = cj.a(arrayOfByte, 3);
+          i4 = ck.a(arrayOfByte, 3);
           localObject = new byte[i3];
           i1 = 0;
         }
@@ -127,9 +127,9 @@ public class b
             }
             long l1 = System.currentTimeMillis();
             long l2 = paramInputStream.n;
-            localObject = cc.c();
-            ((cc)localObject).a(l2 * 1000L - l1);
-            ((cc)localObject).i();
+            localObject = cd.c();
+            ((cd)localObject).a(l2 * 1000L - l1);
+            ((cd)localObject).i();
             break label605;
             this.k = new String(paramInputStream.p);
           }
@@ -143,7 +143,7 @@ public class b
             if (i1 != 0) {
               break label612;
             }
-            paramInputStream = new dq(new String(paramInputStream.m), 16);
+            paramInputStream = new dr(new String(paramInputStream.m), 16);
             this.j = com.tencent.token.utils.encrypt.b.a(this.i, paramInputStream, this.h);
             if (this.j != null) {
               break label612;
@@ -264,27 +264,27 @@ public class b
               ((StringBuilder)localObject2).append(b.this.d.length);
               com.tencent.token.global.g.a(((StringBuilder)localObject2).toString());
               localObject2 = new f();
-              ((f)localObject2).a = cj.c(b.this.d, 0);
-              int i = cj.a(b.this.d, 8);
+              ((f)localObject2).a = ck.c(b.this.d, 0);
+              int i = ck.a(b.this.d, 8);
               ((f)localObject2).b = new byte[i];
-              cj.b(b.this.d, 10, ((f)localObject2).b, i);
+              ck.b(b.this.d, 10, ((f)localObject2).b, i);
               i = 10 + i;
-              ((f)localObject2).c = cj.b(b.this.d, i);
+              ((f)localObject2).c = ck.b(b.this.d, i);
               i += 4;
               ((f)localObject2).d = b.this.d[i];
               i += 1;
               ((f)localObject2).e = b.this.d[i];
               i += 1;
-              ((f)localObject2).f = cj.b(b.this.d, i);
+              ((f)localObject2).f = ck.b(b.this.d, i);
               int j = i + 4;
-              i = cj.a(b.this.d, j);
+              i = ck.a(b.this.d, j);
               j += 2;
               ((f)localObject2).g = new byte[i];
-              cj.b(b.this.d, j, ((f)localObject2).g, i);
+              ck.b(b.this.d, j, ((f)localObject2).g, i);
               i = j + i;
-              j = cj.a(b.this.d, i);
+              j = ck.a(b.this.d, i);
               ((f)localObject2).h = new byte[j];
-              cj.b(b.this.d, i + 2, ((f)localObject2).h, j);
+              ck.b(b.this.d, i + 2, ((f)localObject2).h, j);
               localObject3 = new StringBuilder();
               ((StringBuilder)localObject3).append("socket msg time: ");
               ((StringBuilder)localObject3).append(((f)localObject2).f);
@@ -409,7 +409,7 @@ public class b
       {
         public com.tencent.token.global.e a(String... paramAnonymousVarArgs)
         {
-          return cq.a().b();
+          return cr.a().b();
         }
         
         public void a(com.tencent.token.global.e paramAnonymouse)
@@ -741,22 +741,22 @@ public class b
             b.this.d();
             return;
           }
-          Object localObject2 = cc.c();
-          ((cc)localObject2).m();
-          long l = ((cc)localObject2).k();
-          Object localObject1 = cc.b();
-          localObject2 = ((cc)localObject2).o();
+          Object localObject2 = cd.c();
+          ((cd)localObject2).m();
+          long l = ((cd)localObject2).k();
+          Object localObject1 = cd.b();
+          localObject2 = ((cd)localObject2).o();
           Object localObject3 = new byte[((String)localObject2).length() + 10 + 2 + ((String)localObject1).length() + 2 + b.i(b.this).length()];
-          cj.b((byte[])localObject3, 0, l);
-          cj.a((byte[])localObject3, 8, (short)((String)localObject2).length());
-          cj.a((byte[])localObject3, 10, ((String)localObject2).getBytes(), ((String)localObject2).length());
+          ck.b((byte[])localObject3, 0, l);
+          ck.a((byte[])localObject3, 8, (short)((String)localObject2).length());
+          ck.a((byte[])localObject3, 10, ((String)localObject2).getBytes(), ((String)localObject2).length());
           int i = 10 + ((String)localObject2).length();
-          cj.a((byte[])localObject3, i, (short)((String)localObject1).length());
+          ck.a((byte[])localObject3, i, (short)((String)localObject1).length());
           i += 2;
-          cj.a((byte[])localObject3, i, ((String)localObject1).getBytes(), ((String)localObject1).length());
+          ck.a((byte[])localObject3, i, ((String)localObject1).getBytes(), ((String)localObject1).length());
           i += ((String)localObject1).length();
-          cj.a((byte[])localObject3, i, (short)b.i(b.this).length());
-          cj.a((byte[])localObject3, i + 2, b.i(b.this).getBytes(), b.i(b.this).length());
+          ck.a((byte[])localObject3, i, (short)b.i(b.this).length());
+          ck.a((byte[])localObject3, i + 2, b.i(b.this).getBytes(), b.i(b.this).length());
           localObject2 = b.a(b.this, (byte[])localObject3);
           localObject1 = localObject2;
           if (localObject2 == null) {

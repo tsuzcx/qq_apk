@@ -50,16 +50,16 @@ public class PermissionGuideSubActivity
   
   private void initControllers()
   {
-    this.mTitleBar = findViewById(2131166109);
-    this.mTitleText = ((TextView)findViewById(2131165296));
-    this.mTitleDivider = findViewById(2131166110);
+    this.mTitleBar = findViewById(2131166111);
+    this.mTitleText = ((TextView)findViewById(2131165298));
+    this.mTitleDivider = findViewById(2131166112);
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.mTitleBar.getLayoutParams();
     if (IndexActivity.S_RES_HEIGHT > 0) {
       localMarginLayoutParams.height = IndexActivity.S_TITLE_HEIGHT;
     }
-    this.mBackArrow = findViewById(2131165289);
-    this.mBackArrowImg = ((ImageView)findViewById(2131165291));
-    this.mRightOptionButton = ((Button)findViewById(2131165292));
+    this.mBackArrow = findViewById(2131165291);
+    this.mBackArrowImg = ((ImageView)findViewById(2131165293));
+    this.mRightOptionButton = ((Button)findViewById(2131165294));
     setDefaultTitle();
     setDefaultBackArrow();
   }
@@ -81,8 +81,8 @@ public class PermissionGuideSubActivity
     int j = 0;
     boolean bool1 = paramBundle.getBooleanExtra("app_whitelist", false);
     boolean bool2 = getIntent().getBooleanExtra("auto_start", false);
-    this.mPer1Layout = ((RelativeLayout)findViewById(2131165804));
-    this.mPer2Layout = ((RelativeLayout)findViewById(2131165805));
+    this.mPer1Layout = ((RelativeLayout)findViewById(2131165806));
+    this.mPer2Layout = ((RelativeLayout)findViewById(2131165807));
     paramBundle = this.mPer1Layout;
     int i;
     if (bool1) {
@@ -120,7 +120,7 @@ public class PermissionGuideSubActivity
               Log.i("permission_test", paramAnonymous2ArrayOfInt1.toString());
               if (!bool)
               {
-                Toast.makeText(RqdApplication.l(), "授权失败", 0).show();
+                Toast.makeText(RqdApplication.n(), "授权失败", 0).show();
                 return;
               }
               TMSDKContext.saveActionData(1150121);
@@ -153,7 +153,7 @@ public class PermissionGuideSubActivity
               Log.i("permission_test", paramAnonymous2ArrayOfInt1.toString());
               if (!bool)
               {
-                Toast.makeText(RqdApplication.l(), "授权失败", 0).show();
+                Toast.makeText(RqdApplication.n(), "授权失败", 0).show();
                 return;
               }
               TMSDKContext.saveActionData(1150118);
@@ -175,11 +175,11 @@ public class PermissionGuideSubActivity
   {
     super.setContentView(2131296463);
     View localView = getLayoutInflater().inflate(paramInt, null);
-    ((RelativeLayout)findViewById(2131165405)).addView(localView, new RelativeLayout.LayoutParams(-1, -1));
+    ((RelativeLayout)findViewById(2131165407)).addView(localView, new RelativeLayout.LayoutParams(-1, -1));
     getContentView().setBackgroundDrawable(localView.getBackground());
-    this.animLayout = ((RelativeLayout)findViewById(2131165276));
-    this.lineImg = ((ImageView)findViewById(2131165658));
-    this.arcImg = ((ImageView)findViewById(2131165282));
+    this.animLayout = ((RelativeLayout)findViewById(2131165278));
+    this.lineImg = ((ImageView)findViewById(2131165660));
+    this.arcImg = ((ImageView)findViewById(2131165284));
     initControllers();
     if ((getClass().toString().contains("StartPwd")) && (!getClass().toString().contains("StartPwdGestureIndex")))
     {

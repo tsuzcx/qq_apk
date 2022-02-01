@@ -1,31 +1,24 @@
 package com.tencent.token;
 
-public final class fo
+import okhttp3.aa;
+import okhttp3.x;
+import okhttp3.z;
+import okhttp3.z.a;
+import okio.p;
+
+public abstract interface fo
 {
-  public static boolean a(String paramString)
-  {
-    return (paramString.equals("POST")) || (paramString.equals("PATCH")) || (paramString.equals("PUT")) || (paramString.equals("DELETE")) || (paramString.equals("MOVE"));
-  }
+  public abstract aa a(z paramz);
   
-  public static boolean b(String paramString)
-  {
-    return (paramString.equals("POST")) || (paramString.equals("PUT")) || (paramString.equals("PATCH")) || (paramString.equals("PROPPATCH")) || (paramString.equals("REPORT"));
-  }
+  public abstract z.a a(boolean paramBoolean);
   
-  public static boolean c(String paramString)
-  {
-    return (!paramString.equals("GET")) && (!paramString.equals("HEAD"));
-  }
+  public abstract p a(x paramx, long paramLong);
   
-  public static boolean d(String paramString)
-  {
-    return paramString.equals("PROPFIND");
-  }
+  public abstract void a();
   
-  public static boolean e(String paramString)
-  {
-    return paramString.equals("PROPFIND") ^ true;
-  }
+  public abstract void a(x paramx);
+  
+  public abstract void b();
 }
 
 

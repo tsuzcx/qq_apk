@@ -5,7 +5,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build.VERSION;
 import android.telephony.TelephonyManager;
-import com.tencent.token.cc;
+import com.tencent.token.cd;
+import com.tencent.token.dx;
 import com.tencent.token.ui.IndexActivity;
 import com.tencent.token.utils.j;
 import java.io.File;
@@ -60,32 +61,32 @@ public class c
     if (paramInt == 0)
     {
       a("http://test.aq.qq.com");
-      cc.a("http://test.aq.qq.com");
+      cd.a("http://test.aq.qq.com");
       return;
     }
     if (paramInt == 1)
     {
       a("https://w.aq.qq.com");
-      cc.a("https://aq.qq.com");
+      cd.a("https://aq.qq.com");
       return;
     }
     if (paramInt == 2)
     {
       a("http://exp.aq.qq.com");
-      cc.a("https://aq.qq.com");
+      cd.a("https://aq.qq.com");
       return;
     }
     if (paramInt == 3)
     {
       a("http://gray.aq.qq.com");
-      cc.a("https://aq.qq.com");
+      cd.a("https://aq.qq.com");
     }
   }
   
   public static void a(Context paramContext)
   {
     if (f == null) {
-      f = paramContext;
+      f = dx.a(paramContext);
     }
   }
   

@@ -119,7 +119,7 @@ public class TMSDKContext
         {
           String str = l.m();
           if ("0000".equals(str)) {
-            return "1001";
+            return "999001";
           }
           return str;
         }
@@ -151,7 +151,7 @@ public class TMSDKContext
         
         public String getOpenIdTicket()
         {
-          return k.c();
+          return k.d();
         }
         
         public int getProductId()

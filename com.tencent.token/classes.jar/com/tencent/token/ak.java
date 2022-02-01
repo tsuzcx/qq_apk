@@ -1,12 +1,18 @@
 package com.tencent.token;
 
-import java.util.List;
-
-public abstract interface ak
+public final class ak
 {
-  public abstract List a(String paramString, int paramInt, long paramLong, boolean paramBoolean);
+  private static aj a;
   
-  public abstract void a(List paramList);
+  public static aj a()
+  {
+    return a;
+  }
+  
+  public static void a(aj paramaj)
+  {
+    a = paramaj;
+  }
 }
 
 

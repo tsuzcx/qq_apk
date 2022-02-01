@@ -2,7 +2,7 @@ package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.e;
 import com.tencent.token.global.g;
@@ -16,18 +16,18 @@ public class ProtoDelMbInfo
   private long d;
   private int e;
   
-  public static void a(do paramdo, long paramLong, int paramInt)
+  public static void a(dp paramdp, long paramLong, int paramInt)
   {
-    paramdo.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramdo.c.put("param.mbinfo.id", Integer.valueOf(paramInt));
+    paramdp.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdp.c.put("param.mbinfo.id", Integer.valueOf(paramInt));
   }
   
   /* Error */
   protected String a()
   {
     // Byte code:
-    //   0: invokestatic 50	com/tencent/token/ca:a	()Lcom/tencent/token/ca;
-    //   3: invokevirtual 53	com/tencent/token/ca:b	()Ljava/lang/String;
+    //   0: invokestatic 50	com/tencent/token/cb:a	()Lcom/tencent/token/cb;
+    //   3: invokevirtual 53	com/tencent/token/cb:b	()Ljava/lang/String;
     //   6: astore_2
     //   7: aload_2
     //   8: ifnonnull +14 -> 22
@@ -53,12 +53,12 @@ public class ProtoDelMbInfo
     //   45: getfield 75	com/tencent/token/core/protocolcenter/protocol/ProtoDelMbInfo:e	I
     //   48: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   51: pop
-    //   52: getstatic 82	com/tencent/token/cb:a	I
+    //   52: getstatic 82	com/tencent/token/cc:a	I
     //   55: iconst_1
     //   56: iadd
     //   57: istore_1
     //   58: iload_1
-    //   59: putstatic 82	com/tencent/token/cb:a	I
+    //   59: putstatic 82	com/tencent/token/cc:a	I
     //   62: aload_0
     //   63: iload_1
     //   64: putfield 84	com/tencent/token/core/protocolcenter/protocol/ProtoDelMbInfo:c	I
@@ -70,8 +70,8 @@ public class ProtoDelMbInfo
     //   77: pop
     //   78: aload_3
     //   79: ldc 88
-    //   81: invokestatic 93	com/tencent/token/cc:c	()Lcom/tencent/token/cc;
-    //   84: invokevirtual 97	com/tencent/token/cc:s	()J
+    //   81: invokestatic 93	com/tencent/token/cd:c	()Lcom/tencent/token/cd;
+    //   84: invokevirtual 97	com/tencent/token/cd:s	()J
     //   87: ldc2_w 98
     //   90: ldiv
     //   91: l2i
@@ -162,10 +162,10 @@ public class ProtoDelMbInfo
     //   30	96	206	org/json/JSONException
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.d = ((Long)paramdo.c.get("param.uinhash")).longValue();
-    this.e = ((Integer)paramdo.c.get("param.mbinfo.id")).intValue();
+    this.d = ((Long)paramdp.c.get("param.uinhash")).longValue();
+    this.e = ((Integer)paramdp.c.get("param.mbinfo.id")).intValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -192,7 +192,7 @@ public class ProtoDelMbInfo
     localStringBuilder.append("parseJSON error decodeData=");
     localStringBuilder.append(paramJSONObject);
     g.c(localStringBuilder.toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
 }
 

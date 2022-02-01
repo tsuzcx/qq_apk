@@ -2,10 +2,10 @@ package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.ContentValues;
 import android.content.Context;
-import com.tencent.token.ca;
-import com.tencent.token.cc;
+import com.tencent.token.cb;
+import com.tencent.token.cd;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.upload.b;
 import com.tencent.token.upload.f;
@@ -37,61 +37,61 @@ public class ProtoDeviceInfoReport
     localJSONObject.put("cpu_count", com.tencent.token.upload.c.d());
     localJSONObject.put("cpu_frequent", com.tencent.token.upload.c.e());
     localJSONObject.put("cpu_name", com.tencent.token.upload.c.a());
-    localJSONObject.put("imei", com.tencent.token.upload.e.a(RqdApplication.l()));
-    localJSONObject.put("imsi", com.tencent.token.upload.e.b(RqdApplication.l()));
-    localJSONObject.put("mac_address", com.tencent.token.upload.e.d(RqdApplication.l()));
-    localJSONObject.put("memory_size", h.a(RqdApplication.l()));
-    localJSONObject.put("phone_number", com.tencent.token.upload.e.c(RqdApplication.l()));
+    localJSONObject.put("imei", com.tencent.token.upload.e.a(RqdApplication.n()));
+    localJSONObject.put("imsi", com.tencent.token.upload.e.b(RqdApplication.n()));
+    localJSONObject.put("mac_address", com.tencent.token.upload.e.d(RqdApplication.n()));
+    localJSONObject.put("memory_size", h.a(RqdApplication.n()));
+    localJSONObject.put("phone_number", com.tencent.token.upload.e.c(RqdApplication.n()));
     localJSONObject.put("sd_card_size", h.e());
     localJSONObject.put("sim_serial", com.tencent.token.upload.e.c());
-    localJSONObject.put("screen_dpi", j.c(RqdApplication.l()));
-    localJSONObject.put("screen_height", j.a(RqdApplication.l()));
-    localJSONObject.put("screen_resolution", j.e(RqdApplication.l()));
-    localJSONObject.put("screen_width", j.b(RqdApplication.l()));
-    localJSONObject.put("sensor_info", k.b(RqdApplication.l()));
+    localJSONObject.put("screen_dpi", j.c(RqdApplication.n()));
+    localJSONObject.put("screen_height", j.a(RqdApplication.n()));
+    localJSONObject.put("screen_resolution", j.e(RqdApplication.n()));
+    localJSONObject.put("screen_width", j.b(RqdApplication.n()));
+    localJSONObject.put("sensor_info", k.b(RqdApplication.n()));
     localJSONObject.put("serial_number", com.tencent.token.upload.e.c());
     localJSONObject.put("support_instruction_sets", com.tencent.token.upload.e.y());
-    localJSONObject.put("system_lock_screen_status", j.g(RqdApplication.l()));
-    localJSONObject.put("system_volume_setting", com.tencent.token.upload.l.a(RqdApplication.l()));
+    localJSONObject.put("system_lock_screen_status", j.g(RqdApplication.n()));
+    localJSONObject.put("system_volume_setting", com.tencent.token.upload.l.a(RqdApplication.n()));
     localJSONObject.put("total_internal_memory_size", h.c());
-    localJSONObject.put("voice_mail_number", com.tencent.token.upload.l.b(RqdApplication.l()));
-    localJSONObject.put("voice_mail_tag", com.tencent.token.upload.l.c(RqdApplication.l()));
-    localJSONObject.put("acclerometer", k.c(RqdApplication.l()));
-    localJSONObject.put("magnetic", k.d(RqdApplication.l()));
-    localJSONObject.put("gyroscope", k.e(RqdApplication.l()));
-    localJSONObject.put("gravity", k.f(RqdApplication.l()));
-    localJSONObject.put("linear_accleration", k.g(RqdApplication.l()));
-    localJSONObject.put("light", k.h(RqdApplication.l()));
-    localJSONObject.put("proximity", k.i(RqdApplication.l()));
-    localJSONObject.put("temperature", k.j(RqdApplication.l()));
-    localJSONObject.put("pressure", k.k(RqdApplication.l()));
+    localJSONObject.put("voice_mail_number", com.tencent.token.upload.l.b(RqdApplication.n()));
+    localJSONObject.put("voice_mail_tag", com.tencent.token.upload.l.c(RqdApplication.n()));
+    localJSONObject.put("acclerometer", k.c(RqdApplication.n()));
+    localJSONObject.put("magnetic", k.d(RqdApplication.n()));
+    localJSONObject.put("gyroscope", k.e(RqdApplication.n()));
+    localJSONObject.put("gravity", k.f(RqdApplication.n()));
+    localJSONObject.put("linear_accleration", k.g(RqdApplication.n()));
+    localJSONObject.put("light", k.h(RqdApplication.n()));
+    localJSONObject.put("proximity", k.i(RqdApplication.n()));
+    localJSONObject.put("temperature", k.j(RqdApplication.n()));
+    localJSONObject.put("pressure", k.k(RqdApplication.n()));
     paramJSONObject.put("device_info_device", localJSONObject.toString());
     localJSONObject = new JSONObject();
     localJSONObject.put("network_interfaces", i.c());
-    localJSONObject.put("air_plane_mode", i.c(RqdApplication.l()));
-    localJSONObject.put("network_connection_type", i.o(RqdApplication.l()));
-    localJSONObject.put("network_operator_name", i.m(RqdApplication.l()));
-    localJSONObject.put("network_type", i.n(RqdApplication.l()));
-    localJSONObject.put("network_type_and_ip_address", i.b(RqdApplication.l()));
-    localJSONObject.put("operator_name", i.m(RqdApplication.l()));
-    localJSONObject.put("operator_type", i.d(RqdApplication.l()));
-    localJSONObject.put("phone_ip", i.b(RqdApplication.l()));
-    localJSONObject.put("wifi_bass_id", i.i(RqdApplication.l()));
+    localJSONObject.put("air_plane_mode", i.c(RqdApplication.n()));
+    localJSONObject.put("network_connection_type", i.o(RqdApplication.n()));
+    localJSONObject.put("network_operator_name", i.m(RqdApplication.n()));
+    localJSONObject.put("network_type", i.n(RqdApplication.n()));
+    localJSONObject.put("network_type_and_ip_address", i.b(RqdApplication.n()));
+    localJSONObject.put("operator_name", i.m(RqdApplication.n()));
+    localJSONObject.put("operator_type", i.d(RqdApplication.n()));
+    localJSONObject.put("phone_ip", i.b(RqdApplication.n()));
+    localJSONObject.put("wifi_bass_id", i.i(RqdApplication.n()));
     localJSONObject.put("gsm_sim_stat", i.a(0));
     localJSONObject.put("gsm_sim_stat2", i.a(1));
     localJSONObject.put("wifi_interface", i.d());
-    localJSONObject.put("wifi_encrypted", i.f(RqdApplication.l()));
-    localJSONObject.put("mcc", i.k(RqdApplication.l()));
-    localJSONObject.put("mnc", i.l(RqdApplication.l()));
-    localJSONObject.put("wifi_ssid", i.h(RqdApplication.l()));
-    localJSONObject.put("wifi_list_near_by", i.g(RqdApplication.l()));
-    localJSONObject.put("wifi_strength", i.j(RqdApplication.l()));
-    localJSONObject.put("ip_address", i.b(RqdApplication.l()));
-    localJSONObject.put("is_wifi_active", i.e(RqdApplication.l()));
+    localJSONObject.put("wifi_encrypted", i.f(RqdApplication.n()));
+    localJSONObject.put("mcc", i.k(RqdApplication.n()));
+    localJSONObject.put("mnc", i.l(RqdApplication.n()));
+    localJSONObject.put("wifi_ssid", i.h(RqdApplication.n()));
+    localJSONObject.put("wifi_list_near_by", i.g(RqdApplication.n()));
+    localJSONObject.put("wifi_strength", i.j(RqdApplication.n()));
+    localJSONObject.put("ip_address", i.b(RqdApplication.n()));
+    localJSONObject.put("is_wifi_active", i.e(RqdApplication.n()));
     paramJSONObject.put("device_info_device", localJSONObject);
     localJSONObject = new JSONObject();
-    localJSONObject.put("all_app_name", b.b(RqdApplication.l()));
-    localJSONObject.put("android_id", com.tencent.token.upload.e.e(RqdApplication.l()));
+    localJSONObject.put("all_app_name", b.b(RqdApplication.n()));
+    localJSONObject.put("android_id", com.tencent.token.upload.e.e(RqdApplication.n()));
     localJSONObject.put("kernel_version", com.tencent.token.upload.e.d());
     localJSONObject.put("language", com.tencent.token.upload.e.j());
     localJSONObject.put("system_boot_time", com.tencent.token.upload.e.e());
@@ -110,24 +110,24 @@ public class ProtoDeviceInfoReport
     localJSONObject.put("product_manufacture", com.tencent.token.upload.e.s());
     localJSONObject.put("product_model", com.tencent.token.upload.e.t());
     localJSONObject.put("product_name", com.tencent.token.upload.e.u());
-    localJSONObject.put("usb_stat", com.tencent.token.upload.e.f(RqdApplication.l()));
+    localJSONObject.put("usb_stat", com.tencent.token.upload.e.f(RqdApplication.n()));
     localJSONObject.put("is_emulator", com.tencent.token.upload.e.i());
     localJSONObject.put("is_rooted", com.tencent.token.upload.e.g());
     localJSONObject.put("app_boot_time", com.tencent.token.upload.e.a());
     paramJSONObject.put("device_info_env", localJSONObject);
     localJSONObject = new JSONObject();
-    localJSONObject.put("cell_id", com.tencent.token.upload.g.a(RqdApplication.l()));
-    localJSONObject.put("cell_rssi", com.tencent.token.upload.g.c(RqdApplication.l()));
-    localJSONObject.put("lac", com.tencent.token.upload.g.b(RqdApplication.l()));
-    localJSONObject.put("latitude", com.tencent.token.upload.g.a(RqdApplication.l(), f.c));
-    localJSONObject.put("longitude", com.tencent.token.upload.g.a(RqdApplication.l(), f.d));
-    localJSONObject.put("gps_open", com.tencent.token.upload.g.d(RqdApplication.l()));
+    localJSONObject.put("cell_id", com.tencent.token.upload.g.a(RqdApplication.n()));
+    localJSONObject.put("cell_rssi", com.tencent.token.upload.g.c(RqdApplication.n()));
+    localJSONObject.put("lac", com.tencent.token.upload.g.b(RqdApplication.n()));
+    localJSONObject.put("latitude", com.tencent.token.upload.g.a(RqdApplication.n(), f.c));
+    localJSONObject.put("longitude", com.tencent.token.upload.g.a(RqdApplication.n(), f.d));
+    localJSONObject.put("gps_open", com.tencent.token.upload.g.d(RqdApplication.n()));
     paramJSONObject.put("device_info_location", localJSONObject);
   }
   
   protected String a()
   {
-    if (ca.a().b() == null)
+    if (cb.a().b() == null)
     {
       this.a.b(104);
       return null;
@@ -138,11 +138,11 @@ public class ProtoDeviceInfoReport
     return localStringBuilder.toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.d = paramdo.j;
-    this.e = ((Long)paramdo.c.get("param.realuin")).longValue();
-    this.f = ((Long)paramdo.c.get("param.uinhash")).longValue();
+    this.d = paramdp.j;
+    this.e = ((Long)paramdp.c.get("param.realuin")).longValue();
+    this.f = ((Long)paramdp.c.get("param.uinhash")).longValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -191,15 +191,15 @@ public class ProtoDeviceInfoReport
     localStringBuilder.append("parseJSON error decodeData=");
     localStringBuilder.append(paramJSONObject);
     com.tencent.token.global.g.c(localStringBuilder.toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
   
-  public do b(do paramdo)
+  public dp b(dp paramdp)
   {
-    int i = paramdo.j;
-    paramdo.m = 1;
-    paramdo.n = new ContentValues(3);
-    paramdo.n.put("aq_base_sid", ca.a().b());
+    int i = paramdp.j;
+    paramdp.m = 1;
+    paramdp.n = new ContentValues(3);
+    paramdp.n.put("aq_base_sid", cb.a().b());
     Object localObject = new JSONObject();
     try
     {
@@ -211,18 +211,18 @@ public class ProtoDeviceInfoReport
       localStringBuilder.append(this.f);
       com.tencent.token.global.g.a(localStringBuilder.toString());
       ((JSONObject)localObject).put("seq_id", i);
-      ((JSONObject)localObject).put("op_time", (int)(cc.c().s() / 1000L));
-      ((JSONObject)localObject).put("token_seq", cc.c().k());
+      ((JSONObject)localObject).put("op_time", (int)(cd.c().s() / 1000L));
+      ((JSONObject)localObject).put("token_seq", cd.c().k());
       b((JSONObject)localObject);
       localObject = com.tencent.token.utils.l.b(((JSONObject)localObject).toString().getBytes());
-      paramdo.n.put("data", (String)localObject);
-      return paramdo;
+      paramdp.n.put("data", (String)localObject);
+      return paramdp;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
     }
-    return paramdo;
+    return paramdp;
   }
 }
 

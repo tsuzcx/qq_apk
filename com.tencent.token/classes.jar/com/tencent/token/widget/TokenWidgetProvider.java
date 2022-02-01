@@ -7,7 +7,7 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.token.bu;
+import com.tencent.token.bv;
 import com.tencent.token.global.g;
 
 public class TokenWidgetProvider
@@ -20,8 +20,8 @@ public class TokenWidgetProvider
     ((StringBuilder)localObject).append("widget_big num=");
     ((StringBuilder)localObject).append(paramArrayOfInt.length);
     g.a(((StringBuilder)localObject).toString());
-    bu.a().a(System.currentTimeMillis(), 13);
-    bu.a().a(paramContext);
+    bv.a().a(System.currentTimeMillis(), 13);
+    bv.a().a(paramContext);
     if (paramArrayOfInt.length <= 0)
     {
       paramArrayOfInt = new Intent(paramContext, TokenService.class);
@@ -34,8 +34,8 @@ public class TokenWidgetProvider
   public void onEnabled(Context paramContext)
   {
     g.a("widget enabled");
-    bu.a().a(System.currentTimeMillis(), 7);
-    bu.a().a(paramContext);
+    bv.a().a(System.currentTimeMillis(), 7);
+    bv.a().a(paramContext);
     super.onEnabled(paramContext);
   }
   

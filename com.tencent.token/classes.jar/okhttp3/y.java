@@ -1,6 +1,6 @@
 package okhttp3;
 
-import com.tencent.token.fc;
+import com.tencent.token.ff;
 import javax.annotation.Nullable;
 import okio.d;
 
@@ -15,7 +15,7 @@ public abstract class y
   {
     if (paramArrayOfByte != null)
     {
-      fc.a(paramArrayOfByte.length, paramInt1, paramInt2);
+      ff.a(paramArrayOfByte.length, paramInt1, paramInt2);
       new y()
       {
         @Nullable

@@ -2,9 +2,9 @@ package com.tencent.token.core.protocolcenter.protocol;
 
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.ca;
+import com.tencent.token.cb;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
 import java.util.HashMap;
@@ -18,7 +18,7 @@ public class ProtoGetOperateMsg
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     if (str == null)
     {
       this.a.b(104);
@@ -37,9 +37,9 @@ public class ProtoGetOperateMsg
     return localStringBuilder.toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.d = ((Long)paramdo.c.get("param.uinhash")).longValue();
+    this.d = ((Long)paramdp.c.get("param.uinhash")).longValue();
   }
   
   protected void a(JSONObject paramJSONObject)

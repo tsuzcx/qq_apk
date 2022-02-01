@@ -2,11 +2,11 @@ package com.tencent.token.core.protocolcenter.protocol;
 
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.ca;
 import com.tencent.token.cb;
 import com.tencent.token.cc;
+import com.tencent.token.cd;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
 import com.tencent.token.utils.l;
@@ -29,24 +29,24 @@ public class ProtoKickOff
   private String n;
   private int o;
   
-  public static void a(do paramdo, long paramLong, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4, int paramInt3, int paramInt4, String paramString5, String paramString6)
+  public static void a(dp paramdp, long paramLong, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4, int paramInt3, int paramInt4, String paramString5, String paramString6)
   {
-    paramdo.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramdo.c.put("param.device.lock.dguid", paramString1);
-    paramdo.c.put("param.device.lock.ddes", paramString2);
-    paramdo.c.put("param.device.lock.dappid", Integer.valueOf(paramInt1));
-    paramdo.c.put("param.device.lock.dsubappid", Integer.valueOf(paramInt2));
-    paramdo.c.put("param.device.lock.dappname", paramString3);
-    paramdo.c.put("param.device.lock.guid", paramString4);
-    paramdo.c.put("param.device.lock.appid", Integer.valueOf(paramInt3));
-    paramdo.c.put("param.device.lock.subappid", Integer.valueOf(paramInt4));
-    paramdo.c.put("param.device.lock.appname", paramString5);
-    paramdo.c.put("param.skey", paramString6);
+    paramdp.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdp.c.put("param.device.lock.dguid", paramString1);
+    paramdp.c.put("param.device.lock.ddes", paramString2);
+    paramdp.c.put("param.device.lock.dappid", Integer.valueOf(paramInt1));
+    paramdp.c.put("param.device.lock.dsubappid", Integer.valueOf(paramInt2));
+    paramdp.c.put("param.device.lock.dappname", paramString3);
+    paramdp.c.put("param.device.lock.guid", paramString4);
+    paramdp.c.put("param.device.lock.appid", Integer.valueOf(paramInt3));
+    paramdp.c.put("param.device.lock.subappid", Integer.valueOf(paramInt4));
+    paramdp.c.put("param.device.lock.appname", paramString5);
+    paramdp.c.put("param.skey", paramString6);
   }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     if (str == null)
     {
       this.a.b(104);
@@ -56,10 +56,10 @@ public class ProtoKickOff
     ((StringBuilder)localObject).append("A2A2:");
     ((StringBuilder)localObject).append(this.n);
     com.tencent.token.global.g.c(((StringBuilder)localObject).toString());
-    int i1 = cb.a + 1;
-    cb.a = i1;
+    int i1 = cc.a + 1;
+    cc.a = i1;
     this.o = i1;
-    localObject = l.a(new Object[] { "seq_id", Integer.valueOf(this.o), "op_time", Long.valueOf(cc.c().s() / 1000L), "uin", Long.valueOf(this.d), "dguid", this.e, "ddes", this.f, "dappid", Integer.valueOf(this.g), "dappname", this.i, "guid", this.j, "appid", Integer.valueOf(this.k), "subappid", Integer.valueOf(this.l), "appname", this.m, "encryptedA2", l.b(this.n.getBytes()) });
+    localObject = l.a(new Object[] { "seq_id", Integer.valueOf(this.o), "op_time", Long.valueOf(cd.c().s() / 1000L), "uin", Long.valueOf(this.d), "dguid", this.e, "ddes", this.f, "dappid", Integer.valueOf(this.g), "dappname", this.i, "guid", this.j, "appid", Integer.valueOf(this.k), "subappid", Integer.valueOf(this.l), "appname", this.m, "encryptedA2", l.b(this.n.getBytes()) });
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("?aq_base_sid=");
     localStringBuilder.append(str);
@@ -73,19 +73,19 @@ public class ProtoKickOff
     return ((StringBuilder)localObject).toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.d = ((Long)paramdo.c.get("param.uinhash")).longValue();
-    this.e = ((String)paramdo.c.get("param.device.lock.dguid"));
-    this.f = ((String)paramdo.c.get("param.device.lock.ddes"));
-    this.g = ((Integer)paramdo.c.get("param.device.lock.dappid")).intValue();
-    this.h = ((Integer)paramdo.c.get("param.device.lock.dsubappid")).intValue();
-    this.i = ((String)paramdo.c.get("param.device.lock.dappname"));
-    this.j = ((String)paramdo.c.get("param.device.lock.guid"));
-    this.k = ((Integer)paramdo.c.get("param.device.lock.appid")).intValue();
-    this.l = ((Integer)paramdo.c.get("param.device.lock.subappid")).intValue();
-    this.m = ((String)paramdo.c.get("param.device.lock.appname"));
-    this.n = ((String)paramdo.c.get("param.skey"));
+    this.d = ((Long)paramdp.c.get("param.uinhash")).longValue();
+    this.e = ((String)paramdp.c.get("param.device.lock.dguid"));
+    this.f = ((String)paramdp.c.get("param.device.lock.ddes"));
+    this.g = ((Integer)paramdp.c.get("param.device.lock.dappid")).intValue();
+    this.h = ((Integer)paramdp.c.get("param.device.lock.dsubappid")).intValue();
+    this.i = ((String)paramdp.c.get("param.device.lock.dappname"));
+    this.j = ((String)paramdp.c.get("param.device.lock.guid"));
+    this.k = ((Integer)paramdp.c.get("param.device.lock.appid")).intValue();
+    this.l = ((Integer)paramdp.c.get("param.device.lock.subappid")).intValue();
+    this.m = ((String)paramdp.c.get("param.device.lock.appname"));
+    this.n = ((String)paramdp.c.get("param.skey"));
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -104,7 +104,7 @@ public class ProtoKickOff
       paramJSONObject.append("parseJSON error seq is wrong seq=");
       paramJSONObject.append(i1);
       paramJSONObject.append(",right = ");
-      paramJSONObject.append(cb.a().b());
+      paramJSONObject.append(cc.a().b());
       com.tencent.token.global.g.c(paramJSONObject.toString());
       return;
     }

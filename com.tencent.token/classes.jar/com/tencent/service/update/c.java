@@ -25,6 +25,8 @@ public abstract interface c
   public abstract boolean b(String paramString1, String paramString2);
   
   public abstract boolean b(String paramString, boolean paramBoolean);
+  
+  public abstract boolean c(String paramString);
 }
 
 

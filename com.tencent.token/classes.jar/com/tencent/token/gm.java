@@ -1,71 +1,88 @@
 package com.tencent.token;
 
-import android.graphics.Path;
-import android.graphics.PointF;
-import java.util.List;
-import taiji.aa;
-import taiji.ao;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import android.annotation.TargetApi;
 
+@TargetApi(11)
 public class gm
+  extends ValueAnimator
 {
-  public static float a(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    return paramFloat1 + paramFloat3 * (paramFloat2 - paramFloat1);
-  }
+  private boolean a = false;
+  private float b = 0.0F;
+  private float c = 1.0F;
+  private long d;
   
-  static int a(float paramFloat1, float paramFloat2)
+  public gm()
   {
-    return a((int)paramFloat1, (int)paramFloat2);
-  }
-  
-  static int a(int paramInt1, int paramInt2)
-  {
-    return paramInt1 - b(paramInt1, paramInt2) * paramInt2;
-  }
-  
-  public static int a(int paramInt1, int paramInt2, float paramFloat)
-  {
-    return (int)(paramInt1 + paramFloat * (paramInt2 - paramInt1));
-  }
-  
-  public static void a(ao paramao, Path paramPath)
-  {
-    paramPath.reset();
-    PointF localPointF1 = paramao.a();
-    paramPath.moveTo(localPointF1.x, localPointF1.y);
-    localPointF1 = new PointF(localPointF1.x, localPointF1.y);
-    int i = 0;
-    while (i < paramao.c().size())
+    setFloatValues(new float[] { 0.0F, 1.0F });
+    addListener(new AnimatorListenerAdapter()
     {
-      Object localObject = (aa)paramao.c().get(i);
-      PointF localPointF2 = ((aa)localObject).a();
-      PointF localPointF3 = ((aa)localObject).b();
-      localObject = ((aa)localObject).c();
-      if ((localPointF2.equals(localPointF1)) && (localPointF3.equals(localObject))) {
-        paramPath.lineTo(((PointF)localObject).x, ((PointF)localObject).y);
-      } else {
-        paramPath.cubicTo(localPointF2.x, localPointF2.y, localPointF3.x, localPointF3.y, ((PointF)localObject).x, ((PointF)localObject).y);
+      public void onAnimationCancel(Animator paramAnonymousAnimator)
+      {
+        gm.a(gm.this);
       }
-      localPointF1.set(((PointF)localObject).x, ((PointF)localObject).y);
-      i += 1;
-    }
-    if (paramao.b()) {
-      paramPath.close();
-    }
+      
+      public void onAnimationEnd(Animator paramAnonymousAnimator)
+      {
+        gm.a(gm.this);
+      }
+    });
   }
   
-  private static int b(int paramInt1, int paramInt2)
+  private void a()
   {
-    int j = paramInt1 / paramInt2;
-    int i = j;
-    if ((paramInt1 ^ paramInt2) < 0)
-    {
-      i = j;
-      if (paramInt2 * j != paramInt1) {
-        i = j - 1;
-      }
+    a(this.b, this.c);
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.b = paramFloat;
+    a();
+  }
+  
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    float f1 = Math.min(paramFloat1, paramFloat2);
+    paramFloat1 = Math.max(paramFloat1, paramFloat2);
+    if (this.a) {
+      paramFloat2 = paramFloat1;
+    } else {
+      paramFloat2 = f1;
     }
-    return i;
+    float f2;
+    if (this.a) {
+      f2 = f1;
+    } else {
+      f2 = paramFloat1;
+    }
+    setFloatValues(new float[] { paramFloat2, f2 });
+    super.setDuration(((float)this.d * (paramFloat1 - f1)));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a = paramBoolean;
+    a();
+  }
+  
+  public void b(float paramFloat)
+  {
+    this.c = paramFloat;
+    a();
+  }
+  
+  public long getDuration()
+  {
+    return this.d;
+  }
+  
+  public ValueAnimator setDuration(long paramLong)
+  {
+    this.d = paramLong;
+    a();
+    return this;
   }
 }
 

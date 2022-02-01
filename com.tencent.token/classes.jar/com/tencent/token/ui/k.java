@@ -46,10 +46,10 @@ public class k
     {
       paramView = new a();
       paramViewGroup = LayoutInflater.from(this.a).inflate(2131296359, paramViewGroup, false);
-      paramView.d = paramViewGroup.findViewById(2131165611);
-      paramView.a = ((TextView)paramViewGroup.findViewById(2131166156));
-      paramView.b = ((ImageView)paramViewGroup.findViewById(2131165609));
-      paramView.c = ((ImageView)paramViewGroup.findViewById(2131165610));
+      paramView.d = paramViewGroup.findViewById(2131165613);
+      paramView.a = ((TextView)paramViewGroup.findViewById(2131166158));
+      paramView.b = ((ImageView)paramViewGroup.findViewById(2131165611));
+      paramView.c = ((ImageView)paramViewGroup.findViewById(2131165612));
       paramViewGroup.setTag(paramView);
     }
     else

@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.cx;
+import com.tencent.token.cy;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.ui.BaseActivity;
 import com.tencent.token.ui.qqpim.ProgressTextView;
@@ -55,7 +55,7 @@ public class GalleryActivity
             a.f().c();
             GalleryActivity.this.tvDownload.setVisibility(0);
             GalleryActivity.this.flProgress.setVisibility(4);
-            GalleryActivity.this.tvDownload.setText(GalleryActivity.this.getResources().getText(2131493213));
+            GalleryActivity.this.tvDownload.setText(GalleryActivity.this.getResources().getText(2131493214));
           }
         }
         else {
@@ -73,7 +73,7 @@ public class GalleryActivity
   private void downloadApk()
   {
     TMSDKContext.saveActionData(170016);
-    a.f().a(new cx()
+    a.f().a(new cy()
     {
       public void a()
       {
@@ -82,8 +82,8 @@ public class GalleryActivity
         {
           public void run()
           {
-            GalleryActivity.this.tvDownload.setText(GalleryActivity.this.getResources().getText(2131493202));
-            Toast.makeText(GalleryActivity.this, GalleryActivity.this.getResources().getText(2131493210), 0).show();
+            GalleryActivity.this.tvDownload.setText(GalleryActivity.this.getResources().getText(2131493203));
+            Toast.makeText(GalleryActivity.this, GalleryActivity.this.getResources().getText(2131493211), 0).show();
             com.tencent.token.ui.qqpim.a.a(GalleryActivity.this, GalleryActivity.this.filePath);
             GalleryActivity.access$402(GalleryActivity.this, true);
             GalleryActivity.this.tvDownload.setVisibility(0);
@@ -132,7 +132,7 @@ public class GalleryActivity
           {
             GalleryActivity.this.tvDownload.setVisibility(0);
             GalleryActivity.this.flProgress.setVisibility(4);
-            GalleryActivity.this.tvDownload.setText(GalleryActivity.this.getResources().getText(2131493209));
+            GalleryActivity.this.tvDownload.setText(GalleryActivity.this.getResources().getText(2131493210));
           }
         });
       }
@@ -145,7 +145,7 @@ public class GalleryActivity
           {
             GalleryActivity.this.tvDownload.setVisibility(0);
             GalleryActivity.this.flProgress.setVisibility(4);
-            GalleryActivity.this.tvDownload.setText(GalleryActivity.this.getResources().getText(2131493213));
+            GalleryActivity.this.tvDownload.setText(GalleryActivity.this.getResources().getText(2131493214));
           }
         });
         Log.i("GalleryActivity", "onCancel: ");
@@ -164,11 +164,11 @@ public class GalleryActivity
   
   private void initView()
   {
-    this.pbProgress = ((ProgressBar)findViewById(2131165545));
-    this.flProgress = ((FrameLayout)findViewById(2131165544));
-    this.tvProgress = ((ProgressTextView)findViewById(2131165546));
-    this.ivBack = ((ImageView)findViewById(2131165543));
-    this.tvDownload = ((TextView)findViewById(2131166154));
+    this.pbProgress = ((ProgressBar)findViewById(2131165547));
+    this.flProgress = ((FrameLayout)findViewById(2131165546));
+    this.tvProgress = ((ProgressTextView)findViewById(2131165548));
+    this.ivBack = ((ImageView)findViewById(2131165545));
+    this.tvDownload = ((TextView)findViewById(2131166156));
     this.tvDownload.setOnClickListener(this);
     this.flProgress.setOnClickListener(this);
     this.ivBack.setOnClickListener(new View.OnClickListener()
@@ -202,7 +202,7 @@ public class GalleryActivity
     localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
     localIntentFilter.addAction("android.net.wifi.WIFI_STATE_CHANGED");
     localIntentFilter.addAction("android.net.wifi.STATE_CHANGE");
-    RqdApplication.l().registerReceiver(this.mNetworkMsgReceiver, localIntentFilter);
+    RqdApplication.n().registerReceiver(this.mNetworkMsgReceiver, localIntentFilter);
   }
   
   private void registerInstallReceiver()
@@ -226,7 +226,7 @@ public class GalleryActivity
   
   private void startDownload()
   {
-    this.tvDownload.setText(getResources().getText(2131493214).toString());
+    this.tvDownload.setText(getResources().getText(2131493215).toString());
     downloadApk();
   }
   
@@ -248,18 +248,18 @@ public class GalleryActivity
   
   private void unregistReceiver()
   {
-    RqdApplication.l().unregisterReceiver(this.mNetworkMsgReceiver);
+    RqdApplication.n().unregisterReceiver(this.mNetworkMsgReceiver);
   }
   
   private void updateBtnState()
   {
-    this.tvDownload.setText(getResources().getText(2131493205));
+    this.tvDownload.setText(getResources().getText(2131493206));
   }
   
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if ((i == 2131166154) || (i == 2131165544))
+    if ((i == 2131166156) || (i == 2131165546))
     {
       if (this.isInstall)
       {
@@ -281,7 +281,7 @@ public class GalleryActivity
         startDownload();
         return;
       }
-      Toast.makeText(this, getResources().getText(2131493211), 0).show();
+      Toast.makeText(this, getResources().getText(2131493212), 0).show();
     }
   }
   

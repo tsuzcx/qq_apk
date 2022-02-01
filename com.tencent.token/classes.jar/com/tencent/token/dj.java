@@ -1,106 +1,100 @@
 package com.tencent.token;
 
-import com.tencent.token.core.bean.MbInfoResult;
-import com.tencent.token.core.bean.MbInfoResult.MbInfoItem;
+import com.tencent.token.core.bean.DeviceInfo;
 import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.core.bean.f;
 import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class dj
 {
-  static dj d;
-  public MbInfoResult a;
-  String b;
-  long c;
+  public f a = new f();
+  public ArrayList<DeviceInfo> b;
+  String c;
+  long d;
+  private cs e = cs.a();
   
-  public static dj a()
-  {
-    dj localdj = d;
-    if (localdj == null)
-    {
-      d = new dj();
-      return d;
-    }
-    return localdj;
-  }
-  
-  public int a(int paramInt)
+  public void a(f paramf)
   {
     try
     {
-      Object localObject1 = c();
-      if (localObject1 == null) {
-        return -1;
-      }
-      localObject1 = this.a.mMbInfoItems;
-      if (localObject1 == null) {
-        return -1;
-      }
-      int i = 0;
-      while (i < this.a.mMbInfoItems.size())
-      {
-        int j = ((MbInfoResult.MbInfoItem)this.a.mMbInfoItems.get(i)).mId;
-        if (j == paramInt) {
-          return i;
-        }
-        i += 1;
-      }
-      return -1;
-    }
-    finally {}
-  }
-  
-  public void a(MbInfoResult paramMbInfoResult)
-  {
-    try
-    {
-      this.a = paramMbInfoResult;
-      cr.a();
-      this.b = cr.c;
-      if (cr.a().e() != null) {
-        this.c = cr.a().e().mUin;
+      this.a = paramf;
+      paramf = this.e;
+      this.c = cs.c;
+      if (cs.a().e() != null) {
+        this.d = this.e.e().mUin;
       }
       return;
     }
     finally
     {
-      paramMbInfoResult = finally;
-      throw paramMbInfoResult;
+      paramf = finally;
+      throw paramf;
     }
   }
   
-  public void b()
+  public boolean a(JSONArray paramJSONArray)
   {
-    try
+    f localf = new f();
+    if (paramJSONArray != null) {}
+    for (;;)
     {
-      this.a = null;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public MbInfoResult c()
-  {
-    try
-    {
-      Object localObject1 = cr.a().e();
-      if ((this.b != null) && (localObject1 != null) && (this.a != null))
+      int i;
+      try
       {
-        String str = this.b;
-        cr.a();
-        if ((str.equals(cr.c)) && (this.c == ((QQUser)localObject1).mUin))
+        if (paramJSONArray.length() > 0)
         {
-          localObject1 = this.a;
-          return localObject1;
+          i = 0;
+          if (i < paramJSONArray.length())
+          {
+            Object localObject = paramJSONArray.getJSONObject(i);
+            localf.a = ((JSONObject)localObject).getInt("id");
+            localf.b = ((JSONObject)localObject).getString("name");
+            if (((JSONObject)localObject).getInt("value") == 0) {
+              break label270;
+            }
+            bool = true;
+            localf.c = bool;
+            localObject = ((JSONObject)localObject).getJSONArray("list");
+            if (((JSONArray)localObject).length() > 0)
+            {
+              this.b = new ArrayList();
+              int j = 0;
+              if (j >= ((JSONArray)localObject).length()) {
+                break label276;
+              }
+              JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(j);
+              DeviceInfo localDeviceInfo = new DeviceInfo();
+              localDeviceInfo.dguid = localJSONObject.getString("dguid");
+              localDeviceInfo.dname = localJSONObject.getString("dname");
+              localDeviceInfo.dtype = localJSONObject.getString("dtype");
+              localDeviceInfo.ddes = localJSONObject.getString("ddes");
+              localDeviceInfo.dappid = localJSONObject.getInt("dappid");
+              localDeviceInfo.dsubappid = localJSONObject.getInt("dsubappid");
+              localDeviceInfo.dappname = localJSONObject.getString("dappname");
+              this.b.add(localDeviceInfo);
+              j += 1;
+              continue;
+            }
+            this.b = new ArrayList();
+            break label276;
+          }
         }
-        return null;
+        a(localf);
+        return true;
       }
-      return null;
+      catch (Exception paramJSONArray)
+      {
+        paramJSONArray.printStackTrace();
+        return false;
+      }
+      label270:
+      boolean bool = false;
+      continue;
+      label276:
+      i += 1;
     }
-    finally {}
   }
 }
 

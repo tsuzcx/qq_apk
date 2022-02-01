@@ -16,8 +16,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.bw;
-import com.tencent.token.bz;
+import com.tencent.token.bx;
+import com.tencent.token.ca;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.g;
 import com.tencent.token.ui.IndexActivity;
@@ -38,7 +38,7 @@ public class GameLoginSndConfirmDialog
   {
     public void handleMessage(Message paramAnonymousMessage)
     {
-      Object localObject2 = bw.a(RqdApplication.l()).d();
+      Object localObject2 = bx.a(RqdApplication.n()).d();
       if ((paramAnonymousMessage.what == 3040) && (localObject2 != null))
       {
         if (GameLoginSndConfirmDialog.a(GameLoginSndConfirmDialog.this) != null) {
@@ -60,13 +60,13 @@ public class GameLoginSndConfirmDialog
           else
           {
             paramAnonymousMessage = new StringBuilder();
-            paramAnonymousMessage.append(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).getResources().getString(2131493105));
+            paramAnonymousMessage.append(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).getResources().getString(2131493106));
             paramAnonymousMessage.append("(");
             paramAnonymousMessage.append(j);
             paramAnonymousMessage.append(")");
             paramAnonymousMessage = paramAnonymousMessage.toString();
           }
-          new AlertDialog.Builder(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this)).setTitle(2131492985).setMessage(paramAnonymousMessage).setPositiveButton(2131493039, new DialogInterface.OnClickListener()
+          new AlertDialog.Builder(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this)).setTitle(2131492986).setMessage(paramAnonymousMessage).setPositiveButton(2131493040, new DialogInterface.OnClickListener()
           {
             public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
@@ -88,7 +88,7 @@ public class GameLoginSndConfirmDialog
             paramAnonymousMessage = new StringBuilder();
             paramAnonymousMessage.append(" ");
             paramAnonymousMessage.append(((CallbackPushStruct)localObject2).expirtTime);
-            paramAnonymousMessage.append(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).getResources().getString(2131493218));
+            paramAnonymousMessage.append(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).getResources().getString(2131493219));
             paramAnonymousMessage = paramAnonymousMessage.toString();
           }
           localObject1 = GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).getLayoutInflater().inflate(2131296461, null);
@@ -96,8 +96,8 @@ public class GameLoginSndConfirmDialog
           ((Toast)localObject2).setView((View)localObject1);
           ((Toast)localObject2).setDuration(0);
           ((Toast)localObject2).setGravity(55, 0, IndexActivity.S_TITLE_HEIGHT);
-          TextView localTextView = (TextView)((View)localObject1).findViewById(2131166118);
-          ((ImageView)((View)localObject1).findViewById(2131166116)).setBackgroundResource(2131100167);
+          TextView localTextView = (TextView)((View)localObject1).findViewById(2131166120);
+          ((ImageView)((View)localObject1).findViewById(2131166118)).setBackgroundResource(2131100167);
           localTextView.setText(paramAnonymousMessage);
           ((Toast)localObject2).show();
           return;
@@ -106,9 +106,9 @@ public class GameLoginSndConfirmDialog
         {
           paramAnonymousMessage = new StringBuilder();
           paramAnonymousMessage.append(((CallbackPushStruct)localObject2).gameName);
-          paramAnonymousMessage.append(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).getResources().getString(2131493230));
+          paramAnonymousMessage.append(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).getResources().getString(2131493231));
           paramAnonymousMessage = paramAnonymousMessage.toString();
-          new AlertDialog.Builder(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this)).setTitle(paramAnonymousMessage).setMessage(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).getResources().getString(2131493229)).setPositiveButton(2131493385, new DialogInterface.OnClickListener()
+          new AlertDialog.Builder(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this)).setTitle(paramAnonymousMessage).setMessage(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).getResources().getString(2131493230)).setPositiveButton(2131493386, new DialogInterface.OnClickListener()
           {
             public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
@@ -117,7 +117,7 @@ public class GameLoginSndConfirmDialog
               paramAnonymous2DialogInterface = new Intent(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this), ModifyQQPwdActivity.class);
               o.a().a(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this), paramAnonymous2DialogInterface, o.b);
             }
-          }).setNegativeButton(2131493028, new DialogInterface.OnClickListener()
+          }).setNegativeButton(2131493029, new DialogInterface.OnClickListener()
           {
             public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
@@ -149,11 +149,11 @@ public class GameLoginSndConfirmDialog
       
       public void a(int paramAnonymousInt)
       {
-        Object localObject = bw.a(RqdApplication.l());
-        CallbackPushStruct localCallbackPushStruct = ((bw)localObject).d();
+        Object localObject = bx.a(RqdApplication.n());
+        CallbackPushStruct localCallbackPushStruct = ((bx)localObject).d();
         if (localCallbackPushStruct != null)
         {
-          ((bw)localObject).a(localCallbackPushStruct.uin, bz.a(RqdApplication.l()).b(), paramAnonymousInt, GameLoginSndConfirmDialog.d(GameLoginSndConfirmDialog.this));
+          ((bx)localObject).a(localCallbackPushStruct.uin, ca.a(RqdApplication.n()).b(), paramAnonymousInt, GameLoginSndConfirmDialog.d(GameLoginSndConfirmDialog.this));
           if (GameLoginSndConfirmDialog.a(GameLoginSndConfirmDialog.this) == null)
           {
             localObject = GameLoginSndConfirmDialog.this;
@@ -165,16 +165,16 @@ public class GameLoginSndConfirmDialog
       
       public void b()
       {
-        CallbackPushStruct localCallbackPushStruct = bw.a(RqdApplication.l()).d();
+        CallbackPushStruct localCallbackPushStruct = bx.a(RqdApplication.n()).d();
         if (localCallbackPushStruct != null) {
           if (localCallbackPushStruct.schemeFlag == 2)
           {
-            AlertDialog.Builder localBuilder = new AlertDialog.Builder(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this)).setTitle(2131492985);
+            AlertDialog.Builder localBuilder = new AlertDialog.Builder(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this)).setTitle(2131492986);
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("");
             localStringBuilder.append(localCallbackPushStruct.expirtTime);
-            localStringBuilder.append(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).getResources().getString(2131493223));
-            localBuilder.setMessage(localStringBuilder.toString()).setPositiveButton(2131493224, new DialogInterface.OnClickListener()
+            localStringBuilder.append(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).getResources().getString(2131493224));
+            localBuilder.setMessage(localStringBuilder.toString()).setPositiveButton(2131493225, new DialogInterface.OnClickListener()
             {
               public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
               {
@@ -185,7 +185,7 @@ public class GameLoginSndConfirmDialog
           }
           else
           {
-            new AlertDialog.Builder(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this)).setTitle(2131492985).setMessage(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).getResources().getString(2131493222)).setPositiveButton(2131493227, new DialogInterface.OnClickListener()
+            new AlertDialog.Builder(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this)).setTitle(2131492986).setMessage(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).getResources().getString(2131493223)).setPositiveButton(2131493228, new DialogInterface.OnClickListener()
             {
               public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
               {
@@ -193,7 +193,7 @@ public class GameLoginSndConfirmDialog
                 paramAnonymous2DialogInterface = new Intent(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this), VerifyStartScanActivity.class);
                 GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).startActivity(paramAnonymous2DialogInterface);
               }
-            }).setNegativeButton(2131493028, new DialogInterface.OnClickListener()
+            }).setNegativeButton(2131493029, new DialogInterface.OnClickListener()
             {
               public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
               {
@@ -212,14 +212,14 @@ public class GameLoginSndConfirmDialog
       g.a("Dual initView failed!");
       return;
     }
-    this.b.a(bw.a(RqdApplication.l()).d());
+    this.b.a(bx.a(RqdApplication.n()).d());
     setContentView(this.b);
     setOnDismissListener(new DialogInterface.OnDismissListener()
     {
       public void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
         GameLoginSndConfirmDialog.b(GameLoginSndConfirmDialog.this).d();
-        bw.a(RqdApplication.l()).e();
+        bx.a(RqdApplication.n()).e();
         if (GameLoginSndConfirmDialog.a(GameLoginSndConfirmDialog.this) != null) {
           GameLoginSndConfirmDialog.a(GameLoginSndConfirmDialog.this).dismiss();
         }

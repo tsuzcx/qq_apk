@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.e;
 import com.tencent.token.global.g;
@@ -21,20 +21,20 @@ public class ProtoGetMbMobileCode
   private String g;
   private String h;
   
-  public static void a(do paramdo, long paramLong, int paramInt, String paramString1, String paramString2)
+  public static void a(dp paramdp, long paramLong, int paramInt, String paramString1, String paramString2)
   {
-    paramdo.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramdo.c.put("param.mbmobile.getcode", Integer.valueOf(paramInt));
-    paramdo.c.put("param.mbmobile.mobile", paramString1);
-    paramdo.c.put("param.mbmoible.areacode", paramString2);
+    paramdp.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdp.c.put("param.mbmobile.getcode", Integer.valueOf(paramInt));
+    paramdp.c.put("param.mbmobile.mobile", paramString1);
+    paramdp.c.put("param.mbmoible.areacode", paramString2);
   }
   
   /* Error */
   protected String a()
   {
     // Byte code:
-    //   0: invokestatic 62	com/tencent/token/ca:a	()Lcom/tencent/token/ca;
-    //   3: invokevirtual 65	com/tencent/token/ca:b	()Ljava/lang/String;
+    //   0: invokestatic 62	com/tencent/token/cb:a	()Lcom/tencent/token/cb;
+    //   3: invokevirtual 65	com/tencent/token/cb:b	()Ljava/lang/String;
     //   6: astore_2
     //   7: aload_2
     //   8: ifnonnull +14 -> 22
@@ -54,12 +54,12 @@ public class ProtoGetMbMobileCode
     //   34: getfield 80	com/tencent/token/core/protocolcenter/protocol/ProtoGetMbMobileCode:d	J
     //   37: invokevirtual 83	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   40: pop
-    //   41: getstatic 87	com/tencent/token/cb:a	I
+    //   41: getstatic 87	com/tencent/token/cc:a	I
     //   44: iconst_1
     //   45: iadd
     //   46: istore_1
     //   47: iload_1
-    //   48: putstatic 87	com/tencent/token/cb:a	I
+    //   48: putstatic 87	com/tencent/token/cc:a	I
     //   51: aload_0
     //   52: iload_1
     //   53: putfield 89	com/tencent/token/core/protocolcenter/protocol/ProtoGetMbMobileCode:c	I
@@ -71,8 +71,8 @@ public class ProtoGetMbMobileCode
     //   66: pop
     //   67: aload_3
     //   68: ldc 96
-    //   70: invokestatic 101	com/tencent/token/cc:c	()Lcom/tencent/token/cc;
-    //   73: invokevirtual 105	com/tencent/token/cc:s	()J
+    //   70: invokestatic 101	com/tencent/token/cd:c	()Lcom/tencent/token/cd;
+    //   73: invokevirtual 105	com/tencent/token/cd:s	()J
     //   76: ldc2_w 106
     //   79: ldiv
     //   80: l2i
@@ -181,12 +181,12 @@ public class ProtoGetMbMobileCode
     //   30	118	228	org/json/JSONException
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.d = ((Long)paramdo.c.get("param.uinhash")).longValue();
-    this.f = ((Integer)paramdo.c.get("param.mbmobile.getcode")).intValue();
-    this.g = ((String)paramdo.c.get("param.mbmobile.mobile"));
-    this.h = ((String)paramdo.c.get("param.mbmoible.areacode"));
+    this.d = ((Long)paramdp.c.get("param.uinhash")).longValue();
+    this.f = ((Integer)paramdp.c.get("param.mbmobile.getcode")).intValue();
+    this.g = ((String)paramdp.c.get("param.mbmobile.mobile"));
+    this.h = ((String)paramdp.c.get("param.mbmoible.areacode"));
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -217,7 +217,7 @@ public class ProtoGetMbMobileCode
       this.a.c();
       return;
     }
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
   
   protected void b()

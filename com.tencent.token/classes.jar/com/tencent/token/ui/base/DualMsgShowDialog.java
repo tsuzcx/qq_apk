@@ -12,11 +12,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.cn;
 import com.tencent.token.co;
 import com.tencent.token.core.bean.a;
 import com.tencent.token.cp;
-import com.tencent.token.el;
+import com.tencent.token.cq;
+import com.tencent.token.en;
 import com.tencent.token.global.e;
 import com.tencent.token.global.g;
 import com.tencent.token.ui.IndexActivity;
@@ -73,9 +73,9 @@ public class DualMsgShowDialog
         public e a(String... paramAnonymousVarArgs)
         {
           if (DualMsgShowDialog.d(DualMsgShowDialog.this) == 0) {
-            return cp.a().a(parama, paramInt);
+            return cq.a().a(parama, paramInt);
           }
-          return cn.a().a(parama, paramInt);
+          return co.a().a(parama, paramInt);
         }
         
         public void a(e paramAnonymouse) {}
@@ -86,7 +86,7 @@ public class DualMsgShowDialog
       g.a(((StringBuilder)localObject).toString());
       if (paramInt == 2)
       {
-        this.k.setText(2131493089);
+        this.k.setText(2131493090);
         this.j.show();
         if (parama.c() == this.h) {
           this.i = -1;
@@ -94,7 +94,7 @@ public class DualMsgShowDialog
       }
       else
       {
-        this.k.setText(2131493090);
+        this.k.setText(2131493091);
         this.j.show();
         if (parama.c() == this.h) {
           this.i = -2;
@@ -102,22 +102,22 @@ public class DualMsgShowDialog
       }
       this.e += 1;
       if (this.d == 0) {
-        parama = cp.a();
+        parama = cq.a();
       } else {
-        parama = cn.a();
+        parama = co.a();
       }
       if (this.e == parama.b())
       {
         this.b.a(paramInt);
         if ((paramInt == 3) && (this.d == 0)) {
-          new AlertDialog.Builder(this.a).setTitle(2131492985).setMessage(this.a.getString(2131493093)).setPositiveButton(2131493385, new DialogInterface.OnClickListener()
+          new AlertDialog.Builder(this.a).setTitle(2131492986).setMessage(this.a.getString(2131493094)).setPositiveButton(2131493386, new DialogInterface.OnClickListener()
           {
             public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
               paramAnonymousDialogInterface = new Intent(DualMsgShowDialog.b(DualMsgShowDialog.this), ModifyQQPwdActivity.class);
               o.a().a(DualMsgShowDialog.b(DualMsgShowDialog.this), paramAnonymousDialogInterface, o.b);
             }
-          }).setNegativeButton(2131493028, null).create().show();
+          }).setNegativeButton(2131493029, null).create().show();
         }
       }
       else
@@ -138,9 +138,9 @@ public class DualMsgShowDialog
   private void c()
   {
     if (this.d == 0) {
-      this.g = cp.a().a(this.e);
+      this.g = cq.a().a(this.e);
     } else {
-      this.g = cn.a().a(this.e);
+      this.g = co.a().a(this.e);
     }
     a locala = this.g;
     if ((locala == null) || (locala.f() == null) || (this.g.g() == null) || (this.g.h() == null) || (this.g.i() == null))
@@ -158,8 +158,8 @@ public class DualMsgShowDialog
       {
         try
         {
-          el.a("tbl_dual_msg");
-          el.a("tbl_barcode_msg");
+          en.a("tbl_dual_msg");
+          en.a("tbl_barcode_msg");
           label10:
           return null;
         }
@@ -207,9 +207,9 @@ public class DualMsgShowDialog
       {
         a locala;
         if (DualMsgShowDialog.d(DualMsgShowDialog.this) == 0) {
-          locala = cp.a().a(DualMsgShowDialog.e(DualMsgShowDialog.this));
+          locala = cq.a().a(DualMsgShowDialog.e(DualMsgShowDialog.this));
         } else {
-          locala = cn.a().a(DualMsgShowDialog.e(DualMsgShowDialog.this));
+          locala = co.a().a(DualMsgShowDialog.e(DualMsgShowDialog.this));
         }
         DualMsgShowDialog.a(DualMsgShowDialog.this, locala, paramAnonymousInt);
       }
@@ -235,8 +235,8 @@ public class DualMsgShowDialog
     this.j.setView(paramBundle);
     this.j.setDuration(0);
     this.j.setGravity(55, 0, IndexActivity.S_TITLE_HEIGHT);
-    this.k = ((TextView)paramBundle.findViewById(2131166118));
-    ((ImageView)paramBundle.findViewById(2131166116)).setBackgroundResource(2131100167);
+    this.k = ((TextView)paramBundle.findViewById(2131166120));
+    ((ImageView)paramBundle.findViewById(2131166118)).setBackgroundResource(2131100167);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

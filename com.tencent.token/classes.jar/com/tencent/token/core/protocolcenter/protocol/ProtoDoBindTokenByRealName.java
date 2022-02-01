@@ -3,11 +3,11 @@ package com.tencent.token.core.protocolcenter.protocol;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.ca;
-import com.tencent.token.cc;
+import com.tencent.token.cb;
+import com.tencent.token.cd;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.cr;
-import com.tencent.token.do;
+import com.tencent.token.cs;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -23,25 +23,25 @@ public class ProtoDoBindTokenByRealName
   private int e;
   private int f;
   
-  public static void a(do paramdo, long paramLong, int paramInt1, int paramInt2)
+  public static void a(dp paramdp, long paramLong, int paramInt1, int paramInt2)
   {
-    paramdo.c.put("param.realuin", Long.valueOf(paramLong));
-    paramdo.c.put("param.type", Integer.valueOf(paramInt1));
-    paramdo.j = paramInt2;
+    paramdp.c.put("param.realuin", Long.valueOf(paramLong));
+    paramdp.c.put("param.type", Integer.valueOf(paramInt1));
+    paramdp.j = paramInt2;
   }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     if (str == null)
     {
       this.a.b(104);
       return null;
     }
-    Object localObject1 = cc.c();
-    ((cc)localObject1).m();
-    Object localObject2 = ((cc)localObject1).j().replaceAll("-", "");
-    localObject1 = l.a(new Object[] { "real_uin", Long.valueOf(this.d), "imei", cc.b(), "verify_type", Integer.valueOf(this.f), "token_seq", localObject2, "token_code", ((cc)localObject1).o(), "seq_id", Integer.valueOf(this.e), "op_time", Long.valueOf(cc.c().s() / 1000L) });
+    Object localObject1 = cd.c();
+    ((cd)localObject1).m();
+    Object localObject2 = ((cd)localObject1).j().replaceAll("-", "");
+    localObject1 = l.a(new Object[] { "real_uin", Long.valueOf(this.d), "imei", cd.b(), "verify_type", Integer.valueOf(this.f), "token_seq", localObject2, "token_code", ((cd)localObject1).o(), "seq_id", Integer.valueOf(this.e), "op_time", Long.valueOf(cd.c().s() / 1000L) });
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("?aq_base_sid=");
     ((StringBuilder)localObject2).append(str);
@@ -55,11 +55,11 @@ public class ProtoDoBindTokenByRealName
     return ((StringBuilder)localObject1).toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.d = ((Long)paramdo.c.get("param.realuin")).longValue();
-    this.f = ((Integer)paramdo.c.get("param.type")).intValue();
-    this.e = paramdo.j;
+    this.d = ((Long)paramdp.c.get("param.realuin")).longValue();
+    this.f = ((Integer)paramdp.c.get("param.type")).intValue();
+    this.e = paramdp.j;
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -87,20 +87,20 @@ public class ProtoDoBindTokenByRealName
         return;
       }
       long l = paramJSONObject.getLong("server_time");
-      cc.c().b(l);
+      cd.c().b(l);
       if (paramJSONObject.getInt("seed_available") == 1)
       {
         paramJSONObject = l.d(paramJSONObject.getString("seed"));
         if (paramJSONObject != null)
         {
-          cc.c().e();
-          cc.c().a(paramJSONObject);
-          cc.c().i();
+          cd.c().e();
+          cd.c().a(paramJSONObject);
+          cd.c().i();
         }
       }
-      paramJSONObject = cr.a().d(this.d);
+      paramJSONObject = cs.a().d(this.d);
       if (paramJSONObject != null) {
-        cr.a().b(paramJSONObject);
+        cs.a().b(paramJSONObject);
       }
       this.a.c();
       return;
@@ -109,7 +109,7 @@ public class ProtoDoBindTokenByRealName
     localStringBuilder.append("parseJSON error decodeData=");
     localStringBuilder.append(paramJSONObject);
     g.c(localStringBuilder.toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
   
   protected void b()

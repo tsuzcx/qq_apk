@@ -1,10 +1,10 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.ca;
-import com.tencent.token.cc;
+import com.tencent.token.cb;
+import com.tencent.token.cd;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -25,23 +25,23 @@ public class ProtoGeneralGetMobileCode
   private int j;
   private final String k = "/cn/mbtoken3/mbtoken3_general_get_mobile_code";
   
-  public static void a(do paramdo, long paramLong1, long paramLong2, int paramInt1, int paramInt2)
+  public static void a(dp paramdp, long paramLong1, long paramLong2, int paramInt1, int paramInt2)
   {
-    paramdo.c.put("param.uinhash", Long.valueOf(paramLong1));
-    paramdo.c.put("param.realuin", Long.valueOf(paramLong2));
-    paramdo.c.put("param.general.mobilecode.sceneid", Integer.valueOf(paramInt1));
-    paramdo.j = paramInt2;
+    paramdp.c.put("param.uinhash", Long.valueOf(paramLong1));
+    paramdp.c.put("param.realuin", Long.valueOf(paramLong2));
+    paramdp.c.put("param.general.mobilecode.sceneid", Integer.valueOf(paramInt1));
+    paramdp.j = paramInt2;
   }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     if (str == null)
     {
       this.a.b(104);
       return null;
     }
-    Object localObject = l.a(new Object[] { "real_uin", Long.valueOf(this.h), "scene_id", Integer.valueOf(this.j), "seq_id", Integer.valueOf(this.i), "op_time", Long.valueOf(cc.c().s() / 1000L) });
+    Object localObject = l.a(new Object[] { "real_uin", Long.valueOf(this.h), "scene_id", Integer.valueOf(this.j), "seq_id", Integer.valueOf(this.i), "op_time", Long.valueOf(cd.c().s() / 1000L) });
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("?uin=");
     localStringBuilder.append(this.g);
@@ -57,12 +57,12 @@ public class ProtoGeneralGetMobileCode
     return ((StringBuilder)localObject).toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.g = ((Long)paramdo.c.get("param.uinhash")).longValue();
-    this.h = ((Long)paramdo.c.get("param.realuin")).longValue();
-    this.j = ((Integer)paramdo.c.get("param.general.mobilecode.sceneid")).intValue();
-    this.i = paramdo.j;
+    this.g = ((Long)paramdp.c.get("param.uinhash")).longValue();
+    this.h = ((Long)paramdp.c.get("param.realuin")).longValue();
+    this.j = ((Integer)paramdp.c.get("param.general.mobilecode.sceneid")).intValue();
+    this.i = paramdp.j;
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -141,7 +141,7 @@ public class ProtoGeneralGetMobileCode
     ((StringBuilder)localObject).append("parseJSON error decodeData=");
     ((StringBuilder)localObject).append(paramJSONObject);
     g.c(((StringBuilder)localObject).toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
 }
 

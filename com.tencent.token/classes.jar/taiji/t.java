@@ -1,6 +1,6 @@
 package taiji;
 
-import com.tencent.token.gm;
+import com.tencent.token.gp;
 import java.util.List;
 
 public class t
@@ -17,7 +17,7 @@ public class t
     {
       az localaz = (az)paramo.a;
       paramo = (az)paramo.b;
-      return new az(gm.a(localaz.a(), paramo.a(), paramFloat), gm.a(localaz.b(), paramo.b(), paramFloat));
+      return new az(gp.a(localaz.a(), paramo.a(), paramFloat), gp.a(localaz.b(), paramo.b(), paramFloat));
     }
     throw new IllegalStateException("Missing values for keyframe.");
   }

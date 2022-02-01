@@ -2,10 +2,10 @@ package com.tencent.halley.common;
 
 import com.tencent.beacon.event.UserAction;
 import com.tencent.halley.scheduler.c.h;
-import com.tencent.token.al;
 import com.tencent.token.am;
-import com.tencent.token.bd;
+import com.tencent.token.an;
 import com.tencent.token.be;
+import com.tencent.token.bf;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -27,7 +27,7 @@ public class g
       while (((Iterator)localObject2).hasNext())
       {
         Object localObject3 = (com.tencent.halley.scheduler.c.a)((Iterator)localObject2).next();
-        al localal = new al();
+        am localam = new am();
         Object localObject4 = ((com.tencent.halley.scheduler.c.a)localObject3).a;
         localObject4 = ((com.tencent.halley.scheduler.c.a)localObject3).b;
         int i = ((com.tencent.halley.scheduler.c.a)localObject3).d;
@@ -35,20 +35,20 @@ public class g
         while (((Iterator)localObject3).hasNext())
         {
           Object localObject5 = (h)((Iterator)localObject3).next();
-          localObject4 = new am();
+          localObject4 = new an();
           i = ((h)localObject5).a;
           i = ((h)localObject5).b;
           localObject5 = ((h)localObject5).c;
-          localal.a.add(localObject4);
+          localam.a.add(localObject4);
         }
-        paramArrayOfByte.add(localal);
+        paramArrayOfByte.add(localam);
       }
       paramArrayOfByte = ((com.tencent.halley.scheduler.c.b)localObject1).b;
-      localObject1 = bd.a();
+      localObject1 = be.a();
       if ((paramArrayOfByte == null) || (!"".equals(paramArrayOfByte)))
       {
-        localObject1 = ((bd)localObject1).c;
-        be.a("detectTaskCode", paramArrayOfByte);
+        localObject1 = ((be)localObject1).c;
+        bf.a("detectTaskCode", paramArrayOfByte);
       }
       return;
     }

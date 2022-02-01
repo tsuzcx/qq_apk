@@ -38,7 +38,7 @@ public class e
   public static int a()
   {
     if (b == 0) {
-      b = a(RqdApplication.l());
+      b = a(RqdApplication.n());
     }
     return b;
   }
@@ -165,8 +165,8 @@ public class e
   
   public static boolean e()
   {
-    DisplayMetrics localDisplayMetrics = RqdApplication.l().getResources().getDisplayMetrics();
-    if (RqdApplication.l().getResources().getConfiguration().orientation == 2)
+    DisplayMetrics localDisplayMetrics = RqdApplication.n().getResources().getDisplayMetrics();
+    if (RqdApplication.n().getResources().getConfiguration().orientation == 2)
     {
       e = localDisplayMetrics.heightPixels;
       f = localDisplayMetrics.widthPixels;

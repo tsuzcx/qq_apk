@@ -14,7 +14,7 @@ public class TknEncManager
   
   private TknEncManager()
   {
-    initEncKey(RqdApplication.l(), 2131493641);
+    initEncKey(RqdApplication.n(), 2131493642);
   }
   
   public static TknEncManager a()

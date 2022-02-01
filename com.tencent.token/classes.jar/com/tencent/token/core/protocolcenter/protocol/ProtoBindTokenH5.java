@@ -1,12 +1,12 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.ca;
 import com.tencent.token.cb;
 import com.tencent.token.cc;
+import com.tencent.token.cd;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.cr;
-import com.tencent.token.do;
+import com.tencent.token.cs;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -23,7 +23,7 @@ public class ProtoBindTokenH5
   
   protected String a()
   {
-    String str3 = ca.a().b();
+    String str3 = cb.a().b();
     if (str3 == null)
     {
       this.a.b(104);
@@ -37,19 +37,19 @@ public class ProtoBindTokenH5
       str1 = str2;
       ((JSONObject)localObject).put("real_uin", this.d);
       str1 = str2;
-      int i = cb.a + 1;
+      int i = cc.a + 1;
       str1 = str2;
-      cb.a = i;
+      cc.a = i;
       str1 = str2;
       ((JSONObject)localObject).put("seq_id", i);
       str1 = str2;
-      ((JSONObject)localObject).put("op_time", cc.c().s() / 1000L);
+      ((JSONObject)localObject).put("op_time", cd.c().s() / 1000L);
       str1 = str2;
-      ((JSONObject)localObject).put("token_seq", cc.c().k());
+      ((JSONObject)localObject).put("token_seq", cd.c().k());
       str1 = str2;
-      ((JSONObject)localObject).put("token_code", cc.c().o());
+      ((JSONObject)localObject).put("token_code", cd.c().o());
       str1 = str2;
-      ((JSONObject)localObject).put("imei", l.b(RqdApplication.l()));
+      ((JSONObject)localObject).put("imei", l.b(RqdApplication.n()));
       str1 = str2;
       ((JSONObject)localObject).put("signature", this.e);
       str1 = str2;
@@ -92,10 +92,10 @@ public class ProtoBindTokenH5
     return str1;
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.d = ((Long)paramdo.c.get("param.realuin")).longValue();
-    this.e = ((String)paramdo.c.get("param.bind.sig"));
+    this.d = ((Long)paramdp.c.get("param.realuin")).longValue();
+    this.e = ((String)paramdp.c.get("param.bind.sig"));
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -122,16 +122,16 @@ public class ProtoBindTokenH5
         localObject = l.d(paramJSONObject.getString("seed"));
         if (localObject != null)
         {
-          cc.c().e();
-          cc.c().a((byte[])localObject);
-          cc.c().i();
+          cd.c().e();
+          cd.c().a((byte[])localObject);
+          cd.c().i();
         }
       }
       long l = paramJSONObject.getLong("server_time");
-      cc.c().b(l);
-      paramJSONObject = cr.a().d(this.d);
+      cd.c().b(l);
+      paramJSONObject = cs.a().d(this.d);
       if (paramJSONObject != null) {
-        cr.a().b(paramJSONObject);
+        cs.a().b(paramJSONObject);
       }
       this.a.c();
       return;
@@ -140,7 +140,7 @@ public class ProtoBindTokenH5
     ((StringBuilder)localObject).append("parseJSON error decodeData=");
     ((StringBuilder)localObject).append(paramJSONObject);
     g.c(((StringBuilder)localObject).toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
 }
 

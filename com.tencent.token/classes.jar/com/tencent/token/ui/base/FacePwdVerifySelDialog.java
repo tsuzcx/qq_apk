@@ -31,7 +31,7 @@ public class FacePwdVerifySelDialog
       super.onCreate(paramBundle);
       setContentView(2131296331);
       getWindow().setBackgroundDrawableResource(2131099876);
-      this.b = ((ListView)findViewById(2131166251));
+      this.b = ((ListView)findViewById(2131166253));
       this.c = new b(this.a, this, this.d);
       this.b.setAdapter(this.c);
       return;

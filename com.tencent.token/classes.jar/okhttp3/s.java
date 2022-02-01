@@ -1,6 +1,6 @@
 package okhttp3;
 
-import com.tencent.token.fc;
+import com.tencent.token.ff;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
@@ -191,7 +191,7 @@ public final class s
         if (localObject1 == null) {
           localObject2 = new c();
         }
-        if ((paramCharset != null) && (!paramCharset.equals(fc.e))) {
+        if ((paramCharset != null) && (!paramCharset.equals(ff.e))) {
           ((c)localObject2).a(paramString1, paramInt1, Character.charCount(k) + paramInt1, paramCharset);
         } else {
           ((c)localObject2).a(k);
@@ -223,8 +223,8 @@ public final class s
         int k = paramInt1 + 2;
         if (k < paramInt2)
         {
-          int n = fc.a(paramString.charAt(paramInt1 + 1));
-          int i1 = fc.a(paramString.charAt(k));
+          int n = ff.a(paramString.charAt(paramInt1 + 1));
+          int i1 = ff.a(paramString.charAt(k));
           if ((n == -1) || (i1 == -1)) {
             break label105;
           }
@@ -247,7 +247,7 @@ public final class s
   static boolean a(String paramString, int paramInt1, int paramInt2)
   {
     int k = paramInt1 + 2;
-    return (k < paramInt2) && (paramString.charAt(paramInt1) == '%') && (fc.a(paramString.charAt(paramInt1 + 1)) != -1) && (fc.a(paramString.charAt(k)) != -1);
+    return (k < paramInt2) && (paramString.charAt(paramInt1) == '%') && (ff.a(paramString.charAt(paramInt1 + 1)) != -1) && (ff.a(paramString.charAt(k)) != -1);
   }
   
   static List<String> b(String paramString)
@@ -351,7 +351,7 @@ public final class s
     }
     int k = this.a.length() + 3;
     String str = this.j;
-    int m = fc.a(str, k, str.length(), ":@");
+    int m = ff.a(str, k, str.length(), ":@");
     return this.j.substring(k, m);
   }
   
@@ -400,7 +400,7 @@ public final class s
   {
     int k = this.j.indexOf('/', this.a.length() + 3);
     String str = this.j;
-    int m = fc.a(str, k, str.length(), "?#");
+    int m = ff.a(str, k, str.length(), "?#");
     return this.j.substring(k, m);
   }
   
@@ -413,12 +413,12 @@ public final class s
   {
     int k = this.j.indexOf('/', this.a.length() + 3);
     Object localObject = this.j;
-    int m = fc.a((String)localObject, k, ((String)localObject).length(), "?#");
+    int m = ff.a((String)localObject, k, ((String)localObject).length(), "?#");
     localObject = new ArrayList();
     while (k < m)
     {
       int n = k + 1;
-      k = fc.a(this.j, n, m, '/');
+      k = ff.a(this.j, n, m, '/');
       ((List)localObject).add(this.j.substring(n, k));
     }
     return localObject;
@@ -432,7 +432,7 @@ public final class s
     }
     int k = this.j.indexOf('?') + 1;
     String str = this.j;
-    int m = fc.a(str, k, str.length(), '#');
+    int m = ff.a(str, k, str.length(), '#');
     return this.j.substring(k, m);
   }
   
@@ -527,7 +527,7 @@ public final class s
       }
       while (paramInt1 < paramInt2)
       {
-        i = fc.a(paramString, paramInt1, paramInt2, "/\\");
+        i = ff.a(paramString, paramInt1, paramInt2, "/\\");
         boolean bool;
         if (i < paramInt2) {
           bool = true;
@@ -702,7 +702,7 @@ public final class s
     
     private static String e(String paramString, int paramInt1, int paramInt2)
     {
-      return fc.a(s.a(paramString, paramInt1, paramInt2, false));
+      return ff.a(s.a(paramString, paramInt1, paramInt2, false));
     }
     
     private static int f(String paramString, int paramInt1, int paramInt2)
@@ -775,8 +775,8 @@ public final class s
     
     a a(@Nullable s params, String paramString)
     {
-      int i = fc.a(paramString, 0, paramString.length());
-      int i1 = fc.b(paramString, i, paramString.length());
+      int i = ff.a(paramString, 0, paramString.length());
+      int i1 = ff.b(paramString, i, paramString.length());
       int j = b(paramString, i, i1);
       if (j != -1)
       {
@@ -834,7 +834,7 @@ public final class s
         j = 0;
         for (;;)
         {
-          k = fc.a(paramString, m, i1, "@/\\?#");
+          k = ff.a(paramString, m, i1, "@/\\?#");
           int n;
           if (k != i1) {
             n = paramString.charAt(k);
@@ -851,7 +851,7 @@ public final class s
           case 64: 
             if (i == 0)
             {
-              int i2 = fc.a(paramString, m, k, ':');
+              int i2 = ff.a(paramString, m, k, ':');
               n = k;
               String str = s.a(paramString, m, i2, " \"':;<=>@[]^`{}|/\\?#", true, false, false, true, null);
               params = str;
@@ -907,7 +907,7 @@ public final class s
         }
         j = k;
       }
-      int k = fc.a(paramString, j, i1, "?#");
+      int k = ff.a(paramString, j, i1, "?#");
       a(paramString, j, k);
       i = k;
       if (k < i1)
@@ -915,7 +915,7 @@ public final class s
         i = k;
         if (paramString.charAt(k) == '?')
         {
-          i = fc.a(paramString, k, i1, '#');
+          i = ff.a(paramString, k, i1, '#');
           this.g = s.b(s.a(paramString, k + 1, i, " \"'<>#", true, false, true, true, null));
         }
       }

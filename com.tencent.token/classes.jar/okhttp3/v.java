@@ -1,11 +1,11 @@
 package okhttp3;
 
-import com.tencent.token.fa;
-import com.tencent.token.fc;
-import com.tencent.token.fi;
-import com.tencent.token.gc;
+import com.tencent.token.fd;
+import com.tencent.token.ff;
+import com.tencent.token.fl;
 import com.tencent.token.gf;
-import com.tencent.token.gg;
+import com.tencent.token.gi;
+import com.tencent.token.gj;
 import java.net.Proxy;
 import java.net.ProxySelector;
 import java.net.Socket;
@@ -28,8 +28,8 @@ import okhttp3.internal.connection.f;
 public class v
   implements Cloneable
 {
-  static final List<Protocol> a = fc.a(new Protocol[] { Protocol.HTTP_2, Protocol.HTTP_1_1 });
-  static final List<k> b = fc.a(new k[] { k.b, k.d });
+  static final List<Protocol> a = ff.a(new Protocol[] { Protocol.HTTP_2, Protocol.HTTP_1_1 });
+  static final List<k> b = ff.a(new k[] { k.b, k.d });
   final int A;
   final int B;
   final int C;
@@ -46,12 +46,12 @@ public class v
   @Nullable
   final c l;
   @Nullable
-  final fi m;
+  final fl m;
   final SocketFactory n;
   @Nullable
   final SSLSocketFactory o;
   @Nullable
-  final gf p;
+  final gi p;
   final HostnameVerifier q;
   final g r;
   final b s;
@@ -65,7 +65,7 @@ public class v
   
   static
   {
-    fa.a = new fa()
+    fd.a = new fd()
     {
       public int a(z.a paramAnonymousa)
       {
@@ -130,8 +130,8 @@ public class v
     this.d = parama.b;
     this.e = parama.c;
     this.f = parama.d;
-    this.g = fc.a(parama.e);
-    this.h = fc.a(parama.f);
+    this.g = ff.a(parama.e);
+    this.h = ff.a(parama.f);
     this.i = parama.g;
     this.j = parama.h;
     this.k = parama.i;
@@ -151,9 +151,9 @@ public class v
     }
     if ((parama.m == null) && (i1 != 0))
     {
-      localObject = fc.a();
+      localObject = ff.a();
       this.o = a((X509TrustManager)localObject);
-      this.p = gf.a((X509TrustManager)localObject);
+      this.p = gi.a((X509TrustManager)localObject);
     }
     else
     {
@@ -161,7 +161,7 @@ public class v
       this.p = parama.n;
     }
     if (this.o != null) {
-      gc.c().a(this.o);
+      gf.c().a(this.o);
     }
     this.q = parama.o;
     this.r = parama.p.a(this.p);
@@ -196,14 +196,14 @@ public class v
   {
     try
     {
-      SSLContext localSSLContext = gc.c().b();
+      SSLContext localSSLContext = gf.c().b();
       localSSLContext.init(null, new TrustManager[] { paramX509TrustManager }, null);
       paramX509TrustManager = localSSLContext.getSocketFactory();
       return paramX509TrustManager;
     }
     catch (GeneralSecurityException paramX509TrustManager)
     {
-      throw fc.a("No System TLS", paramX509TrustManager);
+      throw ff.a("No System TLS", paramX509TrustManager);
     }
   }
   
@@ -247,7 +247,7 @@ public class v
     return this.k;
   }
   
-  fi h()
+  fl h()
   {
     c localc = this.l;
     if (localc != null) {
@@ -357,13 +357,13 @@ public class v
     @Nullable
     c j;
     @Nullable
-    fi k;
+    fl k;
     SocketFactory l = SocketFactory.getDefault();
     @Nullable
     SSLSocketFactory m;
     @Nullable
-    gf n;
-    HostnameVerifier o = gg.a;
+    gi n;
+    HostnameVerifier o = gj.a;
     g p = g.a;
     b q = b.a;
     b r = b.a;
@@ -378,7 +378,7 @@ public class v
     
     public a a(long paramLong, TimeUnit paramTimeUnit)
     {
-      this.x = fc.a("timeout", paramLong, paramTimeUnit);
+      this.x = ff.a("timeout", paramLong, paramTimeUnit);
       return this;
     }
     
@@ -389,13 +389,13 @@ public class v
     
     public a b(long paramLong, TimeUnit paramTimeUnit)
     {
-      this.y = fc.a("timeout", paramLong, paramTimeUnit);
+      this.y = ff.a("timeout", paramLong, paramTimeUnit);
       return this;
     }
     
     public a c(long paramLong, TimeUnit paramTimeUnit)
     {
-      this.z = fc.a("timeout", paramLong, paramTimeUnit);
+      this.z = ff.a("timeout", paramLong, paramTimeUnit);
       return this;
     }
   }

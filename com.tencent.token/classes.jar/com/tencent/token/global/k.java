@@ -3,6 +3,8 @@ package com.tencent.token.global;
 import android.text.TextUtils;
 import android.util.Log;
 import btmsdkobf.bw;
+import com.tencent.service.update.e;
+import com.tencent.turingfd.sdk.base.aj;
 import com.tencent.turingfd.sdk.base.bz;
 import com.tencent.turingfd.sdk.base.bz.a;
 import com.tencent.turingfd.sdk.base.ca;
@@ -29,7 +31,23 @@ public class k
     localStringBuilder.append("  time=");
     localStringBuilder.append(System.currentTimeMillis() - l);
     Log.i("TuringHelper", localStringBuilder.toString());
-    ca.a(bz.a(RqdApplication.l(), str).a(105678).a(true).a());
+    ca.a(bz.a(RqdApplication.n(), str).a(105678).a(true).a(new aj()
+    {
+      public boolean a()
+      {
+        return e.a().b();
+      }
+      
+      public boolean b()
+      {
+        return e.a().b();
+      }
+      
+      public boolean c()
+      {
+        return e.a().b();
+      }
+    }).a());
   }
   
   public static String b()
@@ -39,7 +57,7 @@ public class k
       return "";
     }
     long l = System.currentTimeMillis();
-    Object localObject2 = ca.a(RqdApplication.l());
+    Object localObject2 = ca.a(RqdApplication.n());
     Object localObject1 = "";
     if (((ca.a)localObject2).b() == 0)
     {
@@ -58,14 +76,19 @@ public class k
     return localObject1;
   }
   
-  public static String c()
+  public static boolean c()
+  {
+    return a;
+  }
+  
+  public static String d()
   {
     
     if (!a) {
       return "";
     }
     long l = System.currentTimeMillis();
-    Object localObject2 = ca.a(RqdApplication.l());
+    Object localObject2 = ca.a(RqdApplication.n());
     Object localObject1 = "";
     if (((ca.a)localObject2).b() == 0)
     {

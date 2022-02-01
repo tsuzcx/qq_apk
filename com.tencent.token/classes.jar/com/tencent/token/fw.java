@@ -1,58 +1,123 @@
 package com.tencent.token;
 
-import java.io.File;
-import java.io.IOException;
+import java.net.ProtocolException;
+import okhttp3.Protocol;
 
-public abstract interface fw
+public final class fw
 {
-  public static final fw a = new fw()
+  public final Protocol a;
+  public final int b;
+  public final String c;
+  
+  public fw(Protocol paramProtocol, int paramInt, String paramString)
   {
-    public void a(File paramAnonymousFile)
+    this.a = paramProtocol;
+    this.b = paramInt;
+    this.c = paramString;
+  }
+  
+  public static fw a(String paramString)
+  {
+    boolean bool = paramString.startsWith("HTTP/1.");
+    int i = 9;
+    if (bool)
     {
-      if (!paramAnonymousFile.delete())
+      if ((paramString.length() >= 9) && (paramString.charAt(8) == ' '))
       {
-        if (!paramAnonymousFile.exists()) {
-          return;
+        j = paramString.charAt(7) - '0';
+        if (j == 0)
+        {
+          localObject = Protocol.HTTP_1_0;
         }
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("failed to delete ");
-        localStringBuilder.append(paramAnonymousFile);
-        throw new IOException(localStringBuilder.toString());
+        else if (j == 1)
+        {
+          localObject = Protocol.HTTP_1_1;
+        }
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("Unexpected status line: ");
+          ((StringBuilder)localObject).append(paramString);
+          throw new ProtocolException(((StringBuilder)localObject).toString());
+        }
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Unexpected status line: ");
+        ((StringBuilder)localObject).append(paramString);
+        throw new ProtocolException(((StringBuilder)localObject).toString());
       }
     }
-    
-    public void a(File paramAnonymousFile1, File paramAnonymousFile2)
+    else
     {
-      a(paramAnonymousFile2);
-      if (paramAnonymousFile1.renameTo(paramAnonymousFile2)) {
-        return;
+      if (!paramString.startsWith("ICY ")) {
+        break label343;
       }
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("failed to rename ");
-      localStringBuilder.append(paramAnonymousFile1);
-      localStringBuilder.append(" to ");
-      localStringBuilder.append(paramAnonymousFile2);
-      throw new IOException(localStringBuilder.toString());
+      localObject = Protocol.HTTP_1_0;
+      i = 4;
     }
-    
-    public boolean b(File paramAnonymousFile)
+    int k = paramString.length();
+    int j = i + 3;
+    if (k >= j) {}
+    try
     {
-      return paramAnonymousFile.exists();
+      k = Integer.parseInt(paramString.substring(i, j));
+      String str = "";
+      if (paramString.length() > j) {
+        if (paramString.charAt(j) == ' ')
+        {
+          str = paramString.substring(i + 4);
+        }
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("Unexpected status line: ");
+          ((StringBuilder)localObject).append(paramString);
+          throw new ProtocolException(((StringBuilder)localObject).toString());
+        }
+      }
+      return new fw((Protocol)localObject, k, str);
     }
-    
-    public long c(File paramAnonymousFile)
+    catch (NumberFormatException localNumberFormatException)
     {
-      return paramAnonymousFile.length();
+      label269:
+      break label269;
     }
-  };
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Unexpected status line: ");
+    ((StringBuilder)localObject).append(paramString);
+    throw new ProtocolException(((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Unexpected status line: ");
+    ((StringBuilder)localObject).append(paramString);
+    throw new ProtocolException(((StringBuilder)localObject).toString());
+    label343:
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Unexpected status line: ");
+    ((StringBuilder)localObject).append(paramString);
+    throw new ProtocolException(((StringBuilder)localObject).toString());
+  }
   
-  public abstract void a(File paramFile);
-  
-  public abstract void a(File paramFile1, File paramFile2);
-  
-  public abstract boolean b(File paramFile);
-  
-  public abstract long c(File paramFile);
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    String str;
+    if (this.a == Protocol.HTTP_1_0) {
+      str = "HTTP/1.0";
+    } else {
+      str = "HTTP/1.1";
+    }
+    localStringBuilder.append(str);
+    localStringBuilder.append(' ');
+    localStringBuilder.append(this.b);
+    if (this.c != null)
+    {
+      localStringBuilder.append(' ');
+      localStringBuilder.append(this.c);
+    }
+    return localStringBuilder.toString();
+  }
 }
 
 

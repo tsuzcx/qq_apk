@@ -1,21 +1,11 @@
 package com.tencent.token;
 
-import java.util.concurrent.atomic.AtomicInteger;
+import android.util.Pair;
+import com.qq.taf.jce.JceStruct;
 
-public class ei
+public abstract interface ei
 {
-  boolean a = false;
-  AtomicInteger b = new AtomicInteger();
-  
-  public void a(int paramInt)
-  {
-    this.b.set(paramInt);
-  }
-  
-  public boolean a()
-  {
-    return this.a;
-  }
+  public abstract Pair a(int paramInt1, int paramInt2, JceStruct paramJceStruct);
 }
 
 

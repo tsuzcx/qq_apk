@@ -1,12 +1,12 @@
 package okhttp3;
 
-import com.tencent.token.fb;
 import com.tencent.token.fe;
-import com.tencent.token.fj;
-import com.tencent.token.fk;
-import com.tencent.token.fp;
+import com.tencent.token.fh;
+import com.tencent.token.fm;
+import com.tencent.token.fn;
 import com.tencent.token.fs;
-import com.tencent.token.gc;
+import com.tencent.token.fv;
+import com.tencent.token.gf;
 import java.util.ArrayList;
 import java.util.List;
 import okhttp3.internal.connection.a;
@@ -15,7 +15,7 @@ final class w
   implements e
 {
   final v a;
-  final fs b;
+  final fv b;
   final x c;
   final boolean d;
   private p e;
@@ -26,7 +26,7 @@ final class w
     this.a = paramv;
     this.c = paramx;
     this.d = paramBoolean;
-    this.b = new fs(paramv, paramBoolean);
+    this.b = new fv(paramv, paramBoolean);
   }
   
   static w a(v paramv, x paramx, boolean paramBoolean)
@@ -38,7 +38,7 @@ final class w
   
   private void f()
   {
-    Object localObject = gc.c().a("response.body().close()");
+    Object localObject = gf.c().a("response.body().close()");
     this.b.a(localObject);
   }
   
@@ -100,18 +100,18 @@ final class w
     ArrayList localArrayList = new ArrayList();
     localArrayList.addAll(this.a.w());
     localArrayList.add(this.b);
-    localArrayList.add(new fj(this.a.g()));
-    localArrayList.add(new fe(this.a.h()));
+    localArrayList.add(new fm(this.a.g()));
+    localArrayList.add(new fh(this.a.h()));
     localArrayList.add(new a(this.a));
     if (!this.d) {
       localArrayList.addAll(this.a.x());
     }
-    localArrayList.add(new fk(this.d));
-    return new fp(localArrayList, null, null, null, 0, this.c, this, this.e, this.a.a(), this.a.b(), this.a.c()).a(this.c);
+    localArrayList.add(new fn(this.d));
+    return new fs(localArrayList, null, null, null, 0, this.c, this, this.e, this.a.a(), this.a.b(), this.a.c()).a(this.c);
   }
   
   final class a
-    extends fb
+    extends fe
   {
     private final f c;
     
@@ -143,8 +143,8 @@ final class w
       //   9: astore_3
       //   10: aload_0
       //   11: getfield 14	okhttp3/w$a:a	Lokhttp3/w;
-      //   14: getfield 53	okhttp3/w:b	Lcom/tencent/token/fs;
-      //   17: invokevirtual 58	com/tencent/token/fs:a	()Z
+      //   14: getfield 53	okhttp3/w:b	Lcom/tencent/token/fv;
+      //   17: invokevirtual 58	com/tencent/token/fv:a	()Z
       //   20: istore_2
       //   21: iload_2
       //   22: ifeq +28 -> 50
@@ -180,7 +180,7 @@ final class w
       //   89: istore_1
       //   90: iload_1
       //   91: ifeq +53 -> 144
-      //   94: invokestatic 90	com/tencent/token/gc:c	()Lcom/tencent/token/gc;
+      //   94: invokestatic 90	com/tencent/token/gf:c	()Lcom/tencent/token/gf;
       //   97: astore 4
       //   99: new 92	java/lang/StringBuilder
       //   102: dup
@@ -201,7 +201,7 @@ final class w
       //   132: aload 5
       //   134: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
       //   137: aload_3
-      //   138: invokevirtual 108	com/tencent/token/gc:a	(ILjava/lang/String;Ljava/lang/Throwable;)V
+      //   138: invokevirtual 108	com/tencent/token/gf:a	(ILjava/lang/String;Ljava/lang/Throwable;)V
       //   141: goto -77 -> 64
       //   144: aload_0
       //   145: getfield 14	okhttp3/w$a:a	Lokhttp3/w;
@@ -234,7 +234,7 @@ final class w
       //   79	1	3	localIOException1	java.io.IOException
       //   83	1	3	localObject	Object
       //   87	104	3	localIOException2	java.io.IOException
-      //   97	33	4	localgc	gc
+      //   97	33	4	localgf	gf
       //   106	27	5	localStringBuilder	StringBuilder
       // Exception table:
       //   from	to	target	type

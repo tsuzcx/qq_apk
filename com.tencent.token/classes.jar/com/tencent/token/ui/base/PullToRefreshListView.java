@@ -81,10 +81,10 @@ public class PullToRefreshListView
     }
     this.b.setPadding(0, -this.a, 0, 0);
     addHeaderView(this.b, null, false);
-    this.c = ((ImageView)this.b.findViewById(2131165568));
-    this.d = ((ProgressBar)this.b.findViewById(2131165571));
-    this.e = ((TextView)this.b.findViewById(2131165573));
-    this.f = ((TextView)this.b.findViewById(2131165572));
+    this.c = ((ImageView)this.b.findViewById(2131165570));
+    this.d = ((ProgressBar)this.b.findViewById(2131165573));
+    this.e = ((TextView)this.b.findViewById(2131165575));
+    this.f = ((TextView)this.b.findViewById(2131165574));
     this.c.setImageResource(2131100026);
     this.g = new RotateAnimation(0.0F, -180.0F, 1, 0.5F, 1, 0.5F);
     this.g.setInterpolator(new LinearInterpolator());
@@ -173,7 +173,7 @@ public class PullToRefreshListView
           this.c.clearAnimation();
           this.c.startAnimation(this.h);
         }
-        this.e.setText(2131493312);
+        this.e.setText(2131493313);
         break;
       case 1: 
         if (this.m == 2)
@@ -181,12 +181,12 @@ public class PullToRefreshListView
           this.c.clearAnimation();
           this.c.startAnimation(this.g);
         }
-        this.e.setText(2131493314);
+        this.e.setText(2131493315);
         break;
       case 0: 
         this.b.setPadding(0, -this.a, 0, 0);
         this.b.invalidate();
-        this.e.setText(2131493312);
+        this.e.setText(2131493313);
       }
       this.m = paramInt;
     }

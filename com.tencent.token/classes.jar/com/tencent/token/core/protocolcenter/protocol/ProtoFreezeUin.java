@@ -3,11 +3,11 @@ package com.tencent.token.core.protocolcenter.protocol;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.ca;
 import com.tencent.token.cb;
 import com.tencent.token.cc;
+import com.tencent.token.cd;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -28,25 +28,25 @@ public class ProtoFreezeUin
   private int i = -1;
   private int j;
   
-  public static void a(do paramdo, long paramLong, int paramInt, String paramString)
+  public static void a(dp paramdp, long paramLong, int paramInt, String paramString)
   {
-    paramdo.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramdo.c.put("param.wtlogin.a2", paramString);
-    paramdo.c.put("param.factor.type", Integer.valueOf(paramInt));
+    paramdp.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdp.c.put("param.wtlogin.a2", paramString);
+    paramdp.c.put("param.factor.type", Integer.valueOf(paramInt));
   }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     if (str == null)
     {
       this.a.b(104);
       return null;
     }
-    int k = cb.a + 1;
-    cb.a = k;
+    int k = cc.a + 1;
+    cc.a = k;
     this.f = k;
-    Object localObject = l.a(new Object[] { "uin", Long.valueOf(this.e), "seq_id", Integer.valueOf(this.f), "op_time", Long.valueOf(cc.c().s() / 1000L), "a2_sign", this.h, "sign_qq", Integer.valueOf(this.g) });
+    Object localObject = l.a(new Object[] { "uin", Long.valueOf(this.e), "seq_id", Integer.valueOf(this.f), "op_time", Long.valueOf(cd.c().s() / 1000L), "a2_sign", this.h, "sign_qq", Integer.valueOf(this.g) });
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("?aq_base_sid=");
     localStringBuilder.append(str);
@@ -60,11 +60,11 @@ public class ProtoFreezeUin
     return ((StringBuilder)localObject).toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.e = ((Long)paramdo.c.get("param.uinhash")).longValue();
-    this.h = ((String)paramdo.c.get("param.wtlogin.a2"));
-    this.g = ((Integer)paramdo.c.get("param.factor.type")).intValue();
+    this.e = ((Long)paramdp.c.get("param.uinhash")).longValue();
+    this.h = ((String)paramdp.c.get("param.wtlogin.a2"));
+    this.g = ((Integer)paramdp.c.get("param.factor.type")).intValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -87,7 +87,7 @@ public class ProtoFreezeUin
         paramJSONObject.append("parseJSON error seq is wrong seq=");
         paramJSONObject.append(k);
         paramJSONObject.append(",right = ");
-        paramJSONObject.append(cb.a().b());
+        paramJSONObject.append(cc.a().b());
         g.c(paramJSONObject.toString());
         return;
       }
@@ -111,7 +111,7 @@ public class ProtoFreezeUin
     localStringBuilder.append("parseJSON error decodeData=");
     localStringBuilder.append(paramJSONObject);
     g.c(localStringBuilder.toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
   
   protected void b()

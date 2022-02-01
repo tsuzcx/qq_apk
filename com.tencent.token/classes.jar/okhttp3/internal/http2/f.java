@@ -1,6 +1,6 @@
 package okhttp3.internal.http2;
 
-import com.tencent.token.fc;
+import com.tencent.token.ff;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.List;
@@ -312,7 +312,7 @@ final class f
     }
     paramb = this.c.c(c.a.g());
     if (a.isLoggable(Level.FINE)) {
-      a.fine(fc.a("<< CONNECTION %s", new Object[] { paramb.e() }));
+      a.fine(ff.a("<< CONNECTION %s", new Object[] { paramb.e() }));
     }
     if (c.a.equals(paramb)) {
       return;

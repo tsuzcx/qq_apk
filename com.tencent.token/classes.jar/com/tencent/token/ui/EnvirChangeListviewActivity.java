@@ -11,12 +11,12 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.ca;
-import com.tencent.token.cc;
+import com.tencent.token.cb;
 import com.tencent.token.cd;
-import com.tencent.token.cr;
-import com.tencent.token.ct;
-import com.tencent.token.er;
+import com.tencent.token.ce;
+import com.tencent.token.cs;
+import com.tencent.token.cu;
+import com.tencent.token.et;
 import com.tencent.token.global.c;
 import com.tencent.token.global.g;
 import java.util.ArrayList;
@@ -37,37 +37,37 @@ public class EnvirChangeListviewActivity
       paramAnonymousAdapterView = (com.tencent.token.core.bean.b)EnvirChangeListviewActivity.this.envirDataList.get(paramAnonymousInt);
       Toast.makeText(EnvirChangeListviewActivity.this.getApplicationContext(), paramAnonymousAdapterView.b(), 0).show();
       c.a(paramAnonymousInt);
-      paramAnonymousAdapterView = cc.c();
+      paramAnonymousAdapterView = cd.c();
       paramAnonymousAdapterView.e();
       paramAnonymousAdapterView.d();
-      er.b();
-      cc.c();
-      paramAnonymousAdapterView = cr.a();
-      ca.a().c();
+      et.b();
+      cd.c();
+      paramAnonymousAdapterView = cs.a();
+      cb.a().c();
       paramAnonymousAdapterView.b();
       paramAnonymousInt = c.a();
-      paramAnonymousAdapterView = cr.a();
+      paramAnonymousAdapterView = cs.a();
       if (paramAnonymousInt == 0) {
-        cr.c = cr.d;
+        cs.c = cs.d;
       } else if (1 == paramAnonymousInt) {
-        cr.c = cr.e;
+        cs.c = cs.e;
       } else if (2 == paramAnonymousInt) {
-        cr.c = cr.f;
+        cs.c = cs.f;
       } else if (3 == paramAnonymousInt) {
-        cr.c = cr.g;
+        cs.c = cs.g;
       }
       paramAnonymousView = new StringBuilder();
       paramAnonymousView.append("sessionId : ");
-      paramAnonymousView.append(cr.c);
+      paramAnonymousView.append(cs.c);
       g.c(paramAnonymousView.toString());
       paramAnonymousView = new StringBuilder();
       paramAnonymousView.append("UserAgent.isInit():---");
       paramAnonymousView.append(paramAnonymousAdapterView.p());
       g.c(paramAnonymousView.toString());
-      cd.b();
+      ce.b();
       com.tencent.token.core.push.b.b();
       AccountPageActivity.mNeedRefreshEval = true;
-      ct.b();
+      cu.b();
       EnvirChangeListviewActivity.this.finish();
     }
   };
@@ -95,7 +95,7 @@ public class EnvirChangeListviewActivity
   {
     super.onCreate(paramBundle);
     setContentView(2131296322);
-    paramBundle = (ListView)findViewById(2131165457);
+    paramBundle = (ListView)findViewById(2131165459);
     initData();
     this.maAdapter = new a(this, this.envirDataList);
     paramBundle.setAdapter(this.maAdapter);
@@ -159,9 +159,9 @@ public class EnvirChangeListviewActivity
       if (paramView == null) {
         localView = this.d.inflate(2131296321, paramViewGroup, false);
       }
-      paramView = (TextView)localView.findViewById(2131165459);
-      paramViewGroup = (TextView)localView.findViewById(2131165458);
-      RadioButton localRadioButton = (RadioButton)localView.findViewById(2131165965);
+      paramView = (TextView)localView.findViewById(2131165461);
+      paramViewGroup = (TextView)localView.findViewById(2131165460);
+      RadioButton localRadioButton = (RadioButton)localView.findViewById(2131165967);
       com.tencent.token.core.bean.b localb = (com.tencent.token.core.bean.b)getItem(paramInt);
       paramView.setText(localb.a());
       paramViewGroup.setText(localb.b());

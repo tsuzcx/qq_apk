@@ -1,69 +1,69 @@
 package com.tencent.token.core.protocolcenter;
 
-import com.tencent.token.bv;
-import com.tencent.token.ca;
-import com.tencent.token.do;
+import com.tencent.token.bw;
+import com.tencent.token.cb;
+import com.tencent.token.dp;
 import com.tencent.token.global.e;
 import java.util.concurrent.Callable;
 
 public class g
 {
-  public static e a(do paramdo, String paramString)
+  public static e a(dp paramdp, String paramString)
   {
-    e locale = bv.a().b();
+    e locale = bw.a().b();
     if (!locale.b()) {
       return locale;
     }
     paramString = b.a(paramString);
     if (paramString != null)
     {
-      paramdo = paramString.c(paramdo);
-      if (paramdo.b()) {
-        ca.a().c();
+      paramdp = paramString.c(paramdp);
+      if (paramdp.b()) {
+        cb.a().c();
       }
-      return paramdo;
+      return paramdp;
     }
     locale.b(10000);
     return locale;
   }
   
-  public static Callable<e> a(do paramdo)
+  public static Callable<e> a(dp paramdp)
   {
     new Callable()
     {
       public e a()
       {
         Object localObject = this.a;
-        localObject = g.b((do)localObject, ((do)localObject).a);
+        localObject = g.b((dp)localObject, ((dp)localObject).a);
         this.a.l.a(this.a, (e)localObject);
         return localObject;
       }
     };
   }
   
-  public static e b(do paramdo, String paramString)
+  public static e b(dp paramdp, String paramString)
   {
     e locale = new e();
     try
     {
-      if (ca.a().b() == null)
+      if (cb.a().b() == null)
       {
-        paramdo = a(paramdo, paramString);
-        return paramdo;
+        paramdp = a(paramdp, paramString);
+        return paramdp;
       }
       d locald = b.a(paramString);
       if (locald != null)
       {
-        locale = locald.c(paramdo);
+        locale = locald.c(paramdp);
         if (locale.b())
         {
-          ca.a().c();
+          cb.a().c();
           return locale;
         }
         if (locale.a == 104)
         {
-          paramdo = a(paramdo, paramString);
-          return paramdo;
+          paramdp = a(paramdp, paramString);
+          return paramdp;
         }
         return locale;
       }

@@ -1,14 +1,8 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.os.Debug.MemoryInfo;
-
-public class ec
+public abstract interface ec
 {
-  public static int a(Context paramContext)
-  {
-    return ((android.app.ActivityManager)paramContext.getSystemService("activity")).getProcessMemoryInfo(new int[] { android.os.Process.myPid() })[0].getTotalPrivateDirty();
-  }
+  public abstract void a(int paramInt1, byte[] paramArrayOfByte, int paramInt2);
 }
 
 

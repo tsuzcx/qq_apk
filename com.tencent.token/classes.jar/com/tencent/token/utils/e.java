@@ -28,7 +28,7 @@ public class e
       if ("mounted".equals(localObject)) {
         paramString = new File(Environment.getExternalStorageDirectory(), paramString);
       } else {
-        paramString = new File(RqdApplication.l().getFilesDir(), paramString);
+        paramString = new File(RqdApplication.n().getFilesDir(), paramString);
       }
       if (!paramString.exists()) {
         paramString.createNewFile();

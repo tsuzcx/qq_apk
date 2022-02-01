@@ -2,16 +2,16 @@ package com.tencent.token.ui.gallery;
 
 import android.os.Environment;
 import android.text.TextUtils;
-import com.tencent.token.cx;
-import com.tencent.token.cz;
+import com.tencent.token.cy;
 import com.tencent.token.da;
+import com.tencent.token.db;
 import java.io.File;
 
 public class a
 {
   private static a c;
   private String a;
-  private cz b;
+  private da b;
   
   public static a f()
   {
@@ -43,19 +43,19 @@ public class a
   
   public void a()
   {
-    cz localcz = this.b;
-    if (localcz == null) {
+    da localda = this.b;
+    if (localda == null) {
       return;
     }
-    localcz.a();
+    localda.a();
   }
   
-  public void a(cx paramcx)
+  public void a(cy paramcy)
   {
-    a("http://qqwx.qq.com/s?aid=index&p=14&c=102322&vt=1&pf=0", null, null, paramcx);
+    a("http://qqwx.qq.com/s?aid=index&p=14&c=102322&vt=1&pf=0", null, null, paramcy);
   }
   
-  public void a(String paramString1, String paramString2, String paramString3, cx paramcx)
+  public void a(String paramString1, String paramString2, String paramString3, cy paramcy)
   {
     String str = paramString2;
     if (TextUtils.isEmpty(paramString2)) {
@@ -65,7 +65,7 @@ public class a
     if (TextUtils.isEmpty(paramString3)) {
       paramString2 = b();
     }
-    this.b = new cz(new da(paramString1, str, paramString2), paramcx);
+    this.b = new da(new db(paramString1, str, paramString2), paramcy);
   }
   
   public String b()
@@ -75,11 +75,11 @@ public class a
   
   public void c()
   {
-    cz localcz = this.b;
-    if (localcz == null) {
+    da localda = this.b;
+    if (localda == null) {
       return;
     }
-    localcz.b();
+    localda.b();
   }
   
   public boolean d()
@@ -112,11 +112,11 @@ public class a
   
   public boolean g()
   {
-    cz localcz = this.b;
-    if (localcz == null) {
+    da localda = this.b;
+    if (localda == null) {
       return false;
     }
-    return localcz.c();
+    return localda.c();
   }
 }
 

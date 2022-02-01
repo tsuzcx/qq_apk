@@ -1,44 +1,30 @@
 package com.tencent.token;
 
-import java.net.Proxy.Type;
-import okhttp3.s;
-import okhttp3.x;
-
 public final class fr
 {
-  public static String a(s params)
+  public static boolean a(String paramString)
   {
-    String str1 = params.h();
-    String str2 = params.j();
-    params = str1;
-    if (str2 != null)
-    {
-      params = new StringBuilder();
-      params.append(str1);
-      params.append('?');
-      params.append(str2);
-      params = params.toString();
-    }
-    return params;
+    return (paramString.equals("POST")) || (paramString.equals("PATCH")) || (paramString.equals("PUT")) || (paramString.equals("DELETE")) || (paramString.equals("MOVE"));
   }
   
-  public static String a(x paramx, Proxy.Type paramType)
+  public static boolean b(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramx.b());
-    localStringBuilder.append(' ');
-    if (b(paramx, paramType)) {
-      localStringBuilder.append(paramx.a());
-    } else {
-      localStringBuilder.append(a(paramx.a()));
-    }
-    localStringBuilder.append(" HTTP/1.1");
-    return localStringBuilder.toString();
+    return (paramString.equals("POST")) || (paramString.equals("PUT")) || (paramString.equals("PATCH")) || (paramString.equals("PROPPATCH")) || (paramString.equals("REPORT"));
   }
   
-  private static boolean b(x paramx, Proxy.Type paramType)
+  public static boolean c(String paramString)
   {
-    return (!paramx.g()) && (paramType == Proxy.Type.HTTP);
+    return (!paramString.equals("GET")) && (!paramString.equals("HEAD"));
+  }
+  
+  public static boolean d(String paramString)
+  {
+    return paramString.equals("PROPFIND");
+  }
+  
+  public static boolean e(String paramString)
+  {
+    return paramString.equals("PROPFIND") ^ true;
   }
 }
 

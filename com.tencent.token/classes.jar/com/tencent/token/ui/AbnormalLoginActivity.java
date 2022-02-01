@@ -16,7 +16,7 @@ public class AbnormalLoginActivity
   {
     super.onCreate(paramBundle);
     setContentView(2131296283);
-    this.mListView = ((ListView)findViewById(2131165750));
+    this.mListView = ((ListView)findViewById(2131165752));
     this.mAdapter = new a(this);
     this.mListView.setScrollingCacheEnabled(true);
     this.mListView.setAdapter(this.mAdapter);

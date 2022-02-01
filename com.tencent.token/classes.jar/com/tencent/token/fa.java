@@ -1,40 +1,77 @@
 package com.tencent.token;
 
-import java.net.Socket;
-import javax.net.ssl.SSLSocket;
-import okhttp3.a;
-import okhttp3.ab;
-import okhttp3.internal.connection.c;
-import okhttp3.internal.connection.d;
-import okhttp3.internal.connection.f;
-import okhttp3.j;
-import okhttp3.k;
-import okhttp3.r.a;
-import okhttp3.z.a;
+import java.util.Hashtable;
 
-public abstract class fa
+public class fa
 {
-  public static fa a;
+  Hashtable a = new Hashtable();
+  public String b = "";
+  long c = 0L;
+  long d = 0L;
+  final boolean e;
+  private final String f;
+  private String g = "GET";
+  private int h = 0;
+  private final fb i;
+  private final byte[] j;
   
-  public abstract int a(z.a parama);
+  public fa(String paramString, byte[] paramArrayOfByte, fb paramfb, boolean paramBoolean)
+  {
+    this.f = paramString;
+    this.i = paramfb;
+    if (paramArrayOfByte == null)
+    {
+      this.j = null;
+    }
+    else
+    {
+      this.j = new byte[paramArrayOfByte.length];
+      paramString = this.j;
+      System.arraycopy(paramArrayOfByte, 0, paramString, 0, paramString.length);
+    }
+    this.e = paramBoolean;
+  }
   
-  public abstract Socket a(j paramj, a parama, f paramf);
+  public String a()
+  {
+    return this.f;
+  }
   
-  public abstract c a(j paramj, a parama, f paramf, ab paramab);
+  void a(int paramInt)
+  {
+    this.h = paramInt;
+  }
   
-  public abstract d a(j paramj);
+  public void a(String paramString)
+  {
+    this.g = paramString;
+  }
   
-  public abstract void a(k paramk, SSLSocket paramSSLSocket, boolean paramBoolean);
+  public fb b()
+  {
+    return this.i;
+  }
   
-  public abstract void a(r.a parama, String paramString);
+  public byte[] c()
+  {
+    byte[] arrayOfByte1 = this.j;
+    if (arrayOfByte1 == null) {
+      return null;
+    }
+    byte[] arrayOfByte2 = new byte[arrayOfByte1.length];
+    System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, arrayOfByte2.length);
+    return arrayOfByte2;
+  }
   
-  public abstract void a(r.a parama, String paramString1, String paramString2);
+  public int d()
+  {
+    return this.h;
+  }
   
-  public abstract boolean a(a parama1, a parama2);
-  
-  public abstract boolean a(j paramj, c paramc);
-  
-  public abstract void b(j paramj, c paramc);
+  public String e()
+  {
+    return this.g;
+  }
 }
 
 

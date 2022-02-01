@@ -1,12 +1,12 @@
 package okhttp3.internal.http2;
 
-import com.tencent.token.fa;
-import com.tencent.token.fc;
-import com.tencent.token.fl;
-import com.tencent.token.fn;
+import com.tencent.token.fd;
+import com.tencent.token.ff;
+import com.tencent.token.fo;
 import com.tencent.token.fq;
-import com.tencent.token.fr;
 import com.tencent.token.ft;
+import com.tencent.token.fu;
+import com.tencent.token.fw;
 import java.io.IOException;
 import java.net.ProtocolException;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ import okio.k;
 import okio.q;
 
 public final class d
-  implements fl
+  implements fo
 {
   private static final ByteString b = ByteString.a("connection");
   private static final ByteString c = ByteString.a("host");
@@ -39,8 +39,8 @@ public final class d
   private static final ByteString g = ByteString.a("te");
   private static final ByteString h = ByteString.a("encoding");
   private static final ByteString i = ByteString.a("upgrade");
-  private static final List<ByteString> j = fc.a(new ByteString[] { b, c, d, e, g, f, h, i, a.c, a.d, a.e, a.f });
-  private static final List<ByteString> k = fc.a(new ByteString[] { b, c, d, e, g, f, h, i });
+  private static final List<ByteString> j = ff.a(new ByteString[] { b, c, d, e, g, f, h, i, a.c, a.d, a.e, a.f });
+  private static final List<ByteString> k = ff.a(new ByteString[] { b, c, d, e, g, f, h, i });
   final f a;
   private final t.a l;
   private final e m;
@@ -94,7 +94,7 @@ public final class d
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("HTTP/1.1 ");
           ((StringBuilder)localObject1).append(str);
-          localObject1 = ft.a(((StringBuilder)localObject1).toString());
+          localObject1 = fw.a(((StringBuilder)localObject1).toString());
           localObject4 = localObject2;
         }
         else
@@ -103,7 +103,7 @@ public final class d
           localObject4 = localObject2;
           if (!k.contains(localByteString))
           {
-            fa.a.a((r.a)localObject2, localByteString.a(), str);
+            fd.a.a((r.a)localObject2, localByteString.a(), str);
             localObject4 = localObject2;
             localObject1 = localObject3;
           }
@@ -124,7 +124,7 @@ public final class d
     okhttp3.r localr = paramx.c();
     ArrayList localArrayList = new ArrayList(localr.a() + 4);
     localArrayList.add(new a(a.c, paramx.b()));
-    localArrayList.add(new a(a.d, fr.a(paramx.a())));
+    localArrayList.add(new a(a.d, fu.a(paramx.a())));
     String str = paramx.a("Host");
     if (str != null) {
       localArrayList.add(new a(a.f, str));
@@ -146,13 +146,13 @@ public final class d
   public aa a(z paramz)
   {
     this.a.c.f(this.a.b);
-    return new fq(paramz.a("Content-Type"), fn.a(paramz), k.a(new a(this.n.g())));
+    return new ft(paramz.a("Content-Type"), fq.a(paramz), k.a(new a(this.n.g())));
   }
   
   public z.a a(boolean paramBoolean)
   {
     z.a locala = a(this.n.d(), this.o);
-    if ((paramBoolean) && (fa.a.a(locala) == 100)) {
+    if ((paramBoolean) && (fd.a.a(locala) == 100)) {
       return null;
     }
     return locala;

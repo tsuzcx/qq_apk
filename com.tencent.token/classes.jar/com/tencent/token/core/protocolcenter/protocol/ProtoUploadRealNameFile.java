@@ -2,7 +2,7 @@ package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -28,7 +28,7 @@ public class ProtoUploadRealNameFile
     return localStringBuilder.toString();
   }
   
-  protected void a(do paramdo) {}
+  protected void a(dp paramdp) {}
   
   protected void a(JSONObject paramJSONObject)
   {
@@ -77,7 +77,7 @@ public class ProtoUploadRealNameFile
         localStringBuilder.append("parseJSON error decodeData=");
         localStringBuilder.append(paramJSONObject);
         g.c(localStringBuilder.toString());
-        a(10022, RqdApplication.l().getString(2131493067));
+        a(10022, RqdApplication.n().getString(2131493068));
       }
       g.a("ProtoUploadRealNameFile upload success");
       return;

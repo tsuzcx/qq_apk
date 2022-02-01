@@ -45,6 +45,12 @@ public final class bz
       return this;
     }
     
+    public final a a(aj paramaj)
+    {
+      this.s = paramaj;
+      return this;
+    }
+    
     public final a a(boolean paramBoolean)
     {
       this.x = paramBoolean;

@@ -3,14 +3,14 @@ package com.tencent.token.core.protocolcenter.protocol;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.bz;
 import com.tencent.token.ca;
-import com.tencent.token.cc;
+import com.tencent.token.cb;
+import com.tencent.token.cd;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.bean.RealNameStatusResult;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.cr;
-import com.tencent.token.do;
+import com.tencent.token.cs;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -27,28 +27,28 @@ public class ProtoGetRealNameStatus
   private long f;
   private int g;
   
-  public static void a(do paramdo, long paramLong1, long paramLong2, int paramInt)
+  public static void a(dp paramdp, long paramLong1, long paramLong2, int paramInt)
   {
-    paramdo.c.put("param.uinhash", Long.valueOf(paramLong1));
-    paramdo.c.put("param.realuin", Long.valueOf(paramLong2));
-    paramdo.j = paramInt;
+    paramdp.c.put("param.uinhash", Long.valueOf(paramLong1));
+    paramdp.c.put("param.realuin", Long.valueOf(paramLong2));
+    paramdp.j = paramInt;
   }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     if (str == null)
     {
       this.a.b(104);
       return null;
     }
-    Object localObject = cc.c();
-    ((cc)localObject).m();
-    localObject = ((cc)localObject).j().replaceAll("-", "");
-    if ((this.f == 0L) && (cr.a().e() != null)) {
-      this.f = cr.a().e().mRealUin;
+    Object localObject = cd.c();
+    ((cd)localObject).m();
+    localObject = ((cd)localObject).j().replaceAll("-", "");
+    if ((this.f == 0L) && (cs.a().e() != null)) {
+      this.f = cs.a().e().mRealUin;
     }
-    localObject = l.a(new Object[] { "uin", Long.valueOf(this.e), "token_seq", localObject, "guid", l.a(bz.a(RqdApplication.l()).b()), "seq_id", Integer.valueOf(this.g), "op_time", Long.valueOf(cc.c().s() / 1000L) });
+    localObject = l.a(new Object[] { "uin", Long.valueOf(this.e), "token_seq", localObject, "guid", l.a(ca.a(RqdApplication.n()).b()), "seq_id", Integer.valueOf(this.g), "op_time", Long.valueOf(cd.c().s() / 1000L) });
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("?aq_base_sid=");
     localStringBuilder.append(str);
@@ -62,11 +62,11 @@ public class ProtoGetRealNameStatus
     return ((StringBuilder)localObject).toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.e = ((Long)paramdo.c.get("param.uinhash")).longValue();
-    this.f = ((Long)paramdo.c.get("param.realuin")).longValue();
-    this.g = paramdo.j;
+    this.e = ((Long)paramdp.c.get("param.uinhash")).longValue();
+    this.f = ((Long)paramdp.c.get("param.realuin")).longValue();
+    this.g = paramdp.j;
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -101,7 +101,7 @@ public class ProtoGetRealNameStatus
     localStringBuilder.append("parseJSON error decodeData=");
     localStringBuilder.append(paramJSONObject);
     g.c(localStringBuilder.toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
   
   protected void b()

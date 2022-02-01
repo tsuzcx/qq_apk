@@ -1,71 +1,110 @@
 package com.tencent.token;
 
-import java.text.DateFormat;
-import java.text.ParsePosition;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.util.List;
+import okhttp3.aa;
+import okhttp3.l;
+import okhttp3.m;
+import okhttp3.r;
+import okhttp3.r.a;
+import okhttp3.t;
+import okhttp3.t.a;
+import okhttp3.u;
+import okhttp3.x;
+import okhttp3.x.a;
+import okhttp3.y;
+import okhttp3.z;
+import okhttp3.z.a;
+import okio.i;
+import okio.k;
+import okio.q;
 
 public final class fm
+  implements t
 {
-  private static final ThreadLocal<DateFormat> a = new ThreadLocal()
-  {
-    protected DateFormat a()
-    {
-      SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss 'GMT'", Locale.US);
-      localSimpleDateFormat.setLenient(false);
-      localSimpleDateFormat.setTimeZone(fc.g);
-      return localSimpleDateFormat;
-    }
-  };
-  private static final String[] b = { "EEE, dd MMM yyyy HH:mm:ss zzz", "EEEE, dd-MMM-yy HH:mm:ss zzz", "EEE MMM d HH:mm:ss yyyy", "EEE, dd-MMM-yyyy HH:mm:ss z", "EEE, dd-MMM-yyyy HH-mm-ss z", "EEE, dd MMM yy HH:mm:ss z", "EEE dd-MMM-yyyy HH:mm:ss z", "EEE dd MMM yyyy HH:mm:ss z", "EEE dd-MMM-yyyy HH-mm-ss z", "EEE dd-MMM-yy HH:mm:ss z", "EEE dd MMM yy HH:mm:ss z", "EEE,dd-MMM-yy HH:mm:ss z", "EEE,dd-MMM-yyyy HH:mm:ss z", "EEE, dd-MM-yyyy HH:mm:ss z", "EEE MMM d yyyy HH:mm:ss z" };
-  private static final DateFormat[] c = new DateFormat[b.length];
+  private final m a;
   
-  public static String a(Date paramDate)
+  public fm(m paramm)
   {
-    return ((DateFormat)a.get()).format(paramDate);
+    this.a = paramm;
   }
   
-  public static Date a(String paramString)
+  private String a(List<l> paramList)
   {
-    if (paramString.length() == 0) {
-      return null;
-    }
-    ParsePosition localParsePosition = new ParsePosition(0);
-    Object localObject = ((DateFormat)a.get()).parse(paramString, localParsePosition);
-    if (localParsePosition.getIndex() == paramString.length()) {
-      return localObject;
-    }
-    for (;;)
+    StringBuilder localStringBuilder = new StringBuilder();
+    int j = paramList.size();
+    int i = 0;
+    while (i < j)
     {
-      int i;
-      synchronized (b)
-      {
-        int j = b.length;
-        i = 0;
-        if (i < j)
-        {
-          DateFormat localDateFormat = c[i];
-          localObject = localDateFormat;
-          if (localDateFormat == null)
-          {
-            localObject = new SimpleDateFormat(b[i], Locale.US);
-            ((DateFormat)localObject).setTimeZone(fc.g);
-            c[i] = localObject;
-          }
-          localParsePosition.setIndex(0);
-          localObject = ((DateFormat)localObject).parse(paramString, localParsePosition);
-          if (localParsePosition.getIndex() != 0) {
-            return localObject;
-          }
-        }
-        else
-        {
-          return null;
-        }
+      if (i > 0) {
+        localStringBuilder.append("; ");
       }
+      l locall = (l)paramList.get(i);
+      localStringBuilder.append(locall.a());
+      localStringBuilder.append('=');
+      localStringBuilder.append(locall.b());
       i += 1;
     }
+    return localStringBuilder.toString();
+  }
+  
+  public z a(t.a parama)
+  {
+    Object localObject1 = parama.a();
+    Object localObject2 = ((x)localObject1).e();
+    Object localObject3 = ((x)localObject1).d();
+    if (localObject3 != null)
+    {
+      u localu = ((y)localObject3).a();
+      if (localu != null) {
+        ((x.a)localObject2).a("Content-Type", localu.toString());
+      }
+      long l = ((y)localObject3).b();
+      if (l != -1L)
+      {
+        ((x.a)localObject2).a("Content-Length", Long.toString(l));
+        ((x.a)localObject2).b("Transfer-Encoding");
+      }
+      else
+      {
+        ((x.a)localObject2).a("Transfer-Encoding", "chunked");
+        ((x.a)localObject2).b("Content-Length");
+      }
+    }
+    localObject3 = ((x)localObject1).a("Host");
+    int j = 0;
+    if (localObject3 == null) {
+      ((x.a)localObject2).a("Host", ff.a(((x)localObject1).a(), false));
+    }
+    if (((x)localObject1).a("Connection") == null) {
+      ((x.a)localObject2).a("Connection", "Keep-Alive");
+    }
+    int i = j;
+    if (((x)localObject1).a("Accept-Encoding") == null)
+    {
+      i = j;
+      if (((x)localObject1).a("Range") == null)
+      {
+        i = 1;
+        ((x.a)localObject2).a("Accept-Encoding", "gzip");
+      }
+    }
+    localObject3 = this.a.a(((x)localObject1).a());
+    if (!((List)localObject3).isEmpty()) {
+      ((x.a)localObject2).a("Cookie", a((List)localObject3));
+    }
+    if (((x)localObject1).a("User-Agent") == null) {
+      ((x.a)localObject2).a("User-Agent", fg.a());
+    }
+    parama = parama.a(((x.a)localObject2).a());
+    fq.a(this.a, ((x)localObject1).a(), parama.d());
+    localObject1 = parama.f().a((x)localObject1);
+    if ((i != 0) && ("gzip".equalsIgnoreCase(parama.a("Content-Encoding"))) && (fq.b(parama)))
+    {
+      localObject2 = new i(parama.e().c());
+      ((z.a)localObject1).a(parama.d().b().b("Content-Encoding").b("Content-Length").a());
+      ((z.a)localObject1).a(new ft(parama.a("Content-Type"), -1L, k.a((q)localObject2)));
+    }
+    return ((z.a)localObject1).a();
   }
 }
 

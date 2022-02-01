@@ -13,15 +13,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.token.cb;
 import com.tencent.token.cc;
-import com.tencent.token.cm;
+import com.tencent.token.cd;
+import com.tencent.token.cn;
 import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
 import com.tencent.token.core.bean.DeterminVerifyFactorsResult.VerifyTypeItem;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.bean.UpgradeDeterminResult;
 import com.tencent.token.core.protocolcenter.protocol.ProtoGetSMSChannel;
-import com.tencent.token.cr;
+import com.tencent.token.cs;
 import com.tencent.token.global.g;
 
 public class SmsContentTipActivity
@@ -44,14 +44,14 @@ public class SmsContentTipActivity
       localStringBuilder.append("send bind seq request:");
       localStringBuilder.append(SmsContentTipActivity.this.mBindRetryTimes);
       g.a(localStringBuilder.toString());
-      cc.c().n();
+      cd.c().n();
       int i;
       if (SmsContentTipActivity.this.mVerifyType != null) {
         i = SmsContentTipActivity.this.mVerifyType.a();
       } else {
         i = 0;
       }
-      cb.a().a(0L, Long.parseLong(SmsContentTipActivity.this.mUin), SmsContentTipActivity.this.mSceneId, i, SmsContentTipActivity.this.mHandler);
+      cc.a().a(0L, Long.parseLong(SmsContentTipActivity.this.mUin), SmsContentTipActivity.this.mSceneId, i, SmsContentTipActivity.this.mHandler);
       SmsContentTipActivity.access$108(SmsContentTipActivity.this);
     }
   };
@@ -159,30 +159,30 @@ public class SmsContentTipActivity
       //   299: iconst_1
       //   300: invokestatic 99	com/tencent/token/ui/SmsContentTipActivity:access$2102	(Lcom/tencent/token/ui/SmsContentTipActivity;Z)Z
       //   303: pop
-      //   304: invokestatic 104	com/tencent/token/cr:a	()Lcom/tencent/token/cr;
+      //   304: invokestatic 104	com/tencent/token/cs:a	()Lcom/tencent/token/cs;
       //   307: aload_0
       //   308: getfield 14	com/tencent/token/ui/SmsContentTipActivity$4:a	Lcom/tencent/token/ui/SmsContentTipActivity;
       //   311: invokestatic 108	com/tencent/token/ui/SmsContentTipActivity:access$1100	(Lcom/tencent/token/ui/SmsContentTipActivity;)Lcom/tencent/token/core/bean/QQUser;
-      //   314: invokevirtual 112	com/tencent/token/cr:b	(Lcom/tencent/token/core/bean/QQUser;)Z
+      //   314: invokevirtual 112	com/tencent/token/cs:b	(Lcom/tencent/token/core/bean/QQUser;)Z
       //   317: pop
-      //   318: invokestatic 104	com/tencent/token/cr:a	()Lcom/tencent/token/cr;
-      //   321: invokevirtual 115	com/tencent/token/cr:n	()V
-      //   324: invokestatic 104	com/tencent/token/cr:a	()Lcom/tencent/token/cr;
-      //   327: invokevirtual 117	com/tencent/token/cr:b	()V
-      //   330: invokestatic 122	com/tencent/token/cv:a	()Lcom/tencent/token/cv;
-      //   333: getfield 126	com/tencent/token/cv:f	Lcom/tencent/token/dk;
+      //   318: invokestatic 104	com/tencent/token/cs:a	()Lcom/tencent/token/cs;
+      //   321: invokevirtual 115	com/tencent/token/cs:n	()V
+      //   324: invokestatic 104	com/tencent/token/cs:a	()Lcom/tencent/token/cs;
+      //   327: invokevirtual 117	com/tencent/token/cs:b	()V
+      //   330: invokestatic 122	com/tencent/token/cw:a	()Lcom/tencent/token/cw;
+      //   333: getfield 126	com/tencent/token/cw:f	Lcom/tencent/token/dl;
       //   336: aload_0
       //   337: getfield 14	com/tencent/token/ui/SmsContentTipActivity$4:a	Lcom/tencent/token/ui/SmsContentTipActivity;
       //   340: invokestatic 108	com/tencent/token/ui/SmsContentTipActivity:access$1100	(Lcom/tencent/token/ui/SmsContentTipActivity;)Lcom/tencent/token/core/bean/QQUser;
       //   343: getfield 132	com/tencent/token/core/bean/QQUser:mUin	J
-      //   346: invokevirtual 137	com/tencent/token/dk:a	(J)V
-      //   349: invokestatic 142	com/tencent/token/ct:a	()Lcom/tencent/token/ct;
-      //   352: getfield 143	com/tencent/token/ct:f	Lcom/tencent/token/dk;
+      //   346: invokevirtual 137	com/tencent/token/dl:a	(J)V
+      //   349: invokestatic 142	com/tencent/token/cu:a	()Lcom/tencent/token/cu;
+      //   352: getfield 143	com/tencent/token/cu:f	Lcom/tencent/token/dl;
       //   355: aload_0
       //   356: getfield 14	com/tencent/token/ui/SmsContentTipActivity$4:a	Lcom/tencent/token/ui/SmsContentTipActivity;
       //   359: invokestatic 108	com/tencent/token/ui/SmsContentTipActivity:access$1100	(Lcom/tencent/token/ui/SmsContentTipActivity;)Lcom/tencent/token/core/bean/QQUser;
       //   362: getfield 132	com/tencent/token/core/bean/QQUser:mUin	J
-      //   365: invokevirtual 137	com/tencent/token/dk:a	(J)V
+      //   365: invokevirtual 137	com/tencent/token/dl:a	(J)V
       //   368: iconst_1
       //   369: putstatic 149	com/tencent/token/ui/AccountPageActivity:mNeedRefreshEval	Z
       //   372: aload_0
@@ -249,7 +249,7 @@ public class SmsContentTipActivity
       //   501: getfield 14	com/tencent/token/ui/SmsContentTipActivity$4:a	Lcom/tencent/token/ui/SmsContentTipActivity;
       //   504: invokestatic 196	com/tencent/token/ui/SmsContentTipActivity:access$1200	(Lcom/tencent/token/ui/SmsContentTipActivity;)I
       //   507: ifne +42 -> 549
-      //   510: invokestatic 201	com/tencent/token/cb:a	()Lcom/tencent/token/cb;
+      //   510: invokestatic 201	com/tencent/token/cc:a	()Lcom/tencent/token/cc;
       //   513: aload_0
       //   514: getfield 14	com/tencent/token/ui/SmsContentTipActivity$4:a	Lcom/tencent/token/ui/SmsContentTipActivity;
       //   517: invokestatic 205	com/tencent/token/ui/SmsContentTipActivity:access$300	(Lcom/tencent/token/ui/SmsContentTipActivity;)Ljava/lang/String;
@@ -263,7 +263,7 @@ public class SmsContentTipActivity
       //   537: aload_0
       //   538: getfield 14	com/tencent/token/ui/SmsContentTipActivity$4:a	Lcom/tencent/token/ui/SmsContentTipActivity;
       //   541: getfield 224	com/tencent/token/ui/SmsContentTipActivity:mHandler	Landroid/os/Handler;
-      //   544: invokevirtual 227	com/tencent/token/cb:c	(JILjava/lang/String;Ljava/lang/String;Landroid/os/Handler;)I
+      //   544: invokevirtual 227	com/tencent/token/cc:c	(JILjava/lang/String;Ljava/lang/String;Landroid/os/Handler;)I
       //   547: pop
       //   548: return
       //   549: aload_0
@@ -271,7 +271,7 @@ public class SmsContentTipActivity
       //   553: invokestatic 196	com/tencent/token/ui/SmsContentTipActivity:access$1200	(Lcom/tencent/token/ui/SmsContentTipActivity;)I
       //   556: bipush 6
       //   558: if_icmpne +39 -> 597
-      //   561: invokestatic 201	com/tencent/token/cb:a	()Lcom/tencent/token/cb;
+      //   561: invokestatic 201	com/tencent/token/cc:a	()Lcom/tencent/token/cc;
       //   564: aload_0
       //   565: getfield 14	com/tencent/token/ui/SmsContentTipActivity$4:a	Lcom/tencent/token/ui/SmsContentTipActivity;
       //   568: invokestatic 108	com/tencent/token/ui/SmsContentTipActivity:access$1100	(Lcom/tencent/token/ui/SmsContentTipActivity;)Lcom/tencent/token/core/bean/QQUser;
@@ -284,7 +284,7 @@ public class SmsContentTipActivity
       //   585: aload_0
       //   586: getfield 14	com/tencent/token/ui/SmsContentTipActivity$4:a	Lcom/tencent/token/ui/SmsContentTipActivity;
       //   589: getfield 224	com/tencent/token/ui/SmsContentTipActivity:mHandler	Landroid/os/Handler;
-      //   592: invokevirtual 230	com/tencent/token/cb:a	(JJILandroid/os/Handler;)I
+      //   592: invokevirtual 230	com/tencent/token/cc:a	(JJILandroid/os/Handler;)I
       //   595: pop
       //   596: return
       //   597: aload_0
@@ -357,7 +357,7 @@ public class SmsContentTipActivity
       //   743: invokestatic 282	com/tencent/token/ui/SmsContentTipActivity:access$1900	(Lcom/tencent/token/ui/SmsContentTipActivity;)Lcom/tencent/token/core/bean/DeterminVerifyFactorsResult;
       //   746: invokevirtual 292	com/tencent/token/core/bean/DeterminVerifyFactorsResult:b	()Z
       //   749: ifeq +52 -> 801
-      //   752: invokestatic 201	com/tencent/token/cb:a	()Lcom/tencent/token/cb;
+      //   752: invokestatic 201	com/tencent/token/cc:a	()Lcom/tencent/token/cc;
       //   755: aload_0
       //   756: getfield 14	com/tencent/token/ui/SmsContentTipActivity$4:a	Lcom/tencent/token/ui/SmsContentTipActivity;
       //   759: invokestatic 295	com/tencent/token/ui/SmsContentTipActivity:access$2000	(Lcom/tencent/token/ui/SmsContentTipActivity;)Lcom/tencent/token/core/bean/QQUser;
@@ -375,7 +375,7 @@ public class SmsContentTipActivity
       //   789: aload_0
       //   790: getfield 14	com/tencent/token/ui/SmsContentTipActivity$4:a	Lcom/tencent/token/ui/SmsContentTipActivity;
       //   793: getfield 224	com/tencent/token/ui/SmsContentTipActivity:mHandler	Landroid/os/Handler;
-      //   796: invokevirtual 305	com/tencent/token/cb:b	(JILjava/lang/String;Ljava/lang/String;Landroid/os/Handler;)I
+      //   796: invokevirtual 305	com/tencent/token/cc:b	(JILjava/lang/String;Ljava/lang/String;Landroid/os/Handler;)I
       //   799: pop
       //   800: return
       //   801: aload_0
@@ -700,8 +700,8 @@ public class SmsContentTipActivity
       //   1525: aload 5
       //   1527: bipush 8
       //   1529: invokevirtual 363	android/view/View:setVisibility	(I)V
-      //   1532: invokestatic 420	com/tencent/token/dj:a	()Lcom/tencent/token/dj;
-      //   1535: invokevirtual 421	com/tencent/token/dj:b	()V
+      //   1532: invokestatic 420	com/tencent/token/dk:a	()Lcom/tencent/token/dk;
+      //   1535: invokevirtual 421	com/tencent/token/dk:b	()V
       //   1538: iconst_1
       //   1539: putstatic 149	com/tencent/token/ui/AccountPageActivity:mNeedRefreshEval	Z
       //   1542: return
@@ -797,9 +797,9 @@ public class SmsContentTipActivity
       //   1738: lload_3
       //   1739: lsub
       //   1740: lstore_3
-      //   1741: invokestatic 455	com/tencent/token/cc:c	()Lcom/tencent/token/cc;
+      //   1741: invokestatic 455	com/tencent/token/cd:c	()Lcom/tencent/token/cd;
       //   1744: lload_3
-      //   1745: invokevirtual 456	com/tencent/token/cc:a	(J)V
+      //   1745: invokevirtual 456	com/tencent/token/cd:a	(J)V
       //   1748: new 30	java/lang/StringBuilder
       //   1751: dup
       //   1752: invokespecial 31	java/lang/StringBuilder:<init>	()V
@@ -955,31 +955,31 @@ public class SmsContentTipActivity
       //   2075: invokevirtual 320	com/tencent/token/ui/SmsContentTipActivity$4:postDelayed	(Ljava/lang/Runnable;J)Z
       //   2078: pop
       //   2079: return
-      //   2080: invokestatic 487	com/tencent/token/global/RqdApplication:l	()Landroid/content/Context;
-      //   2083: invokestatic 492	com/tencent/token/bz:a	(Landroid/content/Context;)Lcom/tencent/token/bz;
+      //   2080: invokestatic 486	com/tencent/token/global/RqdApplication:n	()Landroid/content/Context;
+      //   2083: invokestatic 491	com/tencent/token/ca:a	(Landroid/content/Context;)Lcom/tencent/token/ca;
       //   2086: astore_1
       //   2087: aload_1
       //   2088: aload_0
       //   2089: getfield 14	com/tencent/token/ui/SmsContentTipActivity$4:a	Lcom/tencent/token/ui/SmsContentTipActivity;
       //   2092: invokestatic 205	com/tencent/token/ui/SmsContentTipActivity:access$300	(Lcom/tencent/token/ui/SmsContentTipActivity;)Ljava/lang/String;
       //   2095: invokestatic 209	java/lang/Long:parseLong	(Ljava/lang/String;)J
-      //   2098: invokevirtual 495	com/tencent/token/bz:b	(J)[B
+      //   2098: invokevirtual 494	com/tencent/token/ca:b	(J)[B
       //   2101: astore 5
       //   2103: new 30	java/lang/StringBuilder
       //   2106: dup
       //   2107: invokespecial 31	java/lang/StringBuilder:<init>	()V
       //   2110: astore 6
       //   2112: aload 6
-      //   2114: ldc_w 497
+      //   2114: ldc_w 496
       //   2117: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   2120: pop
       //   2121: aload 6
       //   2123: aload 5
-      //   2125: invokevirtual 500	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+      //   2125: invokevirtual 499	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
       //   2128: pop
       //   2129: aload 6
       //   2131: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   2134: invokestatic 502	com/tencent/token/global/g:a	(Ljava/lang/String;)V
+      //   2134: invokestatic 501	com/tencent/token/global/g:a	(Ljava/lang/String;)V
       //   2137: aload 5
       //   2139: ifnull +75 -> 2214
       //   2142: aload 5
@@ -1002,8 +1002,8 @@ public class SmsContentTipActivity
       //   2178: aload_1
       //   2179: aload 6
       //   2181: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   2184: ldc2_w 503
-      //   2187: invokevirtual 507	com/tencent/token/bz:b	(Ljava/lang/String;J)Z
+      //   2184: ldc2_w 502
+      //   2187: invokevirtual 506	com/tencent/token/ca:b	(Ljava/lang/String;J)Z
       //   2190: ifne +24 -> 2214
       //   2193: aload_0
       //   2194: getfield 14	com/tencent/token/ui/SmsContentTipActivity$4:a	Lcom/tencent/token/ui/SmsContentTipActivity;
@@ -1015,8 +1015,8 @@ public class SmsContentTipActivity
       //   2207: getfield 14	com/tencent/token/ui/SmsContentTipActivity$4:a	Lcom/tencent/token/ui/SmsContentTipActivity;
       //   2210: invokestatic 68	com/tencent/token/ui/SmsContentTipActivity:access$1300	(Lcom/tencent/token/ui/SmsContentTipActivity;)V
       //   2213: return
-      //   2214: invokestatic 487	com/tencent/token/global/RqdApplication:l	()Landroid/content/Context;
-      //   2217: invokestatic 492	com/tencent/token/bz:a	(Landroid/content/Context;)Lcom/tencent/token/bz;
+      //   2214: invokestatic 486	com/tencent/token/global/RqdApplication:n	()Landroid/content/Context;
+      //   2217: invokestatic 491	com/tencent/token/ca:a	(Landroid/content/Context;)Lcom/tencent/token/ca;
       //   2220: astore_1
       //   2221: new 30	java/lang/StringBuilder
       //   2224: dup
@@ -1038,9 +1038,9 @@ public class SmsContentTipActivity
       //   2257: aload_0
       //   2258: getfield 14	com/tencent/token/ui/SmsContentTipActivity$4:a	Lcom/tencent/token/ui/SmsContentTipActivity;
       //   2261: getfield 224	com/tencent/token/ui/SmsContentTipActivity:mHandler	Landroid/os/Handler;
-      //   2264: ldc2_w 503
+      //   2264: ldc2_w 502
       //   2267: bipush 64
-      //   2269: invokevirtual 510	com/tencent/token/bz:a	(Ljava/lang/String;Landroid/os/Handler;JI)I
+      //   2269: invokevirtual 509	com/tencent/token/ca:a	(Ljava/lang/String;Landroid/os/Handler;JI)I
       //   2272: pop
       //   2273: return
       //   2274: aload_0
@@ -1059,7 +1059,7 @@ public class SmsContentTipActivity
       //   2299: return
       //   2300: astore_1
       //   2301: aload_1
-      //   2302: invokevirtual 511	java/lang/Exception:printStackTrace	()V
+      //   2302: invokevirtual 510	java/lang/Exception:printStackTrace	()V
       //   2305: return
       //   2306: return
       // Local variable table:
@@ -1152,7 +1152,7 @@ public class SmsContentTipActivity
     public void run()
     {
       g.c("send mod set mbmobile");
-      cb.a().a(0L, SmsContentTipActivity.this.mOpType, SmsContentTipActivity.this.mMobile, SmsContentTipActivity.this.mCountryCode, SmsContentTipActivity.this.mA2, SmsContentTipActivity.this.mHandler);
+      cc.a().a(0L, SmsContentTipActivity.this.mOpType, SmsContentTipActivity.this.mMobile, SmsContentTipActivity.this.mCountryCode, SmsContentTipActivity.this.mA2, SmsContentTipActivity.this.mHandler);
       SmsContentTipActivity.access$908(SmsContentTipActivity.this);
     }
   };
@@ -1173,8 +1173,8 @@ public class SmsContentTipActivity
       if (!SmsContentTipActivity.this.mIsTimeTask) {
         return;
       }
-      cc.c().n();
-      cb.a().a(SmsContentTipActivity.this.mUserToUnbind.mUin, SmsContentTipActivity.this.mUserToUnbind.mRealUin, 1005, 0, SmsContentTipActivity.this.mHandler);
+      cd.c().n();
+      cc.a().a(SmsContentTipActivity.this.mUserToUnbind.mUin, SmsContentTipActivity.this.mUserToUnbind.mRealUin, 1005, 0, SmsContentTipActivity.this.mHandler);
       SmsContentTipActivity.access$1008(SmsContentTipActivity.this);
     }
   };
@@ -1195,11 +1195,11 @@ public class SmsContentTipActivity
   {
     resetBtn();
     dismissDialog();
-    Object localObject = cr.a().d(this.mUser.mRealUin);
+    Object localObject = cs.a().d(this.mUser.mRealUin);
     if (localObject != null) {
-      cr.a().b((QQUser)localObject);
+      cs.a().b((QQUser)localObject);
     }
-    cc.c().n();
+    cd.c().n();
     localObject = new Intent(this, VerifySuccActivity.class);
     ((Intent)localObject).putExtra("mRealUin", this.mUser.mRealUin);
     DeterminVerifyFactorsResult localDeterminVerifyFactorsResult = this.mVerifyResult;
@@ -1219,26 +1219,26 @@ public class SmsContentTipActivity
   
   private void initView()
   {
-    this.useTip = ((TextView)findViewById(2131166200));
-    this.smsContent = ((TextView)findViewById(2131165997));
-    this.mobileNum = ((TextView)findViewById(2131165735));
-    this.errorTip = ((TextView)findViewById(2131166089));
-    this.okText = ((TextView)findViewById(2131166066));
-    this.btnLayout = findViewById(2131165327);
-    this.mPb = ((ProgressBar)findViewById(2131165803));
+    this.useTip = ((TextView)findViewById(2131166202));
+    this.smsContent = ((TextView)findViewById(2131165999));
+    this.mobileNum = ((TextView)findViewById(2131165737));
+    this.errorTip = ((TextView)findViewById(2131166091));
+    this.okText = ((TextView)findViewById(2131166068));
+    this.btnLayout = findViewById(2131165329);
+    this.mPb = ((ProgressBar)findViewById(2131165805));
     int i = this.upSmsSceneId;
     if ((i != 0) && (i != 7))
     {
       if ((i != 3) && (i != 4))
       {
         if (i == 6) {
-          this.useTipContent = String.format(getString(2131493669), new Object[] { this.mUserToUnbind.mMobileMask });
+          this.useTipContent = String.format(getString(2131493670), new Object[] { this.mUserToUnbind.mMobileMask });
         } else if (i == 8) {
-          this.useTipContent = String.format(getString(2131493669), new Object[] { this.mMobile });
+          this.useTipContent = String.format(getString(2131493670), new Object[] { this.mMobile });
         }
       }
       else {
-        this.useTipContent = String.format(getString(2131493669), new Object[] { this.mMobile });
+        this.useTipContent = String.format(getString(2131493670), new Object[] { this.mMobile });
       }
     }
     else
@@ -1247,7 +1247,7 @@ public class SmsContentTipActivity
       if ((str == null) || (str.length() == 0)) {
         break label362;
       }
-      this.useTipContent = String.format(getString(2131493669), new Object[] { this.mUpDetermin.b() });
+      this.useTipContent = String.format(getString(2131493670), new Object[] { this.mUpDetermin.b() });
     }
     if (this.upSmsSceneId == 8)
     {
@@ -1265,7 +1265,7 @@ public class SmsContentTipActivity
       public void onClick(View paramAnonymousView)
       {
         SmsContentTipActivity.this.mPb.setVisibility(0);
-        SmsContentTipActivity.this.okText.setText(SmsContentTipActivity.this.getResources().getString(2131493271));
+        SmsContentTipActivity.this.okText.setText(SmsContentTipActivity.this.getResources().getString(2131493272));
         SmsContentTipActivity.this.btnLayout.setClickable(false);
         SmsContentTipActivity.this.errorTip.setVisibility(4);
         if ((SmsContentTipActivity.this.upSmsSceneId == 0) || (SmsContentTipActivity.this.upSmsSceneId == 7))
@@ -1289,13 +1289,13 @@ public class SmsContentTipActivity
   private void resetBtn()
   {
     this.mPb.setVisibility(4);
-    this.okText.setText(getResources().getString(2131493263));
+    this.okText.setText(getResources().getString(2131493264));
     this.btnLayout.setClickable(true);
   }
   
   private void showFailDialog(String paramString)
   {
-    showUserDialog(2131493653, paramString, 2131493039, new DialogInterface.OnClickListener()
+    showUserDialog(2131493654, paramString, 2131493040, new DialogInterface.OnClickListener()
     {
       public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
     });
@@ -1390,7 +1390,7 @@ public class SmsContentTipActivity
         this.mCountryCode = getIntent().getStringExtra("area_code");
         this.mOpType = getIntent().getIntExtra("op_type", 1);
         this.mPageId = getIntent().getIntExtra("page_id", 10);
-        this.mUser = cr.a().e();
+        this.mUser = cs.a().e();
         if (this.mUser == null)
         {
           finish();
@@ -1435,13 +1435,13 @@ public class SmsContentTipActivity
   protected void onResume()
   {
     super.onResume();
-    cc.c().a.a(this.mHandler);
+    cd.c().a.a(this.mHandler);
   }
   
   protected void onStop()
   {
     super.onStop();
-    cc.c().a.a(null);
+    cd.c().a.a(null);
   }
   
   public void removeTimeTask()
@@ -1471,7 +1471,7 @@ public class SmsContentTipActivity
   
   public void showProgressDialog()
   {
-    showProDialog(this, 2131493801, 2131492946, new View.OnClickListener()
+    showProDialog(this, 2131493802, 2131492947, new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
@@ -1491,8 +1491,8 @@ public class SmsContentTipActivity
   {
     finish();
     AccountPageActivity.mNeedRefreshEval = true;
-    cr.a().b();
-    cr.a().k = false;
+    cs.a().b();
+    cs.a().k = false;
     Intent localIntent = new Intent(this, IndexActivity.class);
     localIntent.putExtra("index_from", 16);
     localIntent.putExtra("snap", true);

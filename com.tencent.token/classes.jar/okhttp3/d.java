@@ -1,6 +1,6 @@
 package okhttp3;
 
-import com.tencent.token.fn;
+import com.tencent.token.fq;
 import java.util.concurrent.TimeUnit;
 import javax.annotation.Nullable;
 
@@ -100,21 +100,21 @@ public final class d
       int i2 = 0;
       while (i2 < str1.length())
       {
-        int i8 = fn.a(str1, i2, "=,;");
+        int i8 = fq.a(str1, i2, "=,;");
         str2 = str1.substring(i2, i8).trim();
         if ((i8 != str1.length()) && (str1.charAt(i8) != ',') && (str1.charAt(i8) != ';'))
         {
-          i8 = fn.a(str1, i8 + 1);
+          i8 = fq.a(str1, i8 + 1);
           if ((i8 < str1.length()) && (str1.charAt(i8) == '"'))
           {
             i2 = i8 + 1;
-            i8 = fn.a(str1, i2, "\"");
+            i8 = fq.a(str1, i2, "\"");
             localObject2 = str1.substring(i2, i8);
             i2 = i8 + 1;
           }
           else
           {
-            i2 = fn.a(str1, i8, ",;");
+            i2 = fq.a(str1, i8, ",;");
             localObject2 = str1.substring(i8, i2).trim();
           }
         }
@@ -163,7 +163,7 @@ public final class d
         }
         else if ("max-age".equalsIgnoreCase(str2))
         {
-          i8 = fn.b((String)localObject2, -1);
+          i8 = fq.b((String)localObject2, -1);
           bool9 = bool8;
           bool10 = bool7;
           i9 = i5;
@@ -177,7 +177,7 @@ public final class d
         }
         else if ("s-maxage".equalsIgnoreCase(str2))
         {
-          i9 = fn.b((String)localObject2, -1);
+          i9 = fq.b((String)localObject2, -1);
           bool9 = bool8;
           bool10 = bool7;
           i8 = i6;
@@ -233,7 +233,7 @@ public final class d
         }
         else if ("max-stale".equalsIgnoreCase(str2))
         {
-          i10 = fn.b((String)localObject2, 2147483647);
+          i10 = fq.b((String)localObject2, 2147483647);
           bool9 = bool8;
           bool10 = bool7;
           i8 = i6;
@@ -247,7 +247,7 @@ public final class d
         }
         else if ("min-fresh".equalsIgnoreCase(str2))
         {
-          i11 = fn.b((String)localObject2, -1);
+          i11 = fq.b((String)localObject2, -1);
           bool9 = bool8;
           bool10 = bool7;
           i8 = i6;

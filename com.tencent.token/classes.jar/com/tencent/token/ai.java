@@ -1,14 +1,32 @@
 package com.tencent.token;
 
-public abstract interface ai
+import java.util.concurrent.Future;
+
+public class ai
 {
-  public abstract ah a(Runnable paramRunnable);
+  private Future a;
   
-  public abstract ah b(Runnable paramRunnable);
+  public ai(Future paramFuture)
+  {
+    this.a = paramFuture;
+  }
   
-  public abstract ah c(Runnable paramRunnable);
-  
-  public abstract ah d(Runnable paramRunnable);
+  public boolean a()
+  {
+    Future localFuture = this.a;
+    if (localFuture != null) {
+      try
+      {
+        boolean bool = localFuture.cancel(false);
+        return bool;
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
+    return false;
+  }
 }
 
 

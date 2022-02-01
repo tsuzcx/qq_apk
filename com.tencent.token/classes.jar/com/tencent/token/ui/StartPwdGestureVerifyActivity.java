@@ -12,12 +12,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.KeyEvent;
-import com.tencent.token.bu;
 import com.tencent.token.bv;
-import com.tencent.token.bz;
-import com.tencent.token.cd;
+import com.tencent.token.bw;
+import com.tencent.token.ca;
+import com.tencent.token.ce;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cr;
+import com.tencent.token.cs;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.e;
 import com.tencent.token.global.g;
@@ -64,39 +64,39 @@ public class StartPwdGestureVerifyActivity
         {
           localObject1 = StartPwdGestureVerifyActivity.this;
           localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(StartPwdGestureVerifyActivity.this.getResources().getString(2131493553));
+          ((StringBuilder)localObject2).append(StartPwdGestureVerifyActivity.this.getResources().getString(2131493554));
           ((StringBuilder)localObject2).append(":");
           ((StringBuilder)localObject2).append(paramAnonymousMessage.getData().getString("exception"));
           ((StartPwdGestureVerifyActivity)localObject1).showToast(((StringBuilder)localObject2).toString());
           return;
         }
-        StartPwdGestureVerifyActivity.this.showToast(2131493553);
+        StartPwdGestureVerifyActivity.this.showToast(2131493554);
         return;
       }
       if (paramAnonymousMessage.arg1 == 0)
       {
-        paramAnonymousMessage = cr.a().e();
+        paramAnonymousMessage = cs.a().e();
         if (paramAnonymousMessage == null)
         {
           StartPwdGestureVerifyActivity.this.dismissDialog();
           if (StartPwdGestureVerifyActivity.this.mActivityType == 1)
           {
             paramAnonymousMessage = StartPwdGestureVerifyActivity.this;
-            paramAnonymousMessage.showNobindingAlert(paramAnonymousMessage, 2131493242, 2131493236);
+            paramAnonymousMessage.showNobindingAlert(paramAnonymousMessage, 2131493243, 2131493237);
             return;
           }
           paramAnonymousMessage = StartPwdGestureVerifyActivity.this;
-          paramAnonymousMessage.showNobindingAlert(paramAnonymousMessage, 2131493241, 2131493243);
+          paramAnonymousMessage.showNobindingAlert(paramAnonymousMessage, 2131493242, 2131493244);
           return;
         }
         StartPwdGestureVerifyActivity.this.dismissDialog();
-        localObject1 = bz.a(StartPwdGestureVerifyActivity.this.getApplicationContext());
+        localObject1 = ca.a(StartPwdGestureVerifyActivity.this.getApplicationContext());
         localObject2 = StartPwdGestureVerifyActivity.this;
         Handler localHandler = ((StartPwdGestureVerifyActivity)localObject2).mHandler;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramAnonymousMessage.mRealUin);
         localStringBuilder.append("");
-        ((bz)localObject1).a((Activity)localObject2, 523005419L, localHandler, localStringBuilder.toString());
+        ((ca)localObject1).a((Activity)localObject2, 523005419L, localHandler, localStringBuilder.toString());
         return;
       }
       StartPwdGestureVerifyActivity.this.dismissDialog();
@@ -110,19 +110,19 @@ public class StartPwdGestureVerifyActivity
   {
     try
     {
-      QQUser localQQUser = cr.a().e();
+      QQUser localQQUser = cs.a().e();
       if ((localQQUser != null) && (localQQUser.mRealUin > 0L))
       {
-        bz localbz = bz.a(getApplicationContext());
+        ca localca = ca.a(getApplicationContext());
         Handler localHandler = this.mHandler;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("");
         localStringBuilder.append(localQQUser.b());
-        localbz.a(this, 523005419L, localHandler, localStringBuilder.toString());
+        localca.a(this, 523005419L, localHandler, localStringBuilder.toString());
         return;
       }
-      bv.a().e(this.mHandler);
-      showProDialog(this, 2131492985, 2131493440, null);
+      bw.a().e(this.mHandler);
+      showProDialog(this, 2131492986, 2131493441, null);
       return;
     }
     catch (Exception localException)
@@ -134,11 +134,11 @@ public class StartPwdGestureVerifyActivity
   private void judgeNextStep()
   {
     dismissDialog();
-    bu.a().a(System.currentTimeMillis(), 25);
-    cd.a().a(this);
-    RqdApplication.i();
+    bv.a().a(System.currentTimeMillis(), 25);
+    ce.a().a(this);
+    RqdApplication.k();
     l.a(null, FaceRecognitionCameraActivity.LANUCH_RETRY_COUNT, 0);
-    cd.a().a(this, 0);
+    ce.a().a(this, 0);
     int i = this.mActivityType;
     if (i == 2)
     {
@@ -161,7 +161,7 @@ public class StartPwdGestureVerifyActivity
       localIntent = new Intent(this, FaceChangePwdIndexActivity.class);
       localIntent.putExtra("verify_psw", true);
       localIntent.setFlags(67108864);
-      bu.a().a(System.currentTimeMillis(), 95);
+      bv.a().a(System.currentTimeMillis(), 95);
       startActivity(localIntent);
       return;
     }
@@ -170,13 +170,13 @@ public class StartPwdGestureVerifyActivity
       localIntent = new Intent(this, FaceChangeMobileActivity.class);
       localIntent.putExtra("verify_psw", true);
       localIntent.setFlags(67108864);
-      bu.a().a(System.currentTimeMillis(), 95);
+      bv.a().a(System.currentTimeMillis(), 95);
       startActivity(localIntent);
       finish();
       return;
     }
-    RqdApplication.d();
-    if (!cd.a().c())
+    RqdApplication.f();
+    if (!ce.a().c())
     {
       showOldPwdDeletedAlert();
       return;
@@ -188,19 +188,19 @@ public class StartPwdGestureVerifyActivity
   private void showNobindingAlert(final Context paramContext, int paramInt1, int paramInt2)
   {
     if (((paramContext instanceof Activity)) && (!((Activity)paramContext).isFinishing())) {
-      showUserDialog(2131492985, getString(paramInt1), paramInt2, new DialogInterface.OnClickListener()new DialogInterface.OnCancelListener
+      showUserDialog(2131492986, getString(paramInt1), paramInt2, new DialogInterface.OnClickListener()new DialogInterface.OnCancelListener
       {
         public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          cd.a().a(paramContext);
-          RqdApplication.i();
+          ce.a().a(paramContext);
+          RqdApplication.k();
         }
       }, new DialogInterface.OnCancelListener()
       {
         public void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
-          cd.a().a(paramContext);
-          RqdApplication.i();
+          ce.a().a(paramContext);
+          RqdApplication.k();
           StartPwdGestureVerifyActivity.this.setResult(35);
           StartPwdGestureVerifyActivity.this.finish();
         }
@@ -213,7 +213,7 @@ public class StartPwdGestureVerifyActivity
     if (isFinishing()) {
       return;
     }
-    showUserDialog(2131492985, getString(2131493249), 2131493238, 2131493285, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    showUserDialog(2131492986, getString(2131493250), 2131493239, 2131493286, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -242,7 +242,7 @@ public class StartPwdGestureVerifyActivity
         if (i != 4) {
           return true;
         }
-        if (RqdApplication.g())
+        if (RqdApplication.i())
         {
           exitToken();
           return true;
@@ -269,7 +269,7 @@ public class StartPwdGestureVerifyActivity
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if ((paramInt1 == 1201) || (paramInt1 == 1202)) {
-      bz.a(getApplicationContext()).a(paramIntent);
+      ca.a(getApplicationContext()).a(paramIntent);
     }
   }
   
@@ -280,7 +280,7 @@ public class StartPwdGestureVerifyActivity
     setNeverShowLockVerifyView();
     setContentView(this.mView);
     hideTitle();
-    bu.a().a(System.currentTimeMillis(), 17);
+    bv.a().a(System.currentTimeMillis(), 17);
     this.mActivityType = getIntent().getIntExtra("startpwd_verify_source", 0);
     int i = getSharedPreferences("start_pwd_config", 0).getInt("is_set_start_pwd_show", 1);
     if ((this.mActivityType == 0) && (i == 0)) {
@@ -291,7 +291,7 @@ public class StartPwdGestureVerifyActivity
       public void a()
       {
         StartPwdGestureVerifyActivity.this.setResult(35);
-        bu.a().a(System.currentTimeMillis(), 18);
+        bv.a().a(System.currentTimeMillis(), 18);
         IndexActivity.need_query_dual_msg = true;
         StartPwdGestureVerifyActivity.this.finish();
       }
@@ -307,7 +307,7 @@ public class StartPwdGestureVerifyActivity
           return;
         }
         StartPwdGestureVerifyActivity localStartPwdGestureVerifyActivity = StartPwdGestureVerifyActivity.this;
-        localStartPwdGestureVerifyActivity.showUserDialog(2131492985, localStartPwdGestureVerifyActivity.getResources().getString(2131493258), 2131493039, new DialogInterface.OnClickListener()
+        localStartPwdGestureVerifyActivity.showUserDialog(2131492986, localStartPwdGestureVerifyActivity.getResources().getString(2131493259), 2131493040, new DialogInterface.OnClickListener()
         {
           public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
           {
@@ -341,7 +341,7 @@ public class StartPwdGestureVerifyActivity
   {
     super.onResume();
     RqdApplication.b = true;
-    if (!cd.a().c())
+    if (!ce.a().c())
     {
       setResult(35);
       finish();

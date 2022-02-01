@@ -18,8 +18,8 @@ public class LoginMsgMenuDialog
   
   private void a()
   {
-    this.b = ((Button)findViewById(2131165727));
-    this.c = ((Button)findViewById(2131165726));
+    this.b = ((Button)findViewById(2131165729));
+    this.c = ((Button)findViewById(2131165728));
     this.b.setOnClickListener(this.e);
     this.c.setOnClickListener(this.d);
   }

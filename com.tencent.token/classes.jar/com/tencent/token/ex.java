@@ -1,76 +1,53 @@
 package com.tencent.token;
 
-import java.util.Hashtable;
+import com.tencent.service.update.e;
+import java.net.InterfaceAddress;
+import java.net.NetworkInterface;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Enumeration;
+import java.util.Iterator;
+import java.util.List;
 
 public class ex
 {
-  Hashtable a = new Hashtable();
-  public String b = "";
-  long c = 0L;
-  long d = 0L;
-  final boolean e;
-  private final String f;
-  private String g = "GET";
-  private int h = 0;
-  private final ey i;
-  private final byte[] j;
+  NetworkInterface a;
   
-  public ex(String paramString, byte[] paramArrayOfByte, ey paramey, boolean paramBoolean)
+  public ex(NetworkInterface paramNetworkInterface)
   {
-    this.f = paramString;
-    this.i = paramey;
-    if (paramArrayOfByte == null)
-    {
-      this.j = null;
-    }
-    else
-    {
-      this.j = new byte[paramArrayOfByte.length];
-      paramString = this.j;
-      System.arraycopy(paramArrayOfByte, 0, paramString, 0, paramString.length);
-    }
-    this.e = paramBoolean;
+    this.a = paramNetworkInterface;
   }
   
-  public String a()
+  public static Enumeration<ex> a()
   {
-    return this.f;
-  }
-  
-  void a(int paramInt)
-  {
-    this.h = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.g = paramString;
-  }
-  
-  public ey b()
-  {
-    return this.i;
-  }
-  
-  public byte[] c()
-  {
-    byte[] arrayOfByte1 = this.j;
-    if (arrayOfByte1 == null) {
+    if (!e.a().b()) {
       return null;
     }
-    byte[] arrayOfByte2 = new byte[arrayOfByte1.length];
-    System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, arrayOfByte2.length);
-    return arrayOfByte2;
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = NetworkInterface.getNetworkInterfaces();
+    if (localObject != null)
+    {
+      localObject = Collections.list((Enumeration)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        localArrayList.add(new ex((NetworkInterface)((Iterator)localObject).next()));
+      }
+    }
+    return Collections.enumeration(localArrayList);
   }
   
-  public int d()
+  public boolean b()
   {
-    return this.h;
+    return this.a.isUp();
   }
   
-  public String e()
+  public List<InterfaceAddress> c()
   {
-    return this.g;
+    return this.a.getInterfaceAddresses();
+  }
+  
+  public String d()
+  {
+    return this.a.getName();
   }
 }
 

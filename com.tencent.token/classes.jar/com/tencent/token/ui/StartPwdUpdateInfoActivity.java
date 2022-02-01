@@ -8,7 +8,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.cd;
+import com.tencent.token.ce;
 
 public class StartPwdUpdateInfoActivity
   extends BaseActivity
@@ -45,9 +45,9 @@ public class StartPwdUpdateInfoActivity
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if ((paramInt1 == 258) && ((paramInt2 == 259) || (cd.a().d())))
+    if ((paramInt1 == 258) && ((paramInt2 == 259) || (ce.a().d())))
     {
-      showOrangeToast(2131493235, 2131100167);
+      showOrangeToast(2131493236, 2131100167);
       setResult(259);
       startActivity(new Intent(this, StartPwdGestureSelActivity.class));
       finish();
@@ -60,8 +60,8 @@ public class StartPwdUpdateInfoActivity
     setNeverShowLockVerifyView();
     setContentView(2131296452);
     this.source = getIntent().getIntExtra(SOURCE_TO_START_PSW, -1);
-    this.mButtonCreate = ((Button)findViewById(2131166192));
-    this.mButtonSkip = ((Button)findViewById(2131166196));
+    this.mButtonCreate = ((Button)findViewById(2131166194));
+    this.mButtonSkip = ((Button)findViewById(2131166198));
     initUI();
   }
 }

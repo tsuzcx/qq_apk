@@ -7,10 +7,8 @@ import com.tencent.token.global.g;
 import com.tencent.token.global.h;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,21 +40,12 @@ public class dh
   
   public List<f> a()
   {
-    try
-    {
-      List localList = this.a;
-      return localList;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return this.a;
   }
   
   public void a(String paramString)
   {
-    h.a("game_protect", paramString);
+    h.a("game_lock", paramString);
   }
   
   public void a(List<f> paramList)
@@ -64,54 +53,29 @@ public class dh
     try
     {
       if (this.b == null) {
-        this.b = cs.a().h.a("account_prot");
+        this.b = ct.a().h.a("game_lock");
       }
-      if (this.b.mClientVersion > this.b.mClickVersion)
+      if ((this.b.mClientVersion > this.b.mClickVersion) && (this.b.mClickVersion == -1) && (this.b.mConfIDs != null))
       {
-        Object localObject;
-        Iterator localIterator;
-        f localf;
-        if (this.b.mClickVersion == -1)
+        Iterator localIterator1 = this.b.mConfIDs.iterator();
+        while (localIterator1.hasNext())
         {
-          if (this.b.mConfIDs != null)
+          int i = ((Integer)localIterator1.next()).intValue();
+          Iterator localIterator2 = paramList.iterator();
+          while (localIterator2.hasNext())
           {
-            localObject = this.b.mConfIDs.iterator();
-            while (((Iterator)localObject).hasNext())
-            {
-              int i = ((Integer)((Iterator)localObject).next()).intValue();
-              localIterator = paramList.iterator();
-              while (localIterator.hasNext())
-              {
-                localf = (f)localIterator.next();
-                if (i == localf.a) {
-                  localf.f = true;
-                }
-              }
-            }
-          }
-        }
-        else
-        {
-          localObject = new HashSet();
-          localIterator = this.a.iterator();
-          while (localIterator.hasNext()) {
-            ((Set)localObject).add(Integer.valueOf(((f)localIterator.next()).a));
-          }
-          localIterator = paramList.iterator();
-          while (localIterator.hasNext())
-          {
-            localf = (f)localIterator.next();
-            if (!((Set)localObject).contains(Integer.valueOf(localf.a))) {
+            f localf = (f)localIterator2.next();
+            if (i == localf.a) {
               localf.f = true;
             }
           }
         }
       }
       this.a.clear();
-      this.a = paramList;
-      this.c = cr.c;
-      if (cr.a().e() != null) {
-        this.d = cr.a().e().mUin;
+      this.a.addAll(paramList);
+      this.c = cs.c;
+      if (cs.a().e() != null) {
+        this.d = cs.a().e().mUin;
       }
       return;
     }
@@ -147,7 +111,7 @@ public class dh
           bool = true;
           g.a(bool);
           f localf = new f();
-          if (!localf.a((JSONObject)localObject))
+          if (!localf.c((JSONObject)localObject))
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("object item parse failed: ");
@@ -215,14 +179,14 @@ public class dh
   
   public boolean b()
   {
-    QQUser localQQUser = cr.a().e();
+    QQUser localQQUser = cs.a().e();
     String str = this.c;
     if (str != null)
     {
       if (localQQUser == null) {
         return false;
       }
-      return (str.equals(cr.c)) && (this.d == cr.a().e().mUin) && (this.e);
+      return (str.equals(cs.c)) && (this.d == cs.a().e().mUin) && (this.e);
     }
     return false;
   }

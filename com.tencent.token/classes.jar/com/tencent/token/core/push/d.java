@@ -1,6 +1,6 @@
 package com.tencent.token.core.push;
 
-import com.tencent.token.cj;
+import com.tencent.token.ck;
 
 public class d
 {
@@ -11,20 +11,20 @@ public class d
     }
     if ((paramArrayOfByte[0] == 2) && (paramArrayOfByte[(paramInt - 1)] == 3))
     {
-      paramc.a = cj.a(paramArrayOfByte, 1);
+      paramc.a = ck.a(paramArrayOfByte, 1);
       if (paramc.a != paramInt) {
         return -3;
       }
-      paramc.b = cj.a(paramArrayOfByte, 3);
-      paramc.c = cj.b(paramArrayOfByte, 5);
-      c.d = cj.b(paramArrayOfByte, 9);
-      paramc.e = cj.a(paramArrayOfByte, 13);
-      paramc.f = cj.a(paramArrayOfByte, 15);
-      paramc.g = cj.a(paramArrayOfByte, 17);
-      paramc.h = cj.b(paramArrayOfByte, 19);
+      paramc.b = ck.a(paramArrayOfByte, 3);
+      paramc.c = ck.b(paramArrayOfByte, 5);
+      c.d = ck.b(paramArrayOfByte, 9);
+      paramc.e = ck.a(paramArrayOfByte, 13);
+      paramc.f = ck.a(paramArrayOfByte, 15);
+      paramc.g = ck.a(paramArrayOfByte, 17);
+      paramc.h = ck.b(paramArrayOfByte, 19);
       paramc.i = paramArrayOfByte[23];
       paramc.j = paramArrayOfByte[24];
-      cj.b(paramArrayOfByte, 25, c.k, 16);
+      ck.b(paramArrayOfByte, 25, c.k, 16);
       paramArrayOfByte = new StringBuilder();
       paramArrayOfByte.append("socket parse msg head: totallen[");
       paramArrayOfByte.append(paramc.a);
@@ -50,14 +50,14 @@ public class d
     if (paramInt > 434) {
       return -4;
     }
-    parame.n = cj.b(paramArrayOfByte, 41);
-    paramInt = cj.a(paramArrayOfByte, 45);
+    parame.n = ck.b(paramArrayOfByte, 41);
+    paramInt = ck.a(paramArrayOfByte, 45);
     parame.o = new byte[paramInt];
-    cj.b(paramArrayOfByte, 47, parame.o, paramInt);
+    ck.b(paramArrayOfByte, 47, parame.o, paramInt);
     paramInt = 47 + paramInt;
-    int i = cj.a(paramArrayOfByte, paramInt);
+    int i = ck.a(paramArrayOfByte, paramInt);
     parame.m = new byte[i];
-    cj.b(paramArrayOfByte, paramInt + 2, parame.m, i);
+    ck.b(paramArrayOfByte, paramInt + 2, parame.m, i);
     paramArrayOfByte = new StringBuilder();
     paramArrayOfByte.append("socket parse exchange key: ret[");
     paramArrayOfByte.append(parame.n);
@@ -75,9 +75,9 @@ public class d
     if (paramInt > 1102) {
       return -4;
     }
-    paramg.m = cj.a(paramArrayOfByte, 41);
+    paramg.m = ck.a(paramArrayOfByte, 41);
     paramg.n = new byte[paramg.m];
-    cj.b(paramArrayOfByte, 43, paramg.n, paramg.m);
+    ck.b(paramArrayOfByte, 43, paramg.n, paramg.m);
     return 0;
   }
   
@@ -86,15 +86,15 @@ public class d
     if (paramInt > 434) {
       return -4;
     }
-    paramh.m = cj.b(paramArrayOfByte, 41);
-    paramh.n = cj.b(paramArrayOfByte, 45);
-    paramInt = cj.a(paramArrayOfByte, 49);
+    paramh.m = ck.b(paramArrayOfByte, 41);
+    paramh.n = ck.b(paramArrayOfByte, 45);
+    paramInt = ck.a(paramArrayOfByte, 49);
     paramh.o = new byte[paramInt];
-    cj.b(paramArrayOfByte, 51, paramh.o, paramInt);
+    ck.b(paramArrayOfByte, 51, paramh.o, paramInt);
     paramInt = 51 + paramInt;
-    int i = cj.a(paramArrayOfByte, paramInt);
+    int i = ck.a(paramArrayOfByte, paramInt);
     paramh.p = new byte[i];
-    cj.b(paramArrayOfByte, paramInt + 2, paramh.p, i);
+    ck.b(paramArrayOfByte, paramInt + 2, paramh.p, i);
     paramArrayOfByte = new StringBuilder();
     paramArrayOfByte.append("socket parse client verify: ret[");
     paramArrayOfByte.append(paramh.m);
@@ -115,7 +115,7 @@ public class d
     localc.l = new byte[5];
     localc.l[0] = ((byte)com.tencent.token.global.c.b());
     localc.l[1] = ((byte)com.tencent.token.global.c.c());
-    cj.a(localc.l, 2, com.tencent.token.global.c.d());
+    ck.a(localc.l, 2, com.tencent.token.global.c.d());
     localc.l[4] = paramByte;
     return localc.a();
   }
@@ -124,9 +124,9 @@ public class d
   {
     c localc = new c((short)203, (byte)0, (byte)0);
     localc.l = new byte[paramShort + 6];
-    cj.a(localc.l, 0, paramInt);
-    cj.a(localc.l, 4, paramShort);
-    cj.a(localc.l, 6, paramString.getBytes(), paramShort);
+    ck.a(localc.l, 0, paramInt);
+    ck.a(localc.l, 4, paramShort);
+    ck.a(localc.l, 6, paramString.getBytes(), paramShort);
     return localc.a();
   }
   
@@ -143,9 +143,9 @@ public class d
     localc.l = new byte[i + 6];
     localc.l[0] = ((byte)com.tencent.token.global.c.b());
     localc.l[1] = ((byte)com.tencent.token.global.c.c());
-    cj.a(localc.l, 2, com.tencent.token.global.c.d());
-    cj.a(localc.l, 4, (short)paramString.length());
-    cj.a(localc.l, 6, paramString.getBytes(), paramString.length());
+    ck.a(localc.l, 2, com.tencent.token.global.c.d());
+    ck.a(localc.l, 4, (short)paramString.length());
+    ck.a(localc.l, 6, paramString.getBytes(), paramString.length());
     return localc.a();
   }
   
@@ -153,8 +153,8 @@ public class d
   {
     c localc = new c((short)2, (byte)1, (byte)0);
     localc.l = new byte[paramArrayOfByte.length + 2];
-    cj.a(localc.l, 0, (short)paramArrayOfByte.length);
-    cj.a(localc.l, 2, paramArrayOfByte, paramArrayOfByte.length);
+    ck.a(localc.l, 0, (short)paramArrayOfByte.length);
+    ck.a(localc.l, 2, paramArrayOfByte, paramArrayOfByte.length);
     return localc.a();
   }
 }

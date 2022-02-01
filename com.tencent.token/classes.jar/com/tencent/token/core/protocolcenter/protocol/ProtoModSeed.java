@@ -2,12 +2,12 @@ package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
 import android.widget.Toast;
-import com.tencent.token.ca;
 import com.tencent.token.cb;
 import com.tencent.token.cc;
+import com.tencent.token.cd;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
-import com.tencent.token.ed;
+import com.tencent.token.dp;
+import com.tencent.token.ef;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -30,7 +30,7 @@ public class ProtoModSeed
   public static boolean e()
   {
     boolean bool = false;
-    if (ed.b("mod_seed_err_111", 0) != 0) {
+    if (ef.b("mod_seed_err_111", 0) != 0) {
       bool = true;
     }
     return bool;
@@ -38,39 +38,39 @@ public class ProtoModSeed
   
   protected String a()
   {
-    String str1 = ca.a().b();
+    String str1 = cb.a().b();
     if (str1 == null)
     {
       this.a.b(104);
       return null;
     }
     Object localObject1 = "";
-    Object localObject2 = cc.c();
-    ((cc)localObject2).m();
-    String str2 = ((cc)localObject2).o();
+    Object localObject2 = cd.c();
+    ((cd)localObject2).m();
+    String str2 = ((cd)localObject2).o();
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      int i = cb.a + 1;
-      cb.a = i;
+      int i = cc.a + 1;
+      cc.a = i;
       this.c = i;
       localJSONObject.put("seq_id", this.c);
       localJSONObject.put("tkn_code", str2);
-      localJSONObject.put("tkn_seq", String.valueOf(((cc)localObject2).k()));
-      localJSONObject.put("turingd_ticket_id", k.c());
+      localJSONObject.put("tkn_seq", String.valueOf(((cd)localObject2).k()));
+      localJSONObject.put("turingd_ticket_id", k.d());
       StringBuilder localStringBuilder2 = new StringBuilder();
       localStringBuilder2.append("seed mod seq_id: ");
       localStringBuilder2.append(this.c);
       localStringBuilder2.append(" token_code: ");
       localStringBuilder2.append(str2);
       localStringBuilder2.append(" tkn_seq:");
-      localStringBuilder2.append(String.valueOf(((cc)localObject2).k()));
+      localStringBuilder2.append(String.valueOf(((cd)localObject2).k()));
       localStringBuilder2.append(" ticket_id:");
-      localStringBuilder2.append(k.c());
+      localStringBuilder2.append(k.d());
       localStringBuilder2.append(" seed hex:");
-      localStringBuilder2.append(l.a(((cc)localObject2).f()));
+      localStringBuilder2.append(l.a(((cd)localObject2).f()));
       localStringBuilder2.append(" seed base64:");
-      localStringBuilder2.append(b.a(((cc)localObject2).f()));
+      localStringBuilder2.append(b.a(((cd)localObject2).f()));
       TmsLog.i("mod_seed", localStringBuilder2.toString());
       localObject2 = l.b(localJSONObject.toString().getBytes());
       localObject1 = localObject2;
@@ -97,7 +97,7 @@ public class ProtoModSeed
     return localObject1;
   }
   
-  protected void a(do paramdo) {}
+  protected void a(dp paramdp) {}
   
   protected void a(JSONObject paramJSONObject)
   {
@@ -130,7 +130,7 @@ public class ProtoModSeed
       {
         paramJSONObject = new JSONObject(new String(paramJSONObject));
         long l1 = paramJSONObject.getLong("seed_expire_time");
-        cc.c().c(l1);
+        cd.c().c(l1);
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("@mod_seed seed recv, String: ");
         ((StringBuilder)localObject).append(l.a(paramJSONObject.getString("seed").getBytes()));
@@ -142,23 +142,23 @@ public class ProtoModSeed
           localStringBuilder.append("@mod_seed seed recv, hex: ");
           localStringBuilder.append(l.a((byte[])localObject));
           TmsLog.i("mod_seed", localStringBuilder.toString());
-          cc.c().e();
-          cc.c().a((byte[])localObject);
-          cc.c().i();
+          cd.c().e();
+          cd.c().a((byte[])localObject);
+          cd.c().i();
         }
         else
         {
           TmsLog.i("mod_seed", "@mod_seed seed recv null");
         }
         long l2 = paramJSONObject.getLong("server_time");
-        cc.c().b(l2);
+        cd.c().b(l2);
         paramJSONObject = new StringBuilder();
         paramJSONObject.append("@mod_seed recv data, servertime: ");
         paramJSONObject.append(l2);
         paramJSONObject.append(" seedExpireTime: ");
         paramJSONObject.append(l1);
         TmsLog.i("mod_seed", paramJSONObject.toString());
-        cc.c().u();
+        cd.c().u();
         a(false);
         this.a.c();
         return;
@@ -167,7 +167,7 @@ public class ProtoModSeed
       ((StringBuilder)localObject).append("parseJSON error decodeData=");
       ((StringBuilder)localObject).append(paramJSONObject);
       g.c(((StringBuilder)localObject).toString());
-      a(10022, RqdApplication.l().getString(2131493067));
+      a(10022, RqdApplication.n().getString(2131493068));
     }
   }
 }

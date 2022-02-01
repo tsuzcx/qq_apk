@@ -2,7 +2,7 @@ package com.tencent.halley.downloader.c;
 
 import android.os.SystemClock;
 import com.tencent.halley.common.b;
-import com.tencent.token.k;
+import com.tencent.token.l;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -136,7 +136,7 @@ public class a
           }
         }
         if (i == 0) {
-          if (this.d.size() > 2000 / k.f + 1)
+          if (this.d.size() > 2000 / l.f + 1)
           {
             localObject = new StringBuilder("records.size():");
             ((StringBuilder)localObject).append(this.d.size());

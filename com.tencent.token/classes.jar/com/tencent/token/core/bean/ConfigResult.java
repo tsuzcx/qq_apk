@@ -2,7 +2,7 @@ package com.tencent.token.core.bean;
 
 import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
-import com.tencent.token.dx;
+import com.tencent.token.dz;
 import com.tencent.token.global.g;
 import com.tencent.token.utils.e;
 import com.tencent.token.utils.i;
@@ -121,15 +121,15 @@ public class ConfigResult
               switch (this.logLevel)
               {
               case 2: 
-                dx.a(48);
+                dz.a(48);
                 break;
-                dx.a(48);
+                dz.a(48);
                 break;
               case 1: 
-                dx.a(60);
+                dz.a(60);
                 break;
               case 0: 
-                dx.a(63);
+                dz.a(63);
                 try
                 {
                   this.uploadDate = paramJSONObject.getInt("upload_date");
@@ -140,7 +140,7 @@ public class ConfigResult
                     paramJSONObject.append("log file upload date=");
                     paramJSONObject.append(this.uploadDate);
                     g.a(paramJSONObject.toString());
-                    paramJSONObject = new File(dx.b(), "upload.file");
+                    paramJSONObject = new File(dz.b(), "upload.file");
                     if (paramJSONObject.exists())
                     {
                       e.a(paramJSONObject);

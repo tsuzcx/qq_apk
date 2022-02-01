@@ -6,10 +6,10 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.text.TextUtils;
 import com.tencent.halley.common.b.d;
-import com.tencent.token.bh;
 import com.tencent.token.bi;
-import com.tencent.token.bo;
-import com.tencent.token.bq;
+import com.tencent.token.bj;
+import com.tencent.token.bp;
+import com.tencent.token.br;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -50,9 +50,9 @@ public class e
     return -1L;
   }
   
-  public static bi a(d paramd)
+  public static bj a(d paramd)
   {
-    paramd = new bo(paramd);
+    paramd = new bp(paramd);
     try
     {
       paramd.i();
@@ -61,7 +61,7 @@ public class e
     catch (Exception localException)
     {
       paramd.b = -2;
-      paramd.c = bq.a(localException);
+      paramd.c = br.a(localException);
     }
     return paramd;
   }
@@ -178,66 +178,66 @@ public class e
     return paramString1;
   }
   
-  public static HashMap a(bh parambh)
+  public static HashMap a(bi parambi)
   {
     HashMap localHashMap = new HashMap();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(parambh.d);
+    localStringBuilder.append(parambi.d);
     localHashMap.put("B50", localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a(parambh.g));
+    localStringBuilder.append(a(parambi.g));
     localHashMap.put("B51", localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a(parambh.e));
+    localStringBuilder.append(a(parambi.e));
     localHashMap.put("B69", localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(parambh.h);
+    localStringBuilder.append(parambi.h);
     localHashMap.put("B52", localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a(parambh.j));
+    localStringBuilder.append(a(parambi.j));
     localHashMap.put("B53", localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(parambh.k);
+    localStringBuilder.append(parambi.k);
     localHashMap.put("B54", localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(parambh.l);
+    localStringBuilder.append(parambi.l);
     localHashMap.put("B55", localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(parambh.m);
+    localStringBuilder.append(parambi.m);
     localHashMap.put("B56", localStringBuilder.toString());
-    if (!TextUtils.isEmpty(parambh.n))
+    if (!TextUtils.isEmpty(parambi.n))
     {
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(a(parambh.n));
+      localStringBuilder.append(a(parambi.n));
       localHashMap.put("B57", localStringBuilder.toString());
     }
-    if ((!TextUtils.isEmpty(parambh.o)) && (!parambh.o.equals("null")))
+    if ((!TextUtils.isEmpty(parambi.o)) && (!parambi.o.equals("null")))
     {
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(a(parambh.o));
+      localStringBuilder.append(a(parambi.o));
       localHashMap.put("B58", localStringBuilder.toString());
     }
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(parambh.p);
+    localStringBuilder.append(parambi.p);
     localHashMap.put("B59", localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(parambh.u);
+    localStringBuilder.append(parambi.u);
     localHashMap.put("B63", localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(parambh.q);
+    localStringBuilder.append(parambi.q);
     localHashMap.put("B60", localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(parambh.r);
+    localStringBuilder.append(parambi.r);
     localHashMap.put("B61", localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(parambh.s);
+    localStringBuilder.append(parambi.s);
     localHashMap.put("B62", localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(parambh.t);
+    localStringBuilder.append(parambi.t);
     localHashMap.put("B71", localStringBuilder.toString());
-    parambh = new StringBuilder();
-    parambh.append(0);
-    localHashMap.put("B76", parambh.toString());
+    parambi = new StringBuilder();
+    parambi.append(0);
+    localHashMap.put("B76", parambi.toString());
     return localHashMap;
   }
   

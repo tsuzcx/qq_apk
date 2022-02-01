@@ -1,182 +1,197 @@
 package com.tencent.token;
 
 import android.content.Context;
+import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.bean.a;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
 import com.tencent.token.global.g;
 import com.tencent.token.utils.l;
-import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class co
+  extends cp
 {
-  private final String a = "/cn/mbtoken3/mbtoken3_update_dual_msg_status_encrypt";
-  protected List<a> b = new ArrayList();
-  protected long c;
-  int d;
-  private int e;
+  static co a;
+  private final String e = "/cn/mbtoken3/mbtoken3_scan_qrcode_v2";
+  private String f;
+  private int g;
+  private int h;
   
-  protected co(int paramInt)
+  private co()
   {
-    this.e = paramInt;
+    super(2);
   }
   
-  private String b(a parama, int paramInt)
+  public static co a()
   {
-    try
-    {
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("app_id", parama.b());
-      ((JSONObject)localObject).put("msg_type", parama.d());
-      ((JSONObject)localObject).put("msg_id", parama.a());
-      ((JSONObject)localObject).put("msg_status", paramInt);
-      ((JSONObject)localObject).put("uin", parama.c());
-      ((JSONObject)localObject).put("msg_uin", parama.c());
-      ((JSONObject)localObject).put("type", this.e);
-      paramInt = cb.a + 1;
-      cb.a = paramInt;
-      this.d = paramInt;
-      ((JSONObject)localObject).put("seq_id", this.d);
-      ((JSONObject)localObject).put("op_time", (int)(cc.c().s() / 1000L));
-      parama = ((JSONObject)localObject).toString();
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("palin: ");
-      ((StringBuilder)localObject).append(parama);
-      g.a(((StringBuilder)localObject).toString());
-      parama = l.b(parama.getBytes());
-      return parama;
+    if (a == null) {
+      a = new co();
     }
-    catch (JSONException parama)
-    {
-      parama.printStackTrace();
-    }
-    return null;
+    return a;
   }
   
-  public a a(int paramInt)
+  public e a(String paramString)
   {
-    if (this.b == null) {
-      return null;
-    }
-    int i = b();
-    if (paramInt >= 0)
-    {
-      if (paramInt >= i) {
-        return null;
-      }
-      return (a)this.b.get(paramInt);
-    }
-    return null;
-  }
-  
-  public e a(a parama, int paramInt)
-  {
+    this.b.clear();
+    this.f = "";
+    this.g = 0;
     e locale = new e();
-    Object localObject1 = new ez();
-    Object localObject2 = cr.a();
-    if (parama == null)
+    cs localcs = cs.a();
+    if ((localcs != null) && (localcs.e() != null))
     {
-      locale.b(10023);
-      return locale;
-    }
-    parama = b(parama, paramInt);
-    if (parama == null)
-    {
-      locale.a(10000, "encrypt msg status failed");
-      return locale;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("?aq_base_sid=");
-    localStringBuilder.append(((cr)localObject2).g());
-    localStringBuilder.append("&data=");
-    localStringBuilder.append(parama);
-    parama = localStringBuilder.toString();
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(c.e());
-    ((StringBuilder)localObject2).append("/cn/mbtoken3/mbtoken3_update_dual_msg_status_encrypt");
-    ((StringBuilder)localObject2).append(parama);
-    parama = ((StringBuilder)localObject2).toString();
-    localObject2 = ((ez)localObject1).a(parama);
-    if (localObject2 == null)
-    {
-      locale.a(((ez)localObject1).a());
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("client request url: ");
-      ((StringBuilder)localObject1).append(parama);
-      ((StringBuilder)localObject1).append(" failed, reason: ");
-      ((StringBuilder)localObject1).append(locale.a);
-      ((StringBuilder)localObject1).append(":");
-      ((StringBuilder)localObject1).append(locale.b);
-      g.c(((StringBuilder)localObject1).toString());
-      return locale;
-    }
-    try
-    {
-      parama = new JSONObject(new String((byte[])localObject2));
-      paramInt = parama.getInt("err");
-      if (paramInt != 0)
+      long l = localcs.f();
+      if (l == 0L)
       {
-        parama = parama.getString("info");
-        locale.a(paramInt, parama, parama);
+        locale.b(10029);
         return locale;
       }
-      parama = l.c(parama.getString("data"));
-      if (parama != null)
+      if (localcs.e().mIsBinded) {
+        l = localcs.e().mUin;
+      }
+      fc localfc = new fc();
+      Object localObject1 = null;
+      int i;
+      try
       {
-        paramInt = new JSONObject(new String(parama)).getInt("seq_id");
-        if (this.d != paramInt)
+        Object localObject2 = new JSONObject();
+        ((JSONObject)localObject2).put("uin", l);
+        i = cc.a + 1;
+        cc.a = i;
+        this.h = i;
+        ((JSONObject)localObject2).put("seq_id", this.h);
+        ((JSONObject)localObject2).put("op_time", cd.c().s() / 1000L);
+        if (paramString != null) {
+          ((JSONObject)localObject2).put("url_data", paramString);
+        }
+        localObject2 = ((JSONObject)localObject2).toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("plain:");
+        localStringBuilder.append((String)localObject2);
+        g.a(localStringBuilder.toString());
+        localObject2 = l.b(((String)localObject2).getBytes());
+        localObject1 = localObject2;
+      }
+      catch (JSONException localJSONException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("JSONException:");
+        localStringBuilder.append(localJSONException.getMessage());
+        g.c(localStringBuilder.toString());
+      }
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("?aq_base_sid=");
+      ((StringBuilder)localObject3).append(localcs.g());
+      ((StringBuilder)localObject3).append("&data=");
+      ((StringBuilder)localObject3).append((String)localObject1);
+      localObject1 = ((StringBuilder)localObject3).toString();
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(c.e());
+      ((StringBuilder)localObject3).append("/cn/mbtoken3/mbtoken3_scan_qrcode_v2");
+      ((StringBuilder)localObject3).append((String)localObject1);
+      localObject1 = ((StringBuilder)localObject3).toString();
+      localObject3 = localfc.a((String)localObject1);
+      if (localObject3 == null)
+      {
+        locale.a(localfc.a());
+        paramString = new StringBuilder();
+        paramString.append("client request url: ");
+        paramString.append((String)localObject1);
+        paramString.append(" failed, reason: ");
+        paramString.append(locale.a);
+        paramString.append(":");
+        paramString.append(locale.b);
+        g.c(paramString.toString());
+        return locale;
+      }
+      try
+      {
+        localObject1 = new JSONObject(new String((byte[])localObject3));
+        i = ((JSONObject)localObject1).getInt("err");
+        if (i != 0)
         {
-          locale.b(10030);
+          paramString = ((JSONObject)localObject1).getString("info");
+          locale.a(i, paramString, paramString);
           return locale;
         }
-        cr.a().m();
-        locale.c();
+        localObject1 = l.c(((JSONObject)localObject1).getString("data"));
+        if (localObject1 != null)
+        {
+          localObject1 = new JSONObject(new String((byte[])localObject1));
+          i = ((JSONObject)localObject1).getInt("seq_id");
+          if (i != this.h)
+          {
+            locale.b(10030);
+            paramString = new StringBuilder();
+            paramString.append("parseJSON error seq is wrong seq=");
+            paramString.append(i);
+            paramString.append(",right = ");
+            paramString.append(cc.a().b());
+            g.c(paramString.toString());
+            return locale;
+          }
+          this.g = ((JSONObject)localObject1).getInt("type");
+          if (1 == this.g)
+          {
+            paramString = ((JSONObject)localObject1).getJSONObject("msg");
+            localObject1 = new a();
+            if (!((a)localObject1).a(paramString)) {
+              g.c("object item parse failed ");
+            } else {
+              this.b.add(localObject1);
+            }
+          }
+          else if (2 == this.g)
+          {
+            this.f = ((JSONObject)localObject1).getString("text");
+          }
+          else
+          {
+            this.f = paramString;
+          }
+          cs.a().m();
+          locale.c();
+          return locale;
+        }
+        paramString = new StringBuilder();
+        paramString.append("parseJSON error decodeData=");
+        paramString.append(localObject1);
+        g.c(paramString.toString());
+        locale.a(10022, RqdApplication.n().getString(2131493068));
         return locale;
       }
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("parseJSON error decodeData=");
-      ((StringBuilder)localObject1).append(parama);
-      g.c(((StringBuilder)localObject1).toString());
-      locale.a(10022, RqdApplication.l().getString(2131493067));
-      return locale;
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("unknown err: ");
+        ((StringBuilder)localObject1).append(paramString.toString());
+        g.c(((StringBuilder)localObject1).toString());
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("JSONException:");
+        ((StringBuilder)localObject1).append(paramString.toString());
+        locale.a(10021, ((StringBuilder)localObject1).toString());
+        return locale;
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("parse json failed: ");
+        ((StringBuilder)localObject1).append(paramString.toString());
+        g.c(((StringBuilder)localObject1).toString());
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("JSONException:");
+        ((StringBuilder)localObject1).append(paramString.toString());
+        locale.a(10020, ((StringBuilder)localObject1).toString());
+        return locale;
+      }
     }
-    catch (Exception parama)
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("unknown err: ");
-      ((StringBuilder)localObject1).append(parama.toString());
-      g.c(((StringBuilder)localObject1).toString());
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("JSONException:");
-      ((StringBuilder)localObject1).append(parama.toString());
-      locale.a(10021, ((StringBuilder)localObject1).toString());
-      return locale;
-    }
-    catch (JSONException parama)
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("parse json failed: ");
-      ((StringBuilder)localObject1).append(parama.toString());
-      g.c(((StringBuilder)localObject1).toString());
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("JSONException:");
-      ((StringBuilder)localObject1).append(parama.toString());
-      locale.a(10020, ((StringBuilder)localObject1).toString());
-    }
+    locale.b(110);
     return locale;
-  }
-  
-  public int b()
-  {
-    List localList = this.b;
-    if (localList == null) {
-      return 0;
-    }
-    return localList.size();
   }
 }
 

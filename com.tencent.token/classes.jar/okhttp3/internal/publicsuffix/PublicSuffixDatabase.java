@@ -1,6 +1,6 @@
 package okhttp3.internal.publicsuffix;
 
-import com.tencent.token.fc;
+import com.tencent.token.ff;
 import java.net.IDN;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -108,7 +108,7 @@ public final class PublicSuffixDatabase
           k = i5 + 1;
           break;
         }
-        return new String(paramArrayOfByte, i4, i6, fc.e);
+        return new String(paramArrayOfByte, i4, i6, ff.e);
         label314:
         m += 1;
         i1 = 1;
@@ -149,7 +149,7 @@ public final class PublicSuffixDatabase
         int i = 0;
         while (i < paramArrayOfString.length)
         {
-          arrayOfByte[i] = paramArrayOfString[i].getBytes(fc.e);
+          arrayOfByte[i] = paramArrayOfString[i].getBytes(ff.e);
           i += 1;
         }
         i = 0;
@@ -239,11 +239,11 @@ public final class PublicSuffixDatabase
     //   17: astore_2
     //   18: goto +25 -> 43
     //   21: astore_2
-    //   22: invokestatic 139	com/tencent/token/gc:c	()Lcom/tencent/token/gc;
+    //   22: invokestatic 139	com/tencent/token/gf:c	()Lcom/tencent/token/gf;
     //   25: iconst_5
     //   26: ldc 141
     //   28: aload_2
-    //   29: invokevirtual 144	com/tencent/token/gc:a	(ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   29: invokevirtual 144	com/tencent/token/gf:a	(ILjava/lang/String;Ljava/lang/Throwable;)V
     //   32: iload_1
     //   33: ifeq +9 -> 42
     //   36: invokestatic 82	java/lang/Thread:currentThread	()Ljava/lang/Thread;
@@ -308,7 +308,7 @@ public final class PublicSuffixDatabase
     //   54: aload_3
     //   55: invokeinterface 174 2 0
     //   60: aload_1
-    //   61: invokestatic 177	com/tencent/token/fc:a	(Ljava/io/Closeable;)V
+    //   61: invokestatic 177	com/tencent/token/ff:a	(Ljava/io/Closeable;)V
     //   64: aload_0
     //   65: monitorenter
     //   66: aload_0
@@ -330,7 +330,7 @@ public final class PublicSuffixDatabase
     //   90: athrow
     //   91: astore_2
     //   92: aload_1
-    //   93: invokestatic 177	com/tencent/token/fc:a	(Ljava/io/Closeable;)V
+    //   93: invokestatic 177	com/tencent/token/ff:a	(Ljava/io/Closeable;)V
     //   96: aload_2
     //   97: athrow
     // Local variable table:

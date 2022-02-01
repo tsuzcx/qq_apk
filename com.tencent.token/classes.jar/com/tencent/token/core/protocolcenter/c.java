@@ -1,12 +1,12 @@
 package com.tencent.token.core.protocolcenter;
 
-import com.tencent.token.bz;
 import com.tencent.token.ca;
-import com.tencent.token.cc;
+import com.tencent.token.cb;
+import com.tencent.token.cd;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.protocolcenter.protocol.ProtoDoWtLogin;
-import com.tencent.token.cr;
-import com.tencent.token.do;
+import com.tencent.token.cs;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.e;
 import java.util.HashMap;
@@ -17,10 +17,10 @@ public class c
   public static int a = 0;
   private static int b = 1;
   
-  public static e a(do paramdo, String paramString)
+  public static e a(dp paramdp, String paramString)
   {
     e locale = new e();
-    Object localObject1 = paramdo.c.get("param.uin.wtlogin");
+    Object localObject1 = paramdp.c.get("param.uin.wtlogin");
     if (localObject1 == null)
     {
       locale.b(10000);
@@ -32,9 +32,9 @@ public class c
     ((StringBuilder)localObject1).append("");
     String str = ((StringBuilder)localObject1).toString();
     b = 1;
-    Object localObject2 = bz.a(RqdApplication.l());
+    Object localObject2 = ca.a(RqdApplication.n());
     a(str, 523005419L);
-    localObject1 = ((bz)localObject2).b;
+    localObject1 = ((ca)localObject2).b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("wtlogin result=");
     localStringBuilder.append(((e)localObject1).a);
@@ -50,23 +50,23 @@ public class c
     if (!((e)localObject1).b())
     {
       paramString = ((e)localObject1).c;
-      paramdo = paramString;
+      paramdp = paramString;
       if (((e)localObject1).c.indexOf("(") == -1)
       {
-        paramdo = paramString;
+        paramdp = paramString;
         if (((e)localObject1).c.indexOf(")") == -1)
         {
-          paramdo = new StringBuilder();
-          paramdo.append(((e)localObject1).c);
-          paramdo.append("(");
-          paramdo.append(((bz)localObject2).b.a);
-          paramdo.append(")");
-          paramdo = paramdo.toString();
+          paramdp = new StringBuilder();
+          paramdp.append(((e)localObject1).c);
+          paramdp.append("(");
+          paramdp.append(((ca)localObject2).b.a);
+          paramdp.append(")");
+          paramdp = paramdp.toString();
         }
       }
       paramString = new StringBuilder();
       paramString.append("wtlogin error for user: ");
-      paramString.append(paramdo);
+      paramString.append(paramdp);
       com.tencent.token.global.g.c(paramString.toString());
       if ((((e)localObject1).a != 15) && (((e)localObject1).a != 16) && (((e)localObject1).a != 1) && (((e)localObject1).a != 2))
       {
@@ -75,13 +75,13 @@ public class c
           if (((e)localObject1).a == -1000)
           {
             paramString = new StringBuilder();
-            paramString.append(paramdo);
+            paramString.append(paramdp);
             paramString.append("(");
             paramString.append(((e)localObject1).a);
             paramString.append(")");
             paramString = paramString.toString();
             localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append(paramdo);
+            ((StringBuilder)localObject2).append(paramdp);
             ((StringBuilder)localObject2).append("(");
             ((StringBuilder)localObject2).append(((e)localObject1).a);
             ((StringBuilder)localObject2).append(")");
@@ -89,33 +89,33 @@ public class c
             return locale;
           }
           paramString = new StringBuilder();
-          paramString.append(paramdo);
+          paramString.append(paramdp);
           paramString.append("(");
           paramString.append(((e)localObject1).a);
           paramString.append(")");
           paramString = paramString.toString();
           localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(paramdo);
+          ((StringBuilder)localObject2).append(paramdp);
           ((StringBuilder)localObject2).append("(");
           ((StringBuilder)localObject2).append(((e)localObject1).a);
           ((StringBuilder)localObject2).append(")");
           locale.a(10028, paramString, ((StringBuilder)localObject2).toString());
           return locale;
         }
-        locale.a(((e)localObject1).a, paramdo, paramdo);
+        locale.a(((e)localObject1).a, paramdp, paramdp);
         locale.d = ((e)localObject1).d;
         return locale;
       }
-      locale.a(10027, paramdo, paramdo);
+      locale.a(10027, paramdp, paramdp);
       return locale;
     }
-    ProtoDoWtLogin.a(paramdo, str, (byte[])((e)localObject1).d, b);
-    locale = g.b(paramdo, "mbtoken3_vfy_wtlogin");
+    ProtoDoWtLogin.a(paramdp, str, (byte[])((e)localObject1).d, b);
+    locale = g.b(paramdp, "mbtoken3_vfy_wtlogin");
     if (locale.b())
     {
       paramString = b.a(paramString);
       if (paramString != null) {
-        return paramString.c(paramdo);
+        return paramString.c(paramdp);
       }
       locale.b(10000);
       return locale;
@@ -123,14 +123,14 @@ public class c
     return locale;
   }
   
-  public static Callable<e> a(do paramdo)
+  public static Callable<e> a(dp paramdp)
   {
     new Callable()
     {
       public e a()
       {
         Object localObject = this.a;
-        localObject = c.d((do)localObject, ((do)localObject).a);
+        localObject = c.d((dp)localObject, ((dp)localObject).a);
         this.a.l.a(this.a, (e)localObject);
         return localObject;
       }
@@ -145,41 +145,41 @@ public class c
     ((StringBuilder)???).append(",appid=");
     ((StringBuilder)???).append(paramLong);
     com.tencent.token.global.g.a(((StringBuilder)???).toString());
-    bz localbz = bz.a(RqdApplication.l());
-    synchronized (bz.c)
+    ca localca = ca.a(RqdApplication.n());
+    synchronized (ca.c)
     {
-      if (!localbz.b(paramString, paramLong))
+      if (!localca.b(paramString, paramLong))
       {
-        localbz.a(true);
-        localbz.a(paramString, null, paramLong);
-        bz.c.wait();
+        localca.a(true);
+        localca.a(paramString, null, paramLong);
+        ca.c.wait();
         if (paramLong == 523005419L) {
           b = 1;
         }
       }
       else
       {
-        localbz.b.b(15);
+        localca.b.b(15);
       }
       return;
     }
   }
   
-  public static e b(do paramdo, String paramString)
+  public static e b(dp paramdp, String paramString)
   {
     new e();
     int i;
-    if (paramdo.m == 1)
+    if (paramdp.m == 1)
     {
-      paramdo.m = 0;
+      paramdp.m = 0;
       i = 1;
     }
     else
     {
       i = -1;
     }
-    paramdo.c.put("param.loginv2.clearkick", Integer.valueOf(a));
-    Object localObject = g.b(paramdo, "mbtoken3_login_v2");
+    paramdp.c.put("param.loginv2.clearkick", Integer.valueOf(a));
+    Object localObject = g.b(paramdp, "mbtoken3_login_v2");
     if (((e)localObject).b())
     {
       a = 0;
@@ -188,17 +188,17 @@ public class c
       {
         if (i != -1)
         {
-          paramdo.m = 1;
-          paramdo.k = true;
+          paramdp.m = 1;
+          paramdp.k = true;
         }
-        return paramString.c(paramdo);
+        return paramString.c(paramdp);
       }
       ((e)localObject).b(10000);
       return localObject;
     }
     if ((!((e)localObject).b()) && (((e)localObject).a == 102))
     {
-      long l1 = System.currentTimeMillis() + cc.c().q();
+      long l1 = System.currentTimeMillis() + cd.c().q();
       long l2 = 30 - (int)(l1 / 1000L % 30L) + 1L;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("sleep ");
@@ -207,7 +207,7 @@ public class c
       ((StringBuilder)localObject).append(l1);
       com.tencent.token.global.g.a(((StringBuilder)localObject).toString());
       Thread.sleep(l2 * 1000L);
-      localObject = b.a("mbtoken3_login_v2").c(paramdo);
+      localObject = b.a("mbtoken3_login_v2").c(paramdp);
       if (((e)localObject).b())
       {
         a = 0;
@@ -216,10 +216,10 @@ public class c
         {
           if (i != -1)
           {
-            paramdo.m = 1;
-            paramdo.k = true;
+            paramdp.m = 1;
+            paramdp.k = true;
           }
-          return paramString.c(paramdo);
+          return paramString.c(paramdp);
         }
         ((e)localObject).b(10000);
         return localObject;
@@ -228,7 +228,7 @@ public class c
     }
     if ((!((e)localObject).b()) && (((e)localObject).a == 112))
     {
-      localObject = b.a("mbtoken3_login_v2").c(paramdo);
+      localObject = b.a("mbtoken3_login_v2").c(paramdp);
       if (((e)localObject).b())
       {
         a = 0;
@@ -237,10 +237,10 @@ public class c
         {
           if (i != -1)
           {
-            paramdo.m = 1;
-            paramdo.k = true;
+            paramdp.m = 1;
+            paramdp.k = true;
           }
-          return paramString.c(paramdo);
+          return paramString.c(paramdp);
         }
         ((e)localObject).b(10000);
         return localObject;
@@ -250,19 +250,19 @@ public class c
     return localObject;
   }
   
-  public static e c(do paramdo, String paramString)
+  public static e c(dp paramdp, String paramString)
   {
     new e();
-    if (paramdo.c.get("param.uin.wtlogin") != null) {
-      return a(paramdo, paramString);
+    if (paramdp.c.get("param.uin.wtlogin") != null) {
+      return a(paramdp, paramString);
     }
-    return b(paramdo, paramString);
+    return b(paramdp, paramString);
   }
   
-  public static e d(do paramdo, String paramString)
+  public static e d(dp paramdp, String paramString)
   {
     e locale = new e();
-    Object localObject1 = (Long)paramdo.c.get("param.uinhash");
+    Object localObject1 = (Long)paramdp.c.get("param.uinhash");
     if (localObject1 == null)
     {
       locale.b(10000);
@@ -270,41 +270,41 @@ public class c
     }
     try
     {
-      QQUser localQQUser = cr.a().l();
+      QQUser localQQUser = cs.a().l();
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("login task: loginedUser");
       ((StringBuilder)localObject2).append(localQQUser);
       com.tencent.token.global.g.c(((StringBuilder)localObject2).toString());
-      localObject2 = (Long)paramdo.c.get("param.uin.wtlogin");
+      localObject2 = (Long)paramdp.c.get("param.uin.wtlogin");
       if ((localQQUser != null) && ((!localQQUser.mIsBinded) || (localQQUser.mUin == ((Long)localObject1).longValue())) && ((localQQUser.mIsBinded) || (localObject2 == null) || (localQQUser.mRealUin == ((Long)localObject2).longValue())))
       {
         localObject1 = b.a(paramString);
         if (localObject2 != null) {
-          paramdo.c.put("param.uinhash", Long.valueOf(localQQUser.mUin));
+          paramdp.c.put("param.uinhash", Long.valueOf(localQQUser.mUin));
         }
         if (localObject1 != null)
         {
-          locale = ((d)localObject1).c(paramdo);
+          locale = ((d)localObject1).c(paramdp);
           if (locale.b()) {
             return locale;
           }
           if ((locale.a != 109) && (locale.a != 104)) {
             return locale;
           }
-          paramdo = c(paramdo, paramString);
-          if (paramdo.b()) {
-            ca.a().c();
+          paramdp = c(paramdp, paramString);
+          if (paramdp.b()) {
+            cb.a().c();
           }
-          return paramdo;
+          return paramdp;
         }
         locale.b(10000);
         return locale;
       }
-      paramdo = c(paramdo, paramString);
-      if (paramdo.b()) {
-        ca.a().c();
+      paramdp = c(paramdp, paramString);
+      if (paramdp.b()) {
+        cb.a().c();
       }
-      return paramdo;
+      return paramdp;
     }
     finally {}
   }

@@ -69,11 +69,11 @@ public class TitleOptionMenu
     {
       this.c = ((LayoutInflater)localObject).inflate(2131296460, null);
       addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
-      this.d = findViewById(2131166113);
-      localObject = findViewById(2131165729);
+      this.d = findViewById(2131166115);
+      localObject = findViewById(2131165731);
       ((View)localObject).setTag(Integer.valueOf(0));
       ((View)localObject).setOnClickListener(this.g);
-      localObject = findViewById(2131165730);
+      localObject = findViewById(2131165732);
       ((View)localObject).setTag(Integer.valueOf(1));
       ((View)localObject).setOnClickListener(this.g);
     }
@@ -81,11 +81,11 @@ public class TitleOptionMenu
     {
       this.c = ((LayoutInflater)localObject).inflate(2131296459, null);
       addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
-      this.d = findViewById(2131166113);
-      localObject = findViewById(2131165728);
+      this.d = findViewById(2131166115);
+      localObject = findViewById(2131165730);
       ((View)localObject).setTag(Integer.valueOf(0));
       ((View)localObject).setOnClickListener(this.g);
-      localObject = findViewById(2131165730);
+      localObject = findViewById(2131165732);
       ((View)localObject).setTag(Integer.valueOf(1));
       ((View)localObject).setOnClickListener(this.g);
     }
@@ -93,11 +93,11 @@ public class TitleOptionMenu
     {
       this.c = ((LayoutInflater)localObject).inflate(2131296458, null);
       addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
-      this.d = findViewById(2131166113);
-      localObject = findViewById(2131165728);
+      this.d = findViewById(2131166115);
+      localObject = findViewById(2131165730);
       ((View)localObject).setTag(Integer.valueOf(0));
       ((View)localObject).setOnClickListener(this.g);
-      localObject = findViewById(2131165730);
+      localObject = findViewById(2131165732);
       ((View)localObject).setTag(Integer.valueOf(1));
       ((View)localObject).setOnClickListener(this.g);
     }
@@ -105,11 +105,11 @@ public class TitleOptionMenu
     {
       this.c = ((LayoutInflater)localObject).inflate(2131296457, null);
       addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
-      this.d = findViewById(2131166113);
-      localObject = findViewById(2131165728);
+      this.d = findViewById(2131166115);
+      localObject = findViewById(2131165730);
       ((View)localObject).setTag(Integer.valueOf(0));
       ((View)localObject).setOnClickListener(this.g);
-      localObject = findViewById(2131165730);
+      localObject = findViewById(2131165732);
       ((View)localObject).setTag(Integer.valueOf(1));
       ((View)localObject).setOnClickListener(this.g);
     }

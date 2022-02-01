@@ -1,122 +1,320 @@
 package com.tencent.token;
 
-import java.net.ProtocolException;
-import okhttp3.aa;
-import okhttp3.t;
-import okhttp3.t.a;
-import okhttp3.x;
-import okhttp3.y;
-import okhttp3.z;
-import okhttp3.z.a;
+import java.io.Closeable;
+import java.io.File;
+import java.io.Flushable;
+import java.io.IOException;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.concurrent.Executor;
+import java.util.regex.Pattern;
 import okio.d;
-import okio.k;
 
 public final class fk
-  implements t
+  implements Closeable, Flushable
 {
-  private final boolean a;
+  static final Pattern a = Pattern.compile("[a-z0-9_-]{1,120}");
+  final fz b;
+  final int c;
+  d d;
+  final LinkedHashMap<String, b> e;
+  int f;
+  boolean g;
+  boolean h;
+  boolean i;
+  private long k;
+  private long l;
+  private long m;
+  private final Executor n;
+  private final Runnable o;
   
-  public fk(boolean paramBoolean)
+  private void d()
   {
-    this.a = paramBoolean;
+    try
+    {
+      boolean bool = b();
+      if (!bool) {
+        return;
+      }
+      throw new IllegalStateException("cache is closed");
+    }
+    finally {}
   }
   
-  public z a(t.a parama)
+  void a(a parama, boolean paramBoolean)
   {
-    fp localfp = (fp)parama;
-    fl localfl = localfp.g();
-    okhttp3.internal.connection.f localf = localfp.f();
-    okhttp3.internal.connection.c localc = (okhttp3.internal.connection.c)localfp.e();
-    x localx = localfp.a();
-    long l = System.currentTimeMillis();
-    localfp.i().c(localfp.h());
-    localfl.a(localx);
-    localfp.i().a(localfp.h(), localx);
-    boolean bool = fo.c(localx.b());
-    d locald = null;
-    Object localObject = null;
-    parama = locald;
-    if (bool)
+    for (;;)
     {
-      parama = locald;
-      if (localx.d() != null)
+      int i2;
+      try
       {
-        if ("100-continue".equalsIgnoreCase(localx.a("Expect")))
+        b localb = parama.a;
+        if (localb.f == parama)
         {
-          localfl.a();
-          localfp.i().e(localfp.h());
-          localObject = localfl.a(true);
-        }
-        if (localObject == null)
-        {
-          localfp.i().d(localfp.h());
-          parama = new a(localfl.a(localx, localx.d().b()));
-          locald = k.a(parama);
-          localx.d().a(locald);
-          locald.close();
-          localfp.i().a(localfp.h(), parama.a);
-          parama = (t.a)localObject;
+          int i3 = 0;
+          i2 = i3;
+          if (paramBoolean)
+          {
+            i2 = i3;
+            if (!localb.e)
+            {
+              int i1 = 0;
+              i2 = i3;
+              if (i1 < this.c)
+              {
+                if (parama.b[i1] != 0)
+                {
+                  if (!this.b.b(localb.d[i1]))
+                  {
+                    parama.b();
+                    return;
+                  }
+                  i1 += 1;
+                  continue;
+                }
+                parama.b();
+                parama = new StringBuilder();
+                parama.append("Newly created entry didn't create value for index ");
+                parama.append(i1);
+                throw new IllegalStateException(parama.toString());
+              }
+            }
+          }
+          long l1;
+          if (i2 < this.c)
+          {
+            parama = localb.d[i2];
+            if (paramBoolean)
+            {
+              if (this.b.b(parama))
+              {
+                File localFile = localb.c[i2];
+                this.b.a(parama, localFile);
+                l1 = localb.b[i2];
+                long l2 = this.b.c(localFile);
+                localb.b[i2] = l2;
+                this.l = (this.l - l1 + l2);
+              }
+            }
+            else {
+              this.b.a(parama);
+            }
+          }
+          else
+          {
+            this.f += 1;
+            localb.f = null;
+            if ((localb.e | paramBoolean))
+            {
+              localb.e = true;
+              this.d.b("CLEAN").i(32);
+              this.d.b(localb.a);
+              localb.a(this.d);
+              this.d.i(10);
+              if (paramBoolean)
+              {
+                l1 = this.m;
+                this.m = (1L + l1);
+                localb.g = l1;
+              }
+            }
+            else
+            {
+              this.e.remove(localb.a);
+              this.d.b("REMOVE").i(32);
+              this.d.b(localb.a);
+              this.d.i(10);
+            }
+            this.d.flush();
+            if ((this.l > this.k) || (a())) {
+              this.n.execute(this.o);
+            }
+          }
         }
         else
         {
-          parama = (t.a)localObject;
-          if (!localc.d())
+          throw new IllegalStateException();
+        }
+      }
+      finally {}
+      i2 += 1;
+    }
+  }
+  
+  boolean a()
+  {
+    int i1 = this.f;
+    return (i1 >= 2000) && (i1 >= this.e.size());
+  }
+  
+  boolean a(b paramb)
+  {
+    if (paramb.f != null) {
+      paramb.f.a();
+    }
+    int i1 = 0;
+    while (i1 < this.c)
+    {
+      this.b.a(paramb.c[i1]);
+      this.l -= paramb.b[i1];
+      paramb.b[i1] = 0L;
+      i1 += 1;
+    }
+    this.f += 1;
+    this.d.b("REMOVE").i(32).b(paramb.a).i(10);
+    this.e.remove(paramb.a);
+    if (a()) {
+      this.n.execute(this.o);
+    }
+    return true;
+  }
+  
+  public boolean b()
+  {
+    try
+    {
+      boolean bool = this.h;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  void c()
+  {
+    while (this.l > this.k) {
+      a((b)this.e.values().iterator().next());
+    }
+    this.i = false;
+  }
+  
+  public void close()
+  {
+    for (;;)
+    {
+      int i1;
+      try
+      {
+        if ((this.g) && (!this.h))
+        {
+          b[] arrayOfb = (b[])this.e.values().toArray(new b[this.e.size()]);
+          int i2 = arrayOfb.length;
+          i1 = 0;
+          if (i1 < i2)
           {
-            localf.e();
-            parama = (t.a)localObject;
+            b localb = arrayOfb[i1];
+            if (localb.f != null) {
+              localb.f.b();
+            }
           }
+          else
+          {
+            c();
+            this.d.close();
+            this.d = null;
+            this.h = true;
+          }
+        }
+        else
+        {
+          this.h = true;
+          return;
+        }
+      }
+      finally {}
+      i1 += 1;
+    }
+  }
+  
+  public void flush()
+  {
+    try
+    {
+      boolean bool = this.g;
+      if (!bool) {
+        return;
+      }
+      d();
+      c();
+      this.d.flush();
+      return;
+    }
+    finally {}
+  }
+  
+  public final class a
+  {
+    final fk.b a;
+    final boolean[] b;
+    private boolean d;
+    
+    void a()
+    {
+      int i;
+      if (this.a.f == this) {
+        i = 0;
+      }
+      for (;;)
+      {
+        if (i < this.c.c) {}
+        try
+        {
+          this.c.b.a(this.a.d[i]);
+          label45:
+          i += 1;
+          continue;
+          this.a.f = null;
+          return;
+        }
+        catch (IOException localIOException)
+        {
+          break label45;
         }
       }
     }
-    localfl.b();
-    localObject = parama;
-    if (parama == null)
+    
+    public void b()
     {
-      localfp.i().e(localfp.h());
-      localObject = localfl.a(false);
+      synchronized (this.c)
+      {
+        if (!this.d)
+        {
+          if (this.a.f == this) {
+            this.c.a(this, false);
+          }
+          this.d = true;
+          return;
+        }
+        throw new IllegalStateException();
+      }
     }
-    parama = ((z.a)localObject).a(localx).a(localf.c().c()).a(l).b(System.currentTimeMillis()).a();
-    int j = parama.b();
-    int i = j;
-    if (j == 100)
-    {
-      parama = localfl.a(false).a(localx).a(localf.c().c()).a(l).b(System.currentTimeMillis()).a();
-      i = parama.b();
-    }
-    localfp.i().a(localfp.h(), parama);
-    if ((this.a) && (i == 101)) {
-      parama = parama.f().a(fc.c).a();
-    } else {
-      parama = parama.f().a(localfl.a(parama)).a();
-    }
-    if (("close".equalsIgnoreCase(parama.a().a("Connection"))) || ("close".equalsIgnoreCase(parama.a("Connection")))) {
-      localf.e();
-    }
-    if (((i != 204) && (i != 205)) || (parama.e().a() <= 0L)) {
-      return parama;
-    }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("HTTP ");
-    ((StringBuilder)localObject).append(i);
-    ((StringBuilder)localObject).append(" had non-zero Content-Length: ");
-    ((StringBuilder)localObject).append(parama.e().a());
-    throw new ProtocolException(((StringBuilder)localObject).toString());
   }
   
-  static final class a
-    extends okio.f
+  private final class b
   {
-    long a;
+    final String a;
+    final long[] b;
+    final File[] c;
+    final File[] d;
+    boolean e;
+    fk.a f;
+    long g;
     
-    a(okio.p paramp)
+    void a(d paramd)
     {
-      super();
-    }
-    
-    public void a_(okio.c paramc, long paramLong)
-    {
-      super.a_(paramc, paramLong);
-      this.a += paramLong;
+      long[] arrayOfLong = this.b;
+      int j = arrayOfLong.length;
+      int i = 0;
+      while (i < j)
+      {
+        long l = arrayOfLong[i];
+        paramd.i(32).l(l);
+        i += 1;
+      }
     }
   }
 }

@@ -11,7 +11,7 @@ import com.tencent.halley.downloader.DownloaderTaskStatus;
 import com.tencent.service.a;
 import com.tencent.service.a.a;
 import com.tencent.service.a.c;
-import com.tencent.token.ed;
+import com.tencent.token.ef;
 import java.io.File;
 
 public class DownloadQQSecureActivity
@@ -86,10 +86,10 @@ public class DownloadQQSecureActivity
     super.onCreate(paramBundle);
     requestWindowFeature(1);
     setContentView(2131296295);
-    this.mButton = ((Button)findViewById(2131165820));
+    this.mButton = ((Button)findViewById(2131165822));
     this.mDownloadInfo = a.a().a("http://qqwx.qq.com/s?aid=index&p=1&c=107014&vt=1&pf=0");
     if (this.mDownloadInfo == null) {
-      this.mDownloadInfo = ed.a("com.tencent.qqpimsecure", "http://qqwx.qq.com/s?aid=index&p=1&c=107014&vt=1&pf=0");
+      this.mDownloadInfo = ef.a("com.tencent.qqpimsecure", "http://qqwx.qq.com/s?aid=index&p=1&c=107014&vt=1&pf=0");
     }
     if (a.a().a(this.mDownloadInfo)) {
       this.mDownloadInfo.f = DownloaderTaskStatus.COMPLETE;

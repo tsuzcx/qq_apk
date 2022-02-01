@@ -6,11 +6,11 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.util.DisplayMetrics;
-import com.tencent.token.ca;
-import com.tencent.token.cc;
+import com.tencent.token.cb;
+import com.tencent.token.cd;
 import com.tencent.token.core.bean.RealNameQueryResult;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -28,22 +28,22 @@ public class ProtoQueryRealName
   private long e;
   private int f;
   
-  public static void a(do paramdo, long paramLong, int paramInt)
+  public static void a(dp paramdp, long paramLong, int paramInt)
   {
-    paramdo.c.put("param.realuin", Long.valueOf(paramLong));
-    paramdo.j = paramInt;
+    paramdp.c.put("param.realuin", Long.valueOf(paramLong));
+    paramdp.j = paramInt;
   }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     if (str == null)
     {
       this.a.b(104);
       return null;
     }
-    Object localObject = RqdApplication.l().getResources().getDisplayMetrics();
-    localObject = l.a(new Object[] { "real_uin", Long.valueOf(this.e), "seq_id", Integer.valueOf(this.f), "op_time", Long.valueOf(cc.c().s() / 1000L), "mobile_model", URLEncoder.encode(Build.MODEL), "screen_witdh", Integer.valueOf(((DisplayMetrics)localObject).widthPixels), "screen_height", Integer.valueOf(((DisplayMetrics)localObject).heightPixels), "screen_dpi", Integer.valueOf(((DisplayMetrics)localObject).densityDpi), "cpu_count", Integer.valueOf(m.y()), "cpu_freq", Integer.valueOf(m.z()) });
+    Object localObject = RqdApplication.n().getResources().getDisplayMetrics();
+    localObject = l.a(new Object[] { "real_uin", Long.valueOf(this.e), "seq_id", Integer.valueOf(this.f), "op_time", Long.valueOf(cd.c().s() / 1000L), "mobile_model", URLEncoder.encode(Build.MODEL), "screen_witdh", Integer.valueOf(((DisplayMetrics)localObject).widthPixels), "screen_height", Integer.valueOf(((DisplayMetrics)localObject).heightPixels), "screen_dpi", Integer.valueOf(((DisplayMetrics)localObject).densityDpi), "cpu_count", Integer.valueOf(m.y()), "cpu_freq", Integer.valueOf(m.z()) });
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("?aq_base_sid=");
     localStringBuilder.append(str);
@@ -62,10 +62,10 @@ public class ProtoQueryRealName
     return str;
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.e = ((Long)paramdo.c.get("param.realuin")).longValue();
-    this.f = paramdo.j;
+    this.e = ((Long)paramdp.c.get("param.realuin")).longValue();
+    this.f = paramdp.j;
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -108,7 +108,7 @@ public class ProtoQueryRealName
     localStringBuilder.append("parseJSON error decodeData=");
     localStringBuilder.append(paramJSONObject);
     g.c(localStringBuilder.toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
   
   protected void b()

@@ -3,10 +3,7 @@ package com.tencent.token;
 public class ch
   extends ci
 {
-  public int b;
-  public String c;
-  public int d;
-  public short e;
+  public String a = "";
 }
 
 

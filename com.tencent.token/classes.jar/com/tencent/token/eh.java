@@ -1,16 +1,10 @@
 package com.tencent.token;
 
-public class eh
+import com.qq.taf.jce.JceStruct;
+
+public abstract interface eh
 {
-  public static final int a(int paramInt)
-  {
-    return paramInt & 0x18;
-  }
-  
-  public static final int b(int paramInt)
-  {
-    return paramInt & 0x60;
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, JceStruct paramJceStruct);
 }
 
 

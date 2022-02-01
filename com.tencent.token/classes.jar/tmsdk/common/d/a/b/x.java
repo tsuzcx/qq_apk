@@ -1,21 +1,21 @@
 package tmsdk.common.d.a.b;
 
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.ef;
-import com.tencent.token.eg;
+import com.tencent.token.eh;
+import com.tencent.token.ei;
 import java.lang.ref.WeakReference;
 
 public abstract interface x
 {
-  public abstract eg a(int paramInt1, int paramInt2);
+  public abstract ei a(int paramInt1, int paramInt2);
   
-  public abstract WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, ef paramef);
+  public abstract WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, eh parameh);
   
-  public abstract WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, ef paramef, long paramLong);
+  public abstract WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, eh parameh, long paramLong);
   
   public abstract void a(int paramInt);
   
-  public abstract void a(int paramInt1, JceStruct paramJceStruct, int paramInt2, eg parameg);
+  public abstract void a(int paramInt1, JceStruct paramJceStruct, int paramInt2, ei paramei);
   
   public abstract void b(int paramInt);
 }

@@ -92,7 +92,7 @@ public class UpdateDownloadDialog
     }
     e locale = e.a();
     locale.k(2);
-    locale.e(true);
+    locale.f(true);
     a.a().c(this.a);
     TMSDKContext.saveActionData(1150107);
   }
@@ -164,10 +164,10 @@ public class UpdateDownloadDialog
     Object localObject = paramBundle.getAttributes();
     ((WindowManager.LayoutParams)localObject).width = ((int)(((Activity)this.g).getWindowManager().getDefaultDisplay().getWidth() - IndexActivity.S_DENSITY * 46.0F));
     paramBundle.setAttributes((WindowManager.LayoutParams)localObject);
-    this.b = ((Button)findViewById(2131165820));
-    this.c = ((TextView)findViewById(2131166104));
-    this.d = ((TextView)findViewById(2131165740));
-    findViewById(2131165378).setOnClickListener(new View.OnClickListener()
+    this.b = ((Button)findViewById(2131165822));
+    this.c = ((TextView)findViewById(2131166106));
+    this.d = ((TextView)findViewById(2131165742));
+    findViewById(2131165380).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
@@ -183,18 +183,18 @@ public class UpdateDownloadDialog
     });
     b();
     localObject = e.a();
-    paramBundle = String.format("新版本V%1$d.%2$d.%3$d", new Object[] { Integer.valueOf(((e)localObject).d()), Integer.valueOf(((e)localObject).e()), Integer.valueOf(((e)localObject).f()) });
-    if (!TextUtils.isEmpty(((e)localObject).p())) {
-      paramBundle = ((e)localObject).p();
+    paramBundle = String.format("新版本V%1$d.%2$d.%3$d", new Object[] { Integer.valueOf(((e)localObject).f()), Integer.valueOf(((e)localObject).g()), Integer.valueOf(((e)localObject).h()) });
+    if (!TextUtils.isEmpty(((e)localObject).r())) {
+      paramBundle = ((e)localObject).r();
     }
     this.c.setText(paramBundle);
     paramBundle = new StringBuffer();
-    paramBundle.append(((e)localObject).h());
-    if (((e)localObject).i() > 0)
+    paramBundle.append(((e)localObject).j());
+    if (((e)localObject).k() > 0)
     {
       paramBundle.append('\n');
       paramBundle.append("更新包：");
-      paramBundle.append(Unit.transformShortType(((e)localObject).i(), true));
+      paramBundle.append(Unit.transformShortType(((e)localObject).k(), true));
     }
     this.d.setText(paramBundle.toString());
   }

@@ -1,10 +1,10 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.ca;
-import com.tencent.token.cc;
+import com.tencent.token.cb;
+import com.tencent.token.cd;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -21,23 +21,23 @@ public class ProtoRealNameCardCheck
   private String f;
   private long g;
   
-  public static void a(do paramdo, long paramLong1, long paramLong2, int paramInt, String paramString)
+  public static void a(dp paramdp, long paramLong1, long paramLong2, int paramInt, String paramString)
   {
-    paramdo.c.put("param.uinhash", Long.valueOf(paramLong1));
-    paramdo.c.put("param.realuin", Long.valueOf(paramLong2));
-    paramdo.c.put("param.idnumber", paramString);
-    paramdo.j = paramInt;
+    paramdp.c.put("param.uinhash", Long.valueOf(paramLong1));
+    paramdp.c.put("param.realuin", Long.valueOf(paramLong2));
+    paramdp.c.put("param.idnumber", paramString);
+    paramdp.j = paramInt;
   }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     if (str == null)
     {
       this.a.b(104);
       return null;
     }
-    Object localObject = l.a(new Object[] { "real_uin", Long.valueOf(this.d), "seq_id", Integer.valueOf(this.e), "op_time", Long.valueOf(cc.c().s() / 1000L), "id_number", this.f });
+    Object localObject = l.a(new Object[] { "real_uin", Long.valueOf(this.d), "seq_id", Integer.valueOf(this.e), "op_time", Long.valueOf(cd.c().s() / 1000L), "id_number", this.f });
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("?aq_base_sid=");
     localStringBuilder.append(str);
@@ -51,12 +51,12 @@ public class ProtoRealNameCardCheck
     return ((StringBuilder)localObject).toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.g = ((Long)paramdo.c.get("param.uinhash")).longValue();
-    this.d = ((Long)paramdo.c.get("param.realuin")).longValue();
-    this.e = paramdo.j;
-    this.f = ((String)paramdo.c.get("param.idnumber"));
+    this.g = ((Long)paramdp.c.get("param.uinhash")).longValue();
+    this.d = ((Long)paramdp.c.get("param.realuin")).longValue();
+    this.e = paramdp.j;
+    this.f = ((String)paramdp.c.get("param.idnumber"));
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -89,7 +89,7 @@ public class ProtoRealNameCardCheck
     localStringBuilder.append("parseJSON error decodeData=");
     localStringBuilder.append(paramJSONObject);
     g.c(localStringBuilder.toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
 }
 

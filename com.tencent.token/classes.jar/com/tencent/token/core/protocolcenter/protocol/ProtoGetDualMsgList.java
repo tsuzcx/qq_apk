@@ -1,14 +1,14 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.ca;
 import com.tencent.token.cb;
 import com.tencent.token.cc;
+import com.tencent.token.cd;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.cp;
-import com.tencent.token.cr;
-import com.tencent.token.do;
+import com.tencent.token.cq;
+import com.tencent.token.cs;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -27,30 +27,30 @@ public class ProtoGetDualMsgList
   private final String f = "/cn/mbtoken3/mbtoken3_get_dual_msg_list_v2";
   private int g;
   
-  public static void a(do paramdo, long paramLong, byte paramByte)
+  public static void a(dp paramdp, long paramLong, byte paramByte)
   {
-    paramdo.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramdo.c.put("param.msg.source", Byte.valueOf(paramByte));
+    paramdp.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdp.c.put("param.msg.source", Byte.valueOf(paramByte));
   }
   
   protected String a()
   {
-    Object localObject2 = ca.a().b();
+    Object localObject2 = cb.a().b();
     Object localObject1 = null;
     if (localObject2 == null)
     {
       this.a.b(104);
       return null;
     }
-    cr localcr = cr.a();
+    cs localcs = cs.a();
     int i;
     StringBuilder localStringBuilder2;
     if (this.d > 0L)
     {
       i = 0;
-      while (i < localcr.d())
+      while (i < localcs.d())
       {
-        localObject2 = localcr.a(i);
+        localObject2 = localcs.a(i);
         localStringBuilder2 = new StringBuilder();
         localStringBuilder2.append("getdualmsglist: hash=");
         localStringBuilder2.append(this.d);
@@ -71,28 +71,28 @@ public class ProtoGetDualMsgList
         }
         i += 1;
       }
-      if (i == localcr.d())
+      if (i == localcs.d())
       {
         this.a.b(110);
         return null;
       }
     }
-    long l = localcr.f();
-    if ((localcr.e() != null) && (l != 0L))
+    long l = localcs.f();
+    if ((localcs.e() != null) && (l != 0L))
     {
-      if (localcr.e().mIsBinded) {
-        l = localcr.e().mUin;
+      if (localcs.e().mIsBinded) {
+        l = localcs.e().mUin;
       }
       try
       {
         localObject2 = new JSONObject();
         ((JSONObject)localObject2).put("uin", l);
-        i = cb.a + 1;
-        cb.a = i;
+        i = cc.a + 1;
+        cc.a = i;
         this.g = i;
         ((JSONObject)localObject2).put("seq_id", this.g);
-        ((JSONObject)localObject2).put("op_time", cc.c().s() / 1000L);
-        ((JSONObject)localObject2).put("tkn_seq", cc.c().j().replaceAll("-", ""));
+        ((JSONObject)localObject2).put("op_time", cd.c().s() / 1000L);
+        ((JSONObject)localObject2).put("tkn_seq", cd.c().j().replaceAll("-", ""));
         ((JSONObject)localObject2).put("source", this.e);
         localObject2 = ((JSONObject)localObject2).toString();
         localStringBuilder2 = new StringBuilder();
@@ -111,7 +111,7 @@ public class ProtoGetDualMsgList
       }
       StringBuilder localStringBuilder1 = new StringBuilder();
       localStringBuilder1.append("?aq_base_sid=");
-      localStringBuilder1.append(localcr.g());
+      localStringBuilder1.append(localcs.g());
       localStringBuilder1.append("&data=");
       localStringBuilder1.append((String)localObject1);
       localObject1 = localStringBuilder1.toString();
@@ -125,10 +125,10 @@ public class ProtoGetDualMsgList
     return null;
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.d = ((Long)paramdo.c.get("param.uinhash")).longValue();
-    this.e = ((Byte)paramdo.c.get("param.msg.source")).byteValue();
+    this.d = ((Long)paramdp.c.get("param.uinhash")).longValue();
+    this.e = ((Byte)paramdp.c.get("param.msg.source")).byteValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -151,12 +151,12 @@ public class ProtoGetDualMsgList
         paramJSONObject.append("parseJSON error seq is wrong seq=");
         paramJSONObject.append(i);
         paramJSONObject.append(",right = ");
-        paramJSONObject.append(cb.a().b());
+        paramJSONObject.append(cc.a().b());
         g.c(paramJSONObject.toString());
         return;
       }
       paramJSONObject = paramJSONObject.getJSONArray("msgs");
-      if (!cp.a().a(paramJSONObject, this.d))
+      if (!cq.a().a(paramJSONObject, this.d))
       {
         localObject = this.a;
         StringBuilder localStringBuilder = new StringBuilder();
@@ -165,7 +165,7 @@ public class ProtoGetDualMsgList
         ((e)localObject).a(10000, localStringBuilder.toString());
         return;
       }
-      cr.a().m();
+      cs.a().m();
       this.a.c();
       return;
     }
@@ -173,7 +173,7 @@ public class ProtoGetDualMsgList
     ((StringBuilder)localObject).append("parseJSON error decodeData=");
     ((StringBuilder)localObject).append(paramJSONObject);
     g.c(((StringBuilder)localObject).toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
 }
 

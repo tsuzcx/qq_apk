@@ -1,21 +1,12 @@
 package com.tencent.token;
 
-import okhttp3.x;
-import okhttp3.z;
+import okio.p;
 
 public abstract interface fi
 {
-  public abstract ff a(z paramz);
+  public abstract p a();
   
-  public abstract z a(x paramx);
-  
-  public abstract void a();
-  
-  public abstract void a(fg paramfg);
-  
-  public abstract void a(z paramz1, z paramz2);
-  
-  public abstract void b(x paramx);
+  public abstract void b();
 }
 
 

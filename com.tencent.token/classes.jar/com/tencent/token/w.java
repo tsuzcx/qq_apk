@@ -1,20 +1,39 @@
 package com.tencent.token;
 
-final class w
-  implements Runnable
+import android.os.Handler;
+import com.tencent.halley.DownloaderConfig;
+import com.tencent.halley.common.b;
+import com.tencent.halley.common.f;
+
+public final class w
 {
-  public final void run()
+  private static boolean a = false;
+  
+  public static void a(DownloaderConfig paramDownloaderConfig)
   {
     try
     {
-      p.a();
-      r.a();
+      boolean bool = a;
+      if (bool) {
+        return;
+      }
+      Object localObject = f.a();
+      if (localObject == null) {
+        return;
+      }
+      localObject = new StringBuilder("downloader init. config:");
+      ((StringBuilder)localObject).append(paramDownloaderConfig.getMassTaskNum());
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append(paramDownloaderConfig.getEaseTaskNum());
+      b.b("DownloaderBaseInfo", ((StringBuilder)localObject).toString());
+      l.a(paramDownloaderConfig.getMassTaskNum());
+      l.b(paramDownloaderConfig.getEaseTaskNum());
+      y.a();
+      f.h().post(new x());
+      a = true;
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+    finally {}
   }
 }
 

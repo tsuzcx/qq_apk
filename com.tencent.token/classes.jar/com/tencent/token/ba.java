@@ -1,148 +1,143 @@
 package com.tencent.token;
 
 import android.text.TextUtils;
-import com.tencent.halley.common.b;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public final class ba
 {
-  private static ba a;
-  private az b;
-  private bb c = bc.a();
+  private String a;
+  private Map b;
   
-  private ba()
+  public ba(String paramString)
   {
-    a(false);
+    this.a = paramString;
+    this.b = new HashMap();
   }
   
-  public static ba a()
+  public final a a(String paramString)
   {
-    try
-    {
-      if (a == null) {
-        a = new ba();
-      }
-      ba localba = a;
-      return localba;
-    }
-    finally {}
+    return (a)this.b.get(paramString);
   }
   
-  private void a(boolean paramBoolean)
+  public final Map a()
   {
-    try
-    {
-      String str = bp.a();
-      StringBuilder localStringBuilder = new StringBuilder("try updateCacheInfo...currentApn:");
-      localStringBuilder.append(str);
-      b.a("AccessSchedulerStorageManager", localStringBuilder.toString());
-      if ((!TextUtils.isEmpty(str)) && (!str.equals("unknown")))
-      {
-        if ((this.b != null) && (this.b.b().equals(str)))
-        {
-          b.b("AccessSchedulerStorageManager", "same apn. no need update.");
-          return;
-        }
-        this.b = this.c.a(str);
-        if (this.b != null)
-        {
-          localStringBuilder = new StringBuilder("cache succ for current apn:");
-          localStringBuilder.append(str);
-          b.a("AccessSchedulerStorageManager", localStringBuilder.toString());
-          return;
-        }
-        localStringBuilder = new StringBuilder("cache failed for apn:");
-        localStringBuilder.append(str);
-        b.c("AccessSchedulerStorageManager", localStringBuilder.toString());
-        return;
-      }
-      localStringBuilder = new StringBuilder("updateCacheInfo failed... get current apn from ApnInfo:");
-      localStringBuilder.append(str);
-      b.c("AccessSchedulerStorageManager", localStringBuilder.toString());
-      return;
-    }
-    finally {}
+    return this.b;
   }
   
-  public final az.a a(String paramString)
+  public final void a(a parama)
   {
-    try
-    {
-      a(false);
-      if ((this.b != null) && (this.b.b().equals(bp.a())))
-      {
-        paramString = this.b.a(paramString);
-        return paramString;
-      }
-      return null;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
+    this.b.put(a.a(parama), parama);
   }
   
-  public final void a(az paramaz)
+  public final String b()
   {
-    try
-    {
-      b.b("AccessSchedulerStorageManager", "try updateAccessInfo...");
-      if (paramaz == null)
-      {
-        b.c("AccessSchedulerStorageManager", "updateAccessInfo info==null");
-        return;
-      }
-      this.b = paramaz;
-      this.c.a(paramaz);
-      return;
-    }
-    finally {}
+    return this.a;
   }
   
-  public final boolean a(Set paramSet)
+  public static final class a
   {
-    try
+    private String a;
+    private String b;
+    private List c;
+    private long d;
+    
+    public a(String paramString1, long paramLong, String paramString2)
     {
-      b.b("AccessSchedulerStorageManager", "isNeedScheduler... ");
-      a(false);
-      if (this.b == null)
+      this.a = paramString1;
+      this.d = paramLong;
+      this.b = paramString2;
+      this.c = new ArrayList();
+    }
+    
+    public a(String paramString1, long paramLong, String paramString2, String paramString3, String paramString4)
+    {
+      this.a = paramString1;
+      this.d = paramLong;
+      this.b = paramString3;
+      this.c = a(paramString2);
+      if (!TextUtils.isEmpty(paramString4))
       {
-        b.b("AccessSchedulerStorageManager", "no cache, need schedule...");
-        return true;
-      }
-      Object localObject = this.b.a();
-      if (localObject == null)
-      {
-        b.b("AccessSchedulerStorageManager", "DomainAccessInfo is null, need schedule...");
-        return true;
-      }
-      if (((Map)localObject).size() < paramSet.size())
-      {
-        paramSet = new StringBuilder("DomainAccessInfo map not enough, need schedule...map.size:");
-        paramSet.append(((Map)localObject).size());
-        b.b("AccessSchedulerStorageManager", paramSet.toString());
-        return true;
-      }
-      Iterator localIterator = paramSet.iterator();
-      while (localIterator.hasNext())
-      {
-        paramSet = (String)localIterator.next();
-        az.a locala = (az.a)((Map)localObject).get(paramSet);
-        if ((locala == null) || (locala.f()))
-        {
-          localObject = new StringBuilder("domainInfo for domain:");
-          ((StringBuilder)localObject).append(paramSet);
-          ((StringBuilder)localObject).append(" is null or expired. need schedule...");
-          b.b("AccessSchedulerStorageManager", ((StringBuilder)localObject).toString());
-          return true;
+        paramString1 = paramString4.split(":");
+        if ((paramString1 != null) && (paramString1.length > 0)) {
+          new az(paramString1[0], Integer.parseInt(paramString1[1]));
         }
       }
-      return false;
     }
-    finally {}
+    
+    private static ArrayList a(String paramString)
+    {
+      ArrayList localArrayList = new ArrayList();
+      if (!TextUtils.isEmpty(paramString))
+      {
+        paramString = paramString.split(",");
+        if ((paramString != null) && (paramString.length > 0))
+        {
+          int j = paramString.length;
+          int i = 0;
+          while (i < j)
+          {
+            String[] arrayOfString = paramString[i].split(":");
+            if ((arrayOfString != null) && (arrayOfString.length > 0)) {
+              localArrayList.add(new az(arrayOfString[0], Integer.parseInt(arrayOfString[1])));
+            }
+            i += 1;
+          }
+        }
+      }
+      return localArrayList;
+    }
+    
+    public final String a()
+    {
+      return this.a;
+    }
+    
+    public final void a(az paramaz)
+    {
+      this.c.add(paramaz);
+    }
+    
+    public final long b()
+    {
+      return this.d;
+    }
+    
+    public final List c()
+    {
+      return this.c;
+    }
+    
+    public final String d()
+    {
+      Object localObject = this.c;
+      if ((localObject != null) && (((List)localObject).size() != 0))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          localStringBuilder.append(((az)((Iterator)localObject).next()).c());
+          localStringBuilder.append(",");
+        }
+        localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+        return localStringBuilder.toString();
+      }
+      return "";
+    }
+    
+    public final String e()
+    {
+      return this.b;
+    }
+    
+    public final boolean f()
+    {
+      return System.currentTimeMillis() - this.d > be.a().b.e * 60 * 1000;
+    }
   }
 }
 

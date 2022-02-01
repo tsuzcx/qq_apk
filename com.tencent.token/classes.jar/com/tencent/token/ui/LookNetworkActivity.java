@@ -11,9 +11,9 @@ public class LookNetworkActivity
   {
     super.onCreate(paramBundle);
     setContentView(2131296371);
-    ((TextView)findViewById(2131166106)).getPaint().setFakeBoldText(true);
-    ((TextView)findViewById(2131166107)).getPaint().setFakeBoldText(true);
     ((TextView)findViewById(2131166108)).getPaint().setFakeBoldText(true);
+    ((TextView)findViewById(2131166109)).getPaint().setFakeBoldText(true);
+    ((TextView)findViewById(2131166110)).getPaint().setFakeBoldText(true);
   }
 }
 

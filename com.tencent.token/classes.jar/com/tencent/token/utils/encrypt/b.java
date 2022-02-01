@@ -1,14 +1,14 @@
 package com.tencent.token.utils.encrypt;
 
-import com.tencent.token.cj;
-import com.tencent.token.dq;
+import com.tencent.token.ck;
+import com.tencent.token.dr;
 import com.tencent.token.utils.encrypt.random.PRNGFixes;
 import com.tencent.token.utils.encrypt.random.SecureRandom;
 import oicq.wlogin_sdk.tools.MD5;
 
 public class b
 {
-  public static dq a()
+  public static dr a()
   {
     byte[] arrayOfByte = new byte[14];
     String str2 = System.getProperty("microedition.platform");
@@ -52,58 +52,58 @@ public class b
       i += 1;
     }
     arrayOfByte[0] = ((byte)(Math.abs(localSecureRandom1.nextInt()) % 64));
-    return new dq(arrayOfByte);
+    return new dr(arrayOfByte);
   }
   
-  public static String a(dq paramdq1, long paramLong, dq paramdq2)
+  public static String a(dr paramdr1, long paramLong, dr paramdr2)
   {
-    if (paramdq1 != null)
+    if (paramdr1 != null)
     {
-      if (paramdq2 == null) {
+      if (paramdr2 == null) {
         return null;
       }
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append(paramLong);
       ((StringBuilder)localObject).append("");
-      localObject = new dq(((StringBuilder)localObject).toString());
+      localObject = new dr(((StringBuilder)localObject).toString());
       try
       {
-        paramdq1 = ((dq)localObject).a(paramdq1, paramdq2);
-        return paramdq1.e().toUpperCase();
+        paramdr1 = ((dr)localObject).a(paramdr1, paramdr2);
+        return paramdr1.e().toUpperCase();
       }
-      catch (Exception paramdq1)
+      catch (Exception paramdr1)
       {
-        paramdq1.printStackTrace();
+        paramdr1.printStackTrace();
         return null;
       }
     }
     return null;
   }
   
-  public static byte[] a(dq paramdq1, dq paramdq2, dq paramdq3)
+  public static byte[] a(dr paramdr1, dr paramdr2, dr paramdr3)
   {
-    paramdq1 = b(paramdq1, paramdq2, paramdq3);
-    if (paramdq1 == null) {
+    paramdr1 = b(paramdr1, paramdr2, paramdr3);
+    if (paramdr1 == null) {
       return null;
     }
-    return MD5.toMD5Byte(cj.a(paramdq1.e()));
+    return MD5.toMD5Byte(ck.a(paramdr1.e()));
   }
   
-  public static dq b(dq paramdq1, dq paramdq2, dq paramdq3)
+  public static dr b(dr paramdr1, dr paramdr2, dr paramdr3)
   {
-    if ((paramdq1 != null) && (paramdq2 != null))
+    if ((paramdr1 != null) && (paramdr2 != null))
     {
-      if (paramdq3 == null) {
+      if (paramdr3 == null) {
         return null;
       }
       try
       {
-        paramdq1 = paramdq2.a(paramdq1, paramdq3);
-        return paramdq1;
+        paramdr1 = paramdr2.a(paramdr1, paramdr3);
+        return paramdr1;
       }
-      catch (Exception paramdq1)
+      catch (Exception paramdr1)
       {
-        paramdq1.printStackTrace();
+        paramdr1.printStackTrace();
         return null;
       }
     }

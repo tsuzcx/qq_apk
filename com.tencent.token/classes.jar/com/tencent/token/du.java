@@ -1,27 +1,159 @@
 package com.tencent.token;
 
-public abstract class du
+abstract class du
+  extends dv
 {
-  protected abstract void a();
+  static final byte[] c = new byte[''];
+  final byte[] a;
+  long b;
+  private final String d;
+  private final int e;
+  private final int f;
+  private int g;
   
-  protected abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
-  
-  protected int b(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  static
   {
-    byte[] arrayOfByte = b();
-    if (paramInt2 >= arrayOfByte.length)
-    {
-      if (paramArrayOfByte.length - paramInt1 >= arrayOfByte.length)
-      {
-        System.arraycopy(arrayOfByte, 0, paramArrayOfByte, paramInt1, arrayOfByte.length);
-        return arrayOfByte.length;
-      }
-      throw new Exception("insufficient space in the output buffer to store the digest");
-    }
-    throw new Exception("partial digests not returned");
+    c[0] = -128;
   }
   
-  protected abstract byte[] b();
+  du(du paramdu)
+  {
+    this.d = paramdu.d;
+    this.e = paramdu.e;
+    this.f = paramdu.f;
+    byte[] arrayOfByte1 = paramdu.a;
+    if (arrayOfByte1 == null)
+    {
+      this.a = null;
+    }
+    else
+    {
+      this.a = new byte[arrayOfByte1.length];
+      arrayOfByte1 = paramdu.a;
+      byte[] arrayOfByte2 = this.a;
+      System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, arrayOfByte2.length);
+    }
+    this.g = paramdu.g;
+    this.b = paramdu.b;
+  }
+  
+  du(String paramString, int paramInt1, int paramInt2)
+  {
+    this.d = paramString;
+    this.e = paramInt1;
+    this.f = paramInt2;
+    this.a = new byte[paramInt2];
+  }
+  
+  protected final void a()
+  {
+    if (this.b == 0L) {
+      return;
+    }
+    c();
+    this.g = 0;
+    this.b = 0L;
+  }
+  
+  abstract void a(byte[] paramArrayOfByte, int paramInt);
+  
+  protected final void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if (paramInt2 == 0) {
+      return;
+    }
+    if ((paramInt1 >= 0) && (paramInt2 >= 0) && (paramInt1 <= paramArrayOfByte.length - paramInt2))
+    {
+      if (this.b < 0L) {
+        a();
+      }
+      this.b += paramInt2;
+      int k = this.g;
+      int i = paramInt1;
+      int j = paramInt2;
+      if (k != 0)
+      {
+        i = Math.min(paramInt2, this.f - k);
+        System.arraycopy(paramArrayOfByte, paramInt1, this.a, this.g, i);
+        this.g += i;
+        paramInt1 += i;
+        paramInt2 -= i;
+        i = paramInt1;
+        j = paramInt2;
+        if (this.g >= this.f)
+        {
+          a(this.a, 0);
+          this.g = 0;
+          j = paramInt2;
+          i = paramInt1;
+        }
+      }
+      while (j >= this.f)
+      {
+        a(paramArrayOfByte, i);
+        paramInt1 = this.f;
+        j -= paramInt1;
+        i += paramInt1;
+      }
+      if (j > 0)
+      {
+        System.arraycopy(paramArrayOfByte, i, this.a, 0, j);
+        this.g = j;
+      }
+      return;
+    }
+    throw new ArrayIndexOutOfBoundsException();
+  }
+  
+  public byte[] a(byte[] paramArrayOfByte)
+  {
+    a(paramArrayOfByte, 0, paramArrayOfByte.length);
+    return b();
+  }
+  
+  protected final int b(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if (paramInt2 >= this.e)
+    {
+      if ((paramInt1 >= 0) && (paramInt2 >= 0) && (paramInt1 <= paramArrayOfByte.length - paramInt2))
+      {
+        if (this.b < 0L) {
+          a();
+        }
+        b(paramArrayOfByte, paramInt1);
+        this.b = -1L;
+        return this.e;
+      }
+      throw new Exception("Buffer too short to store digest");
+    }
+    paramArrayOfByte = new StringBuffer();
+    paramArrayOfByte.append("Length must be at least ");
+    paramArrayOfByte.append(this.e);
+    paramArrayOfByte.append(" for ");
+    paramArrayOfByte.append(this.d);
+    paramArrayOfByte.append("digests");
+    throw new Exception(paramArrayOfByte.toString());
+  }
+  
+  abstract void b(byte[] paramArrayOfByte, int paramInt);
+  
+  protected final byte[] b()
+  {
+    byte[] arrayOfByte = new byte[this.e];
+    try
+    {
+      b(arrayOfByte, 0, arrayOfByte.length);
+      return arrayOfByte;
+    }
+    catch (Exception localException)
+    {
+      label18:
+      break label18;
+    }
+    return null;
+  }
+  
+  abstract void c();
 }
 
 

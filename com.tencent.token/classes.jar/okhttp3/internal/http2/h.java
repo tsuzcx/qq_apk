@@ -1,6 +1,6 @@
 package okhttp3.internal.http2;
 
-import com.tencent.token.fc;
+import com.tencent.token.ff;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.List;
@@ -65,7 +65,7 @@ final class h
           return;
         }
         if (b.isLoggable(Level.FINE)) {
-          b.fine(fc.a(">> CONNECTION %s", new Object[] { c.a.e() }));
+          b.fine(ff.a(">> CONNECTION %s", new Object[] { c.a.e() }));
         }
         this.c.c(c.a.h());
         this.c.flush();

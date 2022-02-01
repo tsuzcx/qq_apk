@@ -45,7 +45,7 @@ public class SlidingMenuView
       public void run()
       {
         SlidingMenuView localSlidingMenuView = SlidingMenuView.this;
-        localSlidingMenuView.scrollTo(localSlidingMenuView.findViewById(2131165653).getWidth(), 0);
+        localSlidingMenuView.scrollTo(localSlidingMenuView.findViewById(2131165655).getWidth(), 0);
       }
     }, 1L);
   }
@@ -109,8 +109,8 @@ public class SlidingMenuView
   
   public void a(int paramInt1, int paramInt2)
   {
-    findViewById(2131165653).measure(paramInt1 - getScreenWidth() / 6, paramInt2);
-    findViewById(2131165994).measure(paramInt1, paramInt2);
+    findViewById(2131165655).measure(paramInt1 - getScreenWidth() / 6, paramInt2);
+    findViewById(2131165996).measure(paramInt1, paramInt2);
   }
   
   public void a(int paramInt, boolean paramBoolean)

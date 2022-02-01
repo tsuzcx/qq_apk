@@ -1,39 +1,72 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import com.tencent.halley.DownloaderConfig;
-import com.tencent.halley.common.b;
-import com.tencent.halley.common.f;
+import android.text.TextUtils;
+import com.tencent.halley.common.h;
+import com.tencent.halley.downloader.a;
+import com.tencent.halley.downloader.c;
+import com.tencent.halley.downloader.c.d.a.a;
+import com.tencent.halley.downloader.c.e;
+import com.tencent.halley.downloader.exceptions.DownloaderAddTaskException;
+import java.util.Iterator;
+import java.util.List;
 
 public final class v
+  implements a
 {
-  private static boolean a = false;
-  
-  public static void a(DownloaderConfig paramDownloaderConfig)
+  private static com.tencent.halley.downloader.b a(int paramInt, String paramString1, boolean paramBoolean1, String paramString2, List paramList1, String paramString3, List paramList2, String paramString4, String paramString5, c paramc, boolean paramBoolean2, long paramLong)
   {
-    try
-    {
-      boolean bool = a;
-      if (bool) {
-        return;
-      }
-      Object localObject = f.a();
-      if (localObject == null) {
-        return;
-      }
-      localObject = new StringBuilder("downloader init. config:");
-      ((StringBuilder)localObject).append(paramDownloaderConfig.getMassTaskNum());
-      ((StringBuilder)localObject).append(",");
-      ((StringBuilder)localObject).append(paramDownloaderConfig.getEaseTaskNum());
-      b.b("DownloaderBaseInfo", ((StringBuilder)localObject).toString());
-      k.a(paramDownloaderConfig.getMassTaskNum());
-      k.b(paramDownloaderConfig.getEaseTaskNum());
-      x.a();
-      f.h().post(new w());
-      a = true;
-      return;
+    String str = "";
+    if (TextUtils.isEmpty(paramString2)) {
+      str = "url is empty.";
+    } else if (paramc == null) {
+      str = "listener is null.";
     }
-    finally {}
+    if (h.a(paramString4)) {
+      paramString4 = l.g();
+    }
+    if ("".equals(str))
+    {
+      paramString2 = new com.tencent.halley.downloader.c.d.b(paramString2, paramBoolean1);
+      if (paramBoolean1)
+      {
+        paramString2.b(paramString3);
+        if (paramList1 != null)
+        {
+          paramList1 = paramList1.iterator();
+          while (paramList1.hasNext())
+          {
+            paramString3 = (String)paramList1.next();
+            paramString2.a(q.a, paramString3, a.a.c);
+          }
+        }
+        if (paramList2 != null)
+        {
+          paramList1 = paramList2.iterator();
+          while (paramList1.hasNext())
+          {
+            paramString3 = (String)paramList1.next();
+            paramString2.a(q.a, paramString3, a.a.h);
+          }
+        }
+      }
+      return new e(paramInt, paramString1, paramString2, paramString4, paramString5, paramc, paramBoolean2, paramLong);
+    }
+    throw new DownloaderAddTaskException(str);
+  }
+  
+  public final com.tencent.halley.downloader.b a(int paramInt, String paramString1, String paramString2, List paramList1, String paramString3, List paramList2, String paramString4, String paramString5, c paramc, boolean paramBoolean, long paramLong)
+  {
+    return a(paramInt, paramString1, true, paramString2, paramList1, paramString3, paramList2, paramString4, paramString5, paramc, paramBoolean, paramLong);
+  }
+  
+  public final void a(com.tencent.halley.downloader.b paramb)
+  {
+    y.a().n(paramb);
+  }
+  
+  public final void a(com.tencent.halley.downloader.b paramb, boolean paramBoolean)
+  {
+    y.a().a(paramb, paramBoolean);
   }
 }
 

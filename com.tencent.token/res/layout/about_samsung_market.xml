@@ -20,7 +20,12 @@
             <TextView android:gravity="center_vertical" android:layout_width="170.0dip" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="@string/about_list_serialnumber" android:layout_centerVertical="true" style="@style/text_view" />
             <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:src="@drawable/arrow_gray" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/app_name" />
         </RelativeLayout>
-        <RelativeLayout android:id="@id/about_contact" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_below="@id/about_list_serialnumber" android:layout_centerHorizontal="true">
+        <View android:id="@id/about_divider_6" android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_below="@id/about_list_serialnumber" />
+        <RelativeLayout android:id="@id/about_list_privacy" android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_below="@id/about_divider_6">
+            <TextView android:gravity="center_vertical" android:layout_width="170.0dip" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="@string/about_list_privacy" android:layout_centerVertical="true" style="@style/text_view" />
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:src="@drawable/arrow_gray" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/app_name" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/about_contact" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_below="@id/about_list_privacy" android:layout_centerHorizontal="true">
             <TextView android:textSize="@dimen/text_size_15" android:textColor="@color/btn_color_blue_over" android:gravity="center" android:id="@id/about_7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:text="@string/about_info5" />
         </RelativeLayout>
         <View android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_below="@id/about_list_serialnumber" />

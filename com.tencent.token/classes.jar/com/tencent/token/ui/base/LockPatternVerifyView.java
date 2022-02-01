@@ -24,9 +24,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.token.bu;
-import com.tencent.token.cd;
+import com.tencent.token.bv;
 import com.tencent.token.ce;
+import com.tencent.token.cf;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.utils.m;
 import java.util.List;
@@ -122,12 +122,12 @@ public class LockPatternVerifyView
     this.h = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
     this.i = this.h.inflate(2131296451, null);
     this.i.setVisibility(0);
-    this.c = this.i.findViewById(2131166258);
-    this.d = this.i.findViewById(2131166245);
-    this.e = this.i.findViewById(2131166243);
-    this.f = ((TextView)this.i.findViewById(2131166250));
-    this.g = ((TextView)this.i.findViewById(2131166242));
-    this.k = ((LockPatternView)this.i.findViewById(2131166249));
+    this.c = this.i.findViewById(2131166260);
+    this.d = this.i.findViewById(2131166247);
+    this.e = this.i.findViewById(2131166245);
+    this.f = ((TextView)this.i.findViewById(2131166252));
+    this.g = ((TextView)this.i.findViewById(2131166244));
+    this.k = ((LockPatternView)this.i.findViewById(2131166251));
     this.k.setOnPatternListener(this);
     this.e.setVisibility(4);
     this.p = m.a(paramContext.getResources(), 2131100131);
@@ -136,20 +136,20 @@ public class LockPatternVerifyView
     this.s = m.a(paramContext.getResources(), 2131100124);
     this.t = m.a(paramContext.getResources(), 2131100125);
     if (this.s != null) {
-      ((LinearLayout)this.i.findViewById(2131166239)).setBackgroundDrawable(new BitmapDrawable(this.s));
+      ((LinearLayout)this.i.findViewById(2131166241)).setBackgroundDrawable(new BitmapDrawable(this.s));
     }
     if (this.t != null)
     {
-      ((LinearLayout)this.i.findViewById(2131166240)).setBackgroundDrawable(new BitmapDrawable(this.t));
-      ((LinearLayout)this.i.findViewById(2131166241)).setBackgroundDrawable(new BitmapDrawable(this.t));
+      ((LinearLayout)this.i.findViewById(2131166242)).setBackgroundDrawable(new BitmapDrawable(this.t));
+      ((LinearLayout)this.i.findViewById(2131166243)).setBackgroundDrawable(new BitmapDrawable(this.t));
     }
     if (this.p != null)
     {
-      this.u = ((ImageView)this.i.findViewById(2131166244));
+      this.u = ((ImageView)this.i.findViewById(2131166246));
       this.u.setImageBitmap(this.p);
     }
-    if (!RqdApplication.g()) {
-      a(2131493245, false);
+    if (!RqdApplication.i()) {
+      a(2131493246, false);
     }
     this.i.setOnTouchListener(new View.OnTouchListener()
     {
@@ -163,7 +163,7 @@ public class LockPatternVerifyView
     {
       public void onClick(View paramAnonymousView)
       {
-        bu.a().a(System.currentTimeMillis(), 26);
+        bv.a().a(System.currentTimeMillis(), 26);
         if (LockPatternVerifyView.a(LockPatternVerifyView.this) != null) {
           LockPatternVerifyView.a(LockPatternVerifyView.this).b();
         }
@@ -173,7 +173,7 @@ public class LockPatternVerifyView
   
   private void c(Context paramContext)
   {
-    this.n = cd.a().b(paramContext);
+    this.n = ce.a().b(paramContext);
   }
   
   public void a()
@@ -195,14 +195,14 @@ public class LockPatternVerifyView
   public void b(List<LockPatternView.a> paramList)
   {
     paramList = this.k.getPatternString();
-    if (cd.a().a(paramList))
+    if (ce.a().a(paramList))
     {
-      RqdApplication.i();
-      RqdApplication.d();
-      a(2131493252, false);
+      RqdApplication.k();
+      RqdApplication.f();
+      a(2131493253, false);
       this.k.b();
       d();
-      cd.a().a(this.j, 0);
+      ce.a().a(this.j, 0);
       return;
     }
     paramList = this.r;
@@ -213,7 +213,7 @@ public class LockPatternVerifyView
     int i1 = this.n;
     if (i1 >= 4)
     {
-      cd.a().a(this.j, this.n + 1);
+      ce.a().a(this.j, this.n + 1);
       this.k.a();
       this.o.a(false);
       return;
@@ -221,12 +221,12 @@ public class LockPatternVerifyView
     this.n = (i1 + 1);
     this.k.setDisplayMode(LockPatternView.DisplayMode.Wrong);
     paramList = new StringBuilder();
-    paramList.append(this.j.getString(2131493254));
+    paramList.append(this.j.getString(2131493255));
     paramList.append(5 - this.n);
     paramList.append("次！");
     a(paramList.toString());
     this.k.b();
-    cd.a().a(this.j, this.n);
+    ce.a().a(this.j, this.n);
     this.k.postDelayed(this.a, 500L);
   }
   
@@ -361,7 +361,7 @@ public class LockPatternVerifyView
           LockPatternVerifyView.a.a(LockPatternVerifyView.a.this).setVisibility(4);
           LockPatternVerifyView.a.b(LockPatternVerifyView.a.this).startAnimation(LockPatternVerifyView.g(LockPatternVerifyView.this));
           LockPatternVerifyView.a.c(LockPatternVerifyView.a.this).startAnimation(LockPatternVerifyView.i(LockPatternVerifyView.this));
-          ce.a(RqdApplication.l()).a();
+          cf.a(RqdApplication.n()).a();
         }
         
         public void onAnimationRepeat(Animation paramAnonymousAnimation) {}

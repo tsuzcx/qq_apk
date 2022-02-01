@@ -30,10 +30,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.token.bw;
-import com.tencent.token.ce;
+import com.tencent.token.bx;
+import com.tencent.token.cf;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cr;
+import com.tencent.token.cs;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.ui.IndexActivity;
 import com.tencent.token.utils.l;
@@ -131,8 +131,8 @@ public class GameLoginSndConfirmView
       return;
     }
     f();
-    this.u = (paramCallbackPushStruct.expirtTime + 1 - bw.a(RqdApplication.l()).c());
-    this.a.setText(2131493231);
+    this.u = (paramCallbackPushStruct.expirtTime + 1 - bx.a(RqdApplication.n()).c());
+    this.a.setText(2131493232);
     if (paramCallbackPushStruct.player.length() > 10)
     {
       localObject1 = new StringBuilder();
@@ -156,29 +156,29 @@ public class GameLoginSndConfirmView
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append(l.a(paramCallbackPushStruct.uin));
     ((StringBuilder)localObject1).append((String)localObject2);
-    ((StringBuilder)localObject1).append(this.g.getResources().getString(2131493219));
+    ((StringBuilder)localObject1).append(this.g.getResources().getString(2131493220));
     ((StringBuilder)localObject1).append("<font color=#df642c>");
     ((StringBuilder)localObject1).append(paramCallbackPushStruct.gameName);
     ((StringBuilder)localObject1).append("-");
     ((StringBuilder)localObject1).append(paramCallbackPushStruct.world);
     ((StringBuilder)localObject1).append("</font>");
-    ((StringBuilder)localObject1).append(this.g.getResources().getString(2131493220));
+    ((StringBuilder)localObject1).append(this.g.getResources().getString(2131493221));
     localObject1 = new StringBuffer(((StringBuilder)localObject1).toString());
     if (paramCallbackPushStruct.schemeFlag == 2) {
       ((StringBuffer)localObject1).append("。");
     } else {
-      ((StringBuffer)localObject1).append(this.g.getString(2131493221));
+      ((StringBuffer)localObject1).append(this.g.getString(2131493222));
     }
     this.b.setText(Html.fromHtml(((StringBuffer)localObject1).toString()));
     localObject1 = this.d;
     localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(getResources().getString(2131493217));
+    ((StringBuilder)localObject2).append(getResources().getString(2131493218));
     ((StringBuilder)localObject2).append("(");
     ((StringBuilder)localObject2).append(this.u);
     ((StringBuilder)localObject2).append(")");
     ((Button)localObject1).setText(((StringBuilder)localObject2).toString());
-    this.e.setText(getResources().getString(2131493228));
-    paramCallbackPushStruct = cr.a().d(Long.parseLong(paramCallbackPushStruct.uin));
+    this.e.setText(getResources().getString(2131493229));
+    paramCallbackPushStruct = cs.a().d(Long.parseLong(paramCallbackPushStruct.uin));
     if (paramCallbackPushStruct != null)
     {
       localObject1 = this.f;
@@ -207,26 +207,26 @@ public class GameLoginSndConfirmView
       this.h = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
       this.i = this.h.inflate(2131296320, null);
       this.i.setVisibility(4);
-      this.j = this.i.findViewById(2131166258);
-      this.k = this.i.findViewById(2131166245);
-      this.l = this.i.findViewById(2131166259);
-      this.m = this.i.findViewById(2131166246);
+      this.j = this.i.findViewById(2131166260);
+      this.k = this.i.findViewById(2131166247);
+      this.l = this.i.findViewById(2131166261);
+      this.m = this.i.findViewById(2131166248);
       this.n = m.a(this.g.getResources(), 2131099827);
       this.o = m.a(this.g.getResources(), 2131099826);
       if (this.n != null) {
-        ((LinearLayout)this.i.findViewById(2131166239)).setBackgroundDrawable(new BitmapDrawable(this.n));
+        ((LinearLayout)this.i.findViewById(2131166241)).setBackgroundDrawable(new BitmapDrawable(this.n));
       }
       if (this.o != null)
       {
-        ((LinearLayout)this.i.findViewById(2131166240)).setBackgroundDrawable(new BitmapDrawable(this.o));
-        ((LinearLayout)this.i.findViewById(2131166241)).setBackgroundDrawable(new BitmapDrawable(this.o));
+        ((LinearLayout)this.i.findViewById(2131166242)).setBackgroundDrawable(new BitmapDrawable(this.o));
+        ((LinearLayout)this.i.findViewById(2131166243)).setBackgroundDrawable(new BitmapDrawable(this.o));
       }
-      this.a = ((TextView)this.i.findViewById(2131165754));
-      this.b = ((TextView)this.i.findViewById(2131165742));
-      this.f = ((ImageView)this.i.findViewById(2131165745));
-      this.d = ((Button)this.i.findViewById(2131165741));
-      this.e = ((Button)this.i.findViewById(2131165751));
-      this.c = ((TextView)this.i.findViewById(2131165757));
+      this.a = ((TextView)this.i.findViewById(2131165756));
+      this.b = ((TextView)this.i.findViewById(2131165744));
+      this.f = ((ImageView)this.i.findViewById(2131165747));
+      this.d = ((Button)this.i.findViewById(2131165743));
+      this.e = ((Button)this.i.findViewById(2131165753));
+      this.c = ((TextView)this.i.findViewById(2131165759));
       this.d.setOnClickListener(new View.OnClickListener()
       {
         public void onClick(View paramAnonymousView)
@@ -250,7 +250,7 @@ public class GameLoginSndConfirmView
   public void b()
   {
     this.x.post(new b(this.j, this.k, this.l, this.m));
-    ce.a(RqdApplication.l()).a();
+    cf.a(RqdApplication.n()).a();
   }
   
   public void c()
@@ -281,7 +281,7 @@ public class GameLoginSndConfirmView
     }
     Object localObject = this.d;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(getResources().getString(2131493217));
+    localStringBuilder.append(getResources().getString(2131493218));
     localStringBuilder.append("(");
     localStringBuilder.append(this.u);
     localStringBuilder.append(")");

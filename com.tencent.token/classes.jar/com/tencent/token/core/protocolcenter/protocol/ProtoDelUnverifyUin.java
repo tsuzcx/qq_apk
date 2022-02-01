@@ -1,8 +1,8 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
-import com.tencent.token.ca;
+import com.tencent.token.cb;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
 import com.tencent.token.global.g;
@@ -15,14 +15,14 @@ public class ProtoDelUnverifyUin
 {
   private String d;
   
-  public static void a(do paramdo, long paramLong)
+  public static void a(dp paramdp, long paramLong)
   {
-    paramdo.c.put("param.realuin", Long.valueOf(paramLong));
+    paramdp.c.put("param.realuin", Long.valueOf(paramLong));
   }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     Object localObject = l.a(new Object[] { "uin", this.d });
     if ((str != null) && (localObject != null))
     {
@@ -42,11 +42,11 @@ public class ProtoDelUnverifyUin
     return null;
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(paramdo.c.get("param.realuin"));
+    localStringBuilder.append(paramdp.c.get("param.realuin"));
     this.d = localStringBuilder.toString();
   }
   

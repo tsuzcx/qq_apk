@@ -1,13 +1,13 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.ca;
 import com.tencent.token.cb;
 import com.tencent.token.cc;
+import com.tencent.token.cd;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.cr;
-import com.tencent.token.do;
+import com.tencent.token.cs;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -23,25 +23,25 @@ public class ProtoDoWtLogin
   private byte[] e;
   private int f;
   
-  public static void a(do paramdo, String paramString, byte[] paramArrayOfByte, int paramInt)
+  public static void a(dp paramdp, String paramString, byte[] paramArrayOfByte, int paramInt)
   {
-    paramdo.c.put("param.uin.wtlogin", paramString);
-    paramdo.c.put("param.wtlogin.a2", paramArrayOfByte);
-    paramdo.c.put("param.wtlogin.type", Integer.valueOf(paramInt));
+    paramdp.c.put("param.uin.wtlogin", paramString);
+    paramdp.c.put("param.wtlogin.a2", paramArrayOfByte);
+    paramdp.c.put("param.wtlogin.type", Integer.valueOf(paramInt));
   }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     if (str == null)
     {
       this.a.b(104);
       return null;
     }
-    int i = cb.a + 1;
-    cb.a = i;
+    int i = cc.a + 1;
+    cc.a = i;
     this.c = i;
-    Object localObject = l.a(new Object[] { "uin", this.d, "wtlogin_sig", l.a(this.e), "wtlogin_type", Integer.valueOf(this.f), "seq_id", Integer.valueOf(this.c), "op_time", Integer.valueOf((int)(cc.c().s() / 1000L)) });
+    Object localObject = l.a(new Object[] { "uin", this.d, "wtlogin_sig", l.a(this.e), "wtlogin_type", Integer.valueOf(this.f), "seq_id", Integer.valueOf(this.c), "op_time", Integer.valueOf((int)(cd.c().s() / 1000L)) });
     if (localObject == null)
     {
       this.a.b(10000);
@@ -60,11 +60,11 @@ public class ProtoDoWtLogin
     return ((StringBuilder)localObject).toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.d = ((String)paramdo.c.get("param.uin.wtlogin"));
-    this.e = ((byte[])paramdo.c.get("param.wtlogin.a2"));
-    this.f = ((Integer)paramdo.c.get("param.wtlogin.type")).intValue();
+    this.d = ((String)paramdp.c.get("param.uin.wtlogin"));
+    this.e = ((byte[])paramdp.c.get("param.wtlogin.a2"));
+    this.f = ((Integer)paramdp.c.get("param.wtlogin.type")).intValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -92,7 +92,7 @@ public class ProtoDoWtLogin
     try
     {
       long l2 = Long.parseLong(this.d);
-      localObject = cr.a().d(l2);
+      localObject = cs.a().d(l2);
       if (localObject != null)
       {
         ((QQUser)localObject).mUin = l1;
@@ -100,7 +100,7 @@ public class ProtoDoWtLogin
       }
       this.b.c.put("param.uinhash", Long.valueOf(l1));
       this.b.c.put("param.wtlogin.a2", this.e);
-      cr.a().e(l2);
+      cs.a().e(l2);
       this.a.c();
       return;
     }
@@ -116,7 +116,7 @@ public class ProtoDoWtLogin
     ((StringBuilder)localObject).append("parseJSON error decodeData=");
     ((StringBuilder)localObject).append(paramJSONObject);
     g.c(((StringBuilder)localObject).toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
 }
 

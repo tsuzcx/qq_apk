@@ -3,9 +3,9 @@ package com.tencent.token.core.protocolcenter.protocol;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.ca;
+import com.tencent.token.cb;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -21,14 +21,14 @@ public class ProtoGetDomain
   private long d;
   private JSONArray e;
   
-  public static void a(do paramdo, long paramLong)
+  public static void a(dp paramdp, long paramLong)
   {
-    paramdo.c.put("param.realuin", Long.valueOf(paramLong));
+    paramdp.c.put("param.realuin", Long.valueOf(paramLong));
   }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     if (str == null)
     {
       this.a.b(104);
@@ -53,9 +53,9 @@ public class ProtoGetDomain
     return ((StringBuilder)localObject).toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.d = ((Long)paramdo.c.get("param.realuin")).longValue();
+    this.d = ((Long)paramdp.c.get("param.realuin")).longValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -82,7 +82,7 @@ public class ProtoGetDomain
     localStringBuilder.append("parseJSON error decodeData=");
     localStringBuilder.append(paramJSONObject);
     g.c(localStringBuilder.toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
   
   protected void b()

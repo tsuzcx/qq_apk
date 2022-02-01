@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.SystemProperties;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import com.tencent.service.update.e;
 import java.util.Locale;
 
 public class bl
@@ -53,6 +54,9 @@ public class bl
   
   public static String b()
   {
+    if (!e.a().b()) {
+      return "UNKNOWN";
+    }
     String str2 = Build.MANUFACTURER;
     String str1 = str2;
     if (str2 == null) {
@@ -63,6 +67,9 @@ public class bl
   
   public static String c()
   {
+    if (!e.a().b()) {
+      return "UNKNOWN";
+    }
     Object localObject2 = Build.BRAND;
     Object localObject1;
     if (!"BBK".equalsIgnoreCase((String)localObject2))
@@ -88,23 +95,27 @@ public class bl
   
   public static String d()
   {
+    if (!e.a().b()) {
+      return null;
+    }
+    label274:
     String str1;
-    for (Object localObject = null;; str1 = null)
+    for (;;)
     {
       try
       {
-        String str2 = Build.MANUFACTURER;
-        if (TextUtils.isEmpty(str2)) {
+        Object localObject = Build.MANUFACTURER;
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
           return null;
         }
-        str2 = str2.toLowerCase(Locale.ENGLISH);
-        if (str2.contains("huawei")) {
+        localObject = ((String)localObject).toLowerCase(Locale.ENGLISH);
+        if (((String)localObject).contains("huawei")) {
           return a("ro.build.version.emui");
         }
-        if (str2.contains("xiaomi")) {
+        if (((String)localObject).contains("xiaomi")) {
           return a("ro.miui.ui.version.name");
         }
-        if (str2.contains("gionee"))
+        if (((String)localObject).contains("gionee"))
         {
           localObject = a("ro.gn.extvernumber");
           if (TextUtils.isEmpty((CharSequence)localObject)) {
@@ -113,10 +124,10 @@ public class bl
         }
         else
         {
-          if (str2.contains("vivo"))
+          if (((String)localObject).contains("vivo"))
           {
             localObject = a("ro.vivo.os.name");
-            str2 = a("ro.vivo.os.version");
+            String str2 = a("ro.vivo.os.version");
             if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(str2)))
             {
               StringBuilder localStringBuilder = new StringBuilder();
@@ -127,32 +138,37 @@ public class bl
             }
             return a("ro.vivo.os.build.display.id");
           }
-          if (str2.contains("meizu")) {
+          if (((String)localObject).contains("meizu")) {
             return a("ro.build.display.id");
           }
-          if (str2.contains("lenovo"))
+          if (((String)localObject).contains("lenovo"))
           {
             localObject = a("ro.lenovo.lvp.version");
             if (TextUtils.isEmpty((CharSequence)localObject)) {
-              continue;
+              break label281;
             }
             localObject = ((String)localObject).split("_");
-            if ((localObject == null) || (localObject.length <= 0)) {
-              continue;
+            if (localObject == null) {
+              break label281;
             }
-            localObject = localObject[0];
+            if (localObject.length > 0) {
+              break label274;
+            }
+            break label281;
             if (!TextUtils.isEmpty((CharSequence)localObject)) {
               break;
             }
             return a("ro.build.version.incremental");
           }
-          if (str2.contains("letv")) {
+          if (((String)localObject).contains("letv")) {
             return a("ro.letv.eui");
           }
-          if (str2.contains("oppo")) {
+          if (((String)localObject).contains("oppo"))
+          {
             localObject = a("ro.build.version.opporom");
+            return localObject;
           }
-          return localObject;
+          return null;
         }
       }
       catch (Throwable localThrowable)
@@ -160,6 +176,10 @@ public class bl
         return null;
       }
       return localThrowable;
+      str1 = localThrowable[0];
+      continue;
+      label281:
+      str1 = null;
     }
     return str1;
   }

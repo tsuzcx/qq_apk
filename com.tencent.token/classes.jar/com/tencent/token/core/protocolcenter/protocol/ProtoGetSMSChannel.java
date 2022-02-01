@@ -1,10 +1,10 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.ca;
-import com.tencent.token.cc;
+import com.tencent.token.cb;
+import com.tencent.token.cd;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -25,25 +25,25 @@ public class ProtoGetSMSChannel
   private String j;
   private int k;
   
-  public static void a(do paramdo, long paramLong, String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3)
+  public static void a(dp paramdp, long paramLong, String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3)
   {
-    paramdo.c.put("param.realuin", Long.valueOf(paramLong));
-    paramdo.c.put("param.mbmobile.mobile", paramString1);
-    paramdo.c.put("param.mbmoible.ismobile", Integer.valueOf(paramInt1));
-    paramdo.c.put("param.scene.id", Integer.valueOf(paramInt2));
-    paramdo.c.put("param.mbmoible.areacode", paramString2);
-    paramdo.j = paramInt3;
+    paramdp.c.put("param.realuin", Long.valueOf(paramLong));
+    paramdp.c.put("param.mbmobile.mobile", paramString1);
+    paramdp.c.put("param.mbmoible.ismobile", Integer.valueOf(paramInt1));
+    paramdp.c.put("param.scene.id", Integer.valueOf(paramInt2));
+    paramdp.c.put("param.mbmoible.areacode", paramString2);
+    paramdp.j = paramInt3;
   }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     if (str == null)
     {
       this.a.b(104);
       return null;
     }
-    Object localObject = l.a(new Object[] { "seq_id", Integer.valueOf(this.k), "op_time", Long.valueOf(cc.c().s() / 1000L), "uin", Long.valueOf(this.f), "mobile", this.g, "area_code", this.j, "scene", Integer.valueOf(this.i), "is_mb_mobile", Integer.valueOf(this.h) });
+    Object localObject = l.a(new Object[] { "seq_id", Integer.valueOf(this.k), "op_time", Long.valueOf(cd.c().s() / 1000L), "uin", Long.valueOf(this.f), "mobile", this.g, "area_code", this.j, "scene", Integer.valueOf(this.i), "is_mb_mobile", Integer.valueOf(this.h) });
     if (localObject == null)
     {
       this.a.a(10000, "encrypt data failed");
@@ -62,14 +62,14 @@ public class ProtoGetSMSChannel
     return ((StringBuilder)localObject).toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.f = ((Long)paramdo.c.get("param.realuin")).longValue();
-    this.g = ((String)paramdo.c.get("param.mbmobile.mobile"));
-    this.h = ((Integer)paramdo.c.get("param.mbmoible.ismobile")).intValue();
-    this.i = ((Integer)paramdo.c.get("param.scene.id")).intValue();
-    this.j = ((String)paramdo.c.get("param.mbmoible.areacode"));
-    this.k = paramdo.j;
+    this.f = ((Long)paramdp.c.get("param.realuin")).longValue();
+    this.g = ((String)paramdp.c.get("param.mbmobile.mobile"));
+    this.h = ((Integer)paramdp.c.get("param.mbmoible.ismobile")).intValue();
+    this.i = ((Integer)paramdp.c.get("param.scene.id")).intValue();
+    this.j = ((String)paramdp.c.get("param.mbmoible.areacode"));
+    this.k = paramdp.j;
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -113,7 +113,7 @@ public class ProtoGetSMSChannel
       localStringBuilder.append("parseJSON error decodeData=");
       localStringBuilder.append(paramJSONObject);
       g.c(localStringBuilder.toString());
-      a(10022, RqdApplication.l().getString(2131493067));
+      a(10022, RqdApplication.n().getString(2131493068));
       return;
     }
     catch (Exception paramJSONObject)

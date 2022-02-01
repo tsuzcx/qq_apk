@@ -12,7 +12,7 @@ public class h
   {
     try
     {
-      SharedPreferences.Editor localEditor = RqdApplication.l().getSharedPreferences("sp_name_global", 0).edit();
+      SharedPreferences.Editor localEditor = RqdApplication.n().getSharedPreferences("sp_name_global", 0).edit();
       if (paramInt == 0) {
         localEditor.putBoolean("scan_tip_next_show", paramBoolean);
       } else {
@@ -34,7 +34,7 @@ public class h
   {
     try
     {
-      Object localObject = RqdApplication.l();
+      Object localObject = RqdApplication.n();
       boolean bool = false;
       localObject = ((Context)localObject).getSharedPreferences("safe_conf_list", 0);
       if (localObject != null) {
@@ -63,7 +63,7 @@ public class h
   {
     try
     {
-      SharedPreferences.Editor localEditor = RqdApplication.l().getSharedPreferences("sp_name_global", 0).edit();
+      SharedPreferences.Editor localEditor = RqdApplication.n().getSharedPreferences("sp_name_global", 0).edit();
       localEditor.putBoolean("utils_red_dot_show", paramBoolean);
       localEditor.commit();
       return;
@@ -81,7 +81,7 @@ public class h
   {
     try
     {
-      SharedPreferences localSharedPreferences = RqdApplication.l().getSharedPreferences("sp_name_global", 0);
+      SharedPreferences localSharedPreferences = RqdApplication.n().getSharedPreferences("sp_name_global", 0);
       if (paramInt == 0) {
         return localSharedPreferences.getBoolean("scan_tip_next_show", true);
       }
@@ -104,7 +104,7 @@ public class h
   {
     try
     {
-      SharedPreferences.Editor localEditor = RqdApplication.l().getSharedPreferences("sp_name_global", 0).edit();
+      SharedPreferences.Editor localEditor = RqdApplication.n().getSharedPreferences("sp_name_global", 0).edit();
       localEditor.putInt("exchangeky_conf_ver", paramInt);
       localEditor.commit();
       return;
@@ -122,7 +122,7 @@ public class h
   {
     try
     {
-      SharedPreferences.Editor localEditor = RqdApplication.l().getSharedPreferences("sp_name_global", 0).edit();
+      SharedPreferences.Editor localEditor = RqdApplication.n().getSharedPreferences("sp_name_global", 0).edit();
       localEditor.putBoolean("utils_account_lock_tip", paramBoolean);
       localEditor.commit();
       return;
@@ -140,7 +140,7 @@ public class h
   {
     try
     {
-      int i = RqdApplication.l().getSharedPreferences("sp_name_global", 0).getInt("exchangeky_conf_ver", 0);
+      int i = RqdApplication.n().getSharedPreferences("sp_name_global", 0).getInt("exchangeky_conf_ver", 0);
       return i;
     }
     catch (Exception localException)
@@ -157,7 +157,7 @@ public class h
   {
     try
     {
-      boolean bool = RqdApplication.l().getSharedPreferences("sp_name_global", 0).getBoolean("utils_red_dot_show", false);
+      boolean bool = RqdApplication.n().getSharedPreferences("sp_name_global", 0).getBoolean("utils_red_dot_show", false);
       return bool;
     }
     catch (Exception localException)
@@ -174,7 +174,7 @@ public class h
   {
     try
     {
-      boolean bool = RqdApplication.l().getSharedPreferences("sp_name_global", 0).getBoolean("utils_account_lock_tip", false);
+      boolean bool = RqdApplication.n().getSharedPreferences("sp_name_global", 0).getBoolean("utils_account_lock_tip", false);
       return bool;
     }
     catch (Exception localException)

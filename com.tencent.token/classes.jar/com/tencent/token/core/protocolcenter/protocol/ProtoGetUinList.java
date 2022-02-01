@@ -3,12 +3,12 @@ package com.tencent.token.core.protocolcenter.protocol;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
-import com.tencent.token.bv;
-import com.tencent.token.ca;
-import com.tencent.token.cc;
+import com.tencent.token.bw;
+import com.tencent.token.cb;
+import com.tencent.token.cd;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.cr;
-import com.tencent.token.do;
+import com.tencent.token.cs;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -20,15 +20,15 @@ import org.json.JSONObject;
 public class ProtoGetUinList
   extends d
 {
-  cc d = cc.c();
-  cr e = cr.a();
+  cd d = cd.c();
+  cs e = cs.a();
   
   protected String a()
   {
     this.d.m();
     String str = this.d.o();
     str = this.e.a(this.d.k(), str);
-    Object localObject = ca.a().b();
+    Object localObject = cb.a().b();
     if (localObject == null)
     {
       this.a.b(104);
@@ -49,7 +49,7 @@ public class ProtoGetUinList
     return str;
   }
   
-  protected void a(do paramdo) {}
+  protected void a(dp paramdp) {}
   
   protected void a(JSONObject paramJSONObject)
   {
@@ -72,7 +72,7 @@ public class ProtoGetUinList
       if ((i == 122) || (i == 205)) {
         ProtoModSeed.a(true);
       }
-      cr.a().n();
+      cs.a().n();
       return;
     }
     paramJSONObject = l.c(paramJSONObject.getString("data"));
@@ -86,7 +86,7 @@ public class ProtoGetUinList
       try
       {
         long l = paramJSONObject.getLong("seed_expire_time");
-        cc.c().c(l);
+        cd.c().c(l);
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("@getuin seed_expire_time:");
         ((StringBuilder)localObject1).append(l);
@@ -104,12 +104,12 @@ public class ProtoGetUinList
           localObject2 = l.d((String)localObject2);
           if (localObject2 != null)
           {
-            cc.c().e();
-            cc.c().a((byte[])localObject2);
-            cc.c().v();
-            cc.c().i();
+            cd.c().e();
+            cd.c().a((byte[])localObject2);
+            cd.c().v();
+            cd.c().i();
             ProtoModSeed.a(false);
-            bv.a().a(null);
+            bw.a().a(null);
           }
           TmsLog.i("mod_seed", "decode seed & compute seed @getuin sucess.");
         }
@@ -140,7 +140,7 @@ public class ProtoGetUinList
     localStringBuilder1.append("parseJSON error decodeData=");
     localStringBuilder1.append(paramJSONObject);
     g.c(localStringBuilder1.toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
 }
 

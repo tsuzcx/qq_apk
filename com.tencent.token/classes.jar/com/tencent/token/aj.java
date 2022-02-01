@@ -1,18 +1,14 @@
 package com.tencent.token;
 
-public final class aj
+public abstract interface aj
 {
-  private static ai a;
+  public abstract ai a(Runnable paramRunnable);
   
-  public static ai a()
-  {
-    return a;
-  }
+  public abstract ai b(Runnable paramRunnable);
   
-  public static void a(ai paramai)
-  {
-    a = paramai;
-  }
+  public abstract ai c(Runnable paramRunnable);
+  
+  public abstract ai d(Runnable paramRunnable);
 }
 
 

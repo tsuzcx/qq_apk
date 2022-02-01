@@ -20,11 +20,11 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import com.tencent.token.bv;
-import com.tencent.token.cb;
+import com.tencent.token.bw;
 import com.tencent.token.cc;
+import com.tencent.token.cd;
 import com.tencent.token.core.bean.QueryCaptchaResult;
-import com.tencent.token.cr;
+import com.tencent.token.cs;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
 import com.tencent.token.ui.base.ProDialogWithShutDown;
@@ -143,7 +143,7 @@ public class WelcomeActivity
         }
         else if (paramAnonymousMessage.arg1 == 0)
         {
-          paramAnonymousMessage = cc.c();
+          paramAnonymousMessage = cd.c();
           paramAnonymousMessage.i();
           paramAnonymousMessage.n();
         }
@@ -201,13 +201,13 @@ public class WelcomeActivity
     {
       public e a(String... paramAnonymousVarArgs)
       {
-        return cr.a().s();
+        return cs.a().s();
       }
       
       public void a(e paramAnonymouse)
       {
         if (paramAnonymouse.b()) {
-          bv.a().a(0L, 3, WelcomeActivity.this.mHandler);
+          bw.a().a(0L, 3, WelcomeActivity.this.mHandler);
         }
       }
     };
@@ -216,7 +216,7 @@ public class WelcomeActivity
   
   private void init()
   {
-    cc.b(c.h());
+    cd.b(c.h());
     try
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -246,14 +246,14 @@ public class WelcomeActivity
   
   private void nextActivity()
   {
-    Object localObject = cc.c();
+    Object localObject = cd.c();
     UserTask localUserTask = this.mActiveTask;
     if ((localUserTask != null) && (localUserTask.b() != UserTask.Status.FINISHED)) {
       this.mActiveTask.a(true);
     }
-    if (!((cc)localObject).g())
+    if (!((cd)localObject).g())
     {
-      if (cr.a().d() == 0)
+      if (cs.a().d() == 0)
       {
         localObject = new Intent(this, IndexActivity.class);
         ((Intent)localObject).putExtra("index_from", 16);
@@ -263,7 +263,7 @@ public class WelcomeActivity
       }
       localObject = new Intent(this, IndexActivity.class);
       if (this.mFirstInstall) {
-        if (cr.a().e() != null) {
+        if (cs.a().e() != null) {
           ((Intent)localObject).putExtra("index_from", 17);
         } else {
           ((Intent)localObject).putExtra("index_from", 16);
@@ -281,7 +281,7 @@ public class WelcomeActivity
   
   private void sendActiveClient()
   {
-    bv.a().c(this.mHandler);
+    bw.a().c(this.mHandler);
   }
   
   public void dismissDialog()
@@ -357,7 +357,7 @@ public class WelcomeActivity
       localg.c();
     }
     this.mPageCurlView = null;
-    cb.a().a(getClass().getName());
+    cc.a().a(getClass().getName());
     super.onDestroy();
   }
   

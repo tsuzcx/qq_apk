@@ -51,8 +51,8 @@ public class SelectCountryCodeActivity
   {
     this.characterParser = b.a();
     this.pinyinComparator = new f();
-    this.sortListView = ((ListView)findViewById(2131165652));
-    this.sideBar = ((RightLetterView)findViewById(2131165912));
+    this.sortListView = ((ListView)findViewById(2131165654));
+    this.sideBar = ((RightLetterView)findViewById(2131165914));
     this.sideBar.setOnTouchingLetterChangedListener(new a(null));
     this.sourceDateList = filledData(d.b);
     List localList = filledData(d.c);

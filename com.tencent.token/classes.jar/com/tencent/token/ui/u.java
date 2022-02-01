@@ -3,11 +3,11 @@ package com.tencent.token.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
-import com.tencent.token.cb;
+import com.tencent.token.cc;
 import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
 import com.tencent.token.core.bean.DeterminVerifyFactorsResult.VerifyTypeItem;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cr;
+import com.tencent.token.cs;
 import com.tmsdk.TMSDKContext;
 import java.util.List;
 
@@ -68,7 +68,7 @@ public class u
     }
     if (paramDeterminVerifyFactorsResult.b())
     {
-      cb.a().b(paramQQUser.mRealUin, paramVerifyTypeItem.a(), "", "", paramHandler);
+      cc.a().b(paramQQUser.mRealUin, paramVerifyTypeItem.a(), "", "", paramHandler);
       this.b = null;
       return;
     }
@@ -130,7 +130,7 @@ public class u
         return;
       }
       this.b = paramActivity;
-      Object localObject1 = cr.a().e();
+      Object localObject1 = cs.a().e();
       if (paramDeterminVerifyFactorsResult.c() == 2) {
         localObject1 = this.d;
       }
@@ -158,7 +158,7 @@ public class u
       if (paramDeterminVerifyFactorsResult == null) {
         return;
       }
-      QQUser localQQUser = cr.a().e();
+      QQUser localQQUser = cs.a().e();
       if (paramDeterminVerifyFactorsResult.c() == 2) {
         localQQUser = this.d;
       }
@@ -177,7 +177,7 @@ public class u
       if (paramDeterminVerifyFactorsResult == null) {
         return;
       }
-      QQUser localQQUser = cr.a().e();
+      QQUser localQQUser = cs.a().e();
       if (paramDeterminVerifyFactorsResult.c() == 2) {
         localQQUser = this.d;
       }

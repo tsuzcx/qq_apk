@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.tencent.halley.downloader.DownloaderTaskStatus;
 import com.tencent.service.a.a;
 import com.tencent.service.a.c;
-import com.tencent.token.ed;
+import com.tencent.token.ef;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.ui.qqpim.ProgressTextView;
 import com.tencent.token.upload.i;
@@ -128,15 +128,15 @@ public class DownloadAppActivity
     requestWindowFeature(1);
     setContentView(2131296296);
     m.a(this, this.mTitleBar, 2130968771);
-    this.mPageTitle = ((TextView)findViewById(2131165801));
-    this.pbProgress = ((ProgressBar)findViewById(2131165545));
-    this.flProgress = ((FrameLayout)findViewById(2131165544));
-    this.tvProgress = ((ProgressTextView)findViewById(2131165546));
-    this.descriptionText = ((TextView)findViewById(2131166153));
-    this.subDescriptionText = ((TextView)findViewById(2131166155));
-    this.centerImage = ((ImageView)findViewById(2131165621));
-    this.ivBack = ((ImageView)findViewById(2131165543));
-    this.tvDownload = ((TextView)findViewById(2131166154));
+    this.mPageTitle = ((TextView)findViewById(2131165803));
+    this.pbProgress = ((ProgressBar)findViewById(2131165547));
+    this.flProgress = ((FrameLayout)findViewById(2131165546));
+    this.tvProgress = ((ProgressTextView)findViewById(2131165548));
+    this.descriptionText = ((TextView)findViewById(2131166155));
+    this.subDescriptionText = ((TextView)findViewById(2131166157));
+    this.centerImage = ((ImageView)findViewById(2131165623));
+    this.ivBack = ((ImageView)findViewById(2131165545));
+    this.tvDownload = ((TextView)findViewById(2131166156));
     this.tvDownload.setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
@@ -161,7 +161,7 @@ public class DownloadAppActivity
     paramBundle = getIntent().getStringExtra("downloadurl");
     this.mDownloadInfo = com.tencent.service.a.a().a(paramBundle);
     if (this.mDownloadInfo == null) {
-      this.mDownloadInfo = ed.a(getIntent().getStringExtra("pkg"), paramBundle);
+      this.mDownloadInfo = ef.a(getIntent().getStringExtra("pkg"), paramBundle);
     }
     if (com.tencent.service.a.a().a(this.mDownloadInfo)) {
       this.mDownloadInfo.f = DownloaderTaskStatus.COMPLETE;
@@ -169,7 +169,7 @@ public class DownloadAppActivity
     updateUIFromBundle();
     refreshUIByState();
     com.tencent.service.a.a().a(this.listener);
-    if (i.e(RqdApplication.l()) == 1) {
+    if (i.e(RqdApplication.n()) == 1) {
       this.mHandler.postDelayed(new Runnable()
       {
         public void run()
@@ -205,12 +205,12 @@ public class DownloadAppActivity
     case 6: 
       this.tvDownload.setVisibility(0);
       this.flProgress.setVisibility(4);
-      this.tvDownload.setText(getResources().getText(2131493209));
+      this.tvDownload.setText(getResources().getText(2131493210));
       return;
     case 5: 
       this.tvDownload.setVisibility(0);
       this.flProgress.setVisibility(4);
-      this.tvDownload.setText(getResources().getText(2131493213));
+      this.tvDownload.setText(getResources().getText(2131493214));
       return;
     case 4: 
       this.tvDownload.setVisibility(0);

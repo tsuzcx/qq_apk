@@ -19,7 +19,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.bz;
+import com.tencent.token.ca;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.g;
 import com.tencent.token.ui.BaseActivity;
@@ -31,7 +31,7 @@ public class WtloginCaptchaDialog
   extends Dialog
 {
   private static Handler g;
-  bz a;
+  ca a;
   Handler b = new Handler()
   {
     public void handleMessage(Message paramAnonymousMessage)
@@ -89,17 +89,17 @@ public class WtloginCaptchaDialog
           }
           if (i == -1000)
           {
-            WtloginCaptchaDialog.this.a(2131493102);
+            WtloginCaptchaDialog.this.a(2131493103);
             return;
           }
           if (i == 8192)
           {
-            WtloginCaptchaDialog.this.a(2131493549);
+            WtloginCaptchaDialog.this.a(2131493550);
             return;
           }
           if (i == 2)
           {
-            WtloginCaptchaDialog.this.a(2131493552);
+            WtloginCaptchaDialog.this.a(2131493553);
             WtloginCaptchaDialog.this.a.a(WtloginCaptchaDialog.b(WtloginCaptchaDialog.this), WtloginCaptchaDialog.this.b);
             WtloginCaptchaDialog.c(WtloginCaptchaDialog.this).setVisibility(0);
             WtloginCaptchaDialog.d(WtloginCaptchaDialog.this).setText("");
@@ -107,7 +107,7 @@ public class WtloginCaptchaDialog
           }
           if (i == 1)
           {
-            WtloginCaptchaDialog.this.a(2131493547);
+            WtloginCaptchaDialog.this.a(2131493548);
             WtloginCaptchaDialog.this.dismiss();
             WtloginCaptchaDialog.a(null);
             WtloginCaptchaDialog.a(WtloginCaptchaDialog.this, null);
@@ -119,13 +119,13 @@ public class WtloginCaptchaDialog
             {
               localObject = WtloginCaptchaDialog.this;
               localStringBuilder = new StringBuilder();
-              localStringBuilder.append(WtloginCaptchaDialog.a(WtloginCaptchaDialog.this).getResources().getString(2131493553));
+              localStringBuilder.append(WtloginCaptchaDialog.a(WtloginCaptchaDialog.this).getResources().getString(2131493554));
               localStringBuilder.append(":");
               localStringBuilder.append(paramAnonymousMessage.getData().getString("loginerror"));
               ((WtloginCaptchaDialog)localObject).a(localStringBuilder.toString());
               return;
             }
-            WtloginCaptchaDialog.this.a(2131493553);
+            WtloginCaptchaDialog.this.a(2131493554);
             return;
           }
           WtloginCaptchaDialog.this.dismiss();
@@ -136,13 +136,13 @@ public class WtloginCaptchaDialog
         {
           localObject = WtloginCaptchaDialog.this;
           localStringBuilder = new StringBuilder();
-          localStringBuilder.append(WtloginCaptchaDialog.a(WtloginCaptchaDialog.this).getResources().getString(2131493553));
+          localStringBuilder.append(WtloginCaptchaDialog.a(WtloginCaptchaDialog.this).getResources().getString(2131493554));
           localStringBuilder.append(":");
           localStringBuilder.append(paramAnonymousMessage.getData().getString("exception"));
           ((WtloginCaptchaDialog)localObject).a(localStringBuilder.toString());
           return;
         }
-        WtloginCaptchaDialog.this.a(2131493553);
+        WtloginCaptchaDialog.this.a(2131493554);
         return;
       }
     }
@@ -217,19 +217,19 @@ public class WtloginCaptchaDialog
     if ((localActivity != null) && ((localActivity == null) || (!localActivity.isFinishing())))
     {
       super.onCreate(paramBundle);
-      this.a = bz.a(RqdApplication.l());
+      this.a = ca.a(RqdApplication.n());
       setContentView(2131296507);
       paramBundle = getWindow();
       paramBundle.setBackgroundDrawableResource(2131099876);
-      ((ViewGroup.MarginLayoutParams)findViewById(2131165356).getLayoutParams()).width = paramBundle.getWindowManager().getDefaultDisplay().getWidth();
-      this.i = findViewById(2131165824);
-      this.d = ((EditText)findViewById(2131165358));
+      ((ViewGroup.MarginLayoutParams)findViewById(2131165358).getLayoutParams()).width = paramBundle.getWindowManager().getDefaultDisplay().getWidth();
+      this.i = findViewById(2131165826);
+      this.d = ((EditText)findViewById(2131165360));
       paramBundle = this.d;
       if (paramBundle != null) {
         paramBundle.clearFocus();
       }
-      this.h = ((ImageView)findViewById(2131165357));
-      this.f = ((Button)findViewById(2131165360));
+      this.h = ((ImageView)findViewById(2131165359));
+      this.f = ((Button)findViewById(2131165362));
       this.f.setOnClickListener(new View.OnClickListener()
       {
         public void onClick(View paramAnonymousView)
@@ -245,14 +245,14 @@ public class WtloginCaptchaDialog
           {
             ((InputMethodManager)WtloginCaptchaDialog.a(WtloginCaptchaDialog.this).getSystemService("input_method")).hideSoftInputFromWindow(WtloginCaptchaDialog.this.getWindow().peekDecorView().getWindowToken(), 0);
             paramAnonymousView = paramAnonymousView.trim();
-            ((t)WtloginCaptchaDialog.a(WtloginCaptchaDialog.this)).showProDialog(WtloginCaptchaDialog.a(WtloginCaptchaDialog.this), 2131492985, null);
+            ((t)WtloginCaptchaDialog.a(WtloginCaptchaDialog.this)).showProDialog(WtloginCaptchaDialog.a(WtloginCaptchaDialog.this), 2131492986, null);
             WtloginCaptchaDialog.this.a.a(WtloginCaptchaDialog.b(WtloginCaptchaDialog.this), paramAnonymousView.getBytes(), WtloginCaptchaDialog.this.b);
             return;
           }
-          WtloginCaptchaDialog.this.a(2131493031);
+          WtloginCaptchaDialog.this.a(2131493032);
         }
       });
-      this.e = ((TextView)findViewById(2131165355));
+      this.e = ((TextView)findViewById(2131165357));
       this.e.setOnClickListener(new View.OnClickListener()
       {
         public void onClick(View paramAnonymousView)

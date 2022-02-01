@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.token.bt;
+import com.tencent.token.bu;
 
 class l
   extends BaseAdapter
@@ -24,8 +24,8 @@ class l
   {
     this.d = paramLoginMsgReportLocationActivity;
     this.a = LayoutInflater.from(paramLoginMsgReportLocationActivity);
-    this.b = bt.a().d.length;
-    this.c = bt.a().c;
+    this.b = bu.a().d.length;
+    this.c = bu.a().c;
     this.d.checkMenuBtnEnable(this.e);
   }
   
@@ -55,10 +55,10 @@ class l
     {
       paramView = this.a.inflate(2131296369, null);
       paramViewGroup = new a(null);
-      paramViewGroup.a = ((TextView)paramView.findViewById(2131165274));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131165761));
-      paramViewGroup.c = ((RelativeLayout)paramView.findViewById(2131165762));
-      paramViewGroup.d = ((ImageView)paramView.findViewById(2131165965));
+      paramViewGroup.a = ((TextView)paramView.findViewById(2131165276));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131165763));
+      paramViewGroup.c = ((RelativeLayout)paramView.findViewById(2131165764));
+      paramViewGroup.d = ((ImageView)paramView.findViewById(2131165967));
       paramView.setTag(paramViewGroup);
     }
     else
@@ -70,8 +70,8 @@ class l
     }
     paramViewGroup.b.setText(this.c[paramInt]);
     paramViewGroup.a.setVisibility(8);
-    String[] arrayOfString = bt.a().f;
-    int[] arrayOfInt = bt.a().g;
+    String[] arrayOfString = bu.a().f;
+    int[] arrayOfInt = bu.a().g;
     int i = 0;
     while (i < arrayOfInt.length)
     {

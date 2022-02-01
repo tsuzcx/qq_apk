@@ -9,9 +9,9 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.token.cd;
+import com.tencent.token.ce;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cr;
+import com.tencent.token.cs;
 import com.tencent.token.ui.base.FacePwdVerifySelDialog;
 import com.tencent.token.ui.base.SwitchButton;
 import com.tencent.token.utils.m;
@@ -31,10 +31,10 @@ public class FacePwdIndexActivity
   
   private void initView()
   {
-    this.mFacePwdVerifyTipTextView = ((TextView)findViewById(2131165482));
-    this.mDivider = findViewById(2131165443);
-    this.mSwitchVerifySet = ((SwitchButton)findViewById(2131165372));
-    cr.a().a(this.mRegisterFacePwdUserList);
+    this.mFacePwdVerifyTipTextView = ((TextView)findViewById(2131165484));
+    this.mDivider = findViewById(2131165445);
+    this.mSwitchVerifySet = ((SwitchButton)findViewById(2131165374));
+    cs.a().a(this.mRegisterFacePwdUserList);
     if (this.mRegisterFacePwdUserList.size() > 0)
     {
       QQUser localQQUser = m.f();
@@ -97,7 +97,7 @@ public class FacePwdIndexActivity
         FacePwdIndexActivity.this.finish();
       }
     });
-    this.mListView = ((ListView)findViewById(2131165481));
+    this.mListView = ((ListView)findViewById(2131165483));
     this.mAdapter = new g(this, this.mRegisterFacePwdUserList);
     this.mListView.setAdapter(this.mAdapter);
     if (this.mIsChecked)
@@ -114,8 +114,8 @@ public class FacePwdIndexActivity
   
   private void showGesturePwdDialog()
   {
-    if (!cd.a().c()) {
-      showUserDialog(2131493136, getString(2131493133), 2131493135, 2131493134, new DialogInterface.OnClickListener()
+    if (!ce.a().c()) {
+      showUserDialog(2131493137, getString(2131493134), 2131493136, 2131493135, new DialogInterface.OnClickListener()
       {
         public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {

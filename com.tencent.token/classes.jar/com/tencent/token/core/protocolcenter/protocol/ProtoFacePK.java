@@ -4,10 +4,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.ca;
-import com.tencent.token.cc;
+import com.tencent.token.cb;
+import com.tencent.token.cd;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -29,7 +29,7 @@ public class ProtoFacePK
   
   protected String a()
   {
-    if (ca.a().b() == null)
+    if (cb.a().b() == null)
     {
       this.a.b(104);
       return null;
@@ -40,14 +40,14 @@ public class ProtoFacePK
     return localStringBuilder.toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.d = ((Long)paramdo.c.get("param.uinhash")).longValue();
-    this.e = paramdo.j;
-    this.g = ((byte[])paramdo.c.get("param.facedata"));
-    paramdo = paramdo.c.get("param.videopath");
-    if (paramdo != null) {
-      this.f = paramdo.toString();
+    this.d = ((Long)paramdp.c.get("param.uinhash")).longValue();
+    this.e = paramdp.j;
+    this.g = ((byte[])paramdp.c.get("param.facedata"));
+    paramdp = paramdp.c.get("param.videopath");
+    if (paramdp != null) {
+      this.f = paramdp.toString();
     }
   }
   
@@ -85,28 +85,28 @@ public class ProtoFacePK
     localStringBuilder.append("parseJSON error decodeData=");
     localStringBuilder.append(paramJSONObject);
     g.c(localStringBuilder.toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
   
-  public do b(do paramdo)
+  public dp b(dp paramdp)
   {
-    int i = paramdo.j;
-    paramdo.m = 1;
-    paramdo.n = new ContentValues(3);
-    paramdo.n.put("aq_base_sid", ca.a().b());
-    paramdo.n.put("uin", Long.valueOf(this.d));
+    int i = paramdp.j;
+    paramdp.m = 1;
+    paramdp.n = new ContentValues(3);
+    paramdp.n.put("aq_base_sid", cb.a().b());
+    paramdp.n.put("uin", Long.valueOf(this.d));
     String str = b.a(l.c(this.g)).replace('+', '-').replace('=', '_');
-    paramdo.n.put("img_data", str);
-    paramdo.n.put("op_time", Integer.valueOf((int)(cc.c().s() / 1000L)));
-    paramdo.n.put("seq_id", Integer.valueOf(i));
+    paramdp.n.put("img_data", str);
+    paramdp.n.put("op_time", Integer.valueOf((int)(cd.c().s() / 1000L)));
+    paramdp.n.put("seq_id", Integer.valueOf(i));
     str = this.f;
     if (str != null)
     {
       str = b.a(l.c(m.a(str))).replace('+', '-').replace('=', '_');
-      paramdo.n.put("live_video_data", str);
+      paramdp.n.put("live_video_data", str);
     }
     this.g = null;
-    return paramdo;
+    return paramdp;
   }
   
   protected void b()

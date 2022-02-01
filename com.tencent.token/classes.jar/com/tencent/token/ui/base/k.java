@@ -16,12 +16,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.token.bz;
-import com.tencent.token.cb;
+import com.tencent.token.ca;
 import com.tencent.token.cc;
+import com.tencent.token.cd;
 import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cr;
+import com.tencent.token.cs;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.e;
 import com.tencent.token.global.g;
@@ -57,13 +57,13 @@ public class k
           {
             localObject = k.a(k.this);
             localStringBuilder = new StringBuilder();
-            localStringBuilder.append(k.this.getResources().getString(2131493553));
+            localStringBuilder.append(k.this.getResources().getString(2131493554));
             localStringBuilder.append(":");
             localStringBuilder.append(paramAnonymousMessage.getData().getString("exception"));
             ((BaseActivity)localObject).showToast(localStringBuilder.toString());
             return;
           }
-          k.a(k.this).showToast(2131493553);
+          k.a(k.this).showToast(2131493554);
           return;
         case 4097: 
         case 4098: 
@@ -71,7 +71,7 @@ public class k
           k.a(k.this, (byte[])localObject);
           if ((i == 0) && (localObject != null))
           {
-            cb.a().a(k.b(k.this), (byte[])localObject, k.this.a, k.c(k.this));
+            cc.a().a(k.b(k.this), (byte[])localObject, k.this.a, k.c(k.this));
             return;
           }
           if (i == 2)
@@ -85,13 +85,13 @@ public class k
           if (i == -1000)
           {
             k.a(k.this).dismissDialog();
-            k.a(k.this).showToast(2131493102);
+            k.a(k.this).showToast(2131493103);
             return;
           }
           if (i == 8192)
           {
             k.a(k.this).dismissDialog();
-            k.a(k.this).showToast(2131493549);
+            k.a(k.this).showToast(2131493550);
             return;
           }
           if ((i != 1) && (i != 15) && (i != 16))
@@ -103,13 +103,13 @@ public class k
               {
                 localObject = k.a(k.this);
                 localStringBuilder = new StringBuilder();
-                localStringBuilder.append(k.this.getResources().getString(2131493553));
+                localStringBuilder.append(k.this.getResources().getString(2131493554));
                 localStringBuilder.append(":");
                 localStringBuilder.append(paramAnonymousMessage.getData().getString("loginerror"));
                 ((BaseActivity)localObject).showToast(localStringBuilder.toString());
                 return;
               }
-              k.a(k.this).showToast(2131493553);
+              k.a(k.this).showToast(2131493554);
               return;
             }
             k.a(k.this).dismissDialog();
@@ -117,7 +117,7 @@ public class k
             return;
           }
           k.a(k.this).dismissDialog();
-          k.a(k.this).showUserDialog(2131493798, k.this.getResources().getString(2131493797), 2131493039, new DialogInterface.OnClickListener()
+          k.a(k.this).showUserDialog(2131493799, k.this.getResources().getString(2131493798), 2131493040, new DialogInterface.OnClickListener()
           {
             public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
@@ -144,7 +144,7 @@ public class k
           ((StringBuilder)localObject).append("-");
           ((StringBuilder)localObject).append(paramAnonymousMessage.c);
           g.c(((StringBuilder)localObject).toString());
-          k.a(k.this).showUserDialog(2131492921, paramAnonymousMessage.c, 2131493039, null);
+          k.a(k.this).showUserDialog(2131492922, paramAnonymousMessage.c, 2131493040, null);
           return;
         case 4003: 
           k.a(k.this).dismissDialog();
@@ -173,7 +173,7 @@ public class k
           ((StringBuilder)localObject).append("-");
           ((StringBuilder)localObject).append(paramAnonymousMessage.c);
           g.c(((StringBuilder)localObject).toString());
-          k.a(k.this).showUserDialog(2131492985, paramAnonymousMessage.c, 2131493039, null);
+          k.a(k.this).showUserDialog(2131492986, paramAnonymousMessage.c, 2131493040, null);
           return;
         case 3026: 
           if (paramAnonymousMessage.arg1 == 0)
@@ -195,12 +195,12 @@ public class k
           ((StringBuilder)localObject).append("-");
           ((StringBuilder)localObject).append(paramAnonymousMessage.c);
           g.c(((StringBuilder)localObject).toString());
-          k.a(k.this).showUserDialog(2131492921, paramAnonymousMessage.c, 2131493039, null);
+          k.a(k.this).showUserDialog(2131492922, paramAnonymousMessage.c, 2131493040, null);
           return;
         case 3024: 
           if (i == 0)
           {
-            cb.a().a(k.b(k.this), k.e(k.this), k.this.a, k.c(k.this), 1);
+            cc.a().a(k.b(k.this), k.e(k.this), k.this.a, k.c(k.this), 1);
             return;
           }
           paramAnonymousMessage = (e)paramAnonymousMessage.obj;
@@ -224,7 +224,7 @@ public class k
         if (paramAnonymousMessage != null)
         {
           k.a(k.this, paramAnonymousMessage);
-          cb.a().a(k.b(k.this), paramAnonymousMessage, k.this.a, k.c(k.this));
+          cc.a().a(k.b(k.this), paramAnonymousMessage, k.this.a, k.c(k.this));
         }
         return;
       }
@@ -244,15 +244,15 @@ public class k
   private boolean m = false;
   private byte[] n;
   private long o;
-  private int[] p = { 2131493696, 2131493690, 2131493706, 2131493741, 2131493672, 2131493687, 2131493502, 2131493680, 2131493746, 2131493096, 2131493446, 2131493203 };
+  private int[] p = { 2131493697, 2131493691, 2131493707, 2131493742, 2131493673, 2131493688, 2131493503, 2131493681, 2131493747, 2131493097, 2131493447, 2131493204 };
   private int[] q = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 20 };
-  private int[] r = { 2131493677, 2131493692, 2131493678, 2131493742, 2131493264, 2131493265, 2131493473, 2131493385, 2131493746, 2131493096, 2131493446, 2131493203 };
+  private int[] r = { 2131493678, 2131493693, 2131493679, 2131493743, 2131493265, 2131493266, 2131493474, 2131493386, 2131493747, 2131493097, 2131493447, 2131493204 };
   private int[] s = { 2131099916, 2131099901, 2131099904, 2131099914, 2131099895, 2131099900, 2131099921, 2131099906, 2131099922, 2131099897, 2131099897 };
   private View.OnClickListener t = new View.OnClickListener()
   {
     public void onClick(View paramAnonymousView)
     {
-      paramAnonymousView = cr.a().e();
+      paramAnonymousView = cs.a().e();
       if (paramAnonymousView == null) {
         return;
       }
@@ -260,15 +260,15 @@ public class k
       ((StringBuilder)localObject).append("");
       ((StringBuilder)localObject).append(paramAnonymousView.mRealUin);
       paramAnonymousView = ((StringBuilder)localObject).toString();
-      localObject = bz.a(RqdApplication.l());
-      if (!((bz)localObject).b(paramAnonymousView, 523005419L))
+      localObject = ca.a(RqdApplication.n());
+      if (!((ca)localObject).b(paramAnonymousView, 523005419L))
       {
-        ((bz)localObject).a(paramAnonymousView, k.this.a, 523005419L);
-        k.a(k.this).showProDialog(k.a(k.this), 2131492985, 2131493440, null);
+        ((ca)localObject).a(paramAnonymousView, k.this.a, 523005419L);
+        k.a(k.this).showProDialog(k.a(k.this), 2131492986, 2131493441, null);
         k.a(k.this, 1);
         return;
       }
-      k.a(k.this).showUserDialog(2131493798, k.this.getResources().getString(2131493797), 2131493039, new DialogInterface.OnClickListener()
+      k.a(k.this).showUserDialog(2131493799, k.this.getResources().getString(2131493798), 2131493040, new DialogInterface.OnClickListener()
       {
         public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
         {
@@ -288,7 +288,7 @@ public class k
   
   private void a()
   {
-    if (cr.a().e() == null) {
+    if (cs.a().e() == null) {
       return;
     }
     b();
@@ -296,19 +296,19 @@ public class k
   
   private void b()
   {
-    QQUser localQQUser = cr.a().e();
+    QQUser localQQUser = cs.a().e();
     if (localQQUser != null)
     {
       if (localQQUser.mRealUin <= 0L) {
         return;
       }
-      bz localbz = bz.a(this.b);
+      ca localca = ca.a(this.b);
       BaseActivity localBaseActivity = this.b;
       Handler localHandler = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("");
       localStringBuilder.append(localQQUser.b());
-      localbz.a(localBaseActivity, 523005419L, localHandler, localStringBuilder.toString());
+      localca.a(localBaseActivity, 523005419L, localHandler, localStringBuilder.toString());
       return;
     }
   }
@@ -319,12 +319,12 @@ public class k
     this.d = this.c.inflate(2131296493, null);
     removeAllViews();
     addView(this.d, new LinearLayout.LayoutParams(-1, -1));
-    this.f = ((ImageView)findViewById(2131166225));
-    this.g = ((TextView)findViewById(2131166226));
-    this.h = ((TextView)findViewById(2131166232));
-    this.i = ((TextView)findViewById(2131166231));
-    this.j = ((Button)findViewById(2131166230));
-    Object localObject1 = getResources().getString(2131493753);
+    this.f = ((ImageView)findViewById(2131166227));
+    this.g = ((TextView)findViewById(2131166228));
+    this.h = ((TextView)findViewById(2131166234));
+    this.i = ((TextView)findViewById(2131166233));
+    this.j = ((Button)findViewById(2131166232));
+    Object localObject1 = getResources().getString(2131493754);
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("flag show scene id: ");
     ((StringBuilder)localObject2).append(this.e);
@@ -351,12 +351,12 @@ public class k
       this.f.setImageDrawable(getResources().getDrawable(i3));
       this.g.setText(this.p[this.e]);
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(getResources().getString(2131493751));
+      ((StringBuilder)localObject2).append(getResources().getString(2131493752));
       ((StringBuilder)localObject2).append(getResources().getString(i2));
       ((StringBuilder)localObject2).append("?");
       localObject2 = ((StringBuilder)localObject2).toString();
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(getResources().getString(2131493750));
+      localStringBuilder.append(getResources().getString(2131493751));
       localStringBuilder.append(getResources().getString(i2));
       localStringBuilder.append((String)localObject1);
       localObject1 = localStringBuilder.toString();
@@ -366,22 +366,22 @@ public class k
     else if (this.e == -1)
     {
       this.f.setImageDrawable(getResources().getDrawable(2131099905));
-      this.g.setText(2131493713);
+      this.g.setText(2131493714);
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(getResources().getString(2131493751));
-      ((StringBuilder)localObject2).append(getResources().getString(2131493708));
+      ((StringBuilder)localObject2).append(getResources().getString(2131493752));
+      ((StringBuilder)localObject2).append(getResources().getString(2131493709));
       ((StringBuilder)localObject2).append("?");
       localObject2 = ((StringBuilder)localObject2).toString();
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(getResources().getString(2131493750));
-      localStringBuilder.append(getResources().getString(2131493708));
+      localStringBuilder.append(getResources().getString(2131493751));
+      localStringBuilder.append(getResources().getString(2131493709));
       localStringBuilder.append((String)localObject1);
       localObject1 = localStringBuilder.toString();
       this.h.setText((CharSequence)localObject2);
       this.i.setText((CharSequence)localObject1);
     }
     this.j.setOnClickListener(this.t);
-    localObject1 = cr.a().e();
+    localObject1 = cs.a().e();
     if (localObject1 != null) {
       this.o = ((QQUser)localObject1).mRealUin;
     }
@@ -389,9 +389,9 @@ public class k
   
   private void setActiveSucc(boolean paramBoolean)
   {
-    Object localObject = cc.c();
-    ((cc)localObject).i();
-    ((cc)localObject).n();
+    Object localObject = cd.c();
+    ((cd)localObject).i();
+    ((cd)localObject).n();
     localObject = new Intent(this.b, VerifySuccActivity.class);
     ((Intent)localObject).putExtra("mRealUin", this.o);
     this.b.startActivity((Intent)localObject);

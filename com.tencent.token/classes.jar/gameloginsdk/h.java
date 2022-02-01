@@ -2,7 +2,7 @@ package gameloginsdk;
 
 import b.a.g;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.ee;
+import com.tencent.token.eg;
 import java.util.concurrent.atomic.AtomicLong;
 
 class h
@@ -27,13 +27,13 @@ class h
   {
     if (paramJceStruct == null)
     {
-      paramInt1 = ee.a;
+      paramInt1 = eg.a;
       a(paramInt3, (int)this.d);
       return;
     }
     if (paramInt3 == -50004)
     {
-      paramInt1 = ee.a;
+      paramInt1 = eg.a;
       paramJceStruct = new StringBuilder();
       paramJceStruct.append("回包超时  gameLoginCallback   retCode : ");
       paramJceStruct.append(paramInt3);
@@ -42,7 +42,7 @@ class h
       return;
     }
     paramJceStruct = (g)paramJceStruct;
-    paramInt1 = ee.a;
+    paramInt1 = eg.a;
     long l = paramJceStruct.a;
     paramInt1 = paramJceStruct.b;
     l = paramJceStruct.c;
@@ -58,7 +58,7 @@ class h
         localStringBuilder.append("忽略这个包，因为没收到过SCConfirm包的reqid : ");
         localStringBuilder.append(paramJceStruct.a);
         localStringBuilder.toString();
-        paramInt1 = ee.a;
+        paramInt1 = eg.a;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("忽略这个包，因为没收到过包的reqid : ");
         localStringBuilder.append(paramJceStruct.a);

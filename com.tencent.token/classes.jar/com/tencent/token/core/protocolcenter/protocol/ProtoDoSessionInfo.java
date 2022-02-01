@@ -1,14 +1,14 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.bz;
 import com.tencent.token.ca;
 import com.tencent.token.cb;
+import com.tencent.token.cc;
 import com.tencent.token.core.bean.h;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.cs;
-import com.tencent.token.dl;
-import com.tencent.token.do;
+import com.tencent.token.ct;
+import com.tencent.token.dm;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -29,9 +29,9 @@ public class ProtoDoSessionInfo
     {
       localObject2 = new JSONObject();
       str1 = str2;
-      int i = cb.a + 1;
+      int i = cc.a + 1;
       str1 = str2;
-      cb.a = i;
+      cc.a = i;
       str1 = str2;
       ((JSONObject)localObject2).put("seq_id", i);
       str1 = str2;
@@ -43,9 +43,9 @@ public class ProtoDoSessionInfo
       str1 = str2;
       ((JSONObject)localObject2).put("rmd_last_time", ((h)localObject3).i);
       str1 = str2;
-      ((JSONObject)localObject2).put("config_ver", cs.a().h.b);
+      ((JSONObject)localObject2).put("config_ver", ct.a().h.b);
       str1 = str2;
-      localObject3 = RqdApplication.j();
+      localObject3 = RqdApplication.l();
       if (localObject3 != null)
       {
         str1 = str2;
@@ -54,7 +54,7 @@ public class ProtoDoSessionInfo
       str1 = str2;
       ((JSONObject)localObject2).put("channel_id", l.m());
       str1 = str2;
-      ((JSONObject)localObject2).put("wtsdk_guid", l.a(bz.a(RqdApplication.l()).b()));
+      ((JSONObject)localObject2).put("wtsdk_guid", l.a(ca.a(RqdApplication.n()).b()));
       str1 = str2;
       ((JSONObject)localObject2).put("device_name", URLEncoder.encode(m.x()));
       str1 = str2;
@@ -73,7 +73,7 @@ public class ProtoDoSessionInfo
       ((StringBuilder)localObject2).append(localException.getMessage());
       g.c(((StringBuilder)localObject2).toString());
     }
-    Object localObject1 = ca.a().b();
+    Object localObject1 = cb.a().b();
     if (localObject1 == null)
     {
       this.a.b(104);
@@ -97,7 +97,7 @@ public class ProtoDoSessionInfo
     return str1;
   }
   
-  protected void a(do paramdo) {}
+  protected void a(dp paramdp) {}
   
   protected void a(JSONObject paramJSONObject)
   {
@@ -122,7 +122,7 @@ public class ProtoDoSessionInfo
       if (paramJSONObject.has("new_config"))
       {
         localObject = paramJSONObject.getJSONObject("new_config");
-        cs.a().h.a((JSONObject)localObject);
+        ct.a().h.a((JSONObject)localObject);
       }
       if (paramJSONObject.has("update")) {
         h.b().a(paramJSONObject.optJSONObject("update"));
@@ -134,7 +134,7 @@ public class ProtoDoSessionInfo
     ((StringBuilder)localObject).append("parseJSON error decodeData=");
     ((StringBuilder)localObject).append(paramJSONObject);
     g.c(((StringBuilder)localObject).toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
 }
 

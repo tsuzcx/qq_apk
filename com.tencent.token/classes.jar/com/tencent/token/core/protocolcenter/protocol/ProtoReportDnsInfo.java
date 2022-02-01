@@ -1,12 +1,12 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
-import com.tencent.token.ca;
 import com.tencent.token.cb;
 import com.tencent.token.cc;
+import com.tencent.token.cd;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.cr;
-import com.tencent.token.do;
+import com.tencent.token.cs;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -27,14 +27,14 @@ public class ProtoReportDnsInfo
   private JSONArray d;
   private int e;
   
-  public static void a(do paramdo, JSONArray paramJSONArray)
+  public static void a(dp paramdp, JSONArray paramJSONArray)
   {
-    paramdo.c.put("param.reportdns.domain", paramJSONArray);
+    paramdp.c.put("param.reportdns.domain", paramJSONArray);
   }
   
   protected String a()
   {
-    String str1 = ca.a().b();
+    String str1 = cb.a().b();
     if (str1 == null)
     {
       this.a.b(104);
@@ -78,14 +78,14 @@ public class ProtoReportDnsInfo
             continue;
           }
           long l = 0L;
-          localObject3 = cr.a().e();
+          localObject3 = cs.a().e();
           if (localObject3 != null) {
             l = ((QQUser)localObject3).mRealUin;
           }
-          i = cb.a + 1;
-          cb.a = i;
+          i = cc.a + 1;
+          cc.a = i;
           this.e = i;
-          localObject1 = l.a(new Object[] { "seq_id", Integer.valueOf(this.e), "op_time", Long.valueOf(cc.c().s() / 1000L), "uin", Long.valueOf(l), "dns_ip1", localObject1[0], "dns_ip2", localObject1[1], "domain_list", this.d, "ret_ip_list", localObject2, "MNC", i.l(RqdApplication.l()), "MCC", i.k(RqdApplication.l()), "net_type", l.k() });
+          localObject1 = l.a(new Object[] { "seq_id", Integer.valueOf(this.e), "op_time", Long.valueOf(cd.c().s() / 1000L), "uin", Long.valueOf(l), "dns_ip1", localObject1[0], "dns_ip2", localObject1[1], "domain_list", this.d, "ret_ip_list", localObject2, "MNC", i.l(RqdApplication.n()), "MCC", i.k(RqdApplication.n()), "net_type", l.k() });
           if (localObject1 == null)
           {
             this.a.a(10000, "encrypt imei failed");
@@ -119,9 +119,9 @@ public class ProtoReportDnsInfo
     }
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.d = ((JSONArray)paramdo.c.get("param.reportdns.domain"));
+    this.d = ((JSONArray)paramdp.c.get("param.reportdns.domain"));
   }
   
   protected void a(JSONObject paramJSONObject)

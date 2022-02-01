@@ -11,7 +11,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import com.tencent.token.br.a;
+import com.tencent.token.bs.a;
 import com.tencent.token.global.g;
 
 public class RecommendView
@@ -49,7 +49,7 @@ public class RecommendView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.e.setStyle(Paint.Style.FILL);
-    paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, br.a.RecommendView, 0, 0);
+    paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, bs.a.RecommendView, 0, 0);
     try
     {
       this.b = paramContext.getDimension(2, this.a);

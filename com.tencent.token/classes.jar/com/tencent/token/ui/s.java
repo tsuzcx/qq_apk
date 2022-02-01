@@ -51,7 +51,7 @@ class s
     if (paramView == null) {
       paramViewGroup = this.b.inflate(2131296438, null);
     }
-    ((TextView)paramViewGroup.findViewById(2131165985)).setText((String)((Map)this.c.get(paramInt)).get("setting_op_name"));
+    ((TextView)paramViewGroup.findViewById(2131165987)).setText((String)((Map)this.c.get(paramInt)).get("setting_op_name"));
     paramViewGroup.setOnClickListener(new a(paramInt));
     paramViewGroup.setOnTouchListener(new b());
     return paramViewGroup;
@@ -104,7 +104,7 @@ class s
     
     public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
     {
-      paramView = (TextView)paramView.findViewById(2131165985);
+      paramView = (TextView)paramView.findViewById(2131165987);
       int i = s.a(s.this).getResources().getColor(2130968657);
       int j = s.a(s.this).getResources().getColor(2130968665);
       int k = paramMotionEvent.getAction();

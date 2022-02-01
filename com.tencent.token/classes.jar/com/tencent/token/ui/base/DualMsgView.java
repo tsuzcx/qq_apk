@@ -25,10 +25,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.token.ce;
+import com.tencent.token.cf;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.bean.a;
-import com.tencent.token.cr;
+import com.tencent.token.cs;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.ui.IndexActivity;
 import com.tencent.token.utils.g;
@@ -145,7 +145,7 @@ public class DualMsgView
     this.d.setText(Html.fromHtml(parama.g()));
     this.h.setText(a(parama.h(), " "));
     this.i.setText(a(parama.i(), " "));
-    parama = cr.a().c(parama.c());
+    parama = cs.a().c(parama.c());
     if (parama != null)
     {
       ImageView localImageView = this.j;
@@ -176,32 +176,32 @@ public class DualMsgView
       this.n = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
       this.o = this.n.inflate(2131296320, null);
       this.o.setVisibility(4);
-      this.p = this.o.findViewById(2131166258);
-      this.q = this.o.findViewById(2131166245);
-      this.r = this.o.findViewById(2131166259);
-      this.s = this.o.findViewById(2131166246);
+      this.p = this.o.findViewById(2131166260);
+      this.q = this.o.findViewById(2131166247);
+      this.r = this.o.findViewById(2131166261);
+      this.s = this.o.findViewById(2131166248);
       this.t = m.a(this.m.getResources(), 2131099827);
       this.u = m.a(this.m.getResources(), 2131099826);
       if (this.t != null) {
-        ((LinearLayout)this.o.findViewById(2131166239)).setBackgroundDrawable(new BitmapDrawable(this.t));
+        ((LinearLayout)this.o.findViewById(2131166241)).setBackgroundDrawable(new BitmapDrawable(this.t));
       }
       if (this.u != null)
       {
-        ((LinearLayout)this.o.findViewById(2131166240)).setBackgroundDrawable(new BitmapDrawable(this.u));
-        ((LinearLayout)this.o.findViewById(2131166241)).setBackgroundDrawable(new BitmapDrawable(this.u));
+        ((LinearLayout)this.o.findViewById(2131166242)).setBackgroundDrawable(new BitmapDrawable(this.u));
+        ((LinearLayout)this.o.findViewById(2131166243)).setBackgroundDrawable(new BitmapDrawable(this.u));
       }
-      this.a = this.o.findViewById(2131165758);
-      this.c = ((TextView)this.o.findViewById(2131165754));
-      this.d = ((TextView)this.o.findViewById(2131165742));
-      this.b = this.o.findViewById(2131165759);
-      this.e = ((TextView)this.o.findViewById(2131165755));
-      this.f = ((TextView)this.o.findViewById(2131165743));
-      this.j = ((ImageView)this.o.findViewById(2131165745));
-      this.k = ((ImageView)this.o.findViewById(2131165747));
-      this.l = ((ImageView)this.o.findViewById(2131165746));
-      this.h = ((Button)this.o.findViewById(2131165741));
-      this.i = ((Button)this.o.findViewById(2131165751));
-      this.g = ((TextView)this.o.findViewById(2131165757));
+      this.a = this.o.findViewById(2131165760);
+      this.c = ((TextView)this.o.findViewById(2131165756));
+      this.d = ((TextView)this.o.findViewById(2131165744));
+      this.b = this.o.findViewById(2131165761);
+      this.e = ((TextView)this.o.findViewById(2131165757));
+      this.f = ((TextView)this.o.findViewById(2131165745));
+      this.j = ((ImageView)this.o.findViewById(2131165747));
+      this.k = ((ImageView)this.o.findViewById(2131165749));
+      this.l = ((ImageView)this.o.findViewById(2131165748));
+      this.h = ((Button)this.o.findViewById(2131165743));
+      this.i = ((Button)this.o.findViewById(2131165753));
+      this.g = ((TextView)this.o.findViewById(2131165759));
       this.h.setOnClickListener(new View.OnClickListener()
       {
         public void onClick(View paramAnonymousView)
@@ -241,7 +241,7 @@ public class DualMsgView
     ((StringBuilder)localObject2).append("  ");
     ((StringBuilder)localObject2).append(Html.fromHtml(parama.i()));
     ((Button)localObject1).setText(((StringBuilder)localObject2).toString());
-    parama = cr.a().c(parama.c());
+    parama = cs.a().c(parama.c());
     if (parama != null)
     {
       localObject1 = this.j;
@@ -271,7 +271,7 @@ public class DualMsgView
   public void c()
   {
     this.y.post(new c(this.p, this.q, this.r, this.s));
-    ce.a(RqdApplication.l()).a();
+    cf.a(RqdApplication.n()).a();
   }
   
   public void d()

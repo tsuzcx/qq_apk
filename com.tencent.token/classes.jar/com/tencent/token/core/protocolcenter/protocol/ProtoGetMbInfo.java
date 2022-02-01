@@ -3,13 +3,13 @@ package com.tencent.token.core.protocolcenter.protocol;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.ca;
 import com.tencent.token.cb;
 import com.tencent.token.cc;
+import com.tencent.token.cd;
 import com.tencent.token.core.bean.MbInfoResult;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.dj;
-import com.tencent.token.do;
+import com.tencent.token.dk;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -24,23 +24,23 @@ public class ProtoGetMbInfo
   MbInfoResult d;
   private long e;
   
-  public static void a(do paramdo, long paramLong)
+  public static void a(dp paramdp, long paramLong)
   {
-    paramdo.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdp.c.put("param.uinhash", Long.valueOf(paramLong));
   }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     if (str == null)
     {
       this.a.b(104);
       return null;
     }
-    int i = cb.a + 1;
-    cb.a = i;
+    int i = cc.a + 1;
+    cc.a = i;
     this.c = i;
-    Object localObject = l.a(new Object[] { "uin", Long.valueOf(this.e), "seq_id", Integer.valueOf(this.c), "op_time", Long.valueOf(cc.c().s() / 1000L) });
+    Object localObject = l.a(new Object[] { "uin", Long.valueOf(this.e), "seq_id", Integer.valueOf(this.c), "op_time", Long.valueOf(cd.c().s() / 1000L) });
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("?data=");
     localStringBuilder.append((String)localObject);
@@ -54,9 +54,9 @@ public class ProtoGetMbInfo
     return ((StringBuilder)localObject).toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.e = ((Long)paramdo.c.get("param.uinhash")).longValue();
+    this.e = ((Long)paramdp.c.get("param.uinhash")).longValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -84,7 +84,7 @@ public class ProtoGetMbInfo
         return;
       }
       this.d = new MbInfoResult(paramJSONObject.getJSONArray("mb_list"));
-      dj.a().a(this.d);
+      dk.a().a(this.d);
       this.a.c();
       return;
     }
@@ -92,7 +92,7 @@ public class ProtoGetMbInfo
     localStringBuilder.append("parseJSON error decodeData=");
     localStringBuilder.append(paramJSONObject);
     g.c(localStringBuilder.toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
   
   protected void b()

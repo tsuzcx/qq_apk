@@ -15,10 +15,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.token.cb;
+import com.tencent.token.cc;
 import com.tencent.token.core.bean.f;
-import com.tencent.token.cs;
-import com.tencent.token.cw;
+import com.tencent.token.ct;
+import com.tencent.token.cx;
 import com.tencent.token.global.e;
 import com.tencent.token.global.h;
 import com.tencent.token.ui.base.SwitchButton;
@@ -48,8 +48,8 @@ class c
     this.c = LayoutInflater.from(paramUtilsAccountLockActivity);
     this.d = paramListView;
     this.h = paramHandler;
-    this.j = cs.a().a(true);
-    this.k = cs.a().a(false);
+    this.j = ct.a().a(true);
+    this.k = ct.a().a(false);
     this.i = (this.j + this.k);
     int n = this.i;
     if (n != 0) {
@@ -63,13 +63,13 @@ class c
       return;
     }
     e.a(this.b.getResources(), parame);
-    this.b.showTipDialog(2131493532, parame.c);
+    this.b.showTipDialog(2131493533, parame.c);
   }
   
   public void a()
   {
-    this.j = cs.a().a(true);
-    this.k = cs.a().a(false);
+    this.j = ct.a().a(true);
+    this.k = ct.a().a(false);
     this.i = (this.j + this.k);
     int n = this.i;
     if (n != 0) {
@@ -89,8 +89,8 @@ class c
       if (parame.b())
       {
         AccountPageActivity.mNeedRefreshEval = true;
-        cs.a().b();
-        cb.a().a(0L, this.h);
+        ct.a().b();
+        cc.a().a(0L, this.h);
         this.m = true;
       }
       else
@@ -156,7 +156,7 @@ class c
           } else {
             localImageView.setVisibility(4);
           }
-          if ((!((f)localObject).e) && (cs.a().n()))
+          if ((!((f)localObject).e) && (ct.a().n()))
           {
             localProgressBar.setVisibility(4);
             localSwitchButton.setVisibility(0);
@@ -169,7 +169,7 @@ class c
             localSwitchButton.setVisibility(0);
             localSwitchButton.setEnabled(false);
           }
-          if (!cs.a().n()) {
+          if (!ct.a().n()) {
             this.b.queryAccountLockStatus();
           }
           localTextView.setText(((f)localObject).b);
@@ -194,7 +194,7 @@ class c
   public void b(l paraml, boolean paramBoolean)
   {
     f localf = paraml.a();
-    if ((localf != null) && (paraml.h() != null) && (cs.a().n()))
+    if ((localf != null) && (paraml.h() != null) && (ct.a().n()))
     {
       if (paramBoolean != localf.c) {
         return;
@@ -209,7 +209,7 @@ class c
         localf.e = true;
         this.e = true;
         a(paraml, false);
-        cw.a().a(3, this.b.getHandler());
+        cx.a().a(3, this.b.getHandler());
         return;
       }
       return;
@@ -220,29 +220,29 @@ class c
   {
     int n = this.f.a;
     boolean bool = this.f.c;
-    cb localcb = cb.a();
+    cc localcc = cc.a();
     Handler localHandler = this.h;
-    localcb.a(0L, new int[] { n }, new int[] { true ^ bool }, "", localHandler);
+    localcc.a(0L, new int[] { n }, new int[] { true ^ bool }, "", localHandler);
   }
   
   public void d()
   {
-    int i1 = cs.a().a(true);
+    int i1 = ct.a().a(true);
     int n = 0;
     f localf;
     while (n < i1)
     {
-      localf = cs.a().a(n, true);
+      localf = ct.a().a(n, true);
       if (localf != null) {
         localf.e = false;
       }
       n += 1;
     }
-    i1 = cs.a().a(false);
+    i1 = ct.a().a(false);
     n = 0;
     while (n < i1)
     {
-      localf = cs.a().a(n, false);
+      localf = ct.a().a(n, false);
       if (localf != null) {
         localf.e = false;
       }
@@ -274,12 +274,12 @@ class c
     if (paramInt < n)
     {
       paramView = this.c.inflate(2131296472, paramViewGroup, false);
-      paramViewGroup = cs.a().a(paramInt, true);
+      paramViewGroup = ct.a().a(paramInt, true);
     }
     else
     {
       paramView = this.c.inflate(2131296471, paramViewGroup, false);
-      paramViewGroup = cs.a().a(paramInt - this.j - 1, false);
+      paramViewGroup = ct.a().a(paramInt - this.j - 1, false);
     }
     if (paramViewGroup == null) {
       return paramView;

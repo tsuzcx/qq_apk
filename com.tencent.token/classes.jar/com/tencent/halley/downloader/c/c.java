@@ -1,6 +1,6 @@
 package com.tencent.halley.downloader.c;
 
-import com.tencent.token.x;
+import com.tencent.token.y;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -17,7 +17,7 @@ final class c
     default: 
       return;
     case 7: 
-      x.a().g(b.a(this.b));
+      y.a().g(b.a(this.b));
       synchronized (b.b(this.b))
       {
         Iterator localIterator1 = b.b(this.b).iterator();
@@ -31,7 +31,7 @@ final class c
         return;
       }
     case 6: 
-      x.a().f(b.a(this.b));
+      y.a().f(b.a(this.b));
       synchronized (b.b(this.b))
       {
         Iterator localIterator2 = b.b(this.b).iterator();
@@ -45,7 +45,7 @@ final class c
         return;
       }
     case 5: 
-      x.a().e(b.a(this.b));
+      y.a().e(b.a(this.b));
       synchronized (b.b(this.b))
       {
         Iterator localIterator3 = b.b(this.b).iterator();
@@ -59,7 +59,7 @@ final class c
         return;
       }
     case 4: 
-      x.a().d(b.a(this.b));
+      y.a().d(b.a(this.b));
       synchronized (b.b(this.b))
       {
         Iterator localIterator4 = b.b(this.b).iterator();
@@ -73,7 +73,7 @@ final class c
         return;
       }
     case 3: 
-      x.a().c(b.a(this.b));
+      y.a().c(b.a(this.b));
       synchronized (b.b(this.b))
       {
         Iterator localIterator5 = b.b(this.b).iterator();
@@ -87,7 +87,7 @@ final class c
         return;
       }
     case 2: 
-      x.a().b(b.a(this.b));
+      y.a().b(b.a(this.b));
       synchronized (b.b(this.b))
       {
         Iterator localIterator6 = b.b(this.b).iterator();
@@ -101,7 +101,7 @@ final class c
         return;
       }
     }
-    x.a().a(b.a(this.b));
+    y.a().a(b.a(this.b));
     synchronized (b.b(this.b))
     {
       Iterator localIterator7 = b.b(this.b).iterator();

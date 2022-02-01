@@ -30,7 +30,7 @@ public class CameraPrepareDialog
       setCanceledOnTouchOutside(false);
       paramBundle = getWindow();
       paramBundle.setBackgroundDrawableResource(2131099876);
-      localObject = (ViewGroup.MarginLayoutParams)findViewById(2131165350).getLayoutParams();
+      localObject = (ViewGroup.MarginLayoutParams)findViewById(2131165352).getLayoutParams();
       ((ViewGroup.MarginLayoutParams)localObject).width = paramBundle.getWindowManager().getDefaultDisplay().getWidth();
       ((ViewGroup.MarginLayoutParams)localObject).height = paramBundle.getWindowManager().getDefaultDisplay().getHeight();
       return;

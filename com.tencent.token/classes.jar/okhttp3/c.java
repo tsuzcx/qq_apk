@@ -1,15 +1,15 @@
 package okhttp3;
 
-import com.tencent.token.fh;
-import com.tencent.token.fi;
+import com.tencent.token.fk;
+import com.tencent.token.fl;
 import java.io.Closeable;
 import java.io.Flushable;
 
 public final class c
   implements Closeable, Flushable
 {
-  final fi a;
-  final fh b;
+  final fl a;
+  final fk b;
   
   public void close()
   {

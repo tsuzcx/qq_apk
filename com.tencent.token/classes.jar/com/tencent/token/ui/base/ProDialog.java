@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import com.tencent.token.cb;
+import com.tencent.token.cc;
 import com.tencent.token.global.g;
 
 public class ProDialog
@@ -34,7 +34,7 @@ public class ProDialog
   {
     g.c("dismiss and cancel request");
     if (this.a != null) {
-      cb.a().a(this.a.getClass().getName());
+      cc.a().a(this.a.getClass().getName());
     }
   }
   
@@ -46,7 +46,7 @@ public class ProDialog
       super.onCreate(paramBundle);
       setContentView(2131296398);
       getWindow().setBackgroundDrawableResource(2131099876);
-      ((ImageView)findViewById(2131165817)).startAnimation(AnimationUtils.loadAnimation(this.a, 2130771986));
+      ((ImageView)findViewById(2131165819)).startAnimation(AnimationUtils.loadAnimation(this.a, 2130771986));
       setOnDismissListener(new DialogInterface.OnDismissListener()
       {
         public void onDismiss(DialogInterface paramAnonymousDialogInterface)

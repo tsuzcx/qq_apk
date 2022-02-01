@@ -3,9 +3,9 @@ package com.tencent.token.core.protocolcenter;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.ca;
-import com.tencent.token.cc;
-import com.tencent.token.do;
+import com.tencent.token.cb;
+import com.tencent.token.cd;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -23,18 +23,18 @@ public class ProtoSetServiceStatusV2
   private String g;
   private int h;
   
-  public static void a(do paramdo, long paramLong, int[] paramArrayOfInt1, int[] paramArrayOfInt2, String paramString, int paramInt)
+  public static void a(dp paramdp, long paramLong, int[] paramArrayOfInt1, int[] paramArrayOfInt2, String paramString, int paramInt)
   {
-    paramdo.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramdo.c.put("param.mbinfo.id", paramArrayOfInt1);
-    paramdo.c.put("param.mbinfo.val", paramArrayOfInt2);
-    paramdo.c.put("param.wtlogin.a2", paramString);
-    paramdo.c.put("param.common.seq", Integer.valueOf(paramInt));
+    paramdp.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdp.c.put("param.mbinfo.id", paramArrayOfInt1);
+    paramdp.c.put("param.mbinfo.val", paramArrayOfInt2);
+    paramdp.c.put("param.wtlogin.a2", paramString);
+    paramdp.c.put("param.common.seq", Integer.valueOf(paramInt));
   }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     if (str == null)
     {
       this.a.b(10000);
@@ -70,7 +70,7 @@ public class ProtoSetServiceStatusV2
         ((StringBuilder)localObject2).append("\", \"seq_id\":");
         ((StringBuilder)localObject2).append(this.h);
         ((StringBuilder)localObject2).append(", \"op_time\":");
-        ((StringBuilder)localObject2).append((int)(cc.c().s() / 1000L));
+        ((StringBuilder)localObject2).append((int)(cd.c().s() / 1000L));
         ((StringBuilder)localObject2).append(",\"uin\":");
         ((StringBuilder)localObject2).append(this.d);
         ((StringBuilder)localObject2).append("}");
@@ -99,13 +99,13 @@ public class ProtoSetServiceStatusV2
     return null;
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.d = ((Long)paramdo.c.get("param.uinhash")).longValue();
-    this.e = ((int[])paramdo.c.get("param.mbinfo.id"));
-    this.f = ((int[])paramdo.c.get("param.mbinfo.val"));
-    this.g = ((String)paramdo.c.get("param.wtlogin.a2"));
-    this.h = ((Integer)paramdo.c.get("param.common.seq")).intValue();
+    this.d = ((Long)paramdp.c.get("param.uinhash")).longValue();
+    this.e = ((int[])paramdp.c.get("param.mbinfo.id"));
+    this.f = ((int[])paramdp.c.get("param.mbinfo.val"));
+    this.g = ((String)paramdp.c.get("param.wtlogin.a2"));
+    this.h = ((Integer)paramdp.c.get("param.common.seq")).intValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -137,7 +137,7 @@ public class ProtoSetServiceStatusV2
     localStringBuilder.append("parseJSON error decodeData=");
     localStringBuilder.append(paramJSONObject);
     g.c(localStringBuilder.toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
   
   protected void b()

@@ -1,321 +1,340 @@
 package com.tencent.token;
 
-import java.io.Closeable;
-import java.io.File;
-import java.io.Flushable;
 import java.io.IOException;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.concurrent.Executor;
-import java.util.regex.Pattern;
+import java.util.concurrent.TimeUnit;
+import okhttp3.aa;
+import okhttp3.r.a;
+import okhttp3.t;
+import okhttp3.z;
+import okhttp3.z.a;
+import okio.c;
 import okio.d;
+import okio.e;
+import okio.k;
+import okio.p;
+import okio.q;
 
 public final class fh
-  implements Closeable, Flushable
+  implements t
 {
-  static final Pattern a = Pattern.compile("[a-z0-9_-]{1,120}");
-  final fw b;
-  final int c;
-  d d;
-  final LinkedHashMap<String, b> e;
-  int f;
-  boolean g;
-  boolean h;
-  boolean i;
-  private long k;
-  private long l;
-  private long m;
-  private final Executor n;
-  private final Runnable o;
+  final fl a;
   
-  private void d()
+  public fh(fl paramfl)
   {
-    try
-    {
-      boolean bool = b();
-      if (!bool) {
-        return;
-      }
-      throw new IllegalStateException("cache is closed");
-    }
-    finally {}
+    this.a = paramfl;
   }
   
-  void a(a parama, boolean paramBoolean)
+  private static okhttp3.r a(okhttp3.r paramr1, okhttp3.r paramr2)
   {
-    for (;;)
+    r.a locala = new r.a();
+    int k = paramr1.a();
+    int j = 0;
+    int i = 0;
+    while (i < k)
     {
-      int i2;
-      try
+      String str1 = paramr1.a(i);
+      String str2 = paramr1.b(i);
+      if (((!"Warning".equalsIgnoreCase(str1)) || (!str2.startsWith("1"))) && ((b(str1)) || (!a(str1)) || (paramr2.a(str1) == null))) {
+        fd.a.a(locala, str1, str2);
+      }
+      i += 1;
+    }
+    k = paramr2.a();
+    i = j;
+    while (i < k)
+    {
+      paramr1 = paramr2.a(i);
+      if ((!b(paramr1)) && (a(paramr1))) {
+        fd.a.a(locala, paramr1, paramr2.b(i));
+      }
+      i += 1;
+    }
+    return locala.a();
+  }
+  
+  private z a(final fi paramfi, z paramz)
+  {
+    if (paramfi == null) {
+      return paramz;
+    }
+    Object localObject = paramfi.a();
+    if (localObject == null) {
+      return paramz;
+    }
+    paramfi = new q()
+    {
+      boolean a;
+      
+      public long a(c paramAnonymousc, long paramAnonymousLong)
       {
-        b localb = parama.a;
-        if (localb.f == parama)
-        {
-          int i3 = 0;
-          i2 = i3;
-          if (paramBoolean)
-          {
-            i2 = i3;
-            if (!localb.e)
-            {
-              int i1 = 0;
-              i2 = i3;
-              if (i1 < this.c)
-              {
-                if (parama.b[i1] != 0)
-                {
-                  if (!this.b.b(localb.d[i1]))
-                  {
-                    parama.b();
-                    return;
-                  }
-                  i1 += 1;
-                  continue;
-                }
-                parama.b();
-                parama = new StringBuilder();
-                parama.append("Newly created entry didn't create value for index ");
-                parama.append(i1);
-                throw new IllegalStateException(parama.toString());
-              }
-            }
-          }
-          long l1;
-          if (i2 < this.c)
-          {
-            parama = localb.d[i2];
-            if (paramBoolean)
-            {
-              if (this.b.b(parama))
-              {
-                File localFile = localb.c[i2];
-                this.b.a(parama, localFile);
-                l1 = localb.b[i2];
-                long l2 = this.b.c(localFile);
-                localb.b[i2] = l2;
-                this.l = (this.l - l1 + l2);
-              }
-            }
-            else {
-              this.b.a(parama);
-            }
-          }
-          else
-          {
-            this.f += 1;
-            localb.f = null;
-            if ((localb.e | paramBoolean))
-            {
-              localb.e = true;
-              this.d.b("CLEAN").i(32);
-              this.d.b(localb.a);
-              localb.a(this.d);
-              this.d.i(10);
-              if (paramBoolean)
-              {
-                l1 = this.m;
-                this.m = (1L + l1);
-                localb.g = l1;
-              }
-            }
-            else
-            {
-              this.e.remove(localb.a);
-              this.d.b("REMOVE").i(32);
-              this.d.b(localb.a);
-              this.d.i(10);
-            }
-            this.d.flush();
-            if ((this.l > this.k) || (a())) {
-              this.n.execute(this.o);
-            }
-          }
-        }
-        else
-        {
-          throw new IllegalStateException();
-        }
-      }
-      finally {}
-      i2 += 1;
-    }
-  }
-  
-  boolean a()
-  {
-    int i1 = this.f;
-    return (i1 >= 2000) && (i1 >= this.e.size());
-  }
-  
-  boolean a(b paramb)
-  {
-    if (paramb.f != null) {
-      paramb.f.a();
-    }
-    int i1 = 0;
-    while (i1 < this.c)
-    {
-      this.b.a(paramb.c[i1]);
-      this.l -= paramb.b[i1];
-      paramb.b[i1] = 0L;
-      i1 += 1;
-    }
-    this.f += 1;
-    this.d.b("REMOVE").i(32).b(paramb.a).i(10);
-    this.e.remove(paramb.a);
-    if (a()) {
-      this.n.execute(this.o);
-    }
-    return true;
-  }
-  
-  public boolean b()
-  {
-    try
-    {
-      boolean bool = this.h;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  void c()
-  {
-    while (this.l > this.k) {
-      a((b)this.e.values().iterator().next());
-    }
-    this.i = false;
-  }
-  
-  public void close()
-  {
-    for (;;)
-    {
-      int i1;
-      try
-      {
-        if ((this.g) && (!this.h))
-        {
-          b[] arrayOfb = (b[])this.e.values().toArray(new b[this.e.size()]);
-          int i2 = arrayOfb.length;
-          i1 = 0;
-          if (i1 < i2)
-          {
-            b localb = arrayOfb[i1];
-            if (localb.f != null) {
-              localb.f.b();
-            }
-          }
-          else
-          {
-            c();
-            this.d.close();
-            this.d = null;
-            this.h = true;
-          }
-        }
-        else
-        {
-          this.h = true;
-          return;
-        }
-      }
-      finally {}
-      i1 += 1;
-    }
-  }
-  
-  public void flush()
-  {
-    try
-    {
-      boolean bool = this.g;
-      if (!bool) {
-        return;
-      }
-      d();
-      c();
-      this.d.flush();
-      return;
-    }
-    finally {}
-  }
-  
-  public final class a
-  {
-    final fh.b a;
-    final boolean[] b;
-    private boolean d;
-    
-    void a()
-    {
-      int i;
-      if (this.a.f == this) {
-        i = 0;
-      }
-      for (;;)
-      {
-        if (i < this.c.c) {}
         try
         {
-          this.c.b.a(this.a.d[i]);
-          label45:
-          i += 1;
-          continue;
-          this.a.f = null;
-          return;
-        }
-        catch (IOException localIOException)
-        {
-          break label45;
-        }
-      }
-    }
-    
-    public void b()
-    {
-      synchronized (this.c)
-      {
-        if (!this.d)
-        {
-          if (this.a.f == this) {
-            this.c.a(this, false);
+          paramAnonymousLong = this.b.a(paramAnonymousc, paramAnonymousLong);
+          if (paramAnonymousLong == -1L)
+          {
+            if (!this.a)
+            {
+              this.a = true;
+              this.d.close();
+            }
+            return -1L;
           }
-          this.d = true;
-          return;
+          paramAnonymousc.a(this.d.c(), paramAnonymousc.b() - paramAnonymousLong, paramAnonymousLong);
+          this.d.u();
+          return paramAnonymousLong;
         }
-        throw new IllegalStateException();
+        catch (IOException paramAnonymousc)
+        {
+          if (!this.a)
+          {
+            this.a = true;
+            paramfi.b();
+          }
+          throw paramAnonymousc;
+        }
       }
-    }
+      
+      public okio.r a()
+      {
+        return this.b.a();
+      }
+      
+      public void close()
+      {
+        if ((!this.a) && (!ff.a(this, 100, TimeUnit.MILLISECONDS)))
+        {
+          this.a = true;
+          paramfi.b();
+        }
+        this.b.close();
+      }
+    };
+    localObject = paramz.a("Content-Type");
+    long l = paramz.e().a();
+    return paramz.f().a(new ft((String)localObject, l, k.a(paramfi))).a();
   }
   
-  private final class b
+  private static z a(z paramz)
   {
-    final String a;
-    final long[] b;
-    final File[] c;
-    final File[] d;
-    boolean e;
-    fh.a f;
-    long g;
-    
-    void a(d paramd)
+    z localz = paramz;
+    if (paramz != null)
     {
-      long[] arrayOfLong = this.b;
-      int j = arrayOfLong.length;
-      int i = 0;
-      while (i < j)
-      {
-        long l = arrayOfLong[i];
-        paramd.i(32).l(l);
-        i += 1;
+      localz = paramz;
+      if (paramz.e() != null) {
+        localz = paramz.f().a(null).a();
       }
     }
+    return localz;
+  }
+  
+  static boolean a(String paramString)
+  {
+    return (!"Connection".equalsIgnoreCase(paramString)) && (!"Keep-Alive".equalsIgnoreCase(paramString)) && (!"Proxy-Authenticate".equalsIgnoreCase(paramString)) && (!"Proxy-Authorization".equalsIgnoreCase(paramString)) && (!"TE".equalsIgnoreCase(paramString)) && (!"Trailers".equalsIgnoreCase(paramString)) && (!"Transfer-Encoding".equalsIgnoreCase(paramString)) && (!"Upgrade".equalsIgnoreCase(paramString));
+  }
+  
+  static boolean b(String paramString)
+  {
+    return ("Content-Length".equalsIgnoreCase(paramString)) || ("Content-Encoding".equalsIgnoreCase(paramString)) || ("Content-Type".equalsIgnoreCase(paramString));
+  }
+  
+  /* Error */
+  public z a(okhttp3.t.a parama)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 17	com/tencent/token/fh:a	Lcom/tencent/token/fl;
+    //   4: astore_2
+    //   5: aload_2
+    //   6: ifnull +19 -> 25
+    //   9: aload_2
+    //   10: aload_1
+    //   11: invokeinterface 145 1 0
+    //   16: invokeinterface 150 2 0
+    //   21: astore_2
+    //   22: goto +5 -> 27
+    //   25: aconst_null
+    //   26: astore_2
+    //   27: new 152	com/tencent/token/fj$a
+    //   30: dup
+    //   31: invokestatic 157	java/lang/System:currentTimeMillis	()J
+    //   34: aload_1
+    //   35: invokeinterface 145 1 0
+    //   40: aload_2
+    //   41: invokespecial 160	com/tencent/token/fj$a:<init>	(JLokhttp3/x;Lokhttp3/z;)V
+    //   44: invokevirtual 163	com/tencent/token/fj$a:a	()Lcom/tencent/token/fj;
+    //   47: astore 5
+    //   49: aload 5
+    //   51: getfield 168	com/tencent/token/fj:a	Lokhttp3/x;
+    //   54: astore_3
+    //   55: aload 5
+    //   57: getfield 171	com/tencent/token/fj:b	Lokhttp3/z;
+    //   60: astore 4
+    //   62: aload_0
+    //   63: getfield 17	com/tencent/token/fh:a	Lcom/tencent/token/fl;
+    //   66: astore 6
+    //   68: aload 6
+    //   70: ifnull +12 -> 82
+    //   73: aload 6
+    //   75: aload 5
+    //   77: invokeinterface 174 2 0
+    //   82: aload_2
+    //   83: ifnull +15 -> 98
+    //   86: aload 4
+    //   88: ifnonnull +10 -> 98
+    //   91: aload_2
+    //   92: invokevirtual 76	okhttp3/z:e	()Lokhttp3/aa;
+    //   95: invokestatic 179	com/tencent/token/ff:a	(Ljava/io/Closeable;)V
+    //   98: aload_3
+    //   99: ifnonnull +63 -> 162
+    //   102: aload 4
+    //   104: ifnonnull +58 -> 162
+    //   107: new 110	okhttp3/z$a
+    //   110: dup
+    //   111: invokespecial 180	okhttp3/z$a:<init>	()V
+    //   114: aload_1
+    //   115: invokeinterface 145 1 0
+    //   120: invokevirtual 183	okhttp3/z$a:a	(Lokhttp3/x;)Lokhttp3/z$a;
+    //   123: getstatic 189	okhttp3/Protocol:HTTP_1_1	Lokhttp3/Protocol;
+    //   126: invokevirtual 192	okhttp3/z$a:a	(Lokhttp3/Protocol;)Lokhttp3/z$a;
+    //   129: sipush 504
+    //   132: invokevirtual 195	okhttp3/z$a:a	(I)Lokhttp3/z$a;
+    //   135: ldc 197
+    //   137: invokevirtual 200	okhttp3/z$a:a	(Ljava/lang/String;)Lokhttp3/z$a;
+    //   140: getstatic 203	com/tencent/token/ff:c	Lokhttp3/aa;
+    //   143: invokevirtual 113	okhttp3/z$a:a	(Lokhttp3/aa;)Lokhttp3/z$a;
+    //   146: ldc2_w 204
+    //   149: invokevirtual 208	okhttp3/z$a:a	(J)Lokhttp3/z$a;
+    //   152: invokestatic 157	java/lang/System:currentTimeMillis	()J
+    //   155: invokevirtual 210	okhttp3/z$a:b	(J)Lokhttp3/z$a;
+    //   158: invokevirtual 116	okhttp3/z$a:a	()Lokhttp3/z;
+    //   161: areturn
+    //   162: aload_3
+    //   163: ifnonnull +20 -> 183
+    //   166: aload 4
+    //   168: invokevirtual 100	okhttp3/z:f	()Lokhttp3/z$a;
+    //   171: aload 4
+    //   173: invokestatic 212	com/tencent/token/fh:a	(Lokhttp3/z;)Lokhttp3/z;
+    //   176: invokevirtual 215	okhttp3/z$a:b	(Lokhttp3/z;)Lokhttp3/z$a;
+    //   179: invokevirtual 116	okhttp3/z$a:a	()Lokhttp3/z;
+    //   182: areturn
+    //   183: aload_1
+    //   184: aload_3
+    //   185: invokeinterface 216 2 0
+    //   190: astore_1
+    //   191: aload_1
+    //   192: ifnonnull +14 -> 206
+    //   195: aload_2
+    //   196: ifnull +10 -> 206
+    //   199: aload_2
+    //   200: invokevirtual 76	okhttp3/z:e	()Lokhttp3/aa;
+    //   203: invokestatic 179	com/tencent/token/ff:a	(Ljava/io/Closeable;)V
+    //   206: aload 4
+    //   208: ifnull +104 -> 312
+    //   211: aload_1
+    //   212: invokevirtual 218	okhttp3/z:b	()I
+    //   215: sipush 304
+    //   218: if_icmpne +86 -> 304
+    //   221: aload 4
+    //   223: invokevirtual 100	okhttp3/z:f	()Lokhttp3/z$a;
+    //   226: aload 4
+    //   228: invokevirtual 221	okhttp3/z:d	()Lokhttp3/r;
+    //   231: aload_1
+    //   232: invokevirtual 221	okhttp3/z:d	()Lokhttp3/r;
+    //   235: invokestatic 223	com/tencent/token/fh:a	(Lokhttp3/r;Lokhttp3/r;)Lokhttp3/r;
+    //   238: invokevirtual 226	okhttp3/z$a:a	(Lokhttp3/r;)Lokhttp3/z$a;
+    //   241: aload_1
+    //   242: invokevirtual 229	okhttp3/z:i	()J
+    //   245: invokevirtual 208	okhttp3/z$a:a	(J)Lokhttp3/z$a;
+    //   248: aload_1
+    //   249: invokevirtual 232	okhttp3/z:j	()J
+    //   252: invokevirtual 210	okhttp3/z$a:b	(J)Lokhttp3/z$a;
+    //   255: aload 4
+    //   257: invokestatic 212	com/tencent/token/fh:a	(Lokhttp3/z;)Lokhttp3/z;
+    //   260: invokevirtual 215	okhttp3/z$a:b	(Lokhttp3/z;)Lokhttp3/z$a;
+    //   263: aload_1
+    //   264: invokestatic 212	com/tencent/token/fh:a	(Lokhttp3/z;)Lokhttp3/z;
+    //   267: invokevirtual 234	okhttp3/z$a:a	(Lokhttp3/z;)Lokhttp3/z$a;
+    //   270: invokevirtual 116	okhttp3/z$a:a	()Lokhttp3/z;
+    //   273: astore_2
+    //   274: aload_1
+    //   275: invokevirtual 76	okhttp3/z:e	()Lokhttp3/aa;
+    //   278: invokevirtual 237	okhttp3/aa:close	()V
+    //   281: aload_0
+    //   282: getfield 17	com/tencent/token/fh:a	Lcom/tencent/token/fl;
+    //   285: invokeinterface 239 1 0
+    //   290: aload_0
+    //   291: getfield 17	com/tencent/token/fh:a	Lcom/tencent/token/fl;
+    //   294: aload 4
+    //   296: aload_2
+    //   297: invokeinterface 242 3 0
+    //   302: aload_2
+    //   303: areturn
+    //   304: aload 4
+    //   306: invokevirtual 76	okhttp3/z:e	()Lokhttp3/aa;
+    //   309: invokestatic 179	com/tencent/token/ff:a	(Ljava/io/Closeable;)V
+    //   312: aload_1
+    //   313: invokevirtual 100	okhttp3/z:f	()Lokhttp3/z$a;
+    //   316: aload 4
+    //   318: invokestatic 212	com/tencent/token/fh:a	(Lokhttp3/z;)Lokhttp3/z;
+    //   321: invokevirtual 215	okhttp3/z$a:b	(Lokhttp3/z;)Lokhttp3/z$a;
+    //   324: aload_1
+    //   325: invokestatic 212	com/tencent/token/fh:a	(Lokhttp3/z;)Lokhttp3/z;
+    //   328: invokevirtual 234	okhttp3/z$a:a	(Lokhttp3/z;)Lokhttp3/z$a;
+    //   331: invokevirtual 116	okhttp3/z$a:a	()Lokhttp3/z;
+    //   334: astore_1
+    //   335: aload_0
+    //   336: getfield 17	com/tencent/token/fh:a	Lcom/tencent/token/fl;
+    //   339: ifnull +54 -> 393
+    //   342: aload_1
+    //   343: invokestatic 247	com/tencent/token/fq:b	(Lokhttp3/z;)Z
+    //   346: ifeq +27 -> 373
+    //   349: aload_1
+    //   350: aload_3
+    //   351: invokestatic 250	com/tencent/token/fj:a	(Lokhttp3/z;Lokhttp3/x;)Z
+    //   354: ifeq +19 -> 373
+    //   357: aload_0
+    //   358: aload_0
+    //   359: getfield 17	com/tencent/token/fh:a	Lcom/tencent/token/fl;
+    //   362: aload_1
+    //   363: invokeinterface 253 2 0
+    //   368: aload_1
+    //   369: invokespecial 255	com/tencent/token/fh:a	(Lcom/tencent/token/fi;Lokhttp3/z;)Lokhttp3/z;
+    //   372: areturn
+    //   373: aload_3
+    //   374: invokevirtual 260	okhttp3/x:b	()Ljava/lang/String;
+    //   377: invokestatic 263	com/tencent/token/fr:a	(Ljava/lang/String;)Z
+    //   380: ifeq +13 -> 393
+    //   383: aload_0
+    //   384: getfield 17	com/tencent/token/fh:a	Lcom/tencent/token/fl;
+    //   387: aload_3
+    //   388: invokeinterface 266 2 0
+    //   393: aload_1
+    //   394: areturn
+    //   395: astore_1
+    //   396: aload_2
+    //   397: ifnull +10 -> 407
+    //   400: aload_2
+    //   401: invokevirtual 76	okhttp3/z:e	()Lokhttp3/aa;
+    //   404: invokestatic 179	com/tencent/token/ff:a	(Ljava/io/Closeable;)V
+    //   407: aload_1
+    //   408: athrow
+    //   409: astore_2
+    //   410: aload_1
+    //   411: areturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	412	0	this	fh
+    //   0	412	1	parama	okhttp3.t.a
+    //   4	397	2	localObject	Object
+    //   409	1	2	localIOException	IOException
+    //   54	334	3	localx	okhttp3.x
+    //   60	257	4	localz	z
+    //   47	29	5	localfj	fj
+    //   66	8	6	localfl	fl
+    // Exception table:
+    //   from	to	target	type
+    //   183	191	395	finally
+    //   383	393	409	java/io/IOException
   }
 }
 

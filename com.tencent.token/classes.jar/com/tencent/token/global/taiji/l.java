@@ -21,7 +21,7 @@ public class l
   {
     try
     {
-      this.a = RqdApplication.l().getSharedPreferences(paramString, 0);
+      this.a = RqdApplication.n().getSharedPreferences(paramString, 0);
       return;
     }
     catch (Exception paramString)

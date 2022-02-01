@@ -1,7 +1,7 @@
 package okhttp3;
 
-import com.tencent.token.fc;
-import com.tencent.token.gc;
+import com.tencent.token.ff;
+import com.tencent.token.gf;
 import java.lang.ref.Reference;
 import java.net.Socket;
 import java.util.ArrayDeque;
@@ -20,7 +20,7 @@ import okhttp3.internal.connection.f.a;
 
 public final class j
 {
-  private static final Executor d = new ThreadPoolExecutor(0, 2147483647, 60L, TimeUnit.SECONDS, new SynchronousQueue(), fc.a("OkHttp ConnectionPool", true));
+  private static final Executor d = new ThreadPoolExecutor(0, 2147483647, 60L, TimeUnit.SECONDS, new SynchronousQueue(), ff.a("OkHttp ConnectionPool", true));
   final d a = new d();
   boolean b;
   private final int e;
@@ -94,7 +94,7 @@ public final class j
         ((StringBuilder)localObject2).append(paramc.a().a().a());
         ((StringBuilder)localObject2).append(" was leaked. Did you forget to close a response body?");
         localObject2 = ((StringBuilder)localObject2).toString();
-        gc.c().a((String)localObject2, ((f.a)localObject1).a);
+        gf.c().a((String)localObject2, ((f.a)localObject1).a);
         localList.remove(i);
         paramc.a = true;
         if (localList.isEmpty())
@@ -152,7 +152,7 @@ public final class j
         return -1L;
       }
       this.h.remove(localObject1);
-      fc.a(localObject1.b());
+      ff.a(localObject1.b());
       return 0L;
     }
     finally {}

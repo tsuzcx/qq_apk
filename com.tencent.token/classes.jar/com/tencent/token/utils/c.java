@@ -4,44 +4,44 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.HandlerThread;
 import android.os.Message;
-import com.tencent.token.dw;
 import com.tencent.token.dy;
-import com.tencent.token.dz;
+import com.tencent.token.ea;
+import com.tencent.token.eb;
 import com.tencent.token.global.c.a;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class c
-  extends dz
+  extends eb
   implements Handler.Callback
 {
   private d a;
   private FileOutputStream b;
   private File c;
   private char[] d;
-  private volatile dw e;
-  private volatile dw f;
-  private volatile dw g;
-  private volatile dw h;
+  private volatile dy e;
+  private volatile dy f;
+  private volatile dy g;
+  private volatile dy h;
   private volatile boolean i = false;
   private HandlerThread j;
   private Handler k;
   
-  public c(int paramInt, boolean paramBoolean, dy paramdy, d paramd)
+  public c(int paramInt, boolean paramBoolean, ea paramea, d paramd)
   {
-    super(paramInt, paramBoolean, paramdy);
+    super(paramInt, paramBoolean, paramea);
     a(paramd);
-    this.e = new dw();
-    this.f = new dw();
+    this.e = new dy();
+    this.f = new dy();
     this.g = this.e;
     this.h = this.f;
     this.d = new char[paramd.f()];
     g();
     this.j = new HandlerThread(paramd.c(), paramd.i());
-    paramdy = this.j;
-    if (paramdy != null) {
-      paramdy.start();
+    paramea = this.j;
+    if (paramea != null) {
+      paramea.start();
     }
     if (this.j.isAlive()) {
       this.k = new Handler(this.j.getLooper(), this);
@@ -58,7 +58,7 @@ public class c
   
   public c(d paramd)
   {
-    this(c.a.h, true, dy.a, paramd);
+    this(c.a.h, true, ea.a, paramd);
   }
   
   private void e()
@@ -121,11 +121,11 @@ public class c
     //   85: aload_2
     //   86: astore_1
     //   87: aload_0
-    //   88: getfield 50	com/tencent/token/utils/c:h	Lcom/tencent/token/dw;
+    //   88: getfield 50	com/tencent/token/utils/c:h	Lcom/tencent/token/dy;
     //   91: aload 4
     //   93: aload_0
     //   94: getfield 57	com/tencent/token/utils/c:d	[C
-    //   97: invokevirtual 154	com/tencent/token/dw:a	(Ljava/io/Writer;[C)V
+    //   97: invokevirtual 154	com/tencent/token/dy:a	(Ljava/io/Writer;[C)V
     //   100: aload_2
     //   101: ifnull +34 -> 135
     //   104: aload_2
@@ -137,8 +137,8 @@ public class c
     //   114: aload_3
     //   115: invokevirtual 159	java/nio/channels/FileLock:release	()V
     //   118: aload_0
-    //   119: getfield 50	com/tencent/token/utils/c:h	Lcom/tencent/token/dw;
-    //   122: invokevirtual 161	com/tencent/token/dw:b	()V
+    //   119: getfield 50	com/tencent/token/utils/c:h	Lcom/tencent/token/dy;
+    //   122: invokevirtual 161	com/tencent/token/dy:b	()V
     //   125: aload_1
     //   126: athrow
     //   127: aload_1
@@ -146,8 +146,8 @@ public class c
     //   131: aload_1
     //   132: invokevirtual 159	java/nio/channels/FileLock:release	()V
     //   135: aload_0
-    //   136: getfield 50	com/tencent/token/utils/c:h	Lcom/tencent/token/dw;
-    //   139: invokevirtual 161	com/tencent/token/dw:b	()V
+    //   136: getfield 50	com/tencent/token/utils/c:h	Lcom/tencent/token/dy;
+    //   139: invokevirtual 161	com/tencent/token/dy:b	()V
     //   142: aload_0
     //   143: iconst_0
     //   144: putfield 34	com/tencent/token/utils/c:i	Z

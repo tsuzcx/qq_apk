@@ -54,13 +54,13 @@ class b
     if (paramView == null) {
       localView = this.c.inflate(2131296332, paramViewGroup, false);
     }
-    paramView = localView.findViewById(2131165443);
+    paramView = localView.findViewById(2131165445);
     if (paramInt == getCount() - 1) {
       paramView.setVisibility(4);
     } else {
       paramView.setVisibility(0);
     }
-    paramView = (TextView)localView.findViewById(2131166065);
+    paramView = (TextView)localView.findViewById(2131166067);
     paramViewGroup = this.a;
     if (paramViewGroup != null)
     {

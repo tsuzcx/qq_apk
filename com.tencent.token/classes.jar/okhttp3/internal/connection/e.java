@@ -1,6 +1,6 @@
 package okhttp3.internal.connection;
 
-import com.tencent.token.fc;
+import com.tencent.token.ff;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
@@ -122,9 +122,9 @@ public final class e
     {
       params = this.a.g().select(params.a());
       if ((params != null) && (!params.isEmpty())) {
-        params = fc.a(params);
+        params = ff.a(params);
       } else {
-        params = fc.a(new Proxy[] { Proxy.NO_PROXY });
+        params = ff.a(new Proxy[] { Proxy.NO_PROXY });
       }
       this.e = params;
     }

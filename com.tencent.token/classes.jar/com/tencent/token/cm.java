@@ -1,155 +1,64 @@
 package com.tencent.token;
 
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.global.g;
-
 public class cm
-  implements cf
 {
-  public long a = 0L;
-  public ck b = null;
-  private Handler d = null;
-  private ew e = null;
-  
-  public cm()
+  public short a(byte[] paramArrayOfByte)
   {
-    d();
-  }
-  
-  public void a()
-  {
-    Handler localHandler = this.d;
-    if (localHandler == null) {
-      return;
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length >= 2) && (paramArrayOfByte[0] == 2) && (paramArrayOfByte[(paramArrayOfByte.length - 1)] == 3)) {
+      return ck.a(paramArrayOfByte, 20);
     }
-    localHandler.sendEmptyMessage(10);
+    return -1;
   }
   
-  public void a(int paramInt)
+  public void a(ch paramch)
   {
-    if (this.d == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("serTime", paramInt);
-    localMessage.what = 13;
-    localMessage.setData(localBundle);
-    this.d.sendMessage(localMessage);
+    paramch.a = ck.b(paramch.f, 0, 32);
   }
   
-  public void a(int paramInt, String paramString)
+  public void a(ci paramci, byte[] paramArrayOfByte)
   {
-    if (this.d == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("errCode", paramInt);
-    localBundle.putString("error", paramString);
-    localMessage.what = 9;
-    localMessage.setData(localBundle);
-    this.d.sendMessage(localMessage);
-  }
-  
-  public void a(Handler paramHandler)
-  {
-    this.d = paramHandler;
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.d == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("error", paramString);
-    localMessage.what = 14;
-    localMessage.setData(localBundle);
-    this.d.sendMessage(localMessage);
-  }
-  
-  public void b()
-  {
-    Handler localHandler = this.d;
-    if (localHandler == null) {
-      return;
-    }
-    localHandler.sendEmptyMessage(12);
-  }
-  
-  public void b(int paramInt, String paramString)
-  {
-    if (this.d == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("errCode", paramInt);
-    localBundle.putString("error", paramString);
-    localMessage.what = 11;
-    localMessage.setData(localBundle);
-    this.d.sendMessage(localMessage);
-  }
-  
-  public void b(String paramString)
-  {
-    if (this.d == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("ucSmsPort", paramString);
-    localMessage.what = 1;
-    localMessage.setData(localBundle);
-    this.d.sendMessage(localMessage);
-  }
-  
-  public void c()
-  {
-    Handler localHandler = this.d;
-    if (localHandler == null) {
-      return;
-    }
-    localHandler.sendEmptyMessage(15);
-  }
-  
-  public void c(String paramString)
-  {
-    if (this.d == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("error", paramString);
-    localMessage.what = 2;
-    localMessage.setData(localBundle);
-    this.d.sendMessage(localMessage);
-  }
-  
-  public void d()
-  {
-    try
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length >= 2) && (paramArrayOfByte[0] == 2))
     {
-      this.e = ev.a();
-      if ((!c) && (this.e == null)) {
-        throw new AssertionError();
+      if (paramArrayOfByte[(paramArrayOfByte.length - 1)] != 3) {
+        return;
       }
-      this.b = new ck(this);
-      this.b.a(this.e);
+      paramci.g = ck.b(paramArrayOfByte, 1);
+      paramci.h = ck.a(paramArrayOfByte, 5);
+      paramci.i = paramArrayOfByte[7];
+      paramci.j = ck.a(paramArrayOfByte, 8);
+      paramci.k = ck.a(paramArrayOfByte, 10);
+      paramci.l = ((int)ck.b(paramArrayOfByte, 12));
+      paramci.m = ((int)ck.b(paramArrayOfByte, 16));
+      paramci.n = ck.a(paramArrayOfByte, 20);
+      paramci.o = ck.a(paramArrayOfByte, 22);
+      paramci.p = ck.a(paramArrayOfByte, 24);
+      paramci.q = ck.a(paramArrayOfByte, 26);
+      paramci.r = ck.b(paramArrayOfByte, 28, 64);
+      paramci.b = ((int)ck.b(paramArrayOfByte, 92));
+      paramci.c = ck.b(paramArrayOfByte, 96, 256);
+      paramci.d = ((int)ck.b(paramArrayOfByte, 352));
+      paramci.e = ck.a(paramArrayOfByte, 356);
+      ck.a(paramci.t, 0, paramArrayOfByte, 358, paramci.t.length);
+      int j = 358 + paramci.t.length;
+      int k = paramArrayOfByte.length - 1 - paramci.s.length - j;
+      int i = j;
+      if (k > 0)
+      {
+        paramci.f = new byte[k];
+        ck.a(paramci.f, 0, paramArrayOfByte, j, paramci.f.length);
+        i = j + paramci.f.length;
+      }
+      ck.a(paramci.s, 0, paramArrayOfByte, i, paramci.s.length);
+      i = paramci.s.length;
       return;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("RESULT_ERROR!!!");
-      localStringBuilder.append(localException.getMessage());
-      g.c(localStringBuilder.toString());
-    }
+  }
+  
+  public byte[] a(long paramLong, int paramInt)
+  {
+    cj localcj = new cj();
+    localcj.a(paramLong, paramInt, (int)(System.currentTimeMillis() / 1000L), (short)1);
+    return localcj.a();
   }
 }
 

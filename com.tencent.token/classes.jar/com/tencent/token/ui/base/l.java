@@ -25,12 +25,12 @@ public class l
       return;
     }
     this.h = paramf;
-    this.d = ((SwitchButton)paramView.findViewById(2131166205));
-    this.b = ((TextView)this.a.findViewById(2131166234));
-    this.c = ((ProgressBar)this.a.findViewById(2131166209));
-    this.e = ((ImageView)this.a.findViewById(2131166235));
-    this.f = ((ImageView)this.a.findViewById(2131166204));
-    this.g = ((ImageView)this.a.findViewById(2131166233));
+    this.d = ((SwitchButton)paramView.findViewById(2131166207));
+    this.b = ((TextView)this.a.findViewById(2131166236));
+    this.c = ((ProgressBar)this.a.findViewById(2131166211));
+    this.e = ((ImageView)this.a.findViewById(2131166237));
+    this.f = ((ImageView)this.a.findViewById(2131166206));
+    this.g = ((ImageView)this.a.findViewById(2131166235));
   }
   
   public f a()

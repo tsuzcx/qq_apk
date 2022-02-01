@@ -35,7 +35,7 @@ import com.tencent.jni.LiveThreshold;
 import com.tencent.service.DetectType;
 import com.tencent.service.FaceServiceDelegate;
 import com.tencent.service.FaceServiceDelegate.FaceDetectErrorCode;
-import com.tencent.token.bu;
+import com.tencent.token.bv;
 import com.tencent.token.core.bean.FaceRecognitionParamResult;
 import com.tencent.token.core.protocolcenter.protocol.ProtoFaceCommon;
 import com.tencent.token.global.RqdApplication;
@@ -54,7 +54,7 @@ public class h
   public static int k = ;
   public static int l = m.u();
   private com.tencent.service.e A;
-  private Context B = RqdApplication.l();
+  private Context B = RqdApplication.n();
   private Activity C;
   private SurfaceHolder D;
   private DetectType E;
@@ -124,7 +124,7 @@ public class h
     paramInt = 90;
     if (paramActivity == null)
     {
-      if (RqdApplication.l().getResources().getConfiguration().orientation != 2)
+      if (RqdApplication.n().getResources().getConfiguration().orientation != 2)
       {
         paramCamera.setDisplayOrientation(90);
         return;
@@ -702,7 +702,7 @@ public class h
       paramArrayOfByte = this.J;
       if (paramArrayOfByte != null)
       {
-        paramArrayOfByte.setText(2131493148);
+        paramArrayOfByte.setText(2131493149);
         return;
       }
       break;
@@ -710,7 +710,7 @@ public class h
       paramArrayOfByte = this.J;
       if (paramArrayOfByte != null)
       {
-        paramArrayOfByte.setText(2131493151);
+        paramArrayOfByte.setText(2131493152);
         return;
       }
       break;
@@ -718,7 +718,7 @@ public class h
       paramArrayOfByte = this.J;
       if (paramArrayOfByte != null)
       {
-        paramArrayOfByte.setText(2131493150);
+        paramArrayOfByte.setText(2131493151);
         return;
       }
       break;
@@ -750,7 +750,7 @@ public class h
       }
       else
       {
-        bu.a().a(System.currentTimeMillis(), 135);
+        bv.a().a(System.currentTimeMillis(), 135);
         ProtoFaceCommon.k = (int)(l1 - this.q);
       }
       switch (this.G)
@@ -758,16 +758,16 @@ public class h
       default: 
         break;
       case 4: 
-        bu.a().a(l1, 137);
+        bv.a().a(l1, 137);
         break;
       case 3: 
-        bu.a().a(l1, 136);
+        bv.a().a(l1, 136);
         break;
       case 2: 
-        bu.a().a(l1, 138);
+        bv.a().a(l1, 138);
         break;
       case 1: 
-        bu.a().a(l1, 139);
+        bv.a().a(l1, 139);
       }
       if (((this.i == FaceDetector.LiveAction.ACT_MOUTH_OPEN) || (this.i == FaceDetector.LiveAction.ACT_BLINK)) && (this.I != null) && (this.f.x() > 0) && (this.f.y() > 0) && (this.f.width() > 0) && (this.f.height() > 0)) {
         this.I.a(this.f, this.c, this.b);
@@ -811,19 +811,19 @@ public class h
     case 5: 
       paramArrayOfByte = this.J;
       if (paramArrayOfByte != null) {
-        paramArrayOfByte.setText(2131493148);
+        paramArrayOfByte.setText(2131493149);
       }
       break;
     case 4: 
       paramArrayOfByte = this.J;
       if (paramArrayOfByte != null) {
-        paramArrayOfByte.setText(2131493151);
+        paramArrayOfByte.setText(2131493152);
       }
       break;
     case 3: 
       paramArrayOfByte = this.J;
       if (paramArrayOfByte != null) {
-        paramArrayOfByte.setText(2131493150);
+        paramArrayOfByte.setText(2131493151);
       }
       break;
     case 2: 
@@ -860,29 +860,29 @@ public class h
       break;
     case 0: 
       long l1 = System.currentTimeMillis();
-      bu.a().a(l1, 140);
+      bv.a().a(l1, 140);
       ProtoFaceCommon.n = (int)(l1 - this.q);
       switch (this.G)
       {
       default: 
         break;
       case 6: 
-        bu.a().a(l1, 156);
+        bv.a().a(l1, 156);
         break;
       case 5: 
-        bu.a().a(l1, 155);
+        bv.a().a(l1, 155);
         break;
       case 4: 
-        bu.a().a(l1, 144);
+        bv.a().a(l1, 144);
         break;
       case 3: 
-        bu.a().a(l1, 143);
+        bv.a().a(l1, 143);
         break;
       case 2: 
-        bu.a().a(l1, 142);
+        bv.a().a(l1, 142);
         break;
       case 1: 
-        bu.a().a(l1, 141);
+        bv.a().a(l1, 141);
       }
       if (((this.i == FaceDetector.LiveAction.ACT_MOUTH_OPEN) || (this.i == FaceDetector.LiveAction.ACT_BLINK)) && (this.I != null) && (this.f.x() > 0) && (this.f.y() > 0) && (this.f.width() > 0) && (this.f.height() > 0)) {
         this.I.a(this.f, this.c, this.b);
@@ -1376,7 +1376,7 @@ public class h
       {
       default: 
       case 7: 
-        this.J.setText(2131493153);
+        this.J.setText(2131493154);
         if (this.Q != null)
         {
           paramFaceDetectErrorCode = this.I;
@@ -1391,7 +1391,7 @@ public class h
         }
         break;
       case 6: 
-        this.J.setText(2131493152);
+        this.J.setText(2131493153);
         paramFaceDetectErrorCode = this.Q;
         if (paramFaceDetectErrorCode != null)
         {
@@ -1401,7 +1401,7 @@ public class h
         break;
       case 4: 
       case 5: 
-        this.J.setText(2131493148);
+        this.J.setText(2131493149);
         paramFaceDetectErrorCode = this.Q;
         if (paramFaceDetectErrorCode != null)
         {
@@ -1411,7 +1411,7 @@ public class h
         break;
       case 2: 
       case 3: 
-        this.J.setText(2131493293);
+        this.J.setText(2131493294);
         paramFaceDetectErrorCode = this.Q;
         if (paramFaceDetectErrorCode != null)
         {
@@ -1444,70 +1444,70 @@ public class h
       if (this.E == DetectType.DT_REGISTER)
       {
         if ((this.H == 0) && (paramBoolean2)) {
-          bu.a().a(System.currentTimeMillis(), 145);
+          bv.a().a(System.currentTimeMillis(), 145);
         }
         switch (this.G)
         {
         default: 
           return;
         case 4: 
-          bu.a().a(System.currentTimeMillis(), 147);
+          bv.a().a(System.currentTimeMillis(), 147);
           this.i = FaceDetector.LiveAction.ACT_HEAD_SHAKE;
-          this.O = this.B.getResources().getString(2131493291);
+          this.O = this.B.getResources().getString(2131493292);
           return;
         case 3: 
-          bu.a().a(System.currentTimeMillis(), 146);
+          bv.a().a(System.currentTimeMillis(), 146);
           this.i = FaceDetector.LiveAction.ACT_HEAD_NOD;
-          this.O = this.B.getResources().getString(2131493290);
+          this.O = this.B.getResources().getString(2131493291);
           return;
         case 2: 
-          bu.a().a(System.currentTimeMillis(), 148);
+          bv.a().a(System.currentTimeMillis(), 148);
           this.i = FaceDetector.LiveAction.ACT_BLINK;
-          this.O = this.B.getResources().getString(2131493289);
+          this.O = this.B.getResources().getString(2131493290);
           return;
         }
-        bu.a().a(System.currentTimeMillis(), 149);
+        bv.a().a(System.currentTimeMillis(), 149);
         this.i = FaceDetector.LiveAction.ACT_MOUTH_OPEN;
-        this.O = this.B.getResources().getString(2131493288);
+        this.O = this.B.getResources().getString(2131493289);
         return;
       }
-      bu.a().a(System.currentTimeMillis(), 150);
+      bv.a().a(System.currentTimeMillis(), 150);
       switch (this.G)
       {
       default: 
         return;
       case 6: 
-        bu.a().a(System.currentTimeMillis(), 157);
+        bv.a().a(System.currentTimeMillis(), 157);
         this.i = FaceDetector.LiveAction.ACT_BLINK;
-        this.O = this.B.getResources().getString(2131493289);
+        this.O = this.B.getResources().getString(2131493290);
         return;
       case 5: 
-        bu.a().a(System.currentTimeMillis(), 158);
+        bv.a().a(System.currentTimeMillis(), 158);
         this.i = FaceDetector.LiveAction.ACT_MOUTH_OPEN;
-        this.O = this.B.getResources().getString(2131493288);
+        this.O = this.B.getResources().getString(2131493289);
         return;
       case 4: 
-        bu.a().a(System.currentTimeMillis(), 154);
+        bv.a().a(System.currentTimeMillis(), 154);
         this.j = FaceDetector.LiveDirection.LD_RIGHT;
-        this.O = this.B.getResources().getString(2131493297);
+        this.O = this.B.getResources().getString(2131493298);
         this.g.setDirection(this.j.ordinal());
         return;
       case 3: 
-        bu.a().a(System.currentTimeMillis(), 153);
+        bv.a().a(System.currentTimeMillis(), 153);
         this.j = FaceDetector.LiveDirection.LD_LEFT;
-        this.O = this.B.getResources().getString(2131493296);
+        this.O = this.B.getResources().getString(2131493297);
         this.g.setDirection(this.j.ordinal());
         return;
       case 2: 
-        bu.a().a(System.currentTimeMillis(), 152);
+        bv.a().a(System.currentTimeMillis(), 152);
         this.j = FaceDetector.LiveDirection.LD_DOWN;
-        this.O = this.B.getResources().getString(2131493295);
+        this.O = this.B.getResources().getString(2131493296);
         this.g.setDirection(this.j.ordinal());
         return;
       }
-      bu.a().a(System.currentTimeMillis(), 151);
+      bv.a().a(System.currentTimeMillis(), 151);
       this.j = FaceDetector.LiveDirection.LD_UP;
-      this.O = this.B.getResources().getString(2131493294);
+      this.O = this.B.getResources().getString(2131493295);
       this.g.setDirection(this.j.ordinal());
     }
   }

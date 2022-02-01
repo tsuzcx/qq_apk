@@ -3,11 +3,11 @@ package com.tencent.token.core.protocolcenter.protocol;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.ca;
-import com.tencent.token.cc;
+import com.tencent.token.cb;
+import com.tencent.token.cd;
 import com.tencent.token.core.bean.LoginProtectResult;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -25,16 +25,16 @@ public class ProtoGetLoginProtect
   private String f;
   private int g;
   
-  public static void a(do paramdo, long paramLong, String paramString, int paramInt)
+  public static void a(dp paramdp, long paramLong, String paramString, int paramInt)
   {
-    paramdo.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramdo.c.put("param.wtlogin.a2", paramString);
-    paramdo.c.put("param.common.seq", Integer.valueOf(paramInt));
+    paramdp.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdp.c.put("param.wtlogin.a2", paramString);
+    paramdp.c.put("param.common.seq", Integer.valueOf(paramInt));
   }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     if (str == null)
     {
       this.a.b(104);
@@ -47,7 +47,7 @@ public class ProtoGetLoginProtect
       ((JSONObject)localObject2).put("A2", this.f);
       ((JSONObject)localObject2).put("uin", this.d);
       ((JSONObject)localObject2).put("seq_id", this.g);
-      ((JSONObject)localObject2).put("op_time", (int)(cc.c().s() / 1000L));
+      ((JSONObject)localObject2).put("op_time", (int)(cd.c().s() / 1000L));
       StringBuilder localStringBuilder2 = new StringBuilder();
       localStringBuilder2.append("loginprotect data=");
       localStringBuilder2.append(localObject2);
@@ -72,11 +72,11 @@ public class ProtoGetLoginProtect
     return localStringBuilder1.toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.d = ((Long)paramdo.c.get("param.uinhash")).longValue();
-    this.f = ((String)paramdo.c.get("param.wtlogin.a2"));
-    this.g = ((Integer)paramdo.c.get("param.common.seq")).intValue();
+    this.d = ((Long)paramdp.c.get("param.uinhash")).longValue();
+    this.f = ((String)paramdp.c.get("param.wtlogin.a2"));
+    this.g = ((Integer)paramdp.c.get("param.common.seq")).intValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -114,7 +114,7 @@ public class ProtoGetLoginProtect
     localStringBuilder.append("parseJSON error decodeData=");
     localStringBuilder.append(paramJSONObject);
     g.c(localStringBuilder.toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
   
   protected void b()

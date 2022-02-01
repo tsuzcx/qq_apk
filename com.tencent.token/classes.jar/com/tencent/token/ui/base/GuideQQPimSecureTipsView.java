@@ -9,7 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.token.i;
+import com.tencent.token.j;
 import com.tencent.token.utils.a;
 import com.tmsdk.TMSDKContext;
 import java.util.ArrayList;
@@ -31,9 +31,9 @@ public class GuideQQPimSecureTipsView
   private void a(Context paramContext)
   {
     ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131296357, this, true);
-    this.b = ((TextView)findViewById(2131166100));
-    this.c = ((TextView)findViewById(2131166099));
-    this.d = ((ImageView)findViewById(2131165651));
+    this.b = ((TextView)findViewById(2131166102));
+    this.c = ((TextView)findViewById(2131166101));
+    this.d = ((ImageView)findViewById(2131165653));
   }
   
   public void a()
@@ -54,7 +54,7 @@ public class GuideQQPimSecureTipsView
     {
       public void onClick(View paramAnonymousView)
       {
-        i.a().a(GuideQQPimSecureTipsView.this.getContext(), paramString1, paramArrayList);
+        j.a().a(GuideQQPimSecureTipsView.this.getContext(), paramString1, paramArrayList);
         GuideQQPimSecureTipsView.this.setVisibility(8);
         GuideQQPimSecureTipsView.a = true;
         if (paramBoolean)

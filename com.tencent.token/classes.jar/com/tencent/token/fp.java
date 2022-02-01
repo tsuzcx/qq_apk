@@ -1,147 +1,71 @@
 package com.tencent.token;
 
-import java.util.List;
-import okhttp3.e;
-import okhttp3.i;
-import okhttp3.internal.connection.c;
-import okhttp3.internal.connection.f;
-import okhttp3.p;
-import okhttp3.t;
-import okhttp3.t.a;
-import okhttp3.x;
-import okhttp3.z;
+import java.text.DateFormat;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public final class fp
-  implements t.a
 {
-  private final List<t> a;
-  private final f b;
-  private final fl c;
-  private final c d;
-  private final int e;
-  private final x f;
-  private final e g;
-  private final p h;
-  private final int i;
-  private final int j;
-  private final int k;
-  private int l;
-  
-  public fp(List<t> paramList, f paramf, fl paramfl, c paramc, int paramInt1, x paramx, e parame, p paramp, int paramInt2, int paramInt3, int paramInt4)
+  private static final ThreadLocal<DateFormat> a = new ThreadLocal()
   {
-    this.a = paramList;
-    this.d = paramc;
-    this.b = paramf;
-    this.c = paramfl;
-    this.e = paramInt1;
-    this.f = paramx;
-    this.g = parame;
-    this.h = paramp;
-    this.i = paramInt2;
-    this.j = paramInt3;
-    this.k = paramInt4;
-  }
-  
-  public x a()
-  {
-    return this.f;
-  }
-  
-  public z a(x paramx)
-  {
-    return a(paramx, this.b, this.c, this.d);
-  }
-  
-  public z a(x paramx, f paramf, fl paramfl, c paramc)
-  {
-    if (this.e < this.a.size())
+    protected DateFormat a()
     {
-      this.l += 1;
-      if ((this.c != null) && (!this.d.a(paramx.a())))
-      {
-        paramx = new StringBuilder();
-        paramx.append("network interceptor ");
-        paramx.append(this.a.get(this.e - 1));
-        paramx.append(" must retain the same host and port");
-        throw new IllegalStateException(paramx.toString());
-      }
-      if ((this.c != null) && (this.l > 1))
-      {
-        paramx = new StringBuilder();
-        paramx.append("network interceptor ");
-        paramx.append(this.a.get(this.e - 1));
-        paramx.append(" must call proceed() exactly once");
-        throw new IllegalStateException(paramx.toString());
-      }
-      paramf = new fp(this.a, paramf, paramfl, paramc, this.e + 1, paramx, this.g, this.h, this.i, this.j, this.k);
-      paramx = (t)this.a.get(this.e);
-      paramc = paramx.a(paramf);
-      if ((paramfl != null) && (this.e + 1 < this.a.size()) && (paramf.l != 1))
-      {
-        paramf = new StringBuilder();
-        paramf.append("network interceptor ");
-        paramf.append(paramx);
-        paramf.append(" must call proceed() exactly once");
-        throw new IllegalStateException(paramf.toString());
-      }
-      if (paramc != null)
-      {
-        if (paramc.e() != null) {
-          return paramc;
-        }
-        paramf = new StringBuilder();
-        paramf.append("interceptor ");
-        paramf.append(paramx);
-        paramf.append(" returned a response with no body");
-        throw new IllegalStateException(paramf.toString());
-      }
-      paramf = new StringBuilder();
-      paramf.append("interceptor ");
-      paramf.append(paramx);
-      paramf.append(" returned null");
-      throw new NullPointerException(paramf.toString());
+      SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss 'GMT'", Locale.US);
+      localSimpleDateFormat.setLenient(false);
+      localSimpleDateFormat.setTimeZone(ff.g);
+      return localSimpleDateFormat;
     }
-    throw new AssertionError();
+  };
+  private static final String[] b = { "EEE, dd MMM yyyy HH:mm:ss zzz", "EEEE, dd-MMM-yy HH:mm:ss zzz", "EEE MMM d HH:mm:ss yyyy", "EEE, dd-MMM-yyyy HH:mm:ss z", "EEE, dd-MMM-yyyy HH-mm-ss z", "EEE, dd MMM yy HH:mm:ss z", "EEE dd-MMM-yyyy HH:mm:ss z", "EEE dd MMM yyyy HH:mm:ss z", "EEE dd-MMM-yyyy HH-mm-ss z", "EEE dd-MMM-yy HH:mm:ss z", "EEE dd MMM yy HH:mm:ss z", "EEE,dd-MMM-yy HH:mm:ss z", "EEE,dd-MMM-yyyy HH:mm:ss z", "EEE, dd-MM-yyyy HH:mm:ss z", "EEE MMM d yyyy HH:mm:ss z" };
+  private static final DateFormat[] c = new DateFormat[b.length];
+  
+  public static String a(Date paramDate)
+  {
+    return ((DateFormat)a.get()).format(paramDate);
   }
   
-  public int b()
+  public static Date a(String paramString)
   {
-    return this.i;
-  }
-  
-  public int c()
-  {
-    return this.j;
-  }
-  
-  public int d()
-  {
-    return this.k;
-  }
-  
-  public i e()
-  {
-    return this.d;
-  }
-  
-  public f f()
-  {
-    return this.b;
-  }
-  
-  public fl g()
-  {
-    return this.c;
-  }
-  
-  public e h()
-  {
-    return this.g;
-  }
-  
-  public p i()
-  {
-    return this.h;
+    if (paramString.length() == 0) {
+      return null;
+    }
+    ParsePosition localParsePosition = new ParsePosition(0);
+    Object localObject = ((DateFormat)a.get()).parse(paramString, localParsePosition);
+    if (localParsePosition.getIndex() == paramString.length()) {
+      return localObject;
+    }
+    for (;;)
+    {
+      int i;
+      synchronized (b)
+      {
+        int j = b.length;
+        i = 0;
+        if (i < j)
+        {
+          DateFormat localDateFormat = c[i];
+          localObject = localDateFormat;
+          if (localDateFormat == null)
+          {
+            localObject = new SimpleDateFormat(b[i], Locale.US);
+            ((DateFormat)localObject).setTimeZone(ff.g);
+            c[i] = localObject;
+          }
+          localParsePosition.setIndex(0);
+          localObject = ((DateFormat)localObject).parse(paramString, localParsePosition);
+          if (localParsePosition.getIndex() != 0) {
+            return localObject;
+          }
+        }
+        else
+        {
+          return null;
+        }
+      }
+      i += 1;
+    }
   }
 }
 

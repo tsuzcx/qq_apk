@@ -4,9 +4,9 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.token.ca;
+import com.tencent.token.cb;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -24,7 +24,7 @@ public class ProtoQuerySuperCodeInfo
   
   protected String a()
   {
-    Object localObject4 = ca.a().b();
+    Object localObject4 = cb.a().b();
     if (localObject4 == null)
     {
       this.a.b(104);
@@ -79,10 +79,10 @@ public class ProtoQuerySuperCodeInfo
     return null;
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.d = ((Long)paramdo.c.get("param.uinhash")).longValue();
-    this.e = ((Integer)paramdo.c.get("param.common.seq")).intValue();
+    this.d = ((Long)paramdp.c.get("param.uinhash")).longValue();
+    this.e = ((Integer)paramdp.c.get("param.common.seq")).intValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -135,7 +135,7 @@ public class ProtoQuerySuperCodeInfo
     ((StringBuilder)localObject).append("parseJSON error decodeData=");
     ((StringBuilder)localObject).append(paramJSONObject);
     g.c(((StringBuilder)localObject).toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
   
   protected void b()

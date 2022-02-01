@@ -2,7 +2,7 @@ package com.tencent.token.utils;
 
 import android.net.Uri;
 import android.os.Environment;
-import com.tencent.token.ez;
+import com.tencent.token.fc;
 import com.tencent.token.global.g;
 import com.tencent.token.utils.encrypt.c;
 import java.io.File;
@@ -44,7 +44,7 @@ public class f
     ((StringBuilder)localObject2).append("fromnet");
     ((StringBuilder)localObject2).append(paramString);
     g.b(((StringBuilder)localObject2).toString());
-    paramString = new ez().a(paramString);
+    paramString = new fc().a(paramString);
     if (paramString != null)
     {
       localObject2 = new FileOutputStream((File)localObject1);

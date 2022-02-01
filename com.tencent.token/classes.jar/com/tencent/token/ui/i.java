@@ -12,10 +12,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.token.cb;
+import com.tencent.token.cc;
 import com.tencent.token.core.bean.f;
-import com.tencent.token.cs;
-import com.tencent.token.cw;
+import com.tencent.token.ct;
+import com.tencent.token.cx;
 import com.tencent.token.global.e;
 import com.tencent.token.ui.base.SwitchButton;
 import com.tencent.token.ui.base.l;
@@ -49,7 +49,7 @@ class i
       return;
     }
     e.a(this.d.getResources(), parame);
-    this.d.showTipDialog(2131493532, parame.c);
+    this.d.showTipDialog(2131493533, parame.c);
   }
   
   public void a()
@@ -65,8 +65,8 @@ class i
     {
       public void onClick(View paramAnonymousView)
       {
-        i.c(i.this).findViewById(2131166217).setVisibility(8);
-        i.c(i.this).findViewById(2131166216).setVisibility(8);
+        i.c(i.this).findViewById(2131166219).setVisibility(8);
+        i.c(i.this).findViewById(2131166218).setVisibility(8);
         i.c(i.this).setVisibility(8);
         paramAnonymousView = i.this;
         paramAnonymousView.a = false;
@@ -133,7 +133,7 @@ class i
           } else {
             paraml.setVisibility(4);
           }
-          if ((!((f)localObject).e) && (cs.a().o()))
+          if ((!((f)localObject).e) && (ct.a().o()))
           {
             localProgressBar.setVisibility(4);
             localSwitchButton.setVisibility(0);
@@ -146,7 +146,7 @@ class i
             localSwitchButton.setVisibility(0);
             localSwitchButton.setEnabled(false);
           }
-          if (!cs.a().o()) {
+          if (!ct.a().o()) {
             this.d.queryGameLockStatus();
           }
           localTextView.setText(((f)localObject).b);
@@ -170,18 +170,18 @@ class i
     if ((arrayOfInt.length > 0) && (arrayOfInt[0] == 1)) {
       b = true;
     }
-    cb localcb = cb.a();
+    cc localcc = cc.a();
     Handler localHandler = this.j;
-    localcb.a(0L, new int[] { m }, arrayOfInt, "", localHandler);
+    localcc.a(0L, new int[] { m }, arrayOfInt, "", localHandler);
   }
   
   public void c()
   {
-    int n = cs.a().d();
+    int n = ct.a().d();
     int m = 0;
     while (m < n)
     {
-      f localf = cs.a().a(m);
+      f localf = ct.a().a(m);
       if (localf != null) {
         localf.e = false;
       }
@@ -192,9 +192,9 @@ class i
   public int getCount()
   {
     if (this.a) {
-      return cs.a().c();
+      return ct.a().c();
     }
-    return cs.a().d();
+    return ct.a().d();
   }
   
   public Object getItem(int paramInt)
@@ -213,7 +213,7 @@ class i
     if (paramView == null) {
       localView = this.e.inflate(2131296471, paramViewGroup, false);
     }
-    paramView = new l(localView, cs.a().a(paramInt));
+    paramView = new l(localView, ct.a().a(paramInt));
     paramView.b().setTag(paramView);
     paramView.b().setOnCheckedChangeListener(this.c);
     a(paramView, false);
@@ -232,7 +232,7 @@ class i
         return;
       }
       f localf = paramCompoundButton.a();
-      if ((localf != null) && (paramCompoundButton.h() != null) && (cs.a().o()))
+      if ((localf != null) && (paramCompoundButton.h() != null) && (ct.a().o()))
       {
         if (paramBoolean != localf.c) {
           return;
@@ -247,7 +247,7 @@ class i
           localf.e = true;
           i.a(i.this, true);
           i.this.a(paramCompoundButton, false);
-          cw.a().a(3, i.b(i.this).getHandler());
+          cx.a().a(3, i.b(i.this).getHandler());
           return;
         }
         return;

@@ -1,6 +1,6 @@
 package taiji;
 
-import com.tencent.token.gk;
+import com.tencent.token.gn;
 import java.util.List;
 
 public class m
@@ -14,7 +14,7 @@ public class m
   public Integer a(o<Integer> paramo, float paramFloat)
   {
     if ((paramo.a != null) && (paramo.b != null)) {
-      return Integer.valueOf(gk.a(paramFloat, ((Integer)paramo.a).intValue(), ((Integer)paramo.b).intValue()));
+      return Integer.valueOf(gn.a(paramFloat, ((Integer)paramo.a).intValue(), ((Integer)paramo.b).intValue()));
     }
     throw new IllegalStateException("Missing values for keyframe.");
   }

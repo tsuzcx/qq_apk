@@ -1,18 +1,20 @@
 package com.tencent.token;
 
-public class ev
+import android.content.ContentValues;
+import com.tencent.wcdb.Cursor;
+import com.tencent.wcdb.database.SQLiteDatabase;
+
+public abstract interface ev
 {
-  private static ew a;
+  public abstract ev a(Cursor paramCursor);
   
-  public static ew a()
-  {
-    if (a == null)
-    {
-      a = new ew(4, 20);
-      a.a();
-    }
-    return a;
-  }
+  public abstract void a(SQLiteDatabase paramSQLiteDatabase);
+  
+  public abstract long b(SQLiteDatabase paramSQLiteDatabase);
+  
+  public abstract String b();
+  
+  public abstract ContentValues c();
 }
 
 

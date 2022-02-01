@@ -6,14 +6,14 @@ import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.token.ca;
 import com.tencent.token.cb;
 import com.tencent.token.cc;
-import com.tencent.token.cj;
+import com.tencent.token.cd;
+import com.tencent.token.ck;
 import com.tencent.token.core.bean.ConfigResult;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.cr;
-import com.tencent.token.do;
+import com.tencent.token.cs;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -33,16 +33,16 @@ public class ProtoGetConfig
   private ConfigResult g;
   private int h;
   
-  public static void a(do paramdo, int paramInt1, int paramInt2, int paramInt3)
+  public static void a(dp paramdp, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramdo.c.put("param.config.width", Integer.valueOf(paramInt1));
-    paramdo.c.put("param.config.height", Integer.valueOf(paramInt2));
-    paramdo.c.put("param.config.dpi", Integer.valueOf(paramInt3));
+    paramdp.c.put("param.config.width", Integer.valueOf(paramInt1));
+    paramdp.c.put("param.config.height", Integer.valueOf(paramInt2));
+    paramdp.c.put("param.config.dpi", Integer.valueOf(paramInt3));
   }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     Object localObject1 = null;
     if (str == null)
     {
@@ -52,11 +52,11 @@ public class ProtoGetConfig
     try
     {
       Object localObject2 = new JSONObject();
-      int i = cb.a + 1;
-      cb.a = i;
+      int i = cc.a + 1;
+      cc.a = i;
       this.h = i;
       ((JSONObject)localObject2).put("seq_id", this.h);
-      ((JSONObject)localObject2).put("op_time", cc.c().s() / 1000L);
+      ((JSONObject)localObject2).put("op_time", cd.c().s() / 1000L);
       ((JSONObject)localObject2).put("mobile_brand", Build.BRAND);
       ((JSONObject)localObject2).put("mobile_model", Build.MODEL);
       ((JSONObject)localObject2).put("mobile_sys_version", Build.VERSION.RELEASE);
@@ -91,11 +91,11 @@ public class ProtoGetConfig
     return localStringBuilder1.toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.d = ((Integer)paramdo.c.get("param.config.width")).intValue();
-    this.e = ((Integer)paramdo.c.get("param.config.height")).intValue();
-    this.f = ((Integer)paramdo.c.get("param.config.dpi")).intValue();
+    this.d = ((Integer)paramdp.c.get("param.config.width")).intValue();
+    this.e = ((Integer)paramdp.c.get("param.config.height")).intValue();
+    this.f = ((Integer)paramdp.c.get("param.config.dpi")).intValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -122,7 +122,7 @@ public class ProtoGetConfig
         paramJSONObject.append("parseJSON error seq is wrong seq=");
         paramJSONObject.append(i);
         paramJSONObject.append(",right = ");
-        paramJSONObject.append(cb.a().b());
+        paramJSONObject.append(cc.a().b());
         g.c(paramJSONObject.toString());
         return;
       }
@@ -155,14 +155,14 @@ public class ProtoGetConfig
     paramJSONObject.append("decode schemakey failed! schemaKey=");
     paramJSONObject.append(this.g.schemaKey);
     paramJSONObject.append(" key=");
-    paramJSONObject.append(cj.a(cr.a().c()));
+    paramJSONObject.append(ck.a(cs.a().c()));
     g.b(paramJSONObject.toString());
     return;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("parseJSON error decodeData=");
     localStringBuilder.append(paramJSONObject);
     g.c(localStringBuilder.toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
     label382:
   }
   

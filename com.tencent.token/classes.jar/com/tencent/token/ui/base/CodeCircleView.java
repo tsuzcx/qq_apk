@@ -12,7 +12,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import com.tencent.token.cc;
+import com.tencent.token.cd;
 import com.tencent.token.ui.IndexActivity;
 
 public class CodeCircleView
@@ -92,14 +92,14 @@ public class CodeCircleView
   {
     super.onDraw(paramCanvas);
     paramCanvas.drawArc(this.p, 270.0F, 360.0F, false, this.a);
-    this.s = (System.currentTimeMillis() + cc.c().q());
+    this.s = (System.currentTimeMillis() + cd.c().q());
     long l1 = this.s;
     this.t = ((int)(l1 / 1000L) % 30);
     this.u = ((int)(l1 % 1000L));
     this.c.setColor(this.m);
     this.v = ((this.t * 1000 + this.u) * 360 / 30000);
     paramCanvas.drawArc(this.p, 270.0F, this.v, false, this.c);
-    this.y = cc.c().p();
+    this.y = cd.c().p();
     this.w = ((int)(this.d / 2.0F - this.b.measureText(this.y) / 2.0F));
     this.x = ((int)(this.e / 2.0F + a(this.y, this.b) / 2.0F));
     paramCanvas.drawText(this.y, this.w, this.x, this.b);

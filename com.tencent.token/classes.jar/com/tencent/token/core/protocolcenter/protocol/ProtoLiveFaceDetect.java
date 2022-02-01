@@ -7,9 +7,9 @@ import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Message;
 import android.util.DisplayMetrics;
-import com.tencent.token.ca;
+import com.tencent.token.cb;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -33,15 +33,15 @@ public class ProtoLiveFaceDetect
   private int i;
   private int[] j;
   
-  public static void a(do paramdo, long paramLong, int paramInt)
+  public static void a(dp paramdp, long paramLong, int paramInt)
   {
-    paramdo.c.put("param.realuin", Long.valueOf(paramLong));
-    paramdo.c.put("param.scene.id", Integer.valueOf(paramInt));
+    paramdp.c.put("param.realuin", Long.valueOf(paramLong));
+    paramdp.c.put("param.scene.id", Integer.valueOf(paramInt));
   }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     if (str == null)
     {
       this.a.b(104);
@@ -50,7 +50,7 @@ public class ProtoLiveFaceDetect
     d = 0;
     e = 0;
     f = 0;
-    Object localObject = RqdApplication.l().getResources().getDisplayMetrics();
+    Object localObject = RqdApplication.n().getResources().getDisplayMetrics();
     localObject = l.a(new Object[] { "real_uin", Long.valueOf(this.g), "scene_id", Integer.valueOf(this.h), "mobile_brand", URLEncoder.encode(Build.BRAND), "mobile_model", URLEncoder.encode(Build.MODEL), "mobile_sdk_int", Integer.valueOf(Integer.parseInt(Build.VERSION.SDK)), "mobile_sdk_str", URLEncoder.encode(Build.VERSION.RELEASE), "screen_witdh", Integer.valueOf(((DisplayMetrics)localObject).widthPixels), "screen_height", Integer.valueOf(((DisplayMetrics)localObject).heightPixels), "screen_dpi", Integer.valueOf(((DisplayMetrics)localObject).densityDpi), "cpu_count", Integer.valueOf(m.y()), "cpu_freq", Integer.valueOf(m.z()) });
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("?aq_base_sid=");
@@ -65,10 +65,10 @@ public class ProtoLiveFaceDetect
     return ((StringBuilder)localObject).toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.g = ((Long)paramdo.c.get("param.realuin")).longValue();
-    this.h = ((Integer)paramdo.c.get("param.scene.id")).intValue();
+    this.g = ((Long)paramdp.c.get("param.realuin")).longValue();
+    this.h = ((Integer)paramdp.c.get("param.scene.id")).intValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -144,7 +144,7 @@ public class ProtoLiveFaceDetect
     ((StringBuilder)localObject).append("parseJSON error decodeData=");
     ((StringBuilder)localObject).append(paramJSONObject);
     g.c(((StringBuilder)localObject).toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
   
   protected void b()

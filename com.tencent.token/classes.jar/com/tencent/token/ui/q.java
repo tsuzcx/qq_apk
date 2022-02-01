@@ -16,8 +16,8 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.token.core.bean.SafeMsgItem;
-import com.tencent.token.cv;
-import com.tencent.token.dk;
+import com.tencent.token.cw;
+import com.tencent.token.dl;
 import com.tencent.token.global.g;
 import com.tencent.token.utils.l;
 
@@ -25,7 +25,7 @@ class q
   extends BaseAdapter
 {
   View.OnClickListener a = null;
-  dk b;
+  dl b;
   int c;
   int d;
   int e;
@@ -40,9 +40,9 @@ class q
   {
     public boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
     {
-      TextView localTextView1 = (TextView)paramAnonymousView.findViewById(2131166068);
-      TextView localTextView2 = (TextView)paramAnonymousView.findViewById(2131166067);
-      TextView localTextView3 = (TextView)paramAnonymousView.findViewById(2131165752);
+      TextView localTextView1 = (TextView)paramAnonymousView.findViewById(2131166070);
+      TextView localTextView2 = (TextView)paramAnonymousView.findViewById(2131166069);
+      TextView localTextView3 = (TextView)paramAnonymousView.findViewById(2131165754);
       SafeMsgItem localSafeMsgItem = (SafeMsgItem)paramAnonymousView.getTag();
       int i;
       if ((localSafeMsgItem.b() & 0x80) == 128) {
@@ -91,7 +91,7 @@ class q
   {
     this.h = paramOpreateMsgActivity;
     this.i = LayoutInflater.from(paramOpreateMsgActivity);
-    this.b = cv.a().f;
+    this.b = cw.a().f;
     this.c = this.h.getResources().getColor(2130968803);
     this.d = this.h.getResources().getColor(2130968803);
     this.e = this.h.getResources().getColor(2130968665);
@@ -102,8 +102,8 @@ class q
   private String a(long paramLong)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(l.a(paramLong).replace("-", this.h.getString(2131493390)));
-    localStringBuilder.append(this.h.getString(2131493389));
+    localStringBuilder.append(l.a(paramLong).replace("-", this.h.getString(2131493391)));
+    localStringBuilder.append(this.h.getString(2131493390));
     localStringBuilder.append(" ");
     localStringBuilder.append(l.d(paramLong));
     return localStringBuilder.toString();
@@ -111,8 +111,8 @@ class q
   
   public void a()
   {
-    this.j.findViewById(2131166086).setVisibility(8);
-    this.j.findViewById(2131165595).setVisibility(8);
+    this.j.findViewById(2131166088).setVisibility(8);
+    this.j.findViewById(2131165597).setVisibility(8);
   }
   
   public void a(View paramView)
@@ -122,13 +122,13 @@ class q
   
   protected void a(View paramView, SafeMsgItem paramSafeMsgItem)
   {
-    TextView localTextView1 = (TextView)paramView.findViewById(2131166068);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131166067);
-    TextView localTextView3 = (TextView)paramView.findViewById(2131165752);
-    CheckBox localCheckBox = (CheckBox)paramView.findViewById(2131165361);
+    TextView localTextView1 = (TextView)paramView.findViewById(2131166070);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131166069);
+    TextView localTextView3 = (TextView)paramView.findViewById(2131165754);
+    CheckBox localCheckBox = (CheckBox)paramView.findViewById(2131165363);
     localCheckBox.setOnCheckedChangeListener(new a(paramSafeMsgItem));
-    ImageView localImageView1 = (ImageView)paramView.findViewById(2131165283);
-    ImageView localImageView2 = (ImageView)paramView.findViewById(2131165748);
+    ImageView localImageView1 = (ImageView)paramView.findViewById(2131165285);
+    ImageView localImageView2 = (ImageView)paramView.findViewById(2131165750);
     paramView.setTag(paramSafeMsgItem);
     if (paramSafeMsgItem.mIsRead)
     {
@@ -193,14 +193,14 @@ class q
   
   public void a(String paramString)
   {
-    TextView localTextView = (TextView)this.j.findViewById(2131166086);
+    TextView localTextView = (TextView)this.j.findViewById(2131166088);
     if ((paramString != null) && (paramString.length() > 0)) {
       localTextView.setText(paramString);
     } else {
-      localTextView.setText(2131493414);
+      localTextView.setText(2131493415);
     }
     localTextView.setVisibility(0);
-    this.j.findViewById(2131165595).setVisibility(0);
+    this.j.findViewById(2131165597).setVisibility(0);
   }
   
   public void a(boolean paramBoolean)
@@ -236,7 +236,7 @@ class q
   
   public void b()
   {
-    this.k.findViewById(2131165744).setVisibility(0);
+    this.k.findViewById(2131165746).setVisibility(0);
   }
   
   public void b(View paramView)
@@ -254,7 +254,7 @@ class q
   
   public void c()
   {
-    this.k.findViewById(2131165744).setVisibility(8);
+    this.k.findViewById(2131165746).setVisibility(8);
   }
   
   public int getCount()

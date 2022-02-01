@@ -11,7 +11,7 @@ import android.view.Window;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.cb;
+import com.tencent.token.cc;
 import com.tencent.token.global.g;
 
 public class ProDialogWithShutDown
@@ -35,7 +35,7 @@ public class ProDialogWithShutDown
   {
     g.c("dismiss and cancel request");
     if (this.a != null) {
-      cb.a().a(this.a.getClass().getName());
+      cc.a().a(this.a.getClass().getName());
     }
   }
   
@@ -49,14 +49,14 @@ public class ProDialogWithShutDown
       getWindow().setBackgroundDrawableResource(2131099876);
       if (this.e)
       {
-        paramBundle = (TextView)findViewById(2131165819);
+        paramBundle = (TextView)findViewById(2131165821);
         localObject = this.d;
         if ((localObject != null) && (((String)localObject).length() > 0)) {
           paramBundle.setText(this.d);
         }
       }
-      ((ImageView)findViewById(2131165817)).startAnimation(AnimationUtils.loadAnimation(this.a, 2130771986));
-      this.b = ((ImageView)findViewById(2131165818));
+      ((ImageView)findViewById(2131165819)).startAnimation(AnimationUtils.loadAnimation(this.a, 2130771986));
+      this.b = ((ImageView)findViewById(2131165820));
       this.b.setOnClickListener(new View.OnClickListener()
       {
         public void onClick(View paramAnonymousView)

@@ -8,12 +8,12 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import com.tencent.token.bz;
 import com.tencent.token.ca;
-import com.tencent.token.cc;
+import com.tencent.token.cb;
+import com.tencent.token.cd;
 import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -34,19 +34,19 @@ public class ProtoGetDeterminVerifyFactors
   private int h;
   private int i;
   
-  public static void a(do paramdo, long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  public static void a(dp paramdp, long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramdo.c.put("param.realuin", Long.valueOf(paramLong));
-    paramdo.c.put("param.wtlogin.a2", paramArrayOfByte);
-    paramdo.c.put("param.common.seq", Integer.valueOf(paramInt1));
-    paramdo.c.put("param.wtlogin.type", Integer.valueOf(paramInt2));
-    paramdo.c.put("param.scene_id", Integer.valueOf(paramInt3));
+    paramdp.c.put("param.realuin", Long.valueOf(paramLong));
+    paramdp.c.put("param.wtlogin.a2", paramArrayOfByte);
+    paramdp.c.put("param.common.seq", Integer.valueOf(paramInt1));
+    paramdp.c.put("param.wtlogin.type", Integer.valueOf(paramInt2));
+    paramdp.c.put("param.scene_id", Integer.valueOf(paramInt3));
   }
   
   protected String a()
   {
     g.c("upgrade url: ");
-    Object localObject4 = ca.a().b();
+    Object localObject4 = cb.a().b();
     if (localObject4 == null)
     {
       this.a.b(104);
@@ -54,25 +54,25 @@ public class ProtoGetDeterminVerifyFactors
       return null;
     }
     g.c("upgrade url: ");
-    Object localObject5 = cc.c().j().replaceAll("-", "");
+    Object localObject5 = cd.c().j().replaceAll("-", "");
     Object localObject1 = "";
-    DisplayMetrics localDisplayMetrics = RqdApplication.l().getResources().getDisplayMetrics();
+    DisplayMetrics localDisplayMetrics = RqdApplication.n().getResources().getDisplayMetrics();
     try
     {
       Object localObject2 = new JSONObject();
       ((JSONObject)localObject2).put("uin", this.e);
       ((JSONObject)localObject2).put("seq_id", this.g);
-      ((JSONObject)localObject2).put("op_time", (int)(cc.c().s() / 1000L));
+      ((JSONObject)localObject2).put("op_time", (int)(cd.c().s() / 1000L));
       ((JSONObject)localObject2).put("scene", this.i);
       ((JSONObject)localObject2).put("tkn_seq", localObject5);
       ((JSONObject)localObject2).put("wtlogin_sig", l.a(this.d));
       ((JSONObject)localObject2).put("wtlogin_type", Integer.toString(this.h));
-      ((JSONObject)localObject2).put("guid", l.a(bz.a(RqdApplication.l()).b()));
-      ((JSONObject)localObject2).put("android_id", l.a(RqdApplication.l()));
-      ((JSONObject)localObject2).put("mac", l.c(RqdApplication.l()));
-      ((JSONObject)localObject2).put("device_id", l.b(RqdApplication.l()));
+      ((JSONObject)localObject2).put("guid", l.a(ca.a(RqdApplication.n()).b()));
+      ((JSONObject)localObject2).put("android_id", l.a(RqdApplication.n()));
+      ((JSONObject)localObject2).put("mac", l.c(RqdApplication.n()));
+      ((JSONObject)localObject2).put("device_id", l.b(RqdApplication.n()));
       ((JSONObject)localObject2).put("device_name", URLEncoder.encode(Build.MODEL));
-      ((JSONObject)localObject2).put("imei", l.b(RqdApplication.l()));
+      ((JSONObject)localObject2).put("imei", l.b(RqdApplication.n()));
       ((JSONObject)localObject2).put("dev_model", URLEncoder.encode(Build.BRAND));
       ((JSONObject)localObject2).put("sys_ver", URLEncoder.encode(Build.VERSION.RELEASE));
       ((JSONObject)localObject2).put("mobile_model", URLEncoder.encode(Build.MODEL));
@@ -120,13 +120,13 @@ public class ProtoGetDeterminVerifyFactors
     return null;
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.e = ((Long)paramdo.c.get("param.realuin")).longValue();
-    this.d = ((byte[])paramdo.c.get("param.wtlogin.a2"));
-    this.g = ((Integer)paramdo.c.get("param.common.seq")).intValue();
-    this.h = ((Integer)paramdo.c.get("param.wtlogin.type")).intValue();
-    this.i = ((Integer)paramdo.c.get("param.scene_id")).intValue();
+    this.e = ((Long)paramdp.c.get("param.realuin")).longValue();
+    this.d = ((byte[])paramdp.c.get("param.wtlogin.a2"));
+    this.g = ((Integer)paramdp.c.get("param.common.seq")).intValue();
+    this.h = ((Integer)paramdp.c.get("param.wtlogin.type")).intValue();
+    this.i = ((Integer)paramdp.c.get("param.scene_id")).intValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -185,7 +185,7 @@ public class ProtoGetDeterminVerifyFactors
       try
       {
         l = paramJSONObject.getLong("server_time");
-        cc.c().b(l);
+        cd.c().b(l);
       }
       catch (Exception paramJSONObject)
       {
@@ -198,7 +198,7 @@ public class ProtoGetDeterminVerifyFactors
     ((StringBuilder)localObject).append("parseJSON error decodeData=");
     ((StringBuilder)localObject).append(paramJSONObject);
     g.c(((StringBuilder)localObject).toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
   
   protected void b()

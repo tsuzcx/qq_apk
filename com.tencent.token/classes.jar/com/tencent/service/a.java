@@ -167,7 +167,7 @@ public class a
       localStringBuilder.append("token_download");
       return localStringBuilder.toString();
     }
-    return RqdApplication.l().getFilesDir().getAbsolutePath();
+    return RqdApplication.n().getFilesDir().getAbsolutePath();
   }
   
   private String c(b paramb)
@@ -179,7 +179,7 @@ public class a
   
   private boolean c()
   {
-    NetworkInfo localNetworkInfo = ((ConnectivityManager)RqdApplication.l().getSystemService("connectivity")).getActiveNetworkInfo();
+    NetworkInfo localNetworkInfo = ((ConnectivityManager)RqdApplication.n().getSystemService("connectivity")).getActiveNetworkInfo();
     return (localNetworkInfo != null) && (localNetworkInfo.isConnectedOrConnecting());
   }
   
@@ -210,7 +210,7 @@ public class a
   {
     try
     {
-      com.tencent.halley.a.a(paramContext, "0M100WJ33N1CQ08O", "1001", TMSDKBaseContext.getGuid(), null, null);
+      com.tencent.halley.a.a(paramContext, "0M100WJ33N1CQ08O", "999001", TMSDKBaseContext.getGuid(), null, null);
       this.b = DownloaderFactory.getDownloader();
       Log.i("DownloadService", "init done.");
       return;
@@ -337,7 +337,7 @@ public class a
     }
     if (!c())
     {
-      Toast.makeText(RqdApplication.l(), "请开启网络再试", 0).show();
+      Toast.makeText(RqdApplication.n(), "请开启网络再试", 0).show();
       return;
     }
     e(parama);
@@ -359,7 +359,7 @@ public class a
   {
     if (!c())
     {
-      Toast.makeText(RqdApplication.l(), "请开启网络再试", 0).show();
+      Toast.makeText(RqdApplication.n(), "请开启网络再试", 0).show();
       return;
     }
     parama = (b)this.d.get(parama.c);

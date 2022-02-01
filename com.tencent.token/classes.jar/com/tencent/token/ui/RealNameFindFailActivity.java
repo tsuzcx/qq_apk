@@ -18,13 +18,13 @@ public class RealNameFindFailActivity
   private void initView()
   {
     this.mBackArrow.setVisibility(4);
-    TextView localTextView = (TextView)findViewById(2131165905);
-    Object localObject = (TextView)findViewById(2131165900);
-    Button localButton = (Button)findViewById(2131165899);
+    TextView localTextView = (TextView)findViewById(2131165907);
+    Object localObject = (TextView)findViewById(2131165902);
+    Button localButton = (Button)findViewById(2131165901);
     if (this.mSourceId == 1) {
-      ((TextView)localObject).setText(2131493507);
+      ((TextView)localObject).setText(2131493508);
     } else {
-      ((TextView)localObject).setText(2131493506);
+      ((TextView)localObject).setText(2131493507);
     }
     localObject = this.mErrInfoString;
     if ((localObject != null) && (((String)localObject).length() > 0)) {

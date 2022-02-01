@@ -1,6 +1,6 @@
 package okhttp3.internal.connection;
 
-import com.tencent.token.fp;
+import com.tencent.token.fs;
 import okhttp3.t;
 import okhttp3.t.a;
 import okhttp3.v;
@@ -19,11 +19,11 @@ public final class a
   
   public z a(t.a parama)
   {
-    fp localfp = (fp)parama;
-    x localx = localfp.a();
-    f localf = localfp.f();
+    fs localfs = (fs)parama;
+    x localx = localfs.a();
+    f localf = localfs.f();
     boolean bool = localx.b().equals("GET");
-    return localfp.a(localx, localf, localf.a(this.a, parama, bool ^ true), localf.c());
+    return localfs.a(localx, localf, localf.a(this.a, parama, bool ^ true), localf.c());
   }
 }
 

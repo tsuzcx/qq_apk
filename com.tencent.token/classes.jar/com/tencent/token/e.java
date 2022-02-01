@@ -5,7 +5,7 @@ import java.lang.ref.WeakReference;
 import tmsdk.common.d.a.b.y;
 
 public class e
-  implements ej
+  implements el
 {
   private static y b;
   private long a;
@@ -25,19 +25,19 @@ public class e
     }
   }
   
-  public eg a(int paramInt1, int paramInt2)
+  public ei a(int paramInt1, int paramInt2)
   {
     return b.a(paramInt1, paramInt2);
   }
   
-  public WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, ef paramef)
+  public WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, eh parameh)
   {
-    return b.a(paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramef);
+    return b.a(paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, parameh);
   }
   
-  public WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, ef paramef, long paramLong)
+  public WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, eh parameh, long paramLong)
   {
-    return b.a(paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramef, paramLong);
+    return b.a(paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, parameh, paramLong);
   }
   
   public void a(int paramInt)
@@ -45,9 +45,9 @@ public class e
     b.a(paramInt);
   }
   
-  public void a(int paramInt1, JceStruct paramJceStruct, int paramInt2, eg parameg)
+  public void a(int paramInt1, JceStruct paramJceStruct, int paramInt2, ei paramei)
   {
-    b.a(paramInt1, paramJceStruct, paramInt2, parameg);
+    b.a(paramInt1, paramJceStruct, paramInt2, paramei);
   }
   
   public void b(int paramInt)

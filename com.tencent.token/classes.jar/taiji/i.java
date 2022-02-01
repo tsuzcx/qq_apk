@@ -2,7 +2,7 @@ package taiji;
 
 import android.graphics.Path;
 import android.graphics.PointF;
-import com.tencent.token.gn;
+import com.tencent.token.gq;
 import java.util.List;
 import uilib.doraemon.e;
 
@@ -337,7 +337,7 @@ public class i
       e();
     }
     this.a.close();
-    gn.a(this.a, this.l);
+    gq.a(this.a, this.l);
     this.m = true;
     return this.a;
   }

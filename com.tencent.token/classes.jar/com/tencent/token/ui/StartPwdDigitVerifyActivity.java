@@ -10,7 +10,7 @@ import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import com.tencent.token.cd;
+import com.tencent.token.ce;
 import com.tencent.token.global.g;
 
 public class StartPwdDigitVerifyActivity
@@ -34,9 +34,9 @@ public class StartPwdDigitVerifyActivity
   protected int getBtnStringId()
   {
     if (1 == this.mEnterType) {
-      return 2131493634;
+      return 2131493635;
     }
-    return 2131493039;
+    return 2131493040;
   }
   
   public void onClick(View paramView)
@@ -45,7 +45,7 @@ public class StartPwdDigitVerifyActivity
     if (paramView != null) {
       paramView.clearFocus();
     }
-    if (cd.a().a(this.mTokenPwdInpuText.getText().toString()))
+    if (ce.a().a(this.mTokenPwdInpuText.getText().toString()))
     {
       hideKeyBoard();
       paramView = new StringBuilder();
@@ -56,7 +56,7 @@ public class StartPwdDigitVerifyActivity
       finish();
       return;
     }
-    showToast(2131493638);
+    showToast(2131493639);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -69,11 +69,11 @@ public class StartPwdDigitVerifyActivity
       this.mUin = paramBundle.getLong("uin");
     }
     setContentView(2131296497);
-    paramBundle = findViewById(2131165332);
+    paramBundle = findViewById(2131165334);
     paramBundle.setOnClickListener(this);
     ((Button)paramBundle).setText(getBtnStringId());
     setBtnWidth(paramBundle.getLayoutParams());
-    this.mTokenPwdInpuText = ((EditText)findViewById(2131166069));
+    this.mTokenPwdInpuText = ((EditText)findViewById(2131166071));
     paramBundle = this.mTokenPwdInpuText;
     if (paramBundle != null) {
       paramBundle.clearFocus();

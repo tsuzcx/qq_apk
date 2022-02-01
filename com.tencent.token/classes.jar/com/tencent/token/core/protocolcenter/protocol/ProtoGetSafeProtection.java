@@ -1,12 +1,12 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.ca;
 import com.tencent.token.cb;
 import com.tencent.token.cc;
+import com.tencent.token.cd;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.cs;
-import com.tencent.token.do;
+import com.tencent.token.ct;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -21,16 +21,16 @@ public class ProtoGetSafeProtection
 {
   private long d;
   private int e;
-  private cs f = cs.a();
+  private ct f = ct.a();
   
-  public static void a(do paramdo, long paramLong)
+  public static void a(dp paramdp, long paramLong)
   {
-    paramdo.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdp.c.put("param.uinhash", Long.valueOf(paramLong));
   }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     Object localObject1 = null;
     if (str == null)
     {
@@ -41,11 +41,11 @@ public class ProtoGetSafeProtection
     {
       Object localObject2 = new JSONObject();
       ((JSONObject)localObject2).put("uin", this.d);
-      int i = cb.a + 1;
-      cb.a = i;
+      int i = cc.a + 1;
+      cc.a = i;
       this.e = i;
       ((JSONObject)localObject2).put("seq_id", this.e);
-      ((JSONObject)localObject2).put("op_time", cc.c().s() / 1000L);
+      ((JSONObject)localObject2).put("op_time", cd.c().s() / 1000L);
       localObject2 = ((JSONObject)localObject2).toString();
       localStringBuilder2 = new StringBuilder();
       localStringBuilder2.append("plain:");
@@ -74,9 +74,9 @@ public class ProtoGetSafeProtection
     return localStringBuilder1.toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.d = ((Long)paramdo.c.get("param.uinhash")).longValue();
+    this.d = ((Long)paramdp.c.get("param.uinhash")).longValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -99,7 +99,7 @@ public class ProtoGetSafeProtection
         paramJSONObject.append("parseJSON error seq is wrong seq=");
         paramJSONObject.append(i);
         paramJSONObject.append(",right = ");
-        paramJSONObject.append(cb.a().b());
+        paramJSONObject.append(cc.a().b());
         g.c(paramJSONObject.toString());
         return;
       }
@@ -124,7 +124,7 @@ public class ProtoGetSafeProtection
     localStringBuilder.append("parseJSON error decodeData=");
     localStringBuilder.append(paramJSONObject);
     g.c(localStringBuilder.toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
 }
 

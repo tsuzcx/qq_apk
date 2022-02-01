@@ -68,7 +68,7 @@ public class VerifyStartScanActivity
         public void onClick(View paramAnonymousView)
         {
           paramAnonymousView = VerifyStartScanActivity.this;
-          l.b(paramAnonymousView, paramAnonymousView.getString(2131493428));
+          l.b(paramAnonymousView, paramAnonymousView.getString(2131493429));
         }
       });
       return;
@@ -89,7 +89,7 @@ public class VerifyStartScanActivity
     }
     else
     {
-      setTitle(getResources().getString(2131493538));
+      setTitle(getResources().getString(2131493539));
       this.mTitleBar.setBackgroundColor(getResources().getColor(2130968786));
       this.mTitleDivider.setVisibility(8);
     }

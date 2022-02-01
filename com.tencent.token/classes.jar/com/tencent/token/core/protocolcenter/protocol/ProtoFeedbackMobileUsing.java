@@ -1,8 +1,8 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
-import com.tencent.token.ca;
+import com.tencent.token.cb;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
 import com.tencent.token.utils.l;
@@ -14,14 +14,14 @@ public class ProtoFeedbackMobileUsing
 {
   private long d;
   
-  public static void a(do paramdo, long paramLong)
+  public static void a(dp paramdp, long paramLong)
   {
-    paramdo.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdp.c.put("param.uinhash", Long.valueOf(paramLong));
   }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     if (str == null)
     {
       this.a.b(104);
@@ -46,9 +46,9 @@ public class ProtoFeedbackMobileUsing
     return ((StringBuilder)localObject).toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.d = ((Long)paramdo.c.get("param.uinhash")).longValue();
+    this.d = ((Long)paramdp.c.get("param.uinhash")).longValue();
   }
   
   protected void a(JSONObject paramJSONObject)

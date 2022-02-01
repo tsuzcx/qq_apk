@@ -5,44 +5,59 @@ import com.tencent.wcdb.Cursor;
 import com.tencent.wcdb.database.SQLiteDatabase;
 
 public class ep
-  implements et
+  implements ev
 {
-  public String a;
-  public String b;
+  public final String a = "ksid_data";
+  public String b = "";
+  private int c = 12;
   
-  public et a(Cursor paramCursor)
+  public ev a(Cursor paramCursor)
   {
     ep localep = new ep();
-    localep.a = paramCursor.getString(paramCursor.getColumnIndex("uinhash"));
-    localep.b = paramCursor.getString(paramCursor.getColumnIndex("filename"));
+    localep.b = paramCursor.getString(paramCursor.getColumnIndex("ksid"));
     return localep;
   }
   
   public void a(SQLiteDatabase paramSQLiteDatabase)
   {
-    paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS qqface(uinhash TEXT PRIMARY KEY,filename TEXT);");
+    paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS ksid_data(_ID INTEGER PRIMARY KEY autoincrement,key INTEGER,ksid TEXT);");
+  }
+  
+  public void a(String paramString)
+  {
+    ContentValues localContentValues = new ContentValues();
+    localContentValues.put("ksid", paramString);
+    et.a(this, "ksid_data", localContentValues, "key=?", new String[] { String.valueOf(this.c) });
+  }
+  
+  public boolean a()
+  {
+    ep localep = (ep)et.a(this, "ksid_data", new String[] { "ksid" }, null, null);
+    if (localep == null) {
+      return false;
+    }
+    this.b = localep.b;
+    return true;
   }
   
   public long b(SQLiteDatabase paramSQLiteDatabase)
   {
     a(paramSQLiteDatabase);
+    new ContentValues();
     ContentValues localContentValues = new ContentValues();
-    localContentValues.put("uinhash", this.a);
-    localContentValues.put("filename", this.b);
-    return paramSQLiteDatabase.insert("qqface", null, localContentValues);
+    localContentValues.put("key", Integer.valueOf(this.c));
+    localContentValues.put("ksid", this.b);
+    return paramSQLiteDatabase.insert("ksid_data", null, localContentValues);
   }
   
   public String b()
   {
-    return "qqface";
+    return "ksid_data";
   }
   
   public ContentValues c()
   {
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("uinhash", this.a);
-    localContentValues.put("filename", this.b);
-    return localContentValues;
+    return null;
   }
 }
 

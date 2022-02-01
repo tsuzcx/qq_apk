@@ -3,12 +3,12 @@ package com.tencent.token.core.protocolcenter.protocol;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.ca;
+import com.tencent.token.cb;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.dd;
-import com.tencent.token.dd.a;
-import com.tencent.token.do;
+import com.tencent.token.de;
+import com.tencent.token.de.a;
 import com.tencent.token.dp;
+import com.tencent.token.dq;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -22,32 +22,32 @@ public class ProtoGetStrConfig
 {
   private String d;
   
-  private dp e()
+  private dq e()
   {
-    dd.a locala = RqdApplication.k().a(this);
+    de.a locala = RqdApplication.m().a(this);
     if (locala == null) {
       return null;
     }
     return locala.b;
   }
   
-  public static void e(do paramdo) {}
+  public static void e(dp paramdp) {}
   
-  public dp a(Serializable paramSerializable)
+  public dq a(Serializable paramSerializable)
   {
-    dp localdp = new dp();
-    localdp.a = paramSerializable;
-    return localdp;
+    dq localdq = new dq();
+    localdq.a = paramSerializable;
+    return localdq;
   }
   
-  public Serializable a(dp paramdp)
+  public Serializable a(dq paramdq)
   {
-    return (String)paramdp.a;
+    return (String)paramdq.a;
   }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     if (str == null)
     {
       this.a.b(104);
@@ -64,7 +64,7 @@ public class ProtoGetStrConfig
     return localStringBuilder.toString();
   }
   
-  protected void a(do paramdo) {}
+  protected void a(dp paramdp) {}
   
   protected void a(JSONObject paramJSONObject)
   {
@@ -78,9 +78,9 @@ public class ProtoGetStrConfig
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      localObject = new dp();
-      ((dp)localObject).a = paramJSONObject.toString();
-      RqdApplication.k().a(this, (dp)localObject, null);
+      localObject = new dq();
+      ((dq)localObject).a = paramJSONObject.toString();
+      RqdApplication.m().a(this, (dq)localObject, null);
       this.d = paramJSONObject.getJSONObject("data").toString();
       this.a.c();
       return;
@@ -89,7 +89,7 @@ public class ProtoGetStrConfig
     ((StringBuilder)localObject).append("parseJSON error decodeData=");
     ((StringBuilder)localObject).append(paramJSONObject);
     g.c(((StringBuilder)localObject).toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
   
   protected void b()
@@ -104,7 +104,7 @@ public class ProtoGetStrConfig
     }
   }
   
-  public dp d(do paramdo)
+  public dq d(dp paramdp)
   {
     return e();
   }

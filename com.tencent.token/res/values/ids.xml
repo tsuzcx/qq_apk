@@ -8,11 +8,13 @@
     <item type="id" name="about_contact" />
     <item type="id" name="about_divider_1" />
     <item type="id" name="about_divider_5" />
+    <item type="id" name="about_divider_6" />
     <item type="id" name="about_divider_8" />
     <item type="id" name="about_evaluate" />
     <item type="id" name="about_info_1" />
     <item type="id" name="about_info_2" />
     <item type="id" name="about_list_help" />
+    <item type="id" name="about_list_privacy" />
     <item type="id" name="about_list_serialnumber" />
     <item type="id" name="about_logo" />
     <item type="id" name="aboutandhelp" />

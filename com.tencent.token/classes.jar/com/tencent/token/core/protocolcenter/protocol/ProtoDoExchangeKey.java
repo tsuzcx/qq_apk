@@ -1,13 +1,13 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.os.Build.VERSION;
-import com.tencent.token.ca;
-import com.tencent.token.cc;
+import com.tencent.token.cb;
+import com.tencent.token.cd;
 import com.tencent.token.core.bean.h;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.cr;
-import com.tencent.token.do;
-import com.tencent.token.dq;
+import com.tencent.token.cs;
+import com.tencent.token.dp;
+import com.tencent.token.dr;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
 import com.tencent.token.global.g;
@@ -19,14 +19,14 @@ import org.json.JSONObject;
 public class ProtoDoExchangeKey
   extends d
 {
-  private dq d;
+  private dr d;
   private byte[] e;
-  private cc f = cc.c();
+  private cd f = cd.c();
   
   protected String a()
   {
     this.d = b.a();
-    String str = b.a(this.d, 2L, cr.b);
+    String str = b.a(this.d, 2L, cs.b);
     if ((this.d != null) && (str != null) && (str.length() != 0))
     {
       Object localObject = new StringBuilder();
@@ -76,12 +76,12 @@ public class ProtoDoExchangeKey
     return null;
   }
   
-  protected void a(do paramdo) {}
+  protected void a(dp paramdp) {}
   
   protected void a(JSONObject paramJSONObject)
   {
     h.b();
-    cr.a().a(paramJSONObject);
+    cs.a().a(paramJSONObject);
     int i = paramJSONObject.getInt("err");
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("exchangekey parseJon, errcode: ");
@@ -95,9 +95,9 @@ public class ProtoDoExchangeKey
     localObject = paramJSONObject.getString("sess_id");
     i = paramJSONObject.getInt("valid_time");
     long l = System.currentTimeMillis() / 1000L;
-    paramJSONObject = new dq("1BB4632707784BB8836F564E3B48C20091D222C43ECD05CB17F8C29BDE18FEF1BEE828F9A5F18F80D50414B50315C5DBC2378410CCDD3565F1C7662F427A4801046CE59B4B1F214E65AB4F8B751622B2F7129989F740BC2BB4EF61230D6B77689CD8C7B59D238037194A6A810260E8AAE01A7F36693B21C68402B126F8A79248", 16);
-    this.e = b.a(this.d, paramJSONObject, cr.b);
-    ca.a().a((String)localObject, i, l, this.e);
+    paramJSONObject = new dr("1BB4632707784BB8836F564E3B48C20091D222C43ECD05CB17F8C29BDE18FEF1BEE828F9A5F18F80D50414B50315C5DBC2378410CCDD3565F1C7662F427A4801046CE59B4B1F214E65AB4F8B751622B2F7129989F740BC2BB4EF61230D6B77689CD8C7B59D238037194A6A810260E8AAE01A7F36693B21C68402B126F8A79248", 16);
+    this.e = b.a(this.d, paramJSONObject, cs.b);
+    cb.a().a((String)localObject, i, l, this.e);
     this.a.c();
   }
 }

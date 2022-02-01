@@ -3,10 +3,10 @@ package com.tencent.token.core.protocolcenter.protocol;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.ca;
+import com.tencent.token.cb;
 import com.tencent.token.core.bean.SafeMsgItem;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -23,9 +23,9 @@ public class ProtoReportLocation
   private String e;
   private int f = -1;
   
-  public static void a(do paramdo, long paramLong, int paramInt1, int paramInt2, int paramInt3, SafeMsgItem paramSafeMsgItem)
+  public static void a(dp paramdp, long paramLong, int paramInt1, int paramInt2, int paramInt3, SafeMsgItem paramSafeMsgItem)
   {
-    paramdo.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdp.c.put("param.uinhash", Long.valueOf(paramLong));
     JSONObject localJSONObject1 = new JSONObject();
     JSONObject localJSONObject2 = new JSONObject();
     JSONObject localJSONObject3 = new JSONObject();
@@ -51,19 +51,19 @@ public class ProtoReportLocation
       if ((paramInt3 == 1) || (paramInt3 == 2)) {
         localJSONObject1.put("feed_priv_ip_type", paramInt3);
       }
-      paramdo.c.put("param.loginmsg.reportlocation", localJSONObject1.toString());
+      paramdp.c.put("param.loginmsg.reportlocation", localJSONObject1.toString());
       return;
     }
     catch (Exception paramSafeMsgItem)
     {
       paramSafeMsgItem.printStackTrace();
-      paramdo.c.put("param.loginmsg.reportlocation", "");
+      paramdp.c.put("param.loginmsg.reportlocation", "");
     }
   }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     if (str == null)
     {
       this.a.b(104);
@@ -92,10 +92,10 @@ public class ProtoReportLocation
     return ((StringBuilder)localObject).toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.d = ((Long)paramdo.c.get("param.uinhash")).longValue();
-    this.e = ((String)paramdo.c.get("param.loginmsg.reportlocation"));
+    this.d = ((Long)paramdp.c.get("param.uinhash")).longValue();
+    this.e = ((String)paramdp.c.get("param.loginmsg.reportlocation"));
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -126,7 +126,7 @@ public class ProtoReportLocation
     localStringBuilder.append("parseJSON error decodeData=");
     localStringBuilder.append(paramJSONObject);
     g.c(localStringBuilder.toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
   
   protected void b()

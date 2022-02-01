@@ -1,7 +1,7 @@
 package taiji;
 
 import android.graphics.Path;
-import com.tencent.token.gm;
+import com.tencent.token.gp;
 import java.util.List;
 
 public class u
@@ -20,7 +20,7 @@ public class u
     ao localao = (ao)paramo.a;
     paramo = (ao)paramo.b;
     this.b.a(localao, paramo, paramFloat);
-    gm.a(this.b, this.c);
+    gp.a(this.b, this.c);
     return this.c;
   }
 }

@@ -69,7 +69,7 @@ public class RectView
     if (this.mScanLine == null) {
       this.mScanLine = m.a(getResources(), 2131100094, this.width);
     }
-    Object localObject = getResources().getString(2131493001);
+    Object localObject = getResources().getString(2131493002);
     this.pen.setColor(getResources().getColor(2130968665));
     this.pen.setTextSize(getResources().getDimension(2131034250));
     paramCanvas.drawText((String)localObject, (f2 - this.pen.measureText((String)localObject)) / 2.0F, this.bottom + IndexActivity.S_DENSITY * 30.0F, this.pen);

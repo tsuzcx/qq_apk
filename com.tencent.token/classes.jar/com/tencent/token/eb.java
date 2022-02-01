@@ -1,44 +1,54 @@
 package com.tencent.token;
 
-import java.util.ArrayList;
+import com.tencent.token.global.c.a;
 
-public class eb
+public abstract class eb
 {
-  public static byte[] a(int paramInt)
+  private volatile int a = c.a.h;
+  private volatile boolean b = true;
+  private ea c = ea.a;
+  
+  public eb(int paramInt, boolean paramBoolean, ea paramea)
   {
-    return new byte[] { (byte)(paramInt >> 24 & 0xFF), (byte)(paramInt >> 16 & 0xFF), (byte)(paramInt >> 8 & 0xFF), (byte)(paramInt & 0xFF) };
+    a(paramInt);
+    a(paramBoolean);
+    a(paramea);
   }
   
-  public static byte[] a(ArrayList<byte[]> paramArrayList)
+  public void a(int paramInt)
   {
-    int m = paramArrayList.size();
-    int i = m * 4 + 4;
-    int k = i;
-    int j = 0;
-    while (j < m)
-    {
-      k += ((byte[])paramArrayList.get(j)).length;
-      j += 1;
+    this.a = paramInt;
+  }
+  
+  protected abstract void a(int paramInt, Thread paramThread, long paramLong, String paramString1, String paramString2, Throwable paramThrowable);
+  
+  public void a(ea paramea)
+  {
+    this.c = paramea;
+  }
+  
+  protected abstract void a(String paramString);
+  
+  public void a(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public void b(int paramInt, Thread paramThread, long paramLong, String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if ((c()) && (paramInt == (this.a & paramInt))) {
+      a(paramInt, paramThread, paramLong, paramString1, paramString2, paramThrowable);
     }
-    byte[] arrayOfByte = new byte[k];
-    System.arraycopy(a(m), 0, arrayOfByte, 0, 4);
-    j = 0;
-    while (j < m)
-    {
-      System.arraycopy(a(((byte[])paramArrayList.get(j)).length), 0, arrayOfByte, j * 4 + 4, 4);
-      j += 1;
-    }
-    k = 0;
-    j = i;
-    i = k;
-    while (i < m)
-    {
-      k = ((byte[])paramArrayList.get(i)).length;
-      System.arraycopy(paramArrayList.get(i), 0, arrayOfByte, j, k);
-      j += k;
-      i += 1;
-    }
-    return arrayOfByte;
+  }
+  
+  public boolean c()
+  {
+    return this.b;
+  }
+  
+  public ea d()
+  {
+    return this.c;
   }
 }
 

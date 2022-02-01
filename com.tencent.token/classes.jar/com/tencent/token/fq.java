@@ -1,32 +1,109 @@
 package com.tencent.token;
 
-import javax.annotation.Nullable;
-import okhttp3.aa;
-import okio.e;
+import java.util.List;
+import java.util.regex.Pattern;
+import okhttp3.l;
+import okhttp3.m;
+import okhttp3.r;
+import okhttp3.s;
+import okhttp3.x;
+import okhttp3.z;
 
 public final class fq
-  extends aa
 {
-  @Nullable
-  private final String a;
-  private final long b;
-  private final e c;
+  private static final Pattern a = Pattern.compile(" +([^ \"=]*)=(:?\"([^\"]*)\"|([^ \"=]*)) *(:?,|$)");
   
-  public fq(@Nullable String paramString, long paramLong, e parame)
+  public static int a(String paramString, int paramInt)
   {
-    this.a = paramString;
-    this.b = paramLong;
-    this.c = parame;
+    while (paramInt < paramString.length())
+    {
+      int i = paramString.charAt(paramInt);
+      if ((i != 32) && (i != 9)) {
+        return paramInt;
+      }
+      paramInt += 1;
+    }
+    return paramInt;
   }
   
-  public long a()
+  public static int a(String paramString1, int paramInt, String paramString2)
   {
-    return this.b;
+    while (paramInt < paramString1.length())
+    {
+      if (paramString2.indexOf(paramString1.charAt(paramInt)) != -1) {
+        return paramInt;
+      }
+      paramInt += 1;
+    }
+    return paramInt;
   }
   
-  public e c()
+  private static long a(String paramString)
   {
-    return this.c;
+    if (paramString == null) {
+      return -1L;
+    }
+    try
+    {
+      long l = Long.parseLong(paramString);
+      return l;
+    }
+    catch (NumberFormatException paramString) {}
+    return -1L;
+  }
+  
+  public static long a(r paramr)
+  {
+    return a(paramr.a("Content-Length"));
+  }
+  
+  public static long a(z paramz)
+  {
+    return a(paramz.d());
+  }
+  
+  public static void a(m paramm, s params, r paramr)
+  {
+    if (paramm == m.a) {
+      return;
+    }
+    paramr = l.a(params, paramr);
+    if (paramr.isEmpty()) {
+      return;
+    }
+    paramm.a(params, paramr);
+  }
+  
+  public static int b(String paramString, int paramInt)
+  {
+    try
+    {
+      long l = Long.parseLong(paramString);
+      if (l > 2147483647L) {
+        return 2147483647;
+      }
+      if (l < 0L) {
+        return 0;
+      }
+      return (int)l;
+    }
+    catch (NumberFormatException paramString) {}
+    return paramInt;
+  }
+  
+  public static boolean b(z paramz)
+  {
+    if (paramz.a().b().equals("HEAD")) {
+      return false;
+    }
+    int i = paramz.b();
+    if (((i < 100) || (i >= 200)) && (i != 204) && (i != 304)) {
+      return true;
+    }
+    if (a(paramz) == -1L) {
+      return "chunked".equalsIgnoreCase(paramz.a("Transfer-Encoding"));
+    }
+    return true;
   }
 }
 

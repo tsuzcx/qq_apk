@@ -3,11 +3,11 @@ package com.tencent.token.core.protocolcenter.protocol;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.ca;
 import com.tencent.token.cb;
 import com.tencent.token.cc;
+import com.tencent.token.cd;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -34,26 +34,26 @@ public class ProtoDelDevice
   private String o;
   private String p;
   
-  public static void a(do paramdo, long paramLong, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, int paramInt3, String paramString4, int paramInt4, int paramInt5, String paramString5, String paramString6, int paramInt6)
+  public static void a(dp paramdp, long paramLong, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, int paramInt3, String paramString4, int paramInt4, int paramInt5, String paramString5, String paramString6, int paramInt6)
   {
-    paramdo.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramdo.c.put("param.device.lock.dguid", paramString1);
-    paramdo.c.put("param.device.lock.ddes", paramString2);
-    paramdo.c.put("param.device.lock.dappid", Integer.valueOf(paramInt1));
-    paramdo.c.put("param.device.lock.dsubappid", Integer.valueOf(paramInt2));
-    paramdo.c.put("param.device.lock.dappname", paramString3);
-    paramdo.c.put("param.device.lock.id", Integer.valueOf(paramInt3));
-    paramdo.c.put("param.device.lock.guid", paramString4);
-    paramdo.c.put("param.device.lock.appid", Integer.valueOf(paramInt4));
-    paramdo.c.put("param.device.lock.subappid", Integer.valueOf(paramInt5));
-    paramdo.c.put("param.device.lock.appname", paramString5);
-    paramdo.c.put("param.wtlogin.a2", paramString6);
-    paramdo.c.put("param.common.seq", Integer.valueOf(paramInt6));
+    paramdp.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdp.c.put("param.device.lock.dguid", paramString1);
+    paramdp.c.put("param.device.lock.ddes", paramString2);
+    paramdp.c.put("param.device.lock.dappid", Integer.valueOf(paramInt1));
+    paramdp.c.put("param.device.lock.dsubappid", Integer.valueOf(paramInt2));
+    paramdp.c.put("param.device.lock.dappname", paramString3);
+    paramdp.c.put("param.device.lock.id", Integer.valueOf(paramInt3));
+    paramdp.c.put("param.device.lock.guid", paramString4);
+    paramdp.c.put("param.device.lock.appid", Integer.valueOf(paramInt4));
+    paramdp.c.put("param.device.lock.subappid", Integer.valueOf(paramInt5));
+    paramdp.c.put("param.device.lock.appname", paramString5);
+    paramdp.c.put("param.wtlogin.a2", paramString6);
+    paramdp.c.put("param.common.seq", Integer.valueOf(paramInt6));
   }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("sessId=");
     ((StringBuilder)localObject1).append(str);
@@ -80,7 +80,7 @@ public class ProtoDelDevice
       ((JSONObject)localObject2).put("A2", this.o);
       ((JSONObject)localObject2).put("uin", this.d);
       ((JSONObject)localObject2).put("seq_id", this.j);
-      ((JSONObject)localObject2).put("op_time", (int)(cc.c().s() / 1000L));
+      ((JSONObject)localObject2).put("op_time", (int)(cd.c().s() / 1000L));
       localObject2 = l.b(((JSONObject)localObject2).toString().getBytes());
       localObject1 = localObject2;
     }
@@ -106,21 +106,21 @@ public class ProtoDelDevice
     return localObject1;
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.d = ((Long)paramdo.c.get("param.uinhash")).longValue();
-    this.k = ((String)paramdo.c.get("param.device.lock.dguid"));
-    this.l = ((String)paramdo.c.get("param.device.lock.ddes"));
-    this.h = ((Integer)paramdo.c.get("param.device.lock.dappid")).intValue();
-    this.i = ((Integer)paramdo.c.get("param.device.lock.dsubappid")).intValue();
-    this.p = ((String)paramdo.c.get("param.device.lock.dappname"));
-    this.e = ((Integer)paramdo.c.get("param.device.lock.id")).intValue();
-    this.m = ((String)paramdo.c.get("param.device.lock.guid"));
-    this.f = ((Integer)paramdo.c.get("param.device.lock.appid")).intValue();
-    this.g = ((Integer)paramdo.c.get("param.device.lock.subappid")).intValue();
-    this.n = ((String)paramdo.c.get("param.device.lock.appname"));
-    this.o = ((String)paramdo.c.get("param.wtlogin.a2"));
-    this.j = ((Integer)paramdo.c.get("param.common.seq")).intValue();
+    this.d = ((Long)paramdp.c.get("param.uinhash")).longValue();
+    this.k = ((String)paramdp.c.get("param.device.lock.dguid"));
+    this.l = ((String)paramdp.c.get("param.device.lock.ddes"));
+    this.h = ((Integer)paramdp.c.get("param.device.lock.dappid")).intValue();
+    this.i = ((Integer)paramdp.c.get("param.device.lock.dsubappid")).intValue();
+    this.p = ((String)paramdp.c.get("param.device.lock.dappname"));
+    this.e = ((Integer)paramdp.c.get("param.device.lock.id")).intValue();
+    this.m = ((String)paramdp.c.get("param.device.lock.guid"));
+    this.f = ((Integer)paramdp.c.get("param.device.lock.appid")).intValue();
+    this.g = ((Integer)paramdp.c.get("param.device.lock.subappid")).intValue();
+    this.n = ((String)paramdp.c.get("param.device.lock.appname"));
+    this.o = ((String)paramdp.c.get("param.wtlogin.a2"));
+    this.j = ((Integer)paramdp.c.get("param.common.seq")).intValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -142,7 +142,7 @@ public class ProtoDelDevice
         paramJSONObject.append("parseJSON error seq is wrong seq=");
         paramJSONObject.append(i1);
         paramJSONObject.append(",right = ");
-        paramJSONObject.append(cb.a().b());
+        paramJSONObject.append(cc.a().b());
         g.c(paramJSONObject.toString());
         return;
       }
@@ -153,7 +153,7 @@ public class ProtoDelDevice
     localStringBuilder.append("parseJSON error decodeData=");
     localStringBuilder.append(paramJSONObject);
     g.c(localStringBuilder.toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
   
   protected void b()

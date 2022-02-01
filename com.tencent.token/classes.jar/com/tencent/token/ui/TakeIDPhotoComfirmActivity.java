@@ -25,11 +25,11 @@ public class TakeIDPhotoComfirmActivity
       finish();
       return;
     }
-    Object localObject = (TextView)findViewById(2131166102);
+    Object localObject = (TextView)findViewById(2131166104);
     if (this.mFlag == 2) {
-      ((TextView)localObject).setText(2131493484);
+      ((TextView)localObject).setText(2131493485);
     }
-    localObject = (ImageView)findViewById(2131165508);
+    localObject = (ImageView)findViewById(2131165510);
     ((ImageView)localObject).postDelayed(new Runnable()
     {
       public void run()
@@ -38,7 +38,7 @@ public class TakeIDPhotoComfirmActivity
         this.b.setImageBitmap(localBitmap);
       }
     }, 100L);
-    ((TextView)findViewById(2131166050)).setOnClickListener(new View.OnClickListener()
+    ((TextView)findViewById(2131166052)).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
@@ -46,7 +46,7 @@ public class TakeIDPhotoComfirmActivity
         TakeIDPhotoComfirmActivity.this.finish();
       }
     });
-    ((TextView)findViewById(2131165400)).setOnClickListener(new View.OnClickListener()
+    ((TextView)findViewById(2131165402)).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {

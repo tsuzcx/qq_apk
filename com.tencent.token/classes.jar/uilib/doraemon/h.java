@@ -1,6 +1,6 @@
 package uilib.doraemon;
 
-import com.tencent.token.gl;
+import com.tencent.token.go;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -9,21 +9,21 @@ public class h
 {
   private boolean a;
   private final List<a> b;
-  private Map<String, gl> c;
+  private Map<String, go> c;
   
   public void a(String paramString, float paramFloat)
   {
     if (!this.a) {
       return;
     }
-    gl localgl2 = (gl)this.c.get(paramString);
-    gl localgl1 = localgl2;
-    if (localgl2 == null)
+    go localgo2 = (go)this.c.get(paramString);
+    go localgo1 = localgo2;
+    if (localgo2 == null)
     {
-      localgl1 = new gl();
-      this.c.put(paramString, localgl1);
+      localgo1 = new go();
+      this.c.put(paramString, localgo1);
     }
-    localgl1.a(paramFloat);
+    localgo1.a(paramFloat);
     if (paramString.equals("root"))
     {
       paramString = this.b.iterator();

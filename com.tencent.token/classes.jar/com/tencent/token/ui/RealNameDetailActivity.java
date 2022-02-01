@@ -39,14 +39,14 @@ public class RealNameDetailActivity
   
   private void initTextInfo()
   {
-    this.title1 = ((TextView)findViewById(2131165497).findViewById(2131166104));
-    this.title2 = ((TextView)findViewById(2131166176).findViewById(2131166104));
-    this.title3 = ((TextView)findViewById(2131166075).findViewById(2131166104));
-    this.title4 = ((TextView)findViewById(2131165502).findViewById(2131166104));
-    this.desc1 = ((TextView)findViewById(2131165497).findViewById(2131166054));
-    this.desc2 = ((TextView)findViewById(2131166176).findViewById(2131166054));
-    this.desc3 = ((TextView)findViewById(2131166075).findViewById(2131166054));
-    this.desc4 = ((TextView)findViewById(2131165502).findViewById(2131166054));
+    this.title1 = ((TextView)findViewById(2131165499).findViewById(2131166106));
+    this.title2 = ((TextView)findViewById(2131166178).findViewById(2131166106));
+    this.title3 = ((TextView)findViewById(2131166077).findViewById(2131166106));
+    this.title4 = ((TextView)findViewById(2131165504).findViewById(2131166106));
+    this.desc1 = ((TextView)findViewById(2131165499).findViewById(2131166056));
+    this.desc2 = ((TextView)findViewById(2131166178).findViewById(2131166056));
+    this.desc3 = ((TextView)findViewById(2131166077).findViewById(2131166056));
+    this.desc4 = ((TextView)findViewById(2131165504).findViewById(2131166056));
     ArrayList localArrayList = m.l();
     if ((localArrayList != null) && (localArrayList.size() > 0)) {
       try
@@ -99,11 +99,11 @@ public class RealNameDetailActivity
         RealNameDetailActivity.this.iv1.setImageResource(2131100010);
       }
     });
-    localObject = (Button)findViewById(2131165432);
-    this.iv1 = ((ImageView)findViewById(2131165614));
-    this.iv2 = ((ImageView)findViewById(2131165615));
-    this.iv3 = ((ImageView)findViewById(2131165616));
-    this.iv4 = ((ImageView)findViewById(2131165617));
+    localObject = (Button)findViewById(2131165434);
+    this.iv1 = ((ImageView)findViewById(2131165616));
+    this.iv2 = ((ImageView)findViewById(2131165617));
+    this.iv3 = ((ImageView)findViewById(2131165618));
+    this.iv4 = ((ImageView)findViewById(2131165619));
     switch (this.tab)
     {
     default: 

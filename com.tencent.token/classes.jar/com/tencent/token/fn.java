@@ -1,109 +1,123 @@
 package com.tencent.token;
 
-import java.util.List;
-import java.util.regex.Pattern;
-import okhttp3.l;
-import okhttp3.m;
-import okhttp3.r;
-import okhttp3.s;
+import java.net.ProtocolException;
+import okhttp3.aa;
+import okhttp3.t;
+import okhttp3.t.a;
 import okhttp3.x;
+import okhttp3.y;
 import okhttp3.z;
+import okhttp3.z.a;
+import okio.d;
+import okio.k;
 
 public final class fn
+  implements t
 {
-  private static final Pattern a = Pattern.compile(" +([^ \"=]*)=(:?\"([^\"]*)\"|([^ \"=]*)) *(:?,|$)");
+  private final boolean a;
   
-  public static int a(String paramString, int paramInt)
+  public fn(boolean paramBoolean)
   {
-    while (paramInt < paramString.length())
+    this.a = paramBoolean;
+  }
+  
+  public z a(t.a parama)
+  {
+    fs localfs = (fs)parama;
+    fo localfo = localfs.g();
+    okhttp3.internal.connection.f localf = localfs.f();
+    okhttp3.internal.connection.c localc = (okhttp3.internal.connection.c)localfs.e();
+    x localx = localfs.a();
+    long l = System.currentTimeMillis();
+    localfs.i().c(localfs.h());
+    localfo.a(localx);
+    localfs.i().a(localfs.h(), localx);
+    boolean bool = fr.c(localx.b());
+    d locald = null;
+    Object localObject = null;
+    parama = locald;
+    if (bool)
     {
-      int i = paramString.charAt(paramInt);
-      if ((i != 32) && (i != 9)) {
-        return paramInt;
+      parama = locald;
+      if (localx.d() != null)
+      {
+        if ("100-continue".equalsIgnoreCase(localx.a("Expect")))
+        {
+          localfo.a();
+          localfs.i().e(localfs.h());
+          localObject = localfo.a(true);
+        }
+        if (localObject == null)
+        {
+          localfs.i().d(localfs.h());
+          parama = new a(localfo.a(localx, localx.d().b()));
+          locald = k.a(parama);
+          localx.d().a(locald);
+          locald.close();
+          localfs.i().a(localfs.h(), parama.a);
+          parama = (t.a)localObject;
+        }
+        else
+        {
+          parama = (t.a)localObject;
+          if (!localc.d())
+          {
+            localf.e();
+            parama = (t.a)localObject;
+          }
+        }
       }
-      paramInt += 1;
     }
-    return paramInt;
-  }
-  
-  public static int a(String paramString1, int paramInt, String paramString2)
-  {
-    while (paramInt < paramString1.length())
+    localfo.b();
+    localObject = parama;
+    if (parama == null)
     {
-      if (paramString2.indexOf(paramString1.charAt(paramInt)) != -1) {
-        return paramInt;
-      }
-      paramInt += 1;
+      localfs.i().e(localfs.h());
+      localObject = localfo.a(false);
     }
-    return paramInt;
-  }
-  
-  private static long a(String paramString)
-  {
-    if (paramString == null) {
-      return -1L;
-    }
-    try
+    parama = ((z.a)localObject).a(localx).a(localf.c().c()).a(l).b(System.currentTimeMillis()).a();
+    int j = parama.b();
+    int i = j;
+    if (j == 100)
     {
-      long l = Long.parseLong(paramString);
-      return l;
+      parama = localfo.a(false).a(localx).a(localf.c().c()).a(l).b(System.currentTimeMillis()).a();
+      i = parama.b();
     }
-    catch (NumberFormatException paramString) {}
-    return -1L;
-  }
-  
-  public static long a(r paramr)
-  {
-    return a(paramr.a("Content-Length"));
-  }
-  
-  public static long a(z paramz)
-  {
-    return a(paramz.d());
-  }
-  
-  public static void a(m paramm, s params, r paramr)
-  {
-    if (paramm == m.a) {
-      return;
+    localfs.i().a(localfs.h(), parama);
+    if ((this.a) && (i == 101)) {
+      parama = parama.f().a(ff.c).a();
+    } else {
+      parama = parama.f().a(localfo.a(parama)).a();
     }
-    paramr = l.a(params, paramr);
-    if (paramr.isEmpty()) {
-      return;
+    if (("close".equalsIgnoreCase(parama.a().a("Connection"))) || ("close".equalsIgnoreCase(parama.a("Connection")))) {
+      localf.e();
     }
-    paramm.a(params, paramr);
+    if (((i != 204) && (i != 205)) || (parama.e().a() <= 0L)) {
+      return parama;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("HTTP ");
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append(" had non-zero Content-Length: ");
+    ((StringBuilder)localObject).append(parama.e().a());
+    throw new ProtocolException(((StringBuilder)localObject).toString());
   }
   
-  public static int b(String paramString, int paramInt)
+  static final class a
+    extends okio.f
   {
-    try
+    long a;
+    
+    a(okio.p paramp)
     {
-      long l = Long.parseLong(paramString);
-      if (l > 2147483647L) {
-        return 2147483647;
-      }
-      if (l < 0L) {
-        return 0;
-      }
-      return (int)l;
+      super();
     }
-    catch (NumberFormatException paramString) {}
-    return paramInt;
-  }
-  
-  public static boolean b(z paramz)
-  {
-    if (paramz.a().b().equals("HEAD")) {
-      return false;
+    
+    public void a_(okio.c paramc, long paramLong)
+    {
+      super.a_(paramc, paramLong);
+      this.a += paramLong;
     }
-    int i = paramz.b();
-    if (((i < 100) || (i >= 200)) && (i != 204) && (i != 304)) {
-      return true;
-    }
-    if (a(paramz) == -1L) {
-      return "chunked".equalsIgnoreCase(paramz.a("Transfer-Encoding"));
-    }
-    return true;
   }
 }
 

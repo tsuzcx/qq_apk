@@ -10,7 +10,7 @@ import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.graphics.RectF;
-import com.tencent.token.gn;
+import com.tencent.token.gq;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.List<Ltaiji.br;>;
@@ -127,7 +127,7 @@ abstract class bq
         }
         for (;;)
         {
-          gn.a(this.e, f1, f2, 0.0F);
+          gq.a(this.e, f1, f2, 0.0F);
           break label409;
           f8 = f4 + f7;
           if ((f8 < f5) || (f4 > f6)) {
@@ -162,7 +162,7 @@ abstract class bq
     {
       g.b("StrokeContent#applyDashPattern");
       return;
-      float f1 = gn.a(paramMatrix);
+      float f1 = gq.a(paramMatrix);
       int m = 0;
       while (m < this.k.size())
       {
@@ -200,7 +200,7 @@ abstract class bq
     g.a("StrokeContent#draw");
     paramInt = (int)(paramInt / 255.0F * ((Integer)this.j.b()).intValue() / 100.0F * 255.0F);
     this.b.setAlpha(paramInt);
-    this.b.setStrokeWidth(((Float)this.i.b()).floatValue() * gn.a(paramMatrix));
+    this.b.setStrokeWidth(((Float)this.i.b()).floatValue() * gq.a(paramMatrix));
     if (this.b.getStrokeWidth() <= 0.0F) {}
     for (;;)
     {

@@ -28,14 +28,14 @@ public class UtilsAccountLockTipDialog
     super.onCreate(paramBundle);
     setContentView(2131296468);
     getWindow().setBackgroundDrawableResource(2131099876);
-    findViewById(2131166202).setOnClickListener(new View.OnClickListener()
+    findViewById(2131166204).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
         UtilsAccountLockTipDialog.this.dismiss();
       }
     });
-    findViewById(2131166203).setOnClickListener(new View.OnClickListener()
+    findViewById(2131166205).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {

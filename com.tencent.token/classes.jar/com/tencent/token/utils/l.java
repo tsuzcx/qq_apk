@@ -26,13 +26,14 @@ import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import com.tencent.token.cc;
-import com.tencent.token.cj;
+import com.tencent.service.update.e;
+import com.tencent.token.cd;
+import com.tencent.token.ck;
 import com.tencent.token.core.bean.DeterminVerifyFactorsResult.QuesInfoItem;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.gamelogin.GameLoginService;
 import com.tencent.token.core.push.PushService;
-import com.tencent.token.cr;
+import com.tencent.token.cs;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.g;
@@ -115,7 +116,7 @@ public class l
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("seq_id", paramInt);
-      localJSONObject.put("op_time", cc.c().s() / 1000L);
+      localJSONObject.put("op_time", cd.c().s() / 1000L);
       localJSONObject.put("uin", paramLong);
       localJSONObject.put("ques_id_0", ((DeterminVerifyFactorsResult.QuesInfoItem)paramList.get(0)).a());
       localJSONObject.put("answer_0", paramArrayOfString[0]);
@@ -198,15 +199,22 @@ public class l
   
   public static String a(Context paramContext)
   {
+    if (!e.a().b()) {
+      return null;
+    }
     try
     {
-      paramContext = Settings.Secure.getString(paramContext.getContentResolver(), "android_id");
+      if (e.a().b()) {
+        paramContext = Settings.Secure.getString(paramContext.getContentResolver(), "android_id");
+      } else {
+        paramContext = "";
+      }
     }
     catch (Exception paramContext)
     {
-      label14:
+      label40:
       StringBuilder localStringBuilder;
-      break label14;
+      break label40;
     }
     paramContext = null;
     localStringBuilder = new StringBuilder();
@@ -364,7 +372,7 @@ public class l
   public static void a(BaseActivity paramBaseActivity, String paramString)
   {
     if (paramString == null) {
-      paramBaseActivity.showToast(2131493626);
+      paramBaseActivity.showToast(2131493627);
     }
     try
     {
@@ -381,7 +389,7 @@ public class l
   public static void a(IndexActivity paramIndexActivity, String paramString)
   {
     if (paramString == null) {
-      paramIndexActivity.showToast(2131493626);
+      paramIndexActivity.showToast(2131493627);
     }
     try
     {
@@ -397,7 +405,7 @@ public class l
   
   public static void a(String paramString1, String paramString2, int paramInt)
   {
-    Context localContext = RqdApplication.l();
+    Context localContext = RqdApplication.n();
     if (!TextUtils.isEmpty(paramString1))
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -415,7 +423,7 @@ public class l
   
   public static void a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    Context localContext = RqdApplication.l();
+    Context localContext = RqdApplication.n();
     if (!TextUtils.isEmpty(paramString1))
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -435,7 +443,7 @@ public class l
   {
     try
     {
-      Context localContext = RqdApplication.l();
+      Context localContext = RqdApplication.n();
       if (!TextUtils.isEmpty(paramString))
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -455,7 +463,7 @@ public class l
   
   public static boolean a()
   {
-    Object localObject = (ConnectivityManager)RqdApplication.l().getSystemService("connectivity");
+    Object localObject = (ConnectivityManager)RqdApplication.n().getSystemService("connectivity");
     boolean bool2 = false;
     if (localObject == null) {
       return false;
@@ -536,7 +544,7 @@ public class l
   
   public static boolean a(String paramString1, String paramString2)
   {
-    Context localContext = RqdApplication.l();
+    Context localContext = RqdApplication.n();
     if (!TextUtils.isEmpty(paramString1))
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -637,7 +645,7 @@ public class l
   
   public static int b(String paramString1, String paramString2)
   {
-    Context localContext = RqdApplication.l();
+    Context localContext = RqdApplication.n();
     if (!TextUtils.isEmpty(paramString1))
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -662,10 +670,10 @@ public class l
     int m = b.get(6);
     int n = b.get(7);
     if ((i == k) && (j == m)) {
-      return c.g().getResources().getString(2131493328);
+      return c.g().getResources().getString(2131493329);
     }
     if ((i == k) && (j == m + 1)) {
-      return c.g().getResources().getString(2131493336);
+      return c.g().getResources().getString(2131493337);
     }
     if ((i == k) && (j <= m + 6))
     {
@@ -674,34 +682,37 @@ public class l
       default: 
         return a(b);
       case 7: 
-        return c.g().getResources().getString(2131493334);
+        return c.g().getResources().getString(2131493335);
       case 6: 
-        return c.g().getResources().getString(2131493333);
+        return c.g().getResources().getString(2131493334);
       case 5: 
-        return c.g().getResources().getString(2131493332);
+        return c.g().getResources().getString(2131493333);
       case 4: 
-        return c.g().getResources().getString(2131493331);
+        return c.g().getResources().getString(2131493332);
       case 3: 
-        return c.g().getResources().getString(2131493330);
+        return c.g().getResources().getString(2131493331);
       case 2: 
-        return c.g().getResources().getString(2131493329);
+        return c.g().getResources().getString(2131493330);
       }
-      return c.g().getResources().getString(2131493335);
+      return c.g().getResources().getString(2131493336);
     }
     return a(b);
   }
   
   public static String b(Context paramContext)
   {
+    if (!e.a().b()) {
+      return null;
+    }
     try
     {
       paramContext = ((TelephonyManager)paramContext.getSystemService("phone")).getDeviceId();
     }
     catch (Exception paramContext)
     {
-      label17:
+      label28:
       StringBuilder localStringBuilder;
-      break label17;
+      break label28;
     }
     paramContext = null;
     localStringBuilder = new StringBuilder();
@@ -737,7 +748,7 @@ public class l
   
   public static String b(byte[] paramArrayOfByte)
   {
-    byte[] arrayOfByte = cr.a().c();
+    byte[] arrayOfByte = cs.a().c();
     if ((arrayOfByte != null) && (arrayOfByte.length == 16))
     {
       paramArrayOfByte = new a().b(paramArrayOfByte, arrayOfByte);
@@ -746,7 +757,7 @@ public class l
         g.c("encrypt pwd failed");
         return null;
       }
-      return cj.a(paramArrayOfByte);
+      return ck.a(paramArrayOfByte);
     }
     boolean bool;
     if (arrayOfByte == null) {
@@ -792,15 +803,18 @@ public class l
   
   public static String c(Context paramContext)
   {
+    if (!e.a().b()) {
+      return null;
+    }
     try
     {
       paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo().getMacAddress();
     }
     catch (Exception paramContext)
     {
-      label20:
+      label31:
       StringBuilder localStringBuilder;
-      break label20;
+      break label31;
     }
     paramContext = null;
     localStringBuilder = new StringBuilder();
@@ -815,8 +829,8 @@ public class l
   
   public static boolean c()
   {
-    Object localObject = (ActivityManager)RqdApplication.l().getSystemService("activity");
-    String str = RqdApplication.l().getPackageName();
+    Object localObject = (ActivityManager)RqdApplication.n().getSystemService("activity");
+    String str = RqdApplication.n().getPackageName();
     localObject = ((ActivityManager)localObject).getRunningAppProcesses();
     if (localObject == null) {
       return false;
@@ -834,11 +848,11 @@ public class l
   
   public static byte[] c(String paramString)
   {
-    byte[] arrayOfByte = cr.a().c();
+    byte[] arrayOfByte = cs.a().c();
     if ((arrayOfByte != null) && (arrayOfByte.length == 16)) {
       try
       {
-        paramString = new a().a(cj.a(paramString), arrayOfByte);
+        paramString = new a().a(ck.a(paramString), arrayOfByte);
         return paramString;
       }
       catch (Exception paramString)
@@ -859,7 +873,7 @@ public class l
   
   public static byte[] c(byte[] paramArrayOfByte)
   {
-    byte[] arrayOfByte = cr.a().c();
+    byte[] arrayOfByte = cs.a().c();
     if ((arrayOfByte != null) && (arrayOfByte.length == 16))
     {
       paramArrayOfByte = new a().b(paramArrayOfByte, arrayOfByte);
@@ -902,15 +916,18 @@ public class l
   
   public static String d(Context paramContext)
   {
+    if (!e.a().b()) {
+      return null;
+    }
     try
     {
       paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo().getBSSID();
     }
     catch (Exception paramContext)
     {
-      label20:
+      label31:
       StringBuilder localStringBuilder;
-      break label20;
+      break label31;
     }
     paramContext = null;
     localStringBuilder = new StringBuilder();
@@ -925,12 +942,12 @@ public class l
   
   public static boolean d()
   {
-    Object localObject = ((ActivityManager.RunningTaskInfo)((ActivityManager)RqdApplication.l().getSystemService("activity")).getRunningTasks(1).get(0)).topActivity;
+    Object localObject = ((ActivityManager.RunningTaskInfo)((ActivityManager)RqdApplication.n().getSystemService("activity")).getRunningTasks(1).get(0)).topActivity;
     if (localObject == null) {
       return false;
     }
     localObject = ((ComponentName)localObject).getPackageName();
-    String str = RqdApplication.l().getPackageName();
+    String str = RqdApplication.n().getPackageName();
     if (localObject == null) {
       return false;
     }
@@ -949,7 +966,7 @@ public class l
     TmsLog.i("mod_seed", localStringBuilder.toString());
     try
     {
-      paramString = new a().a(cj.a(paramString), cc.c().f());
+      paramString = new a().a(ck.a(paramString), cd.c().f());
       return paramString;
     }
     catch (Exception paramString)
@@ -982,16 +999,15 @@ public class l
   
   public static String e(Context paramContext)
   {
+    if (!e.a().b()) {
+      return null;
+    }
     try
     {
       paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo().getSSID();
       return paramContext;
     }
-    catch (Exception paramContext)
-    {
-      label19:
-      break label19;
-    }
+    catch (Exception paramContext) {}
     return null;
   }
   
@@ -1019,11 +1035,11 @@ public class l
     boolean bool2 = false;
     try
     {
-      Object localObject = RqdApplication.l();
-      if (cr.a().e() == null) {
+      Object localObject = RqdApplication.n();
+      if (cs.a().e() == null) {
         return false;
       }
-      String str = String.valueOf(cr.a().e().mUin);
+      String str = String.valueOf(cs.a().e().mUin);
       if (!TextUtils.isEmpty(str))
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -1061,7 +1077,7 @@ public class l
     if (paramLong == 0L) {
       return 0L;
     }
-    String str = cj.a(MD5.toMD5Byte(Long.toString(paramLong)));
+    String str = ck.a(MD5.toMD5Byte(Long.toString(paramLong)));
     int j = Math.min(31, str.length() - 1);
     for (paramLong = l; j >= 0; paramLong = l)
     {
@@ -1111,7 +1127,7 @@ public class l
   
   public static boolean f()
   {
-    List localList = ((ActivityManager)RqdApplication.l().getSystemService("activity")).getRunningServices(50);
+    List localList = ((ActivityManager)RqdApplication.n().getSystemService("activity")).getRunningServices(50);
     int i = 0;
     while (i < localList.size())
     {
@@ -1174,7 +1190,7 @@ public class l
   
   public static boolean g()
   {
-    List localList = ((ActivityManager)RqdApplication.l().getSystemService("activity")).getRunningServices(50);
+    List localList = ((ActivityManager)RqdApplication.n().getSystemService("activity")).getRunningServices(50);
     if (localList == null) {
       return false;
     }
@@ -1191,7 +1207,7 @@ public class l
   
   public static boolean h()
   {
-    List localList = ((ActivityManager)RqdApplication.l().getSystemService("activity")).getRunningServices(50);
+    List localList = ((ActivityManager)RqdApplication.n().getSystemService("activity")).getRunningServices(50);
     int i = 0;
     while (i < localList.size())
     {
@@ -1213,7 +1229,7 @@ public class l
     int j = 0;
     try
     {
-      Context localContext = RqdApplication.l();
+      Context localContext = RqdApplication.n();
       int[] arrayOfInt = AppWidgetManager.getInstance(localContext).getAppWidgetIds(new ComponentName(localContext, TokenWidgetProvider.class));
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("widget_big num=");
@@ -1240,13 +1256,13 @@ public class l
   
   public static void j()
   {
-    Intent localIntent = new Intent(RqdApplication.l(), GameLoginService.class);
-    RqdApplication.l().stopService(localIntent);
+    Intent localIntent = new Intent(RqdApplication.n(), GameLoginService.class);
+    RqdApplication.n().stopService(localIntent);
   }
   
   public static String k()
   {
-    Object localObject = RqdApplication.l();
+    Object localObject = RqdApplication.n();
     if (localObject != null)
     {
       localObject = ((ConnectivityManager)((Context)localObject).getSystemService("connectivity")).getActiveNetworkInfo();
@@ -1270,7 +1286,7 @@ public class l
   {
     try
     {
-      Object localObject = RqdApplication.l();
+      Object localObject = RqdApplication.n();
       localObject = ((Context)localObject).getPackageManager().getPackageInfo(((Context)localObject).getPackageName(), 0).versionName;
       return localObject;
     }
@@ -1290,71 +1306,71 @@ public class l
   public static String m()
   {
     // Byte code:
-    //   0: new 827	java/util/ArrayList
+    //   0: new 835	java/util/ArrayList
     //   3: dup
-    //   4: invokespecial 828	java/util/ArrayList:<init>	()V
+    //   4: invokespecial 836	java/util/ArrayList:<init>	()V
     //   7: astore_0
-    //   8: new 830	java/io/DataInputStream
+    //   8: new 838	java/io/DataInputStream
     //   11: dup
-    //   12: invokestatic 415	com/tencent/token/global/RqdApplication:l	()Landroid/content/Context;
+    //   12: invokestatic 423	com/tencent/token/global/RqdApplication:n	()Landroid/content/Context;
     //   15: invokevirtual 102	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   18: invokevirtual 834	android/content/res/Resources:getAssets	()Landroid/content/res/AssetManager;
-    //   21: ldc_w 836
-    //   24: invokevirtual 842	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   27: invokespecial 845	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   18: invokevirtual 842	android/content/res/Resources:getAssets	()Landroid/content/res/AssetManager;
+    //   21: ldc_w 844
+    //   24: invokevirtual 850	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   27: invokespecial 853	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
     //   30: astore_1
     //   31: aload_1
-    //   32: invokevirtual 848	java/io/DataInputStream:readLine	()Ljava/lang/String;
+    //   32: invokevirtual 856	java/io/DataInputStream:readLine	()Ljava/lang/String;
     //   35: astore_2
     //   36: aload_2
     //   37: ifnull +38 -> 75
     //   40: aload_2
-    //   41: invokevirtual 286	java/lang/String:length	()I
+    //   41: invokevirtual 294	java/lang/String:length	()I
     //   44: iconst_1
     //   45: if_icmple -14 -> 31
     //   48: aload_2
-    //   49: invokevirtual 850	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   52: ldc_w 852
-    //   55: invokevirtual 743	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   49: invokevirtual 858	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   52: ldc_w 860
+    //   55: invokevirtual 750	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   58: iflt -27 -> 31
     //   61: aload_0
     //   62: aload_2
     //   63: bipush 8
-    //   65: invokevirtual 717	java/lang/String:substring	(I)Ljava/lang/String;
-    //   68: invokevirtual 855	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   65: invokevirtual 724	java/lang/String:substring	(I)Ljava/lang/String;
+    //   68: invokevirtual 863	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   71: pop
     //   72: goto -41 -> 31
     //   75: aload_0
-    //   76: invokevirtual 856	java/util/ArrayList:size	()I
+    //   76: invokevirtual 864	java/util/ArrayList:size	()I
     //   79: ifle +20 -> 99
     //   82: aload_0
     //   83: aload_0
-    //   84: invokevirtual 856	java/util/ArrayList:size	()I
+    //   84: invokevirtual 864	java/util/ArrayList:size	()I
     //   87: iconst_1
     //   88: isub
-    //   89: invokevirtual 857	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   89: invokevirtual 865	java/util/ArrayList:get	(I)Ljava/lang/Object;
     //   92: checkcast 217	java/lang/String
     //   95: astore_0
     //   96: goto +7 -> 103
-    //   99: ldc_w 859
+    //   99: ldc_w 867
     //   102: astore_0
     //   103: aload_1
-    //   104: invokevirtual 862	java/io/DataInputStream:close	()V
+    //   104: invokevirtual 870	java/io/DataInputStream:close	()V
     //   107: aload_0
     //   108: areturn
     //   109: astore_0
     //   110: goto +15 -> 125
     //   113: astore_0
     //   114: aload_0
-    //   115: invokevirtual 369	java/lang/Exception:printStackTrace	()V
+    //   115: invokevirtual 377	java/lang/Exception:printStackTrace	()V
     //   118: aload_1
-    //   119: invokevirtual 862	java/io/DataInputStream:close	()V
+    //   119: invokevirtual 870	java/io/DataInputStream:close	()V
     //   122: goto +9 -> 131
     //   125: aload_1
-    //   126: invokevirtual 862	java/io/DataInputStream:close	()V
+    //   126: invokevirtual 870	java/io/DataInputStream:close	()V
     //   129: aload_0
     //   130: athrow
-    //   131: ldc_w 859
+    //   131: ldc_w 867
     //   134: areturn
     //   135: astore_0
     //   136: goto -5 -> 131

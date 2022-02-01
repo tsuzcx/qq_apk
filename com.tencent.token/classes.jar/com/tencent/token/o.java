@@ -1,20 +1,8 @@
 package com.tencent.token;
 
-import java.util.Map;
-
-public final class o
-  extends l
+public abstract interface o
 {
-  public o(String paramString, Map paramMap, l.a parama, boolean paramBoolean, t paramt)
-  {
-    this.d = paramt;
-    this.a = paramString;
-    this.b = paramMap;
-    this.c = paramBoolean;
-    if (parama != null) {
-      a(parama);
-    }
-  }
+  public abstract void r();
 }
 
 

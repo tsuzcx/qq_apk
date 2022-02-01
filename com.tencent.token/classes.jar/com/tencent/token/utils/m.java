@@ -22,15 +22,15 @@ import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
-import com.tencent.token.bx;
-import com.tencent.token.cc;
+import com.tencent.token.by;
 import com.tencent.token.cd;
-import com.tencent.token.cj;
+import com.tencent.token.ce;
+import com.tencent.token.ck;
 import com.tencent.token.core.bean.ConfigResult;
 import com.tencent.token.core.bean.FaceRecognitionParamResult;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.bean.ZzbIntroItem;
-import com.tencent.token.cr;
+import com.tencent.token.cs;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.utils.encrypt.a;
 import java.io.ByteArrayOutputStream;
@@ -53,7 +53,7 @@ public class m
   static int c = 0;
   static boolean d = false;
   static boolean e = false;
-  private static ImageCache f = new ImageCache("", 2, RqdApplication.l());
+  private static ImageCache f = new ImageCache("", 2, RqdApplication.n());
   private static final FileFilter g;
   
   static
@@ -92,7 +92,7 @@ public class m
   {
     try
     {
-      localObject2 = RqdApplication.l().getSharedPreferences("features_file", 0);
+      localObject2 = RqdApplication.n().getSharedPreferences("features_file", 0);
       Object localObject1;
       if (paramInt == 1)
       {
@@ -269,11 +269,11 @@ public class m
   {
     try
     {
-      Object localObject = RqdApplication.l().getSharedPreferences("features_file", 0);
+      Object localObject = RqdApplication.n().getSharedPreferences("features_file", 0);
       a.mStartUpImgStartTime = ((SharedPreferences)localObject).getLong("startup_start_time", 0L);
       a.mStartUpImgEndTime = ((SharedPreferences)localObject).getLong("startup_end_time", 0L);
       a.mStartUpImgUrl = ((SharedPreferences)localObject).getString("startup_img_url", "");
-      long l = cc.c().s() / 1000L;
+      long l = cd.c().s() / 1000L;
       if ((a.mStartUpImgStartTime != 0L) && (a.mStartUpImgEndTime != 0L) && (l >= a.mStartUpImgStartTime) && (l <= a.mStartUpImgEndTime)) {
         a.mStartUpImg = f.b(f.c("startup_img"));
       } else {
@@ -320,7 +320,7 @@ public class m
       ((StringBuilder)localObject1).append("_op");
       localObject1 = ((StringBuilder)localObject1).toString();
       label86:
-      localObject2 = RqdApplication.l().getSharedPreferences("features_file", 0).edit();
+      localObject2 = RqdApplication.n().getSharedPreferences("features_file", 0).edit();
       ((SharedPreferences.Editor)localObject2).putLong((String)localObject1, paramLong2);
       ((SharedPreferences.Editor)localObject2).commit();
       return;
@@ -338,7 +338,7 @@ public class m
   {
     try
     {
-      SharedPreferences.Editor localEditor = RqdApplication.l().getSharedPreferences("features_file", 0).edit();
+      SharedPreferences.Editor localEditor = RqdApplication.n().getSharedPreferences("features_file", 0).edit();
       localEditor.putLong("dns_time", paramLong);
       localEditor.commit();
       return;
@@ -402,7 +402,7 @@ public class m
       }
       try
       {
-        localObject = RqdApplication.l().getSharedPreferences("features_file", 0).edit();
+        localObject = RqdApplication.n().getSharedPreferences("features_file", 0).edit();
         ((SharedPreferences.Editor)localObject).putLong("startup_start_time", paramConfigResult.mStartUpImgStartTime);
         ((SharedPreferences.Editor)localObject).putLong("startup_end_time", paramConfigResult.mStartUpImgEndTime);
         ((SharedPreferences.Editor)localObject).putString("startup_img_url", paramConfigResult.mStartUpImgUrl);
@@ -426,7 +426,7 @@ public class m
   
   public static void a(String paramString, int paramInt)
   {
-    Object localObject = RqdApplication.l();
+    Object localObject = RqdApplication.n();
     try
     {
       localObject = ((Context)localObject).getSharedPreferences("schemaparm_name", 0).edit();
@@ -448,7 +448,7 @@ public class m
   {
     try
     {
-      localObject = RqdApplication.l().getSharedPreferences("features_file", 0).edit();
+      localObject = RqdApplication.n().getSharedPreferences("features_file", 0).edit();
       ((SharedPreferences.Editor)localObject).putBoolean(paramString, paramBoolean);
       ((SharedPreferences.Editor)localObject).commit();
       return;
@@ -466,7 +466,7 @@ public class m
   {
     try
     {
-      localObject = RqdApplication.l().getSharedPreferences("features_file", 0).edit();
+      localObject = RqdApplication.n().getSharedPreferences("features_file", 0).edit();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("displayAngle");
       localStringBuilder.append(paramJSONObject.getInt("displayangle"));
@@ -489,7 +489,7 @@ public class m
   {
     try
     {
-      SharedPreferences.Editor localEditor = RqdApplication.l().getSharedPreferences("features_file", 0).edit();
+      SharedPreferences.Editor localEditor = RqdApplication.n().getSharedPreferences("features_file", 0).edit();
       localEditor.putBoolean("start_camera", paramBoolean);
       localEditor.commit();
       return;
@@ -581,7 +581,7 @@ public class m
     //   30: istore_1
     //   31: iload_2
     //   32: ifne +29 -> 61
-    //   35: invokestatic 30	com/tencent/token/global/RqdApplication:l	()Landroid/content/Context;
+    //   35: invokestatic 30	com/tencent/token/global/RqdApplication:n	()Landroid/content/Context;
     //   38: invokevirtual 125	android/content/Context:getResources	()Landroid/content/res/Resources;
     //   41: invokevirtual 507	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
     //   44: astore 6
@@ -851,8 +851,8 @@ public class m
   {
     try
     {
-      SharedPreferences.Editor localEditor = cd.a().c(RqdApplication.l()).edit();
-      String str1 = bx.d();
+      SharedPreferences.Editor localEditor = ce.a().c(RqdApplication.n()).edit();
+      String str1 = by.d();
       a locala = new a();
       String str2 = Long.toString(paramLong);
       localObject2 = locala.b(str2.getBytes("UTF8"), com.tencent.token.utils.encrypt.c.a(str1));
@@ -860,7 +860,7 @@ public class m
       if (localObject2 == null) {
         localObject1 = locala.b(str2.getBytes("UTF8"), com.tencent.token.utils.encrypt.c.a(str1));
       }
-      localObject1 = cj.a((byte[])localObject1);
+      localObject1 = ck.a((byte[])localObject1);
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("verify_face_pwd_uin, hex=");
       ((StringBuilder)localObject2).append((String)localObject1);
@@ -896,7 +896,7 @@ public class m
       paramConfigResult.append("\n");
       paramConfigResult.append(a.mToolsList.toString());
       com.tencent.token.global.g.a(paramConfigResult.toString());
-      paramConfigResult = RqdApplication.l().getSharedPreferences("features_file", 0).edit();
+      paramConfigResult = RqdApplication.n().getSharedPreferences("features_file", 0).edit();
       paramConfigResult.putString("tools_title", a.mToolsTitleList.toString());
       paramConfigResult.putString("tools_items", a.mToolsList.toString());
       paramConfigResult.commit();
@@ -908,7 +908,7 @@ public class m
   {
     try
     {
-      int i = RqdApplication.l().getSharedPreferences("features_file", 0).getInt("token_version", 0);
+      int i = RqdApplication.n().getSharedPreferences("features_file", 0).getInt("token_version", 0);
       int j = com.tencent.token.global.c.d();
       return i != j;
     }
@@ -926,7 +926,7 @@ public class m
   {
     try
     {
-      boolean bool = RqdApplication.l().getSharedPreferences("features_file", 0).getBoolean(paramString, paramBoolean);
+      boolean bool = RqdApplication.n().getSharedPreferences("features_file", 0).getBoolean(paramString, paramBoolean);
       return bool;
     }
     catch (Exception paramString) {}
@@ -937,7 +937,7 @@ public class m
   {
     try
     {
-      localObject = RqdApplication.l().getSharedPreferences("features_file", 0).edit();
+      localObject = RqdApplication.n().getSharedPreferences("features_file", 0).edit();
       ((SharedPreferences.Editor)localObject).putInt("utils_flag", paramConfigResult.utilsShowFlag);
       ((SharedPreferences.Editor)localObject).putFloat("face_reg_thres", paramConfigResult.mFaceRecognitionParamResult.mRegRayThres);
       ((SharedPreferences.Editor)localObject).putFloat("face_verify_thres", paramConfigResult.mFaceRecognitionParamResult.mVerifyRayThres);
@@ -967,7 +967,7 @@ public class m
   {
     try
     {
-      boolean bool = RqdApplication.l().getSharedPreferences("features_file", 0).getBoolean("start_camera", false);
+      boolean bool = RqdApplication.n().getSharedPreferences("features_file", 0).getBoolean("start_camera", false);
       return bool;
     }
     catch (Exception localException)
@@ -1055,7 +1055,7 @@ public class m
   {
     try
     {
-      long l = RqdApplication.l().getSharedPreferences("features_file", 0).getLong("dns_time", 0L);
+      long l = RqdApplication.n().getSharedPreferences("features_file", 0).getLong("dns_time", 0L);
       return l;
     }
     catch (Exception localException)
@@ -1072,7 +1072,7 @@ public class m
   {
     try
     {
-      Object localObject1 = cd.a().c(RqdApplication.l());
+      Object localObject1 = ce.a().c(RqdApplication.n());
       a locala = new a();
       String str = ((SharedPreferences)localObject1).getString("verify_face_pwd_key", "");
       localObject1 = ((SharedPreferences)localObject1).getString("verify_face_pwd_uin", "");
@@ -1086,7 +1086,7 @@ public class m
         if (((String)localObject1).length() == 0) {
           return 0L;
         }
-        byte[] arrayOfByte = cj.a((String)localObject1);
+        byte[] arrayOfByte = ck.a((String)localObject1);
         localObject2 = locala.a(arrayOfByte, com.tencent.token.utils.encrypt.c.a(str));
         localObject1 = localObject2;
         if (localObject2 == null) {
@@ -1123,7 +1123,7 @@ public class m
       if (l == 0L) {
         return null;
       }
-      QQUser localQQUser = cr.a().d(l);
+      QQUser localQQUser = cs.a().d(l);
       return localQQUser;
     }
     catch (Exception localException)
@@ -1144,7 +1144,7 @@ public class m
       if (l == 0L) {
         return null;
       }
-      QQUser localQQUser = cr.a().c(l.f(l));
+      QQUser localQQUser = cs.a().c(l.f(l));
       return localQQUser;
     }
     catch (Exception localException)
@@ -1162,7 +1162,7 @@ public class m
     FaceRecognitionParamResult localFaceRecognitionParamResult = new FaceRecognitionParamResult();
     try
     {
-      Object localObject = RqdApplication.l().getSharedPreferences("features_file", 0);
+      Object localObject = RqdApplication.n().getSharedPreferences("features_file", 0);
       localFaceRecognitionParamResult.mRegRayThres = ((SharedPreferences)localObject).getFloat("face_reg_thres", 0.1F);
       localFaceRecognitionParamResult.mVerifyRayThres = ((SharedPreferences)localObject).getFloat("face_verify_thres", 0.1F);
       localFaceRecognitionParamResult.mDisparityThres = ((SharedPreferences)localObject).getFloat("face_disparity_thres", 2.0F);
@@ -1193,7 +1193,7 @@ public class m
   {
     try
     {
-      int i = RqdApplication.l().getSharedPreferences("features_file", 0).getInt("face_algorithm", 1);
+      int i = RqdApplication.n().getSharedPreferences("features_file", 0).getInt("face_algorithm", 1);
       return i;
     }
     catch (Exception localException)
@@ -1213,7 +1213,7 @@ public class m
     }
     try
     {
-      JSONArray localJSONArray = new JSONArray(RqdApplication.l().getSharedPreferences("features_file", 0).getString("tools_title", null));
+      JSONArray localJSONArray = new JSONArray(RqdApplication.n().getSharedPreferences("features_file", 0).getString("tools_title", null));
       return localJSONArray;
     }
     catch (Exception localException) {}
@@ -1224,7 +1224,7 @@ public class m
   {
     try
     {
-      JSONArray localJSONArray1 = new JSONArray(RqdApplication.l().getSharedPreferences("features_file", 0).getString("tools_items", null));
+      JSONArray localJSONArray1 = new JSONArray(RqdApplication.n().getSharedPreferences("features_file", 0).getString("tools_items", null));
       ArrayList localArrayList1 = new ArrayList();
       if (localJSONArray1.length() >= 0)
       {
@@ -1255,7 +1255,7 @@ public class m
     if (a.zzbIntroItemlist != null) {
       return a.zzbIntroItemlist;
     }
-    Object localObject = RqdApplication.l();
+    Object localObject = RqdApplication.n();
     int i = 0;
     localObject = ((Context)localObject).getSharedPreferences("features_file", 0).getString("zzb_intro_list", null);
     try
@@ -1282,7 +1282,7 @@ public class m
     boolean bool = false;
     try
     {
-      int i = RqdApplication.l().getSharedPreferences("features_file", 0).getInt("collect_device_info", 0);
+      int i = RqdApplication.n().getSharedPreferences("features_file", 0).getInt("collect_device_info", 0);
       if (i == 1) {
         bool = true;
       }
@@ -1303,7 +1303,7 @@ public class m
     boolean bool = false;
     try
     {
-      int i = RqdApplication.l().getSharedPreferences("features_file", 0).getInt("use_face_start", 0);
+      int i = RqdApplication.n().getSharedPreferences("features_file", 0).getInt("use_face_start", 0);
       if (i == 1) {
         bool = true;
       }
@@ -1324,7 +1324,7 @@ public class m
     boolean bool = false;
     try
     {
-      int i = RqdApplication.l().getSharedPreferences("features_file", 0).getInt("use_face_chpwd", 0);
+      int i = RqdApplication.n().getSharedPreferences("features_file", 0).getInt("use_face_chpwd", 0);
       if (i == 1) {
         bool = true;
       }
@@ -1345,7 +1345,7 @@ public class m
     boolean bool = false;
     try
     {
-      int i = RqdApplication.l().getSharedPreferences("features_file", 0).getInt("use_face_chmobile", 0);
+      int i = RqdApplication.n().getSharedPreferences("features_file", 0).getInt("use_face_chmobile", 0);
       if (i == 1) {
         bool = true;
       }
@@ -1365,7 +1365,7 @@ public class m
   {
     try
     {
-      String str = RqdApplication.l().getSharedPreferences("features_file", 0).getString("so_param_ids", "");
+      String str = RqdApplication.n().getSharedPreferences("features_file", 0).getString("so_param_ids", "");
       return str;
     }
     catch (Exception localException)
@@ -1382,7 +1382,7 @@ public class m
   {
     try
     {
-      String str = RqdApplication.l().getSharedPreferences("features_file", 0).getString("so_param_values", "");
+      String str = RqdApplication.n().getSharedPreferences("features_file", 0).getString("so_param_values", "");
       return str;
     }
     catch (Exception localException)
@@ -1399,7 +1399,7 @@ public class m
   {
     try
     {
-      int i = RqdApplication.l().getSharedPreferences("features_file", 0).getInt("live_angle", 21);
+      int i = RqdApplication.n().getSharedPreferences("features_file", 0).getInt("live_angle", 21);
       return i;
     }
     catch (Exception localException)
@@ -1416,7 +1416,7 @@ public class m
   {
     try
     {
-      int i = RqdApplication.l().getSharedPreferences("features_file", 0).getInt("displayAngle_face", -1);
+      int i = RqdApplication.n().getSharedPreferences("features_file", 0).getInt("displayAngle_face", -1);
       return i;
     }
     catch (Exception localException)
@@ -1433,7 +1433,7 @@ public class m
   {
     try
     {
-      int i = RqdApplication.l().getSharedPreferences("features_file", 0).getInt("imageAngle_face", -1);
+      int i = RqdApplication.n().getSharedPreferences("features_file", 0).getInt("imageAngle_face", -1);
       return i;
     }
     catch (Exception localException)
@@ -1450,7 +1450,7 @@ public class m
   {
     try
     {
-      boolean bool = RqdApplication.l().getSharedPreferences("features_file", 0).getBoolean("show_bright_tip", false);
+      boolean bool = RqdApplication.n().getSharedPreferences("features_file", 0).getBoolean("show_bright_tip", false);
       return bool;
     }
     catch (Exception localException)
@@ -1467,7 +1467,7 @@ public class m
   {
     try
     {
-      SharedPreferences.Editor localEditor = RqdApplication.l().getSharedPreferences("features_file", 0).edit();
+      SharedPreferences.Editor localEditor = RqdApplication.n().getSharedPreferences("features_file", 0).edit();
       localEditor.putBoolean("show_bright_tip", true);
       localEditor.commit();
       return;

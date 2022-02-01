@@ -16,7 +16,7 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.token.cb;
+import com.tencent.token.cc;
 import com.tencent.token.core.bean.LoginProtectResult;
 import com.tencent.token.core.bean.LoginProtectResult.a;
 import com.tencent.token.global.e;
@@ -81,7 +81,7 @@ class m
           paramb.e.a(true, false);
         }
         paramb.e.setOnCheckedChangeListener(this.f);
-        paramb.c.setText(2131493754);
+        paramb.c.setText(2131493755);
         return;
       }
       this.c = paramb;
@@ -92,7 +92,7 @@ class m
       }
       paramb.c.setOnClickListener(this.e);
       paramb.e.setOnCheckedChangeListener(this.f);
-      localObject = new SpannableString(this.a.getString(2131493737));
+      localObject = new SpannableString(this.a.getString(2131493738));
       ((SpannableString)localObject).setSpan(new ForegroundColorSpan(this.a.getResources().getColor(2130968627)), ((SpannableString)localObject).length() - 7, ((SpannableString)localObject).length(), 33);
       paramb.c.setText((CharSequence)localObject);
       return;
@@ -127,7 +127,7 @@ class m
       }
     }
     e.a(this.a.getResources(), parame);
-    this.a.showTipDialog(2131493532, parame.c);
+    this.a.showTipDialog(2131493533, parame.c);
     this.d.f.d = false;
     this.c.f.d = false;
     a(this.c);
@@ -204,7 +204,7 @@ class m
           localObject = m.a(m.this).getItem(80);
           if ((!paramCompoundButton.f.c) && (!((LoginProtectResult.a)localObject).e))
           {
-            m.a(m.this).showUserDialog(2131492985, m.a(m.this).getResources().getString(2131493700), 2131493699, 2131493028, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+            m.a(m.this).showUserDialog(2131492986, m.a(m.this).getResources().getString(2131493701), 2131493700, 2131493029, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
             {
               public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
               {
@@ -212,7 +212,7 @@ class m
                 m.a(m.this, m.c(m.this));
                 paramAnonymousInt = m.a.a(m.a.this).f.a;
                 boolean bool = m.a.a(m.a.this).f.c;
-                paramAnonymousDialogInterface = cb.a();
+                paramAnonymousDialogInterface = cc.a();
                 String str = m.a(m.this).mA2;
                 Handler localHandler = m.a(m.this).mHandler;
                 paramAnonymousDialogInterface.a(0L, new int[] { paramAnonymousInt, 71 }, new int[] { bool ^ true, 1 }, str, localHandler);
@@ -229,7 +229,7 @@ class m
           }
           i = paramCompoundButton.f.a;
           paramBoolean = paramCompoundButton.f.c;
-          paramCompoundButton = cb.a();
+          paramCompoundButton = cc.a();
           localObject = m.a(m.this).mA2;
           localHandler = m.a(m.this).mHandler;
           paramCompoundButton.a(0L, new int[] { i }, new int[] { paramBoolean ^ true }, (String)localObject, localHandler);
@@ -248,14 +248,14 @@ class m
         Object localObject = m.a(m.this).getItem(82);
         if ((paramCompoundButton.f.e) && (((LoginProtectResult.a)localObject).c))
         {
-          m.a(m.this).showUserDialog(2131492985, m.a(m.this).getResources().getString(2131493681), 2131493699, 2131493028, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          m.a(m.this).showUserDialog(2131492986, m.a(m.this).getResources().getString(2131493682), 2131493700, 2131493029, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
           {
             public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
               m.b(m.this).f.d = true;
               m.a(m.this, m.b(m.this));
               boolean bool = m.a.a(m.a.this).f.e;
-              paramAnonymousDialogInterface = cb.a();
+              paramAnonymousDialogInterface = cc.a();
               String str = m.a(m.this).mA2;
               Handler localHandler = m.a(m.this).mHandler;
               paramAnonymousDialogInterface.a(0L, new int[] { 71, 82 }, new int[] { bool ^ true, 0 }, str, localHandler);
@@ -271,7 +271,7 @@ class m
           return;
         }
         paramBoolean = paramCompoundButton.f.e;
-        paramCompoundButton = cb.a();
+        paramCompoundButton = cc.a();
         localObject = m.a(m.this).mA2;
         Handler localHandler = m.a(m.this).mHandler;
         paramCompoundButton.a(0L, new int[] { 71 }, new int[] { paramBoolean ^ true }, (String)localObject, localHandler);
@@ -297,10 +297,10 @@ class m
         return;
       }
       this.f = parama;
-      this.b = ((TextView)m.this.findViewById(2131165705));
-      this.c = ((TextView)this.a.findViewById(2131165430));
-      this.e = ((SwitchButton)this.a.findViewById(2131165703));
-      this.d = ((ProgressBar)this.a.findViewById(2131165685));
+      this.b = ((TextView)m.this.findViewById(2131165707));
+      this.c = ((TextView)this.a.findViewById(2131165432));
+      this.e = ((SwitchButton)this.a.findViewById(2131165705));
+      this.d = ((ProgressBar)this.a.findViewById(2131165687));
     }
   }
 }

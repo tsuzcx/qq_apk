@@ -1,269 +1,122 @@
 package com.tencent.token;
 
 import android.text.TextUtils;
-import com.tencent.halley.common.a;
 import com.tencent.halley.common.b;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+import java.net.SocketAddress;
 
-public final class bk
+public class bk
 {
-  public static int a = -1;
-  public static int b = -1;
-  private static int c = 20000;
-  private static ThreadPoolExecutor d;
-  private static final Lock e = new ReentrantLock();
+  private int a;
+  private String b = "";
+  private Socket c = null;
+  private int d = -1;
+  private int e = -1;
+  private az f;
   
-  public static bj a(ArrayList paramArrayList, String paramString, int paramInt)
+  public void a()
   {
-    e.lock();
-    CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    c localc = new c((byte)0);
-    localbj = new bj();
-    try
-    {
-      if (d == null) {
-        d = new ThreadPoolExecutor(3, 5, 3000L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(5), new a("HalleyAccess"));
-      }
-      paramArrayList = a(paramArrayList, paramString).iterator();
-      while (paramArrayList.hasNext())
-      {
-        paramString = new b(localCountDownLatch, localc, (bj)paramArrayList.next());
-        d.execute(paramString);
-      }
-      int i;
-      if (paramInt >= 0)
-      {
-        i = paramInt;
-        if (paramInt <= c) {}
-      }
-      else
-      {
-        i = c;
-      }
-      paramArrayList = localbj;
-      if (localCountDownLatch.await(i, TimeUnit.MILLISECONDS)) {
-        paramArrayList = localc.a();
-      }
-    }
-    catch (RejectedExecutionException|InterruptedException|Throwable paramArrayList)
-    {
-      for (;;)
-      {
-        paramArrayList = localbj;
-      }
-    }
-    e.unlock();
-    return paramArrayList;
-  }
-  
-  public static Socket a(String paramString, int paramInt)
-  {
-    if (paramString != null)
-    {
-      if ("".equals(paramString)) {
-        return null;
-      }
-      paramString = b(paramString, paramInt);
-      if (paramString != null)
-      {
-        b.a("ParallelResolver", "getFastSocket end.");
-        return paramString.c();
-      }
-    }
-    return null;
-  }
-  
-  public static Socket a(ArrayList paramArrayList, int paramInt)
-  {
-    if (paramArrayList != null)
-    {
-      if (paramArrayList.size() <= 0) {
-        return null;
-      }
-      paramArrayList = a(paramArrayList, "", paramInt);
-      if (paramArrayList != null)
-      {
-        b.a("ParallelResolver", "getFastSocket end.");
-        return paramArrayList.c();
-      }
-    }
-    return null;
-  }
-  
-  private static List a(ArrayList paramArrayList, String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      ay localay = (ay)paramArrayList.next();
-      bj localbj = new bj();
-      localbj.a(localay);
-      localArrayList.add(localbj);
-    }
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramArrayList = new bj();
-      paramArrayList.a(paramString);
-      localArrayList.add(paramArrayList);
-    }
-    return localArrayList;
-  }
-  
-  public static void a()
-  {
-    ThreadPoolExecutor localThreadPoolExecutor = d;
-    if (localThreadPoolExecutor != null)
-    {
-      localThreadPoolExecutor.shutdownNow();
-      d = null;
-    }
-  }
-  
-  private static bj b(String paramString, int paramInt)
-  {
-    CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    c localc = new c((byte)0);
-    bj localbj = new bj();
-    localbj.a(paramString);
-    paramString = new b(localCountDownLatch, localc, localbj);
-    a.a().a(paramString);
-    long l = paramInt;
-    try
-    {
-      if (localCountDownLatch.await(l, TimeUnit.MILLISECONDS))
-      {
-        paramString = localc.a();
-        return paramString;
-      }
-    }
-    catch (InterruptedException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return localbj;
-  }
-  
-  static final class a
-    implements ThreadFactory
-  {
-    private static final AtomicInteger a = new AtomicInteger(1);
-    private final ThreadGroup b;
-    private final AtomicInteger c = new AtomicInteger(1);
-    private final String d;
-    
-    a(String paramString)
-    {
-      Object localObject = System.getSecurityManager();
-      if (localObject != null) {
-        localObject = ((SecurityManager)localObject).getThreadGroup();
-      } else {
-        localObject = Thread.currentThread().getThreadGroup();
-      }
-      this.b = ((ThreadGroup)localObject);
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append("-");
-      ((StringBuilder)localObject).append(a.getAndIncrement());
-      ((StringBuilder)localObject).append("-thread-");
-      this.d = ((StringBuilder)localObject).toString();
-    }
-    
-    public final Thread newThread(Runnable paramRunnable)
-    {
-      ThreadGroup localThreadGroup = this.b;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.d);
-      localStringBuilder.append(this.c.getAndIncrement());
-      paramRunnable = new Thread(localThreadGroup, paramRunnable, localStringBuilder.toString(), 0L);
-      if (paramRunnable.isDaemon()) {
-        paramRunnable.setDaemon(false);
-      }
-      if (paramRunnable.getPriority() != 5) {
-        paramRunnable.setPriority(5);
-      }
-      return paramRunnable;
-    }
-  }
-  
-  static final class b
-    implements Runnable
-  {
-    private CountDownLatch a = null;
-    private bk.c b = null;
-    private bj c = null;
-    
-    public b(CountDownLatch paramCountDownLatch, bk.c paramc, bj parambj)
-    {
-      this.a = paramCountDownLatch;
-      this.b = paramc;
-      this.c = parambj;
-    }
-    
-    public final void run()
+    Object localObject1 = new StringBuilder("Thread:");
+    ((StringBuilder)localObject1).append(Thread.currentThread().getName());
+    ((StringBuilder)localObject1).append(" isDaemon:");
+    ((StringBuilder)localObject1).append(Thread.currentThread().isDaemon());
+    b.c("ConnectorImpl", ((StringBuilder)localObject1).toString());
+    long l1 = System.currentTimeMillis();
+    Object localObject2;
+    if (!TextUtils.isEmpty(this.b))
     {
       try
       {
-        this.c.a();
-        bk.a = this.c.d();
-        bk.b = this.c.e();
-        this.b.a(this.c);
-        label38:
-        CountDownLatch localCountDownLatch = this.a;
-        if (localCountDownLatch != null) {
-          localCountDownLatch.countDown();
-        }
-        return;
+        localObject1 = InetAddress.getByName(this.b);
       }
-      catch (Throwable localThrowable)
+      catch (Exception localException1)
       {
-        break label38;
+        localException1.getClass().getSimpleName();
+        localObject2 = new StringBuilder("Dns InetAddress exception: domain");
+        ((StringBuilder)localObject2).append(this.b);
+        ((StringBuilder)localObject2).toString();
+        localObject2 = null;
       }
+      this.d = ((int)(System.currentTimeMillis() - l1));
+      localObject2 = new InetSocketAddress(((InetAddress)localObject2).getHostAddress(), 14000);
+    }
+    else
+    {
+      localObject2 = new InetSocketAddress(this.f.a(), this.f.b());
+      this.d = 0;
+    }
+    Socket localSocket = new Socket();
+    l1 = 0L;
+    try
+    {
+      long l2 = System.currentTimeMillis();
+      l1 = l2;
+      this.a = be.a().b.a;
+      l1 = l2;
+      localSocket.connect((SocketAddress)localObject2, this.a);
+      l1 = l2;
+      if (localSocket.isConnected())
+      {
+        l1 = l2;
+        if (!localSocket.isClosed())
+        {
+          l1 = l2;
+          this.c = localSocket;
+          l1 = l2;
+          this.e = ((int)(System.currentTimeMillis() - l2));
+        }
+      }
+    }
+    catch (Exception localException2)
+    {
+      localException2.printStackTrace();
+      localException2.getClass().getSimpleName();
+      br.a(localException2);
+      this.e = ((int)(System.currentTimeMillis() - l1));
+      this.c = null;
+    }
+    System.currentTimeMillis();
+  }
+  
+  public void a(az paramaz)
+  {
+    this.f = paramaz;
+  }
+  
+  public void a(String paramString)
+  {
+    this.b = paramString;
+  }
+  
+  public void b()
+  {
+    try
+    {
+      this.c.close();
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      localIOException.printStackTrace();
     }
   }
   
-  static final class c
+  public Socket c()
   {
-    private Lock a = new ReentrantLock();
-    private bj b = null;
-    
-    public final bj a()
-    {
-      return this.b;
-    }
-    
-    public final void a(bj parambj)
-    {
-      if (parambj != null)
-      {
-        this.a.lock();
-        try
-        {
-          if (this.b == null) {
-            this.b = parambj;
-          } else {
-            parambj.b();
-          }
-          return;
-        }
-        finally
-        {
-          this.a.unlock();
-        }
-      }
-    }
+    return this.c;
+  }
+  
+  public int d()
+  {
+    return this.d;
+  }
+  
+  public int e()
+  {
+    return this.e;
   }
 }
 

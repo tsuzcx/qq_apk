@@ -36,6 +36,7 @@
     <string name="about_info2">腾讯公司 版权所有</string>
     <string name="about_info3">Copyright© 1998–2018 Tencent. All Rights Reserved</string>
     <string name="about_info5">使用协议</string>
+    <string name="about_list_privacy">隐私协议</string>
     <string name="about_list_serialnumber">序列号</string>
     <string name="account_bind_so_far">安全中心已连续守护您xx天</string>
     <string name="account_bind_to_enjoy">登录QQ,开启安全之旅 ></string>

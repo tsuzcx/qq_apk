@@ -1,8 +1,17 @@
 package com.tencent.token;
 
-public abstract interface gi
+import java.security.cert.Certificate;
+import java.util.List;
+import javax.net.ssl.X509TrustManager;
+
+public abstract class gi
 {
-  public abstract int a(String paramString, int paramInt);
+  public static gi a(X509TrustManager paramX509TrustManager)
+  {
+    return gf.c().a(paramX509TrustManager);
+  }
+  
+  public abstract List<Certificate> a(List<Certificate> paramList, String paramString);
 }
 
 

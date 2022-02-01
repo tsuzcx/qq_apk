@@ -70,32 +70,32 @@ public final class R
   
   public static final class id
   {
-    public static final int action_container = 2131165240;
-    public static final int action_divider = 2131165242;
-    public static final int action_image = 2131165243;
-    public static final int action_text = 2131165249;
-    public static final int actions = 2131165250;
-    public static final int async = 2131165285;
-    public static final int blocking = 2131165312;
-    public static final int chronometer = 2131165375;
-    public static final int forever = 2131165503;
-    public static final int icon = 2131165579;
-    public static final int icon_group = 2131165580;
-    public static final int info = 2131165598;
-    public static final int italic = 2131165608;
-    public static final int line1 = 2131165655;
-    public static final int line3 = 2131165657;
-    public static final int normal = 2131165772;
-    public static final int notification_background = 2131165773;
-    public static final int notification_main_column = 2131165774;
-    public static final int notification_main_column_container = 2131165775;
-    public static final int right_icon = 2131165911;
-    public static final int right_side = 2131165913;
-    public static final int tag_transition_group = 2131166049;
-    public static final int text = 2131166053;
-    public static final int text2 = 2131166055;
-    public static final int time = 2131166076;
-    public static final int title = 2131166104;
+    public static final int action_container = 2131165242;
+    public static final int action_divider = 2131165244;
+    public static final int action_image = 2131165245;
+    public static final int action_text = 2131165251;
+    public static final int actions = 2131165252;
+    public static final int async = 2131165287;
+    public static final int blocking = 2131165314;
+    public static final int chronometer = 2131165377;
+    public static final int forever = 2131165505;
+    public static final int icon = 2131165581;
+    public static final int icon_group = 2131165582;
+    public static final int info = 2131165600;
+    public static final int italic = 2131165610;
+    public static final int line1 = 2131165657;
+    public static final int line3 = 2131165659;
+    public static final int normal = 2131165774;
+    public static final int notification_background = 2131165775;
+    public static final int notification_main_column = 2131165776;
+    public static final int notification_main_column_container = 2131165777;
+    public static final int right_icon = 2131165913;
+    public static final int right_side = 2131165915;
+    public static final int tag_transition_group = 2131166051;
+    public static final int text = 2131166055;
+    public static final int text2 = 2131166057;
+    public static final int time = 2131166078;
+    public static final int title = 2131166106;
   }
   
   public static final class integer
@@ -115,7 +115,7 @@ public final class R
   
   public static final class string
   {
-    public static final int status_bar_notification_info_overflow = 2131493598;
+    public static final int status_bar_notification_info_overflow = 2131493599;
   }
   
   public static final class style

@@ -1,77 +1,115 @@
 package com.tencent.token;
 
-import android.text.format.Time;
-import android.util.Log;
+import java.io.Writer;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public final class dy
+public class dy
+  implements Iterable<String>
 {
-  public static final dy a = new dy();
+  private ConcurrentLinkedQueue<String> a = null;
+  private AtomicInteger b = null;
   
-  public final String a(int paramInt)
+  public int a()
   {
-    if (paramInt != 4)
-    {
-      if (paramInt != 8)
-      {
-        if (paramInt != 16)
-        {
-          if (paramInt != 32)
-          {
-            switch (paramInt)
-            {
-            default: 
-              return "-";
-            case 2: 
-              return "D";
-            }
-            return "V";
-          }
-          return "A";
-        }
-        return "E";
-      }
-      return "W";
-    }
-    return "I";
+    return this.b.get();
   }
   
-  public String a(int paramInt, Thread paramThread, long paramLong, String paramString1, String paramString2, Throwable paramThrowable)
+  public int a(String paramString)
   {
-    long l = paramLong % 1000L;
-    Time localTime = new Time();
-    localTime.set(paramLong);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a(paramInt));
-    localStringBuilder.append('/');
-    localStringBuilder.append(localTime.format("%Y-%m-%d %H:%M:%S"));
-    localStringBuilder.append('.');
-    if (l < 10L) {
-      localStringBuilder.append("00");
-    } else if (l < 100L) {
-      localStringBuilder.append('0');
-    }
-    localStringBuilder.append(l);
-    localStringBuilder.append(' ');
-    localStringBuilder.append('[');
-    if (paramThread == null) {
-      localStringBuilder.append("N/A");
-    } else {
-      localStringBuilder.append(paramThread.getName());
-    }
-    localStringBuilder.append(']');
-    localStringBuilder.append('[');
-    localStringBuilder.append(paramString1);
-    localStringBuilder.append(']');
-    localStringBuilder.append(' ');
-    localStringBuilder.append(paramString2);
-    localStringBuilder.append('\n');
-    if (paramThrowable != null)
+    int i = paramString.length();
+    this.a.add(paramString);
+    return this.b.addAndGet(i);
+  }
+  
+  public void a(Writer paramWriter, char[] paramArrayOfChar)
+  {
+    int i1;
+    int i2;
+    int k;
+    int m;
+    int j;
+    int i;
+    if ((paramWriter != null) && (paramArrayOfChar != null))
     {
-      localStringBuilder.append("* Exception : \n");
-      localStringBuilder.append(Log.getStackTraceString(paramThrowable));
-      localStringBuilder.append('\n');
+      if (paramArrayOfChar.length == 0) {
+        return;
+      }
+      int n = paramArrayOfChar.length;
+      try
+      {
+        Iterator localIterator = iterator();
+        i1 = n;
+        i2 = 0;
+        if (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          k = str.length();
+          m = 0;
+          j = i2;
+          i = i1;
+          break label161;
+          label73:
+          i1 = m + i2;
+          str.getChars(m, i1, paramArrayOfChar, j);
+          i -= i2;
+          j += i2;
+          k -= i2;
+          if (i != 0) {
+            break label192;
+          }
+          paramWriter.write(paramArrayOfChar, 0, n);
+          i = n;
+          m = i1;
+          j = 0;
+          break label161;
+        }
+        if (i2 > 0) {
+          paramWriter.write(paramArrayOfChar, 0, i2);
+        }
+        paramWriter.flush();
+        return;
+      }
+      catch (Exception paramWriter)
+      {
+        paramWriter.printStackTrace();
+        return;
+      }
     }
-    return localStringBuilder.toString();
+    else
+    {
+      return;
+    }
+    for (;;)
+    {
+      label161:
+      i2 = j;
+      i1 = i;
+      if (k <= 0) {
+        break;
+      }
+      if (i > k)
+      {
+        i2 = k;
+        break label73;
+      }
+      i2 = i;
+      break label73;
+      label192:
+      m = i1;
+    }
+  }
+  
+  public void b()
+  {
+    this.a.clear();
+    this.b.set(0);
+  }
+  
+  public Iterator<String> iterator()
+  {
+    return this.a.iterator();
   }
 }
 

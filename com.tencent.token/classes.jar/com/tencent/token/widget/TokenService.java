@@ -8,8 +8,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
 import android.widget.RemoteViews;
-import com.tencent.token.cc;
-import com.tencent.token.ce;
+import com.tencent.token.cd;
+import com.tencent.token.cf;
 import com.tencent.token.global.g;
 import com.tencent.token.ui.WidgetTransitionActivity;
 
@@ -45,26 +45,26 @@ public class TokenService
   
   private void a()
   {
-    Object localObject2 = cc.c();
-    if (!((cc)localObject2).g())
+    Object localObject2 = cd.c();
+    if (!((cd)localObject2).g())
     {
       AppWidgetManager localAppWidgetManager = AppWidgetManager.getInstance(this);
       Object localObject1 = localAppWidgetManager.getAppWidgetIds(this.e);
-      this.c.setImageViewResource(2131166271, 2131100204);
+      this.c.setImageViewResource(2131166273, 2131100204);
       boolean bool = this.f;
       int i1 = 0;
       if (!bool)
       {
-        ((cc)localObject2).m();
-        this.b = ((cc)localObject2).l();
+        ((cd)localObject2).m();
+        this.b = ((cd)localObject2).l();
         if (this.g) {
-          this.c.setImageViewResource(2131166271, 2131100201);
+          this.c.setImageViewResource(2131166273, 2131100201);
         }
-        this.c.setViewVisibility(2131166270, 4);
-        this.c.setViewVisibility(2131166121, 4);
+        this.c.setViewVisibility(2131166272, 4);
+        this.c.setViewVisibility(2131166123, 4);
+        this.c.setViewVisibility(2131166132, 0);
         this.c.setViewVisibility(2131166130, 0);
-        this.c.setViewVisibility(2131166128, 0);
-        this.c.setOnClickPendingIntent(2131166130, this.j);
+        this.c.setOnClickPendingIntent(2131166132, this.j);
         int m = 0;
         for (;;)
         {
@@ -73,15 +73,15 @@ public class TokenService
           if (m >= localObject2.length) {
             break;
           }
-          this.c.setImageViewResource(2131166122 + m, this.h[localObject2[m]]);
+          this.c.setImageViewResource(2131166124 + m, this.h[localObject2[m]]);
           m += 1;
         }
       }
+      this.c.setViewVisibility(2131166132, 4);
       this.c.setViewVisibility(2131166130, 4);
-      this.c.setViewVisibility(2131166128, 4);
-      this.c.setViewVisibility(2131166270, 0);
-      this.c.setViewVisibility(2131166121, 0);
-      this.c.setOnClickPendingIntent(2131166270, this.i);
+      this.c.setViewVisibility(2131166272, 0);
+      this.c.setViewVisibility(2131166123, 0);
+      this.c.setOnClickPendingIntent(2131166272, this.i);
       int n = i1;
       try
       {
@@ -111,11 +111,11 @@ public class TokenService
       this.d = new Intent(this, TokenService.class);
       this.c = new RemoteViews(getPackageName(), 2131296466);
       this.e = new ComponentName(this, TokenWidgetProvider.class);
-      this.c.setOnClickPendingIntent(2131166128, this.i);
-      this.c.setOnClickPendingIntent(2131166270, this.i);
+      this.c.setOnClickPendingIntent(2131166130, this.i);
+      this.c.setOnClickPendingIntent(2131166272, this.i);
       this.j = PendingIntent.getBroadcast(this, 0, new Intent("com.tencent.token.widget.SPEECH"), 0);
-      this.c.setOnClickPendingIntent(2131166130, this.j);
-      ce.a(this);
+      this.c.setOnClickPendingIntent(2131166132, this.j);
+      cf.a(this);
     }
   }
   
@@ -138,7 +138,7 @@ public class TokenService
   public void onDestroy()
   {
     super.onDestroy();
-    ce.a(this).b();
+    cf.a(this).b();
     unregisterReceiver(this.k);
   }
   
@@ -157,11 +157,11 @@ public class TokenService
     //   15: monitorenter
     //   16: ldc2_w 218
     //   19: lstore_3
-    //   20: invokestatic 73	com/tencent/token/cc:c	()Lcom/tencent/token/cc;
-    //   23: invokevirtual 76	com/tencent/token/cc:g	()Z
+    //   20: invokestatic 73	com/tencent/token/cd:c	()Lcom/tencent/token/cd;
+    //   23: invokevirtual 76	com/tencent/token/cd:g	()Z
     //   26: ifne +78 -> 104
-    //   29: invokestatic 224	com/tencent/token/cd:a	()Lcom/tencent/token/cd;
-    //   32: invokevirtual 226	com/tencent/token/cd:c	()Z
+    //   29: invokestatic 224	com/tencent/token/ce:a	()Lcom/tencent/token/ce;
+    //   32: invokevirtual 226	com/tencent/token/ce:c	()Z
     //   35: ifne +56 -> 91
     //   38: invokestatic 230	com/tencent/token/utils/m:e	()J
     //   41: lconst_0
@@ -171,8 +171,8 @@ public class TokenService
     //   49: aload_0
     //   50: iconst_0
     //   51: putfield 42	com/tencent/token/widget/TokenService:f	Z
-    //   54: invokestatic 73	com/tencent/token/cc:c	()Lcom/tencent/token/cc;
-    //   57: invokevirtual 233	com/tencent/token/cc:r	()J
+    //   54: invokestatic 73	com/tencent/token/cd:c	()Lcom/tencent/token/cd;
+    //   57: invokevirtual 233	com/tencent/token/cd:r	()J
     //   60: lstore_3
     //   61: lload_3
     //   62: ldc2_w 234

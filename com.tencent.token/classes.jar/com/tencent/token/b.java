@@ -18,7 +18,7 @@ public class b
   
   private void a(String paramString1, String paramString2)
   {
-    paramString2 = ek.a(this.a, paramString2);
+    paramString2 = em.a(this.a, paramString2);
     if (paramString2 == null) {
       return;
     }
@@ -31,7 +31,7 @@ public class b
     if (TextUtils.isEmpty(paramString1)) {
       return null;
     }
-    return ek.b(this.a, paramString1);
+    return em.b(this.a, paramString1);
   }
   
   private long h(String paramString)

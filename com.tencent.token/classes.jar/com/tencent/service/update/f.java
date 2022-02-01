@@ -96,7 +96,7 @@ public class f
   
   private int b(int paramInt)
   {
-    Object localObject1 = this.h.w();
+    Object localObject1 = this.h.y();
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
       Log.e("UpdateManager", "APK静默下载配置参数为空");
@@ -213,7 +213,7 @@ public class f
         Log.i("UpdateManager", "canUpdateSilently onReceiveUpdateCloud no wifi");
       }
     }
-    if ((this.h.m()) && (localConnectType == ConnectType.CT_WIFI) && (u()))
+    if ((this.h.o()) && (localConnectType == ConnectType.CT_WIFI) && (u()))
     {
       Log.i("UpdateManager", "canUpdateSilently true");
       return true;
@@ -227,7 +227,7 @@ public class f
   
   private void p()
   {
-    this.h.l();
+    this.h.n();
   }
   
   private boolean q()
@@ -333,8 +333,8 @@ public class f
   
   private boolean v()
   {
-    boolean bool = this.h.s();
-    long l = this.h.v();
+    boolean bool = this.h.u();
+    long l = this.h.x();
     if (bool)
     {
       if (System.currentTimeMillis() < l) {
@@ -387,7 +387,7 @@ public class f
       Log.i("UpdateManager", "handleSoftUpdate null");
       return;
     }
-    if (paramBundle.getLong("taskId") > this.h.k()) {
+    if (paramBundle.getLong("taskId") > this.h.m()) {
       d();
     }
     if (g())
@@ -404,12 +404,12 @@ public class f
   public void a(final d paramd)
   {
     CSDCheckData localCSDCheckData = new CSDCheckData();
-    localCSDCheckData.taskNo = this.h.k();
+    localCSDCheckData.taskNo = this.h.m();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("DoubleCheck TaskNo : ");
-    localStringBuilder.append(this.h.k());
+    localStringBuilder.append(this.h.m());
     Log.i("UpdateManager", localStringBuilder.toString());
-    if (this.h.k() == 0L)
+    if (this.h.m() == 0L)
     {
       paramd.b();
       return;
@@ -479,9 +479,9 @@ public class f
     if (this.c) {
       return;
     }
-    if (!this.h.s())
+    if (!this.h.u())
     {
-      if (this.h.t()) {
+      if (this.h.v()) {
         return;
       }
       if (((paramBoolean) && (i())) || (!paramBoolean))
@@ -490,7 +490,7 @@ public class f
         localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
         localIntentFilter.addAction("android.net.wifi.WIFI_STATE_CHANGED");
         localIntentFilter.addAction("android.net.wifi.STATE_CHANGE");
-        RqdApplication.l().registerReceiver(this.i, localIntentFilter);
+        RqdApplication.n().registerReceiver(this.i, localIntentFilter);
         this.c = true;
       }
       return;
@@ -524,17 +524,17 @@ public class f
   public a.a b(boolean paramBoolean)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.h.d());
-    ((StringBuilder)localObject).append(".");
-    ((StringBuilder)localObject).append(this.h.e());
-    ((StringBuilder)localObject).append(".");
     ((StringBuilder)localObject).append(this.h.f());
+    ((StringBuilder)localObject).append(".");
+    ((StringBuilder)localObject).append(this.h.g());
+    ((StringBuilder)localObject).append(".");
+    ((StringBuilder)localObject).append(this.h.h());
     String str = ((StringBuilder)localObject).toString();
-    int j = -this.h.g();
+    int j = -this.h.i();
     if (paramBoolean) {
-      localObject = this.h.r();
+      localObject = this.h.t();
     } else if (f()) {
-      localObject = this.h.j();
+      localObject = this.h.l();
     } else {
       localObject = null;
     }
@@ -641,7 +641,7 @@ public class f
         {
           new UpdateDownloadDialog(f.a(f.this), 2131558791, locala).show();
           f.this.a(4, 1);
-          f.b(f.this).e(System.currentTimeMillis() + f.b(f.this).u());
+          f.b(f.this).e(System.currentTimeMillis() + f.b(f.this).w());
           TMSDKContext.saveActionData(1150106);
         }
       });
@@ -656,10 +656,10 @@ public class f
       e();
       p();
       this.h.k(0);
-      this.h.a(false);
-      this.h.c(false);
+      this.h.b(false);
       this.h.d(false);
       this.h.e(false);
+      this.h.f(false);
       if (this.d != null)
       {
         this.d.a(this.d.a());
@@ -683,7 +683,7 @@ public class f
         {
           new UpdateDownloadDialog(f.a(f.this), 2131558791, locala).show();
           f.this.a(4, 1);
-          f.b(f.this).e(System.currentTimeMillis() + f.b(f.this).u());
+          f.b(f.this).e(System.currentTimeMillis() + f.b(f.this).w());
         }
       }
     });
@@ -691,7 +691,7 @@ public class f
   
   public void e()
   {
-    long l = this.h.k();
+    long l = this.h.m();
     if (l > 0L) {
       this.h.c(l);
     }
@@ -700,7 +700,7 @@ public class f
   
   public boolean f()
   {
-    if (this.h.c() != 0) {
+    if (this.h.e() != 0) {
       return false;
     }
     return g();
@@ -709,7 +709,7 @@ public class f
   public boolean g()
   {
     Log.i("UpdateManager", "hasUpdateInfo");
-    long l = this.h.b();
+    long l = this.h.d();
     if (l < System.currentTimeMillis())
     {
       Log.i("UpdateManager", "hasUpdateInfo endTimeMillis < now");
@@ -718,10 +718,10 @@ public class f
       }
       return false;
     }
-    if (!a(this.h.g()))
+    if (!a(this.h.i()))
     {
       Log.i("UpdateManager", "hasUpdateInfo build < now");
-      if (this.h.g() > 0) {
+      if (this.h.i() > 0) {
         d();
       }
       return false;
@@ -733,7 +733,7 @@ public class f
   {
     if (this.c)
     {
-      RqdApplication.l().unregisterReceiver(this.i);
+      RqdApplication.n().unregisterReceiver(this.i);
       this.c = false;
     }
   }
@@ -741,7 +741,7 @@ public class f
   public boolean i()
   {
     Log.i("UpdateManager", "isSilentUpdate");
-    if ((this.h.n()) && (this.h.q()) && (g()))
+    if ((this.h.p()) && (this.h.s()) && (g()))
     {
       Log.i("UpdateManager", "isSilentUpdate true");
       return true;
@@ -765,8 +765,8 @@ public class f
     a.a locala = m();
     if ((locala == null) || (locala.f != DownloaderTaskStatus.COMPLETE))
     {
-      this.h.c(false);
       this.h.d(false);
+      this.h.e(false);
     }
     if (v()) {
       return true;
@@ -775,7 +775,7 @@ public class f
     {
       if (i.a())
       {
-        long l = this.h.v();
+        long l = this.h.x();
         if (System.currentTimeMillis() < l) {
           return false;
         }
@@ -835,7 +835,7 @@ public class f
     {
       public void a()
       {
-        if (f.b(f.this).o() != 6) {
+        if (f.b(f.this).q() != 6) {
           return;
         }
         f.this.c(false);

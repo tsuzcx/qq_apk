@@ -13,8 +13,8 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.bu;
-import com.tencent.token.cd;
+import com.tencent.token.bv;
+import com.tencent.token.ce;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.ui.base.SwitchButton;
 import com.tencent.token.utils.l;
@@ -39,7 +39,7 @@ public class StartPwdGestureSelActivity
     {
       public void onClick(View paramAnonymousView)
       {
-        bu.a().a(System.currentTimeMillis(), 15);
+        bv.a().a(System.currentTimeMillis(), 15);
         paramAnonymousView = new Intent(StartPwdGestureSelActivity.this, StartPwdGestureModifyActivity.class);
         StartPwdGestureSelActivity.this.startActivityForResult(paramAnonymousView, 258);
         l.a(StartPwdGestureSelActivity.this, 1);
@@ -49,7 +49,7 @@ public class StartPwdGestureSelActivity
     {
       public void onClick(View paramAnonymousView)
       {
-        bu.a().a(System.currentTimeMillis(), 21);
+        bv.a().a(System.currentTimeMillis(), 21);
         paramAnonymousView = new Intent(StartPwdGestureSelActivity.this, StartPwdGestureDeleteActivity.class);
         StartPwdGestureSelActivity.this.startActivityForResult(paramAnonymousView, 256);
         l.a(StartPwdGestureSelActivity.this, 1);
@@ -57,7 +57,7 @@ public class StartPwdGestureSelActivity
     });
     try
     {
-      this.mSetStartPwd = RqdApplication.l().getSharedPreferences("start_pwd_config", 0).getInt("is_set_start_pwd_show", 1);
+      this.mSetStartPwd = RqdApplication.n().getSharedPreferences("start_pwd_config", 0).getInt("is_set_start_pwd_show", 1);
       if (this.mSetStartPwd == 1)
       {
         this.mSwitchStartPwd.a(false, false);
@@ -82,10 +82,10 @@ public class StartPwdGestureSelActivity
         }
         try
         {
-          paramAnonymousCompoundButton = RqdApplication.l().getSharedPreferences("start_pwd_config", 0).edit();
+          paramAnonymousCompoundButton = RqdApplication.n().getSharedPreferences("start_pwd_config", 0).edit();
           if (StartPwdGestureSelActivity.this.mSetStartPwd == 1)
           {
-            bu.a().a(System.currentTimeMillis(), 65);
+            bv.a().a(System.currentTimeMillis(), 65);
             paramAnonymousCompoundButton.putInt("is_set_start_pwd_show", 0);
             StartPwdGestureSelActivity.access$102(StartPwdGestureSelActivity.this, 0);
             StartPwdGestureSelActivity.this.mSwitchStartPwd.a(true, false);
@@ -119,13 +119,13 @@ public class StartPwdGestureSelActivity
     {
       if (paramInt2 == 257)
       {
-        bu.a().a(System.currentTimeMillis(), 22);
+        bv.a().a(System.currentTimeMillis(), 22);
         startActivity(new Intent(this, StartPwdUpdateInfoActivity.class));
-        showOrangeToast(2131493244, 2131100167);
+        showOrangeToast(2131493245, 2131100167);
         finish();
         return;
       }
-      if (!cd.a().c()) {
+      if (!ce.a().c()) {
         finish();
       }
     }
@@ -133,11 +133,11 @@ public class StartPwdGestureSelActivity
     {
       if (paramInt2 == 259)
       {
-        bu.a().a(System.currentTimeMillis(), 16);
-        showOrangeToast(2131493233, 2131100167);
+        bv.a().a(System.currentTimeMillis(), 16);
+        showOrangeToast(2131493234, 2131100167);
         return;
       }
-      if (!cd.a().c()) {
+      if (!ce.a().c()) {
         finish();
       }
     }
@@ -147,10 +147,10 @@ public class StartPwdGestureSelActivity
   {
     super.onCreate(paramBundle);
     setContentView(2131296450);
-    this.mButtonModify = ((Button)findViewById(2131165562));
-    this.mButtonClear = ((Button)findViewById(2131165560));
-    this.mSwitchStartPwd = ((SwitchButton)findViewById(2131165373));
-    this.mTextOpName = ((TextView)findViewById(2131166068));
+    this.mButtonModify = ((Button)findViewById(2131165564));
+    this.mButtonClear = ((Button)findViewById(2131165562));
+    this.mSwitchStartPwd = ((SwitchButton)findViewById(2131165375));
+    this.mTextOpName = ((TextView)findViewById(2131166070));
     initUI();
   }
 }

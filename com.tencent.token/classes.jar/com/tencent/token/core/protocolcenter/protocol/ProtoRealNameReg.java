@@ -7,12 +7,12 @@ import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.token.bz;
 import com.tencent.token.ca;
-import com.tencent.token.cc;
+import com.tencent.token.cb;
+import com.tencent.token.cd;
 import com.tencent.token.core.bean.RealNameRegResult;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.g;
@@ -39,24 +39,24 @@ public class ProtoRealNameReg
   private byte[] p;
   private RealNameRegResult q;
   
-  public static void a(do paramdo, long paramLong1, int paramInt1, long paramLong2, String paramString1, String paramString2, int paramInt2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5)
+  public static void a(dp paramdp, long paramLong1, int paramInt1, long paramLong2, String paramString1, String paramString2, int paramInt2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5)
   {
-    paramdo.c.put("param.uinhash", Long.valueOf(paramLong1));
-    paramdo.c.put("param.realuin", Long.valueOf(paramLong2));
-    paramdo.c.put("param.realname", paramString1);
-    paramdo.c.put("param.idnumber", paramString2);
-    paramdo.c.put("param.optype", Integer.valueOf(paramInt2));
-    paramdo.c.put("param.facedata", paramArrayOfByte1);
-    paramdo.c.put("param.frontdata", paramArrayOfByte2);
-    paramdo.c.put("param.backdata", paramArrayOfByte3);
-    paramdo.c.put("param.prontphotoinfo", paramArrayOfByte4);
-    paramdo.c.put("param.backphotoinfo", paramArrayOfByte5);
-    paramdo.j = paramInt1;
+    paramdp.c.put("param.uinhash", Long.valueOf(paramLong1));
+    paramdp.c.put("param.realuin", Long.valueOf(paramLong2));
+    paramdp.c.put("param.realname", paramString1);
+    paramdp.c.put("param.idnumber", paramString2);
+    paramdp.c.put("param.optype", Integer.valueOf(paramInt2));
+    paramdp.c.put("param.facedata", paramArrayOfByte1);
+    paramdp.c.put("param.frontdata", paramArrayOfByte2);
+    paramdp.c.put("param.backdata", paramArrayOfByte3);
+    paramdp.c.put("param.prontphotoinfo", paramArrayOfByte4);
+    paramdp.c.put("param.backphotoinfo", paramArrayOfByte5);
+    paramdp.j = paramInt1;
   }
   
   protected String a()
   {
-    if (ca.a().b() == null)
+    if (cb.a().b() == null)
     {
       this.a.b(104);
       return null;
@@ -67,19 +67,19 @@ public class ProtoRealNameReg
     return localStringBuilder.toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.d = ((Long)paramdo.c.get("param.uinhash")).longValue();
-    this.e = ((Long)paramdo.c.get("param.realuin")).longValue();
-    this.g = ((String)paramdo.c.get("param.realname"));
-    this.h = ((String)paramdo.c.get("param.idnumber"));
-    this.k = ((Integer)paramdo.c.get("param.optype")).intValue();
-    this.l = ((byte[])paramdo.c.get("param.facedata"));
-    this.m = ((byte[])paramdo.c.get("param.frontdata"));
-    this.n = ((byte[])paramdo.c.get("param.backdata"));
-    this.o = ((byte[])paramdo.c.get("param.prontphotoinfo"));
-    this.p = ((byte[])paramdo.c.get("param.backphotoinfo"));
-    this.f = paramdo.j;
+    this.d = ((Long)paramdp.c.get("param.uinhash")).longValue();
+    this.e = ((Long)paramdp.c.get("param.realuin")).longValue();
+    this.g = ((String)paramdp.c.get("param.realname"));
+    this.h = ((String)paramdp.c.get("param.idnumber"));
+    this.k = ((Integer)paramdp.c.get("param.optype")).intValue();
+    this.l = ((byte[])paramdp.c.get("param.facedata"));
+    this.m = ((byte[])paramdp.c.get("param.frontdata"));
+    this.n = ((byte[])paramdp.c.get("param.backdata"));
+    this.o = ((byte[])paramdp.c.get("param.prontphotoinfo"));
+    this.p = ((byte[])paramdp.c.get("param.backphotoinfo"));
+    this.f = paramdp.j;
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -128,7 +128,7 @@ public class ProtoRealNameReg
       ((StringBuilder)localObject).append("parseJSON error decodeData=");
       ((StringBuilder)localObject).append(paramJSONObject);
       g.c(((StringBuilder)localObject).toString());
-      a(10022, RqdApplication.l().getString(2131493067));
+      a(10022, RqdApplication.n().getString(2131493068));
       return;
     }
     catch (Exception paramJSONObject)
@@ -137,12 +137,12 @@ public class ProtoRealNameReg
     }
   }
   
-  public do b(do paramdo)
+  public dp b(dp paramdp)
   {
-    int i1 = paramdo.j;
-    paramdo.m = 1;
-    paramdo.n = new ContentValues(3);
-    paramdo.n.put("aq_base_sid", ca.a().b());
+    int i1 = paramdp.j;
+    paramdp.m = 1;
+    paramdp.n = new ContentValues(3);
+    paramdp.n.put("aq_base_sid", cb.a().b());
     Object localObject1 = new JSONObject();
     try
     {
@@ -189,14 +189,14 @@ public class ProtoRealNameReg
       if (this.p != null) {
         ((JSONObject)localObject1).put("id_photo_info_back", b.a(this.p));
       }
-      ((JSONObject)localObject1).put("token_seq", cc.c().k());
-      ((JSONObject)localObject1).put("guid", l.a(bz.a(RqdApplication.l()).b()));
+      ((JSONObject)localObject1).put("token_seq", cd.c().k());
+      ((JSONObject)localObject1).put("guid", l.a(ca.a(RqdApplication.n()).b()));
       ((JSONObject)localObject1).put("seq_id", i1);
-      ((JSONObject)localObject1).put("op_time", (int)(cc.c().s() / 1000L));
+      ((JSONObject)localObject1).put("op_time", (int)(cd.c().s() / 1000L));
       ((JSONObject)localObject1).put("vendor_id", Build.MANUFACTURER);
-      ((JSONObject)localObject1).put("android_id", l.a(RqdApplication.l()));
-      ((JSONObject)localObject1).put("imei", l.b(RqdApplication.l()));
-      ((JSONObject)localObject1).put("mac", l.c(RqdApplication.l()));
+      ((JSONObject)localObject1).put("android_id", l.a(RqdApplication.n()));
+      ((JSONObject)localObject1).put("imei", l.b(RqdApplication.n()));
+      ((JSONObject)localObject1).put("mac", l.c(RqdApplication.n()));
       ((JSONObject)localObject1).put("device_model", Build.MODEL);
       ((JSONObject)localObject1).put("sys_ver", Build.VERSION.RELEASE);
       ((JSONObject)localObject1).put("face_detect_time", ProtoFaceCommon.f);
@@ -216,11 +216,11 @@ public class ProtoRealNameReg
       ((JSONObject)localObject1).put("id_photo_front_frame", com.tencent.token.ui.e.a);
       ((JSONObject)localObject1).put("id_photo_back_time", com.tencent.token.ui.e.d);
       ((JSONObject)localObject1).put("id_photo_back_frame", com.tencent.token.ui.e.c);
-      localObject2 = l.e(RqdApplication.l());
+      localObject2 = l.e(RqdApplication.n());
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
         ((JSONObject)localObject1).put("route_name", localObject2);
       }
-      localObject2 = l.d(RqdApplication.l());
+      localObject2 = l.d(RqdApplication.n());
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
         ((JSONObject)localObject1).put("route_mac", localObject2);
       }
@@ -234,8 +234,8 @@ public class ProtoRealNameReg
     localStringBuilder1.append("doRealNameReg data = ");
     localStringBuilder1.append(((String)localObject1).length());
     g.a(localStringBuilder1.toString());
-    paramdo.n.put("data", (String)localObject1);
-    return paramdo;
+    paramdp.n.put("data", (String)localObject1);
+    return paramdp;
   }
   
   protected void b()

@@ -1,7 +1,7 @@
 package okhttp3;
 
-import com.tencent.token.fc;
-import com.tencent.token.fo;
+import com.tencent.token.ff;
+import com.tencent.token.fr;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -23,7 +23,7 @@ public final class x
     this.b = parama.b;
     this.c = parama.c.a();
     this.d = parama.d;
-    this.e = fc.a(parama.e);
+    this.e = ff.a(parama.e);
   }
   
   @Nullable
@@ -156,7 +156,7 @@ public final class x
       {
         if (paramString.length() != 0)
         {
-          if ((paramy != null) && (!fo.c(paramString)))
+          if ((paramy != null) && (!fr.c(paramString)))
           {
             paramy = new StringBuilder();
             paramy.append("method ");
@@ -164,7 +164,7 @@ public final class x
             paramy.append(" must not have a request body.");
             throw new IllegalArgumentException(paramy.toString());
           }
-          if ((paramy == null) && (fo.b(paramString)))
+          if ((paramy == null) && (fr.b(paramString)))
           {
             paramy = new StringBuilder();
             paramy.append("method ");

@@ -1,150 +1,340 @@
 package com.tencent.token;
 
-import com.tencent.token.core.bean.DeviceInfo;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.f;
+import com.tencent.token.core.bean.NewConfigureCacheItem;
+import com.tencent.token.global.RqdApplication;
+import com.tencent.token.global.g;
+import com.tencent.token.global.h;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Observable;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class dm
+  extends Observable
+  implements dg
 {
-  public f a = new f();
-  public ArrayList<DeviceInfo> b;
-  String c;
-  long d;
+  public static final String[] a = { "login_protect", "account_prot", "mail_protect", "qb_prot", "account_lock", "game_lock", "real_name", "modify_pwd", "recover_friends", "account_freeze", "key_value" };
+  public int b = 0;
+  private List<NewConfigureCacheItem> c = Collections.synchronizedList(new ArrayList());
+  private boolean d = false;
   
-  public void a(f paramf)
+  private boolean a(List<NewConfigureCacheItem> paramList)
+  {
+    if (paramList == null) {
+      return false;
+    }
+    int k = paramList.size();
+    int i = 0;
+    while (i < a.length)
+    {
+      int j = 0;
+      while (j < k)
+      {
+        NewConfigureCacheItem localNewConfigureCacheItem = (NewConfigureCacheItem)paramList.get(j);
+        if (a[i].equals(localNewConfigureCacheItem.mConfKey)) {
+          break;
+        }
+        j += 1;
+      }
+      if (j == k) {
+        return false;
+      }
+      i += 1;
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      if (((NewConfigureCacheItem)paramList.next()).mConfIDs == null) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  private boolean a(JSONArray paramJSONArray)
+  {
+    if (paramJSONArray == null) {
+      return false;
+    }
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        if (i < paramJSONArray.length())
+        {
+          Object localObject = paramJSONArray.getJSONArray(i);
+          String str = (String)((JSONArray)localObject).get(0);
+          int k = ((Integer)((JSONArray)localObject).get(1)).intValue();
+          NewConfigureCacheItem localNewConfigureCacheItem = a(str);
+          localObject = localNewConfigureCacheItem;
+          if (localNewConfigureCacheItem == null)
+          {
+            localObject = new NewConfigureCacheItem(str);
+            a((NewConfigureCacheItem)localObject);
+            break label155;
+            if (j < a.length - 1)
+            {
+              if ((this.b == 0) || (((NewConfigureCacheItem)localObject).mClientVersion >= k) || (!str.equals(a[j]))) {
+                break label160;
+              }
+              this.d = true;
+              break label160;
+            }
+            ((NewConfigureCacheItem)localObject).mClientVersion = k;
+            i += 1;
+          }
+        }
+        else
+        {
+          return true;
+        }
+      }
+      catch (JSONException paramJSONArray)
+      {
+        return false;
+      }
+      catch (Exception paramJSONArray)
+      {
+        return false;
+      }
+      label155:
+      int j = 0;
+      continue;
+      label160:
+      j += 1;
+    }
+  }
+  
+  private boolean b(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      return false;
+    }
+    for (;;)
+    {
+      int i;
+      int j;
+      try
+      {
+        localObject1 = paramJSONObject.getJSONArray("main_tab_new");
+        paramJSONObject = paramJSONObject.getJSONArray("conf_id_new");
+        if (localObject1 != null)
+        {
+          i = 0;
+          if (i < ((JSONArray)localObject1).length())
+          {
+            localObject2 = (String)((JSONArray)localObject1).get(i);
+            NewConfigureCacheItem localNewConfigureCacheItem = a((String)localObject2);
+            if (localNewConfigureCacheItem == null) {
+              break label282;
+            }
+            localNewConfigureCacheItem.mClickVersion = -1;
+            j = 0;
+            if (j >= a.length - 1) {
+              break label282;
+            }
+            if (!((String)localObject2).equals(a[j])) {
+              break label275;
+            }
+            this.d = true;
+            break label275;
+          }
+        }
+        localObject1 = this.c.iterator();
+        if (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (NewConfigureCacheItem)((Iterator)localObject1).next();
+          if (((NewConfigureCacheItem)localObject2).mClickVersion == -1) {
+            continue;
+          }
+          ((NewConfigureCacheItem)localObject2).mClickVersion = ((NewConfigureCacheItem)localObject2).mClientVersion;
+          continue;
+        }
+        localObject1 = a("game_lock");
+        if (((NewConfigureCacheItem)localObject1).mConfIDs == null) {
+          ((NewConfigureCacheItem)localObject1).mConfIDs = new ArrayList();
+        }
+        localObject2 = a("account_prot");
+        if (((NewConfigureCacheItem)localObject2).mConfIDs != null) {
+          break label289;
+        }
+        ((NewConfigureCacheItem)localObject2).mConfIDs = new ArrayList();
+      }
+      catch (Exception paramJSONObject)
+      {
+        Object localObject1;
+        Object localObject2;
+        g.b(paramJSONObject.toString());
+        return false;
+      }
+      if (i < paramJSONObject.length())
+      {
+        ((NewConfigureCacheItem)localObject1).mConfIDs.add(Integer.valueOf(paramJSONObject.getInt(i)));
+        ((NewConfigureCacheItem)localObject2).mConfIDs.add(Integer.valueOf(paramJSONObject.getInt(i)));
+        i += 1;
+      }
+      else
+      {
+        return true;
+        label275:
+        j += 1;
+        continue;
+        label282:
+        i += 1;
+        continue;
+        label289:
+        if (paramJSONObject != null) {
+          i = 0;
+        }
+      }
+    }
+  }
+  
+  private void e()
+  {
+    Object localObject = g();
+    if (a((List)localObject))
+    {
+      this.c.addAll((Collection)localObject);
+      return;
+    }
+    int i = 0;
+    for (;;)
+    {
+      localObject = a;
+      if (i >= localObject.length) {
+        break;
+      }
+      a(new NewConfigureCacheItem(localObject[i]));
+      i += 1;
+    }
+  }
+  
+  private void f()
+  {
+    dq localdq = new dq();
+    localdq.a = this.c;
+    RqdApplication.m().a(this, localdq, null);
+  }
+  
+  private List<NewConfigureCacheItem> g()
+  {
+    de.a locala = RqdApplication.m().a(this);
+    if (locala == null) {
+      return null;
+    }
+    return (List)locala.b.a;
+  }
+  
+  public NewConfigureCacheItem a(String paramString)
   {
     try
     {
-      this.a = paramf;
-      cr.a();
-      this.c = cr.c;
-      if (cr.a().e() != null) {
-        this.d = cr.a().e().mUin;
+      Iterator localIterator = this.c.iterator();
+      while (localIterator.hasNext())
+      {
+        NewConfigureCacheItem localNewConfigureCacheItem = (NewConfigureCacheItem)localIterator.next();
+        boolean bool = localNewConfigureCacheItem.mConfKey.equals(paramString);
+        if (bool) {
+          return localNewConfigureCacheItem;
+        }
       }
+      return null;
+    }
+    finally {}
+  }
+  
+  public dq a(Serializable paramSerializable)
+  {
+    dq localdq = new dq();
+    localdq.a = paramSerializable;
+    return localdq;
+  }
+  
+  public Serializable a(dq paramdq)
+  {
+    return (Serializable)paramdq.a;
+  }
+  
+  public void a()
+  {
+    f();
+  }
+  
+  public void a(NewConfigureCacheItem paramNewConfigureCacheItem)
+  {
+    try
+    {
+      this.c.add(paramNewConfigureCacheItem);
       return;
     }
     finally
     {
-      paramf = finally;
-      throw paramf;
-    }
-  }
-  
-  public boolean a(JSONArray paramJSONArray)
-  {
-    f localf = new f();
-    if (paramJSONArray != null) {}
-    for (;;)
-    {
-      int i;
-      try
-      {
-        if (paramJSONArray.length() > 0)
-        {
-          i = 0;
-          if (i < paramJSONArray.length())
-          {
-            Object localObject = paramJSONArray.getJSONObject(i);
-            localf.a = ((JSONObject)localObject).getInt("id");
-            localf.b = ((JSONObject)localObject).getString("name");
-            if (((JSONObject)localObject).getInt("value") == 0) {
-              break label270;
-            }
-            bool = true;
-            localf.c = bool;
-            localObject = ((JSONObject)localObject).getJSONArray("list");
-            if (((JSONArray)localObject).length() > 0)
-            {
-              this.b = new ArrayList();
-              int j = 0;
-              if (j >= ((JSONArray)localObject).length()) {
-                break label276;
-              }
-              JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(j);
-              DeviceInfo localDeviceInfo = new DeviceInfo();
-              localDeviceInfo.dguid = localJSONObject.getString("dguid");
-              localDeviceInfo.dname = localJSONObject.getString("dname");
-              localDeviceInfo.dtype = localJSONObject.getString("dtype");
-              localDeviceInfo.ddes = localJSONObject.getString("ddes");
-              localDeviceInfo.dappid = localJSONObject.getInt("dappid");
-              localDeviceInfo.dsubappid = localJSONObject.getInt("dsubappid");
-              localDeviceInfo.dappname = localJSONObject.getString("dappname");
-              this.b.add(localDeviceInfo);
-              j += 1;
-              continue;
-            }
-            this.b = new ArrayList();
-            break label276;
-          }
-        }
-        a(localf);
-        return true;
-      }
-      catch (Exception paramJSONArray)
-      {
-        paramJSONArray.printStackTrace();
-        return false;
-      }
-      label270:
-      boolean bool = false;
-      continue;
-      label276:
-      i += 1;
+      paramNewConfigureCacheItem = finally;
+      throw paramNewConfigureCacheItem;
     }
   }
   
   public boolean a(JSONObject paramJSONObject)
   {
-    f localf = new f();
-    for (;;)
-    {
-      try
-      {
-        localf.a = paramJSONObject.getInt("id");
-        localf.b = paramJSONObject.getString("name");
-        if (paramJSONObject.getInt("value") != 0)
-        {
-          bool = true;
-          localf.c = bool;
-          paramJSONObject = paramJSONObject.getJSONArray("list");
-          if (paramJSONObject.length() > 0)
-          {
-            this.b = new ArrayList();
-            int i = 0;
-            if (i < paramJSONObject.length())
-            {
-              JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
-              DeviceInfo localDeviceInfo = new DeviceInfo();
-              localDeviceInfo.dguid = localJSONObject.getString("dguid");
-              localDeviceInfo.dname = localJSONObject.getString("dname");
-              localDeviceInfo.dtype = localJSONObject.getString("dtype");
-              localDeviceInfo.ddes = localJSONObject.getString("ddes");
-              localDeviceInfo.dappid = localJSONObject.getInt("dappid");
-              localDeviceInfo.dsubappid = localJSONObject.getInt("dsubappid");
-              localDeviceInfo.dappname = localJSONObject.getString("dappname");
-              this.b.add(localDeviceInfo);
-              i += 1;
-              continue;
-            }
-          }
-          else
-          {
-            this.b = new ArrayList();
-          }
-          a(localf);
-          return true;
-        }
-      }
-      catch (Exception paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        return false;
-      }
-      boolean bool = false;
+    bool2 = false;
+    if (paramJSONObject == null) {
+      return false;
     }
+    g.c(paramJSONObject.toString());
+    try
+    {
+      int i = paramJSONObject.getInt("version");
+      bool1 = bool2;
+      if (this.b < i)
+      {
+        bool1 = a(paramJSONObject.getJSONArray("config_version"));
+        h.b(i);
+        if (this.b == 0) {
+          bool1 = b(paramJSONObject.getJSONObject("install_new"));
+        }
+        this.b = i;
+      }
+    }
+    catch (Exception paramJSONObject)
+    {
+      for (;;)
+      {
+        boolean bool1 = bool2;
+      }
+    }
+    if (bool1)
+    {
+      a();
+      setChanged();
+      notifyObservers();
+      if (this.d) {
+        h.a(true);
+      }
+    }
+    return bool1;
+  }
+  
+  public void b()
+  {
+    this.b = h.c();
+    e();
+  }
+  
+  public void c()
+  {
+    a();
+  }
+  
+  public String d()
+  {
+    return getClass().toString();
   }
 }
 

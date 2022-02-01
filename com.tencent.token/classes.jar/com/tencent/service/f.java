@@ -8,15 +8,15 @@ import android.os.Message;
 import android.text.TextUtils;
 import com.tencent.push.a;
 import com.tencent.push.d;
-import com.tencent.token.bz;
+import com.tencent.token.ca;
 import com.tencent.token.core.bean.OnlineDeviceResult.a;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.bean.SafeMsgItem;
-import com.tencent.token.cr;
-import com.tencent.token.ct;
+import com.tencent.token.cs;
 import com.tencent.token.cu;
-import com.tencent.token.dk;
-import com.tencent.token.ed;
+import com.tencent.token.cv;
+import com.tencent.token.dl;
+import com.tencent.token.ef;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.e;
 import com.tencent.token.utils.l;
@@ -46,7 +46,7 @@ public class f
   private b a(long paramLong)
   {
     List localList1 = g.a().a(paramLong);
-    List localList2 = ct.a().f.c(paramLong);
+    List localList2 = cu.a().f.c(paramLong);
     if ((localList1 != null) && (localList2 != null)) {
       return new b(localList1, localList2);
     }
@@ -79,7 +79,7 @@ public class f
           {
             paramAnonymousMessage = this.b;
             paramAnonymousMessage.set(paramAnonymousMessage.get() + 1);
-            ct.a().a(cu.c, l.a(paramArrayOfByte), this);
+            cu.a().a(cv.c, l.a(paramArrayOfByte), this);
             TmsLog.i("LoginTraceManager", "K_MSG_GETSAFELGNMESSAGE retry");
             return;
           }
@@ -88,7 +88,7 @@ public class f
         }
       }
     };
-    ct.a().a(cu.c, l.a(paramArrayOfByte), (Handler)localObject);
+    cu.a().a(cv.c, l.a(paramArrayOfByte), (Handler)localObject);
     try
     {
       localCountDownLatch.await(20L, TimeUnit.SECONDS);
@@ -120,17 +120,17 @@ public class f
       TmsLog.i("LoginTraceManager", "@checkHasChanged, has job doing, cancel this time.");
       return;
     }
-    if (System.currentTimeMillis() - ed.b("login_trace_push_timestamp", 0L) < 432000000L)
+    if (System.currentTimeMillis() - ef.b("login_trace_push_timestamp", 0L) < 432000000L)
     {
       TmsLog.i("LoginTraceManager", "@checkHasChanged, time since last push is less than 5 day, cancel this time.");
       return;
     }
-    if (ed.c())
+    if (ef.c())
     {
       TmsLog.i("LoginTraceManager", "@checkHasChanged, user has launch today, cancel this time.");
       return;
     }
-    if (ed.a())
+    if (ef.a())
     {
       TmsLog.i("LoginTraceManager", "@checkHasChanged, qqpimsecure is installed, cancel this time.");
       return;
@@ -145,7 +145,7 @@ public class f
           return;
         }
         f.a(f.this, true);
-        String str2 = ed.c("login_trace_md5", "");
+        String str2 = ef.c("login_trace_md5", "");
         Object localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("@checkHasChanged, oldMd5: ");
         ((StringBuilder)localObject1).append(str2);
@@ -181,13 +181,13 @@ public class f
           f.a(f.this, false);
           return;
         }
-        ed.b("login_trace_md5", str1);
+        ef.b("login_trace_md5", str1);
         if (!str1.equals(str2))
         {
           TmsLog.i("LoginTraceManager", "=========@checkHasChanged, login trace changed.=========");
           localObject2 = new a();
           com.tencent.push.c.a().a(paramContext, (d)localObject2);
-          ed.a("login_trace_push_timestamp", System.currentTimeMillis());
+          ef.a("login_trace_push_timestamp", System.currentTimeMillis());
           TMSDKContext.saveActionData(1150173);
         }
         f.a(f.this, false);
@@ -198,7 +198,7 @@ public class f
   public b b()
   {
     TmsLog.i("LoginTraceManager", "@refreshSync invoke.");
-    QQUser localQQUser = cr.a().e();
+    QQUser localQQUser = cs.a().e();
     if (localQQUser == null)
     {
       TmsLog.i("LoginTraceManager", "refresh empty login user");
@@ -209,7 +209,7 @@ public class f
       TmsLog.i("LoginTraceManager", "@refreshSync, time since last check is less than 21600000 ,  cancel this time.");
       return null;
     }
-    byte[] arrayOfByte = bz.a(RqdApplication.l()).b(localQQUser.mRealUin);
+    byte[] arrayOfByte = ca.a(RqdApplication.n()).b(localQQUser.mRealUin);
     if ((arrayOfByte != null) && (arrayOfByte.length > 0))
     {
       TmsLog.i("LoginTraceManager", "@refreshSync a2 not null, getMsg sync.");

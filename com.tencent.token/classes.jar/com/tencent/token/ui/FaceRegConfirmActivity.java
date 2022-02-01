@@ -32,12 +32,12 @@ public class FaceRegConfirmActivity
     g.c(((StringBuilder)localObject).toString());
     if ((this.mBitmap1 != null) && (this.mBitmap2 != null))
     {
-      localObject = (ImageView)findViewById(2131165669);
-      ImageView localImageView = (ImageView)findViewById(2131165670);
+      localObject = (ImageView)findViewById(2131165671);
+      ImageView localImageView = (ImageView)findViewById(2131165672);
       ((ImageView)localObject).setImageBitmap(this.mBitmap1);
       localImageView.setImageBitmap(this.mBitmap2);
     }
-    ((Button)findViewById(2131165402)).setOnClickListener(new View.OnClickListener()
+    ((Button)findViewById(2131165404)).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
@@ -45,7 +45,7 @@ public class FaceRegConfirmActivity
         FaceRegConfirmActivity.this.finish();
       }
     });
-    ((Button)findViewById(2131165907)).setOnClickListener(new View.OnClickListener()
+    ((Button)findViewById(2131165909)).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
@@ -63,12 +63,12 @@ public class FaceRegConfirmActivity
     this.mBitmap1 = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
     localObject = e.a(this.mPath2);
     this.mBitmap2 = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
-    localObject = (ImageView)findViewById(2131165669);
-    ImageView localImageView = (ImageView)findViewById(2131165670);
-    LinearLayout localLinearLayout1 = (LinearLayout)findViewById(2131165664);
-    LinearLayout localLinearLayout2 = (LinearLayout)findViewById(2131165665);
-    LinearLayout localLinearLayout3 = (LinearLayout)findViewById(2131165666);
-    LinearLayout localLinearLayout4 = (LinearLayout)findViewById(2131165667);
+    localObject = (ImageView)findViewById(2131165671);
+    ImageView localImageView = (ImageView)findViewById(2131165672);
+    LinearLayout localLinearLayout1 = (LinearLayout)findViewById(2131165666);
+    LinearLayout localLinearLayout2 = (LinearLayout)findViewById(2131165667);
+    LinearLayout localLinearLayout3 = (LinearLayout)findViewById(2131165668);
+    LinearLayout localLinearLayout4 = (LinearLayout)findViewById(2131165669);
     int i = (int)(this.mBitmap1.getHeight() * 140 / this.mBitmap1.getWidth() * IndexActivity.S_DENSITY);
     float f = i;
     int j = (int)(IndexActivity.S_DENSITY * 6.0F + f);

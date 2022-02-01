@@ -1,6 +1,6 @@
 package okhttp3;
 
-import com.tencent.token.fc;
+import com.tencent.token.ff;
 import java.net.Proxy;
 import java.net.ProxySelector;
 import java.util.List;
@@ -48,10 +48,10 @@ public final class a
           this.d = paramb;
           if (paramList != null)
           {
-            this.e = fc.a(paramList);
+            this.e = ff.a(paramList);
             if (paramList1 != null)
             {
-              this.f = fc.a(paramList1);
+              this.f = ff.a(paramList1);
               if (paramProxySelector != null)
               {
                 this.g = paramProxySelector;
@@ -81,7 +81,7 @@ public final class a
   
   boolean a(a parama)
   {
-    return (this.b.equals(parama.b)) && (this.d.equals(parama.d)) && (this.e.equals(parama.e)) && (this.f.equals(parama.f)) && (this.g.equals(parama.g)) && (fc.a(this.h, parama.h)) && (fc.a(this.i, parama.i)) && (fc.a(this.j, parama.j)) && (fc.a(this.k, parama.k)) && (a().g() == parama.a().g());
+    return (this.b.equals(parama.b)) && (this.d.equals(parama.d)) && (this.e.equals(parama.e)) && (this.f.equals(parama.f)) && (this.g.equals(parama.g)) && (ff.a(this.h, parama.h)) && (ff.a(this.i, parama.i)) && (ff.a(this.j, parama.j)) && (ff.a(this.k, parama.k)) && (a().g() == parama.a().g());
   }
   
   public o b()

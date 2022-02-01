@@ -2,7 +2,7 @@ package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.e;
 import com.tencent.token.global.g;
@@ -16,18 +16,18 @@ public class ProtoVryMbMobileCode
   private long d;
   private String e;
   
-  public static void a(do paramdo, long paramLong, String paramString)
+  public static void a(dp paramdp, long paramLong, String paramString)
   {
-    paramdo.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramdo.c.put("param.mbmobile.vrycode", paramString);
+    paramdp.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdp.c.put("param.mbmobile.vrycode", paramString);
   }
   
   /* Error */
   protected String a()
   {
     // Byte code:
-    //   0: invokestatic 45	com/tencent/token/ca:a	()Lcom/tencent/token/ca;
-    //   3: invokevirtual 48	com/tencent/token/ca:b	()Ljava/lang/String;
+    //   0: invokestatic 45	com/tencent/token/cb:a	()Lcom/tencent/token/cb;
+    //   3: invokevirtual 48	com/tencent/token/cb:b	()Ljava/lang/String;
     //   6: astore_2
     //   7: aload_2
     //   8: ifnonnull +14 -> 22
@@ -47,12 +47,12 @@ public class ProtoVryMbMobileCode
     //   34: getfield 63	com/tencent/token/core/protocolcenter/protocol/ProtoVryMbMobileCode:d	J
     //   37: invokevirtual 66	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   40: pop
-    //   41: getstatic 71	com/tencent/token/cb:a	I
+    //   41: getstatic 71	com/tencent/token/cc:a	I
     //   44: iconst_1
     //   45: iadd
     //   46: istore_1
     //   47: iload_1
-    //   48: putstatic 71	com/tencent/token/cb:a	I
+    //   48: putstatic 71	com/tencent/token/cc:a	I
     //   51: aload_0
     //   52: iload_1
     //   53: putfield 73	com/tencent/token/core/protocolcenter/protocol/ProtoVryMbMobileCode:c	I
@@ -64,8 +64,8 @@ public class ProtoVryMbMobileCode
     //   66: pop
     //   67: aload_3
     //   68: ldc 80
-    //   70: invokestatic 85	com/tencent/token/cc:c	()Lcom/tencent/token/cc;
-    //   73: invokevirtual 89	com/tencent/token/cc:s	()J
+    //   70: invokestatic 85	com/tencent/token/cd:c	()Lcom/tencent/token/cd;
+    //   73: invokevirtual 89	com/tencent/token/cd:s	()J
     //   76: ldc2_w 90
     //   79: ldiv
     //   80: l2i
@@ -162,10 +162,10 @@ public class ProtoVryMbMobileCode
     //   30	96	206	org/json/JSONException
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.d = ((Long)paramdo.c.get("param.uinhash")).longValue();
-    this.e = ((String)paramdo.c.get("param.mbmobile.vrycode"));
+    this.d = ((Long)paramdp.c.get("param.uinhash")).longValue();
+    this.e = ((String)paramdp.c.get("param.mbmobile.vrycode"));
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -194,7 +194,7 @@ public class ProtoVryMbMobileCode
       this.a.c();
       return;
     }
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
 }
 

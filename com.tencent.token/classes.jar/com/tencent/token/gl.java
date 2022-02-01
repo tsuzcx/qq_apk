@@ -1,21 +1,8 @@
 package com.tencent.token;
 
-public class gl
+public abstract interface gl
 {
-  private float a;
-  private int b;
-  
-  public void a(float paramFloat)
-  {
-    this.a += paramFloat;
-    this.b += 1;
-    int i = this.b;
-    if (i == 2147483647)
-    {
-      this.a /= 2.0F;
-      this.b = (i / 2);
-    }
-  }
+  public abstract int a(String paramString, int paramInt);
 }
 
 

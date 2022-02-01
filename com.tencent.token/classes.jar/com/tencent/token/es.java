@@ -1,776 +1,1110 @@
 package com.tencent.token;
 
 import android.content.ContentValues;
-import com.tencent.token.core.bean.SafeMsgItem;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.global.a;
 import com.tencent.token.global.g;
 import com.tencent.wcdb.Cursor;
 import com.tencent.wcdb.database.SQLiteDatabase;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public class es
 {
-  private String b = "tbl_safe_msg";
-  private boolean c = false;
+  private boolean b = false;
+  private List<QQUser> c = new ArrayList();
+  private QQUser d = null;
+  private boolean e = false;
   
-  public es(String paramString)
-  {
-    if (paramString == null) {
-      return;
-    }
-    this.b = paramString;
-  }
-  
-  private void e(long paramLong)
+  private QQUser a(List<QQUser> paramList, long paramLong)
   {
     try
     {
-      SafeMsgItem localSafeMsgItem = new SafeMsgItem();
-      localSafeMsgItem.mUin = paramLong;
-      localSafeMsgItem.mIsRead = false;
-      localSafeMsgItem.b("test write msg");
-      localSafeMsgItem.b(System.currentTimeMillis() / 1000L);
-      for (paramLong = 0L; paramLong < 10L; paramLong += 1L)
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        localSafeMsgItem.a(paramLong);
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("msg title");
-        localStringBuilder.append(paramLong);
-        localSafeMsgItem.a(localStringBuilder.toString());
-        a(localSafeMsgItem);
+        QQUser localQQUser = (QQUser)paramList.next();
+        long l = localQQUser.mUin;
+        if (l == paramLong) {
+          return localQQUser;
+        }
       }
-      return;
+      return null;
     }
     finally {}
   }
   
-  /* Error */
-  public java.util.List<SafeMsgItem> a(long paramLong, int paramInt)
+  private boolean a(QQUser paramQQUser, boolean paramBoolean)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: iload_3
-    //   3: ifgt +7 -> 10
-    //   6: aload_0
-    //   7: monitorexit
-    //   8: aconst_null
-    //   9: areturn
-    //   10: new 6	com/tencent/token/es$a
-    //   13: dup
-    //   14: aload_0
-    //   15: invokespecial 90	com/tencent/token/es$a:<init>	(Lcom/tencent/token/es;)V
-    //   18: astore 5
-    //   20: aload 5
-    //   22: aload_0
-    //   23: getfield 30	com/tencent/token/es:b	Ljava/lang/String;
-    //   26: bipush 13
-    //   28: anewarray 92	java/lang/String
-    //   31: dup
-    //   32: iconst_0
-    //   33: ldc 94
-    //   35: aastore
-    //   36: dup
-    //   37: iconst_1
-    //   38: ldc 96
-    //   40: aastore
-    //   41: dup
-    //   42: iconst_2
-    //   43: ldc 98
-    //   45: aastore
-    //   46: dup
-    //   47: iconst_3
-    //   48: ldc 100
-    //   50: aastore
-    //   51: dup
-    //   52: iconst_4
-    //   53: ldc 102
-    //   55: aastore
-    //   56: dup
-    //   57: iconst_5
-    //   58: ldc 104
-    //   60: aastore
-    //   61: dup
-    //   62: bipush 6
-    //   64: ldc 106
-    //   66: aastore
-    //   67: dup
-    //   68: bipush 7
-    //   70: ldc 108
-    //   72: aastore
-    //   73: dup
-    //   74: bipush 8
-    //   76: ldc 110
-    //   78: aastore
-    //   79: dup
-    //   80: bipush 9
-    //   82: ldc 112
-    //   84: aastore
-    //   85: dup
-    //   86: bipush 10
-    //   88: ldc 114
-    //   90: aastore
-    //   91: dup
-    //   92: bipush 11
-    //   94: ldc 116
-    //   96: aastore
-    //   97: dup
-    //   98: bipush 12
-    //   100: ldc 118
-    //   102: aastore
-    //   103: ldc 120
-    //   105: iconst_1
-    //   106: anewarray 92	java/lang/String
-    //   109: dup
-    //   110: iconst_0
-    //   111: lload_1
-    //   112: invokestatic 124	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   115: aastore
-    //   116: aconst_null
-    //   117: aconst_null
-    //   118: ldc 126
-    //   120: iload_3
-    //   121: invokestatic 129	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   124: invokestatic 134	com/tencent/token/er:a	(Lcom/tencent/token/et;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
-    //   127: astore 5
-    //   129: aload 5
-    //   131: invokeinterface 140 1 0
-    //   136: astore 7
-    //   138: new 142	java/util/ArrayList
-    //   141: dup
-    //   142: invokespecial 143	java/util/ArrayList:<init>	()V
-    //   145: astore 6
-    //   147: aload 7
-    //   149: invokeinterface 148 1 0
-    //   154: ifeq +79 -> 233
-    //   157: aload 7
-    //   159: invokeinterface 152 1 0
-    //   164: checkcast 6	com/tencent/token/es$a
-    //   167: astore 8
-    //   169: getstatic 21	com/tencent/token/es:a	Z
-    //   172: ifne +19 -> 191
-    //   175: aload 8
-    //   177: ifnull +6 -> 183
-    //   180: goto +11 -> 191
-    //   183: new 154	java/lang/AssertionError
-    //   186: dup
-    //   187: invokespecial 155	java/lang/AssertionError:<init>	()V
-    //   190: athrow
-    //   191: aload 8
-    //   193: invokevirtual 158	com/tencent/token/es$a:a	()Lcom/tencent/token/core/bean/SafeMsgItem;
-    //   196: astore 8
-    //   198: getstatic 21	com/tencent/token/es:a	Z
-    //   201: ifne +19 -> 220
-    //   204: aload 8
-    //   206: ifnull +6 -> 212
-    //   209: goto +11 -> 220
-    //   212: new 154	java/lang/AssertionError
-    //   215: dup
-    //   216: invokespecial 155	java/lang/AssertionError:<init>	()V
-    //   219: athrow
-    //   220: aload 6
-    //   222: aload 8
-    //   224: invokeinterface 162 2 0
-    //   229: pop
-    //   230: goto -83 -> 147
-    //   233: new 65	java/lang/StringBuilder
-    //   236: dup
-    //   237: invokespecial 66	java/lang/StringBuilder:<init>	()V
-    //   240: astore 7
-    //   242: aload 7
-    //   244: ldc 164
-    //   246: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   249: pop
-    //   250: aload 7
-    //   252: aload_0
-    //   253: getfield 30	com/tencent/token/es:b	Ljava/lang/String;
-    //   256: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   259: pop
-    //   260: aload 7
-    //   262: ldc 166
-    //   264: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   267: pop
-    //   268: aload 7
-    //   270: lload_1
-    //   271: invokevirtual 75	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   274: pop
-    //   275: aload 7
-    //   277: ldc 168
-    //   279: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   282: pop
-    //   283: aload 7
-    //   285: aload 6
-    //   287: invokeinterface 172 1 0
-    //   292: invokevirtual 175	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   295: pop
-    //   296: aload 7
-    //   298: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   301: invokestatic 178	com/tencent/token/global/g:b	(Ljava/lang/String;)V
-    //   304: aload 5
-    //   306: ifnull +13 -> 319
-    //   309: aload 5
-    //   311: invokeinterface 181 1 0
-    //   316: ifeq +15 -> 331
-    //   319: aload_0
-    //   320: getfield 32	com/tencent/token/es:c	Z
-    //   323: ifeq +8 -> 331
-    //   326: aload_0
-    //   327: lload_1
-    //   328: invokespecial 183	com/tencent/token/es:e	(J)V
-    //   331: aload 6
-    //   333: invokeinterface 181 1 0
-    //   338: istore 4
-    //   340: iload 4
-    //   342: ifeq +7 -> 349
-    //   345: aload_0
-    //   346: monitorexit
-    //   347: aconst_null
-    //   348: areturn
-    //   349: aload_0
-    //   350: monitorexit
-    //   351: aload 6
-    //   353: areturn
-    //   354: astore 5
-    //   356: new 65	java/lang/StringBuilder
-    //   359: dup
-    //   360: invokespecial 66	java/lang/StringBuilder:<init>	()V
-    //   363: astore 6
-    //   365: aload 6
-    //   367: ldc 185
-    //   369: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   372: pop
-    //   373: aload 6
-    //   375: aload 5
-    //   377: invokevirtual 186	java/lang/Exception:toString	()Ljava/lang/String;
-    //   380: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   383: pop
-    //   384: aload 6
-    //   386: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   389: invokestatic 188	com/tencent/token/global/g:c	(Ljava/lang/String;)V
-    //   392: aload_0
-    //   393: monitorexit
-    //   394: aconst_null
-    //   395: areturn
-    //   396: astore 5
-    //   398: aload_0
-    //   399: monitorexit
-    //   400: aload 5
-    //   402: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	403	0	this	es
-    //   0	403	1	paramLong	long
-    //   0	403	3	paramInt	int
-    //   338	3	4	bool	boolean
-    //   18	292	5	localObject1	Object
-    //   354	22	5	localException	Exception
-    //   396	5	5	localObject2	Object
-    //   145	240	6	localObject3	Object
-    //   136	161	7	localObject4	Object
-    //   167	56	8	localObject5	Object
-    // Exception table:
-    //   from	to	target	type
-    //   20	129	354	java/lang/Exception
-    //   10	20	396	finally
-    //   20	129	396	finally
-    //   129	147	396	finally
-    //   147	175	396	finally
-    //   183	191	396	finally
-    //   191	204	396	finally
-    //   212	220	396	finally
-    //   220	230	396	finally
-    //   233	304	396	finally
-    //   309	319	396	finally
-    //   319	331	396	finally
-    //   331	340	396	finally
-    //   356	392	396	finally
+    if ((!a) && (paramQQUser == null)) {
+      throw new AssertionError();
+    }
+    Object localObject = new a();
+    ContentValues localContentValues = new ContentValues();
+    ((a)localObject).a(paramQQUser);
+    long l = ((a)localObject).a();
+    localContentValues.put("flag", Long.valueOf(l));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("set user flag ");
+    localStringBuilder.append(paramQQUser.a());
+    localStringBuilder.append(":");
+    localStringBuilder.append(l);
+    g.b(localStringBuilder.toString());
+    if (et.a((ev)localObject, "table_user", localContentValues, "uin=?", new String[] { String.valueOf(d(paramQQUser)) }) <= 0)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("update uin flag failed, uin=");
+      ((StringBuilder)localObject).append(paramQQUser.mUin);
+      ((StringBuilder)localObject).append(", flag=");
+      ((StringBuilder)localObject).append(l);
+      g.c(((StringBuilder)localObject).toString());
+      return false;
+    }
+    paramQQUser.mIsCurrentUser = paramBoolean;
+    return true;
   }
   
-  /* Error */
-  public boolean a(long paramLong)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: new 6	com/tencent/token/es$a
-    //   5: dup
-    //   6: aload_0
-    //   7: invokespecial 90	com/tencent/token/es$a:<init>	(Lcom/tencent/token/es;)V
-    //   10: astore_3
-    //   11: aload_3
-    //   12: aload_0
-    //   13: getfield 30	com/tencent/token/es:b	Ljava/lang/String;
-    //   16: ldc 120
-    //   18: iconst_1
-    //   19: anewarray 92	java/lang/String
-    //   22: dup
-    //   23: iconst_0
-    //   24: lload_1
-    //   25: invokestatic 124	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   28: aastore
-    //   29: invokestatic 194	com/tencent/token/er:a	(Lcom/tencent/token/et;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
-    //   32: pop
-    //   33: aload_0
-    //   34: monitorexit
-    //   35: iconst_1
-    //   36: ireturn
-    //   37: astore_3
-    //   38: new 65	java/lang/StringBuilder
-    //   41: dup
-    //   42: invokespecial 66	java/lang/StringBuilder:<init>	()V
-    //   45: astore 4
-    //   47: aload 4
-    //   49: ldc 196
-    //   51: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   54: pop
-    //   55: aload 4
-    //   57: aload_3
-    //   58: invokevirtual 186	java/lang/Exception:toString	()Ljava/lang/String;
-    //   61: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   64: pop
-    //   65: aload 4
-    //   67: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   70: invokestatic 188	com/tencent/token/global/g:c	(Ljava/lang/String;)V
-    //   73: aload_0
-    //   74: monitorexit
-    //   75: iconst_0
-    //   76: ireturn
-    //   77: astore_3
-    //   78: aload_0
-    //   79: monitorexit
-    //   80: aload_3
-    //   81: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	82	0	this	es
-    //   0	82	1	paramLong	long
-    //   10	2	3	locala	a
-    //   37	21	3	localException	Exception
-    //   77	4	3	localObject	Object
-    //   45	21	4	localStringBuilder	StringBuilder
-    // Exception table:
-    //   from	to	target	type
-    //   11	33	37	java/lang/Exception
-    //   2	11	77	finally
-    //   11	33	77	finally
-    //   38	73	77	finally
-  }
-  
-  public boolean a(long paramLong, int paramInt, String paramString)
+  private QQUser b(List<QQUser> paramList, long paramLong)
   {
     try
     {
-      a locala = new a();
-      ContentValues localContentValues = new ContentValues();
-      localContentValues.put("flag", Integer.valueOf(paramInt));
-      localContentValues.put("fcontent", paramString);
-      if (er.a(locala, this.b, localContentValues, "fid=?", new String[] { String.valueOf(paramLong) }) <= 0)
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        paramString = new StringBuilder();
-        paramString.append("update msg flag failed, id=");
-        paramString.append(paramLong);
-        g.c(paramString.toString());
-        return false;
+        QQUser localQQUser = (QQUser)paramList.next();
+        long l = localQQUser.mRealUin;
+        if (l == paramLong) {
+          return localQQUser;
+        }
       }
+      return null;
+    }
+    finally {}
+  }
+  
+  private boolean e(QQUser paramQQUser)
+  {
+    boolean bool;
+    if (paramQQUser != null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    g.a(bool);
+    c();
+    QQUser localQQUser = this.d;
+    if (localQQUser == paramQQUser) {
       return true;
     }
-    finally
+    if (localQQUser != null)
     {
-      paramString = finally;
-      throw paramString;
+      localQQUser.mIsCurrentUser = false;
+      a(localQQUser, false);
     }
+    paramQQUser.mIsCurrentUser = true;
+    a(paramQQUser, true);
+    this.d = paramQQUser;
+    return true;
   }
   
-  public boolean a(SafeMsgItem paramSafeMsgItem)
+  private boolean f(QQUser paramQQUser)
   {
+    Object localObject = new a();
     try
     {
-      Object localObject = new a();
-      ((a)localObject).a(paramSafeMsgItem);
-      if (er.b((et)localObject) < 0L)
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("SQLiteManager.add user data failed: ");
-        ((StringBuilder)localObject).append(paramSafeMsgItem.mUin);
-        g.c(((StringBuilder)localObject).toString());
-        return false;
-      }
+      et.a((ev)localObject, "table_user", "uin=?", new String[] { String.valueOf(d(paramQQUser)) });
       return true;
     }
-    finally
+    catch (Exception paramQQUser)
     {
-      paramSafeMsgItem = finally;
-      throw paramSafeMsgItem;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("clear user database failed: ");
+      ((StringBuilder)localObject).append(paramQQUser.toString());
+      g.c(((StringBuilder)localObject).toString());
     }
+    return false;
   }
   
-  /* Error */
-  public boolean b(long paramLong)
+  private boolean g(QQUser paramQQUser)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: new 6	com/tencent/token/es$a
-    //   5: dup
-    //   6: aload_0
-    //   7: invokespecial 90	com/tencent/token/es$a:<init>	(Lcom/tencent/token/es;)V
-    //   10: astore_3
-    //   11: aload_3
-    //   12: aload_0
-    //   13: getfield 30	com/tencent/token/es:b	Ljava/lang/String;
-    //   16: ldc 229
-    //   18: iconst_1
-    //   19: anewarray 92	java/lang/String
-    //   22: dup
-    //   23: iconst_0
-    //   24: lload_1
-    //   25: invokestatic 124	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   28: aastore
-    //   29: invokestatic 194	com/tencent/token/er:a	(Lcom/tencent/token/et;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
-    //   32: pop
-    //   33: aload_0
-    //   34: monitorexit
-    //   35: iconst_1
-    //   36: ireturn
-    //   37: astore_3
-    //   38: new 65	java/lang/StringBuilder
-    //   41: dup
-    //   42: invokespecial 66	java/lang/StringBuilder:<init>	()V
-    //   45: astore 4
-    //   47: aload 4
-    //   49: ldc 196
-    //   51: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   54: pop
-    //   55: aload 4
-    //   57: aload_3
-    //   58: invokevirtual 186	java/lang/Exception:toString	()Ljava/lang/String;
-    //   61: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   64: pop
-    //   65: aload 4
-    //   67: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   70: invokestatic 188	com/tencent/token/global/g:c	(Ljava/lang/String;)V
-    //   73: aload_0
-    //   74: monitorexit
-    //   75: iconst_0
-    //   76: ireturn
-    //   77: astore_3
-    //   78: aload_0
-    //   79: monitorexit
-    //   80: aload_3
-    //   81: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	82	0	this	es
-    //   0	82	1	paramLong	long
-    //   10	2	3	locala	a
-    //   37	21	3	localException	Exception
-    //   77	4	3	localObject	Object
-    //   45	21	4	localStringBuilder	StringBuilder
-    // Exception table:
-    //   from	to	target	type
-    //   11	33	37	java/lang/Exception
-    //   2	11	77	finally
-    //   11	33	77	finally
-    //   38	73	77	finally
+    Object localObject = new a();
+    if (!((a)localObject).a(paramQQUser))
+    {
+      g.c("userData.SaveUser failed");
+      return false;
+    }
+    if (et.b((ev)localObject) == -1L)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SQLiteManager.add user data failed: ");
+      ((StringBuilder)localObject).append(paramQQUser.mUin);
+      g.c(((StringBuilder)localObject).toString());
+      return false;
+    }
+    return true;
   }
   
-  public void c(long paramLong)
+  public QQUser a(int paramInt)
+  {
+    int i = b();
+    if (paramInt >= i)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("inval param, index:");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(",count:");
+      localStringBuilder.append(i);
+      g.c(localStringBuilder.toString());
+      return null;
+    }
+    return (QQUser)this.c.get(paramInt);
+  }
+  
+  public void a(List<QQUser> paramList)
   {
     try
     {
-      a locala = new a();
-      try
+      a();
+      LinkedList localLinkedList = new LinkedList();
+      Iterator localIterator = this.c.iterator();
+      this.e = false;
+      QQUser localQQUser1;
+      while (localIterator.hasNext())
       {
-        if (er.a(locala, this.b) >= 500)
+        QQUser localQQUser3 = (QQUser)localIterator.next();
+        QQUser localQQUser2 = a(paramList, localQQUser3.mUin);
+        localQQUser1 = localQQUser2;
+        if (localQQUser2 == null) {
+          localQQUser1 = b(paramList, localQQUser3.mUin);
+        }
+        if (localQQUser1 != null)
         {
-          long l = er.a(locala, this.b, new String[] { "ftime" }, "fuin = ?", new String[] { String.valueOf(paramLong) }, null, null, "ftime asc", String.valueOf(200), false);
-          if (l > 0L) {
-            er.a(locala, this.b, "fuin = ? and ftime <= ?", new String[] { String.valueOf(paramLong), String.valueOf(l) });
+          f(localQQUser3);
+          if (localQQUser3.mIsCurrentUser)
+          {
+            localQQUser1.mIsCurrentUser = true;
+            this.d = localQQUser1;
+            localLinkedList.add(localQQUser1);
+            g(localQQUser1);
+          }
+        }
+        else
+        {
+          this.e = true;
+          if (!localQQUser3.mIsBinded)
+          {
+            localLinkedList.add(localQQUser3);
+          }
+          else
+          {
+            f(localQQUser3);
+            if ((this.d != null) && (localQQUser3.mUin == this.d.mUin)) {
+              this.d = null;
+            }
           }
         }
       }
-      catch (Exception localException)
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("SQLiteManager query Exception:");
-        localStringBuilder.append(localException.toString());
-        g.c(localStringBuilder.toString());
+        localQQUser1 = (QQUser)paramList.next();
+        if (a(localLinkedList, localQQUser1.mUin) == null)
+        {
+          this.e = true;
+          localLinkedList.add(localQQUser1);
+          g(localQQUser1);
+        }
+      }
+      this.c.clear();
+      paramList = localLinkedList.iterator();
+      while (paramList.hasNext())
+      {
+        localQQUser1 = (QQUser)paramList.next();
+        if ((!a) && (localQQUser1 == null)) {
+          throw new AssertionError();
+        }
+        if (localQQUser1.mIsBinded) {
+          this.c.add(localQQUser1);
+        }
+      }
+      paramList = localLinkedList.iterator();
+      while (paramList.hasNext())
+      {
+        localQQUser1 = (QQUser)paramList.next();
+        if ((!a) && (localQQUser1 == null)) {
+          throw new AssertionError();
+        }
+        if (!localQQUser1.mIsBinded) {
+          this.c.add(localQQUser1);
+        }
       }
       return;
     }
     finally {}
   }
   
-  public boolean d(long paramLong)
+  /* Error */
+  public boolean a()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 38	com/tencent/token/es:b	Z
+    //   6: ifeq +12 -> 18
+    //   9: aload_0
+    //   10: getfield 38	com/tencent/token/es:b	Z
+    //   13: istore_1
+    //   14: aload_0
+    //   15: monitorexit
+    //   16: iload_1
+    //   17: ireturn
+    //   18: aload_0
+    //   19: getfield 36	com/tencent/token/es:c	Ljava/util/List;
+    //   22: invokeinterface 212 1 0
+    //   27: aload_0
+    //   28: aconst_null
+    //   29: putfield 40	com/tencent/token/es:d	Lcom/tencent/token/core/bean/QQUser;
+    //   32: new 6	com/tencent/token/es$a
+    //   35: dup
+    //   36: aload_0
+    //   37: invokespecial 71	com/tencent/token/es$a:<init>	(Lcom/tencent/token/es;)V
+    //   40: astore_2
+    //   41: aload_2
+    //   42: ldc 119
+    //   44: bipush 7
+    //   46: anewarray 123	java/lang/String
+    //   49: dup
+    //   50: iconst_0
+    //   51: ldc 215
+    //   53: aastore
+    //   54: dup
+    //   55: iconst_1
+    //   56: ldc 217
+    //   58: aastore
+    //   59: dup
+    //   60: iconst_2
+    //   61: ldc 219
+    //   63: aastore
+    //   64: dup
+    //   65: iconst_3
+    //   66: ldc 221
+    //   68: aastore
+    //   69: dup
+    //   70: iconst_4
+    //   71: ldc 82
+    //   73: aastore
+    //   74: dup
+    //   75: iconst_5
+    //   76: ldc 223
+    //   78: aastore
+    //   79: dup
+    //   80: bipush 6
+    //   82: ldc 225
+    //   84: aastore
+    //   85: aconst_null
+    //   86: aconst_null
+    //   87: aconst_null
+    //   88: aconst_null
+    //   89: aconst_null
+    //   90: aconst_null
+    //   91: invokestatic 228	com/tencent/token/et:a	(Lcom/tencent/token/ev;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+    //   94: astore_2
+    //   95: getstatic 25	com/tencent/token/es:a	Z
+    //   98: ifne +18 -> 116
+    //   101: aload_2
+    //   102: ifnull +6 -> 108
+    //   105: goto +11 -> 116
+    //   108: new 67	java/lang/AssertionError
+    //   111: dup
+    //   112: invokespecial 68	java/lang/AssertionError:<init>	()V
+    //   115: athrow
+    //   116: aload_2
+    //   117: invokeinterface 47 1 0
+    //   122: astore_3
+    //   123: aload_3
+    //   124: invokeinterface 52 1 0
+    //   129: ifeq +185 -> 314
+    //   132: aload_3
+    //   133: invokeinterface 56 1 0
+    //   138: checkcast 6	com/tencent/token/es$a
+    //   141: astore 4
+    //   143: getstatic 25	com/tencent/token/es:a	Z
+    //   146: ifne +19 -> 165
+    //   149: aload 4
+    //   151: ifnull +6 -> 157
+    //   154: goto +11 -> 165
+    //   157: new 67	java/lang/AssertionError
+    //   160: dup
+    //   161: invokespecial 68	java/lang/AssertionError:<init>	()V
+    //   164: athrow
+    //   165: aload 4
+    //   167: invokevirtual 230	com/tencent/token/es$a:d	()Lcom/tencent/token/core/bean/QQUser;
+    //   170: astore 4
+    //   172: getstatic 25	com/tencent/token/es:a	Z
+    //   175: ifne +19 -> 194
+    //   178: aload 4
+    //   180: ifnull +6 -> 186
+    //   183: goto +11 -> 194
+    //   186: new 67	java/lang/AssertionError
+    //   189: dup
+    //   190: invokespecial 68	java/lang/AssertionError:<init>	()V
+    //   193: athrow
+    //   194: aload 4
+    //   196: getfield 209	com/tencent/token/core/bean/QQUser:mIsBinded	Z
+    //   199: ifeq -76 -> 123
+    //   202: aload_0
+    //   203: getfield 36	com/tencent/token/es:c	Ljava/util/List;
+    //   206: aload 4
+    //   208: invokeinterface 204 2 0
+    //   213: pop
+    //   214: new 94	java/lang/StringBuilder
+    //   217: dup
+    //   218: invokespecial 95	java/lang/StringBuilder:<init>	()V
+    //   221: astore 5
+    //   223: aload 5
+    //   225: ldc 232
+    //   227: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   230: pop
+    //   231: aload 5
+    //   233: aload 4
+    //   235: getfield 62	com/tencent/token/core/bean/QQUser:mUin	J
+    //   238: invokevirtual 109	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   241: pop
+    //   242: aload 5
+    //   244: ldc 234
+    //   246: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   249: pop
+    //   250: aload 5
+    //   252: aload 4
+    //   254: getfield 238	com/tencent/token/core/bean/QQUser:mNickName	Ljava/lang/String;
+    //   257: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   260: pop
+    //   261: aload 5
+    //   263: ldc 240
+    //   265: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   268: pop
+    //   269: aload 5
+    //   271: aload 4
+    //   273: getfield 243	com/tencent/token/core/bean/QQUser:mEmail	Ljava/lang/String;
+    //   276: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   279: pop
+    //   280: aload 5
+    //   282: ldc 245
+    //   284: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   287: pop
+    //   288: aload 5
+    //   290: aload_0
+    //   291: getfield 36	com/tencent/token/es:c	Ljava/util/List;
+    //   294: invokeinterface 248 1 0
+    //   299: invokevirtual 182	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   302: pop
+    //   303: aload 5
+    //   305: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   308: invokestatic 117	com/tencent/token/global/g:b	(Ljava/lang/String;)V
+    //   311: goto -188 -> 123
+    //   314: aload_2
+    //   315: invokeinterface 47 1 0
+    //   320: astore_2
+    //   321: aload_2
+    //   322: invokeinterface 52 1 0
+    //   327: ifeq +175 -> 502
+    //   330: aload_2
+    //   331: invokeinterface 56 1 0
+    //   336: checkcast 6	com/tencent/token/es$a
+    //   339: astore_3
+    //   340: getstatic 25	com/tencent/token/es:a	Z
+    //   343: ifne +18 -> 361
+    //   346: aload_3
+    //   347: ifnull +6 -> 353
+    //   350: goto +11 -> 361
+    //   353: new 67	java/lang/AssertionError
+    //   356: dup
+    //   357: invokespecial 68	java/lang/AssertionError:<init>	()V
+    //   360: athrow
+    //   361: aload_3
+    //   362: invokevirtual 230	com/tencent/token/es$a:d	()Lcom/tencent/token/core/bean/QQUser;
+    //   365: astore_3
+    //   366: getstatic 25	com/tencent/token/es:a	Z
+    //   369: ifne +18 -> 387
+    //   372: aload_3
+    //   373: ifnull +6 -> 379
+    //   376: goto +11 -> 387
+    //   379: new 67	java/lang/AssertionError
+    //   382: dup
+    //   383: invokespecial 68	java/lang/AssertionError:<init>	()V
+    //   386: athrow
+    //   387: aload_3
+    //   388: getfield 209	com/tencent/token/core/bean/QQUser:mIsBinded	Z
+    //   391: ifne -70 -> 321
+    //   394: aload_0
+    //   395: getfield 36	com/tencent/token/es:c	Ljava/util/List;
+    //   398: aload_3
+    //   399: invokeinterface 204 2 0
+    //   404: pop
+    //   405: new 94	java/lang/StringBuilder
+    //   408: dup
+    //   409: invokespecial 95	java/lang/StringBuilder:<init>	()V
+    //   412: astore 4
+    //   414: aload 4
+    //   416: ldc 232
+    //   418: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   421: pop
+    //   422: aload 4
+    //   424: aload_3
+    //   425: getfield 62	com/tencent/token/core/bean/QQUser:mUin	J
+    //   428: invokevirtual 109	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   431: pop
+    //   432: aload 4
+    //   434: ldc 234
+    //   436: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   439: pop
+    //   440: aload 4
+    //   442: aload_3
+    //   443: getfield 238	com/tencent/token/core/bean/QQUser:mNickName	Ljava/lang/String;
+    //   446: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   449: pop
+    //   450: aload 4
+    //   452: ldc 240
+    //   454: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   457: pop
+    //   458: aload 4
+    //   460: aload_3
+    //   461: getfield 243	com/tencent/token/core/bean/QQUser:mEmail	Ljava/lang/String;
+    //   464: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   467: pop
+    //   468: aload 4
+    //   470: ldc 245
+    //   472: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   475: pop
+    //   476: aload 4
+    //   478: aload_0
+    //   479: getfield 36	com/tencent/token/es:c	Ljava/util/List;
+    //   482: invokeinterface 248 1 0
+    //   487: invokevirtual 182	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   490: pop
+    //   491: aload 4
+    //   493: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   496: invokestatic 117	com/tencent/token/global/g:b	(Ljava/lang/String;)V
+    //   499: goto -178 -> 321
+    //   502: aload_0
+    //   503: iconst_1
+    //   504: putfield 38	com/tencent/token/es:b	Z
+    //   507: aload_0
+    //   508: monitorexit
+    //   509: iconst_1
+    //   510: ireturn
+    //   511: astore_2
+    //   512: aload_2
+    //   513: invokevirtual 163	java/lang/Exception:toString	()Ljava/lang/String;
+    //   516: invokestatic 140	com/tencent/token/global/g:c	(Ljava/lang/String;)V
+    //   519: aload_0
+    //   520: monitorexit
+    //   521: iconst_0
+    //   522: ireturn
+    //   523: astore_2
+    //   524: aload_0
+    //   525: monitorexit
+    //   526: aload_2
+    //   527: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	528	0	this	es
+    //   13	4	1	bool	boolean
+    //   40	291	2	localObject1	Object
+    //   511	2	2	localException	Exception
+    //   523	4	2	localObject2	Object
+    //   122	339	3	localObject3	Object
+    //   141	351	4	localObject4	Object
+    //   221	83	5	localStringBuilder	StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   41	95	511	java/lang/Exception
+    //   2	14	523	finally
+    //   18	41	523	finally
+    //   41	95	523	finally
+    //   95	101	523	finally
+    //   108	116	523	finally
+    //   116	123	523	finally
+    //   123	149	523	finally
+    //   157	165	523	finally
+    //   165	178	523	finally
+    //   186	194	523	finally
+    //   194	311	523	finally
+    //   314	321	523	finally
+    //   321	346	523	finally
+    //   353	361	523	finally
+    //   361	372	523	finally
+    //   379	387	523	finally
+    //   387	499	523	finally
+    //   502	507	523	finally
+    //   512	519	523	finally
+  }
+  
+  public boolean a(long paramLong)
+  {
+    Object localObject = c(paramLong);
+    if (localObject == null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("find user not exist with uin:");
+      ((StringBuilder)localObject).append(paramLong);
+      g.c(((StringBuilder)localObject).toString());
+      return false;
+    }
+    return e((QQUser)localObject);
+  }
+  
+  public boolean a(QQUser paramQQUser)
+  {
+    if ((!a) && (paramQQUser == null)) {
+      throw new AssertionError();
+    }
+    Object localObject = new a();
+    ContentValues localContentValues = new ContentValues();
+    ((a)localObject).a(paramQQUser);
+    long l = ((a)localObject).a();
+    localContentValues.put("flag", Long.valueOf(l));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("set user flag ");
+    localStringBuilder.append(paramQQUser.a());
+    localStringBuilder.append(":");
+    localStringBuilder.append(l);
+    g.b(localStringBuilder.toString());
+    if (et.a((ev)localObject, "table_user", localContentValues, "uin=?", new String[] { String.valueOf(d(paramQQUser)) }) <= 0)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("update uin flag failed, uin=");
+      ((StringBuilder)localObject).append(paramQQUser.mUin);
+      ((StringBuilder)localObject).append(", flag=");
+      ((StringBuilder)localObject).append(l);
+      g.c(((StringBuilder)localObject).toString());
+      return false;
+    }
+    return true;
+  }
+  
+  public int b()
+  {
+    if (!a()) {
+      return -1;
+    }
+    if ((!a) && (this.c == null)) {
+      throw new AssertionError();
+    }
+    return this.c.size();
+  }
+  
+  public QQUser b(int paramInt)
   {
     try
     {
-      Object localObject1 = new a();
-      ContentValues localContentValues = new ContentValues();
-      localContentValues.put("fis_read", Integer.valueOf(1));
-      if (er.a((et)localObject1, this.b, localContentValues, "fid=?", new String[] { String.valueOf(paramLong) }) <= 0)
-      {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("update msg isRead failed, id=");
-        ((StringBuilder)localObject1).append(paramLong);
-        g.c(((StringBuilder)localObject1).toString());
-        return false;
+      boolean bool = a();
+      if (!bool) {
+        return null;
       }
-      return true;
+      Iterator localIterator = this.c.iterator();
+      int i = 1;
+      while (localIterator.hasNext())
+      {
+        QQUser localQQUser = (QQUser)localIterator.next();
+        if ((!a) && (localQQUser == null)) {
+          throw new AssertionError();
+        }
+        bool = localQQUser.mIsCurrentUser;
+        if (!bool)
+        {
+          if (i == paramInt) {
+            return localQQUser;
+          }
+          i += 1;
+        }
+      }
+      return null;
     }
-    finally
+    finally {}
+  }
+  
+  public void b(List<QQUser> paramList)
+  {
+    if (this.c != null)
     {
-      localObject2 = finally;
-      throw localObject2;
+      if (paramList == null) {
+        return;
+      }
+      int i = 0;
+      while (i < this.c.size())
+      {
+        if (((QQUser)this.c.get(i)).mIsRegisterFacePwd) {
+          paramList.add(this.c.get(i));
+        }
+        i += 1;
+      }
+      return;
     }
   }
   
-  public class a
-    implements et
+  public boolean b(long paramLong)
   {
-    private long b;
-    private long c;
-    private int d;
-    private int e;
-    private String f;
-    private String g;
-    private long h;
-    private int i;
-    private int j;
-    private int k;
-    private String l;
-    private String m;
-    private byte[] n;
+    Object localObject = b(this.c, paramLong);
+    if (localObject == null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("find user not exist with uin:");
+      ((StringBuilder)localObject).append(paramLong);
+      g.c(((StringBuilder)localObject).toString());
+      return false;
+    }
+    return e((QQUser)localObject);
+  }
+  
+  public boolean b(QQUser paramQQUser)
+  {
+    if ((!a) && (paramQQUser == null)) {
+      throw new AssertionError();
+    }
+    int i = this.c.size();
+    int j = 0;
+    if (i >= 3) {
+      return false;
+    }
+    i = j;
+    if (paramQQUser.mUin == 0L)
+    {
+      paramQQUser.mUin = paramQQUser.mRealUin;
+      i = j;
+    }
+    while (i < this.c.size())
+    {
+      if (((QQUser)this.c.get(i)).mRealUin == paramQQUser.mRealUin) {
+        return true;
+      }
+      i += 1;
+    }
+    boolean bool = g(paramQQUser);
+    if (bool) {
+      this.c.add(paramQQUser);
+    }
+    return bool;
+  }
+  
+  public QQUser c()
+  {
+    try
+    {
+      boolean bool = a();
+      if (!bool) {
+        return null;
+      }
+      if (this.d == null)
+      {
+        localObject1 = this.c.iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          QQUser localQQUser = (QQUser)((Iterator)localObject1).next();
+          if ((!a) && (localQQUser == null)) {
+            throw new AssertionError();
+          }
+          if (localQQUser.mIsCurrentUser) {
+            this.d = localQQUser;
+          }
+        }
+        if ((this.d == null) && (this.c.size() > 0))
+        {
+          this.d = ((QQUser)this.c.get(0));
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("user uin=");
+          ((StringBuilder)localObject1).append(this.d.mUin);
+          ((StringBuilder)localObject1).append(",email=");
+          ((StringBuilder)localObject1).append(this.d.mEmail);
+          ((StringBuilder)localObject1).append(",currentUser=");
+          ((StringBuilder)localObject1).append(this.d.mIsCurrentUser);
+          g.a(((StringBuilder)localObject1).toString());
+          a(this.d, true);
+          if ((!a) && (!this.d.mIsCurrentUser)) {
+            throw new AssertionError();
+          }
+        }
+      }
+      Object localObject1 = this.d;
+      return localObject1;
+    }
+    finally {}
+  }
+  
+  public QQUser c(long paramLong)
+  {
+    return a(this.c, paramLong);
+  }
+  
+  public boolean c(QQUser paramQQUser)
+  {
+    if ((!a) && (paramQQUser == null)) {
+      throw new AssertionError();
+    }
+    boolean bool = f(paramQQUser);
+    if (bool)
+    {
+      int i = 0;
+      while (i < this.c.size())
+      {
+        if (((QQUser)this.c.get(i)).mRealUin == paramQQUser.mRealUin)
+        {
+          this.c.remove(i);
+          if (paramQQUser.mIsCurrentUser) {
+            d();
+          }
+          return bool;
+        }
+        i += 1;
+      }
+    }
+    return false;
+  }
+  
+  public long d(QQUser paramQQUser)
+  {
+    if (!paramQQUser.mIsBinded) {
+      return -paramQQUser.mRealUin;
+    }
+    return paramQQUser.mUin;
+  }
+  
+  public QQUser d()
+  {
+    try
+    {
+      this.d = null;
+      Object localObject1 = this.c.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        QQUser localQQUser = (QQUser)((Iterator)localObject1).next();
+        if ((!a) && (localQQUser == null)) {
+          throw new AssertionError();
+        }
+        if (localQQUser.mIsCurrentUser) {
+          this.d = localQQUser;
+        }
+      }
+      if ((this.d == null) && (this.c.size() > 0))
+      {
+        this.d = ((QQUser)this.c.get(0));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("user uin=");
+        ((StringBuilder)localObject1).append(this.d.mUin);
+        ((StringBuilder)localObject1).append(",email=");
+        ((StringBuilder)localObject1).append(this.d.mEmail);
+        ((StringBuilder)localObject1).append(",currentUser=");
+        ((StringBuilder)localObject1).append(this.d.mIsCurrentUser);
+        g.a(((StringBuilder)localObject1).toString());
+        a(this.d, true);
+        if ((!a) && (!this.d.mIsCurrentUser)) {
+          throw new AssertionError();
+        }
+      }
+      localObject1 = this.d;
+      return localObject1;
+    }
+    finally {}
+  }
+  
+  public QQUser d(long paramLong)
+  {
+    return b(this.c, paramLong);
+  }
+  
+  public boolean e()
+  {
+    boolean bool = this.e;
+    if (bool)
+    {
+      this.e = false;
+      return this.e ^ true;
+    }
+    return bool;
+  }
+  
+  public void f()
+  {
+    try
+    {
+      Object localObject1 = this.c;
+      if (localObject1 == null) {
+        return;
+      }
+      int i = 0;
+      while (i < this.c.size())
+      {
+        localObject1 = (QQUser)this.c.get(i);
+        if ((localObject1 != null) && (((QQUser)localObject1).mIsBinded))
+        {
+          f((QQUser)localObject1);
+          ((QQUser)localObject1).mIsBinded = false;
+          g((QQUser)localObject1);
+        }
+        i += 1;
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public long g()
+  {
+    if (this.c == null) {
+      return 0L;
+    }
+    int i = 0;
+    while (i < this.c.size())
+    {
+      if (((QQUser)this.c.get(i)).mIsBinded) {
+        return ((QQUser)this.c.get(i)).mUin;
+      }
+      i += 1;
+    }
+    return 0L;
+  }
+  
+  public boolean h()
+  {
+    if (this.c == null) {
+      return false;
+    }
+    int i = 0;
+    while (i < this.c.size())
+    {
+      if (((QQUser)this.c.get(i)).mIsRegisterFacePwd) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
+  public boolean i()
+  {
+    QQUser localQQUser1 = c();
+    if (localQQUser1 != null)
+    {
+      if (this.c == null) {
+        return false;
+      }
+      int i = 0;
+      while (i < this.c.size())
+      {
+        QQUser localQQUser2 = (QQUser)this.c.get(i);
+        if ((localQQUser2.mIsRegisterFacePwd) && (localQQUser2.mUin == localQQUser1.mUin)) {
+          return true;
+        }
+        i += 1;
+      }
+      return false;
+    }
+    return false;
+  }
+  
+  public class a
+    implements ev
+  {
+    long a;
+    long b;
+    String c;
+    String d;
+    String e;
+    boolean f;
+    byte[] g;
+    long h;
+    boolean i;
+    boolean j;
+    boolean k;
+    boolean l;
     
     public a() {}
     
-    /* Error */
-    public SafeMsgItem a()
+    public long a()
     {
-      // Byte code:
-      //   0: aload_0
-      //   1: getfield 44	com/tencent/token/es$a:n	[B
-      //   4: astore_2
-      //   5: aload_2
-      //   6: ifnull +106 -> 112
-      //   9: new 46	java/io/ByteArrayInputStream
-      //   12: dup
-      //   13: aload_2
-      //   14: invokespecial 49	java/io/ByteArrayInputStream:<init>	([B)V
-      //   17: astore_2
-      //   18: new 51	java/io/ObjectInputStream
-      //   21: dup
-      //   22: aload_2
-      //   23: invokespecial 54	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
-      //   26: invokevirtual 58	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-      //   29: checkcast 60	com/tencent/token/core/bean/SafeMsgItem
-      //   32: astore_3
-      //   33: aload_3
-      //   34: astore_2
-      //   35: aload_3
-      //   36: ifnonnull +84 -> 120
-      //   39: new 60	com/tencent/token/core/bean/SafeMsgItem
-      //   42: dup
-      //   43: invokespecial 61	com/tencent/token/core/bean/SafeMsgItem:<init>	()V
-      //   46: astore_2
-      //   47: goto +73 -> 120
-      //   50: astore_2
-      //   51: goto +51 -> 102
-      //   54: astore_2
-      //   55: aload_2
-      //   56: invokevirtual 64	java/lang/ClassNotFoundException:printStackTrace	()V
-      //   59: new 60	com/tencent/token/core/bean/SafeMsgItem
-      //   62: dup
-      //   63: invokespecial 61	com/tencent/token/core/bean/SafeMsgItem:<init>	()V
-      //   66: astore_2
-      //   67: goto +53 -> 120
-      //   70: astore_2
-      //   71: aload_2
-      //   72: invokevirtual 65	java/io/IOException:printStackTrace	()V
-      //   75: new 60	com/tencent/token/core/bean/SafeMsgItem
-      //   78: dup
-      //   79: invokespecial 61	com/tencent/token/core/bean/SafeMsgItem:<init>	()V
-      //   82: astore_2
-      //   83: goto +37 -> 120
-      //   86: astore_2
-      //   87: aload_2
-      //   88: invokevirtual 66	java/io/StreamCorruptedException:printStackTrace	()V
-      //   91: new 60	com/tencent/token/core/bean/SafeMsgItem
-      //   94: dup
-      //   95: invokespecial 61	com/tencent/token/core/bean/SafeMsgItem:<init>	()V
-      //   98: astore_2
-      //   99: goto +21 -> 120
-      //   102: new 60	com/tencent/token/core/bean/SafeMsgItem
-      //   105: dup
-      //   106: invokespecial 61	com/tencent/token/core/bean/SafeMsgItem:<init>	()V
-      //   109: pop
-      //   110: aload_2
-      //   111: athrow
-      //   112: new 60	com/tencent/token/core/bean/SafeMsgItem
-      //   115: dup
-      //   116: invokespecial 61	com/tencent/token/core/bean/SafeMsgItem:<init>	()V
-      //   119: astore_2
-      //   120: aload_0
-      //   121: getfield 68	com/tencent/token/es$a:e	I
-      //   124: ifne +8 -> 132
-      //   127: iconst_0
-      //   128: istore_1
-      //   129: goto +5 -> 134
-      //   132: iconst_1
-      //   133: istore_1
-      //   134: aload_2
-      //   135: iload_1
-      //   136: putfield 72	com/tencent/token/core/bean/SafeMsgItem:mIsRead	Z
-      //   139: aload_2
-      //   140: aload_0
-      //   141: getfield 74	com/tencent/token/es$a:c	J
-      //   144: putfield 77	com/tencent/token/core/bean/SafeMsgItem:mUin	J
-      //   147: aload_2
-      //   148: aload_0
-      //   149: getfield 79	com/tencent/token/es$a:b	J
-      //   152: invokevirtual 82	com/tencent/token/core/bean/SafeMsgItem:a	(J)V
-      //   155: aload_2
-      //   156: aload_0
-      //   157: getfield 84	com/tencent/token/es$a:d	I
-      //   160: invokevirtual 87	com/tencent/token/core/bean/SafeMsgItem:a	(I)V
-      //   163: aload_2
-      //   164: aload_0
-      //   165: getfield 89	com/tencent/token/es$a:f	Ljava/lang/String;
-      //   168: invokevirtual 92	com/tencent/token/core/bean/SafeMsgItem:a	(Ljava/lang/String;)V
-      //   171: aload_2
-      //   172: aload_0
-      //   173: getfield 94	com/tencent/token/es$a:h	J
-      //   176: invokevirtual 96	com/tencent/token/core/bean/SafeMsgItem:b	(J)V
-      //   179: aload_2
-      //   180: aload_0
-      //   181: getfield 98	com/tencent/token/es$a:g	Ljava/lang/String;
-      //   184: invokevirtual 100	com/tencent/token/core/bean/SafeMsgItem:b	(Ljava/lang/String;)V
-      //   187: aload_2
-      //   188: aload_0
-      //   189: getfield 102	com/tencent/token/es$a:l	Ljava/lang/String;
-      //   192: invokevirtual 104	com/tencent/token/core/bean/SafeMsgItem:c	(Ljava/lang/String;)V
-      //   195: aload_2
-      //   196: aload_0
-      //   197: getfield 106	com/tencent/token/es$a:i	I
-      //   200: invokevirtual 108	com/tencent/token/core/bean/SafeMsgItem:b	(I)V
-      //   203: aload_2
-      //   204: aload_0
-      //   205: getfield 110	com/tencent/token/es$a:j	I
-      //   208: invokevirtual 112	com/tencent/token/core/bean/SafeMsgItem:c	(I)V
-      //   211: aload_2
-      //   212: aload_0
-      //   213: getfield 114	com/tencent/token/es$a:k	I
-      //   216: invokevirtual 116	com/tencent/token/core/bean/SafeMsgItem:d	(I)V
-      //   219: aload_2
-      //   220: areturn
-      // Local variable table:
-      //   start	length	slot	name	signature
-      //   0	221	0	this	a
-      //   128	8	1	bool	boolean
-      //   4	43	2	localObject1	Object
-      //   50	1	2	localObject2	Object
-      //   54	2	2	localClassNotFoundException	java.lang.ClassNotFoundException
-      //   66	1	2	localSafeMsgItem1	SafeMsgItem
-      //   70	2	2	localIOException	java.io.IOException
-      //   82	1	2	localSafeMsgItem2	SafeMsgItem
-      //   86	2	2	localStreamCorruptedException	java.io.StreamCorruptedException
-      //   98	122	2	localSafeMsgItem3	SafeMsgItem
-      //   32	4	3	localSafeMsgItem4	SafeMsgItem
-      // Exception table:
-      //   from	to	target	type
-      //   18	33	50	finally
-      //   55	59	50	finally
-      //   71	75	50	finally
-      //   87	91	50	finally
-      //   18	33	54	java/lang/ClassNotFoundException
-      //   18	33	70	java/io/IOException
-      //   18	33	86	java/io/StreamCorruptedException
+      if (this.f) {
+        l2 = 1L;
+      } else {
+        l2 = 0L;
+      }
+      long l1 = l2;
+      if (this.i) {
+        l1 = l2 | 0x2;
+      }
+      long l2 = l1;
+      if (!this.j) {
+        l2 = l1 | 0x4;
+      }
+      l1 = l2;
+      if (this.k) {
+        l1 = l2 | 0x8;
+      }
+      l2 = l1;
+      if (this.l) {
+        l2 = l1 | 0x10;
+      }
+      return l2;
     }
     
-    public et a(Cursor paramCursor)
+    public ev a(Cursor paramCursor)
     {
       a locala = new a(es.this);
-      locala.b = paramCursor.getLong(paramCursor.getColumnIndex("fid"));
-      locala.c = paramCursor.getLong(paramCursor.getColumnIndex("fuin"));
-      locala.d = paramCursor.getInt(paramCursor.getColumnIndex("flag"));
-      locala.e = paramCursor.getInt(paramCursor.getColumnIndex("fis_read"));
-      locala.f = paramCursor.getString(paramCursor.getColumnIndex("ftitle"));
-      locala.g = paramCursor.getString(paramCursor.getColumnIndex("fcontent"));
-      locala.h = paramCursor.getLong(paramCursor.getColumnIndex("ftime"));
-      locala.i = paramCursor.getInt(paramCursor.getColumnIndex("ftype"));
-      locala.j = paramCursor.getInt(paramCursor.getColumnIndex("fsub_type"));
-      locala.k = paramCursor.getInt(paramCursor.getColumnIndex("fdetail_type"));
-      locala.l = paramCursor.getString(paramCursor.getColumnIndex("furi"));
-      locala.m = paramCursor.getString(paramCursor.getColumnIndex("faction"));
-      locala.n = paramCursor.getBlob(paramCursor.getColumnIndex("freserved1"));
+      locala.a = paramCursor.getLong(paramCursor.getColumnIndex("uin"));
+      locala.c = paramCursor.getString(paramCursor.getColumnIndex("email"));
+      locala.d = paramCursor.getString(paramCursor.getColumnIndex("nick_name"));
+      locala.e = paramCursor.getString(paramCursor.getColumnIndex("uin_mask"));
+      locala.g = paramCursor.getBlob(paramCursor.getColumnIndex("head_image"));
+      locala.h = paramCursor.getLong(paramCursor.getColumnIndex("head_image_update_time"));
+      a(locala, paramCursor.getLong(paramCursor.getColumnIndex("flag")));
+      if (!locala.j) {
+        locala.a = (-locala.a);
+      }
+      paramCursor = locala.g;
+      if ((paramCursor != null) && (paramCursor.length >= 64))
+      {
+        int n = 0;
+        if ((paramCursor[0] == a.a[0]) && (paramCursor[1] == a.a[1]) && (paramCursor[2] == a.a[2]) && (paramCursor[3] == a.a[3]))
+        {
+          byte[] arrayOfByte = new byte[60];
+          System.arraycopy(paramCursor, 4, arrayOfByte, 0, 60);
+          while ((n < 60) && (arrayOfByte[n] == 0))
+          {
+            arrayOfByte[n] = 48;
+            n += 1;
+          }
+          paramCursor = new String(arrayOfByte);
+        }
+      }
+      try
+      {
+        locala.b = Long.parseLong(paramCursor);
+        return locala;
+      }
+      catch (Exception paramCursor)
+      {
+        label279:
+        break label279;
+      }
+      locala.b = 0L;
       return locala;
     }
     
-    public void a(SafeMsgItem paramSafeMsgItem)
+    public void a(a parama, long paramLong)
     {
-      throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+      boolean bool2 = true;
+      boolean bool1;
+      if ((1L & paramLong) != 0L) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      parama.f = bool1;
+      if ((0x2 & paramLong) != 0L) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      parama.i = bool1;
+      if ((0x8 & paramLong) != 0L) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      parama.k = bool1;
+      if ((0x4 & paramLong) == 0L) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      parama.j = bool1;
+      if ((paramLong & 0x10) != 0L) {
+        bool1 = bool2;
+      } else {
+        bool1 = false;
+      }
+      parama.l = bool1;
     }
     
     public void a(SQLiteDatabase paramSQLiteDatabase)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("CREATE TABLE IF NOT EXISTS ");
-      localStringBuilder.append(es.a(es.this));
-      localStringBuilder.append(" (");
-      localStringBuilder.append("fid");
-      localStringBuilder.append(" INTEGER PRIMARY KEY autoincrement,");
-      localStringBuilder.append("fuin");
-      localStringBuilder.append(" INTEGER,");
-      localStringBuilder.append("flag");
-      localStringBuilder.append(" INTEGER,");
-      localStringBuilder.append("fis_read");
-      localStringBuilder.append(" INTEGER,");
-      localStringBuilder.append("ftitle");
-      localStringBuilder.append(" TEXT,");
-      localStringBuilder.append("fcontent");
-      localStringBuilder.append(" TEXT,");
-      localStringBuilder.append("ftime");
-      localStringBuilder.append(" INTEGER,");
-      localStringBuilder.append("ftype");
-      localStringBuilder.append(" INTEGER,");
-      localStringBuilder.append("fsub_type");
-      localStringBuilder.append(" INTEGER,");
-      localStringBuilder.append("fdetail_type");
-      localStringBuilder.append(" INTEGER,");
-      localStringBuilder.append("furi");
-      localStringBuilder.append(" TEXT,");
-      localStringBuilder.append("faction");
-      localStringBuilder.append(" TEXT,");
-      localStringBuilder.append("freserved1");
-      localStringBuilder.append(" BLOB);");
-      paramSQLiteDatabase.execSQL(localStringBuilder.toString());
+      paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS table_user(uin INTEGER PRIMARY KEY,email TEXT,nick_name TEXT, uin_mask TEXT, flag INTEGER,head_image BLOB, head_image_update_time INTEGER);");
+    }
+    
+    boolean a(QQUser paramQQUser)
+    {
+      this.a = paramQQUser.mUin;
+      this.c = paramQQUser.mEmail;
+      this.d = paramQQUser.mNickName;
+      this.h = paramQQUser.mHeadImageUpdateTime;
+      this.g = null;
+      this.f = paramQQUser.mIsCurrentUser;
+      this.e = paramQQUser.mUinMask;
+      this.i = paramQQUser.mIsSupperQQ;
+      this.k = paramQQUser.mIsRegisterFacePwd;
+      this.j = paramQQUser.mIsBinded;
+      this.l = paramQQUser.mIsZzb;
+      this.b = paramQQUser.mRealUin;
+      return true;
     }
     
     public long b(SQLiteDatabase paramSQLiteDatabase)
     {
-      a(paramSQLiteDatabase);
-      ContentValues localContentValues = new ContentValues();
-      localContentValues.put("fuin", Long.valueOf(this.c));
-      localContentValues.put("flag", Integer.valueOf(this.d));
-      localContentValues.put("fis_read", Integer.valueOf(this.e));
-      localContentValues.put("ftitle", this.f);
-      localContentValues.put("ftime", Long.valueOf(this.h));
-      localContentValues.put("fcontent", this.g);
-      localContentValues.put("ftype", Integer.valueOf(this.i));
-      localContentValues.put("fsub_type", Integer.valueOf(this.j));
-      localContentValues.put("fdetail_type", Integer.valueOf(this.k));
-      localContentValues.put("furi", this.l);
-      localContentValues.put("faction", this.m);
-      localContentValues.put("freserved1", this.n);
-      return paramSQLiteDatabase.insert(es.a(es.this), null, localContentValues);
+      if (!this.j)
+      {
+        this.g = new byte[64];
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.b);
+        ((StringBuilder)localObject).append("");
+        localObject = ((StringBuilder)localObject).toString();
+        System.arraycopy(a.a, 0, this.g, 0, a.a.length);
+        byte[] arrayOfByte1 = ((String)localObject).getBytes();
+        byte[] arrayOfByte2 = this.g;
+        System.arraycopy(arrayOfByte1, 0, arrayOfByte2, arrayOfByte2.length - ((String)localObject).length(), ((String)localObject).length());
+      }
+      long l1 = a();
+      Object localObject = new ContentValues();
+      if (this.j) {
+        ((ContentValues)localObject).put("uin", Long.valueOf(this.a));
+      } else {
+        ((ContentValues)localObject).put("uin", Long.valueOf(-this.a));
+      }
+      ((ContentValues)localObject).put("email", this.c);
+      ((ContentValues)localObject).put("nick_name", this.d);
+      ((ContentValues)localObject).put("uin_mask", this.e);
+      ((ContentValues)localObject).put("flag", Long.valueOf(l1));
+      ((ContentValues)localObject).put("head_image", this.g);
+      ((ContentValues)localObject).put("head_image_update_time", Long.valueOf(this.h));
+      return paramSQLiteDatabase.insert("table_user", null, (ContentValues)localObject);
     }
     
     public String b()
     {
-      return es.a(es.this);
+      return "table_user";
     }
     
     public ContentValues c()
     {
       return null;
+    }
+    
+    QQUser d()
+    {
+      QQUser localQQUser = new QQUser();
+      localQQUser.mUin = this.a;
+      localQQUser.mEmail = this.c;
+      localQQUser.mNickName = this.d;
+      localQQUser.mUinMask = this.e;
+      localQQUser.mIsCurrentUser = this.f;
+      localQQUser.mIsSupperQQ = this.i;
+      localQQUser.mIsRegisterFacePwd = this.k;
+      localQQUser.mIsBinded = this.j;
+      localQQUser.mIsZzb = this.l;
+      localQQUser.mRealUin = this.b;
+      localQQUser.mHeadImageUpdateTime = this.h;
+      return localQQUser;
     }
   }
 }

@@ -4,35 +4,140 @@ import android.content.Context;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.text.TextUtils;
+import com.tencent.service.update.e;
 import java.net.NetworkInterface;
 
 public class ea
 {
+  private static final String DEFAULT_MAC = "02:00:00:00:00:00";
+  private static final String TAG = "ea";
+  
+  private static String getMacByAPI(String paramString)
+  {
+    for (;;)
+    {
+      try
+      {
+        paramString = NetworkInterface.getByName(paramString);
+        if (paramString != null)
+        {
+          paramString = paramString.getHardwareAddress();
+          if (paramString != null)
+          {
+            if (paramString.length == 0) {
+              return null;
+            }
+            StringBuilder localStringBuilder = new StringBuilder();
+            int j = paramString.length;
+            int i = 0;
+            if (i < j)
+            {
+              localStringBuilder.append(String.format("%02x:", new Object[] { Byte.valueOf(paramString[i]) }));
+              i += 1;
+              continue;
+            }
+            if (localStringBuilder.length() > 0) {
+              localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+            }
+            paramString = localStringBuilder.toString();
+            return paramString;
+          }
+          return null;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        return null;
+      }
+      paramString = null;
+    }
+  }
+  
+  private static String getMacFromFile(String paramString)
+  {
+    Object localObject = null;
+    try
+    {
+      byte[] arrayOfByte = loadFile(String.format("/sys/class/net/%s/address", new Object[] { paramString }));
+      paramString = localObject;
+      if (arrayOfByte != null)
+      {
+        paramString = localObject;
+        if (arrayOfByte.length > 0) {
+          paramString = new String(arrayOfByte).trim();
+        }
+      }
+      return paramString;
+    }
+    catch (Throwable paramString) {}
+    return null;
+  }
+  
+  public static String j(Context paramContext)
+  {
+    if (!e.a().b()) {
+      return "02:00:00:00:00:00";
+    }
+    localObject2 = null;
+    if (paramContext == null) {
+      return null;
+    }
+    try
+    {
+      paramContext = (WifiManager)paramContext.getSystemService("wifi");
+      if (paramContext == null) {
+        break label107;
+      }
+      paramContext = paramContext.getConnectionInfo();
+    }
+    catch (Throwable paramContext)
+    {
+      for (;;)
+      {
+        Object localObject1 = localObject2;
+        continue;
+        paramContext = null;
+      }
+    }
+    localObject1 = localObject2;
+    if (paramContext != null) {
+      localObject1 = paramContext.getMacAddress();
+    }
+    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!"02:00:00:00:00:00".equals(localObject1))) {
+      return localObject1;
+    }
+    paramContext = getMacByAPI("wlan0");
+    if ((!TextUtils.isEmpty(paramContext)) && (!"02:00:00:00:00:00".equals(paramContext))) {
+      return paramContext;
+    }
+    return getMacFromFile("wlan0");
+  }
+  
   /* Error */
-  private static byte[] G(String paramString)
+  private static byte[] loadFile(String paramString)
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore 4
     //   3: aconst_null
     //   4: astore_3
-    //   5: new 10	java/io/FileInputStream
+    //   5: new 125	java/io/FileInputStream
     //   8: dup
     //   9: aload_0
-    //   10: invokespecial 14	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   10: invokespecial 128	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   13: astore_0
-    //   14: new 16	java/io/ByteArrayOutputStream
+    //   14: new 130	java/io/ByteArrayOutputStream
     //   17: dup
     //   18: aload_0
-    //   19: invokevirtual 20	java/io/FileInputStream:available	()I
-    //   22: invokespecial 23	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   19: invokevirtual 133	java/io/FileInputStream:available	()I
+    //   22: invokespecial 136	java/io/ByteArrayOutputStream:<init>	(I)V
     //   25: astore_2
     //   26: sipush 1024
     //   29: newarray byte
     //   31: astore 4
     //   33: aload_0
     //   34: aload 4
-    //   36: invokevirtual 27	java/io/FileInputStream:read	([B)I
+    //   36: invokevirtual 140	java/io/FileInputStream:read	([B)I
     //   39: istore_1
     //   40: iload_1
     //   41: ifle +14 -> 55
@@ -40,17 +145,17 @@ public class ea
     //   45: aload 4
     //   47: iconst_0
     //   48: iload_1
-    //   49: invokevirtual 31	java/io/ByteArrayOutputStream:write	([BII)V
+    //   49: invokevirtual 144	java/io/ByteArrayOutputStream:write	([BII)V
     //   52: goto -19 -> 33
     //   55: aload_2
-    //   56: invokevirtual 35	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   56: invokevirtual 147	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   59: astore 4
     //   61: aload_2
-    //   62: invokevirtual 39	java/io/ByteArrayOutputStream:close	()V
+    //   62: invokevirtual 150	java/io/ByteArrayOutputStream:close	()V
     //   65: aload 4
     //   67: astore_2
     //   68: aload_0
-    //   69: invokevirtual 40	java/io/FileInputStream:close	()V
+    //   69: invokevirtual 151	java/io/FileInputStream:close	()V
     //   72: aload_2
     //   73: areturn
     //   74: astore 4
@@ -81,12 +186,12 @@ public class ea
     //   113: aload_3
     //   114: ifnull +10 -> 124
     //   117: aload_3
-    //   118: invokevirtual 39	java/io/ByteArrayOutputStream:close	()V
+    //   118: invokevirtual 150	java/io/ByteArrayOutputStream:close	()V
     //   121: goto +3 -> 124
     //   124: aload_2
     //   125: ifnull +7 -> 132
     //   128: aload_2
-    //   129: invokevirtual 40	java/io/FileInputStream:close	()V
+    //   129: invokevirtual 151	java/io/FileInputStream:close	()V
     //   132: aload_0
     //   133: athrow
     //   134: aconst_null
@@ -96,7 +201,7 @@ public class ea
     //   138: aload_2
     //   139: ifnull +10 -> 149
     //   142: aload_2
-    //   143: invokevirtual 39	java/io/ByteArrayOutputStream:close	()V
+    //   143: invokevirtual 150	java/io/ByteArrayOutputStream:close	()V
     //   146: goto +3 -> 149
     //   149: aload_0
     //   150: ifnull +8 -> 158
@@ -159,104 +264,6 @@ public class ea
     //   117	121	183	java/lang/Throwable
     //   128	132	187	java/lang/Throwable
     //   142	146	191	java/lang/Throwable
-  }
-  
-  private static String I(String paramString)
-  {
-    Object localObject = null;
-    for (;;)
-    {
-      try
-      {
-        paramString = NetworkInterface.getByName(paramString);
-        if (paramString != null)
-        {
-          paramString = paramString.getHardwareAddress();
-          if (paramString != null)
-          {
-            if (paramString.length == 0) {
-              return null;
-            }
-            localObject = new StringBuilder();
-            int j = paramString.length;
-            int i = 0;
-            if (i < j)
-            {
-              ((StringBuilder)localObject).append(String.format("%02x:", new Object[] { Byte.valueOf(paramString[i]) }));
-              i += 1;
-              continue;
-            }
-            if (((StringBuilder)localObject).length() > 0) {
-              ((StringBuilder)localObject).deleteCharAt(((StringBuilder)localObject).length() - 1);
-            }
-            localObject = ((StringBuilder)localObject).toString();
-          }
-          return localObject;
-        }
-      }
-      catch (Throwable paramString)
-      {
-        return null;
-      }
-      paramString = null;
-    }
-  }
-  
-  private static String J(String paramString)
-  {
-    Object localObject = null;
-    try
-    {
-      byte[] arrayOfByte = G(String.format("/sys/class/net/%s/address", new Object[] { paramString }));
-      paramString = localObject;
-      if (arrayOfByte != null)
-      {
-        paramString = localObject;
-        if (arrayOfByte.length > 0) {
-          paramString = new String(arrayOfByte).trim();
-        }
-      }
-      return paramString;
-    }
-    catch (Throwable paramString) {}
-    return null;
-  }
-  
-  public static String j(Context paramContext)
-  {
-    localObject2 = null;
-    if (paramContext == null) {
-      return null;
-    }
-    try
-    {
-      paramContext = (WifiManager)paramContext.getSystemService("wifi");
-      if (paramContext == null) {
-        break label95;
-      }
-      paramContext = paramContext.getConnectionInfo();
-    }
-    catch (Throwable paramContext)
-    {
-      for (;;)
-      {
-        Object localObject1 = localObject2;
-        continue;
-        paramContext = null;
-      }
-    }
-    localObject1 = localObject2;
-    if (paramContext != null) {
-      localObject1 = paramContext.getMacAddress();
-    }
-    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!"02:00:00:00:00:00".equals(localObject1))) {
-      return localObject1;
-    }
-    paramContext = I("wlan0");
-    if ((!TextUtils.isEmpty(paramContext)) && (!"02:00:00:00:00:00".equals(paramContext))) {
-      return paramContext;
-    }
-    return J("wlan0");
   }
 }
 

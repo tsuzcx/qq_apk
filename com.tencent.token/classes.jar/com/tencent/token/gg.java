@@ -1,168 +1,102 @@
 package com.tencent.token;
 
-import java.security.cert.CertificateParsingException;
+import java.security.GeneralSecurityException;
+import java.security.Principal;
+import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.Deque;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.SSLException;
-import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLPeerUnverifiedException;
 
 public final class gg
-  implements HostnameVerifier
+  extends gi
 {
-  public static final gg a = new gg();
+  private final gk a;
   
-  public static List<String> a(X509Certificate paramX509Certificate)
+  public gg(gk paramgk)
   {
-    List localList = a(paramX509Certificate, 7);
-    paramX509Certificate = a(paramX509Certificate, 2);
-    ArrayList localArrayList = new ArrayList(localList.size() + paramX509Certificate.size());
-    localArrayList.addAll(localList);
-    localArrayList.addAll(paramX509Certificate);
-    return localArrayList;
+    this.a = paramgk;
   }
   
-  private static List<String> a(X509Certificate paramX509Certificate, int paramInt)
+  private boolean a(X509Certificate paramX509Certificate1, X509Certificate paramX509Certificate2)
   {
-    ArrayList localArrayList = new ArrayList();
-    try
-    {
-      paramX509Certificate = paramX509Certificate.getSubjectAlternativeNames();
-      if (paramX509Certificate == null) {
-        return Collections.emptyList();
-      }
-      paramX509Certificate = paramX509Certificate.iterator();
-      while (paramX509Certificate.hasNext())
-      {
-        Object localObject = (List)paramX509Certificate.next();
-        if ((localObject != null) && (((List)localObject).size() >= 2))
-        {
-          Integer localInteger = (Integer)((List)localObject).get(0);
-          if ((localInteger != null) && (localInteger.intValue() == paramInt))
-          {
-            localObject = (String)((List)localObject).get(1);
-            if (localObject != null) {
-              localArrayList.add(localObject);
-            }
-          }
-        }
-      }
-      return localArrayList;
-    }
-    catch (CertificateParsingException paramX509Certificate)
-    {
-      label121:
-      break label121;
-    }
-    return Collections.emptyList();
-  }
-  
-  private boolean b(String paramString, X509Certificate paramX509Certificate)
-  {
-    paramX509Certificate = a(paramX509Certificate, 7);
-    int j = paramX509Certificate.size();
-    int i = 0;
-    while (i < j)
-    {
-      if (paramString.equalsIgnoreCase((String)paramX509Certificate.get(i))) {
-        return true;
-      }
-      i += 1;
-    }
-    return false;
-  }
-  
-  private boolean c(String paramString, X509Certificate paramX509Certificate)
-  {
-    paramString = paramString.toLowerCase(Locale.US);
-    paramX509Certificate = a(paramX509Certificate, 2).iterator();
-    while (paramX509Certificate.hasNext()) {
-      if (a(paramString, (String)paramX509Certificate.next())) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public boolean a(String paramString1, String paramString2)
-  {
-    if ((paramString1 != null) && (paramString1.length() != 0) && (!paramString1.startsWith(".")))
-    {
-      if (paramString1.endsWith("..")) {
-        return false;
-      }
-      if ((paramString2 != null) && (paramString2.length() != 0) && (!paramString2.startsWith(".")))
-      {
-        if (paramString2.endsWith("..")) {
-          return false;
-        }
-        Object localObject = paramString1;
-        if (!paramString1.endsWith("."))
-        {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append(paramString1);
-          ((StringBuilder)localObject).append('.');
-          localObject = ((StringBuilder)localObject).toString();
-        }
-        paramString1 = paramString2;
-        if (!paramString2.endsWith("."))
-        {
-          paramString1 = new StringBuilder();
-          paramString1.append(paramString2);
-          paramString1.append('.');
-          paramString1 = paramString1.toString();
-        }
-        paramString1 = paramString1.toLowerCase(Locale.US);
-        if (!paramString1.contains("*")) {
-          return ((String)localObject).equals(paramString1);
-        }
-        if (paramString1.startsWith("*."))
-        {
-          if (paramString1.indexOf('*', 1) != -1) {
-            return false;
-          }
-          if (((String)localObject).length() < paramString1.length()) {
-            return false;
-          }
-          if ("*.".equals(paramString1)) {
-            return false;
-          }
-          paramString1 = paramString1.substring(1);
-          if (!((String)localObject).endsWith(paramString1)) {
-            return false;
-          }
-          int i = ((String)localObject).length() - paramString1.length();
-          return (i <= 0) || (((String)localObject).lastIndexOf('.', i - 1) == -1);
-        }
-        return false;
-      }
+    if (!paramX509Certificate1.getIssuerDN().equals(paramX509Certificate2.getSubjectDN())) {
       return false;
     }
-    return false;
-  }
-  
-  public boolean a(String paramString, X509Certificate paramX509Certificate)
-  {
-    if (fc.c(paramString)) {
-      return b(paramString, paramX509Certificate);
-    }
-    return c(paramString, paramX509Certificate);
-  }
-  
-  public boolean verify(String paramString, SSLSession paramSSLSession)
-  {
     try
     {
-      boolean bool = a(paramString, (X509Certificate)paramSSLSession.getPeerCertificates()[0]);
-      return bool;
+      paramX509Certificate1.verify(paramX509Certificate2.getPublicKey());
+      return true;
     }
-    catch (SSLException paramString) {}
+    catch (GeneralSecurityException paramX509Certificate1) {}
     return false;
+  }
+  
+  public List<Certificate> a(List<Certificate> paramList, String paramString)
+  {
+    ArrayDeque localArrayDeque = new ArrayDeque(paramList);
+    paramList = new ArrayList();
+    paramList.add(localArrayDeque.removeFirst());
+    int i = 0;
+    int j = 0;
+    while (i < 9)
+    {
+      paramString = (X509Certificate)paramList.get(paramList.size() - 1);
+      Object localObject = this.a.a(paramString);
+      if (localObject != null)
+      {
+        if ((paramList.size() > 1) || (!paramString.equals(localObject))) {
+          paramList.add(localObject);
+        }
+        if (a((X509Certificate)localObject, (X509Certificate)localObject)) {
+          return paramList;
+        }
+        j = 1;
+      }
+      else
+      {
+        localObject = localArrayDeque.iterator();
+        X509Certificate localX509Certificate;
+        do
+        {
+          if (!((Iterator)localObject).hasNext()) {
+            break;
+          }
+          localX509Certificate = (X509Certificate)((Iterator)localObject).next();
+        } while (!a(paramString, localX509Certificate));
+        ((Iterator)localObject).remove();
+        paramList.add(localX509Certificate);
+      }
+      i += 1;
+      continue;
+      if (j != 0) {
+        return paramList;
+      }
+      paramList = new StringBuilder();
+      paramList.append("Failed to find a trusted cert that signed ");
+      paramList.append(paramString);
+      throw new SSLPeerUnverifiedException(paramList.toString());
+    }
+    paramString = new StringBuilder();
+    paramString.append("Certificate chain too long: ");
+    paramString.append(paramList);
+    throw new SSLPeerUnverifiedException(paramString.toString());
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (paramObject == this) {
+      return true;
+    }
+    return ((paramObject instanceof gg)) && (((gg)paramObject).a.equals(this.a));
+  }
+  
+  public int hashCode()
+  {
+    return this.a.hashCode();
   }
 }
 

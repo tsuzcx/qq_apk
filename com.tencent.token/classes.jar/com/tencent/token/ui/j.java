@@ -14,7 +14,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.token.core.bean.f;
-import com.tencent.token.cs;
+import com.tencent.token.ct;
 import com.tencent.token.global.e;
 import com.tencent.token.global.g;
 import com.tencent.token.ui.base.SwitchButton;
@@ -41,11 +41,11 @@ class j
   
   public void a()
   {
-    int j = cs.a().f();
+    int j = ct.a().f();
     int i = 0;
     while (i < j)
     {
-      f localf = cs.a().b(i);
+      f localf = ct.a().b(i);
       if (localf != null) {
         localf.e = false;
       }
@@ -60,8 +60,8 @@ class j
     {
       public void onClick(View paramAnonymousView)
       {
-        j.c(j.this).findViewById(2131166217).setVisibility(8);
-        j.c(j.this).findViewById(2131166216).setVisibility(8);
+        j.c(j.this).findViewById(2131166219).setVisibility(8);
+        j.c(j.this).findViewById(2131166218).setVisibility(8);
         j.c(j.this).setVisibility(8);
         paramAnonymousView = j.this;
         paramAnonymousView.a = false;
@@ -84,7 +84,7 @@ class j
           return;
         }
         e.a(j.b(j.this).getResources(), paramAnonymouse);
-        j.b(j.this).showTipDialog(2131493532, paramAnonymouse.c);
+        j.b(j.this).showTipDialog(2131493533, paramAnonymouse.c);
       }
       
       public e a(f... paramAnonymousVarArgs)
@@ -93,7 +93,7 @@ class j
         if ((paramAnonymousVarArgs != null) && (paramAnonymousVarArgs.a() != null))
         {
           this.c = paramb.a();
-          paramAnonymousVarArgs = cs.a();
+          paramAnonymousVarArgs = ct.a();
           f localf = this.c;
           return paramAnonymousVarArgs.a(localf, localf.c ^ true);
         }
@@ -176,7 +176,7 @@ class j
           } else {
             paramb.setVisibility(4);
           }
-          if ((!((f)localObject).e) && (cs.a().p()))
+          if ((!((f)localObject).e) && (ct.a().p()))
           {
             localProgressBar.setVisibility(4);
             localSwitchButton.setVisibility(0);
@@ -189,7 +189,7 @@ class j
             localSwitchButton.setVisibility(0);
             localSwitchButton.setEnabled(false);
           }
-          if ((!cs.a().p()) && (!this.c.mIsIniting)) {
+          if ((!ct.a().p()) && (!this.c.mIsIniting)) {
             this.c.queryGameProtectStatus();
           }
           localTextView.setText(((f)localObject).b);
@@ -203,9 +203,9 @@ class j
   public int getCount()
   {
     if (this.a) {
-      return cs.a().e();
+      return ct.a().e();
     }
-    return cs.a().f();
+    return ct.a().f();
   }
   
   public Object getItem(int paramInt)
@@ -220,7 +220,7 @@ class j
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    f localf = cs.a().b(paramInt);
+    f localf = ct.a().b(paramInt);
     View localView = paramView;
     if (paramView == null) {
       localView = this.d.inflate(2131296476, paramViewGroup, false);
@@ -249,7 +249,7 @@ class j
       }
       f localf = paramCompoundButton.a();
       View localView = paramCompoundButton.f();
-      if ((localf != null) && (localView != null) && (cs.a().p()))
+      if ((localf != null) && (localView != null) && (ct.a().p()))
       {
         if (paramBoolean != localf.c) {
           return;
@@ -282,10 +282,10 @@ class j
         return;
       }
       this.f = paramf;
-      this.d = ((SwitchButton)j.this.findViewById(2131165554));
-      this.b = ((TextView)this.a.findViewById(2131166214));
-      this.c = ((ProgressBar)this.a.findViewById(2131165556));
-      this.e = ((ImageView)this.a.findViewById(2131166215));
+      this.d = ((SwitchButton)j.this.findViewById(2131165556));
+      this.b = ((TextView)this.a.findViewById(2131166216));
+      this.c = ((ProgressBar)this.a.findViewById(2131165558));
+      this.e = ((ImageView)this.a.findViewById(2131166217));
     }
     
     public f a()

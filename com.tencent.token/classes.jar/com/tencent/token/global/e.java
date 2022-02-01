@@ -47,7 +47,7 @@ public class e
             break;
           case 10001: 
             localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append(paramResources.getString(2131493103));
+            ((StringBuilder)localObject1).append(paramResources.getString(2131493104));
             ((StringBuilder)localObject1).append("(");
             ((StringBuilder)localObject1).append(parame.a);
             ((StringBuilder)localObject1).append(")");
@@ -58,7 +58,7 @@ public class e
         else
         {
           localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append(paramResources.getString(2131493102));
+          ((StringBuilder)localObject1).append(paramResources.getString(2131493103));
           ((StringBuilder)localObject1).append("(");
           ((StringBuilder)localObject1).append(parame.a);
           ((StringBuilder)localObject1).append(")");
@@ -68,7 +68,7 @@ public class e
       else
       {
         localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(paramResources.getString(2131493105));
+        ((StringBuilder)localObject1).append(paramResources.getString(2131493106));
         ((StringBuilder)localObject1).append("(");
         ((StringBuilder)localObject1).append(parame.a);
         ((StringBuilder)localObject1).append(")");
@@ -76,13 +76,13 @@ public class e
       }
     }
     else {
-      localObject1 = paramResources.getString(2131493104);
+      localObject1 = paramResources.getString(2131493105);
     }
     Object localObject2 = localObject1;
     if (localObject1 == null)
     {
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(paramResources.getString(2131493105));
+      ((StringBuilder)localObject1).append(paramResources.getString(2131493106));
       ((StringBuilder)localObject1).append("(");
       ((StringBuilder)localObject1).append(parame.a);
       ((StringBuilder)localObject1).append(")");
@@ -146,7 +146,7 @@ public class e
       }
       this.c = paramString1;
     }
-    a(RqdApplication.l().getResources(), this);
+    a(RqdApplication.n().getResources(), this);
   }
   
   public void a(e parame)

@@ -17,7 +17,7 @@ import android.view.SurfaceHolder;
 import com.tencent.jni.FaceDetector;
 import com.tencent.jni.FaceDetector.IdCardDirection;
 import com.tencent.jni.IdCardInfo;
-import com.tencent.token.bu;
+import com.tencent.token.bv;
 import com.tencent.token.core.protocolcenter.protocol.ProtoAutoIDCardDetect;
 import com.tencent.token.global.g;
 import java.lang.reflect.Method;
@@ -209,12 +209,12 @@ public class e
       {
         b = 0;
         a = 0;
-        bu.a().a(System.currentTimeMillis(), 130);
+        bv.a().a(System.currentTimeMillis(), 130);
         return;
       }
       d = 0;
       c = 0;
-      bu.a().a(System.currentTimeMillis(), 132);
+      bv.a().a(System.currentTimeMillis(), 132);
       return;
     }
     catch (Exception localException2)
@@ -673,7 +673,7 @@ public class e
         ((Message)localObject2).setData((Bundle)localObject3);
         ((Message)localObject2).arg1 = 1;
         ((Message)localObject2).sendToTarget();
-        bu.a().a(System.currentTimeMillis(), 131);
+        bv.a().a(System.currentTimeMillis(), 131);
       }
       else if (this.s == FaceDetector.IdCardDirection.DT_BACK)
       {
@@ -687,7 +687,7 @@ public class e
         ((Message)localObject2).setData((Bundle)localObject3);
         ((Message)localObject2).arg1 = 2;
         ((Message)localObject2).sendToTarget();
-        bu.a().a(System.currentTimeMillis(), 133);
+        bv.a().a(System.currentTimeMillis(), 133);
       }
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("take id photo data=");

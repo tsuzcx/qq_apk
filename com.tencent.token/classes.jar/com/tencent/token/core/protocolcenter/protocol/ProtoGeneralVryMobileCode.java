@@ -1,10 +1,10 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.ca;
-import com.tencent.token.cc;
+import com.tencent.token.cb;
+import com.tencent.token.cd;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -24,25 +24,25 @@ public class ProtoGeneralVryMobileCode
   private int i = 0;
   private final String j = "/cn/mbtoken3/mbtoken3_general_verify_mobile_code";
   
-  public static void a(do paramdo, long paramLong1, long paramLong2, int paramInt1, int paramInt2, String paramString, int paramInt3)
+  public static void a(dp paramdp, long paramLong1, long paramLong2, int paramInt1, int paramInt2, String paramString, int paramInt3)
   {
-    paramdo.c.put("param.uinhash", Long.valueOf(paramLong1));
-    paramdo.c.put("param.realuin", Long.valueOf(paramLong2));
-    paramdo.c.put("param.general.mobilecode.sceneid", Integer.valueOf(paramInt1));
-    paramdo.c.put("param.mbmobile.vrycode", paramString);
-    paramdo.c.put("param.type", Integer.valueOf(paramInt3));
-    paramdo.j = paramInt2;
+    paramdp.c.put("param.uinhash", Long.valueOf(paramLong1));
+    paramdp.c.put("param.realuin", Long.valueOf(paramLong2));
+    paramdp.c.put("param.general.mobilecode.sceneid", Integer.valueOf(paramInt1));
+    paramdp.c.put("param.mbmobile.vrycode", paramString);
+    paramdp.c.put("param.type", Integer.valueOf(paramInt3));
+    paramdp.j = paramInt2;
   }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     if (str == null)
     {
       this.a.b(104);
       return null;
     }
-    Object localObject = l.a(new Object[] { "real_uin", Long.valueOf(this.e), "scene_id", Integer.valueOf(this.g), "seq_id", Integer.valueOf(this.f), "op_time", Long.valueOf(cc.c().s() / 1000L), "mobile_code", this.h, "verify_type_id", Integer.valueOf(this.i) });
+    Object localObject = l.a(new Object[] { "real_uin", Long.valueOf(this.e), "scene_id", Integer.valueOf(this.g), "seq_id", Integer.valueOf(this.f), "op_time", Long.valueOf(cd.c().s() / 1000L), "mobile_code", this.h, "verify_type_id", Integer.valueOf(this.i) });
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("?uin=");
     localStringBuilder.append(this.d);
@@ -58,14 +58,14 @@ public class ProtoGeneralVryMobileCode
     return ((StringBuilder)localObject).toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.d = ((Long)paramdo.c.get("param.uinhash")).longValue();
-    this.e = ((Long)paramdo.c.get("param.realuin")).longValue();
-    this.g = ((Integer)paramdo.c.get("param.general.mobilecode.sceneid")).intValue();
-    this.h = ((String)paramdo.c.get("param.mbmobile.vrycode"));
-    this.i = ((Integer)paramdo.c.get("param.type")).intValue();
-    this.f = paramdo.j;
+    this.d = ((Long)paramdp.c.get("param.uinhash")).longValue();
+    this.e = ((Long)paramdp.c.get("param.realuin")).longValue();
+    this.g = ((Integer)paramdp.c.get("param.general.mobilecode.sceneid")).intValue();
+    this.h = ((String)paramdp.c.get("param.mbmobile.vrycode"));
+    this.i = ((Integer)paramdp.c.get("param.type")).intValue();
+    this.f = paramdp.j;
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -103,7 +103,7 @@ public class ProtoGeneralVryMobileCode
     localStringBuilder.append("parseJSON error decodeData=");
     localStringBuilder.append(paramJSONObject);
     g.c(localStringBuilder.toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
 }
 

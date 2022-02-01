@@ -1,6 +1,6 @@
 package okhttp3;
 
-import com.tencent.token.fc;
+import com.tencent.token.ff;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Iterator;
@@ -84,7 +84,7 @@ public final class n
     try
     {
       if (this.d == null) {
-        this.d = new ThreadPoolExecutor(0, 2147483647, 60L, TimeUnit.SECONDS, new SynchronousQueue(), fc.a("OkHttp Dispatcher", false));
+        this.d = new ThreadPoolExecutor(0, 2147483647, 60L, TimeUnit.SECONDS, new SynchronousQueue(), ff.a("OkHttp Dispatcher", false));
       }
       ExecutorService localExecutorService = this.d;
       return localExecutorService;

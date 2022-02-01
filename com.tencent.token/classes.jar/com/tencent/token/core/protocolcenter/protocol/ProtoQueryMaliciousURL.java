@@ -3,11 +3,11 @@ package com.tencent.token.core.protocolcenter.protocol;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.ca;
 import com.tencent.token.cb;
 import com.tencent.token.cc;
+import com.tencent.token.cd;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -24,23 +24,23 @@ public class ProtoQueryMaliciousURL
   private int e;
   private String f;
   
-  public static void a(do paramdo, String paramString)
+  public static void a(dp paramdp, String paramString)
   {
-    paramdo.c.put("param.barcode.url", paramString);
+    paramdp.c.put("param.barcode.url", paramString);
   }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     if (str == null)
     {
       this.a.b(104);
       return null;
     }
-    int i = cb.a + 1;
-    cb.a = i;
+    int i = cc.a + 1;
+    cc.a = i;
     this.c = i;
-    Object localObject = l.a(new Object[] { "url", URLEncoder.encode(this.d), "seq_id", Integer.valueOf(this.c), "op_time", Long.valueOf(cc.c().s() / 1000L) });
+    Object localObject = l.a(new Object[] { "url", URLEncoder.encode(this.d), "seq_id", Integer.valueOf(this.c), "op_time", Long.valueOf(cd.c().s() / 1000L) });
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("?aq_base_sid=");
     localStringBuilder.append(str);
@@ -54,9 +54,9 @@ public class ProtoQueryMaliciousURL
     return ((StringBuilder)localObject).toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.d = ((String)paramdo.c.get("param.barcode.url"));
+    this.d = ((String)paramdp.c.get("param.barcode.url"));
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -96,7 +96,7 @@ public class ProtoQueryMaliciousURL
     localStringBuilder.append("parseJSON error decodeData=");
     localStringBuilder.append(paramJSONObject);
     g.c(localStringBuilder.toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
   
   protected void b()

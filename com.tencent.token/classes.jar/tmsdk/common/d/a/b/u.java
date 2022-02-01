@@ -3,9 +3,9 @@ package tmsdk.common.d.a.b;
 import android.os.Handler;
 import android.os.Looper;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.ef;
 import com.tencent.token.eh;
-import com.tencent.token.ei;
+import com.tencent.token.ej;
+import com.tencent.token.ek;
 import com.tencent.token.g;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -78,7 +78,7 @@ class u
     if (paramt.f == null) {
       return;
     }
-    int i = eh.a(paramt.e);
+    int i = ej.a(paramt.e);
     if (i != 8)
     {
       if (i != 16)
@@ -193,15 +193,15 @@ class u
     //   61: aload 6
     //   63: invokeinterface 210 1 0
     //   68: checkcast 74	tmsdk/common/d/a/b/t
-    //   71: getfield 125	tmsdk/common/d/a/b/t:h	Lcom/tencent/token/ei;
-    //   74: invokevirtual 232	com/tencent/token/ei:a	()Z
+    //   71: getfield 125	tmsdk/common/d/a/b/t:h	Lcom/tencent/token/ek;
+    //   74: invokevirtual 232	com/tencent/token/ek:a	()Z
     //   77: ifne -38 -> 39
     //   80: aload 6
     //   82: invokeinterface 210 1 0
     //   87: checkcast 74	tmsdk/common/d/a/b/t
-    //   90: getfield 125	tmsdk/common/d/a/b/t:h	Lcom/tencent/token/ei;
+    //   90: getfield 125	tmsdk/common/d/a/b/t:h	Lcom/tencent/token/ek;
     //   93: iconst_1
-    //   94: invokevirtual 129	com/tencent/token/ei:a	(I)V
+    //   94: invokevirtual 129	com/tencent/token/ek:a	(I)V
     //   97: new 234	a/e/c
     //   100: dup
     //   101: invokespecial 235	a/e/c:<init>	()V
@@ -430,7 +430,7 @@ class u
     //   657: goto +3 -> 660
     //   660: aload 5
     //   662: getfield 313	android/util/Pair:second	Ljava/lang/Object;
-    //   665: checkcast 315	com/tencent/token/eg
+    //   665: checkcast 315	com/tencent/token/ei
     //   668: aload 4
     //   670: getfield 316	a/e/f:b	I
     //   673: aload 4
@@ -455,7 +455,7 @@ class u
     //   717: aconst_null
     //   718: ldc_w 322
     //   721: aconst_null
-    //   722: invokespecial 325	tmsdk/common/d/a/b/t:<init>	(Ltmsdk/common/d/a/b/r;JILcom/qq/taf/jce/JceStruct;Lcom/qq/taf/jce/JceStruct;ILcom/tencent/token/ef;)V
+    //   722: invokespecial 325	tmsdk/common/d/a/b/t:<init>	(Ltmsdk/common/d/a/b/r;JILcom/qq/taf/jce/JceStruct;Lcom/qq/taf/jce/JceStruct;ILcom/tencent/token/eh;)V
     //   725: astore_2
     //   726: aload_2
     //   727: aload 4

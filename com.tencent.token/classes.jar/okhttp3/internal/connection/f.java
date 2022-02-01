@@ -1,8 +1,8 @@
 package okhttp3.internal.connection;
 
-import com.tencent.token.fa;
-import com.tencent.token.fc;
-import com.tencent.token.fl;
+import com.tencent.token.fd;
+import com.tencent.token.ff;
+import com.tencent.token.fo;
 import java.io.IOException;
 import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
@@ -32,7 +32,7 @@ public final class f
   private boolean l;
   private boolean m;
   private boolean n;
-  private fl o;
+  private fo o;
   
   public f(j paramj, a parama, okhttp3.e parame, p paramp, Object paramObject)
   {
@@ -67,7 +67,7 @@ public final class f
         if (this.k.d.isEmpty())
         {
           this.k.e = System.nanoTime();
-          if (fa.a.a(this.g, this.k))
+          if (fd.a.a(this.g, this.k))
           {
             localObject = this.k.b();
             break label155;
@@ -110,7 +110,7 @@ public final class f
                 if (localObject1 != null) {
                   break label631;
                 }
-                fa.a.a(this.g, this.a, this, null);
+                fd.a.a(this.g, this.a, this, null);
                 if (this.k != null)
                 {
                   localObject1 = this.k;
@@ -122,7 +122,7 @@ public final class f
                   localObject6 = this.f;
                   i1 = 0;
                 }
-                fc.a((Socket)localObject9);
+                ff.a((Socket)localObject9);
                 if (localObject7 != null) {
                   this.c.b(this.b, (i)localObject7);
                 }
@@ -159,7 +159,7 @@ public final class f
                       if (i3 < i4)
                       {
                         ab localab = (ab)((List)localObject9).get(i3);
-                        fa.a.a(this.g, this.a, this, localab);
+                        fd.a.a(this.g, this.a, this, localab);
                         if (this.k == null) {
                           break label640;
                         }
@@ -190,15 +190,15 @@ public final class f
                     synchronized (this.g)
                     {
                       this.l = true;
-                      fa.a.b(this.g, (c)localObject1);
+                      fd.a.b(this.g, (c)localObject1);
                       localObject7 = localObject8;
                       localObject6 = localObject1;
                       if (((c)localObject1).d())
                       {
-                        localObject7 = fa.a.a(this.g, this.a, this);
+                        localObject7 = fd.a.a(this.g, this.a, this);
                         localObject6 = this.k;
                       }
-                      fc.a((Socket)localObject7);
+                      ff.a((Socket)localObject7);
                       this.c.a(this.b, (i)localObject6);
                       return localObject6;
                     }
@@ -281,20 +281,20 @@ public final class f
   
   private d h()
   {
-    return fa.a.a(this.g);
+    return fd.a.a(this.g);
   }
   
-  public fl a()
+  public fo a()
   {
     synchronized (this.g)
     {
-      fl localfl = this.o;
-      return localfl;
+      fo localfo = this.o;
+      return localfo;
     }
   }
   
   /* Error */
-  public fl a(okhttp3.v arg1, okhttp3.t.a parama, boolean paramBoolean)
+  public fo a(okhttp3.v arg1, okhttp3.t.a parama, boolean paramBoolean)
   {
     // Byte code:
     //   0: aload_2
@@ -323,7 +323,7 @@ public final class f
     //   51: aload_1
     //   52: aload_2
     //   53: aload_0
-    //   54: invokevirtual 253	okhttp3/internal/connection/c:a	(Lokhttp3/v;Lokhttp3/t$a;Lokhttp3/internal/connection/f;)Lcom/tencent/token/fl;
+    //   54: invokevirtual 253	okhttp3/internal/connection/c:a	(Lokhttp3/v;Lokhttp3/t$a;Lokhttp3/internal/connection/f;)Lcom/tencent/token/fo;
     //   57: astore_2
     //   58: aload_0
     //   59: getfield 50	okhttp3/internal/connection/f:g	Lokhttp3/j;
@@ -332,7 +332,7 @@ public final class f
     //   64: monitorenter
     //   65: aload_0
     //   66: aload_2
-    //   67: putfield 80	okhttp3/internal/connection/f:o	Lcom/tencent/token/fl;
+    //   67: putfield 80	okhttp3/internal/connection/f:o	Lcom/tencent/token/fo;
     //   70: aload_1
     //   71: monitorexit
     //   72: aload_2
@@ -428,7 +428,7 @@ public final class f
         if ((this.k != null) || (!this.l)) {
           break label214;
         }
-        fc.a(localSocket);
+        ff.a(localSocket);
         if (paramIOException != null) {
           this.c.b(this.b, paramIOException);
         }
@@ -463,29 +463,29 @@ public final class f
     throw new IllegalStateException();
   }
   
-  public void a(boolean paramBoolean, fl paramfl, long paramLong, IOException paramIOException)
+  public void a(boolean paramBoolean, fo paramfo, long paramLong, IOException paramIOException)
   {
     this.c.b(this.b, paramLong);
     j localj = this.g;
-    if (paramfl != null) {}
+    if (paramfo != null) {}
     try
     {
-      if (paramfl == this.o)
+      if (paramfo == this.o)
       {
         if (!paramBoolean)
         {
-          paramfl = this.k;
-          paramfl.b += 1;
+          paramfo = this.k;
+          paramfo.b += 1;
         }
-        paramfl = this.k;
+        paramfo = this.k;
         Socket localSocket = a(paramBoolean, false, true);
         if (this.k != null) {
-          paramfl = null;
+          paramfo = null;
         }
         paramBoolean = this.m;
-        fc.a(localSocket);
-        if (paramfl != null) {
-          this.c.b(this.b, paramfl);
+        ff.a(localSocket);
+        if (paramfo != null) {
+          this.c.b(this.b, paramfo);
         }
         if (paramIOException != null)
         {
@@ -501,7 +501,7 @@ public final class f
       paramIOException.append("expected ");
       paramIOException.append(this.o);
       paramIOException.append(" but was ");
-      paramIOException.append(paramfl);
+      paramIOException.append(paramfo);
       throw new IllegalStateException(paramIOException.toString());
     }
     finally {}
@@ -535,7 +535,7 @@ public final class f
       if (this.k != null) {
         localc = null;
       }
-      fc.a(localSocket);
+      ff.a(localSocket);
       if (localc != null)
       {
         this.c.b(this.b, localc);
@@ -554,7 +554,7 @@ public final class f
       if (this.k != null) {
         localc = null;
       }
-      fc.a(localSocket);
+      ff.a(localSocket);
       if (localc != null) {
         this.c.b(this.b, localc);
       }

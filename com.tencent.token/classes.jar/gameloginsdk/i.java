@@ -2,7 +2,7 @@ package gameloginsdk;
 
 import b.a.f;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.ee;
+import com.tencent.token.eg;
 
 class i
   extends p
@@ -26,13 +26,13 @@ class i
   {
     if (paramJceStruct == null)
     {
-      paramInt1 = ee.a;
+      paramInt1 = eg.a;
       a(paramInt3, (int)this.d);
       return;
     }
     if (paramInt3 == -50004)
     {
-      paramInt1 = ee.a;
+      paramInt1 = eg.a;
       paramJceStruct = new StringBuilder();
       paramJceStruct.append("回包超时  httpGetAppidTypeCallback   retCode : ");
       paramJceStruct.append(paramInt3);
@@ -41,7 +41,7 @@ class i
       return;
     }
     paramJceStruct = (f)paramJceStruct;
-    paramInt1 = ee.a;
+    paramInt1 = eg.a;
     paramInt1 = paramJceStruct.b;
     long l = paramJceStruct.a;
     Object localObject = paramJceStruct.c;
@@ -53,7 +53,7 @@ class i
       ((StringBuilder)localObject).toString();
       if (!this.a.g.a(paramJceStruct.a))
       {
-        paramInt1 = ee.a;
+        paramInt1 = eg.a;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("忽略这个包，因为没收到过包的reqid : ");
         ((StringBuilder)localObject).append(paramJceStruct.a);

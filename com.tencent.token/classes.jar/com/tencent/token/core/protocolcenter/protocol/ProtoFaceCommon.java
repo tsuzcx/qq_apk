@@ -6,10 +6,10 @@ import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.jni.FaceDetector;
-import com.tencent.token.ca;
-import com.tencent.token.cc;
+import com.tencent.token.cb;
+import com.tencent.token.cd;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.e;
 import com.tencent.token.global.g;
@@ -47,20 +47,20 @@ public class ProtoFaceCommon
   private int x;
   private JSONArray y;
   
-  public static void a(do paramdo, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, int paramInt3, int paramInt4, int paramInt5)
+  public static void a(dp paramdp, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, int paramInt3, int paramInt4, int paramInt5)
   {
-    paramdo.c.put("param.uinhash", Long.valueOf(paramLong1));
-    paramdo.j = paramInt1;
+    paramdp.c.put("param.uinhash", Long.valueOf(paramLong1));
+    paramdp.j = paramInt1;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("reqdata.seq=");
     localStringBuilder.append(paramInt1);
     g.c(localStringBuilder.toString());
-    paramdo.c.put("param.realuin", Long.valueOf(paramLong2));
-    paramdo.c.put("param.optype", Integer.valueOf(paramInt2));
-    paramdo.c.put("param.facedata", paramArrayOfByte);
-    paramdo.c.put("param.lockstatus", Integer.valueOf(paramInt3));
-    paramdo.c.put("param.scene.id", Integer.valueOf(paramInt4));
-    paramdo.c.put("param.light.mode", Integer.valueOf(paramInt5));
+    paramdp.c.put("param.realuin", Long.valueOf(paramLong2));
+    paramdp.c.put("param.optype", Integer.valueOf(paramInt2));
+    paramdp.c.put("param.facedata", paramArrayOfByte);
+    paramdp.c.put("param.lockstatus", Integer.valueOf(paramInt3));
+    paramdp.c.put("param.scene.id", Integer.valueOf(paramInt4));
+    paramdp.c.put("param.light.mode", Integer.valueOf(paramInt5));
   }
   
   public static void e()
@@ -84,7 +84,7 @@ public class ProtoFaceCommon
   
   protected String a()
   {
-    if (ca.a().b() == null)
+    if (cb.a().b() == null)
     {
       this.a.b(104);
       return null;
@@ -95,20 +95,20 @@ public class ProtoFaceCommon
     return localStringBuilder.toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.p = ((Long)paramdo.c.get("param.uinhash")).longValue();
-    this.q = paramdo.j;
+    this.p = ((Long)paramdp.c.get("param.uinhash")).longValue();
+    this.q = paramdp.j;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("reqdata.seq=");
     localStringBuilder.append(this.q);
     g.c(localStringBuilder.toString());
-    this.s = ((Long)paramdo.c.get("param.realuin")).longValue();
-    this.t = ((Integer)paramdo.c.get("param.optype")).intValue();
-    this.u = ((byte[])paramdo.c.get("param.facedata"));
-    this.v = ((Integer)paramdo.c.get("param.lockstatus")).intValue();
-    this.w = ((Integer)paramdo.c.get("param.scene.id")).intValue();
-    this.x = ((Integer)paramdo.c.get("param.light.mode")).intValue();
+    this.s = ((Long)paramdp.c.get("param.realuin")).longValue();
+    this.t = ((Integer)paramdp.c.get("param.optype")).intValue();
+    this.u = ((byte[])paramdp.c.get("param.facedata"));
+    this.v = ((Integer)paramdp.c.get("param.lockstatus")).intValue();
+    this.w = ((Integer)paramdp.c.get("param.scene.id")).intValue();
+    this.x = ((Integer)paramdp.c.get("param.light.mode")).intValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -156,16 +156,16 @@ public class ProtoFaceCommon
     ((StringBuilder)localObject).append("parseJSON error decodeData=");
     ((StringBuilder)localObject).append(paramJSONObject);
     g.c(((StringBuilder)localObject).toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
   
-  public do b(do paramdo)
+  public dp b(dp paramdp)
   {
-    int i3 = paramdo.j;
+    int i3 = paramdp.j;
     int i2 = 1;
-    paramdo.m = 1;
-    paramdo.n = new ContentValues(3);
-    paramdo.n.put("aq_base_sid", ca.a().b());
+    paramdp.m = 1;
+    paramdp.n = new ContentValues(3);
+    paramdp.n.put("aq_base_sid", cb.a().b());
     Object localObject1 = new JSONObject();
     for (;;)
     {
@@ -226,7 +226,7 @@ public class ProtoFaceCommon
         }
         else
         {
-          ((JSONObject)localObject1).put("op_time", (int)(cc.c().s() / 1000L));
+          ((JSONObject)localObject1).put("op_time", (int)(cd.c().s() / 1000L));
           ((JSONObject)localObject1).put("seq_id", i3);
           ((JSONObject)localObject1).put("highlighted", this.x);
           if (this.w == 10) {
@@ -242,10 +242,10 @@ public class ProtoFaceCommon
           g.c(((StringBuilder)localObject2).toString());
           ((JSONObject)localObject1).put("encode_time", i1);
           if (this.t == 5) {
-            ((JSONObject)localObject1).put("token_seq", cc.c().k());
+            ((JSONObject)localObject1).put("token_seq", cd.c().k());
           }
           localObject2 = b.a(l.c(((JSONObject)localObject1).toString().getBytes())).replace('+', '-').replace('=', '_');
-          paramdo.n.put("data", (String)localObject2);
+          paramdp.n.put("data", (String)localObject2);
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("resolution=");
           localStringBuilder.append(d);
@@ -268,13 +268,13 @@ public class ProtoFaceCommon
           ((StringBuilder)localObject1).append("doFaceRecognition base64 data=");
           ((StringBuilder)localObject1).append(((String)localObject2).length());
           g.a(((StringBuilder)localObject1).toString());
-          return paramdo;
+          return paramdp;
         }
       }
       catch (Exception localException)
       {
         localException.printStackTrace();
-        return paramdo;
+        return paramdp;
       }
       int i1 = 0;
     }

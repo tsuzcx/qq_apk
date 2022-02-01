@@ -1,7 +1,7 @@
 package okhttp3;
 
-import com.tencent.token.fc;
-import com.tencent.token.gf;
+import com.tencent.token.ff;
+import com.tencent.token.gi;
 import java.security.Principal;
 import java.security.PublicKey;
 import java.security.cert.Certificate;
@@ -22,12 +22,12 @@ public final class g
   public static final g a = new a().a();
   private final Set<b> b;
   @Nullable
-  private final gf c;
+  private final gi c;
   
-  g(Set<b> paramSet, @Nullable gf paramgf)
+  g(Set<b> paramSet, @Nullable gi paramgi)
   {
     this.b = paramSet;
-    this.c = paramgf;
+    this.c = paramgi;
   }
   
   public static String a(Certificate paramCertificate)
@@ -72,12 +72,12 @@ public final class g
     return localObject1;
   }
   
-  g a(@Nullable gf paramgf)
+  g a(@Nullable gi paramgi)
   {
-    if (fc.a(this.c, paramgf)) {
+    if (ff.a(this.c, paramgi)) {
       return this;
     }
-    return new g(this.b, paramgf);
+    return new g(this.b, paramgi);
   }
   
   public void a(String paramString, List<Certificate> paramList)
@@ -89,7 +89,7 @@ public final class g
     Object localObject1 = this.c;
     Object localObject3 = paramList;
     if (localObject1 != null) {
-      localObject3 = ((gf)localObject1).a(paramList, paramString);
+      localObject3 = ((gi)localObject1).a(paramList, paramString);
     }
     int m = ((List)localObject3).size();
     int k = 0;
@@ -174,9 +174,9 @@ public final class g
     }
     if ((paramObject instanceof g))
     {
-      gf localgf = this.c;
+      gi localgi = this.c;
       paramObject = (g)paramObject;
-      if ((fc.a(localgf, paramObject.c)) && (this.b.equals(paramObject.b))) {
+      if ((ff.a(localgi, paramObject.c)) && (this.b.equals(paramObject.b))) {
         return true;
       }
     }
@@ -185,10 +185,10 @@ public final class g
   
   public int hashCode()
   {
-    gf localgf = this.c;
+    gi localgi = this.c;
     int i;
-    if (localgf != null) {
-      i = localgf.hashCode();
+    if (localgi != null) {
+      i = localgi.hashCode();
     } else {
       i = 0;
     }

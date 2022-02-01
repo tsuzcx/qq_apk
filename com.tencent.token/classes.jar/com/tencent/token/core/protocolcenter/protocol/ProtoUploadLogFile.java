@@ -2,7 +2,7 @@ package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.SharedPreferences.Editor;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.c;
 import com.tencent.token.global.g;
 import com.tencent.token.utils.e;
@@ -15,7 +15,7 @@ public class ProtoUploadLogFile
 {
   private static String d;
   
-  public static void a(do paramdo, String paramString)
+  public static void a(dp paramdp, String paramString)
   {
     d = paramString;
   }
@@ -28,7 +28,7 @@ public class ProtoUploadLogFile
     return localStringBuilder.toString();
   }
   
-  protected void a(do paramdo) {}
+  protected void a(dp paramdp) {}
   
   protected void a(JSONObject paramJSONObject)
   {

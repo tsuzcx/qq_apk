@@ -3,11 +3,11 @@ package com.tencent.token.core.protocolcenter.protocol;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.ca;
-import com.tencent.token.cc;
+import com.tencent.token.cb;
+import com.tencent.token.cd;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.cr;
-import com.tencent.token.do;
+import com.tencent.token.cs;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -24,25 +24,25 @@ public class ProtoDoBindTokenByUniverify
   private int e;
   private String f;
   
-  public static void a(do paramdo, long paramLong, String paramString, int paramInt)
+  public static void a(dp paramdp, long paramLong, String paramString, int paramInt)
   {
-    paramdo.c.put("param.realuin", Long.valueOf(paramLong));
-    paramdo.j = paramInt;
-    paramdo.c.put("param.bind.areacode", paramString);
+    paramdp.c.put("param.realuin", Long.valueOf(paramLong));
+    paramdp.j = paramInt;
+    paramdp.c.put("param.bind.areacode", paramString);
   }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     if (str == null)
     {
       this.a.b(104);
       return null;
     }
-    Object localObject1 = cc.c();
-    ((cc)localObject1).m();
-    Object localObject2 = ((cc)localObject1).j().replaceAll("-", "");
-    localObject1 = l.a(new Object[] { "uin", Long.valueOf(this.d), "imei", cc.b(), "token_seq", localObject2, "token_code", ((cc)localObject1).o(), "spp_key", this.f, "seq_id", Integer.valueOf(this.e), "op_time", Long.valueOf(cc.c().s() / 1000L) });
+    Object localObject1 = cd.c();
+    ((cd)localObject1).m();
+    Object localObject2 = ((cd)localObject1).j().replaceAll("-", "");
+    localObject1 = l.a(new Object[] { "uin", Long.valueOf(this.d), "imei", cd.b(), "token_seq", localObject2, "token_code", ((cd)localObject1).o(), "spp_key", this.f, "seq_id", Integer.valueOf(this.e), "op_time", Long.valueOf(cd.c().s() / 1000L) });
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("?aq_base_sid=");
     ((StringBuilder)localObject2).append(str);
@@ -56,11 +56,11 @@ public class ProtoDoBindTokenByUniverify
     return ((StringBuilder)localObject1).toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.d = ((Long)paramdo.c.get("param.realuin")).longValue();
-    this.e = paramdo.j;
-    this.f = ((String)paramdo.c.get("param.bind.areacode"));
+    this.d = ((Long)paramdp.c.get("param.realuin")).longValue();
+    this.e = paramdp.j;
+    this.f = ((String)paramdp.c.get("param.bind.areacode"));
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -88,11 +88,11 @@ public class ProtoDoBindTokenByUniverify
         return;
       }
       long l = paramJSONObject.getLong("server_time");
-      cc.c().b(l);
+      cd.c().b(l);
       try
       {
         l = paramJSONObject.getLong("seed_expire_time");
-        cc.c().c(l);
+        cd.c().c(l);
       }
       catch (JSONException localJSONException)
       {
@@ -103,14 +103,14 @@ public class ProtoDoBindTokenByUniverify
         paramJSONObject = l.d(paramJSONObject.getString("seed"));
         if (paramJSONObject != null)
         {
-          cc.c().e();
-          cc.c().a(paramJSONObject);
-          cc.c().i();
+          cd.c().e();
+          cd.c().a(paramJSONObject);
+          cd.c().i();
         }
       }
-      paramJSONObject = cr.a().d(this.d);
+      paramJSONObject = cs.a().d(this.d);
       if (paramJSONObject != null) {
-        cr.a().b(paramJSONObject);
+        cs.a().b(paramJSONObject);
       }
       this.a.c();
       return;
@@ -119,7 +119,7 @@ public class ProtoDoBindTokenByUniverify
     localStringBuilder.append("parseJSON error decodeData=");
     localStringBuilder.append(paramJSONObject);
     g.c(localStringBuilder.toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
   
   protected void b()

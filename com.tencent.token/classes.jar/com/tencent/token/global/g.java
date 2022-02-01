@@ -1,13 +1,13 @@
 package com.tencent.token.global;
 
 import android.util.Log;
-import com.tencent.token.dx;
+import com.tencent.token.dz;
 
 public class g
 {
   private static void a(int paramInt, String paramString1, String paramString2)
   {
-    dx.a().a(paramInt, paramString1, paramString2, null);
+    dz.a().a(paramInt, paramString1, paramString2, null);
   }
   
   public static void a(String paramString)
@@ -53,7 +53,7 @@ public class g
   
   public static boolean a()
   {
-    return dx.a().f();
+    return dz.a().f();
   }
   
   public static void b(String paramString)
@@ -75,7 +75,7 @@ public class g
   
   public static boolean b()
   {
-    return dx.a().g();
+    return dz.a().g();
   }
   
   private static String c()

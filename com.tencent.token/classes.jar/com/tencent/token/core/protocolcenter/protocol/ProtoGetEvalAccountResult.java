@@ -3,12 +3,12 @@ package com.tencent.token.core.protocolcenter.protocol;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.ca;
 import com.tencent.token.cb;
 import com.tencent.token.cc;
+import com.tencent.token.cd;
 import com.tencent.token.core.bean.EvalAccountResult;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -25,18 +25,18 @@ public class ProtoGetEvalAccountResult
   private long e;
   private int f;
   
-  public static void a(do paramdo, long paramLong)
+  public static void a(dp paramdp, long paramLong)
   {
-    paramdo.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramdo = new StringBuilder();
-    paramdo.append("account page ProtoGetEvalAccountResult packet params: user =");
-    paramdo.append(paramLong);
-    g.c(paramdo.toString());
+    paramdp.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdp = new StringBuilder();
+    paramdp.append("account page ProtoGetEvalAccountResult packet params: user =");
+    paramdp.append(paramLong);
+    g.c(paramdp.toString());
   }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("account page generateUrl sessId =");
     ((StringBuilder)localObject1).append(str);
@@ -55,11 +55,11 @@ public class ProtoGetEvalAccountResult
     {
       Object localObject2 = new JSONObject();
       ((JSONObject)localObject2).put("uin", this.e);
-      int i = cb.a + 1;
-      cb.a = i;
+      int i = cc.a + 1;
+      cc.a = i;
       this.f = i;
       ((JSONObject)localObject2).put("seq_id", this.f);
-      ((JSONObject)localObject2).put("op_time", cc.c().s() / 1000L);
+      ((JSONObject)localObject2).put("op_time", cd.c().s() / 1000L);
       localObject2 = ((JSONObject)localObject2).toString();
       localStringBuilder2 = new StringBuilder();
       localStringBuilder2.append("plain:");
@@ -93,13 +93,13 @@ public class ProtoGetEvalAccountResult
     return localObject1;
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.e = ((Long)paramdo.c.get("param.uinhash")).longValue();
-    paramdo = new StringBuilder();
-    paramdo.append("account page ProtoGetEvalAccountResult unpacketParams: user =");
-    paramdo.append(this.e);
-    g.c(paramdo.toString());
+    this.e = ((Long)paramdp.c.get("param.uinhash")).longValue();
+    paramdp = new StringBuilder();
+    paramdp.append("account page ProtoGetEvalAccountResult unpacketParams: user =");
+    paramdp.append(this.e);
+    g.c(paramdp.toString());
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -122,7 +122,7 @@ public class ProtoGetEvalAccountResult
         paramJSONObject.append("parseJSON error seq is wrong seq=");
         paramJSONObject.append(i);
         paramJSONObject.append(",right = ");
-        paramJSONObject.append(cb.a().b());
+        paramJSONObject.append(cc.a().b());
         g.c(paramJSONObject.toString());
         return;
       }
@@ -134,7 +134,7 @@ public class ProtoGetEvalAccountResult
     localStringBuilder.append("parseJSON error decodeData=");
     localStringBuilder.append(paramJSONObject);
     g.c(localStringBuilder.toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
   
   protected void b()

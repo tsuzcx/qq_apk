@@ -10,10 +10,10 @@ import android.os.Message;
 import android.util.Pair;
 import android.util.SparseArray;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.ef;
-import com.tencent.token.eg;
 import com.tencent.token.eh;
 import com.tencent.token.ei;
+import com.tencent.token.ej;
+import com.tencent.token.ek;
 import com.tencent.token.g;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -48,9 +48,9 @@ public class z
   private int r = 0;
   private AtomicInteger s = new AtomicInteger(0);
   private d t;
-  private eg u;
-  private ef v = new A(this);
-  private ef w = new B(this);
+  private ei u;
+  private eh v = new A(this);
+  private eh w = new B(this);
   private tmsdk.common.d.a.c.n x = new tmsdk.common.d.a.c.n(new C(this));
   private Handler y = new D(this, Looper.getMainLooper());
   private J z = null;
@@ -135,11 +135,11 @@ public class z
     return new Pair(Integer.valueOf(1), localObject);
   }
   
-  private WeakReference a(o paramo, int paramInt1, int paramInt2, int paramInt3, int paramInt4, JceStruct paramJceStruct1, JceStruct paramJceStruct2, ef paramef, long paramLong)
+  private WeakReference a(o paramo, int paramInt1, int paramInt2, int paramInt3, int paramInt4, JceStruct paramJceStruct1, JceStruct paramJceStruct2, eh parameh, long paramLong)
   {
     if (tmsdk.common.c.a.f.a())
     {
-      paramef.a(0, 0, -7, 0, paramJceStruct2);
+      parameh.a(0, 0, -7, 0, paramJceStruct2);
       return null;
     }
     if (paramo != null) {
@@ -147,7 +147,7 @@ public class z
     }
     if (this.h == null)
     {
-      paramef.a(0, 0, -9, 0, paramJceStruct2);
+      parameh.a(0, 0, -9, 0, paramJceStruct2);
       return null;
     }
     if (!q()) {
@@ -165,19 +165,19 @@ public class z
     } else {
       bool = false;
     }
-    if (paramef != null) {
-      a(paramInt2, paramJceStruct1.b, paramJceStruct2, paramef);
+    if (parameh != null) {
+      a(paramInt2, paramJceStruct1.b, paramJceStruct2, parameh);
     }
-    paramo = new ei();
+    paramo = new ek();
     paramo.a(0);
     paramJceStruct2 = new j(paramJceStruct1, paramInt2, bool, paramo);
     paramJceStruct2.a = paramInt4;
     paramJceStruct2.f = paramLong;
     this.x.a(paramJceStruct2);
-    paramef = new StringBuilder();
-    paramef.append("ClientSashimi seqNO : ");
-    paramef.append(paramJceStruct1.b);
-    paramef.toString();
+    parameh = new StringBuilder();
+    parameh.append("ClientSashimi seqNO : ");
+    parameh.append(paramJceStruct1.b);
+    parameh.toString();
     if (paramLong > 0L)
     {
       paramJceStruct1 = paramJceStruct2.b;
@@ -238,7 +238,7 @@ public class z
         ((StringBuilder)???).toString();
       }
       paramArrayOfByte = new m(paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfByte, (a)localObject1);
-      paramInt1 = eh.a(((a)localObject1).c);
+      paramInt1 = ej.a(((a)localObject1).c);
       if (paramInt1 != 8)
       {
         if (paramInt1 != 16)
@@ -257,12 +257,12 @@ public class z
     }
   }
   
-  private void a(int paramInt1, int paramInt2, JceStruct arg3, ef paramef)
+  private void a(int paramInt1, int paramInt2, JceStruct arg3, eh parameh)
   {
-    paramef = new a(paramInt1, paramef, ???);
+    parameh = new a(paramInt1, parameh, ???);
     synchronized (this.j)
     {
-      this.f.append(paramInt2, paramef);
+      this.f.append(paramInt2, parameh);
       return;
     }
   }
@@ -333,7 +333,7 @@ public class z
         {
           Object localObject3 = (i)((Iterator)???).next();
           localObject2 = new n(paramInt3, paramInt4, paramArrayOfByte, paramInt1, paramInt2, (i)localObject3);
-          int i1 = eh.a(((i)localObject3).c);
+          int i1 = ej.a(((i)localObject3).c);
           if (i1 != 8)
           {
             if (i1 != 16) {
@@ -403,7 +403,7 @@ public class z
     this.d = null;
   }
   
-  eg a(int paramInt, eg parameg)
+  ei a(int paramInt, ei paramei)
   {
     for (;;)
     {
@@ -416,17 +416,17 @@ public class z
         if ((localArrayList != null) && (localArrayList.size() != 0))
         {
           i1 = 0;
-          if (parameg == null)
+          if (paramei == null)
           {
             this.e.remove(paramInt);
-            parameg = ((i)localArrayList.get(0)).a;
+            paramei = ((i)localArrayList.get(0)).a;
           }
           else
           {
             localObject1 = localObject2;
             if (i1 < localArrayList.size())
             {
-              if (((i)localArrayList.get(i1)).a != parameg) {
+              if (((i)localArrayList.get(i1)).a != paramei) {
                 break label152;
               }
               localObject1 = ((i)localArrayList.remove(i1)).a;
@@ -437,7 +437,7 @@ public class z
             this.e.remove(paramInt);
             break label159;
           }
-          return parameg;
+          return paramei;
         }
         else
         {
@@ -448,18 +448,18 @@ public class z
       i1 += 1;
       continue;
       label159:
-      parameg = (eg)localObject1;
+      paramei = (ei)localObject1;
     }
   }
   
-  WeakReference a(o paramo, int paramInt1, int paramInt2, JceStruct paramJceStruct1, JceStruct paramJceStruct2, ef paramef, long paramLong)
+  WeakReference a(o paramo, int paramInt1, int paramInt2, JceStruct paramJceStruct1, JceStruct paramJceStruct2, eh parameh, long paramLong)
   {
-    return a(paramo, paramInt1, paramInt2, 0, 0, paramJceStruct1, paramJceStruct2, paramef, paramLong);
+    return a(paramo, paramInt1, paramInt2, 0, 0, paramJceStruct1, paramJceStruct2, parameh, paramLong);
   }
   
-  WeakReference a(o paramo, int paramInt, JceStruct paramJceStruct1, JceStruct paramJceStruct2, ef paramef, long paramLong)
+  WeakReference a(o paramo, int paramInt, JceStruct paramJceStruct1, JceStruct paramJceStruct2, eh parameh, long paramLong)
   {
-    return a(paramo, paramInt, 0, 0, 0, paramJceStruct1, paramJceStruct2, paramef, paramLong);
+    return a(paramo, paramInt, 0, 0, 0, paramJceStruct1, paramJceStruct2, parameh, paramLong);
   }
   
   public void a(int paramInt1, int paramInt2, a.e.f paramf)
@@ -485,14 +485,14 @@ public class z
     a(paramf.d, paramf.e, paramf.c, paramInt2, (byte[])localObject);
   }
   
-  void a(int paramInt1, int paramInt2, JceStruct paramJceStruct, eg parameg)
+  void a(int paramInt1, int paramInt2, JceStruct paramJceStruct, ei paramei)
   {
-    i locali = new i(paramInt1, parameg, paramJceStruct);
+    i locali = new i(paramInt1, paramei, paramJceStruct);
     synchronized (this.i)
     {
-      parameg = (ArrayList)this.e.get(paramInt2);
-      paramJceStruct = parameg;
-      if (parameg == null)
+      paramei = (ArrayList)this.e.get(paramInt2);
+      paramJceStruct = paramei;
+      if (paramei == null)
       {
         paramJceStruct = new ArrayList();
         this.e.append(paramInt2, paramJceStruct);

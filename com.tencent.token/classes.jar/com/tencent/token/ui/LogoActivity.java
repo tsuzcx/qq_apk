@@ -11,6 +11,7 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -32,18 +33,17 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.cc;
 import com.tencent.token.cd;
-import com.tencent.token.cj;
+import com.tencent.token.ce;
+import com.tencent.token.ck;
 import com.tencent.token.core.bean.ConfigResult;
-import com.tencent.token.cr;
-import com.tencent.token.ed;
+import com.tencent.token.cs;
+import com.tencent.token.ef;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.g;
 import com.tencent.token.global.h;
 import com.tencent.token.upload.NetInfoService;
-import com.tencent.token.upload.e;
 import com.tencent.token.utils.encrypt.a;
 import com.tencent.token.utils.l;
 import com.tencent.token.utils.m;
@@ -88,7 +88,7 @@ public class LogoActivity
             return;
           }
           Object localObject = new a();
-          byte[] arrayOfByte = cj.a(paramString);
+          byte[] arrayOfByte = ck.a(paramString);
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("decryptAndCheck sig=");
           localStringBuilder.append(paramString);
@@ -116,7 +116,7 @@ public class LogoActivity
             {
               int i = Integer.valueOf(paramString[0]).intValue();
               long l = Long.valueOf(paramString[1]).longValue();
-              int j = (int)(cc.c().s() / 1000L);
+              int j = (int)(cd.c().s() / 1000L);
               paramString = new StringBuilder();
               paramString.append("timeStamp=");
               paramString.append(i);
@@ -125,7 +125,7 @@ public class LogoActivity
               g.a(paramString.toString());
               if (Math.abs(j - i) < this.schemaTimeout)
               {
-                this.success = cr.a().a(l);
+                this.success = cs.a().a(l);
                 if (this.success)
                 {
                   launchActivity(paramInt2, paramInt1);
@@ -159,9 +159,9 @@ public class LogoActivity
       finish();
       return;
     }
-    if (!cc.c().g())
+    if (!cd.c().g())
     {
-      if (cr.a().d() == 0)
+      if (cs.a().d() == 0)
       {
         localIntent = new Intent(this, WtLoginAccountInput.class);
         localIntent.putExtra("page_id", 3);
@@ -171,7 +171,7 @@ public class LogoActivity
       }
       if (!this.success)
       {
-        this.dialog = new AlertDialog.Builder(this).setTitle(2131493077).setMessage(2131493261).setPositiveButton(2131493009, new DialogInterface.OnClickListener()
+        this.dialog = new AlertDialog.Builder(this).setTitle(2131493078).setMessage(2131493262).setPositiveButton(2131493010, new DialogInterface.OnClickListener()
         {
           public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
@@ -181,7 +181,7 @@ public class LogoActivity
               LogoActivity.this.jumpActivity();
             }
           }
-        }).setNegativeButton(2131493542, new DialogInterface.OnClickListener()
+        }).setNegativeButton(2131493543, new DialogInterface.OnClickListener()
         {
           public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
@@ -217,7 +217,7 @@ public class LogoActivity
   private void gotonext()
   {
     Object localObject;
-    if ((cd.a().c()) && (cd.a().e() == 1))
+    if ((ce.a().c()) && (ce.a().e() == 1))
     {
       localObject = new Intent(this, StartPwdDigitVerifyActivity.class);
       Bundle localBundle = new Bundle();
@@ -229,7 +229,7 @@ public class LogoActivity
     if (m.a.mStartUpImg != null)
     {
       setContentView(2131296453);
-      localObject = (ImageView)findViewById(2131166026);
+      localObject = (ImageView)findViewById(2131166028);
       ((ImageView)localObject).setImageBitmap(m.a.mStartUpImg);
       ((ImageView)localObject).postDelayed(new Runnable()
       {
@@ -289,7 +289,7 @@ public class LogoActivity
   
   private void loadSchemaParm()
   {
-    Object localObject = RqdApplication.l();
+    Object localObject = RqdApplication.n();
     try
     {
       localObject = ((Context)localObject).getSharedPreferences("schemaparm_name", 0);
@@ -317,13 +317,13 @@ public class LogoActivity
     if (isFinishing()) {
       return;
     }
-    new AlertDialog.Builder(this).setMessage(2131493249).setNegativeButton(2131493285, new DialogInterface.OnClickListener()
+    new AlertDialog.Builder(this).setMessage(2131493250).setNegativeButton(2131493286, new DialogInterface.OnClickListener()
     {
       public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         LogoActivity.this.gotoWelcomeActivity();
       }
-    }).setPositiveButton(2131493238, new DialogInterface.OnClickListener()
+    }).setPositiveButton(2131493239, new DialogInterface.OnClickListener()
     {
       public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -335,13 +335,21 @@ public class LogoActivity
   
   private void showPermissionDialog()
   {
+    final SharedPreferences localSharedPreferences = RqdApplication.n().getSharedPreferences(ef.a, 0);
+    long l = localSharedPreferences.getLong(ef.b, 0L);
+    if (System.currentTimeMillis() - l <= 172800000L)
+    {
+      Log.i("SecureGuideUtil", "48小时内不再引导权限");
+      gotonext();
+      return;
+    }
     if (!need2RequestPermission())
     {
       Log.i("SecureGuideUtil", "权限已被授予，无需引导");
       gotonext();
       return;
     }
-    new AlertDialog.Builder(this).setTitle("重要提醒").setMessage("为了您安全正常使用QQ安全中心，需要您授权读取设备文件权限，及读取本机的识别码权限。该操作不会泄露你的隐私。拒绝后无法正常运行").setNegativeButton("去允许", new DialogInterface.OnClickListener()
+    new AlertDialog.Builder(this).setTitle("权限申请").setMessage("为了您安全正常使用QQ安全中心，需要您授权读取设备文件权限，及读取本机的识别码权限。该操作不会泄露你的隐私。").setNegativeButton("去授权", new DialogInterface.OnClickListener()
     {
       public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -357,24 +365,24 @@ public class LogoActivity
             LogoActivity.this.gotonext();
           }
         });
-      }
-    }).setPositiveButton("放弃使用", new DialogInterface.OnClickListener()
-    {
-      public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        LogoActivity.this.finish();
+        localSharedPreferences.edit().putLong(ef.b, System.currentTimeMillis()).apply();
       }
     }).setCancelable(false).create().show();
   }
   
   private void showPrivacyDialog()
   {
-    boolean bool = RqdApplication.b();
+    boolean bool1 = com.tencent.service.update.e.a().c();
+    boolean bool2 = RqdApplication.d();
     Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("是否新用户|");
-    ((StringBuilder)localObject1).append(bool);
+    ((StringBuilder)localObject1).append("hasRecordAgreeOrNot=");
+    ((StringBuilder)localObject1).append(bool1);
     Log.i("SecureGuideUtil", ((StringBuilder)localObject1).toString());
-    long l = ed.b("privacy_dialog_agree_time", 0L);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("是否新用户|");
+    ((StringBuilder)localObject1).append(bool2);
+    Log.i("SecureGuideUtil", ((StringBuilder)localObject1).toString());
+    long l = ef.b("privacy_dialog_agree_time", 0L);
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("隐私条款上次允许时间戳|");
     ((StringBuilder)localObject1).append(l);
@@ -385,14 +393,14 @@ public class LogoActivity
     } else {
       i = 0;
     }
-    if (!bool) {
+    if (!bool2) {
       if (l != -1L) {
         i = 1;
       } else {
         i = 0;
       }
     }
-    if (i != 0)
+    if ((i != 0) && (bool1))
     {
       if (Build.VERSION.SDK_INT >= 23)
       {
@@ -403,7 +411,7 @@ public class LogoActivity
       gotonext();
       return;
     }
-    Object localObject2 = ed.c("privacy_dialog_line2_wording", null);
+    Object localObject2 = ef.c("privacy_dialog_line2_wording", null);
     localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
       localObject1 = "为了向您提供QQ帐号安全体检、QQ帐号足迹、QQ密保管理、QQ密码管理、动态密码、QQ帐号保护等多项功能和服务，我们需要收集设备信息等个人信息；您可以在相关页面访问、更正、删除您的个人信息并管理您的授权。";
@@ -429,7 +437,7 @@ public class LogoActivity
     {
       public void onClick(@NonNull View paramAnonymousView)
       {
-        l.a(LogoActivity.this, "https://www.qq.com/privacy.htm");
+        l.a(LogoActivity.this, "http://tools.3g.qq.com/j/qqsafety");
       }
       
       public void updateDrawState(@NonNull TextPaint paramAnonymousTextPaint)
@@ -446,25 +454,16 @@ public class LogoActivity
     ((TextView)localObject1).setPadding(l.a(this, 5.0F), 0, l.a(this, 5.0F), 0);
     ((TextView)localObject1).setMovementMethod(LinkMovementMethod.getInstance());
     ((TextView)localObject1).setText((CharSequence)localObject3);
-    if (bool)
+    if ((!bool2) && (bool1))
     {
-      localObject1 = new AlertDialog.Builder(this).setTitle("欢迎使用QQ安全中心").setView((View)localObject1).setPositiveButton("暂不使用", null).setNegativeButton("同意", null).setCancelable(false).create();
+      localObject1 = new AlertDialog.Builder(this).setTitle("欢迎使用QQ安全中心").setView((View)localObject1).setPositiveButton("我知道了", null).setCancelable(false).create();
       ((Dialog)localObject1).show();
-      localObject2 = (AlertDialog)localObject1;
-      ((AlertDialog)localObject2).getButton(-1).setOnClickListener(new View.OnClickListener()
-      {
-        public void onClick(View paramAnonymousView)
-        {
-          Toast.makeText(RqdApplication.l(), "需要获得您的同意后才可继续使用QQ安全中心提供的服务", 0).show();
-        }
-      });
-      ((AlertDialog)localObject2).getButton(-2).setOnClickListener(new View.OnClickListener()
+      ((AlertDialog)localObject1).getButton(-1).setOnClickListener(new View.OnClickListener()
       {
         public void onClick(View paramAnonymousView)
         {
           this.a.dismiss();
-          RqdApplication.a();
-          ed.a("privacy_dialog_agree_time", System.currentTimeMillis());
+          ef.a("privacy_dialog_agree_time", System.currentTimeMillis());
           if (Build.VERSION.SDK_INT >= 23)
           {
             LogoActivity.this.showPermissionDialog();
@@ -476,14 +475,26 @@ public class LogoActivity
       });
       return;
     }
-    localObject1 = new AlertDialog.Builder(this).setTitle("欢迎使用QQ安全中心").setView((View)localObject1).setPositiveButton("我知道了", null).setCancelable(false).create();
+    localObject1 = new AlertDialog.Builder(this).setTitle("欢迎使用QQ安全中心").setView((View)localObject1).setPositiveButton("暂不使用", null).setNegativeButton("同意", null).setCancelable(false).create();
     ((Dialog)localObject1).show();
-    ((AlertDialog)localObject1).getButton(-1).setOnClickListener(new View.OnClickListener()
+    localObject2 = (AlertDialog)localObject1;
+    ((AlertDialog)localObject2).getButton(-1).setOnClickListener(new View.OnClickListener()
+    {
+      public void onClick(View paramAnonymousView)
+      {
+        com.tencent.service.update.e.a().a(false);
+        Toast.makeText(RqdApplication.n(), "需要获得您的同意后才可继续使用QQ安全中心提供的服务", 0).show();
+      }
+    });
+    ((AlertDialog)localObject2).getButton(-2).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
         this.a.dismiss();
-        ed.a("privacy_dialog_agree_time", System.currentTimeMillis());
+        RqdApplication.c();
+        ef.a("privacy_dialog_agree_time", System.currentTimeMillis());
+        com.tencent.service.update.e.a().a(true);
+        RqdApplication.a().b();
         if (Build.VERSION.SDK_INT >= 23)
         {
           LogoActivity.this.showPermissionDialog();
@@ -555,13 +566,13 @@ public class LogoActivity
         gotoWelcomeActivity();
         return;
       }
-      cd.a().a(this, null);
+      ce.a().a(this, null);
       showOldPwdDeleteAlert();
       return;
     }
     if (paramInt1 == 260)
     {
-      if (!cd.a().c())
+      if (!ce.a().c())
       {
         showOldPwdDeleteAlert();
         return;
@@ -597,7 +608,7 @@ public class LogoActivity
     paramBundle.append(getTaskId());
     g.b(paramBundle.toString());
     requestWindowFeature(1);
-    RqdApplication.e();
+    RqdApplication.g();
     c.a(true);
     Intent localIntent = getIntent();
     try
@@ -734,7 +745,7 @@ public class LogoActivity
       if (paramBundle == null)
       {
         setContentView(2131296370);
-        m.a(this, findViewById(2131166109), 2130968678);
+        m.a(this, findViewById(2131166111), 2130968678);
         this.mLogoBmp = m.a(getResources(), 2131099959);
         this.cur_time = System.currentTimeMillis();
         if (this.mLogoBmp == null)
@@ -743,7 +754,7 @@ public class LogoActivity
         }
         else
         {
-          this.mLogoView = ((ImageView)findViewById(2131165708));
+          this.mLogoView = ((ImageView)findViewById(2131165710));
           this.mLogoView.setImageBitmap(this.mLogoBmp);
         }
       }
@@ -768,7 +779,7 @@ public class LogoActivity
         }, 800L);
       }
       m.a();
-      ed.b();
+      ef.b();
       try
       {
         paramBundle = new Intent(this, NetInfoService.class);
@@ -851,20 +862,20 @@ public class LogoActivity
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    if (e.a)
+    if (com.tencent.token.upload.e.a)
     {
-      e.c = System.currentTimeMillis();
+      com.tencent.token.upload.e.c = System.currentTimeMillis();
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(e.a());
+      ((StringBuilder)localObject).append(com.tencent.token.upload.e.a());
       ((StringBuilder)localObject).append("");
       localObject = ((StringBuilder)localObject).toString();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("start:");
-      localStringBuilder.append(e.b);
+      localStringBuilder.append(com.tencent.token.upload.e.b);
       g.c(localStringBuilder.toString());
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("end:");
-      localStringBuilder.append(e.c);
+      localStringBuilder.append(com.tencent.token.upload.e.c);
       g.c(localStringBuilder.toString());
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("appTime:");

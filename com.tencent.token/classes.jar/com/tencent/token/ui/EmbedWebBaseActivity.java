@@ -27,7 +27,7 @@ import com.tencent.mm.sdk.openapi.WXAPIFactory;
 import com.tencent.mm.sdk.openapi.WXMediaMessage;
 import com.tencent.mm.sdk.openapi.WXMediaMessage.IMediaObject;
 import com.tencent.mm.sdk.openapi.WXWebpageObject;
-import com.tencent.token.bu;
+import com.tencent.token.bv;
 import com.tencent.token.global.g;
 import com.tencent.token.ui.base.TitleOptionMenu;
 import com.tencent.token.ui.base.TitleOptionMenu.a;
@@ -139,12 +139,12 @@ public abstract class EmbedWebBaseActivity
             {
               if (EmbedWebBaseActivity.this.mWeChatApi.getWXAppSupportAPI() >= 553779201)
               {
-                bu.a().a(System.currentTimeMillis(), 74);
+                bv.a().a(System.currentTimeMillis(), 74);
                 localObject = new WXWebpageObject();
                 ((WXWebpageObject)localObject).webpageUrl = EmbedWebBaseActivity.this.shareurl;
                 localObject = new WXMediaMessage((WXMediaMessage.IMediaObject)localObject);
                 ((WXMediaMessage)localObject).title = EmbedWebBaseActivity.this.sharetitle;
-                ((WXMediaMessage)localObject).description = EmbedWebBaseActivity.this.getResources().getString(2131493591);
+                ((WXMediaMessage)localObject).description = EmbedWebBaseActivity.this.getResources().getString(2131493592);
                 ((WXMediaMessage)localObject).setThumbImage(m.a(EmbedWebBaseActivity.this.getResources(), 2131100198));
                 localReq = new SendMessageToWX.Req();
                 localReq.transaction = String.valueOf(System.currentTimeMillis());
@@ -153,7 +153,7 @@ public abstract class EmbedWebBaseActivity
                 EmbedWebBaseActivity.this.mWeChatApi.sendReq(localReq);
                 return;
               }
-              EmbedWebBaseActivity.this.showToast(EmbedWebBaseActivity.this.getString(2131493587));
+              EmbedWebBaseActivity.this.showToast(EmbedWebBaseActivity.this.getString(2131493588));
               return;
             }
             EmbedWebBaseActivity.this.showWechatBindDialog();
@@ -163,12 +163,12 @@ public abstract class EmbedWebBaseActivity
           {
             if (EmbedWebBaseActivity.this.mWeChatApi.getWXAppSupportAPI() >= 553779201)
             {
-              bu.a().a(System.currentTimeMillis(), 74);
+              bv.a().a(System.currentTimeMillis(), 74);
               localObject = new WXWebpageObject();
               ((WXWebpageObject)localObject).webpageUrl = EmbedWebBaseActivity.this.shareurl;
               localObject = new WXMediaMessage((WXMediaMessage.IMediaObject)localObject);
               ((WXMediaMessage)localObject).title = EmbedWebBaseActivity.this.sharetitle;
-              ((WXMediaMessage)localObject).description = EmbedWebBaseActivity.this.getResources().getString(2131493591);
+              ((WXMediaMessage)localObject).description = EmbedWebBaseActivity.this.getResources().getString(2131493592);
               ((WXMediaMessage)localObject).setThumbImage(m.a(EmbedWebBaseActivity.this.getResources(), 2131100198));
               localReq = new SendMessageToWX.Req();
               localReq.transaction = String.valueOf(System.currentTimeMillis());
@@ -177,7 +177,7 @@ public abstract class EmbedWebBaseActivity
               EmbedWebBaseActivity.this.mWeChatApi.sendReq(localReq);
               return;
             }
-            EmbedWebBaseActivity.this.showToast(EmbedWebBaseActivity.this.getString(2131493587));
+            EmbedWebBaseActivity.this.showToast(EmbedWebBaseActivity.this.getString(2131493588));
             return;
           }
           EmbedWebBaseActivity.this.showWechatBindDialog();
@@ -230,19 +230,19 @@ public abstract class EmbedWebBaseActivity
   
   private void initUI()
   {
-    this.backtext = ((TextView)findViewById(2131165287));
+    this.backtext = ((TextView)findViewById(2131165289));
     TextView localTextView = this.backtext;
     if (localTextView != null) {
       localTextView.setVisibility(0);
     }
-    ((RelativeLayout)findViewById(2131165286)).setOnClickListener(this.mBrowserListener);
-    this.closetext = ((TextView)findViewById(2131165381));
+    ((RelativeLayout)findViewById(2131165288)).setOnClickListener(this.mBrowserListener);
+    this.closetext = ((TextView)findViewById(2131165383));
     this.closetext.setOnClickListener(this.mBrowserCloseListener);
   }
   
   private void initWebView()
   {
-    this.mWebView = ((WebView)findViewById(2131166268));
+    this.mWebView = ((WebView)findViewById(2131166270));
     this.mWebView.setWebViewClient(this.mWebviewClient);
     this.mWebView.setWebChromeClient(this.mChromeClient);
     this.mWebView.setOnTouchListener(this.mTouchListener);
@@ -278,7 +278,7 @@ public abstract class EmbedWebBaseActivity
   
   private void showWechatBindDialog()
   {
-    showUserDialog(2131492985, getString(2131493578), 2131493436, 2131493407, new DialogInterface.OnClickListener()
+    showUserDialog(2131492986, getString(2131493579), 2131493437, 2131493408, new DialogInterface.OnClickListener()
     {
       public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {

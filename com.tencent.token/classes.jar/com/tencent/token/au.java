@@ -4,19 +4,20 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.halley.common.a;
-import com.tencent.halley.common.b;
 
 final class au
   extends BroadcastReceiver
 {
-  au(as paramas) {}
+  au(at paramat) {}
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramContext = new StringBuilder("onAccessSchedulerTriggered by timer, curTime:");
-    paramContext.append(System.currentTimeMillis());
-    b.a("AccessSchedulerTrigger", paramContext.toString());
-    a.a().a(new as.a(this.a, (byte)0));
+    try
+    {
+      a.a().a(new at.b(this.a, paramIntent));
+      return;
+    }
+    catch (Throwable paramContext) {}
   }
 }
 

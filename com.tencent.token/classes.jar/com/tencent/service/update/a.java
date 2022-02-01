@@ -176,6 +176,12 @@ public class a
     }
     return true;
   }
+  
+  public boolean c(String paramString)
+  {
+    System.nanoTime();
+    return this.a.contains(paramString);
+  }
 }
 
 

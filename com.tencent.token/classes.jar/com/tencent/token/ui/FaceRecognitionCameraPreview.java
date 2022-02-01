@@ -17,7 +17,7 @@ import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.bu;
+import com.tencent.token.bv;
 import com.tencent.token.global.g;
 import com.tencent.token.ui.base.FaceView;
 import com.tencent.token.utils.m;
@@ -179,9 +179,9 @@ public class FaceRecognitionCameraPreview
       g.a(paramSurfaceHolder.toString());
       if (this.b != 5)
       {
-        this.i = ((ImageView)((Activity)this.e).findViewById(2131165293));
-        this.j = ((Activity)this.e).findViewById(2131165295);
-        this.k = ((Activity)this.e).findViewById(2131165320);
+        this.i = ((ImageView)((Activity)this.e).findViewById(2131165295));
+        this.j = ((Activity)this.e).findViewById(2131165297);
+        this.k = ((Activity)this.e).findViewById(2131165322);
         if (!m.v())
         {
           this.k.setVisibility(0);
@@ -212,7 +212,7 @@ public class FaceRecognitionCameraPreview
                   else
                   {
                     FaceRecognitionCameraPreview.d(FaceRecognitionCameraPreview.this).setImageDrawable(FaceRecognitionCameraPreview.c(FaceRecognitionCameraPreview.this).getResources().getDrawable(2131099845));
-                    bu.a().a(System.currentTimeMillis(), 201);
+                    bv.a().a(System.currentTimeMillis(), 201);
                   }
                   paramAnonymousView = FaceRecognitionCameraPreview.b(FaceRecognitionCameraPreview.this);
                   if (!bool)

@@ -31,20 +31,20 @@ class a
   
   protected void a(View paramView, SafeMsgItem paramSafeMsgItem, int paramInt, boolean paramBoolean)
   {
-    RelativeLayout localRelativeLayout3 = (RelativeLayout)paramView.findViewById(2131165693);
-    RelativeLayout localRelativeLayout1 = (RelativeLayout)paramView.findViewById(2131165691);
-    RelativeLayout localRelativeLayout2 = (RelativeLayout)paramView.findViewById(2131165692);
-    TextView localTextView3 = (TextView)paramView.findViewById(2131166068);
-    TextView localTextView4 = (TextView)paramView.findViewById(2131166067);
-    TextView localTextView5 = (TextView)paramView.findViewById(2131165752);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131165687);
-    TextView localTextView1 = (TextView)paramView.findViewById(2131165688);
-    ImageView localImageView1 = (ImageView)paramView.findViewById(2131165689);
-    ImageView localImageView2 = (ImageView)paramView.findViewById(2131165690);
-    ImageView localImageView3 = (ImageView)paramView.findViewById(2131165697);
-    ImageView localImageView4 = (ImageView)paramView.findViewById(2131165698);
-    ImageView localImageView5 = (ImageView)paramView.findViewById(2131165699);
-    paramView = (ImageView)paramView.findViewById(2131165700);
+    RelativeLayout localRelativeLayout3 = (RelativeLayout)paramView.findViewById(2131165695);
+    RelativeLayout localRelativeLayout1 = (RelativeLayout)paramView.findViewById(2131165693);
+    RelativeLayout localRelativeLayout2 = (RelativeLayout)paramView.findViewById(2131165694);
+    TextView localTextView3 = (TextView)paramView.findViewById(2131166070);
+    TextView localTextView4 = (TextView)paramView.findViewById(2131166069);
+    TextView localTextView5 = (TextView)paramView.findViewById(2131165754);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131165689);
+    TextView localTextView1 = (TextView)paramView.findViewById(2131165690);
+    ImageView localImageView1 = (ImageView)paramView.findViewById(2131165691);
+    ImageView localImageView2 = (ImageView)paramView.findViewById(2131165692);
+    ImageView localImageView3 = (ImageView)paramView.findViewById(2131165699);
+    ImageView localImageView4 = (ImageView)paramView.findViewById(2131165700);
+    ImageView localImageView5 = (ImageView)paramView.findViewById(2131165701);
+    paramView = (ImageView)paramView.findViewById(2131165702);
     if (paramInt == 0)
     {
       localRelativeLayout3.setVisibility(0);

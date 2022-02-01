@@ -11,21 +11,21 @@ import com.tencent.halley.downloader.DownloaderTaskPriority;
 import com.tencent.halley.downloader.DownloaderTaskStatus;
 import com.tencent.halley.downloader.c.d.a.a;
 import com.tencent.halley.downloader.exceptions.DownloaderAddTaskException;
-import com.tencent.token.aa;
 import com.tencent.token.ab;
 import com.tencent.token.ac;
 import com.tencent.token.ad;
 import com.tencent.token.ae;
-import com.tencent.token.ae.a;
-import com.tencent.token.ah;
+import com.tencent.token.af;
+import com.tencent.token.af.a;
 import com.tencent.token.ai;
 import com.tencent.token.aj;
-import com.tencent.token.k;
-import com.tencent.token.p;
-import com.tencent.token.t;
-import com.tencent.token.x;
+import com.tencent.token.ak;
+import com.tencent.token.l;
+import com.tencent.token.q;
+import com.tencent.token.u;
 import com.tencent.token.y;
-import com.tencent.token.y.a;
+import com.tencent.token.z;
+import com.tencent.token.z.a;
 import java.io.File;
 import java.io.FileDescriptor;
 import java.io.IOException;
@@ -37,7 +37,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
 public final class e
-  implements com.tencent.halley.downloader.b, aa, t, Comparable, Runnable
+  implements com.tencent.halley.downloader.b, ab, u, Comparable, Runnable
 {
   public int A;
   public long B;
@@ -54,7 +54,7 @@ public final class e
   private boolean M;
   private long N;
   private d O;
-  private y P;
+  private z P;
   private File Q;
   private RandomAccessFile R;
   private File S;
@@ -73,8 +73,8 @@ public final class e
   private volatile boolean ae;
   private boolean af;
   private b ag;
-  private ae ah;
-  private ah ai;
+  private af ah;
+  private ai ai;
   private long aj;
   private String ak;
   private boolean al;
@@ -209,7 +209,7 @@ public final class e
   {
     try
     {
-      localFile = new File(h(), k.b(this.L));
+      localFile = new File(h(), l.b(this.L));
       if (!localFile.exists()) {
         break label82;
       }
@@ -239,7 +239,7 @@ public final class e
   {
     try
     {
-      File localFile = new File(this.h, k.a(this.L));
+      File localFile = new File(this.h, l.a(this.L));
       if (localFile.exists())
       {
         boolean bool = localFile.delete();
@@ -331,25 +331,25 @@ public final class e
       if ((((d)localObject).d() > 0L) && (!TextUtils.isEmpty(this.L)))
       {
         if (this.I) {
-          localObject = new File(this.h, k.b(this.L));
+          localObject = new File(this.h, l.b(this.L));
         } else {
           localObject = new File(this.h, this.L);
         }
         this.Q = ((File)localObject);
-        this.S = new File(this.h, k.a(this.L));
+        this.S = new File(this.h, l.a(this.L));
         i1 = 1;
         break label248;
       }
     }
-    else if (k.c(this.i))
+    else if (l.c(this.i))
     {
       if (this.I) {
-        localObject = new File(this.h, k.b(this.i));
+        localObject = new File(this.h, l.b(this.i));
       } else {
         localObject = new File(this.h, this.i);
       }
       this.Q = ((File)localObject);
-      this.S = new File(this.h, k.a(this.i));
+      this.S = new File(this.h, l.a(this.i));
       i1 = 0;
       i2 = 1;
       break label250;
@@ -473,7 +473,7 @@ public final class e
         if ((this.V) || (x()) || (w()) || (v()) || (y())) {
           break label464;
         }
-        if (SystemClock.elapsedRealtime() - l2 > k.f)
+        if (SystemClock.elapsedRealtime() - l2 > l.f)
         {
           bool = true;
           this.ac.getAndIncrement();
@@ -483,39 +483,39 @@ public final class e
         if (localObject2 == null) {
           break label480;
         }
-        ab localab = this.O.a(((y.a)localObject2).a);
+        ac localac = this.O.a(((z.a)localObject2).a);
         StringBuilder localStringBuilder;
-        if (localab == null) {
+        if (localac == null) {
           localStringBuilder = new StringBuilder("inner error: getRange null for sectionId:");
         }
         for (;;)
         {
-          localStringBuilder.append(((y.a)localObject2).a);
+          localStringBuilder.append(((z.a)localObject2).a);
           a(false, -42, localStringBuilder.toString(), DownloaderTaskStatus.FAILED);
           return false;
-          if (localab.e == ((y.a)localObject2).b) {
+          if (localac.e == ((z.a)localObject2).b) {
             break;
           }
           localStringBuilder = new StringBuilder("inner error: check offset fail for section:");
-          localStringBuilder.append(localab);
+          localStringBuilder.append(localac);
           localStringBuilder.append(",buffer offset:");
-          localStringBuilder.append(((y.a)localObject2).b);
+          localStringBuilder.append(((z.a)localObject2).b);
           localStringBuilder.append(",sectionId:");
         }
         try
         {
-          if (this.R.getFilePointer() != ((y.a)localObject2).b) {
-            this.R.seek(((y.a)localObject2).b);
+          if (this.R.getFilePointer() != ((z.a)localObject2).b) {
+            this.R.seek(((z.a)localObject2).b);
           }
-          this.R.write(((y.a)localObject2).c, 0, (int)((y.a)localObject2).d);
-          localab.e = (((y.a)localObject2).b + ((y.a)localObject2).d);
-          i1 = (int)(i2 + ((y.a)localObject2).d);
-          ((y.a)localObject2).c = null;
+          this.R.write(((z.a)localObject2).c, 0, (int)((z.a)localObject2).d);
+          localac.e = (((z.a)localObject2).b + ((z.a)localObject2).d);
+          i1 = (int)(i2 + ((z.a)localObject2).d);
+          ((z.a)localObject2).c = null;
           i2 = i1;
           if (this.ae)
           {
             i2 = i1;
-            if (x.a().h())
+            if (y.a().h())
             {
               T();
               i2 = i1;
@@ -545,7 +545,7 @@ public final class e
       break label480;
       localObject1 = this.P;
       if (localObject1 != null) {
-        ((y)localObject1).c();
+        ((z)localObject1).c();
       }
       bool = false;
       if (!bool) {
@@ -565,7 +565,7 @@ public final class e
           break label761;
         }
         l2 = this.O.d();
-        if (((l1 - this.aj > k.h()) || (l2 == this.g)) && ((i2 <= 0) || (this.C))) {}
+        if (((l1 - this.aj > l.h()) || (l2 == this.g)) && ((i2 <= 0) || (this.C))) {}
       }
     }
     try
@@ -598,7 +598,7 @@ public final class e
       return bool;
       localObject1 = this.P;
       if (localObject1 != null) {
-        ((y)localObject1).c();
+        ((z)localObject1).c();
       }
       X();
       return false;
@@ -620,7 +620,7 @@ public final class e
           if (!this.I) {
             break label129;
           }
-          File localFile1 = new File(this.h, k.b(this.L));
+          File localFile1 = new File(this.h, l.b(this.L));
           File localFile2 = new File(this.h, this.L);
           if (localFile2.exists()) {
             localFile2.delete();
@@ -750,10 +750,10 @@ public final class e
         long l1 = System.currentTimeMillis();
         new File(this.h).mkdirs();
         Object localObject1;
-        if (!k.c(this.i))
+        if (!l.c(this.i))
         {
           this.L = com.tencent.halley.common.e.a(this.G.a.a, this.l, this.m, "");
-          localObject1 = new File(this.h, k.b(this.L));
+          localObject1 = new File(this.h, l.b(this.L));
           Object localObject3 = new File(this.h, this.L);
           if ((((File)localObject1).exists()) || (((File)localObject3).exists()))
           {
@@ -774,7 +774,7 @@ public final class e
             ((StringBuilder)localObject4).append(")");
             ((StringBuilder)localObject4).append((String)localObject3);
             localObject4 = ((StringBuilder)localObject4).toString();
-            File localFile1 = new File(this.h, k.b((String)localObject4));
+            File localFile1 = new File(this.h, l.b((String)localObject4));
             File localFile2 = new File(this.h, (String)localObject4);
             if ((localFile1.exists()) || (localFile2.exists())) {
               break label1431;
@@ -790,7 +790,7 @@ public final class e
         l1 = System.currentTimeMillis();
         if (this.I)
         {
-          localObject1 = new File(this.h, k.b(this.L));
+          localObject1 = new File(this.h, l.b(this.L));
           this.Q = ((File)localObject1);
         }
         else
@@ -798,7 +798,7 @@ public final class e
           localObject1 = new File(this.h, this.L);
           continue;
         }
-        this.S = new File(this.h, k.a(this.L));
+        this.S = new File(this.h, l.a(this.L));
         try
         {
           this.T = new a(this.S, "rw");
@@ -1015,9 +1015,9 @@ public final class e
   
   public final long F()
   {
-    y localy = this.P;
-    if (localy != null) {
-      return localy.a();
+    z localz = this.P;
+    if (localz != null) {
+      return localz.a();
     }
     return 0L;
   }
@@ -1038,9 +1038,9 @@ public final class e
   
   public final String I()
   {
-    ae localae = this.ah;
-    if (localae != null) {
-      return localae.a();
+    af localaf = this.ah;
+    if (localaf != null) {
+      return localaf.a();
     }
     return "";
   }
@@ -1137,7 +1137,7 @@ public final class e
     if ((t()) && (this.ah != null))
     {
       long l1 = System.currentTimeMillis();
-      this.ah.a(new ae.a(l1 - this.t, paramInt, paramString));
+      this.ah.a(new af.a(l1 - this.t, paramInt, paramString));
     }
   }
   
@@ -1376,9 +1376,9 @@ public final class e
       com.tencent.halley.common.b.a("TaskImpl", ((StringBuilder)localObject).toString());
       this.X.a(DownloaderTaskStatus.PENDING);
       if (z()) {}
-      for (localObject = aj.a().b(this);; localObject = aj.a().a(this))
+      for (localObject = ak.a().b(this);; localObject = ak.a().a(this))
       {
-        this.ai = ((ah)localObject);
+        this.ai = ((ai)localObject);
         break;
       }
       localObject = new StringBuilder("task ");
@@ -1402,7 +1402,7 @@ public final class e
   
   public final boolean r()
   {
-    return k.c(this.i);
+    return l.c(this.i);
   }
   
   public final void run()
@@ -1437,13 +1437,13 @@ public final class e
         return;
       }
       this.X.b();
-      this.P = new y();
+      this.P = new z();
       this.Z = new a(this);
       this.Z.a();
       boolean bool = S();
       this.X.a(DownloaderTaskStatus.STARTED);
-      this.ah = new ae();
-      a(p.e(), p.a);
+      this.ah = new af();
+      a(q.e(), q.a);
       if (!bool)
       {
         a(false, this.r, this.s, DownloaderTaskStatus.FAILED);
@@ -1463,7 +1463,7 @@ public final class e
       this.X.c();
       ??? = this.P;
       if (??? != null) {
-        ((y)???).c();
+        ((z)???).c();
       }
       X();
       if (this.Y)
@@ -1568,10 +1568,10 @@ public final class e
   }
   
   final class b
-    implements ac
+    implements ad
   {
-    ad a;
-    ad b;
+    ae a;
+    ae b;
     
     private b() {}
     
@@ -1606,18 +1606,18 @@ public final class e
       return bool1;
     }
     
-    public final com.tencent.halley.common.e a(ad paramad, com.tencent.halley.downloader.c.d.a parama, String paramString1, long paramLong, boolean paramBoolean, String paramString2, String paramString3, String paramString4, String paramString5)
+    public final com.tencent.halley.common.e a(ae paramae, com.tencent.halley.downloader.c.d.a parama, String paramString1, long paramLong, boolean paramBoolean, String paramString2, String paramString3, String paramString4, String paramString5)
     {
       int j = 1;
       int i;
-      if (paramad != null)
+      if (paramae != null)
       {
         try
         {
-          if (paramad == this.a) {
+          if (paramae == this.a) {
             break label838;
           }
-          if (paramad != this.b) {
+          if (paramae != this.b) {
             break label848;
           }
         }
@@ -1628,13 +1628,13 @@ public final class e
           label99:
           break label834;
         }
-        if ((i != 0) && (!paramad.a()) && (paramLong > 0L))
+        if ((i != 0) && (!paramae.a()) && (paramLong > 0L))
         {
           locale = new com.tencent.halley.common.e(0, "");
           if (e.b(e.this) != null)
           {
             locald = e.b(e.this);
-            if (paramad.a.i != locald) {
+            if (paramae.a.i != locald) {
               break label854;
             }
             i = 1;
@@ -1643,11 +1643,11 @@ public final class e
               if ((e.this.f != -1L) && (paramLong != e.this.f))
               {
                 locale.a = -10;
-                paramad = new StringBuilder("knownSize:");
-                paramad.append(e.this.f);
-                paramad.append(",rspLength:");
-                paramad.append(paramLong);
-                locale.b = paramad.toString();
+                paramae = new StringBuilder("knownSize:");
+                paramae.append(e.this.f);
+                paramae.append(",rspLength:");
+                paramae.append(paramLong);
+                locale.b = paramae.toString();
               }
               else
               {
@@ -1655,13 +1655,13 @@ public final class e
                 e.this.k = paramBoolean;
                 e.this.l = paramString4;
                 e.this.m = paramString5;
-                if (paramad.b != null) {
-                  e.this.A = paramad.b.c;
+                if (paramae.b != null) {
+                  e.this.A = paramae.b.c;
                 }
                 if (!e.this.k)
                 {
                   e.a(e.this, new d(""));
-                  paramad.a = e.b(e.this).a();
+                  paramae.a = e.b(e.this).a();
                 }
                 else if (e.b(e.this).a > 0L)
                 {
@@ -1693,8 +1693,8 @@ public final class e
         e.b(e.this).a = paramLong;
         e.b(e.this).a(paramString2);
         e.b(e.this).b(paramString3);
-        if ((paramad.a.c == -1) && (paramad.a.b == -1)) {
-          e.b(e.this).a(paramad.a);
+        if ((paramae.a.c == -1) && (paramae.a.b == -1)) {
+          e.b(e.this).a(paramae.a);
         }
         if (locale.a == 0)
         {
@@ -1706,20 +1706,20 @@ public final class e
           if (paramLong != e.this.g)
           {
             locale.a = -43;
-            paramad = new StringBuilder("detectLength:");
-            paramad.append(e.this.g);
-            paramad.append(",rspLength:");
-            paramad.append(paramLong);
-            paramad = paramad.toString();
+            paramae = new StringBuilder("detectLength:");
+            paramae.append(e.this.g);
+            paramae.append(",rspLength:");
+            paramae.append(paramLong);
+            paramae = paramae.toString();
           }
           for (;;)
           {
-            locale.b = paramad;
+            locale.b = paramae;
             break;
             if (!e.this.k)
             {
               locale.a = 1;
-              paramad = "not support range";
+              paramae = "not support range";
             }
             else
             {
@@ -1727,11 +1727,11 @@ public final class e
                 break;
               }
               locale.a = -68;
-              paramad = new StringBuilder("detected VerifyProperty:");
-              paramad.append(e.b(e.this).c());
-              paramad.append(",rsp VerifyProperty:");
-              paramad.append(paramString3);
-              paramad = paramad.toString();
+              paramae = new StringBuilder("detected VerifyProperty:");
+              paramae.append(e.b(e.this).c());
+              paramae.append(",rsp VerifyProperty:");
+              paramae.append(paramString3);
+              paramae = paramae.toString();
             }
           }
         }
@@ -1740,11 +1740,11 @@ public final class e
           if ((parama.b != a.a.b) && (parama.b != a.a.a))
           {
             if (parama.b == a.a.g) {
-              e.a(e.this).b(p.a, paramString1);
+              e.a(e.this).b(q.a, paramString1);
             }
           }
           else {
-            e.a(e.this).a(p.a, paramString1);
+            e.a(e.this).a(q.a, paramString1);
           }
         }
         return locale;
@@ -1753,13 +1753,13 @@ public final class e
           locale.a = 2;
           locale.b = "not the same divider";
           parama = new StringBuilder("onValidResponse... fail...not self section:");
-          parama.append(paramad.a);
+          parama.append(paramae.a);
           com.tencent.halley.common.b.c("TaskImpl", parama.toString());
           return locale;
-          paramad = new com.tencent.halley.common.e(4, "");
-          return paramad;
+          paramae = new com.tencent.halley.common.e(4, "");
+          return paramae;
           label834:
-          throw paramad;
+          throw paramae;
           label838:
           i = 1;
           break;
@@ -1778,10 +1778,10 @@ public final class e
       }
     }
     
-    public final ab a(ad paramad)
+    public final ac a(ae paramae)
     {
       int i;
-      if ((paramad != null) && ((paramad == this.a) || (paramad == this.b))) {
+      if ((paramae != null) && ((paramae == this.a) || (paramae == this.b))) {
         i = 1;
       } else {
         i = 0;
@@ -1801,7 +1801,7 @@ public final class e
     }
     
     /* Error */
-    public final boolean a(ad arg1, long paramLong, byte[] paramArrayOfByte, int paramInt, boolean paramBoolean)
+    public final boolean a(ae arg1, long paramLong, byte[] paramArrayOfByte, int paramInt, boolean paramBoolean)
     {
       // Byte code:
       //   0: iconst_0
@@ -1810,11 +1810,11 @@ public final class e
       //   4: ifnull +25 -> 29
       //   7: aload_1
       //   8: aload_0
-      //   9: getfield 85	com/tencent/halley/downloader/c/e$b:a	Lcom/tencent/token/ad;
+      //   9: getfield 85	com/tencent/halley/downloader/c/e$b:a	Lcom/tencent/token/ae;
       //   12: if_acmpeq +11 -> 23
       //   15: aload_1
       //   16: aload_0
-      //   17: getfield 87	com/tencent/halley/downloader/c/e$b:b	Lcom/tencent/token/ad;
+      //   17: getfield 87	com/tencent/halley/downloader/c/e$b:b	Lcom/tencent/token/ae;
       //   20: if_acmpne +9 -> 29
       //   23: iconst_1
       //   24: istore 7
@@ -1853,8 +1853,8 @@ public final class e
       //   93: invokestatic 36	com/tencent/halley/downloader/c/e:b	(Lcom/tencent/halley/downloader/c/e;)Lcom/tencent/halley/downloader/c/d;
       //   96: astore 11
       //   98: aload_1
-      //   99: getfield 100	com/tencent/token/ad:a	Lcom/tencent/token/ab;
-      //   102: getfield 106	com/tencent/token/ab:i	Lcom/tencent/halley/downloader/c/d;
+      //   99: getfield 100	com/tencent/token/ae:a	Lcom/tencent/token/ac;
+      //   102: getfield 106	com/tencent/token/ac:i	Lcom/tencent/halley/downloader/c/d;
       //   105: aload 11
       //   107: if_acmpne +9 -> 116
       //   110: iconst_1
@@ -1879,7 +1879,7 @@ public final class e
       //   149: astore 11
       //   151: aload 11
       //   153: aload_1
-      //   154: invokevirtual 271	com/tencent/token/ad:b	()Z
+      //   154: invokevirtual 271	com/tencent/token/ae:b	()Z
       //   157: invokevirtual 71	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
       //   160: pop
       //   161: aload 11
@@ -1888,7 +1888,7 @@ public final class e
       //   169: pop
       //   170: aload 11
       //   172: aload_1
-      //   173: getfield 100	com/tencent/token/ad:a	Lcom/tencent/token/ab;
+      //   173: getfield 100	com/tencent/token/ae:a	Lcom/tencent/token/ac;
       //   176: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
       //   179: pop
       //   180: ldc 73
@@ -1896,16 +1896,16 @@ public final class e
       //   184: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
       //   187: invokestatic 274	com/tencent/halley/common/b:b	(Ljava/lang/String;Ljava/lang/String;)V
       //   190: aload_1
-      //   191: getfield 100	com/tencent/token/ad:a	Lcom/tencent/token/ab;
-      //   194: getfield 168	com/tencent/token/ab:b	I
+      //   191: getfield 100	com/tencent/token/ae:a	Lcom/tencent/token/ac;
+      //   194: getfield 168	com/tencent/token/ac:b	I
       //   197: iconst_m1
       //   198: if_icmpne +116 -> 314
       //   201: aload_0
       //   202: getfield 17	com/tencent/halley/downloader/c/e$b:c	Lcom/tencent/halley/downloader/c/e;
       //   205: invokestatic 36	com/tencent/halley/downloader/c/e:b	(Lcom/tencent/halley/downloader/c/e;)Lcom/tencent/halley/downloader/c/d;
       //   208: aload_1
-      //   209: getfield 100	com/tencent/token/ad:a	Lcom/tencent/token/ab;
-      //   212: invokevirtual 171	com/tencent/halley/downloader/c/d:a	(Lcom/tencent/token/ab;)Z
+      //   209: getfield 100	com/tencent/token/ae:a	Lcom/tencent/token/ac;
+      //   212: invokevirtual 171	com/tencent/halley/downloader/c/d:a	(Lcom/tencent/token/ac;)Z
       //   215: istore 6
       //   217: new 55	java/lang/StringBuilder
       //   220: dup
@@ -1914,7 +1914,7 @@ public final class e
       //   227: astore 11
       //   229: aload 11
       //   231: aload_1
-      //   232: invokevirtual 271	com/tencent/token/ad:b	()Z
+      //   232: invokevirtual 271	com/tencent/token/ae:b	()Z
       //   235: invokevirtual 71	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
       //   238: pop
       //   239: aload 11
@@ -1923,7 +1923,7 @@ public final class e
       //   247: pop
       //   248: aload 11
       //   250: aload_1
-      //   251: getfield 100	com/tencent/token/ad:a	Lcom/tencent/token/ab;
+      //   251: getfield 100	com/tencent/token/ae:a	Lcom/tencent/token/ac;
       //   254: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
       //   257: pop
       //   258: aload 11
@@ -1960,11 +1960,11 @@ public final class e
       //   326: ifne +289 -> 615
       //   329: aload_0
       //   330: getfield 17	com/tencent/halley/downloader/c/e$b:c	Lcom/tencent/halley/downloader/c/e;
-      //   333: invokestatic 287	com/tencent/halley/downloader/c/e:e	(Lcom/tencent/halley/downloader/c/e;)Lcom/tencent/token/y;
+      //   333: invokestatic 287	com/tencent/halley/downloader/c/e:e	(Lcom/tencent/halley/downloader/c/e;)Lcom/tencent/token/z;
       //   336: astore 11
       //   338: aload_1
-      //   339: getfield 100	com/tencent/token/ad:a	Lcom/tencent/token/ab;
-      //   342: getfield 168	com/tencent/token/ab:b	I
+      //   339: getfield 100	com/tencent/token/ae:a	Lcom/tencent/token/ac;
+      //   342: getfield 168	com/tencent/token/ac:b	I
       //   345: istore 7
       //   347: iload 5
       //   349: i2l
@@ -1974,16 +1974,16 @@ public final class e
       //   356: lload_2
       //   357: aload 4
       //   359: lload 9
-      //   361: invokevirtual 292	com/tencent/token/y:a	(IJ[BJ)V
+      //   361: invokevirtual 292	com/tencent/token/z:a	(IJ[BJ)V
       //   364: aload_1
-      //   365: getfield 100	com/tencent/token/ad:a	Lcom/tencent/token/ab;
+      //   365: getfield 100	com/tencent/token/ae:a	Lcom/tencent/token/ac;
       //   368: astore_1
       //   369: aload_1
       //   370: aload_1
-      //   371: getfield 293	com/tencent/token/ab:f	J
+      //   371: getfield 293	com/tencent/token/ac:f	J
       //   374: lload 9
       //   376: ladd
-      //   377: putfield 293	com/tencent/token/ab:f	J
+      //   377: putfield 293	com/tencent/token/ac:f	J
       //   380: aload_0
       //   381: getfield 17	com/tencent/halley/downloader/c/e$b:c	Lcom/tencent/halley/downloader/c/e;
       //   384: invokestatic 36	com/tencent/halley/downloader/c/e:b	(Lcom/tencent/halley/downloader/c/e;)Lcom/tencent/halley/downloader/c/d;
@@ -2012,18 +2012,18 @@ public final class e
       //   425: getfield 17	com/tencent/halley/downloader/c/e$b:c	Lcom/tencent/halley/downloader/c/e;
       //   428: invokestatic 299	com/tencent/halley/downloader/c/e:f	(Lcom/tencent/halley/downloader/c/e;)Lcom/tencent/halley/downloader/c/a;
       //   431: invokevirtual 303	com/tencent/halley/downloader/c/a:b	()V
-      //   434: invokestatic 308	com/tencent/token/x:a	()Lcom/tencent/token/x;
-      //   437: invokevirtual 309	com/tencent/token/x:b	()V
-      //   440: invokestatic 308	com/tencent/token/x:a	()Lcom/tencent/token/x;
-      //   443: invokevirtual 311	com/tencent/token/x:g	()Z
+      //   434: invokestatic 308	com/tencent/token/y:a	()Lcom/tencent/token/y;
+      //   437: invokevirtual 309	com/tencent/token/y:b	()V
+      //   440: invokestatic 308	com/tencent/token/y:a	()Lcom/tencent/token/y;
+      //   443: invokevirtual 311	com/tencent/token/y:g	()Z
       //   446: ifeq +169 -> 615
       //   449: aload_0
       //   450: getfield 17	com/tencent/halley/downloader/c/e$b:c	Lcom/tencent/halley/downloader/c/e;
       //   453: iconst_1
       //   454: invokestatic 314	com/tencent/halley/downloader/c/e:a	(Lcom/tencent/halley/downloader/c/e;Z)Z
       //   457: pop
-      //   458: invokestatic 308	com/tencent/token/x:a	()Lcom/tencent/token/x;
-      //   461: invokevirtual 309	com/tencent/token/x:b	()V
+      //   458: invokestatic 308	com/tencent/token/y:a	()Lcom/tencent/token/y;
+      //   461: invokevirtual 309	com/tencent/token/y:b	()V
       //   464: new 55	java/lang/StringBuilder
       //   467: dup
       //   468: ldc_w 316
@@ -2088,8 +2088,8 @@ public final class e
       //   582: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   585: pop
       //   586: aload 4
-      //   588: invokestatic 308	com/tencent/token/x:a	()Lcom/tencent/token/x;
-      //   591: invokevirtual 343	com/tencent/token/x:f	()J
+      //   588: invokestatic 308	com/tencent/token/y:a	()Lcom/tencent/token/y;
+      //   591: invokevirtual 343	com/tencent/token/y:f	()J
       //   594: invokevirtual 123	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
       //   597: pop
       //   598: aload_1
@@ -2135,10 +2135,10 @@ public final class e
       try
       {
         locale = new com.tencent.halley.common.e(0, "");
-        this.a = new ad(e.a(e.this), true, e.this.f, e.this, this, e.this.e, e.this.C);
+        this.a = new ae(e.a(e.this), true, e.this.f, e.this, this, e.this.e, e.this.C);
         try
         {
-          aj.a().c(this.a);
+          ak.a().c(this.a);
         }
         catch (Exception localException1)
         {
@@ -2147,13 +2147,13 @@ public final class e
           localException1.printStackTrace();
         }
         if ((locale.a == 0) && (!e.this.z())) {
-          this.b = new ad(e.a(e.this), false, e.this.f, e.this, this, e.this.e, e.this.C);
+          this.b = new ae(e.a(e.this), false, e.this.f, e.this, this, e.this.e, e.this.C);
         }
       }
       finally {}
       try
       {
-        aj.a().d(this.b);
+        ak.a().d(this.b);
       }
       catch (Exception localException2)
       {
@@ -2163,10 +2163,10 @@ public final class e
       return locale;
     }
     
-    public final void b(ad paramad)
+    public final void b(ae paramae)
     {
       int i;
-      if ((paramad != null) && ((paramad == this.a) || (paramad == this.b))) {
+      if ((paramae != null) && ((paramae == this.a) || (paramae == this.b))) {
         i = 1;
       } else {
         i = 0;
@@ -2174,18 +2174,18 @@ public final class e
       if (i == 0) {
         return;
       }
-      if (paramad.a == null) {
+      if (paramae.a == null) {
         return;
       }
       e.b(e.this);
-      paramad.a.h = false;
+      paramae.a.h = false;
     }
     
-    public final void c(ad paramad)
+    public final void c(ae paramae)
     {
       int j = 1;
       int i;
-      if ((paramad != null) && ((paramad == this.a) || (paramad == this.b))) {
+      if ((paramae != null) && ((paramae == this.a) || (paramae == this.b))) {
         i = 1;
       } else {
         i = 0;
@@ -2220,15 +2220,15 @@ public final class e
                 if (i != 0) {
                   return;
                 }
-                e.this.r = paramad.c();
-                e.this.s = paramad.d();
+                e.this.r = paramae.c();
+                e.this.s = paramae.d();
                 if (e.this.r == 0)
                 {
-                  paramad = e.this;
-                  paramad.r = -69;
+                  paramae = e.this;
+                  paramae.r = -69;
                   ??? = new StringBuilder("readLen:");
                   ((StringBuilder)???).append(e.b(e.this).f());
-                  paramad.s = ((StringBuilder)???).toString();
+                  paramae.s = ((StringBuilder)???).toString();
                 }
                 e.d(e.this).a(DownloaderTaskStatus.FAILED);
               }

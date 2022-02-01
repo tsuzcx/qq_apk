@@ -15,12 +15,12 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.token.bz;
-import com.tencent.token.cb;
+import com.tencent.token.ca;
+import com.tencent.token.cc;
 import com.tencent.token.core.bean.OnlineDeviceResult;
 import com.tencent.token.core.bean.OnlineDeviceResult.a;
 import com.tencent.token.core.bean.SafeMsgItem;
-import com.tencent.token.dk;
+import com.tencent.token.dl;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.g;
 import com.tencent.token.utils.l;
@@ -42,7 +42,7 @@ class p
   private View j;
   private View k;
   private View l;
-  private dk m;
+  private dl m;
   private OnlineDeviceResult n;
   
   public p(LoginMsgActivity paramLoginMsgActivity)
@@ -53,12 +53,12 @@ class p
   
   private void a(View paramView, final OnlineDeviceResult.a parama, int paramInt)
   {
-    Object localObject1 = (RelativeLayout)paramView.findViewById(2131165782);
-    Object localObject2 = (RelativeLayout)paramView.findViewById(2131165693);
-    Object localObject3 = (RelativeLayout)paramView.findViewById(2131165694);
-    Object localObject4 = (RelativeLayout)paramView.findViewById(2131165691);
-    Object localObject5 = (RelativeLayout)paramView.findViewById(2131165692);
-    TextView localTextView = (TextView)paramView.findViewById(2131165781);
+    Object localObject1 = (RelativeLayout)paramView.findViewById(2131165784);
+    Object localObject2 = (RelativeLayout)paramView.findViewById(2131165695);
+    Object localObject3 = (RelativeLayout)paramView.findViewById(2131165696);
+    Object localObject4 = (RelativeLayout)paramView.findViewById(2131165693);
+    Object localObject5 = (RelativeLayout)paramView.findViewById(2131165694);
+    TextView localTextView = (TextView)paramView.findViewById(2131165783);
     ((RelativeLayout)localObject1).setVisibility(0);
     ((RelativeLayout)localObject2).setVisibility(8);
     ((RelativeLayout)localObject3).setVisibility(8);
@@ -67,28 +67,28 @@ class p
     if (paramInt == 0)
     {
       localTextView.setVisibility(0);
-      localTextView.setText(2131493419);
+      localTextView.setText(2131493420);
     }
     else
     {
       localTextView.setVisibility(8);
     }
-    localObject1 = (ImageView)paramView.findViewById(2131165783);
-    localObject2 = (TextView)paramView.findViewById(2131165780);
-    localObject3 = (TextView)paramView.findViewById(2131165779);
-    localObject4 = (Button)paramView.findViewById(2131165348);
-    localObject5 = (ProgressBar)paramView.findViewById(2131165784);
+    localObject1 = (ImageView)paramView.findViewById(2131165785);
+    localObject2 = (TextView)paramView.findViewById(2131165782);
+    localObject3 = (TextView)paramView.findViewById(2131165781);
+    localObject4 = (Button)paramView.findViewById(2131165350);
+    localObject5 = (ProgressBar)paramView.findViewById(2131165786);
     ((Button)localObject4).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
-        paramAnonymousView = cb.a();
+        paramAnonymousView = cc.a();
         String str1 = parama.a;
         String str2 = parama.d;
         int i = parama.e;
         int j = parama.f;
         String str3 = parama.g;
-        String str4 = l.a(bz.a(RqdApplication.l()).b());
+        String str4 = l.a(ca.a(RqdApplication.n()).b());
         p.a(p.this);
         paramAnonymousView.a(0L, str1, str2, i, j, str3, str4, 523005419, 1, "com.tencent.token", LoginMsgActivity.mSkey, p.a(p.this).mHandler);
         this.b.setVisibility(0);
@@ -105,9 +105,9 @@ class p
     } else {
       ((ImageView)localObject1).setImageResource(2131099915);
     }
-    parama = (ImageView)paramView.findViewById(2131165444);
-    localObject1 = (ImageView)paramView.findViewById(2131165445);
-    paramView = (ImageView)paramView.findViewById(2131165446);
+    parama = (ImageView)paramView.findViewById(2131165446);
+    localObject1 = (ImageView)paramView.findViewById(2131165447);
+    paramView = (ImageView)paramView.findViewById(2131165448);
     if (paramInt == 0) {
       parama.setVisibility(0);
     } else {
@@ -129,7 +129,7 @@ class p
     if (localObject == null) {
       return;
     }
-    int i1 = ((dk)localObject).a(this.c * 15);
+    int i1 = ((dl)localObject).a(this.c * 15);
     if (i1 <= 0)
     {
       b();
@@ -162,34 +162,34 @@ class p
   protected void a(View paramView, SafeMsgItem paramSafeMsgItem, int paramInt1, boolean paramBoolean, int paramInt2)
   {
     paramInt1 -= paramInt2;
-    Object localObject = (TextView)paramView.findViewById(2131165781);
+    Object localObject = (TextView)paramView.findViewById(2131165783);
     if (paramInt1 == 0)
     {
       ((TextView)localObject).setVisibility(0);
-      ((TextView)localObject).setText(2131493310);
+      ((TextView)localObject).setText(2131493311);
     }
     else
     {
       ((TextView)localObject).setVisibility(8);
     }
-    localObject = (RelativeLayout)paramView.findViewById(2131165782);
-    RelativeLayout localRelativeLayout4 = (RelativeLayout)paramView.findViewById(2131165693);
-    RelativeLayout localRelativeLayout1 = (RelativeLayout)paramView.findViewById(2131165694);
-    RelativeLayout localRelativeLayout2 = (RelativeLayout)paramView.findViewById(2131165691);
-    RelativeLayout localRelativeLayout3 = (RelativeLayout)paramView.findViewById(2131165692);
+    localObject = (RelativeLayout)paramView.findViewById(2131165784);
+    RelativeLayout localRelativeLayout4 = (RelativeLayout)paramView.findViewById(2131165695);
+    RelativeLayout localRelativeLayout1 = (RelativeLayout)paramView.findViewById(2131165696);
+    RelativeLayout localRelativeLayout2 = (RelativeLayout)paramView.findViewById(2131165693);
+    RelativeLayout localRelativeLayout3 = (RelativeLayout)paramView.findViewById(2131165694);
     ((RelativeLayout)localObject).setVisibility(8);
     localRelativeLayout1.setVisibility(0);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131166068);
-    TextView localTextView3 = (TextView)paramView.findViewById(2131166067);
-    TextView localTextView4 = (TextView)paramView.findViewById(2131165752);
-    TextView localTextView1 = (TextView)paramView.findViewById(2131165687);
-    localObject = (TextView)paramView.findViewById(2131165688);
-    ImageView localImageView1 = (ImageView)paramView.findViewById(2131165689);
-    ImageView localImageView2 = (ImageView)paramView.findViewById(2131165690);
-    ImageView localImageView3 = (ImageView)paramView.findViewById(2131165697);
-    ImageView localImageView4 = (ImageView)paramView.findViewById(2131165698);
-    ImageView localImageView5 = (ImageView)paramView.findViewById(2131165699);
-    paramView = (ImageView)paramView.findViewById(2131165700);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131166070);
+    TextView localTextView3 = (TextView)paramView.findViewById(2131166069);
+    TextView localTextView4 = (TextView)paramView.findViewById(2131165754);
+    TextView localTextView1 = (TextView)paramView.findViewById(2131165689);
+    localObject = (TextView)paramView.findViewById(2131165690);
+    ImageView localImageView1 = (ImageView)paramView.findViewById(2131165691);
+    ImageView localImageView2 = (ImageView)paramView.findViewById(2131165692);
+    ImageView localImageView3 = (ImageView)paramView.findViewById(2131165699);
+    ImageView localImageView4 = (ImageView)paramView.findViewById(2131165700);
+    ImageView localImageView5 = (ImageView)paramView.findViewById(2131165701);
+    paramView = (ImageView)paramView.findViewById(2131165702);
     if (paramInt1 == 0)
     {
       localRelativeLayout4.setVisibility(0);
@@ -275,9 +275,9 @@ class p
     localImageView2.setVisibility(4);
   }
   
-  public void a(dk paramdk, OnlineDeviceResult paramOnlineDeviceResult)
+  public void a(dl paramdl, OnlineDeviceResult paramOnlineDeviceResult)
   {
-    this.m = paramdk;
+    this.m = paramdl;
     this.n = paramOnlineDeviceResult;
   }
   
@@ -288,9 +288,9 @@ class p
   
   public void b()
   {
-    TextView localTextView = (TextView)this.j.findViewById(2131166086);
+    TextView localTextView = (TextView)this.j.findViewById(2131166088);
     localTextView.setVisibility(0);
-    ImageView localImageView = (ImageView)this.j.findViewById(2131165595);
+    ImageView localImageView = (ImageView)this.j.findViewById(2131165597);
     OnlineDeviceResult localOnlineDeviceResult = this.n;
     if ((localOnlineDeviceResult != null) && (localOnlineDeviceResult.mDevicesList != null) && (this.n.mDevicesList.size() > 0))
     {
@@ -298,7 +298,7 @@ class p
       localImageView.setVisibility(8);
       return;
     }
-    localTextView.setText(2131493412);
+    localTextView.setText(2131493413);
     localTextView.setVisibility(0);
     localImageView.setVisibility(0);
   }
@@ -310,8 +310,8 @@ class p
   
   public void c()
   {
-    this.j.findViewById(2131166086).setVisibility(8);
-    this.j.findViewById(2131165595).setVisibility(8);
+    this.j.findViewById(2131166088).setVisibility(8);
+    this.j.findViewById(2131165597).setVisibility(8);
   }
   
   public void c(View paramView)
@@ -330,12 +330,12 @@ class p
   
   public void d()
   {
-    this.k.findViewById(2131165744).setVisibility(0);
+    this.k.findViewById(2131165746).setVisibility(0);
   }
   
   public void e()
   {
-    this.k.findViewById(2131165744).setVisibility(8);
+    this.k.findViewById(2131165746).setVisibility(8);
   }
   
   public void f()
@@ -363,7 +363,7 @@ class p
     if (localObject == null) {
       return 0;
     }
-    return ((dk)localObject).g();
+    return ((dl)localObject).g();
   }
   
   public Object getItem(int paramInt)
@@ -473,10 +473,10 @@ class p
     
     public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
     {
-      TextView localTextView1 = (TextView)paramView.findViewById(2131166068);
-      TextView localTextView2 = (TextView)paramView.findViewById(2131166067);
-      TextView localTextView3 = (TextView)paramView.findViewById(2131165752);
-      RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131165694);
+      TextView localTextView1 = (TextView)paramView.findViewById(2131166070);
+      TextView localTextView2 = (TextView)paramView.findViewById(2131166069);
+      TextView localTextView3 = (TextView)paramView.findViewById(2131165754);
+      RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131165696);
       int i = p.a(p.this).getResources().getColor(2130968665);
       switch (paramMotionEvent.getAction())
       {

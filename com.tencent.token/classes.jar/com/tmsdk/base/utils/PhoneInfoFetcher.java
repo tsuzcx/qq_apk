@@ -1,7 +1,7 @@
 package com.tmsdk.base.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Build.VERSION;
@@ -13,8 +13,9 @@ import android.telephony.cdma.CdmaCellLocation;
 import android.telephony.gsm.GsmCellLocation;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import btmsdkobf.dz;
-import btmsdkobf.eg;
+import com.tencent.service.update.e;
 import com.tmsdk.base.TMSDKBaseContext;
 import java.io.File;
 import java.io.FileFilter;
@@ -31,11 +32,15 @@ public class PhoneInfoFetcher
   public static final String KEY_IMEI1 = "imei1";
   public static final String KEY_IMEI2 = "imei2";
   public static final String KEY_MEID = "meid";
-  private static Integer M;
-  private static long N = -1L;
+  static final String TAG = "PhoneInfoFetcher";
+  private static Integer cpuNum;
+  private static long sTotalMemorySize = -1L;
   
   public static String getAndoidId(Context paramContext)
   {
+    if (!e.a().b()) {
+      return "";
+    }
     try
     {
       paramContext = Settings.Secure.getString(paramContext.getContentResolver(), "android_id");
@@ -43,15 +48,19 @@ public class PhoneInfoFetcher
     }
     catch (Throwable paramContext)
     {
-      label12:
-      break label12;
+      label24:
+      break label24;
     }
     return "";
   }
   
   public static int getCellId()
   {
+    boolean bool = e.a().b();
     int j = -1;
+    if (!bool) {
+      return -1;
+    }
     int m = j;
     try
     {
@@ -88,7 +97,7 @@ public class PhoneInfoFetcher
   
   public static int getCpuNum()
   {
-    if (M == null) {}
+    if (cpuNum == null) {}
     try
     {
       Object localObject = new FileFilter()
@@ -105,190 +114,209 @@ public class PhoneInfoFetcher
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("CPU Count: ");
       localStringBuilder.append(localObject.length);
-      eg.e("PhoneInfoFetcher", localStringBuilder.toString());
-      M = Integer.valueOf(localObject.length);
-      return M.intValue();
+      Log.d("PhoneInfoFetcher", localStringBuilder.toString());
+      cpuNum = Integer.valueOf(localObject.length);
+      return cpuNum.intValue();
     }
     catch (Throwable localThrowable) {}
     return 1;
   }
   
+  @SuppressLint({"MissingPermission"})
   public static String getIMEI(Context paramContext)
   {
+    if (!e.a().b()) {
+      return "00000000000000";
+    }
+    Object localObject = null;
     try
     {
       paramContext = ((TelephonyManager)paramContext.getSystemService("phone")).getDeviceId();
     }
     catch (Throwable paramContext)
     {
-      eg.g("PhoneInfoFetcher", paramContext.getMessage());
-      paramContext = null;
+      Log.w("PhoneInfoFetcher", paramContext.getMessage());
+      paramContext = (Context)localObject;
     }
-    Object localObject = paramContext;
+    localObject = paramContext;
     if (paramContext == null) {
       localObject = "00000000000000";
     }
     return localObject;
   }
   
+  @SuppressLint({"MissingPermission"})
   public static String getIMSI(Context paramContext)
   {
+    if (!e.a().b()) {
+      return "00000000000000";
+    }
+    Object localObject = null;
     try
     {
       paramContext = ((TelephonyManager)paramContext.getSystemService("phone")).getSubscriberId();
+      if (paramContext == null) {
+        return "000000000000000";
+      }
+      return paramContext;
     }
     catch (Throwable paramContext)
     {
-      label16:
-      Object localObject;
-      break label16;
+      for (;;)
+      {
+        paramContext = localObject;
+      }
     }
-    paramContext = null;
-    localObject = paramContext;
-    if (paramContext == null) {
-      localObject = "000000000000000";
-    }
-    return localObject;
   }
   
   public static Map<String, String> getImeiAndMeid(Context paramContext)
   {
     HashMap localHashMap = new HashMap();
-    localObject6 = null;
-    localObject8 = null;
-    for (;;)
+    if (!e.a().b()) {
+      return localHashMap;
+    }
+    Object localObject2 = null;
+    Object localObject1 = null;
+    Object localObject4 = null;
+    try
     {
-      try
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("android api: ");
+      ((StringBuilder)localObject3).append(Build.VERSION.SDK_INT);
+      ((StringBuilder)localObject3).append("\n");
+      Log.i("PhoneInfoFetcher", ((StringBuilder)localObject3).toString());
+      localTelephonyManager = (TelephonyManager)paramContext.getSystemService("phone");
+      if (Build.VERSION.SDK_INT < 21)
       {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("android api: ");
-        ((StringBuilder)localObject1).append(Build.VERSION.SDK_INT);
-        ((StringBuilder)localObject1).append("\n");
-        eg.f("PhoneInfoFetcher", ((StringBuilder)localObject1).toString());
-        localObject7 = (TelephonyManager)paramContext.getSystemService("phone");
-        if (Build.VERSION.SDK_INT < 21) {
-          continue;
-        }
-        if (Build.VERSION.SDK_INT < 26)
+        localObject2 = null;
+        paramContext = (Context)localObject2;
+      }
+      else if (Build.VERSION.SDK_INT < 26)
+      {
+        localObject3 = localTelephonyManager.getClass().getMethod("getDeviceId", new Class[] { Integer.TYPE });
+        ((Method)localObject3).setAccessible(true);
+        paramContext = (String)((Method)localObject3).invoke(localTelephonyManager, new Object[] { Integer.valueOf(0) });
+        if (!TextUtils.isEmpty(paramContext))
         {
-          localObject3 = localObject7.getClass().getMethod("getDeviceId", new Class[] { Integer.TYPE });
-          ((Method)localObject3).setAccessible(true);
-          localObject1 = (String)((Method)localObject3).invoke(localObject7, new Object[] { Integer.valueOf(0) });
-          if (!TextUtils.isEmpty((CharSequence)localObject1))
+          i = paramContext.length();
+          if (i == 14)
           {
-            i = ((String)localObject1).length();
-            if (i == 14)
-            {
-              paramContext = (Context)localObject1;
-              localObject1 = null;
-            }
-            else
-            {
-              paramContext = null;
-            }
+            localObject1 = paramContext;
+            paramContext = null;
           }
           else
           {
             localObject1 = null;
-            paramContext = (Context)localObject1;
-          }
-        }
-      }
-      catch (Throwable paramContext)
-      {
-        Object localObject1;
-        Object localObject7;
-        Object localObject3;
-        int i;
-        boolean bool;
-        Object localObject4;
-        Object localObject5 = null;
-        paramContext = localObject5;
-        Object localObject2 = localThrowable4;
-        continue;
-      }
-      try
-      {
-        localObject7 = (String)((Method)localObject3).invoke(localObject7, new Object[] { Integer.valueOf(1) });
-        localObject3 = paramContext;
-        if (!TextUtils.isEmpty((CharSequence)localObject7))
-        {
-          i = ((String)localObject7).length();
-          localObject6 = localObject7;
-          if (i == 14) {
-            localObject3 = localObject7;
           }
         }
         else
         {
-          localObject6 = null;
-          paramContext = (Context)localObject3;
+          paramContext = null;
+          localObject1 = paramContext;
         }
       }
-      catch (Throwable localThrowable2)
-      {
-        localObject4 = localObject8;
-        continue;
-      }
-      try
-      {
-        bool = TextUtils.equals((CharSequence)localObject1, localObject6);
-        if (bool)
-        {
-          localObject3 = localObject8;
-          localObject6 = localObject1;
-          localObject1 = localObject3;
-          localObject3 = paramContext;
-          paramContext = localObject6;
-        }
-      }
-      catch (Throwable localThrowable3)
-      {
-        continue;
-      }
-      localObject3 = localObject6;
-    }
-    paramContext = localObject7.getClass().getMethod("getMeid", new Class[] { Integer.TYPE });
-    paramContext.setAccessible(true);
-    localObject3 = (String)paramContext.invoke(localObject7, new Object[] { Integer.valueOf(0) });
-    try
-    {
-      localObject1 = localObject7.getClass().getMethod("getImei", new Class[] { Integer.TYPE });
-      ((Method)localObject1).setAccessible(true);
-      paramContext = (String)((Method)localObject1).invoke(localObject7, new Object[] { Integer.valueOf(0) });
     }
     catch (Throwable paramContext)
     {
-      label397:
-      label400:
-      label405:
-      break label400;
+      Object localObject3;
+      TelephonyManager localTelephonyManager;
+      int i;
+      boolean bool;
+      label284:
+      break label452;
     }
     try
     {
-      localObject1 = (String)((Method)localObject1).invoke(localObject7, new Object[] { Integer.valueOf(1) });
+      localObject3 = (String)((Method)localObject3).invoke(localTelephonyManager, new Object[] { Integer.valueOf(1) });
+      if (!TextUtils.isEmpty((CharSequence)localObject3))
+      {
+        i = ((String)localObject3).length();
+        localObject2 = localObject3;
+        if (i == 14)
+        {
+          localObject1 = localObject3;
+          localObject2 = null;
+        }
+      }
+      else
+      {
+        localObject2 = null;
+      }
+    }
+    catch (Throwable localThrowable2)
+    {
+      break label284;
+    }
+    try
+    {
+      bool = TextUtils.equals(paramContext, (CharSequence)localObject2);
+      if (bool) {
+        localObject2 = localObject4;
+      }
+      localObject3 = localObject1;
+      localObject1 = localObject2;
+      localObject2 = localObject3;
+    }
+    catch (Throwable localThrowable3)
+    {
+      break label284;
+    }
+    localObject3 = localObject1;
+    localObject1 = localObject2;
+    localObject2 = localObject3;
+    break label458;
+    paramContext = localTelephonyManager.getClass().getMethod("getMeid", new Class[] { Integer.TYPE });
+    paramContext.setAccessible(true);
+    localObject2 = (String)paramContext.invoke(localTelephonyManager, new Object[] { Integer.valueOf(0) });
+    try
+    {
+      paramContext = localTelephonyManager.getClass().getMethod("getImei", new Class[] { Integer.TYPE });
+      paramContext.setAccessible(true);
+      localObject3 = (String)paramContext.invoke(localTelephonyManager, new Object[] { Integer.valueOf(0) });
+    }
+    catch (Throwable paramContext)
+    {
+      label439:
+      break label447;
+    }
+    try
+    {
+      paramContext = (String)paramContext.invoke(localTelephonyManager, new Object[] { Integer.valueOf(1) });
+    }
+    catch (Throwable paramContext)
+    {
+      paramContext = localThrowable3;
+      break label458;
+    }
+    try
+    {
+      bool = TextUtils.equals((CharSequence)localObject3, paramContext);
+      if (bool)
+      {
+        paramContext = (Context)localObject3;
+      }
+      else
+      {
+        localObject1 = paramContext;
+        paramContext = (Context)localObject3;
+      }
     }
     catch (Throwable localThrowable1)
     {
-      localObject2 = localObject6;
-      break label405;
+      break label439;
     }
-    try
-    {
-      bool = TextUtils.equals(paramContext, (CharSequence)localObject1);
-      if (bool) {
-        localObject1 = localObject6;
-      }
-    }
-    catch (Throwable localThrowable4)
-    {
-      break label397;
-    }
-    break label405;
+    localObject1 = paramContext;
+    paramContext = (Context)localObject3;
+    break label458;
+    label447:
     paramContext = null;
-    localObject1 = localObject6;
-    if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-      localHashMap.put("meid", localObject3);
+    break label458;
+    label452:
+    localObject2 = null;
+    paramContext = (Context)localObject2;
+    label458:
+    if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+      localHashMap.put("meid", localObject2);
     }
     if (!TextUtils.isEmpty(paramContext)) {
       localHashMap.put("imei1", paramContext);
@@ -308,56 +336,56 @@ public class PhoneInfoFetcher
   public static String getKernelVersion(boolean paramBoolean)
   {
     // Byte code:
-    //   0: ldc 51
+    //   0: ldc 50
     //   2: astore_2
-    //   3: new 223	java/io/FileInputStream
+    //   3: new 238	java/io/FileInputStream
     //   6: dup
-    //   7: ldc 225
-    //   9: invokespecial 226	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   7: ldc 240
+    //   9: invokespecial 241	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   12: astore_3
-    //   13: new 228	java/io/BufferedReader
+    //   13: new 243	java/io/BufferedReader
     //   16: dup
-    //   17: new 230	java/io/InputStreamReader
+    //   17: new 245	java/io/InputStreamReader
     //   20: dup
     //   21: aload_3
-    //   22: invokespecial 233	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   22: invokespecial 248	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
     //   25: sipush 8192
-    //   28: invokespecial 236	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   28: invokespecial 251	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
     //   31: astore 4
-    //   33: new 98	java/lang/StringBuilder
+    //   33: new 111	java/lang/StringBuilder
     //   36: dup
-    //   37: ldc 51
-    //   39: invokespecial 237	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   37: ldc 50
+    //   39: invokespecial 252	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   42: astore_1
     //   43: aload 4
-    //   45: invokevirtual 240	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   45: invokevirtual 255	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   48: astore 5
     //   50: aload 5
     //   52: ifnull +13 -> 65
     //   55: aload_1
     //   56: aload 5
-    //   58: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   61: pop
     //   62: goto -19 -> 43
     //   65: aload 4
-    //   67: invokevirtual 243	java/io/BufferedReader:close	()V
+    //   67: invokevirtual 258	java/io/BufferedReader:close	()V
     //   70: goto +25 -> 95
     //   73: astore_2
     //   74: aload 4
-    //   76: invokevirtual 243	java/io/BufferedReader:close	()V
+    //   76: invokevirtual 258	java/io/BufferedReader:close	()V
     //   79: aload_3
-    //   80: invokevirtual 246	java/io/InputStream:close	()V
+    //   80: invokevirtual 261	java/io/InputStream:close	()V
     //   83: aload_1
-    //   84: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   84: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   87: pop
     //   88: aload_2
     //   89: athrow
     //   90: aload 4
-    //   92: invokevirtual 243	java/io/BufferedReader:close	()V
+    //   92: invokevirtual 258	java/io/BufferedReader:close	()V
     //   95: aload_3
-    //   96: invokevirtual 246	java/io/InputStream:close	()V
+    //   96: invokevirtual 261	java/io/InputStream:close	()V
     //   99: aload_1
-    //   100: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   100: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   103: astore_3
     //   104: iload_0
     //   105: ifne +5 -> 110
@@ -366,76 +394,84 @@ public class PhoneInfoFetcher
     //   110: aload_2
     //   111: astore_1
     //   112: aload_3
-    //   113: ifnull +41 -> 154
+    //   113: ifnull +42 -> 155
     //   116: aload_2
     //   117: astore_1
     //   118: aload_3
-    //   119: ldc 51
-    //   121: invokevirtual 249	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   124: ifne +30 -> 154
+    //   119: ldc 50
+    //   121: invokevirtual 264	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   124: ifne +31 -> 155
     //   127: aload_3
     //   128: aload_3
-    //   129: ldc 251
-    //   131: invokevirtual 255	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   134: bipush 8
-    //   136: iadd
-    //   137: invokevirtual 259	java/lang/String:substring	(I)Ljava/lang/String;
-    //   140: astore_1
-    //   141: aload_1
-    //   142: iconst_0
-    //   143: aload_1
-    //   144: ldc_w 261
-    //   147: invokevirtual 255	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   150: invokevirtual 264	java/lang/String:substring	(II)Ljava/lang/String;
-    //   153: astore_1
-    //   154: aload_1
-    //   155: areturn
-    //   156: astore_1
-    //   157: ldc 51
-    //   159: areturn
-    //   160: astore 5
-    //   162: goto -72 -> 90
-    //   165: astore 4
-    //   167: goto -72 -> 95
-    //   170: astore 4
-    //   172: goto -93 -> 79
-    //   175: astore_3
-    //   176: goto -93 -> 83
-    //   179: astore_3
-    //   180: goto -81 -> 99
+    //   129: ldc_w 266
+    //   132: invokevirtual 270	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   135: bipush 8
+    //   137: iadd
+    //   138: invokevirtual 274	java/lang/String:substring	(I)Ljava/lang/String;
+    //   141: astore_1
+    //   142: aload_1
+    //   143: iconst_0
+    //   144: aload_1
+    //   145: ldc_w 276
+    //   148: invokevirtual 270	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   151: invokevirtual 279	java/lang/String:substring	(II)Ljava/lang/String;
+    //   154: astore_1
+    //   155: aload_1
+    //   156: areturn
+    //   157: astore_1
+    //   158: ldc 50
+    //   160: areturn
+    //   161: astore 5
+    //   163: goto -73 -> 90
+    //   166: astore 4
+    //   168: goto -73 -> 95
+    //   171: astore 4
+    //   173: goto -94 -> 79
+    //   176: astore_3
+    //   177: goto -94 -> 83
+    //   180: astore_3
+    //   181: goto -82 -> 99
+    //   184: astore_1
+    //   185: ldc 50
+    //   187: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	183	0	paramBoolean	boolean
-    //   42	113	1	localObject1	Object
-    //   156	1	1	localThrowable1	Throwable
+    //   0	188	0	paramBoolean	boolean
+    //   42	114	1	localObject1	Object
+    //   157	1	1	localThrowable1	Throwable
+    //   184	1	1	localThrowable2	Throwable
     //   2	1	2	str1	String
     //   73	44	2	localObject2	Object
     //   12	117	3	localObject3	Object
-    //   175	1	3	localThrowable2	Throwable
-    //   179	1	3	localThrowable3	Throwable
+    //   176	1	3	localThrowable3	Throwable
+    //   180	1	3	localThrowable4	Throwable
     //   31	60	4	localBufferedReader	java.io.BufferedReader
-    //   165	1	4	localThrowable4	Throwable
-    //   170	1	4	localThrowable5	Throwable
+    //   166	1	4	localThrowable5	Throwable
+    //   171	1	4	localThrowable6	Throwable
     //   48	9	5	str2	String
-    //   160	1	5	localThrowable6	Throwable
+    //   161	1	5	localThrowable7	Throwable
     // Exception table:
     //   from	to	target	type
     //   43	50	73	finally
     //   55	62	73	finally
-    //   3	13	156	java/lang/Throwable
-    //   127	154	156	java/lang/Throwable
-    //   43	50	160	java/lang/Throwable
-    //   55	62	160	java/lang/Throwable
-    //   65	70	165	java/lang/Throwable
-    //   90	95	165	java/lang/Throwable
-    //   74	79	170	java/lang/Throwable
-    //   79	83	175	java/lang/Throwable
-    //   95	99	179	java/lang/Throwable
+    //   3	13	157	java/lang/Throwable
+    //   43	50	161	java/lang/Throwable
+    //   55	62	161	java/lang/Throwable
+    //   65	70	166	java/lang/Throwable
+    //   90	95	166	java/lang/Throwable
+    //   74	79	171	java/lang/Throwable
+    //   79	83	176	java/lang/Throwable
+    //   95	99	180	java/lang/Throwable
+    //   127	155	184	java/lang/Throwable
   }
   
   public static int getLac()
   {
+    boolean bool = e.a().b();
     int j = -1;
+    if (!bool) {
+      return -1;
+    }
     for (;;)
     {
       try
@@ -449,7 +485,7 @@ public class PhoneInfoFetcher
           if (localObject != null)
           {
             if (!(localObject instanceof GsmCellLocation)) {
-              break label71;
+              break label84;
             }
             i = ((GsmCellLocation)localObject).getLac();
             if ((localObject instanceof CdmaCellLocation))
@@ -465,30 +501,31 @@ public class PhoneInfoFetcher
       {
         return -1;
       }
-      label71:
+      label84:
       int i = -1;
     }
   }
   
   public static String getManufacturerRomVersion()
   {
+    label269:
     String str1;
-    for (Object localObject = null;; str1 = null)
+    for (;;)
     {
       try
       {
-        String str2 = Build.MANUFACTURER;
-        if (TextUtils.isEmpty(str2)) {
+        Object localObject = Build.MANUFACTURER;
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
           return null;
         }
-        str2 = str2.toLowerCase(Locale.ENGLISH);
-        if (str2.contains("huawei")) {
+        localObject = ((String)localObject).toLowerCase(Locale.ENGLISH);
+        if (((String)localObject).contains("huawei")) {
           return getSystemProperties("ro.build.version.emui");
         }
-        if (str2.contains("xiaomi")) {
+        if (((String)localObject).contains("xiaomi")) {
           return getSystemProperties("ro.miui.ui.version.name");
         }
-        if (str2.contains("gionee"))
+        if (((String)localObject).contains("gionee"))
         {
           localObject = getSystemProperties("ro.gn.extvernumber");
           if (TextUtils.isEmpty((CharSequence)localObject)) {
@@ -497,10 +534,10 @@ public class PhoneInfoFetcher
         }
         else
         {
-          if (str2.contains("vivo"))
+          if (((String)localObject).contains("vivo"))
           {
             localObject = getSystemProperties("ro.vivo.os.name");
-            str2 = getSystemProperties("ro.vivo.os.version");
+            String str2 = getSystemProperties("ro.vivo.os.version");
             if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(str2)))
             {
               StringBuilder localStringBuilder = new StringBuilder();
@@ -511,18 +548,18 @@ public class PhoneInfoFetcher
             }
             return getSystemProperties("ro.vivo.os.build.display.id");
           }
-          if (str2.contains("meizu")) {
+          if (((String)localObject).contains("meizu")) {
             return getSystemProperties("ro.build.display.id");
           }
-          if (str2.contains("lenovo"))
+          if (((String)localObject).contains("lenovo"))
           {
             localObject = getSystemProperties("ro.lenovo.lvp.version");
             if (TextUtils.isEmpty((CharSequence)localObject)) {
-              continue;
+              break label269;
             }
             localObject = ((String)localObject).split("_");
             if ((localObject == null) || (localObject.length <= 0)) {
-              continue;
+              break label269;
             }
             localObject = localObject[0];
             if (!TextUtils.isEmpty((CharSequence)localObject)) {
@@ -530,10 +567,12 @@ public class PhoneInfoFetcher
             }
             return getSystemProperties("ro.build.version.incremental");
           }
-          if (str2.contains("letv")) {
+          if (((String)localObject).contains("letv"))
+          {
             localObject = getSystemProperties("ro.letv.eui");
+            return localObject;
           }
-          return localObject;
+          return null;
         }
       }
       catch (Exception localException)
@@ -541,6 +580,7 @@ public class PhoneInfoFetcher
         return null;
       }
       return localException;
+      str1 = null;
     }
     return str1;
   }
@@ -568,7 +608,11 @@ public class PhoneInfoFetcher
   
   public static int getMcc()
   {
+    boolean bool = e.a().b();
     int i = -1;
+    if (!bool) {
+      return -1;
+    }
     try
     {
       TelephonyManager localTelephonyManager = (TelephonyManager)TMSDKBaseContext.getApplicationContext().getSystemService("phone");
@@ -583,7 +627,11 @@ public class PhoneInfoFetcher
   
   public static int getMnc()
   {
+    boolean bool = e.a().b();
     int i = -1;
+    if (!bool) {
+      return -1;
+    }
     try
     {
       TelephonyManager localTelephonyManager = (TelephonyManager)TMSDKBaseContext.getApplicationContext().getSystemService("phone");
@@ -628,83 +676,83 @@ public class PhoneInfoFetcher
     // Byte code:
     //   0: iload_0
     //   1: ifeq +14 -> 15
-    //   4: ldc_w 409
+    //   4: ldc_w 424
     //   7: astore_1
-    //   8: ldc_w 411
+    //   8: ldc_w 426
     //   11: astore_2
     //   12: goto +11 -> 23
-    //   15: ldc_w 413
+    //   15: ldc_w 428
     //   18: astore_1
-    //   19: ldc_w 415
+    //   19: ldc_w 430
     //   22: astore_2
     //   23: aconst_null
     //   24: astore 4
-    //   26: new 98	java/lang/StringBuilder
+    //   26: new 111	java/lang/StringBuilder
     //   29: dup
-    //   30: invokespecial 99	java/lang/StringBuilder:<init>	()V
+    //   30: invokespecial 112	java/lang/StringBuilder:<init>	()V
     //   33: astore_3
     //   34: aload_3
     //   35: aload_1
-    //   36: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   39: pop
     //   40: aload_3
-    //   41: ldc_w 417
-    //   44: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   41: ldc_w 432
+    //   44: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   47: pop
-    //   48: new 228	java/io/BufferedReader
+    //   48: new 243	java/io/BufferedReader
     //   51: dup
-    //   52: new 419	java/io/FileReader
+    //   52: new 434	java/io/FileReader
     //   55: dup
     //   56: aload_3
-    //   57: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   60: invokespecial 420	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   63: invokespecial 423	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   57: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   60: invokespecial 435	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   63: invokespecial 438	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   66: astore_3
     //   67: aload_3
-    //   68: invokevirtual 240	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   68: invokevirtual 255	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   71: astore 5
     //   73: aload 5
     //   75: ifnull +98 -> 173
     //   78: aload 5
-    //   80: invokevirtual 426	java/lang/String:toUpperCase	()Ljava/lang/String;
+    //   80: invokevirtual 441	java/lang/String:toUpperCase	()Ljava/lang/String;
     //   83: aload_2
-    //   84: invokevirtual 249	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   84: invokevirtual 264	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   87: ifeq +86 -> 173
-    //   90: new 98	java/lang/StringBuilder
+    //   90: new 111	java/lang/StringBuilder
     //   93: dup
-    //   94: invokespecial 99	java/lang/StringBuilder:<init>	()V
+    //   94: invokespecial 112	java/lang/StringBuilder:<init>	()V
     //   97: astore_2
     //   98: aload_2
     //   99: aload_1
-    //   100: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   100: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   103: pop
     //   104: aload_2
-    //   105: ldc_w 428
-    //   108: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   105: ldc_w 443
+    //   108: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   111: pop
-    //   112: new 228	java/io/BufferedReader
+    //   112: new 243	java/io/BufferedReader
     //   115: dup
-    //   116: new 419	java/io/FileReader
+    //   116: new 434	java/io/FileReader
     //   119: dup
     //   120: aload_2
-    //   121: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   124: invokespecial 420	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   127: invokespecial 423	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   121: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   124: invokespecial 435	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   127: invokespecial 438	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   130: astore_1
     //   131: aload_1
-    //   132: invokevirtual 240	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   132: invokevirtual 255	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   135: astore 4
     //   137: aload_1
     //   138: astore_2
     //   139: aload 4
     //   141: ifnull +34 -> 175
     //   144: aload 4
-    //   146: invokevirtual 369	java/lang/String:trim	()Ljava/lang/String;
+    //   146: invokevirtual 384	java/lang/String:trim	()Ljava/lang/String;
     //   149: astore_2
     //   150: aload_3
-    //   151: invokevirtual 243	java/io/BufferedReader:close	()V
+    //   151: invokevirtual 258	java/io/BufferedReader:close	()V
     //   154: aload_1
-    //   155: invokevirtual 243	java/io/BufferedReader:close	()V
+    //   155: invokevirtual 258	java/io/BufferedReader:close	()V
     //   158: aload_2
     //   159: areturn
     //   160: astore 4
@@ -717,13 +765,13 @@ public class PhoneInfoFetcher
     //   173: aconst_null
     //   174: astore_2
     //   175: aload_3
-    //   176: invokevirtual 243	java/io/BufferedReader:close	()V
+    //   176: invokevirtual 258	java/io/BufferedReader:close	()V
     //   179: aload_2
     //   180: ifnull +72 -> 252
     //   183: aload_2
     //   184: astore_1
     //   185: aload_1
-    //   186: invokevirtual 243	java/io/BufferedReader:close	()V
+    //   186: invokevirtual 258	java/io/BufferedReader:close	()V
     //   189: aconst_null
     //   190: areturn
     //   191: astore_1
@@ -741,12 +789,12 @@ public class PhoneInfoFetcher
     //   209: aload_3
     //   210: ifnull +10 -> 220
     //   213: aload_3
-    //   214: invokevirtual 243	java/io/BufferedReader:close	()V
+    //   214: invokevirtual 258	java/io/BufferedReader:close	()V
     //   217: goto +3 -> 220
     //   220: aload_2
     //   221: ifnull +7 -> 228
     //   224: aload_2
-    //   225: invokevirtual 243	java/io/BufferedReader:close	()V
+    //   225: invokevirtual 258	java/io/BufferedReader:close	()V
     //   228: aload_1
     //   229: athrow
     //   230: aconst_null
@@ -756,7 +804,7 @@ public class PhoneInfoFetcher
     //   234: aload_3
     //   235: ifnull +10 -> 245
     //   238: aload_3
-    //   239: invokevirtual 243	java/io/BufferedReader:close	()V
+    //   239: invokevirtual 258	java/io/BufferedReader:close	()V
     //   242: goto +3 -> 245
     //   245: aload_1
     //   246: ifnull +6 -> 252
@@ -893,47 +941,47 @@ public class PhoneInfoFetcher
   public static long getTotalMemery()
   {
     // Byte code:
-    //   0: getstatic 485	com/tmsdk/base/utils/PhoneInfoFetcher:N	J
-    //   3: ldc2_w 24
+    //   0: getstatic 499	com/tmsdk/base/utils/PhoneInfoFetcher:sTotalMemorySize	J
+    //   3: ldc2_w 27
     //   6: lcmp
     //   7: ifne +114 -> 121
-    //   10: new 87	java/io/File
+    //   10: new 100	java/io/File
     //   13: dup
-    //   14: ldc_w 487
-    //   17: invokespecial 92	java/io/File:<init>	(Ljava/lang/String;)V
+    //   14: ldc_w 501
+    //   17: invokespecial 105	java/io/File:<init>	(Ljava/lang/String;)V
     //   20: astore_2
     //   21: aload_2
-    //   22: invokevirtual 490	java/io/File:exists	()Z
+    //   22: invokevirtual 504	java/io/File:exists	()Z
     //   25: ifeq +96 -> 121
-    //   28: new 492	java/io/DataInputStream
+    //   28: new 506	java/io/DataInputStream
     //   31: dup
-    //   32: new 223	java/io/FileInputStream
+    //   32: new 238	java/io/FileInputStream
     //   35: dup
     //   36: aload_2
-    //   37: invokespecial 495	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   40: invokespecial 496	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   37: invokespecial 509	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   40: invokespecial 510	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
     //   43: astore_2
     //   44: aload_2
-    //   45: invokevirtual 497	java/io/DataInputStream:readLine	()Ljava/lang/String;
+    //   45: invokevirtual 511	java/io/DataInputStream:readLine	()Ljava/lang/String;
     //   48: astore_3
     //   49: aload_3
     //   50: ifnull +31 -> 81
     //   53: aload_3
-    //   54: invokevirtual 369	java/lang/String:trim	()Ljava/lang/String;
-    //   57: ldc_w 499
-    //   60: invokevirtual 329	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   54: invokevirtual 384	java/lang/String:trim	()Ljava/lang/String;
+    //   57: ldc_w 513
+    //   60: invokevirtual 344	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   63: iconst_1
     //   64: aaload
-    //   65: invokestatic 505	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   68: putstatic 485	com/tmsdk/base/utils/PhoneInfoFetcher:N	J
+    //   65: invokestatic 519	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   68: putstatic 499	com/tmsdk/base/utils/PhoneInfoFetcher:sTotalMemorySize	J
     //   71: aload_2
-    //   72: invokevirtual 506	java/io/DataInputStream:close	()V
+    //   72: invokevirtual 520	java/io/DataInputStream:close	()V
     //   75: goto +46 -> 121
     //   78: goto +43 -> 121
-    //   81: new 338	java/io/IOException
+    //   81: new 353	java/io/IOException
     //   84: dup
-    //   85: ldc_w 508
-    //   88: invokespecial 509	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   85: ldc_w 522
+    //   88: invokespecial 523	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   91: athrow
     //   92: astore_3
     //   93: goto +9 -> 102
@@ -944,7 +992,7 @@ public class PhoneInfoFetcher
     //   102: aload_2
     //   103: ifnull +7 -> 110
     //   106: aload_2
-    //   107: invokevirtual 506	java/io/DataInputStream:close	()V
+    //   107: invokevirtual 520	java/io/DataInputStream:close	()V
     //   110: aload_3
     //   111: athrow
     //   112: aconst_null
@@ -952,7 +1000,7 @@ public class PhoneInfoFetcher
     //   114: aload_2
     //   115: ifnull +6 -> 121
     //   118: goto -47 -> 71
-    //   121: getstatic 485	com/tmsdk/base/utils/PhoneInfoFetcher:N	J
+    //   121: getstatic 499	com/tmsdk/base/utils/PhoneInfoFetcher:sTotalMemorySize	J
     //   124: lstore_0
     //   125: lload_0
     //   126: lconst_0
@@ -993,129 +1041,6 @@ public class PhoneInfoFetcher
     //   81	92	139	java/lang/Throwable
     //   71	75	143	java/io/IOException
     //   106	110	147	java/io/IOException
-  }
-  
-  public static boolean isHUAWEI()
-  {
-    try
-    {
-      boolean bool = Build.MANUFACTURER.toLowerCase().contains("huawei");
-      if (bool) {
-        return true;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      label19:
-      break label19;
-    }
-    return false;
-  }
-  
-  public static boolean isLenovo()
-  {
-    try
-    {
-      String str = Build.MANUFACTURER.toLowerCase();
-      if (!str.contains("lenovo"))
-      {
-        boolean bool = str.contains("motorola");
-        if (!bool) {}
-      }
-      else
-      {
-        return true;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      label31:
-      break label31;
-    }
-    return false;
-  }
-  
-  public static boolean isMEIZU()
-  {
-    try
-    {
-      boolean bool = Build.MANUFACTURER.toLowerCase().contains("meizu");
-      if (bool) {
-        return true;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      label19:
-      break label19;
-    }
-    return false;
-  }
-  
-  public static boolean isOPPO()
-  {
-    try
-    {
-      boolean bool = Build.MANUFACTURER.toLowerCase().contains("oppo");
-      if (bool) {
-        return true;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      label19:
-      break label19;
-    }
-    return false;
-  }
-  
-  public static boolean isOnePlus(Context paramContext)
-  {
-    try
-    {
-      boolean bool = paramContext.getPackageManager().hasSystemFeature("com.oneplus.mobilephone");
-      return bool;
-    }
-    catch (Throwable paramContext)
-    {
-      label13:
-      break label13;
-    }
-    return false;
-  }
-  
-  public static boolean isVIVO()
-  {
-    try
-    {
-      boolean bool = Build.MANUFACTURER.toLowerCase().contains("vivo");
-      if (bool) {
-        return true;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      label19:
-      break label19;
-    }
-    return false;
-  }
-  
-  public static boolean isXIAOMI()
-  {
-    try
-    {
-      boolean bool = Build.MANUFACTURER.toLowerCase().contains("xiaomi");
-      if (bool) {
-        return true;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      label19:
-      break label19;
-    }
-    return false;
   }
   
   public static class SizeInfo

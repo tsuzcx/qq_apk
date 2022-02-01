@@ -15,7 +15,7 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cr;
+import com.tencent.token.cs;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.g;
 import com.tencent.token.utils.l;
@@ -34,7 +34,7 @@ public class FaceRecognitionCreateActivity
   {
     try
     {
-      boolean bool = RqdApplication.l().getSharedPreferences("create_notice_flag", 0).getBoolean("notice_flag", false);
+      boolean bool = RqdApplication.n().getSharedPreferences("create_notice_flag", 0).getBoolean("notice_flag", false);
       return bool;
     }
     catch (Exception localException)
@@ -49,8 +49,8 @@ public class FaceRecognitionCreateActivity
   
   private void initNotice()
   {
-    setTitle(2131493685);
-    this.fr_btn_scan = ((Button)findViewById(2131165506));
+    setTitle(2131493686);
+    this.fr_btn_scan = ((Button)findViewById(2131165508));
     this.fr_btn_scan.setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
@@ -66,7 +66,7 @@ public class FaceRecognitionCreateActivity
   
   private void initReg()
   {
-    this.chk = ((CheckBox)findViewById(2131165507));
+    this.chk = ((CheckBox)findViewById(2131165509));
     this.chk.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
     {
       public void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
@@ -83,30 +83,30 @@ public class FaceRecognitionCreateActivity
         FaceRecognitionCreateActivity.this.btn_reg.setEnabled(false);
       }
     });
-    this.tv_licence = ((TextView)findViewById(2131165516));
-    this.tv_licence.setText(Html.fromHtml(getResources().getString(2131493158)));
+    this.tv_licence = ((TextView)findViewById(2131165518));
+    this.tv_licence.setText(Html.fromHtml(getResources().getString(2131493159)));
     this.tv_licence.setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
         paramAnonymousView = FaceRecognitionCreateActivity.this;
-        l.a(paramAnonymousView, paramAnonymousView.getResources().getString(2131493438), FaceRecognitionCreateActivity.this.getResources().getString(2131493439));
+        l.a(paramAnonymousView, paramAnonymousView.getResources().getString(2131493439), FaceRecognitionCreateActivity.this.getResources().getString(2131493440));
       }
     });
-    this.btn_reg = ((Button)findViewById(2131165505));
+    this.btn_reg = ((Button)findViewById(2131165507));
     this.btn_reg.setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
         if (FaceRecognitionCreateActivity.this.chk.isChecked())
         {
-          if (cr.a().e() == null)
+          if (cs.a().e() == null)
           {
             paramAnonymousView = FaceRecognitionCreateActivity.this;
             paramAnonymousView.showNoAccountTipDialog(paramAnonymousView, 3, 0);
             return;
           }
-          if (!cr.a().e().mIsBinded)
+          if (!cs.a().e().mIsBinded)
           {
             paramAnonymousView = FaceRecognitionCreateActivity.this;
             paramAnonymousView.showNoAccountTipDialog(paramAnonymousView, 3, 1);
@@ -132,7 +132,7 @@ public class FaceRecognitionCreateActivity
   {
     try
     {
-      SharedPreferences.Editor localEditor = RqdApplication.l().getSharedPreferences("create_notice_flag", 0).edit();
+      SharedPreferences.Editor localEditor = RqdApplication.n().getSharedPreferences("create_notice_flag", 0).edit();
       localEditor.putBoolean("notice_flag", true);
       localEditor.commit();
       return;

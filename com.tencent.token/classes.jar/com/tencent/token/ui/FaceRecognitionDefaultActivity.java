@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cr;
+import com.tencent.token.cs;
 import com.tencent.token.global.g;
 import com.tencent.token.utils.l;
 import com.tencent.token.utils.m;
@@ -57,20 +57,20 @@ public class FaceRecognitionDefaultActivity
     this.fromspalsh = getIntent().getBooleanExtra("fromsplash", false);
     if (i == 1)
     {
-      showOrangeToast(2131493159, 2131100167);
+      showOrangeToast(2131493160, 2131100167);
       AccountPageActivity.mNeedRefreshEval = true;
     }
     else if (i == 2)
     {
-      showOrangeToast(2131493181, 2131100167);
+      showOrangeToast(2131493182, 2131100167);
     }
-    this.tv_status = ((TextView)findViewById(2131165515));
-    this.tv_iv_facepsw_status = ((TextView)findViewById(2131165476));
-    this.tv_iv_facemobile_status = ((TextView)findViewById(2131165472));
-    this.mFaceStartPswDivider = findViewById(2131165483);
-    this.mFaceChPswDivider = findViewById(2131165479);
-    this.mFaceChmobileDivider = findViewById(2131165478);
-    this.rl_pwd = findViewById(2131165512);
+    this.tv_status = ((TextView)findViewById(2131165517));
+    this.tv_iv_facepsw_status = ((TextView)findViewById(2131165478));
+    this.tv_iv_facemobile_status = ((TextView)findViewById(2131165474));
+    this.mFaceStartPswDivider = findViewById(2131165485);
+    this.mFaceChPswDivider = findViewById(2131165481);
+    this.mFaceChmobileDivider = findViewById(2131165480);
+    this.rl_pwd = findViewById(2131165514);
     this.rl_pwd.setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
@@ -79,8 +79,8 @@ public class FaceRecognitionDefaultActivity
         FaceRecognitionDefaultActivity.this.startActivity(paramAnonymousView);
       }
     });
-    this.iv_facemobileredicon = ((ImageView)findViewById(2131165473));
-    this.face_chanege_pwd = findViewById(2131165474);
+    this.iv_facemobileredicon = ((ImageView)findViewById(2131165475));
+    this.face_chanege_pwd = findViewById(2131165476);
     if (m.i() == 0) {
       this.face_chanege_pwd.setVisibility(8);
     }
@@ -93,7 +93,7 @@ public class FaceRecognitionDefaultActivity
         FaceRecognitionDefaultActivity.this.startActivity(paramAnonymousView);
       }
     });
-    paramBundle = findViewById(2131165470);
+    paramBundle = findViewById(2131165472);
     paramBundle.setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
@@ -134,10 +134,10 @@ public class FaceRecognitionDefaultActivity
       paramBundle.setVisibility(8);
       this.mFaceChmobileDivider.setVisibility(8);
     }
-    this.mOrangeView = findViewById(2131166324);
-    this.mOrangeText = ((TextView)findViewById(2131166118));
-    this.mOrangeClose = ((ImageView)findViewById(2131166115));
-    this.mOrangeText.setText(getResources().getString(2131493129));
+    this.mOrangeView = findViewById(2131166326);
+    this.mOrangeText = ((TextView)findViewById(2131166120));
+    this.mOrangeClose = ((ImageView)findViewById(2131166117));
+    this.mOrangeText.setText(getResources().getString(2131493130));
     this.mOrangeClose.setImageResource(2131099764);
     this.mOrangeView.setOnClickListener(new View.OnClickListener()
     {
@@ -156,7 +156,7 @@ public class FaceRecognitionDefaultActivity
         this.mOrangeView.setVisibility(0);
       }
     }
-    this.rl_retry = findViewById(2131165513);
+    this.rl_retry = findViewById(2131165515);
     this.rl_retry.setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
@@ -168,7 +168,7 @@ public class FaceRecognitionDefaultActivity
         FaceRecognitionDefaultActivity.this.startActivity(paramAnonymousView);
       }
     });
-    this.rl_add = findViewById(2131165511);
+    this.rl_add = findViewById(2131165513);
     this.rl_add.setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
@@ -184,20 +184,20 @@ public class FaceRecognitionDefaultActivity
     super.onResume();
     if (m.e() != 0L)
     {
-      this.tv_status.setText(2131493586);
+      this.tv_status.setText(2131493587);
       this.tv_status.setTextAppearance(this, 2131558805);
     }
     else
     {
-      this.tv_status.setText(2131493585);
+      this.tv_status.setText(2131493586);
       this.tv_status.setTextAppearance(this, 2131558806);
     }
-    if (cr.a().e() == null)
+    if (cs.a().e() == null)
     {
       showNoAccountTipDialog(this, 3, 0);
       return;
     }
-    if (!cr.a().e().mIsBinded)
+    if (!cs.a().e().mIsBinded)
     {
       showNoAccountTipDialog(this, 3, 1);
       return;
@@ -232,21 +232,21 @@ public class FaceRecognitionDefaultActivity
         g.a(((StringBuilder)localObject).toString());
         if (FaceRecognitionDefaultActivity.this.psw_open_switch)
         {
-          FaceRecognitionDefaultActivity.this.tv_iv_facepsw_status.setText(2131493586);
+          FaceRecognitionDefaultActivity.this.tv_iv_facepsw_status.setText(2131493587);
           FaceRecognitionDefaultActivity.this.tv_iv_facepsw_status.setTextAppearance(FaceRecognitionDefaultActivity.this, 2131558805);
         }
         else
         {
-          FaceRecognitionDefaultActivity.this.tv_iv_facepsw_status.setText(2131493585);
+          FaceRecognitionDefaultActivity.this.tv_iv_facepsw_status.setText(2131493586);
           FaceRecognitionDefaultActivity.this.tv_iv_facepsw_status.setTextAppearance(FaceRecognitionDefaultActivity.this, 2131558806);
         }
         if (FaceRecognitionDefaultActivity.this.mobile_open_switch)
         {
-          FaceRecognitionDefaultActivity.this.tv_iv_facemobile_status.setText(2131493586);
+          FaceRecognitionDefaultActivity.this.tv_iv_facemobile_status.setText(2131493587);
           FaceRecognitionDefaultActivity.this.tv_iv_facemobile_status.setTextAppearance(FaceRecognitionDefaultActivity.this, 2131558805);
           return;
         }
-        FaceRecognitionDefaultActivity.this.tv_iv_facemobile_status.setText(2131493585);
+        FaceRecognitionDefaultActivity.this.tv_iv_facemobile_status.setText(2131493586);
         FaceRecognitionDefaultActivity.this.tv_iv_facemobile_status.setTextAppearance(FaceRecognitionDefaultActivity.this, 2131558806);
       }
     });

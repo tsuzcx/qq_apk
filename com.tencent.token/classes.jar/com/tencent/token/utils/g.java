@@ -7,10 +7,10 @@ import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
-import com.tencent.token.cr;
-import com.tencent.token.ep;
+import com.tencent.token.cs;
 import com.tencent.token.er;
 import com.tencent.token.et;
+import com.tencent.token.ev;
 import com.tencent.token.global.RqdApplication;
 import java.util.Collections;
 import java.util.HashMap;
@@ -37,8 +37,8 @@ public class g
     {
       public Bitmap a(String... paramAnonymousVarArgs)
       {
-        paramAnonymousVarArgs = cr.a().a(paramString1, null);
-        Bitmap localBitmap = cr.a().a(paramAnonymousVarArgs);
+        paramAnonymousVarArgs = cs.a().a(paramString1, null);
+        Bitmap localBitmap = cs.a().a(paramAnonymousVarArgs);
         if (localBitmap != null)
         {
           g.c.b(paramString2, localBitmap);
@@ -74,11 +74,11 @@ public class g
     {
       public Bitmap a(String... paramAnonymousVarArgs)
       {
-        paramAnonymousVarArgs = cr.a().a(paramString1, null);
+        paramAnonymousVarArgs = cs.a().a(paramString1, null);
         if ((paramAnonymousVarArgs != null) && (paramAnonymousVarArgs.equals(paramString3))) {
           return null;
         }
-        Bitmap localBitmap = cr.a().a(paramAnonymousVarArgs);
+        Bitmap localBitmap = cs.a().a(paramAnonymousVarArgs);
         if (localBitmap != null)
         {
           g.c.b(paramString2, localBitmap);
@@ -203,21 +203,21 @@ public class g
     if (paramMap == null) {
       return false;
     }
-    Object localObject = new ep();
+    Object localObject = new er();
     try
     {
-      localObject = er.a((et)localObject, "qqface", new String[] { "uinhash", "filename" }, null, null, null, null, null, null);
+      localObject = et.a((ev)localObject, "qqface", new String[] { "uinhash", "filename" }, null, null, null, null, null, null);
       if (localObject == null) {
         return false;
       }
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        ep localep = (ep)((Iterator)localObject).next();
-        if (localep == null) {
+        er localer = (er)((Iterator)localObject).next();
+        if (localer == null) {
           return true;
         }
-        paramMap.put(localep.a, localep.b);
+        paramMap.put(localer.a, localer.b);
       }
       return true;
     }
@@ -274,10 +274,10 @@ public class g
   {
     if (!h)
     {
-      Resources localResources = RqdApplication.l().getResources();
+      Resources localResources = RqdApplication.n().getResources();
       a = m.a(localResources, 2131099812);
       b = m.a(localResources, 2131099767);
-      c = new ImageCache("", 30, RqdApplication.l());
+      c = new ImageCache("", 30, RqdApplication.n());
       e = Collections.synchronizedMap(new HashMap());
       d = Collections.synchronizedMap(new HashMap());
       h = true;
@@ -288,10 +288,10 @@ public class g
   {
     try
     {
-      ep localep = new ep();
-      localep.a = paramString1;
-      localep.b = paramString2;
-      er.c(localep);
+      er localer = new er();
+      localer.a = paramString1;
+      localer.b = paramString2;
+      et.c(localer);
       return;
     }
     finally {}

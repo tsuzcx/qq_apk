@@ -1,10 +1,10 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.ca;
-import com.tencent.token.cc;
+import com.tencent.token.cb;
+import com.tencent.token.cd;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -23,24 +23,24 @@ public class ProtoCheckUpSMS
   private int h = 0;
   private final String i = "/cn/mbtoken3/mbtoken3_check_up_sms";
   
-  public static void a(do paramdo, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3)
+  public static void a(dp paramdp, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramdo.c.put("param.uinhash", Long.valueOf(paramLong1));
-    paramdo.c.put("param.realuin", Long.valueOf(paramLong2));
-    paramdo.c.put("param.general.mobilecode.sceneid", Integer.valueOf(paramInt1));
-    paramdo.c.put("param.type", Integer.valueOf(paramInt3));
-    paramdo.j = paramInt2;
+    paramdp.c.put("param.uinhash", Long.valueOf(paramLong1));
+    paramdp.c.put("param.realuin", Long.valueOf(paramLong2));
+    paramdp.c.put("param.general.mobilecode.sceneid", Integer.valueOf(paramInt1));
+    paramdp.c.put("param.type", Integer.valueOf(paramInt3));
+    paramdp.j = paramInt2;
   }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     if (str == null)
     {
       this.a.b(104);
       return null;
     }
-    Object localObject = l.a(new Object[] { "real_uin", Long.valueOf(this.e), "verify_type_id", Integer.valueOf(this.h), "scene_id", Integer.valueOf(this.g), "seq_id", Integer.valueOf(this.f), "op_time", Long.valueOf(cc.c().s() / 1000L) });
+    Object localObject = l.a(new Object[] { "real_uin", Long.valueOf(this.e), "verify_type_id", Integer.valueOf(this.h), "scene_id", Integer.valueOf(this.g), "seq_id", Integer.valueOf(this.f), "op_time", Long.valueOf(cd.c().s() / 1000L) });
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("?uin=");
     localStringBuilder.append(this.d);
@@ -56,13 +56,13 @@ public class ProtoCheckUpSMS
     return ((StringBuilder)localObject).toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.d = ((Long)paramdo.c.get("param.uinhash")).longValue();
-    this.e = ((Long)paramdo.c.get("param.realuin")).longValue();
-    this.g = ((Integer)paramdo.c.get("param.general.mobilecode.sceneid")).intValue();
-    this.h = ((Integer)paramdo.c.get("param.type")).intValue();
-    this.f = paramdo.j;
+    this.d = ((Long)paramdp.c.get("param.uinhash")).longValue();
+    this.e = ((Long)paramdp.c.get("param.realuin")).longValue();
+    this.g = ((Integer)paramdp.c.get("param.general.mobilecode.sceneid")).intValue();
+    this.h = ((Integer)paramdp.c.get("param.type")).intValue();
+    this.f = paramdp.j;
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -95,7 +95,7 @@ public class ProtoCheckUpSMS
     localStringBuilder.append("parseJSON error decodeData=");
     localStringBuilder.append(paramJSONObject);
     g.c(localStringBuilder.toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
 }
 

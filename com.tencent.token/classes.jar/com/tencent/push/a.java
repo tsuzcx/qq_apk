@@ -47,14 +47,14 @@ public class a
       return null;
     }
     View localView = View.inflate(this.o, 2131296358, null);
-    this.a = ((TextView)localView.findViewById(2131166101));
-    this.b = ((LinearLayout)localView.findViewById(2131165541));
-    this.c = ((TextView)localView.findViewById(2131165542));
-    this.d = ((ImageView)localView.findViewById(2131165579));
-    this.e = ((TextView)localView.findViewById(2131166104));
-    this.f = ((TextView)localView.findViewById(2131166035));
-    this.g = ((Button)localView.findViewById(2131165340));
-    this.h = ((ImageView)localView.findViewById(2131165379));
+    this.a = ((TextView)localView.findViewById(2131166103));
+    this.b = ((LinearLayout)localView.findViewById(2131165543));
+    this.c = ((TextView)localView.findViewById(2131165544));
+    this.d = ((ImageView)localView.findViewById(2131165581));
+    this.e = ((TextView)localView.findViewById(2131166106));
+    this.f = ((TextView)localView.findViewById(2131166037));
+    this.g = ((Button)localView.findViewById(2131165342));
+    this.h = ((ImageView)localView.findViewById(2131165381));
     if (!TextUtils.isEmpty(this.i))
     {
       this.a.setVisibility(0);
@@ -126,7 +126,7 @@ public class a
     super.g();
     Intent localIntent = new Intent(this.o, IndexActivity.class);
     localIntent.addFlags(67108864);
-    RqdApplication.l().startActivity(localIntent);
+    RqdApplication.n().startActivity(localIntent);
     TMSDKContext.saveActionData(1150175);
   }
   

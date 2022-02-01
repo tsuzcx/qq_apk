@@ -12,7 +12,7 @@ import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import com.tencent.token.dx;
+import com.tencent.token.dz;
 import com.tencent.token.ui.base.PullToRefreshListView;
 import com.tencent.token.ui.base.PullToRefreshListView.a;
 import java.io.BufferedReader;
@@ -214,7 +214,7 @@ public class ShowLogActivity
   private void initUI()
   {
     setContentView(2131296442);
-    this.mListView = ((PullToRefreshListView)findViewById(2131165683));
+    this.mListView = ((PullToRefreshListView)findViewById(2131165685));
     View localView = LayoutInflater.from(this).inflate(2131296379, this.mListView, false);
     localView.setVisibility(8);
     this.mListView.addFooterView(localView);
@@ -225,7 +225,7 @@ public class ShowLogActivity
     localView.setVisibility(8);
     this.mListView.addFooterView(localView);
     this.mListView.setScrollingCacheEnabled(true);
-    this.mListView.a(2131493313);
+    this.mListView.a(2131493314);
   }
   
   private void loadMoreLogs()
@@ -243,7 +243,7 @@ public class ShowLogActivity
         if (((d)localObject).b + 1 >= 2) {
           return;
         }
-        BufferedReader localBufferedReader = dx.b(((d)localObject).b + 1);
+        BufferedReader localBufferedReader = dz.b(((d)localObject).b + 1);
         if (localBufferedReader != null)
         {
           addData(localBufferedReader);
@@ -366,7 +366,7 @@ public class ShowLogActivity
     
     protected Void a(Void... paramVarArgs)
     {
-      dx.h();
+      dz.h();
       paramVarArgs = ShowLogActivity.this.mLogs.iterator();
       while (paramVarArgs.hasNext())
       {
@@ -386,7 +386,7 @@ public class ShowLogActivity
     protected void onPreExecute()
     {
       ShowLogActivity localShowLogActivity = ShowLogActivity.this;
-      localShowLogActivity.showProDialog(localShowLogActivity, 2131493566, new View.OnClickListener()
+      localShowLogActivity.showProDialog(localShowLogActivity, 2131493567, new View.OnClickListener()
       {
         public void onClick(View paramAnonymousView)
         {
@@ -433,7 +433,7 @@ public class ShowLogActivity
       {
         paramView = ShowLogActivity.this.getLayoutInflater().inflate(2131296443, null);
         paramViewGroup = new a(null);
-        paramViewGroup.a = ((TextView)paramView.findViewById(2131165684));
+        paramViewGroup.a = ((TextView)paramView.findViewById(2131165686));
         paramView.setTag(paramViewGroup);
       }
       else

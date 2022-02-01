@@ -3,8 +3,8 @@ package com.tencent.halley;
 import android.content.Context;
 import com.tencent.halley.common.f;
 import com.tencent.halley.downloader.DownloaderFactory;
-import com.tencent.token.ak;
-import com.tencent.token.aq;
+import com.tencent.token.al;
+import com.tencent.token.ar;
 import java.util.List;
 
 public class a
@@ -13,9 +13,9 @@ public class a
   {
     try
     {
-      if (aq.a() != null)
+      if (ar.a() != null)
       {
-        paramString = aq.a().a(paramString, paramInt, paramLong, paramBoolean);
+        paramString = ar.a().a(paramString, paramInt, paramLong, paramBoolean);
         return paramString;
       }
     }
@@ -36,7 +36,7 @@ public class a
         return;
       }
       f.a(paramContext, paramString1, paramString2, paramString3);
-      paramContext = aq.a(paramContext, paramString1, paramString2, paramString3);
+      paramContext = ar.a(paramContext, paramString1, paramString2, paramString3);
       if (paramContext != null) {
         paramContext.a(paramList);
       }

@@ -1,115 +1,44 @@
 package com.tencent.token;
 
-import android.graphics.Matrix;
-import android.graphics.Path;
-import android.graphics.PathMeasure;
-import taiji.k;
-import taiji.l;
-import uilib.doraemon.g;
-
-public final class gn
+public class gn
 {
-  private static final PathMeasure a = new PathMeasure();
-  private static final Path b = new Path();
-  private static final Path c = new Path();
-  private static final float[] d = new float[4];
-  private static final float e = (float)Math.sqrt(2.0D);
-  
-  public static float a(Matrix paramMatrix)
+  private static float a(float paramFloat)
   {
-    float[] arrayOfFloat = d;
-    arrayOfFloat[0] = 0.0F;
-    arrayOfFloat[1] = 0.0F;
-    float f1 = e;
-    arrayOfFloat[2] = f1;
-    arrayOfFloat[3] = f1;
-    paramMatrix.mapPoints(arrayOfFloat);
-    paramMatrix = d;
-    f1 = paramMatrix[2];
-    float f2 = paramMatrix[0];
-    float f3 = paramMatrix[3];
-    float f4 = paramMatrix[1];
-    return (float)Math.hypot(f1 - f2, f3 - f4) / 2.0F;
+    if (paramFloat <= 0.0031308F) {
+      return paramFloat * 12.92F;
+    }
+    return (float)(Math.pow(paramFloat, 0.416666656732559D) * 1.054999947547913D - 0.05499999970197678D);
   }
   
-  public static void a(Path paramPath, float paramFloat1, float paramFloat2, float paramFloat3)
+  public static int a(float paramFloat, int paramInt1, int paramInt2)
   {
-    g.a("applyTrimPathIfNeeded");
-    a.setPath(paramPath, false);
-    float f2 = a.getLength();
-    if ((paramFloat1 == 1.0F) && (paramFloat2 == 0.0F)) {}
-    for (;;)
-    {
-      g.b("applyTrimPathIfNeeded");
-      return;
-      if ((f2 >= 1.0F) && (Math.abs(paramFloat2 - paramFloat1 - 1.0F) >= 0.01D))
-      {
-        float f1 = paramFloat1 * f2;
-        paramFloat2 *= f2;
-        paramFloat1 = Math.min(f1, paramFloat2);
-        f1 = Math.max(f1, paramFloat2);
-        paramFloat3 *= f2;
-        paramFloat2 = paramFloat1 + paramFloat3;
-        f1 += paramFloat3;
-        paramFloat3 = paramFloat2;
-        paramFloat1 = f1;
-        if (paramFloat2 >= f2)
-        {
-          paramFloat3 = paramFloat2;
-          paramFloat1 = f1;
-          if (f1 >= f2)
-          {
-            paramFloat3 = gm.a(paramFloat2, f2);
-            paramFloat1 = gm.a(f1, f2);
-          }
-        }
-        paramFloat2 = paramFloat3;
-        if (paramFloat3 < 0.0F) {
-          paramFloat2 = gm.a(paramFloat3, f2);
-        }
-        paramFloat3 = paramFloat1;
-        if (paramFloat1 < 0.0F) {
-          paramFloat3 = gm.a(paramFloat1, f2);
-        }
-        if (paramFloat2 == paramFloat3)
-        {
-          paramPath.reset();
-        }
-        else
-        {
-          paramFloat1 = paramFloat2;
-          if (paramFloat2 >= paramFloat3) {
-            paramFloat1 = paramFloat2 - f2;
-          }
-          b.reset();
-          a.getSegment(paramFloat1, paramFloat3, b, true);
-          if (paramFloat3 > f2)
-          {
-            c.reset();
-            a.getSegment(0.0F, paramFloat3 % f2, c, true);
-          }
-          for (;;)
-          {
-            b.addPath(c);
-            break;
-            if (paramFloat1 >= 0.0F) {
-              break;
-            }
-            c.reset();
-            a.getSegment(paramFloat1 + f2, f2, c, true);
-          }
-          paramPath.set(b);
-        }
-      }
-    }
+    float f1 = (paramInt1 >> 24 & 0xFF) / 255.0F;
+    float f4 = (paramInt1 >> 16 & 0xFF) / 255.0F;
+    float f5 = (paramInt1 >> 8 & 0xFF) / 255.0F;
+    float f6 = (paramInt1 & 0xFF) / 255.0F;
+    float f2 = (paramInt2 >> 24 & 0xFF) / 255.0F;
+    float f8 = (paramInt2 >> 16 & 0xFF) / 255.0F;
+    float f7 = (paramInt2 >> 8 & 0xFF) / 255.0F;
+    float f3 = (paramInt2 & 0xFF) / 255.0F;
+    f4 = b(f4);
+    f5 = b(f5);
+    f6 = b(f6);
+    f8 = b(f8);
+    f7 = b(f7);
+    f3 = b(f3);
+    f4 = a(f4 + (f8 - f4) * paramFloat);
+    f5 = a(f5 + (f7 - f5) * paramFloat);
+    f3 = a(f6 + paramFloat * (f3 - f6));
+    paramInt1 = Math.round((f1 + (f2 - f1) * paramFloat) * 255.0F);
+    return Math.round(f4 * 255.0F) << 16 | paramInt1 << 24 | Math.round(f5 * 255.0F) << 8 | Math.round(f3 * 255.0F);
   }
   
-  public static void a(Path paramPath, k paramk)
+  private static float b(float paramFloat)
   {
-    if (paramk == null) {
-      return;
+    if (paramFloat <= 0.04045F) {
+      return paramFloat / 12.92F;
     }
-    a(paramPath, ((Float)paramk.d().b()).floatValue() / 100.0F, ((Float)paramk.e().b()).floatValue() / 100.0F, ((Float)paramk.f().b()).floatValue() / 360.0F);
+    return (float)Math.pow((paramFloat + 0.055F) / 1.055F, 2.400000095367432D);
   }
 }
 

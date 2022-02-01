@@ -1,7 +1,7 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.cs;
-import com.tencent.token.dl;
+import com.tencent.token.ct;
+import com.tencent.token.dm;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -31,7 +31,7 @@ public class NewConfigureCacheItem
     if (localArrayList != null) {
       localArrayList.clear();
     }
-    cs.a().h.a();
+    ct.a().h.a();
   }
 }
 

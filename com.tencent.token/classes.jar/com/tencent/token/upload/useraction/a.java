@@ -1,10 +1,10 @@
 package com.tencent.token.upload.useraction;
 
 import android.view.MotionEvent;
-import com.tencent.token.cb;
 import com.tencent.token.cc;
+import com.tencent.token.cd;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cr;
+import com.tencent.token.cs;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -45,8 +45,8 @@ public class a
     //   3: dup
     //   4: invokespecial 90	com/tencent/token/global/e:<init>	()V
     //   7: astore_3
-    //   8: invokestatic 95	com/tencent/token/cr:a	()Lcom/tencent/token/cr;
-    //   11: invokevirtual 98	com/tencent/token/cr:o	()Z
+    //   8: invokestatic 95	com/tencent/token/cs:a	()Lcom/tencent/token/cs;
+    //   11: invokevirtual 98	com/tencent/token/cs:o	()Z
     //   14: ifne +24 -> 38
     //   17: aload_0
     //   18: getfield 100	com/tencent/token/upload/useraction/a:r	Z
@@ -100,7 +100,7 @@ public class a
     //   119: astore 5
     //   121: aload 5
     //   123: ldc 146
-    //   125: getstatic 148	com/tencent/token/cr:c	Ljava/lang/String;
+    //   125: getstatic 148	com/tencent/token/cs:c	Ljava/lang/String;
     //   128: invokevirtual 152	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   131: aload 5
     //   133: ldc 154
@@ -115,7 +115,7 @@ public class a
     //   152: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   155: pop
     //   156: aload 6
-    //   158: getstatic 148	com/tencent/token/cr:c	Ljava/lang/String;
+    //   158: getstatic 148	com/tencent/token/cs:c	Ljava/lang/String;
     //   161: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   164: pop
     //   165: aload 6
@@ -136,14 +136,14 @@ public class a
     //   197: aload 6
     //   199: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   202: invokestatic 123	com/tencent/token/global/g:a	(Ljava/lang/String;)V
-    //   205: new 158	com/tencent/token/ez
+    //   205: new 158	com/tencent/token/fc
     //   208: dup
-    //   209: invokespecial 159	com/tencent/token/ez:<init>	()V
+    //   209: invokespecial 159	com/tencent/token/fc:<init>	()V
     //   212: astore_1
     //   213: aload_1
     //   214: aload 4
     //   216: aload 5
-    //   218: invokevirtual 162	com/tencent/token/ez:a	(Ljava/lang/String;Landroid/content/ContentValues;)[B
+    //   218: invokevirtual 162	com/tencent/token/fc:a	(Ljava/lang/String;Landroid/content/ContentValues;)[B
     //   221: astore 4
     //   223: aload 4
     //   225: ifnonnull +25 -> 250
@@ -155,7 +155,7 @@ public class a
     //   239: pop
     //   240: aload_3
     //   241: aload_1
-    //   242: invokevirtual 165	com/tencent/token/ez:a	()Lcom/tencent/token/global/e;
+    //   242: invokevirtual 165	com/tencent/token/fc:a	()Lcom/tencent/token/global/e;
     //   245: invokevirtual 168	com/tencent/token/global/e:a	(Lcom/tencent/token/global/e;)V
     //   248: aload_3
     //   249: areturn
@@ -396,7 +396,7 @@ public class a
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      this.q = cr.a().e();
+      this.q = cs.a().e();
       if (this.q != null) {
         localJSONObject.put("real_uin", this.q.b());
       } else {
@@ -526,8 +526,8 @@ public class a
       if (this.g.length() == 0) {
         return;
       }
-      i1 = cb.a + 1;
-      cb.a = i1;
+      i1 = cc.a + 1;
+      cc.a = i1;
       this.i = i1;
       this.o = true;
       localJSONArray = new JSONArray();
@@ -559,12 +559,12 @@ public class a
       localJSONObject = new JSONObject();
       try
       {
-        if (cr.a().e() != null) {
-          localJSONObject.put("uin", cr.a().e().mUin);
+        if (cs.a().e() != null) {
+          localJSONObject.put("uin", cs.a().e().mUin);
         }
         localJSONObject.put("seq_id", this.i);
-        localJSONObject.put("op_time", (int)(cc.c().s() / 1000L));
-        localJSONObject.put("token_seq", cc.c().k());
+        localJSONObject.put("op_time", (int)(cd.c().s() / 1000L));
+        localJSONObject.put("token_seq", cd.c().k());
         localJSONObject.put("action_list", localJSONArray);
       }
       catch (Exception localException2)
@@ -640,7 +640,7 @@ public class a
     if (c.l()) {
       return false;
     }
-    return a(RqdApplication.l());
+    return a(RqdApplication.n());
   }
   
   /* Error */
@@ -656,7 +656,7 @@ public class a
     //   12: ifne +5 -> 17
     //   15: iconst_1
     //   16: ireturn
-    //   17: invokestatic 347	com/tencent/token/global/RqdApplication:l	()Landroid/content/Context;
+    //   17: invokestatic 347	com/tencent/token/global/RqdApplication:n	()Landroid/content/Context;
     //   20: ldc_w 278
     //   23: invokevirtual 353	android/content/Context:openFileInput	(Ljava/lang/String;)Ljava/io/FileInputStream;
     //   26: astore_1

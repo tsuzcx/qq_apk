@@ -1,10 +1,10 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.ca;
-import com.tencent.token.cc;
+import com.tencent.token.cb;
+import com.tencent.token.cd;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -25,13 +25,13 @@ public class ProtoGetRealNameVerify
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     if (str == null)
     {
       this.a.b(104);
       return null;
     }
-    Object localObject = l.a(new Object[] { "real_uin", Long.valueOf(this.g), "seq_id", Integer.valueOf(this.h), "op_time", Long.valueOf(cc.c().s() / 1000L), "scene_id", Integer.valueOf(this.i) });
+    Object localObject = l.a(new Object[] { "real_uin", Long.valueOf(this.g), "seq_id", Integer.valueOf(this.h), "op_time", Long.valueOf(cd.c().s() / 1000L), "scene_id", Integer.valueOf(this.i) });
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("?uin=");
     localStringBuilder.append(this.f);
@@ -47,12 +47,12 @@ public class ProtoGetRealNameVerify
     return ((StringBuilder)localObject).toString();
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.f = ((Long)paramdo.c.get("param.uinhash")).longValue();
-    this.g = ((Long)paramdo.c.get("param.realuin")).longValue();
-    this.i = ((Integer)paramdo.c.get("param.scene.id")).intValue();
-    this.h = paramdo.j;
+    this.f = ((Long)paramdp.c.get("param.uinhash")).longValue();
+    this.g = ((Long)paramdp.c.get("param.realuin")).longValue();
+    this.i = ((Integer)paramdp.c.get("param.scene.id")).intValue();
+    this.h = paramdp.j;
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -73,7 +73,7 @@ public class ProtoGetRealNameVerify
       localStringBuilder.append("parseJSON error decodeData=");
       localStringBuilder.append(paramJSONObject);
       g.c(localStringBuilder.toString());
-      a(10022, RqdApplication.l().getString(2131493067));
+      a(10022, RqdApplication.n().getString(2131493068));
       return;
     }
     a(j, paramJSONObject.getString("info"));

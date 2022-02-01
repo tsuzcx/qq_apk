@@ -46,10 +46,10 @@ public class d
     String str = "";
     int i1 = this.k;
     if (i1 == 2) {
-      return this.m.getResources().getString(2131493398);
+      return this.m.getResources().getString(2131493399);
     }
     if (i1 == 4) {
-      str = this.m.getResources().getString(2131493395);
+      str = this.m.getResources().getString(2131493396);
     }
     return str;
   }
@@ -59,10 +59,10 @@ public class d
     String str = "";
     int i1 = this.k;
     if (i1 == 2) {
-      return this.m.getResources().getString(2131493399);
+      return this.m.getResources().getString(2131493400);
     }
     if (i1 == 4) {
-      str = this.m.getResources().getString(2131493396);
+      str = this.m.getResources().getString(2131493397);
     }
     return str;
   }
@@ -72,10 +72,10 @@ public class d
     String str = "";
     int i1 = this.k;
     if (i1 == 2) {
-      return this.m.getResources().getString(2131493280);
+      return this.m.getResources().getString(2131493281);
     }
     if (i1 == 4) {
-      str = this.m.getResources().getString(2131493273);
+      str = this.m.getResources().getString(2131493274);
     }
     return str;
   }

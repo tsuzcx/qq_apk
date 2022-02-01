@@ -26,10 +26,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.qbar.QbarNative;
-import com.tencent.token.bu;
-import com.tencent.token.bw;
-import com.tencent.token.bz;
-import com.tencent.token.cb;
+import com.tencent.token.bv;
+import com.tencent.token.bx;
+import com.tencent.token.ca;
+import com.tencent.token.cc;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.g;
 import com.tencent.token.ui.GetBarcodeVerifyMsgActivity;
@@ -143,7 +143,7 @@ public class MainActivity
         localBundle.putString("url_txt", str);
         paramAnonymousMessage.putExtra("com.tencent.input_param", localBundle);
         MainActivity.this.startActivityForResult(paramAnonymousMessage, 1);
-        bu.a().a(System.currentTimeMillis(), 10);
+        bv.a().a(System.currentTimeMillis(), 10);
         MainActivity.this.finish();
       }
     }
@@ -214,18 +214,18 @@ public class MainActivity
     localObject = getResources().getDisplayMetrics();
     this.screenWidth = ((DisplayMetrics)localObject).heightPixels;
     this.screenHeight = ((DisplayMetrics)localObject).widthPixels;
-    this.surfaceView = ((SurfaceView)findViewById(2131165810));
-    this.mTitleText = ((TextView)findViewById(2131165296));
-    localObject = (RelativeLayout)findViewById(2131165928);
+    this.surfaceView = ((SurfaceView)findViewById(2131165812));
+    this.mTitleText = ((TextView)findViewById(2131165298));
+    localObject = (RelativeLayout)findViewById(2131165930);
     this.view = new RectView(this, this.screenHeight, this.screenWidth);
     this.view.invalidate();
     ((RelativeLayout)localObject).addView(this.view);
     if (this.mSource == 0)
     {
-      this.mTitleText.setText(getResources().getString(2131492992));
+      this.mTitleText.setText(getResources().getString(2131492993));
       return;
     }
-    this.mTitleText.setText(getResources().getString(2131493538));
+    this.mTitleText.setText(getResources().getString(2131493539));
   }
   
   public void detectStart()
@@ -325,15 +325,15 @@ public class MainActivity
     this.holder = this.surfaceView.getHolder();
     this.holder.addCallback(this);
     this.holder.setType(3);
-    findViewById(2131165294).setOnClickListener(new View.OnClickListener()
+    findViewById(2131165296).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
         paramAnonymousView = MainActivity.this;
-        l.b(paramAnonymousView, paramAnonymousView.getString(2131493428));
+        l.b(paramAnonymousView, paramAnonymousView.getString(2131493429));
       }
     });
-    findViewById(2131165289).setOnClickListener(new View.OnClickListener()
+    findViewById(2131165291).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
@@ -388,11 +388,11 @@ public class MainActivity
   {
     this.mBarcodeResult = paramBundle.getString("dataInfo");
     paramBundle = paramBundle.getString("dataInfo");
-    Object localObject1 = bz.a(getApplicationContext());
+    Object localObject1 = ca.a(getApplicationContext());
     Object localObject2;
-    if (((bz)localObject1).a(paramBundle))
+    if (((ca)localObject1).a(paramBundle))
     {
-      ((bz)localObject1).b(paramBundle);
+      ((ca)localObject1).b(paramBundle);
       localObject2 = new Intent(this, ScanLoginAccountListActivity.class);
       int i = paramBundle.indexOf("?k=") + 3;
       paramBundle = paramBundle.substring(i, i + 32);
@@ -401,17 +401,17 @@ public class MainActivity
     }
     try
     {
-      bw.a(RqdApplication.l()).a(((bz)localObject1).a());
+      bx.a(RqdApplication.n()).a(((ca)localObject1).a());
       label113:
       finish();
       return;
       localObject1 = parseBarcode(paramBundle);
       if (localObject1 == null)
       {
-        localObject1 = (ImageView)findViewById(2131165821);
+        localObject1 = (ImageView)findViewById(2131165823);
         ((ImageView)localObject1).setImageResource(2131099937);
         ((AnimationDrawable)((ImageView)localObject1).getDrawable()).start();
-        cb.a().a(paramBundle, this.uiHandler);
+        cc.a().a(paramBundle, this.uiHandler);
         return;
       }
       paramBundle = new Intent(this, GetBarcodeVerifyMsgActivity.class);

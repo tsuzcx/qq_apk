@@ -1,6 +1,6 @@
 package okhttp3.internal.connection;
 
-import com.tencent.token.fa;
+import com.tencent.token.fd;
 import java.io.IOException;
 import java.io.InterruptedIOException;
 import java.net.ProtocolException;
@@ -58,7 +58,7 @@ public final class b
     if (localObject != null)
     {
       this.c = b(paramSSLSocket);
-      fa.a.a((k)localObject, paramSSLSocket, this.d);
+      fd.a.a((k)localObject, paramSSLSocket, this.d);
       return localObject;
     }
     localObject = new StringBuilder();

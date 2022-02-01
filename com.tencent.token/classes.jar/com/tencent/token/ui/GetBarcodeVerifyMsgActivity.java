@@ -9,8 +9,8 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.token.cn;
-import com.tencent.token.cr;
+import com.tencent.token.co;
+import com.tencent.token.cs;
 import com.tencent.token.global.e;
 import com.tencent.token.global.g;
 import com.tencent.token.ui.base.DualMsgShowDialog;
@@ -58,9 +58,9 @@ public class GetBarcodeVerifyMsgActivity
       public e a(String... paramAnonymousVarArgs)
       {
         paramAnonymousVarArgs = new e();
-        if (!cr.a().o())
+        if (!cs.a().o())
         {
-          localObject = cr.a().q();
+          localObject = cs.a().q();
           paramAnonymousVarArgs = (String[])localObject;
           if (!((e)localObject).b()) {
             return localObject;
@@ -68,10 +68,10 @@ public class GetBarcodeVerifyMsgActivity
         }
         Object localObject = new StringBuilder();
         ((StringBuilder)localObject).append("barcode user: ");
-        ((StringBuilder)localObject).append(cr.a().d());
+        ((StringBuilder)localObject).append(cs.a().d());
         g.c(((StringBuilder)localObject).toString());
-        if (cr.a().d() > 0) {
-          return cn.a().a(GetBarcodeVerifyMsgActivity.this.mAqVerifyBarcodeContent);
+        if (cs.a().d() > 0) {
+          return co.a().a(GetBarcodeVerifyMsgActivity.this.mAqVerifyBarcodeContent);
         }
         paramAnonymousVarArgs.b(110);
         return paramAnonymousVarArgs;
@@ -93,7 +93,7 @@ public class GetBarcodeVerifyMsgActivity
         GetBarcodeVerifyMsgActivity.this.mPreparePro.setVisibility(4);
         if (paramAnonymouse.b())
         {
-          if (cn.a().b() > 0)
+          if (co.a().b() > 0)
           {
             GetBarcodeVerifyMsgActivity.this.dismissDualDialog();
             paramAnonymouse = GetBarcodeVerifyMsgActivity.this;
@@ -115,7 +115,7 @@ public class GetBarcodeVerifyMsgActivity
           if (10029 == paramAnonymouse.a)
           {
             paramAnonymouse = GetBarcodeVerifyMsgActivity.this;
-            paramAnonymouse.showUserDialog(2131492985, paramAnonymouse.getString(2131493761), 2131493802, 2131493028, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+            paramAnonymouse.showUserDialog(2131492986, paramAnonymouse.getString(2131493762), 2131493803, 2131493029, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
             {
               public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
               {
@@ -131,7 +131,7 @@ public class GetBarcodeVerifyMsgActivity
             return;
           }
           e.a(GetBarcodeVerifyMsgActivity.this.getResources(), paramAnonymouse);
-          GetBarcodeVerifyMsgActivity.this.showUserDialog(2131492985, paramAnonymouse.c, 2131493039, new DialogInterface.OnClickListener()
+          GetBarcodeVerifyMsgActivity.this.showUserDialog(2131492986, paramAnonymouse.c, 2131493040, new DialogInterface.OnClickListener()
           {
             public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
@@ -141,7 +141,7 @@ public class GetBarcodeVerifyMsgActivity
           return;
         }
         paramAnonymouse = GetBarcodeVerifyMsgActivity.this;
-        paramAnonymouse.showUserDialog(2131492985, paramAnonymouse.getResources().getString(2131493537), 2131493028, 2131492919, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+        paramAnonymouse.showUserDialog(2131492986, paramAnonymouse.getResources().getString(2131493538), 2131493029, 2131492920, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
           {
@@ -170,7 +170,7 @@ public class GetBarcodeVerifyMsgActivity
   
   private void showDualMsgExpireDlg()
   {
-    showUserDialog(2131492985, getString(2131493091), 2131493039, new DialogInterface.OnClickListener()
+    showUserDialog(2131492986, getString(2131493092), 2131493040, new DialogInterface.OnClickListener()
     {
       public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -183,9 +183,9 @@ public class GetBarcodeVerifyMsgActivity
   {
     super.onCreate(paramBundle);
     setContentView(2131296352);
-    this.mPreparePro = ((ProgressBar)findViewById(2131165808));
-    this.mPrepareText = ((TextView)findViewById(2131165809));
-    this.mPrepareText.setText(2131493095);
+    this.mPreparePro = ((ProgressBar)findViewById(2131165810));
+    this.mPrepareText = ((TextView)findViewById(2131165811));
+    this.mPrepareText.setText(2131493096);
     if ((getIntent() != null) && (getIntent().getBundleExtra("com.tencent.input_param") != null))
     {
       this.mAqVerifyBarcodeContent = getIntent().getBundleExtra("com.tencent.input_param").getString("barcode_result");

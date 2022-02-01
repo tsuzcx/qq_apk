@@ -40,13 +40,13 @@ public class CopyFaceDialog
     WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
     localLayoutParams.width = ((int)(((Activity)this.c).getWindowManager().getDefaultDisplay().getWidth() - IndexActivity.S_DENSITY * 46.0F));
     paramBundle.setAttributes(localLayoutParams);
-    this.b = ((TextView)findViewById(2131165411));
+    this.b = ((TextView)findViewById(2131165413));
     paramBundle = new StringBuilder();
     paramBundle.append(this.a);
-    paramBundle.append(this.c.getResources().getString(2131493126));
+    paramBundle.append(this.c.getResources().getString(2131493127));
     paramBundle = paramBundle.toString();
     this.b.setText(m.a(paramBundle, this.c.getResources().getDimension(2131034249), (int)(((Activity)this.c).getWindowManager().getDefaultDisplay().getWidth() - IndexActivity.S_DENSITY * 80.0F)));
-    ((Button)findViewById(2131165345)).setOnClickListener(new View.OnClickListener()
+    ((Button)findViewById(2131165347)).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {

@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cr;
+import com.tencent.token.cs;
 import com.tencent.token.utils.g;
 import com.tencent.token.utils.l;
 
@@ -35,11 +35,11 @@ class r
   
   private void a(View paramView, QQUser paramQQUser)
   {
-    ImageView localImageView1 = (ImageView)paramView.findViewById(2131165849);
-    Object localObject1 = (TextView)paramView.findViewById(2131165850);
-    Object localObject2 = (TextView)paramView.findViewById(2131165860);
-    ImageView localImageView2 = (ImageView)paramView.findViewById(2131165794);
-    ImageView localImageView3 = (ImageView)paramView.findViewById(2131165429);
+    ImageView localImageView1 = (ImageView)paramView.findViewById(2131165851);
+    Object localObject1 = (TextView)paramView.findViewById(2131165852);
+    Object localObject2 = (TextView)paramView.findViewById(2131165862);
+    ImageView localImageView2 = (ImageView)paramView.findViewById(2131165796);
+    ImageView localImageView3 = (ImageView)paramView.findViewById(2131165431);
     ((TextView)localObject1).setText(paramQQUser.mNickName);
     if ((paramQQUser.mUinMask != null) && (paramQQUser.mUinMask.length() > 0)) {
       ((TextView)localObject2).setText(paramQQUser.mUinMask);
@@ -84,7 +84,7 @@ class r
   
   public int getCount()
   {
-    int i = cr.a().d();
+    int i = cs.a().d();
     if (i >= 3) {
       return 3;
     }
@@ -103,12 +103,12 @@ class r
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    int i = cr.a().d();
+    int i = cs.a().d();
     if ((paramInt != 0) || (i == 0)) {}
     try
     {
       paramViewGroup = this.b.inflate(2131296424, paramViewGroup, false);
-      paramViewGroup.findViewById(2131165444).setVisibility(0);
+      paramViewGroup.findViewById(2131165446).setVisibility(0);
       paramViewGroup.setOnClickListener(this.d);
       return paramViewGroup;
     }
@@ -122,7 +122,7 @@ class r
     {
       paramViewGroup = this.b.inflate(2131296425, paramViewGroup, false);
       paramView = paramViewGroup;
-      paramViewGroup = cr.a().a(paramInt);
+      paramViewGroup = cs.a().a(paramInt);
       if (paramViewGroup == null) {
         return paramView;
       }

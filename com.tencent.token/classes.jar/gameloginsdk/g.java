@@ -2,7 +2,7 @@ package gameloginsdk;
 
 import b.a.e;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.ee;
+import com.tencent.token.eg;
 
 class g
   extends p
@@ -28,7 +28,7 @@ class g
   {
     if (paramJceStruct == null)
     {
-      paramInt1 = ee.a;
+      paramInt1 = eg.a;
       paramJceStruct = new StringBuilder();
       paramJceStruct.append("resp == null  gameConfirmCallback   retCode : ");
       paramJceStruct.append(paramInt3);
@@ -38,7 +38,7 @@ class g
     }
     if (paramInt3 == -50004)
     {
-      paramInt1 = ee.a;
+      paramInt1 = eg.a;
       paramJceStruct = new StringBuilder();
       paramJceStruct.append("回包超时  gameConfirmCallback   retCode : ");
       paramJceStruct.append(paramInt3);
@@ -47,7 +47,7 @@ class g
       return;
     }
     paramJceStruct = (e)paramJceStruct;
-    paramInt1 = ee.a;
+    paramInt1 = eg.a;
     long l = paramJceStruct.a;
     l = paramJceStruct.b;
     paramInt1 = paramJceStruct.d;
@@ -81,7 +81,7 @@ class g
         ((StringBuilder)localObject).append("忽略这个包，因为没收到过SCConfirm包的reqid : ");
         ((StringBuilder)localObject).append(paramJceStruct.a);
         ((StringBuilder)localObject).toString();
-        paramInt1 = ee.a;
+        paramInt1 = eg.a;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("忽略这个包，因为没收到过SCConfirm包的reqid : ");
         ((StringBuilder)localObject).append(paramJceStruct.a);

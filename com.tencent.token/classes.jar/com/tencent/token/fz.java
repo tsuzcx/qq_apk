@@ -1,72 +1,58 @@
 package com.tencent.token;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.List;
-import javax.annotation.Nullable;
-import javax.net.ssl.SSLParameters;
-import javax.net.ssl.SSLSocket;
-import okhttp3.Protocol;
+import java.io.File;
+import java.io.IOException;
 
-final class fz
-  extends gc
+public abstract interface fz
 {
-  final Method a;
-  final Method b;
-  
-  fz(Method paramMethod1, Method paramMethod2)
+  public static final fz a = new fz()
   {
-    this.a = paramMethod1;
-    this.b = paramMethod2;
-  }
-  
-  public static fz a()
-  {
-    try
+    public void a(File paramAnonymousFile)
     {
-      fz localfz = new fz(SSLParameters.class.getMethod("setApplicationProtocols", new Class[] { [Ljava.lang.String.class }), SSLSocket.class.getMethod("getApplicationProtocol", new Class[0]));
-      return localfz;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      label37:
-      break label37;
-    }
-    return null;
-  }
-  
-  @Nullable
-  public String a(SSLSocket paramSSLSocket)
-  {
-    try
-    {
-      paramSSLSocket = (String)this.b.invoke(paramSSLSocket, new Object[0]);
-      if (paramSSLSocket != null)
+      if (!paramAnonymousFile.delete())
       {
-        boolean bool = paramSSLSocket.equals("");
-        if (!bool) {
-          return paramSSLSocket;
+        if (!paramAnonymousFile.exists()) {
+          return;
         }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("failed to delete ");
+        localStringBuilder.append(paramAnonymousFile);
+        throw new IOException(localStringBuilder.toString());
       }
-      return null;
     }
-    catch (InvocationTargetException paramSSLSocket) {}catch (IllegalAccessException paramSSLSocket) {}
-    throw fc.a("unable to get selected protocols", paramSSLSocket);
-  }
-  
-  public void a(SSLSocket paramSSLSocket, String paramString, List<Protocol> paramList)
-  {
-    try
+    
+    public void a(File paramAnonymousFile1, File paramAnonymousFile2)
     {
-      paramString = paramSSLSocket.getSSLParameters();
-      paramList = a(paramList);
-      this.a.invoke(paramString, new Object[] { paramList.toArray(new String[paramList.size()]) });
-      paramSSLSocket.setSSLParameters(paramString);
-      return;
+      a(paramAnonymousFile2);
+      if (paramAnonymousFile1.renameTo(paramAnonymousFile2)) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed to rename ");
+      localStringBuilder.append(paramAnonymousFile1);
+      localStringBuilder.append(" to ");
+      localStringBuilder.append(paramAnonymousFile2);
+      throw new IOException(localStringBuilder.toString());
     }
-    catch (InvocationTargetException paramSSLSocket) {}catch (IllegalAccessException paramSSLSocket) {}
-    throw fc.a("unable to set ssl parameters", paramSSLSocket);
-  }
+    
+    public boolean b(File paramAnonymousFile)
+    {
+      return paramAnonymousFile.exists();
+    }
+    
+    public long c(File paramAnonymousFile)
+    {
+      return paramAnonymousFile.length();
+    }
+  };
+  
+  public abstract void a(File paramFile);
+  
+  public abstract void a(File paramFile1, File paramFile2);
+  
+  public abstract boolean b(File paramFile);
+  
+  public abstract long c(File paramFile);
 }
 
 

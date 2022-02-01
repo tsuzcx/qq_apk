@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.e;
 import com.tencent.token.global.g;
@@ -25,21 +25,21 @@ public class ProtoSetMbMobile
   private String j;
   private String k;
   
-  public static void a(do paramdo, long paramLong, int paramInt, String paramString1, String paramString2, String paramString3)
+  public static void a(dp paramdp, long paramLong, int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    paramdo.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramdo.c.put("param.mbmobile.set", Integer.valueOf(paramInt));
-    paramdo.c.put("param.mbmobile.mobile", paramString1);
-    paramdo.c.put("param.mbmoible.areacode", paramString2);
-    paramdo.c.put("param.wtlogin.a2", paramString3);
+    paramdp.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdp.c.put("param.mbmobile.set", Integer.valueOf(paramInt));
+    paramdp.c.put("param.mbmobile.mobile", paramString1);
+    paramdp.c.put("param.mbmoible.areacode", paramString2);
+    paramdp.c.put("param.wtlogin.a2", paramString3);
   }
   
   /* Error */
   protected String a()
   {
     // Byte code:
-    //   0: invokestatic 63	com/tencent/token/ca:a	()Lcom/tencent/token/ca;
-    //   3: invokevirtual 66	com/tencent/token/ca:b	()Ljava/lang/String;
+    //   0: invokestatic 63	com/tencent/token/cb:a	()Lcom/tencent/token/cb;
+    //   3: invokevirtual 66	com/tencent/token/cb:b	()Ljava/lang/String;
     //   6: astore_2
     //   7: aload_2
     //   8: ifnonnull +14 -> 22
@@ -85,18 +85,18 @@ public class ProtoSetMbMobile
     //   84: pop
     //   85: aload_3
     //   86: ldc 108
-    //   88: invokestatic 114	com/tencent/token/global/RqdApplication:l	()Landroid/content/Context;
-    //   91: invokestatic 119	com/tencent/token/bz:a	(Landroid/content/Context;)Lcom/tencent/token/bz;
-    //   94: invokevirtual 122	com/tencent/token/bz:b	()[B
+    //   88: invokestatic 114	com/tencent/token/global/RqdApplication:n	()Landroid/content/Context;
+    //   91: invokestatic 119	com/tencent/token/ca:a	(Landroid/content/Context;)Lcom/tencent/token/ca;
+    //   94: invokevirtual 122	com/tencent/token/ca:b	()[B
     //   97: invokestatic 127	com/tencent/token/utils/l:a	([B)Ljava/lang/String;
     //   100: invokevirtual 98	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   103: pop
-    //   104: getstatic 131	com/tencent/token/cb:a	I
+    //   104: getstatic 131	com/tencent/token/cc:a	I
     //   107: iconst_1
     //   108: iadd
     //   109: istore_1
     //   110: iload_1
-    //   111: putstatic 131	com/tencent/token/cb:a	I
+    //   111: putstatic 131	com/tencent/token/cc:a	I
     //   114: aload_0
     //   115: iload_1
     //   116: putfield 133	com/tencent/token/core/protocolcenter/protocol/ProtoSetMbMobile:c	I
@@ -108,8 +108,8 @@ public class ProtoSetMbMobile
     //   129: pop
     //   130: aload_3
     //   131: ldc 137
-    //   133: invokestatic 142	com/tencent/token/cc:c	()Lcom/tencent/token/cc;
-    //   136: invokevirtual 146	com/tencent/token/cc:s	()J
+    //   133: invokestatic 142	com/tencent/token/cd:c	()Lcom/tencent/token/cd;
+    //   136: invokevirtual 146	com/tencent/token/cd:s	()J
     //   139: ldc2_w 147
     //   142: ldiv
     //   143: l2i
@@ -200,13 +200,13 @@ public class ProtoSetMbMobile
     //   30	148	258	org/json/JSONException
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.d = ((Long)paramdo.c.get("param.uinhash")).longValue();
-    this.h = ((Integer)paramdo.c.get("param.mbmobile.set")).intValue();
-    this.i = ((String)paramdo.c.get("param.mbmobile.mobile"));
-    this.j = ((String)paramdo.c.get("param.mbmoible.areacode"));
-    this.k = ((String)paramdo.c.get("param.wtlogin.a2"));
+    this.d = ((Long)paramdp.c.get("param.uinhash")).longValue();
+    this.h = ((Integer)paramdp.c.get("param.mbmobile.set")).intValue();
+    this.i = ((String)paramdp.c.get("param.mbmobile.mobile"));
+    this.j = ((String)paramdp.c.get("param.mbmoible.areacode"));
+    this.k = ((String)paramdp.c.get("param.wtlogin.a2"));
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -220,7 +220,7 @@ public class ProtoSetMbMobile
         paramJSONObject = new JSONObject(new String(paramJSONObject));
         if (paramJSONObject.getInt("seq_id") != this.c)
         {
-          a(10000, RqdApplication.l().getString(2131493067));
+          a(10000, RqdApplication.n().getString(2131493068));
           return;
         }
         this.a.c();
@@ -233,7 +233,7 @@ public class ProtoSetMbMobile
       localStringBuilder.append("parseJSON error decodeData=");
       localStringBuilder.append(paramJSONObject);
       g.c(localStringBuilder.toString());
-      this.a.a(10022, RqdApplication.l().getString(2131493067), RqdApplication.l().getString(2131493067));
+      this.a.a(10022, RqdApplication.n().getString(2131493068), RqdApplication.n().getString(2131493068));
       return;
     }
     paramJSONObject = paramJSONObject.getString("info");

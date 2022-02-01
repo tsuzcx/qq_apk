@@ -1,12 +1,18 @@
 package com.tencent.token;
 
-public abstract interface ey
+public class ey
 {
-  public abstract void a(ex paramex, String paramString);
+  private static ez a;
   
-  public abstract void a(ex paramex, byte[] paramArrayOfByte);
-  
-  public abstract boolean a(ex paramex, int paramInt);
+  public static ez a()
+  {
+    if (a == null)
+    {
+      a = new ez(4, 20);
+      a.a();
+    }
+    return a;
+  }
 }
 
 

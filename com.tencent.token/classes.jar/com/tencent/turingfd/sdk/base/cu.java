@@ -3,7 +3,7 @@ package com.tencent.turingfd.sdk.base;
 import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.token.ea;
+import com.tencent.token.ec;
 import java.lang.ref.WeakReference;
 
 public class cu
@@ -21,7 +21,7 @@ public class cu
   public int k = 0;
   public String l = "";
   public String m;
-  public ea n;
+  public ec n;
   public int o = 5000;
   public int p = 3;
   public String q = "";
@@ -78,7 +78,7 @@ public class cu
     return this.p;
   }
   
-  public final ea i()
+  public final ec i()
   {
     return this.n;
   }

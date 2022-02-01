@@ -86,7 +86,7 @@ public class i
   {
     try
     {
-      Object localObject = a(RqdApplication.l());
+      Object localObject = a(RqdApplication.n());
       if (localObject != null)
       {
         localObject = ((ConnectivityManager)localObject).getAllNetworkInfo();

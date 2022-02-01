@@ -1,6 +1,12 @@
 package com.tencent.token;
 
-public final class am {}
+import java.util.ArrayList;
+import java.util.List;
+
+public final class am
+{
+  public List a = new ArrayList();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

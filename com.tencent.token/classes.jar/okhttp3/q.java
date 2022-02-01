@@ -1,6 +1,6 @@
 package okhttp3;
 
-import com.tencent.token.fc;
+import com.tencent.token.ff;
 import java.io.IOException;
 import java.security.cert.Certificate;
 import java.util.Collections;
@@ -52,13 +52,13 @@ public final class q
     }
     localObject = null;
     if (localObject != null) {
-      localObject = fc.a((Object[])localObject);
+      localObject = ff.a((Object[])localObject);
     } else {
       localObject = Collections.emptyList();
     }
     paramSSLSession = paramSSLSession.getLocalCertificates();
     if (paramSSLSession != null) {
-      paramSSLSession = fc.a(paramSSLSession);
+      paramSSLSession = ff.a(paramSSLSession);
     } else {
       paramSSLSession = Collections.emptyList();
     }

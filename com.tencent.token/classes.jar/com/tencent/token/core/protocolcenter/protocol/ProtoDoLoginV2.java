@@ -1,14 +1,14 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.ca;
-import com.tencent.token.cc;
+import com.tencent.token.cb;
+import com.tencent.token.cd;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.bean.UpgradeDeterminResult;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.cr;
-import com.tencent.token.do;
-import com.tencent.token.eq;
+import com.tencent.token.cs;
+import com.tencent.token.dp;
+import com.tencent.token.es;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -20,36 +20,36 @@ import org.json.JSONObject;
 public class ProtoDoLoginV2
   extends d
 {
-  cc d = cc.c();
-  eq e = cr.a().l;
+  cd d = cd.c();
+  es e = cs.a().l;
   private long f;
   private int g;
   private int h;
   
-  public static void a(do paramdo, long paramLong, int paramInt1, int paramInt2)
+  public static void a(dp paramdp, long paramLong, int paramInt1, int paramInt2)
   {
-    paramdo.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramdo.c.put("param.loginv2.clearkick", Integer.valueOf(paramInt1));
-    paramdo.j = paramInt2;
+    paramdp.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdp.c.put("param.loginv2.clearkick", Integer.valueOf(paramInt1));
+    paramdp.j = paramInt2;
   }
   
   protected String a()
   {
     this.d.m();
     Object localObject1 = this.d.o();
-    String str = ca.a().b();
+    String str = cb.a().b();
     if (str == null)
     {
       this.a.b(104);
       return null;
     }
-    Object localObject2 = cr.a().e();
+    Object localObject2 = cs.a().e();
     if (localObject2 != null)
     {
       if (!((QQUser)localObject2).mIsBinded) {
         return null;
       }
-      localObject1 = l.a(new Object[] { "uin", Long.valueOf(this.f), "tkn_code", localObject1, "ksid", this.d.h(), "channel_id", l.m(), "clear_kick", Integer.valueOf(this.g), "seq_id", Integer.valueOf(this.h), "op_time", Long.valueOf(cc.c().s() / 1000L) });
+      localObject1 = l.a(new Object[] { "uin", Long.valueOf(this.f), "tkn_code", localObject1, "ksid", this.d.h(), "channel_id", l.m(), "clear_kick", Integer.valueOf(this.g), "seq_id", Integer.valueOf(this.h), "op_time", Long.valueOf(cd.c().s() / 1000L) });
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("?aq_base_sid=");
       ((StringBuilder)localObject2).append(str);
@@ -65,11 +65,11 @@ public class ProtoDoLoginV2
     return null;
   }
   
-  protected void a(do paramdo)
+  protected void a(dp paramdp)
   {
-    this.f = ((Long)paramdo.c.get("param.uinhash")).longValue();
-    this.g = ((Integer)paramdo.c.get("param.loginv2.clearkick")).intValue();
-    this.h = paramdo.j;
+    this.f = ((Long)paramdp.c.get("param.uinhash")).longValue();
+    this.g = ((Integer)paramdp.c.get("param.loginv2.clearkick")).intValue();
+    this.h = paramdp.j;
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -115,7 +115,7 @@ public class ProtoDoLoginV2
         return;
       }
       long l1 = paramJSONObject.getLong("uin");
-      cr.a().a(paramJSONObject);
+      cs.a().a(paramJSONObject);
       if (l1 != this.f)
       {
         paramJSONObject = this.a;
@@ -127,13 +127,13 @@ public class ProtoDoLoginV2
         paramJSONObject.a(10000, ((StringBuilder)localObject1).toString());
         return;
       }
-      cr.a().m();
+      cs.a().m();
       if (!this.e.a(l1)) {
         this.a.a(10000, "mUserStorage.setCurrentUserByUin failed");
       }
       l1 = System.currentTimeMillis() / 1000L;
       long l2 = paramJSONObject.getInt("valid_time");
-      cr.a().a(this.f, l1, l2);
+      cs.a().a(this.f, l1, l2);
       if (this.d.h().length() == 0) {
         this.d.c(paramJSONObject.optString("ksid"));
       }
@@ -144,7 +144,7 @@ public class ProtoDoLoginV2
     ((StringBuilder)localObject1).append("parseJSON error decodeData=");
     ((StringBuilder)localObject1).append(paramJSONObject);
     g.c(((StringBuilder)localObject1).toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
 }
 

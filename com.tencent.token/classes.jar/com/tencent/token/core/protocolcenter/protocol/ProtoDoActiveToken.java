@@ -1,13 +1,13 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.bv;
-import com.tencent.token.ca;
+import android.text.TextUtils;
 import com.tencent.token.cb;
 import com.tencent.token.cc;
+import com.tencent.token.cd;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.do;
-import com.tencent.token.dq;
+import com.tencent.token.dp;
+import com.tencent.token.dr;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -15,6 +15,7 @@ import com.tencent.token.global.g;
 import com.tencent.token.global.k;
 import com.tencent.token.utils.encrypt.b;
 import com.tencent.token.utils.l;
+import com.tmsdk.base.utils.NetworkUtil;
 import com.tmsdk.common.util.TmsLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,14 +23,42 @@ import org.json.JSONObject;
 public class ProtoDoActiveToken
   extends d
 {
-  private static final dq e = new dq("B8008767A628A4F53BCB84C13C961A55BF87607DAA5BE0BA3AC2E0CB778E494579BD444F699885F4968CD9028BB3FC6FA657D532F1718F581669BDC333F83DC3", 16);
+  private static final dr e = new dr("B8008767A628A4F53BCB84C13C961A55BF87607DAA5BE0BA3AC2E0CB778E494579BD444F699885F4968CD9028BB3FC6FA657D532F1718F581669BDC333F83DC3", 16);
   private final long d = 2L;
-  private dq f = new dq("-1");
-  private cc g = cc.c();
+  private dr f = new dr("-1");
+  private cd g = cd.c();
+  
+  static String e()
+  {
+    int i = 4;
+    for (;;)
+    {
+      String str = k.d();
+      if (!TextUtils.isEmpty(str)) {
+        return str;
+      }
+      if ((!k.c()) && (TextUtils.isEmpty(btmsdkobf.bw.ah().aj())) && (NetworkUtil.isNetworkConnected())) {
+        try
+        {
+          Thread.sleep(1000L);
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          localInterruptedException.printStackTrace();
+        }
+      }
+      if (i <= 0)
+      {
+        TmsLog.i("mod_seed", "turing fail");
+        return "";
+      }
+      i -= 1;
+    }
+  }
   
   protected String a()
   {
-    String str = ca.a().b();
+    String str = cb.a().b();
     if (str == null)
     {
       this.a.b(104);
@@ -39,8 +68,8 @@ public class ProtoDoActiveToken
     Object localObject = b.a(this.f, 2L, e);
     if ((this.f != null) && (localObject != null) && (((String)localObject).length() != 0))
     {
-      int i = cb.a + 1;
-      cb.a = i;
+      int i = cc.a + 1;
+      cc.a = i;
       this.c = i;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("client_pub_key=");
@@ -48,7 +77,7 @@ public class ProtoDoActiveToken
       localStringBuilder.append(", length=");
       localStringBuilder.append(((String)localObject).length());
       g.a(localStringBuilder.toString());
-      localObject = l.a(new Object[] { "imei", cc.b(), "clt_pub_key", localObject, "seq_id", Integer.valueOf(this.c), "op_time", Integer.valueOf((int)(cc.c().s() / 1000L)), "turingd_ticket_id", k.c() });
+      localObject = l.a(new Object[] { "imei", cd.b(), "clt_pub_key", localObject, "seq_id", Integer.valueOf(this.c), "op_time", Integer.valueOf((int)(cd.c().s() / 1000L)), "turingd_ticket_id", e() });
       if (localObject == null)
       {
         this.a.a(10000, "encrypt imei failed");
@@ -70,7 +99,7 @@ public class ProtoDoActiveToken
     return null;
   }
   
-  protected void a(do paramdo) {}
+  protected void a(dp paramdp) {}
   
   protected void a(JSONObject paramJSONObject)
   {
@@ -114,19 +143,19 @@ public class ProtoDoActiveToken
           localJSONException.printStackTrace();
         }
         this.g.e();
-        localObject = new dq((String)localObject, 16);
-        localObject = b.b(this.f, (dq)localObject, e);
+        localObject = new dr((String)localObject, 16);
+        localObject = b.b(this.f, (dr)localObject, e);
         if (localObject == null)
         {
           this.a.b(10026);
           return;
         }
-        this.g.a((dq)localObject);
+        this.g.a((dr)localObject);
         this.g.n();
         this.g.v();
         long l = paramJSONObject.getLong("server_time");
         this.g.b(l);
-        bv.a().a(null);
+        com.tencent.token.bw.a().a(null);
         this.a.c();
         return;
       }
@@ -136,7 +165,7 @@ public class ProtoDoActiveToken
     ((StringBuilder)localObject).append("parseJSON error decodeData=");
     ((StringBuilder)localObject).append(paramJSONObject);
     g.c(((StringBuilder)localObject).toString());
-    a(10022, RqdApplication.l().getString(2131493067));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
 }
 

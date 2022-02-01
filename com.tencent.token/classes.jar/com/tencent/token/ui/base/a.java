@@ -7,7 +7,7 @@ import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.drawable.Drawable;
-import com.tencent.token.cc;
+import com.tencent.token.cd;
 import com.tencent.token.ui.IndexActivity;
 
 public class a
@@ -34,7 +34,7 @@ public class a
   
   public void draw(Canvas paramCanvas)
   {
-    long l = System.currentTimeMillis() + cc.c().q();
+    long l = System.currentTimeMillis() + cd.c().q();
     float f1 = (int)(l / 1000L) % 30 * 1000 + (int)(l % 1000L);
     float f2 = this.c;
     paramCanvas.drawRect(f1 * f2 / 30000.0F, 0.0F, f2 + 3.0F, this.d, this.b);

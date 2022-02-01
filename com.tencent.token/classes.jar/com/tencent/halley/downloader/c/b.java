@@ -248,20 +248,20 @@ public final class b
     //   231: lload_3
     //   232: l2i
     //   233: putfield 212	com/tencent/halley/downloader/c/e:E	I
-    //   236: invokestatic 217	com/tencent/token/x:a	()Lcom/tencent/token/x;
+    //   236: invokestatic 217	com/tencent/token/y:a	()Lcom/tencent/token/y;
     //   239: aload_0
     //   240: getfield 49	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/e;
-    //   243: invokevirtual 218	com/tencent/token/x:m	(Lcom/tencent/halley/downloader/b;)V
+    //   243: invokevirtual 218	com/tencent/token/y:m	(Lcom/tencent/halley/downloader/b;)V
     //   246: goto -167 -> 79
     //   249: astore 9
     //   251: aload 8
     //   253: monitorexit
     //   254: aload 9
     //   256: athrow
-    //   257: invokestatic 217	com/tencent/token/x:a	()Lcom/tencent/token/x;
+    //   257: invokestatic 217	com/tencent/token/y:a	()Lcom/tencent/token/y;
     //   260: aload_0
     //   261: getfield 49	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/e;
-    //   264: invokevirtual 221	com/tencent/token/x:l	(Lcom/tencent/halley/downloader/b;)V
+    //   264: invokevirtual 221	com/tencent/token/y:l	(Lcom/tencent/halley/downloader/b;)V
     //   267: aload_0
     //   268: getfield 36	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
     //   271: astore 8
@@ -293,10 +293,10 @@ public final class b
     //   336: monitorexit
     //   337: aload 9
     //   339: athrow
-    //   340: invokestatic 217	com/tencent/token/x:a	()Lcom/tencent/token/x;
+    //   340: invokestatic 217	com/tencent/token/y:a	()Lcom/tencent/token/y;
     //   343: aload_0
     //   344: getfield 49	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/e;
-    //   347: invokevirtual 225	com/tencent/token/x:k	(Lcom/tencent/halley/downloader/b;)V
+    //   347: invokevirtual 225	com/tencent/token/y:k	(Lcom/tencent/halley/downloader/b;)V
     //   350: aload_0
     //   351: getfield 36	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
     //   354: astore 8
@@ -336,10 +336,10 @@ public final class b
     //   432: iconst_1
     //   433: istore_1
     //   434: goto +299 -> 733
-    //   437: invokestatic 217	com/tencent/token/x:a	()Lcom/tencent/token/x;
+    //   437: invokestatic 217	com/tencent/token/y:a	()Lcom/tencent/token/y;
     //   440: aload_0
     //   441: getfield 49	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/e;
-    //   444: invokevirtual 229	com/tencent/token/x:j	(Lcom/tencent/halley/downloader/b;)V
+    //   444: invokevirtual 229	com/tencent/token/y:j	(Lcom/tencent/halley/downloader/b;)V
     //   447: aload_0
     //   448: getfield 36	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
     //   451: astore 8
@@ -371,10 +371,10 @@ public final class b
     //   516: monitorexit
     //   517: aload 9
     //   519: athrow
-    //   520: invokestatic 217	com/tencent/token/x:a	()Lcom/tencent/token/x;
+    //   520: invokestatic 217	com/tencent/token/y:a	()Lcom/tencent/token/y;
     //   523: aload_0
     //   524: getfield 49	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/e;
-    //   527: invokevirtual 233	com/tencent/token/x:i	(Lcom/tencent/halley/downloader/b;)V
+    //   527: invokevirtual 233	com/tencent/token/y:i	(Lcom/tencent/halley/downloader/b;)V
     //   530: aload_0
     //   531: getfield 36	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
     //   534: astore 8
@@ -406,10 +406,10 @@ public final class b
     //   599: monitorexit
     //   600: aload 9
     //   602: athrow
-    //   603: invokestatic 217	com/tencent/token/x:a	()Lcom/tencent/token/x;
+    //   603: invokestatic 217	com/tencent/token/y:a	()Lcom/tencent/token/y;
     //   606: aload_0
     //   607: getfield 49	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/e;
-    //   610: invokevirtual 236	com/tencent/token/x:h	(Lcom/tencent/halley/downloader/b;)V
+    //   610: invokevirtual 236	com/tencent/token/y:h	(Lcom/tencent/halley/downloader/b;)V
     //   613: aload_0
     //   614: getfield 36	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
     //   617: astore 8
