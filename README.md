@@ -11,8 +11,8 @@
 | 版本  | 修改日期  |
 | ----- | --------- |
 | 7.6.0 | 2018-05-05 11:03:26 |
-| 7.6.3 | 2018-05-25 14:46:56 |
-| 7.6.3 | 2018-06-01 10:06:56 |
+| 7.6.3_1 | 2018-05-25 14:46:56 |
+| 7.6.3_2 | 2018-06-01 10:06:56 |
 | 7.6.8 | 2018-06-27 12:50:42 |
 | 8.2.6 | 2020-01-02 22:40:52 |
 | 8.2.8 | 2020-02-27 20:01:22 |
@@ -27,6 +27,26 @@
 | 8.7.0 | 2021-04-27 21:41:54 |
 | 8.8.17 | 2021-08-04 01:49:18 |
 | 8.8.68 | 2022-01-21 15:10:10 |
+
+### 2018.5 QQ脏话门事件
+
+- 在QQ中发送菜刀、爱心等表情与字符的组合，就会被替换为脏话，并且是发出后才发生替换，因此在发消息之前发送者并不知情，而发出后接收者就直接看到脏话，引起聊天中的误会
+- 2018.5.28 晚上官方在线修复问题，该替换逐渐无效
+  - 也就是说，腾讯具备在线控制模块是否运行的能力
+
+相关文件：
+
+- [com.tencent.mobileqq/classes.jar/com/tencent/mobileqq/lovelanguage](https://github.com/tsuzcx/qq_apk/tree/d2564324b925d30b364748ec005c8ae9c4c7ef81/com.tencent.mobileqq/classes.jar/com/tencent/mobileqq/lovelanguage)
+- 目前已经不存在
+
+版本对比结果：
+
+- 早在 5.5 的 7.6.0 版本中就已经存在
+  - [LoveLanguageConfig.java](https://github.com/tsuzcx/qq_apk/blob/39540a850bbb8228cbbe6644d985da0652695df2/com.tencent.mobileqq/classes.jar/com/tencent/mobileqq/lovelanguage/LoveLanguageConfig.java) 中的 jdField_a_of_type_ArrayOfJavaLangString 字段包含了脏话字符串
+- 5.25 的 7.6.3 版本中，修改了 jdField_a_of_type_ArrayOfInt 数组
+- 6.1 在发现问题后，[删除了2个函数的主要内容](https://github.com/tsuzcx/qq_apk/blame/3dd1a120029f2cbcc7ede09dd3fa1e214df0a3e0/com.tencent.mobileqq/classes.jar/com/tencent/mobileqq/lovelanguage/LoveLanguageManager.java)
+- 6.27 的 7.6.8 版本中删除了大部分函数的主要内容，[但脏话数组依然原封不动地保留在原地](https://github.com/tsuzcx/qq_apk/blame/52d8956055474225051d6eb45a6a4c6a515b9b4b/com.tencent.mobileqq/classes.jar/com/tencent/mobileqq/lovelanguage/LoveLanguageConfig.java)，看起来像是故意留下的
+- 此后的 8.2.6 版本中已经没有 lovelanguage 这个文件夹
 
 ## QQ国际版：com.tencent.mobileqqi
 
@@ -83,8 +103,8 @@
 | 6.9.19 | 早于 2021-04-07 |
 | 6.9.20 | 早于 2021-04-07 |
 | 6.9.21 | 早于 2021-06-26 |
-| 6.9.22 | 早于 2021-06-26 |
-| 6.9.22 | 早于 2021-06-26 |
+| 6.9.22_1 | 早于 2021-06-26 |
+| 6.9.22_2 | 早于 2021-06-26 |
 | 6.9.23 | 早于 2021-09-04 |
 | 6.9.26 | 早于 2022-02-01 |
 
